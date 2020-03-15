@@ -1,5 +1,5 @@
 {{ $full := .Scratch.Get "ArticleContext" }}
-{{ $truncated := and .Truncated (not $full) }}
+DEBUG: FULL {{ $full }}
 <div class='post__item'>
   <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
     <header class='post__header'>
@@ -14,6 +14,8 @@
       </h2>
     </header>
     <div class='post__content' itemprop='articleBody'>
+      {{ $truncated := and .Truncated (not $full) }}
+      DEBUG: TRUNCATED {{ $truncated }}
       {{ if $truncated }}
         {{ .Summary }}
       {{ else }}

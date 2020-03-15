@@ -2,6 +2,7 @@
 <h1 class='firstHeading'>Category: {{ .Title }}</h1>
 {{ $pag := .Paginate .Pages }}
 {{ range $pag.Pages }}
+  {{ .Scratch.Set "ArticleContext" 0 }}
   {{ partial "post-content.html" . }}
 {{ end }}
 <div class="post-navigation">

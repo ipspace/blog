@@ -1,6 +1,8 @@
 {{ partial "header.html" . }}
 {{ $pag := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+{{ $full := .Scratch.Get "ArticleContext" }}
 {{ range $pag.Pages }}
+  {{ .Scratch.Set "ArticleContext" 0 }}
   {{ partial "post-content.html" . }}
 {{ end }}
 <div class="post-navigation">

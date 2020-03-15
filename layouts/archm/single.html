@@ -5,6 +5,7 @@
 <h1 class='firstHeading'>Blog Posts in {{ $archMonth }} {{ $archYear }}</h1>
 {{ range where (where .Site.Pages "Kind" "page") "Section" "posts" }}
   {{ if and (eq (.Date.Format "2006") $archYear) (eq (.Date.Format "January") $archMonth) }}
+    {{ .Scratch.Set "ArticleContext" 0 }}
     {{ partial "post-content.html" . }}
   {{ end }}
 {{ end }}
