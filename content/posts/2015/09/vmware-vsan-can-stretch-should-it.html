@@ -1,0 +1,23 @@
+---
+title: "VMware VSAN Can Stretch – Should It?"
+date: "2015-09-17T08:40:00.000+02:00"
+tags: [ Data Center,SAN,virtualization ]
+---
+
+<p><a href="https://www.linkedin.com/pub/pirmin-sidler/56/2aa/445">Pirmin Sidler</a> read the stretched VSAN blog posts by Duncan Epping (<a href="http://www.yellow-bricks.com/2015/08/31/what-is-new-for-virtual-san-6-1/">intro</a>, <a href="http://www.yellow-bricks.com/2015/09/09/hadrs-configuration-with-virtual-san-stretched-cluster-environment/">HA/DRS considerations</a>, <a href="http://www.yellow-bricks.com/2015/09/10/virtual-san-stretched-clustering-demo/">demo</a>) and asked me what I think about stretched VSAN considering my <a href="http://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html">opinions on long-distance vMotion</a>.</p>
+<p>TL&amp;DR answer: it makes way more sense than long-distance vMotion. However&hellip;<!--more--></p>
+<p class="update">2015-09-17: VSAN is similar to synchronous, not asynchronous replication. Added the explanation from Duncan Epping.</p>
+<h4>Does it need stretched VLANs?</h4><p>VSAN is storage replication technology that runs on top of TCP, so it can run over any L3 network. It does need IP multicast between the VSAN nodes, but not between VSAN nodes and the witness node(s). </p>
+<p>Stretched vSphere HA cluster running VSAN thus doesn&#x2019;t require stretched VLANs (unless, of course, you plan to move VMs willy-nilly across the WAN links &ndash; most often a <a href="http://blog.ipspace.net/2015/01/latency-killer-of-spread-out.html">bad idea</a>).</p>
+<h4>Can you use it for disaster recovery?</h4><p>VSAN data replication is almost identical (at least conceptually) to <del>asynchronous</del> <ins>synchronous</ins> storage replication &ndash; every write is immediately queued for mirroring, <ins>and acknowledged to the writer only when the other VSAN nodes acknowledge it</ins>.</p>
+<p class='note'>Additional explanation by Duncan Epping: VSAN in a stretched configuration is similar to "sync replication". It uses an object based model where IOs are split to each of the components of an object tree. Only when each of the components have received the IO will it be acknowledged to the OS/Application. Note that the IO is split before it is written to a device, so this is the purest form of sync IO if you ask me :)</p>
+<p>Do keep in mind that VSAN runs on top of vSphere HA cluster, and if you don&#x2019;t want to move VMs between data centers, you MUST use affinity rules to keep them contained (for more details, read <a href="http://www.yellow-bricks.com/2015/09/09/hadrs-configuration-with-virtual-san-stretched-cluster-environment/">Duncan&#x2019;s blog post</a>).</p>
+<p>As you&#x2019;d be relying on vSphere HA mechanisms for disaster recovery, you won&#x2019;t get any of the goodies SRM brings to the table: each VM will be restarted automatically in whatever order, or not (if the remaining part of the cluster doesn&#x2019;t have enough resources). This might be good enough for small independent workloads, but maybe not for complex application stacks.</p>
+<p>Finally, you&#x2019;ll have to solve network connectivity challenges, unless you plan to deploy stretched VLANs (and even <a href="http://blog.ipspace.net/2015/09/blessed-by-gartner-stretched-vlans-make.html">Gartner agrees</a> they&#x2019;re not a good idea) and <a href="http://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html">stretched firewall clusters</a> (even worse idea).</p>
+<p>All things considered, it might be best to write an orchestration solution (it would be even better if VMware would do that) that would:</p>
+<ul class="ListParagraph"><li>Create lost subnets in the new data center;</li>
+<li>Configure any other network services that may be required (unless you&#x2019;re <a href="http://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html">using virtual appliances</a>);</li>
+<li>Restart VMs in proper startup order.</li>
+</ul>
+<p class='note'>Many thanks to Duncan Epping for confirming my understanding of VSAN principles and caveats in an extremely short timeframe.</p>
+

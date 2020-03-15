@@ -1,0 +1,36 @@
+---
+title: "Virtual Firewall Taxonomy"
+date: "2012-11-09T06:52:00.000+01:00"
+tags: [ firewalls,security,Workshop,virtualization ]
+---
+
+<p>Based on readers’ comments and recent discussions with fellow packet pushers, it seems the marketing departments and industry press managed to thoroughly muddy the virtualized security waters. Trying to fix that, here’s my attempt at virtual firewall taxonomy.<!--more--></p>
+<h4>Virtual versus physical</h4><p>While numerous vendors sell dedicated firewall hardware (clearly physical firewalls), most of those boxes have an x86 chipset inside. Some of them might have dedicated forwarding/filtering hardware but the moment you start looking deeply into the packets, the only hardware offload you can do is TCP checksuming and segmentation/reassembly.</p>
+<p>Then there are software-only vendors that expect you to buy an off-the-shelf server and operating system platform on which you’ll run their software.</p>
+<p>Finally, companies like Linerate Systems have multi-tenant firewalls running on commodity x86 hardware.</p>
+<p>All the above-mentioned products are <em>physical firewalls </em>because regardless of how they’re implemented, there is no other software running on the same platform. You can have endless debates whether a firewall running on a dedicated operating system is safer than the one running on top of Linux, but please keep them to yourself.</p>
+<p>A <em>virtual firewall</em>, on the other hand, is software running as a hypervisor kernel module or in a VM on top of a general-purpose hypervisor. The fundamental difference between a virtual and a physical firewall is that the virtual one shares compute, networking and storage resources with other (potentially malicious) VMs.</p>
+<p><a href="http://www.rationalsurvivability.com/blog/2012/10/shouldcanwill-virtual-firewalls-replace-physical-firewalls/">Chris Hoff wrote a great blog post</a> describing the security aspects of virtual and physical firewalls, so I’ll not go down that particular winding path. Let’s just say that what matters most when dealing with this particular can of worms is the religious persuasion of your security auditor.</p>
+<p>And now for the real stuff ...</p>
+<h4>Transparent or routed?</h4><p>Physical firewall functionality comes in two flavors:</p>
+<ul class="ListParagraph"><li>Inter-subnet (inter-VLAN) firewalls that perform packet filtering <em>and IP routing</em>.</li>
+<li>Transparent (bump-in-the-wire) firewalls that perform packet filtering and layer-2 forwarding. In their simplest incarnation, they have two interfaces and send accepted traffic received on the inside interface to the outside interface and vice versa.</li>
+</ul>
+<p>Virtual firewalls also come in two flavors: inter-VLAN (routed) firewalls and NIC-level firewalls, which are attached directly in front of a VM NIC, filtering traffic being sent from and received by individual VMs.</p>
+<p class="note">I haven’t seen a bump-in-the-wire inter-VLAN virtual firewall yet, but should I stumble upon one I wouldn’t be surprised; the vendors tend to explore all the nooks in the solution space.</p>
+<h4>Inter-VLAN virtual firewalls</h4><p>These firewalls typically run in a multi-vNIC VM (with every virtual NIC being assigned to a different security zone).</p>
+<p>In the <em>vanilla inter-VLAN virtual firewall </em>category we have vShield Edge and Vyatta firewalls (and other products with kitschy UI in front of Linux <em>iptables</em>). Cisco’s vASA is a tiny bit smarter; it can do vPath service chaining in VLANs where it’s deployed together with VSG.</p>
+<p>These firewalls can work over any virtual networking technology – apart from vASA (which relies on vPath) they’re not aware of the technology used to implement virtual networking – all they know is that someone connected their virtual NICs to different port groups (to use the vSphere lingo).</p>
+<h4>NIC-level firewalls</h4><p>This is an interesting new category of firewalls – they are (logically) sitting in front of individual VMs, inspecting all the VM traffic (like physical firewalls, subnet-level virtual firewalls inspect only the traffic entering and leaving a virtual network segment).</p>
+<p>The simplest product in this category is XenServer vSwitch Controller, which uses OpenFlow to download static ACLs to Open vSwitch residing in Xen hypervisor.</p>
+<p>Most other NIC-level firewalls rely on VMware’s VMsafe Network Security API (lovingly known as dvFilter) – a kernel module intercepts vNIC traffic and processes it within the kernel module or within a VM running in the same vSphere host.</p>
+<p><a href="http://blog.ioshints.info/2011/11/junipers-virtual-gateway-virtual.html">Juniper’s vGW is a dvFilter-based firewalls that does all the filtering in the kernel module</a> (the VM that still has to be running in every vSphere host is doing only configuration, management and logging tasks).</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-saxIFtHs9Vg/TrO2feEOjxI/AAAAAAAAEgE/idDMKDDezHo/s1600/VGW_FastPath.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="178" width="320" src="http://1.bp.blogspot.com/-saxIFtHs9Vg/TrO2feEOjxI/AAAAAAAAEgE/idDMKDDezHo/s320/VGW_FastPath.png" /></a></div>
+<p>vSphere App/Zones is another dvFilter-based firewall, but it does the actual filtering in the VM, so all the inspected traffic has to traverse the firewall VM, resulting in significantly reduced performance as compared with vGW.</p>
+<div><a href="http://2.bp.blogspot.com/-B8sUgDBlVSQ/TrO2fwaZVnI/AAAAAAAAEgs/QrEuAPewONk/s1600/VGW_SlowPath.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="178" width="320" src="http://2.bp.blogspot.com/-B8sUgDBlVSQ/TrO2fwaZVnI/AAAAAAAAEgs/QrEuAPewONk/s320/VGW_SlowPath.png" /></a></div>
+<p>Finally, there HP’s TippingPoint that uses a dvFilter-based solution to intercept the VM traffic and send it to an external TippingPoint IDS/IPS appliance.</p>
+<p><a href="http://blog.ioshints.info/2012/10/cisco-virtual-security-gateway-vsg-101.html">Cisco’s VSG is slightly different</a> – it uses a VM for traffic inspection, but doesn’t require a firewall VM to be running in each hypervisor host. VSG uses service insertion (vPath) implemented in the Nexus 1000V switches to get access to VM traffic. It can also insert shortcuts in the Nexus 1000V switches, resulting in higher performance.</p>
+<h4>Summary</h4><p>A picture is supposedly worth more than a thousand words. Here it is:</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-5_O1U5YkFfQ/UJpbLeC435I/AAAAAAAAFT8/LQebonQwZHU/s1600/VirtualFirewallTaxonomy.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="221" width="400" src="http://2.bp.blogspot.com/-5_O1U5YkFfQ/UJpbLeC435I/AAAAAAAAFT8/LQebonQwZHU/s400/VirtualFirewallTaxonomy.png" /></a></div>
+<h4>More information</h4><p>Check out my <a href="http://www.ipspace.net/Roadmap/Virtualization_webinars">virtualization webinars</a> (all of them are included in the <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>).</p>
+

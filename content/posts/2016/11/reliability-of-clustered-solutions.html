@@ -1,0 +1,18 @@
+---
+title: "Reliability of Clustered Solutions: Another Data Point"
+date: "2016-11-14T08:56:00.000+01:00"
+tags: [ Design,security,Data Center ]
+---
+
+<p>A while ago <a href="http://blog.ipspace.net/2016/10/do-i-need-redundant-firewalls.html">I wrote</a>:</p>
+<blockquote class="cite">I haven&#x2019;t seen any hard data, but intuition suggests that apart from hardware failures a standalone firewall might be more stable than a state-sharing firewall cluster.</blockquote>
+<p>Guillaume Sachot (working for a web hosting company) sent me his first-hand experience on this topic:<!--more--></p>
+<style>blockquote.spaced p { margin-bottom: 1em !important; }</style><blockquote class='cite spaced'><p>I don't have statistics to prove it, but as a hoster, I can confirm that I've seen high availability appliances fail more often than non-clustered ones. And it's not limited to firewalls that crash together due to a bug in session sharing, I have noticed it for almost anything that does HA: DRBD instances, Pacemaker, shared filesystems...</p>
+<p>It fails, fails and fails. There are bugs, but also configuration issues/bad sync, network flapping that breaks replication and puts all instances in standby/secondary mode...</p>
+<p>Same for VMWare clusters that cannot handle partial storage loss or performance issues without losing it completely, disconnecting from vCenter because their daemon indefinitely blocks on refreshing storage status.</p>
+<p>In the end, a non-redundant VM on a non-clustered host seems to be the service that lasts the longest.</p>
+<p>The good compromise for most people that do not require very low recovery time seems to be non-redundant VM(s) running on a cluster to cover host failure (hardware or software), and maybe "passive" VM(s) on another cluster that is triggered manually.</p>
+<p>And if customers need very high availability, they should/must design their app to take it into account and host it on multiple locations/independent providers.</p>
+</blockquote>
+<p>Not that many people would want to listen to anything along these lines. Believing in Santa Claus and magical <a href="http://blog.ipspace.net/2011/08/high-availability-fallacies.html">High Availability solutions</a> is more comforting.</p>
+

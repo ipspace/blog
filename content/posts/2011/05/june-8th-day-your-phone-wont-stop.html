@@ -1,0 +1,22 @@
+---
+title: "June 8th: the day your phone won’t stop ringing"
+date: "2011-05-04T07:46:00.001+02:00"
+tags: [ IPv6,Workshop ]
+---
+
+<p>On June 8<sup>th</sup> (the <a href="http://isoc.org/wp/worldipv6day/">World IPv6 Day</a>) you’ll see Facebook, Google and a number of other web sites reachable over IPv4 and IPv6 (more accurately: the DNS records for their web sites will have both A and AAAA records). No problem ... unless your users have misconfigured workstations and you haven’t deployed IPv6 throughout your network yet (not many have).</p>
+<p>Users with broken IPv6 connectivity will experience long delays connecting to major public web sites. Their workstations will try to reach the content over IPv6 first and will have to experience a TCP-level timeout before retrying to get the same content over IPv4. Guess whose phone will ring ... and what the problem description will be ;)<!--more--></p>
+<p>Expecting everyone to have IPv6 connectivity sorted out throughout the enterprise network before June 8<sup>th</sup> is ludicrous, but you (and your network) have to be prepared for dual-stack world:</p>
+<ol class="ListParagraph"><li>Check whether your users are likely to experience problems using an <a href="http://test-ipv6.com/">IPv6 connectivity test tool</a>. Run the checks on various hosts throughout your network.</li>
+<li>Prepare your help desk team. They should know what’s going on and be prepared to handle “Internet-is-down” cases.</li>
+<li>Minimize the impact of broken IPv6 connectivity by reconfiguring end-user devices where needed.</li>
+</ol>
+<p>The very minimum you have to do is to turn off all unnecessary end host tunneling mechanisms like Teredo or 6over4 and check whether someone accidentally advertises himself as a router (sending Router Advertisement messages from a workstation). Implementing RA guard on routers and switches is also not a bad idea.</p>
+<h4>More information</h4><p>To learn more about all the possible things that can go wrong, read these articles:</p>
+<ul class="ListParagraph"><li><a href="http://getipv6.info/index.php/Customer_problems_that_could_occur">Customer problems that could occur</a>  (ARIN IPv6 Wiki)</li>
+<li><a href="http://www.uknof.org.uk/uknof19/Freedman-WIDACCESS.pdf">World IPv6 Day Access Networks</a> (it’s a SP-focused presentation, but contains help desk preparation hints)</li>
+<li><a href="http://www.potaroo.net/ispcol/2011-05/ip6test.html">Testing IPv6 for World IPv6 Day</a> (Potaroo blog)</li>
+<li><a href="http://www.potaroo.net/ispcol/2011-04/teredo.html">Testing Teredo</a> (Potaroo blog)</li>
+</ul>
+<p>If, on the other hand, you’re planning to deploy IPv6 in your network, you might find useful overview of what needs to be done in my <a href="http://www.ioshints.info/IPv6E101">Enterprise IPv6 – the first steps</a> webinar (<a href="http://entipv6.eventbrite.com/">register here</a> or <a href="http://www.ioshints.info/Recordings">buy a recording</a>).</p>
+

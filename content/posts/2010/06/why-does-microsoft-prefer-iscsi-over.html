@@ -1,0 +1,12 @@
+---
+title: "Why does Microsoft prefer iSCSI over FCoE?"
+date: "2010-06-03T06:12:00.000+02:00"
+tags: [ SAN,Workshop ]
+---
+
+<p>A month ago <a href="http://blog.fosketts.net/">Stephen Foskett</a> complained about <a href="http://blog.fosketts.net/2010/04/15/microsoft-windows-server-fcoe-support/">lack of Microsoft’s support for FCoE</a>. I agree with everything he wrote, but he missed an important point: Microsoft gains nothing by supporting FCoE and potentially a lot if they persuade people to move away from FCoE and deploy iSCSI.</p>
+<p>FCoE and iSCSI are the two technologies that can help Fiber Channel gain its proper place somewhere between <a href="http://en.wikipedia.org/wiki/Tyrannosaurus">Tyrannosaurus</a> and <a href="http://en.wikipedia.org/wiki/IBM_Systems_Network_Architecture">SNA</a>. FCoE is a more evolutionary transition (after all, <a href="http://en.wikipedia.org/wiki/Fibre_Channel_over_Ethernet">whole FCoE frames are encapsulated in Ethernet frames</a>) and thus probably preferred by the more conservative engineers who are willing to scrap Fiber Channel infrastructure, but not the whole protocol stack. Using FCoE gives you the ability to retain most of the existing network management tools and the transition from FC to FCoE is almost seamless if you have switches that support both protocols (for example, the Nexus 5000).</p>
+<p class="more">You’ll find introduction to SCSI, Fiber Channel, FCoE and iSCSI in the <a href="http://www.ioshints.info/Next-generation_IP_services"><em>Next Generation IP Services</em></a> webinar.</p>
+<!--more--><p>However, as FCoE is a simple wrapping magic, Ethernet infrastructure in your data center has to provide lossless transport required by Fiber Channel. No problem, <a href="http://en.wikipedia.org/wiki/Data_Center_Bridging">Data Center Bridging</a> addresses that need ... but might also require a forklift upgrade of your networking infrastructure. The need for infrastructure upgrade is (in my opinion) Microsoft’s problem: if their customers deploy FCoE, they’ll spend their budgets on infrastructure upgrades; if they embrace iSCSI, their existing infrastructure will work just fine and they will be able to spend their money elsewhere (for example, buying more Microsoft products).</p>
+<p>Obviously, that’s just my personal opinion ... please use the comments to tell me how wrong it is.</p>
+

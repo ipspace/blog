@@ -1,0 +1,25 @@
+---
+title: "Zero-Touch Provisioning with Patrick Ogenstad"
+date: "2018-12-14T10:11:00.000+01:00"
+tags: [ Automation ]
+---
+
+<p><a name="_GoBack"></a>Zero-touch provisioning is always one of the big topics in the <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions online course</a>, so we decided to invite <a href="https://www.ipspace.net/Author:Patrick_Ogenstad">Patrick Ogenstad</a> (the author of <a href="https://networklore.com/ztp-tutorial/introduction/">excellent ZTP tutorial</a>) to be a <a href="https://www.ipspace.net/Building_Network_Automation_Solutions#PO19">guest speaker</a> in Spring 2019 course (<a href="https://www.ipspace.net/Building_Network_Automation_Solutions#register">register here</a>).</p>
+<p>In the meantime, enjoy his interview with <a href="http://uebermeister.com/about.html">Christoph Jaggi</a>.<!--more--></p>
+<blockquote class="cite">What problem does ZTP address?</blockquote>
+<p>When a typical network device boots up for the first time, it doesn't have any configuration. To make it usable someone has to connect a console cable to the box and apply a configuration before it is accessible on the network. </p>
+<p>A process like this can take its form in different shapes. It might mean that someone needs to travel to a remote location to hook up a laptop to a new switch that needs to get provisioned. </p>
+<p>Another scenario is if you are setting up a new campus network and have a lot of equipment that needs to get online as soon as possible. Like other automation initiatives, ZTP aims to improve the quality of what gets delivered along with it all, and the other benefit is the time saved by using an automated process. </p>
+<p>The goal of ZTP is to enable you to plug in a new network device and have it configured and transitioned into production automatically without the need for manual configuration.<strong> </strong></p>
+<blockquote class="cite">What is the basic mechanism used by ZTP?</blockquote>
+<p>A new device doesn't have any knowledge of your network. What it can have is an agent or service that knows what resources to look for if they are available after booting up. The essential part of this is DHCP that can provide the new device with information about a TFTP server that can host configuration files. It can also be the IP address of a web server or just a DNS domain. The information you need to provide in the network will depend on what the devices you intend to install support. Common among most solutions is that the network device uses information received from the DHCP server to see what service it needs to connect to and download its configuration file.</p>
+<blockquote class="cite">ZTP requires a network connection. Can it be used with any kind of network and any kind of network-connected device?</blockquote>
+<p>If you say that the barrier to entry is the ability to access a DHCP server and a TFTP server, you might think that this is something that would be universally accessible. In reality, lots of devices don't support any form of network-based ZTP. </p>
+<p>For the ones that do, the underlying network shouldn't matter that much. However, if you want to install the first router at a new office and you only have a static IP address from your provider you might say that the network doesn't support ZTP. </p>
+<p>Even if this is a common occurrence, you can stop and think a while before you reach for that console cable. The Netmiko library supports serial connections, a solution for you might be to package a Raspberry Pi and use that to provision devices that don't support ZTP natively.<strong> </strong></p>
+<blockquote class="cite">ZTP stands for Zero-Touch Provisioning. Does that mean that absolutely no pre-configuration of a device is necessary? </blockquote>
+<p>Yes, that is the promise of ZTP! A system will automatically configure the device for you without the need to manually enter a line of configuration. On the other hand, a system can't think for itself. The services responsible for ZTP have to know what to configure, which means you will have to spend some time setting up such a system. You need an inventory system along with rules on how devices should get configured.</p>
+<blockquote class="cite">ZTP requires the pre-defined address of the provisioning server. Is there a restriction in terms of the type of addresses supported?</blockquote>
+<p>The type of address you can use will depend on the device you want to configure. A lot of devices support will look for an IPv4 address to a TFTP server defined in DHCP Option 150. Others will support IPv6 or perhaps search for pnpserver.yourdomain.com.</p>
+<p>We&rsquo;ll publish the second half of the interview next week&hellip; Stay tuned.</p>
+

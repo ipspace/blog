@@ -1,0 +1,29 @@
+---
+title: "So You Need ISSU on Your ToR switch? Really?"
+date: "2015-06-08T08:34:00.000+02:00"
+tags: [ switching,Data Center,Fabric ]
+---
+
+<p>During the Cumulus Linux presentation Dinesh Dutt had at <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics webinar</a>, someone asked an unexpected question: &ldquo;<em>Do you have In-Service Software Upgrade (ISSU) on Cumulus Linux</em>&rdquo; and we both went like &ldquo;<em>What? Why?</em>&rdquo;</p>
+<p>Dinesh is an honest engineer and answered: &ldquo;<em>No, we don&#x2019;t do it</em>&rdquo; with absolutely no hesitation, but we both kept wondering, &ldquo;<em>Why exactly would you want to do that?</em>&rdquo;<!--more--></p>
+<p>Back-channel conversation with the attendee brought up interesting facts:</p>
+<ul class="ListParagraph"><li>He was asking about ISSU on ToR switches (not on MLAG core, where it might potentially make sense&hellip; or not);</li>
+<li>Supposedly he&#x2019;s getting requests from service providers who build their cloud infrastructure with single-homed servers and then hammer on the network equipment vendors to implement ISSU on the ToR switches.</li>
+</ul>
+<p>There&#x2019;s something radically wrong with this picture.</p>
+<p>From my biased perspective, you have exactly two options:</p>
+<ul class="ListParagraph"><li>You&#x2019;re big enough to afford losing dozens of servers after a ToR switch failure (regardless of whether you&#x2019;re building a scale-out web farm, Hadoop cluster, or public cloud infrastructure);</li>
+<li>You&#x2019;re not big enough (<a href="http://kontrolissues.net/2015/03/27/sometimes-size-matters-im-sorry-but-youre-just-not-big-enough/">acceptable unit of loss</a> is less than a ToR switch and all attached servers), in which case you dual-home your servers to two ToR switches, and stop caring about a ToR switch failure.</li>
+</ul>
+<p>There is no middle ground or fifty shades of ToR redundancy &ndash; you either have redundancy, or you don&#x2019;t. Forcing equipment manufacturers to do backflips with a mortar tied to their back because you botched your design is (at least) counterproductive.</p>
+<p>Also, when was the &ldquo;Keep it Simple, Stupid&rdquo; replaced with &ldquo;Let&#x2019;s <a href="http://blog.ipspace.net/2013/06/network-virtualization-and-spaghetti.html">throw more spaghetti</a> at the wall&rdquo;?</p>
+<p>If you&#x2019;re still not persuaded, consider all possible failure scenarios:</p>
+<ul class="ListParagraph"><li>Switch or server hardware failure (unlikely);</li>
+<li>Transceiver failure or cable fault (not-so-unlikely);</li>
+<li>Server or switch software crash;</li>
+<li>Server or switch software upgrade.</li>
+</ul>
+<p>Assuming hardware failures are unlikely (you might disagree with that, in which case you should change your supplier), will the switch software upgrade really be the most disruptive operation that will happen in your network, or will you experience switch software crashes more often than you&#x2019;re doing software upgrades (in which case ISSU doesn&#x2019;t buy you much). Also, how often are you planning to do the software upgrades anyway? Are you solving a major problem or complicating everyone&#x2019;s life to address a small minority of potential outages?</p>
+<p>Also, do keep in mind that ISSU (and associated Graceful Restart and Non-Stop Forwarding) <a href="http://blog.ipspace.net/2014/04/should-we-use-redundant-supervisors.html">vastly increases the device complexity</a>, resulting in higher costs, more subtle bugs, and more opportunities for weird hangs and crashes.</p>
+<h4>Want to know more?</h4><p>Interested in data center switches and fabrics? Check out the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a> webinar &ndash; we just finished the <a href="http://www.ipspace.net/Data_Center_Fabrics_Update">2015 update session</a>, so you&#x2019;ll get immediate access to most up-to-date information.</p>
+

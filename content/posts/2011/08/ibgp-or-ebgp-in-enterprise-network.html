@@ -1,0 +1,14 @@
+---
+title: "IBGP or EBGP in an enterprise network?"
+date: "2011-08-24T07:15:00.000+02:00"
+tags: [ Design,BGP ]
+---
+
+<p>I got the following question from one of my readers:</p>
+<blockquote class="cite">I recently started working at a very large enterprise and learnt that the network uses BGP internally. Running IBGP internally is not that unexpected, but after some further inquiry it seems that we are running EBGP internally. I must admit I'm a little surprised about the use of EBGP internally and I wanted to know your thoughts on it.</blockquote>
+<p>Although they are part of the same protocol, IBGP and EBGP solve two completely different problems; both of them can be used very successfully in a large enterprise network.<!--more--></p>
+<p>If all you want to do is to scale your network beyond the IGP limits, or make sure the access network flaps don’t affect the core, IBGP is the tool to use. As a downside, every IBGP router must be able to reach every BGP next hop in the same AS (you could change IBGP next hops with inbound route maps, but don’t do that outside of the CCIE lab). The BGP next hops are usually propagated through IGP (propagating them with BGP might even work, but wouldn’t be too far from the <a href="http://en.wikipedia.org/wiki/Bootstrapping">adventures of Baron Munchausen</a>); the traffic flow between BGP next hops is thus completely controlled by IGP route selection rules.</p>
+<p>EBGP is a completely different beast. Next hops are not propagated across multiple autonomous systems (yet again, there are exceptions, rarely useful beyond the perimeter of a CCIE lab); the router advertising the best EBGP path is generally the one forwarding the traffic into the adjacent AS. You can use this property of EBGP to implement complex routing policies in your network.</p>
+<p>In a well-designed network, EBGP sessions usually follow physical layer 3 connectivity; IGBP sessions are usually established between routers that are further apart (commonly between edge routers and a set of centralized route reflectors). IBGP convergence is thus typically faster than EBGP convergence. Even more, IBGP does not need to be involved in the convergence process following a core link or node failure (IGP takes care of that), while you have to rely on EBGP to find alternate paths in EBGP-based networks.</p>
+<p>You would run your whole enterprise network as a single AS (using only IBGP) if the only goal you wanted to reach is the increased stability of your core network. A mixture of IBGP and EBGP makes sense if you want to implement routing policies between regions (or countries/continents in a global network) and don’t care too much about the inter-regional convergence time. Using just EBGP with every BGP-speaking router in its own AS probably calls for a network redesign (MPLS/VPN networks where small single-router sites use EBGP to exchange routes with the PE-routers is an obvious exception).</p>
+

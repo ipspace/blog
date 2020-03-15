@@ -1,0 +1,15 @@
+---
+title: "Ethernet inter-frame gap: Another living fossil?"
+date: "2010-10-08T06:43:00.000+02:00"
+tags: [ LAN ]
+---
+
+<p>Recently I’ve stumbled across a year-old post by <a href="http://networking.ventrefamily.com/p/about-me.html">James Ventre</a> describing the reasons <a href="http://networking.ventrefamily.com/2010/08/ethernet-overhead-asr.html">output rate on an Ethernet-type interface (as reported by the router) never reaches the actual interface speed</a>. One of them: <a href="http://en.wikipedia.org/wiki/Interframe_gap">inter-frame/packet gap</a> (IPG).</p>
+<p>I was stunned ... I remember very well the early days of thick/thin coax Ethernet when the IPG was needed for proper carrier sense/collision avoidance detection (probability of a collision decreases drastically as you introduce IPG), but on a high-speed point-to-point full duplex link? You must be kidding.</p>
+<!--more--><p>Unfortunately, that’s not the case. <a href="http://standards.ieee.org/getieee802/download/802.3-2008_section1.pdf">IEEE 802.3 standard</a> is very specific. Section 4.2.3.2.1, full duplex operation:</p>
+<blockquote class="cite">After the last bit of a transmitted frame, (that is, when <span><strong>transmitting</strong></span><span> </span>changes from true to false), the MAC continues to defer for a proper interPacket-Gap (see 4.2.3.2.2)</blockquote>
+<p>And further on (4.2.3.2.2):</p>
+<blockquote class="cite">This is intended to provide interpacket recovery time for other CSMA/CD sublayers and for the physical medium.</blockquote>
+<p>What recovery time? What is there to recover if you continuously transmit on a full-duplex channel?</p>
+<p>Next line of thought: maybe IPG is really needed to make sure your brand-new $9.99 Fast Ethernet switch can still work with the ancient 10 Mbps <a href="http://en.wikipedia.org/wiki/NE2000">NE1000 NIC</a>. But how does enforcing the same behavior on 10GE make sense? According to the Section 4.4.2 of the IEEE 802.3 standard, the IPG is 96 bits regardless of MAC data rate. Can anyone enlighten me? Or is IPG just another one of those you-don’t-want-to care things?</p>
+

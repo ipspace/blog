@@ -1,0 +1,17 @@
+---
+title: "Ever Heard of Role-Based Access Control?"
+date: "2015-10-21T12:52:00.000+02:00"
+tags: [ security,switching,network management,virtualization ]
+---
+
+<p>During my recent <a href="http://www.ipspace.net/SDN,_OpenFlow_and_NFV_Workshop">SDN workshops</a> I encountered several networking engineers who use Nexus 1000V in their data center environment, and some of them claimed their organization decided to do so to ensure the separation of responsibilities between networking and virtualization teams.</p>
+<p>There are many good reasons one would use Nexus 1000V, but the one above is <em>definitely </em>not one of them.<!--more--></p>
+<h4>Ever heard of RBAC?</h4><p>Like any other decent management/orchestration framework vCenter supports <em>user roles </em>and <em>role-based access control</em>, making it really easy to configure <em>who </em>can configure uplinks, networks, port groups&hellip; and who can see them (or not even that).</p>
+<p>Using an extra networking product (preferably running VSM on Nexus-1010 because you couldn&#x2019;t possibly trust the company-wide virtualization platform to run your precious control or management plane) just to get what you could get from a product your company already uses is somewhat ridiculous&hellip; but then it might be easier than actually talking to the other team or reading the manual.</p>
+<h4>No Nexus-1000V then?</h4><p>The feature gap between vSphere Distributed Switch and Nexus 1000V is growing smaller as VMware continues to improve vDS (and Nexus 1000V seems to be standing still &ndash; the last new feature worth mentioning was added a year ago), but Nexus 1000V still has a HUGE advantage over vDS: it has <em>text configuration file </em>which means that:</p>
+<ul class="ListParagraph"><li>You can actually see what&#x2019;s configured on the switch without traversing a hundred dialog forms;</li>
+<li>You can diff two configurations, and use a source code management system to record the configuration changes;</li>
+</ul>
+<p class="info">For more details, read the <a href="https://queue.acm.org/detail.cfm?id=1921361">Plea to Software Vendors from Sysadmins</a>, particularly points 2 and 4 (and keep in mind that it was written by sysadmins, so other IT engineers aren&#x2019;t as different from yourself as you might think).</p>
+<p>I don&#x2019;t think VMware ever got that memo (they do have <em><a href="https://pubs.vmware.com/vsphere-51/index.jsp?topic=%2Fcom.vmware.vsphere.networking.doc%2FGUID-9B33EBCE-1BCC-4362-9BE5-4F477056B169.html">export</a></em> capability, but it creates a binary blob), or maybe I&#x2019;m missing a cool feature, in which case please write a comment.</p>
+

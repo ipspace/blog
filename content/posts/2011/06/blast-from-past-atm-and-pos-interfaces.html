@@ -1,0 +1,15 @@
+---
+title: "Blast from the past: ATM and POS interfaces"
+date: "2011-06-16T14:33:00.002+02:00"
+tags: [ WAN ]
+---
+
+<p>I got a question along these lines from a friend working in SP environment:</p>
+<blockquote class="cite">Customer wants to upgrade a 7200 with PA-A3-OC3SMI to ASR1001. Can they use ASR1001-2XOC3POS interfaces or are those different from “normal ATM interfaces”?</blockquote>
+<p>Both interfaces (PA-A3-OC3SMI for the 7200 and 2XOC3POS for the ASR1001) use <a href="http://en.wikipedia.org/wiki/Optical_Carrier_transmission_rates">SONET</a> framing on layer 1, so you can connect them to the same SONET (layer-1) gear. <!--more--></p>
+<p><strong>POS (Packet-over-SONET)</strong> interface behaves like a point-to-point serial interface above the bit transmission layer – you can run HDLC or PPP on it (maybe even Frame Relay or X.25; I never tried). You can use a POS interface to connect two devices (for example two routers) with an OC-x/STM-y link.</p>
+<p><strong>ATM interface</strong> is a totally different beast – it slices and dices packets into ATM cells, implements virtual circuits and allows you to connect a router to numerous remote devices across an ATM network.</p>
+<p>If you used ATM interfaces for point-to-point inter-router connectivity across SONET infrastructure (sometimes you could get an ATM bundle that would be cheaper than buying a POS interface) you can replace them with POS interfaces. If a router's ATM interface connects to an ATM network (directly or across SONET infrastructure), you cannot.</p>
+<p>And then there are <strong>Channelized SONET/SDH</strong> interfaces. You could treat SONET/SDH bit stream as a sequence of bits (like the POS interface does) or as a structure of layer-1 <a href="http://en.wikipedia.org/wiki/Synchronous_optical_networking#SDH_frame">frames</a> multiplexing bits from numerous lower-speed point-to-point connections (for example, four OC-3 streams or 12 DS-1 streams fit into an OC-12 link). </p>
+<p>A channelized interface can demultiplex those bit streams. It contains numerous serial interfaces that you can configure independently, resulting in a high-density WAN concentration option (it’s also pretty complex to configure – just check the <a href="http://www.cisco.com/en/US/docs/routers/10000/10008/configuration/guides/line_card__software/10slch12.pdf">configuration guide for the Channelized OC-12 module</a> in a Cisco 10000 router).</p>
+

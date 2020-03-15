@@ -1,0 +1,8 @@
+---
+title: "Running syslog over TCP"
+date: "2006-10-20T11:48:00.000+02:00"
+tags: [ syslog,logging ]
+---
+
+<em>Syslog</em> has always been considered an undependable means of reporting network problems by serious network administrators as it runs over unreliable UDP transport. Sometime in the twilight zone between IOS releases 12.3T and 12.4, Cisco IOS got the capability to transport <em>syslog</em> messages over TCP with the <strong>logging host <em>ip-address</em> transport tcp <em>port</em></strong> configuration command (the command is documented in 12.4 manuals but missing in 12.3T manuals).<br /><br /><strong>Note:</strong> IOS implements <a href="http://www.faqs.org/rfcs/rfc3164.html">standard <em>syslog </em>stream</a> over TCP, not the more complex <a href="http://www.ietf.org/rfc/rfc3195.txt">RFC 3195</a>.<br /><br />To support <em>syslog </em>over TCP, you also need TCP-capable syslog server. In Unix environments, you can use <a href="http://www.balabit.com/products/syslog_ng/">syslog-ng</a>, on Windows, <a href="http://www.kiwisyslog.com/info_syslog.htm">Kiwi syslog daemon</a> is a perfect choice.<br /><br /><strong>Note:</strong> to enable syslog over TCP in Kiwi Syslog Daemon, go to File/Setup/Inputs/TCP, click <em>Listen for TCP Syslog messages</em> and enter the desired TCP port number.
+

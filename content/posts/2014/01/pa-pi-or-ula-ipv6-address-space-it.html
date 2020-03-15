@@ -1,0 +1,23 @@
+---
+title: "PA, PI or ULA IPv6 Address Space? It depends"
+date: "2014-01-22T06:53:00.000+01:00"
+tags: [ IPv6,Internet ]
+---
+
+<p>Having “<a href="https://twitter.com/ehorley/status/423207351890374656">do we need ULA</a>” <a href="http://www.urbandictionary.com/define.php?term=Blogolog">blogologs</a>  with Ed Horley is great … and the best part of them is that we’re both right (aka: It Depends). OK, let’s try to quantify that last part.<!--more--></p>
+<p><strong>Service providers</strong> have their own IPv6 address space. <a href="http://blog.ipspace.net/2013/11/dont-use-ula-addresses-in-service.html">Using ULA is counterproductive</a>.</p>
+<p><strong>Residential customers</strong> don’t need Provider Independent (PI) space or Unique Local Addresses (ULA). Getting something between /64 and /48 delegated to their CPE router via DHCPv6 is more than good enough.</p>
+<p><strong>Large enterprises</strong> should get their own PI IPv6 address space. If they implement Internet access through a central site or through proxy servers (per-site proxy or a central proxy), they could easily use their PI space throughout the network. </p>
+<p>The challenges start when an organization with PI space wants to implement local (per-site) Internet connectivity – they have to ensure that the ISP providing connectivity to a remote site advertises the site’s PI prefix to the Internet.</p>
+<div class='separator'><a href="http://1.bp.blogspot.com/-XAcG0oYiViY/UtwRKe4tuFI/AAAAAAAAGr0/WOmOmsqJJys/s1600/IPv6_Internet_Exit.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-XAcG0oYiViY/UtwRKe4tuFI/AAAAAAAAGr0/WOmOmsqJJys/s400/IPv6_Internet_Exit.png" /></a></div>
+<p> As always, there are numerous ways of achieving that goal:</p>
+<ul class="ListParagraph"><li>Use BGP to advertise the PI prefix to the ISP. Works all the time, but tends to get expensive (not many ISPs offer BGP connectivity on low-cost DSL connections);</li>
+<li>Persuade the ISP to configure static routing toward the PI prefix. Some ISPs offer a standard product that does that, trying to persuade an ISP without such a product to configure static routing might turn into a nightmare;</li>
+<li>Get a Provider Assigned (PA) prefix (static or dynamic) from the ISP and do NPT66 for the Internet traffic;</li>
+<li>Use a proxy server with PI inside address and PA outside address to access the Internet (functionally identical to NAT66, but on a transport or application layer);</li>
+<li>Get a PA prefix from the ISP, configure IPv6 source address selection on all hosts on the remote site, and <a href="http://blog.ipspace.net/2014/01/source-ipv6-address-selection-saves-day.html?showComment=1389720770121#c3839106864922266935">pray that it works for every possible operating system</a>. Good luck with that.</li>
+<li>Use ULA (ULA-versus-GUA source IPv6 address selection policy usually works).</li>
+</ul>
+<p><strong>Smaller companies</strong> with internal servers and cheap Internet connectivity using PA address space should either migrate their servers to the cloud or use ULA for internal communication. They could also believe that the IPv6 renumbering magic works … and a consultant or two will be paid quite handsomely when they have to switch ISPs and change all firewall rules, packet filters, and who knows how many server configuration files.</p>
+<h4>Looking for more IPv6 information</h4><p>Check out my <a href="http://www.ipspace.net/Roadmap/IPv6_webinars">IPv6 webinars</a> page. You can <a href="http://cms.ipspace.net/bin/buy?id=IPv6_Track">buy all of them in a bundle</a> or get them with a yearly subscription. I’m also available for <a href="http://www.ipspace.net/Consulting">short consulting engagements</a>.</p>
+

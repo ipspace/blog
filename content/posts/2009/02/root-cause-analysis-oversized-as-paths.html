@@ -1,0 +1,10 @@
+---
+title: "Root cause analysis: oversized AS paths"
+date: "2009-02-20T15:09:00.001+01:00"
+tags: [ BGP ]
+---
+
+<p>The <a href="http://blog.ioshints.info/2009/02/protect-your-network-with-bgp-maxas.html">Tuesday's BGP experiment</a> has generated quite a splash: <a href="http://mailman.nanog.org/pipermail/nanog/2009-February/008195.html">Cisco has discovered a new BGP bug</a> that can be triggered only if you have a long enough AS-path and do outbound AS-path prepending (and a few of us learned more BGP intricacies we never wanted to know), lots of people have (hopefully) discovered the <a href="http://wiki.nil.com/Limit_the_maximum_BGP_AS-path_length">importance of the <b>bgp maxas-limit</b> configuration command</a> and at least <a href="http://mailman.nanog.org/pipermail/nanog/2009-February/008213.html">some ISPs</a> have implemented <a href="http://blog.ioshints.info/2008/02/as-path-based-filter-of-customer-bgp.html">inbound prepending filters</a> that I wrote about almost a year ago. However, most of us thought that the original problem arose due to inexperienced operators of a leaf AS.</p>
+<p>Mikael Abrahamsson was the first to notice that the <a href="http://mailman.nanog.org/pipermail/nanog/2009-February/008202.html">number of prepends matches the low-order 8 bits of the offending AS number</a>. Further contributors to NANOG mailing list confirmed that two autonomous systems with very long prepends are using BGP routers from <a href="http://www.mikrotik.com/software.html">Mikrotik</a>. You configure those boxes with commands that have syntax deceptively close to Cisco's, but <a href="http://www.mikrotik.com/testdocs/ros/2.9/routing/filter.php">expect the number of AS numbers to prepend, not the AS-path</a>. Obviously no range checking is done on the configuration parameter and the high-order 8 bits are ignored.</p>
+<p>So it looks like the incident started with a box that accepts invalid configuration parameter used in an AS with very high value in low-order 8 bits (very improbable, but obviously not impossible). Numerous ISPs that did not limit the BGP updates they were propagating and an IOS bug did the rest.</p>
+

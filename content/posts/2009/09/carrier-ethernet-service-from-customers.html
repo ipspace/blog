@@ -1,0 +1,14 @@
+---
+title: "Carrier Ethernet service from customer’s perspective"
+date: "2009-09-17T12:32:00.000+02:00"
+tags: [ MPLS,switching,You've asked for it,LAN ]
+---
+
+<div class="bloggerBody"><p>As the Carrier Ethernet services are becoming more popular, people are starting to wonder how to use it in a router-based network. I’ve got the following question from one of my readers:</p>
+<blockquote class="cite">I was wondering if it was possible to design a redundant network where the core uses L2 MPLS, the provider edge uses L2 for access but the customer edge equipment uses L3 Routers. We don't want to customer to see any STP at their routers.</blockquote>
+<p>Of course you can do that. There are two scenarios to consider:</p>
+<p>(A) The Service Provider is offering point-to-point Ethernet service (pseudowire). In this case, two of the customer routers would be connected with what looks like a point-to-point Ethernet link. Usually the remote site would have just one "outside" Ethernet connection while the hub site would have numerous links bundled in a trunked (VLAN) link.</p>
+<p>(B) The SP is offering VPLS service. In this case, all customer routers appear as being connected to the same Ethernet segment.</p>
+<p>In both cases, the customer edge (CE) routers should treat the SP Ethernet link as a simple LAN segment, in case (A) connecting two routers, in case (B) connecting many routers. </p>
+</div>
+

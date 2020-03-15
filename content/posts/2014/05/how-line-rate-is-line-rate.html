@@ -1,0 +1,36 @@
+---
+title: "How Line-rate Is Line-rate?"
+date: "2014-05-28T11:41:00.000+02:00"
+tags: [ Data Center,Fabric ]
+---
+
+<p>During yesterday’s <a href="http://www.ipspace.net/Data_Center_Fabrics_Update"><em>Data Center Fabrics Update</em></a><em> </em>presentation, one of the attendees sent me this question while I was talking about the Arista 7300 series switches:</p>
+<blockquote class="cite">Is the 7300 really non-blocking at all packet sizes? With only 2 x Trident-2 per line card it can't support non-blocking for small packets based on Trident-2 architecture.</blockquote>
+<p>It was an obvious example of vendor bickering, so I ignored the question during the presentation, but it still intrigued me, so I decided to do some more research.<!--more--></p>
+<h4>What exactly is non-blocking?</h4><p>I struggled to find a rigorous definition of <em>non-blocking architecture </em>that would apply to networking devices (the original definition came from circuit switching and is obviously irrelevant in our context). Weird, considering every vendor claims to have non-blocking architecture ;)</p>
+<p>A <a href="http://lhcb-comp.web.cern.ch/lhcb-comp/daq/postscript/switchperf_june99.pdf">15 year old presentation</a> was the best I could come up with (additional links are obviously most welcome – please write a comment). It defines non-blocking as:</p>
+<blockquote class="cite">A switch is non-blocking if all output-contention free switching patterns are non-blocking.</blockquote>
+<p>In other words, packets sent from port A to port B are never hindered by traffic sent from port C to port D.</p>
+<h4>Trouble in Trident land?</h4><p>The comment made by the attendee could indicate that <a href="http://www.broadcom.com/products/Switching/Carrier-and-Service-Provider/BCM56850-Series">Trident II chipset</a> (BCM56850 series) cannot perform linerate forwarding at low packet sizes.</p>
+<p class="info">Architectures with a single lookup pipeline would become blocking when the load exceeds their packet-per-second rating; the proof is left as an exercise for the reader.</p>
+<p>I couldn’t find any packet forwarding performance figures on Broadcom’s web site (if your GoogleFoo is better than mine, please share the link), the most technical document I found was a <a href="http://www.broadcom.com/collateral/pb/56850-PB03-R.pdf">marketing blabber claiming linerate performance</a>.</p>
+<p class="more">As it’s impossible to get anything out of Broadcom without signing an NDA with your blood<del>, the gentleman making the comment probably violated the NDA his employer signed with Broadcom</del>. Broadcom’s behavior is also an excellent breeding ground for vendor FUD. Great job, everyone! One has to love this industry.</p>
+<p class='update'>Update 2014-05-29 07:00Z: The small packet forwarding limitations of Trident 2 architecture were publicly documented @ Cisco Live US 2014, see BRKARC-2222 session for more details; the attendee pointing them out was thus not disclosing non-public information as I incorrectly assumed.</p>
+<p>Fortunately, Arista believes in sharing their performance figures (although I doubt anyone actually measured forwarding performance of thousands of 10GE ports since <a href="http://www.spirent.com/About-Us/News_Room/Press-Releases/2012/2012_03_07_Juniper_QFabric">Juniper did their QFabric test</a>) and <a href="http://go.arista.com/l/12022/2013-11-05/jt883/12022/97342/Arista_7250X_7300_Multichip_Switch_Architecture.pdf">hardware architecture</a>.</p>
+<p>The specifications for their <a href="http://www.arista.com/en/products/7300-series">7300 series switches</a> are pretty clear: a switch with four linecards (512 10GE ports) has 10Tbps switching capacity and can forward 7.5 billion packets per second. The minimum packet size at which they can do linerate forwarding is thus ~160 bytes (around ~150 bytes of L2 payload due to FCS and inter-frame gap).</p>
+<p>The attendee making the comment was thus technically correct: Arista 7300-series switches cannot perform linerate forwarding of 40-byte TCP SYN packets.</p>
+<h4>Is this relevant?</h4><p>You might have an environment in which thousands of servers have nothing better to do than saturate 10GE uplinks sending 64-byte VoIP packets or test each other’s readiness by sending continuous streams of TCP SYN/RST packets. </p>
+<p>The only environment I’m aware of that comes close to that are the test labs. If you have a real-life use case where something generates hundreds of 10GE streams full of packets with average packet size smaller than 150 bytes, I would love to hear from you.</p>
+<p class="info">I recently spoke with someone who told me their caching servers (a typical example of an environment with small packet sizes) cannot saturate 10GE uplinks due to bottlenecks in Linux TCP stack.</p>
+<h4>Summary</h4><p>It’s nice to know the actual limitations of each platform you’re considering. If you’re dealing with unusual workload, make sure to check PPS as well as bandwidth figures (and anything else you might find relevant – for example multicast forwarding performance or ARP table sizes).</p>
+<p>Would this “discovery” stop me from recommending Arista 7300-series switches in average data center environments? Of course not.</p>
+<h4>Warning: rant ahead</h4><p>… which brings me to the ranty part of this blog post. I understand the bitterness of a hot-shot vendor SE who just lost a big deal to a competitor, but please do yourself a favor and stop parroting the “facts” thrown at you by your competitive analysis team, particularly when those facts are totally irrelevant to real-life use cases. Such a behavior is (choose one):</p>
+<p>A) Childish</p>
+<p>B) Counterproductive</p>
+<p>C) Irrrelevant</p>
+<p>D) Irritating</p>
+<p>E) All-of-the-above</p>
+<p>Also, please stop pretending you’re a concerned citizen and disclose your affiliation and job position. I’m all for discussing technical details as long as we all understand individual perspectives and potential biases. On the other hand, it’s pretty easy to spot a vendor rep bashing a competitor from a mile away, and you’ll gain nothing by harassing everyone around you with your version of the truth.</p>
+<h4>Want to hear more?</h4><p>I just published the raw recordings of yesterday’s session. If you bought <a href="http://www.ipspace.net/DCFabric">Data Center Fabrics</a> webinar in the past, or have a <a href="http://www.ipspace.net/Subscription">webinar subscription</a>, you can already watch them (and it’s pretty easy to <a href="http://cms.ipspace.net/bin/buy?id=DCFabric">buy a recording</a> or the <a href="http://cms.ipspace.net/bin/buy?id=Subscription">subscription</a>).</p>
+<p>You’ll also get immediate access to the recording if you <a href="http://dcfabric-may2014-2.eventbrite.com">register for the second part of the update session</a> (I had to split the update in two parts due to large number of new hardware platforms and software features).</p>
+

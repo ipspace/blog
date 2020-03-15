@@ -1,0 +1,29 @@
+---
+title: "More Layer-2 Misconceptions"
+date: "2015-04-09T11:03:00.000+02:00"
+tags: [ bridging,switching ]
+---
+
+<p>My &ldquo;<a href="http://blog.ipspace.net/2015/04/what-is-layer-2-and-why-do-we-need-it.html"><em>What Is Layer-2 and Why Do You Need It?</em></a><em>&rdquo; </em>blog post generated numerous replies, including this one:</p>
+<blockquote class="cite">Pretend you are a device receiving a stream of bits. After you receive some inter-frame spacing bits, whatever comes next is the 2nd layer; whether that is Ethernet, native IP, CLNS/CLNP, whatever.</blockquote>
+<p>Not exactly. IP (or CLNS or CLNP) is always a layer-3 protocol regardless of where in the frame it happens to be, and some layer-2 protocols have no header (apart from inter-frame spacing and start-of-frame indicator).<!--more--></p>
+<h4>The Headerless Layer-2 Protocol</h4><p>I have to admit it was hard to find a layer-2 protocol that has no header &ndash; it must have been designed for a strict point-to-point scenario (alleviating the need for layer-2 addresses) and carrying a single layer-3 protocol. </p>
+<p class="info">Most layer-2 protocols were designed for multi-protocol use (today that would be IPv4 and IPv6, as almost all other protocols died out), so they need a field in the layer-2 header indicating the type of layer-3 payload &ndash; Ethertype in Ethernet header, or NLPID in Frame Relay or PPP header.</p>
+<p>The only protocol I found that met both requirements is <a href="https://www.ietf.org/rfc/rfc1055.txt">SLIP (IP over asynchronous serial connection, RFC 1055)</a>, which has no header, and only two special characters: end-of-frame and escape. So it&#x2019;s possible to have no layer-2 header on a link, but pretty unlikely.</p>
+<p class="more">Fibre Channel might be another very similar case, which confuses some people in claiming it&#x2019;s a layer-2 protocol (even though FC standard explicitly mentions <em>routing</em> <em>functionality </em>in FC forwarders).</p>
+<h4>Almost There</h4><p>Several layer-2 protocols have very short headers, including:</p>
+<ul class="ListParagraph"><li><a href="http://www.tcpipguide.com/free/t_PPPGeneralFrameFormat.htm">PPP</a>, which has only the layer-3 protocol ID and two bytes of historic junk (SDLC address and control bytes);</li>
+<li><a href="http://datacombasic.blogspot.com/2011/03/frame-relay-frame-format.html">Frame Relay header</a>, which contains DLCI (virtual circuit #) and a few flags.</li>
+</ul>
+<p>Most other layer-2 protocols originated in multi-access environment (shared cable like Ethernet or multidrop leased lines like SDLC) and thus have at least some layer-2 address information.</p>
+<h4>Anything Else?</h4><p>Have I missed another interesting protocol with no (or very small) layer-2 header? Please write a comment!</p>
+<h4>Want to know more? Read these blog posts</h4><ul class="ListParagraph"><li><a href="http://blog.ipspace.net/2015/04/what-is-layer-2-and-why-do-we-need-it.html">What is layer-2 and why do we need it?</a></li>
+<li><a href="http://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html">Bridging and routing &ndash; is there a difference?</a></li>
+<li><a href="http://blog.ipspace.net/2010/07/bridging-and-routing-part-ii.html">Bridging and routing &ndash; part II</a></li>
+<li><a href="http://blog.ipspace.net/2012/05/transparent-bridging-aka-l2-switching.html">Transparent bridging scalability issues</a></li>
+<li><a href="http://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html">Layer-2 network is a single failure domain</a></li>
+<li><a href="http://blog.ipspace.net/2010/07/why-is-trill-not-routing-at-layer-2.html">Why is TRILL not routing at layer-2?</a></li>
+<li><a href="http://blog.ipspace.net/2012/08/is-layer-3-switch-more-than-router.html">Is layer-3 switch more than a router?</a></li>
+<li><a href="http://blog.ipspace.net/2011/07/is-fibre-channel-switching-bridging-or.html">Is Fibre Channel switching bridging or routing?</a></li>
+</ul>
+

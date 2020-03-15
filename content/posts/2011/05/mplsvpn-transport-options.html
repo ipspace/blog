@@ -1,0 +1,24 @@
+---
+title: "MPLS/VPN transport options"
+date: "2011-05-26T09:35:00.000+02:00"
+tags: [ Workshop,MPLS VPN,virtualization ]
+---
+
+<p>Jason sent me an interesting question a few days ago: “<em>assuming a </em><a href="http://blog.ioshints.info/2011/04/vcloud-architects-ever-heard-of-mpls.html"><em>vSwitch *did* support MPLS/VPN PE router functionality</em></a><em>, what type of protocol support would be needed on the access layer switches?</em>”</p>
+<p>While the MPLS/VPN support in hypervisor switches remains in the realm of science fiction, it’s worth knowing that there are at least five different transport options you can use between PE-routers. Here they are, from the most decoupled to the most tightly coupled ones:<!--more--></p>
+<p><strong>MPLS</strong><strong>/VPN</strong><strong>-over-mGRE</strong>. PE routers send VPN traffic + MPLS labels encapsulated in GRE datagrams directly to BGP next hops (see RFC 4023 for details). The core network has to provide IP connectivity (or just L2 connectivity assuming the number of PE routers is small enough).</p>
+<p><strong>One-hop MP-BGP session on directly connected subnet</strong>. Ingress PE-router does not need a label switched path (LSP) to send an MPLS frame to a directly-connected egress PE-router; it can create an MPLS frame solely from the VPN label assigned by the egress PE-router. </p>
+<p class="info">That’s how Inter-AS MPLS/VPN Option B works; the same trick also works for IBGP sessions although it does generate a warning message on Cisco IOS.</p>
+<p>In a data center environment, all PE-routers would have to belong to the same layer-2 (bridged) domain. However, they wouldn’t have to run IGP (they could behave as IP hosts).</p>
+<p><strong>One-hop MP-BGP session between loopback interfaces</strong>. PE-routers attached to the same L2 subnet don’t need P-routers even when you configure IBGP sessions between their loopback interfaces.</p>
+<p>This design has serious scalability problems (and is thus largely useless) – PE-routers have to advertise their loopback interfaces in IGP and they have to establish a full mesh of LDP sessions just to exchange null labels for their loopback interfaces.</p>
+<p><strong>Full-blown MPLS network with P-routers</strong>. In this scenario, the PE-routers and P-routers run IGP (OSPF comes to mind in a data center environment) and exchange MPLS labels with LDP. PE-routers <em>must </em>run IBGP sessions between loopback interfaces (running BGP sessions between LAN interfaces of PE-routers would break end-to-end LSP due to premature penultimate hop popping).</p>
+<p>PE-routers and P-routers don’t have to be directly connected. You could use L2 ToR switches and MPLS-enabled core switches. MPLS traffic between PE-routers and the core switches would be bridged; MPLS traffic traversing a core switch would use LFIB in the core switch.</p>
+<p><strong>MPLS network with traffic engineering</strong>. You can transport MPLS/VPN traffic over MPLS TE tunnels established directly between PE-routers, between core P-routers or between PE-routers and P-router. See my <a href="http://wiki.nil.com/MPLS_Traffic_Engineering_in_MPLS_VPN_environment"><em>MPLS Traffic Engineering in MPLS/VPN Environments</em></a> article for more details. </p>
+<p>There aren’t too many data center switches supporting MPLS TE, so this design remains “somewhat” academic from the data center perspective.</p>
+<h4>Summary</h4><p>The minimum requirement for access-layer switches supporting MPLS/VPN-capable vSwitch is layer-2 connectivity (bridging). L3 access switches can be used if the PE-routers support MPLS/VPN-over-mGRE transport, otherwise the L3 devices have to support LDP (or MPLS/TE) and MPLS forwarding.</p>
+<h4>More information</h4><p>Deployment of MPLS/VPN technology in enterprise networks and various MPLS/VPN transport options (including running MPLS/VPN over DMPVN) are described in my <a href="http://www.ioshints.info/EntMPLS">Enterprise MPLS/VPN Deployment</a> webinar (<a href="http://mpls.eventbrite.com/">register for a live session </a>or <a href="http://www.ioshints.info/Recordings?code=EntMPLS">buy its recording</a>).</p>
+<p>Virtualized networking and (layer-2) virtual switches are the main topic of my <a href="http://www.ioshints.info/VMware_Networking_Deep_Dive">VMware Networking Deep Dive</a> webinar (<a href="http://vnetwork.eventbrite.com/">register for a live session</a>).</p>
+<p>Data center architectures and evolving fabric technologies are just two of the topics covered in my <a href="http://www.ioshints.info/DataCenterIntro">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/Recordings">buy a recording</a>).</p>
+<p>You can get access to all three webinars (and half dozen others) with the <a href="http://www.ioshints.info/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

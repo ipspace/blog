@@ -1,0 +1,16 @@
+---
+title: "iSCSI with PFC?"
+date: "2013-07-08T07:31:00.000+02:00"
+tags: [ Data Center,SAN,Workshop,QoS ]
+---
+
+<p><a href="http://uk.linkedin.com/in/vnicolas">Nicolas Vermandé</a> sent me a really interesting question: “<em>I've been looking for answers to a simple question that even different people at Cisco don't seem to agree on: Is it a good idea to class IP traffic (iSCSI or NFS over TCP) in pause no-drop class? What is the impact of having both pauses and TCP sliding windows at the same time?</em>”<!--more--></p>
+<p>Let’s rephrase the question using the terminology Fred Baker used in his <a href="http://staff.science.uva.nl/~delaat/news/2012-09-27/Bufferbloat_Masterclass.pdf">Bufferbloat Masterclass</a>: does it make sense to use lossless transport for elephant flows or is it better to drop packets and let TCP cope with packet loss?</p>
+<p>It’s definitely not bad to randomly drop an occasional TCP packet of a mouse session – if you have thousands of TCP sessions on the same link and drop a single packet of one or two sessions to slow them down, the overall throughput won’t be affected too much ... and if you randomly hit different sessions at different times, you’re pretty close to effective management of a mice aggregate.</p>
+<p>Elephants are different because they are rare and important (see also <a href="http://blog.ioshints.info/2010/08/storage-networking-is-different.html">Storage Networking is Different</a> and <a href="http://blog.ioshints.info/2013/03/does-dedicated-iscsi-infrastructure.html">Does Dedicated iSCSI Infrastructure Make Sense?</a>) – dropping a single packet of an elephant iSCSI session could affect thousands of end-user sessions (because the overall disk throughput would go down), more so if you’re using iSCSI to access VMware VMFS volumes (where a single iSCSI session carries the data of all VMs running on the vSphere host). Classifying iSCSI as lossless traffic class thus makes a lot of sense.</p>
+<p class="note">Going back to Fred Baker’s Bufferbloat presentation: he claims delay-based TCP congestion control (that you get with PFC) is the most stable approach (assuming the host TCP stack has a reasonable implementation that responds to delays).</p>
+<p>Comparing the results of QoS policing (= dropping) versus shaping (= delaying) on a small number of TCP sessions supports the same conclusions. Here are the graphs <a href="http://packetlife.net/">Jeremy Stretch</a> made for the <a href="http://wiki.nil.com/Policing_vs_shaping">Policing Versus Shaping</a> article:</p>
+<div class='separator'><img src='http://wiki.nil.com/wk/images/f/f9/Policed_TCP_traffic_graph.png' style='width: 540px'><br>Throughput of four TCP sessions (+aggregate) with policing (packet drops)</div>
+<div class='separator' style='margin-top: 1em'><img src='http://wiki.nil.com/wk/images/a/a7/Shaped_TCP_traffic_graph.png' style='width: 540px'><br>Throughput of four TCP sessions (+aggregate) with shaping (packet delays)</div>
+<h4>More information</h4><p>Storage networks, iSCSI, FCoE and Data Center Bridging (including PFC) are described in the <a href="http://www.ipspace.net/Data_Center_3.0_for_Networking_Engineers">Data Center 3.0 for Networking Engineers</a> webinar.</p>
+

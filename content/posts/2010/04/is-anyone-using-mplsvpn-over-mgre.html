@@ -1,0 +1,11 @@
+---
+title: "Is anyone using MPLS/VPN over mGRE?"
+date: "2010-04-15T06:47:00.001+02:00"
+tags: [ MPLS VPN,GRE ]
+---
+
+<p><a href="http://tools.ietf.org/html/rfc4364">RFC 4364</a> (also known as RFC 2547bis from its draft days) specifies <a href="http://tools.ietf.org/html/rfc4364">two methods of transporting VPN packets between PE-routers</a>: well-known MPLS transport and <a href="http://tools.ietf.org/html/rfc4023">GRE transport</a>. The GRE transport idea is extremely simple: you take the labeled VPNv4 packet, put it into a GRE envelope, set the GRE Ethertype field to <em>MPLS Unicast </em>(0x8847) and send the GRE packet to the IP address of the egress PE-router.</p>
+<p class="note">This is not the same mechanism as running MPLS over point-to-point LDP-enabled GRE tunnels or running MPLS over DMVPN tunnels; this one does not require multiple tunnels or LDP/NHRP to work.</p>
+<!--more--><p>The implementation of this simple mechanism in Cisco IOS release 12.0S would make <a href="http://en.wikipedia.org/wiki/Rube_Goldberg_machine">Rube Goldberg</a> envious, but I’ve finally got it up and running in my lab (and I understand most of what’s going on behind the scenes). 12.2 SRE hides almost all the complexity (although the implementation details remain mostly unchanged), but its configuration is totally incompatible with the previous implementation.</p>
+<p>If there’s anyone truly interested in this mechanism, I’ll try to find some time to document it (Cisco’s documentation is “somewhat” misleading), otherwise I’ll just archive it together with a few other “interesting” IOS features I’ve tested (and decided to forget as soon as possible).</p>
+

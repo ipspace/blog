@@ -1,0 +1,16 @@
+---
+title: "Are Unnumbered Interfaces Harmful?"
+date: "2016-01-12T12:49:00.000+01:00"
+tags: [ IP routing ]
+---
+
+<p>A few weeks ago I got into an interesting discussion about the potential harm caused by unnumbered IPv4/IPv6 interfaces. </p>
+<p>Ignoring for the moment the vendor-specific or media-specific implementation details, these two arguments usually pop up in the first 100 milliseconds (assuming engineers involved in the discussion have some hands-on operational experience):<!--more--></p>
+<ul class="ListParagraph"><li>You cannot do hop-by-hop telnet/SSH in case your routing protocol breaks down;</li>
+<li>Traceroute will display box addresses (loopback addresses) instead of interface addresses.</li>
+</ul>
+<p>The first argument is obviously valid in IPv4 world and no longer true in IPv6 world &ndash; link-local addresses are always available on IPv6 interface and you can use them to do hop-by-hop telnet/SSH (admittedly in a bit clunky way but nonetheless). However, do keep in mind that if you use any centralized authentication/authorization scheme and the routing protocol breaks, you won&#x2019;t get into the box no matter what.</p>
+<p>Speaking of traceroute: it might give you wrong interface information any time you happen to have asymmetrical routing or multiple equal-cost paths. Without any additional configuration, in most implementations the source IP address in the ICMP TTL exceeded reply is the IP address of the <em>outgoing </em>interface &ndash; the interface the router would use to reach the <em>traceroute </em>prober &ndash; and not the IP address of the interface through which the probe was received. Is there a box out there that&#x2019;s smarter than this? I would love to hear about it!</p>
+<p class='update'>2016-01-12: <a href="https://tools.ietf.org/html/rfc5837">RFC 5837</a> specifies ICMP extensions that would make ICMP replies to traceroute probes way more useful (and accurate). However, it looks like nobody implemented it in <a href="http://blog.ipspace.net/2010/04/icmp-extensions-rfc.html">almost five years since it was published</a>.</p>
+<p>Are there any other reasons to avoid unnumbered interfaces (vendor X doesn&#x2019;t implement them on interface type Y doesn&#x2019;t count)? Please write a comment!</p>
+

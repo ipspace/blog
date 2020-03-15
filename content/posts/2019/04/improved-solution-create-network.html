@@ -1,0 +1,14 @@
+---
+title: "Improved Solution: Create Network Diagram from LLDP Data"
+date: "2019-04-11T08:15:00.000+02:00"
+tags: [ Ansible ]
+---
+
+<p>A long while ago I published a sample Ansible/NAPALM/Jinja2 solution that would <a href="https://github.com/ipspace/ansible-examples/tree/master/LLDP-to-Graph">take LLDP information and turn it into a network diagram</a> (<a href="https://my.ipspace.net/bin/list?id=AnsibleOC#SAMPLES">I described its details in a short video</a> that&rsquo;s accessible to anyone attending our <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">network automation course</a> or having an <a href="https://www.ipspace.net/Subscription/Individual">Expert subscription</a>).</p>
+<p>The trickiest part of that solution was detection of bidirectional links:<!--more--></p>
+<ul class="ListParagraph"><li>If node A has node B as its LLDP neighbor <strong>and </strong>node B has node A as its LLDP neighbor then there should be only one link in the network diagram, not two of them;</li>
+<li>If node A has node B as its LLDP neighbor but we have no idea what node B is, then we&rsquo;re dealing with an external link and should add it to the network diagram (together with node B).</li>
+</ul>
+<p>I used a dirty trick: sorting nodes alphabetically and adding links to the diagram only when the source node name comes before the target node name (proving the correctness of this idea is left as an exercise for the reader).</p>
+<p><a href="https://www.linkedin.com/in/erikruiter2/">Erik Ruiter</a> <a href="https://github.com/erikruiter2/ansible_lab/tree/master/roles/cisco_lldp_topo">improved my solution</a> and decided to track double links explicitly within his Jinja2 template: he&rsquo;s adding already-processed links to a list and checking the list contents before adding a new link to the graph &ndash; a standard programming trick that&rsquo;s a bit hard to implement in Jinja2, so you might want to <a href="https://github.com/erikruiter2/ansible_lab/blob/master/roles/cisco_lldp_topo/templates/lldp_topo.dot.j2">check out his template</a>.</p>
+

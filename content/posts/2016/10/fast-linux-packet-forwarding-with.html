@@ -1,0 +1,44 @@
+---
+title: "Fast Linux Packet Forwarding with Thomas Graf on Software Gone Wild"
+date: "2016-10-14T07:22:00.000+02:00"
+tags: [ Podcast,switching,Software Gone Wild,Performance,virtualization ]
+media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_64-Cilium_with_Thomas_Graf.mp3
+---
+
+<p>We did several podcasts describing how one could get stellar packet forwarding performance on x86 servers reimplementing the whole forwarding stack outside of kernel (<a href="http://blog.ipspace.net/2014/09/snabb-switch-deep-dive-on-software-gone.html">Snabb Switch</a>) or bypassing the Linux kernel and moving the packet processing into userspace (<a href="http://blog.ipspace.net/2015/04/pfring-deep-dive-with-luca-deri-on.html">PF_Ring</a>). </p>
+<p>Now let&#x2019;s see if it&#x2019;s possible to improve the Linux kernel forwarding performance. <a href="https://www.linkedin.com/in/thomas-graf-73104547">Thomas Graf</a>, one of the authors of <a href="https://github.com/cilium/cilium">Cilium</a> claims it can be done and explained the intricate details in <a href="http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_64-Cilium_with_Thomas_Graf.mp3">Episode 64</a> of <a href="http://www.ipspace.net/Podcast/Software_Gone_Wild">Software Gone Wild</a>.<!--more--></p>
+<p>We started with the basics:</p>
+<ul class="ListParagraph"><li>Are the Linux packet forwarding performance numbers tossed around realistic or biased?</li>
+<li>What can one reasonably expect from a Linux kernel?</li>
+<li>Why Linux kernel suboptimal when it comes to packet forwarding performance?</li>
+</ul>
+<p>Just a few minutes into our talk we slid down a rabbit hole into the wonderland of <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">BPF</a>. We started with &ldquo;<em>what is BPF</em>&rdquo; which turned into a minute of acronyms and tried to step back and do a one-step-at-a-time controlled descent:</p>
+<ul class="ListParagraph"><li>What is bytecode?</li>
+<li>Why would you use byte code (and BPF) instead of writing a kernel module?</li>
+<li>Why is BPF better (or not) than userspace packet forwarding?</li>
+<li>What are the BPF limitations?</li>
+<li>How would you write programs that would generate BPF code that would then be used to process packets?</li>
+<li>What is P4 and who would use it?</li>
+</ul>
+<p>BPF sounds like fun, but where would you use it? Thomas is working on an interesting use case (<a href="https://github.com/cilium/cilium">project Cilium</a>) - using BPF to implement container networking - and obviously we had to explore its details:</p>
+<ul class="ListParagraph"><li>How would you use BPF to implement container networking?</li>
+<li>Upgrading networking behavior while the containers are running</li>
+<li>How do you glue namespaces together with BPF?</li>
+</ul>
+<p>Next on our acronym list was XDP (eXpress Data Path), a project with roots within CloudFlare that wanted to improve packet dropping performance when defending against DDoS attack. XDP is a packet processing mechanism implemented within the device drivers with BPF, and we went through the details like:</p>
+<ul class="ListParagraph"><li>Why would you prefer XDP in software instead of programming TCAM available on Intel NICs?</li>
+<li>Why would you batch packet processing and why would you do it in a driver instead of Linux kernel?</li>
+<li>How would you bypass the kernel packet forwarding with XDP?</li>
+<li>What hardware could I use with XDP and when can I expect to have support for more hardware?</li>
+<li>Where can I get XDP and how do I get it running?</li>
+<li>How easy would it be to get communication between userspace control plane (or telemetry) and a BPF program?</li>
+</ul>
+<p>Finally we turned to down-to-earth aspects:</p>
+<ul class="ListParagraph"><li>Who is using these technologies?</li>
+<li>What is Cilium project and where could I get it?</li>
+<li>How is Cilium enforcing security between containers across multiple hosts?</li>
+<li>Is Cilium ready for production? Is anyone using it today?</li>
+</ul>
+<p>Want even more information about BPF and who's using it? Watch <a href="https://www.youtube.com/watch?v=ER9eIXL2_14">Thomas' presentation from KubeCon 2018</a> and read his blog post about <a href="https://cilium.io/blog/2018/04/17/why-is-the-kernel-community-replacing-iptables/">BPF replacing the kernel part of iptables</a>.</p>
+<div class="jump-link"><a href="http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_64-Cilium_with_Thomas_Graf.mp3">Listen to the podcast</a></div>
+

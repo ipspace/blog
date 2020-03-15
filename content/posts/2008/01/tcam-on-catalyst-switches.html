@@ -1,0 +1,13 @@
+---
+title: "TCAM on Catalyst switches"
+date: "2008-01-31T07:05:00.000+01:00"
+tags: [ LAN ]
+---
+
+<p>Catalyst switches have an interesting internal architecture that uses a <a href="http://en.wikipedia.org/wiki/Content-addressable_memory#Ternary_CAMs">Ternary Content Addressable Memory</a> (TCAM) to perform a variety of lookups. For example:</p>
+<ul><li>If a CAM entry matches on destination MAC address, it performs L2 switching (aka bridging)</li>
+<li>If it matches on destination IP address, it performs L3 switching (aka routing)</li>
+<li>If it matches on a combination of source/destination IP addresses and ports, it can be used to implement access lists, QoS mechanisms or policy routing</li>
+</ul>
+<p>To make things even more interesting, multiple TCAM entries use the same mask (don't care bits) as explained in the <a href="http://www.cisco.com/en/US/products/hw/switches/ps708/products_white_paper09186a00800c9470.shtml">Understanding ACL on Catalyst 6500 Series Switches</a> white paper. Most of that information also applies to the Catalyst 3750 platform, more details are available in the <a href="http://www.cisco.com/en/US/products/hw/switches/ps5023/products_tech_note09186a00801e7bb9.shtml">Understanding and Configuring Switching Database Manager on Catalyst 3750 Series Switches</a> document (<a href="http://www.cisco.com/en/US/products/hw/switches/ps646/products_tech_note09186a0080094bc6.shtml">here is the corresponding document for Catalyst 3550</a>). As the TCAM size on Catalyst 3750 might not be large enough, you can <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.1_19_ea1/configuration/guide/swsdm.html">split it in various ways with the SDM templates</a>.</p>
+

@@ -1,0 +1,26 @@
+---
+title: "To Jumbo or Not to Jumbo?"
+date: "2017-06-27T07:33:00.000+02:00"
+tags: [ TCP,Performance ]
+---
+
+<p>Here&rsquo;s the question I got from one of my readers:</p>
+<blockquote class="cite">Do you have any data available to show the benefits of jumbo frames in 40GE/100GE networks?</blockquote>
+<p>In case you&rsquo;re wondering why he went down this path, here&rsquo;s the underlying problem:<!--more--></p>
+<blockquote class="cite">I have a large DC customer, and they complain of slow network performance after hours (when batch jobs and backups run), compared to daytime traffic (when it is more transactional traffic). They been told by their vendors, Jumbo MTU will not give them any benefit.</blockquote>
+<p>The vendors are (mostly) right. Jason Boche <a href="http://www.boche.net/blog/index.php/2011/01/24/jumbo-frames-comparison-testing-with-ip-storage-and-vmotion/">measured NFS, iSCSI and vMotion performance with jumbo frames</a> a while ago, and got (mostly) the expected results: apart from the minor decrease of overhead it&rsquo;s not worth the effort. </p>
+<p>Michael Webster got <a href="http://longwhiteclouds.com/2013/09/10/the-great-jumbo-frames-debate/">slightly more positive results</a> and is thus recommending jumbo frames. Is a few percent increase in performance worth the hassle? Your choice.</p>
+<p class='warn'>This article discusses the viability of jumbo frames from the data center TCP performance perspective.    Using jumbo frames to avoid transport network fragmentation or PMTUD problems in tunneling scenarios is probably the   least horrible way of solving those issues.</p>
+<p>Also, keep in mind that no two TCP stacks are created equal, and there are tons of parameters to tweak (hint: don&rsquo;t unless you absolutely know what you&rsquo;re doing). The TCP performance depends heavily on the quality of the TCP stack, which might explain why some stacks work significantly better with jumbo frames while others show little difference beyond the obvious ~3% reduction in TCP/IP header overhead (single-vCPU Linux VM I tested years ago pushed more than 10Gbps at 50% CPU using 1500-byte frames).</p>
+<p>Does your experience with jumbo frames differ from what I&rsquo;ve seen? Write a comment!</p>
+<h4>What about slow network performance?</h4><p>Anyway, coming back to <em>slow network performance</em>, you have to figure out what the problem is before <a href="https://archive.psg.com/051000.sigcomm-ivtf.pdf">randomly tweaking parameters and hoping for a miracle</a>.</p>
+<p>Simplest case: network is overloaded (which is easy to measure), and the only solution is to decrease the load, decide which traffic is more important than other (aka QoS), or buy more bandwidth. </p>
+<p class="note">If you&rsquo;re experiencing continuously saturated links, then you might be able to squeeze a bit more out of the network with jumbo frames&hellip; but make sure you&rsquo;re facing this particular problem before twiddling the knobs.</p>
+<p>More interesting: the average utilization is low, but you see plenty of packet drops. You might be dealing with an incast problem (many sources sending to a single destination, and queued packets being dropped at the ToR switch), or microbursts overloading the switch buffers&hellip; at which point you&rsquo;re getting close to the black magic la-la-land with <a href="http://packetpushers.net/aristas-big-buffer-b-s/">vendors telling you crazily disparate stories</a> based on what their gear can do (and don&rsquo;t even think about huge buffers unless you love <a href="https://en.wikipedia.org/wiki/Bufferbloat">bufferbloat</a>).</p>
+<p>Buffer sizing and the tolerable amount of drops is a topic I can&rsquo;t even start to address in a short blog post, but some ipSpace guests did a wonderful job in the past:</p>
+<ul class="ListParagraph"><li><a href="http://blog.ipspace.net/2017/01/to-drop-or-to-delay-thats-question-on.html">Juho Snellman talked about TCP performance and impact of packet drops</a>;</li>
+<li>I discussed <a href="http://blog.ipspace.net/2017/03/tcp-in-data-center-and-beyond-on.html">data center TCP with Thomas Graf</a>;</li>
+<li>JR Rivers (CTO at Cumulus Networks) <a href="https://www.ipspace.net/Networks,_Buffers,_and_Drops">talked about buffers and drops</a> on a free webinar in autumn 2016;</li>
+<li>Terry Slattery (CCIE#1026) <a href="http://www.ipspace.net/Sizing_the_Network">talked about network sizing</a> in May 2017.</li>
+</ul>
+

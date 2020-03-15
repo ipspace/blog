@@ -1,0 +1,26 @@
+---
+title: "ADSL reference diagram"
+date: "2009-06-22T06:38:00.003+02:00"
+tags: [ WAN,ADSL ]
+---
+
+<div class="bloggerBody"><p>I’m getting lots of ADSL QoS questions lately, so it’s obviously time to cover this topic. Before going into the QoS details, I want to make sure my understanding of the implications of the <a href="http://blog.ioshints.info/2009/03/adsl-overhead.html">baroque ADSL protocol stack</a> is correct.</p>
+<p>In the most complex case, a DSL service could have up to eight separate components (including the end-user’s workstation):</p>
+<p><a href="http://wiki.nil.com/wk/images/e/e3/ADSL_Reference_Diagram.png"><img style="width: 550px;" src="http://wiki.nil.com/wk/images/e/e3/ADSL_Reference_Diagram.png" class="ImgFLT"></p>
+</a><ol><li>End-user workstation sends IP datagrams to the local (CPE) router.</li>
+<li>CPE router runs PPPoE session with the NAS (Network Access Server) and sends Ethernet datagrams to the DSL modem.</li>
+<li>DSL modem encapsulates Ethernet frames in RFC 1483 framing, slices them in ATM cells and sends them over the physical DSL link to DSLAM.</li>
+<li>DSLAM performs physical level concentration and sends the ATM cells (one VC per subscriber) into the network.</li>
+<li>The backhaul network (DSLAM to NAS) could be partly ATM based. The ATM cells could thus pass through several ATM switches.</li>
+<li>Eventually the ATM cells have to be reassembled into PPPoE frames. In a worst-case scenario, an ATM-to-Ethernet switch would perform that function.</li>
+<li>The backhaul network could be extended with Ethernet switches.</li>
+<li>Finally, the bridged PPPoE frames arrive @ NAS which terminates the PPPoE session and emits the IP datagrams into the IP core network.</li>
+</ol>
+<script>startHide()</script><p>I sincerely hope no network is as complex as the above diagram. In most cases, the backhaul would be either completely ATM-based …</p>
+<p><a href="http://wiki.nil.com/wk/images/0/0c/ADSL_Reference_Diagram_ATM.png"><img src="http://wiki.nil.com/wk/images/0/0c/ADSL_Reference_Diagram_ATM.png" style="width: 500px;" class="ImgFLT"></a></p>
+<p>… or Ethernet based (when the DSLAM has Ethernet uplink interface):</p>
+<p><a href="http://wiki.nil.com/wk/images/0/05/ADSL_Reference_Diagram_Ethernet.png"><img src="http://wiki.nil.com/wk/images/0/05/ADSL_Reference_Diagram_Ethernet.png" style="width: 500px;" class="ImgFLT"></a></p>
+<p>The NAS could also be adjacent to DSLAM or even integrated in the same chassis.</p>
+<p>Am I missing anything important? I know you could deploy numerous additional devices (for example, Cisco is promoting the <a href="http://www.cisco.com/en/US/netsol/ns746/networking_solutions_sub_solution.html">Service Exchange Framework</a> and <a href="http://www.cisco.com/en/US/netsol/ns746/networking_solutions_sub_solution.html">Service Control Engine</a>), but these devices would be placed deeper into the IP core.</p>
+<script>endHide()</script></div>
+

@@ -1,0 +1,17 @@
+---
+title: "Asymmetric MPLS MTU problem"
+date: "2011-07-25T10:08:00.000+02:00"
+tags: [ firewalls,MPLS,Workshop ]
+---
+
+<p>Russell Heilling made a highly interesting observation in a comment to my <a href="http://blog.ioshints.info/2011/07/mpls-mtu-challenges.html"><em>MPLS MTU challenges</em></a> post: you could get asymmetric MTUs in MPLS networks due to penultimate hop popping. Imagine our network has the following topology (<a href="http://en.wikipedia.org/wiki/Vi">drawn</a> with the <a href="http://en.wikipedia.org/wiki/Monospaced_font">fantastic tools</a> used by the RFC authors):</p>
+<p><tt style='font-size: 115%'>S---CE---R1===R2---FW---C</tt><!--more--></p>
+<p>The only link using MPLS is between R1 and R2. FW is a misconfigured firewall blocking all ICMP packets. Furthermore, FW uses NAT making the client C appear to be directly connected to R2. Layer-2 payload size (<a href="http://blog.ioshints.info/2011/07/all-mtus-are-not-same.html">known as MTU on Cisco IOS</a>) on all links is 1500 bytes. Unlabeled IP packets can be up to 1500 byte long; labeled IP packets cannot exceed 1496 bytes (depending on the size of the MPLS label stack).</p>
+<p>R1 and R2 advertise labels for all known prefixes to each other using LDP. R1 advertises a “real” label for S (because it’s reachable through a next-hop router); R2 advertises <em>implicit null </em>label for FW/C to R1 to enable <a href="http://wiki.nil.com/Implicit_and_explicit_NULL_in_MPLS_networks">penultimate hop popping</a>.</p>
+<p class="info">Routers advertise <em>implicit null </em>labels for directly connected prefixes and summary routes pointing to <em>null0</em>. You can change that behavior with the <strong>mpls ldp explicit-null </strong>global configuration command that also allows you to limit the use of <em>explicit null </em>to specific IP prefixes or LDP peers.</p>
+<p>When the server S sends a packet to client C, R1 should send a labeled packet to R2, but due to <em>implicit null </em>advertised by R2, the MPLS label stack is empty; IP MTU from S to C is 1500 bytes.</p>
+<p>When C sends a packet to S, R2 inserts a single MPLS label in front of the IP payload (remember: R1 advertised a non-null label for S to R2); IP MTU from C to S is 1496 bytes.</p>
+<p>In properly configured networks, asymmetric MTUs wouldn’t matter; combined with misconfigured firewalls they can be fatal and extremely hard to troubleshoot. In our scenario, client would be able to download any content from the server (unless the HTTP request header or its equivalent grows beyond 1456 bytes), but would fail to upload anything longer than ~1400 bytes.</p>
+<h4>More information</h4><p>To learn more about MTU path discovery and related problems, read the <a href="http://wiki.nil.com/Path_MTU_Discovery">Path MTU Discovery</a> article written by Jeremy Stretch and my <a href="http://www.nil.com/ipcorner/IP_Fragmentation/">Never-Ending Story of IP Fragmentation</a>.</p>
+<p>You’ll find in-depth description of MPLS/VPN technology and enterprise network deployment hints in my <a href="http://www.ioshints.info/EntMPLS">Enterprise MPLS/VPN Deployment</a> webinar (<a href="http://mpls.eventbrite.com/">register for a live session </a>or <a href="http://www.ioshints.info/Recordings?code=EntMPLS">buy its recording</a>). For more VPN webinars, check my <a href="http://www.ioshints.info/Roadmap/VPN_webinars">VPN webinar roadmap</a>. You get access to all those webinars when you buy the <a href="http://www.ioshints.info/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

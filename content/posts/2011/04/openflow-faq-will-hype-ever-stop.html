@@ -1,0 +1,14 @@
+---
+title: "OpenFlow FAQ: will the hype ever stop?"
+date: "2011-04-19T07:23:00.000+02:00"
+tags: [ MPLS,SDN,OpenFlow ]
+---
+
+<p>Network World has published another masterpiece last week: <a href="http://www.networkworld.com/news/2011/041411-open-flow-faq.html"><em>FAQ: What is OpenFlow and why is it needed?</em></a> Following the <a href="http://blog.ioshints.info/2011/03/open-networking-foundation-fabric.html">physics-changing promises made during the Open Network Foundation launch</a>, one would hope to get some straight facts; obviously things don’t work that way. Let’s walk through some of the points. While most of them might not be too incorrect from an oversimplified perspective, they do over-hype a potentially useful technology way out of proportions.</p>
+<p>NW: “<em>OpenFlow is a programmable network protocol designed to manage and direct traffic among routers and switches from various vendors.</em>” This one is just a tad misleading. OpenFlow is actually a <a href="http://blog.ioshints.info/2011/04/what-is-openflow.html">protocol that allows a controller to download forwarding tables into one or more switches</a>. Whether that manages or directs traffic depends on what controller is programmed to do.</p>
+<!--more--><p>NW: “<em>The technology consists of three parts: [...] and a proprietary OpenFlow protocol for the controller to talk securely with switches.</em>” Please do decide what you think <em>proprietary </em>means. All parts of the OpenFlow technology are defined in publicly available documents <a href="http://www.openflow.org/wp/legal/">under BSD-like license</a>.</p>
+<p>NW: “<em>OpenFlow is designed to provide consistency in traffic management and engineering by making this control function independent of the hardware it's intended to control.</em>” How can a low-level flow-table-control API provide what this statement claims it does? It all depends on the controller implementation.</p>
+<p>NW: “<em>The programmability of the MPLS capabilities of a particular vendor's platform is specific to that vendor.</em>” And the OpenFlow-related capabilities of individual switches will depend on specific implementations by specific vendors. Likewise, the capabilities of an OpenFlow controller will be specific to that vendor. What exactly is the fundamental change?</p>
+<p>NW: “<em>MPLS is a Layer 3 technique while OpenFlow is a Layer 2 method</em>” Do I need to elaborate on this gem? Let’s just point out that OpenFlow works with MAC addresses, IP subnets, IP flow 5-tuples, VLANs or MPLS labels. Whatever a switch can do, OpenFlow can control it. </p>
+<p>But wait ... OpenFlow has no provision for IPv6 at all. Maybe Network World is so futuristic they consider a technology without IPv6 support a layer-2 technology.</p>
+

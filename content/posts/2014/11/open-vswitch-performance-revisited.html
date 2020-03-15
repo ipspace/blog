@@ -1,0 +1,17 @@
+---
+title: "Open vSwitch Performance Revisited"
+date: "2014-11-21T08:21:00.000+01:00"
+tags: [ Overlay networks,virtualization ]
+---
+
+<p>A while ago I wrote about <a href="http://blog.ipspace.net/2013/04/open-vswitch-under-hood.html">performance bottlenecks of Open vSwitch</a>. In the meantime, the OVS team <a href="http://networkheresy.com/2014/11/13/accelerating-open-vswitch-to-ludicrous-speed/">drastically improved OVS performance</a> resulting in something that Andy Hill called Ludicrous Speed at the latest OpenStack summit (<a href="http://www.slideshare.net/andyhky/open-v-switchfinal">slide deck</a>, <a href="http://www.youtube.com/watch?v=iSpNGwI4bo0">video</a>).</p>
+<p>Let’s look at how impressive the performance improvements are.<!--more--></p>
+<p>The numbers quoted in the presentation were 72K flows (with the new default being 200K flows) and 260K pps.</p>
+<p>200K flows is definitely more than enough to <a href="http://blog.ipspace.net/2014/06/is-openflow-best-tool-for-overlay.html">implement MAC/IP forwarding</a> for 50 VMs (after all, that’s 4000 flows per VM), and probably still just fine even if you start doing reflexive ACLs with OVS (that’s how NSX MH implements <a href="http://blog.ipspace.net/2013/03/the-spectrum-of-firewall-statefulness.html">pretty-stateful</a> packet filters).</p>
+<p class="info">What I’m assuming these days is 50:1 VM packing ratio (and you can expect 200:1 or more for Docker containers) on a reasonably recent server with 500GB of RAM, a dozen of cores and two 10GE uplinks. YMMV.</p>
+<p>On the other hand, 260K pps is just over a gigabit per second assuming an average packet size of 500 bytes (IMIX average is 340 bytes) or around 3 Gbps with 1500-byte packets.</p>
+<p>To put this number in perspective: Palo Alto virtual firewall can do ~1 Gbps (while doing slightly more than packet forwarding, so it burns four vCPUs), and the venerable ancient vShield Edge 1.0 managed to get 3 Gbps of firewalled traffic through userland VM while burning a single core.</p>
+<p>The <a href="http://networkheresy.com/2014/11/13/accelerating-open-vswitch-to-ludicrous-speed/">blog post on Network Heresy</a> indicates OVS can do much more than what the presentation mentions (after all, those numbers are from a production deployment and thus represent the characteristics of actual compute infrastructure and workload), but considering that the typical server I mentioned would have at least 2 10GE uplinks (which would result in 40 Gbps of marketing bandwidth), the 1-3 Gbps throughput looks awfully low &ndash; maybe it's just that the production workloads described in the presentation don't need more than that, in which case we might not have a problem at all.</p>
+<h4>Another data point</h4><p>I found another data point while researching the performance changes in <a href="http://openvswitch.org/releases/NEWS-2.3.0">recent OVS releases</a>: an OpenStack Wiki article lists <a href="https://wiki.openstack.org/wiki/Ovs-flow-logic">ipref speed between two Linux hosts running on different hypervisors using OVS</a> @ ~1.4 Gbps. I was able to get 10 Gbps out of ipref running on Linux hosts on top of vSphere 4.x (on UCS blades) years ago. Honestly, I'm a bit confused.</p>
+<p>Have I missed anything? Please share your opinions in the comments.</p>
+

@@ -1,0 +1,13 @@
+---
+title: "Internet anarchy: I’ll advertise whatever I like"
+date: "2009-06-25T06:41:00.001+02:00"
+tags: [ What went wrong,Internet,BGP ]
+---
+
+<div class="bloggerBody"><p>We all know that the global BGP table is exploding (see the <a href="http://bgp.potaroo.net/as1221/bgp-active.html"><em>Active BGP entries</em></a><em> </em>graph) and that it will eventually reach a point where the router manufacturers will not be able to cope with it via constant memory/ASIC upgrades (Note: a layer-3 switch is just a fancy marketing name for a router). The engineering community is struggling with new protocol ideas (for example, <a href="http://www.lisp4.net/">LISP</a>) that would reduce the burden on the core Internet routers, but did you know that we could reduce the overall BGP/FIB memory consumption by over 35% (rolling back the clock by two and a half years) if only the Internet Service Providers would get their act together.</p>
+<p>Take a look at the <a href="http://www.cidr-report.org/as2.0/">weekly CIDR report</a> (<a href="http://www.webcitation.org/5hiZPkwgF">archived by WebCite on June 22<sup>nd</sup></a>), more specifically into its <a href="http://www.cidr-report.org/as2.0/">Aggregation summary</a> section. The BGP table size could be reduced by over 35% if the ISPs would stop announcing superfluous more specific prefixes (as the report heading says, the algorithm checks for an exact match in AS path, so people using deaggregation for traffic engineering purposes are not even included in this table). You can also take a look at the worst offenders and form your own opinions. These organizations increase the cost of doing business for everyone on the Internet.</p>
+<p>Why is this behavior tolerated? It’s very simple: advertising a prefix with BGP (and affecting everyone else on the globe) costs you nothing. There is no direct business benefit gained by reducing the number of your BGP entries (and who cares about other people’s costs anyway) and <a href="http://www.renesys.com/blog/2009/02/the-flap-heard-around-the-worl.shtml">you don’t need an Internet driver’s license</a> (there’s also no BGP police, although it would be badly needed).</p>
+<p>Fortunately, there are some people who got their act together. The leader in the week of June 15<sup>th</sup> was JamboNet (<a href="http://www.webcitation.org/5hiZL9ETc">AS report archived by Webcite on June 22<sup>nd</sup></a>) that went from 42 prefixes to 7 prefixes.</p>
+<p>What can you do to help? Advertise the prefixes assigned to you by Internet Registry, not more specific ones. Check your BGP table and clean it. Don’t use more specific prefixes solely for primary/backup uplink selection.</p>
+</div>
+

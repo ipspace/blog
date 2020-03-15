@@ -1,0 +1,27 @@
+---
+title: "High Availability Planning: Identify the Weakest Link"
+date: "2016-04-05T10:35:00.000+02:00"
+---
+
+<p>Everyone loves to talk about business critical applications that require extremely high availability, but it&#x2019;s rare to see someone analyze the whole application stack and identify the weakest link.</p>
+<p class="more">For more details, watch my <a href="http://www.ipspace.net/Designing_Active-Active_and_Disaster_Recovery_Data_Centers">Designing Active/Active and Disaster Recovery Data Centers</a> or attend <a href="http://www.ipspace.net/Building_Active-Active_and_Disaster_Recovery_Data_Centers_(half-day_workshop)">one of my workshops</a>.</p>
+<p>If you start mapping out the major components of an application stack, you&#x2019;ll probably arrive at this list (bottom-to-top):<!--more--></p>
+<ul class="ListParagraph"><li>Network links and devices;</li>
+<li>Network services;</li>
+<li>Servers and storage;</li>
+<li>Virtualization platforms and operating systems;</li>
+<li>Databases, message queues&hellip;;</li>
+<li>Applications.</li>
+</ul>
+<p>Each one of these components can fail due to hardware failure, software error, or human mistake (operator error).</p>
+<p>Next, identify the likelihood of individual failures. Hardware failures (apart from link failures) are less common than software failures or operator errors these days, and in most cases infrastructure failures tend to be less common than application problems.</p>
+<p>Finally, figure out how to increase the resilience of each of the components &ndash; redundant links and network devices, network services clusters, dual-homed servers, hypervisor-based high-availability solutions, database replicas, and finally scale-out application architecture.</p>
+<p>Now you&#x2019;re ready to start the discussion: </p>
+<ul class="ListParagraph"><li>Which parts of the whole stack are currently resilient to failures and which ones represent a single point of failure?</li>
+<li>Which parts could be made more resilient?</li>
+<li>How will your organization handle the remaining SPOFs?</li>
+<li>What is the downtime caused by a failure of a non-redundant component?</li>
+<li>How often can you expect to see those failures?</li>
+</ul>
+<p>Getting answers to those questions (good luck ;) might make it easier to persuade the CIO that you company doesn&#x2019;t need a <a href="http://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html">L2 DCI for disaster recovery</a> (which might happen every 10 years) when the non-redundant applications need a restart every month or remain unpatched for years because nobody wants to touch them&hellip; and if everything else fails, you can still <a href="http://blog.ipspace.net/2015/09/blessed-by-gartner-stretched-vlans-make.html">quote Gartner</a>.</p>
+

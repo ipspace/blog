@@ -1,0 +1,11 @@
+---
+title: "Dance around IOS bugs with Tcl and EEM"
+date: "2009-02-04T07:22:00.003+01:00"
+tags: [ Tcl,command line interface ]
+---
+
+<p style="text-align: left">Recently, on an IPSec-based customer network, we installed one of the brand new platforms introduced by Cisco Systems. The <strong>initial software release had memory leaks</strong> (no problem, we all know these things happen), so we upgraded the box to the latest software. It works perfectly … until you reload it. The software we’re forced to use cannot get IPSec to work if the startup configuration includes interface-level <strong>crypto-maps</strong>. Interestingly, you can configure <strong>crypto-maps</strong> manually and they work … until you save them into the startup configuration and reload the box.<!--more--></p>
+<p style="text-align: left">Obviously, we’ve reported the problem to Cisco TAC, which managed to reproduce it, and then passed the ball to development (there is no workaround). In the meantime, the customer would <strong>like to migrate the production network to the new (just purchased, faster, more expensive) devices</strong>, but is not willing to take the risks. Would you risk the network outage that could be caused by an unexpected router crash or power failure, if you already know that the router won’t work until someone fixes the configuration and reloads it?</p>
+<p style="text-align: left">After waiting for a few days with no visible results, we decided to <strong> develop a workaround based on EEM and Tcl.</strong> We’ve implemented an EEM Tcl policy that detects changes in startup configuration and removes the offending lines. Another EEM policy is triggered after the reload; it adds the missing configuration commands, resulting in a perfectly working network. With a reliable and tested workaround in place, we can continue the network deployment while waiting for Cisco to fix the bug.</p>
+<p style="text-align: left"><strong>Note:</strong> in the meantime, Cisco has provided an interim image with the fix (works flawlessly) and&nbsp; we’ve discovered that the bug affect only dynamic <strong>crypto-maps</strong>, giving the customer and our engineers at least three viable options: upgrade to the interim image, change dynamic <strong>crypto-maps</strong> into static ones or use the EEM-based solution.</p>
+

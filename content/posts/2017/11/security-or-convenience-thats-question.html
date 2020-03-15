@@ -1,0 +1,16 @@
+---
+title: "Security or Convenience, That’s the Question"
+date: "2017-11-28T09:21:00.000+01:00"
+tags: [ Automation,Data Center,Fabric ]
+---
+
+<p>One of my readers was so delighted that <a href="http://blog.ipspace.net/2017/05/follow-up-nexus-os-dropping.html">something finally happened</a> after I <a href="http://blog.ipspace.net/2017/04/lets-drop-some-random-commands-shall-we.html">wrote about a NX-OS bug</a> that he sent me a <a href="https://bst.cloudapps.cisco.com/bugsearch/bug/CSCtx68758">pointer to another one</a> that has been pending for a long while, and is now officially terminated as FAD (Functions-as-Designed&hellip; even documented in the <em>Further Problem Description</em>).</p>
+<p>Here&rsquo;s what he wrote (slightly reworded)&hellip;<!--more--></p>
+<blockquote class='cite'><p>The <strong>exec-timeout</strong> configuration is part of the fundamental NX-OS hardening guide that Cisco recommends. However, whenever a <strong>show</strong> command is executed, the timeout is disabled. </p>
+<p>The end result: any unfinished <strong>show</strong> command such as <strong>show run </strong>that requires hitting enter to finish (for example, at the <em>more </em>prompt), will cause the console or VTY to stay logged in indefinitely. As NX-OS doesn&rsquo;t have <strong>absolute-timeout </strong>there&rsquo;s no workaround. </p>
+<p>So if by accident, an engineer disconnects from a console in the middle of a show command, that console will stay logged in forever. </p>
+<p>BU was telling me they changed this behavior from IOS because it could "<em>cause incomplete/corrupted output while doing script automated data collection</em>".</p>
+</blockquote>
+<p>Let me just mention that <strong>exec-timeout </strong>takes <em>number of minutes </em>as its argument, and the recommend value in Cisco&rsquo;s documentation is &ldquo;<em>ten or fifteen minutes</em>&rdquo;. I sincerely hope NX-OS doesn&rsquo;t take that long to execute a single <strong>show </strong>command, so it&rsquo;s a bit hard to believe the explanation my reader got.</p>
+<p>Anyhow, someone within Cisco decided to prefer convenience over security, and provided a workaround when closing the bug report: &ldquo;<em>quit to prompt</em>&rdquo;. Awesome ;)</p>
+

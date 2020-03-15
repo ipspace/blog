@@ -1,0 +1,28 @@
+---
+title: "QoS over MPLS/VPN networks"
+date: "2010-10-25T06:47:00.002+02:00"
+tags: [ Workshop,MPLS VPN,QoS,ADSL ]
+---
+
+<p>A while ago John McManus wrote a great <a href="http://etherealmind.com/dscp-qos-over-mpls-thoughts/"><em>DSCP QoS Over MPLS Thoughts</em></a> article at <a href="http://etherealmind.com/">Etherealmind blog</a> explaining how 6-bit IP DSCP value gets mapped into 3-bit MPLS EXP bits (now <a href="http://tools.ietf.org/html/rfc5462">renamed to <em>Traffic Class </em>field</a>). The most important lesson from his post should be “there is no direct DSCP-to-EXP mapping and you have to coordinate your ideas with the SP”. Let’s dig deeper into the SP architecture to truly understand the complexities of this topic.</p>
+<p>We’ll start with a reference diagram: user traffic is flowing from Site-A to Site-B and the Service Provider is offering MPLS/VPN service between PE-A and PE-B. Traffic from multiple customer sites (including Site-A) is concentrated at SW-A and passed in individual VLANs to PE-A.</p>
+<p style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_K_pkZO5-tTg/TMPkuiPhVRI/AAAAAAAAEQ0/LMUWFROHGDA/s1600/MPLSVPN_QoS.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="98" src="http://3.bp.blogspot.com/_K_pkZO5-tTg/TMPkuiPhVRI/AAAAAAAAEQ0/LMUWFROHGDA/s400/MPLSVPN_QoS.png" width="400" /></a></p>
+<!--more--><p>Assuming the connection between Site-A and SW-A is a native IP connection (using native VLAN with no 802.1p markings), SW-A will apply its own marking rules to the inbound packets before sending them in 802.1q-tagged frames to PE-A. Most often, the DSCP values in the inbound IP packets will be ignored.</p>
+<p>SW-A might also perform inbound sub-rate policing. If you buy (for example) 20 Mbps service over 100 Mbps access link, it doesn’t make sense to propagate your traffic bursts over the SW-A-PE-A link just to police (and drop) them on PE-A.</p>
+<p>The link between SW-A and PE-A could become congested, resulting in queuing and dropping. Unless the service provider applies rigorous 802.1p marking on ingress traffic, the results will be random and not at all congruent with your QoS vision.</p>
+<p>Traffic sent by Site-A enters MPLS/VPN cloud at PE-A, where your traffic is usually metered and policed to ensure you don’t swamp the MPLS/VPN cloud. At the same time, the PE-router performs DSCP-to-EXP mapping. By default, the IP precedence bits (top 3 bits of the DSCP value) are copied to the EXP bits, but most service providers would use a customized mapping behavior to ensure their users can’t abuse the network or send high-priority traffic they haven’t subscribed for.</p>
+<p>Once the MPLS/VPN traffic is labeled and marked, it enters the MPLS backbone. The queuing behavior in the backbone depends solely on the service provider’s network design and is impossible to predict in advance. You might as well assume they offer no differentiated services unless you get a detailed written explanation from them.</p>
+<p>When the traffic arrives at PE-B it’s sent as native IP traffic toward Site-B. If you’re using sub-rate service the traffic might be policed (in which case all bets are off) or shaped (don’t expect it, shaping is expensive). As the traffic is shaped or queued on the physical interface, PE-B might use your original DSCP values to classify the traffic and selectively drop excess packets.</p>
+<p>Finally, if at least one of the access links uses DSL, you have an <a href="http://blog.ioshints.info/2009/06/adsl-qos-basics.html">entirely different can of worms to deal with</a>.</p>
+<p>And what can you do to influence the whole process? Not much – you can remark your traffic on the CE-router to map your QoS schema into DSCP values that the service provider recognizes. You can also shape (and <a href="http://wiki.nil.com/Traffic_shaping_in_Cisco_IOS">queue within the shaping queue</a>) your traffic to ensure it’s not randomly policed on SW-A or PE-A. Apart from that, you’re solely at mercy of the service provider.</p>
+<h4>Lessons learned</h4><ul class="ListParagraph"><li>Don’t expect the service provider to understand or honor your DSCP values;</li>
+<li>Start from the core network: figure out the QoS features your service provider supports (often: none);</li>
+<li>Remark your traffic at CE-routers to comply with the SP-dictated values (breaks end-to-end QoS) or change your overall QoS scheme (warning: significant provider lock-in);</li>
+<li>Shape the outbound traffic to avoid indiscriminate inbound policing on PE-routers. If at all possible, use a recent IOS release with Hierarchical Queuing Framework (HQF shaping introduces less delay/jitter than pre-HQF implementations).</li>
+</ul>
+<p><strong>Note to </strong><strong>self</strong>: Add QoS considerations to the <a href="http://www.ioshints.info/Choose_the_optimal_VPN_service"><em>Choose the Optimal VPN Service</em></a> webinar (<a href="http://choosevpn.eventbrite.com/">register here</a>).</p>
+<h4>More information</h4><ul class="ListParagraph"><li>I wrote a lot about <a href="http://wiki.nil.com/Category:QoS">Cisco IOS queuing and shaping in the CT3 wiki</a>.</li>
+<li>You’ll find a <a href="http://blog.ioshints.info/search?q=HQF">few HQF details in the tests I did a year ago</a>.</li>
+<li>Last year I wrote extensively about <a href="http://blog.ioshints.info/search?q=DSL+QoS">ADSL QoS</a>.</li>
+</ul>
+

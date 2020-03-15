@@ -1,0 +1,23 @@
+---
+title: "MTU issues (and TCP MSS clamping) in residential IPv6 deployments"
+date: "2013-01-28T07:08:00.000+01:00"
+tags: [ IPv6,ADSL ]
+---
+
+<p>Numerous residential access technologies face <a href="http://blog.ioshints.info/2008/01/never-ending-story-of-ip-fragmentation.html">path MTU discovery issues</a>. PPPoE connections (with MTU = 1492 bytes instead of 1500 bytes) is the best-known example, and we’ll see more of them as various tunneling-based <a href="http://www.ipspace.net/IPv6_Transition_Mechanisms">IPv4-to-IPv6 transition mechanisms</a> (6rd, DS-Lite, MAP-E) become more popular.</p>
+<p>Obviously you could use the same old <a href="http://blog.ioshints.info/2013/01/tcp-mss-clamping-what-is-it-and-why-do.html">MSS clamping tricks</a> in the brave new IPv6 world or decide (like DS-Lite) to deal with IP fragmentation in underlay access networks ... but there’s another option in the IPv6 world: reduce client-side MTU with router advertisement messages.<!--more--></p>
+<h4>How does it work?</h4><p><a href="http://blog.ioshints.info/2012/11/ipv6-router-advertisements-deep-dive.html">IPv6 router advertisement messages</a> (defined in <a href="http://tools.ietf.org/html/rfc4861">RFC 4861</a>) could include <a href="http://tools.ietf.org/html/rfc4861#section-4.6.4">MTU option</a> to “... <em>ensure all nodes on a link use the same MTU value in the cases where the link MTU is not well known.” </em></p>
+<p>As is usually the case in networking, that option is commonly misused for a TCP MSS clamping kludge: if the router advertises an MTU lower than 1500 bytes on client-facing interfaces, the clients will pick up the lower MTU setting and start advertising lower MSS value in TCP SYN packets. </p>
+<p><strong>Examples:</strong> the IPv6 MTU advertised on Ethernet interfaces should be 1492 bytes in PPPoE environments and 1480 bytes in 6rd environments.</p>
+<h4>How good is this solution?</h4><p>The reduced LAN MTU trick works only if:</p>
+<ul class="ListParagraph"><li>The end-hosts listen to the MTU option in router advertisement messages (usually they do);</li>
+<li>All routers attached to the LAN advertise the same value (or you have a single router, as is usually the case in residential deployments);</li>
+<li>You don’t mind that intra-LAN communication uses reduced MTU value (no jumbo frames).</li>
+</ul>
+<p>Not exactly the best solution there is, but it’s good enough for residential deployments ... and in many cases it’s the best you can do. There’s no <strong>ipv6 tcp adjust-mss </strong>command in Cisco IOS (and I wasn’t able to find one in Junos either).</p>
+<p class="note">In a <a href="http://lists.cluenet.de/pipermail/ipv6-ops/2013-January/008286.html">recent e-mail exchange</a> <a href="http://www.linkedin.com/pub/trevor-warwick/3/2a4/36">Trevor Warwick</a> claimed <strong>ip tcp adjust-mss </strong>command modifies MSS option for both IPv4 and IPv6 TCP sessions since IOS release 15.2(4)M ... without considering the larger size of IPv6 headers. An IOS developer obviously did a great job ;)</p>
+<h4>How is it configured?</h4><p>Cisco IOS always advertises the link MTU in router advertisement messages. You can change the MTU with the <strong>ipv6 mtu </strong>command and inspect the contents of router advertisement messages with the <strong>debug ipv6 nd </strong>command.</p>
+<p class="codecaption">Sample RA message with IPv6 MTU set to 1400</p>
+<pre class="code">ICMPv6-ND: Request to send RA for FE80::C800:8FF:FE04:6<br />ICMPv6-ND: Sending RA from FE80::C800:8FF:FE04:6 to FF02::1 on FastEth0/1<br />ICMPv6-ND:     <strong>MTU = 1400</strong><br />ICMPv6-ND:     prefix = 2001:DB8:0:1::/64 onlink autoconfig<br />ICMPv6-ND:           120/60 (valid/preferred)</pre><p>Some low-end CPE devices automatically reduce the LAN side MTU to reflect the WAN connectivity (PPPoE or 6rd).</p>
+<h4>More information</h4><p><a href="http://www.ipspace.net/Building_Large_IPv6_Service_Provider_Networks">Building large IPv6 service provider networks</a> webinar describes the fine points of IPv6 router advertisement mechanisms and related Cisco IOS configuration; 6rd, DS-Lite and MAP-E are described in <a href="http://www.ipspace.net/IPv6_Transition_Mechanisms">IPv6 transition mechanisms</a> webinar. You get access to both of them (and <a href="http://www.ipspace.net/Webinar_roadmaps">numerous others</a>) with the <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

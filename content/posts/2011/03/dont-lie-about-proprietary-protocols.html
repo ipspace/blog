@@ -1,0 +1,22 @@
+---
+title: "Don’t lie about proprietary protocols"
+date: "2011-03-04T06:26:00.008+01:00"
+tags: [ switching,Data Center ]
+---
+
+<p>A few months ago Brocade launched its own version of Data Center Fabric (VCS) and the VDX series of switches <a href="http://www.brocade.com/downloads/documents/white_papers/Introducing_Brocade_VCS_WP.pdf">claiming that</a>:</p>
+<blockquote class="cite">The Ethernet Fabric is an advanced multi-path network utilizing an emerging standard called Transparent Interconnection of Lots of Links (TRILL).</blockquote>
+<p>Those familiar with TRILL were immediately suspicious as some of the Brocade’s materials mentioned TRILL in the same sentence as FSPF, but we could not go beyond speculations. The Brocade’s <em>Network OS Administrator’s Guide (Supporting Network OS v2.0, December 2010)</em> shows a clear picture.</p>
+<!--more--><p>The <em>TRILL</em> section of the <em>Fabric</em> chapter (page 89) claims that:</p>
+<blockquote class="cite">The Brocade Ethernet fabric uses Transparent Interconnection of Lots of Links (TRILL) protocol, designed for the sole purpose of scaling Ethernet networks by allowing a set of devices, called routing bridges (RBridges), to connect with each other.</blockquote>
+<p>However, the very next paragraph explains that:</p>
+<blockquote class="cite">Link state routing in VCS-based TRILL networks is performed using Brocade’s proven Fabric Shortest Path First (FSPF) protocol.</blockquote>
+<p>I understand that Brocade has way more FSPF than IS-IS experience, but the <a href="https://tools.ietf.org/html/draft-ietf-trill-rbridge-protocol-16">RBridges: Base Protocol Specification</a> is very clear. In section 4.2 it states that “<em>TRILL uses an extension of IS-IS [ISO10589] [RFC1195] as its routing</em><em> </em><em>protocol.</em>” </p>
+<p>There are numerous other details where the concepts of VCS fabric deviate from TRILL. For example: </p>
+<ul class="ListParagraph"><li>RBridge ID is assigned through Fiber Channel <em>Request for Domain ID</em> and <em>Domain ID Assignment</em> messages. <a href="https://tools.ietf.org/html/draft-ietf-trill-rbridge-protocol-16">RBridges: Base Protocol Specification</a> uses a completely different process to select RBridge ID (<a href="#section-4.2.1">Section 4.2.1</a>) and RBridge Nickname (<a href="#section-3.7.3">Section 3.7.3</a>).</li>
+<li>Switches use Brocade Link Discovery Process (BLDP) to discover other switches in the fabric. TRILL uses IS-IS hello messages.</li>
+</ul>
+<p>VCS fabric does use TRILL framing, as explained in the <a href="http://community.brocade.com/community/brocadeblogs/vcs/blog/2010/12/07/vcs-ethernet-fabric-and-fcoe-traffic"><em>VCS Ethernet Fabric and FCoE Traffic</em></a> article by Brook Reams, and according to the same author Brocade plans to replace FSPF with IS-IS in the future. Brocade’s engineers are very clear about what VCS fabric does and does not do, but the marketing claim that <em>VCS uses TRILL</em> is a clear misrepresentation that casts unnecessary doubts on the new products and raises confusion where none should have existed. Cisco was at least honest enough to admit that FabricPath is not TRILL (it does use TRILL concepts, including IS-IS, but not TRILL framing).</p>
+<p>It’s always debatable whether it makes <a href="http://www.network-janitor.net/2011/02/proprietary-cometh-before-the-standard/">sense to use proprietary solutions</a> or not (and <a href="http://etherealmind.com/when-proprietary-kill-standards/">whether they're harmful</a>), but the networking world is full of them and we all have to live with them. However, it’s crucial to understand which parts of a solution (or which protocols) are <em>proprietary</em> and which are <em>standard and interoperable with other vendors</em>. It’s totally inappropriate that one has to dig pretty deep into Brocade’s web site to discover what the true story about TRILL support is. We expected more from an established networking vendor.</p>
+<p>Update 2011-03-05: inserted new facts described in <a href="http://community.brocade.com/people/Brook.Reams?view=overview">Brook Reams’ blog posts</a> and reworded the conclusions.</p>
+

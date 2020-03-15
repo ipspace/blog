@@ -1,0 +1,15 @@
+---
+title: "Ethernet-over-VPN: What Could Possibly Go Wrong?"
+date: "2016-07-19T13:18:00.000+02:00"
+tags: [ firewalls,security,VPN ]
+---
+
+<p>One of my readers sent me a link to <a href="http://www.softether.org/">SoftEther</a>, a VPN solution that</p>
+<blockquote class="cite">[&hellip;] penetrates your network admin's troublesome firewall for overprotection. [&hellip;]&nbsp;Any deep-packet inspection firewalls cannot detect SoftEther VPN's transport packets as a VPN tunnel, because SoftEther VPN uses Ethernet over HTTPS for camouflage.</blockquote>
+<p>What could possibly go wrong with such a great solution?<!--more--></p>
+<p>Ignoring the security implications of bypassing those pesky firewalls (that someone put in place just to annoy you, not because they&#x2019;d actually be needed), this wonderful bit of software allows you to <em>bridge </em>between an Ethernet and a VPN tunnel. </p>
+<blockquote class="cite">You can define a&nbsp;<a href="http://www.softether.org/4-docs/1-manual/A._Examples_of_Building_VPN_Networks/10.5_Build_a_LAN-to-LAN_VPN_(Using_L2_Bridge)">cascading connection</a>&nbsp;between two or more remote Virtual Hubs. With cascading, you can integrate two or more remote Ethernet segments to a single Ethernet segment.</blockquote>
+<p>I won&#x2019;t even start ranting about the beauties of running bridged Ethernet over WAN; it seems a lot of people prefer to learn from hands-on experience ;) However, all you need is someone establishing two VPN tunnels between two VLANs and you have a lot of blinking lights (rate-limited by the encryption speed of your VPN clients).</p>
+<p>Finally, running TCP over TCP (in our case TCP-over-IP-over-Ethernet-over-SSL-over-TCP-over-IP-over-Whatever) isn&#x2019;t the best idea ever, as people trying to run TCP over SSH figured out decades ago. Alas, some people never bother to check past experience and <a href="https://tools.ietf.org/html/rfc1925">Rule 11</a> strikes again. But don&#x2019;t despair, this wonder of technology can also run VPN over DNS or ICMP (as well as over UDP, which actually makes sense).</p>
+<p>In short, I never cease to be amazed by how much time people spend inventing solutions that shouldn&#x2019;t exist in the first place.</p>
+

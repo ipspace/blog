@@ -1,0 +1,15 @@
+---
+title: "Extending MPLS/VPN to Customer Sites"
+date: "2013-01-09T07:29:00.000+01:00"
+tags: [ security,MPLS VPN ]
+---
+
+<p>Erich has encountered a familiar MPLS/VPN design challenge: </p>
+<blockquote class="cite">We have Cisco's 2901s with the data license running MPLS/VPN on customer site (the classical PE is at the customer site). Should we use eBGP between CPE router and network edge router, some sort of iBGP route reflector design, or something completely different?</blockquote>
+<p>The “it depends” answer depends primarily on how much you can trust the routers installed at the customer site (CPE routers).<!--more--></p>
+<h4>CPE router is managed by the service provider</h4><p>If the service provider considers the CPE routers trustworthy enough to be part of the MPLS/VPN backbone, we’re dealing with a traditional MPLS/VPN network (admittedly an order of magnitude bigger than usual).</p>
+<p>If you don’t want to extend IGP to customer sites for scalability or performance reasons, use Inter-AS MPLS/VPN (Option B) between the CPE routers and network edge routers. If you’re running out of private AS numbers, put all CPE routers in the same autonomous system (obviously you’d have to configure <strong>allowas-in </strong>on them).</p>
+<h4>CPE router is managed by the customer</h4><p>A router you don’t trust should never become part of your MPLS/VPN backbone (it can easily pollute your VPNv4 tables); I would also have qualms running Inter-AS MPLS/VPN with it ... or use heavy inbound filters should someone force this design on me.</p>
+<p>The ideal solution would be Carrier’s Carrier (CsC) architecture – it was designed to address exactly this type of requirements.</p>
+<h4>Need more details?</h4><p>No problem: all the designs mentioned above are described in my <a href="http://www.amazon.com/gp/product/1587051125/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1587051125&amp;linkCode=as2&amp;tag=cisioshinandt-20">MPLS/VPN Architectures, Volume II</a>, <a href="http://tools.ietf.org/html/rfc4364">RFC 4364</a> is not a bad read either, and I’m always available for <a href="http://www.ipspace.net/Consulting">short consulting engagements</a>.</p>
+

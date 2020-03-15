@@ -1,0 +1,35 @@
+---
+title: "IS-IS in Avaya’s SPB Fabric: One Protocol to Bind Them All"
+date: "2014-04-15T07:38:00.000+02:00"
+tags: [ Fabric,MPLS VPN ]
+---
+
+<p>Paul Unbehagen made an interesting claim when <a href="http://techfieldday.com/appearance/avaya-presents-at-interop-las-vegas-2014/">presenting Avaya network built for Sochi Olympics during a recent Tech Field Day event</a>: “<em>we didn’t need MPLS or BGP to implement L2- and L3VPN. It was all done with SPB and IS-IS</em>.”<!--more--></p>
+<h4>Where’s the Magic?</h4><p>IS-IS is a routing protocol that (like MP-BGP) supports multiple address families. We’ve used it to route IPv4 and IPv6 for over a decade, recently it got extended to support <a href="http://tools.ietf.org/html/rfc6329">layer-2 routing with SPB</a> and TRILL, and now Avaya is using it to transport L3VPN information.</p>
+<p>The architecture of Avaya’s solution is really quite simple:</p>
+<ul class="ListParagraph"><li>They use SPB with MAC-in-MAC encapsulation to build large layer-2 fabrics;</li>
+<li>MAC-in-MAC encapsulation contains an I-SID field, which is sort-of equivalent to VLAN in 802.1q – you can use it to indicate L2VPN the encapsulated packet belongs to. Avaya uses that field to build L2VPNs on top of SPB fabric;</li>
+<li>IS-IS is used within SPB fabric to build L2 topology database, but there’s no reason not to use that same IS-IS to build IP routing topology database. Avaya used that approach for several years to add (global) IP routing functionality to SPB fabric;</li>
+<li>Recently Avaya added L3VPN functionality – new IS-IS TLVs to exchange VRF IP reachability information, and L3 forwarding based on I-SID field.</li>
+</ul>
+<p>After SPB nodes exchange L2 and L3VPN reachability information (using regular IS-IS flooding) the packet forwarding follows (approximately) these steps:</p>
+<ul class="ListParagraph"><li>Incoming packet is received by ingress fabric switch;</li>
+<li>Destination MAC address of the incoming packet matches MAC address of switch’s IP interface – ingress fabric switch thus performs L3 lookup;</li>
+<li>Incoming packet is encapsulated in MAC-in-MAC envelope (with I-SID indicating L3VPN) and sent to the fabric transport MAC address of the egress fabric switch;</li>
+<li>Encapsulated packet is forwarded across the L2 SPB fabric to the egress switch based on the outer (fabric transport) MAC address</li>
+<li>Egress switch receives the encapsulated packet, selects local VRF based on I-SID value, performs L3 forwarding in selected VRF, and forwards the packet toward its final destination.</li>
+</ul>
+<p class="more">For more information, read Avaya’s <a href="http://downloads.avaya.com/css/P8/documents/100165996">Shortest Path Bridging configuration guide</a>.</p>
+<h4>Will It Scale?</h4><p>Avaya’s L3VPN solution is architecturally (almost) equivalent to MPLS/VPN and thus scales better than <a href="http://blog.ipspace.net/2012/02/easy-virtual-network-nothing-new-under.html">Cisco’s Easy Virtual Network (EVN)</a>, which is really just syntactic sugar on top of VRF-Lite.</p>
+<p class='info'>The proof is left as an exercise for the reader, the solution can be found in opening chapters of <a href="http://www.amazon.com/gp/product/B0013HZMQG/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B0013HZMQG&amp;linkCode=as2&amp;tag=cisioshinandt-20">MPLS and VPN Architectures</a> book.</p>
+<p>Even though there are architectural similarities, Avaya’s solution remains far away from true scalability of MPLS/VPN:</p>
+<ul class="ListParagraph"><li>SPB fabric runs a single-area IS-IS with all fabric members sharing the same topology database. The size of the fabric is thus limited by the weakest switch in the whole fabric;</li>
+<li>IS-IS implementations were traditionally better than OSPF implementations (that’s why many large ISPs prefer IS-IS over OSPF), but that doesn’t mean that you can grow an IS-IS area indefinitely. A few hundred switches (for a pretty low value of <em>few</em>) is probably the largest fabric you can build;</li>
+<li>The number of IP routes (carried as IS-IS TLVs) in enterprise networks is usually reasonably small, so I wouldn’t expect any scalability issues there. Furthermore, IS-IS considers the IP prefixes after the shortest tree has already been computed, so the computational complexity of IP route selection remains linear (<em>O(n)</em>).</li>
+</ul>
+<p>Finally, BGP is a much richer protocol than IS-IS when it comes to routing policies. There are numerous arcane MPLS/VPN architectures that cannot be implemented with the simple L3VPN model Avaya is using. Admittedly, you wouldn’t find them in most enterprise networks.</p>
+<p class="warn">Avaya’s SPB-based L3VPN implementation is pretty new, so tread carefully. For example, it seems route redistribution loops could cause major headaches (see <a href="http://downloads.avaya.com/css/P8/documents/100165996">configuration guide</a>, page 173).</p>
+<h4>Summary</h4><p>Avaya’s L3VPN solution seems a reasonable fit for enterprise networks that need L3 path separation (similar to the scenarios I described in <a href="http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment">Enterprise MPLS/VPN</a> webinar), but I wouldn’t use it in large-scale service provider deployments.</p>
+<h4>Looking for a fabric solution?</h4><p>Check out what the vendors are doing in the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabric Architectures</a> webinar (<a href="https://www.eventbrite.com/e/data-center-fabrics-update-tickets-8753807875?ref=blog">register for the live session</a>), or find out how to <a href="http://www.ipspace.net/Clos_fabrics_explained">build a Clos (leaf-and-spine) fabric</a>. Both webinars are part of <a href="http://www.ipspace.net/Roadmap/Data_center_webinars">Data Center roadmap</a>.</p>
+<h4>Full disclosure</h4><p>As I was already attending Interop Las Vegas, I decided to spend a few hours listening to what Avaya and HP were ready to share with Tech Field Day delegates, and all I got in return was the opportunity to meet new people, two hours of nice conversations, and a cup of weak American coffee.</p>
+

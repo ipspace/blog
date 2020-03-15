@@ -1,0 +1,16 @@
+---
+title: "GRE keepalives or EIGRP hellos?"
+date: "2009-06-12T06:59:00.000+02:00"
+tags: [ EIGRP,You've asked for it,ipsec,GRE ]
+---
+
+<div class="bloggerBody"><p>It looks like everyone who’s not using DMVPN is running IPSec over GRE these days, resulting in interesting questions like »should IP use EIGRP hellos or <a href="http://blog.ioshints.info/2007/10/gre-tunnel-keepalives.html">GRE keepalives</a> to detect path loss?«</p>
+<p>Any dedicated link/path loss detection protocol should be preferred over tweaking routing protocol timers (at least in theory), so the <a href="http://en.wikipedia.org/wiki/Political_correctness">PC</a> answer is »use GRE keepalives and keep EIGRP hellos at their default values«. </p>
+<p class="info"><a href="http://wiki.nil.com/Bidirectional_Forwarding_Detection_(BFD)">BFD</a> would be the perfect solution, but it's not working over GRE tunnels yet ... and based on its past deployment history in Cisco IOS years will pass before we'll have it on the platforms we usually deploy at remote sites.</p>
+<script>startHide()</script><p>The reality is a bit different: although EIGRP hellos and GRE keepalives use small packets that are negligible compared to today's link bandwidths, enabling GRE keepalives introduces yet another overhead activity. On the other hand, the GRE keepalive overhead is local to the router on which you’ve configured them (the remote end performs simple packet switching), whereas both ends of the tunnel are burdened with frequent EIGRP hello packets.</p>
+<p>If you need to detect the path loss on the remote sites (to trigger the backup link, for example), GRE keepalives are the perfect solution. EIGRP timers are left unchanged and the overhead on the central site is minimal.</p>
+<p>If your routing design requires the central site to detect link loss, there’s not much difference between the two methods. However, due to the intricacies of the EIGRP hello protocol, improving neighbor loss on the central site requires hello timer tweaking on the remote sites. It’s probably easier to configure GRE keepalives on the central site routers than to reconfigure all remote sites.</p>
+<p class="warn">Last but not least, do not forget that GRE keepalives do <a href="http://www.cisco.com/en/US/tech/tk827/tk369/technologies_tech_note09186a008048cffc.shtml">not work under all circumstances</a>.</p>
+<p class='more'>This article is part of <a href="http://ioshints.blogspot.com/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="http://ioshints.blogspot.com/search/label/You%27ve%20asked%20for%20it">series</a>.</p>
+<script>endHide()</script></div>
+

@@ -1,0 +1,10 @@
+---
+title: "Interesting QoS problem on Catalyst 3750"
+date: "2008-02-06T07:15:00.000+01:00"
+tags: [ You've asked for it,LAN ]
+---
+
+<p>Mohammad Faraz Rehan has encountered an interesting problem when using IP access-list based class/policy maps on Catalyst 3750:</p>
+<blockquote class='cite'>When I try to apply the same <strong>service-policy</strong> to more than 15 interfaces, the configuration command fails and the switch generates the following syslog message:<br /><br />%QOSMGR-4-POLICER_PLATFORM_NOT_SUPPORTED: Policer configuration has exceeded hardware limitation for policymap &hellip;</blockquote>
+<p>I've tried to help him with various TCAM-related information and in the end he found an interesting solution to the problem:<blockquote class='cite'>It looks like there is a limit related to using the same <strong>access-list</strong>/<strong>class-map</strong>/<strong>policy-map</strong> on multiple interfaces.<br /><br />The first time I was applying the same <strong>policy-map</strong> (19 classes/19 ACLs/46 ACL lines) on all interfaces, but the switch would not accept it on more than 15 interfaces. Another test scenario had 18 classes/18 ACLs/52 ACL entries and the same <strong>policy-map</strong> would only work on 13 interfaces. <br /><br />Now we implemented 24 different <strong>policy-maps</strong>, <strong>class-maps</strong> and ACLs remained the same, and the switch is happy.</blockquote>
+

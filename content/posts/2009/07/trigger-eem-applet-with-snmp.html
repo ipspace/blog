@@ -1,0 +1,14 @@
+---
+title: "Trigger EEM applet with SNMP"
+date: "2009-07-07T07:11:00.007+02:00"
+tags: [ SNMP,You've asked for it,EEM ]
+---
+
+<div class="bloggerBody"><p><a href="http://wiki.nil.com/"><img src="http://www.ioshints.info/images/Wiki.png" class="ImgFLTright"></a>Anderson sent me an interestion question:</p>
+<blockquote class="cite">I'd like to use the <strong>snmpset</strong> command to get my router to execute an EEM script. Are there OIDs that are associated with EEM scripts that could help me achieve this?</blockquote>
+<p>Although EEM has <a href="ftp://ftp.cisco.com/pub/mibs/v2/CISCO-EMBEDDED-EVENT-MGR-MIB.my">associated MIB</a>, it has a single read-write variable: the size of the history table. It's thus not possible to use EEM MIB to trigger EEM events. However, EEM 2.4 added support for SNMP notification events, which you can use to trigger EEM applets based on incoming SNMP traps/informs.</p>
+<p>You can therefore use the <strong>event snmp-notification </strong>command on a router and the <strong>snmptrap </strong>command on a Linux host to remotely trigger EEM applets.</p>
+<p style="text-align: right;">Read more in the <a href="http://wiki.nil.com/Trigger_EEM_applets_with_SNMP_Informs">Trigger EEM applets with SNMP Informs</a> article in the <a href="http://wiki.nil.com/">CT3 wiki</a>.</p>
+<p class='more'>This article is part of <a href="http://ioshints.blogspot.com/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="http://ioshints.blogspot.com/search/label/You%27ve%20asked%20for%20it">series</a>.</p>
+</div>
+

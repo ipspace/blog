@@ -1,0 +1,29 @@
+---
+title: "To BFD or not to BFD?"
+date: "2017-10-23T08:11:00.000+02:00"
+tags: [ BGP,IP routing ]
+---
+
+<p>Omer asked a pretty common question about BFD on <a href="http://blog.ipspace.net/2017/10/routing-protocols-perfect-example-of.html">one of my blog posts</a> (slightly reworded):</p>
+<blockquote class="cite">Would you still use BFD even if you have a direct router-to-router physical link without L2 transport in the middle to detect if there is some kind of software failure on the other side?</blockquote>
+<p>Sander Steffann quickly replied:<!--more--></p>
+<blockquote class="cite">Too many things can go wrong even on a simple point to point link. The latest ones I have observed are a router not properly detecting when a link goes down, and one of the SFPs on a DAC cable failing while keeping the link up towards the router.</blockquote>
+<p>We all know that the absolutely correct answer is &ldquo;it depends&rdquo; (even though in this case I would forgo that get-out-of-jail card and lean heavily toward YES). Let&rsquo;s try to quantify it using the same questions we used when <a href="http://blog.ipspace.net/2017/09/improving-bgp-convergence-without.html">discussing BGP timers</a>:</p>
+<p><strong>What problem </strong><strong>are we</strong><strong> trying to solve?</strong> We&rsquo;re trying to detect inter-router link failure faster than what would be feasible using routing protocol hellos or timeouts.</p>
+<p><strong>Are there better ways to solve the problem?</strong><strong> </strong>You could detect link failure at:</p>
+<ul class="ListParagraph"><li>Physical layer (carrier/light loss);</li>
+<li>Data link layer (UDLD, LACP, Gigabit Ethernet signaling&hellip;)</li>
+<li>Network layer (BFD, routing protocols)</li>
+</ul>
+<p>Physical layer failure detection is the easiest one assuming it&rsquo;s reasonably reliable&hellip; but it cannot detect anything else but physical medium failure (cable cut) or drastic transceiver failure (power loss or similar).</p>
+<p>Data link layer mechanisms might be able to detect transceiver failures (although I&rsquo;m still wondering where 10GE signaling is done &ndash; pointers highly appreciated). LACP introduces unnecessary complexity on point-to-point router links, and UDLD is vendor-specific. Furthermore, data link layer mechanisms cannot detect end-to-end failures across a layer-2 network.</p>
+<p>BFD is perfectly positioned to solve the network path element failure detection challenge. It sits at the <a href="https://www.iab.org/wp-content/IAB-uploads/2010/11/hourglass-london-ietf.pdf">waist of the protocol hourglass</a>, is standardized, and simple enough to be easy to implement.</p>
+<p><strong>What&rsquo;s the worst thing that could happen if I use BFD?</strong><strong> </strong>Trying to use aggressive BFD timers might trigger false positives due to packet loss and bring down perfectly good link.</p>
+<p><strong>Why would twiddling BFD timers break things?</strong><strong> </strong>There might be platforms that implement BFD in hardware at line rate. I&rsquo;m probably not rich enough to be able to afford them (or <a href="http://auto.ferrari.com/en_US/sports-cars-models/car-range/laferrari-aperta/">this car</a>).</p>
+<p>Most network elements implement BFD on linecard- or central CPU &ndash; a major consideration on platforms that use the same general purpose CPU for packet forwarding. If higher-priority processes use all the CPU, BFD starves and might not be able to send packets or process them fast enough.</p>
+<p class="note">The problem is not limited to routers and switches &ndash; Booking.com <a href="https://blog.booking.com/troubleshooting-a-journey-into-the-unknown.html">experienced it on their load balancers</a>.</p>
+<p>You might think that the switches performing packet forwarding in hardware wouldn&rsquo;t be susceptible to the same problems. They are &ndash; unless you protect your infrastructure with strict ACLs at all the edges it&rsquo;s always possible to attack it with a DoS flood. A long while ago I was able to hose a Catalyst 6500 using nothing more aggressive than ARP requests.</p>
+<p>You can (and should) use Control Plane Protection (CoPP) to protect the central CPU of your network device. Just make sure CoPP can treat NNI traffic (BFD, routing protocols&hellip;) differently than UNI traffic (ARP, ping&hellip;).</p>
+<p>Long story short: don&rsquo;t be too aggressive on BFD timers. Figure out what your real business needs are, not what everyone assumes they are, and choose the simplest possible approach that would meet them (see also what <a href="http://blog.ipspace.net/2013/11/deutsche-telekom-terastream-designed.html">Deutsche Telekom did to simplify their network</a>).</p>
+<p><strong>Dealing with a similar challenge?</strong> I&rsquo;m usually available for <a href="http://www.ipspace.net/ExpertExpress">short online consulting</a>.</p>
+

@@ -1,0 +1,14 @@
+---
+title: "VTY access-class accepts extended and named access lists"
+date: "2007-01-25T18:17:00.001+01:00"
+tags: [ security,access control ]
+---
+
+You could limit terminal access to a router with an <a style="font-weight: bold;" href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios124/124cr/hiap_r/apl_a1h.htm">access-class in</a> line configuration command for a very long time (since, at least, IOS release 10.0). However, the access-class command only accepted standard <span style="font-weight: bold;">access-lists</span>, allowing you to restrict access solely based on source IP addresses. In the meantime, this feature quietly got upgraded to support extended access lists. In the IOS release 12.4, the command even accepts (undocumented !) named access lists.<br /><br />These new features give you the ability to implement interesting policies, for example:<br /><ul><li>Telnet access is only allowed from the network management station.</li>
+<li>SSH access is allowed from anywhere within internal network</li>
+</ul>
+<p>You can also use the <s>extended</s> access list logging functionality, making it possible to log every connection attempt to the router.</p>
+<script>startHide()</script><p>For example, the configuration ...</p>
+<pre class="code">ip access-list extended TerminalAccess<br /> permit tcp host 10.0.0.2 any eq telnet log<br /> permit tcp any any eq 22 log<br /> deny tcp any any log<br />!<br />line vty 0 4<br /> access-class TerminalAccess in</pre>... would log any terminal access to the router with messages similar to the one below.<blockquote class="code">%SEC-6-IPACCESSLOGP: list TerminalAccess denied tcp 10.0.0.3(1057) -> 0.0.0.0(23), 1 packet<br />%SEC-6-IPACCESSLOGP: list TerminalAccess permitted tcp 10.0.0.2(1058) -> 0.0.0.0(23), 1 packet</blockquote>
+<script>endHide()</script>
+

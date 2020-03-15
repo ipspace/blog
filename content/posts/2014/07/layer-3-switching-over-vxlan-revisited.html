@@ -1,0 +1,35 @@
+---
+title: "Layer-3 Switching over VXLAN Revisited"
+date: "2014-07-21T07:12:00.000+02:00"
+tags: [ bridging,IP routing,Overlay networks,virtualization ]
+---
+
+<p>My <a href="http://blog.ipspace.net/2014/06/trident-2-chipset-and-nexus-9500.html"><em>Trident 2 Chipset and Nexus 9500</em></a><em> </em>blog post must have hit a raw nerve or two – Bruce Davie dedicated a whole paragraph in his <a href="http://networkheresy.com/2014/07/11/physical-networks-in-the-virtualized-networking-world/"><em>Physical Networks in Virtualized Networking World</em></a> blog post to tell everyone how the whole thing is a non-issue and how everything’s good in the NSX land.</p>
+<p>It’s always fun digging into more details to figure out what’s really going on behind the scenes; let’s do it.<!--more--></p>
+<h4>What I Really Claimed</h4><p>Here’s what I wrote in my blog post:</p>
+<blockquote class="cite">Trident 2 chipset doesn’t support routing of VXLAN-encapsulated packets […] by the time the chipset figures out it’s the overlay tunnel endpoint for the incoming packet, and performs the L2 lookup of the destination MAC address, it’s too late for another L3 lookup.</blockquote>
+<p>The steps needed to get from the physical to the virtual world (VLAN-to-VXLAN) are totally different than the steps needed to get from the virtual to the physical world (VXLAN-to-VLAN). In the first case, a layer-3 switch (aka router):</p>
+<ul class="ListParagraph"><li>Receives a Ethernet packet, potentially with 802.1q tag;</li>
+<li>Performs L2 lookup to figure out the destination MAC address belong to the router (triggering L3 lookup);</li>
+<li>Performs L3 lookup to find the next hop;</li>
+<li>Adds next-hop specific encapsulation to the packet and sends the packet to the output interface queue.</li>
+</ul>
+<p>So far the only difference between a traditional L3 switch and a VXLAN-capable L3 switch is the ability to prepend any header in front of the packet instead of swapping the MAC header. Any platform with <a href="http://en.wikipedia.org/wiki/Vectored_I/O">scatter-gather capability</a> could do this for decades.</p>
+<p>Receiving a VXLAN-encapsulated L2 packet and performing L3 lookup at the egress is a totally different story. A layer-3 switch:</p>
+<ul class="ListParagraph"><li>Receives a payload-in-VXLAN-in-IP-in-MAC Ethernet packet;</li>
+<li>Performs a L2 lookup, which triggers L3 lookup;</li>
+<li>Performs L3 lookup and figures out the packet is sent to its VTEP IP address;</li>
+<li>Extracts original payload from VXLAN envelope;</li>
+<li>Performs another L2 lookup, <span style="color: #FF0000;">which triggers L3 lookup;</span></li>
+<li><span style="color: #FF0000;">Performs another L3 lookup to find the next hop;</span></li>
+<li>Swaps MAC header and sends the packet to the output interface queue.</li>
+</ul>
+<p>The parts marked in red are the ones that some platforms cannot do.</p>
+<div class='separator'><a href="http://3.bp.blogspot.com/-YfokYiRDOo0/U8uHq6p6o4I/AAAAAAAAHnE/Bv_LMAKiSxk/s1600/L3NSX+-+Problem.jpg" imageanchor="1" ><img border="0" src="http://3.bp.blogspot.com/-YfokYiRDOo0/U8uHq6p6o4I/AAAAAAAAHnE/Bv_LMAKiSxk/s400/L3NSX+-+Problem.jpg" /></a></div>
+<p class="info">Hardware limitations on tunnel egress router are nothing new – Catalyst 6500 couldn’t <a href="http://blog.ipspace.net/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html">perform hardware decapsulation of MPLS-over-GRE-over-IPsec</a> packets (at least with the linecards we had) even though it could do individual operations in hardware.</p>
+<h4>What did VMware do?</h4><p>They used the existing distributed L3 forwarding functionality of VMware NSX to move the L3 lookup into the hypervisors. Based on the description in Bruce’s blog post, they use routing on VTEP in incoming direction and bridging on VTEP in the outgoing direction, effectively dancing around the hardware limitations.</p>
+<div class='separator' style='margin-bottom: 1em'><a href="http://1.bp.blogspot.com/-Sk7f0lP7TEU/U8uH8CyNItI/AAAAAAAAHnM/6Ds1ZLR19o0/s1600/L3NSX+-+Ingress.jpg" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-Sk7f0lP7TEU/U8uH8CyNItI/AAAAAAAAHnM/6Ds1ZLR19o0/s550/L3NSX+-+Ingress.jpg" /></a><br>Physical to virtual: Layer-3 lookup followed by VXLAN encapsulation</div>
+<div class='separator'><a href="http://4.bp.blogspot.com/-yWU-4di84Ws/U8uIDgzL8oI/AAAAAAAAHnU/VD-_bw2DnQA/s1600/L3NSX+-+Egress.jpg" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-yWU-4di84Ws/U8uIDgzL8oI/AAAAAAAAHnU/VD-_bw2DnQA/s550/L3NSX+-+Egress.jpg" /></a><br>Virtual to physical: VXLAN decapsulation followed by layer-2 lookup</div>
+<h4>Does it matter?</h4><p>The design design Bruce described removes the layer-3 boundary functionality from the L3 VTEP – all hypervisors are linked directly to the outside VLAN and must have all the L3 forwarding information that the L3 VTEP has. </p>
+<p>It somehow reminds me of the old hack we had to use to connect MPLS/VPN networks to the Internet – <em>just use a static route with a global next hop</em>. Do I need to say more?</p>
+

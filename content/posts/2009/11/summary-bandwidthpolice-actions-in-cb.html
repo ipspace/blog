@@ -1,0 +1,11 @@
+---
+title: "Solution: Bandwidth+Police actions in CB-WFQ"
+date: "2009-11-10T07:28:00.009+01:00"
+tags: [ QoS ]
+---
+
+<p>Most of the respondents to my <a href="http://blog.ioshints.info/2009/11/challenge-cb-wfq-bandwidthpolice.html">last week’s challenge</a> got it almost right. The minor (common) error was the assumption that <strong>police rate percent 50 </strong>would result in a TCP session getting 50% of the bandwidth. Eyal got that right: the <a href="http://wiki.nil.com/Policing_vs_shaping">TCP throughput is always significantly lower than that</a> due to frequent drops caused by low burst sizes assumed by the <strong>police </strong>command and resulting TCP restarts (the most I was able to push through was around 90 kbps; half of the bandwidth would be 128 kbps).</p>
+<p>Many respondents got the third case (<strong>bandwidth </strong>class, <strong>police </strong>class and <strong>default-class</strong> all active at the same time) wrong. Vaidotas was guessing in the right direction and Petr knows the correct answer, but did not want to spoil the fun. Here’s the surprising result: the <strong>bandwidth </strong>class gets almost all the bandwidth. Sometimes the TCP sessions in other classes wouldn’t even start.</p>
+<!--more--><p>To understand that behavior, we’d need to go deep into the bowels of Weighted Fair Queuing … but I have to <a href="http://blog.ioshints.info/2009/11/overloaded.html">deliver my presentation first</a>. In the meantime, enjoy a <a href="http://blog.internetworkexpert.com/2008/08/17/insights-on-cbwfq/">wonderful in-depth article written by Petr Lapukhov</a>.</p>
+<h4>Recommendation</h4><p>If a single class in an outbound <strong>service-policy </strong>uses the <strong>bandwidth </strong>action, all the other classes should use the <strong>bandwidth</strong> action as well. The classes without the <strong>bandwidth </strong>action and the default class might get starved during congestions.</p>
+

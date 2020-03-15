@@ -1,0 +1,21 @@
+---
+title: "Terastream Part 2: Lightweight 4over6 and Network Function Virtualization (NFV)"
+date: "2013-11-27T07:45:00.000+01:00"
+tags: [ IPv6,SDN,Workshop,virtualization ]
+---
+
+<p>In the <a href="http://blog.ipspace.net/2013/11/deutsche-telekom-terastream-designed.html">first Terastream blog post</a> I mentioned Deutsche Telekom decided to use an IPv6-only access network. Does that mean they decided to go down the <a href="http://www.dslreports.com/shownews/TMobile-Goes-IPv6-Only-on-Android-44-Devices-126506">T-Mobile route</a> and deployed <a href="http://blog.ipspace.net/2011/03/nat-pt-is-dead-long-live-nat-64.html">NAT64</a> + <a href="http://blog.ipspace.net/2013/04/464xlat-explained.html">464XLAT</a>? That combo wouldn’t work well for them, and they couldn’t use MAP-E due to lack of IP address space, so they deployed yet another translation mechanism – <a href="https://tools.ietf.org/html/draft-ietf-softwire-lw4over6-01">Lightweight 4over6</a>.<!--more--></p>
+<h4>CPE Challenge</h4><p>Most IPv6 residential deployments get stuck due to CPE challenges – old CPEs don’t support IPv6, it was hard to get IPv6-capable CPEs a few years ago, and it was impossible to get CPEs that supported the encapsulation/translation mechanism you wanted to use.</p>
+<p>Deutsche Telekom found a great solution to the whole CPE conundrum: they have their own CPEs, but (if I understood the PLNOG presentation correctly) they also built OpenWRT distribution that includes lw4over6, and plan to open-source it.</p>
+<h4>AFTR Challenge</h4><p>Every single ISP-scale translation or encapsulation solution requires large head-end boxes (Address Family Translation Router or AFTR in DS-Lite lingo). Deutsche Telekom decided to replace those boxes with a scale-out architecture with limited shared state (that’s why they use lw4over6 and not DS-Lite). They run numerous lwAFTR instances in the data center adjacent to a core router.</p>
+<div class='separator'><a href="http://3.bp.blogspot.com/-UggWNfvnVdI/UpSmZVnFhBI/AAAAAAAAGWs/XIy5e21x3lE/s1600/Deutsche+Telekom+Softwires+NFV.jpg" imageanchor="1" ><img border="0" src="http://3.bp.blogspot.com/-UggWNfvnVdI/UpSmZVnFhBI/AAAAAAAAGWs/XIy5e21x3lE/s400/Deutsche+Telekom+Softwires+NFV.jpg" /></a></div>
+<p>Scale-out mechanisms are extremely simple: the lw4over6 traffic arriving from the CPE routers and the return IPv4 traffic are spread across the available lwAFTR instances using the traditional 5-tuple load balancing mechanism. </p>
+<p>Even though lwAFTR instances keep per-CPE state (mapping between IPv4 port range(s) and IPv6 CPE address), they don’t keep per-session state (NAT44 is done by the CPE). The return traffic (IPv4 to CPE) thus doesn’t have to go through the same lwAFTR instance as the outbound traffic.</p>
+<h4>Summary</h4><p>Instead of investing heavily in unproven emerging technologies, Deutsche Telekom engineers designed an extremely simple and scalable access network offering IPv6 and IPv4 access. The scale-out virtual appliance architecture adapts automatically to changing user demands, minimizes the initial investment, and grows in sync with the growing user base … and they managed to do all of that with traditional technologies and standard products.</p>
+<h4>More information</h4><ul><li><a href="http://www.youtube.com/watch?v=SUebF3UJiU4">Ian Farrer’s PLNOG presentation</a></li>
+<li>Peter Lothberg’s <a href="https://ripe67.ripe.net/presentations/251-ripe2-4.pdf">Terastream IPv6 Details</a> from RIPE67 (<a href="https://ripe67.ripe.net/archives/video/45/">video</a>)</li>
+<li><a href="http://www.ipspace.net/SDN,_NFV_and_OpenFlow_for_Skeptics">SDN, NFV and OpenFlow for Skeptics</a> (<a href="https://www.eventbrite.com/e/sdn-nfv-and-openflow-for-skeptics-tickets-9373529479?ref=blog">upcoming</a>)</li>
+<li><a href="http://www.ipspace.net/Building_Large_IPv6_Service_Provider_Networks">Building Large-Scale IPv6 Service Provider Networks</a></li>
+<li><a href="http://demo.ipspace.net/get/IPv6DC#Videos">IPv6-Only Data Centers</a></li>
+</ul>
+

@@ -1,0 +1,29 @@
+---
+title: "Leaf-and-Spine Fabrics versus Fabric Extenders"
+date: "2017-02-27T13:08:00.000+01:00"
+tags: [ Design,switching,Data Center,Fabric ]
+---
+
+<p>One of my readers wondered what the difference between fabric extenders and leaf-and-spine fabrics is:</p>
+<blockquote class="cite">We are building a new data center for DR and we management is wanting me to put in recommendations to either stick with our current Cisco 7k to 2k ToR FEX solution, or prepare for what seems to be the future of DC in that spine leaf architecture. </blockquote>
+<p>Let&#x2019;s start with &ldquo;<em>what is leaf-and-spine architecture?</em>&rdquo;<!--more--></p>
+<h4>Leaf-and-Spine 101</h4><p><a name="_GoBack"></a>Leaf-and-spine architecture (a marketing name for three stage folded <a href="https://en.wikipedia.org/wiki/Clos_network">Clos network</a>) is a physical fabric architecture in which every edge node (leaf) is connected to every core node (spine). </p>
+<div class='separator'><a href="https://1.bp.blogspot.com/-M1gLNJwT1C8/WLAjp1aR6LI/AAAAAAAAIws/scpOsVsXJFYksX_zF28BfVAmWGQXIj5igCLcB/s1600/Leaf-and-Spine%2BFabric.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-M1gLNJwT1C8/WLAjp1aR6LI/AAAAAAAAIws/scpOsVsXJFYksX_zF28BfVAmWGQXIj5igCLcB/s550/Leaf-and-Spine%2BFabric.png" /></a><br />Sample leaf-and-spine fabric</div>
+<p>Leaf-and-spine fabrics have <em>equidistant endpoints</em> &ndash; any pair of endpoints gets the same average end-to-end bandwidth. We get the "equidistant endpoints" property because leaf-and-spine fabrics are perfectly symmetrical with every leaf switch being connected to every spine switch with uplinks of uniform bandwidth.</p>
+<p class="info">Contrary to the original Clos networks that used circuit switching leaf-and-spine fabrics use <a href="http://blog.ipspace.net/2015/11/packet-and-flow-based-forwarding.html">hop-by-hop packet forwarding</a> (statistical multiplexing). Endpoints are thus equidistant only when the fabric transports large enough number of small flows to make statistical multiplexing and ECMP work. </p>
+<p>Also, unless the leaf-and-spine fabric is non-oversubscribed, the endpoints connected to the same leaf switch have more bandwidth available between them than endpoints connected to different leaf switches.</p>
+<h4>What About Fabric Extenders?</h4><p>It&#x2019;s obvious that a bunch of fabric extenders (leafs) connected to a pair of Nexus switches (spines) form a leaf-and-spine fabric.</p>
+<p>However, there are several important differences between a fabric extender-based fabric and a leaf-and-spine fabric built with standard data center switches:</p>
+<ul class="ListParagraph"><li>In a well-designed leaf-and-spine fabric the spine nodes are completely independent &ndash; they share no configuration, state or risk. Nexus switches configured as a vPC pair share a lot of configuration and state (and risk).</li>
+<li>Leaf nodes in a traditional leaf-and-spine fabric are independent devices, whereas fabric extenders act as linecards of the spine switches. The blast radius (how many things can go wrong based on a single failure) on a fabric extender-based architecture is much larger than in a fabric built with independent switches.</li>
+<li>Independent leaf nodes can do local packet switching whereas in a fabric extender environment all traffic has to traverse the spine layer.</li>
+<li>Leaf-and-spine fabrics can have more than two spines, resulting in more resilient architecture.</li>
+</ul>
+<h4>Caveat Emptor</h4><p>Please note that the above list makes sense only if you&#x2019;re building a routed fabric &ndash; either a L3 fabric or a L2 fabric using TRILL, SPB, VXLAN or whatever proprietary vendor technology. </p>
+<p>If you&#x2019;re trying to build a leaf-and-spine fabric with MLAG technology you&#x2019;re either limited to two spine switches (in an MLAG pair), a shared control plane on the spine layer (a large blast radius), or a proprietary spine-layer fabric.</p>
+<h4>Want to know more?</h4><ul class="ListParagraph"><li>Need more design guidelines? Check out <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Designs">Leaf-and-Spine Fabric Designs</a> webinar.</li>
+<li>Need to know what individual vendors are doing? You&#x2019;ll find the details in the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a> webinar.</li>
+<li>Need even more design knowledge? Register for the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center?utm_source=blog">Building Next Generation Data Center online course</a>. </li>
+<li>Wondering whether your design makes sense? I&#x2019;m usually available for <a href="http://www.ipspace.net/ExpertExpress">short online consulting sessions</a>.</li>
+</ul>
+

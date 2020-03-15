@@ -1,0 +1,15 @@
+---
+title: "Running BGP Route Reflector in a Virtual Machine"
+date: "2016-05-11T09:16:00.000+02:00"
+tags: [ SDN,BGP ]
+---
+
+<p>The <a href="http://www.ipspace.net/BGP-Based_SDN_Solutions">BGP-based SDN Solutions</a> webinar triggered another interesting question from one the attendees:</p>
+<blockquote class="cite">It seems like the BGP route reflector functionality can be implemented as a Virtual Machine. Will a VM have enough resources to meet the requirements of a RR?</blockquote>
+<p>Short answer: Yes.<!--more--></p>
+<p>The only resources a BGP route reflector needs are CPU and memory. The networking requirements aren't that critical - the BGP sessions are more likely to be CPU-bound than bandwidth-bound.</p>
+<p>Considering this, it makes little sense to run a BGP route reflector on a router or switch - you're wasting valuable forwarding hardware to provide functionality that could be implemented on any x86 server. IXP operators realized that a long time ago; many IXPs use Bird or Quagga as route server.</p>
+<p>The service providers offering more than just IP connectivity couldn't use the same trick. Most open-source BGP implementations don't support the additional address families needed to implement L2VPNs or L3VPNs. However, it seems the large customers managed to push the traditional networking vendors hard enough - Cisco, Juniper and Alcatel Lucent are offering BGP router reflector functionality in a VM format - from Cisco's <a href="http://www.cisco.com/c/en/us/products/routers/cloud-services-router-1000v-series/index.html">Cloud Services Router</a> (CSR 1000v) and <a href="http://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-xrv-software/tsd-products-support-series-home.html">IOS XRv</a> to Juniper's <a href="http://www.juniper.net/documentation/en_US/junos15.1/topics/concept/virtual-route-reflector-overview.html">Virtual Route Reflector</a> and ALU's <a href="http://www2.alcatel-lucent.com/landing/vsr-rr/">VSR-RR</a>.</p>
+<p><strong>Summary:</strong> if you want to implement BGP route reflector functionality outside of the regular forwarding path (as a dedicated control-plane function), don't waste money buying a router to do it. Use either an open-source solution or network operating system in VM format.</p>
+<h4>More information</h4><p><a href="http://www.ipspace.net/BGP-Based_SDN_Solutions">BGP-Based SDN Solutions</a> webinar describes numerous BGP-based SDN solutions and open-source tools you could use to build another one.</p>
+

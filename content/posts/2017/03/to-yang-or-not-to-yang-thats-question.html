@@ -1,0 +1,26 @@
+---
+title: "To YANG or Not to YANG, That’s the Question"
+date: "2017-03-15T07:38:00.000+01:00"
+tags: [ Automation,NETCONF ]
+---
+
+<p>Yannis sent me an interesting challenge after reading my short &ldquo;<a href="http://blog.ipspace.net/2016/12/generating-ospf-bgp-and-mplsvpn.html"><em>this is how I wasted my time</em></a>&rdquo; update:</p>
+<blockquote class="cite">We are very much committed in automation and use Ansible to create configuration and provision our SP and data center network. One of our principles is that we do rely solely on data available in external resources (databases and REST endpoints), and avoid fetching information/views from the network because that would create a loop.</blockquote>
+<p>You can almost feel a <em>however </em>coming in just a few seconds, right?<!--more--></p>
+<blockquote class="cite">Having said that, we are assessing options on how to maintain our network topology using a descriptive manner. Could be a database using a proprietary schema, but we'd definitely prefer a more standard way. I am not sure if YANG is suitable for this, and hence this message. </blockquote>
+<p>As Yannis asked my opinion on using YANG, let&rsquo;s focus on that challenge first. </p>
+<p class='update'>2017-03-15: Kristian Larsson published a short post explaining how you can validate XML data with YANG. Updated the section on YANG validators.</p>
+<p>YANG is a <em>data model description language </em>&ndash; you can use it to <a href="http://blog.ipspace.net/2012/06/netconf-expect-on-steroids.html">describe how your data model looks like</a>, for example what attributes you use to describe a router or IP subnet object.</p>
+<p class="more">I covered data stores, databases, and data model description languages in more details in the <a href="http://automation.ipspace.net/Public:3-Data_Models"><em>Data models</em></a><em> </em>section of the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions online course</a>. You get immediate access to that material when you <a href="http://www.ipspace.net/Building_Network_Automation_Solutions#register">register for the next session</a>. </p>
+<p>For example, looking at the <a href="https://github.com/ipspace/ansible-examples/blob/master/Routing-Deployment/fabric.yml">data model I used for my fabric</a>:</p>
+<ul class="ListParagraph"><li>The fabric description has five attributes: <em>fabric, interas, asn, services </em>and <em>nodes.</em></li>
+<li><em>Fabric</em> and <em>nodes </em>attributes are mandatory, <em>interas, asn </em>and <em>services </em>attributes are optional.</li>
+<li>If the model has <em>interas </em>attribute, it must have <em>asn </em>attribute.</li>
+<li><em>Fabric </em>attribute is a list of dictionaries (in Python terms, you could also model it as a relational database table);</li>
+<li>Each element of the <em>fabric </em>attribute must have <em>left, right, left_port </em>and <em>right_port </em>attributes. <em>Left_ip, right_ip </em>and <em>cost </em>attributes are optional.</li>
+</ul>
+<p>If I had had too much time, I could have created a YANG data model describing these restrictions and used it to validate my data model. Alas, I have better things to do, and it seems there are no tools out there to do that.</p>
+<p class="info">I wanted to use a YANG model in the <a href="http://automation.ipspace.net/Public:5-Validation,_Error_Handling_and_Unit_Tests">data validation part</a> of the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solution</a> online course, but to my great dismay couldn&rsquo;t find any YANG validators &ndash; tools that would take a data structure and verify that it complies with a data model described in YANG. Kristian Larsson is way more familiar with YANG tools and quickly wrote a <a href="http://plajjan.github.io/validating-data-with-YANG/">blog post explaining how you can validate XML data with YANG</a>. It's still not what I'd love to have (I'd have to transform my data from YAML to XML first), but we're getting close.</p>
+<p>YANG is thus not the answer to the question. OpenConfig might be, depending on what data you want to handle. I know customers using OpenConfig with extensions in their automation solutions, and David Barroso is working hard to make it part of NAPALM.</p>
+<p>If you&rsquo;re interested in the technical realities of OpenConfig (as opposed to marketing nirvana), listen to the <a href="http://blog.ipspace.net/2017/02/openconfig-from-basics-to.html">Software Gone Wild podcast with Marcel Wiget</a>, who was also the <a href="http://automation.ipspace.net/Public:Speakers">guest speaker</a> in the <a href="http://automation.ipspace.net/Public:3-Data_Models">Data Models</a> part of my <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">network automation online course</a>.</p>
+

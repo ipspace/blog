@@ -1,0 +1,13 @@
+---
+title: "MPLS/VPN Common Services Design"
+date: "2011-05-18T06:35:00.002+02:00"
+tags: [ Workshop,MPLS VPN ]
+---
+
+<p>The <em>Common Services </em>MPLS/VPN topology is the topology in which multiple customers access the same common servers without being able to access each other’s networks. You can implement this requirement with <a href="http://learning.nil.com/assets/Tips-/Flexible-Extranet-Implementation.pdf">judicious use of inter-VRF NAT</a> or with controlled route leaking between customers’ and common services VRFs (assuming the customers don’t use overlapping address space).<!--more--></p>
+<p>A simple implementation of <em>Common Services </em>topology adds customer route targets to the common services VRF (Jeremy Stretch from Packetlife.net wrote an <a href="http://packetlife.net/blog/2011/may/19/mpls-vpn-common-services/">excellent in-depth description of this setup</a>). Modifying common services VRF whenever a new customer is added obviously does not scale; a truly scalable solution uses asymmetrical import/export route targets as explained in the following video:</p>
+<div style='text-align: center'><iframe width="425" height="349" src="http://www.youtube.com/embed/qa6sAyoLpyY" frameborder="0" allowfullscreen></iframe><br /></div>
+<h4>More information</h4><ul class="ListParagraph"><li>To learn more about deployment of MPLS/VPN technology in enterprise networks, <a href="http://mpls.eventbrite.com/">register</a> for my <a href="http://www.ioshints.info/EntMPLS">Enterprise MPLS/VPN Deployment</a> webinar (or <a href="http://www.ioshints.info/Recordings?code=EntMPLS">buy its recording</a>). </li>
+<li>You’ll find detailed description of numerous MPLS/VPN topologies, including overlapping VPN and common services VPN in my <a href="http://www.amazon.com/gp/product/1587050021?ie=UTF8&amp;tag=cisioshinandt-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1587050021">MPLS/VPN book</a>.</li>
+</ul>
+

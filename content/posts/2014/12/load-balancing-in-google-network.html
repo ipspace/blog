@@ -1,0 +1,18 @@
+---
+title: "Load Balancing in Google Network"
+date: "2014-12-08T09:35:00.000+01:00"
+tags: [ load balancing ]
+---
+
+<p>Todd Hoff (of the <a href="http://highscalability.com">HighScalability</a> fame) sent me a link to an <a href="https://www.youtube.com/watch?v=DWpBNm6lBU4">interesting video</a> describing load-balancing mechanisms used at Google and how they evolved over time.</p>
+<p class="info">If the rest of the blog post feels like Latin, you <a href="https://tools.ietf.org/html/rfc2119">SHOULD</a> watch the <a href="http://www.ipspace.net/Load_Balancing_and_Scale-Out_Application_Architectures">Load Balancing and Scale-Out Application Architecture</a> webinar.</p>
+<p>The beginning of the story resembles traditional enterprise solutions:<!--more--></p>
+<ul class="ListParagraph"><li>Like everyone else, Google started with traditional hardware load balancers;</li>
+<li>When they introduced multiple data centers, they used different IP endpoints in each data center and DNS-based load balancing to send the clients to one of the data centers. It seems they used random DNS responses first, and slowly migrated to geolocation-based DNS load balancing;</li>
+</ul>
+<p>Next they introduced a unified front-end system (GFE) that would send the requests to target web servers based on URLs (still pretty standard), and used health checks to detect failed servers, and persistent GFE-to-server sessions to reduce the setup latency.</p>
+<p>The setup got a bit more interesting with the introduction of back-end global load balancing. The clients would connect to the local GFE, which might use a web server in another data center to serve the request. </p>
+<p>Interestingly, this setup is faster than redirecting the client to the other data center, because it reduces the session (and TLS) setup latency (assuming RTT between the client and GFE is significantly lower than the RTT between data centers).</p>
+<p>Eventually, Google needed more performance than could be offered with off-the-shelf hardware load balancers, and decided to implement their own load balancing solution. At the same time, they decided to fix the well-known DNS load balancing problems, and implemented &ldquo;<em>a method of sending clients to the closest data center without relying on DNS</em>&rdquo; &ndash; a fancy description of <em>anycast</em> ;).</p>
+<p class="info">It&#x2019;s interesting how many large web properties use anycast for first-line load balancing &ndash; it seems the global Internet is stable enough to make this approach work for TCP sessions (UDP anycast was long used to implement scale-out DNS infrastructure).</p>
+

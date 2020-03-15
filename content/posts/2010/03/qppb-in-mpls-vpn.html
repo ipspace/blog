@@ -1,0 +1,11 @@
+---
+title: "QPPB in MPLS VPN"
+date: "2010-03-01T06:34:00.002+01:00"
+tags: [ BGP,MPLS VPN,QoS ]
+---
+
+<p><strong><a href="http://wiki.nil.com/"><img src="http://www.ioshints.info/images/Wiki.png" class="ImgFLTright"></a></strong><strong>Quick link for the attention-challenged</strong>: <a href="http://wiki.nil.com/Prevent_DoS_attacks_on_MPLS_VPN_common_services">QPPB works in MPLS VPNs</a> (with a <a href="http://wiki.nil.com/Prevent_DoS_attacks_on_MPLS_VPN_common_services">few limitations</a>).</p>
+<p>And now for the long story: A while ago I’ve noticed that my LinkedIn friend <a href="http://au.linkedin.com/in/jcozzupoli">Joe Cozzupoli</a> changed his status to something like “trying to get QPPB to work in MPLS VPN environment”. I  immediately got in touch with him and he was kind enough to send me working configurations; not just for the basic setup, but also for Inter-AS Option A, B and C labs.</p>
+<!--more--><p>Knowing that QPPB relies on CEF, I doubted it would work as well on VRF interfaces as it does in pure IP environments, so I decided to do a few tests of my own, which took quite a while (not the tests, but finding the time to do them). Not surprisingly, as the outbound (PE-to-CE) packets are not CEF switched, <a href="http://wiki.nil.com/Prevent_DoS_attacks_on_MPLS_VPN_common_services">you cannot use QPPB on them; it only works on the inbound (CE-to-PE) traffic</a>. Furthermore, you cannot use extended communities in QPPB route maps.</p>
+<p>Even when I’d got all the details figured out, it took weeks before the final article appeared in <a href="http://wiki.nil.com/">CT3 wiki</a>; one of the challenges was finding a good use case. We really liked the idea of <a href="http://wiki.nil.com/Prevent_DoS_attacks_on_MPLS_VPN_common_services">using QPPB to limit the traffic from customer sites to VPN common services</a>; if you have any other really good usage scenario, please let me know.</p>
+

@@ -1,0 +1,22 @@
+---
+title: "Recovering from Network Automation Failures"
+date: "2019-04-09T08:13:00.000+02:00"
+tags: [ Automation,configuration ]
+---
+
+<p><a name="_GoBack"></a><em>This blog post was initially sent to subscribers of my SDN and Network Automation mailing list.&nbsp;</em><a href="http://www.ipspace.net/Subscribe/Five_SDN_Tips"><em>Subscribe here</em></a><em>.</em></p>
+<p>One of my readers sent me this question:</p>
+<blockquote class="cite">Would you write about methods for reverting from expected new state to old state in the case automation went wrong due to (un)predictable events that left a node or network in a limbo state betwixt and between.</blockquote>
+<p>Like always, there&rsquo;s the easy and the really hard part.<!--more--></p>
+<p><strong>The easy part</strong>: Many network devices have <em>configuration rollback</em> functionality. That&rsquo;s the easiest thing to do when you catch errors in your automation script and want to do a controlled recovery.</p>
+<p class="warn">You do check error messages received from the devices you&rsquo;re configuring, right&hellip; or at least consider what might happen on error, and how you&rsquo;d recover from that? There&rsquo;s a reason we talk about <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=5#M5S2">error checking</a> in <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">network automation online course</a> and about <a href="https://my.ipspace.net/bin/list?id=AnsibleOC#ANSIBLE_DD">handling errors in Ansible playbooks</a> in the <a href="https://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> online course.</p>
+<p>Next, there&rsquo;s <strong>configure confirm</strong>, <strong>commit confirm </strong>or similar that automatically rolls back configuration if your automation script doesn&rsquo;t confirm the changes in specified timeframe. Always use that as a safeguard against stupid errors like cutting yourself off by a mangled ACL change.</p>
+<p>Failing that, there&rsquo;s always <strong>reload in 5 </strong>or equivalent if you need a bigger hammer.</p>
+<p><strong>Two-phase commit</strong>. If you want to implement an all-or-nothing change across multiple devices you need an equivalent of <a href="https://en.wikipedia.org/wiki/Two-phase_commit_protocol">two phase commit</a>:</p>
+<ul class="ListParagraph"><li>Prepare and validate changes on all affected devices;</li>
+<li>Execute the change on all devices.</li>
+</ul>
+<p>This sounds easy, but is really hard to do in real life if you want to deal with <a href="https://en.wikipedia.org/wiki/Byzantine_fault_tolerance">byzantine failures</a>. You might want to add an extra step &ndash; using <strong>commit confirm </strong>and confirming change on all devices after it has been committed on the last device &ndash; but there&rsquo;s no perfect solution. There&rsquo;s always a slight chance you&rsquo;ll lose communication with a device at the wrong time, and will have to escalate the recovery to network operator.</p>
+<p><strong>Reduc</strong><strong>e</strong><strong> the chance of failure</strong>. Thoroughly validate input data and device state before you start making changes. Not usually considered by google-and-paste automation scripters, so I added <a href="https://automation.ipspace.net/Public:5-Validation,_Error_Handling_and_Unit_Tests">testing and validation</a> as a separate module in the <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions online course</a>.</p>
+<p>Finally, there are the big guys &ndash; Cisco NSO implements an equivalent of two-phase commit across almost anything. They deal with all sorts of implementation stupidities and unreachable devices, and can rollback a change or postpone parts of it if needed. Keep in mind it took them years to get there, so if feel you need that level of robustness it might be cheaper to buy the product than to reinvent the wheel.</p>
+

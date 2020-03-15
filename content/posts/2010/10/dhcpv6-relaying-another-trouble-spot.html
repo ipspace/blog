@@ -1,0 +1,22 @@
+---
+title: "DHCPv6 relaying: another trouble spot?"
+date: "2010-10-29T06:54:00.002+02:00"
+tags: [ DHCP,IPv6,Workshop ]
+---
+
+<p>My <a href="http://blog.ioshints.info/2010/10/dhcpv6-over-pppoe-total-disaster.html">DHCPv6+PPPoE post</a> received a very comprehensive comment from Ole Troan (thank you!) in which he explains the context in which DHCPv6 was developed (a mechanism to give a static IPv6 prefix to a customer) and its intended usage (as the prefix is static, it should have a very long lifetime).</p>
+<p>However, when you deploy DHCPv6 in some modern access networks (it’s not just PPPoE, Carrier Ethernet fares no better), you might experience subtle problems. Let’s start with a step-by-step description of how DHCPv6 works:</p>
+<!--more--><ul class="ListParagraph"><li>CPE router reboots. IPv6 is configured on the outside interface. We can use link-local address or SLAAC (in which case two IPv6 prefixes are consumed per customer).</li>
+<li>CPE router sends DHCPv6 request toward the PE-router. The DHCPv6 request includes the IA_PD option.</li>
+<li>PE-router receives the DHCPv6 request and either allocates the requested IPv6 prefix from a local pool (in which case the prefix is dynamic and somewhat random) or forwards the DHCPv6 request to a central DHCPv6 server (DHCPv6 relay functionality).</li>
+<li>In both cases, as the DHCPv6 reply goes back through the PE-router, the PE-router installs a static IPv6 route to the delegated IPv6 prefix. The next-hop is obviously the CPE router requesting the prefix.</li>
+</ul>
+<p class="warn">My PE-router running IOS release 15.0(1)M did not insert the required static route when working as a DHCPv6 relay. DHCPv6 server functionality worked as expected.</p>
+<p>So far, so good. Now imagine the PE-router reloads or its access Ethernet interface flaps. The PE-router loses all static routes to the CPE routers that were inserted in the IPv6 routing table based on DHCPv6 replies. However, the CPE routers assume everything is OK (in a typical mixed L2/L3 access network like the one shown below, a problem on one side does not result in a link loss on the other side) and try to renew the delegated prefix’s lease only when it’s about to expire. In the meantime, the customer has no IPv6 connectivity.</p>
+<p style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_K_pkZO5-tTg/TMnG7W2rFzI/AAAAAAAAERQ/_k0j8wOHJkI/s1600/DHCPv6.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="98" src="http://1.bp.blogspot.com/_K_pkZO5-tTg/TMnG7W2rFzI/AAAAAAAAERQ/_k0j8wOHJkI/s400/DHCPv6.png" width="400" /></a></p>
+<p>Fortunately, DHCPv6 implementation in Cisco IOS is pretty smart. When you use a local IPv6 pool on the PE-router, the PE-router rebuilds the static routes from the local DHCPv6 bindings. If you use a local pool and store DHCP bindings in a database, they would survive router reload as well. </p>
+<p class="info">It’s highly recommended to use <strong>ipv6 dhcp database </strong>to store the delegated prefixes.</p>
+<p>But what if you decide to use a central DHCPv6 server and DHCPv6 relaying on the PE-router? How would that combination survive a link loss or a router reload? What am I missing?</p>
+<p>Of course, DHCPv6 considerations and the impact on IPv6 routing protocols will be part of the next <a href="http://www.ioshints.info/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider Core</em></a> webinar (<a href="http://spipv6.eventbrite.com/">register here</a>) and the attendees of the previous sessions will get the updated material and access to the new recording.</p>
+<p class='update'>Update 2012-01-19: DHCP Bulk Lease, available in Cisco IOS release 15.1(S) and described in my new <a href="http://spipv6-blog.eventbrite.com/"><em>Building Large IPv6 Access Networks</em></a> webinar, solves the state loss in DHCPv6 relays.</p>
+

@@ -1,0 +1,13 @@
+---
+title: "Send e-mail after a router reload"
+date: "2008-09-01T06:40:00.001+02:00"
+tags: [ network management,EEM ]
+---
+
+<div class="bloggerBody"><p>In previous posts, I’ve explained how you can use the SYS-5-RESTART syslog message to detect router reloads and execute commands (for example, <a href="http://blog.ioshints.info/2007/04/fix-router-configuration-after-reload.html">fix router configuration</a> or <a href="http://blog.ioshints.info/2007/06/re-enable-debugging-on-router-reload.html">enable debugging</a>) right after the reload. If you want to perform actions that require network connectivity (for example, send an e-mail when a router is reloaded), you cannot execute them right away, as the routing protocols might not have converged yet (in our example, the e-mail server might not be reachable).</p>
+<p>You can use the <strong>timer countdown </strong>event to execute an EEM applet within a fixed delay after the reload. When the router is reloaded, all EEM applets stored in the startup configuration are registered and the one-time countdown timer will fire after the specified time.</p>
+<script>startHide()</script><p>For example, to execute an EEM applet that will send an e-mail twenty seconds after the router reload, you could use this configuration:</p>
+<pre class="code">hostname test<br />!<br />service timestamps debug uptime<br />service timestamps log uptime<br />!<br />event manager applet ReloadNotify <br /> event timer countdown name Delay time 20<br /> action 1.0 info type routername<br /> action 1.1 mail server "mail.example.com" &rarr;<br />   to "ops@example.com" from "$_info_routername@example.com" &rarr;<br />   subject "Router reload: $_info_routername"<br /> action <del class='wrong'>1.0</del><ins class='corr'>1.2</ins> syslog msg "E-mail was sent"</pre><p>After the router is reloaded, the following syslog messages are generated (the exact timing might vary):</p>
+<blockquote class="code">00:00:20: %SYS-5-CONFIG_I: Configured from memory by console 00:00:21: %SYS-5-RESTART: System restarted -- 00:00:21: %SNMP-5-COLDSTART: SNMP agent on host c7200 is undergoing a cold start 00:00:40: %HA_EM-6-LOG: ReloadNotify: E-mail was sent</blockquote>
+<script>endHide()</script></div>
+

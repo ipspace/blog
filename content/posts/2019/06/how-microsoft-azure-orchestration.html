@@ -1,0 +1,27 @@
+---
+title: "How Microsoft Azure Orchestration System Crashed My Demos"
+date: "2019-06-17T09:04:00.000+02:00"
+tags: [ cloud ]
+---
+
+<p>One of the first things I realized when I started my <a href="https://blog.ipspace.net/2019/05/microsoft-azure-networking-slide-deck.html">Azure journey</a> was that the Azure orchestration system is incredibly slow. For example, <a href="https://twitter.com/ioshints/status/1127636397555372032">it takes almost 40 seconds</a> to display six routes from per-VNIC routing table. Imagine trying to troubleshoot a problem and having to cope with 30-second delay on every single SHOW command. <a href="https://docstore.mik.ua/univercd/cc/td/doc/product/access/acs_fix/cisigslr/igslrhir/22759.htm">Cisco IGS/R</a> was faster than that.</p>
+<p>If you’re old enough you might remember working with VT100 terminals (or an equivalent) <a href="http://mentalfloss.com/article/21828/surfing-web-300-baud">connected to 300 baud modems</a>… where typing too fast risked getting the output out-of-sync resulting in painful screen repaints (here’s an exercise for the youngsters: how long does it take to redraw an 80x24 character screen over a 300 bps connection?). That’s exactly how I felt using Azure CLI - the slow responses I was getting were severely hampering my productivity.<!--more--></p>
+<p>I thought I found a way to cope with it:</p>
+<ul><li>Create a resource group (relatively fast);</li>
+<li>Create the resources I need for a particular demo (OK, we can wait a bit);</li>
+<li>Create the VMs as the very last part of the process (and be prepared to do some GUI Portal sleight-of-hand to keep the workshop attendees amused while the Azure gnomes are scraping together the necessary RAM, CPU and disk space)</li>
+<li>Delete a resource group after the end of the demo (the only sane way to clean up the gazillion objects created every time you try to do something) using asynchronous API call so we could move on to the next demo while the resource group was being deleted.</li>
+</ul>
+<p>Tried that process numerous times when developing the demos, and it always worked flawlessly (after all, why shouldn’t it - I wasn’t doing anything too weird).</p>
+<p>Unfortunately, the demo gods weren’t in good mood when I was running the <a href="https://www.ipspace.net/Microsoft_Azure_Networking_(Workshop)">Microsoft Azure Networking workshop</a> last week.</p>
+<p>The first demo worked. Nice, let’s delete the resource group and move on. Oh, wait, here’s an idea: let’s watch how things disappear from the Portal GUI. Oops, it doesn’t work. Wait a bit and refresh. Still nothing. Wait half an hour. Nothing changed. Retry the <em>delete resource group</em> CLI command. Doesn’t work. Retry in portal. Wait some more. No change at all. Lovely, let’s move on and skip the rest of the demos.</p>
+<p>It took us the whole day (and numerous failed attempts) to delete the two virtual machines and associated objects needed for the first demo. In the meantime we experienced:</p>
+<ul><li>Resource group (RG) being in <em>deleting</em> status for hours, and then reverting to <em>successfully provisioned</em> status (resulting in Hotel California-type jokes mentioning that they’re still charging for the services).</li>
+<li><em>Delete request failed</em> messages generated way after I requested RG removal;</li>
+<li>Virtual machines being stuck in <em>deleting</em> state forever.</li>
+<li>A new rule in a network security group (NSG) not being applied to a VM NIC long after the API call adding it to the NSG succeeded;</li>
+</ul>
+<p>Lesson learned: for the <a href="https://www.ipspace.net/Microsoft_Azure_Networking">upcoming Azure Networking webinar</a> I’ll pre-record the demos, publish them before the webinar, and ask the attendees to prepare the questions in case they’d like to know more about the demos.</p>
+<h4>What now?</h4><p>We all know **** happens… but one would hope that would be a rare occasion. Looks like that’s not the case - some workshop attendees with hands-on Azure experience found nothing unusual (<em>yeah, that happens every now and then</em>). Even worse, one would expect to see the API slowdown mentioned in <a href="https://status.azure.com/en-us/status/history/">Azure Status History</a>. No such luck - looks like it was business-as-usual.</p>
+<p>I honestly don’t know any longer what to expect from a public cloud offering from a major vendor. What I’ve seen during that day looked more like an undergraduate science project than a commercial-grade product.</p>
+

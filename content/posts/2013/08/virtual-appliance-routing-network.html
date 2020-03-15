@@ -1,0 +1,26 @@
+---
+title: "Virtual Appliance Routing – Network Engineer’s Survival Guide"
+date: "2013-08-29T10:14:00.000+02:00"
+tags: [ firewalls,Data Center,Workshop,IP routing,load balancing,virtualization ]
+---
+
+<p>Routing protocols running on virtual appliances <a href="http://blog.ipspace.net/2013/06/dynamic-routing-with-virtual-appliances.html">significantly increase the flexibility of virtual-to-physical network integration</a> – you can easily <a href="http://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html">move the whole application stack across subnets or data centers</a> without changing the physical network configuration.</p>
+<p>Major hypervisor vendors already support the concept: <a href="http://blog.ipspace.net/2013/08/routing-protocols-on-nsx-edge-services.html">VMware NSX Edge Services Router can run OSPF, BGP or IS-IS</a>, and <a href="http://gallery.technet.microsoft.com/BGP-Router-configuration-e2bae411">BGP is coming to Hyper-V gateways</a>. Like it or not, we’ll have to accept these solutions in the near future – here’s a quick survival guide.<!--more--></p>
+<h4>Don’t use link-state routing protocols</h4><p>Link-state routing protocols rely on shared topology database flooded between participating nodes (routers). The whole link state domain is a single trust zone – a single node going bonkers can bring down the whole domain.</p>
+<p><strong>Conclusion:</strong> don’t use link-state routing protocols between mission-critical physical network infrastructure and virtual appliances. BGP is the only safe choice.</p>
+<h4>EBGP or IBGP?</h4><p>I would usually recommend running EBGP between your network and a third-party appliance, but IBGP might turn out to be simpler in this particular case:</p>
+<ul class="ListParagraph"><li>IBGP sessions are multihop by default. We have yet to see whether virtual appliances support multihop EBGP sessions, and you probably wouldn’t want to establish peering between ToR switches and virtual apliances (see below);</li>
+<li>IBGP sounds more complex (you need route reflectors), but it’s usually perfectly OK to advertise the default route to the virtual appliance … or you might decide to use DHCP-based default routing in which case you don’t’ have to send any information to the virtual appliance.</li>
+<li>IBGP allows you to use MED and local preference to influence route selection if necessary.</li>
+</ul>
+<h4>Peer with a cluster of route servers</h4><p>BGP configuration of a virtual appliance or a physical network device shouldn’t have to change when the application stack fronted by the virtual appliance moves into a different subnet. The virtual appliances should therefore peer with route servers using fixed neighbor IP addresses.</p>
+<p>Here’s an anycast design that ensures a virtual appliance always finds a path to a route server regardless of where it’s moved to:</p>
+<ul class="ListParagraph"><li>Assign the same IP address to loopback interfaces of multiple BGP route servers and advertise these addresses with varying IGP costs (or you might get interesting results when ECMP kicks in ;). Obviously you’d use two anycast IP addresses for redundancy.</li>
+<li>When a virtual appliance establishes a session with the closest BGP route server, it announces its prefixes with the BGP next hop set to the physical IP address of the appliance. Assuming you run IBGP between your physical nodes, all routers in your data center get optimal routing information.</li>
+</ul>
+<p>The route servers obviously have to accept BGP sessions coming from a range of IP addresses – <a href="http://www.cisco.com/en/US/docs/ios/12_2sx/12_2sxh/feature/guide/sx_bdyn.html">dynamic BGP neighbors</a> are a perfect solution.</p>
+<p class="info">If the routers or layer-3 switches you use don’t support dynamic BGP neighbors, use Cisco’s Cloud Services Router as a route server. It’s a bit more expensive than Quagga but also a bit more versatile.</p>
+<h4>Don’t trust, verify</h4><p>You wouldn’t want just any VM that happens to be connected directly to a physical VLAN to have BGP connectivity to your route servers, would you? Use MD5 authentication on dynamic BGP sessions.</p>
+<p>Likewise, you probably don’t want to accept routes at face value from untrusted nodes. Filter BGP updates received from virtual appliances, and accept only prefixes from specific address range assigned to virtual appliances having specific subnet size (for example, /64 in IPv6 world or /32 to /29 in IPv4 world).</p>
+<h4>Need help with your network design?</h4><p>Check out my <a href="http://www.ipspace.net/ExpertExpress">ExpertExpress service</a> and <a href="http://www.ipspace.net/Consulting">BGP case studies</a> that you get with the <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

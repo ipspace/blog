@@ -1,0 +1,19 @@
+---
+title: "Speculation: This is how I would build QFabric"
+date: "2011-06-01T07:44:00.001+02:00"
+tags: [ switching,Data Center ]
+---
+
+<p>Three months after the QFabric launch, the details remain shrouded in mystical clouds, so let’s try to speculate what they could be hiding. We have two well-known facts:</p>
+<ul class="ListParagraph"><li>QFabric has three components: QF/Node (edge device), QF/Interconnect (high-speed core device) and QF/Director (the brains).</li>
+<li>Juniper is strong in the Service Provider technologies, including MPLS, MPLS/VPN, VPLS and BGP. It’s also touting its BGP MPLS-based MAC VPN technology (too long to write more than once, let’s call it BMMV).</li>
+</ul>
+<p>I am positive Juniper would never try to build a monster single-brain fabric with <a href="http://www.ioshints.info/Data_Center_Fabric_Architectures#Borg">Borg</a> or <a href="http://www.ioshints.info/Data_Center_Fabric_Architectures#BigBrother">Big Brother</a> architecture as they simply don’t scale (as the OpenFlow crowd will learn in a few years).<!--more--></p>
+<p>They would likely keep the individual components in the QFabric pretty autonomous and use distributed processing while using QF/Director as the central management/configuration device (similar to UCS manager in Cisco UCS).</p>
+<p>Looking through my rosy MPLS-tinted glasses, the layer-2 QFabric could look like this:</p>
+<p><strong>QF/Interconnect</strong> is a P-router that does super-high-speed MPLS switching augmented with something like ETS (for differentiated queuing) and PFC (to make the fabric lossless). The number of MPLS labels is reasonably low, so you need very small TCAMs.</p>
+<p>Also, don’t forget that Juniper loves P2MP pseudowires and LSPs, so it’s only natural to use those to flood between edge devices.</p>
+<p><strong>QF/Edge</strong> is a PE-router running BMMV. VLAN handling is part of BMMV, as is multi-chassis link aggregation and active/active multihoming. The final touch: make sure the QF/Edge devices always become STP roots (the whole QFabric would have to appear as a single STP device to the outside world) and you’ve solved the STP integration.</p>
+<p><strong>QF/Director</strong> is MP-BGP route reflector and the central configuration/management device.</p>
+<p>As with all speculations, this one is probably totally wrong – Juniper claims its QFabric is <em>revolutionary </em>and there’s nothing too exciting in the architecture I’ve just described (apart from the fact that it might actually work and scale) ... so I’m still as clueless as most of you are and looking forward to getting more in-depth QFabric details (everything I’ve seen so far is pure marketing fluff).</p>
+

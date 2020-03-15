@@ -1,0 +1,34 @@
+---
+title: "FCoE networking elements classification"
+date: "2011-08-30T06:29:00.000+02:00"
+---
+
+<p>When I (somewhat jokingly) <a href="http://blog.ioshints.info/2011/06/fcoe-over-trill-this-time-from-juniper.html">wrote about the <em>dense- </em>and <em>sparse-mode </em>FCoE</a>, I had no idea someone would try to <a href="http://datacenteroverlords.com/2011/08/16/jinkies-its-an-fcoe-mystery/">extend the analogy to all possible FCoE topologies</a> like Tony Bourke did. Anyhow, now that the cat is out of the bag, let’s state the obvious: enumerating all possible FCoE topologies is like trying to list all possible combinations of NAT, IP routing over at least two L2 technologies, and bridging; while it can be done, the best one can reasonably hope for is a <a href="http://brasstacksblog.typepad.com/brass-tacks/2011/06/fcfcoe-connectivity-options-as-of-6272011.html">list of supported topologies from various vendors</a>. </p>
+<p>However, it might make sense to give you a series of questions to ask the vendors offering FCoE gear to help you classify what their devices actually do.<!--more--></p>
+<p><strong>Does it process the FCoE frame based on FC addresses? </strong></p>
+<p><strong>No </strong>– it’s not really an FCoE device, it’s a fancy Ethernet bridge. The very minimum the bridge must support is <a href="http://blog.ioshints.info/2010/09/introduction-to-8021qaz-enhanced.html">ETS (802.1Qaz)</a> and <a href="http://blog.ioshints.info/2010/09/introduction-to-8021qbb-priority-flow.html">PFC (802.1Qbb)</a> with <a href="http://blog.ioshints.info/2010/11/data-center-bridging-dcb-congestion.html">QCN</a> being <a href="http://blog.ioshints.info/2010/11/does-fcoe-need-qcn-8021qau.html">optional</a> (unless you want to deploy sparse-mode FCoE with plenty of devices between FCoE nodes).</p>
+<p>If the device supports FIP snooping (like <a href="http://blog.ioshints.info/2010/09/what-exactly-is-nexus-4000.html">Cisco’s Nexus 4000</a> or Juniper’s <a href="http://blog.ioshints.info/2011/06/fcoe-over-trill-this-time-from-juniper.html">QFX3500</a>), it’s marginally more useful and can provide some additional security in sparse-mode FCoE environments (where FCoE nodes are separated by DCB-capable bridges).</p>
+<p><strong>Yes</strong> – it might actually be an FCoE-capable device. Let’s dig further.</p>
+<p class="info">When in doubt check the device documentation (starting with the configuration guides). If it doesn’t tell you how to configure VSANs, NPIV or FSPF, I would remain dubious.</p>
+<p><strong>Can it connect to a host </strong><strong>CNA</strong><strong> through a DCB-capable bridge (not that this would be a good idea)</strong><strong>?</strong></p>
+<p><strong>No</strong> – Too bad. Your connectivity options might be limited.</p>
+<p><strong>Yes</strong> – Sounds great, but be careful. Check whether you can group the ENodes into VLANs/VSANs based on their MAC addresses (you can do that on Nexus 5000, but not on QFX3500). Without this functionality, you’ll have hard time implementing SAN-A/SAN-B separation when the hosts are not directly connected to the FCoE switches.</p>
+<p>In both cases, proceed to the next question.</p>
+<p><strong>Does it run FSPF?</strong></p>
+<p><strong>No</strong> – it’s not really an FCF (FCoE Forwarder), but a gateway running <a href="http://blog.ioshints.info/2010/09/multihop-fcoe-102-vnport-proxy-and-fip.html">NPIV</a> (in IP lingo: a NAT device with static default route), like Juniper’s <a href="http://blog.ioshints.info/2011/06/fcoe-over-trill-this-time-from-juniper.html">QFX3500</a> or Cisco’s Nexus switches in NPV mode (HP’s Virtual Connect seems to be in this category as well).</p>
+<p>It’s also worth asking what the uplink options are. Cisco’s switches (excluding Nexus 6100 for the moment, see comments) support FCoE uplinks, Juniper and HP require FC uplinks.</p>
+<p><strong>Yes</strong> – congratulations. It’s actually an <a href="http://blog.ioshints.info/2011/07/is-fibre-channel-switching-bridging-or.html">FC router</a> supporting FCoE. Now let’s get into connectivity details. Oh, and it might be a good idea to check whether NPIV is supported as it just might come handy (it’s not on Brocade’s VDX switches).</p>
+<p><strong>Can it c</strong><strong>onnect to another FCF over FCoE (can it create VE_ports)?</strong></p>
+<p><strong>No </strong>– Too bad. No multihop FCoE today, but it might still be a good option if you want to connect servers with 10GE CNA to existing FC SAN.</p>
+<p><strong>Yes</strong> – Sounds great. You might have stumbled across a full-blown FCoE FCF. To my knowledge, Cisco’s Nexus family and Brocade’s VDX switches (VCS fabric) are the only two in this category.</p>
+<p><strong>Does the packet forwarding follow VE_port-based links and FSPF topology information?</strong></p>
+<p><strong>Yes</strong> – seems like the FCF you’re looking at follows FC-BB-5 pretty closely.</p>
+<p><strong>No</strong> – Weird. This is not how FC-BB-5 is written (but it’s how Brocade’s VCS fabric works).</p>
+<p>Anyway, this was just a trick question to annoy a few people out there. Let’s move on.</p>
+<p><strong>Can you insert DCB-capable bridges between two FCFs (VE_ports running across bridged Ethernet)?</strong></p>
+<p><strong>No – </strong>No sparse-mode multihop FCoE for you today. Whether that matters is a good topic for another discussion.</p>
+<p><strong>Yes</strong> – You’ve found a truly versatile FCoE device that supports both sparse-mode and dense-mode multihop FCoE. Unless I’m mistaken, it’s still as common as unicorn tears.</p>
+<p class="note">Disclaimer: the examples sprinkled throughout the post are based on my understanding of the functionality of devices that are actually shipping as of late August 2011. Your corrections are most welcome.</p>
+<h4>More information</h4><p>FCoE and other storage protocols are described in my <a href="http://www.ioshints.info/Data_Center_3.0_for_Networking_Engineers">Data Center 3.0 for Networking Engineers</a> (<a href="http://www.ioshints.info/Recordings?code=DC30">recording</a>). The webinar is also available as part of the <a href="http://www.ioshints.info/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+<p class='update'>2011-08-30 16:45 GMT - fixed Nexus 6100 FCoE uplink information. Thank you, J Metz!.</p>
+

@@ -1,0 +1,8 @@
+---
+title: "Show IP access lists attached to an interface"
+date: "2007-10-04T07:12:00.000+02:00"
+tags: [ security,network management,command line interface ]
+---
+
+When developing yet another Tcl script, I've stumbed across an interesting show command: the <strong>show ip access-list interface <em>name</em></strong> <a href="http://www.cisco.com/en/US/products/ps6441/products_configuration_guide_chapter09186a0080716ec0.html">introduced in IOS release 12.4(6)T</a> displays the contents of the inbound and outbound IP access-list applied to the specified interface. The really nice part is that the ACL statistics (number of matches displayed next to the ACL lines) are kept and displayed per-interface.<script>startHide()</script>For example, this is the printout from one of my test routers:<pre class='code'>R2#<strong>show ip access-list 101</strong><br />Extended IP access list 101<br />    10 permit ip any any (<span class='high'>1900 matches</span>)<br />R2#<strong>show ip access-list interface tunnel 0</strong><br />Extended IP access list ICMP in<br />    10 deny icmp any host 10.0.1.2 echo<br />    20 deny icmp any host 10.2.0.2 echo<br />    30 permit ip any any (2279 matches)<br />Extended IP access list 101 out<br />    10 permit ip any any (<span class='high'>10 matches</span>)</pre><script>endHide()</script>
+

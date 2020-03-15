@@ -1,0 +1,18 @@
+---
+title: "Intra-Spine Links in Leaf-and-Spine Fabrics"
+date: "2013-02-07T07:24:00.000+01:00"
+tags: [ Data Center,Workshop,Fabric ]
+---
+
+<p>I had an interesting conversation with Doug Hanks (@douglashanksjr) about the need for intra-spine links in leaf-and-spine fabric designs. You clearly don’t need links between spine switches when every leaf node (switch or router/firewall/load balancer) is connected to all spine switches ... but what happens when one of the leaf-to-spine links fails? Will other leaf switches know that they have to avoid the spine switch with the failed link?<!--more--></p>
+<p>Consider the leaf-and-spine fabric in the following diagram. Would leaf switch Z know it shall not send traffic to leaf switch A through spine switch C if the A-C link fails?</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-zzyDKY-yaYo/UQvd4earjTI/AAAAAAAAFpo/94uQ63tcOos/s1600/LeafSpineFail.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="131" width="400" src="http://2.bp.blogspot.com/-zzyDKY-yaYo/UQvd4earjTI/AAAAAAAAFpo/94uQ63tcOos/s400/LeafSpineFail.png" /></a></div>
+<p>If the answer is YES, you don’t need intra-spine links (at least not for user traffic). If the answer is NO, you better have them.</p>
+<p>There are at least two scenarios where the leaf switches wouldn’t have complete visibility into the fabric topology (and could send the traffic to the wrong spine switch)</p>
+<ul class="ListParagraph"><li>When you use multi-chassis link aggregation between leaf and spine layers (in which case the vendor design rules always mandate intra-spine links anyway);</li>
+<li>When you’re doing route summarization between spine and leaf layer in pure L3 fabrics.</li>
+</ul>
+<p>Finally, there’s the <em>multiple failures</em> scenario: let’s say you have two spine switches (S1 and S2) and leaf switch A loses connectivity to S1 while leaf switch B loses connectivity to S2. You wouldn’t want the traffic from A to B to go through a third leaf switch, would you?</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-quBUMIRCYm8/UQveB1s3XVI/AAAAAAAAFp0/lhZbZ3WX7kI/s1600/LeafSpineMultiFail.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="133" width="400" src="http://4.bp.blogspot.com/-quBUMIRCYm8/UQveB1s3XVI/AAAAAAAAFp0/lhZbZ3WX7kI/s400/LeafSpineMultiFail.png" /></a></div>
+<h4>More details</h4><p>I’ve covered (almost) every possible leaf-and-spine design scenario (for L2-only, L3-only and mixed fabrics) in the <a href="http://www.ipspace.net/Clos_fabrics_explained">Clos Fabrics Explained</a> webinar.</p>
+

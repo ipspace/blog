@@ -1,0 +1,29 @@
+---
+title: "Facts and Fiction: BGP Is a Hot Mess"
+date: "2019-11-18T07:27:00.000+01:00"
+tags: [ security,BGP ]
+---
+
+<p>Every now and then a smart person decides to walk away from their competence zone, and start spreading pointless clickbait opinions like <a href="https://twitter.com/QuinnyPig/status/1195822605091164170">BGP is a hot mess</a>.</p>
+<p>Like any other technology, BGP is just a tool with its advantages and limitations. And like any other tool, BGP can be used sloppily… and that’s what’s causing the various problems and shenanigans everyone is talking about.</p>
+<p>Just in case you might be interested in facts instead of easy-to-digest fiction:<!--more--></p>
+<ul><li>There’s an RFC out there <a href="https://tools.ietf.org/html/rfc7454">describing most security mechanisms available in BGP</a>;</li>
+<li>A lot of good people are trying to educate those who care, and improve the way ISPs use these security mechanisms through <a href="https://www.manrs.org/">Mutually Agreed Norms for Routing Security</a></li>
+<li>As Geoff Huston explained, <a href="https://labs.apnic.net/?p=1257">the whole mess is really a business problem</a>.</li>
+<li>Finally, the people benefitting most from stable routing infrastructure (content providers) are not always the people bearing the operational costs and receiving support calls from customers who couldn’t bother to either get educated or pay a professional to get their BGP up and running.</li>
+</ul>
+<p>If you came here for the facts, read the above documents and use them. Here’a TL&amp;DR summary:</p>
+<ul><li>BGP MD5 authentication (and a few other mechanisms) makes sure you’re talking to the peer you’re expected to be talking to. It DOES NOT validate the content of the BGP updates;</li>
+<li>RPKI validates that the AS originating the prefix has the right to do so. It CAN NOT stop someone from receiving a valid prefix, munging AS-path (or other attributes) and propagate made-up transit path to attract traffic;</li>
+<li>The only way to make Internet more secure with current set of BGP tools is to use routing databases to build prefix/AS-path filters and use them extensively on all untrusted BGP connections (with your customers and clueless operators that propagate YouTube prefixes from Pakistan).</li>
+</ul>
+<p>Before you tell me it can’t be done: <a href="https://www.nanog.org/sites/default/files/Snijders_Everyday_Practical_Bgp.pdf">you’re wrong</a>.</p>
+<p>And now it’s time for a shameless plug…</p>
+<p>I thought that we’re past the “we need to educate people on how to use BGP properly” stage, but I realized a few months ago I’d been badly mistaken, so here’s what we’re planning to do in 2020:</p>
+<ul><li>A series of webinars on how IXPs, CDNs, and Internet peering work, including how to configure your BGP properly;</li>
+<li>A webinar or two on BGP security, including MANRS</li>
+<li>Just for the giggles I’ll update the <a href="https://www.ipspace.net/Upcoming_Internet_Challenges">Upcoming Internet Challenges</a> webinar that I did a decade ago and compare what I’ve been saying in 2010 with 2020 reality (hint: not much has changed).</li>
+</ul>
+<p>Will any of these help? Probably not, but one can try, right?</p>
+<p>Finally a message to the afore-mentioned experts: you do realize that once someone catches you shouting from <a href="http://www.smbc-comics.com/?id=2475">Mount Stupid</a> (maybe because your sponsor is interested in the topic you talk about?), they stop trusting your core competence, right? So maybe we should all think twice before trying to generate cheap publicity, it just might backfire… or not - there are plenty of people who manage to become very successful dancing on that particular mountaintop.</p>
+

@@ -1,0 +1,11 @@
+---
+title: "Is Internet melting down?"
+date: "2008-06-29T07:28:00.000+02:00"
+tags: [ BGP,IP routing ]
+---
+
+<div class="bloggerBody"><p>A while ago I’ve read a <a href="http://www.networkworld.com/community/node/27191">post about the potential Internet meltdown by Michael Morris</a>. He provided an amazingly accurate analysis of the facts … and ended with a wrong conclusion. To understand the whole issue, please <a href="http://www.networkworld.com/community/node/27191">thoroughly read his text in its entirety</a> before proceeding.</p>
+<p>Back? OK. As I said, his analysis was great, but the conclusions were wrong. Regardless of whether we use IPv4 (and advertise smaller and smaller prefixes) or IPv6, the problem is the same: everyone wants to have chunks of non-aggregatable provider-independent public address space (so you can freely move between Service Providers) and everyone advertises these PI prefixes to multiple service providers (because multihoming is so cheap these days). Even networks that are not multihomed today <a href="http://wiki.nil.com/Multihoming_to_one_ISP">use their own PI address space and private AS numbers to connect to a single ISP</a>, so they could get multi-homed in a second if they feel like it. </p>
+<p>The growth of the Internet routing tables thus has nothing to do with the prefix sizes and version of IP, but with the requirements of the end-customers to have immediate capability to switch service providers at will. As long as this trend persists (and I cannot see it stopping, as Internet is considered a commodity these days), the routing tables will grow, regardless of whether we use IPv4 or IPv6 or CLNS or something not invented yet. </p>
+</div>
+

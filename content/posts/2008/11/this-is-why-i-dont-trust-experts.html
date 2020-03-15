@@ -1,0 +1,19 @@
+---
+title: "This is why I don’t trust “independent experts”"
+date: "2008-11-27T06:58:00.000+01:00"
+tags: [ firewalls,security ]
+---
+
+<div class="bloggerBody"><p>The Network World recently <a href="http://www.networkworld.com/news/2008/111708-cisco-sec.html">published a story</a> describing the results of an <a href="http://www.nsslabs.com/"><em>independent security product testing lab</em></a>, where they’ve discovered (surprise, surprise) that adding security features to Cisco routers “presents a tremendous bottleneck” and “can turn a 60G router into a 5G one or even a 100M bit/sec device”.</p>
+<p class="note">The test results haven’t been published yet; I’ve got all the quotes from the NW story, so they might be the result of an ambitious middleware.</p>
+<p>We don’t need “independent experts” for that. Anyone who has ever configured VPNs in a high-speed environment can tell you how to kill the performance. The basics are always the same: make sure the dedicated silicon can’t handle the job, so the packets have to be passed to the CPU. Here are a few ideas:</p>
+<script>startHide()</script><p></p>
+<ul class="Bullet1"><li>Configure GRE over IPSec and make sure you don’t tweak the MTU on the GRE tunnel. This will result in IP fragmentation and the receiving router will have to process every fragment in process switching path. A sure killer for any box, not just the 6500/7600.</li>
+<li>Make sure you configure features for which you have no hardware accelerator installed in the high-end boxes and watch the performance fall (at least) 100x.</li>
+<li>Even if you’ve managed to install an accelerator, configure the network in a way that effectively disables the hardware. For example, configure multiple GRE tunnels terminating on the same loopback interface</li>
+<li>Design your test so that all the traffic has to pass through a bottleneck. FWSM with its 3-5GBps throughput is an ideal candidate.</li>
+</ul>
+<p>What these tests prove to me is that someone who doesn’t understand what he’s doing can destroy the performance of almost any device … but we don’t need independent tests to prove that. Am I missing something? Please let me know.</p>
+<p></p>
+<script>endHide()</script></div>
+

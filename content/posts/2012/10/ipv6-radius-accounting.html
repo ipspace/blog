@@ -1,0 +1,14 @@
+---
+title: "IPv6 RADIUS Accounting"
+date: "2012-10-30T06:36:00.000+01:00"
+tags: [ IPv6,PPP,ADSL ]
+---
+
+<p>Somehow I got involved in an IPv6 RADIUS accounting discussion. This is what I found to work in Cisco IOS release 15.2(4)S:<!--more--></p>
+<ul class="ListParagraph"><li>It helps if you configure <strong>aaa accounting delay-start all</strong> to ensure the accounting <em>Start </em>record always includes addresses assigned to the end-user (or CPE);</li>
+<li>The IPv6 prefix assigned to the virtual access interface is reported in the <em>Framed-IPv6-Prefix</em> RADIUS attribute regardless of whether it was specified by the RADIUS server or allocated from a local pool specified with interface configuration command or <em>Framed-IPv6-Pool </em>RADIUS attribute. You can thus rely on this attribute to track IPv6 prefixes assigned to individual users;</li>
+<li>After configuring <strong>aaa accounting include auth-profile delegated-ipv6-prefix </strong>the router includes the value of the <em>Delegated-IPv6-Prefix </em>sent from the RADIUS server in <em>Access-Accept </em>response in every accounting request. The attribute is included <em>regardless of whether the prefix has actually been delegated to the customer </em>(which happens only after the CPE router sends DHCP IA_PD REQUEST).</li>
+<li>If you use any other prefix delegation method (DHCP relay or local IPv6 pool), the delegated prefix <em>is not included </em>in the RADIUS accounting packets. You have to use DHCP server logging to track those prefixes.</li>
+<li>I could not figure out what the <strong>aaa accounting send counters ipv6 </strong>command does. Hints appreciated.</li>
+</ul>
+

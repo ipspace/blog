@@ -1,0 +1,19 @@
+---
+title: "Using BGP in Data Center Fabrics"
+date: "2016-02-09T08:41:00.001+01:00"
+tags: [ Design,Data Center,Fabric,BGP ]
+---
+
+<p>While the large data centers increasingly use BGP as the routing protocol within their fabrics, the enterprise engineers tend to shy away from that idea because they think BGP is too complex/scary/hard-to-configure/obsolete/unknown/whatever.</p>
+<p>It&#x2019;s time to fix that.<!--more--></p>
+<p>A few reality checks first:</p>
+<ul class="ListParagraph"><li>Regardless of what pundits claim on podcasts, BGP is alive and well. After all, the Internet is still working;</li>
+<li>BGP tends to get very complex when you have to start playing with the routing policies. No need to do that in a data center environment &ndash; all you need is propagation of routing information;</li>
+<li>While BGP sessions have to be configured, that&#x2019;s not necessarily a bad idea. After all, you want to know what&#x2019;s going on in your fabric, right?</li>
+<li>Traditional BGP implementations were very slow because it&#x2019;s a bad idea to get widespread oscillations across world-wide network. However, you can get convergence times comparable to OSPF or IS-IS with a bit of tuning and BFD magic;</li>
+<li>BGP configuration might be longer than a similar OSPF configuration, but that&#x2019;s easily solved with network automation.</li>
+</ul>
+<p>Furthermore, vendors like Cumulus Networks did a <a href="http://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html">great job simplifying BGP configurations</a> to the bare minimum necessary to make it work in a data center fabric. </p>
+<p>Dinesh Dutt and myself will talk about that later today in a <a href="http://go.cumulusnetworks.com/operationalizing-BGP-webinar">free webinar organized by Cumulus Networks</a>, and in an <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs">update session</a> of my Leaf-and-Spine Fabrics webinar on March 3rd.</p>
+<h4>More information</h4><p>Read the <a href="https://tools.ietf.org/html/draft-ietf-rtgwg-bgp-routing-large-dc">IETF draft authored by Petr Lapukhov</a> if you want to know more about using BGP in large data center fabrics. I also mentioned his design in <a href="http://www.ipspace.net/BGP-Based_SDN_Solutions">BGP-Based SDN Solutions</a> webinar&hellip; and if you find the idea of automating BGP configurations exciting, attend my <a href="http://blog.ipspace.net/2016/02/upcoming-event-network-automation.html">Network Automation workshop</a>. </p>
+

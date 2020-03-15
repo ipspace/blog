@@ -1,0 +1,11 @@
+---
+title: "Quick tip: Enable SNMP traps"
+date: "2009-04-22T06:58:00.000+02:00"
+tags: [ SNMP,network management ]
+---
+
+<div class="bloggerBody"><p>IOS can generate numerous SNMP traps, but you have to enable most of them manually. Configuring a server that receives SNMP traps with the <strong>snmp-server host </strong><strong><em>address community </em></strong><strong>traps </strong>is not enough; you have to enable individual trap categories with the <strong>snmp-server enable traps </strong><strong><em>group </em></strong><strong>[ </strong><strong><em>trap </em></strong><strong>] </strong>command. </p>
+<p>In older releases, the standard SNMP traps (for example, link up/down traps) are enabled by default and cannot be disabled with the <strong>snmp-server enable traps</strong> command. Newer IOS releases have added the <strong>snmp-server enable traps snmp [ authentication | coldstart | linkdown | linkup | warmstart ] </strong>global configuration command. These releases require you to enable standard SNMP traps manually; otherwise the router will not generate them.</p>
+<p class="info">If you want to see the whole list, configure <strong>snmp-server enable traps </strong>and execute <strong>show running | include snmp-server enable</strong>. IOS 12.4T <a href="http://www.cisco.com/en/US/docs/ios/netmgmt/command/reference/nm_book.html">network management reference guide</a> also includes a comprehensive list of all options.</p>
+</div>
+

@@ -1,0 +1,41 @@
+---
+title: "Complex Routing in Hyper-V Network Virtualization"
+date: "2014-01-30T07:23:00.000+01:00"
+tags: [ IP routing,Overlay networks,virtualization ]
+---
+
+<p>The <a href="http://blog.ipspace.net/2013/12/hyper-v-network-virtualization-packet.html">layer-3-only Hyper-V Network Virtualization forwarding model</a> implemented in <a href="http://blog.ipspace.net/2013/08/whats-coming-in-hyper-v-network.html">Windows Server 2012 R2</a> thoroughly confuses engineers used to deal with traditional layer-2 subnets connected via layer-3 switches.</p>
+<p>As always, it helps to take a few steps back, focus on the principles, and the “unexpected” behavior becomes crystal clear.</p>
+<p class='update'>2014-02-05: HNV routing details updated based on feedback from Praveen Balasubramanian. Thank you!<!--more--></p>
+<h4>Sample network</h4><p>Let’s start with a virtual network that’s a bit more complex than a single VLAN:</p>
+<div class='separator'><a href="http://1.bp.blogspot.com/-f9E97ZKZdvw/UuVDieN6zLI/AAAAAAAAGuA/alhesS-4C4Q/s1600/HNV_L3_Subnets.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-f9E97ZKZdvw/UuVDieN6zLI/AAAAAAAAGuA/alhesS-4C4Q/s400/HNV_L3_Subnets.png" /></a></div>
+<p>Next, assume the following connectivity requirements:</p>
+<ul class="ListParagraph"><li>VM A must use the gateway (GW - for example a Vyatta router-in-a-VM) to communicate with the outside world;</li>
+<li>VM B and VM X must communicate.</li>
+</ul>
+<p>It’s obvious we need a router (aka L3 switch) to link the two segments otherwise B and X cannot communicate). In a traditional VLAN-based network you’d use a physical layer-3 switch with SVI/VLAN interfaces somewhere in the network to connect the two VLANs; you could use a VM-based router in a layer-2 overlay virtual network world like VXLAN.</p>
+<div class='separator'><a href="http://2.bp.blogspot.com/-3tfzXH73I8U/UuVDiQ7vcyI/AAAAAAAAGuE/nJ8g867IQuc/s1600/HNV_L3_Router.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-3tfzXH73I8U/UuVDiQ7vcyI/AAAAAAAAGuE/nJ8g867IQuc/s400/HNV_L3_Router.png" /></a></div>
+<p>There are at least two ways to achieve the desired connectivity in a traditional layer-2 world:</p>
+<ul class="ListParagraph"><li>Set the default gateway to <em>router </em>(.1) on B and X, and set the default gateway to .250 (GW) on A. Pretty bad design if I’ve ever seen one.</li>
+<li>Set the default gateway to <em>router </em>(.1) on all VMs (apart from the gateway VM) and configure a static default route pointing to .250 (GW) on the <em>router</em>.</li>
+</ul>
+<h4>Distributed routing in Hyper-V Network Virtualization</h4><p>Hyper-V Network Virtualization (HNV) doesn’t have layer-2 segments. Every VM is directly connected to the distributed layer-3 switch (implemented in all hypervisors). The virtual network topology thus looks like this:</p>
+<div class='separator'><a href="http://2.bp.blogspot.com/-mMPhf9wizL0/UuVDiRfuofI/AAAAAAAAGuI/FhT-IYBWGj0/s1600/HNV_L3_Distributed.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-mMPhf9wizL0/UuVDiRfuofI/AAAAAAAAGuI/FhT-IYBWGj0/s400/HNV_L3_Distributed.png" /></a></div>
+<p class="info">Even though HNV documentation talks about subnets and prefixes, that’s not how the forwarding works. HNV forwarding works like a router with the same IP address on all interfaces (in the same subnet) having an equivalent of a host route (<em><a href="http://technet.microsoft.com/en-us/library/jj884243.aspx">NetVirtualizationLookupRecord</a></em>)for every connected VM.</p>
+<p>After redrawing the diagram it’s obvious what needs to be configured to get the desired connectivity:</p>
+<ul class="ListParagraph"><li>Set the default gateway to the distributed router (.1) on all VMs;</li>
+<li>Configure a default route in the HNV environment with the <a href="http://technet.microsoft.com/en-us/library/jj884249.aspx">New-NetVirtualizationCustomerRoute PowerShell cmdlet</a>.</li>
+</ul>
+<p>Furthermore, Windows Server 2012 R2 requires the external gateway to be in a separate subnet. The GW VM should be moved from 10.0.1.0/24 into a different subnet (for example, 10.0.2.0/24), resulting in the following Hyper-V network virtualization routing table: <style>.fmtTable td p { margin: 0.1em 0.1em; }</style><table class="fmtTable"><tr class="TRFirst "><th valign="top" class="TDHead ">Prefix</th><th valign="top" class="TDHead ">Next-hop</th></tr><tr><td valign="top"><p>10.0.1.0/24</p>
+</td><td valign="top"><p>On-link</p>
+</td></tr><tr><td valign="top"><p>10.0.2.0/24</p>
+</td><td valign="top"><p>On-link</p>
+</td></tr><tr><td valign="top"><p>10.1.2.0/24</p>
+</td><td valign="top"><p>On-link</p>
+</td></tr><tr class="TRLast"><td valign="top" class="TDLast"><p>0.0.0.0/0</p>
+</td><td valign="top" class="TDLast"><p>10.0.2.250</p>
+</td></tr></table> <h4>But I lost my precious security</h4><p>I’m positive someone will start complaining at this point. In the pretty bad design I mentioned above VM B couldn’t communicate with the outside world (unless the router connecting the two segments had a default route pointing to <em>GW</em> VM), and it’s impossible to achieve the same effect with routing in HNV environment.</p>
+<p>However, keep in mind that security through obscurity is never a good idea (told you it was a bad design), and there’s a good reason routers and layer-3 switches have ACLs. Speaking of ACLs, you can configure them in Hyper-V with the <a href="http://technet.microsoft.com/en-us/library/jj554908.aspx">New-NetFirewallRule</a> and since all VM ports are equivalent (there are no layer-2 and layer-3 ports) you get consistent results regardless of whether the source and destination VM are in the same or different subnets.</p>
+<h4>More information</h4><p>If you’re struggling with the overlay virtual networking concepts, consider the <a href="http://www.ipspace.net/Overlay_Virtual_Networking">Overlay Virtual Networking</a> and <a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> webinars (both part of the <a href="http://www.ipspace.net/Roadmap/Cloud_computing_webinars">Cloud Computing Webinar Roadmap</a> and <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>). </p>
+<p>You can also <a href="http://www.ipspace.net/ExpertExpress">engage me</a> to help you design your network, review your design, or discuss a particularly nasty forwarding problem.</p>
+

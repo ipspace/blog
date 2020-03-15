@@ -1,0 +1,24 @@
+---
+title: "DHCPv6 over PPPoE: Total disaster"
+date: "2010-10-27T06:31:00.000+02:00"
+tags: [ DHCP,IPv6,PPP,Workshop ]
+---
+
+<p>Every time someone throws me an IPv6 curveball, I’m surprised when I discover another huge can of worms (I guess I should have learned by now). This time it started pretty innocently with a seemingly simple PPPoE question:</p>
+<blockquote class="cite">What happens if an ISP decides to assign dynamic IPv6 subnets?  With static assignment, the whole stuff is pretty straight-forward due to ND, RA &amp; DHCPv6, but if dynamic addresses are used, what happens if the subnet changes - how will the change be propagated to the end-user devices? The whole thing is no problem today due to the usage of NAT / PAT...</blockquote>
+<p>LAN address allocation with changing DHCPv6 prefix is definitely a major problem, but didn’t seem insurmountable. After all, you can tweak RA timers on the LAN interface, so even though the prefix delegated through DHCPv6 would change, the LAN clients would pick up the change pretty quickly. <strong>WRONG</strong> ... at least if you use Cisco IOS.</p>
+<!--more--><p>The core of the problem is a total disconnect between IPv6CP and DHCPv6 and between dialer interfaces and PPPoE sessions.</p>
+<div class='info'><p><strong>Remember:</strong></p>
+<ul class="ListParagraph"><li>IPv6CP is not propagating IPv6 addresses;</li>
+<li>DHCPv6 has to be used to get a /64 (or /56) prefix to use on the LAN interface of the CPE router;</li>
+<li>Cisco IOS uses <em>dialer </em>interfaces to configure PPPoE client;</li>
+<li><em>Dialer </em>interface is always <em>up</em>, even if the underlying PPP session (which is bound to a <em>virtual access</em> interface) is not operational.</li>
+</ul>
+</div>
+<p>When the PPPoE session is established for the first time, the DHCPv6 client configured on the <em>dialer </em>interface sends a request (including IA_PD option) to BRAS and receives an IPv6 prefix that can be used on the LAN. Like any other DHCP allocation, the prefix has a lifetime that is usually measured in hours or even days.</p>
+<p>If the PPPoE session is terminated for any reason (some ISPs, like the one I’m using, love to terminate PPPoE sessions every 24 hours just to annoy the users), the <em>virtual access </em>interface on BRAS goes down and the static route toward the DHCPv6-assigned prefix is gone. The DHCPv6 bindings on BRAS stay intact (so the CPE could reclaim the same prefix for a while).</p>
+<p>However, the DHCPv6 client in the CPE router does not detect a link loss. While the <em>virtual access </em>interface does change state to <em>down</em>, the <em>dialer </em>interface doesn’t... and the DHCPv6 client is monitoring the <em>dialer </em>interface. The CPE router keeps using the old delegated prefix, which is no longer reachable (as the static route on BRAS is gone and the client did not send a renewal request yet). </p>
+<p><strong>Conclusion</strong>: the CPE router is stuck for the remaining duration of the DHCP lease unless you reset the DHCPv6 client manually with the <strong>clear ipv6 dhcp client </strong><strong><em>interface </em></strong>command (which can be done with an EEM applet ... but try explaining that to an average user).</p>
+<p><strong>Workaround</strong>: You could assign fixed IPv6 prefixes to individual users through RADIUS, but then you’d have to propagate per-user /64 prefixes between the routers (at least within your POP). </p>
+<p><strong>More information</strong>: Some of the challenges of IPv6 core routing are described in the <a href="http://www.ioshints.info/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider Core</em></a> webinar (<a href="http://spipv6.eventbrite.com/">register here</a>). The webinar attendees also get auxiliary materials, including numerous sets of tested router configurations and detailed BRAS configuration snippets. </p>
+

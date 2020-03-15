@@ -1,0 +1,27 @@
+---
+title: "Don’t Sugarcoat the Challenges You Have"
+date: "2019-04-03T08:18:00.000+02:00"
+tags: [ BGP,EVPN ]
+---
+
+<p>Last year I got into somewhat-heated discussion with a few engineers who followed the advice to <a href="https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics">run IBGP EVPN address family on top of an EBGP underlay</a>. </p>
+<p>My main argument was simple: this is not how BGP was designed and how it&rsquo;s commonly used, and twisting it this way requires schizophrenic BGP routing process which introduces unnecessary complexity (even though it <a href="http://blog.ipspace.net/2018/05/dissecting-ibgpebgp-junos-configuration.html">looks simple in Junos configuration</a>) and might confuse people who have to run the network after the brilliant designer is gone.<!--more--></p>
+<p>What I got in return were personal attacks, an anonymous troll that was delighting everyone with a daily dose of irrelevance, but also a series of reasoned technical justifications that I still have a hard time buying.</p>
+<blockquote class="cite">Junos could do whatever you want it to do</blockquote>
+<p>&hellip; so why don&rsquo;t you use the simplest possible approach that we used forever (IBGP+IGP) or two address families over EBGP?</p>
+<blockquote class="cite">&hellip; but if I add a new address family to a running fabric, it brings down my EBGP sessions.</blockquote>
+<p>Really? And you planned to add a new address family during prime time? I would think that turning on EVPN is a bigger risk than disrupting a BGP session and would use a maintenance window in which case I don&rsquo;t care if a BGP session goes down&hellip; and I have more than one leaf-to-spine connection anyway. Also, this might be a good moment to practice non-disruptive changes using BGP graceful shutdown ;)</p>
+<blockquote class="cite">&hellip; and on top of that IBGP scales better.</blockquote>
+<p>There might be a detail I&rsquo;m missing, but I don&rsquo;t believe that (apart from implementation differences) IBGP scales that much better. If anyone knows a good argument why optimally-implemented IBGP would work better than optimally-implemented EBGP <em>run on the same set of boxes </em>(ignoring route reflectors or route servers running in a virtual machine) please let me know.</p>
+<p class="note">I had interesting discussions with people close to actual BGP code when researching this delicious can of worms, and got totally opposite claims, so it seems there&rsquo;s a significant difference in how BGP is implemented on different platforms.</p>
+<blockquote class="cite">&hellip; and you can use a route reflector that&rsquo;s not a spine switch.</blockquote>
+<p>And what&rsquo;s wrong with using a route server with EBGP connections to leaf switches (so the leaf switch doesn&rsquo;t have split personality) instead of a route reflector?</p>
+<p>Also, did you consider that you have to run that route reflector somewhere and that the compute nodes on which you run route reflectors become critical infrastructure? All this might be needed in humongous deployments, but probably not in 99% of the environments out there, for which the CPU and RAM available on the spine switches is probably good enough.</p>
+<p>BTW, all Junos examples I&rsquo;ve seen had spines acting as IBGP route reflectors (which wouldn&rsquo;t work in <a href="http://blog.ipspace.net/2018/06/is-ebgp-really-better-than-ospf-in-leaf.html">optimally-implemented EBGP underlay</a> anyway).</p>
+<blockquote class="cite">&hellip; but this is just bad implementation of a good design.</blockquote>
+<p>Sure. How about those implementations (seen in live fabrics) that used different AS numbers on spine switches (making EBGP almost as bad as OSPF) just to get <a href="https://blog.ipspace.net/2018/09/valley-free-routing-in-data-center.html">IBGP-over-EBGP to work</a> because <a href="https://blog.ipspace.net/2018/09/valley-free-routing.html">valley-free-routing</a> interfered with their ideas?</p>
+<p>In the meantime, a friend of mine who&rsquo;s been working with EVPN for years sent me this explanation:</p>
+<blockquote class="cite">Once I was asked to use eBGP (on Junos) for the EVPN control plane, and we stumbled on an incredible amount of complexity, problems and bugs (mostly in the ASIC programming). Since then I always use iBGP for the control plane.</blockquote>
+<p>I&rsquo;m positive Juniper fixed most of those issues in the meantime, and most other vendors had similar issues (for example, another vendor couldn&rsquo;t do EVPN in IBGP-over-OSPF design), but that&rsquo;s not the point of this blog post. </p>
+<p>What I really hate is that we are loath to admit why we&rsquo;re making the choices we&rsquo;re making. I would totally respect a networking engineer telling me for example &ldquo;<em>I use this design which might be more complex and/or less elegant or whatever </em><em>due to implementation details of the software I work with. This design has been tested by the manufacturer and thus </em><em>works better than the alternatives</em><em>.</em>&rdquo; How about &ldquo;<em>I got burned once, and IBGP worked for me, so I&rsquo;m not going to risk experimenting again?</em>&rdquo; Why do we have to invent convoluted explanations trying to sugarcoat the real challenges we faced? Everyone has problems, every software has bugs, it&rsquo;s how you deal with them that matters. Be honest to yourself and others and don't try to justify working around technical limitations with made-up explanations.</p>
+

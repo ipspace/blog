@@ -1,0 +1,29 @@
+---
+title: "L2VPN over IPv6 with Snabb Switch on Software Gone Wild"
+date: "2014-12-12T14:23:00.000+01:00"
+tags: [ Podcast,SDN,Software Gone Wild ]
+media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_17-L2VPN_over_IPv6_with_Snabb_Switch.mp3
+---
+
+<p><a href="http://blog.ipspace.net/2014/09/snabb-switch-deep-dive-on-software-gone.html">Highly customizable high-speed virtual switch</a> written in Lua sounds great, but is it really that easy to use? <a href="http://simon.leinen.ch/">Simon Leinen</a> was kind enough to get me in touch with <a href="https://tnc2014.terena.org/core/user/474">Alex Gall</a>, his colleague at Switch, who's working on an interesting project: implementing L2VPN over IPv6 with Snabb Switch.<!--more--></p>
+<p class="info">Alex is a quiet speaker, so I had to do plenty of massaging to make him heard in the recording, resulting in not-so-spectacular voice quality.</p>
+<p>We warmed up discussing pretty standard questions…</p>
+<ul class="ListParagraph"><li>Why would you not want MPLS in your network?</li>
+<li>Why does it make sense to run L2VPN over IPv6?</li>
+<li>Why is no hardware manufacturer doing it?</li>
+<li>Is SDN a solution - and what is SDN anyway?</li>
+<li>Can it be done on an x86-based device? At what speed?</li>
+</ul>
+<p>... and then focused on implementation details of Alex’s solution riding on top of Snabb Switch:</p>
+<ul class="ListParagraph"><li>How long does it take to pick up Snabb Switch and get a working prototype?</li>
+<li>Doing packet forwarding in interpreted (scripting) language is an interesting problem;</li>
+<li>If you run out of memory and the system starts doing garbage collection, you’re dead;</li>
+<li>Using object-oriented code with plenty of inheritance might not be the best choice in high-speed real-time code;</li>
+<li>Just-in-time compiler tries to optimize the code based on traces collected during the execution - you have to be somewhat lucky to get just the proper trace so your code is well-optimized;</li>
+<li>Libraries help: Alex figured out how to do things fast, and wrote a library that did all the complex stuff;</li>
+<li>Working on a low-level platform means you have to reinvent all the wheels… including interface counters, and ways of accessing them.</li>
+</ul>
+<p><a href="http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_17-L2VPN_over_IPv6_with_Snabb_Switch.mp3">Enjoy the show</a>, and <a href="http://www.ipspace.net/Feeds">subscribe to the podcast feed</a> to get future episodes straight into your podcast client.</p>
+<p>For even more information, read <a href="https://github.com/alexandergall/ALX">very well written documentation</a>, or download <a href="https://tnc2014.terena.org/core/presentation/9">Alex’s presentation</a> from Terena 2014 conference (<a href="https://www.youtube.com/watch?v=Jbn3aNkud6Y">video</a>). The source code is available in the <a href="https://github.com/snabbco/snabb/tree/l2vpn">L2VPN tree of the Snabb Switch GitHub repository</a>.</p>
+<audio src="http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_17-L2VPN_over_IPv6_with_Snabb_Switch.mp3" controls='yes' style='width: 100%'></audio>
+

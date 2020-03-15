@@ -1,0 +1,15 @@
+---
+title: "Connecting a switch to itself: does it hurt?"
+date: "2009-02-23T06:48:00.001+01:00"
+tags: [ switching,LAN ]
+---
+
+<div class="bloggerBody"><p>I’ve got an unusual question a few days ago:</p>
+<blockquote class="cite">Does a loop (cable returning back to same switch) in one switch affect other switches? How can I detect that there is such a problem in a particular switch?</blockquote>
+<p>The correct answer to the first question is obviously <em>it depends</em>. To start with, it depends on whether the two ports will be able to communicate. With a <a href="http://en.wikipedia.org/wiki/Ethernet_crossover_cable">crossover (switch-to-switch) cable</a> (and assuming there are no negotiation issues), the physical layer will work correctly. If you’re using a standard <a href="http://en.wikipedia.org/wiki/Patch_cord">RJ-45 patch cable</a>, you’re “out of luck” unless the switch is too smart and has <a href="http://en.wikipedia.org/wiki/Auto-MDIX">auto-MDI sensing</a> (like the <a href="http://www.cisco.com/en/US/products/ps9967/index.html">Linksys switches</a>, now well hidden under obscure part numbers like <a href="http://www.cisco.com/en/US/prod/collateral/switches/ps5718/ps9967/ps9992/data_sheet_c78-502283.html">Cisco SRW248G4</a>). In this case, the two ports will become active even connected with a patch cable.</p>
+<script>startHide()</script><p>What happens next depends on how smartly you’ve configured the ports. If you haven’t touched the default configuration, the spanning tree (STP) will discover a loop and disable one of the ports. You can identify a disabled port(s) with the <strong>show spanning-tree </strong>commands.</p>
+<p>If you’ve configured <strong>spanning-tree portfast </strong>on a port but forgot to configure <em>BDPU guard</em> (or maybe you have an older switch or a low-end router with a switch module that does not support BPDU guard), you’ve just created a nice <ins class='corr'>temporary</ins> loop in your bridged network. <ins class='corr'>If you want something more permanent, use <i>BPDU filter</i> or a low-end switch that does not support STP</ins></p>
+<p class='info'>I’ve seen interesting network meltdowns following a layer-2 loop. Broadcasts or multicasts are most likely to be looped, so they will affect the whole network, including all connected workstations.</p>
+<script>endHide()</script><p class='more'>This article is part of <a href="http://ioshints.blogspot.com/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="http://ioshints.blogspot.com/search/label/You%27ve%20asked%20for%20it">series</a>.</p>
+</div>
+

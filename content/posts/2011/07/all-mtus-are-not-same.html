@@ -1,0 +1,10 @@
+---
+title: "All MTUs are not the same"
+date: "2011-07-04T06:54:00.000+02:00"
+tags: [ IP routing,WAN ]
+---
+
+<p>Matthew sent me the following remarkable fact (and he just might have saved some of you a few interesting troubleshooting moments):</p>
+<blockquote class="cite">I was bringing up an OSPF adjacency between a Catalyst 6500 and an ASR 9006 and kept getting an MTU mismatch error. The MTU was set exactly the same on both sides. So I reset them both back to default (1500 on the 6500 and 1514 on the ASR 9006) and the adjacency came back up, even though now the MTU is off by 14 bytes. So I attempted to bump the MTU up again, this time setting the MTU on 6500 to 1540 and the MTU on the ASR 9006 to 1554. Adjacency came right up. Is there something I am missing?</blockquote>
+<p>The <em>14 byte difference </em>is the crucial point – that’s exactly the L2 header size (12 bytes for two 6-byte MAC addresses and 2 bytes for ethertype). When you specify MTU size on the IOS classic (either with the <strong>ip mtu </strong>command or with the <strong>mtu </strong>command), you specify the maximum size of the layer-3 payload without the layer-2 header. Obviously IOS XR works differently – there you have to specify the maximum size of a layer-2 frame, not of its layer-3 payload (comments describing how other platforms behave are most welcome!).</p>
+

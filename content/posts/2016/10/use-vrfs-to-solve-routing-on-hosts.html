@@ -1,0 +1,22 @@
+---
+title: "Use VRFs to Solve Routing-on-Hosts Challenges"
+date: "2016-10-03T08:12:00.000+02:00"
+tags: [ Design,Data Center,MPLS VPN ]
+---
+
+<p><a name="_GoBack"></a>One of my readers sent me interesting feedback after reading my explanation of <a href="http://blog.ipspace.net/2016/09/why-would-i-use-bgp-and-not-ospf.html">why I&#x2019;d try not to use OSPF as a routing protocol between hosts and ToR switches</a>. He said:</p>
+<blockquote class="cite">Unfortunately we can&#x2019;t use BGP because IBM mainframes support only OSPF or RIP, so we decided to use VRFs instead.</blockquote>
+<p>Here&#x2019;s what they did:<!--more--></p>
+<ul class="ListParagraph"><li>They run data center network infrastructure in global routing table and all customer services in VRFs;</li>
+<li>Mainframe is in a separate VRF;</li>
+<li>ToR switches run OSPF with the mainframe and advertise default route to the mainframe;</li>
+<li>Routes collected in the mainframe VRF are imported into other VRFs (alternative: exported with proper route targets) using strict prefix lists and route maps.</li>
+</ul>
+<p>End result:</p>
+<ul class="ListParagraph"><li>Misconfigured OSPF routing on the mainframe doesn&#x2019;t impact any other device in the network (apart from CPU on ToR switches);</li>
+<li>Even if the mainframe becomes a transit router, no traffic ever passes through it (because the transit routes are not leaked into other VRFs);</li>
+<li>Whatever routes the mainframe announces is irrelevant to anyone else &ndash; they get installed into the mainframe VRF and only the expected subset is leaked into other VRFs.</li>
+</ul>
+<p>You would get similar results by running a separate OSPF process with the mainframe and redistributing routes from that process into the core routing protocol (be it BGP or OSPF), but as you&#x2019;d be using a single routing table the incorrect prefixes advertised by the mainframe could still impact the packet forwarding for all devices connected to the ToR switch (unless, of course, the ToR switch supports filters between OSPF SPF results and RIB/FIB like Cisco IOS does with the <strong>distance 255 </strong>command).</p>
+<p>Interested in this solution but having no idea what I&#x2019;m talking about or where to start? Watch the <a href="http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment">Enterprise MPLS/VPN</a> webinar; I&#x2019;m also available for <a href="http://www.ipspace.net/ExpertExpress">short consulting sessions</a> (that you can now <a href="http://www.ipspace.net/Subscription/Individual">bundle with the subscription</a> to make it easier to get an approval from your boss).</p>
+

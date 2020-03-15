@@ -1,0 +1,28 @@
+---
+title: "Automation Win: MPLS/VPN Service Deployment"
+date: "2018-02-12T10:30:00.000+01:00"
+tags: [ Automation,MPLS VPN ]
+---
+
+<p>I always encourage the students attending the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course to create solutions for problems they&rsquo;re facing in their networks instead of wasting time with vanilla hands-on assignments.</p>
+<p><a href="https://www.linkedin.com/in/francois-herbet-60941a/">Francois Herbet</a> took the advice literally and decided to create a solution that would configure PE-routers and create full-blown device configurations for CE-routers.<!--more--></p>
+<p>He&rsquo;s one of those people that thoroughly document whatever they&rsquo;re doing, so you can track how he progressed through the course in his GitHub repository:</p>
+<ul class="ListParagraph"><li><a href="https://github.com/fherbet/MyLABs/tree/master/1.My1LAB#netautsol-getting-started-week-1">Getting started</a>: he built a large lab in EVE-NG (here&rsquo;s the answer for everyone asking &ldquo;<em>Can I use EVE-NG to build labs in your course?</em>&rdquo;)</li>
+<li><a href="https://github.com/fherbet/MyLABs/tree/master/1.My1LAB#netautsol-easy-wins-week-2-hands-on-exercises">Easy wins</a>: collect configurations and show printouts. Collect NAPALM facts.</li>
+<li>Data model: <a href="https://github.com/fherbet/MyLABs/blob/master/1.My1LAB/host_vars/CPE1.yml">this</a> is how he structured information about a customer order (probably coming from some back-end ordering system).</li>
+<li><a href="https://github.com/fherbet/MyLABs/tree/master/1.My1LAB#netautsol-deploy-network-services-week-4-hands-on-exercises">Deploy the services</a>: creating IOS and IOS-XR configurations for PE- and CE-routers. Deploying final configurations to PE- and CE-routers.</li>
+<li><a href="https://github.com/fherbet/MyLABs/tree/ALL_IN_ONE_PLAYBOOK_with_Roles/1.My1LAB#netautsol-logging-and-testing-week-5-hands-on-exercises">Logging and Testing</a>: He decided to validate input data and wrote unit tests that checked the validation code. He also added change logging to his playbooks and performed a number of deployment validation tests.</li>
+<li><a href="https://github.com/fherbet/MyLABs/tree/LiveEnv/1.My1LAB">Going into production</a>: The concepts Francois mastered during the course are already in production. You won&rsquo;t be able to see the final code for obvious reasons, but you can get an idea of how far he got just a few months after he started the course and how well things are working in real life.</li>
+</ul>
+<p>The awesome end result:</p>
+<blockquote class="cite">When field techs go on site to complete installation, we can bring site live for our customer 10 minutes after CPE is powered on.</blockquote>
+<p>I asked him if he&rsquo;d have time for a beer during Cisco Live Europe but unfortunately he was too busy:</p>
+<blockquote class="cite">Have bunch of assert tasks to build to make my sanity checks more robust, and several hundred sites in my current pipeline where my playbook based on the one I've build during the automation course will handle fully automated provisioning, service configuration + sanity checks...</blockquote>
+<p>I&rsquo;d say that&rsquo;s a sweet problem to have ;) &hellip; and a great answer to the question &ldquo;<em>What will happen to my job now that we&rsquo;re automating everything?</em>&rdquo; </p>
+<h4>Latest Update from Francois</h4><p>This is what he sent me a few days ago:</p>
+<blockquote class="cite"><p>I&rsquo;m now almost at full speed: over the last 2 weeks, I have been able to deliver (alone) ~40 dual homed sites (80 CPEs) using Ansible.</p>
+<p>I built a <strong>cron</strong> job that checks for management loopback interface reachability every 5 minutes and runs all-in-one playbook to check/configure PE/CPE, automate final tests and sends confirmation email to internal teams and customer with tech details so they can start monitoring the devices. </p>
+<p>I just have to troubleshoot failed ones (based on Ansible logs I get via emails) and answer field techs&rsquo; calls to say most of the time &ldquo;Thanks mate, everything&rsquo;s done! You can go back home!&rdquo;.</p>
+</blockquote>
+<p>The only thing I wish now is that all ISPs I have to work with would be as agile as the one Francois works for ;)</p>
+

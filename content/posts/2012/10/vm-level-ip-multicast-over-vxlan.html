@@ -1,0 +1,14 @@
+---
+title: "VM-level IP Multicast over VXLAN"
+date: "2012-10-25T07:56:00.000+02:00"
+tags: [ VXLAN,Data Center,Overlay networks,multicast,virtualization ]
+---
+
+<p><a href="http://www.linkedin.com/in/dumlutimuralp">Dumlu Timuralp</a> (@dumlutimuralp) sent me an excellent question:</p>
+<blockquote class="cite">I always get confused when thinking about IP multicast traffic over VXLAN tunnels. Since VXLAN already uses a Multicast Group for layer-2 flooding, I guess all VTEPs would have to receive the multicast traffic from a VM, as it appears as L2 multicast. Am I missing something?</blockquote>
+<p>Short answer: no, you’re absolutely right. IP multicast over VXLAN is clearly suboptimal.<!--more--></p>
+<p>In the good old days when the hypervisor switches were truly dumb and used simple VLAN-based layer-2 switching, you could control the propagation of IP multicast traffic by deploying IGMP snooping on layer-2 switches (or, if you had Nexus 1000V, you could configure IGMP snooping directly on the hypervisor switch).</p>
+<p>Those days are gone (finally), but the brave new world still lacks a few features. No ToR switches are currently capable of digging into the VXLAN payload to find IGMP queries and joins, and it’s questionable whether Nexus 1000V can do IGMP snooping over VXLAN (IGMP snooping on Nexus 1000V is configured on VLANs).</p>
+<p><strong>End result</strong>: IP multicast running across a VXLAN segment will be delivered to all VMs in the same segment. Both hypervisor switches and VMs will to have spend CPU cycles to process unwanted multicast packets.</p>
+<h4>More information</h4><p>Further VXLAN technical details will be described in the <a href="http://www.ipspace.net/VXLAN">VXLAN Technical Deep Dive</a> webinar (<a href="http://vxlan.eventbrite.com/">register here</a>).</p>
+

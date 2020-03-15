@@ -1,0 +1,8 @@
+---
+title: "Tcl-based IOS backdoor"
+date: "2008-03-31T07:44:00.002+02:00"
+tags: [ security,Tcl ]
+---
+
+Andy Davis from the Information Risk Management has written an interesting "application note": how to <a href="http://www.irmplc.com/content/pdfs/Creating_Backdoors_in_Cisco_IOS_using_Tcl.pdf">create a backdoor to Cisco IOS using Tclsh</a> (I've tested it and it works quite nicely). His backdoor implementation relies on a bug in Cisco IOS that allows a "hung" (or never-ending) Tclsh script to continue executing even after the user session has been disconnected (the only means of stopping such a script is with the <strong>clear line</strong> command). That bug has been fixed in recent IOS versions (I've tested that as well, the Tclsh script is killed as soon as the Telnet session is disconnected in IOS 12.4(15)T), but you can still use the same technique (although it might be a bit less convenient) if you convert the Tclsh script into an EEM policy and trigger it periodically with a timer event.
+

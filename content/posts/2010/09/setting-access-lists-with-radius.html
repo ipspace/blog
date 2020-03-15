@@ -1,0 +1,15 @@
+---
+title: "Setting access lists with RADIUS"
+date: "2010-09-22T06:43:00.000+02:00"
+tags: [ security ]
+---
+
+<p>Chris sent me an interesting challenge a few days ago: he wanted to set inbound access lists on virtual access interfaces with RADIUS but somehow couldn’t get this feature to work.</p>
+<p>Uncle Google quickly provided two documents on Cisco.com: <a href="http://www.cisco.com/en/US/docs/ios/11_3/security/configuration/guide/scratrib.pdf">an older one</a> (explaining the IETF attributes, vendor-specific attributes and AV-pairs) and the <a href="http://www.cisco.com/en/US/docs/ios/sec_user_services/configuration/guide/sec_rad_ov_ietf_attr.pdf">most recent one</a> (with more attributes and less useful information) covering every Cisco IOS software release up to 12.2 (yeah, it looks like the RADIUS attributes haven’t been touched in a long time). According to the documentation, attribute #11 as well as AV-pairs <strong>ip:</strong><strong>inacl</strong><strong>/ip:outacl</strong> and <strong>lcp:interface-config</strong> should work, but the access list did not appear in the interface configuration.</p>
+<!--more--><p>A few e-mails later, we’ve discovered a number of somewhat semi-documented facts:</p>
+<ul class="ListParagraph"><li>Most changes to interface configuration done with <strong>lcp:interface-config </strong>AV-pair appear in the <strong>show running </strong>printout; the access lists don’t (regardless of how you set them). You have to use the <strong>show ip interface </strong>command to verify the <strong>ip access-group</strong> configured on the interface.</li>
+<li>Although the documentation states you can only use a numbered ACL with attribute#11, named ACLs work as well.</li>
+<li>You have to specify <strong>.in</strong> or <strong>.out </strong>suffix in attribute#11, otherwise the same ACL is applied in both directions.</li>
+<li>You can have multiple instances of attribute#11 in RADIUS reply and the router will simply apply them sequentially, sometimes overwriting the previous settings (for example, you could specify bidirectional ACL in one instance and inbound ACL in the next one).</li>
+</ul>
+

@@ -1,0 +1,29 @@
+---
+title: "Implications of Valley-Free Routing in Data Center Fabrics"
+date: "2018-09-27T09:05:00.000+02:00"
+tags: [ Design,Data Center,Fabric,BGP,EVPN ]
+---
+
+<p>As I explained in a <a href="https://blog.ipspace.net/2018/09/valley-free-routing-in-data-center.html">previous blog post</a>, most leaf-and-spine best-practices (as in: what to do if you have no clue) use <a href="https://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol">BGP as the IGP routing protocol</a> (<a href="https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html">regardless of whether it&rsquo;s needed</a>) with the <a href="https://www.ipspace.net/Data_Center_BGP/Autonomous_Systems_and_AS_Numbers">same AS number shared across all spine switches</a> to implement valley-free routing.</p>
+<p>This design has an interesting consequence: when a link between a leaf and a spine switch fails, they can no longer communicate.</p>
+<p>For example, when the link between L1 and C1 in the following diagram fails, there&rsquo;s no connectivity between L1 and C1 as there&rsquo;s no valley-free path between them.<!--more--></p>
+<div class='separator'><a href="https://3.bp.blogspot.com/-sFMPk5zUkTY/W6iMeMtXxXI/AAAAAAAAJOE/lBMzSGPzvPwRr8nXtOw0469uIwCTiLsqACLcBGAs/s1600/VF_DC_LinkFailure.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-sFMPk5zUkTY/W6iMeMtXxXI/AAAAAAAAJOE/lBMzSGPzvPwRr8nXtOw0469uIwCTiLsqACLcBGAs/s550/VF_DC_LinkFailure.png" data-original-width="1600" data-original-height="545" /></a></div>
+<p>No big deal, right? After all, we built the data center fabric to exchange traffic between external devices attached to leaf nodes. Well, I hope you haven&rsquo;t connected a firewall or load balancer straight to the spine switches using MLAG or a similar trick.</p>
+<p><strong>Lesson learned</strong>: connect all external devices (including network services devices) to leaf switches. Spine switches should provide nothing more than intra-fabric connectivity.</p>
+<p class="info"><a href="https://www.ipspace.net/Subscription">ipSpace.net subscribers</a> can find more details in <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">leaf-and-spine fabrics</a> webinar.</p>
+<p>There&rsquo;s another interesting consequence. As you might know, some vendors love <a href="https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics">designs that use IBGP or EBGP EVPN sessions between loopback interfaces of leaf and spine switches on top of EBGP underlay</a>.</p>
+<p>Guess what happens after the L1-C1 link failure: the EVPN session between loopback interfaces (regardless of whether it&rsquo;s an IBGP or EBGP session) is lost no matter what because L1 cannot reach C1 (and vice versa) anyway.</p>
+<div class='separator'><a href="https://2.bp.blogspot.com/-FQIgyzfpeBY/W6iMnUxyx1I/AAAAAAAAJOI/TMtCEjltFRgqRTxdBkmkNk0W03loT1LzwCLcBGAs/s1600/VF_EVPN_Failure.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-FQIgyzfpeBY/W6iMnUxyx1I/AAAAAAAAJOI/TMtCEjltFRgqRTxdBkmkNk0W03loT1LzwCLcBGAs/s550/VF_EVPN_Failure.png" data-original-width="1600" data-original-height="547" /></a></div>
+<p><strong>Inevitable conclusion</strong>: all the grand posturing explaining how EVPN sessions between loopback interfaces running on top of undelay EBGP are so much better than EVPN running as an additional address family on the directly-connected EBGP session <em>in a typical data center leaf-and-spine fabric</em> is plain <em>merde </em>(pardon my French).</p>
+<p>Even worse, I&rsquo;ve seen a vendor-produced design that used:</p>
+<ul class="ListParagraph"><li>EBGP in a small fabric that would work well enough with OSPF for the foreseeable future;</li>
+<li>IBGP EVPN sessions between loopback interfaces of leaf and spine switches;</li>
+<li>Different AS numbers on spine switches to make it all work, turning underlay EBGP into a TCP version of RIPv2 using AS path length as the hop count.</li>
+</ul>
+<p>As I said years ago: <a href="https://blog.ipspace.net/2011/08/road-to-complex-designs-is-paved-with.html">the road to broken design is paved with great recipes</a>.</p>
+<p><strong>Lesson learned</strong>: whenever evaluating a design, consider all possible failure scenarios.</p>
+<p>Don&rsquo;t get me wrong. There might be valid reasons to use IBGP EVPN sessions on top of EBGP underlay. There are valid reasons to use IBGP route reflectors implemented as VNF appliances for scalability&hellip; but the designs promoted by most networking vendors these days make little sense once you figure out how routing really works.</p>
+<h4>For the few people interested in the red pill</h4><p>If you want to know more about leaf-and-spine fabrics (and be able to figure out where exactly the vendor marketers cross the line between unicorn-colored reality and plain bullshit), start with the <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">Leaf-and-Spine Fabric Architectures</a> and <a href="https://www.ipspace.net/EVPN_Technical_Deep_Dive">EVPN Technical Deep Dive</a> webinars (both are part of <a href="https://www.ipspace.net/Subscription">Standard ipSpace.net subscription</a>).</p>
+<p>You can take one step further and enroll in the <a href="https://www.ipspace.net/Designing_and_Building_Data_Center_Fabrics">Designing and Building Data Center Fabrics</a> online course which includes three design assignments reviewed by a <a href="https://www.ipspace.net/ExpertExpress">member of ipSpace.net ExpertExpress team</a>.</p>
+<p>Finally, when you want to be able to design more than just the data center fabrics, check out the <a href="https://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center online course</a>.</p>
+

@@ -1,0 +1,27 @@
+---
+title: "Redundant BGP Connectivity on a Single ISP Connection"
+date: "2019-10-04T08:58:00.000+02:00"
+tags: [ Design,Internet,BGP ]
+---
+
+<p>A while ago Johannes Weber <a href="https://twitter.com/webernetz/status/1173888271761530880">tweeted about an interesting challenge</a>:</p>
+<blockquote class='cite'><p>We want to advertise our AS and PI space over a single ISP connection. How would a setup look like with 2 Cisco routers, using them for hardware redundancy? Is this possible with only 1 neighboring to the ISP?</p>
+</blockquote>
+<p>Hmm, so you have one cable and two router ports that you want to connect to that cable. There’s something wrong with this picture ;)<!--more--></p>
+<p>Joking aside, whenever faced with a challenge like this you have to ask yourself “<em>what problem are we trying to solve?</em>”. If the answer is “<em>increase the availability of our AS</em>” the next question should be “<em>and what will be most likely to fail in this setup?</em>” Hint: unless you’re buying your boxes on eBay, probably not the router’s power supply ;)</p>
+<p>Whenever you’re trying to increase the reliability of a system, you’ll get the best results if you (A) increase the reliability of the weakest link or (B) add redundancy to the weakest link. Anything else is marginally better than rearranging deck chairs on Titanic.</p>
+<div class="note" data-markdown="1">Watch the great <a href="https://www.ipspace.net/Reliability_Theory:_Networking_through_a_Systems_Analysis_Lens">Reliability Theory</a> webinar if you’re interested in a more formal approach to this topic. </div>
+<p><strong>Conclusion</strong>: We should get the second ISP connection… and all of a sudden have a very familiar and well-understood scenario of two links connected to two routers.</p>
+<p>Assuming the second ISP connection is not available (or there’s no budget), is there another option? Of course, we could build a whole Rube Goldberg machine out of this… but keep in mind that one should never over-complicate redundant architectures, as the added complexity often kills the system before a failure does (see also: <a href="https://blog.ipspace.net/2014/04/should-we-use-redundant-supervisors.html">redundant supervisors</a> and <a href="https://blog.ipspace.net/2017/06/leaf-and-spine-fabrics-implicit-or.html">chassis switches</a>).</p>
+<p>In the scenario we’re discussing the simplest solution would be to physically move the cable to a (cold standby) router in case the primary router fails, and have the second router preconfigured with the same WAN IP address and the same BGP session.</p>
+<p>If that’s not good enough, find a simple layer-1 device (like <a href="https://www.valiantcom.com/aps/applications/ethernet-failover-server-protection.html">this automatic failover switch</a>) with one uplink and active/standby downlinks so you don’t have to drive to the office and replug the cable into another port.</p>
+<p>Being a networking engineer, it’s easy to get fancier than that:</p>
+<ul><li>Insert a layer-2 switch in front of the two routers;</li>
+<li>Persuade your ISP to assign a /29 to the connecting subnet;</li>
+<li>Connect both routers to the layer-2 switch;</li>
+<li>Establish two BGP sessions with the ISP.</li>
+</ul>
+<p>You might get it done if you’re really friendly with your ISP, otherwise I wish you luck persuading their support team to jump through the hoops for you.</p>
+<p>Alternatively, you could bond the two routers into a single control plane (assuming your vendor supports something as stupid as that), connect the outside layer-2 switch to both boxes, configure a shared IP address on a VLAN interface… Honestly, don’t.</p>
+<p>However, regardless of what you do, regardless of how much complexity you throw at the problem, you cannot get rid of the single point of failure without the second ISP connection… or as my father-in-law used to say: "<em>no matter which way you turn, your a**e is always behind you</em>".</p>
+

@@ -1,0 +1,28 @@
+---
+title: "How Do You Provision a 500-Switch Network in a Few Days?"
+date: "2019-10-15T08:13:00.000+02:00"
+tags: [ Automation ]
+---
+
+<p><strong>TL&amp;DR:</strong> You automate the whole process. What else do you expect?</p>
+<p>During the Tech Field Day Extra @ Cisco Live Europe 2019 we were taken on a behind-the-stage tour that included a chat with people who built the Cisco Live network, and of course I had to ask how they automated the whole thing. They said &ldquo;well, we have the guy that wrote the whole system onsite and he&rsquo;ll be able to tell you more&rdquo;. Turns out <em>the guy </em>was my good friend Andrew Yourtchenko who graciously showed the system they built and explained the behind-the-scenes details.<!--more--></p>
+<p><strong>Trick#1</strong>: Keep it as simple as possible. </p>
+<p>They didn&rsquo;t use a complex general-purpose tool that could do everything and everything else and make you coffee (according to PowerPoints and whitepapers) but built a system that does exactly what they need and nothing more.</p>
+<p>As always, it all starts with good network design &ndash; simple layer-3 core + access network (wireless L2 mobility is handled by wireless controllers)&hellip; and here&rsquo;s the next neat detail: they use DHCP to assign IP address to access switch uplinks and to point the switches to initial configuration which can be the same for all switches because IP addresses are assigned dynamically.</p>
+<p><strong>Trick#2</strong>: Use EEM applet on the switch to collect its MAC address and serial number and report it to a web server. </p>
+<p>If the switch is already known it&rsquo;s provisioned, if it&rsquo;s a new device a script logs into the switch, collects all the information it needs, and adds the new device into the staging area of device inventory where an operator takes over and configures it.</p>
+<p><strong>Trick#3</strong>: All changes to the network devices are done in the same way:</p>
+<ul class="ListParagraph"><li>Copy configuration changes to device flash.</li>
+<li>Execute <strong>copy flash:filename running-config</strong></li>
+</ul>
+<p>Dangerous changes are bracketed with <strong>reload in 15 </strong>and <strong>reload cancel</strong> so they don&rsquo;t lose a switch if (for example) they have to change routing setup or uplink configuration.</p>
+<p>All interactions with devices are logged and the printouts are saved, so you can always check how a particular change worked out (and why it might have failed).</p>
+<p><strong>Trick #4</strong>: Don&rsquo;t be too smart dealing with configuration changes.</p>
+<p>Most of the tools out there try to figure out how to get from <em>here </em>(current configuration) to <em>there </em>(desired configuration) with a carefully choreographed sequence of configuration commands. They decided to make it simpler than that:</p>
+<ul class="ListParagraph"><li>All interface configuration changes start with <strong>default interface </strong>so the interface is always in a known state. Keep in mind that they use <strong>copy </strong>to execute all configuration commands (almost) at once, resulting in somewhat-atomic operations (or at least as atomic as you can get with Cisco IOS).</li>
+<li>All other changes are stored as templates that have <em>remove </em>and <em>add </em>elements &ndash; it&rsquo;s the responsibility of whoever is configuring the system to figure out what needs to be taken out and how to do it safely. Sounds like a really bad approach until you realize that you have to do that only when preparing a new change template&hellip; and in a well-designed network you don&rsquo;t change your mind too often anyway.</li>
+</ul>
+<p>&hellip; and there were probably a dozen other things Andrew mentioned and I forgot to write down.</p>
+<p><strong>Lesson learned:</strong> provisioning a large campus network in a few days is easy and reliable as long as you do your homework and keep things as simple as possible. </p>
+<p>Want to do something similar but don&rsquo;t know where to start? Check out our <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">network automation course</a>.</p>
+

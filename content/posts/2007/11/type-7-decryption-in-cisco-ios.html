@@ -1,0 +1,12 @@
+---
+title: "Type 7 decryption in Cisco IOS"
+date: "2007-11-14T07:59:00.000+01:00"
+tags: [ security ]
+---
+
+Tim Riegert sent me an interesting hint: you don't need password crackers to decode type-7 passwords, you just need access to a router. Here's how you do it:<div class='code'><p>We'll turn on type-7 encryption for local passwords and generate a test username</p>
+<pre>R1(config)#<strong>service password-encryption</strong><br />R1(config)#<strong>username test password t35t:pa55w0rd</strong></pre><p>Next we'll inspect the generated username with the show running command</p>
+<pre>R1(config)#<strong>do show run | include username</strong><br />username test password <span class='high'>7 08351F1B1D431516475E1B54382F</span></pre><p>Now we'll create a key chain and enter the type-7 encrypted password as the key string &hellip;</p>
+<pre>R1(config)#<strong>key chain decrypt</strong><br />R1(config-keychain)#<strong>key 1</strong><br />R1(config-keychain-key)#<strong>key-string 7 08351F1B1D431516475E1B54382F</strong></pre><p>&hellip; and the show command does the decryption for us.</p>
+<pre>R1(config-keychain-key)#<strong>do show key chain decrypt</strong><br />Key-chain decrypt:<br />&nbsp;&nbsp;&nbsp;&nbsp;key 1 -- text "<span class='high'>t35t:pa55w0rd</span>"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;accept lifetime (always valid) - (always valid) [valid now]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;send lifetime (always valid) - (always valid) [valid now]</pre></div>
+

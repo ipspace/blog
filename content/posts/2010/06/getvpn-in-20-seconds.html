@@ -1,0 +1,13 @@
+---
+title: "GETVPN in 20 seconds"
+date: "2010-06-18T09:33:00.001+02:00"
+tags: [ VPN,Workshop,Big picture,ipsec ]
+---
+
+<p>One of the VPN technologies discussed in the <a href="http://www.ioshints.info/Choose_the_optimal_VPN_service"><em>Choose the Optimal VPN Service</em></a> webinar (<a href="http://choosevpn-ioshints.eventbrite.com/">click here to register for the next session</a>) is <a href="http://www.cisco.com/en/US/products/ps7180/index.html">GETVPN</a>, which is introduced with this slide:</p>
+<p style='text-align: center'><a href='http://www.ioshints.info/File:GetVPN_Big_Picture.png'><img src='http://www.ioshints.info/wk/images/thumb/f/f4/GetVPN_Big_Picture.png/800px-GetVPN_Big_Picture.png' width='540' /></a></p>
+<!--more--><p>To understand GETVPN and its usability, you have to know that it’s a large-scale almost-transport-mode IPSec implementation with shared keys, group SA (to make multicast replication in SP network work) and centralized policy and key management (which is the true value-add GETVPN brings).</p>
+<p class="note">GETVPN actually uses IPSec tunnel mode and reuses the original IP header as IP header of the tunnel packet. Tunnel mode is used to avoid any interference with fragmentation/reassembly.</p>
+<p>You cannot use GETVPN to transport data sent between hosts with private IP addresses across public IP infrastructure (for example, the Internet); the existing IP infrastructure of your network should provide end-to-end routing. GETVPN is thus best used to encrypt sensitive data travelling across private IP infrastructure (for example, data exchanged between MPLS/VPN sites or data sent across a VPLS cloud).</p>
+<p class="more">To learn more about GETVPN and other VPN technologies and implementations, <a href="http://choosevpn-ioshints.eventbrite.com/">register for the next session of the <em>Choose the Optimal VPN Service</em> webinar</a>. You’ll find more GETVPN technical details and design guidelines in the <a href="http://www.nil.com/ipcorner/IPsecVPN5/"><em>Designing Site-to-Site IPsec VPNs - Part 5</em></a> <a href="http://www.nil.com/ipcorner">IP Corner</a> article.</p>
+

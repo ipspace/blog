@@ -1,0 +1,12 @@
+---
+title: "Cisco IOS is not an authoritative DHCP server"
+date: "2009-09-02T06:51:00.000+02:00"
+tags: [ DHCP ]
+---
+
+<div class="bloggerBody"><p><a href="http://wiki.nil.com/"><img src="http://www.ioshints.info/images/Wiki.png" class="ImgFLTright"></a>Imagine you have to move your DHCP clients to a different range within the same IP subnet. Can you do it if you run the DHCP server on a router running Cisco IOS? Sure, there’s the <strong>ip dhcp excluded-address </strong>command.</p>
+<p>Not so fast … the <strong>ip dhcp excluded-address </strong>command does not affect the existing bindings. Sounds weird? It is. You tell the router to avoid some of the IP addresses in the DHCP pool and it will happily extend the leases for those IP addresses, it just won’t allocate new IP addresses from the excluded range. To change the IP address assignment of the existing clients, you have to clear the DHCP bindings with the <strong>clear ip dhcp binding </strong>command.</p>
+<p>OK, so you clear the bindings. The next time the clients try to extend the lease, their requests will be rejected. Wrong – <a href="http://wiki.nil.com/DHCP_client_address_change">Cisco IOS is not an authoritative DHCP server</a>. It ignores DHCPREQUEST messages coming from unknown clients in a correct subnet.</p>
+<p style="text-align: right;">Read the <a href="http://wiki.nil.com/DHCP_client_address_change">DHCP client address change</a> article in the <a href="http://wiki.nil.com/">CT3 wiki</a></p>
+</div>
+

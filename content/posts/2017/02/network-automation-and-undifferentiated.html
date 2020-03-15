@@ -1,0 +1,19 @@
+---
+title: "Network Automation and Undifferentiated Heavy Lifting"
+date: "2017-02-21T08:33:00.000+01:00"
+tags: [ Automation,Ansible ]
+---
+
+<p>I got this tweet after publishing the &ldquo;<a href="http://blog.ipspace.net/2017/02/use-ansible-to-execute-single-command.html"><em>use Ansible to execute a single command on all routers</em></a>&rdquo; blog post (and a few similar comments on the blog post itself)</p>
+<blockquote class="cite">Or use Python, Netmiko and a simple For loop</blockquote>
+<p>I never cease to be amazed by the urge to do undifferentiated heavy lifting in the IT industry.<!--more--></p>
+<p>Of course you can solve the &ldquo;execute one command on a few boxes&rdquo; problem with Python and Netmiko (assuming you&rsquo;re willing to invest your time in learning Python or wasting it with google-and-throw <a href="http://www.english-for-students.com/Spaghetti.html">spaghetti wall approach</a>).</p>
+<p>You can also improve your script and switch into <strong>enable </strong>mode (or use <strong>authorize </strong>and <strong>auth_pass </strong>parameters in <strong>ios_command </strong>Ansible module).</p>
+<p>You can add support for configuration commands, or you could use <strong>ios_config </strong>Ansible module or NAPALM library.</p>
+<p>You can invest time in building a multi-threaded solution once you figure out that <strong>write memory </strong>(or <strong>show running</strong>) command executed on 100 high-end PE-routers takes too much time.</p>
+<p>You can also figure out all the challenges of multi-threaded programming once you start stomping on your threads&rsquo; toes.</p>
+<p>Or you could find the right tool for the job and focus on getting the job done instead of reinventing the tool&hellip; and the more tools you&rsquo;re familiar with, the more likely you&rsquo;ll choose the right tool for the job.</p>
+<p>Do I have to mention that it&rsquo;s easiest to get familiar with the tools if you use them in a low-risk environment like a lab?</p>
+<p>You can also solve the next problem with another <strong>for </strong>loop (or deploy <a href="http://blog.ipspace.net/2017/02/more-thoughts-on-ospf-forwarding-address.html">OSPF NSSA areas</a>).</p>
+<p class="more">Some of you might know that I wrote quite a few &ldquo;yeah, it&rsquo;s just a <strong>for </strong>loop&rdquo; scripts in my life, and saw them blossom into a spaghetti mess. I&rsquo;ve also seen what happens when such a script grows organically to cover more platforms. Everything I wrote above is unfortunately based on my personal experience (and learning from my own mistakes). Try not to repeat them.</p> 
+

@@ -1,0 +1,18 @@
+---
+title: "NAT translation logging"
+date: "2008-12-08T07:10:00.001+01:00"
+tags: [ syslog,NAT,logging ]
+---
+
+<div class="bloggerBody"><p>The <strong>ip nat log translations syslog </strong>command starts NAT logging: every NAT translation created on the router is logged in <em>syslog</em> (which can be sent to console, <em>syslog</em> host or internal buffer). You could use this command as a poor man’s reporting tool if you have to monitor the address translations on your edge routers (for example, due to security policy or auditing requirements). Obviously you should configure the <strong>no logging console </strong>first in a production environment; otherwise your router will hang a few moments after you’ve enabled NAT logging.</p>
+<script>startHide()</script><p>The logging printouts include:</p>
+<ul class="Bullet1"><li>layer-4 protocol;</li>
+<li>inside local and global addresses and port numbers;</li>
+<li>outside local and global addresses and port numbers.</li>
+</ul>
+<p></p>
+<p>For example, the following messages were logged when an inside host 10.0.0.1 tried to access web server at the IP address 192.168.0.1. The inside source address 10.0.0.1 was translated through a NAT pool (configured with <strong>ip nat inside source list </strong><strong><em>ACL </em></strong><strong>pool </strong><strong><em>POOL </em></strong>command) into 10.17.3.32 and the inside destination address 192.168.0.1 was translated into outside destination address 10.17.3.2  (configured with <strong>ip nat outside source static </strong>command).</p>
+<blockquote class='code'>12:17:12.503: %IPNAT-6-NAT_CREATED: Created tcp 10.0.0.1:43800 10.17.3.32:1024 192.168.0.1:80 10.17.3.2:80<br />12:18:47.751: %IPNAT-6-NAT_DELETED: Deleted tcp 10.0.0.1:43800 10.17.3.32:1024 192.168.0.1:80 10.17.3.2:80</blockquote>
+<p class="note">Does it sound weird to specify the destination address translation with the <strong>ip nat outside source </strong>configuration command? It does to me …</p>
+<script>endHide()</script></div>
+

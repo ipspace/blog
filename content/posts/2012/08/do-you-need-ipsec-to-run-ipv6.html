@@ -1,0 +1,17 @@
+---
+title: "Do you need IPsec to run IPv6?"
+date: "2012-08-09T06:27:00.000+02:00"
+tags: [ IPv6,security,Workshop ]
+---
+
+<p>The usual claim that “<a href="http://blog.ioshints.info/2010/02/ipv6-myths.html">IPv6 has better security because it includes mandatory IPsec support</a>” is evidently creating some confusion, at least based on a set of questions I received from one of my readers.</p>
+<blockquote class="cite">Can IPv6 work without IPsec?</blockquote>
+<p>Absolutely. Most IPv6 deployments don’t use IPsec (unless you’re building IPsec-based VPNs over IPv6 transport infrastructure).<!--more--></p>
+<p class="info">In December 2011, IPsec support in IPv6 was <a href="http://tools.ietf.org/html/rfc6434#section-11">downgraded from MUST to SHOULD</a> by <a href="http://tools.ietf.org/html/rfc6434">RFC 6434</a>.</p>
+<blockquote class="cite">When we want to connect to a server with IPsec over IPv6, shall we have certificates on the clients or will it be like HTTPS?</blockquote>
+<p>There’s no difference between IPsec running on top of IPv4 or IPv6. The first step in every IPsec session setup is key exchange; default key management protocol specified in RFC 6434 is IKEv2. IKEv2 can use preshared keys or certificates.</p>
+<blockquote class="cite">Is it mandatory to have a Cisco IOS image that includes IPsec support to deploy IPv6?</blockquote>
+<p>No. For example, <a href="http://www.cisco.com/en/US/prod/collateral/routers/ps10616/white_paper_c11_556985_ps10537_Products_White_Paper.html#wp9000809">IP Base technology package on ISR G2 includes IPv6 support</a>. However, you should use the <a href="http://tools.cisco.com/ITDIT/CFN/jsp/index.jsp">feature navigator</a> to confirm which images support IPv6 on your specific platform/release.</p>
+<h4>More information</h4><p>To get an overview of IPv6 deployment requirements, watch the <a href="http://www.ipspace.net/Enterprise_IPv6_-_the_First_Steps"><em>Enterprise IPv6 – the First Steps</em></a> webinar (or its Service Provider equivalent). Core and access network design guidelines and router configurations are explained in the <a href="http://www.ipspace.net/Building_Large_IPv6_Service_Provider_Networks"><em>Building Large IPv6 Service Provider Networks</em></a><em> </em>webinar (which is equally applicable in large enterprise environments). All three webinars are available as IPv6 Trilogy jumbo pack or as part of the <a href="http://www.ipspace.net/Subscription">yearly subscription</a>.</p>
+<p>And don’t forget – if you’d like to get help you with IPv6 design or deployment planning, <a href="http://www.ipspace.net/ExpertExpress">check out my ExpertExpress service</a> or <a href="http://www.nil.com/solutions/consulting/">contact our professional services team</a>.</p>
+

@@ -1,0 +1,21 @@
+---
+title: "How Many vMotion Events Can You Expect in a Data Center?"
+date: "2016-09-26T08:55:00.000+02:00"
+tags: [ Data Center,vMotion ]
+---
+
+<p><a name="_GoBack"></a>One of my friends sent me this question:</p>
+<blockquote class="cite">How many VM moves do you see in a medium and how many in a large data center environment per second and per minute? What would be a reasonable maximum?</blockquote>
+<p>Obviously the answer to the first part is <em>it depends</em> (please share your experience in the comments), so we&#x2019;ll focus on the second one. It&#x2019;s time for another Fermi estimate.<!--more--></p>
+<p>Assumptions:</p>
+<ul class="ListParagraph"><li>A hypervisor host has two 2 10GE uplinks and uses one of them for vMotion;</li>
+<li>vMotion has reasonably small overhead;</li>
+<li>Typical VM size is 4GB = 32 Gbit. </li>
+</ul>
+<p>Based on those assumptions, moving that VM across the 10GE uplink would take approximately 4 seconds.</p>
+<p>The expected VM move frequency of a hypervisor doing its best to get all VMs off it (meaning you placed it into maintenance mode) is thus ~ <strong>0.25 Hz</strong>.</p>
+<p>Now for the worst-case scenario: all hypervisors on a ToR switch panic and start shuffling VMs around (within a ToR switch). A typical ToR switch would have ~40 hosts connected to it, resulting in ~10 VM moves per second.</p>
+<h3>Evacuating a ToR switch</h3><p>Now for another scenario: a ToR switch fails and even though all the servers connected to it have a redundant 10GE uplink going to another ToR switch you decide to shut them down (just in case the other switch fails as well).</p>
+<p>A typical ToR switch has 160 Gbps of uplink capacity (4 x 40GE), and you don&#x2019;t want to use it all for vMotion. Let&#x2019;s assume vMotion can consume 100 Gbps of that capacity, resulting in 2.5 VM moves per second (or 4-5 VM moves per second if you&#x2019;re willing to consume all the uplink bandwidth).</p>
+<p><strong>Conclusion:</strong> I would be highly surprised if anyone is seeing more than a dozen or so moves per second in a typical enterprise environment with a few thousand VMs. Have you seen more?</p>
+

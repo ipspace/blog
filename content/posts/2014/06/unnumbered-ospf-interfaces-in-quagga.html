@@ -1,0 +1,28 @@
+---
+title: "Unnumbered OSPF Interfaces in Quagga (and Cumulus)"
+date: "2014-06-24T07:09:00.000+02:00"
+tags: [ OSPF,Data Center,Fabric ]
+---
+
+<p><a href="ar.linkedin.com/pub/carlos-g-mendioroz/1/85/723">Carlos Mendioroz</a> sent me an interesting question about unnumbered interfaces in Cumulus Linux and some of the claims they make in their documentation.</p>
+<p><strong>TL&amp;DR</strong>: Finally someone got it! Kudos for realizing how to use an ancient trick to make data center fabrics easier to deploy (and, BTW, the claims are exaggerated).<!--more--></p>
+<h4>Why am I excited about unnumbered interfaces?</h4><p>Every data center fabrics vendor claims how easy it is to configure their fabrics. Plug in the cables and the devices almost self-configure the fabric (or you might have to <a href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/fabricpath/513_n1_1/N5K_FabricPath_Configuration_Guide/fp_n5k_interfaces.html">add a single configuration command</a> like <strong>switchport mode fabric</strong>). Messing up the wiring? No problem, It All Just Works™.</p>
+<p>These same vendors require you to configure IPv4 subnets on point-to-point links in a layer-3 leaf-and-spine fabric. Messing up the wiring? We wish you a happy troubleshooting!</p>
+<p class="info">Just in case you’re wondering why someone needs layer-3 leaf-and-spine fabrics: it’s not just overlay virtual networks, they could also be a large web property, doing finite element modelling, running a Hadoop cluster…</p>
+<p>Can we get around the requirement of configuring IPv4 subnets on links that connect two routed interfaces on adjacent switches? Of course – we’ve been using unnumbered interfaces on point-to-point links for ages. It’s just that the routing protocol programmers haven’t realized the days of thick coax cable are gone; in this century most people use Ethernet on point-to-point links. There’s even a <a href="http://tools.ietf.org/rfc/rfc5309">6-year-old informational RFC describing this idea</a>.</p>
+<p>To be fair, some vendors did implement unnumbered Ethernet interfaces. For example, <a href="http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/15-1-2/XE_340/configuration/guide/config/unnumber.html#wp1083666">some Cisco IOS images have support for unnumbered VLAN and Ethernet interfaces</a>, but cannot run routing protocols over them. Not exactly what I’ve been looking for. Does any other vendor fare better? Write a comment.</p>
+<p class="note">Did you notice I emphasized IPv4? IPv6 has unnumbered interfaces built in (they are called <em>Link Local Addresses</em>), and intra-AS routing protocols like OSPF have to use them (so it’s impossible to mangle your implementation in a way that would make numbered IPv6 point-to-point links mandatory).</p>
+<h4>And now for the claims</h4><p>The <a href="http://cumulusnetworks.com/docs/2.0/user-guide/layer_3/ospf.html#configuration-tip-unnumbered-interfaces">Cumulus documentation</a> claims:</p>
+<blockquote class="cite">In OSPFv2, configuring unnumbered interfaces reduces the links between routers into pure topological elements, and thus dramatically simplifies network configuration and reconfiguration. In addition, routing database contains only the real networks, hence memory footprint is reduced and SPF is faster.</blockquote>
+<p>Let’s walk through all of these claims:</p>
+<blockquote class="cite">Configuring unnumbered interfaces reduces the links between routers into pure topological elements</blockquote>
+<p>Translated into engineering terms: the Type-1 (router) LSA no longer contains the stub networks for inter-router subnets. You can do something similar on Cisco IOS with <a href="http://www.cisco.com/c/en/us/td/docs/ios/12_4t/12_4t15/ht_osmch.html">OSPF prefix suppression</a>.</p>
+<p class='update'>2014-06-24 17:40Z - Converting Ethernet interfaces into point-to-point links would also speed up adjacency establishment (no need for DR election) and get rid of type-2 LSAs connecting the two routers (as Enrique pointed out in the comments), which might result in marginally faster SPF (see below). You can achieve the same results in other OSPF implementations by configuring point-to-point OSPF interfaces.</p>
+<blockquote class="cite">… and thus dramatically simplifies network configuration and reconfiguration. </blockquote>
+<p>Marketese for “<a href="http://blog.ipspace.net/2008/10/ospf-ignores-subnet-mask-mismatch-on.html">we don’t check IP subnets in OSPF hello packets</a>”.</p>
+<blockquote class="cite">In addition, routing database contains only the real networks, </blockquote>
+<p>I don’t know what they call the <em>routing database</em>. OSPF database contains exactly the same number of LSAs, the routing table does contain smaller number of routes (but see also prefix suppression).</p>
+<blockquote class="cite">… hence memory footprint is reduced and SPF is faster.</blockquote>
+<p>Memory footprint is reduced. SPF speedup is probably measured in per mils – after all, the router considers the stub networks attached to Type-1 router LSAs only in the second (<a href="http://blog.ipspace.net/2008/02/when-ospf-becomes-distance-vector.html">distance vector</a>) part of the SPF algorithm, which has linear complexity.</p>
+<h4>Summary</h4><p>I love the way Quagga handles point-to-point Ethernet links – it does make the task of building a layer-3-only leaf-and-spine fabric much easier and error-resistant, but do you really have to call it <em>dramatic</em>?</p>
+

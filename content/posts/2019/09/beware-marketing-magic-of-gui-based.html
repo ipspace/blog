@@ -1,0 +1,16 @@
+---
+title: "Beware the Marketing Magic of GUI-Based Programming"
+date: "2019-09-17T08:33:00.000+02:00"
+tags: [ Automation,SDN ]
+---
+
+<p>Someone working for a network automation startup desperately tried to persuade me how cool their product is. Here’s what he sent me:</p>
+<blockquote class='cite'><p>We let network engineers build their own network automation solutions in no time without requiring coding or scripting knowledge. It’s all GUI based, specifically geared towards network engineers - they can simply model services or roll-out networks “as-designed”.</p>
+</blockquote>
+<p>The only problem: I’ve seen that same argument numerous times…<!--more--></p>
+<p>Decades ago I was “blessed” with hands-on experience of DEC Rally, a fourth-generation database query language. DEC’s marketing made similar claims and it all looked great during demos. It was also really easy to use… until you tried to do something that was a bit outside of what the product developers thought you should be doing (in my case it was a hierarchy of categories). At that moment, the whole thing turned into an impossible nightmare.</p>
+<p>Recently I had that same experience with Ansible. It’s a great product as long as you’re doing simple things (I usually call it ZX Spectrum Basic of Automation). The moment you try to do parsing, data manipulation, or a number of other tasks, you hit a gigantic concrete wall - it doesn’t even have proper multi-statement loops.</p>
+<p>While it’s possible to “solve” most of those problems with Jinja2 tricks (after all, Jinja2 is probably Turing-complete), the whole thing often looks uglier than minified Perl script, and everyone in their right mind recommends solving complex problems in Python scripts invoked from Ansible playbooks either as modules or Jinja2 filters.</p>
+<p>The problem with any of the “simple” tools is that it’s impossible to extend them without programming (sometimes in custom language just to make it more fun), and while all of these tools look great in PowerPoint, there’s a reason all programming languages contain conditional clauses, loops or other sorts of iterations, data structures, subroutines or functions, integration with external data sources… You might be able to solve simple “hello world” problems without these constructs, but eventually you will need them to get your job done.</p>
+<p>While it’s comforting to believe in magic silver bullets that will make your problems go away, the reality is usually disappointing, so whenever a $vendor comes along with a really cool slide deck, ask them to implement something complex that has been bothering you for a while. Some of the vendors like Apstra pass that test with flying colors… but only because they quickly fall back to Python code (and tell you how easy it is to write custom Python modules to extend their tool).</p>
+

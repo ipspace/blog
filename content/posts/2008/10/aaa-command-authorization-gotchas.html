@@ -1,0 +1,17 @@
+---
+title: "AAA command authorization gotchas"
+date: "2008-10-09T06:58:00.001+02:00"
+tags: [ security,access control,command line interface ]
+---
+
+<div class="bloggerBody"><p>Once upon a time, AAA command authorization in Cisco IOS queried the TACACS+ server for every single command a user entered. Rules have changed drastically in the meantime (at least for IOS release 12.4):</p>
+<ul class="Bullet1"><li>Non-privileged <strong>show</strong> commands are executed without TACACS+ authorization. Privileged <strong>show </strong>commands (<strong>show running</strong> or <strong>show archive log </strong><strong>config</strong>) are still authorized.</li>
+<li>Some commands that can be executed in non-privileged (aka disable) mode (enable, disable, help, logout) are authorized only if you configure <strong>aaa</strong><strong> authorization commands 0 </strong><strong><em>methods</em></strong> regardless of the current privilege level.</li>
+<li>Other commands (for example, <strong>ping</strong>) are authorized based on the current privilege level. </li>
+</ul>
+<p style="padding-left: 4em;" class="note">For example, if you’ve configured AAA command authorization only for privilege level 15, the <strong>ping </strong>command will be authorized if you’re working in <em>enable</em> mode, but not otherwise.</p>
+<ul class="Bullet1"><li>Command authorization is not performed on console unless you’ve configured <strong>aaa</strong><strong> authorization console</strong>.</li>
+</ul>
+<script>startHide()</script><p>This is the sample configuration I’ve used to run the tests with IOS release 12.4(19):</p>
+<pre class="code">aaa new-model<br />!<br />!<br />aaa authentication login default local<br />aaa authorization exec default group tacacs+ if-authenticated<br />aaa authorization commands 0 default group tacacs+ none<br />aaa authorization commands 15 default group tacacs+ none<br />!<br />username x password y<br />!<br />tacacs-server host 192.168.200.201</pre><script>endHide()</script></div>
+

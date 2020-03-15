@@ -1,0 +1,13 @@
+---
+title: "Warm upgrade"
+date: "2007-05-29T11:36:00.000+02:00"
+tags: [ network management,command line interface ]
+---
+
+After you've configured the <a href="http://ioshints.blogspot.com/2007/04/warm-reload.html">Warm Reload</a>, you can also perform <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios123/123newft/123t/123t_11/gtwarmup.htm">warm IOS upgrade/downgrade</a> (assuming that you already run at least the IOS release 12.3(11)T or 12.4). The Warm Upgrade functionality loads the new IOS image into the main memory, decompresses it and starts it, significantly reducing the downtime (in my case, a 2800 router reloaded in 62 seconds as compared to 415 seconds it took to load the image from a locally-attached server). <br /><br />Apart from the downtime reduction, the warm upgrade (requested with the <strong>reload warm file <em>url</em></strong> command) has a number of other benefits:<ul><li>The new image does not have to be stored in flash</li>
+<li>You don't have to change the boot image with the <strong>boot system</strong> command</li>
+<li>If the new image crashes, the router will revert to the original IOS image stored in flash</li>
+</ul>
+<script>startHide()</script>You can see when the actual reload takes place in the following printout - the reload starts after the new image has been loaded and decompressed (when the router prints the <em>SYS-5-RELOAD</em> message).<blockquote class='code'>a2#reload warm file tftp://10.0.0.10/c2800nm-advipservicesk9-mz.124-11.T.bin<br />Proceed with reload? [confirm]y<br />Loading c2800nm-advipservicesk9-mz.124-11.T.bin from 10.0.0.10 (via FastEthernet0/0):<br />!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br />[OK - 39782360 bytes]<br /><br />Decompressing the image : ###################################################################################################################################################################################################################################################################################################################################################################################################################################################### [OK]<br /><br />00:07:12: %SYS-5-RELOAD: Reload requested by console. Reload Reason: Reload Command.<br />00:07:12: %HSRP-6-STATECHANGE: FastEthernet0/0 Grp 1 state Standby -> Init</blockquote>
+<script>endHide()</script>
+

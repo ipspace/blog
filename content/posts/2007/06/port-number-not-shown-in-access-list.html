@@ -1,0 +1,8 @@
+---
+title: "Port number not shown in access-list log output"
+date: "2007-06-14T09:47:00.000+02:00"
+tags: [ security ]
+---
+
+When I was testing the inspection of router-generated traffic, I wanted to block and log all incoming traffic (apart from <strong>inspect</strong>-generated conduits, obviously) with a simple access-list:<pre class="code">access-list 102 deny ip any any log</pre>Unfortunately, the port numbers in the logging printout were always zero:<br /><blockquote class="code">%SEC-6-IPACCESSLOGP: list 102 denied udp 10.0.0.1(0) -> 192.168.1.3(0), 1 packet</blockquote>The reason for this behavior is very simple: unless a line in the IP ACL matches on the layer-4 port numbers, the router does not inspect them; the <strong>log</strong> action thus has no port number to show in the syslog printout.<br /><br />To fix the printout, you have to force the router to inspect the layer-4 port numbers. If you still want to block-and-log all traffic, the minimum access-list achieving this goal is the following:<pre class="code">access-list 102 deny   udp any gt 0 any gt 0 log<br />access-list 102 deny   tcp any gt 0 any gt 0 log<br />access-list 102 deny   ip any any</pre>
+

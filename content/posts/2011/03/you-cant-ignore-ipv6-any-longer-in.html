@@ -1,0 +1,28 @@
+---
+title: "You can't ignore IPv6 any longer (in seven steps)"
+date: "2011-03-16T09:00:00.001+01:00"
+tags: [ IPv6,Workshop ]
+---
+
+<p>We know the world will eventually run out of IPv4 addresses, but while at least some service providers got the message and already deployed IPv6, it seems like most enterprise IT departments still practice the denial strategy. It’s worrisome to read articles from Jeff Doyle describing the <a href="http://www.networkworld.com/community/blog/whats-next-ipv6">ignorance of his enterprise clients</a>, so I’ll try (yet again) to explain why you should start IPv6 planning NOW.<!--more--></p>
+<p><strong>Fact#1</strong> – most analysts agree the major growth in Internet services will be in mobile space. If you’re an iPhone/Android/iPad user, you’re already there.</p>
+<p><strong>Fact#2</strong> – if you’re doing your business on the web, you’re probably interested in those mobile users. After all, they had enough money to buy an expensive gadget, so they just might have some more money to spend on your products/services.</p>
+<p><strong>Fact#3</strong> – most mobile operators already use NAT. Many of them historically regarded TCP/IP purely as a convenient transport mechanism within their walled garden, used RFC 1918 address space and failed to grab the public IPv4 address space they would need to support their growing customer base.</p>
+<p><strong>Fact#4</strong> – everyone hates NAT (maybe not everyone, for some people it’s a valuable component of the <a href="http://twitter.com/ioshints/status/10449562829328384">NAT-GRE-PBR duct tape</a>). It makes service providers’ life miserable, more so if they have to keep track of individual NAT translations for legal reasons.</p>
+<p>Some mobile service providers regard IPv6 as the way out of the NAT mess (example: T-Mobile, see their <a href="https://sites.google.com/site/ipv6implementors/2010/agenda/13_Byrne_T-Mobile_IPv6GoogleMeeting.pdf">presentation from Google IPv6 Implementers Conference</a>). T-mobile decided dual-stack is not worth the effort (not to mention that you need two PDP contexts if you’re using old 3G software or the rumored problems some mobile chipsets might have with two protocols), they plan to go with pure IPv6 internally and NAT64 on the network edge. After all, they already run large-scale NAT (LSN) in NAT44 mode and changing that to NAT64 can’t be much worse.</p>
+<p>Oh, and did I mention LTE (once it turns from hype into reality) runs on IPv6?</p>
+<p><strong>Fact#5</strong> – large percentage of mobile user traffic comes from Google (YouTube) and Facebook.</p>
+<p>For mobile operators, this fact is a huge opportunity. Google and Facebook have already deployed IPv6, meaning that all this traffic could be handled as NAT-free native IPv6. T-mobile projects ~50% of its users’ traffic can be served by native IPv6 by EOY2011 (same source).</p>
+<p><strong>Fact#6</strong> – smart service providers invest into the infrastructure that ensures <em>perceived high-quality</em> for majority of their users.</p>
+<p>If you have teen kids, you know their definition of “Internet is down” – they can’t reach YouTube or Facebook. If they can’t reach your web site, Internet is not down as long as they can complain about that on Facebook. It doesn’t matter if the problem is actually a neglected NAT64 gateway at the edge of the service provider network – if they can reach Facebook (which they will over native IPv6), Internet works and your web site is broken.</p>
+<p>It’s hard to predict what might happen, but I would not be surprised to see diminishing investments in SP NAT equipment and operations once majority of the traffic shifts to native IPv6.</p>
+<p><strong>Fact#7</strong> – There are plenty of alternatives on the Internet</p>
+<p>Two years ago, I was comfortably sitting in the “why should I care about IPv6” camp until a smart guy running the web site of our national TV opened my eyes during one of the Slovenian IPv6 summits. He said “<em>my users don’t care whether my site </em><em>supports </em><em>their browser or not</em><em>. I</em><em>f it doesn’t they’ll go to my competitor</em><em>: I have to make sure I support all major browsers.</em>”</p>
+<p>You’ll see the same effect in the IPv4/IPv6 world. If a mobile user won’t be able to reach your web site, he’ll just return to Google and select to the next search result. Can you afford that after all the money you’ve invested in redundant highly-available infrastructure, web design and application development, and SEO optimization or placed ads?</p>
+<p>The same T-Mobile presentation tries to put a polite spin on this fact</p>
+<blockquote class="cite">Customers will not tolerate broken content, they will move on to content that works.  Best for the content owner to control the IPv6 experience by providing native IPv6 services, and not depend on CGN / LSN.</blockquote>
+<p>I hope you got the real message.</p>
+<p>Last but definitely not least, in the <a href="http://www.cfo.com/article.cfm/14517199/c_2984351/?f=archives">immortal words of Martin Levy</a>: “<em>You can either do a planned, careful migration, or you can do it in a panic. And you should know full well that panicking is more expensive</em>.”</p>
+<p>The choice is yours.</p>
+<h4>More information</h4><p>The first steps you have to make when considering IPv6 deployment in your enterprise network are described in my <a href="http://www.ioshints.info/IPv6E101">Enterprise IPv6 – the first steps</a> webinar (<a href="http://www.ioshints.info/Recordings">buy the recording</a> or <a href="http://entipv6.eventbrite.com/">register for an online session</a>).</p>
+

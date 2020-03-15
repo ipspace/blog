@@ -1,0 +1,8 @@
+---
+title: "Fix router configuration after a reload"
+date: "2007-04-23T11:05:00.000+02:00"
+tags: [ configuration,EEM ]
+---
+
+Sometimes, parts of router configuration get lost during the reload process: although the configuration commands are saved in NVRAM, they are not processed after the reload and thus do not appear in the running configuration. Re-entering these commands manually solves the problem ... but it's obviously not a reliable solution.<br /><br />Embedded Event Manager (EEM) solves this issue as well. You just configure an applet that triggers on <em>syslog</em> message SYS-5-RESTART and reapplies the necessary configuration commands.<script>startHide()</script>For example, to fix the bug CSCsf32390, Cisco recomments the following applet:<pre class='code'>event manager applet add-buffer<br /> event syslog occurs 1 pattern "%SYS-5-RESTART: System restarted"<br />action 1.0 cli command "enable"<br />action 2.0 cli command "configure terminal"<br />action 3.0 cli command "buffers particle-clone 16384"<br />action 4.0 cli command "buffers header 4096"<br />action 5.0 cli command "buffers fastswitching 8192"<br />action 6.0 syslog msg "Reinstated buffers command"</pre><script>endHide()</script>
+

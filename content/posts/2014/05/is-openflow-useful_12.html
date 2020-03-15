@@ -1,0 +1,26 @@
+---
+title: "Is OpenFlow Useful?"
+date: "2014-05-12T07:58:00.000+02:00"
+tags: [ OpenFlow ]
+---
+
+<p>The <a href="http://blog.ipspace.net/2014/05/does-centralized-control-plane-make.html"><em>Does Centralized Control Plane Make Sense</em></a><em> </em>post triggered several comments along the lines of “<em>do you think there’s no need for OpenFlow?</em>” </p>
+<p><strong>TL</strong><strong>;</strong><strong>DR version</strong>: OpenFlow is just a low-level tool. Don’t blame it for how it’s being promoted.<!--more--></p>
+<p><a href="http://blog.ipspace.net/2011/04/what-is-openflow.html">OpenFlow is just a tool</a> that allows you to install PBR-like forwarding entries into networking devices using a standard protocol that <em>should </em>work across multiple vendors (more about that in another blog post). From this perspective OpenFlow offers the same functionality as BGP FlowSpec or ForCES, and a major advantage: it’s already implemented in networking gear from numerous vendors.</p>
+<p>Where could you use PBR-like functionality? I’m positive you already have a dozen ideas with <a href="http://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html">various levels of craziness</a>; here are a few more:</p>
+<ul class="ListParagraph"><li><a href="http://demo.ipspace.net/get/3%20-%20Network%20Monitoring.mp4">Network monitoring</a> (flow entries have counters);</li>
+<li><a href="http://demo.ipspace.net/get/4%20-%20Tap%20Aggregation%20Networks.mp4">Intelligent SPAN ports</a> that collect only the traffic you’re interested in;</li>
+<li><a href="http://demo.ipspace.net/get/5%20-%20Service%20Insertion.mp4">Transparent service insertion</a>;</li>
+<li><a href="http://demo.ipspace.net/get/6%20-%20Scale-out%20Load%20Balancing.mp4">Scale-out stateful network services</a>;</li>
+<li><a href="http://demo.ipspace.net/get/7%20-%20Distributed%20DoS%20Prevention.mp4">Distributed DoS prevention</a>;</li>
+<li><a href="http://demo.ipspace.net/get/8%20-%20Edge%20Policy%20Enforcement.mp4">Policy enforcement</a> (read: ACLs) at the network edge.</li>
+</ul>
+<p></p>
+<p></p>
+<p>OpenFlow has another advantage over BGP FlowSpec – it has the <em>packet-in </em>and <em>packet-out </em>functionality that allows the controller to communicate with the devices outside of the OpenFlow network. You could use this functionality to implement <a href="http://blog.ipspace.net/2013/06/implementing-control-plane-protocols.html">new control-plane protocols</a> or (for example) interesting layered authentication scheme that is not available in off-the-shelf switches.</p>
+<p><strong>Summary</strong>: OpenFlow is a great low-level tool that can help you implement numerous interesting ideas, but I wouldn’t spend my time reinventing the switching fabric wheel (or <a href="http://networkheresy.com/2011/11/17/is-openflowsdn-good-at-forwarding/">other things we already do well</a>). </p>
+<h4>More informations</h4><ul class="ListParagraph"><li><a href="http://www.ipspace.net/Roadmap/SDN_and_OpenFlow_webinars">SDN webinars</a> (most of them are free);</li>
+<li><a href="http://www.ipspace.net/SDN,_OpenFlow,_NFV_and_SDDC">SDN workshop</a>;</li>
+<li><a href="http://www.ipspace.net/SDN">Other SDN resources</a> @ ipSpace.net</li>
+</ul>
+

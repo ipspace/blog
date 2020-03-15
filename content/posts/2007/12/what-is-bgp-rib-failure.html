@@ -1,0 +1,16 @@
+---
+title: "What is a BGP RIB failure"
+date: "2007-12-19T07:04:00.000+01:00"
+tags: [ BGP ]
+---
+
+<p>Sometimes you'll see a weird route status (<em>RIB-failure</em>) in your BGP table, for example:</p>
+<pre class='code'>GW#<strong>show ip bgp &brvbar; include r&gt;</strong><br /><span class='high'>r&gt;</span> 10.2.0.0/16      10.0.1.2                 0             0 65001 i<br /></pre><p>A more thorough investigation of the BGP entry does not give you a lot of additional information:</p>
+<pre class='code'>GW#<strong>show ip bgp 10.2.0.0</strong><br />BGP routing table entry for 10.2.0.0/16, version 7<br />Paths: (1 available, best #1, table Default-IP-Routing-Table, <span class='high'>RIB-failure(17)</span>)<br />Flag: 0x820<br />&nbsp;&nbsp;Advertised to update-groups:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1    2<br />&nbsp;&nbsp;65001<br />&nbsp;&nbsp;&nbsp;&nbsp;10.0.1.2 from 10.0.1.2 (10.0.1.2)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Origin IGP, metric 0, localpref 100, valid, external, best</pre><p>The &ldquo;mistery&rdquo; is solved when you inspect the entry in the IP routing table:</p>
+<pre class='code'>GW#<strong>show ip route 10.2.0.0</strong><br />Routing entry for 10.2.0.0/16<br />&nbsp;&nbsp;Known via "static", distance 1, metric 0 (connected)<br />&nbsp;&nbsp;Routing Descriptor Blocks:<br />&nbsp;&nbsp;* directly connected, via Null0<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Route metric is 0, traffic share count is 1</pre><p>The GW router has a static route that collides with the EBGP route and thus the BGP route cannot be inserted in the IP routing table (as the static route has administrative distance 1).</p>
+<p>Let's conclude with a few interesting facts about the RIB failures:</p>
+<ul><li>The <a href="http://www.cisco.com/warp/public/459/bgpfaq_5816.shtml#twenty-three">RIB failure</a> feature was introduced in IOS release 12.2T; prior to that, the BGP routes with higher administrative distance than other route sources were silently ignored (similar to all other routing protocols).</li>
+<li>You can display BGP routes that are not inserted in the IP routing table with the <strong>show ip bgp rib-failure</strong> command, which also explains why the BGP route was not inserted in the IP routing table.</li>
+<li>The BGP routes that are not used due to higher administrative distance are still advertised to all BGP peers (contrary to what most other distance-vector routing protocols do), unless you configure <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios122s/122snwft/release/122s25/fs_sbair.htm">bgp suppress-inactive</a> (introducted in 12.2T and 12.0(26)S).</li>
+</ul>
+

@@ -1,0 +1,26 @@
+---
+title: "Is Layer-3 DCI Safe?"
+date: "2012-10-16T07:16:00.000+02:00"
+tags: [ Data Center,Internet,IP routing,WAN ]
+---
+
+<p>One of my readers sent me a great question:</p>
+<blockquote class="cite">I agree with you that L2 DCI is like driving without a seat belt. But is L3 DCI safer in case of DCI link failure? Let's say you have your own AS and PI addresses in use. Your AS spans multiple sites and there are external BGP peers on each site. What happens if the L3 DCI breaks? How will that impact your services?</blockquote>
+<p>Simple answer: while L3 DCI is orders of magnitude safer than L2 DCI, it will <a href="http://blog.ioshints.info/2012/10/if-something-can-fail-it-will.html">eventually fail</a>, and you have to plan for that.<!--more--></p>
+<h4>External IP Routing</h4><p>If you advertise a single provider-independent (PI) prefix into the Internet from both data centers, and the DCI link fails, you’re no better off than a L2 DCI design – some of your traffic will arrive at the wrong location and will be dropped.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Mpdm58xncWc/UHffuOXaVNI/AAAAAAAAFNs/ELaqHIoyDKM/s1600/L3DCI_Failure.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="335" width="400" src="http://4.bp.blogspot.com/-Mpdm58xncWc/UHffuOXaVNI/AAAAAAAAFNs/ELaqHIoyDKM/s400/L3DCI_Failure.png" /></a></div>
+<p>You should always advertise:</p>
+<ul class="ListParagraph"><li>A data-center-specific prefix from each data center to ensure each data center can operate on its own;</li>
+<li>An aggregate prefix from both data centers to ensure a data center isn’t totally isolated if its Internet uplink fails while the DCI link is still up.</li>
+</ul>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ua-CclhVkZ0/UHff1ofA6rI/AAAAAAAAFN4/VAw9a-218GE/s1600/L3DCI_Specific.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="335" width="400" src="http://4.bp.blogspot.com/-ua-CclhVkZ0/UHff1ofA6rI/AAAAAAAAFN4/VAw9a-218GE/s400/L3DCI_Specific.png" /></a></div>
+<p class="info">If you can’t aggregate the data center prefixes, advertise the prefix belonging to the remote data center with higher MED, <a href="http://blog.ioshints.info/2008/02/bgp-essentials-as-path-prepending.html">longer AS-path</a>, or ISP-specific backup path <a href="http://blog.ioshints.info/2008/02/bgp-essentials-bgp-communities.html">BGP communities</a>.</p>
+<h4>Too-Specific Prefixes</h4><p>Sometimes you cannot advertise a more-specific prefix. You might have a single /24 IPv4 prefix or a single /48 IPv6 prefix. The IPv6 case is easily solved: go and ask for another prefix, it’s not like we’re running short on IPv6 prefixes. In the IPv4 case, you’re limited to kludges:</p>
+<p><strong>Advertise /25</strong><strong>s</strong><strong> to your ISP</strong>. Split the /24 prefix into two /25s. Advertise the /24 and one of the /25s from each data center. Your ISP has to be willing to accept the /25s (usually they are filtered), and you should advertise them with <strong>no-export </strong>BGP community so they’re not leaked into the wider Internet.</p>
+<p class="warn">This trick works well if you use the same ISPs in both data centers. You can have connections to multiple ISPs in each data center, but each ISP has to be present in all data centers.</p>
+<p><strong>Build a bac</strong><strong>kup DCI link over the Internet.</strong> An IP VPN tunnel across the Internet could provide last-resort connectivity between data centers if the DCI link fails.</p>
+<p>If you decide to go down this route, don’t use the backup DCI link for regular inter-DC traffic (example: storage replication). Use it solely for emergency purposes like shunting the inbound traffic toward the target data center/server.</p>
+<h4>Don’t Forget the Applications</h4><p>Perfect external routing design won’t help you if your application developers decided to spread a single service across multiple data centers. They (<a href="http://tools.ietf.org/html/rfc2119">RFC 2119</a>) MUST understand that each mission-critical service MUST be self-contained with no inter-DC dependencies.</p>
+<p>A simple bad practice example: you’re offering IaaS cloud services implemented with vCloud Director, and you’re running a single vCloud Director instance in one of the data centers (yes, <a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2009651">it is supported</a>). If the DCI link fails, you’ll experience a control-plane failure like the one <a href="http://www.somic.org/2012/07/05/applying-5-whys-to-amazon-ec2-outage/">Amazon had in July 2012</a>.</p>
+<h4>More Information</h4><p>Numerous L2 and L3 DCI designs are described in my <a href="http://www.ipspace.net/Data_Center_Interconnects">Data Center Interconnects</a> webinar (also available as part of the <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>). If you need a quick second opinion or a design review, check out my <a href="http://www.ipspace.net/ExpertExpress">ExpertExpress service</a> or other <a href="http://www.ipspace.net/Consulting">consulting options</a>.</p>
+

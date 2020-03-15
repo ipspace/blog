@@ -1,0 +1,10 @@
+{{ partial "header.html" . }}
+<h1 class='firstHeading'>Category: {{ .Title }}</h1>
+{{ $pag := .Paginate .Pages }}
+{{ range $pag.Pages }}
+  {{ partial "post-content.html" . }}
+{{ end }}
+<div class="post-navigation">
+  {{ partial "pagination.html" . }}
+</div>
+{{ partial "footer.html" . }}

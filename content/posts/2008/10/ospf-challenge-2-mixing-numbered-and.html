@@ -1,0 +1,12 @@
+---
+title: "OSPF challenge #2: mixing numbered and unnumbered interfaces"
+date: "2008-10-29T07:29:00.003+01:00"
+tags: [ OSPF ]
+---
+
+<div class="bloggerBody"><p class='note'>Update: This challenge is closed, see the <a href="http://blog.ioshints.info/2008/11/ospf-challenge-2-final-results.html">final results</a> (November 4th 2008).</p>
+<p>Assuming you have the following configurations on R1 and R2:</p>
+<table cellspacing="0" cellpadding="0" class="codeTable"><tr class="TRFirst "><th style="text-align: left;">R1</th><th style="text-align: left;">R2</th></tr><tr><td valign="top"><pre class='code'>hostname R1<br />!<br />interface Loopback 0<br /> ip address 10.0.0.1 255.255.255.255<br />!<br />interface Serial 0<br /> encapsulation ppp<br /> ip unnumbered Loopback0<br /> ip ospf 1 area 1<br />!<br />router ospf 1</pre></td><td valign="top"><pre class='code'>hostname R2<br />!<br />interface Serial 0<br /> encapsulation ppp<br /> ip address 10.1.2.3 255.255.255.248<br /> ip ospf 1 area 1<br />!<br />router ospf 1</pre></td></tr></table><p>What IP address can you use on the loopback interface of R1 to establish adjacency between R1 and R2? Can you use more than one IP address?</p>
+<p class="more">This challenge was triggered by a <a href="http://blog.ioshints.info/2008/10/ospf-ignores-subnet-mask-mismatch-on.html?showComment=1224209820000">comment</a> <a href="http://www.blogger.com/profile/13608771699731629666">uri</a> wrote on the “<a href="http://blog.ioshints.info/2008/10/ospf-ignores-subnet-mask-mismatch-on.html?showComment=1224209820000">OSPF ignores subnet mask mismatch on point-to-point links</a>” post, claiming that you cannot mix numbered and unnumbered interfaces in OSPF.</p>
+</div>
+

@@ -1,0 +1,10 @@
+---
+title: "Multilevel web (HTTP) access to a router"
+date: "2006-10-14T10:45:00.000+02:00"
+tags: [ http,web ]
+---
+
+In some scenarios you want to use true username/password authentication when accessing the router's web server (by default, you have to use enable password). To change the HTTP authentication method, use the <strong>ip http authentication local</strong> configuration command; it tells the router to use local usernames and passwords when authentication web requests.<br /><br />Before changing the HTTP authentication, you must define local usernames with the <strong>username <i>username</i> privilege-level <i>level</i> password <i>password</i></strong> command, for example:<blockquote class='code'>username guest privilege 1 password 0 guest<br />username admin privilege 15 password 0 admin</blockquote>
+<b>Note:</b> unless you configure <b>service password-encryption</b>, the passwords in your configuration will remain in cleartext.<br /><br />The last bit of the puzzle is the correct formation of the URLs: when executing a command on the router through a URL, you have to specify the required privilege level (the router will then prompt you for a username/password with at least that privilege level). The URL syntax is <b>http://router/level/<i>privilege-level</i>/exec/command</b>. For example, to execute non-privileged (level-1) <b>show users</b> command, use the following URL:<blockquote class='code'>http://router/level/1/exec/show/users/CR</blockquote>
+<b>Note:</b> the /CR suffix at the end of the URL tells the router to execute a command that contains optional (non-present) parameters.
+

@@ -1,0 +1,19 @@
+---
+title: "Path MTU Discovery Doesn’t Work with IP Multicast"
+date: "2015-09-01T08:31:00.000+02:00"
+tags: [ IP routing ]
+---
+
+<p>A friend of mine sent me an interesting problem: </p>
+<blockquote class="cite">I noticed recently that my IOS routers aren't sending ICMP (unreachable; frag needed) messages in response to too-big IPv4 multicast packets with DF-bit set. They're just dropping these packets silently, breaking PMTUD.</blockquote>
+<p>Unfortunately, that&#x2019;s not a bug but a FAD (Functions-as-Designed).<!--more--></p>
+<p>A quick Google search found <a href="http://www.icir.org/fenner/mcast/icmp.html">this document</a> which pointed me to section 7.2 of RFC 1112 (yeah, multicast is really THAT old):</p>
+<blockquote class="cite">An ICMP error message (Destination Unreachable, Time Exceeded, Parameter Problem, Source Quench, or Redirect) is never generated in response to a datagram destined to an IP host group.</blockquote>
+<p>The same document also describes why RFC 1112 prohibits sending ICMP error messages in response to multicast datagrams. The processing done on ICMP error replies by the *nix socket API might block the sender socket if an error comes back from a single receiver or if TTL expires when traversing a particularly long branch of the multicast tree &ndash; not exactly a good idea in multicast environment.</p>
+<p><strong>Lesson</strong><strong>s</strong><strong> learned</strong>: </p>
+<ul class="ListParagraph"><li>You should never get ICMP error messages in response to IP multicast packets;</li>
+<li><a href="http://blog.ipspace.net/2008/01/never-ending-story-of-ip-fragmentation.html">Path MTU discovery</a> doesn&#x2019;t work with IP multicast;</li>
+<li>Sending multicast packets with DF bit set is a bad idea unless you&#x2019;re OK with some receivers never getting them;</li>
+<li>ICMP echo reply to a multicast echo request is perfectly legal (because it&#x2019;s not an ICMP error message).</li>
+</ul>
+

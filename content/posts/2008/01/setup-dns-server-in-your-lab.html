@@ -1,0 +1,11 @@
+---
+title: "Setup DNS server in your lab"
+date: "2008-01-15T07:06:00.000+01:00"
+tags: [ DNS,command line interface,labs ]
+---
+
+If you do a lot of telnetting in your lab, you could set up an internal DNS server to be able to use router names instead of IP addresses.<script>startHide()</script><p>Select a router that will act as the DNS server and configure it on all other routers in your lab. For example, if your DNS server has IP address 10.0.0.1, use the following configuration commands:</p>
+<pre class='code'>ip domain-lookup<br />ip name-server 10.0.0.1</pre><p>On the DNS server, disable DNS lookup and DNS forwarding (it has nowhere else to go) and define all the routers as IP host names:</p>
+<pre class='code'>no ip domain lookup<br />!<br />ip dns view default<br />&nbsp;no dns forwarding<br />!<br />ip dns server<br />!<br />ip host Core-1 10.0.0.1<br />ip host Core-2 10.0.0.2<br />ip host POP 192.168.2.1<br />ip host Ext 192.168.1.5<br />ip name-server 10.0.0.1</pre><p>If you also define IP addresses for the WAN links, for example:</p>
+<pre class='code'>ip host serial-1-0.X1 10.0.1.6<br />ip host serial-1-0.Core-1 10.0.1.1</pre>&hellip; you'll get correct hop-by-hop information from the <strong>traceroute</strong> command:<pre class='code'>POP#<strong>trace Ext</strong><br />Translating &quot;Ext&quot;...domain server (10.0.0.1) [OK]<br />Type escape sequence to abort.<br />Tracing the route to Ext (192.168.1.5)<br />&nbsp;&nbsp;1 serial-1-0.Core-1 (10.0.1.1) 36 msec 24 msec 16 msec<br />&nbsp;&nbsp;2 serial-1-0.X1 (10.0.1.6) 24 msec 28 msec 4 msec<br />&nbsp;&nbsp;3 Ext (192.168.1.5) 20 msec * 24 msec</pre><script>endHide()</script>
+

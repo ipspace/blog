@@ -1,0 +1,13 @@
+---
+title: "Ping priority on Cisco IOS"
+date: "2009-05-20T06:29:00.001+02:00"
+tags: [ network management,You've asked for it,SLA ]
+---
+
+<div class="bloggerBody"><p>Every now and then, a really interesting question appears on the cisco-nsp mailing list. A while ago I’ve seen this one:</p>
+<blockquote class="cite">I've heard that Cisco devices handle ICMP at a low priority. I found one post describing it handled in process-switching and not fast-switching. Does anyone have an article that explains that process and is it configurable?</blockquote>
+<p>Most packets sent to the router are handled in process switching (the packet is queued in the input queue of one of the IOS processes), the obvious exceptions being GRE and IPSec packets (unless they're fragmented). </p>
+<p class="note">Packets sent to the router can also be rate-limited with a <a href="http://wiki.nil.com/Protecting_the_router%E2%80%99s_control_plane">control plane policy</a>. </p>
+<p>The IOS processes perform their job between interrupts (packets being CEF- or fast switched). A reply to an ICMP packet is therefore a lower-priority task than regular packet forwarding.</p>
+</div>
+

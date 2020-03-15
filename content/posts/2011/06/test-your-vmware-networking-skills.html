@@ -1,0 +1,19 @@
+---
+title: "Test your VMware networking skills"
+date: "2011-06-17T06:29:00.000+02:00"
+tags: [ Workshop,virtualization ]
+---
+
+<p>Two vSwitch portgroup-related questions:</p>
+<ul class="ListParagraph"><li>Can you configure the same VLAN on two portgroups in the same vSwitch? How about vDS?</li>
+<li>Can VMs attached to two different portgroups in the same ESX host talk to each other directly or do they have to go communicate through an external switch (or L3 device)?</li>
+</ul>
+<p>Got your answers? Now click the <em>Read more ...</em> link.<!--more--></p>
+<p>Correct answers:</p>
+<ul class="ListParagraph"><li>Yes &amp; Yes.</li>
+<li>The VMs can communicate directly, as long as the portgroups belong to the same VLAN (or have no VLAN information).</li>
+</ul>
+<p>Actually this was one of the more unexpected discoveries I made while preparing for the <a href="http://www.ioshints.info/VMnet">VMware Networking Deep Dive</a> webinar (choose between a <a href="http://vnetwork.eventbrite.com/">live session</a> and a <a href="http://www.ioshints.info/Recordings?code=VMnet">recording</a>). </p>
+<p>Somehow I always assumed portgroups were security-related objects (because you can configure VLANs on them), whereas in fact they’re just configuration templates. Configuring a VLAN on a portgroup has exactly the same consequences as configuring <strong>switchport mode access </strong>and <strong>switchport access vlan X </strong>on a Catalyst switch.</p>
+<p>Looking at the questions from the “<em>portgroups are configuration templates</em>” perspective, the vSwitch/vDS behavior makes perfect sense – there is no reason the same VLAN could not be configured in two templates, and the VMs attached to the same VLAN (although using different configuration templates) can communicate directly.</p>
+

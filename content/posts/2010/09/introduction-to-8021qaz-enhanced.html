@@ -1,0 +1,25 @@
+---
+title: "Introduction to 802.1Qaz (Enhanced Transmission Selection – ETS)"
+date: "2010-09-30T12:01:00.003+02:00"
+tags: [ GestaltIT,DCB,switching,Data Center,Workshop,QoS ]
+---
+
+<p>Enhanced Transmission Selection (ETS) is the second part of the Data Center Bridging puzzle (I’ve already described <a href="http://blog.ioshints.info/2010/09/introduction-to-8021qbb-priority-flow.html">Priority Flow Control</a>). It specifies two different technologies:</p>
+<ul><li>Queuing mechanisms in bridges</li>
+<li>Data Center Bridging eXchange protocol: a Control/Negotiation protocol that allows bridges and hosts to negotiate QoS parameters in a bridged network.</li>
+</ul>
+<p>Although some bridges from some vendors supported numerous QoS mechanisms in the past, 802.1Qaz is the first attempt to standardize a richer set of QoS behaviors than the strict priority queuing defined in 802.1p.</p>
+<!--more--><h4>QoS mechanisms defined in 802.1Qaz</h4><p>802.1Qaz defines three QoS mechanisms:</p>
+<ul><li>Strict priority queuing with preemption (as defined in 802.1p);</li>
+<li>Credit-based shaping (as defined in 802.1Qav) &hellip; actually rate-limited strict priority queuing;</li>
+<li>Enhanced Transmission Selection.</li>
+</ul>
+<p>As with 802.1p and 802.1Qav, the queues are based on <em>traffic classes </em>which are again based on 802.1p priorities. You can group more than one priority value into a single class, but you cannot have more than eight classes.</p>
+<p>An ETS-compliant bridge shall support at least three ETS traffic classes (so there’s no wiggle room for vendors claiming to support full DCB suite but having only strict priority queuing). The actual ETS algorithm is not specified in the 802.1Qaz draft; anything that meets the performance requirements specified in the draft can be used (this is definitely a great gray area where FUD and misinterpretations will galore and analysts will thrive).</p>
+<p>ETS queues are low-priority queues: packets are transmitted from the ETS queues only if there’s no traffic available for transmission in credit-based shaping or strict priority queues (usually the credit-based shaping queues have higher priority than the strict priority queues). </p>
+<p>Weighted round robin definitely meets the requirement ... but it’s not hard to meet them when the draft requires bandwidth granularity of 1% and +/-10% accuracy.</p>
+<h4>Pre-standard implementations (speculative)</h4><p>As with 802.1Qbb (PFC), all current ETS implementations are pre-standard, but I don’t expect any recent (and decent) data center switch requiring a hardware upgrade, as most of them support WRR queuing based on 802.1p priorities.</p>
+<p>DCBX is a control-plane protocol that can be easily fixed with a software upgrade.</p>
+<h4>Need more?</h4><p>You’ll get an overview of DCB, FCoE and numerous other Data Center technologies in my <a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/SingleRecording?code=DC30">buy a recording</a> or <a href="http://www.ioshints.info/Subscription">yearly subscription</a>).</p>
+<p>The <a href="http://www.ieee802.org/1/pages/802.1az.html">802.1az page</a> has links to numerous presentations.</p>
+

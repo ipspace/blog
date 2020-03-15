@@ -1,0 +1,19 @@
+---
+title: "Let’s Pretend We Run Distributed Storage over a Thick Yellow Cable"
+date: "2017-11-22T08:09:00.000+01:00"
+tags: [ Design,Data Center,Fabric ]
+---
+
+<p>One of my friends wanted to design a nice-and-easy layer-3 leaf-and-spine fabric for a new data center, and got blindsided by a hyperconverged vendor. Here&rsquo;s what he wrote:</p>
+<blockquote class="cite">We wanted to have a spine/leaf L3 topology for an NSX deployment but can&rsquo;t do that because the Nutanix servers require L2 between their nodes so they can be in the same cluster.</blockquote>
+<p>I wanted to check his claims, but Nutanix doesn&rsquo;t publish their documentation (I would consider that a <a href="http://blog.ipspace.net/2015/10/we-need-product-documentation-not-just.html">red flag</a>), so I&rsquo;m assuming he&rsquo;s right until someone proves otherwise (note: whitepaper is not a proof of anything ;).<!--more--></p>
+<p class='update'>Update 2017-11-22: VSAN release 6.6 no longer needs IP multicast.</p>
+<p>Anyway, VMware VSAN had the same limitations, then relaxed that to <a href="https://www.vmware.com/files/pdf/products/vsan/vmware-vsan-layer2-and-layer3-network-topologies.pdf">IP multicast within the cluster</a> and finally <a href="https://pubs.vmware.com/Release_Notes/en/vsan/66/vmware-virtual-san-66-release-notes.html">got it right in VSAN release 6.6</a>. Not everyone can upgrade the moment new software releases come out; I happen to know someone who's running NSX (with VXLAN) on top of another layer of VXLAN (on Nexus 9000) just to meet the stupid physical L2 requirements.</p>
+<p>Interestingly, at least some comparable open-source solutions work happily without layer-2 connectivity or IP multicast (or you wouldn&rsquo;t be able to <a href="http://docs.gluster.org/en/latest/Install-Guide/Setup_aws/">deploy them in AWS</a>).</p>
+<p>Speaking of <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">leaf-and-spine fabrics</a> and <a href="http://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN</a>: hundreds of networking engineers watched webinars describing them in details, and you&rsquo;ll find tons of background information, designs, and even hands-on exercises in the new <a href="http://www.ipspace.net/FabricDesign">Designing and Building Data Center Fabrics</a> online course. If you want to know whether hyperconverged infrastructure and distributed storage makes sense, there&rsquo;s no better source than Howard Marks&rsquo; presentation from the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course.</p>
+<p>Back to thick yellow cable devotees. My friend couldn&rsquo;t help but wonder:</p>
+<blockquote class="cite">The overall question would be: why would hyperconverged manufacturers have to rely on L2 to build clusters&hellip;?</blockquote>
+<p>Because they don't understand networking (or don&rsquo;t care) and don&rsquo;t trust DNS? Because they think autodiscovery with IP multicast or proprietary broadcast-like protocols is better than properly configuring storage cluster?</p>
+<blockquote class="cite">Their main selling quote is that they are &ldquo;ahead&rdquo; of the game with their solution but I only see drawback from a networking standpoint &hellip;</blockquote>
+<p>Keep in mind that they don't talk to networking people when selling their solution. Once the solution is sold and the networking engineer asks "<em>what were they smoking when they were designing this stuff</em>" and &ldquo;<em>why didn&rsquo;t you involve the networking team before making the purchase&rdquo; </em>(after taming the <a href="http://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html">MacGyver reflex</a>), he's the bad guy hindering progress.</p>
+

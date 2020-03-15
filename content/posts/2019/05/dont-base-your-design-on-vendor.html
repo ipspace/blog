@@ -1,0 +1,32 @@
+---
+title: "Don't Base Your Design on Vendor Marketing"
+date: "2019-05-22T08:10:00.000+02:00"
+tags: [ VXLAN,Data Center,WAN ]
+---
+
+<p>Remember how Arista promoted VXLAN coupled with deep buffer switches as the perfect DCI solution a few years ago? Someone took Arista’s marketing too literally, ran with the idea and combined VXLAN-based DCI with traditional MLAG+STP data center fabric.</p>
+<p>While I love that they <a href="http://www.wandynamics.com/blog/8-lessons-learned-arista-datacenter-interconnect-dci-with-vxlan-and-varp">wrote a blog post documenting their experience</a> (if only more people would do that), it doesn’t change the fact that the design contains the worst of both worlds.</p>
+<p>Here are just a few things that went wrong:<!--more--></p>
+<p>I’ve seen tons of STP- or MLAG-induced data center meltdowns. The first thing I would want to do in a new data center design would be to <strong>get rid of MLAG</strong> as much as possible. Most hypervisors work just fine without MLAG, and bare-metal Linux or Windows servers need MLAG only if you want to fully utilize all server uplinks. WAN edge routers should use routing with the fabric, and in some cases you can use the same trick with network services appliances.</p>
+<p><strong>End result</strong>: you MIGHT need MLAG to connect network services boxes that use static routing. Connect all of them to a single pair of ToR switches and get rid of MLAG everywhere else.</p>
+<p>Even worse, <strong>MLAG-based design limits scalability</strong>. Most data center switching vendors support at most two switches in an MLAG cluster, limiting a MLAG+STP fabric to two spine switches.</p>
+<p>Regardless of how you implement them, <strong>large layer-2 fabrics</strong> are a disaster waiting to happen. With VXLAN-over-IP fabric you have at least a stable L3-only transport fabric, and keep the crazy bits at the network edge - the way Internet worked for ages.</p>
+<p>Interestingly, most networking vendors have <a href="https://blog.ipspace.net/2016/12/q-building-layer-2-data-center-fabric.html">seen the light</a>, <a href="https://blog.ipspace.net/2016/09/replacing-fabricpath-with-vxlan-evpn-or.html">dropped</a> their <a href="https://blog.ipspace.net/2010/08/trill-and-8021aq-are-like-apples-and.html">proprietary or standard L2 fabrics</a> and replaced them with VXLAN+EVPN. Maybe it’s time to start considering it.</p>
+<p>When interconnecting fabrics, you should <strong>connect leaf switches</strong> not spines. I described the challenge in details in <a href="https://my.ipspace.net/bin/list?id=Clos#MULTISITE">Multi-Pod and Multi-Site Fabrics</a> part of <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">Leaf-and-Spine Fabric Architectures</a> webinar and might write a blog post on the topic; in the meantime the proof is left as an exercise for the reader.</p>
+<p><strong>Raw VXLAN is not the best DCI technology</strong>. I <a href="https://blog.ipspace.net/2012/11/vxlan-is-not-data-center-interconnect.html">explained that in 2012</a> and <a href="https://blog.ipspace.net/2014/10/vxlan-and-otv-saga-continues.html">again in October 2014</a>… obviously with little impact.</p>
+<p>Yet again, you can find more details in <a href="https://my.ipspace.net/bin/list?id=Clos#MULTISITE">Lukas Krattiger’s presentation</a> in <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">Leaf-and-Spine Fabric Architectures</a> webinar (this part of the webinar is available with <a href="https://www.ipspace.net/Subscription/Free">free ipSpace.net subscription</a>).</p>
+<p><strong>Deep buffers are not a panacea</strong>. When Arista started promoting deep buffer switches (because they were the first vendor deploying Jericho chipset - now you can buy them from Cisco as well) I asked a number of people familiar with real-life data center designs, <a href="https://www.ipspace.net/Networks,_Buffers,_and_Drops">ASIC internals</a>, and <a href="https://blog.ipspace.net/2017/03/tcp-in-data-center-and-beyond-on.html">TCP behavior</a> whether you really need deep buffer switches in data centers.</p>
+<p>While the absolutely correct answer is always “it depends”, in this particular case we got to “mostly NO”. You need deep buffers when going from low latency/high bandwidth environment to high latency/low bandwidth one (data center WAN edge); in the core of a data center fabric they do more harm than good. Another reason to connect DCI links to fabric edge.</p>
+<h4 id="what-should-they-have-done">What should they have done?</h4><p>The blog post I quoted at the beginning of this article is a few years old, and it’s possible that Arista didn’t have VXLAN-capable low-cost ToR switches at that time, but here’s what I would do today:</p>
+<ul><li>Build two layer-3 leaf-and-spine fabrics;</li>
+<li>Deploy VXLAN with EVPN or static ingress replication on top of them;</li>
+<li>Connect DCI link to two deep-buffer leaf switches.</li>
+</ul>
+<h4 id="if-you-want-to-know-more">Need more details?</h4><ul><li>Start with <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">Leaf-and-Spine Fabrics Architectures</a></li>
+<li>Explore individual technologies with <a href="https://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN Technical Deep Dive</a> and <a href="https://www.ipspace.net/EVPN_Technical_Deep_Dive">EVPN Technical Deep Dive</a></li>
+<li><a href="https://www.ipspace.net/Data_Center_Interconnects">Data center interconnects</a> are covered in yet another webinar</li>
+<li>You’ll find some vendor-specific implementation details in <a href="https://www.ipspace.net/Data_Center_Fabrics">Data Center Fabric Architectures</a></li>
+<li>JR Rivers did a great job <a href="https://www.ipspace.net/Networks,_Buffers,_and_Drops">discussing switch buffer sizes and the importance of drops versus delays</a></li>
+</ul>
+<p>All ipSpace.net webinars are included with <a href="https://www.ipspace.net/Subscription">standard ipSpace.net subscription</a>. For even more details check out <a href="https://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next Generation Data Centers</a> online course available with <a href="https://www.ipspace.net/Subscription/Individual">Expert ipSpace.net Subscription</a>. You can also <a href="https://www.ipspace.net/ExpertExpress">engage our consultants</a>.</p>
+

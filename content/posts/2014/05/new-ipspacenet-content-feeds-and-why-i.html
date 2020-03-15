@@ -1,0 +1,17 @@
+---
+title: "New ipSpace.net content feeds (and why I love Perl)"
+date: "2014-05-09T07:42:00.000+02:00"
+---
+
+<p>I’m slowly moving away from Feedburner, and started the process by creating a <a href="http://www.ipspace.net/Feeds">new web page listing all my content feeds</a>.</p>
+<p>Sounds great, right? Well, this isn’t how this particular <a href="http://sethgodin.typepad.com/seths_blog/2005/03/dont_shave_that.html">yak shaving</a> really started.<!--more--></p>
+<h4>The true story</h4><p>I try to publish a blog post with a free video every Friday (or so), and it’s a royal pain keeping track of all the videos I publish (at semi-random intervals) and the blog posts I’ve already written about them. I could have created a web page (or a simple SQL query) listing the recently-published videos, but creating a Perl script that would generate an automatic Atom feed from my content database looked like way more fun.</p>
+<p class='note'>Have I already told you that Perl rocks? Whatever problem I’m facing, there’s usually a library that solves it (at least partially). It might need 20 dependency modules (most of them replicating the functionality other dependency modules used by other libraries provide), but let’s not be too narrow-minded.</p>
+<p>A <a href="https://www.google.si/search?q=cpan+rss+feed">quick search</a> returned several candidate libraries, and <a href="http://search.cpan.org/~davecross/XML-Feed-0.52/lib/XML/Feed.pm">XML::Feed</a> seemed to be the best fit. Half an hour later I had a working Atom feed, and tweaked it for another half hour to make it pass W3 validator (a really good idea unless you like troubleshooting weird RSS readers). Problem solved.</p>
+<p>Well, not really. I wanted to make my feeds a bit fancier, so I created another domain name (feed.ipspace.net), which triggered a change in my Apache config. No big deal, cut-and-paste is a great problem solver ;).</p>
+<p>Then I got a really neat idea – what if I would use the parsing part of XML::Feed to parse my blog and podcast feeds? Amazingly, everything worked on the first try, and as I already had memcached installed, it was very easy to cache the feeds locally. I got from a single feed to three feeds in almost no time. </p>
+<p>Finally, I figured out it would be nice if the home page of the new “web site” (it’s really just a single script parsing the URL information) wouldn’t be empty, so I created a simple home page listing all the feeds.</p>
+<p>Total time spent: several hours more than what I originally planned, but I’ve accidentally solved a problem I had on a back burner for months.</p>
+<p>Enjoy the <a href="http://www.ipspace.net/Feeds">new feeds</a>, and do let me know how you like them!</p>
+<div class='jump-link'><a href='http://www.ipspace.net/Feeds'>Subscribe now</a></div>
+

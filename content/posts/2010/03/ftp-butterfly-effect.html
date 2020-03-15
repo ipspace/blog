@@ -1,0 +1,15 @@
+---
+title: "The FTP Butterfly Effect"
+date: "2010-03-29T06:35:00.007+02:00"
+tags: [ firewalls,FTP,What went wrong,Internet ]
+---
+
+<p>Anyone dealing with FTP and firewalls has to ask himself “what were those guys <del class='corr'>smoking</del><ins class='corr'>thinking</ins>?” As we all know, FTP is <del class='corr'>seriously broken</del> <ins class='corr'>interestingly-designed</ins>:</p>
+<ul><li>Command and data streams use separate sessions.</li>
+<li>Layer-3 addresses and layer-4 port numbers are carried in layer-7 messages.</li>
+<li>FTP server opens a reverse session to a dynamic port assigned by the FTP client.</li>
+</ul>
+<p>Once upon a time, there was a very good reason for this weird behavior. As Marcus Ranum explained in his <em><a href="http://www.youtube.com/watch?v=o59mQhBiUo4">Internet nails</a> </em>talk @ TEDx (the title is based on the <a href="http://en.wikipedia.org/wiki/For_Want_of_a_Nail_(proverb)"><em>For Want of a Nail</em></a><em> </em>rhyme), the original FTP program had to use two sessions because the sessions in the original (pre-TCP) Arpanet network were unidirectional. When TCP was introduced and two sessions were no longer needed (<ins class='corr'>or, at least, they could be opened in the same direction</ins>), the programmer responsible for the FTP code was simply too lazy to fix it.</p>
+<!--more--><object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/o59mQhBiUo4&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/o59mQhBiUo4&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object><p>The list of problems created by someone saving a few hours of coding is long. The original sin was the widespread acceptance of the stupid idea that it’s OK to use server-to-client sessions and embedded layer-3 addresses in application data stream. As the programmers are usually not too versed in networking protocols, they looked at past examples whenever coding a new application and decided they can do the same thing; we’ve thus ended with numerous broken applications (including SIP) that need stateful firewall inspection and application-level gateways (ALG) to work with NAT.</p>
+<p>Just imagine how much simpler our life would be if we would only have to deal with client-to-server TCP sessions with no embedded addresses ... or if the <a href="http://blog.ioshints.info/2009/08/what-went-wrong-tcpip-lacks-session.html">TCP/IP protocol stack would have a session layer</a> that would solve the peer-to-peer problems issues once and for all in a central piece of code.</p>
+

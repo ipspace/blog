@@ -1,0 +1,21 @@
+---
+title: "IPv6 First-Hop Security: Ideal OpenFlow Use Case"
+date: "2012-10-15T06:50:00.000+02:00"
+tags: [ IPv6,security,SDN,OpenFlow ]
+---
+
+<p>Supposedly it’s a good idea to be able to identify which one of your users had a particular IP address at the time when that source IP address created significant havoc. We have a definitive solution for the IPv4 world: DHCP server logs combined with <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3750e_3560e/software/release/15.0_1_se/configuration/guide/swdhcp82.html">DHCP snooping, IP source guard</a> and <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3750e_3560e/software/release/15.0_1_se/configuration/guide/swdynarp.html">dynamic ARP inspection</a>. IPv6 world is a mess: read <a href="http://www.ietf.org/mail-archive/web/v6ops/current/msg14389.html">this e-mail message from v6ops mailing list</a> and watch <a href="https://ripe65.ripe.net/archives/video/111/">Eric Vyncke’s RIPE65 presentation</a> for excruciating details.<!--more--></p>
+<h4>Short summary</h4><ul class="ListParagraph"><li>Many layer-2 switches still lack the feature parity with IPv4;</li>
+<li>IPv6 uses three address allocation algorithms (SLAAC, privacy extensions, DHCPv6) and it’s quite hard to enforce a specific one;</li>
+<li>Host implementations are wildly different (aka: The nice thing about standards is that you have so many to choose from.).</li>
+<li>IPv6 address tracking is a hodgepodge of kludges.</li>
+</ul>
+<h4>What if ... there would be an OpenFlow solution?</h4><p>Now imagine a parallel universe in which the geniuses creating OpenFlow 1.0 actually considered IPv6. IPv6 address tracking would become an ideal job for an OpenFlow controller:</p>
+<ul class="ListParagraph"><li>Whenever a new end-host appears on the network, it’s authenticated, and its MAC address is logged. Only that MAC address can be used on that port (many switches already implement this functionality).</li>
+<li>Whenever an end-host starts using a new IPv6 source address, the packets are not matched by any existing OpenFlow entries and thus get forwarded to the OpenFlow controller. </li>
+<li>The OpenFlow controller decides whether the new source IPv6 is legal (enforcing DHCPv6-only address allocation if needed), logs the new IPv6-to-MAC address mapping, and modifies the flow entries in the first-hop switch. The IPv6 end-host can use many IPv6 addresses – each one of them is logged immediately.</li>
+<li>Ideally, if the first-hop switches support all the nuances introduced in OpenFlow 1.2, the controller can install neighbor advertisement (NA) filters, effectively blocking ND spoofing.</li>
+</ul>
+<p>Will this nirvana appear anytime soon? Not likely. Most switch vendors support only OpenFlow 1.0, which is totally IPv6-ignorant (if you’re aware of OF1.2-compliant switches, please write a comment). Also, solving real-life operational issues is never as sexy as promoting the next unicorn-powered fountain of youth.  </p>
+<h4>More information</h4><p><a href="http://www.ipspace.net/Building_Large_IPv6_Service_Provider_Networks">Building large IPv6 service provider networks</a> webinar describes the intricate details of various IPv6 address assignment mechanisms, the <a href="http://www.ipspace.net/IPv6Sec">IPv6 security</a> one the plethora of IPv6 security issues. You get access to both of them (and <a href="http://www.ipspace.net/Webinar_roadmaps">numerous others</a>) with the <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

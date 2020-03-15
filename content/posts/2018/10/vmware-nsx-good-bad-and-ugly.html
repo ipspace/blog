@@ -1,0 +1,20 @@
+---
+title: "VMware NSX: The Good, the Bad and the Ugly"
+date: "2018-10-24T07:44:00.000+02:00"
+tags: [ Data Center,NSX,virtualization ]
+---
+
+<p>After four live sessions we finished the <a href="https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive">VMware NSX Technical Deep Dive</a> webinar yesterday. Still have to edit the materials, but right now the <a href="https://my.ipspace.net/bin/list?id=NSX">whole thing is already over 6 hours long</a>, and there are two more guest speaker sessions to come.</p>
+<p>Anyways, in the previous sessions we covered all the good parts of NSX and a few of the bad ones. Everything that was left for yesterday were the ugly parts.<!--more--></p>
+<p>It started with various VPN solutions:</p>
+<p><strong>Remote access SSL VPN</strong> (called SSL VPN-Plus) requires VMware client on remote systems. It uses TCP transport and thus hits all the usual TCP-over-TCP snags unless you turn on TCP optimization in which case you lose the source IP address of the client (everything seems to be coming from the ESG VM terminating the VPN tunnels).</p>
+<p>The most interesting part: you can configure whether you want the traffic to go through the tunnel (I would assume that means encrypt it) or whether it &ldquo;<em>bypasses the tunnel</em>.&rdquo; </p>
+<p>I tried to find out what means, and all I could find was dozens of blog posts parroting NSX documentation and enhancing it with screenshots, and everyone uses &ldquo;send traffic over tunnel&rdquo; setting. No wonder people don&rsquo;t read blogs&hellip; </p>
+<p>Anyway, here&rsquo;s the gem from the documentation that I couldn&rsquo;t unravel:</p>
+<blockquote class="cite">Specify whether you want to send private network and internet traffic over the SSL VPN-Plus enabled NSX Edge or directly to the private server by bypassing the NSX Edge.</blockquote>
+<p>So I have a remote user, and I have a server on a private network behind NSX edge, and the two would communicate without involving NSX edge. WTF?</p>
+<p>If anyone can enlighten me, please write a comment.</p>
+<p><strong>IPsec VPN</strong> is a bit better (at least it uses standard protocols) but the forwarding model got stuck at the level of crypto maps. They finally implemented an equivalent of Virtual Tunnel Interfaces (VTI) in release 6.4.2, but it cannot be configured through UI &ndash; you have to use API. Not exactly the worst thing they could have done, but definitely annoying if you&rsquo;re a traditional VMware user that tries to stay away from programmability, API or automation as much as possible.</p>
+<p>I won&rsquo;t even comment on<strong> </strong><strong>L2VPN</strong> stretching a VLAN or VXLAN segment across a VPN. It can use SSL VPN (because transporting Ethernet over TCP makes perfect sense), or IPsec VPN (yet again, configurable only through API).</p>
+<p>The final part we covered: <strong>cross-vCenter and cross-site NSX</strong> &ndash; another kludge that should never have been released. More about that one in another blog post.</p>
+

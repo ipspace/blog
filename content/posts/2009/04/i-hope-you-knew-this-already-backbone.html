@@ -1,0 +1,13 @@
+---
+title: "I hope you knew this already: Backbone-hacking tools"
+date: "2009-04-14T06:55:00.004+02:00"
+tags: [ security,MPLS VPN ]
+---
+
+<div class="bloggerBody"><p>A few days ago (the) Steve Bellowin sent an <a href="http://www.merit.edu/mail.archives/nanog/msg16795.html">e-mail to the NANOG mailing list</a> pointing to a <a href="http://www.darkreading.com/securityservices/services/data/showArticle.jhtml?articleID=216403220">FUD-full article describing upcoming release of MPLS hacking tools</a>. <a href="http://www.merit.edu/mail.archives/nanog/msg16814.html">Christian Koch quickly pointed out</a> a <a href="http://www.shmoocon.org/slides/rey_mende_all_your_packets_v05.pdf">similar presentation given by the same group @ Schmoocon</a> and numerous respondents correctly stated these are old issues … if you’re interested in BGP and MPLS security, of course. Nicolas Fischbach even provided link to a <a href="http://www.merit.edu/mail.archives/nanog/msg16897.html">7 year old presentation describing numerous BGP/IGP/MPLS risks and attack vectors</a>.</p>
+<script>startHide()</script><p>I went through the presentation and it does not describe anything we wouldn’t have known already. The capability to fake platform-wide MPLS labels has been known since the times MPLS (then known as <em>Tag switching</em>) was running mostly in PowerPoint. We’ve thus always recommended that the Service Providers should not run MPLS with their customers. </p>
+<p class="important">Carrier’s carrier architecture is a different story; it separates VRF labels from global labels.</p>
+<p>The Carrier Ethernet attacks described in the presentation are also pretty obvious. If someone is brave enough to have a bridged solution spanning the globe (lots of people got burnt doing that 15 years ago, but obviously it’s best to learn from your own mistakes), he’s literally asking an intruder breaking into one of the sites to attack other sites with L2 techniques.</p>
+<p>By now you might wonder why I’m writing this post. While the “<a href="http://www.shmoocon.org/slides/rey_mende_all_your_packets_v05.pdf"><em>All your packets are belong to us</em></a>” presentation does not describe new vulnerabilities, it’s still a nice eye-opener for someone who thought SP MPLS infrastructure is absolutely secure (more about that in <a href="http://blog.ioshints.info/2009/04/true-or-false-mpls-vpns-offer.html">tomorrow’s post</a>). It’s not and if you’re an enterprise network with high security requirements, you should take your own precautions, including <a href="http://blog.ioshints.info/2009/04/designing-get-vpns-part-5-of-site-to.html">running IPSec over SP MPLS network</a>.</p>
+<script>endHide()</script></div>
+

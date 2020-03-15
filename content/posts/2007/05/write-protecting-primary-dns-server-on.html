@@ -1,0 +1,8 @@
+---
+title: "Protecting the primary DNS server on your router"
+date: "2007-05-19T08:12:00.000+02:00"
+tags: [ security,DNS ]
+---
+
+In a comment to my post describing how to make a router into a primary DNS server, one of the readers noted that you could easily overload a router doing that ... and he's obviously right. <br /><br />Apart from having too many valid DNS requests for the zone the router is responsible for, the observed behavior could be spam-related. Just a few days ago when I've discussed the router-based DNS server with my security engineers, they've pointed out that a lot of spammers perform regular DNS attacks trying to poison the DNS cache of unpatched open caching DNS servers.<br /><br />Obviously, a router is no match in raw CPU power to a high-end server, so even when running the authoritative server on the router, it might not be a bad idea to use a DNS server of your ISP as the secondary DNS and list only the ISP's DNS server in the NS records for your zone. This would deflect most of the traffic (as nobody would know your router is acting as a DNS server), but I would still apply an inbound access-list allowing only DNS queries from the secondary name server on the Internet-facing interface.<br /><br />Alternatively, you could protect the router with <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios122s/122snwft/release/122s18/gtrtlimt.htm">Control Plane Policing</a> and drop excessive DNS request packets, but that would affect the queries you should respond to as well.
+

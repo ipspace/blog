@@ -1,0 +1,10 @@
+---
+title: "Dual-stack PPP requires two separate sessions?"
+date: "2009-11-24T07:12:00.003+01:00"
+tags: [ IPv6 ]
+---
+
+<p>A while ago a senior Service Provider network designer told me that they have serious issues with IPv6 deployment as IPv6 requires a separate PPPoE session from the CPE devices which significantly increases their licensing costs. The statement really surprised me; PPP was designed to be a multi-protocol environment and it’s very easy to configure IPv4 and IPv6 over a single PPP session in Cisco IOS. I think I might have tracked down the source of this “information” to the <a href="http://www.6deploy.eu/tutorials/230-6deploy_IPv6_and_DSL_v0_1.pdf">6deploy IPv6 and DSL presentation</a> which states on Page 11 that “Separate PPP sessions are established between the Subscriber’s systems (or CPE) and the BBRAS for IPv6 and IPv4 traffic”.</p>
+<p class="more">You will find an overview of the Service Provider-related IPv6 challenges in my <a href="http://www.ioshints.info/Market_trends_in_Service_Provider_networks"><em>Market trends in Service Provider networks</em></a> workshop (<a href="http://spmarkettrends.eventbrite.com/">register for the online webinar</a>). Advanced backbone designs and configurations are explained in the <a href="http://www.ioshints.info/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider core</em></a> workshop (<a href="http://spipv6.eventbrite.com/">register for the online webinar</a>).</p>
+<p>Being too Cisco-centric, I cannot figure out whether this claim has any merit, as it clearly does not apply to Cisco IOS. Are there really boxes out there that are so stupid that they cannot run two protocols across a single PPPoE session?</p>
+

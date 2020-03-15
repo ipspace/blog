@@ -1,0 +1,29 @@
+---
+title: "IPv6 in a Global Company – a Real-World Example"
+date: "2014-10-23T07:34:00.000+02:00"
+tags: [ Design,IPv6,WAN ]
+---
+
+<p>More than a year ago I wrote a response to a <a href="http://blog.ipspace.net/2013/03/predicting-ipv6-bgp-table-size.html?showComment=1363800262286#c5479811620086530785">comment Pascal wrote</a> on my <a href="http://blog.ioshints.info/2013/03/predicting-ipv6-bgp-table-size.html">Predicting the IPv6 BGP table size</a> blog post. I recently rediscovered it and figured out that it’s (unfortunately) as relevant as it was almost 18 months ago.</p>
+<p class="info"><a href="https://www.ietf.org/mail-archive/web/v6ops/current/msg20122.html">Other people have realized we have this problem in the meantime</a>, and are still being told to stop yammering because the problem is not real. Let’s see what happens in a few years.<!--more--></p>
+<p>Pascal neatly described the problem faced by large multinational organizations when he wrote "If a large company has PI addresses, many branches, and use multiple ISPs, then there could be many /48 (one per branch) advertised to the ISP peers, unless the branches connect via vpn to the main site." Let's dig deeper into the problem.</p>
+<p class="note">This blog post is based on a real-life design problem, but I tried to make it generic enough to cover numerous similar design challenges. Also note that the problem is not specific to PI address space. <a href="https://www.ietf.org/mail-archive/web/v6ops/current/msg20150.html">Some large organizations decided to become LIRs just to handle the IPv6 morass</a>.</p>
+<p><strong>Requirement#1: No NAT</strong>. IPv6 evangelists advertise the world with no NAT, which is by itself a good thing. NAT results in increased CapEx (more expensive boxes that have to maintain state at high speed) and OpEx (troubleshooting NAT-related problems).</p>
+<p><strong>Conclusion</strong>: Let's do it right - we won't use NAT in the IPv6 part of our enterprise network, which means we need global IPv6 addresses for every single host in our network. Not a big deal, it's pretty easy to get large chunk of IPv6 PI or PA address space if you can document the use case (/48 per location x number of locations worldwide).</p>
+<p class="info">If the remote sites use a single ISP, you could go with PA address space for remote sites and make the /48 assigned by the ISP their unique IPv6 prefix… until you have to change ISP and renumber (a project that <a href="https://www.ietf.org/mail-archive/web/v6ops/current/msg20140.html">usually mirrors the Titanic voyage</a>). </p>
+<p><strong>Requirement#2: Ubiquitous redundancy</strong>. Every location must have connectivity to two ISPs. Remember, we're discussing a global organization - paying more for dual-homed business-grade Internet connectivity is way cheaper than dealing with problems caused by residential-grade access or non-redundant setups.</p>
+<p>Implementing this requirement in a NAT-less IPv6 world usually requires a globally routable provider independent IPv6 prefix <em>for every single site</em>. Alternatively, one could build IPv6-over-IPv6 (or IPsec or SSL VPN) tunnels to regional hubs and use ISP-provided IPv6 addresses as underlay endpoints. However, there's the third requirement.</p>
+<p><strong>Requirement#3: Local Internet exit</strong>. Local offices of a global organization commonly access local web sites. It makes no sense to make their life harder by shuttling the traffic to a regional hub (over sometimes quite expensive international links - there are countries in the world where you still pay extra for international connectivity) and then back to a web site that might be located across the street from the local office.</p>
+<p class="note">Another requirement in networks that combine MPLS/VPN and Internet WAN connectivity would be <em>fallback to regional hub in case of local Internet uplink failure</em>. Also note that <em>regional Internet exit</em> isn't much different than <em>local Internet exit</em>.</p>
+<p>There are two designs I could come up with that satisfy all requirements:</p>
+<ul class="ListParagraph"><li>A network in which every single site advertises its own provider-independent globally routable IPv6 prefix to all upstream ISPs, effectively exploding the IPv6 routing tables world-wide. </li>
+<li>In networks with a single local Internet uplink we could use multiple IPv6 prefixes on every subnet: ULA+global or multiple global prefixes (enterprise and Internet) with smart source address selection rules. Two or more Internet uplinks result in a <em>mission impossible </em>scenario.</li>
+</ul>
+<p>The moment we allow some NAT (preferably in form of NPT66), the design becomes more realistic. We can satisfy requirements #2 and #3 by:</p>
+<ul class="ListParagraph"><li>Using a single PI block;</li>
+<li>Allocating /48 prefixes out of that PI block to all remote sites;</li>
+<li>Using ISP-allocated prefixes as the public NPT66 prefixes;</li>
+</ul>
+<p>However, we’re firmly back in the NAT land, but at least we’re using a stateless variant, which tends to be a bit cheaper and easier to implement.</p>
+<p>Am I missing something? We’re talking about real-life implementations, so you don’t have to mention LISP until reasonable large number of ISPs deploy it in production in the global Internet.</p>
+

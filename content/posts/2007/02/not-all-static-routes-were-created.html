@@ -1,0 +1,12 @@
+---
+title: "Not all static routes were created equal"
+date: "2007-02-20T20:03:00.000+01:00"
+tags: [ You've asked for it,IP routing ]
+---
+
+<p>In his <a href="http://ioshints.blogspot.com/2007/02/unequal-load-split-with-static-routes.html#comment-7415263930194907319">excellent question</a>, Matt reminded me of (almost prehistoric) days when static routes pointing to a connected interface (not IP next-hop) had administrative distance zero. I also remembered that we've had interesting routing problems as those static routes actually behaved like connected routes (and were redistributed into routing protocols with <strong>redistribute connected</strong> command).<!--more--></p>
+<p>This is no longer the case (and hasn't been since at least IOS release 12.2 ... I wasn't able to find a box running an older release to test it), all static routes now have default administrative distance one, and behave like they should (they never get redistributed with <strong>redistribute connected</strong> command).</p>
+<p>For example, with the router configuration ...</p>
+<pre class='code'>ip route 0.0.0.0 0.0.0.0 serial 0/0.1<br />ip route 1.0.0.0 255.0.0.0 172.16.0.4</pre><p>... both routes have identical administrative distance:</p>
+<pre class='code'>POP#<strong>show ip route 0.0.0.0</strong>Routing entry for 0.0.0.0 0.0.0.0, supernet<br /> Known via "static", <span class='high'>>distance 1, metric 0 (connected)</span>, candidate default path<br /> Routing Descriptor Blocks:<br /> * directly connected, via Serial0/0.1<br />   Route metric is 0, traffic share count is 1<br />POP#show ip route 1.0.0.0<br />Routing entry for 1.0.0.0 255.0.0.0<br /> Known via "static", <span class='high'>distance 1, metric 0</span><br /> Routing Descriptor Blocks:<br /> * 172.16.0.4<br />   Route metric is 0, traffic share count is 1</pre><p class='note'>Searching through Cisco's Bug toolkit turned up only a single relevant bug: CSCdi38232 (redistribute connected should not redistribute static route to OSPF), which was fixed in IOS release 10.2 and 10.3, that's probably also when they've fixed the administrative distance.</p>
+

@@ -1,0 +1,13 @@
+---
+title: "Multiple EIGRP autonomous systems in a VRF"
+date: "2010-10-04T06:50:00.000+02:00"
+tags: [ EIGRP,MPLS VPN ]
+---
+
+<p>A while ago Ron sent me an intriguing question: “Is it possible to have two EIGRP AS numbers in the same VRF?” Obviously he’s working on a network with multiple EIGRP processes (not an uncommon pre-MPLS/VPN solution; I did a network design along the same lines almost 20 years ago).</p>
+<p>It’s easy to run multiple EIGRP autonomous systems in the global IP routing table; just create more than one EIGRP process. They can even run over the same set of interfaces. <a href="http://wiki.nil.com/VRF_routing_process_limitations">EIGRP-in-a-VRF implementation</a> is slightly different; you configure an <strong>address family </strong>within another EIGRP process and (optionally) specify an AS number that does not have to match the AS number of the EIGRP process.</p>
+<!--more--><p>My first (pretty lame) reply was obvious: why don’t you create two EIGRP processes and specify the same VRF <strong>address family </strong>in both? Unfortunately this trick doesn’t work; although you could use multiple EIGRP processes, each VRF can be specified only in one of them.</p>
+<p>In the end, I had to admit that the only viable solution is creation of two VRFs (with the same route targets and different route distinguishers), one for each EIGRP AS number. Ron’s reply: “<em>Yeah, I know that works, but I was trying to figure out how to do it within EIGRP</em>. “ Obviously you can’t.</p>
+<p>Just in case you’d need to do something similar, here’s the relevant part of the PE-router configuration (note that we’re using <strong>eigrp 11</strong> everywhere even though the AS numbers in the VRFs are 1 and 2).</p>
+<pre class="code">ip vrf Cust_AS_1<br /> rd 65000:1<br /> route-target export 65001:1<br /> route-target import 65001:1<br />!<br />ip vrf Cust_AS_2<br /> rd 65000:2<br /> route-target export 65001:1<br /> route-target import 65001:1<br />!<br />router eigrp 11<br /> !<br /> address-family ipv4 vrf Cust_AS_1<br />  autonomous-system 1<br />  network 0.0.0.0<br />  no auto-summary<br />  redistribute bgp 65000 metric 128 10000 255 1 1500<br /> exit-address-family<br /> !<br /> address-family ipv4 vrf Cust_AS_2<br />  autonomous-system 2<br />  network 0.0.0.0<br />  no auto-summary<br />  redistribute bgp 65000 metric 128 10000 255 1 1500<br /> exit-address-family<br />!<br />router bgp 65000<br /> no synchronization<br /> bgp log-neighbor-changes<br /> !<br /> address-family ipv4 vrf Cust_AS_1<br />  no synchronization<br />  redistribute eigrp 11<br />!<br /> address-family ipv4 vrf Cust_AS_2<br />  no synchronization<br />  redistribute eigrp 11</pre>
+

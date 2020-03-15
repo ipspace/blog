@@ -1,0 +1,24 @@
+---
+title: "Looking for a Tool to Create Device Configurations from Templates"
+date: "2017-05-11T09:49:00.000+02:00"
+tags: [ Automation,Ansible ]
+---
+
+<p>One of my readers sent me this question:</p>
+<blockquote class="cite">Other than using Excel (and of course an automation tool) any suggestions for a tool to create device config for some 200 customer VRFs from a standard template?</blockquote>
+<p>You need three things to get the job done:<!--more--></p>
+<ul class="ListParagraph"><li>Data (what values you want to have in each configuration)</li>
+<li>Templating tool and configuration templates</li>
+<li>Some glue that connects the two and generates the configurations.</li>
+</ul>
+<p>You can store data in text files (CSV or YAML), Excel spreadsheets, or a database (any database would do, but object-oriented databases might be a better fit than relational ones). </p>
+<p>However, when selecting a potential data store, keep in mind that (as I explained in the <a href="https://my.ipspace.net/bin/get?doc=26e2d34c-e455-11e6-b42b-005056880254"><em>Data Stores</em></a><em> </em>part of the <a href="http://automation.ipspace.net/Public:3-Data_Models"><em>Data Model</em></a><em> </em>section in my <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> course) you have to:</p>
+<ul class="ListParagraph"><li>Have a tool to update the data, and while databases have numerous interesting properties, its way easier to use Notepad, Sublime Text or Excel to update the data;</li>
+<li>Have a mechanism to track changes to the data, and a Git repository is way simpler to implement than any alternative.</li>
+</ul>
+<p>Next you need a templating tool. Every programming language has one, and as Python is the new black, you might want to go with Jinja2.</p>
+<p>Finally, you need some glue that will take device-specific data, push it through a template, and save the results in a file. Writing a Python script to do that is really easy (unless it&#x2019;s your first script).</p>
+<p>However, the moment you have a tool, you want a more powerful tool. For example, you might want to have global parameters, or groups of devices, or push configurations to the devices, or&hellip; and this is where Ansible starts making perfect sense for a minimum investment in tools and programming. </p>
+<p>There are people who prefer to do the <a href="http://blog.ipspace.net/2017/02/network-automation-and-undifferentiated.html">undifferentiated heavy lifting</a>, and then there are the lazy people (like myself) who like to use the tools that are out there, and once I got familiar with YAML/Jinja2/Ansible combo I wouldn't even think about writing my own Python script to get the job done, but that's just me.</p>
+<p>Sounds interesting? Why don&#x2019;t you explore the <a href="http://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> webinar, and once you get interested in writing real-life solutions join the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> course?</p>
+

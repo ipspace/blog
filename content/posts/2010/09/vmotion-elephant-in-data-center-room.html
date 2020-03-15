@@ -1,0 +1,32 @@
+---
+title: "vMotion: an elephant in the Data Center room"
+date: "2010-09-10T07:15:00.005+02:00"
+tags: [ GestaltIT,Data Center,Workshop,vMotion,IP routing,virtualization ]
+---
+
+<p>A while ago I had a chat with a fellow CCIE (working in a large enterprise network with reasonably-sized Data Center) and briefly described vMotion to him. His response: “Interesting, I didn’t know that.” ... and “Ouch” a few seconds later as he realized what vMotion means from bandwidth consumption and routing perspectives. Before going into the painful details, let’s cover the basics.</p>
+<!--more--><h4>The basics</h4><p><a href="http://www.vmware.com/products/vmotion/">vMotion</a> is VMware’s technology that allows migration of live virtual machines from one physical server to another without losing VM state, its data or its LAN or SAN sessions. It’s not a new technology (the <a href="http://www.vmware.com/pdf/usenix_vmotion.pdf">Usenix ’05 article contains lots of useful technical details</a>) and even the competing products (Hyper-V) got similar functionality in recent releases.</p>
+<p>vMotion by itself is useful, but additional functionality built on top of it makes it indispensable: with <a href="http://www.vmware.com/products/drs/">DRS</a>, VM load can be spread dynamically across a cluster of physical servers and with DPM, all VMs running on a cluster are consolidated on a small number of servers in the off-hours and the unused servers shut down. </p>
+<h4>Bandwidth implications</h4><p>Obviously, vMotion needs to transfer the whole VM memory image before the VM state can be migrated to the second server; expect a few gigabytes of data traversing your network. The data transfer usually doesn’t matter if the physical servers are close together, but if the VM image is transferred across the Data Center backbone or even across a WAN link, the load can become significant.</p>
+<p>Depending on the server uplink utilization and the QoS requirements of your traffic you might want to consider the impact of vMotion even when the servers are close together. For example, if you use a fully loaded UCS chassis with only a few uplinks, you might want to configure QoS on the uplinks to ensure vMotion does not interfere with your regular traffic (hint: it’s easy to configure vMotion to run in a dedicated VLAN).</p>
+<h4>Routing implications</h4><p>Obviously the moved VM has to retain its IP address if you want to retain its TCP/IP sessions (and it makes no sense to move a running machine if it loses all the sessions). You can easily guess what the “traditional” solution is: bridging between the source and the destination physical servers. When a VM is moved from one server to another but remains in the same VLAN, all it takes is a single packet sent from the VM to update the MAC address tables on all intervening switches.</p>
+<p style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_K_pkZO5-tTg/TIdiZRthHlI/AAAAAAAAEOE/DNKvq4tXT0U/s1600/vmotion_2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="373" src="http://1.bp.blogspot.com/_K_pkZO5-tTg/TIdiZRthHlI/AAAAAAAAEOE/DNKvq4tXT0U/s400/vmotion_2.png" width="400" /></a></p>
+<p>The implications of the same-VLAN requirement are manifold:</p>
+<ul class="ListParagraph"><li>You need a trunking link connecting the physical server with a switch.</li>
+<li>All servers have to have the same set of VLANs.</li>
+<li>All intermediate switches have to participate in all those VLANs.</li>
+<li>The server and switch configurations have to be synchronized (don’t forget, <a href="http://blog.ioshints.info/2010/07/server-virtualization-has-totally.html">every VMware server has an embedded switch</a>).</li>
+</ul>
+<p>Net result: if you have a security-conscious environment where different applications reside in different layer-3 segments, you’ll end with a veritable VLAN sprawl.</p>
+<h4>Traffic flow implication</h4><p>Every VM is connected to a number of network-layer and application-layer peers (routers, firewalls, database servers ...). As you move a VM, those connections are usually not moved and might significantly increase the amount of traffic flowing across your Data Center core. </p>
+<p>For example, server VLANs commonly use a single default gateway established with a first-hop redundancy protocol (FHRP) like <del class='wrong'>NHRP</del><ins class='corr'>HSRP</ins> or GLBP. </p>
+<p style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_K_pkZO5-tTg/TIdiX8_w58I/AAAAAAAAEOA/DNfzhIIU7CI/s1600/vmotion_1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="373" src="http://1.bp.blogspot.com/_K_pkZO5-tTg/TIdiX8_w58I/AAAAAAAAEOA/DNfzhIIU7CI/s400/vmotion_1.png" width="400" /></a></p>
+<p>After the VM is moved, it still uses the same default gateway, causing its outbound traffic to go all the way back to the original switch.</p>
+<p style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_K_pkZO5-tTg/TIdieHOXtyI/AAAAAAAAEOI/qLp7wlsVgVk/s1600/vmotion_3.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="373" src="http://1.bp.blogspot.com/_K_pkZO5-tTg/TIdieHOXtyI/AAAAAAAAEOI/qLp7wlsVgVk/s400/vmotion_3.png" width="400" /></a></p>
+<p><strong>Notes:</strong></p>
+<ul class="ListParagraph"><li>Traffic flow is optimal if the two switches use VSS or vPC.</li>
+<li>Very smart layer-2 filters can create two simultaneous FHRP groups on the same VLAN. This is an ideal solution if you’re looking for job security and late-night troubleshooting sessions.</li>
+</ul>
+<h4>Need more information?</h4><p>If you’d like to know more about vMotion, there are literally tons of good articles on the Internet. Unfortunately, most of them are written from the server admin’s perspective.</p>
+<p>For an overview of vMotion, related technologies and their impact on the network watch my <a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/SingleRecording?code=DC30">buy a recording</a> or <a href="http://www.ioshints.info/Subscription">yearly subscription</a>).</p>
+

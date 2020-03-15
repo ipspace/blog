@@ -1,0 +1,11 @@
+---
+title: "Anycast"
+date: "2008-07-03T06:50:00.000+02:00"
+tags: [ IP routing ]
+---
+
+Whenever I start digging into technical details, I learn something new. A few days ago I've stumbled across the term <a href="http://en.wikipedia.org/wiki/Anycast">anycast</a>, which is a very interesting way to solve scalability issues:<ol><li>Deploy geographically dispersed servers using the same IP address (obviously they would also need a unique IP address or you wouldn't be able to manage them);</li>
+<li>Advertise your service as residing on that IP address (for example, use the IP address in NS records for DNS zones you host)</li>
+<li>Advertise the IP address (or corresponding IP prefix) into the Internet from multiple locations.</li>
+</ol>Although you could (theoretically) use anycast technology for any application, it works best with simple request-response UDP applications (for example, DNS). In all other scenarios, the application session would fail if the nearest anycast server would change following a change in the network.
+

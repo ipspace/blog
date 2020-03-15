@@ -1,0 +1,25 @@
+---
+title: "Adjusting System State with Infrastructure as Code"
+date: "2018-09-12T07:42:00.000+02:00"
+tags: [ Automation,Training ]
+---
+
+<p><em>This is the second blog post in &ldquo;thinking out loud while preparing Network Infrastructure as Code presentation for the </em><a href="https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog"><em>network automation course</em></a><em>&rdquo; series. If you stumbled upon it, you might want to </em><a href="https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html"><em>start h</em><em>e</em><em>re</em></a><em>.</em></p>
+<p>An anonymous commenter to my <a href="https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html">previous blog post on the topic</a> hit the crux of the infrastructure-as-code challenge when <a href="https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html?showComment=1536134563213#c4016391268971561558">he wrote</a>: &ldquo;<em>It's hard to do a declarative approach with Ansible and the nice network vendor APIs.</em>&rdquo; Let&rsquo;s see what he was trying to tell us.<!--more--></p>
+<p>The goal of infrastructure-as-code approach is to have a system in a state that&rsquo;s defined by machine-readable (and hopefully human-readable) definition files. The $1M question is &ldquo;<em>How do we get the system in that state?</em>&rdquo;</p>
+<p><strong>Building from scratch</strong><strong>. </strong>This is the easiest possible approach assuming you can use it. It&rsquo;s been used forever by simple installation scripts; Docker aficionados do it every time they build a container image. It also works quite well in environments that don&rsquo;t patch the servers but rebuild them from scratch. Assuming you&rsquo;re willing to adjust your architecture and processes, you can even make it work for application deployment in fully-virtualized environments like public IaaS clouds.</p>
+<p>You can use almost any scripting tool to build a system from scratch &ndash; all you need is something with minimal error detection and looping and branching capabilities (to make your scripts adjustable and/or readable). Bash and Ansible are perfect tools for the job.</p>
+<p><strong>Restarting the system</strong>. Most Linux services use a configuration file that specifies how that service should behave. The configuration file is effectively build-from-scratch script written in domain-specific language (DSL).</p>
+<p>Implementing <em>infrastructure-as-code </em>for those services is trivial (like I wrote in the original blog post that so upset the above-mentioned commenter: these concepts are old)&hellip; but unfortunately, you can&rsquo;t always restart a system.</p>
+<p>However, you can get an amazing number of crazy things done if you did your design right: an ISP used this approach to automate their core network in early 2000s.</p>
+<p><strong>Adjusting the </strong><strong>system </strong><strong>state</strong>. This is the hardest approach to implementing infrastructure-as-code: given a running system, and a definition file specifying the desired state of the system, execute actions that will bring the system into the desired state.</p>
+<p>There are tons of tools out there that solve this problem, from environment-specific tools like Docker Compose or Amazon CloudFormation to generic frameworks like Terraform, Chef or Puppet.</p>
+<p>Many modern Linux services can adjust their state on their own &ndash; all you have to do is to change the configuration and tell the service to adjust what it&rsquo;s doing based on the new configuration file.</p>
+<p>Some network devices can do the same trick. The crudest form of system state adjustment is <strong>configure replace</strong>; Junos, IOS XR and Arista EOS offer a more granular approach using <em>candidate configuration</em>.</p>
+<p>Assuming you have a networking device that implements configuration replacement at some reasonably good-enough level, there&rsquo;s no need to reinvent the <em>adjusting system state </em>wheel on your own with tools like vendor API and Ansible. (or as I wrote in the past: <a href="https://blog.ipspace.net/2018/04/dont-get-obsessed-with-rest-api.html">don&rsquo;t get obsessed with REST API</a>). The problem has been solved; all you have to do is to:</p>
+<ul class="ListParagraph"><li>Understand what problem you&rsquo;re trying to solve;</li>
+<li>Select the best tools for the job;</li>
+<li>Solve the problem with minimum effort. </li>
+</ul>
+<p>Not surprisingly, the <a href="https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog">Building Network Automation Solutions</a> online course is heavily focused on these concepts.</p>
+

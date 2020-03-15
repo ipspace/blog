@@ -1,0 +1,22 @@
+---
+title: "Does uRPF Make Sense in Internet Service Provider Networks?"
+date: "2014-01-09T07:25:00.000+01:00"
+tags: [ security ]
+---
+
+<p>Every time someone wonders about the viability of unicast reverse path forwarding (uRPF) as source address validation technique at the edge of an ISP network, someone else inevitably claims it can’t possibly work due to asymmetrical routing issues. Is the situation really so black-and-white?<!--more--></p>
+<h4>What Is uRPF?</h4><p>uRPF is a very simple (and crude) source IP address validation mechanism. It uses IP routing table to verify whether the source IP address of an incoming packet makes sense:</p>
+<ul class="ListParagraph"><li><em>Strict uRPF</em> requires a match between the input interface and the <a href="http://blog.ipspace.net/2010/09/ribs-and-fibs.html">FIB</a> next-hop interface for the source IP address;</li>
+<li><em>Loose uRPF</em> requires the presence of a prefix matching source IP address in the FIB. Default route may or may not be considered a match.</li>
+</ul>
+<h4>What can uRPF check?</h4><p>Strict uRPF is ideal when you want to check the traffic coming from a user with a single uplink. As the user has a single uplink, the only path to reach the user is through the provider edge (PE) router performing the uRPF check. If the source IP address of an incoming packet doesn’t match the reverse path, the user is obviously trying to spoof its source IP address.</p>
+<p>Strict uRPF <em>may </em>drop legitimate packets of multihomed customers when the customer wants its upstream ISPs to prefer one of the uplinks, but sends the outbound packets over another uplink. It fares no better in any environment with asymmetrical routing (pretty common in the Internet core).</p>
+<p>Loose uRPF will catch packets sent from <a href="http://en.wikipedia.org/wiki/Dark_Internet">dark address space</a>, but won’t stop source IP address spoofing using legitimate globally-reachable IP addresses. It’s becoming quite useless in the IPv4 world (most of the available IPv4 space is advertised to the global Internet).</p>
+<h4>Is uRPF useful?</h4><p>As always, the only correct answer is “<em>it depends.</em>” Strict uRPF is the ideal tool to use on PE routers that use static routing toward the customers (most residential and SMB customers). These customers are also least likely to have proper security and are thus most exposed to botnet exploits. Running uRPF on these links is mandatory (IMHO), but of course few ISPs do it (because it requires an extra configuration line?).</p>
+<p>Strict uRPF is pretty useless on inter-ISP links, and loose uRPF is not much better in IPv4 world. Loose uRPF might still make sense in IPv6 world.</p>
+<p>Any other scenarios/thoughts? Please share them in the comments.</p>
+<h4>More information</h4><p>The following two RFCs are mandatory reading for anyone designing or running an ISP network:</p>
+<ul class="ListParagraph"><li><a href="http://tools.ietf.org/html/rfc2827">Network Ingress Filtering: Defeating Denial of Service Attacks which employ IP Source Address Spoofing</a> (RFC 2827);</li>
+<li><a href="http://tools.ietf.org/html/rfc3704">Ingress Filtering for Multihomed Networks</a> (RFC 3704).</li>
+</ul>
+

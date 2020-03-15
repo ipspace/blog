@@ -1,0 +1,39 @@
+---
+title: "Q&A: What Is a Hyperconverged Infrastructure?"
+date: "2017-03-30T09:37:00.000+02:00"
+tags: [ Data Center,SAN,virtualization ]
+---
+
+<p>I&#x2019;m running a <a href="http://digs.ch/digs-special-interest-group-sdn/">hyperconverged infrastructure event with Mitja Robas on April 6<span style="vertical-align: super; font-size: 80%;">th</span></a>, and so my friend Christoph Jaggi sent me a list of interesting questions, starting with:</p>
+<blockquote class='cite'>What are hyperconverged infrastructures?</blockquote>
+<p class='more'>The German version of the interview is <a href="http://www.inside-it.ch/articles/47114">published on inside-it.ch</a>.<!--more--></p>
+<p>Hyperconverged infrastructure is a marketing term, so it&#x2019;s not clearly defined. However, usually one talks about hyperconverged infrastructure when a product or solution integrates data center storage and compute resources. This integration is usually achieved by using storage devices in servers to implement a distributed storage solution.</p>
+<blockquote class="cite">How do they differ from converged infrastructures and from non-converged infrastructures?</blockquote>
+<p>Like with hyperconverged infrastructure, there&#x2019;s no good definition of converged infrastructure. For example, FCoE which combines Fibre Channel with Ethernet is sometimes called converged infrastructure. Converged infrastructure usually translates into some kind of an external shared storage (FC, iSCSI, NFS &hellip;) that is more or less integrated (depending of the vendor) with compute resources (i.e. through orchestrators or virtual machine managers like vCenter Server).</p>
+<p>Hyperconverged infrastructure is usually implemented with server-based storage, reducing the number of hardware components in the data center, and raising a whole spectrum of storage-related dilemmas and challenges.</p>
+<blockquote class="cite">What are the benefits of hyperconverged infrastructures?</blockquote>
+<p>Reducing the number of hardware components, and replacing storage arrays with less expensive server-based storage are the clear benefits. Some hyperconverged products also simplify storage replication, both within a data center, as well as across multiple data centers. However, the devil is in the details that we will discuss in the <a href="http://digs.ch/digs-special-interest-group-sdn/">DIGS session on April 6<span style="vertical-align: super; font-size: 80%;">th</span></a>.</p>
+<p>Many hyperconverged products come with a pre-installed hypervisor or include a simplified installation process, resulting in quicker deployment.</p>
+<blockquote class="cite">What are the downsides of hyperconverged infrastructures? </blockquote>
+<p>There are several downsides that the hyperconverged vendors don&#x2019;t like to talk about:</p>
+<ul class="ListParagraph"><li>Increased network utilization &ndash; hyperconverged infrastructure uses the network to replicate data across redundant storage nodes, resulting in significant increase in network traffic.</li>
+<li>Increased storage requirements &ndash; storage arrays usually use some variant of RAID, resulting in moderate overhead, while hyperconverged infrastructure usually creates multiple copies of data, sometimes resulting on 200% overhead.</li>
+<li>Increased software complexity &ndash; distributed storage solution is inherently more complex than traditional storage arrays.</li>
+<li>Relative immaturity &ndash; storage arrays are very mature technologies. Many hyperconverged solutions are only a few years old.</li>
+<li>Hardware incompatibilities and issues &ndash; even though hyperconverged is preached as software defined solution, in reality selecting proper hardware matters big time. </li>
+</ul>
+<blockquote class="cite">What are the main use cases? </blockquote>
+<p>Hyperconverged solutions are ideal in environments with non-critical data that can tolerate significant RPO. Use cases include VDI servers, private and public clouds, VM disk images, and secondary storage or backup/archiving appliances and systems.</p>
+<blockquote class="cite">Can they integrate or co-exist with existing infrastructures?</blockquote>
+<p>Absolutely. Most hyperconverged solutions use a standard hypervisor (vSphere, Hyper-V or KVM) and present the distributed storage solution as an iSCSI or NFS target. Hypervisor software can still use other storage access methods and (for example) store VM disk images on hyperconverged storage while at the same time storing mission-critical database on a traditional or all-flash storage array.</p>
+<p>In any case, iSCSI and NFS are the most commonly used access methods. It&#x2019;s rare to see hyperconverged solutions using Fibre Channel.</p>
+<blockquote class="cite">What kind of cost structure comes with a hyperconverged infrastructure (initial cost, maintenance cost, build-out, integration of existing infrastructure)?</blockquote>
+<p>While vendors claim the hyperconverged infrastructure is cheaper than a traditional solution, be careful to include all cost elements in your comparison:</p>
+<ul class="ListParagraph"><li>Hyperconverged compute/storage hardware will be cheaper, but will require more storage devices (disks or SSDs) and faster network infrastructure;</li>
+<li>Software licenses will be more expensive (commercial distributed storage software is not cheap). Also keep in mind that the hyperconverged software running on hypervisors needs dedicated CPU resources which are included in the hypervisor license;</li>
+<li>Hardware build-out of a hyperconverged infrastructure will be faster, as you only have to rack-and-stack two types of components: servers and Ethernet switches. Software setup times vary by vendor.</li>
+<li>You will need support for hardware and software.  Hyperconverged software support costs might be higher, the hardware support will be way cheaper than what you&#x2019;re paying for your storage arrays. Also, as you&#x2019;re using a highly redundant unified compute/storage architecture you don&#x2019;t need the expensive fast-response maintenance any more.</li>
+<li>Traditional storage landscape has changed significantly in the past few years with the rise of a flash-based storage, not only from technical but also from cost-of-ownership perspective &ndash; the non-incumbent vendors can meet or even surpass the cost effectiveness of hyperconverged infrastructure while keeping the &ldquo;enterprise&rdquo; storage features &ndash; an option that should not be neglected.</li>
+</ul>
+<p>For more details and an in-depth discussion of benefits and drawbacks of hyperconverged infrastructure (including lessons learned while running it in production) visit the <a href="http://digs.ch/digs-special-interest-group-sdn/">5th DIGS Special Interest Group Next-Gen Infrastructure event on April 6<span style="vertical-align: super; font-size: 80%;">th</span></a>.</p>
+

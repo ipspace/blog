@@ -1,0 +1,28 @@
+---
+title: "David Gee on Automated Workflows"
+date: "2018-11-20T09:13:00.000+01:00"
+tags: [ Automation ]
+---
+
+<p>David Gee is coming back to <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course &ndash; in <a href="https://www.ipspace.net/NetAutSol/Live">early March 2019</a> he&rsquo;ll talk about <a href="https://www.ipspace.net/Building_Network_Automation_Solutions#DG19">hygiene of network automation</a>. <a href="http://uebermeister.com/about.html">Christoph Jaggi</a> did an interview with him to learn more about the details of his talk, and they quickly diverted into an interesting area: automated workflows.</p>
+<blockquote class="cite">Automation is about automated workflows. What kind of workflows can be automated in IT and networking?</blockquote>
+<p>Workflows most often fall into categorizations of build, operations and remediation.<!--more--></p>
+<p>Taking a moment to define workflows: they are processes converted to mechanizable flow charts which describe the logic required to perform one or more tasks. They account for data input and output, transformations and validations. Logic dictates, if statically typed input can be programmatically obtained, it can be used in decision making and be passed with API/RPC calls executed within a workflow. What kind of workflows can be automated in IT and networking? Almost anything!</p>
+<p>Each of the aforementioned categorizations includes testing elements like pre-checks, validations and post-checks. It's also common to have a final state check within workflows categorized under build, which becomes a seed for current versus desired state checks.</p>
+<p>The <strong>build</strong> deals with provisioning and topology creation and even covers the onboarding of new nodes or systems to monitoring and billing systems. </p>
+<p><strong>Operations</strong> covers everything from daily business-as-usual changes like access-layer to dealing with software upgrades.</p>
+<p><strong>Remediation</strong> targets the automatic fixing of problems through workflows, using proven codified processes and also workflows that gather and triage data in order to prepare for a human to solve more complex problems.</p>
+<p>The Operations and Remediation phases deal with the transition between the current and desired-state, with the Build moving a system to a desired state from zero.</p>
+<blockquote class="cite">What can trigger and what can end an automated workflow?</blockquote>
+<p>There are two answers to this question, so let&rsquo;s start with the simplest.</p>
+<p>In the early days of an automation journey, humans execute workflows, using business events as the trigger. At run-time, the operator gathers input data and enters it as arguments to the appropriate command or script which is a manifestation of a workflow.</p>
+<p>When the workflows prove to be effective, it&rsquo;s typical to see data gathering being done by the workflows through key/value stores or more complex databases.</p>
+<p>After some time, trust builds and it&rsquo;s common to see the triggering mechanism come from sourced events. Orchestrated maintenance windows, control-panel updates and even errors and faults can trigger workflows with input data, eventually resulting in event-driven automation.</p>
+<p>Two types of workflow exist in principle. These are run-to-completion and long-lived. Both have their own termination pattern. Run-to-completion workflows end when all the tasks are complete, irrelevant of task success. It is possible for long-lived workflows to never exit and, instead, spawn children sub-workflows which execute tasks, return run-time information and exit. These kinds of workflows can have lots of loops and require finite-state machine handling of logic. In some ways, amplifier feedback is similar to long-lived workflow feedback. </p>
+<blockquote class="cite">Is it worthwhile to automate every workflow that can be automated?</blockquote>
+<p>The answers to this vary question due to organization culture and perceptions of time that all organizations have. Let&rsquo;s take an example. </p>
+<p>On 31 December every year, IPEngineer PLC's operation team executes a workflow, taking about twenty minutes. The workflow involves multiple touch points like databases, web servers and middleware. The operations team estimates three days to convert this to an automated process. The team is energized to learn about automation but has lots of daily tasks that need converting first. The time investment isn&rsquo;t worthwhile. </p>
+<p>Now, imagine the same task for an organization with high automation coverage that has a mature automation culture. If all of the low hanging fruit has been consumed and the team is running super-efficiently, an extra twenty minutes of time is a huge gain. If the culture is built on solid hygiene, then the conversion will not take three days, thanks to reusable components and patterns. </p>
+<p>The TL;DR is this: &ldquo;Attack Goliath first&rdquo;. Aim for high-gain workflows, hone your approach and reapply learnings whilst working your way through the workflows which cost the highest time or deliver the highest failure rates.</p>
+<p>Want to know more? <a href="https://www.ipspace.net/Building_Network_Automation_Solutions#register">Register</a> for the <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course.</p>
+

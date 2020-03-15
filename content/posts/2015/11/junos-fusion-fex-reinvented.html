@@ -1,0 +1,39 @@
+---
+title: "Junos Fusion: the First Steps (updated)"
+date: "2015-11-16T09:11:00.000+01:00"
+tags: [ Data Center,Fabric ]
+---
+
+<p>I was really excited when Juniper announced Junos Fusion. I hoped for QFabric Done Right, but after watching the <a href="https://vimeo.com/136976394">NFD10 video describing the architecture</a>, I was disappointed: they reinvented <a href="http://blog.ipspace.net/2010/08/port-or-fabric-extenders.html">Fabric Extenders</a>.</p>
+<p class='update'>The blog post was slightly updated on November 14th 2015 based on feedback received from Juniper engineers.<!--more--></p>
+<h4>What they promised</h4><p>Here are a few highlights I extracted from the video, and double-checked with the <a href="http://www.juniper.net/assets/us/en/local/pdf/datasheets/1000523-en.pdf">Junos Fusion datasheet</a>:</p>
+<ul class="ListParagraph"><li>Junos Fusion is a leaf-and-spine architecture. They call the leaf switches <em>satellite devices </em>and the spine switches <em>aggregation devices</em>.</li>
+<li>The aggregation devices could be MX routers or QFX10K or EX9200 data center switches;</li>
+<li>Architecture is limited to two aggregation devices with independent control- and management planes (identical to Nexus OS with VPC);</li>
+<li>Satellite devices are completely dumb; the control plane is run in the spines;</li>
+<li>Packet forwarding is done through the aggregation devices (same as Cisco&#x2019;s fabric extenders) apart from some local switching (not available when you use EX9200 as the aggregation device);</li>
+<li>The maximum number of leafs is 128.</li>
+</ul>
+<p>From the high level, Junos Fusion looks exactly like Nexus OS with vPC-connected fabric extenders (a technology that is more than half a decade old) &ndash; a real disappointment coming from a company that developed QFabric and Virtual Chassis Fabric. On the other hand, ONF must be proud - Juniper implemented a picture-perfect <a href="http://blog.ipspace.net/2014/01/what-exactly-is-sdn-and-does-it-make.html">ONF-promoted SDN architecture</a>.</p>
+<p class="more">For more details on how fabric extenders and other fabric architectures work, watch the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a> webinar.</p>
+<h4>Separating features from futures</h4><p>I wanted to know more, so I started reading the <a href="https://www.juniper.net/documentation/en_US/junos14.2/information-products/pathway-pages/junos-fusion/junos-fusion.html">Junos Fusion documentation</a>, and discovered that both the NFD10 video (recorded over 2 months ago) and the Junos Fusion datasheet suffer from a severe case of marketitis.</p>
+<p class="info">Marketitis: indiscriminate and/or excessive use of <a href="http://blog.ipspace.net/2014/05/marketing-grammar.html">marketing grammar</a>.</p>
+<p>As of November 2015 Junos Fusion shipping with Junos 14.2 supports:</p>
+<ul class="ListParagraph"><li>MX-series routers as aggregation devices (no support for QFX10K or EX9200 yet);</li>
+<li>a single aggregation device, which is obviously a single point of failure;</li>
+<li>packet switching through the aggregation device (no local packet switching);</li>
+<li>maximum of 64 satellite devices.</li>
+</ul>
+<p>I wanted to know how well the system scales, but couldn&#x2019;t find any information on the other configuration maximums (the area where Cisco is doing a fantastic job with the Nexus OS), there was only a vague mention of &ldquo;<em>approximately 1000 aggregated Ethernet interfaces</em>&rdquo; in the release notes.</p>
+<h4>But Wait, There&#x2019;s More!</h4><p>As expected, someone quickly pointed out that I lack the understanding of the bigger vision and great things coming in the future. You know I believe in <strong>features </strong>not <strong>futures</strong>, but let&#x2019;s go through the list nonetheless:</p>
+<p class="more">I&#x2019;ll cover the then-shipping feature of Junos Fusion in an update session of <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a> webinar in May 2016. You can buy the recording now and register for the live session free-of-charge when it&#x2019;s scheduled.</p>
+<p><strong>Hardware/software disaggregation</strong>. This one is actually cool (but keep in mind that they still have to ship it) &ndash; it would allow you to buy QFX5100 hardware, use it as a fabric extender, and upgrade it to full-blown Junos device when needed.</p>
+<p>I would love to hope that this also solves sparing/maintenance problems, but I have yet to see a networking vendor that understands the need for simple licensing scheme.</p>
+<p><strong>Unified architecture for service provider edge, data center, and campus</strong>. This sounds very similar to &ldquo;single Junos image&rdquo; message I&#x2019;ve been hearing for the last few years. Anyone who had to deal with the various Junos images (for MX, EX, QFX, QFabric and now Junos Fusion series) knows that this idea looks great in PowerPoint but doesn&#x2019;t work as well in practice. Let&#x2019;s wait and see&hellip;</p>
+<p><strong>Easy software upgrades</strong>. Checked with a few colleagues (thank you, Ethan Banks, Jeremy Filliben and Chris Marget), and all of them remember having the same functionality on Cisco FEX a long time ago. Sounds like business-as-usual.</p>
+<p><strong>Supports single-homed as well as dual-homed topologies</strong>. The engineer that sent me this one either used marketing grammar or wanted to say &ldquo;the hardware supports it, but we&#x2019;re not shipping the software yet.&rdquo;</p>
+<p><strong>Extends rich features and high logical scale down to the satellite devices</strong>. Sounds really great, but means nothing. Every well-designed fabric extender system implements all functionality on all ports (unless there&#x2019;s an ASIC problem due to multiple encapsulations) and is limited by the capacity of the central device (and yes, I agree that QFX10K makes a better central device than Nexus 5000 ;).</p>
+<p><strong>LAG across multiple satellites</strong>. Really? This is a selling point in 2015?</p>
+<p><strong>Automatic LAG and VLAN discover for hosts</strong>. Automatic LAG discovery would be a first (or maybe I&#x2019;m missing something), automatic VLAN discovery is done in one form or another by almost all vendors. Let&#x2019;s see how exactly this feature works when Juniper publishes the configuration guides.</p>
+<p><strong>Junos Fusion is enabled on per-port basis on the aggregation device</strong>, which means you can run L2 or L3 switching on other ports. Yet again, sounds like a great selling point, but Cisco has been doing the same since they shipped FEX years ago.</p>
+

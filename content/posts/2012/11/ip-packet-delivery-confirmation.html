@@ -1,0 +1,19 @@
+---
+title: "IP packet delivery confirmation"
+date: "2012-11-02T07:26:00.000+01:00"
+tags: [ Internet,IP routing ]
+---
+
+<p>Thomas wanted to check whether the IP traffic is actually delivered to a remote site and sent me the following question:</p>
+<blockquote class="cite">I would like to know whether the packets I sent from site A to site B have been received. I don't want to create test traffic using <strong>ip sla</strong>, I would like to know that the production traffic has been delivered. I could use ACL counters but I'm running a full mesh of tens of sites. <a href="http://www.ipanematech.com/">Ipanema</a> does this very well, but I'm surprised that this doesn’t exist on Cisco IOS.</blockquote>
+<p>Short answer: that’s not how Internet works.<!--more--></p>
+<p>One of the fundamental architectural principles of Internet is <em>smart hosts with simple core</em>. As stated in <a href="http://tools.ietf.org/html/rfc1958">RFC 1958</a> (section 2.3): </p>
+<blockquote class="cite">[...] any network, however carefully designed, will be subject to failures of transmission at some statistically determined rate. The best way to cope with this is to accept it, and give responsibility for the integrity of communication to the end systems.</blockquote>
+<p>The routers are by definition simple devices that forward individual packets; the transport protocol implemented in the end hosts should take care of reliable data delivery. Quoting from <a href="http://tools.ietf.org/html/rfc3439">RFC 3439</a> (section 2.1):</p>
+<blockquote class="cite">[...] end-to-end protocol design should not rely on the maintenance of state (i.e., information about the state of the end-to-end communication) inside the network.  Such state should be maintained only in the end points, in such a way that the state can only be destroyed when the end point itself breaks.</blockquote>
+<p>The benefits of this architecture are clear: almost everything (including voice and streaming video) is transported across IP today due to IP's cost efficiency.</p>
+<p class="more">Introducing state in the network (example: tracking packets) always increases complexity and reduces performance. Read <a href="http://tools.ietf.org/html/rfc3439">RFC 3439</a> for more details. </p>
+<p>There have been technologies that maintained per-session state within the network: <a href="http://en.wikipedia.org/wiki/X.25">X.25</a>, <a href="http://en.wikipedia.org/wiki/IBM_Systems_Network_Architecture">SNA</a> and <a href="http://people.ee.duke.edu/~shunter/SECON%20paper.pdf">ATM-to-the-desktop</a> are prime examples. Their current popularity reflects their performance, cost efficiency and scalability. Fibre Channel also ensures (almost) lossless transport across the fabric. Price-per-port comparison between 8Gbps FC and 10GE (non-DCB/FCoE) switches should give you an idea of the relative complexity of the two approaches (hint: to get the real picture, do the comparison without the transceivers).</p>
+<p>Finally, the application acceleration solutions almost always replace end-to-end TCP sessions with their own protocol, terminating TCP sessions locally (and thus maintaining per-session state) and using a proprietary protocol between individual sites. </p>
+<p>Monitoring end-to-end packet delivery performance in an application acceleration solution is thus trivial – you could do the same thing by monitoring the tcpRetransSegs variable in <a href="http://tools.ietf.org/html/rfc4022">TCP MIBs</a> on individual hosts.</p>
+

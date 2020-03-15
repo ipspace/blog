@@ -1,0 +1,10 @@
+---
+title: "NAT activates NBAR"
+date: "2008-03-26T07:09:00.001+01:00"
+tags: [ NAT ]
+---
+
+<p>A few days ago I had an &ldquo;interesting&rdquo; experience on a router that was running low on memory: when I enabled NAT, it immediately ran out of memory although it had over 4 MB free memory before that (and since I was doing the tests in a lab, I wasn't worried about that &hellip; in a production network, 4 MB of free memory is something to worry about).</p>
+<p>It took me a while to figure out what was going on: the moment you enable NAT in IOS release 12.4, it activates Network Based Application Recognition (NBAR) even when CEF is disabled (and supposedly NBAR requires CEF to run).</p>
+<script>startHide()</script>Here's a sample test: the moment I've configured a loopback interface to be NAT inside interface (and it was the only NAT-enabled interface in the box), NBAR consumed 4.5 MB of memory:<pre class='code'>R2(config)#<strong>int loop 0</strong><br />R2(config-if)#<strong>ip nat inside</strong><br />R2(config-if)#<strong>do show ip nbar resources</strong><br />NBAR memory usage for tracking Stateful sessions<br />&nbsp;&nbsp;&nbsp;System link age      : 30 secs<br />&nbsp;&nbsp;&nbsp;Initial memory       : 4455 KBytes<br />&nbsp;&nbsp;&nbsp;Max initial memory   : 14852 KBytes<br />&nbsp;&nbsp;&nbsp;Memory expansion     : 112 KBytes<br />&nbsp;&nbsp;&nbsp;Max memory expansion : 112 KBytes<br />&nbsp;&nbsp;&nbsp;Memory in use        : 4455 KBytes<br />&nbsp;&nbsp;&nbsp;Max memory allowed   : 29705 KBytes<br />&nbsp;&nbsp;&nbsp;Active links         : 0<br />&nbsp;&nbsp;&nbsp;Total links          : 39784</pre><script>endHide()</script>
+

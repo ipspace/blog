@@ -1,0 +1,30 @@
+---
+title: "Replacing FabricPath with VXLAN, EVPN or ACI?"
+date: "2016-09-29T10:16:00.000+02:00"
+tags: [ VXLAN,Data Center,Fabric ]
+---
+
+<p><a name="_GoBack"></a>One of my friends plans to replace existing FabricPath data center infrastructure, and asked whether it would make sense to stay with FabricPath (using the new Nexus 5600 switches) or migrate to ACI.</p>
+<p>I proposed a third option: go with simple VXLAN encapsulation on Nexus 9000 switches. Here&#x2019;s why:<!--more--></p>
+<ul class="ListParagraph"><li>I don&#x2019;t think FabricPath has a long-term future. It was one of those crazy kludges invented to solve the wrong problem. To make it worse, it uses proprietary encapsulation which is not supported (AFAIK) by any merchant silicon out there.</li>
+<li>I don&#x2019;t think L2 fabrics like TRILL or SPB have a bright future. Avaya is the only vendor still actively promoting a L2 fabric in the data center; most everyone else is talking about VXLAN (including Brocade).</li>
+<li>L2 fabrics are reinventing the routing wheel. VXLAN runs on top of well-greased wheel that has been around for decades (IP transport).</li>
+<li>ACI is interesting, but it&#x2019;s still relatively new and has many moving parts. Using something more conservative might make more sense in some environments.</li>
+<li>ACI (and FabricPath) are single-vendor solutions. Bare-bones VXLAN using either IP multicast or configured head-end replication works across multiple vendors.</li>
+</ul>
+<p class="more">Want to know more about data center fabric solutions from various vendors? <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics webinar</a> has dozens of videos describing solutions from all major vendors.</p>
+<h4>Which VXLAN are we talking about?</h4><p>After that recommendation my friend sent me a follow-up question:</p>
+<blockquote class="cite">I assume I&#x2019;d have to configure multicast and OSPF on the N9ks so we have a routed L3 leaf/spine architecture, then enabling VTEP on the leaf switches to act as gateways from classic LAN to VXLAN which can route over the fabric?</blockquote>
+<p>He got two out of three right:</p>
+<ul class="ListParagraph"><li>Build a routed leaf-spine architecture;</li>
+<li>Configure leaf switches to run as bridges between VLANs and VXLAN segments.</li>
+</ul>
+<p>However, you don&#x2019;t need IP multicast for VXLAN to work. You could use EVPN control plane or configure VXLAN head-end replication on the leaf switches.</p>
+<p class="more">If the above paragraph doesn&#x2019;t make much sense, you need the <a href="http://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN Deep Dive webinar</a>.</p>
+<h4>To EVPN or not to EVPN?</h4><p>EVPN control plane for VXLAN is probably the best long-term approach. However, it&#x2019;s still fresh, not supported by all the interesting vendors, and might have interoperability challenges (ever deployed SIP?).</p>
+<p>On the other hand, if you&#x2019;re not interested in EVPN&#x2019;s layer-3 capabilities (for example, ARP proxies or host-based routing), static VXLAN with head-end replication works pretty well, the &ldquo;only&rdquo; challenge being consistent configuration across the whole fabric (you have to configure a list of all peers for every VNI on every VTEP).</p>
+<p class="more">Wondering what I&#x2019;m talking about? You&#x2019;ll find plenty of details in the <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs">Leaf-and-Spine Fabric Designs</a> webinar.</p>
+<p>Most data center switch vendors have some VXLAN configuration solution (example: Arista&#x2019;s CloudVision or Cisco&#x2019;s VTS) that you might want to look at, but if you have even basic automation skills, it&#x2019;s really easy to build something lightweight on top of Ansible. </p>
+<p>As always, you have to decide whether it makes sense to <em>build </em>or <em>buy </em>and it&#x2019;s never an easy decision.</p>
+<p class="more">Don&#x2019;t know how to get started? Register for my <a href="https://www.ipspace.net/Hands-On_Network_Automation">network automation workshop</a> or explore my <a href="https://www.ipspace.net/Roadmap/Network_Automation_webinars">network automation webinars</a>.</p>
+

@@ -1,0 +1,20 @@
+---
+title: "Asymmetrical Traffic Flows and Complexity"
+date: "2017-06-20T11:15:00.000+02:00"
+tags: [ Design,IP routing ]
+---
+
+<p>One of my readers sent me a list of questions on asymmetrical traffic flows in IP networks, particularly in heavily meshed environments (where it&#x2019;s really hard to ensure both directions use the same path) and in combination with stateful devices (firewalls in particular) in the forwarding path.</p>
+<p>Unfortunately, there&#x2019;s no silver bullet (and the more I think about this problem, the more I feel it&#x2019;s not worth solving).<!--more--></p>
+<p>IP was designed as a datagram protocol where (A) every packet is independently forwarded across the network and (B) paths are unidirectional &ndash; path taken from source to destination is in no way related to the return path. Even MPLS (which is effectively a form of circuit switching) doesn&#x2019;t have bidirectional paths&hellip; and this fact annoyed traditional transport equipment vendors (and their customers) so much that they tweaked MPLS until they got MPLS-TP. I&#x2019;ve seen many networks using MPLS, and I have yet to see one using MPLS-TP (or maybe I&#x2019;m speaking with the wrong people).</p>
+<p>As long as you understand these principles and don&#x2019;t try to tweak IP into something it was never designed to be life&#x2019;s good and your network is simple. The moment you&#x2019;re trying to enforce traffic flow symmetry you&#x2019;re trying to squeeze overripe tomato into a small square hole &ndash; it&#x2019;s bound to get messy, and you&#x2019;ll probably increase network complexity to ridiculous levels.</p>
+<p class="info">I was involved in one such attempt - the customer had VLANs stretched across multiple data centers and wanted to ensure symmetrical traffic flow through the "preferred" device - and while we got it semi-working (on the whiteboard), it got ridiculously complex.</p>
+<p>Speaking of stateful devices: one of the underlying assumptions of IP networks is the end-to-end transparency, and stateful devices break that assumption. No wonder things get complex. </p>
+<p>The only "reliable" way to enforce symmetrical traffic flow across a stateful device (that I&#x2019;m aware of) is to use source address NAT, forcing the return traffic to go through the same device. Alternatively, make sure that the stateful device is the only path between the endpoints &ndash; that's why we use pass-through load balancers and make them default gateways for server segments.</p>
+<p>Of course you can also deploy a cluster of stateful devices across all possible paths, and exchange state across them. I wish you luck&hellip; let&#x2019;s talk after your concoction survives the first DDoS attack, a serious port scan, and a split-brain-inducing link failure.</p>
+<p>Some of the specific problems my reader encountered in his networks include:</p>
+<blockquote class="cite">Please think of VRRP also as a source of asymmetry (tracking WAN interface is not a solution when you have many WAN links with redundancy and some of them can be active or master router whereas the other is backup router).</blockquote>
+<p>VRRP is another ugly hack trying to fix a wrong assumption ("<em>we'll never need more than one gateway per LAN</em>"). CLNP had ES-IS built in; there was nothing like that in IPv4, and even in the IPv6 world some people want to replace RA with the kludge they know (DHCP-assigned default gateway + VRRP).</p>
+<p>Also, the interface tracking (or any other means of selecting active VRRP peer) is there just to ensure most of the outbound traffic doesn't traverse too many hops. Trying to solve asymmetrical traffic flows with it is another great way of making your network unnecessarily complex.</p>
+<p>Finally, there&#x2019;s IP multicast and RPF checks&hellip; and no, I&#x2019;m not opening that can of worms.</p>
+

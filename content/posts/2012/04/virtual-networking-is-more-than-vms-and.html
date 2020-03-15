@@ -1,0 +1,29 @@
+---
+title: "Virtual Networking is more than VMs and VLAN duct tape"
+date: "2012-04-19T07:10:00.000+02:00"
+tags: [ Design,VXLAN,Overlay networks,LAN,virtualization ]
+---
+
+<p>VMware has a <a href="http://www.ntpro.nl/blog/archives/2024-vCloud-networking-explained-in-1-slide-and-52-animations.html">fantastic-looking cloud provisioning tool – vCloud director</a>. It allows cloud tenants to deploy their VMs and create new virtual networks with a click of a mouse (the underlying network has to provide a range of VLANs, or you could use <a href="http://blog.ioshints.info/2011/08/finally-mac-over-ip-based-vcloud.html">VXLAN</a> or <a href="http://blog.ioshints.info/2011/04/vcloud-director-networking.html">vCDNI</a> to implement the virtual segments). </p>
+<p>Needless to say, when engineers not familiar with the networking intricacies create point-and-click application stacks without firewalls and load balancers, you get some interesting designs.<!--more--></p>
+<p>The following one seems to be particularly popular. Assuming your application stack has three layers (web servers, app servers and database servers), this is how you are supposed to connect the VMs:</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Ag-6i4OoSc4/T38jZ5nwZ1I/AAAAAAAAE2U/rL9zyfhS-UM/s1600/AppStack.png" imageanchor="1"><img style="padding-left:1em; padding-right:1em" border="0" height="400" width="368" src="http://1.bp.blogspot.com/-Ag-6i4OoSc4/T38jZ5nwZ1I/AAAAAAAAE2U/rL9zyfhS-UM/s400/AppStack.png" /></a></div>
+<p class='note'>When I’d heard about this “design” being discussed in VMware training I politely smiled (and one of our CCIEs attending that particular class totally wrecked it). When I saw the same design on a slide with Cisco’s logo on it, my brains wanted to explode.</p>
+<p>Let’s see if we can list all things that are wrong with this design:</p>
+<p><strong>It’s a security joke</strong>. Anyone penetrating your web servers gets a free and unlimited pass to try and hack the app servers. Repeat recursively through the whole application stack.</p>
+<p><strong>How will you manage the servers?</strong> Usually we’d use SSH to access the servers. How will you manage the app servers that are totally isolated from the rest of the network? Virtual console? Fine with me.</p>
+<p><strong>How will yo</strong><strong>u update your application code?</strong> Effectively this is the same question as above without the virtual console “Get out Of Jail” card.</p>
+<p><strong>How will you download operating system patches?</strong> Pretty interesting one if you happen to download them from the Internet. Will the database servers go through the app servers and through the web servers to access the Internet? Will you configure proxy web servers on every layer?</p>
+<p>IP routing in vShield Edge (that you're supposed to be using as the firewall, router and load balancer) is another joke. It supports static routes only. Even if you decide to go through multiple layers of VMs to get to the outside world, trying to get the return packet forwarding to work will fry your brains.</p>
+<p><strong>How will you access common services?</strong> Let’s say you use company-wide LDAP services. How will the isolated VMs access them? Will you create yet another segment and connect all VMs to it ... exposing your crown jewels to the first intruder that manages to penetrate the web servers? How about database mirroring or log shipping?</p>
+<p>I’m positive I’ve forgotten at least a few issues, please feel free to point them out in the comments.</p>
+<h4>Summary</h4><p>Just because you can design your virtual application stack with a mouse doesn’t mean that you can forget the basic network design principles. </p>
+<p>It doesn’t matter if you use VLANs or some other virtual networking technology. It doesn’t matter if you use physical firewalls and load balancers or virtual appliances – if you want to build a proper application stack, you need the same functional components you’d use in the physical world, wired in approximately the same topology.</p>
+<h4>More information</h4><p>If you need to know more about data centers, network virtualization, and cloud computing networking:</p>
+<ul class="ListParagraph"><li>Start with <a href="http://www.ipspace.net/Introduction_to_Virtualized_Networking">Introduction to Virtualized Networking</a>;</li>
+<li>Discover generic data center technologies and designs in <a href="http://www.ipspace.net/Data_Center_3.0_for_Networking_Engineers">Data Center 3.0 for Networking Engineer</a>, data center fabric technologies in <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabric Architectures</a>, and the large-scale designs in <a href="http://www.ipspace.net/Clos">Clos Fabrics Explained</a> webinar.</li>
+<li>Learn more about the technologies you can use to build a private or public cloud infrastructure in the <a href="http://www.ipspace.net/CloudNet">Cloud Computing Networking</a> webinar.</li>
+<li>Dive deep into the mysteries of VMware’s vSwitch and other VMware-related networking solutions with the <a href="http://www.ipspace.net/VMware_Networking_Deep_Dive">VMware Networking Deep Dive</a>.</li>
+</ul>
+<p>And don’t forget: you get access to all these webinars (and numerous others) if you buy the <a href="http://www.ipspace.net/Subscription">yearly subscription</a>. Finally, you can always <a href="http://www.ipspace.net/ExpertExpress">ask me to review your design</a>.</p>
+

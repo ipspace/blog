@@ -1,0 +1,15 @@
+---
+title: "IPv6-capable or IPv6-ready: is it enough?"
+date: "2009-10-28T06:49:00.000+01:00"
+tags: [ IPv6,Workshop ]
+---
+
+<p>During the <a href="http://blog.ioshints.info/2009/10/ipv6-summit-in-slovenia.html">IPv6 summit in Slovenia</a> I’ve participated in a roundtable organized by our <a href="http://www.mvzt.gov.si/en/">Ministry of Higher Education, Science and Technology</a>. One of my points was that the government should require true IPv6 support in all its IT procurement processes to promote IPv6 adoption (I have to admit I’ve borrowed a few ideas from Geoff Huston’s “<a href="http://www.potaroo.net/ispcol/2009-09/v6trans.html">Is the Transition to IPv6 a Market Failure?</a>” article) … and one of the participants (coming from the Service Provider industry) answered that “that’s common hygiene”. I’m not so sure.</p>
+<p class="info">Topics like this are covered in my <a href="http://www.ioshints.info/Enterprise_IPv6_Deployment_Workshop">Enterprise IPv6 Deployment workshop</a>. Learn more about my workshops <a href="http://www.ioshints.info/">from my web site</a>.</p>
+<!--more--><p>To start with, vendors will tell you that their products are “IPv6-capable” or “IPv6-ready”. The first term is (in my opinion) pure vaporware. Anything that was produced in the last 10 years can be made to run IPv6 (unless it’s a consumer product using severely limited hardware), so the “IPv6-capable” label is meaningless. For example, Cisco’s <a href="http://www.cisco.com/en/US/products/ps9586/tsd_products_support_series_home.html">ACE Web Application Firewall</a> seems to be IPv6-capable (translated from marketese: I haven’t been able to find a single occurrence of IPv6 in its administration or user’s guide, but I’m positive a software running on a Linux platform can be adapted to support IPv6).</p>
+<p>IPv6-ready is more meaningful; it implies that the product actually runs IPv6. However, you should ask (at least) these two questions:</p>
+<ul><li>Does IPv6 support the same functionality as IPv4? For example, split DNS support in Cisco IOS works only with IPv4 DNS servers.</li>
+<li>Does the product perform IPv6 operations with the same (or similar) speed as IPv4 operations? </li>
+</ul>
+<p>The second question is particularly relevant for hardware-based routers and switches (one cannot imagine an application having significantly different performance when running over IPv6). These devices usually rely on ASICs and <a href="http://blog.ioshints.info/2008/01/tcam-on-catalyst-switches.html">TCAM</a> to perform high-speed packet forwarding. The TCAM width (number of bits available in a single TCAM entry) can significantly limit the wire-speed IPv6 capabilities. For example, PFC on a Catalyst 6500 <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst6500/ios/12.2SX/configuration/guide/acl.html">cannot filter on full 128-bit IPv6 addresses and TCP/UDP port numbers</a>.</p>
+

@@ -1,0 +1,21 @@
+---
+title: "Yellow journalism at work: Previously Unknown DNS Attacks"
+date: "2009-02-11T06:47:00.005+01:00"
+tags: [ security,DNS ]
+---
+
+<div class="bloggerBody"><p>When I’ve stumbled across the headline <a href="http://www.networkworld.com/news/2009/020509-porn-site-feud-spawns-new.html">Porn site feud spawns new DNS attack</a> on NetworkWorld’s web site, the urge to read the article was simply irresistible. The article starts with the following paragraph (emphasis mine):</p>
+<blockquote class="cite">A scrap between two pornographic Web sites turned nasty when one figured out how to take down the other by exploiting a <strong>previously unknown</strong> <a href="http://www.networkworld.com/news/2008/073008-hackers-start-dns-attacks-researcher.html">quirk in the Internet's DNS</a>. </blockquote>
+<p>The link in the paragraph points to another article documenting a completely different DNS attack. The next paragraph contradicts the first one (emphasis yet again mine):</p>
+<blockquote class="cite">The attack is known as DNS Amplification. It has <strong>been used sporadically since December</strong>, but it started getting talked about last month when ISPrime, a small New York ISP, started getting hit hard with what's known as a <a href="http://www.networkworld.com/news/2008/123008-dns-security.html">distributed denial of service (DDoS) attack</a>.</blockquote>
+<script>startHide()</script><p>So an attack that has been known to be used since December is <em>previously unknown </em>in February. Maybe the time runs backwards for some people?</p>
+<p>But the most interesting part of the story is the attack itself: it has almost nothing to do with DNS; any UDP application where the reply is significantly longer than the request (for example, TFTP) would do. DNS just happens to be the most widespread one. Calling this <em>a quirk in the Internet’s DNS </em>is at least an exaggeration.</p>
+<p>Here is how it works:</p>
+<ul><li>It helps if you have a <a href="http://en.wikipedia.org/wiki/Zombie_computer">zombie</a> network, but even a single workstation with 100 Mbps connection to the Internet (there are plenty of them in corporate and academic networks) would do.</li>
+<li>The site to which the workstation is connected as well as the ISP has to be careless enough to allow source IP address spoofing. A large percentage of ISPs still fit this criterion.</li>
+<li>You start sending large number of DNS requests that generate long replies to DNS servers around the world. The source IP address of the request should be the IP address of the server you want to attack.</li>
+<li>The DNS servers send their replies to the spoofed IP address, swamping the Internet connection of the attack target.</li>
+</ul>
+<p>The effectiveness of this attack depends on the amplification factor: the ratio between the DNS query and DNS response sizes (including the IP and UDP header). For example, the amplification factor of the root nameserver query is more than five. Wireshark on my Linux workstation reports that the IP packet size of the DNS query is 45 bytes and the packet size of the DNS reply is 256 bytes.</p>
+<script>endHide()</script></div>
+

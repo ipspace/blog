@@ -1,0 +1,11 @@
+---
+title: "Update: oversized AS paths"
+date: "2009-02-17T19:40:00.001+01:00"
+tags: [ BGP ]
+---
+
+<p><ins>Update @ 2009-02-20: <a href="http://blog.ioshints.info/2009/02/root-cause-analysis-oversized-as-paths.html">Root cause analysis</a>, <a href="http://blog.ioshints.info/2009/02/oversized-as-paths-cisco-ios-bug.html">Detailed Cisco IOS bug description</a></ins></p>
+<p><a href="http://blog.ioshints.info/2009/02/protect-your-network-with-bgp-maxas.html">I was wrong about the details</a> of <a href="http://www.renesys.com/blog/2009/02/the-flap-heard-around-the-worl.shtml">yesterday's Internet brownout</a>: older IOS releases don't recognize AS-paths having more than 128 AS numbers due to improper handling of <i>extended length</i> flag in the BGP UPDATE message (CSCdr54230).</p>
+<p>However, quick stress tests indicate that classic IOS releases (including 12.2SRC) can't handle AS-paths having more than 255 AS numbers. IOS is able to accept (and properly process) inbound updates with two AS_SEQUENCE segments, but does not generate valid AS-path attribute in outbound update when there are more than 255 AS numbers in the AS-path, resulting in a NOTIFICATION message and continuously flapping BGP session. The only global protection you have against this behavior is the <b>bgp maxas-limit</b> router configuration command.</p>
+<p class='more'>I've also <a href="http://wiki.nil.com/Limit_the_maximum_BGP_AS-path_length">updated the Wiki article</a>.</p>
+

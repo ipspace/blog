@@ -1,0 +1,11 @@
+---
+title: "Why is the first ping lost?"
+date: "2007-04-10T09:25:00.000+02:00"
+tags: [ IP routing ]
+---
+
+<p>When pinging a directly-attached host (end-station) from a router, it's quite common to lose the first reply, as shown in the following example (the same symptom might occur when pinging a remote host that has been inactive).</p>
+<pre class='code'>a2#<strong>ping 10.0.0.10</strong><br /><br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 10.0.0.10, timeout is 2 seconds:<br />.!!!!<br />Success rate is 80 percent (4/5), round-trip min/avg/max = 1/1/4 ms</pre><p>Actually, it's not the reply that was lost, the request was never sent out. Whenever a router has to send a packet to the next-hop (or directly attached destination) that has no entry in the ARP table, the ARP request is sent out, but the original packet is unconditionally dropped.<!--more--></p>
+<p>You can easily test this behavior in the lab (live networks are too busy for that) by debugging ARP requests while performing the ping command:</p>
+<pre class='code'>a2#<strong>show arp</strong><br />Protocol  Address          Age (min)  Hardware Addr   Type   Interface<br />Internet  10.0.0.6                -   0016.c876.8b38  ARPA   FastEthernet0/0<br />Internet  10.0.0.5                0   0016.c7fe.f150  ARPA   FastEthernet0/0<br />a2#<strong>debug arp</strong><br />ARP packet debugging is on<br />a2#<strong>ping 10.0.0.10</strong><br /><br />Type escape sequence to abort.<br />Sending 5, 100-byte ICMP Echos to 10.0.0.10, timeout is 2 seconds:<br />.!!!!<br />Success rate is 80 percent (4/5), round-trip min/avg/max = 1/1/4 ms<br />08:26:21: IP ARP: creating incomplete entry for IP address: 10.0.0.10 interface<br />FastEthernet0/0<br />08:26:21: IP ARP: sent req src 10.0.0.6 0016.c876.8b38,<br />                 dst 10.0.0.10 0000.0000.0000 FastEthernet0/0<br />08:26:21: IP ARP: rcvd rep src 10.0.0.10 000c.29a7.8ade, dst 10.0.0.6 FastEthernet0/0</pre>
+

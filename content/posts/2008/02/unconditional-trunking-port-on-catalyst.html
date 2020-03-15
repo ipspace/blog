@@ -1,0 +1,16 @@
+---
+title: "Unconditional trunking port on a Catalyst 3560"
+date: "2008-02-28T07:57:00.000+01:00"
+tags: [ LAN ]
+---
+
+<p>Rob van Ooijen has sent me a really interesting question:</p>
+<blockquote class="cite">I've configured a switch port to be unconditionally a trunk with the <strong>switchport mode trunk</strong> configuration command. However, when the interface was enabled, I've got a dynamic trap indicating the trunking was still dynamic (and the show commands also showed negotiation of trunking is enabled).</blockquote>
+<p>In fact, adjacent layer-2 devices can negotiate a number of things these days, among them:</p>
+<ul><li>Speed and duplex settings (we'll leave this can of worms safely closed);</li>
+<li>Trunking (a port can be access or trunk port);</li>
+<li>Trunk encapsulation (ISL or 802.1q);</li>
+</ul>
+<p>With the <strong>switchport mode trunk </strong>command you just disable the trunking negotiation (the port will never become an access port), but the switch still runs <a href="http://en.wikipedia.org/wiki/Dynamic_Trunking_Protocol">Dynamic Trunking Protocol</a> (DTP) on it, unless you disable DTP with <strong>switchport nonegotiate</strong>, which (in combination with all the other configuration commands) makes the port configuration totally static. More configuration can be found in <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3560/software/release/12.2_25_sea/configuration/guide/swvlan.html#wp1200245">Cisco's documentation</a> and in the <a href="http://krypton.fhda.edu/~mmurphy/cnet-54c/references/DTP-CCNA3.pdf">Basics of DTP</a> document.</p>
+<p class="more">This article is part of <a href="http://ioshints.blogspot.com/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="http://ioshints.blogspot.com/search/label/You%27ve%20asked%20for%20it">series</a>.</p>
+

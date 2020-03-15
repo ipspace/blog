@@ -1,0 +1,24 @@
+---
+title: "Sysadmins Shouldn’t Be Involved with Routing"
+date: "2016-03-22T08:56:00.000+01:00"
+tags: [ Data Center,BGP ]
+---
+
+<p>I had a great chat with <a href="https://twitter.com/Enno_Insinuator">Enno Rey</a> the morning before <a href="https://www.troopers.de/troopers16/">Troopers 2016</a> started in which he he made an interesting remark:</p>
+<blockquote class="cite">I disagree with your idea of running BGP on servers because I think sysadmins shouldn&#x2019;t be involved with routing.</blockquote>
+<p>As (almost) always, it turned out that we were still in violent agreement ;)<!--more--></p>
+<p>We quickly agreed that <a href="http://blog.ipspace.net/2016/03/dont-run-ospf-with-your-customers.html">running OSPF on servers is a patently bad idea</a>, and expecting hosts to act as peers in network path calculations is another one. </p>
+<p>Then there&#x2019;s the gray area of hypervisor connectivity. Like it or not, hypervisors are really the new network edge, and you can link them with the physical networks in one of three ways:</p>
+<ul class="ListParagraph"><li>You pretend they aren&#x2019;t there, and give them simple IP connectivity which they can use to build whatever-over-IP tunnels (aka <em>overlay virtual networking</em>);</li>
+<li>You allow them to dump <a href="http://blog.ipspace.net/2011/12/vmware-vswitch-baseline-of-simplicity.html">whatever **** they have into the network</a> and deal with the consequences (aka <em>VLAN-based virtual networking</em>);</li>
+<li>You accept them as the new network edge and start treating them as PE-routers (the <a href="http://blog.ipspace.net/2015/06/project-calico-is-it-any-good.html"><em>Project Calico </em>way</a>). Unfortunately, this approach works well only when you can enforce the residential ISP mentality in your service offering (<em>Here&#x2019;s your IP address, take it and stop complaining. And no, you cannot move it</em>), otherwise you&#x2019;re quickly stuck in a quagmire of host routes or end-to-end paths (VLANs, tunnels or LSPs).</li>
+</ul>
+<p>However, coming back to the original question: Should we run a routing protocol on a regular (application) server? As I said, I don&#x2019;t think we should&hellip; and yet I&#x2019;m advocating running BGP on those same servers. I must be confused, right?</p>
+<p>Not really. BGP (at least in that particular use case) is not a routing protocol (as in <em>figuring the best end-to-end path </em>tool), but a service advertisement protocol &ndash; a host is advertising its service (encoded in an IP address because some people still can&#x2019;t spell DNS) and receiving default route (or not even that) in return. While doing that you&#x2019;re also solving the host multihoming problem (more about that in another blog post).</p>
+<p>Assuming we can&#x2019;t fix the application code, so we&#x2019;re stuck with &ldquo;IP address = service&rdquo; paradigm, we could use a variety of tools to get that job done. BGP just happens to be a convenient one:</p>
+<ul class="ListParagraph"><li>It fulfills the requirements (although you&#x2019;re admittedly using a cannon to kill a fly, but then virtual cannons are cheap);</li>
+<li>It&#x2019;s available in many ToR switches (excluding greedy vendors who want to slap SP tax on everyone using BGP).</li>
+<li>It&#x2019;s available in every Linux distribution (not sure about Windows Server, comments most welcome).</li>
+</ul>
+<p>Finally, if you want to know how the whole thing works, register for the next session of the <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs">Leaf-and-Spine Fabric Designs live webinar</a>; guest star Dinesh Dutt will cover numerous implementation details in his part of the session.</p>
+

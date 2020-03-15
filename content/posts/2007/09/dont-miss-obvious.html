@@ -1,0 +1,8 @@
+---
+title: "Don't miss the obvious"
+date: "2007-09-02T11:06:00.000+02:00"
+tags: [ DHCP,LAN ]
+---
+
+I've recently replaced my old home router (well, actually a combination of two low-end models, one could handle ISDN and the other one 3DES) with a 1812. After I've struggled past the &ldquo;interesting&rdquo; interface names (it has 8 switched ports, named FastEthernet2 to FastEthernet9) and brushed up my BVI/VLAN skills, configuring it was a breeze &hellip; only the DHCP server was causing me problems; every time my laptop would wake from the standby mode, it would take almost half a minute before it got the LAN IP address. The obvious suspect (as I've installed the 12.4(15)T on it) was the software, the next one DHCP ping timers.<br /><br />After replacing the software (didn't help) and tweaking DHCP timers (no change), it finally dawned on me: the ethernet ports are <em>switched</em>, so the spanning tree was playing tricks with me. Disabling spanning tree with the <strong>spanning-tree portfast</strong> interface configuration command solved the problem.
+

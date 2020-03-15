@@ -1,0 +1,8 @@
+---
+title: "Unbundle DNS settings from DHCP client"
+date: "2007-05-24T10:26:00.000+02:00"
+tags: [ DHCP,DNS ]
+---
+
+In one of my previous posts I've been writing about the problems I had when the DHCP client on Cisco IOS was messing up the DNS name-servers I've configured manually with the <strong>ip name-server</strong> configuration command. As is quite usual in Cisco IOS, there's one more know to turn to fix this - the <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios123/123newft/123t/123t_8/gtdhcpcf.htm">Configurable DHCP Client</a> feature introduced in IOS release 12.3(8)T.<br /><br />To stop the router's DHCP client from overwriting the static name-server settings, use the <strong>no ip dhcp client request dns-nameserver</strong> interface configuration command (you can also exclude <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios123/123newft/123t/123t_8/gtdhcpcf.htm#wp1063430">a few other DHCP options</a>).
+

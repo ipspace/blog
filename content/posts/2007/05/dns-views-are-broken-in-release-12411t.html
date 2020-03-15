@@ -1,0 +1,8 @@
+---
+title: "DNS views are broken in release 12.4(11)T"
+date: "2007-05-15T07:25:00.000+02:00"
+tags: [ DNS,command line interface ]
+---
+
+The <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios124/124newft/124t/124t9/htspldns.htm"><em>Split DNS</em></a> functionality introduced in IOS release 12.4(9)T has survived a single maintenance cycle before being broken. While you can still configure the DNS views in 12.4(11)T<span style="color:#ffcc00;">2</span> (and they still work), the view names are missing from the router-generated configuration (<strong>show running</strong>, for example), making the configuration syntactically incorrect. The router will thus reboot without DNS views after you've saved the running configuration to NVRAM.
+

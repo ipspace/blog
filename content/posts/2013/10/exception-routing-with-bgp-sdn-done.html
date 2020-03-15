@@ -1,0 +1,29 @@
+---
+title: "Exception Routing with BGP: SDN Done Right"
+date: "2013-10-09T07:37:00.000+02:00"
+tags: [ MPLS,SDN,Data Center,BGP ]
+---
+
+<p>One of the holy grails of data center SDN evangelists is controller-driven traffic engineering (throwing more leaf-and-spine bandwidth at the problem might be cheaper, but definitely not sexier). Obviously they don’t call it traffic engineering as they don’t want to scare their audience with MPLS TE nightmares, but the idea is the same.</p>
+<p>Interestingly, you <a href="http://blog.ipspace.net/2013/04/the-many-paths-to-sdn.html">don’t need new technologies</a> to get as close to that holy grail as you wish; Petr Lapukhov got there with a 20 year old technology – BGP.<!--more--></p>
+<h4>The Problem</h4><p>I’ll use a well-known suboptimal network to illustrate the problem: a ring of four nodes (it could be anything, from a <a href="http://blog.ipspace.net/2012/04/monkey-design-still-doesnt-work-well.html">monkey-designed fabric</a>, to a <a href="http://blog.ipspace.net/2012/11/stackable-data-center-switches-do-math.html">stack of switches</a>) with heavy traffic between nodes A and D.</p>
+<div class='separator'><a href="http://2.bp.blogspot.com/-Gw56PUxohXQ/UlJUQ7NuOkI/AAAAAAAAGK4/YUQR6roeD3s/s1600/BGP_SDN_Topology.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-Gw56PUxohXQ/UlJUQ7NuOkI/AAAAAAAAGK4/YUQR6roeD3s/s400/BGP_SDN_Topology.png" /></a></div>
+<p>In a shortest-path forwarding environment you cannot spread the traffic between A and D across all links (although you might get close with a large bag of tricks). </p>
+<p>Can we do any better with a controller-based forwarding? We definitely should. Let’s see how we can tweak BGP to serve our SDN purposes.</p>
+<h4>Infrastructure: Using BGP as IGP</h4><p>If you want to use BGP as the information delivery vehicle for your SDN needs, you MUST ensure it’s the highest priority routing protocol in your network. The easiest design you can use is a BGP-only network using BGP as a more scalable (albeit a bit slower) IGP. <a href="http://blog.ipspace.net/2011/08/ibgp-or-ebgp-in-enterprise-network.html">EBGP is better than IBGP</a> as it doesn't need an underlying IGP to get reachability to BGP next hops.</p>
+<div class='separator'><a href="http://4.bp.blogspot.com/-NRqT6-p9WiY/UlJUQY6BIKI/AAAAAAAAGKw/Ju7mhi111Qw/s1600/BGP_SDN_EBGP.png" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-NRqT6-p9WiY/UlJUQY6BIKI/AAAAAAAAGKw/Ju7mhi111Qw/s400/BGP_SDN_EBGP.png" /></a></div>
+<h4>BGP-Based SDN Controller</h4><p>After building a BGP-only data center, you can start to insert controller-generated routes into it: establish an IBGP session from the controller (cluster) to every BGP router and use higher local preference to override the EBGP-learned routes. You might also want to <a href="http://blog.ipspace.net/2012/10/setting-no-export-bgp-community.html">set <strong>no-export </strong>community on those routes</a> to ensure they aren’t leaked across multiple routers.</p>
+<div class='separator'><a href="http://2.bp.blogspot.com/-jiYgW8B-kDs/UlJUQcfSJuI/AAAAAAAAGLI/9OYdveWAtj0/s1600/BGP_SDN_Controller.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-jiYgW8B-kDs/UlJUQcfSJuI/AAAAAAAAGLI/9OYdveWAtj0/s520/BGP_SDN_Controller.png" /></a></div>
+<p>Obviously I’m handwaving over lots of moving parts – you need topology discovery, reliable next hops, and a few other things. If you really want to know all those details, listen to the <a href="http://packetpushers.net/show-164-cool-or-hot-lapukhov-nkposongs-bgp-sdn/">Packet Pushers podcast</a> where we deep dive around them (hint: you could also <a href="http://www.ipspace.net/Consulting">engage me to help you build it</a>).</p>
+<h4>Results: Unequal-Cost Multipath</h4><p>The SDN controller in our network could decide to split the traffic between A and D across multiple paths. All it has to do to make it work is to send the following IBGP routing updates for prefix D:</p>
+<ul class="ListParagraph"><li>Two identical BGP paths (with next hops B and D) to A (to ensure the BGP route selection process in A uses BGP multipathing);</li>
+<li>A BGP path with next hop C to B (B might otherwise send some of the traffic for D to A, resulting in a forwarding loop between B and A).</li>
+</ul>
+<div class='separator'><a href="http://2.bp.blogspot.com/-W88koTDhZGw/UlJUQXA4tKI/AAAAAAAAGK0/9f8w-aCHK2o/s1600/BGP_SDN_Flow.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-W88koTDhZGw/UlJUQXA4tKI/AAAAAAAAGK0/9f8w-aCHK2o/s520/BGP_SDN_Flow.png" /></a></div>
+<p>You can get even fancier results if you run MPLS in your network (hint: read the <a href="http://tools.ietf.org/html/draft-ietf-rtgwg-remote-lfa-02">IETF draft on remote LFA</a> to get a few crazy ideas).</p>
+<h4>More information</h4><ul class="ListParagraph"><li><a href="http://www.nanog.org/meetings/nanog55/presentations/Monday/Lapukhov.pdf">Routing Design for Large-Scale Data Centers</a> (Petr’s presentation @ NANOG 55)</li>
+<li><a href="http://tools.ietf.org/html/draft-lapukhov-bgp-routing-large-dc-06">Use of BGP for Routing in Large-Scale Data Centers</a> (IETF draft)</li>
+<li><a href="http://tools.ietf.org/html/draft-lapukhov-bgp-sdn-00">Centralized Routing Control in BGP Networks</a> (IETF draft)</li>
+<li><a href="http://packetpushers.net/show-164-cool-or-hot-lapukhov-nkposongs-bgp-sdn/">Cool or Hot? Lapukhov + Nkposong’s BGP SDN</a> (Packet Pushers Podcast)</li>
+</ul>
+

@@ -1,0 +1,15 @@
+---
+title: "Is XMPP Control- or Management-Plane Protocol?"
+date: "2016-05-31T10:03:00.000+02:00"
+tags: [ SDN ]
+---
+
+<p>My readers are consistently asking me whether XMPP and OVSDB are control- or management-plane protocols (to make matters worse, publicly available information tends to be confusing).</p>
+<p>For example, one of them wrote&hellip;<!--more--></p>
+<blockquote class="cite">I came through <a href="http://content.ipspace.net/bin/pdf?id=af3bed94-d496-11e4-8b2f-005056880254/19">one of your webinars</a> where you described XMPP as a "Management Plane tool", although I believe it should be and/or "Control Plane tool", since for example with Open Contrail it is used to carry BGP information (prefix, NH, Label, etc.) from the controller to the vRouter.</blockquote>
+<p>Guess what &ndash; we&#x2019;re both right. XMPP is <a href="https://en.wikipedia.org/wiki/XMPP">Extensible Messaging and Presence Protocol</a> that was designed to (among other things) send chat messages to all clients participating in the same chat room.</p>
+<p>Arista uses XMPP to send commands to groups of switches and collect the responses through the chat room server &ndash; they use XMPP as management-plane protocol.</p>
+<p>Contrail uses <a href="https://tools.ietf.org/html/draft-ietf-l3vpn-end-system">XMPP instead of BGP</a> to distribute L3VPN information to vRouters. Every VPN known by the system has its own chat room and every vRouter joins all relevant chat rooms to get real-time customer-to-transport (for example, prefix-to-VTEP) mappings &ndash; clearly a control-plane functionality.</p>
+<p>Is XMPP a control- or management-plane protocol? It&#x2019;s both or neither; it&#x2019;s a tool that you can use to get the job done. It&#x2019;s like asking <em>is TCP a control- or management-plane protocol because it&#x2019;s used by BGP and SSH?</em></p>
+<p>Confused by all this new buzzwords? You might find some clarity in my <a href="http://www.ipspace.net/Advanced_SDN_Training">SDN webinars</a>.</p> 
+

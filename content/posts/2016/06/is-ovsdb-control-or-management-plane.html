@@ -1,0 +1,17 @@
+---
+title: "Is OVSDB a Control- or Management-Plane Protocol?"
+date: "2016-06-14T08:30:00.000+02:00"
+tags: [ SDN,OpenFlow ]
+---
+
+<p>A while ago I discussed <a href="http://blog.ipspace.net/2016/05/is-xmpp-control-or-management-plane.html">whether XMPP is a control- or management-plane protocol</a> (spoiler: it depends). How about OVSDB? Here&#x2019;s another question from one of my readers:</p>
+<blockquote class="cite">Why is Openflow considered as control plane protocol and OVSDB management plane protocol if both are relying on SDN controller? Is it because Openflow can directly modify the dataplane?</blockquote>
+<p>SDN controllers can use control- or management-plane protocols to get the job done.<!--more--> If an SDN controller is <em>configuring a control plane </em>in an independent device, it&#x2019;s clearly using a management-plane protocol, if it&#x2019;s <em>exchanging information with peers </em>or <em>configuring forwarding entries</em> it&#x2019;s using a control-plane protocol.</p>
+<p>The vanilla Open vSwitch implementation uses OpenFlow to configure forwarding entries, and OVSDB to configure interfaces and datapaths (virtual switches) in OVS, resulting in the idea that OVSDB is a management-plane protocol.</p>
+<p>However, <a href="https://tools.ietf.org/html/rfc7047">OVSDB</a> (Open vSwitch Database Management Protocol) is (like its name implies) nothing more than a database manipulation protocol &ndash; something like SQL with JSON encoding and a few extensions. You can use OVSDB to query database tables, or to modify (update, insert or delete) their contents.</p>
+<p>If you use OVSDB to work with interface or datapath tables, you&#x2019;re manipulating the device configuration &ndash; OVSDB is a management-plane protocol.</p>
+<p class="info">Based on my limited understanding of OVS it&#x2019;s perfectly feasible to use OVS as a traditional bridge and use OVSDB to configure it.</p>
+<p>There&#x2019;s another use for OVSDB: you can use it to exchange <a href="http://openvswitch.org/support/dist-docs/vtep.5.html">MAC-to-VTEP mappings</a> (and a lot of other information) between an SDN controller and hardware VTEP (VXLAN Tunnel Endpoint) gateways. In that case, OVSDB is clearly a control-plane protocol.</p>
+<p><strong>To summarize</strong>: OVSDB (like XMPP or TCP) is yet another pretty universal tool. Whether it&#x2019;s used as a control- or management-plane protocol is an implementation detail.</p>
+<h4>Want to know more?</h4><p>How about <a href="http://www.ipspace.net/Roadmap/SDN_and_OpenFlow_webinars">26 hours of SDN training</a> or <a href="http://www.ipspace.net/SDN">tons of SDN resources</a>?</p>
+

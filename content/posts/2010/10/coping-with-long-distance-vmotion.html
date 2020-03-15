@@ -1,0 +1,19 @@
+---
+title: "Coping with long-distance vMotion requests"
+date: "2010-10-22T11:48:00.001+02:00"
+tags: [ Data Center,Workshop,vMotion,WAN ]
+---
+
+<p>During the last <a href="http://www.ioshints.info/DataCenterIntro">Data Center webinar</a> (<a href="http://datacenter20.eventbrite.com/">register here</a> or <a href="http://www.ioshints.info/Recordings">buy a recording</a>) I got an interesting question when describing the <a href="http://blog.ioshints.info/2010/09/long-distance-vmotion-and-traffic.html">inherent problems of long-distance vMotion</a>: “OK, I understand all the implications, but how do I persuade my server admins?”</p>
+<p>The best answer I’ve heard so far came from an old battle-hardened networking guru: “Well, let them try”. </p>
+<!--more--><p>A bit more background: he’s running a really tight shop, with no inter-DC bridging. The application and server people in his company got infected with the anywhere-anytime “vision” and wanted to move live virtual machines between data centers. He decided to give them the tools they needed (read: more than enough rope).</p>
+<p>Unintentionally they made the experiment more interesting by moving a virtual machine really far away from its data and all the other servers it was communicating with (for our purpose, the farther the better) ... and failed spectacularly. After a while, they came back saying “Now we understand what you were trying to tell us ... can we sit down and figure out what we can do?”</p>
+<p class="info">You don’t have to enable inter-DC vMotion to make them understand the problems. Just use a delay emulator like <a href="http://wanem.sourceforge.net/">WANem</a> and traffic shaping (to limit the bandwidth) and do the test in your lab.</p>
+<p>You might find the following steps handy when replicating this feat:</p>
+<ul class="ListParagraph"><li>Understand the application traffic flows. The meshier the structure, the better.</li>
+<li>Document in advance what you expect to happen. Try to educate the server admins and the application people. If nothing else, make them aware <em>why </em>you’re opposed to inter-DC vMotion (it’s not because you’re lazy or because you don’t have a clue how to implement it).</li>
+<li>Make your boss (or CIO) aware of your predictions. You can’t say “<a href="http://etherealmind.com/network-zen-most-important-technology-infrastructure/">I told them so</a>” afterwards if your boss is not aware of the issue.</li>
+<li>Make sure the VM is moved under real load. The inter-DC link has to be well saturated before the traffic trombone data starts winding around the network.</li>
+<li>Enjoy the show ;)</li>
+</ul>
+

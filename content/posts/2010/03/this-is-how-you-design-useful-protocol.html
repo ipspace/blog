@@ -1,0 +1,15 @@
+---
+title: "This is how you design a useful protocol"
+date: "2010-03-05T07:20:00.001+01:00"
+tags: [ IPv6,BGP ]
+---
+
+<p>A post in the <a href="http://cciep3.blogspot.com/">My CCIE Training Guide</a> pointed me to the <a href="http://www.youtube.com/watch?v=HAOVNYSnL7k&amp;feature=player_embedded">GoogleTechTalk given by Yakov Rekhter</a> (one of the fathers of BGP) in 2007. You should watch the whole video (it helps you understand numerous BGP implementation choices), but its most important message is undoubtedly the <em>Design by Pragmatism </em>approach:</p>
+<ul><li>They had a simple, manageable problem (get from a spanning-tree Internet topology to a mesh topology).</li>
+<li>They did not want to solve all potential future problems; they left that marvelous task to IDRP (which still got nowhere the last time I've looked).</li>
+<li>They started with simple specifications (three napkins), had two interoperable implementations in a few months, and wrote the RFC after BGP was already in production use.</li>
+<li>They rolled it out, learnt from its shortcomings and fixed it.</li>
+<li>They gradually made it easily extensible: TLV encoding, optional attributes, capabilities negotiations. This approach made it possible to carry additional address families in BGP and use it for applications like MPLS VPN and VPLS.</li>
+</ul>
+<p>One could only hope that the IPv6 architects had used the same approach ... but as Yakov said in his talk, that’s “water under the bridge”.</p>
+

@@ -1,0 +1,19 @@
+---
+title: "Campfire story: Using the wrong tool for the job"
+date: "2014-07-23T08:07:00.000+02:00"
+---
+
+<p>Summer is the perfect time for campfire stories – here’s one about using the wrong tool for the job.</p>
+<p>A Long time ago in an IT organization far, far away Artificial Intelligence (AI) was the coolest kid on the block.<!--more--></p>
+<p>The Organization got a large contract – they were asked to build a <a href="http://en.wikipedia.org/wiki/Warehouse_management_system">Warehouse Management System</a> – and the AI gurus immediately realized the project was exactly what they needed to prove the benefits of AI approach to life, the universe and everything. </p>
+<p>You see, there are two major problems a warehouse management system has to solve: how to spread incoming stock randomly across racks to maximize rack utilization, and how to collect items ordered by the customers to minimize the retrieval time. Two perfect problems for an AI system.</p>
+<p>In those days Prolog was THE language to code your AI project in. Warehouse information (racks, items, placement of items) would be stored as Prolog facts, you’d need just a few declarative rules to describe how the system should work, and the Prolog programming environment would do the rest. </p>
+<p>Unfortunately the platform the customer wanted to use didn’t support Prolog. No problem – the AI gurus developed a Prolog interpreter first (the sexy part of the job), and then implemented a working model of the warehouse management system. Total win… apart from the minor limitations of their model (which wasn’t exactly working):</p>
+<ul class="ListParagraph"><li>Prolog interpreter they wrote stored all the facts in memory – there was absolutely no persistence. Not exactly an optimal solution for a warehouse.</li>
+<li>Prolog is usually implemented as a single-user environment – their working model thus supported a single user. Not exactly a scalable solution, and it was neigh impossible to implement concurrent multi-user access in their interpreter.</li>
+<li>Their implementation became unusably slow after having just a few articles spread over a few racks.</li>
+</ul>
+<p>Time to go back to the drawing board (after already missing the delivery deadline). A crash team was formed from programmers fluent in more traditional languages and implemented the system using a relational database (which <em>was</em> available on the target platform) in a few months.</p>
+<p>Does that make Prolog a bad tool? Absolutely not, some AI systems implemented in Prolog are pretty successful. Was Prolog the wrong tool for that particular job? You bet.</p>
+<p class="note">Any parallels with recent reinventions of the networking wheels and their implementations are obviously unintentional and purely coincidental ;)  </p>
+

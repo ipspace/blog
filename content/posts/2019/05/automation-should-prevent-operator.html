@@ -1,0 +1,21 @@
+---
+title: "Automation Should Prevent Operator Errors"
+date: "2019-05-09T08:36:00.000+02:00"
+tags: [ Automation,Data Models ]
+---
+
+<p><em>This blog post was initially sent to subscribers of my SDN and Network Automation mailing list.&nbsp;</em><a href="http://www.ipspace.net/Subscribe/Five_SDN_Tips"><em>Subscribe here</em></a><em>.</em></p>
+<p>One of the toughest tasks faced by networking engineers attending our <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> course is <a href="https://www.ipspace.net/NetAutSol/Data_Models">designing a data model describing network infrastructure or services</a>. They usually think in terms of individual devices (nodes) resulting in tons of duplicated data.</p>
+<p>I always point that out when reviewing their solutions and suggest how to minimize or eliminate duplicate data. Not surprisingly, doing that is hard, and one of the attendees started wondering whether the extra effort makes sense:<!--more--></p>
+<blockquote><p>I’m finding it’s a fine balance between exposing the complexity to the operator (by asking them to specify values in multiple places) or pushing that complexity into the data model rendering and removing “flexibility” for the user.</p>
+</blockquote>
+<p>There’s difference between flexibility and duplicate data. For example, asking the operator to enter interface description for every link instead of using default value “link to X:Y” when the data model already contains the information that the interface is connected to port Y on device X is unnecessary data duplication.</p>
+<p>On the other hand, removing the operator’s ability to overwrite default interface description with a more meaningful text (where needed) is reducing flexibility and might be undesired… keeping in mind that flexibility (aka “nerd knobs”) increases complexity, requires more thorough testing, and in the end increases the development costs. The fine balance is thus “<em>do we really need this flexibility and what are we getting for the increased complexity?</em>”</p>
+<blockquote><p>When asking the operator to deal with more complexity, I typically mitigate this risk with documentation and/or a walk through session.</p>
+</blockquote>
+<p>One of the goals of introducing network automation should be increased reliability and consistency. Documenting data duplication instead of eliminating it doesn’t bring us closer to that goal, as it still permits operator mistakes. The very minimum you should do in this case is:</p>
+<ul><li>Document the complexity (in our case data duplication);</li>
+<li>Add consistency checker to input data validation script (you’re validating input data, right?)</li>
+</ul>
+<p>In the end, it might turn out that it’s still cheaper to solve the problem in the right place and redesign the data model. More about that in a series of blog posts coming in a week or two.</p>
+

@@ -1,0 +1,35 @@
+---
+title: "Loop-Free Alternate: OSPF meets EIGRP"
+date: "2012-01-26T06:18:00.000+01:00"
+tags: [ IS-IS,OSPF,EIGRP ]
+---
+
+<p>Assume we have a simple triangular network:</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-CcuRDmL3w8A/Tx1sGYsLSBI/AAAAAAAAEsk/u3ii9ASsKuw/s1600/LFA_Topology.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="134" width="303" src="http://4.bp.blogspot.com/-CcuRDmL3w8A/Tx1sGYsLSBI/AAAAAAAAEsk/u3ii9ASsKuw/s400/LFA_Topology.png" /></a></div>
+<p>Now imagine the A-to-C link fails. How will OSPF react to the link failure as compared to EIGRP? Which one will converge faster? Try to answer the questions before pressing the <em>Read more </em>link ;)<!--more--></p>
+<h4>EIGRP: Feasible successors</h4><p>EIGRP tries to use <em>feasible successors </em>to speed up the convergence process. Whenever B reports its distance to X to A, A compares B’s <em>reported distance </em>to its current <em>feasibility distance</em>. Lower <em>reported distance </em>means that B doesn’t use A to get to X (A is not B's successor). B is also not A's successor for X (that’s C as long as the A-to-C link is operational), but it’s a <em>feasible successor</em>. Using B to get traffic to X will not result in a routing loop.</p>
+<p class="note">A <em>feasible successor</em> is evaluated for individual destinations. From A’s perspective, B is a feasible successor for X and C is a feasible successor for Y. </p>
+<p>Faced with A-to-C link loss, A can switch immediately to the <em>feasible successor </em>(B) for destination X. Convergence is immediate.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-Ks7JHgh6hfE/Tx1sMRd-k5I/AAAAAAAAEsw/UCYwVkdfCN8/s1600/LFA_Failure.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="133" width="303" src="http://3.bp.blogspot.com/-Ks7JHgh6hfE/Tx1sMRd-k5I/AAAAAAAAEsw/UCYwVkdfCN8/s400/LFA_Failure.png" /></a></div>
+<h4>OSPF: Let’s make sure we’re in sync</h4><p>OSPF is way more lackadaisical:</p>
+<ul class="ListParagraph"><li>It changes the LSAs affected by the updates and floods them ... unless there’s been a recent topology change, in which case it goes and sits quietly in a corner until the <strong>timers throttle lsa </strong><em>hold-interval </em>expires.</li>
+<li>It waits a bit more, silently lamenting its misery, until the <strong>timers throttle spf </strong><em>spf-start </em>timer expires.</li>
+<li>It runs SPF algorithm, computes the new OSPF shortest-path tree, and copies the results in the IP routing table.</li>
+</ul>
+<p>Total convergence time: 5+ seconds (unless you’ve done some serious tweaking).</p>
+<h4>Loop-Free Alternate Fast Reroute: Feasible Successor for OSPF</h4><p>There’s no reason OSPF couldn’t have reacted faster – every single router knows the whole topology of all attached areas and can thus easily calculate which of its neighbors could be feasible successors. That’s exactly what LFA is doing:</p>
+<ul class="ListParagraph"><li>OSPF (or IS-IS) routing process runs SPF, computes its own best paths, and installs them in the IP routing table (RIB). </li>
+<li>After the network has converged, OSPF runs SPF algorithm from the perspective of its neighbors. If a neighbor’s SPF tree doesn’t use current router as the next hop for a specific destination, it’s safe to use that neighbor as a feasible successor.</li>
+<li>The feasible successor information calculated by OSPF is downloaded in RIB and FIB, where it can be used immediately after the link failure.</li>
+</ul>
+<h4>Can I use it?</h4><p>Loop Free Alternate Fast Reroute is available for <a href="http://www.cisco.com/en/US/docs/ios-xml/ios/iproute_ospf/configuration/xe-3s/iro-lfa-frr-xe.html">OSPF</a> and <a href="http://www.cisco.com/en/US/docs/ios/iproute_isis/configuration/guide/irs_ipv4_lfafrr.pdf">IS-IS</a> in Cisco IOS 15.1(3)S and XE 3.4S. The IS-IS implementation is pretty rudimentary; the OSPF implementation allows you to specify numerous alternate path selection criteria. For example, you might prefer alternate paths that don’t go over a <em>shared risk link group</em>, through the same LAN interface, or through the next-hop router.</p>
+<p>You’ll also find <a href="https://www.juniper.net/techpubs/software/junos/junos95/swconfig-routing/jd0e44501.html">LFA for IS-IS in (at least) Junos 9.5</a> and <a href="http://www.juniper.net/techpubs/en_US/junos10.0/information-products/topic-collections/config-guide-routing/ospf-loop-free-alternate-routes-overview.html">LFA for OSPF in Junos 10.0</a>, and in IOS XR 3.5 (<a href="http://www.cisco.com/en/US/docs/routers/crs/software/crs_r4.2/routing/configuration/guide/b_routing_cg42crs_chapter_011.html">IS-IS</a>) and 3.9 (<a href="http://www.cisco.com/en/US/docs/routers/crs/software/crs_r4.2/routing/configuration/guide/b_routing_cg42crs_chapter_0100.html">OSPF</a>).</p>
+<h4>More information</h4><ul class="ListParagraph"><li><a href="http://tools.ietf.org/html/rfc5286">Basic Specification for IP Fast Reroute: Loop-Free Alternates</a> (RFC 5286)</li>
+<li><a href="http://kb.juniper.net/library/CUSTOMERSERVICE/GLOBAL_JTAC/technotes/8010056-001-EN.pdf">Understanding and Deploying Loop-Free Alternate Feature</a> (Junos Implementation Guide)</li>
+<li><a href="http://etherealmind.com/loop-free-alternate-routes/">Nice introductory article by Tony Brown</a></li>
+<li><a href="http://www.data.proidea.org.pl/euronog/1edycja/materialy/prezentacje/Pierre_Francois_IP_Fast_Reroute_Applicability.pdf">IP Fast Reroute Applicability</a> – EuroNOG presentation by Pierre Francois (with lots and lots of details and topology analysis).</li>
+</ul>
+<h4>The fun part</h4><p>I wanted to write about a completely different topic and realized I have to cover yet another topic to explain the root cause of the problem I wanted to describe.</p>
+<div class='separator'><a href="http://verydemotivational.memebase.com/2012/01/05/demotivational-posters-that-moment-2/?utm_source=embed&utm_medium=web&utm_campaign=sharewidget"><img class='event-item-lol-image' src='http://verydemotivational.files.wordpress.com/2012/01/demotivational-posters-that-moment.jpg' alt="demotivational posters - THAT MOMENT" title="demotivational posters - THAT MOMENT" height="548px" width="450px" /></a></div>
+<p>My ramblings tend to be recursive (as anyone who was forced to listen to my <a href="http://blog.ioshints.info/search?q=campfire">campfire</a> stories can probably attest), and it turned out the final leaf in that recursive process was LFA. Will you try to guess where I started?</p>
+

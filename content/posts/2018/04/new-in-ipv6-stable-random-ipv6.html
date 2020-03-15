@@ -1,0 +1,11 @@
+---
+title: "New in IPv6: Stable Random IPv6 Addresses on OpenBSD"
+date: "2018-04-03T08:41:00.000+02:00"
+tags: [ IPv6 ]
+---
+
+<p>The idea of generating random IPv6 addresses (so you cannot be tracked across multiple networks based on your MAC address) that stay stable within each subnet (so you don&rsquo;t pollute everyone&rsquo;s ND cache every time you open your iPad) is pretty old: <a href="https://tools.ietf.org/html/rfc7217">RFC 7217</a> was published almost exactly four years ago.</p>
+<p>Linux was quick to pick it up, OpenBSD got RFC 7127 support <a href="https://cvsweb.openbsd.org/cgi-bin/cvsweb/src/sbin/slaacd/engine.c#rev1.22">a few weeks ago</a>. However, there&rsquo;s an Easter egg in the OpenBSD patches that implement it: SLAAC on OpenBSD now works with any prefix length (not just /64).<!--more--></p>
+<p>Turns out there never was a requirement to have /64 prefixes to use <a href="https://tools.ietf.org/html/rfc4862">SLAAC</a> before <a href="https://tools.ietf.org/html/rfc4291">RFC 4291</a> was published (RFC 4291 specifies the length of interface identifiers to be 64 bits)&hellip; or so <a href="https://www.linkedin.com/in/peter-hessler-74b94b3/">Peter Hessler</a> claimed during a Troopers dinner. Disagree? Please write a comment!</p>
+<h4>New to IPv6?</h4><p>I decided I won&rsquo;t spend any more time on a protocol that is old enough to buy its own beer, but the <a href="http://www.ipspace.net/IPv6">IPv6 webinars on ipSpace.net</a> are still pretty relevant (yeah, nothing much has changed in the meantime).</p>
+

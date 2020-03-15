@@ -1,0 +1,24 @@
+---
+title: "ONIE and the Hammer of Thor"
+date: "2018-05-24T08:44:00.000+02:00"
+tags: [ Automation,Data Center ]
+---
+
+<p>Someone left a comment on my <a href="http://blog.ipspace.net/2018/05/automation-win-zero-touch-provisioning.html">Zero-Touch Provisioning post</a> claiming how Big Switch Networks solved ZTP challenge using just IPv6 Link-Local Address and Neighbor Discovery instead of the complicated DHCP/TFTP/whatever sequence.</p>
+<p>Here&rsquo;s what he wrote:<!--more--></p>
+<blockquote class="cite">They use ipv6 link-local addressing with a combination neighbor discovery to locate the controllers. The caveat being that the controllers need to be L2 adjacent with the switch mgmt ports that they hope to provision. Still...its better than anything DHCP related with all the options and image repos involved.</blockquote>
+<p>Somehow that didn&rsquo;t sound right. After all, we don&rsquo;t need DHCP to assign an IP address to the switch during zero-touch provisioning process (we could use <a href="https://tools.ietf.org/html/rfc3927">IPv4 link-local addresses</a>) but to point the switch to its software image and configuration file.</p>
+<p>I tried to figure out what&rsquo;s going on behind the scenes and failed. The Dell/VMware/BSN document he quoted spends exactly one paragraph on this topic without providing any details, and the documentation is still behind a regwall.</p>
+<p>However, as Big Switch Networks works with whitebox switches using <a href="http://onie.org/">ONIE</a> (PXE boot for switches), it was pretty easy to find out how you can get ONIE to work with <a href="https://opencomputeproject.github.io/onie/design-spec/discovery.html">IPv6 link-local addresses</a>.</p>
+<p>ONIE bootloader tries all the sane approaches first: local USB file system, URL passed in DHCP response (supporting HTTP, FTP and TFTP) and URL guessing based on DHCP options. If all that fails, it decides it&rsquo;s time to use a bigger hammer (remember: never use brute force when a bigger hammer would do the trick):</p>
+<ul class="ListParagraph"><li>Ping all neighbors using broadcast IPv4 ping and all-node multicast IPv6 ping;</li>
+<li>For every neighbor responding to the ping, try to reach it over HTTP (port 80);</li>
+<li>For every web server present on the local network, try two-dozen image names.</li>
+</ul>
+<p>Yes, the approach works, but the hammer it uses would probably make Thor proud&hellip; and you better hope that:</p>
+<ul class="ListParagraph"><li>The switches send ONIE requests only on their management port(s);</li>
+<li>The management network is totally isolated from the user-facing infrastructure;</li>
+<li>Someone hasn&rsquo;t broken into one of your switches and started a web server on it (remember: they all run Linux these days) just for the giggles.</li>
+</ul>
+<p>Failing either one of these assumptions could result in an interesting security challenge.</p>
+

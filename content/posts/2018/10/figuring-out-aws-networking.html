@@ -1,0 +1,41 @@
+---
+title: "Figuring Out AWS Networking"
+date: "2018-10-23T07:00:00.000+02:00"
+tags: [ cloud,AWS ]
+---
+
+<p><a name="_GoBack"></a>One of my friends reviewing the material of my <a href="https://www.ipspace.net/Amazon_Web_Services_Networking">AWS Networking</a> webinar sent me this remark:</p>
+<blockquote class="cite">I'm always interested in hearing more about how AWS network works under the hood &ndash; it&rsquo;s difficult to gain that knowledge.</blockquote>
+<p>As always, it&rsquo;s almost impossible to find out the behind-the-scenes details, and whatever Amazon is telling you at their re:Invent conference should be taken with a truckload of salt&hellip; but it&rsquo;s relatively easy to figure out a lot of things just by observing them and performing controlled experiments.<!--more--></p>
+<p>As in any <a href="http://www.schoolofdragons.com/how-to-train-your-dragon/the-scientific-method/scientific-method-steps">(scientific) research</a>:</p>
+<ul class="ListParagraph"><li>Figure out the problem domain;</li>
+<li>Observe what&rsquo;s going on;</li>
+<li>Form a question;</li>
+<li>Form a hypothesis;</li>
+<li>Create and conduct as simple an experiment as possible to validate or refute the hypothesis;</li>
+<li>Analyze the data and draw a conclusion;</li>
+<li>Lather, rinse, repeat ;))</li>
+</ul>
+<p>I talked about this approach in <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=1#M1S4A">Learning How to Use New Tools</a> part of <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=1">Getting Started</a> module of <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions online course</a>; here&rsquo;s a simple AWS networking example.</p>
+<p><strong>Fact</strong>: A VM (EC2 instance) running in a Virtual Private Cloud (VPC) could have a public and a private (intra-VPC) IP address. This should trigger the curiosity of any decent networking engineer (&ldquo;I wonder how that&rsquo;s done&rdquo;)</p>
+<p><strong>Observation</strong>: Start a Linux VM in a public subnet of a VPC and log into the VM. Execute <strong>ifconfig </strong>or <strong>ip addr </strong>to see all IP addresses configured on VM interfaces. You would notice the VM private IP address, but not the public one.</p>
+<p><strong>Question</strong>: <a href="https://quoteinvestigator.com/2015/03/02/eureka-funny/">That&rsquo;s funny</a>&hellip; I wonder where the public IP address is&hellip;</p>
+<p><strong>Hypothesis</strong>: The public IP address is present on the Internet gateway which does NAT.</p>
+<p>Now stop reading and figure out an experiment that would validate this hypothesis.</p>
+<div class='separator'><img border="0" src="https://1.bp.blogspot.com/-L1u1YIJRD_w/W8tgHi269dI/AAAAAAAAJPU/VGBFB4eg5Qg7lK3hmeHmJjbYlF5fOyBhwCLcBGAs/s1200/Break-Things.jpg" style='max-width: 100%'/></div>
+<p>Here&rsquo;s what I did:</p>
+<ul class="ListParagraph"><li>Create two VMs in a VPC subnet;</li>
+<li>Ping between their private IP addresses &ndash; it works;</li>
+<li>Ping between their public IP addresses &ndash; it works;</li>
+<li>Remove the default route pointing to the Internet gateway;</li>
+<li>Repeat the tests</li>
+</ul>
+<p><strong>Result</strong>: After removing the default route to the Internet gateway, the VMs cannot reach the public IP address of other VMs. Internet gateway is therefore somehow involved in this process.</p>
+<p><strong>Hypothesis</strong>: Internet gateway (whatever it happens to be and wherever it happens to be located within AWS) performs NAT between private and public VM addresses.</p>
+<p><strong>Question</strong>: I wonder what happens when a VM in a VPC pings the public I address of another VM in the same subnet.</p>
+<p><strong>Hypothesis</strong>: If the Internet gateway performs NAT between private and public IP addresses of a VM, then it should also NAT the source IP address of outgoing traffic. Pings received on the second VM should look like they&rsquo;re coming from the public IP address of the first VM.</p>
+<p><strong>Experiment</strong>: Trivial; left as an exercise.</p>
+<p>Got the idea? Now figure out how packet forwarding works and how you can influence it with routing tables configured on the VMs ;)</p>
+<h4>Want to know more?</h4><p>I documented everything I discovered while experimenting with AWS in my new <a href="https://www.ipspace.net/Amazon_Web_Services_Networking">AWS Networking Deep Dive</a> webinar. We covered regions, availability zones, VPCs, subnets, interfaces and addressing in the first live session. </p>
+<p>The second live session &ndash; starting with sample deployment scenarios and then moving on to network security &ndash; is in just two days&hellip; and all you need to attend it is a current <a href="https://www.ipspace.net/Subscription">ipSpace.net subscription</a>.</p>
+

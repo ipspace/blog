@@ -1,0 +1,31 @@
+---
+title: "Firewalls in a Small Private Cloud"
+date: "2012-11-05T07:10:00.000+01:00"
+tags: [ firewalls,VXLAN,security,cloud,Overlay networks,virtualization ]
+---
+
+<p><a href="https://twitter.com/MrsYisWhy">Mrs. Y</a>, the <a href="http://packetpushers.net/author/securityprincess/">network security princess</a>, sent me an interesting design challenge:</p>
+<blockquote class="cite">We’re building a private cloud and I'm pushing for keeping east/west traffic inside the cloud. What are your opinions on the pros/cons of keeping east/west traffic in the cloud vs. letting it exit for security/routing?</blockquote>
+<p>Short answer: it depends.<!--more--></p>
+<h4>Digging Deeper</h4><p>We had a nice Skype conversation discussing all sorts of interesting topics, including VXLANs, hybrid clouds, vShield Edge, introspection firewalls (what I would call NIC-level firewalls), numerous vendors … and we were not getting anywhere, until we remembered the basic rule of network design: scope the problem first.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-VuFnXm9awss/UJPiS0p_maI/AAAAAAAAFS0/H7xaye8uVjY/s1600/StopDreaming.jpg" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="400" width="390" src="http://4.bp.blogspot.com/-VuFnXm9awss/UJPiS0p_maI/AAAAAAAAFS0/H7xaye8uVjY/s400/StopDreaming.jpg" /></a></div>
+<p>Here’s what we found out:</p>
+<ul class="ListParagraph"><li>Will you have a multi-tenant cloud with individual groups (departments, app teams) deploying their own app stack? <em>No.</em></li>
+<li>Will you keep the traditional paradigm of segments separated by firewalls? <em>Yes.</em></li>
+<li>Will the tenants configure their own firewalls? <em>No, security will be centralized.</em></li>
+<li>Do you need load balancers in front of the servers? <em>Not really.</em></li>
+<li>How many servers are you going to virtualize? <em>A few hundred.</em></li>
+<li>How many vSphere hosts will you need for that? <em>Low tens.</em></li>
+<li>How many different security zones (segments) will you have? <em>Low tens.</em></li>
+</ul>
+<p><strong>Conclusion#1:</strong> You don’t need VXLAN. VLANs will do just fine for a low number of servers and segments.</p>
+<p><strong>Conclusion#2:</strong> You could use VM-based firewall (ex: vShield Edge) or a physical appliance (ex: ASA) for inter-segment firewalling and routing. There’s no functional difference because individual tenants won’t manage their own firewalls ... unless you plan to use vCloud Director, in which case you might consider the fact that vShield Edge nicely integrates with vCloud Director. On the other hand, vShield Edge still hasn’t reached feature parity with traditional firewalls like ASA.</p>
+<p><strong>Conclusion#3:</strong> Whatever you do, you can still deploy NIC-level firewalls like vShield App or VSG … just don’t expect them to be managed by vCloud Director (because it still doesn’t talk to them).</p>
+<h4>More information</h4><p>Network virtualization and virtual firewalls are well covered in my <a href="http://www.ipspace.net/Roadmap/Virtualization_webinars">virtualization webinars</a>:</p>
+<ul class="ListParagraph"><li><a href="http://www.ipspace.net/Introduction_to_Virtualized_Networking">Introduction to Virtual Networking</a> will give you an overview;</li>
+<li><a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> describes numerous technologies you can use to build virtual networks, and their scalability;</li>
+<li><a href="http://www.ipspace.net/VMware_Networking_Deep_Dive">VMware Networking Deep Dive</a> covers the technical details of vSphere’s vSwitch, Nexus 1000V and virtual firewalls (including VSG, vShield App and vGW);</li>
+<li><a href="http://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN Technical Deep Dive</a> focuses on VXLAN-based virtual networks and VXLAN gateways.</li>
+</ul>
+<p>All webinars are included with the <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

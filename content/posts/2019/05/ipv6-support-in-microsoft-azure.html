@@ -1,0 +1,28 @@
+---
+title: "IPv6 Support in Microsoft Azure"
+date: "2019-05-29T08:00:00.000+02:00"
+tags: [ IPv6,Azure,cloud ]
+---
+
+<p>TL&amp;DR: MIA</p>
+<p>Six years ago, when I was talking about overlay virtual networks at Interop, I loved to joke that we must be living on a weird planet where <em>Microsoft has the best overlay virtual networking implementation</em>… at least as far as IPv6 goes.</p>
+<p>Even then, their data plane implementation which was fully dual-stack-aware on both tenant- and underlay level was way ahead of what System Center could do.<!--more--> If I remember correctly (and I’m positive <a href="https://twitter.com/ehorley">@ehorley</a> will be quick to correct me), you could configure either IPv4 or IPv6 but not dual-stack tenant networks.</p>
+<p>Fast-forward six years. After completing the <a href="https://www.ipspace.net/Amazon_Web_Services_Networking">AWS Networking</a> webinar, I started preparing the materials for my <a href="https://www.ipspace.net/Microsoft_Azure_Networking_(Workshop)">Microsoft Azure Networking workshop</a>, expecting at least a parity with AWS as far as IPv6 goes. As my Twitter followers might have noticed I was bitterly disappointed. The only IPv6 functionality available in Azure is:</p>
+<ul><li>Private IPv6 addresses on VM NICs;</li>
+<li>Public IPv6 addresses on outside interfaces of load balancers;</li>
+<li>Load balancing of incoming IPv6 traffic.</li>
+</ul>
+<p>Virtual machines can’t even communicate over IPv6, and needless to say there are no subnets, user-defined routes, network security groups… The state of IPv6 in Azure is best summarized by this “key benefit” from their documentation:</p>
+<blockquote class='cite'><p>Meet government regulations requiring that new applications be accessible to IPv6-only clients</p>
+</blockquote>
+<p>To rephrase: <em>we have IPv6 so you can have a tick in the box</em>.</p>
+<p>Compare that to AWS that has full feature parity between IPv4 and IPv6 in:</p>
+<ul><li>Virtual networks;</li>
+<li>Security groups;</li>
+<li>Routing;</li>
+<li>Internet access;</li>
+<li>Load balancers.</li>
+</ul>
+<p>As far as I’d love to see a public infrastructure cloud market with many strong players, it seems we have a replica of networking hardware market, this time called <em>AWS and seven dwarfs</em>.</p>
+<p>Want to know more about networking in Microsoft Azure? The <a href="https://my.ipspace.net/bin/list?id=AzureNet">slide deck is ready</a> and available to ipSpace.net subscribers. I’ll <a href="https://www.sig-switzerland.ch/microsoft_azure_networking/">run a workshop using this material in Zurich (Switzerland) on June 12th</a>, and a webinar sometime in autumn 2019.</p>
+

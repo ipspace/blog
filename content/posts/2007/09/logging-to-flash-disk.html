@@ -1,0 +1,12 @@
+---
+title: "Logging to flash disk"
+date: "2007-09-11T07:07:00.000+02:00"
+tags: [ syslog,network management ]
+---
+
+Cisco IOS release 12.4(15)T brought (among a <a href="http://www.cisco.com/en/US/products/ps6441/prod_bulletin09186a00804a8728.html#wp1090701">plethora of voice features</a>) the <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios122sb/newft/122sb28/cs_sysls.htm">logging to non-volatile storage</a>, a nice-sounding name for the ability to write syslog messages into files on your <em>flash</em> memory (or an embedded disk, if you have one). To configure it, use the <strong>logging persistent [url <em>directory</em>] [size <em>filesystem-size</em>] [filesize <em>logging-file-size</em>]</strong> global configuration command: <ul><li>The <em><strong>directory</strong></em> argument specifies where you want the files to be stored (for example, <em>flash:/logging</em>).</li>
+<li>The <em><strong>filesystem-size</strong></em> specifies the maximum disk space the logging files can consume (once you exceed the limit, the oldest file is deleted)</li>
+<li>The <em><strong>logging-file-size</strong></em> parameter specifies the maximum size of each file (once the file grows too large, a new file is created).</li>
+</ul>
+<p class="note"><span>Note: </span>You can store the log files on the router's flash memory if it appears as a <em>disk</em> file system (check with the <strong>show file systems</strong> command). Wouldn't it be great if this feature would also work on USB drives ...</p>
+

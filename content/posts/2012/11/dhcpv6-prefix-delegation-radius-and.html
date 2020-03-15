@@ -1,0 +1,21 @@
+---
+title: "DHCPv6 Prefix Delegation, RADIUS and Shared Usernames"
+date: "2012-11-07T07:13:00.000+01:00"
+tags: [ DHCP,IPv6,access control,Workshop ]
+---
+
+<p><a href="http://www.linkedin.com/in/jernejhorvat">Jernej Horvat</a> sent me the following question: </p>
+<blockquote class="cite">I know DHCPv6-based prefix delegation should be as stable as possible, so I plan to include the delegated prefix in my RADIUS database. However, for legacy reasons each username can have up to four concurrent PPPoE sessions. How will that work with DHCPv6 IA_PD?</blockquote>
+<p>Short answer: worst case, DHCPv6 prefix delegation will be royally broken.<!--more--></p>
+<p>In spite of this, things are not as gloomy as they seem. The reason this ISP allows up to four concurrent sessions for each username is simple: years ago DSL modems were annoyingly stupid, so their users terminated PPPoE sessions on the hosts, and it was quite likely that someone would have two or more hosts at home (today, some of the more creative users use this functionality for roaming within the ISP network).</p>
+<p class="note">Obviously the users starting PPPoE sessions on their hosts consumed more IPv4 addresses and BRAS resources than users with properly-configured CPEs, but let’s not chase that particular squirrel.</p>
+<p>Also, remember that the CPE device has to trigger the DHCPv6 prefix delegation process with a DHCPv6 REQUEST packet. At that time, <a href="http://blog.ioshints.info/2011/03/dhcpv6-radius-integration-cisco-way.html">access server (BRAS) using old Cisco IOS software might send another RADIUS request</a>; more <a href="http://blog.ioshints.info/2011/12/dhcpv6-server-on-cisco-ios-making.html">recent software</a> would already have the value of the <a href="http://blog.ioshints.info/2012/01/dhcpv6-prefix-delegation-with-radius.html"><em>delegated-IPv6-prefix </em>RADIUS attribute</a> and use that. However, the prefix is not delegated, and the corresponding static route not installed, until the CPE asks for it. </p>
+<p><strong>Summary:</strong> If you allow concurrent sessions for a single username, but only one of them is a CPE using DHCPv6, you won’t experience prefix delegation problems. </p>
+<h4>Recommendations</h4><p>Regardless of the “it just might work” conclusion above, keep the following in mind:</p>
+<ul class="ListParagraph"><li>If you’re using <em>framed-IPv6-prefix </em>RADIUS attribute (or equivalent Cisco AV-pair), you MUST limit the number of concurrent sessions to one.</li>
+<li>If you’re using <em>delegated-IPv6-prefix </em>RADIUS attribute, you SHOULD limit the number of concurrent sessions to one.</li>
+<li>If you allow concurrent sessions for a single username, you SHOULD use BRAS local pools for directly connected (/64) PPPoE prefixes and either BRAS local pools or central DHCPv6 (not RADIUS) server for delegated prefixes.</li>
+<li>If you use BRAS local pools, you SHOULD use short lifetimes for delegated prefixes to ensure the CPE doesn’t get totally stuck if the BRAS reloads and forgets the prefixes it delegated</li>
+</ul>
+<h4>More information</h4><p>You’ll find detailed description of DHCPv6, prefix delegation mechanisms, RADIUS integration, and corresponding design, deployment and configuration guidelines in the <a href="http://www.ipspace.net/Building_Large_IPv6_Service_Provider_Networks">Building Large IPv6 Service Provider Networks</a> webinar. You can <a href="http://www.ipspace.net/Recordings?code=IPv6SPCore">buy its recording</a> or get it as part of the <a href="http://www.ipspace.net/IPv6_trilogy">IPv6 trilogy</a> or <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

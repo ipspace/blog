@@ -1,0 +1,20 @@
+---
+title: "Whitebox Hardware and Open-Source Software"
+date: "2019-10-28T10:54:00.000+01:00"
+tags: [ SDN ]
+---
+
+<p>One of my subscribers was interested in trying out whitebox solutions. He wrote:</p>
+<p class='cite'>What open source/whitebox software/hardware should I look at if I wanted to build a leaf-and-spine VXLAN/EVPN/BGP data center.</p>
+<p>I don’t think you can get a fully-open-source solution because the ASIC manufacturers hide their SDK behind a mountain of NDAs (that strategy must <a href="https://packetpushers.net/industry-needs-open-source-framework-switching-silicon/">make perfect sense</a> – after all, it generated <a href="https://www.youtube.com/watch?v=IVpOyKCNZYw">such awesome PR for NVIDIA</a>). Anyway, the closest you can get (AFAIK) if you're a mere mortal is Cumulus Linux, and you just choose any whitebox hardware off their Hardware Compatibility List.<!--more--></p>
+<p class='cite'>I also want to look into open source/white label for my firewalling needs, DMVPN over mGRE, and SD-WAN needs.</p>
+<p>Apart from few firewall manufacturers touting their awesome ASICs nobody does firewalling in hardware, so all you need is an x86 server and an open-source firewall (suggestions welcome: please write a comment).</p>
+<p>Modern open-source IPsec implementations already use AES-NI instruction set, so you could say you’re using whitebox hardware for your IPsec implementation even when you’re running OpenVPN on an x86 server.</p>
+<p>DMVPN is proprietary as are all SD-WAN solutions so no luck there, although someone recently wrote about <a href="https://flexiwan.com/what-is-sd-wan-open-source-building-blocks/">open-source SD-WAN solution</a>. Had no time to dig deeper, and maybe they do have a high-quality open-source implementation, but their whitepaper is so buzzword-loaded that my BS detector experienced immediate overload.</p>
+<h4><a name="_GoBack"></a>More information</h4><ul class="ListParagraph"><li>Dinesh Dutt described <a href="https://www.ipspace.net/Network_Operating_System_Models">Network Operating System Models</a> a few months ago;</li>
+<li>Russ White and Shawn Zandi talked about <a href="https://www.ipspace.net/Open_Networking_for_Large-Scale_Networks">Open Networking in Large Data Centers</a> in 2017;</li>
+<li>Adding to hours of content created by Dinesh Dutt, Pete Lumbis described <a href="https://my.ipspace.net/bin/list?id=DCFabric#CUMULUS">new features in Cumulus Linux</a> on October 15<sup>th</sup> 2019;</li>
+<li>Donald Sharp did a <a href="https://my.ipspace.net/bin/list?id=FRR">deep dive into FRRouting</a> on October 22<sup>nd</sup> 2019;</li>
+<li>Speaking of EVPN, we added tons of new stuff (including <a href="https://my.ipspace.net/bin/list?id=EVPN#MH">MLAG-with-EVPN</a>, <a href="https://my.ipspace.net/bin/list?id=EVPN#L47SVC">service insertion in EVPN environments</a>, and <a href="https://my.ipspace.net/bin/list?id=EVPN#HOSTS">EVPN on hosts</a>) in 2019.</li>
+</ul>
+

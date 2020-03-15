@@ -1,0 +1,11 @@
+---
+title: "Network Address Translation of DNS responses"
+date: "2008-11-20T07:09:00.000+01:00"
+tags: [ DNS,NAT ]
+---
+
+<div class="bloggerBody"><p><a href="http://wiki.nil.com/"><img src="http://www.ioshints.info/images/Wiki.png" style="border: medium none ; padding-left: 10px; float: right; padding-bottom: 10px;" /></a>I “always knew” that <a href="http://wiki.nil.com/Network_address_translation_of_DNS_responses">Cisco IOS supports NAT translations between local and global addresses in DNS replies</a> … until I wanted to use this functionality in one of my sample configurations and discovered it doesn’t work as expected.</p>
+<p>A few tests later, I discovered the true story: DNS requests and responses are translated <em>if and only if </em>you define IP-level NAT translations using either the <strong>ip nat inside source static</strong> or the <strong>ip nat inside source list pool </strong>configuration command. The translations should not use any additional filters (do not use the <strong>route-map </strong>keyword) and cannot result in PAT translations (do not use the <strong>overload </strong>keyword). </p>
+<p>You can find more details in the “<a href="http://wiki.nil.com/Network_address_translation_of_DNS_responses">Network address translation of DNS responses</a>” article in the <a href="http://wiki.nil.com/">CT<sup>3</sup> wiki</a>.</p>
+</div>
+

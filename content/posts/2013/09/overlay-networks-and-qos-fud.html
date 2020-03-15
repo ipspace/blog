@@ -1,0 +1,32 @@
+---
+title: "Overlay Networks and QoS FUD"
+date: "2013-09-12T14:25:00.000+02:00"
+tags: [ Data Center,Workshop,Fabric,Overlay networks,QoS ]
+---
+
+<p>One of the usual complaints I hear whenever I mention overlay virtual networks is “<em>with overlay networks we lose all application visibility and QoS functionality</em>” ... that worked so phenomenally in the physical networks, right?<!--more--></p>
+<h4>The wonderful QoS the physical hardware gives you</h4><p>To put my ramblings into perspective, let’s start with what we do have today. Most hardware vendors give you basic DiffServ functionality: classification based on L2-4 information, DSCP or 802.1p (CoS) marking, policing and queuing. Shaping is rare. Traffic engineering is almost nonexistent (while some platforms support MPLS TE I haven’t seen many people brave enough to deploy it in their data center network).</p>
+<p>Usually a single vendor delivers an inconsistent set of QoS features that vary from platform to platform (based on the ASIC or merchant silicon used) or even from linecard to linecard (don’t even mention Catalyst 6500). Sometimes you need different commands or command syntax to configure QoS on different platforms from the same hardware vendor.</p>
+<p>I don’t blame the vendors. Doing QoS at gigabit speeds in a terabit fabric is hard. Really hard. Having thousands of hardware output queues per port or hardware-based shaping is expensive (why do you think we had to pay an arm and a leg for ATM adapters?).</p>
+<h4>Do we need QoS?</h4><p>Maybe not. Maybe it’s cheaper to build a leaf-and-spine fabric with <a href="http://blog.ipspace.net/2013/09/how-much-data-center-bandwidth-do-you.html">more bandwidth than your servers can consume</a>. Learn from the global Internet - everyone talks about QoS, but <a href="http://www.internetsociety.org/sites/default/files/QoS%20Huston%20June%202012.pdf">the emperor is still naked</a>.</p>
+<h4>How should QoS work?</h4><p>The only realistic QoS technology that works at terabit speeds is DiffServ – packet classification is encoded in DSCP or CoS (802.1p bits). In an ideal world the applications (or host OS) set the DSCP bits based on their needs, and the network accepts (or rewrites) the DSCP settings and provides the differentiated queuing, shaping and dropping.</p>
+<p>In reality, the classification is usually done on the ingress network device, because we <a href="http://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html">prefer playing MacGyvers</a> instead of telling our customers (= applications) “what you mark is what you get”.</p>
+<p>Finally, there are the poor souls that do QoS classification and marking in the network core because someone bought them edge switches that are too stupid to do it.</p>
+<h4>How much QoS do we get in the virtual switches?</h4><p>Now let’s focus on the QoS functionality of the new network edge: the virtual switches. As in the physical world, there’s a full range of offerings, from minimalistic to pretty comprehensive:</p>
+<ul class="ListParagraph"><li>vDS in vSphere 5.1 has minimal QoS support: per-pool 802.1p marking and queuing;</li>
+<li>Nexus 1000V has a full suite of classification, marking, policing and queuing tools. It also <a href="https://twitter.com/Alonso_Inigo/status/376086110092275713">copies inner DSCP and CoS values into VXLAN+MAC envelope</a>;</li>
+<li>VMware NSX (the currently shipping NVP 3.1 release) uses a typical service provider model: you can define minimal (affecting queuing) and maximal (triggering policing) bandwidth per VM, accept or overwrite DSCP settings, and copy DSCP bits from virtual traffic into the transport envelopes;</li>
+<li>vDS in vSphere 5.5 is <a href="http://www.vmware.com/files/pdf/vsphere/VMware-vSphere-Platform-Whats-New.pdf">has full 5-tuple classifier and CoS/DSCP marking</a> (<a href="http://stretch-cloud.info/2013/10/traffic-filtering-and-dscp-marking-in-vds-5-5/">here's how it works</a>). </li>
+<li>We’ll see what NSX for vSphere delivers when it ships ;)</li>
+</ul>
+<p>In my opinion, you get pretty much par for the course with the features of Nexus 1000V, VMware NSX or (hopefully) vSphere 5.5 vDS, and you get DSCP-based classification of overlay traffic with VMware NSX and Nexus 1000V.</p>
+<p>It is true that you won’t be able to do per-TCP-port classification and marking of overlay virtual traffic in your ToR switch any time soon (but I’m positive there are at least a few vendors working on it). </p>
+<p>It’s also true that someone will have to configure classification and marking on the new network edge (in virtual switches) using a different toolset, but if that’s an insurmountable problem, you might want to start looking for a new job anyway.</p>
+<h4>More information</h4><p>Going from more generic to more specific:</p>
+<ul class="ListParagraph"><li><a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> webinar has an overview of various virtual network technologies;</li>
+<li><a href="http://overlaynetworks.eventbrite.com/?ref=blog">Overlay Virtual Networking</a> has an overview of what major vendors have to offer;</li>
+<li><a href="http://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN deep dive</a> describes VXLAN implementation details;</li>
+<li><a href="http://nsx.eventbrite.com/?ref=blog">VMware NSX Architecture</a> webinar (free; <a href="http://nsx.eventbrite.com/?ref=blog">register now</a>) focuses on Nicira NVP and VMware NSX.</li>
+</ul>
+<p>Interested in all of them? Check out the <a href="http://www.ipspace.net/Subscription">yearly subscription</a>. Need a design review, technology discussion or a second opinion? <a href="http://www.ipspace.net/Consulting">No problem</a>.</p>
+

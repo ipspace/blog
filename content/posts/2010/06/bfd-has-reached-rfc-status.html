@@ -1,0 +1,16 @@
+---
+title: "BFD has reached RFC status"
+date: "2010-06-16T07:33:00.000+02:00"
+tags: [ MPLS,IP routing,WAN ]
+---
+
+<p>Bidirectional Forwarding Detection (BFD) protocol has finally been published as a series of RFCs. BFD gives you <a href="http://blog.ioshints.info/2008/11/bidirectional-forwarding-detection.html">quick failure detection between L3 hops</a> (routers) regardless of the underlying technology and equipment (modems, media converters, bridges). It’s been gradually introduced in Cisco IOS during the last few years; release 15.0M and 12.2SRE contain almost everything you’ll ever need (missing: multihop BGP support and MPLS LSP support).</p>
+<p>My “<a href="http://www.nil.com/ipcorner/bfd/"><em>Improve the Convergence of Mission-Critical Networks with Bidirectional Forwarding Detection (BFD)</em></a>” <a href="http://www.nil.com/ipcorner">IP Corner</a> article gives you a brief overview of BFD and a typical usage scenario. To learn more, read the RFCs in this order:</p>
+<!--more--><ul class="ListParagraph"><li><a href="http://tools.ietf.org/html/rfc5882">When, where and how should BFD be used (RFC 5882)</a>. This one is mandatory; it gives you a good overview of what BFD can and cannot do as well as where and how to use it.</li>
+<li><a href="http://tools.ietf.org/html/rfc5880">BFD: the protocol (RFC 5880)</a>. The protocol description. Not as boring as some other protocol descriptions are. If you want to understand how the <em>Echo </em>function works, make sure you read this one.</li>
+<li><a href="http://tools.ietf.org/html/rfc5881">BFD for single-hop IPv4 and IPv6 (RFC 5881)</a>. The dirty details of using BFD for single-hop IPv4 and IPv6 failure detection.</li>
+<li><a href="http://tools.ietf.org/html/rfc5883">Multihop BFD (RFC 5883)</a>. Extensions to RFC 5881 needed to support BFD in multihop scenarios (IBGP sessions, multihop EBGP sessions, OSPF virtual links).</li>
+<li><a href="http://tools.ietf.org/html/rfc5884">BFD for MPLS LSP (RFC 5884)</a>. This one allows you to test PE-to-PE forwarding path. Ideal for very quick rerouting around data-plane failures in MPLS VPN networks (not implemented in IOS yet).</li>
+<li><a href="http://tools.ietf.org/html/rfc5885">BFD for pseudowires (RFC 5885)</a>. Allows you to test data-plane consistency of pseudowires established across your MPLS network.</li>
+</ul>
+

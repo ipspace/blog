@@ -1,0 +1,21 @@
+---
+title: "BGP Essentials: BGP Communities"
+date: "2008-02-04T07:19:00.000+01:00"
+tags: [ BGP ]
+---
+
+<p>BGP communities are extra attributes you can attach to an IP route carried by BGP. You can use communities to indicate which routes should be propagated or filtered (for example, the well-known <em>NO_EXPORT</em> community signifies that the route it’s attached to shall not be sent outside of the local AS), to influence route selection on remote routers or to trigger other BGP-dependent IOS features (for example, quality-of-service marking based on BGP).</p>
+<p>Each BGP community is a 32-bit value. The best practice dictates that the top 16 bits should be the AS number of the network defining the community meaning and the bottom 16 bits are defined by the network administrator.</p>
+<p>For example, if you use BGP communities to control QoS marking within your network, the top 16 bits should be your AS number. If you’re using a BGP community to mark backup BGP routes before they are sent to your ISP, you should use the BGP community defined by your ISP (and thus the top 16 bits are the ISP’s AS number).</p>
+<p>The only mechanism to set BGP community in Cisco IOS is the <strong>set community</strong> command in a <strong>route-map</strong>.</p>
+<p class='important'>Important: The <strong>set community</strong> command erases existing communities attached to a route and replaces them with the new set of communities unless you specify the <strong>additive</strong> option.</p>
+<p>You can set BGP communities in any point where you can use a <strong>route-map</strong> within BGP:</p>
+<ul><li>on routes you’re receiving from a neighbor with the <strong>neighbor route-map in</strong> router configuration command;</li>
+<li>on routes you’re sending to a neighbor with the <strong>neighbor route-map out</strong> router configuration command;</li>
+<li>on routes originated into BGP with the <strong>network route-map</strong> router configuration command;</li>
+<li>on routes redistributed into BGP with the <strong>redistribute route-map</strong> router configuration command.</li>
+</ul>
+<p>The BGP communities are transitive BGP attribute, meaning that they should be propagated to all BGP neighbors.</p>
+<p class='important'>Important: Cisco IOS does not propagate BGP communities unless you manually configure community propagation for each neighbor with the <strong>neighbor send-community</strong> configuration command. BGP peer groups or peer templates are an excellent way to configure BGP community propagation for a large number of peers.</p>
+<p class='note'>If you're looking for more in-depth BGP knowledge, try our <a href="http://www.nil.si/ls/BS_BGP32?showlp">Configuring BGP on Cisco Routers</a> <a href="http://www.nil.si/C1256F0A00429755/html/bs_portfolio">e-learning solution</a>. If you just need to enhance your hands-on skill, the <a href="http://www.nil.si/ls/LB_RL_BGP32?showlp">BGP Remote Lab Bundle</a> is the perfect choice.</p>
+

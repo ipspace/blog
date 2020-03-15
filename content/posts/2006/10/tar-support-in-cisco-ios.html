@@ -1,0 +1,8 @@
+---
+title: "TAR support in Cisco IOS"
+date: "2006-10-24T14:42:00.000+02:00"
+tags: [ network management,command line interface ]
+---
+
+Cisco IOS supports the Unix <em><a href="http://www.die.net/doc/linux/man/man1/tar.1.html">tar</a></em> format with the <strong><a href="http://cisco.com/univercd/cc/td/doc/product/lan/cat3750/12114ea1/3750scg/swiosfs.htm">archive</a></strong> command. For example, to inspect the contents of the Secure Device Manager (SDM) that is present in Flash memory on most routers, use the <strong>archive tar /table flash:sdm.tar</strong> command.<br /><br />You can also use the <strong>archive tar /xtract</strong> command to extract a <em>tar</em> file (local or external) into a directory (yet again local or external). For example, with the command <strong>archive tar /xtract flash:sdm.tar tftp://10.0.0.10</strong> you'd extract the SDM <em>tar</em> archive to a TFTP server.<br /><br /><strong>Note:</strong> tar extract cannot create subdirectories on a TFTP server, the directory structure has to be prepared in advance.
+

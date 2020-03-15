@@ -1,0 +1,23 @@
+---
+title: "Cisco Nexus 3548: A Victory for Custom ASICs?"
+date: "2012-09-20T08:48:00.001+02:00"
+tags: [ switching,Data Center ]
+---
+
+<p>Autumn must be a perfect time for data center product launches: last week <a href="http://blog.ioshints.info/2012/09/building-large-l3-fabrics-with-brocade.html">Brocade launched its core VDX switch</a> and yesterday <a href="http://blog.ioshints.info/2012/09/arista-launches-first-hardware-vxlan.html">Arista</a> and Cisco launched their new low-latency switches (yeah, the simultaneous launch must have been pure coincidence).</p>
+<p>I had the opportunity to listen to Cisco’s and Arista’s product briefings, continuously experiencing a weird feeling of déjà vu. The two switches look like twin brothers … but there are some significant differences between the two:<!--more--></p>
+<ul class="ListParagraph"><li>Cisco’s <a href="http://www.cisco.com/en/US/prod/collateral/switches/ps9441/ps11541/ps12581/data_sheet_c78-707001.html">Nexus 3548</a> is narrowly focused on high-performance trading, Arista’s traditional market. <a href="http://www.aristanetworks.com/en/products/7150-series/7150-datasheet">Arista’s 7150</a> is a more generic top-of-rack switch with features targeting private clouds (example: VXLAN termination);</li>
+<li>Arista’s switches use merchant silicon, Nexus 3548 runs on new generation of Cisco’s ASICs (read <a href="http://www.colinmcnamara.com/breaking-the-200-nanosecond-barrier-with-algo-boost-on-the-nexus-3548/">Colin McNamara’s blog post for more details</a>);</li>
+<li>Both switches have comparable table sizes: 64K MAC addresses and 64K adjacent hosts (ARP/ND table). Arista’s switch has significantly bigger IP forwarding tables (84K IP routes versus 16K IP routes in Nexus 3548);</li>
+<li>7150S-64 has 64 10GE ports, Nexus 3548 has 48 10GE ports;</li>
+<li>Surprisingly, the typical power draw of Nexus 3548 is almost identical to Arista’s 7152 (52-port switch);</li>
+<li>And finally (my favorite): only one of the two supports IPv6.</li>
+</ul>
+<p>Focusing on additional software and hardware features, it’s obvious Cisco was reading Arista’s HPT playbook: both switches can combine four 10GE ports into a single 40GE port (not a LAG), have microburst management, APIs, precision timing with PTP, timestamps in SPAN/mirrored packets, and hardware NAT with ridiculously low latencies.</p>
+<h4>The latency game</h4><p>The true difference between the two switches is the packet forwarding latency.</p>
+<p>Arista was traditionally a market leader in this space and its new switch raised (actually lowered) that bar significantly to ~380 nanoseconds … but only for a few moments – Nexus 3548 has 250 nanosecond cut-through latency, which can be further reduced to 190 nanosecond in <em>warp mode </em>(yes, you do need an additional software license to enable the warp drive). The trick to reduced latency is reduced MAC table size: 8K addresses in warp mode. </p>
+<p>Nexus 3548 also has mindboggling hub-like <em>warp SPAN</em> performance: mirroring packets from input to a set of output ports takes 50 nanoseconds (or ~60 bytes @ 10 Gbps). Obviously this trick only works with cut-through switching (which can’t be done from 10GE to 40GE ports or vice versa) on idle output ports.</p>
+<h4>Do we care?</h4><p>A bit of perspective: Speed of light is finite – one meter equals 3 nanoseconds. Signal propagation in fiber or copper is a bit slower; it takes approximately 5 nanoseconds for a meter. 10-meter cables thus introduce ~100 ns latency (50 ns on each leg) … and then there’s latency introduced by SFP+ transceivers.</p>
+<p>I am positive there are people out there that think they need this kind of performance and are willing to pay for it. I am also positive almost all of us (particularly those that still have to work with data residing on disk drives) stopped caring a long while ago when the forwarding latencies dropped to a few microseconds.</p>
+<h4>More information</h4><p>The progress data center switch/fabric vendors made since May 2012 will be described in the <a href="http://www.ipspace.net/Data_Center_Fabrics_Update">update session</a> of the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a> webinar (<a href="http://dcfabric.eventbrite.com">register now</a>).</p>
+

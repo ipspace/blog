@@ -1,0 +1,19 @@
+---
+title: "QoS in large-scale DMVPN networks"
+date: "2011-06-14T07:10:00.000+02:00"
+tags: [ DMVPN,Workshop,QoS ]
+---
+
+<p>Got this question a few days ago:</p>
+<blockquote class="cite">I have a large DMVPN network (~ 1000 sites) using variety of DSL, cable modem, and wireless connections.  In all of these cases the bandwidth is extremely dissimilar and even varies with time. How can I handle this in a scalable way? Also, do you know of any product or facility that I can use to better measure the bandwidth from hub to spoke and better set the QOS values?</blockquote>
+<p>The last question is the easy part: one of the products that does that is <a href="http://www.nil.com/en/services/">NIL Monitor</a> service where the remote probes can measure the actual end-to-end bandwidth. NIL Monitor software can also log into routers and change configurations if needed ... but what should you change?<!--more--></p>
+<p>Hub-to-spoke QoS implementations in DMVPN networks usually use one of the following options:</p>
+<p><strong>Per-spoke class with ACL-based classification</strong>. If you want to implement per-spoke QoS on the hub router, you need a huge policy-map with a class for each spoke. However, as all DMVPN traffic exits the hub site through a single tunnel interface, ACL-based classification is the only mechanism you can use (QPPB won’t work – IOS supports only 100 QoS groups). Clearly not scalable and a nightmare to manage.</p>
+<p><strong>Per-tunnel QoS</strong>. The name of <a href="http://www.cisco.com/en/US/docs/ios/sec_secure_connectivity/configuration/guide/sec_per_tunnel_qos.html">this feature</a> (described in my <a href="http://www.ioshints.info/DMVPN150">New DMVPN features in IOS release 15.x</a> webinar – <a href="http://dmvpn150.eventbrite.com/">register here</a>) is highly misleading. It allows you to implement per-spoke QoS (maybe the developers had IPsec tunnels in mind) with the service policy being selected by the spoke router. You have to configure an NHRP group on the spoke router, the name of the group is sent to the hub router in the registration request and the hub router applies <strong>policy-map </strong>associated with the NHRP group to <em>all traffic sent to that spoke</em>.</p>
+<p><strong>The </strong><strong>answer to the reader’s question</strong>: </p>
+<ul class="ListParagraph"><li>Define numerous policy maps on the hub router (each one with a different set of traffic shaping parameters matching the spoke bandwidth) and associate each one of them with a different NHRP group;</li>
+<li>Measure the actual hub-to-spoke bandwidth;</li>
+<li>Select the closest QoS policy and configure the corresponding NHRP group on the tunnel interface of the spoke router;</li>
+<li>The NHRP group name will be sent to the hub router in the next registration request and the hub router will start using the new QoS policy for that spoke.</li>
+</ul>
+

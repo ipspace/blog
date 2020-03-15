@@ -1,0 +1,41 @@
+---
+title: "Management, Control and Data Planes in Network Devices and Systems"
+date: "2013-08-13T07:22:00.000+02:00"
+tags: [ OpenFlow ]
+---
+
+<p>Every single network device (or a distributed system like <a href="http://blog.ipspace.net/2011/09/qfabric-part-1-hardware-architecture.html">QFabric</a>) has to perform at least three distinct activities:</p>
+<ul class="ListParagraph"><li>Process the transit traffic (that’s why we buy them) in the <strong>data plane</strong>;</li>
+<li>Figure out what’s going on around it with the <strong>control plane </strong>protocols;</li>
+<li>Interact with its owner (or NMS) through the <strong>management plane</strong>.</li>
+</ul>
+<p><!--more-->Routers are used as a typical example in every text describing the three planes of operation, so let’s stick to this time-honored tradition:</p>
+<ul class="ListParagraph"><li>Interfaces, IP subnets and routing protocols are configured through <strong>management plane protocols</strong>, ranging from CLI to <a href="http://blog.ipspace.net/2012/06/netconf-expect-on-steroids.html">NETCONF</a> and the latest buzzword – northbound <a href="http://blog.ipspace.net/2012/08/why-is-restful-api-better-than-snmp.html">RESTful API</a>;</li>
+<li>Router runs <strong>control plane </strong>routing protocols (OSPF, EIGRP, BGP …) to discover adjacent devices and the overall network topology (or reachability information in case of distance/path vector protocols);</li>
+<li>Router inserts the results of the control-plane protocols into <a href="http://blog.ipspace.net/2010/09/ribs-and-fibs.html">Routing Information Base (RIB) and Forwarding Information Base (FIB)</a>. <strong>Data plane </strong>software or ASICs uses FIB structures to forward the transit traffic.</li>
+<li><strong>Management plane </strong>protocols like SNMP can be used to monitor the device operation, its performance, interface counters …</li>
+</ul>
+<div class='separator'><a href="http://4.bp.blogspot.com/-LNsgPsARtHU/UgMqsuYa9lI/AAAAAAAAGCA/awbkU1X9nLU/s1600/DevicePlanes.jpg" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-LNsgPsARtHU/UgMqsuYa9lI/AAAAAAAAGCA/awbkU1X9nLU/s540/DevicePlanes.jpg" /></a><br />The slide is from one of my <a href="http://www.ipspace.net/Presentations#Software_Defined_Networking">SDN/OpenFlow presentations</a></div>
+<p>The management plane is pretty straightforward, so let’s focus on a few intricacies of the control and data planes.</p>
+<p>We usually have routing protocols in mind when talking about<strong> </strong><strong>Control plane protocols</strong>,<strong> </strong>but in reality the control plane protocols perform numerous other functions including:</p>
+<ul class="ListParagraph"><li>Interface state management (PPP, LACP);</li>
+<li>Connectivity management (BFD, CFM);</li>
+<li>Adjacent device discovery (hello mechanisms present in most routing protocols, ES-IS, ARP, IPv6 ND, uPNP SSDP);</li>
+<li>Topology or reachability information exchange (IP/IPv6 routing protocols, IS-IS in TRILL/SPB, STP);</li>
+<li>Service provisioning (RSVP for IntServ or MPLS/TE, uPNP SOAP calls);</li>
+</ul>
+<p>Data plane should be focused on forwarding packets but is commonly burdened by other activities:</p>
+<ul class="ListParagraph"><li>NAT session creation and NAT table maintenance;</li>
+<li>Neighbor address gleaning (example: <a href="http://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html">dynamic MAC address learning in bridging</a>, <a href="http://blog.ipspace.net/2013/03/ipv6-source-address-validation.html">IPv6 SAVI</a>);</li>
+<li>Netflow Accounting (sFlow is cheap compared to Netflow);</li>
+<li>ACL logging;</li>
+<li>Error signaling (ICMP).</li>
+</ul>
+<p>Data plane forwarding is hopefully performed in dedicated hardware or in high-speed code (within the interrupt handler on low-end Cisco IOS routers), while the overhead activities usually happen on the device CPU (sometimes even in userspace processes &ndash; <a href="http://blog.ipspace.net/2013/02/process-fast-and-cef-switching-and.html">the switch from high-speed forwarding to user-mode processing is commonly called punting</a>).</p>
+<p class='warn'>In <a href="http://networkstatic.net/openflow-proactive-vs-reactive-flows/">reactive</a> OpenFlow architectures <a href="http://blog.ipspace.net/2013/03/controller-based-packet-forwarding-in.html">a punting decision sends a packet all the way to the OpenFlow controller</a>.</p>
+<p>Regardless of the implementation details, it’s obvious the device CPU represents a significant bottleneck (in some cases the switch to CPU-based forwarding causes several magnitudes lower performance) – the main reason one has to rate-limit ACL logging and protect the device CPU with <a href="http://wiki.nil.com/Protecting_the_router%E2%80%99s_control_plane"><em>Control Plane Protection</em></a> features.</p>
+<h4>More information</h4><ul class="ListParagraph"><li>Greg Ferro did a <a href="http://demo.ipspace.net/get/What%20Is%20OpenFlow%20Traditional%20Devices.mp4">great job describing the three planes</a> during the <a href="http://demo.ipspace.net/get/OpenFlow">OpenFlow webinar</a>;</li>
+<li>Brent Salisbury <a href="http://networkstatic.net/the-control-plane-data-plane-and-forwarding-plane-in-networks/">wrote a fantastic post on the same topic</a> a while ago;</li>
+<li>I wrote <a href="http://wiki.nil.com/Control_and_Data_plane">this entry in the CT3 wiki</a> years ago.</li>
+</ul>
+

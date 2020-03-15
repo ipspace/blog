@@ -1,0 +1,24 @@
+---
+title: "VXLAN Limitations of Data Center Switches"
+date: "2018-03-29T08:25:00.000+02:00"
+tags: [ VXLAN,switching,Data Center ]
+---
+
+<p>One of my readers found this <a href="https://docs.cumulusnetworks.com/display/DOCS/VXLAN+Scale">Culumus Networks article</a> that explains why you can&rsquo;t have more than a few hundred VXLAN-based VLAN segments on every port of 48-port Trident-2 data center switch.</p>
+<p class="warn">Expect to see similar limitations in most other chipsets. There&rsquo;s a huge gap between <em>millions of segments </em>enabled by 24-bit VXLAN Network Identifier and reality of switching silicon. Most switching hardware is also limited to 4K VLANs.<!--more--></p>
+<p>Based on that document he became concerned whether merchant silicon switches might be a good choice for his small data center:</p>
+<blockquote class="cite">I&rsquo;ve had impression that in small data center environments (two sites, a few ToR, ~1000 VMs &amp; max 20 ESX hosts) all Broadcom chipsets should be &ldquo;good enough&rdquo; for us even without support for single-pass VXLAN routing. Is it really so? Those limits could hurt even our small DC.</blockquote>
+<p>Realistically, what that document is saying is "<em>if you're careless enough to have all VLANs configured on all ports, you won't be able to have more than 300 VLANs on every port of a 48-port 10GE switch</em>". Honestly, I would be scared of having 300 VLANs on every server-facing switch port no matter what the chipset limitations might be... and why would you need 300 VLANs for 1000 VMs anyway?</p>
+<p>If you need more than a few dozen segments, you should either use a hypervisor-based virtual networking solution (example: NSX), an orchestration system that synchronizes the needs of physical and virtual switches, or a <a href="http://blog.ipspace.net/2018/02/single-image-systems-or-automated.html">single-image data center fabric</a> that does that behind the scenes. </p>
+<p class="info">One of them is <a href="http://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html">architecturally correct</a>, the other one preferred by networking vendors telling you how you <a href="http://blog.ipspace.net/2013/06/network-virtualization-and-spaghetti.html">should keep supporting legacy infrastructure for the next millennium</a>. </p>
+<p>Numerous vendors have edge VLAN pruning solutions that try to pull information out of vCenter (VM Tracer, VM Tracker...); you&rsquo;ll find them described in <a href="http://www.ipspace.net/Data_Center_Fabrics"><em>Data Center Fabric Architectures</em></a> webinar. The same vendors usually integrate with other orchestration systems like OpenStack.</p>
+<p>However, what you should do as the starting point is what I've explained in the <a href="http://www.ipspace.net/Networking_in_Private_and_Public_Clouds"><em>Networking in Private and Public Clouds</em></a><em>, </em><a href="http://www.ipspace.net/Designing_Private_Cloud_Infrastructure"><em>Designing Cloud Infrastructure</em></a><em>,</em> and <a href="http://www.ipspace.net/VMware_NSX,_Cisco_ACI_or_Standard-Based_EVPN"><em>NSX, ACI or EVPN</em></a> webinars. Figure out:</p>
+<ul class="ListParagraph"><li>Who the data center infrastructure customers are (hint: application developers);</li>
+<li>What they really need (as opposed to what they're asking for);</li>
+<li>And finally, what problem you&rsquo;re trying to solve.</li>
+</ul>
+<p>You&rsquo;ll probably find that those limitations aren&rsquo;t as bad as they sound.</p>
+<h4>Notes</h4><ul class="ListParagraph"><li>All webinars mentioned in this blog post are included in <a href="http://www.ipspace.net/Subscription">Standard ipSpace.net Webinar Subscription</a>;</li>
+<li>For even more data center goodies check out the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course.</li>
+</ul>
+

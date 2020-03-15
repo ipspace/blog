@@ -1,0 +1,13 @@
+---
+title: "Zone-based traffic policing"
+date: "2009-05-04T07:14:00.004+02:00"
+tags: [ firewalls,security,You've asked for it,QoS ]
+---
+
+<div class="bloggerBody"><p>The zone-based firewall uses security <strong>policy-maps</strong> to specify how the flows between zones should be handled based on their traffic classes. The obvious actions that you can use in the security policy are <strong>pass</strong>, <strong>drop</strong> and <strong>inspect</strong>, but there’s also the <strong>police </strong>action and one of the readers sent me an interesting question: “why would you need the <strong>police </strong>action in the security policy if you already have QoS policing”.</p>
+<script>startHide()</script><p>The difference between interface service policy and inter-zone security policy is in the traffic aggregation: the interface service policy works on traffic classes entering or leaving a single interface and the inter-zone policy works on aggregate traffic between zones, including the return traffic if you’ve used the <strong>inspect </strong>command to configure stateful inspection of the traffic class.</p>
+<p>For example, you could limit the amount of HTTP traffic between your internal clients and your DMZ segment to prevent the internal users from overloading your public web servers.</p>
+<p class="important">The inter-zone policing algorithm is pretty aggressive. You have to specify high rates and burst sizes, otherwise you can <a href="http://wiki.nil.com/Policing_vs_shaping">kill all TCP traffic</a>.</p>
+<p class='more'>This article is part of <a href="http://ioshints.blogspot.com/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="http://ioshints.blogspot.com/search/label/You%27ve%20asked%20for%20it">series</a>.</p>
+<script>endHide()</script></div>
+

@@ -1,0 +1,36 @@
+---
+title: "Upgrade Network Device Software with Ansible Playbook"
+date: "2017-08-23T14:37:00.001+02:00"
+tags: [ Automation,Ansible ]
+---
+
+<p><a name="_GoBack"></a>One of the engineers going through my <a href="http://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers online course</a> sent me this question:</p>
+<blockquote class="cite">In the <a href="https://my.ipspace.net/bin/list?id=AnsibleOC#INTRO">Introduction section</a>, you mention a use case of upgrading software. Do you have an example playbook?</blockquote>
+<p>Unfortunately, I don&rsquo;t. Upgrading software is one of those things that&rsquo;s almost impossible to simulate in a virtual lab.<!--more--></p>
+<p>However, it&rsquo;s pretty easy to figure out a rough solution using the principles we&rsquo;re discussing in the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions online course</a>:</p>
+<ul class="ListParagraph"><li>Figure out how you&rsquo;d do that manually</li>
+<li>Figure out all the possible things that could go wrong and ways of alleviating that/minimizing the impact</li>
+<li>Figure out how to validate things have gone well before proceeding with destructive steps.</li>
+</ul>
+<p>Here&rsquo;s my improvised attempt to upgrade Cisco IOS (without having access to any real-life devices because vacations):</p>
+<ul class="ListParagraph"><li>Verify that the device is running expected (old) software version &ndash; you don&rsquo;t want to blindly upgrade from just any software release;</li>
+<li>Verify that the device has enough resources to run the new software version. Don&rsquo;t trust the central inventory &ndash; it&rsquo;s easy enough to gather device facts with <strong>napalm_get_facts </strong>or equivalent, or do <strong>show version </strong>and scrape the data you&rsquo;re interested in.</li>
+<li>Use <strong>scp</strong> to copy new software image to devices you want to upgrade (there are a few SCP examples in my sample playbooks)</li>
+<li>Use a <strong>show </strong>command to inspect what&rsquo;s in flash, isolate just the file you&rsquo;re interested in, and verify the md5 checksum</li>
+<li>Find current boot image (for example, using <strong>show run | include boot system</strong>) </li>
+<li>Specify new and current boot image as potential sources (<strong>boot system </strong>configuration command in Cisco IOS) to fall back to the old image if the new one fails (soon enough).</li>
+<li>Reboot, wait till you can <a href="http://marvelley.com/blog/2014/09/03/waiting-for-ssh/">SSH to the box again</a> </li>
+</ul>
+<p>Obviously, you&rsquo;d take a few additional steps to make the process a bit safer (or at least easier to recover from failures):</p>
+<ul class="ListParagraph"><li>If you have redundant devices in your network design, split them into inventory groups, and upgrade just one group of devices at the same time;</li>
+<li>Perform the very first upgrade on a device that&rsquo;s physically close to you so it&rsquo;s easy to go over and recover if you manage to brick it;</li>
+<li>Stop the playbook on any failure &ndash; if a single upgrade fails you don&rsquo;t want to move forward before investigating the root cause.</li>
+<li>Perform the reload-and-wait operation with increasingly large batch of devices. Tom Hollingsworth had a <a href="https://networkingnerd.net/2016/04/20/automating-change-with-help-from-fibonacci/">fun idea to use Fibonacci series</a>.</li>
+</ul>
+<p>You might also want to collect critical information (interface state, LLDP neighbors, OSPF neighbors, number of routing table entries&hellip;) before and after the upgrade to verify the upgrade didn&rsquo;t break something fundamental.</p>
+<p>Finally, nothing beats running real end-to-end tests after the upgrade; <a href="http://blog.ipspace.net/2016/09/distributed-on-demand-network-testing.html">ToDD</a> might be an interesting framework if you&rsquo;re not doing them already.</p>
+<h4>More information</h4><ul class="ListParagraph"><li>If you&rsquo;d like to learn how to write Ansible playbooks to automate your network operations, check out the <a href="http://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> webinar or online course.</li>
+<li>If you need more than just network automation knowledge, you might be better off buying <a href="http://www.ipspace.net/Subscription">ipSpace.net subscription</a> (which also <a href="http://blog.ipspace.net/2017/06/new-ansible-for-networking-engineers.html">gives you a discount</a> if you want to enroll into the Ansible online course later).</li>
+<li>To learn how to create full-blown network automation solutions, enroll into the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course.</li>
+</ul>
+

@@ -1,0 +1,11 @@
+---
+title: "Don’t forget to secure the IPv6 management plane"
+date: "2012-03-06T07:41:00.000+01:00"
+tags: [ IPv6,security ]
+---
+
+<p>One of the few presentations I could understand @ <a href="http://plnog.pl/spotkanie-8-marzec/agenda">PLNOG meeting</a> yesterday (most of them were in Polish) was the fantastic “<a href="http://plnog.pl/spotkanie-8-marzec/prelegenci/merike-kaeo">Guide To Building Secure Network Infrastructures</a>” by <a href="http://www.doubleshotsecurity.com/about.html">Merike Kaeo</a>, during which she revealed an obvious but oft forgotten fact: by deploying IPv6 in your router, you’ve actually created a parallel entry into the management plane that has to be secured using the same (or similar) mechanisms as its IPv4 counterpart.<!--more--></p>
+<p>For example, people would commonly use <strong>access-class </strong>line configuration command on the VTY lines to limit access to your routers to IP addresses known to belong to the NMS subnet. Unless you do the same thing for IPv6 (with the <strong>ipv6 access-class </strong>line configuration command), anyone can connect to your router as soon as you configure IPv6 on it. </p>
+<p>The same obviously applies to all other management-plane protocols that can run in dual-stack environments (for example, SNMP) – whenever you use ACLs to restrict access to a device’s management plane, you have to deploy filters for both IPv4 and IPv6.</p>
+<p>Finally, if you use router configuration compliance tools (be it RANCID with custom pattern-matching scripts, totally home-brewed soup, or a commercial tool), make sure they check the IPv6 side of management plane security as thoroughly as they check the IPv4 side.</p>
+

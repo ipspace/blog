@@ -1,0 +1,19 @@
+---
+title: "The Difference between Access Lists and Prefix Lists"
+date: "2013-06-13T07:22:00.000+02:00"
+tags: [ access control,IP routing ]
+---
+
+<p>A while ago someone asked what the difference between access and prefix lists is on the <a href="http://networkengineering.stackexchange.com/">Network Engineering Stack Exchange</a> web site (a fantastic resource brought to life primarily by sheer persistence of Jeremy Stretch, who had to fight troves of naysayers with somewhat limited insight claiming everything one would want to discuss about networking falls under server administration web site). </p>
+<p>The question triggered a lengthy wandering down the memory lane … and here's the history of how the two came into being (and why they are the way they are).<!--more--></p>
+<p>In the very early days of the Internet, engineers realized it might be a good idea to limit access to valuable resources and started asking for packet filters. Cisco responded by implementing simple ("standard") access lists first (filtering on source host addresses, augmented by wildcard masks), but of course they weren't good enough to block (for example) SMTP, so they added <a href="http://www.cisco.com/en/US/products/sw/secursw/ps1018/products_tech_note09186a00800a5b9a.shtml#extacls">extended access lists in IOS release 8.3</a>. These access lists can match on source and destination IP addresses (with wildcards bits on both - these bits allow you to match whole prefixes), protocols, port numbers ...</p>
+<p>So far: <strong>access list = packet filter</strong>.</p>
+<p>Later (but still decades ago) people started running multiple routing protocols on the same box and wanted to redistribute information between them. Not a problem, but you wouldn't want <em>all</em> the information you got from your neighbors propagated into the other routing protocol - you need <em>route filters</em>. As is usually the case, everything looks like a nail if you happen to have a hammer, and thus Cisco's engineers implemented route filters with the object they already had - access lists that you could use as <strong>distribute lists</strong>.</p>
+<p>At this point: <strong>access list = packet filter (and sometimes route filter)</strong></p>
+<p>With the advent of classless routing (yeah, it's that long ago – does anyone still remember the days of Class A, Class B and Class C addresses?), people wanted to redistribute prefixes of certain size between routing protocols. For example: advertise all /24s from OSPF into BGP, but not the /32s. Impossible to do with access lists. </p>
+<p>Time for a new kludge: let's use extended access list and let's pretend the source IP address in the extended access list represents network address (actually prefix address) and the destination IP address in the same line of the extended access list represents subnet mask (other parameters like protocol and port numbers are ignored).</p>
+<p>At that point: <strong>access lists = packet filters and route filters</strong>. Simple access lists also serve as route filters matching on network addresses, and extended access lists serve as route filters matching addresses and subnet masks.</p>
+<p>Fortunately someone regained a shred of reason at that time and started wondering what exactly the brilliant minds deciding it makes sense reusing extended ACLs for route filters were smoking when they got that idea.</p>
+<p>End result: <strong>Cisco IOS got prefix lists</strong>, which are (almost) identical in functionality to extended access lists acting as route filters, but displayed in a format that a regular human being has a chance of understanding.</p>
+<p>Today: <strong>use access lists for packet filters and prefix lists for route filters</strong>. You can probably still use access lists as route filters (because there still might be a router or two out there using them, even though prefix lists were introduced more than a decade ago) but <em>don't do it</em>.</p>
+

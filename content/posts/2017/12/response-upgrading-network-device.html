@@ -1,0 +1,28 @@
+---
+title: "Response: Upgrading Network Device Software"
+date: "2017-12-07T08:18:00.000+01:00"
+tags: [ Automation ]
+---
+
+<p>I got numerous responses to the &ldquo;<a href="http://blog.ipspace.net/2017/11/why-does-it-take-so-long-to-upgrade.html"><em>Why Does It Take So Long to Upgrade Network Devices</em><em>,</em></a>&rdquo; the best ones coming from <a href="https://www.linkedin.com/in/belavarkonyi/">Béla Várkonyi</a> and <a href="https://www.linkedin.com/in/fcuiller/">Frederic Cuiller</a>.</p>
+<p>Béla is sick-and-tired of the stuff vendors are shipping:<!--more--></p>
+<blockquote class='cite'><p>An important aspect is the terrible quality of network device software. You install a new version and a lot of things are broken. You have a perfect configuration in software simulation, but it does not work with hardware optimized devices, since the porting is never finished and barely tested by the vendor. The documentation is just a bad joke, the support forums are full with unanswered questions.</p>
+<p>There is so much bad experiences that most network engineers are reluctant to touch a working system for good reasons. You should change to a better environment with fully automated regression testing. However, when you look at the new SDN projects, the same problems come back. Everyone is rushing to include new features, and the automated testing have less than 10-20% coverage.</p>
+<p>No one wants to pay for quality. Good enough is the target... :-)</p>
+</blockquote>
+<p>Fred touched upon several SP-related aspects:</p>
+<blockquote class='cite'><p>I see different aspects of this problem from my SP window:</p>
+<ul class="ListParagraph"><li><strong>Technical</strong>: you covered it in the article. Tools did not exist in the past for network devices, and this is being addressed/is already addressed on most platforms.</li>
+<li><strong>Risk culture</strong>: despite all this new fancy features to ease and speed software upgrades, it still takes ages to upgrade a network (whether it's 10 devices for a small enterprise or 1000+ device for a SP backbone). Human factor is important. Telcos for example have a strong quality culture and risk control history, and it's hard for them to imagine upgrading several devices in parallel, in one shot, by something totally automated. What if it goes wrong? What if this loop is not secured? What if the NOC did not restore an IGP metric during the last maintenance window?</li>
+<li><strong>Checks at scale</strong>: Upgrading is easy. Checking the state of the device or the traffic before, after, and compare it at scale is a challenge. You need those checks to validate your software upgrade is a success or to engage a rollback. Worst: it's not apple to apple comparison: you have churn in your IGP routes (so you end up with a small difference), you might have traffic shifting somewhere else because BGP</li>
+<li><strong>Worst</strong>: most routers deep health check are vendor dependent, platform dependent and software dependent. It's a tough one to manage. From past experiences, you add more and more checks, and end up with a crazy list. Again, automation could help. I also think telemetry could help: you should be able to confidently say your router is capable of taking production traffic looking at a dashboard containing key metrics.</li>
+</ul>
+<p>Finally, if your network is correctly designed, if your architecture redundancy is regularly tested (or you are confident it's working) and you have correct tools, you don't have any technical excuses to regularly rolling out new software releases at scale. Now, I think as network professionals we should also address the human factor/education for risk.</p>
+</blockquote>
+<h4>More information</h4><ul class="ListParagraph"><li>Read the <a href="http://blog.ipspace.net/2017/11/why-does-it-take-so-long-to-upgrade.html">original blog post</a></li>
+<li>Consider <a href="http://blog.ipspace.net/2017/08/upgrade-network-device-software-with.html">these ideas to automate the upgrade process</a></li>
+<li>Watch <a href="http://www.ipspace.net/Roadmap/Network_Automation_webinars">network automation webinars</a> on ipSpace.net</li>
+<li>Enroll into <a href="http://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> course if you want to master Ansible.</li>
+<li>Check out the <a href="https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog">Building Network Automation Solutions</a> online course if you&rsquo;d like to get fluent in network automation</li>
+</ul>
+

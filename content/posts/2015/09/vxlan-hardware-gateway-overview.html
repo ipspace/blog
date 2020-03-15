@@ -1,0 +1,58 @@
+---
+title: "VXLAN Hardware Gateway Overview"
+date: "2015-09-14T09:27:00.000+02:00"
+tags: [ VXLAN,Data Center ]
+---
+
+<p>One of my readers stumbled upon a 4-year-old blog post explaining the potential implementations of VXLAN hardware gateways, and asked me if that information is still relevant.</p>
+<p>I knew that I&#x2019;d included tons of information in the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a> and <a href="http://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN Deep Dive</a> webinars, but couldn&#x2019;t find anything on the web, so let&#x2019;s fix that.<!--more--></p>
+<div class='update'><p>Update 2015-09-14: Added more information on Juniper VXLAN support. Added F5 LTM to the table.</p>
+<p>Update 2015-09-15: F5 has OVSDB support and does VXLAN routing. Nexus 7K has EVPN. HP 5930 has multicast VXLAN and OVSDB.</p>
+<p>Update 2015-09-16: Cumulus Linux has OVSDB support.</p>
+<p>Update 2015-09-18: Citrix Netscaler supports multicast VXLAN or statically-configured unicast VXLAN.</p>
+</div>
+<p>Here&#x2019;s a brief overview of what individual vendors&#x2019; hardware gateways (ToR switches) can or cannot do (to the best of my knowledge &ndash; please write a comment if I missed anything).</p>
+<p class='info'>If you stumble upon this post 4 years from now, it's probably also outdated, but the webinars won't be.</p>
+<table cellspacing="0" cellpadding="0" class="fmtTable"><tr class="TRFirst "><td valign="top" class="TDHead "><p>Vendor</p>
+</td><td valign="top" class="TDHead "><p>Multicast<br>VXLAN</p>
+</td><td valign="top" class="TDHead "><p>OVSDB<br>Support</p>
+</td><td valign="top" class="TDHead "><p>VXLAN<br>Routing</p>
+</td><td valign="top" class="TDHead "><p>EVPN Control<br>Plane</p>
+</td></tr><tr><td valign="top"><p>Arista</p>
+</td><td valign="top"><p>Yes</p>
+</td><td valign="top"><p>Yes</p>
+</td><td valign="top"><p>7150 only</p>
+</td><td valign="top"></td></tr><tr><td valign="top"><p>Brocade</p>
+</td><td valign="top"></td><td valign="top"><p>Yes</p>
+</td><td valign="top"></td><td valign="top"></td></tr><tr><td valign="top"><p>Cisco</p>
+</td><td valign="top"><p>Yes</p>
+</td><td valign="top"></td><td valign="top"><p>Yes</p>
+</td><td valign="top"><p>Nexus 7K/9K</p>
+</td></tr><tr><td valign="top"><p>Citrix Netscaler</p>
+</td><td valign="top"><p>Yes</p>
+</td><td valign="top"></td><td valign="top"></td><td valign="top"></td></tr><tr><td valign="top"><p>Cumulus</p>
+</td><td valign="top"></td><td valign="top"><p>Yes</p>
+</td><td valign="top"></td><td valign="top"></td></tr><tr><td valign="top"><p>Dell</p>
+</td><td valign="top"></td><td valign="top"><p>Yes</p>
+</td><td valign="top"></td><td valign="top"></td></tr><tr><td valign="top"><p>F5 BIG-IP</p>
+</td><td valign="top"><p>Yes</p>
+</td><td valign="top"><p>Yes</p>
+</td><td valign="top"><p>Yes</p>
+</td><td valign="top"></td></tr><tr><td valign="top"><p>HP</p>
+</td><td valign="top"><p>Yes (*)</p>
+</td><td valign="top"><p>Yes (*)</p>
+</td><td valign="top"><p>Yes</p>
+</td><td valign="top"></td></tr><tr class="TRLast"><td valign="top" class="TDLast"><p>Juniper</p>
+</td><td valign="top" class="TDLast"><p>Yes<br />(not QFX10K)</p>
+</td><td valign="top" class="TDLast"><p>Yes</p>
+</td><td valign="top" class="TDLast"><p>MX &amp; EX9200</td><td valign="top" class="TDLast"></td></tr></table><h4>Notes</h4><ul class="ListParagraph"><li>Nuage (or Alcatel Lucent) has Virtualized Services Gateway, which is another VXLAN gateway, but as I couldn&#x2019;t find any documentation on Nuage or Alcatel Lucent web site (and the VSP documentation is behind a regwall), it&#x2019;s not on the list. <a href="http://blog.ipspace.net/2010/09/hiding-documentation-will-they-never.html">Five years later</a>, some vendors still haven&#x2019;t got the memo.</li>
+<li>A10 Networks is another vendor who hasn't got that same memo yet.</li>
+<li>HP has VXLAN support on several Data Center switches, but according to the configuration guide(s) at the moment only 5930 supports multicast VXLAN and OVSDB. Please check HP documentation for up-to-date status;</li>
+<li>Juniper QFX5100, QFX10K, EX9200 and MX routers support VXLAN and OVSDB. QFX10K does not support multicast VXLAN (yet). Only EX9200 and MX routers support VXLAN routing.</li>
+<li>Multicast VXLAN support allows ToR switch to interact with Cisco Nexus 1000V and pre-NSX VMware VXLAN implementations;</li>
+<li>OVSDB is the protocol used by VMware NSX for Multiple Hypervisors to configure ToR switches. We don&#x2019;t know yet what VMware will use when support for hardware gateways will be added to NSX for vSphere, but I wouldn&#x2019;t be surprised if they were to use OVSDB;</li>
+<li>VXLAN routing is tricky &ndash; more details <a href="http://blog.ipspace.net/2014/07/layer-3-switching-over-vxlan-revisited.html">here</a> and <a href="http://blog.ipspace.net/2015/03/video-routing-over-vxlan.html">here</a>;</li>
+<li>EVPN control plane enables large L2 fabrics built on top of VXLAN and controller federation;</li>
+</ul>
+<p>For more details, go watch the two webinars (links above).</p>
+

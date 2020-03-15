@@ -1,0 +1,30 @@
+---
+title: "IPv6-only Data Center (built by Tore Anderson)"
+date: "2012-05-23T07:02:00.000+02:00"
+tags: [ IPv6,Data Center,Workshop ]
+---
+
+<p>A while ago I wrote about <a href="http://blog.ioshints.info/2011/05/stateless-nat64-is-useless.html">uselessness of stateless NAT64</a> and got in nice discussion with <a href="https://twitter.com/toreanderson">Tore Anderson</a> who wanted to use stateless NAT64 in reverse direction (stateless NAT46) to build an IPv6-only data center. Some background information first (to define the context of his thinking before we jump into the technical details):<!--more--></p>
+<ul class="ListParagraph"><li>He’s running a web hosting business;</li>
+<li>He uses public addresses on all the hosted servers (even when they’re sitting behind a firewall or load balancer) to avoid NAT44 state, ease the maintenance and give his customers direct access to their servers;</li>
+<li>He knows IPv6 is the future and has already deployed content on IPv6.</li>
+<li>He’d love to eliminate as many intermediate migration steps and stateful devices as possible, preferably jumping straight to an IPv6-only data center.</li>
+</ul>
+<p>Here’s his short and concise list of requirements:</p>
+<ul class="ListParagraph"><li>Stateless network w/"line-rate" performance;</li>
+<li>No symmetric routing requirements;</li>
+<li>No loss of end-user IP address information on the servers (for geolocation and logging purposes);</li>
+<li>Maximized IPv4 address conservation;</li>
+<li>Minimum extra complexity. Avoid it on the servers and applications (ex: dual stack).</li>
+</ul>
+<p>Initially it seemed like stateless NAT46 (SIIT) might be a perfect solution, but then Tore stumbled across an interesting roadblock (that caused me to declare stateless NAT64 useless) – NAT64 provides an algorithmic mapping between IPv4 address space and IPv6 addresses <em>within a single prefix</em>. </p>
+<p>In an ideal world, you’d be able to write 1:1 static NAT statements mapping IPv4 addresses into IPv6 addresses (and vice versa), but as most vendors implement what RFCs say (and not what some creative users would like to see), the current implementation of stateless NAT64 on ASR1K does not have the functionality Tore needs.</p>
+<p>Lack of functionality has never stopped a creative engineer, and Tore is undoubtedly one of the finest. He solved the 1:1 mapping issue with an interesting application of IPv6 host routes (yes, you can propagate /128 IPv6 prefixes in all IPv6 routing protocols):</p>
+<ul class="ListParagraph"><li>Every server (or load balancer) has a LAN IPv6 address (belonging to the LAN /48 prefix) and an internal IPv6 host address (a /128 belonging to the NAT64 address range). Tore uses loopback interfaces in the servers and VIP addresses in load balancers. </li>
+<li>He could use routing protocols to advertise the /128s straight from the servers (or load balancers using Route Health Injection), but decided to add a level of indirection (and keep servers/load balancers strictly separated from the network).</li>
+<li>He’s configured static /128 routes for the “internal” IPv6 addresses (pointing to the server/LB LAN IPv6 address) on the first-hop routers and redistributes them into the rest of the network.</li>
+</ul>
+<p>With his setup, he could deploy generic NAT46 on the edges of his network (using the same one-line NAT64 configuration on all edge routers) and use per-server routing throughout his network to push IPv6 traffic destined for the translated IPv4 address toward the right server. Not the easiest design to master at 2AM on Sunday morning, but probably simpler to maintain once you understand it than a hodgepodge of inter-protocol load balancers and/or dual-stack servers.</p>
+<p class="note">Note: His setup has two additional advantages: it works well with SSL (because stateless NAT46 does not touch the TCP layer or anything above it) and does not require HTTP header insertion (like X-Forwarded-For) usually used by SLB46 load balancers. You’re always able to deduce the source IPv4 address of the client from IPv6 server logs.</p>
+<p>For more details, please <a href="https://ripe64.ripe.net/archives/video/37/">view Tore’s presentation from RIPE64 meeting</a> or <a href="https://ripe64.ripe.net/presentations/67-20120417-RIPE64-The_Case_for_IPv6_Only_Data_Centres.pdf">download it in PDF format</a> (where you’ll find the ASR1K configuration as well).</p>
+

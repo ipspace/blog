@@ -1,0 +1,32 @@
+---
+title: "Interim Forwarding Loops in OSPF or IS-IS Networks"
+date: "2017-05-04T08:12:00.000+02:00"
+tags: [ IP routing ]
+---
+
+<p><a name="_GoBack"></a>One of my readers sent me this question (slightly rephrased):</p>
+<blockquote class="cite">Assume you have A,B and C connected in a triangle (with an alternate longer path to C). What happens if C loses its links to A and B? Won&#x2019;t the traffic to C loop between A and B for a while?</blockquote>
+<p>As always, it depends.<!--more--></p>
+<p>Here&#x2019;s the network topology diagram we&#x2019;ll use (thanks to ASCIIFlow Infinity):</p>
+<pre class="code">+-------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-------+<br />|&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;+-------+&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;+-----+<br />+--+----+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+----+--+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+-------+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+---+---+<br />&nbsp;&nbsp;&nbsp;+----+&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;+----+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Slow&nbsp;&nbsp;|<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---+---+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+---+---+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-----------------+</pre><p>The actual sequence of events happening on a router obviously depends on particular details of control plane implementation, but it&#x2019;s reasonable to expect something along these lines:</p>
+<ul class="ListParagraph"><li>Forwarding entries using interface X are removed as soon as interface X goes down;</li>
+<li>Lacking alternate ECMP entries to the same destination, the router would install pre-computed backup entries (for example, the results of LFA computation) into the forwarding table;</li>
+</ul>
+<p class="more">We&#x2019;ll ignore the details of how the backup entries are installed. Ideally the <a href="http://blog.ipspace.net/2012/01/prefix-independent-convergence-pic.html">control-plane software changes the next-hop groups</a> not the actual forwarding entries.</p>
+<ul class="ListParagraph"><li>Lacking pre-computed backup entries, the router will recalcuate the main routing table (there might be alternate routes with higher administrative distance) and repopulate the forwarding table if such entries exist.</li>
+</ul>
+<p>There&#x2019;s nothing else the routing/forwarding table manipulation software can do at that moment. </p>
+<p>In our scenario, A and B have a <a href="http://blog.ipspace.net/2012/01/loop-free-alternate-ospf-meets-eigrp.html">loop-free alternate path</a> to C, and if you configured LFA on them the FIB manipulation software would install the alternate route (A =&gt; B and B =&gt; A) resulting in a temporary forwarding loop&hellip; unless you configured <a href="http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-3s/iro-lfa-frr-xe.html#GUID-08D08712-F317-4BAF-A45B-0AC5AFA374AD">LFA Downstream Path</a>.</p>
+<p>If you haven&#x2019;t configured LFA, A and B will have no usable route to C (we&#x2019;ll ignore summary/default routes for the moment) and the traffic sent to C will be dropped.</p>
+<p>At the same time, the routing protocols monitoring interface X kick in and start their work:</p>
+<ul class="ListParagraph"><li>New router LSA/LSP is generated (assuming we&#x2019;re not dealing with P2P links) unless there have been so many recent changes that the LSA generation is throttled;</li>
+<li>New LSA/LSP describing local topology change is flooded. These update packets might be delayed based on any OSPF/IS-IS packet pacing configured on the device;</li>
+<li>Asynchronously to that, SPF process is eventually run based on how SPF timers are configured, generates new best routes, and sends them to the routing table.</li>
+</ul>
+<p>Now for the &ldquo;<em>it depends&rdquo; </em>part:</p>
+<ul class="ListParagraph"><li>If the SPF process is run before the changed LSAs are received from the OSPF/IS-IS neighbor, we&#x2019;ll get a temporary loop (assuming LFA hasn&#x2019;t already generated one) that will disappear the second time the SPF process is run;</li>
+<li>If the changed LSA is received before the SPF process is run (and LFA was not used), there will be no forwarding loop.</li>
+</ul>
+<p class="warn">Please don&#x2019;t read the above paragraphs as <em>LFA is bad</em>. It is not. This blog post is evaluating the consequences of a rare event (multiple link loss) from the <em>understanding RIB, FIB and SPF </em>perspective. If the network loses a single link (A =&gt; C or B =&gt; C) using LFA results in faster convergence.</p>
+<p>For even more details, read the <a href="http://packetpushers.net/microloop/">Microloops!</a> blog post by Russ White.</p>
+

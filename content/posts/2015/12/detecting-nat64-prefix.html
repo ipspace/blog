@@ -1,0 +1,13 @@
+---
+title: "Detecting NAT64 Prefix"
+date: "2015-12-01T09:46:00.000+01:00"
+tags: [ IPv6,DNS,NAT ]
+---
+
+<p>If you&#x2019;re a host running on an IPv6-only network, you might want to detect the IPv6 prefix used for <a href="http://blog.ipspace.net/2010/05/nat64-and-dns64-in-30-minutes.html">NAT64</a> (for example, to transform IPv4 literals a clueless idiot embedded into a URL into IPv6 addresses).</p>
+<p class="info">Apple has a <a href="https://developer.apple.com/library/prerelease/ios/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html">wonderful developer-focused page</a> describing NAT64 and DNS64, including the way they synthesize IPv6 addresses from IPv4 literals. You (<a href="https://tools.ietf.org/html/rfc6919">RFC 6919</a>) MUST read it.<!--more--></p>
+<p>There&#x2019;s a standard way to do that: do a AAAA DNS lookup for ipv4only.arpa, which always maps into 192.0.0.170/171, and extract the NAT64 prefix from the response.</p>
+<p>For more details, read <a href="https://tools.ietf.org/rfc/rfc7050">RFC 7050</a> (Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis).</p>
+<p class="more">Hat tip to Gert Doering who pointed out <em>ipv4only.arpa</em> on one of the IPv6 mailing lists.</p>
+<h4>More details?</h4><p>Sure. You&#x2019;ll find more about NAT64 in <a href="http://www.ipspace.net/IPv6_Transition_Mechanisms">IPv6 Transition Mechanisms</a> webinar, and a wealth of IPv6-related information on the <a href="http://www.ipspace.net/IPv6">ipSpace.net IPv6 page</a>.</p>
+

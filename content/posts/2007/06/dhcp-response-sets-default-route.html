@@ -1,0 +1,11 @@
+---
+title: "DHCP response sets the default route"
+date: "2007-06-05T09:04:00.000+02:00"
+tags: [ DHCP,IP routing ]
+---
+
+<p>It makes perfect sense in hindsight, but I was nonetheless pleasantly surprised: when the router acting as a DHCP client (configured with the <strong>ip address dhcp</strong> interface configuration command) receives the DHCP reply packet containing the default gateway option (option #3), it installs a static default route toward that next-hop. Even better, the default route is installed with the administrative distance 254 (floating static route), making sure that the default route you've configured manually or the default route received via a routing protocol are not overwritten.<!--more--></p>
+<p>To add icing on the cake, starting with IOS release 12.3(8)T you can disable this behavior with the <strong>no ip dhcp client request router</strong> interface-configuration command.</p>
+<p>The following listing contains a sample debugging session documenting this behavior:</p>
+<pre class='code'>DHCP: Received a BOOTREP pkt<br />DHCP: Scan: Message type: DHCP Ack<br />DHCP: Scan: Server ID Option: 192.168.0.1 = C0A80001<br />DHCP: Scan: Lease Time: 86400<br />DHCP: Scan: Renewal time: 43200<br />DHCP: Scan: Rebind time: 75600<br />DHCP: Scan: Host Name: r4.company.com.<br />DHCP: Scan: Subnet Address Option: 255.255.255.240<br />DHCP: Scan: Router Option: 192.168.0.1<br /><br />... deleted ...<br /><br />DHCP: Server ID Option: 192.168.0.1<br />DHCP Host Name Option: r4.company.com.<br />DHCP: Releasing ipl options:<br />DHCP: Applying DHCP options:<br />  Setting default_gateway to 192.168.0.1<br />  Adding default route 192.168.0.1<br />Allocated IP address = 192.168.0.6  255.255.255.240<br /><br />%DHCP-6-ADDRESS_ASSIGN: Interface FastEthernet0/0 assigned DHCP address 192.168.0.6, mask 255.255.255.240, hostname r4<br /><br />r4#<strong>show ip route 0.0.0.0</strong><br />Routing entry for 0.0.0.0 0.0.0.0, supernet<br />  Known via "static", distance 254, metric 0, candidate default path<br />  Routing Descriptor Blocks:<br />  * 192.168.0.1<br />      Route metric is 0, traffic share count is 1</pre>
+

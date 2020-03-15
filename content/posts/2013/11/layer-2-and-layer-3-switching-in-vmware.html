@@ -1,0 +1,23 @@
+---
+title: "Layer-2 and Layer-3 Switching in VMware NSX"
+date: "2013-11-19T07:39:00.000+01:00"
+tags: [ Workshop,IP routing,Overlay networks,virtualization ]
+---
+
+<p>All overlay virtual networking solutions look similar from far away: many provide layer-2 segments, most of them have some sort of distributed layer-3 forwarding, gateways to physical world are ubiquitous, and you might find security features in some products.</p>
+<p>The implementation details (usually hidden behind the scenes) vary widely, and I’ll try to document at least some of them in a series of blog posts, starting with VMware NSX.<!--more--></p>
+<h4>Layer-2 forwarding</h4><p>VMware NSX supports traditional layer-2 segments with proper flooding of BUM (Broadcast, Unknown unicast, Multicast) frames. <a href="http://blog.ipspace.net/2013/08/nicira-nvp-control-plane.html">NSX controller downloads forwarding entries to individual virtual switches</a>, either through OpenFlow (NSX for multiple hypervisors) or a proprietary protocol (NSX for vSphere). The forwarding entries map destination VM MAC addresses into destination hypevisor (or gateway) IP addresses.</p>
+<p>On top of static forwarding entries downloaded from the controller, virtual switches perform dynamic MAC learning for MAC addresses reachable through layer-2 gateways.</p>
+<h4>Layer-3 forwarding</h4><p>NSX implements a distributed forwarding model with shared gateway IP and MAC addresses, very similar to <a href="http://blog.ipspace.net/2013/10/the-intricacies-of-optimal-layer-3.html">optimal IP forwarding</a> offered by Arista or Enterasys. NSX virtual switches aren’t independent devices, so they don’t need independent IP addresses like physical ToR switches.</p>
+<p>Layer-3 lookup is always performed by the ingress node (hypervisor host or gateway); packet forwarding from ingress node to egress node and destination host uses layer-2 forwarding. Every ingress node thus needs (for every tenant):</p>
+<ul class="ListParagraph"><li>IP routing table;</li>
+<li>ARP entries for all tenant’s hosts;</li>
+<li>MAC-to-underlay-IP mappings for all tenant’s hosts (see <em>layer-2 forwarding </em>above). </li>
+</ul>
+<p><strong>NSX for vSphere</strong> implements layer-3 forwarding in a separate vSphere kernel module. The User World Agent (UWA) running within the vSphere host uses proprietary protocol (mentioned above) to report local IP-to-MAC mappings and get layer-3 forwarding information (routing tables) from the controller cluster. ARP entries are cached in the layer-3 forwarding kernel module, controller is queried on local ARP cache misses, and finally the ARP request might get flooded if the controller cannot provide the answer.</p>
+<p><strong>NSX for multiple hypervisors</strong> implements layer-3 forwarding data plane in OVS kernel module, but does not use OpenFlow to install forwarding entries. </p>
+<p>A separate layer-3 daemon (running in user mode on the hypervisor host) receives forwarding information from NSX controller cluster through OVSDB protocol, and handles all ARP processing (sending ARP requests, caching responses …) locally.</p>
+<h4>More information</h4><ul class="ListParagraph"><li>Watch these <a href="http://demo.ipspace.net/get/NSXArch#Videos">free videos</a> from NSX Architecture webinar: <a href="http://demo.ipspace.net/get/2.3%20-%20Overlay%20Virtual%20Networks%20Data%20Plane.mp4">Overlay Virtual Networks Data Plane</a>, <a href="http://demo.ipspace.net/get/3.2%20-%20NSX%20Control%20Plane.mp4">NSX Control Plane</a>, <a href="http://demo.ipspace.net/get/4.2%20-%20Layer-3%20Gateways.mp4">Layer-3 Gateways</a>, <a href="http://demo.ipspace.net/get/4.3%20-%20Distributed%20Routers.mp4">Distributed Routers</a>.</li>
+<li><a href="http://www.ipspace.net/Overlay_Virtual_Networking">Overlay Virtual Networking</a> webinar describes architectures from numerous vendors, including Cisco, VMware, Microsoft, IBM, and Midokura.</li>
+</ul>
+

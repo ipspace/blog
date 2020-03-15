@@ -1,0 +1,44 @@
+---
+title: "Run Well-Designed Experiments to Learn Faster"
+date: "2017-11-15T08:53:00.000+01:00"
+tags: [ Automation,Training ]
+---
+
+<p>I know that everyone <a href="https://en.wikipedia.org/wiki/Learning_styles">learns in a slightly different way</a>. Let me share the approach that usually works well for me when a tough topic I&rsquo;m trying to master includes a practical (hands-on) component: running controlled experiments.</p>
+<p>Sounds arcane and purely academic? How about a simple example?</p>
+<p class="more">A week ago I talked about this same concept in the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions?utm_medium=blog">Building Network Automation Solutions</a> online course. The video is <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=1#M1S4A">already online</a> and you get immediate access to it (and the rest of the course) when you register for the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions?utm_medium=blog#register">next live session</a>.<!--more--></p>
+<p>A network engineer enrolled into my network automation online course was trying to integrate external Python script with Ansible and asked this question in the course Slack team.</p>
+<blockquote class="cite">I'm trying to call a Python script from an Ansible task and want to pass the script's result to an Ansible variable (dictionary) in the playbook so I can then loop through it.</blockquote>
+<p>I had a pretty good idea how to do it, but wanted to test it first. Here&rsquo;s how I ran my experiment.</p>
+<p class="info">You might not care about Ansible at all, which is perfectly fine. I just needed a real-life example to illustrate my ideas. </p>
+<h4>Start in a clean environment</h4><p>Nothing is more frustrating than someone saying &ldquo;could you take a look at this&rdquo; and showing you zillion versions of the (almost) same script intermixed with a ton of other irrelevant files.</p>
+<p>Start every experiment in a separate (empty) directory. It will make your job easier because you&rsquo;ll know what you&rsquo;re working on. You will also get quicker responses when asking for help.</p>
+<h4>Reproduce the behavior using a bare minimum of simple components</h4><p>Don&rsquo;t try to bolt new things onto an existing convoluted script (or playbook) &ndash; it will be pretty hard to figure out what&rsquo;s causing the unexpected behavior, and the experiment might run for a long time before failing.</p>
+<p>Having a minimal fast-executing environment results in more controlled experiments, more reliable results, and faster progress.</p>
+<p class="note">Do note that this is just the opposite of google-and-paste method favored by some IT practitioners.</p>
+<p>It also helps if every component you use is as simple as possible. In my case I decided to:</p>
+<ul><li>Create a minimal playbook with a single task that would test how Ansible treats results returned by an external script;</li>
+<li>Skip Ansible inventory and use <em>localhost</em>;</li>
+<li>Have JSON data in a text file instead of running a Python script (remember: we&rsquo;re not testing whether the Python script works but how Ansible treats the output).</li>
+</ul>
+<p>Here&rsquo;s the Ansible playbook I used:</p>
+<pre class="code">---<br />-&nbsp;hosts:&nbsp;localhost<br />&nbsp;&nbsp;gather_facts:&nbsp;no<br />&nbsp;&nbsp;tasks:<br />&nbsp;&nbsp;-&nbsp;shell:&nbsp;cat&nbsp;data.json<br />&nbsp;&nbsp;&nbsp;&nbsp;register:&nbsp;shell_output</pre><p class="info">I knew that I&rsquo;d have to register the results of the <strong>shell </strong>task as an Ansible fact, but had no idea in what format those results would be.</p>
+<p>Here&rsquo;s my JSON data file:</p>
+<pre class="code">{&nbsp;'a':'b'&nbsp;}</pre><p><strong>Check your data before running the experiment</strong>. One of the most frustrating experiences you could have is trying to figure out how something works and failing for hours&hellip;  only to discover your input data was wrong (or you made a stupid syntax error or&hellip;). </p>
+<p>If you&rsquo;re fluent in JSON you might have experienced a facepalm moment while looking at my JSON data. I used <strong>jq </strong>to check it and got this:</p>
+<pre class="code">$&nbsp;jq&nbsp;.&nbsp;data.json<br />parse&nbsp;error:&nbsp;Invalid&nbsp;numeric&nbsp;literal&nbsp;at&nbsp;line&nbsp;1,&nbsp;column&nbsp;6</pre><p>It makes no sense to progress with your experiment till you have valid input data. A quick check on JSON syntax told me I should have used double quotes (trust me, you can waste hours on a stupidity like this).</p>
+<p>Here&rsquo;s the correct version of my JSON data file:</p>
+<pre class="code">{&nbsp;"a":"b"&nbsp;}</pre><h4>Make small steps</h4><p>Next, I ran the playbook in verbose mode to see what the <strong>shell </strong>module returns:</p>
+<pre class="code">$&nbsp;ansible-playbook&nbsp;pb.yml&nbsp;-v<br />&hellip;<br /><br />TASK&nbsp;[command]&nbsp;**********************************<br />changed:&nbsp;[localhost]&nbsp;=&gt;&nbsp;{"changed":&nbsp;true,&nbsp;"cmd":&nbsp;"cat&nbsp;data.json",&nbsp;<br />&nbsp;&nbsp;"delta":&nbsp;"0:00:00.003140",&nbsp;"end":&nbsp;"2017-10-04&nbsp;12:09:43.255971",&nbsp;<br />&nbsp;&nbsp;"failed":&nbsp;false,&nbsp;"rc":&nbsp;0,&nbsp;<br />&nbsp;&nbsp;"start":&nbsp;"2017-10-04&nbsp;12:09:43.252831",&nbsp;<br />&nbsp;&nbsp;"stderr":&nbsp;"",&nbsp;"stderr_lines":&nbsp;[],&nbsp;<br />&nbsp;&nbsp;"stdout":&nbsp;"{&nbsp;\"a\":\"b\"&nbsp;}",&nbsp;<br />&nbsp;&nbsp;"stdout_lines":&nbsp;["{&nbsp;\"a\":\"b\"&nbsp;}"]}</pre><p>It&rsquo;s pretty obvious that the <strong>shell </strong>module returns a string (<em>stdout</em>) containing whatever the <strong>bash </strong>command has printed. Time to convert that string into parsed data. Fortunately, I could use <strong>from_json</strong> filter in Ansible to do that.</p>
+<p>Next version of my playbook:</p>
+<pre class="code">---<br />-&nbsp;hosts:&nbsp;localhost<br />&nbsp;&nbsp;gather_facts:&nbsp;no<br />&nbsp;&nbsp;tasks:<br />&nbsp;&nbsp;-&nbsp;shell:&nbsp;cat&nbsp;data.json<br />&nbsp;&nbsp;&nbsp;&nbsp;register:&nbsp;shell_output<br />&nbsp;&nbsp;-&nbsp;set_fact:&nbsp;json_data={{shell_output.stdout|from_json}}</pre><p>Running that playbook in <strong>verbose </strong>mode produced something that looked like the data structure I was looking for. Final step: use <strong>debug </strong>to print out the actual value of the <strong>json_data </strong>variable.</p>
+<pre class="code">$&nbsp;ansible-playbook&nbsp;pb.yml<br />[&hellip;]<br /><br />TASK&nbsp;[debug]&nbsp;****************************************<br />ok:&nbsp;[localhost]&nbsp;=&gt;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;"json_data":&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"a":&nbsp;"b"<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</pre><h4>Next steps</h4><p>After figuring out how to get JSON data into an Ansible fact, I could explore further:</p>
+<ul><li>Use <strong>jq </strong>to check that the Python script returns properly-formatted JSON data;</li>
+<li>Replace <strong>cat </strong>with the Python script;</li>
+<li>Check that I get the desired data in Ansible;</li>
+<li>Use that data in my playbook.</li>
+</ul>
+<h4>Sounds interesting?</h4><p>You&rsquo;ll be solving tons of interesting challenges like the one above in <a href="http://www.ipspace.net/Ansible_for_Networking_Engineers?utm_medium=blog">Ansible for Networking Engineers</a> or <a href="http://www.ipspace.net/Building_Network_Automation_Solutions?utm_medium=blog">Building Network Automation Solutions</a> online courses.</p>
+<p>You can also access most of the materials from the Ansible online course with <a href="http://www.ipspace.net/Subscription?utm_medium=blog">ipSpace.net subscription</a>.</p>
+<p><em>This blog post was initially sent to the subscribers of my SDN and Network Automation mailing list.&nbsp;</em><a href="http://www.ipspace.net/Subscribe/Five_SDN_Tips?utm_medium=blog"><em>Subscribe here</em></a><em>.</em></p>
+

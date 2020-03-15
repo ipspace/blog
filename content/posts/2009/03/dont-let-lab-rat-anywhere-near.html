@@ -1,0 +1,10 @@
+---
+title: "Don't let a lab rat anywhere near a production box"
+date: "2009-03-07T17:07:00.002+01:00"
+tags: [ SSH ]
+---
+
+<p>I tried to do a few simple NETCONF tests yesterday (I wanted to see how the router's configuration looks like when it's encoded in XML). I didn't want to start a lab for such a simple task and decided to use my home router. SSH was the only reasonable transport (you can't run BEEP with standard Linux tools), but it was not working on the router.</p>
+<p>Obviously I've configured too many lab devices in the past. As soon as I've realized I had SSH problems, my fingers automatically typed <b>crypto key generate rsa</b>. A few milliseconds after I've hit ENTER it dawned on me that my router uses PKI certificates for the VPN connection to our network ... and I've managed to invalidate the router's certificate, which is one of the few things that a <b>reload </b>will not solve. Although our IT guru was fantastic and approved my (router's) certificate request late in the evening, I still felt bad about the whole experience.</p>
+<p>And the moral? Don't let a lab wizard with fast fingers too close to a production box :)</p>
+

@@ -1,0 +1,64 @@
+{{ $full := .Scratch.Get "ArticleContext" }}
+{{ $truncated := and .Truncated (not $full) }}
+<div class='post__item'>
+  <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
+    <header class='post__header'>
+      <p class='post__date'>
+        <a class='timestamp-link' href="{{ .Permalink }}" title='permanent link'>
+          <time datetime='{{ .Date.Format "Monday, January 2, 2006 15:04 MST" }}' itemprop='datePublished'>
+            {{ .Date.Format "Monday, January 2, 2006 15:04 MST" }}</time>
+        </a>
+      </p>
+      <h2 class='post__title' itemprop='name headline'>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+    </header>
+    <div class='post__content' itemprop='articleBody'>
+      {{ if $truncated }}
+        {{ .Summary }}
+      {{ else }}
+        {{ if and $full .Truncated }}
+          {{ .Summary }}
+        {{ end }}
+        {{ .Content }}
+      {{ end }}
+    </div>
+    {{ if $truncated }}
+      <a class="post__read-more" href="{{ .RelPermalink }}">
+        read more
+        <svg class="post__arrow-icon">
+          <use xlink:href="#arrow-right-orange" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+        </svg>
+      </a>
+    {{ end }}
+    <div style='clear: both;'></div>
+    <!-- comments -->
+    <div class='post__meta'>
+      {{ partial "post-tags.html" . }}
+      <div class='post__share-links'>
+        <a class='post__share-link'
+          href='https://www.blogger.com/share-post.g?blogID=23021255&postID=3622915111717232034&target=email'
+          target='_blank' title='Email This'>
+          <svg class='post__share-icon'>
+            <use xlink:href='#icon-mailinglist'></use>
+          </svg>
+        </a>
+        <a class='post__share-link'
+          href='https://www.blogger.com/share-post.g?blogID=23021255&postID=3622915111717232034&target=twitter'
+          target='_blank' title='Share to Twitter'>
+          <svg class='post__share-icon'>
+            <use xlink:href='#icon-twitter'></use>
+          </svg>
+        </a>
+        <a class='post__share-link'
+          href='https://www.blogger.com/share-post.g?blogID=23021255&postID=3622915111717232034&target=facebook'
+          onclick='window.open(this.href, "_blank", "height=430,width=640"); return false;' target='_blank'
+          title='Share to Facebook'>
+          <svg class='post__share-icon'>
+            <use xlink:href='#icon-facebook'></use>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,17 @@
+---
+title: "Use BitTorrent to update software in your Data Center"
+date: "2010-07-28T06:31:00.000+02:00"
+tags: [ Data Center ]
+---
+
+<p><a href="http://packetlife.net/">Stretch</a> (@packetlife) shared an interesting link in a comment to my <a href="http://blog.ioshints.info/2010/07/p2p-traffic-is-bad-for-network.html"><em>P2P traffic is bad for the network</em></a><em> </em>post: <a href="http://torrentfreak.com/facebook-uses-bittorrent-and-they-love-it-100625/">Facebook and Twitter use BitTorrent to distribute software updates</a> across hundreds (or thousands) of servers ... another proof that no technology is good or bad by itself (<a href="http://etherealmind.com/">Greg Ferro</a> might have <a href="http://etherealmind.com/myth-fibrechannel-over-token-ring/">a different opinion about FCoE</a>). </p>
+<p>Shortly after I’ve tweeted about @packetlife’s link, @sevanjaniyan replied with an even better link to a <a href="http://vimeo.com/11280885">presentation by Larry Gadea</a> (infrastructure engineer @ Twitter) in which Larry describes <a href="http://github.com/lg/murder">Murder</a>, Twitter’s implementation of software distribution on top of BitTornado library.</p>
+<p>If you have a data center running large number of servers that have to be updated simultaneously, you should definitely watch the whole presentation; here’s a short spoiler for everyone else:</p>
+<!--more--><ul class="ListParagraph"><li>They were able to reduce distribution time from 900 seconds to 12 seconds.</li>
+<li>BitTorrent is severely restrained, both in number of TCP sessions as well as the bandwidth it can use (and there was a hint that they’ve managed to somewhat overload the network infrastructure during the tests).</li>
+<li>The BT clients grab the file and then fork and continue seeding for 30 seconds. If it takes 12 seconds for a usual distribution, seeding for additional 30 seconds should be more than enough;</li>
+<li>The made a lot of tweaks and optimizations. They reduced timeouts, disabled all “ISP resiliency” features (encryption and DHT) and (obviously) UPnP and decided to force the seeding from an in-memory image (to reduce disk access requirements).</li>
+</ul>
+<p>Next comes the elegant part: they developed two wrappers, a Python wrapper around BitTornado, which gives you higher-level functions and a really high-level Capistrano wrapper, which gives you the functionality we really need: distribute directory tree X into directory Y on all servers.</p>
+<p>And I’ve saved the best for last: they <a href="http://github.com/lg/murder">made Murder available under Apache 2 license</a>.</p>
+

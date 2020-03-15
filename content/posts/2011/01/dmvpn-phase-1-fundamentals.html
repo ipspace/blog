@@ -1,0 +1,25 @@
+---
+title: "DMVPN Phase 1 Fundamentals"
+date: "2011-01-14T07:38:00.000+01:00"
+tags: [ DMVPN,Workshop ]
+---
+
+<p>The <a href="http://demo.ipspace.net/bin/watch?id=47ce739c-3b98-11e1-96be-005056880254">following video explains the DMVPN Phase 1 fundamentals and spoke router configuration guidelines</a> (<a href="http://blog.ioshints.info/2011/01/sometimes-you-need-to-step-back-and.html">here’s why I started this series of posts</a>):</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://demo.ipspace.net/bin/watch?id=47ce739c-3b98-11e1-96be-005056880254" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="277" width="400" src="http://3.bp.blogspot.com/-tGGMWpAUtwo/TxMjbA11tQI/AAAAAAAAEp4/DPkSChy5NqA/s400/DMVPN_Phase1_Play.png" /></a></div>
+<p>Let's summarize:<!--more--></p>
+<ul class="ListParagraph"><li>Phase 1 DMVPN uses point-to-point GRE tunnel on spoke routers and multipoint GRE tunnel on the hub router.</li>
+<li>All the DMVPN traffic (including the traffic between the spokes) flows through the hub router.</li>
+<li>On the spoke routers, the hub router must be the IP next-hop for all destinations reachable through the DMVPN subnet (including other spokes).</li>
+<li>Multicast packets (including routing protocol hello packets and routing updates) are exchanged only between the hub and the spoke routers.</li>
+</ul>
+<h4>More information</h4><p>The <em>Phase 1 DMVPN </em>section of the <a href="http://www.ioshints.info/DMVPN"><em>DMVPN: from Basics to Scalable Networks</em></a> webinar (<a href="http://dmvpn.eventbrite.com/">register here</a> or <a href="http://www.ioshints.info/Recordings">buy a recording</a>) also includes the following topics:</p>
+<ul class="ListParagraph"><li>Basic hub router configuration;</li>
+<li>Explanation of <em>GRE tunnel key</em> concept and its potential performance implications;</li>
+<li>NHRP configuration of the hub and spoke routers;</li>
+<li>Non-unique NHRP registrations;</li>
+<li>Multicast over mGRE principles;</li>
+<li>DMVPN redundancy;</li>
+<li>IPSec configuration with shared keys and certificates;</li>
+<li>Monitoring and troubleshooting guidelines.</li>
+</ul>
+

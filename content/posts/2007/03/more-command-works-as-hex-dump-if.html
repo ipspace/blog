@@ -1,0 +1,8 @@
+---
+title: "More command works as hex dump if needed"
+date: "2007-03-29T15:46:00.000+02:00"
+tags: [ command line interface ]
+---
+
+The <strong>more</strong> command display the specified file as a hex dump if the contents don't look like a text file. In my example, it didn't like the CR/LF pairs in the Autorun.inf file written on an USB token by a Windows PC, but you could also dump an IOS image or a tar archive used by SDM (or other web-based applications). To force the display format, use the <strong>/ascii</strong>, <strong>/binary</strong> or <strong>/ebcdic</strong> (for IBM/SNA gurus) parameters. Cool feature ... IOS is obviously full of hidden gems :)<pre class='code'><br />router#<strong>more usbflash1:Autorun.inf</strong><br />00000000:  5B617574 6F72756E 5D0D0A6F 70656E3D    [aut orun ]..o pen=<br />00000010:  496E7374 616C6C65 722E6578 650D0A69    Inst alle r.ex e..i<br />00000020:  636F6E3D 496E7374 616C6C65 722E6578    con= Inst alle r.ex<br />00000030:  650D0A41 6374696F 6E3D4C61 756E6368    e..A ctio n=La unch<br />00000040:  20496E73 74616C6C 65722066 6F722047     Ins tall er f or G<br />00000050:  6F6F676C 65204170 706C6963 6174696F    oogl e Ap plic atio<br />00000060:  6E73200D 0AXXXXXX XXXXXXXX XXXXXXXX    ns . .XXX XXXX XXXX</pre>
+

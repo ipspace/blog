@@ -1,0 +1,11 @@
+---
+title: "IOS HTTP client sets Host: field to IP address"
+date: "2006-12-06T12:34:00.000+01:00"
+tags: [ http,web ]
+---
+
+<p class='update'><strong>Update 2012-08-27</strong>: Stefan de Kooter reported the bug had been fixed in IOS release 15.1(4)M.</p>
+<p>If you run multiple web sites on a single physical server, it's highly likely that you rely on the ability of HTTP/1.1 clients to specify the <strong>Host:</strong> field in the HTTP request to indicate which web site they're trying to access.</p>
+<p>Cisco IOS always inserts the web server's IP address (not the hostname) in the <strong>Host:</strong> field of the HTTP request, regardless of whether you enter IP address or hostname in the URL part of an IOS command that supports HTTP (for example, <strong>copy</strong> or <strong>more</strong> command) ... and regardless of whether the hostname is locally configured with the <strong>ip host </strong>command or resolved by an external DNS server specified in the ip <strong>name-server</strong> command.</p>
+<p><strong>End result:</strong> Cisco IOS-based routers (tested up to release 12.4(11)T) can access only the default web site on a web server hosting multiple web sites.</p>
+

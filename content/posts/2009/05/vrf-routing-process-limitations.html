@@ -1,0 +1,11 @@
+---
+title: "VRF routing process limitations"
+date: "2009-05-29T06:33:00.000+02:00"
+tags: [ OSPF,EIGRP,RIP,BGP,MPLS VPN ]
+---
+
+<div class="bloggerBody"><p><a href="http://wiki.nil.com/"><img src="http://www.ioshints.info/images/Wiki.png" class="ImgFLTright"></a>A while ago, Cisco IOS did not allow you to run more than 30 routing processes per router, significantly limiting the options of Service Providers who wanted to support OSPF as the PE-CE routing protocol. The architectural reason for the limit is a 32-bit mask that’s used in Cisco IOS to mark individual routing protocols. The routing protocol ID (as displayed by the <strong>show ip protocol summary</strong> command) is thus limited to values 0 to 31. With value 0 being reserved for connected routes and value 1 for static routes, 30 values are left to number the routing protocols.</p>
+<p>Later IOS releases removed the limitation by allowing the same routing protocol ID to be used for different routing protocols in different VRFs. While this solution satisfies the needs of most customers, it also causes <a href="http://wiki.nil.com/VRF_routing_process_limitations">interesting side effects</a>.</p>
+<p style="text-align: right;">Read more in the <a href="http://wiki.nil.com/VRF_routing_process_limitations">VRF routing process limitations</a> article in the <a href="http://wiki.nil.com/">CT3 wiki</a>.</p>
+</div>
+

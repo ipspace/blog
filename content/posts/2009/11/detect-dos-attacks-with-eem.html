@@ -1,0 +1,19 @@
+---
+title: "Detect DOS attacks with EEM"
+date: "2009-11-13T07:29:00.002+01:00"
+tags: [ security,Workshop,WAN,EEM ]
+---
+
+<p>Someone sent me an interesting question a while ago: “is it possible to detect DOS flooding with an EEM applet?” Of course it is (assuming the DOS attack results in very high load on the Internet-facing interface) and the best option is the EEM interface event detector.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_K_pkZO5-tTg/SvqgN9HAKdI/AAAAAAAAD1M/VBtsRwzkdbY/s1600-h/Detect+interface+overload.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/_K_pkZO5-tTg/SvqgN9HAKdI/AAAAAAAAD1M/VBtsRwzkdbY/s400/Detect+interface+overload.png" /></a><br /></div>
+<p class="more">Interface event detector is just one of the many topics covered in the <a href="http://www.ioshints.info/Embedded_Event_Manager_(EEM)_Workshop">Embedded Event Manager (EEM) workshop</a>. You can attend an online version of the workshop or we can organize a dedicated event for your networking team.</p>
+<!--more--><p>The <strong>interface </strong>event detector is more user-friendly than the SNMP event detector. You can specify interface name and parameter name in the <strong>interface </strong>event detector; with SNMP event detector you have to specify SNMP object identifier (OID). The <strong>interface </strong>event detector stores the interface name, measured parameter name and its value in three convenient environment variables that you can use to generate <em>syslog </em>messages or <a href="http://wiki.nil.com/Send_email_from_EEM_applet">alert the operators via e-mail</a>.</p>
+<div class='note'><p>Notes:</p>
+<ul class="Bullet1"><li>You must use the <strong>bandwidth</strong> command to set the interface bandwidth to the actual line speed.</li>
+<li>Set the <strong>bandwidth </strong>to the access speed of your Internet service on Ethernet uplinks.</li>
+<li>The range of the <strong>rxload </strong>and <strong>txload </strong>parameters is between 0 and 255.</li>
+<li>Interface load is computed as 256 * input-or-output-rate / configured-bandwidth.</li>
+<li>The input-or-output-rate is a weighted average computed over the <strong>load-interval</strong>.</li>
+</ul>
+</div>
+

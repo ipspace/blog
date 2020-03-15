@@ -1,0 +1,12 @@
+---
+title: "Final correction: EIGRP next hop processing"
+date: "2009-06-01T07:11:00.001+02:00"
+tags: [ EIGRP ]
+---
+
+<div class="bloggerBody"><p>Last week I’ve <a href="http://blog.ioshints.info/2009/05/eigrp-next-hop-processing.html">incorrectly claimed that EIGRP cannot set the IP next-hop of an advertised route to a third-party router</a>. That hasn’t been true since IOS release 12.3 which introduced the <strong>no ip next-hop-self eigrp </strong><strong><em>as-number </em></strong>interface configuration command.</p>
+<p>With the EIGRP next-hop processing enabled, the <em>next-hop </em>field is set in the outbound EIGRP updates if the next hop router belongs to the IP subnet of the outgoing interface. This functionality works well in <a href="http://wiki.nil.com/EIGRP_next_hop_processing#NBMA_network_with_disabled_EIGRP_next-hop-self">NBMA networks (including DMVPN tunnels)</a> as well as in <a href="http://wiki.nil.com/EIGRP_next_hop_processing#EIGRP_next_hop_processing_in_route_redistribution_scenarios">route redistribution scenarios</a>.</p>
+<p>The details are described in the <a href="http://wiki.nil.com/EIGRP_next_hop_processing"><em>EIGRP next-hop processing</em></a> article in the <a href="http://wiki.nil.com/">CT3 wiki</a>.</p>
+<p class="note">Thanks again to <a href="http://alvarezp.ods.org/blog/">alvarezp</a> for <a href="http://blog.ioshints.info/2009/05/eigrp-next-hop-processing.html?showComment=1243468740659">pointing out my mistake</a>.</p>
+</div>
+

@@ -1,0 +1,21 @@
+---
+title: "Use Network Automation to Detect Software Bugs"
+date: "2019-03-12T09:19:00.000+01:00"
+tags: [ Automation ]
+---
+
+<p><em>This blog post was initially sent to subscribers of my SDN and Network Automation mailing list.&nbsp;</em><a href="http://www.ipspace.net/Subscribe/Five_SDN_Tips"><em>Subscribe here</em></a><em>.</em></p>
+<p>Here&rsquo;s a question I got from one of the attendees of my <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">network automation online course</a>:</p>
+<blockquote class="cite">We had a situation where HSRP was configured on two devices and then a second change was made to use a different group ID. The HRSP mac address got "corrupted" into one of devices and according to the vendor FIB was in an inconsistent state. I know this may be vendor specific but was wondering if there is any toolkit available with validation procedures to check if FIB is consistent after implementing L3 changes.</blockquote>
+<p>The problem is so specific (after all, he&rsquo;s fighting a specific bug) that I wouldn&rsquo;t expect to find a generic tool out there that would solve it.<!--more--></p>
+<p>As always, I hope I&rsquo;m wrong and someone will correct me (write a comment). Also, some major vendors started selling <em>assurance engines</em> &ndash; reassuringly-priced software that validates that their other reassuringly-priced solutions work correctly.</p>
+<p>Ignoring that, what you could do in a situation like this is:</p>
+<ul class="ListParagraph"><li>Figure out how to identify the problem with <strong>show</strong> commands (assuming it can be done) and how to fix it when you find it (reload might be the only option);</li>
+<li>Write a script to use those <strong>show </strong>commands to check whether the forwarding state is still consistent with your expectations;</li>
+<li>Run that script periodically and do something when it detects the inconsistency;</li>
+</ul>
+<p>&hellip; assuming, of course, that the problem is bad enough that it warrants the time and effort needed to write such a script.</p>
+<p><strong>Note:</strong> when evaluating whether it makes sense to invest time into writing a validation script, keep in mind that it will be a major effort when you start, but once you have the infrastructure in place it will be pretty easy to add further validation checks. I created a <a href="https://github.com/ipspace/ansible-examples/tree/master/Sample-Compliance-Check">sample validation framework</a> (feel free to use and extend it) as a case study for the <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=2">Easy Wins</a> module in the <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course.</p>
+<p>Facebook used a similar approach when <a href="https://ripe71.ripe.net/archives/video/152/">dealing with memory leaks in high-end routers</a> &ndash; I talked about that in more details in the <a href="https://my.ipspace.net/bin/list?id=NetAut101#HIERARCHY"><em>automated remediation</em></a><em> </em>part of <a href="https://www.ipspace.net/Network_Automation_101">Network Automation 101</a> webinar. </p>
+<p>Finally, scream and kick the vendor. Bugs are to be expected but having to write custom scripts to check whether the $vendor bloatware messed it up (again) instead of getting a quick bug fix is inexcusable.</p>
+

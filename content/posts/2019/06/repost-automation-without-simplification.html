@@ -1,0 +1,24 @@
+---
+title: "Repost: Automation Without Simplification"
+date: "2019-06-10T07:36:00.000+02:00"
+tags: [ Automation ]
+---
+
+<p><a name="_GoBack"></a>The <a href="https://blog.ipspace.net/2018/11/no-scripting-required-to-start-your.html"><em>No Scripting Required to Start Your Automation Journey</em></a><em> </em>blog post generated lively discussions (and a bit of trolling from the anonymous peanut gallery). One of the threads focused on &ldquo;<em>how does automation work in real life IT dep</em><em>artment</em><em> where it might be challenging to simplify operations before automating them due to many exceptions, legacy support&hellip;</em>&rdquo;</p>
+<p>Here&rsquo;s a great answer provided by another reader:<!--more--></p>
+<hr /><p>One small step at a time. :-)</p>
+<p>First, if you have 100 switches, do you really have 100 different brands and models, or do you perhaps just have five brands and ten models?</p>
+<p>Start then with the brand/model that you think will be the most common/important for you going forward. Identify fragments of commonality. E.g, all switches should do syslogging to $LOGSERVER, fetch time using SNTP from $NTPSERVER, and have SNMP set up to allow read using community "public", and no write access over SNMP.</p>
+<p>Then write automation modules to make sure those things are what they are supposed to be. Even just having scripts to <strong>check</strong> that things are correct (and just complain if they are not) can be a big help.</p>
+<p>You also need to nudge, cajole, bully and/or force commonality going forward. This is a multi-year project... Make sure that your users and management knows the costs of being unique.</p>
+<p>Identify unnecessary differences. Do you have the same linecards in the same slots in your core routers/switches, or is a certain card in slot 1 in one router and in slot 3 in the other? Is distribution switch X connected to port 17 in one core router and port 23 in the other? Do you have the same VLANs/VRFs on all the uplinks from switch Y?</p>
+<hr /><p>We cover all these topics in the <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course. You&rsquo;ll learn how to:</p>
+<ul class="ListParagraph"><li><a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=2#M2S2">Create simple reports</a>;</li>
+<li><a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=2#M2S2">Do compliance checks</a>;</li>
+<li><a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=3">Create a data model</a> describing your network (or common network parameters);</li>
+<li><a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=4">Generate device configurations</a> and provision infrastructure or services from your data model;</li>
+<li><a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=6#M6S1">Integrate your automation solution</a> with existing data sources (from Excel to IPAM);</li>
+</ul>
+<p>You&rsquo;ll also learn from people who deployed automation solutions in complex brownfield environment, from <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=6#M6S2">Facebook enterprise network</a> to <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=6#M6S3">enterprise data centers</a> and <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=6#M6S5">Internet Exchange Points</a>.</p>
+<p>Ready to get started? <a href="https://www.ipspace.net/Building_Network_Automation_Solutions#register">Register here</a></p>
+

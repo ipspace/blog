@@ -1,0 +1,34 @@
+---
+title: "OpenFlow and Fermi Estimates"
+date: "2013-09-26T07:27:00.000+02:00"
+tags: [ SDN,OpenFlow,load balancing ]
+---
+
+<p><a href="http://www.nngroup.com/articles/law-of-bandwidth/">Fast advances in networking technologies</a> (and the pixie dust sprinkled on them) blinded us – we lost our gut feeling and <a href="http://en.wikipedia.org/wiki/Rule_of_thumb">rule-of-thumb</a>. Guess what, contrary to what we love to believe, networking isn’t unique. Physicists faced the same challenge for a long time; one of them was so good that they <a href="http://en.wikipedia.org/wiki/Fermi_problem">named the whole problem category after him</a>. </p>
+<p>Every time someone tries to tell you what your problem is, and how their wonderful new gizmo will solve it, it’s time for another Fermi estimate.<!--more--></p>
+<p>Let’s start with a few examples.</p>
+<p><strong>Data center bandwidth</strong>. A few weeks ago a clueless individual working for a major networking vendor wrote a blog post (which unfortunately got pulled before I could link to it) explaining how network virtualization differs from server virtualization because we don’t have enough bandwidth in the data center. A <a href="http://blog.ipspace.net/2013/09/how-much-data-center-bandwidth-do-you.html">quick estimate shows a few ToR switches have all the bandwidth you usually need</a> (you might need more due to traffic bursts and number of server ports you have to provide, but that’s a different story). </p>
+<p><strong>VM mobility for disaster avoidance needs</strong>. A <a href="http://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html">back-of-the-napkin calculation shows you can’t evacuate more than half a rack per hour over a 10GE link</a>. The response I usually get when I prod networking engineers into doing the calculation: “<em>OMG, that’s just hilarious. Why would anyone want to do that?</em>”</p>
+<p>And now for the real question that triggered this blog post: some people still think we can <a href="http://blog.ipspace.net/2011/10/openflow-and-state-explosion.html">implement stateful OpenFlow-based network services (NAT, FW, LB) in hardware</a>. How realistic is that?</p>
+<p><strong>Scenario</strong>: web application(s) hosted in a data center with 10GE WAN uplink.</p>
+<p><strong>Questions</strong>: </p>
+<ul class="ListParagraph"><li>How many new sessions are established per second (how many OpenFlow flows does the controller have to install in the hardware)? </li>
+<li>How many parallel sessions will there be (how many OpenFlow flows does the hardware have to support)?</li>
+</ul>
+<p><strong>Facts</strong> (these are usually the hardest to find)</p>
+<ul class="ListParagraph"><li><a href="http://www.stevesouders.com/blog/2013/04/05/page-weight-grows-24-year-over-year-not-44/">Size of an average web page is ~1MB</a></li>
+<li><a href="http://analytics.blogspot.com/2013/04/is-web-getting-faster.html">An average web page loads in ~5 seconds</a></li>
+<li><a href="http://www.stevesouders.com/blog/2013/05/09/how-fast-are-we-going-now/">An average web page uses ~20 domains</a></li>
+<li><a href="http://www.browserscope.org/?category=network">An average browser can open up to 6 sessions per hostname</a></li>
+</ul>
+<p>Using facts #3 and #4 we can estimate the total number of sessions needed for a single web page. It’s anywhere between 20 and 120, let’s be conservative and use 20.</p>
+<p>Using fact #1 and the previous result, we can estimate the amount of data transferred over a typical HTTP session: 50KB.</p>
+<p>Assuming a typical web page takes 5 seconds to load, a typical web user receives 200 KB/second (1.6 mbps) over 20 sessions or 10KB (80 kbps) per session. Seems low, but do remember that most of the time the browser (or the server) waits due to RTT latency and TCP slow start issues. </p>
+<p>Assuming a constant stream of users with these characteristics, we get 125.000 new sessions over a 10GE every 5 seconds or 25.000 new sessions per second per 10Gbps.</p>
+<p><strong>Always do a reality check</strong>. Is this number realistic? Load balancing vendors support way more connections per second (cps) @ 10 Gbps speeds. <a href="http://www.f5.com/pdf/products/big-ip-platforms-datasheet.pdf">F5 BIG-IP 4000s</a> claims 150K cps @ 10 Gbps, and VMware claims its NSX Edge Services Router (improved vShield Edge) will support 30K cps @ 4 Gbps. It seems my guestimate is on the lower end of reality (if you have real-life numbers, please do share them in comments!).</p>
+<p>Modern web browsers use persistent HTTP sessions. Browsers want to keep sessions established as long as possible, web servers serving high-volume content commonly drop them after ~15 seconds to reduce the server load (Apache is notoriously bad at <a href="http://blog.erratasec.com/2012/10/scalability-is-systemic-anomaly.html">handling very high number of concurrent sessions</a>). 25.000 cps x 15 seconds = 375.000 flow records.</p>
+<p>Trident-2-based switches can (supposedly, see also comments) handle 100K+ L4 OpenFlow entries (at least BigSwitch claimed so when we met @ NFD6). That’s definitely on the low end of the required number of sessions <em>at 10 Gbps</em>; do keep in mind that the total throughput of a typical Trident-2 switch is above 1 Tbps <em>or three orders of magnitude higher</em>. Enterasys switches <a href="http://blogs.enterasys.com/sdn-flows-and-the-forgotten-data-plane/">support 64M concurrent flows @ 1Tbps</a>, which seems to be enough.</p>
+<p>The flow setup rate on Trident-2-based switches is supposedly still in low thousands, or an order of magnitude too low to support <em>a single 10 Gbps link</em> (the switches based on this chipset usually have 64 10GE interfaces).</p>
+<p>Now is the time for someone to invoke the ultimate Moore’s Law spell and claim that the hardware will support whatever number of flow entries in not-so-distant future. Good luck with that; I’ll settle for an <a href="http://blog.erratasec.com/2013/09/masscan-entire-internet-in-3-minutes.html">Intel Xeon server that can be pushed to 25 mpps</a>. OpenFlow has its uses, but large-scale stateful services is obviously not one of them.</p>
+<h4>More information</h4><p>If you wonder where I got the HTTP and TCP numbers I used in the guestimate, it’s high time you watch my <a href="http://www.ipspace.net/TCP,_HTTP_and_SPDY">TCP, HTTP &amp; SPDY webinar</a>.</p>
+

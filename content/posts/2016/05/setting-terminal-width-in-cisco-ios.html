@@ -1,0 +1,10 @@
+---
+title: "Setting Terminal Width in Cisco IOS"
+date: "2016-05-02T11:59:00.000+02:00"
+---
+
+<p>This must be old news to most of you (I managed to stay away from CLI for way too long), but I was pleasantly surprised that you can set terminal width (not just length) in Cisco IOS.<!--more--></p>
+<p>You probably know the frustrating feeling where Cisco IOS starts truncating the lines you type (replacing the rest of the input with $ sign) because they wouldn&#x2019;t fit on VT100 screen:</p>
+<pre class="code">Client(config-router-af)#<strong>network&nbsp;192.168.11.0&nbsp;route-map&nbsp;Static2BGP</strong><br />Client(config-router-af)#<strong>network&nbsp;192.168.12.1&nbsp;mask&nbsp;255.255.255.255&nbsp;route-map&nbsp;S</strong><span class=" high"><strong>$</strong></span></pre><p>However, in a moment of inspiration (it helps to have a great view when playing with VIRL) I decided to try to set the terminal width:</p>
+<pre class="code">Client(config-router-af)#do&nbsp;term&nbsp;width&nbsp;150</pre><p>Surprise, surprise: it worked perfectly ;)) &ndash; I could edit longer lines without the truncation hassle.</p>
+

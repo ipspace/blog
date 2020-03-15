@@ -1,0 +1,19 @@
+---
+title: "Scalability Enhancements in Cisco Nexus 1000V"
+date: "2014-09-05T07:01:00.000+02:00"
+tags: [ SDN,Scalability,OpenFlow ]
+---
+
+<p>The <a href="http://blogs.cisco.com/datacenter/new-nexus-1000v-virtual-switch-release-3-1-now-available/">latest release of Cisco Nexus 1000V for vSphere</a> can handle twice as many vSphere hosts as the previous one (250 instead of 128). Cisco probably did a lot of code polishing to improve Nexus 1000V scalability, but I&#x2019;m positive most of the improvement comes from interesting architectural changes.<!--more--></p>
+<p><strong>Distributed NetFlow:</strong></p>
+<blockquote class="cite">With Distributed NetFlow, the switch sends NetFlow export packets directly from the VEMs to the collectors. It no longer sends export packets through the VSM mgmt0 interface, significantly improving scalability (<a href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus1000/sw/5_2_1_s_v_3_1_1/release/notes/n1000v_rn.html#pgfId-214525">source</a>).</blockquote>
+<p><strong>IGMP multicast offload:</strong></p>
+<blockquote class="cite">Prior to 5.2(1)SV3(1.1), VEM modules depended on VSM to support IGMP multicast. From 5.2(1)SV3(1.1), VEMs can perform IGMP mrouter detection, IGMP member addition, and deletion without VSM support (<a href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus1000/sw/5_2_1_s_v_3_1_1/release/notes/n1000v_rn.html#pgfId-213133">source</a>).</blockquote>
+<p>Then there&#x2019;s <strong>VXLAN MAC distribution</strong>:</p>
+<blockquote class="cite">MAC distribution uses unicast to distribute MAC, thereby reducing MAC update messages and improving scale (<a href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus1000/sw/5_2_1_s_v_3_1_1/release/notes/n1000v_rn.html#pgfId-219991">source</a>).</blockquote>
+<p>Finally, you <strong>cannot run centralized (VSM-based) LACP</strong> anymore:</p>
+<blockquote class="cite">In Release 5.2(1)SV3(1.1), only LACP offload to VEM is supported (<a href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus1000/sw/5_2_1_s_v_3_1_1/release/notes/n1000v_rn.html#pgfId-228117">source</a>).</blockquote>
+<p>It&#x2019;s pretty easy to spot the pattern. Every single scalability improvement pushed some aspect of centralized control plane into distributed switching elements, nicely proving <a href="http://blog.ipspace.net/2014/08/cloud-orchestration-system-is-ideal.html">the point I made</a> just a few days prior to Nexus 1000V 3.1 launch: <a href="http://blog.ipspace.net/2014/05/does-centralized-control-plane-make.html">centralized control plane limits scalability</a> (note: I had no idea about the upcoming product launch &ndash; Cisco stopped briefing me a while ago, probably around the time <a href="http://blog.ipspace.net/2013/08/what-is-vmware-nsx.html">I found NSX interesting</a>).</p>
+<p class="note">I am positive someone will manage to prove that this reasoning doesn&#x2019;t apply to his favorite OpenFlow controller. People also managed to prove that the <a href="http://www.debate.org/debates/Scientific-evidence-overwellmingly-supports-a-flat-earth/1/">Earth must be flat</a>.</p>
+<h4>More information</h4><p>Check out <a href="http://www.ipspace.net/SDN">SDN resources on ipSpace.net</a>, the <a href="http://www.ipspace.net/Roadmap/SDN_and_OpenFlow_webinars">SDN webinars</a> and <a href="http://www.ipspace.net/SDN,_OpenFlow,_NFV_and_SDDC">workshop</a>, and <a href="http://www.ipspace.net/Podcast/Software_Gone_Wild">listen to the Software Gone Wild podcast</a>.</p>
+

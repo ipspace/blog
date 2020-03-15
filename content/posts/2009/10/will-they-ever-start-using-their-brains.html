@@ -1,0 +1,10 @@
+---
+title: "Will they ever start using their brains?"
+date: "2009-10-06T08:28:00.001+02:00"
+---
+
+<p>This morning I’ve discovered yet another journalistic gem. It started innocently enough: someone has <a href="http://www.networkworld.com/news/2009/100509-software-ddos-attacks.html">announced prototype security software</a> that blocks DDoS attacks. The fundamental idea (as explained in the article) sounds mushy: they’ve started with one-time user ID and introduced extra fields in the data packets. How can that ever scale in public deployment (which is where you’d be most concerned about a DDoS attack)?</p>
+<p>But the true “revelation” came at the <a href="http://www.networkworld.com/news/2009/100509-software-ddos-attacks.html?page=2">beginning of page 2</a>: this software can filter bogus packets in 6 <strong>nanoseconds on a Pentium-class processor</strong>. Now let’s try to put this in perspective.<!--more--> A Pentium CPU operating @ 5 GHz can execute 30 instructions in 6 ns … or maybe not, it’s a CISC, not RISC design … or it might, due to parallel instruction execution. Never mind, in most cases you need more than that just to process the interrupt.</p>
+<p class="note">If you want to get more meaningless numbers, use this <a href="http://en.wikipedia.org/wiki/Instructions_per_second">MIPS table</a>. The highest-rated Pentium delivers just over 9 MIPS or less than 60 “average-sized” instructions in 6 ns.</p>
+<p>But there’s more: if you want to process an incoming packet, you have to fetch it from the DRAM first. The best <a href="http://en.wikipedia.org/wiki/DDR2_SDRAM">DDR2 DRAM</a> on the market <a href="http://en.wikipedia.org/wiki/DDR2_SDRAM">has more than 10 ns</a> <a href="http://en.wikipedia.org/wiki/CAS_latency">CAS latency</a> (the time between CPU indicating what it needs and DRAM delivering the data). The article thus claims that this wonder software can reject packets faster than it can fetch them from the I/O buffer.</p>
+

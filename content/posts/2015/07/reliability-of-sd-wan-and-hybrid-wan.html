@@ -1,0 +1,27 @@
+---
+title: "Reliability of SD-WAN and Hybrid WAN Solutions"
+date: "2015-07-21T11:17:00.000+02:00"
+tags: [ SDN,WAN ]
+---
+
+<p>My <a href="http://blog.ipspace.net/2015/07/business-case-for-sd-wan.html"><em>Business Case for SD-WAN</em> blog post</a> received numerous comments pointing out the potential pitfalls of hybrid WAN, including reduced security, unreliable Internet services and denial-of-service attacks.</p>
+<p>While all those comments are perfectly valid, I still think hybrid WAN (whether implemented with traditional technologies or SD-WAN products) makes perfect sense.<!--more--></p>
+<p>However, <a href="http://blog.ipspace.net/2015/03/response-why-technology-still-matters.html">like with any new technology</a>, you have to <a href="http://blog.ipspace.net/2015/03/you-must-understand-fundamentals-to-be.html">understand the fundamentals</a> of SD-WAN (or hybrid WAN) solutions, and use them correctly.</p>
+<p class='warn'>If your CIO decides (in his infinite wisdom gained by reading vendor whitepapers and listening to product pitches) to replace MPLS/VPN circuits with SD-WAN-over-Internet solution, he&#x2019;ll eventually get the disaster he deserves. The same might happen to anyone believing VPN-over-Internet solution can be made as reliable as a more traditional WAN solution. </p>
+<p>Fortunately, we&#x2019;ve been using solutions similar to SD-WAN for at least a decade, so we&#x2019;ve already learned a few useful lessons.</p>
+<h4>Internet uplinks are unreliable</h4><p>We all know a zillion things can go wrong with Internet uplinks (and <a href="http://blog.ipspace.net/2012/10/if-something-can-fail-it-will.html">eventually they will</a>):</p>
+<ul class="ListParagraph"><li>If a link that costs you $100 a month is down, you have zero leverage with your ISP. It will be fixed&hellip; eventually;</li>
+<li>If you&#x2019;re experiencing packet drops on that same uplink, sometimes the only thing you can do is change the ISP;</li>
+<li>If someone decides to blast you with a DDoS attack, you&#x2019;re toast&hellip; unless you have a high-end router sitting at a large Internet exchange, or you&#x2019;re paying for DoS scrubbing service (which you should consider doing for your hub site).</li>
+</ul>
+<p>On the other hand, it&#x2019;s amazing how well Internet usually works, so it would be a shame not to use it. Also, most traffic transported across enterprise WAN is not really mission-critical, and it&#x2019;s a waste of money to transport it across high-quality infrastructure.</p>
+<p><strong>Long story short</strong>: don&#x2019;t ever count on reliability or availability of your Internet uplinks (particularly at remote sites).</p>
+<h4>Redundancy is King</h4><p>The usual way of dealing with unreliable components is to use redundancy. Apply the same thinking to your hybrid WAN design. </p>
+<p>Use a combination of MPLS/VPN and Internet VPN, or Internet VPN with 3G backup. Use multiple access methods, so the cable-seeking backhoe doesn&#x2019;t bring down all uplinks.</p>
+<h4>Keep Calm and Be Prepared</h4><p>I guess we all agree the Internet uplinks will eventually fail. At that moment it&#x2019;s important to</p>
+<ul class="ListParagraph"><li>Have a working backup solution that <em>has been properly tested</em>. The last thing you need when your high-capacity links fail are routing loops and traffic blackholes;</li>
+<li>Have enough bandwidth available on the backup path to carry mission-critical traffic, together with a mechanism that will block non-critical traffic (otherwise the non-critical traffic would hose the backup links).</li>
+</ul>
+<p>There are numerous tricks you can use to be prepared. Some organizations send mission-critical traffic over MPLS/VPN WAN all the time to ensure the MPLS/VPN links have enough bandwidth to carry that traffic when the Internet uplinks fail; others monitor the state of backup links (which should be a standard procedure anyway).</p>
+<p class="info">Cisco IOS has a 3G MIB, so we were able to write a monitoring solution for one of our customers that would alert them (and their mobile operator) when the 3G signal strength deteriorated below acceptable level.</p>
+

@@ -1,0 +1,14 @@
+---
+title: "Don't Make a Total Mess When Dealing with Exceptions"
+date: "2018-10-01T09:21:00.000+02:00"
+tags: [ Design ]
+---
+
+<p>A while ago I had the dubious &ldquo;privilege&rdquo; of observing how my &ldquo;beloved&rdquo; airline Adria Airways deals with exceptions. A third-party incoming flight was 2.5 hours late and in their infinite wisdom (most probably to avoid financial impact) they decided to delay a half-dozen outgoing flights for 20-30 minutes while waiting for the transfer passengers. </p>
+<p>Not surprisingly, when that weird thingy landed and they started boarding the outgoing flights (now all at the same time), the result was a total mess with busses blocking each other (this same airline loves to avoid jet bridges).<!--more--></p>
+<p>Finally, we got to the plane, finished the boarding process&hellip; only to be informed that our 20-minute delay turned into 1.5 hour delay because we lost our ATC slot. Totally unexpected with crowded skies on a busy Friday afternoon, right? </p>
+<p>So let me recap: trying to deal with ~20 transfer passengers (we had exactly two of them on our flight) resulted in a half-dozen delayed flights, hundreds of annoyed passengers (who cares, passengers are treated as cattle today anyway), and who knows how many missed connections on the next hop. </p>
+<p>By now you should be wondering what this has to do with networking. Time for a bit of reflection: how many times did you modify your network design or implement a one-off solution to accommodate an exception request coming in at the last minute? How many times did you mess up your network trying to do that? How many times did you risk the overall network stability while implementing those requests (I&rsquo;m looking at you, stretched VLANs)? What was the potential impact of those changes compared to the benefits your company gained because you implemented the one-off request? </p>
+<p>Yes, we have to be flexible&hellip; but no, we shouldn&rsquo;t risk our infrastructure, stability of our operations, or services provided to everyone else while doing that - a lesson that the airline I&rsquo;m forced to use will undoubtedly never grasp. </p>
+<p>Finally, please note this isn&rsquo;t another United Breaks Guitars rant &ndash; I always had great experience with Adria&rsquo;s ground personnel, cabin crews, and pilots. It&rsquo;s just that the priorities of people calling the shots obviously aren&rsquo;t aligned with those of their customers.</p>
+

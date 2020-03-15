@@ -1,0 +1,18 @@
+---
+title: "We Have to Learn How to Manage the Cattle"
+date: "2018-04-30T09:08:00.000+02:00"
+tags: [ Automation,security ]
+---
+
+<p>Not long after I published the&nbsp;<a href="http://blog.ioshints.info/2013/05/dedicated-hardware-in-network-services.html">blog post arguing against physical appliances</a>, Oven wrote a&nbsp;<a href="http://blog.ioshints.info/2013/05/dedicated-hardware-in-network-services.html?showComment=1368140700884#c887779055558313901">very valid comment</a>: "<em>But then you'd have 20 individual systems to manage, add licenses to for additional features, updates etc.</em>"</p>
+<p class='note'>Even though the blog post (and the comment) was written in 2013, not much has changed in the meantime.<!--more--></p>
+<p>We&rsquo;re still dealing with big hardware appliances that are managed like pets instead of smaller virtual appliances that could be managed like cattle, the only exception being distributed firewalls in environments like VMware NSX.</p>
+<p class="info">To learn more about pet-versus-cattle analogy, start with the <a href="https://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds">original Randy Bias&rsquo; presentation</a> or an <a href="https://www.slideshare.net/randybias/pets-vs-cattle-the-elastic-cloud-story">updated version</a>.</p>
+<p>Even though everyone mostly agrees on the benefits of using the network-services-as-cattle approach, most enterprise environments still haven&rsquo;t solved the challenge of managing a large number of small appliances, and the appliance vendors still want to charge per box (making the cattle model untenable) instead of by value added (= total throughput or something similar).</p>
+<p class="note">It would be great to have a list of firewall and load balancing vendors that got the memo and implemented a throughput-based licensing model for their on-premises virtual appliances. If you encountered one (or are working for one) please leave a comment. Also note that having an appliance on AWS marketplace doesn&rsquo;t count ;)</p>
+<p>There are two ways to manage network services appliances at scale: </p>
+<ul class="ListParagraph"><li>You make your cattle someone else's pet: each application team becomes responsible for their own firewall and load balancer. This approach works surprisingly well for public cloud vendors, and there&rsquo;s no reason why organizations that talk about moving into a public cloud wouldn&rsquo;t implement the same approach for on-premises workloads&hellip; or maybe it's all talk and no action.</li>
+<li>You need tools that allow you to manage at scale. Server people solved that with Puppet/Chef/Ansible/Salt, apps people solved that with Zookeeper (and the like), forward-looking networking engineers already started automating their networks, but the majority of the networking/security industry is yet again a decade or more behind the others, the only exception being the management systems for VM-NIC virtual firewalls (because nobody would be crazy enough to buy them without such a system).</li>
+</ul>
+<p>Not surprisingly, the network security management systems follow what the appliance vendors are doing and thus have the wrong focus - instead of focusing on managing 10K rules on a single giant FW, they should focus on managing the cattle - enforcing single policy across all tenants.</p>
+

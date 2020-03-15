@@ -1,0 +1,23 @@
+---
+title: "Can Enterprise Workloads Run on Bare-Metal Servers?"
+date: "2016-05-24T15:33:00.001+02:00"
+tags: [ Data Center,virtualization ]
+---
+
+<p>One of my readers left a comment on my &ldquo;<a href="http://blog.ipspace.net/2016/04/optimize-your-data-center-virtualize.html"><em>optimize your data center by virtualizing the servers</em></a><em>&rdquo; </em>blog post saying (approximately):</p>
+<blockquote class="cite">Seems like LinkedIn did it without virtualization :) Can enterprises achieve this to some extent?</blockquote>
+<p>Assuming you want to replace physical servers with one or two CPU cores and 4GB of memory with modern servers having dozens of cores and hundreds of GB of memory the short answer is: not for a long time.<!--more--></p>
+<p class="info">In-memory databases, well-written 64-bit database software, and some big-data applications are obvious exceptions.</p>
+<p>Most of the software running on modern servers has been designed (and sometimes heavily optimized) for architectures that had totally different performance bottlenecks. Two examples:</p>
+<ul class="ListParagraph"><li><a href="http://blog.erratasec.com/2013/02/custom-stack-it-goes-to-11.html">Linux TCP stack is really bad at packet forwarding</a>;</li>
+<li><a href="http://blog.erratasec.com/2012/10/scalability-is-systemic-anomaly.html">Apache web server cannot support more than a few thousand connections</a>.</li>
+</ul>
+<p>In other cases, it&#x2019;s nearly impossible (for technical or political reasons) to run multiple software packages on the same system. Have you ever tried to combine applications that rely on different versions of Java on one machine?</p>
+<p>What are the solutions?</p>
+<ul class="ListParagraph"><li>Slice the physical hardware into multiple instances of hardware with some reasonable amount of memory (4GB anyone) and just enough CPU capacity to run the workload (aka <em>Server virtualization</em>);</li>
+<li>Slice the operating system into smaller independent units that don&#x2019;t share administrative rights or libraries (aka <em>containers</em>);</li>
+<li>Deploy an optimized scalable platform that runs well-behaved applications with no dependencies outside of the platform (aka <em>Platform-as-a-Service</em>).</li>
+</ul>
+<p>In most enterprise environments I&#x2019;ve seen so far the server virtualization is the only answer for existing workloads.</p>
+<p>Interested in challenges like this one? We&#x2019;ll discuss them in the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course. </p>
+

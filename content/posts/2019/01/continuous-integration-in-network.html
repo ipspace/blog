@@ -1,0 +1,27 @@
+---
+title: "Continuous Integration in Network Automation"
+date: "2019-01-21T07:44:00.000+01:00"
+tags: [ Automation ]
+---
+
+<p>In the first part of his interview with <a href="http://uebermeister.com/about.html">Christoph Jaggi</a> <a href="https://www.ipspace.net/Building_Network_Automation_Solutions#KL19">Kristian Larsson</a> talked about the <a href="https://blog.ipspace.net/2019/01/what-is-continuous-integration.html">basics of CI testing</a>. Now let&rsquo;s see how you can use these concepts in network automation (and you&rsquo;ll learn way more in <a href="https://www.ipspace.net/NetAutSol/Live">Kristian&rsquo;s talk on April 9<sup>th</sup></a>&hellip; if you <a href="https://www.ipspace.net/Building_Network_Automation_Solutions#register">register</a> for our <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">network automation course</a>).</p>
+<blockquote class="cite">How does CI testing fit into an overall testing environment?</blockquote>
+<p>Traditionally, in particular in the networking industry, it's been rather common to have proof of concepts (POC) delivered by vendors for various networking technologies and then people have sat down and manually tested that the POC meets some set of requirements.<!--more--></p>
+<p>The cost of such a test is enormous and repeating it will cost just as much which makes anyone reluctant to repeat it. Change is difficult in most companies because it is expensive. If we could instead encode all that testing in terms of automatic testing rules then re-running the test doesn't cost more than the running rate of a few computers and for someone to push a button. CI testing can fundamentally change how this industry works and operates which I think is really exciting.</p>
+<p>I mentioned testing in production before and I think that it is important but it shouldn't be the primary means of testing. The scale of a deployment has implications on its behavior and as such we are going to see different problems in a production environment compared to an artificial testing environment. We must pick up on this but CI testing is important for guaranteeing logical correctness and this should happen before deployments.</p>
+<blockquote class="cite">Are there any pre-conditions for CI testing?</blockquote>
+<p>The only real pre-condition is that you need something to test. If you operate your network by typing into a CLI then perhaps there isn't much you can test in an automated CI testing environment. One should be aware that it usually needs a bit of an investment in time to get going.</p>
+<blockquote class="cite">Does CI testing include security and how is security ensured?</blockquote>
+<p>It certainly can. I've built an environment where we use CI testing to show that access lists are implemented as per specification. Being able to prove to a security team that the network behaves in a certain way is quite nice.</p>
+<blockquote class="cite">What is the best way for a relative newbie to get started with CI testing?</blockquote>
+<p>Once you have a CI system, like GitLab CI up and running, you need to set up an environment specific to running your network tests. I recommend using virtual routers since they're the closest thing we have to what we run in production. It'll allow you to both configure and then observe the behavior of actual routers!</p>
+<blockquote class="cite">What resources are available for a relative newbie to get started?</blockquote>
+<p>Get GitLab and GitLab CI to host your code and run tests for you. Then get vrnetlab, which is a project I've written that enables running virtual routers in a docker environment. Finally, write some tests!</p>
+<hr /><p>Want to know more about using CI testing in network automation?</p>
+<ul class="ListParagraph"><li>Start with <a href="https://blog.ipspace.net/2017/05/network-testing-on-software-gone-wild.html">Network Testing</a> episode of <a href="https://www.ipspace.net/Podcast/Software_Gone_Wild">Software Gone Wild</a>;</li>
+<li><a href="https://www.ipspace.net/Building_Network_Automation_Solutions#PL17">Pete Lumbis</a> explained the <a href="https://my.ipspace.net/bin/list?id=xNetAut171#CICD">basics of CI/CD</a> in Spring 2017 session of our <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">network automation course</a> and dived <a href="https://my.ipspace.net/bin/list?id=xNetAut173#GITLAB_CI">deeper into Gitlab CI/CD</a> in autumn 2017;</li>
+<li><a href="https://www.ipspace.net/Building_Network_Automation_Solutions#GG18">Gabriele Gerbino</a> described how you can <a href="https://my.ipspace.net/bin/list?id=xNetAut183#PIPELINE">build a test harness using virtual network devices</a> in autumn 2018 automation course;</li>
+<li>A large enterprise <a href="https://blog.ipspace.net/2019/01/firewall-ruleset-automation-with-ci.html">implemented CI/CD pipeline to deploy changes to firewall rules</a>;</li>
+</ul>
+<p class="info"><a href="https://my.ipspace.net/bin/list?id=NetAutSol">Guest speaker presentations</a> from the <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">network automation course</a> are accessible to course attendees and ipSpace.net subscribers with <a href="https://www.ipspace.net/Subscription/Individual">Expert Subscription</a> who chose the automation course as part of their subscription package.</p>
+

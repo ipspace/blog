@@ -1,0 +1,25 @@
+---
+title: "Generic VLAN Design"
+date: "2011-10-27T06:35:00.000+02:00"
+tags: [ Design,LAN ]
+---
+
+<p>Like every other blogger, I get occasional e-mails from people fishing for free consulting or second opinion (note: asking a serious technical question is a totally different story;  as many people know, I always try to reply and help) and as I’m totally overloaded with <a href="http://techfieldday.com/2011/openflow-symposium/">OpenFlow symposium</a> and <a href="http://techfieldday.com/2011/nfd2/">Net Field Day</a> these days, I decided to share one of the better ones.<!--more--></p>
+<p>It all started pretty innocently:</p>
+<blockquote class="cite">I am happy to find you, because I have a question about number of VLANs in a small Data center. We have about 300 PCs and about 100 servers connected to 2 Cisco Catalyst 4507R and we decided to design our infrastructure as a collapsed core (no distribution layer). How many VLANs do you recommend for us? Is more VLANs good or no?</blockquote>
+<p>Trying to be at least marginally helpful, I replied with some generic recipes:</p>
+<blockquote class="cite">No specific recommendations. Use a different VLAN for every security zone, use firewalls or L3 switches with packet filters between them; don't have more than ~100 hosts/subnet.</blockquote>
+<p>However, that was not what he was looking for:</p>
+<blockquote class="cite">Thanks for your attention, but I’m confused because we want to implement our new network with about 15 vlans, but another guy gave us a design with about 70 VLANs. Which design is better? Is 70 VLAN design very complicated or not? Which one do you prefer?</blockquote>
+<p>I could use “it looks like a donut to me” answer that Jeremy Stretch once used (replacing donuts with Mikado Sticks), but still tried to tell him that it’s impossible to make a recommendation based on no input data. 70 VLANs for 100 servers does sound like an overkill, but maybe they’re running a virtualized environment with 1000+ virtual machines and there’s a good reason for numerous VLANs.</p>
+<blockquote class="cite">It’s totally impossible to tell you which design is better without having a detailed look into what your requirements are and the review of both designs, which would require a proper consultancy engagement.</blockquote>
+<p>... but all he needed was a simple answer:</p>
+<blockquote class="cite">As I said this is a general question about VLAN planning. If we can setup a network for example with 15 VLANs and can also design the same network with 70 VLANs, which one is better?</blockquote>
+<p>What shall I reply?</p>
+<p>A) Small is beautiful, go with 15 VLANs.</p>
+<p>B) Bigger is better, use 70 VLANs.</p>
+<p>C) More VLANs will definitely increase your job security.</p>
+<p>D) It depends.</p>
+<p>E) 42</p>
+<p>F) All of the above.</p>
+

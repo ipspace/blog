@@ -1,0 +1,22 @@
+---
+title: "Measure Twice, Cut Once: Ansible net_interface"
+date: "2019-09-05T07:51:00.000+02:00"
+tags: [ Ansible ]
+---
+
+<p>As I was preparing the materials for <a href="https://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible 2.7 Update</a> webinar sessions I wanted to dive deeper into declarative configuration modules, starting with “<em>I wonder what’s going on behind the scenes</em>”</p>
+<p>No problem: configure EEM applet command logging on Cisco IOS and execute an <strong>ios_interface</strong> module (more about that in another blog post)</p>
+<p>Next step: let’s see how multi-platform modules work. Ansible has <strong>net_interface</strong> module that’s supposed to be used to configure interfaces on many different platforms significantly simplifying Ansible playbooks.<!--more--></p>
+<div class="info" data-markdown="1">I hate Ansible’s “<em>let’s develop almost-identical but differently-named modules for every platform</em>” approach to network automation and use NAPALM wherever possible. </div>
+<p>Starting with the <a href="https://github.com/ipspace/NetOpsWorkshop/blob/master/Ansible/Networking/Declarative-Configuration/ios-loopback.yml"><strong>ios_interface</strong> sample playbook</a>, I <a href="https://github.com/ipspace/NetOpsWorkshop/blob/master/Ansible/Networking/Declarative-Configuration/net-loopback.yml">changed <strong>ios_interface</strong> call into <strong>net_interface</strong></a>, ran the playbook on IOS and NX-OS devices, and failed miserably:</p>
+<div class='separator'><a href="https://3.bp.blogspot.com/-r2EyMFkLSQE/XWoMR98n6OI/AAAAAAAAJXc/YEuvzxw61l8xhBpf-IvPvZbYRa-21qBaQCLcBGAs/s1600/Ansible_Net_Interface_Failure.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-r2EyMFkLSQE/XWoMR98n6OI/AAAAAAAAJXc/YEuvzxw61l8xhBpf-IvPvZbYRa-21qBaQCLcBGAs/s600/Ansible_Net_Interface_Failure.png" data-original-width="1600" data-original-height="453" /></a></div>
+<p>What could possibly go wrong? Here’s a slide from my <a href="https://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> webinar explaining how platform-independent modules really work:</p>
+<div class='separator'><a href="https://3.bp.blogspot.com/-6Wnzf1JhiIo/XWoM3dN8f6I/AAAAAAAAJXk/kuBbN5ylsCYdVBzc53GyFqOITVdEhjLRQCLcBGAs/s1600/Ansible_Net_Interface_Details.png" imageanchor="1" ><img style='border: 1px #E0E0E0 solid' src="https://3.bp.blogspot.com/-6Wnzf1JhiIo/XWoM3dN8f6I/AAAAAAAAJXk/kuBbN5ylsCYdVBzc53GyFqOITVdEhjLRQCLcBGAs/s600/Ansible_Net_Interface_Details.png" data-original-width="1280" data-original-height="720" /></a></div>
+<p>Got it? The <strong>net_interface</strong> module is just a thin layer of veneer using platform-specific <strong>something_interface</strong> modules (selected based on <strong>ansible_network_os</strong> variable) to do the real work.</p>
+<p>Still doesn’t explain the failure, does it? Let’s check the parameters of <strong>ios_interface</strong> and <strong>nxos_interface</strong> (the modules implementing <strong>net_interface</strong> behind the scenes):</p>
+<ul><li><strong>ios_interface</strong> (and <strong>eos_interface</strong>) has a single parameter (<strong>state</strong>) specifying interface state. It can take four values: <em>present, absent, up</em> and <em>down</em>.</li>
+<li><strong>nxos_interface</strong> has two parameters: <strong>state</strong> which accepts values <em>present</em> and <em>absent</em>, and <strong>admin_state</strong> which can be <em>up</em> or <em>down</em>.</li>
+</ul>
+<p>You can probably see the problem by now: there’s absolutely no way you could bring an IOS and a NX-OS interface in UP state using the same set of parameters.</p>
+<p>Old woodworkers had a saying that might be applicable to many software projects not just Ansible: “<em>measure twice, cut once.</em>” In this particular case it seems we’re in the “<em>I cut it three times and it’s still too short</em>” territory :(</p>
+

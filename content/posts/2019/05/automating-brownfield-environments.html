@@ -1,0 +1,42 @@
+---
+title: "Automating Brownfield Environments (Using an 802.1x Example)"
+date: "2019-05-13T08:39:00.000+02:00"
+tags: [ Automation ]
+---
+
+<p><em>This is a guest blog post by <a href="https://www.linkedin.com/in/albertsiersema/">Albert Siersema</a>, senior network and cloud engineer at Mediacaster.nl. He’s always busy broadening his horizons and helping his customers in (re)designing and automating their infrastructure deployment and management.</em></p>
+<hr /><p>This is the second post in a series focused primarily on brownfield automation principles using 802.1x deployments as an example (you might want to <a href="https://blog.ipspace.net/2019/04/automating-8021x-part-one.html">read part 1 first</a>).</p>
+<p>Before diving into the specifics of the next 802.1x automation phase, let’s take a step back and think about why we’re going through this effort. Automation is a wonderful tool, but it’s not a goal… and neither is 802.1x a goal - it’s just another tool that can help us realize business benefits like:<!--more--></p>
+<ul><li>More flexibility.</li>
+<li>Faster delivery of services.</li>
+<li>High(er) quality(*) and predictability of services by lowering complexity and improving stability, consistency, and reproducability.</li>
+<li>Efficient management, and thus also less tedium; more interesting work.</li>
+<li>Technical, workforce and financial scalability.</li>
+</ul>
+<p>(*) IMHO high(er) quality implicitly means high availability and better security, both resulting in higher stability as well.</p>
+<p>Let’s see if we’re working towards these goals in the context of brownfield 802.1x automation :</p>
+<ul><li>Scalability, efficient management, faster delivery: automating the (tedious) tasks saves time, the engineering team can focus on other work.</li>
+<li>Higher quality and predictability: <ul><li>Automation produces consistent results, minimizing the possibility of human errors. Automation also offers faster and more consistent rollback.</li>
+<li>Automation playbooks and scripts document the changes. Be sure to save the input and output of the automations tools.</li>
+<li>As automation is easier accomplished with generic (templated) configurations it encourages us to clean up the device configuration. Switch and port specific configurations are more complex, less consistent and less reproducable. By moving port specific configuration from the switch to the RADIUS server “source of truth” (e.g. Cisco ISE), 802.1x helps in simplifying device configuration.</li>
+</ul>
+</li>
+<li>Automatic port configuration from RADIUS server makes our deployment more flexible. It also allows us to deliver network connectivity services faster as we’re not touching device configurations.</li>
+</ul>
+<p>Preparing for and implementing 802.1x in a brownfield environment means you will probably have to talk to most, if not all business units, and that’s necessarily a good thing (to reverse a popular phrase). While engaging with various parties, outline the benefits they and the business will reap, and together re-evaluate current practices to see where further improvements can be made. When asking for the functional business requirements, it might turn out there are better approaches than what you’re doing now.</p>
+<p>Keep in mind that striving for a consistent design helps your automation efforts and consequently (as already pointed out) your business.</p>
+<p>Beware of project scope creep… but as long as those diversions don’t share a critical path you might be able to use a phased approach. Plan and spin off related projects to work on those further improvements.</p>
+<p>Examples of possible further improvements for higher quality, more flexibility and scalability are:</p>
+<ul><li>Improve mobility and reduce the complexity and brittleness of (large stretched) L2 domain by removing the dependency on jfixed IP addresses: <ul><li>Migrate from fixed IP addresses to DHCP.</li>
+<li>Use DNS or other service discovery and location/identity separation mechanisms.</li>
+<li>Replace (static) IP-based ‘authentication/authorization’ with better methods.</li>
+</ul>
+</li>
+<li>Reduce or even remove snowflake deployments.</li>
+<li>Move <em>controllers</em> from the edge to stepping stones. For example, instead of using software installed on workstations to control video surveillance cameras, provide a stepping stone with the required software in the data center.</li>
+<li>Gain insight into actual traffic flows. Downloadable per-port ACL’s can be used instead of core/aggregation ACL’s or humongous central firewall policies. Security measures and tools like zero trust, (micro) segmentation, SGT, etc all need accurate traffic flow information.</li>
+<li>Investigate where it might be possible to provide self-service or automated workflows for e.g. device identity (MAB springs to mind) or ACL’s.</li>
+</ul>
+<p>While talking with the business and re-evaluating current requirements don’t miss out on the opportunity to write down the needs and wishes for mobility, functionality, isolation and programmability. This helps in determining if and how technologies like overlays, SGT’s, SD-Access, etc. might be used.</p>
+<p>The generic solution to best alignment with functional business needs is (as always) “It Depends (tm)”. More advanced (and complex) technologies might or might not help. I won’t break new ground for avid ipspace.net readers by saying that although you don’t see the complexity, it is there.</p>
+

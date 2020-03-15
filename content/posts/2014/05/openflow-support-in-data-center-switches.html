@@ -1,0 +1,20 @@
+---
+title: "OpenFlow Support in Data Center Switches"
+date: "2014-05-19T07:22:00.000+02:00"
+tags: [ Data Center,Fabric,OpenFlow ]
+---
+
+<p><strong>Good news:</strong> In the last few months, almost all major data center Ethernet switching vendors (Arista, Cisco, Dell Force 10, HP, and Juniper) released <span class=" high">documented GA version</span> of OpenFlow on some of their data center switches.</p>
+<p><strong>Bad news</strong>: no two vendors have even remotely comparable functionality.<!--more--></p>
+<p class="note">All the information in this blog post comes from publicly available vendor documentation (configuration guides, command references, release notes). NEC is the only vendor mentioned in this blog post that does not have public documentation, so it’s impossible to figure out (from the outside) what functionality their switches support.</p>
+<p>Some other facts:</p>
+<ul class="ListParagraph"><li>Most vendors offer OpenFlow 1.0. Exceptions: HP and NEC;</li>
+<li>Most vendors have a single OpenFlow lookup table (<a href="http://blog.ipspace.net/2013/10/flow-table-explosion-with-openflow-10.html">one of the limitations of OpenFlow 1.0</a>), HP has a single table on 12500, two tables on 5900, and a totally convoluted schema on Procurve switches.</li>
+<li>Most vendors work with a single controller. Cisco’s Nexus switches can work with up to 8 concurrent controllers, HP switches with up to 64 concurrent controllers.</li>
+<li>Many vendors <a href="http://blog.ipspace.net/2014/05/optimizing-openflow-hardware-tables.html">optimize the OpenFlow lookup table</a> by installing L2-only or L3-only flow entries in dedicated hardware (which still looks like the same table to the OpenFlow controller);</li>
+<li>OpenFlow table sizes remain dismal. Most switches support low thousands of 12-tuple flows. Exception: NEC edge switches supports between 64K and 160K 12-tuple flows.</li>
+<li>While everyone supports full 12-tuple matching (additionally, HP supports IPv6, MPLS, and PBB), almost no one (apart from HP) offers significant packet rewrite functionality. Most vendors can set destination MAC address or push a VLAN tag; HP’s 5900 can set any field in the packets, copy/decrement IP or MPLS TTL, and push VLAN, PBB or MPLS tags.</li>
+</ul>
+<p><strong>Summary</strong>: It’s neigh impossible to implement anything but destination-only L2+L3 switching at scale using existing hardware (the latest chipsets from Intel or Broadcom aren’t much better)… and I wouldn’t want to be a controller vendor dealing with idiosyncrasies of all the hardware out there – all you can do consistently across most hardware switches is forward packets (without rewrites), drop packets, or set VLAN tags.</p>
+<h4>More information</h4><p>You’ll find more details on OpenFlow implementations from top data center Ethernet switching vendors in the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics webinar</a>, where I added a special section covering OpenFlow support to each vendor-specific presentation (the new materials have already been published). The same information is also available in the <a href="http://www.ipspace.net/SDN,_OpenFlow,_NFV_and_SDDC">SDN workshop</a>.</p>
+

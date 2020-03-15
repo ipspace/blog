@@ -1,0 +1,14 @@
+---
+title: "Building CsC-enabled MPLS backbone"
+date: "2011-05-30T06:31:00.000+02:00"
+tags: [ Service Providers,MPLS VPN ]
+---
+
+<p>Just got this question from one of my Service Provider friends: “<em>If I am building a new MPLS backbone from scratch, should I design it with Carrier</em><em>’</em><em>s Carrier in mind?</em>” Of course you should ... after all, the CsC functionality has almost no impact on the MPLS backbone (apart from introducing an extra label in the label stack).<!--more--></p>
+<p>Carrier’s Carrier architecture looks complex and scary (your customers can build their own MPLS/VPN networks on top of your MPLS/VPN service), but needs just a single feature on top of baseline MPLS/VPN architecture: LDP between PE and CE routers.</p>
+<p>In traditional MPLS/VPN architecture you run IGP (or EBGP) between PE routers and CE routers and send IP packets across PE-CE link. CsC adds the ability to run PE-CE LDP, exchange labels for MPLS/VPN routes and send labeled packets across PE-CE link. </p>
+<p>The LDP label advertised by the PE router is stitched to the label remote PE-router advertised over MP-BGP, building an LSP from the CE-router to remote PE-router. Likewise, the MPLS/VPN label advertised by the PE-router through MPLS/VPN gets stitched to the LDP label advertised by the CE-router, building an LSP from remote PE-router to local CE-router. </p>
+<p>If the customer continues to run pure IP, you’ll still have just two labels in your MPLS core (MP-BGP label on top of LDP label), but the LSP extends beyond PE-routers, which can be useful if the customer wants to implement BGP-free core. CsC architecture also allows your customers to implement layered QoS – they can control both the Traffic Class (former Experimental) bits in the MPLS label and DSCP bits in IP header.</p>
+<p>All of the PE-CE functionality is totally invisible to your P-routers. However, if the customer decides to offer MPLS/VPN service on top of your MPLS/VPN service, you’ll see an extra label in your MPLS core – the only precaution you have to make in your network design is to use larger MTU size (add at least 20 bytes – 5 labels – to the maximum MTU you want to support).</p>
+<p>And you probably know where to find more information about CsC architecture – three guys wrote a <a href="http://www.amazon.com/gp/product/1587051125/ref=as_li_tf_tl?ie=UTF8&amp;tag=cisioshinandt-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399353&amp;creativeASIN=1587051125">great sequel</a> to a <a href="http://www.amazon.com/gp/product/1587050021/ref=as_li_tf_tl?ie=UTF8&amp;tag=cisioshinandt-20&amp;linkCode=as2&amp;camp=217145&amp;creative=399353&amp;creativeASIN=1587050021">great MPLS/VPN</a> book a while ago.</p>
+

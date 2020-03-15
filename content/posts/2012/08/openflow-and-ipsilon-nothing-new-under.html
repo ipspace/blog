@@ -1,0 +1,17 @@
+---
+title: "OpenFlow and Ipsilon: Nothing New Under the Sun"
+date: "2012-08-13T06:31:00.000+02:00"
+tags: [ MPLS,SDN,OpenFlow ]
+---
+
+<p>I’d promised to record another MPLS-related podcast and wanted to refresh my failing memory and revisit the beginnings of Tag Switching (Cisco’s proprietary technology that was used as the basis for MPLS). Several companies were <a href="http://blog.ioshints.info/2011/01/campfire-true-story-of-mpls.html">trying to solve the IP+ATM integration problem in mid-nineties</a>, most of them using IP-based architectures (Cisco, IBM, 3Com), while Ipsilon tried its luck with a flow-based solutions.<!--more--></p>
+<p>I found a <a href="http://www.cs.washington.edu/education/courses/csep561/97sp/paper1/paper11.txt">great overview of IP+ATM solutions in an article</a> published on the University of Washington web site. This is what the article has to say about Ipsilon’s approach (and if you really want to know the details, read <a href="http://tools.ietf.org/html/rfc1987">GSMP (RFC 1987)</a> and <a href="http://tools.ietf.org/html/rfc1953">Ipsilon Flow Management Protocol (RFC 1953)</a>):</p>
+<blockquote class="cite">An IP switch controller routes like an ordinary router, forwarding packets on a default VC. However, it also performs flow classification for traffic optimization.</blockquote>
+<p>Replace <em>IP switch controller </em>with OpenFlow controller and <em>default VC </em>with switch-to-controller OpenFlow session.</p>
+<blockquote class="cite">Once a flow is identified, the IP switch sets up a cut-through connection by first establishing a VC for subsequent flow traffic, and then by asking the upstream node to use this VC.</blockquote>
+<p>Likewise, some people propose <a href="http://blog.ioshints.info/2012/08/openstackquantum-sdn-based-virtual.html">downloading 5-tuples or 12-tuples in all the switches along the flow path</a>. The only difference is that 15 years ago engineers understood virtual circuit labels use fewer resources than 5-to-12-tuple policy-based routing.</p>
+<p>As expected, Ipsilon’s approach had a few scaling issues. From the same article:</p>
+<blockquote class="cite">The bulk of the criticism, however, relates to Ipsilon's use of virtual circuits. Flows are associated with application-to-application conversations and each flow gets its very own VC. Large environments like the Internet with millions of individual flows would exhaust VC tables.</blockquote>
+<p>Not surprisingly, a number of people (<a href="http://highscalability.com/blog/2012/6/4/openflowsdn-is-not-a-silver-bullet-for-network-scalability.html">myself included</a>) that still remember a bit of the networking history are making the exact same argument about <a href="http://blog.ioshints.info/2011/10/openflow-and-state-explosion.html">usage of microflows in OpenFlow environments</a> ... but it seems <a href="http://tools.ietf.org/html/rfc1925">RFC 1925</a> (section 2.11) will yet again carry the day.</p>
+<p class='update'>An hour after publishing this blog post, I realized (reading an <a href="http://siwdt.com/2012/08/12/some-working-thoughts-on-sdn/">article by W.R. Koss</a>) that Ed Crabbe <a href="http://static.techfieldday.com/wp-content/uploads/2011/10/TheLongRoadtoSDN.pdf">mentioned Ipsilon being the first attempt at SDN</a> during his <a href="https://vimeo.com/31176510">OpenFlow Symposium presentation</a>.</p>
+

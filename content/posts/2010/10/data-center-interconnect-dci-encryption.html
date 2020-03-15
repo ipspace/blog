@@ -1,0 +1,28 @@
+---
+title: "Data Center Interconnect (DCI) encryption"
+date: "2010-10-20T14:21:00.002+02:00"
+tags: [ security,Data Center,WAN ]
+---
+
+<p>Brad sent me an interesting DCI encryption question a while ago. Our discussion started with:</p>
+<blockquote class="cite">We have a pair of 10GbE links between our data centers. We talked to a hardware encryption vendor who told us our L3 EIGRP DCI could not be used and we would have to convert it to a pure Layer 2 link. This doesn't make sense to me as our hand-off into the carrier network is 10GbE; couldn't we just insert the Ethernet encryptor as a "transparent" device connected to our routed port ?</blockquote>
+<p>The whole thing obviously started as a layering confusion. Brad is routing traffic between his data centers (the <a href="http://blog.ioshints.info/2010/09/long-distance-vmotion-and-traffic.html">long-distance vMotion</a> demon hasn’t visited his server admins yet), so he’s talking about L3 DCI. </p>
+<p>The encryptor vendor has a different perspective and sent him the following requirements:</p>
+<!--more--><ol class="ListParagraph"><li>MAC address MUST be preserved.</li>
+<li>The network between encryptors cannot modify the Ethernet MAC addresses. </li>
+<li>Transmission order MUST be preserved:</li>
+<ul class="ListParagraph"><li>QOS MUST occur outside of encryptors, not between encryptors. QOS may reorder frames.</li>
+<li>L2 MPLS VPN - the MPLS control word MUST be enabled to guarantee transmission order.</li>
+<li>L2 payload SHALL NOT be looked into by network between encryptors.</li>
+</ul>
+</ol>
+<p>Their hardware is clearly using a proprietary encryption technology that looks like bump-in-the-wire at layer-2, so they can only work over L2 VPN offered by a Service Provider (VPLS or pseudowire). Fortunately, Brad is actually buying a L2 VPN (over which he runs L3 with EIGRP), so everything worked out just fine.</p>
+<h4>Lessons learned</h4><ol class="ListParagraph"><li>When you buy standalone encryption devices, check whether they support IPSec or not.</li>
+<li>If the encryption device does not support IPSec, it might work as a layer-3 device (router) or as a layer-2 device (bump-in-the-wire).</li>
+<li>In both cases, using MPLS/VPN services from the service provider could be questionable, as you need to run PE-CE routing protocol across the encryption device.</li>
+<li>It’s easiest to combine external encryptors with layer-2 VPN services (VPLS, pseudowire) or dark fiber, regardless of whether you run L2 or L3 transport across the link.</li>
+<li>Even when the encryption vendor claims its device is a bump-in-the-wire, check whether it supports point-to-point or any-to-any encrypted sessions. If it’s a point-to-point device, it’s best used over a pseudowire.</li>
+</ol>
+<h4>More information</h4><p><a href="http://www.ioshints.info/Choose_the_optimal_VPN_service"><em>Choose the Optimal VPN Service</em></a> webinar (<a href="http://choosevpn.eventbrite.com/">register here</a>) describes numerous VPN services, including (layer 3) MPLS/VPN, (layer 2) VLPS and pseudowires. It also explains how each services looks from the enterprise network perspective and how it’s best used.</p>
+<p><a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/SingleRecording?code=DC30">buy a recording</a> or <a href="http://www.ioshints.info/Subscription">yearly subscription</a>). covers (among tens of other topics) four DCI scenarios, including pseudowires, VPLS-based solutions, OTV and multiple user-side EoMPLS variants. The <a href="http://www.ioshints.info/DCI">Data Center Interconnects</a> webinar goes even deeper into the DCI topics and describes active-active data center designs.</p>
+

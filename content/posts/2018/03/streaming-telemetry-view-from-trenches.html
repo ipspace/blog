@@ -1,0 +1,19 @@
+---
+title: "Streaming Telemetry: View from the Trenches"
+date: "2018-03-20T13:31:00.000+01:00"
+tags: [ network management ]
+---
+
+<p>I asked <a href="http://www.ipspace.net/Author:David_Gee">David Gee</a> to review my streaming telemetry blog posts to make sure I didn&rsquo;t make too many blunders, and he sent me a nice summary of his view on the topic in return.</p>
+<p>The only thing I could do after reading it was to ask him for permission to do a copy-paste. Here it is:<!--more--></p>
+<ul class="ListParagraph"><li>A higher number of data consumers beyond basic Network Management Systems (NMS) now require instrumentation data. The eye of Sauron now looks at the network;</li>
+<li>CPUs in network devices are usually pathetic and weak by consumer standards, therefore they cannot handle the load of being queried constantly by multiple sources;</li>
+<li>Where possible, we should use the ASICs to stream this data in UDP and leave the CPU alone. Not possible for generic health telemetry, but we're good for the most part;</li>
+<li>The CPU should stream using a pub/sub mechanism rather than keep being hammered by polls;</li>
+<li>It's better to stream, store data in a Time-Series Database (TSDB) then query than keep hammering a mission-critical CPU that keeps network control plane alive;</li>
+<li>By having this data in a TSDB, data integrity for correlation is preserved. With staggered polling, data collection skews can cause issues.</li>
+<li>With Model-Driven Telemetry (MDT) and Google Protocol Buffers (GPB), we can use the data structures natively in applications that integrate with and surround the network without worrying about pesky SNMP or some crappy API on a crappy and outdated NMS;</li>
+<li>Streaming telemetry represents a convergence point between the world of application developers and networking. Despite it being a 'rinse and repeat', let&rsquo;s make developers&rsquo; lives easier by using an approach they can relate to. In the long run, customers have to be happy.</li>
+<li>Our silo has been smashed and now data that has been "our precious" is required elsewhere. MDT makes this whole thing much easier on everyone involved.</li>
+</ul>
+

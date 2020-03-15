@@ -1,0 +1,11 @@
+---
+title: "The short story of the “ip default-network” command"
+date: "2008-01-27T21:13:00.000+01:00"
+tags: [ IP routing ]
+---
+
+Brian Dennis wrote a long post about the <a href="http://blog.internetworkexpert.com/2008/01/15/issues-with-the-ip-default-network-command/">unexpected side effects of the <strong>ip default-network</strong> command</a>. The <a href="http://www.cisco.com/en/US/docs/ios/12_3/iproute/command/reference/ip2_i1g.html#wp1037313">Cisco documentation</a> describes the “side effects” but in an even more obscure manner.<br /><br />What's really happening is this:<br /><ul><li>If the parameter of the <strong>ip default-network</strong> command is a major network, it specifies the default route (how it gets inserted into the routing protocol you're using is a completely different story).</li>
+<li>If the parameter is a subnet of a major network, it specifies the default subnet for the network.</li>
+</ul>
+<p>In any case, it's an obscure leftover from the classful days that should probably never be used today outside of a CCIE lab.</p>
+

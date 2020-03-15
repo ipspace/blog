@@ -1,0 +1,23 @@
+---
+title: "Questions about Network Automation Workshop"
+date: "2016-09-06T12:50:00.000+02:00"
+tags: [ Automation,Training ]
+---
+
+<a name="_GoBack"></a><p><a href="https://www.linkedin.com/in/marcel-reuter-23804637">Marcel Reuter</a> sent me a few questions about my upcoming <a href="http://www.ipspace.net/Hands-On_Network_Automation">Network Automation workshop</a>. You might find them interesting, so here they are:</p>
+<blockquote class="cite">We have a lab with virtual IOS-XE, IOS-XR and Junos (vMX) router. I would like to learn how to provisioning the Lab router.</blockquote>
+<p>Covered in the workshop. I&rsquo;m focusing on vIOS (which is pretty close to IOS Classic and IOS-XE) and Nexus OS because that&rsquo;s what I can get up and running quickly in VIRL.<!--more--></p>
+<p>Also, these two platforms cover the worst possible network automation scenarios. Cisco IOS has no API and pretty broken NETCONF, and Nexus OS doesn&rsquo;t even have <strong>configuration replace</strong>.</p>
+<p class="note">You want to know how broken NETCONF is on Cisco IOS? David Gee covered the details in the <a href="http://www.ipspace.net/NETCONF_and_YANG">NETCONF and YANG webinar</a>. Nexus OS was worse (didn&rsquo;t test the latest versions) &ndash; you couldn&rsquo;t even retrieve the configuration with <strong>get-config</strong>.</p>
+<blockquote class="cite">Later, I would add baseline config&hellip;</blockquote>
+<p>Covered. We&rsquo;re talking about copying configs with <strong>scp </strong>or using Ansible networking modules to merge configurations. If Ansible 2.2 ships before the workshop, I&rsquo;ll add a section on configuration management (new network modules are full of configuration management goodies).</p>
+<blockquote class="cite">&hellip; and after running the tests I&rsquo;d want to go back to previous config.</blockquote>
+<p>All three platforms (IOS XE, IOS XR and Junos) have <strong>configuration replace </strong>functionality, so that shouldn&rsquo;t be a problem, and we&rsquo;ll talk about executing commands on networking devices using Ansible modules. Replacing configuration works like a charm on vMX, probably also on IOS-XR, with some glitches on IOS-XE (policy maps are a beast).</p>
+<p>However, as my reader is running a virtual lab, it might be easier to just clone or snapshot the VMs and rollback to the previous state using the virtualization platform.</p>
+<blockquote class="cite">Will you cover using network automation in live environment?</blockquote>
+<p>Absolutely, including all sorts of caveats ;)</p>
+<blockquote class="cite">We want to provide from the engineering team config templates and plan changes to live network routers, but before rolling out these new changes, the OPS dream have to agree on the changes.</blockquote>
+<p>These topics are well covered in the introductory part of the workshop (it&rsquo;s more about processes and procedures than tools), and if I find time within the next few weeks, I&rsquo;ll add a live demo of Github/Jenkins workflow.</p>
+<p>Interested? <a href="http://www.ipspace.net/Hands-On_Network_Automation">Register now</a>!</p>
+<div class='jump-link'><a href="http://www.ipspace.net/Hands-On_Network_Automation">Register now</a></div>
+

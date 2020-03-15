@@ -1,0 +1,38 @@
+---
+title: "Plexxi PSI: MAU at Gigabit Speed"
+date: "2013-09-18T07:26:00.001+02:00"
+tags: [ Data Center,Workshop,Fabric,Optical ]
+---
+
+<p>Regardless of the advantages of photonic switching (<a href="http://youtu.be/eIpV60EDkuw">David Husak claims it’s 20.000 times more effective than electronic switching</a>), the programmable optical components remain ludicrously expensive, prompting Plexxi to launch a cost-optimized fixed-topology version of their <a href="http://blog.ipspace.net/2013/06/data-center-fabrics-built-with-plexxi.html">data center products</a>.<!--more--></p>
+<p>The next generation of Plexxi switches has two product lines:</p>
+<ul class="ListParagraph"><li>Plexxi Switch 2 and 2S use the same WDM LightRail backbone as the existing Plexxi Switch 1;</li>
+<li>Plexxi Switch 2P and 2SP (targeting fixed-topology pods) use the same LightRail connectors, but simpler FP 1310 optics – each fiber pair in the LightRail cable carries a 10 GE point-to-point link.</li>
+</ul>
+<p>The beauty of the Plexxi solution is the <a href="http://blog.ipspace.net/2013/09/the-plexxi-challenge-or-dont-blame-tools.html">Chordal ring between the Plexxi switches</a> that obviates the need for the data center fabric spine layer. WDM-based Plexxi switches implement the ring with programmable optics (note: although the optical components are programmable, the current ring topology is fixed); in fixed-topology deployments the switches connect to a Pod Switch Interconnect (PSI) that implements the Chordal ring with prewired fiber cables. </p>
+<p>Here’s how a 2-pod deployment would look like:</p>
+<div class='separator'><a href="http://4.bp.blogspot.com/-_hUuqrpK1aA/UjgDsYQ0AMI/AAAAAAAAGHw/G5fmvupfoRI/s1600/Plexxi_2pod.png" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-_hUuqrpK1aA/UjgDsYQ0AMI/AAAAAAAAGHw/G5fmvupfoRI/s550/Plexxi_2pod.png" /></a><br>Source: <a href="http://youtu.be/yUrWo_WIZ1M">Plexxi presentation @ NFD6</a></div>
+<p>Plexxi claims PSI has these capabilities:</p>
+<ul class="ListParagraph"><li>100% passive optical chassis solution;</li>
+<li>Passive bypass;</li>
+<li>Online insertion-and-removal of nodes;</li>
+<li>Inter-switch paths not disrupted by leaf node maintenance.</li>
+</ul>
+<p>Sounds exactly like a description of a <a href="http://en.wikipedia.org/wiki/Media_Access_Unit">Token Ring MAU</a> to me ;)</p>
+<div class='separator'><a href="http://1.bp.blogspot.com/-CdIxLc-sHa0/UjgD7z73vdI/AAAAAAAAGH4/Jftc9oHaoHY/s1600/Plexxi_PSI.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-CdIxLc-sHa0/UjgD7z73vdI/AAAAAAAAGH4/Jftc9oHaoHY/s400/Plexxi_PSI.png" /></a><br>Source: <a href="http://youtu.be/yUrWo_WIZ1M">Plexxi presentation @ NFD6</a></div>
+<p>Joking aside, you might be left wondering (like we were): how exactly does a PSI work?</p>
+<h4>PSI Internal Wiring</h4><p>Let’s start with a 30-node Plexxi ring implemented with WDM switches. Each node establishes four 10GE connections (lambdas) with adjacent (east and west) nodes and two 10GE connection with subsequent four east and west nodes. The Chordal ring between the 30 switches looks like this (width of the line between two nodes represents bandwidth; individual lambdas are not shown). <p class='note'>The “bypass” links that don’t touch individual nodes still flow through the nodes on the WDM optical layer.</p>
+<div class='separator'><a href="http://3.bp.blogspot.com/-2Je_Hf2JwgI/UjfxWSVMDeI/AAAAAAAAGHU/iobLGQ3YkU0/s1600/PSI_C30.png" imageanchor="1" ><img border="0" src="http://3.bp.blogspot.com/-2Je_Hf2JwgI/UjfxWSVMDeI/AAAAAAAAGHU/iobLGQ3YkU0/s400/PSI_C30.png" /></a><br />Plexxi Chordal ring with 30 nodes (5 pods)</div>
+<p>Focus on a single 6-node section of the ring. These are the optical connections (lambdas) between the six nodes that we’ll turn into a pod and the rest of the switches in the ring</p>
+<div class='separator'><a href="http://1.bp.blogspot.com/-JXCXSo2K9Uw/UjfxVBk9zNI/AAAAAAAAGHc/mhU3Ub_Ibqw/s1600/PSI_6pod-crop.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-JXCXSo2K9Uw/UjfxVBk9zNI/AAAAAAAAGHc/mhU3Ub_Ibqw/s550/PSI_6pod-crop.png" /></a><br />Connectivity of a single 6-node pod</div>
+<p>Replace the lambdas in the Chordal ring with fixed fibers. Optical connections (now fibers) that would terminate at a node are hard-wired to the node’s access port on the PSI. Two 24-strand cables connect the node (switch) and its associated PSI ports, implementing 12 x 10GE connectivity in east and west directions.</p>
+<div class='separator'><a href="http://1.bp.blogspot.com/-Tdb5dK2W0_0/UjfxVMfqW3I/AAAAAAAAGHA/-Yo5oERX-P8/s1600/PSI_6pod_cables-crop.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-Tdb5dK2W0_0/UjfxVMfqW3I/AAAAAAAAGHA/-Yo5oERX-P8/s550/PSI_6pod_cables-crop.png" /></a><br />Pod wiring implemented with PSI</div>
+<p>The “bypass” links cannot flow through the switch nodes anymore; they have to be implemented within the PSI. The internal PSI wiring that implements intra-pod connectivity looks like this:</p>
+<div class='separator'><a href="http://1.bp.blogspot.com/-n6VC310oYmE/UjfxV7BriTI/AAAAAAAAGHM/Tj67p2VcnXE/s1600/PSI_6pod_internal-crop.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-n6VC310oYmE/UjfxV7BriTI/AAAAAAAAGHM/Tj67p2VcnXE/s550/PSI_6pod_internal-crop.png" /></a><br />Intra-pod PSI connections</div>
+<p>Connections in our Chordal ring extend beyond a single pod. PSI has to provide those as well – fibers link individual node ports with East and West extender ports:</p>
+<div class='separator'><a href="http://1.bp.blogspot.com/-IGoK1DhxIvE/UjfxVHBmkaI/AAAAAAAAGHE/hNm5BzHYX4I/s1600/PSI_6pod_external-crop.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-IGoK1DhxIvE/UjfxVHBmkaI/AAAAAAAAGHE/hNm5BzHYX4I/s550/PSI_6pod_external-crop.png" /></a><br />External PSI connections</div>
+<p>Now, what happens if you deploy a single Plexxi pod? All the red links from the previous figure become disconnected (and <a href="http://dilbert.com/strips/comic/1996-05-02/">bits might drop on the floor</a>), significantly reducing the overall bandwidth available in the ring backbone. To use all the available backbone bandwidth in a single pod deployment, you <em>must </em>connect East extender interfaces with West extender interfaces <em>of the same PSI</em>, as shown in the wiring diagrams from the Plexxi NDF6 presentation:</p>
+<div class='separator'><a href="http://2.bp.blogspot.com/-lrIUto0WjiU/UjgEFQTCYeI/AAAAAAAAGIA/0WPxQnP5rBE/s1600/Plexxi_Wiring.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-lrIUto0WjiU/UjgEFQTCYeI/AAAAAAAAGIA/0WPxQnP5rBE/s550/Plexxi_Wiring.png" /></a><br>Source: <a href="http://youtu.be/yUrWo_WIZ1M">Plexxi presentation @ NFD6</a></div>
+<h4>More information</h4><p>To learn more about the new Plexxi products, <a href="http://youtu.be/yUrWo_WIZ1M">watch the NFD6 video</a>. To learn more about the underlying principles and their controller-based networking, watch <a href="http://demo.ipspace.net/get/5.20%20-%20Plexxi%20Affinity%20Networking.mp4">Dan Backman’s presentation</a> from <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabric Architectures</a> webinar.</p>
+<h4>Disclosure</h4><p>Plexxi was a <a href="http://blog.ipspace.net/p/networking-tech-field-day-disclaimer.html">sponsor of Networking Tech Field Day 6</a>.</p>
+

@@ -1,0 +1,28 @@
+---
+title: "Network Automation @ Spotify on Software Gone Wild"
+date: "2014-07-17T07:56:00.000+02:00"
+tags: [ Podcast,SDN,Software Gone Wild ]
+media: http://media.blubrry.com/ipspace/www.ipSpace.net/nuggets/podcast/Show_4-Ansible_%20_Spotify_with_David_Barosso.mp3
+---
+
+<p>What can you do if you have a small team of networking engineers responsible for four ever-growing data centers (with several hundred network devices in each of them)? There’s only one answer: you try to survive by automating as much as you can.</p>
+<p>In the <a href="http://media.blubrry.com/ipspace/www.ipSpace.net/nuggets/podcast/Show_4-Ansible_%20_Spotify_with_David_Barosso.mp3"><span class=" high">fourth episode</span></a> of <a href="http://www.ipspace.net/Podcast/Software_Gone_Wild"><span class=" high">Software Gone Wild</span></a> podcast <a href="http://se.linkedin.com/in/dbarrosop"><span class=" high">David Barosso</span></a> from <a href="https://www.spotify.com"><span class=" high">Spotify</span></a> explains how they use network automation to cope with the ever-growing installed base without increasing the size of the networking team.<!--more--></p>
+<p>During our chat we also touched on other topics you might find interesting:</p>
+<ul class="ListParagraph"><li>The rate of change is incredible: everything that is six months old is already legacy.</li>
+<li>Using proper software development tools and processes: the networking team develops a pilot implementation (the hacking phase), and hands it over to software developers that productize it.</li>
+<li>Don’t overautomate: the monitoring software detects broken tunnels, but the changes are still triggered by an operator;</li>
+<li>Dealing with multi-vendor environment: vendor-specific device configuration syntax is stored in <a href="http://www.ansible.com/home"><span class=" high">Ansible</span></a> templates;</li>
+<li>Scale-out the WAN connectivity: they need a scale-out farm of VPN termination devices to cope with the inter-DC traffic;</li>
+<li>Using Ansible for troubleshooting: device-dependent scripts extract information in JSON format, which is then used in Ansible playbooks to perform basic troubleshooting;</li>
+<li>CLI on top of Ansible: use Ansible to create service deployment scripts that can be invoked with simple CLI commands by the operators;</li>
+</ul>
+<p>Of course we had to mention numerous technical details, including:</p>
+<ul class="ListParagraph"><li>BGP-based SDN: They use BGP communities to take unreliable VPN tunnels out of the forwarding path;</li>
+<li>Graceful shutdown: the solutions implemented by the vendors are not exactly graceful. Spotify is using an Ansible playbook to implement a proper graceful shutdown – setting the IS-IS overload bit and using BGP AS-path prepending to redirect traffic before shutting down a network device;</li>
+<li>Broken APIs: most APIs offered by networking vendors are just poor CLI wrappers;</li>
+<li>Ansible’s language independence: apart from having to write the templates in Jinja2, you can write Ansible modules in any language as long as the language can be made to support JSON encoding;</li>
+</ul>
+<p></p>
+<p><a href="http://media.blubrry.com/ipspace/www.ipSpace.net/nuggets/podcast/Show_4-Ansible_%20_Spotify_with_David_Barosso.mp3">Enjoy the podcast</a>, explore the other <a href="http://www.ipspace.net/Podcast/Software_Gone_Wild">Software Gone Wild episodes</a>, and don’t forget to <a href="https://itunes.apple.com/si/podcast/software-gone-wild-by-ipspace.net/id893135132?mt=2">leave a review on iTunes</a>.</p>
+<audio src='http://media.blubrry.com/ipspace/www.ipSpace.net/nuggets/podcast/Show_4-Ansible_%20_Spotify_with_David_Barosso.mp3' controls='yes' style='width: 100%'></audio>
+

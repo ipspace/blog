@@ -1,0 +1,14 @@
+---
+title: "Internet Access Russian Dolls"
+date: "2008-10-05T07:14:00.002+02:00"
+tags: [ PPP,LAN ]
+---
+
+<p style="text-align: left">When the local Telco installed my blindingly fast 20 Mbps Internet-over-fiber-cable service, I was expecting to use DHCP on the router’s outside interface to connect to the Internet. After all, they’re running switched Ethernet VLANs over the fiber cable, and using DHCP seemed a logical choice. Imagine my surprise when I had to <strong>configure PPP-over-Ethernet (PPPoE)</strong> – it was as if I would be using a DSL connection, not a fiber-optic cable.<!--more--> Instead of running IP directly over switched Ethernet (like we’re doing in most networks), <strong>my IP packets get encapsulated in PPP frames</strong>. <a href="http://tools.ietf.org/html/rfc2516">PPPoE headers</a> are then prepended to the PPP frames and the resulting payload sent over switched Ethernet to the remote access server, almost like <a href="http://en.wikipedia.org/wiki/Matryoshka_doll">Russian dolls</a>.</p>
+<p>After I considered this seemingly weird choice for a while, though, <strong>using PPPoE for Internet access</strong> didn’t seem such a bad idea after all:</p>
+<ul><li><strong>DHCP has no real authentication mechanism.</strong> While it’s possible to use MAC authentication, it’s a nightmare to manage; every time you replace your hardware, you have to call your ISP. The ISP might use 802.1X for authentication and DHCP for address allocation, but that would be just another untested combination of technologies. (My service also offers DSL connections, so using the same authentication mechanism on fiber-optic cable makes life easier.)</li>
+<li><strong>PPPoE sessions are point-to-point sessions.</strong> If you configure PPPoE and no IP address on your SOHO router’s outside interface, it’s harder for someone to inject packets into your data stream than it would be if you used a switched or shared LAN-like media (for example, cable Internet).</li>
+<li><strong>Terminated PPPoE sessions generate dynamic interfaces.</strong> You can apply QoS parameters (for example, policing or shaping) on these interfaces, implementing granular rate-limiting for individual customers. Doing something similar on a switched VLAN would be an administrative nightmare.</li>
+</ul>
+<p style="text-align: left">As with any solution, <strong>using PPPoE everywhere has its drawbacks</strong>, the most obvious being the CPU power you need to terminate the high-speed PPPoE sessions…but you probably don’t really care, as long as you have spare capacity. Anyway, my service is charging me €25 a month (around $37) for a highly reliable, unrestricted symmetric 20 Mbps Internet connection – and as long as the price/performance ratio stays the same, I wouldn’t care if they used <a href="http://en.wikipedia.org/wiki/IP_over_Avian_Carriers">IP over Avian Carriers</a> to transport my data.</p>
+

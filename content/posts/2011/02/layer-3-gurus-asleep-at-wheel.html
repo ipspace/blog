@@ -1,0 +1,30 @@
+---
+title: "Layer-3 gurus: asleep at the wheel"
+date: "2011-02-09T13:04:00.002+01:00"
+tags: [ bridging,Data Center,Workshop,IP routing ]
+---
+
+<p>I just read a great article by Kurt (the Network Janitor) Bales <a href="http://www.network-janitor.net/2011/02/dcb-how-to-engineer-your-way-out-of-a-poor-architecture-decision/">eloquently describing how a series of stupid decisions led to the current situation</a> where everyone (but the people who actually work with the networking infrastructure) think stretched layer-2 domains are the mandatory stepping stone toward the cloudy nirvana.</p>
+<p>It’s easy to shift the blame to everyone else, including storage vendors (for their love of FC and FCoE) and VMware (for the broken vSwitch design), but let’s face the reality: the rigid mindset of layer-3 gurus probably has as much to do with the whole mess as anything else.</p>
+<!--more--><p>We should start with the business basics. Server virtualization became a viable solution a few years ago, saving the enterprises that embraced it tons of money (and countless server installation hours). The ability to move running virtual machines between physical servers (vMotion or Live Migration) is a huge bonus in a high-availability or changing-load environment. Is it so strange that the server admins want to use those features?</p>
+<p>Now, imagine a purely fictional dialog between a server admin trying to deploy vMotion and a L3-leaning networking guru:</p>
+<blockquote style='margin: 0.2em 2em; font-style: italic'><p>SA: You know what – VMware just introduced a fantastic new feature. vMotion allows me to move running virtual machines between physical servers.</p>
+<p>NG: So?</p>
+<p>SA: The only problem I have is that I have to keep the application sessions up and running.</p>
+<p>NG: So?</p>
+<p>SA: But they break down if I move the VM across the network.</p>
+<p>NG: Do they?</p>
+<p>SA: Yeah, supposedly it has to do with the destination server being in a different IP subnet.</p>
+<p>NG: You want to move a VM between IP subnets? How is that supposed to work? Obviously you have to change its IP address if it lands in a different IP subnet. Don’t you know how IP routing works?</p>
+<p>SA: But wouldn’t that kill all application sessions?</p>
+<p>NG: I guess it would. Is that a problem?</p>
+<p>SA: Is there anything else we could do?</p>
+<p>NG: Sorry, pal, that’s how routing works. Shall I explain it to you?</p>
+<p>SA: But VMware claims that if I have both servers in the same VLAN, things work.</p>
+<p>NG: Yeah, that could work. So you want me to bridge between the servers? (Feel free to add alternate endings in the comments ;)</p>
+</blockquote>
+<p>The sad part of the whole story is that we had a L3 solution available for decades – Cisco’s Local Area Mobility (LAM), which created host routes based on ARP requests, was working quite well in the 1990s. IP mobility could be another option, but would obviously require modifications in the guest operating system, which is usually considered a taboo.</p>
+<p>It’s obvious that the programmers working on vSwitch/vMotion code (or Microsoft Network Load Balancing) lacked networking knowledge and rarely considered anything beyond their lab environment, declaring the product ready-to-deploy as soon as they could get two or three boxes working over a $9.99 switch. It’s also quite obvious that the networking vendors (including Cisco, Juniper, HP, and everyone else) did absolutely nothing to solve the problem. The worst offender (in my opinion) is Nexus 1000V. It could have been a great L3 platform, solving most of the architectural problems we’re endlessly debating, but instead Cisco decided to launch a product with a minimum feature set needed to get a reasonable foothold in the ESX space.</p>
+<p>It’s infinitely sad to watch all the networking vendors running around like headless chickens trying to promote yet-another <em>fabric routing at layer-2 </em>solution, instead of stepping back and solving the problem where it should have been solved: within layer 3.</p>
+<h4>More information</h4><p>To learn more about the challenges server virtualization brings to your Data Center network, watch my <a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/SingleRecording?code=DC30">buy a recording</a> or <a href="http://www.ioshints.info/Subscription">yearly subscription</a>). If you have to implement a layer-2 solution spanning multiple data centers, <a href="http://dci.eventbrite.com/">register for</a> the <a href="http://www.ioshints.info/DCI">Data Center Interconnect</a> webinar.</p>
+

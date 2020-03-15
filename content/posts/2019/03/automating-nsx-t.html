@@ -1,0 +1,15 @@
+---
+title: "Automating NSX-T"
+date: "2019-03-28T08:36:00.000+01:00"
+tags: [ Automation,NSX,virtualization ]
+---
+
+<p>An attendee of our <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course decided to automate his NSX-T environment and sent me this question:</p>
+<blockquote class="cite">I will be working on NSX-T quite a lot these days and I was wondering how could I automate my workflow (lab + production) to produce a certain consistency in my work.</blockquote>
+<blockquote class="cite">I&rsquo;ve seen that VMware relies a lot on PowerShell and I&rsquo;ve haven&rsquo;t invested a lot in that yet &hellip; and I would like to get more skills and become more proficient using Python right now.</blockquote>
+<p>Always select the most convenient tool for the job, and regardless of personal preferences PowerShell seems to be the one to use in this case.<!--more--> I know people who totally automated their NSX-V deployments using it (see also the <a href="https://my.ipspace.net/bin/list?id=PowerShell">PowerNSX</a> part of our free <a href="https://www.ipspace.net/PowerShell_for_Networking_Engineers">PowerShell for Networking Engineers</a> webinar).</p>
+<p>I never looked into the details of NSX-T API, but NSX-V (and everything else vSphere-related) seems to use SOAP (XML-based) REST API, and NSX-T is probably no different. While it&rsquo;s possible to interface with that API in any programming language, dealing with XML and its namespaces quickly becomes a major pain, so it&rsquo;s much easier if someone already wrote the wrappers that provide high-level functionality like Anthony Burke and Nick Bradford did for NSX-V.</p>
+<p>Last year VMware release PowerShell cmdlets for NSX-T, so that would be the <a href="https://www.virtuallyghetto.com/2017/10/vghetto-automated-nsx-t-2-0-lab-deployment.html">natural way to go</a>.</p>
+<blockquote class="cite">What do you think I should do? Start trying to reinvent my wheel that could help me to get more skills in Python and scratch my head? Or not reinvent the wheel but still scratch my head and stick with PowerShell?</blockquote>
+<p>The more programming environments you know the easier it will be to switch to a new one (trust me, started with COBOL, FORTRAN, Pascal, Lisp and Prolog back in the days, and have to deal with Perl, PHP, Python, JavaScript, CSS and a bit of Bash and Ruby these days), so the best thing to do if you want to automate NSX seems to be to invest some time in learning PowerShell.</p>
+

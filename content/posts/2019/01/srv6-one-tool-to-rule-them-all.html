@@ -1,0 +1,21 @@
+---
+title: "SRv6: One Tool to Rule Them All"
+date: "2019-01-31T08:46:00.000+01:00"
+tags: [ IPv6 ]
+---
+
+<p>I got some interesting feedback from one of my readers on Segment Routing with IPv6 extension headers:</p>
+<blockquote class="cite">Some people position SRv6 as the universal underlay and overlay due to its capabilities for network programming by means of feature+locator SRH separation.</blockquote>
+<p>Stupid me replied &ldquo;<em>SRv6 is NOT an overlay solution but a source routing solution.</em>&rdquo;<!--more--></p>
+<h4>So where would I need source routing?</h4><p>Considering that, where would you need source routing (the ability to specify intermediate hops in the path)? For example, it doesn&rsquo;t work well with service chaining unless your VNFs support it</p>
+<p>There are some supposed use cases where you could use your ISP as global transport backbone even when your end sites are connected to another ISP. This might even make sense&hellip;</p>
+<p>Then there are actual use cases for source routing in WAN edge of large content providers &ndash; they want to send the traffic to from their web proxy servers to some destinations over multiple uplinks. Not surprisingly, every solution along these lines that I&rsquo;m aware of uses either L2 tricks or MPLS because they work (as opposed to works-with-engineering-code-in-PowerPoint technologies).</p>
+<h4>Back to one-tool-to-rule-them-all</h4><p>I should have known better. Here&rsquo;s what I got back from the same reader:</p>
+<blockquote class="cite">I guess their point is that in case of SRv6 you get a single mechanism that can be used for underlay (like MPLS transport in fabric) and for overlay (send instructions to particular end points where l3vpn should start for example), so instead of MPLS or VXLAN+IP you get SRv6 with IPv6 :)</blockquote>
+<p>RFC 1925 Rule 5 immediately comes to mind:</p>
+<blockquote class="cite">It is always possible to agglutinate multiple separate problems into a single complex interdependent solution. In most cases this is a bad idea.</blockquote>
+<p>In plain English: Just because you could doesn&rsquo;t mean that you should.</p>
+<p>In a word: Don&rsquo;t.</p>
+<p>Also, if you&rsquo;re looking for a universal tool, why don&rsquo;t you start with this one&hellip; and once you cut down a tree with it, and make a table out of that tree, while brushing your teeth, cutting your fingernails, and opening a bottle of wine, do let me know how it worked out.</p>
+<div class='separator'><a href="https://1.bp.blogspot.com/-oP18NFD6P4A/XEs9fz1Q4MI/AAAAAAAAJRg/iW6cpcwPIEo9T_w1aykjQ-Oz96yK22d7ACPcBGAYYCw/s1600/Universal%2BTool.jpg" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-oP18NFD6P4A/XEs9fz1Q4MI/AAAAAAAAJRg/iW6cpcwPIEo9T_w1aykjQ-Oz96yK22d7ACPcBGAYYCw/s1600/Universal%2BTool.jpg" data-original-width="425" data-original-height="299" /></a></div>
+

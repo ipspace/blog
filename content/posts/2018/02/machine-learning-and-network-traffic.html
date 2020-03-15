@@ -1,0 +1,24 @@
+---
+title: "Machine Learning and Network Traffic Management"
+date: "2018-02-05T08:49:00.000+01:00"
+tags: [ Automation,traffic engineering ]
+---
+
+<p>A while ago Russ White (answering a reader question) <a href="https://rule11.tech/responding-to-readers-automated-design/">mentioned some areas where we might find machine learning useful</a> in networking:</p>
+<blockquote class="cite">If we are talking about the overlay, or traffic engineering, or even quality of service, I think we will see a rising trend towards using machine learning in network environments to help solve those problems. I am not convinced machine learning can&nbsp;solve&nbsp;these problems, in the sense of leaving humans out of the loop, but humans could set the parameters up, let the neural network learn the flows, and then let the machine adjust things over time. I tend to think this kind of work will be pretty narrow for a long time to come.</blockquote>
+<p>Guess what: as fancy as it sounds, we don&rsquo;t need machine learning to solve those problems.<!--more--></p>
+<p>Commercial products that pretty successfully solved these problems have been on the market for decades (example: Cariden) and some large SPs used NetFlow data to dynamically adjust their MPLS/TE configuration as soon as Cisco rolled out MPLS/TE in release 12.0T.</p>
+<p>Furthermore, like with self-driving cars and most other problems that have to deal with messy reality instead of abstract games, there are the pesky laws of physics. We&rsquo;re limited in how we can classify the traffic, the size of the classification tables, and in metrics we can collect about traffic behavior (see also: sampled NetFlow).</p>
+<p class="info">Elisa Jasinska and Paolo Lucente described these problems in great detail in their <em><a href="http://www.ipspace.net/NetFlow">Network Visibility with Flow data</a></em> webinar.</p>
+<p>Engineers who know what they&rsquo;re doing and work in an environment that allows them to get the job done have already blown away those limitations by moving the hard part of the problem to where problem size matters less &ndash; the servers. Google, Fastly, Facebook&hellip; manage outgoing traffic on their edge servers where it&rsquo;s relatively cheap to have complex algorithms and large tables.</p>
+<p>Until the rest of us get there, we&rsquo;ll be dealing with pretty coarse-grained knapsack problem, and there&rsquo;s only so much you can do there. However, as the knapsack problem is an NP-complete problem and cannot be solved perfectly for large datasets, we might get to a point where machine learning algorithms give us better results than the best heuristic algorithms we manage to develop, but that&rsquo;s a far cry from what we&rsquo;re being promised.</p>
+<p class='update'>2017-02-07: John Evans pointed me to <a href="https://arxiv.org/abs/1703.06967">an article</a> describing exactly that: they got 5-8% better results than with traditional heuristic algorithms.</p>
+<p><strong>Interesting anecdote</strong>: while mountain biking around Slovenia I bumped into a graduate student who developed a genetic algorithm that played Tetris better than any human ever could hope for, so there&rsquo;s definitely a huge opportunity in using machine learning to improve our existing algorithms, but I don&rsquo;t believe we&rsquo;ll get some fundamentally new insights or solutions any time soon.</p>
+<p><strong>Another data point:</strong> I was speaking with Cariden engineers just before they were acquired by Cisco, and they told me they already had a fully-automated solution that:</p>
+<ul class="ListParagraph"><li>Collected data</li>
+<li>Optimized the network configuration using either routing protocol costs or MPLS/TE tunnels</li>
+<li>Simulated worst-case failure scenario and the impact it would have on the optimized network</li>
+<li>Automatically deployed optimized configuration in the network.</li>
+</ul>
+<p>However, none of their customers was brave enough to start using the last step in the process.</p>
+

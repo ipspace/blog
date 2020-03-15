@@ -1,0 +1,14 @@
+---
+title: "L2TP default routing: solutions"
+date: "2010-04-08T06:39:00.001+02:00"
+tags: [ PPP,IP routing,MPLS VPN,WAN ]
+---
+
+<p>There are three tools that can (according to a CCIE friend of mine) solve any networking-related problems: GRE tunnels, PBR and VRFs. The solutions to the <a href="http://blog.ioshints.info/2010/04/small-steps-to-large-complexity.html">L2TP default routing challenge</a> nicely prove this hypothesis; most of them use at least one of those tools.</p>
+<p><strong>Policy-based routing on virtual template interface.</strong> Use the default route toward the Internet and configure PBR with <strong>set default next-hop </strong>on the virtual template interface. The PBR is inherited by all virtual access interfaces, ensuring that the traffic from remote sites always passes the network core (and the firewall, if needed).</p>
+<!--more--><p><strong>Virtual template and core interfaces in a VRF.</strong><strong> </strong>Use Multi-VRF (formerly known as VRF Lite) to separate LAC-LNS routing from inter-site routing. Keep LAC-LNS traffic in global table and assign the virtual template and the core LAN interface to a VRF.</p>
+<p><strong>L2TP interface in the VRF</strong>. In recent IOS releases L2TP is VRF-aware, allowing you to turn around the previous solution: LAC-LNS traffic uses VRF routing, inter-site traffic uses the default IP routing table. This solution is better, as it allows you to manage the LNS through the global IP routing table (in the previous solution you’d have to make all network management services as well as AAA VRF-aware).</p>
+<p><strong>Get more-specific LAC routing from the Service Provider.</strong> In the ideal world you’d be working with a Service Provider that understands your needs and sends you LAC IP addresses in a BGP session. I loved this solution, as it’s clean, easy to understand and scalable ... it just requires a knowledgeable Service Provider.</p>
+<p><strong>Dual LNS.</strong> Use an outside and an inside LNS. The outside LNS (using default routing toward the Internet) receives an L2TP session from LAC and propagates it to inside LNS (using default routing toward network core).</p>
+<p>I’d like to thank everyone who replied; you’ve yet again proven that you’re a special audience. Special thanks go to Robert (for solving the problem with BGP), Nitzan (for pointing out yet another IOS feature I was not aware of) and Christoph (for a creative use of multi-hop L2TP).</p>
+

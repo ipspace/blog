@@ -1,0 +1,20 @@
+---
+title: "Campfire: the true story of MPLS"
+date: "2011-01-05T06:32:00.000+01:00"
+tags: [ MPLS,MPLS VPN ]
+---
+
+<p>Just before 2010 disappeared, a tweet by my friend Greg @etherealmind Ferro triggered a minor twitstorm. He <a href="http://twitter.com/etherealmind/status/19782021085667328">wrote</a>:</p>
+<blockquote class="cite">If we had implemented IPv6 ten years ago, would we have MPLS today? I think not.</blockquote>
+<p>His tweet contains two major misconceptions:</p>
+<ul class="ListParagraph"><li>MPLS was designed to implement layer-3 VPN services;</li>
+<li>We wouldn’t need VPNs if everyone would be using global IPv6 addresses.</li>
+</ul>
+<p>I’ll focus on the first one today; the inaccuracy of the second one is obvious to anyone who was asked to implement MPLS VPNs in enterprise networks to ensure end-to-end path separation between departments or users with different security levels (to learn more about benefits of using MPLS/VPN in enterprise networks, <a href="http://mpls.eventbrite.com/">register for</a> my  <a href="http://www.ioshints.info/EnterpriseMPLS">Enterprise MPLS/VPN Deployment </a>webinar).</p>
+<!--more--><p>OK, so here’s the true story about the early days of MPLS: approximately 15 years ago, Internet Service Providers (ISPs) were experiencing traffic growth they couldn’t handle with their existing router gear. In those days, ASICs were expensive and the hardware layer-3 switching that we use today didn’t exist (Cisco used custom CPUs in their AGS+ and 7000 series routers, but those chips were a far cry from today’s TCAMs). Router performance was thus extremely limited – the best you could get was an 155 Mbps <a href="http://www.cisco.com/en/US/products/hw/routers/ps332/products_installation_and_configuration_guide_chapter09186a00800e9d02.html">OC-3/STM-1 port <em>per linecard</em></a>.</p>
+<p>The only boxes offering higher-speed interfaces and high-throughput forwarding in those days were the ATM switches. Major ISPs were thus building ATM backbones (not because they loved ATM but because the routers didn’t have OC-12 interfaces) and using routers as ATM edge devices. As anyone who was ever faced with building Frame Relay networks knows, deploying a full-mesh network with numerous nodes is a major management and configuration nightmare. Equipment vendors were thus trying to implement tighter integration between router and ATM switch control planes.  Everyone that mattered was offering their own solution: Cisco had Tag Switching, IBM and Toshiba had their own technologies and (as always) there was a startup (Ipsilon) trying to get foot in the door.</p>
+<p class="more">You can find more details in <a href="http://www.netcraftsmen.net/resources/archived-articles/491.html">an article written by Peter Welcher in 1997</a>.</p>
+<p>Tag switching was the winner of the race and became the obvious standardization candidate ... but of course the competitors had to throw a few wrenches in the gears to ensure Cisco didn’t have an “unfair” lead, so the IETF working group replaced Tag Distribution Protocol (TDP) with completely different (but mostly functionally equivalent) Label Distribution Protocol, while the data-plane packet format remained unchanged.</p>
+<p>After a few years, someone realized that the Label Switched Paths (LSP) that MPLS needed to traverse the ATM networks could be used to transport other types of traffic in parallel with IP and started the MPLS/VPN development efforts. My MPLS/VPN book was published at approximately the same time (2001) as the MPLS/VPN code appeared in a public IOS release in 12.0(5)T; MPLS/VPN is thus several years younger than Tag Switching.</p>
+<p class='more'>Last but definitely not least, if you’d like to hear more campfire stories, tell me which topics fascinate you most in the comments.</p>
+

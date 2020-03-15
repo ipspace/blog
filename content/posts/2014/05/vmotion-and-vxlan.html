@@ -1,0 +1,23 @@
+---
+title: "vMotion and VXLAN"
+date: "2014-05-21T07:31:00.000+02:00"
+tags: [ VXLAN,vMotion ]
+---
+
+<p>A while ago I wrote “<em>vMotion over VXLAN is stupid and unnecessary</em>” in a <a href="http://www.yellow-bricks.com/2013/01/29/vmotion-over-vxlan-is-it-supported/">comment to a blog post by Duncan Epping</a>, assuming everyone knew the necessary background details. I was wrong (again).<!--more--></p>
+<p>Trying to understand my reasoning Jon sent me a very nice question:</p>
+<blockquote class="cite"><p>vMotion is an exchange of data between hypervisor kernels, VXLAN is a VM networking solution. I get that, but in one of your videos you say VXLAN is a solution to meet the L2 adjacency requirements of vMotion.<br><br>If you design a L3 IP transport network ie. L3 from access to aggregation but you wanted to use vMotion then how could you do that unless you used an overlay technoology such as VXLAN to extend the vlan across the underlying IP network.</p>
+</blockquote>
+<p>My somewhat imprecise claims often get me in trouble (this wouldn’t be the first time), let me try to straighten things out.</p>
+<p>vMotion requires:</p>
+<ul class="ListParagraph"><li>L2 adjacency between source and target hypervisor hosts for the port group in which the VM resides. Without the L2 adjacency you cannot move a live IP address and retain all sessions (solutions like Enterasys’ host routing are an alternative if you don’t mind longer traffic interruptions caused by routing protocol convergence time);</li>
+<li>IP connectivity between vmkernel interface of hypervisor hosts (vMotion uses TCP to transport data between hypervisors). VMware always claimed that you need L2 connectivity between hypervisor hosts, and that vMotion between hosts residing in multiple subnets is unsupported (supposedly it became supported last year), but it always worked.</li>
+</ul>
+<p>In other words, when you move a VM, its Ethernet NIC must reside in the same L2 segment after the move, but the vmkernel interfaces of the source and target hypervisor hosts can be in different subnets.</p>
+<p>You can implement the <em>VM NIC must be in the same L2 segment</em> requirement with VLANs (which require end-to-end L2 connectivity) or VXLAN (which emulates L2 segments across L3 infrastructure).</p>
+<h4>Related webinars</h4><ul class="ListParagraph"><li><a href="http://www.ipspace.net/VMware_Networking_Deep_Dive">VMware Networking Deep Dive</a></li>
+<li><a href="http://www.ipspace.net/Overlay_Virtual_Networking">Overlay Virtual Networking</a> (now extended with <a href="http://www.ipspace.net/Following_Packets_across_Overlay_Virtual_Networks">detailed packet flows</a>)</li>
+<li><a href="http://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN Technical Deep Dive</a></li>
+</ul>
+<p>Also, don’t forget to check out <a href="http://www.ipspace.net/Roadmap/Virtualization_webinars">other virtualization webinars</a> and the <a href="http://www.ipspace.net/Subscription">webinar subscription</a>.</p>
+

@@ -1,0 +1,18 @@
+---
+title: "Not So Fast Ansible, Cisco IOS Can’t Keep Up…"
+date: "2019-01-29T08:44:00.000+01:00"
+tags: [ Ansible,MPLS VPN ]
+---
+
+<p>Remember how earlier releases of Nexus-OS <a href="https://blog.ipspace.net/2017/04/lets-drop-some-random-commands-shall-we.html">started dropping configuration commands if you were typing them too quickly</a> (and how it was declared a feature ;)?</p>
+<p><a href="https://nexthop.global/">Mark Fergusson</a> had a similar experience on Cisco IOS. All he wanted to do was to use Ansible to configure a VRF, an interface in the VRF, and OSPF routing process on Cisco CSR 1000v running software release 15.5(3).</p>
+<p>Here&rsquo;s what he was trying to deploy. Looks like a configuration straight out of an MPLS book, right?<!--more--></p>
+<pre class="code">ip&nbsp;vrf&nbsp;Customer_A<br />&nbsp;rd&nbsp;65000:1<br />&nbsp;route-target&nbsp;import&nbsp;65000:1<br />&nbsp;route-target&nbsp;export&nbsp;65000:1<br />!<br />interface&nbsp;GigabitEthernet1.146<br />&nbsp;ip&nbsp;vrf&nbsp;forwarding&nbsp;Customer_A<br />&nbsp;ip&nbsp;address&nbsp;155.1.146.1&nbsp;255.255.255.0<br />&nbsp;ip&nbsp;ospf&nbsp;2&nbsp;area&nbsp;0<br /><br />router&nbsp;ospf&nbsp;2&nbsp;vrf&nbsp;Customer_A<br />&nbsp;&nbsp;router-id&nbsp;155.1.146.1<br />&nbsp;&nbsp;redistribute&nbsp;bgp&nbsp;65000&nbsp;subnets</pre><p>Guess what&hellip; when he tried to push that configuration to his CSR 1000v with Ansible <strong>ios_config </strong>module the in-VRF OSPF router process refused to start claiming it cannot get a router ID (<em>%OSPF-4-NORTRID: OSPF process 2 failed to allocate unique router-id and cannot start</em>). The whole thing worked when he tried to configure OSPF a bit later &ndash; looks like it takes some time to get a subinterface ready after it&rsquo;s been configured, and if you&rsquo;re typing too quickly you&rsquo;re out of luck.</p>
+<p class="info">Keep in mind that Ansible uses SSH session to configure a Cisco IOS device, so it&rsquo;s doing the exact same thing as if you&rsquo;d be a really fast typist.</p>
+<p>I could see two immediate solutions to this problem:</p>
+<ul class="ListParagraph"><li>Get a router that <a href="https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html">has a decent API</a> and all-or-nothing commit mechanism;</li>
+<li>Split the configuration in two parts and push them to the device using two <strong>ios_config </strong>calls. It takes Ansible long enough to work through its gazillion layers of abstraction for Cisco IOS to realize what just happened.</li>
+</ul>
+<p>On a somewhat tangential note, a friend of mine <a href="https://github.com/nremeetup/talks/blob/master/December_2018/NRE_December_2018.pptx">called the current state of network automation</a> &ldquo;Unix Scripting in 1970s&rdquo;. Unfortunately he wasn&rsquo;t too far off&hellip;</p>
+<hr /><p>To learn more about network automation with Ansible start with our <a href="https://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> webinar and when you&rsquo;re ready to move from writing playbooks to building solutions <a href="https://www.ipspace.net/Building_Network_Automation_Solutions#register">enroll</a> into <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions online course</a>.</p>
+

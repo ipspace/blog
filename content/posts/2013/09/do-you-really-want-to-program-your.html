@@ -1,0 +1,24 @@
+---
+title: "Do You REALLY Want to Program Your Network?"
+date: "2013-09-23T07:26:00.000+02:00"
+tags: [ SDN ]
+---
+
+<p>The primary benefit of SDN (as claimed by its promoters) is a geek’s dream: the ability to program the network (or, more precisely, control network’s behavior through programmable tools). </p>
+<p>Sounds great – we’ll finally be able to fix that pesky detail the vendor never wanted to implement (probably for a good reason). But should we REALLY do that?<!--more--></p>
+<p>If you’re Facebook, Yahoo or Google, the answer is obviously <em>Yes</em>.</p>
+<p>If you <a href="http://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html">prefer being MacGyver</a> over having a stable network (and love being called when your masterpiece crashes at 2AM), go for it ... but what if you happen to be <a href="http://blog.ipspace.net/2013/01/the-magical-u-curve-and-technology.html">somewhere in the middle of the U-curve</a>? Should you stay away from SDN until it crystalizes into mature shrink-wrapped software products or should you start getting your hands dirty?</p>
+<p><strong>Learning and labbing has never hurt anyone</strong>. You might not be ready to deploy OpenFlow or any other SDN tool in your network but that doesn’t mean you don’t have to know what it is and how it works. Experience never hurt anyone – if nothing else, you’ll be able to explain why things don’t work as well as marketing whitepapers claim they should.</p>
+<p>Get a few switches that support OpenFlow: <a href="http://archive.openflow.org/wk/index.php/Pantou_:_OpenFlow_1.0_for_OpenWRT">Linksys</a>, HP Procurve or <a href="http://wiki.mikrotik.com/wiki/Manual:OpenFlow">Mikrotik</a>. Download OpenDaylight. Make them work.</p>
+<p>Get Cisco’s CSR. Configure it with NETCONF. Connect it to a Quagga BGP daemon. Insert BGP routes into CSR’s forwarding table. Play with OnePK (once it becomes available).</p>
+<p>Figure out what Chef and Puppet are all about. Write a few Perl or Python scripts. Get some serious Linux skills.</p>
+<h4>From Theory to Practice</h4><p>You got your hands dirty in the lab. You got NETCONF running with a Cisco router and Juniper switch. You programmed an Arista switch with Python. You even got some OpenFlow entries into a switch to serve as ACLs. Your boss is not totally opposed to your ideas. Now what?</p>
+<p><strong>Go for the low-hanging fruit.</strong> There must be something in your environment that everyone detests doing, but it still has to be done. VLANs? ACLs? Some interesting logging and correlation stuff? You know it best. Go for it.</p>
+<p><strong>Make it useful</strong>. Solving the hard problem (example: configuring VLANs through NETCONF) is just half the work. Now you have to make your tool useful to everyone else. You’ll probably have to implement at least a minimal GUI (read: web page) to allow the operators to enter parameters and trigger your tool.</p>
+<p><strong>Aim for minimal impact</strong>. Whatever you do, start small – minimal configuration changes, minimal modifications to existing network operation. Go for solutions that you can deploy on individual non-critical devices.</p>
+<p><strong>Software development is more than writing code</strong>. Understanding the SDN technologies and tools and having some programming proficiency is not the end of the journey – it’s just the first step out of the Shire.</p>
+<p>You should approach your network programmability solution like any other mission-critical software project. It needs source control, unit tests, integration and validation tests and well-defined deployment process. You will probably have to fix a bug or two, in which case revision control and regression tests become a must.</p>
+<p>If the above paragraph sounds like Latin to you, find someone who knows more. If you have a good programming team in your environment, now’s a good time to talk to them and become their temporary apprentice.</p>
+<p><strong>No job is finished until the paperwork is done</strong>. Write the documentation and user instructions. You might also want to get <a href="http://www.amazon.com/Finished-Until-Paperwork-Done-Sign/dp/tech-data/B0087HXFVO">this</a> as a permanent reminder.</p>
+<p>Anything else? Sure, I have plenty of design and implementation ideas, but they’ll have to wait for another blog post.</p>
+

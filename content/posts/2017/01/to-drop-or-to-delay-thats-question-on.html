@@ -1,0 +1,19 @@
+---
+title: "To Drop or To Delay, That’s the Question on Software Gone Wild"
+date: "2017-01-27T09:02:00.000+01:00"
+tags: [ Podcast,QoS,Software Gone Wild ]
+media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_70-To_Drop_or_Not_to_Drop.mp3
+---
+
+<p>A while ago I decided it's time to figure out <a href="http://blog.ipspace.net/2016/09/policing-or-shaping-it-depends.html">whether it's better to drop or to delay TCP packets</a>, and quickly figured out you get 12 opinions (usually with no real arguments supporting them) if you ask 10 people. Fortunately, I know someone who deals with TCP performance for living, and <a href="https://www.snellman.net/blog/">Juho Snellman</a> was kind enough to agree to record another podcast.</p>
+<p class='update'>Update 2017-03-31: Added <em>More information</em> section<!--more--></p>
+<p><strong>Spoiler alert:</strong> many things we "know" about TCP are not exactly true. For example, packet drops are not a big deal (but selective&nbsp;acknowledgments&nbsp;and default retransmit timeouts are).</p>
+<p>Interestingly, we started discussing the reasons some <a href="https://www.snellman.net/blog/archive/2016-12-01-quic-tou/">people want to reinvent TCP, do it over UDP, and hide what they're doing from the network</a>, but quickly got back to the fundamental question: to drop or to delay.</p>
+<p>The answer is surprising: while you might get better results responding to increased delays (as opposed to packet drops), responding only to drops is a better survival strategy, as latency-sensitive algorithms back off sooner than drop-sensitive ones and thus starve in a congested networks when competing with drop-sensitive algorithms. </p>
+<p>For more details, listen to <a href="http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_70-To_Drop_or_Not_to_Drop.mp3">Episode 70</a> of <a href="https://www.ipspace.net/Podcast/Software_Gone_Wild">Software Gone Wild</a>.</p>
+<h3>More information</h3><ul><li><a href="https://research.google.com/pubs/pub43840.html">TIMELY article by Google researchers</a></li>
+<li><a href="http://queue.acm.org/detail.cfm?id=3022184">ACM queue article on BBR</a></li>
+<li><a href=https://blog.acolyer.org/2017/03/31/bbr-congestion-based-congestion-control/">Great BBR summary by The Morning Paper</a></li>
+</ul>
+<div class="jump-link"><a href="http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_70-To_Drop_or_Not_to_Drop.mp3">Listen to the podcast</a></div>
+

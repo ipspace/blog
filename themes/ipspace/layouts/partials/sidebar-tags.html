@@ -1,0 +1,14 @@
+<div class='widget Label' data-version='1' id='Label1'>
+  <h3 class='sidebar__title'>TAGS</h3>
+  <ul>
+    {{ range first 10 (.Site.Taxonomies.tags.ByCount ) }}
+      <li><a href="{{ .Page.Permalink }}">{{ .Page.Title}} ({{ .Count }})</a></li>
+    {{ end }}
+  </ul>
+  <ul class='additional-list'>
+    {{ range after 10 (.Site.Taxonomies.tags.ByCount ) }}
+      <li><a href="{{ .Page.Permalink }}">{{ .Page.Title}} ({{ .Count }})</a></li>
+    {{ end }}
+  </ul>
+  <button class='sidebar__btn'>see more</button>
+</div>

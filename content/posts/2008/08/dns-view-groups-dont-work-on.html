@@ -1,0 +1,10 @@
+---
+title: "DNS view-groups don't work on subinterfaces"
+date: "2008-08-15T07:22:00.000+02:00"
+tags: [ DNS ]
+---
+
+<div class="bloggerBody"><p>Working on an implementation of a split DNS design, I encountered an interesting bug in Cisco IOS: the <strong>ip</strong><strong> </strong><strong>dns</strong><strong> view-group</strong> command works only on interfaces, but not on subinterfaces. As it’s a pure IP feature, there obviously no reason why it shouldn’t work on anything that has an IP address; obviously someone forgot to insert the correct entry in the parser tables.</p>
+<script>startHide()</script><p>Here’s a sample configuration session taken from a 7200-series router running IOS release 12.4(15)T5:</p>
+<pre class="code">c7200(config)#<strong>ip dns view-list Test</strong><br />c7200(cfg-dns-view-list)#<strong>interface Serial 1/0</strong><br />c7200(config-if)#<strong>ip dns view-group Test</strong><br />c7200(config-if)#<strong>encapsulation frame-relay</strong><br />c7200(config-if)#<strong>interface Serial 1/0.1 point</strong><br />c7200(config-subif)#<strong>ip dns view-group Test</strong><br />                        ^<br />% Invalid input detected at '^' marker.</pre><script>endHide()</script></div>
+

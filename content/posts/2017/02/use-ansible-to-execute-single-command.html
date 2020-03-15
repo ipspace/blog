@@ -1,0 +1,15 @@
+---
+title: "Use Ansible to Execute a Single Command on All Routers"
+date: "2017-02-14T09:02:00.000+01:00"
+tags: [ Automation,Ansible ]
+---
+
+<p>I was using Ansible playbooks to configure Cisco IOS routers running in VIRL and wanted to extract the router configurations before stopping the simulation.</p>
+<p class="info">You can <a href="https://github.com/ipspace/MPLS-infrastructure">download the playbooks</a> from my Github repository, and here&#x2019;s how you can <a href="http://blog.ipspace.net/2016/11/testing-ansible-playbooks-with-cisco.html">run Ansible with VIRL</a>.<!--more--></p>
+<p>Unfortunately, VIRL extracts startup configurations not running ones, so I&#x2019;d have to log into each router and execute <strong>write memory</strong> (the command youngsters know as <strong>copy running startup</strong>). Making it worse, my lab had six routers. Yes, I know, I have first-world problems.</p>
+<p>Fortunately, I was using Ansible, and had the inventory file describing all the routers, so it should be relatively easy to execute <strong>write memory </strong>on all of them with the <strong>raw </strong>module, but my default Ansible connection plugin was <strong>local </strong>to <a href="http://automation.ipspace.net/Example:Using_Ansible_Networking_Modules">make networking modules work correctly</a>.</p>
+<p class='update'>Update 2017-02-14: As Nikolay pointed out in the comments, I might be able to use the <strong>ios_command</strong> module.</p>
+<p>Here&#x2019;s the workaround that worked for me: specify connection plugin to use with the <strong>&ndash;c</strong> command line option:</p>
+<pre class="code">ansible&nbsp;all&nbsp;-i&nbsp;hosts&nbsp;-m&nbsp;raw&nbsp;-c&nbsp;paramiko&nbsp;-a&nbsp;"write&nbsp;mem"</pre><p>And here&#x2019;s another gotcha: the <strong>&ndash;c</strong> command line option supersedes the <strong>transport </strong>option in <em>ansible.cfg </em>but not the <strong>ansible_connection </strong>variable specified on a host or a group of hosts in inventory file, so make sure you specify the default connection method in the right place.</p>
+<h4>Want to do something similar?</h4><p>It&#x2019;s amazing how many small problems you can solve once you have an infrastructure like Ansible in place. To learn more about using Ansible for network automation, watch the <a href="http://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> webinar, and if you want to get your own real-life network automation project off the ground, sign up for the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course.</p>
+

@@ -1,0 +1,22 @@
+---
+title: "Building a Small Cloud with UCS Mini"
+date: "2014-09-29T12:26:00.000+02:00"
+tags: [ Data Center,cloud ]
+---
+
+<p>During the last round of polishing of my <a href="http://www.interop.com/newyork/scheduler/session/designing-infrastructure-for-private-clouds">Designing Infrastructure for Private Clouds</a> Interop New York session (also available in <a href="http://www.ipspace.net/Designing_Private_Cloud_Infrastructure">webinar format</a>) I wondered whether one could use the recently-launched <a href="http://www.cisco.com/c/en/us/products/servers-unified-computing/ucs-mini/index.html">UCS Mini</a> to build my sample private cloud.<!--more--></p>
+<p>The <a href="http://www.cisco.com/c/en/us/products/servers-unified-computing/ucs-6300-series-fabric-interconnects/index.html">UCS 6324 fabric interconnect</a> provides more than enough bandwidth: each module has 80 Gbps of uplink connectivity (for a total of 160 Gbps) and 20 Gbps toward each server (for a total of 40 Gbps of uplink capacity per server).</p>
+<p>The <a href="http://www.cisco.com/c/en/us/products/servers-unified-computing/ucs-b200-m3-blade-server/index.html">server blades</a> definitely look promising: </p>
+<ul class="ListParagraph"><li>Up to 24 cores per blade, for a total of 192 cores per UCS Mini chassis – probably enough to run ~1000 VMs;</li>
+<li>Up to 768 GB of RAM per blade, for a total of over 6TB of RAM per chassis – yet again, more than enough for ~1000 VMs</li>
+</ul>
+<p>… and then I <a href="http://www.cisco.com/c/dam/en/us/products/collateral/servers-unified-computing/ucs-b-series-blade-servers/B200M3_SpecSheet.pdf">stumbled upon the disk specs</a>: two disks, the largest one being 1 TB (HDD) or 800 GB (SSD), for a total of 8 TB of redundant storage per chassis. Meh.</p>
+<p>Stephen Foskett <a href="http://blog.fosketts.net/2014/09/15/ciscos-trojan-horse/">found an interesting way around this problem</a>: add a <a href="http://www.cisco.com/c/en/us/products/servers-unified-computing/ucs-c3160-rack-server/index.html">C3160 rack server</a> for a total of 360 TB of storage. Alternatively, use two C240 M3 rack servers, connect them to the fabric interconnect, and stuff them full with disk drives (up to 24 1.2TB disk drives per server for a total of 28.8 TB of fully redundant disk storage).</p>
+<p>And now for the tough question: how do you make the storage servers accessible to the compute nodes? Here are a few ideas:</p>
+<ul class="ListParagraph"><li>If you plan to use OpenStack, run Ceph or Gluster on the storage nodes and make them iSCSI or NFS targets. Problem solved;</li>
+<li>If you’re a Hyper-V user, you don’t have a problem. Windows Server has all the components you need;</li>
+</ul>
+<p>vSphere is a tougher nut (it’s evident who VMware’s parent corporation is): you could use one of the ideas I mentioned above to build a distributed storage system that vSphere host could connect to through iSCSI or NFS, but that clearly reeks of home-brewed kludgeitis.</p>
+<p>VSAN might be an alternative, but I’m not sure how well it would perform in environment where the majority of virtual disk traffic goes over the LAN network. Comments highly appreciated!</p>
+<h4>Related webinars</h4><p><a href="http://www.ipspace.net/Designing_Private_Cloud_Infrastructure">Designing Private Cloud Infrastructure</a> covers numerous design options, including scale-out storage solutions. <a href="http://www.ipspace.net/Roadmap/Virtualization_webinars">Virtualization</a> and <a href="http://www.ipspace.net/Roadmap/Data_center_webinars">Data Center</a> webinars discuss individual technologies you might consider in your cloud infrastructure design (and you can always <a href="http://www.ipspace.net/ExpertExpress">engage me</a> if you need a design review, technology discussion, or a second opinion).</p>
+

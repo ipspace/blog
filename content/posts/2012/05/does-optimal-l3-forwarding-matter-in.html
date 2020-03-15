@@ -1,0 +1,26 @@
+---
+title: "Does Optimal L3 Forwarding Matter in Data Centers?"
+date: "2012-05-07T13:37:00.000+02:00"
+tags: [ Data Center,Workshop,Fabric,IP routing ]
+---
+
+<p>Every data center network has a mixture of bridging (layer-2 or MAC-based forwarding, aka switching) and routing (layer-3 or IP-based forwarding); the exact mix, the size of L2 domains, and the position of L2/L3 boundary depend heavily on the workload ... and I would really like to understand what works for you in your data center, so please leave as much feedback as you can in the comments.<!--more--></p>
+<h4>Background Information</h4><p>Considering the L2/L3 boundary in a data center network, you can find two extremes:</p>
+<p><strong>Data centers that run a single scale-out application</strong>, be it big data calculations (Hadoop clusters, for example) or web portals. IP addressing and subnets usually don’t matter (unless you use weird tricks that rely on L2), and the L3 forwarding usually starts at the top-of-rack switch.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-aEVQ3mel9Fs/T6eyUDGUUHI/AAAAAAAAE4k/CKigqBJViDI/s1600/DCL3_only.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="281" width="400" src="http://2.bp.blogspot.com/-aEVQ3mel9Fs/T6eyUDGUUHI/AAAAAAAAE4k/CKigqBJViDI/s400/DCL3_only.png" /></a></div>
+<p class='info'>Cloud data centers that use MAC-over-IP encapsulations to implement virtual network segments are also in this category.</p>
+<p><strong>Fully virtualized data centers</strong> need large L2 domain to support VM mobility; VLANs extend across aggregation/core switches (or spine switches if you use Clos fabrics terminology).</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-NzzW2ozTSmE/T6eyYp5UeFI/AAAAAAAAE4w/1COSM8ngGYE/s1600/DCL3_none.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="280" width="400" src="http://4.bp.blogspot.com/-NzzW2ozTSmE/T6eyYp5UeFI/AAAAAAAAE4w/1COSM8ngGYE/s400/DCL3_none.png" /></a></div>
+<p>Data centers with large L2 domains usually use L3 forwarding only in the core switches; these switches have SVI (or RVI, depending on which vendor you’re talking with) VLAN interfaces, and IP addresses configured on VLANs. Most vendors have technologies that combine multi-chassis link aggregation with active-active forwarding (all members of an MLAG cluster share IP address and perform L3 forwarding between connected VLANs).</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-iEDmBQBxSRE/T6eymfjjXuI/AAAAAAAAE48/CDDTCtJJqHQ/s1600/DCL3_HSRP.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0"  src="http://2.bp.blogspot.com/-iEDmBQBxSRE/T6eymfjjXuI/AAAAAAAAE48/CDDTCtJJqHQ/s400/DCL3_HSRP.png" /></a></div>
+<h4>The Problem</h4><p>L2 forwarding in ToR switches and L3 forwarding in the data center network core clearly results in suboptimal traffic flow. If you have servers (or VMs) in different VLANs connected to the same ToR switch, the traffic between them has to be hairpinned through the closest L3 switch. However, the question I’m struggling with is: “<em>D</em><em>oes it really matter?</em>”</p>
+<p>In most cases, you’d use VLANs in a virtualized environment to implement different security zones in an application stack, and deploy firewalls or load balancers between them. If you do all the L3 forwarding with load balancers or firewalls, you don’t need L3 switches, and thus the problem of suboptimal L3 forwarding becomes moot.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-uhDLPM-Hry8/T6eyzNenaHI/AAAAAAAAE5I/ZW5KpCNa9K4/s1600/DCL3_Virtual.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" src="http://1.bp.blogspot.com/-uhDLPM-Hry8/T6eyzNenaHI/AAAAAAAAE5I/ZW5KpCNa9K4/s540/DCL3_Virtual.png" /></a></div>
+<h4>Feedback highly appreciated!</h4><p>As I wrote in the introductory paragraph, I would really like to understand what you’re doing (particularly in environments using VMs with large VLANs). Please share as much as you can in the comments, including:</p>
+<ul class="ListParagraph"><li>Do you use L3 forwarding on the data center switches;</li>
+<li>Where do you deploy L3 switching (ToR/leaf, aggregation, core/spine);</li>
+<li>Why do you use L3 forwarding together with (or instead of) load balancers and/or firewalls;</li>
+<li>Do you see suboptimal L3 forwarding as a serious problem?</li>
+</ul>
+<p>Thank you!</p>
+

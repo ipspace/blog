@@ -1,0 +1,30 @@
+---
+title: "Scaling the Cloud Security Groups"
+date: "2014-11-12T09:33:00.000+01:00"
+tags: [ firewalls,security,cloud,Overlay networks ]
+---
+
+<p>Most <a href="http://blog.ipspace.net/2013/12/overlay-virtual-networking-solutions.html">overlay virtual networking</a> and <a href="http://blog.ipspace.net/2014/09/virtual-networking-in-cloudstack.html">cloud orchestration</a> products support <em>security groups </em>– <a href="http://blog.ipspace.net/2013/03/the-spectrum-of-firewall-statefulness.html">more-or-less-statefulish ACLs</a> inserted between VM NIC and virtual switch.</p>
+<p>The lure of security groups is obvious: if you’re <a href="http://blog.ipspace.net/2013/04/are-you-ready-to-change-your-security.html">willing to change your network security paradigm</a>, you can stop thinking in subnets and focus on specifying <em>who </em>can exchange <em>what </em>traffic (usually specified as TCP/UDP port#) with <em>whom</em>.<!--more--></p>
+<h4>Getting rid of subnets? How?</h4><p>If you’re not familiar with how security groups typically get implemented, you might wonder why I wrote that you can <em>stop thinking in subnets</em>. Here’s the short version of the story.</p>
+<p>Security groups are like <a href="http://www.cisco.com/c/en/us/td/docs/security/asa/asa82/configuration/guide/config/objectgroups.html"><em>object groups</em></a><em> </em>on Cisco ASA:</p>
+<ul class="ListParagraph"><li>You specify the VM-to-group membership in the cloud orchestration system;</li>
+<li>Cloud orchestration system knows which IP address is assigned to which VM and is able to translate the group membership into a set of IP addresses belonging to that group;</li>
+<li>When you specify group-to-group rules (for example: <em>Web </em>group can communicate with the <em>DB </em>group on <em>MySQL </em>TCP port), the cloud orchestration system (or the network controller) generates an equivalent ACL and installs it in the virtual switch (or <em>iptables</em>).</li>
+</ul>
+<p>If you’re considering scalability as part of your network design process, you probably immediately spotted the challenges of this approach:</p>
+<ul class="ListParagraph"><li>ACL is a <em>Cartesian product </em>of two sets (similar to the OpenFlow 1.0 state explosion) – the length of the ACL is proportional to the <em>product of the group sizes;</em></li>
+<li>Most ACL implementations scan the entries sequentially (because networking engineers love to optimize irrelevant stuff and use overlapping ACL entries that make ACLs order-sensitive). ACL performance is thus inversely proportional to the product of group sizes (<em>O(n^2)</em> for those of you that love talking about computational complexity);</li>
+<li>ACLs have to be updated on all participating virtual switches every time a VM is added to any of the groups used in the ACL.</li>
+</ul>
+<p>Oh, and if you want to implement security groups on ToR switches, you’ll <a href="http://www.ipspace.net/Replacing_the_Central_Firewall">quickly realize</a> just how little TCAM they have – you might be better off inserting x86 servers into the forwarding path and using something like <a href="http://blog.ipspace.net/2014/09/snabb-switch-deep-dive-on-software-gone.html">Snabb Switch</a> on them.</p>
+<h4>Can we make it any better?</h4><p>Sure we can. Instead of blindly converting per-group security rules into IP address ACLs we need a better matching mechanism that would work along these lines:</p>
+<ul class="ListParagraph"><li>Identify the group membership of the sending VM (trivial on ingress ACL, requires IP lookup on egress ACL);</li>
+<li>Identify the relevant ACL based on the group membership;</li>
+<li>Identify the group membership of destination IP address (trivial on egress ACL, requires IP lookup on ingress ACL);</li>
+<li>Perform ACL matches based on group membership information derived in the previous steps.</li>
+</ul>
+<p>This algorithm replaces a single O(n^2) lookup with multiple simple lookups – group membership is a fixed-time lookup if your implementation uses MAC-to-group hash tables, and the time to match an ACL remains proportional to the ACL size, not to the product of group sizes.</p>
+<h4>Is anyone doing it?</h4><p>Nuage VSP is using this approach with Open vSwitch in the hypervisors (they convert group membership into metadata passed between OpenFlow matching tables), and it seems Cisco is doing something very similar with Endpoint Groups (EPG) in its ACI architecture.</p>
+<p>To get more details on the Nuage VSP approach (including the very smart use of BGP communities that allows you to extend security groups beyond the cloud infrastructure), <a href="https://www.eventbrite.com/e/scaling-overlay-virtual-networks-tickets-13583882759?ref=ebapi">register</a> for the free <a href="http://www.ipspace.net/Scaling_Overlay_Virtual_Networks"><em>Scaling Overlay Virtual Networks</em></a> webinar on November 20<span style="vertical-align: super; font-size: 80%;">th</span>. You’ll have to wait a bit longer for my take on Cisco ACI; I won’t be able to create a webinar describing it before spring 2015.</p>
+

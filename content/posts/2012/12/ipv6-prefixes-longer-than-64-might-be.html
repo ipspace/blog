@@ -1,0 +1,19 @@
+---
+title: "IPv6 Prefixes Longer Than /64 Might Be Harmful"
+date: "2012-12-03T07:38:00.000+01:00"
+tags: [ IPv6,Data Center,Workshop ]
+---
+
+<p>A while ago I wrote a <a href="http://blog.ioshints.info/2011/05/ipv6-neighbor-discovery-exhaustion.html">blog post about remote ND attacks</a>, which included the idea of having /120 prefixes on server LANs. As it turns out, it was a bad idea, and as <em>nosx </em>pointed out in his comment: “<em>there is quite a long list of caveats in all vendor camps regarding hardware in the last 6-8 years that has some potentially painful hardware issues regarding prefix length. Classic issues include ACL construction and TCAM specificity.</em>”</p>
+<p>One would hope that the newly-release data center switches fare better. Fat chance!<!--more--></p>
+<p>There are several interesting issues you might encounter with IPv6-enabled data center switches (other devices performing hardware layer-3 switching might exhibit similar behavior):</p>
+<ul class="ListParagraph"><li>IPv4 and IPv6 routing tables might share the same TCAM. </li>
+<li>IPv6 prefixes are four times longer than IPv4 prefixes, so you’d expect a switch with shared TCAM to handle four times as many IPv4 prefixes as IPv6 prefixes. If that’s not the case, tread carefully and dig deeper into the documentation.</li>
+</ul>
+<h4>A few real-life examples</h4><p>ToR switches were never known for their huge table sizes (to be honest, they don’t need them if you have a good design), and some of them have dismal IPv6 tables. The worst I found: Juniper’s EX4500 with 1K IPv6 entries and Arista’s 7500 (the core switch) with 2K IPv6 entries. Good luck with your large-scale dual-stack deployment!</p>
+<p>Then there’s Cisco’s Nexus 5500 with an interesting TCAM architecture: it can have <a href="http://www.cisco.com/en/US/docs/switches/datacenter/nexus5000/sw/configuration_limits/limits_521/nexus_5000_config_limits_521.html#wp328407">up to 16K IPv4 or IPv6 routes</a>, and 128 longest-prefix-match IPv6 entries. The fact that the number of IPv4 routes matches the number of IPv6 prefixes tells you a lot about the matching algorithm: either half the TCAM (or more) is empty with IPv4 routes or they’re doing an exact match on the top 64 bits of IPv6 addresses, which seems to be the case as there’s a separate entry for IPv6 LPM routes in the <em>configuration limits </em>document.</p>
+<p>To rephrase: Nexus 5500 can have up to 16K /64 IPv6 prefixes and up to 128 non-/64 IPv6 prefixes. It does make perfect sense, assuming your data center uses /64 prefixes internally and a few summary routes (or default routing) toward the outside world or DC core.</p>
+<p>Finally, there are loads of DC switches where the maximum number of IPv6 prefixes is half the maximum number of IPv4 prefixes, probably indicating that their TCAM matches only the top half of IPv6 addresses (and that installing /120 or /127 prefixes into these devices might be a Really Bad Idea). Unfortunately, many vendors are not as open and straightforward as Cisco is, and forget to mention these tiny little details in their documentation.</p>
+<h4>More information</h4><p>Have to mention that the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a> webinar contains IPv6, IPv4, MAC, ARP and ND table size information for data center switches from nine major vendors. You don’t want to know how many hours I’ve spent poring over datasheets, documentation and release notes.</p>
+<p>The webinar is available as a <a href="http://www.ipspace.net/Recordings?code=DCFabric">recording</a> or as part of the <a href="http://www.ipspace.net/Subscription">yearly subscription</a>.</p>
+

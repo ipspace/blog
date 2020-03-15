@@ -1,0 +1,22 @@
+---
+title: "Going All Virtual with Virtual WAN Edge Routers"
+date: "2014-02-19T07:46:00.000+01:00"
+tags: [ cloud,IP routing,WAN,virtualization ]
+---
+
+<p>If you’re building a Greenfield private cloud, you SHOULD consider using <a href="http://blog.ipspace.net/2013/04/virtual-appliance-performance-is.html">virtual network services appliances</a> (firewalls, load balancers, IPS/IDS systems), removing the need for additional hard-to-scale <a href="http://blog.ipspace.net/2013/05/dedicated-hardware-in-network-services.html">hardware devices</a>. But can we go a step further? Can we replace <em>all </em>networking hardware with x86 servers and virtual appliances?<!--more--></p>
+<p>Of course we can’t. <a href="http://blog.ipspace.net/2012/07/does-cpu-based-forwarding-performance.html">Server-based L2/L3 switching is still way too expensive</a>; pizza-box-sized ToR switches are the way to go in small and medium private clouds (I don’t think you’ll find many private clouds that need more than 2 Tbps of bandwidth that two 10GE ToR switches from almost any vendor give you) … but what about WAN edge routers?</p>
+<p>If your data center uses 1Gbps uplinks, and you’re a Cisco shop, I can’t see a good reason not to consider Cloud Services Router (CSR 1000V). You can buy a <a href="http://www.cisco.com/en/US/docs/routers/csr1000/release/notes/csr1000v_3Srn.html#wp3048771">1Gbps license with the latest software version</a> and I’m positive you’ll get 1Gbps out of it unless you have heavy encryption needs. </p>
+<p>Is that not enough? You might have to wait for the upcoming <a href="http://www.brocade.com/products/all/network-functions-virtualization/product-details/5600-vrouter/index.page">Vyatta 5600 vRouter</a> that uses <a href="http://blog.ipspace.net/2012/02/6wind-solving-virtual-appliance.html">Intel DPDK</a> and supposedly <a href="http://searchsdn.techtarget.com/news/2240205767/Brocades-new-Vyatta-virtual-router-is-10x-faster">squeezes 10Gbps out of a single Xeon core</a>.</p>
+<h4>Connecting to the outside world</h4><p>Most servers have a spare 1Gb port or two. Plug Internet uplinks into those ports and connect the uplink NIC straight to the router VM using hypervisor bypass.</p>
+<div class='separator'><a href="http://2.bp.blogspot.com/-YU429BVLkR8/UvpNf0L761I/AAAAAAAAG4M/g_8TpcsmZKw/s1600/Virtual_WAN.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-YU429BVLkR8/UvpNf0L761I/AAAAAAAAG4M/g_8TpcsmZKw/s550/Virtual_WAN.png" /></a></div>
+<p>I know it’s a psychologically scary idea, but is there a technical reason why this approach wouldn’t be as secure as a dedicated hardware router?</p>
+<h4>Why Would You Do It?</h4><p>There are a few reasons to go down the all-virtual path:</p>
+<ul class="ListParagraph"><li>Reduced sparing/maintenance requirements – you need hardware maintenance for ToR switches and servers, not for dedicated hardware appliances or routers;</li>
+<li>Increased flexibility – you can deploy the virtual network appliances or routers on any server. It’s also easier to replace a failed server (you probably have a spare server already running, don’t you?) than it is to replace a failed router … and there’s almost no racking-and-stacking if a blade server fails;</li>
+<li>If you believe in distributed storage solutions (Nutanix or VMware VSAN), you need only two hardware components in your data center: servers with local storage and ToR switches. How cool is that?</li>
+</ul>
+<p>I’m positive you’ll find a few other reasons. Share them in the comments.</p>
+<h4>Need More Information?</h4><p>Check out my <a href="http://www.ipspace.net/Cloud">cloud infrastructure resources</a> and register for the <a href="http://www.ipspace.net/BCloud">Designing Private Cloud Infrastructure</a> webinar.</p>
+<p>I can also help you design a similar solution through one or more <a href="http://www.ipspace.net/ExpertExpress">virtual meetings</a> or an <a href="http://www.ipspace.net/Consulting">on-site workshop</a>.</p>
+

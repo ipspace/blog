@@ -1,0 +1,8 @@
+---
+title: "Use Cisco IOS FTP server to bypass Microsoft \"security patch\""
+date: "2006-10-25T08:07:00.000+02:00"
+tags: [ access control,FTP ]
+---
+
+Microsoft decided a while ago to <a href="http://support.microsoft.com/kb/834489">disable the ability to send username and password encoded in URL</a> to a web server. This "security patch" also prevents you from serving files from Cisco IOS web server without explicit user login (IOS web server does not support anonymous access). However, as the Microsoft patch does not affect FTP, you can use FTP server embedded in most Cisco IOS images and download files to your web browser with the <strong><a href="ftp://user:password@router/file">ftp://user:password@router/file</a></strong> URL.<br /><br />To enable FTP server in Cisco IOS, use the <strong>ftp-server enable </strong>configuration command followed by the <strong>ftp-server topdir <em>directory</em></strong> command which specifies the top-level FTP directory (for example, <strong>flash:</strong>). To authenticate FTP users, define local usernames with the <strong>username <em>user </em>password <em>password</em></strong> configuration command.
+

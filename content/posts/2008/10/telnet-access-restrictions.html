@@ -1,0 +1,12 @@
+---
+title: "Telnet access restrictions"
+date: "2008-10-24T06:52:00.000+02:00"
+tags: [ network management,SSH ]
+---
+
+<div class="bloggerBody"><p>A while ago I've got an interesting question from one of the readers:</p>
+<blockquote class="cite">I'd like to be able to configure a set of routers to only be manageable from each other. Something like an access-class matching minimum packet TTL would probably be good enough, better if some connected routes could be tagged and access granted based on that. The idea is to keep router-by-router logins in case of routing problems, without opening up access too widely.</blockquote>
+<p>I did a few tests with IOS release 12.4(15)T and neither access-class nor control-plane policing recognizes the TTL field in ACL (various bits and pieces of IOS use the same data structures in different procedures, thus resulting in inconsistent behavior). Alternatively, you could deploy inbound access lists on all interfaces, but this is probably way too cumbersome to manage.</p>
+<p>The best you can do without going into weird solutions is to allocate router loopback interfaces and inter-router links from a tightly controlled address space and only allow telnet from that address space (while at the same time filtering IP packets pretending to come from that same address space on the perimeter of your network). As the IOS supports extended access lists in the <strong>access-class</strong> line configuration command, you could allow SSH from a wider set of IP addresses and limit Telnet to the address range allocated to inter-router links.</p>
+</div>
+

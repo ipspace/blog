@@ -1,0 +1,11 @@
+---
+title: "Periodic execution of IOS show commands"
+date: "2007-05-21T09:16:00.000+02:00"
+tags: [ command line interface,EEM,Show filters ]
+---
+
+If you want to execute IOS show commands periodically (for example, to monitor router status or take snapshots of routing tables), you can combine new output redirection features introduced in IOS release 12.2T in an Embedded Event Manager (EEM) applet. For example, to store the brief interface status into a file on an FTP server, use the following EEM applet:<pre class="code">event manager applet SaveInterfaceStatus<br /> event timer watchdog name SaveIfStat time 60<br /> action 1.0 cli command "show ip interface brief | redirect ftp://<em>username</em>@<em>password</em>:<em>host</em>/<em>path</em>"<br /> action 2.0 syslog msg "Interface status saved"</pre>Notes: <ul><li>The <strong>timer watchdog</strong> EEM event defines a recurring event triggered every X seconds.</li>
+<li>Output of a show command can be redirected only to a TFTP or FTP server, redirection to a web (HTTP) server does not work yet.</li>
+<li>The <strong>syslog</strong> action is configured for debugging purposes only and can be removed in production environment.</li>
+<li>More complex functionality (for example, sending <strong>show</strong> command output in an email) can be implemented with help of Tcl EEM policies</ul>
+

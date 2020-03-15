@@ -1,0 +1,26 @@
+---
+title: "Broadcom Tomahawk 101"
+date: "2015-12-16T14:39:00.000+01:00"
+tags: [ switching,Data Center,Fabric ]
+---
+
+<p>Juniper recently launched their Tomahawk-based switch (QFX5200) and included a lot of information on the switching hardware in one of their public presentations (similar to what Cisco did with Nexus 9300), so I got a non-NDA glimpse into the latest Broadcom chipset.</p>
+<p class="info">You&#x2019;ll get more information on QFX5200 as well as other Tomahawk-based switches in the <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a> <a href="http://www.ipspace.net/Data_Center_Fabrics_Update">Update</a> webinar in spring 2016.</p>
+<p>Here&#x2019;s what I understood the presentation said:<!--more--></p>
+<ul class="ListParagraph"><li>Each 100 GE port can be channelized into 4 x 10GE, 4 x 25GE, 2 x 50GE or 1 x 40GE. It seems like each port can run 4 lanes at either 10 Gbps or 25 Gbps;</li>
+</ul>
+<p class="warn">I may be totally wrong, but the way I understand the specs the 100GE ports use 100GBASE-SR4 (802.3bm) standard and would thus be incompatible with switches using older 100GBASE-SR10 (802.3ba) standard, although they would work with all 40 Gbps switches using 40GBASE-SR4.</p>
+<ul><li>Similar to Trident-2, Tomahawk becomes line-rate (3.2 Tbps) at packet sizes above 250 bytes;</li>
+<li>Presentation claims overlay routing (VXLAN-to-VXLAN or VXLAN-to-VLAN) is not supported, which is a bit surprising as the forwarding pipeline includes <em>tunnel termination </em>before L2 and L3 lookup, which should be good enough;</li>
+<li>The switching silicon has 10 queues per port (nice!);</li>
+<li>Switching latency is approximately 500 ns and can be reduced to 300 ns if the chipset is reconfigured into doing only simple L2 switching;</li>
+<li>Unified forwarding table (UFT; 128K entries) is split in memory banks that can be allocated to L2 entries, ARP entries and L3 LPM entries; </li>
+<li>One of the printouts in the presentation hinted at 1K LPM IPv6 prefixes longer than /64;</li>
+<li>Tomahawk support exact matching of ACL entries in UFT (not TCAM). UFT split with filter-mode profile can have 64K ACL entries, 16K IP LPM entries and 8K ARP/MAC entries;</li>
+<li>There are 43 queues between the switching silicon and CPU, and you can configure control-plane policing parameters on each queue;</li>
+<li>The hardware supports 16K MPLS labels (must be a separate MPLS lookup table, not TCAM tricks);</li>
+<li>TCAM slicing is too tricky for me to understand, but it seems you&#x2019;ll get between 512 and 6K TCAM entries based on the complexity of the matching conditions. Based on the matching length used by Junos you get up to 512 port- or VLAN ACL entries or up to 1024 IP ACL entries;</li>
+<li>TCAM is not wide enough for all possible IPv6 matching conditions, so the hardware uses address compression. It seems you can have at most 128 source and destination IPv6 addresses in all filters deployed on the box;</li>
+</ul>
+<p>Have I missed or misunderstood something? Please write a comment!</p>
+

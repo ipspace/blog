@@ -1,0 +1,22 @@
+---
+title: "VLANs used by Nexus 1000V"
+date: "2011-08-05T07:05:00.000+02:00"
+tags: [ switching,Workshop,virtualization ]
+---
+
+<p>Chris sent me an interesting question:</p>
+<blockquote class="cite">Imagine L2 traffic between two VMs on different ESX hosts, both using Nexus 1000V. Will the physical switches see the traffic with source and destination MACs matching the VM's vNICs or traffic on NX1000V "packet" VLAN between VEMs (in this case, the packet VLAN would act as a virtual backplane)?</blockquote>
+<p class="more">To decode the acronyms in the question, please read my <a href="http://blog.ioshints.info/2011/06/what-exactly-is-nexus-1000v.html"><em>What exactly is a Nexus 1000V</em></a> post.<!--more--></p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-2m1LTAEYr5M/Tjo3cZg5wJI/AAAAAAAAEZs/zT7vOzDFrmw/s1600/NX1K_VLAN.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="320" width="307" src="http://3.bp.blogspot.com/-2m1LTAEYr5M/Tjo3cZg5wJI/AAAAAAAAEZs/zT7vOzDFrmw/s320/NX1K_VLAN.png" /></a></div>
+<h4>Digression into Nexus 1000V VLAN usage</h4><p>Nexus 1000V uses up to three VLANs for its communication needs:</p>
+<p><strong><em>Packet VLAN</em></strong><em> </em>is a data-plane VLAN used to exchange control protocol packets between VEMs and VSMs. It’s used to send CDP (as well as LACP and IGMP) packets received by a VEM to the VSM. It’s also used by the VSM to send CDP (or LACP) packets through the desired physical port(s) on desired VEM.</p>
+<p><strong><em>Control VLAN</em></strong><em> </em>is a control-plane VLAN used by the VSM to download configuration information into individual VEMs.</p>
+<p class="info">VEM receives parts of initial configuration that it needs to establish VEM-to-VSM communication directly from vCenter.</p>
+<p>You also have to establish communication between VSM and vCenter using a <strong><em>Management VLAN</em></strong>. VSM uploads parts of its configuration to the vCenter (to allow VEMs to start, see above) and uses vCenter API to create vCenter objects like port groups based on NX-OS configuration.</p>
+<p>You can’t configure the management VLAN in VSM. You connect the management port of the VSM (a virtual machine) to a vCenter port group and specify the desired VLAN in the port group configuration (<a href="http://www.cisco.com/en/US/docs/switches/datacenter/nexus1000/sw/4_0_4_s_v_1_3/getting_started/configuration/guide/n1000v_gsg_5vsm_behind_vem.pdf">follow this procedure</a> if the VSM uses a VEM to communicate with the physical network).</p>
+<p class="more">Read the <a href="http://wiki.nil.com/Control_and_Data_plane">article I published in CT3 wiki</a> to learn more about control and data planes in networking devices.</p>
+<p>You can use the same VLAN for all three purposes; you can also replace <em>packet </em>and <em>control </em>VLAN with layer-3 communication (using UDP). Using a separate management VLAN sounds like a good idea, but I fail to see why it would be a good idea to use separate <em>Packet </em>and <em>Control </em>VLANs.</p>
+<h4>Back to the original question</h4><p>Have you noticed that I haven’t mentioned VM traffic in the previous section? VM traffic does not use the Nexus 1000V-specific VLANs; it gets a VLAN tag specified in the associated port profile (and reflected in the corresponding vCenter port group) and is sent toward the physical network using whatever load balancing mechanism you’ve configured.</p>
+<p>The packet VLAN is never used for VEM-to-VEM communication. Even though the inter-VM traffic might pass through two VEMs, neither VEM is aware of that fact; they rely on the physical switches to sort out the MAC address information and forward the traffic toward destination VM. </p>
+<h4>Even more information</h4><p>You’ll find in-depth descriptions of network virtualization technologies (including Cisco’s Nexus 1000V, VN-Tag/VM-FEX and VSG) in my <a href="http://www.ioshints.info/VMnet">VMware Networking Deep Dive</a> webinar (<a href="http://www.ioshints.info/Recordings?code=VMnet">recording</a> or <a href="http://vnetwork.eventbrite.com/">live session</a>). The webinars is also available as part of the <a href="http://www.ioshints.info/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

@@ -1,0 +1,16 @@
+---
+title: "Collect SSH Keys with Ansible"
+date: "2017-09-27T09:19:00.000+02:00"
+tags: [ Automation,Ansible ]
+---
+
+<style>  p.QA { margin-left: 3em; clear: left; font-style: italic; }   p.QA span { float: left; margin-left: -3em; } </style><p>Here&rsquo;s a common scenario I&rsquo;m encountering on Ansible-related forums:</p>
+<p class='QA'><span>Q: </span>I cannot connect to network devices with my Ansible network modules. I keep getting these weird error messages&hellip;</p>
+<p class='QA'><span>Me: </span>Are you sure you have the device SSH keys in <strong>known_hosts </strong>file?</p>
+<p class='QA'><span>Q: </span>How did you know?<!--more--></p>
+<p class='QA'><span>Me: </span>Been there, done that&hellip;</p>
+<p class="more">I&rsquo;m describing the challenge and the potential solutions in more details in the <a href="https://my.ipspace.net/bin/list?id=Ansible#NET_CMD">Ansible Networking Modules</a> part of <a href="http://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> webinar and <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">online course</a>.</p>
+<p>In my case, the situation got really annoying because I&rsquo;m using Cisco IOS devices running in VIRL to test my Ansible scripts, and there&rsquo;s absolutely no way to retain the router SSH keys across device or VIRL reloads.</p>
+<p>Finally, I found an <a href="http://everythingshouldbevirtual.com/ansible-ssh-known-host-keys">Ansible playbook</a> that used <strong>ssh-keyscan </strong>to collect SSH keys. It was easy to adapt it to <a href="https://github.com/ipspace/NetOpsWorkshop/tree/master/tools/ssh-keys">collect keys from managed devices and store them in <strong>known_hosts </strong>file on your Ansible host</a>.</p>
+<p>In case you&rsquo;re wondering how that playbook works, I described it in details in the <a href="https://my.ipspace.net/bin/list?id=AnsibleOC#SAMPLES">Sample Ansible Playbooks</a> section of <a href="http://www.ipspace.net/Ansible_for_Networking_Engineers">Ansible for Networking Engineers</a> online course.</p>
+

@@ -1,0 +1,30 @@
+---
+title: "Does It Make Sense to Build New Clouds with Overlay Networks?"
+date: "2013-12-18T07:51:00.000+01:00"
+tags: [ cloud,Overlay networks ]
+---
+
+<p><strong>TL&amp;DR Summary</strong>: It depends on your business model</p>
+<p>With the explosion of <a href="http://blog.ipspace.net/2013/12/overlay-virtual-networking-solutions.html">overlay virtual networking solutions</a> (with every single reasonably-serious vendor having at least one) one might get the feeling that it doesn't make sense to build greenfield IaaS cloud networks with VLANs. As usual, there's significant difference between theory and practice.</p>
+<p class="info">You should always <a href="http://blog.ipspace.net/2013/12/focus-on-your-business-not-fancy.html">consider the business requirements</a> before launching on a technology crusade. IaaS networking solutions are no exception.<!--more--></p>
+<p>If you plan to sell your services to customers with complex application stacks, overlay virtual networks make perfect sense. These customers usually need multiple internal networks and an appliance between their internal networks and the outside world. If you decide to implement the Internet-facing appliance with a VM-based solution, and all subnets behind the appliance with overlay virtual networks, you're almost done.</p>
+<div class='separator'><a href="http://3.bp.blogspot.com/-lxCKz-OfL90/Uqgl-SVPguI/AAAAAAAAGZM/joP-WhJJTV4/s1600/LAMP+or+Complex+Stack.png" imageanchor="1" ><img border="0" src="http://3.bp.blogspot.com/-lxCKz-OfL90/Uqgl-SVPguI/AAAAAAAAGZM/joP-WhJJTV4/s520/LAMP+or+Complex+Stack.png" /></a><br />Slide taken from <a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> webinar </div>
+<p>Customers buying a single VM, and maybe access to central MySQL or SQL Server database, are a totally different story. Having a subnet and a VM-based appliance for each customer paying for a single VM makes absolutely no sense. We need something similar to PVLANs, and the only overlay virtual networking product with a reasonably simple PVLAN implementation is VMware NSX for Multiple Hypervisors.</p>
+<p>If you want to use any other hypervisor/virtual networking platform, you have to get creative:</p>
+<ul class="ListParagraph"><li>Use a single subnet (VLAN- or overlay-based) and protect individual customer VMs with VM NIC firewall (or <em>iptables</em>)</li>
+</ul>
+<div class='separator'><a href="http://4.bp.blogspot.com/-Du1EdxVV7CQ/UqgmQ2NPTFI/AAAAAAAAGZU/6_mPJEV4Eq0/s1600/Tenant+Isolation+with+Firewalls.png" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-Du1EdxVV7CQ/UqgmQ2NPTFI/AAAAAAAAGZU/6_mPJEV4Eq0/s520/Tenant+Isolation+with+Firewalls.png" /></a><br />Slide taken from <a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> webinar </div>
+<ul class="ListParagraph"><li>When using an overlay-based subnet for numerous single-VM customers, use a simple L2 or L3 gateway to connect the subnet to the outside world. Most overlay solutions include hardware or software gateways, and a 2-NIC Linux VM will easily route 1Gbps of traffic with a single vCPU.</li>
+<li>Worst case, use small PVLANs. There's no need for large or stretched VLANs if every customer has a single VM, more so if you don't give the customers fixed IP addresses but force them to rely on DNS.</li>
+</ul>
+<h4>Need help?</h4><p>Check out my <a href="http://www.ipspace.net/Roadmap/Virtualization_webinars">virtualization webinars</a> or <a href="http://www.ipspace.net/Consulting">get in touch</a> if you need design review or technology recommendation. </p>
+<p>The webinars to consider include:</p>
+<ul class="ListParagraph"><li><a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> if you need a broad technology overview;</li>
+<li><a href="http://www.ipspace.net/Virtual_Firewalls">Virtual Firewalls</a> if you want to know more about appliance- and NIC-based virtual firewalls;</li>
+<li><a href="http://www.ipspace.net/Overlay_Virtual_Networking">Overlay Virtual Networking</a> if you’re looking for in-depth architecture and product details;</li>
+<li><a href="http://www.ipspace.net/VMware_NSX_Architecture">VMware NSX Architecture</a> if you’re evaluating the feasibility of VMware NSX;</li>
+<li><a href="http://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN Technical Deep Dive</a> if you plan to build your cloud with VXLAN.</li>
+</ul>
+<p>Not sure which webinar to watch? Try <a href="http://www.ipspace.net/Subscription">yearly subscription</a>.</p>
+<h4>But wait, there's more!</h4><p>I will be talking about <a href="http://www.interop.com/lasvegas/schedule-builder/session-id/7">Software-Defined Data Centers</a> and <a href="http://www.interop.com/lasvegas/schedule-builder/session-id/18">private cloud infrastructure</a> @ Interop 2014 Las Vegas. See you there!</p>
+

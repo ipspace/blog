@@ -1,0 +1,86 @@
+---
+title: "Operating Cisco ACI the Right Way"
+date: "2019-02-12T09:47:00.000+01:00"
+tags: [ Automation,Data Center,ACI ]
+---
+
+<p><em>This is a guest blog post by <a href="https://www.linkedin.com/in/adainese/">Andrea Dainese</a>, senior network and security architect, and author of UNetLab (now&nbsp;<a href="http://www.eve-ng.net/">EVE-NG</a>) and&nbsp; <a href="http://www.routereflector.com/">Route Reflector Labs</a>. These days you&rsquo;ll find him busy automating Cisco ACI deployments.</em></p>
+<hr /><p>In this post we’ll focus on a simple question that arises in numerous chats I have with colleagues and customers: how should a network engineer operate Cisco ACI? A lot of them don’t use any sort of network automation and manage their Cisco ACI deployments using the Web Interface. Is that good or evil? As you’ll see we have a definite answer and it’s not “it depends”.<!--more--></p>
+<p class="info">If you’re reading this blog post, you probably already know what Cisco ACI is (hint: Data Center SDN solution from Cisco). If you don’t know anything about Cisco ACI, you should probably read some other blog posts, watch <a href="https://www.ipspace.net/VMware_NSX,_Cisco_ACI_or_Standard-Based_EVPN">this webinar</a>, and then come back. </p>
+<h2 id="interacting-with-cisco-aci">Interacting with Cisco ACI</h2><p>Engineers can interact with Cisco ACI through multiple programmatic- and user interfaces:</p>
+<ul><li>Web User Interface (Web UI, or GUI)</li>
+<li>Command Line Interface (CLI)</li>
+<li>REST API</li>
+<li>Software Development Kit (SDK)</li>
+<li>Visore</li>
+</ul>
+<div class='separator'><a href="https://4.bp.blogspot.com/-GB-EXlMWu_4/XF6UF6lFZQI/AAAAAAAAJSA/391455bE-AMW691-na5eAvZhivkdPtS8QCLcBGAs/s1600/Operating_Cisco_ACI.png" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-GB-EXlMWu_4/XF6UF6lFZQI/AAAAAAAAJSA/391455bE-AMW691-na5eAvZhivkdPtS8QCLcBGAs/s1600/Operating_Cisco_ACI.png" data-original-width="1432" data-original-height="610" /></a></div>
+<p>GUI, CLI, SDK and Visore are actually calling REST API. We can say that Cisco ACI is implementing REST API in a proper way as you can do everything APIC offers through REST API, and most components use the same REST API to get their job done.</p>
+<p>Let’s forget Visore for a while because it’s not a configuration tool, and focus on the configuration tasks:</p>
+<ul><li>There are dozens of configuration objects that can be combined in numerous ways (tenants, bridge domains, application profiles, leaf and spine interface profiles…);</li>
+<li>Every object can be configured with at least a dozen different options;</li>
+</ul>
+<p><strong>Conclusion:</strong> Every simple task we’re trying to accomplish can be achieved in a pretty unique way, and that’s bad!</p>
+<p>Let’s make a simple example: a network engineer must attach a new fancy device to ACI fabric. The device is using two aggregated interfaces (in virtual port-channel configuration). Next he has to map a VLAN used by that device to a specific EPG inside an application profile inside a tenant. Here are the tasks he has to perform:</p>
+<ol type="1"><li>Connect the new device.</li>
+<li>Configure the port-channel:</li>
+<li>Bind a VLAN from the port-channel to a specific EPG (assuming that the EPG already exists).</li>
+</ol>
+<p>Configuring the port channel involves at least:</p>
+<ol type="1"><li>Configuring interface policies unless they have already been created;</li>
+<li>Create the interface policy group and attach all related interface policies… after figuring out which ones to choose. Should LACP be active? Should he use <em>no suspend</em>? BPDU Guard, Filter or Forward? Should CDP or LLDP be enabled or disabled and which one should be used? Which AEP? And finally, how should the new object be named?</li>
+<li>Create interface profiles: one for both interfaces or one for each interface? And, again, what should their names be?</li>
+<li>Bind the interface profile to the switch profile: that’s should be the easiest task in the whole sequence.</li>
+</ol>
+<p>Now documents every step in details (naming convention, policies to be used…), and try to give the same task to 5 different network engineer. Will their results be identical? How long did they take? How many of them introduced an error… and how would you even identify that an error has been made?</p>
+<p>As you would expect, in a real-world environment:</p>
+<ul><li>many of them made mistakes while completing this relatively simple task;</li>
+<li>it took them anywhere from 30 minutes to a couple of hours depending on their skills.</li>
+</ul>
+<p>As expected, <a href="https://blog.ipspace.net/2011/01/vmware-cluster-up-and-running-in-three.html">using GUI is the worst possible way of doing things</a> (probably even worse than using CLI).</p>
+<h2 id="the-right-way">The right way</h2><p>Because of the complexity of configuring Cisco ACI, the number of manual tasks must be reduced… and if you keep doing manual configuration, you are going to have hundreds/thousands of concatenated objects without knowing what each one is for. It’s like firewall policies: it’s easy to add a firewall rule, it’s almost impossible to clean them up.</p>
+<p class="note">I’m not discussing why and how automation should be introduced in organizations, I’m just saying that Cisco ACI cannot be configured or managed by manual GUI-driven operations. </p>
+<p>Start with:</p>
+<ul><li>understanding why and how you want to introduce automation;</li>
+<li>analyze how your staff is working;</li>
+<li>standardize tasks;</li>
+<li>automate tasks;</li>
+<li>orchestrate group of tasks.</li>
+</ul>
+<p>Optional:</p>
+<ul><li>find the right skills to analyze, standardize and develop what is needed.</li>
+</ul>
+<h2 id="real-examples-of-automated-tasks">Real examples of automated tasks</h2><p>Here arew a few real-life examples of automated deployments I did.</p>
+<p>Configuring a virtual port-channel (described above):</p>
+<ul><li>by a medium-skilled network engineer: 30 minutes</li>
+<li>by a script: less than one minute</li>
+</ul>
+<p>Building a new tenant from scratch (including hundreds of bridge domains, application profiles, hundreds of EPGs, dozens of L3Outs, dozens of static routes, dynamic routing…):</p>
+<ul><li>by a medium-skilled network engineer: days, maybe weeks</li>
+<li>by a script: 5 minutes</li>
+</ul>
+<p><a href="https://blog.ipspace.net/2018/06/automation-win-document-cisco-aci.html">Documenting a Cisco ACI installation</a> (find out what is connected, and which object is using which other object):</p>
+<ul><li>by a medium-skilled network engineer: days, maybe weeks</li>
+<li>by a script: 5 minutes</li>
+</ul>
+<h2 id="conclusions">Conclusions</h2><p>I’m not saying that building automation for Cisco ACI is easy, I’m saying that operating manually on Cisco ACI is the worst thing you can do:</p>
+<ul><li>you’re doing things in a non repeatable way;</li>
+<li>you’re probably introducing many errors;</li>
+<li>you’re spending more time that needed doing repeatable tasks;</li>
+<li>you still have a lot of manual work in your deployment phase.</li>
+</ul>
+<p>And finally:</p>
+<ul><li>you’ll soon lose control having hundreds/thousands of objects with operators trying to understand what is going on.</li>
+</ul>
+<p>Rather than doing error-prone manual work you should automate your Cisco ACI installation to:</p>
+<ul><li>avoid manual mistakes/mistypes;</li>
+<li>have repeatable and reproducible tasks;</li>
+<li>execute tasks fast;</li>
+<li>execute tasks by non skilled operators or directly by third party softwares;</li>
+<li>continuously document what is going on;</li>
+</ul>
+<p>Change your mind, start automating your processes and individual tasks, and then stop doing things manually.</p>
+<p>Finally, if you’re managing a bunch of independent devices, you can still do that manually. But if you have Cisco ACI in place, or you plan to get it, the only way to retain sanity and survive its complexity is to start automating… and if you don’t have the required skills to approach the problem, either train your team or find them outside.</p>
+<hr /><p>Want to implement something similar in your Cisco ACI deployment? Dirk Feldhaus <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=6#M6S4">described the details</a> of his <a href="https://blog.ipspace.net/2018/06/automation-win-document-cisco-aci.html">Cisco ACI documentation</a> and <a href="https://blog.ipspace.net/2018/10/automation-win-configure-cisco-aci-with.html">automated Cisco ACI tenant deployments</a> solutions in <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions online course</a>.</p>
+<hr /><p><em>To learn more about what Andrea is doing these days, and whether he might be able to help you doing something similar, contact him through&nbsp;<a href="mailto:andrea.dainese@gmail.com">email</a>,&nbsp;<a href="https://www.linkedin.com/in/adainese/">LinkedIn</a>&nbsp;or on&nbsp;<a href="https://twitter.com/adainese">Twitter</a>.</em></p> 
+

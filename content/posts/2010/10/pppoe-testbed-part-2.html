@@ -1,0 +1,19 @@
+---
+title: "PPPoE testbed, part 2"
+date: "2010-10-14T13:50:00.000+02:00"
+tags: [ IPv6,Workshop,Service Providers ]
+---
+
+<p>During my last <a href="http://www.ioshints.info/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider Core</em></a> webinar (<a href="http://spipv6.eventbrite.com/">register here</a>) I got a lot of questions about IPv6 over PPPoE (obviously we’re close to widespread IPv6 implementation; I never got PPPoE questions before). I wanted to test various scenarios in my IPv6 lab and thus enabled PPPoE on an Ethernet link between CE and PE routers using the <a href="http://blog.ioshints.info/2009/07/pppoe-testbed.html">configurations I published last year</a>. </p>
+<p>This time I wanted to test multiple configurations in parallel ... no problem thanks versatile PPPoE implementation in Cisco.</p>
+<!--more--><p>On the server:</p>
+<ul class="ListParagraph"><li>Define multiple PPPoE server groups bound to different virtual templates;</li>
+<li>Attach a PPPoE server group to a VLAN subinterface;</li>
+</ul>
+<p>On the client:</p>
+<ul class="ListParagraph"><li>Use multiple <em>dialer pools </em>to connect to different PPPoE servers over VLAN subinterfaces;</li>
+<li>Tie dialer interfaces to different dialer pools.</li>
+</ul>
+<p>The relevant parts of the router configurations are included below:</p>
+<h4>PPPoE server configuration</h4><pre class="code">bba-group pppoe SPA<br /> virtual-template 10<br />!<br />bba-group pppoe SPB<br /> virtual-template 20<br />!<br />interface FastEthernet0/0<br /> no ip address<br /> no shutdown<br />!<br />interface FastEthernet0/0.100<br /> encapsulation dot1Q 100<br /> pppoe enable group SPA<br />!<br />interface FastEthernet0/0.200<br /> encapsulation dot1Q 200<br /> pppoe enable group SPB<br />!<br />interface Virtual-Template10<br /> description *** Template for PPPoE group A (VLAN 100) ***<br /> mtu 1480<br /> ... <br />!<br />interface Virtual-Template20<br /> description *** Template for PPPoE group B (VLAN 200) ***<br /> mtu 1480<br /> ... </pre><h4>PPPoE client configuration</h4><pre class="code">interface FastEthernet0/1<br /> no ip address<br /> no shutdown<br />!<br />interface FastEthernet0/1.100<br /> description *** PPPoE toward server group A ***<br /> encapsulation dot1Q 100<br /> pppoe-client dial-pool-number 1<br />!<br />interface FastEthernet0/1.200<br /> description *** PPPoE toward server group B ***<br /> encapsulation dot1Q 200<br /> pppoe-client dial-pool-number 2<br />!<br />interface Dialer1<br /> mtu 1480<br /> no ip address<br /> encapsulation ppp<br /> dialer pool 1<br /> dialer-group 1<br /> ...<br />!<br />interface Dialer2<br /> mtu 1480<br /> ip address negotiated<br /> encapsulation ppp<br /> dialer pool 2<br /> dialer-group 2<br /> ...</pre><p>And the IPv6 support over PPPoE? Works surprisingly well. I was able to configure IPv6 autoconfiguration (each virtual access interface gets a /64, DHCP is used to propagate the DNS information) and prefix delegation with DHCP (virtual access interface remains unnumbered, a /64 is delegated to the CPE router via DHCP). The only task left: writing a follow-up report for my attendees.</p>
+

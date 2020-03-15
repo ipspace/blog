@@ -1,0 +1,40 @@
+---
+title: "Virtual Packet Forwarding in Hyper-V Network Virtualization"
+date: "2013-12-02T06:56:00.000+01:00"
+tags: [ Workshop,Overlay networks,virtualization ]
+---
+
+<p>Last week I explained how <a href="http://blog.ipspace.net/2013/11/layer-2-and-layer-3-switching-in-vmware.html">layer-2 and layer-3 packet forwarding works in VMware NSX</a> – a solution that closely emulates traditional L2 and L3 networks. Hyper-V Network Virtualization (HNV) is different – it’s almost a layer-3-only solution with only a few ties to layer-2.<!--more--></p>
+<h4>HNV Architecture</h4><p>Hyper-V Network Virtualization started as an add-on module (NDIS lightweight filter) for Hyper-V 3.0 extensible switch (it is fully integrated with the extensible switch in the Windows Server 2012 R2 – more about that in <a href="http://blog.ipspace.net/2013/12/hyper-v-network-virtualization-packet.html">another blog post</a>).</p>
+<p class='warn'>This blog post describes HNV packet forwarding in Windows Server 2012. The follow-up blog post documents the <a href="http://blog.ipspace.net/2013/12/hyper-v-network-virtualization-packet.html">HNV behavior in Windows Server 2012 R2</a>.</p>
+<div class='separator'><a href="http://4.bp.blogspot.com/-ajnYwCoJrYU/UptqGksyDPI/AAAAAAAAGXY/BvvQVwVVxIk/s1600/HNV+-+Hypervisor.jpg" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-ajnYwCoJrYU/UptqGksyDPI/AAAAAAAAGXY/BvvQVwVVxIk/s300/HNV+-+Hypervisor.jpg" /></a></div>
+<p>Hyper-V extensible switch is a layer-2-only switch; Hyper-V network virtualization module is a layer-3-only solution – an interesting mix with some unexpected side effects.  </p>
+<p>A distributed layer-3 forwarding architecture could use a single IP routing table to forward traffic between IP hosts. Similar to traditional IP routing solutions, the end-user would configure directly connected IP subnets and prefix routes (with IP next hops), and the virtual networking controller (or the orchestration system) would add host routes for every reachable host. Forwarding within the virtual domain would use host routes; forwarding toward external gateways would use configured IP next hops (which would be recursively resolved from host routes).</p>
+<p>Hyper-V network virtualization cannot use a pure layer-3 solution due to layer-2 forwarding within the extensible switch – two VMs connected to the same VLAN within the same hypervisor would communicate directly (without HNV involvement) and would exchange MAC addresses through ARP requests. The same communication path has to exist after one of them is moved to a different hypervisor with Hyper-V live migration – HNV must thus support a mix of layer-2 and layer-3 forwarding.</p>
+<h4>Control plane setup</h4><p>A <a href="http://blog.ipspace.net/2013/10/the-intricacies-of-optimal-layer-3.html">distributed layer-2 + layer-3 forwarding architecture</a> needs at least three tables to forward traffic:</p>
+<ul class="ListParagraph"><li>IP routing table;</li>
+<li>ARP table (mapping of IP addresses into MAC addresses);</li>
+<li>MAC reachability information – outbound ports in pure layer-2 world or destination transport IP addresses in overlay virtual networks.</li>
+</ul>
+<p>IP routing table is installed in the Hyper-V hosts with the <a href="http://technet.microsoft.com/en-us/library/jj884249.aspx"><strong>New-NetVirtualizationCustomerRoute</strong></a> PowerShell cmdlet, ARP table and MAC reachability table are installed as CustomerIP-MAC-TransportIP triplets with the <a href="http://technet.microsoft.com/en-us/library/jj884243.aspx"><strong>New-NetVirtualizationLookupRecord</strong></a><strong> </strong>cmdlet.</p>
+<div class='separator'><a href="http://3.bp.blogspot.com/-fjNvCFS3VFk/UptqGkwE3_I/AAAAAAAAGXU/fBVKaBGGiuU/s1600/HNV+-+Config.jpg" imageanchor="1" ><img border="0" src="http://3.bp.blogspot.com/-fjNvCFS3VFk/UptqGkwE3_I/AAAAAAAAGXU/fBVKaBGGiuU/s500/HNV+-+Config.jpg" /></a></div>
+<p class="info">Hyper-V Network Virtualization supports IPv4 and IPv6. An <em>IP address</em> mentioned in this blog posts means <em>IPv4 or IPv6 </em>address – but do keep in mind that you have to configure IPv4 and IPv6 network virtualization lookup records independently.</p>
+<h4>Intra-subnet packet forwarding</h4><p>When the Hyper-V extensible switch receives a packet from a VM, it has to decide where to send it. At this point the extensible switch uses layer-2 forwarding rules:</p>
+<ul class="ListParagraph"><li>If the destination MAC address exists within the same segment, send the packet to the destination VM;</li>
+<li>Flood multicast or broadcast frames to all VMs and the uplink interface;</li>
+<li>Send frames with unknown destination MAC addresses to the uplink interface.</li>
+</ul>
+<p>Hyper-V network virtualization module intercepts packets forwarded by the extensible switch toward the uplink interface and performs layer-3 forwarding and local ARP processing:</p>
+<ul class="ListParagraph"><li>All ARP requests are answered locally using the information installed with the <strong>New-NetVirtualizationLookupRecord</strong><strong> </strong>cmdlet;</li>
+<li>IP packets are forwarded to the destination hypervisor based on their <em>destination IP address </em>(not destination MAC address);</li>
+<li>Flooded frames, frames sent to unknown MAC addresses, and non-IP frames are dropped.</li>
+</ul>
+<div class='separator'><a href="http://4.bp.blogspot.com/-SgO1Gh5NIt0/UptqGhbMbZI/AAAAAAAAGXQ/gN3swI4vd6s/s1600/HNV+-+Overview.jpg" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-SgO1Gh5NIt0/UptqGhbMbZI/AAAAAAAAGXQ/gN3swI4vd6s/s500/HNV+-+Overview.jpg" /></a></div>
+<h4>Inter-subnet packet forwarding</h4><p>Traffic between IP subnets is intercepted by HNV module based on the default gateway destination MAC address (which belongs to HNV). Hyper-V extensible switch sends the traffic toward the default gateway MAC address to the uplink interface (<em>unknown destination MAC address </em>rule), where it’s intercepted by HNV, which performs layer-3 lookup.</p>
+<p>The true difference between intra-subnet and inter-subnet layer-3 forwarding is thus the destination MAC address:</p>
+<ul class="ListParagraph"><li>Intra-subnet IP packets are sent to the MAC address of the destination VM, intercepted by HNV module, and forwarded based on destination IP address;</li>
+<li>Inter-subnet IP packets are sent to the MAC address of the default gateway (virtual MAC address shared by all HNV modules), also intercepted by HNV module, and forwarded based on destination IP address (when the HNV module has a <strong>New-NetVirtualizationLookupRecord</strong> for destination IP address) or destination IP prefix (when there’s no <strong>New-NetVirtualizationLookupRecord</strong><strong> </strong>for destination IP address).</li>
+</ul>
+<p><strong>Summary:</strong> Even though it looks like Hyper-V Network Virtualization in Windows Server 2012 works like any other L2+L3 solutions, it’s a layer-3-only solution <em>between hypervisors </em>and layer-2+layer-3 solution <em>within a hypervisor</em>.</p>
+<h4>More information</h4><p><a href="http://www.ipspace.net/Overlay_Virtual_Networking">Overlay Virtual Networking</a> webinar describes architectures from numerous vendors, including Cisco, VMware, Microsoft, IBM, and Midokura.</p>
+

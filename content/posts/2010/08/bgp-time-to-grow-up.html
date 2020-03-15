@@ -1,0 +1,19 @@
+---
+title: "BGP: time to grow up"
+date: "2010-08-31T07:26:00.003+02:00"
+tags: [ What went wrong,Internet,BGP ]
+---
+
+<p>If you’re in the Service Provider business, this is (hopefully) old news: on Friday, <a href="http://www.merit.edu/mail.archives/nanog/msg11505.html">RIPE decided to experiment with the Internet</a> causing <a href="http://www.cisco.com/en/US/products/products_security_advisory09186a0080b4411f.shtml">routers running IOS-XR to hiccup</a>. They stopped the experiment in less than half an hour and <a href="http://www.renesys.com/blog/2010/08/house-of-cards.shtml">only 2% of the Internet was affected according to Renesys analysis</a> (a nice side effect: <a href="http://ccie-in-3-months.blogspot.com/2010/08/decoding-ripe-experiment.html">Tassos had great fun decoding the offending BGP attribute from hex dumps</a>).</p>
+<p>My first gut reaction was “something’s doesn’t feel right”. A BGP bug in IOS-XR affects only 2% of the Internet? Here are some possible conclusions:</p>
+<!--more--><ul class="ListParagraph"><li>Most other intermediate routers (IOS and JunOS based, one would assume) decided to silently drop the offending attribute and thus only those IOS XR routers directly peering with RIPE were exposed. Not likely, that would be a direct violation of current BGP standards.</li>
+<li>IOS XR is not widely used (read: not many people have CRS routers). Not likely, at least some very big providers have them.</li>
+<li>Most people don’t run BGP on IOS XR and use the high-end boxes only in their IP+MPLS core.</li>
+<li>IOS XR is typically not in the BGP update propagation path. If your core routers are receiving BGP updates solely from the BGP route reflector, there’s nobody behind them and nobody would notice the malformed updates (yet another reason to have good network design).</li>
+</ul>
+<p>On a more serious note: the experiment has unintentionally exposed another long-term problem we’re facing: anyone can obviously attach any garbage to a BGP prefix and cause global memory consumption. The only thing you’d notice is increased BGP memory utilization that would be extremely hard to troubleshoot manually. Cisco IOS and IOS XR have no relevant filtering or scrubbing mechanisms (like they have for BGP communities) that you could use to protect yourself (and JunOS is probably no better).</p>
+<p>The first line of defense could be BGP monitoring services like bgpmon.net. They could detect unknown transitive BGP attributes and report all memory-consuming attributes. </p>
+<p>However, it’s high time we get away from “everyone is a trusted good guy” model BGP uses today and (at least) get a knob in BGP implementations that allows us to drop unknown attributes (today, unknown transitive attributes are silently propagated). Ideally, we would have a route-map/route-policy mechanism that would allow us to match BGP attributes based on their ID and accept BGP routes with select unknown attributes based on the attribute ID and its length.</p>
+<p>Last but not least (before someone starts yelling at me): I know the “drop unknown attributes” knob will make all the future extensions to BGP harder to deploy, but the alternative is worse.</p>
+<p><strong>UPDATE</strong><strong> (2010-09-01)</strong>: Russell Heilling makes a very good point in his <a href="http://perlmonkey.blogspot.com/2010/08/unexpected-consequences.html"><em>Unexpected Consequences </em>post</a>: it would be better to drop IP prefixes with unknown (or oversized) attributes than to silently scrub the attributes. In any case, we need conditions in the route maps/route policies that can match unknown attributes and the size of unknown (or all) attributes of a BGP route; the action to take (drop/permit/scrub) can then be specified in the route map/route policy.</p>
+

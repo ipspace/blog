@@ -1,0 +1,25 @@
+---
+title: "Leaf-and-Spine Fabric Myths (Part 2)"
+date: "2018-10-10T09:04:00.000+02:00"
+tags: [ Design,Data Center,Fabric,BGP ]
+---
+
+<p>The next set of <a href="https://blog.ipspace.net/2018/10/leaf-and-spine-fabric-myths-part-1.html">Leaf-and-Spine Fabric Myths</a> listed by <a href="https://blog.ipspace.net/2018/06/is-ebgp-really-better-than-ospf-in-leaf.html?showComment=1531903854342#c4430946733793890437">Evil CCIE</a> focused on BGP:</p>
+<blockquote class="cite">BGP is the best choice for leaf-and-spine fabrics.</blockquote>
+<p>I wrote about this particular one <a href="https://blog.ipspace.net/2018/06/is-ebgp-really-better-than-ospf-in-leaf.html">here</a>. If you&rsquo;re not a BGP guru don&rsquo;t overcomplicate your network. OSPF, IS-IS, and EIGRP are good enough for most environments. Also, don&rsquo;t ever <a href="https://blog.ipspace.net/2018/09/implications-of-valley-free-routing-in.html">turn BGP into RIP with AS-path length serving as hop count</a>.<!--more--></p>
+<blockquote class="cite">BGP is a good choice as it allows granular policy control </blockquote>
+<p>As anyone who ever tried to implement a consistent QoS policy across a large network knows <strong>maintaining a policy and adjusting it </strong><strong>to changing conditions </strong><strong>quickly becomes a huge operational burden</strong>. In most data center environments it&rsquo;s cheaper to buy more bandwidth. </p>
+<p>Also, don&rsquo;t believe in the magic <a href="https://blog.ipspace.net/2018/06/what-is-intent-based-networking.html">powers of intent-based networking</a>. I <a href="https://my.ipspace.net/bin/list?id=NetAutUC#CS_INTENT">explained the drawbacks of this idea</a> in the <a href="https://www.ipspace.net/Network_Automation_Use_Cases">Network Automation Use Cases webinar</a>, here&rsquo;s the TL&amp;DW summary: it will probably cost you more than buying faster leaf-to-spine links. </p>
+<p>Finally, the next time a $vendor Sales Engineer makes this argument, quote RFC 1925 Rule 4 and ask him when was the last time he was maintaining a complex policy in a production environment for more than a few years (and how painful it was).</p>
+<blockquote class="cite">BGP has less churn</blockquote>
+<p>Assuming you care. Most enterprise environments need layer-2 fabrics anyway, which usually translates into VXLAN overlay these days. It doesn&rsquo;t matter whether you use static VXLAN ingress replication lists or EVPN &ndash; the core OSPF process doesn&rsquo;t need more than a single router LSA per switch.</p>
+<blockquote class="cite">BGP scales far better</blockquote>
+<p>In principle, it&rsquo;s true. In practice, most environments don&rsquo;t need that scale. I asked that same question several times in <a href="https://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html">RIFT</a> and <a href="https://blog.ipspace.net/2018/04/openfabric-with-russ-white-on-software.html">OpenFabric</a> podcasts and we came to an agreement that decent OSPF implementations shouldn&rsquo;t have a problem with a few hundred switches in the same area. Dinesh Dutt also had <a href="https://blog.ipspace.net/2018/08/is-bgp-good-enough-with-dinesh-dutt-on.html">quite a few things to say about the <em>BGP-is-my-hammer-where&rsquo;s-the-nail</em> approach</a>.</p>
+<h4>Now What?</h4><p>As far as I can see, you have (approximately) four options when selecting the underlay routing protocol:</p>
+<ul class="ListParagraph"><li><a href="https://www.ipspace.net/Optimize_Data_Center_Infrastructure">You don&rsquo;t need more than two switches</a>, making all design discussions moot;</li>
+<li>You select OSPF, IS-IS or EBGP based on the last blog post you found on the Internet&hellip; and get the fabric you deserve ;)</li>
+<li>You use EBGP because you trust your $vendor;</li>
+<li>You figure out how data center fabrics really work (if you do them right, they are nothing more than simple IP networks), and then use the routing and switching knowledge you already have to design them.</li>
+</ul>
+<p>If you decide to take the red pill (last option), you might find the <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">Leaf-and-Spine Fabric Architectures</a> and <a href="https://www.ipspace.net/EVPN_Technical_Deep_Dive">EVPN Technical Deep Dive</a> webinars useful. They are both part of <a href="https://www.ipspace.net/Subscription">Standard ipSpace.net subscription</a>.</p>
+

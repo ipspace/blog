@@ -1,0 +1,31 @@
+---
+title: "OpenStack/Quantum SDN-based virtual networks with Floodlight"
+date: "2012-08-02T06:53:00.000+02:00"
+tags: [ SDN,OpenFlow,cloud,virtualization ]
+---
+
+<p>A few years before MPLS/VPN was invented, I’d worked with a service provider who wanted to offer L3-based (peer-to-peer) VPN service to their clients. Having a single forwarding table in the PE-routers, they had to be very creative and used ACLs to provide customer isolation (you’ll find more details in the <em>Shared-router Approach to Peer-to-peer VPN Model </em>section of my <a href="http://www.amazon.com/gp/product/1587050811/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1587050811&amp;linkCode=as2&amp;tag=cisioshinandt-20">MPLS/VPN Architectures</a> book).</p>
+<p>Now, what does that have to do with OpenFlow, SDN, Floodlight and Quantum?<!--more--></p>
+<h4>The Big Picture</h4><p>Big Switch has recently released a <a href="http://www.openflowhub.org/blog/blog/2012/07/10/introducing-openstack-and-virtual-network-support-for-floodlight/">plug-in for Quantum that provides OpenFlow-based virtual network support with their open-source Floodlight controller</a>, and they use layer-2 ACLs to implement virtual networks, confirming the infinite wisdom of <a href="http://tools.ietf.org/html/rfc1925">RFC 1925</a>:</p>
+<blockquote class="cite">Every old idea will be proposed again with a different name and a different presentation, regardless of whether it works.</blockquote>
+<h4>How does it work?</h4><p>The 30K foot perspective first:</p>
+<ul class="ListParagraph"><li>OpenStack virtual networks are created with the REST API of the <a href="http://openvswitch.org/openstack/2011/07/25/openstack-quantum-and-open-vswitch-part-1/">Quantum (networking) component of OpenStack</a>;</li>
+<li><a href="http://openvswitch.org/openstack/2011/08/01/openstack-quantum-and-open-vswitch-part-ii/">Quantum uses back-end plug-ins</a> to create the virtual networks in the actual underlying network fabric. Quantum (and the rest of OpenStack) does not care how the virtual networks are implemented as long as they provide isolated L2 domains.</li>
+</ul>
+<p>And a <a href="http://www.youtube.com/watch?v=YWyCCJ6B2WE">quick look behind the scenes</a>:</p>
+<ul class="ListParagraph"><li>Big Switch decided to implement virtual networks with dynamic OpenFlow-based L2 ACLs instead of using VLAN tags. </li>
+<li>The REST API offered by <a href="http://www.openflowhub.org/display/floodlightcontroller/VirtualNetworkFilter+%28Quantum+Plugin%29">Floodlight’s VirtualNetworkFilter module</a> offers simple methods that create virtual networks and assign MAC addresses to them. </li>
+<li>The VirtualNetworkFilter intercepts all new flow setup requests (PacketIn messages to the Floodlight controller), checks that the source and destination MAC address belong to the same virtual network, and permits or drops the packet.</li>
+<li>If the VirtualNetworkFilter accepts the flow, the <a href="http://www.openflowhub.org/display/floodlightcontroller/Forwarding">Floodlight’s Forwarding</a> module installs the flow entries for the newly-created flow throughout the network.</li>
+</ul>
+<p class="warn">The current release of Floodlight installs per-flow entries throughout the network. I’m not <a href="http://blog.ioshints.info/2012/01/fib-update-challenges-in-openflow.html">particularly impressed with the scalability of this approach</a> (and <a href="http://www.hpl.hp.com/personal/Praveen_Yalagandula/papers/SIGCOMM2011-DevoFlow.pdf">I’m not the only one</a>).</p>
+<h4>Does it make sense?</h4><p>Floodlight controller and its Quantum plug-in have a very long way to go before I’d use them in a production environment:</p>
+<ul class="ListParagraph"><li>The Floodlight controller is a single point of failure (there’s no provision for a redundant controller);</li>
+<li>Unless I can’t read Java code (which wouldn’t surprise me at all), the VirtualNetworkFilter stores all mappings (including MAC membership information) in in-memory structures that are lost if the controller or the server on which it runs crashes;</li>
+<li>As mentioned above, per-flow entries used by Floodlight controller don’t scale at all (more about that in an upcoming post).</li>
+</ul>
+<p>The whole thing is thus a nice proof-of-concept tool that will require significant efforts (probably including a major rewrite of the forwarding module) before it becomes production-ready.</p>
+<p>However, we should not use Floodlight to judge the quality of the yet-to-be-released commercial OpenFlow controller from Big Switch Networks. This is how <a href="http://www.linkedin.com/in/michaelstevencohen">Mike Cohen</a> explained the differences:</p>
+<blockquote class="cite">I want to highlight that all of the points you raised around production deployability and flow scalability (and some you didn't around how isolation is managed / enforced) are indeed addressed in significant ways in our commercial products. There’s a separation between what's in Floodlight and the code folks will eventually see from Big Switch.</blockquote>
+<p>As always, I might become a believer once I see the product and its documentation.</p>
+

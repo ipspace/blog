@@ -1,0 +1,17 @@
+---
+title: "IS-IS+MPLS TE+Native IPv6=FAIL"
+date: "2010-03-31T07:18:00.006+02:00"
+tags: [ MPLS,IPv6,IS-IS,Workshop,traffic engineering ]
+---
+
+<p class='warn'>The information in this article applies only to single-topology IS-IS setup. <a href="http://blog.ioshints.info/2010/06/multi-topology-is-is.html">Multi-topology IS-IS</a> works correctly.</p>
+<p>It’s a shame but it looks like IPv6 and MPLS TE don’t work together in current IOS releases. The standards are there, but Cisco didn’t find the motivation to implement them yet. The situation is particularly grave if you happen to:</p>
+<ul><li>run IS-IS as your routing protocol (many large Service Provider networks do);</li>
+<li>use IS-IS for both IPv4 and IPv6 (makes perfect sense) in single-topology mode (not the best idea);</li>
+<li>use MPLS TE for traffic engineering and/or fast reroute (not uncommon);</li>
+<li>use <em>autoroute </em>on MPLS TE tunnels (most people do);</li>
+<li>run IPv6 natively (without end-to-end MPLS LSP and 6PE). </li>
+</ul>
+<p>In this scenario, IS-IS will install <em>autoroute-</em>enabled MPLS TE tunnels in the SPF tree (see <a href="http://wiki.nil.com/Autoroute_(MPLS_TE)_basics"><em>autoroute basics</em></a><em> </em>for more details) but as IPv6 and MPLS TE tunnels don’t mix, the IPv6 destinations behind the MPLS TE tunnels will not be reachable at all.</p>
+<p class="info">MPLS TE issues in IPv6 networks are covered in <a href="http://www.ioshints.info/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider core</em></a> webinar (<a href="http://spipv6.eventbrite.com/">register here</a>).</p>
+

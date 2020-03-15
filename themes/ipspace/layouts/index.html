@@ -1,0 +1,9 @@
+{{ partial "header.html" . }}
+{{ $pag := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+{{ range $pag.Pages }}
+  {{ partial "post-content.html" . }}
+{{ end }}
+<div class="post-navigation">
+  {{ partial "pagination.html" . }}
+</div>
+{{ partial "footer.html" . }}

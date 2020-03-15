@@ -1,0 +1,32 @@
+---
+title: "OMG, Who Will Manage All Those Virtual Firewalls?"
+date: "2013-12-04T07:50:00.000+01:00"
+tags: [ firewalls,Workshop,load balancing,Overlay networks,virtualization ]
+---
+
+<p>Every time I <a href="http://blog.ipspace.net/2013/11/typical-enterprise-application.html">talk about small (per-application) virtual appliances</a>, someone <a href="http://blog.ipspace.net/2013/11/typical-enterprise-application.html?showComment=1385531473582#c8690061865839270992">inevitably cries</a> “<em>And who will manage thousands of appliances?</em>” Guess what – I’ve heard similar cries from the mainframe engineers when we started introducing Windows and Unix servers. In the meantime, <a href="http://highscalability.com/blog/2013/11/19/we-finally-cracked-the-10k-problem-this-time-for-managing-se.html">some sysadmins manage more than 10.000 servers</a>, and we’re still discussing the “benefits” of humongous monolithic firewalls.<!--more--></p>
+<h4>It won’t be easy</h4><p>You’ll obviously have to change your processes and tools as you go from configuring uncountable firewall rules on a pair of gigantic pets to deploying a large herd of small appliances – here are a few tips that might help you.</p>
+<p><strong>Standardize</strong>. There might be thousands of applications in a typical large enterprise, but I’m positive they aren’t as unique as their developers think. Identify typical patterns (example: web application using external SQL Server) and standardize the network services needed by the application classes.</p>
+<p><strong>Simplify</strong>. Traditional firewall and load balancer rules/configurations are complex because we force a single box to manage hundreds or thousands of “unique” endpoints, each one identified by its IP address. In an appliance-per-application world the rules become much simpler, for example:</p>
+<ul class="ListParagraph"><li>Outside IP address is load balanced across <em>all hosts</em> in the <em>web </em>segment;</li>
+<li><em>Everyone</em> can access port 80 on <em>any host</em> in the <em>web </em>segment;</li>
+<li><em>Every host</em> in the <em>web </em>segment can access MySQL port on <em>any host</em> in the <em>database </em>segment and Memcached port on <em>any host</em> in the <em>caching </em>segment.</li>
+</ul>
+<p>Simple, easy to understand, audit and manage.</p>
+<p><strong>Templatize</strong>. Once you have simple rules for standard application classes, generate configuration templates or golden images. Every time the requirements change, change the template, test it, and deploy hundreds of new VMs instead of manually changing firewall rules for every application/host.</p>
+<p><strong>Automate</strong>. Manual processes never scale, as craftsmen of all trades discovered throughout the history. If you want to roll out thousands of appliances, you have to automate their deployment, change management and monitoring. </p>
+<p>The good news: all recent virtual appliances have an API that you can use to automate them. The bad news: someone will have to learn how to use that API and write scripts.</p>
+<p><strong>Delegate</strong>. Once you did your homework, identified typical application patterns, created simple rules, and prepared virtual appliance templates that can be automatically deployed from a central catalog, you have to let go. Application teams should take ownership of individual virtual appliance instances – these instances become just another VM in the application stack.</p>
+<h4>Start now</h4><p>It’s impossible to get from the rigid environment of oversized physical appliances to the virtual appliance nirvana in a single giant leap, but there’s nothing preventing you from taking the first steps.</p>
+<p>Don’t try to fix the existing nightmare – some of it can be migrated to the virtual appliances world once the new concepts have been proven, and some applications will simply have to die before you can get rid of the old world. Focus on the new applications that are in the design stage.</p>
+<p>Don’t preach the new ideas to everyone you bump into. Identify the most flexible application development team in your organization and start working with them – once everyone else sees the benefits of the new approach, they just might decide to join you.</p>
+<h4>Need help?</h4><p>If you need help designing your next-generation private cloud, <a href="http://www.ipspace.net/Consulting">get in touch</a>. You’ll also find plenty of details in my <a href="http://www.ipspace.net/Roadmap/Virtualization_webinars">virtualization webinars</a>:</p>
+<ul class="ListParagraph"><li><a href="http://www.ipspace.net/Introduction_to_Virtualized_Networking">Introduction to Virtual Networking</a> will give you an overview;</li>
+<li><a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> describes numerous technologies you can use to build virtual networks, and their scalability;</li>
+<li><a href="http://www.ipspace.net/Virtual_Firewalls">Virtual Firewalls</a> talks about appliance- and NIC-based virtual firewalls;</li>
+<li><a href="http://www.ipspace.net/VMware_Networking_Deep_Dive">VMware Networking Deep Dive</a> covers the technical details of vSphere’s vSwitch, Nexus 1000V and virtual firewalls (including VSG, vShield App and vGW);</li>
+<li><a href="http://www.ipspace.net/Overlay_Virtual_Networking">Overlay Virtual Networking</a> describes emerging technologies that you can use to implement large-scale virtualized environments;</li>
+<li><a href="http://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN Technical Deep Dive</a> focuses on VXLAN-based virtual networks and VXLAN gateways.</li>
+</ul>
+<p>All webinars are included with the <a href="http://www.ipspace.net/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+

@@ -1,0 +1,12 @@
+---
+title: "BGP as a Better IGP? When and Where?"
+date: "2017-11-29T09:13:00.000+01:00"
+tags: [ Design,Data Center,Fabric,BGP ]
+---
+
+<p>A while ago I helped a large enterprise redesign their data center fabric. They did a wonderful job <a href="http://www.ipspace.net/Optimize_Data_Center_Infrastructure">optimizing their infrastructure</a>, so all they really needed were two switches in each location.</p>
+<p>Some vendors couldn&rsquo;t fathom that. One of them proposed to build a &ldquo;future-proof&rdquo; (and twice as expensive) leaf-and-spine fabric with two leaves and two spines. On top of that they proposed to use EBGP as the only routing protocol because <a href="https://tools.ietf.org/html/rfc7938">draft-lapukhov-bgp-routing-large-dc</a> &ndash; a clear case of <a href="http://www.projectcartoon.com/cartoon/3">missing the customer needs</a>.<!--more--></p>
+<p>Since then I started wondering whether we&rsquo;re overselling the benefits of BGP. It&rsquo;s clearly the right choice if you have a huge fabric, or if you want to run IPv4, IPv6 and EVPN at the same time&hellip; but if all you need is IP transport across a half-dozen switches to run VMware NSX on top of that BGP is clearly an overkill.</p>
+<p>I tried to summarize my thoughts on whether it makes sense to use BGP in a data center fabric in a <a href="http://www.ipspace.net/Data_Center_BGP">short overview document</a> that I&rsquo;ll publish in several parts, starting with <a href="http://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol">how would you decide whether it makes sense to use BGP as the only routing protocol in your data center fabric</a>.</p>
+<p>Keep in mind that this is just an overview document. You&rsquo;ll find more details in the <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">leaf-and-spine fabric architectures webinar</a>, learn how to build data center fabrics in <a href="http://www.ipspace.net/FabricDesign">designing and building data center fabrics</a> online course, and master data center design in <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">building next-generation data center</a> online course.</p>
+

@@ -1,0 +1,8 @@
+---
+title: "Count the logging messages"
+date: "2007-01-16T12:10:00.000+01:00"
+tags: [ logging ]
+---
+
+I haven't figured out why I would need this particular IOS feature (<a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios122/122newft/122t/122t8/fterrlog.htm">IOS documentation </a>says you can at least get a glimpse of what was happening before the logging buffer wrapped over), but it's such a cool one I simply have to mention it ... starting with release 12.2(8)T and 12.3, IOS can tabulate the occurence of each log message.<script>startHide()</script>You configure this feature with the <strong>logging count</strong> global configuration command and inspect its results with the <strong>show logging count</strong> command:<pre style='font-size: 80%'>a1#<strong>show logg count</strong><br />Facility       Message Name      Sev Occur      Last Time<br />============================================================<br />SYS            CONFIG_I          5    4 *Jan 16 11:32:57.130<br />-------------  -------------- ------------------------------<br />SYS TOTAL                             4<br /><br />OSPF           ADJCHG            5    2 *Jan 16 11:31:26.434<br />-------------  -------------- ------------------------------<br />OSPF TOTAL                            2</pre><script>endHide()</script>
+

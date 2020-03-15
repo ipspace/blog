@@ -1,0 +1,16 @@
+---
+title: "BGP and route maps"
+date: "2011-10-19T07:15:00.000+02:00"
+tags: [ BGP ]
+---
+
+<p>This is a nice email I got from an engineer struggling with multi-homing BGP setup:</p>
+<blockquote class="cite">We faced a problem with our internet routers a few days back. The engineer who configured them earlier used the syntax: <strong>network x.x.x.x mask y.y.y.y route-map PREPEND</strong> to influence the incoming traffic over two service-providers.</blockquote>
+<p>... and of course it didn’t work.<!--more--></p>
+<blockquote class="cite">We weren't getting the desired results so I changed the configuration from up above to:  <strong>neighbor x.x.x.x route-map PREPEND</strong> and to my surprise everything started working fine as before. Is there a difference between to the two sets of configuration?</blockquote>
+<p>The <strong>network route-map </strong>command uses a route map to change the attributes of an IP prefix as it’s inserted in the BGP table. You can set BGP communities and change MED, local preference and next hop (I wouldn’t change the next hop), but not AS-path (<a href="http://wiki.nil.com/Use_Quagga_to_generate_BGP_routes">Quagga can do that as well</a>). If the <strong>route-map</strong> doesn’t match the IP prefix, the attributes are not changed (but I wouldn’t use a route-map with a match statement in the network command).</p>
+<p><strong>Neighbor route-map</strong> <strong>in|out </strong>command applies a route map to BGP updates received or sent to a neighbor. It’s not just an attribute modifying tool, it’s also a filter – if the route map doesn’t match a BGP prefix, the inbound update gets dropped before it’s inserted in the BGP table, or the BGP prefix never gets sent to the BGP neighbor.</p>
+<p>Route map applied to a BGP neighbor can change most BGP attributes that make sense (example: you cannot change local preference if the neighbor is not in the same AS) and prepend AS numbers to the AS path (you’re not allowed to modify AS path directly, as that might bypass BGP loop prevention mechanisms). </p>
+<p>On top of obvious sanity checks, the router applies the usual <a href="http://wiki.nil.com/BGP_route_reflectors">BGP route reflector safeguards</a>: if the neighbor is a route reflector client, you cannot change any attributes of reflected routes with an outbound route-map (but you can change attributes of routes you’ve received from EBGP neighbors). If you want to change attributes of IBGP prefixes sent to route reflector clients, you have to modify them as you receive them from other neighbors with inbound route-maps.</p>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-1pQ0zVfDTd0/Tps0v2wtGZI/AAAAAAAAEcc/ovubk8YX9lY/s1600/note.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" src="http://2.bp.blogspot.com/-1pQ0zVfDTd0/Tps0v2wtGZI/AAAAAAAAEcc/ovubk8YX9lY/s450/note.png" /></a></div>
+

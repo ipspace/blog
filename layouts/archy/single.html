@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+{{ $archYear := .Date.Format "2006" }}
+
+<h1 class='firstHeading'>Blog Posts in {{ $archYear }}</h1>
+<div class='post post__content'>
+  {{ range (.Site.Pages.GroupByDate "2006") }}
+      {{ if eq .Key $archYear }}
+        {{ range .Pages.GroupByDate "01" }}
+          {{ $time := (time (printf "%s-%s-01" $archYear .Key)) }}
+          <h2><a href='/{{ $time.Format "2006/01/"}}'>{{ $time.Format "January 2006" }}</a></h2>
+          <ul>
+            {{ range where (where .Pages "Kind" "page") "Section" "posts" }}
+            <li>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              ({{ .Date.Format "02 Jan 2006" }})
+            </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      {{ end }}
+  {{ end }}
+</div>
+{{ partial "footer.html" . }}

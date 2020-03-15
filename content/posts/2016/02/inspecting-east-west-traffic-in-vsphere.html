@@ -1,0 +1,26 @@
+---
+title: "Inspecting East-West Traffic in vSphere Environments"
+date: "2016-02-01T11:35:00.000+01:00"
+tags: [ security,virtualization ]
+---
+
+<p>Harry Taluja asked an interesting question in <a href="http://blog.ipspace.net/2015/12/featured-webinar-vsphere-6-networking.html?showComment=1453755558637#c4607022530240889777">his commen</a>t to one of my <a href="http://blog.ipspace.net/search/label/virtualization">virtualization</a> blog posts:</p>
+<blockquote class="cite">If vShield API is no longer supported, how does a small install (6-8 ESXi hosts) take care of east/west IPS without investing in NSX?</blockquote>
+<p>Short answer: It depends, but it probably won&#x2019;t be cheap ;) Now for the details&hellip;<!--more--></p>
+<p><strong>Why would you want to do that?</strong> Always start with <em>why do you need this</em>, not <em>how will we do it? </em>Starting with the root cause might show you alternate approaches that give you the results you need without facing the problem you thought you had.</p>
+<p>In this particular case, you might want to consider locking down the security zones with ACLs that are available in vSphere 6.</p>
+<p class="more">Like with all other good vSphere networking stuff, you get ACLs only in the distributed virtual switch, which comes with the reassuringly expensive <a href="http://www.vmware.com/products/vsphere/compare.html">Enterprise Plus edition</a>. For more details, watch the <a href="http://www.ipspace.net/VSphere_6_Networking_Deep_Dive">vSphere 6 networking deep dive</a> webinar. Oh, and even the free version of Cisco Nexus 1000v won't save the day - it does have ACLs, but runs only on top of distributed virtual switch.</p>
+<p><strong>What exactly do you want to do?</strong> Harry mentioned IPS, which requires inline appliance to be reliable (sending TCP RST packets from an out-of-band appliance might be already too late and definitely won&#x2019;t stop the next <a href="https://en.wikipedia.org/wiki/SQL_Slammer">Slammer</a>).</p>
+<p>If you&#x2019;re OK with having an IDS, not an IPS, you don&#x2019;t need an inline solution but an out-of-band one that has to work along the lines of using SPAN ports on physical switches.</p>
+<p><strong>Can you afford it?</strong> How much east-west traffic do you have? How much will the license (or the appliance) you need to process that traffic cost (unless you use Bro IDS, of course)? How many CPU cores does the IDS/IPS software you use burn to inspect 1 Gbps of traffic? Does it make sense? How will the extra latency caused by all traffic passing an inline appliance affect your application performance? What happens when the central chokepoint (your IPS appliance) becomes overloaded?</p>
+<p class="note">HP had an interesting idea: redirect all the east-west traffic to their TippingPoint appliance. Needless to say, the multi-gigabit versions of their appliance were ridiculously expensive.</p>
+<h4>How would you do it?</h4><p>You probably realized why I made this question the last one in the blog post ;) Go into the weeds of the technical details only after you thoroughly understand the business problem.</p>
+<p>If you think you need an <strong>IPS solution</strong>, you need <em>service insertion </em>capabilities. vPath technology in Cisco Nexus 1000V does that, but I haven&#x2019;t found a single IDS/IPS solution that would work with vPath.</p>
+<p>You might also consider using Nuage VSP or <a href="http://www.opencontrail.org/integrating-opencontrail-with-vcenteresxi-virtualization-platform/">Juniper Contrail</a>, as they both have some service insertion capabilities. I don&#x2019;t know how expensive Nuage product is, but even if you go with open-source Contrail, considering the amount of work you&#x2019;d have to invest to get some of these ideas up and running, buying NSX might be a better deal.</p>
+<p class="more">Want to know more about service insertion? Watch the <a href="http://www.ipspace.net/SDN_Use_Cases">SDN Use Cases</a> webinar.</p>
+<p>If you&#x2019;re OK with an IDS solution, your life becomes much easier. All you need is traffic mirroring capabilities, which you can get in one of two ways:</p>
+<ul class="ListParagraph"><li>Deploy an IDS appliance on every ESXi host, connect it to the virtual switch with a VLAN trunk, and allow the VM NIC to go into promiscuous mode. Oh, your IDS doesn&#x2019;t support VLAN trunking? Yell at the vendor, and start using Bro IDS.</li>
+<li>Deploy one or more centralized IDS appliances and send the traffic to them using SPAN capabilities built into vSphere using either a monitoring VLAN or RSPAN (traffic encapsulated in IP tunnel). Oh, your IDS cannot decode encapsulated traffic? See previous bullet.</li>
+</ul>
+<p>More details? You know you&#x2019;ll find them in the <a href="http://www.ipspace.net/VSphere_6_Networking_Deep_Dive">vSphere 6 networking deep dive</a> webinar.</p>
+

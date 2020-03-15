@@ -1,0 +1,26 @@
+---
+title: "Running BGP between Virtual Machine and ToR Switch"
+date: "2016-09-07T12:55:00.000+02:00"
+tags: [ Data Center,BGP,virtualization ]
+---
+
+<p><a name="_GoBack"></a>One of my readers left this question on the blog post <a href="http://blog.ipspace.net/2016/03/sysadmins-shouldnt-be-involved-with.html">resurfacing the idea of running BGP between servers and ToR switches</a>:</p>
+<blockquote class="cite">When using BGP on a VM for mobility, what is the best way to establish a peer relationship with a new TOR switch after a live migration? The VM won't inherently know the peer address or the ASN.</blockquote>
+<p>As always, the correct answer is <em><a href="https://twitter.com/ThePracticalDev/status/770978423363829760">it depends</a></em>.<!--more--></p>
+<h4>Supporting live VM mobility</h4><p>If you want to support live (<a href="http://blog.ipspace.net/2013/02/hot-and-cold-vm-mobility.html">hot</a>) VM mobility across ToR switches, don&rsquo;t run BGP with the ToR switch. Regardless of how well you fine-tune the setup, it will take at least a few seconds before the BGP session with the new ToR switch is established, making your service inaccessible in the meantime. </p>
+<p>As I explained in <a href="http://blog.ipspace.net/2013/08/virtual-appliance-routing-network.html">another blog post</a> (yes, it&rsquo;s almost exactly three years old), you SHOULD run a BGP session with a route server somewhere in your network, preferably using IBGP to make things simpler.</p>
+<p>To add redundancy to the design, peer the VM with two route servers.</p>
+<h4>Supporting physical servers</h4><p>If your servers don&rsquo;t move, but you still don&rsquo;t want to deal with neighbor IP addresses or AS numbers, use one or more of these tricks:</p>
+<ul class="ListParagraph"><li>Configure the same loopback address on all ToR switches (I wouldn&rsquo;t advertise it into the network, and you definitely don&rsquo;t want it to become the ToR switch router ID);</li>
+<li>Establish BGP session between the physical servers and the loopback address using either IBGP (so everyone is in the same AS number) or using <strong>local-as </strong>on the ToR switch to present the same AS number to all servers.</li>
+</ul>
+<p class="more">Deploying Cumulus-enhanced Quagga on the servers is obviously a better option. For more details, watch the <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs">Leaf-and-Spine Fabric Designs webinar</a> or the video in which <a href="https://my.ipspace.net/bin/get?doc=70b83bc4-5e19-11e5-8b2f-005056880254">Dinesh Dutt explains the enhancements they made to Quagga</a>.</p>
+<h4>Supporting disaster recovery</h4><p>Running BGP between the virtual machines and the network <a href="http://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html">simplifies disaster recovery scenarios</a> (and alleviates the need for crazy kludges like stretched VLANs). If this is your use case:</p>
+<ul class="ListParagraph"><li>Run a set of route servers in each data center to support live VM mobility within each data center;</li>
+<li>Use the same IP addresses and AS numbers across route servers in all data centers to enable to VM to connect to the route server in the local data center;</li>
+<li>Don&rsquo;t advertise the shared IP addresses between data centers (you don&rsquo;t want the VMs to connect to a route server in another data center due to a crazy routing glitch).</li>
+</ul>
+<h4>Need even more details?</h4><p>I&rsquo;m sure we&rsquo;ll discuss them in the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center course</a>. The September 2016 session is sold out, but you&rsquo;ll get the recordings even if you register for the April 2017 one.</p>
+<p>You can also use <a href="http://www.ipspace.net/ExpertExpress">ExpertExpress</a> to discuss the details of your design with me. </p>
+<p>One ExpertExpress session is bundled with the <a href="http://www.ipspace.net/Subscription/Individual">Professional subscription</a> so you don&rsquo;t have to ask for the budget approval twice.</p>
+

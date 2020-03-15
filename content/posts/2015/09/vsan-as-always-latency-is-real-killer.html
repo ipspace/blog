@@ -1,0 +1,27 @@
+---
+title: "VSAN: As Always, Latency Is the Real Killer"
+date: "2015-09-23T09:00:00.000+02:00"
+tags: [ SAN,WAN,virtualization ]
+---
+
+<p>When I wrote my <a href="http://blog.ipspace.net/2015/09/vmware-vsan-can-stretch-should-it.html">stretched VSAN post</a>, I thought VSAN uses asynchronous replication across WAN. Duncan Epping quickly pointed out that it uses synchronous replication, and I fixed the blog post.</p>
+<p>The &ldquo;<a href="http://blog.ipspace.net/2015/01/latency-killer-of-spread-out.html"><em>What about latency?</em></a>&rdquo; question immediately arose somewhere in my subconscious, but before I could add that thought to the blog post (because <a href="http://blog.ipspace.net/2015/09/the-autumn-cloudsdn-roadtrip.html">travel</a>), <a href="https://plus.google.com/+AndersHenke/about">Anders Henke</a> wrote a lengthy comment that totally captured what I was thinking, so I&#x2019;m including it in its entirety:<!--more--></p>
+<style>.post blockquote.cite p { margin-bottom: 1em !important; }</style><blockquote class='cite'><p>Note that any kind of synchronous replication also suffers from the extra network latency. Having said this, VMware's VSAN must be designed for a local network only. </p>
+<p>They do have dedicated products for asynchronous remote replication, and one can probably combine VSAN with them. But please don't ignore the added latency and physics :-)</p>
+<p>As a worst-case example: your HDD has an average rotational latency of around 2-3ms - the time until a sector can be read or written. Assuming the sector is written instantly, it will still take 2ms on an average write operation.</p>
+<p>If you're doing replication in the metro area with a millisecond roundtrip of overall network latency, this latency will add up for any write requests: your remote HDD probably won't have its data committed in 2ms, but in 2+1=3ms.</p>
+</blockquote>
+<div class="info"><p>You could use SDDs in the hypervisor hosts for local caching, reducing the overall latency to (almost) WAN latency, but then the difference between local VSAN and stretched VSAN would be even worse. See also below.</p>
+<p>Also note that VMware claims the maximum latency supported for stretched VSAN is 5 msec. By now you should be able to figure out what that does to your write performance.</p>
+</div>
+<blockquote class='cite'><p>Depending on what your application actually does and how often synchronous data is forced onto disk, sync replication in this setup may functionally decrease the overall hard disk performance by up to 50%.</p>
+<p>Of course, in real life the various writeback-caches in operating systems, hypervisors, RAID controllers and hard disks lie about having something "really" written onto disk, so those 50% are "worst case" for "every single sector/block is forced to disk". Even if the write is not forced to disk, the network latency still adds up before the remote system can promise "having it written". So overall, the network latency adds up to the access time.</p>
+</blockquote>
+<div class="info">As I said above: when you add writeback caches to the picture to improve performance, the WAN latency becomes an even bigger problem.</div>
+<blockquote class='cite'><p>Even in a standard OLTP mix (70% read, 30% write), the impact of high-latency writes is obvious: the read performance doesn't change, the write performance gets noticeably worse.</p>
+<p>If your application doesn't cope with extra latency on writes and you still require synchronous writes, you may need to switch from HDD to SSD (reducing the local access time close from 2ms to zero, leaving you with pure network latency).</p>
+<p>With more remote locations, the problem becomes worse: 3ms is negligible in world of WAN, but if your 2ms hard disk suddenly takes 5ms before some data can be written, it is a considerable decrease.</p>
+<p>And when your top-notch high performance database's average write latency suddenly jumps from 0.1ms (SSD) to 3.1ms (remote SSD), someone will probably notice (+3000%).</p>
+</blockquote>
+<p class="warn">Summary: As always, think before you jump, don't believe in bandwidth fairy, and consider all the implications of stretched technologies&hellip; but if you&#x2019;re a regular reader of my blog, you probably know that by now ;)</p>
+

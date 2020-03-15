@@ -1,0 +1,8 @@
+---
+title: "Periodic router reload"
+date: "2006-10-01T21:33:00.000+02:00"
+tags: [ network management,EEM ]
+---
+
+Sometimes when using not-so-very stable IOS versions, periodic reload of a router during  a non-peak (or idle) period is a good idea that can significantly increase  the overall stability of your network. Until release 12.4, you had to write an  external script that would log into the router and execute the  <STRONG>reload</STRONG> command. With the <A  href="http://www.cisco.com/en/US/products/sw/iosswrel/ps1838/products_feature_guide09186a008025951e.html">Embedded  Event Manager</A>, the task is surprisingly simple - just enter the following  configuration commands to reload the box every midnight (of course it helps if  your router is NTP-synchronized to a reliable clock source and has correctly  configured&nbsp;time zone).<pre class='code'>event manager  applet Reload<br /> event timer cron name Reload cron-entry  "@midnight"<br /> action 1.0 reload</pre>The <STRONG>@midnight</STRONG>  is a predefined symbolic value for "0 0 * * *".&nbsp;Of course you can use any  other value that the <A href="http://www.rootr.net/man/man/crontab/5">UNIX cron  utility</A> would recognize as valid first five fields (time specification;  username and command line are obviously not  used).
+

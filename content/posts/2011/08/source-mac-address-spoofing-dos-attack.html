@@ -1,0 +1,11 @@
+---
+title: "Source MAC address spoofing DoS attack"
+date: "2011-08-16T07:27:00.000+02:00"
+tags: [ security,switching,Service Providers ]
+---
+
+<p>The flooding attacks (or mishaps) on large layer-2 networks are well known and there are ample means to protect the network against them, for example <em>storm control </em>available on Cisco’s switches. Now imagine you change the <em>source MAC address </em>of every packet sent to a perfectly valid unicast destination.<!--more--></p>
+<p>The switches receiving your traffic would try to learn every new MAC address and would quickly run out of TCAM. For example, Catalyst 3560 can hold up to 12.000 MAC addresses; after that, older (but perfectly valid) MAC addresses would be removed from TCAM and traffic sent to them would be flooded throughout the network (and hitting storm control limits). If I did the math right, you need less than 100 milliseconds to saturate the MAC address table on that switch using 100 byte frames on a 100 Mbps link.</p>
+<p>You can easily prevent this attack in an enterprise environment, where you can use security features like <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3560/software/release/12.2_52_se/configuration/guide/swtrafc.html#wp1090376"><em>secure MAC addresses</em></a>, but you can’t use the same trick in a Service Provider<em> </em>environment, where you have to allow your Carrier Ethernet customers to use whatever MAC addresses they like. If your Carrier Ethernet gear supports 802.1ah (Provider Backbone Bridges; MAC-in-MAC encapsulation), the attack affects only the access switches connected to the same I-SID (customer); the backbone switches never see customer’s MAC addresses. If you use 802.1ad (Q-in-Q encapsulation), all L2 switches that see the spoofed  packets are affected.</p>
+<p>There are at least two safeguards against this attack: limit the number of source MAC addresses per port or limit the MAC address learning rate per port. I’m not sure which switches have security features along these lines, but I know many vendor engineers read my blog, so please feel free to describe what your gear can do in the comments. Thank you!</p>
+

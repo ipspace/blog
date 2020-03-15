@@ -1,0 +1,34 @@
+---
+title: "ATAoE: response from Coraid"
+date: "2010-09-28T06:30:00.001+02:00"
+tags: [ SAN ]
+---
+
+<p>A few days after writing my <a href="http://blog.ioshints.info/2010/09/ataoe-for-converged-data-center.html">ATAoE post</a> I got a very nice e-mail from Sam Hopkins from Coraid responding to every single point I’ve raised in my post. I have to admit I’ve missed the <em>tag </em>field in the ATAoE packets which does allow parallel requests between a server and a storage array, solving some of the sequencing/fragmentation issues. I’m still not convinced, but here is the whole e-mail (I did just some slight formatting) with no further comments from my side.</p>
+<!--more--><h4>No sequencing</h4><p>The protocol does not contain a single sequence number that would allow servers and storage arrays to differentiate between requests or split a single request into multiple Ethernet frames. A server can thus have only a single outstanding request with any particular storage array. (Or maybe LUN -- who knows? The protocol specifications are silent.) </p>
+<p><strong>Answer: </strong></p>
+<p>As packets between initiator and target are not connection based, sequence numbers are irrelevant. A client can, however, have multiple requests outstanding with different tag values which is how a target differentiates between requests. Spreading between Ethernet frames is performed by the client who is responsible for turning a large request into a series of MTU sized requests (a 64KB request becomes 8 - 8KB requests, eg). All storage protocols do this somewhere - right down to the SATA/SAS wire which chunks blocks into 4KB data FIS. </p>
+<p>An AoE Major.Minor is used in practice to reflect a Shelf#.Lun. Shelf# is your IP equivalent and is assigned per storage server. </p>
+<h4>No retransmissions</h4><p>The protocol does not specify any packet loss detection or recovery mechanism. I can only assume that the only recovery the creators envision is request retransmission after a timeout, hoping that all requests can be repeated multiple times without side effects. </p>
+<p><strong>Answer: </strong></p>
+<p>Yes, because retransmitted requests do not change in lba/data they are idempotent. Initiator drivers possess a TCP-like congestion avoidance algorithm to control the retransmit time as well as the outstanding window of requests. Initial negotiation of the window is performed via the query-config message type. </p>
+<h4>No fragmentation</h4><p>ATAoE requests fit directly into Ethernet frames, and there's no way to fragment a single request into multiple frames and achieve streamlined data flow. Unless you use jumbo frames, you'll be able to transfer at most two sectors (at 512 bytes) in each request. (iSCSI can transfer megabytes in a single transaction.) Add a few switches to the mix, and watch performance plummet. </p>
+<p><strong>Answer: </strong></p>
+<p>As I mentioned this above, the initiator chops up large requests into multiple MTU sized requests. Adding switches to the mix does not cause performance to plummet. Conversely, because AoE is not connection based you can achieve performance you simply can't with iSCSI. It is a simple matter to connect multiple network ports on initiator and target and have all AoE requests flow across all possible network paths without any higher level (ie: bonding) configuration necessary. This round-robin mechanism is also provided by the initiator driver. Coraid's performance numbers are achievable because it's just this simple to attain performance. </p>
+<h4>No authentication</h4><p>Can you imagine that? A protocol proposed for use in the data center that has no authentication whatsoever! The Wikipedia article proves that whoever designed (or described) this protocol was a total stranger to the finer details of network security when they wrote: "The non-routability of AoE is a source of inherent security." </p>
+<p><strong>Answer: </strong></p>
+<p>Security is intentionally disregarded in the protocol. What users need is a way to have shared block storage on a SAN without the fuss. iSCSI was designed originally to provide shared block storage over the internet. It has many bells and knobs that you just don't need in a closed environment with, eg, tens of servers running your VM architecture of choice connected to a single SAN storage pool. </p>
+<p>The "security" comes from not being able to route AoE packets, so people outside your SAN broadcast d omain don't see your data "accidentally". The designers didn't trumpet that, but some people think it's a benefit. </p>
+<h4>No sessions</h4><p>Another amazing omission. A server does not have to establish a session with the storage. As soon as you guess a LUN number, you can start reading and writing its data. </p>
+<p><strong>Answer: </strong></p>
+<p>If your SAN isn't secure, neither is your data. If you plug in a host to your SAN that can do all sorts of root-like things and explore your SAN maliciously, yes, you have a problem. Root users can also scramble your local disks. </p>
+<p><strong>Weak support of asynchronous writes</strong></p>
+<p>Due to lack of sequencing and retransmissions, asynchronous writes are handled in a truly cavalier fashion: You can use them and the storage array always returns a success status, but the actual operation might fail -- and the server will never be informed. I thought it would be nice to know if your write operation fails (after all, you might need that data in the future), but apparently that's not the case. </p>
+<p><strong>Answer: </strong></p>
+<p>That's a wart in the protocol that will be removed in the next revision. No one uses asynchronous writes. We have had custom configurations where responses were not needed, but we've worked around this another way. </p>
+<h4>Conclusion</h4><p>A protocol like this could have been good enough 30 years ago when TFTP was designed, but today it would make a great example of a totally broken protocol in any protocol design class. As for its usability: Go ahead and use it when building your home network. I would definitely not consider it for mission-critical data center applications. </p>
+<p><strong>Answer: </strong></p>
+<p>I challenge you to dig a little deeper and correct your article. Many, many people use AoE based products for mission-critical data in situations where fast, affordable, scalable, easy to configure storage is needed. I think your primary complaint is that the protocol definition itself does not clarify all aspects of how AoE functions in practice. That's a fair argument. Our history is one of Bell Labs culture and in writing this we documented the essential core leaving many details up to discretion. </p>
+<p></p>
+<p>Cheers, <br>Sam Hopkins</p>
+

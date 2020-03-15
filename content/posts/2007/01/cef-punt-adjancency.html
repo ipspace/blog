@@ -1,0 +1,10 @@
+---
+title: "CEF punt adjancency"
+date: "2007-01-19T07:55:00.001+01:00"
+tags: [ CEF ]
+---
+
+<p>In "border cases" you might find interesting CEF adjacencies in your CEF adjacency table (displayed with <strong>show ip cef adjacency</strong>). Most common one is the <em>glean</em> adjacency used for directly connected routes (this adjacency type is a placeholder that indicates the router it should perform the ARP table lookup and send the packet to directly connected neighbor). <em>Discard</em>, <em>Drop</em>, <em>Noroute</em> and <em>Null</em> adjacencies are obvious, the "weird" one is the <em>Punt</em> adjacency, which indicates that the router cannot CEF-switch the packet toward the destination (due to a feature being used that is not yet supported by CEF), thus the packet is <em>punted</em> to the next switching method (fast switching and ultimately process switching).<!--more--></p>
+<p>It's very easy to create a punt adjacency with a back-to-back X.25 link, for example</p>
+<pre class='code'>a1#<strong>show running interface serial 0/1/0</strong><br />interface Serial0/1/0<br /> ip address 172.16.4.1 255.255.255.0<br /> encapsulation x25 dce<br /> x25 address 1<br /> x25 map ip 172.16.4.2 2<br />end<br />a1#<strong>show ip cef adjacency punt</strong><br />Prefix              Next Hop             Interface<br />172.16.4.0/24       attached             Serial0/1/0</pre><p class='note'>You can inspect the "special" CEF adjacencies in your router with the <strong>show ip cef adjacency discard&brvbar;drop&brvbar;glean&brvbar;noroute&brvbar;null&brvbar;punt</strong> command.</p>
+

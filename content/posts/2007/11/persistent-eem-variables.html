@@ -1,0 +1,16 @@
+---
+title: "Persistent EEM variables"
+date: "2007-11-12T07:27:00.001+01:00"
+tags: [ Tcl,EEM ]
+---
+
+Someone has asked me a while ago whether it's possible to retain variable values between invocations of an EEM policy. Since a new copy of Tcl interpreter is started for each event, global variables obviously won't work; they are lost as soon as the Tcl policy is finished. A potential solution is to modify the router's configuration and save the values you wish to preserve in <strong>event manager environment</strong>, but that's a time-consuming process that interferes with whatever router configuration management process you have.<br /><br />The real solution is based on the <strong>appl_setinfo</strong> and <strong>appl_reqinfo</strong> calls. They work, but like <a href="http://ioshints.blogspot.com/2007/10/snmp-with-tcl.html">many other Tcl-related IOS features</a> they are &hellip; well &hellip; weird.<script>startHide()</script>This time, the programmers managed to implement WORO (Write-Once-Read-Once) memory:<ul><li>The value you want to preserve is saved with <strong>appl_setinfo key <em>name</em> data <em>value</em></strong> function call. Keys must be unique; you can only set the same key once. If you try to set the value of a key multiple times, the function does not overwrite the previous value but fails.</li>
+<li>You can read the value with <strong>appl_reqinfo key <em>name</em></strong> function call. If the key value hasn't been set, it returns an empty string and sets the $_cerrno variable, otherwise it returns a list with 'data' as the first element and your value as the second list element (I have to admit I've seen simpler APIs :).</li>
+<li>Once you read the key value, it's gone. You cannot read it twice.</li>
+</ul>If all this sounds a bit strange, don't worry; here's a working example:<div class='code'><pre>::cisco::eem::event_register_cli sync no skip no pattern "show"<br /><br />namespace import ::cisco::eem::*<br />namespace import ::cisco::lib::*</pre><p>Set the variable value to zero (in case we haven't saved the value before) and read the previous value</p>
+<pre>set lastCnt 0<br />set getLastCnt [ appl_reqinfo key "showCounter" ]</pre><p>If the first element in the list is 'data', then the second element is our value.</p>
+<pre>if { [ lindex $getLastCnt 0 ] == "data" } {<br />&nbsp;&nbsp;set lastCnt [ lindex $getLastCnt 1 ]<br />}</pre><p>Increase the counter and generate a syslog message</p>
+<pre>incr lastCnt<br />action_syslog priority info msg "Show command was executed $lastCnt times"</pre><p>Save the new value of the counter to be retrieved by the next invocation of the same policy.</p>
+<pre>appl_setinfo key "showCounter" data $lastCnt</pre></div>
+<script>endHide()</script><p class='more'>This article is part of <a href="http://ioshints.blogspot.com/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="http://ioshints.blogspot.com/search/label/You%27ve%20asked%20for%20it">series</a>.</p>
+
