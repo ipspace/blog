@@ -1,4 +1,3 @@
-* Fix navigation links (older / newer)
 * Fix firstHeading CSS
 * Exclude selected tags (Workshop, SGW, Podcast, Video...)
 * RSS feed
@@ -25,3 +24,4 @@ Done:
 * Add Blog Archive sidebar
 * Download images from existing blog;
 * Fix sharing icons
+* Fix navigation links (older / newer)

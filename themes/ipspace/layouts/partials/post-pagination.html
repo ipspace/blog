@@ -1,0 +1,50 @@
+{{ $pag := $.Paginator }}
+{{ with $pag }}
+  {{ if gt $pag.TotalPages 1 }}
+  <div class="post-nav">
+    <div class="container">
+      {{ if $pag.HasPrev }}
+        <a class="post-nav__link prev" href="{{ $pag.Prev.URL }}" title="Newer Posts">
+          <svg class="post-nav__icon">
+            <use xlink:href="#arrow-left-big"></use>
+          </svg>
+          <span class="post-nav__text">Newer Posts</span>
+        </a>
+      {{ end }}
+      <a class="post-nav__link overview">Page {{ $pag.PageNumber }} of {{ $pag.TotalPages }}</a>
+      {{ if $pag.HasNext }}
+        <a class="post-nav__link next" href="{{ $pag.Next.URL }}" title="Older Posts">
+          <span class="post-nav__text">Older Posts</span>
+          <svg class="post-nav__icon">
+            <use xlink:href="#arrow-right-big"></use>
+          </svg>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+{{ else }}
+  {{ if or .Next .Prev }}
+  <div class="post-nav">
+    <div class="container">
+      {{ if .Prev }}
+        <a class="post-nav__link prev" href="{{ .Prev.Permalink }}" title="Newer Post">
+          <svg class="post-nav__icon">
+            <use xlink:href="#arrow-left-big"></use>
+          </svg>
+          <span class="post-nav__text">Newer Post</span>
+        </a>
+      {{ end }}
+      <a class="post-nav__link overview" href="/">Home</a>
+      {{ if .Next }}
+        <a class="post-nav__link next" href="{{ .Next.Permalink  }}" title="Older Post">
+          <span class="post-nav__text">Older Post</span>
+          <svg class="post-nav__icon">
+            <use xlink:href="#arrow-right-big"></use>
+          </svg>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+{{ end }}
