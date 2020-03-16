@@ -2,12 +2,16 @@
   <h3 class='sidebar__title'>TAGS</h3>
   <ul>
     {{ range first 10 (.Site.Taxonomies.tags.ByCount ) }}
+      {{ if not (in $.Site.Params.notags .Page.Title) }}
       <li><a href="{{ .Page.Permalink }}">{{ .Page.Title}} ({{ .Count }})</a></li>
+      {{ end }}
     {{ end }}
   </ul>
   <ul class='additional-list'>
     {{ range after 10 (.Site.Taxonomies.tags.ByCount ) }}
-      <li><a href="{{ .Page.Permalink }}">{{ .Page.Title}} ({{ .Count }})</a></li>
+      {{ if not (in $.Site.Params.notags .Page.Title) }}
+        <li><a href="{{ .Page.Permalink }}">{{ .Page.Title}} ({{ .Count }})</a></li>
+      {{ end }}
     {{ end }}
   </ul>
   <button class='sidebar__btn'>see more</button>

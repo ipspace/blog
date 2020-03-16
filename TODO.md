@@ -1,5 +1,4 @@
 * Fix firstHeading CSS
-* Exclude selected tags (Workshop, SGW, Podcast, Video...)
 * RSS feed
 
 Before production:
@@ -25,3 +24,4 @@ Done:
 * Download images from existing blog;
 * Fix sharing icons
 * Fix navigation links (older / newer)
+* Exclude selected tags (Workshop, SGW, Podcast, Video...)
