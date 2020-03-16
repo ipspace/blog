@@ -4,10 +4,10 @@ date: "2015-06-10T08:37:00.000+02:00"
 tags: [ firewalls,security,cloud,virtualization ]
 ---
 
-<p>The proponents of microsegmentation are quick to explain how the per-VM-NIC traffic filtering functionality replaces the traditional role of subnets as security zones, often concluding that &ldquo;<em>you can deploy as many tenants as you wish in a flat network, and use VM NIC firewall to isolate them</em><em>.</em>&rdquo;<!--more--></p>
+<p>The proponents of microsegmentation are quick to explain how the per-VM-NIC traffic filtering functionality replaces the traditional role of subnets as security zones, often concluding that “<em>you can deploy as many tenants as you wish in a flat network, and use VM NIC firewall to isolate them</em><em>.</em>”<!--more--></p>
 <p>Unfortunately, we need multiple VLANs (or multiple routing domains) for other things besides security zones:</p>
-<ul class="ListParagraph"><li><strong>Overlapping IP addresses </strong>in multi-tenant environments (or even across multiple cloned application stacks &ndash; I know that&#x2019;s a Really Bad Idea, but I&#x2019;ve seen environments where that was the only way to move forward). Good luck trying to figure out how to solve that with a stateful packet filter;</li>
+<ul class="ListParagraph"><li><strong>Overlapping IP addresses </strong>in multi-tenant environments (or even across multiple cloned application stacks – I know that’s a Really Bad Idea, but I’ve seen environments where that was the only way to move forward). Good luck trying to figure out how to solve that with a stateful packet filter;</li>
 <li><strong>Service insertion</strong>. The easiest way to insert a load balancer between application tiers is still to make the load balancer the first-hop router. You could use source-NAT (SNAT) on the load balancer to alleviate this requirement, but then you open a whole different can of worms.</li>
 </ul>
-<p>We might stop misusing routing domains (or VLANs) for service insertion if we rewrite all the applications and make them service-aware, or once the virtualized networks start supporting proper service insertion functionality (in most cases it&#x2019;s still done with VLAN stitching), but I haven&#x2019;t yet heard of a solution that would allow duplicate IP addresses in the same VLAN/IP subnet. </p>
+<p>We might stop misusing routing domains (or VLANs) for service insertion if we rewrite all the applications and make them service-aware, or once the virtualized networks start supporting proper service insertion functionality (in most cases it’s still done with VLAN stitching), but I haven’t yet heard of a solution that would allow duplicate IP addresses in the same VLAN/IP subnet. </p>
 

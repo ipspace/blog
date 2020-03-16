@@ -7,11 +7,11 @@ tags: [ DHCP,switching,LAN ]
 <div class="bloggerBody"><p>The reader who was concerned about making a loop while connecting a switch to itself was also facing “customer-installed” DHCP servers in his LAN. He wrote:</p>
 <blockquote class="cite">Some users have installed their own Linksys routers and plug our cable in router's LAN ports, so there is DHCP servers fight in our LAN. How can I sort this out (I cannot physically find the location of the Linsys routers)?</blockquote>
 <p>The ideal solution is <a href="http://en.wikipedia.org/wiki/DHCP_snooping">DHCP snooping</a> (assuming your switch supports it), <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst4500/12.1/12ew/configuration/guide/dhcp.pdf">well documented</a> on <a href="http://www.cisco.com/">www.cisco.com</a>. The basic <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3750/software/release/12.2_25_see/configuration/guide/swdhcp82.html">configuration</a> takes only a few minutes:</p>
-<script>startHide()</script><ul class="Bullet1"><li>Enable the feature globally with the <strong>ip dhcp snooping </strong>global configuration command.</li>
+&lt;!--more--&gt;<ul class="Bullet1"><li>Enable the feature globally with the <strong>ip dhcp snooping </strong>global configuration command.</li>
 <li>Enable the feature for individual VLANs with the <strong>ip dhcp snooping vlan </strong><strong><em>number</em></strong> global configuration command.</li>
 <li>Configure the trusted interfaces with the <strong>ip dhcp snooping trust </strong>interface configuration command.</li>
 <li>Rate-limit DHCP on untrusted interfaces with the <strong>ip dhcp snooping limit rate </strong>interface configuration command.</li>
 </ul>
-<p class='more'>This article is part of <a href="http://ioshints.blogspot.com/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="http://ioshints.blogspot.com/search/label/You%27ve%20asked%20for%20it">series</a>.</p>
-<script>endHide()</script></div>
+<p class="more">This article is part of <a href="http://ioshints.blogspot.com/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="http://ioshints.blogspot.com/search/label/You%27ve%20asked%20for%20it">series</a>.</p>
+</div>
 

@@ -4,15 +4,15 @@ date: "2007-09-03T07:25:00.000+02:00"
 tags: [ Tcl ]
 ---
 
-<p>Although it&#39;s not exactly trivial, you can use standard Tcl packages with Tcl <br />shell on Cisco IOS by following this procedure:</p>
-<ul><li><a href="http://www.tcl.tk/software/tcltk/download84.html">Install a Tcl interpreter</a> on your workstation (use <a href="http://www.activestate.com/">ActiveState</a>&#39;s <a href="http://www.activestate.com/Products/activetcl/">ActiveTcl</a> in Windows environment).</li>
+<p>Although it's not exactly trivial, you can use standard Tcl packages with Tcl <br/>shell on Cisco IOS by following this procedure:</p>
+<ul><li><a href="http://www.tcl.tk/software/tcltk/download84.html">Install a Tcl interpreter</a> on your workstation (use <a href="http://www.activestate.com/">ActiveState</a>'s <a href="http://www.activestate.com/Products/activetcl/">ActiveTcl</a> in Windows environment).</li>
 <li>Collect all the source files needed for your set of packages into one directory on your workstation.</li>
 <li>Execute Tcl <b><a href="http://tmml.sourceforge.net/doc/tcl/pkgMkIndex.html">pkg_mkIndex</a></b> command in that directory.</li>
 </ul>
-<pre class="code">$ tclsh<br />% <b>pkg_mkIndex . *.tcl<br /></b>%<b> ^Z</b><br />$</pre><ul><li>Edit the <i>pkgIndex.tcl</i> file created with the <b>pkg_mkIndex</b> command and set the <b>$dir</b> variable to the IOS directory before the first <b>package</b> command (for example, <b>set dir &quot;flash:tcl/&quot;</b>).</li>
+<pre class="code">$ tclsh<br/>% <b>pkg_mkIndex . *.tcl<br/></b>%<b> ^Z</b><br/>$</pre><ul><li>Edit the <i>pkgIndex.tcl</i> file created with the <b>pkg_mkIndex</b> command and set the <b>$dir</b> variable to the IOS directory before the first <b>package</b> command (for example, <b>set dir "flash:tcl/"</b>).</li>
 <li>Alternatively, add the Tcl command <b>set dir [file dirname [info script]]</b> in front of the first package command. This command sets the <b>$dir</b> variable to the path of the <i>pkgIndex.tcl</i> file.</li>
-<li>Transfer all the source files into a directory on the router&#39;s <b>flash</b> (or any other local storage device).</li>
+<li>Transfer all the source files into a directory on the router's <b>flash</b> (or any other local storage device).</li>
 <li>Configure the execution of the <i>pkgIndex.tcl</i> file at <b>tclsh</b> startup with the <b>scripting tcl init</b> configuration command (for example, <b>scripting tcl init flash:tcl/pkgIndex.tcl</b>).</li>
 </ul>
-<p>When you have completed these steps, the <i>pkgIndex.tcl</i> file will be executed every time the Tcl shell is started in Cisco IOS, defining all the packages you&#39;ve prepared. Now you can use the <b><a href="http://tmml.sourceforge.net/doc/tcl/package.html">package require</a> <i>name</i> </b> Tcl command to load the packages you need in your Tcl script.</p>
+<p>When you have completed these steps, the <i>pkgIndex.tcl</i> file will be executed every time the Tcl shell is started in Cisco IOS, defining all the packages you've prepared. Now you can use the <b><a href="http://tmml.sourceforge.net/doc/tcl/package.html">package require</a> <i>name</i> </b> Tcl command to load the packages you need in your Tcl script.</p>
 

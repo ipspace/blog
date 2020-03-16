@@ -6,8 +6,8 @@ tags: [ GestaltIT,DCB,Data Center,SAN,Workshop,FCoE ]
 
 <p>The FCoE confusion spread by networking vendors has reached new heights with contradictory claims that you <a href="http://www.channelregister.co.uk/2010/08/10/fcoe_trill/">need TRILL to run multihop FCoE (or maybe you don’t)</a> and that <a href="http://blogs.cisco.com/datacenter/comments/when_are_fcoe_standards_done/#comments">you don’t need congestion control specified in 802.1Qau standard (or maybe you do)</a>. Allow me to add to your confusion: they are all correct ... depending on how you implement FCoE.</p>
 <!--more--><p>Before going into details, you need to know some FC and FCoE port terminology:</p>
-<table cellspacing="0" cellpadding="0" class="codeTable"><tr class="TRFirst "><th valign="top" class="TDHead" style="width: 20%"><p>FC/FCoE term</p>
-</th><th valign="top" class="TDHead "><p>Translated into plain English</p>
+<table cellpadding="0" cellspacing="0" class="codeTable"><tr class="TRFirst"><th class="TDHead" style="width: 20%" valign="top"><p>FC/FCoE term</p>
+</th><th class="TDHead" valign="top"><p>Translated into plain English</p>
 </th></tr><tr><td valign="top"><p>N_Port</p>
 </td><td valign="top"><p>Fiber channel port on a server or storage</p>
 </td></tr><tr><td valign="top"><p>F_Port</p>
@@ -20,14 +20,14 @@ tags: [ GestaltIT,DCB,Data Center,SAN,Workshop,FCoE ]
 </td><td valign="top"><p>Virtual N_Port. Created on a FCoE node (server or storage) to enable FCoE communication with a FCoE switch</p>
 </td></tr><tr><td valign="top"><p>VF_Port</p>
 </td><td valign="top"><p>Virtual F_port on a switch, created as needed to establish connection with an end-node (N_Port)</p>
-</td></tr><tr class="TRLast"><td valign="top" class="TDLast"><p>VE_Port</p>
-</td><td valign="top" class="TDLast"><p>Virtual E_port, created on an FCoE switch to link it with another FCoE switch</p>
+</td></tr><tr class="TRLast"><td class="TDLast" valign="top"><p>VE_Port</p>
+</td><td class="TDLast" valign="top"><p>Virtual E_port, created on an FCoE switch to link it with another FCoE switch</p>
 </td></tr></table><p>In the simplest FCoE topology, a server with CNA (converged network adapter; a card that can send both Ethernet and FCoE traffic over the same gigabit Ethernet uplink) is connected to an FCoE-enabled switch, which has a direct connection into the legacy FC network.</p>
-<p style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_K_pkZO5-tTg/THlHjS70MyI/AAAAAAAAENI/_rJEh3hbTZA/s1600/FCoE+101+SingleHop.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="136" src="http://3.bp.blogspot.com/_K_pkZO5-tTg/THlHjS70MyI/AAAAAAAAENI/_rJEh3hbTZA/s400/FCoE+101+SingleHop.png" width="400" /></a></p>
+<p style="clear: both; text-align: center;"><a href="/2010/08/s1600-FCoE+101+SingleHop.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="136" src="/2010/08/s400-FCoE+101+SingleHop.png" width="400"/></a></p>
 <p>The muddy waters start to appear when you have to insert intermediate switches between the servers (VN_ports) and legacy FC fabric. HP and NetApp work with the assumption that the intermediate switches don’t run FC protocol stack and only support Data Center Bridging (DCB) standards. Congestion control becomes mandatory in large networks and network stability is of paramount importance (thus NetApp’s recommendation to use TRILL).</p>
-<p style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_K_pkZO5-tTg/THlHjCBwb6I/AAAAAAAAENE/_wyiZLeFcSU/s1600/FCoE+101+MH+DCB.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="136" src="http://4.bp.blogspot.com/_K_pkZO5-tTg/THlHjCBwb6I/AAAAAAAAENE/_wyiZLeFcSU/s400/FCoE+101+MH+DCB.png" width="400" /></a></p>
+<p style="clear: both; text-align: center;"><a href="/2010/08/s1600-FCoE+101+MH+DCB.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="136" src="/2010/08/s400-FCoE+101+MH+DCB.png" width="400"/></a></p>
 <p>Cisco, on the other hand, is pushing another design: every intermediate switch is a full-blown FC switch, running full FC protocol stack and participating in FSPF (FC routing). In this case, you don’t need congestion control (congestion is handled by the FC protocol stack) and you totally bypass bridging, so you don’t care whether bridging uses spanning tree, TRILL or something else.</p>
-<p style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_K_pkZO5-tTg/THlHidkTs8I/AAAAAAAAENA/k0aym6QLex4/s1600/FCoE+101+fullFC.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="136" src="http://4.bp.blogspot.com/_K_pkZO5-tTg/THlHidkTs8I/AAAAAAAAENA/k0aym6QLex4/s400/FCoE+101+fullFC.png" width="400" /></a></p>
+<p style="clear: both; text-align: center;"><a href="/2010/08/s1600-FCoE+101+fullFC.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="136" src="/2010/08/s400-FCoE+101+fullFC.png" width="400"/></a></p>
 <p>The truly confusing part of the whole story: both designs (and any combination of them) are valid according to the FC-BB-5 standard; I’ll try to point out some of their benefits and drawbacks in future posts. <a href="http://blog.ioshints.info/2010/09/multihop-fcoe-102-vnport-proxy-and-fip.html">FIP snooping and NPIV/VNP_ports in FCoE environment are covered in the next post</a>.</p>
 <p>If you liked this explanation and would like to get a more thorough introduction to new LAN, storage and server virtualization technologies, watch my <a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/SingleRecording?code=DC30">buy a recording</a> or <a href="http://www.ioshints.info/Subscription">yearly subscription</a>).</p>
 

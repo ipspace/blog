@@ -6,7 +6,7 @@ tags: [ security,MPLS VPN,WAN ]
 
 <div class="bloggerBody"><p>Years ago when vendors were pushing the MPLS story to Service Providers, an “independent analyst” wrote a report claiming that MPLS-based VPNs offer security equivalent to Frame Relay networks (to find those reports, ask Google about “<a href="http://www.google.com/search?q=mpls+security+equivalent+frame+relay">MPLS security equivalent to Frame Relay</a>”). This might be true from the functional perspective (and it’s absolutely true that using IP does not make MPLS-based VPNs inherently insecure), but anyone believing these reports might become mightily upset when <a href="http://blog.ioshints.info/2009/04/i-hope-you-knew-this-already-backbone.html">learning about BGP and MPLS security issues</a>.</p>
 <p class="important">Before going any further, please note that exploiting the MPLS architecture as described in <a href="http://www.shmoocon.org/slides/rey_mende_all_your_packets_v05.pdf"><em>All your packets are belong to us</em></a><em> </em>presentation requires access to the core SP network, which means that the network (or network management station) has already been successfully penetrated.</p>
-<script>startHide()</script><p>A perfectly implemented MPLS VPN network running on equipment with no vulnerabilities is indeed at least as secure as a Frame Relay network … but it’s much easier to implement a secure Frame Relay network (well, it’s very hard not to, unless you’re clumsy enough to configure a customer port as NNI port) than deploying all security measures on PE routers. There are also a few other details that make the life of the MPLS VPN security gurus a bit harder:</p>
+&lt;!--more--&gt;<p>A perfectly implemented MPLS VPN network running on equipment with no vulnerabilities is indeed at least as secure as a Frame Relay network … but it’s much easier to implement a secure Frame Relay network (well, it’s very hard not to, unless you’re clumsy enough to configure a customer port as NNI port) than deploying all security measures on PE routers. There are also a few other details that make the life of the MPLS VPN security gurus a bit harder:</p>
 <ul><li>The only protocol running between a Frame Relay edge switch and a CE router is LMI. LMI is so simple it’s almost impossible to make it vulnerable. Protocols running between PE- and CE-routers are more complex.</li>
 <li>A Frame Relay switch cannot accept a layer-3 packet from the customer equipment. Any IP host can send packets address to the PE-router.</li>
 <li>Network management protocols in Frame Relay network are different from what the customers are using. MPLS VPN network uses the same management protocols as the customer’s equipment using the same layer-3 transport.</li>
@@ -18,5 +18,5 @@ tags: [ security,MPLS VPN,WAN ]
 <li>When you’re concerned about reliability and/or uptime, use multiple service providers.</li>
 <li>Don’t believe that you can get exactly the same level of security when using a service that offers 100-times the bandwidth for one tenth of the price of the alternative.</li>
 </ul>
-<script>endHide()</script></div>
+</div>
 

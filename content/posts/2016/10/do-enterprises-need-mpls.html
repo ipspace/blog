@@ -4,25 +4,37 @@ date: "2016-10-26T07:49:00.000+02:00"
 tags: [ Design,MPLS,Data Center,WAN ]
 ---
 
-<p><a name="_GoBack"></a>Continuing the <em><a href="http://blog.ipspace.net/2016/10/do-enterprises-need-vrfs.html">Do Enterprises Need VRFs</a></em> discussion, let&#x2019;s see which enterprise networks might need MPLS.</p>
+<p><a name="_GoBack"></a>Continuing the <em><a href="http://blog.ipspace.net/2016/10/do-enterprises-need-vrfs.html">Do Enterprises Need VRFs</a></em> discussion, let’s see which enterprise networks might need MPLS.</p>
 <p><strong>Do you need VRFs?</strong></p>
 <p>Read the previous blog post. If the answer is NO, you can stop reading. Otherwise, carry on.<!--more--></p>
-<style>  .decision em { display: inline-block; height: 100%; width: 3em; float: left; }   .decision p { clear: left; }   .decision div { padding-left: 2em; } </style><div class='decision'><p><strong>Do you have many VRFs or plan to have a scalable solution?</strong></p>
+<style>  .decision em { display: inline-block; height: 100%; width: 3em; float: left; }   .decision p { clear: left; }   .decision div { padding-left: 2em; } </style><div class="decision"><p><strong>Do you have many VRFs or plan to have a scalable solution?</strong></p>
 <p><em>No:</em> VRF-Lite is probably good enough.</p>
 <p class="warn">Using VRF-Lite in DMVPN environment might require multiple parallel DMVPN clouds.</p>
-<p><em>Yes:</em></p>  <div class='decision'><p><strong>Do you believe in SD-WAN?</strong></p>
-<p><em>Yes:</em> You don&#x2019;t need MPLS or any other technology. The black box you bought will do its proprietary magic to solve all the problems you might have (or not).</p>
-<p><em>No:</em></p>    <div class='decision'><p><strong>Is this a data center-only problem?</strong></p>
-<p><em>No: </em></p>      <div class='decision'><p><strong>Do you plan to do layer-3 encryption (IPsec)?</strong></p>
+<p><em>Yes:</em></p>
+<div class="decision"><p><strong>Do you believe in SD-WAN?</strong></p>
+<p><em>Yes:</em> You don’t need MPLS or any other technology. The black box you bought will do its proprietary magic to solve all the problems you might have (or not).</p>
+<p><em>No:</em></p>
+<div class="decision"><p><strong>Is this a data center-only problem?</strong></p>
+<p><em>No: </em></p>
+<div class="decision"><p><strong>Do you plan to do layer-3 encryption (IPsec)?</strong></p>
 <p><em>No:</em> Use MPLS. It has way lower encapsulation overhead than anything.</p>
-<p><em>Yes:</em><span>You would need MPLS-over-GRE-over-IPsec, in which case VXLAN-over-IPsec might be better (assuming you can get it on your WAN gear).</span></p>      </div>
-<p><em>Yes:</em></p>      <div class='decision'><p><strong>Do you plan to use overlay virtual networks?</strong></p>
+<p><em>Yes:</em><span>You would need MPLS-over-GRE-over-IPsec, in which case VXLAN-over-IPsec might be better (assuming you can get it on your WAN gear).</span></p>
+</div>
+<p><em>Yes:</em></p>
+<div class="decision"><p><strong>Do you plan to use overlay virtual networks?</strong></p>
 <p><em>Yes:</em> implement VRFs with distributed routers in overlay virtual networks.</p>
-<p><em>No:</em></p>        <div class='decision'><p><strong>Do</strong><strong> your data center </strong><strong>switches</strong><strong> support MPLS at reasonable cost/performance point?</strong></p>
-<p><em>No:</em> Use VXLAN (and change gear if it doesn&#x2019;t support VXLAN).</p>
+<p><em>No:</em></p>
+<div class="decision"><p><strong>Do</strong><strong> your data center </strong><strong>switches</strong><strong> support MPLS at reasonable cost/performance point?</strong></p>
+<p><em>No:</em> Use VXLAN (and change gear if it doesn’t support VXLAN).</p>
 <p class="warn">Choosing between VXLAN and MPLS on merchant silicon boxes is tricky. Support for MPLS data plane is often dismal (example: small label space), but then these same ASICs might not support <a href="http://blog.ipspace.net/2014/07/layer-3-switching-over-vxlan-revisited.html">routing from VXLAN tunnels</a> either.</p>
-<p><em>Yes:</em></p>          <div class='decision'><p><strong>Do you really want to deal with complexities of MPLS <i>and</i> complexities of EVPN?</strong></p>
+<p><em>Yes:</em></p>
+<div class="decision"><p><strong>Do you really want to deal with complexities of MPLS <i>and</i> complexities of EVPN?</strong></p>
 <p><em>Yes:</em> Use MPLS with L3VPN or EVPN control plane.</p>
-<p><em>No:</em> Use EVPN over VXLAN.</p>          </div>        </div>      </div>    </div>  </div>
+<p><em>No:</em> Use EVPN over VXLAN.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 

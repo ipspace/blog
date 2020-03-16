@@ -5,7 +5,7 @@ tags: [ Networking Fundamentals ]
 ---
 
 <p>Two weeks ago I <a href="https://blog.ipspace.net/2019/09/response-osi-model-is-lie.html">replied to a battle-scar reaction to 7-layer OSI model</a>, this time I’ll address a <a href="https://rule11.tech/stop-using-osi/">much more nuanced view</a> from Russ White. Please read his article first (as always, it’s well worth reading) and when you come back we’ll focus on this claim:</p>
-<blockquote class='cite'><p>The OSI Model does not accurately describe networks.</p>
+<blockquote class="cite"><p>The OSI Model does not accurately describe networks.</p>
 </blockquote>
 <p>Like with any tool in your toolbox, you can view the 7-layer OSI model in a number of ways. In the case of OSI model, it can be used:<!--more--></p>
 <ul><li>As a <strong>framework</strong> describing what functionality needs to be present in an end-to-end networking solution;</li>
@@ -15,7 +15,7 @@ tags: [ Networking Fundamentals ]
 <li>As a <strong>religious tool</strong> used to squash the infidels (= the ARPANET folks).</li>
 </ul>
 <p>I always viewed OSI model as a <strong>framework</strong>. As I explained in <a href="https://my.ipspace.net/bin/list?id=Net101#LAYERS">The Importance of Networking Layers</a> part of <a href="https://www.ipspace.net/How_Networks_Really_Work">How Networks Really Work</a> webinar, you have to implement at least these functions in an end-to-end networking stack:</p>
-<div class='separator'><a href="https://4.bp.blogspot.com/-sml6zLsu0HI/XX3fT_UeoGI/AAAAAAAAJX0/07tmUUTBnIM34HeEwNYTz6iOJeXBVEi-ACLcBGAsYHQ/s1600/Challenges-to-Solve.jpg" imageanchor="1" ><img border="0" src="https://4.bp.blogspot.com/-sml6zLsu0HI/XX3fT_UeoGI/AAAAAAAAJX0/07tmUUTBnIM34HeEwNYTz6iOJeXBVEi-ACLcBGAsYHQ/s640/Challenges-to-Solve.jpg" width="640" height="360" data-original-width="1280" data-original-height="720" /></a></div>
+<div class="separator"><a href="/2019/09/s1600-Challenges-to-Solve.jpg" imageanchor="1"><img border="0" data-original-height="720" data-original-width="1280" height="360" src="/2019/09/s640-Challenges-to-Solve.jpg" width="640"/></a></div>
 <p>Trying to implement all that functionality in a <em>large bowl of spaghetti-with-meatballs</em> approach results in a nightmare. It’s much better to have an architecture where every layer in the architecture provides services to the layer above it while consuming services from the layer below it.</p>
 <p>Having such an architecture allows you to group the functionality that needs to be implemented in manageable chunks. It also allows you to think about the optimal position of a particular function. For example, do you implement reliable transport on every hop, or do you use an end-to-end reliable transport protocol, or do you do a hybrid of both. As you probably know by now, there is no right answer. In this particular case, the best answer depends on the error rate of the underlying transmission medium.</p>
 <p>From this perspective, I would view the OSI model (or an alternative, but I haven’t seen one yet) as an indispensable high-level tool for anyone who tries to understand how networking works.</p>

@@ -4,16 +4,16 @@ date: "2016-12-28T07:36:00.000+01:00"
 tags: [ configuration,BGP ]
 ---
 
-<p>Here&#x2019;s a trick question:</p>
+<p>Here’s a trick question:</p>
 <ul class="ListParagraph"><li>Imagine you have a network <a href="http://blog.ipspace.net/2016/12/generating-ospf-bgp-and-mplsvpn.html">running IPv4 and VPNv4 services</a>;</li>
 <li>You want to use <strong>neighbor next-hop-self </strong>on IPv4 sessions, but not on VPNv4 sessions;</li>
 </ul>
-<p>To implement this request you use the following configuration commands (plenty of other commands removed because they don&#x2019;t impact the results):</p>
-<pre class="code">router&nbsp;bgp&nbsp;64500<br />&nbsp;address-family&nbsp;ipv4<br />&nbsp;&nbsp;maximum-paths&nbsp;ibgp&nbsp;32<br />&nbsp;&nbsp;maximum-paths&nbsp;32<br />&nbsp;&nbsp;neighbor&nbsp;192.168.0.4&nbsp;next-hop-self<br />&nbsp;&nbsp;neighbor&nbsp;192.168.0.1&nbsp;next-hop-self<br />&nbsp;address-family&nbsp;vpnv4<br />&nbsp;&nbsp;maximum-paths&nbsp;ibgp&nbsp;32<br />&nbsp;&nbsp;maximum-paths&nbsp;32<br />&nbsp;&nbsp;no&nbsp;neighbor&nbsp;192.168.0.4&nbsp;next-hop-self<br />&nbsp;&nbsp;no&nbsp;neighbor&nbsp;192.168.0.1&nbsp;next-hop-self</pre><p>Try to figure out what the end-result will be without connecting to a router or reading the rest of this blog post.</p>
-<p>Ok, here&#x2019;s what totally threw me off (and wasted an hour of my life): <strong>next-hop-self </strong>is removed from neighbors in the IPv4 address family. Here&#x2019;s why:</p>
+<p>To implement this request you use the following configuration commands (plenty of other commands removed because they don’t impact the results):</p>
+<pre class="code">router bgp 64500<br/> address-family ipv4<br/>  maximum-paths ibgp 32<br/>  maximum-paths 32<br/>  neighbor 192.168.0.4 next-hop-self<br/>  neighbor 192.168.0.1 next-hop-self<br/> address-family vpnv4<br/>  maximum-paths ibgp 32<br/>  maximum-paths 32<br/>  no neighbor 192.168.0.4 next-hop-self<br/>  no neighbor 192.168.0.1 next-hop-self</pre><p>Try to figure out what the end-result will be without connecting to a router or reading the rest of this blog post.</p>
+<p>Ok, here’s what totally threw me off (and wasted an hour of my life): <strong>next-hop-self </strong>is removed from neighbors in the IPv4 address family. Here’s why:</p>
 <ul class="ListParagraph"><li>There is no <strong>maximum-paths ibgp </strong>command in VPNv4 address family;</li>
 <li>The moment you enter <strong>maximum-paths ibgp </strong>command the configuration parser exits the <strong>address-family vpnv4 </strong>context and enters <strong>router bgp </strong>context;</li>
 <li>Because the <strong>ipv4 </strong>address family is the default context within <strong>router bgp </strong>(for legacy reasons) all the subsequent commands are executed within the <strong>address-family ipv4 </strong>context <em>removing next-hop self from neighbors in IPv4 address family.</em></li>
 </ul>
-<p>No wonder David Barroso named his library NAPALM (you&#x2019;ll find the full story in <a href="http://blog.ipspace.net/2016/10/napalm-update-on-software-gone-wild.html">this</a> or <a href="http://blog.ipspace.net/2015/06/napalm-integrating-ansible-with-network.html">this</a> podcast).</p>
+<p>No wonder David Barroso named his library NAPALM (you’ll find the full story in <a href="http://blog.ipspace.net/2016/10/napalm-update-on-software-gone-wild.html">this</a> or <a href="http://blog.ipspace.net/2015/06/napalm-integrating-ansible-with-network.html">this</a> podcast).</p>
 

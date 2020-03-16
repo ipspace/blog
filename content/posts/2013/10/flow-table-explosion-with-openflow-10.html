@@ -16,16 +16,16 @@ tags: [ SDN,Data Center,Workshop,Fabric,OpenFlow ]
 <p>We’ll focus on a single layer-2 segment (you really don’t want to get me started on the complexities of scalable OpenFlow-based layer-3 forwarding) implemented on a single hardware switch (expanding the logic beyond that is a homework assignment). Our segment will have two web servers (port 1 and 2), a MySQL server (port 3), and a default gateway on port 4. </p>
 <p class="note">The default gateway could be a firewall, a router, or a load balancer – it really doesn’t matter if we stay focused on layer-2 forwarding.</p>
 <h4>Step 1: Simple MAC-based forwarding</h4><p>The OpenFlow controller has to install a few forwarding rules in the switch to get the traffic started. Ignoring the multi-tenancy requirements you need a single flow forwarding rule per destination MAC address:</p>
-<table cellspacing="0" cellpadding="0" class="codeTable"><tr class="TRFirst "><td valign="top" class="TDHead "><p>Flow match</p>
-</td><td valign="top" class="TDHead "><p>Action</p>
+<table cellpadding="0" cellspacing="0" class="codeTable"><tr class="TRFirst"><td class="TDHead" valign="top"><p>Flow match</p>
+</td><td class="TDHead" valign="top"><p>Action</p>
 </td></tr><tr><td valign="top"><p>DMAC = Web-1</p>
 </td><td valign="top"><p>Forward to port 1</p>
 </td></tr><tr><td valign="top"><p>DMAC = Web-2</p>
 </td><td valign="top"><p>Forward to port 2</p>
 </td></tr><tr><td valign="top"><p>DMAC = MYSQL-1</p>
 </td><td valign="top"><p>Forward to port 3</p>
-</td></tr><tr class="TRLast"><td valign="top" class="TDLast"><p>DMAC = GW</p>
-</td><td valign="top" class="TDLast"><p>Forward to port 4</p>
+</td></tr><tr class="TRLast"><td class="TDLast" valign="top"><p>DMAC = GW</p>
+</td><td class="TDLast" valign="top"><p>Forward to port 4</p>
 </td></tr></table><p>Number of flows needed = number of MAC addresses.</p>
 <p class="note">Smart switches wouldn’t store the MAC-only flow rules in TCAM; they would use other forwarding structures available in the switch like MAC hash tables.</p>
 <h4>Step 2: Multi-Tenant Infrastructure</h4><p>If you want to implement multi-tenancy, you need multiple forwarding tables (like VRFs), which are not available in OpenFlow 1.0, or you have to add the tenant ID to the existing forwarding table. Traditional switches would do it in two steps:</p>
@@ -33,8 +33,8 @@ tags: [ SDN,Data Center,Workshop,Fabric,OpenFlow ]
 <li>Perform packet forwarding based on destination MAC address and VLAN tag.</li>
 </ul>
 <p>Switches using OpenFlow 1.0 forwarding model cannot perform more than one operation during the packet forwarding process – they must match the input port and destination MAC address in a single flow rule, resulting in a flow table similar to this one:</p>
-<table cellspacing="0" cellpadding="0" class="codeTable"><tr class="TRFirst "><td valign="top" class="TDHead "><p>Flow match</p>
-</td><td valign="top" class="TDHead "><p>Action</p>
+<table cellpadding="0" cellspacing="0" class="codeTable"><tr class="TRFirst"><td class="TDHead" valign="top"><p>Flow match</p>
+</td><td class="TDHead" valign="top"><p>Action</p>
 </td></tr><tr><td valign="top"><p>SrcPort = Port 2, DMAC = Web-1</p>
 </td><td valign="top"><p>Forward to port 1</p>
 </td></tr><tr><td valign="top"><p>SrcPort = Port 3, DMAC = Web-1</p>
@@ -47,11 +47,11 @@ tags: [ SDN,Data Center,Workshop,Fabric,OpenFlow ]
 </td><td valign="top"><p>Forward to port 2</p>
 </td></tr><tr><td valign="top"><p>SrcPort = Port 4, DMAC = Web-2</p>
 </td><td valign="top"><p>Forward to port 2</p>
-</td></tr><tr class="TRLast"><td valign="top" class="TDLast" colspan='2'><p>…</p>
+</td></tr><tr class="TRLast"><td class="TDLast" colspan="2" valign="top"><p>…</p>
 </td></tr></table><p>Number of flows needed = sum of (number of tenant MAC addresses * number of tenant ports). The proof is left as an exercise for the reader.</p>
 <h4>Step 3: Access lists</h4><p>Let’s assume we want to protect the web servers with an input (server-to-switch) port ACL, which would look similar to this one:</p>
-<table cellspacing="0" cellpadding="0" class="codeTable"><tr class="TRFirst "><td valign="top" class="TDHead "><p>Match</p>
-</td><td valign="top" class="TDHead "><p>Action</p>
+<table cellpadding="0" cellspacing="0" class="codeTable"><tr class="TRFirst"><td class="TDHead" valign="top"><p>Match</p>
+</td><td class="TDHead" valign="top"><p>Action</p>
 </td></tr><tr><td valign="top"><p>TCP SRC = 80</p>
 </td><td valign="top"><p>Permit</p>
 </td></tr><tr><td valign="top"><p>TCP SRC = 443</p>
@@ -62,8 +62,8 @@ tags: [ SDN,Data Center,Workshop,Fabric,OpenFlow ]
 </td><td valign="top"><p>Permit</p>
 </td></tr><tr><td valign="top"><p>TCP DST = 3306 &amp; IP DST = <em>MySql</em></p>
 </td><td valign="top"><p>Permit</p>
-</td></tr><tr class="TRLast"><td valign="top" class="TDLast"><p>Anything else</p>
-</td><td valign="top" class="TDLast"><p>Drop</p>
+</td></tr><tr class="TRLast"><td class="TDLast" valign="top"><p>Anything else</p>
+</td><td class="TDLast" valign="top"><p>Drop</p>
 </td></tr></table><p>By now you’ve probably realized what happens when you try to combine the input ACL with other forwarding rules. The OpenFlow controller has to generate a <a href="http://en.wikipedia.org/wiki/Cartesian_product"><em>Cartesian product</em></a><em> </em>of all three requirements: the switch needs a flow entry for every possible combination of input port, ACL entry and destination MAC address.</p>
 <p>Number of flows needed = sum of (number of tenant MAC addresses * number of tenant ports * number of ACL entries)</p>
 <p>Plug in realistic numbers and do the math.</p>

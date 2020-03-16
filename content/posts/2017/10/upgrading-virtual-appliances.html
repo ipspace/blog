@@ -4,17 +4,17 @@ date: "2017-10-17T07:17:00.000+02:00"
 tags: [ Automation,Data Center,virtualization ]
 ---
 
-<p>In every <a href="https://www.ipspace.net/Software_Defined_Data_Centers_(SDDC)_Workshop">SDDC workshop</a> I tried to persuade the audience that the virtual appliances (particularly per-application instances of virtual appliances) are the way to go. I usually got the questions along the lines of &ldquo;who will manage and audit all these instances?&rdquo; but once someone asked &ldquo;and how will we upgrade them?&rdquo;</p>
-<p>Short answer: you won&rsquo;t.<!--more--></p>
-<p>The beauty of running virtual machines is that it&rsquo;s easy to destroy them and create new ones, so here&rsquo;s how I would upgrade my virtual appliances (anyone vaguely familiar with properly-deployed cloud-based applications will immediately recognize the pattern):</p>
-<ul class="ListParagraph"><li>Build a new VM template from the new software distribution (assuming the vendor doesn&rsquo;t supply the appliance in a ready-to-use format);</li>
+<p>In every <a href="https://www.ipspace.net/Software_Defined_Data_Centers_(SDDC)_Workshop">SDDC workshop</a> I tried to persuade the audience that the virtual appliances (particularly per-application instances of virtual appliances) are the way to go. I usually got the questions along the lines of “who will manage and audit all these instances?” but once someone asked “and how will we upgrade them?”</p>
+<p>Short answer: you won’t.<!--more--></p>
+<p>The beauty of running virtual machines is that it’s easy to destroy them and create new ones, so here’s how I would upgrade my virtual appliances (anyone vaguely familiar with properly-deployed cloud-based applications will immediately recognize the pattern):</p>
+<ul class="ListParagraph"><li>Build a new VM template from the new software distribution (assuming the vendor doesn’t supply the appliance in a ready-to-use format);</li>
 <li>Start the new VM in test environment and copy the current configuration into the new virtual machine. </li>
 </ul>
-<p class="info">In the ideal world, the appliance would fetch its configuration from a central database resulting in a completely stateless setup, but we&rsquo;re not there yet.</p>
+<p class="info">In the ideal world, the appliance would fetch its configuration from a central database resulting in a completely stateless setup, but we’re not there yet.</p>
 <ul class="ListParagraph"><li>Stress-test the new VM (you do have unit tests verifying whatever your appliance should be doing, right?)</li>
-<li>When you&rsquo;re ready for the change, disconnect the current appliance VM from the network and connect the VM with upgraded software (and identical configuration) to the network.</li>
+<li>When you’re ready for the change, disconnect the current appliance VM from the network and connect the VM with upgraded software (and identical configuration) to the network.</li>
 <li>If the new software crashes (because $vendor QA) disconnect the new VM and reconnect the old one.</li>
-<li>Once you&rsquo;ve mastered all the steps, automate the process.</li>
+<li>Once you’ve mastered all the steps, automate the process.</li>
 </ul>
-<p>Want to learn how to do the last step? Why don&rsquo;t you join the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course?</p>
+<p>Want to learn how to do the last step? Why don’t you join the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course?</p>
 

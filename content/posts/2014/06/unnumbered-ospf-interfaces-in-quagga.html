@@ -17,7 +17,7 @@ tags: [ OSPF,Data Center,Fabric ]
 <p>Let’s walk through all of these claims:</p>
 <blockquote class="cite">Configuring unnumbered interfaces reduces the links between routers into pure topological elements</blockquote>
 <p>Translated into engineering terms: the Type-1 (router) LSA no longer contains the stub networks for inter-router subnets. You can do something similar on Cisco IOS with <a href="http://www.cisco.com/c/en/us/td/docs/ios/12_4t/12_4t15/ht_osmch.html">OSPF prefix suppression</a>.</p>
-<p class='update'>2014-06-24 17:40Z - Converting Ethernet interfaces into point-to-point links would also speed up adjacency establishment (no need for DR election) and get rid of type-2 LSAs connecting the two routers (as Enrique pointed out in the comments), which might result in marginally faster SPF (see below). You can achieve the same results in other OSPF implementations by configuring point-to-point OSPF interfaces.</p>
+<p class="update">2014-06-24 17:40Z - Converting Ethernet interfaces into point-to-point links would also speed up adjacency establishment (no need for DR election) and get rid of type-2 LSAs connecting the two routers (as Enrique pointed out in the comments), which might result in marginally faster SPF (see below). You can achieve the same results in other OSPF implementations by configuring point-to-point OSPF interfaces.</p>
 <blockquote class="cite">… and thus dramatically simplifies network configuration and reconfiguration. </blockquote>
 <p>Marketese for “<a href="http://blog.ipspace.net/2008/10/ospf-ignores-subnet-mask-mismatch-on.html">we don’t check IP subnets in OSPF hello packets</a>”.</p>
 <blockquote class="cite">In addition, routing database contains only the real networks, </blockquote>

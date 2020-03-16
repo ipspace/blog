@@ -6,13 +6,13 @@ media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_
 ---
 
 <p>We did several podcasts describing how one could get stellar packet forwarding performance on x86 servers reimplementing the whole forwarding stack outside of kernel (<a href="http://blog.ipspace.net/2014/09/snabb-switch-deep-dive-on-software-gone.html">Snabb Switch</a>) or bypassing the Linux kernel and moving the packet processing into userspace (<a href="http://blog.ipspace.net/2015/04/pfring-deep-dive-with-luca-deri-on.html">PF_Ring</a>). </p>
-<p>Now let&#x2019;s see if it&#x2019;s possible to improve the Linux kernel forwarding performance. <a href="https://www.linkedin.com/in/thomas-graf-73104547">Thomas Graf</a>, one of the authors of <a href="https://github.com/cilium/cilium">Cilium</a> claims it can be done and explained the intricate details in <a href="http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_64-Cilium_with_Thomas_Graf.mp3">Episode 64</a> of <a href="http://www.ipspace.net/Podcast/Software_Gone_Wild">Software Gone Wild</a>.<!--more--></p>
+<p>Now let’s see if it’s possible to improve the Linux kernel forwarding performance. <a href="https://www.linkedin.com/in/thomas-graf-73104547">Thomas Graf</a>, one of the authors of <a href="https://github.com/cilium/cilium">Cilium</a> claims it can be done and explained the intricate details in <a href="http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_64-Cilium_with_Thomas_Graf.mp3">Episode 64</a> of <a href="http://www.ipspace.net/Podcast/Software_Gone_Wild">Software Gone Wild</a>.<!--more--></p>
 <p>We started with the basics:</p>
 <ul class="ListParagraph"><li>Are the Linux packet forwarding performance numbers tossed around realistic or biased?</li>
 <li>What can one reasonably expect from a Linux kernel?</li>
 <li>Why Linux kernel suboptimal when it comes to packet forwarding performance?</li>
 </ul>
-<p>Just a few minutes into our talk we slid down a rabbit hole into the wonderland of <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">BPF</a>. We started with &ldquo;<em>what is BPF</em>&rdquo; which turned into a minute of acronyms and tried to step back and do a one-step-at-a-time controlled descent:</p>
+<p>Just a few minutes into our talk we slid down a rabbit hole into the wonderland of <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">BPF</a>. We started with “<em>what is BPF</em>” which turned into a minute of acronyms and tried to step back and do a one-step-at-a-time controlled descent:</p>
 <ul class="ListParagraph"><li>What is bytecode?</li>
 <li>Why would you use byte code (and BPF) instead of writing a kernel module?</li>
 <li>Why is BPF better (or not) than userspace packet forwarding?</li>

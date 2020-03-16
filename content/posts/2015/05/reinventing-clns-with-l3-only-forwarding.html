@@ -6,7 +6,7 @@ tags: [ IPv6,IP routing,CLNP ]
 
 <p>Hank left a lovely comment on my <a href="http://blog.ipspace.net/2015/04/rearchitecting-l3-only-networks.html">Rearchitecting L3-Only Networks</a> blog post:</p>
 <blockquote class="cite">What you describe is literally intra-area routing in CLNS.</blockquote>
-<p>He&#x2019;s absolutely right (and I admitted as much during my <a href="https://www.youtube.com/watch?v=2zvrzgGzyYw">IPv6 Microsegmentation</a> presentations @ Troopers 15).<!--more--></p>
+<p>He’s absolutely right (and I admitted as much during my <a href="https://www.youtube.com/watch?v=2zvrzgGzyYw">IPv6 Microsegmentation</a> presentations @ Troopers 15).<!--more--></p>
 <h4>You might want to read this first</h4><p>This is the fifth blog post in this series. You might want to read the first three before starting this one.</p>
 <ul class="ListParagraph"><li><a href="http://blog.ipspace.net/2014/06/why-is-ipv6-layer-2-security-so-complex.html">Why is IPv6 layer-2 security so complex</a>?</li>
 <li><a href="http://blog.ipspace.net/2015/04/what-is-layer-2-and-why-do-we-need-it.html">What is layer-2 and why do we need it</a>?</li>
@@ -17,15 +17,15 @@ tags: [ IPv6,IP routing,CLNP ]
 <blockquote class="cite">You need a protocol between routers. Some people seem to prefer BGP as the solution to any problem. But the most natural solution here, for IGP routing, would be to use an actual IGP. IS-IS would do a fine job. Not much worse than BGP. And less prone to configuration/network-design problems than BGP. You could advertise /32s. Or you could introduce a new TLV to make a proper destination.</blockquote>
 <p>IS-IS would probably be able to do the job in reasonably small environment. However, in a dense VLAN-based virtualization environment, a single L3 switch might need to insert several thousand routes into the physical routing domain, probably stretching IS-IS capabilities (and potentially killing OSPF with all those Type-5 LSAs).</p>
 <blockquote class="cite">It would be *minimal* work to actually implement this functionality into a proper IS-IS implementation. Just a small matter of programming.</blockquote>
-<p>The IS-IS implementation might not be an issue &ndash; carrying IPv4 host routes is a non-brainer; carrying host routes for multiple routing domains (VRFs) would require new TLVs. Anyone aware of an RFC/draft specifying such functionality (maybe Avaya documented what they&#x2019;re doing with IS-IS in SPB deployments?)</p>
+<p>The IS-IS implementation might not be an issue – carrying IPv4 host routes is a non-brainer; carrying host routes for multiple routing domains (VRFs) would require new TLVs. Anyone aware of an RFC/draft specifying such functionality (maybe Avaya documented what they’re doing with IS-IS in SPB deployments?)</p>
 <blockquote class="cite">You need a protocol for the routers to find out which EndStations are directly connected. In CLNS, that would be ESIS. In IPv4 you could indeed use ARP. In IPv6 you could use NDP. Or you could build a new proper host-router protocol (and use ARP until it catches on).</blockquote>
-<p>A proper host-to-router protocol, integrated with virtualization awareness (so that a VM re-advertises itself when it&#x2019;s moved) would be ideal. In the meantime, implementations like Cisco DFA or Microsoft HNV (or VMware NSX for firewalling purposes) have to rely on all sorts of guesswork (listening to ARP/ND requests, DHCPv6 replies, or even gleaning source IP/IPv6 addresses).</p>
-<p>Hank concluded his analysis with&hellip;</p>
+<p>A proper host-to-router protocol, integrated with virtualization awareness (so that a VM re-advertises itself when it’s moved) would be ideal. In the meantime, implementations like Cisco DFA or Microsoft HNV (or VMware NSX for firewalling purposes) have to rely on all sorts of guesswork (listening to ARP/ND requests, DHCPv6 replies, or even gleaning source IP/IPv6 addresses).</p>
+<p>Hank concluded his analysis with…</p>
 <blockquote class="cite">Of course all this will be impossible, because it reeks of CLNS. And therefore it must never ever be implemented in TCP/IP. Too bad, CLNS did it right.</blockquote>
-<p>Even worse, when IETF started designing next-generation IP protocol, a group of engineers actually suggested using TCP/UDP over CLNS (TUBA), but of course that idea never moved forward because the underlying protocol (and its &ldquo;weird&rdquo; concepts) had been designed in the wrong standardization body.</p>
-<p>Regardless of its rejection in IETF, TUBA lives on &ndash; it&#x2019;s been implemented in Cisco IOS and the last time I checked you were still able to <strong>telnet </strong>to a CLNS address.</p>
+<p>Even worse, when IETF started designing next-generation IP protocol, a group of engineers actually suggested using TCP/UDP over CLNS (TUBA), but of course that idea never moved forward because the underlying protocol (and its “weird” concepts) had been designed in the wrong standardization body.</p>
+<p>Regardless of its rejection in IETF, TUBA lives on – it’s been implemented in Cisco IOS and the last time I checked you were still able to <strong>telnet </strong>to a CLNS address.</p>
 <p>To learn more about TUBA, read these RFCs:</p>
-<ul class="ListParagraph"><li><a href="http://tools.ietf.org/html/rfc1347">TCP and UDP with Bigger Addresses</a> (TUBA &ndash; RFC 1347)</li>
+<ul class="ListParagraph"><li><a href="http://tools.ietf.org/html/rfc1347">TCP and UDP with Bigger Addresses</a> (TUBA – RFC 1347)</li>
 <li><a href="http://tools.ietf.org/html/rfc1561">Use of ISO CLNP in TUBA Environments</a> (RFC 1561)</li>
 <li><a href="http://tools.ietf.org/html/rfc1706">DNS NSAP Resource Records</a> (RFC 1706)</li>
 <li><a href="http://tools.ietf.org/html/rfc1454">Comparison of Proposals for Next Version of IP</a> (RFC 1454)</li>

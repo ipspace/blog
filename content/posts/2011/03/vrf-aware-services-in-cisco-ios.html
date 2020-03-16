@@ -5,7 +5,7 @@ tags: [ Workshop,MPLS VPN ]
 ---
 
 <p>"<em>Which Cisco IOS services work in </em><em>a </em><em>VRF?</em>" is the question I get in almost any VRF-related discussion, so I made sure it’s covered very early in my <a href="http://www.ioshints.info/EnterpriseMPLS"><em>Enterprise MPLS/VPN deployment</em></a><em> </em>webinar (<a href="http://mpls.eventbrite.com/">register here</a>). This is the explanation I usually give in the webinar:</p>
-<div style='text-align: center'><iframe title="YouTube video player" width="480" height="390" src="http://www.youtube.com/embed/Ug9M1gjjGro?rel=0" frameborder="0" allowfullscreen></iframe></div>
+<div style="text-align: center"><iframe allowfullscreen="" frameborder="0" height="390" src="http://www.youtube.com/embed/Ug9M1gjjGro?rel=0" title="YouTube video player" width="480"></iframe></div>
 <!--more--><p>The generic rules are quite simple:</p>
 <p><strong>TCP stack in Cisco IOS is VRF-aware</strong>. Every TCP server running in Cisco IOS is thus VRF-aware by definition – when the router receives the TCP SYN packet, it associates the TCP session with the incoming VRF and the replies use the correct VRF automatically.</p>
 <p><strong>UDP is connectionless; UDP servers are on their own</strong>. The same trick does not work with UDP servers (including SNMP, DNS or DHCP servers). The UDP stack has no connection state and cannot associate incoming UDP requests with outgoing UDP responses. The UDP server has to extract VRF information from incoming packet and ensure the response is sent through the same VRF.</p>

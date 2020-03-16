@@ -4,18 +4,18 @@ date: "2017-03-13T07:19:00.000+01:00"
 tags: [ Design,Data Center,cloud ]
 ---
 
-<p><a name="_GoBack"></a>It&rsquo;s uncommon to find an organization that succeeds in building a private OpenStack-based cloud. It&rsquo;s extremely rare to find one that documented and published the whole process like Paddy Power Betfair did with their <a href="https://betsandbits.files.wordpress.com/2016/10/openstackreferencearchitecturewhitepaper.pdf">OpenStack Reference Architecture whitepaper</a>.</p>
+<p><a name="_GoBack"></a>It’s uncommon to find an organization that succeeds in building a private OpenStack-based cloud. It’s extremely rare to find one that documented and published the whole process like Paddy Power Betfair did with their <a href="https://betsandbits.files.wordpress.com/2016/10/openstackreferencearchitecturewhitepaper.pdf">OpenStack Reference Architecture whitepaper</a>.</p>
 <p>I was delighted to see they decided to do a lot of things I was preaching for ages in blog posts, <a href="http://www.ipspace.net/Roadmap/Data_center_webinars">webinars</a>, and lately in my <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Next Generation Data Center online course</a>. </p>
 <p>Highlights include:<!--more--></p>
-<ul class="ListParagraph"><li>Don&rsquo;t reinvent the wheel &ndash; use a commercial distribution (I know half a dozen organizations who tried to build OpenStack from grounds up and failed). They used Red Hat OpenStack distribution and Nuage VSP instead of vanilla Neutron.</li>
+<ul class="ListParagraph"><li>Don’t reinvent the wheel – use a commercial distribution (I know half a dozen organizations who tried to build OpenStack from grounds up and failed). They used Red Hat OpenStack distribution and Nuage VSP instead of vanilla Neutron.</li>
 </ul>
 <p class="note">One has to wonder whether the default Neutron implementation shipping with OpenStack is a networking vendor conspiracy to sell more warez ;)</p>
 <ul class="ListParagraph"><li>The implemented multiple independent OpenStack instances, reducing the size of the failure domain.</li>
-<li>They use L3 (routing) between OpenStack instances and DNS-based load balancing across multiple data centers. There&rsquo;s no L2 DCI.</li>
+<li>They use L3 (routing) between OpenStack instances and DNS-based load balancing across multiple data centers. There’s no L2 DCI.</li>
 <li>Physical network is a simple leaf-and-spine network providing stable routed infrastructure. Layer-2 domains terminate at the rack layer.</li>
-<li>Provisioning and configuration of hypervisor hosts and physical network is fully automated. They use Ironic (OpenStack component) to provision the servers and Arista&rsquo;s ZTP to provision the switches.</li>
+<li>Provisioning and configuration of hypervisor hosts and physical network is fully automated. They use Ironic (OpenStack component) to provision the servers and Arista’s ZTP to provision the switches.</li>
 </ul>
-<p>Interestingly, they didn&rsquo;t OpenStack use distributed storage (Ceph) but an all-flash storage array (Pure storage) integrated into OpenStack. It was also nice to see they use Ansible to deploy applications, as well as many of the other tools we discussed in <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Netowrk Automation Solutions</a> online course.</p>
+<p>Interestingly, they didn’t OpenStack use distributed storage (Ceph) but an all-flash storage array (Pure storage) integrated into OpenStack. It was also nice to see they use Ansible to deploy applications, as well as many of the other tools we discussed in <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Netowrk Automation Solutions</a> online course.</p>
 <p>Timing is also interesting:</p>
 <ul class="ListParagraph"><li>6 weeks for PoC</li>
 <li>8 months for a first-generation production-ready pilot</li>
@@ -23,5 +23,5 @@ tags: [ Design,Data Center,cloud ]
 <li>12-18 months to migrate the rest of the workload</li>
 <li>18 months to decommission the old hardware (in parallel with the migration)</li>
 </ul>
-<h4>Not totally unrelated</h4><p>Want to become a better data center architect? Learn from the <a href="http://nextgendc.ipspace.net/Public:Speakers">leading industry experts</a>? Explore the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center online course</a> and <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center#register">register ASAP</a> &ndash; there are only a few tickets left for the April 2017 session.</p>
+<h4>Not totally unrelated</h4><p>Want to become a better data center architect? Learn from the <a href="http://nextgendc.ipspace.net/Public:Speakers">leading industry experts</a>? Explore the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center online course</a> and <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center#register">register ASAP</a> – there are only a few tickets left for the April 2017 session.</p>
 

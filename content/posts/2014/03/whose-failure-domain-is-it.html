@@ -12,7 +12,7 @@ tags: [ bridging,Internet ]
 <li>Configure BPDU guard (if appropriate), or root guard on customer-facing links;</li>
 <li>Protect the PE router control plane.</li>
 </ul>
-<p class='more'>Years ago, I met an ISP running RIPv1 with their customers (no, they were not offering MPLS/VPN services). Go figure ;)</p>
+<p class="more">Years ago, I met an ISP running RIPv1 with their customers (no, they were not offering MPLS/VPN services). Go figure ;)</p>
 <h4>Decouple customer networks from your core</h4><p>If you implement a Metro Ethernet service with an end-to-end bridged network using 802.1Q or 802.1ad (QinQ) encapsulation, don’t act surprised when it collapses due to a <a href="http://blog.ipspace.net/2009/02/connecting-switch-to-itself-does-it.html">L2 forwarding loop</a>, or when you get uncontrollable amount of unicast flooding due to TCAM overflows – you’ve tightly coupled the fate of your core network to the (mis)behavior of your customers.</p>
 <p>802.1ah (PBB) is slightly better – at the very least the core switches don’t see the customer MAC addresses any longer.</p>
 <p>Pseudowires (EoMPLS or L2TPv3), VPLS or PBB-EVPN are the best solution – they totally decouple the <a href="http://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html">layer-2 forwarding behavior</a> of your services from stable layer-3 forwarding behavior of your IP+MPLS core. A problem within a customer’s network can no longer trash the ISP core (assuming the customer cannot generate enough traffic to overload the core links).</p>

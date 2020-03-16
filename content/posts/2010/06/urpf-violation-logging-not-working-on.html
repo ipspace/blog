@@ -10,6 +10,6 @@ tags: [ DMVPN,security,Workshop,IP routing ]
 <li>Use the ACL in <strong>ip verify unicast source </strong>interface configuration command.</li>
 </ul>
 <p>Sounds simple. I’ve used these configuration commands ...</p>
-<pre class="code">interface Serial2/3<br /> description Link to R2<br /> ip address 10.0.8.13 255.255.255.252<br /> ip verify unicast source reachable-via rx 199<br /> encapsulation ppp<br /> no peer neighbor-route<br />!<br />access-list 199 deny   ip any any log</pre><p>... and it worked like a charm in 15.0(1)M, my <em>Internet </em>router generated lots of syslog messages similar to these:</p>
-<pre class="code">%SEC-6-IPACCESSLOGP: list 199 denied udp 10.0.8.10(0) -&gt; 10.0.8.2(0)<br />%SEC-6-IPACCESSLOGP: list 199 denied udp 10.0.8.10(0) -&gt; 10.0.7.17(0)</pre><p>12.4T? Accepts the ACL parameter and remains mum. Great inter-release consistency ;)</p>
+<pre class="code">interface Serial2/3<br/> description Link to R2<br/> ip address 10.0.8.13 255.255.255.252<br/> ip verify unicast source reachable-via rx 199<br/> encapsulation ppp<br/> no peer neighbor-route<br/>!<br/>access-list 199 deny   ip any any log</pre><p>... and it worked like a charm in 15.0(1)M, my <em>Internet </em>router generated lots of syslog messages similar to these:</p>
+<pre class="code">%SEC-6-IPACCESSLOGP: list 199 denied udp 10.0.8.10(0) -&gt; 10.0.8.2(0)<br/>%SEC-6-IPACCESSLOGP: list 199 denied udp 10.0.8.10(0) -&gt; 10.0.7.17(0)</pre><p>12.4T? Accepts the ACL parameter and remains mum. Great inter-release consistency ;)</p>
 

@@ -8,7 +8,7 @@ tags: [ DHCP,IPv6,PPP,Workshop ]
 <blockquote class="cite">What happens if an ISP decides to assign dynamic IPv6 subnets?  With static assignment, the whole stuff is pretty straight-forward due to ND, RA &amp; DHCPv6, but if dynamic addresses are used, what happens if the subnet changes - how will the change be propagated to the end-user devices? The whole thing is no problem today due to the usage of NAT / PAT...</blockquote>
 <p>LAN address allocation with changing DHCPv6 prefix is definitely a major problem, but didn’t seem insurmountable. After all, you can tweak RA timers on the LAN interface, so even though the prefix delegated through DHCPv6 would change, the LAN clients would pick up the change pretty quickly. <strong>WRONG</strong> ... at least if you use Cisco IOS.</p>
 <!--more--><p>The core of the problem is a total disconnect between IPv6CP and DHCPv6 and between dialer interfaces and PPPoE sessions.</p>
-<div class='info'><p><strong>Remember:</strong></p>
+<div class="info"><p><strong>Remember:</strong></p>
 <ul class="ListParagraph"><li>IPv6CP is not propagating IPv6 addresses;</li>
 <li>DHCPv6 has to be used to get a /64 (or /56) prefix to use on the LAN interface of the CPE router;</li>
 <li>Cisco IOS uses <em>dialer </em>interfaces to configure PPPoE client;</li>

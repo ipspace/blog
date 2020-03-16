@@ -4,23 +4,23 @@ date: "2017-12-16T09:22:00.000+01:00"
 tags: [ switching,Data Center ]
 ---
 
-<p>Looks like I&rsquo;m becoming the gateway-of-last-resort for people encountering <a href="http://blog.ipspace.net/2017/05/follow-up-nexus-os-dropping.html">totally weird</a> <a href="http://blog.ipspace.net/2017/11/security-or-convenience-thats-question.html">Nexus OS bugs</a>. Here&rsquo;s another beauty&hellip;</p>
+<p>Looks like I’m becoming the gateway-of-last-resort for people encountering <a href="http://blog.ipspace.net/2017/05/follow-up-nexus-os-dropping.html">totally weird</a> <a href="http://blog.ipspace.net/2017/11/security-or-convenience-thats-question.html">Nexus OS bugs</a>. Here’s another beauty…</p>
 <blockquote class="cite">I'm involved in a Nexus 9500 (NX-OS) migration project, and one bug recently caused vPC-connected Catalyst switches to err-disable (STP channel-misconfig) their port-channel members (<a href="https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvg05807">CSCvg05807</a>), effectively shutting down the network for our campus during what was supposed to be a "non-disruptive" ISSU upgrade.</blockquote>
-<p>Weird, right? Wait, there&rsquo;s more&hellip;<!--more--></p>
+<p>Weird, right? Wait, there’s more…<!--more--></p>
 <p>Here's the explanation of that behavior as experienced by my frustrated reader:</p>
-<hr><p>Apparently, Nexus 9K was using another vendor's OUI for the source MAC address it used to send BPDUs (<a href="https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvd99364">CSCvd99364</a>). This was changed to Cisco OUI&nbsp;in 7.0(3)I6(1), but with no mention of this change in the release notes, an upgrade (one 9k at a time) would cause one 9k to source BPDUs with the old source MAC address, and the other 9k to source BPDUs with the&nbsp;new&nbsp;source MAC.</p>
-<p>Furthermore, Cisco's "solution" has been to&nbsp;change the OUI back to what it was before...&nbsp;likely&nbsp;causing one more outage for anyone who mistakenly upgraded to 7.0(3)I6(1) or 7.0(3)I7(1). </p>
-<p>Note: I'm told&nbsp;a special knob has been added so the new or old OUI can be hardcoded for future upgrade resilience, but I think this is a band aid fix.</p>
+<hr/><p>Apparently, Nexus 9K was using another vendor's OUI for the source MAC address it used to send BPDUs (<a href="https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvd99364">CSCvd99364</a>). This was changed to Cisco OUI in 7.0(3)I6(1), but with no mention of this change in the release notes, an upgrade (one 9k at a time) would cause one 9k to source BPDUs with the old source MAC address, and the other 9k to source BPDUs with the new source MAC.</p>
+<p>Furthermore, Cisco's "solution" has been to change the OUI back to what it was before... likely causing one more outage for anyone who mistakenly upgraded to 7.0(3)I6(1) or 7.0(3)I7(1). </p>
+<p>Note: I'm told a special knob has been added so the new or old OUI can be hardcoded for future upgrade resilience, but I think this is a band aid fix.</p>
 <p>There are some serious underlying issues here:</p>
-<ul class="ListParagraph"><li>Why is Cisco using a&nbsp;<em>non-Cisco OUI</em>&nbsp;for anything in the first place?</li>
-<li>Initially there was&nbsp;<em>no</em>&nbsp;mention of this change in the&nbsp;7.0(3)I6(1) or 7.0(3)I7(1) release notes.</li>
-<li>Cisco's response has been slow and quiet while this gets swept under the rug. For instance, the release notes for&nbsp;7.0(3)I7(<strong>2</strong>) does not mention a change&nbsp;<em>back to the old OUI, nor does it mention any warning for&nbsp;customers upgrading from&nbsp;7.0(3)I6(1) or 7.0(3)I7(1).</em></li>
+<ul class="ListParagraph"><li>Why is Cisco using a <em>non-Cisco OUI</em> for anything in the first place?</li>
+<li>Initially there was <em>no</em> mention of this change in the 7.0(3)I6(1) or 7.0(3)I7(1) release notes.</li>
+<li>Cisco's response has been slow and quiet while this gets swept under the rug. For instance, the release notes for 7.0(3)I7(<strong>2</strong>) does not mention a change <em>back to the old OUI, nor does it mention any warning for customers upgrading from 7.0(3)I6(1) or 7.0(3)I7(1).</em></li>
 </ul>
-<p>In all honesty Cisco should defer&nbsp;7.0(3)I6(1) and 7.0(3)I7(1) but these releases remain very available on CCO.</p>
-<p>Anyway, here&rsquo;s the BPDU Source OUI Cheat Sheet</p>
-<ul class="ListParagraph"><li>Release Prior to&nbsp;7.0(3)I6(1) -&nbsp;<strong>non-Cisco</strong><strong><em>&nbsp;</em></strong>OUI</li>
-<li>7.0(3)I6(1) and 7.0(3)I7(1) -&nbsp;<strong>Cisco&nbsp;</strong>OUI</li>
-<li>7.0(3)I6(<strong>2</strong>) and 7.0(3)I7(<strong>2</strong>)<strong>&nbsp;</strong>-<strong>&nbsp;back to non-Cisco</strong>&nbsp;OUI</li>
+<p>In all honesty Cisco should defer 7.0(3)I6(1) and 7.0(3)I7(1) but these releases remain very available on CCO.</p>
+<p>Anyway, here’s the BPDU Source OUI Cheat Sheet</p>
+<ul class="ListParagraph"><li>Release Prior to 7.0(3)I6(1) - <strong>non-Cisco</strong><strong><em> </em></strong>OUI</li>
+<li>7.0(3)I6(1) and 7.0(3)I7(1) - <strong>Cisco </strong>OUI</li>
+<li>7.0(3)I6(<strong>2</strong>) and 7.0(3)I7(<strong>2</strong>)<strong> </strong>-<strong> back to non-Cisco</strong> OUI</li>
 </ul>
-<p>Upgrading between any of these groups will cause the BPDU source MAC to change without warning,&nbsp;<span style="color: 263238;">causing all L2 connected devices that do proper BPDU checks to err-disable the ports.</span></p>
+<p>Upgrading between any of these groups will cause the BPDU source MAC to change without warning, <span style="color: 263238;">causing all L2 connected devices that do proper BPDU checks to err-disable the ports.</span></p>
 

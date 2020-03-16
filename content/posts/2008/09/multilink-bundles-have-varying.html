@@ -5,8 +5,8 @@ tags: [ PPP,WAN ]
 ---
 
 <div class="bloggerBody"><p>I have always intuitively assumed that the interface bandwidth on MLPPP bundles is the sum of interface bandwidths of individual interfaces that are part of the bundle. Recently I’ve tested my assumption and it works as expected. </p>
-<script>startHide()</script><p>For example, with the following interface setup …</p>
-<pre class="code">interface Multilink1<br /> ip unnumbered Loopback0<br /> ppp multilink<br /> ppp multilink group 1<br />!<br />interface Serial1/4<br /> bandwidth 2000<br /> encapsulation ppp<br /> ppp multilink<br /> ppp multilink group 1<br />!<br />interface Serial1/5<br /> bandwidth 4000<br /> encapsulation ppp<br /> ppp multilink<br /> ppp multilink group 1<br /> serial restart-delay 0</pre><p>… the bandwidth of the Multilink1 interface is 6000 kbps if both serial lines are up …</p>
-<pre class="code">Rtr#show interface Multilink 1 | inc protocol|BW<br />Multilink1 is up, line protocol is up<br />  MTU 1500 bytes, BW 6000 Kbit, DLY 20000 usec,</pre><p>… but drops to 4000 kbps when the Serial1/4 is disconnected:</p>
-<pre class="code">%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/4, →<br>  changed state to down<br />Rtr#show interface Multilink 1 | inc protocol|BW<br />Multilink1 is up, line protocol is up<br />  MTU 1500 bytes, BW 4000 Kbit, DLY 20000 usec,</pre><script>endHide()</script></div>
+&lt;!--more--&gt;<p>For example, with the following interface setup …</p>
+<pre class="code">interface Multilink1<br/> ip unnumbered Loopback0<br/> ppp multilink<br/> ppp multilink group 1<br/>!<br/>interface Serial1/4<br/> bandwidth 2000<br/> encapsulation ppp<br/> ppp multilink<br/> ppp multilink group 1<br/>!<br/>interface Serial1/5<br/> bandwidth 4000<br/> encapsulation ppp<br/> ppp multilink<br/> ppp multilink group 1<br/> serial restart-delay 0</pre><p>… the bandwidth of the Multilink1 interface is 6000 kbps if both serial lines are up …</p>
+<pre class="code">Rtr#show interface Multilink 1 | inc protocol|BW<br/>Multilink1 is up, line protocol is up<br/>  MTU 1500 bytes, BW 6000 Kbit, DLY 20000 usec,</pre><p>… but drops to 4000 kbps when the Serial1/4 is disconnected:</p>
+<pre class="code">%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/4, →<br/>  changed state to down<br>Rtr#show interface Multilink 1 | inc protocol|BW<br/>Multilink1 is up, line protocol is up<br/>  MTU 1500 bytes, BW 4000 Kbit, DLY 20000 usec,</br></pre></div>
 

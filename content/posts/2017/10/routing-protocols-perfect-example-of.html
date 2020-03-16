@@ -4,7 +4,7 @@ date: "2017-10-10T09:10:00.000+02:00"
 tags: [ OSPF,BGP,IP routing ]
 ---
 
-<p>In case you&rsquo;re not familiar with RFC 1925, its Rule 5 states:</p>
+<p>In case you’re not familiar with RFC 1925, its Rule 5 states:</p>
 <blockquote class="cite">It is always possible to agglutinate multiple separate problems into a single complex interdependent solution. In most cases this is a bad idea.</blockquote>
 <p>Most routing protocols are a perfect demonstration of this rule.<!--more--></p>
 <p>A typical routing protocol tries to handle:</p>
@@ -15,15 +15,15 @@ tags: [ OSPF,BGP,IP routing ]
 <li>Collecting and distributing topology information (who is connected to whom)</li>
 <li>Collecting and distributing endpoint reachability information (what endpoints are connected to the network)</li>
 </ul>
-<p>Most routing protocols reinvent every single wheel listed above, and also try to bundle several features with sometimes conflicting requirements into a single protocol. For example, OSPF, EIGRP, and IS-IS use <em>hello </em>or <em>keepalive </em>messages to discover neighbors, detect link failure, and verify neighbor&rsquo;s health check. BGP uses <em>keepalive </em>messages to discover link and neighbor failure.</p>
-<p>Is there anything wrong with that approach? Of course &ndash; links usually fail more often than nodes or routing protocols. It&rsquo;s therefore crucial to detect link failure relatively quickly, but we don&rsquo;t have to be so aggressive with the node health check.</p>
-<p>Not surprisingly, we got BFD a while back &ndash; a lightweight protocol with a single mission: detect path loss between two adjacent unicast IP addresses&hellip; and nonetheless years later we&rsquo;re still discussing BGP keepalives.</p>
-<p>While more and more network deployments use BFD, we still haven&rsquo;t even touched the <em>dissemination of information </em>problem. Why does every single routing protocol have to reinvent flooding when we have so many production-tested message queue or eventually-consistent database products.</p>
+<p>Most routing protocols reinvent every single wheel listed above, and also try to bundle several features with sometimes conflicting requirements into a single protocol. For example, OSPF, EIGRP, and IS-IS use <em>hello </em>or <em>keepalive </em>messages to discover neighbors, detect link failure, and verify neighbor’s health check. BGP uses <em>keepalive </em>messages to discover link and neighbor failure.</p>
+<p>Is there anything wrong with that approach? Of course – links usually fail more often than nodes or routing protocols. It’s therefore crucial to detect link failure relatively quickly, but we don’t have to be so aggressive with the node health check.</p>
+<p>Not surprisingly, we got BFD a while back – a lightweight protocol with a single mission: detect path loss between two adjacent unicast IP addresses… and nonetheless years later we’re still discussing BGP keepalives.</p>
+<p>While more and more network deployments use BFD, we still haven’t even touched the <em>dissemination of information </em>problem. Why does every single routing protocol have to reinvent flooding when we have so many production-tested message queue or eventually-consistent database products.</p>
 <p>Finally, agglutinating routing and reachability information led to bloated LSPs in IS-IS and an a zillion tiny LSAs in OSPF. </p>
-<p>As always, it&rsquo;s possible to get a more stable and scalable network (even though the tools are suboptimal) with sensible architecture. A typical large-scale network design would use the right tool for each job: </p>
+<p>As always, it’s possible to get a more stable and scalable network (even though the tools are suboptimal) with sensible architecture. A typical large-scale network design would use the right tool for each job: </p>
 <ul class="ListParagraph"><li>OSPF or IS-IS to discover network topology and shortest paths;</li>
 <li>BGP to collect endpoint information and map it to egress next-hop.</li>
 </ul>
 <p>However, while we knew how to design scalable network for ages, many engineers deploying large enterprise networks consistently ignored that insight, resulting in way too many OSPF Band-Aids.</p>
-<p>Facing a similar challenge? Let&rsquo;s discuss it in a <a href="http://www.ipspace.net/ExpertExpress">short online session</a>.</p>
+<p>Facing a similar challenge? Let’s discuss it in a <a href="http://www.ipspace.net/ExpertExpress">short online session</a>.</p>
 

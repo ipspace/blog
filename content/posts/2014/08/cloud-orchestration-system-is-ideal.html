@@ -4,8 +4,8 @@ date: "2014-08-22T08:09:00.000+02:00"
 tags: [ SDN,OpenFlow,cloud,Overlay networks ]
 ---
 
-<p>A while ago I explained why <a href="http://blog.ipspace.net/2014/06/is-openflow-best-tool-for-overlay.html">OpenFlow might be a wrong tool for some jobs</a>, and why <a href="http://blog.ipspace.net/2014/05/does-centralized-control-plane-make.html">centralized control plane might not make sense</a>, and <a href="http://cyberpunkture.net/2014/06/on-centralized-sdn-and-openflow/">quickly got misquoted as saying &ldquo;controllers don&#x2019;t scale&rdquo;</a>. Nothing could be further from the truth, properly architected controller-based architectures can reach enormous scale &ndash; Amazon VPC is the best possible example.<!--more--></p>
-<p class="note">Totally unrelated note to bloggers: please don&#x2019;t use marketing whitepapers disguised as technical documents as counterarguments in technology-focused discussions. </p>
+<p>A while ago I explained why <a href="http://blog.ipspace.net/2014/06/is-openflow-best-tool-for-overlay.html">OpenFlow might be a wrong tool for some jobs</a>, and why <a href="http://blog.ipspace.net/2014/05/does-centralized-control-plane-make.html">centralized control plane might not make sense</a>, and <a href="http://cyberpunkture.net/2014/06/on-centralized-sdn-and-openflow/">quickly got misquoted as saying “controllers don’t scale”</a>. Nothing could be further from the truth, properly architected controller-based architectures can reach enormous scale – Amazon VPC is the best possible example.<!--more--></p>
+<p class="note">Totally unrelated note to bloggers: please don’t use marketing whitepapers disguised as technical documents as counterarguments in technology-focused discussions. </p>
 <h4>Cloud Orchestration System as Overlay Virtual Networking Controller</h4><p>The orchestration system in an IP-aware IaaS cloud architecture has <a href="http://blog.ipspace.net/2013/11/layer-2-and-layer-3-switching-in-vmware.html">all the information we need to set up forwarding entries</a> in an overlay virtual networking implementation:</p>
 <ul class="ListParagraph"><li>Hypervisor-to-VTEP (transport IP address) mapping</li>
 <li>VM-to-hypervisor or container-to-host mapping</li>
@@ -14,7 +14,7 @@ tags: [ SDN,OpenFlow,cloud,Overlay networks ]
 <li>Subnets and other connectivity needs of individual tenants</li>
 <li>Security requirements of individual VMs and tenants</li>
 </ul>
-<p class="info">Dynamic/floating IP addresses and VM mobility might introduce some hiccups into this rosy picture, but let&#x2019;s ignore them for a moment.</p>
+<p class="info">Dynamic/floating IP addresses and VM mobility might introduce some hiccups into this rosy picture, but let’s ignore them for a moment.</p>
 <p>Some cloud orchestration systems push this information straight into hypervisors (example: Hyper-V System Center Virtual Machine Manager). More scalable architectures replace a single instance of the orchestration system with a scale-out controller cluster relying on back-end database (probably what Amazon VPC and Azure are using). For extra boost in scalability, replace transactional back-end database with eventually consistent distributed database, which is usually good enough in <a href="http://it20.info/2011/04/tcp-clouds-udp-clouds-design-for-fail-and-aws/">large-scale UDP clouds</a> (don't tell me I just reinvented MPLS/VPN - I'm well aware of that analogy ;).</p>
 <p>Other implementations use more convoluted approaches, from layered controllers (example: NSX controller for OpenStack) to centralized control planes (example: Cisco Nexus 1000V). Layered controllers add complexity, but still perform remarkably well as long as they stay on the management plane. The moment a controller starts dealing with the real-time aspects of <a href="http://blog.ipspace.net/2013/08/management-control-and-data-planes-in.html">control- or data plane</a>, its scalability plummets.</p>
 <h4>A Few Data Points</h4><p>What I wrote above should be common sense to anyone who spent time researching or implementing large-scale networking architectures. Do we see the same trend in real-life implementations? Here are some data points from well-known commercial products.</p>
@@ -30,9 +30,9 @@ tags: [ SDN,OpenFlow,cloud,Overlay networks ]
 <p class="note">I never got the maximum number of Hyper-V virtual switches PF6800 controller supports, the <a href="http://www.necam.com/docs/?id=67c33426-0a2b-4b87-9a7a-d3cecc14d26a">online brochure</a> has zero technical details, and the documentation is still not public.</p>
 <p>Comparing vDS and Nexus 1000V maximums is particularly entertaining. You could believe that:</p>
 <ul class="ListParagraph"><li>VMware understands networking better than Cisco does;</li>
-<li>VMware programmers write better networking code than Cisco&#x2019;s programmers;</li>
+<li>VMware programmers write better networking code than Cisco’s programmers;</li>
 <li>VMware cares more about scalability of virtual networking than Cisco</li>
 </ul>
-<p>&hellip; or you could accept the fact that there are some fundamental architectural differences between the two products that affect scalability. Do I need to say more?</p>
-<h4>More details</h4><p>Check out my <a href="http://www.ipspace.net/Roadmap/Cloud_computing_webinars">cloud computing webinars</a> &ndash; you can buy them <a href="http://www.ipspace.net/Recordings">individually</a> or <a href="http://cms.ipspace.net/bin/buy?id=Cloud_Track">in a bundle</a>, or get access to all of them with the <a href="http://www.ipspace.net/Subscription">yearly subscription</a>. I&#x2019;m also available for <a href="http://www.ipspace.net/ExpertExpress">short online consulting sessions</a>.</p>
+<p>… or you could accept the fact that there are some fundamental architectural differences between the two products that affect scalability. Do I need to say more?</p>
+<h4>More details</h4><p>Check out my <a href="http://www.ipspace.net/Roadmap/Cloud_computing_webinars">cloud computing webinars</a> – you can buy them <a href="http://www.ipspace.net/Recordings">individually</a> or <a href="http://cms.ipspace.net/bin/buy?id=Cloud_Track">in a bundle</a>, or get access to all of them with the <a href="http://www.ipspace.net/Subscription">yearly subscription</a>. I’m also available for <a href="http://www.ipspace.net/ExpertExpress">short online consulting sessions</a>.</p>
 

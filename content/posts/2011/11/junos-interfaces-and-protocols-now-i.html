@@ -9,7 +9,7 @@ tags: [ MPLS,IS-IS,Junos ]
 <p>We had a lengthy chat focused on Junos MPLS implementation (yet another blog post) and stumbled across my interfaces-and-protocols confusion. He started explaining how the interface configuration actually ties in with Ethertypes accepted through that interface and per-protocol forwarding tables (actually Radix trees) and then offered the following explanation ...</p>
 <blockquote class="cite">You know, you configure the data-plane functionality within the <strong>interfaces</strong> and control-plane functionality within the <strong>protocols</strong>.</blockquote>
 <p>... and all of a sudden, it all made perfect sense:</p>
-<div class="separator" style="clear: both; text-align: center;"><img border="0" src="http://3.bp.blogspot.com/-DwyokPHIxaM/TspXnegFG6I/AAAAAAAAEig/JV3AqfN1584/s420/SilverLining.JPG" /></div>
+<div class="separator" style="clear: both; text-align: center;"><img border="0" src="/2011/11/s420-SilverLining.JPG"/></div>
 <ul class="ListParagraph"><li>Control plane protocols using in-band communication can receive network-layer packets only if the data plane receives them, figures out they were sent to the local node, and forwards them to the control plane. Explains why you need to configure <strong>family iso </strong>on an interface before you add that same interface to the IS-IS routing process.</li>
 <li>Control plane functionality makes no sense if there’s no data plane forwarding structure to receive the results. Explains why LDP refuses to start on an interface lacking <strong>family mpls </strong>configuration.</li>
 </ul>

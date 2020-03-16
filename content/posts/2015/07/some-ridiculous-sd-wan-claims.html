@@ -5,33 +5,33 @@ tags: [ SDN,WAN ]
 ---
 
 <p><a href="https://www.sdxcentral.com/">SDx Central</a> is usually a pretty good web site that I love to read, but even they occasionally manage to publish a <a href="https://www.sdxcentral.com/articles/contributed/sd-wan-disrupt-enterprise-networking-jeff-vance/2015/07/">gem</a> like this one:</p>
-<blockquote class="cite">The problem with MPLS and similar technologies is that they weren&#x2019;t designed with today&#x2019;s business challenges in mind. Today, a company may need to launch an overseas R&amp;D office overnight, or it may acquire a startup and want to immediately network with offices in distant regions and countries. Older technologies just don&#x2019;t have the flexibility to do this on the fly.</blockquote>
+<blockquote class="cite">The problem with MPLS and similar technologies is that they weren’t designed with today’s business challenges in mind. Today, a company may need to launch an overseas R&amp;D office overnight, or it may acquire a startup and want to immediately network with offices in distant regions and countries. Older technologies just don’t have the flexibility to do this on the fly.</blockquote>
 <p>Not surprisingly, the above paragraph triggered a severe case of <a href="http://pbagraphics.com/shop/image/cache/data/Tshirts/deja-moo-black-500x500.png">Deja-Moo</a>.<!--more--></p>
-<p><strong>Technology has nothing to do with it</strong>. It&#x2019;s reasonably easy to deploy auto-configuring DMVPN network if you spend a few days studying how DMVPN work and thinking about configuration templates and auto-configuration mechanisms:</p>
+<p><strong>Technology has nothing to do with it</strong>. It’s reasonably easy to deploy auto-configuring DMVPN network if you spend a few days studying how DMVPN work and thinking about configuration templates and auto-configuration mechanisms:</p>
 <ul class="ListParagraph"><li>Use DNS-based NHRP on DMVPN spoke routers;</li>
 <li>Use DHCP prefix delegation to assign IP addresses to DMVPN spokes;</li>
 <li>Use dynamic BGP neighbors to build a scalable network;</li>
-<li>Use shared keys (if you don&#x2019;t care that much about security) or certificates.</li>
+<li>Use shared keys (if you don’t care that much about security) or certificates.</li>
 </ul>
-<p class="info">You might want to consider watching <a href="http://www.ipspace.net/DMVPN_trilogy">DMVPN</a> and <a href="http://www.ipspace.net/Using_Ansible,_YAML_and_Jinja2">Ansible</a> webinars if you don&#x2019;t know what I&#x2019;m talking about ;) </p>
-<p><strong>It&#x2019;s all about the processes and procedures</strong>. The real reason service deployment in typical enterprise network is slow are <a href="http://blog.ipspace.net/2014/09/youve-been-doing-same-thing-for-last-20.html">broken processes</a>:</p>
-<ul class="ListParagraph"><li><a href="#/media/File:Chabolas_a_plomo.jpg">Organic growth</a> coupled with lack of good network design (because managers think anyone can do it and thus don&#x2019;t want to pay for it);</li>
+<p class="info">You might want to consider watching <a href="http://www.ipspace.net/DMVPN_trilogy">DMVPN</a> and <a href="http://www.ipspace.net/Using_Ansible,_YAML_and_Jinja2">Ansible</a> webinars if you don’t know what I’m talking about ;) </p>
+<p><strong>It’s all about the processes and procedures</strong>. The real reason service deployment in typical enterprise network is slow are <a href="http://blog.ipspace.net/2014/09/youve-been-doing-same-thing-for-last-20.html">broken processes</a>:</p>
+<ul class="ListParagraph"><li><a href="#/media/File:Chabolas_a_plomo.jpg">Organic growth</a> coupled with lack of good network design (because managers think anyone can do it and thus don’t want to pay for it);</li>
 <li>Lack of configuration templates (aka the death by thousand kludges);</li>
 <li>Lack of automated deployment processes (because the software to do it is supposedly too expensive).</li>
 </ul>
 <p>The end result: every network (and sometimes even every site) is a unique snowflake. No wonder it takes forever to carefully craft and deploy another unique snowflake instance.</p>
-<p>Also, when we&#x2019;re talking about <em>new offices in distant regions</em>, there might be this small problem of physical connectivity (in some countries it&#x2019;s <a href="http://farm4.static.flickr.com/3549/3409369082_4fcfbbbe8b_o.jpg">neigh impossible to get a free copper pair</a>, particularly in old cities) which is equally bad for MPLS and Internet services.</p>
+<p>Also, when we’re talking about <em>new offices in distant regions</em>, there might be this small problem of physical connectivity (in some countries it’s <a href="http://farm4.static.flickr.com/3549/3409369082_4fcfbbbe8b_o.jpg">neigh impossible to get a free copper pair</a>, particularly in old cities) which is equally bad for MPLS and Internet services.</p>
 <p>Finally, <em>immediately connecting a startup </em>might involve a nasty case of dual NAT, which will probably trip most SD-WAN products (which is what the author of that article is promoting), but of course the software-defined evangelists love to gloss over dirty details like this one.</p>
 <h4>The advantages of SD-WAN</h4><p>Things are usually not totally black-and-white. Most SD-WAN products do have advantages (particularly in enterprise networks) over more traditional solutions:</p>
-<ul class="ListParagraph"><li>They are new, so they haven&#x2019;t accumulated so many configuration knobs (but I&#x2019;m positive they eventually will &ndash; no vendor can resist the lure of implementing a few per-customer knobs if a big order looms on the horizon);</li>
-<li>Their architecture uses a central controller (behind the scenes it&#x2019;s usually a combination of configuration management tool and route reflector), so it&#x2019;s impossible to create truly unique snowflakes.</li>
+<ul class="ListParagraph"><li>They are new, so they haven’t accumulated so many configuration knobs (but I’m positive they eventually will – no vendor can resist the lure of implementing a few per-customer knobs if a big order looms on the horizon);</li>
+<li>Their architecture uses a central controller (behind the scenes it’s usually a combination of configuration management tool and route reflector), so it’s impossible to create truly unique snowflakes.</li>
 </ul>
-<p>However, I&#x2019;m still waiting to see how well the SD-WAN products survive the clash with enterprise reality (you might want to read <a href="http://networkingnerd.net/2015/07/07/meraki-will-never-be-a-large-enterprise-solution/">Tom Hollingsworth&#x2019;s take on Meraki</a>, which is facing a similar problem).</p>
-<h4>But wait, there&#x2019;s more</h4><p>As you might expect, the rest of that article fares no better than it&#x2019;s beginning. Here&#x2019;s another Deja-Moo claim:</p>
+<p>However, I’m still waiting to see how well the SD-WAN products survive the clash with enterprise reality (you might want to read <a href="http://networkingnerd.net/2015/07/07/meraki-will-never-be-a-large-enterprise-solution/">Tom Hollingsworth’s take on Meraki</a>, which is facing a similar problem).</p>
+<h4>But wait, there’s more</h4><p>As you might expect, the rest of that article fares no better than it’s beginning. Here’s another Deja-Moo claim:</p>
 <blockquote class="cite">This is the promise of the SD-WAN: intelligence built into the network; the ability to deploy in minutes; the elimination of vendor lock-in; and the ability for anyone, anywhere to quickly access all enterprise resources, no matter where they are located.</blockquote>
-<p><strong>Intelligence built into the network</strong> &ndash; and how are the existing networks operating? Using a central control plane?</p>
-<p><strong>Ability to deploy in minutes</strong> &ndash; assuming you already got physical connectivity, but then I can as easily deploy another DMVPN spoke router at that same location.</p>
-<p><strong>The elimination of vendor lock-in</strong> &ndash; ah, that&#x2019;s why Greg Ferro <a href="http://etherealmind.com/concerns-about-sd-wan-standards-and-interoperability/">wrote</a> &ldquo;<em>[While standards are important], I don&#x2019;t believe they are practical in the current situation around the WAN</em>&rdquo; </p>
+<p><strong>Intelligence built into the network</strong> – and how are the existing networks operating? Using a central control plane?</p>
+<p><strong>Ability to deploy in minutes</strong> – assuming you already got physical connectivity, but then I can as easily deploy another DMVPN spoke router at that same location.</p>
+<p><strong>The elimination of vendor lock-in</strong> – ah, that’s why Greg Ferro <a href="http://etherealmind.com/concerns-about-sd-wan-standards-and-interoperability/">wrote</a> “<em>[While standards are important], I don’t believe they are practical in the current situation around the WAN</em>” </p>
 <p>While <a href="http://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html">some lock-in is usually inevitable</a>, at the moment, <a href="http://blog.ipspace.net/2015/06/software-defined-wanwell-orchestrated.html">every single SD-WAN solution is a total lock-in</a>, and anyone who claims otherwise is either clueless or trying to mislead you.</p>
-<h4>A note to marketers</h4><p>I think I wrote this before &ndash; I understand you have to do what you have to do, but you don&#x2019;t have to make yourself looking totally ridiculous in the process.</p>
+<h4>A note to marketers</h4><p>I think I wrote this before – I understand you have to do what you have to do, but you don’t have to make yourself looking totally ridiculous in the process.</p>
 

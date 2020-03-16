@@ -6,21 +6,21 @@ tags: [ Link aggregation,Data Center ]
 
 <p>Alex was trying to figure out how to use Catalyst 3850 switches and sent me this question:</p>
 <blockquote class="cite">Is MLAG an alternative to use rather than physically creating a switch stack?</blockquote>
-<p>Let&rsquo;s start with some terminology.</p>
-<p><strong>Link Aggregation Group (</strong><strong>LAG</strong><strong>)</strong> is the ability to bond multiple Ethernet links into a single virtual link. LAG (as defined in 802.1ax standard) can be used between a pair of adjacent nodes. While that&rsquo;s good enough if you need more bandwidth it doesn&rsquo;t help if you want to increase redundancy of your solution by connecting your edge device to two switches while using all uplinks and avoiding the shortcomings of STP. Sounds a bit like trying to keep the cake while eating it.<!--more--></p>
+<p>Let’s start with some terminology.</p>
+<p><strong>Link Aggregation Group (</strong><strong>LAG</strong><strong>)</strong> is the ability to bond multiple Ethernet links into a single virtual link. LAG (as defined in 802.1ax standard) can be used between a pair of adjacent nodes. While that’s good enough if you need more bandwidth it doesn’t help if you want to increase redundancy of your solution by connecting your edge device to two switches while using all uplinks and avoiding the shortcomings of STP. Sounds a bit like trying to keep the cake while eating it.<!--more--></p>
 <p>Enter the magical world of MLAG (Multichassis LAG) - the ability to present two or more physical boxes (members of MLAG cluster) as a single logical device from LACP perspective.</p>
 <p>Most MLAG implementations (apart from those based on ICCP or EVPN) are totally proprietary, and vendors use numerous tricks to get the job done. Some use central control plane with all other devices acting as stupid packet forwarders (aka SDN or stackable switches), in which case they're sort-of still running traditional LAG/LACP. Others use traditional distributed control plane with additional control-plane protocols between MLAG cluster members.</p>
 <p><strong>Long story short</strong>: stackable switches implement MLAG with centralized control plane.</p>
-<p>To make matters even more confusing, vendors use different names for their MLAG implementations. Cisco vPC, Cisco VSS, HP IRF, Arista MLAG&hellip; do more-or-less the same thing from the perspective of an edge device.</p>
+<p>To make matters even more confusing, vendors use different names for their MLAG implementations. Cisco vPC, Cisco VSS, HP IRF, Arista MLAG… do more-or-less the same thing from the perspective of an edge device.</p>
 <p>To further confuse the innocent, some vendors call centralized control plane <em>stacking</em>, while getting the same results with the distributed control plane is called <em>MLAG</em>. Go figure.</p>
 <h4>Want to know more?</h4><p>MLAG is covered in numerous webinars:</p>
 <ul class="ListParagraph"><li>Some basics are covered in <a href="http://www.ipspace.net/Data_Center_3.0_for_Networking_Engineers">Data Center 3.0 webinar</a>;</li>
-<li>You&rsquo;ll find more details in <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabric Architectures</a> where you&rsquo;ll also find a discussion of control plane architectures;</li>
+<li>You’ll find more details in <a href="http://www.ipspace.net/Data_Center_Fabrics">Data Center Fabric Architectures</a> where you’ll also find a discussion of control plane architectures;</li>
 <li>Standard way of implementing MLAG with EVPN is described in <a href="http://www.ipspace.net/EVPN_Technical_Deep_Dive">EVPN Technical Deep Dive</a> webinar.</li>
-<li>I think I have the &ldquo;SDN = stackable switches&rdquo; pun in the <a href="http://www.ipspace.net/Introduction_to_Software_Defined_Networking_(SDN)">SDN 101</a> webinar.</li>
+<li>I think I have the “SDN = stackable switches” pun in the <a href="http://www.ipspace.net/Introduction_to_Software_Defined_Networking_(SDN)">SDN 101</a> webinar.</li>
 </ul>
 <p>All these webinars are available with <a href="http://www.ipspace.net/Subscription">standard ipSpace.net webinar subscription</a>. SDN101 webinar is also available with <a href="http://www.ipspace.net/Subscription/Free">free subscription</a>.</p>
 <h4>Need more than just technology discussion?</h4><ul class="ListParagraph"><li>Want to get fluent with data center fabrics? Check out the <a href="http://www.ipspace.net/Designing_and_Building_Data_Center_Fabrics">Designing and Building Data Center Fabrics</a> online course.</li>
-<li>Want to master all aspects of data center infrastructure while still remaining focused on networking infrastructure? It&rsquo;s time for <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course.</li>
+<li>Want to master all aspects of data center infrastructure while still remaining focused on networking infrastructure? It’s time for <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course.</li>
 </ul>
 

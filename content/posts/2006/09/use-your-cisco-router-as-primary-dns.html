@@ -4,9 +4,11 @@ date: "2006-09-07T12:49:00.000+02:00"
 tags: [ DNS ]
 ---
 
-In IOS release 12.3, most Cisco routers can act as primary DNS servers (formerly, this functionality was only available as part of DistributedDirector product), alleviating the need for a host-based DNS server in your perimeter network. To configure a router to act as primary<br />DNS server for a zone, use the <b>ip dns primary</b> command, for example:<br /><blockquote><p><span style="font-family:Courier New;">ip dns server<br /></span><span style="font-family:Courier New;">ip dns primary <i>website.com</i> soa <i>ns.website.com</i> <i><br />admin@website.com 86400 3600 1209600 86400</i></span> </p>
-</blockquote>Next, you need to define primary and secondary name servers for the domain.<br />Use the <b>ip host ns </b>command:<br /><blockquote><span style="font-family:Courier New;">ip host <i>website.com</i> ns <i>ns.website.com<br /></i>ip host <i>website.com</i> ns <i>ns.isp.com</i></span> </blockquote>You can also define mail routing for the domain with the <b>ip host mx </b>command:<br /><blockquote><p><span style="font-family:Courier New;">ip host <i>website.com</i> mx <i>10 mail.website.com<br /></i>ip host <i>website.com</i> mx <i>20 mail.isp.com</i></span></p>
-<br /></blockquote>
+In IOS release 12.3, most Cisco routers can act as primary DNS servers (formerly, this functionality was only available as part of DistributedDirector product), alleviating the need for a host-based DNS server in your perimeter network. To configure a router to act as primary<br/>DNS server for a zone, use the <b>ip dns primary</b> command, for example:<br/><blockquote><p><span style="font-family:Courier New;">ip dns server<br/></span><span style="font-family:Courier New;">ip dns primary <i>website.com</i> soa <i>ns.website.com</i> <i><br/>admin@website.com 86400 3600 1209600 86400</i></span> </p>
+</blockquote>
+Next, you need to define primary and secondary name servers for the domain.<br/>Use the <b>ip host ns </b>command:<br/><blockquote><span style="font-family:Courier New;">ip host <i>website.com</i> ns <i>ns.website.com<br/></i>ip host <i>website.com</i> ns <i>ns.isp.com</i></span> </blockquote>
+You can also define mail routing for the domain with the <b>ip host mx </b>command:<br/><blockquote><p><span style="font-family:Courier New;">ip host <i>website.com</i> mx <i>10 mail.website.com<br/></i>ip host <i>website.com</i> mx <i>20 mail.isp.com</i></span></p>
+<br/></blockquote>
 <p>Finally, you need to define hosts within your domain (with the traditional form of the <b>ip host </b>command): </p>
-<blockquote><span style="font-family:Courier New;">ip host ns.website.com 192.168.0.1 ! router's IP address<br />ip host www.website.com 192.168.1.1<br />ip host website.com 192.168.1.1 ! alternate for www.website.com<br />ip host mail.website.com 192.168.1.2</span> </blockquote>
+<blockquote><span style="font-family:Courier New;">ip host ns.website.com 192.168.0.1 ! router's IP address<br/>ip host www.website.com 192.168.1.1<br/>ip host website.com 192.168.1.1 ! alternate for www.website.com<br/>ip host mail.website.com 192.168.1.2</span> </blockquote>
 

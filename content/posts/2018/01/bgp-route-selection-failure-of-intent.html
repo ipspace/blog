@@ -4,8 +4,8 @@ date: "2018-01-09T09:42:00.000+01:00"
 tags: [ Automation,Intent-Based Networking,SDN,BGP ]
 ---
 
-<p><a name="_GoBack"></a>It&rsquo;s interesting how the same pundits who loudly complain about the complexities of BGP (and how it will be dead any time soon and replaced by an SDN miracle) also praise the beauties of <a href="http://blog.ipspace.net/2017/09/intent-based-hype.html">intent-based networking</a>&hellip; without realizing that the hated BGP route selection process represents one of the first failures of intent-based approach to networking.</p>
-<p>Let&rsquo;s start with some definitions. There are two ways to get a job done by someone else:<!--more--></p>
+<p><a name="_GoBack"></a>It’s interesting how the same pundits who loudly complain about the complexities of BGP (and how it will be dead any time soon and replaced by an SDN miracle) also praise the beauties of <a href="http://blog.ipspace.net/2017/09/intent-based-hype.html">intent-based networking</a>… without realizing that the hated BGP route selection process represents one of the first failures of intent-based approach to networking.</p>
+<p>Let’s start with some definitions. There are two ways to get a job done by someone else:<!--more--></p>
 <ul class="ListParagraph"><li>You tell them <strong>how </strong>to do the job (algorithmic or imperative approach)</li>
 <li>You tell them <strong>what </strong>should be done but not <strong>how </strong>to do it (declarative approach). Marketers love to call this <strong>intent-based </strong>approach.</li>
 </ul>
@@ -15,8 +15,8 @@ tags: [ Automation,Intent-Based Networking,SDN,BGP ]
 <li>Which prefixes should it advertise</li>
 <li>Which prefixes should be summarized</li>
 </ul>
-<p>Got it? Routing protocols were an early implementation of intent-based paradigm&hellip; but of course the marketers touting the benefits of intent-based gizmos don&rsquo;t want to hear that because they&rsquo;re telling you at the same time how much routing protocols suck.</p>
-<p>Now imagine that you don&rsquo;t like the results of a routing protocol. You can&rsquo;t change the route selection algorithm, but you can tweak your intent, and hope that the results will be what you want them to be. There are people who tweak IGP costs to push the traffic the right way, and Cariden made a significant business out of tools that predicted how changes in costs would affect traffic flow. They even calculated the optimal link costs for your network based on the network topology and traffic matrix.</p>
+<p>Got it? Routing protocols were an early implementation of intent-based paradigm… but of course the marketers touting the benefits of intent-based gizmos don’t want to hear that because they’re telling you at the same time how much routing protocols suck.</p>
+<p>Now imagine that you don’t like the results of a routing protocol. You can’t change the route selection algorithm, but you can tweak your intent, and hope that the results will be what you want them to be. There are people who tweak IGP costs to push the traffic the right way, and Cariden made a significant business out of tools that predicted how changes in costs would affect traffic flow. They even calculated the optimal link costs for your network based on the network topology and traffic matrix.</p>
 <p class="more">I briefly mentioned Cariden in <a href="http://www.ipspace.net/SDN_Use_Cases">SDN Use Cases</a> webinar. I also wanted to do a deep-dive podcast with them, but unfortunately they got acquired before we managed to schedule the recording.</p>
 <p>Things are simple in the IGP land because we have simple goals:</p>
 <ul class="ListParagraph"><li>Survive failures;</li>
@@ -24,18 +24,18 @@ tags: [ Automation,Intent-Based Networking,SDN,BGP ]
 <li>Spread the load across the whole infrastructure;</li>
 </ul>
 <p>Now imagine business rules, commercial preferences, and contractual limitations entering the picture. Welcome to the problem BGP is trying to solve.</p>
-<p>In an environment that would <a href="https://lamport.azurewebsites.net/pubs/state-the-problem.pdf">define the problem before trying to solve it</a>, the final solution would probably include a centralized controller where you&rsquo;d implement business-driven decisions in your own custom path selection logic, and use simple local versions of that same algorithm as a fallback plan in case of central controller failure.</p>
-<p class="note">There are probably people doing exactly that, and I would love to hear from them. Most of the great ideas you get in networking have already been implemented by someone&hellip; it&rsquo;s just that they&rsquo;re not bragging about what they&rsquo;re doing in Something-Open-Something-Something conferences.</p>
-<p>Guess what &ndash; almost nobody wanted to go down that path (assuming they did the homework and realized what would need to be done), because it&rsquo;s a messy business, and really hard to get right. Everyone wanted the networking vendors to tweak their code to solve business problems one-at-a-time (without ever getting the whole picture) with tweaks to <strong>intent-driven data model</strong>. That&rsquo;s how we got:</p>
+<p>In an environment that would <a href="https://lamport.azurewebsites.net/pubs/state-the-problem.pdf">define the problem before trying to solve it</a>, the final solution would probably include a centralized controller where you’d implement business-driven decisions in your own custom path selection logic, and use simple local versions of that same algorithm as a fallback plan in case of central controller failure.</p>
+<p class="note">There are probably people doing exactly that, and I would love to hear from them. Most of the great ideas you get in networking have already been implemented by someone… it’s just that they’re not bragging about what they’re doing in Something-Open-Something-Something conferences.</p>
+<p>Guess what – almost nobody wanted to go down that path (assuming they did the homework and realized what would need to be done), because it’s a messy business, and really hard to get right. Everyone wanted the networking vendors to tweak their code to solve business problems one-at-a-time (without ever getting the whole picture) with tweaks to <strong>intent-driven data model</strong>. That’s how we got:</p>
 <ul class="ListParagraph"><li>Weights (I want to influence how a box does route selection)</li>
 <li>Local preference (I want to influence route selection within my system)</li>
 <li>MED (I want to influence how others send traffic to me)</li>
-<li>Communities (I want to influence others but can&rsquo;t use any other tool, so let&rsquo;s hope they interpret my intent correctly)</li>
-<li>Lists of communities to use (this is how you can signal your intent in a way that I&rsquo;ll understand it)</li>
-<li>Weird rules about route reflector attributes affecting route selection (because it&rsquo;s always possible to <a href="http://blog.ipspace.net/2013/10/can-bgp-route-reflectors-really.html">build a broken network</a> and then claim it&rsquo;s the vendor- or protocol fault)</li>
+<li>Communities (I want to influence others but can’t use any other tool, so let’s hope they interpret my intent correctly)</li>
+<li>Lists of communities to use (this is how you can signal your intent in a way that I’ll understand it)</li>
+<li>Weird rules about route reflector attributes affecting route selection (because it’s always possible to <a href="http://blog.ipspace.net/2013/10/can-bgp-route-reflectors-really.html">build a broken network</a> and then claim it’s the vendor- or protocol fault)</li>
 <li>Crazy stuff like copying IGP metric into BGP extended community because we want to have some more tweaks on intent without having to deal with writing the code ourselves.</li>
 </ul>
-<p>In my biased view (because I don&rsquo;t believe in fairy tales and magic), BGP is a pretty obvious lesson in what happens when you try to solve vague business rules with intent-driven approach instead of writing your own code that does what you want to be done.</p>
-<p>It will be great fun to watch how the next generation of intent-based solutions will fare. I haven&rsquo;t seen anyone beating laws of physics or RFC 1925 Rule 11 yet.</p>
+<p>In my biased view (because I don’t believe in fairy tales and magic), BGP is a pretty obvious lesson in what happens when you try to solve vague business rules with intent-driven approach instead of writing your own code that does what you want to be done.</p>
+<p>It will be great fun to watch how the next generation of intent-based solutions will fare. I haven’t seen anyone beating laws of physics or RFC 1925 Rule 11 yet.</p>
 <p>Need more (cynical) details on the intent-based hype spreading through the networking industry? Join the <a href="http://www.ipspace.net/Network_Automation_Use_Cases">live webinar session</a> on January 16<sup>th</sup>, or get access to all <a href="http://www.ipspace.net/Roadmap/Network_Automation_webinars">network automation webinars</a> with <a href="http://www.ipspace.net/Subscription">ipSpace.net subscription</a>.</p>
 

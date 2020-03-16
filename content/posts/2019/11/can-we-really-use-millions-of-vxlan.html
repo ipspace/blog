@@ -5,7 +5,7 @@ tags: [ bridging,VXLAN ]
 ---
 
 <p>One of my readers sent me a question along these lines…</p>
-<blockquote class='cite'><p>VXLAN Network Identifier is 24 bit long, giving 16 us million separate segments. However, we have to map VNI into VLANs on most switches. How can we scale up to 16 million segments when we have run out of VLAN IDs? Can we create a separate VTEP on the same switch?</p>
+<blockquote class="cite"><p>VXLAN Network Identifier is 24 bit long, giving 16 us million separate segments. However, we have to map VNI into VLANs on most switches. How can we scale up to 16 million segments when we have run out of VLAN IDs? Can we create a separate VTEP on the same switch?</p>
 </blockquote>
 <p>VXLAN is just an encapsulation format and does not imply any particular switch architecture. What really matters in this particular case is the implementation of the MAC forwarding table in switching ASIC.<!--more--></p>
 <p>Ignoring for the moment that we have to map VXLAN segments into physical segments (= VLANs) at some point in time, each VXLAN segment is a separate bridging (L2 forwarding) domain, which means that it needs a separate L2 forwarding table.</p>

@@ -6,21 +6,21 @@ tags: [ Data Center,Fabric ]
 
 <p>One of my readers working as an enterprise data center architect sent me this question:</p>
 <blockquote class="cite">I've just finished a one-week POC with Arista. For fabric provisioning and automation, we were introduced to CloudVision. My impression is that there are still a lot of manual processes when using CloudVision. </blockquote>
-<p>Arista initially focused on DIY people and those people loved the tools Arista EOS gave them: Linux on the box, programmability, APIs&hellip; However<!--more-->, if you want to enter the traditional enterprise segments where people don&#x2019;t want to build their own tools or play a system integrator, there&#x2019;s an enormous amount of work to be done to implement everything enterprise users might want to use and package it in a form factor that looks great in PowerPoint.</p>
-<p class='note'>Unfortunately, most network management/provisioning solutions built by hardware vendors focus more on what sells to CxO (and looks great in PPT) than on the needs of ops people. Some people claim that Cisco&#x2019;s Nexus Fabric Manager might be better than that &ndash; if you have hands-on experience, please write a comment.</p>
-<p>However, that was not the only challenge my reader encountered. He said&hellip;</p>
+<p>Arista initially focused on DIY people and those people loved the tools Arista EOS gave them: Linux on the box, programmability, APIs… However<!--more-->, if you want to enter the traditional enterprise segments where people don’t want to build their own tools or play a system integrator, there’s an enormous amount of work to be done to implement everything enterprise users might want to use and package it in a form factor that looks great in PowerPoint.</p>
+<p class="note">Unfortunately, most network management/provisioning solutions built by hardware vendors focus more on what sells to CxO (and looks great in PPT) than on the needs of ops people. Some people claim that Cisco’s Nexus Fabric Manager might be better than that – if you have hands-on experience, please write a comment.</p>
+<p>However, that was not the only challenge my reader encountered. He said…</p>
 <blockquote class="cite">Also, the so-called VXLAN control plane from Arista with CVX is certainly inferior to Cisco's BGP EVPN VXLAN control plane.</blockquote>
-<p class='update'>Update 2016-06-01: Rewrote the following paragraph which incorrectly stated that CVX doesn't provide control-plane MAC learning</p>
+<p class="update">Update 2016-06-01: Rewrote the following paragraph which incorrectly stated that CVX doesn't provide control-plane MAC learning</p>
 <p>BGP EVPN and Arista's CVX provide control-plane MAC address learning, EVPN using a standard protocol that's potentially interoperable across vendors, CVX with an Arista-specific protocol. However, at least Cisco's implementation of EVPN provides end-to-end routing based on host routes (which also enables intra-subnet proxy ARP functionality) and symmetrical IRB (which could limit the flooding scope), and I found nothing equivalent in currently-shipping EOS.</p>
 <p>However, keep in mind that the biggest problem you have when building a layer-2 fabric on top of an VXLAN overlay is provisioning:</p>
 <ul class="ListParagraph"><li>mapping VLANs into VXLAN VNIs;</li>
 <li>configuring subnets;</li>
 <li>configuring anycast gateways.</li>
 </ul>
-<p>You have to do these tasks &ldquo;manually&rdquo; (or using an automation/orchestration solution) on either Arista or Cisco (or use the APIC controller with Nexus 9000 fabrics). </p>
+<p>You have to do these tasks “manually” (or using an automation/orchestration solution) on either Arista or Cisco (or use the APIC controller with Nexus 9000 fabrics). </p>
 <p>The real benefits of EVPN as compared to flood-and-learn approach to VXLAN are automatic discovery of VTEPs and replacement of flood-and-learn MAC address discovery with deterministic BGP-based propagation of information.</p>
 <h4>Need more information?</h4><ul class="ListParagraph"><li>Lukas Krattiger discussed the details of EVPN with VXLAN in <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures"><em>Leaf-and-Spine Fabric</em><em> Architecture</em><em>s</em></a> webinar, which also covers numerous ways of building layer-2 and layer-3 data center fabrics;</li>
-<li><a href="http://www.ipspace.net/Data_Center_Fabrics"><em>Data Center Fabrics</em></a> webinar covers VXLAN implementations from Arista, Brocade, Cisco, Dell, HP and Juniper, and it&#x2019;s updated every year to keep the information up-to-date;</li>
+<li><a href="http://www.ipspace.net/Data_Center_Fabrics"><em>Data Center Fabrics</em></a> webinar covers VXLAN implementations from Arista, Brocade, Cisco, Dell, HP and Juniper, and it’s updated every year to keep the information up-to-date;</li>
 <li>For a deep dive into data center design challenges, join the <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center"><em>Building Next-Generation Data Center</em></a><em> </em>online course.</li>
 </ul>
 

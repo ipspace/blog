@@ -4,14 +4,14 @@ date: "2017-12-13T09:01:00.000+01:00"
 tags: [ Automation,Ansible ]
 ---
 
-<p>A while ago I created an Ansible playbook that <a href="http://blog.ipspace.net/2017/10/create-network-diagram-from-lldp.html">creates network diagrams from LLDP information</a>. <a href="https://www.linkedin.com/in/benrobertsuk/">Ben Roberts</a>, a student in my <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a>&nbsp;online course used those ideas to create an awesome solution: he&rsquo;s graphing multicast trees.</p>
-<p>Here&rsquo;s how he described <a href="https://github.com/optiz0r/ansible-multicast-graph">his solution</a>:<!--more--></p>
+<p>A while ago I created an Ansible playbook that <a href="http://blog.ipspace.net/2017/10/create-network-diagram-from-lldp.html">creates network diagrams from LLDP information</a>. <a href="https://www.linkedin.com/in/benrobertsuk/">Ben Roberts</a>, a student in my <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course used those ideas to create an awesome solution: he’s graphing multicast trees.</p>
+<p>Here’s how he described <a href="https://github.com/optiz0r/ansible-multicast-graph">his solution</a>:<!--more--></p>
 <blockquote class="cite"><p>Wrote an Ansible playbook that creates a visual representation of the shared and source-specific PIM trees, and IGMP snooping for a single multicast group across a chunk of the network.</p>
 <p>Data is scraped from switches using ntc_show_command and some custom textfsm scripts. Ansible does the scraping of data and writes out intermediate yaml files per host, then compiles them all into a single document. Then it generates a dot file using a jinja2 template, in which I'm abusing filters to do all the business logic in python.</p>
-<div class='separator'><a href="https://2.bp.blogspot.com/-LrIEu9CUTiE/Wit8nXbJ3PI/AAAAAAAAJAs/TZWuPJDbNLE2KPpq0udDSI4-NXcNuTBQwCLcBGAs/s1600/multicast_map.png" imageanchor="1" ><img border="0" src="https://2.bp.blogspot.com/-LrIEu9CUTiE/Wit8nXbJ3PI/AAAAAAAAJAs/TZWuPJDbNLE2KPpq0udDSI4-NXcNuTBQwCLcBGAs/s500/multicast_map.png" data-original-width="1600" data-original-height="726" /></a></div>
+<div class="separator"><a href="/2017/12/s1600-multicast_map.png" imageanchor="1"><img border="0" data-original-height="726" data-original-width="1600" src="/2017/12/s500-multicast_map.png"/></a></div>
 <p>Now when an $end_user complains that they're having problems with a particular group, we can kick off this job (which takes a couple mins to fetch all the data, and then a few seconds to graph it) to work out where the flow is coming from and being subscribed to ;)</p>
 </blockquote>
-<p class='update'>The source code for Ben's solution is in his <a href="https://github.com/optiz0r/ansible-multicast-graph">GitHub repository</a>.</p>
-<p>I&rsquo;ve seen plenty of network management systems that can draw network diagrams, there might be some that can draw how a particular VLAN looks like, but I&rsquo;ve never seen something that could do it for a multicast tree &ndash; another proof how useful read-only automation can be in your network.</p>
+<p class="update">The source code for Ben's solution is in his <a href="https://github.com/optiz0r/ansible-multicast-graph">GitHub repository</a>.</p>
+<p>I’ve seen plenty of network management systems that can draw network diagrams, there might be some that can draw how a particular VLAN looks like, but I’ve never seen something that could do it for a multicast tree – another proof how useful read-only automation can be in your network.</p>
 <p>Want to learn how to do something similarly cool? Join the <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course!</p>
 

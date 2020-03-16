@@ -14,7 +14,8 @@ tags: [ DCB,FCoE ]
 <li>NX-OS for Nexus-4000 does not have the <strong>fcoe</strong> feature.</li>
 <li>You cannot configure FCoE on an individual interface of a Nexus 4000 with the <strong>fcoe mode </strong>command.</li>
 <li>The only FCoE-related parameter you can configure on a Nexus 4000 is <strong>fip-snooping</strong>.</li>
-</ul> <p><strong>The obvious conclusion</strong>: Nexus 4000 is a <a href="http://blog.ioshints.info/2010/09/multihop-fcoe-102-vnport-proxy-and-fip.html">FIP snooping bridge</a> and thus has nothing to do with multihop FCoE. You could replace it with any DCB-compliant bridge and get the same results.</p>
+</ul>
+<p><strong>The obvious conclusion</strong>: Nexus 4000 is a <a href="http://blog.ioshints.info/2010/09/multihop-fcoe-102-vnport-proxy-and-fip.html">FIP snooping bridge</a> and thus has nothing to do with multihop FCoE. You could replace it with any DCB-compliant bridge and get the same results.</p>
 <p><strong>Speculation</strong>: you might even be able to tweak Nexus 5000 to use the 802.3x PAUSE mechanism instead of PFC and work without LLDP ... just don’t act surprised when TAC tells you that configuration is unsupported.</p>
 <p><strong>Another sad realization</strong>: It looks like the current release of NX-OS cannot create dynamic VF_ports. Even when the servers are not directly attached to the Nexus 5000, you have to create a VFC interface for each individual server and bind it to the server’s MAC address with the <strong>bind mac-address </strong>configuration command.</p>
 

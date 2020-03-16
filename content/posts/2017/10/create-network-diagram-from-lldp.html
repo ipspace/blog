@@ -5,10 +5,10 @@ tags: [ Automation,Training,Ansible ]
 ---
 
 <p>One of the <a href="https://github.com/ipspace/ansible-examples">sample Ansible playbooks</a> I published to help the attendees of my <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> course get started <a href="https://github.com/ipspace/ansible-examples/tree/master/LLDP-to-Graph">collects LLDP neighbor information</a> on all managed devices and converts that information into a network diagram.</p>
-<p>Here&rsquo;s the graph I got from it when I ran it on my 6-node OSPF network (the <em>Inter-AS </em>VIRL topology from <a href="https://github.com/ipspace/VIRL/blob/master/Inter-AS.virl">this repository</a>). Please note I spent zero time tweaking the graph description (it shows).<!--more--></p>
-<div class='separator'><a href="https://1.bp.blogspot.com/-MQSi2ajYhJA/WezLzD5noHI/AAAAAAAAI-A/jgA_ZO0EmR4M5fSpFGlx3H7oZw1ZQqsUgCLcBGAs/s1600/network.png" imageanchor="1" ><img border="0" src="https://1.bp.blogspot.com/-MQSi2ajYhJA/WezLzD5noHI/AAAAAAAAI-A/jgA_ZO0EmR4M5fSpFGlx3H7oZw1ZQqsUgCLcBGAs/s1600/network.png" data-original-width="402" data-original-height="520" /></a></div>
-<p>If you need a detailed explanation of how that playbook works, you&rsquo;ll find it <a href="https://my.ipspace.net/bin/list?id=AnsibleOC#SAMPLES">here</a>.</p>
-<h4>Recent updates</h4><p>I recently updated the playbook to work with Ansible 2.4 and latest version of NAPALM and napalm-ansible (which changed the names of NAPALM-gathered device facts &ndash; really useful).</p>
+<p>Here’s the graph I got from it when I ran it on my 6-node OSPF network (the <em>Inter-AS </em>VIRL topology from <a href="https://github.com/ipspace/VIRL/blob/master/Inter-AS.virl">this repository</a>). Please note I spent zero time tweaking the graph description (it shows).<!--more--></p>
+<div class="separator"><a href="/2017/10/s1600-network.png" imageanchor="1"><img border="0" data-original-height="520" data-original-width="402" src="/2017/10/s1600-network.png"/></a></div>
+<p>If you need a detailed explanation of how that playbook works, you’ll find it <a href="https://my.ipspace.net/bin/list?id=AnsibleOC#SAMPLES">here</a>.</p>
+<h4>Recent updates</h4><p>I recently updated the playbook to work with Ansible 2.4 and latest version of NAPALM and napalm-ansible (which changed the names of NAPALM-gathered device facts – really useful).</p>
 <p>The playbook also supports either short names (<em>rtr</em>) or FQDNs (<em>rtr.example.com</em>) and interface names used by the network devices (<em>GigabitEthernet0/1</em>) or shortened ones (<em>Gi0/1</em>).</p>
-<p class="warn">Trust Cisco to mess up your automation: Cisco IOS uses shortened interface names (Gi0/1) in LLDP advertisements while most everyone else uses the actual interface names used on the device.</p> 
+<p class="warn">Trust Cisco to mess up your automation: Cisco IOS uses shortened interface names (Gi0/1) in LLDP advertisements while most everyone else uses the actual interface names used on the device.</p>
 

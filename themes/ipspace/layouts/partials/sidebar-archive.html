@@ -1,0 +1,43 @@
+<div class="widget BlogArchive">
+  <h3 class="sidebar__title">Blog Archive</h3>
+  <div id="ArchiveList">
+    <ul>
+      {{ range .Site.Pages.GroupByDate "2006" }}
+        {{ $pages := where (where .Pages "Section" "posts") "Kind" "page" }}
+        {{ if gt (len $pages) 0 }}
+          <li>
+            <a class="open-dropdown" href='{{ (printf "/%s/" .Key) | absURL }}'>{{ .Key }}
+              <span class="post-count" dir="ltr">({{ len $pages }})</span>
+            </a>
+            <ul class="dropdown">
+              {{ range $pages.GroupByDate "2006-01" }}
+                {{ $time := (time (printf "%s-01" .Key)) }}
+                <li>
+                  <a class="open-dropdown" href='{{ ($time.Format "/2006/01/") | absURL }}'>
+                    {{ $time.Format "January 2006" }}
+                    <span class="post-count" dir="ltr">({{ len .Pages }})</span>
+                  </a>
+                </li>
+              {{ end }}
+            </ul>
+          </li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </div> 
+</div>
+<!--
+  <ul class="dropdown">
+  <li>
+  <a class="open-dropdown" href="https://blog.ipspace.net/2020/03/">
+  March 2020
+  <span class="post-count" dir="ltr">(10)</span>
+  </a>
+  </li>
+  <li>
+  <a class="open-dropdown" href="https://blog.ipspace.net/2020/02/">
+  February 2020
+  <span class="post-count" dir="ltr">(23)</span>
+  </a>
+  </li>
+-->

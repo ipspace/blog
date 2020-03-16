@@ -5,19 +5,19 @@ tags: [ VXLAN,NSX ]
 ---
 
 <p><em>A Network Artist</em> left a lengthy comment on my <a href="https://blog.ipspace.net/2019/08/brief-history-of-vmware-nsx.html">Brief History of VMware NSX</a> blog post. He raised a number of interesting topics, so I decided to write my replies as a separate blog post.</p>
-<blockquote class='cite'><p>Using Geneve is an interesting choice to be made and while the approach has it’s own Pros and Cons, I would like to stick to VXLAN if I were to recommend to someone for few good reasons.</p>
+<blockquote class="cite"><p>Using Geneve is an interesting choice to be made and while the approach has it’s own Pros and Cons, I would like to stick to VXLAN if I were to recommend to someone for few good reasons.</p>
 </blockquote>
 <p>The main reason I see for NSX-T using Geneve instead of VXLAN is the need for additional header fields to carry metadata around, and to implement Network Services Header (NSH) for east-west service insertion.<!--more--></p>
 <p>The simplest scenario where you need metadata is hierarchical BUM flooding (with per-subnet proxy) combined with dynamic MAC learning - you need to know who the original sender of the packet was, and you can’t get that from source IP address of the underlay packet because the packet was sent by the proxy.</p>
 <div class="info" data-markdown="1">I’m explaining the details in the NSX-T part of <a href="https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive">VMware NSX Deep Dive webinar</a>. The live sessions are starting in mid-November 2019. </div>
-<blockquote class='cite'><p>Not sure about how many Server NICs can handle Geneve in HW and state of SR-IOV and DPDK in reference to Geneve.</p>
+<blockquote class="cite"><p>Not sure about how many Server NICs can handle Geneve in HW and state of SR-IOV and DPDK in reference to Geneve.</p>
 </blockquote>
 <p>I’m not sure about NIC support for Geneve, but DPDK definitely supports it - that’s what NSX-T uses in high-performance environments. Of course you have to use Intel NICs to make it work.</p>
-<blockquote class='cite'><p>Also need to get my head around how Multicast will be handled in control and data plane.</p>
+<blockquote class="cite"><p>Also need to get my head around how Multicast will be handled in control and data plane.</p>
 </blockquote>
 <p>There is no underlay multicast in NSX-T, probably because nobody ever bothered to implement it in Open vSwitch. BUM flooding is done either from the originating hypervisor or through per-subnet proxies.</p>
 <p>As of NSX-T 2.5 there is no support for overlay multicast, at least across subnet boundaries - you can send whatever you wish (AppleTalk anyone?) within a logical switch.</p>
-<blockquote class='cite'><p>How would you correlate underlay vs. overlay stats for visibility, performance mgmt. &amp; troubleshooting ?</p>
+<blockquote class="cite"><p>How would you correlate underlay vs. overlay stats for visibility, performance mgmt. &amp; troubleshooting ?</p>
 </blockquote>
 <p>We’ve been facing the same problem from the days we started connecting routers to Frame Relay instead of leased lines to build WAN networks. We had the same problems with IPsec tunnels, GRE tunnels, <a href="https://blog.ipspace.net/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html">MPLS-over-GRE-over-IPsec-over-MPLS tunnels</a>… Some things never change, and while we can’t expect miracles at least there’s vast prior experience that might help you when reading the pretty good <a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.5/troubleshooting/">NSX-T Data Center Troubleshooting Guide</a>.</p>
 <p>On a totally unrelated topic, I can’t fathom why people keep raising the same objections every time they’re facing an age-old situation. It’s not like complaining would ever make something go away. Learn how to deal with it, and get on with your life.</p>

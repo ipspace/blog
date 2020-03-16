@@ -5,7 +5,7 @@ tags: [ Design,Data Center,WAN ]
 ---
 
 <p>This is a common objection I get when trying to persuade network architects they don’t need stretched VLANs (and IP subnets) to implement data center disaster recovery:</p>
-<blockquote class='cite'><p>Changing IP addresses when activating DR is hard. You’d have to weigh the manageability of stretching L2 and protecting it, with the added complexity of breaking the two sites into separate domains [and subnets]. We all have apps with hardcoded IP’s, outdated IPAM’s, Firewall rules that need updating, etc.</p>
+<blockquote class="cite"><p>Changing IP addresses when activating DR is hard. You’d have to weigh the manageability of stretching L2 and protecting it, with the added complexity of breaking the two sites into separate domains [and subnets]. We all have apps with hardcoded IP’s, outdated IPAM’s, Firewall rules that need updating, etc.</p>
 </blockquote>
 <p>Let’s get one thing straight: when you’re doing disaster <strong>recovery</strong> there are no live subnets, IP addresses or anything else along those lines. The disaster has struck, and your data center infrastructure is <strong>gone</strong>.<!--more--></p>
 <div class="warn" data-markdown="1">On a related topic, don’t ever start the disaster recovery process until the primary site is gone for good. I’ve heard horror stories of people managing to reconnect a newly-activated DR site back to the still-operational (but previously disconnected) primary site. It wasn’t pretty… </div>

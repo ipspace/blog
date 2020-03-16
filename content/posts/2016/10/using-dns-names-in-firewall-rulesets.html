@@ -5,32 +5,33 @@ tags: [ Automation,firewalls,security ]
 ---
 
 <p><a name="_GoBack"></a>My friend Matthias Luft sent me an interesting tweet a while ago:</p>
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/ioshints">@ioshints</a> What’s your take on firewall rule sets &amp; IP addresses vs. hostnames?</p>&mdash; Matthias Luft (@uchi_mata) <a href="https://twitter.com/uchi_mata/status/765521105327185920">August 16, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><p>All I could say in 160 characters was &ldquo;<em>it depends</em>&rdquo;. Here&#x2019;s a longer answer.<!--more--></p>
-<h4>Read this first</h4><p>I&#x2019;m looking at this challenge from the data center perspective: how do you build firewall rules that protect hosts within your data center (for north-south or east-west traffic)?</p>
-<p>There&#x2019;s another more interesting (= harder) challenge: how do you allow your clients controlled access to external services. I would not use DNS in that scenario as I don&#x2019;t trust third-party DNS servers enough to use their data in my security rules. For more details, see the comments.</p>
-<h4>The Problem</h4><p>Application developers and architects don&#x2019;t think in IP addresses and port numbers (one would hope), they want to express their needs in terms of &ldquo;<em>these hosts have to talk to those other hosts using this software package/library</em>&rdquo;.</p>
+<blockquote class="twitter-tweet" data-lang="en"><p dir="ltr" lang="en"><a href="https://twitter.com/ioshints">@ioshints</a> What’s your take on firewall rule sets &amp; IP addresses vs. hostnames?</p>
+— Matthias Luft (@uchi_mata) <a href="https://twitter.com/uchi_mata/status/765521105327185920">August 16, 2016</a></blockquote>
+<script async="" charset="utf-8" src="//platform.twitter.com/widgets.js"></script><p>All I could say in 160 characters was “<em>it depends</em>”. Here’s a longer answer.<!--more--></p>
+<h4>Read this first</h4><p>I’m looking at this challenge from the data center perspective: how do you build firewall rules that protect hosts within your data center (for north-south or east-west traffic)?</p>
+<p>There’s another more interesting (= harder) challenge: how do you allow your clients controlled access to external services. I would not use DNS in that scenario as I don’t trust third-party DNS servers enough to use their data in my security rules. For more details, see the comments.</p>
+<h4>The Problem</h4><p>Application developers and architects don’t think in IP addresses and port numbers (one would hope), they want to express their needs in terms of “<em>these hosts have to talk to those other hosts using this software package/library</em>”.</p>
 <p>On the other hand, all firewall products have packet filters working on IP addresses and TCP/UDP ports hidden deep down within their bowels.</p>
-<p class="info">Some firewalls go way beyond that and inspect session content as well, but in the end, if you dig deep enough you&#x2019;ll always find a packet filter and/or a session table.</p>
+<p class="info">Some firewalls go way beyond that and inspect session content as well, but in the end, if you dig deep enough you’ll always find a packet filter and/or a session table.</p>
 <p>The fundamental questions to ask are thus:</p>
 <ul class="ListParagraph"><li>Who does the mapping between groups of hosts and IP addresses?</li>
 <li>How is that mapping performed?</li>
 <li>When is the mapping done? In real time or offline?</li>
 <li>And finally, what/where is your single source of truth?</li>
 </ul>
-<p class="note">In this blog post we&#x2019;re focusing exclusively on the mapping of host groups into IP address sets. Mapping software packages into TCP/UDP port numbers or URL patterns is a totally different can of worms.</p>
-<h4>The Extremes</h4><p>In traditional firewall management the mapping is done manually by the firewall administrator often using dubious sources of truth (Excel spreadsheets, assumed knowledge, guesswork, traffic traces&hellip;).</p>
+<p class="note">In this blog post we’re focusing exclusively on the mapping of host groups into IP address sets. Mapping software packages into TCP/UDP port numbers or URL patterns is a totally different can of worms.</p>
+<h4>The Extremes</h4><p>In traditional firewall management the mapping is done manually by the firewall administrator often using dubious sources of truth (Excel spreadsheets, assumed knowledge, guesswork, traffic traces…).</p>
 <p>On the other extreme, most decent cloud management platforms perform the mapping automatically, using cloud orchestration system as the single source of truth. For more details, listen to the <a href="http://blog.ipspace.net/2015/03/microsegmentation-in-vmware-nsx-on.html">excellent podcast with Brad Hedlund</a> explaining how VMware NSX distributed firewall does its job. </p>
 <p><strong>TL&amp;DL summary</strong>: Looking through the NSX Manager GUI it looks like the NSX distributed firewall is using VM groups or portgroups to enforce security policies. In reality, these definitions are compiled into sets of IP address using vCenter data and pushed into distributed firewalls as packet filters that are changed dynamically every time a VM is started, stopped, or assigned to a different security group.</p>
 <p>OpenStack security groups are doing the same operations behind the scenes using <strong>iptables </strong>and <strong>ipset </strong>when implemented on Linux.</p>
-<h4>Best of both worlds?</h4><p>Is there a middle ground? Could you use DNS names to translate human-readable rules into packet filters? The traditional answer was &ldquo;<em>no, because I don&#x2019;t trust DNS&rdquo;</em>. OK, let&#x2019;s look at some details:</p>
-<ul class="ListParagraph"><li>Most decently-managed enterprise environments have some sort of IPAM solution serving as single source of addressing truth (note I said &ldquo;<em>decently managed&rdquo;</em> ;)</li>
+<h4>Best of both worlds?</h4><p>Is there a middle ground? Could you use DNS names to translate human-readable rules into packet filters? The traditional answer was “<em>no, because I don’t trust DNS”</em>. OK, let’s look at some details:</p>
+<ul class="ListParagraph"><li>Most decently-managed enterprise environments have some sort of IPAM solution serving as single source of addressing truth (note I said “<em>decently managed”</em> ;)</li>
 <li>The same IPAM solution is used to generate data populating DNS zones;</li>
 <li>DNS server is using a read-only set of IPAM data to answer queries;</li>
 <li>DNS server is (hopefully) running in a highly protected zone on a redundant set of servers using anycast IP addresses for seamless failover.</li>
 <li>In Windows environments, the DNS server is getting its data straight from AD.</li>
 </ul>
-<p>Based on all of the above, you still don&#x2019;t trust DNS data? OK, you can <a href="http://unbornmind.com/wp-content/uploads/2012/01/abandon-hope-all-ye-who-enter-here-e1285714292550.jpg">stop reading</a>.</p>
+<p>Based on all of the above, you still don’t trust DNS data? OK, you can <a href="http://unbornmind.com/wp-content/uploads/2012/01/abandon-hope-all-ye-who-enter-here-e1285714292550.jpg">stop reading</a>.</p>
 <p>Does it make sense to use DNS data in real time and build IP address sets on a firewall based on DNS queries? Definitely not in the data plane (on-the-fly), but the control plane approach is perfectly doable: the firewall could recheck DNS mappings when TTLs expire and adjust the firewall rule sets. But what if you want to be even more static than that?</p>
 <p>My recent work with Ansible (while <a href="https://github.com/ipspace/NetOpsWorkshop">creating scenarios</a> for my <a href="https://www.ipspace.net/Hands-On_Network_Automation">network automation workshop</a>) gave me an interesting idea that might work for traditional non-cloudy environments:</p>
 <ul class="ListParagraph"><li>Define the security policies in human-readable terms;</li>

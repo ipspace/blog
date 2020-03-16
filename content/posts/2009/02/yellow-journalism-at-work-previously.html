@@ -8,7 +8,7 @@ tags: [ security,DNS ]
 <blockquote class="cite">A scrap between two pornographic Web sites turned nasty when one figured out how to take down the other by exploiting a <strong>previously unknown</strong> <a href="http://www.networkworld.com/news/2008/073008-hackers-start-dns-attacks-researcher.html">quirk in the Internet's DNS</a>. </blockquote>
 <p>The link in the paragraph points to another article documenting a completely different DNS attack. The next paragraph contradicts the first one (emphasis yet again mine):</p>
 <blockquote class="cite">The attack is known as DNS Amplification. It has <strong>been used sporadically since December</strong>, but it started getting talked about last month when ISPrime, a small New York ISP, started getting hit hard with what's known as a <a href="http://www.networkworld.com/news/2008/123008-dns-security.html">distributed denial of service (DDoS) attack</a>.</blockquote>
-<script>startHide()</script><p>So an attack that has been known to be used since December is <em>previously unknown </em>in February. Maybe the time runs backwards for some people?</p>
+&lt;!--more--&gt;<p>So an attack that has been known to be used since December is <em>previously unknown </em>in February. Maybe the time runs backwards for some people?</p>
 <p>But the most interesting part of the story is the attack itself: it has almost nothing to do with DNS; any UDP application where the reply is significantly longer than the request (for example, TFTP) would do. DNS just happens to be the most widespread one. Calling this <em>a quirk in the Internet’s DNS </em>is at least an exaggeration.</p>
 <p>Here is how it works:</p>
 <ul><li>It helps if you have a <a href="http://en.wikipedia.org/wiki/Zombie_computer">zombie</a> network, but even a single workstation with 100 Mbps connection to the Internet (there are plenty of them in corporate and academic networks) would do.</li>
@@ -17,5 +17,5 @@ tags: [ security,DNS ]
 <li>The DNS servers send their replies to the spoofed IP address, swamping the Internet connection of the attack target.</li>
 </ul>
 <p>The effectiveness of this attack depends on the amplification factor: the ratio between the DNS query and DNS response sizes (including the IP and UDP header). For example, the amplification factor of the root nameserver query is more than five. Wireshark on my Linux workstation reports that the IP packet size of the DNS query is 45 bytes and the packet size of the DNS reply is 256 bytes.</p>
-<script>endHide()</script></div>
+</div>
 

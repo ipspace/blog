@@ -4,15 +4,15 @@ date: "2016-05-19T08:11:00.000+02:00"
 tags: [ Design,cloud ]
 ---
 
-<p>One of my <a href="http://www.ipspace.net/ExpertExpress">ExpertExpress engagements</a> focused on networking in a future private cloud that might be built using OpenStack. The customer planned to deploy multiple data centers, and I recommended that they do everything they can to make sure they don&#x2019;t make them a single failure domain.</p>
+<p>One of my <a href="http://www.ipspace.net/ExpertExpress">ExpertExpress engagements</a> focused on networking in a future private cloud that might be built using OpenStack. The customer planned to deploy multiple data centers, and I recommended that they do everything they can to make sure they don’t make them a single failure domain.</p>
 <p>Next step: translate that requirement into OpenStack terms.<!--more--></p>
 <p>OpenStack supports multiple levels of failure isolation, including <em>availability zones </em>and <em>regions</em>:</p>
 <ul class="ListParagraph"><li>Availability zone is primarily a Nova (read: compute) construct similar to VMware HA cluster. AZ awareness was <a href="http://specs.openstack.org/openstack/neutron-specs/specs/liberty/availability-zone.html">added to Neutron</a> not so long ago, but it seems to be just that: awareness (or as the documentation says: hints).</li>
 </ul>
 <p class="info">AWS VPC provides better isolation: you might configure a VPC to span more than one availability zone, but you <a href="https://aws.amazon.com/vpc/faqs/">cannot stretch a subnet across more than one availability zone</a>. Contrary to evangelists working for networking vendors AWS architects obviously know how to make a stable network.</p>
-<ul class="ListParagraph"><li>Regions are distinct API entry points similar to VMware vCenter instances &ndash; just the thing to use if you want the data centers to be independent.</li>
+<ul class="ListParagraph"><li>Regions are distinct API entry points similar to VMware vCenter instances – just the thing to use if you want the data centers to be independent.</li>
 </ul>
-<p>It&#x2019;s my understanding that you cannot span a tenant network across multiple regions&hellip; at least I haven&#x2019;t found any multi-region confederation capability in OpenStack documentation (apart the ability to select regions in client-facing dashboards). </p>
+<p>It’s my understanding that you cannot span a tenant network across multiple regions… at least I haven’t found any multi-region confederation capability in OpenStack documentation (apart the ability to select regions in client-facing dashboards). </p>
 <p class="info">You can configure the same set of provider networks in multiple OpenStack regions and connect them outside of OpenStack using VLANs or VRFs.</p>
 <p>Of course one might use an SDN controller underneath Neutron (Contrail or Nuage VSP come to mind) and use BGP to link multiple instances assuming you can somehow synchronize L3VPN RT/RD values across OpenStack instances (similar to <a href="http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/vpc-peering-overview.html">AWS VPC peering</a>), but it might be simpler to connect regions across provider networks.</p>
 <p>Have I missed something? Comments are (as always) most welcome!</p>

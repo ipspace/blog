@@ -4,21 +4,21 @@ date: "2018-10-02T08:00:00.000+02:00"
 tags: [ Data Center ]
 ---
 
-<p>It all started with an interesting <em>weird MLAG bugs</em> discussion during our last <a href="https://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course. The discussion almost devolved into &ldquo;<em>when in doubt reload</em>&rdquo; yammering when Mark Horsfield stepped in saying &ldquo;<em>while that may be true, make sure to check and collect these things before reloading&rdquo;</em>.</p>
-<p>I loved what he wrote so much that I asked him to turn it into a blog post&hellip; and he made it even better by expanding it into generic network troubleshooting guidelines. Enjoy!<!--more--></p>
-<hr /><style>  .post__content h4 { font-size: 16px !important; }   .post__author { display: none; } </style><p><em>This is a guest blog post by </em><a href="https://www.linkedin.com/in/mark-cumulusnetworks/"><em>Mark Horsfield</em></a><em>, CCIE#52702, Technical Support Engineer at Cumulus Networks.</em></p>
-<h3>Tech Debt is real</h3><p>Operations teams are tasked to support production environments that comprise of a wide array of technologies, old and new. <a href="https://blog.ipspace.net/2013/11/technical-debt-and-how-we-can-fix-it.html">Technical debt is real</a> — and <a href="https://ebaytech.berlin/a-city-of-technical-debt-58568747b12">it applies to all of us</a>.&nbsp;</p>
-<p>A lot of moving parts means opportunity for things to stop working (Murphy&rsquo;s Law: "Anything that can go wrong will go wrong").&nbsp;</p>
-<h3>So what can we do?</h3><p>Approach a problem with an open mind, distill the &ldquo;signal from the noise&rdquo;, and test your hypothesis. A well-defined problem description is essential to moving forward towards final resolution.</p>
+<p>It all started with an interesting <em>weird MLAG bugs</em> discussion during our last <a href="https://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course. The discussion almost devolved into “<em>when in doubt reload</em>” yammering when Mark Horsfield stepped in saying “<em>while that may be true, make sure to check and collect these things before reloading”</em>.</p>
+<p>I loved what he wrote so much that I asked him to turn it into a blog post… and he made it even better by expanding it into generic network troubleshooting guidelines. Enjoy!<!--more--></p>
+<hr/><style>  .post__content h4 { font-size: 16px !important; }   .post__author { display: none; } </style><p><em>This is a guest blog post by </em><a href="https://www.linkedin.com/in/mark-cumulusnetworks/"><em>Mark Horsfield</em></a><em>, CCIE#52702, Technical Support Engineer at Cumulus Networks.</em></p>
+<h3>Tech Debt is real</h3><p>Operations teams are tasked to support production environments that comprise of a wide array of technologies, old and new. <a href="https://blog.ipspace.net/2013/11/technical-debt-and-how-we-can-fix-it.html">Technical debt is real</a> — and <a href="https://ebaytech.berlin/a-city-of-technical-debt-58568747b12">it applies to all of us</a>. </p>
+<p>A lot of moving parts means opportunity for things to stop working (Murphy’s Law: "Anything that can go wrong will go wrong"). </p>
+<h3>So what can we do?</h3><p>Approach a problem with an open mind, distill the “signal from the noise”, and test your hypothesis. A well-defined problem description is essential to moving forward towards final resolution.</p>
 <p>When a sports team wins the championship (you pick your favorite activity), it is not by accident. Behind every team is a coach, who leads by experience — with a game plan. Plans are built upon communication between team members.</p>
-<p>Troubleshooting is a lot like storytelling, as it can be rewarding when you unravel the tangled mess. Start by outlining observations in a list; there will be gaps between the starting point (current state) and the ending point (final resolution). &nbsp;</p>
+<p>Troubleshooting is a lot like storytelling, as it can be rewarding when you unravel the tangled mess. Start by outlining observations in a list; there will be gaps between the starting point (current state) and the ending point (final resolution).  </p>
 <h3>Define the Problem</h3><p>A problem definition begins with a comparative analysis, using what, when, where, to what extent.</p>
 <h4>What is not working</h4><ul><li>What is the observed behavior?</li>
 <li>How is this different than expected behavior?</li>
 </ul>
 <h4>When does it happen</h4><ul><li>When was the first occurrence? Are there multiple occurrences?</li>
 <li>Any pattern? Any clear trigger event?</li>
-<li>Skim log files for the same time period.&nbsp;</li>
+<li>Skim log files for the same time period. </li>
 <li>Does it happen continuously or intermittently?</li>
 </ul>
 <p>How is the problem cleared:</p>
@@ -26,66 +26,66 @@ tags: [ Data Center ]
 <li>Does it clear after some time?</li>
 <li>Does some impacting event reset the environment (crash or reboot event)?</li>
 </ul>
-<h4>Where in the life-cycle</h4><ul><li>Where in the object life-cycle does the problem-state show itself?&nbsp;</li>
+<h4>Where in the life-cycle</h4><ul><li>Where in the object life-cycle does the problem-state show itself? </li>
 <li>Day-1 issues are usually mis-configurations, design-related, or bugs (hardware or software related)</li>
-<li>Day-2 issues are usually seen after some &ldquo;change&rdquo; has taken place. This might be a link flap, or a memory leak over a long time.&nbsp;</li>
+<li>Day-2 issues are usually seen after some “change” has taken place. This might be a link flap, or a memory leak over a long time. </li>
 </ul>
 <p>The system might have been deployed without ever measuring the performance (especially in failure scenarios).</p>
 <ul><li>Should it work as described as-is?</li>
 <li> Is there evidence to support the advertised performance numbers?</li>
 </ul>
 <p>Marketing is well-known to omit important subtle details. You might find a (hardware or software) limitation exists (that might, or might not have a workaround).</p>
-<h4>Extent</h4><p>How many objects show the problem-state? &hellip;out of how many total objects?&nbsp;</p>
+<h4>Extent</h4><p>How many objects show the problem-state? …out of how many total objects? </p>
 <ul class="ListParagraph"><li>Are there some objects that _could_ show the problem but do not show the problem right now? Compare objects that are working versus the problem-state.</li>
 <li>Certain features will influence the forwarding pipeline that a packet would follow through a network device.</li>
 </ul>
 <p>How many occurrences of the problem were seen on each object?</p>
-<ul class="ListParagraph"><li>A link that is flapping would usually show similar number of up/down transitions at each side.&nbsp;</li>
+<ul class="ListParagraph"><li>A link that is flapping would usually show similar number of up/down transitions at each side. </li>
 <li>An interface configured with sub-optimal MTU might cause fragmentation in a single direction, especially if there are two exit nodes on the network (traffic could follow an asymmetric forwarding path in/out of the network).</li>
 </ul>
-<h3>Narrow the Scope</h3><p>Determine the appropriate method to isolate the problem to a direction, a single object, and then a singular component (hardware or software related).&nbsp;</p>
+<h3>Narrow the Scope</h3><p>Determine the appropriate method to isolate the problem to a direction, a single object, and then a singular component (hardware or software related). </p>
 <h4>Split the Difference</h4><p>Imagine you are troubleshooting some connectivity problem with VM hosts that reside in a VXLAN segment</p>
 <ul><li>VXLAN is a network virtualization overlay technology comprised of the underlay network (between ingress VTEP and egress VTEP devices) and the overlay network (VM hosts at the outer edge of the network)</li>
-<li>In this type of situation, I start by verifying the underlay reachability. If this fails, then it would be a waste of time to investigate the overlay network.&nbsp;</li>
-<li>If the underlay network is working, then move on to the overlay network.&nbsp;</li>
-<li>Verify connectivity between each VTEP to the locally connected host.&nbsp;</li>
-<li>What direction is packet loss happening? Forward path or the return path? Look at interface counters, ACL counters, aggregate traffic statistics&hellip; tcpdump and ERSPAN can help isolate direction of packet loss</li>
+<li>In this type of situation, I start by verifying the underlay reachability. If this fails, then it would be a waste of time to investigate the overlay network. </li>
+<li>If the underlay network is working, then move on to the overlay network. </li>
+<li>Verify connectivity between each VTEP to the locally connected host. </li>
+<li>What direction is packet loss happening? Forward path or the return path? Look at interface counters, ACL counters, aggregate traffic statistics… tcpdump and ERSPAN can help isolate direction of packet loss</li>
 </ul>
 <p>Is the problem specific to data plane traffic? Or control plane, or management plane traffic?</p>
 <ul class="ListParagraph"><li>To help determine if hardware is mis-programmed, you can insert special flags (record route option) in an ICMP packet to force the router to punt the packet to CPU at each hop. Not all network vendors act (punt to CPU) upon it though</li>
-<li>Is the problem specific to a type of traffic?&nbsp;IPv4 or IPv6? Unicast or BUM traffic? TCP, UDP or ICMP traffic?</li>
+<li>Is the problem specific to a type of traffic? IPv4 or IPv6? Unicast or BUM traffic? TCP, UDP or ICMP traffic?</li>
 </ul>
-<h4>Bottom Up</h4><p>Physical layer issues fall into this category.&nbsp;Imagine a link is fully inserted, but fails to pass traffic</p>
+<h4>Bottom Up</h4><p>Physical layer issues fall into this category. Imagine a link is fully inserted, but fails to pass traffic</p>
 <ul class="ListParagraph"><li>Check the port is not administratively disabled (yes, we overlook the easy answers).</li>
 <li>What is the hardware state? The switch ASIC must first recognize and program the link.</li>
 <li>If the ASIC has correctly programmed the type of the link (and recognized the transceiver), then what is the software state?</li>
-<li>Assuming optical fiber is in play, what are the light levels from each termination point? The transmit signal on one side corresponds to the receive signal at the remote end. If the signal is too weak, is there a patch panel, or any intermediate transponder equipment? Check the signal at each point where the cable is terminated.&nbsp;<br><br></li>
+<li>Assuming optical fiber is in play, what are the light levels from each termination point? The transmit signal on one side corresponds to the receive signal at the remote end. If the signal is too weak, is there a patch panel, or any intermediate transponder equipment? Check the signal at each point where the cable is terminated. <br/><br/></li>
 </ul>
 <p><strong>Top Down</strong></p>
-<p>Performance issues fall into this category.&nbsp;</p>
+<p>Performance issues fall into this category. </p>
 <p>Use packet captures to help tell the story how the system is actually working.</p>
 <p>Often we make assumptions, which are sometimes false:</p>
 <ul class="ListParagraph"><li>The environment changed since the last release.</li>
 <li>A new variable was introduced into the environment.</li>
-<li>We&rsquo;re operating on information that was not carefully validated.</li>
+<li>We’re operating on information that was not carefully validated.</li>
 </ul>
-<p>Use a traffic generator if necessary. <a href="https://iperf.fr/">iperf</a>, <a href="http://manpages.ubuntu.com/manpages/trusty/man8/nuttcp.8.html">nuttcp</a>, and <a href="https://manpages.debian.org/jessie/mz/mz.1.en.html">mz</a> are just some of the open-source tools. Be careful, some of them are better suited for particular traffic characteristic. Get involved in the community&nbsp;and help make the tools better.</p>
+<p>Use a traffic generator if necessary. <a href="https://iperf.fr/">iperf</a>, <a href="http://manpages.ubuntu.com/manpages/trusty/man8/nuttcp.8.html">nuttcp</a>, and <a href="https://manpages.debian.org/jessie/mz/mz.1.en.html">mz</a> are just some of the open-source tools. Be careful, some of them are better suited for particular traffic characteristic. Get involved in the community and help make the tools better.</p>
 <h3>OODA Loop</h3><p>I found the OODA loop to be insightful —<a href="https://rule11.tech/skills/ooda-loop/">Russ White wrote a series of blog posts about it</a>. Go and read them all.</p>
 <h4>Focus on what you can see</h4><p>From a comment to a blog post Matt Schmitz wrote on <em><a href="https://0x2142.com/?p=697">Tips for Working with Vendor Support</a></em>:</p>
-<blockquote class='cite'>Focus on data points that rely on the presence of something, rather than the absence of something, because there are usually multiple reasons why something might be missing. If something is missing, then usually you can take a look at the same problem from a different viewpoint to find something present that is out-of-place / not right — triage here.</blockquote>
+<blockquote class="cite">Focus on data points that rely on the presence of something, rather than the absence of something, because there are usually multiple reasons why something might be missing. If something is missing, then usually you can take a look at the same problem from a different viewpoint to find something present that is out-of-place / not right — triage here.</blockquote>
 <p><strong>Verify the Hypothesis</strong></p>
-<p>Do not skip the verification process — you are here because there is a complex problem in front of you. Problems have a tendency to return if you do not reveal the underlying cause.&nbsp;</p>
-<p>A hypothesis is similar to storytelling, where you expect to find a headline and supporting evidence.&nbsp;</p>
-<ul><li>At each step of the process document your steps taken and the outcome.&nbsp;</li>
-<li>Keep asking yourself, &ldquo;does this finding / deviation explain the problem-state?&rdquo; If not, then rule it out as a possible cause. Move to the next item on the list.&nbsp;</li>
-<li>Assumptions can be dangerous if not verified. Multicast traffic may be treated differently than unicast traffic at certain points in the forwarding path.&nbsp;</li>
-<li>Start by testing the most probable cause. If this would require a considerable amount of resources (time or money), such as sending a field engineer to an unmanned-site that is far away then try to eliminate the low-hanging fruit (something that can be tested quickly to further bolster your hypothesis or rule it out).&nbsp;</li>
+<p>Do not skip the verification process — you are here because there is a complex problem in front of you. Problems have a tendency to return if you do not reveal the underlying cause. </p>
+<p>A hypothesis is similar to storytelling, where you expect to find a headline and supporting evidence. </p>
+<ul><li>At each step of the process document your steps taken and the outcome. </li>
+<li>Keep asking yourself, “does this finding / deviation explain the problem-state?” If not, then rule it out as a possible cause. Move to the next item on the list. </li>
+<li>Assumptions can be dangerous if not verified. Multicast traffic may be treated differently than unicast traffic at certain points in the forwarding path. </li>
+<li>Start by testing the most probable cause. If this would require a considerable amount of resources (time or money), such as sending a field engineer to an unmanned-site that is far away then try to eliminate the low-hanging fruit (something that can be tested quickly to further bolster your hypothesis or rule it out). </li>
 <li>Keep an open mind when you approach a problem — be willing to broaden your search.</li>
 </ul>
-<h3>Environment</h3><p>It&rsquo;s best to troubleshoot the actual problem-state in a live environment if at all possible. However:</p>
-<ul><li>Sometimes it is not possible to leave the system in the problem-state for a long time, and it must be recovered to a normal, working state.&nbsp;</li>
-<li>Hopefully you gleaned enough data points from the problem-state to attempt a lab re-create.&nbsp;</li>
-<li>Often you do not need a scaled setup, and it can be reduced to a small number of devices (physical or virtualized lab environment).&nbsp;</li>
+<h3>Environment</h3><p>It’s best to troubleshoot the actual problem-state in a live environment if at all possible. However:</p>
+<ul><li>Sometimes it is not possible to leave the system in the problem-state for a long time, and it must be recovered to a normal, working state. </li>
+<li>Hopefully you gleaned enough data points from the problem-state to attempt a lab re-create. </li>
+<li>Often you do not need a scaled setup, and it can be reduced to a small number of devices (physical or virtualized lab environment). </li>
 <li>Traffic generators can introduce new problems. If you are testing with a uni-directional traffic flow, this is different circumstances than most production traffic flows (bi-directional)</li>
 </ul>
 <h3>The Power of a Team</h3><p>By working closely with others to solve a problem, all of us benefit in many ways, such as</p>

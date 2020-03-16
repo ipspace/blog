@@ -6,8 +6,8 @@ tags: [ Automation,Data Center,Fabric,Ansible ]
 
 <p><a name="_GoBack"></a>One of the attendees of my <a href="http://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> course asked this interesting question after listening to my description of differences between Chet/Puppet and Ansible:</p>
 <blockquote class="cite">For Zero-Touch Provisioning to work, an agent gets installed on the box as a boot up process that would contact the master indicating the box is up and install necessary configuration. How does this work with agent-less approach such as Ansible?</blockquote>
-<p>Here&#x2019;s the first glitch: many network devices don&#x2019;t ship with Puppet or Chef agent; you have to install it during the provisioning process.<!--more--></p>
-<p>Also, you can start using Puppet or Chef only after the box has been received at least some minimum configuration. For example, even if you&#x2019;d have a Puppet agent on the box, it wouldn&#x2019;t know what the IP address of Puppet server would be.</p>
+<p>Here’s the first glitch: many network devices don’t ship with Puppet or Chef agent; you have to install it during the provisioning process.<!--more--></p>
+<p>Also, you can start using Puppet or Chef only after the box has been received at least some minimum configuration. For example, even if you’d have a Puppet agent on the box, it wouldn’t know what the IP address of Puppet server would be.</p>
 <p>For these (and other) reasons most vendors implement Zero-Touch Provisioning (ZTP) along these lines:</p>
 <ul class="ListParagraph"><li>When a box boots without usable configuration, it sends out DHCP requests.</li>
 </ul>
@@ -16,14 +16,14 @@ tags: [ Automation,Data Center,Fabric,Ansible ]
 <li>The extra parameters passed in DHCP reply could include a URL to download scripts or configurations from, or boot file (initial configuration) to load;</li>
 </ul>
 <p>If the initial switch configuration includes Puppet agent, then it would eventually connect to Puppet server and pull down the desired device state.</p>
-<p>If you&#x2019;re using Ansible then the DHCP reply could trigger a script that would run an Ansible playbook that would eventually push desired configuration to the device.</p>
+<p>If you’re using Ansible then the DHCP reply could trigger a script that would run an Ansible playbook that would eventually push desired configuration to the device.</p>
 <h4>From Theory to Practice</h4><p>I sent my reply to David Barroso (he has <a href="http://blog.ipspace.net/2014/07/network-automation-spotify-on-software.html">orders of magnitude more real-life experience</a> in this area than I do) and this is what he told me:</p>
 <blockquote class="cite">The only problem with the puppet agent is that you need to install it and traditional ZTP implementations don't have a good way of installing extra software. However, what most vendors do nowadays is that rather than pushing a configuration file, they give you an IP and a hostname as always, and then they give you a script that will be executed on the machine. </blockquote>
 <blockquote class="cite">That way you can "curl" your configuration or generate it on the fly with code, install all necessary software, trigger Ansible via some API, check cabling is correct, register to an inventory database... you get the idea, whatever you want to do as part of your provisioning workflow. Both Cumulus and EOS can do that, not sure about others though.</blockquote>
 <h4>Want to know more?</h4><ul class="ListParagraph"><li>Start with <a href="http://www.ipspace.net/Network_Automation_101">Network Automation 101</a>;</li>
 <li>Register for the <a href="http://www.ipspace.net/NetTools">Network Automation Tools</a> webinar to get initial orientation;</li>
-<li>We&#x2019;ll discuss numerous <a href="http://www.ipspace.net/NetAutUC">network automation use cases</a> during winter 2016/17;</li>
-<li><a href="http://www.ipspace.net/Using_Ansible,_YAML_and_Jinja2">Ansible</a> is the go-to tool for many network automation projects, and I&#x2019;ll be rolling out <a href="http://www.ipspace.net/Ansible_Updates">tons of new content this autumn</a>;</li>
+<li>We’ll discuss numerous <a href="http://www.ipspace.net/NetAutUC">network automation use cases</a> during winter 2016/17;</li>
+<li><a href="http://www.ipspace.net/Using_Ansible,_YAML_and_Jinja2">Ansible</a> is the go-to tool for many network automation projects, and I’ll be rolling out <a href="http://www.ipspace.net/Ansible_Updates">tons of new content this autumn</a>;</li>
 </ul>
-<p>Finally, why don&#x2019;t you go on a <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">journey that will help you deploy your first network automation solution</a>?</p>
+<p>Finally, why don’t you go on a <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">journey that will help you deploy your first network automation solution</a>?</p>
 

@@ -15,10 +15,12 @@ tags: [ OSPF ]
 <li>If multiple E2 routes have the same external cost, the internal cost (as above) is compared; see <a href="http://tools.ietf.org/html/rfc2328#page-175">Section 16.4 paragraph (6.d) of the OSPF RFC</a>.</li>
 <li>NSSA (type-7 LSA) routes should be preferred over external (type-5 LSA) routes (<a href="http://tools.ietf.org/html/rfc3101#page-13">paragraphs (6.c) and (6.e) of Section 2.5</a>  of RFC 3101). Cisco IOS prefers external routes over NSSA routes; even if they have the same cost as the external routes (and <strong>maximum-path</strong> is configured), NSSA routes are not entered in the IP routing table.</li>
 <li>It seems the final tie-breaker is the LSA stability (or its position in the topology database/SPF tree?). For example, if the router cannot enter all equal-cost external routes into the IP routing table (based on <strong>maximum-path</strong> value), it appears to select the more stable ones (described by LSAs that have been longer in the OSPF topology database).</li>
+</li>
 </ul>
-<div class='update'>Update history:<ul><li>The original version of this post was published on 2008-01-17.</li>
+<div class="update">Update history:<ul><li>The original version of this post was published on 2008-01-17.</li>
 <li>The post was updated and renamed on 2011-03-30 after a lengthy (and very productive) discussion with one of my readers.</li>
 <li>2011-04-16: Fixed the final tie-breaker part.</li>
-<li>2016-02-19: Fixed a typo - early OSPF RFC was RFC 1583, not RFC 1683</ul>
+<li>2016-02-19: Fixed a typo - early OSPF RFC was RFC 1583, not RFC 1683</li>
+</ul>
 </div>
 

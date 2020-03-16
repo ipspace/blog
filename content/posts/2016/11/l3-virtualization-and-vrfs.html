@@ -6,13 +6,13 @@ tags: [ MPLS VPN,virtualization ]
 
 <p><a name="_GoBack"></a>I got into an <a href="http://blog.ipspace.net/2016/10/do-enterprises-need-mpls.html?showComment=1477469167806#c2679574237571018500">interesting discussion with Johannes Luther</a> on the need for VRFs and he wrote:</p>
 <blockquote class="cite">If VRF = L3 virtualization technologies, then I saw that link. However, VRFs are again just a tiny piece of the whole story.</blockquote>
-<p>Of course he&#x2019;s right, but it turns out that VRFs are <em>the </em>fundamental building block of most L3 virtualization technologies using a shared infrastructure.<!--more--></p>
-<h4>The Basics</h4><p>Each L3 virtualization technology must implement numerous separate (and optionally isolated) L3 domains (let&#x2019;s call them <em>tenants</em>). Each tenant (= L3 domain) needs a forwarding table that could be different from any other L3 forwarding table in the system, just like you need a separate MAC table for each virtual L2 domain.</p>
+<p>Of course he’s right, but it turns out that VRFs are <em>the </em>fundamental building block of most L3 virtualization technologies using a shared infrastructure.<!--more--></p>
+<h4>The Basics</h4><p>Each L3 virtualization technology must implement numerous separate (and optionally isolated) L3 domains (let’s call them <em>tenants</em>). Each tenant (= L3 domain) needs a forwarding table that could be different from any other L3 forwarding table in the system, just like you need a separate MAC table for each virtual L2 domain.</p>
 <p class="note">Whether the system uses a single L3 table and makes L3-domain-ID part of the lookup process is an implementation detail, just like some L2 switches use a single MAC lookup table and do lookups based on VLAN+MAC value.</p>
 <p>You also need some way of populating that table, usually a routing protocol. Virtual Routing and Forwarding table (VRF) is thus a fundamental building block of every L3 virtualization technology regardless of how you call it.</p>
 <h4>Alternative Architectures</h4><p>Obviously you could implement a distributed system where the routing (= collecting and distributing information) decisions are centralized, but forwarding (= sending received packets to correct output ports) decisions are distributed, so there would be a single copy of the tenant routing table and numerous copies of the tenant forwarding table. </p>
 <p>You could also run isolated per-tenant control planes and push the results of these control planes to the forwarding tables. VMware NSX is a typical example of such architecture: </p>
-<ul class="ListParagraph"><li>A dedicated routing VM is run for every tenant using a single routing table. Control-plane VM thus doesn&#x2019;t use a VRF concept;</li>
+<ul class="ListParagraph"><li>A dedicated routing VM is run for every tenant using a single routing table. Control-plane VM thus doesn’t use a VRF concept;</li>
 <li>Routes collected by the control-plane VM are sent to the NSX controller and distributed to L3 forwarding elements in individual hypervisors where every tenant has its own virtual forwarding table.</li>
 </ul>
 

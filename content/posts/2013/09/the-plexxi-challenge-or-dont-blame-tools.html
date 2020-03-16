@@ -10,13 +10,13 @@ tags: [ SDN,Data Center,Workshop,Fabric,Optical ]
 <ul class="ListParagraph"><li>Four lambdas (40 Gbps) are used to connect to the adjacent (east and west) switch;</li>
 <li>Two lambdas (20 Gbps) are used to connect to four additional switches in both directions.</li>
 </ul>
-<div class='separator'><a href="http://2.bp.blogspot.com/-T2N_SDwPlzg/UiDzgf-rZnI/AAAAAAAAGFA/fI0fkw3uUxE/s1600/Plexxi_Lambdas.jpg" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-T2N_SDwPlzg/UiDzgf-rZnI/AAAAAAAAGFA/fI0fkw3uUxE/s550/Plexxi_Lambdas.jpg" /></a></div>
+<div class="separator"><a href="/2013/09/s1600-Plexxi_Lambdas.jpg" imageanchor="1"><img border="0" src="/2013/09/s550-Plexxi_Lambdas.jpg"/></a></div>
 <p>The CWDM lambdas established by Plexxi switches build a <a href="http://en.wikipedia.org/wiki/Chordal_graph">chordal</a> ring. Here’s the topology you get in a 25-node network:</p>
-<div class='separator'><a href="http://2.bp.blogspot.com/-f0R8_9Ev8O0/UiDzgGfObRI/AAAAAAAAGFQ/oL4F_puAYsg/s1600/C25.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-f0R8_9Ev8O0/UiDzgGfObRI/AAAAAAAAGFQ/oL4F_puAYsg/s400/C25.png" /></a></div>
+<div class="separator"><a href="/2013/09/s1600-C25.png" imageanchor="1"><img border="0" src="/2013/09/s400-C25.png"/></a></div>
 <p>And here’s how a 10-node topology would look like:</p>
-<div class='separator'><a href="http://1.bp.blogspot.com/-Wd-G-5JXATQ/UiDzgFM2GEI/AAAAAAAAGE8/SphZGtPgFfQ/s1600/C10.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-Wd-G-5JXATQ/UiDzgFM2GEI/AAAAAAAAGE8/SphZGtPgFfQ/s400/C10.png" /></a></div>
+<div class="separator"><a href="/2013/09/s1600-C10.png" imageanchor="1"><img border="0" src="/2013/09/s400-C10.png"/></a></div>
 <p>The beauty of Plexxi ring is the ease of horizontal expansion: assuming you got the wiring right, all you need to do to add a new ToR switch to the fabric is to disconnect a cable between two switches and insert a new switch between them as shown in the next diagram. You could do it in a live network if the network survives a short-term drop in fabric bandwidth while the CWDM ring is reconfigured.</p>
-<div class='separator'><a href="http://4.bp.blogspot.com/-pQKn9vG0wHY/UiDzgNWj0WI/AAAAAAAAGE4/pRs_G5O2OB0/s1600/Plexxi_Deployment.jpg" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-pQKn9vG0wHY/UiDzgNWj0WI/AAAAAAAAGE4/pRs_G5O2OB0/s550/Plexxi_Deployment.jpg" /></a></div>
+<div class="separator"><a href="/2013/09/s1600-Plexxi_Deployment.jpg" imageanchor="1"><img border="0" src="/2013/09/s550-Plexxi_Deployment.jpg"/></a></div>
 <h4>Full Mesh Sucks with SPF Routing</h4><p>Now imagine you’re running a shortest path routing protocol over a chordal ring topology. Smaller chordal rings look exactly like a full mesh, and we know that a <a href="http://blog.ipspace.net/2012/04/full-mesh-is-worst-possible-fabric.html">full mesh is the worst possible fabric topology</a>. You need non-SPF routing to get a reasonable bandwidth utilization and more than 20 (or 40) GBps of bandwidth between a pair of nodes.</p>
 <p>There are at least two well-known solutions to the non-SPF routing challenge:</p>
 <ul class="ListParagraph"><li>Central controllers (well known from SONET/SDH, Frame Relay and ATM days);</li>

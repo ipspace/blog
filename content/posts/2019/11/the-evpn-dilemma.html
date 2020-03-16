@@ -5,38 +5,38 @@ tags: [ bridging,VXLAN,EVPN,WAN ]
 ---
 
 <p>Got an interesting set of questions from a networking engineer who got stuck with the infamous “<em><a href="https://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html">let’s push the **** down the stack</a></em>” challenge:</p>
-<blockquote class='cite'><p>So I am a rather green network engineer trying to solve the typical layer two stretch problem.</p>
+<blockquote class="cite"><p>So I am a rather green network engineer trying to solve the typical layer two stretch problem.</p>
 </blockquote>
 <p>I could start the usual “<em><a href="https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html">friends don’t let friends stretch layer-2</a></em>” or “<em><a href="https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html">your business doesn’t really need that</a></em>” windmill fight, but let’s focus on how the vendors are trying to sell him the “perfect” solution:<!--more--></p>
-<blockquote class='cite'><p>One thing I hear over and over from everyone (vendors especially) is how EVPN will solve all of my problems.</p>
+<blockquote class="cite"><p>One thing I hear over and over from everyone (vendors especially) is how EVPN will solve all of my problems.</p>
 </blockquote>
 <p>Every now and then vendors go on a lemming run promoting a miraculous technology. A few years ago it was either TRILL or SPB (depending on which chipset you were trying to sell), now it’s EVPN… which is a shame because EVPN is a decent technology.</p>
 <p>The “<em>solving all your problems</em>” is the necessary component of this fairy tale. You would never buy from a vendor who would drop by and say “<em>we can solve one of your problems, and you have to restructure your applications to get rid of the other 100</em>”, right?</p>
-<blockquote class='cite'><p>All I need to do is ditch my current IGP in favor of BGP</p>
+<blockquote class="cite"><p>All I need to do is ditch my current IGP in favor of BGP</p>
 </blockquote>
 <p><a href="https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html">Another lemming run</a>, this time along the lines of “<em><a href="https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html">if Petr Lapukhov did it at Microsoft it must be good</a></em>”. While you could get a pretty minimalistic and simple design if you make <a href="https://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol">BGP the only routing protocol in your fabric</a>, you better do that with an <a href="https://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html">implementation that was adapted to the new use of BGP</a>, not decades-old code base that needs a gazillion of tweaks and just the right values of nerd knobs to make it work.</p>
 <p>Oh, and some vendors <a href="https://blog.ipspace.net/2019/04/dont-sugarcoat-challenges-you-have.html">messed their implementation really badly</a>, so they started promoting <a href="https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics">IBGP-over-EBGP</a> (EVPN address family on IBGP sessions running between loopbacks advertised with IP address family on EBGP sessions running on point-to-point links) and <a href="https://blog.ipspace.net/2018/05/dissecting-ibgpebgp-junos-configuration.html">using schizophrenic <strong>local-as</strong> mechanisms</a> just to make it work. Oh, and then there was another vendor telling the customers to run EBGP sessions on point-to-point links to exchange loopback prefixes, and <em>another set of multihop EBGP sessions</em> between the loopback interfaces of the same boxes to exchange the EVPN prefixes.</p>
-<blockquote class='cite'><p>… and well BGP is hard to configure so I also need to invest in an automation solution.</p>
+<blockquote class="cite"><p>… and well BGP is hard to configure so I also need to invest in an automation solution.</p>
 </blockquote>
 <p>That’s another thing vendors are really good at - promoting the right stuff for the wrong reasons. Network automation is the right way to go, but if it’s sold as the only way to build BGP configurations for your data center fabrics (because of the copious amount of nerd knob settings you need) you chose a wrong vendor.</p>
 <p>There are vendors focusing on <a href="https://blog.ipspace.net/2019/10/auto-mlag-and-auto-bgp-in-cumulus-linux.html">making data center EVPN+BGP+MLAG configurations as simple as possible</a>, but they lack the marketing muscles of the big guys and glitzy customer events that CIOs love to mingle at. Just saying…</p>
-<p class='note'>It's also worth mentioning that most open-source BGP products like BIRD and goBPG support similar BGP configuration simplifications as FRR, so it's obviously not that hard to implement them.</p>
-<blockquote class='cite'><p>One other thing… EVPN doesn’t play well between vendors so there’s probably going to be lock in.</p>
+<p class="note">It's also worth mentioning that most open-source BGP products like BIRD and goBPG support similar BGP configuration simplifications as FRR, so it's obviously not that hard to implement them.</p>
+<blockquote class="cite"><p>One other thing… EVPN doesn’t play well between vendors so there’s probably going to be lock in.</p>
 </blockquote>
 <p>Well, the vendors are telling me they’re running interoperability workshops making sure the least-common-denominator EVPN implementations interoperate… but honestly, why would you want to build your data center fabric with switches from two vendors?</p>
 <p>Unless you’re a <a href="https://blog.ipspace.net/2016/03/you-want-your-network-to-be-like.html">member of the FANG club</a> (in which case you’d probably run your own software on top of standardized products from two sources anyway), you’ll probably lose more money than you saved dealing with operational complexity of running two platforms with two operating systems (I would, however, avoid using proprietary vendor features as much as possible). It’s like mixing AIX, Solaris and Linux in your servers. Who would ever want to do that unless a database company forces them to do it due to their licensing and litigation practices?</p>
-<blockquote class='cite'><p>Oh and your current network equipment will need to be replaced as well.</p>
+<blockquote class="cite"><p>Oh and your current network equipment will need to be replaced as well.</p>
 </blockquote>
 <p>Like when you’re trying to figure out whether to buy a new car, you have two options:</p>
 <ul><li>Stick with the old stuff and live with the lack of features available in the new models;</li>
 <li>Invest in the new model and get the new features.</li>
 </ul>
 <p>Funnily, if you happen to have a decent-sized installation under vendor support contract, it might be cheaper to ditch the old stuff and buy the new switches. We had customers that would make money just on that swap in a few years’ time due to cheaper boxes and consequently lower support costs.</p>
-<blockquote class='cite'><p>What’s the problem with a solution like GRE? I can leverage my current IGP, all of my equipment already supports it… and it works between vendors.</p>
+<blockquote class="cite"><p>What’s the problem with a solution like GRE? I can leverage my current IGP, all of my equipment already supports it… and it works between vendors.</p>
 </blockquote>
 <p>While there are plenty of vendors doing whatever-over-GRE (but maybe not on recent data center switches), and I'm told at least some Broadcom ASICs support NVGRE (but <a href="https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html">how would we know</a>), I’m not aware of anyone shipping bridging-over-GRE in hardware, and if you plan to stretch your layer-2 domain over 100 Mbps or 1 Gbps link (so you could use software-based forwarding), I have just one word for you: DON’T.</p>
 <p>The question does make perfect sense though once you manage to replace GRE with VXLAN (see below).</p>
-<blockquote class='cite'><p>Maybe trying to “tunnel” away all of our problems is the wrong solution to begin with. What are your thoughts on this?</p>
+<blockquote class="cite"><p>Maybe trying to “tunnel” away all of our problems is the wrong solution to begin with. What are your thoughts on this?</p>
 </blockquote>
 <p>There’s always RFC 1925 Rule 6A, but in the case of layer-2 segments <a href="https://blog.ipspace.net/2018/01/revisited-need-for-stretched-vlans.html">artificially stretched beyond recognition</a> (= <a href="https://blog.ipspace.net/2019/04/commentary-were-stuck-with-40-years-old.html">beyond a single cable</a>) tunneling makes perfect sense.</p>
 <p>You could either try to bend the laws of physics and make bridging-with-STP work in an environment it was never designed for (what data center vendors tried to do with <a href="https://blog.ipspace.net/2010/10/multi-chassis-link-aggregation-basics.html">large-scale MLAG</a> using proprietary technologies like VSS, vPC, IRF, VCF…), or you could give up, realize a routed fabric will always be more stable than a bridged hodgepodge, and start looking for a way to implement one.</p>
@@ -55,5 +55,5 @@ tags: [ bridging,VXLAN,EVPN,WAN ]
 </ul>
 <p>All these webinars and much more are included in our <a href="https://www.ipspace.net/Building_Next-Generation_Data_Center">Building Next-Generation Data Center</a> online course.</p>
 <p>You’re also most welcome to join us in the <a href="https://www.sig-switzerland.ch/using-vxlan-and-evpn-to-build-active-active-data-centers/">Using VXLAN with EVPN to Build Active-Active Data Centers</a> workshop in Zurich on Tuesday, December 3rd 2019.</p>
-<hr /><p>Many thanks to <a href="https://www.ipspace.net/Author:Dinesh_Dutt">Dinesh Dutt</a> and <a href="https://www.ipspace.net/Expert:Nicola_Modena">Nicola Modena</a> for fact-checking and improving the blog post.</p> 
+<hr/><p>Many thanks to <a href="https://www.ipspace.net/Author:Dinesh_Dutt">Dinesh Dutt</a> and <a href="https://www.ipspace.net/Expert:Nicola_Modena">Nicola Modena</a> for fact-checking and improving the blog post.</p>
 

@@ -4,22 +4,22 @@ date: "2017-09-19T08:44:00.000+02:00"
 tags: [ BGP ]
 ---
 
-<p>One of the perks of my <a href="http://www.ipspace.net/Courses">online courses</a> is the lifetime access to course Slack team, and you&#x2019;d amazed by the variety of questions asked there. Not so long ago I got one on BGP timers:</p>
-<blockquote class="cite">The BGP timers I&#x2019;m using in my network are 5 and 15 seconds, and I am not sure if it's a good practice to reduce them even more.</blockquote>
+<p>One of the perks of my <a href="http://www.ipspace.net/Courses">online courses</a> is the lifetime access to course Slack team, and you’d amazed by the variety of questions asked there. Not so long ago I got one on BGP timers:</p>
+<blockquote class="cite">The BGP timers I’m using in my network are 5 and 15 seconds, and I am not sure if it's a good practice to reduce them even more.</blockquote>
 <p>You should always ask yourself this set of questions before tweaking a nerd knob:<!--more--></p>
 <ul class="ListParagraph"><li>What problem am I trying to solve?</li>
 <li>Are there better ways to solve the problem?</li>
-<li>What&#x2019;s the worst thing that could happen if I twiddle that knob?</li>
+<li>What’s the worst thing that could happen if I twiddle that knob?</li>
 <li>Why would twiddling the nerd knob break things and what can I do to alleviate that (assuming I still feel it makes sense to twiddle it)?</li>
 </ul>
 <p>Keep in mind that every nerd knob you start using increases the complexity of your network, which potentially increases the cost of operating it. Using vendor-specific nerd knobs is also a great way to get locked into a single-vendor solutions.</p>
-<p>Still interested? In this blog post we&#x2019;ll address the first two questions.</p>
-<h4>What problem am I trying to solve?</h4><p>There&#x2019;s only one good reason (I found so far) to reduce the BGP timers below their ridiculously large (at least on Cisco IOS) default values: you&#x2019;re trying to improve convergence by reducing the time it takes for a BGP router to discover a failed neighbor.</p>
-<h4>Are there better ways to detect neighbor failure?</h4><p>If you&#x2019;re running BGP between directly-connected IP addresses most decent implementations detect BGP neighbor loss as soon as the interface goes down. </p>
+<p>Still interested? In this blog post we’ll address the first two questions.</p>
+<h4>What problem am I trying to solve?</h4><p>There’s only one good reason (I found so far) to reduce the BGP timers below their ridiculously large (at least on Cisco IOS) default values: you’re trying to improve convergence by reducing the time it takes for a BGP router to discover a failed neighbor.</p>
+<h4>Are there better ways to detect neighbor failure?</h4><p>If you’re running BGP between directly-connected IP addresses most decent implementations detect BGP neighbor loss as soon as the interface goes down. </p>
 <p>You can use BFD on most platforms to detect byzantine failures of EBGP neighbors (interface or transmission path failure without carrier/light loss). BFD is a very lightweight protocol, so you should usually prefer it over routing protocol timers.</p>
 <p class="info">BFD is another reason why it makes sense to run EBGP in data center fabrics.</p>
 <p>Some platforms support BFD for directly-connected IBGP neighbors (because they implement single-hop BFD), some support BFD for all IBGP neighbors (using multihop BFD).</p>
-<p>Speaking of IBGP, it doesn&#x2019;t really matter if you lose IBGP session or two as long as the next hop (where you&#x2019;re supposed to send the traffic to) is reachable. Platforms that have <em>BGP next hop tracking </em>solve that problem quite nicely as they tie BGP route selection to (usually IGP-derived) next hop reachability in main IP routing table. </p>
-<p>Assuming your platform supports next-hop tracking, and you&#x2019;re running IBGP between loopback interfaces, and use loopback interface addresses as BGP next hops, your (I)BGP routing table converges as fast as the IGP you&#x2019;re using in your AS.</p>
-<h4>Still feel the urge to tweak the BGP timers?</h4><p>We&#x2019;ll figure out what could possibly go wrong in a follow-up blog post.</p>
+<p>Speaking of IBGP, it doesn’t really matter if you lose IBGP session or two as long as the next hop (where you’re supposed to send the traffic to) is reachable. Platforms that have <em>BGP next hop tracking </em>solve that problem quite nicely as they tie BGP route selection to (usually IGP-derived) next hop reachability in main IP routing table. </p>
+<p>Assuming your platform supports next-hop tracking, and you’re running IBGP between loopback interfaces, and use loopback interface addresses as BGP next hops, your (I)BGP routing table converges as fast as the IGP you’re using in your AS.</p>
+<h4>Still feel the urge to tweak the BGP timers?</h4><p>We’ll figure out what could possibly go wrong in a follow-up blog post.</p>
 

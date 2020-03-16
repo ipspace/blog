@@ -4,31 +4,31 @@ date: "2015-07-19T09:07:00.000+02:00"
 tags: [ SDN,virtualization ]
 ---
 
-<p>Most people casually involved with virtual appliances and network function virtualization (NFV) believe that replacing Linux TCP/IP stack with user-mode packet forwarding (example: Intel&#x2019;s DPDK) boosts performance from meager 1 Gbps to tens of gigabits (and thus makes hardware forwarding obsolete).</p>
-<p>Having data points is always better than having opinions; today let&#x2019;s look at <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets/"><em>Receiving 1 Mpps with Linux TCP/IP Stack</em> blog post</a>.</p>
-<p class='update'>2015-07-18: The blog post was updated based on feedback by Kristian Larsson.<!--more--></p>
-<p><strong>Long story short</strong>: it&#x2019;s always been possible to get good packet forwarding performance on Linux, and the solutions have been well known for years.</p>
+<p>Most people casually involved with virtual appliances and network function virtualization (NFV) believe that replacing Linux TCP/IP stack with user-mode packet forwarding (example: Intel’s DPDK) boosts performance from meager 1 Gbps to tens of gigabits (and thus makes hardware forwarding obsolete).</p>
+<p>Having data points is always better than having opinions; today let’s look at <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets/"><em>Receiving 1 Mpps with Linux TCP/IP Stack</em> blog post</a>.</p>
+<p class="update">2015-07-18: The blog post was updated based on feedback by Kristian Larsson.<!--more--></p>
+<p><strong>Long story short</strong>: it’s always been possible to get good packet forwarding performance on Linux, and the solutions have been well known for years.</p>
 <h4>Before we start</h4><p>You might miss the bigger picture by focusing solely on packet forwarding performance. </p>
 <p>In many cases, 1Gbps of forwarding performance is more than good enough. In others, you cannot use hardware forwarding anyway because the problem cannot be solved in dedicated hardware at reasonable cost (example: <a href="http://blog.ipspace.net/2015/03/tcp-optimization-with-juho-snellman-on.html">large-scale TCP optimization</a>). </p>
-<p>Finally, sometimes the amount of processing done on a single packet limits the throughput (example: <a href="http://blog.ipspace.net/2015/01/palo-alto-virtual-firewalls-on-software.html">deep packet inspection</a>), and there&#x2019;s not much you can do apart from throwing more cores at the problem (Palo Alto has a firewall with 100 Gbps throughput &hellip; using 400 cores).</p>
-<h4>And now let&#x2019;s see how badly Linux TCP/IP stack did</h4><p>The author of the blog post I mentioned above used several tricks to achieve the target performance:</p>
+<p>Finally, sometimes the amount of processing done on a single packet limits the throughput (example: <a href="http://blog.ipspace.net/2015/01/palo-alto-virtual-firewalls-on-software.html">deep packet inspection</a>), and there’s not much you can do apart from throwing more cores at the problem (Palo Alto has a firewall with 100 Gbps throughput … using 400 cores).</p>
+<h4>And now let’s see how badly Linux TCP/IP stack did</h4><p>The author of the blog post I mentioned above used several tricks to achieve the target performance:</p>
 <ul class="ListParagraph"><li>Sending and receiving multiple messages at the same time instead of a single message per system call (which got him to 350 kpps)</li>
 <li>Using multi-queue NICs to spread the load across multiple CPU cores, which increased the throughput to 440 kbpps;</li>
 <li>Multi-threaded application, which finally got him to the 1 Mpps (or 1.4 Mpps on finely-tuned memory architecture).</li>
 </ul>
 <p>Not surprisingly, these are the same tricks that tools like <a href="http://blog.ipspace.net/2015/04/ntopng-deep-dive-with-luca-deri-on.html">ntop</a> and <a href="http://blog.ipspace.net/2015/04/pfring-deep-dive-with-luca-deri-on.html">PF_RING</a> used for years to get decent networking performance on Linux.</p>
-<h4>Where&#x2019;s the problem?</h4><p>With all this being said, why don&#x2019;t we see better forwarding performance in virtual appliances doing simple packet processing? </p>
-<p>In most cases, the answer is surprisingly simple: because the vendors ported their existing code to VM format, and replaced direct access to dedicated hardware with calls to Linux kernel (thus making every possible mistake they could). Vendors that spent time optimizing the code (Vyatta, Juniper) got the performance you&#x2019;d expect (Juniper managed to push 160 Gbps through their vMX).</p>
+<h4>Where’s the problem?</h4><p>With all this being said, why don’t we see better forwarding performance in virtual appliances doing simple packet processing? </p>
+<p>In most cases, the answer is surprisingly simple: because the vendors ported their existing code to VM format, and replaced direct access to dedicated hardware with calls to Linux kernel (thus making every possible mistake they could). Vendors that spent time optimizing the code (Vyatta, Juniper) got the performance you’d expect (Juniper managed to push 160 Gbps through their vMX).</p>
 <h4>So what was I trying to say?</h4><p>Kristian Larsson left a nice comment saying "OK, so what exactly were you trying to say?" Let me try to organize my thoughts at least a bit:</p>
-<div id='k-list'><style>#k-list p { padding-left: 3em; } #k-list p span { float: left; margin-left: -3em; }</style><p><span>(A)</span> Contrary to what some Software Defined Evangelists think, there’s no magic bullet or universal culprit.</p>
+<div id="k-list"><style>#k-list p { padding-left: 3em; } #k-list p span { float: left; margin-left: -3em; }</style><p><span>(A)</span> Contrary to what some Software Defined Evangelists think, there’s no magic bullet or universal culprit.</p>
 <p><span>(B)</span> The tricks that people reinvent all the time have been well-known if not exactly well documented for years. See also <a href="https://www.kernel.org/doc/Documentation/networking/scaling.txt">Scaling in the Linux Networking Stack</a> documentation from kernel.org.</p>
 <p><span>(C)</span> There’s always the weakest link and if you don’t know what it is, you’ll have performance problems no matter what.</p>
 <p><span>(D)</span> Once you work around the weakest link, there’s another one waiting for you.</p>
 <p><span>(E)</span> If you don’t know what you’re doing, you’ll get the results you deserve.</p>
 <p><span>(F)</span> And finally, sometimes good enough is good enough.</p>
 </div>
-<p class='more'>And all I need now is a <a href="https://news.ycombinator.com/item?id=9819363">hacker misunderstanding my post</a> and telling me how stupid I am ;)</p>
-<h4>Interested in virtual forwarding performance?</h4><p>You&#x2019;ll find tons of useful information in Software Gone Wild podcast:</p>
+<p class="more">And all I need now is a <a href="https://news.ycombinator.com/item?id=9819363">hacker misunderstanding my post</a> and telling me how stupid I am ;)</p>
+<h4>Interested in virtual forwarding performance?</h4><p>You’ll find tons of useful information in Software Gone Wild podcast:</p>
 <ul class="ListParagraph"><li><a href="http://blog.ipspace.net/2014/06/snabb-switch-and-nfv-on-openstack-in.html">Snabb Switch and NFV on OpenStack</a>;</li>
 <li><a href="http://blog.ipspace.net/2014/09/snabb-switch-deep-dive-on-software-gone.html">Snabb Switch deep dive</a>;</li>
 <li><a href="http://blog.ipspace.net/2015/04/ntopng-deep-dive-with-luca-deri-on.html">Ntopng</a> and <a href="http://blog.ipspace.net/2015/01/palo-alto-virtual-firewalls-on-software.html">PF_RING</a>;</li>
@@ -36,5 +36,5 @@ tags: [ SDN,virtualization ]
 <li><a href="http://blog.ipspace.net/2015/03/tcp-optimization-with-juho-snellman-on.html">Large-scale TCP optimization</a>;</li>
 <li><a href="http://blog.ipspace.net/2014/12/l2vpn-over-ipv6-with-snabb-switch-on.html">L2VPN over IPv6 with Snabb Switch</a>.</li>
 </ul>
-<p>I&#x2019;ll also cover these topics within the <a href="http://www.ipspace.net/NFV">Network Function Virtualization</a> webinar (coming in early autumn, just before the <a href="http://www.ipspace.net/SDN,_OpenFlow_and_NFV_Workshop">SDN workshops</a>).</p>
+<p>I’ll also cover these topics within the <a href="http://www.ipspace.net/NFV">Network Function Virtualization</a> webinar (coming in early autumn, just before the <a href="http://www.ipspace.net/SDN,_OpenFlow_and_NFV_Workshop">SDN workshops</a>).</p>
 

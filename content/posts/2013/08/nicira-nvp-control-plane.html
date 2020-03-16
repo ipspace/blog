@@ -12,23 +12,23 @@ tags: [ SDN,Workshop,OpenFlow,Overlay networks ]
 <li>User-space OVS database (ovsdb) daemon that keeps track of the local OVS configuration (bridges, interfaces, controllers …).</li>
 </ul>
 <p>NVP uses a cluster of controllers (currently 3 or 5) to communicate with OVS switches (OVS switches can connect to one or more controllers with automatic failover). It uses two protocols to communicate with the switches: OpenFlow to download forwarding entries into the OVS and ovsdb-proto to configure bridges (datapaths) and interfaces in OVS.</p>
-<div class='separator'><a href="http://4.bp.blogspot.com/-gkh3Qt2mMB0/UgOV5LuGR4I/AAAAAAAAGCQ/Wwf_nEB5w0k/s1600/NVP_CP_OVS.png" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-gkh3Qt2mMB0/UgOV5LuGR4I/AAAAAAAAGCQ/Wwf_nEB5w0k/s400/NVP_CP_OVS.png" /></a></div>
+<div class="separator"><a href="/2013/08/s1600-NVP_CP_OVS.png" imageanchor="1"><img border="0" src="/2013/08/s400-NVP_CP_OVS.png"/></a></div>
 <h4>Simple 2-host setup</h4><p>Let’s start with a simple two host setup, with a single VM running on each host. The GRE tunnel between the hosts is used to encapsulate the layer-2 traffic between the VMs.</p>
-<div class='separator'><a href="http://1.bp.blogspot.com/-SmTEnlY26-M/UgOWgGrwkUI/AAAAAAAAGCY/wA4BMIi1ioc/s1600/NVP_CP_2host.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-SmTEnlY26-M/UgOWgGrwkUI/AAAAAAAAGCY/wA4BMIi1ioc/s400/NVP_CP_2host.png" /></a></div>
+<div class="separator"><a href="/2013/08/s1600-NVP_CP_2host.png" imageanchor="1"><img border="0" src="/2013/08/s400-NVP_CP_2host.png"/></a></div>
 <p>NVP OpenFlow controller has to download just a few OpenFlow entries into the two Open vSwitches to enable the communication between the two VMs (for the moment, we’re ignoring BUM flooding).</p>
-<div class='separator'><a href="http://4.bp.blogspot.com/-9PbiF9XHDzs/UgOXNESe6cI/AAAAAAAAGCg/hGlHhqMqKPU/s1600/NVP_CP_2_OF.png" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-9PbiF9XHDzs/UgOXNESe6cI/AAAAAAAAGCg/hGlHhqMqKPU/s550/NVP_CP_2_OF.png" /></a></div>
+<div class="separator"><a href="/2013/08/s1600-NVP_CP_2_OF.png" imageanchor="1"><img border="0" src="/2013/08/s550-NVP_CP_2_OF.png"/></a></div>
 <h4>Adding a third VM and host</h4><p>When the user starts a third VM in the same segment on host C, two things have to happen:</p>
 <ul class="ListParagraph"><li>NVP controller must tell the ovsdb-daemon on all three hosts to create new tunnel interfaces and connect them to the correct OVS datapath;</li>
 <li>NVP controller downloads new flow entries to OVS switches on all three hosts.</li>
 </ul>
-<div class='separator'><a href="http://4.bp.blogspot.com/-Rhgs9UWO4Hc/UgOXepkNTWI/AAAAAAAAGCo/CkhT7PSxBmI/s1600/NVP_CP_3_OF.png" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-Rhgs9UWO4Hc/UgOXepkNTWI/AAAAAAAAGCo/CkhT7PSxBmI/s560/NVP_CP_3_OF.png" /></a></div>
+<div class="separator"><a href="/2013/08/s1600-NVP_CP_3_OF.png" imageanchor="1"><img border="0" src="/2013/08/s560-NVP_CP_3_OF.png"/></a></div>
 <h4>BUM flooding</h4><p>And now let's stop handwaving the BUM flooding under the carpet. NVP supports two mechanisms to implement flooding within a virtual layer-2 segment:</p>
 <p><strong>Flooding through a service node</strong> – all hypervisors send the BUM traffic to a service node (an extra server that can serve numerous virtual segments) which replicates the traffic and sends it to all hosts within the same segment. We would need a few extra tunnels and a handful of OpenFlow entries to implement the service node-based flooding in our network:</p>
-<div class='separator'><a href="http://4.bp.blogspot.com/-2EankETOLqM/UgOXvJDb1tI/AAAAAAAAGCw/4AmNiINEsyk/s1600/NVP_CP_ServiceNode.jpg" imageanchor="1" ><img border="0" src="http://4.bp.blogspot.com/-2EankETOLqM/UgOXvJDb1tI/AAAAAAAAGCw/4AmNiINEsyk/s550/NVP_CP_ServiceNode.jpg" /></a></div>
+<div class="separator"><a href="/2013/08/s1600-NVP_CP_ServiceNode.jpg" imageanchor="1"><img border="0" src="/2013/08/s550-NVP_CP_ServiceNode.jpg"/></a></div>
 <p class="note">If the above description causes you heartburn caused by ATM LANE flashbacks, you’re not the only one ... but obviously the number of solutions to a certain networking problem isn’t infinite.</p>
 <p>You can also tell the NVP controller to use source node replication – the source hypervisor sends unicast copies of an encapsulated BUM frame to all other hypervisors participating in the same virtual segment. </p>
 <p>These are the flow entries that an NVP controller would configure in our network when using source node replication:</p>
-<div class='separator'><a href="http://2.bp.blogspot.com/-CRXa4Vt9sME/UgOX-OtqY_I/AAAAAAAAGC4/PzT-DW4yRiI/s1600/NVP_CP_SourceNode.jpg" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-CRXa4Vt9sME/UgOX-OtqY_I/AAAAAAAAGC4/PzT-DW4yRiI/s550/NVP_CP_SourceNode.jpg" /></a></div>
+<div class="separator"><a href="/2013/08/s1600-NVP_CP_SourceNode.jpg" imageanchor="1"><img border="0" src="/2013/08/s550-NVP_CP_SourceNode.jpg"/></a></div>
 <h4>More Information</h4><p>To learn more about Nicira NVP and VMware NSX, <a href="http://nsx.eventbrite.com/?ref=blog">register</a> for the free <a href="http://nsx.eventbrite.com/?ref=blog">VMware NSX Architecture</a> webinar. </p>
 <p>To get a bigger picture, start with <a href="http://www.ipspace.net/Cloud_Computing_Networking">Cloud Computing Networking</a> webinar, and register for the <a href="http://overlaynetworks.eventbrite.com/?ref=blog">Overlay Virtual Networking</a> one.</p>
 

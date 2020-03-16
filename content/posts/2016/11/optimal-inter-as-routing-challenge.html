@@ -9,15 +9,15 @@ tags: [ Design,BGP,IP routing ]
 <li>Links within access network are way slower than links within core network;</li>
 <li>Customer would like to have optimal core-to-access traffic flow.</li>
 </ul>
-<p><strong>Challenge:</strong> what&rsquo;s the simplest possible configuration to get it done?<!--more--></p>
-<h4>The big picture</h4><p>Here&rsquo;s the simplified network diagram:</p>
-<div class='separator'><a href="https://3.bp.blogspot.com/-wiUc0JWDenQ/WBhIJtYCryI/AAAAAAAAIno/Ibo6jNFs5fEkcBMX1S5y0FwPqs1Bh7JrQCLcB/s1600/Inter-AS%2BDiagram.png" imageanchor="1" ><img border="0" src="https://3.bp.blogspot.com/-wiUc0JWDenQ/WBhIJtYCryI/AAAAAAAAIno/Ibo6jNFs5fEkcBMX1S5y0FwPqs1Bh7JrQCLcB/s550/Inter-AS%2BDiagram.png" /></a></div>
+<p><strong>Challenge:</strong> what’s the simplest possible configuration to get it done?<!--more--></p>
+<h4>The big picture</h4><p>Here’s the simplified network diagram:</p>
+<div class="separator"><a href="/2016/11/s1600-Inter-AS+Diagram.png" imageanchor="1"><img border="0" src="/2016/11/s550-Inter-AS+Diagram.png"/></a></div>
 <p>Links within the access network (A1 to A2, for example) are way slower than parallel links within the core network (C1 to C2) if they exist at all. Traffic sent from core network into the access network should therefore use the optimal egress point. For example, traffic sent to E1 should be sent through A1 and not A2 or A3.</p>
-<h4>The Problem</h4><p>As we have parallel EBGP sessions between the autonomous systems, MED is the best tool for the job (assuming the core network doesn&rsquo;t use local preference), but how do you set MED on the access network routers?</p>
-<p>In a simple IP network, you could redistribute access network IGP prefixes into BGP on the routers connecting access AS to core AS (A1&hellip;A3). IGP cost would be automatically copied into MED. Mission accomplished.</p>
-<p>Unfortunately, this customer uses L3VPN, and the user prefixes are advertised into BGP as VPNv4 prefixes on the PE routers (E1 &hellip; E3 in our diagram). Setting MED at that point makes no sense.</p>
-<h4>Getting It Done</h4><p>What we need is a way of indicating the cost of transit from A1&hellip;A3 to E1&hellip;E3 with the MED attribute set on A1&hellip;A3. Ideally, we&rsquo;d have a mechanism to copy IGP cost toward the BGP next hop into MED attribute, only I haven&rsquo;t found one in Cisco IOS (that the customer is using). If I missed something, please write a comment.</p>
-<p>Alternatively, one could tag routes originated on E1&hellip;E3 with BGP communities and use route maps on A1&hellip;A3 to set MED values based on those communities, but that seems clunky.</p>
-<p>Finally, one could use an SDN controller as a route reflector and set desired MED values on the SDN controller&hellip; only I&rsquo;m not aware of an SDN controller that would be doing that.</p>
-<p>Anything else I&rsquo;ve missed apart from using a single IGP and <strong>next-hop-unchanged </strong>which is a nonstarter? Feedback highly appreciated!</p>
+<h4>The Problem</h4><p>As we have parallel EBGP sessions between the autonomous systems, MED is the best tool for the job (assuming the core network doesn’t use local preference), but how do you set MED on the access network routers?</p>
+<p>In a simple IP network, you could redistribute access network IGP prefixes into BGP on the routers connecting access AS to core AS (A1…A3). IGP cost would be automatically copied into MED. Mission accomplished.</p>
+<p>Unfortunately, this customer uses L3VPN, and the user prefixes are advertised into BGP as VPNv4 prefixes on the PE routers (E1 … E3 in our diagram). Setting MED at that point makes no sense.</p>
+<h4>Getting It Done</h4><p>What we need is a way of indicating the cost of transit from A1…A3 to E1…E3 with the MED attribute set on A1…A3. Ideally, we’d have a mechanism to copy IGP cost toward the BGP next hop into MED attribute, only I haven’t found one in Cisco IOS (that the customer is using). If I missed something, please write a comment.</p>
+<p>Alternatively, one could tag routes originated on E1…E3 with BGP communities and use route maps on A1…A3 to set MED values based on those communities, but that seems clunky.</p>
+<p>Finally, one could use an SDN controller as a route reflector and set desired MED values on the SDN controller… only I’m not aware of an SDN controller that would be doing that.</p>
+<p>Anything else I’ve missed apart from using a single IGP and <strong>next-hop-unchanged </strong>which is a nonstarter? Feedback highly appreciated!</p>
 

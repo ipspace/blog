@@ -7,7 +7,7 @@ tags: [ Data Center,http,load balancing ]
 <p>Another day, another stateful debate, this time centered on the number of flows per hypervisor. Previously I <a href="http://blog.ipspace.net/2013/09/openflow-and-fermi-estimates.html">guestimated 2.500 connections-per-second-per-(user-facing)gigabit and 37.500 concurrent sessions per user-facing gigabit</a>, but wanted to align my numbers with reality before reaching any conclusions.</p>
 <p>My web sites are way too small, so I asked a few of my friends to help me get more realistic figures.<!--more--></p>
 <p>Specifically, I asked for outputs of</p>
-<pre class="code">$ netstat –n –t | grep ESTABLISHED | wc –l<br />$ netstat –n –t | grep ESTABLISHED | grep '<em>:HTTP-SERVER-PORT ' </em>| wc –l<br />$ ss -s</pre><p class='more'>Willing to share your numbers? Please post them in a comment. Thank you!</p>
+<pre class="code">$ netstat –n –t | grep ESTABLISHED | wc –l<br/>$ netstat –n –t | grep ESTABLISHED | grep '<em>:HTTP-SERVER-PORT ' </em>| wc –l<br/>$ ss -s</pre><p class="more">Willing to share your numbers? Please post them in a comment. Thank you!</p>
 <h4>Initial results</h4><p>I expected to see approximately three categories of web sites:</p>
 <ul class="ListParagraph"><li>Sites with small number of sessions (similar to my web sites);</li>
 <li>Higher-volume sites with incoming connections load-balanced across a scale-out farm of web servers;</li>
@@ -16,9 +16,9 @@ tags: [ Data Center,http,load balancing ]
 <p>However, I was still amazed how closely grouped the higher-volume web sites were. Almost all printouts I got back (from news portal, regional search engine, municipal, academic ... web sites) indicated individual servers had approximately 1000 sessions. Sometimes these sessions were mostly user sessions, sometimes almost half of them weren’t (typical for dynamic content fetched from a back-end database).</p>
 <p>Based on this totally unscientific anecdata sample it seems it’s somewhat safe to assume a typical web server having between 1000 and 2000 sessions (more if it uses modern application architecture with a farm of <em>Memcached</em> servers). </p>
 <h4>Estimating the number of sessions per Gbps</h4><p>Someone was kind enough to send me load balancer printouts:</p>
-<div class='separator'><a href="http://1.bp.blogspot.com/-x7YXiStKWFE/Ul1cpnyYzOI/AAAAAAAAGL0/1PmgcexDuI0/s1600/Estimate_Throughput.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-x7YXiStKWFE/Ul1cpnyYzOI/AAAAAAAAGL0/1PmgcexDuI0/s400/Estimate_Throughput.png" /></a><br />Load balancer throughput </div>
-<div class='separator'><a href="http://3.bp.blogspot.com/-Nnqve9rwDrs/Ul1cpnRoZtI/AAAAAAAAGL8/smFzPaL4RuM/s1600/Estimate_CPS.png" imageanchor="1" ><img border="0" src="http://3.bp.blogspot.com/-Nnqve9rwDrs/Ul1cpnRoZtI/AAAAAAAAGL8/smFzPaL4RuM/s400/Estimate_CPS.png" /></a><br />New connections per second </div>
-<div class='separator'><a href="http://1.bp.blogspot.com/-hSSWjbaOgKo/Ul1cpixyo9I/AAAAAAAAGL4/k3VxH3iewy4/s1600/Estimate_MaxConn.png" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-hSSWjbaOgKo/Ul1cpixyo9I/AAAAAAAAGL4/k3VxH3iewy4/s400/Estimate_MaxConn.png" /></a><br />Maximum number of connections </div>
+<div class="separator"><a href="/2013/10/s1600-Estimate_Throughput.png" imageanchor="1"><img border="0" src="/2013/10/s400-Estimate_Throughput.png"/></a><br/>Load balancer throughput </div>
+<div class="separator"><a href="/2013/10/s1600-Estimate_CPS.png" imageanchor="1"><img border="0" src="/2013/10/s400-Estimate_CPS.png"/></a><br/>New connections per second </div>
+<div class="separator"><a href="/2013/10/s1600-Estimate_MaxConn.png" imageanchor="1"><img border="0" src="/2013/10/s400-Estimate_MaxConn.png"/></a><br/>Maximum number of connections </div>
 <p>Using these printouts it’s pretty easy to estimate</p>
 <ul class="ListParagraph"><li>Average session bandwidth (bandwidth / active connections) = ~8 kbps</li>
 <li>Number of active sessions per gigabit = ~120K</li>

@@ -8,9 +8,9 @@ tags: [ MPLS,BGP,IP routing ]
 <p>A while ago I read <a href="http://inl.info.ucl.ac.be/system/files/igpmig_bgp_tr.pdf"><em>Impact of Graceful IGP Operations on BGP</em></a> – an article that described how changes in IGP topology result in temporary (or sometimes even permanent) forwarding loops in networks using BGP route reflectors. </p>
 <p>Is the problem real? Yes, it is. Could you generate a BGP RR topology that results in a permanent forwarding loop? Yes. It’s not that hard.<!--more--></p>
 <h4>I Think I Broke It</h4><p>Here’s a particularly broken topology (connections with arrows are BGP sessions, R1 and R2 are route reflectors, all other routers are their clients).</p>
-<div class='separator'><a href="http://2.bp.blogspot.com/-dq1gpB2ySPM/UlJLA74n0FI/AAAAAAAAGKg/GJpejU1m7F0/s1600/BGP_RR_Broken.png" imageanchor="1" ><img border="0" src="http://2.bp.blogspot.com/-dq1gpB2ySPM/UlJLA74n0FI/AAAAAAAAGKg/GJpejU1m7F0/s500/BGP_RR_Broken.png" /></a></div>
+<div class="separator"><a href="/2013/10/s1600-BGP_RR_Broken.png" imageanchor="1"><img border="0" src="/2013/10/s500-BGP_RR_Broken.png"/></a></div>
 <p>Assuming E1 and E2 advertise an identical external prefix (<em>IP-External</em>) over their IBGP sessions, this topology results in a permanent forwarding loop. Can you figure out why that’s the case?</p>
-<div class='warn'>Although the above topology looks utterly silly, you might get dangerously close to it in a well-designed network after one or more IBGP session failures.</div>
+<div class="warn">Although the above topology looks utterly silly, you might get dangerously close to it in a well-designed network after one or more IBGP session failures.</div>
 <h4>Route Reflector Is Just a Router</h4><p>A BGP route reflector is nothing more than a regular BGP router with <a href="http://blog.ipspace.net/2008/08/bgp-route-reflector-details.html">a few route propagation rules bolted onto the update generation code</a>. It still follows all the rules of BGP route processing:</p>
 <ul class="ListParagraph"><li>Receive routes from BGP peers;</li>
 <li>Install all (accepted) routes into BGP RIB;</li>

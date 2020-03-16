@@ -8,10 +8,22 @@ tags: [ IPv6,Workshop ]
 <blockquote class="cite">Could you explain further why it is better to choose 6PE over running IPv6 in the core? I have to implement IPv6 where I work (a small ISP) and need to fully understand why I should choose a certain implementation.</blockquote>
 <p>Here’s a short decision tree that should help you make that decision:<!--more--></p>
 <p class="warn">The decision tree should help you answer the question: “should I use native IPv6 transport or IPv6-over-MPLS for the global IPv6 connectivity?” L2/L3 VPN services are out of scope.</p>
-<hr /><p style='margin-bottom: 0'>Do you already have MPLS in your network?</p>
-<ul style='margin-top: 0'>  <li><em>Yes</em>: Do you use features like MPLS TE or FRR?</li>  <ul><li><em>Yes</em>: you must use 6PE.</li>
-<li><em>No</em>: you could run IPv6 natively. Do you run BGP (for Internet services) on all core routers?</li>    <ul><li><em>No: </em>Don’t change the network design, use 6PE.</li>
-<li><em>Yes:</em> You could run either native IPv6 or 6PE. Native IPv6 requires IPv6 deployment on all core routers. 6PE needs IPv6 only on PE routers and route reflectors.</li>    </ul>  </ul>  <li><em>No</em>: Are you willing to deploy MPLS?</li>  <ul>    <li><em>No</em>: Forget 6PE, use native IPv6.</li>    <li><em>Yes</em>: Will you deploy IPv6 gradually (only on a few PE-routers)?</li>    <ul>      <li><em>Yes</em>: Introduction of MPLS and 6PE might make sense.</li>      <li><em>No</em>:  Forget it, doesn't make sense to introduce MPLS just for IPv6</li>    </ul>  </ul>
-</ul><hr /><h4>More information</h4><p>To get an initial overview of what’s needed to deploy IPv6 in your network, watch the <a href="http://www.ipspace.net/Service_Provider_IPv6_Introduction"><em>Service Provider IPv6 Introduction</em></a> or <a href="http://www.ipspace.net/Enterprise_IPv6_-_the_First_Steps"><em>Enterprise IPv6 – the first steps</em></a> webinar. You’ll find network core design and deployment guidelines in the <a href="http://www.ipspace.net/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider Core</em></a> webinar; IPv6 access network design and deployment are described in the <a href="http://spipv6-blog.eventbrite.com/"><em>Building Large IPv6 Access Networks</em></a> webinar. You get access to all four webinars (and a <a href="http://www.ipspace.net/Recordings">dozen more</a>) with the <a href="http://www.ipspace.net/Subscription">yearly subscription</a>.</p>
+<hr/><p style="margin-bottom: 0">Do you already have MPLS in your network?</p>
+<ul style="margin-top: 0"> <li><em>Yes</em>: Do you use features like MPLS TE or FRR?</li>
+<ul><li><em>Yes</em>: you must use 6PE.</li>
+<li><em>No</em>: you could run IPv6 natively. Do you run BGP (for Internet services) on all core routers?</li>
+<ul><li><em>No: </em>Don’t change the network design, use 6PE.</li>
+<li><em>Yes:</em> You could run either native IPv6 or 6PE. Native IPv6 requires IPv6 deployment on all core routers. 6PE needs IPv6 only on PE routers and route reflectors.</li>
+</ul>
+</ul>
+<li><em>No</em>: Are you willing to deploy MPLS?</li>
+<ul> <li><em>No</em>: Forget 6PE, use native IPv6.</li>
+<li><em>Yes</em>: Will you deploy IPv6 gradually (only on a few PE-routers)?</li>
+<ul> <li><em>Yes</em>: Introduction of MPLS and 6PE might make sense.</li>
+<li><em>No</em>:  Forget it, doesn't make sense to introduce MPLS just for IPv6</li>
+</ul>
+</ul>
+</ul>
+<hr/><h4>More information</h4><p>To get an initial overview of what’s needed to deploy IPv6 in your network, watch the <a href="http://www.ipspace.net/Service_Provider_IPv6_Introduction"><em>Service Provider IPv6 Introduction</em></a> or <a href="http://www.ipspace.net/Enterprise_IPv6_-_the_First_Steps"><em>Enterprise IPv6 – the first steps</em></a> webinar. You’ll find network core design and deployment guidelines in the <a href="http://www.ipspace.net/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider Core</em></a> webinar; IPv6 access network design and deployment are described in the <a href="http://spipv6-blog.eventbrite.com/"><em>Building Large IPv6 Access Networks</em></a> webinar. You get access to all four webinars (and a <a href="http://www.ipspace.net/Recordings">dozen more</a>) with the <a href="http://www.ipspace.net/Subscription">yearly subscription</a>.</p>
 <h4>Need help?</h4><p>I can <a href="http://www.ipspace.net/ExpertExpress">review your design</a> or you could <a href="http://www.nil.com/solutions/">engage our professional services team</a> in a <a href="http://www.nil.com/solutions/ipv6-deployment-services/">full-blown network design/implementation project</a> or <a href="http://www.nil.com/solutions/content-customization-and-development/">customized</a> on-site training/design workshop (some <a href="http://www.nil.com/case-studies/amway-ipv6/">global organizations already did</a>).</p>
 

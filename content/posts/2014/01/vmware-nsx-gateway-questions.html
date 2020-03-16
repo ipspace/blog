@@ -6,7 +6,7 @@ media: http://media.blubrry.com/ipspace/www.ipspace.net/nuggets/podcast/4.1%20-%
 ---
 
 <p>Gordon sent me a whole list of NSX gateway questions:</p>
-<blockquote class='cite'><ul class="ListParagraph"><li>Do you need a virtual gateway for each VXLAN segment or can a gateway be the entry/exit point across multiple VXLAN segments? </li>
+<blockquote class="cite"><ul class="ListParagraph"><li>Do you need a virtual gateway for each VXLAN segment or can a gateway be the entry/exit point across multiple VXLAN segments? </li>
 <li>Can you setup multiple gateways and specify which VXLAN segments use each gateway?</li>
 <li>Can you cluster gateways together (Active/Active) or do you setup them up as Active/Standby?</li>
 </ul>
@@ -15,12 +15,12 @@ media: http://media.blubrry.com/ipspace/www.ipspace.net/nuggets/podcast/4.1%20-%
 <h4>Gateways in NSX for multiple hypervisors release 4.0</h4><p>NSX gateways are implemented on <em>NSX </em><em>gateway transport </em><em>nodes</em> which run on bare-metal servers or in dedicated VMs. NSX also supports third-party L2 gateways (VTEPs) with VXLAN encapsulation.</p>
 <p>Each gateway node can run multiple instances of L2 or L3 gateway services (but not both). Each L2 gateway service can bridge between numerous overlay networks and VLANs (there must be a 1:1 mapping between an overlay network segment and an outside VLAN), each L3 gateway service can route between numerous logical networks and a single uplink.</p>
 <p>Each gateway service can run on two gateway nodes in Active/Standby mode.</p>
-<h4>Gateways in NSX for vSphere release 6.0</h4><p class='update'>2014-01-10 10:23Z: L2 bridge information updated based on feedback from Dmitri Kalintsev. Thank you!</p>
+<h4>Gateways in NSX for vSphere release 6.0</h4><p class="update">2014-01-10 10:23Z: L2 bridge information updated based on feedback from Dmitri Kalintsev. Thank you!</p>
 <p>Control plane of every NSX gateway is always implemented in a VM running NSX Edge software. Data plane of L2 gateways and distributed routers is implemented in loadable kernel modules, data plane of NSX Edge services gateway is implemented within the VM (like the traditional vShield Edge).</p>
 <p>Each L2 bridge connects a single VXLAN segment to a VLAN segment. A single NSX Edge router VM can control multiple L2 bridges.</p>
 <p>NSX Edge router (running just the control plane) can have up to eight uplinks and up to 1000 internal (VXLAN-based) interfaces. NSX Edge services gateway (with data plane implemented within the VM) can have up to ten interfaces (the well-known vSphere limit on the number of interfaces of a single VM). Multiple NSX Edge routers or NSX Edge services gateways can run on the same vSphere host.</p>
 <p>Each NSX Edge instance can run in Active/Standby HA mode.</p>
-<p class='info'>In theory you might have more than one NSX Edge instance connecting a VXLAN segment with the outside world, but even if the NSX Manager software allows you to configure that, I wouldn’t push my luck.</p>
+<p class="info">In theory you might have more than one NSX Edge instance connecting a VXLAN segment with the outside world, but even if the NSX Manager software allows you to configure that, I wouldn’t push my luck.</p>
 <h4>More information</h4><p>Have you watched the <a href="http://demo.ipspace.net/get/NSXArch#Videos">free VMware NSX Architecture videos?</a> Try these if you’re interested in NSX gateways:</p>
 <ul class="ListParagraph"><li><a href="http://demo.ipspace.net/get/4.1%20-%20Layer-2%20Gateways.mp4">VMware NSX layer-2 gateways</a>;</li>
 <li><a href="http://demo.ipspace.net/get/4.2%20-%20Layer-3%20Gateways.mp4">VMware NSX layer-3 gateways</a>;</li>

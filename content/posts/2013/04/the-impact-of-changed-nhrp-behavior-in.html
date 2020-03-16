@@ -7,7 +7,7 @@ tags: [ firewalls,DMVPN,ipsec ]
 <p>Two years ago I wrote the another <a href="http://en.wikipedia.org/wiki/Fermat's_Last_Theorem">Fermatish</a> post: I described how <a href="http://blog.ioshints.info/2011/04/dmvpn-spoke-nhrp-behavior-changed-in.html">NHRP behavior changed in DMVPN networks using NAT</a> and claimed that it might be a huge problem, without ever explaining what the problem is.</p>
 <p>Fabrice <a href="http://blog.ioshints.info/2011/04/dmvpn-spoke-nhrp-behavior-changed-in.html?showComment=1304374254012#c7665983883544403504">quickly identified the problem</a>, but it seems the description was not explicit enough as I’m still getting queries about that post ... so here’s a step-by-step description of what’s going on.<!--more--></p>
 <p>A single DMVPN network has two hubs and two spokes. Spokes are behind NAT boxes (e.g. cable/DSL modems) that prevent IPsec session between the spokes to be established.</p>
-<div class='separator'><a href="http://1.bp.blogspot.com/-9yVF1IaSIm4/UVrIwDaAmnI/AAAAAAAAFsE/wza-dxY80JQ/s1600/DMVPN_NHRP_Problem.jpg" imageanchor="1" ><img border="0" src="http://1.bp.blogspot.com/-9yVF1IaSIm4/UVrIwDaAmnI/AAAAAAAAFsE/wza-dxY80JQ/s450/DMVPN_NHRP_Problem.jpg" /></a></div>
+<div class="separator"><a href="/2013/04/s1600-DMVPN_NHRP_Problem.jpg" imageanchor="1"><img border="0" src="/2013/04/s450-DMVPN_NHRP_Problem.jpg"/></a></div>
 <p>When Spoke-A tries to establish communication with Spoke-B, the following events take place:</p>
 <ol class="ListParagraph"><li>Spoke A sends NHRP request for Spoke B to one of the hub routers (H1).</li>
 <li>At the same time spoke A creates fake NHRP entry for B pointing to H1 (this is the crux of the changes introduced in 15.0M).</li>

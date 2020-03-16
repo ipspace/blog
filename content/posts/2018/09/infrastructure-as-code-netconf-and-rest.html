@@ -4,21 +4,21 @@ date: "2018-09-19T08:18:00.000+02:00"
 tags: [ Automation,AWS ]
 ---
 
-<p><em>This is the </em><em>third </em><em>blog post in &ldquo;thinking out loud while preparing Network Infrastructure as Code presentation for the&nbsp;</em><a href="https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog"><em>network automation course</em></a><em>&rdquo; series. </em><em>Y</em><em>ou might want to&nbsp;</em><em>start with </em><a href="https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html"><em>Network-Infrastructure-as-Code Is Nothing New</em></a><em> and </em><a href="https://blog.ipspace.net/2018/09/adjusting-system-state-with.html"><em>Adjusting System State</em></a><em> blog posts.</em></p>
-<p>As I described in the previous blog post, the hardest problem any infrastructure-as-code (IaC) tool must solve is &ldquo;<em>how to adjust current system state to desired state described in state definition file(s)</em>&rdquo;&hellip; preferably without restarting or rebuilding the system.</p>
+<p><em>This is the </em><em>third </em><em>blog post in “thinking out loud while preparing Network Infrastructure as Code presentation for the </em><a href="https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog"><em>network automation course</em></a><em>” series. </em><em>Y</em><em>ou might want to </em><em>start with </em><a href="https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html"><em>Network-Infrastructure-as-Code Is Nothing New</em></a><em> and </em><a href="https://blog.ipspace.net/2018/09/adjusting-system-state-with.html"><em>Adjusting System State</em></a><em> blog posts.</em></p>
+<p>As I described in the previous blog post, the hardest problem any infrastructure-as-code (IaC) tool must solve is “<em>how to adjust current system state to desired state described in state definition file(s)</em>”… preferably without restarting or rebuilding the system.</p>
 <p>There are two approaches to adjusting system state:<!--more--></p>
 <ul class="ListParagraph"><li><strong>Data model</strong> based approach: overall system state is described as a data model that can be read and manipulated with API calls. NETCONF is often used to manipulate data model of networking devices.</li>
-<li><strong>CRUD </strong>(Create, Read, Update, Delete) approach where API provides a gazillion calls to list, read, and manipulate individual objects. OpenStack, AWS, NSX, ACI&hellip; are typical examples of this approach.</li>
+<li><strong>CRUD </strong>(Create, Read, Update, Delete) approach where API provides a gazillion calls to list, read, and manipulate individual objects. OpenStack, AWS, NSX, ACI… are typical examples of this approach.</li>
 </ul>
 <h4>Replacing a Data Model</h4><p>Implementing IaC for devices that allow you to <strong>replace system state</strong> is trivial (see <a href="https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html">previous blog post</a>), although one might get into interesting challenges when dealing with devices where system state is described in arcane domain-specific language (example: Cisco IOS configuration) instead of easy-to-parse data structures (like XML or JSON). </p>
-<p>Even if your tool doesn&rsquo;t generate full system state that can be used as a replacement for existing state it can:</p>
+<p>Even if your tool doesn’t generate full system state that can be used as a replacement for existing state it can:</p>
 <ul class="ListParagraph"><li>Read system state;</li>
 <li>Adjust the resulting data structure based on desired (sub)state of the system;</li>
 <li>Replace system state.</li>
 </ul>
-<h4>Adjusting System State Data Model</h4><p>Adjusting system state for devices that use a data model based approach but don&rsquo;t support an equivalent of <strong>configure replace </strong>functionality is reasonable easy <em>assuming we&rsquo;re dealing with data structures</em>:</p>
+<h4>Adjusting System State Data Model</h4><p>Adjusting system state for devices that use a data model based approach but don’t support an equivalent of <strong>configure replace </strong>functionality is reasonable easy <em>assuming we’re dealing with data structures</em>:</p>
 <ul class="ListParagraph"><li>Read system state;</li>
-<li>Compare current state with desired state &ndash; keep in mind that we&rsquo;re dealing with data structures, and implementing a recursive data structure diff is a simple programming exercise;</li>
+<li>Compare current state with desired state – keep in mind that we’re dealing with data structures, and implementing a recursive data structure diff is a simple programming exercise;</li>
 <li>Tell the device to implement the differences between current and desired state. </li>
 </ul>
 <p>Obviously this approach only works if the device is able to (A) generate current state as a data structure and (B) accept differences as a data structure and implement them.</p>
@@ -30,6 +30,6 @@ tags: [ Automation,AWS ]
 <li>Figure out which objects to delete, modify, or create based on the desired final state of the system;</li>
 <li>Perform create/delete/modify operations in just the right order based on inter-object dependencies. For example, you cannot attach a VM to a virtual network before the virtual network is created.</li>
 </ul>
-<p>Does this remind you of the way we were configuring network devices in the past&hellip; executing carefully orchestrated dance of configuration commands (now API calls) to get from where we were to where we wanted to be? One has to wonder why some people prefer to call this <em>progress </em>and why they&rsquo;re so <a href="https://blog.ipspace.net/2018/04/dont-get-obsessed-with-rest-api.html">obsessed with REST API</a>.</p>
-<p>Finally, let me mention that most orchestration systems, cloud management systems, SDN controllers and intent-based networking products I&rsquo;ve seen use this approach. Go figure.</p>
+<p>Does this remind you of the way we were configuring network devices in the past… executing carefully orchestrated dance of configuration commands (now API calls) to get from where we were to where we wanted to be? One has to wonder why some people prefer to call this <em>progress </em>and why they’re so <a href="https://blog.ipspace.net/2018/04/dont-get-obsessed-with-rest-api.html">obsessed with REST API</a>.</p>
+<p>Finally, let me mention that most orchestration systems, cloud management systems, SDN controllers and intent-based networking products I’ve seen use this approach. Go figure.</p>
 

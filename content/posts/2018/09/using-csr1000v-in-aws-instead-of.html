@@ -4,27 +4,27 @@ date: "2018-09-20T07:34:00.000+02:00"
 tags: [ cloud,IP routing,AWS ]
 ---
 
-<p>As anyone starting their journey into AWS quickly discovers, <a href="https://blog.ipspace.net/2018/05/amazon-web-services-networking-overview.html"><em>cloud is different</em></a> (or as I wrote in the <a href="https://www.ipspace.net/Amazon_Web_Services_Networking_(Workshop)">description of my AWS workshop</a> <em>you feel like Alice in Wonderland</em>). One of the gotchas: when you link multiple routing domains (Virtual Private Clouds &ndash; the other VPC) you have to create static routing table entries on both ends. Even worse, there&rsquo;s no <em>transit VPC </em>&ndash; you have to build a full mesh of relationships.</p>
+<p>As anyone starting their journey into AWS quickly discovers, <a href="https://blog.ipspace.net/2018/05/amazon-web-services-networking-overview.html"><em>cloud is different</em></a> (or as I wrote in the <a href="https://www.ipspace.net/Amazon_Web_Services_Networking_(Workshop)">description of my AWS workshop</a> <em>you feel like Alice in Wonderland</em>). One of the gotchas: when you link multiple routing domains (Virtual Private Clouds – the other VPC) you have to create static routing table entries on both ends. Even worse, there’s no <em>transit VPC </em>– you have to build a full mesh of relationships.</p>
 <p>The correct solution to this challenge is automation:<!--more--></p>
 <ul class="ListParagraph"><li>Define what prefixes exist in each VPC;</li>
 <li>Define which VPC has to communicate with which other VPC (or just decide to build a full mesh);</li>
-<li>Use an Ansible playbook (or a gazillion other tools) to adjust VPC peering sessions and static routes whenever there&rsquo;s a change in addressing or connectivity requirements.</li>
+<li>Use an Ansible playbook (or a gazillion other tools) to adjust VPC peering sessions and static routes whenever there’s a change in addressing or connectivity requirements.</li>
 </ul>
 <p class="info">Sounds like gobbledygook? <a href="https://www.ipspace.net/Amazon_Web_Services_Networking">Amazon Web Services Networking</a> webinar might help you.</p>
-<p>Not surprisingly, there are large environments out there that are incapable to get such a simple idea off the ground for Layer 8-to-10 reasons&hellip; and whenever vendors identify potential lack of competence, they&rsquo;re quick to fill that niche with yet another product.</p>
-<p>There are orchestration tools out there that do exactly what I described. Then there are networking vendors using &ldquo;<em>if all I have is a router, everything looks like a routing/forwarding problem</em>&rdquo; approach. Here&rsquo;s how Cisco and a few competitors propose you &ldquo;solve&rdquo; this challenge:</p>
+<p>Not surprisingly, there are large environments out there that are incapable to get such a simple idea off the ground for Layer 8-to-10 reasons… and whenever vendors identify potential lack of competence, they’re quick to fill that niche with yet another product.</p>
+<p>There are orchestration tools out there that do exactly what I described. Then there are networking vendors using “<em>if all I have is a router, everything looks like a routing/forwarding problem</em>” approach. Here’s how Cisco and a few competitors propose you “solve” this challenge:</p>
 <ul class="ListParagraph"><li>Create transit VPC with public Internet access;</li>
 <li>Deploy CSR1000V (or an equivalent product) in the transit VPC;</li>
-<li>Hey, make that two CSR1000Vs &ndash; redundancy is important;</li>
+<li>Hey, make that two CSR1000Vs – redundancy is important;</li>
 <li>Create IPsec tunnels between workload VPCs and transit VPC, and run BGP on them (see how they changed an orchestration problem into a routing problem?)</li>
-<li>CSR1000V in the transit VPC collect prefixes from workload VPCs and advertise them to all other workload VPCs. If you believe in &ldquo;<em>whatever the question, BGP is the answer</em>&rdquo; approach, you can use BGP communities and route maps to control the inter-VPC connectivity.</li>
+<li>CSR1000V in the transit VPC collect prefixes from workload VPCs and advertise them to all other workload VPCs. If you believe in “<em>whatever the question, BGP is the answer</em>” approach, you can use BGP communities and route maps to control the inter-VPC connectivity.</li>
 </ul>
-<p>Now let&rsquo;s see what&rsquo;s really going on:</p>
-<ul class="ListParagraph"><li>You&rsquo;re paying CSR1000V licensing to Cisco;</li>
+<p>Now let’s see what’s really going on:</p>
+<ul class="ListParagraph"><li>You’re paying CSR1000V licensing to Cisco;</li>
 <li>AWS charges you for two extra VMs continuously running in transit VPC;</li>
-<li>You&rsquo;re paying for VPN traffic exiting workload VPC;</li>
-<li>You&rsquo;re paying for IPsec traffic exiting transit VPC.</li>
+<li>You’re paying for VPN traffic exiting workload VPC;</li>
+<li>You’re paying for IPsec traffic exiting transit VPC.</li>
 </ul>
-<p>All that might be cheaper than buying an orchestration system, or building a solution that provisions VPC connectivity&hellip; or not. As always, it depends &ndash; in this case on your size and traffic volume.</p>
-<p>We dug into these details during a <a href="https://techfieldday.com/appearance/cisco-multicloud-presents-at-tech-field-day-extra-at-cisco-live-europe/">Cisco Live Europe 2018 Networking Field Day</a> session &ndash; you might enjoy that conversation (I&rsquo;m not sure Cisco&rsquo;s presenter did).</p>
+<p>All that might be cheaper than buying an orchestration system, or building a solution that provisions VPC connectivity… or not. As always, it depends – in this case on your size and traffic volume.</p>
+<p>We dug into these details during a <a href="https://techfieldday.com/appearance/cisco-multicloud-presents-at-tech-field-day-extra-at-cisco-live-europe/">Cisco Live Europe 2018 Networking Field Day</a> session – you might enjoy that conversation (I’m not sure Cisco’s presenter did).</p>
 

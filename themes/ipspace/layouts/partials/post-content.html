@@ -36,22 +36,23 @@
     <div class='post__meta'>
       {{ partial "post-tags.html" . }}
       <div class='post__share-links'>
-        <a class='post__share-link'
-          href='https://www.blogger.com/share-post.g?blogID=23021255&postID=3622915111717232034&target=email'
-          target='_blank' title='Email This'>
-          <svg class='post__share-icon'>
-            <use xlink:href='#icon-mailinglist'></use>
-          </svg>
-        </a>
-        <a class='post__share-link'
-          href='https://www.blogger.com/share-post.g?blogID=23021255&postID=3622915111717232034&target=twitter'
-          target='_blank' title='Share to Twitter'>
+        {{ $url :=  .Permalink|safeURL }}
+        {{ $title := (printf "%s by @ioshints" .Title)|safeURL }}
+        {{ $tweet := printf "https://twitter.com/intent/tweet?text=%s&url=%s" $title $url }}
+        <a class='post__share-link' href='{{ $tweet }}' target='_blank' title='Share to Twitter'>
           <svg class='post__share-icon'>
             <use xlink:href='#icon-twitter'></use>
           </svg>
         </a>
-        <a class='post__share-link'
-          href='https://www.blogger.com/share-post.g?blogID=23021255&postID=3622915111717232034&target=facebook'
+        {{ $title := (printf "%s by @Ivan Pepelnjak" .Title)|safeURL }}
+        {{ $ln := printf "https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s" $url $title }}
+        <a class='post__share-link' href='{{ $ln }}' target='_blank' title='Share to LinkedIn'>
+          <svg class='post__share-icon'>
+            <use xlink:href='#icon-linkedin'></use>
+          </svg>
+        </a>
+        {{ $fb := printf "https://www.facebook.com/sharer/sharer.php?u=%s" $url }}
+        <a class='post__share-link' href='{{ $fb }}' target='_blank' title='Share to Facebook'
           onclick='window.open(this.href, "_blank", "height=430,width=640"); return false;' target='_blank'
           title='Share to Facebook'>
           <svg class='post__share-icon'>

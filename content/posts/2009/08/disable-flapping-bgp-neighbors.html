@@ -4,7 +4,7 @@ date: "2009-08-28T06:35:00.000+02:00"
 tags: [ BGP ]
 ---
 
-<div class="bloggerBody"><p><a href="http://wiki.nil.com/"><img src="http://www.ioshints.info/images/Wiki.png" class="ImgFLTright"></a>It looks like we’re bound to <a href="http://www.renesys.com/blog/2009/08/staring-into-the-gorge.shtml">experience a widespread BGP failure once every few months</a>. They all follow the same pattern:</p>
+<div class="bloggerBody"><p><a href="http://wiki.nil.com/"><img class="ImgFLTright" src="http://www.ioshints.info/images/Wiki.png"/></a>It looks like we’re bound to <a href="http://www.renesys.com/blog/2009/08/staring-into-the-gorge.shtml">experience a widespread BGP failure once every few months</a>. They all follow the same pattern:</p>
 <ul><li>A “somewhat” undertested BGP implementation starts advertising paths with “unexpected” set of attributes.</li>
 <li>A specific downstream BGP implementation (and it could be a different implementation every time) a few hops down the road hiccups and sends a BGP notification message to its upstream neighbor.</li>
 <li>BGP session must be reset following a notification message; the routes advertised over it are lost and withdrawn, causing widespread ripples across the Internet.</li>

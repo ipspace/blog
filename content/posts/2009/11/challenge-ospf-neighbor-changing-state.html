@@ -5,6 +5,6 @@ tags: [ OSPF ]
 ---
 
 <p>I’ve had an interesting discussion with Nicolas who optimized my <a href="http://wiki.nil.com/Report_interface_loss_based_on_OSPF_neighbor_loss">OSPF neighbor loss EEM applet</a> assuming the OSPF-5-ADJCHG message reports only OSPF neighbor state transitions from DOWN to FULL and from FULL to DOWN. I knew I'd seen stranger messages in my lab and was able to produce these ones after fumbling with OSPF configurations of two routers connected with a serial link:</p>
-<pre>*19:34:42.765: %OSPF-5-ADJCHG: Process 1, Nbr 10.0.1.1 on Serial1/0 from &rarr;<br />  EXSTART to DOWN, Neighbor Down: Too many retransmissions<br />*19:35:42.773: %OSPF-5-ADJCHG: Process 1, Nbr 10.0.1.1 on Serial1/0 from &rarr;<br />  DOWN to DOWN, Neighbor Down: Ignore timer expired</pre><p>The messages are repeated approximately every three minutes (using the default OSPF timers).</p>
+<pre>*19:34:42.765: %OSPF-5-ADJCHG: Process 1, Nbr 10.0.1.1 on Serial1/0 from →<br/>  EXSTART to DOWN, Neighbor Down: Too many retransmissions<br/>*19:35:42.773: %OSPF-5-ADJCHG: Process 1, Nbr 10.0.1.1 on Serial1/0 from →<br/>  DOWN to DOWN, Neighbor Down: Ignore timer expired</pre><p>The messages are repeated approximately every three minutes (using the default OSPF timers).</p>
 <p>Here's the challenge: what was going on and how was I able to produce these messages?</p>
 

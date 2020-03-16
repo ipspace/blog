@@ -5,7 +5,7 @@ tags: [ What went wrong,Internet ]
 ---
 
 <p>You might think that the <a href="http://blog.ioshints.info/2009/08/what-went-wrong-tcpip-lacks-session.html">lack of a decent session layer in the TCP/IP protocol suite</a> is the main culprit for our reliance on IP multihoming and <a href="http://blog.ioshints.info/2009/06/internet-anarchy-ill-advertise-whatever.html">related explosion of the IP routing tables</a>. Unfortunately, we have an even bigger problem: the <a href="http://en.wikipedia.org/wiki/Berkeley_sockets">Berkeley Socket API</a>, which is over 25 years old and used in almost all TCP/IP software implementations (including the high-level scripting languages like PERL).<!--more--></p>
-<p class='update'>Update 2016-07-08: gethostbyname is obsolete. Also added a reference to happy eyeballs which got popular after this blog post was written.</p>
+<p class="update">Update 2016-07-08: gethostbyname is obsolete. Also added a reference to happy eyeballs which got popular after this blog post was written.</p>
 <p>To establish a client-to-server connection using Socket API you have to perform these calls:</p>
 <ul class="Bullet1"><li>Create a socket with the <a href="http://en.wikipedia.org/wiki/Berkeley_sockets"><em>socket()</em></a> call</li>
 <li>Convert a hostname into a L3 address (IPv4 or IPv6) with the <a href="http://en.wikipedia.org/wiki/Getaddrinfo"><em>getaddrinfo()</em></a> or (obsolete) <a href="http://en.wikipedia.org/wiki/Berkeley_sockets"><em>gethostbyname()</em></a> call.</li>

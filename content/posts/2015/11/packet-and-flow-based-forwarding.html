@@ -4,21 +4,21 @@ date: "2015-11-30T08:58:00.000+01:00"
 tags: [ OpenFlow ]
 ---
 
-<p>I don&#x2019;t like to correct my friends in public, but if someone says &ldquo;<em>I still believe that flow-based technologies will exceed the capabilities of packet-based technologies</em>&rdquo; (see <a href="http://packetpushers.net/podcast/podcasts/network-break-53-apple-work-openflow-rising/">Network Break 53</a>), it&#x2019;s time to revisit the networking fundamentals.</p>
-<h4>What is a flow?</h4><p>According to Wikipedia (but what do they know&hellip;):<!--more--></p>
+<p>I don’t like to correct my friends in public, but if someone says “<em>I still believe that flow-based technologies will exceed the capabilities of packet-based technologies</em>” (see <a href="http://packetpushers.net/podcast/podcasts/network-break-53-apple-work-openflow-rising/">Network Break 53</a>), it’s time to revisit the networking fundamentals.</p>
+<h4>What is a flow?</h4><p>According to Wikipedia (but what do they know…):<!--more--></p>
 <blockquote class="cite">In <a href="https://en.wikipedia.org/wiki/Packet_switching">packet switching</a> networks, <strong>traffic flow</strong>, <strong>packet flow</strong> or network flow is a sequence of <a href="https://en.wikipedia.org/wiki/Packet_(information_technology)">packets</a> from a source <a href="https://en.wikipedia.org/wiki/Computer">computer</a> to a destination, which may be another host, a <a href="https://en.wikipedia.org/wiki/Multicast">multicast</a> group, or a <a href="https://en.wikipedia.org/wiki/Broadcast">broadcast</a> domain.</blockquote>
-<p>But maybe there&#x2019;s something beyond packet-switching networks? Sure, you have three fundamental options: </p>
+<p>But maybe there’s something beyond packet-switching networks? Sure, you have three fundamental options: </p>
 <ul class="ListParagraph"><li><a href="https://en.wikipedia.org/wiki/Frequency-division_multiplexing">Frequency-division multiplexing</a> (which includes radio and xWDM)</li>
-<li><a href="https://en.wikipedia.org/wiki/Time-division_multiplexing">Time-division multiplexing</a> (SONET, SDH, T1, E1&hellip;)</li>
-<li><a href="https://en.wikipedia.org/wiki/Statistical_time_division_multiplexing">Statistical multiplexing</a> (cells, frames, packets, datagrams&hellip;). </li>
+<li><a href="https://en.wikipedia.org/wiki/Time-division_multiplexing">Time-division multiplexing</a> (SONET, SDH, T1, E1…)</li>
+<li><a href="https://en.wikipedia.org/wiki/Statistical_time_division_multiplexing">Statistical multiplexing</a> (cells, frames, packets, datagrams…). </li>
 </ul>
-<p>There are no flows (apart from bit streams) in frequency- or time-division multiplexing, so we&#x2019;re left with statistical multiplexing, and if we call whatever we&#x2019;re switching &ldquo;packet&rdquo; every non-(F|T)DM system is a packet-switching system. </p>
-<h4>It&#x2019;s all packet-based</h4><p>Every single device operating at layers 2-4 (TDM and FDM work on layer 1) that I&#x2019;ve seen in my life does the same thing:</p>
+<p>There are no flows (apart from bit streams) in frequency- or time-division multiplexing, so we’re left with statistical multiplexing, and if we call whatever we’re switching “packet” every non-(F|T)DM system is a packet-switching system. </p>
+<h4>It’s all packet-based</h4><p>Every single device operating at layers 2-4 (TDM and FDM work on layer 1) that I’ve seen in my life does the same thing:</p>
 <ul class="ListParagraph"><li>Receive a packet;</li>
 <li>Inspect the packet header and extract the relevant fields;</li>
 <li>Perform forwarding table (or TCAM) lookup to find the output port(s);</li>
 <li>Send the packet to output queue(s).</li>
 </ul>
-<p>I still haven&#x2019;t seen an OpenFlow-based or any other flow-based system that would do anything fundamentally different.</p>
-<p>Flow-based technologies that are envisioned today thus <strong>cannot </strong>exceed the packet-based technologies because every flow-based system switches packets, and I sincerely hope the claim I quoted above wasn't meant to be along the lines of &ldquo;<a href="https://en.wikipedia.org/wiki/Virtual_circuit"><em>virtual circuit</em></a><em> switching will exceed the capabilities of </em><a href="https://en.wikipedia.org/wiki/Connectionless_communication"><em>connectionless</em></a><em> switching&rdquo;</em>, because we&#x2019;ve seen too many times how well that worked.</p>
+<p>I still haven’t seen an OpenFlow-based or any other flow-based system that would do anything fundamentally different.</p>
+<p>Flow-based technologies that are envisioned today thus <strong>cannot </strong>exceed the packet-based technologies because every flow-based system switches packets, and I sincerely hope the claim I quoted above wasn't meant to be along the lines of “<a href="https://en.wikipedia.org/wiki/Virtual_circuit"><em>virtual circuit</em></a><em> switching will exceed the capabilities of </em><a href="https://en.wikipedia.org/wiki/Connectionless_communication"><em>connectionless</em></a><em> switching”</em>, because we’ve seen too many times how well that worked.</p>
 

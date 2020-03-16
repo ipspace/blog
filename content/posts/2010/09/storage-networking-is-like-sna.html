@@ -5,7 +5,7 @@ tags: [ Data Center,SAN,FCoE ]
 ---
 
 <p>I’m writing this post while travelling to the <a href="http://gestaltit.com/field-day/2010-net/">Net Field Day 2010</a>, the successor to the awesome <a href="http://gestaltit.com/field-day/2010-boston/">Tech Field Day 2010</a> during which the <a href="http://fcotr.org/">FCoTR</a> technology was launched. It’s thus only fair to extend that fantastic merger of two technologies we all love, look at the bigger picture and compare storage networking with SNA.</p>
-<div class='note'><p><strong>Note</strong><strong>s</strong>: </p>
+<div class="note"><p><strong>Note</strong><strong>s</strong>: </p>
 <ul class="ListParagraph"><li>If you’re too young to understand what I’m talking about, don’t worry. Yes, you’ve missed all the beauties of RSRB/DLSw, CIP, APPN/APPI and the likes, but major technology shifts happen every other decade or so, so you’ll be able to use FC/FCoE/iSCSI analogies the next time (and look like a dinosaur to the rookies). Make sure, though, that you read the summary.</li>
 <li>I’ll use present tense throughout the post when comparing both environments although SNA should be mostly history by now.</li>
 </ul>
@@ -14,17 +14,17 @@ tags: [ Data Center,SAN,FCoE ]
 <p><strong>Early days</strong>. SNA and SAN started modestly: one was running over low-speed modem connections, the other one over 15 meters of <a href="http://www.techcable.com/HTML/SCSI-internal.htm">flat ribbon cable</a>. SNA was obviously better designed, as the modem connections were always noisy and lossy (and the protocol stack had to cope with that), while you could pretend the ribbon cable has zero defects.</p>
 <p><strong>Moving to LAN.</strong> Both environments eventually got LAN connectivity. In both cases, the vendors considered themselves so unique that they simply had to reinvent the wheel. IBM created Token Ring (to get deterministic performance which they thought was absolutely necessary to transport 80x24 screens across a 4 Mbps network every 30 seconds) and the storage industry created lossless Fiber Channel because they thought <a href="http://blog.ioshints.info/2009/12/iscsi-and-san-two-decades-of-rigid.html">it’s better to overengineer the network than to use a decent transport protocol</a>.</p>
 <p><strong>Integration.</strong> After decades of SNA and SAN dominance, disruptive vendors (in both cases primarily Cisco) decided to tackle the integration of SNA/SAN with the other mainstream technology environment (Ethernet+IP). Not surprisingly, it turns out you can use the same three major integration options in both cases:</p>
-<table cellspacing="0" cellpadding="0" class="prettyTable codeTable"><tr class="TRFirst "><td valign="top" class="TDHead "></td><td valign="top" class="TDHead "><p>SNA</p>
-</td><td valign="top" class="TDHead "><p>SAN</p>
+<table cellpadding="0" cellspacing="0" class="prettyTable codeTable"><tr class="TRFirst"><td class="TDHead" valign="top"></td><td class="TDHead" valign="top"><p>SNA</p>
+</td><td class="TDHead" valign="top"><p>SAN</p>
 </td></tr><tr><td valign="top"><p>Long-distance encapsulation over TCP/IP</p>
 </td><td valign="top"><p>DLSw/RSRB</p>
 </td><td valign="top"><p>FCIP</p>
 </td></tr><tr><td valign="top"><p>Transport native frames over Ethernet LAN </p>
 </td><td valign="top"><p>LLC2 over Ethernet</p>
 </td><td valign="top"><p>FCoE</p>
-</td></tr><tr class="TRLast"><td valign="top" class="TDLast"><p>Application protocol in TCP/IP</p>
-</td><td valign="top" class="TDLast"><p>TN3270</p>
-</td><td valign="top" class="TDLast"><p>iSCSI</p>
+</td></tr><tr class="TRLast"><td class="TDLast" valign="top"><p>Application protocol in TCP/IP</p>
+</td><td class="TDLast" valign="top"><p>TN3270</p>
+</td><td class="TDLast" valign="top"><p>iSCSI</p>
 </td></tr></table><p><strong>Can we learn anything from the history?</strong><strong> </strong>Fifteen years ago, everyone was implementing DLSw networks and migrating from Token Ring to Ethernet as fast as possible (running SNA stack on workstations connected to Ethernet LAN). </p>
 <p>But soon enough the TN3270 clients became reasonably stable and implemented the extra features needed by weird applications (for example, <a href="http://en.wikipedia.org/wiki/Data_scraping">screen scraping</a>). IBM also started offering Ethernet host attachment with TN3270 server running on the host (or you could use Cisco’s Channel Interface Processor – CIP – with TN3270 server) and we’ve seen a lot of people dropping SNA/LLC2 altogether and migrating to TN3270, replacing 3720-over-SNA-over-LLC2-over-DLSw-over-TCP/IP with TN3270-over-TCP/IP.</p>
 <p>Do you want to draw a parallel to today’s FCoE versus iSCSI debate (not forgetting <a href="http://blog.ioshints.info/2010/05/iscsi-moores-law-won.html">iSCSI is already doing amazingly well</a>)?</p>

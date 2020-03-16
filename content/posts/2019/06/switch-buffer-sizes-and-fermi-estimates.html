@@ -12,7 +12,7 @@ tags: [ switching,Data Center,QoS ]
 <li>To prevent packet drops when an output interface becomes congested.</li>
 </ul>
 <p>The most important assumption we have to make is thus: <strong>where does the congestion happen?</strong> The obvious answer is <em>it depends</em> on the traffic flows crossing the switch. I’ll assume we’re solving the <em>incast</em> problem - many senders sending data to the same destination connected to a 10GE link.</p>
-<div class="note" data-markdown="1">Incast should be pretty rare in typical data center environments. You might encounter it in Map-Reduce clusters or distributed file systems (after adding a fresh node to the DFS cluster). Then there are corner cases where there's long-term congestion on ToR switch uplinks (<a href='https://blog.ipspace.net/2019/06/do-packet-drops-matter-for-tcp.html?showComment=1559741783128#c5449698275033265922'>details here</a>). In those cases you obviously need faster links or deeper buffers. </div>
+<div class="note" data-markdown="1">Incast should be pretty rare in typical data center environments. You might encounter it in Map-Reduce clusters or distributed file systems (after adding a fresh node to the DFS cluster). Then there are corner cases where there's long-term congestion on ToR switch uplinks (<a href="https://blog.ipspace.net/2019/06/do-packet-drops-matter-for-tcp.html?showComment=1559741783128#c5449698275033265922">details here</a>). In those cases you obviously need faster links or deeper buffers. </div>
 <p>Next, we have to make a lot of assumptions about the black box called ASIC that we cannot possibly learn anything about because <a href="https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html">Broadcom manages to hide its shortcomings under layers and layers of NDAs</a>. Making my task easier I’ll assume that:</p>
 <ul><li>We’re dealing with large packets (1500 bytes);</li>
 <li>Buffers are shared across all ports.</li>
@@ -27,5 +27,5 @@ tags: [ switching,Data Center,QoS ]
 <li><a href="https://blog.ipspace.net/2017/03/tcp-in-data-center-and-beyond-on.html">TCP in the Data Center</a> with Thomas Graf;</li>
 <li><a href="https://www.ipspace.net/Networks,_Buffers,_and_Drops">Networks, Buffers and Drops</a> free webinar with JR Rivers;</li>
 </ul>
-<p>Finally, join the <a href="https://www.ipspace.net/How_Networks_Really_Work">How Networks Really Work</a> series starting on June 18th. You could join the live session for free if you <a href="https://blog.ipspace.net/2019/05/its-time-for-another-pet-project.html">send me a really good question</a>.</p> 
+<p>Finally, join the <a href="https://www.ipspace.net/How_Networks_Really_Work">How Networks Really Work</a> series starting on June 18th. You could join the live session for free if you <a href="https://blog.ipspace.net/2019/05/its-time-for-another-pet-project.html">send me a really good question</a>.</p>
 
