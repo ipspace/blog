@@ -1,4 +1,3 @@
-* Create tag cloud as static HTML
 * Fix firstHeading CSS
 * RSS feed
 * Import existing comments into data files
@@ -27,4 +26,4 @@ Done:
 * Fix navigation links (older / newer)
 * Exclude selected tags (Workshop, SGW, Podcast, Video...)
 * Create archive stub pages
-
+* Create tag cloud as static HTML

@@ -1,0 +1,15 @@
+<div class='widget Label'>
+  <h3 class='sidebar__title'>Recent tags</h3>
+  <ul>
+    {% for t in recent %}
+      <li><a href="{{ t.url }}">{{ t.name }} ({{ t.count }})</a></li>
+    {% endfor %}
+  </ul>
+  <ul class='additional-list'>
+    <h3 class='sidebar__title'>Other tags</h3>
+    {% for t in other %}
+      <li><a href="{{ t.url }}">{{ t.name }} ({{ t.count }})</a></li>
+    {% endfor %}
+  </ul>
+  <button class='sidebar__btn'>see more tags</button>
+</div>
