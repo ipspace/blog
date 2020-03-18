@@ -1,5 +1,8 @@
+* Create tag cloud as static HTML
 * Fix firstHeading CSS
 * RSS feed
+* Import existing comments into data files
+* Create static comments on blog posts
 
 Before production:
 
@@ -14,8 +17,6 @@ Add later:
 
 Comments:
 
-* Import existing comments into data files
-* Create static comments on blog posts
 * Add new commenting code (with LinkedIn login)
 
 Done:
@@ -25,3 +26,5 @@ Done:
 * Fix sharing icons
 * Fix navigation links (older / newer)
 * Exclude selected tags (Workshop, SGW, Podcast, Video...)
+* Create archive stub pages
+
