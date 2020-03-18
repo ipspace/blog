@@ -12,6 +12,6 @@ tags: [ security,access control,command line interface ]
 <p class="note" style="padding-left: 4em;">For example, if you’ve configured AAA command authorization only for privilege level 15, the <strong>ping </strong>command will be authorized if you’re working in <em>enable</em> mode, but not otherwise.</p>
 <ul class="Bullet1"><li>Command authorization is not performed on console unless you’ve configured <strong>aaa</strong><strong> authorization console</strong>.</li>
 </ul>
-&lt;!--more--&gt;<p>This is the sample configuration I’ve used to run the tests with IOS release 12.4(19):</p>
+<!--more--><p>This is the sample configuration I’ve used to run the tests with IOS release 12.4(19):</p>
 <pre class="code">aaa new-model<br/>!<br/>!<br/>aaa authentication login default local<br/>aaa authorization exec default group tacacs+ if-authenticated<br/>aaa authorization commands 0 default group tacacs+ none<br/>aaa authorization commands 15 default group tacacs+ none<br/>!<br/>username x password y<br/>!<br/>tacacs-server host 192.168.200.201</pre></div>
 

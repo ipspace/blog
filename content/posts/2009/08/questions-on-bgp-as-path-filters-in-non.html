@@ -6,7 +6,7 @@ tags: [ You've asked for it,BGP ]
 
 <div class="bloggerBody"><p>I’ve sent a link to my “<a href="http://wiki.nil.com/Filter_excessively_prepended_BGP_paths">Filter excessively prepended AS-paths</a>” wiki article as an answer to a BGP route-map question to the NANOG mailing list and got several interesting questions from Dylan a few hours later. As they are pretty common, you might be interested in them as well.</p>
 <blockquote class="cite">In my environment, we are not doing full routes. We have partial routes from AS X and then fail to AS Y. Is their any advantage for someone like me to do this, as we are not providing any IP transit so we are not passing the route table to anyone else?</blockquote>
-&lt;!--more--&gt;<p>You could use inbound AS-path filters to protect your BGP table, but as you're not a transit AS, it does not make much sense. You might also use them to reduce the size of your BGP table, but obviously you’ve already taken care of that.</p>
+<!--more--><p>You could use inbound AS-path filters to protect your BGP table, but as you're not a transit AS, it does not make much sense. You might also use them to reduce the size of your BGP table, but obviously you’ve already taken care of that.</p>
 <blockquote class="cite">When I run the "sh ip bgp quote-regexp "_([0-9]+)_\1_\1_\1_\1_ \1_" | begin Network" I am seeing many paths that would be filtered by this access-list.</blockquote>
 <p>Obviously a lot of people are prepend-happy.</p>
 <p class="note">As I’ve stated in the original article, if prepending your AS number a few times doesn’t help, nothing will.</p>

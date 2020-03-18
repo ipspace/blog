@@ -8,6 +8,6 @@ You could limit terminal access to a router with an <a href="http://www.cisco.co
 <li>SSH access is allowed from anywhere within internal network</li>
 </ul>
 <p>You can also use the <s>extended</s> access list logging functionality, making it possible to log every connection attempt to the router.</p>
-&lt;!--more--&gt;<p>For example, the configuration ...</p>
+<!--more--><p>For example, the configuration ...</p>
 <pre class="code">ip access-list extended TerminalAccess<br/> permit tcp host 10.0.0.2 any eq telnet log<br/> permit tcp any any eq 22 log<br/> deny tcp any any log<br/>!<br/>line vty 0 4<br/> access-class TerminalAccess in</pre>... would log any terminal access to the router with messages similar to the one below.<blockquote class="code">%SEC-6-IPACCESSLOGP: list TerminalAccess denied tcp 10.0.0.3(1057) -&gt; 0.0.0.0(23), 1 packet<br/>%SEC-6-IPACCESSLOGP: list TerminalAccess permitted tcp 10.0.0.2(1058) -&gt; 0.0.0.0(23), 1 packet</blockquote>
 

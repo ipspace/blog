@@ -6,7 +6,7 @@ tags: [ firewalls,security,access control ]
 
 <div class="bloggerBody"><div style="float: right;"><script charset="utf-8" src="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822/US/cisioshinandt-20/8001/54a144c3-c01c-4b26-b5ac-c46140aa3bdc" type="text/javascript"> </script></div>
 <p>When I chose the word “unfortunately” in my post <a href="http://blog.ioshints.info/2008/11/using-hostnames-in-ip-access-lists.html">describing how Cisco IOS performs DNS lookup when you enter a host name in an access list</a>, I’ve triggered <a href="http://blog.ioshints.info/2008/11/using-hostnames-in-ip-access-lists.html?showComment=1227078540000">several responses that disagreed with my choice of words</a>. Here’s why I still think IOS ACL could be improved with dynamic DNS lookup:</p>
-&lt;!--more--&gt;<p></p>
+<!--more--><p></p>
 <ul class="Bullet1"><li><strong>Things change.</strong> If you have to match a specific host in your ACL, there’s no guarantee that the host’s IP address will stay the same indefinitely. If the host is within your network and your ACL breaks because the host’s IP address was changed, it’s your problem (you should have kept better documentation and implemented proper change management procedures). When you have to use an external IP address (for example, the ISP’s SMTP gateway), you’ll notice it has changed when the phones start to ring.</li>
 <li><strong>Self-documentation</strong>. If the hostnames would remain in the ACLs and the router would perform a lookup as needed, the access lists would be self-documenting. When the hostnames get replaced by IP addresses, you have to perform reverse lookup manually to figure out what host the IP address is referring to.</li>
 </ul>
