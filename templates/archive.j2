@@ -1,0 +1,24 @@
+<div class="widget BlogArchive">
+  <h3 class="sidebar__title">Blog Archive</h3>
+  <div id="ArchiveList">
+    <ul>
+      {% for yrow in data %}
+        <li>
+          <a class="open-dropdown" href='/{{ yrow.year }}'>{{ yrow.year }}
+            <span class="post-count" dir="ltr">({{ yrow.count }})</span>
+          </a>
+          <ul class="dropdown">
+            {% for mrow in yrow.rows %}
+              <li>
+                <a class="open-dropdown" href='{{ mrow.url }}'>
+                  {{ mrow.text }}
+                  <span class="post-count">({{ mrow.count }})</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </div> 
+</div>
