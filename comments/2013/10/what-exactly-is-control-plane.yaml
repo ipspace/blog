@@ -1,0 +1,142 @@
+comments:
+- date: 07 October 2013 08:49
+  html: Excellent question, I think the outdated RFC 792 explains it very well. Why
+    else would they call it control message protocol?
+  id: '5860447721493368989'
+  image: https://lh5.googleusercontent.com/-3fXzmrmk5ZU/AAAAAAAAAAI/AAAAAAAABZg/nnbWpzeQPms/s32-c/photo.jpg
+  name: Ronny Lam
+  profile: https://www.blogger.com/profile/04572642308921360271
+  pub: '2013-10-07T08:49:40.526+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- date: 07 October 2013 15:56
+  html: My view is that data plane / control plan / management plane are high level
+    abstractions.  I&#39;m not sure how useful it is to be able to strictly classify
+    every protocol or packet type.  And I think the problem would get worse when you
+    try to make distinctions between control and management protocols.<br /><br />But
+    FWIW, wouldn&#39;t Openflow have many of the same issues with classification,
+    since a lot of Openflow traffic is going to be generated in response to unknown
+    packets?
+  id: '4088733560759219595'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-10-07T15:56:07.211+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- date: 07 October 2013 16:07
+  html: 'Control plane, but only for the endpoint routers. '
+  id: '1270038276497404990'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Steve
+  profile: null
+  pub: '2013-10-07T16:07:22.506+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- date: 07 October 2013 16:55
+  html: Seems like a grey area. ICMP is confusing in another way too -- it&#39;s considered
+    part of layer 3, but it&#39;s like a layer 4 protocol in that is has its own IP
+    protocol number and the ICMP header comes after the IP header.<br /><br />- Nik
+    Weidenbacher
+  id: '1377767136000430109'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-10-07T16:55:41.783+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- comments:
+  - date: 07 October 2013 18:12
+    html: Are ECN TCP bits then also a control-plane protocol? What&#39;s the difference
+      between setting bits to indicate congestion and sending a packet to indicate
+      network error?
+    id: '3475076327368907004'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2013-10-07T18:12:10.331+02:00'
+    ref: '3850175384476483485'
+    type: comment
+  date: 07 October 2013 17:52
+  html: ICMP is a control-plane protocol.  The confusion (such as it is) is that control-plane
+    protocols are in-band in TCP/IP - consider BGP multi-hop, for example.
+  id: '3850175384476483485'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Roland Dobbins
+  profile: https://www.blogger.com/profile/06517186494484977438
+  pub: '2013-10-07T17:52:26.237+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- date: 07 October 2013 18:32
+  html: Would probably define Control plane as following<br /><br />Control plane
+    is a process by which certain states are derviated to aid data plane. Most of
+    the protocols (BGP, OSPF...) derive states independent of data plane. Certain
+    protocols like Multicast, ICMP use data plane itself to arrive at states to aid
+    data plane. <br /><br />Strictly speaking, Control plane policing (CoPP) could
+    probably be renamed to CPU Policing, as policies both control and data plane.
+  id: '1477198837809078626'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Bhargav Bhikkaji
+  profile: null
+  pub: '2013-10-07T18:32:13.706+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- date: 07 October 2013 21:42
+  html: This discussion is multi-level. <br /><br />1. From the definition point of
+    view ICMP is the control plane protocol. <br />2. From the hardware point of view
+    some protocols (like ICMP, BFD) can be offloaded to line cards so they do not
+    affect the HW control plane which is represented by a control module. It is hard
+    to say about PING represented by an ICMP Echo Request that this is a control-plane
+    packet on distributed devices. An LC can respond. Thus no operations really needed
+    on the RP CPU.<br />3. Does it mean that the control plane can be just attributed
+    to the HW module? Of course not. The control plane is more like an abstraction
+    - as someone mentioned earlier. So from the functionality/abstraction point of
+    view some protocols can be the control/data/mgmt (match any) plane protocols at
+    the same time.
+  id: '4640903900850445163'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2013-10-07T21:42:16.698+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- date: 07 October 2013 23:06
+  html: Ivan, although we&#39;ve discussed it in the original post, i don&#39;t see
+    any obvious reason why a response to a data plane packet cannot be a control plane
+    packet.<br /><br />So, i can see a clear role for ICMP as a two-way control plane
+    protocol handling the status/info communication between devices and as an one-way
+    control plane protocol handling the error reporting of a device towards another.
+  id: '5045936654892728113'
+  image: https://bp0.blogger.com/_1XnhmB73_-E/SIjgqAsWx9I/AAAAAAAAAIY/3Mb4yN_hmug/S220-s32/Present-Future-CEO.jpg
+  name: "Tassos (CCIE\u2122 #19858)"
+  profile: https://www.blogger.com/profile/04512662084752743003
+  pub: '2013-10-07T23:06:52.811+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- date: 08 October 2013 17:04
+  html: 'Hey Ivan, I have one more question: Which plane generates a &quot;TTL expired&quot;
+    message? <br />I think that the answer should be: depends on implementation. It
+    could be a process running on router CPU (control plane process) or hardware ASIC
+    (data plane).<br />Same is for ICMP replies. Some hardware may implement it in
+    ASIC, but usually this is a kernel process (control plane).'
+  id: '8338690512095012197'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ianislav Trendafilov
+  profile: null
+  pub: '2013-10-08T17:04:18.409+02:00'
+  ref: '3286289531532709570'
+  type: comment
+- date: 02 March 2016 07:58
+  html: the ping initiating and terminating devices - control plane is invoked.<br
+    />The pass through devices - data plane is initiated.
+  id: '3176089618038092312'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Unknown
+  profile: https://www.blogger.com/profile/08344348872331507803
+  pub: '2016-03-02T07:58:18.731+01:00'
+  ref: '3286289531532709570'
+  type: comment
+count: 11
+id: '3286289531532709570'
+type: post
+url: 2013/10/what-exactly-is-control-plane.html

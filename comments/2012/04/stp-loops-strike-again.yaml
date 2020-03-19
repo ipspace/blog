@@ -1,0 +1,434 @@
+comments:
+- date: 24 April 2012 08:57
+  html: Hello! I&#39;m just wondering about; Is the storm-control feature (configured
+    with carefully measured thresholds) combined with BPDU guard can help you! (With
+    storm control you can limit the number of the broadcast, multicast and unicast
+    frames received on a port).<br /><br />http://www.cisco.com/en/US/docs/switches/lan/catalyst2950/software/release/12.1_22ea/SCG/swtrafc.html#wp1229854
+  id: '3120019622386732722'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Szabolcs Kiss
+  profile: null
+  pub: '2012-04-24T08:57:35.082+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 24 April 2012 09:16
+  html: I believe &quot;unicast&quot; refers to &quot;unknown unicast&quot; in a storm
+    control sense.
+  id: '2303360005281752804'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: lochii
+  profile: null
+  pub: '2012-04-24T09:16:30.293+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 24 April 2012 09:35
+  html: Bridging doesn&#39;t suck, it just needs to be implemented properly.  Storm
+    control is always a good idea.  MAC filtering / limiting in campus networks is
+    very effective.  For DCs TRILL is a very good option, particularily for those
+    that have already architected with the requirement for some form of layer 2 within
+    their DC.
+  id: '7850619350817193817'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous coward
+  profile: null
+  pub: '2012-04-24T09:35:12.967+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 24 April 2012 09:51
+  html: Yes! You&#39;re right!
+  id: '4143020377378482423'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Szabolcs Kiss
+  profile: null
+  pub: '2012-04-24T09:51:54.574+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 24 April 2012 10:30
+  html: Storm-control is best practise.<br />We should ask Vasilis what is the size
+    of his VLANs (how many hosts/ports) because this surprise me that the storm is
+    so brutal (too many broadcast? Multicast?)!
+  id: '5239812120602117017'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Fabian
+  profile: null
+  pub: '2012-04-24T10:30:55.925+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 24 April 2012 10:37
+  html: I guess it depends a lot on the switch type you&#39;re using, its CPU power,
+    and its control-plane protection. Once you get a single broadcast in a forwarding
+    loop (ARP request would be a perfect fit as it has to hit the switch&#39;s CPU
+    as well), it can swamp the CPU, which then stops processing and sending BPDU,
+    resulting in a neat meltdown.
+  id: '648465511746513987'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-04-24T10:37:58.348+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 24 April 2012 12:23
+  html: You can also use Dynamic ARP Inspection and rate limiting incoming ARP Packets.
+  id: '5687990759111856894'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Youssef El Fathi
+  profile: null
+  pub: '2012-04-24T12:23:01.897+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 24 April 2012 13:58
+  html: While STP loops can be bad news they should never crash a switch, the OS should
+    be able to deal with high CPU utilization and fairly schedule tasks. As part of
+    acceptance testing I always encourage tests that focus on how a switch deals with
+    very high CPU utilization, by running switches in the test network at 90%+ CPU
+    utilization and ensuring the control plane integrity (e.g. no neighbors are dropped,
+    STP is stable, MLAG/vPC peers remain active, etc...). This is a challenge of a
+    converged control plane many vendors are pushing while it does give you fewer
+    switches to manage it also has the ability to take out more switch ports, as well
+    as drive higher CPU utilization on the switch...
+  id: '4375598284299017374'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Mark Berly
+  profile: null
+  pub: '2012-04-24T13:58:15.364+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 24 April 2012 19:43
+  html: Yeah - it would be nice if all of the devices deployed in the top of our racks
+    employed storm-control...<br />https://supportforums.cisco.com/message/3422955
+  id: '6687204915177293488'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: triegert
+  profile: null
+  pub: '2012-04-24T19:43:13.561+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- comments:
+  - date: 19 August 2012 04:51
+    html: Dmitri, sounds like you are referring to UDLD, unidirectional link detection.
+      This will err-disable a port when unidirectional traffic is detected when it
+      is not expected, usually on fiber interfaces.
+    id: '7478507004587565823'
+    image: https://4.bp.blogspot.com/_8GV4Gw1H-Qo/SWrwAkL1jiI/AAAAAAAAACI/nbqunI4WDLE/S220-s32/DMAN+Certified.jpg
+    name: DMANSR
+    profile: https://www.blogger.com/profile/02624977893958920282
+    pub: '2012-08-19T04:51:07.195+02:00'
+    ref: '6890734224806810285'
+    type: comment
+  date: 25 April 2012 03:31
+  html: '- Rate limit BUM (well, maybe separately BU and M)<br />- Explicitly shut
+    down ports that are not supposed to be connected to anything<br /><br />There&#39;s
+    another interesting case when Rx and Tx on the same optical port are plugged together.
+    There&#39;s a command that detects looped ports and shuts them down (don&#39;t
+    ask me what it is though).'
+  id: '6890734224806810285'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dmitri Kalintsev
+  profile: null
+  pub: '2012-04-25T03:31:15.782+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- comments:
+  - date: 14 July 2014 21:58
+    html: LOL!! If only campus admins were willing to do that, it would solve so many
+      problems........
+    id: '3119103218401775902'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-07-14T21:58:35.229+02:00'
+    ref: '5649715130858793544'
+    type: comment
+  date: 25 April 2012 03:36
+  html: L3 switching throughout the campus, starting from the wiring closet switch.  Done.
+  id: '5649715130858793544'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brad Hedlund
+  profile: null
+  pub: '2012-04-25T03:36:09.854+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 25 April 2012 10:53
+  html: '&quot;I have to mention that these access ports are configured with Root,
+    BDPU guard as well as Portfast.&quot;<br /><br />Wrong. Well, it depends I guess
+    if he configured portfast on port or globally. If configured on port then the
+    port will always be in portfast mode but if configured globally then the port
+    would revert out of its portfast mode if a BPDU is received. Another common mistake
+    is to use both bpdu filter and root/bpdu guard on a port. The filter will take
+    precedence and the guards will never be used.<br /><br />Brads solution is of
+    course the best but maybe not always an option.<br /><br />Storm control and port-security
+    should also be configured if possible. <br /><br />The ARP situation you mention
+    is very interesting, I&#39;ve seen this before, one single packet can wreak havoc.<br
+    /><br />Another interesting situation can occur when customer creates loop. Say
+    that you have customers connecting to a l2 network via some triple play box and
+    they accidentally create a loop locally. Even if your backbone is protected from
+    the backbones perspective this is not really a loop. It&#39;s just a lot of traffic
+    coming from the customer which could be ARP or other traffic and this is very
+    difficult to protect against unless you own the CPE or at least configure it.'
+  id: '4003402184352730352'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Daniel
+  profile: null
+  pub: '2012-04-25T10:53:36.789+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 25 April 2012 17:06
+  html: In practice I have seen that if you configure loopguard, udld on the uplink
+    ports of the switches, the core/distribution switch will shutdown the uplink port
+    of the access switch where the loop was created, limiting the impact of the loop
+    to the rest of the LAN. <br />Probably this happens because the affected switch
+    is in 100% cpu and cannot send BPDUs, udld packets
+  id: '7196446113724741635'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: John
+  profile: null
+  pub: '2012-04-25T17:06:14.705+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 25 April 2012 21:43
+  html: Ivan, one small thought and I know you are certainly aware of this but &quot;STP
+    loop&quot; is a misnomer. Spanning-Tree doesn&#39;t cause loops, it prevents them.
+    The issue was actually caused by a bridging loop that spanning-tree didn&#39;t
+    detect in time because of incompatible STP enhancements.<br /><br />STP is a great
+    protocol ... for the 1990s.
+  id: '2895587419621872783'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brandon Mangold
+  profile: null
+  pub: '2012-04-25T21:43:53.351+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 25 April 2012 22:06
+  html: You&#39;re absolutely right. Me and my sloppy writing ... have to get better.
+  id: '84361606445040574'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-04-25T22:06:18.997+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 25 April 2012 23:01
+  html: I&#39;ve similarly seen this when an IP phone will bridge two vlans if it&#39;s
+    plugged into the switch twice (by a user of course ;) ) and the switchports aren&#39;t
+    on the same vlan. Any aux voice vlan bpdu&#39;s won&#39;t be understood by the
+    native data vlan (untagged). <br /><br />As for bpdu filter, it always helps to
+    remember the different behavior if enabled globally vs. on the switchport directly;
+    If you enable bpdu filter globally and portfast on a switchport, it will prevent
+    that switchport from sending BPDUs. However, if that port receives a BPDU, the
+    port loses it&#39;s portfast state, disables BPDUfilter and becomes a normal STP
+    port. If you enable bpdu filter on a switchport directly, then that disables STP
+    on that port -- ie. wont send BPDUs and it will ignore inbound BPDUs.
+  id: '5651783422442790661'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Tom K
+  profile: null
+  pub: '2012-04-25T23:01:46.689+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 26 April 2012 08:37
+  html: That stops the issue from propagating any further than the affected switch
+    - all good. But you&#39;d still have an issue on that switch, if two ports are
+    looped, right?
+  id: '2425340066601368289'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Lindsay Hill
+  profile: null
+  pub: '2012-04-26T08:37:05.863+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 26 April 2012 08:48
+  html: I first read this as &#39;iPhone&#39; and almost laughed  :)
+  id: '8477098310844585695'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Shawn L.
+  profile: null
+  pub: '2012-04-26T08:48:46.107+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 26 April 2012 14:33
+  html: The affected switch is exposed only to broadcasts from the users on that switch,
+    not the entire network, so the severity is vastly minimized. Worst case scenario
+    one switch melts.  Not the whole network.
+  id: '2560000824994695959'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brad Hedlund
+  profile: null
+  pub: '2012-04-26T14:33:15.336+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 26 April 2012 16:24
+  html: Ivan, broadcast,multicast and unicast-unknown rate-limit / storm control is
+    the best solution. Having a loop detection protocol like Extreme&#39;s ELRP is
+    a great tool , but I don&#39;t know abou any (non-STP) based equivalent in IOS.
+    Cheers!<br /><br />P.S. Also its better if you have a MRTG/RRD graphs, drawing
+    the non-unicast pps per port.
+  id: '6466029383561133534'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivelin Ivanov
+  profile: null
+  pub: '2012-04-26T16:24:03.655+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 28 April 2012 12:44
+  html: I definitely agree. Usually it always starts and ends with a poor design.
+  id: '5970908453639594984'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Teemu
+  profile: null
+  pub: '2012-04-28T12:44:02.397+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 30 April 2012 01:58
+  html: no mdix auto<br /><br />What are the chances that a cross-over cable gets
+    used in this or any scenario?
+  id: '8644846825706452947'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Bryan Smith
+  profile: null
+  pub: '2012-04-30T01:58:03.806+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 30 April 2012 14:28
+  html: Regarding limiting the number of MAC addresses accepted on the switch port,
+    what is a decent default for this value?<br /><br />We can&#39;t really set that
+    to 1, as anyone experimenting with virtual machines will run into issues.  Is
+    setting the mac address limit to something like 20 still helpful?  I would hope
+    that setting it to 20 would be high enough to prevent causing issues with any
+    legitimate activity, but still low enough to prevent loops.
+  id: '9041364253840631233'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Justin
+  profile: null
+  pub: '2012-04-30T14:28:00.208+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 01 May 2012 18:21
+  html: Are people supposed to be experimenting with virtual machines in production
+    campus environment (where the original question came from)? If the answer is &quot;Yes&quot;,
+    should you support their activities if they can&#39;t configure NAT on VMware
+    workstation (or equivalent)?<br /><br />One MAC address is a bit tough, but more
+    than a few doesn&#39;t make sense. Also, you can age secure MAC addresses if you
+    wish.
+  id: '9093135159822627943'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-05-01T18:21:37.982+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 01 May 2012 20:46
+  html: 'Was it STP, improper/inadequate configuration or bad implementation/software
+    that caused the loop? If it was bad implementation/software, then I don&#39;t
+    see how any alternative can be safer unless STP developers are bottom of the pole.
+    If improper/inadequate configuration, not sure if IP or SDN will safeguard a network
+    from an uninformed operator. If indeed it&#39;s STP to blame, then it would be
+    interesting to know what flaws remain with a robust STP implementation aside from
+    ones that we cannot prove don&#39;t exist with the alternatives given the same
+    business requirements (for example: in a vm-server only network there is no data
+    plane learning at the vm (host) edge regardless of whether sdn, ip or stp).'
+  id: '5356251625268429601'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: FullMesh
+  profile: null
+  pub: '2012-05-01T20:46:08.480+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 01 May 2012 21:38
+  html: In this particular case, I would say it&#39;s improper implementation. <br
+    /><br />The switch should send several BPDUs on a portfast port after it transitions
+    to enabled and delay forwarding for a second or two (to check for potential loops).
+    <br /><br />Whatever alternate protocol (LLDP would be the best bet) could be
+    used to detect loops in case someone thinks using BPDUs is not a good idea, and
+    the port should not go into forwarding state until the basic are-we-looping checks
+    have been performed.
+  id: '6079212121842222545'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-05-01T21:38:57.411+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 01 May 2012 22:04
+  html: People do a lot of things on a production campus environment when that campus
+    environment happens to be a college campus :-)
+  id: '960105469308809729'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Justin
+  profile: null
+  pub: '2012-05-01T22:04:51.856+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 04 May 2012 16:57
+  html: On our campus , it is one and only one :-) (their are some exceptions, but
+    they are tracked). And indeed, nobody needs to mess with VMs on his desktop (think:backtrack
+    vm :-). go to the lab if you want to do that. What if multiple VMs are eating
+    up all your dhcp addresses ?
+  id: '8138106306915132928'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-05-04T16:57:47.512+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 04 May 2012 17:06
+  html: 'This is so true. I experienced once a complete blackout in a Layer3 routed
+    network (with redundancy though). It originated from a loop in a connected L2
+    network. The loop made the OSPF connection flap, updating about 3000 routes. This
+    core switch then sent OSPF LSA updates to all its distribution switches (some
+    14.....) while these all sent the updates to the second core switch: result: he
+    couldn&#39;t cope and crashed..while the first one was flapping.....nice..complete
+    L3 meltdown...'
+  id: '1224604720687656398'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-05-04T17:06:08.052+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 17 May 2012 16:47
+  html: Just tried the same - switch is blocking one of two interfaces with portfast
+    enabled correctly.<br />Maybe smth else is not mensioned, e.g. bpdufilter?
+  id: '4137084209688800008'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-05-17T16:47:23.871+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- date: 27 May 2012 18:04
+  html: isnt it possible to use control plane policing to prevent 100/% cpu utilization.
+  id: '3386020725397641971'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-05-27T18:04:49.073+02:00'
+  ref: '1152436782512248155'
+  type: comment
+- comments:
+  - date: 30 August 2013 09:40
+    html: Welcome! You must be a pretty new reader - do search for TRILL and Radia
+      on my blog ;)
+    id: '8846934454625864458'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2013-08-30T09:40:54.207+02:00'
+    ref: '6521468162663982284'
+    type: comment
+  date: 30 August 2013 05:19
+  html: Bring back DECnet.  Anyone watched Radia Perlman&#39;s GoogleTalk video?  She
+    talks about how she lost her battle to have layer 3 networking to short-sighted
+    management that thought no one would ever talk to other networks.  Radia says
+    in her own words that she thought spanning tree was a stopgap and never thought
+    it would still be around.  Take a look at what she is doing with TRILL.
+  id: '6521468162663982284'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-08-30T05:19:44.838+02:00'
+  ref: '1152436782512248155'
+  type: comment
+count: 35
+id: '1152436782512248155'
+type: post
+url: 2012/04/stp-loops-strike-again.html

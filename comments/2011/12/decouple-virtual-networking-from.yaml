@@ -1,0 +1,147 @@
+comments:
+- date: 09 December 2011 07:36
+  html: Great post Ivan. What methods are available to provide scalable L3 isolation
+    between the virtual L2 networks? MPLS/VPN and VPLS would seem reasonable though
+    obviously not an available solution for vswitch at this point, not to mention
+    cost of hardware goes up, choice of vendors goes down, and I don&#39;t believe
+    there are any high port density 10G ToR switches available with the necessary
+    protocol support. What other scalable options are there?
+  id: '5054121377852564280'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: sh0x
+  profile: null
+  pub: '2011-12-09T07:36:41.879+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 09 December 2011 22:00
+  html: I&#39;m actually not convinced Amazon does something like that, at least for
+    the majority of their VMs. Remember, they don&#39;t support any VM or IP mobility.
+    Their solution to maintenance on a host box is just to reboot or kill all the
+    VMs running on the box. As a result, they can build an incredibly simple, aggregatable,
+    entirely L3-routing based network. I wouldn&#39;t be surprised if the routing
+    begins on the host itself, using proxy-ARP to get the packets.<br /><br />It&#39;s
+    true that Virtual Private Cloud lets you bring your own addresses and has more
+    flexibility in assigning them, but even there I don&#39;t believe they give you
+    an L2 domain with the usual broadcast/multicast semantics -- it&#39;s just a bunch
+    of machines with IPs from the same subnet. They probably use IP-in-IP or IP-in-MPLS
+    to handle it; I strongly doubt ethernet headers get beyond the virtualization
+    host.
+  id: '8503784297308023182'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ben Jencks
+  profile: null
+  pub: '2011-12-09T22:00:41.658+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 09 December 2011 22:02
+  html: Ivan, nice write up.  I wouldn&#39;t mind hearing your thoughts and speculation
+    on using CAPWAP between virtual switches.  Cough cough Nicira.  Maybe it will
+    help with de-coupling the control plane reliance from the physical network, but
+    not so helpful with VLAN scale?
+  id: '2745807074903287510'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: '@jedelman8'
+  profile: null
+  pub: '2011-12-09T22:02:53.823+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 10 December 2011 13:42
+  html: Amazon runs IP-over-IP with L3 switch in the hypervisor (or something equivalent).
+    Follow the link in the blog post for more details.
+  id: '1824277383451101554'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-12-10T13:42:15.658+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 10 December 2011 13:43
+  html: I don&#39;t think Nicira uses more than CAPWAP encapsulation in the Open vSwitch.
+    They seem to be relying exclusively on P2P inter-hypervisor tunnels and use whatever
+    encapsulation comes handy, be it GRE, CAPWAP or VXLAN.
+  id: '6037274524173496099'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-12-10T13:43:38.335+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 12 December 2011 20:47
+  html: As long as you stay in the L2 domain (be it VLANs, VXLAN-based virtual networks
+    or anything else), the L3 isolation is automatic. Once you cross L3 boundaries
+    and want to keep L3 path separation, MPLS/VPN is the only widely-available scalable
+    technology (MultiVRF doesn&#39;t scale).
+  id: '1882167402519559901'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-12-12T20:47:11.167+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 18 December 2011 18:31
+  html: I am not sure I understand why using Core Multicast for L2 flooding is a bad
+    thing, that needs to be avoided?   Any modern Core IP platform is designed to
+    handle large-scale Multicast forwarding, and majority of Enterprise datacenter
+    Core networks are already Multicast enabled.   <br /><br />Why invent something
+    new and kludgy (like full mesh of hypervisor tunnels), when the most efficient
+    IP-based solution has already been invented and proven in real networks?   <br
+    /><br />Not to mention, Unicast-based flooding will be inherintly less efficient
+    than Multicast-based.  Think about it - a hypervisor that needs to flood a frame
+    to 10 other hypervisors needs to send that frame to the IP Core (to Multicast
+    group for that L2 domain) just once.. as opposed to forwarding that frame 10 times
+    via Unicast across 10 tunnels.    Multicast was invented for this.
+  id: '5190316074188024335'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: hitekalex
+  profile: null
+  pub: '2011-12-18T18:31:45.759+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 19 December 2011 20:02
+  html: 'Arista: 4000 multicast entries per linecard<br />Nexus 7000: 32000 MC entries,
+    15000 in vPC environment<br />Nexus 5548: 2000 (verified), 4000 (maximum)<br />QFabric:
+    No info. OOPS?<br /><br />Not that much if you want to have an IP MC group per
+    VNI. A blog post coming in early January (it&#39;s already on the to-write list).'
+  id: '6306299933545288674'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-12-19T20:02:19.144+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 04 January 2012 20:50
+  html: The latter example of MAC encapsulation struck me as an interesting place
+    to apply some form of SDN. Instead of applying solutions like OpenFlow to the
+    transport network, VM vendors could implement (ideally) open SDN APIs in the hypervisor
+    networking, separating physical networking from virtual networking.<br /><br />Though
+    I&#39;m neither an SDN or a virtualisation guy, so this is likely nothing new.
+  id: '1467888061095769584'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Mikkel Shinn
+  profile: null
+  pub: '2012-01-04T20:50:47.357+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 04 January 2012 21:41
+  html: '... this is exactly how I understand Open vSwitch/Nicira controller to work.
+    OVS already supports OpenFlow API.'
+  id: '6913145374235468753'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-04T21:41:36.660+01:00'
+  ref: '3744124764335416954'
+  type: comment
+- date: 04 January 2012 21:53
+  html: Heh, I&#39;ll be exercising my caveat now.
+  id: '1802950747854766816'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Mikkel Shinn
+  profile: null
+  pub: '2012-01-04T21:53:56.335+01:00'
+  ref: '3744124764335416954'
+  type: comment
+count: 11
+id: '3744124764335416954'
+type: post
+url: 2011/12/decouple-virtual-networking-from.html

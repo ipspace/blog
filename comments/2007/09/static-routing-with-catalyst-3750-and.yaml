@@ -1,0 +1,105 @@
+comments:
+- date: 08 September 2007 12:14
+  html: Ivan! :) you did not specify which one is to be used in your scenario as you
+    said in your previous "questioning" post! Is this for us also to guess again which
+    one is the best among those choices given?! :)
+  id: '2255461490430796376'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-09-08T12:14:00.000+02:00'
+  ref: '8395563690554233929'
+  type: comment
+- date: 08 September 2007 14:51
+  html: About STP I don't really know why you wouldn't use that. If I understand that
+    scenario, you have switches on both ends of the link.  If you lost connectivity
+    on fiber you won't get BPDUs on both ends of the link, so switches will choose
+    link with next cost, so only thing you need to do is alter stp cost on ports which
+    are backup.<BR/><BR/>About etherchannel it probably won't work in that case (backup
+    on a radio?), because I was trying to make etherchannel over two wireless Proxim
+    Tsunami links and it wasn't working properly (i guess because of latency which
+    breaks LACP).
+  id: '7028027525879328921'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Wrench Head of the Dirty Drunkards MC
+  profile: https://www.blogger.com/profile/15599351273832431005
+  pub: '2007-09-08T14:51:00.000+02:00'
+  ref: '8395563690554233929'
+  type: comment
+- date: 09 September 2007 08:12
+  html: '@Anonymous: You''re right. I''ve edited the post to be more clear.<BR/><BR/>@Wrench
+    Head of the Dirty Drunkards MC: STP won''t work if the break in the fiber is <EM>unidirectional</EM>,
+    thus one end receives BPDUs, the other one doesn''t. Also, if you stop receiving
+    BPDUs on the link, you don''t <EM>block</EM> it, you assume <EM>it''s safe to
+    use</EM>.'
+  id: '4216381309139248625'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-09-09T08:12:00.000+02:00'
+  ref: '8395563690554233929'
+  type: comment
+- date: 11 September 2007 23:04
+  html: At 2006 Networkers a presenter said that GRE on the 3750 is software switched
+    and is unsupported and discouraged. Don't know about the 3750-E. FYI.
+  id: '7212783320690361514'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-09-11T23:04:00.000+02:00'
+  ref: '8395563690554233929'
+  type: comment
+- date: 12 September 2007 18:36
+  html: 'This is strange. I have many fiber mediaconverters (but mostly unused now
+    because using gbics) and if you unplug one  fiber (TX for example), whole link
+    goes down.<BR/><BR/>Next thing: you receive bpdus on TWO ports - one from radio,
+    second from fiber. If you stop getting BPDUS from fiber, It will elect new root
+    on radio port. It will also "see" MACs of other side on radio port, not fiber
+    port. So it will send traffic trough radio, but it is true it won''t block port
+    of fiber.'
+  id: '7520487588130493414'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Wrench Head of the Dirty Drunkards MC
+  profile: https://www.blogger.com/profile/15599351273832431005
+  pub: '2007-09-12T18:36:00.000+02:00'
+  ref: '8395563690554233929'
+  type: comment
+- date: 25 September 2007 11:22
+  html: '@Wrench: not all media converters are as sophisticated as yours (unfortunately).
+    I will simulate the STP scenario with Dynamips and post the results (I know what
+    will happen, but then you''ll have the chance to verify it :).<BR/><BR/>On the
+    LACP issue: LACP is supposed to work hop-by-hop, not across multiple bridges (oops,
+    they are called switches these days).<BR/><BR/>@anonymous: Thanks for the GRE
+    tip, I suspected as much (high performance L3 forwarding in Cat3750 is ASIC-driven
+    and ASICs cannot insert GRE header, just swap the L2 header).'
+  id: '5408776414561187816'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-09-25T11:22:00.000+02:00'
+  ref: '8395563690554233929'
+  type: comment
+- date: 04 October 2007 23:43
+  html: BFD is available.  12.2(40)
+  id: '3433164355280813957'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-10-04T23:43:00.000+02:00'
+  ref: '8395563690554233929'
+  type: comment
+- date: 05 October 2007 08:05
+  html: Thanks for the tip :) Do you have it up and running? BTW, BFD is not listed
+    in the <A HREF="http://www.cisco.com/univercd/cc/td/doc/product/lan/cat3750/12240se/ol13860.htm#wp89394"
+    REL="nofollow">12.2(40)SE release notes</A>.
+  id: '4516978738355037503'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-10-05T08:05:00.000+02:00'
+  ref: '8395563690554233929'
+  type: comment
+count: 8
+id: '8395563690554233929'
+type: post
+url: 2007/09/static-routing-with-catalyst-3750-and.html

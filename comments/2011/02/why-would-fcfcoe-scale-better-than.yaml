@@ -1,0 +1,160 @@
+comments:
+- date: 15 February 2011 12:47
+  html: I see no reason it can&#39;t scale to thousands of nodes. Especially if you
+    built a completely separate network just for your iSCSI storage traffic.
+  id: '4149173238334577543'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: PG
+  profile: null
+  pub: '2011-02-15T12:47:36.000+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 15 February 2011 13:30
+  html: I don&#39;t think you need a separate network. ETS (WDRR) + separate CoS class
+    for iSCSI should be enough. Plus you might want to limit the size of your bridged
+    domains ;)
+  id: '7629030952496586754'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-02-15T13:30:20.000+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 15 February 2011 15:14
+  html: Ivan,<br />Theoretically iSCSI can scale, but in practice, the management
+    tools have not been put in place. iSCSI is configured on a host level, while FC
+    can be centrally managed. The ecosystem for iSCSI is centered around Microsoft
+    hosts (iSCSI initiator) with storage from Dell (EqualLogic), HP (LeftHand), NetApp
+    and EMC (CLARiiON now VNX) - all of these are midrange products that are not targeted
+    for larger configurations. In talking with many of these vendors, the average
+    configuration for iSCSI tends to be around 20 hosts and it was very rare to find
+    a customer that had deployed 100 servers in a single network. Once again, there
+    is no architectural limitation, but from an operations standpoint it is prohibitive
+    and from what I have seen, no company is putting together the tools to allow simple
+    deployment and management of large scale iSCSI (would probably want to further
+    develop around iSNS). The average FC switch is larger than the typical iSCSI environment,
+    with edge switches going to 80 or more ports and directors to hundreds of ports.<br
+    />Cheers,<br />@stu
+  id: '5305394711101600732'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Stuart Miniman
+  profile: null
+  pub: '2011-02-15T15:14:20.000+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 16 February 2011 00:19
+  html: I agree, was just comparing apples with apples, since FC is a completely separate
+    network  :)
+  id: '3786988538142959827'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: PG
+  profile: null
+  pub: '2011-02-16T00:19:02.000+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 16 February 2011 02:05
+  html: I like to think of the services that FC provides as the Active Directory of
+    storage.   If you have only have 1 storage array and 25 hosts, Zoning, Masking,
+    are not that big of a deal.  Fundamenally though, storage is growing a 1.6x compounded
+    per annum.  Even if you dedup you are only buying yourself limited time until
+    you have a serious disk problem.<br /><br />iSCSI scales the same way that creating
+    user account on everyone desktop scales  .  . . n^((n-1)/2)*.  You need a centralized
+    AAA, TE and security mechanism for block disc access.  FC provides that.<br /><br
+    />I have customers who in 18 months have hit the wall on iSCSI deployments cause
+    the disc outgrew the network too fast.  Like the early days of VoIP.<br /><br
+    /><br /> * I haven&#39;t actually proven that math, but, could do so for a small
+    donation of a bottle of Rye.
+  id: '4971379570909197225'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: jopo
+  profile: null
+  pub: '2011-02-16T02:05:54.000+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 16 February 2011 13:09
+  html: AFAIK  Amazon uses iSCSI in their AWS, this is a very large deployment with
+    tens of thousand servers, so obviously iSCSI can scale.
+  id: '7757641441536156025'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Milen Trifonov
+  profile: null
+  pub: '2011-02-16T13:09:05.000+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 16 February 2011 15:18
+  html: Milen - care to share a source of your data? Amazon and Google do not use
+    traditional storage arrays. My understanding is that they use commodity hardware
+    with the disks inside the servers (DAS). AWS EBS may support iSCSI, but that does
+    not translate to Amazon being a single network of thousands of iSCSI nodes.
+  id: '802858495886569974'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Stuart Miniman
+  profile: null
+  pub: '2011-02-16T15:18:59.000+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 19 February 2011 05:35
+  html: The reason I setup iSCSI as a separate network is it performs much better
+    with flow control and/or jumbo frames (and preferably, or if some piece along
+    the way can&#39;t do both at once).
+  id: '2163277270971596994'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dave
+  profile: null
+  pub: '2011-02-19T05:35:02.000+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 07 March 2011 02:22
+  html: I like the comments already posted about management. <br /><br />I think it&#39;s
+    also about control. SAN and FC people like being separate, so that nothing messes
+    up the SAN. That seems to me to be the source of most of the resistance to FCoE.
+    What, share a cable?! How could one possibly troubleshoot in, gasp, someone else&#39;s
+    box?! (And the network guys meanwhile worry about FCIP killing their shared WAN
+    link?)<br /><br />I gather iSCSI is gatewayed. OTOH, in a sense the FCoE FCF forwarding
+    to native FC is too. OTOH, the latter is arguably simpler (strip or add L2 header).
+    <br /><br />Some people argue that iSCSI is higher overhead. I&#39;d think that
+    depends on the NIC. <br /><br />Since iSCSI shares a wire with other network traffic,
+    what do you do for QoS? It&#39;s the worst case, need it there ASAP but there&#39;s
+    a LOT of it. And if it goes lossy on you, or duplicates packets, FC and related
+    SCSI protocols don&#39;t generally handle that at all well.
+  id: '5952626013610158894'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Pete Welcher
+  profile: null
+  pub: '2011-03-07T02:22:13.053+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 07 March 2011 16:58
+  html: As far as I understand iSCSI, you&#39;d use direct iSCSI session in a usual
+    server-to-storage scenario (no gateway). iSCSI is an application on top of TCP,
+    so duplicate/lost/corrupted packets never reach the SCSI level (you might have
+    performance issues, but that&#39;s a different story). FC(oE)? obviously can&#39;t
+    cope with packet loss, so you have to make FCoE truly lossless.<br /><br />If
+    you have DCB-enabled switches, it would be best to use separate 802.1p priority
+    value for iSCSI traffic, make it lossless (with PFC) and allocate it a fixed bandwidth
+    percentage (with ETS/WDRR).
+  id: '2608883746468018953'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-03-07T16:58:23.132+01:00'
+  ref: '5999093273329515746'
+  type: comment
+- date: 08 March 2011 14:46
+  html: A separate network has nothing to do with scale, in fact it&#39;s make scale
+    worse since dedicated resources are necessary. <br /><br />However, a dedicated
+    network makes it deterministic, that is, performance can be determined absolutely
+    in terms of storage traffic parameters. Note that you still cannot guarantee delivery
+    unless you oversubscribe every element of the network..... which is what FC does
+    at great expense to the customer.
+  id: '8471429649847601732'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Etherealmind
+  profile: null
+  pub: '2011-03-08T14:46:29.901+01:00'
+  ref: '5999093273329515746'
+  type: comment
+count: 11
+id: '5999093273329515746'
+type: post
+url: 2011/02/why-would-fcfcoe-scale-better-than.html

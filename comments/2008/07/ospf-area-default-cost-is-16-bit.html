@@ -1,0 +1,123 @@
+
+<div class="comments post" id="comments">
+  <p class="info">
+    We migrated our blog a few days ago, and the commenting functionality is not there yet.
+    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
+  </p>
+  <h4>6 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="3712252043153324533">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://resources.blogblog.com/img/blank.gif">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#3712252043153324533">25 July 2008 17:10</a>
+              </span>
+            </div>
+            <p class="comment-content">Smells of bug. Opened a TAC case for it ?</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2173994727160311008">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://resources.blogblog.com/img/blank.gif">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="None" rel="nofollow">Tarun</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#2173994727160311008">25 July 2008 21:02</a>
+              </span>
+            </div>
+            <p class="comment-content">I think there is already an internal bug on this, which is not accessible to anyone except TAC. The bug says that the commands accepts values higher than its maximum value as per the command reference which is 65535.<BR/><BR/>If you enter a value below or equal to 65535 it works fine, the problem happens when you take a value above that. If you do that it takes the (value)Mod(65535)-1<BR/><BR/>So if you enter 'area 11 default-cost 65536', in 'show run' it wouid show up as 'area 11 default-cost 0'<BR/><BR/>Here is what I did on my lab:<BR/>ospf 1<BR/> log-adjacency-changes<BR/> area 11 stub<BR/> area 11 default-cost 65532 <BR/>Rack1R1#conf t<BR/>Rack1R1(config)#router ospf 1<BR/>Rack1R1(config-router)#no area 11 default-cost 65532<BR/>Rack1R1(config-router)#area 11 defaul<BR/>Rack1R1(config-router)#area 11 default-cost 65535<BR/>Rack1R1(config-router)#end<BR/>Rack1R1#sh run | s r ospf<BR/>router ospf 1<BR/> log-adjacency-changes<BR/> area 11 stub<BR/> area 11 default-cost 65535 <BR/>Rack1R1#conf t<BR/>Rack1R1(config)#router ospf 1<BR/>Rack1R1(config-router)#no area 11 default-cost 65535<BR/>Rack1R1(config-router)#area 11 default-cost 65536   <BR/>Rack1R1(config-router)#end<BR/>Rack1R1#sh run | s r ospf<BR/>router ospf 1<BR/> log-adjacency-changes<BR/> area 11 stub<BR/> area 11 default-cost 0 <BR/>Rack1R1#</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="5269380928508633927">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#5269380928508633927">26 July 2008 08:43</a>
+              </span>
+            </div>
+            <p class="comment-content">Tarun, your description is correct, but not the root cause analysis. The "metric" field in the <A HREF="http://tools.ietf.org/html/rfc2328#page-212" REL="nofollow">OSPF summary and external LSA</A> is 24 bit, so you should be able to specify a 24-bit value for the default cost in stub default and external default case.<BR/><BR/>Furthermore, the <A HREF="http://www.cisco.com/en/US/docs/ios/iproute/command/reference/irp_osp1.html#wp1011071" REL="nofollow">documentation states that the cost is 24-bit quantity</A> (which is correct), but IOS incorrectly accepts only the lower 16 bits of the entered cost.<BR/><BR/>If you have access to the bug tools, please make sure they fix the bug the right way (i.e. accepting 24-bit numbers, not limiting the range to 16-bit numbers).</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="7754193018085418689">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/08629115121576798324" rel="nofollow">Xavier</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#7754193018085418689">28 July 2008 09:24</a>
+              </span>
+            </div>
+            <p class="comment-content">I opened CSCsr60041 to have this fixed.</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1234025597524021369">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/08629115121576798324" rel="nofollow">Xavier</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#1234025597524021369">28 July 2008 12:13</a>
+              </span>
+            </div>
+            <p class="comment-content">this is fixed in CSCsl12946</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="9139362923940286397">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://resources.blogblog.com/img/blank.gif">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="http://www.network-builders.com" rel="nofollow">Networking Forums</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#9139362923940286397">07 August 2008 14:55</a>
+              </span>
+            </div>
+            <p class="comment-content">Thanks, updated now to fix this bug! Been googling for this.</p>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

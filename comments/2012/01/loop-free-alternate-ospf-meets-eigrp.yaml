@@ -1,0 +1,239 @@
+comments:
+- date: 26 January 2012 07:11
+  html: Is this feature only for ospf v2 not v3?
+  id: '8031463333297293343'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: "\u041F\u0430\u0432\u0435\u043B \u0414\u043E\u0440\u043E\u043D\u0438\u043D"
+  profile: null
+  pub: '2012-01-26T07:11:44.629+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 07:47
+  html: The LFA concept can be implemented in any link state routing protocol, current
+    Cisco IOS and Junos implementations are for IS-IS and OSPFv2.
+  id: '1387315247487795440'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-26T07:47:52.870+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 07:55
+  html: Ivan, great exercise. Can you also cover square topology?
+  id: '7331331556832530023'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: mihalachioaie@gmail.com
+  profile: null
+  pub: '2012-01-26T07:55:11.433+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 07:59
+  html: Have you looked at Pierre&#39;s presentation (link in the post)?
+  id: '2587885525662886385'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-26T07:59:58.452+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 09:29
+  html: It&#39;s hard to predict EIGRP behavior without knowing link costs. Given
+    the same link attributes (bandwidth and delay) for all links in the triangular
+    topology B won&#39;t be the feasible successor for X because B reported distance
+    is not lower, but the same as A feasible distance.
+  id: '7666626427216295090'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anton Marchenko
+  profile: null
+  pub: '2012-01-26T09:29:44.392+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 09:38
+  html: Also what do you think about theoretical possibility of using alternate paths
+    computed using LFA for OSPF and IS-IS for unequal cost load balancing (like it
+    can be done with EIGRP)?
+  id: '5453620025918045291'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anton Marchenko
+  profile: null
+  pub: '2012-01-26T09:38:12.822+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 16:27
+  html: In theory, it would be possible. In practice? I don&#39;t even know how much
+    the EIGRP functionality is used ... and you can use MPLS-TE to get better results.
+  id: '3363006045968409940'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-26T16:27:01.083+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 19:43
+  html: look like ipfrr per prefix was introduced back in iox 3.5, may be they changed
+    to per link in 3.9?<br />http://www.cisco.com/en/US/docs/ios_xr_sw/iosxr_r3.5/routing/configuration/guide/rc35rib.html#wp1088695
+  id: '6751720155901986545'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: igp2bgp
+  profile: null
+  pub: '2012-01-26T19:43:56.000+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 20:24
+  html: But only about 5 people worldwide run MPLS inside an enterprise network, which
+    is where UCMP would be quite valuable. Often enterprise sites each have a primary
+    WAN link and slower, lower cost WAN link for redundancy.<br /><br />Enterprises
+    will most likely not implement MPLS en masse anytime soon, as the majority of
+    installed and currently orderable enterprise gear doesn&#39;t support MPLS at
+    all.
+  id: '896261803714141222'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ryan Malayter
+  profile: null
+  pub: '2012-01-26T20:24:17.920+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 20:45
+  html: My humble quess is that you wanted to cover topology predictibility and/or
+    link-state microloops? I dump LDP FRR cause it&#39;s closely related.
+  id: '5413733058466216744'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: mrzehak
+  profile: null
+  pub: '2012-01-26T20:45:12.704+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 26 January 2012 21:23
+  html: My first thought before I hit &quot;read more&quot; was - it depends&quot;.
+    For OSPF, what if the two paths were equal costs? Then it would be immediate failover
+    because the route already exist in the RIB.
+  id: '4211255447958148223'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: CJ Infantino
+  profile: null
+  pub: '2012-01-26T21:23:46.956+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 27 January 2012 00:32
+  html: In terms of convergence:<br />1. On the CPU based platforms there should be
+    no difference between EIGRP and IP LFA.<br />2. On the distributed platforms IP
+    LFA will be faster as HW FIB is ready for a switchover.<br /><br />In terms of
+    your recursive process maybe you started at the intra-AS BGP convergence topic
+    or possibility of the fast path switchover when you were in the serious traffic
+    jam?
+  id: '3924550419108216605'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-27T00:32:55.456+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 27 January 2012 04:11
+  html: Great post. I did a lot of EIGRP work in the late 90s and early to mid 00s.
+    One gig I was on was convert a very large utility from a mixed routing protocol
+    to all EIGRP. Ivan&#39;s book on EIGRP was critical to my design and migration
+    approach. EIGRP is very fast on convergence and when I was reading about MPLS
+    Fast Reroute it reminded of EIGRP&#39;s feasible successor ability but manually
+    created. Also there is adjusting timers for EIGRP, debounce timers, carrier delays
+    NSF and BFD. OSPF has these options too. Now throw MPLS into it, LSPs need a L3
+    routing protocol to connect and you have more &quot;junk&quot; on top of your
+    topology to influence convergence. I even for one client used the variance unequal
+    cost load balancing feature to solve a problem. I haven&#39;t done much with it
+    lately and not sure of its status. I liked  EIGRP and if they update it can still
+    be very very powerful.<br /><br />sheeshe it is 2012 where is that one protocol
+    for all. <br /><br />Okay where is the post for IPX/SPX where you can have a 10k
+    node network and none of the subnetting issues etc and now since we can all have
+    1 to 10gig links who cares if it is a heavy protocol.  ;)
+  id: '43980441730385575'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: jsicuran
+  profile: null
+  pub: '2012-01-27T04:11:04.006+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 27 January 2012 06:59
+  html: '#1 - There should be no difference if you fine-tune the OSPF/IS-IS timers.
+    With the default values, there will be 5+ second difference.<br /><br />#3 - Good
+    thinking, but I started somewhere far far away  8-)'
+  id: '300110160582466433'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-27T06:59:08.375+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 27 January 2012 11:30
+  html: 1. For default values on IOS yes, there will be a difference but not on IOS
+    XR where timers are tuned by default.<br /><br />But my comment was for IPLFA
+    vs. EIGRP. :)
+  id: '3873772058771195444'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-27T11:30:03.971+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 27 January 2012 16:01
+  html: Strictly speaking, if the links were equal cost, then A would have no feasible
+    successor to X via B if it lost the A-C link. The EIGRP feasibility condition
+    is a strict one, and the cost for B-X via C must be less than A-X via C for the
+    condition to be met.<br /><br />In practice when testing I see much quicker failover
+    than OSPF dead time expiry. I reckon the link failure is detected in hardware,
+    RIB, FIB entries are removed and this potentially forces OSPF to recalculate a
+    path?
+  id: '8558504419851241007'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dhana Kaneshayogan
+  profile: null
+  pub: '2012-01-27T16:01:05.320+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 27 January 2012 22:09
+  html: Nice, except it morse code compared to your articles :)
+  id: '5438261083951207369'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Mihalachioaie
+  profile: null
+  pub: '2012-01-27T22:09:51.157+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 31 January 2012 05:33
+  html: 'Or other &quot;sane&quot; networking operating systems where archaic timers
+    don&#39;t exist. (i.e: Junos).  Anyone know the timers on NX-OS?'
+  id: '324025033954256026'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brandon
+  profile: null
+  pub: '2012-01-31T05:33:44.966+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 31 January 2012 05:35
+  html: ISR routers support MPLS,  6500&#39;s and Nexus support MPLS?  What doesn&#39;t
+    support it these days?  Closet level switches?<br /><br />In other vendors, Juniper
+    and other support MPLS as well.  I think the adoption doesn&#39;t have to do with
+    gear as much as it does with education.
+  id: '6864609968602691363'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brandon
+  profile: null
+  pub: '2012-01-31T05:35:30.206+01:00'
+  ref: '6794569797006593511'
+  type: comment
+- date: 25 February 2012 01:08
+  html: 'Downstream paths have been talked about in IS-IS in the ISO10589 specification
+    from 1980&#39;s. The spec on page 20 states:<br /><br />-&gt; a set of paths which
+    will get a PDU closer to its destination than the local system: these are called
+    downstream paths<br /><br />The basic idea is as long as the cost from the neighbor
+    is less than the cost from me, I can forward the packet for a particular destination
+    to it.'
+  id: '4941708564462265300'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Vishwas Manral
+  profile: null
+  pub: '2012-02-25T01:08:23.850+01:00'
+  ref: '6794569797006593511'
+  type: comment
+count: 20
+id: '6794569797006593511'
+type: post
+url: 2012/01/loop-free-alternate-ospf-meets-eigrp.html

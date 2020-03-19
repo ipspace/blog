@@ -1,0 +1,151 @@
+comments:
+- date: 03 August 2011 08:02
+  html: Xen and KVM do live migration over TCP. If your storage is located on an iSCSI
+    volume for example, there is no need for a flat network. The L2 requirement for
+    migration comes mostly from VMWare.
+  id: '3277971223620042148'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Vincent Bernat
+  profile: null
+  pub: '2011-08-03T08:02:47.000+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 03 August 2011 08:14
+  html: Vincent, the &quot;same VLAN&quot; requirement comes from the VM NIC perspective
+    - if you want to keep TCP sessions, the VM must keep the same IP address, which
+    usually means its NIC must stay in the same VLAN.<br /><br />VMware can move VM
+    as long as both ESX hosts see the same storage (regardless of how SAN connectivity
+    works) and vMotion traffic runs over TCP ... but if you move a VM to another subnet,
+    its Ethernet connectivity is gone.
+  id: '5985984997839388602'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-03T08:14:01.419+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 03 August 2011 08:20
+  html: So what do you think is keeping them? Maybe the fact that they pitch mainly
+    to server people (who don&#39;t really want to learn IP and especially (God forbid!)
+    MPLS?
+  id: '8312440360678820503'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dmitri Kalintsev
+  profile: null
+  pub: '2011-08-03T08:20:29.154+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 03 August 2011 08:24
+  html: They&#39;ll implement something sensible only after they realize the current
+    kludges are limiting their growth. That&#39;s why Amazon went down this very route
+    years ago.<br /><br />However, the commercial hypervisor vendors sell primarily
+    to &quot;small&quot; environments (as compared to IaaS cloud providers like Amazon),
+    where it doesn&#39;t really matter.
+  id: '8079680807395040027'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-03T08:24:00.934+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 03 August 2011 20:04
+  html: Technology is a revolving door, where old becomes new, new becomes old, and
+    around we go again when Vendors taste a flavour of the month coming along!
+  id: '7213599125718987462'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Joe Cozzupoli
+  profile: null
+  pub: '2011-08-03T20:04:43.952+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 04 August 2011 01:04
+  html: Have you looked into Nicira at all?  They are encapsulating the IP and I believe
+    they have a kernel-level vSwitch module for Xen.<br /><br />-Loren
+  id: '1553521667331977799'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: lorengordon
+  profile: null
+  pub: '2011-08-04T01:04:59.546+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 04 August 2011 07:09
+  html: I had a few interesting chats with Martin Casado (Nicira&#39;s CTO). When
+    they&#39;re ready to tell me more about what they do, I&#39;ll blog about it.
+  id: '8681998063230900297'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-04T07:09:20.746+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 04 August 2011 12:00
+  html: it just very well as listed....
+  id: '1801022588082532643'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: datadiary
+  profile: null
+  pub: '2011-08-04T12:00:21.537+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 05 August 2011 02:37
+  html: Looks like your players have been answered.<br /><br />http://www.ntt.co.jp/news2011/1108e/110802a.html
+  id: '152539904851512111'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dmitri Kalintsev
+  profile: null
+  pub: '2011-08-05T02:37:57.845+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 05 August 2011 02:39
+  html: Or, more accurately, &quot;may&quot; have been answered. :) These guys appear
+    to be extremely secretive about what they do and how their stuff works.
+  id: '8257727111311735621'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dmitri Kalintsev
+  profile: null
+  pub: '2011-08-05T02:39:45.457+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 05 August 2011 02:44
+  html: Pardon the dyslexia, pRayers that is, of course. ;)
+  id: '2851537161046823210'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dmitri Kalintsev
+  profile: null
+  pub: '2011-08-05T02:44:49.239+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 08 August 2011 11:13
+  html: Citrix was the first to wake up.  XenServer is enabled for OpenFlow already
+    because it uses the Open vSwitch.  Citrix is doing some interesting things with
+    the OpenFlow startups (e.g. Nicira, BigSwitch).
+  id: '5758659722238863855'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Citrix
+  profile: null
+  pub: '2011-08-08T11:13:22.856+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 12 August 2011 17:28
+  html: Force10 Networks has TRILL support now.
+  id: '5306502045683093299'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Micah
+  profile: null
+  pub: '2011-08-12T17:28:10.320+02:00'
+  ref: '1912151582708996859'
+  type: comment
+- date: 12 August 2011 19:07
+  html: Does it? Link to documentation?<br /><br />I know the support has been _announced_
+    around Interop, but that&#39;s not the same as shipping TRILL-compliant products.
+  id: '3812506516469639780'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-12T19:07:19.106+02:00'
+  ref: '1912151582708996859'
+  type: comment
+count: 14
+id: '1912151582708996859'
+type: post
+url: 2011/08/imagine-ruckus-when-hypervisor-vendors.html

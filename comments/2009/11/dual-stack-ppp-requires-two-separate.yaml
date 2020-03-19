@@ -1,0 +1,73 @@
+comments:
+- date: 24 November 2009 14:06
+  html: It might be worth touching base with the ISP I use as they are currently doing
+    a dual stack PPP trial with their adsl clients.<br /><br />http://ipv6.internode.on.net/access/adsl/<br
+    /><br />They already found one interesting bug where if the client did an IPv6
+    only PPP session their Cisco LNS would not send radius accounting updates...
+  id: '3910486222970429135'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Haakon
+  profile: null
+  pub: '2009-11-24T14:06:50.000+01:00'
+  ref: '81063273773429253'
+  type: comment
+- date: 26 November 2009 08:16
+  html: What i understood from a Juniper IPV6 seminar is that you can choose between
+    dual stack PPP or two ppp sessions one for ipv4 and the other for ipv6. With dual
+    stack ppp only one session is used.
+  id: '7769694423888837207'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Robert.
+  profile: null
+  pub: '2009-11-26T08:16:00.000+01:00'
+  ref: '81063273773429253'
+  type: comment
+- date: 26 November 2009 13:06
+  html: I would love to see a sample configuration for dual-stack including how to
+    dynamically assign IP&#39;s from a &quot;pool&quot; like in IPv4 - anyone up for
+    the challenge? ;)
+  id: '9155140647892102065'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Paul Stewart
+  profile: null
+  pub: '2009-11-26T13:06:56.000+01:00'
+  ref: '81063273773429253'
+  type: comment
+- date: 13 December 2009 00:38
+  html: Same here...
+  id: '8922404603541078156'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Frank Bulk
+  profile: null
+  pub: '2009-12-13T00:38:01.000+01:00'
+  ref: '81063273773429253'
+  type: comment
+- date: 05 May 2010 12:56
+  html: Hi Paul &amp; Frank,<br /><br />Hope it is you expected<br /><br />LNS site:<br
+    />interface Virtual-Template1<br />   ip unnumbered Loopback0 <br />   ipv6 address
+    autoconfig<br />   peer default ip address pool pool-lns<br />   peer default
+    ipv6 pool ipv6pool-lns<br />ip local pool pool-lns 192.168.10.1 192.168.10.4<br
+    />ipv6 local pool ipv6pool-lns 2001:E00:F::/48 64<br /><br />Dialer/client/CPE
+    site:<br />interface Dialer99<br />   ip address negotiated<br />   ip mtu 1492<br
+    />   encapsulation ppp<br />   dialer pool 1<br />   dialer idle-timeout 0<br
+    />   dialer persistent<br />   ipv6 address autoconfig default<br />   ipv6 enable
+  id: '2871740990164611098'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Aing Thea
+  profile: null
+  pub: '2010-05-05T12:56:27.000+02:00'
+  ref: '81063273773429253'
+  type: comment
+- date: 05 May 2010 13:55
+  html: Thank you, you&#39;re fantastic.
+  id: '888405038566030634'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-05-05T13:55:03.000+02:00'
+  ref: '81063273773429253'
+  type: comment
+count: 6
+id: '81063273773429253'
+type: post
+url: 2009/11/dual-stack-ppp-requires-two-separate.html

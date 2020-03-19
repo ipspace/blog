@@ -1,0 +1,197 @@
+comments:
+- date: 08 May 2008 07:46
+  html: Can you check the same thing with EIGRP?<BR/>Maybe some other protocols (not
+    necessary routing) are also exempted? I bet on IPSsec, GRE and IPinIP.<BR/>May
+    you test this issue with SCTP(IP/132, RFC4960) ?
+  id: '8131881528978905087'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-05-08T07:46:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 09:25
+  html: May be control plane protection work only with unicast traffic, not with multicast
+    ?
+  id: '6196321420301744566'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-05-08T09:25:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 10:35
+  html: I would need to check when I am in work but I think on many cisco platforms
+    match-all is not supported in COPP.<BR/><BR/>Colin
+  id: '5220327405706396592'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Colin Whittaker
+  profile: http://colin.netech.ie
+  pub: '2008-05-08T10:35:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 13:33
+  html: '@Colin: the ''match-all'' is the default produced by the router. I did not
+    enter it manually (you have to enter ''match-any'' manually, if I remember correctly).<BR/><BR/>@Visir:
+    I thought about that as well, but then the DBD packets are not sent as multicast
+    on multi-access networks (or at least that was my understanding, but I might be
+    wrong) and without the DBD packets the OSPF adjacency would not be established.<BR/><BR/>@Anonymous:
+    it looks like CoPP works only for TCP and UDP, but I would have to do more tests.'
+  id: '8618261745493422221'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-05-08T13:33:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 14:30
+  html: looks like CSCso12838 but you forgot to specify the IOS you're using. try
+    using the "police" keyword with the "drop" option for both "conform"-ing and "exceed"-ing
+    traffic instead of the "drop" action.
+  id: '4771347266396024903'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Xavier
+  profile: https://www.blogger.com/profile/08629115121576798324
+  pub: '2008-05-08T14:30:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 15:05
+  html: '@ivan: are you sure you can''t protect router from icmp flooding with CoPP
+    ?'
+  id: '4754394239347351201'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-05-08T15:05:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 18:56
+  html: 'Ivan:<BR/><BR/>What IOS were you using?<BR/><BR/>I tested on my router using
+    IOS 12.4(18) mainline and it worked. <BR/><BR/>C3640#sh ip ospf n<BR/><BR/>C3640#sh
+    policy-map control-plane<BR/> Control Plane<BR/><BR/>  Service-policy input: OSPF<BR/><BR/>    Class-map:
+    BlockOSPF (match-all)<BR/>      4 packets, 376 bytes<BR/>      5 minute offered
+    rate 0 bps, drop rate 0 bps<BR/>      Match: access-group name B-OSPF<BR/>      drop<BR/><BR/>    Class-map:
+    class-default (match-any)<BR/>      138 packets, 9042 bytes<BR/>      5 minute
+    offered rate 1000 bps, drop rate 0 bps<BR/>      Match: any<BR/>C3640#<BR/><BR/>My
+    config is below:<BR/><BR/>class-map match-all BlockOSPF<BR/> match access-group
+    name B-OSPF<BR/>!<BR/>policy-map OSPF<BR/> class BlockOSPF<BR/>   drop<BR/>!<BR/>ip
+    access-list extended B-OSPF<BR/> permit ospf host 199.11.18.171 any<BR/>!<BR/>control-plane<BR/>
+    service-policy input OSPF<BR/>!'
+  id: '3804387147886970741'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: William Chu
+  profile: null
+  pub: '2008-05-08T18:56:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 19:40
+  html: '@William: You''re right, it works in 12.4, but there you don''t have the
+    three different control policies. Looks like 12.4T-specific bug.<BR/><BR/>@Xavier:
+    thanks for the hint, will test.'
+  id: '2511447682348962921'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-05-08T19:40:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 20:41
+  html: Ivan:<BR/><BR/>I just tested again on a router that was running IOS 12.4(15)T5
+    and here are my results:<BR/><BR/>1. Drop didn't work if I attached the service
+    policy under the control-plane host sub-interface (like what you did)<BR/><BR/>2.
+    Drop worked if I attached the service policy under the control-plane main interface
+    (without the host keyword), which was similar to what I did in IOS 12.4 mainline.<BR/><BR/>So
+    in other words, below works in IOS 12.4(15)T5 if I don't put the policy under
+    control-plane host. <BR/><BR/>class-map match-all BlockOSPF<BR/>match access-group
+    name B-OSPF<BR/>!<BR/>policy-map OSPF<BR/>class BlockOSPF<BR/>drop<BR/>!<BR/>ip
+    access-list extended B-OSPF<BR/>permit ospf host 199.11.18.171 any<BR/>!<BR/>control-plane<BR/>service-policy
+    input OSPF<BR/>!<BR/><BR/>From the Cisco doc it said that the use of the host
+    subinterface for control-plane is optional, so I guess we can use it as a workaround
+    for now and open a case with Cisco for the host subinterface issue.<BR/><BR/>Thoughts?<BR/><BR/>William
+    Chu
+  id: '213380330719193124'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: William Chu
+  profile: null
+  pub: '2008-05-08T20:41:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 20:53
+  html: '@William: We obviously work in parallel :) I did the same tests, came to
+    the same conclusions and fixed the post :))'
+  id: '2382649348530405018'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-05-08T20:53:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 08 May 2008 21:33
+  html: Yeah, the Cisco doc was confusing because in one area it said the host subinterface
+    would be used to handle traffic destined to the router itself (including OSPF,
+    EIGRP, etc). So now the aggregate conrol plane interface is like a "catch-all"
+    interface for anything else :-)
+  id: '4497850883819092747'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: William Chu
+  profile: null
+  pub: '2008-05-08T21:33:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 09 May 2008 03:43
+  html: Guys, my understanding of this issue is that multicast traffic is handled
+    by 'control-plane transit' policy. It works well for OSPF and LDP, where only
+    the unicast packets for both protocols are being taken care of by 'control-plane
+    host'.
+  id: '3443710180232860602'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Sebastian Majewski
+  profile: https://www.blogger.com/profile/02407057997557446935
+  pub: '2008-05-09T03:43:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- comments:
+  - date: 08 August 2014 05:16
+    html: U can check in http://www.cisco.com/web/about/security/intelligence/understanding-cppr.html
+    id: '3689187071093357287'
+    image: https://lh3.googleusercontent.com/-GDi58k3rToI/AAAAAAAAAAI/AAAAAAAAAJM/p3dTsxhuO6Q/s32-c/photo.jpg
+    name: Dao Thai Bao
+    profile: https://www.blogger.com/profile/04119540441011470140
+    pub: '2014-08-08T05:16:56.523+02:00'
+    ref: '1908117892686741992'
+    type: comment
+  date: 09 May 2008 16:26
+  html: Correction/update to the previous statement... <BR/><BR/>OSPF unicast   -  TRANSIT
+    (!!!)<BR/>OSPF multicast -  TRANSIT<BR/>LDP unicast    -  HOST<BR/>LDP multicast  -  TRANSIT<BR/>iBGP           -  HOST<BR/>eBGP           -  TRANSIT
+    (???)<BR/>ARP            -  CEF-EXCEPTION
+  id: '1908117892686741992'
+  image: https://bp3.blogger.com/_nWGPb6CyT-U/SCOsjKWOfFI/AAAAAAAAAAM/-2alpthZU-8/S220-s32/main2.jpg
+  name: Sebastian Majewski
+  profile: https://www.blogger.com/profile/02407057997557446935
+  pub: '2008-05-09T16:26:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 11 May 2008 11:20
+  html: Can't PBR (driving incoming ospf to null0) under the interface do the job?
+  id: '7695281926673513431'
+  image: https://bp3.blogger.com/_1XnhmB73_-E/R5JTHI0fREI/AAAAAAAAAAk/k0-U8I95ilQ/S220-s32/ccieUseLogo.jpg
+  name: "Tassos (CCIE\u2122 No. 19858)"
+  profile: https://www.blogger.com/profile/04512662084752743003
+  pub: '2008-05-11T11:20:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+- date: 11 May 2008 12:37
+  html: '@Tassos: That''s an interesting thought ... but then PBR would have to be
+    deployed on every (affected) interface (similar to inbound access-lists). I was
+    looking for a more centralized solution.'
+  id: '6427997641321071111'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-05-11T12:37:00.000+02:00'
+  ref: '5471446379635797294'
+  type: comment
+count: 16
+id: '5471446379635797294'
+type: post
+url: 2008/05/ospf-bypasses-control-plane-protection.html

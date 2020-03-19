@@ -1,0 +1,118 @@
+comments:
+- date: 18 January 2007 10:51
+  html: In a scenario where customer takes links from two service providers and wants
+    to load share the traffic between the links, will equimetric default routes in
+    the routing table (and thereby in the cef table) actually load share per packet
+    or per destination or per session ?<br /><br />Ramya
+  id: '8923574170893245653'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Ramya
+  profile: https://www.blogger.com/profile/02138158111774974846
+  pub: '2007-01-18T10:51:00.000+01:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 18 January 2007 11:03
+  html: The CEF load-sharing mechanism depends on what you've configured on outgoing
+    interfaces (links toward the ISPs) with the <strong>ip load-sharing</strong> configuration
+    command.<br /><br />Load sharing can be <em>per-source-destination-pair</em> (default),
+    <em>per-packet</em> (strongly discouraged in this scenario, as the packets will
+    be almost guaranteed to arrive out-of-order) or <em>per-flow</em> (see <a href="http://ioshints.blogspot.com/2006/12/per-port-cef-load-sharing.html">Per-port
+    CEF load sharing</a>).
+  id: '1264143047454758060'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_100x100.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-01-18T11:03:00.000+01:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 23 February 2007 14:44
+  html: Do you know if "show ip cef exact-route" command is supported for 3560 switches?.
+    It seems that the output of the command shows not correct information.
+  id: '3350282805597759570'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-02-23T14:44:00.000+01:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 08 March 2007 19:39
+  html: No idea :( Plus I don't have any 3560 handy ...
+  id: '6026714052104317967'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_100x100.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-03-08T19:39:00.000+01:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 02 January 2008 07:33
+  html: Hi, Great site. With Per-destination or Per-Packet switching, how does both
+    interact with a dynamic routing protocol like EIGRP which has variance or can
+    consider multiple links and perform unequal-cost load balancing? Does the "switching"
+    override the routing protocol?<BR/>I'm a bit unclear about this?<BR/>And especially
+    if BGP is involved!<BR/>Thanks.
+  id: '3480210515686986531'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-01-02T07:33:00.000+01:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 04 January 2008 11:35
+  html: The "switching" part takes place after the routing table has been built and
+    cannot influence the routing table at all. If you're using EIGRP variance or BGP
+    DMZ bandwidth, the <A HREF="http://ioshints.blogspot.com/2006/10/cef-load-sharing-details.html"
+    REL="nofollow">ratio of entries in the CEF table</A> reflects the ratio between
+    the path costs.
+  id: '3483961031007357636'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-01-04T11:35:00.000+01:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 29 October 2008 18:31
+  html: How many link can be used for load sharing<BR/>I have 4 running OK but was
+    wondering if there was limit encase they want to add more?<BR/><BR/><BR/>Wayne
+  id: '1217162252005101995'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Wayne
+  profile: https://www.blogger.com/profile/07042053136752931646
+  pub: '2008-10-29T18:31:00.000+01:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 29 October 2008 18:35
+  html: The absolute maximum CEF can support is 16 (the hash values used to select
+    outgoing interface are 4-bit long). With anything even close to that limit you'll
+    not get perfect load sharing due to rounding errors.<BR/><BR/>If you have significantly
+    more than four parallel links, you might consider upgrading to a higher-speed
+    solution.
+  id: '2583243350191280502'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-10-29T18:35:00.000+01:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 24 May 2010 19:48
+  html: some interfaces did not support ip load-sharing per-packet . so is there any
+    solutions for it O:-)
+  id: '8741494206558663037'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: hosein abdollahi
+  profile: null
+  pub: '2010-05-24T19:48:02.000+02:00'
+  ref: '116515640039970891'
+  type: comment
+- date: 17 March 2011 18:23
+  html: it dont works in XR if the interfaces are not in a bundle?
+  id: '620681827246205585'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: alex
+  profile: null
+  pub: '2011-03-17T18:23:58.822+01:00'
+  ref: '116515640039970891'
+  type: comment
+count: 10
+id: '116515640039970891'
+type: post
+url: 2006/12/per-destination-or-per-packet-cef-load.html

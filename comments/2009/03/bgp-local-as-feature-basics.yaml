@@ -1,0 +1,38 @@
+comments:
+- date: 25 May 2010 06:14
+  html: I got to know the &quot;bgp enforce-first-as&quot; command when studying the
+    BGP Best-Path Selection Algorithm. By looking at the output of the &quot;show
+    ip bgp&quot; command when implementing BGP Local-AS, I said, ahha, this is the
+    time to prove the working of the &quot;bgp enforce-first-as&quot; command.<br
+    />So I went conf t, router bgp, bgp enforce, show ip bgp, hmm, still here, this
+    should be the time for me to test out another command - soft-configuration inbound,
+    followed by clear ip bgp x.x.x.x soft in, hmm, the BGP route is still here, clear
+    ip bgp x.x.x.x, aargghhh, still there. &gt;:o<br /><br />show run, hey, where
+    is my &quot;bgp enforce-first-as&quot; command? What? It is enabled by default?
+    @_@<br /><br />After some thought, another ASN (the local AS) actually being prepended
+    to the AS_SEQUENCE by the local router, the EBGP peer doing its job correctly
+    therefore not being discarded by the &quot;bgp enforce-first-as&quot; command.<br
+    /><br />I think I will only able to see the operation of the &quot;bgp enforce-first-as&quot;
+    when reading more about BGP route spoofing attacks in the future, now it is good
+    enough for my ROUTE exam. :)
+  id: '4217406843131232209'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Yap Chin Hoong
+  profile: null
+  pub: '2010-05-25T06:14:59.000+02:00'
+  ref: '5246957572739146862'
+  type: comment
+- date: 25 May 2010 12:53
+  html: You can&#39;t generate an AS-number mismatch that the &quot;bgp enforce-first-as&quot;
+    would catch with an IOS BGP feed, you need a broken implementation for that.
+  id: '6377009540547432495'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-05-25T12:53:25.000+02:00'
+  ref: '5246957572739146862'
+  type: comment
+count: 2
+id: '5246957572739146862'
+type: post
+url: 2009/03/bgp-local-as-feature-basics.html

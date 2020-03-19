@@ -1,0 +1,68 @@
+comments:
+- date: 16 November 2010 22:16
+  html: An interesting perspective, but there are several factual errors. The biggest
+    one is at the end. There has been no activity on 802.1Qau since the end of 2009
+    because we finished balloting on the draft then. IEEE Std 802.1Qau became an approved
+    standard March 2010 and is published so there is no more work for us to do on
+    it. <br /><br />Your first note about buffer credit is incorrect. Buffer-to-buffer
+    credit in Fibre Channel is the credit mechanism used hop by hop to ensure that
+    the next device has buffer available before a frame is sent. In FCoE, PFC is used
+    instead and there is no buffer-to-buffer credit. End-to-end credit is used for
+    some Fibre Channel classes but not by Class 3 which is the class that will generally
+    be used with FCoE. (Class 2 is used by some protocols running over FC for establishing
+    connections but generally not for bulk data transfer.) Therefore, the situation
+    in your example is not prevented by FCoE.<br /><br />While practical implementation
+    of CN generally will require some hardware support, 802.1Qau is designed to minimize
+    the amount of state needed so it shouldn&#39;t be expensive to implement. The
+    biggest unknown is regarding the persistence of congestion in the data center.
+    It takes time for CN messages to be generated and slow down the sources. If congestion
+    is very brief, the congestion could be over before CNMs arrive to quench it. If
+    congestion is persistent, then CN will be useful.
+  id: '3311031351288395804'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Pat Thaler
+  profile: null
+  pub: '2010-11-16T22:16:30.000+01:00'
+  ref: '2332069900019466732'
+  type: comment
+- date: 17 November 2010 07:46
+  html: You&#39;re absolutely correct. Thank you immensely for your feedback ... comments
+    like yours help me keep my blog technically correct. Will rewrite the post.<br
+    /><br />Ivan
+  id: '6567067597030998551'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-11-17T07:46:24.000+01:00'
+  ref: '2332069900019466732'
+  type: comment
+- date: 17 November 2010 09:17
+  html: 'Update: Blog post fixed ... but I simply have to point out the underlying
+    cause of the &quot;802.1Qau is stalled&quot; error. <br /><br />Looking at various
+    IEEE web pages (including 802.1 main web page, DCB page or 802.1Qau page) I couldn&#39;t
+    find a way to figure out that 802.1Qau is an approved standard. Now that I know
+    what state it&#39;s i, it was trivial to find it on GetIEEE site  :&#39;( . Lesson
+    learned.'
+  id: '7445594917009171271'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-11-17T09:17:01.000+01:00'
+  ref: '2332069900019466732'
+  type: comment
+- date: 10 November 2011 02:01
+  html: 'I dint get it. What is the difference b/w PFC &amp; CN? Take PFC: Why doesnt
+    switch A send PAUSE to server S. Isnt PFC also moving the congestion to the edge?
+    Storage array D sends PFC, which causes switch B to send PFC. Why does the same
+    logic not apply to switch A?'
+  id: '5373951988855516946'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: ashwin
+  profile: null
+  pub: '2011-11-10T02:01:24.446+01:00'
+  ref: '2332069900019466732'
+  type: comment
+count: 4
+id: '2332069900019466732'
+type: post
+url: 2010/11/data-center-bridging-dcb-congestion.html

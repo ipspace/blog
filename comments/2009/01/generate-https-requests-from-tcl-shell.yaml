@@ -1,0 +1,156 @@
+comments:
+- date: 19 January 2009 11:00
+  html: on the same note can you trigger HTTP requests from EEM.<BR/><BR/>I'll give
+    an example/reason, I generally get sms alerts for some alarms eg bgp neighbor
+    going down/up, these are sent out to syslog, some scripts pick it up, and call
+    a url (using kannel) and an sms is sent. Lately we did the same with our nms;
+    ie the nms calls up a script when some alert gets picked up.....<BR/><BR/>If EEM
+    can call/trigger http, then i could just do it directly from the router.<BR/><BR/>thanks...<BR/>Gitau
+  id: '3648875258244005851'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: jgitau
+  profile: http://third-world-networker.blogspot.com/
+  pub: '2009-01-19T11:00:00.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 19 January 2009 11:20
+  html: Of course you can do the same from the EEM applet (you might have problems
+    with URL escaping though). Will write a proof-of-concept code.
+  id: '251230796503941313'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2009-01-19T11:20:00.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 19 January 2009 13:57
+  html: 'Hi Ivan,<BR/><BR/>Only for info, the builtin HTTP seems to be blocked by
+    "default" Modsecurity which results in "permission denied" on cisco client-side.<BR/><BR/>Best
+    regards,<BR/><BR/>[Mon Jan 19 13:50:49 2009] [error] [client 1.2.3.4] ModSecurity:
+    Access denied with code 403 (phase 2). Match of "rx ^OPTIONS$" against "REQUEST_METHOD"
+    required. [file "/etc/modsecurity/modsecurity_crs_21_protocol_anomalies.conf"]
+    [line "41"] [id "960015"] [msg "Request Missing an Accept Header"] [severity "CRITICAL"]
+    [tag "PROTOCOL_VIOLATION/MISSING_HEADER"] [hostname "4.3.2.1"] [uri "/index.html"]
+    [unique_id "X0F35H8AAQEAAGL@ligAAAAJ"]'
+  id: '623929028208919411'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Francois
+  profile: http://packetfault.org
+  pub: '2009-01-19T13:57:00.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 19 January 2009 14:05
+  html: '@Francois: Am I right in assuming you''ve taken the log from an Apache server?'
+  id: '7793384423810364346'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2009-01-19T14:05:00.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 19 January 2009 14:40
+  html: '@Ivan: You are correct :)'
+  id: '856043921620071811'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Francois
+  profile: http://packetfault.org
+  pub: '2009-01-19T14:40:00.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 19 January 2009 17:14
+  html: In this case, it's ModSecurity's fault. Just checked the RFC2616 (HTTP) and
+    the Accept header is not mandatory (but it's true that it's sent by all browsers
+    and obviously not by some bots).
+  id: '1843248380436273650'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2009-01-19T17:14:00.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 21 January 2009 22:50
+  html: Can you trap for an error if the server replies with a code other than 200?
+  id: '2813428233441092504'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: jswan
+  profile: https://www.blogger.com/profile/02571029118821999072
+  pub: '2009-01-21T22:50:00.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 22 January 2009 09:11
+  html: The "more" command probably fails and <A HREF="http://www2.lib.uchicago.edu/~keith//tcl-course/topics/exceptions.html"
+    REL="nofollow">you could try to catch that</A>.
+  id: '8814218056355896486'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2009-01-22T09:11:00.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 16 July 2009 18:01
+  html: When issuing an HTTP request from IOS CLI (using more, or something else),
+    is it possible to specify the source IP address?<br /><br />The goal is to try
+    to emulate a host&#39;s HTTP GET using the router than a PC.<br /><br />Frank
+  id: '2744363348960185437'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: frnkblk
+  profile: null
+  pub: '2009-07-16T18:01:46.000+02:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 16 July 2009 21:47
+  html: Use the &quot;ip http client source-interface&quot; global configuration command.
+  id: '7898042791737016671'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2009-07-16T21:47:24.000+02:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 16 July 2009 22:57
+  html: Thanks!
+  id: '1784298329256221320'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: frnkblk
+  profile: null
+  pub: '2009-07-16T22:57:51.000+02:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 20 January 2010 12:16
+  html: Hi Ivan,<br />I need to make a GET to a URL but when this fail, I throw shutdown
+    a interface  router for switched traffic, as I do?<br />Thanks.
+  id: '7636897386207200544'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: milko
+  profile: null
+  pub: '2010-01-20T12:16:25.000+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 24 March 2011 08:43
+  html: Hi Ivan,<br /><br />Did you ever write a POC to see if you could re-route
+    on http status? I have a similar requirement and came across this post on a google
+    search.<br /><br />Thanks<br />bruce
+  id: '4584033041015373987'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: bruce
+  profile: null
+  pub: '2011-03-24T08:43:02.518+01:00'
+  ref: '4774033274872154656'
+  type: comment
+- date: 04 July 2014 09:01
+  html: Is there any chance that you can validate the the https side works. I have
+    tried every approach I can think of and it still fails. There must be an avenue
+    since services such as WAAS Express register via https. The intent would be to
+    post info to a web site that has a sef signed certificate as most services are
+    being encrypted with SSL now.
+  id: '5055904981678827373'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Rob
+  profile: null
+  pub: '2014-07-04T09:01:07.004+02:00'
+  ref: '4774033274872154656'
+  type: comment
+count: 14
+id: '4774033274872154656'
+type: post
+url: 2009/01/generate-https-requests-from-tcl-shell.html

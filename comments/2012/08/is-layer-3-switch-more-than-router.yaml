@@ -1,0 +1,187 @@
+comments:
+- comments:
+  - date: 28 August 2012 09:24
+    html: It was always my understanding that bridging was fast-switched and used
+      MAC address table as forwarding cache. Use &quot;show interface switching&quot;
+      to verify it is.
+    id: '2498950682116960339'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAAAA/xUR3cKuue6I/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-08-28T09:24:36.368+02:00'
+    ref: '2498067451879024180'
+    type: comment
+  date: 28 August 2012 09:04
+  html: Does bridging in software based platforms (7200/2600/etc) use interrupts?
+    Is there a &#39;Bridging CEF&#39; of sorts? I&#39;ve always held the notion that
+    IRB performance is on par with IP process switching performance, but I&#39;ve
+    never actually tested it.
+  id: '2498067451879024180'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: ianh
+  profile: http://www.ianh.net.au
+  pub: '2012-08-28T09:04:03.242+02:00'
+  ref: '5587710441061395640'
+  type: comment
+- date: 28 August 2012 13:46
+  html: I am finding that the terms &#39;router&#39; and &#39;switch&#39; are beginning
+    to only designate the primary function the vendor intended them to do.  Some features
+    are taken for granted on a &#39;switch&#39; that are not present or lacking in
+    features on a router.  For instance I have a customer who replaced a headend router
+    and switch with an ASR9000.  That router is definitely primarily designed for
+    ip routing and mpls and is a bit awkward for the layer2/vlan type stuff.  It does
+    no properly do CDP on the sub interfaces and passes CDP traffic from other interfaces
+    in the same bridge group.  Also the spanning-tree implementation is not very clear
+    cut or well documented.  Am I doing layer2 bridging, yes.  Is it a powerful platform,
+    yes.  Is it a pain to do some functions that would only take 2-3 commands on a
+    &#39;normal switch&#39;, very much so.
+  id: '117724050610410003'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brian Christopher Raaen
+  profile: http://www.brianraaen.com
+  pub: '2012-08-28T13:46:38.499+02:00'
+  ref: '5587710441061395640'
+  type: comment
+- date: 28 August 2012 16:45
+  html: Good post.<br /><br />Brouter;) Remember that one?<br /><br />Fabswrout -
+    fabric-switch-router;)
+  id: '5181493923166234722'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Jsicuran
+  profile: http://www.amilabs.com
+  pub: '2012-08-28T16:45:49.210+02:00'
+  ref: '5587710441061395640'
+  type: comment
+- comments:
+  - date: 29 August 2012 04:34
+    html: Beyond interfaces (we run all Ethernet WAN connections, so it isn&#39;t
+      a concern for me), I think the big thing is routing table size support.<br /><br
+      />And routing protocol support on some cheaper L3 switches, or products like
+      Brocade&#39;s latest ICX where the base L3 package includes only RIP and OSPF,
+      and you need the advanced L3 package to get BGP.
+    id: '6225815355248933'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Brian L
+    profile: null
+    pub: '2012-08-29T04:34:24.247+02:00'
+    ref: '6740970763107672308'
+    type: comment
+  date: 28 August 2012 19:52
+  html: I think the main difference between routers and switches comes down to what
+    WAN Interface types it can support.<br /><br />Most (not all) switches cannot
+    handle an OC3.
+  id: '6740970763107672308'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: RawCode
+  profile: https://www.blogger.com/profile/04148155079076374473
+  pub: '2012-08-28T19:52:32.247+02:00'
+  ref: '5587710441061395640'
+  type: comment
+- comments:
+  - date: 28 August 2012 22:22
+    html: It is not useless, with routed ports you have a better and fast convergence
+      (.ie carrier-delay to 0, BFD ...) than with a SVI.
+    id: '6416027873357651430'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2012-08-28T22:22:31.726+02:00'
+    ref: '7458286806313181867'
+    type: comment
+  date: 28 August 2012 20:31
+  html: So, migrating interconnection VLANs to routed ports in order to free VLANs
+    is useless in the 6500? Or do you mean &quot;until you run out of VLAN IDs&quot;?
+  id: '7458286806313181867'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Octavio Alvarez
+  profile: http://blog.alvarezp.org/categorias/por-idioma/english
+  pub: '2012-08-28T20:31:46.320+02:00'
+  ref: '5587710441061395640'
+  type: comment
+- comments:
+  - date: 29 August 2012 19:05
+    html: Transit LSRs can only guess what&#39;s in the L3 datagrams after the MPLS
+      envelope. Ingress and egress LSRs should know - egress one has assigned the
+      label and ingress one is using it.<br /><br />The only time a transit LSR tries
+      to figure out the payload type is when it&#39;s trying to send ICMP TTL exceeded.
+    id: '2164414073439735047'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAAAA/xUR3cKuue6I/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-08-29T19:05:40.290+02:00'
+    ref: '6230454224804373662'
+    type: comment
+  - date: 30 August 2012 16:41
+    html: Completely agree, though my point was that how LSR knows that packet it
+      received is MPLS IPV4 IPV6 etc...
+    id: '337575825211253595'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: mateusz b
+    profile: null
+    pub: '2012-08-30T16:41:08.818+02:00'
+    ref: '6230454224804373662'
+    type: comment
+  - date: 30 August 2012 17:02
+    html: If a transit LSR needs to know the payload type, the only thing it can do
+      is guess based on the first nibble in the payload (4 = ipv4, 6 =ipv6).
+    id: '3490023753369869880'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAAAA/xUR3cKuue6I/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-08-30T17:02:42.159+02:00'
+    ref: '6230454224804373662'
+    type: comment
+  - date: 31 August 2012 14:56
+    html: LSR is not required to know the mpls payload .Normally ACLs are used to
+      trap specific protocol pkts to CPU.
+    id: '1782118144756561930'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: svenkata
+    profile: https://www.blogger.com/profile/00771824045391366031
+    pub: '2012-08-31T14:56:28.998+02:00'
+    ref: '6230454224804373662'
+    type: comment
+  date: 28 August 2012 22:47
+  html: I always thought that LSR does recognise MPLS packets by protocol type inspection...
+    don&#39;t they?<br />So are they switches?
+  id: '6230454224804373662'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: mateusz b
+  profile: null
+  pub: '2012-08-28T22:47:49.293+02:00'
+  ref: '5587710441061395640'
+  type: comment
+- date: 31 August 2012 14:52
+  html: 'Shouldn&#39;t a physical L3 Interface be independent of Layer2 media .So
+    logically speaking the L2 interface should strip the L2 header (802.11,PPP,ethernet
+    ) and send the IP payload to the L3 interface.  '
+  id: '4963924942280547451'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: svenkata
+  profile: https://www.blogger.com/profile/00771824045391366031
+  pub: '2012-08-31T14:52:23.678+02:00'
+  ref: '5587710441061395640'
+  type: comment
+- date: 31 August 2012 21:50
+  html: 'There&#39;s another little quirk between a router and a switch in Cisco country.
+    A router by definition has layer 3 interfaces. A switch has layer 2 ports that
+    can be converted to layer 3, but this is done by the control plane (your reference
+    to the hidden VLANs matches this).<br />Now, if the control plane takes a hit
+    and crashes due to a bug, a router crashes and goes offline or reboots. However,
+    a switch can start flooding in some sort of &#39;hub-mode&#39; if the data plane
+    is still working. It means that any frame (data, CDP, BPDU) entering one ports
+    exits all other ports, whether these ports where part of the same VLAN, a trunk,
+    another VLAN access port, or a layer 3 port. It just floods.<br /><br />In other
+    words: a layer 3 switch can become a layer 1 failure domain, regardless of the
+    design of the higher layers. I have yet to see that happen to a router.'
+  id: '611303581735010726'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-08-31T21:50:46.048+02:00'
+  ref: '5587710441061395640'
+  type: comment
+count: 15
+id: '5587710441061395640'
+type: post
+url: 2012/08/is-layer-3-switch-more-than-router.html

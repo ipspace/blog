@@ -1,0 +1,64 @@
+comments:
+- comments:
+  - date: 04 September 2019 13:29
+    html: 'TCP MSS values: you&#39;re absolutely correct. Fixed.<br /><br />RFC 4821:
+      Will mention it in Summary (next week).<br /><br />Windows: I found this: https://docs.microsoft.com/en-us/windows/win32/winsock/ipproto-ip-socket-options
+      - the way I read it, PMTUD is enabled by default.<br /><br />Example: added
+      to the text...'
+    id: '2175968473116006071'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2019-09-04T13:29:33.401+02:00'
+    ref: '1979011899197978869'
+    type: comment
+  - date: 04 September 2019 18:34
+    html: What a reaction time! Thank you for your fast response.<br /><br />I think
+      on Windows PMTUD is disabled (0) by default. It may depend on the version of
+      Windows. I&#39;m not sure.<br /><br />In this context it may be worth mentioning
+      TCP/(UDP) segmentation offload. Sometimes we can see huge TCP segments (beyond
+      60000 bytes) in a capture and wonder how it works.<br />Google and others try
+      to achieve a performance (throughput) increase by using QUIC (UDP). So it&#39;s
+      a fight between TCP and UDP which ends in TCP starvation and UDP dominance.<br
+      /><br />An other point maybe worth mentioning is the performance impact by using
+      jumbo frames (beyond 9000 bytes).
+    id: '6481937950121743796'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Anonymous
+    profile: https://www.blogger.com/profile/17892204563666956100
+    pub: '2019-09-04T18:34:13.645+02:00'
+    ref: '1979011899197978869'
+    type: comment
+  date: 04 September 2019 10:56
+  html: I thought that TCP MSS is not negotiated between receiver and sender (see
+    RFC 879). So it can be independent in each direction.<br />What about RFC 4821
+    as a possible solution if firewalls in between are dropping ICMP unreachable messages
+    (PTB)?<br />The socket option IP_DONTFRAGMENT on Windows just indicates that data
+    should not be fragmented. What you&#39;re maybe interested in is the option IP_MTU_DISCOVER
+    on a per socket basis. You could also set it system-widely with the registry entry
+    HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters\EnablePMTUDiscovery
+    to 1. If I remember correctly this registry entry is not available or is set to
+    off.<br />What are the implications if one side of a connection has IP MTU set
+    to 9000 bytes and the other end has set it to 1500 bytes (both end hosts are not
+    using PMTU discovery)?
+  id: '1979011899197978869'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Anonymous
+  profile: https://www.blogger.com/profile/17892204563666956100
+  pub: '2019-09-04T10:56:32.007+02:00'
+  ref: '7734561167500343948'
+  type: comment
+- date: 04 September 2019 12:31
+  html: 'Regarding my last question I should have defined it more precisely: the highest
+    MTU <br />along the network path supported is 1500 bytes.'
+  id: '1101311979651130607'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Anonymous
+  profile: https://www.blogger.com/profile/17892204563666956100
+  pub: '2019-09-04T12:31:24.844+02:00'
+  ref: '7734561167500343948'
+  type: comment
+count: 4
+id: '7734561167500343948'
+type: post
+url: 2019/09/updated-path-mtu-discovery.html

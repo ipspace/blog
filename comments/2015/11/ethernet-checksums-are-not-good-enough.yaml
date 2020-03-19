@@ -1,0 +1,118 @@
+comments:
+- date: 25 November 2015 15:11
+  html: Criag Partridge, from BBN, published a couple of research papers around 2000
+    based on experiments discussing this issue and related ones
+  id: '1033713519684225165'
+  image: https://lh5.googleusercontent.com/-75S8wq8NiPg/AAAAAAAAAAI/AAAAAAAAABc/CicYJHOXU2g/s32-c/photo.jpg
+  name: Marcos Salvador
+  profile: https://www.blogger.com/profile/18419652709378551396
+  pub: '2015-11-25T15:11:02.119+01:00'
+  ref: '7900847700091070740'
+  type: comment
+- date: 25 November 2015 18:53
+  html: "How does cut-through introduce a correct CRC when the incoming one fails?\
+    \ If I understand correctly, the post by John Harrington says that cut-through\
+    \ switches \u2018stomp\u2019 the outbound FCS when the inbound CRC fails, meaning\
+    \ they forward a garbage (incorrect) FCS. It gets over all the network (since\
+    \ you cannot un-forward the frame by the time you detect a corrupt CRC), but it\
+    \ reaches the destination with an incorrect FCS. Shouldn&#39;t that be detected\
+    \ by the iSCSI endpoint to discard the frame? Or is it that switches actually\
+    \ calculate a new CRC when they route between different subnetworks, without &#39;stomping&#39;?"
+  id: '9030075535377443993'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Enrique Vallejo
+  profile: http://personales.unican.es/vallejoe/
+  pub: '2015-11-25T18:53:23.916+01:00'
+  ref: '7900847700091070740'
+  type: comment
+- date: 25 November 2015 19:39
+  html: You are correct, CRC errors are detected even in case of cut-through switching.
+  id: '2228003928989134883'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2015-11-25T19:39:28.070+01:00'
+  ref: '7900847700091070740'
+  type: comment
+- date: 26 November 2015 09:32
+  html: 'Yes, CRC errors are detected even in cut-through mode, at least on Cisco
+    Nexus 9000: http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/layer2/configuration/guide/b_Cisco_Nexus_9000_Series_NX-OS_Layer_2_Switching_Configuration_Guide_7x/configuring_switching_modes.html#concept_73023BB781B14EBCB7048F8B0CA7189D'
+  id: '6298857848787853637'
+  image: https://lh3.googleusercontent.com/-nXEGYnJMBsI/AAAAAAAAAAI/AAAAAAAAHyU/B8GEVrMHwrE/s32-c/photo.jpg
+  name: jean-christophe Manciot
+  profile: https://www.blogger.com/profile/00097751192210829089
+  pub: '2015-11-26T09:32:47.885+01:00'
+  ref: '7900847700091070740'
+  type: comment
+- date: 26 November 2015 15:17
+  html: http://www.cisco.com/c/en/us/products/collateral/switches/nexus-5020-switch/white_paper_c11-465436.html<br
+    /><br />&quot;http://www.cisco.com/c/en/us/products/collateral/switches/nexus-5020-switch/white_paper_c11-465436.html&quot;<br
+    /><br />Maybe nexus works differently...
+  id: '250675772817113413'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Bogdan Golab
+  profile: https://www.blogger.com/profile/11545281059392899809
+  pub: '2015-11-26T15:17:18.199+01:00'
+  ref: '7900847700091070740'
+  type: comment
+- date: 26 November 2015 15:17
+  html: 'Whereas a store-and-forward switch drops invalid packets, cut-through devices
+    forward them because they do not get a chance to evaluate the FCS before transmitting
+    the packet. '
+  id: '4376447862445948323'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Bogdan Golab
+  profile: https://www.blogger.com/profile/11545281059392899809
+  pub: '2015-11-26T15:17:57.646+01:00'
+  ref: '7900847700091070740'
+  type: comment
+- date: 27 November 2015 18:41
+  html: Does anyone know how to tell if the switch you are configuring/using is a
+    cut-through type?
+  id: '5422881778016750438'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2015-11-27T18:41:43.646+01:00'
+  ref: '7900847700091070740'
+  type: comment
+- comments:
+  - date: 06 December 2015 08:28
+    html: You (and everyone else) is absolutely right - I misunderstood the main technical
+      argument in Evan&#39;s post. Fixed.
+    id: '5741241534105642144'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2015-12-06T08:28:39.429+01:00'
+    ref: '8433188877877188352'
+    type: comment
+  date: 06 December 2015 00:27
+  html: 'I wholeheartedly agree with the idea that one should not rely on the Ethernet
+    or ip/tcp checksums to verify the integrity of your data. These things are very
+    fast to check on a modern CPU and you can avoid incredibly hard bugs.<br /><br
+    />It would be a serious bug for a cut-through switch to put a correct CRC on a
+    frame that had an incorrect CRC upon reception and none of the cut through switches
+    available since 2006 have had this bug. The real issue with cut-through and bad
+    CRC is that they don&#39;t get dropped and keep using precious bandwidth, though
+    in reality unless you have a lot of FCS errors in your network, this is not a
+    big deal at all.<br /><br />Also note that Ip checksum is only on the header.
+    TCP checksum covers the payload with a weak 16b ones complement checksum. So UDP
+    packets basically rely only the ethernet CRC to protect the payload.<br /><br
+    />What can happen very rarely is a piece of networking equipment could have some
+    memory where some bits are stuck at 0 or 1. If that memory buffers packets after
+    the CRC is checked and happens not to be protected with parity or ECC, packet
+    payload is now corrupted and the networking equipment generates a new CRC that
+    is correct for the corrupted payload. Here&#39;s a good description of such a
+    failure from Edgecast ( Verizon CDN ):  <br /><br />https://www.verizondigitalmedia.com/blog/2015/02/being-good-stewards-of-the-internet/'
+  id: '8433188877877188352'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Francois Labonte
+  profile: null
+  pub: '2015-12-06T00:27:02.666+01:00'
+  ref: '7900847700091070740'
+  type: comment
+count: 9
+id: '7900847700091070740'
+type: post
+url: 2015/11/ethernet-checksums-are-not-good-enough.html

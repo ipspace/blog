@@ -1,0 +1,155 @@
+comments:
+- date: 29 October 2010 14:04
+  html: What was DHCPv6 host-identifier in your test? DUID or something else?
+  id: '8382725228055861913'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Jan Zorz
+  profile: null
+  pub: '2010-10-29T14:04:30.000+02:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 29 October 2010 15:47
+  html: This whitepaper give a reasonable overview of the deployment options:<br />http://www.cisco.com/en/US/prod/collateral/iosswrel/ps6537/ps6553/whitepaper_C11-472610.html<br
+    /><br />A relay will snoop the PD options and should install static routes when
+    a prefix is delegated through the relay. Another option we thought about was to
+    use a new relay option (see the RAAN draft).<br /><br />Bulk lease query is also
+    another way of recovering state at the PE.<br />Markus and I wrote a draft at
+    one point suggesting solutions to this problem:<br />http://tools.ietf.org/html/draft-stenberg-v6ops-pd-route-maintenance-00<br
+    /><br />in my view the &#39;cleanest&#39; approach would be for the CPE to run
+    some sort of &quot;BFD echo&quot; to discover lost forwarding state at the PE
+    and reset its DHCP client state machine.
+  id: '9212819425034984415'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ole Troan
+  profile: null
+  pub: '2010-10-29T15:47:07.000+02:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 03 November 2010 20:56
+  html: Running 12.2(31)SB18, and same problem that static route not installed with
+    DHCPv6 relay.
+  id: '2448101937936410837'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Frank Bulk
+  profile: null
+  pub: '2010-11-03T20:56:03.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 07 November 2010 16:12
+  html: TAC confirmed the issue 12.2(31)SB18 and I&#39;ve asked a bug to filed.<br
+    /><br />Frank
+  id: '6748271680918392815'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Frank Bulk
+  profile: null
+  pub: '2010-11-07T16:12:22.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 07 November 2010 17:48
+  html: Will you be able to shared the bug id? It would be nice to check whether it&#39;s
+    a cross-release one (or whether the 15.0M behavior is a different bug).
+  id: '6888045685766489782'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-11-07T17:48:34.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 08 November 2010 04:32
+  html: OK, so I&#39;ve checked. This isn&#39;t a bug it is a feature. Or lack of
+    such. I&#39;ve escalated this internally and I expect that we will have full support
+    for relay route injection in the latest branches soon. Currently it is in IOS
+    XE, 12.2XN, 12.2SE.
+  id: '1929267019151810865'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ole Troan
+  profile: null
+  pub: '2010-11-08T04:32:40.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 08 November 2010 15:07
+  html: Thanks, Ole.  You had told me offline that it was 12.2SRE, but above you write
+    12.2SE.  Can you clarify?<br /><br />Frank
+  id: '5575699169710398934'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Frank Bulk
+  profile: null
+  pub: '2010-11-08T15:07:45.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 08 November 2010 19:01
+  html: Ole, thanks for the feedback!
+  id: '9030435867589711195'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-11-08T19:01:40.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 09 November 2010 15:50
+  html: CSCtj94196 was opened for my issue.<br /><br />Frank.
+  id: '3834775245412487789'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Frank Bulk
+  profile: null
+  pub: '2010-11-09T15:50:22.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 17 November 2010 07:22
+  html: In PPPoE environments, it&#39;s common and usual for both the CPE and the
+    BRAS to test the link with periodic PPP LCP Echo Requests/Replies.
+  id: '1603741477558491718'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Mark
+  profile: null
+  pub: '2010-11-17T07:22:49.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 17 November 2010 09:05
+  html: LCP Echo discovers L2 problems, not a missing static route on BRAS. There&#39;s
+    also the &quot;dialer interface&quot; problem on Cisco IOS CPEs (see http://blog.ioshints.info/2010/10/dhcpv6-over-pppoe-total-disaster.html)
+  id: '2252140399817523731'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-11-17T09:05:28.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 12 December 2010 06:58
+  html: I&#39;ve tested 12.2(33)SRE2 on the 7609-S and 7206VXR and the DHCPv6-PD relay
+    with static route insertion worked.<br /><br />Frank
+  id: '669807961725625118'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Frank Bulk
+  profile: null
+  pub: '2010-12-12T06:58:51.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 12 December 2010 08:17
+  html: Synchronous thinking ... I did exactly the same tests last week, also with
+    12.2SRE2. Great results coming in tomorrow&#39;s blog post.
+  id: '4951717112748190128'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-12-12T08:17:31.000+01:00'
+  ref: '2217003414351642682'
+  type: comment
+- date: 12 April 2011 11:21
+  html: Ivan:<br /><br />Can you test to see if static route insertion works with
+    12.2(31)SB20, 12.2(33)SRE3, or 15.1(4)M using PPPoE?  Because it doesn&#39;t seem
+    to work for me, and &quot;debug ipv6 dhcp&quot; and &quot;debug ipv6 relay&quot;
+    and &quot;debug ipv6 dhcp detail&quot; show the external DHCPv6 server sending
+    the PD, but there&#39;s no static route insertion.  I&#39;ve also used &quot;debug
+    ipv6 routing&quot;.<br /><br />Frank
+  id: '6088686430146872685'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Frank Bulk
+  profile: null
+  pub: '2011-04-12T11:21:20.829+02:00'
+  ref: '2217003414351642682'
+  type: comment
+count: 14
+id: '2217003414351642682'
+type: post
+url: 2010/10/dhcpv6-relaying-another-trouble-spot.html

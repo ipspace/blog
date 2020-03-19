@@ -1,0 +1,82 @@
+comments:
+- comments:
+  - date: 07 December 2015 16:59
+    html: According to Kemp whitepaper, they use information from the SDN controller
+      to identify bottlenecks between the load balancer and individual servers in
+      the server farm. <br /><br />Looks like a solution in search of a problem to
+      me. Throwing more bandwidth at the problem is probably cheaper and definitely
+      less complex.
+    id: '91794165005201834'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2015-12-07T16:59:36.541+01:00'
+    ref: '5018157963562813414'
+    type: comment
+  date: 07 December 2015 16:32
+  html: Even with simple L3/L4, a pure openflow load-balancer would require the controller
+    be involved in every connection setup. It might be able to outperform a 1997-era
+    LocalDirector, but not much else.<br /><br />More realistic is a slow/fast-path
+    approach. E.g., a standalone load-balancer directs the initial connection setup
+    and then uses openflow to fast-path the remainder of the connection. I&#39;m guessing
+    this is how NSX&#39;s distributed load-balancer will work.<br /><br />HP&#39;s
+    SDN App Store does have a <a href="http://h20195.www2.hp.com/V2/getpdf.aspx/4AA4-5984ENW.pdf?ver=1.0"
+    rel="nofollow">Kemp load-balancer</a> adapted for OpenFlow. The solution brief
+    indicates that openflow is used for load and health measurements only, not for
+    connection setup or for fast-path mode.
+  id: '5018157963562813414'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: craig weinhold
+  profile: https://www.blogger.com/profile/10562240567667879482
+  pub: '2015-12-07T16:32:56.088+01:00'
+  ref: '4700526678305246866'
+  type: comment
+- date: 07 December 2015 21:28
+  html: You can use OpenFlow for ECMP routing, which can be used as a crude form of
+    load distribution ( with multiple static routes to the same virtual IP, via different
+    real server IPs ). It is only  &quot;balanced&quot; in a statistical sense, there
+    is no mechanism to detect liveness of servers, and the return path may get asymmetrical
+    - which limits the applicability to a select set of use cases
+  id: '3570567399078876668'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Jeroen van Bemmel
+  profile: https://www.blogger.com/profile/11303994285469306441
+  pub: '2015-12-07T21:28:10.757+01:00'
+  ref: '4700526678305246866'
+  type: comment
+- comments:
+  - date: 13 December 2015 14:28
+    html: Andy any links to this article or this talk? A link to the summarised and
+      technical content will be much appreciated.<br />Thanks
+    id: '806763139082028275'
+    image: https://lh4.googleusercontent.com/-XgBfIkfqhVw/AAAAAAAAAAI/AAAAAAAAAV4/rsO5Ms_ku8U/s32-c/photo.jpg
+    name: Sujay Gupta
+    profile: https://www.blogger.com/profile/06647820876420119603
+    pub: '2015-12-13T14:28:18.514+01:00'
+    ref: '1503289233264722492'
+    type: comment
+  date: 08 December 2015 07:51
+  html: 'Jen Rexford and team had a <a href="http://cial.csie.ncku.edu.tw/st2014/pdf/OpenFlow-Based%20Server%20Load%20Balancing%20Gone%20Wild.pdf"
+    rel="nofollow">fun paper</a> about this idea at HotNets a few years ago -- it&#39;s
+    a quick and insightful read:  <br /><br />Ivan&#39;s comment about the possibility
+    of doing this in a storage context are exactly right -- Coho Data (my company)
+    does this in an enterprise storage product today.  Using Openflow onto Arista
+    ToRs, we are able to present a single IP address for NFS v3, but then dynamically
+    steer traffic over large numbers of 10Gb storage nodes.  This turns out to be
+    a pretty big win in enterprise contexts where you can&#39;t change the client
+    storage protocol (e.g. to deploy pNFS), and where you want to scale traffic over
+    large numbers of very fast flash devices.<br /><br />If you&#39;re interested,
+    I recently did a <a href="http://vimeo.com/143189231" rel="nofollow">talk</a>
+    on this aspect of our system, as well as some related challenges facing network
+    connectivity/perf in storage systems..<br /><br />@andywarfield'
+  id: '1503289233264722492'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Andy Warfield
+  profile: http://www.cohodata.com/blog/author/andy/
+  pub: '2015-12-08T07:51:43.937+01:00'
+  ref: '4700526678305246866'
+  type: comment
+count: 5
+id: '4700526678305246866'
+type: post
+url: 2015/12/could-we-use-openflow-for-load-balancing.html

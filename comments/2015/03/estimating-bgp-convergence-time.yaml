@@ -1,0 +1,209 @@
+comments:
+- date: 09 March 2015 10:35
+  html: Definitely it depends on this one... Also, I assume we are discussing outbound
+    traffic as inbound traffic would be very difficult to measure, depending on how
+    far from our AS we could consider the network as converged.<br /><br />The first
+    step is to detect the failure. Design for Loss of Signal (LoS), so don&#39;t use
+    any converters, MUXes that do stupid things etc. Ask the provider to run BFD.<br
+    /><br />I&#39;m assuming that under normal circumstances, the secondary router
+    would have the iBGP routes with a higher local pref but the eBGP routes already
+    in the BGP table. So when Upstream A fails, the primary router would only have
+    to send Withdraw message and the secondary router would start to use the external
+    routes. The secondary router would then have to send those routes to the primary
+    router through iBGP.<br /><br />So some time could be shaved off the convergence
+    if the secondary router attracts all the traffic instead of traffic going to the
+    primary router and then across the iBGP peering. Not knowing what the network
+    looks like, this could be achieved by modifying HSRP priority based on some tracking
+    of an interface or route, conditionally advertising a default route and so on.<br
+    /><br />BGP PIC and Best external would definitely be helpful though if supported
+    on the platform.
+  id: '2937223628025450954'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Daniel Dib
+  profile: https://www.blogger.com/profile/05348201047870981278
+  pub: '2015-03-09T10:35:44.623+01:00'
+  ref: '1472688299946869630'
+  type: comment
+- comments:
+  - date: 09 March 2015 14:59
+    html: How many routes do you get from the ISPs? Full routing table?
+    id: '2610973676909079878'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2015-03-09T14:59:54.307+01:00'
+    ref: '8559249922287001660'
+    type: comment
+  - date: 09 March 2015 16:34
+    html: On top of previous advices, do you really need the full BGP updates from
+      your ISPs? Asking for partial BGP updates should significantly improve your
+      convergence time.
+    id: '1635787256005417842'
+    image: https://lh3.googleusercontent.com/-nXEGYnJMBsI/AAAAAAAAAAI/AAAAAAAAHyU/B8GEVrMHwrE/s32-c/photo.jpg
+    name: jean-christophe Manciot
+    profile: https://www.blogger.com/profile/00097751192210829089
+    pub: '2015-03-09T16:34:13.663+01:00'
+    ref: '8559249922287001660'
+    type: comment
+  - date: 09 March 2015 18:26
+    html: Hi Ivan. Yes,the full routing table.
+    id: '4469046879556030421'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: moods
+    profile: null
+    pub: '2015-03-09T18:26:55.654+01:00'
+    ref: '8559249922287001660'
+    type: comment
+  date: 09 March 2015 13:37
+  html: Hi,<br /><br />What Daniel describe in the third paragraph takes us 15 sec
+    (in our network) to re-converge to the second router. We are considering of using
+    BGP PIC and best external. Anyone using this in production environment on the
+    edge routers (Full bgp table) ?
+  id: '8559249922287001660'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: moods
+  profile: null
+  pub: '2015-03-09T13:37:49.787+01:00'
+  ref: '1472688299946869630'
+  type: comment
+- date: 09 March 2015 21:47
+  html: 'You can use a tool like Exabgp to simulate this fairly well.  I usually put
+    a real router in the middle, and then the real client router after that.  Exabgp
+    can handle advertising a full table fairly easily, whether you get it directly
+    from a live network or build a config with 500K paths in it.    We still use a
+    full mesh, with 57 routers, and each router sees approximately 3M unicast paths,
+    with 500K+ best paths after it&#39;s all said and done.  I simulate all 57 routers
+    in exabgp and use linux TC to simulate the latency between the peers.  <br /><br
+    />You can imagine on cold boot there is a lot of churn going on as best paths
+    are replaced with better paths, forwarding tables have to be updated, etc.  However
+    with modern CPUs convergence is still under 2 minutes once everything comes up  <br
+    /><br />With a RR in the middle and having just a single neighbor advertising
+    the best 520K odd paths, the convergence is 10-15 seconds.  '
+  id: '5709654543418657416'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Phil Bedard
+  profile: https://www.blogger.com/profile/00999352568102477737
+  pub: '2015-03-09T21:47:30.098+01:00'
+  ref: '1472688299946869630'
+  type: comment
+- comments:
+  - date: 11 March 2015 00:41
+    html: 'Simplicity more than anything else.  In the case of a modern routing engine
+      57 peers is nothing and neither is 3M routes in the RIB.   Everything is redundant
+      so it&#39;s not like traffic is down for 2 minutes or even 15 seconds.  There
+      are layers of route reflection in the network of course, just not at that layer.  '
+    id: '3961230379052223137'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Phil Bedard
+    profile: https://www.blogger.com/profile/00999352568102477737
+    pub: '2015-03-11T00:41:20.727+01:00'
+    ref: '6293177345770017262'
+    type: comment
+  date: 09 March 2015 22:19
+  html: Phil:<br /><br />Why are you using a full mesh? Not here to flame you, just
+    sincerely interested. The only reason I could think of is to have more paths advertised
+    and optimize routing to the IGP nexthops. At least the first one should be solveable
+    by advertisinge best path + N paths.
+  id: '6293177345770017262'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Daniel Dib
+  profile: https://www.blogger.com/profile/05348201047870981278
+  pub: '2015-03-09T22:19:05.595+01:00'
+  ref: '1472688299946869630'
+  type: comment
+- comments:
+  - date: 11 March 2015 00:44
+    html: 'What revision of XR is that?  Take a busy 7600 and add another full table
+      peer to it and you can probably run to Starbucks and get some coffee before
+      it&#39;s done.  Same goes with a MX80.   Juniper of course had the famous KRT
+      stuck queue issue where it could take quite some time to program the FIB regardless
+      of the RIB being up to date.  '
+    id: '2099493336849724969'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Phil Bedard
+    profile: https://www.blogger.com/profile/00999352568102477737
+    pub: '2015-03-11T00:44:16.136+01:00'
+    ref: '267456220430544005'
+    type: comment
+  date: 10 March 2015 11:07
+  html: 'You forget about differences in software.<br /><br />My measurements show
+    that when I get a full table from eBGP peers, Juniper MX (with a recent routing
+    engine) is the fastest, 76xx is twice as slow (due to an older CPU I guess), then
+    ASR9k is twice as slow compared to 76xx. <br /><br />You&#39;d probably think
+    that ASR9k should be faster than C76xx but Cisco broke something in their BGP
+    implementation and now it no longer groups prefixes with the same BGP attributes
+    in a single update message. <br /><br />Juniper MX960: 83k updates per 533k prefixes.<br
+    />Cisco 7600: 91k updates per 527k prefixes<br />Cisco ASR9k: 506k updates per
+    531k prefixes<br />(Just tested)<br /><br />And yes, it was reported, and Cisco
+    after several months said that it&#39;s a software-hardware limitation (how obvious)
+    and the only workaround is to do ebgp multihop with clients through another route-server.
+    Well...no. Just no.<br /><br />Also I believe you downplay the FIB programming
+    time. '
+  id: '267456220430544005'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2015-03-10T11:07:57.881+01:00'
+  ref: '1472688299946869630'
+  type: comment
+- comments:
+  - date: 13 March 2015 07:38
+    html: That&#39;s true - they were designed for MPLS/VPN networks. However, you
+      could (with plenty of smarts ;) use them in the above setup, and I think I&#39;ve
+      seen someone supporting Best External for plain IPv4 sessions.
+    id: '7118330808844458953'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2015-03-13T07:38:22.175+01:00'
+    ref: '5270885369827177860'
+    type: comment
+  date: 12 March 2015 16:29
+  html: "Ivan,<br /><br />It\xB4s my understanding that BGP Best External &amp; BGP\
+    \ PIC features are for MPLS/VPN environments and also to be implemented in the\
+    \ ISP Network. I do not see how it would be used here. "
+  id: '5270885369827177860'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: "Jos\xE9 Jara"
+  profile: null
+  pub: '2015-03-12T16:29:02.210+01:00'
+  ref: '1472688299946869630'
+  type: comment
+- comments:
+  - date: 08 May 2015 07:59
+    html: No, that is definitely not normal.
+    id: '9019306859386348131'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2015-05-08T07:59:42.311+02:00'
+    ref: '3238654290685831698'
+    type: comment
+  - date: 08 May 2015 19:42
+    html: Any idea what it could be, config or bug?
+    id: '9031420015909729698'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2015-05-08T19:42:33.945+02:00'
+    ref: '3238654290685831698'
+    type: comment
+  date: 07 May 2015 21:18
+  html: 'I have a question that might be weird, I have 2 upstream carriers with BGP,
+    one of them currently is giving me zero routes by BGP (they&#39;re fixing that)
+    and the other gives me the default route. So basically the only route in the routing
+    table is the one from carrier #2. As carrier #1 is fixing things they tear down
+    the session, and then i got and outage of a few minutes when the default route
+    (the only one) is still in the routing table because it&#39;s from #2, is this
+    normal? To lose all connectivity when a default route is still in the table?'
+  id: '3238654290685831698'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2015-05-07T21:18:15.446+02:00'
+  ref: '1472688299946869630'
+  type: comment
+count: 15
+id: '1472688299946869630'
+type: post
+url: 2015/03/estimating-bgp-convergence-time.html

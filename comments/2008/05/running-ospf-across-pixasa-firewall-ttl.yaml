@@ -1,0 +1,87 @@
+comments:
+- date: 22 May 2008 22:49
+  html: In other words then, doing it with PIX in the middle instead of a router should
+    work fine without the TTL issues?
+  id: '907053609065276438'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Vo
+  profile: https://www.blogger.com/profile/12912675838512027475
+  pub: '2008-05-22T22:49:00.000+02:00'
+  ref: '237534842841197848'
+  type: comment
+- date: 22 May 2008 23:16
+  html: Here is another example where it only works with the PIX/ASA but not with
+    a router.<BR/><BR/>Please refer to this URL from Cisco.<BR/><BR/>http://www.cisco.com/en/US/products/hw/vpndevc/ps2030/products_configuration_example09186a00804acfea.shtml<BR/><BR/>If
+    you replace one end of the PIX/ASA with a Cisco router and doing the same IPSec
+    tunnel with the OSPF neighbor statement, your adjancy still won't come up because
+    you will get an error on the router saying the remote peer was not on a common
+    subnet. <BR/><BR/>Cisco has done something in the ASA code to (I believe) waive
+    the check on common subnet.
+  id: '704686666932112681'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: William Chu
+  profile: null
+  pub: '2008-05-22T23:16:00.000+02:00'
+  ref: '237534842841197848'
+  type: comment
+- date: 23 May 2008 15:12
+  html: '@vo: Yes, see the link in the quoted text within the post.'
+  id: '5745933710109335300'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-05-23T15:12:00.000+02:00'
+  ref: '237534842841197848'
+  type: comment
+- date: 24 May 2008 12:44
+  html: ASA5505 is (with the very basic feature set) very cheap device to play with.
+    It's handy platform to test sophisticated setup like this OSPF one.
+  id: '6314339004859366174'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-05-24T12:44:00.000+02:00'
+  ref: '237534842841197848'
+  type: comment
+- date: 24 May 2008 12:46
+  html: 'Ivan: ASA doesn''t decrement TTL with default config. If you need this you
+    may use a map in service policy where you can order it to do it.'
+  id: '6495940830139897574'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-05-24T12:46:00.000+02:00'
+  ref: '237534842841197848'
+  type: comment
+- date: 13 August 2008 20:54
+  html: I tried running OSPF between 2 routers across a firewall, by establshing a
+    GRE tunnel and running OSPF through it. This takes care of the Hello packets (they
+    have a TTL of 1) also.<BR/><BR/>The only hitch is that the firewall must support
+    the pass-through of GRE.<BR/><BR/>I was also looking for a solution to run the
+    OSPF across a fiewwall without using a GRE tunnel. One can configure the connected
+    interfaces (with the firewall in between behaving like a router) not to broadcast
+    (in our case multicast) OSPF. But then this stops the Hello packets also.<BR/><BR/>Is
+    there any way to sort of unicast the Hello packets across the Firewall? And to
+    increase the TTL of Hello packets to more than 1? For me either might solve the
+    issue to some extent.
+  id: '9206486500203854938'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: RV; vr_vp@yahoo.com
+  profile: null
+  pub: '2008-08-13T20:54:00.000+02:00'
+  ref: '237534842841197848'
+  type: comment
+- date: 29 August 2008 07:27
+  html: As I wrote in the post - the trick works because PIX/ASA does not decrease
+    TTL, so OSPF packets with TTL=1 pass through it.
+  id: '6587737038744651580'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-08-29T07:27:00.000+02:00'
+  ref: '237534842841197848'
+  type: comment
+count: 7
+id: '237534842841197848'
+type: post
+url: 2008/05/running-ospf-across-pixasa-firewall-ttl.html

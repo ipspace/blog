@@ -1,0 +1,100 @@
+comments:
+- comments:
+  - date: 17 November 2016 10:19
+    html: Totally agree about reboot tests. What does Netflix by creating random failures
+      is even better. But this can be a real challenge with databases and any software
+      that need manual resync/downtime for recovery.<br /><br />The issue is that
+      most people don&#39;t get that it costs something, and are not ready to pay
+      for regular tests.<br />
+    id: '1279695907942331058'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Guillaume S.
+    profile: null
+    pub: '2016-11-17T10:19:58.525+01:00'
+    ref: '7344917470297094212'
+    type: comment
+  date: 14 November 2016 10:46
+  html: 'Proper deployment design and operations could make the difference. The trick
+    with clusters is preventive maintenance. You have to exercise the reboot of cluster
+    members regularly. This could reduce your risk significantly.<br /><br />The measure
+    of success is not the up-time of a server! :-) It is the reliability of the real
+    services.<br />As an auditor, if I see a long up-time clustered server, I would
+    be immediately suspicious, that this organization has a bad operational practice.
+    :-)<br /><br />Of course, if you have basic bugs in the cluster software, nothing
+    could help out... '
+  id: '7344917470297094212'
+  image: https://lh4.googleusercontent.com/-t7xwu4fY91Y/AAAAAAAAAAI/AAAAAAAAByc/AStXb-jqQyY/s32-c/photo.jpg
+  name: "B\xE9la V\xE1rkonyi"
+  profile: https://www.blogger.com/profile/07985346761439657130
+  pub: '2016-11-14T10:46:09.318+01:00'
+  ref: '3516474365148201786'
+  type: comment
+- date: 14 November 2016 10:54
+  html: As far as firewall goes my experience is that a cluster is not less stable
+    if I account for the environment of the customers.<br /><br />The networks on
+    single firewall sis mostly less complex. And a good failover setup can in fact
+    kee a firewall cluster alive where a single firewall would have an outage due
+    to the reboot required to fix issues.<br /><br />My main experience is with Check
+    Point firewalls but there I found that a good firewall cluster will save the day.<br
+    /><br />As always poor management is something a cluster won&#39;t protect you
+    against.<br />
+  id: '3707795520865155357'
+  image: https://lh6.googleusercontent.com/-7wzL-ObnxsY/AAAAAAAAAAI/AAAAAAAAAAA/rTD3ivW_yGY/s32-c/photo.jpg
+  name: Hugo van der Kooij
+  profile: https://www.blogger.com/profile/04455731151887586803
+  pub: '2016-11-14T10:54:54.444+01:00'
+  ref: '3516474365148201786'
+  type: comment
+- date: 14 November 2016 15:06
+  html: In my opinion there is some thruth in the foregoing statement that clustered
+    systems will fail more often than standalone ones. This is based on the fact,
+    that complexity is one factor causing a higher probability of failure.<br /><br
+    />But we have to differentiate a bit, as allways when our statements are based
+    more on feelings than on mesurement.<br /><br />In the past we had to deal with
+    a series of decayed software - as well in Switches or Router plattformas as in
+    Firewall systems. And especially on Firewall systems the possibility to do an
+    upgrade at runtime was a good thing, for we had not to plan doing the work at
+    off-times.
+  id: '5423139115695302198'
+  image: https://2.bp.blogspot.com/-LOnelW1KDvg/WCnEuGCKqRI/AAAAAAAAAJk/OhAwICpex2EqeMa7PJcXSMNWX5BXHgU8gCK4B/s32/imap.png
+  name: Der Peh
+  profile: https://www.blogger.com/profile/06227822336270790907
+  pub: '2016-11-14T15:06:35.937+01:00'
+  ref: '3516474365148201786'
+  type: comment
+- comments:
+  - date: 17 November 2016 09:59
+    html: It&#39;s still true in the latest version (6). Sure, the ESXi itself doesn&#39;t
+      crash anymore since the release 5 when there is a storage issue.<br /><br />But
+      the webservice that allows the vCenter to discuss with the hypervisor will freeze
+      until the failing paths are removed (meaning you don&#39;t have any partial
+      failure, with input/output error for instance).<br /><br />With the webservice
+      being unresponsive, you lose the ability to migrate your VM. And if you forgot
+      to enable SSH, your host won&#39;t be reachable until you solve the storage
+      issue. If you stop a VM, or a VM crashes, you then won&#39;t be able to restart
+      it even if the data is not on a datastore affected by the issue.<br /><br />Even
+      the tech guys from VMWare admit there is still a lot of improvements to be done
+      in this area.<br />
+    id: '1852938252528500610'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Guillaume S.
+    profile: null
+    pub: '2016-11-17T09:59:04.594+01:00'
+    ref: '277574889466699762'
+    type: comment
+  date: 15 November 2016 23:29
+  html: 'not sure which version of vSphere is being referred to, but with APD and
+    PDL handling those problems seem to be an issue of the past. With APD handling
+    we fast fail IOs so you won&#39;t hit that issue any longer, I think that was
+    introduced in vSphere 5.1 even. '
+  id: '277574889466699762'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Duncan Epping (VMware)
+  profile: https://www.blogger.com/profile/09333432630691386455
+  pub: '2016-11-15T23:29:27.280+01:00'
+  ref: '3516474365148201786'
+  type: comment
+count: 6
+id: '3516474365148201786'
+type: post
+url: 2016/11/reliability-of-clustered-solutions.html

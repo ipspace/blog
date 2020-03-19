@@ -1,0 +1,150 @@
+comments:
+- date: 17 April 2007 21:03
+  html: How can you pass a parameter?
+  id: '2788500348662961750'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-04-17T21:03:00.000+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- date: 17 April 2007 21:27
+  html: You cannot pass a parameter when using EEM applet, you need Tcl script to
+    do that. I'll cover that in a future post.
+  id: '5878695450127690233'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_100x100.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-04-17T21:27:00.000+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- date: 27 July 2007 17:00
+  html: Please show the example with the interactive tcl script - how to pass the
+    parameter to the command
+  id: '1070350565508859235'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Michal
+  profile: https://www.blogger.com/profile/16137823507423419711
+  pub: '2007-07-27T17:00:00.000+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- date: 08 August 2007 07:56
+  html: The complete example is <A HREF="http://ioshints.blogspot.com/2007/08/example-tcl-script-with-command-line.html"
+    REL="nofollow">posted here</A>.
+  id: '1031125424292391063'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_100x100.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-08-08T07:56:00.000+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- date: 17 August 2007 15:58
+  html: ok but can you make a script with deals with such situation - sometimes when
+    you put command you have to confirm it <BR/><BR/>like e.g reload <BR/>[confirm]
+    ENTER <BR/>how to confirm command in the tcl script ?
+  id: '5486970742912595091'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Michal
+  profile: https://www.blogger.com/profile/16137823507423419711
+  pub: '2007-08-17T15:58:00.000+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- date: 20 August 2007 22:30
+  html: I was able to figure out the <A HREF="http://ioshints.blogspot.com/2007/08/reload-router-from-tcl-script.html"
+    REL="nofollow">reload specific solution</A>. No luck about other prompty commands
+    yet.
+  id: '4337891450313503988'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_100x100.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-08-20T22:30:00.000+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- date: 21 August 2007 15:18
+  html: Yes reload is specific but other clear or delete commands which require confirmation
+    are different maybe a interior variable some kind of event handler? I am still
+    looking for this
+  id: '1688346259298046702'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Michal
+  profile: https://www.blogger.com/profile/16137823507423419711
+  pub: '2007-08-21T15:18:00.000+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- date: 29 August 2007 13:10
+  html: The <A HREF="http://ioshints.blogspot.com/2007/08/insert-responses-to-command-prompts-in.html"
+    REL="nofollow">typeahead command worked for me</A> in IOS release 12.4(15)T.
+  id: '3294591817715462913'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-08-29T13:10:00.000+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- comments:
+  - date: 21 June 2014 07:27
+    html: The &quot;cli command&quot; lines are executed in a context of a different
+      VTY line (EEM script opens a &quot;console&quot; session to execute them), so
+      the &quot;terminal monitor&quot; command doesn&#39;t apply to your current session.
+      I wrote a blog post about this, just search some more ;)<br /><br />A tcl script
+      executed with tcl command might do the trick (don&#39;t remember the details,
+      it&#39;s been a long time). Yet again, I probably published at least one example
+      of how that&#39;s done.
+    id: '67371085175888023'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-06-21T07:27:45.403+02:00'
+    ref: '3086550051237467082'
+    type: comment
+  - date: 23 June 2014 15:55
+    html: Thanks for your reply! I tried the following TCL script:<br />puts [open
+      &quot;flash:debugSIPon&quot;  w+] {<br />exec &quot;debug ccsip messages&quot;<br
+      />exec &quot;terminal monitor&quot;<br />}<br />when I execute it<br />tclsh
+      flash:debugSIPon<br />I don&#39;t get any error, but no output to vty either.<br
+      />Thanks<br />
+    id: '906435390851706462'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Terrenos Sta Isabel
+    profile: https://www.blogger.com/profile/17924988961121610761
+    pub: '2014-06-23T15:55:31.120+02:00'
+    ref: '3086550051237467082'
+    type: comment
+  - date: 23 June 2014 17:11
+    html: Don&#39;t use &quot;exec&quot;, just include CLI commands in TCL script.
+      See<br /><br />http://wiki.nil.com/Executing_IOS_commands_from_Tcl_shell
+    id: '6693497075388113703'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-06-23T17:11:14.787+02:00'
+    ref: '3086550051237467082'
+    type: comment
+  date: 20 June 2014 22:12
+  html: Thanks for the post!<br />I configured the following applet:<br />event manager
+    applet DebugSIP<br /> event none<br /> action 1.0 cli command &quot;debug ccsip
+    messages&quot;<br /> action 2.0 cli command &quot;terminal monitor&quot;<br />!<br
+    />I run it with:# event manager run DebugSIP<br />Yet I don&#39;t get any messages
+    on the terminal..<br />Any idea why?<br />Thanks again,<br />Gabriel
+  id: '3086550051237467082'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Gabriel Lema
+  profile: null
+  pub: '2014-06-20T22:12:14.056+02:00'
+  ref: '6290757101344400920'
+  type: comment
+- date: 23 June 2014 18:21
+  html: I was finally able to combine tcl + alias to turn sip debug with just typing
+    dsip, and turn it off with usip, thanks to http://blog.ipspace.net/2008/01/copy-text-files-into-router-flash.html
+    and this one. <br />Thanks for your quick response!!
+  id: '3574035713913401691'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Gabriel Lema
+  profile: null
+  pub: '2014-06-23T18:21:55.365+02:00'
+  ref: '6290757101344400920'
+  type: comment
+count: 13
+id: '6290757101344400920'
+type: post
+url: 2007/04/execute-multiple-commands-at-once.html

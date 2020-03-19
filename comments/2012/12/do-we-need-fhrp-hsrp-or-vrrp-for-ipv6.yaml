@@ -1,0 +1,92 @@
+comments:
+- comments:
+  - date: 13 December 2012 11:18
+    html: '... which is approximately what I wrote in the first paragraph ;)'
+    id: '4624137050891791515'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-12-13T11:18:05.255+01:00'
+    ref: '1284563987019699244'
+    type: comment
+  date: 13 December 2012 11:11
+  html: http://tools.ietf.org/html/rfc5798<br /><br />For IPv6, the advantage gained
+    from using VRRP for IPv6 is a quicker switchover to Backup routers than can be
+    obtained with standard IPv6 Neighbor Discovery mechanisms.
+  id: '1284563987019699244'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-12-13T11:11:28.827+01:00'
+  ref: '6163142211710565508'
+  type: comment
+- date: 13 December 2012 11:14
+  html: Absolutely! We need the same predictable behavior for all clients in particular
+    subnet, so the only way to do this - take control of it with HSRP (FHRP). Cisco
+    already have examples (in pure masked GNS3) that we can use HSRP fo IPv6<br />www.cisco.com/en/US/tech/tk648/tk362/technologies_configuration_example09186a0080b9119e.shtml<br
+    />IOU here to come :) Or Cisco guys do not heared about it?<br />Also we have
+    VRRP fo IPv6 tools.ietf.org/html/rfc5798
+  id: '5949547010120302929'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Pavel
+  profile: https://www.blogger.com/profile/10446907709223361732
+  pub: '2012-12-13T11:14:51.027+01:00'
+  ref: '6163142211710565508'
+  type: comment
+- comments:
+  - date: 15 December 2012 14:26
+    html: Thought, that some VRRP implementations for IPv6 do also have those functionality
+      (preemption, tracking, authentication, load balacning)?
+    id: '3202182030493763441'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Chris64
+    profile: https://www.blogger.com/profile/03014282355010119539
+    pub: '2012-12-15T14:26:35.776+01:00'
+    ref: '7552382963685006153'
+    type: comment
+  date: 13 December 2012 16:49
+  html: 'And more: with HSRP we have a lot of functionality: preemption with different
+    set of timers, tracking (interfaces, addresses and other), authentication (do
+    not know do we really need this but steel).<br />Also Cisco have GLBP for IPv6<br
+    />supportforums.cisco.com/docs/DOC-23397, without any functionality pure GLBP
+    is better that FHRP based on RA in case of load balancing.'
+  id: '7552382963685006153'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Doronin Pavel
+  profile: https://www.blogger.com/profile/10446907709223361732
+  pub: '2012-12-13T16:49:27.269+01:00'
+  ref: '6163142211710565508'
+  type: comment
+- date: 01 July 2014 22:42
+  html: IPv6 VRRP ALCATEL-LUCENT<br /><br />ABC# configure service ies 250004<br />ABC&gt;config&gt;service&gt;ies#
+    info<br />----------------------------------------------<br /><br /><br />ABC#
+    configure router router-advertisement<br />ABC&gt;config&gt;router&gt;router-advert#
+    info<br />----------------------------------------------<br /><br />            interface
+    &quot;ABC&quot;<br />                use-virtual-mac<br />                no shutdown<br
+    />            exit<br />----------------------------------------------<br />ABC&gt;config&gt;router&gt;router-advert#<br
+    /><br />            description &quot;ABC&quot;<br />            interface &quot;ABC&quot;
+    create<br />                address 100.100.200.2/28<br />                cflowd
+    interface<br />                vrrp 90<br />                    backup 100.100.200.1<br
+    />                    ping-reply<br />                    standby-forwarding<br
+    />                exit<br />                ipv6<br />                    address
+    2001:2222:FCF:FF00::2/56 preferred                --------- GLOBAL ADDRESS ------<br
+    />                    link-local-address FE80::111:5FF:FED6:E12D preferred    ---------------
+    LINK LOCAL ADDRESS ----<br />                    vrrp 91<br />                        backup
+    2001:2222:FCF:FF00::1                         --------------------- GLOBAL ADDRESS
+    BACKUP ------<br />                        backup FE80::111:5FF:FED6:E12C                        ---------------
+    LINK LOCAL ADDRESS BACKUP ----<br />                        ping-reply<br />                        standby-forwarding<br
+    />                    exit<br />                exit<br />                sap
+    5/9/19:600 create<br />                exit<br />            exit<br />            service-name
+    &quot;ABC&quot;<br />            no shutdown<br />----------------------------------------------<br
+    />ABC&gt;config&gt;service&gt;ies#
+  id: '1415380004358002735'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-07-01T22:42:09.534+02:00'
+  ref: '6163142211710565508'
+  type: comment
+count: 6
+id: '6163142211710565508'
+type: post
+url: 2012/12/do-we-need-fhrp-hsrp-or-vrrp-for-ipv6.html

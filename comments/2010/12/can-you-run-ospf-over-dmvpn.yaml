@@ -1,0 +1,60 @@
+comments:
+- date: 22 December 2010 18:42
+  html: 'But it does look like there should be no big scaling issues when using LSDB
+    filtering with NHRP Phase 3: spoke routers are no longer a problem (they only
+    need one/two default route(s)), it&#39;s the hub router that becomes control-plane
+    scalability bottleneck due to the number of OSPF adjacencies it has to maintain.
+    One may also mention the impact of SPF runs in the hub due to topology events
+    at the spokes.<br /><br />However, the mesh of adjacencies at the hub could be
+    scaled adding more tiers to the tree structure (after all, this is why they recommend
+    phase 3). Additionally, use of iSPF will make the impact of full SPF runs in the
+    hub almost negligible, due to clean tree-like structure of hub-and-spoke topology.'
+  id: '4047883716510397762'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: plapukhov
+  profile: null
+  pub: '2010-12-22T18:42:29.000+01:00'
+  ref: '6051842616159327361'
+  type: comment
+- date: 22 December 2010 18:48
+  html: Even with LSDB filtering you still have to send hellos from the hub and the
+    multicast replication is the next roadblock (that passive RIP just whizzes past).<br
+    /><br />Also, if you have redundant DMVPN links, your OSPF topology database becomes
+    way more complex.
+  id: '4057910711931958096'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-12-22T18:48:16.000+01:00'
+  ref: '6051842616159327361'
+  type: comment
+- date: 22 December 2010 22:11
+  html: That&#39;s exactly the neighbor maintenance problem at the hub - one of the
+    classic problem for scaling any protocol that maintains active adjacencies. As
+    I mentioned, this could be alleviate by splitting the topology into tree, as opposed
+    to plain &quot;fat&quot; star. <br /><br />Theoretically, if you would use P2MP+P2P
+    network types over the DMVPN cloud, DC-extension could be enabled to suppress
+    Hello packet exchange. The only problem here is that Cisco OSPF implementation
+    does not support RFC 3883 for inactive peer detection, AFAIK :) Therefore, as
+    an alternative, Hello timers could be tuned to properly pace the packet flow and
+    match the hub capabilities.<br /><br />Furthermore, DMVPN redundancy is normally
+    realized in form of multi-homed tree topologies that are perfectly OK for iSPF
+    optimization, due to their clear hierarchical structure. Using OSPF flood reduction
+    (DNA bit) would further allow eradicating periodic flooding completely and make
+    LSA flooding more lightweight.<br /><br />Speaking generally, scaling almost any
+    routing protocol in purely hierarchical structure is much easier compared to a
+    more complex graph following say power-law structure. OSPF may seem a bit more
+    resource consuming, but could be scaled just fine with the addition of extra bolts
+    and knots. I just with they support all extension designed for OSPF out there
+    :)
+  id: '5445608211943837236'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: plapukhov
+  profile: null
+  pub: '2010-12-22T22:11:35.000+01:00'
+  ref: '6051842616159327361'
+  type: comment
+count: 3
+id: '6051842616159327361'
+type: post
+url: 2010/12/can-you-run-ospf-over-dmvpn.html

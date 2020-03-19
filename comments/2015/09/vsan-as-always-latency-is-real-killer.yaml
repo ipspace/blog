@@ -1,0 +1,109 @@
+comments:
+- comments:
+  - date: 23 September 2015 10:42
+    html: Hi Duncan. How is it possible to buffer/later destage writes if the replication
+      is synchronous? To my understanding synchronous implies buffering is not possible?
+      Unless you mean buffering on both sides of the stretched VSAN, in which case
+      the issue of latency still stands...
+    id: '770117036915235109'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2015-09-23T10:42:22.579+02:00'
+    ref: '8373288419440927708'
+    type: comment
+  - date: 23 September 2015 12:03
+    html: It is buffered on the SSD which is persistent on both sides. And yes the
+      network latency stands, but you remove the drive latency.<br /><br />That was
+      not the point I was trying to get across. I do think that customers are concerned
+      about latency, at the same time they are concerned about availability. It is
+      for them to figure out what is more important.
+    id: '3979771773187894596'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Duncan Epping (VMware)
+    profile: https://www.blogger.com/profile/09333432630691386455
+    pub: '2015-09-23T12:03:35.495+02:00'
+    ref: '8373288419440927708'
+    type: comment
+  date: 23 September 2015 09:40
+  html: I think what you guys forgot is that Virtual SAN always writes to SSD. That
+    is how the architecture has been designed from the start. We take advantage of
+    the SSD, buffer the writes and then destage them when needed. The write is acknowledged
+    to the Guest OS / Application as soon as it hits the SSD buffer. So the latency
+    for a write to a device like this will not be 2ms but much lower than that.<br
+    /><br />I understand what he is trying to say, but we are forgetting that we are
+    trying to solve a business problem here. Any stretched storage platform has the
+    same challenge when it comes to latency, yet NetApp Metro, EMC VPLEX, 3Par etc
+    etc are still relatively popular solutions. Why? Well simply because in many cases
+    it is 10x easier to provide this level of resiliency through an infrastructure
+    level solution rather than to rely on 3rd party application providers to change
+    their full architecture to provide you the resiliency you need. As you know getting
+    large vendors to change their application architecture isn&#39;t easy, and can
+    take years... if at all.<br /><br />These types of solutions are developed for
+    relatively short distances, and still relatively low latency. Sure it has been
+    validated to be able to incur a hit of 5ms, that doesn&#39;t mean that from a
+    customer point of view this would be acceptable. That decision is up to the customer.
+    Same applies to bandwidth, what can your afford, what is available in your region
+    / between sites etc.<br /><br />Stretched infrastructures are not easy to architect,
+    or deploy for that matter, but I truly believe with Virtual SAN we made the storage
+    aspects 10x easier to manage and deploy than they have ever been before.
+  id: '8373288419440927708'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: depping
+  profile: https://www.blogger.com/profile/09333432630691386455
+  pub: '2015-09-23T09:40:54.490+02:00'
+  ref: '5165984647894598987'
+  type: comment
+- comments:
+  - date: 25 September 2015 09:19
+    html: 'Of course there isn&#39;t a free lunch... (latency will vary depending
+      on the type of drive you have. NVMe and Diable for instance can provide low
+      latency even under load) <br /><br />What is the alternative you have? I am
+      not sure what the point is people are trying to make with discussions like these.
+      It is not like it is easy to get a whole application architecture changed. '
+    id: '7304618469178437607'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Duncan Epping (VMware)
+    profile: https://www.blogger.com/profile/09333432630691386455
+    pub: '2015-09-25T09:19:28.966+02:00'
+    ref: '2004260933279794977'
+    type: comment
+  - date: 25 September 2015 09:29
+    html: 'I can&#39;t say what points other people are trying to make, mine was very
+      simple: know how things work, and carefully consider the consequences. <br /><br
+      />I&#39;m positive most people reading about stretched VSAN never considered
+      the impact of additional latency (even I thought it didn&#39;t matter).'
+    id: '7691698051073128062'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2015-09-25T09:29:14.563+02:00'
+    ref: '2004260933279794977'
+    type: comment
+  date: 25 September 2015 06:26
+  html: And the latency of an SSD is *not* 0.1 ms under non-trivial workload. Think
+    more like 1 ms for a 4K write. So, add the network latency between the two sites
+    (vmware&#39;s recommendation is &lt; 5 ms RTT) to 1 ms. That&#39;s the price to
+    pay if you want rpo=0 and protection from a site failure.  There is no free lunch
+    with the physics of this universe.
+  id: '2004260933279794977'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2015-09-25T06:26:07.912+02:00'
+  ref: '5165984647894598987'
+  type: comment
+- date: 27 November 2015 11:18
+  html: 'Just FYI: VMware documented the stretched VSAN bandwidth requirements:<br
+    /><br />http://www.vmware.com/files/pdf/products/vsan/vmware-virtual-san-6.1-stretched-cluster-bandwidth-sizing.pdf'
+  id: '1457533900290823383'
+  image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2015-11-27T11:18:17.696+01:00'
+  ref: '5165984647894598987'
+  type: comment
+count: 7
+id: '5165984647894598987'
+type: post
+url: 2015/09/vsan-as-always-latency-is-real-killer.html

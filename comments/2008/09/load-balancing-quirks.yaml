@@ -1,0 +1,68 @@
+comments:
+- date: 23 September 2008 20:19
+  html: Hi Ivan,<BR/><BR/>Could you please elaborate a little more on this. I thought
+    with CEF switching even the first packet was CEF switched. I believe that was
+    one of the advantages of cef over fast switching. Thanks.
+  id: '3838904213842679880'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-09-23T20:19:00.000+02:00'
+  ref: '4646681660352660533'
+  type: comment
+- date: 23 September 2008 22:18
+  html: Regarding above comment:<BR/><BR/>That's only when the packet is flowing through
+    the router, and not originating or terminating on the router. In this case, R2
+    or R3 have to craft the actual traceroute packet, and in doing so its process
+    switched -- and hence load-balanced across both links.
+  id: '5696112014246275691'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-09-23T22:18:00.000+02:00'
+  ref: '4646681660352660533'
+  type: comment
+- date: 05 October 2008 21:25
+  html: Nice post. For who's interested there is a good document CEF cef load balancing
+    here <BR/>http://www.cisco.com/en/US/products/hw/modules/ps2033/prod_technical_reference09186a00800afeb7.html
+  id: '781219870669917301'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Marco
+  profile: null
+  pub: '2008-10-05T21:25:00.000+02:00'
+  ref: '4646681660352660533'
+  type: comment
+- date: 10 December 2009 05:05
+  html: Hello if we modify the above diagram and instead of 2 links between R2 and
+    R3 we take<br /><br />- 1 of the links and put it to another device say R2 to
+    R5 <br />- R5 has another link to R4<br /><br />If you do a extended traceroute
+    from R2 with probe count of 1 is this behavior normal/possible<br /><br />1.First
+    probe packet with ttl 1 gets sent to R3 than the icmp-time-exceeded reply comes
+    from R3 hence the R3 ip address gets recorded as the first path<br /><br />2.
+    R2 sends another probe with ttl 2 which now instead gets sent to R5 and than to
+    R4 however the ip that gets recorded is of the link between R5 and R4<br /><br
+    />This actually than means that traceroute will not depict an accurate picture.
+    Can you please confirm if this is normal and hence to get a normal accurate traceroute
+    what needs to be done when troubleshooting.
+  id: '2503526675909123807'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2009-12-10T05:05:04.000+01:00'
+  ref: '4646681660352660533'
+  type: comment
+- date: 14 December 2009 19:50
+  html: 'Yes, this is normal. Things get even weirder as consecutive probes with the
+    same TTL take different paths.<br /><br />Solution: don&#39;t do traceroute from
+    the router but from a workstation attached to it.'
+  id: '2576336419612171609'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2009-12-14T19:50:02.000+01:00'
+  ref: '4646681660352660533'
+  type: comment
+count: 5
+id: '4646681660352660533'
+type: post
+url: 2008/09/load-balancing-quirks.html

@@ -1,0 +1,107 @@
+comments:
+- comments:
+  - date: 20 December 2017 15:56
+    html: Because SLAAC works only with /64 prefixes advertised in RA.
+    id: '2448908270388496797'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2017-12-20T15:56:51.048+01:00'
+    ref: '8248350361078066266'
+    type: comment
+  - date: 20 December 2017 17:50
+    html: 'Sure let&#39;s create a huge 2^64 segments this is exactly what we need. '
+    id: '5562164520164236968'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Omer Shtivi
+    profile: null
+    pub: '2017-12-20T17:50:45.504+01:00'
+    ref: '8248350361078066266'
+    type: comment
+  date: 20 December 2017 15:20
+  html: 'Why not going /127/8 for each host? Why to waste such a large segment for
+    a p2p connection?<br />With a summary from the access layer wlc vpn or access
+    switch. And get rid of all this complexity '
+  id: '8248350361078066266'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Omer Shtivi
+  profile: null
+  pub: '2017-12-20T15:20:03.190+01:00'
+  ref: '7342211751947193305'
+  type: comment
+- comments:
+  - date: 20 December 2017 19:40
+    html: 'Next step: rewrite the RFCs to work the way you want them to work, and
+      persuade Google engineers to implement your code in Android. Good luck.'
+    id: '309524428734332692'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2017-12-20T19:40:04.445+01:00'
+    ref: '2392237750680725361'
+    type: comment
+  - date: 21 December 2017 07:06
+    html: Ipv6 addressing is a luxury to many people and ideas are vanished because
+      of the luxury.
+    id: '7873253534479471312'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: HEMANTH RAJ
+    profile: https://www.blogger.com/profile/08900264515934620482
+    pub: '2017-12-21T07:06:13.341+01:00'
+    ref: '2392237750680725361'
+    type: comment
+  date: 20 December 2017 18:31
+  html: IPv6 comes in two deployments scenario one is Edge ISP aka Tier 3 ISP facing
+    End Host scenario where generally IPv6 goes with DHCPv6 or DHCPv6 PD Prefix Delegation
+    to the end hosts at the FHR scenario.<br /><br />IPv6 in DCs goes with SLAAC to
+    the servers where we dont need DNS entries to the servers.<br /><br />Going with
+    DHCPv6 PD on Edge ISPs and First Hop Router  ( FHR ) announce /128 to the end
+    hosts which is ideal scenario for DHCPv6.<br /><br />Using SLAAC and assigning
+    /64 for each end host would be a waste of an IPv6 Space and the reason would be
+    to differentiate the IPv6 end host to assign B.W rate and QOS/ACL policies via
+    DHCPv6 PD Options configured from the BRAS server.<br /><br />Prefix Delegation
+    would assign a bigger prefix /48 to the First Hop Router and from there it will
+    assign /64 to each host for convenience and to assign QOS /ACL policy and that
+    is also being deployed.<br /><br />The best practise or the way to look forward
+    would be to assign /128 prefix via SLAAC using /64 prefix per site and not per
+    host following the DC practice in assigning /128 per host using SLAAC where the
+    hosts connected to the same Access Point/FHR/ in both Wireless Access Point or
+    Wired Lines where ISPs get PD assigned from a bigger pool.<br /><br />Using SLAAC
+    or DHCPv6 is again it depends on the use case. Usually ISPs prefer DHCPv6 PD [
+    extension to DHCPv6] <br /><br />DHCPv6 without PD gets smaller prefix length
+    /64 and assign host address from the pool using manually assigned cluster files
+    which assigns IPv6 based on Source MAC or any DHCpv6 Options.
+  id: '2392237750680725361'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: HEMANTH RAJ
+  profile: https://www.blogger.com/profile/08900264515934620482
+  pub: '2017-12-20T18:31:08.318+01:00'
+  ref: '7342211751947193305'
+  type: comment
+- date: 21 December 2017 00:18
+  html: "According to Geoff Houston:<br /><br />&quot;If we really needed v6 like\
+    \ we need water, we would\u2019ve died of thirst years ago&quot; He argues that\
+    \ IPv4 and NAT are serving us just fine, and could serve us well for another couple\
+    \ of decades. There is no quick way out of the mess because what we thought we\
+    \ needed 20 years ago has now changed completely.<br /><br />With regards to IPv6\
+    \ address waste, he mentions that after slicing and dicing IPv6 addresses in large\
+    \ blocks per host, rather than thinking the &quot;IPv4 way&quot; of using /128\
+    \ per host/link, we really don&#39;t gain the huge number of IPv6 addresses as\
+    \ we may have initially thought. However, back to the point - I get the fact that\
+    \ ISP&#39;s need to uniquely identify an endpoint with a registered device...\
+    \ and searching through loads of NAT logs, etc and correlating it to some sort\
+    \ of date/time is not very fun. <br /><br />Ivan, I hope you don&#39;t mind me\
+    \ throwing in a link to some IPv6 discussion from the PacketPushers podcast, but\
+    \ I found this one particularly useful for this topic.<br /><br />http://packetpushers.net/podcast/podcasts/show-275-future-of-networking-geoff-huston/<br\
+    \ />"
+  id: '8336431895798671282'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Mario
+  profile: null
+  pub: '2017-12-21T00:18:28.309+01:00'
+  ref: '7342211751947193305'
+  type: comment
+count: 7
+id: '7342211751947193305'
+type: post
+url: 2017/12/unique-ipv6-prefix-per-host-how-complex.html

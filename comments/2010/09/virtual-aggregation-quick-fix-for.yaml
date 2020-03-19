@@ -1,0 +1,72 @@
+comments:
+- date: 03 September 2010 21:27
+  html: 'I always wander: why not just aggregate prefixes locally before installing
+    to FIB? CEF and similar technologies are highly optimized and structured constructions
+    that should be easily used for aggregating prefixes, especially for small-middle
+    operators on the edge routers with very few next-hops. Really big part of internet
+    is aggregates announced as specifics (for different purposes), but for most of
+    distant AS-es they point to just one upstream. And you can always leave holes
+    in aggregations as specifics. Dirty approach for that concept is just cut full-table
+    to /23 or 22-21 for old router and point 0/0 to big and powerful core (with mpls)-
+    we did that about 8 yeas ago and there was really small amount of suboptimal routing
+    inside our AS.'
+  id: '9025176506124551811'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: rps64
+  profile: null
+  pub: '2010-09-03T21:27:13.000+02:00'
+  ref: '3322216455410828500'
+  type: comment
+- date: 03 September 2010 22:57
+  html: You just described another great idea. In most cases, it&#39;s more than enough
+    to have full routing in the core and default routing on the edge (more so if you&#39;re
+    not providing generic transit), but most people don&#39;t get it and think they
+    will get suboptimal routing because they might send the traffic toward a /24 in
+    Elbonia in the wrong direction.<br /><br />The next problem are the BGP customers
+    - they want full feed (maybe they bought too much RAM and/or care about Elbonia)
+    and you either have full BGP table on the access router or use multihop EBGP into
+    your core (in which case you have support problems with some customers)
+  id: '5978303133994767136'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-09-03T22:57:52.000+02:00'
+  ref: '3322216455410828500'
+  type: comment
+- date: 06 September 2010 11:20
+  html: For cisco gear there is not much devices with plenty of RAM that can handle
+    full-table and have very limited amount of TCAM, i can only remember some of cats
+    4500 and non-XL versions of 6500. So, FIB-only optimization is nice to have, but
+    not enough in most cases. Also, it should greatly improve time of convergence
+    in some situations (when prefix independent convergence is not available).
+  id: '6752278618200783547'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: rps64
+  profile: null
+  pub: '2010-09-06T11:20:28.000+02:00'
+  ref: '3322216455410828500'
+  type: comment
+- date: 06 September 2010 11:38
+  html: Nexus 7000 ... but it doesn&#39;t support MPLS (yet).
+  id: '8137415615915775303'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-09-06T11:38:09.000+02:00'
+  ref: '3322216455410828500'
+  type: comment
+- date: 23 September 2010 20:39
+  html: Nexus 7K seems to have full table support with the newer XL cards....  I haven&#39;t
+    heard of anyone using them yet but they are advertising it for service providers/internet
+    exchange points.<br /><br />http://www.cisco.com/en/US/prod/collateral/switches/ps9441/ps9402/data_sheet_c78-574928.html
+  id: '5177512680009946108'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Micah
+  profile: null
+  pub: '2010-09-23T20:39:22.000+02:00'
+  ref: '3322216455410828500'
+  type: comment
+count: 5
+id: '3322216455410828500'
+type: post
+url: 2010/09/virtual-aggregation-quick-fix-for.html

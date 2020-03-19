@@ -1,0 +1,177 @@
+comments:
+- comments:
+  - date: 29 November 2017 19:05
+    html: Just one or two comment...<br /><br />&quot;In your design , you have suggested
+      Two tor of the rack [ TOR ] switches per rack which is opposed to single ToR
+      which many H.W vendors and service vendors use.&quot;<br /><br />Approximately
+      95% of the deployments our there are different from what you seem to be seeing
+      in your daily job.<br /><br />&quot;Prefix Limit and Prefix Aggregation is something
+      which is required to be done on the aggregation on number of prefixes based
+      on TCAM sizing&quot;<br /><br />Most environments will never hit 100K+ MAC or
+      ARP entries available in recent chipsets... unless they badly mangle container
+      deployments.
+    id: '2499272539178288566'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2017-11-29T19:05:49.653+01:00'
+    ref: '7305001602048838577'
+    type: comment
+  - date: 30 November 2017 09:13
+    html: Agreed totally. Does L2 solutions are preferred over L3. Can you specify
+      a L2 usecase which i would like a take a look.<br /><br />768k MAC is the numbers
+      that is supported on recent chipsets shouldnt be a problem.<br />
+    id: '1796391052289084386'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: HEMANTH RAJ
+    profile: https://www.blogger.com/profile/08900264515934620482
+    pub: '2017-11-30T09:13:32.504+01:00'
+    ref: '7305001602048838577'
+    type: comment
+  date: 29 November 2017 11:31
+  html: Hi Ivan <br /><br />Few quick thoughts <br /><br />1. In your design , you
+    have suggested Two tor of the rack [ TOR ] switches per rack which is opposed
+    to single ToR which many H.W vendors and service vendors use. <br /><br />If it
+    is two tor switches, we need , L2 Multipathing which is ECMP or NIC Teaming on
+    the servers to the upstream links, vPC in Cisco , and we need Peer link between
+    both the tors if we are decided to use vPC .<br /><br />Two TORs connected to
+    switches is always little quick tricky when it comes to load sharing across the
+    two switches from same server and thats the reason vendors use single tor of rack
+    switch with downstream servers are reside in single VLAN model maintained by spanning
+    tree port-fast edge ports and SVI for downstream server default routes.<br /><br
+    />Two ToRs connected to the servers traffic forwarding path would be based on
+    hashing across the tuples on the LACP or vPC .<br /><br /><br />2. Second thought
+    would be why are we extending Layer 2 from ToR to Aggregation even if we have
+    around &lt;200 servers. <br />Every design we do is with respect to number of
+    servers , redundancy paths &amp; fault domain maintenance across the fabric design
+    ,<br />Doesnt matter whether we have &lt;200 and &gt; 200 , we should prefer using
+    Layer 3 from ToR to aggregation to Core and Layer 2 stands downstream on VLAN
+    interfaces [ SVI ] for Default addressing on the TORs .<br /><br />Use DHCPrelay
+    for Ipv4 address and SLAAC for IPv6 addressing and peer&amp; dynamic BGP peering
+    downstream to maintain the content prefixes. <br /><br />3. Prefix Limit and Prefix
+    Aggregation is something which is required to be done on the aggregation on number
+    of prefixes based on TCAM sizing and also Overlaying one over the other. <br /><br
+    />4. Equidistant forwarding topology [ folded CLOS or fat tree ] which is important
+    in maintaining end to end delays or RTTs. Scaling horizontally or scaling north-south
+    or Scale Out  is what is preferred over  Scale Up for the sheer reason that the
+    failure domain is covered with north-south link/nodes and still maintain the same
+    equidistant hop and delay which nowadays is &lt;2ms for VM to VM traffic. <br
+    /><br />Customer needs are simple as they need predictable delay in their application
+    with ever improving goodput. <br /><br /><br />
+  id: '7305001602048838577'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: HEMANTH RAJ
+  profile: https://www.blogger.com/profile/08900264515934620482
+  pub: '2017-11-29T11:31:45.160+01:00'
+  ref: '3923332092525394649'
+  type: comment
+- comments:
+  - date: 29 November 2017 19:08
+    html: Guess what - some people actually have to support L2 domains spanning a
+      whole data center and VXLAN (with or without EVPN) is the least horrible option.<br
+      /><br />Please don&#39;t tell me that makes no sense and get used to the idea
+      that different environments have different requirements.
+    id: '6370710669522757010'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2017-11-29T19:08:44.052+01:00'
+    ref: '8969239185761438301'
+    type: comment
+  - date: 30 November 2017 09:18
+    html: Agreed. I would love to see the L2 use case where the environments absolutely
+      need Layer 2 aggregation and why that problem canot be solved with Layer 3.
+      <br /><br />Can you decribe the difference in the environments of L2/L3 environments.<br
+      />
+    id: '1206063741925127581'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: HEMANTH RAJ
+    profile: https://www.blogger.com/profile/08900264515934620482
+    pub: '2017-11-30T09:18:35.970+01:00'
+    ref: '8969239185761438301'
+    type: comment
+  date: 29 November 2017 11:39
+  html: 'What is the use case for EVPN. <br /><br />Are we trying to run Ethernet
+    VPN as overlay between ToR and Core. Infra has to support MPLS . IP based EVPN
+    implementation is something which is not there if i am not wrong. <br /><br />Always
+    EVPN, Bridged services has to run on top of infrastructure services such as MPLS.
+    IP services are more ride on top of GRE,IPSec , IPinIP which doesnt require MPLS
+    support. <br /><br />EVPN certainly requires MPLS as infra service. <br /><br
+    />Can you brief more on EVPN use case on the DC Fabric Infra. '
+  id: '8969239185761438301'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: HEMANTH RAJ
+  profile: https://www.blogger.com/profile/08900264515934620482
+  pub: '2017-11-29T11:39:05.227+01:00'
+  ref: '3923332092525394649'
+  type: comment
+- comments:
+  - date: 29 November 2017 19:09
+    html: And now please tell me how this set of considerations relates to the topic
+      of this blog post (or my article). Thank you!
+    id: '5384467429276802348'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2017-11-29T19:09:15.651+01:00'
+    ref: '3979472200583099086'
+    type: comment
+  - date: 30 November 2017 09:23
+    html: 'BGP works on per prefix topology and per prefix capacity. <br />Per Prefix
+      Capacity is determined by advertisements over that particular link/neighbor
+      and the neighbor uses the link which the neighbor is connected and that link
+      has to have the burst/buffer considerations. <br /><br />BGP doesnt work on
+      links but the nighbor use the links where it received the prefix by next hop
+      population to an interface and thats the thought that i brought in for oversubscription
+      per prefix rite. <br /><br />Oversubscription per prefix advertised by BGP.
+      <br /><br />One more question <br /><br />1. Does MLAG scenarios support the
+      peer link between the two ToR switches. '
+    id: '859666876894745747'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: HEMANTH RAJ
+    profile: https://www.blogger.com/profile/08900264515934620482
+    pub: '2017-11-30T09:23:14.388+01:00'
+    ref: '3979472200583099086'
+    type: comment
+  date: 29 November 2017 12:43
+  html: Another important point to consider when designing is Oversubscription ratio
+    on Tor to aggregation in your design and also Oversubscription ratio on Three
+    stage CLOS or five stage CLOS.<br /><br />TOR to CLuster Spine is 3:1 and CLuster
+    SPine to DC Spine is 4:1 and DC Spine to Regional Spine is 2:1 .<br /><br />2.Port
+    density [ 10G,25G,40G,50G,100G ] has to be scaled on the ports , deep buffers
+    for different set of applications for mixed mode traffic , incast , anycast ,
+    elephant flows and mice flows.<br /><br />3. Burst , Buffer &amp; B.W considerations
+    , Flow mappings within each queues and strict prioritization across the flows
+    are the features that is required in the ToR.  TOR layer design to spine always
+    features that is required to handle burst and handle failure points and also redundancy
+    model on the tors
+  id: '3979472200583099086'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: HEMANTH RAJ
+  profile: https://www.blogger.com/profile/08900264515934620482
+  pub: '2017-11-29T12:43:35.267+01:00'
+  ref: '3923332092525394649'
+  type: comment
+- date: 06 December 2017 09:05
+  html: I&#39;ve always thought this was such a silly statement if you didn&#39;t
+    have at least 1,000 network nodes in the fabric.<br /><br />A lot of times, it&#39;s
+    vendor-centric goobers that will swear that EIGRP is never an option just because
+    it was made by Cisco (even though their shops are mostly Cisco, LOL).<br /><br
+    />Then you have the Cisco goons saying that EIGRP can route your entire worldwide
+    network and scale huge (which is true, but they never stop to think if another
+    solution is available).<br /><br />Then you have the BGP noobies who forget that
+    BGP was created on a napkin and was never intended to be used on large scale DC
+    fabrics (1000+ nodes).<br /><br />The Big 4 (IS-IS, OSPF, EIGRP, BGP) have their
+    time and place, but it seems to me that this is the revolutionary time for a new
+    IGP to be created, specifically tailored for NGDC fabrics.
+  id: '3689381676701268321'
+  image: https://lh6.googleusercontent.com/-Anq8fR-G1ZU/AAAAAAAAAAI/AAAAAAAAAA8/DRYPYPx-H4s/s32-c/photo.jpg
+  name: Ben Sake
+  profile: https://www.blogger.com/profile/13910991545973673565
+  pub: '2017-12-06T09:05:13.047+01:00'
+  ref: '3923332092525394649'
+  type: comment
+count: 10
+id: '3923332092525394649'
+type: post
+url: 2017/11/bgp-as-better-igp-when-and-where.html

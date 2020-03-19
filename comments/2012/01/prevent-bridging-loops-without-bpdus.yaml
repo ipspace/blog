@@ -1,0 +1,369 @@
+comments:
+- date: 04 January 2012 08:50
+  html: Its not perfect, but port security applies for situations like this.
+  id: '8679265819222231207'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: ianh
+  profile: null
+  pub: '2012-01-04T08:50:01.458+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 09:03
+  html: Exact ianh, had the same issue and applied port-security in order to limit
+    the number of hosts per port with storm-control. Not perfect !!!
+  id: '9137503203808774025'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Youssef El Fathi
+  profile: null
+  pub: '2012-01-04T09:03:15.112+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 09:07
+  html: We have seen this a few times so far. Catalyst 3560 access layer switches,
+    Cisco IP Phones. <br />Switchports are configured with a voice vlan, Portfast
+    is enabled with BPDU guard. <br />It seems the phone bridges the data and the
+    voice vlan.<br />The switches so far were not able to catch it. <br />Brings down
+    pretty much everything including the distribution layer switches, pretty nasty.
+  id: '6039198689511838696'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-01-04T09:07:57.542+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 10:26
+  html: I use this as well.  Limit each port to 4 mac addresses or so and the port
+    will be disabled as soon as there is a loop.<br /><br />switchport port-security<br
+    />switchport port-security maximum 4<br />switchport port-security aging time
+    10<br />switchport port-security violation &lt;protect&gt;      (depending on
+    your situation)      &lt;/protect&gt;
+  id: '1086665465490619995'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Hein
+  profile: null
+  pub: '2012-01-04T10:26:24.494+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 11:31
+  html: Let&#39;s not forget the usefulness of stormcontrol as well.
+  id: '3362725603585191396'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: lochii
+  profile: null
+  pub: '2012-01-04T11:31:15.412+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 16:40
+  html: Curious, but how would this have helped this situation?
+  id: '7746972738709475524'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Laurent
+  profile: null
+  pub: '2012-01-04T16:40:46.314+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 16:52
+  html: Limiting the number of MAC addresses using port security should help in this
+    case...
+  id: '6583364121860647399'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Christoph
+  profile: null
+  pub: '2012-01-04T16:52:34.938+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 16:54
+  html: Something like MAC-based or 802.1x authentication has the nice property of
+    blocking (or at very least, significantly alleviating) loops.<br /><br />If you
+    have MAC-based authentication enabled, then a loop causes MAC addresses to appear,
+    and be authenticated, on different ports. Since this process is usually mediated
+    by a radius server, you can do two things - rate-limit it, and watch for well-known
+    MACs like your routers, HSRP/VRRP vMACs and so forth, and &quot;detect&quot; the
+    loop - then deny all authentication (and thus, learning) of new MACs on that switch/port
+    combo for a period of time.<br /><br />If you have 802.1x it works even better;
+    the phone supplicant only runs on the &quot;network&quot; facing port. The PC-facing
+    port doesn&#39;t have an 802.1x supplicant, so the upstream switch port never
+    goes to &quot;forwarding&quot;.<br /><br />Both have other benefits (RADIUS-based
+    vlan assignment, proper logging of who is where, accounting, etc.)<br /><br />We
+    have observed that loops are much less harmful to the upstream network when being
+    &quot;gated&quot; by mac/802.1x auth. You get local weirdness, but it&#39;s rare
+    for it to take the network out, and you can find the location of the weirdness
+    from the radius logs, and fix the problem.
+  id: '4338693186137664594'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Phil
+  profile: null
+  pub: '2012-01-04T16:54:26.616+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 16:56
+  html: The loop would cause &gt;$maximum MACs to be learnt on a port - thus, the
+    port-security &quot;violation&quot; action kicks in, and breaks the loop.
+  id: '1585682256052148714'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Phil
+  profile: null
+  pub: '2012-01-04T16:56:11.251+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 17:20
+  html: may be mac move
+  id: '8711758897457518352'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: jbu
+  profile: null
+  pub: '2012-01-04T17:20:00.493+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 20:20
+  html: 'An &quot;STP-less&quot; switch is no problem - the upstream switch should
+    see its own BPDUs and stop the loop.<br /><br />A &quot;BPDU-filtering, STP-less&quot;
+    switch is a catastrophe.<br /><br />Rich Seifert addressed this problem in &quot;The
+    All New Switch Book&quot;<br /><br />I don&#39;t have the citation handy, but
+    it boils down to this: A device that filters BPDUs, and doesn&#39;t proactively
+    prevent loops is spectacularly broken. Send them back to the manufacturer.'
+  id: '7280764553362779827'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: chris marget
+  profile: null
+  pub: '2012-01-04T20:20:15.264+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 04 January 2012 20:24
+  html: "I just found the following in my outbox, from a conversation about SOHO boxes\
+    \ along these same lines. A relevant Seifert quote is here too.<br />-----------------<br\
+    \ /><br />Bridges usually fall into one of two categories:  Those that support\
+    \ 802.1D, and those that don\u2019t.<br /><br />Those that support 802.1D do all\
+    \ of the right things STP-wise, so no problem.<br /><br />Those that don&#39;t\
+    \ support 802.1D don&#39;t generate or understand BPDUs, but they also don&#39;t\
+    \ know about the 802.1D requirement to filter frames in the range 01:80:C2:00:00:00-01:80:C2:00:00:0F.\
+    \  This means that they&#39;ll pass BPDUs generated by the rest of the network.\
+    \  The SOHO box won&#39;t prevent loops on its own, but the rest of the network\
+    \ should detect and correct the problem*<br /><br />In &#39;The All-New Switch\
+    \ Book&#39;, Rich Seifert said: &quot;if you&#39;re going to violate 802.1D, you\
+    \ have to violate it *all*the*way*&quot;"
+  id: '3532969436572671895'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: chris marget
+  profile: null
+  pub: '2012-01-04T20:24:46.950+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- comments:
+  - date: 04 December 2012 16:22
+    html: simple! when the user desk place has 2 faceplate ports that led to the internal
+      cabling to the patch panels, and eventually to the switch ports.
+    id: '6378934054391447061'
+    image: https://1.bp.blogspot.com/_-ewDEz8Ob6Y/TVE0dD_ZfqI/AAAAAAAAAHQ/90tIgi7lgkI/s32/yapch_cisco.JPG
+    name: Yap Chin Hoong
+    profile: https://www.blogger.com/profile/17515586788458885762
+    pub: '2012-12-04T16:22:30.108+01:00'
+    ref: '3554914412538083589'
+    type: comment
+  date: 04 January 2012 22:00
+  html: '&quot;Today a user plugged in both of these ports into the switch.&quot;<br
+    /><br />I think it is more a policy issue than a feature issue.  Why would you
+    let your user connect network devices to the switch directly?  Shouldn&#39;t the
+    switch be secure somewhere?'
+  id: '3554914412538083589'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-01-04T22:00:47.562+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 05 January 2012 03:47
+  html: Brocade FastIron series supports &quot;loop detect&quot; on a port or a VLAN.
+    It sends out probes and watches for those probes to come back. (yes, it sounds
+    like bpdus, but they&#39;re not). Depending on how the loop detect is configured,
+    it can err disable the port. This feature was created for just this scenario,
+    where people don&#39;t want to (or can&#39;t) use spanning-tree.
+  id: '7833638584215077043'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: JaredValentine
+  profile: null
+  pub: '2012-01-05T03:47:54.621+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 05 January 2012 14:35
+  html: HP procurve have the same feature. Extreme have it too - though they call
+    it ELRP. I believe both of them work by sending a packet to a multicast MAC periodically
+    and then listening to see if it comes back.
+  id: '5207347349345145440'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: LT
+  profile: null
+  pub: '2012-01-05T14:35:32.109+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 05 January 2012 18:17
+  html: Hey all,<br /><br />I was the person who originally asked the question(thanks
+    for posting Ivan).<br /><br />Some background, this happened during an office
+    move, when movers showed initiative and plugged in everything that fits into the
+    jack. Explaining that movers brought down corp network leaves you feeling pretty
+    stupid. <br /><br />Thank you all for your suggestions, I think limiting the number
+    of MACs per port and 802.1x look promising. Though 802.1x on IP phones is a pain
+    in the butt.
+  id: '8916382603766208793'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anton Yurchenko
+  profile: null
+  pub: '2012-01-05T18:17:35.819+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 05 January 2012 20:13
+  html: I agree - as long as you have syslog/SNMP monitoring and you monitor it. <br
+    /><br />However, it&#39;s important not to use port security auto recovery on
+    it, otherwise the loop will break and restart a while later.<br /><br />Restrict
+    will be more permissive, but may make the issue harder to pinpoint/detect. I&#39;d
+    use shutdown, as it will surely make something break.
+  id: '2205551500270790288'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: thejapa
+  profile: null
+  pub: '2012-01-05T20:13:02.750+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 05 January 2012 20:20
+  html: true, but this is funny how to protect ourself :) or switchself
+  id: '3652385915131403139'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Rati Jokhadze
+  profile: null
+  pub: '2012-01-05T20:20:14.929+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 06 January 2012 10:38
+  html: storm control on the user ports could help to keep the loop under control.
+  id: '4316947584659138041'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Matt
+  profile: null
+  pub: '2012-01-06T10:38:15.632+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 06 January 2012 12:38
+  html: In Extreme, there is loop detection protocol (ELRP) with action (in the later
+    versions). <br />Storm control is a must.
+  id: '217632717759736314'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivelin Ivanov
+  profile: null
+  pub: '2012-01-06T12:38:34.021+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- comments:
+  - date: 04 December 2012 16:25
+    html: Cisco Systems
+    id: '6421932912318219190'
+    image: https://1.bp.blogspot.com/_-ewDEz8Ob6Y/TVE0dD_ZfqI/AAAAAAAAAHQ/90tIgi7lgkI/s32/yapch_cisco.JPG
+    name: Yap Chin Hoong
+    profile: https://www.blogger.com/profile/17515586788458885762
+    pub: '2012-12-04T16:25:15.421+01:00'
+    ref: '8355768294335941846'
+    type: comment
+  date: 07 January 2012 16:11
+  html: Who&#39;s the manufacturer of the phone in question, so I can be sure never
+    to buy them?
+  id: '8355768294335941846'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-01-07T16:11:06.630+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 08 January 2012 17:26
+  html: "Yes I\xB4m think so you and i have other question, who long is the cable\
+    \    :-D  =-O"
+  id: '3857138165864739942'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-01-08T17:26:50.214+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 08 January 2012 21:01
+  html: Some simple ways to limit damage is by making sure port configuration has
+    the following:<br /><br />* storm control set to the lowest bandwidth needed to
+    get the job done.<br />* explicit maximum allowed number of source MACs that can
+    be learned over the port (port security feature).  This limits looping packets
+    to the configured maximum of source macs.  Set it to the lowest number needed
+    to get the job done.<br />* unused ports should always be disabled and also have
+    the above two settings &quot;just in case&quot;.<br /><br />Ideally the IEEE would
+    have standardized a UNI to exchange source MACs a long time ago so such bandaids
+    wouldn&#39;t be necessary and so many unnecessary outages avoided.
+  id: '7143255596461890841'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: FullMesh
+  profile: null
+  pub: '2012-01-08T21:01:21.689+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 01 February 2012 07:05
+  html: It sounds like a very simple solution. If the port is not supposed to be receiving
+    BPDUS, then configure the switch to use root protection on those ports. Set bpdu-block-on-edge
+    with a timeout value if you are suing Juniper switches, I should say.
+  id: '1367213738870692469'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: kemard
+  profile: null
+  pub: '2012-02-01T07:05:03.934+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 01 February 2012 07:09
+  html: You have indicated some useful port security protection features, but none
+    do not address the question posed. The question seem not to be about a device
+    sending bpdus to the switch, which means it would be able trigger a STP topology
+    change so it would become part of the STP. So it would require bpdu protection
+    so that if the switch gets bpdu on those ports, it would take the configured action.
+  id: '1754998491739319963'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: kemard
+  profile: null
+  pub: '2012-02-01T07:09:35.641+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 01 February 2012 07:13
+  html: You have indicated some useful port security protection features, but none
+    do not address the question posed. The question seem not to be about a device
+    sending bpdus to the switch, which means it would be able trigger a STP topology
+    change so it would become part of the STP. So it would require bpdu protection
+    so that if the switch gets bpdu on those ports, it would take the configured action.
+  id: '5920012727672978172'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: kemard
+  profile: null
+  pub: '2012-02-01T07:13:46.854+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 01 February 2012 07:16
+  html: enable bpdu protection on those edge ports
+  id: '8805728000792124559'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: kemard
+  profile: null
+  pub: '2012-02-01T07:16:53.398+01:00'
+  ref: '8510939411816268874'
+  type: comment
+- date: 07 January 2014 18:57
+  html: Hi all,<br /><br />You can try to do this in order to help to mitigate the
+    issue.<br /><br />On interface configuration mode:<br /><br />storm-control broadcast
+    level 25.00 (this is the percentage of bandwidth that will be the threshold of
+    broadcast, if th limit is exceeded, the action is defined as follows)<br /> storm-control
+    action shutdown<br /> switchport port-security maximum 5<br /> switchport port-security<br
+    /> switchport port-security aging time 1 (will flush the MAC addresses each minute,
+    it can be adjusted at your convenience)<br /> switchport port-security aging type
+    inactivity<br /><br />In global configuration mode<br /><br />errdisable recovery
+    cause psecure-violation<br />errdisable recovery interval 300<br /><br />Sorry
+    for my english and hope this help.<br /><br />
+  id: '1491093123163451686'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-01-07T18:57:52.779+01:00'
+  ref: '8510939411816268874'
+  type: comment
+count: 30
+id: '8510939411816268874'
+type: post
+url: 2012/01/prevent-bridging-loops-without-bpdus.html

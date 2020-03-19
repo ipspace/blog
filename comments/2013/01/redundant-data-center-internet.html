@@ -1,0 +1,121 @@
+
+<div class="comments post" id="comments">
+  <p class="info">
+    We migrated our blog a few days ago, and the commenting functionality is not there yet.
+    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
+  </p>
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="4058542047114230495">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/17610767928460477899" rel="nofollow">DanVoyer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#4058542047114230495">14 January 2013 15:48</a>
+              </span>
+            </div>
+            <p class="comment-content">What about TCP timeout ? According to the proposed design, if Internet fails at DC1, DC2 will route back to DC1 using the same firewalls.<br /><br />If you had TCP timeout issues before, you&#39;ll still have issues during the Internet fails scenario. <br /><br /><br />I challenge the need of dual Internet connectivity per DC added by non-stretch firewalls (I have read the article of stretch firewalls). <br /><br />The 2 Internet links failure should be as rarely as the 2 routers failure. And If the 2 routers fails, the stretch firewalls is the solution.<br /><br />In the proposed design, I would still use the WAN backbone for private and public networks and achieve something close to load balance (lets leverage Load Balancers here ?) the traffic between both Internet link located in each DC with the use of a &quot;stretch clustering Firewall&quot;<br /><br /></p>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="9009251159554741080">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#9009251159554741080">14 January 2013 19:07</a>
+              </span>
+            </div>
+            <p class="comment-content">If your firewalls cause TCP timeout issues, you might want to replace them. Also, you&#39;ll only catch that problem (automatically) if it&#39;s a systemic problem affecting all sessions AND you run BGP _across_ the firewall.<br /><br />As for &quot;links fail as rarely as routers&quot;, I can only refer you to Section 2.4 of RFC 1925. You might also want to consider that a link usually traverses more than one device ;), not to mention the potential impact of &quot;cable finders&quot; (aka backhoes).<br /><br />See also http://blog.ioshints.info/2012/10/if-something-can-fail-it-will.html</p>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1730260878698807124">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://resources.blogblog.com/img/blank.gif">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#1730260878698807124">15 January 2013 06:34</a>
+              </span>
+            </div>
+            <p class="comment-content">You pretty much described the way I&#39;d do it, but although you mentioned &quot;these may be dark fibre&quot; you missed offering DWDM as the separation (and seiously, if you&#39;re only running 10g on dark fibre you&#39;re wasting money)</p>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="7222524525206168875">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#7222524525206168875">15 January 2013 07:49</a>
+              </span>
+            </div>
+            <p class="comment-content">Absolutely agree, thanks for the feedback! <br /><br />However, you do have to run pretty big data centers to need a dedicated &quot;outside&quot; link. In that case, it might be better to go for full-blown ISP design and do optimal IBGP routing on the outside as well.</p>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2130771782385932182">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/04148155079076374473" rel="nofollow">Michael Gonnason</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#2130771782385932182">16 January 2013 23:22</a>
+              </span>
+            </div>
+            <p class="comment-content">Great presentation. Very clear explanation of design decisions. </p>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+comments:
+- date: 16 October 2008 18:22
+  html: Of course, if you're really interested in punishing yourself with exotic OSPF
+    behavior, setting the OSPF network type to point-to-point will allow you to form
+    mismatched adjacencies across multiaccess interfaces.
+  id: '6001002744912815359'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: js
+  profile: https://www.blogger.com/profile/02571029118821999072
+  pub: '2008-10-16T18:22:00.000+02:00'
+  ref: '4064180282664775012'
+  type: comment
+- date: 16 October 2008 18:50
+  html: What can I say ... your mind is even more devious than mine :D
+  id: '926406823501050718'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-10-16T18:50:00.000+02:00'
+  ref: '4064180282664775012'
+  type: comment
+- date: 17 October 2008 04:17
+  html: '@je: It has been done already -- http://blog.internetworkexpert.com/2008/01/08/understanding-ospf-network-types/  :)<BR/><BR/>@ivan:
+    Btw, netmask ignorance in case of adj formation over ptp-ifaces is clearly documented
+    in ... (God forbid! :) big-J-vendor courseware.<BR/><BR/>Btw, the next step would
+    be to mix numbered/unnumbered ifaces but.. *UNFORTUNATELY* it''s prohibited. :)'
+  id: '948517940233695248'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: uri
+  profile: https://www.blogger.com/profile/13608771699731629666
+  pub: '2008-10-17T04:17:00.000+02:00'
+  ref: '4064180282664775012'
+  type: comment
+- date: 22 July 2009 17:10
+  html: Hi Ivan, I&#39;ve got this situation, we have E1 with pvdm2-36dm to terminate
+    branch dial connection. This pvdm works as async interfaces... while we have over
+    than 50 branches we only have 31 lines available on E1, thus the point to point
+    addressing will be assigned by dialing branch. Up to this point it&#39;s okay
+    but the mask is /32, while HQ needs to understand branch&#39; lan segment through
+    routing protocol. The adjacency just won&#39;t come up due to the mismatched mask.
+    Please help... what can I do in this situation.
+  id: '2558333612456332008'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Guest
+  profile: null
+  pub: '2009-07-22T17:10:51.000+02:00'
+  ref: '4064180282664775012'
+  type: comment
+- date: 25 July 2009 19:11
+  html: It might be easiest to use unnumbered dialup interfaces.
+  id: '6048993275435539521'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2009-07-25T19:11:57.000+02:00'
+  ref: '4064180282664775012'
+  type: comment
+- date: 31 January 2013 08:56
+  html: hello Ivan, <br /><br />I have some inconsistent behavior with ospf adjacencies
+    which are established over links with mismatches masks. I have issues with ospf
+    installing routes which are learned over an adjacency as described above, any
+    ideas?<br /><br />thanks<br />max
+  id: '5892185399067969984'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Max
+  profile: null
+  pub: '2013-01-31T08:56:26.398+01:00'
+  ref: '4064180282664775012'
+  type: comment
+- date: 04 May 2013 00:05
+  html: 'Watch out for the JunOS interpretation of the standard. <br /><br />http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB23533<br
+    /><br />Section 1.2 of RFC 2328 defines point-to-points as.... &quot;Point-to-point
+    networks:  A network that joins a single pair of routers.  A 56Kb serial line
+    is an example of a point-to-point network.&quot;<br /><br />However Juniper seems
+    to enforce mask checks for &#39;ethernet&#39; point-to-point network types.   That&#39;s
+    a bummer because Quagga likes to set the Mask to 0.0.0.0 on point-to-pont adjacencies.
+    http://forums.juniper.net/t5/Junos-and-Junosphere/ospf-point-to-point-interface-type-on-ethernet/td-p/39375'
+  id: '669543257904280291'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: John Harrington
+  profile: https://www.blogger.com/profile/06899780831211846055
+  pub: '2013-05-04T00:05:11.798+02:00'
+  ref: '4064180282664775012'
+  type: comment
+- date: 25 June 2013 03:41
+  html: 'I test this on GNS3 and it&#39;s correct HOWEVER, you will still get a network
+    mismatch if both devices do not believe the remote side is in the same network.
+    Try this:<br />R1:<br />interface Serial0/0<br /> ip address 192.168.1.5 255.255.255.252<br
+    /> ip ospf network point-to-point<br />!<br />router ospf 1<br /> log-adjacency-changes<br
+    /> network 192.168.1.0 0.0.0.255 area 0<br /> neighbor 192.168.1.2<br />!<br />ip
+    route 192.168.1.2 255.255.255.255 Serial0/0<br /><br />R2:<br />interface Serial0/0<br
+    /> ip address 192.168.1.2 255.255.255.252<br /> ip ospf network point-to-point<br
+    />!<br />router ospf 1<br /> log-adjacency-changes<br /> network 192.168.1.0 0.0.0.255
+    area 0<br /> neighbor 192.168.1.5<br />!<br />ip route 192.168.1.5 255.255.255.255
+    Serial0/0<br /><br />You will still see:<br />*Mar  1 00:34:24.471: OSPF: Rcv
+    pkt from 192.168.1.5, Serial0/0, area 0.0.0.0 : src not on the same network'
+  id: '929809516431304775'
+  image: https://lh3.googleusercontent.com/-zO8e28PKDEI/AAAAAAAAAAI/AAAAAAAAAAA/FHu8TD2oqoQ/s32-c/photo.jpg
+  name: Chase Wright
+  profile: https://www.blogger.com/profile/15082471006972767928
+  pub: '2013-06-25T03:41:50.975+02:00'
+  ref: '4064180282664775012'
+  type: comment
+- date: 26 November 2013 16:44
+  html: <br />Thanks Ivan- do you know the reason for this exception...
+  id: '8081213075919296341'
+  image: https://lh3.googleusercontent.com/-Jte2s7k-6Co/AAAAAAAAAAI/AAAAAAAADvc/kwuYpstTQh0/s32-c/photo.jpg
+  name: siddhartha mukkamala
+  profile: https://www.blogger.com/profile/14834263802415925861
+  pub: '2013-11-26T16:44:59.884+01:00'
+  ref: '4064180282664775012'
+  type: comment
+count: 9
+id: '4064180282664775012'
+type: post
+url: 2008/10/ospf-ignores-subnet-mask-mismatch-on.html

@@ -1,0 +1,33 @@
+comments:
+- date: 27 July 2010 16:40
+  html: I have a DHCP server installed in a Windows 2003 server that contains several<br
+    />Address pool assigned to each VLAN. in my switch (Cisco 4506), I configured
+    each SVI interface with an DHCP-relay to send DHCP request to my server.actually
+    its all going well<br />But my point if a user changes the VLAN it keeps<br />the
+    same address given in the VLAN, but not a new address that corresponds to the
+    new VLAN.<br />How to solve this problem????
+  id: '592500486817948043'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: mhouba
+  profile: null
+  pub: '2010-07-27T16:40:40.000+02:00'
+  ref: '5651749741029238513'
+  type: comment
+- date: 27 July 2010 18:41
+  html: First, the client has to detect it&#39;s on another VLAN; its LAN interface
+    must flap.<br /><br />Second, once it sends out its DHCP request asking the DHCP
+    server to reconfirm its address, the switch has to be willing to propagate it.<br
+    /><br />Last, the DHCP server must be &quot;authoritative&quot; (ISC&#39;s terminology,
+    not mine), it must reply with a NAK, thus forcing the client to ask for another
+    address.
+  id: '2516444118968849961'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-07-27T18:41:52.000+02:00'
+  ref: '5651749741029238513'
+  type: comment
+count: 2
+id: '5651749741029238513'
+type: post
+url: 2009/10/dhcp-client-address-change-detector.html

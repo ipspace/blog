@@ -1,0 +1,93 @@
+comments:
+- comments:
+  - date: 08 September 2016 06:26
+    html: My coffee cup survived ;)<br /><br />I could see two drawbacks of using
+      RIPv2:<br /><br />* It has to be configured on every ToR switch (you can&#39;t
+      use a route server);<br />* Per-neighbor route filtering (if you want to do
+      that) could get interestingly complex.<br /><br />If all you want to do is to
+      collect whatever VMs are telling you, then obviously RIPv2 is the tool for the
+      job.
+    id: '5417202828553912709'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-09-08T06:26:09.264+02:00'
+    ref: '5428188325108467371'
+    type: comment
+  date: 08 September 2016 06:23
+  html: I was thinking about something similar just recently, and a weird idea came
+    to mind - why not run RIP between the VM and the TOR?<br /><br />I know, I know,
+    and before you laugh and spurt coffee out your nose at the thought of such an
+    old crusty IGP in a DC maybe think about it for a minute.<br /><br />RIPv2 supports
+    easy summarization and route filtering for the TOR. With reduced timers (and maybe
+    BFD) convergence could come down to a second or three. ECMP works too. Oh, and
+    it has very few nerd-knobs for the server guys to play with.<br /><br />It just
+    seems like a much simpler solution than BGP into the hypervisors &amp; VMs.<br
+    />
+  id: '5428188325108467371'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Kerry Thompson
+  profile: https://www.blogger.com/profile/00439180073297788221
+  pub: '2016-09-08T06:23:18.647+02:00'
+  ref: '5134612130853917648'
+  type: comment
+- comments:
+  - date: 08 September 2016 15:04
+    html: 'Or even better, don&#39;t run BGP on the VM and just redistribute connected
+      interfaces from the hypervisor. '
+    id: '771197242469918081'
+    image: https://lh6.googleusercontent.com/-WF-y8zQISFc/AAAAAAAAAAI/AAAAAAAAJAk/Upftv7F_wHQ/s32-c/photo.jpg
+    name: Matthew Walster
+    profile: https://www.blogger.com/profile/12311252099106406536
+    pub: '2016-09-08T15:04:16.391+02:00'
+    ref: '4615499660776903244'
+    type: comment
+  - date: 08 September 2016 15:25
+    html: That would be Project Calico (not exactly, they don&#39;t run BGP with the
+      hypervisors, but it&#39;s an open-source project, so hey...). However, that
+      idea doesn&#39;t work with VM mobility.
+    id: '7332579139171275881'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-09-08T15:25:08.992+02:00'
+    ref: '4615499660776903244'
+    type: comment
+  - date: 08 September 2016 15:25
+    html: '&quot;redistribute connected interfaces&quot; - doesn&#39;t work for clustering
+      services where a VM takes over an IP address from another failed VM.'
+    id: '8387396784984498534'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-09-08T15:25:42.239+02:00'
+    ref: '4615499660776903244'
+    type: comment
+  - date: 10 September 2016 19:34
+    html: you can inject the same VIP with different AS_PATH lengths and/or other
+      attributes to facilitate active/standby model, though. <br /><br />Robust primary
+      node election, on the other hand, is trickier problem, unless there is a global
+      locking service available :)
+    id: '1564761698739207584'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Petr Lapukhov
+    profile: https://www.blogger.com/profile/09023765657674084072
+    pub: '2016-09-10T19:34:21.249+02:00'
+    ref: '4615499660776903244'
+    type: comment
+  date: 08 September 2016 15:03
+  html: To me, peering with the ToR switch is confusing... The route servers (reflectors)
+    make good sense, but I&#39;d have thought peering with a daemon on the hypervisor
+    and that reflecting it up (in the case of iBGP) would be a better solution? You
+    can have the same IP as a loopback on every hypervisor and not worry.
+  id: '4615499660776903244'
+  image: https://lh6.googleusercontent.com/-WF-y8zQISFc/AAAAAAAAAAI/AAAAAAAAJAk/Upftv7F_wHQ/s32-c/photo.jpg
+  name: Matthew Walster
+  profile: https://www.blogger.com/profile/12311252099106406536
+  pub: '2016-09-08T15:03:16.263+02:00'
+  ref: '5134612130853917648'
+  type: comment
+count: 7
+id: '5134612130853917648'
+type: post
+url: 2016/09/running-bgp-between-virtual-machine-and.html

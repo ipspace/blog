@@ -1,0 +1,160 @@
+comments:
+- date: 23 August 2011 14:11
+  html: 'Seems that in this configuration is missing the line: <br />prefix-delegation
+    pool PPP-Radius  <br />in the dhcp pool section. Otherwise the dhcp server say
+    to the CPE error 6 (no prefix available).  <br />Can you confirm that there is
+    this mistake in the config provided in the blog, or not...?<br />Thanks!!!<br
+    /> <br />Matteo'
+  id: '6385971409674174571'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Matteo Sgalaberni
+  profile: null
+  pub: '2011-08-23T14:11:30.500+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 23 August 2011 16:01
+  html: There&#39;s no mistake. Test the config with a router running 15.0M or later
+    release.
+  id: '771585393876347938'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-23T16:01:15.899+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 23 August 2011 16:13
+  html: You are right! I&#39;m using a 12.4! the issue is here! So I discovered that
+    there are many important differences between IOS releases in IPv6 configuration...
+    wonderful think to know!<br />Thanks!
+  id: '2801013381859131721'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Matteo Sgalaberni
+  profile: null
+  pub: '2011-08-23T16:13:08.445+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 25 August 2011 23:19
+  html: "Hi Ivan I have a question because we are intending our cisco  BRAS asr1006,\
+    \ which is currently supporting dual stack, to send the user\xB4ipv6 prefix during\
+    \ accounting request to our radius using framed-ipv6-prefix type 97 and that unfortunately\
+    \ doesnt happen. Do you know if there is any command similar to the junipers:\
+    \ <br />radius include framed-ipv6-prefix <br />\u25A0Use to include the Framed-Ipv6-Prefix\
+    \ attribute in Access-Request, Acct-Start, or Acct-Stop messages. <br />\u25A0\
+    You can control inclusion of the Framed-Ipv6-Prefix attribute by enabling or disabling\
+    \ this command.<br />So that we can solve our current problem?<br /><br />If you\
+    \ need I can give you more detail of the BRAS configuration.<br /><br />I lokk\
+    \ forward to hearing from you asap.<br />best regards,<br />Javier<br />PD: sorry\
+    \ for my english i am from argentina"
+  id: '1288192767292782186'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: javier.humphreys@gmail.com
+  profile: null
+  pub: '2011-08-25T23:19:21.448+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 26 August 2011 10:43
+  html: Am I right in understanding you&#39;d like to get the IPv6 prefix in __accounting__
+    not in authentication records (so after the PPP session is terminated)? Need to
+    investigate, never stumbled across this particular one before.<br /><br />On a
+    totally unrelated note, your english is just fine :)
+  id: '7290698629809810315'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-26T10:43:58.796+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 29 August 2011 17:14
+  html: "Hi Ivan! Yes that\xB4s right! in accounting records for an issue of billing.\
+    \ If you remmember, for IPv4 according to RFC2866 reference 4.1 Accounting-request\
+    \ it says   &quot;  If the Accounting-Request packet includes a Framed-IP-Address,\
+    \   that attribute MUST contain the IP address of the user.  If the       Access-Accept\
+    \ used the special values for Framed-IP-Address telling the NAS to assign or negotiate\
+    \ an IP address for the user,  the Framed-IP-Address (if any) in the Accounting-Request\
+    \ MUST<br />      contain the actual IP address assigned or negotiated.&quot;<br\
+    \ /><br />In our case for ipv4 broadband services the BRAS sends the ipv4\xB4\
+    s user so that way our systems keep records for billing and other stuff as for\
+    \ instance lawfull intercept etc.  So it is not our idea for IPv6 that prefix\
+    \ delegation function will be in the radius in the near future but this will go\
+    \ on in the BRAS as today we are doing for our trial. What are we doing?<br />So\
+    \ far we are doing a broadband ipv6 trial that has just started june 8th and will\
+    \ end up in November. The users are 25 employees from my company and the broadband\
+    \ service belongs to my company. So far the service is working fine with the exception\
+    \ of the detail I have told you that I need to solve and for which I am a bit\
+    \ confused. <br />Really thank for your answer Ivan!<br />Best regards,<br />Javier\
+    \ :)"
+  id: '1618757923612388399'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: javier.humphreys@gmail.com
+  profile: null
+  pub: '2011-08-29T17:14:14.672+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 29 August 2011 19:19
+  html: If the accounting doesn&#39;t give you IPv6 data, assign a static /64 IPv6
+    prefix to every user in RADIUS.
+  id: '8231289467352799394'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-29T19:19:04.490+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 02 September 2011 22:16
+  html: But for our massive ipv6 broadband service we prefer not doing that, in my
+    opinion it is not a best practice. We have more than one million costumers. <br
+    />Thanks anyway, I just wanted to know if you or someone had stumbled across this
+    particular situacion.<br /><br />Best regards,<br />Javier  ;)
+  id: '3233595647402146656'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: javier.humphreys@gmail.com
+  profile: null
+  pub: '2011-09-02T22:16:16.756+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 26 September 2011 16:08
+  html: 'Hi Javier,<br /><br />Try this command: <br /><br />aaa accounting send counters
+    ipv6<br /><br />I also had the same issue on asr 1006 with ipv6 accounting. After
+    I entered this command ASR started sending Framed-IPv6-Prefix and  Framed-Interface-Id
+    attributes <br />in accounting messages to our Radius server.<br /><br />Here
+    is a debug output for radius accounting messages where you can see that attributes
+    are being sent:<br /><br />004214: Sep 26 10:31:11.973 MET-DST: RADIUS: Framed-IPv6-Prefix
+    [97] 20<br />004215: Sep 26 10:31:11.973 MET-DST: RADIUS: 00 40 20 01 0B 68 00<br
+    />14 00 00 00 00 00 00 00 00 00 00 [ @ h]<br />004216: Sep 26 10:31:11.973 MET-DST:
+    RADIUS: Framed-Interface-Id [96] 10<br />004217: Sep 26 10:31:11.973 MET-DST:
+    RADIUS: 60 A8 A9 16 79 D5 36<br /><br />Regards,<br />Sasha'
+  id: '1560608662946184955'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: sasa.macakanja@carnet.hr
+  profile: null
+  pub: '2011-09-26T16:08:51.665+02:00'
+  ref: '2369694185122096439'
+  type: comment
+- date: 04 November 2011 11:42
+  html: Hi<br /><br />just wanted to share my experience with Cisco Access Server,
+    and AVM FritzBox as CPE. This is my WORKING Cisco(IOS 12.4(24)T1) config<br />!<br
+    />aaa group server radius my-auth-radius-servers<br /> server 10.0.31.21 auth-port
+    1645 acct-port 1646<br /> server 10.0.31.20 auth-port 1645 acct-port 1646<br />
+    ip vrf forwarding VRF-A<br /> ip radius source-interface GigabitEthernet0/0.1<br
+    />!<br />aaa authorization configuration my-aaa-radius group my-auth-radius-servers<br
+    />!<br />ipv6 dhcp pool v6dhcppool<br /> prefix-delegation aaa method-list my-aaa-radius<br
+    /> dns-server 2001:DB8:2001:2001::1<br />!<br />interface Virtual-Template1<br
+    /> ip unnumbered GigabitEthernet0/0.1<br /> ip broadcast-address 0.0.0.0<br />
+    ipv6 enable<br /> no ipv6 nd prefix framed-ipv6-prefix<br /> ipv6 nd other-config-flag<br
+    /> no ipv6 nd ra suppress<br /> ipv6 dhcp server v6dhcppool<br /> snmp trap link-status
+    permit duplicates<br /> peer default ipv6 pool v6prefixpool<br /> ppp authentication
+    chap pap ms-chap ms-chap-v2 callin my-aaa-radius<br /> ppp authorization my-aaa-radius<br
+    /> ppp accounting my-aaa-radius<br /> ppp ipcp address accept<br /> ppp multilink<br
+    />!<br />ipv6 local pool v6prefixpool FEC0:1:2300::/48 64<br />!<br /><br />Enjoy
+    it!<br /> :)
+  id: '8324011599756214958'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: J
+  profile: null
+  pub: '2011-11-04T11:42:33.559+01:00'
+  ref: '2369694185122096439'
+  type: comment
+count: 10
+id: '2369694185122096439'
+type: post
+url: 2011/03/framed-ipv6-prefix-used-as-delegated.html

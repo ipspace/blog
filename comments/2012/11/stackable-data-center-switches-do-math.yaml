@@ -1,0 +1,170 @@
+comments:
+- date: 29 November 2012 11:38
+  html: Juniper&#39;s cables are actually 32Gb x two cables, add &quot;cisco math&quot;
+    and there&#39;s the 128Gb.
+  id: '2868007894468124083'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Julien G
+  profile: null
+  pub: '2012-11-29T11:38:17.475+01:00'
+  ref: '3943108247123349115'
+  type: comment
+- comments:
+  - date: 29 November 2012 12:01
+    html: We&#39;re actually in perfect agreement - as long as you have port channels
+      spanning all switches in IRF/VC/VCS fabric, no traffic goes over stacking links
+      (the setup is identical to Cisco&#39;s VSS/vPC, only with a higher number of
+      switches).<br /><br />However, my scenario was a bit different - I have a running
+      network (thus no server-side port channel) and stack the switches.<br /><br
+      />Will write a follow-up blog post ;)<br />Ivan
+    id: '2609740324352842322'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-11-29T12:01:17.045+01:00'
+    ref: '4254865332350305551'
+    type: comment
+  date: 29 November 2012 11:49
+  html: "Hello,<br /><br />I am going to disagree since I believe there are scenarios\
+    \ when you will benefit from stacking on ToR in HP case.<br /><br />Suppose all\
+    \ your servers have 4x 10G port and you bundle them to LACP NIC team. You connect\
+    \ those ports to four 5900s in IRF. HP allows to change LAG hashing algorithm\
+    \ to \u201Elocal first\u201C \u2013 that means if there is connection local to\
+    \ the switch that one is prefered and used. When one server talk to another one\
+    \ - server will use hash and let say it will use first 5900. This 5900 will prefer\
+    \ local connection to second server since there is direct link to it. With this\
+    \ stacking link is not going to be used for your inter-server traffic if all servers\
+    \ have active connections to all nodes of your ToR stack.<br /><br />In this case\
+    \ inside of your 5900s IRF pod you are always one switch away from one server\
+    \ to another. <br /><br />Uplinks to core in such case needs to be on every 5900\
+    \ \u2013 agree on that.<br /><br />Tomas<br />"
+  id: '4254865332350305551'
+  image: https://lh3.googleusercontent.com/-7sjIniz1WXw/AAAAAAAAAAI/AAAAAAAAABo/klmrdOf5RmE/s32-c/photo.jpg
+  name: Tomas Kubica
+  profile: https://www.blogger.com/profile/01482427175039971682
+  pub: '2012-11-29T11:49:58.587+01:00'
+  ref: '3943108247123349115'
+  type: comment
+- date: 29 November 2012 13:51
+  html: '&quot;the management overhead of your ToR switches&quot; <br /><br />When
+    I recently heard a Juniper presentation, I couldn&#39;t help but think, is management
+    overhead really that much of a concern? These are machines who do the management
+    (the config archiving etc.) not humans, I&#39;d think there is little cost associated,
+    once the management system has been bought, therefore little savings. <br />To
+    me, Virtual Chassis seems like a solution looking for a problem.'
+  id: '8754558261262511817'
+  image: https://lh5.googleusercontent.com/-LHQHJvyW6WY/AAAAAAAAAAI/AAAAAAAAKGw/qj22rxD2tFw/s32-c/photo.jpg
+  name: Georg Naggies
+  profile: https://www.blogger.com/profile/02247110501516035280
+  pub: '2012-11-29T13:51:20.418+01:00'
+  ref: '3943108247123349115'
+  type: comment
+- date: 29 November 2012 13:59
+  html: Very interesting post, thanks a lot.  Just my own comment which is meant to
+    be more humorous than anything --- who the heck has 16 uplinks?
+  id: '8943305862881555440'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Will
+  profile: null
+  pub: '2012-11-29T13:59:31.527+01:00'
+  ref: '3943108247123349115'
+  type: comment
+- date: 29 November 2012 17:19
+  html: HP&#39;s IRF merge not only management plan also control plan and HP market
+    says it is &quot;superior&quot; design.  Another HP&#39;s market snafu is they
+    claimed Cisco&#39;s Nexus 7K VDC decrease fabric performance and now they are
+    rolling out their own &quot;VDC&quot; in 12500 line with 1GHZ control plan CPU.
+  id: '2179849398051066671'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-11-29T17:19:57.952+01:00'
+  ref: '3943108247123349115'
+  type: comment
+- date: 29 November 2012 19:35
+  html: Hey, when did &#39;elephant&#39;  in reference to packet flows stop referring
+    to high latency, high bandwidth operations (Long Fat Network -&gt; LFN -&gt; elephant
+    -- see RFC 1072), and start being a reference to any big TCP flows as claimed
+    by wikipedia?<br />http://en.wikipedia.org/wiki/Elephant_flow<br /><br />I think
+    the wikipedia entry is bogus:<br /> - It is not clear who coined &quot;elephant
+    flow&quot;,<br /> - but the term began occurring in published<br /> - Internet
+    network research in 2001...<br /><br />RFC 1072 dates back to 1988
+  id: '9149131230075328313'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: chris marget
+  profile: https://www.blogger.com/profile/06646973209424821070
+  pub: '2012-11-29T19:35:07.263+01:00'
+  ref: '3943108247123349115'
+  type: comment
+- comments:
+  - date: 29 November 2012 19:59
+    html: The packets cannot be sprayed randomly; you have to preserve the order of
+      packets within a single flow.
+    id: '6674216753729012335'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-11-29T19:59:14.468+01:00'
+    ref: '4820943304745878466'
+    type: comment
+  - date: 30 November 2012 18:19
+    html: Yes, wouldn&#39;t TCP preserve the order of packets within a single flow?   I
+      was wondering if reordering packets at the edge just above TCP would actually
+      lead to significant performance improvements over conventional ECMP.
+    id: '2528697117521474434'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2012-11-30T18:19:26.679+01:00'
+    ref: '4820943304745878466'
+    type: comment
+  - date: 30 November 2012 20:11
+    html: TCP would deliver the data stream in proper order to the application, the
+      question is whether out-of-order packets affect performance (not sure whether
+      LRO can handle them). Never got a good answer to this question.<br /><br />Non-TCP
+      applications, on the other hand, might break (or slow down significantly) when
+      receiving out-of-order packets.
+    id: '8888933550965371652'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-11-30T20:11:20.861+01:00'
+    ref: '4820943304745878466'
+    type: comment
+  date: 29 November 2012 19:50
+  html: With a leaf-spine 2-tier architecture, isn&#39;t multi path a no brainer --
+    spray packets randomly.  This is what switches do internally.  It avoids persistent
+    congestion at intermediate hops and reduces packet reordering (so TCP won&#39;t
+    kill itself).
+  id: '4820943304745878466'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-11-29T19:50:15.281+01:00'
+  ref: '3943108247123349115'
+  type: comment
+- date: 15 January 2013 22:16
+  html: "About the EX4500 having the cables working @ 128 Gbps is not the case. From\
+    \ the data sheet:<br />\u2022 128 Gbps Virtual Chassis module with 2 x 64 Gbps\
+    \ ports.<br /><br />And as far as I know, this is still marketing. When you display\
+    \ vc-port<br /><br />show virtual-chassis vc-port (EX4200 Virtual Chassis)<br\
+    \ /><br />user@switch&gt; show virtual-chassis vc-port<br />fpc0:<br />-------------------------------------------------------------------------\u2013\
+    <br />Interface   Type              Trunk  Status       Speed        Neighbor<br\
+    \ />or                             ID                 (mbps)       ID  Interface<br\
+    \ />PIC / Port<br />vcp-0       Dedicated           1    Up           32000  \
+    \      1   vcp-1<br />vcp-1       Dedicated           2    Up           32000\
+    \        0   vcp-0<br /><br />This means &quot;line speed&quot; is just 32 Gbps.<br\
+    \ /><br />So this is less than the 80 Gbps you get with an HP switch<br /><br\
+    \ />just a detail. In a real design I would never virtualize more than two switch\
+    \ in a TOR as one (IRF. VSS, VC, or whatever...)"
+  id: '6913063961106306915'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ron de Vries
+  profile: null
+  pub: '2013-01-15T22:16:00.085+01:00'
+  ref: '3943108247123349115'
+  type: comment
+count: 12
+id: '3943108247123349115'
+type: post
+url: 2012/11/stackable-data-center-switches-do-math.html

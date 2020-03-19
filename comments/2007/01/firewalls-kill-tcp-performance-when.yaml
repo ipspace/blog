@@ -1,0 +1,67 @@
+comments:
+- date: 04 February 2007 18:40
+  html: A similar problem is IP fragmentation (although that should not happen too
+    often if MTU discovery is working properly), which is handled with the <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios123/123newft/123t/123t_8/gt_vfrag.htm">Virtual
+    Fragmentation Reassembly</a> feature introduced in IOS release 12.3(8)T.
+  id: '6651489328677511833'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_100x100.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-02-04T18:40:00.000+01:00'
+  ref: '3497298677460839809'
+  type: comment
+- date: 26 June 2007 19:19
+  html: But problem really is not caused by load-sharing. It is because many things
+    aren't prepared for out ouf order packets and it can just happen without load
+    sharing, because that is how Internet works. You can fix your configuration by
+    using per-destination, but it won't fix remote locations.
+  id: '1589138682580232548'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Wrench Head of the Dirty Drunkards MC
+  profile: https://www.blogger.com/profile/15599351273832431005
+  pub: '2007-06-26T19:19:00.000+02:00'
+  ref: '3497298677460839809'
+  type: comment
+- date: 26 June 2007 19:36
+  html: As I <A HREF="http://ioshints.blogspot.com/2006/11/deploying-zone-based-firewalls.html"
+    REL="nofollow">wrote in a comment to another post</A>, I really cannot see packets
+    getting reordered unless you use per-packet load sharing or weird QoS setup that
+    treats packets from the same flow differently. <BR/><BR/>If there's something
+    I'm missing, I would be glad to hear about it.
+  id: '5383244376253198004'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_100x100.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-06-26T19:36:00.000+02:00'
+  ref: '3497298677460839809'
+  type: comment
+- comments:
+  - date: 19 March 2015 07:50
+    html: Well, it shouldn&#39;t ;) Obviously something in the forwarding path is
+      reordering packets (probably due to per-packet ECMP/LAG instead of per-session
+      or per-address ECMP/LAG). Capture traffic at various points along the forwarding
+      path to figure out where they get reordered.
+    id: '5286465856561696290'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2015-03-19T07:50:43.760+01:00'
+    ref: '5023500182667392762'
+    type: comment
+  date: 19 March 2015 07:32
+  html: I know this is an old post, but what if I&#39;m having an out-of-order and
+    retransmission packets flood detected by both N5k-s and Wireshark, and I can see
+    checkpoint is dropping them... could this have something to do with the traffic
+    towards the FW passing through the same physical link various times due to the
+    L2 architecture?
+  id: '5023500182667392762'
+  image: https://lh3.googleusercontent.com/-sC7C60NNAXs/AAAAAAAAAAI/AAAAAAAALfc/DDzgWjeLk2M/s32-c/photo.jpg
+  name: Mateja Jovanovic
+  profile: https://www.blogger.com/profile/18206886648747581607
+  pub: '2015-03-19T07:32:45.080+01:00'
+  ref: '3497298677460839809'
+  type: comment
+count: 5
+id: '3497298677460839809'
+type: post
+url: 2007/01/firewalls-kill-tcp-performance-when.html

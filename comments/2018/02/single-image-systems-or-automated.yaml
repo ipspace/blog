@@ -1,0 +1,124 @@
+comments:
+- comments:
+  - date: 28 February 2018 19:06
+    html: Based on experience with both types of deployment, the answer as usual,
+      as Ivan also always says, is that  &quot;it depends&quot;. If you need orchestration,
+      and don&#39;t want to do it yourself, and are willing to pay a premium for it,
+      ACI or NSX or one of the other similar options may be the best route for you.
+      If you want control, then you can deploy your own EVPN fabric. There is no right
+      answer. For some of the customers I support, simply due to the requirement of
+      &quot;one neck to choke&quot;, only realistic options are the ones like ACI
+      or NSX. In others, there are options to deploy EVPN using Ansible/Salt or even
+      &quot;manually&quot; (i.e. classic CLI configuration) - which is required as
+      those environments require more flexibility, interoperability, and less vendor
+      lock-in. Also, as Ivan also says, some lock-in is inevitable - everything really
+      just depends on your requirements, budget, and resources.
+    id: '6265682124958292679'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Salman Naqvi
+    profile: https://www.blogger.com/profile/11529916018516958539
+    pub: '2018-02-28T19:06:31.474+01:00'
+    ref: '1851893787043887096'
+    type: comment
+  - date: 28 February 2018 20:46
+    html: 'It&#39;s mostly what DixieWrecked said - either you buy a black box (QFabric,
+      ACI, NSX, ...), or you buy or replicate something like Cisco NSO.<br /><br />In
+      any case, you need user interface that does transactions on services data model,
+      which combined with infrastructure data model gets translated into device data
+      model(s) which then get translated into device configurations.<br /><br />As
+      for tools: some people build their front-end stuff, or use Ansible Tower (or
+      AWX) as an approximation, others use all sorts of orchestration tools from vRealize
+      to HP orchestration tool to Cisco NSO (and there are, I&#39;m guessing, I few
+      using Apstra).<br /><br />The back-end depends on what you need to get done.
+      Ansible, Salt, running Ansible playbooks from vRealize... tons of options.<br
+      /><br />And yes, a lot of that is in my courses.'
+    id: '8363325419144576730'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-02-28T20:46:20.923+01:00'
+    ref: '1851893787043887096'
+    type: comment
+  date: 28 February 2018 18:13
+  html: In our company we need more than just some data models on a linux host which
+    then get&#39;s translated by jinja2 to some config files and finally get&#39;s
+    pushed down to the networking devices. We already have a version control system
+    in place.  What we need is some orchestration tool which integrates our business
+    logic. How do you deal with that? Please don&#39;t answer with &quot;find out
+    in one of my courses&quot;.
+  id: '1851893787043887096'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-02-28T18:13:03.530+01:00'
+  ref: '3321388703085794556'
+  type: comment
+- comments:
+  - date: 28 February 2018 20:48
+    html: Ouch, haven&#39;t realized you effectively quoted my article. Nice touch,
+      made my day...
+    id: '8410618378497782699'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-02-28T20:48:25.388+01:00'
+    ref: '2204143993024410069'
+    type: comment
+  - date: 01 March 2018 03:52
+    html: 'Option #1 isn&#39;t really multivendor since the single automation vendor
+      becomes critical.'
+    id: '1318757070989607580'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Wes Felter
+    profile: https://www.blogger.com/profile/01395217775195260835
+    pub: '2018-03-01T03:52:32.979+01:00'
+    ref: '2204143993024410069'
+    type: comment
+  - date: 01 March 2018 08:28
+    html: And of course you&#39;re absolutely right - we&#39;re entering the recursive
+      world of lock-in (see http://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html)
+    id: '7780923050344611499'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-03-01T08:28:44.720+01:00'
+    ref: '2204143993024410069'
+    type: comment
+  date: 28 February 2018 19:57
+  html: There are two fundamental ways to solve this challenge:<br /><br />&quot;if
+    multivendor:&quot;<br />    Build or buy a network automation solution that translates
+    high-level data model (marketers prefer to use the word Intent) into device configurations
+    that are then pushed to traditional network devices;<br /><br />&quot;else:&quot;<br
+    />    Buy a $vendor solution that pretends a whole network (for example, a data
+    center fabric) is a single device. This trend started with shared-control-plane
+    approaches like stackable switches, Cisco VSS and HP IRF, and was made way more
+    scalable with reasonable architectures like Juniper QFabric, Cisco ACI, or Pluribus
+    Networks Netvisor.<br />
+  id: '2204143993024410069'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: DixieWrecked
+  profile: https://www.blogger.com/profile/07558338594755954015
+  pub: '2018-02-28T19:57:45.669+01:00'
+  ref: '3321388703085794556'
+  type: comment
+- date: 12 March 2018 01:25
+  html: 'The answer to that in the Internet was of course the middle ground. A bunch
+    of open standards gets published and the market bears multiple vendors that provide
+    the pieces that stick together along standardized interfaces. Advantages were
+    so overwhelming that it has proven the prevalent model of building networking
+    for a long time now. Multiple vendors implementations shook IME bugs out much
+    better (beside doing the hard work of scaling and supporting) than a free, best-effort,
+    a.k.a. &quot;open source reference implementation&quot; and the versioning/work
+    of standards prevents the &quot;big, ugly forklift&quot; upgrades and &quot;any
+    color as long it&#39;s black&quot; offerings in the market. Just my 2c ... '
+  id: '9058185649193314751'
+  image: https://lh6.googleusercontent.com/-W5FLdEJA7TI/AAAAAAAAAAI/AAAAAAAAACI/zamqlhAD0WQ/s32-c/photo.jpg
+  name: Tony Przygienda
+  profile: https://www.blogger.com/profile/07732539097585801151
+  pub: '2018-03-12T01:25:58.422+01:00'
+  ref: '3321388703085794556'
+  type: comment
+count: 8
+id: '3321388703085794556'
+type: post
+url: 2018/02/single-image-systems-or-automated.html

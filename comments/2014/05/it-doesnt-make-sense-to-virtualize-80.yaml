@@ -1,0 +1,182 @@
+comments:
+- comments:
+  - date: 07 May 2014 15:08
+    html: Of course you&#39;re right but:<br /><br />A) Those exceptions usually don&#39;t
+      represent 20% of the servers (or ports)<br />B) It still doesn&#39;t make sense
+      to mix then with the hypervisor hosts on the same ToR switches.
+    id: '3844862249961955074'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-05-07T15:08:52.016+02:00'
+    ref: '4843603211666969745'
+    type: comment
+  date: 07 May 2014 11:05
+  html: That&#39;s fine if you only have x86 servers but there are also Solaris and
+    IBM Power servers that should reside in the same networks/security zones.<br />Also
+    hardware appliances for network services like firewalls, load balancers, IPS and
+    also Citrix access gateways are often cheaper than their virtual licenses.
+  id: '4843603211666969745'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: abraxxa
+  profile: https://www.blogger.com/profile/03978851447355661014
+  pub: '2014-05-07T11:05:41.678+02:00'
+  ref: '1616450759931215711'
+  type: comment
+- date: 07 May 2014 17:01
+  html: Great post Ivan!<br /><br />Can you expand on why it doesn&#39;t make sense
+    to mix those appliances and legacy servers that absolutely can&#39;t be virtualized
+    onto the same ToR switches as the hypervisor hosts?
+  id: '3552890574012708309'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-05-07T17:01:31.180+02:00'
+  ref: '1616450759931215711'
+  type: comment
+- date: 07 May 2014 19:08
+  html: 'Hardware VXLAN VTEPs are still important for connecting external feed. e.g.
+    MPLS VPN service from a service provider, private GE links. Cloud operator needs
+    to support bridging physical and virtual environment for a customer. Thing is
+    you cannot connect any single physical cable directly to virtual appliance. '
+  id: '8226380223486025790'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: shah
+  profile: https://www.blogger.com/profile/15818883829738651247
+  pub: '2014-05-07T19:08:37.521+02:00'
+  ref: '1616450759931215711'
+  type: comment
+- date: 07 May 2014 21:28
+  html: But software VTEPs are wirespeed at this point, so except in some very niche
+    situations where you might have tens of gigabits of hardware SSL in F5 or a large
+    AIX system or something, but for Inet/WAN connections etc. in the vast majority
+    of firms there is no need.
+  id: '8209608483467151888'
+  image: https://1.bp.blogspot.com/-i5KLjOLdcFM/Tnvx25iU8hI/AAAAAAAAAvE/YT68c4ku3PU/s32/headshot.jpg
+  name: Simon Hamilton-Wilkes
+  profile: https://www.blogger.com/profile/08914689992468372696
+  pub: '2014-05-07T21:28:03.330+02:00'
+  ref: '1616450759931215711'
+  type: comment
+- comments:
+  - date: 08 May 2014 22:34
+    html: 'using switches that supports Hardware VXLAN VTEPs. You can bridge VXLAN
+      to a VLAN or to a port. '
+    id: '39886787187552331'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: shah
+    profile: https://www.blogger.com/profile/15818883829738651247
+    pub: '2014-05-08T22:34:36.440+02:00'
+    ref: '6644146531384135125'
+    type: comment
+  - date: 09 May 2014 02:29
+    html: yes i understand that. But Ivan was suggesting not putting physical servers
+      on same ToR as hypervisor hosts as i was wondering why. Sorry my question in
+      the previous reply was not clear
+    id: '7298860798217719073'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anas
+    profile: http://anastarsha.com
+    pub: '2014-05-09T02:29:56.712+02:00'
+    ref: '6644146531384135125'
+    type: comment
+  - date: 09 May 2014 04:37
+    html: Simply route to the physical subnet. Assuming these heavy iron DBs are in
+      a separate network segment for security reasons, it would be quite simple to
+      route the appropriate traffic. <br /><br />More than likely, your virtual farm
+      and big iron are going to be separately racked and cabled anyway.
+    id: '5629431186426876927'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-05-09T04:37:20.776+02:00'
+    ref: '6644146531384135125'
+    type: comment
+  - date: 10 May 2014 06:03
+    html: Or you put an on-ramp pair of switches someplace in the DC which have some
+      form of clustering so they can support multi-switch teaming - then they talk
+      L3 to the fabric and L2 to WAN connections/appliances/non-x86 iron.
+    id: '952589680317280756'
+    image: https://1.bp.blogspot.com/-i5KLjOLdcFM/Tnvx25iU8hI/AAAAAAAAAvE/YT68c4ku3PU/s32/headshot.jpg
+    name: Simon Hamilton-Wilkes
+    profile: https://www.blogger.com/profile/08914689992468372696
+    pub: '2014-05-10T06:03:10.008+02:00'
+    ref: '6644146531384135125'
+    type: comment
+  date: 08 May 2014 19:04
+  html: The number of physical servers could be quite a bit especially if the customer
+    is big Oracle shop. Most of the applications that use clustering to achieve HA
+    (Oracle RAC, MySQL Clusters, etc..) or applications with heavy duty IO requirements
+    have to stay on dedicated physical boxes. How would you then connect them to the
+    VXLAN network?
+  id: '6644146531384135125'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anas
+  profile: http://www.anastarsha.com
+  pub: '2014-05-08T19:04:39.502+02:00'
+  ref: '1616450759931215711'
+  type: comment
+- comments:
+  - date: 11 May 2014 08:16
+    html: '1) Last time I checked, web servers happily worked with 10K concurrent
+      TCP connections. No reason a cluster of controllers couldn&#39;t do the same.<br
+      /><br />2) You don&#39;t need virtual ports like you think you do. Read <br
+      /><br />http://blog.ipspace.net/2013/08/are-overlay-networking-tunnels.html<br
+      /><br />and comments to it.<br /><br />3) Number of forwarding entries isn&#39;t
+      that different from the VTEP case, and the forwarding entries cost you less
+      than the hardware ones.<br /><br />4) So what? What&#39;s the number of changes-per-second?<br
+      /><br />Finally, with all the questions you&#39;re asking, I think it&#39;s
+      time for full disclosure: who are you working for?'
+    id: '974557807709007253'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-05-11T08:16:45.977+02:00'
+    ref: '6462760241861482679'
+    type: comment
+  - date: 13 May 2014 02:04
+    html: VMware?
+    id: '7874272925047660832'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-05-13T02:04:38.008+02:00'
+    ref: '6462760241861482679'
+    type: comment
+  date: 10 May 2014 18:54
+  html: 'Ivan,<br /><br />I am not fully convinced with basic assumption of &quot;We
+    quickly agreed physical-to-virtual gateways are the primary use case&quot;. Would
+    rather look at the problem from controller&#39;s scalabilty and performance point
+    of view. That is where would one deploy VTEPs, is it on hypervisors or or on ToR&#39;s.<br
+    /><br />Consider a different usecase with 50K VM&#39;s, at 60VM&#39;s per physical
+    host ~825+ physical hosts (all virtualized). Assuming 5 VM&#39;s per VNI, about
+    10K&#39;s VNI&#39;s and each VM&#39;s of a given tenant reside in different physical
+    host. <br /><br />If one were to have VTEPs at the hyper-visors for the usecase
+    considered. The performance numbers are as follows<br /><br />1) 2 TCP connection
+    with each hyper visors. One for OVSDB and another for OF (With NSX or with ODL).
+    So the controller has to handle about 1500+ TCP connections just for managing
+    the hypervisors.<br /><br />2) If OF-1.0 is used, #virtual ports created on a
+    single physical host are 60 * 5 = 300/physical host. So the controller to handle
+    300 * 825 ~ 25K virtual ports. Agree this number is reduced when OF1.3 is used.
+    At this don&#39;t have numbers to what extent.<br /><br />3) #flows programmed
+    by the controller also increases as flows are programmed by the controller.<br
+    /><br />4) Controller to manage 825+ physical hosts to distribute VM routes.<br
+    /><br />On the other hand, if the VTEPs are deployed at ToR switch, with 30 10GE
+    Ports<br /><br />A) #TCP connection to controller is 25+. We only need OVSDB connection
+    and don&#39;t require OF, as solution like NSX leave the programming of flows
+    to HW vendor instead of using OF.<br /><br />B) As there is no OF in the picture,
+    controller need not bother about creating virtual-ports/handling flow entries
+    etc. <br /><br />C) Controller to manage only 25+ HW VTEPs to distribute VM routes.<br
+    /><br />So, to summarize scalability of the controller becomes important point
+    for choosing hardware VxLAN GWs<br />'
+  id: '6462760241861482679'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Bhargav
+  profile: https://www.blogger.com/profile/03803244374816795623
+  pub: '2014-05-10T18:54:40.659+02:00'
+  ref: '1616450759931215711'
+  type: comment
+count: 13
+id: '1616450759931215711'
+type: post
+url: 2014/05/it-doesnt-make-sense-to-virtualize-80.html

@@ -1,0 +1,197 @@
+comments:
+- date: 17 September 2012 20:21
+  html: Yes, some of us care very much and are very happy to see continued progress
+    in the level of IPv6 support in our gear, and in the continued progress in actual-deployment.
+  id: '9015094200707080395'
+  image: https://lh3.googleusercontent.com/-AoHLp-J833k/AAAAAAAAAAI/AAAAAAAAAAA/iQahYF9ybrE/s32-c/photo.jpg
+  name: TJ Evans
+  profile: https://www.blogger.com/profile/18433992102893508928
+  pub: '2012-09-17T20:21:16.487+02:00'
+  ref: '2479994861490678978'
+  type: comment
+- date: 17 September 2012 21:36
+  html: Good to hear it is happening in some places, shameful in the others. I guess
+    it just reflects the reaction to demand but you would have thought this could
+    be forecasted since IANA posts nice graphs on a linear race to zero. Missing protocol
+    support for basics like PE-CE ISIS &amp; OSPF still baffles me too. LDPv4 will
+    be a welcome addition if it ever gets out of the IETF.<br />For what its worth
+    I learned most of what I know regarding v6 from your videos. That makes you a
+    borg Ivan :)
+  id: '725952522311961367'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brent Salisbury
+  profile: http://networkstatic.net
+  pub: '2012-09-17T21:36:35.286+02:00'
+  ref: '2479994861490678978'
+  type: comment
+- date: 17 September 2012 21:59
+  html: 'We had a public tender over one year ago for a huge wireless controller based
+    wifi solution. A lot of vendors took part. One requirement was not only a dual
+    stack on wifi controller and access points but also carrying IPv6 packets over
+    the tunnel between access points and controller.<br /><br />Well one vendor was
+    quit inexpensive with its products. Of course we asked him about the requested
+    IPv6 support, because IPv6 was not mentioned it its manuals or datasheets.<br
+    /><br />Of course he exceused himself, the responsible employee must have overseen
+    that topic, but he promised that IPv6 will be implemented soon.<br /><br />Fortunately,
+    that one was thrown out. (There were other topics, i.e. no active directory integration,...)
+    Looking at its datasheets he is now advertising IPv6 for its wireless controllers.
+    Looking at the manual you can find that the controller itself can now be given
+    an IPv6 adress for management, but no dual stack for its access points, no IPv6
+    traffic being transfered over tunnel.<br />(side note: If you let such a vendor
+    win the public tender, he is no longer commmitted to fulfill those requirements,
+    as he admited those ones, although he promised to do so. Strange? No, public tenders
+    in my country...)<br /><br />Lessons learned:<br />- check &quot;IPv6 support&quot;<br
+    />- vendors will you tell a lot, only to sell you its products<br />- never do
+    a public tender'
+  id: '7174033382020099328'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-09-17T21:59:17.207+02:00'
+  ref: '2479994861490678978'
+  type: comment
+- date: 18 September 2012 03:01
+  html: Dell SonicWall has an ancient &quot;feature release&quot; with limited IPv6
+    support, but no way to upgrade or downgrade to it from a recent release. So a
+    full rebuild of all firewall rules would be necessary.<br />For two years support
+    had been saying IPv6 in v5.8 or newer was coming soon, but still nothing. Major
+    fail.
+  id: '2774029380351042297'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ryan Malayter
+  profile: null
+  pub: '2012-09-18T03:01:34.824+02:00'
+  ref: '2479994861490678978'
+  type: comment
+- date: 18 September 2012 15:07
+  html: Hi Ivan,<br /><br />Enjoy the site! You may have forgotten about 100.64.0.0/10
+    defined in RFC6598 while not as large as a /8 this space is guaranteed not to
+    overlap. Not solving the problem with lack of v6 support but making transitional
+    mechanisms... easier
+  id: '9001815196929787208'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Cameron F
+  profile: null
+  pub: '2012-09-18T15:07:34.143+02:00'
+  ref: '2479994861490678978'
+  type: comment
+- date: 18 September 2012 16:27
+  html: Check IPv6 support but also kick the tires in a lab. You would be surprised
+    how many products say IPv6 supported but are not fully baked. Critical RFC items
+    not supported. You have to flush them out first before even thinking of production
+    deployment. <br />For security devices I used a tool to craft custom IPv6 packets
+    to beat up on devices to see how the protocol behaved and used this to test ACL
+    processing and logging too. <br /><br />Some examples from last spring:<br />Infoblox
+    DNS appliance stated IPv6 support but didn&#39;t support some important RFCs.
+    Also, if you changed the IPv6 address it bounced the IPv4 services too, not good
+    for production. We were basically debugging their product in the lab and they
+    corrected some of the items in the 6.4 code.<br />Mcafee 8.x firewall code. Certain
+    EH passed through when chained and important alerts were not logged or mislogged
+    giving false information. Discovered a fragment reassembly FSM time exceed exploit
+    etc.<br />Clunky rules for FTP and DNS handling, host and router mode limitations.<br
+    />
+  id: '3347487605779821561'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Jsicuran
+  profile: http://www.amilabs.com
+  pub: '2012-09-18T16:27:42.267+02:00'
+  ref: '2479994861490678978'
+  type: comment
+- date: 18 September 2012 16:28
+  html: "Also, here is a Cisco example just to share with the gang:<br />Cisco ASR\
+    \ IOS XE. 3.0.2 IPv6 ACL and TCAM bug I included to share with the gang.<br />\
+    \ One is the ACL with IPV6 and the second issue is the side effect that caused\
+    \ the crash.   The crash happened after adding ipv6 ACL failed and it tried to\
+    \ restore the old ACL which it\u2019s not suppose to do. In attempting to restore\
+    \ the old ACL, it triggered a crash.  Thus, I\u2019ve filed a bug against the\
+    \ crash.  the bug id is CSCua03521.  It\u2019s been assigned to a DE already.\
+    \  There is no ETA on the fix.  You can view the bug with bugtool http://www.cisco.com/cgi-bin/Support/Bugtool/home.pl\
+    \ <br />As for the ACL\u2019s, there is a workaround by re-arrange the ACE\u2019\
+    s so that it won\u2019t trigger the failure.  Would you please send me the current\
+    \ (new) running-config that you want to run?  The contents of new ACE\u2019s that\
+    \ you want to add IPV6 ACL\u2019s is important. <br />From the show tech output\
+    \ on May 2nd, 2012, the ACE with sequence number 440 was causing the problem.\
+    \ If you remove this ACE then you won\u2019t see the error tracebacks or crash\
+    \ problem.   From show run output, not sure if ACE sequence 440 is needed since\
+    \ you already have the following ACE in the ACL - deny ipv6 any any log routing\
+    \ sequence 430. <br />ASR1K processes ACL in TCAM (hardware). The width of largest\
+    \ TCAM entry is 320 bits. The IPV6 ACL src &amp; dst address alone takes 256 bits\
+    \ of these 320. So there will not be enough space in the entry to add all possible\
+    \ other acl matching fields. In order to accommodate all ACL fields we compress\
+    \ IPV6 src &amp; dst address into 64 bits and program these compressed values\
+    \ in TCAM. This compression algorithm has some known limitations.  Sometimes compression\
+    \ of  address fails. This dependents upon the ipv6 address pattern, address prefix\
+    \ length, order in which these ACEs are configured etc., To avoid this problem\
+    \ for most commonly used  ACL fields, we program TCAM without compressing the\
+    \ address. If you uses only following fields in your ACLs, then you never run\
+    \ into this problem. <br />   - IPV6 src address <br />   - IPV6 dest address\
+    \ <br />   - protocol field (ipv6, icmp, igmp, tcp, udp, ipinip, ipv6inip, gre,\
+    \ nigrp, ospf, nos, pim, pcp, sctp) <br />   - (tos, dscp) or TCP flags  (not\
+    \ both in the same ACL) <br />   - l4 src &amp; dest ports &amp; port ranges (TCP,\
+    \ UDP  src &amp; dst ports) <br />   - ipv6 icmp header types (like pkt too big,\
+    \ echo req etc.,) <br />   - ipv6  routing header presence <br />   - ipv6 destination\
+    \ header presence (later versions code we replaced this with HBH). <br />   -\
+    \ fragments <br />  <br />Original ACL has fields only from above list. So ASR1k\
+    \ used uncompressed address in TCAM. During edit you added ACE with \u201Crouting-type\u201D\
+    . This is not part of this list. So this change forced ASR1K to use compressed\
+    \ ipv6 addresses in TCAM. During address compression we ran into this problem.\
+    \ <br />Following are some options to avoid this problem <br />  <br />1.    Use\
+    \ ACL fields given in the above list only. That means you have to remove ACE with\
+    \ routing-type field.  As I mentioned before you do not need this as long as you\
+    \ have \u201Cdeny ipv6 any any routing\u201D ACE in the ACL. <br />  <br />2.\
+    \   Re-arrange the ACEs in the following way. This solves the problem but if you\
+    \ add new ACEs this ACL then they may run into this problem again. <br />IPv6\
+    \ access list Internet-Inbound <br />3.   Remove the ACE \u201Cdeny ipv6 any any\
+    \ routing-type 0 log sequence 440\u201D from this ACL and create a separate ACL\
+    \ with this ACE and apply it in outbound direction (if possible) <br />  <br />4.\
+    \   Remove the ACE \u201Cdeny ipv6 any any routing-type 0 log sequence 440\u201D\
+    \ and create a separate ACL. Create a QoS policy using this ACL. Use police actopm\
+    \ to drop all these packets. Apply this to the interface in ingress dir along\
+    \ with ACL. <br /><br />Regards.."
+  id: '3789717688818842832'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Jsicuran
+  profile: http://www.amilabs.com
+  pub: '2012-09-18T16:28:32.278+02:00'
+  ref: '2479994861490678978'
+  type: comment
+- comments:
+  - date: 06 December 2012 12:24
+    html: Too bad that sFlow v9 doesn&#39;t seem to be supported at all at Arista
+      7050s
+    id: '8409172785409543618'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Michael Maier
+    profile: null
+    pub: '2012-12-06T12:24:55.728+01:00'
+    ref: '7974662633202150496'
+    type: comment
+  date: 19 September 2012 07:46
+  html: Just to let you know, here at Arista we shipped our first releases with IPv6
+    routing support this summer.  I&#39;m sorry if this was a bit hard to find in
+    the documentation.  As of 4.10.1, we have hardware routing support for the 7500
+    and 7050 switches along with MP-BGP and OSPFv3 protocol support.  The 7050s even
+    got IPv6 ACL support.  We&#39;ll be fleshing out the protocol features and adding
+    first hop router features like VRRPv3 for IPv6 and DHCPv6 relay in our upcoming
+    releases.  <br /><br />Thanks,<br /><br />Adam Sweeney<br />
+  id: '7974662633202150496'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Adam Sweeney
+  profile: https://www.blogger.com/profile/07518487332337493042
+  pub: '2012-09-19T07:46:32.195+02:00'
+  ref: '2479994861490678978'
+  type: comment
+- date: 19 September 2012 20:27
+  html: Just one more <br />On the Cisco ASR IOS XE rev above reflective ACLs were
+    not supported for IPv6. Could have come in handy.
+  id: '5646086837412531632'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: jsicuran
+  profile: http://www.amilabs.com
+  pub: '2012-09-19T20:27:09.936+02:00'
+  ref: '2479994861490678978'
+  type: comment
+count: 10
+id: '2479994861490678978'
+type: post
+url: 2012/09/state-of-ipv6-in-data-center-gear.html

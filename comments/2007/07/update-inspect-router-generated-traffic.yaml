@@ -1,0 +1,156 @@
+comments:
+- date: 15 July 2007 17:11
+  html: Hello - <BR/><BR/>Nice work...Inverse mask was the only option when configuring
+    network statements under OSFP, both options were not always available.  I'm not
+    real sure which IOS version Cisco introduced the new option.<BR/><BR/>Just thought
+    to add the comments in case people do run into older versions.<BR/><BR/>Keep up
+    the good work.
+  id: '8381024887912507942'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-07-15T17:11:00.000+02:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 16 July 2007 16:57
+  html: The previous comment probably relates to <A HREF="http://ioshints.blogspot.com/2007/07/network-statements-are-no-longer-needed.html"
+    REL="nofollow">this post</A>.
+  id: '3281583010776540940'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_100x100.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-07-16T16:57:00.000+02:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 18 July 2007 07:42
+  html: Thanks for this article Ivan. Always knew there had to be a better way than
+    using PBR tied to a Loopback to force CBAC inspection of the router originated
+    traffic.
+  id: '6283393054165893211'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-07-18T07:42:00.000+02:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 18 September 2007 16:31
+  html: Hi,<BR/><BR/> thanks for nice post, but i have two question.<BR/><BR/>1) Is
+    there any chance to inspect L2L IPsec tunell which originate at the router. I
+    know that i can inspect UDP by using "ip inspect name OUTSIDE-ROUTER udp router-traffic"
+    but what about ESP?<BR/><BR/>2) How can i firewalling traffic which is  routed
+    to IPsec VPN tunell?<BR/><BR/>Thanks for reply.
+  id: '1686873196921064903'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-09-18T16:31:00.000+02:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 18 September 2007 17:44
+  html: 'You cannot inspect ESP traffic, you have to allow it explicitely in the inbound
+    access list (access-list <I>Internet</I> in my example).<BR/><BR/>As for inspecting
+    IPSec traffic: if you''re using crypto maps on the public interface, the traffic
+    will have to pass the inspection and inbound access list anyway; if you''re using
+    a protected tunnel interface, you can configure access list and <B>ip inspect</B>
+    on the tunnel interface.'
+  id: '1405430565183333275'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2007-09-18T17:44:00.000+02:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 04 March 2009 18:44
+  html: 'Hi there!<BR/>And thanks for all the info!<BR/><BR/>I found some problem
+    with ip inspect and router originated tftp traffic.<BR/><BR/>I start a copy ru
+    tftp: and I see that the CBAC opens that connection. But the tftp server does
+    not respond from the same server port! thus, the ip inspect does not work here.<BR/><BR/>Example
+    packets:<BR/>router: 10.0.0.1<BR/>tftp server: 10.0.0.2<BR/><BR/>udp 10.0.0.1:5423
+    -&gt; 10.0.0.2:69<BR/>udp 10.0.0.2:3658 -&gt; 10.0.0.1:5423<BR/><BR/>See that?
+    the tftp server response came from another port!<BR/>Any ideas how to fix this?<BR/><BR/>Thanks!'
+  id: '5340137538906022668'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: tavo!
+  profile: https://www.blogger.com/profile/15229650687254937194
+  pub: '2009-03-04T18:44:00.000+01:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 06 March 2009 11:36
+  html: This is how TFTP works. You would need "ip inspect name X tftp router-traffic"
+    but that does not exist.
+  id: '3342222681958076810'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2009-03-06T11:36:00.000+01:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 06 March 2009 18:03
+  html: Thanks Ivan.<BR/>Strange thing... cisco didn't came up with a router-traffic
+    option for tftp protocol inspection.
+  id: '5668124572081767141'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: tavo!
+  profile: https://www.blogger.com/profile/15229650687254937194
+  pub: '2009-03-06T18:03:00.000+01:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 20 September 2012 19:44
+  html: Hi, I also encountered a &quot;tftp&quot; similar problem when router was
+    DNS server for the internal network. Ideal would have been a &quot;ip inspect
+    name X dns router-traffic&quot; but it does not exist either. Fortunately, in
+    this case, &quot;ip inspect name X udp router-traffic&quot; is enough.
+  id: '252064786790583212'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Marius Ilioaea
+  profile: https://www.blogger.com/profile/17685562890992512888
+  pub: '2012-09-20T19:44:30.237+02:00'
+  ref: '5091400294529465495'
+  type: comment
+- date: 15 July 2013 00:33
+  html: Marious -- Thank you so much for pointing this out!
+  id: '6851188886899904319'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-07-15T00:33:04.172+02:00'
+  ref: '5091400294529465495'
+  type: comment
+- comments:
+  - date: 27 January 2016 14:33
+    html: Looks like a bug to me. Known one? I wouldn&#39;t know. Anyway, here&#39;s
+      how you might implement a workaround:<br /><br />http://blog.ipspace.net/2007/04/fix-router-configuration-after-reload.html
+    id: '7254216279173974978'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-01-27T14:33:27.225+01:00'
+    ref: '7559619982193838566'
+    type: comment
+  date: 27 January 2016 13:55
+  html: Ivan I can&#39;t thank you enough for this article - I was going spare trying
+    to configure for a small office WAN. I have a problem though when rebooting my
+    Cisco 867 router. Essentially all inside NAT translations will not work until
+    I do the following on the outside interface GigabitEthernet2<br /><br />no ip
+    access-group Internet in<br />ip access-group Internet in<br /><br />It&#39;s
+    like there is an ordering problem only resolved by deleting and reapplying the
+    access-group. My interface definition looks like this - I&#39;ve checked the running-config
+    and the boot up config and the order is identical:<br /><br />ip inspect name
+    Internet-out icmp router-traffic<br />ip inspect name Internet-out tcp router-traffic<br
+    />ip inspect name Internet-out udp router-traffic<br /><br />interface GigabitEthernet2<br
+    /> description PrimaryWANDesc_iiNet NBN<br /> ip address dhcp<br /> ip access-group
+    Internet in<br /> no ip unreachables<br /> ip inspect Internet-out out<br /> ip
+    nat outside<br /> ip virtual-reassembly in<br /> duplex auto<br /> speed auto<br
+    /> no cdp enable<br />!<br /><br />Any pointers? Is this some type of known bug?<br
+    /><br /><br /><br />
+  id: '7559619982193838566'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Rob Mascaro
+  profile: https://www.scnet.com.au
+  pub: '2016-01-27T13:55:39.394+01:00'
+  ref: '5091400294529465495'
+  type: comment
+count: 12
+id: '5091400294529465495'
+type: post
+url: 2007/07/update-inspect-router-generated-traffic.html

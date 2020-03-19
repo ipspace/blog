@@ -1,0 +1,111 @@
+comments:
+- date: 05 August 2014 04:05
+  html: A few points<br /><br />1) Infrastructure personnel want every port hot and
+    active. I don&#39;t buy 200 interfaces to only be able to use 100 of them.<br
+    /><br />2) The admins you highlighted in your linked post should be fired. VPN
+    between 2 VMs on the same network - stupid on display.<br /><br />3) I have watched
+    switches with BPDU guard allow VMware to become the root bridge. That was interesting.
+    <br /><br />4) No STP, no issue...
+  id: '6102775717435103441'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-08-05T04:05:38.641+02:00'
+  ref: '8375163972096635278'
+  type: comment
+- comments:
+  - date: 05 August 2014 15:57
+    html: Do any major vendors implement this?
+    id: '9063783316324989574'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Randall Greer
+    profile: https://www.blogger.com/profile/08517209064574010376
+    pub: '2014-08-05T15:57:48.689+02:00'
+    ref: '7418244100046379490'
+    type: comment
+  - date: 06 August 2014 04:21
+    html: Yes.  Calix, Cisco, Juniper and I&#39;m sure many other vendors support
+      ERPS (a.k.a. ITU-T G.8032).  Another similar protocol is Cisco&#39;s REP.  ERPS
+      and REP can provide very fast convergence (~50ms) after a topology change in
+      addition to loop prevention.  Unlike spanning-tree, you can&#39;t just turn
+      these protocols on and let them do their magic.  The engineer needs to do some
+      pre-planning to determine what network paths will be REP segments or ERPS domains;
+      you know, the old trick called using the human brain.  Upon hearing this last
+      point, most folks toss the ERPS / REP whitepaper in the wastebasket.
+    id: '3307218862095903742'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-08-06T04:21:51.218+02:00'
+    ref: '7418244100046379490'
+    type: comment
+  - date: 06 August 2014 04:23
+    html: Yes.  Calix, Cisco, Juniper and I&#39;m sure many other vendors support
+      ERPS (a.k.a. ITU-T G.8032).  Another similar protocol is Cisco&#39;s REP.  ERPS
+      and REP can provide very fast convergence (~50ms) after a topology change in
+      addition to loop prevention.  Unlike spanning-tree, you can&#39;t just turn
+      these protocols on and let them do their magic.  The engineer needs to do some
+      pre-planning to determine what network paths will be REP segments or ERPS domains;
+      you know, the old trick called using the human brain.  Upon hearing this last
+      point, most folks toss the ERPS / REP whitepaper in the wastebasket.
+    id: '6547108887378981380'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Jeff Behrns
+    profile: http://www.jeffbehrns.com
+    pub: '2014-08-06T04:23:13.497+02:00'
+    ref: '7418244100046379490'
+    type: comment
+  - date: 07 August 2014 18:02
+    html: ERPS and EAPS-MRRP-like solutions are good but they only works with actual
+      ring topologies.
+    id: '5893112043011235427'
+    image: https://lh3.googleusercontent.com/-BgYolz6ia1E/AAAAAAAAAAI/AAAAAAAAAFs/eSfXnehDdVc/s32-c/photo.jpg
+    name: Artem Enborisov
+    profile: https://www.blogger.com/profile/05424762846603781790
+    pub: '2014-08-07T18:02:52.406+02:00'
+    ref: '7418244100046379490'
+    type: comment
+  date: 05 August 2014 08:58
+  html: G.8032 is yet another standardized L2 loop prevention protocol. In fact a
+    lot of people are preferring it over xSTP.
+  id: '7418244100046379490'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-08-05T08:58:09.393+02:00'
+  ref: '8375163972096635278'
+  type: comment
+- date: 06 August 2014 04:27
+  html: If this is anything like extreme networks eaps it isn&#39;t loop prevention
+    as much as it is a very nice l2 redundancy protocol.  <br /><br />You (network
+    admin) provision primary and fail over paths through the network and it works
+    nicely. Some nimrod bridges the network elsewhere and you&#39;re still toast.
+    <br /><br />Eaps was very nice when i used it; reading the Cisco config guide
+    leads me to think 8032 is just samesame.
+  id: '6361918382365131107'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-08-06T04:27:50.437+02:00'
+  ref: '8375163972096635278'
+  type: comment
+- date: 06 August 2014 17:33
+  html: Some folks get STP and failure mixed up.  In the old days if there was an
+    stp related code bug or something where STP &quot;caused&quot; a loop or in a
+    re-convergence STP did not work properly thus resulting in a loop then yes you
+    can say it was an STP failure.<br /><br />However, if your network is not planned/designed
+    to utilize STP properly and you have an STP convergence from a HW outage or something
+    and STP works, blocks the ports to create a loop but that resultant topology is
+    causing other issues with our servers etc it is not an STP issue. STP did its
+    job.
+  id: '2445973686154890132'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: jsicuran
+  profile: http://www.amilabs.com
+  pub: '2014-08-06T17:33:05.199+02:00'
+  ref: '8375163972096635278'
+  type: comment
+count: 8
+id: '8375163972096635278'
+type: post
+url: 2014/08/stp-and-expert-beginners.html

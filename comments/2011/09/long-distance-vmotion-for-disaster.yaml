@@ -1,0 +1,205 @@
+comments:
+- date: 30 September 2011 07:09
+  html: 'Not disagreeing, just a couple of comments. :)<br /><br />&gt; Obviously
+    the moved VMs will cause long-distance traffic trombones, further increasing the
+    utilization of inter-DC link and reducing effective migration rate.<br /><br />Apologies
+    for stating the obvious, but if the traffic has to trombone back to the first
+    datacenter (which supposedly in in the harm&#39;s way), you&#39;re not really
+    avoiding the disaster, are you?<br /><br />&gt; Major obstacle: maximum round-trip
+    time supported by vMotion with vSphere 4.x is 5 ms (some other documents cite
+    200 km), extended to 10 ms in vSphere 5.x.<br /><br />5ms RTT is about 500km away.
+    Should be plenty, no?<br /><br />&gt; Assuming perfect link utilization, no protocol
+    overhead, and no repeat copies of dirty memory pages, you can move a GB of RAM
+    in 8 seconds<br /><br />I wonder if WAN accelerators can make any difference?<br
+    /><br />&gt; Last step: ask your service provider for a quote<br /><br />This,
+    all in all, sounds like an *excellent* opportunity for a service provider to offer
+    you a bandwidth on demand (putting aside the number of SP&#39;s products/marketing
+    people murdered by network engineers on the grounds of all challenges that Bandwidth
+    on Demand presents, especially when talking about any significant bandwidths).
+    ;)<br /><br />I guess the summary of my thoughts on the subject is this: yes,
+    there are plenty challenges; so how about coming up with a checklist of a sort
+    for &quot;how do I find out if the Disaster Avoidance makes sense in my circumstances&quot;?  :-$'
+  id: '7466704755819993072'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dmitri Kalintsev
+  profile: null
+  pub: '2011-09-30T07:09:06.667+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 30 September 2011 14:26
+  html: Excellent points Ivan.  LD vMotion en mass sounds kinda silly.  Why vMotion
+    at all? There is something to be said for push button application restart.  Just
+    stop and start the vApp in the other DC with all the same network configuration.
+    No scripting or other complicated tools to re-configured IP &amp; DNS addresses,
+    no painfully long vMotions to wait for.  Rather, the app starts up in the new
+    DC and just works.  Assuming of course that you have a functional implementation
+    of LISP :-)<br /><br />Cheers,<br />Brad
+  id: '7746172173601802537'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brad Hedlund
+  profile: null
+  pub: '2011-09-30T14:26:30.345+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 30 September 2011 14:36
+  html: WAN accelerators will help if the data stored in memory is redundant and compressible
+    (i.e. not encrypted)
+  id: '12949755334196539'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: John P.
+  profile: null
+  pub: '2011-09-30T14:36:06.791+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 30 September 2011 14:58
+  html: 'I agree long-distance virtual machine migration is unworkable, but sad fact
+    is that the majority of datacenter (read: financials, ERP, operations) applications
+    are not architected to support load balancing and clustering across WAN distances,
+    especially at the database layer. Fixing that problem is much harder, and in fact
+    decades of research have not produced a database system which can do distributed
+    transactions and replication across high-latency links.<br /><br />Like the speed
+    of light for network engineers, the CAP theorem is a bitch for application engineers.
+    So what is your alternate solution Ivan? Active/passive systems with asynchronous
+    state replication (which means data loss in the event of failover)?'
+  id: '2231794383637483538'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ryan Malayter
+  profile: null
+  pub: '2011-09-30T14:58:04.560+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 30 September 2011 21:29
+  html: '&quot;I wonder if WAN accelerators can make any difference?&quot; From my
+    experience with Wan Optimizers, you can see an improvement in traffic transport
+    in 95% of the cases, so I don&#39;t see why they will not make a difference in
+    case of vMotion.'
+  id: '7733664897759161936'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Calin Chiorean
+  profile: null
+  pub: '2011-09-30T21:29:55.209+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 01 October 2011 05:44
+  html: Is anyone really vmotioning across data centers or are people just talking
+    about it?  I keep hearing that it&#39;s not supported to vmotion across different
+    Nexus 1000V switches.
+  id: '8874530414142826169'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Will
+  profile: null
+  pub: '2011-10-01T05:44:31.465+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 01 October 2011 06:54
+  html: Hi Ivan,<br /><br />two points:<br />- could physical transfer of data be
+    faster? I.e., taking all the data to be migrated into a briefcase and driving
+    this briefcase away to safety?<br />- my calculation of NPV for perpetuity leaves
+    me at 1.2m$, no decimals. How come your result is not rounded, are you calculating
+    in monthly increments?<br /><br />Cheers,<br />Gregor
+  id: '5723372212633423944'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Gcuzak
+  profile: null
+  pub: '2011-10-01T06:54:26.895+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 01 October 2011 08:06
+  html: '#2 - I converted yearly discount rate into compounded monthly discount rate
+    (1.10^(1/12)-1)'
+  id: '5849255328942840463'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-10-01T08:06:16.743+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 01 October 2011 08:08
+  html: I can&#39;t see a reason why you couldn&#39;t vMotion between two Nexus 1000V
+    switches ... might be a VMware/vDS limitation.
+  id: '6034463987679622889'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-10-01T08:08:26.027+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 01 October 2011 08:12
+  html: It&#39;s so nice to see we&#39;re in agreement  8-)<br /><br />You might not
+    need LISP if you control the L3 network between the two data centers. Host routes
+    also work, but of course LISP (or MPLS) scales better as the intermediate nodes
+    don&#39;t have to keep track of migrated IP addresses.<br /><br />However, I don&#39;t
+    think the current NX-OS releases support a mechanism that would create host routes
+    on-demand (like LAM did decades ago), whereas LISP with VM mobility is available.
+  id: '8003353164242988237'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-10-01T08:12:34.369+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 01 October 2011 08:18
+  html: 'Trombones: to complete the disaster avoidance exercise, you have to shut
+    down the subnets in the first data center or fix the IP routing in some other
+    way. As long as you have split subnets, traffic will flow in somewhat unpredictable
+    direction.<br /><br />RTT: you have to take in account the queuing/processing/serialization
+    delay in all intermediate devices as well as circuitous ways in which your lambdas
+    might go over physical fiber infrastructure. Just heard a great example yesterday:
+    a carrier was not willing to commit to 5ms delay within London.<br /><br />WAN
+    acceleration: it does help. F5&#39;s EtherIP is a great solution that provides
+    vMotion traffic compression and bridging-over-IP at the same time. Search their
+    web site for vMotion/EtherIP.<br /><br />Bandwidth-on-demand: might be useful
+    for maintenance/migration purposes. Not sure I want to rely on that feature being
+    available when a major disaster is heading my way; everyone would probably want
+    to get more bandwidth at that time.'
+  id: '4895546436731488640'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-10-01T08:18:17.364+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- date: 01 October 2011 08:31
+  html: 'Obviously you&#39;re exposed to some data loss if you can&#39;t afford synchronous
+    replication. The question you have to ask is: how much loss is acceptable. <br
+    /><br />If you want to retain true transactional integrity with roll-forward to
+    the exact point of failure (which sounds great, but is not always as mandatory
+    as people think it is), you cannot rely on asynchronous block storage replication,
+    but there are other database-level mechanisms like transaction logs.<br /><br
+    />If you&#39;re willing to accept loss of the transactions that were completed
+    just prior to the failure, life becomes way simpler - for example, you can use
+    read-only replicas.<br /><br />Disclaimer: I know absolutely nothing about relational
+    databases ... apart from the syntax of the SELECT statement  :-P'
+  id: '5854823028041964588'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-10-01T08:31:51.866+02:00'
+  ref: '6467986399207032597'
+  type: comment
+- comments:
+  - date: 19 July 2016 16:06
+    html: '&quot;Silly typo, but the &quot;or&quot; there broke the momentum of the
+      argument.&quot; &lt;&lt; We can&#39;t have that, can we? Thank you, fixed.'
+    id: '2107764693243891939'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-07-19T16:06:36.763+02:00'
+    ref: '121381575197805773'
+    type: comment
+  date: 18 July 2016 21:16
+  html: '&quot;completely saturate a 1Gbps link to vacate a physical server with 256
+    GB or RAM in just over half an hour&quot;<br />Silly typo, but the &quot;or&quot;
+    there broke the momentum of the argument.'
+  id: '121381575197805773'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2016-07-18T21:16:29.106+02:00'
+  ref: '6467986399207032597'
+  type: comment
+count: 14
+id: '6467986399207032597'
+type: post
+url: 2011/09/long-distance-vmotion-for-disaster.html

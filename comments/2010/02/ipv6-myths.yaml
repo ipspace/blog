@@ -1,0 +1,275 @@
+comments:
+- date: 26 February 2010 11:37
+  html: with no security config on the CPE (no port forwarding, no ACL, no FW, ...),
+    it is easier to scan a public ipv6 address than a private ipv4 address (from the
+    outside). therefore, NAT is more secure :) you can add me to your botnet now :)
+  id: '2295548004653431863'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: xabrouck
+  profile: null
+  pub: '2010-02-26T11:37:43.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 12:17
+  html: "\u0418 \u0442\u0430\u043A\u0438 \u043D\u0430\u0442 \u0445\u043E\u0442\u044C\
+    \ \u0438 \u043D\u0435\u0431\u043E\u043B\u044C\u0448\u0430\u044F, \u043D\u043E\
+    \ \u043F\u043E\u0434\u043F\u043E\u0440\u043A\u0430 \u043A \u0441\u0435\u043A\u044C\
+    \u044E\u0440\u0438\u0442\u0438..."
+  id: '2893586520185972580'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: DVK
+  profile: null
+  pub: '2010-02-26T12:17:33.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 12:42
+  html: And how long would it take you to scan 2^64 addresses?
+  id: '5848017524731151061'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ole
+  profile: null
+  pub: '2010-02-26T12:42:19.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 13:31
+  html: I assume we know the ipv6 address of the host behind the CPE.  I agree that
+    scanning an ipv6 subnet is more pain than scanning an ipv4 subnet.
+  id: '3560047895608652717'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: xabrouck
+  profile: null
+  pub: '2010-02-26T13:31:07.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 13:39
+  html: And how would you know the IPv6 address of the host? If you&#39;ve gleaned
+    it from web server logs, it&#39;s (recently) way easier to download malware through
+    the browser than through OS vulnerability.
+  id: '5920114380789910671'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-02-26T13:39:57.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 13:44
+  html: 'BTW, to answer your original question: <br /><br />* stateful FW (or at least
+    a reasonable ACL) will have to become a default configuration of low-end ($2.99
+    ;) CPE routers. <br />* consumer NAT (not the Cisco IOS implementation) makes
+    inside host vulnerable as soon as it opens an outbound session (at least on UDP).'
+  id: '8136756850441648829'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-02-26T13:44:04.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 13:52
+  html: I&#39;m trying to come up with an argument against a firewall by default.
+    That breaks the end to end model, and would make deploying new applications almost
+    as hard with IPv6 as it is with IPv4.<br /><br />Modern hosts have grown up in
+    the jungle, and my laptop I take around with me anywhere. Certainly to unprotected
+    networks. What value does that firewall give me anyway? Most of the &#39;security&#39;
+    issues in the home aren&#39;t things which are caught by a firewall anyway.<br
+    /><br />If you are concerned about simpler devices like printers and sensors;
+    one could give them only a ULA address and virtually keep them off the big bad
+    Internet.
+  id: '6400142364345940580'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ole
+  profile: null
+  pub: '2010-02-26T13:52:15.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 13:54
+  html: i don&#39;t think the way we learn the ipv6 address of the host matters...
+    it could be via bittorrent, webserver logs, whatever... your discussion is about
+    ipv6 vs ipv4, not about browser vulns vs os/apps vulns, right?
+  id: '5104312706679006555'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: xabrouck
+  profile: null
+  pub: '2010-02-26T13:54:59.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 14:03
+  html: 1) adding a stateful FW in low-end CPEs probably means more bugs for the end
+    user :)<br /><br />2) vulnerable how exactly? what can the attacker inject from
+    the outside besides packets from the UDP flow?  <br /><br />note that you add
+    a condition &quot;as soon as ...&quot;.  With ipv6, no condition required, I can
+    send all the bad packets I want to my target since its address is public.
+  id: '5000278144755891213'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: xabrouck
+  profile: null
+  pub: '2010-02-26T14:03:07.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 18:34
+  html: '&quot;Anyone who thinks NAT is a security feature deserves to become part
+    of a botnet.&quot;<br /><br />I love it!<br /><br />For those who aren&#39;t getting
+    it: NAT by itself does not provide security. Dynamic NAT (aka PAT, aka overloaded
+    NAT, aka multiplexing multiple conversations onto a single layer 3 address using
+    layer 4 port translations) provides some degree of security because it has the
+    side effect of creating state. You will need to run a simple stateful firewall
+    in front of IPv6 clients to get the same effect. This is not a hard problem. Stateful
+    firewalls have no place in front of servers in the first place; owners of IPv6
+    server farms will need to ensure that their vendor supports stateless ACLs in
+    hardware for IPv6 just like they do for IPv4.'
+  id: '4287900058438390523'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: JS
+  profile: null
+  pub: '2010-02-26T18:34:25.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 22:05
+  html: What about enhanced Multicast?<br /><br />I think it&#39;s great on a site-local
+    level, it&#39;s gonna be huge on a global level.
+  id: '2149803939325379324'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ronald
+  profile: null
+  pub: '2010-02-26T22:05:36.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 26 February 2010 22:12
+  html: '@Ole: I prefer IPv6 statefull fireewalls instead of NAT. Which solution breaks
+    end2end more?<br /><br />@Ivan: Agree with most of the explanations except:<br
+    /><br />IPv6 has better quality of service - that&#39;s standard in the header,
+    not just recomandation as in v4.<br /><br />IPv6 has better security - partially
+    agree - in v4 ipsec is in userspace, in v6 in stack. Huge difference.<br /><br
+    />Overall I agree with Ivan. I specially like the last myth. The last myth to
+    break remains ICMP role in networks - in general. That&#39;s hard to understand
+    for some people, specially ones coming strictly from v4 world :)<br /><br />Jan'
+  id: '782701126621843195'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Jan Zorz
+  profile: null
+  pub: '2010-02-26T22:12:45.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 27 February 2010 07:04
+  html: IVAN<br /><br />I agree with all the myths except LISP and not able to understand
+    what exactly the problem is? I think more discussion and debate on LISP will get
+    some fruitful results.   O:-)
+  id: '4260335381901113285'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: "shivlu\_jain"
+  profile: null
+  pub: '2010-02-27T07:04:47.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 02 March 2010 17:40
+  html: '@Jan Zorz: Both IPv4 and IPv6 provide an 8-bit field dedicated for QoS marking.
+    Use of this field in either protocol is completely optional. See http://tools.ietf.org/html/rfc2460#section-7'
+  id: '5668578033370612915'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: stretch
+  profile: null
+  pub: '2010-03-02T17:40:34.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 04 March 2010 11:53
+  html: 99% of NAT on earth is Dynamic NAT. that&#39;s what i was talking about.  and
+    you say it provides some degree of security. Ok, so we agree.  You can join the
+    botnet.
+  id: '1698485528336778500'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: xabrouck
+  profile: null
+  pub: '2010-03-04T11:53:22.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 05 March 2010 17:00
+  html: It all depends on how it is presented or when that pitch was made (e.g. -
+    QoS.  Yes, today QoS is 99% identical between IPv4 and IPv6 (the other 1% has
+    to due with a better chance of uniquely identifying the true SRC and DST, which
+    is a Good Thing).  However, moving forward, that Flow Label (not useful today)
+    may make QoS much better ... while routing table bloat was semi-solved through
+    Forced Aggregation, but now PI space has undone that (but &#39;solved&#39; multi-homing,
+    for now).)<br /><br />Major bonus points for &quot;Anyone who thinks NAT is a
+    security feature deserves to become part of a botnet.&quot; :)<br /><br /><br
+    />/TJ
+  id: '3214855012349212793'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: TJ Evans
+  profile: null
+  pub: '2010-03-05T17:00:06.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 06 March 2010 09:46
+  html: Flow label is only useful if you do per-flow QoS, which is not scalable at
+    the line speeds we have today (it could have been useful at T1/E1 and below).
+  id: '7322753558597736691'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-03-06T09:46:08.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 15 March 2010 14:47
+  html: What about mobility?!
+  id: '6841135038440544203'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Alexey
+  profile: null
+  pub: '2010-03-15T14:47:48.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 16 March 2010 07:11
+  html: Where were you during the last 3 weeks, I&#39;ve been waiting for you  ;)
+    Somehow I&#39;ve managed to stumble across that one as well; it&#39;s included
+    in the more detailed article:<br /><br />http://blog.ioshints.info/2010/03/more-details-seven-ipv6-myths.html
+  id: '8569155068958330761'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-03-16T07:11:59.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 16 March 2010 16:22
+  html: Very biased article.<br />Many assumptions are made without thinking that
+    the way the Internet works has changed and will change in future.
+  id: '2553871897849615180'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2010-03-16T16:22:41.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 16 March 2010 18:21
+  html: I would love to hear where you&#39;ve found the bias. Also, in polite societies
+    (and blogs) people tend to introduce themselves before judging other people&#39;s
+    work.
+  id: '5665844132259588064'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-03-16T18:21:28.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 16 March 2010 18:34
+  html: Another short list :-)<br /><br />http://www.ismyipv6working.com/the_truth/
+  id: '268935366531183211'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: J. Snijders
+  profile: null
+  pub: '2010-03-16T18:34:18.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+- date: 16 March 2010 19:58
+  html: Thanks for the list. I like the &quot;you can have &#39;babe&#39; and &#39;b00b&#39;
+    in your IP address&quot; part ;) He forgot to mention you there&#39;s also &#39;c0ffee&#39;
+    (if you need it) and &#39;beef&#39; (if you&#39;re really hungry)  :-D
+  id: '8163454883817532315'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-03-16T19:58:28.000+01:00'
+  ref: '4622373188277837983'
+  type: comment
+count: 23
+id: '4622373188277837983'
+type: post
+url: 2010/02/ipv6-myths.html

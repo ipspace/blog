@@ -1,0 +1,55 @@
+comments:
+- date: 09 June 2009 09:42
+  html: I have never quite understood why cisco IOS allows prefix or route matching
+    using ACLs. This should purely be the function of prefix lists. ACLs should only
+    be used to match IP header fields. In case Cisco decided to keep it to extend
+    legacy support, they should deprecate this capability asap as it only ends up
+    complicating things
+  id: '872386342974654263'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2009-06-09T09:42:19.335+02:00'
+  ref: '5271096945495178163'
+  type: comment
+- date: 09 June 2009 22:36
+  html: Route filters were implemented very early in IOS&#39; history when the designers
+    tried to reuse existing mechanisms (ACLs) instead of creating zillion of new commands
+    and configuration modes. <br /><br />Sometimes they&#39;ve got it right, sometimes
+    they&#39;ve tried to use a hammer on a bolt :) IP prefix lists should be used
+    whenever possible and the only viable reason to use ACLs for route filters is
+    to pass the CCIE lab exam.
+  id: '480432161414935910'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2009-06-09T22:36:42.209+02:00'
+  ref: '5271096945495178163'
+  type: comment
+- date: 02 December 2010 07:17
+  html: I don&#39;t understand this.  I have been told to reference a default route
+    using an ACL you would type in the following:<br /><br />access-list 100 permit
+    ip any host 0.0.0.0<br /><br />doesn&#39;t this translate into access-list 100
+    permit ip 0.0.0.0 255.255.255.255 0.0.0.0 0.0.0.0   ?<br /><br />Is this not correct?
+  id: '5967613749446284686'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Test
+  profile: null
+  pub: '2010-12-02T07:17:57.000+01:00'
+  ref: '5271096945495178163'
+  type: comment
+- date: 02 December 2010 11:52
+  html: Your ACL match ANY IP prefix with a /0 mask. There could only be one (0.0.0.0/0),
+    so it also works, but if you want to match other things (like 10.0.0.0/8), you
+    have to be more careful.<br /><br />Anyway, prefix lists are the way to go.
+  id: '4969510615353798272'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-12-02T11:52:59.000+01:00'
+  ref: '5271096945495178163'
+  type: comment
+count: 4
+id: '5271096945495178163'
+type: post
+url: 2009/06/quick-tip-matching-default-route-in.html

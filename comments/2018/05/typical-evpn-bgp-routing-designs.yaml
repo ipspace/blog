@@ -1,0 +1,126 @@
+comments:
+- comments:
+  - date: 30 May 2018 18:58
+    html: "As a disclaimer, working for Cisco and on VXLAN EVPN specifically makes\
+      \ me obviously biased.<br />Regardless, there must be something you confuse\
+      \ ... a) NX-OS with VXLAN EVPN is not automated by ACI and b) having a B-option\
+      \ doesn\u2019t mean no multi-vendor support. Maybe worth to join 2019 and revalidate\
+      \ your ancient biases and FUD."
+    id: '3632704381868304715'
+    image: https://lh3.googleusercontent.com/-NG1ryLf2TvU/AAAAAAAAAAI/AAAAAAAAABs/1DqaQP4zF6E/s32-c/photo.jpg
+    name: Lukas Krattiger
+    profile: https://www.blogger.com/profile/07774968935660590770
+    pub: '2018-05-30T18:58:25.065+02:00'
+    ref: '2909573550925934668'
+    type: comment
+  - date: 30 May 2018 20:10
+    html: Maybe I&#39;ve read a different blog post than you. Anyway I join neither
+      the future nor a dead horse.
+    id: '6056252325377805160'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2018-05-30T20:10:02.555+02:00'
+    ref: '2909573550925934668'
+    type: comment
+  date: 30 May 2018 10:05
+  html: So if you implement Option B you&#39;re locked in by Cisco. And the only way
+    to automate all that is by buying Cisco&#39;s ACI. So there&#39;s only Option
+    C left.
+  id: '2909573550925934668'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-05-30T10:05:51.702+02:00'
+  ref: '4221288180988661579'
+  type: comment
+- comments:
+  - date: 30 May 2018 20:39
+    html: the /32 from every host is automatically generated on the Leaf (based on
+      ARP/ND) and can be used for external reachability. One of the magic thibgs that
+      EVPN can bring :-)
+    id: '7525444948406570312'
+    image: https://lh3.googleusercontent.com/-NG1ryLf2TvU/AAAAAAAAAAI/AAAAAAAAABs/1DqaQP4zF6E/s32-c/photo.jpg
+    name: Lukas Krattiger
+    profile: https://www.blogger.com/profile/07774968935660590770
+    pub: '2018-05-30T20:39:57.347+02:00'
+    ref: '8699855961006048042'
+    type: comment
+  date: 30 May 2018 20:29
+  html: "How do you solve host reachability from extern without asymmetric routing\
+    \ at all?<br /><br />Let\xB4s have 2 sites with EVPN/DCI configured:<br />- First\
+    \ datacenter on site A<br />- Second datacenter on site B<br /><br />Both sites\
+    \ share the same subnet, e.g. 192.168.10.0/24 with the same distributed gateway\
+    \ on EVPN switch A and EVPN switch B<br />- We have one host A connected to the\
+    \ EVPN TOR switch A with IP 192.168.10.1<br />- We have one host B connected to\
+    \ the EVPN TOR switch B with IP 192.168.10.2<br /><br />If you &quot;show arp&quot;\
+    \ on switch A, it will show ARP entry for A<br />If you &quot;show arp&quot; on\
+    \ switch B, it will show ARP entry for B<br /><br />If you &quot;show ip route&quot;\
+    \ on switch A, it will show ip route /32 entry for B via BGP<br />If you &quot;show\
+    \ ip route&quot; on switch B, it will show ip route /32 entry for A via BGP <br\
+    \ /><br />But, <br />if you &quot;show ip route&quot; on switch A, it will not\
+    \ show you any route for host A.<br />if you &quot;show ip route&quot; on switch\
+    \ B, it will not show you any route for host B.<br /><br />Let\xB4s imagine:<br\
+    \ />if you want to export that /32 host of host A to an external WAN router A\
+    \ which is connected to switch A dynamically, i.e. if host A is connected to EVPN\
+    \ switch A, its /32 host route is exported from EVPN switch A to external WAN\
+    \ router A and therefore the whole ingoing/outgoing traffic for that host is going\
+    \ through WAN router A<br />Vice versa if you want to export that /32 host of\
+    \ host B to an external WAN router B which is connected to switch B dynamically,\
+    \ i.e. if host B is connected to switch B, its /32 host route is exported from\
+    \ EVPN switch B to external WAN router B and therefore the whole ingoing/outgoing\
+    \ traffic for that host is going through WAN router B.<br /><br />The problem\
+    \ is how to get the information out of the ARP table from each EVPN switch to\
+    \ make an /32 host route out of it?"
+  id: '8699855961006048042'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Michael67
+  profile: https://www.blogger.com/profile/03014282355010119539
+  pub: '2018-05-30T20:29:10.136+02:00'
+  ref: '4221288180988661579'
+  type: comment
+- comments:
+  - date: 31 May 2018 20:35
+    html: "Please tell me you\u2019re joking..."
+    id: '4535178970616296807'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-05-31T20:35:52.236+02:00'
+    ref: '7257747148628933291'
+    type: comment
+  - date: 31 May 2018 21:40
+    html: If you would do that your MTU would be to small to satisfy the RFC requirement
+      both for IPv4 and IPv6.
+    id: '928117380780591808'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2018-05-31T21:40:13.579+02:00'
+    ref: '7257747148628933291'
+    type: comment
+  - date: 01 June 2018 07:18
+    html: "Last I checked, the minimum IPv4 MTU was 576. It\u2019s a long way from\
+      \ there to 1500."
+    id: '1546576841765901452'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-06-01T07:18:50.389+02:00'
+    ref: '7257747148628933291'
+    type: comment
+  date: 31 May 2018 18:29
+  html: This is awesome reading! What some customer is asking for is VXLAN/L2 over
+    SDWAN with the offered SLA&#39;s that it can provide. do i need to turn to some
+    open-source routingplatforms to get it or are there any vendors that offers it?
+  id: '7257747148628933291'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Sven Subunit Nillson
+  profile: https://www.blogger.com/profile/03579355189784231092
+  pub: '2018-05-31T18:29:45.481+02:00'
+  ref: '4221288180988661579'
+  type: comment
+count: 9
+id: '4221288180988661579'
+type: post
+url: 2018/05/typical-evpn-bgp-routing-designs.html

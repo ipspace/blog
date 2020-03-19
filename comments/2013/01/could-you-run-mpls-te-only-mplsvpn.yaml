@@ -1,0 +1,103 @@
+comments:
+- date: 17 January 2013 20:37
+  html: Well there is also option of statically assigning labels but ... yeah.
+  id: '8619410736530928299'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Alexandra
+  profile: https://www.blogger.com/profile/07388070088895359419
+  pub: '2013-01-17T20:37:18.600+01:00'
+  ref: '854002509560052523'
+  type: comment
+- comments:
+  - date: 19 January 2013 16:14
+    html: '... and what happens when one of those tunnels fails for whatever reason?'
+    id: '2075139774059584114'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2013-01-19T16:14:08.296+01:00'
+    ref: '6802255193096129852'
+    type: comment
+  - date: 19 January 2013 22:44
+    html: Fast reroute kicks in. :) Or a backup path. Or the RSVP lsp will come up
+      if you signal it as loose and tie it to a loopback. Anyway if you have L3 VPN
+      in your network and an lsp fails you&#39;ll have the same problems with ldp.
+      Come to think of it I haven&#39;t really seen many mpls deployments without
+      vpns or te around.
+    id: '9189700382449872987'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: MkI
+    profile: https://www.blogger.com/profile/05062404045566081843
+    pub: '2013-01-19T22:44:43.043+01:00'
+    ref: '6802255193096129852'
+    type: comment
+  - date: 19 January 2013 22:50
+    html: '@Jent You can use an NMS or just script it. On Cisco you can use the auto-tunnel
+      feature but I would not really recommended for a big network.'
+    id: '4531875175984977529'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: MkI
+    profile: https://www.blogger.com/profile/05062404045566081843
+    pub: '2013-01-19T22:50:56.574+01:00'
+    ref: '6802255193096129852'
+    type: comment
+  date: 19 January 2013 14:45
+  html: In enterprise environments, especially when utilizing Juniper devices, it&#39;s
+    actually more common to use RSVP-only based LSPs and not to run LDP at all. Works
+    just fine, if you don&#39;t need to add new PE-routers too often. And if you have
+    an NMS with provisioning possibility, it doesn&#39;t even matter if you add more
+    routers every now and then. Of course the network will require a lot more state
+    information which has to be soft-refreshed every now and then, but if we are talking
+    about &lt;100 PE-routers, it&#39;s not a problem with current hardware having
+    a lot of CPU and ASIC-based processing power.
+  id: '6802255193096129852'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Jent
+  profile: https://www.blogger.com/profile/01444834574086835672
+  pub: '2013-01-19T14:45:41.108+01:00'
+  ref: '854002509560052523'
+  type: comment
+- comments:
+  - date: 11 July 2013 13:59
+    html: MPLS TE tunnels are unidirectional. If you want to have FRR in both directions,
+      you need two tunnels.
+    id: '8285762917007815193'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2013-07-11T13:59:01.885+02:00'
+    ref: '2418769797161999816'
+    type: comment
+  date: 11 July 2013 13:22
+  html: 'I just did a test of MPLS VPN over TE-FRR with LDP enabled.  When doing ping,
+    the packets goiong trough the backup tunnel have 3 stacked labels. The top one
+    should be RSVP-LABEL for backup LSP. ,However the return packets   have only 2
+    labels. The top one should be LDP-LABEL and inner one should be VPN label. This
+    means that the return traffic has to wait the convergence of IGP, which will damage
+    the FRR advantage.<br /><br />My question is: Fast reroute is only for one direction
+    of traffic. could we do two directions? <br />'
+  id: '2418769797161999816'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-07-11T13:22:50.865+02:00'
+  ref: '854002509560052523'
+  type: comment
+- date: 18 December 2014 17:59
+  html: On Cisco, you can use one hop auto tunnel with backup (RSVP), and enable LDP
+    on the RSVP tunnels. This allows you to have the end to end LDP path protected
+    by MPLS-TE FRR, which is quite nice as it does not have much state.<br /><br />I
+    was just looking at similar ways to do the same on Juniper. Initial thoughts would
+    be partitioned auto tunnel mesh groups with link protection and ldp-tunneling.
+    Haven&#39;t tried it yet, but any thoughts as to the viability of that?
+  id: '7136858272639911013'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-12-18T17:59:56.118+01:00'
+  ref: '854002509560052523'
+  type: comment
+count: 8
+id: '854002509560052523'
+type: post
+url: 2013/01/could-you-run-mpls-te-only-mplsvpn.html

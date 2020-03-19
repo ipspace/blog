@@ -1,0 +1,164 @@
+comments:
+- date: 02 December 2010 11:40
+  html: 'Multi-prefix multi-homing is somewhat tricky. See http://tools.ietf.org/html/draft-troan-multihoming-without-nat66-01<br
+    /><br />You can get around the sending traffic out the wrong link using policy
+    based routing (route on the source address). You have to depend on the host being
+    able to choose a working SA/DA pair, which really requires Happy Eyeballs. http://tools.ietf.org/html/draft-wing-v6ops-happy-eyeballs-ipv6-01<br
+    /><br />There are alternatives: SHIM6, LISP, ILNP, NAT66...'
+  id: '6260968711511540572'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: "Ole Tr\xF8an"
+  profile: null
+  pub: '2010-12-02T11:40:24.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 02 December 2010 12:39
+  html: '@Ivan, why didnt you mention LISP? :-(<br /><br />Multihoming a v6 site without
+    PI space &amp; BGP is easy peasy with LISP. You get 2 uplinks to whatever provider
+    with whatever means, and the CPE will tell the mapping system where it&#39;s /48
+    (or /56 or whatever) is located. That&#39;s it, just 9 lines of configuration.
+    <br /><br />This is real and working at this very moment.'
+  id: '4375883139892251565'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Job Snijders
+  profile: null
+  pub: '2010-12-02T12:39:50.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 02 December 2010 14:16
+  html: No doubt that you have it working (I know I need to do the same ;), but will
+    it scale if we suddenly get millions of entries on top of what&#39;s already there?
+  id: '2711077923141188961'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-12-02T14:16:07.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 02 December 2010 14:51
+  html: LISP multi-homing works best if everyone else is also using LISP... Slight
+    deployment problem.
+  id: '2758407012626575540'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: "Ole Tr\xF8an"
+  profile: null
+  pub: '2010-12-02T14:51:53.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 02 December 2010 15:50
+  html: '@Ole, <br /><br />Not true, LISP was designed with incremental deployment
+    in mind. Multi-homing works fine the moment you configure two proxy-routers and
+    have 2 uplinks. That&#39;s all.'
+  id: '5090642164246465888'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Job Snijders
+  profile: null
+  pub: '2010-12-02T15:50:18.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 02 December 2010 15:53
+  html: '@Ivan<br /><br />Exactly! I still cannot ping you over LISP...<br /><br />The
+    short version: Yes, LISP is being developed explicitly to address the scaling
+    issues we face today and in a few years. Maintaining state in RAM is cheap. There
+    can be many many  EID prefixes - and with LISP they can be aggregated heavily.The
+    RLOC space (the current internet) is a mess anyway, LISP hopes to slow down the
+    growth of the routing table.'
+  id: '9067975607839513680'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Job Snijders
+  profile: null
+  pub: '2010-12-02T15:53:43.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 02 December 2010 18:23
+  html: 'The problem with multihoming is the fact that IPv4/IPv6 paths are calculated
+    to the points of attachment, not end-nodes themselves. This effectively makes
+    any additional layer of indirection such as LISP, unscalable, as decoupling locations
+    from IDs brings the problem of validating the path liveness. Taking LISP-ALT architecture,
+    we may notice that due to high aggregation and logical separation from the RLOC
+    topology the destination EID would always be reported as reachable. Furthermore,
+    the use of edge-aggregated (PA) space for RLOCs will also hide network failures
+    at RLOC layer. Thus, every ITR has to probe every EID-&gt;RLOC mapping for liveness
+    as the responding ETR has no idea whether the particular path is reachable from
+    querying ITR. This problem is described in depth in: http://tools.ietf.org/html/draft-meyer-loc-id-implications-01
+    . This document also lists the site synchronization problem, which is a direct
+    result of the &quot;caching&quot; and existence of multiple ingress/egress points
+    for every LISP site.<br /><br />Adding another encapsulation layer is a serious
+    architectural move with major implications. As I mentioned previously, LISP edge
+    nodes are unware of the underlying RLOC topology (think of layer of indirection).  Every
+    LISP site advertises mappings to ingress entry point being unware of the paths
+    to these points. This results in the fact that traffic load-balancing that is
+    optimum from the edge-site perspective may appear suboptimal from the underlying
+    Internet perspective. In other words, the traffic matrix that LISP sites require
+    may not fit well to the underlying Internet topology. Comparing this to single-ISP
+    networks and MPLS/BGP VPNs you may notice that MPLS TE or IGP TE could be used
+    to optimize the &quot;tunneled&quot; traffic flows. However, there is no common
+    traffic engineering scheme for the Internet.<br /><br />Another problem from the
+    set is the statement that RLOC space is poorly aggregatable because of PIs. This
+    is not the only reason. Optimum aggregation requires the network topology to be
+    hierarchical, which is not the case of the Internet, which is more of a self-similar
+    graph. Internet is only hierarchical at the edge, where provider aggregation could
+    be implemented. However, aggregating addresses in such topologies globally is
+    not possible for hierarchial routing.<br /><br />To summarize, effective multihoming
+    and mobility require changing the IP routing and addressing architecture. If we
+    continue to remain within the limitations of hierarchical addressing and PoA addressing
+    we&#39;ll result in moving the problem from one part of the network to another,
+    but will never get a scalable solution.'
+  id: '599856433210225578'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: plapukhov
+  profile: null
+  pub: '2010-12-02T18:23:22.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 03 December 2010 02:44
+  html: 'You don&#39;t need to wait for valid lifetime to expire, only preferred,
+    and you can set that to zero immediately. Valid just means it won&#39;t tear down
+    existing connections using that address; once it&#39;s deprecated (not preferred)
+    no new connections will be sourced from that prefix. At least that&#39;s how it&#39;s
+    supposed to work, feel free to report bugs.<br /><br />It&#39;s true that you
+    don&#39;t get much control over which prefix your hosts use; there are some drafts
+    in process to add this information to DHCPv6.<br /><br />I don&#39;t know about
+    you, but I&#39;m pretty sure neither my home-office nor my local small business
+    network satisfies the current ARIN reqs for new v6 allocations: have v4 space
+    already (nope, using v4 NAT multihoming) or satisfy the v4 requirements (25% utilization
+    now, 50% within a year of a /24 if multihomed -- 64 hosts now, 128 hosts in a
+    year). If you have 128 hosts in your home office, color me impressed.'
+  id: '5315930847329761352'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ben Jencks
+  profile: null
+  pub: '2010-12-03T02:44:18.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 04 December 2010 07:27
+  html: I have this problem today.  I have 5 Internet providers over 3 sites, and
+    only two would do any BGP if I went that way.  I have a unique local address scheme
+    ready to go, but I can&#39;t get any ipv6 from any of my providers today, even
+    if there was NAT66.  <br /><br />So I do nothing, as I can&#39;t have unpredictable
+    client function because if I went with my ULA scheme browsers would do weirdness
+    with no outbound egress but getting external AAAA records from the outside dns
+    recursive servers.  <br /><br />Not even getting into infrastructure with no IPv6
+    support like WAAS, which my business relies on.  It&#39;s a mess and depressing.  <br
+    /><br />Is it too late to go CLNS?
+  id: '1748949193924192948'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Paulie
+  profile: null
+  pub: '2010-12-04T07:27:49.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+- date: 04 December 2010 08:04
+  html: '@Paulie<br /><br />LOL good time to remember the whole epic saga with OSI
+    stack in early 90s :)'
+  id: '3040965040443299921'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: plapukhov
+  profile: null
+  pub: '2010-12-04T08:04:07.000+01:00'
+  ref: '4604644041700783027'
+  type: comment
+count: 10
+id: '4604644041700783027'
+type: post
+url: 2010/12/small-site-multihoming-in-ipv6-mission.html

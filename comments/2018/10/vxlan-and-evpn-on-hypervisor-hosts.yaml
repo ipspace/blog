@@ -1,0 +1,76 @@
+comments:
+- date: 08 October 2018 16:47
+  html: Hi Ivan,<br />as this happens to be the topic I was really interested in,
+    here are some other solutions that use VXLAN in the hypervisor:<br />1. Contrail
+    - proprietary vRouter managed by XMPP, EVPN from the controller<br />2. Nuage
+    - &quot;proprietary&quot; OVS managed by OpenFlow, EVPN from the controller<br
+    />3. OpenDaylight - OVS managed by standard OpenFlow, EVPN from the controller
+    (Quagga)<br />4. BaGPipe BGP - OVS managed by local agent, EVPN from the host
+    (ExaBGP)<br />5. FRR/Quagga - Linux bridge, EVPN from the host<br />That, of course,
+    is not including non-overlay solutions (e.g. Calico) and myriad k8s plugins.<br
+    />
+  id: '8850483378635242011'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-10-08T16:47:57.024+02:00'
+  ref: '7819218905137608363'
+  type: comment
+- comments:
+  - date: 10 October 2018 11:01
+    html: '#3 is a a part of NFVi solution from Ericsson (https://www.ericsson.com/ourportfolio/digital-services-solution-areas/cloud-sdn?nav=fgb_101_0363).
+      Last time I checked they used a fork of Quagga with 6WIND&#39;s EVPN implementation
+      (eariler than Cumulus)<br />It did require quite a bit of tinkering a year ago
+      (https://networkop.co.uk/blog/2017/12/15/os-odl-netvirt/). Its target market
+      are SP/Telcos ($$$) so it&#39;s safe to assume that they tailor and automate
+      each solution individually.<br /><br />#5 - I&#39;ve only seen DIY&#39;ed (https://vincent.bernat.ch/en/blog/2017-vxlan-bgp-evpn).
+      And yes, you need to a lot of tinkering and be as smart as Vincent Bernat to
+      build it'
+    id: '1380866838134992560'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2018-10-10T11:01:18.383+02:00'
+    ref: '3024724867465907635'
+    type: comment
+  - date: 10 October 2018 16:12
+    html: 'Thanks a million! If you send me an email, and if we ever manage to meet,
+      the beer is on me ;))<br /><br />I particularly love the last bit: &quot;you
+      have to be as smart as Vincent Bernat to build it&quot;. Nuff said...'
+    id: '3830916327222859987'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-10-10T16:12:34.657+02:00'
+    ref: '3024724867465907635'
+    type: comment
+  date: 09 October 2018 11:31
+  html: 'Thanks for a really exhaustive list. Reading the Cumulus blog post (see above)
+    I got the impression that #5 isn&#39;t exactly ready for production use. <br /><br
+    />I also keep wondering how much self-assembly (and tinkering) is required to
+    get #3 to work.<br /><br />Would you know of anyone packaging and shipping #3
+    and/or #5 as a solution?'
+  id: '3024724867465907635'
+  image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2018-10-09T11:31:41.951+02:00'
+  ref: '7819218905137608363'
+  type: comment
+- date: 19 November 2018 20:52
+  html: If you like even more options to consider, there&#39;s also<br />6. Ryu.<br
+    /><br />Although strictly speaking an SDN controller and mainly BGP control plane,
+    a while ago I upstreamed some BGP EVPN interop patches that allows the Ryu BGP
+    speaker to participate in an BGP EVPN &#39;fabric&#39;.<br /><br />And if you&#39;re
+    into (even more) DIY, there&#39;s ExaBGP :)<br />
+  id: '1122118177503993390'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Albert Siersema
+  profile: https://www.blogger.com/profile/04847257511165693348
+  pub: '2018-11-19T20:52:53.974+01:00'
+  ref: '7819218905137608363'
+  type: comment
+count: 5
+id: '7819218905137608363'
+type: post
+url: 2018/10/vxlan-and-evpn-on-hypervisor-hosts.html

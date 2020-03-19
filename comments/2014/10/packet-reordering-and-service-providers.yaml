@@ -1,0 +1,124 @@
+comments:
+- comments:
+  - date: 13 October 2014 11:57
+    html: The next time you find a working Carrier Ethernet solution between my web
+      site and all its visitors let me know ;)<br /><br />On a more serious note,
+      if you do packet marking on the edge of a Carrier Ethernet network (based on
+      in-contract/out-of-contract decision) and combine that with any form of differentiated
+      queuing within the network you might get the same results.
+    id: '5480830057862334643'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-10-13T11:57:29.231+02:00'
+    ref: '2497535007271574910'
+    type: comment
+  date: 13 October 2014 11:14
+  html: If you used Carrier Ethernet instead of IP links you wouldn&#39;t be writing
+    this!
+  id: '2497535007271574910'
+  image: https://media.linkedin.com/mpr/mpr/shrink_80_80/p/3/000/000/040/039824a.jpg
+  name: Red Pineapple
+  profile: https://www.blogger.com/profile/00515499915979264058
+  pub: '2014-10-13T11:14:00.381+02:00'
+  ref: '6838842353289049421'
+  type: comment
+- date: 13 October 2014 12:15
+  html: I&#39;ve run into some ISPs in APAC doing per-packet load-balancing on their
+    outbound traffic.  After I explained to them the various reasons this is a Bad
+    Idea, they switched over to saner traffic engineering methodologies.
+  id: '8163292159630560058'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Roland Dobbins
+  profile: https://www.blogger.com/profile/06517186494484977438
+  pub: '2014-10-13T12:15:53.104+02:00'
+  ref: '6838842353289049421'
+  type: comment
+- date: 13 October 2014 17:11
+  html: Some content providers have moved (some are moving) toward TCP anycast (just
+    like CDNs), and as far as I can tell per packet loadbalancing as well as BGP multi-path
+    AS-Path relax are the enemies of both TCP and chatty UDP anycast (AKA. DNSSEC)
+    over internet. Please don&#39;t do that!
+  id: '28709063931038388'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Shawn
+  profile: null
+  pub: '2014-10-13T17:11:47.730+02:00'
+  ref: '6838842353289049421'
+  type: comment
+- date: 13 October 2014 22:13
+  html: 'Flowlets allows to change the switching path e.g. when we want to reduce
+    load on one paths and move traffic to another one:<br />http://nms.lcs.mit.edu/~kandula/data/FLARE_HotNets04_web.ppt<br
+    />It&#39;s an interesting idea: you can change path of the flow once the gap between
+    bursts of the flow is longer than the trip time to the merging point (assume that
+    we have splitting and mergin point of two splitted paths). This way we can avoid
+    re-ordering as we make sure that merging point is reached by the previouse burst
+    of the same flow.'
+  id: '6784547015671026785'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Gogus
+  profile: https://www.blogger.com/profile/12912702162710760711
+  pub: '2014-10-13T22:13:49.509+02:00'
+  ref: '6838842353289049421'
+  type: comment
+- date: 13 October 2014 22:28
+  html: 'Meh. Still sounded like bufferbloat to me. Using TCP trace on your RTTs on
+    your capture and xplot.org is generally better than the wireshark equivalents.
+    Try it. Post the plots.<br /><br />Classic tcptrace xplot.org plots here, and
+    worth looking at in context with your problem. <br /><br />http://gettys.wordpress.com/2010/12/06/whose-house-is-of-glasse-must-not-throw-stones-at-another/<br
+    /><br />On your packet re-ordering idea, many wifi aps tend to reorder when doing
+    retries - which is a GOOD thing - as it lowers latency on the AP. <br /><br />TCP
+    stream reassembly is the job of the OS and linux and osx handle it well. Modern
+    Linux&#39;s, especially. <br /><br />Windows - even modern versions of windows
+    - does it really badly. Redmond is asleep at the switch. '
+  id: '7787447890823043468'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Dave Taht
+  profile: https://www.blogger.com/profile/16115281578739979183
+  pub: '2014-10-13T22:28:00.084+02:00'
+  ref: '6838842353289049421'
+  type: comment
+- date: 13 October 2014 22:29
+  html: And oh, yea, if have WRED, use it, if you can configure it.<br /><br />For
+    all other things, there&#39;s fq_codel.<br /><br />https://tools.ietf.org/html/draft-hoeiland-joergensen-aqm-fq-codel-00
+  id: '5991483308447511846'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Dave Taht
+  profile: https://www.blogger.com/profile/16115281578739979183
+  pub: '2014-10-13T22:29:02.565+02:00'
+  ref: '6838842353289049421'
+  type: comment
+- date: 13 October 2014 22:33
+  html: And while I&#39;m at it, many people implementing &quot;SFQ&quot; DO permute
+    the hash every 10 seconds, as that is what wondershaper did, and zillions of people
+    just blindly copied that. It forces re-ordering every 10 seconds, which kept latency
+    low, and acted as a poor mans AQM, in it&#39;s own weird way. <br /><br />It&#39;s
+    easy to see a misconfigured SFQ doing that if you have captures. 10 second period
+    for the scrambling, under load.<br /><br />This dumb behavior in Linux&#39;s SFQ
+    implementation was fixed around version 3.6, I believe, so periodic permutation
+    no longer does that harm (but no longer acts as a poor man&#39;s AQM), but it
+    will take a decade for that to sort itself out in the field.<br /><br />http://www.bufferbloat.net/projects/cerowrt/wiki/Wondershaper_Must_Die
+  id: '8454766828320677224'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Dave Taht
+  profile: https://www.blogger.com/profile/16115281578739979183
+  pub: '2014-10-13T22:33:59.653+02:00'
+  ref: '6838842353289049421'
+  type: comment
+- date: 22 October 2014 21:02
+  html: 'In the scenario where you use MPLS pseudo-wires without MPLS Control-Word
+    set no the packets, you can very easily end up re-ordering packets towards MAC
+    addresses starting with a 4 or a 6, I did a presentation about that some time
+    ago:<br /><br />PDF: https://www.nanog.org/meetings/nanog57/presentations/Tuesday/tues.general.SnijdersWheeler.MACaddresses.14.pdf<br
+    /><br />Video: https://www.nanog.org/meetings/nanog57/presentations/Tuesday/tue.poor-mac-address.snijders.wmv'
+  id: '3711407240444783124'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Job
+  profile: https://www.blogger.com/profile/05334725096572895520
+  pub: '2014-10-22T21:02:05.684+02:00'
+  ref: '6838842353289049421'
+  type: comment
+count: 9
+id: '6838842353289049421'
+type: post
+url: 2014/10/packet-reordering-and-service-providers.html

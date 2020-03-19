@@ -1,0 +1,94 @@
+comments:
+- date: 20 June 2017 20:47
+  html: Very interesting thought. How about disable the sequence checking on the Firewalls
+    (Ok we may loose AV &amp; IPS but let&#39;s suppose we don&#39;t need them). We
+    give up stateful inspection, but this could be a solution without a real increase
+    of the risk (I was also reading your related article http://blog.ipspace.net/2016/02/should-firewalls-track-tcp-sequence.html)<br
+    /><br />State exchange could also be a solution with a rate limit on the number
+    of sessions that could be synchronized (DDoS &amp; Big Scan would not be a problem).
+    If the DCI link goes down (Split-Brain) everything will still working as in the
+    case where there was no Firewall, this would not increase the risk.
+  id: '2989188201865286243'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: MS
+  profile: https://www.blogger.com/profile/00138130459251026848
+  pub: '2017-06-20T20:47:25.982+02:00'
+  ref: '7790745935035886328'
+  type: comment
+- date: 21 June 2017 00:37
+  html: 'You could also move the firewall to the edge...I don&#39;t follow what happens
+    lately in the industry but isn&#39;t this one of the promises of SDN / openflow
+    / vmware NSX etc?  I think Cisco tried to scratch the area of integrating more
+    brains in the switches with PISA SUP some years ago but it probably didn&#39;t
+    work out. '
+  id: '151852222975804494'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Unknown
+  profile: https://www.blogger.com/profile/06969966921517232889
+  pub: '2017-06-21T00:37:52.368+02:00'
+  ref: '7790745935035886328'
+  type: comment
+- date: 21 June 2017 04:03
+  html: As always - it&#39;s only a problem if it causes a problem for the business.
+    Networkers, including myself, can get a bit &#39;OCD&#39; sometimes, performing
+    IT for IT&#39;s sake, and crafting the network as if it was a sculpture. <br /><br
+    />To be sure, the asymmetric flows could be classed as technical debt that makes
+    troubleshooting harder during an issue. But that troubleshooting effort needs
+    to be balanced against the effort and additional complexity that forced symmetry
+    brings.
+  id: '7696361266309548311'
+  image: https://lh4.googleusercontent.com/-o5ftKbjmN74/AAAAAAAAAAI/AAAAAAAAAUI/h37Roe89GaU/s32-c/photo.jpg
+  name: Greg Foletta
+  profile: https://www.blogger.com/profile/06341530883311505195
+  pub: '2017-06-21T04:03:16.507+02:00'
+  ref: '7790745935035886328'
+  type: comment
+- comments:
+  - date: 22 June 2017 23:24
+    html: 'Many customers/people just don&#39;t know the &quot;interesting&quot; traffic.
+      Not everybode is Facebook or any other &quot;one&quot; content provider, exactely
+      knowing what&#39;s interesting.<br />From my point of view in a &quot;normal&quot;
+      latency network this kind of problem should not bother a normal behaving application. '
+    id: '8466151641169377029'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Johannes Luther
+    profile: https://www.blogger.com/profile/14579645045631302258
+    pub: '2017-06-22T23:24:28.425+02:00'
+    ref: '3985134140578122876'
+    type: comment
+  date: 21 June 2017 16:21
+  html: Symmetric routing could be important for special applications such an RTT
+    measurements based dynamic delay compensation.<br />The best solution is to move
+    to a hybrid SDN architecture and just control the interesting traffic flows. <br
+    />Based on the knowledge of the full topology you could select the same paths
+    for both directions and then execute this policy in the network. <br />Of course,
+    it has a price, so do it just for those flows where it is really necessary. <br
+    />
+  id: '3985134140578122876'
+  image: https://lh4.googleusercontent.com/-t7xwu4fY91Y/AAAAAAAAAAI/AAAAAAAAByc/AStXb-jqQyY/s32-c/photo.jpg
+  name: "B\xE9la V\xE1rkonyi"
+  profile: https://www.blogger.com/profile/07985346761439657130
+  pub: '2017-06-21T16:21:43.515+02:00'
+  ref: '7790745935035886328'
+  type: comment
+- date: 22 June 2017 15:18
+  html: 'Broad topic. Just to touch it. Same stateful device and different interfaces
+    for ingress and egress paths is easy as long as both share the same security zones.
+    Most devices have zone level policies (not interface level). Not hitting the same
+    stateful device (ingress and egress traffic goes through different devices) can
+    be sometimes solved by using HA clusters. The worst is when we do not hit the
+    same HA cluster (different paths). It depends on topology. <br />No quick, general
+    fixes. Disabling the tcp-syn check moves us to 90ties where we had to have acl
+    for both direction because the returning traffic is  not automatically enabled.
+    Not always acceptable. '
+  id: '1438082594783175219'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Gogus
+  profile: https://www.blogger.com/profile/12912702162710760711
+  pub: '2017-06-22T15:18:43.037+02:00'
+  ref: '7790745935035886328'
+  type: comment
+count: 6
+id: '7790745935035886328'
+type: post
+url: 2017/06/asymmetrical-traffic-flows-and.html

@@ -1,0 +1,104 @@
+comments:
+- comments:
+  - date: 04 December 2012 09:36
+    html: Unless you engineer the secondary LSP, it will go over the same set of links
+      as the primary, so what&#39;s the use case?
+    id: '6069665179630475526'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-12-04T09:36:54.619+01:00'
+    ref: '1206873742445286760'
+    type: comment
+  - date: 04 December 2012 09:43
+    html: By default Junos will try to put a secondary &quot;standby&quot; LSP on
+      a different path from the primary LSP.
+    id: '5331180664763349961'
+    image: https://1.bp.blogspot.com/_pA8WGozMQ9c/SyJQrafLcXI/AAAAAAAAAUM/XD2oDxsLc9A/S220-s32/Per_Granath.jpg
+    name: pg
+    profile: https://www.blogger.com/profile/16108997865837452753
+    pub: '2012-12-04T09:43:41.456+01:00'
+    ref: '1206873742445286760'
+    type: comment
+  date: 04 December 2012 09:25
+  html: Generally I would say that FRR takes care of the packets that are on their
+    way down the LSP which is actually broken further down the path.<br /><br />The
+    standby secondary LSP will get the next packet after the ingress LSR receives
+    the PathErr.<br /><br />You may chose to &quot;TE&quot; the secondary LSP, or
+    not, and you may put bandwidth requirement on it, or not, etc.<br /><br />I think
+    FRR and a standby is complimentary, and if you do not chose to engineer the standby
+    there is no much overhead. It is all in the same &#39;apply-group&#39;...
+  id: '1206873742445286760'
+  image: https://1.bp.blogspot.com/_pA8WGozMQ9c/SyJQrafLcXI/AAAAAAAAAUM/XD2oDxsLc9A/S220-s32/Per_Granath.jpg
+  name: pg
+  profile: https://www.blogger.com/profile/16108997865837452753
+  pub: '2012-12-04T09:25:28.128+01:00'
+  ref: '2379622293489086043'
+  type: comment
+- date: 04 December 2012 10:44
+  html: As pg said, secondary MPLS-TE tunnels could be used to carry different QoS
+    requirements then the primary.<br />It may be useful to shutdown the primary instance
+    and switch to secondary with lower bandwidth in some cases - even though it goes
+    on the same set of links as the primary.<br />
+  id: '507822920128900610'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Swetli
+  profile: https://www.blogger.com/profile/08005061568070637014
+  pub: '2012-12-04T10:44:38.079+01:00'
+  ref: '2379622293489086043'
+  type: comment
+- date: 04 December 2012 19:01
+  html: Generally yes, we dont need it but most networks use TE for its excellent
+    applications.<br />FRR is a very temporary path, backup/standby -non-signalled
+    tunnels are good to have a deterministic path in case of primary tunnel failure
+    (deterministic by tools such as affinity vs dynamic LSPs). As well as granular
+    traffic forwarding in case of CBTS/PBTS, and/or Auto-bandwidth and its pipe usage
+    restrictions. You may need multiple LSPs for Auto-bandwidth to work precisely
+    and you could bring your backup tunnels into the calculation once they are active.
+  id: '5806259837772511810'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Shawn Zandi (Shafagh)
+  profile: https://www.blogger.com/profile/04894062842133753018
+  pub: '2012-12-04T19:01:05.075+01:00'
+  ref: '2379622293489086043'
+  type: comment
+- date: 05 December 2012 17:10
+  html: How the failback works?
+  id: '4947169945719110609'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Francesco
+  profile: null
+  pub: '2012-12-05T17:10:38.297+01:00'
+  ref: '2379622293489086043'
+  type: comment
+- date: 08 December 2012 02:08
+  html: 'One application where secondary tunnels are needed is SS7/Sigtran which basically
+    carry critical call signaling between an operators signaling components. These
+    services typically have an A and B path. The key requirement is to have complete
+    transport diversity for these 2 paths, to be able to handle underlying IP transport
+    DEGRADES. Note: IP link failures, can be handled by FRR convergence. But the a
+    link degrade (bit errors etc,), needs to be handled by the application. And that&#39;s
+    where the signaling diversity falls into play. '
+  id: '500531368658845755'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Abhijit Gupta
+  profile: null
+  pub: '2012-12-08T02:08:08.446+01:00'
+  ref: '2379622293489086043'
+  type: comment
+- date: 05 February 2014 12:01
+  html: The smaller more predictable LFIB compared to FRR when using secondary paths
+    on LSPs is favourable when looking at access and aggregation routers.  With BFD
+    triggering this allows the magic sub-50ms (which is needed in some utility networks)
+    without needing larger more expensive aggregation routers.
+  id: '4003738409285743004'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-02-05T12:01:45.759+01:00'
+  ref: '2379622293489086043'
+  type: comment
+count: 8
+id: '2379622293489086043'
+type: post
+url: 2012/12/secondary-mpls-te-tunnels-and-fast.html

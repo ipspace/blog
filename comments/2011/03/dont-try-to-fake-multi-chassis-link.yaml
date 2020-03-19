@@ -1,0 +1,114 @@
+comments:
+- date: 21 March 2011 08:25
+  html: Ivan,<br />Can you please clarify something for me?<br />You say &quot;If
+    one of the links fails, static LAG will not detect link failure&quot;. Are you
+    saying that if we don&#39;t use LACP or PAGP and instead use &#39;channel-group
+    1 mode on&#39;, for example, and a link in etherchannel fails, some traffic will
+    be dropped? As in packets are still load balanced over the dead link??<br />Or
+    is this an HP thing?
+  id: '9176432704984309754'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2011-03-21T08:25:15.398+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 21 March 2011 20:00
+  html: This is not an HP thing. If you have static LAG and a member link fails in
+    non-obvious way (forwarding loss with no carrier loss), you&#39;ll get a traffic
+    black hole. LACP has a keepalive mechanism and thus detects that one of the links
+    in LAG has failed and removes it from LAG.
+  id: '3657358666088914894'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-03-21T20:00:53.146+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 22 March 2011 03:22
+  html: The article should have ended where it said<br /><br /> &quot;configuring
+    static LAG on the HP switch and disabling STP on it (the Catalysts have no idea
+    they&#39;re talking to the same switch)&quot;<br /><br /> *DONT_KNOW*
+  id: '6257885338072745809'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: NotsoAnonymous
+  profile: null
+  pub: '2011-03-22T03:22:12.594+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 22 March 2011 19:19
+  html: According to my experiences HP switches forward STP BPDUs if STP is disabled.
+    Thus, the Cisco switches see each others BPDUs in two different ports and one
+    of those is made STP blocking. If the blocking port is a port facing X, then ~half
+    of the traffic sent to upstream by X is blackholed.
+  id: '1512794011768683828'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Markku Leinio
+  profile: null
+  pub: '2011-03-22T19:19:04.546+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 22 March 2011 19:33
+  html: (assuming source-MAC-based load balancing on X)
+  id: '3122901075163417391'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Markku Leinio
+  profile: null
+  pub: '2011-03-22T19:33:56.213+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 22 March 2011 21:34
+  html: Oh, and in this particular topology, having the C1-C2 link blocking obviously
+    blocks something else as well... (A and D will not necessarily see each other
+    at all)
+  id: '8759128857123483961'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: "Markku Leini\xF6"
+  profile: null
+  pub: '2011-03-22T21:34:28.762+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 24 March 2011 20:08
+  html: It&#39;s not that bad. The HP switch will not send the multicast packet (BPDU)
+    back across the same LAG, so the BPDUs sent by the Catalyst switches to the STP-ignoring
+    HP switch will not arrive at the other Catalyst switch.
+  id: '4077805967828256535'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-03-24T20:08:51.562+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 24 March 2011 20:09
+  html: And your point is ... what?
+  id: '4932568217257540577'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-03-24T20:09:49.894+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 24 March 2011 20:25
+  html: You&#39;re right, my mistake. I apparently don&#39;t like too imaginative
+    configs... and have been dealing with too many ugly ProCurve details lately.
+  id: '1510866117445770693'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Markku Leinio
+  profile: null
+  pub: '2011-03-24T20:25:42.822+01:00'
+  ref: '6217807452397091493'
+  type: comment
+- date: 26 March 2011 10:18
+  html: Ivan<br /><br />You forgot to mention Nortel (now Avaya) when you say Chassis
+    Aggregation technologiees. Nortel does SMLT since 2001.
+  id: '7997045352154827363'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: dumlutimuralp
+  profile: null
+  pub: '2011-03-26T10:18:35.819+01:00'
+  ref: '6217807452397091493'
+  type: comment
+count: 10
+id: '6217807452397091493'
+type: post
+url: 2011/03/dont-try-to-fake-multi-chassis-link.html

@@ -1,0 +1,116 @@
+comments:
+- date: 13 February 2013 09:45
+  html: Don&#39;t forget about VPN CAM when using per-vrf labels. Or you will hit
+    recirculation for overflowing vrfs (more than 512).
+  id: '5687459690857455466'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Roman Sokolov
+  profile: https://www.facebook.com/roman.sokolov.583
+  pub: '2013-02-13T09:45:44.726+01:00'
+  ref: '2364304353214535292'
+  type: comment
+- date: 13 February 2013 10:28
+  html: Love these types of solid and concrete posts!
+  id: '1404277300619895281'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Fredrik Westermark
+  profile: http://blog.spearpoint.net
+  pub: '2013-02-13T10:28:19.635+01:00'
+  ref: '2364304353214535292'
+  type: comment
+- comments:
+  - date: 14 February 2013 14:32
+    html: vrf-table-label<br /><br />
+    id: '4725233860546292665'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Tiziano
+    profile: null
+    pub: '2013-02-14T14:32:04.296+01:00'
+    ref: '4141328485911924374'
+    type: comment
+  date: 13 February 2013 19:53
+  html: How does JUNOS handle this?
+  id: '4141328485911924374'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-02-13T19:53:37.964+01:00'
+  ref: '2364304353214535292'
+  type: comment
+- date: 15 February 2013 07:29
+  html: Assigning an MPLS label per next-hop would be nice middle-of-the-road solution.
+    No need to do double lookups and save lot of memory.
+  id: '7039089580543541729'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-02-15T07:29:32.440+01:00'
+  ref: '2364304353214535292'
+  type: comment
+- date: 16 February 2013 14:19
+  html: Already happened to face and solve the issue, but the post is great for sure.
+  id: '241506802084061471'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-02-16T14:19:15.448+01:00'
+  ref: '2364304353214535292'
+  type: comment
+- date: 18 February 2013 00:31
+  html: 'On ASR9K/XR theres a third solution which avoids the extra lookup, you can
+    do per next-hop label allocation<br /><br />qoute from: http://www.cisco.com/en/US/docs/ios_xr_sw/iosxr_r3.6/routing/configuration/guide/rc36bgp.html#wpmkr1456095
+    <br /><br />label-allocation-mode per-ce<br /><br />Configures the per-CE label
+    allocation mode to avoid an extra lookup on the PE router and conserve label space
+    (per-prefix is the default label allocation mode). In this mode, the PE router
+    allocates one label for every immediate next-hop (in most cases, this would be
+    a CE router). This label is directly mapped to the next hop, so there is no VRF
+    route lookup performed during data forwarding. However, the number of labels allocated
+    would be one for each CE rather than one for each VRF. Because BGP knows all the
+    next hops, it assigns a label for each next hop (not for each PE-CE interface).
+    When the outgoing interface is a multiaccess interface and the media access control
+    (MAC) address of the neighbor is not known, Address Resolution Protocol (ARP)
+    is triggered during packet forwarding. '
+  id: '5393385821258349001'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Mijo
+  profile: null
+  pub: '2013-02-18T00:31:11.991+01:00'
+  ref: '2364304353214535292'
+  type: comment
+- date: 12 March 2013 00:52
+  html: This is available from 12.2(33)SXH and later on Cat 6500 and the command is
+    the following:<br />mpls label mode all-vrfs protocol bgp-vpnv4 per-vrf<br /><br
+    />On 12.2SR code the command is:<br />mpls label mode all-vrfs protocol all-afs
+    per-vrf<br />
+  id: '1835762316525614599'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Andras Toth
+  profile: null
+  pub: '2013-03-12T00:52:14.326+01:00'
+  ref: '2364304353214535292'
+  type: comment
+- date: 31 July 2013 16:00
+  html: IOS XE3.10S (ASR1k) &quot;per-CE label allocation&quot;:<br /><br />http://www.cisco.com/en/US/docs/routers/asr1000/release/notes/asr1k_feats_important_notes_310s.html#wp3378629
+  id: '587258251333597571'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2013-07-31T16:00:07.638+02:00'
+  ref: '2364304353214535292'
+  type: comment
+- date: 08 January 2014 08:56
+  html: Juniper does per next-hop (like per-ce) as well.  Configure your export policy
+    like this:<br />then {<br />label-allocation per-nexthop;<br />community add vpn1;<br
+    />accept;<br />}<br /><br />I don&#39;t know why this wasn&#39;t the default/standard
+    from all vendors right from the start..
+  id: '5703318926457859164'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-01-08T08:56:35.033+01:00'
+  ref: '2364304353214535292'
+  type: comment
+count: 10
+id: '2364304353214535292'
+type: post
+url: 2013/02/internet-in-vrf-and-lfib-explosion.html

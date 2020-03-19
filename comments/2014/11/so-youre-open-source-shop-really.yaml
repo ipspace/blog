@@ -1,0 +1,154 @@
+comments:
+- date: 06 November 2014 10:59
+  html: Ah, a subject close to my heart. Load balancing isn&#39;t for the server guys
+    now is it? And we all know how conservative those network guys are. <br /><br
+    />In all seriousness, this really is a matter of fear of the unknown and an unwillingness
+    to learn about the possibilities and then trust them in production. I hope this
+    changes as network engineers are further exposed to both Linux and virtual appliances
+    in general.<br /><br />Other products you could add to your list are;<br /><br
+    />* Zen Load Balancer<br />* Balance<br />* Pound
+  id: '5071868212298393725'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Steven Iveson
+  profile: http://packetpushers.net/author/siveson
+  pub: '2014-11-06T10:59:37.825+01:00'
+  ref: '2119343721964858728'
+  type: comment
+- comments:
+  - date: 06 November 2014 12:47
+    html: Yeah, I would expect to see plenty of open-source load balancing solutions
+      in ISP/hosting environments. Commercial load balancers are just too expensive
+      to be justified there.
+    id: '5066483775213852900'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-11-06T12:47:34.199+01:00'
+    ref: '7998832387488193601'
+    type: comment
+  date: 06 November 2014 11:02
+  html: "Hi Ivan.<br /><br />I don\xB4t agree 100% ...  Here in denmark, nginx and\
+    \ haproxy is used ALOT.<br /><br />So the company i work in we do shared hosting\
+    \ apache,iis etc. All of our competitors also use some sort of opensource load\
+    \ balancing ( mostly nginx )<br /><br />We try to not use netscaler, f5 etc. Because\
+    \ of price but also creating a dedicated hardware/vm loadbalancer moves configuration\
+    \ away from the APP people to the network people :)<br />Trust me the APP people\
+    \ way! better at load balancing their own APP."
+  id: '7998832387488193601'
+  image: https://lh5.googleusercontent.com/-Woyf732cIUg/AAAAAAAAAAI/AAAAAAAABkE/X5n8CwjHrwE/s32-c/photo.jpg
+  name: Thomas Raabo
+  profile: https://www.blogger.com/profile/04540820319538497395
+  pub: '2014-11-06T11:02:00.692+01:00'
+  ref: '2119343721964858728'
+  type: comment
+- date: 06 November 2014 12:52
+  html: Last time I looked, VMware vShield Edge (got to love that capitalisation!)
+    is in fact HAProxy under the hood. I learnt this when raising a support case and
+    watching VMware troubleshoot it. So, more people are using it than may realise
+    they are!
+  id: '8667394081059218921'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-11-06T12:52:13.007+01:00'
+  ref: '2119343721964858728'
+  type: comment
+- date: 06 November 2014 18:23
+  html: 'I personally do favor both IPVS and nginx, but both in their respective fields
+    and taking their respective strengths and weaknesses into account.<br /><br />Commercial
+    load balancers also often just don&#39;t offer exactly what&#39;s needed. For
+    example, we&#39;re running loadbalancers who do perform highlevel backend availability
+    checks and accordingly announce (or withdraw) a specific route for internal anycasted
+    IP addresses. By installing those systems in multiple data centers, this results
+    in a very high availability and low-latency. At worst, a failed service in one
+    DC is automatically provided by the same service from a different DC - at some
+    additional latency, but still accessible.<br />Most commercial loadbalancers in
+    such a situation simply would like to pretend to be a DNS server and reply with
+    low-TTL DNS-RRs - which consistently fails with Java applications (who ignored
+    DNS-TTLs for years now), let alone give no solution if the service you&#39;re
+    trying to load balance is your DNS service.<br /><br />Please also don&#39;t forget
+    about IPVS: Linux IP Virtual Server does look more like &quot;typical&quot; L2/L3-level
+    load balancers and uses techniques like direct server return (&quot;gatewaying&quot;
+    or &quot;direct routing&quot; in IPVS lingo). A smallish box with a 100 Mbit network
+    connection can easily handle Gbits of traffic with dozens of backend servers -
+    as any outgoing traffic (replies) doesn&#39;t pass the loadbalancer at all.<br
+    /><br />Proxy-based systems like nginx and haproxy are also very capable in terms
+    of accepting thousands of connections in parallel, which may give you some relief
+    if you&#39;re accustomed to an web servers who are easily taken by slowloris-attacks.
+    nginx/haproxy do also terminate and create new backend connections, making them
+    extremely flexible on your network: your backend servers cound be anywhere, there
+    are no restrictions Have your balancer on your network, some backend nodes on
+    AWS, some backend nodes in a colo somewhere around your corner, it doesn&#39;t
+    matter (ignoring latency). Nginx/haproxy also do offer tons of L7-features which
+    may result in a more complex configuration, but a very high benefit on the actual
+    application. For example, static content could be served from a specifically tuned
+    backend farm, while dynamic content is served by a different farm.<br />However,
+    doing so does have impact on deployment and where or how to debug errors. If operations
+    and development are a close team and share their knowledge, such setups do work
+    out fine - otherwise, it may be hard to draw a line where and how some issue is
+    going to be addressed. And some implementation and design issues do open up new
+    questions.<br /><br />Most interesting projects are where multiple balancing solutions
+    needed to be united: proxy-based systems couldn&#39;t handle the bandwidth, packet-based
+    systems couldn&#39;t deliver the needed features. Trying to to that with a commercial
+    load balancer can be a task of its own.'
+  id: '5088228601170908238'
+  image: https://lh3.googleusercontent.com/-YeurV_9_3q0/AAAAAAAAAAI/AAAAAAAAIyc/EtdE3UESGWs/s32-c/photo.jpg
+  name: Anders Henke
+  profile: https://www.blogger.com/profile/04441771667073544925
+  pub: '2014-11-06T18:23:50.314+01:00'
+  ref: '2119343721964858728'
+  type: comment
+- comments:
+  - date: 06 December 2014 17:06
+    html: Fantastic - just the right way to go ;)) Thanks for sharing!
+    id: '107815357502593932'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-12-06T17:06:48.930+01:00'
+    ref: '3163603297389174052'
+    type: comment
+  date: 06 December 2014 16:52
+  html: (At the risk of necroposting...)<br /><br />The place I currently work in
+    would likely count as an &quot;open source shop&quot; but sends the bulk of its
+    traffic through a commercial load balancer.  However, most of the *new* traffic
+    on the network is going through HAProxy.  New *clients* get HAProxy installed
+    on them - the servers run health checks locally that write status to ZooKeeper,
+    the clients discover what services are available by reading from ZooKeeper and
+    configure HAProxy; they then connect to HAProxy on localhost to reach the servers.<br
+    /><br />HAProxy also has the advantage of better health checks for PostgreSQL
+    than our commercial load balancer, but that&#39;s an aside.
+  id: '3163603297389174052'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-12-06T16:52:50.347+01:00'
+  ref: '2119343721964858728'
+  type: comment
+- date: 18 January 2015 13:42
+  html: "I\xB4m just curious. What kind of firewalls are being used in your datacenters?\
+    \ Is it the usual pair of Cisco/Fortigate/PaloAlto/Checkpoint/wahtever devices\
+    \ or does anyone take something like pfsense?"
+  id: '7443871311565701089'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2015-01-18T13:42:16.448+01:00'
+  ref: '2119343721964858728'
+  type: comment
+- date: 06 February 2015 10:55
+  html: Typically from what I have seen:<br /><br />-ASA as internal FW, SRX for external
+    network... sometimes DMZ are protected by checkpoint or SRX.<br />-Fortigate for
+    branch or regional offices<br />-PA haven&#39;t seen in my enterprise NW experience
+    of 6 years ^_^
+  id: '5422413964140233201'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2015-02-06T10:55:42.389+01:00'
+  ref: '2119343721964858728'
+  type: comment
+count: 9
+id: '2119343721964858728'
+type: post
+url: 2014/11/so-youre-open-source-shop-really.html

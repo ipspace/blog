@@ -1,0 +1,272 @@
+comments:
+- comments:
+  - date: 07 December 2016 14:01
+    html: The only major data center switching vendor with decent MPLS support on
+      reasonably-priced switches is Juniper. Arista has no real MPLS control plane,
+      Cisco has MPLS on Nexus 7000...
+    id: '8960008061100785246'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-12-07T14:01:26.597+01:00'
+    ref: '3762837035398554554'
+    type: comment
+  - date: 07 December 2016 15:48
+    html: 'Actually also HPE 5900 supports it, and seems to be very cheap.<br /><br
+      />Also they have no license requirement for any feature that is supported on
+      the box.<br /><br />Disclaimer: I&#39;ve used many of them, but never configured
+      MPLS/VPLS. From the docs, it works and is supported.'
+    id: '4313189299303893292'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Andrea
+    profile: null
+    pub: '2016-12-07T15:48:54.717+01:00'
+    ref: '3762837035398554554'
+    type: comment
+  date: 07 December 2016 11:12
+  html: Just for completeness, if one is keen to a little more additional complexity
+    (but not that much if compared with VXLAN/EVPN) you can use VPLS/VPWS over MPLS.<br
+    />This is a fair standard and should be available on most platform, almost on
+    any vendor.<br />
+  id: '3762837035398554554'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Andrea
+  profile: null
+  pub: '2016-12-07T11:12:43.187+01:00'
+  ref: '9090669448465741670'
+  type: comment
+- comments:
+  - date: 07 December 2016 14:02
+    html: OMG, we&#39;re getting old... Haven&#39;t realized it&#39;s been THAT long.<br
+      /><br />As for L2 transport, as long as virtual switches keep pretending the
+      earth is flat (I&#39;m looking at VMware ;), we&#39;ll be asked to provide it.
+    id: '1984915150871635748'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-12-07T14:02:37.292+01:00'
+    ref: '5841848252049146222'
+    type: comment
+  date: 07 December 2016 12:40
+  html: '&quot;Our systems integrator partner expressed a view that VXLAN is still
+    very new&quot; - my personal advice, change immediately your system integrator.
+    VXLAN has been around for 4-5 years, it is not &quot;very new&quot;. Ivan wrote
+    the first post on VXLAN in August 2011 ! But I have a more philosophical question,
+    why would you need an L2 transport ? Isn&#39;t much better to build an L3-only
+    Data Center, using well known and well proven standards, and getting rid of all
+    terrible L2 stuff ? OpenContrail operating in L3-only mode is my dream, but it
+    needs a better support, unfortunately with current support it is not realistic
+    to run it in production networks !!!'
+  id: '5841848252049146222'
+  image: https://4.bp.blogspot.com/-Xp3JzL6viTc/TyWBq41ZLdI/AAAAAAAAGAE/E-CtcMH5Sqo/s32/tofonoto.jpg
+  name: Ammiraglio Tofonoto
+  profile: https://www.blogger.com/profile/04524005885569437211
+  pub: '2016-12-07T12:40:11.209+01:00'
+  ref: '9090669448465741670'
+  type: comment
+- date: 07 December 2016 15:02
+  html: More than right Ivan, but just think about how much the world without MAC
+    addresses and L2 switches would be easier (no ARP, no broadcast storms, no STP,
+    and so forth) !!! Networks would be much simpler to design and operate (but probably
+    our friends in Juniper and Cisco would not be so happy ...).
+  id: '5793139904021683769'
+  image: https://4.bp.blogspot.com/-Xp3JzL6viTc/TyWBq41ZLdI/AAAAAAAAGAE/E-CtcMH5Sqo/s32/tofonoto.jpg
+  name: Ammiraglio Tofonoto
+  profile: https://www.blogger.com/profile/04524005885569437211
+  pub: '2016-12-07T15:02:21.256+01:00'
+  ref: '9090669448465741670'
+  type: comment
+- date: 07 December 2016 15:22
+  html: HPE 5940 now too supports VXLAN/EVPN ;)
+  id: '5216018885977205688'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2016-12-07T15:22:00.130+01:00'
+  ref: '9090669448465741670'
+  type: comment
+- comments:
+  - date: 09 December 2016 21:44
+    html: I tell people that Cisco VXLAN/EVPN and ACI fabrics cost and perform virtually
+      the same. It&#39;s the same HW after all.<br /><br />VXLAN/EVPN gives you a
+      thousand manual config points, each of which can crash your network in wondrous
+      and unpredictable ways. You&#39;ll get really good at troubleshooting VXLAN/EVPN,
+      and will master things like &quot;symmetric IRB&quot; and &quot;bud nodes&quot;
+      and BGP type-2 advertisements. And, you will learn the hard way how not to engineer
+      and secure the underlay, how to not do code upgrades, what not to do with VPC,
+      etc. (Cisco highly recommends you buy Nexus Fabric Manager software to help
+      smooth over some of that complexity)<br /><br />In contrast, ACI is the &quot;easy
+      button.&quot; An optimized L2/L3 fabric for dozens or hundreds of leaf switches,
+      all centrally managed, usable as fast as you can rack and cable the leaves.
+      For L2 VLANs and L3 SVI&#39;s, ACI is goofproof. vCenter integration is easy,
+      free, and immediately useful. It&#39;s only when you get into service graphs
+      and contracts that ACI gives you enough rope to hang yourself.<br /><br />ACI
+      has a learning curve, but it&#39;s at a high level, it encourages consistency,
+      and it yields immediate value in terms of DC-wide visibility.   VXLAN/EVPN&#39;s
+      learning curve is all about the nuts-and-bolts of the forwarding technology
+      -- MAC, ARP, VNIs-to-VLAN mapping, uplink versus downlink ports, BGP RR&#39;s,
+      etc. With VXLAN/EVPN, it&#39;s easy for the undisciplined engineer to get lost,
+      lose site of the high level, and build an unsupportable monster.
+    id: '2698056489373334957'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Craig Weinhold
+    profile: https://www.blogger.com/profile/10562240567667879482
+    pub: '2016-12-09T21:44:48.335+01:00'
+    ref: '4827780952325648349'
+    type: comment
+  date: 07 December 2016 17:00
+  html: My $0.02 on ACI:<br /><br />The learning curve is no different than anything
+    else - if you haven&#39;t done EVPN, then you&#39;d have to learn that too, just
+    in ACI it can be admittedly frustrating since you&#39;re trying to figure out
+    a GUI that should be &quot;simple&quot; instead of a new &quot;complex&quot; technology.
+    (FWIW I think its a decent - not great - GUI, but I&#39;m used to it at this point)<br
+    /><br />I also think ACI is just like anything else -- there are no rails put
+    up to keep you from doing stupid shit! You can do lots of dumb things with  PBR
+    and VACLs and stupid things like that and ACI is no different. On the whole though
+    I think (especially from 1.2+) its a very solid platform that if nothing else
+    handles firmware management and fault reporting quite nicely (I think its great
+    for lots more than that, but at a minimum I think those are two nice aspects).
+  id: '4827780952325648349'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Carl
+  profile: https://comeroutewithme.com
+  pub: '2016-12-07T17:00:41.178+01:00'
+  ref: '9090669448465741670'
+  type: comment
+- comments:
+  - date: 09 December 2016 09:07
+    html: While I totally agree with your take on the subject, unfortunately many
+      engineers don&#39;t have the luxury of starting the discussion at that point,
+      and once you&#39;re faced with &quot;build us a L2 fabric&quot; decision made
+      without even involving the networking team in the process, you have to find
+      a solution that will do the least damage ;)
+    id: '838749833604917996'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-12-09T09:07:46.141+01:00'
+    ref: '4785000346078343366'
+    type: comment
+  date: 08 December 2016 16:09
+  html: Well as a Network Engineer or Architect I believe the right question should
+    be How L2 vs L3 fabric differs and what are Pros and Cons of each approach. <br
+    /><br />People have been running Layer 2 only DCs for ages, some implementations
+    were broken and others were done little cleaner.<br /><br />We should also remember
+    that sometimes even the most clean solution on paper or technically also fails
+    at some point, so there are always known unknowns and unknown unknowns :)<br /><br
+    />Last week encountered a OTV bug causing Data Centre meltdown.<br /><br />Another
+    important question would be how you migrate your current fat DC to New DC fabric
+    with minimal or no disruption.<br /><br />Here is my take around some of considerations
+    when it comes to DC fabrics and don&#39;t think mentioned VxLAN or L2 vs L3 fabric
+    any where :)<br /><br />http://deepakarora1984.blogspot.in/2016/12/data-centre-fabric-design-considerations.html<br
+    /><br />HTH...<br />Evil CCIE
+  id: '4785000346078343366'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Deepak Arora
+  profile: https://www.blogger.com/profile/06314916176190119200
+  pub: '2016-12-08T16:09:29.437+01:00'
+  ref: '9090669448465741670'
+  type: comment
+- comments:
+  - date: 11 December 2016 16:46
+    html: I did a design almost exactly like this with a customer a few months ago.
+      In the end we decided to go for VXLAN between data centers.
+    id: '4333631650582611750'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-12-11T16:46:15.673+01:00'
+    ref: '8761806827747828363'
+    type: comment
+  - date: 11 December 2016 19:22
+    html: Thanks for the quick response Ivan! What is the advantage of using VXLAN
+      vs LACP between DCs in that scenario?
+    id: '4012327572744076116'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Dennis
+    profile: null
+    pub: '2016-12-11T19:22:16.542+01:00'
+    ref: '8761806827747828363'
+    type: comment
+  - date: 11 December 2016 20:15
+    html: You don&#39;t pretend two boxes are a single device (and thus are less likely
+      to hit &quot;interesting&quot; bugs).
+    id: '2925104782945772435'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-12-11T20:15:43.466+01:00'
+    ref: '8761806827747828363'
+    type: comment
+  date: 11 December 2016 13:16
+  html: As Ivan wrote MLAG seems dated, however what is the opinion for a very small
+    deployment?<br />I&#39;m talking about 4 meshed core switches (10g/40g), 2 per
+    DC with private redundant fiber between DCs.<br />ESX hosts will be directly connected
+    and there will be a few L2 only switches for physical hosts. Those connections
+    should be redundant towards both of the core switches per DC.<br /><br />As this
+    is based on Juniper gear what would be the advantage of using VXLAN + EVPN vs.
+    MC-LAG? I think for using BGP there is an extra license required and it seems
+    a little more complicated to setup and operate than going with MC-LAG between
+    the two core switches in each DC. Also note there is no NSX license available
+    so an overlay would have to be terminated on the core switches.
+  id: '8761806827747828363'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dennis
+  profile: null
+  pub: '2016-12-11T13:16:50.524+01:00'
+  ref: '9090669448465741670'
+  type: comment
+- comments:
+  - date: 14 December 2016 15:43
+    html: Hi Enrique,<br /><br />Thanks for the comment. I&#39;m positive there are
+      tons of niche environments with special requirements (yours is obviously one
+      of them); I&#39;m just continuously upset that we get &quot;need large L2 domains&quot;
+      by default because someone didn&#39;t even consider the impact of what they
+      want to have.<br /><br />What you&#39;re proposing definitely makes sense in
+      your particular environment, but I don&#39;t expect it to be implemented anytime
+      soon (not sure whether you could do it yourself using Switch Light OS as the
+      baseline). It might be better to work with a more traditional Linux-based switch
+      and control the forwarding rules (MAC / TCAM tables) from your own userspace
+      agent.
+    id: '1647918213488473415'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-12-14T15:43:34.846+01:00'
+    ref: '1455377292938335838'
+    type: comment
+  - date: 14 December 2016 18:01
+    html: That&#39;s a nice idea, depending on its response time it could be feasible.
+      We will explore it, thanks!
+    id: '7312455514624719667'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Enrique Vallejo
+    profile: http://personales.unican.es/vallejoe/
+    pub: '2016-12-14T18:01:03.444+01:00'
+    ref: '1455377292938335838'
+    type: comment
+  date: 14 December 2016 11:53
+  html: 'As part of a research project we studied the use of Ethernet in large HPC
+    systems. In addition to the typical VM mobility, we found a couple of requirements
+    for large L2 domains in such environments: transport protocols that don&#39;t
+    run on top of IP (such as RoCEv1 or Open-MX) and service announcement mechanisms
+    using L2 broadcast (again, such as Open-MX). I guess you would label them as &quot;wrongly
+    designed stacks&quot;, but the thing is that they are used.<br /><br />In our
+    system we considered low-diameter topologies to reduce power consumption, requiring
+    per-packet non-minimal adaptive routing. This is not supported by any of the four
+    &quot;commodity&quot; alternatives that you detail, so we proposed an extension
+    to OpenFlow switches to be able to react in micro-second time (as you argue in
+    other post, apart from being dead, OpenFlow does not react quickly). If you have
+    any interest, we have a more detailed discussion <a href="http://personales.unican.es/vallejoe/Publications/Benito%20-%20HiPC&#39;15%20-%20On%20the%20Use%20of%20Commodity%20Ethernet%20Technology%20in%20Exascale%20HPC%20Systems.pdf"
+    rel="nofollow">in the paper</a>. <br />'
+  id: '1455377292938335838'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Enrique Vallejo
+  profile: http://personales.unican.es/vallejoe/
+  pub: '2016-12-14T11:53:43.471+01:00'
+  ref: '9090669448465741670'
+  type: comment
+count: 18
+id: '9090669448465741670'
+type: post
+url: 2016/12/q-building-layer-2-data-center-fabric.html

@@ -1,0 +1,290 @@
+comments:
+- comments:
+  - date: 22 May 2018 12:50
+    html: Agree. To be as cool as FANG is really motivating.<br /><br />But I have
+      more concrete example - lets imagine you&#39;ve recently built your perfect
+      shiny L3-only IP fabric, and you used EBGP as the only routing protocol because
+      of the number of factors:<br />- size of the fabric<br />- expected number of
+      client prefixes<br />- routing on the host (FRR guys would be happy)<br />-
+      fashion, coolnes, etc<br />No problems with that? Does anybody in 2018 could
+      say that you introducing unnecessary complexity and should use OSPF+IBGP?<br
+      /><br />But now you have some very important project that need L2-connectivity
+      via your fabric. It needs this NOW, because it&#39;s already behind deadline.<br
+      />What could you do? Argue that this is not right, that your shiny fabric cannot
+      do that?<br /><br />And now think about complexity of introducing EVPN in your
+      already running fabric for this two design choises (EBGP+EBGP or IBGP+EBGP).
+    id: '3163821808711777881'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Alex
+    profile: https://www.blogger.com/profile/00644778105219383913
+    pub: '2018-05-22T12:50:15.094+02:00'
+    ref: '7196207905476491597'
+    type: comment
+  - date: 22 May 2018 14:58
+    html: The answer to that is simple. We don&#39;t allow applications with layer
+      2 requirement. If an application has a strict layer 2 requirement then it&#39;s
+      probably the wrong application.
+    id: '5495861595535862471'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2018-05-22T14:58:09.267+02:00'
+    ref: '7196207905476491597'
+    type: comment
+  - date: 22 May 2018 16:53
+    html: '@Alex: Your scenario might make sense if you use virtual router as IBGP
+      RR, but not if you run IBGP with the spines on top of EBGP with the spines (which
+      is what every single Junos example thrown at me does). <br /><br />Please don&#39;t
+      try to tell me it&#39;s less risky to add convoluted IBGP-over-EBGP setup than
+      to enable another address family on EBGP. I had higher opinion of Junos software
+      quality.'
+    id: '6209085569894232969'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-05-22T16:53:59.706+02:00'
+    ref: '7196207905476491597'
+    type: comment
+  - date: 22 May 2018 19:49
+    html: '@Anonymous: Try to tell this your CxO after they spend so much money on
+      your shiny new fabric<br /><br />@Ivan: They tend to grossly oversimplify things
+      in whitepapers for sake of simplicity/volume/number of devices/etc.<br />Of
+      course there is no reason to use spines as the RR - the most crucial point of
+      IBGP+EBGP design is to separate overlay from underlay (to not bother spines
+      with customer routes).<br />RRs SHOULD (if not MUST) be placed on border leafs
+      or on separate virtual routers.<br />Spines could be as dumb as possible in
+      this design.<br /><br />For introducing EVPN in your fabric with this design
+      you just need to configure new separate BGP session to RR, not affecting production
+      traffic, not affecting spines and all other leafs that not need EVPN.<br />If
+      you need to add another address family to existing EBGP session - devices at
+      least need to tear down and reestablish it after negotiating new capabilities.'
+    id: '4189514583387529356'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Alex
+    profile: https://www.blogger.com/profile/00644778105219383913
+    pub: '2018-05-22T19:49:58.648+02:00'
+    ref: '7196207905476491597'
+    type: comment
+  date: 22 May 2018 09:34
+  html: For me the Junos configuration is very intuitive. The main reason why we use
+    EBGP in the underlay is because we want to be as cool as FANG.
+  id: '7196207905476491597'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-05-22T09:34:43.513+02:00'
+  ref: '8602572452284619844'
+  type: comment
+- comments:
+  - date: 22 May 2018 17:02
+    html: I haven&#39;t figured out what the actual Junos limitation is yet, but there
+      must be a reason they&#39;re so adamant about using IBGP for EVPN.
+    id: '5355007791166645662'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-05-22T17:02:17.172+02:00'
+    ref: '551943441555636928'
+    type: comment
+  - date: 22 May 2018 20:08
+    html: This is exactly the cornerstone of our discussion.<br />Let me repeat once
+      again - JunOS support ALL of the aforementioned options:<br />- iBGP overlay
+      + IGP underlay<br />- eBGP on interface addresses (2 AFI/SAFI for each session)<br
+      />- iBGP overlay + eBGP underlay<br />- eBGP overlay (between loopbacks) + eBGP
+      underlay<br /><br />The iBGP overlay + eBGP underlay design is recommended,
+      but NOT required.<br /><br />They promote this design for number of reasons:<br
+      />- this is most scalable solution<br />- this design provides clear and logical
+      separation of overlay/underlay (at least it looks so in configuration)<br />-
+      you can use any device you like for the spine role - it is not participating
+      in EVPN at all<br />- they can simply do this complex BGP stuff because this
+      is JunOS :)
+    id: '6252829582931488084'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Alex
+    profile: https://www.blogger.com/profile/00644778105219383913
+    pub: '2018-05-22T20:08:12.668+02:00'
+    ref: '551943441555636928'
+    type: comment
+  date: 22 May 2018 12:45
+  html: "Just to confirm, this is all because Junos doesn\u2019t allow you to run\
+    \ EBGP underlay with EBGP overlay (because automatic route targets break), or\
+    \ did I miss something?"
+  id: '551943441555636928'
+  image: https://lh3.googleusercontent.com/-1wmPWQBp0I8/AAAAAAAAAAI/AAAAAAAAAq4/PLoopZhhRXY/s32-c/photo.jpg
+  name: Anthony M
+  profile: https://www.blogger.com/profile/07435790160863517891
+  pub: '2018-05-22T12:45:03.686+02:00'
+  ref: '8602572452284619844'
+  type: comment
+- comments:
+  - date: 22 May 2018 15:10
+    html: Do you want to say that Ivan is wrong with his assumptions? Well that would
+      be a majesty insult.
+    id: '663350234614418814'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2018-05-22T15:10:43.488+02:00'
+    ref: '2953848200345567968'
+    type: comment
+  - date: 22 May 2018 16:56
+    html: Everyone frequenting this blog has to deal with anonymous douchebags lately.
+      Having a technical discussion with people who have the guts to attach their
+      names to their comments is refreshing compared to that drivel.
+    id: '3769629726680800158'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-05-22T16:56:25.476+02:00'
+    ref: '2953848200345567968'
+    type: comment
+  - date: 22 May 2018 17:00
+    html: '@Alex:<br /><br />&quot;And I can&#39;t understand why you keep telling
+      that EBGP-only cons are acceptable, but IBGP cons are not.&quot; &lt;&lt; Please
+      go and reread what I&#39;m saying. IBGP+IGP is perfectly fine. EBGP-only is
+      fine. IBGP-over-EBGP is stretching things too far (in my opinion) and there&#39;s
+      absolutely no technical reason to do it (apart from potential vendor-specific
+      implementation challenges).<br /><br />&quot;Should average enterprise engineer
+      bother about all that? Of course not - they simply use OSPF+IBGP, and this is
+      perfect choice.&quot; &lt;&lt; then maybe you should consider that the top 0.1%
+      don&#39;t need (and probably don&#39;t read) my blog posts.'
+    id: '2950015754057049926'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-05-22T17:00:52.880+02:00'
+    ref: '2953848200345567968'
+    type: comment
+  - date: 22 May 2018 20:13
+    html: '&quot;and there&#39;s absolutely no technical reason to do it&quot;  &lt;&lt;
+      of course there is not, if you plan to use spines as the RRs. But this is just
+      bad implementation of good design.<br />If you use separate RRs and don&#39;t
+      bother spines with customer routes - then you might see the target point of
+      all that complexity.'
+    id: '4603037310162634041'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Alex
+    profile: https://www.blogger.com/profile/00644778105219383913
+    pub: '2018-05-22T20:13:22.073+02:00'
+    ref: '2953848200345567968'
+    type: comment
+  date: 22 May 2018 12:50
+  html: I&#39;m sorry, but it seems that Krzysztof didn&#39;t bother to check his
+    example config in the lab.<br />no-prepend-global-as knob is not necessary here.
+    Here&#39;s why:<br />&quot;1. If the route is received from an internal BGP (IBGP)
+    peer, the AS path includes the local AS number prepended before the global AS
+    number.<br />2. The local AS number is used instead of the global AS number if
+    the route is an external route, such as a static route or an interior gateway
+    protocol (IGP) route that is imported into BGP.&quot;<br />https://www.juniper.net/documentation/en_US/junos/topics/concept/bgp-local-as-introduction.html<br
+    />What routes Leaf switch need to advertise over EBGP session? Only local routes
+    - loopback and direct attached interfaces.<br />Therefore see item 2 above.<br
+    />So, half of the &quot;complexity&quot; (=strange words, that average enterprise
+    engineer is not understand) of this config is already gone.<br /><br />As regards
+    the complexity of the internal implementation of all this stuff - why do you think
+    that this is more complex than RT rewrite on every hop for every EVPN route in
+    EBGP-only auto-RT case? And why does this internal BGP process complexity worries
+    average network engineer?<br /><br />Is JunOS cannot do other design options?
+    Of course it can.<br />&quot;Currently you cannot use different AS numbers for
+    leaf switches with Junos if you want to use automatic route targets.&quot; - this
+    is not exactly true. If you don&#39;t configure any AS number under routing-options
+    stanza, and use local-as for both BGP groups - auto-RT works, just like magic
+    (without any RT rewriting, it just doesn&#39;t include AS number in autogenerated
+    RT).<br />Trick question - what happens under the curtains of BGP process in this
+    case? I think only JunOS developers could say. Does it matter to me - not really,
+    if it works fine.<br /><br />Every design has its pros and cons. And I can&#39;t
+    understand why you keep telling that EBGP-only cons are acceptable, but IBGP cons
+    are not. (Because FRR can&#39;t do IBGP design yet? - I hope this is not the primary
+    reason :) )<br /><br />Should average enterprise engineer bother about all that?
+    Of course not - they simply use OSPF+IBGP, and this is perfect choice.<br />But
+    if you should use EBGP in underlay (for any reason, see my reply above for more
+    details), then you definitely should consider both options and weigh pros and
+    cons of each one.
+  id: '2953848200345567968'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Alex
+  profile: https://www.blogger.com/profile/00644778105219383913
+  pub: '2018-05-22T12:50:31.928+02:00'
+  ref: '8602572452284619844'
+  type: comment
+- date: 22 May 2018 16:08
+  html: 'We have an evpn-vxlan fabric with auto RT, ebgp underlay/ibgp overlay and
+    it is working just fine.  We chose ebgp for the underlay due to concerns with
+    scaling to beyond 100 racks with 2 leafs per rack.  <br /><br />Juniper Professional
+    Services designed and implemented it.  Juniper PS designed it as a unique ASN
+    per leaf and unique  ASN per spine as well.  Working just fine without using the
+    &#39;no-prepend-global-as&#39; knob.<br /><br /><br />leaf:  <br /><br />/* route
+    for out of band mgmt out em0 interface */<br />set routing-options static route
+    0.0.0.0/0 next-hop 10.225.50.1  <br />set routing-options static route 0.0.0.0/0
+    no-readvertise<br />set routing-options router-id 10.228.0.73<br />set routing-options
+    autonomous-system 65200<br />set routing-options forwarding-table export PL-LOAD-BALANCE<br
+    />set protocols bgp log-updown<br />set protocols bgp graceful-restart<br />set
+    protocols bgp group UNDERLAY-IPFABRIC type external<br />set protocols bgp group
+    UNDERLAY-IPFABRIC mtu-discovery<br />set protocols bgp group UNDERLAY-IPFABRIC
+    import PL-IPFABRIC-IN<br />set protocols bgp group UNDERLAY-IPFABRIC export PL-IPFABRIC-OUT<br
+    />set protocols bgp group UNDERLAY-IPFABRIC local-as 65305<br />set protocols
+    bgp group UNDERLAY-IPFABRIC bfd-liveness-detection minimum-interval 350<br />set
+    protocols bgp group UNDERLAY-IPFABRIC bfd-liveness-detection multiplier 3<br />set
+    protocols bgp group UNDERLAY-IPFABRIC bfd-liveness-detection session-mode single-hop<br
+    />set protocols bgp group UNDERLAY-IPFABRIC multipath multiple-as<br />set protocols
+    bgp group UNDERLAY-IPFABRIC neighbor 10.228.2.8 peer-as 65201  # &lt;-- spine1<br
+    />set protocols bgp group UNDERLAY-IPFABRIC neighbor 10.228.3.8 peer-as 65202  #
+    &lt;-- spine2<br />set protocols bgp group OVERLAY-EVPN type internal<br />set
+    protocols bgp group OVERLAY-EVPN local-address 10.228.0.73<br />set protocols
+    bgp group OVERLAY-EVPN family evpn signaling<br />set protocols bgp group OVERLAY-EVPN
+    local-as 65200<br />set protocols bgp group OVERLAY-EVPN multipath<br />set protocols
+    bgp group OVERLAY-EVPN neighbor 10.228.0.65  # &lt;-- spine1 lo0.0 acting as a
+    RR<br />set protocols bgp group OVERLAY-EVPN neighbor 10.228.0.66  # &lt;-- spine2
+    lo0.0 acting as a RR<br />set policy-options community COMM_ESI members target:65200:9999<br
+    />set switch-options vtep-source-interface lo0.0<br />set switch-options route-distinguisher
+    10.228.0.73:1<br />set switch-options vrf-import PL-EVPN-IN<br />set switch-options
+    vrf-target target:65200:9999<br />set switch-options vrf-target auto<br /><br
+    /><br />set policy-options policy-statement PL-EVPN-IN term COMMON-ESI from community
+    COMM_ESI<br />set policy-options policy-statement PL-EVPN-IN term COMMON-ESI then
+    accept<br />set policy-options policy-statement PL-IPFABRIC-IN term LOOPBACKS
+    from route-filter 10.228.0.0/24 prefix-length-range /32-/32<br />set policy-options
+    policy-statement PL-IPFABRIC-IN term LOOPBACKS then accept<br />set policy-options
+    policy-statement PL-IPFABRIC-IN term REJECT then reject<br />set policy-options
+    policy-statement PL-IPFABRIC-OUT term LOOPBACKS from route-filter 10.228.0.0/24
+    prefix-length-range /32-/32<br />set policy-options policy-statement PL-IPFABRIC-OUT
+    term LOOPBACKS then accept<br />set policy-options policy-statement PL-IPFABRIC-OUT
+    term REJECT then reject<br />'
+  id: '7817663003322954361'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-05-22T16:08:31.297+02:00'
+  ref: '8602572452284619844'
+  type: comment
+- date: 22 May 2018 17:22
+  html: Who cares about Juniper (Junos) with their 1% market share? I don&#39;t.
+  id: '5300062871935639741'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-05-22T17:22:08.867+02:00'
+  ref: '8602572452284619844'
+  type: comment
+- comments:
+  - date: 22 May 2018 19:05
+    html: Trolling comments (like the you replied to) are rarely enlightened ;)
+    id: '6337876499137858429'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-05-22T19:05:35.684+02:00'
+    ref: '5271544053778500401'
+    type: comment
+  date: 22 May 2018 18:59
+  html: said Barnes &amp; Noble about Amazon, said Blockbuster about Netflix, etc.  In
+    the network space, in 2018, this is not a very enlightened comment.
+  id: '5271544053778500401'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-05-22T18:59:56.212+02:00'
+  ref: '8602572452284619844'
+  type: comment
+count: 17
+id: '8602572452284619844'
+type: post
+url: 2018/05/dissecting-ibgpebgp-junos-configuration.html

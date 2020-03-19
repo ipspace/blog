@@ -1,0 +1,60 @@
+comments:
+- date: 24 August 2014 16:38
+  html: 'Hi Thanks for the post. I have your script file(ichange.tcl) on my TFTP server.
+    I am trying to download the file on flash using copy &quot;tftp://tftp_ip_address/ifchange.tcl
+    run &quot; command from my router, however it doesnt seem to get copy.Giving below
+    error, I am not sure if I am doing anything wrong, please help.<br />Accessing
+    tftp://192.168.2.6/ifchange.tcl...<br />Loading ifchange.tcl from 192.168.2.6
+    (via FastEthernet0/0): !<br />[OK - 1658 bytes]<br /><br />proc usage {} { puts
+    &quot;Syntax: tclsh ifchange.tcl interface \[on|off|change|flap\     ^]&quot;;}<br
+    /><br />% Invalid input detected at &#39;^&#39; marker.<br /><br />proc doConfig
+    { mode cmd } {<br />     ^<br />% Invalid input detected at &#39;^&#39; marker.<br
+    /><br />  if { [ catch { ios_config $mode $cmd } errmsg ] } { error &quot;IOS
+    configuration $   ^mode / $cmd failed&quot;; }<br /><br />% Invalid input detected
+    at &#39;^&#39; marker.<br /><br />}<br />^<br />% Invalid input detected at &#39;^&#39;
+    marker.<br /><br />proc getState { ifnum } {<br />     ^<br />% Invalid input
+    detected at &#39;^&#39; marker.<br /><br />  if { [ catch { set ifstate [exec
+    &quot;show interface $ifnum&quot;] } iferror ] } {<br />   ^<br />% Invalid input
+    detected at &#39;^&#39; marker.<br /><br />    error &quot;No such interface:
+    $ifnum&quot;;<br />     ^<br />% Invalid input detected at &#39;^&#39; marker.<br
+    /><br />  }<br />  ^<br />% Invalid input detected at &#39;^&#39; marker.<br /><br
+    />  set result [expr [ string first {administratively down} $ifstate  ] &lt; 0]<br
+    />    ^<br />% Invalid input detected at &#39;^&#39; marker.<br /><br />  return
+    $result ;<br />    ^<br />% Invalid input detected at &#39;^&#39; marker.<br /><br
+    />}<br />^<br />% Invalid input detected at &#39;^&#39; marker.<br /><br />proc
+    changeState { ifnum } {<br />      ^<br />% Invalid input detected at &#39;^&#39;
+    marker.<br /><br />  puts &quot;changing state of $ifnum&quot; ;<br />   ^<br
+    />% Invalid input detected at &#39;^&#39; marker.<br /><br />  if { [getState
+    $ifnum] } {<br />   ^<br />% Invalid input detected at &#39;^&#39; marker.<br
+    /><br />    puts &quot;shut down interface $ifnum&quot; ;<br />     ^<br />% Invalid
+    input detected at &#39;^&#39; marker.<br /><br />    doConfig &quot;interface
+    $ifnum&quot; &quot;shutdown&quot;; } else {<br />      ^<br />% Invalid input
+    detected at &#39;^&#39; marker.<br /><br />    puts &quot;enable interface $ifnum&quot;
+    ;<br />     ^<br />% Invalid input detected at &#39;^&#39; marker.<br /><br />    doConfig
+    &quot;interface $ifnum&quot; &quot;no shutdown&quot;; }<br />      ^<br />% Invalid
+    input detected at &#39;^&#39; marker.<br /><br />}<br />^.<br />.<br />.<br />.<br
+    />.<br />.<br /><br /><br />  } errmsg ] } { puts stderr $errmsg; }<br />  ^<br
+    />% Invalid input detected at &#39;^&#39; marker.<br /><br />1658 bytes copied
+    in 4.220 secs (393 bytes/sec)<br />R2#<br />*Mar  1 00:08:12.967: %PARSER-4-BADCFG:
+    Unexpected end of configuration file.<br />'
+  id: '4309972571774028510'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-08-24T16:38:30.070+02:00'
+  ref: '1862510498998782797'
+  type: comment
+- date: 24 August 2014 16:43
+  html: my bad!!! what was i thinking...al good now Ivan.. ignore my previous comment.<br
+    />copy tftp://192.168.2.6/ifchange.tcl flash:<br />cheers :)
+  id: '4409096235756035949'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-08-24T16:43:48.438+02:00'
+  ref: '1862510498998782797'
+  type: comment
+count: 2
+id: '1862510498998782797'
+type: post
+url: 2007/05/use-tcl-script-to-change-interface.html

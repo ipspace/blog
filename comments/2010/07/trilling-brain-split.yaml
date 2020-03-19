@@ -1,0 +1,82 @@
+comments:
+- date: 08 July 2010 17:16
+  html: I&#39;d be interested to hear your thoughts on the proposal that LISP be used
+    to help enable virtual machine mobility across traditional layer-3 boundaries.
+  id: '823551986458200268'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: JS
+  profile: null
+  pub: '2010-07-08T17:16:14.000+02:00'
+  ref: '487567689349238924'
+  type: comment
+- date: 08 July 2010 17:34
+  html: TRILL really is routing at layer 2. Using a well established routing protocol,
+    ISIS. If switches had the horse power to run TRILL 20 years ago, people (like
+    me) might not despise network designs that require layer 2 loops.<br /><br />That
+    being said, it is way too new to interest me. I&#39;ll let other people find the
+    bugs. I&#39;ll stick with routing as my go-to way to go :)
+  id: '8322382261996342209'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Peter John Hill
+  profile: null
+  pub: '2010-07-08T17:34:16.000+02:00'
+  ref: '487567689349238924'
+  type: comment
+- date: 08 July 2010 17:45
+  html: TRILL is bridging across a routed infrastructure. It&#39;s not (conceptually)
+    much different from VPLS or OTV. In the end, IS-IS is used only to build the inter-rbridges
+    infrastructure and flooding-like mechanism is used to discover MAC addresses.<br
+    /><br />Now, if they would advertise MAC addresses as TLVs in IS-IS, and stop
+    flooding the unknowns, that would be routing. Today, it&#39;s not. ESADI is a
+    step in the right direction, but they couldn&#39;t make it authoritative, because
+    the whole thing is still ... guess what, bridging.
+  id: '8355183105791060966'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-07-08T17:45:40.000+02:00'
+  ref: '487567689349238924'
+  type: comment
+- date: 08 July 2010 17:48
+  html: 'You don&#39;t need LISP for VM mobility across L3 infrastructure. You can
+    easily do that with LAM, probably also with DHCP forwarding ... assuming the #
+    of VMs does not exceed your TCAM limits.<br /><br />LISP is useful when you need
+    to shift the DC ingress point for a particular IP address to a different site
+    when the VM is moved.'
+  id: '7558638901115595872'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2010-07-08T17:48:12.000+02:00'
+  ref: '487567689349238924'
+  type: comment
+- date: 11 July 2010 01:33
+  html: 'Speaking of bridging and routing here, how is briding different from routing?
+    Take SRB for example: is it more routing or bridging? Of course, calling bridging
+    a &quot;transparent&quot; bridging makes things more clear, but it would be nice
+    to have a better characteristic.<br /><br />To me, the essential property is that
+    bridged domain being treated as a single link with all nodes directly attached
+    (physically, or virtually like in TRILL/OTV). Essentially all endpoints are unaware
+    of the undelying domain structure and assume they can reach any other endpoint
+    directly by referring to its ID.<br /><br />Next problem is that traditional routing
+    protocols base their scalability on routing information aggregation, which requires
+    hierarchical structures. Bridging assumes flat structure with no aggregation and
+    hence is you leak endpoint identifiers into IGP/BGP you end up with unscalable/unstable
+    system. Of course you may handle thousands of MAC addresses more or less reliable
+    with ISIS, but asymptotically this &quot;edge&quot; design simply wont work. <br
+    /><br />This problem could be alleviated by changing the IGP/BGP-based endpoint
+    information distribution to a technology that can deal with mobile and flat endpoint
+    labels. There is a number of approaches here, similar to some protocols found
+    in MANETs. I&#39;m saying &quot;some&quot; since the area of MANET routing is
+    huge and easily encompasses a few tens of protocols and their variations.'
+  id: '7727311889713615653'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Petr Lapukhov
+  profile: null
+  pub: '2010-07-11T01:33:28.000+02:00'
+  ref: '487567689349238924'
+  type: comment
+count: 5
+id: '487567689349238924'
+type: post
+url: 2010/07/trilling-brain-split.html

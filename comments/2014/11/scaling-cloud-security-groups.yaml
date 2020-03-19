@@ -1,0 +1,62 @@
+comments:
+- date: 12 November 2014 19:06
+  html: We are using this on our vBlock infrastructure today. We provisioned a few,
+    large VLANs and then within the VMWare suite of tools, we built a number of security
+    groups. Some are for protected tiers (PII, PCI, Database), some are for self-contained
+    apps with few outside dependencies. The network (within the distributed virtual
+    switch network) is relatively simple now, and controls are done at the security
+    group layer. It greatly simplifies provisioning.<br /><br />For tenants, we still
+    provision a separate VLAN with an edge gateway, and let the tenant provision their
+    own security groups.<br /><br />There have been some challenges. If the VLAN is
+    flat, and IP addresses are allocated first-come, first-served, you wind up with
+    databases and middleware in non-contiguous IP space. That is fine, but for firewalls
+    &quot;outside&quot; of the PAAS stack, they have no way to create an &quot;all
+    databases&quot; rule based on a subnet... they now have to put the individual
+    host IPs into the rule. A minor challenge. They are looking into IP Pooling and
+    other options to allow certain server categories to pull from a range within the
+    /20, but these methods are not quite there yet.<br /><br />Overall, it has worked
+    well for us.
+  id: '636192179447730435'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: autarch01
+  profile: https://www.blogger.com/profile/01335898315678692950
+  pub: '2014-11-12T19:06:01.595+01:00'
+  ref: '8263638405876172898'
+  type: comment
+- date: 12 November 2014 19:32
+  html: Or you could use the VID/VNID as the group ID... :-)
+  id: '2786181850632177068'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Wes Felter
+  profile: https://www.blogger.com/profile/01395217775195260835
+  pub: '2014-11-12T19:32:01.425+01:00'
+  ref: '8263638405876172898'
+  type: comment
+- date: 17 November 2014 20:43
+  html: Apache CloudStack uses iptables in conjunction with ipsets to achieve this
+    scalability. ipset is a fantastic package. We have real-life uses with tens of
+    thousands of ips in these sets and the lookup speed is still good enough
+  id: '5558306479032323523'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-11-17T20:43:04.729+01:00'
+  ref: '8263638405876172898'
+  type: comment
+- date: 18 November 2014 08:05
+  html: Thank you! I learn something new every time you chime in.<br /><br />In the
+    iptables case you were fortunate enough to be able to change the matching algorithm
+    keeping the complexity down to O(n.log(m)). Sometimes you&#39;re bound by the
+    hardware limitations (no way to implement ipset in TCAM) or information transfer
+    protocol (no reasonably simple support for ipset-like construct in OpenFlow).
+  id: '6350448181112719689'
+  image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2014-11-18T08:05:31.661+01:00'
+  ref: '8263638405876172898'
+  type: comment
+count: 4
+id: '8263638405876172898'
+type: post
+url: 2014/11/scaling-cloud-security-groups.html

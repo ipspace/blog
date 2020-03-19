@@ -1,0 +1,198 @@
+comments:
+- comments:
+  - date: 31 December 2013 11:29
+    html: Hi Michal - Let me know how you achieved this. I am looking for similar
+      solution. Please share how you are able to achieve the load balancing across
+      the different service provider.
+    id: '3998298787673193306'
+    image: https://lh5.googleusercontent.com/-i83iugAf8Cg/AAAAAAAAAAI/AAAAAAAADPw/V-mJlceBc48/s32-c/photo.jpg
+    name: rajeev srikant
+    profile: https://www.blogger.com/profile/02508480154886953212
+    pub: '2013-12-31T11:29:19.101+01:00'
+    ref: '8009682929799228030'
+    type: comment
+  - date: 21 July 2015 18:30
+    html: Hi Michal and Rajeev,<br /><br />can you please explain how to achieve load
+      sharing. i am using the same kind of network. but we are using both the links
+      as &quot; Primary - secondary&quot; . Please help us to use both the links efficiently
+      to get better throughput<br />
+    id: '851557968664991445'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: kamesh
+    profile: null
+    pub: '2015-07-21T18:30:10.564+02:00'
+    ref: '8009682929799228030'
+    type: comment
+  date: 11 April 2013 12:51
+  html: I&#39;m facing similar problem but I&#39;m still not sure if I want to load-balance
+    across the different providers because it will inevitably led to antisymmetric
+    routing. There can be significant differences in latency (I can see up to 100ms
+    difference between continents), jitter,... Anyone has experience what can be impact
+    of this asymmetry to VoIP, Video, SQL, or any other sensitive traffic?
+  id: '8009682929799228030'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Michal Nehasil
+  profile: https://www.blogger.com/profile/00114319744878591828
+  pub: '2013-04-11T12:51:36.603+02:00'
+  ref: '8475544502438419176'
+  type: comment
+- comments:
+  - date: 11 April 2013 17:04
+    html: '&quot;Best external&quot; would speed up the convergence @ RR (because
+      the alternate path would already be available), but even if you configure &quot;additional
+      paths&quot; the RR would not advertise the backup path (advertised by one of
+      the edge routers) to its clients, because the backup path would be significantly
+      different from the best one (or the edge router would not prefer the iBGP path
+      and you wouldn&#39;t need the best external).<br /><br />Hmm ... maybe I should
+      do a short video explaining these concepts ;)'
+    id: '6171457397556996446'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2013-04-11T17:04:32.913+02:00'
+    ref: '1371175631218008977'
+    type: comment
+  - date: 11 April 2013 20:03
+    html: Actually, i was referring solely to the AddPath feature and not to this
+      or any particular scenario ;) just meant to note that AddPath and &quot;best
+      external&quot; are usually tightly coupled - and they truly are!<br /><br />sorry
+      if the context of my comment wasn&#39;t clear
+    id: '5948978660105550590'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Ofer
+    profile: null
+    pub: '2013-04-11T20:03:12.458+02:00'
+    ref: '1371175631218008977'
+    type: comment
+  - date: 12 April 2013 08:52
+    html: Humm, depend on how you have configured your MPLS cloud. If you use the
+      same RD, you have to tweak the RR to let it advertise more than one path. However,
+      if you are using uniq RD and melting the routes with RT import/export, the RR
+      will advertise all routes and not only the best ones. I that case advertise
+      best-external will work.<br /><br />Moreover, you may achieve load-blancing
+      on the Regional Office providing a back to back link between the CE and using
+      multipath eibgp in a VRF lite context on the VRRP/HSRP master CE.
+    id: '4907256617005113051'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2013-04-12T08:52:30.269+02:00'
+    ref: '1371175631218008977'
+    type: comment
+  - date: 12 April 2013 09:23
+    html: The RD trick works great in MPLS/VPN environments (and yes, best external
+      would definitely be propagated to all PE routers in that scenario), but not
+      in pure IP forwarding or IP-in-global-table ones.<br /><br />Also, for EIBGP
+      multipath you need MPLS forwarding toward IBGP next hop and MPLS label attached
+      to the IBGP route (that&#39;s the only way to prevent forwarding loops), so
+      I don&#39;t think VRF lite context is enough; you&#39;d probably need full-blown
+      MPLS/VPN.
+    id: '3391051364437796721'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2013-04-12T09:23:07.308+02:00'
+    ref: '1371175631218008977'
+    type: comment
+  date: 11 April 2013 15:30
+  html: 'regarding the last bullet, one comment if i may. In order to have a path
+    diversity in the RR in the first place you would usually need something like &quot;best
+    external&quot; on the regional office peering routers '
+  id: '1371175631218008977'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ofer
+  profile: null
+  pub: '2013-04-11T15:30:29.903+02:00'
+  ref: '8475544502438419176'
+  type: comment
+- date: 11 April 2013 16:18
+  html: assuming the requirement to use both paths is to increase the available bandwidth
+    between the ROBO &amp; HQ / DC locations this poses a challenge in the event of
+    the loss of one of the paths as you would immediately loose ~ 50% of your capacity
+    which could adversely impact up on users / applications (though QoS may reduce
+    this for key functions).<br /><br />A potential alternate may be to use Traffic
+    Engineering to move certain traffic patterns to the second provider such as backups,
+    bulk transfers, email, internet access, etc. <br /><br />additionally depending
+    on the mpls carriers service offering the use of scavenger class for this traffic
+    in the event of a link failure as part of a QoS policy may provide a more robust
+    if admittedly more complex solution
+  id: '7603080761223256171'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Conor F
+  profile: https://www.blogger.com/profile/00644047219121501105
+  pub: '2013-04-11T16:18:32.516+02:00'
+  ref: '8475544502438419176'
+  type: comment
+- comments:
+  - date: 11 April 2013 18:51
+    html: http://blog.ioshints.info/2010/12/where-would-you-need-gre.html ;)<br /><br
+      />Also read http://www.cs.washington.edu/education/courses/csep521/07wi/prj/matthew.pdf
+      for &quot;more&quot; details.<br />
+    id: '4378975515129320285'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2013-04-11T18:51:16.954+02:00'
+    ref: '6926178498478774869'
+    type: comment
+  - date: 11 April 2013 20:21
+    html: I&#39;ve seen the first link - where do you think I got the idea but from
+      this blog (although we started running things that way at my previous $dayjob
+      circa 2008; I have the feeling it was an earlier post that I intellectually
+      pirated)? :)  Next I&#39;ll start suggesting he run IPSLA/EEM from the spokes
+      over those same tunnels...<br /><br />I&#39;ve not seen the second (although
+      I have seen the first of his referenced papers), but I like very much a default
+      position of assuming all L3VPN products are essentially Byzantine, if you care
+      enough about your packet delivery.<br />
+    id: '611873652562062545'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: kwenzel
+    profile: null
+    pub: '2013-04-11T20:21:49.961+02:00'
+    ref: '6926178498478774869'
+    type: comment
+  date: 11 April 2013 17:39
+  html: 'Another way to solve the AS-path issue: run a dual DMVPN mesh (one over each
+    carrier), run BGP over the tunnels (and if he desires, stop running BGP with the
+    carrier, leaving nothing but the transit links in the carrier&#39;s VPN table).  Then
+    he also really gets to reap the benefits of using two carriers, since he&#39;ll
+    stop relying on the carriers&#39; ability to withdraw prefixes when they should
+    (and he&#39;ll control his own fate wrt choosing which network is blackhole-free
+    at any given time). :)<br /><br />(or if he&#39;s using a platform with multi-hop
+    BFD, use that along with multi-hop BGP from spoke to hub, advertise prefixes to
+    carriers with no-export.  Either way, solve the AS-path problem and actually gain
+    the resilience you thought you were buying with two carriers, in return for some
+    possibly-annoying complexity)'
+  id: '6926178498478774869'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: kwenzel
+  profile: null
+  pub: '2013-04-11T17:39:32.990+02:00'
+  ref: '8475544502438419176'
+  type: comment
+- date: 12 April 2013 00:08
+  html: Sounds like a job best suited for Performance Routing (aka Optimized Edge
+    Routing).  Can also solve some of Michal&#39;s concerns around jitter and latency
+    by keeping traffic balanced based on destination prefix and by monitoring for
+    deterioration in latency conditions while also aiming to keep utilization roughly
+    equivalent between the two links.
+  id: '5985471461201343319'
+  image: https://3.bp.blogspot.com/_vFvkOhgNfus/SbqlgcWNqiI/AAAAAAAAD_s/LBpfCxhk6pU/S220-s32/Z6PRLo7jLr_ypPG_ut8B2rjLyln0qGxIR2H-nOq-TWC8XwpnmnRSVrj2iIxap62Y.jpeg
+  name: Mao
+  profile: https://www.blogger.com/profile/08907668209537904346
+  pub: '2013-04-12T00:08:24.174+02:00'
+  ref: '8475544502438419176'
+  type: comment
+- date: 12 April 2013 01:00
+  html: How about using something like FatPipe?
+  id: '6307352428535806343'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Jason Edelman (@jedelman8)
+  profile: http://jedelman.com
+  pub: '2013-04-12T01:00:03.606+02:00'
+  ref: '8475544502438419176'
+  type: comment
+count: 14
+id: '8475544502438419176'
+type: post
+url: 2013/04/load-balancing-across-multiple-mplsvpn.html

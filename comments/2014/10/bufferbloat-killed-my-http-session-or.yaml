@@ -1,0 +1,268 @@
+comments:
+- comments:
+  - date: 02 October 2014 14:17
+    html: 'Soft error cite: http://www.gont.com.ar/drafts/icmp-attacks/draft-ietf-tcpm-icmp-attacks-01.html#changingharderrors'
+    id: '8477062843161952895'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Alan Jenkins
+    profile: null
+    pub: '2014-10-02T14:17:59.158+02:00'
+    ref: '6025263184407753354'
+    type: comment
+  date: 02 October 2014 14:15
+  html: 'Agree with that parenthetical (weird).  I wonder what would happen if the
+    packet filter was sending TCP RST instead of ICMP unreach.  (-p TCP REJECT --reject-with
+    tcp-reset).<br /><br />One point that does make sense is Linux (by default) ratelimits
+    certain ICMP (including unreach) per target, to 1 per second.  Hence why the screenshot
+    doesn&#39;t show more than one ICMP for all those incoming packets.   http://linux.die.net/man/7/icmp<br
+    /><br />I didn&#39;t understand the red lines at the bottom either.  Doesn&#39;t
+    the ICMP quote the TCP/IP headers, get passed to the transport layer, and terminate
+    the connection immediately?  .  Hmm, it&#39;s claimed that at least Linux clients
+    treat ICMPs for established TCP connections as soft errors (retransmit opportunities),
+    to prevent DoS.  '
+  id: '6025263184407753354'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Alan Jenkins
+  profile: null
+  pub: '2014-10-02T14:15:40.785+02:00'
+  ref: '690113169835167454'
+  type: comment
+- comments:
+  - date: 02 October 2014 14:58
+    html: '... and who could potentially reorder the packets that the server obviously
+      sent in sequence (otherwise there would be many more reorders)? Packet Gnomes?'
+    id: '5617524953630048629'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-10-02T14:58:47.504+02:00'
+    ref: '2820836435978769044'
+    type: comment
+  - date: 03 October 2014 01:31
+    html: '...or Data Demons, or Packet Pixies. ...Seriously though, that made me
+      laugh pretty hard.'
+    id: '6505597423604238543'
+    image: https://lh4.googleusercontent.com/-Pz3-z3B9wYo/AAAAAAAAAAI/AAAAAAAAAAA/6h45op5plx0/s32-c/photo.jpg
+    name: Peter Slow
+    profile: https://www.blogger.com/profile/12780532753626148232
+    pub: '2014-10-03T01:31:19.172+02:00'
+    ref: '2820836435978769044'
+    type: comment
+  - date: 03 October 2014 11:24
+    html: I also thought that TCP segment reordering is a job of the Transport layer,
+      which is a layer on the client and server, and what in the middle are not aware
+      of.
+    id: '5305730910975407711'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-10-03T11:24:35.219+02:00'
+    ref: '2820836435978769044'
+    type: comment
+  - date: 03 October 2014 14:09
+    html: Different packets in the same session are not guaranteed to take the same
+      path through the internet.<br /><br />Due to various path and link load-balancing
+      methods, different packets can take a different path, and some might be queued
+      differently along the path, or the path might have a different latency -- resulting
+      in unpredictable ordering.<br /><br />It is still TCP&#39;s job to produce a
+      reliable stream from this.<br /><br />And if Apache sent all the data, the client
+      should get all the data, before they process the closing of the TCP stream....<br
+      />
+    id: '5747894503829075058'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Draco
+    profile: null
+    pub: '2014-10-03T14:09:07.253+02:00'
+    ref: '2820836435978769044'
+    type: comment
+  - date: 03 October 2014 20:47
+    html: Yes, that&#39;s why SP only guarantee IP connectivity and it&#39;s not aware
+      of the top session
+    id: '8344431680793934495'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-10-03T20:47:51.722+02:00'
+    ref: '2820836435978769044'
+    type: comment
+  - date: 05 October 2014 12:31
+    html: '@Ivan : end system&#39;s TCP stack ? <br /><br />Unless you have very high-speed
+      TCP connections (sensibly more than 100Mbps/TCP connection) out-of-order packets
+      should have no impact. At very high speeds, you may start seeing some performance
+      decrease.<br /><br />..... and then the security guys came with fancy ideas
+      (badly) implemented in fancy firewalls .....'
+    id: '8953042787488891853'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: R.-Adrian F.
+    profile: https://www.blogger.com/profile/11418671261451939355
+    pub: '2014-10-05T12:31:40.484+02:00'
+    ref: '2820836435978769044'
+    type: comment
+  - date: 05 October 2014 17:08
+    html: Well, there is definitely something weird going on, more in a follow-up
+      post. As for impact of out-of-order packets, where did you get the 100 Mbps+
+      number?
+    id: '6411718787190391514'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-10-05T17:08:56.150+02:00'
+    ref: '2820836435978769044'
+    type: comment
+  - date: 05 October 2014 17:50
+    html: I have to recognize that 100Mbps is quite random. On a LAN/MAN (ms-level
+      latency), that limit is definitely higher. It all depends on &quot;how badly
+      out-of order&quot; they are.
+    id: '1397574343128958669'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: R.-Adrian F.
+    profile: https://www.blogger.com/profile/11418671261451939355
+    pub: '2014-10-05T17:50:19.771+02:00'
+    ref: '2820836435978769044'
+    type: comment
+  date: 02 October 2014 14:57
+  html: 'Why do you say that out of order packets are SP&#39;s issue? SP only provides
+    IP connectivity and does not care about top sessions '
+  id: '2820836435978769044'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-10-02T14:57:01.722+02:00'
+  ref: '690113169835167454'
+  type: comment
+- comments:
+  - date: 02 October 2014 21:18
+    html: Apache 2.2 (yeah, I know). No indication of weird behavior in the server
+      logs, and unfortunately I cannot run strace because the problem appears very
+      rarely and intermittently.
+    id: '6483435243739499286'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-10-02T21:18:21.771+02:00'
+    ref: '2154118860097474929'
+    type: comment
+  date: 02 October 2014 19:22
+  html: It looks as a http server bug. What http server do you have?<br />Did you
+    check the http-server logs? Also you can run strace -p  to see on system calls
+    arguments and return values. Possible it shows you something interesting.<br />
+  id: '2154118860097474929'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Pavel Shirshov
+  profile: https://www.blogger.com/profile/10936865197048836868
+  pub: '2014-10-02T19:22:08.724+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 02 October 2014 20:28
+  html: If bufferbloat on the web server, implementing bql + sch_fq + pacing would
+    help<br /><br />http://lwn.net/Articles/564825/<br /><br />Implementing htb +
+    fq_codel on your home router would help more.<br /><br />http://snapon.lab.bufferbloat.net/~cero2/jimreisert/results.html<br
+    />
+  id: '5966413771327665579'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Dave Taht
+  profile: https://www.blogger.com/profile/16115281578739979183
+  pub: '2014-10-02T20:28:08.494+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 03 October 2014 11:19
+  html: Could be traversing a FWSM in the SP infrastructure...<br /><br />https://supportforums.cisco.com/document/48551/single-tcp-flow-performance-firewall-services-module-fwsm#TCP_Sequence_Number_Randomization_and_SACK<br
+    />
+  id: '1360106713280161851'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-10-03T11:19:15.647+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 03 October 2014 21:02
+  html: Are you sure the ICMP unreachable came from your box?  What does the TTL look
+    like on the ICMP unreachable versus the other packets from your server?
+  id: '1929501591110140020'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Oliver
+  profile: http://blog.garraux.net
+  pub: '2014-10-03T21:02:30.251+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 03 October 2014 21:08
+  html: Wow. Thanks a million! I learn something new ever day ;)
+  id: '5159336934764976997'
+  image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2014-10-03T21:08:56.256+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 05 October 2014 20:25
+  html: 'another option to locate the source of the ICMP unreachable (in case its
+    over a wan link ) is to see the original packet encapsulated in the ICMP and calculate
+    the RTT of that packet  based on the delay from the original packet<br />This
+    way you can understand where in the path the the the ICMP unreachable came from '
+  id: '7621400726962116511'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Nitzan Tzelniker
+  profile: https://www.blogger.com/profile/16795482308125483743
+  pub: '2014-10-05T20:25:03.206+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 06 October 2014 05:44
+  html: 'Good analysis<br />Agreed; a transparent proxy might have done this, after
+    buffering the response on a slow connection it might have received close from
+    server which might have lead to this ICMP error towards client.<br />I was thinking
+    keepalive-timeout is applied to identify idle connection and triggered after completing
+    the request but apache defines it as time after the last request received!! Is
+    this a gap in our understanding or a bug? <br /><br /> '
+  id: '4247612160811754794'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Prasanna
+  profile: https://www.blogger.com/profile/16786647972887508643
+  pub: '2014-10-06T05:44:39.468+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 06 October 2014 05:57
+  html: Lot of questions than answer<br /><br />we are talking about 2 issues here
+    TCP connection close and TCP-re-order. Is there are relationship between them
+    ?. As per one of the comments on TCP_Sequence_Number_Randomization_and_SACK, how
+    does the end node behave when SACK is invalid ?<br /><br />focusing on connection
+    down issue, do not understand few things<br /><br />1) If the problem is due to
+    buffer bloat (atleast that is what it seem to indicate due to increase in http
+    keepalive timer), the ICMP packet generated by IPtables seem to reach earlier
+    than actual download packets. Does the ISP throttling based on amount of upload/download
+    ?<br /><br />2) The post has packet captures at one end, is there a packet captures
+    from other end ?
+  id: '4912337037043048323'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-10-06T05:57:14.545+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 06 October 2014 11:01
+  html: 'We had two issues lately with similar symptoms:<br />1. ngnix chunked encoding
+    + content length bug: in this case files were corrupted between backend and frontend
+    servers, but frontend happily passed broken files to clients - fixed by disabling
+    some nginx modules.<br />2. TCP offload on hypervisor-NIC received large segments
+    and ACK&#39;ed them on behalf of a VM, but VM&#39;s stack was out of buffers and
+    never received this data - patially fixed with server-side shaping.'
+  id: '5908159807924731791'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-10-06T11:01:45.067+02:00'
+  ref: '690113169835167454'
+  type: comment
+- date: 13 October 2014 20:31
+  html: Tcp offload on network card might do a lot of weird things, that is not possible
+    to capture by wireshark, but SPAN.
+  id: '5165089798388711103'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-10-13T20:31:07.974+02:00'
+  ref: '690113169835167454'
+  type: comment
+count: 22
+id: '690113169835167454'
+type: post
+url: 2014/10/bufferbloat-killed-my-http-session-or.html

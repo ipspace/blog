@@ -1,0 +1,100 @@
+comments:
+- comments:
+  - date: 23 June 2013 07:47
+    html: Good one. Totally missed this aspect. Thank you!<br /><br />Oh, and do I
+      have to mention that this problem will go away with IPv6 ;)
+    id: '8610840472787841457'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2013-06-23T07:47:36.845+02:00'
+    ref: '3710790741178927515'
+    type: comment
+  - date: 23 July 2013 19:34
+    html: I love the idea of distributed L3 switching and the complete convergence
+      of L2 and L3 domains. Short of the single caveat that Justin points out, VARP
+      seems to deliver functionality very similar to QFabric. In addition to the address
+      space required of the real addresses, it just seems to increase the complexity
+      of the implementation. If only ICMP could be sourced from the VARP address,
+      then perhaps the real addresses would be unnecessary.
+    id: '7970615856175193180'
+    image: https://lh3.googleusercontent.com/-plzV94-Y7NA/AAAAAAAAAAI/AAAAAAAACFc/JEmOPMG2Cag/s32-c/photo.jpg
+    name: Dennis Olvany
+    profile: https://www.blogger.com/profile/06913023963950222205
+    pub: '2013-07-23T19:34:11.842+02:00'
+    ref: '3710790741178927515'
+    type: comment
+  date: 21 June 2013 14:36
+  html: only issue I see (if you can even call it that) would be the address space
+    pollution needed by all the ToR switches.<br /><br />Careful planning would be
+    needed to ensure that the first/last 10-20 addresses of any subnet are reserved
+    for the &#39;real&#39; ip addresses used by the ToR switches.<br /><br />I wonder
+    if this could be modified somehow to let you simply do<br /><br />    ip virtual-router
+    address 10.10.20.1/24<br /><br />and not have to individually address each ToR
+    switch.<br /><br />Obviously the switch would lose the ability to source packets
+    from that interface, but I&#39;m not sure what else would break.
+  id: '3710790741178927515'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Justin A
+  profile: https://www.blogger.com/profile/07567730572096907480
+  pub: '2013-06-21T14:36:10.577+02:00'
+  ref: '9157262149864540446'
+  type: comment
+- comments:
+  - date: 22 May 2014 18:14
+    html: I agree with Anonymous, I have the issue where VIP gateways don&#39;t respond
+      but pass traffic, and with OSPF plus MLAG see issues where routing + varp don&#39;t
+      work correctly.
+    id: '1927619754999295788'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-05-22T18:14:58.730+02:00'
+    ref: '2065063386244371441'
+    type: comment
+  date: 13 March 2014 13:20
+  html: Just wondering how much VAR you implemented in real production. I have seen
+    some strange things, VIP&#39;s not responding, routing going crazy. I moved the
+    configuration back to VRRP....
+  id: '2065063386244371441'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-03-13T13:20:27.550+01:00'
+  ref: '9157262149864540446'
+  type: comment
+- comments:
+  - date: 14 July 2018 04:48
+    html: 'That is correct, SW2 will never know that the link on SW1 has failed. But
+      if you don&#39;t want flooding to happen, worst case for 30 sec (default GARP
+      time), you can tighten the GARP timer setting, say to 10 sec. But that has the
+      tradeoff of wasting CPU cycles of 3X of that default GARP timer for the nodes
+      that are processing the GARP frames.   '
+    id: '5981241141777083866'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2018-07-14T04:48:32.400+02:00'
+    ref: '893892318829383279'
+    type: comment
+  date: 17 July 2014 14:45
+  html: Let&#39;s assume that the virtual router has two switches SW1 and SW2 with
+    VARP configured. SW3 is connected to both SW1 and SW2 and currently learned the
+    virtual MAC on SW1&#39;s port. Now, if the link between SW1 and SW3 is down, SW3
+    won&#39;t know where the virtual MAC is. It will flood the packets to all links
+    until the next GARP request. SW2 has no way to know that a link on SW1 failed
+    and therefore cannot trigger a GARP request. Right?<br /><br />Unless VARP only
+    works in the context of MC-LAG. In this case, when SW1 detects the downlink, it
+    generates GARP requests that will be flooded to SW2 then back to SW3 which will
+    now use SW2&#39;s port for the virtual MAC.
+  id: '893892318829383279'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Vincent Bernat
+  profile: https://www.blogger.com/profile/00620043019707946789
+  pub: '2014-07-17T14:45:40.360+02:00'
+  ref: '9157262149864540446'
+  type: comment
+count: 7
+id: '9157262149864540446'
+type: post
+url: 2013/06/arista-eos-virtual-arp-varp-behind.html

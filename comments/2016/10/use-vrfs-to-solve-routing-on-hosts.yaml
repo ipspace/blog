@@ -1,0 +1,54 @@
+comments:
+- date: 03 October 2016 12:44
+  html: Actually you could do that without VRFs too. Just make an OSPF stub area for
+    customer services with strict filtering on ABRs. <br /><br />You can&#39;t filter
+    router/network LSAs in one area, but you can filter the translation from router/network
+    LSA to a summary LSA on ABR before sending them to another area.<br />
+  id: '2483867108218290197'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2016-10-03T12:44:33.675+02:00'
+  ref: '1999336736685152555'
+  type: comment
+- date: 03 October 2016 14:38
+  html: It seems Mainframes are more common than I once thought. Having to deal with
+    the same situation myself, we moved away from OSPF to a much simpler advertised-static-routes
+    solution. Simplicity tends to be good for everyone!<br /><br />We realized that
+    the Mainframe &quot;internal&quot; network only needed to advertise about 20 routes
+    - which could be summarized into even fewer routes, and new routes barely need
+    to be added even once a year. I worked with the Mainframe team to setup static
+    routes instead of using OSPF, and advertised the few static routes via OSPF/redistribution
+    myself for routes which needed reachability. I&#39;d take static route over OSPF-with-Mainframe
+    any day! :)<br /><br />Redundancy is often cited as reason for using dynamic routing
+    (OSPF or RIP), however, we used HSRP VIPs for network level redundancy, which
+    was tested successfully. <br /><br />(I don&#39;t know why, but, I was told that
+    many Mainframe &quot;internal&quot; routes don&#39;t actually need reachability
+    outside of Mainframe. They just tend to get advertised due to some poor best practices
+    mentioned in the IBM guides. This further allowed us to control exactly what routes
+    were advertised potentially leading to better security posture.)
+  id: '6477933684782261736'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Salman Naqvi
+  profile: https://www.blogger.com/profile/11529916018516958539
+  pub: '2016-10-03T14:38:39.052+02:00'
+  ref: '1999336736685152555'
+  type: comment
+- date: 03 October 2016 16:59
+  html: I often do routing to &quot;customers&quot; with a separate OSPF process and
+    IOS distribute-list command, which filters OSPF to RIB/FIB.<br /><br />In IOS
+    &quot;redistribute&quot; starts from the RIB (not from the source protocol), so
+    this is enough for not accepting rogue prefixes and not distributing them as well.<br
+    /><br />Of course we are still prone to DoS by memory consumption, and separate
+    OSPF process is definitely not scalable on some older platforms.<br />
+  id: '7301385858293796068'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Michele Bergonzoni
+  profile: https://www.blogger.com/profile/16111534966079333136
+  pub: '2016-10-03T16:59:46.239+02:00'
+  ref: '1999336736685152555'
+  type: comment
+count: 3
+id: '1999336736685152555'
+type: post
+url: 2016/10/use-vrfs-to-solve-routing-on-hosts.html

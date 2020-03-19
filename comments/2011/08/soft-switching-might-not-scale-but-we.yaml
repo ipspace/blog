@@ -1,0 +1,97 @@
+comments:
+- date: 23 August 2011 06:10
+  html: 'Re: Soft Switching Fails at Scale<br /><br />The biggest IaaS clouds in existence
+    all use soft switching (AWS, Rackspace, etc.)<br /><br />Just Say&#39;n'
+  id: '4746264453737791040'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brad Hedlund
+  profile: null
+  pub: '2011-08-23T06:10:36.858+02:00'
+  ref: '1531866014980594224'
+  type: comment
+- date: 23 August 2011 21:03
+  html: Not Really
+  id: '2975328102259132640'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Zee
+  profile: null
+  pub: '2011-08-23T21:03:24.495+02:00'
+  ref: '1531866014980594224'
+  type: comment
+- date: 24 August 2011 18:40
+  html: OK. Name one IaaS public cloud that is using 802.1Qbh, Qbg, based technology
+    for VM networking.
+  id: '2952223731088202271'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Brad Hedlund
+  profile: null
+  pub: '2011-08-24T18:40:54.272+02:00'
+  ref: '1531866014980594224'
+  type: comment
+- date: 24 August 2011 21:24
+  html: How does soft-switching solve these problems?
+  id: '4000708221011680692'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Derick Winkworth
+  profile: null
+  pub: '2011-08-24T21:24:09.529+02:00'
+  ref: '1531866014980594224'
+  type: comment
+- date: 25 August 2011 08:55
+  html: "You need hardware abstraction if you want to implement portable/movable VMs.\
+    \ All the new architectures proposed by networking vendors (802.1Qbg/Qbh/VM-FEX)\
+    \ conveniently ignore that fact.<br /><br />Having implemented hardware abstraction,\
+    \ it doesn\u2019t cost much to add minimal L2 forwarding functionality (which\
+    \ is the part usually called \u201Csoft switching\u201D). More complex soft switching\
+    \ methods (like MAC-over-IP) will be more CPU-expensive, but it\u2019s still the\
+    \ hardware abstraction that consumes most of the CPU resources."
+  id: '3921854468931039696'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-25T08:55:01.850+02:00'
+  ref: '1531866014980594224'
+  type: comment
+- date: 27 August 2011 22:27
+  html: 'One thing that I&#39;d agree with that the status quo btw. hypervisor vendors
+    (OK let&#39;s put it plainly -- VMware) and networking vendors seems to get worse
+    (from the being &quot;shaky&quot; to begin with).<br /><br /> Vendor bias aside  (I
+    do belong to one) the reluctance of accepting one/several standards  -- e.g SR-IOV
+    VEPA/802.1Qbg or VN-tag/E-tag/802.1Qbh/802.1BR etc (lost track of that...)  depending
+    which house colors one currently wears / what cooks ones noodle -- seems to push
+    us back into the vSwitch &amp; dvSwitch nightmares.  So, the choice I see is btw
+    letting a hypvervisor dictates a de-facto modus operandi or continue working on
+    interop standards.<br /><br />I do agree on the need of HW abstraction, but AFAICT
+    current SR-IOV approach does adress that in the adapter (at least in part i.e.
+    the logical division of a physical device into several logical). <br /><br />So,
+    my question is: What part of current approaches do you consider &quot;square peg
+    / round hole&quot;  and what would be the disadvantages of continuing the SR-IOV
+    path ? Or the thought of having e.g. Brocade Trident+ (or similar capable ASICs)
+    as powering (future) &quot;physical interface&quot; adaptors ?'
+  id: '2657377775817890142'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Florian Otel
+  profile: null
+  pub: '2011-08-27T22:27:16.752+02:00'
+  ref: '1531866014980594224'
+  type: comment
+- date: 28 August 2011 20:44
+  html: You are correct, SR-IOV solves a different problem (logical division of physical
+    device), not HW abstraction.<br /><br />If all vendors could agree on using the
+    same HW interface (for example, AMD LANCE or Intel&#39;s 82545), then we would
+    have a fighting change. Not likely though.<br /><br />And finally there&#39;s
+    the cleanup/initialization phase before/after vMotion event. Somewhat hard to
+    do with a generic NIC driver.<br /><br />Of course you could develop new drivers
+    and try to push them into production environments, but I don&#39;t think anyone
+    (but the NIC/switch vendors) is interested.
+  id: '9001810424424431301'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2011-08-28T20:44:07.517+02:00'
+  ref: '1531866014980594224'
+  type: comment
+count: 7
+id: '1531866014980594224'
+type: post
+url: 2011/08/soft-switching-might-not-scale-but-we.html

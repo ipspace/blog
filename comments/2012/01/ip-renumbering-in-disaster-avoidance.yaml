@@ -1,0 +1,412 @@
+comments:
+- date: 20 January 2012 17:30
+  html: Hey Ivan,<br /><br />I&#39;m working on a large scheme like this now.<br /><br
+    />Moving the subnet without re-numbering as you suggest seems natural, but makes
+    DR *testing* really complicated, so my customer is on the &quot;change IP numbers&quot;
+    track.<br /><br />Here are some complications that DNS can&#39;t solve:<br />-
+    multiple security zones in the data center? DNS doesn&#39;t help the firewalls
+    much.<br />- reconfiguring the VM&#39;s IP is easy (VMware SRM does this), but
+    reconfiguring application listen directives (think apache config file) is not
+    easy. lots of custom per-application scripting work is required.<br /><br />Vendors
+    like to claim their offerings are turn-key DR. Customers who believe it will be
+    disappointed :-)
+  id: '4751157658372944942'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: chris marget
+  profile: null
+  pub: '2012-01-20T17:30:06.465+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 21 January 2012 20:15
+  html: Simply had to check Apache documentation:<br /><br />* Virtual hosts can use
+    DNS FQDN<br />* Listen directives seem to use only IP addresses, not interface
+    names or DNS FQDN.<br /><br />No comment :( ... and I thought Apache web server
+    was a shining example of good programming.
+  id: '45149810258634354'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-21T20:15:12.409+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 22 January 2012 03:44
+  html: Don&#39;t blame Apache for utilizing the OS socket library and having the
+    same limitations. Besides, if you bind to * and run one IP per VM it should be
+    a non-issue.
+  id: '6505845777868636730'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-01-22T03:44:05.721+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 22 January 2012 10:59
+  html: '#1 - Seems we&#39;re continuously running around in circles, eventually landing
+    at http://blog.ioshints.info/2009/08/what-went-wrong-socket-api.html<br /><br
+    />#2 - Absolutely agree.'
+  id: '4352291291032436386'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-22T10:59:51.623+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 23 January 2012 09:18
+  html: '&quot;zoning&quot; is the key term to firewalling there, you simply don&#39;t
+    create any per host rules. You can have firewalls that are aware of networks on
+    your other sites. State table handling is different box of worms.'
+  id: '4489330834445761742'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2012-01-23T09:18:26.529+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 12:37
+  html: Hi Ivan,<br /><br />In terms of the listed solutions:<br />1. DNS - customers
+    complain about the reaction time. On the other hand disaster recovery does not
+    require fast detection and a DNS refresh.<br />2. Hosts routes - harder to manage.
+    LISP will be a good choice but it is emerging technology and more time is required.<br
+    />3. Routing protocols on servers not an option at this moment but in the virtualized
+    DC it is feasible. We can have not only firewalls, load-balancers, switches but
+    also routing protocols running on the hipervisor.<br />4. Load-Balancers seem
+    to be the best option listed. The global director or simply a router with a conditional
+    route advertisement can do a prefix insertion.<br />5. NAT harder to manage and
+    consumes resources unless the stateless translation is used. NAT is better to
+    avoid not because it will not work but to leave it as the last resort solution
+    in the case of problems to IPv6 migration.<br /><br />Another options:<br />6.
+    Proxy ARP + L3 Edge. There are some security drawbacks especially if a firewall
+    is in between but it is considerable.<br />7. Fabric-Path/TRILL for IP. In this
+    option DC is fully L3 routed. There is no such standards nowadays but we could
+    create it. ;)
+  id: '690537886065903332'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-24T12:37:16.892+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 12:44
+  html: Ivan, this issue with a hard-coded IP it is not a big deal in a disaster recovery
+    data center. A bigger issue is with an active/active scenario. Even with load-balancers
+    there will be problems with asymmetric routing which increases latency (it is
+    very undesirable in mobile networks) and it is hard to manage on a firewall.
+  id: '8144793731757528423'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-24T12:44:48.193+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 17:40
+  html: '#1 (DNS): use low TTL. The &quot;only&quot; problem is that the web visitors
+    might have to restart the browser session (even though DNS pinning is not as aggressive
+    these days at is used to be).<br /><br />#2 - if you want to retain IP addresses
+    without stretching L2 subnets, host routes (or LISP) are unfortunately the only
+    way to go.<br /><br />#3 - We had routing protocols on servers 30 years ago. Come
+    on ;)<br /><br />#6 - I used to believe in Proxy ARP. No longer. Anyhow, it solves
+    only server-to-GW problem, nothing more.<br /><br />#7 - Don&#39;t even try to
+    go there. Either you solve the problem on L3, and then you&#39;re back to LISP
+    or host routes, or on L2, where you could easily use VXLAN (but we don&#39;t want
+    split subnets anyway).'
+  id: '5570644641184969017'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-24T17:40:52.896+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 17:42
+  html: I forgot how many times I&#39;ve been ranting against stretched subnets citing
+    exactly these reasons. <br /><br />BTW, I might get invited to PLNOG, in which
+    case we can continue our discussion in a more pleasant environment.
+  id: '5654329414751450724'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-24T17:42:48.414+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 18:17
+  html: Excluding some solutions flavors we are on the same page in terms of DC.<br
+    /><br />BTW, &#39;I might get invited&#39; is not a case. You must be invited.  8-)
+  id: '4073802446998835793'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-24T18:17:32.077+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 18:19
+  html: 1. DNS can be an option for active/standby DCs but it is not perceived as
+    a fast solution for active/active DCs.  <br /><br />2. The only way to go? What
+    about load-balancers? With a disaster recovery DC it is also an option. The secondary
+    LB + edge router start advertising VIP prefixes after a switchover button is pushed.
+    <br /><br />3. It is not an option not because there is no routing on servers
+    but because IPs of GWs are fixed.  <br /><br />6. The funny thing Proxy ARP is
+    shown by the Cisco BU as a part of the LISP solution in the case of IP address
+    movement. That&#39;s right that Proxy ARP solves only to-GW problem but from this
+    point there is pure L3 network with the conditional advertisements/IP SLA/PfR
+    and so on.<br /><br />7. By saying &#39;Fabric-Path/TRILL for IP&#39; I did not
+    mean the existing feature. I will rephrase it in an another way. Imagine that
+    a network of switches compose a topology based on Switch-IDs. This network behaves
+    like L3 not STP. After connecting a host/server with IP this address will be advertised
+    to other participants which require a connectivity. In such a way we could achieve
+    a full mobility of IPs which will have /128 address. Hosts do not need to use
+    GWs as all links could be point-to-point to the nearest SW.
+  id: '7558085743081355905'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-24T18:19:25.448+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 19:45
+  html: '#1 - I was talking about cold VM migration. I have stronger opinions about
+    other migration options.<br /><br />#2 - Think about it. If you have to advertise
+    VIP prefixes, you&#39;re advertising static routes (or something similar).<br
+    /><br />#3 - Server loopback IP = fixed. Server LAN IP = DHCP. OSPF over LAN interface.
+    Default route comes from next-hop router. What&#39;s wrong with this picture?<br
+    /><br />#7 - You just reinvented IP host routes carried in IS-IS (if you want
+    to stay close to TRILL). Congratulations  :-P'
+  id: '6902459383775424647'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-24T19:45:03.317+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 19:47
+  html: '#1 - I was talking about cold VM migration. I have stronger opinions about
+    other migration options. <br /> <br />#2 - Think about it. If you have to advertise
+    VIP prefixes, you&#39;re advertising host routes (or something similar). <br />
+    <br />#3 - Server loopback IP = fixed. Server LAN IP = DHCP. OSPF over LAN interface.
+    Default route comes from DHCP or OSPF. What&#39;s wrong with this picture? <br
+    /> <br />#7 - You just reinvented IP host routes carried in IS-IS (if you want
+    to stay close to TRILL). Congratulations  :-P'
+  id: '959743202632224311'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-24T19:47:34.066+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 24 January 2012 20:16
+  html: 2. Static routes are not necessary. A disaster recovery DC can have the same
+    addressing scheme as the primary one so rather connected/dynamic routes. Using
+    LBs in the active/standby scenario is easier comparing to the active/active.<br
+    /><br />3. In this scenario it is fine if only loopbacks were used.<br /><br />7.
+    There is a major difference between such a future feature and existing IS-IS.
+    The IS-IS topology is Switch-ID based not IP. It means that a switch in-between
+    does not need to know IPs. All IPs could be divided using additional segment ID
+    to allow virtualization. It doesn&#39;t have to be IS-IS. It can be BGP or another
+    protocol which will create a cloud for connected IPs. Another version would be
+    fully routed DC environment and LISP VM Mobility.
+  id: '6703832835163520148'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-24T20:16:28.002+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 25 January 2012 07:51
+  html: '#2 - Wanted to write &quot;host routes&quot;, not static (see below). Somehow
+    a deleted comment resurfaced  :(<br /><br />#7 - Now you&#39;ve reinvented MPLS/VPN  8-)
+    Although we agree it would be a good solution, I don&#39;t see it happening for
+    way too many reasons.<br /><br />http://blog.ioshints.info/2011/04/vcloud-architects-ever-heard-of-mpls.html'
+  id: '4221766014722076134'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-25T07:51:50.470+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 26 January 2012 21:37
+  html: 7. Not exactly MPLS VPN. In Fabric Path there is a conversational learning
+    and just one control protocol responsible for routing. :)
+  id: '514199392603233600'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-26T21:37:08.685+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 26 January 2012 21:50
+  html: 7. Conversational learning doesn&#39;t work @ L3 (no ARP broadcast ... but
+    I might be braindead). <br /><br />Also, in a totally masochistic design you could
+    use BGP to propagate BGP next hops   O:-)
+  id: '5945905056630501279'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-26T21:50:43.172+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 26 January 2012 23:29
+  html: 7. Upon the connectivity of an IP device to a cloud a register message would
+    be required. Then you don&#39;t need ARP over the cloud. The nearest edge device
+    could serve as a gateway. Other steps will be similar to FabPath. But c&#39;mon,
+    don&#39;t require the full description from me today. I&#39;ve just started thinking
+    it up. ;)<br /><br />I am now considering another issue with a default route in
+    such a solution. Whether to use the same mechanism as it is in 6rd or something
+    else. I will get back to you within couple of months.
+  id: '3113846159529972645'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Piotr Jablonski
+  profile: null
+  pub: '2012-01-26T23:29:03.593+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 27 January 2012 06:52
+  html: If you can change the end-device then there are all sorts of other options.
+    Unfortunately most of the time they tell you &quot;NO&quot;.<br /><br />But I
+    was truly braindead yesterday - conversation-based learning is what LISP/NHRP
+    do.
+  id: '6496095039349168976'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-01-27T06:52:25.635+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 04 February 2012 15:32
+  html: I honestly think load balancers are the best approach currently. F5 showed
+    a nice functional example during Tech Field Day 3, and it&#39;s the only moderately-convincing
+    solution I&#39;ve seen yet. But it&#39;s not optimal, with a massive trombone
+    sometimes added and added latency of the device itself.<br /><br />As for DNS,
+    I&#39;m really concerned about all the &quot;optimization&quot; that various clients
+    and NAT devices do interfering with a short TTL. And how short practically can
+    the TTL be, anyway? You don&#39;t want clients hitting your DNS server for every
+    request, after all. And DNS solutions will still break sessions in progress.<br
+    /><br />What about some kind of long-distance distributed VXLAN? Have a virtualization-aware
+    gateway in the network that maintains tunnels to the proper location. I guess
+    I just invented a load balancer!  :-D<br /><br />Finally, where can I learn more
+    about LISP? I keep hearing about it but know very little at this point.<br /><br
+    />Thanks, Ivan!
+  id: '8370862930106540722'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Stephen Foskett
+  profile: null
+  pub: '2012-02-04T15:32:47.543+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 05 February 2012 01:01
+  html: Running routing protocols on the servers is a fantastic solution; I don&#39;t
+    understand why it isn&#39;t done more often.<br /><br />  1) the IP moves elegantly
+    with the service<br />  2) if your application is well written you can now go
+    active active (anycasting)<br />  3) DR testing is also a breeze -- bring up the
+    test scenario on your live network but with the test node&#39;s route &quot;slugged&quot;
+    (huge metric) so the local test systems see the DR test environment but nobody
+    else sees it.<br /><br />And if you&#39;re deeply afraid of server guys doing
+    bad things to your routing table, you can always put all the servers into an unrouted
+    vlan and put a &quot;router&quot; VM such as one from vyatta or something similar
+    in front of that vlan and have that do the route advertisements.<br /><br />I
+    say it&#39;s time for datacenter servers to stop having static routes.
+  id: '1248842155072065572'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: chris
+  profile: null
+  pub: '2012-02-05T01:01:36.000+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 05 February 2012 10:04
+  html: 'DNS: Remember that we&#39;re discussing cold migration here, not the &quot;live
+    worldwide mobility powered by unicorn tears&quot;. It usually takes a minute or
+    more for the VM to be shut down and restarted in the other DC, and TTL values
+    in tens of seconds are not unusual.<br /><br />Long-distance VXLAN: forget it.
+    It&#39;s the wrong tool for the problem http://blog.ioshints.info/2011/09/vxlan-otv-and-lisp.html<br
+    /><br />LISP and VM mobility? Coming soon ...  8-)'
+  id: '1375429474720204902'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-02-05T10:04:21.071+01:00'
+  ref: '6923866501952687594'
+  type: comment
+- comments:
+  - date: 02 June 2012 20:48
+    html: LISP is great for cold VM mobility, you still need L2 connectivity for hot
+      VM mobility. <br /><br />LISP can help you get optimal inbound traffic after
+      VM move, but the stretched L2 subnet is stil required. Watch NFD3 presentation
+      from Victor Moreno.
+    id: '5921509606777781468'
+    image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2012-06-02T20:48:37.559+02:00'
+    ref: '8740992403227643527'
+    type: comment
+  date: 01 June 2012 15:28
+  html: LISP seems like a good solution for VM mobility, very much like LAM in concept
+    for the DC but obviously a more complicated protocol involving dynamic tunnelling.
+    However the tunneling aspect surely means that added functionality is needed in
+    the DC firewalls between security zones as they cannot yet inspect this traffic
+    before it gets to the ETR which is directly conencted to the subnet that the VM
+    is on.<br /><br />I&#39;m struggling with this part because I believe LISP would
+    solve a big problem, but we would need the firewall to have LISP intelligence
+    to see inside the LISP packet. Maybe this is coming too.
+  id: '8740992403227643527'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: chris
+  profile: null
+  pub: '2012-06-01T15:28:39.273+02:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 10 June 2018 00:20
+  html: What do you think about trying to use static routes pointing out of the interface
+    without a next-hop? A static route configured without a next-hop pointing out
+    of an ethernet interface will still cause the device to ARP for hosts. It gives
+    the benefit over a connected route in that you can still control administrative
+    distance of the static route. You can add your host subnet this way with a higher
+    Administrative Distance then redistribute the static route into BGP. You can then
+    strip the weight and set the Local Preference and do all sorts of fun things to
+    it in BGP so even a received BGP route for the same subnet will be preferred over
+    the route on the local device but you can advertise it as a backup. This would
+    allow you to prefer your primary datacenter over the backup even from backup datacenter&#39;s
+    router / firewall itself... so long as you have a better route received from BGP
+    from the primary datacenter.<br /><br />This works for the host subnet route but
+    for the gateway address for that subnet, depending on the hardware, you may be
+    able to:<br />1) Use proxy-arp for the specific gateway address only, if this
+    is supported. Some gear will let you specify the host addresses themselves you
+    want to proxy arp for. If you have equipment that can do this it is nice (some
+    equipment will not even require an IP on the interface to do this, if it does
+    require an address you could use a throw-away network and proxy-arp specifically
+    for the gateway you really want to).<br />2) If you can&#39;t do an explicit proxy-arp
+    limited to the gateway address (since I don&#39;t like ARPing for all addresses)
+    perhaps trying to add a minimal subnet size to the interface for the gateway IP
+    to live there just for ARP purposes. Some equipment can even do a /32 subnet on
+    an ethernet interface so you could only have the specific gateway as a connected
+    route with no other addresses. Other equipment may require a /31 or /30 on the
+    interface for the gateway address. It is good to limit the gateway address subnet
+    size as much as possible because it will become a connected route and the connected
+    route will always be preferred on that local device. This means you lose the ability
+    to ping the gateway address at the opposite datacenter but you really care about
+    the hosts anyway, right? The static route should still route for the hosts the
+    way you want so you can ping to the hosts.<br /><br />What do you think? Definitely
+    needs more real world testing on various gear as I suspect not all vendors handle
+    these things the same. It&#39;s also a clunky solution and requires documentation
+    for the poor guy who comes after you trying to understand the config. You know
+    what they say though, &quot;Never point out a solution without providing at least
+    one problem&quot;....or maybe that quote goes the other way around...  ;)
+  id: '7883808521124566799'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Andy
+  profile: null
+  pub: '2018-06-10T00:20:08.992+02:00'
+  ref: '6923866501952687594'
+  type: comment
+- date: 10 June 2018 04:45
+  html: Woops, I just realized I proposed a solution for full subnets moving where
+    all other suggestions are focused on individual hosts moving. I think I may have
+    missed the main point when I commented :)
+  id: '5400225490814689280'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Andy
+  profile: null
+  pub: '2018-06-10T04:45:28.726+02:00'
+  ref: '6923866501952687594'
+  type: comment
+count: 26
+id: '6923866501952687594'
+type: post
+url: 2012/01/ip-renumbering-in-disaster-avoidance.html

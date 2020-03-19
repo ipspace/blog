@@ -1,0 +1,41 @@
+comments:
+- date: 30 September 2007 18:13
+  html: Works of Vista now, Thanks.
+  id: '6924783845806913810'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-09-30T18:13:00.000+02:00'
+  ref: '7607587824828709229'
+  type: comment
+- date: 01 October 2007 18:48
+  html: Couple comments:<BR/><BR/># Whenever the Windows TCP stack receives an ICMP
+    specifying the maximum MTU, it caches the reported MTU size (makes sense).<BR/><BR/>I
+    assume it caches the *minimum* MTU from A to B - not the first one it comes along.
+    Otherwise, why do Path MTU ? :)<BR/><BR/># The cached MTU sizes eventually expire
+    (but I was not able to find any documentation on the expiration time).<BR/><BR/>That's
+    brain-dead. It probably did make sense back in the '80s or so, when for going
+    A to B there was one and only one path. Now that you can have multiple paths -
+    either being used concurrently or in case of failure - caching the MTU for ONE
+    given instance of ONE path from A to B makes little sense.<BR/><BR/>But I guess
+    that's why (I assume) every given X interval they redo the PathMTU - in case tha
+    path changed.<BR/><BR/>Obviously, it means that you have a time T0 when the PathMTU
+    is right (and said time might be very low) and a time T1 when you're sending a
+    bunch of datagrams with the incorrect size - which are to be fragmented - until
+    Windows reruns the PathMTU algorithm.<BR/><BR/>I haven't sniffed, but I'm pretty
+    sure that, to prevent dropping packets, they probably send the packets (even after
+    PathMU) with DF cleared. <BR/><BR/>Or they send them with DF set, and the 1st
+    time they get a "frag needed, but DF set" they rerun the PathMTU algorithm . .
+    . <BR/><BR/>RFC-4821 provides for some interesting reading on this whole issue
+    of PMTU (old way) and the "new and improved" suggested method ;)
+  id: '3335014251344572432'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2007-10-01T18:48:00.000+02:00'
+  ref: '7607587824828709229'
+  type: comment
+count: 2
+id: '7607587824828709229'
+type: post
+url: 2007/09/update-mturoute.html

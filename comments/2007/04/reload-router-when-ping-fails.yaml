@@ -1,0 +1,95 @@
+comments:
+- date: 20 September 2007 10:12
+  html: What about thresholds? I mean if just one ping failed my router will restarted.<BR/>That's
+    probably ip sla threshold-type consecutive but I'm unsure about this no tried
+    yet
+  id: '9080934498426797678'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Nikolay
+  profile: https://www.blogger.com/profile/12855779589016140032
+  pub: '2007-09-20T10:12:00.000+02:00'
+  ref: '5446544140287373924'
+  type: comment
+- date: 20 September 2007 10:23
+  html: Looks like "The default number of 5 averaged measurements"
+  id: '3548303113900265240'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Nikolay
+  profile: https://www.blogger.com/profile/12855779589016140032
+  pub: '2007-09-20T10:23:00.000+02:00'
+  ref: '5446544140287373924'
+  type: comment
+- date: 20 September 2007 14:32
+  html: Now I figure out you how it works. Fisrt of all you SHOULD use IP SLA schedulde
+    start-time NOW - not after.(If IP SLA not run track rtr generate down event)<BR/>And
+    after you enter command <BR/>track object-id rtr sla-id reachability<BR/>don't
+    forget configure delay down 60 otherwise you got infinitive rebooting router,
+    there no such thing like threshold in this.
+  id: '3298334113252516727'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Nikolay
+  profile: https://www.blogger.com/profile/12855779589016140032
+  pub: '2007-09-20T14:32:00.000+02:00'
+  ref: '5446544140287373924'
+  type: comment
+- date: 14 March 2008 02:06
+  html: event manager applet PingHasFailed<BR/> event track 100 state down<BR/> action
+    1.0 syslog msg "Ping has failed, reloading the router"<BR/> action 2.0 reload<BR/><BR/>I
+    don't know why my 2811 router, IOS 12.4(13r) doesn't have command for event track
+    ...<BR/>When I type event ?, then I see the set of command as follow :(application,cli,counter,interface,ioswdsysmon,none,oir,snmp,syslog,timer)<BR/><BR/>Is
+    that event track command is lacking in this IOS, or it's replaced by other ?
+  id: '2566451693573667380'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2008-03-14T02:06:00.000+01:00'
+  ref: '5446544140287373924'
+  type: comment
+- date: 14 March 2008 19:27
+  html: Cisco documentation (http://www.cisco.com/en/US/docs/ios/12_4t/12_4t2/ht_eem.html#wp1080886)
+    tells you that the event track command exists only in 12.4T images.
+  id: '6322006686903210653'
+  image: https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg
+  name: Ivan Pepelnjak
+  profile: https://www.blogger.com/profile/13457151406311272386
+  pub: '2008-03-14T19:27:00.000+01:00'
+  ref: '5446544140287373924'
+  type: comment
+- date: 01 September 2009 10:00
+  html: 'I don&#39;t want to use T images - so I do it this way<br />event manager
+    applet PingHasFailed<br />  event syslog pattern &quot;\%TRACKING-5-STATE: 100
+    rtr 100 reachability Up-&gt;Down&quot;'
+  id: '3708205742423287582'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Andrey Yuspin
+  profile: null
+  pub: '2009-09-01T10:00:41.000+02:00'
+  ref: '5446544140287373924'
+  type: comment
+- date: 05 June 2011 14:03
+  html: Ivan,<br /><br />I have done similar EEM scripts in my role. But I don&#39;t
+    reload the router, I only reload the 3G-HWIC instead and I do it after I miss
+    8x IP SLA consecutive pings at 1min intervals and default ping timeout of 5s.<br
+    /><br />I can share my config if you wish, let me know.<br /><br />Cheers,<br
+    />Joe.
+  id: '3107215658960656175'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Joe C
+  profile: null
+  pub: '2011-06-05T14:03:07.763+02:00'
+  ref: '5446544140287373924'
+  type: comment
+- date: 06 June 2013 09:01
+  html: Joe,<br /><br />do you still have that config?<br />Can you pls share it?<br
+    /><br />That would be really nice.<br /><br />Kind regards,<br />Stefan
+  id: '5861663763358116297'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Stefan T
+  profile: https://www.blogger.com/profile/11140560029543712137
+  pub: '2013-06-06T09:01:05.733+02:00'
+  ref: '5446544140287373924'
+  type: comment
+count: 8
+id: '5446544140287373924'
+type: post
+url: 2007/04/reload-router-when-ping-fails.html

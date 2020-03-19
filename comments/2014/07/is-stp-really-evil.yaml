@@ -1,0 +1,409 @@
+comments:
+- comments:
+  - date: 28 July 2014 15:57
+    html: You must be new to my blog ;) Welcome!<br /><br />See also:<br /><br />http://blog.ipspace.net/2010/07/bridges-kludge-that-shouldnt-exist.html<br
+      />http://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html<br />http://blog.ipspace.net/2010/07/bridging-and-routing-part-ii.html<br
+      /><br />... and a few others.
+    id: '8163548352876485621'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-07-28T15:57:18.267+02:00'
+    ref: '8981704119905451460'
+    type: comment
+  - date: 02 March 2016 18:31
+    html: Ivan, keep up the work. Reading the comments to your posts always makes
+      me happy.
+    id: '1235817987490058023'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2016-03-02T18:31:13.063+01:00'
+    ref: '8981704119905451460'
+    type: comment
+  date: 28 July 2014 11:29
+  html: "Technology has its legacies. Technology has a history. Technology makes history.\
+    \ It\u2019s important to understand history to understand the kludges, as you\
+    \ call them. It all began with the Yellow cable. The original, coaxial Yellow\
+    \ cable is the first medium for IEEE 802.3, Ethernet. It\u2019s a shared medium.\
+    \ Any station attached to the medium can communicate with each other. With stations\
+    \ directly attached to a single, common medium no extra device, no layer-2 bridge\
+    \ (switch) is needed for communication. Initially it was expected that each LAN\
+    \ segment would have its own router to interconnect to another LAN segment. Radia\
+    \ Perlman worked at DEC, the company that together with Intel and Xerox defined\
+    \ the 10 Mb/s DIX standard. In http://www.networkworld.com/article/2202492/lan-wan/living-legends--radia-perlman--layer-3-wizard.html\
+    \ Radia Perlman explains: \u201C\u2018Routing between links was Layer 3&#39;s\
+    \ job. When I tried to argue that we may need to forward packets from one Ethernet\
+    \ link to another, the reply was &#39;Our customers would never want to do that&#39;.\
+    \ Their perception was Layer 3 was just unnecessary bytes on the wire.\u2019 But\
+    \ it didn&#39;t take long for that shortsightedness to become obvious. Customers\
+    \ did, after all, want to talk from one Ethernet to another.\u201D<br />So Radia\
+    \ Perlman invented STP constrained by several requirements. For a station it should\
+    \ not matter if it communicates to a station on the same LAN segment or via a\
+    \ bridge to a station on another LAN segment. Since Ethernet has no TTL value,\
+    \ however, frames could loop forever on a ring. Thus, STP needs to maintain the\
+    \ illusion of a single shared medium. This is why STP builds a tree.<br />Later\
+    \ on with the introduction of twisted pairs as the wired medium, Ethernet\u2019\
+    s physical bus topology converged to a physical star topology requiring a central\
+    \ hub that would create the illusion of a shared medium. After all a hub forwards\
+    \ any incoming frames to all ports but the port a frame was received from. With\
+    \ the introduction of learning bridges (switches) Ethernet could have transformed\
+    \ into something even more powerful. However, with a huge installed basis compatibility\
+    \ becomes a key issue and revolution turns into evolution.<br />We all know that\
+    \ STP and large L2 domains have their (severe) limitations. However, without understanding\
+    \ the past it\u2019s very easy to complain about how things have developed.<br\
+    \ />One of the disadvantages of STP that you didn\u2019t mention is the waste\
+    \ of capacity. Because of the tree structure redundant paths cannot be used. Thus,\
+    \ frames might travel much farther than the physical topology would require. Shortest\
+    \ Path Bridging (SPB, 802.1aq) solves all of (R/M)STP\u2019s problems boosting\
+    \ Ethernet into another dimension. At its core SPB runs IS-IS \u2013 another protocol\
+    \ invented by Radia Perlman \u2026<br />"
+  id: '8981704119905451460'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Guido R. Hiertz
+  profile: http://www.linkedin.com/in/gigahiertz
+  pub: '2014-07-28T11:29:42.126+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- comments:
+  - date: 28 July 2014 15:10
+    html: Fail-Close like an electrical circuit. A closed circuit means it&#39;s a
+      completed one and electrons pass. An open circuit is incomplete and as such
+      electrons don&#39;t pass. Fail-Open would mean no traffic if forwarded until
+      something closes the circuit.
+    id: '6882427803236286852'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-07-28T15:10:08.945+02:00'
+    ref: '7721711690981806005'
+    type: comment
+  - date: 28 July 2014 18:09
+    html: Thanks, I now get it!
+    id: '5762215085171724129'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: John Senkiw
+    profile: null
+    pub: '2014-07-28T18:09:54.458+02:00'
+    ref: '7721711690981806005'
+    type: comment
+  date: 28 July 2014 11:42
+  html: "Ivan<br /><br />you write, STP\u2019s fundamental problem is that it\u2019\
+    s a fail-close, not a fail-open protocol.<br /><br />Should this read, STP\u2019\
+    s fundamental problem is that it\u2019s a fail-open, not a fail-close protocol? "
+  id: '7721711690981806005'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: John Senkiw
+  profile: null
+  pub: '2014-07-28T11:42:43.288+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- date: 28 July 2014 12:48
+  html: My impression is that SPB is intended to be a replacement for STP (along with
+    other things as well).  Too bad hardly anyone seems interested in implementing
+    it, or anything else new outside of the data center...
+  id: '3976434053584115863'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Frank
+  profile: null
+  pub: '2014-07-28T12:48:41.689+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- comments:
+  - date: 28 July 2014 15:57
+    html: Thank you! Fixed.
+    id: '8443486392215095657'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-07-28T15:57:38.424+02:00'
+    ref: '2771359952933920034'
+    type: comment
+  date: 28 July 2014 12:50
+  html: Ivan,<br /><br />&quot;Fail-open nature of STP isn&#39;t its only drawback...&quot;
+    should instead read &quot;Fail-closed nature of STP isn&#39;t its only drawback...&quot;.
+    It leads to confusion.
+  id: '2771359952933920034'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-07-28T12:50:55.940+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- date: 28 July 2014 15:35
+  html: Let&#39;s imagine for a second that we create a networking containing Cisco
+    devices only.<br /><br />Bridge Assurance works nice in a pure STP topology (802.1w
+    and 802.1s only, 802.1d does not support BA) since it has blocked ports by definitions
+    and these ports prohibit L2 loop creation. That&#39;s fine for a campus environment
+    (if your hardware/software supports it as well :) )<br /><br />But in a pure DC
+    environment where you deployed Nexus 5k/2k with the vPC feature, Cisco definitely
+    does not recommend to enable Bridge Assurance other than on the vPC peer link.
+    <br /><br />:)<br /><br />Nicolas<br />
+  id: '2896132102812803822'
+  image: https://lh5.googleusercontent.com/-Qc5zAOqR_-E/AAAAAAAAAAI/AAAAAAAAABw/R4EFG2PNSEc/s32-c/photo.jpg
+  name: Nicolas Michel
+  profile: https://www.blogger.com/profile/07345674420526592526
+  pub: '2014-07-28T15:35:34.719+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- comments:
+  - date: 28 July 2014 16:06
+    html: '&quot;Fail open/closed is clunky language that begets confusion&quot; -
+      OK, got the point (= marketing destroyed another perfectly good term ;). What
+      would you call STP then? Forwarding-when-confused? ;))'
+    id: '738516554290490895'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-07-28T16:06:00.926+02:00'
+    ref: '5532051174772147063'
+    type: comment
+  - date: 30 July 2014 18:23
+    html: I&#39;ve always thought of STP as controlling a flood (broadcast), and a
+      &quot;flood gate&quot; controls that. So a fail-open means the gate is open,
+      allowing floods....
+    id: '2177220663144131540'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: jerry.bonner
+    profile: https://www.blogger.com/profile/06561337352111323073
+    pub: '2014-07-30T18:23:49.373+02:00'
+    ref: '5532051174772147063'
+    type: comment
+  - date: 20 July 2017 17:08
+    html: "Ivan wrote: &quot;In the context of this blog post &quot;fail close&quot;\
+      \ means &quot;a failed/confused bridge continues to forward the traffic, and\
+      \ the bridged network will send the traffic across such bridge.&quot; You might\
+      \ have a different opinion on what &quot;open&quot; or &quot;close&quot; means,\
+      \ and it\u2019s as valid as any\u2026 but quoting Cisco\u2019s documentation\
+      \ won\u2019t make your point any more valid (it just proves that the writer\
+      \ of that document agrees with your view of what opens or closes on failure).\
+      \ I would however appreciate a pointer to a more authoritative source (although\
+      \ I doubt it exists).&quot;<br /><br />If we are networking engineers or trainee\
+      \ in networking, must remember that the main activity in a digital device is\
+      \ 0 and 5 volts, and because that, the Ivan&#39;s point of open and close is\
+      \ correct, like a elemental electronic circuit."
+    id: '7815895876013335840'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Mauricio Andres Bustamante Viveros
+    profile: https://www.blogger.com/profile/03395587678662145289
+    pub: '2017-07-20T17:08:34.270+02:00'
+    ref: '5532051174772147063'
+    type: comment
+  date: 28 July 2014 16:03
+  html: Bridging with STP sure beats bridging *without* STP! :)<br /><br />The biggest
+    problem with STP in my opinion is that it&#39;s a dangerous combination of &quot;just
+    works&quot;, &quot;difficult to diagnose&quot; and &quot;somewhat fragile&quot;,
+    making it easy to screw up in ways that are hard to understand while it&#39;s
+    broken.<br /><br />There have been some wonderfully documented cases of folks
+    who should know better pushing STP beyond its breaking point. The STP process
+    didn&#39;t stop responding, but it couldn&#39;t do its job anymore.<br /><br />No
+    mention of loopguard? It&#39;s a bit like bridge assurance (in one direction,
+    anyway), and quite a bit more commonly available.<br /><br />Fail open/closed
+    is clunky language that begets confusion. It&#39;s worse in the case of bump-in-the-wire
+    devices with bypass relays, but the confusion has already appeared here in the
+    comments.<br /><br />I tend to view the close/open question from the electrical
+    (switch) perspective, but a quick google of &quot;ethernet tap fail open&quot;
+    demonstrates that folks marketing and using network devices sometimes mean exactly
+    the opposite.
+  id: '5532051174772147063'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: chris marget
+  profile: https://www.blogger.com/profile/06646973209424821070
+  pub: '2014-07-28T16:03:14.273+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- comments:
+  - date: 30 July 2014 09:28
+    html: Did you read the other comments?
+    id: '9166384192679145067'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-07-30T09:28:50.514+02:00'
+    ref: '2190766158639000100'
+    type: comment
+  - date: 02 March 2016 18:27
+    html: The comments section of your posts are the best place to get free smiles
+      in the morning.
+    id: '8487907536331167795'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2016-03-02T18:27:33.800+01:00'
+    ref: '2190766158639000100'
+    type: comment
+  date: 29 July 2014 22:41
+  html: "&quot;STP\u2019s fundamental problem is that it\u2019s a fail-close, not\
+    \ a fail-open protocol&quot;<br /><br />I think you mean:<br /><br />STP\u2019\
+    s fundamental problem is that it\u2019s a fail-open, not a fail-closed protocol."
+  id: '2190766158639000100'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-07-29T22:41:03.505+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- comments:
+  - date: 30 July 2014 22:02
+    html: The CVD is right on the money. Routing = fail closed. STP = fail open.<br
+      /><br />If you want STP to fail close you need bridge assurance.<br /><br />It&#39;s
+      a share Ivan&#39;s posts gets mixed up.
+    id: '9003109244992985806'
+    image: https://resources.blogblog.com/img/blank.gif
+    name: Anonymous
+    profile: null
+    pub: '2014-07-30T22:02:32.906+02:00'
+    ref: '4160135589192960214'
+    type: comment
+  date: 30 July 2014 16:55
+  html: "I have used this quote from a Cisco doc in my attempts to get people to understand\
+    \ this concept. From a \u201CCisco Validated Design\u201D document entitled \u201C\
+    Data Center Design \u2013 IP Network Infrastructure\u201D (pps 35-36, October\
+    \ 8, 2009):<br /><br />\u201CTransparent bridging is the result of a long technological\
+    \ evolution that was guided by the desire to keep the property of the thick coaxial\
+    \ cable that was the base for the original Ethernet networks. Transparent means\
+    \ that the stations using the service are not aware that the traffic they are\
+    \ sending is bridged; they are not participating in the bridging effort. The technology\
+    \ is similarly transparent to the user, and a high end Ethernet switch running\
+    \ STP is still supposed to be plug-and-play, just like a coaxial cable or a repeater\
+    \ were. As a result, unlike routers, bridges have to discover whether their ports\
+    \ are connected to peer bridges or plain hosts. In particular, in the absence\
+    \ of control message reception on a port, a bridge will assume that it is connected\
+    \ to a host and will provide connectivity. Therefore, the most significant differences\
+    \ between routing and bridging with STP (spanning tree protocol) are as follows:<br\
+    \ />\u2022 A routing protocol identifies where to send packets.<br />\u2022 STP\
+    \ identifies where not to send frames.<br />The obvious consequence is that if\
+    \ a router fails to receive the appropriate updates, the parts of the network\
+    \ that were relying on this router for communication will not be able to reach\
+    \ each other. This failure tends to be local, as the communication within those\
+    \ distant network parts is not affected. If a bridge misses control information,\
+    \ it will instead open a loop. As it has been observed, this will most likely\
+    \ impact the whole bridging domain.\u201D<br /><br />I summarize this using language\
+    \ that aligns with network security discussions, in which &quot;fail closed&quot;\
+    \ is a safe failure condition vs &quot;fail open&quot;:<br /><br />&quot;To summarize\
+    \ the two major points being made in the quote from Cisco:<br />1. a routed interface\
+    \ will \u201Cfail closed\u201D with no impact on any other routed interfaces,\
+    \ while a set of transparently bridged ports defined as a single virtual LAN will\
+    \ \u201Cfail open\u201D with an impact on all network components of the VLAN<br\
+    \ />2. the scope of a routed network failure is limited to the ports connected\
+    \ to the routed interface, while the scope of a bridged VLAN failure can impact\
+    \ all networking equipment in the entire bridging domain (entire data center,\
+    \ or multiple data centers in the case of stretched VLANs)<br />"
+  id: '4160135589192960214'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: ces
+  profile: https://www.blogger.com/profile/05906562921468993164
+  pub: '2014-07-30T16:55:47.365+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- comments:
+  - date: 04 August 2014 21:48
+    html: You might have to configure a switch port to be an edge or a fabric port
+      - too much plug-and-pray is never a good thing (although you could use LLDP
+      to figure out which ports are fabric ports).<br /><br />OTOH, if you don&#39;t
+      know whether another switch or a server is connected to a port of a DC switch,
+      you might have bigger problems than STP on your hands ;)
+    id: '2334224646772381741'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-08-04T21:48:41.604+02:00'
+    ref: '5972310975881909198'
+    type: comment
+  date: 03 August 2014 07:38
+  html: I agree with Ivan almost everything in this post except how I see fail-open/close
+    part but it is okay.<br />For the implicit enablement of bpdu-guard or BA , since
+    they are opposite things, when bpdu-guard says if I see bpdu from here , I will
+    not allowed and take an action , while BA expects bidirectional hello messages
+    , for the switches where the uplink logic applies it might be enabled IMO. But
+    in the data center it may not be an easy since server and switch places may change
+    and when you enable bpdu-guard for the server implicitly, if same port would be
+    changed with switch, port Stp expectation automatically should change as BA. Is
+    this possible, maybe yes. Once switch port see the Ethernet source mac address
+    , from the vendor assigned part of MAC address , switch could act based on it.
+    You might say connected device might be belong to Cisco switch and server since
+    many vendor has switches, servers, firewalls so on in the data center , then for
+    the different product type vendor could assigned MAC addresses hierarchically
+    such as 00-00-01 is our switches , 00-00-02 is servers so on.
+  id: '5972310975881909198'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Orhan Ergun
+  profile: http://www.networkcomputing.com
+  pub: '2014-08-03T07:38:03.991+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- comments:
+  - date: 14 August 2014 17:39
+    html: So you believe someone solved the halting problem and buy only switches
+      that have proven bug-free code? Come on...<br /><br />The switch that lost its
+      mind (in my case) came from one of the large vendors, and the loss of control
+      plane was caused by a slow memory leak.
+    id: '7711035687137260019'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2014-08-14T17:39:18.063+02:00'
+    ref: '544345656587797064'
+    type: comment
+  date: 14 August 2014 17:30
+  html: "&quot;That\u2019s all nice and dandy until a bridge loses its mind, and stops\
+    \ sending BPDUs (control plane activity) while still forwarding traffic (data\
+    \ plane activity). Adjacent bridges think they have hosts plugged into the affected\
+    \ ports (this is the fail close part), and start forwarding traffic through those\
+    \ ports, resulting in a nice forwarding loop (been there, seen that).&quot;<br\
+    \ /><br />If a bridge loses its mind??<br /><br />You are in essence saying you\
+    \ need a configuration variable (such as &quot;bridge assurance&quot;) to make\
+    \ a switch stop forwarding traffic in case it, or an adjacent switch, has a buggy\
+    \ control plane implementation!<br /><br />A better rule might be, just buy well-tested\
+    \ switches.<br /><br />A correctly implemented bridge/switch must guarantee that\
+    \ it processes spanning tree with the highest level of priority, and treats send/receive\
+    \ BPDUs on the network with the highest level of priority.<br /><br />Sorry, but\
+    \ once you implement a control plane protocol in a buggy manner, all bets are\
+    \ off. It&#39;s your fault for buying a switch which does not function as specified."
+  id: '544345656587797064'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2014-08-14T17:30:04.829+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- date: 13 April 2015 09:41
+  html: Thanks GOD Cisco came with fabric path :)
+  id: '988562290069247883'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2015-04-13T09:41:28.482+02:00'
+  ref: '1114274822855099186'
+  type: comment
+- comments:
+  - date: 11 May 2016 17:58
+    html: The point is that you cannot expect the BPDUs to be flooded across a hung
+      bridge because the HW punts them to the hung CPU, so adjacent bridges cannot
+      discover the loop.
+    id: '2941527093611577498'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-05-11T17:58:26.037+02:00'
+    ref: '5920126020089091999'
+    type: comment
+  date: 11 May 2016 17:31
+  html: Hello Ivan,<br /><br />You have mentioned the comment &quot;because the forwarding
+    entry for the STP multicast address still punts packets to the CPU&quot;.<br /><br
+    />Can you elucidate a bit please?<br />If I am mistaken not a BPDU being punted
+    to CPU is still processed (though any PDU will be punted to CPU irrespective the
+    platform).<br /><br />What&#39;s the correlation you are tying to make here?<br
+    /><br />By the way, your blog is like a new Network Engineer born out of silos.<br
+    /><br />Sincerely,<br />Saeed Ansari
+  id: '5920126020089091999'
+  image: https://lh6.googleusercontent.com/-_wCNDzFBGH8/AAAAAAAAAAI/AAAAAAAABio/gS1yvwAY_u8/s32-c/photo.jpg
+  name: Saeed Ansari
+  profile: https://www.blogger.com/profile/00133800486985254508
+  pub: '2016-05-11T17:31:24.867+02:00'
+  ref: '1114274822855099186'
+  type: comment
+count: 26
+id: '1114274822855099186'
+type: post
+url: 2014/07/is-stp-really-evil.html

@@ -1,0 +1,131 @@
+
+<div class="comments post" id="comments">
+  <p class="info">
+    We migrated our blog a few days ago, and the commenting functionality is not there yet.
+    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
+  </p>
+  <h4>6 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="4256559620206206268">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/03036112849521337520" rel="nofollow">jahil</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#4256559620206206268">02 August 2008 10:07</a>
+              </span>
+            </div>
+            <p class="comment-content">I might be wrong, but you need to configure a loopback interface for each VRF. Is not it?<BR/><BR/>If a loopback interface is not a part of VRF; Is it correct we can configure that interface for VRF ospf process.</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="3788180346088881063">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#3788180346088881063">05 August 2008 10:53</a>
+              </span>
+            </div>
+            <p class="comment-content">You don't need a loopback interface for a VRF. The only reason why you'd want one is the stability of the router ID ... which, BTW, is a moot issue if you have a single site connected to the VRF :)<BR/><BR/>If the interface is not part of a VRF, it will never be used as the OSPF router ID (only interfaces within the VRF are considered when selecting the router ID), but you can manually configure any IP address as the router ID.</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2948857092594978564">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/10945983439175971647" rel="nofollow">Inevitable</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#2948857092594978564">24 April 2009 11:46</a>
+              </span>
+            </div>
+            <p class="comment-content">Hi Ivan , to get accurate statement and correct me if iam wrong , OSPF RID is selected from VRF interfaces except for Loopback which must be box unique even if its VRF interface</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="5601556528334515995">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://i72.photobucket.com/albums/i181/ixpepeln/krneki/Pipi_150x150.jpg">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#5601556528334515995">25 April 2009 08:33</a>
+              </span>
+            </div>
+            <p class="comment-content">Hi, inevitable. You've mixed two independent operations in the same sentence :)<br /><br />Step 1: The candidate interface for OSPF RID is selected from all the applicable interfaces. In the OSPF-in-VRF case, the applicable interfaces are the VRF interfaces. Loopbacks are preferred. Among interfaces with the same preference, the one with the highest IP address is used (I need to turn this into a post :).<br /><br />Step 2: the selected IP address is used as OSPF RID. The OSPF RID has to be unique among all OSPF RIDs running on the same box (even if they are in different VRFs) ... which might not be the case if two VRFs have a loopback interface with the same IP address.</p>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="5660773740045823063">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh6.googleusercontent.com/-PDyMoW9p204/AAAAAAAAAAI/AAAAAAAAAHw/pNIRm-ngN40/s32-c/photo.jpg">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/09697326451613550693" rel="nofollow">ARUN RAJ</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#5660773740045823063">24 November 2017 06:39</a>
+              </span>
+            </div>
+            <p class="comment-content">Hi, <br /><br />How many ospf process ID can be used in a single vrf Instance. </p>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="7311376798275547004">
+          <!--
+          <div class="avatar-image-container">
+            <img src="https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#7311376798275547004">24 November 2017 06:56</a>
+              </span>
+            </div>
+            <p class="comment-content">How about you set up a router and try it out?</p>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

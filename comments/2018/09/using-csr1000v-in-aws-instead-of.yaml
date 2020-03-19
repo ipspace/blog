@@ -1,0 +1,116 @@
+comments:
+- comments:
+  - date: 20 September 2018 15:44
+    html: Think about how packet forwarding works in overlay virtual networks, and
+      you&#39;ll soon figure out why transit VPC is such a Mission Impossible.<br
+      /><br />AWS is really good at not giving in to features that would endanger
+      their scalability and stability (layer-2 stuff and IP MC come to mind).
+    id: '7127617190462491008'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-09-20T15:44:25.092+02:00'
+    ref: '6858206482060559089'
+    type: comment
+  - date: 21 September 2018 01:33
+    html: I had a similar situation a few years ago for a large client moving their
+      apps into AWS and Azure. Turned into an absolute pain to manage as neither the
+      MSP or client saw the value in automation. On the bright side, we were able
+      to set up a transit VNet within Azure.<br /><br />They required IPsec to terminate
+      within the VPC/VNets but also didn&#39;t allow public IP addressing into their
+      MPLS VPN due to FUD (these were directconnect &amp; expressroute), so native
+      cloud IPSec (VPGs etc) couldn&#39;t be used. Client was Cisco based so deployed
+      CSR1000Vs on the cloud providers into the DMVPN on the WAN. <br /><br />Then
+      the client wanted to use more than one VPC/VNet and didn&#39;t want to set up
+      N number of peering links between VPCs (again, didn&#39;t like automation) or
+      separate CSRs with the security licence and big instances to do IPSec. So we
+      ended up getting sign off on a transit VPC and running a second tier DMVPN network
+      inside AWS without tunnel protection profiles. <br /><br />This is really just
+      a story of bringing old culture into the new world. Want a VPC? Sorry, that&#39;ll
+      be a new PO to the MSP to create the CSRs with an 8 week lead time, plus 2 weeks
+      design review and 2 week change management lead time.<br /><br />
+    id: '5381783739738439478'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Rich
+    profile: https://www.blogger.com/profile/07476462132209407450
+    pub: '2018-09-21T01:33:30.490+02:00'
+    ref: '6858206482060559089'
+    type: comment
+  date: 20 September 2018 09:29
+  html: Transit VPC is a challenge for anyone trying to design a hub-and-spoke topology
+    in AWS. I wouldn&#39;t be surprised to see AWS release a new type of VPC specifically
+    for this purpose..
+  id: '6858206482060559089'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-09-20T09:29:03.164+02:00'
+  ref: '1329704120054284892'
+  type: comment
+- comments:
+  - date: 20 September 2018 15:41
+    html: You don&#39;t need a knife to cut that cheese - we had chainsaws for the
+      last 100 years. Yep, makes perfect sense.
+    id: '1205069803365571640'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2018-09-20T15:41:52.883+02:00'
+    ref: '8093034063909409215'
+    type: comment
+  - date: 20 September 2018 20:49
+    html: 'Very shitting analogy. '
+    id: '6661217695493364125'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: night2769
+    profile: https://www.blogger.com/profile/01176743576655411020
+    pub: '2018-09-20T20:49:39.727+02:00'
+    ref: '8093034063909409215'
+    type: comment
+  date: 20 September 2018 14:17
+  html: So with your Ansible playbook, you actually invented something called routing
+    protocol. Why do you reinvent the wheel? We have BGP for over 20 years.
+  id: '8093034063909409215'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Anonymous
+  profile: null
+  pub: '2018-09-20T14:17:33.770+02:00'
+  ref: '1329704120054284892'
+  type: comment
+- date: 20 September 2018 20:40
+  html: Don&#39;t worry, I&#39;m sure they&#39;re working on some kind of APIC to
+    control VPCs (which will cost even more than 1000Vs but will be justified by providing
+    higher throughput). :-/
+  id: '1784963008312626612'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Wes Felter
+  profile: https://www.blogger.com/profile/01395217775195260835
+  pub: '2018-09-20T20:40:33.320+02:00'
+  ref: '1329704120054284892'
+  type: comment
+- date: 03 December 2018 12:08
+  html: Amazon has just announced <a href="https://aws.amazon.com/blogs/aws/new-use-an-aws-transit-gateway-to-simplify-your-network-architecture/"
+    rel="nofollow">Transit Gateway</a> that makes this transit VPC + CSR1kv combo
+    unnecessary for most of the cases.
+  id: '6771789961444145559'
+  image: https://4.bp.blogspot.com/-ZOXsPp2jWZM/WLFLiMZondI/AAAAAAAADJ4/Ut7WBaNvJIInOF_9feWqAIeZiw3nyuEmwCK4B/s32/en2.jpg
+  name: Andras Dosztal
+  profile: https://www.blogger.com/profile/04707560608698340062
+  pub: '2018-12-03T12:08:36.867+01:00'
+  ref: '1329704120054284892'
+  type: comment
+- date: 25 March 2019 02:08
+  html: 'No need for anything Cisco in the cloud. Use something like Aviatrix to orchestrate,
+    automate and monitor your transit and spoke VPCs. Use Trend Micro to secure your
+    instances. Cisco is far behind in cloud technology. '
+  id: '2924381542125139578'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Unknown
+  profile: https://www.blogger.com/profile/07290775548800093233
+  pub: '2019-03-25T02:08:44.586+01:00'
+  ref: '1329704120054284892'
+  type: comment
+count: 9
+id: '1329704120054284892'
+type: post
+url: 2018/09/using-csr1000v-in-aws-instead-of.html

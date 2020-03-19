@@ -1,0 +1,109 @@
+comments:
+- comments:
+  - date: 03 July 2015 12:40
+    html: There is significant issue with single forwarding VLAN.Single L2 domain.When
+      that one breaks,everything falls apart.Butterfly effect:)
+    id: '7644010247757005574'
+    image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+    name: Mitko
+    profile: https://www.blogger.com/profile/17252322269397556994
+    pub: '2015-07-03T12:40:57.986+02:00'
+    ref: '6146559033772774573'
+    type: comment
+  date: 30 June 2015 21:55
+  html: I looked at Calico from an enterprise perspective i.e. no multi-tenancy. What
+    I liked was turning the hypervisor into a router and exchanging host routes with
+    the ToR. I also liked the direct connectivity between virtual machines and physical
+    servers whether they are databases, or backup systems, etc. without a need for
+    an overlay connecting to a gateway of some sort. <br /><br />I do think scalability
+    could be limited with all the host routes being advertised into the core switching
+    environment. As you stated, summarization at the ToR, could be an answer. <br
+    /><br />You note that you have a concern with IP forwarding in Linux. Would this
+    be similar to the performance of a vxlan gateway in kernel in a hypervisor such
+    as ESX? <br /><br />All in all, I thought it was a clever solution to avoid an
+    overlay network deployment. For my enterprise though, it is not going to work
+    in the near future since we have standardized on VMware.
+  id: '6146559033772774573'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Tony S.
+  profile: null
+  pub: '2015-06-30T21:55:33.142+02:00'
+  ref: '2005266275715434058'
+  type: comment
+- date: 02 July 2015 00:03
+  html: 'I also looked at it, but without a multi-tenant control/forwarding plane
+    it&#39;s kind of a non-starter these days.   I haven&#39;t kept up but 6WIND was
+    going to contribute changes to Quagga to support VRFs through Linux network namespaces.  On
+    the Quagga side it could be represented by a different physical interface or VLAN
+    or whatever.  '
+  id: '6996900476392931337'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: john q
+  profile: https://www.blogger.com/profile/06025210075795379388
+  pub: '2015-07-02T00:03:32.712+02:00'
+  ref: '2005266275715434058'
+  type: comment
+- comments:
+  - date: 03 July 2015 06:39
+    html: As always, follow the links in the blog post for more details, including
+      packet forwarding diagrams.
+    id: '2063728484700267366'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2015-07-03T06:39:02.699+02:00'
+    ref: '3744041722155066540'
+    type: comment
+  date: 02 July 2015 20:13
+  html: Thanks for picking up this topic.<br /><br />Is Callico basically host routing
+    per tenant with some proxy ARP on the vRouter ? Would be great if a network picture
+    could be added to this article to make it clearer.<br /><br />Does Amazon VPC
+    do the same thing alongwith some type of MPLS VPN/ EVPN ?<br /><br />
+  id: '3744041722155066540'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Sanjeev
+  profile: null
+  pub: '2015-07-02T20:13:26.369+02:00'
+  ref: '2005266275715434058'
+  type: comment
+- date: 01 September 2015 15:11
+  html: 'Very interesting read.  We are actually using Calico at our Bare Metal servers
+    for our front-ended Elastic Cloud Routers we deploy.  We are a pure L3 design
+    where we do eBGP from the Calico/BIRD container on the BMS up to the LEAF, and
+    then iBGP up to the SPINE.  Route-Reflection and all the like is in place, so
+    scalability is there.  Our workloads are able to spin up fine etc..  The key for
+    us though, is we aren&#39;t a multi-tenant environment for the edge use case.  It&#39;s
+    purely for ingest.  I&#39;m really looking forward to seeing where they take Calico
+    over the years, and also if they focus solely on the container world, or lean
+    more towards OpenStack integration and beef up their Neutron integrations.   '
+  id: '7647792493088177379'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Another SysEngineer's Blog
+  profile: https://www.blogger.com/profile/17029642113730074329
+  pub: '2015-09-01T15:11:22.114+02:00'
+  ref: '2005266275715434058'
+  type: comment
+- comments:
+  - date: 20 April 2016 09:03
+    html: Focus on what you need as the transport network between the hypervisor hosts.
+    id: '981742119089045813'
+    image: https://lh3.googleusercontent.com/-ZIhwz6bLuK0/AAAAAAAAAAI/AAAAAAAAFtg/mLtCQ3p4_0E/s32-c/photo.jpg
+    name: Ivan Pepelnjak
+    profile: https://www.blogger.com/profile/13457151406311272386
+    pub: '2016-04-20T09:03:30.356+02:00'
+    ref: '3887629406647608154'
+    type: comment
+  date: 20 April 2016 00:30
+  html: I&#39;m confused on the single flat VLAN you are referring to.  It&#39;s possible
+    to build multiple subnets using Calico.
+  id: '3887629406647608154'
+  image: https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35
+  name: Unknown
+  profile: https://www.blogger.com/profile/04433412437498680888
+  pub: '2016-04-20T00:30:55.665+02:00'
+  ref: '2005266275715434058'
+  type: comment
+count: 8
+id: '2005266275715434058'
+type: post
+url: 2015/06/project-calico-is-it-any-good.html

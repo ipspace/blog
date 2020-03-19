@@ -1,0 +1,143 @@
+comments:
+- date: 20 February 2012 09:05
+  html: '&gt; A VM using 6WINDGate can still communicate through vSwitch with other
+    VMs or with the orchestration/management software while having high-speed communication
+    with other VMs using 6WINDGate.<br /><br />What about intercepting 6W to 6W communications,
+    for example, for IPS/IDS purposes?'
+  id: '424925236300220974'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Dmitri Kalintsev
+  profile: null
+  pub: '2012-02-20T09:05:42.372+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 20 February 2012 09:54
+  html: Hi!<br />Good question!<br />Actually we have all the open &amp; standard
+    APIS to integrate with whatever OSS you use for network communication troubleshooting
+    or security purposes . Meanwhile, working with some of those particular layers
+    to hairpin the logs.<br />Thanks!
+  id: '6370309303983222042'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: David Le Goff
+  profile: null
+  pub: '2012-02-20T09:54:27.281+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 20 February 2012 13:59
+  html: This would be much more interesting if the network connectivity of the other
+    VMs was being funneled through a 6WIND virtual appliance. Otherwise, this has
+    very limited usefulness.
+  id: '2075575716066754878'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Loren Gordon
+  profile: null
+  pub: '2012-02-20T13:59:11.447+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 20 February 2012 14:08
+  html: And this is exactly what we are doing... what did you understand?
+  id: '3453959836962999744'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: David Le Goff
+  profile: null
+  pub: '2012-02-20T14:08:06.192+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 20 February 2012 23:23
+  html: Interesting...<br /><br />There&#39;s another company working on similar kinds
+    of network acceleration. Linerate Systems. http://lineratesystems.com/
+  id: '979416593129507028'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Chris Marino
+  profile: null
+  pub: '2012-02-20T23:23:14.902+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 22 February 2012 13:53
+  html: I thought so based on your comment on an earlier post. But this post seems
+    to say that the 6WIND stack should be directly installed into each VM. Not that
+    it&#39;s all that clear either way, but having a very strong virtualization background,
+    I&#39;m reading into it to try to figure out the details and a good portion of
+    the wording had me leaning towards it being installed into every VM. That would
+    make it very limiting considering the dependency on physical NICs, as well as
+    how that would break VM mobility.<br /><br />Anyway, if VM traffic is being funneled
+    through a 6WIND virtual appliance of sorts, then this gets interesting. I imagine
+    such an appliance would need to run on every host, sort of like an extension of
+    the virtual switch. I&#39;m seen that setup before where each host has multiple
+    vSwiches, one with physical uplinks and the appliance, and the other with the
+    appliance (providing switching/routing capabilities) and the production VMs. <br
+    /><br />Does this setup interfere with support for features such as vMotion/live
+    migration?
+  id: '3930242483368834075'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Loren Gordon
+  profile: null
+  pub: '2012-02-22T13:53:04.982+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 22 February 2012 16:50
+  html: The way I understood David, you have to install 6WIND stack into each VM (was
+    it not clear from the article?)<br /><br />Obviously having direct connectivity
+    between VM and physical HW (NIC) breaks VM mobility.<br /><br />A 6WIND appliance
+    would be a cool idea, but would still require a 6WIND stack in the &quot;fast
+    path&quot; VMs. A decent stack in the hypervisor would be the right solutions
+    ;)
+  id: '4268616950634402764'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Ivan Pepelnjak
+  profile: null
+  pub: '2012-02-22T16:50:27.046+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 22 February 2012 18:14
+  html: 'To ensure we are clear here: you need our stack only for high performance
+    purposes (virtual appliance such as firewall, adc, gateways...). We still keep
+    the communication with other VMs with no 6WINDGate (with e1000, VMXNet3,...)<br
+    />There are 2 concerns with SW appliances run over virtualization: <br />- guest
+    OS kernel over multicore does not scale linearly.<br />- hypervisor kernel brings
+    performance penalties as well.<br /><br />We bring performance improvments there.
+    Obviously vMotion is maybe more difficult to implement but the question is do
+    you need virtual appliance vmotioned when those VA could (and should) be HA implemented?'
+  id: '8222155261527897864'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: David Le Goff
+  profile: null
+  pub: '2012-02-22T18:14:38.835+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 22 February 2012 21:55
+  html: 'Illustration: <br />An use case with 15VMs protected by a virtual firewall
+    on a host would require only one 6WINDgate stack on this vFirewall VA, that&#39;s
+    all. We do not touch to the other VMs.  :)<br />Hope it is more clear!'
+  id: '3973792210467518527'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: David Le Goff
+  profile: null
+  pub: '2012-02-22T21:55:17.894+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 22 February 2012 21:58
+  html: '&quot;A decent stack in the hypervisor would be the right solutions&quot;
+    &gt; 4 hypervisors on the market = 4 virtual firewall. Regular updates from the
+    hypervisor network APIs &gt; bunch of virtual firewalls  =-X'
+  id: '2663405163370549948'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: David Le Goff
+  profile: null
+  pub: '2012-02-22T21:58:31.346+01:00'
+  ref: '5403891004493161302'
+  type: comment
+- date: 12 March 2012 15:25
+  html: Dedicated and optimised network CPU exists too <br /><br />http://www.tilera.com/products/processors/TILE-Gx_Family<br
+    /><br />and they are supported by ... 6Wind !<br /><br />http://www.tilera.com/about_tilera/press-releases/6wind-releases-packet-processing-software-optimized-tilera%E2%80%99s-tilepro64-p
+  id: '1788800409285349422'
+  image: https://resources.blogblog.com/img/blank.gif
+  name: Neph
+  profile: null
+  pub: '2012-03-12T15:25:52.474+01:00'
+  ref: '5403891004493161302'
+  type: comment
+count: 11
+id: '5403891004493161302'
+type: post
+url: 2012/02/6wind-solving-virtual-appliance.html
