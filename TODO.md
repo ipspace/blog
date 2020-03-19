@@ -1,7 +1,6 @@
 * Fix firstHeading CSS
+* Fix comment reply CSS (margin on .inline-thread, bottom margin on #comments)
 * RSS feed
-* Import existing comments into data files
-* Create static comments on blog posts
 
 Before production:
 
@@ -10,7 +9,7 @@ Before production:
 
 Add later:
 
-* Comments
+* New comments
 * Post analytics
 * Popular posts (analytics ==> sidebar)
 
@@ -27,3 +26,5 @@ Done:
 * Exclude selected tags (Workshop, SGW, Podcast, Video...)
 * Create archive stub pages
 * Create tag cloud as static HTML
+* Import existing comments into data files
+* Create static comments on blog posts

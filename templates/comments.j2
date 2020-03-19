@@ -1,0 +1,45 @@
+{% macro cblock(clist) %}
+  <ol>
+    {% for cmt in clist %}
+      <div>
+        <li class="comment" id="{{ cmt.id }}">
+          <!--
+          <div class="avatar-image-container">
+            <img src="{{ cmt.image }}">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="{{ cmt.profile }}" rel="nofollow">{{ cmt.name }}</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" href="#{{ cmt.id }}">{{ cmt.date }}</a>
+              </span>
+            </div>
+            <p class="comment-content">{{ cmt.html }}</p>
+            {% if cmt.comments is defined %}
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                  {{ cblock(cmt.comments) }}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </li>
+      </div>
+    {% endfor %}
+  </ol>
+{% endmacro %}
+
+<div class="comments post" id="comments">
+  <p class="info">
+    We migrated our blog a few days ago, and the commenting functionality is not there yet.
+    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
+  </p>
+  <h4>{{ count }} comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+      {{ cblock(comments) }}
+    </div>
+  </div>
+</div>

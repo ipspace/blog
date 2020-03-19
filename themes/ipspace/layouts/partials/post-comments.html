@@ -1,1 +1,4 @@
-DEBUG: {{ printf "%s%s" .Page.File.Dir .Page.File.BaseFileName }}
+{{ $base := replace (printf "%s%s.html" .Page.File.Dir .Page.File.BaseFileName) "posts" "/comments" }}
+{{ if (fileExists $base) }}
+  {{ $base | readFile | safeHTML }}
+{{ end }}
