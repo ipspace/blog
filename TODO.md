@@ -1,6 +1,6 @@
-* Fix firstHeading CSS
-* Fix comment reply CSS (margin on .inline-thread, bottom margin on #comments)
-* RSS feed
+* Add 404 page
+* Replace search box
+* Related articles
 
 Before production:
 
@@ -28,3 +28,6 @@ Done:
 * Create tag cloud as static HTML
 * Import existing comments into data files
 * Create static comments on blog posts
+* Fix firstHeading CSS
+* Fix comment reply CSS (margin on .inline-thread, bottom margin on #comments)
+* Atom feed

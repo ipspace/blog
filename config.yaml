@@ -5,6 +5,9 @@ theme: ipspace
 summarylength: 3000
 uglyurls: true
 
+author:
+  name: Ivan Pepelnjak
+
 permalinks:
   posts: "/:year/:month/:filename"
   archm: "/:year/:month/index"
@@ -14,6 +17,16 @@ permalinks:
 taxonomies:
   tag: tags
 
+services:
+  rss:
+    limit: 30
+
+outputs:
+  home: [ html, atom, rss ]
+  section: [ html ]
+  taxonomy: [ html ]
+
 params:
+  feedSections: [ posts ]
   notags: [ Workshop, Podcast, Training, Software Gone Wild, 
     "You've asked for it", "Gestalt IT", marketing, Subscription, Video ]
