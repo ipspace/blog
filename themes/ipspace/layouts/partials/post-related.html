@@ -7,7 +7,7 @@
   <div id="related_posts">
     {{ range first 3 .Params.tags }}
       <h4><a href='{{ printf "/tag/%s.html" (. | urlize) | absURL }}' rel='tag'>{{ . }}</a></h4>
-      {{ with ($.Site.GetPage "taxonomy" ( . | urlize )) }}
+      {{ with ($.Site.GetPage (printf "/tags/%s" ( . | urlize ))) }}
         <ul>
           {{ $scr.Set "relcnt" 0 }}
           {{ range first 10 .Pages }}
