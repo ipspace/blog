@@ -1,6 +1,4 @@
 * Add 404 page
-* Replace search box
-* Related articles
 
 Before production:
 
@@ -31,3 +29,5 @@ Done:
 * Fix firstHeading CSS
 * Fix comment reply CSS (margin on .inline-thread, bottom margin on #comments)
 * Atom feed
+* Related articles
+* Replace search box
