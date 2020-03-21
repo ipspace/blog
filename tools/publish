@@ -7,7 +7,8 @@ if [ -z "`git branch -v|grep publish`" ]; then
   git checkout -b publish origin/publish
 fi
 git checkout publish 2>&1|ack -v "Already|up to date"
-git pull --all --force|ack -v "Already|Fetching"
+git fetch --all --force|ack -v "Already|Fetching"
+git merge origin/publish -X theirs|ack -v "Already|Fetching"
 git merge master -X theirs|ack -v "up to date"
 tools/create-archive.py --quiet
 tools/create-comments.py
