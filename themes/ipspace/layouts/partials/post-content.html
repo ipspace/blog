@@ -31,6 +31,18 @@
         </svg>
       </a>
     {{ end }}
+    {{ if not $full }}
+      {{ $url := urls.Parse .Permalink }}
+      {{ $plink := .Permalink }}
+      {{ with index .Site.Data.comment_count $url.Path }}
+        <a class="post__comment-link" href="{{ $plink }}#comments">
+          <svg class="post__comments-icon">
+            <use xlink:href="#icon-comments"></use>
+          </svg>
+            see {{ . }} comments
+        </a>
+      {{ end }}
+    {{ end }}
     <div style='clear: both;'></div>
     <!-- comments -->
     <div class='post__meta'>
