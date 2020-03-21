@@ -16,6 +16,7 @@ from datetime import date, datetime, timezone
 import dateutil.parser
 from types import SimpleNamespace
 from jinja2 import Environment, FileSystemLoader, Undefined, StrictUndefined, make_logging_undefined
+import common
 
 LOGGING=False
 VERBOSE=False
@@ -171,6 +172,11 @@ def writeTagData(args,tags):
     output.write(json.dumps(sbTags))
     output.close()
 
+  tagList = sorted(tags.keys(), key=lambda x: str(x).lower())
+  with open(args.data+'tags.yaml','w') as output:
+    output.write(yaml.safe_dump({ 'tags': tagList }))
+    output.close()
+
   template(args.template+'tags.j2',sbTags,args.output+'tags-sidebar.html')
 
 def scanPosts(path,archive,tags):
@@ -194,8 +200,7 @@ args = parseCLI()
 LOGGING = args.logging or args.verbose
 VERBOSE = args.verbose
 
-with open(args.config) as cfg:
-  CONFIG  = yaml.safe_load(cfg)
+CONFIG = common.findRootConfig(".",args.config)
 
 if 'params' in CONFIG:
   if 'notags' in CONFIG['params']:
