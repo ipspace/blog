@@ -10,6 +10,7 @@ import sys
 import os
 import argparse
 import yaml
+import json
 import re
 from datetime import date, datetime, timezone
 import dateutil.parser
@@ -21,8 +22,10 @@ VERBOSE=False
 
 def parseCLI():
   parser = argparse.ArgumentParser(description='Create comment markup from YAML data')
-  parser.add_argument('--dir', dest='data', action='store', default='comments/',
+  parser.add_argument('--comments', dest='comments', action='store', default='comments/',
                   help='Comment directory')
+  parser.add_argument('--data', dest='data', action='store', default='data/',
+                  help='Data directory')
   parser.add_argument('--template', dest='template', action='store', default='templates/',
                   help='Template directory')
   parser.add_argument('--log', dest='logging', action='store_true',
@@ -62,16 +65,20 @@ def scanPosts(path,archive,tags):
       elif entry.is_file():
         scanFile(os.path.join(path,entry.name),archive,tags)
 
+COMMENT_LIST = {}
+
 def buildComments(path):
   for path,folders,files in os.walk(path):
     for file in files:
-      if file.find('yaml') < 0:
+      if file.find('json') < 0:
         continue
-      fname = os.path.join(path,file)
-      output = fname.replace('yaml','html')
-      with open(fname,'r') as input:
-        data = yaml.safe_load(input)
+      jname  = os.path.join(path,file)
+      output = jname.replace('json','html')
+      with open(jname,'r') as input:
+        data = json.load(input)
       if data:
+        url = "/"+output.replace(args.comments,"")
+        COMMENT_LIST[url] = data['count']
         template(args.template+'comments.j2',data,output)
         if LOGGING:
           print("Written %s" % output)
@@ -80,4 +87,7 @@ args = parseCLI()
 LOGGING = args.logging or args.verbose
 VERBOSE = args.verbose
 
-buildComments(args.data)
+buildComments(args.comments)
+with open(args.data+'comment_count.json','w') as cntfile:
+  json.dump(COMMENT_LIST,cntfile,sort_keys=True,indent=2)
+  cntfile.close()

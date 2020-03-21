@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "date": "12 September 2007 09:15",
+      "html": "Router#sh ip cef detail<BR/>[...]<BR/>Adjacency Table has 12 adjacencies<BR/>0.0.0.0/0, version 248, epoch 0, per-destination sharing<BR/>160777106 packets, 56855775898 bytes<BR/>  via ...",
+      "id": "6845673431998539313",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-09-12T09:15:00.000+02:00",
+      "ref": "7169837131584440314",
+      "type": "comment"
+    },
+    {
+      "date": "12 September 2007 09:36",
+      "html": "The same as above but less noise:<BR/><BR/>Router#sh ip cef 0.0.0.0 0.0.0.0 detail",
+      "id": "5622905737711606251",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-09-12T09:36:00.000+02:00",
+      "ref": "7169837131584440314",
+      "type": "comment"
+    },
+    {
+      "date": "12 September 2007 16:35",
+      "html": "Don't forget to actually enable CEF accounting! ;o)<BR/><BR/>ip cef accounting per-prefix",
+      "id": "6990692107359125750",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-09-12T16:35:00.000+02:00",
+      "ref": "7169837131584440314",
+      "type": "comment"
+    },
+    {
+      "date": "13 September 2007 08:03",
+      "html": "I enable it on every router as part of standard configuration procedure. Exactly it is<BR/><BR/>ip cef accounting per-prefix non-recursive prefix-length",
+      "id": "7840834854548262671",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-09-13T08:03:00.000+02:00",
+      "ref": "7169837131584440314",
+      "type": "comment"
+    },
+    {
+      "date": "13 September 2007 08:08",
+      "html": "But another entry ipressed me much more<BR/><BR/>Router>sh ip cef 127.0.0.0 det<BR/>127.0.0.0/8, version 18, epoch 0, attached, per-destination sharing<BR/>5 packets, 500 bytes<BR/>  via Null0, 0 dependencies<BR/>    valid null adjacency<BR/>  0 packets, 0 bytes switched through the prefix<BR/>  tmstats: external 0 packets, 0 bytes<BR/>           internal 0 packets, 0 bytes<BR/>  30 second output rate 0 Kbits/sec",
+      "id": "2698991171786215863",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-09-13T08:08:00.000+02:00",
+      "ref": "7169837131584440314",
+      "type": "comment"
+    },
+    {
+      "date": "14 September 2007 04:18",
+      "html": "That's cool - but it doesn't work very well if you have *multiple* default routes in the CEF table:<BR/><BR/>router#sh ip cef 0.0.0.0 0.0.0.0 detail<BR/>0.0.0.0/0, version 232, epoch 0, per-destination sharing<BR/>366708 packets, 46049248 bytes<BR/>  via 192.168.2.4, Ethernet0, 0 dependencies<BR/>    traffic share 1<BR/>    next hop 192.168.2.4, Ethernet0<BR/>    valid adjacency<BR/>  via 192.168.2.5, Ethernet0, 0 dependencies<BR/>    traffic share 1<BR/>    next hop 192.168.2.5, Ethernet0<BR/>    valid adjacency<BR/>  via 192.168.2.1, Ethernet0, 0 dependencies<BR/>    traffic share 1<BR/>    next hop 192.168.2.1, Ethernet0<BR/>    valid adjacency<BR/>  217765 packets, 33377773 bytes switched through the prefix<BR/>  tmstats: external 0 packets, 0 bytes<BR/>           internal 217765 packets, 33377773 bytes<BR/>  30 second output rate 0 Kbits/sec<BR/>router#<BR/><BR/>so, all three are installed on the CEF table, and a sh ip route:<BR/><BR/>O*E2 0.0.0.0/0 [110/1] via 192.168.2.4, 00:00:09, Ethernet0<BR/>               [110/1] via 192.168.2.5, 00:00:09, Ethernet0<BR/>               [110/1] via 192.168.2.1, 00:00:09, Ethernet0<BR/><BR/>so, how many packets are going thru each one? Anybody's guess . . . .",
+      "id": "1013113561263786023",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-09-14T04:18:00.000+02:00",
+      "ref": "7169837131584440314",
+      "type": "comment"
+    },
+    {
+      "date": "17 September 2007 22:40",
+      "html": "Its a bit of a kludge, but if your route table isn't very big or dynamic you could create an access-list with permit statements matching your route table and a permit ip any any at the end, and check the numbers of matches. It would also allow you to log those packets to know where they're coming from or going.",
+      "id": "4291185172028671778",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/09591465597794037230",
+      "pub": "2007-09-17T22:40:00.000+02:00",
+      "ref": "7169837131584440314",
+      "type": "comment"
+    },
+    {
+      "date": "31 October 2007 17:50",
+      "html": "I realize I'm late to the game here being that it's almost November.  And this is certainly not the quickest/easiest, but it may be the dirtiest with the most overkill with potential to offer a lot more insight into the network.<BR/><BR/>How about slapping ntop on a linux box and enabling netflow on the interface?  A quick glance at the source/destination pairs would show you if it's going to one of the DR subnets or elsewhere (assuming you don't have more than a dozen or so DR subnets).  And once you've answered that question, enable netflow around the rest of the network and you've got yourself quite a resource for troubleshooting/forensics/etc.<BR/><BR/>Of course if you don't have a spare linux box and/or aren't familiar with ntop, well, cef or the access-list thing sound good too.",
+      "id": "7010549914997113532",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-10-31T17:50:00.000+01:00",
+      "ref": "7169837131584440314",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "7169837131584440314",
+  "type": "post",
+  "url": "2007/09/get-creative-is-anyone-using-default.html"
+}

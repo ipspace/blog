@@ -1,0 +1,41 @@
+{
+  "comments": [
+    {
+      "date": "14 March 2015 23:19",
+      "html": "Can you really call it 1M &quot;sessions&quot; when one is not really terminating each side?  It&#39;s an apples/oranges comparison of TCP session scalability.",
+      "id": "9163836782634196279",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Frank Bulk",
+      "profile": "https://www.blogger.com/profile/02004215342995023858",
+      "pub": "2015-03-14T23:19:53.893+01:00",
+      "ref": "6420820897096949431",
+      "type": "comment"
+    },
+    {
+      "date": "15 March 2015 00:26",
+      "html": "That&#39;s a good question, I think it&#39;s quite fair to call it that :-)<br /><br />After the handshake the behavior of the system would be hard to distinguish from a transparent proxy that terminated the connection, but just miraculously happened to negotiate the same TCP options / sequence numbers on both sides. It&#39;ll for example react in similar ways to incoming packets, and needs to store very similar data as a terminating proxy.<br /><br />That data includes all the TCP state variables (e.g. sequence numbers, window scale, congestion control state, SACK blocks, etc), RTT measurements, various kinds of timers, all the payload data that has been sent by one endpoint but not yet acknowledged by the other, and so on. And of course you need separate copies of all of this state for each half. So each session from our point of view is really matching the two paired connections that a terminating proxy would create.<br /><br />The main advantages from not terminating are related to robustness, such as being drop out from optimizing the connection without confusing the endpoints. There aren&#39;t really any scalability benefits.<br /><br />(1M sessions is actually understating things a bit; we expect about 200K concurrent sessions per 1Gbps of traffic in a typical mobile network. So for a 10Gbps deployment you&#39;d be looking at a typical case of 2M concurrent sessions, and needing to dimension for a worst case of at least 5M).<br />",
+      "id": "3109723089391536327",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Juho Snellman",
+      "profile": "https://www.snellman.net/blog/",
+      "pub": "2015-03-15T00:26:15.147+01:00",
+      "ref": "6420820897096949431",
+      "type": "comment"
+    },
+    {
+      "date": "17 March 2015 08:17",
+      "html": "Great show, thank you guys!<br /><br />This episode was almost like a godsend to me, since I am in the middle of troubleshooting an issue with a new version of a VPN client no longer working over mobile connections of a certain mobile provider. We could track the problem down to the mobile network sending a SYN/ACK for about everything (obviously they don&#39;t use the teclo product ;-)) and the captive portal detection feature of the new VPN client version... I was really in doubt of what I was seeing in the sniffer trace. Does the mobile provider mess with the TCP?!? Apparently they do! Some in a better some in a worse way ;-)",
+      "id": "7881154211235638362",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Patrick Diener",
+      "profile": null,
+      "pub": "2015-03-17T08:17:17.927+01:00",
+      "ref": "6420820897096949431",
+      "type": "comment"
+    }
+  ],
+  "count": 3,
+  "id": "6420820897096949431",
+  "type": "post",
+  "url": "2015/03/tcp-optimization-with-juho-snellman-on.html"
+}

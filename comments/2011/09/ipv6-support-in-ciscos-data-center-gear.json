@@ -1,0 +1,151 @@
+{
+  "comments": [
+    {
+      "date": "21 September 2011 08:25",
+      "html": "IPv6 support is only roadmap in Cisco UCS, see:  <br /> <br />http://www.youtube.com/watch?v=HYTzs6TRbZ8  <br />http://www.cisco.com/en/US/products/ps10281/products_configuration_example09186a0080aefd13.shtml  <br /> <br />Tore",
+      "id": "8371742888242564131",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tore Anderson",
+      "profile": null,
+      "pub": "2011-09-21T08:25:04.886+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 08:39",
+      "html": "Thanks. Added the &#39;servers&#39; category.",
+      "id": "4885299734469212911",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-09-21T08:39:21.078+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 08:53",
+      "html": "Nexus 7000 still doesn&#39;t have ISIS ipv6 support <br />http://www.cisco.com/en/US/docs/switches/datacenter/sw/5_x/nx-os/unicast/configuration/guide/l3_isis.html",
+      "id": "5273425239159803279",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Nitzan",
+      "profile": null,
+      "pub": "2011-09-21T08:53:03.867+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 09:43",
+      "html": "That&#39;s a coincidence, ACE support for IPv6 was released with A5(1.0) yesterday, see the release notes:<br />http://www.cisco.com/en/US/docs/interfaces_modules/services_modules/ace/vA5_1_x/release/note/ACE_mod_rn_A51x.html",
+      "id": "5667008818338954999",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Olivier Cahagne",
+      "profile": null,
+      "pub": "2011-09-21T09:43:00.376+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 09:54",
+      "html": "Wow  :-P That happens when you schedule your posts a few hours in advance  :-E<br /><br />Fixed. Thank you!",
+      "id": "1623012136160293330",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-09-21T09:54:50.253+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 11:17",
+      "html": "Cisco 3560/3750 can&#39;t do HSRP v6 and v4 on the same device. It is only v4 or v6 which is a pain. You can&#39;t do a dual stack implementation using this devices.<br />http://www.cisco.com/en/US/docs/switches/lan/catalyst3560/software/release/12.2_55_se/configuration/guide/swhsrp.html#wp1051422",
+      "id": "7717171452726065286",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "kiksen",
+      "profile": null,
+      "pub": "2011-09-21T11:17:29.543+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 15:28",
+      "html": "And they wonder why the adopting rate of IPv6 is so slow. It&#39;s because the supported technology rate is so slow!",
+      "id": "993786919226726504",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "John P.",
+      "profile": null,
+      "pub": "2011-09-21T15:28:53.138+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 16:58",
+      "html": "Does UCS Express support IPv6? Since it is based on ISR Gen2 possibly since the 15x code supports IPv6 and if the server modules support win 2008(IPv6) will it work in its VM? Just curious if anyone has tried this yet.",
+      "id": "6348954467688968030",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "jsicuran",
+      "profile": null,
+      "pub": "2011-09-21T16:58:32.405+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 17:10",
+      "html": "Cisco 3560/3750 can&#39;t do HSRP v6 and v4 on the same device. It is only v4 or v6 which is a pain. You can&#39;t do a dual stack implementation using this devices.  <br />____________<br />interesting Kiksen, is it possible to just keep HSRP for IPv4 but use IPv6 NDP to set the router preference with tuned RAs default router preference and lifetime for the same results? Or neighbor unreachability/dead gateway detection with Ipv6 icmp redirects for local router only?",
+      "id": "8406931330652984123",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "jsicuran",
+      "profile": null,
+      "pub": "2011-09-21T17:10:20.798+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 17:38",
+      "html": "The RA-based failover is probably not fast enough. Based on configuration guide it seems that the minimum RA interval you can set is 3 seconds and RA lifetime has to be at least twice the RA interval (or a single lost RA packet might cause problems).<br /><br />Is 8-10 seconds good enough for you? Tweak RA timers. Less than that? Use NHRP.",
+      "id": "5523065744598605827",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-09-21T17:38:50.326+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 21:03",
+      "html": "Hi Ivan,<br /><br />Part of enterprise DC could also wireless thing like WCS which support IPv6 this way --&gt; (from doc) Always set to &quot;1&quot; because WCS only supports ipv4 addresses.<br />http://www.cisco.com/en/US/docs/wireless/wcs/7.0/configuration/guide/7_0admin.html<br />I`m not able found anything Cisco Prime and IPV6.<br /><br />and if customer using WLC as anchor (DMZ) for internet access --&gt; then only IPv6 pass-through is available http://www.cisco.com/en/US/docs/wireless/controller/7.0/configuration/guide/c70ovrv.html<br /><br />you have most updates base on datasheet, which could not working properly.  <br />I like RIPE methodology. They sorted base on vendor claimant or confirmed by users.<br />http://labs.ripe.net/Members/mirjam/ipv6-cpe-survey-updated-january-2011",
+      "id": "2746937360484450162",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Duro",
+      "profile": null,
+      "pub": "2011-09-21T21:03:54.095+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2011 21:40",
+      "html": "ME3600X:<br />IPv6 to be released 2011/2012 from what I was told from Cisco earlier this year. <br />MPLS VPN IPv6 (VPNv6) will be later next year according to what I read in a Blog somewhere.",
+      "id": "7220245180413314114",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jon Harald B\u00f8vre",
+      "profile": null,
+      "pub": "2011-09-21T21:40:36.927+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    },
+    {
+      "date": "22 September 2011 23:07",
+      "html": "You must use -X or -E",
+      "id": "1228353696781386023",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "mzi",
+      "profile": null,
+      "pub": "2011-09-22T23:07:25.694+02:00",
+      "ref": "2592890837746673683",
+      "type": "comment"
+    }
+  ],
+  "count": 13,
+  "id": "2592890837746673683",
+  "type": "post",
+  "url": "2011/09/ipv6-support-in-ciscos-data-center-gear.html"
+}

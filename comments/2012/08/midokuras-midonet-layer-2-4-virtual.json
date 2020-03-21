@@ -1,0 +1,273 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "01 September 2012 15:15",
+          "html": "Hi Brad, that&#39;s a very good question.  Without going into the precise details of the synchronization mechanisms, here&#39;s the basic idea:  Virtual network configuration, such as the virtual topology, is eventually consistent with respect to changes made via the REST API, while per flow state is statistically highly consistent, though not linearizable.  We use a combination of ZooKeeper and Cassandra to implement the &quot;central database&quot;.  MidoNet agents make independent decisions, such as handling control packets like ARP, ICMP, DHCP and setting up new flows, based on their local view of the virtual network state.  If the virtual network configuration (virtual topology as well as virtual device config) changes and two edges see that change with a lag delta, then some flows will be forwarded according to the old configuration while others are forwarded according to the new configuration (during the period of convergence). The flows are all correct with respect to at least one valid configuration (since decisions are all taken at the ingress edge node). Which flows are still being forwarded according to the old configuration is arbitrary, but that&#39;s fine. Existing flows are also invalidated and recomputed when configuration changes.",
+          "id": "1680184180772397376",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/00017181371305926422",
+          "pub": "2012-09-01T15:15:04.368+02:00",
+          "ref": "1791103873792913431",
+          "type": "comment"
+        },
+        {
+          "date": "26 September 2012 21:07",
+          "html": "So Cassandra and ZooKeeper work as a replacement for OpenFlow. No network protocols. No central controller. Distributed state synchronised via a distributed DB and distributed systems tools.<br /><br />Why not go with OpenFlow?<br />How are convergence times calculated?<br />What happens with wrong flows that are setup before state is consistent? Are they a drop &amp; retry? Is the flow forwarded to the correct destination by the previous destination as if nothing had happened?<br /><br />Many thanks, innovative solution. ;)<br /><br />Pablo Carlier. - (Disclaimer: I am a Cisco Systems Engineer).  ",
+          "id": "4319470658087907553",
+          "image": "https://2.bp.blogspot.com/-cnPeMZ-V-hw/UGNS9JzETXI/AAAAAAAAFgE/fp2yIQi-1l4/s32/twitpic_reasonably_small.png",
+          "name": "Pablo Carlier",
+          "profile": "https://www.blogger.com/profile/15113372029146990395",
+          "pub": "2012-09-26T21:07:32.940+02:00",
+          "ref": "1791103873792913431",
+          "type": "comment"
+        }
+      ],
+      "date": "30 August 2012 18:37",
+      "html": "There is mention of a &quot;central database&quot;, but it&#39;s also stated this is a distributed system with no centralized control plane. How do the forwarding agents in each OVS synchronize and achieve consistent state?<br />",
+      "id": "1791103873792913431",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brad Hedlund",
+      "profile": "http://bradhedlund.com",
+      "pub": "2012-08-30T18:37:08.366+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "date": "30 August 2012 19:37",
+      "html": "Do they mention if their firewall or load-balancing logic is modular in a way that third party vendors could develop their own MidoNet FW or LB module? ",
+      "id": "5871062788172552129",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-08-30T19:37:40.478+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "30 August 2012 20:44",
+          "html": "CSR rather.",
+          "id": "4669957140503570153",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Rob",
+          "profile": null,
+          "pub": "2012-08-30T20:44:48.418+02:00",
+          "ref": "3120109469177740417",
+          "type": "comment"
+        }
+      ],
+      "date": "30 August 2012 20:44",
+      "html": "10Gig throughput...wow.<br /><br />  If that&#39;s the case then install a few OC12 PCI express cards in your UCS chassis or blade enclosure and toss those ASRs out.<br /><br />I hear Cisco has similar functionality with their CRS.",
+      "id": "3120109469177740417",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Rob",
+      "profile": null,
+      "pub": "2012-08-30T20:44:03.581+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "01 September 2012 15:33",
+          "html": "Hi Derick, thanks for the positive comment!<br /><br />We created this virtual device model in order to provide a familiar interface that blends be best of VRFs, Amazon VPC, and L2 switching.<br /><br />The VRF model seems to map well to the multi-tenant IaaS cloud (OpenStack) use case.  Our OpenStack plugin creates a virtual router per &quot;project&quot; (virtual data center, VPC, whatever term you like), and attaches multiple L2 networks to it.  The service provider&#39;s virtual router is wired to each of the projects for routing global IPs.",
+          "id": "5849766880240154880",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/00017181371305926422",
+          "pub": "2012-09-01T15:33:15.872+02:00",
+          "ref": "3425581617705793327",
+          "type": "comment"
+        }
+      ],
+      "date": "31 August 2012 05:10",
+      "html": "This is very cool... could run BGP from their stuff into a PER...  keep security zones separate as VRFs...  This is kind of awesome right here.",
+      "id": "3425581617705793327",
+      "image": "https://2.bp.blogspot.com/-s2SO4-r0rb4/TjN1afzbxzI/AAAAAAAAAEI/GJY8m3X_G4Q/s32/278323_2250510072972_1554840083_32414519_195982_o.jpg",
+      "name": "Derick Winkworth",
+      "profile": "https://www.blogger.com/profile/15412047994121954944",
+      "pub": "2012-08-31T05:10:39.710+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "20 September 2012 05:57",
+          "html": "When a VM is migrated by the cloud management system, e.g. OpenStack, the virtual port to which the VM is logically attached is bound to a tap/veth on the target host, at the end of the migration process.  At that time, the new mapping of vport to host is propagated to all MidoNet edges who have flows going to that vport, at which point those flows are updated to tunnel to the new target host.  So unlike some other forms of vMotion, there is no need to use gratuitous ARP to update switch state, or any such nonsense.",
+          "id": "7965810962382943639",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/00017181371305926422",
+          "pub": "2012-09-20T05:57:39.716+02:00",
+          "ref": "251854323643624700",
+          "type": "comment"
+        }
+      ],
+      "date": "08 September 2012 02:45",
+      "html": "How is vMotion handled ?",
+      "id": "251854323643624700",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-09-08T02:45:39.347+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "date": "14 September 2012 04:48",
+      "html": "This comment has been removed by the author.",
+      "id": "692334154192027811",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Vividh Siddha",
+      "profile": "https://www.blogger.com/profile/09932349058210537344",
+      "pub": "2012-09-14T04:48:34.996+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "date": "14 September 2012 04:49",
+      "html": "If the virtual router is a abstract concept how is BGP peering on the Provider Virtual Router implemented? Is OSPF used between Tenant Virtual Router and Provider Virtual Router?",
+      "id": "7053515302522236765",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Vividh Siddha",
+      "profile": "https://www.blogger.com/profile/09932349058210537344",
+      "pub": "2012-09-14T04:49:45.336+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "09 November 2012 12:19",
+          "html": "This comment has been removed by the author.",
+          "id": "2919710727226242179",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/15252780112453885537",
+          "pub": "2012-11-09T12:19:41.236+01:00",
+          "ref": "366428128132615791",
+          "type": "comment"
+        },
+        {
+          "date": "09 November 2012 12:52",
+          "html": "Are the edge gateway nodes linux servers or vendor routers ?If they are vendor routers does that mean we have to configure gre tunnels for this to work ?",
+          "id": "7803456666219222227",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/15252780112453885537",
+          "pub": "2012-11-09T12:52:10.616+01:00",
+          "ref": "366428128132615791",
+          "type": "comment"
+        }
+      ],
+      "date": "20 September 2012 05:43",
+      "html": "The virtual routers are not really instances of routers, but rather just configuration state which the MidoNet agents at the edges use to simulate the flows as they would traverse the virtual network topology.  So while the virtual router is abstract, the uplink ports of the virtual router are bound to actual ethernet interfaces on edge gateway nodes.  The edge gateway nodes run BGP sessions with the upstream peers, and update the routing table in the distributed database, which is then shared with other MidoNet agents, as needed. ",
+      "id": "366428128132615791",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/00017181371305926422",
+      "pub": "2012-09-20T05:43:46.704+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "date": "30 October 2012 09:48",
+      "html": "Is MidoNet forwarding agent using Intel&#39;s DPDK?",
+      "id": "8187044519721473877",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-10-30T09:48:01.658+01:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "18 April 2013 07:59",
+          "html": "Because they started in the wrong geography? It&#39;s amazing how many great solutions are hidden &quot;out there&quot; as compared to some of the mediocre stuff that gets funded in the Valley.<br /><br />As for packetpushers, you&#39;d have to ask the podcast hosts.<br /><br />Finally, send me an email if you&#39;d like to get in touch with Midokura but can&#39;t find their contact details.",
+          "id": "6602777169435844385",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-04-18T07:59:09.739+02:00",
+          "ref": "3422447321060086387",
+          "type": "comment"
+        },
+        {
+          "date": "18 April 2013 08:38",
+          "html": "Now that I know who they are I can get in contact with them.<br /><br />I meant I&#39;ve not seen any other company or open source project which has a virtual router on the hypervisor. And I only found this article yesterday. I can setup routing software on Linux, if Linux is running the hypervisor, but then you have to figure it all out on yourself.",
+          "id": "2959595040786689178",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Lennie",
+          "profile": null,
+          "pub": "2013-04-18T08:38:33.038+02:00",
+          "ref": "3422447321060086387",
+          "type": "comment"
+        },
+        {
+          "date": "18 April 2013 08:44",
+          "html": "Contrail also has L3 functionality in the hypervisor, as does Hyper-V Networking Virtualization.",
+          "id": "5905679479907716088",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-04-18T08:44:26.476+02:00",
+          "ref": "3422447321060086387",
+          "type": "comment"
+        },
+        {
+          "date": "20 April 2013 16:32",
+          "html": "Maybe I was looking in the wrong place, but I never found good documentation about Hyper-V Network Virtualization that did L3.",
+          "id": "7557687084619370875",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Lennie",
+          "profile": null,
+          "pub": "2013-04-20T16:32:25.404+02:00",
+          "ref": "3422447321060086387",
+          "type": "comment"
+        },
+        {
+          "date": "21 April 2013 13:28",
+          "html": "Maybe I should explain what I want: I want the host running the hypervisor to use dynamic routing to route it&#39;s overlay traffic around L2 or L3 failures. Servers are equipped with multiple network connections why don&#39;t we use them to their maximum potential.",
+          "id": "3402534887746341338",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Lennie",
+          "profile": null,
+          "pub": "2013-04-21T13:28:28.942+02:00",
+          "ref": "3422447321060086387",
+          "type": "comment"
+        }
+      ],
+      "date": "17 April 2013 21:37",
+      "html": "Why does this company or at least their solution not get more publicity ?<br /><br />There should be a lot more companies doing this.<br /><br />And why were these never mentioned on the packetpushers website or in the podcast ? ;-)<br /><br />No really, I&#39;ve been searching for a similar to their solution for months now. I know it kind of looks like it they are going against the whole networking industry, but this really is the natural evolution.",
+      "id": "3422447321060086387",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Lennie",
+      "profile": null,
+      "pub": "2013-04-17T21:37:43.269+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    },
+    {
+      "date": "01 June 2013 17:46",
+      "html": "Could you please comment on nCloudX platform from Anuta Networks. Thanks",
+      "id": "265649803030556468",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-06-01T17:46:41.387+02:00",
+      "ref": "1514144559461554571",
+      "type": "comment"
+    }
+  ],
+  "count": 23,
+  "id": "1514144559461554571",
+  "type": "post",
+  "url": "2012/08/midokuras-midonet-layer-2-4-virtual.html"
+}

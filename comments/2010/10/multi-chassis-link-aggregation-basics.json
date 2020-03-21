@@ -1,0 +1,329 @@
+{
+  "comments": [
+    {
+      "date": "01 October 2010 09:51",
+      "html": "I think Nortel was the first to provide this feature with what they called &quot;Split Multi-Link Trunking&quot; on the 8600.<br /><br />The concept is easy to sell to management and it works very well - until something goes wrong that is - then all hell breaks loose. As you rightly said &quot;understand what happens if the switch hosting the control plane fails&quot; or even a downstream switch for that matter. A number of years ago I rolled it out on a large campus and, a few catastrophic failures later, remove it all.",
+      "id": "3933213966226530124",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ahmed",
+      "profile": null,
+      "pub": "2010-10-01T09:51:59.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 10:03",
+      "html": "You hit all the big points perfectly. Network Engineers like to push routing down to the TOR. Spanning tree is annoying. VSS is a hot mess. VPC isn&#39;t horrible, but it isn&#39;t a standard. There isn&#39;t an RFC or IEEE standard to read to make sure it is working correctly. The Juniper matrix is awesome, but expensive.<br /><br />Maybe I am a curmudgeon. I&#39;d like to think that it&#39;s just healthy paranoia.   :)",
+      "id": "5153693574424477529",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Peter John Hill",
+      "profile": null,
+      "pub": "2010-10-01T10:03:15.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 10:46",
+      "html": "still, NOBODY does as better and as  fast as Alcatel-Lucent when you run it over mpls",
+      "id": "7282345539848104706",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anon",
+      "profile": null,
+      "pub": "2010-10-01T10:46:26.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 10:47",
+      "html": "Please help me understand: how does MPLS fit into this picture?",
+      "id": "7108038114762250717",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-10-01T10:47:47.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 11:29",
+      "html": "First off, you have to think of it as you are the SP providing a redundant service (VPLS/PW)through MCLA (or MC-LAG in ALU language). ALU use a proprietary protocol to sync the 2 nodes (acting as one node). this protocol, which runs over IP, should run over a protected (redundant and FRRed ) network as the nodes must always be in snyc (this is true for every MCLA solution). so MPLS fits nicely into the picture here also. there are much more details. try looking for MC-LAG.",
+      "id": "6510459660671370219",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anon",
+      "profile": null,
+      "pub": "2010-10-01T11:29:03.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 16:02",
+      "html": "While by no means do I think that I have a large environment, Nortel&#39;s Split Multilink Trunk has been working just fine in my main campus. 17 data closets, a handful of physical servers, and a dozen VMWare hosts are all link aggregated to two 8600 switches with two to eight gig links in a Split Multilink Trunk<br /><br />I feel that someone needs to go to bat for Nortel / Avaya, since they were doing SMLT way before Cisco&#39;s VSS came out to play.",
+      "id": "2783536284077610635",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anon2",
+      "profile": null,
+      "pub": "2010-10-01T16:02:04.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 16:29",
+      "html": "And it would seem now that 3Com(then H3C, now HP) did this for long time, called IRF I believe - if we take the CISCO blindfold down, it would be interesting to see if there is enough of collective experience to compare different &#39;MCLS&#39; solutions...",
+      "id": "5035755347471834013",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "DK",
+      "profile": null,
+      "pub": "2010-10-01T16:29:32.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 16:33",
+      "html": "Could you point me to a (hopefully deeply) technical paper explaining how it works? I would love to compare solutions from various vendors.",
+      "id": "6698966253404063003",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-10-01T16:33:23.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 16:40",
+      "html": "As above, would you have a link to a technical document describing IRF? I got a whitepaper during the TechFieldDay, but based on its technical level, it was probably targeted @ Gartner&amp;Co.",
+      "id": "4737891572827866228",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-10-01T16:40:35.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 16:57",
+      "html": "Here&#39;s a start:<br />http://www.trcnetworks.com/nortel/Data/Swiches/8600/pdfs/Split_multi_Link_Trunking.pdf<br /><br />...and a highlight:<br />&quot;Spanning Tree Protocol is disabled on the SMLT ports&quot;<br /><br />Not relying on STP for redundancy is one thing.  Switching it off is a whole other thing.  Deploy SMLT and hope that nobody ever loops two edge switches?  No thanks.<br /><br />Nortel has an extra twist: R(outed)SMLT, which is kind of like VPC + HSRP.  Except there&#39;s no virtual router IP.  Give your routers x.x.x.1 and x.x.x.2.  Configure .1 as the gateway on end systems.  If .1 fails, .2 assumes the dead router&#39;s address.<br /><br />If there&#39;s a power outage, and only .2 boots back up?  You&#39;re done.  (though there&#39;s a write-status-to-nvram fix for this)<br /><br />Come to think of it, it&#39;s a lot like vPC in that regard!",
+      "id": "9067913112576313831",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chrismarget",
+      "profile": null,
+      "pub": "2010-10-01T16:57:09.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 17:31",
+      "html": "The best that I can do right now is user guides, but they have done a good job for me in explaining how the process works.<br /><br /><br />Basic deployment scenarios:<br />http://www116.nortel.com/docs/bvdoc/ene_tech_pubs/SMLT_and_RSMLT_Deployment_Guide_V1.1.pdf<br /><br />Campus design guide (outlines link aggregation and loop detection deployment):<br />http://www142.nortelnetworks.com/mdfs_app/enterprise/TCGs/pdf/NN48500-575_2.0_Large_Campus_TSG.pdf<br /><br />Configuration Guide for SMLT (includes some of the better technical information):<br />http://www142.nortelnetworks.com/mdfs_app/enterprise/ers8600/5.1/pdf/NN46205-518_02.01_Configuration-Link-Aggregation.pdf<br /><br />Configuration Guide for RSMLT (both chassis share layer 3 information like OSPF/BGP state)<br />http://www142.nortelnetworks.com/mdfs_app/enterprise/ers8600/5.1/pdf/NN46205-523_02.02_Configuration_IP_Routing.pdf",
+      "id": "1995852704068412796",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anon2",
+      "profile": null,
+      "pub": "2010-10-01T17:31:02.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 17:36",
+      "html": "Question about VSS style connections, is there any limitation to the distance (latency) that the 2 chassis can be apart from each other? Say you had a GigE ring between 3 sites and wanted to not route, but instead have 1 site use MCLA to the other 2 sites (the other 2 sites would be a VSS pair), would that work?",
+      "id": "7975412599225335447",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Kyle",
+      "profile": null,
+      "pub": "2010-10-01T17:36:42.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 17:59",
+      "html": "Don&#39;t even think about that. If the link between the VSS sites falls down, one of the boxes is dead. vPC would be somewhat usable for something like that (and OTV would be perfect), but definitely not VSS.",
+      "id": "2372017854524989628",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-10-01T17:59:06.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2010 18:53",
+      "html": "Indeed. I have been hit by that very vPC design, umm, &quot;choice&quot;. Power failure, only 1 Nexus5K came back up, no vPC. I&#39;ve been told that NX-OS v5, coming in 2011, will resolve this.",
+      "id": "4662642613466271192",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Hagen Amen",
+      "profile": null,
+      "pub": "2010-10-01T18:53:44.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 00:30",
+      "html": "hm, not used to getting around HP site, sounds they did not rebrand H3C yet, so it seems a lot of guides are still on H3C sites.. Probably the best to start here (according Google :-)<br />http://h3c.com/portal/Technical_Support___Documents/Technical_Documents/<br />for all equipmen, then move to each swicth model if needed - seems IRF is supported on many models - 12k, 9500E, 7500E,58xx&#39;s. Could not see if IRF between different models is possible.<br /><br />Fairly thin on<br />http://h3c.com/portal/Products___Solutions/Technology/IRF/<br /><br />One of config guides can be found on<br />http://h3c.com/portal/download.do?id=1038276<br /><br />There seem to be no restriction on STP, in fact it seems this supports even MPLS and many other features.. I haven&#39;t had a chance to lay my hands on any of these products, above is only by reading documents :-)",
+      "id": "1834746584002127222",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "DK",
+      "profile": null,
+      "pub": "2010-10-02T00:30:02.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 01:07",
+      "html": "+1 for SMLT. Having said that, it has taken a very long time to make it work properly between all the different products in the Avaya nee nortel lineup. For a while, there were many bugs affecting one MLT flavour or another. Likewise, VSS has many things to improve upon and fix.<br /><br />There was a prolonged marketing guy catfight @ networkworld between cisco&#39;s VSS and nortel SMLT/RSMLT.",
+      "id": "8438050839594147453",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "NT_ex",
+      "profile": null,
+      "pub": "2010-10-02T01:07:31.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 04:11",
+      "html": "You mention that STP loop prevention mechanims can suck up half of the bandwidth.  I almost spit out my coffee when I read this.  Really?  That seems like an extremely high number.",
+      "id": "1938027549345696309",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jacob",
+      "profile": null,
+      "pub": "2010-10-02T04:11:47.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 06:55",
+      "html": "Can I ask what the issue is with VMotion in top of rack? When you point ESX/i at a default gateway you can VMotion over different subnets just fine. Is there something I&#39;m missing?<br /><br />Thanks!",
+      "id": "8795261784457627133",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Bede",
+      "profile": null,
+      "pub": "2010-10-02T06:55:27.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 08:31",
+      "html": "I said you lose half of your bandwidth, not that STP sucks it up  8-)<br /><br />STP loop prevention turns off (sets them to &quot;blocking&quot;) half of the links in a dual-tree design displayed in the first diagram (blocked links are grayed out in the diagram). STP itself uses very little bandwidth.",
+      "id": "4412230822622091851",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-10-02T08:31:36.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 08:33",
+      "html": "vMotion works fine across subnets, but the VM you move across a L3 boundary (from the perspective of VM NIC) has to acquire a different IP address (or you have to use routing tricks). See also the &quot;Routing implications&quot; part of my vMotion post:<br /><br />http://blog.ioshints.info/2010/09/vmotion-elephant-in-data-center-room.html",
+      "id": "8898372960630623455",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-10-02T08:33:09.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 12:30",
+      "html": "Hrmm, I see your point. I mistook the issue to be vMotion itself. Assuming no need for layer 2 adjacency couldn\u2019t VRFs or some other technology that solves overlapping IP address space work? Perhaps limiting to one cluster per rack kind of thing?",
+      "id": "6615506291699759565",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Bede",
+      "profile": null,
+      "pub": "2010-10-02T12:30:04.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 12:49",
+      "html": "Can&#39;t do a thing if you want to retain established sessions. Without that requirement, you don&#39;t need vMotion either.",
+      "id": "6363442737658764717",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-10-02T12:49:24.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2010 20:50",
+      "html": "Nice article and STP Loops can be a nightmare and worrisome. That is why I love etherchannels aka portchannels.  Its a great feature to take multiple physical links and make them logically as one, no bw is wasted and redundancy is achieved!! <br /><br />Cisco VSS is the way of the future as it will do away with STP.   ;)",
+      "id": "2741820475627950712",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "smthomas",
+      "profile": null,
+      "pub": "2010-10-02T20:50:19.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "03 October 2010 17:08",
+      "html": "VSS, vPC (or any other MCLA technology) can only solve the STP problems in dual-tree designs. If you have a less nicely-structured network (or uplinks to more than two boxes), you need TRILL or an equivalent to get rid of STP.<br /><br />BTW, VSS is just stacking-on-steroids; I prefer vPC.",
+      "id": "4585662316206283540",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-10-03T17:08:59.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "04 October 2010 15:55",
+      "html": "Downstream loops can be prevented with two features:<br /><br />1) Simple Loop Protection Protocol - SMLT switches send probes down their SMLT links to the closet switch. If you see the SLPP hello packet return on another interface you know that you have a loop condition<br /><br />2) Control Plane limiting for Broadcast / Multicast traffic can be configured on a per port basis. I configure it on my SMLT links to down the interface and/or VLAN that is sending excess broadcast or multicast traffic<br /><br />In both solutions, this is configured on both SMLT switches with the trigger thresholds set to different levels (5 SLPP hello probes vs 50) so that only one side of the SMLT should be disabled during a downstream loop.",
+      "id": "6115922140523262930",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anon2",
+      "profile": null,
+      "pub": "2010-10-04T15:55:38.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "07 October 2010 02:04",
+      "html": "Hey, with regards to IRF, basically you can cluster any switch with a 10Gb/s interface on it, with the following general guidelines:<br />Chassis (12500, 9500, 7500): Currently up to 2 devices can be clustered.  Rumor is that will be increased to 4 in the future.<br />5820: Up to 9 devices can be clustered<br />5800, 5500, 5120: Up to 8 devices can be clustered<br /><br />Certain mixed devices can be clustered using IRF, specifically 5820&#39;s and 5800&#39;s.<br /><br />IRF Clustering is fully stateful, and supports basically all the regular switch featuresets.  With regards to STP, an environment that uses all IRF on the Core or Aggregation devices can remove STP from the environment, and use LACP to provide path redundancy instead.<br /><br />I believe that the MSR routers support IRF as well, but I haven&#39;t configured it myself.",
+      "id": "607125051114338008",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Matt Burch",
+      "profile": null,
+      "pub": "2010-10-07T02:04:59.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "date": "10 October 2010 05:35",
+      "html": "I believe that Arista&#39;s MLAG works very in a very similar fashion to Cisco&#39;s vPC, right down to aligning L3 gateway selection to avoid hairpinning routed traffic. It&#39;s supposed to work with any LACP-capable host or switch downstream, but I don&#39;t if the control-plane communication between the MLAG peers is proprietary or not. In practice though I can&#39;t see a big advantage for a standards-based approach there as you&#39;re unlikely to ever have a MLAG/vPC/etc. landing on dissimilar switches from the same vendor, let alone different vendors.",
+      "id": "2739946421170766972",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "qxam",
+      "profile": null,
+      "pub": "2010-10-10T05:35:54.000+02:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "16 March 2018 11:09",
+          "html": "There are solutions (HP IRF, stackable switches, Juniper VCF, Brocade, maybe Avaya, not sure about EVPN implementations) that allow the LAG to be terminated on more than two switches. Not that it would make sense in most cases...",
+          "id": "635542329007377563",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2018-03-16T11:09:14.403+01:00",
+          "ref": "2548138929311399225",
+          "type": "comment"
+        }
+      ],
+      "date": "16 March 2018 10:11",
+      "html": "it should be called DCLAG as in Dual.",
+      "id": "2548138929311399225",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Mateusz",
+      "profile": null,
+      "pub": "2018-03-16T10:11:43.189+01:00",
+      "ref": "1175205010101879960",
+      "type": "comment"
+    }
+  ],
+  "count": 29,
+  "id": "1175205010101879960",
+  "type": "post",
+  "url": "2010/10/multi-chassis-link-aggregation-basics.html"
+}

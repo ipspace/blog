@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "date": "06 April 2010 09:20",
+      "html": "Hi there,<br /><br />Long time reader but first time poster.  I&#39;m a bit of a novice and thought I&#39;d take a stab at this.  Could you apply a route-map to each of the interfaces on the LNS router with no match statement, and make it set the exit interface to the opposite interface?  You wouldn&#39;t need to know any addresses, just interfaces.<br /><br />Ian.",
+      "id": "3889435642766443458",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ian Triggs",
+      "profile": null,
+      "pub": "2010-04-06T09:20:29.000+02:00",
+      "ref": "7261562500508662936",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2010 10:15",
+      "html": "You could set the default route on the LNS pointing towards the LACs and forward all traffic coming with a branch source ip address to the next-hop of the core router by using policy routing",
+      "id": "4320684221574331332",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Alex",
+      "profile": null,
+      "pub": "2010-04-06T10:15:24.000+02:00",
+      "ref": "7261562500508662936",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2010 14:12",
+      "html": "Option 1) use PBR on the virtual-template interface with set ip default next-hop pointing to the internal router or<br />Option 2) put the inside interface and virtual-template in a VRF or<br />Option 3) ask the SP if they can announce their LAC IP addresses with BGP so that we do not need a static default route for reaching the LACs<br /><br />I prefer option 1",
+      "id": "3324660737983042554",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Robert",
+      "profile": null,
+      "pub": "2010-04-06T14:12:06.000+02:00",
+      "ref": "7261562500508662936",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2010 15:44",
+      "html": "Hi! I don&#39;t use L2TP in my network but I have somewhat similar setup with DMVPN, where SP provides IP connectivity from spokes to hub within SP&#39;s network and Internet access is being router centrally via a firewall. I was posed with the same question, which way the default route should be pointed, since spokes&#39; addresses are dynamic. <br />So I resolved this with the following configuration at hub:<br />crypto dynamic-map [SP-DMVPN map name] 10<br /> set transform-set [DMVPN TS name]<br /> reverse-route remote-peer [next hop at SP&#39;s side] gateway<br />interface GigabitEthernet0/0.2<br /> description SP tunnel termination<br /> ip address [SP provided address]<br /> service-policy output [SP-DMVPN map name]<br />0/0 route is being received by this router via OSPF and points to the campus core network.<br /><br />Now when spokes dynamically establish IPSec with hub, crypto subsystem adds static routes pointing to their Internet IPs via hub&#39;s SP-facing interface:<br /><br />tunnelhub#sh crypto route<br /><br />VPN Routing Table: Shows RRI and VTI created routes<br />Codes: RRI - Reverse-Route, VTI- Virtual Tunnel Interface<br />        S - Static Map ACLs<br /><br />Routes created in table GLOBAL DEFAULT<br />[spoke SP IP]/255.255.255.255 [1/0] via [hub SP nexthop] tag 0<br />                                on GigabitEthernet0/0.2 RRI<br /><br />I&#39;m really not sure if this is applicable for L2TP, anyway, maybe someone would find this hint useful.",
+      "id": "4316359438700694050",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "mirek",
+      "profile": null,
+      "pub": "2010-04-06T15:44:46.000+02:00",
+      "ref": "7261562500508662936",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2010 20:17",
+      "html": "I would look into establishing a separate VRF for the internal interfaces of the LNS router, specifically the internal Ethernet interface and the Virtual-Template interface.<br /><br />One could also put the external interface in a VRF, but that is more complex and may not be supported in PPPoE/L2TP.  (I do know for a fact it is supported in recent versions of IOS&#39; IPsec implementation.)<br /><br />Not having worked with PPPoE/L2TP, I couldn&#39;t tell you without research whether VRF-based separation would work.",
+      "id": "8444171101384917613",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brian Knight",
+      "profile": null,
+      "pub": "2010-04-06T20:17:05.000+02:00",
+      "ref": "7261562500508662936",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2010 20:22",
+      "html": "You can put the vpdn-group in vrf by using vpn command inside it and the interface of the LAC in that VRF<br />Then you can route the default of the L2TP to the LAC inside the VRF  and to the LAN outside the VRF",
+      "id": "3559551784248684738",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Nitzan",
+      "profile": null,
+      "pub": "2010-04-06T20:22:05.000+02:00",
+      "ref": "7261562500508662936",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2010 20:31",
+      "html": "I think asking the provider which LAC addresses they use would be the easiest way.<br />Otherwise maybe some kind of an &quot;outside LNS&quot; (located in the internet) could be depolyed which accepts the sessions forwarded by the ISP&#39;s LAC and forwards them once again to an &quot;inside LNS&quot; (which is the already existing ISDN hub-router).",
+      "id": "7682472528943143557",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Christoph",
+      "profile": null,
+      "pub": "2010-04-06T20:31:22.000+02:00",
+      "ref": "7261562500508662936",
+      "type": "comment"
+    },
+    {
+      "date": "09 June 2010 22:11",
+      "html": "Hi Ivan, where you get those cool routers, clouds, etc. symbols, icons or how you name it? <br />Hidden Cisco icon packet? <br />Software?",
+      "id": "385347651147077638",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Gabriel",
+      "profile": null,
+      "pub": "2010-06-09T22:11:33.000+02:00",
+      "ref": "7261562500508662936",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "7261562500508662936",
+  "type": "post",
+  "url": "2010/04/small-steps-to-large-complexity.html"
+}

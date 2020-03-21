@@ -1,0 +1,133 @@
+{
+  "comments": [
+    {
+      "date": "16 July 2010 16:38",
+      "html": "Nice articule but with one mistake. When you configure ospf , the network statement work, as you said, as an ACL but... from the most-specific to the less specific. To use Cisco terms &quot;the longest,the better&quot;. <br /><br />Thanks anyway for this post<br />Alex",
+      "id": "2220500547354314503",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "alex",
+      "profile": null,
+      "pub": "2010-07-16T16:38:55.000+02:00",
+      "ref": "5461886934099278212",
+      "type": "comment"
+    },
+    {
+      "date": "22 July 2010 09:16",
+      "html": "Thank you! Fixed.",
+      "id": "1482367355873128090",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-07-22T09:16:04.000+02:00",
+      "ref": "5461886934099278212",
+      "type": "comment"
+    },
+    {
+      "date": "02 April 2012 22:26",
+      "html": "You say &quot;unless there is an extremely good reason that some interfaces should not be seen by the OSPF process  &quot;, can you give some examples of when this might be the case?",
+      "id": "4365030581682187161",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Andrew",
+      "profile": null,
+      "pub": "2012-04-02T22:26:12.667+02:00",
+      "ref": "5461886934099278212",
+      "type": "comment"
+    },
+    {
+      "date": "03 April 2012 08:26",
+      "html": "No ...  8-)",
+      "id": "6537330533241011373",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2012-04-03T08:26:39.918+02:00",
+      "ref": "5461886934099278212",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "01 October 2014 12:28",
+          "html": "The &quot;network&quot; command specifies on which interfaces OSPF runs (and which subnets it includes in the LSA), not what subnet mask it should use.<br /><br />For OSPF summarization, look up &quot;area summary&quot; command, and remember that it only works across area boundaries. You cannot summarize within an OSPF area.",
+          "id": "8561607726294192257",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-10-01T12:28:27.158+02:00",
+          "ref": "6430869481619349683",
+          "type": "comment"
+        },
+        {
+          "date": "01 October 2014 13:36",
+          "html": "I agree on using area summary on the ABR for summaries, but what im trying to understand is you&#39;re point on an address range of 10.1.16.0/20 if the interface has the same mask then it&#39;s ok as the LSA type 1 will have the correct mask details if however you tried to summize to a /19 then the LSA would still show the /20 as configured on the interface<br /><br />Steve",
+          "id": "6605595582967516142",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2014-10-01T13:36:47.504+02:00",
+          "ref": "6430869481619349683",
+          "type": "comment"
+        },
+        {
+          "date": "01 October 2014 13:56",
+          "html": "I guess my point being what&#39;s the difference in using a .255 over a .0 in the wildcard when the genuine mask is /24 and will be propagated in the LSA 1 as such",
+          "id": "8292907875026692754",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2014-10-01T13:56:17.355+02:00",
+          "ref": "6430869481619349683",
+          "type": "comment"
+        }
+      ],
+      "date": "01 October 2014 11:13",
+      "html": "&quot;If the area address ranges are nicely assigned (which also helps immensely when you have to start summarizing), you can use a single network statement to cover the whole area. If, for example, area 3 has address range 10.1.16.0/20, use network 10.1.16.0 0.0.15.255 area 3; &quot;<br /><br />But doesn&#39;t the router-lsa see what is on the physical interface and assign accordingly, I have attempted to use a summary but the router-lsa will always advertise what mask you have configured<br /><br />Steve",
+      "id": "6430869481619349683",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-10-01T11:13:10.182+02:00",
+      "ref": "5461886934099278212",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "01 October 2014 17:30",
+          "html": "Agree, so why you&#39;re point 2 &quot;use network 10.1.16.0 0.0.15.255 area 3&quot; when using a mask of 0.0.0.0 will achieve the same thing<br /><br />Steve",
+          "id": "7797651481676791379",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2014-10-01T17:30:52.891+02:00",
+          "ref": "5151904913826760130",
+          "type": "comment"
+        },
+        {
+          "date": "14 December 2017 15:38",
+          "html": "You would use the more specific area advertisement to ensure that range makes it into the correct area. <br /><br />A couple of notes (not for Ivan, but to clarify his point)<br />1) The network command does not dictate anything about the LSA.  If your interface has a /28 mask and your network wildcard mask is equivalent to a /16 (with the ranges overlapping) the LSA will contain the /28.  If you have multiple interfaces that can be neatly summarized and they&#39;re all described by that /16 wildcard mask, the router will typically summarize and send out a summary LSA.<br /><br />2) The router organizes network statements from most to least specific regardless of how you type them.  A wildcard mask of 0.0.0.255 would always appear before a mask of 0.0.255.255 <br /><br />3) When the router is trying to decide which area to put an interface in, it iterates through the network statements like an ACL.  When it finds one that matches, it assigns that area and stops looking.<br /><br />So, in Ivan&#39;s #2 example, he used 10.1.16.0 0.0.15.255 area 3.   The reason he did this is because he probably has a less specific network statement to put everything else in area 0. Eg:  10.0.0.0 0.255.255.255 area 0.  In this case the Router would put the area 3 statement above the area 0 statement and any interfaces matching 10.1.16.0 0.0.15.255 would be put in area 3; everything else in area 0.<br /><br />Important! - Using broad area definitions can be a security hole.  The network statement causes an interface to become active on OSPF.  That means two things:  1) LSA&#39;s are generated for that interface (good) 2) The router starts sending Hello messages on that interface (not always good).   You should use the &quot;passive-interface default&quot; command in your OSPF configuration and then &quot;no passive-interface&quot; for every interface where you actually want an adjacency to form. ",
+          "id": "8812794854325359729",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2017-12-14T15:38:02.126+01:00",
+          "ref": "5151904913826760130",
+          "type": "comment"
+        }
+      ],
+      "date": "01 October 2014 15:00",
+      "html": "I think you should re-read my comment. The &quot;network&quot; statement has nothing to do with the way OSPF advertises subnets and all to do with which subnets (interfaces) are advertised.",
+      "id": "5151904913826760130",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2014-10-01T15:00:05.476+02:00",
+      "ref": "5461886934099278212",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "5461886934099278212",
+  "type": "post",
+  "url": "2007/07/be-smart-when-using-ospf-network.html"
+}

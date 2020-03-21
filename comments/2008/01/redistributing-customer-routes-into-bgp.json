@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "date": "25 February 2008 23:34",
+      "html": "dont forget to also use the \"local-as\" community if you are using confederations as no-export refers to the confederation and not the subconfederation.",
+      "id": "8259527099278688313",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-02-25T23:34:00.000+01:00",
+      "ref": "6200753782254920679",
+      "type": "comment"
+    },
+    {
+      "date": "08 October 2008 19:37",
+      "html": "I really came to this site looking for a Failover Solution for iBGP. Your article with tags moved me in the correct direction and I appreciate the posted comments on aggregation. My problem was simple, can one failover a remote iBGP spoke location and have BGP act in a similar \u201cLink State\u201d protocol as its Core Router? Moreover, can this solution not export iBGP routes in and out of EIGRP or OSPF WAN routing protocols? <BR/>Without telling you the entire whole story, the answer is \u201cYes it can be completed.\u201d However, it quite complicated and one needs to be careful.  The solution utilizes route maps, tags on static routes and BGP Backdoor commands. I am able to fail a remote MPLS location (running iBGP) and have its IP Traffic traverse an IPSEC Tunnel across the Internet and into an ASA. At the core router, I point that backup traffic to that ASA. While the failover time is not instantaneous, it does resume in less than 30 seconds. <BR/><BR/>Network Details;<BR/>Remote Site1: 10.1.60.1/24 and Remote Site2: 10.1.70.1/24<BR/>Core Router: 10.1.2.1/24 with Failover ASA: 10.1.2.5/25<BR/><BR/>Here is what the Core Route configuration looks like;<BR/>!<BR/>router bgp 111<BR/>network 10.1.60.0 mask 255.255.255.0 route-map NoStatic backdoor<BR/>network 10.1.70.0 mask 255.255.255.0 route-map NoStatic2 backdoor<BR/>!<BR/>ip route 10.1.60.0 255.255.255.0 10.1.2.5 220 tag 220<BR/>ip route 10.1.70.0 255.255.255.0 10.1.2.5 225 tag 225<BR/>!<BR/>route-map NoStatic permit 10<BR/>match tag 220<BR/>set metric 220<BR/>!<BR/>route-map NoStatic2 permit 20<BR/>match tag 225<BR/>set metric 225<BR/>!<BR/>If one would wish to speak directly, shoot me an email @ timothy.barko@kimballcorp.com and I can explain in detail how it was completed with the complete details on my Failover Solution.",
+      "id": "6518667633057028203",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/14568042604208385006",
+      "pub": "2008-10-08T19:37:00.000+02:00",
+      "ref": "6200753782254920679",
+      "type": "comment"
+    },
+    {
+      "date": "01 July 2009 07:35",
+      "html": "sweet!  this fixed my problem :)<br /><br />thanks!<br />jd.",
+      "id": "8574096399487111322",
+      "image": "https://1.bp.blogspot.com/_LIx8RjC-Xz4/S80Mp9x-whI/AAAAAAAAAE0/fhRaxj5vwpI/S220-s31/bronson-med.jpg",
+      "name": "joshd",
+      "profile": "https://www.blogger.com/profile/08375888978787067775",
+      "pub": "2009-07-01T07:35:45.897+02:00",
+      "ref": "6200753782254920679",
+      "type": "comment"
+    },
+    {
+      "date": "04 October 2009 20:00",
+      "html": "Hi -  When i advertise any network under bgp it shoulbe be learned by peer bgp router which is in same VRF . But i am not seeing the advertised route reachbility from my peer router. pls advise.<br /><br />Regards/Venkat",
+      "id": "2500742438855715397",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "venkat",
+      "profile": null,
+      "pub": "2009-10-04T20:00:22.000+02:00",
+      "ref": "6200753782254920679",
+      "type": "comment"
+    },
+    {
+      "date": "04 October 2009 21:16",
+      "html": "Need more info. Follow the &quot;Contact&quot; link at the top of the page for instructions on how to send me an e-mail.",
+      "id": "3662194393763893244",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-10-04T21:16:04.000+02:00",
+      "ref": "6200753782254920679",
+      "type": "comment"
+    },
+    {
+      "date": "23 February 2012 06:20",
+      "html": "Simple and very good explanation.",
+      "id": "6644161451378642682",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Manoj",
+      "profile": null,
+      "pub": "2012-02-23T06:20:51.021+01:00",
+      "ref": "6200753782254920679",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "6200753782254920679",
+  "type": "post",
+  "url": "2008/01/redistributing-customer-routes-into-bgp.html"
+}

@@ -1,0 +1,162 @@
+{
+  "comments": [
+    {
+      "date": "09 November 2011 12:04",
+      "html": "Certainly an interesting take on an old problem!<br /><br />Simplest solution I can think of isn&#39;t an IPv6 solution at all - wireless client isolation. A lot of APs/controllers support it and it simply prevents traffic from one wireless client being forwarded by the AP back out to another. Really should be turned on in public access locations for this and other more obvious reasons.",
+      "id": "4776259148164552935",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guy Smith",
+      "profile": null,
+      "pub": "2011-11-09T12:04:42.187+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2011 16:02",
+      "html": "Great post always an eye opener. For wireless one should consider turning off or to disable any P2P in the service set. As for the IPv6 nice reporting Ivan, great stuff as always. I am turning the knobs on IPv6 protocol(s) on a v6 research project I am on. I know of the DHCP man in the middle but what about the possibility of a dhcp v6 lease queary/response from dhcp server to local (dhcp relay)edge router(router) exploit - poisoning or changing the lease?<br /><br />The IP tables for v6 is great didn&#39;t even consider that one from the UNIX side.",
+      "id": "8020797044022604582",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "jsicuran",
+      "profile": null,
+      "pub": "2011-11-09T16:02:06.437+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2011 18:54",
+      "html": "As always, if you have a monkey-in-the-middle (a great new term I just learnt from Randy Bush ;) listening to an unprotected protocol (like relayed DHCPv6), all bets are off.",
+      "id": "9067137512469698031",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-09T18:54:56.240+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2011 18:56",
+      "html": "That nicely solves a single AP issue (thank you for the pointer, you just gave me a troubleshooting idea for my home WiFi), but you still have the same problem if you have multiple access points and an IPv6-clueless engineer configuring the backhaul network.",
+      "id": "7416810376568107225",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-09T18:56:15.226+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2011 19:50",
+      "html": "If you combine it with carefully implemented private vlans on the switches (which is basically the same thing the APs are doing with client isolation), then you can extend to multiple access points. That gets hard on bigger networks, though, plus people do occasionally want to connect to each other on the same network.",
+      "id": "4628644453005430909",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ben J",
+      "profile": null,
+      "pub": "2011-11-09T19:50:08.493+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2011 19:56",
+      "html": "Totally agree ... but how many public WiFi hotspots have you seen that come even close?  :-P",
+      "id": "7704780754488839986",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-09T19:56:46.210+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2011 21:36",
+      "html": "Indeed, AP isolation is the easiest way to solve this IPv6-related problem as well as IPv4 rogue DHCPv4 &amp; ARP spoofing. Having done this &#39;test&#39; in a couple of hot spots, a (small) majority of hot spots do AP isolation.<br /><br />The easy way to test if ping6 ff02::1%foo",
+      "id": "4804488980257902352",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Eric Vyncke",
+      "profile": null,
+      "pub": "2011-11-09T21:36:30.802+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2011 22:59",
+      "html": "Eric&#39;s keynote was great :)",
+      "id": "8942635972184249755",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jan Zorz",
+      "profile": null,
+      "pub": "2011-11-09T22:59:18.794+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2011 23:35",
+      "html": "Some other VPN clients (AnyConnect) do the exact opposite in regards to IPv6.<br />They will cut off any local IPv6 connectivity regardless of whether the remote endpoint(asa) is configured to send/receive IPv6 traffic over the tunnel or not.<br />So basically if you&#39;re working in an IPv6 environment and start a VPN connection with AnyConncet to somewhere, the client will disconnect all your current IPv6 sessions.<br />According to Cisco this is a &quot;feature not a bug&quot;.<br /><br />Good article. I also hadn&#39;t considered the ip6tables...",
+      "id": "2120457069982088013",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "J\u00f3natan Natti",
+      "profile": null,
+      "pub": "2011-11-09T23:35:09.290+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "10 November 2011 00:07",
+      "html": "A lot of these deployments use wireless controllers which tunnel traffic back between the AP and the controller over L3 networks allowing for exactly this kind of restriction across all APs (or alternatively the controller can tell APs to restrict the traffic to the controller without the L3 tunneling). This also means that the controller can then be used as the portal for guest access management (handling billing etc if needs be) without having to tag the guest VLAN across the entire LAN/WAN to each AP.",
+      "id": "3932419989738314315",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guy Smith",
+      "profile": null,
+      "pub": "2011-11-10T00:07:49.691+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "10 November 2011 21:58",
+      "html": "wouldn&#39;t the anyconnect path use Teredo or 6to4 tunnel for IPv6? Ip in IP proto 41 encap(nat issues) or Teredo using IP udp IPv6 encap to get past nat. and the anyconnect tunnel may not even know. Of course your teredo needs to be set up.",
+      "id": "7603877702134345403",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "jsicuran",
+      "profile": null,
+      "pub": "2011-11-10T21:58:44.028+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "12 November 2011 14:47",
+      "html": "FYI Cisco lightweight wireless currently does IPv6 really, really badly. There are a few issues, but chief amongst them are NO FILTERING AT ALL - no RA guard, no access lists, no nothing. This means that a rogue router can cause complete havoc. This is more common than you might think, because Microsoft Internet Connection Sharing in Vista/Windows 7 is an IPv6 router, and will advertise itself as such - even when the windows machine has only one network interface up!<br /><br />It&#39;s also worth noting that vlan assignment doesn&#39;t work with IPv6 - it only affects IPv4<br /><br />The only way to even disable IPv6 on these things is to disable layer2 multicasts. This of course breaks IPv4 multicast, but does at least stop IPv6 working.<br /><br />Apparently this is unfixable in the 1st gen controllers / wisms. You need 5500/wism2 and a new software image (that we are promised &quot;soon&quot;) which will support full IPv6 parity, including RA guard (a later image will support LWAPP over IPv6, if you care)",
+      "id": "7129488226683430931",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Phil",
+      "profile": null,
+      "pub": "2011-11-12T14:47:47.855+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "19 November 2011 22:12",
+      "html": "I would concur with Cisco knowingly implementing that (i.e. a feature).  In previous versions (2.x I think) IPv6 was still enabled when connecting to an IPv4 only VPN.  It was great to be able to get to websites via IPv6 and avoid the draconian corporate filtering on the IPv4 VPN :)",
+      "id": "2886089577373308043",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2011-11-19T22:12:47.944+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    },
+    {
+      "date": "20 November 2011 17:11",
+      "html": "&quot;FYI Cisco lightweight wireless currently does IPv6 really, really badly&quot; - cisco support only IPv6 pass-through mode which is by default disabled. They don`t rush add any IPv6 feature.<br /><br />I would expect that wireless client isolation as posted Guy Smith<br />Guy Smith<br />View details and ALC which will allow access only to GW as addition.",
+      "id": "7701284958817209771",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Duro",
+      "profile": null,
+      "pub": "2011-11-20T17:11:33.120+01:00",
+      "ref": "5383874518830893693",
+      "type": "comment"
+    }
+  ],
+  "count": 14,
+  "id": "5383874518830893693",
+  "type": "post",
+  "url": "2011/11/ipv6-security-getting-bored-bru-airport.html"
+}

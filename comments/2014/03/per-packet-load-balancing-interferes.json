@@ -1,0 +1,148 @@
+{
+  "comments": [
+    {
+      "date": "19 March 2014 09:29",
+      "html": "See http://tools.ietf.org/agenda/89/slides/slides-89-tcpm-7.pdf for a recent discussion on the impact of reordering on TCP performance on recent stacks. ",
+      "id": "7257247553615947533",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Olivier Bonaventure",
+      "profile": "https://www.blogger.com/profile/16010323799492079420",
+      "pub": "2014-03-19T09:29:42.705+01:00",
+      "ref": "3418762271906253018",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "19 March 2014 10:50",
+          "html": "That would be reordering across multiple paths (i.e. TCP sessions), not within a single TCP session, right?<br /><br />Thanks for the links, they&#39;re great!",
+          "id": "2834143931053708209",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-03-19T10:50:43.034+01:00",
+          "ref": "4802685953559007697",
+          "type": "comment"
+        },
+        {
+          "date": "19 March 2014 13:28",
+          "html": "Yes, MPTCP handles reordering accross different subflows/paths. The tcpm link above deals with reordering on a single tcp connection<br />",
+          "id": "3860717170733321835",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Olivier Bonaventure",
+          "profile": "https://www.blogger.com/profile/16010323799492079420",
+          "pub": "2014-03-19T13:28:20.761+01:00",
+          "ref": "4802685953559007697",
+          "type": "comment"
+        }
+      ],
+      "date": "19 March 2014 09:31",
+      "html": "Multipath TCP can deal efficiently with the reordering caused by different paths through the network. See http://multipath-tcp.org/pmwiki.php?n=Main.50Gbps on how to reach 50 Gbps with a single Multipath TCP connection on 6 10 Gbps interfaces",
+      "id": "4802685953559007697",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Olivier Bonaventure",
+      "profile": "https://www.blogger.com/profile/16010323799492079420",
+      "pub": "2014-03-19T09:31:42.225+01:00",
+      "ref": "3418762271906253018",
+      "type": "comment"
+    },
+    {
+      "date": "19 March 2014 11:16",
+      "html": "Also when you have a problem (for example faultry transceiver/sfp/fiber) per packet load balancing may lead to situations that are very hard to troubleshoot. often enough I get inaccurate/wrong information on an issue by the customer/admin so adding another layer which probably complicates  the reproduction of the problem&#39;s effects is just bad",
+      "id": "3328769487402545123",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/17119268104941260145",
+      "pub": "2014-03-19T11:16:50.672+01:00",
+      "ref": "3418762271906253018",
+      "type": "comment"
+    },
+    {
+      "date": "19 March 2014 19:27",
+      "html": "Regarding TCP in the datacenter, though not specifically related to packet reordering, there is an specific variant denoted as DataCenter TCP (DCTCP) which leverages on ECN bits marked by switches when the queue occupancy is high. This DCTCP adjusts the congestion window of the transmitter based on the amount of packets received with the ECN bits marked per RTT, and obtains much better performance (in terms of latency, response to incast traffic and fairness between different flows sharing links) than traditional TCP implementations. DCTCP is active by default in Windows server 2012 (the server detects automatically which connections are from within the DC, to use DCTCP, and which ones are external to rely on traditional TCP), and there exist patches for linux. Additionally, some switches (see Nexus 3548, for example) are advertised as &quot;DCTCP compatible&quot;, or simply said, they mark the ECN bits. I am not involved with it, I found the info in their website: http://simula.stanford.edu/~alizade/Site/DCTCP.html<br /><br />Knowing that TCP or DCTCP only adjust the transmission window once per RTT, it would be interesting to know how this mechanism (or a similar one) reacts to packet reordering. ",
+      "id": "3684949643264226194",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Enrique Vallejo",
+      "profile": "http://personales.unican.es/vallejoe/",
+      "pub": "2014-03-19T19:27:23.947+01:00",
+      "ref": "3418762271906253018",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "20 March 2014 08:37",
+          "html": "Thanks a million for figuring this out!!! Windows Server 2012 R2 is also using flowlets, but I never found time to chase that down.<br /><br />See &quot;Dynamic NIC teaming&quot; section in this document:<br /><br />http://blogs.technet.com/b/networking/archive/2013/07/31/transforming-your-datacenter-networking.aspx",
+          "id": "3175588625727589286",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-03-20T08:37:31.792+01:00",
+          "ref": "3269946433203538010",
+          "type": "comment"
+        }
+      ],
+      "date": "19 March 2014 21:48",
+      "html": "I&#39;ve seen a couple of articles mentioning that the Cisco 9k will do something similar to Brocade regarding per-packet load-balancing:<br />http://keepingitclassless.net/2013/11/insieme-and-cisco-aci-part-2-aci-and-programmability/<br />http://lamejournal.com/2013/11/21/ciscos-aci-insieme-launch/<br /><br />A few searches later, it looks like Cisco will be using &quot;Flowlet Switching (Kandula et al \u201904)&quot;, as can be seen on page 20:<br />http://www.cisco.com/web/strategy/docs/gov/application_centric_infrastructure.pdf<br /><br />I had never heard of &quot;flowlet switching&quot; before, but it does sound interesting:<br />http://nms.lcs.mit.edu/~kandula/data/FLARE_HotNets04_web.ppt",
+      "id": "3269946433203538010",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Alvaro Pereira",
+      "profile": null,
+      "pub": "2014-03-19T21:48:20.073+01:00",
+      "ref": "3418762271906253018",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "04 April 2014 21:38",
+          "html": "5-tuple load balancing should _not_ cause packet reordering. Per-packet load balancing will.<br /><br />Opinions on the usefulness of LRO/LSO are mixed, but if it works well, it can save significant amount of CPU cycles or improve throughput of high-bandwidth TCP sessions.",
+          "id": "6286082881785395448",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-04-04T21:38:35.366+02:00",
+          "ref": "7401247133978842229",
+          "type": "comment"
+        }
+      ],
+      "date": "03 April 2014 13:56",
+      "html": "Hi ivan, this raises an interesting point regarding the port channel load-balancing algorithm for PortChannels in vPCs on FlexPods. Essentially we have been advocating algorithms that use SRC port to spread the storage ethernet traffic across available paths to get the full use of 20, 30, 40Gbps channels (egress) from/to NetApp filers and Cisco UCS for NFS and iSCSI. So the jumbo storage frames would essentially not monopolise a single link when all NFS flows go from one SRC IP to one DST IP NFS mount. What we did see a lot in packet dumps for either VMware host storage or guest iSCSI traffic was out of order packets which I didn&#39;t think much of at the time... however in retrospect the default LRO/GRO, LSO/LRO behaviour on hosts and guests would be being slowed down and another reason to turn it off completely I guess? Thoughts?",
+      "id": "7401247133978842229",
+      "image": "https://4.bp.blogspot.com/-xQY4JttGiCw/W7XXHXiTEKI/AAAAAAAABpU/FbhLqq15knswnPBkwnPL2ig37sbxpLlhACK4BGAYYCw/s32/linked_in_donal_profile.png",
+      "name": "Donal",
+      "profile": "https://www.blogger.com/profile/13772533723547791668",
+      "pub": "2014-04-03T13:56:16.985+02:00",
+      "ref": "3418762271906253018",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "14 February 2015 03:47",
+          "html": "Please search my blog for recent posts on ECMP load balancing and flowlets - I covered both topics.<br /><br />Thank you!",
+          "id": "3639752724404015491",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-02-14T03:47:27.594+01:00",
+          "ref": "3731540712565330364",
+          "type": "comment"
+        }
+      ],
+      "date": "14 February 2015 03:36",
+      "html": "Last year Juniper introduced an interesting feature for their VC-Fabric called Adaptive Flowlet Splicing which inspects the metrics of flows and links to determine when packets within a flow may be &quot;safely sprayed&quot; without risk of reordering on the receiving end.<br /><br />I believe it measures link utilization, queue depth, latency, and several flow-specific metrics to determine a flow&#39;s &quot;burstiness&quot; in making this decision.<br /><br />This Juniper post explains it very well.<br />http://forums.juniper.net/t5/Data-Center-Technologists/Adaptive-Flowlet-Splicing-VCF-s-Fine-Grained-Adaptive-Load/ba-p/251674",
+      "id": "3731540712565330364",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Adam",
+      "profile": "https://www.blogger.com/profile/18417457563490718355",
+      "pub": "2015-02-14T03:36:27.737+01:00",
+      "ref": "3418762271906253018",
+      "type": "comment"
+    }
+  ],
+  "count": 12,
+  "id": "3418762271906253018",
+  "type": "post",
+  "url": "2014/03/per-packet-load-balancing-interferes.html"
+}

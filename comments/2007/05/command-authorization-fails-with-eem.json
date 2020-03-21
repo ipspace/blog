@@ -1,0 +1,98 @@
+{
+  "comments": [
+    {
+      "date": "26 February 2009 15:29",
+      "html": "Hello,<BR/><BR/>Question about using pure TCL scripts (without EMM) with AAA command authorization<BR/><BR/>How to start the TCL script under a specific username to prevent the \"Command authorization fails message\"<BR/><BR/>Thanks",
+      "id": "470321003975059473",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2009-02-26T15:29:00.000+01:00",
+      "ref": "4906499489903896271",
+      "type": "comment"
+    },
+    {
+      "date": "27 February 2009 14:03",
+      "html": "Workaround found after reading the \"Executing IOS commands from Tcl shell\" from the \"Tclsh on Cisco IOS tutorial\".<BR/><BR/>On the above article it is mentionned that the ios_config command is executed inside the context of another VTY line (also found with the AAA debug). The workaround is to define the FIRST VTY line with \"transport input none\" to prevent ssh or telnet to grab it and to configure the aaa authorization without any command authorization for this line.<BR/><BR/>Kind regards<BR/>Christian Chautems",
+      "id": "219503398093087634",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2009-02-27T14:03:00.000+01:00",
+      "ref": "4906499489903896271",
+      "type": "comment"
+    },
+    {
+      "date": "28 February 2009 21:20",
+      "html": "Hi Christian!<BR/><BR/>Sorry for a late reply, I was on vacation. Your observation was successfully reproduced and is now the bug CSCsu65401. Thanks for the perfect workaround :)<BR/><BR/>Ivan",
+      "id": "2006594927953177316",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2009-02-28T21:20:00.000+01:00",
+      "ref": "4906499489903896271",
+      "type": "comment"
+    },
+    {
+      "date": "10 August 2009 20:01",
+      "html": "Hi I wolud like to know, what does this message mean? EM: No consumer registered for any event type<br /><br />please<br /><br />thanks",
+      "id": "1600143723331806011",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Invitado",
+      "profile": null,
+      "pub": "2009-08-10T20:01:34.000+02:00",
+      "ref": "4906499489903896271",
+      "type": "comment"
+    },
+    {
+      "date": "11 August 2009 07:57",
+      "html": "No idea. If this impacts your production network, you should open a case with Cisco TAC.",
+      "id": "6378715551931042127",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-08-11T07:57:26.000+02:00",
+      "ref": "4906499489903896271",
+      "type": "comment"
+    },
+    {
+      "date": "27 August 2009 07:38",
+      "html": "To &quot;invitado&quot;: <br /><br />inside EEM there is a generic queue to pass messages, with producers and consumers. Each entry has a specific type (trigger event, aaa event...), and there is a different consumer for each type.<br /><br />The message &quot;EM: No consumer registered for any event type&quot; appears when:<br /> <br /> 1) EEM debug is enabled, and<br /> 2) when there a message in the queue, but there&#39;s no consumer associated.<br /><br />This is not a bug nor a problem, but rather a notification to help IOS developers.",
+      "id": "1624237646245176099",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Emmanuel",
+      "profile": null,
+      "pub": "2009-08-27T07:38:53.000+02:00",
+      "ref": "4906499489903896271",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "11 September 2012 18:39",
+          "html": "The results of an &quot;action cli command&quot; are stored in $_cli_result variable, not printed on the screen. Use &quot;action 2.2 puts $_cli_result&quot; to see them, see http://wiki.nil.com/Regular_expressions_in_Embedded_Event_Manager_applets for an example.",
+          "id": "6008122968403462626",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-09-11T18:39:51.263+02:00",
+          "ref": "3807947788248428103",
+          "type": "comment"
+        }
+      ],
+      "date": "11 September 2012 12:44",
+      "html": "can we combine eem applet with tcl?<br />i tried some.<br />############<br />event none<br />action 2.0 cli command &quot;enable&quot;<br />action 2.1 cli command &quot;tclsh test.tcl&quot;<br />############<br />==================<br />that test.tcl contain below code :<br />puts &quot;in tcl&quot;<br />==================<br /><br />but i cant see anything printed in terminal.<br />i debug the eem actions and see that tcl file executing but nothing appear in terminal.<br />what&#39;s wrong.<br />i apologize for my bad english.",
+      "id": "3807947788248428103",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-09-11T12:44:53.452+02:00",
+      "ref": "4906499489903896271",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "4906499489903896271",
+  "type": "post",
+  "url": "2007/05/command-authorization-fails-with-eem.html"
+}

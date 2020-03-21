@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "17 March 2014 16:01",
+          "html": "Some of those aspects are described here:<br /><br />http://www.ipspace.net/Integrating_Internet_VPN_with_MPLS_VPN_WAN<br /><br />If you need more, you can always engage me for online consulting<br /><br />http://www.ipspace.net/ExpertExpress",
+          "id": "8564187549666470390",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-03-17T16:01:39.560+01:00",
+          "ref": "7352381327169753899",
+          "type": "comment"
+        }
+      ],
+      "date": "17 March 2014 10:56",
+      "html": "Hello, Ivan.<br /><br />In case of eBGP you wrote:<br />&gt;You can disable BGP loop prevention logic on spoke sites (using neighbor allowas-in) or play dirty tricks with the AS path like neighbor remove-private-as or neighbor as-override on the hub router (not recommended).<br /><br />But what would be the design, if we also have additional (MPLS ? cloud) with eBGP?<br />(in my case customer wants to be able to prefer on path over another - based on community - for different spokes, i.e. spoke 1 is preffered over DMVPN, spoke2 - over MPLS).<br />So, how would you suggest to configure DMVPN (and dynamic peering), keeping loop-prevention logic in place?",
+      "id": "7352381327169753899",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-17T10:56:47.524+01:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "date": "17 March 2014 20:08",
+      "html": "Hey Ivan:<br /><br />Given that a single DMVPN functions as one IP subnet, what sorts of things can bite you if you use iBGP? Perhaps I&#39;m not thinking it through completely, but with all hubs and spokes being (technically) directly connected, how would an IGP make any difference to iBGP operation in this case?<br /><br />Jody",
+      "id": "4127664923707396609",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/08430018083119747455",
+      "pub": "2014-03-17T20:08:26.716+01:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "19 March 2014 05:42",
+          "html": "The problem being that the reflected next-hop attribute is not known within the IGP domain if I understand correctly.",
+          "id": "5216385572808032381",
+          "image": "//images-blogger-opensocial.googleusercontent.com/gadgets/proxy?url=http://1.bp.blogspot.com/-j3GGfKuoRb4/VYDmEVI9C7I/AAAAAAAAAjs/aj4cvQNi2uk/s151/IMG_1013.JPG&container=blogger&gadget=a&rewriteMime=image/*",
+          "name": "Jeff Behrns",
+          "profile": "https://www.blogger.com/profile/09771677856264877238",
+          "pub": "2014-03-19T05:42:39.696+01:00",
+          "ref": "4976662269137353710",
+          "type": "comment"
+        },
+        {
+          "date": "19 March 2014 07:27",
+          "html": "More precisely, the problem is the lack of IGP domain (and thus information about non-DMVPN next hops) in the DMVPN subnet.",
+          "id": "7872034103995429978",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-03-19T07:27:25.485+01:00",
+          "ref": "4976662269137353710",
+          "type": "comment"
+        }
+      ],
+      "date": "18 March 2014 20:21",
+      "html": "If the DMVPN subnet is the only place you run BGP in your network (probably not), or if it uses a different AS number (which would have to be used on the hub router), you&#39;re OK. Otherwise you&#39;ll need route reflectors somewhere (hub routers are the obvious choice) \u2026 and hit the problem of not being able to modify BGP next hop on reflected routes.",
+      "id": "4976662269137353710",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2014-03-18T20:21:20.962+01:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "19 March 2014 07:28",
+          "html": "EBGP is run across DMVPN tunnel, not with the ISP, so the AS numbers don&#39;t matter - ISPs usually don&#39;t see them.",
+          "id": "5332814005530428053",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-03-19T07:28:23.467+01:00",
+          "ref": "3585408479240581842",
+          "type": "comment"
+        },
+        {
+          "date": "19 March 2014 15:50",
+          "html": "That makes sense, but if all the spokes sites are in the same AS, then do all the spokes still need to be in the same iBGP full mesh?  (I can see the benefit with the dynamic neighbor with that design though).",
+          "id": "8729194773308109020",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/03403426157805796992",
+          "pub": "2014-03-19T15:50:22.983+01:00",
+          "ref": "3585408479240581842",
+          "type": "comment"
+        }
+      ],
+      "date": "18 March 2014 22:36",
+      "html": "I think for an iBGP DMVPN design the BGP Dynamic Neighbors works well but not necessarily that useful for a eBGP DMVPN because your eBGP neighbors most likely won&#39;t fall into a certain range which will render the feature much less effective.<br /><br />Also you mention that with eBGPoDMVPN, all the spoke sites are placed in the same autonomous system, just wondering how&#39;s that possible if all the spokes are in separate locations across different providers (unless we are using something like GRE to build that iBGP mesh among all the spoke sites).  If indeed that&#39;s the answer, would it not be cleaner to have different AS for each spoke&#39;s site (say using the 32 bit AS notation)?",
+      "id": "3585408479240581842",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/03403426157805796992",
+      "pub": "2014-03-18T22:36:48.673+01:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "date": "27 March 2014 17:57",
+      "html": "read this with interest.. have built a network such as this for a large enterprise. IBGP works just fine , and I consider it easier operationally and would recommend it over EBGP (having a separate AS for each spoke surely is very painful?). <br />Using dynamic neighbor command, and suitable crypto design, all IBGP neighbors are on same subnet and there is no per-spoke config on the hub. Hub and spokes IBGP peer using Physical DMVPN subnet (update-source TunnelX), so there is no IGP to spokes needed. Spokes only peer with Hub. Hub acts as route-reflector, it all works. Next-hop-self all option gives the option to control whether you are pure-hub and spoke or to allow spoke-to-spoke routing via dynamic tunnel. In our case there is minimal/no spoke-to-spoke so we can set &quot;all&quot;, and/or route-map the hub-spoke peerings to only send default.",
+      "id": "1052168944784590336",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/03422985205791805153",
+      "pub": "2014-03-27T17:57:41.542+01:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "07 July 2014 07:31",
+          "html": "Interesting concept. Should work just fine, and you&#39;ll retain the &quot;site AS&quot; in the AS path. Thank you!",
+          "id": "6832190407286666874",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-07-07T07:31:13.993+02:00",
+          "ref": "2280130650709925573",
+          "type": "comment"
+        },
+        {
+          "date": "03 March 2015 03:40",
+          "html": "Phil - Did this work out? I had this same idea, but am cautious about being able to use route-maps and community filters on the RR neighbor. Any thoughts or updates?",
+          "id": "5426790096773544268",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2015-03-03T03:40:57.709+01:00",
+          "ref": "2280130650709925573",
+          "type": "comment"
+        }
+      ],
+      "date": "07 July 2014 00:36",
+      "html": "We have a MPLS/VPN solution from a service provider, with a DMVPN over the Internet for backup. We currently enforce the use of a unique AS per site to ease troubleshooting of routing problems in the SP network, and currently have our DMVPN headend routers configured with static BGP neighbors. <br /><br />In thinking about how we might convert to using dynamic neighbors, it occurred to me that rather than play games with loop prevention, why not simply select an unused AS to represent the DMVPN cloud and apply the appropriate local-as command to the DMVPN BGP peers? Each site remains a separate AS, AS paths correctly reflect the true origin AS, and loop prevention should still work properly, but the DMVPN hub sees all spoke sessions as coming from the common phantom AS, which should allow dynamic neighbors to work just fine. ",
+      "id": "2280130650709925573",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Phil",
+      "profile": "https://www.blogger.com/profile/10558463210818733870",
+      "pub": "2014-07-07T00:36:23.140+02:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "08 February 2015 14:07",
+          "html": "If you want to cheat the basic BGP rules you&#39;ll increase the complexity of your setup one way or another. It&#39;s either allowas-in on spokes or as-override on hub.",
+          "id": "7900860759164955790",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-02-08T14:07:07.602+01:00",
+          "ref": "316333368758994933",
+          "type": "comment"
+        }
+      ],
+      "date": "08 February 2015 14:04",
+      "html": "I am testing out Phil&#39;s suggestion for a hub and spoke WAN design.  Nice, tidy configuration, but so far the only way I have found to propagate routes between spokes is by using as-override at the hub.  The path at spoke2 appears as &quot;AS_HUB AS_HUB AS_SPOKE1&quot; removing the phantom AS.  Is there a better way?",
+      "id": "316333368758994933",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "David",
+      "profile": null,
+      "pub": "2015-02-08T14:04:36.726+01:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "date": "08 February 2015 17:57",
+      "html": "Thanks, Ivan.  Static neighbors it is.<br /><br />",
+      "id": "1411173334338057308",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "David",
+      "profile": null,
+      "pub": "2015-02-08T17:57:08.583+01:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "date": "05 April 2015 18:12",
+      "html": "What about DMVPN cloud with external BGP running on it. Spoke-to-spoke communication is currently traversing the hub. All spokes are using different AS numbers.<br />How to achieve direct spoke-to-spoke communication without hub in the middle? ",
+      "id": "1131374685299127652",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2015-04-05T18:12:16.626+02:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2015 09:06",
+      "html": "BGP next-hop handling should solve that problem automatically (assuming you&#39;re not using next-hop-self on the hub), or you could go for DMVPN phase 3.<br /><br />You&#39;ll find more details in other posts on this blog (just search for DMVPN) or in my DMVPN webinars.",
+      "id": "1227622770850694525",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2015-04-06T09:06:36.744+02:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2015 21:12",
+      "html": "Thank you, Ivan.<br /><br />Regards,<br />Nikolay",
+      "id": "5537361909734619405",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2015-04-06T21:12:56.389+02:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "25 June 2015 19:31",
+          "html": "Thank you! Fixed.",
+          "id": "6261646146820892532",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-06-25T19:31:49.438+02:00",
+          "ref": "6407157734484317851",
+          "type": "comment"
+        }
+      ],
+      "date": "25 June 2015 13:40",
+      "html": "Hello Ivan,<br /><br />Awesome post as usual. DMVPN is one of my favorite technologies to mess around with. This is not important in the grand scheme of the focal point of the post but i thought to notify you of a typo:  the line &#39;and accept all incoming TCP requests on port 79 matched by the ACL&#39; should read port 179 (BGP).<br /><br />Regards.",
+      "id": "6407157734484317851",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02186011975645301903",
+      "pub": "2015-06-25T13:40:37.984+02:00",
+      "ref": "6919350575907085370",
+      "type": "comment"
+    }
+  ],
+  "count": 21,
+  "id": "6919350575907085370",
+  "type": "post",
+  "url": "2014/03/scaling-bgp-based-dmvpn-networks.html"
+}

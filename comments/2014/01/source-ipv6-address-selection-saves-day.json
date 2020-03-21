@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "15 January 2014 07:27",
+          "html": "I would never recommend having multiple GUAs (from different prefixes) per interface - that&#39;s asking for trouble (I wouldn&#39;t expect host stack vendors to test that scenario). <br /><br />If you ever find a host stack where ULA+GUA combination doesn&#39;t work as expected, shout about it - they deserve to get the heat ;)",
+          "id": "8600514708623870581",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-01-15T07:27:13.000+01:00",
+          "ref": "3839106864922266935",
+          "type": "comment"
+        },
+        {
+          "date": "10 November 2014 12:34",
+          "html": "There actually are cases of multiple GUAs, such as with full dual stack DSL connections. One GUA prefix is recent, while a second GUA prefix is being phased out over the course of the next 4 hours or so. However, at least the RFCs are designed to properly handle this and so far I didn&#39;t see any issues in a heterogenious environment with Linux Kubuntu, various Androids, Win7 and Win8.",
+          "id": "3361175699876538973",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2014-11-10T12:34:46.908+01:00",
+          "ref": "3839106864922266935",
+          "type": "comment"
+        }
+      ],
+      "date": "14 January 2014 18:32",
+      "html": "Hi Ivan,<br /><br />I strongly disagree. In real-life we regularly see problems with source address selection (granted: usually in cases where, for whatever reasons, several GUAs exist in parallel on $INTERFACE). I&#39;ve had several cases where going through RFC 6724 rule-by-rule did not explain why $CLIENT acted the way it actually did and I&#39;ve even seen cases where this changed &quot;by minute&quot;. <br />Personally I don&#39;t expect source address selection to be fully solved in the near future, which is one of the reasons why we strongly recommend to keep the number of addresses on a given interface as small as possible. &quot;if there&#39;s a decision problem, reduce the number of choices&quot; [can help in other parts of life, too ;-)]<br /><br />For interest: can anybody confirm source address selection as of RFC 6724 (3484) to properly work in a sufficiently heterogeneous/complex network? I&#39;d be very interested...<br /><br />best<br /><br />Enno",
+      "id": "3839106864922266935",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Enno Rey",
+      "profile": "http://www.insinuator.net",
+      "pub": "2014-01-14T18:32:50.121+01:00",
+      "ref": "4378837959925852474",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "18 January 2014 10:29",
+          "html": "... and here&#39;s another reason I avoid multicasts as much as I can ;=)<br /><br />No idea - you might find the answer in the IPv6 Source Address Selection RFC (there&#39;s also a pretty good document describing Windows behavior), and then I&#39;d strongly recommend you verify the actual OS behavior with a few tests.",
+          "id": "1499216763465917890",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-01-18T10:29:41.642+01:00",
+          "ref": "6135471818892670105",
+          "type": "comment"
+        }
+      ],
+      "date": "17 January 2014 16:28",
+      "html": "What happens with address selection when client joins a multicast address. Which one is used ULA or GUA? ",
+      "id": "6135471818892670105",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "shah",
+      "profile": "https://www.blogger.com/profile/15818883829738651247",
+      "pub": "2014-01-17T16:28:57.577+01:00",
+      "ref": "4378837959925852474",
+      "type": "comment"
+    },
+    {
+      "date": "19 January 2014 22:39",
+      "html": "Hi Ivan!<br />I strongly support your recommendation, specially in the environment where IPv6 addressing relies on external and centralised DHCPv6. Usage of ULA can solve many problems in case of DHCP-server isolation, at least it reduces the impact to internal services during the outage.<br />And yes, in principle a packet with ULA source should reach a global destination within the administrative scope and vice versa. I&#39;ve tried to explain this issues here http://njetwork.wordpress.com/2014/01/19/ipv6-scopes-and-zones/.",
+      "id": "4978892461878639181",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "matjazsi",
+      "profile": "https://www.blogger.com/profile/05043254055298826345",
+      "pub": "2014-01-19T22:39:23.077+01:00",
+      "ref": "4378837959925852474",
+      "type": "comment"
+    },
+    {
+      "date": "18 June 2014 00:58",
+      "html": "A basic discussion I am missing is about how to assign ULA and GUA to a client. DHCPv6 cannot do the job. Therefore, you need - that\u00b4s my oppinion - a combination of SLAAC (e. g. Router advertising ULA Prefix and M-Flag =1) and DHCPv6 (responsible for the GUA prefix) ... or SLAAC is doing tha job alone (because it can advertise ULA and GUA prefix). Nevertheless, SLAAC is is like a red rag to a bull for administrators of big networks like NAT is for IPv6 purists ;-)<br /><br />Any best practices here. Technically the combination of DHCPv6 with SLAAC will work (even if M-Flag is 1 the client will learn the prefix from a router advertisement as well). But isn\u00b4t this one more step to make IPv6 again a liitle bit more complicated (not complex)?<br />",
+      "id": "1977990427943671974",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Edgar",
+      "profile": "http://www.netfarmers.net",
+      "pub": "2014-06-18T00:58:44.205+02:00",
+      "ref": "4378837959925852474",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "14 July 2014 07:14",
+          "html": "Have you read the blog post I linked to in the intro paragraph?",
+          "id": "9127179022504621280",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-07-14T07:14:14.643+02:00",
+          "ref": "9057002865761966882",
+          "type": "comment"
+        }
+      ],
+      "date": "13 July 2014 17:00",
+      "html": "By itself, the notion of having ULA and GUA, on the same system, makes little sense.  Clearly it can be done, even just with slaac and multipIe advertised prefixes.  <br /><br />I think one thing you might be reaching for is privacy extensions with SLAAC RFC 4941?  But, I&#39;m not really sure what problem you&#39;re trying to solve.  Why would you want to have two addresses where one address routes over all of the same networks and more, but the other only routes over a subset of those?  The only reasons I can think of would be based on an application requirement.<br /><br />I suspect the other concept you&#39;re trying to reach for is a firewall to allow only the traffic you want through the GUA address that you ultimately use.<br /><br />Again, what does it gain you?",
+      "id": "9057002865761966882",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dan Metzler",
+      "profile": "http://metzlertech.wordpress.com/about/",
+      "pub": "2014-07-13T17:00:14.055+02:00",
+      "ref": "4378837959925852474",
+      "type": "comment"
+    }
+  ],
+  "count": 9,
+  "id": "4378837959925852474",
+  "type": "post",
+  "url": "2014/01/source-ipv6-address-selection-saves-day.html"
+}

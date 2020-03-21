@@ -1,0 +1,252 @@
+{
+  "comments": [
+    {
+      "date": "16 November 2011 09:22",
+      "html": "As a matter of fact, in my J-series routers (and also with Olive, JUNOS 10.4R1.9) I am able to start LDP session without specifying any interfaces under the [protocols mpls] stanza, even if in all JUNOS documents you find that you have to enable interfaces inside  [protocols mpls] also. <br />What I find is that if you wanto to setup an MPLS-TE VC you need to enable interfaces under  [protocols mpls] (and under  [protocols rsvp] also !), but not for LDP (at least in real J-series routers, and Olive) . <br />Frankly, from a conceptual point of view,  I do not understand the need to specify interfaces under  [protocols mpls] also when you want to enable LDP. LDP Hello messages start as soon as you commit configuration after enabling interfaces under  [protocols ldp], and that is enough to start LDP sessions. I do not whether I am missing some points, but so far all LDP related configurations I made work fine.",
+      "id": "8319287886988287470",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tiziano",
+      "profile": null,
+      "pub": "2011-11-16T09:22:57.866+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "16 November 2011 11:58",
+      "html": "I have a kind request to all people partecipating to this blog. I am surely an old-fashioned guy so I do not have any Facebook or Twitter accounts (I prefer climbing mountains instead of wasting my free time in front a &quot;cold&quot; PC).<br /><br />Could you please avoid to use Twitter to post your interesting comments ? Thanks a lot.",
+      "id": "8148313919319846712",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tiziano",
+      "profile": null,
+      "pub": "2011-11-16T11:58:15.792+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "16 November 2011 12:42",
+      "html": "I got LDP/MPLS up and running without listing the interfaces in [protocols mpls], but had to specify &quot;family mpls&quot; under [interfaces]. Not sure whether that&#39;s connected with the need to specify &quot;transport-address&quot; within [protocols ldp] or not.",
+      "id": "5438238565861659033",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-16T12:42:00.026+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "16 November 2011 14:14",
+      "html": "No, the &quot;family mpls&quot; under [edit interfaces name-interface.unit] is needed since Juniper touters interfaces by default accept IPv4 packets only. Adding &quot;family mpls&quot; instructs the router to accept packet from other protocols also. For instance, if you want an interface accept IPv6 packets you must add &quot;family inet6&quot;, for IS-IS messages you must include &quot;family iso&quot;, and so forth.<br />But for whatever reason, if you forget to enable &quot;family mpls&quot; on an interface, on that interface you cannot have any LDP sessions, even if an LDP session does not require to be set up any MPLS packet. Probably the idea is that if you set up an LDP session on an interfacce, sometime in the future that interface will receive MPLS packets.<br />Concerning &quot;transport-address&quot; you have to be very careful, since by default JUNOS uses as RID for every protocols (OSPF, BGP, LDP) the IP address configured under [routing-options] stanza. While for BGP and OSPF this address may be arbitrary (even unreachable, or totally invented) for LDP it must be L3-reachable since it is used by default for the TCP connection. So the best-practice I use is to define the router-id equal to the loopback interface address.<br />This is different from IOS, where you can define different RID for each protocol. As a matter of fact, I use the same best prectice in Cisco IOS also. I usually define the RID of each protocol equal to the IP address of the Loopback 0 interface (and of course I advertise this interface in IGP !)",
+      "id": "756447943907058289",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tiziano",
+      "profile": null,
+      "pub": "2011-11-16T14:14:59.407+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "16 November 2011 15:25",
+      "html": "JunOS doesn&#39;t tie MPLS to LDP like Cisco does. RSVP is given equal footing in their label distribution protocols.",
+      "id": "8701117023584016248",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2011-11-16T15:25:20.962+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "16 November 2011 20:51",
+      "html": "| Reload might have helped ;)<br /><br />You&#39;re just begging for the JunOS fanboy trolls to come in, aren&#39;t you? :)<br /><br />On a more serious note, thank you for clearing up some of the issues I was having.. expecting IOS behavior out of a Juniper router is hardly normal, but I had my own concerns with getting things functioning 100/100.",
+      "id": "1706308567075441802",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "tonhe",
+      "profile": null,
+      "pub": "2011-11-16T20:51:19.293+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "16 November 2011 23:15",
+      "html": "Actually, I managed to totally confuse Junos (or shall I say JunOS to feed the trolls ;) ) a few times during the last days. A perfectly legal configuration that I couldn&#39;t possibly make to work ... until after a reload. <br /><br />I&#39;m positive it&#39;s just me, the negative energy I&#39;m emitting, and my grumpy attitude.",
+      "id": "5193065189043408225",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-16T23:15:29.100+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 00:40",
+      "html": "Is that what the configuration on a Junos router looks like?  <br /><br />I think I&#39;ve just been sold on never even considering Junos switches and routers.",
+      "id": "7730658380033737145",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Will",
+      "profile": null,
+      "pub": "2011-11-17T00:40:14.234+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 08:51",
+      "html": "I think you made a wrong decision  :-P",
+      "id": "5867187073018023721",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-17T08:51:45.898+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 14:59",
+      "html": "Like this fanboy!?  <br /><br />&quot;commit full&quot;   &lt;-- &#39;full&#39; is hidden keyword, but it forces complete rebuild of config internal to routing-engine... fixes things sometimes.",
+      "id": "5856047536654780551",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "ccie15672",
+      "profile": null,
+      "pub": "2011-11-17T14:59:30.354+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 15:03",
+      "html": "Also... Ivan, you should be using 10.4R7...  seriously.",
+      "id": "2424034927043774590",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "ccie15672",
+      "profile": null,
+      "pub": "2011-11-17T15:03:58.419+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 15:04",
+      "html": "The family xxxx statement under the interface units is telling the router to listen for certain ethertypes...",
+      "id": "7571524302760743220",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "ccie15672",
+      "profile": null,
+      "pub": "2011-11-17T15:04:45.802+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 15:05",
+      "html": "Thank you: I like fanboys that help us newbies ;)",
+      "id": "1129770026207174034",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-17T15:05:36.867+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 15:06",
+      "html": "Not available in Junosphere. Either 10.3 or 11.4 (experimental and &quot;somewhat&quot; buggy)",
+      "id": "2003845801442348164",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-17T15:06:37.383+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 23:35",
+      "html": "No? Prefer the old crappy dinosaur way of IOS?",
+      "id": "6428021315751070860",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2011-11-17T23:35:28.411+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 23:37",
+      "html": "The Junos way makes a lot more sense. LDP is a protocol and should therefore be under protocols. Just like with OSPF - configuring OSPF information on the interface like newer-IOS makes no sense... it&#39;s not an interface configuration, its a protocol.",
+      "id": "3665595199507931282",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Chris Jones",
+      "profile": null,
+      "pub": "2011-11-17T23:37:50.479+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 23:38",
+      "html": "Feed the trolls? Are you saying I&#39;m a troll for saying people should capitalize a trademark correctly?",
+      "id": "1768226898861629706",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Chris Jones",
+      "profile": null,
+      "pub": "2011-11-17T23:38:19.784+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 23:40",
+      "html": "Just wanted to point out that they don&#39;t listen for IPv4 by default either. You have to specify family inet for that to happen.",
+      "id": "8096447107393959507",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Chris Jones",
+      "profile": null,
+      "pub": "2011-11-17T23:40:55.517+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2011 23:56",
+      "html": "@will -Common misconception -  that&#39;s just the display mode - you don&#39;t type or manage the curly braces - just type single-line commands in what soon becomes very familiar fashion with auto-complete, inline help, etc. System organizes for display (and is XML under the covers). Also the basis for our scripting capability.",
+      "id": "2441635902530765622",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Juniper JTAC",
+      "profile": null,
+      "pub": "2011-11-17T23:56:33.988+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "date": "11 December 2013 22:22",
+      "html": "Hi. Can anyone predict, that numbers of NextHop will be diffrent in &quot;Box Uplinks&quot; compare to &quot;Butterfly Uplinks&quot;, with LDP+TE/FRR enabled on juniper boxes?",
+      "id": "3945398147079672678",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-12-11T22:22:35.887+01:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "12 April 2016 20:34",
+          "html": "In theory, yes. In practice, I don&#39;t think so.<br /><br />The _huge_ difference, however, is that Junos assigns labels to /32s (loopbacks) whereas Cisco IOS assigns labels to all non-BGP prefixes.",
+          "id": "8969190591805872846",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-04-12T20:34:56.177+02:00",
+          "ref": "598688908558698903",
+          "type": "comment"
+        }
+      ],
+      "date": "12 April 2016 20:32",
+      "html": "Does the Juniper method of Ordered LDP operation allows it to be more scalable than Cisco. ",
+      "id": "598688908558698903",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Barranett Farquharson Jr",
+      "profile": null,
+      "pub": "2016-04-12T20:32:34.342+02:00",
+      "ref": "8809985871323941306",
+      "type": "comment"
+    }
+  ],
+  "count": 22,
+  "id": "8809985871323941306",
+  "type": "post",
+  "url": "2011/11/junos-versus-cisco-ios-mpls-and-ldp.html"
+}

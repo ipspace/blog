@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "date": "23 September 2008 04:00",
+      "html": "Hello everyone,I am working with a tcl script on cisco ios. <BR/>This command has been very helpful puts [open \"flash:filename\" w+] {. <BR/>however how do I use this repeatedly to append more strings into the same file without losing the previous data from the file?<BR/><BR/>Secondly, teh command at the end says input is from a file however can I need to use a tcl variable as the input to the command. How can I do this?<BR/>All suggestions are welcomed. Thank you in advance for all teh help.<BR/><BR/>You can reply back to me at maiyart@msn.com",
+      "id": "8556995037285187058",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-09-23T04:00:00.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2008 09:37",
+      "html": "If you want to reopen the file and append more data to it, use a+ instead of w+. <BR/><BR/>See http://tmml.sourceforge.net/doc/tcl/open.html for details.<BR/><BR/>If you want to use more than one \"puts\" statement, store the channel# into a variable and use that variable in puts. For example,<BR/><BR/>set fl [open ...]<BR/>puts $fl \"string\"<BR/>puts $fl {string}<BR/>close $fl<BR/><BR/>See also http://tmml.sourceforge.net/doc/tcl/puts.html (examples)",
+      "id": "5736793849439715319",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-09-23T09:37:00.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "24 September 2008 00:01",
+      "html": "Thank you :)<BR/>That was very helpfull.",
+      "id": "3239488759620517047",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-09-24T00:01:00.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "07 October 2008 21:29",
+      "html": "Hello,<BR/><BR/>I\u00b4m doing a script as well. Every time that my script run, it add some data to the flash file that I define.<BR/>I would like to copy the file to tftp server.<BR/><BR/>Well, the question is, I know how to copy it, the problem is when the file already exists in TFTP, ios says that the file already exists... I doesnt know how to overwrite the file in tftp with the new data.<BR/><BR/>Anyone knows if there are any command to do that? or any way to do that?<BR/><BR/>Thanks in advance",
+      "id": "1550084399663441485",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-10-07T21:29:00.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "08 October 2008 10:07",
+      "html": "I'm just guessing ... Storing configurations on a TFTP server is something I do on a regular basis, and I usually overwrite existing files.<BR/><BR/>The problem is probably in the configuration of the TFTP server, which rejects an attempt to overwrite existing files.",
+      "id": "2185516307996116900",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-10-08T10:07:00.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "18 October 2008 07:34",
+      "html": "Thank you :)<BR/>I\u00b4m using ftp and the configuration is ok.<BR/><BR/>Actually, my script is running. But, by the end I would like to copy a file from flash to ftp server and here is the BIG problem of my script.<BR/><BR/>I use this command to do that:<BR/><BR/>if [catch {cli_exec $cli1(fd) \"copy flash:test ftp://10.0.0.1\"} result] {<BR/>   error $result $errorInfo<BR/>}<BR/><BR/>Well, it runs without any kind of error, but in ftp server the file doesn't appear.<BR/>My question is: is it possible to copy from flash to ftp, while inside tcl script running as a policy?<BR/>Should this command works fine, no ? <BR/><BR/>If anyone knows how I can do that copy, please help me.<BR/><BR/>Thanks in advance",
+      "id": "5054009577197447632",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-10-18T07:34:00.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "18 October 2008 07:58",
+      "html": "Try executing the same command manually from the CLI to test if it works. It should not generate any prompts, you might have to use <A HREF=\"http://blog.ioshints.info/2006/11/reduce-noise-generated-by-cisco-ios.html\" REL=\"nofollow\">file prompt quiet</A>.",
+      "id": "129376932455964880",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-10-18T07:58:00.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "20 May 2009 13:54",
+      "html": "Hello, <br />I am trying to create a tcl script in flash  by using this method but it does not work, <br />it does actually try to execute the tcl script instead of writing it to a file, the output I get is the following :<br /><br />Switch(tcl)#puts [open &quot;flash:script&quot; w+]{<br />file2{<br /><br />Switch(tcl)#proc_trust_state {} {<br />+&gt;set sisb ....................<br />+&gt;........<br />+&gt;}}<br />wrong # args: should be &quot;proc name args body&quot;<br />Switch(tcl)#<br /><br /><br />do you think there is actually a way to do it, am I missing something in the script ? <br />Let me know. Thanks a lot !<br /><br />Ju",
+      "id": "4552683769963706604",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2009-05-20T13:54:10.993+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "22 July 2009 10:47",
+      "html": "In response to the Anonymous user above, you need to leave a space between the closing &#39;]&#39; and the &#39;{&#39; to avoid the error you&#39;re seeing.",
+      "id": "2615318720840462012",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "DcUK",
+      "profile": null,
+      "pub": "2009-07-22T10:47:50.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "03 January 2010 19:52",
+      "html": "Hello,<br /><br />If im using tclsh, I know there is a command to read a .txt file that is storage in flash: (I mean, with that command, the flash:filename.txt file appear line by line in IOS screen. So I dont need to upload the txt file to my computer to see what is inside...)<br /><br />I can&#39;t remmember what command is it, can u help me?<br /><br />Thanks in advance,<br />Corcunda",
+      "id": "6964941049060745243",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "corcunda",
+      "profile": null,
+      "pub": "2010-01-03T19:52:46.000+01:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "03 January 2010 19:58",
+      "html": "sorry for the post above, I already find how to do that =)",
+      "id": "3937258997409253486",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "corcunda",
+      "profile": null,
+      "pub": "2010-01-03T19:58:01.000+01:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "18 March 2010 11:21",
+      "html": "Hello,<br /><br />I want to get the running config of a remote router by using tcl. Could you please show me how since I am new to TCL.<br /><br />Any help will be highly appreciated !<br /><br />Nguyen Su Tam",
+      "id": "6323198124196542088",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Nguyen Su Tam",
+      "profile": null,
+      "pub": "2010-03-18T11:21:14.000+01:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "12 May 2010 08:00",
+      "html": ":-D",
+      "id": "9016235928740546365",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2010-05-12T08:00:07.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "19 May 2010 02:57",
+      "html": "Brilliant sir, brilliant.",
+      "id": "1344422095027718680",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2010-05-19T02:57:44.000+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "06 March 2013 21:57",
+      "html": "Hello, I am wrote a TCL script on notepad and I am trying to copy and paste it on a router (GNS3) but shows this:<br /><br />R3(tcl)#<br />R3(tcl)#R3(tcl)#and name &quot;address&quot;         ^<br />invalid command name &quot;R3(tcl)#and&quot;         ^<br />% Invalid input detected at &#39;^&#39; marker.<br /><br />If anyone can help I would appreciate",
+      "id": "7112600869946814461",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Serafim",
+      "profile": "https://www.blogger.com/profile/04780043879187651038",
+      "pub": "2013-03-06T21:57:39.129+01:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "28 May 2013 17:10",
+      "html": "This will not work NX-OS due to the removal of command &quot;put&quot; from TCLSH (unfortunately) :(",
+      "id": "985792554473690840",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/01884692874470563342",
+      "pub": "2013-05-28T17:10:36.613+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "17 September 2013 12:39",
+      "html": "Hello, i know this is an old topic. i have done these but when i try to display the txt file that i just created using &quot;more flash:filename.txt&quot; it returns with a command authorization failed.<br /><br />this does work with multi lined text files right? as long as the matching curly bracket is supplied at the very end of the file?<br />",
+      "id": "347962057444073231",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Rob",
+      "profile": "https://www.blogger.com/profile/14473029106176988688",
+      "pub": "2013-09-17T12:39:49.224+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "28 March 2014 05:05",
+      "html": "Is it possible to send an ios image to multiples routers with a TCL script?",
+      "id": "2924901174894686991",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-28T05:05:35.667+01:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "20 September 2015 16:04",
+      "html": "Hey, great article, but do you know if something like that can be used on NX-OS too?",
+      "id": "9168203989687304200",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/16396426798189772519",
+      "pub": "2015-09-20T16:04:06.373+02:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "06 January 2016 13:15",
+      "html": "Ditto... How can we do this on NX-OS? ",
+      "id": "4043345351394674754",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2016-01-06T13:15:35.830+01:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    },
+    {
+      "date": "06 January 2016 17:55",
+      "html": "The following is working for me on NX-OS 7.0(6)N1(1):<br />tclsh<br />set MyFile [open &quot;/bootflash/x.txt&quot; w+]<br />puts $MyFile {Line2<br />Line3}<br />flush $MyFile<br />close $MyFile",
+      "id": "8853546038461058257",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2016-01-06T17:55:42.448+01:00",
+      "ref": "1160767159114505067",
+      "type": "comment"
+    }
+  ],
+  "count": 21,
+  "id": "1160767159114505067",
+  "type": "post",
+  "url": "2008/01/copy-text-files-into-router-flash.html"
+}

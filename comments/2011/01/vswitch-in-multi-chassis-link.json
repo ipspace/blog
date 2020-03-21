@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "date": "26 January 2011 12:11",
+      "html": "It&#39;s not necessarily as bad as the diagram indicates...yes, this is what happens when the VMs are on different ESX hosts, but any VMs in the same port group on the same host will be switched within the vSwitch.  So in the diagram, if A and D are running on the same ESX and are on the same VLAN, they can be in the same port group and none of the traffic between them will leave the host.  For this reason, any VMs that send high amounts of data over the network to each other, we will often add DRS affinity rules to keep them on the same host.",
+      "id": "2383049498199626290",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "lcg",
+      "profile": null,
+      "pub": "2011-01-26T12:11:14.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "26 January 2011 15:29",
+      "html": "I think Ivan&#39;s example is on purpose build around the fact that A and D are on different ESX. DRS Affinity rules are nice, but somehow manual....",
+      "id": "31932965872362159",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "jumbo",
+      "profile": null,
+      "pub": "2011-01-26T15:29:03.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "26 January 2011 15:52",
+      "html": "Ivan,<br /><br />Is this a workable scenario?<br /><br />If I understand correctly, you&#39;re saying that we&#39;ve got two static MLAGs configured: one to each ESX host.<br /><br />Your second drawing appears to show MAC addresses being learned on *physical*ethernet*ports*, rather than the logical aggregate interfaces.<br /><br />Assuming the static aggregations are Po1 (left ESX) and Po2 (right ESX), then the resulting MAC-&gt;port mapping on *both* pSwitches should be:<br /><br />A -&gt; Po1<br />B -&gt; Po1<br />C -&gt; Po2<br />D -&gt; Po2<br /><br />...Because MACs don&#39;t get learned on link members of an aggregation.<br /><br />A frame from A to C will be okay, because it&#39;s path is:<br />- ingress left pSwitch on Po1<br />- egress left pSwitch on Po2<br />- ingress right ESX on the *correct* pNIC<br /><br />A frame from A to D will fail, because its path is:<br />- ingress left pSwitch on Po1<br />- egress left pSwitch on Po2<br />- ingress right ESX on the *wrong* pNIC.<br /><br />A-&gt;D frames will ingress the ESX host on the pNIC that&#39;s pinned to vm C.  I expect that the vSwitch split horizon bridging will drop this frame.  Maybe it doesn&#39;t?",
+      "id": "8650075904095203188",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chrismarget",
+      "profile": null,
+      "pub": "2011-01-26T15:52:51.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "26 January 2011 16:40",
+      "html": "The point is that you NEED static LAGs configured unless you want to get weird traffic flow shown in the diagrams. Without static LAGs you might get a lot of traffic across inter-switch link.<br /><br />And since you HAVE TO HAVE static LAGs, you also need IP-hash-based load balancing in ESX, otherwise the incoming frames arriving through the wrong port will get dropped.",
+      "id": "91396374000321683",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-01-26T16:40:18.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "26 January 2011 16:46",
+      "html": "Also - reworded the introductory description to make lack of link aggregation more explicit. Thank you!",
+      "id": "2658333096396285650",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2011-01-26T16:46:35.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "26 January 2011 16:47",
+      "html": "Also - reworded the introductory description to make lack of link aggregation more explicit. Thank you, it was more than just a bit vague.",
+      "id": "1065519804276828333",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-01-26T16:47:05.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "26 January 2011 17:40",
+      "html": "Hrm, I don&#39;t think we&#39;re on the same page yet.<br /><br />Certainly ESX hash-based and static LAG *must* go together.  There&#39;s no disagreement there.<br /><br />But I disagree with &quot;Each VM appears to be single-homed to one of the switches.&quot;<br /><br />From the pSwitch perspective, each VM is homed to an *aggregation*, and MAC learning will happen on the aggregation, regardless of the link member where they arrive.<br /><br />Taking just the left pSwitch, all of A&#39;s frames will arrive on link member 0 and all of C&#39;s frames will arrive on link member 1...  But the pSwitch won&#39;t notice this.  The pSwitch will associate both MACs with the aggregate interface, and will forward downstream frames according to whichever hashing method is configured, totally ignoring which MAC showed up on which link member.<br /><br />Traffic won&#39;t flow across the inter-switch link.  It will flow *down* the aggregate, and only *maybe* get delivered to the VMs.",
+      "id": "3970616877427802284",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chrismarget",
+      "profile": null,
+      "pub": "2011-01-26T17:40:08.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "27 January 2011 05:39",
+      "html": "Chris, I think Ivan&#39;s statement, &quot;Each VM appears to be single-homed to one of the switches,&quot; refers to the default port ID vSwitch NIC teaming policy, not the IP-hash policy, so there are no port channels to the ESX hosts in the scenario where that statement applies...",
+      "id": "2050689746485537325",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "lcg",
+      "profile": null,
+      "pub": "2011-01-27T05:39:37.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "27 January 2011 09:49",
+      "html": "Exactly!",
+      "id": "8580124117625638837",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-01-27T09:49:06.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "27 January 2011 14:17",
+      "html": "&quot;the switches have been configured as a MLAG cluster&quot;...&quot;link aggregation is not used&quot;<br /><br />Ah!  Okay, I&#39;d missed the &quot;aggregation is not used&quot; sentence until just now.  Looking back at your previous comment, I guess this is the part that got clarified (after my misunderstanding of the topology was firmly cemented in my brain)<br /><br />The extra east-west hop would be nice to avoid.",
+      "id": "5540351440880928645",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chrismarget",
+      "profile": null,
+      "pub": "2011-01-27T14:17:46.000+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "07 March 2011 18:52",
+      "html": "VM A and D are connected to different vSwitches if you look at the above diagram, so traffic will still need to go thru the physical switch stack if those VMs need to communicate even if they&#39;re on the same physical host and on the same VLAN. There is no way the traffic can flow between different vSwitches within the same host unless you purposefully introduce bridging between two vSwitches.",
+      "id": "8959983761069396489",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "solgae",
+      "profile": null,
+      "pub": "2011-03-07T18:52:31.191+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    },
+    {
+      "date": "07 March 2011 19:36",
+      "html": "VM-A and VM-D are in two different ESX servers.",
+      "id": "3232372576213314226",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-03-07T19:36:03.810+01:00",
+      "ref": "4686908120219302895",
+      "type": "comment"
+    }
+  ],
+  "count": 12,
+  "id": "4686908120219302895",
+  "type": "post",
+  "url": "2011/01/vswitch-in-multi-chassis-link.html"
+}

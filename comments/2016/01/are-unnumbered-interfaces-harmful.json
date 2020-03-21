@@ -1,0 +1,218 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "12 January 2016 14:31",
+          "html": "You can run IPv6-only control plane with RFC 5549. Here&#39;s how Cumulus implemented it:<br /><br />http://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html",
+          "id": "2355821120188705345",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-01-12T14:31:42.431+01:00",
+          "ref": "2927170126346887514",
+          "type": "comment"
+        }
+      ],
+      "date": "12 January 2016 13:29",
+      "html": "I would be happy if I could run my datacenter with only IPv6 link-local addresses (on my transport links) and MP-BGP. IPv4 could be routed just by reusing the next-hop information coming from v6. Although that would require BGP to advertise next-hop-interface instead of next-hop (or the advertiser to send a dummy IP address and the receiver assume the next-hop-interface is the same interface where the peer is located).<br /><br />Regarding traceroute, maybe it&#39;s time to come with a better set of tools to troubleshoot the network...",
+      "id": "2927170126346887514",
+      "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
+      "name": "David Barroso",
+      "profile": "https://www.blogger.com/profile/08333059712411851393",
+      "pub": "2016-01-12T13:29:14.749+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    },
+    {
+      "date": "12 January 2016 14:51",
+      "html": "In the world of IPv4 we do some unnumbered router-router links. Need BFD to support unnumbered interface. Cisco is contemplating this.<br /><br />In the world of IPv6, we use link-local router-router plus GUA loopback, BFD, OSPFv3, iBGP. This works well for us.<br /><br />We also run host facing IPv6 networks &quot;nd prefix no-onlink&quot;.<br /><br />Despite the initial knee-jerk reaction, I have found no real downside to using unnumbered/link-local interfaces. Getting router configs down to loopback only is quite nice...",
+      "id": "5631989649030891175",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/14026938261643463369",
+      "pub": "2016-01-12T14:51:47.359+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "12 January 2016 17:39",
+          "html": "Thanks for pushing me into research mode. Looks like RFC 5837 is the answer (if only someone would take the time to implement it).",
+          "id": "3790913647801565734",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-01-12T17:39:54.786+01:00",
+          "ref": "3312119542339722712",
+          "type": "comment"
+        },
+        {
+          "date": "12 January 2016 17:58",
+          "html": "Neat!<br /><br />Also, sorry! I didn&#39;t mean to put you to work!",
+          "id": "2467342815679412778",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "chris marget",
+          "profile": "https://www.blogger.com/profile/06646973209424821070",
+          "pub": "2016-01-12T17:58:59.002+01:00",
+          "ref": "3312119542339722712",
+          "type": "comment"
+        }
+      ],
+      "date": "12 January 2016 15:55",
+      "html": "&quot;Is there a box out there that\u2019s smarter than this?&quot;<br /><br />Ivan, RFC 1812 (4.3.2.4) requires that ICMP messages be sourced from the transmit interface IP (if available). Has that &quot;MUST&quot; been relaxed by subsequent RFCs to allow for &quot;smarter&quot; replies (replies reflecting probe ingress interface) to traceroute probes?",
+      "id": "3312119542339722712",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "chris marget",
+      "profile": "https://www.blogger.com/profile/06646973209424821070",
+      "pub": "2016-01-12T15:55:49.190+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "12 January 2016 17:28",
+          "html": "&quot;I was hoping to use this feature on server farms and cloud fabrics, so OOB _should_ save the day there.&quot; ... in which case hop-by-hop CLI access is also no longer a requirement.",
+          "id": "2888938057603361310",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-01-12T17:28:31.370+01:00",
+          "ref": "4334143607599487400",
+          "type": "comment"
+        },
+        {
+          "date": "15 January 2016 17:10",
+          "html": "Exactly -- there&#39;s little risk to traffic, but there&#39;s definitely a real/perceived risk to the tools, support docs, and training regimens that have evolved over the years. Think of all those homebrew SNMP/Expect scripts and all those A+ certified tech school newbies.<br /><br />But, in the end, it&#39;ll just another academic religious battle, like whether gateways should be .1 or .254, or whether .0 and .255 are valid host IPs on large subnets, and whether /31&#39;s are good form. If you like those battles and constantly having to justify and explain yourself, then go for it.",
+          "id": "5092606446722163410",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "lcw",
+          "profile": "https://www.blogger.com/profile/10562240567667879482",
+          "pub": "2016-01-15T17:10:50.739+01:00",
+          "ref": "4334143607599487400",
+          "type": "comment"
+        }
+      ],
+      "date": "12 January 2016 16:53",
+      "html": "I, too, am curious what others&#39; experiences have been with this feature.  My organization faces design paralysis and refuses to implement it because we are:<br />1) Afraid the NOC won&#39;t know how to troubleshoot<br />2) It might mess with discovery tools (NNMI, etc.)<br />At a company that is so large that we have nearly exhausted RFC1918 space, you would think ip unnumbered would be as popular as beer at the beach.  Even using /30&#39;s, it eats up slightly more than a /22 (v4) to address 4 spines of 9504&#39;s.<br />&quot;However, do keep in mind that if you use any centralized authentication/authorization scheme and the routing protocol breaks, you won\u2019t get into the box no matter what.&quot;<br />I was hoping to use this feature on server farms and cloud fabrics, so OOB _should_ save the day there.",
+      "id": "4334143607599487400",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "crzdriver",
+      "profile": "https://www.blogger.com/profile/15351737094337113646",
+      "pub": "2016-01-12T16:53:43.158+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "15 January 2016 07:51",
+          "html": "No you&#39;re not. Totally out-of-context, but I always wondered whether relying on them is a good or a bad thing ;)... but this is obviously just an unfounded opinion :D",
+          "id": "5487302369283795677",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-01-15T07:51:01.971+01:00",
+          "ref": "4656432858427144664",
+          "type": "comment"
+        }
+      ],
+      "date": "12 January 2016 20:40",
+      "html": "&gt; if you use any centralized authentication/authorization scheme and the routing protocol breaks, you won\u2019t get into the box no matter what<br /><br />There&#39;s local AAA fallback for AuthA/AuthZ. Am I missing something?",
+      "id": "4656432858427144664",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Dmitri Kalintsev",
+      "profile": "https://www.blogger.com/profile/16576726865924052243",
+      "pub": "2016-01-12T20:40:30.293+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "15 January 2016 07:48",
+          "html": "I was never happy with the way that draft (now RFC) glossed over some of the details. It also defers to RFC 5837 when mentioning the challenges (and it seems nobody RFC 5837 it so far).<br /><br />Anyway, I wanted to see whether there were other considerations, and it looks like there are none (apart from NMS/autodiscovery challenges).",
+          "id": "7332090357667244017",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-01-15T07:48:41.781+01:00",
+          "ref": "978342417103932179",
+          "type": "comment"
+        }
+      ],
+      "date": "15 January 2016 03:07",
+      "html": "Isn&#39;t this discribed in RFC 7404. ",
+      "id": "978342417103932179",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "shah",
+      "profile": "https://www.blogger.com/profile/15818883829738651247",
+      "pub": "2016-01-15T03:07:35.492+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    },
+    {
+      "date": "16 January 2016 01:30",
+      "html": "I&#39;ve talked at some length with vendors about this in the past and there are a list of things which can be implemented to make it work more seamlessly, support tools, etc. but it&#39;s never been a high enough priority to get done correctly.  It&#39;s a real benefit in some environments like dealing with IP/MPLS access rings, and being able to do node insertions with very little work.  ",
+      "id": "1975072274274036995",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/06036116499201821433",
+      "pub": "2016-01-16T01:30:59.183+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    },
+    {
+      "date": "19 January 2016 03:19",
+      "html": "No they&#39;re not, unless idiots are involved.",
+      "id": "3214982145909001895",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2016-01-19T03:19:29.567+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "24 January 2016 11:18",
+          "html": "Finally a good caveat! Thanks for the question.<br /><br />It _should_ work if you&#39;re using loopback addresses in your ERO (might be implementation dependent, test it first), but obviously you can&#39;t specify the interfaces you want to have in the path (because they don&#39;t have addresses) but only nodes.",
+          "id": "7499759640158231470",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-01-24T11:18:29.263+01:00",
+          "ref": "328055445256700878",
+          "type": "comment"
+        },
+        {
+          "date": "24 January 2016 19:54",
+          "html": "RFC 3477 (updated in 6107) covers the use of unnumbered interfaces in RSVP-TE.  It uniquely identifies a link by the router ID and a 32-bit interface identifier. I believe Junos at least will advertise the IID for unnumbered RSVP-TE interfaces.  However, there is no CLI to configure an ERO based on IID, just IPv4 addresses.    <br /><br />It&#39;s one of those identified things I mentioned, but it really needs customers to drive those enhancements.   ",
+          "id": "5589604698907677091",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "philxor",
+          "profile": "https://www.blogger.com/profile/11341942241767312351",
+          "pub": "2016-01-24T19:54:02.365+01:00",
+          "ref": "328055445256700878",
+          "type": "comment"
+        }
+      ],
+      "date": "24 January 2016 11:06",
+      "html": "I have been thinking to do in our network. But how would &quot;IP unnumbered&quot; work when RSVP-TE ERO configured. We have tactical TE built with static ERP defined. <br /><br />Any feedback on this.. I am trying to lab up this scenario and check..",
+      "id": "328055445256700878",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "arun",
+      "profile": "https://www.blogger.com/profile/06284670119320225771",
+      "pub": "2016-01-24T11:06:40.834+01:00",
+      "ref": "2570844028881681455",
+      "type": "comment"
+    }
+  ],
+  "count": 18,
+  "id": "2570844028881681455",
+  "type": "post",
+  "url": "2016/01/are-unnumbered-interfaces-harmful.html"
+}

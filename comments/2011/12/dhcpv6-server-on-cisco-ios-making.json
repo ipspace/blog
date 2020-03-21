@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "date": "16 December 2011 00:47",
+      "html": "Great post again Ivan, regarding DHCPv6 Relay Chaining <br /><br />&quot;Benefit: due to automatic creation of IPv6 static routes toward downstream DHCPv6 clients (or relays), it\u2019s possible to build large-scale access networks without a routing protocol. All you have to do is to advertise an aggregate prefix from the aggregation-layer switch into the core and let DHCPv6-based static routes do their job in the access layer.&quot;<br /><br />Pretty cool would this be akin to a version of ODR? And would there be any security implications/exploits with this approach?   Regards..",
+      "id": "5978268494946040892",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "jsicuran",
+      "profile": null,
+      "pub": "2011-12-16T00:47:40.763+01:00",
+      "ref": "53281808495785374",
+      "type": "comment"
+    },
+    {
+      "date": "16 December 2011 13:19",
+      "html": "ODR - Not exactly, but sort-of ;)<br /><br />Security implications - as soon as you &quot;own&quot; the backbone, you can do anything you want (DHCPv6 is not signed or anything like that). Apart from that, the DHCPv6 requests get validated by the DHCPv6 server.",
+      "id": "3203109342258426336",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-12-16T13:19:33.976+01:00",
+      "ref": "53281808495785374",
+      "type": "comment"
+    },
+    {
+      "date": "16 January 2012 15:14",
+      "html": "Hi Ivan<br /><br />&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<br /> I wasn\u2019t able to find any progress on the DHCPv6-RADIUS integration front. The standard Delegated-IPv6-Prefix RADIUS attribute works only in IOS XE, where the documentation totally confuses a careless reader (the sample RADIUS configuration is awesome #FAIL , just check the IPv6 prefixes).<br />&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<br /><br />I tried with Dynamips using 72K running c7200-adventerprisek9-mz.151-3.S0a.bin and Freeradius on Ubuntu 11.10 and works fine. The RADIUS [123] is forwarded normally (RFC 4818 is present) as it seems (no need for two accounts on radius). Previously i have faced issues with older versions of Freeradius where the decoding of attribute was failing. Actually i wanted to ask for something else there. In an Broadband scenario using dual-stack PPPoE where customer CPE should be request and assigned a DHCPv6 PD prefix, is it mandatory the use of flags (&#39;M&#39;) on the virtual-template ? According to informational RFC 5887 it is stated the following:<br /><br />&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;<br />We should note a currently unresolved ambiguity in the interaction<br />   between DHCPv6 and SLAAC from the host&#39;s point of view.  RA messages<br />   include a &#39;Managed Configuration&#39; flag known as the M bit, which is<br />   supposed to indicate that DHCPv6 is in use.  However, it is<br />   unspecified whether hosts must interpret this flag rigidly (i.e., may<br />   or must only start DHCPv6 if it is set, or if no RAs are received) or<br />   whether hosts are allowed or are recommended to start DHCPv6 by<br />   default.  An added complexity is that DHCPv6 has a &#39;stateless&#39; mode<br />   [RFC3736] in which SLAAC is used to obtain an address, but DHCPv6 is<br />   used to obtain other parameters.  Another flag in RA messages, the<br />   &#39;Other configuration&#39; or O bit, indicates this.<br /><br />   Until this ambiguous behaviour is clearly resolved by the IETF,<br />   operational problems are to be expected, since different host<br />   operating systems have taken different approaches.  This makes it<br />   difficult for a site network manager to configure systems in such a<br />   way that all hosts boot in a consistent way.  Hosts will start SLAAC,<br />   if so directed by appropriately configured RA messages.  However, if<br />   one operating system also starts a DHCPv6 client by default, and<br />   another one starts it only when it receives the M bit, systematic<br />   address management is [...]",
+      "id": "1489296519371942401",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "iord@intracom.com",
+      "profile": null,
+      "pub": "2012-01-16T15:14:39.631+01:00",
+      "ref": "53281808495785374",
+      "type": "comment"
+    },
+    {
+      "date": "19 January 2012 14:09",
+      "html": "SLAAC/DHCPv6: http://blog.ioshints.info/2012/01/ipv6-nd-managed-config-flag-is-just.html<br /><br />DHCPv6-RADIUS integration: http://blog.ioshints.info/2012/01/dhcpv6-prefix-delegation-with-radius.html<br /><br />Thanks for the comment!<br />Ivan",
+      "id": "8368822449035400644",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2012-01-19T14:09:13.904+01:00",
+      "ref": "53281808495785374",
+      "type": "comment"
+    }
+  ],
+  "count": 4,
+  "id": "53281808495785374",
+  "type": "post",
+  "url": "2011/12/dhcpv6-server-on-cisco-ios-making.html"
+}

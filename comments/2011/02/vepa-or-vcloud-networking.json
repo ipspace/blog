@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "date": "17 February 2011 08:57",
+      "html": "Hi Ivan,<br /><br />You may have answered the question I&#39;m about to ask somewhere else, but I certainly have missed your answer, so here comes: could you describe the context of your posts in relation to the Data Centre networking, i.e. what kind of a &quot;cloudy&quot; arrangement would supposedly live in the DCs are you talking about? <br /><br />Some examples of such &quot;cloudy&quot; arrangements might be: a) An enterprise who rents space or owns a DC and runs their own stuff there (and runs private lines to/between DC(s)); b) an XaaS Service Provider, who provides &quot;public&quot; cloudy services (accessed via the Internet); or c) an XaaS Service Provider, who provides &quot;private&quot; cloudy services (accessed via private lines)?<br /><br />The reason I&#39;m asking is that there are differences, sometimes significant, in what might and what might not a problem (or how severe it is), depending on the scenario. For example, for the case (a) a limit of 4094 VLANs is not likely to be a limitation (which is a force at play when you&#39;re using Nexus, AFAIK), but for an SP with hundreds or thousands of customers it would certainly be.",
+      "id": "1490824120120378405",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dmitri Kalintsev",
+      "profile": null,
+      "pub": "2011-02-17T08:57:48.000+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    },
+    {
+      "date": "17 February 2011 09:05",
+      "html": "More to the above - depending on the scenario, the oft-mentioned &quot;tromboning&quot; problem may not be a problem at all - if storage is replicated (sync or via storage vMotion), and a VM after the move is talking to storage at the new location, then, assuming we&#39;re talking typical enterprise applications (CRM, ERP) the volumes of data exchanged between DB server and application clients usually are quite minuscule, so tromboning might not be such a big issue?",
+      "id": "6323824354124794711",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dmitri Kalintsev",
+      "profile": null,
+      "pub": "2011-02-17T09:05:02.000+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    },
+    {
+      "date": "17 February 2011 10:00",
+      "html": "The tools to build scalable data centers are already out there with true distributed processing frameworks like Hadoop, Cassandra, MapReduce, etc. Google, Facebook and Amazon have done this successfully and have scaled their systems without extended vlans all over the globe. Granted, they choose to hire the best and the brightest engineers but shouldn&#39;t any large organization attempting such a lofty goal as the almighty &quot;Cloud&quot; do the same? <br /><br />Most organizations are going about things backwards (probably because consolidation was marketed before &quot;the cloud&quot;). If you implement a true distributed computing platform, you improve server consolidation. VMware solves a consolidation problem, not a distributed computing problem. If organizations want a true cloud, the answer is to invest in engineering talent, not an off the shelf product.",
+      "id": "1989631296869794688",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Steve",
+      "profile": null,
+      "pub": "2011-02-17T10:00:57.000+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    },
+    {
+      "date": "18 February 2011 18:54",
+      "html": "It depends on how well you design your network and what the traffic flows are. Inbound traffic will always trombone (unless you use interesting tricks with Route Health Injection that brings you close to L3 solution), database traffic will also trombone, outbound traffic might go through the nearest exit point and out into the WAN, but then you can&#39;t use any stateful device in the path (Roland Dobbins would undoubtedly say &quot;I told you firewalls stink&quot;)",
+      "id": "2458029947393946132",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-02-18T18:54:32.000+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    },
+    {
+      "date": "18 February 2011 18:55",
+      "html": "Couldn&#39;t agree more ... however, there&#39;s the reality of legacy applications that will never be coded properly and a lot of clueless people calling themselves programmers rolling out code based on non-scalable architectures.",
+      "id": "2856354529174475100",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-02-18T18:55:53.000+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    },
+    {
+      "date": "18 February 2011 22:36",
+      "html": "I agree that there will be tromboning. I am just saying that if these tromboned flows are small, then it simply does not matter - let them trombone, as the end-user experience (the only thing that matters, in the end) will not be affected perceivably.",
+      "id": "4582059660671950041",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dmitri Kalintsev",
+      "profile": null,
+      "pub": "2011-02-18T22:36:35.000+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    },
+    {
+      "date": "24 February 2011 01:26",
+      "html": "Have you heard of the Open vSwitch?  They basically establish tunnels to the edge, so the physical network just does packet forwarding and all service provisioning occurs in the logical network.  It sounded a little nuts to me at first, but the more I read and think about it, the more compelling it sounds.<br /><br />http://openvswitch.org/",
+      "id": "8305379935594617203",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "lcg",
+      "profile": null,
+      "pub": "2011-02-24T01:26:38.721+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    },
+    {
+      "date": "24 February 2011 10:18",
+      "html": "You can use LISP to optimize North-South traffic. What is exactly meant by tromboning?",
+      "id": "6700915548977429631",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Shahid",
+      "profile": null,
+      "pub": "2011-02-24T10:18:48.809+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    },
+    {
+      "date": "28 February 2011 12:23",
+      "html": "Thanks for the link - interesting product!",
+      "id": "5919449237182462415",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-02-28T12:23:35.751+01:00",
+      "ref": "6537106639810369659",
+      "type": "comment"
+    }
+  ],
+  "count": 9,
+  "id": "6537106639810369659",
+  "type": "post",
+  "url": "2011/02/vepa-or-vcloud-networking.html"
+}

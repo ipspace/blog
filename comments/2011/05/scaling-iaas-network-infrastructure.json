@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "date": "17 May 2011 11:24",
+      "html": "&quot;but even MPLS would hit scalability limits when the number of servers grows into tens of thousands&quot; , I don&#39;t see this is an issue, even with current day RIB/FIB limitations, especially as most implementations are doing single-label-per-vrf on the PE, can you explain?",
+      "id": "5195929174971155982",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "www.convergence.cx",
+      "profile": null,
+      "pub": "2011-05-17T11:24:41.000+02:00",
+      "ref": "8844023760353497996",
+      "type": "comment"
+    },
+    {
+      "date": "17 May 2011 12:46",
+      "html": "The way MPLS/VPN is implemented today, you have to run MP-IBGP between loopback interfaces (to ensure end-to-end LSP is set up correctly) _and_ all those loopback interfaces have to appear as host routes in IGP and RIB/FIB. You would end up with tens of thousands of host routes in a single IGP. Not the best design.<br /><br />As for label-per-VRF, all implementations I&#39;ve seen use label-per-CE-prefix (apart from 6500/7600 where they obviously underdimensioned the LFIB), but it doesn&#39;t matter as the labels are locally significant to the PE-router. On the other hand, you do need a single LDP label to get to the PE-router, so label space is not the issue.",
+      "id": "743344665271603694",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-05-17T12:46:08.749+02:00",
+      "ref": "8844023760353497996",
+      "type": "comment"
+    },
+    {
+      "date": "18 May 2011 05:34",
+      "html": "Well, there sure are multiple solutions to allow for route summarization with MPLS LSPs, so scaling IGP is not a problem even in MPLS networks. The main challenge in the type of the topology used in the large data centers. More and more often, it tends to be fat tree for network that feature full-mesh traffic patterns. In topologies like that, the number of links (and paths) in the topology no longer grows as O(N), where N is the number of nodes. Per what we know today, In topologies with non-linear density growth commonly used routing protocols do not scale, and alternate routing solutions should be used, such as algorithmic or compact routing. As long as the network topology has link density proportional to the number of nodes (in other words it is more like a k-ary tree), theoretical scaling should not be a problem with any routing/switching technology.",
+      "id": "346000811794102232",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "plapukhov",
+      "profile": null,
+      "pub": "2011-05-18T05:34:01.632+02:00",
+      "ref": "8844023760353497996",
+      "type": "comment"
+    },
+    {
+      "date": "18 May 2011 09:21",
+      "html": "and if you are really bothered about using the IGP, why not use BGP to carry the FEC label? (i.e run labelled unicast address family along with vpnv4 from your hypervior+PE to your RR)",
+      "id": "7416502728623606760",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "www.convergence.cx",
+      "profile": null,
+      "pub": "2011-05-18T09:21:03.000+02:00",
+      "ref": "8844023760353497996",
+      "type": "comment"
+    },
+    {
+      "date": "18 May 2011 09:25",
+      "html": "Doesn&#39;t work if you have L3 switches in the path (and you need them to scale)",
+      "id": "6056205295412784413",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-05-18T09:25:46.379+02:00",
+      "ref": "8844023760353497996",
+      "type": "comment"
+    },
+    {
+      "date": "18 May 2011 16:39",
+      "html": "This is purely a technical limitation, not affecting theoretical scalability of a given technology. As long as there is no theoretical obstacle to scale a design it is always possible to come up with a technical solution if needed. That could be connection oriented or connectionless technology, it does not really matter -  this is just an old argument of connections vs packets. The major factor that limits theoretical scalability is type of complexity growth in the network topology.",
+      "id": "628675096116466428",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "plapukhov",
+      "profile": null,
+      "pub": "2011-05-18T16:39:20.748+02:00",
+      "ref": "8844023760353497996",
+      "type": "comment"
+    },
+    {
+      "date": "19 May 2011 00:53",
+      "html": "I think that is quite a general statement (&quot;you need them to scale&quot;), L3 aggregation switching certainly has its place , if that place requires you to drop useful technology to save cost/space then perhaps it isn&#39;t such a great approach. I&#39;m personally not using L3 top-of-rack switching for this reason (instead we have L3 distribution which has full feature parity) so this approach would work for me.",
+      "id": "5112985545984632399",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "www.convergence.cx",
+      "profile": null,
+      "pub": "2011-05-19T00:53:58.029+02:00",
+      "ref": "8844023760353497996",
+      "type": "comment"
+    }
+  ],
+  "count": 7,
+  "id": "8844023760353497996",
+  "type": "post",
+  "url": "2011/05/scaling-iaas-network-infrastructure.html"
+}

@@ -1,0 +1,137 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "07 November 2018 11:06",
+          "html": "Segment routing using OSPF or IS-IS as control plane carries labels in router LSAs, so the whole MPLS domain has to be a single OSPF/IS-IS area.<br /><br />Obviously you could get around that limitation by using a controller that would install labels (or label stacks) in edge nodes... but the question remains: what would you get with that?",
+          "id": "6739158700508021135",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2018-11-07T11:06:55.654+01:00",
+          "ref": "7163859897687878316",
+          "type": "comment"
+        }
+      ],
+      "date": "07 November 2018 09:49",
+      "html": "If I&#39;m not mistaken, with Segment Routing you&#39;d have MPLS domain wide labels as labels are in the IGP. Wouldn&#39;t that allow you to simplify your core (in reference to your CSC remark) network? I know you can have controllers in SR networks determining the path by stacking labels, but it can also be a bit more &quot;hands-off&quot; as labels are already in the IGP, so a controller is not a hard requirement to create a label-stack.",
+      "id": "7163859897687878316",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "mr_x",
+      "profile": "https://www.blogger.com/profile/15712189806397065976",
+      "pub": "2018-11-07T09:49:47.951+01:00",
+      "ref": "185608367108831800",
+      "type": "comment"
+    },
+    {
+      "date": "07 November 2018 09:59",
+      "html": "If you want to be a unicorned locked-in snowflake go with MPLS.",
+      "id": "9064252567370109019",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2018-11-07T09:59:03.788+01:00",
+      "ref": "185608367108831800",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "07 November 2018 20:18",
+          "html": "How could I have missed that. The answer is BGP... what exactly was the question ;)) But yeah, that definitely increases the scalability by an order of magnitude.<br /><br />Speaking of &quot;large DCs running MLPS&quot; - do they have MPLS at the WAN edge to select egress WAN interface on HTTP(S) proxy servers, or do they use MPLS as the core fabric transport?<br /><br />Thank you!",
+          "id": "5919060712827061285",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2018-11-07T20:18:40.672+01:00",
+          "ref": "7143222110848207678",
+          "type": "comment"
+        }
+      ],
+      "date": "07 November 2018 12:26",
+      "html": "Ivan,<br /><br />You could use BGP to distribute SIDs - draft-ietf-idr-bgp-prefix-sid, there&#39;s XR implementation, I believe Juniper should have one too... I&#39;m in no way advocating to run MPLS in DC, especially not for TE reasons as some of our Cisco friends may suggest :) There&#39;s number of a rather large DCs that run MPLS, so mileage may very. I&#39;m a big believer in SRinUDP architecture (based on RFC7510) that allows to program (programmatically interact with)WAN for end2end path DC-WAN(with TE)-DC. More info in MPLS Segment Routing in IP Networks draft-bryant-mpls-unified-ip-sr-03 ",
+      "id": "7143222110848207678",
+      "image": "https://4.bp.blogspot.com/-Jm8onWGyM0M/WoYk1lJ1zuI/AAAAAAAAAy8/aU73FTiTCFUgsnYdYVJ8cf3PRUZqGlKOACK4BGAYYCw/s32/jeff_tantsura.jpg",
+      "name": "Jeff Tantsura",
+      "profile": "https://www.blogger.com/profile/17193851449183304827",
+      "pub": "2018-11-07T12:26:16.905+01:00",
+      "ref": "185608367108831800",
+      "type": "comment"
+    },
+    {
+      "date": "07 November 2018 19:29",
+      "html": "On hypervisors both Contrail and Nuage support(ed) MPLSoGRE data planes, with Contrail additionally supporting MPLSoUDP.<br />MPLSoGRE not being very ECMP friendly is probably the motivation for moving to a udp based transport. In that sense not much of a difference between MPLSoUDP and VXLAN, except for resource overheads in hardware/software perhaps.",
+      "id": "5560470453850340206",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ashvin",
+      "profile": null,
+      "pub": "2018-11-07T19:29:07.698+01:00",
+      "ref": "185608367108831800",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2018 21:04",
+      "html": "Not a fan at all of the NCS 5K platforms.  Currently evaluating the 5502 and it&#39;s beaten in every conceivable way by the competing Juniper platform, including cost.",
+      "id": "3719611818008917368",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2018-11-09T21:04:26.323+01:00",
+      "ref": "185608367108831800",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "18 November 2018 04:11",
+          "html": "Effectively it is distributed service chaining of VXLAN tenant through local MPLS service functions for north-south flows. ",
+          "id": "93256182263331106",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Aldrin",
+          "profile": "https://www.blogger.com/profile/15493370358037866116",
+          "pub": "2018-11-18T04:11:11.340+01:00",
+          "ref": "9012258497168283060",
+          "type": "comment"
+        }
+      ],
+      "date": "18 November 2018 01:39",
+      "html": "One could also consider VXLAN and MPLS coexistence.  As in east-west traffic domain over VXLAN and north-south traffic domain (across WAN) over MPLS.  CE attach in VXLAN contexts.  Local FE and external routes are selectively exported across VXLAN VRF and MPLS VRF (or global table) at leaf for north-south flows.  BE-BE and BE-FE flows stay VXLAN.  Only FE leaf need the MPLS+VXLAN capabilities.  Best of both worlds. ",
+      "id": "9012258497168283060",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Aldrin",
+      "profile": "https://www.blogger.com/profile/15493370358037866116",
+      "pub": "2018-11-18T01:39:02.833+01:00",
+      "ref": "185608367108831800",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "19 February 2019 13:46",
+          "html": "While you&#39;re technically correct, there&#39;s a gap between theory and practice: how many leading data center switching vendors implemented MPLS-in-UDP?",
+          "id": "4640067912946272985",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2019-02-19T13:46:55.771+01:00",
+          "ref": "1078834909155748959",
+          "type": "comment"
+        }
+      ],
+      "date": "19 February 2019 12:50",
+      "html": "Yes, I&#39;m sure that you had missed something important: the MPLS/BGP VPN doesn&#39;t require that the underlay must be an MPLS fabric thanks to those MPLS-in-IP tunneling technologies such as MPLS-in-UDP [RFC7510].<br /><br />Xiaohu",
+      "id": "1078834909155748959",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Xiaohu Xu",
+      "profile": "https://www.blogger.com/profile/10815313390905554009",
+      "pub": "2019-02-19T12:50:23.385+01:00",
+      "ref": "185608367108831800",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "185608367108831800",
+  "type": "post",
+  "url": "2018/11/using-mplsevpn-in-data-center-fabrics.html"
+}

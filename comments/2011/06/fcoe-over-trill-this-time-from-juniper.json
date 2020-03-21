@@ -1,0 +1,217 @@
+{
+  "comments": [
+    {
+      "date": "15 June 2011 08:18",
+      "html": "Ridiculous. FCoE cannot be compared to TRILL at all and both address different needs.  <br />FCoE addresses unifies I/O: specific to the costs of Nx by NICs plus Nx by HBA&#39;s and associated cabling costs:implied savings, while TRILL addresses bi-sectional bandwidth requirements at L2. Both have their perspective use cases.  FCoE applicable if there is an existing investment in FC SAN, and TRILL applicable in use cases where massive, rather dynamic bandwidth requirements are demanded.<br /><br />If anything, the debate should be iSCSI vs FCoE, and ECMP vs TRILL.",
+      "id": "7310680132419519323",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anon",
+      "profile": null,
+      "pub": "2011-06-15T08:18:39.435+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "15 June 2011 10:15",
+      "html": "Nice job on the article, Ivan. Extremely succinct and well-written. This is the first time I&#39;ve heard of &quot;sparse mode&quot; and &quot;dense mode&quot; FCoE, but it makes sense. <br /><br />I do agree with your &quot;Note to marketing departments&quot; and I have been trying very hard to write *exactly* &quot;how our boxes actually work, what they can do and how we can build great solutions with them.&quot; Trying to write for a broad audience usually precludes me from delving into white paper-type writing style, but if there&#39;s something that I miss or fail to accomplish in that goal let me know what I miss.<br /><br />Now, if you&#39;ll excuse me, I need to get back to my Hawaiian holiday. :)",
+      "id": "6908305056666871842",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "J Metz",
+      "profile": null,
+      "pub": "2011-06-15T10:15:05.427+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "15 June 2011 14:43",
+      "html": "Thank you - nice to hear you like it ;)<br /><br />The &quot;Note to marketing departments&quot; was definitely not aimed at you. I won&#39;t name any names, but I&#39;m positive everyone can make a few educated guesses based on my past rants.<br /><br />Enjoy the holidays!!!",
+      "id": "6877270937898972262",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-06-15T14:43:03.221+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "15 June 2011 17:57",
+      "html": "Hi Ivan,<br /><br />thanks for the article, extremely clear and well put. Should I take from your analysis that Juniper&#39;s QFX3500 is a sparse-mode, non FCF capable switch? That was my idea before taking a look at their doc, and apparently this confirms this view.<br /><br />For Juniper&#39;s QF strategy this does not seem so problematic (I still don&#39;t see how they will separate SAN Fabrics at the central nodes, but let&#39;s obviate that), but I find it challenging to imagine how could Juniper deploy a multi-hop FCoE network not QFabric based...",
+      "id": "1961584621739719477",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Pablo Carlier",
+      "profile": null,
+      "pub": "2011-06-15T17:57:26.492+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "15 June 2011 19:23",
+      "html": "You&#39;re absolutely right.",
+      "id": "190813809716812815",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-06-15T19:23:46.857+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "15 June 2011 20:20",
+      "html": "Since Juniper invited the criticism..<br />The QFX3500 FCoE NPV mode is handy if you are attaching rack servers directly to it.<br />But what about blade server enclosures with integrated FCoE switches?<br />Put the blade switch in NPV mode too? Nope.  You cannot cascade NPV mode.<br />Therefore the only option I can see would be to have both the blade switch and QFX3500 put in transparent L2 FIP Snooping mode, thus creating the limiting and undesired &quot;Sparse mode FCoE&quot; desing.  Ooops.<br />If the QFX3500 supported things like bridge port extenstion (VN-Tag, or Qbh), and FCoE FCF, then one could design a solid FCoE solution with blade servers, but unfortunately it does not and therefore lacks some much needed architecturaual flexibility with regards to access layer convergence.",
+      "id": "1285499509623836322",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brad Hedlund",
+      "profile": null,
+      "pub": "2011-06-15T20:20:50.801+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "15 June 2011 23:17",
+      "html": "Does QFabric add FCF capabilities? If not, how does an FCoE initiator talk to an FCoE target, each attached to QFabric?",
+      "id": "7257749950013216272",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brad Hedlund",
+      "profile": null,
+      "pub": "2011-06-15T23:17:53.274+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "15 June 2011 23:35",
+      "html": "Hmm, interesting point Brad. I think that this &quot;one big switch&quot; QFabric without FCF functionality might not be very usefull if you want to actually build a NETWORK where hosts actually want to talk to storage. Without FCF functionality inside QFabric, you need an actual network to make QFabric useful for storage traffic.  <br /><br />Guess QFabric really is QEthernet",
+      "id": "1533574947665278709",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tjerk Bijlsma",
+      "profile": null,
+      "pub": "2011-06-15T23:35:38.306+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "16 June 2011 04:37",
+      "html": "Anon, totally agree except for a few minor things<br /><br />1.) TRILL first is meant to be a replacement for STP. Bandwidth benefits are a product of that desire/work.<br /><br />2.) TRILL and ECMP are very complimentary. Not adversarial.",
+      "id": "3693706400648575606",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jon Hudson",
+      "profile": null,
+      "pub": "2011-06-16T04:37:38.631+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "16 June 2011 04:43",
+      "html": "Well written as always!<br /><br />What I don&#39;t understand is why; <br /><br />Cisco can have TRILL based products and focus on why that is good.<br />Brocade can have TRILL based products and focus on why that is good. <br />(this list goes on and on)<br /><br />Juniper seems to spend more time and energy pointing out how using TRILL will damn you to hell and cause the corruption of the morals of society than anything else. <br /><br />I LOVE TRILL. I also see value in SPB. I don&#39;t bash SPB. I don&#39;t tell customers that if they run SPB or QFabric that they will turn into a Newt. <br /><br />Why so angry Juniper?",
+      "id": "1736509433695919126",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jon Hudson",
+      "profile": null,
+      "pub": "2011-06-16T04:43:36.270+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "16 June 2011 08:09",
+      "html": "Because they won&#39;t have TRILL or SPB?<br /><br />Personally, I think QFabric will incorporate some great ideas ... but they way they do their marketing is &quot;somewhat extraordinary&quot;. Instead of telling us where they excel (and why and how), they bash everything else.",
+      "id": "2124380566139057166",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-06-16T08:09:53.117+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "16 June 2011 08:14",
+      "html": "I guess you&#39;d put blade switch in FIP snooping mode, and QFX3500 in NPV mode. Remember another company having exactly the same design with N****4000 and N****5000 switches a while back? Ah, keep forgetting, that was before they had full-blown FCF stack everywhere  :-E<br /><br />Not saying dense-mode FCoE is not better, but even the above-mentioned design is not bad and you can easily maintain air-gap separation (if you truly want it - not sure why you&#39;d be so rigorous apart from religious reasons) with proper VLAN assignments.<br /><br />We also need to discuss once how dumber boxes (port extenders) add architectural flexibility  :-P",
+      "id": "5135584922029812629",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-06-16T08:14:37.812+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "16 June 2011 16:38",
+      "html": "With FIP Snooping at the blade switch I pitty the poor guy who gets stuck with the job of manually configure all the ENode MACs at the upstream NPV or FCF (yes, same case with N4K).<br /><br />However, if the upstream NPV or FCF had port exenter capabilities, the blade switch would be a simple port extender and no FIP Snooping is required.  Since every ENode in the blade chassis is now directly connected to the upstream NPV or FCF, there is no need to manually configure ENode MAC addresses.<br />The ability to extend the capabilities of the upstream device down to the servers provided the architectrual flexibility, and simplicity. :-)",
+      "id": "4701106459476335326",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brad Hedlund",
+      "profile": null,
+      "pub": "2011-06-16T16:38:06.428+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "16 June 2011 18:58",
+      "html": "I never quite understood why someone would need to enter the Enode MAC addresses on the NPV/FCF. I know it&#39;s the limitation of NX-OS implementation of FCoE, but I fail to see it as an architectural requirement. What am I missing?",
+      "id": "44104438307468522",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-06-16T18:58:44.711+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "17 June 2011 06:37",
+      "html": "It&#39;s a simple matter of provisioning and applying policy.  If the server (ENode) does not have it&#39;s own physical or virutal Ethernet interface on the FCF/NPV, (as would be the case with a FIP Snooping blade switch) how do you distinguish and differentiate one ENode from another?  You cant make it interface based so you need to move up the stack and provision configuration and policy based on the MAC address.<br /><br />Think about it this way, with a FIP Snooping blade switch how would you provision ENode-A in VSAN1 and ENode-B in VSAN2?  How would you do that without needing to know the MAC address of each ahead of time?  Good luck.<br /><br />On the other hand, with a port extender (FEX) as the blade switch, each ENode has its own virtual Ethernet interface on the upstream FCF/NPV, so you can for example provision VSAN based on interfaces, without ever needing to care one bit about MAC addresses.",
+      "id": "8027156043748398944",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brad Hedlund",
+      "profile": null,
+      "pub": "2011-06-17T06:37:54.000+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "19 June 2011 09:45",
+      "html": "hello Ivan , <br />thanks for the post and the follow-up discussions  ,  the QFabric looks nice at different levels and the developers have interesting ideas . From a storage point of view it looks nice as long as you don&#39;t want to get ride from day one (two) of your native FC equipments ( most deployment scenarios will probably not ) as the NPV only storage won&#39;t work on it&#39;s own , so seems like a full blown FCoE only storage architecture  ( without 3rd party native SAN )  with QFabrc is today not possible but certainly will be in the future. <br />The article title mentioned TRILL so from a protocol point of view apparently the mpls-like DCF  is not supporting the TTL desired field and is relaying on the loop free Tree only. <br />At the end I think people will be especially focused on the 40GIG ( ethernet ??)  uplinks capabilities  :)  as all the emerging protocols are promised tol be simply a hidden c-plane from a user point of view.",
+      "id": "596616743602075996",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "michal",
+      "profile": null,
+      "pub": "2011-06-19T09:45:14.012+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "21 June 2011 17:35",
+      "html": "The additional issue to tag onto Brad&#39;s excellent explanation is the consequence of troubleshooting. Without that visibility you have a break in the ability to use standard fabric-based tools to troubleshoot problematic and troublesome hosts/CNAs and are required to use the tools available from the CNA vendor.<br /><br />As you increase the number of ports (and the number of VMs behind those ports) this can become quite daunting. The N4k limits those number of ports to 16 server-facing, but IIRC some of the new switches from Juniper and others are 48-port FIP snooping switches. With VMs on the other end of those ports it can be an awful lot of manual hunting for problematic hosts.",
+      "id": "3824367319269280192",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "J Metz",
+      "profile": null,
+      "pub": "2011-06-21T17:35:51.575+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "21 June 2011 20:49",
+      "html": "Definitely a great point. Need to write a new post about this particular aspect. Not sure many people get it - we&#39;re so used to dealing with the crazy mix of routing and bridging that we keep forgetting there are still some truly routed networks (= SAN).<br /><br />BTW, you might want to write &quot;SAN fabric&quot; not just &quot;fabric&quot;. Fabric with our without Q can mean anything  today, including the material from which my 20-year-old Cisco T-shirt is made  :-P<br /><br />The MAC address problem Brad mentioned is even more intriguing. I had to go back to FC-BB-5 and really study it to figure out what the issue is. Definitely yet another post (Brad, you don&#39;t need to write them, I will  ;) )",
+      "id": "2561410906559007904",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-06-21T20:49:58.584+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    },
+    {
+      "date": "22 June 2011 22:00",
+      "html": "Oooooh. Good point re: &quot;Fabric.&quot; Quite frankly, IMHO, we&#39;ve all lost the plot about about the term - my own company included.   =-O",
+      "id": "126541636202488234",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "J Metz",
+      "profile": null,
+      "pub": "2011-06-22T22:00:13.298+02:00",
+      "ref": "7853585452031197930",
+      "type": "comment"
+    }
+  ],
+  "count": 19,
+  "id": "7853585452031197930",
+  "type": "post",
+  "url": "2011/06/fcoe-over-trill-this-time-from-juniper.html"
+}

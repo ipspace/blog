@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "02 June 2016 11:17",
+          "html": "Oh and also for radars. So there is a few more scenarios for multicast that is needed ",
+          "id": "110155131643704492",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/11194529584766534758",
+          "pub": "2016-06-02T11:17:48.592+02:00",
+          "ref": "4411191720591026275",
+          "type": "comment"
+        },
+        {
+          "date": "02 June 2016 11:22",
+          "html": "Well, I&#39;d guess that IPTV falls within the 1:N video streaming category.<br /><br />However, have you considered what happens once people stop watching TV and turn to Netflix? All those video streams will become unicast streams.",
+          "id": "5254003471161396030",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-06-02T11:22:47.205+02:00",
+          "ref": "4411191720591026275",
+          "type": "comment"
+        },
+        {
+          "date": "02 June 2016 14:59",
+          "html": "Not applicable when used with live streaming like sports or news when people want to watch live. <br />I still think there is a need for multicast and network engineers need to master it, it&#39;s a great technology where a lot of time not implemented correctly because network engineers are afraid of it. ",
+          "id": "4111027198222351570",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/11194529584766534758",
+          "pub": "2016-06-02T14:59:18.349+02:00",
+          "ref": "4411191720591026275",
+          "type": "comment"
+        }
+      ],
+      "date": "02 June 2016 11:14",
+      "html": "We use multicast for IPTV streaming. The content provider send each channel to a different multicast address and we use multicast routing. If we won&#39;t use multicast our uplinks will choke. <br />",
+      "id": "4411191720591026275",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/11194529584766534758",
+      "pub": "2016-06-02T11:14:32.236+02:00",
+      "ref": "7210723362983360252",
+      "type": "comment"
+    },
+    {
+      "date": "02 June 2016 13:50",
+      "html": "Pushing controller to end-host also can be done for routing. BGP for example, host will have the control to advertise the UP network required and &#39;take over&#39; the complexity from the network.<br /><br />However, it doesn&#39;t mean that the plumbing in the middle does not require BGP let alone routing protocol.<br /><br />In this case, end-host is participating but not actually taking over.<br /><br />I cannot find real-life example (probably I haven&#39;t live that long) on how multicast control can be pushed to end-host. Session control/record is required on each hop.<br /><br />Idea is good, you both are futurist.",
+      "id": "4735004221860630070",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "David Sudjiman",
+      "profile": "https://www.blogger.com/profile/06842841062364129222",
+      "pub": "2016-06-02T13:50:10.464+02:00",
+      "ref": "7210723362983360252",
+      "type": "comment"
+    },
+    {
+      "date": "02 June 2016 19:17",
+      "html": "I am involved in Public Safety business  Tetra / Apco where the multicasts are used in my opinion in right way. We have group communication 1 to many and it seems that multicasts are very efficient for this kind of network. From the application perspective we do not to have to care about how to build optimal audio delivery tree. The network take care of this task.",
+      "id": "1408086711908524991",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Bogdan Golab",
+      "profile": "https://www.blogger.com/profile/12912702162710760711",
+      "pub": "2016-06-02T19:17:56.248+02:00",
+      "ref": "7210723362983360252",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "06 June 2016 16:51",
+          "html": "Even with video streams, it&#39;s far easier and more reliable to setup an internal CDN which sends unicast streams to caching/re-broadcasting appliances closer to the end-users than it is to keep a multicast network working reliably. Setting up multicast routing isn&#39;t difficult, but troubleshooting a multicast network issue is a nightmare. Can you setup a debug on a production router in the middle of a production day? Can you get a packet-capture? How often can you upgrade router firmware to get in patches for buggy multicast routing?<br /><br />At a small scale (100 Mbps links, Cisco ISR routers) I&#39;m sure multicast works fine. At a large scale (10Gbps links, Cisco 6500/7600 routers), where multicast should be the most beneficial, multicast is a troubleshooting nightmare.",
+          "id": "2776070408534712563",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "JeffTP",
+          "profile": "https://www.blogger.com/profile/15752462696912045829",
+          "pub": "2016-06-06T16:51:49.493+02:00",
+          "ref": "4831142879076668045",
+          "type": "comment"
+        },
+        {
+          "date": "07 June 2016 17:12",
+          "html": "Sounds like FUD to me.  We do both CDN and IP multicast for different applications.  We have been doing IP multicast video distribution for many years.  It&#39;s not rocket science, it hasn&#39;t changed much in a decade, and it&#39;s not really that hard to troubleshoot.  We use it where it makes sense to use it, and much higher speeds than 10Gbps.  BIER is even new work going on to create a stateless multicast delivery method, so it&#39;s certainly not dead.  <br /><br />As for QoS, even in long-haul networks there can be bottlenecks requiring QoS.  There is also a movement towards more agile optical restoration to replace L3 capacity in long-haul/metro networks.  During the restoration events you need QoS in order to keep higher priority traffic flowing while best effort traffic is dropped.  <br /><br />",
+          "id": "7498906568000826205",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/06036116499201821433",
+          "pub": "2016-06-07T17:12:14.460+02:00",
+          "ref": "4831142879076668045",
+          "type": "comment"
+        },
+        {
+          "date": "21 June 2016 16:54",
+          "html": "Good point Phil. Even at 10gig there&#39;s room to utilize QoS. Until the day when everyone will have all the bandwidth they&#39;d ever need, QoS will be needed to prioritize traffic.",
+          "id": "8088594929807043026",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Rob",
+          "profile": "https://www.blogger.com/profile/02019241203385442877",
+          "pub": "2016-06-21T16:54:25.244+02:00",
+          "ref": "4831142879076668045",
+          "type": "comment"
+        }
+      ],
+      "date": "02 June 2016 19:24",
+      "html": "The mantra that the multicasts are dead and not useful is repeated in this &quot;Future of the Networking&quot; series many times. I guess that all guests (Comer, Huston) think about Internet. The Enterprise networking is somewhat different story and there are many niches where we do things differently to be efficient. They often mention CDN as the ultimate solution which kills the multicasts. Again, what works fine for the Internet (from the cost perspective) is not always good for non Internet networks",
+      "id": "4831142879076668045",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Bogdan Golab",
+      "profile": "https://www.blogger.com/profile/12912702162710760711",
+      "pub": "2016-06-02T19:24:10.070+02:00",
+      "ref": "7210723362983360252",
+      "type": "comment"
+    },
+    {
+      "date": "03 June 2016 08:36",
+      "html": "Thanks for the nice discussion. Makes sense to see different view points on that. Just to throw in some more facts on how far CDNs are away from, let&#39;s say, delivering the super bowl: https://www.youtube.com/watch?v=w479dF6C9YA",
+      "id": "270217149964920708",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Julius",
+      "profile": "https://www.blogger.com/profile/07535275430453448808",
+      "pub": "2016-06-03T08:36:49.956+02:00",
+      "ref": "7210723362983360252",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "05 June 2016 10:42",
+          "html": "I made that same argument a long while ago, and someone quickly pointed me to an article describing how a very large installation (don&#39;t remember who it was) got way better results replacing multicast-based software distribution with Bittorrent.",
+          "id": "4646610714884718789",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-06-05T10:42:51.853+02:00",
+          "ref": "1198216629343846007",
+          "type": "comment"
+        },
+        {
+          "date": "06 June 2016 01:34",
+          "html": "Ivan, not sure if it is the same group you are referring to, but one of our faculties is using Bittorrent this way.<br />https://uqcs.org.au/2014/03/23/seminar-pervade-and-hypervade.html<br />",
+          "id": "5258169014922325948",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Patrick",
+          "profile": null,
+          "pub": "2016-06-06T01:34:38.606+02:00",
+          "ref": "1198216629343846007",
+          "type": "comment"
+        }
+      ],
+      "date": "03 June 2016 22:24",
+      "html": "Getting software images on computers with multicast within an educational environment with hundreds of buildings placed all over the town. Not everyone has one big campus... ",
+      "id": "1198216629343846007",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Michael67",
+      "profile": "https://www.blogger.com/profile/03014282355010119539",
+      "pub": "2016-06-03T22:24:15.361+02:00",
+      "ref": "7210723362983360252",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "21 June 2016 16:28",
+          "html": "Multicast is one of those protocols, just like good network engineers ;) you don&#39;t realize what it does until it&#39;s gone. How about all dynamic routing protocols for communication..224.0.0.x anyone? Even VXLAN utilizes multicast for 1 to many BUMs for simple configurations. Alas multicast seems to be the child no one understands, but everyone needs. ",
+          "id": "3040390236464259177",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Rob",
+          "profile": "https://www.blogger.com/profile/02019241203385442877",
+          "pub": "2016-06-21T16:28:29.980+02:00",
+          "ref": "5033040206334167423",
+          "type": "comment"
+        }
+      ],
+      "date": "16 June 2016 06:53",
+      "html": "Multicast won&#39;t die, at least for a while, but for sure its role in the networking world will diminish. <br /><br />On the DC side, for applications that are high volume and require efficient delivery, multicast will still play a key role. Perfect example is high volume market data distribution. On the WAN side, the use cases are mainly for video streaming (e.g. IPTV), broadcast, or applications that require fair delivery to recipients. <br /><br />More and more applications are now relying on unicast delivery and doing multicast in a much localized fashion. Between the application layer and the network layer, it&#39;s getting more common to have a transport layer which is responsible for delivering data to the end points. This layer running in the servers can provide more flexibility and customization of data delivery. And that could also simply be a message bus in a pub-sub fashion.<br /><br />Multicast has always been difficult to conquer. If you are involved, for example, in deploying multicast to MPLS WAN, then you should remember the fun debate related to NG-MVPN, mLDP VS RSVP-TE, etc. Why bothers if you don&#39;t have to? While multicast won&#39;t die, its future is dim. And this is not necessary a bad thing.",
+      "id": "5033040206334167423",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/16594899417576556716",
+      "pub": "2016-06-16T06:53:34.342+02:00",
+      "ref": "7210723362983360252",
+      "type": "comment"
+    }
+  ],
+  "count": 16,
+  "id": "7210723362983360252",
+  "type": "post",
+  "url": "2016/06/the-future-of-multicast-and-qos.html"
+}

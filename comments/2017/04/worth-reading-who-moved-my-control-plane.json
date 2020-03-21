@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "27 April 2017 14:26",
+          "html": "OSPF is definitely control-plane IMO. But every device runs its own instance of OSPF and they are completely autonomous. Yes, they share state data through LSAs but the actual decision is based on the individual OSPF&#39;s instance of the world and the forwarding plane programming in the ASIC is done by the local OSPF instance ( oversimplistic, but you get the point). OSPF decides the routes (RIB) but how those routes (RIB) get translated into the selected route (FIB) and actually transferred into the ASIC forwarding tables is the question here.  <br /><br />That is REALLY hard to centralize, which I think is the point. Not grey at all. ",
+          "id": "4232327473446609459",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/13921265026411812124",
+          "pub": "2017-04-27T14:26:24.451+02:00",
+          "ref": "703932560805182279",
+          "type": "comment"
+        },
+        {
+          "date": "27 April 2017 15:10",
+          "html": "Chris nailed the point exactly. OSPF or any other routing protocol is definitely part of the control plane, but runs as many independent instances that share information.  SDN implementations should be no different.  But rather than utilizing propagation methodologies for the dissemination of topology information, localized control planes receive their topology information from a centralized controller.  ",
+          "id": "6495440647675825954",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Jordan Martin",
+          "profile": "http://jordanmartin.net",
+          "pub": "2017-04-27T15:10:38.827+02:00",
+          "ref": "703932560805182279",
+          "type": "comment"
+        },
+        {
+          "date": "28 April 2017 13:39",
+          "html": "IMHO, you are being too assertive.<br />In NSX, OSPF runs in one VM and it&#39;s &quot;output&quot; its pushed to the hypervisors that participate in DR.<br />That VM is not a &quot;controller&quot; but it is neither running in each device. Grey for me.",
+          "id": "2325577935404169777",
+          "image": "https://2.bp.blogspot.com/_DDtfbkYv8uw/Sv1RHkwkmRI/AAAAAAAAAAM/GDcxV6Lg-_8/S220-s32/tron.jpg",
+          "name": "tron",
+          "profile": "https://www.blogger.com/profile/10795510625878803462",
+          "pub": "2017-04-28T13:39:30.486+02:00",
+          "ref": "703932560805182279",
+          "type": "comment"
+        }
+      ],
+      "date": "27 April 2017 12:37",
+      "html": "Hmm, he says:<br /> If we removed the control plane from the device, the controller would be responsible for directly programming FIBs, managing TCAM, etc\u2026 <br />I&#39;m not convinced that &quot;control plane&quot; needs to &quot;directly program&quot;. If that&#39;s needed, then obviously it can not be centralized.<br /><br />But would you argue that OSPF is control plane ? Or that it is OSPF who decides the routes ? Then if OSPF runs in a controller, then the control plane (or part of it) is centralized. <br />Black ? White ? Most are grey... ",
+      "id": "703932560805182279",
+      "image": "https://2.bp.blogspot.com/_DDtfbkYv8uw/Sv1RHkwkmRI/AAAAAAAAAAM/GDcxV6Lg-_8/S220-s32/tron.jpg",
+      "name": "tron",
+      "profile": "https://www.blogger.com/profile/10795510625878803462",
+      "pub": "2017-04-27T12:37:12.034+02:00",
+      "ref": "1194529512255828918",
+      "type": "comment"
+    },
+    {
+      "date": "27 April 2017 15:58",
+      "html": "Telco networks always used the SDN model. Remember PDH, SDH, ATM PVC, etc. Lot of applications still require this architecture. SDN can do it for IP Networks in a vendor independent way. Vendor dependent solutions has been around for decades. If SDN is vendor dependent then it is just marketing trick for new clothes. If it is open sourced and interoperable, then it makes some sense for some networks.<br />And of course the hybrid SDN architecture is the useful one. Some parts of the control plane should stay together with the data plane. Only the some selected functions should be implemented by an SDN controller.<br /><br />SDN is not equivalent with OpenFlow. For me a combination of SIP with MEGACO2 is a true SDN.<br />Actually, ITU defined it for all kind of networking, not just voice and video. Most people are not aware and do not use it. But it is a nice solution in theory... :-)<br /> ",
+      "id": "8702000299065225763",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Bela",
+      "profile": "https://www.blogger.com/profile/07985346761439657130",
+      "pub": "2017-04-27T15:58:01.483+02:00",
+      "ref": "1194529512255828918",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "27 April 2017 18:14",
+          "html": "In such a scenario we can have one control plane controlling one device or multiple devices. Of course there has to be an automation (or SDN ) layer on top of such a control plane to manage  and simplify things.<br /><br />",
+          "id": "9165114020504009971",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/15252780112453885537",
+          "pub": "2017-04-27T18:14:54.466+02:00",
+          "ref": "365848253260696362",
+          "type": "comment"
+        }
+      ],
+      "date": "27 April 2017 17:47",
+      "html": "I think many folks get this part wrong but Openflow can be used as a generic protocol for control plane to talk to a data plane. As a matter of fact many Juniper / CISCO systems have a single control plane (or dual for HA ) with multiple line cards (data plane). The control plane uses proprietary protocol to talk to the line cards. These implementations easily scales for many line cards. Openflow can be used here instead of proprietary protocols giving us a new way of operating devices. But yes this requires huge engineering effort to make sure control planes and data planes are well synchronized. Will anybody benefit if such things are really available someday ? May be we will have lower TCO and flexibility in choosing devices.",
+      "id": "365848253260696362",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/15252780112453885537",
+      "pub": "2017-04-27T17:47:57.972+02:00",
+      "ref": "1194529512255828918",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "04 May 2017 05:39",
+          "html": "I think with SDN we should be able to have a API level and seamless abstraction layer which is more or less vendor independent way of provisioning things. CLI scripting is error prone &amp; cumbersome which in my definitiin would not qualify as SDN implementation.<br /><br />As a sidenote I would also like my SDN to lower OPEX/CAPEX and ease of introducing newer features to my network with min churn",
+          "id": "1909199061510908747",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/15252780112453885537",
+          "pub": "2017-05-04T05:39:31.305+02:00",
+          "ref": "6141376864948515748",
+          "type": "comment"
+        }
+      ],
+      "date": "03 May 2017 15:37",
+      "html": "So if my &quot;controller&quot; is running an expect script that SSHs into 100 different boxes to add a /32 static route for a specific destination, I&#39;m actually doing &quot;SDN&quot; because my &quot;SDN&quot; controller ( my script )  did the control plane &quot;orchestration&quot; for the 100 devices. If I do the same thing manually, it is not &quot;SDN&quot; ?<br />",
+      "id": "6141376864948515748",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2017-05-03T15:37:27.755+02:00",
+      "ref": "1194529512255828918",
+      "type": "comment"
+    }
+  ],
+  "count": 9,
+  "id": "1194529512255828918",
+  "type": "post",
+  "url": "2017/04/worth-reading-who-moved-my-control-plane.html"
+}

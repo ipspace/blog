@@ -1,0 +1,201 @@
+{
+  "comments": [
+    {
+      "date": "29 November 2007 23:57",
+      "html": "What will happen if you increase the ping timeout?",
+      "id": "1948337244066930623",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-11-29T23:57:00.000+01:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "30 November 2007 07:22",
+      "html": "No difference. The IP packet that triggers ARP request is dropped unconditionally. No timeout will help you, as there is no retransmission with ICMP.",
+      "id": "2759392212005441982",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-11-30T07:22:00.000+01:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "18 August 2008 08:56",
+      "html": "There could be some buffer to store ICMP packet to store and once ARP request resolved, the buffer can release the first packet. why this is not happening??",
+      "id": "467935477701548810",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-08-18T08:56:00.000+02:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "22 August 2008 18:24",
+      "html": "IP is designed to be an unreliable protocol, so when a packet is dropped in the network (or delayed for too long), the source will retransmit. If you delay the packet in the network for too long, you might end up with duplicate packets, which could cause quite a headache for some poorly written applications. <BR/><BR/>It's thus better to drop what you can't handle immediately and let the source deal with the problem ... and anyway, with CEF glean adjacencies ARP tables almost never time out.",
+      "id": "5087221540112237712",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-08-22T18:24:00.000+02:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "18 June 2012 20:33",
+      "html": "I&#39;ve seen this also cause SLB load balancing to fail out all the real servers until their IP&#39;s have all been manually pinged and have entries in the ARP cache.",
+      "id": "1091158772161364467",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-06-18T20:33:46.330+02:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "31 October 2012 04:49",
+      "html": "Are there any other causes? I&#39;m seeing this on a single SRX firewall to a host that is already in the ARP table. It only happens if I wait around 50seconds+ before attempting a new ping. Any pings within that time frame get through 100%",
+      "id": "8838525717577261017",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-10-31T04:49:24.586+01:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "03 February 2013 21:12",
+      "html": "Would be good to mention why 2nd packet is not dropped as well - when target receives 2nd packet sent (1st for target) then why there is no need for ARP request to reply to it and drop target&#39;s first response.",
+      "id": "2212209190940884064",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-02-03T21:12:24.831+01:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "21 July 2013 14:05",
+          "html": "&gt; If I ping the LAN interface of a remote branch router<br />Are your routers connected via Ethernet? If yes, then it might be the missing ARP entry for your remote router (your local router should still find MAC address of your remote router to send ping to it). So it might still be just the same situation as stated in article.<br />BTW, if you &quot;debug ip packet&quot; then you will see that debug for the first packet (in case ARP was not resolved earlier) says &quot;Encapsulation failed&quot;, so I can presume it means &quot;I could not encapsulate this packet due to missing ARP entry for this IP address&quot;.",
+          "id": "4325570263954475872",
+          "image": "https://4.bp.blogspot.com/-J7d5F0yPhVA/UOEZ84EN1pI/AAAAAAAAAYc/Yo9UvO5tBmM/s32/Clipboard01.jpg",
+          "name": "Alexandr",
+          "profile": "https://www.blogger.com/profile/15057413157793077159",
+          "pub": "2013-07-21T14:05:02.224+02:00",
+          "ref": "8472817366852023812",
+          "type": "comment"
+        }
+      ],
+      "date": "13 June 2013 02:24",
+      "html": "If I ping the LAN interface of a remote branch router, I still have the same problem.  This doesn&#39;t seem to fit the explanation, as the router shouldn&#39;t need to perform an ARP broadcast/discovery to locate its own address, right? After all, it is the layer 2/3 boundary.<br />Is there something I&#39;m missing, or that can explain this issue?",
+      "id": "8472817366852023812",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Scott",
+      "profile": "https://www.blogger.com/profile/14194923535196472041",
+      "pub": "2013-06-13T02:24:46.518+02:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "06 October 2013 11:22",
+      "html": "Yes before I give ping there wasn&#39;t any arp entry and the ping failed for the first packet<br />*Mar  1 00:03:40.495: IP: s=10.1.2.1 (local), d=10.1.2.2 (FastEthernet0/0), len                                         100, encapsulation failed.!!!!<br />",
+      "id": "1897058879917877426",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Rahman",
+      "profile": "https://www.blogger.com/profile/05707265569403291122",
+      "pub": "2013-10-06T11:22:11.356+02:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "07 February 2014 12:35",
+      "html": "What if we add 50 brand new routers between 2 hosts, now if we try to ping will the first 50 packets will drop so that the ARP and DNS responses for 50 routers will take that much time??",
+      "id": "2697156752263571889",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "@n@nD",
+      "profile": "https://www.blogger.com/profile/03335484797508847724",
+      "pub": "2014-02-07T12:35:30.788+01:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "date": "25 February 2015 10:04",
+      "html": "It&#39;s all about ARP request and NIC&#39;s buffering ... first ping&#39;s packet waits certain time for ARP reply to put it&#39;s destination MAC in its frame after exceeding this time and the reply didn&#39;t reach ... the packet will be dropped and the next packets will be sent .. ",
+      "id": "2144059739065803840",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/00181452285043011072",
+      "pub": "2015-02-25T10:04:19.770+01:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "31 March 2016 08:33",
+          "html": "Well, if you&#39;d be running Cumulus Linux (or any other routing-over-Linux product) it would be a simple matter of writing a Python (or Perl) script.<br /><br />AFAIK there&#39;s no such option in traditional routers.",
+          "id": "5758413383073926132",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-03-31T08:33:54.001+02:00",
+          "ref": "5373811487319609270",
+          "type": "comment"
+        }
+      ],
+      "date": "30 March 2016 22:14",
+      "html": "Hey guys... Does anyone know how to configure a router(A) so it can send acopy of its arp table to another router(B)<br /><br />All hosts inside X subnet are pointing towards router A. I need to have that exact copy dynamically if possible in router B.<br /><br />Thanks!",
+      "id": "5373811487319609270",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2016-03-30T22:14:52.787+02:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "12 November 2017 19:45",
+          "html": "What is my source? Packet traces, debugging printouts, and familiarity with how things are done ;)... slowly gained while studying real-life networking operating systems for 30 years.",
+          "id": "2732268579201038483",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-11-12T19:45:35.436+01:00",
+          "ref": "6040306252259187607",
+          "type": "comment"
+        },
+        {
+          "date": "12 November 2017 20:54",
+          "html": "Hehe, thanks again for the valuable article then. I&#39;m just surprised to find so many answers about increasing the timeout delay whereas this is pointless since the request was dropped.",
+          "id": "1537465075152400996",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2017-11-12T20:54:09.999+01:00",
+          "ref": "6040306252259187607",
+          "type": "comment"
+        }
+      ],
+      "date": "12 November 2017 18:23",
+      "html": "Thanks for this article. This answers my problem: I send only one ping and I get a timeout even after increasing (a lot) the delay before the timeout (like some other articles suggest). In the captures, the ICMP request is not emitted at all after the ARP response.<br /><br />But what is your source? I cannot find any document on Cisco about this.",
+      "id": "6040306252259187607",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2017-11-12T18:23:40.631+01:00",
+      "ref": "3141767751200037145",
+      "type": "comment"
+    }
+  ],
+  "count": 17,
+  "id": "3141767751200037145",
+  "type": "post",
+  "url": "2007/04/why-is-first-ping-lost.html"
+}

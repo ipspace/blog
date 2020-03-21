@@ -1,0 +1,98 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "27 March 2019 15:57",
+          "html": "Try for example http://lmgtfy.com/?q=stateful+firewall+site%3Ablog.ipspace.net<br /><br />Here&#39;s one of the first results: https://blog.ipspace.net/2013/03/the-spectrum-of-firewall-statefulness.html<br /><br />For details of a specific implementation see https://blog.ipspace.net/2015/03/microsegmentation-in-vmware-nsx-on.html<br /><br />You might also want to investigate iptables.",
+          "id": "6834283183806586233",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2019-03-27T15:57:26.844+01:00",
+          "ref": "6157995018849158599",
+          "type": "comment"
+        },
+        {
+          "date": "27 March 2019 16:47",
+          "html": "Thanks for the hints. Wasn&#39;t the debate about stateless or stateful firewalls? Because with reflexive ACLs you have to maintain a state. I thought that stateless firewalls (router ACLs) would scale.",
+          "id": "7190193572221027775",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Anonymous",
+          "profile": "https://www.blogger.com/profile/17892204563666956100",
+          "pub": "2019-03-27T16:47:40.932+01:00",
+          "ref": "6157995018849158599",
+          "type": "comment"
+        },
+        {
+          "date": "27 March 2019 17:01",
+          "html": "Hey, you&#39;re right - missed that bit. Apologize for that.<br /><br />Microsegmentation done right or security groups available in AWS, Azure, GCP, OpenStack are stateful. The real reason they scale is because they&#39;re implemented at the edge (in compute infrastructure - hypervisors). Have to write another blog post on the topic ;)",
+          "id": "3068568589406115666",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2019-03-27T17:01:14.945+01:00",
+          "ref": "6157995018849158599",
+          "type": "comment"
+        },
+        {
+          "date": "27 March 2019 17:33",
+          "html": "And even their scale has limitations. Take AWS for example: https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html look under Network ACLs and Security Groups. I don&#39;t think every firewall guy would be happy about those limits :D",
+          "id": "6063938906347406489",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Anonymous",
+          "profile": "https://www.blogger.com/profile/17892204563666956100",
+          "pub": "2019-03-27T17:33:18.302+01:00",
+          "ref": "6157995018849158599",
+          "type": "comment"
+        }
+      ],
+      "date": "27 March 2019 11:28",
+      "html": "Doesn&#39;t a device/system with a reflexive ACL capability maintain some sort of state? How do the $cloud_providers handle that state?",
+      "id": "6157995018849158599",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Anonymous",
+      "profile": "https://www.blogger.com/profile/17892204563666956100",
+      "pub": "2019-03-27T11:28:27.503+01:00",
+      "ref": "9030052016413359216",
+      "type": "comment"
+    },
+    {
+      "date": "27 March 2019 15:35",
+      "html": "It get&#39;s even funnier when an enterprise implements micro segmentation, assuming the &quot;contracts&quot; aren&#39;t of the allow any any to everywhere type, and still insists on pushing _all_ traffic through physical firewall clusters for inspection, having to break open all encrypted traffic in the process. And let&#39;s not forget the fact that your typical enterprise cluster technology sucks, especially if it&#39;s a two member cluster (split brain anyone?) and/or $deity forbid a stretched variation.<br />If there&#39;s only 1 thing you&#39;re going to pick from cloudy architectures, at least think about loosely coupled individual components: small failure domains/blast zones (data/control _and_ config domains). It might involve a bit more thinking, but deploying (at least) two individual L3 connected components beats any cluster technology in my view. Granted, depending on your L3 design, for firewalls you might need some state/session syncing, but that&#39;s fundamentally a far less complex issue.<br />",
+      "id": "5667550483775332520",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Albert Siersema",
+      "profile": "https://www.blogger.com/profile/04847257511165693348",
+      "pub": "2019-03-27T15:35:52.630+01:00",
+      "ref": "9030052016413359216",
+      "type": "comment"
+    },
+    {
+      "date": "27 March 2019 19:49",
+      "html": "The thing we&#39;ve been struggling with, as you hinted in the post, is the Security team wanting every feature in the world to be in front of every application. The whole &quot;no-trust&quot; thing has really taken hold and they want scrubbing, sandboxing, A/V, etc in front and in-between even layer of the application. And the firewall vendors are really drumming up the FUD and Infosec dept are really drinking that cool-aid.<br /><br />It is so hard to work through and it just makes things so much more complicated than it needs to.",
+      "id": "3428842611062507633",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Simon",
+      "profile": "https://www.blogger.com/profile/16619837452279991532",
+      "pub": "2019-03-27T19:49:51.058+01:00",
+      "ref": "9030052016413359216",
+      "type": "comment"
+    },
+    {
+      "date": "29 March 2019 16:03",
+      "html": "I don&#39;t see any reasons to put NGFW or classic Stateful L3/4 firewall in front of 3-tiers application as those devices just add unnecessary latency and can&#39;t provide Multi-Terabit  bandwidth that are necessary for East-West traffic in the DC .i once checked the Firepower Oracle IPS rules ( they are basically snort rules) and 90% of those rules are about the buffer overflow of older oracle versions that simply can be ignored if you regularly patch your oracle software.i think the best place to place the NGFW/Stateful firewalls are North-South traffics and for East-West it is better to add visibility via IDS sensors and Flow-Based monitoring tools to detect a breach.i like the idea of ARISTA DirectFlow assist (offload some traffic from FW and let the Switch handle it) . maybe someone argue about the fragmented traffic can bypass the stateless ACLs but  simply deny any fragment packets via ACLs and use the TCP Flags filtering via extended ACLs can mitigate the risk.the only problem with stateless ACLs is the number of rules could be more than ACLs on stateful firewall as you need to handle the returning traffic (also can be mitigated with ESTABLISHED statement on ACL).i don&#39;t like the reflexive ACLs as they put to much tax on TCAM for some older devices like C6500 and can easily overwhelm TCAM with just a few ACL.there are some vendors claim that their FW used some sort of NP/ASIC to handle multi-gigiabit traffics without any performance penalty but again when some further inspection for some L3/4 traffic needed they handle that types of traffic via software.i see that firewall with NP/ASIC can only handle 30% of traffic in hardware and the remains punt to the CPU for inspection.<br />Thanks you Ivan to shed some light on this topic.",
+      "id": "5471209761499666794",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ali Abolfathi",
+      "profile": "https://www.blogger.com/profile/00039330191699603735",
+      "pub": "2019-03-29T16:03:16.786+01:00",
+      "ref": "9030052016413359216",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "9030052016413359216",
+  "type": "post",
+  "url": "2019/03/stateful-firewalls-when-you-get-to-fork.html"
+}

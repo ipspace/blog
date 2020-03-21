@@ -1,0 +1,190 @@
+{
+  "comments": [
+    {
+      "date": "21 January 2016 09:42",
+      "html": "Hi Ivan,<br /><br />thank you, very good overview and &quot;problem statement&quot;. I&#39;ve a couple of comments though. Unfortunately (namely from the perspective from environments with heterogenuous clients = all large enterprise) it is yet more complex, including:<br />- starting from Win8 Windows even sends DHCPv6 Solicits when the m-Flag is *not* set (which in turn means, amongst others, that you can only prevent DHCPv6 from being used by stopping the local service!).<br />- the behavior of Linux actually varies heavily between distros (see also sources below); I&#39;ve seen/configured Linux systems using DHCPv6 address in addition to SLAAC provisioned ones.<br />- as you stated, the interaction with source address selection is a complete mess. At some point even rule 5.5 from RFC6724 might come into play and similar nasty stuff.<br /><br />There&#39;s an IETF draft on some of this (disclaimer: I&#39;m involved):<br />https://tools.ietf.org/id/draft-ietf-v6ops-dhcpv6-slaac-problem-05.txt<br />also:<br />https://www.ernw.de/download/ERNW_Whitepaper_IPv6_RAs_RDNSS_DHCPv6_Conflicting_Parameters.pdf<br />https://ripe70.ripe.net/wp-content/uploads/presentations/132-ERNW_RIPE70_IPv6_Behavior_Conflicting_Environments_v0_92_short.pdf<br /><br />thanks for bringing attention to this space ;-)<br /><br />Enno",
+      "id": "2626166913293612420",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Enno Rey",
+      "profile": "https://www.insinuator.net/tag/ipv6/",
+      "pub": "2016-01-21T09:42:24.241+01:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "21 January 2016 14:54",
+          "html": "Well, I expected this comment from another Australian ;))",
+          "id": "4240737381825498429",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-01-21T14:54:17.749+01:00",
+          "ref": "4422573715257704548",
+          "type": "comment"
+        },
+        {
+          "date": "21 January 2016 20:47",
+          "html": "It must be the sun or the food, or something.. :) ",
+          "id": "8941312724313608857",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Dmitri Kalintsev",
+          "profile": "https://www.blogger.com/profile/16576726865924052243",
+          "pub": "2016-01-21T20:47:51.130+01:00",
+          "ref": "4422573715257704548",
+          "type": "comment"
+        }
+      ],
+      "date": "21 January 2016 09:56",
+      "html": "and then people wonder why IPv6 adoption is slow.",
+      "id": "4422573715257704548",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Dmitri Kalintsev",
+      "profile": "https://www.blogger.com/profile/16576726865924052243",
+      "pub": "2016-01-21T09:56:08.872+01:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    },
+    {
+      "date": "21 January 2016 14:34",
+      "html": "It looks like windows always sends DHCPv6 request as last resort regardless of RA message. Enno Rey has published his observations of effects of RA messages with different operating systems in &quot;IPv6 Router Advertisement Flags, RDNSS and DHCPv6 Conflicting Configurations&quot; paper.<br />I found it very interesting. <br /> https://www.ernw.de/download/ERNW_Whitepaper_IPv6_RAs_RDNSS_DHCPv6_Conflicting_Parameters.pdf",
+      "id": "5168682170329805792",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "shah",
+      "profile": "https://www.blogger.com/profile/15818883829738651247",
+      "pub": "2016-01-21T14:34:26.433+01:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "21 January 2016 15:06",
+          "html": "Are you using DHCPv6 for server IPv6 assignments? Aren&#39;t server networks the one area you would prefer RAs over DHCP?<br /><br />I&#39;ve built server networks that relied upon DHCP before, primarily using Infoblox redundant appliances with DHCP reserverations, but I&#39;ve always thought of RAs as being freedom from an risky outside dependency.",
+          "id": "2445731696789266212",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "JeffTP",
+          "profile": "https://www.blogger.com/profile/15752462696912045829",
+          "pub": "2016-01-21T15:06:13.603+01:00",
+          "ref": "7482936022366197911",
+          "type": "comment"
+        },
+        {
+          "date": "21 January 2016 16:23",
+          "html": "We use static assignments for all servers, so no SLAAC or DHCP. DHCPv6 is easy to avoid by simply not doing any DHCP server/relay on the server nets, but to keep servers from generating SLAAC addresses I have to disable RAs. Thank you Windows.<br /><br />(With SLAAC addresses creating firewall rules would be... difficult)",
+          "id": "7637905625511541385",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/11890997522662363216",
+          "pub": "2016-01-21T16:23:00.128+01:00",
+          "ref": "7482936022366197911",
+          "type": "comment"
+        }
+      ],
+      "date": "21 January 2016 14:44",
+      "html": "And this is why I always disable RAs on server nets.",
+      "id": "7482936022366197911",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/11890997522662363216",
+      "pub": "2016-01-21T14:44:12.213+01:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    },
+    {
+      "date": "21 January 2016 15:40",
+      "html": "Guys, maybe i&#39;m totally wrong but this problem is adressed in RFC 6724 (that replaced RFC 3484) concerning default address selection algorithm (DAS) and Happy Eyeballs (RFC 6555), don&#39;t you think ?<br /><br />Maybe i&#39;m living in an utopian world but i always been under the impression that source/destination address selection has nothing to do with the method that the OS used to get one (SLAAC, static, DHCPv6), even if each OS has different way to react to flag bit inside RAs...<br /><br />Am i totally wrong ?<br /><br />Regards,<br /><br />Martin",
+      "id": "1109386953384766579",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2016-01-21T15:40:15.266+01:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "21 January 2016 21:17",
+          "html": "Thanks for your reply Michael. <br /><br />I was under the impression that NCSI is more a replacement/modification of RFC 6724 for selecting IPv6 or IPv4 but was not related to the selection of a specific IPv6 source address (static ip address preferred over SLAAC address for example).<br /><br />I think that i need to make some reading.<br /><br />Regards,<br /><br />Martin",
+          "id": "4849955680599993099",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2016-01-21T21:17:35.340+01:00",
+          "ref": "5992839695047003786",
+          "type": "comment"
+        },
+        {
+          "date": "21 January 2016 21:20",
+          "html": "Sorry, you should read : replacement/modification of RFC 6555 (Happy Eyeballs) instead of RFC 6724.  Sorry.",
+          "id": "8141466910876065761",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2016-01-21T21:20:51.004+01:00",
+          "ref": "5992839695047003786",
+          "type": "comment"
+        },
+        {
+          "date": "22 January 2016 09:43",
+          "html": "Hi Martin,<br /><br />your impression is correct. I just wanted to say that there is not only RFC6724 but each OS seems to use it&#39;s own additional functions to determine what address to use. <br /><br />BR<br />Michael",
+          "id": "4891881179406334021",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2016-01-22T09:43:54.348+01:00",
+          "ref": "5992839695047003786",
+          "type": "comment"
+        }
+      ],
+      "date": "21 January 2016 16:44",
+      "html": "In theory that actually shouldn&#39;t be the case. However, reality is different - you just cannot rely on RFC 6724 today. For example, Windows uses an additional process called NCSI in order to figure out what address to use (at least for IPv4/IPv6) - see Ed Horleys Book on IPv6 Administration on Windows.<br /><br />BR,<br />Michael",
+      "id": "5992839695047003786",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2016-01-21T16:44:16.940+01:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    },
+    {
+      "date": "21 January 2016 22:33",
+      "html": "... and all this circus instead of having a way of statically configuring interface ID and getting the prefix from RA. <br /><br />Let me explain : <br /> - server guys like static IP assignments (pretty much the same way we like static IPs on loopbacks).<br /> - in 99% of cases you can address a whole organisation&#39;s infrastructure in 64 bits (because you could do it in less than 32).<br /> - then how about seeing IPv6 for what it really became : 64 bit (max) routing prefix + 64 bit &quot;something ID&quot; (call it interface ID, host ID or whatever)<br /><br />There can always be an argument of how this is not good or how this can be accomplished otherwise (??? DHCP ??? - please NO), but change-wise IPv6 is sometimes already going too far (doesn&#39;t matter if it&#39;s in the good direction) to scare the hell out of most IT people. Isn&#39;t it concievable to give them little breaks on some issues ? Especially if we want deployment...",
+      "id": "789324001771403598",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "R.-Adrian F.",
+      "profile": "https://www.blogger.com/profile/11418671261451939355",
+      "pub": "2016-01-21T22:33:48.924+01:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    },
+    {
+      "date": "27 January 2016 18:54",
+      "html": "I always say - do as you would do with IPv4 =&gt; DHCPv6 with onlink flag set.<br />For datacenters same thing expect vlan where static address is needed =&gt; No RA<br />You don&#39;t have to explain so much and it&#39;s much easier to deploy it for those who is beginner in IPv6.",
+      "id": "4931505708859948882",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tobbe",
+      "profile": "https://dnssecandipv6.se",
+      "pub": "2016-01-27T18:54:48.145+01:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    },
+    {
+      "date": "20 July 2017 06:05",
+      "html": "I only want to write that IPv6 is a standart, \u00bfhow ..... the RFC does not force an addressing standart?",
+      "id": "7031434886398108017",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Mauricio Andres Bustamante Viveros",
+      "profile": "https://www.blogger.com/profile/03395587678662145289",
+      "pub": "2017-07-20T06:05:06.334+02:00",
+      "ref": "5963515495112782860",
+      "type": "comment"
+    }
+  ],
+  "count": 16,
+  "id": "5963515495112782860",
+  "type": "post",
+  "url": "2016/01/ipv6-address-allocation-is-operating.html"
+}

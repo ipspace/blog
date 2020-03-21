@@ -1,0 +1,76 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "26 October 2016 10:17",
+          "html": "&quot;From my opinion the question is, do enterprises need layer-3 virtualization technologies.&quot; &lt;&lt; Link to that one in the first paragraph of this post ;)",
+          "id": "3152261998118777177",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-10-26T10:17:30.638+02:00",
+          "ref": "2679574237571018500",
+          "type": "comment"
+        },
+        {
+          "date": "26 October 2016 11:14",
+          "html": "If VRF = L3 virtualization technologies, than I saw that link. (however VRFs are again just a tiny piece of the whole story).<br />Nevermind my jabbering ... great post, thanks for sharing!",
+          "id": "7917082896046551766",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/14579645045631302258",
+          "pub": "2016-10-26T11:14:03.718+02:00",
+          "ref": "2679574237571018500",
+          "type": "comment"
+        },
+        {
+          "date": "26 October 2016 16:50",
+          "html": "If you want to have a L3 virtualization technology, you need a separate forwarding table for each virtual L3 domain (like you need a separate MAC table for each virtual L2 domain).<br /><br />You also need some way of populating that table, usually a routing protocol. VRF (regardless of how you call it) is thus a fundamental building block of every L3 virtualization technology.",
+          "id": "2089716361703533354",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-10-26T16:50:52.650+02:00",
+          "ref": "2679574237571018500",
+          "type": "comment"
+        }
+      ],
+      "date": "26 October 2016 10:06",
+      "html": "Great post - thank you for that.<br />However, the initial question bugs me a little. MPLS is not a solution to a problem - it&#39;s a packet encapsulation and forwarding method.<br /><br />From my opinion the question is, do enterprises need layer-3 virtualization technologies. If yes, MPLS (along with some additional protocols and features) could be the right choice.<br /><br />But this is only a helping tool for a problem (e.g. separation of security zones). Maybe there are other technologies like VRF lite (as you said), LISP, proprietary stuff like SGT.",
+      "id": "2679574237571018500",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/14579645045631302258",
+      "pub": "2016-10-26T10:06:07.806+02:00",
+      "ref": "1563662979052235568",
+      "type": "comment"
+    },
+    {
+      "date": "27 October 2016 19:17",
+      "html": "Like DWDM, MPLS is a fantastic solution if you need to keep traffic flows separate, but like DWDM it typically requires some initial capital investment and re-architecture. (Not all vendor hardware supports true CE/PE/P MPLS infrastructure in their code, many just do VRF lite). You need to spend some time pondering the TCO/ROI.<br /><br />For instance, if your current $employer has multiple campuses or data centers and someone asks to deploy a &quot;test&quot; environment comprised of multiple isolated VLANs at each location, that&#39;s easy. If they then ask you to have them all talk to each other (and ONLY to each other due to security concerns) then you are doing ACLs (ugh), firewalls, L2 tunnels or L3 tunnels. The firewall solution is fine but it doesn&#39;t scale... every site you add will require one. Also firewalls don&#39;t give you the flexibility of Layer-1, 2 and 3 tunnels. <br /><br />If you invest in an MPLS infrastructure then you can spin up that VRF everywhere you need it. I think a good example of this is a lot of educational institutions run separate VRFs across a common infrastructure to keep the faculty traffic 100% separated from all the young blackhats on the student networks. Most educational IT staff don&#39;t have the budget to purchase and refresh large firewall populations, so VRF&#39;ing it all to a centralized pair is cost effective. It should definitely be considered anytime you have a &quot;keep this from talking to that, but let it talk to other things&quot; challenge. Yes, there are other alternatives such as DMVPN but these again become problematic as they scale up, and they don&#39;t give you the Layer 1-3 options.<br /><br />The documentation, adoption and operational handoff isn&#39;t any worse than other solutions. I recommend at least considering it even for small/medium efforts.",
+      "id": "2926002917685946766",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/01335898315678692950",
+      "pub": "2016-10-27T19:17:32.266+02:00",
+      "ref": "1563662979052235568",
+      "type": "comment"
+    },
+    {
+      "date": "28 October 2016 23:26",
+      "html": "Also worth noting:<br /><br />MPLS can help in designing a simple and stable core that isn&#39;t subject to the volatility of routing / topology changes at the edge.  I agree these objectives can be satisfied with other solutions, but as autarch01 says, implementing MPLS doesn&#39;t have to be worse than other options. I would argue that MPLS is in a similar place to where BGP was in many enterprises a few years ago ... perceived as prohibitively complex and scary, when it doesn&#39;t have to be.<br /><br />There are some significant advantages to MPLS when it comes to upgrading or expanding the core (P) routers as you don&#39;t have to consider &#39;customer&#39; routes.<br /><br />Using 6VPE you can implement IPv6 without having to re-engineer the core (P) routers.<br /><br />If running multicast, some nice options for minimising the amount of multicast state information the core has to maintain.<br /><br />Some security advantages as well, in terms of options for protecting the core control plane if the design maintains separacy of &#39;customer&#39; and global routing tables.<br />",
+      "id": "7607471835839830181",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/12901224627748822525",
+      "pub": "2016-10-28T23:26:55.688+02:00",
+      "ref": "1563662979052235568",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "1563662979052235568",
+  "type": "post",
+  "url": "2016/10/do-enterprises-need-mpls.html"
+}

@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "date": "09 September 2011 15:49",
+      "html": "Is there a way to manage how BGP falls *back* over? Say if you want the primary session to stay down until you administratively inspect the event that caused the loss of the tracked object ?",
+      "id": "4370893378309017217",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Michael",
+      "profile": null,
+      "pub": "2011-09-09T15:49:19.889+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "09 September 2011 16:06",
+      "html": "Just create an EEM applet that reacts to &quot;track&quot; object going down and sets another track object to &quot;down&quot;.",
+      "id": "6055906649077399364",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-09-09T16:06:12.835+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "09 September 2011 16:54",
+      "html": "What I am currently doing is using EEM to watch my tracked objects and then issuing a neighbor shutdown command, then a a no neighbor shutdown command. (Along with email notifications)<br /><br />Is there a functional reason I would not want to do it that way, and use the method you prescribe?",
+      "id": "2018249706647578883",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Daniel G",
+      "profile": null,
+      "pub": "2011-09-09T16:54:58.681+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "09 September 2011 22:23",
+      "html": "Great info; we have been literally working on this same problem area in our environment this week, but by trying to keep the BGP session up and instead stop advertising a network by removing that network&#39;s (static) route from the local routing table via tracking of an ip sla that pings the firewall interface.<br /><br />Unfortunately, I don&#39;t know what the delay is likely to be between when the route disappears from the routing table and BGP decides to stop advertising it, and so far I haven&#39;t been able to find that out.  In our case, killing the whole BGP session is just as good, so we&#39;ll try this approach.",
+      "id": "3809367198328230700",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dave C",
+      "profile": null,
+      "pub": "2011-09-09T22:23:07.396+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "18 September 2011 18:25",
+      "html": "Thanks for explanation!",
+      "id": "6349682722034351972",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Christoph",
+      "profile": null,
+      "pub": "2011-09-18T18:25:40.783+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "12 August 2014 09:52",
+      "html": "Hi Ivan,<br /><br />First, thanks for the great recipe!<br /><br />Is there are any limitation for this to work flawlessly? Or maybe I&#39;m doing something wrong? When I&#39;ve tried to implement it locally, I was tracking Loopback interface which shutdowns using EEM script based on HSRP event - everything worked fine (including few manual tests) for a few days before huge traffic flow brought my ISR2901 to the knees and HSRP event occurred, effectively shutting Loopback interface down. However, we haven&#39;t lost route to the BGP peer (somehow static route haven&#39;t been removed by Loopback tracking event). Am I missing something?",
+      "id": "1010378880755636844",
+      "image": "https://4.bp.blogspot.com/_TQ4ef9PAWdM/SlZT3KFjcSI/AAAAAAAAD6A/rPWohEC7q-0/S220-s32/_Stockholm1+009.jpg",
+      "name": "pmg",
+      "profile": "https://www.blogger.com/profile/04710527449213542736",
+      "pub": "2014-08-12T09:52:09.345+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "26 September 2014 16:48",
+      "html": "Will the peer get re-established using the connected route or a less specific route?<br />",
+      "id": "6800440805478693494",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "JohnnyLove",
+      "profile": "https://www.blogger.com/profile/02845379530431046584",
+      "pub": "2014-09-26T16:48:43.000+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "16 June 2015 10:57",
+      "html": "It works fine when I want to take down BGP session. But&quot;delay&quot; option on tracking object has no effect on BGP session re-establishment:<br />*Mar  1 01:28:16.075: %BGP-5-ADJCHANGE: neighbor 10.10.10.1 Up<br />R3#<br />R3#<br />*Mar  1 01:30:38.979: %TRACKING-5-STATE: 1 rtr 1 state Down-&gt;Up<br />R3#",
+      "id": "3580451676620679489",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2015-06-16T10:57:18.977+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "17 June 2015 07:30",
+      "html": "Found this solution which works fine ( tracking line-protocol to make it easier, if in-direct failure needs to be fixed then IP SLA is required too):<br /><br />ip route  255.255.255.255 Null0 track 1<br />!<br />track 1 list boolean and<br />object 10 not<br />!<br />track 10 interface  line-protocol<br />delay up 180",
+      "id": "8810924484452320915",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/16206916690214327160",
+      "pub": "2015-06-17T07:30:38.566+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "17 June 2015 07:56",
+      "html": "ip route (PER IP ADDRESS) 255.255.255.255 Null0 track 1<br />!<br />track 1 list boolean and<br />object 10 not<br />!<br />track 10 interface (WAN INTERFACE) line-protocol<br />delay up 180",
+      "id": "4175479605164453928",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/16206916690214327160",
+      "pub": "2015-06-17T07:56:09.692+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "05 October 2017 11:26",
+          "html": "I would suggest you explore how &quot;fast session failover&quot; with a route map works.",
+          "id": "6313549852815441322",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-10-05T11:26:40.087+02:00",
+          "ref": "3727067721044475524",
+          "type": "comment"
+        }
+      ],
+      "date": "05 October 2017 09:05",
+      "html": "Could you please explain for me the main purpose when you put this command in? and How can it effect to BGP neighbor forming process?<br />ip route 10.0.7.10 255.255.255.255 Serial1/0 10.0.7.10 track 10<br />Thanks Ivan",
+      "id": "3727067721044475524",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02026618959471538240",
+      "pub": "2017-10-05T09:05:11.416+02:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    },
+    {
+      "date": "14 November 2017 22:11",
+      "html": "I made the configuration, and it works. But, the BGP session will be up by itself after about 30 secs.",
+      "id": "5015514137982990764",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2017-11-14T22:11:12.538+01:00",
+      "ref": "2796423644383782107",
+      "type": "comment"
+    }
+  ],
+  "count": 13,
+  "id": "2796423644383782107",
+  "type": "post",
+  "url": "2011/09/shut-down-bgp-session-based-on-tracked.html"
+}

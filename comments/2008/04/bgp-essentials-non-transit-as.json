@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "date": "08 April 2008 17:07",
+      "html": "link you posted doesn't exist. Can you explain in details?",
+      "id": "8876650702835896743",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02493336432858313215",
+      "pub": "2008-04-08T17:07:00.000+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "08 April 2008 17:15",
+      "html": "Link said (via Google cache) :<BR/><BR/><BR/>Preventing AS from becoming Transit AS<BR/>Published October 24, 2007 Access-lists , IP Routing , bgp<BR/><BR/>To prevent your AS from becoming a Transit AS, use following startegy<BR/><BR/>Create a route map say \u201ctransit\u201d in config mode<BR/><BR/>route-map transit permit 10<BR/><BR/>match as-path 1<BR/><BR/>In config mode, use following command<BR/><BR/>ip as-path access-list 1 deny ^$<BR/><BR/>This command will only allow routes with origin code \u201ci\u201d and filter all routes with incomplete as-path.<BR/><BR/>Apply the above route-map  with neighbor statement<BR/><BR/>router bgp 64000<BR/><BR/>neighbor 2.2.2.2 route-map transit in<BR/><BR/>Only routes with origin code\u201d i\u201d will enter your AS.",
+      "id": "1300524543402314594",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-04-08T17:15:00.000+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "08 April 2008 19:31",
+      "html": "@jdenoy: Thanks for the text. It's amazing how quickly the Internet landscape changes (and luckily Google caches a few things :).<BR/><BR/>@singh: I apologize for the brevity of my text, I shall write a follow-up one explaining the principles of the non-transit AS (and what you have to filter and where). However, here are the details as they relate to the text jdenoy included:<BR/><BR/>* Every as-path access-list has an implicit \"deny all\" at the end. The as-path access-list in the example thus matches nothing at all.<BR/><BR/>* The routes received from an EBGP neighbor always have at least one AS number in the AS path. The \"deny ^$\" pattern (which matches an empty AS-path) is thus irrelevant. But, as said above, everything else would be dropped as well.<BR/><BR/>* You cannot use an as-path access-list to match the origin code (even though it looks like the origin code is part of an AS-path, it's not).<BR/><BR/>* There is no such thing as incomplete AS-paths.<BR/><BR/>* The 'incomplete' origin code is a leftover of the past long gone and is mostly irrelevant these days. It definitely has nothing to do with (non)transit behavior.<BR/><BR/>* The route-map in the text supplied by jdenoy when applied to inbound updates from an EBGP peer would drop all inbound BGP prefixes.<BR/><BR/>Hope this helps<BR/>Ivan",
+      "id": "705769763745765681",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-04-08T19:31:00.000+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2008 04:55",
+      "html": "This comment has been removed by the author.",
+      "id": "5679771923965842332",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02493336432858313215",
+      "pub": "2008-04-09T04:55:00.000+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2008 05:06",
+      "html": "I think the comment by jdenoy above just shows an ip as-path access list. if a person reading BGP article doesn't know that every acceess-list has implicit deny at the end then I am not sure how come reader is jumping his horses and learning about BGP communities :). anyway I used the as-path access list mentioned by jdenoy,  and addedd <BR/><BR/>ip as-path aceess-list 1 permit any and it prevent AS from becoming the transit AS. so I think even if blogger has mistyped something, readers should use their brains while using it on production network.",
+      "id": "6569444662620606714",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02493336432858313215",
+      "pub": "2008-04-09T05:06:00.000+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "10 April 2008 12:07",
+      "html": "I do it proper way:<BR/><BR/>router bgp 12345<BR/> [...]<BR/> neighbor 1.2.3.4 prefix-list AS12345 out<BR/> [...]<BR/>!<BR/>ip prefix-list AS12345 seq 5 permit 2.3.4.0/24<BR/>ip prefix-list AS12345 seq 10 permit 2.3.5.0/24<BR/>ip prefix-list AS12345 seq 15 permit 2.3.6.0/24<BR/>!",
+      "id": "454600240114894400",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/15599351273832431005",
+      "pub": "2008-04-10T12:07:00.000+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "16 April 2008 18:01",
+      "html": "Thanks for the prefix-list hint. I've included it in the <A HREF=\"http://wiki.ioshints.info/%28Non%29Transit_Autonomous_System\" REL=\"nofollow\">non-transit AS tutorial</A>.",
+      "id": "5210012212263509920",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-04-16T18:01:00.000+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "09 August 2010 22:36",
+      "html": ":-E *DONT_KNOW*",
+      "id": "5615800024796590606",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2010-08-09T22:36:32.000+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "09 August 2010 22:36",
+      "html": ":-E *DONT_KNOW*",
+      "id": "4004523866946952482",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2010-08-09T22:36:32.001+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "09 July 2012 12:23",
+      "html": "Thank you for the explanation.",
+      "id": "8420827858547899007",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-07-09T12:23:21.209+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    },
+    {
+      "date": "07 August 2015 10:56",
+      "html": "Hi, I just want to ask you. My Hub router DMVPN(Phase 2) is using IP as-path, <br />ip as-path access-list 100 deny _65000$<br />ip as-path access-list 100 permit .*<br /><br />I would like to deny for 65000 but allowing all for the spokes.<br />I can see the dynamic tunnel is up however the BGP routing showing the next hop to reach destination still going to Hub IP, then only reach to destination. When I removed the IP AS-Path, then the spoke router getting the correct information on BGP and able traverse via dynamic tunnels to other spoke. Is this a limitation of DMVPN or IP AS-Path?",
+      "id": "626030091830906546",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "anasilk",
+      "profile": "https://www.blogger.com/profile/10909241530837115913",
+      "pub": "2015-08-07T10:56:13.943+02:00",
+      "ref": "7485403405999874257",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "7485403405999874257",
+  "type": "post",
+  "url": "2008/04/bgp-essentials-non-transit-as.html"
+}

@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "22 March 2017 14:01",
+          "html": "Hi Lukas,<br /><br />It depends on what your acceptable failure (= losing session state) rate is, how often the topology changes, and whether you want to have load balancing beyond simple round-robin (or in your case hash-based).<br /><br />Based on my limited experience people who can&#39;t implement Memcached for PHP cookies are usually also thinking about overly-complex load balancing schemes.<br /><br />And thanks a lot for the link to the PROXY protocol. I love to be proven wrong and pointed toward interesting new solutions.",
+          "id": "1035164332284219684",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-03-22T14:01:12.457+01:00",
+          "ref": "3871384987072799817",
+          "type": "comment"
+        },
+        {
+          "date": "29 March 2017 10:21",
+          "html": "Ivan, You could do a consistent hash (even) when a server fails, but I agree - you should always handle persistence in the application.<br /><br />I noticed Amazon ELB now supports the HAProxy proxy protocol which is great news..<br /><br />But I still think layer 7 load balancing sucks [1].<br /><br />[1] https://www.loadbalancer.org/blog/why-layer-7-sucks<br />",
+          "id": "6268266843936069694",
+          "image": "https://4.bp.blogspot.com/-WNaZE1hdJk0/XBJ-dSP6VkI/AAAAAAAALQ4/6hkLeiegHZMBSFWS73GCGzEbe9nqx13sQCK4BGAYYCw/s32/malcolm-profile-.png",
+          "name": "Malcolm Turnbull",
+          "profile": "https://www.blogger.com/profile/16631488980875183082",
+          "pub": "2017-03-29T10:21:04.348+02:00",
+          "ref": "3871384987072799817",
+          "type": "comment"
+        }
+      ],
+      "date": "22 March 2017 11:44",
+      "html": "I disagree stickiness implies maintaining state at the load-balancer. You can hash the src-ip to pick your backend, or, if you are layer 7 reverse proxying, you can set a cookie to a specific, static, backend server.<br /><br />That way, the load-balancer does not maintain state, and if you need to scale horizontally, you can ECMP in front of it.<br /><br /><br />As per passing the source IP to backends when HTTP doesn&#39;t allow it (for example when using end-to-end encryption), you can use the proxy protocol [1], supported by haproxy, nginx, varnish, apache, et all.<br /><br /><br />[1] http://git.haproxy.org/?p=haproxy.git;a=blob_plain;f=doc/proxy-protocol.txt;hb=HEAD<br />",
+      "id": "3871384987072799817",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Lukas Tribus",
+      "profile": null,
+      "pub": "2017-03-22T11:44:05.759+01:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "22 March 2017 17:10",
+          "html": "Nice set of questions ;) Thank you!<br /><br />#1 - Out of the 100+ requests needed to build a web page (yeah, sad statistics), often only one is handled by a script that touches session state. Most others are static resources. See http://httparchive.org/interesting.php for details (and keep in mind that &quot;scripts&quot; is JavaScript and &quot;HTML&quot; is what is produced by a PHP/Python/whatever script)<br /><br />#2 - A single Memcached instance can handle 200K requests/second. https://github.com/memcached/memcached/wiki/Performance<br /><br />#3 - There&#39;s a slight (cost) difference between running HAproxy or nginx and F5 LTM.<br /><br />#4 - I would hope that a well-written web application caches all sorts of things anyway, so you have the caching tier up and running anyway. I know that&#39;s often not the case though...<br /><br />#5 - In some cases you&#39;re forced to buy the ridiculously expensive load balancer because that&#39;s the only way to make ****lications work. OTOH, I know organizations who bought expensive load balancer instead of using open source software so they&#39;d have someone to sue when it fails. At least some of those same organizations use open source software to run the applications. Go figure...",
+          "id": "1047743827230042855",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-03-22T17:10:36.630+01:00",
+          "ref": "3409797160446962018",
+          "type": "comment"
+        }
+      ],
+      "date": "22 March 2017 14:44",
+      "html": "Some interesting and challenging points you raise in this. Some fresh thinking is well in order. A few initial thoughts;<br /><br />1) As most browsers open multiple &#39;parallel&#39; connections to a single (V)IP/site, I wonder if the complexity introduced from a troubleshooting, tracing and monitoring POV are worthwhile. This might inform your thoughts around TCP and HTTP session equality btw.<br />2) Ditto for the overhead of multiple servers being required to perform lookups against the shared state &#39;database&#39;. Presumably they would have to do so for every request in case the state had changed (via a connection on another server). This obviously won&#39;t be an issue with HTTP/2.0 use.<br />3) The load balancer is required (for just the load balancing) anyway (although  there are other ways) so why not avoid issues 1), 2) and 4) above and below. Perhaps the ability to not lose state when a server fails is enough of a benefit?<br />4) The availability of the shared state &#39;database&#39; itself needs to be addressed. So more HA considerations, more complexity, etc. especially considering 3).<br />5) The ridiculous and expensive load balancer option is taken because that&#39;s what the CIO/org demand and allow themselves to be sold, not because it&#39;s what&#39;s needed. That&#39;s a whole different subject and problem. As per 3) it would be there anyway and of course, all vendors will take full advantage.<br /><br />In summary, yes I agree, it&#39;s not required but I also think moving the solution elsewhere isn&#39;t necessarily worthwhile, at least if you have a LB anyway. &quot;Most of the time, it depends&quot; and all that. <br /><br />A genuinely thought provoking and informative piece, many thanks.",
+      "id": "3409797160446962018",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Steven Iveson",
+      "profile": "https://itsthe.network/",
+      "pub": "2017-03-22T14:44:46.963+01:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "date": "22 March 2017 16:58",
+      "html": "Hi Ivan,<br />Just one remark regarding X-Forwarded-For with SSL/TLS all the way to the servers: it&#39;s actually possible with SSL-Bridging on the load-balancer; whether it&#39;s good or not remains to the trade-offs...",
+      "id": "2657892529405485932",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/15452464039180688994",
+      "pub": "2017-03-22T16:58:39.102+01:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "date": "22 March 2017 23:49",
+      "html": "(full disclosure - currently working for one of the commercial LB vendors, so feel free to ignore my opinion)<br /><br />Deviating somewhat from the topic of session stickiness and swinging to the question &quot;why would you buy an expensive LB&quot;. I&#39;d say there are reasons beyond just distributing traffic to backend nodes that prompt people to spill $$$.<br /><br />LB, or rather &quot;ADC&quot; can, and often does, provide a bunch of additional functionality that either doesn&#39;t belong in the app, or is shared. For example, generating server response performance metrics feed for your ops, URI request routing, WAF/DLP, SSO, etc.<br /><br />[shameless plug]I wrote a blog not too long ago that gives an example of using in-line request and response processing to &quot;integrate&quot; single page app with static object store and a 3rd party web app (wordpress blog): https://telecomoccasionally.wordpress.com/2016/12/06/running-a-single-page-app-and-cant-wait-for-lambdaedge-heres-an-alternative/ [/shameless plug]<br /><br />On apps using opensource: you&#39;re supposedly setting up an LB to protect your app users from backend failures, which is what your LB is there for. In my book this means that LB&#39;s availability is more important than that of an individual scale-out backend server. Which means that you may see risk profiles differently, and be more willing to pay for one and not the other.<br /><br />Just my 2c.",
+      "id": "7068356930698462289",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Dmitri Kalintsev",
+      "profile": "https://www.blogger.com/profile/16576726865924052243",
+      "pub": "2017-03-22T23:49:37.858+01:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "date": "23 March 2017 01:56",
+      "html": "Very clear Ivan,<br /><br />Thanks.",
+      "id": "4842090977216750597",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Gabriel",
+      "profile": null,
+      "pub": "2017-03-23T01:56:55.997+01:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "date": "23 March 2017 15:21",
+      "html": "Or you can build a multiterabit distributed load balancer without holding any state on a whitebox switch: https://www.fastly.com/blog/building-and-scaling-fastly-network-part-2-balancing-requests",
+      "id": "6882111752447975795",
+      "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
+      "name": "David Barroso",
+      "profile": "https://www.blogger.com/profile/08333059712411851393",
+      "pub": "2017-03-23T15:21:23.892+01:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "date": "27 March 2017 22:09",
+      "html": "This is good reading for me :) as I work for a load balancing company! ",
+      "id": "4179130844047716975",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02012177197401865639",
+      "pub": "2017-03-27T22:09:32.860+02:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "date": "28 March 2017 22:58",
+      "html": "I participated in a little discussion about commercial LB appliances versus loads of LB instances in a cloud environment. Hardware SSL offloading was mentioned and on the issue of sticky sessions one developer claimed a performance boost could be gained from hitting the same backend where certain (dynamic) data would already be cached in the application. I guess the latter really depends on most of the requested data to be a result of the same queries.<br />With regard to the SSL offloading, there is probably a balance point where the hardware solution can be cheaper. On the other hand, the extra scalability and availability of a cloud/container setup with (loads of) open source software load balancers somehow appeals to me.<br />",
+      "id": "6349490756917448195",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Albert Siersema",
+      "profile": "https://www.blogger.com/profile/04847257511165693348",
+      "pub": "2017-03-28T22:58:33.204+02:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "14 April 2017 09:24",
+          "html": "Thanks for the feedback. I know there&#39;s a perfectly valid exception for every rule-of-thumb. <br /><br />However, if you care enough about performance to consider impact of memcached lookup versus in-process memory cache, I&#39;m sure you don&#39;t need rules-of-thumb ;)",
+          "id": "6424517125863378950",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-04-14T09:24:45.928+02:00",
+          "ref": "4775262799630292434",
+          "type": "comment"
+        }
+      ],
+      "date": "14 April 2017 09:16",
+      "html": "I am an application developer and I can not agree with assertion that  &quot;session stickiness totally unnessesary&quot;.<br /><br />Yes, memcached/Redis/[other Out-Of-Process storage] can be fast, but sometimes you need faster. <br /><br />The next configuration is absolutely viable: <br />1. Nginx (or haproxy) with sticky sessions<br />2. A lot of lightweight appservers working mostly with their local in-process cache <br />3. Shared session storage as failback for cases of local cache miss<br /><br />Without sticky sessions appservers will allmost ever use shared storage.<br /><br />Although I must admit:<br /><br />a) Such configuration is obviously more complex and can not be recommended for all cases<br />b) I know nothing about &quot;expensive load balancers&quot; - I&#39;m talking about nginx, haproxy and .. IIS (wow! I&#39;ve remembered about IIS just now)  <br /><br />So .. sticky sessions have their uses.",
+      "id": "4775262799630292434",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/15614246402556298176",
+      "pub": "2017-04-14T09:16:38.725+02:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "28 March 2018 10:22",
+          "html": "#1 - Yes. <br />#2 - It depends on how well-designed the rest of your application stack is. If you need session stickiness from reverse proxy to application server, then you also need session stickiness from front-end LB to reverse proxy.",
+          "id": "1149002678592293168",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2018-03-28T10:22:20.554+02:00",
+          "ref": "158583238402815313",
+          "type": "comment"
+        }
+      ],
+      "date": "28 March 2018 06:39",
+      "html": "Hi Ivan, what&#39;s your view on load balancers for two use cases:<br /><br />1. A software implemented VPN (IPSec or GRE) in a scale out architecture (vs dedicated hardware/appliance VPN) <br />2. As a front end to a perimeter reverse proxy/LB like Envoy (e.g. Lyft fronts Envoy with a Amazon ELB)<br /><br />I&#39;m assuming that you need sticky sessions for 1 but not for 2 (assuming policy is replicated across all Envoy proxies)?",
+      "id": "158583238402815313",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "nminwalla",
+      "profile": "https://www.blogger.com/profile/15966716907431213800",
+      "pub": "2018-03-28T06:39:44.017+02:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "14 February 2019 20:07",
+          "html": "I\u2019m sure you\u2019ll get tons of hits with a few focused Google searches.",
+          "id": "5540522425272571500",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2019-02-14T20:07:15.628+01:00",
+          "ref": "8094414383422557646",
+          "type": "comment"
+        }
+      ],
+      "date": "14 February 2019 18:54",
+      "html": "&quot;mechanism to store client session data in data store shared among all servers&quot;. &quot;it takes one or two lines of web server configuration to enable the shared data store&quot;. Can you please write a blog post on it, or direct me to some resources. Apache and Nginx both will be much appreciated.",
+      "id": "8094414383422557646",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ahmmad Ismail",
+      "profile": "https://www.blogger.com/profile/12974607004567544814",
+      "pub": "2019-02-14T18:54:37.089+01:00",
+      "ref": "7932977118529905550",
+      "type": "comment"
+    }
+  ],
+  "count": 17,
+  "id": "7932977118529905550",
+  "type": "post",
+  "url": "2017/03/why-do-we-need-session-stickiness-in.html"
+}

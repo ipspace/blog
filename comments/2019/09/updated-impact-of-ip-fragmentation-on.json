@@ -1,0 +1,54 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "11 September 2019 19:39",
+          "html": "As you&#39;re dealing with multicast and UDP, the only solution is to solve the problem on the application layer, worst case limiting the MTU to minimum MTU that MUST be passed by all IPv6 routers (= 1280). I don&#39;t have a better answer :(",
+          "id": "9086659847803814682",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2019-09-11T19:39:58.807+02:00",
+          "ref": "7972115600817378113",
+          "type": "comment"
+        },
+        {
+          "date": "11 September 2019 20:40",
+          "html": "Change the app behavior in legacy protocol? Theoretically good idea as long as you can convince the sponsor to pay for it, and the risk is accepted (the risk of changing legacy protocol deployed in thousands of Customers).<br /><br /><br />Instead decided to enforce the fragmentation &amp; reassembly on the IPIP tunnel (on both devices terminating the tunnel). DF is ignored. <br />But it wasn&#39;t so easy to do this. Some vendors do not support such feature. Sometimes you need to switch to IPSec-nul encryption and do post-encryption fragmentation (the de-fragmentation is implicit just because to decrypt the packet it needs to be de-fragmented first). And it works as long as the IPSec can be a part of your product.<br /><br />There are many such cases where the solution is driven by business factors. Real life. Usually much more complicated than we can expect.",
+          "id": "5729589125090419220",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Bogdan Golab",
+          "profile": "https://www.blogger.com/profile/12912702162710760711",
+          "pub": "2019-09-11T20:40:37.226+02:00",
+          "ref": "7972115600817378113",
+          "type": "comment"
+        },
+        {
+          "date": "11 September 2019 21:03",
+          "html": "You asked me for a technical opinion. I did my best. You can\u2019t implement it. I get that, but there\u2019s nothing I can do about that. It\u2019s not like RFC 1122 was published last year... and sometimes you have to decide between implementing a dirty kludge (and a performance hit in your case) or walking away from the problem.<br /><br />Honestly, after too many kludges I had to live with, I tend to walk away these days. My sanity is precious and my time on this planet is limited. I also understand that\u2019s not an option for everyone.<br /><br />Apologize for the rant.<br />Ivan",
+          "id": "6738850323871441668",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2019-09-11T21:03:38.493+02:00",
+          "ref": "7972115600817378113",
+          "type": "comment"
+        }
+      ],
+      "date": "11 September 2019 10:35",
+      "html": "PMTUD and UDP/multicast? Should it work?<br /><br />I have such cases in my network where the IPIP tunnel reduced the MTU and the UDP/multicast packets have size of 1500 bytes...<br /><br />I wonder what is your suggestion in such case....",
+      "id": "7972115600817378113",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Bogdan Golab",
+      "profile": "https://www.blogger.com/profile/12912702162710760711",
+      "pub": "2019-09-11T10:35:08.846+02:00",
+      "ref": "9142009530858157219",
+      "type": "comment"
+    }
+  ],
+  "count": 4,
+  "id": "9142009530858157219",
+  "type": "post",
+  "url": "2019/09/updated-impact-of-ip-fragmentation-on.html"
+}

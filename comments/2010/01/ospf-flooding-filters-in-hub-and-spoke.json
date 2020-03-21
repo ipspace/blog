@@ -1,0 +1,87 @@
+{
+  "comments": [
+    {
+      "date": "07 January 2010 11:50",
+      "html": "few restrictions i could quickly think worth mentioning when &quot;ip ospf database-filter all out&quot; is configured on hub and static default is used on spokes -<br /><br />1. For DMVPN phase2, this wont work as the spokes need the actual tunnel IP address of the other spokes as next-hop for direct spoke to spoke communication<br />2. typically the spokes would already have a default route towards their ISP for internet access. <br /><br />Swap<br />#19804",
+      "id": "2382485477173164076",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Swap",
+      "profile": null,
+      "pub": "2010-01-07T11:50:20.000+01:00",
+      "ref": "2715186596692404265",
+      "type": "comment"
+    },
+    {
+      "date": "08 January 2010 13:59",
+      "html": "&quot;you have to use static default routes on the hub routers&quot; - I think you meant to say &quot;spoke routers&quot; here?",
+      "id": "2965856169386920360",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Murali Suriar",
+      "profile": null,
+      "pub": "2010-01-08T13:59:22.000+01:00",
+      "ref": "2715186596692404265",
+      "type": "comment"
+    },
+    {
+      "date": "08 January 2010 18:46",
+      "html": "You&#39;re absolutely right. It helps if your network uses a nice addressing range so you don&#39;t have to use a default route on the spoke routers. Otherwise VRFs should help ;)",
+      "id": "7401009704511687558",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-01-08T18:46:21.000+01:00",
+      "ref": "2715186596692404265",
+      "type": "comment"
+    },
+    {
+      "date": "08 January 2010 18:46",
+      "html": "Correct. Thanks. Fixed.",
+      "id": "2141130628749408929",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-01-08T18:46:32.000+01:00",
+      "ref": "2715186596692404265",
+      "type": "comment"
+    },
+    {
+      "date": "18 March 2013 18:18",
+      "html": "An alternative, for example if we are using an IOS that do not support this feature or we are using another vendor, could be to MaxAge all the LSA&#39;s from the Hub increasing the transmit delay to 3600 seconds. However, the adjacency will be broken due to &quot;too many retransmissions&quot; , to avoid that we should increase the retransmit interval to a high value in order to maintain the adjacency up.<br /><br />So, the configuration in the Hub would be:<br /><br />interface <br />ip ospf retransmit-interval 6000  <br />ip ospf transmit-delay 3600  <br /><br />Best Regards.  <br /><br /><br />",
+      "id": "8206568751228864944",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jose Jara",
+      "profile": null,
+      "pub": "2013-03-18T18:18:33.115+01:00",
+      "ref": "2715186596692404265",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "30 January 2017 17:27",
+          "html": "Yes, it would. Not the best idea in OSPF world...",
+          "id": "5852730434319863125",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-01-30T17:27:46.649+01:00",
+          "ref": "9107398174322165299",
+          "type": "comment"
+        }
+      ],
+      "date": "30 January 2017 06:23",
+      "html": "Hi, By filtering LSAs, won&#39;t this lead to inconsistent LSDB on the routers in the same area?",
+      "id": "9107398174322165299",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2017-01-30T06:23:00.233+01:00",
+      "ref": "2715186596692404265",
+      "type": "comment"
+    }
+  ],
+  "count": 7,
+  "id": "2715186596692404265",
+  "type": "post",
+  "url": "2010/01/ospf-flooding-filters-in-hub-and-spoke.html"
+}

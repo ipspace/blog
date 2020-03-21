@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "07 August 2013 13:32",
+          "html": "I did mean &quot;vShield&quot;. ESXi VXLAN kernel module is part of vShield (or vCNS) product and can only be configured through vShield Manager.",
+          "id": "1099194682423458411",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-08-07T13:32:23.962+02:00",
+          "ref": "3559194279728785796",
+          "type": "comment"
+        },
+        {
+          "date": "07 August 2013 23:58",
+          "html": "Oh, I see what you mean. :) I&#39;d say that NV in vCNS is a part of DVS, but yes, it is configured in vSM, which is a bit confusing. Or more than a bit. :)",
+          "id": "4815489809087002715",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Dmitri Kalintsev",
+          "profile": "https://www.blogger.com/profile/16576726865924052243",
+          "pub": "2013-08-07T23:58:10.055+02:00",
+          "ref": "3559194279728785796",
+          "type": "comment"
+        }
+      ],
+      "date": "07 August 2013 13:26",
+      "html": "&gt; most mainstream overlay network implementations (Cisco Nexus 1000V, VMware vShield, Microsoft Hyper-V)<br /><br />You meant &quot;vSwitch&quot;, not &quot;vShield&quot;, right? ;)",
+      "id": "3559194279728785796",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Dmitri Kalintsev",
+      "profile": "https://www.blogger.com/profile/16576726865924052243",
+      "pub": "2013-08-07T13:26:05.826+02:00",
+      "ref": "2446456991570617349",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "07 August 2013 14:00",
+          "html": "Flooding is done through IP multicast (VXLAN), through head-end replication (unicast VXLAN, NVP) or through service nodes (NVP). Hyper-V doesn&#39;t need flooding because it handles ARP locally.",
+          "id": "8857975177534575334",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-08-07T14:00:11.911+02:00",
+          "ref": "3636082028131555737",
+          "type": "comment"
+        }
+      ],
+      "date": "07 August 2013 13:50",
+      "html": "Does flooding occur on the entire Ethernet segment? Since each VTEP knows the guest VMs connected mac address, why don&#39;t the VTEP&#39;s share macs with one another? This way flooding is local to the VTEP. ",
+      "id": "3636082028131555737",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ant",
+      "profile": null,
+      "pub": "2013-08-07T13:50:10.559+02:00",
+      "ref": "2446456991570617349",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "07 August 2013 14:11",
+          "html": "ARP request is sent to a broadcast (or multicast in case of ND) address, so it&#39;s flooded by definition.<br /><br />ARP reply is sent as unicast and wouldn&#39;t leave the hypervisor if the two VMs reside on the same VXLAN segment - same behavior as traditional Ethernet switches.<br /><br />Gratuitous ARP reply (used for shared IP takeover) is sent to broadcast address ==&gt; flooded.",
+          "id": "2900603112690410697",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-08-07T14:11:06.367+02:00",
+          "ref": "3121331681535939204",
+          "type": "comment"
+        }
+      ],
+      "date": "07 August 2013 14:04",
+      "html": "Ivan, wrt ARP, you state, \u201cIf the destination MAC address doesn\u2019t belong to a local VM, the layer-2 forwarding code sends the layer-2 frame toward the physical NIC.\u201d  Are you saying this does not happen if the destination MAC belongs to a VM in the same hypervisor?  I may be reading into it too much, but I would expect that to happen no matter what (and the local VM just responds normally) or are you just implying it when you state, \u201cIf the destination MAC address belongs to a VM residing in the same hypervisor, the frame gets delivered to the destination VM.\u201d  The frame gets delivered after the ARP request and response, no? If not, this can raise some interesting questions with shared IPs, etc.",
+      "id": "3121331681535939204",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jason Edelman (@jedelman8)",
+      "profile": "http://jedelman.com",
+      "pub": "2013-08-07T14:04:52.587+02:00",
+      "ref": "2446456991570617349",
+      "type": "comment"
+    },
+    {
+      "date": "07 August 2013 14:14",
+      "html": "Cool - thanks for confirming.",
+      "id": "8251078876997613428",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jason Edelman (@jedelman8)",
+      "profile": "http://jedelman.com",
+      "pub": "2013-08-07T14:14:44.757+02:00",
+      "ref": "2446456991570617349",
+      "type": "comment"
+    },
+    {
+      "date": "21 March 2014 10:55",
+      "html": "Great to see someone clearly and explicitly stating the Jumbo Frame requirement. Thanks.<br /><br />Steven Iveson",
+      "id": "4871730602995368145",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-21T10:55:41.423+01:00",
+      "ref": "2446456991570617349",
+      "type": "comment"
+    }
+  ],
+  "count": 9,
+  "id": "2446456991570617349",
+  "type": "post",
+  "url": "2013/08/a-day-in-life-of-overlaid-virtual-packet.html"
+}

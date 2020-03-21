@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "02 October 2013 05:58",
+          "html": "Not in the case of individual independent switches (Enterasys, Arista).<br /><br />QFabric probably has some sort of ARP distribution protocol (most likely yet another MP-BGP address family).",
+          "id": "1453503514156222134",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-10-02T05:58:59.730+02:00",
+          "ref": "3963050855591120478",
+          "type": "comment"
+        }
+      ],
+      "date": "01 October 2013 17:37",
+      "html": "Is there a protocol to sync ARP caches of different fabric members? And what happens when VM gets moved from one switch to another?",
+      "id": "3963050855591120478",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-10-01T17:37:02.046+02:00",
+      "ref": "3881498428677358568",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2013 19:18",
+      "html": "Ivan, a few comments about your scalability concerns:<br /><br />- I am not a fan of building large L2 networks, but even small L2 networks may need to be distributed. Size and distribution are not necessarily related.<br /><br />- ARP and MAC address, yes, but with recent hardware those limits are fine for just about everyone. And there is a difference between having an address available on a switch versus actively installed in forwarding hardware<br /><br />As for the IP addressing for optimized or distributed routing, it does not have to be that way. By sheer coincidence (honestly) my blog post for this coming Thursday touches on this very same topic and explains at a high level how Plexxi tackles distributed routing.<br /><br />-Marten<br />@martent1999<br />Plexxi<br />",
+      "id": "8346730870962776873",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/17332987438325943763",
+      "pub": "2013-10-01T19:18:50.293+02:00",
+      "ref": "3881498428677358568",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2013 18:27",
+      "html": "Hi Ivan<br /><br />nice summary :) In terms of scale and leveraging fabric routing you don&#39;t need L2 everywhere when you use our host routing, IP mobility feature (into foreign subnets). That is an option to avoid stretched, large L2 domains.<br /><br />In terms of IP address consumption - that is true but if you have a enterprise data center and eventually a EoR design that number is still pretty low.<br /><br />If you want to go beyond - I wrote a blog about another upcoming solution for that problem ... http://blogs.enterasys.com/routing-as-a-service-does-this-become-automatically-raas/<br /><br />Regards<br />Markus",
+      "id": "1467828063618506196",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Markus",
+      "profile": "http://enterasys.com",
+      "pub": "2013-10-02T18:27:44.581+02:00",
+      "ref": "3881498428677358568",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "03 October 2013 19:59",
+          "html": "Assuming every ToR switch participates in every subnet (which was the assumption at the beginning of this blog post), then every ToR switch does need MAC and ARP entries for all hosts with active conversations going through that switch. <br /><br />It will probably have MAC addresses of all hosts (due to dynamic MAC learning), but not necessarily all ARP addresses. Would you agree?<br /><br />Kind regards, Ivan",
+          "id": "4536923194033226126",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-10-03T19:59:31.083+02:00",
+          "ref": "1280581152938455406",
+          "type": "comment"
+        }
+      ],
+      "date": "02 October 2013 18:42",
+      "html": "Hi Ivan<br /><br />just did another deeper review - fabric routing would not require to <br /><br />Every edge switch must know MAC addresses of all active IP hosts;<br />Every edge switch must have ARP entries for all active IP hosts.<br /><br />That every edge switch needs to know MAC and ARP for the locally attached IP Hosts but as the switch then routes (based on his routing table) it to the destination network there is no need for him to know all of them<br /><br />Regards.",
+      "id": "1280581152938455406",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Markus",
+      "profile": "http://enterasys.com",
+      "pub": "2013-10-02T18:42:29.159+02:00",
+      "ref": "3881498428677358568",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "3881498428677358568",
+  "type": "post",
+  "url": "2013/10/the-intricacies-of-optimal-layer-3.html"
+}

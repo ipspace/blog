@@ -1,0 +1,63 @@
+{
+  "comments": [
+    {
+      "date": "09 October 2007 00:21",
+      "html": "thanks for this awesome site! i am studying for my ccie and am reviewing ospf now.  i thought that the ospf network statements were executed top to bottom like an access list (if a match, then exit), but i now see correctly. :)",
+      "id": "5213974876288671455",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Andrew",
+      "profile": "https://www.blogger.com/profile/07709487598850456742",
+      "pub": "2007-10-09T00:21:00.000+02:00",
+      "ref": "116384901084334659",
+      "type": "comment"
+    },
+    {
+      "date": "22 February 2008 19:18",
+      "html": "Do you know from which release this feature is integrated?",
+      "id": "6250953105295324839",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-02-22T19:18:00.000+01:00",
+      "ref": "116384901084334659",
+      "type": "comment"
+    },
+    {
+      "date": "22 February 2008 20:56",
+      "html": "No idea ... even the 12.4 documentation still claims (incorrectly) that the network statements are processed sequentially in the order they were entered.",
+      "id": "5664291932817607252",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-02-22T20:56:00.000+01:00",
+      "ref": "116384901084334659",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2008 05:30",
+      "html": "Hi Ivan!<BR/><BR/>FYI: I've just performed some tests w/ 3640's image and can confirm that changes in order dependency took place somewhere between 11.3T and 12.0:<BR/><BR/>11.3(9)T:<BR/>---------<BR/>#sh startup<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/>!<BR/><BR/>#sh run<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/>!<BR/><BR/>Note: When I try to enter initial ospf's config via CLI it alarms for each subsequent entry after 0.0.0.0/255.255.255.255:<BR/><BR/>% OSPF: \"network 172.16.0.0 0.0.255.255 area 0.0.0.1\" is ignored. It is a subset of a previous entry.<BR/><BR/><BR/>12.0(14):<BR/>---------<BR/><BR/>#sh startup<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/>!<BR/><BR/>#sh run<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/>!<BR/><BR/>#sh log<BR/>[snip]<BR/><BR/>%OSPF-6-AREACHG: 172.16.0.0/16 changed from area 0.0.0.0 to area 0.0.0.1<BR/><BR/>%OSPF-6-AREACHG: 172.16.2.0/23 changed from area 0.0.0.1 to area 0.0.0.2<BR/><BR/>%OSPF-6-AREACHG: 172.16.3.0/24 changed from area 0.0.0.2 to area 0.0.0.3<BR/><BR/>[snip]<BR/><BR/>   HTH!",
+      "id": "1910101860937276953",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "uri",
+      "profile": "https://www.blogger.com/profile/13608771699731629666",
+      "pub": "2008-09-23T05:30:00.000+02:00",
+      "ref": "116384901084334659",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2008 09:38",
+      "html": "Thanks. This is great information :))",
+      "id": "3627693923951873977",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-09-23T09:38:00.000+02:00",
+      "ref": "116384901084334659",
+      "type": "comment"
+    }
+  ],
+  "count": 5,
+  "id": "116384901084334659",
+  "type": "post",
+  "url": "2006/11/network-statements-in-ospf-process-are.html"
+}

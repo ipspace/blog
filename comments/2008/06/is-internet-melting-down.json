@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "date": "29 June 2008 13:03",
+      "html": "100% correct.   There is an inherent conflict between the hierarchy which keeps routing tables small and every endpoint having its own unique prefix which can move to another attachment point (i.e. ISP) in the Internet and thus require routing information.<BR/><BR/>The problem is that we really don't know how to scale the Internet if truly every endpoint was unique and non-hierarchical.  Today's 250,000 routes are thankfully far less than the hundreds of millions of organizations connected to the Internet, and it is because of the requirement to use ISP address space that these millions of organizations don't have their own routes in the global routing table.<BR/><BR/>Ergo, some hierarchy is absolutely necessary for a large proportion of the address space, independent of the IPv4 / IPv6 question.<BR/><BR/>/John",
+      "id": "3558855676381008642",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-06-29T13:03:00.000+02:00",
+      "ref": "8017654945617905073",
+      "type": "comment"
+    },
+    {
+      "date": "29 June 2008 13:07",
+      "html": "Ivan<BR/><BR/>I don't think he said what you thought he said.<BR/><BR/>In the comments section he clearly agrees that IPv6 could make things a lot worse in terms of the size of the global routing table, and that IPv6 won't fix it.<BR/><BR/>We all, already know, its multi-homing thats causing it, although from what I have read, there are quite a few extremely lazy ISP's around the place not doing the correct thing and properly summarizing their networks.<BR/><BR/>P.S. On another note, do we really need an 8 character captcha code to stop spammers? 4 ought to be enough, and if it isn't, I doubt 4 more is going to make much of a difference.",
+      "id": "2938217502663573872",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/00963478939764648991",
+      "pub": "2008-06-29T13:07:00.000+02:00",
+      "ref": "8017654945617905073",
+      "type": "comment"
+    },
+    {
+      "date": "29 June 2008 16:33",
+      "html": "Whisper,<BR/><BR/>you're right, he changed his perspective slightly in the \"comments\" section. But neither Michael nor Jeff Doyle (who wrote one of the last comments) acknowledge the fact that the routing table size is protocol-agnostic. It doesn't matter whether we have IPv4 or IPv6, the size of the routing tables depends primarily on the number of PA+PI address blocks allocated, not on the address length.<BR/><BR/>Sometimes I'm disappointed to see that very knowledgeable and bright people use wrong arguments to promote IPv6. That's not needed and it only brings confusion and generates more potential for further arguments.<BR/><BR/>As for the CAPTCHA code: my blog is still hosted on Blogger and the chance that Google engineers would ever respond to my requests is so close to zero that I don't waste my time trying (just read my post about the last poll failure). What I do is to use my Google account (which I have for a variety of reasons) and then I don't have to enter the CAPTCHA code.",
+      "id": "3397914082402371258",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-06-29T16:33:00.000+02:00",
+      "ref": "8017654945617905073",
+      "type": "comment"
+    },
+    {
+      "date": "30 June 2008 00:57",
+      "html": "So, which time our own Wordpress blog start running?",
+      "id": "2875515901970680418",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-06-30T00:57:00.000+02:00",
+      "ref": "8017654945617905073",
+      "type": "comment"
+    },
+    {
+      "date": "30 June 2008 00:59",
+      "html": "<A HREF=\"http://www.theregister.co.uk/2005/10/31/google_login_shocker\" REL=\"nofollow\"/> :)",
+      "id": "7687218020751375822",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-06-30T00:59:00.000+02:00",
+      "ref": "8017654945617905073",
+      "type": "comment"
+    },
+    {
+      "date": "30 June 2008 06:05",
+      "html": "Take a look at LISP (no, not the language) - http://tools.ietf.org/html/draft-farinacci-lisp-07 and http://www.cisco.com/web/about/ac123/ac147/archived_issues/ipj_11-1/111_lisp.html should give a flavor.",
+      "id": "2272054485435420184",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Roland Dobbins",
+      "profile": "https://www.blogger.com/profile/06517186494484977438",
+      "pub": "2008-06-30T06:05:00.000+02:00",
+      "ref": "8017654945617905073",
+      "type": "comment"
+    },
+    {
+      "date": "01 July 2008 12:36",
+      "html": "Ivan,<BR/><BR/>I belive this \"fragmentation\" issue has been recognized for years, and there were some proposals aimed to combat the problems with PIs and multihoming. Probably most well-known (to me) \"hack\" is BGPDNS:<BR/><BR/>http://www.ripe.net/ripe/meetings/ripe-41/presentations/routing-opperman/sld001.html<BR/><BR/>However, from the architectural standpoint, the root cause lies in the *global* address space concept used by both IPv4 and IPv6. <BR/><BR/>Just as a reference, I'm providing a couple of links to a new Internet routing and addressing architecure, suggested by a DARPA funded research project:<BR/><BR/>http://www.isi.edu/newarch/fara.html<BR/>http://www.isi.edu/newarch/DOCUMENTS/yang.nira.ps<BR/><BR/>Though I'm almost sure you head about it, still I hope the links will provide useful information to your blog readers.<BR/><BR/>Thanks for bloggig this,<BR/><BR/>--<BR/><BR/>Petr Lapukhov,<BR/>InternetworkExpert Inc.",
+      "id": "3581388613124065808",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-07-01T12:36:00.000+02:00",
+      "ref": "8017654945617905073",
+      "type": "comment"
+    },
+    {
+      "date": "01 July 2008 13:45",
+      "html": "@Petr: the BGPDNS system does not work well with current browsers. The browser vendors had to implement <A HREF=\"http://christ1an.blogspot.com/2007/07/dns-pinning-explained.html\" REL=\"nofollow\">DNS pinning</A> to prevent some of the more obvious spoofing attack, which means that you have to restart the browser session if the server you work with goes down.<BR/><BR/>Other than that, we did quite a few production-grade implementations of that concept years ago (using creative NAT) and I'm also describing something similar in the <A HREF=\"http://www.nil.com/ipcorner/SOHO_Servers/\" REL=\"nofollow\">Servers in SOHO multihoming</A> article.<BR/><BR/>@Petr & Roland: thanks for all the other links. It will take a while for me to absorb them completely :)",
+      "id": "6571731950534951215",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-07-01T13:45:00.000+02:00",
+      "ref": "8017654945617905073",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "8017654945617905073",
+  "type": "post",
+  "url": "2008/06/is-internet-melting-down.html"
+}

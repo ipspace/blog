@@ -1,0 +1,168 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "15 June 2012 20:14",
+          "html": "Totally agree with you ... and keep wondering why people developing applications for iOS/Windows or writing stored procedures for Oracle, MySQL or SQL Server don&#39;t complain about vendor lock-in. Haven&#39;t seen too many smooth migrations between any two of the above.",
+          "id": "7273530354288742012",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-06-15T20:14:01.625+02:00",
+          "ref": "4758539969339340668",
+          "type": "comment"
+        },
+        {
+          "date": "16 June 2012 01:50",
+          "html": "Different stages of evolution. See @swardley&#39;s article that talks a bit about it here: http://blog.gardeviance.org/2012/03/tens-graphs-on-organisational-warfare.html, also @claychristensen talks a lot about it in his &quot;innovator&#39;s&quot; series.<br /><br />You know what at one point gave me hope? Quantum. It is waaay too simple, but in my mind the model is *the* right one. Open standard API, and vendor-specific plugins to make it work.<br /><br />Reality, however, is bitter - unless there&#39;s a strong incentive for Vendors to create those plugins, they have a snowflake in hell&#39;s chance, unless a significant market force similar to ONF appears and demands it.<br /><br />On the other hand, would be interesting to see if other networking vendors who have put some skin into the OpenStack game would wake up and put some effort into Quantum.",
+          "id": "8167379591924700564",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Dmitri Kalintsev",
+          "profile": "https://www.blogger.com/profile/16576726865924052243",
+          "pub": "2012-06-16T01:50:20.329+02:00",
+          "ref": "4758539969339340668",
+          "type": "comment"
+        }
+      ],
+      "date": "15 June 2012 11:14",
+      "html": "Don&#39;t want to sound negative or anything, but first things that pop into mind are:<br /><br />- Cisco&#39;s embedded software is notorious for its whack-a-mole software defects. Now we will have two additional layers on top of it: onePK API and applications that talk to your Cisco network via this API. Perspective of troubleshooting and bug-hunting in this cake sounds like fun (not).<br /><br />- onePK will only drive Cisco devices, and far from all of them to start with. Transitional period will be interesting. For those with hedged Vendor bets the perspective of having a schizophrenic management plane, like, *forever*, may present an interesting choice to be made. For me personally, if I was setting my Vendor/technology strategy anew, availability of onePK does not make Cisco any more attractive then it was before the announcement.<br /><br />- Looking at that onePK DE diagram above, I&#39;m thinking &quot;gosh, that is one ambitious project&quot;. Will be really interesting to see how long it will take for this to become reality across all these domains and devices. Also wonder which of the zillions of IOS trains/versions will be supported. All of them? Doubt it somehow. <br /><br />- Back to &quot;Cisco-only&quot;, I hope everybody realises that onePK is *the* ultimate vendor lock-in. I&#39;m struggling to think of anything that would lock you in tighter than that if you seriously bought into it. I&#39;m not saying there&#39;s anything wrong with lock-ins, but this one may become a particularly difficult one to get out of, if down the line someone else offers a better alternative, or if Cisco falls short in delivering on the promise - unlikely, but not impossible.<br /><br />One possibility here is that onePK could get &quot;cloned&quot;, or Cisco may choose to license it (maybe for free?) and other vendors would implement the southbound part of the API using their vendor-specific methods (netconf/snmp/xml/whatever). What is the likelihood of this happening? Don&#39;t know.<br /><br />Anyway, just a few grumpy late-Friday thoughs. ;)<br /><br />-- Dmitri",
+      "id": "4758539969339340668",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Dmitri Kalintsev",
+      "profile": "https://www.blogger.com/profile/16576726865924052243",
+      "pub": "2012-06-15T11:14:05.856+02:00",
+      "ref": "3369197207503774627",
+      "type": "comment"
+    },
+    {
+      "date": "15 June 2012 12:06",
+      "html": "Something sounds very familiar... ah wait, here it is.<br />www.juniper.net/us/en/local/pdf/whitepapers/2000378-en.pdf<br />Creating Innovative embedded applications in the Network with the JUNOS SDK. (2011)<br /><br />I think onePK is the only next logical step for Cisco.  I&#39;m sure the other vendors will follow suit in some similar fashion.<br /><br />OpenFlow has served its purpose in forcing Vendors to open up their boxes.",
+      "id": "3798919368059079172",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/09093345450465201728",
+      "pub": "2012-06-15T12:06:02.471+02:00",
+      "ref": "3369197207503774627",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "18 June 2012 19:39",
+          "html": "Since nobody else responded... I&#39;ll take a shot. OpenFlow is a specification for programming a switch&#39;s FIB from a centralized controller. All of the &quot;intelligence&quot; then resides on the controller rather than in control plane protocols on the switch itself.<br /><br />The advantage of this is that you can centralize forwarding logic and explicitly direct (or drop) traffic based on out-of-band information such as NMS, inventory systems, load, costs, etc. A common simple example is to eliminate dynamic address learning by programming MAC-to-port mappings or IP-to-MAC mappings explicitly based on an out-of-band database. You could do stuff like completely eliminate frame flooding this way, but it comes at the price of having a totally different way of thinking about networking. Any control or management features that you&#39;re used to would have to be reimplemented in a pure OpenFlow network.<br /><br />Cisco&#39;s onePK is a set of APIs for programmatically manipulating the *existing* control, forwarding, or management planes of IOS devices.",
+          "id": "2439340871418093031",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Jay Swan",
+          "profile": "https://www.blogger.com/profile/02571029118821999072",
+          "pub": "2012-06-18T19:39:15.605+02:00",
+          "ref": "7673179576724216457",
+          "type": "comment"
+        },
+        {
+          "date": "18 June 2012 20:31",
+          "html": "I still cannot visualize openflow more than a database of Policy based routing (PBR) route-maps which is not stored on router or switch itself but stored externally on controller and controller communicates to router or switch to push those PBR route-maps into FIB. <br /><br />And I guess openflow spec defines protocol to do this and Cisco One PK provides API to write those PBRs. Is this correct?",
+          "id": "167917850365405447",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "shah",
+          "profile": "https://www.blogger.com/profile/15818883829738651247",
+          "pub": "2012-06-18T20:31:46.064+02:00",
+          "ref": "7673179576724216457",
+          "type": "comment"
+        },
+        {
+          "date": "18 June 2012 22:09",
+          "html": "Your first paragraph is a decent analogy as long as you realize that in &quot;pure&quot; OpenFlow, there is no other intelligence in the switch at all. After the code matches a flow, all it can do is set one or more of the OpenFlow actions (output, drop, set group, change TTL, set queue, or a couple of other things). No routing protocols, no LLDP, STP, etc.<br /><br />However, people are talking about a &quot;hybrid&quot; model where there is a normal control plane that will handle packets that aren&#39;t handled by OpenFlow.<br /><br />Cisco&#39;s onePK, on the other hand, is an API directly into any flavor of IOS, so you can do anything the hardware and software supports. It&#39;s much more than just controlling the FIB (although you can do that too).",
+          "id": "4381739181937604589",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Jay Swan",
+          "profile": "https://www.blogger.com/profile/02571029118821999072",
+          "pub": "2012-06-18T22:09:27.159+02:00",
+          "ref": "7673179576724216457",
+          "type": "comment"
+        }
+      ],
+      "date": "15 June 2012 20:34",
+      "html": "Ivan,<br /><br />I&#39;ve read of so many posts from you and other top bloggers on OpenFlow.<br /><br />I still have no clue what it is.<br /><br />May I request a &#39;one sentence&#39; explanation?  Is it just a means to allow other groups to add features to a company&#39;s software (ie IOS) and if so how in the world would another company know where to start?  Is it an actual protocol running at some layer in the OSI? <br /><br />I&#39;m a seeing as believing person and just cant get my head wrapped around this.",
+      "id": "7673179576724216457",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Will",
+      "profile": null,
+      "pub": "2012-06-15T20:34:51.052+02:00",
+      "ref": "3369197207503774627",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "16 June 2012 01:59",
+          "html": "John,<br /><br />Thank you for the comment, much appreciate it.<br /><br />I wasn&#39;t saying that it doesn&#39;t work or that it&#39;s a ppt. I believe that you guys see it as very important and put a lot of effort behind it.<br /><br />I guess it must be the old wounds speaking, when on a number of occasions we were let down by the IOS code quality, and adding onePK on top isn&#39;t making things any simpler or less complex.<br /><br />Don&#39;t at this point see any apparent remedy for this, apart from giving it time and seeing how it will turn out.<br /><br />Cheers,<br /><br />-- Dmitri",
+          "id": "6863064452679276161",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Dmitri Kalintsev",
+          "profile": "https://www.blogger.com/profile/16576726865924052243",
+          "pub": "2012-06-16T01:59:18.752+02:00",
+          "ref": "1319217928557167036",
+          "type": "comment"
+        }
+      ],
+      "date": "16 June 2012 00:51",
+      "html": "Dimitri,<br /><br />As one of the architects of onePK, I appreciate your comments. We have a very software mindset - quality and usability for developers is top of our mind. It does sound a little ambitious but we have been working on it for quite a while and now have a lot of working code across Cisco platforms. So we do have working proof points; it is not just fancy ppt :-).<br /><br />We see this as the natural evolution of the network into a developer platform, just as we the desktop, server, and mobile platforms have been opened up to a broad development audience.<br /><br />Regards<br /><br />John",
+      "id": "1319217928557167036",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "John McDowall",
+      "profile": "http://developer.cisco.com/web/getyourbuildon/onepk",
+      "pub": "2012-06-16T00:51:59.923+02:00",
+      "ref": "3369197207503774627",
+      "type": "comment"
+    },
+    {
+      "date": "16 June 2012 15:30",
+      "html": "As usual, Cisco provides a belated yet well thought out and impressive vision.  Whether or not their vast Enterprise customer base actually uses OnePK, who knows, and who cares? Not Cisco.<br />Calm down the hype and anxiety? Mission Accomplished (i think).",
+      "id": "3870029589428399191",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brad Hedlund",
+      "profile": "http://bradhedlund.com",
+      "pub": "2012-06-16T15:30:35.191+02:00",
+      "ref": "3369197207503774627",
+      "type": "comment"
+    },
+    {
+      "date": "04 July 2012 11:28",
+      "html": "I still cannot visualize openflow more than a database of Policy based routing (PBR) route-maps which is not stored on router or switch itself but stored externally on controller and controller communicates to router or switch to push those PBR route-maps into FIB.",
+      "id": "7317202655928497663",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "mido_deutscher",
+      "profile": "http://www.e3050.com/Items.aspx?cat=WIRROU&brand=CIS",
+      "pub": "2012-07-04T11:28:32.488+02:00",
+      "ref": "3369197207503774627",
+      "type": "comment"
+    },
+    {
+      "date": "29 March 2013 16:32",
+      "html": "Hi,<br />Interesting post. How do you see OnePK v VMware/Nicira&#39;s NSX? <br />They basically want to virtualize networking like they did it with servers. It opens up interesting possibilities. While OnePK is more like a significant improvement in network management/operation (provided it will work as described). Someone up there made a point of how quick this thing will really fly with all the variety of IOS strains. VMware kinda looks more attractive in that sense.<br /><br />In any case - both are vendor lock. The benefit with VMWare is they don&#39;t care about hardware. Cisco wants both.",
+      "id": "7806699867152533132",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-03-29T16:32:11.713+01:00",
+      "ref": "3369197207503774627",
+      "type": "comment"
+    },
+    {
+      "date": "10 September 2013 23:35",
+      "html": "http://developer.cisco.com/onepk/capi/index.html",
+      "id": "4822750105379869075",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-09-10T23:35:44.215+02:00",
+      "ref": "3369197207503774627",
+      "type": "comment"
+    }
+  ],
+  "count": 14,
+  "id": "3369197207503774627",
+  "type": "post",
+  "url": "2012/06/cisco-one-more-than-just-openflowsdn.html"
+}
