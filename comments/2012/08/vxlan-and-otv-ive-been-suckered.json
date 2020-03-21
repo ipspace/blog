@@ -1,0 +1,63 @@
+{
+  "comments": [
+    {
+      "date": "27 August 2012 22:40",
+      "html": "ohh come on Ivan, this post is practically on its knees begging for reference to RFC1925 section 2.11 :)<br /><br />",
+      "id": "7820079431779238727",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ofer",
+      "profile": null,
+      "pub": "2012-08-27T22:40:48.222+02:00",
+      "ref": "8450043889746268608",
+      "type": "comment"
+    },
+    {
+      "date": "29 August 2012 22:06",
+      "html": "GRE as an encapsulation for OTV was known already. Example of links:<br />http://www.cisco.com/en/US/prod/collateral/switches/ps9441/ps9402/qa_c67-574969.html<br />http://docwiki.cisco.com/wiki/Nexus_7000_-_OTV_-_Design_and_Configuration_Example<br />Frankly, nothing new. ;)",
+      "id": "6712318046659897333",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Piotr Jablonski",
+      "profile": null,
+      "pub": "2012-08-29T22:06:37.835+02:00",
+      "ref": "8450043889746268608",
+      "type": "comment"
+    },
+    {
+      "date": "30 August 2012 05:36",
+      "html": "This is pretty eye-opening.  Having GRE as the encapsulation is not well known - yes its *lightly* documented, but Cisco has promoted OTV/VXLAN (and LISP) as having encapsulation formats (IE ...&quot;VXLAN, OTV, and LISP frame formats share a similar-looking packet encapsulation structure...&quot; - google it) leading those interested to believe that with a similar encapsulation structure, hardware enabled encap/decap will be consistent across the Nexus product line once it has been integrated into the next module line (F3?).  Will that be the case or will we continue to need module 1 for OTV, module 2 for VXLAN and module 3 for LISP for scalable, hardware-based performance for cloud overlays. <br />I think that&#39;s the reason that some may feel suckered, as do I.  I give them the benefit of the doubt until the next round of modules come out and we see what&#39;s supported.",
+      "id": "6728372475018639649",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-08-30T05:36:34.968+02:00",
+      "ref": "8450043889746268608",
+      "type": "comment"
+    },
+    {
+      "date": "01 September 2012 02:18",
+      "html": "Hey Ivan:<br /><br />So, you know, the path forward is not always as straightforward as we might like. :)  <br /><br />In this case, the OTV header format proposed in draft-hasmit-otv-03 (http://tools.ietf.org/html/draft-hasmit-otv-03) is the original proposed OTV header and has clear benefits in terms of its ability to be handled by the transit network providing connectivity for an overlay. This header is the header we want to converge to for all overlay encapsulations moving forward, hence the bit-by-bit match observed with the VXLAN and LISP headers.<br /><br />However, in order for Cisco to deliver OTV in a timely manner, we released an implementation on the Nexus 7000 that used an alternate encapsulation format that could be supported by existing switching hardware.  The work has been taking place at Cisco (and across the industry) to support the proposed UDP encapsulation and Cisco&#39;s newer lines of ASICs will support the UDP encapsulation, but in the intervening 2+ years customers have an option for a hardware accelerated solution they can work with.<br /><br />Since the goal of standards bodies is to achieve convergence and consensus, we elected to maintain a crisp forward-looking message and focus our IETF proposal on the UDP encapsulation. We feel the approach has paid off as the newer proposals such as VXLAN adopted the proposed header format.<br /><br />The use of an alternate encapsulation for the initial release of OTV has been openly socialized by Cisco since OTV was first released (and well ahead of the publication of the IETF draft) in forums such as Cisco Live, public Webinars and in docs like http://www.cisco.com/en/US/prod/collateral/switches/ps9441/ps9402/qa_c67-574969.html . <br /><br />Our goal was for clarity and certainly not to imply that ASIC lines that precede the invention of OTV could actually support the proposed new UDP encapsulation scheme.<br /><br />Hope this helps helps.<br /><br />Regards,<br /><br />Omar Sultan (@omarsultan)<br />Cisco",
+      "id": "6712595226089409194",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Omar Sultan",
+      "profile": "http://blogs.cisco.com/datacenter",
+      "pub": "2012-09-01T02:18:10.302+02:00",
+      "ref": "8450043889746268608",
+      "type": "comment"
+    },
+    {
+      "date": "13 September 2012 10:54",
+      "html": "And so there is no chance that since OTV lost their charter due to IPR issues that Cisco used VMware and VXLAN to try to sneak in the OTV header and try to get vendors to support OTV in hardware &quot;by accident&quot;? ",
+      "id": "6606592001763886863",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-09-13T10:54:12.608+02:00",
+      "ref": "8450043889746268608",
+      "type": "comment"
+    }
+  ],
+  "count": 5,
+  "id": "8450043889746268608",
+  "type": "post",
+  "url": "2012/08/vxlan-and-otv-ive-been-suckered.html"
+}

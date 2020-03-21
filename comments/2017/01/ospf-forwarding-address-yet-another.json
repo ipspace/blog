@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "19 January 2017 15:42",
+          "html": "Yeah, I found that some thing... still wonder whether that&#39;s a Cisco thingy or RFC-mandated behavior.",
+          "id": "6942865425560248024",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-01-19T15:42:36.227+01:00",
+          "ref": "2153980154379824446",
+          "type": "comment"
+        },
+        {
+          "date": "19 January 2017 20:47",
+          "html": "My (tested) solution:<br />1) define area 1 as NSSA<br />2) Configure on both E1 and E2 a common Loopback1 address (say 12.12.12.12/32)<br />3) Include Loopback1 in OSPF 1 in both E1 and E2<br /><br />interface Loopback1<br />  ip addre 12.12.12.12 255.255.255.255<br />  ip ospf 1 area 1<br /><br />4) On E1 redistribute BGP in OSPF. Type-7 LSAs will have Forwarding Address 12.12.12.12<br /><br />That&#39;s all, folks !   ",
+          "id": "4584997911443222217",
+          "image": "https://1.bp.blogspot.com/-CrF2hgzSoTQ/WoyqrG4y49I/AAAAAAAAH8M/KLGgfrBE1R0H8T0kc5SxwuThLaoxr6mlACK4BGAYYCw/s32/Pizzo%2BCamarda.JPG",
+          "name": "Ammiraglio Tofonoto",
+          "profile": "https://www.blogger.com/profile/04524005885569437211",
+          "pub": "2017-01-19T20:47:57.980+01:00",
+          "ref": "2153980154379824446",
+          "type": "comment"
+        }
+      ],
+      "date": "19 January 2017 10:46",
+      "html": "I was able to find only this info:<br />* These conditions set the forwarding address field to a non-zero address:<br />** OSPF is enabled on the ASBR&#39;s next hop interface AND<br />** ASBR&#39;s next hop interface is non-passive under OSPF AND<br />** ASBR&#39;s next hop interface is not point-to-point AND<br />** ASBR&#39;s next hop interface is not point-to-multipoint AND<br />** ASBR&#39;s next hop interface address falls under the network range specified in the router ospf command.<br />* Any other conditions besides these set the forwarding address to 0.0.0.0.<br /><br />http://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/13682-10.html#topic1",
+      "id": "2153980154379824446",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2017-01-19T10:46:07.877+01:00",
+      "ref": "5300995569477506068",
+      "type": "comment"
+    },
+    {
+      "date": "19 January 2017 17:17",
+      "html": "I spent on this topic some time and have found only a discussion ietf forum:<br />https://www.ietf.org/mail-archive/web/ospf/current/msg08229.html",
+      "id": "3903097161291313837",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Bogdan Golab",
+      "profile": "https://www.blogger.com/profile/12912702162710760711",
+      "pub": "2017-01-19T17:17:43.472+01:00",
+      "ref": "5300995569477506068",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "22 January 2017 21:18",
+          "html": "That&#39;s correct.  NSX does this as it must set the FA to the data plane device (the DLR) as the adjacency is acually on the controller.  This is why when you set connected interfaces to redistribute it inserts them as type 5 or type 7. You cannot put them in the LSA database as anything but external which kind of sucks.",
+          "id": "635907191964148391",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Clay Curtis",
+          "profile": "http://operational.io",
+          "pub": "2017-01-22T21:18:35.876+01:00",
+          "ref": "7638107038514599609",
+          "type": "comment"
+        }
+      ],
+      "date": "19 January 2017 20:36",
+      "html": "One interesting use case is where the control plane is split from machines doing the actual data forwarding. If I am not mistaken, vmware NSX uses this on its logical routers, where the OSPF sessions are maintained by another VM.<br /><br />Other than that, I only came across this behavior when something went wrong on a network,.",
+      "id": "7638107038514599609",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Bart",
+      "profile": null,
+      "pub": "2017-01-19T20:36:06.114+01:00",
+      "ref": "5300995569477506068",
+      "type": "comment"
+    },
+    {
+      "date": "19 January 2017 22:04",
+      "html": "Rather than make the interfaces passive you could maybe change the network type to something that doesn&#39;t dynamically discover neighbors. Prevents accidental adjacency and still lets you have ospf active on the interface. Maybe some consider that even kludgier, but I don&#39;t really consider this scenario that bad. I don&#39;t really mind any of the scenarios in this post, to be honest. <br /><br />As far as the academics, smart people of course, but sometimes their proposals are way of base. Seems like a lot of the stuff is either not fully functional, or end up looking like OSPF or BGP by another name. I took Nick Feamster&#39;s course once, and while interesting, most of the routing replacements he proposed were basically as bad or equal to kludgy static routing. Some parts of the course were cool but those were the parts that had nothing to do with the forwarding plane. ",
+      "id": "6359313418126691700",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/16534090494053233593",
+      "pub": "2017-01-19T22:04:23.751+01:00",
+      "ref": "5300995569477506068",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "20 January 2017 03:46",
+          "html": "and I feel obliged to mention those admin distance / weight land mines are not present on other platforms",
+          "id": "4801461682830775467",
+          "image": "//images-blogger-opensocial.googleusercontent.com/gadgets/proxy?url=http://1.bp.blogspot.com/-j3GGfKuoRb4/VYDmEVI9C7I/AAAAAAAAAjs/aj4cvQNi2uk/s151/IMG_1013.JPG&container=blogger&gadget=a&rewriteMime=image/*",
+          "name": "Jeff Behrns",
+          "profile": "https://www.blogger.com/profile/09771677856264877238",
+          "pub": "2017-01-20T03:46:27.975+01:00",
+          "ref": "314203006221796117",
+          "type": "comment"
+        },
+        {
+          "date": "20 January 2017 09:40",
+          "html": "Yes, that would be even better.",
+          "id": "2682571423836684667",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-01-20T09:40:18.805+01:00",
+          "ref": "314203006221796117",
+          "type": "comment"
+        }
+      ],
+      "date": "20 January 2017 03:38",
+      "html": "RE:<br />*The proper design would be to run external routing protocol and route redistribution on both ASBRs (yeah, I know, the beauties of two-way redistribution)*<br /><br />Seems like proper solution would include IBGP to avoid admin distance problems or stupid weight 32768 issues.  Please correct if wrong:<br /><br />E1 ---(IBGP)--- E2<br />E1 ---(EBGP)--- X1<br />E2 ---(EBGP)--- X1<br />Only redistribute one-way (BGP to OSPF)<br />Use BGP network statements to advertise OSPF subnets to X1 or any other external AS",
+      "id": "314203006221796117",
+      "image": "//images-blogger-opensocial.googleusercontent.com/gadgets/proxy?url=http://1.bp.blogspot.com/-j3GGfKuoRb4/VYDmEVI9C7I/AAAAAAAAAjs/aj4cvQNi2uk/s151/IMG_1013.JPG&container=blogger&gadget=a&rewriteMime=image/*",
+      "name": "Jeff Behrns",
+      "profile": "https://www.blogger.com/profile/09771677856264877238",
+      "pub": "2017-01-20T03:38:11.993+01:00",
+      "ref": "5300995569477506068",
+      "type": "comment"
+    },
+    {
+      "date": "20 January 2017 09:37",
+      "html": "Redistribute both E1 and E2 into OSPF and set the OSPF cost of the egress interfaces as equal or unequal based on active/active or active/passive forwarding.  Do not matter if it is P2P or Multiaccess. <br />Still OSPF sucks as LSP :) :P ",
+      "id": "8689090783318994358",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": " HEMANTH RAJ",
+      "profile": "https://www.blogger.com/profile/08900264515934620482",
+      "pub": "2017-01-20T09:37:12.791+01:00",
+      "ref": "5300995569477506068",
+      "type": "comment"
+    },
+    {
+      "date": "21 January 2017 01:39",
+      "html": "It might be worth mentioning that Forwarding Address is also required for optimal path selection in NSSA scenario with more than one ABR.",
+      "id": "7156673075031897012",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/07506854128590215510",
+      "pub": "2017-01-21T01:39:01.119+01:00",
+      "ref": "5300995569477506068",
+      "type": "comment"
+    }
+  ],
+  "count": 12,
+  "id": "5300995569477506068",
+  "type": "post",
+  "url": "2017/01/ospf-forwarding-address-yet-another.html"
+}

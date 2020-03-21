@@ -1,0 +1,54 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "17 May 2012 09:26",
+          "html": "I did not quite get what Chip said that when 2 10G links are in the same ASIC port group, then VCS can essentially make it a 20G bandwidth link and do per-packet load balancing, in this case how VCS control plane is going to treat this 20G link for SPF calculation and how to ECMP traffic over this 20G link?",
+          "id": "2517437595402897448",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Unknown",
+          "profile": "https://www.blogger.com/profile/02692959370712732451",
+          "pub": "2012-05-17T09:26:05.416+02:00",
+          "ref": "6123768104244965992",
+          "type": "comment"
+        },
+        {
+          "date": "17 May 2012 16:07",
+          "html": "VCS treats a per-packet trunk as a single physical link. Think about it as a L1 LAG. Any protocol running on top of that will treat it as a single link.",
+          "id": "7758022023867864118",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Juan Tarr\u00edo",
+          "profile": "http://www.twitter.com/jtarrioBRCD",
+          "pub": "2012-05-17T16:07:55.346+02:00",
+          "ref": "6123768104244965992",
+          "type": "comment"
+        }
+      ],
+      "date": "17 May 2012 09:08",
+      "html": "Very nice presentations and discussions (3rd video), your first question with regarding to how to distribute traffic over fatter pipes, I think VCS control plane only has knowledge of individual links, i.e. there is no LAG/EthernetChannel pe se inside the fabric, so traffic will be hashed to all available links regardless whether the link is to the same next hop switch or different nexthop switch. Regarding your second question about vPC/vLAG toward split fabric, I don&#39;t think fabric itself has mechanism to decide which fabric should take over when this happens, if other side vPC/vLAG device can not detect the fabric failure (most likely they cannot), then there will be a broken L2.",
+      "id": "6123768104244965992",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02692959370712732451",
+      "pub": "2012-05-17T09:08:02.337+02:00",
+      "ref": "3357780583491445389",
+      "type": "comment"
+    },
+    {
+      "date": "18 May 2012 14:52",
+      "html": "Actually, that&#39;s DR. Chip Copper to be politically correct :)<br /><br /><br />I just wrote up a long drawn out explanation of the questions above, but decided it was way too much info.<br /><br />Let&#39;s just say, ECMP takes care of getting from switch to switch and Brocade&#39;s fantastic hashing algorithm takes care of the load balancing. <br /><br />This technology works. I have this implemented in large production data centers and is supporting tens of thousands of VMs, physical servers, and entire tier 1 applications. <br /><br />The only thing I wish Brocade would do is document the increased performance just about all customers have seen using VDX switches in the SAME TOPOLOGY as their older 10g ethernet gear. <br /><br />VDX has increased performance 3x-4x on applications and NAS clusters just based on the losslessness and load balancing inherent to the system in the SAME EXACT TOPOLOGY as the older gear with no secret sauce at all!!!! These have been documented by my customers, and it&#39;s my customers that are evangelizing this technology for me!<br /><br />Next 2 years should be GREAT with VDX!!!",
+      "id": "4548060288463765277",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "me@home.com",
+      "profile": null,
+      "pub": "2012-05-18T14:52:21.138+02:00",
+      "ref": "3357780583491445389",
+      "type": "comment"
+    }
+  ],
+  "count": 4,
+  "id": "3357780583491445389",
+  "type": "post",
+  "url": "2012/05/brocade-vcs-fabric.html"
+}

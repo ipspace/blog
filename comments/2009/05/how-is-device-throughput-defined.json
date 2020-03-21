@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "date": "25 May 2009 08:04",
+      "html": "Sorry - 'optimal' packet sizes for use in marketing materials are large packets, around 1500 bytes or thereabouts.<br /><br />Cisco and other vendors still make use of 'iMix', even though it's both old and has never borne any relevance whatsoever to traffic profiles on any real network anywhere, at any time.<br /><br />As you indicate, what's really needed is to develop a performance envelope for a given device/interface with packet sizes/frame rates from the applicable minimum to the applicable maximum, a la RFC2544, as well as with various features enabled/disabled.",
+      "id": "2380623040536260690",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Roland Dobbins",
+      "profile": null,
+      "pub": "2009-05-25T08:04:32.847+02:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "25 May 2009 14:57",
+      "html": "For testing throughput in pps, optimal should be \"as small as possible\", but for testing throughput in bps, optimal should be \"as large as possible not fragmented\" - am I right?",
+      "id": "2846161316682843767",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2009-05-25T14:57:11.454+02:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "25 May 2009 17:24",
+      "html": "All three of us are basically in agreement. If you're measuring throughput in bps, it's ideal to use large packets (increasing bps @ constant pps). <br /><br />If you're measuring throughput in pps, packet sizes usually don't matter much as long as you can generate enough packets based on your bps throughput and port density. Most of the receive/send processing (which is packet-size-dependent) is done in hardware and the CPU (or ASICs) just swaps pointers to packet headers.<br /><br />For IPSec performance in pps, it's probably ideal to have small packets ... I'm assuming that the packet size affects the encryption/decryption time, which should be the major part of the per-packet processing time.",
+      "id": "4655057925314431588",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2009-05-25T17:24:57.919+02:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "25 May 2009 19:14",
+      "html": "Just found <A HREF=\"http://www.breakingpointsystems.com/community/blog/news_item.2008-05-28.6887194259\" REL=\"nofollow\">an interesting link about the \"usefulness\" of IMIX</A>.",
+      "id": "8196280926470248561",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2009-05-25T19:14:27.036+02:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "27 May 2009 19:51",
+      "html": "Ivan, thanks for linking to the IMIX post we put up, you might also find the <A HREF=\"http://www.breakingpointsystems.com/community/blog/tags/truth%20in%20testing\" REL=\"nofollow\">truth in testing</A> series of running posts we have helpful, we try and hit on this topic a lot about what realistic testing actually means and how to question data sheets in that light.<br /><br />Kyle",
+      "id": "8941589086656991852",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Kyle Flaherty",
+      "profile": "http://www.breakingpointlabs.com",
+      "pub": "2009-05-27T19:51:11.430+02:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "06 June 2009 20:45",
+      "html": "This comment has been removed by the author.",
+      "id": "1568731367663868893",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Mike P",
+      "profile": "https://www.blogger.com/profile/09588483544073300072",
+      "pub": "2009-06-06T20:45:55.812+02:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "06 June 2009 20:50",
+      "html": "There is also the flip-side to this... whenever a vendor talks to you about replacing your existing products, they tend to put the most broken mirror they can find in front of what you have and claim the existing product is inadequate. We recently experienced this from our cisco account team... they threw up 64-byte ethernet throughput numbers for one of our devices and claimed that it didn&#39;t offer as much &#39;throughput&#39; as the cisco product.<br /><br />However, using 64-byte ethernet frames is hardly a good indication of throughput. It is a good way to test packet-per-second rates, but throughput is best tested with 1500 byte frames as Roland mentioned above.",
+      "id": "5923881932520539161",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Mike P",
+      "profile": "https://www.blogger.com/profile/09588483544073300072",
+      "pub": "2009-06-06T20:50:53.336+02:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "10 November 2010 23:50",
+      "html": "Well, none of the values  &quot;pps&quot; and &quot;bps&quot; describing the throughput of IPsec is constant when changing the packet size. It is caused by sub-processes in the whole IPsec process: e.g. encryption could be expressed in constant value of &quot;bps&quot; and database  lookups (SPD, SAD) in constant value of &quot;pps&quot;. But since these sub-processes are consecutive and held by the same processor, they all &quot;shape&quot; the final throughput. <br /><br />Of course, it is true that the highest throughput value in &quot;bps&quot; is for the largest packet (~1500 B) and the highest throughput value in &quot;pps&quot; is for the smallest packet.  And it is also true that most vendors publish the performacne of their devices in &quot;bps&quot; for the largest packet and less of them for iMix traffic (understandable, as the value for iMix is lower).",
+      "id": "2029786740926203251",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Adam Tisovsky",
+      "profile": null,
+      "pub": "2010-11-10T23:50:25.000+01:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "10 November 2010 23:56",
+      "html": "For example, I measured on Cisco 1841 for ESP-aes with crypto-accelerator enabled:<br />0.823 Mbps for 20 B payload packet<br />42.61 Mbps for 1390 B payload packet<br />and some 30 Mbps for iMix traffic.",
+      "id": "8999432180961743822",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Adam Tisovsky",
+      "profile": null,
+      "pub": "2010-11-10T23:56:16.000+01:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "11 November 2010 06:38",
+      "html": "Interesting (absolutely valid) observation. Thank you!",
+      "id": "1380444779678632221",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-11-11T06:38:19.000+01:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    },
+    {
+      "date": "28 January 2013 17:28",
+      "html": "The Breaking Point blog post IMIX traffic usefulness has moved since the IXIA acquisition: http://blogs.ixiacom.com/ixia-blog/end-pointless-testing-realistic-and-blended-app-traffic-is-a-true-test/",
+      "id": "8003017830760901108",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "OIMO",
+      "profile": null,
+      "pub": "2013-01-28T17:28:17.503+01:00",
+      "ref": "1125902955181374110",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "1125902955181374110",
+  "type": "post",
+  "url": "2009/05/how-is-device-throughput-defined.html"
+}

@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "18 June 2013 15:49",
+          "html": "OF-normal is definitely a workaround, but the question then becomes whether the controller supports it or not. In some cases that I&#39;m familiar with the answer is &quot;no&quot;.",
+          "id": "7906094566837368217",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-06-18T15:49:17.022+02:00",
+          "ref": "1824567638994998246",
+          "type": "comment"
+        },
+        {
+          "date": "18 June 2013 17:50",
+          "html": "I wouldn&#39;t necessarily say it is just a workaround but rather see it on par with an OpenFlow-based control plane.<br />But unfortunately you are right and the support is the crucial factor here. What I do not get is why you see the problem on the controller side only? Maybe you can disclose which controllers you are referring to because FloodLight for example definitely supports it. I am not sure about ODL(Cisco contribution) because they don&#39;t mention &quot;normal&quot; but &quot;software and hardware path&quot;. Maybe someone can point out the exact meaning of this. But you should also consider the switch hardware to be capable of OF-normal forwarding. As this action is unfortunately only optional even in the OF 1.3.2 spec you can&#39;t blame the vendors but up to now I have only seen Quanta switches(also the basis for Pica8)to be capable of OF-Normal.<br />Let&#39;s see how this will work out in the future ;-)",
+          "id": "8336929895705404833",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2013-06-18T17:50:26.913+02:00",
+          "ref": "1824567638994998246",
+          "type": "comment"
+        }
+      ],
+      "date": "18 June 2013 13:31",
+      "html": "Hi Ivan,<br />nice blog post but isn&#39;t the OF &quot;Normal&quot; forwarding action supposed to be a solution for such problems? Can&#39;t you use a fancy OF-only island and on the edge-ports to the outside world let the standard control-plane handle any protocols needed via the mentioned &quot;Normal&quot; forwarding action? As we probably won&#39;t see any Google-style OF white-box switches for the standard customer soon due to the lack of network programming skills needed for an appropriate implementation this sounds like a perfect solution to me.",
+      "id": "1824567638994998246",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-06-18T13:31:00.065+02:00",
+      "ref": "2330854294110006123",
+      "type": "comment"
+    },
+    {
+      "date": "18 June 2013 19:38",
+      "html": "Mechanisms that we have used forever to control the sanity of our network will continue to have a place in SDN networks (OF or otherwise). What they control, how they control it, and which ones will be absorbed into controller software in some fashion is what will need to be determined. The way we control networks will change dramatically, many of the things we need to control will still be the same.<br /><br />",
+      "id": "270229807228062665",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/17332987438325943763",
+      "pub": "2013-06-18T19:38:31.445+02:00",
+      "ref": "2330854294110006123",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "15 August 2013 13:47",
+          "html": "Thanks for the comment!<br /><br />I&#39;m well aware of all the benefits of SMLT (and MLAG) - do a search on MLAG and you&#39;ll find plenty of posts describing its benefits (and there&#39;s even more in DC 3.0 and DC Fabrics webinars).<br /><br />Unfortunately Nortel never got it right - you couldn&#39;t run STP over SMLT for a long time, and then you could, but only if you were a root bridge. Other vendors had STP-over-MLAG support years before Nortel/Avaya did.<br /><br />You might argue that you don&#39;t need STP with MLAG ... and that might be true IF AND ONLY IF there is zero chance of getting a loop somewhere in the network. I wouldn&#39;t bet my network on that.",
+          "id": "4533782025806755219",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2013-08-15T13:47:49.319+02:00",
+          "ref": "3168549544430817639",
+          "type": "comment"
+        }
+      ],
+      "date": "15 August 2013 10:57",
+      "html": "Ivan,<br /><br />You have great content and I enjoy your perspective.  For many complex topics, you have the ability to boil it down to something understandable for people (including myself) visiting your site.<br /><br />However, you mention:<br />&quot;For example, you could write a very simple implementation of STP (similar to what Avaya is doing on their ERS-series switches when they run MLAG)&quot;<br /><br />Just want to be clear that Avaya&#39;s MLAG is not using STP.  MLAG was a term coined in recent years to reflect &quot;Multi Chassis Link Aggregation&quot;.  Multi Chassis Link Aggregation was originally developed in 2001 by Nortel (now Avaya) called Split Multi-Link Trunking (SMLT).  This was even before the ratification of the IEEE LACP standard for single switch/chassis Link Aggregation.<br /><br />While link aggregation between physically separate core switches is relatively new (within the past 5 years) for other vendors, Avaya&#39;s (Nortel heritage) SMLT technology provided interoperability with pre-LACP technologies such as Cisco&#39;s EtherChannel/GigEtherChannel as well as LACP when it became ratified.  Given the age of support, it also meant enhancements in real-world environments as well as support across a range of products (not just high end chassis).<br /><br />It&#39;s important not to diminish the roots of this technological advancement as it was the first technology to remove Spanning Tree from the core of the network.  This is something that various forms of Data Center Fabrics are proposing today to eliminate.<br /><br />In 2001, building a high availability network involved connecting edge switches over Ethernet to 2 x separate core switches that were also connected together over Ethernet.  Although not originally intended as a redundancy protocol, rather a path selection tool to avoid loops, Spanning Tree did prevent loops and offered a means of automated restoration in the event of failure.<br /><br />While other issues existed with Spanning Tree Protocol, relating to network stability, two of the main drawbacks were time to convergence and blocking of redundant paths.  Spanning Tree convergence times were ~45 seconds in a small network and increased as the network grew.  Redundant links sat idle waiting to process traffic in the event of a failure.<br /><br />Understanding the importance of carrying real-time protocols (voice/video), Spanning Tree was clearly not the protocol of choice for sub-second restoration times.  In addition, links going unused waiting for failure scenarios was a waste of available bandwidth.  Taking an application centric approach, as opposed to a network centric approach, SMLT was created to adapt the network to the application needs (sub second fail-over, utilization of all links and compliant with standard and proprietary LAG methods used by equipment attached).  The result was/is a technology deployed in some of the largest Data Center&#39;s around the globe and what other vendors patterned their implementations after.<br />",
+      "id": "3168549544430817639",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-08-15T10:57:13.660+02:00",
+      "ref": "2330854294110006123",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "2330854294110006123",
+  "type": "post",
+  "url": "2013/06/implementing-control-plane-protocols.html"
+}

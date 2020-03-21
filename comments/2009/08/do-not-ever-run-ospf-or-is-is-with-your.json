@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "date": "26 August 2009 15:00",
+      "html": "Another solution is to run a brand new OSPF/ISIS process and redistribute it into the legacy IGP. The customers won&#39;t see the  change (except a brief connection loss) and you will be able to filter the updates in order to protect the &quot;inner&quot; network.",
+      "id": "2888069858309535208",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ark+",
+      "profile": null,
+      "pub": "2009-08-26T15:00:17.000+02:00",
+      "ref": "3551164651653896175",
+      "type": "comment"
+    },
+    {
+      "date": "26 August 2009 17:04",
+      "html": "Many of the small ISP networks I&#39;ve seen are either running an IGP with customers, or redistributing customer static routes into their IGP (instead of BGP). Then they redistribute the IGP into BGP (usually with no filters) and hope for the best. I&#39;ve had numerous conversations trying to explain the nightmare waiting to happen, but as far as I know none of them has ever changed the practice.",
+      "id": "541171724899820666",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "JS",
+      "profile": null,
+      "pub": "2009-08-26T17:04:45.000+02:00",
+      "ref": "3551164651653896175",
+      "type": "comment"
+    },
+    {
+      "date": "26 August 2009 20:21",
+      "html": "Considering the amount of duct tape used to patch together the Internet in various odd places, it&#39;s a wonder we don&#39;t get more BGP-related incidents.<br /><br />But, as you&#39;ve said, some people try really hard not to learn.",
+      "id": "161709622336187787",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-08-26T20:21:29.000+02:00",
+      "ref": "3551164651653896175",
+      "type": "comment"
+    },
+    {
+      "date": "26 August 2009 20:23",
+      "html": "This is absolutely better than the &quot;original&quot; idea, but still has a few drawbacks. Unless you deploy OSPF process per customer, other customers in the same OSPF process could be impacted (things could get a bit better if you run each customer in a separate area).<br /><br />Additionally, you have to use &quot;distribute-list in&quot; in customer OSPF processes on edge routers to prevent invalid OSPF routes from entering the IP routing table.",
+      "id": "8115739499930610090",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-08-26T20:23:34.000+02:00",
+      "ref": "3551164651653896175",
+      "type": "comment"
+    },
+    {
+      "date": "08 October 2009 19:31",
+      "html": "Best option (ISIS) is of course to flood all LSPs with all bits set in sequence number and invalid information so that you are closest in terms of metric to everyone, you&#39;d break entire network.<br />Reloading boxes wouldn&#39;t help a bit, as if some box is up, it&#39;ll reflood the broken data.<br /><br />Few ways to recover<br />1) reload all boxes at same time<br />2) wait for LSP to time out, many networks have LSP lifetime maxed to 18h<br />3) change net address of each box",
+      "id": "4557924744388519583",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Huittinen Massive",
+      "profile": null,
+      "pub": "2009-10-08T19:31:45.000+02:00",
+      "ref": "3551164651653896175",
+      "type": "comment"
+    },
+    {
+      "date": "27 November 2009 00:22",
+      "html": "My own horror story. At one point we had OSPF happily in the core and were asked (for the 1st time) to deliver an active/active dual link to a customer site in quick order. We took the easy way out and simply extended the core ospf out to the CPE. Unfortunately the method stuck for a limited number of such connections before a more robust solution was used. Wind forward 2 years and we start seeing horrendous churn in the core OSPF. No route shows up as being stable for more than 30 mins. After a considerable amount of debugging mostly in the small hours when other changes were minimal we identified that all OSPF routes were being flushed milliseconds before they should have be refreshed. The flush instantly triggered a refresh but every route was disappearing for a few seconds every 30 mins.<br /><br />The flush was coming from one of the CPEs deployed above...who&#39;s clock was running almost exactly twice as fast as normal. So it was seeing the routes hit the 60min (no refresh) and flush. A few cyles slower and we&#39;d probably never have had a problem. It took me several minutes staring at the errant CPE cli (a 1720 I recall!) when I found it with scripted &quot;sh clock&quot; checking the router time over a fixed period. Disabled OSPF on that CPE and......the whole network returned to graceful stability.",
+      "id": "6702045704308106361",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dean Smith",
+      "profile": null,
+      "pub": "2009-11-27T00:22:41.000+01:00",
+      "ref": "3551164651653896175",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "3551164651653896175",
+  "type": "post",
+  "url": "2009/08/do-not-ever-run-ospf-or-is-is-with-your.html"
+}

@@ -1,0 +1,54 @@
+{
+  "comments": [
+    {
+      "date": "07 November 2012 14:47",
+      "html": "now i just need to figure out how to log [AAA] delegated IPs from BRAS&#39;s local pools.<br /><br />i hope that using radius attrib &quot;Delegated-IPv6-Prefix&quot; or &quot;Framed-IPv6-Pool&quot; does the trick...",
+      "id": "272740548616342151",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jernej Horvat",
+      "profile": "https://www.linkedin.com/in/jernejhorvat",
+      "pub": "2012-11-07T14:47:47.470+01:00",
+      "ref": "1516468800493348896",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "07 November 2012 19:59",
+          "html": "Assuming the CPE asks for the prefix through DHCPv6 IA_PD REQUEST it sounds like a bug to me.",
+          "id": "144056283062605891",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-11-07T19:59:43.992+01:00",
+          "ref": "829530455175792735",
+          "type": "comment"
+        }
+      ],
+      "date": "07 November 2012 16:10",
+      "html": "I&#39;ve another question. Is &quot;delegated-IPv6-prefix&quot; supposed to bootstrap the per-user static? I had this working in 15.1S on ASR1K and suddenly it stopped working after upgrading. I now have to accompany each user with their own routing attributes as well as the delegation. Is this intentional? does anybody know?",
+      "id": "829530455175792735",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "lochii",
+      "profile": "http://www.convergence.cx",
+      "pub": "2012-11-07T16:10:33.776+01:00",
+      "ref": "1516468800493348896",
+      "type": "comment"
+    },
+    {
+      "date": "09 November 2012 15:29",
+      "html": "Thanks Ivan, it turns out, as you say, the client has to ask in order for us to create the per-user static. In the previous release we were running ,the client didn&#39;t have to ask, the per-user static was just automatically created, we then assumed we could just provision PD attr in RADIUS and it would cover all clients (those supporting PD and those not) , it seems when we went to the next release, the behaviour changed to &quot;only install the per-user static if the client asks for it&quot; so we&#39;ve now started including the framed-ipv6-route attr along with the PD attr. <br />Saying this, the latest build of the next (i.e after ours) release has reverted to the previous behaviour! perhaps it just doesn&#39;t have this new behaviour committed to it.",
+      "id": "4108583327798668980",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "lochii",
+      "profile": "http://www.convergence.cx",
+      "pub": "2012-11-09T15:29:25.668+01:00",
+      "ref": "1516468800493348896",
+      "type": "comment"
+    }
+  ],
+  "count": 4,
+  "id": "1516468800493348896",
+  "type": "post",
+  "url": "2012/11/dhcpv6-prefix-delegation-radius-and.html"
+}

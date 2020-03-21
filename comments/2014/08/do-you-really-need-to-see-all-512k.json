@@ -1,0 +1,76 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "18 August 2014 13:28",
+          "html": "Thanks for the comment, but we still don&#39;t know whether it&#39;s 512K translated into 512,000 by the documentation writer, or whether the TCAM actually holds 512.000 entries (which is perfectly possible, but would make little sense from the technology perspective).",
+          "id": "1408848159864686156",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-08-18T13:28:23.360+02:00",
+          "ref": "8130949316771756760",
+          "type": "comment"
+        },
+        {
+          "date": "19 August 2014 11:24",
+          "html": "The limitation comes from the 4GB of memory they install with the DFC cards. They need some memory for multicast and some space for service data and other control structures. They decided to use a 1000 multiplier so they guarantee that they have some memory left for those structures.<br />I think that (I&#39;ll be using IEC numbers http://www.iec.ch/si/binary.htm):<br />-IPv4 strucute uses 4KiB (4096 bytes)<br />-IPv6 structure uses 8KiB (8192 bytes) <br /><br />512000*4KiB=2000 MiB (2097152000 bytes)<br />256000*8KiB=2000 MiB (2097152000 bytes)<br /><br />4 &quot;GB memory&quot; = 4GiB = 4294967296 bytes<br />Service data avaliable: 4 GiB - 2*(2000 MiB) = 96 MiB (100663296 bytes)<br />",
+          "id": "794492107475755750",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "brutester",
+          "profile": "https://www.blogger.com/profile/08355657114491980947",
+          "pub": "2014-08-19T11:24:47.691+02:00",
+          "ref": "8130949316771756760",
+          "type": "comment"
+        },
+        {
+          "date": "19 August 2014 19:28",
+          "html": "I think that you should check &quot;show platform hardware capacity forwarding&quot; (or &quot;... pfc&quot; on 6500) output for the right number (I don&#39;t have any 6500/7600s for 4 years now). Some 6500 outputs show (available after googling):<br />72 bits (IPv4, MPLS, EoM) 524288 432158 82%<br />You see the 512*1024.<br />I still think that people having those problems were having more routes because of OSPF, VRF routes and/or MPLS labels. They consume the same space, thus leaving less space available for the big BGP table.<br />",
+          "id": "4514232963337723434",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "brutester",
+          "profile": "https://www.blogger.com/profile/08355657114491980947",
+          "pub": "2014-08-19T19:28:17.109+02:00",
+          "ref": "8130949316771756760",
+          "type": "comment"
+        },
+        {
+          "date": "19 August 2014 20:55",
+          "html": "Now this makes perfect sense. Thank you!",
+          "id": "8744902526257983172",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-08-19T20:55:49.189+02:00",
+          "ref": "8130949316771756760",
+          "type": "comment"
+        }
+      ],
+      "date": "18 August 2014 11:12",
+      "html": "Quote from http://www.cisco.com/c/en/us/td/docs/ios/ipswitch/command/reference/isw_book/isw_i1.html#wp1087660<br />The defaults are as follows:<br />\u2022For XL-mode systems:<br />\u2013IPv4 unicast and MPLS\u2014512,000 routes (&lt;-- This answers your question)<br />\u2013IPv6 unicast and IPv4 multicast\u2014256,000 routes<br />\u2022For non-XL mode systems:<br />\u2013IPv4 unicast and MPLS\u2014192,000 routes<br />\u2013IPv6 unicast and IPv4 multicast\u201432,000 routes <br /><br />To the number of IPv4 you should add OSPF/ISIS/static routes,VRF routes (even a &quot;global&quot; route takes an entry in the FIB) and MPLS labels.<br />If you don&#39;t use IPv6 you should disable it completely and allow the IPv4 space to increase to 1M.<br />You should plan an upgrade for this gear, but you can use a filter like &quot;deny ARIN/8s ge /20&quot; to squeeze one more month of you gear.<br />",
+      "id": "8130949316771756760",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "brutester",
+      "profile": "https://www.blogger.com/profile/08355657114491980947",
+      "pub": "2014-08-18T11:12:18.547+02:00",
+      "ref": "6350340734347937397",
+      "type": "comment"
+    },
+    {
+      "date": "18 August 2014 19:37",
+      "html": "512K tcam work-arounds for all of the Cisco platforms:<br />http://blogs.cisco.com/sp/global-internet-routing-table-reaches-512k-milestone/",
+      "id": "7484677380533369204",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-08-18T19:37:13.503+02:00",
+      "ref": "6350340734347937397",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "6350340734347937397",
+  "type": "post",
+  "url": "2014/08/do-you-really-need-to-see-all-512k.html"
+}

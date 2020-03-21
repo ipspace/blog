@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "date": "06 November 2011 19:12",
+      "html": "For bufferbloat, I wish there was a better explanation to the behavior. TCP looks to fill the &quot;pipe&quot;, not to maximize the bandwidth, and by adding more buffers we just increase the pipe depth. <br /><br />TCP is a &quot;clocked&quot; protocol, so in general the sender window opens upon reception of incoming ACK&#39;s. If the data segments that have been sent out are delayed due to buffering, so will be the returning ACKS&#39;s, effectively slowing down the CWND expansion and pipe filling.  The only place you can go wrong is maybe slow start synchronization where multiple senders overfill the pipe due to exponential growth.<br /><br />Anyways I&#39;ll look around as so far I haven&#39;t found clear model of this behavior. Hey, we just tuned buffers up to reduce the impact of TCP incasting and now they tell us to shrink them back!",
+      "id": "8028725155157906041",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Petr Lapukhov",
+      "profile": null,
+      "pub": "2011-11-06T19:12:06.273+01:00",
+      "ref": "6110408038895057823",
+      "type": "comment"
+    },
+    {
+      "date": "07 November 2011 10:51",
+      "html": "Hi Petr,<br /><br />I&#39;m sure you&#39;ve seen the graph I posted in my blog few years ago (http://net-geek.org/dbg/upload/collapse.png) which demonstrates the issue quite ... ugh ... graphically.<br /><br />I made sure it was the single TCP stream over this pipe, so what you see wasn&#39;t due to SS sync.<br /><br />As you can see from the graph, the TCP stream experienced extremely wild variations of RTT and sending rate. What was happening is that insane overbuffering prevented TCP from discovering an equilibrium sending rate - it allowed CWND to grow too high, get the huge buffer filled, and then go back to retransmission and shrinking CWND almost to zero. Basically it&#39;s a classic TCP sawtooth with extremely large tooth, making avg rate very poor.<br /><br />As to Terry Slattery&#39;s explanation regarding unnecessary retransmissions, I&#39;m sure there were some (had to be with RTT well up into 10s of seconds!). But I&#39;m not sure if there was enough of them to clog the pipe and exacerbate the issue.<br /><br />I still have the packet captures lying around and can share them if you&#39;re interested.",
+      "id": "1575866941652079726",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Daniel Ginsburg",
+      "profile": null,
+      "pub": "2011-11-07T10:51:55.667+01:00",
+      "ref": "6110408038895057823",
+      "type": "comment"
+    },
+    {
+      "date": "07 November 2011 11:19",
+      "html": "The correct url for the graph is http://net-geek.org/dbg/upload/collapse.png",
+      "id": "8083400232701549745",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Daniel Ginsburg",
+      "profile": null,
+      "pub": "2011-11-07T11:19:35.483+01:00",
+      "ref": "6110408038895057823",
+      "type": "comment"
+    },
+    {
+      "date": "07 November 2011 17:05",
+      "html": "Oh man, it was silly of me to forget that TCPoDOCSIS blog post of yours :) Anyways, I feel I kind of get it :) TCP expands CWDM way too much, hugely overestimating the pipe &quot;width&quot; (=bandwidth) and then collapses dramatically when it hits the ceiling of buffer depths. <br /><br />Thanks, and please send me the packet caps once you get a moment to petrlapu at microsoft dot com!",
+      "id": "1024474341254046387",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Petr Lapukhov",
+      "profile": null,
+      "pub": "2011-11-07T17:05:15.139+01:00",
+      "ref": "6110408038895057823",
+      "type": "comment"
+    },
+    {
+      "date": "08 November 2011 00:17",
+      "html": "Fujitsu can\u00b4t be serious:<br /><br />The Ethernet-based connection-oriented Ethernet technologies\u2014VLAN switching and PBB-TE\u2014uniquely allow service providers to enjoy the deterministic performance, efficient aggregation and 50 ms protection<br /><br /><br />What are those guy\u00b4s smoking?",
+      "id": "2757291792200982211",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Gernot Nusshall",
+      "profile": null,
+      "pub": "2011-11-08T00:17:26.868+01:00",
+      "ref": "6110408038895057823",
+      "type": "comment"
+    },
+    {
+      "date": "08 November 2011 00:18",
+      "html": "...and some of my 2c on the bufferbloating: imagine that you have a VPLS service, where RTT between the sites is quite different, and one major (say, DC) site has to communicate with all the others. The problem with this situation, of course, is that there will be no &quot;correct&quot; output buffer size. And if I understand it correctly, the worst punished will be the closest sites (smallest RTT).<br /><br />Hmm.... Sure smells like an opportunity! :)",
+      "id": "380185522564458290",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dmitri Kalintsev",
+      "profile": null,
+      "pub": "2011-11-08T00:18:10.790+01:00",
+      "ref": "6110408038895057823",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "6110408038895057823",
+  "type": "post",
+  "url": "2011/11/interesting-links-2011-11-06.html"
+}

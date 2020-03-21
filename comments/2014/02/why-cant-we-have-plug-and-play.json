@@ -1,0 +1,133 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "04 February 2014 17:10",
+          "html": "I totally agree one would have to (like always) balance the convenience with potential security issues, and I wouldn&#39;t expect the DC switches to be dumb devices that would blindly do something based on inbound LLDP packets - but I would love to be able to configure some common-sense commands based on what&#39;s connected to the switch.",
+          "id": "6178640058175450034",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-02-04T17:10:45.423+01:00",
+          "ref": "6243600345229957251",
+          "type": "comment"
+        }
+      ],
+      "date": "04 February 2014 08:41",
+      "html": "It could lead to security issues (spoofing).",
+      "id": "6243600345229957251",
+      "image": "https://4.bp.blogspot.com/-ZOXsPp2jWZM/WLFLiMZondI/AAAAAAAADJ4/Ut7WBaNvJIInOF_9feWqAIeZiw3nyuEmwCK4B/s32/en2.jpg",
+      "name": "Andras Dosztal",
+      "profile": "https://www.blogger.com/profile/04707560608698340062",
+      "pub": "2014-02-04T08:41:10.853+01:00",
+      "ref": "7293701198777551345",
+      "type": "comment"
+    },
+    {
+      "date": "04 February 2014 10:00",
+      "html": "Force10 uses LLDP to autoconfigure spanning tree edge ports, at least in chassis where every component is obviously from Dell.",
+      "id": "3916136329522931340",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-02-04T10:00:50.310+01:00",
+      "ref": "7293701198777551345",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "04 February 2014 17:09",
+          "html": "Yeah, I&#39;m aware of that (even mentioned it in the post), and it&#39;s configurable through vCenter GUI (see the blog post from Bob Plankers I linked to).",
+          "id": "3438953052232048367",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-02-04T17:09:08.544+01:00",
+          "ref": "3874298959320963866",
+          "type": "comment"
+        },
+        {
+          "date": "04 February 2014 19:47",
+          "html": "No you didn&#39;t - &quot;Next, out-of-the-box vSphere configuration doesn\u2019t send CDP or LLDP information \u2013 vSphere hosts work in listen mode in which they receive CDP/LLDP updates, store the information in vCenter databases (so the virtualization administrators can figure out how their servers are connected), but don\u2019t advertise themselves. Makes sense? Not to me.&quot;<br /><br />The majority of networks backing large VMware deployments have been Cisco based. Therefore, VMware prioritized the CDP protocol. It is common in these networks to enable bidirectional CDP so that network operations are able to see the server connectivity within there switches. ",
+          "id": "8642360902008300122",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2014-02-04T19:47:07.508+01:00",
+          "ref": "3874298959320963866",
+          "type": "comment"
+        }
+      ],
+      "date": "04 February 2014 14:17",
+      "html": "VMware is able to advertise CDP/LLDP, it just isn&#39;t enabled by default and, last I checked, must be done via the CLI.",
+      "id": "3874298959320963866",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02925042428285456203",
+      "pub": "2014-02-04T14:17:21.323+01:00",
+      "ref": "7293701198777551345",
+      "type": "comment"
+    },
+    {
+      "date": "04 February 2014 20:57",
+      "html": "Cisco has the &quot;autos smartport&quot; feature that allows you to run configuration based on lldp or cdp information - even OUI&#39;s.",
+      "id": "6399215989901554970",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-02-04T20:57:36.543+01:00",
+      "ref": "7293701198777551345",
+      "type": "comment"
+    },
+    {
+      "date": "05 February 2014 19:40",
+      "html": "You don&#39;t need to interact with LLDP (which is not necessary enabled on the switch BTW) in order to avoid this problem. You can just wait 30 seconds before considering that a link is operational after its link came up. Cisco has been doing that for 15+ years with uplinkfast in order to avoid blackholing when switching over between uplinks;-)<br />As an optimization, you could check the state received in the BPDUs (carried in RSTP/MST) and bypass this 30 second waiting period if possible.",
+      "id": "6229554290329737148",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Francois Tallet",
+      "profile": null,
+      "pub": "2014-02-05T19:40:08.283+01:00",
+      "ref": "7293701198777551345",
+      "type": "comment"
+    },
+    {
+      "date": "06 February 2014 10:51",
+      "html": "Arista has various scripted functionality based on LLDP information.<br /><br />Basic script,to configure the interface description based on the LLDP info for the interface: https://eos.aristanetworks.com/2011/07/port-auto-description-2/<br /><br />Zero touch script which will automatically configure the switch based on it&#39;s LLDP neighbors/position in the network topology<br />https://eos.aristanetworks.com/2012/09/pre-provisioning-ztp-server/<br /><br />VMTracer, based on the CDP/LLDP information of attached physical/virtual servers, will automatically provisions the VLANs for the VMs configured within vSphere.<br /><br />http://www.aristanetworks.com/products/eos/vmtracer<br />",
+      "id": "2331108133051304589",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-02-06T10:51:16.951+01:00",
+      "ref": "7293701198777551345",
+      "type": "comment"
+    },
+    {
+      "date": "09 February 2014 17:18",
+      "html": "What about Cisco ISE?  I&#39;ve never had the chance to deploy it in the real world but have seen demos and attended training sessions that d demonstrate the ability you&#39;re taking about.  There are lot of upfront policy and configuration choices to make but after that switch port provisioning, with custom security, is supposed to be automated.",
+      "id": "1781140065508283521",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/03096134598336138878",
+      "pub": "2014-02-09T17:18:42.415+01:00",
+      "ref": "7293701198777551345",
+      "type": "comment"
+    },
+    {
+      "date": "12 February 2014 03:06",
+      "html": "The fancy new Cisco Insieme stuff (Nexus 9000) is supposed to use LLDP to autoconfigure itself and find the controllers, you can supposedly plug a new switch into the fabric and not really have to do anything.  They also have PoAP (Power On Auto Provisioning) which is a little more old school but with the abilities of the newer switches to run things like LXC you can run all the server stuff on another switch.  <br /><br />Up at Layer3, Juniper is working on a number of op scripts and whatnot to do MPLS auto provisioning including the ability to use unnumbered interfaces.  Other vendors like ALU have also added the ability to run IGPs, RSVP, and LDP over unnumbered interfaces. <br /><br />",
+      "id": "808338001856770741",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/06036116499201821433",
+      "pub": "2014-02-12T03:06:29.063+01:00",
+      "ref": "7293701198777551345",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "7293701198777551345",
+  "type": "post",
+  "url": "2014/02/why-cant-we-have-plug-and-play.html"
+}

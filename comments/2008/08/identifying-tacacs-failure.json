@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "date": "04 August 2008 08:54",
+      "html": "what is advantage of using this. This can be done with the local username and password also which is also binded with the aaa.",
+      "id": "7645744677372315516",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-08-04T08:54:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "04 August 2008 09:59",
+      "html": "This solution works great when using telnet. Is there any chance to get this working with ssh?",
+      "id": "4064809906529443369",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-08-04T09:59:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "05 August 2008 10:50",
+      "html": "@shivlu: if you deploy AAA servers, you might still want to have local usernames/passwords in case the connectivity to the AAA servers is broken and you'd like to get into the router. <BR/><BR/>If you decide you want to have local usernames, it helps if the operator knows whether he's expected to type the local username or the server-checked username.<BR/><BR/>@moik: no-go. SSH does not pass authentication prompts between the server and the client (all prompting is done locally in the client).",
+      "id": "7448537654004324917",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-08-05T10:50:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "05 August 2008 12:13",
+      "html": "Hi, Ivan!<BR/><BR/>I'm find interesting issue with ssh connection to the router. I hvae simple configuration, like that: <BR/><BR/>no aaa new-model<BR/>username admin privelege 15 password 12345<BR/><BR/>ip ssh version 2<BR/><BR/>line vty 0 15<BR/>login local<BR/>trasport input ssh telnet<BR/>-------------<BR/><BR/>If I connect to the router via telnet - I get privilege level 15. But, if i connect via ssh - I should input enable password. Why, when I use ssh - i should enter enable password? I checked it on IOS SRB2.",
+      "id": "2248388622506338083",
+      "image": "https://4.bp.blogspot.com/-Zx4KIwEAGUU/U4v4L5O_AnI/AAAAAAAAMMY/BFX4bjf6wsE/s32/*",
+      "name": "honestnetworker",
+      "profile": "https://www.blogger.com/profile/08877797720339714115",
+      "pub": "2008-08-05T12:13:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "06 August 2008 09:35",
+      "html": "@shef: according to Cisco documentation, SSH only works with AAA ... but you've obviously found a workaround: if AAA is not enabled, it uses enable password.",
+      "id": "9216695723025042788",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-08-06T09:35:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "07 August 2008 03:20",
+      "html": "Hi Shef:<BR/><BR/>If you really want to do this using SSH but without a TACACS server, you can enable AAA to use the local database to allow a privledge level 15 user to drop straight into the enable mode after successful authentication. However, I would not recommend using telnet at all if SSH is available on the device. With that said, the config below works for both telnet and SSH.<BR/><BR/><BR/>!<BR/>aaa new-model<BR/>!<BR/>!<BR/>aaa authentication login default local <BR/>aaa authorization exec default local <BR/>!<BR/>username test privilege 15 secret your-password<BR/>!<BR/>ip ssh version 2<BR/>!<BR/>line vty 0 15<BR/> transport input ssh telnet<BR/>!",
+      "id": "6102955456746591381",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-08-07T03:20:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "07 August 2008 14:30",
+      "html": "Is it possible to achieve this in reverse. Instead of re-configuring thousands of my devices, can I get Cisco ACS to change the prompt on the router when the TACACS is available? If not the prompts, then insert a banner?",
+      "id": "2366650821214723724",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/11968511677925184606",
+      "pub": "2008-08-07T14:30:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "09 August 2008 10:37",
+      "html": "@Steve: in principle, it's possible (the technology definitely allows it), but I wouldn't know how to change prompts on Cisco ACS.",
+      "id": "7803708813725094366",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-08-09T10:37:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "10 May 2009 18:15",
+      "html": "Hi,<br />I think I am asking a very simple question but then how do we enable CLI interface on Cisco ACS software? Would be thankful if you would reply.",
+      "id": "8809029707771154822",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2009-05-10T18:15:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "10 May 2009 20:11",
+      "html": "I've asked uncle Google the same question (Cisco ACS CLI) and <A HREF=\"http://www.cisco.com/en/US/docs/net_mgmt/cisco_secure_access_control_system/5.0/command/reference/CLIuse.html\" REL=\"nofollow\">got this answer</A>.",
+      "id": "9154744009240627744",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2009-05-10T20:11:00.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    },
+    {
+      "date": "26 May 2010 14:38",
+      "html": "I am trying to get ACS 4.2 for windows to automatically put users in lev 15 priv (enable mode) after they login. I have done everything cisco says and yet, no matter what, users login with their AD credentials and ACS authenticates and puts users in &quot;user mode&quot; . then the user has to manually enter the enable secret still. I want to eliminate the manually typing the enable password in. I also dont want ALL users to be lev 15 priv so the setup will need to be done in ACS and not the router/switch config.",
+      "id": "803642824199450889",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Chad Compton",
+      "profile": null,
+      "pub": "2010-05-26T14:38:15.000+02:00",
+      "ref": "8031007807703036825",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "8031007807703036825",
+  "type": "post",
+  "url": "2008/08/identifying-tacacs-failure.html"
+}

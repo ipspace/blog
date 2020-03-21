@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "date": "04 July 2011 07:40",
+      "html": "Junos also includes L2 encaps with MTU.  Additionally, if you define your interface with &#39;flexible-vlan-tagging&#39; you also get another 4 bytes of encaps for the q-in-q tag.<br /><br />Luckily, Junos has a handy way of determining the equivalent IOS MTU/L2-less MTU.  &#39;sh interface &lt;name&gt; detail&#39; will print both the &quot;ip mtu&quot; and even the mpls MTU for you.&lt;/name&gt;",
+      "id": "2190265744497083355",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "StuckInActive",
+      "profile": null,
+      "pub": "2011-07-04T07:40:51.812+02:00",
+      "ref": "4189538544101866172",
+      "type": "comment"
+    },
+    {
+      "date": "04 July 2011 08:14",
+      "html": "I have been explaining why MTU is a heavily misused term a lot recently. When talking about the raw layer 2 maximum PDU size I prefer to use maximum frame size, as it should be unambiguous.  Of course in this case the 1514 bytes is not the maximum frame size, it includes the header + payload but excludes the 4 byte FCS trailer.<br /><br />It seems that in this case IOS-XR is acting exactly like JunOS, as the interface MTU is specified exactly this way there too.  In JunOS the reason for excluding the FCS is a quirk in the hardware forwarding.  I don&#39;t know the reasoning in IOS-XR...",
+      "id": "2840491694911826739",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Russell Heilling",
+      "profile": null,
+      "pub": "2011-07-04T08:14:43.730+02:00",
+      "ref": "4189538544101866172",
+      "type": "comment"
+    },
+    {
+      "date": "04 July 2011 21:40",
+      "html": "Yup, ran into this as well but on the CRS platform, which of course is XR based. Maybe the XR guys are ex JunOS guys? who knows, but seems to be fairly consistent across XR based Cisco devices.",
+      "id": "5524296681199617244",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Yandy",
+      "profile": null,
+      "pub": "2011-07-04T21:40:34.888+02:00",
+      "ref": "4189538544101866172",
+      "type": "comment"
+    },
+    {
+      "date": "04 July 2011 23:17",
+      "html": "Is there a good reason why the mtu definition is not standardized across platforms ?",
+      "id": "5242139157961392734",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ken B.",
+      "profile": null,
+      "pub": "2011-07-04T23:17:03.637+02:00",
+      "ref": "4189538544101866172",
+      "type": "comment"
+    },
+    {
+      "date": "04 June 2012 14:27",
+      "html": "I ran into this MTU discussion as well several times, and everytime is getting me an headache.<br />Last time I had this discussion on Alcatel Lucent 7750SR Routers.<br />The MTU size configured on the port is the layer 2 header and also the layer 3 payload.<br /><br />So you have to specify the max size of the layer 2 frame.",
+      "id": "9001470131272963229",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Kenny M.",
+      "profile": null,
+      "pub": "2012-06-04T14:27:19.440+02:00",
+      "ref": "4189538544101866172",
+      "type": "comment"
+    },
+    {
+      "date": "04 November 2012 15:01",
+      "html": "On ASR9000 routers, a &quot;show ip interface&quot; tells what&#39;s left for IP.<br />Example output from &quot;show ip interface te0/0/0/0 | i MTU&quot;:<br />   MTU is 9216 (9202 is available to IP)<br />!<br />The MTU difference between classic IOS and XR can also hit you when you xconnect between platforms.",
+      "id": "8421501333657288158",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "mikkle",
+      "profile": "https://www.blogger.com/profile/12754896163926310713",
+      "pub": "2012-11-04T15:01:31.614+01:00",
+      "ref": "4189538544101866172",
+      "type": "comment"
+    },
+    {
+      "date": "07 May 2013 16:39",
+      "html": "The &quot;MTU&quot; should really always be the payload inside the Layer 2 frame, i.e. default 1500. Any other use of &quot;MTU&quot; is in my opinion both incorrect and potential harmful. <br /><br />If some device uses the phrase MTU as the maximum Ethernet frame size there are very high risk of confusion and misconfiguration. For example, would &quot;1514&quot; as in the text above still allow the 4 byte FCS checksum and possible a 4 byte 802.1Q tag? ",
+      "id": "5083523954123831591",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Rickard Nobel",
+      "profile": "http://www.rickardnobel.se",
+      "pub": "2013-05-07T16:39:15.025+02:00",
+      "ref": "4189538544101866172",
+      "type": "comment"
+    },
+    {
+      "date": "13 July 2015 19:52",
+      "html": "Just starting with the 9Ks.  We were having problems getting stable EIGRP relationships to 6500s.  We were also getting input errors.  I thought we had a layer 1 issue, although it didn&#39;t seem likely.  Somehow I decided to stick with troubleshooting the EIGRP relationships.  It&#39;s a good thing I did, because once I fixed the MTU the relationships came up and the input errors also went away.<br /><br />This discussion was very helpful, so thank you for it!",
+      "id": "4471297555630165416",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Matt",
+      "profile": "https://www.blogger.com/profile/02551717718739855299",
+      "pub": "2015-07-13T19:52:45.901+02:00",
+      "ref": "4189538544101866172",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "4189538544101866172",
+  "type": "post",
+  "url": "2011/07/all-mtus-are-not-same.html"
+}

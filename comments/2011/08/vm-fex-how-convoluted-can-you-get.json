@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "date": "17 August 2011 22:14",
+      "html": "What about NIV or whatever it is ultimately going to be called? Seems this is a very simple idea that should have been implemented a long time ago. Trouble is that it probably renders Nexus 100V and VDS and all of this other VN-Link garbage useless. VMwares networking has always seemed unnecessarily convoluted. This new VN-Link umbrella just seems like a nightmare and a money-pit.",
+      "id": "6813130998850763340",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "John Laur",
+      "profile": null,
+      "pub": "2011-08-17T22:14:52.136+02:00",
+      "ref": "8629756022745800290",
+      "type": "comment"
+    },
+    {
+      "date": "21 August 2011 21:15",
+      "html": "What exactly do you have in mind when mentioning NIV? If it&#39;s something similar to what Scott Lowe described a while ago (http://blog.scottlowe.org/2010/03/16/understanding-network-interface-virtualization/), that idea is more-or-less how VM-FEX works.",
+      "id": "8664300825298171706",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-08-21T21:15:07.795+02:00",
+      "ref": "8629756022745800290",
+      "type": "comment"
+    },
+    {
+      "date": "20 September 2011 15:12",
+      "html": "So in this case what happens to the hypervisor vSwitch? Does it exist? Is it used? Does it have to be a Nexus 1000V?",
+      "id": "3341276376050700068",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Juan Tarrio Brocade",
+      "profile": null,
+      "pub": "2011-09-20T15:12:24.336+02:00",
+      "ref": "8629756022745800290",
+      "type": "comment"
+    },
+    {
+      "date": "20 September 2011 15:45",
+      "html": "The passthrough VEM is a loadable ESX kernel module and does not require Nexus 1000V.<br /><br />The way I understand how VM-FEX works, VEM bypasses the vSwitch forwarding mechanisms, but not the control/management plane.<br /><br />The vSwitch (actually vDS) still exists (VEM is hidden inside it from the vCenter perspective), but the packets follow a different path (using logical NICs) than they would otherwise.",
+      "id": "2180752197552245551",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-09-20T15:45:19.373+02:00",
+      "ref": "8629756022745800290",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2011 13:19",
+      "html": "Thanks Ivan, that&#39;s a lot clearer now. So without direct mapping of the vEth interface to the VM the server CPU is sill being hit with every single network I/O in and out of the server (and between VMs)?",
+      "id": "979414386993261693",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Juan Tarrio Brocade",
+      "profile": null,
+      "pub": "2011-09-23T13:19:15.611+02:00",
+      "ref": "8629756022745800290",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2011 14:53",
+      "html": "That&#39;s absolutely true, although they can do true passthrough with vSphere 5 (see http://www.cisco.com/en/US/prod/collateral/modules/ps10277/ps10331/white_paper_c11-618838.html). Will blog about that in a few days.",
+      "id": "5795171685971776896",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-09-23T14:53:57.453+02:00",
+      "ref": "8629756022745800290",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2011 15:54",
+      "html": "Thank you!",
+      "id": "2906185081578975073",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Juan Tarrio Brocade",
+      "profile": null,
+      "pub": "2011-09-23T15:54:30.646+02:00",
+      "ref": "8629756022745800290",
+      "type": "comment"
+    },
+    {
+      "date": "15 April 2013 14:23",
+      "html": "I&#39;m not sure what abilities existed at the end of 2011, but now they are more advanced:<br />1) U may easily build VM-FEX on UCS C-series<br />2) U may do it w/o UCSM which requires FIs<br />3) U may easily do vMotion of VM w/ DirectPathIO w/ VM-FEX",
+      "id": "5076747797526420511",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "andyo",
+      "profile": "https://www.blogger.com/profile/01036372444124333911",
+      "pub": "2013-04-15T14:23:50.308+02:00",
+      "ref": "8629756022745800290",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "8629756022745800290",
+  "type": "post",
+  "url": "2011/08/vm-fex-how-convoluted-can-you-get.html"
+}

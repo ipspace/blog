@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "date": "23 October 2007 21:03",
+      "html": "A good use of GRE keepalive is to monitor a metro ethernet link between two routers. You setup a GRE tunnel with keepalive between two Ethernet endpoints to monitor true end-to-end connectivity over the metro Ethernet link. Keep in mind though you are not sending user traffic through the GRE tunnel, merely you are using the GRE keepalive as a health indicator of the metro Ethernet connection. Of course this will not be needed once Ethernet OAM, E-LMI, etc, have become widely available, but for the time being I find the GRE keepalive has other good uses besides tunneling traffic.",
+      "id": "5475921626464272383",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-10-23T21:03:00.000+02:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "24 October 2007 08:16",
+      "html": "That's definitely an interesting suggestion. But when you know that the end-to-end link is down, what do you do with that information? I have a few crazy ideas, but would like to hear from you first.",
+      "id": "7730092725481903514",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-10-24T08:16:00.000+02:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "24 October 2007 17:18",
+      "html": "We use standard NMS (HP Opeview, CA Spectrum, etc) to monitor customer devices. GRE Tunnel itself is just an other interface to these NMS systems, therefore if the tunnel went down the interface would become RED and an alarm will be triggered. Without this \"indicator\" tunnel interface we will have no way of knowing that the end-to-end path was actually down somewhere along the path. We have thought about using traps or monitoring routing neighbors logging, etc, but nothing beats the reliable tunnel interface Up/Down. This method has allowed us to open ticket proactively with the Metro Ethernet provider to resolve the issue. Keep in mind that the physical Ethernet interface itself could be UP/UP on the customer router, which isn't a reliable indicator.",
+      "id": "4306989179499086904",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-10-24T17:18:00.000+02:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "10 March 2008 03:06",
+      "html": "Hi ... very nice point. But, how to identify where's the problem path, when we find the Tunnel is flap, but all interface along the circuit is up (never down). Thanks !",
+      "id": "5168974524759582579",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-03-10T03:06:00.000+01:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "10 March 2008 08:46",
+      "html": "The only tool that comes to my mind is the \"traceroute\" command.",
+      "id": "5534584703971208934",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-03-10T08:46:00.000+01:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "10 March 2008 10:37",
+      "html": "Hi Ivan. The problem is the circuit is L2 based, and this circuit consist  of many physical hop. I have checked all log and there's no problem with physical log. Thks.",
+      "id": "5917842601126485010",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-03-10T10:37:00.000+01:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "10 March 2008 11:54",
+      "html": "If you have L2 devices in the path that you don't control, there's no way to figure out where the problem is (in a few years, you might be able to use Ethernet OAM :).",
+      "id": "1065104434939992731",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-03-10T11:54:00.000+01:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "31 December 2008 19:18",
+      "html": "Not to mention VRFs where the keepalive is inside the VRF and not in the transit VRF (or default table if that be the case)",
+      "id": "511536506980515811",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-12-31T19:18:00.000+01:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "11 May 2010 02:40",
+      "html": ":)",
+      "id": "321254412095374351",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2010-05-11T02:40:41.000+02:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "27 June 2012 22:19",
+      "html": "Thanks, Ivan, for the good explanation. Using an inbound ACL on the tunnel interface can defeat the keepalive if the tunneled packet is GRE and you only allow IP. Also, troubleshooting is more difficult since the tunnel interface is up/up with the ACL.  For example ...  <br />  <br />Side A with keepalives and ACL    ... up/up.  <br />Side B with keepalives and no ACL ... up/down.  <br />  <br />Neither side can ping the remote end. Remove the keepalives and everything works.  <br />  <br />In response to William using GRE to monitor Metro Ethernet, you could use BFD which will take down the Ethernet interface if the end-to-end connectivity fails.  Thanks, Tom.",
+      "id": "2031990719178940738",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-06-27T22:19:14.031+02:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "17 January 2013 23:52",
+      "html": "i have a similar problem. the GRE tunnel was working fine until the internet link failed. when it came back the GRE tunnel does not established. what could be the problem",
+      "id": "62811370874105361",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "superdan",
+      "profile": "https://www.blogger.com/profile/00216640657800878346",
+      "pub": "2013-01-17T23:52:35.935+01:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    },
+    {
+      "date": "03 June 2014 09:04",
+      "html": "And along came IOS XE 3.1.0S which says in the release notes:<br /><br />http://www.cisco.com/c/en/us/td/docs/ios/ios_xe/3/release/notes/asr1k_rn_3s_rel_notes/asr1k_rn_3s_restrictions.html#wp3021511<br /><br />&quot;GRE Keepalive with Tunnel Protection <br /><br />The Cisco ASR 1000 Series Router supports GRE keepalive with tunnel protection. However, the keepalive packet that is returned is not encrypted. &quot;<br /><br />A friendly TAC engineer undug this from the ASR1K release notes, when I opened a case for a pair of ISR 4451-X (3.10.01S) which surprisingly worked very well with GRE keepalives on a protected GRE-o-IPSec tunnel.",
+      "id": "913614136766373218",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/09393715773708636069",
+      "pub": "2014-06-03T09:04:27.831+02:00",
+      "ref": "7159975434065978709",
+      "type": "comment"
+    }
+  ],
+  "count": 12,
+  "id": "7159975434065978709",
+  "type": "post",
+  "url": "2007/10/gre-tunnel-keepalives.html"
+}

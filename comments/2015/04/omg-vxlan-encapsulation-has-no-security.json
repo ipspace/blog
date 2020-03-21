@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "date": "25 April 2015 02:37",
+      "html": "Tom Herbert from Google has been adamant about overlay protocols having some way to support authentication/encryption of VNI traffic while preserving entropy for load balancing.   He (and by extension I would guess Google) don&#39;t want to just blindly accept traffic at a VNI endpoint because the VNID matches.  This is where things like additional metadata in the header come into play, where you can add additional data for the actual endpoints to use to either accept or reject the packet.  <br /><br />The GUE draft has an example of supporting an IPSec header and maintaining entropy by using the original packet&#39;s information.   The issue with that is it requires the source do all of the encryption/encapsulation at one time, which is a lot of processing.   GUE also has a metadata portion which can be used as someone sees fit and may also be used for security/authentication.  <br /><br />With VXLAN-GPE (next version of VXLAN) there was some discussion around adding metadata fields, but I believe the agreed upon solution was to use the &quot;NSH&quot; protocol field and use a NSH header to carry any additional metadata.   This would ensure backward compatibility with existing VXLAN.  ",
+      "id": "5658987304798482028",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Phil Bedard",
+      "profile": "https://www.blogger.com/profile/00999352568102477737",
+      "pub": "2015-04-25T02:37:25.683+02:00",
+      "ref": "5309604956273754430",
+      "type": "comment"
+    },
+    {
+      "date": "26 April 2015 01:42",
+      "html": "We at Cisco share the concern that VXLAN encapsulation does not provide any security by itself. To address this in a simple and efficient way, we invested in incorporating additional capabilities for confidentiality, integrity and availability for VXLAN networks, specifically with the usage of the BGP based EVPN control-plane.<br />By using the existing BGP authentication, we introduced additional measures to not only ensure the integrity of the control-plane information but also added a &quot;whitelist&quot; methodology. Via the control-plane, we receive the list of neighbor VTEPs and add these IP addresses to a Whitelist. <br />While receiving VXLAN encapsulated data packets, we only accept packets from VTEPs which were previously distributed and stored in the Whitelist. VXLAN encapsulated packets from an unknown VTEP (not in Whitelist) are considered invalid and will be discarded.<br />Cisco is shipping this functionality today with VXLAN/EVPN for Nexus 9000 and will make it available to other Platforms once supporting VXLAN/EVPN",
+      "id": "1234922883847391970",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Lukas Krattiger",
+      "profile": "http://twitter.com/CCIE21921",
+      "pub": "2015-04-26T01:42:16.577+02:00",
+      "ref": "5309604956273754430",
+      "type": "comment"
+    }
+  ],
+  "count": 2,
+  "id": "5309604956273754430",
+  "type": "post",
+  "url": "2015/04/omg-vxlan-encapsulation-has-no-security.html"
+}

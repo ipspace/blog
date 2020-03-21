@@ -1,0 +1,151 @@
+{
+  "comments": [
+    {
+      "date": "08 September 2008 14:05",
+      "html": "Heh, that's pretty clever.",
+      "id": "6639116229003449069",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-09-08T14:05:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "08 September 2008 15:11",
+      "html": "Now only if we could do that for an access point.",
+      "id": "354863510379584504",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/00689623877672895386",
+      "pub": "2008-09-08T15:11:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "08 September 2008 16:10",
+      "html": "that's very cool.",
+      "id": "8523644068905829232",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "ryan",
+      "profile": "https://www.blogger.com/profile/02745806398659871393",
+      "pub": "2008-09-08T16:10:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "08 September 2008 16:38",
+      "html": "It could be done on Access point if its PoE-powered. Shut and no shut the port will do the trick.",
+      "id": "3801282120317410808",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/12771770174520316412",
+      "pub": "2008-09-08T16:38:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "08 September 2008 23:24",
+      "html": "It's also possible without EEM applets:<BR/><BR/>time-range wireless-enabled<BR/>  periodic daily 06:00 to 22:00<BR/>access-list 101 permit ip any any time-range wireless-enabled<BR/>access-list 101 deny ip any any<BR/>interface dot11radio0<BR/>  ip access-group 101 in",
+      "id": "4396949616548990980",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-09-08T23:24:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "09 September 2008 00:32",
+      "html": "While applying an access-list has it's advantages, it's not the same as shutting down an interface.  There are always different scenarios for every unique situation and having the ability to physically shut off a wireless interface on an access point based on time of day could be useful.",
+      "id": "2858705174584126173",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/00689623877672895386",
+      "pub": "2008-09-09T00:32:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "10 September 2008 14:29",
+      "html": "This EEM stuff is neat.  Is it possible to trigger an EEM applet whenever the WAN Ethernet interface gets a new DHCP lease, or when the DHCP-assigned default gateway changes?",
+      "id": "3410955485992668876",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Jordan",
+      "profile": "https://www.blogger.com/profile/11701648298424903520",
+      "pub": "2008-09-10T14:29:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "10 September 2008 18:08",
+      "html": "@Jordan: it could be done, if nothing else, you could write a Tcl policy with hooked on a periodic timer event. The Tcl policy would then inspect DHCP state and act as needed.<BR/><BR/>There might be some other solution for your problem, but I need to understand the problem first.",
+      "id": "1432296881200420356",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-09-10T18:08:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "10 September 2008 18:55",
+      "html": "We have a router with two Ethernet WAN interfaces connecting us to two ISPs.  One of the WAN connections is slower, but more reliable and provides us with static addresses; the other is much faster (cable modem), but only has a single IP address assigned by DHCP.  So to make the most of both, we use route maps to push the majority of traffic that originates inside our network over the cable modem (through overloaded dynamic NAT) while reserving the other WAN for incoming traffic addressed to our static IPs (via static NAT to specific inside hosts).<BR/><BR/>Since the cable modem ISP is the default route for most traffic, we wanted the ability to fall back to the other WAN link if the cable modem network should go down.  To address this, we track the DHCP-assigned route with \"ip dhcp client route track\" and we also use an SLA with RTR to monitor that link by ensuring we can ping that router.  If we can't get packets through the cable modem link, the SLA setup takes the cable modem route out of circulation and all traffic get shunted over the other WAN link (again with overloaded dynamic NAT).<BR/><BR/>The cable modem ISP is pretty good about renewing leases, such that this router has been able to keep the same \"dynamic\" IP address for the past 4 years.  This is fortunate, because the IOS doesn't seem to have a way to set the SLA to ping a DHCP-assigned gateway address and so we've had to statically configure the ISP's default gateway's IP address in our SLA config.<BR/><BR/>It all works very well, even though statically-configuring the router's IP in the SLA is less-than-ideal.  Here's where the problem comes in, though:<BR/><BR/>Recently, the ISP renumbered their network, and assigned us a new IP address by DHCP.  This of course caused the SLA stuff to break until we went in and changed the SLA config to ping the ISP's router's new address.  Every time the ISP changes their network in the future, we'll have to do this again.<BR/><BR/>While this might be something that only comes up every year or two, it could also turn out to happen a lot more often (for example, if the ISP changes their policies on long-lived DHCP leases).  So, my hope is to use IOS' EEM capabilities to automate the process of noticing that the DHCP-assigned default gateway has changed and then automatically update the SLA when that happens.<BR/><BR/>Any thoughts on whether this would be possible?<BR/><BR/>Thanks!",
+      "id": "1206365088224039258",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Jordan",
+      "profile": "https://www.blogger.com/profile/11701648298424903520",
+      "pub": "2008-09-10T18:55:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "10 September 2008 19:06",
+      "html": "@Jordan: Great explanation, thanks. I'll try to figure out something.",
+      "id": "7290930411844280853",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-09-10T19:06:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "17 September 2008 13:22",
+      "html": "slightly OT for this IOS blog, but as David asked in the second response:-<BR/>For cheap/plastic/non-industrial Access Points the easiest solution is a mains-plug-in-the-socket timeswitch, either rotary \"peg-type\" or digital. Don't forget summer/daylight changes or if less critical allow an extra couple of hours either way.<BR/>More complex but scriptable is to switch the DC power lead to the Access Point via a suitable relay, maybe fed from a LPT port (and a Molex or Berg power conn for relay power: look for transistor relay-driver circuits on net) Linux+lptswitch will do it on an old 486, so its SSH-able and tcl-able, or you can simply script it locally. If the cheap access point is near (5-10metres) some server boxes with LPT ports this is easier than a headless-but-huge 1998 desktop on a shelf running ssh :)<BR/>POE is really the way to do it for non-IOS devices IMHelectronicO<BR/>(Gord as anon)",
+      "id": "9002095282326405723",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-09-17T13:22:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "17 September 2008 18:19",
+      "html": "There are also \"power control\" devices on the market. You can telnet/HTTP to such a device and turn the power off or on (or trigger a power-off of controlled length to power-cycle a box).",
+      "id": "4806573156244547518",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-09-17T18:19:00.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    },
+    {
+      "date": "21 September 2009 22:31",
+      "html": "Back to Jordan&#39;s question.  I believe it is possible.  You didn&#39;t mention what device/IOS/EEM version you are running but you should be able to look for this syslog message<br /><br />%DHCP-6-ADDRESS_ASSIGN: Interface Ethernet0/0 assigned DHCP address 10.10.1.2, mask 255.255.255.0, hostname R2<br /><br />Upon receiving this message you could compare it to the previous address and if it changes update your SLA configuration.",
+      "id": "2990646157263967323",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jeremy",
+      "profile": null,
+      "pub": "2009-09-21T22:31:46.000+02:00",
+      "ref": "324781844258006317",
+      "type": "comment"
+    }
+  ],
+  "count": 13,
+  "id": "324781844258006317",
+  "type": "post",
+  "url": "2008/09/disable-wireless-interface-during-night.html"
+}

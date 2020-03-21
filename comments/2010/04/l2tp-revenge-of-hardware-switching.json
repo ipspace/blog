@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "date": "09 April 2010 16:09",
+      "html": "weeks ago i came to the same conclusion about this so called NG platform - ASR<br />i can add that ZBF with zone-pair in VRFs is also not working, same goes for NAT with VASI iface.<br />concerning VRF-aware L2TP, which hardware/software version are you using? i&#39;ve been successful with it!<br /><br />cheers, henrique",
+      "id": "7206141327034090125",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "henrique",
+      "profile": null,
+      "pub": "2010-04-09T16:09:31.000+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2010 16:55",
+      "html": "I use IPsec termination in a VRF today, and it works well.<br /><br />http://www.cisco.com/en/US/docs/ios/sec_secure_connectivity/configuration/guide/sec_vrf_aware_ipsec.html<br /><br />I use it only for a single static point-to-point tunnel, so it&#39;s not very complex.  However, it looks like it works for dynamic virtual template interfaces.  Was there perhaps something specific that didn&#39;t work?",
+      "id": "7236012311274342808",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brian Knight",
+      "profile": null,
+      "pub": "2010-04-09T16:55:24.000+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2010 17:49",
+      "html": "VRF-aware L2TP is fine, it&#39;s just the combination with IPSec that doesn&#39;t work.",
+      "id": "4138338856999803944",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-04-09T17:49:53.000+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2010 17:57",
+      "html": "What exactly are you doing?",
+      "id": "4007247134495096990",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-04-09T17:57:34.000+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2010 18:28",
+      "html": "humm... interesting, i need run the same but with VASIrightx interface has a IPSec tunnel end point",
+      "id": "5953872330161141231",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "henrique",
+      "profile": null,
+      "pub": "2010-04-09T18:28:38.000+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2010 23:37",
+      "html": "The overall goal was to provide a cheap backup route for inter-LAN connectivity between two sites.  I use GRE-over-IPsec to provide the virtual WAN link.<br /><br />The twist was that there are two sets of networks that must be routed across the virtual link to the remote side.  I&#39;ll call them &quot;SecureLAN&quot; and &quot;InsecureLAN.&quot;  These networks exist at both sites, and each LAN is separated by a firewall at each site.<br /><br />The routes distributed by the IGP within &quot;InsecureLAN&quot; and &quot;SecureLAN&quot; overlap with each other.  Moreover, &quot;InsecureLAN&quot; must carry a default route through the virtual WAN link to the remote side.<br /><br />What I did, instead of using two pairs of routers for each network, was to configure a pair of 3825 routers with two named VRF instances.  One named VRF was used for the InsecureLAN, and another named VRF, &quot;Inet&quot;, was used for the Internet-facing interface.  SecureLAN was connected to the routers&#39; global VRF.<br /><br />IPsec operates within the &quot;Inet&quot; VRF only.<br /><br />The reason I decided to create a named VRF for the Internet-facing LAN connection, and to use VRF-aware IPsec, is very similar to the reason you gave in your earlier post: It is much easier to manage and administer the router within the global VRF.  Also, at deployment time, I believe there were some needed management options that were not VRF-aware in that IOS rev.<br /><br />To finish talking about the design, two GRE tunnel interfaces are set up on each router, one for &quot;InsecureLAN&quot; and one for &quot;SecureLAN.&quot;  The IP address endpoints are the same for each tunnel interface; GRE keying is used to differentiate each tunnel.",
+      "id": "7971838314829972411",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brian Knight",
+      "profile": null,
+      "pub": "2010-04-09T23:37:23.000+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "10 April 2010 18:04",
+      "html": "Perfectly sane ... but you&#39;re using 3825 routers, which are software switching platforms, so they can take almost any abuse you throw at them.",
+      "id": "3995704764645971923",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-04-10T18:04:28.000+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "04 August 2010 21:18",
+      "html": "Applying vrf to l2tp tunnels via radius seems to be a problem on the ASR&#39;s as well or is related. Once the vrf is set via the cisco avpairs the ipcp process stops and peers never get to learn/negotiate addresses. This has the effect that the tunnel addresses are not assigned and the framed routes are not placed in the vrf routing table.",
+      "id": "3386019098105848818",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ahenning",
+      "profile": null,
+      "pub": "2010-08-04T21:18:10.000+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "13 July 2015 14:18",
+          "html": "No idea - this was written 5 years ago. Test it ;)",
+          "id": "2465272586873555283",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-07-13T14:18:04.161+02:00",
+          "ref": "7059674540757157008",
+          "type": "comment"
+        }
+      ],
+      "date": "12 July 2015 21:35",
+      "html": "Hello Ivan, <br /><br />do you know if this L2TP/IPsec and VRF interop issue is still there in latest IOS-XE ?<br /><br />Thanks<br />",
+      "id": "7059674540757157008",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "David Ponzone",
+      "profile": null,
+      "pub": "2015-07-12T21:35:09.411+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "29 January 2016 13:41",
+      "html": "L2TP/IPsec  does not supported on ASR<br /><br />https://tools.cisco.com/bugsearch/bug/CSCur76833/?referring_site=bugquickviewredir",
+      "id": "5863685491564365551",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/13638152096667501526",
+      "pub": "2016-01-29T13:41:36.882+01:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    },
+    {
+      "date": "22 April 2018 15:39",
+      "html": "I made L2TP/IPSEC work for VRFs on the 4451-X which has the same quantum flow architecture as the ASR. You must install an ACL to exclude your your VPN network from being NAT&#39;d beforehand or you won&#39;t be able to ping anything other than an interface IP on directly connected interfaces and private networks derived by your VRF&#39;s IGP.<br /><br />ip access-list extended L2TP_INSIDE_VRF_OMIT_NAT<br /> deny   ip MY_LT2P_NETWORK/27  MY_PRIVATE_NETWORKS/24         //deny NAT to private network(s)  <br /> permit ip MY_LT2P_NETWORK/27  any                            //allow 0.0.0.0 to the internet<br /> permit ip MY_VRF_INSIDE_NETWORK/24 any                       //allow VRF network access to 0.0.0.0<br /> deny   ip any any<br /><br />route-map L2TP_INSIDE_VRF_OMIT_NAT_ISP1 permit 10 <br /> match ip address L2TP_INSIDE_VRF_OMIT_NAT<br /> match interface GigabitEthernet0/0/1<br /><br />ip nat inside source route-map L2TP_INSIDE_VRF_OMIT_NAT_ISP1 interface GigabitEthernet0/0/1 vrf INSIDE<br />",
+      "id": "6445483350904885016",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Mark",
+      "profile": "https://www.blogger.com/profile/07811886742541879652",
+      "pub": "2018-04-22T15:39:19.043+02:00",
+      "ref": "1474347199798315691",
+      "type": "comment"
+    }
+  ],
+  "count": 12,
+  "id": "1474347199798315691",
+  "type": "post",
+  "url": "2010/04/l2tp-revenge-of-hardware-switching.html"
+}

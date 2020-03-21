@@ -1,0 +1,120 @@
+{
+  "comments": [
+    {
+      "date": "22 May 2007 14:20",
+      "html": "Couldn't you use DNS views to remedy this problem and supply your own DNS settings?  I would try something along these lines:<BR/><BR/>ip dns view default<BR/> dns forwarder 172.20.10.10<BR/> dns forwarder 172.20.10.20<BR/>ip dns view-list my-view<BR/> view default 10<BR/>ip dns server view-group my-view<BR/>ip dns server<BR/><BR/>You need to be running 12.4(9)T but it is a solution.",
+      "id": "4329134625480389610",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-05-22T14:20:00.000+02:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    },
+    {
+      "date": "23 May 2007 11:17",
+      "html": "DNS views don't help, the behavior stays the same, see below:<BR/><BR/>r4#show ip dns view default<BR/>DNS View default parameters:<BR/>Logging is off<BR/>DNS Resolver settings:<BR/>  Domain lookup is enabled<BR/>  Default domain name: test.com<BR/>  Domain search list:<BR/>  Lookup timeout: 3 seconds<BR/>  Lookup retries: 2<BR/>  Domain name-servers:<BR/>    <B>192.168.0.1</B><BR/>    192.168.0.2<BR/>    192.168.0.3<BR/>DNS Server settings:<BR/>  Forwarding of queries is enabled<BR/>  Forwarder addresses:<BR/>r4#show run | section ip dns<BR/>ip dns view default<BR/> domain name-server  192.168.0.2<BR/> domain name-server  192.168.0.3",
+      "id": "6016182473703061074",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-05-23T11:17:00.000+02:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    },
+    {
+      "date": "24 May 2007 15:29",
+      "html": "That seems to be the case when you use the domain name-server option, but not the domain forwarder option.  I just checked my view I setup for a public network, and only the dns server I listed as the forwarder is there:<BR/><BR/>DNS View public-view parameters:<BR/>Logging is on (view used 1323 times)<BR/>DNS Resolver settings:<BR/>  Domain lookup is enabled<BR/>  Default domain name:<BR/>  Domain search list:<BR/>  Lookup timeout: 3 seconds<BR/>  Lookup retries: 2<BR/>  Domain name-servers:<BR/>DNS Server settings:<BR/>  Forwarding of queries is enabled<BR/>  Forwarder addresses:<BR/>    4.2.2.2<BR/><BR/>This doesn't really matter now that you found the other dhcp client command in your latest post, but it does matter for those that are using multiple views.",
+      "id": "5615580244344002327",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-05-24T15:29:00.000+02:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    },
+    {
+      "date": "31 May 2007 09:12",
+      "html": "Finally I've found some time to investigate how it really works. The results <A HREF=\"http://ioshints.blogspot.com/2007/05/dns-configuration.html\" REL=\"nofollow\">are here</A>.",
+      "id": "4115639854796729220",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-05-31T09:12:00.000+02:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    },
+    {
+      "date": "01 August 2008 03:55",
+      "html": "This article doesnt make much sense.<BR/><BR/>Firstly, why would you want DNS servers received via DHCP to be placed into the running-config, or be written back to the startup-config? These are run-time variables, much the same as the routing tables that routing protocols build. These routes dont appear in the running configuration either as the next time the router boots up, some or all of them may no longer be vaild.<BR/><BR/>If the router receives a list of DNS server addresses with a DHCP reply, and places them into the running-config, you now have potentially unstable run-time information in your configuration. If that configuration is written to NVRAM, you are now storing that potentially unstable information in your router.<BR/><BR/>This somewhat defeats the purpose of DHCP which is to allow hosts to automatically configure themselves with the correct network settings. Having them statically configured also poses security risks, unless you control the DNS servers in question.<BR/><BR/>Secondly, can you explain in more detail what you mean about the statically configured name servers being lost if the DHCP interface goes down?<BR/><BR/>Name servers present in your startup/running configuration should not be \"lost\".<BR/><BR/>Cheers,<BR/>Tom",
+      "id": "4733373783421902748",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-08-01T03:55:00.000+02:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    },
+    {
+      "date": "05 August 2008 10:56",
+      "html": "Tom, I will not comment the first half of your comment, as we agree that the dynamic information (DHCP DNS, for example) should not be stored in static router config.<BR/><BR/>As for the \"lost DNS servers\" - if you configure a static DNS server and subsequently receive the same DNS server's IP address in a DHCP reply, the dynamic DNS server overwrites the static declaration (IOS does not allow you to have two entries for a single DNS server) and is thus lost from the running/startup config ... as the example in the post has clearly demonstrated.",
+      "id": "5776674997749352718",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-08-05T10:56:00.000+02:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "16 August 2012 08:01",
+          "html": "You might be able to work around that with DNS views, but it definitely is a stupid bug.",
+          "id": "3893779542636620823",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-08-16T08:01:22.417+02:00",
+          "ref": "8101046104495934998",
+          "type": "comment"
+        }
+      ],
+      "date": "16 August 2012 04:09",
+      "html": "We recently ran into a related issue involving VRF. If the interface obtaining config via DHCP receives name servers (requested or not) and the interface is assigned to a named VRF, the received name servers are associated with the global VRF instead of the named VRF. Makes front-door VRF somewhat less useful than it otherwise would be.",
+      "id": "8101046104495934998",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Phil",
+      "profile": "https://www.blogger.com/profile/10558463210818733870",
+      "pub": "2012-08-16T04:09:45.864+02:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    },
+    {
+      "date": "17 July 2013 00:08",
+      "html": "A little late to the party here, but as a note, you can now use &quot;no ip dhcp client request dns-nameserver&quot; and &quot;no ip dhcp client request domain-name&quot; in the interface configuration for your client interface to ignore name server and hostname options when pulling a lease.",
+      "id": "3097787630745718672",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Mikkel Markussen",
+      "profile": null,
+      "pub": "2013-07-17T00:08:54.666+02:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2013 08:35",
+      "html": "Thanks Mikkel... saved my life.<br />",
+      "id": "3624343972028172328",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brandon",
+      "profile": null,
+      "pub": "2013-11-17T08:35:25.163+01:00",
+      "ref": "4048453415691361500",
+      "type": "comment"
+    }
+  ],
+  "count": 10,
+  "id": "4048453415691361500",
+  "type": "post",
+  "url": "2007/05/dns-resolver-in-cisco-ios-is-auto.html"
+}

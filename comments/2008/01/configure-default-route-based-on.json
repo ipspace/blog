@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "date": "07 January 2008 13:19",
+      "html": "A elegant way of doing it is by tracking objects and SLA monitor. No eem is involved.<BR/><BR/>1) create a track object call trackrouteA which has reachability monitoring via SLA<BR/><BR/>2) Schedule the track object to run forever<BR/><BR/>3) Then add track objects to the static routes<BR/><BR/>ip route 0.0.0.0 0.0.0.0 10.0.7.2 trackrouteA<BR/><BR/>ip route 0.0.0.0 0.0.0.0 10.0.7.6 250 trackrouteB",
+      "id": "8534512305796629325",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-01-07T13:19:00.000+01:00",
+      "ref": "7820896850915265587",
+      "type": "comment"
+    },
+    {
+      "date": "07 January 2008 13:26",
+      "html": "You're absolutely correct and I've already covered a number of designs using this technique (including a SOHO multihoming). <BR/><BR/>But you cannot check whether the BGP session with the ISP is alive with SLA (assuming you want to use that as the trigger to install the default route).",
+      "id": "138335923208854998",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-01-07T13:26:00.000+01:00",
+      "ref": "7820896850915265587",
+      "type": "comment"
+    },
+    {
+      "date": "09 January 2008 20:55",
+      "html": "After your article, I've just played a bit with reliable static routing with object tracking. Based on Cisco's recommendation, the following configuration should be applied to prevent pinging via the secondary link, but it breaks the operation of tracking. Am I missing something?<BR/><BR/>!<BR/>ip sla monitor 1<BR/> type echo protocol ipIcmpEcho 2.2.2.2<BR/> timeout 1000<BR/> threshold 2<BR/> frequency 3<BR/>ip sla monitor schedule 1 life forever start-time now<BR/>!<BR/>track 222 rtr 1 reachability<BR/> delay down 2 up 2<BR/>!<BR/>ip local policy route-map TRACK<BR/>ip route 0.0.0.0 0.0.0.0 FastEthernet0/0 track 222<BR/>ip route 0.0.0.0 0.0.0.0 FastEthernet0/1 100<BR/>!<BR/>access-list 101 permit icmp any host 2.2.2.2 echo<BR/>!<BR/>route-map TRACK permit 10<BR/> match ip address 101<BR/> set interface FastEthernet0/0 Null0 <BR/>!",
+      "id": "7304453798065298004",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-01-09T20:55:00.000+01:00",
+      "ref": "7820896850915265587",
+      "type": "comment"
+    },
+    {
+      "date": "10 January 2008 13:41",
+      "html": "The <A HREF=\"http://www.nil.com/ipcorner/SmallSiteMultiHoming/\" REL=\"nofollow\">Small Site Multi-Homing</A> article I wrote a while ago contains a tested configuration in the \"End-to-end connectivity test\" section.",
+      "id": "2171972221824093305",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-01-10T13:41:00.000+01:00",
+      "ref": "7820896850915265587",
+      "type": "comment"
+    },
+    {
+      "date": "10 January 2008 16:25",
+      "html": "The problem with SLA tracking is what you actually track. In networks with redundant data paths for high avaialbility, which device / link / interface are you tracking. <BR/><BR/>Commonly people track www.google.com, but what if they stop allowing ICMP, or go offline, do you really want to failover everything just because of that.<BR/><BR/>SLA works for small networks, but no so well for large networks.",
+      "id": "1575922903928547745",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-01-10T16:25:00.000+01:00",
+      "ref": "7820896850915265587",
+      "type": "comment"
+    },
+    {
+      "date": "11 October 2010 11:38",
+      "html": "I&#39;m not agree with your last sentence (no so well for large networks).<br />IP SLA can be used to test the availability of the backbone via a point-to-point link for example.<br />Another example:<br /><br />You have 2 routers (using HSRP on the LAN side) at a customer where you have to use NAT to expose this one toward your datacenter. To manage the WAN redundance, you&#39;re using BGP.<br />To redistribute the IP pool used by NAT, you need to define a static route redistributed into BGP. If the LAN on the primary router is not available, this router still advertises the static route through BGP. Therefore, the return trafic will drop.<br />In using IP SLA, you can test the availability of the LAN and in the case where this one is not available you remove the static route. In addition, you also can test the WAN point-to-point link (in case of ethernet WAN solution, you can have the interface UP/UP but not trafic forwarded), if it&#39;s not operational you can decrease the priority of HSRP.<br /><br />I&#39;m using this kind of solution. But indeed I don&#39;t test any ressources outside my network.<br /><br />Regards,<br /><br />Lionel",
+      "id": "2060552408046000532",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Lionel Gavage",
+      "profile": null,
+      "pub": "2010-10-11T11:38:50.000+02:00",
+      "ref": "7820896850915265587",
+      "type": "comment"
+    },
+    {
+      "date": "16 August 2013 17:47",
+      "html": "Hi,<br />we have come up with following solution:<br /><br />1) set an static default-route <br />ip route 0.0.0.0 0.0.0.0  track 1000<br />2) creating tracks:<br />track 991 ip route 17.0.0.0 255.0.0.0 metric threshold<br /> threshold metric up 1 down 2<br />!<br />track 992 ip route 18.0.0.0 255.0.0.0 metric threshold<br /> threshold metric up 1 down 2<br />!<br />track 993 ip route 32.0.0.0 255.0.0.0 metric threshold<br /> threshold metric up 1 down 2<br />!<br />track 994 ip route 55.0.0.0 255.0.0.0 metric threshold<br /> threshold metric up 1 down 2<br />!<br />track 1000 list boolean or<br /> object 991<br /> object 992<br /> object 993<br /> object 994<br /><br />3) set metric value for iBGP:<br />address-family ipv4<br />neighbor  route-map TO-IBGP out<br />route-map TO-IBGP permit 65535<br /> set metric 5120<br /><br />Do we overlook something?<br /><br />Greets,<br />Flo",
+      "id": "4825241950677714445",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-08-16T17:47:50.137+02:00",
+      "ref": "7820896850915265587",
+      "type": "comment"
+    }
+  ],
+  "count": 7,
+  "id": "7820896850915265587",
+  "type": "post",
+  "url": "2008/01/configure-default-route-based-on.html"
+}

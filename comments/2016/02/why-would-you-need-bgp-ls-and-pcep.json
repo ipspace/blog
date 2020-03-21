@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "22 February 2016 19:00",
+          "html": "Still: what&#39;s the use case? How will someone make more money with that? Without that answer it&#39;s just another hefty dose of Kool-Aid.",
+          "id": "4996943952459236593",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-02-22T19:00:31.667+01:00",
+          "ref": "1672871481859276166",
+          "type": "comment"
+        }
+      ],
+      "date": "22 February 2016 18:36",
+      "html": "It will make more sense once you will have segment routing available in your WAN. Then your controller will rely on BGP-LS and PCEP and it will insert source routes using segment IDs. <br />",
+      "id": "1672871481859276166",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Bela",
+      "profile": "https://www.blogger.com/profile/07985346761439657130",
+      "pub": "2016-02-22T18:36:27.179+01:00",
+      "ref": "3249096983201513374",
+      "type": "comment"
+    },
+    {
+      "date": "22 February 2016 23:12",
+      "html": "Let&#39;s put the definitions right:<br />PCEP is - Path Computation Element (PCE) Communication Protocol (PCEP) for communications between a Path Computation Client (PCC) and a PCE, or between two PCEs. It is not limited to TE only!<br />The role of PCEP is to provide bidirectional communication channel between client and server with well defined semantics, negotiated features, etc<br />We are also extending PCEP to provide a more generic container to trigger an action and/or pass some opaque data, take a look at draft-sivabalan-pce-policy-identifier.<br /><br />Let&#39;s move to SDN world :)<br />The role of a  network (SDN) controller is to take business logic NB and transform it into networking instantiated over variety of SBI&#39;s (no, not OF only ;-))<br />PCE computation result is the product of:<br />complete topology graph with all the attributes, this is were stateful PCE and BGP-LS come into play with business logic, represented as set of constrains applied to.<br />It doesn&#39;t have to be directly relevant to traditional TE, weather forecast for mW, cost in $$ for a capacity broker, etc<br /><br />PCEP is a rather good candidate for a SBI, to create/modify an ephemeral state, provide telemetry (reports), many other... This is the reason it has been implemented in ODL day 1<br /><br />IETF stuff to look up:<br />RFC5440<br />draft-sivabalan-pce-policy-identifier<br />draft-pkd-pce-pcep-yang<br />draft-ietf-pce-stateful-pce<br /><br />If you are interested in SR:<br />draft-ietf-pce-segment-routing<br /><br />Leg me know if there are any questions<br /><br />Cheers,<br />Jeff",
+      "id": "1929598865532867843",
+      "image": "https://4.bp.blogspot.com/-Jm8onWGyM0M/WoYk1lJ1zuI/AAAAAAAAAy8/aU73FTiTCFUgsnYdYVJ8cf3PRUZqGlKOACK4BGAYYCw/s32/jeff_tantsura.jpg",
+      "name": "Jeff Tantsura",
+      "profile": "https://www.blogger.com/profile/17193851449183304827",
+      "pub": "2016-02-22T23:12:19.949+01:00",
+      "ref": "3249096983201513374",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "17 May 2016 17:52",
+          "html": "Hi Phil,<br />Well, so, could you give some use case examples? I still cant clear see how/why using it and I am very interested in knowing more :)",
+          "id": "879941206255864152",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2016-05-17T17:52:32.262+02:00",
+          "ref": "2663155562123608633",
+          "type": "comment"
+        },
+        {
+          "date": "25 May 2016 19:59",
+          "html": "You might want to attend Segment Routing webinar, Thursday, May 26th 12:00 EDT. I&#39;ll be touching upon PCEP role in SDN ecosystem",
+          "id": "8460145996449270080",
+          "image": "https://4.bp.blogspot.com/-Jm8onWGyM0M/WoYk1lJ1zuI/AAAAAAAAAy8/aU73FTiTCFUgsnYdYVJ8cf3PRUZqGlKOACK4BGAYYCw/s32/jeff_tantsura.jpg",
+          "name": "Jeff Tantsura",
+          "profile": "https://www.blogger.com/profile/17193851449183304827",
+          "pub": "2016-05-25T19:59:22.583+02:00",
+          "ref": "2663155562123608633",
+          "type": "comment"
+        }
+      ],
+      "date": "24 February 2016 02:54",
+      "html": "Jeff hit the nail on the head, PCEP is just a SB communication protocol, so asking a question like &quot;Is there a use case for PCEP?&quot; is like saying &quot;Is there a use case for HTTP?&quot;   Plenty of large networks for years have used  cumbersome mechanisms to accomplish what PCEP (and its associated extensions) can accomplish in a  standardized way.  I could give you a laundry list of useful applications (not BoD) I&#39;ll never see in distributed embedded router software but can be easily implemented in software.  Those could use PCEP or not, but PCEP IMHO is the best avenue especially if you are running an existing RSVP-TE network.  <br /><br />As an example, we have done modeling on our network to show how it can be made more efficient using global concurrent optimization, and while it&#39;s not mind blowing, there is a difference.    ",
+      "id": "2663155562123608633",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/06036116499201821433",
+      "pub": "2016-02-24T02:54:54.889+01:00",
+      "ref": "3249096983201513374",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "3249096983201513374",
+  "type": "post",
+  "url": "2016/02/why-would-you-need-bgp-ls-and-pcep.html"
+}

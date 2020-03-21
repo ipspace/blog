@@ -1,0 +1,190 @@
+{
+  "comments": [
+    {
+      "date": "23 November 2011 07:50",
+      "html": "as far as I know in junos<br />set protocols isis level 1 disable<br />will do the same<br /><br />Nitzan",
+      "id": "772382254064587496",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Nitzan",
+      "profile": null,
+      "pub": "2011-11-23T07:50:16.651+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "date": "23 November 2011 09:38",
+      "html": "Few comments :-)<br /><br />Inter-area MPLS-TE works to some extent in IS-IS, with either loose next-hop or with a verbatim statement (your trick for TE with EIGRP).<br /><br />Another one, the comment about misconfigured L1L2 router leaking a default route. Chances of that happening are slim, since to leak a default route, that L1L2 would have to have L1 adjacency as well as L2 adjacency in order to generate an update with ATT bit set, which would cause L1 routers to install a default route. Unlike OSPF&#39;s ABRs, IS-IS border routers don&#39;t actually advertise the default.<br /><br />The rest - I couldn&#39;t agree more on.<br /><br />-Marko.",
+      "id": "8988635263446851041",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Marko Milivojevic",
+      "profile": null,
+      "pub": "2011-11-23T09:38:18.563+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "date": "23 November 2011 14:25",
+      "html": "According to my understanding of the documentation, you can disable in an IS-IS level only on a per-interface basis.",
+      "id": "5400498107373331278",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-23T14:25:04.878+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "date": "23 November 2011 14:29",
+      "html": "Another one of my &quot;what&#39;s not white is black&quot; blunders  :-P<br /><br />Of course I know there&#39;s loose next hop (even had it working in the lab once) and I wanted to say something along the lines of &quot;automatic MPLS TE&quot; or &quot;it&#39;s simple within a level&quot; ... Another proof that English is not my native language  :-$<br /><br />As for a misconfigured router - have to test what happens if you run multiple IS-IS instances on the same box (before you tell me how stupid I am: this is pure speculation).",
+      "id": "1053261650817010780",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-11-23T14:29:54.607+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "date": "23 November 2011 14:30",
+      "html": "in the interface you put the metric,hold-time etc ... under level 2 but there you dont have to disable level 1 if you did it in the under the protocol",
+      "id": "5087346153473694958",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Nitzan",
+      "profile": null,
+      "pub": "2011-11-23T14:30:47.056+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "date": "23 November 2011 14:31",
+      "html": "You can do it at router level also:<br /><br />[edit protocols isis]<br />tt@router# show<br />level 1 | 2 {<br />   disable; <br />}<br /><br />and you can do it at interface level:<br /><br />[edit protocols isis]<br />tt@router# show<br />interface intf.unit {<br />   level (1 | 2) disable; <br />}<br /><br />One more post later on. <br /><br />As Marko wrote : The rest - I couldn&#39;t agree more on.",
+      "id": "7106117759425261988",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tiziano",
+      "profile": null,
+      "pub": "2011-11-23T14:31:15.372+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "15 June 2012 09:07",
+          "html": "No actually the ATT bit in L1 LSP will be set only when the router has an L2 adjacency with a router in DIFFERNET AREA<br />Connection to DIFFERNET AREA is the prerequisite for a L12 router to set the ATT bit (unless it\u2019s set manually)",
+          "id": "6497190249719523813",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2012-06-15T09:07:54.532+02:00",
+          "ref": "7561409112487277332",
+          "type": "comment"
+        },
+        {
+          "date": "16 October 2013 18:24",
+          "html": "Strictly speaking, I believe the spec calls for the ATT bit to be set in the L1 LSP if the router can reach another area (and not necessarily directly L2-adjacent to that area).",
+          "id": "3237099460392050591",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2013-10-16T18:24:08.748+02:00",
+          "ref": "7561409112487277332",
+          "type": "comment"
+        }
+      ],
+      "date": "23 November 2011 20:13",
+      "html": "Even with multiple instances, ATT will be set inly if there&#39;s an adjacency in L2.",
+      "id": "7561409112487277332",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Marko Milivojevic",
+      "profile": null,
+      "pub": "2011-11-23T20:13:07.832+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "date": "23 November 2011 20:16",
+      "html": "in case of inter-area TE, re-optimization at abr is a very painful topic to cover, not even mention signal the path base on link-coloring/admin-grp.<br />these fancy isis design, like routes leak and att bit works perfect for ip world, but not mpls, just like many vendor choose to ignore over-load-bit.<br />run TE in single area makes everybody easy, or explicit path to mimic the old OTN concept, just my 1 cent.",
+      "id": "1801358166200193242",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "igp2bgp",
+      "profile": null,
+      "pub": "2011-11-23T20:16:54.093+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "date": "25 November 2011 11:31",
+      "html": "For the ATT bit to be set, I believe (might be wrong) that the L1/L2 &#39;router&#39; has to have adjacencies established in both L1 and L2 levels but they have to have different Area IDs (I should test this in a quick lab... but I&#39;m risking trusting my memory)<br /><br />Correct me if I&#39;m wrong.",
+      "id": "8734009215846612770",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Rodrigo",
+      "profile": null,
+      "pub": "2011-11-25T11:31:33.323+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "date": "25 November 2011 11:42",
+      "html": "In my Service Provider &quot;book&quot; disabling the default L1/L2 adjacencies is probably the first thing I do after starting adding interfaces to IS-IS (for all the reasons you mentioned but also because I usually don&#39;t like defaults).<br /><br />Also, since apparently you started your journey in the JunOS world let me give you a thumb rule (been there done that). If you know you can do something with IOS (and flavors) it&#39;s almost guaranteed that you can do the same with JunOS, and until some years ago, you usually could do more. I also tend to trust JunOS defaults a bit more than the IOS* ones (I never enjoy the practice of hiding from the user the &quot;system default&quot;)<br /><br />For example your recent blog regarding label control/assignment is a good example how the JunOS default is much more sane compared to the IOS (incidentally I think I start configuring MPLS using one of your books and during the optimization stage of my first lab I think I used it to limit the announcement of labels to only my Loopback subnet).<br /> <br />I sincerely hope not many Service Providers are doing that &quot;stupid&quot; thing... if they are I recommend them to get one of Doyle&#39;s IS-IS books and all stupid things should be taken care of.<br /><br />Regards,<br /><br />(this javascript in macos chrome is still doing multiple posts...)",
+      "id": "5304727773802587988",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Rodrigo",
+      "profile": null,
+      "pub": "2011-11-25T11:42:12.197+01:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "30 June 2015 10:36",
+          "html": "Using default IGP routing within a SP core is usually not a good idea. Also,  the default L1+L2 behavior breaks MPLS LSPs. See the links in the blog post for more details.",
+          "id": "1055231976965079545",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-06-30T10:36:00.209+02:00",
+          "ref": "2929345280760370537",
+          "type": "comment"
+        }
+      ],
+      "date": "29 June 2015 14:55",
+      "html": "Nice Post. But I&#39;m wondering why most telcos deploy a single area level-2 only  but not level-1. And also why not deploy level-2 in core and level-1 in access nodes and link both with level1-2.<br />",
+      "id": "2929345280760370537",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Moses",
+      "profile": null,
+      "pub": "2015-06-29T14:55:51.651+02:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "28 April 2016 07:40",
+          "html": "http://wiki.nil.com/Disable_L1_default_route_in_IS-IS<br /><br />The &quot;why does that break MPLS LSP&quot; part is left as an exercise for the reader ;)",
+          "id": "1588515982935183575",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2016-04-28T07:40:00.419+02:00",
+          "ref": "4340531924130702686",
+          "type": "comment"
+        }
+      ],
+      "date": "26 April 2016 20:58",
+      "html": "Hi Ivan:<br /><br />Which &quot;links&quot; in the post that you referred to above that talk about breaking MPLS LSPs?<br /><br />Thanks,<br /><br />William",
+      "id": "4340531924130702686",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2016-04-26T20:58:30.613+02:00",
+      "ref": "511961211985201524",
+      "type": "comment"
+    }
+  ],
+  "count": 16,
+  "id": "511961211985201524",
+  "type": "post",
+  "url": "2011/11/multi-level-is-is-in-single-area-think.html"
+}

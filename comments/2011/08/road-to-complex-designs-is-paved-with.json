@@ -1,0 +1,162 @@
+{
+  "comments": [
+    {
+      "date": "15 August 2011 09:20",
+      "html": "I see some potential issues with the static to Null0. Even if the connected interface goes down on CE-A the network will still be announced to ISP-A. So traffic from the Internet will always be entering ISP-A even if firewalls route towards ISP-B. This will lead to assymetric routing and firewalls don&#39;t like that so they would probably drop all the sessions. <br /><br />But traffic won&#39;t probably even make it that far. If connection to PUB-SUB is down on CE-A then traffic will be blackholed (assuming only one interface to PUB-SUB).",
+      "id": "5805376430690055752",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Daniel",
+      "profile": null,
+      "pub": "2011-08-15T09:20:54.370+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "15 August 2011 09:41",
+      "html": "Perfect answer. The route to &quot;null 0&quot; is dangerous because it can introduce a black hole if a CE router loses connection to PUB-SUB.",
+      "id": "8490322643662989259",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-08-15T09:41:19.072+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "15 August 2011 14:40",
+      "html": "\u201cPerfection is achieved not when there is nothing left to add, but when there is nothing left to take away\u201d \u2013 Antoine de Saint-Exupery",
+      "id": "499145346789472011",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "bjo",
+      "profile": null,
+      "pub": "2011-08-15T14:40:50.981+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "15 August 2011 15:58",
+      "html": "We are running almost the same setup, but I will say...without the &quot;bad&quot; stuff. We are running HSRP between CE routers, iBGP between CE routers (direct connect) and HA firewalls. We aren&#39;t running null0 insertion so no problem there.<br /><br />One thing I will throw out there (in case it may help anyone) is that we are also running two types of tracking...<br /><br />1) If the CE router cannot see the firewalls, shutdown the BGP neighborship to the ISP<br /><br />2) If the BGP neighborship fails, decrement HSRP",
+      "id": "1695399309154534399",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Daniel G",
+      "profile": null,
+      "pub": "2011-08-15T15:58:18.651+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "15 August 2011 16:23",
+      "html": "#2 is nice, #1 is awesome.<br /><br />An exercise for the reader (to continue the academic lingo): do #1 in a way that does not require changes to router configuration.",
+      "id": "667865723355927289",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-08-15T16:23:49.335+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "15 August 2011 17:08",
+      "html": "If you have MetroEthernet links, then implement BFD for fast failover, also apply it on the BGP neighbour with the neighbor 10.1.1.1 fall-over bfd to reduce the times.<br /><br />To do the HSRP decrementation, I would use a track object with an IP SLA pinging the PE, or... introduce a dummy route on the PE (local, not redistributed to the ISP backbone, aggree in a custom BGP community like 1111:0 so you can find it all the time), and use a tack object to check if the route is in the routing table. With the BFD it is fine, and you can easily assign a track object to the HSRP monitoring.<br /><br />If you are really tricky, you can use the EEM to do the LAN BGP monitoring, but HSRP is much faster and easier.",
+      "id": "4386366517234346061",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Laszlo",
+      "profile": null,
+      "pub": "2011-08-15T17:08:33.970+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "15 August 2011 17:30",
+      "html": "I agree with all points except the HSRP/static route one.  USE BGP.  That means getting a firewall that supports it.  Bye bye, ASA!",
+      "id": "5769122919169235164",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "ccie15672",
+      "profile": null,
+      "pub": "2011-08-15T17:30:26.958+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "15 August 2011 20:27",
+      "html": "HSRP/static might actually be simpler than BGP. If you don&#39;t want to send lots of routes to the firewall, you have to tweak the default route metrics in BGP.",
+      "id": "5287278135461745302",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-08-15T20:27:16.003+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "15 August 2011 23:43",
+      "html": "&quot;neighbor ... fall-over route-map ...&quot; maybe combined with static routes and some tracking (IP SLA or whatever...), depending on the design...<br /><br />BTW: That was an easy one: http://www.nil.com/ipcorner/DesigningBGPNetworks  ;)",
+      "id": "1842245844121346721",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Christoph",
+      "profile": null,
+      "pub": "2011-08-15T23:43:21.658+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "16 August 2011 16:51",
+      "html": "Our edge network is way over complicated, but it was designed to be very flexible. We have 2 primary data centers, 2 backup sites, and rent space at a local colo. We currently have 4 upstream internet connections, each of them peer to their own edge router, now, at each primary data center we have a pair of ASRs that aggregate those routes. They also form a loop between the 2 sites, and the colo facility (where one of our circuits comes in) where we have a 3750x. That loop runs an IGP to supply reach-ability for each edge router to peer via iBGP to each of the ASRs. The ASRs run a second IGP instance to advertise a default route to our firewalls, which readvertise it into the core. <br /><br />As for external routing, we&#39;re splitting our netblock up between the two sites, advertising half at each, plus the whole netblock to ensure reachability to our entire address space if one of the sites goes down. The ASRs advertise those netblocks to the edge routers that peer with our upstream ISPs.",
+      "id": "1333605154274764811",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tony",
+      "profile": null,
+      "pub": "2011-08-16T16:51:14.935+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "17 August 2011 07:12",
+      "html": "Now this is an interesting idea. If you use a static host route for EBGP peer, it would probably work.",
+      "id": "3129769815770725497",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-08-17T07:12:14.364+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "17 August 2011 17:42",
+      "html": "I&#39;ve never configured it and I&#39;ve just overflown the configuration guide (http://www.cisco.com/en/US/docs/ios/12_4t/ip_route/configuration/guide/brbpeer.html), but from what I read the session is shut down as soon as the route defined in the route-map disappears. So if you have a setup like described in the blog post, the following CE configuration could maybe work:<br /><br />===============================<br />ip sla monitor 10<br /> type echo protocol ipIcmpEcho FW-IP<br /> timeout 1000<br /> frequency 10<br />ip sla monitor schedule 10 life forever start-time now<br /><br />track 10 rtr 10<br /><br />router bgp ASN<br />neighbor PE fall-over route-map TRACK-FW<br /><br />route-map TRACK-FW permit 10<br /> match 1.1.1.1/32<br /><br />ip route 1.1.1.1 255.255.255.255 Null0 track 10<br />===============================<br /><br />But as already said - I&#39;ve never used the feature and even if it would work, I would not be very happy to use a configuration like above...",
+      "id": "861420868607026695",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Christoph",
+      "profile": null,
+      "pub": "2011-08-17T17:42:42.450+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "09 September 2011 22:31",
+      "html": "As an alternative design, we run eBGP through our firewalls by creating an internal AS on the inside of our network.  From the inside we distribute the appropriate routes to the edge routers to advertise externally.  If for some reason a firewall pair fails for any reason or the router becomes an island, the BGP connection inside will fail and the advertisements will drop from the edge router.  It&#39;s setup in a square, two edge routers running iBGP, two internal routers running iBGP with a private AS, and two sets of firewalls that we run eBGP through.  Then you just need some local-prefs/med to control the traffic flow, and to remove-private and you&#39;re good to go.<br /><br />It&#39;s a little complicated, but if you don&#39;t trust your firewalls and have diverse locations, this is an option.",
+      "id": "1061868598047622301",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "mplex",
+      "profile": null,
+      "pub": "2011-09-09T22:31:42.774+02:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    },
+    {
+      "date": "21 January 2012 13:21",
+      "html": "Following on from what Daniel mentioned: &quot;If the CE router can not see the firewalls&quot;<br /><br /> in the event the CE router loses connectivity to the firewall would we need to really shutdown the neighbour to the ISP if we were to deploy a separate dedicated iBGP link between both CE routers. If CE-A lost connectivity to the firewall the inbound traffic would learn an alternate path via the iBGP link and route to the firewall via CE-B?",
+      "id": "2591983896015211532",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ben",
+      "profile": null,
+      "pub": "2012-01-21T13:21:22.180+01:00",
+      "ref": "7768741773025500175",
+      "type": "comment"
+    }
+  ],
+  "count": 14,
+  "id": "7768741773025500175",
+  "type": "post",
+  "url": "2011/08/road-to-complex-designs-is-paved-with.html"
+}

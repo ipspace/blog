@@ -1,0 +1,100 @@
+{
+  "comments": [
+    {
+      "comments": [
+        {
+          "date": "26 June 2012 14:26",
+          "html": "Let me know when the abstractions don&#39;t suck...",
+          "id": "4105369977348230874",
+          "image": "https://2.bp.blogspot.com/-s2SO4-r0rb4/TjN1afzbxzI/AAAAAAAAAEI/GJY8m3X_G4Q/s32/278323_2250510072972_1554840083_32414519_195982_o.jpg",
+          "name": "Derick Winkworth",
+          "profile": "https://www.blogger.com/profile/15412047994121954944",
+          "pub": "2012-06-26T14:26:54.721+02:00",
+          "ref": "7492893335465693216",
+          "type": "comment"
+        },
+        {
+          "date": "26 June 2012 14:49",
+          "html": "Hi Brad,<br />I agree with you in that Quantum is headed in the right direction architecturally. Specifically, the ability of plugins to define extension APIs is analogous to the enterprise private MIBs we all know and love for pre-standards or proprietary functionality. <br /><br />However, the currently defined &#39;core&#39; APIs don&#39;t really allow granular access to the configurables on individual devices, the whole point being that the consumers of the NB API shouldn&#39;t have to twiddle bits in order to accomplish a provisioning task. So while Quantum is likely to evolve into a great abstraction layer for orchestration and compound provisioning operations, I don&#39;t really see it being terribly useful to CLI junkies and power users in the way that Expect scripting and Netconf (with direct mappings to device CLI/SNMP variables) can be.<br /><br />To my knowledge, I also don&#39;t know of anyone using Quantum outside of the Openstack (Nova Compute as the driver of the NB API) ecosystem. This is likely because Quantum is still young and not quite ready to go out on its own; worth keeping an eye on for sure.<br /><br />(Disclaimer: I work for a vendor that enthusiastically backs Openstack)",
+          "id": "5448556436485071802",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Sarwar Raza",
+          "profile": "http://www.linkedin.com/in/sarwarraza",
+          "pub": "2012-06-26T14:49:46.467+02:00",
+          "ref": "7492893335465693216",
+          "type": "comment"
+        },
+        {
+          "date": "27 June 2012 02:08",
+          "html": "Sarwar,<br /><br />A vendor specific &quot;plugins&quot; for Quantum can expose additional vendor specific features and functionality not currently in the &#39;core&#39; API.  If those feature prove useful and commonly required, they can at some point be rolled into the &#39;core&#39; Quantum API.<br /><br />Topics such as NETCONF and OpenFlow are usually relevant in discussions about orchestration and network automation.  The needs of the human CLI junky has little relevance in automation.  In troubleshooting, the human CLI junky will likely bypass and ignore any abstraction layers anyway and just CLI straight to the vendor switch device.",
+          "id": "7894549536896633076",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Brad Hedlund",
+          "profile": "http://bradhedlund.com",
+          "pub": "2012-06-27T02:08:40.407+02:00",
+          "ref": "7492893335465693216",
+          "type": "comment"
+        }
+      ],
+      "date": "26 June 2012 14:25",
+      "html": "Ivan,<br />I think the answer to this conundrum is already taking shape in the form of OpenStack Quantum.  A network configuration abstraction layer.  What you standardize on is a north bound API, and you let vendors provide their specific &quot;plugins&quot; for carrying out the southbound operations - which could be NETCONF, OpenFlow, expect scripts, whatever.",
+      "id": "7492893335465693216",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brad Hedlund",
+      "profile": "http://bradhedlund.com",
+      "pub": "2012-06-26T14:25:07.583+02:00",
+      "ref": "6367314661399469215",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "26 June 2012 18:09",
+          "html": "I agree NETCONF is way better than Expect (didn&#39;t I just say that?), but at the moment it&#39;s still CLI wrapped in XML sugarcoating. Agreed?<br /><br />I mentioned SNMP solely because it has the third component (standard MIBs).",
+          "id": "2695495662752137529",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-06-26T18:09:55.441+02:00",
+          "ref": "6072519550637323078",
+          "type": "comment"
+        },
+        {
+          "date": "26 June 2012 19:41",
+          "html": "I guess you could say that at a high-level.  Digging in the details a bit, though, shows that in JUNOScript everything is XML-ized in the response. Every bit of information is enclosed in its own tags.  In IOS, this is not always true.  For some commands, the IOS router just takes the output of the CLI command and encapsulates the whole thing into a single set of tags.  You still have to screw around with parsing (regex, etc) in your script.",
+          "id": "3214937215270630240",
+          "image": "https://2.bp.blogspot.com/-s2SO4-r0rb4/TjN1afzbxzI/AAAAAAAAAEI/GJY8m3X_G4Q/s32/278323_2250510072972_1554840083_32414519_195982_o.jpg",
+          "name": "Derick Winkworth",
+          "profile": "https://www.blogger.com/profile/15412047994121954944",
+          "pub": "2012-06-26T19:41:34.087+02:00",
+          "ref": "6072519550637323078",
+          "type": "comment"
+        }
+      ],
+      "date": "26 June 2012 14:26",
+      "html": "I think the analogy both with expect and with SNMP is flawed.  I&#39;ve written a number of scripts that utilize NetConf and it is far easier (and more reliable) to use than either SNMP or Expect.<br /><br />But you&#39;re right, there needs to be something like NETMOD.",
+      "id": "6072519550637323078",
+      "image": "https://2.bp.blogspot.com/-s2SO4-r0rb4/TjN1afzbxzI/AAAAAAAAAEI/GJY8m3X_G4Q/s32/278323_2250510072972_1554840083_32414519_195982_o.jpg",
+      "name": "Derick Winkworth",
+      "profile": "https://www.blogger.com/profile/15412047994121954944",
+      "pub": "2012-06-26T14:26:11.037+02:00",
+      "ref": "6367314661399469215",
+      "type": "comment"
+    },
+    {
+      "date": "28 June 2012 15:28",
+      "html": "...and I&#39;d also add that JUNOS (as seen through it&#39;s CLI and NETCONF) is data-centric (few verbs, much data) while the various versions of IOS are command-centric (many verbs, little data).<br /><br />This made it much easier to add NETCONF to JUNOS than IOS* since much transformation needs to be done.<br /><br />I&#39;ll say it again. The current (*hint*) NETCONF implementation in the IOS:es is unfortunately a major hurdle for NETCONF adoption and should be avoided for now.",
+      "id": "3530800030483276167",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Carl Moberg",
+      "profile": "http://www.tail-f.com/",
+      "pub": "2012-06-28T15:28:19.098+02:00",
+      "ref": "6367314661399469215",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "6367314661399469215",
+  "type": "post",
+  "url": "2012/06/netconf-expect-on-steroids.html"
+}

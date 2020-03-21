@@ -1,0 +1,155 @@
+{
+  "comments": [
+    {
+      "date": "19 March 2012 11:17",
+      "html": "&quot;...L2 hypervisor switches could use BGP MPLS Based MAC VPN.&quot;<br />you&#39;re almost there  :)<br />but this one is better &quot;draft-sajassi-l2vpn-pbb-evpn&quot;",
+      "id": "6029302767795054329",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ofer",
+      "profile": null,
+      "pub": "2012-03-19T11:17:41.703+01:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "date": "19 March 2012 16:14",
+      "html": "What if you used a trunk to the TOR switch and applied a VPLS xconnect to a sub-interface? You&#39;d be limited to 4095 guests per server, but I think there are some other limiting factors in that case. That way you could put different servers in VPLS groups based on VLAN assignment by the vSwitch, but the TOR switch applies the labels and creates the LSPs for the entire rack.  <br /> <br />The only way BGP convergence would hurt you is if you&#39;re using a true MPLS VPN where routes are actually redistributed into BGP for each VRF. If you&#39;re using VPLS then LDP will just distribute the corresponding labels to their destination and BGP isn&#39;t required.  <br /> <br />Just a thought. Not sure how well it would scale.",
+      "id": "1086790202581608119",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Matthew",
+      "profile": null,
+      "pub": "2012-03-19T16:14:52.997+01:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "date": "20 March 2012 08:57",
+      "html": "At least two problems:<br /><br />* If you needed more than 4K virtual segments, you would have overlapping VLAN address spaces, which would  be a nightmare to manage;<br />* Automatic provisioning of such a solution doesn&#39;t exist. It would require tight coupling between hypervisors and ToR switches and although there are solutions along those lines, none of them is easily adaptable to new topologies.<br /><br />On the other hand, MPLS scaling would be an order of magnitude easier to achieve (as you need LSP per ToR switch, not per hypervisor host), but you&#39;d still be without a control plane and rely on flooding to figure out where the VMs are.",
+      "id": "6389197132740231335",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2012-03-20T08:57:49.344+01:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "date": "01 April 2012 02:25",
+      "html": "What is different about SDN controllers that would suggest they will be better at handling the high churn or a significant disruptive event in large-scale data centers than a good BGP/MPLS implementation (using RRs, RT-constrain, etc)?",
+      "id": "5741502421741179282",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "FullMesh",
+      "profile": null,
+      "pub": "2012-04-01T02:25:01.072+02:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "date": "01 April 2012 03:22",
+      "html": "They can ensure transactional consistency (should one so desire) whereas BGP has eventual consistency (unless the number of updates is too high, see also: Internet).<br /><br />Disruptive event shouldn&#39;t really impact the hypervisors if they use MAC-over-IP encapsulation. Even if you lose tons of servers in one go, you won&#39;t restart those VMs on another server in a second (if at all).",
+      "id": "552445411698401900",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2012-04-01T03:22:50.530+02:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "date": "03 April 2012 04:38",
+      "html": "Transactional consistency in SDN is not what I&#39;m understanding from Casada&#39;s blog (ex:  http://networkheresy.wordpress.com/2011/08/09/what-might-an-sdn-controller-api-look-like-and-should-we-standardize-it).",
+      "id": "8757720487239809631",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "FullMesh",
+      "profile": null,
+      "pub": "2012-04-03T04:38:49.867+02:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "date": "05 April 2012 03:59",
+      "html": "Agree with &quot;MPLS/VPN could also use IP or GRE+IP transport as defined in RFC 4023, in which case the scalability argument is gone.&quot;  Furthermore, E-VPN  (http://tools.ietf.org/html/draft-ietf-l2vpn-evpn-00)  can be used to populate the vswitch tables with MACs (among other things) and enable highly flexible topologies using RT combinations.",
+      "id": "6116839006988836115",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "FullMesh",
+      "profile": null,
+      "pub": "2012-04-05T03:59:58.799+02:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "date": "05 April 2012 04:54",
+      "html": "with pbb-evpn you are limited to B-MACs (~ vswitch tenant instance) being the leaves of your vpn topologies versus individual machines.  hence topologies such as &quot;private vlan&quot; are not possible.  also we&#39;re back to data plane mac learning across sites with pbb-evpn.  the scaling advantages don&#39;t come free.",
+      "id": "1106992435027954627",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "FullMesh",
+      "profile": null,
+      "pub": "2012-04-05T04:54:17.339+02:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "05 June 2012 07:24",
+          "html": "You need transactional consistency when you move VMs. You wouldn&#39;t want to rely on best-effort eventually-consistent model like BGP in that case (particularly if you move a large number of VMs at once).",
+          "id": "8218679331164804439",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-06-05T07:24:47.475+02:00",
+          "ref": "7493568528720379093",
+          "type": "comment"
+        },
+        {
+          "date": "27 July 2012 04:37",
+          "html": "What about BGP is best effort?",
+          "id": "4643962893058544440",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2012-07-27T04:37:03.493+02:00",
+          "ref": "7493568528720379093",
+          "type": "comment"
+        }
+      ],
+      "date": "05 June 2012 07:09",
+      "html": "Trying to understand the transactional consistency requirement, and I can only see a need in a security context (make sure no traffic leaks out). But this is only needed if your isolation depends on ACLs as is the case in Amazon. Why is transactional consistency so important in an MPLS model, where the penalty of inconsistency is just some lost packets. Is this such a big deal when you are rebooting servers?",
+      "id": "7493568528720379093",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-06-05T07:09:31.105+02:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "20 July 2012 11:26",
+          "html": "When a VM is moved, every hypervisor participating in that virtual network should be updated before the move is complete, so that no traffic is sent to the VM&#39;s old attachment point.<br /><br />BGP cannot enforce that, as it has no transactional semantics (or barriers like OpenFlow).",
+          "id": "6120813627707929824",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-07-20T11:26:53.778+02:00",
+          "ref": "499352633325277245",
+          "type": "comment"
+        }
+      ],
+      "date": "20 July 2012 06:46",
+      "html": "Pardon me for my ignorance, what do you mean by &quot;transactional consistency&quot; mean in this article&#39;s context? Could you pls explain a little bit.",
+      "id": "499352633325277245",
+      "image": "https://4.bp.blogspot.com/_U8WuLZSW4ek/StIFWpmRUNI/AAAAAAAADpw/LMDcD6oWBlY/S220-s32/DSC01624.JPG",
+      "name": "Murali",
+      "profile": "https://www.blogger.com/profile/16488361009215312027",
+      "pub": "2012-07-20T06:46:28.235+02:00",
+      "ref": "7586060597435737251",
+      "type": "comment"
+    }
+  ],
+  "count": 13,
+  "id": "7586060597435737251",
+  "type": "post",
+  "url": "2012/03/mplsvpn-in-data-center-maybe-not-in.html"
+}

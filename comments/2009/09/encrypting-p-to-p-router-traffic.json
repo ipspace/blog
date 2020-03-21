@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "date": "23 September 2009 07:29",
+      "html": "Basic ethernet encryption appliance will do the trick:<br /><br />http://www.cipheroptics.com/pdf/datasheet-cep1000.pdf<br /><br />The CipherEngine Enforcement Point (CEP) is a flexible encryption appliance that provides Ethernet frame encryption for Layer 2 Ethernet networks, IP packet encryption for Layer 3 networks and Layer 4 data payload encryption for MPLS networks. The CEP1000 offers full-duplex line rate encryption at 1.9Gbps using the AES encryption algorithm.",
+      "id": "4276703142655766180",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Andrew Tolstykh",
+      "profile": null,
+      "pub": "2009-09-23T07:29:08.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2009 07:30",
+      "html": "PRODUCT SNAPSHOT<br />\u2022 1.9Gbps full duplex line rate AES encryption<br />\u2022 Layer 2 Ethernet frame, Layer 3 IP packet and Layer 4 payload protection<br />\u2022 Preserves VLAN and MPLS tags \u2022 Create secure network groups",
+      "id": "5875113621688878499",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Andrew Tolstykh",
+      "profile": null,
+      "pub": "2009-09-23T07:30:27.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2009 09:05",
+      "html": "I&#39;ve always said it is a shame this one didn&#39;t get anywhere:<br />http://www.watersprings.org/pub/id/draft-raggarwa-mpls-ipsec-00.txt",
+      "id": "985740172184877827",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "lochii",
+      "profile": null,
+      "pub": "2009-09-23T09:05:08.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2009 15:31",
+      "html": "Are there only 2 P with one point-to-point link?? <br />You can use 2 devices to do crypto (find the ones that can handle your bandwidth requirement) between your P and do xconnect of L2tpv3 over IPSec. It might sound like complex but it works. Like any tunnel solution MTU comes in the picture but with GigEth, increasing that on the P-t-P link should not be a problem. The advantage of such a solution is to keep the P configuration standard and seen as directly connected (like the CEP option mentioned by Andrew)<br /><br />Other alternative that might be worth exploring (no idea if it can match your topology):<br /><br />GET VPN: http://www.cisco.com/en/US/products/ps7180/index.html<br /><br />Andrew&#39;s proposal is interesting as well !",
+      "id": "8217400469035096371",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guest",
+      "profile": null,
+      "pub": "2009-09-23T15:31:57.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "24 September 2009 01:53",
+      "html": "Yes, I like MPLS over GRE. However, we can save on 24 bytes of GRE by using MPLS over Cisco Virtual Tunnel Interface (VTI) with IPSec if there is only IP traffic.",
+      "id": "3212395497344368471",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guest",
+      "profile": null,
+      "pub": "2009-09-24T01:53:25.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "25 September 2009 05:28",
+      "html": "How bout GET VPN. Now that is something that can save u some overhead. 8-)",
+      "id": "8061692306892143463",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Puneet",
+      "profile": null,
+      "pub": "2009-09-25T05:28:32.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "27 September 2009 12:16",
+      "html": "since a long time we&#39;ve been using MPLS over VTI for ALL p2p links. nowadays it is 6VPE over VTIs. Yes, we must reduce MTU on all interfaces - the same size for all,<br />and it&#39;s working...<br /><br />Pls could you explain your expectation &quot;you have to lower the MTU on the tunnel interface to ensure the GRE packets are not fragmented - that would kill the receiving router&quot;...<br /><br />THX",
+      "id": "721484569765490651",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "\u0413\u043e\u0441\u0442\u044c",
+      "profile": null,
+      "pub": "2009-09-27T12:16:40.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "27 September 2009 15:13",
+      "html": "If I&#39;m not mistaken, fragmented packets are not CEF-switched and that may have an impact on the router&#39;s performance.",
+      "id": "6013173120181085757",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Gabriel",
+      "profile": null,
+      "pub": "2009-09-27T15:13:17.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "30 September 2009 18:54",
+      "html": "I can&#39;t see why this would be any different from what Cisco IOS already has (MPLS-over-GRE-over-IPSec).",
+      "id": "1488544672576105559",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-09-30T18:54:57.000+02:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "25 November 2009 10:38",
+      "html": "these devices are doing line speed encryption in transport or tunnel mode at layer 2 and therefore allow encryption of MPLS traffic:<br /><br />http://www.atmedia.de/english/pdfs/ethernet_encryptor_flyer_en.pdf<br />http://www.secunet.com/fileadmin/user_upload/Download/Printmaterial/englisch/sn_SINA_L2_FS_E.pdf",
+      "id": "4922865927865015709",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guest1",
+      "profile": null,
+      "pub": "2009-11-25T10:38:28.000+01:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    },
+    {
+      "date": "17 January 2013 03:08",
+      "html": "Senetas CN6100 encrypters are nice<br />Thales Data Cryptor 10G encrypters are ok...<br /><br />they have some interesting features to encrypt the payload based on Ethertype == 0x8847 or 0x8848, leaving labels up to a 4 or 5 deep label stack in the clear and then encrypting the payload, while leaving IPv4 and Ipv4 in the clear...  about $60k - $100k for a pair of them, depending on your discount negotiations, as of 2013.<br /><br />Why Juniper and Cisco don&#39;t build encryption of the MPLS labeled packets directly into their MPLS routers in 2013 is beyond me...  Embed an FPGA directly in and implement AES, or elliptical curve crypto in the MPLS router chassis and be done.. put in knobs to leave labels in the clear and encrypt the payload..  argh!<br />",
+      "id": "2779185578542717244",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-01-17T03:08:30.568+01:00",
+      "ref": "8792505848691143850",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "8792505848691143850",
+  "type": "post",
+  "url": "2009/09/encrypting-p-to-p-router-traffic.html"
+}

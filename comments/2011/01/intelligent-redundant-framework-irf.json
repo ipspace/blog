@@ -1,0 +1,177 @@
+{
+  "comments": [
+    {
+      "date": "24 January 2011 13:10",
+      "html": "Hi Ivan,<br /><br />There are afew small things which do differentiate IRF. <br /><br />1) irf in a 2-chassis &quot;stack&quot; shares state across all 4management modules. Unlike the rpr-warm in the VSS solution. Cisco&#39;s approach is to reboot the chassis if the in-chassis master fails. HP just drops to half speed ( which is still usually faster than Cisco&#39;s full speed!) <br />2) IRF does require specific hardware within the same family, but that&#39;s about were it ends. No restriction in which series of line cards(67xx) only. No situations were the line cards will not be given power. And we actually have the ability to have PoE AND IRF in e same chassis.<br /><br />3) Consistency across the portfolio. Operationally, this means we have consistent bevahiour at each tier oath network. Compared to the various options available (stack wise, VSS, vpc, fabric path,etc...) that fill some of the functionality of IRF.<br /><br />4) IRF is hardened in the field. IRF is based on 3coms XRN from the late 90&#39;s. Withoutnletting the cat out of the bag; this means that we have already solved a lot of the problems that go along with this type of technology.<br /><br />Hope this helps,<br /><br />Chris",
+      "id": "1185550872820207113",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Chris.young@HP.com",
+      "profile": null,
+      "pub": "2011-01-24T13:10:50.000+01:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "24 January 2011 19:22",
+      "html": "Thanks for the comment. Absolutely valid points!<br /><br />Need to check #1 though - my understanding is that the RSP in the second chassis takes over immediately ... but you&#39;re right, the secondary RSP (if present) needs to be reloaded.",
+      "id": "2092403387928149028",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2011-01-24T19:22:49.000+01:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "24 January 2011 19:23",
+      "html": "Thanks for the comment. Absolutely valid points!  <br /> <br />Need to check #1 though - my understanding is that the RSP in the second chassis takes over immediately ... but you&#39;re right, the secondary RSP (if present) needs to be reloaded.",
+      "id": "7367828788485313665",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-01-24T19:23:55.000+01:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "26 January 2011 01:02",
+      "html": "Hey ivan,<br /><br />You&#39;re right on that. Sorry if i wasn&#39;t clear, the failover to the master chassis takes about 400ms from my reading (compared to approx 50ms with IRF). My point was the in-chassis failover is abysmal. Reboot the whole chassis? In this scenario there&#39;s also no guidance as to the length of time that the VSS pair will take to reconvert because of the variance in time it may take for the cat6k to reboot depending on which modules are in the box.",
+      "id": "9120893680168800092",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Chris.young@HP.com",
+      "profile": null,
+      "pub": "2011-01-26T01:02:33.000+01:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "05 February 2011 00:42",
+      "html": "Doesn&#39;t VSS avoid the reload scenario by simply failing back to the active supervisor? I need to check figures for failover to the master chassis, but I think the failover time was fairly switft using MECs up and downstream.<br /><br />P.S: I am currently testing an enterprise level network. This would be a good test to try.",
+      "id": "1776124590828900892",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Curious  Yellow",
+      "profile": null,
+      "pub": "2011-02-05T00:42:57.000+01:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "05 February 2011 08:40",
+      "html": "If you have two SUP modules in a single chassis (4 SUPs per VSS), the secondary SUP in the master chassis stays dormant. If the primary SUP in the master chassis fails, the whole chassis has to reboot (including going through the power-up tests) before the secondary SUP can take over (or at least that&#39;s my understanding of the documentation - could be way wrong).",
+      "id": "8655941483086714897",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-02-05T08:40:07.000+01:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "16 March 2011 00:09",
+      "html": "Chris - could you please describe your software upgrade process when pair of A12500 using IRF? From what I understand you have to have same code for both chassis in order to run IRF? so you can&#39;t upgrade your core without downtime?",
+      "id": "2949649117821507031",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2011-03-16T00:09:08.901+01:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "22 April 2011 00:04",
+      "html": "In general, an IRF stack can be upgraded while maintaining service if the proper upgrade procedure is followed. With the proper split brain (which they call Multiple Active Detection - MAD) in place, 1 unit can be reloaded with new code, a split brain can be forced and the MAD will reload the other node (after the first unit has come online). It basically relies on the remote link-aggregation link failover for the in-service upgrade. Based on tests I have done, you have about 2-3 seconds failover time (tested using fping between end stations) for the full firmware upgrade using this procedure. This procedure currently only applies to a 2-node stack however, so if you need this &#39;always on&#39; functionality it seems best to stick to 2 members in the stack at present.",
+      "id": "5243377275187574024",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Peter",
+      "profile": null,
+      "pub": "2011-04-22T00:04:52.000+02:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "22 April 2011 00:18",
+      "html": "Hi Ivan,<br /><br />You are right that IRF is similar in function as VSS. For me the key difference would be that VSS is platform restricted (65xx), while the same distributed forwarding technology (each irf member can perform full local forwarding, no need to consult master) is available in the form of IRF on basically &#39;all&#39; switches in the H3C portfolio, from the low-end to the high-end. <br />This means for instance that the 5800 (top of rack switch) in a stack has distributed L2 forwarding, distributed L3 IPv4 forwarding, distributed L3 IPv6 forwarding and distributed MPLS/VPLS forwarding, traffic never needs to pass/consult the master for the actual traffic forwarding.<br />I do not know if it will be useful, but I heard that IRF support for 4 chassis switches will be released in the near future.",
+      "id": "1914093333277227252",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Peter",
+      "profile": null,
+      "pub": "2011-04-22T00:18:37.000+02:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "16 September 2011 01:20",
+      "html": "Hi Ivan,<br />I read IRF is Active-Active mode, and much more performed during failover compared with VSS. The latency is better than VSS or vPC",
+      "id": "7965662311399239312",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Vannie",
+      "profile": null,
+      "pub": "2011-09-16T01:20:07.433+02:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "03 June 2012 09:55",
+          "html": "Interesting finding. Do you have any documentation about those labs?",
+          "id": "1728357598635703387",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Michael67",
+          "profile": "https://www.blogger.com/profile/03014282355010119539",
+          "pub": "2012-06-03T09:55:52.471+02:00",
+          "ref": "206532581778620660",
+          "type": "comment"
+        }
+      ],
+      "date": "05 March 2012 19:57",
+      "html": "Not sure if HP has fixed this, but last year I saw data on several lab demonstrations where it was proven that IRF does not support QoS between switches in the stack.  This is HORRIBLE for voice deployments because you have to architect your network to avoid sending voice/video traffic across IRF links.  To me this is unforgivable in a switching architecture .. you may as well not even bother and just tell everyone to use 10GbE links to stack your switches, because at least then you can use QoS.  But wait, QoS priority queue doesn&#39;t work on a lot of E-Series switches either :)",
+      "id": "206532581778620660",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Henry",
+      "profile": null,
+      "pub": "2012-03-05T19:57:12.025+01:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "14 May 2012 11:00",
+          "html": "Yes. However, keep in mind that IRF (and all other stacking solutions) work best if you connect the outside switch (or LACP-capable server) to every member of the stack.",
+          "id": "9165683627322776109",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-05-14T11:00:55.812+02:00",
+          "ref": "2589239434288471864",
+          "type": "comment"
+        }
+      ],
+      "date": "14 May 2012 10:56",
+      "html": "Does IRF allow for multihoming at the Edge?  E.g. a vanilla 802.3ad capable switch connecting to two distinct &#39;leafs&#39; part of an IRF?",
+      "id": "2589239434288471864",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2012-05-14T10:56:24.090+02:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    },
+    {
+      "date": "29 August 2013 16:51",
+      "html": "Hi<br />Im afraid that you didn&#39;t understad so well the guides you read it. First, obviously, any vendor can even make an stack with other vendors, and HP either. Second, there is not a master slave usage, If the &quot;master&quot; switch failed, the IRF array stills up, there is not a dependency. Third, Imagine IRF and Cisco VSS are the same thing, but HP IRF is available since $2,000 dollars switches, Cisco is requiring the Nexus models or Catalys 6500, how much do these switches cost?",
+      "id": "8326116184427507117",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "ciber_Assistant",
+      "profile": "https://www.blogger.com/profile/10707325351196098440",
+      "pub": "2013-08-29T16:51:21.052+02:00",
+      "ref": "8444117109856223319",
+      "type": "comment"
+    }
+  ],
+  "count": 15,
+  "id": "8444117109856223319",
+  "type": "post",
+  "url": "2011/01/intelligent-redundant-framework-irf.html"
+}

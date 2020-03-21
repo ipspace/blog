@@ -1,0 +1,133 @@
+{
+  "comments": [
+    {
+      "date": "03 November 2016 09:54",
+      "html": "Some blue sky thinking... BGP-LU AF between border routers, redistribute IGP into BGP-LU (loopbacks only) and set AIGP attribute. Would need to advertise labelled VPN routes also (assume it is option A now).",
+      "id": "3981789502599800223",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dan P",
+      "profile": null,
+      "pub": "2016-11-03T09:54:13.711+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    },
+    {
+      "date": "03 November 2016 09:54",
+      "html": "Not sure if Accumulated IGP could help you here? Might only be supported in global table though.<br /><br />http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-s/irg-15-s-book/bgp-accumulated-igp.html",
+      "id": "1962693473282863752",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Daniel Dib",
+      "profile": "https://www.blogger.com/profile/05348201047870981278",
+      "pub": "2016-11-03T09:54:54.936+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    },
+    {
+      "date": "03 November 2016 10:30",
+      "html": "You could use ExaBGP as SDN controller, but you will need some coding to extend to this functionality :)",
+      "id": "3485537795666171794",
+      "image": "https://bp1.blogger.com/_3ft8tfangfA/SAeXsAQEfCI/AAAAAAAAAGY/zwY6j4cYK-c/S220-s32/DSC01191.JPG",
+      "name": "Uros",
+      "profile": "https://www.blogger.com/profile/09325975850657071641",
+      "pub": "2016-11-03T10:30:39.153+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "03 November 2016 11:54",
+          "html": "It might work for Inter-As Option B as well.",
+          "id": "2466128622666237648",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Roman",
+          "profile": null,
+          "pub": "2016-11-03T11:54:51.585+01:00",
+          "ref": "578488284595586653",
+          "type": "comment"
+        }
+      ],
+      "date": "03 November 2016 11:32",
+      "html": "Dear,<br /><br />If you are using Inter-AS Option A between ASes, you can try to change route-type for all prefixes advertised from A1 to C1 via eBGP from EGP to IGP ( Origin = IGP). I had similar task for Huawei routers and it&#39;s works fine. Create a route-map and apply it eBGP neighbor at export direction.",
+      "id": "578488284595586653",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Roman",
+      "profile": null,
+      "pub": "2016-11-03T11:32:04.172+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    },
+    {
+      "date": "03 November 2016 13:16",
+      "html": "It is my understanding that in Cisco IOS, the MED sent to an eBGP peer is derived from the IGP metric by default.",
+      "id": "8152942568293081056",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Michael",
+      "profile": null,
+      "pub": "2016-11-03T13:16:51.903+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    },
+    {
+      "date": "03 November 2016 13:36",
+      "html": "I&#39;ve stumbled across a similar issue / demand some time ago:<br />As already pointed out, MED or BGP Accumulated IGP might be an option, but that greatly depends on the boxes and their operating systems that are in place right now.<br />With Junos, I believe you have the option to copy the IGP costs into MED through a route-policy but they don\u2019t support BGP A-IGP for VPN (yet), I think.<br />In the current IOS-XR and IOS XE releases, BGP A-IGP should be supported, also for VPN whereas there is no way to copy the IGP metric into MED up to now.<br /><br />Some kind of an overlay through the core network might also be an option but that might not scale, depending on the size of the network.<br />",
+      "id": "1082837301672477086",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Christoph",
+      "profile": null,
+      "pub": "2016-11-03T13:36:35.575+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    },
+    {
+      "date": "03 November 2016 14:07",
+      "html": "Without know the protocol running at the core interlinks I would suggest using summarization. For example A1 would advertise specific prefixes for E1 but A2 and A3 would only advertise a larger summary for those prefixes this techniques should be protocol agnostic and thus resulting in choosing the path advertising the most specific prefix but retaining the failover properties. ",
+      "id": "7426290418492110302",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "nriver",
+      "profile": "https://www.blogger.com/profile/02762228515585402204",
+      "pub": "2016-11-03T14:07:25.048+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "04 November 2016 16:07",
+          "html": "Nice one.",
+          "id": "6317215144662116847",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Michael",
+          "profile": null,
+          "pub": "2016-11-04T16:07:40.031+01:00",
+          "ref": "1319695922883553136",
+          "type": "comment"
+        }
+      ],
+      "date": "03 November 2016 19:53",
+      "html": "I&#39;m making some assumptions here based on the diagram, requirements and limitations, one assumption is that there is an iBGP full mesh with the IGP as an underlay as transport for the iBGP sessions, vpnv4 AF is used between E and A devices in the access network? The A devices therefore have peerings to all other A devices and E devices? If so this should be simple, create session templates on all A devices, 1 for peerings to E and 1 for peerings to Other A, for A peer group set all to a higher MED and for E peer set all to a lower, all NLRI will be in adj-rib-in but only those with lower MED will be in loc-rib and therefore only the path direct to E devices will go into adj-rib-out to be advertised to the C devices, this will mean that the NLRI that the C devices receive are only the ones for direct A to E paths(unless there is a failure) this removes the need for the C devices to support MED which is optional-non transitive anyway. That&#39;s the simplest way I can think of without more detail and having labbed this up!",
+      "id": "1319695922883553136",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jason Hunt",
+      "profile": null,
+      "pub": "2016-11-03T19:53:14.841+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    },
+    {
+      "date": "14 November 2016 12:28",
+      "html": "There is a feature to convert AIGP to MED in recent versions of IOS XR and XE. Maybe it could help solve this problem.<br />neighbor ip-address aigp send med",
+      "id": "6839314390740006956",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Michael",
+      "profile": null,
+      "pub": "2016-11-14T12:28:48.487+01:00",
+      "ref": "7978503517498237898",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "7978503517498237898",
+  "type": "post",
+  "url": "2016/11/optimal-inter-as-routing-challenge.html"
+}

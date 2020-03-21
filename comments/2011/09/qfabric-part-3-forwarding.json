@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "date": "28 September 2011 18:03",
+      "html": "How far did we get? Is it true and do they have smart engineers? :)",
+      "id": "3610132183816914563",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Kaage",
+      "profile": null,
+      "pub": "2011-09-28T18:03:58.844+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "29 September 2011 10:03",
+      "html": "They do ;)",
+      "id": "7350760446085022742",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-09-29T10:03:28.761+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "29 September 2011 14:41",
+      "html": "&quot;Shared default router MAC address&quot;<br /><br />can we configure a couple of 7600, 3550 or 4948 to behave like this ?<br />Force the same MAC, and same IP on the interface vlans, add some filters, and let the hosts with their default routes (bonding with failover).<br /><br />Has anyone ever tried something like that ?",
+      "id": "7401657745437199088",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Xavier",
+      "profile": null,
+      "pub": "2011-09-29T14:41:09.270+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "29 September 2011 17:23",
+      "html": "I have a few questions. I have read your post now like five times and I am for sure speaking above my pay grade so maybe you can clear this up for me.<br /><br />1) One lookup per packet.<br />This sounds great, but the interconnect cant just forward frames based on nothing. It will still have to use something to determine which node to send the frame to...be it a label slapped on the front of the frame or something else. Since forwarding decisions are made in hardware how does QFabric add anything to this area? In theoretical application how does this differ from MPLS?<br /><br />2) Shared default router MAC address.<br />You assume we&#39;re doing L3 routing at the access layer. If we&#39;re doing routing at the distribution layer this is taken care of. Yes we still have traffic trombones, but if you want to go the traffic trombone route the only way I see QFabric could help with this is if you had a QFabric split between two datacenters. I&#39;m not even sure they would support that design. So if we assume we have two QFabric deployments in two different datacenters we&#39;re back to the same design challenges we face today.<br /><br />3) L2/L3 Same Path<br />I like this...but if we&#39;re routing at the access Layer why not use MPLS and set up VPLS? Would this not accomplish the same thing? I think I just made the biggest traffic trombone in the world, but if I am accurate then I am sure smart engineers at Cisco, Brocade, or HP could come up with a way to have each access switch act as the default route for hosts hanging off of it. Obviously this would need to include the distribution layer so it knows which access switch to forward to.<br /><br />Can someone break this down for me?",
+      "id": "6987859685247523673",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Matthew Stone",
+      "profile": null,
+      "pub": "2011-09-29T17:23:58.052+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2011 14:40",
+      "html": "In theory we could, but it would be fragile, as you can&#39;t enforce that (A) all VLANs are configured on all boxes and (B) there is no other L2 box in the middle that could break things.<br /><br />Also, using today&#39;s implementations, every switch would get crazy seeing its own MAC address coming from various sources (not to mention duplicate MAC addresses). ARP might even work, but you would get repeated ARP requests from various switches as the VM moves around.",
+      "id": "5594435358949246843",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-10-01T14:40:26.026+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2011 14:44",
+      "html": "#1 - they need some labeling scheme in the fabric, similar (in concept) to MPLS/VPN. The ingress node has to indicate egress interface with the label.<br /><br />#2 - You&#39;re absolutely right. You get optimal forwarding within the QFabric, not between QFabric and external L3 forwarders.<br /><br />#3 - Sure you could do it, but it would be way more complex than what QFabric does. They hide the complexity of the underlying mechanisms (which are probably not too different from what you&#39;re describing) in the same way TRILL/OTV/802.1aq is hiding all the complexity of IS-IS.",
+      "id": "7130978153106998026",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-10-01T14:44:48.086+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "03 October 2011 16:18",
+      "html": "Well, still in theory, it would be possible to filter that traffic (mac, arp), wouldn&#39;t it ?",
+      "id": "3893714871129489727",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Xavier",
+      "profile": null,
+      "pub": "2011-10-03T16:18:47.537+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "03 October 2011 16:29",
+      "html": "In theory it might be possible ;) Or, as someone famously said once &quot;looking at the code I couldn&#39;t see why it wouldn&#39;t work&quot;  :-P",
+      "id": "7884429817604323676",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-10-03T16:29:54.218+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "03 October 2011 19:02",
+      "html": "Regarding #2... Optimal forwarding != shortest path, IMHO. I would like to understand what hashing algorithm is used within QFabric to determine the flow within the system. It&#39;s not clear whether ECMP is supported, load-sharing etc.<br /><br />Regarding #3... With regards to troubleshooting, I am not sure whether it&#39;s more complex to analyze a set of standard, published protocols than to troubleshoot a proprietary black-box. I will need to see QFabric more in detail to see what troubleshooting tools are we given in order to understand the involved mechanisms.",
+      "id": "8229097800928597617",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Pablo Carlier",
+      "profile": null,
+      "pub": "2011-10-03T19:02:47.382+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "07 October 2011 13:23",
+      "html": "Hello, Ivan!<br />As far as I understand the one-lookup philosophy means that all nodes have the same forwarding tables. What the reason to devide QFX&#39;s into ServerNodeGroup/NetworkNodeGroup and to make the restriction for NetworkNodeGroup for only eight node devices?",
+      "id": "2285854544587270183",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "migraph",
+      "profile": null,
+      "pub": "2011-10-07T13:23:59.407+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    },
+    {
+      "date": "09 October 2011 09:49",
+      "html": "Control plane scalability. You can&#39;t interact with too many neighbors from a single point.<br /><br />QFabric control plane is just like a regular network (best example might be BGP with route reflectors):  each node group interacts with directly attached neighbors, and they exchange the routing information through a set of central nodes.",
+      "id": "7902125356774698571",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-10-09T09:49:34.409+02:00",
+      "ref": "4645552599349464829",
+      "type": "comment"
+    }
+  ],
+  "count": 11,
+  "id": "4645552599349464829",
+  "type": "post",
+  "url": "2011/09/qfabric-part-3-forwarding.html"
+}

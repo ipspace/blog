@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "date": "16 January 2013 08:40",
+      "html": "IMO the easiest CLI is in Linux. Create an iptables rule to match the packet and set a mark, and then create a separate routing table for that mark and add you entries there. So, if we limit ourselves to dedicated routers only, I&#39;d say the easiest is Mikrotik with RouterOS, since it also follows similar approach.<br /><br />P.S. I find JunOS CLI more convoluted than IOS in general. Too verbose, too much typing ...<br />",
+      "id": "8479673747374477594",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "hazard",
+      "profile": "http://www.hazard.maks.net",
+      "pub": "2013-01-16T08:40:24.186+01:00",
+      "ref": "8589014940205663292",
+      "type": "comment"
+    },
+    {
+      "date": "16 January 2013 14:55",
+      "html": "This comment has been removed by the author.",
+      "id": "3238946607946753812",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ian",
+      "profile": "https://www.blogger.com/profile/03315325422507197897",
+      "pub": "2013-01-16T14:55:23.303+01:00",
+      "ref": "8589014940205663292",
+      "type": "comment"
+    },
+    {
+      "date": "16 January 2013 15:18",
+      "html": "JunOS can be alot of typing, but if you do it right the templates and groups can make your work a lot easier. Staying on topic... PBR is a pain in JunOS too. Last I recall you had to at the minimum create another forwarding instance and import the connected routes, then setup a new default route for that instance and use a firewall filter to kick traffic into it.",
+      "id": "1458340047411797420",
+      "image": "https://mcnicholas.smugmug.com/photos/83566062-M.jpg",
+      "name": "The Silent Rider",
+      "profile": "https://www.blogger.com/profile/08195400942656152609",
+      "pub": "2013-01-16T15:18:47.002+01:00",
+      "ref": "8589014940205663292",
+      "type": "comment"
+    },
+    {
+      "date": "16 January 2013 18:22",
+      "html": "or perhaps CLI is totally the wrong abstraction for any of this.",
+      "id": "8025133329159735531",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/13046728001822941225",
+      "pub": "2013-01-16T18:22:43.385+01:00",
+      "ref": "8589014940205663292",
+      "type": "comment"
+    },
+    {
+      "date": "17 January 2013 03:46",
+      "html": "Its not very original and its off the cuff but how does the following sound;<br /><br />On the basis of very familiar # ip route {src} {mask} {dst}. <br /><br /># pbr route mac 0000.1111.2222 int fa0/1 ip 10.1.1.1<br /># pbr route int fa0/0 tcp dst port 80 int fa0/2 ip 10.2.2.2<br /># pbr route ipx all int fa0/2<br /><br />While this approach is one-line configuration and lacks sophisticated if-then/flow options, I believe PBR shouldn&#39;t be used for general purpose as it doesn&#39;t scale. Rules would need to be definined, ie more specific TCP beats least specific MAC.<br /><br />This seems like a logical approach, for a scaleable CLI driven solution. <br /><br />SDN style centralised (GUI as mentioned) be an approach for complexity. But if the world wide phone system and the internet have worked with least/most specific routing (as the default underlying rules) without GUI&#39;s then PBR CLI interfaces should be able to work.",
+      "id": "4946395049442929037",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Arron",
+      "profile": null,
+      "pub": "2013-01-17T03:46:11.611+01:00",
+      "ref": "8589014940205663292",
+      "type": "comment"
+    },
+    {
+      "date": "17 January 2013 11:47",
+      "html": "In 12.2 juniper add new option for PBR with next-hop or next-interface directly in the firewall filter.<br /><br />The juniper approach of routing instance give you more options for example verify next-hop with BFD etc ...<br /><br />And to the topic I think that PBR can be done with openflow so may be it should be used with static flows CLI <br /> <br />http://www.juniper.net/techpubs/en_US/junos12.2/information-products/topic-collections/release-notes/12.2/index.html?topic-66800.html<br /><br />Nitzan<br />",
+      "id": "4380273485843432986",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/16795482308125483743",
+      "pub": "2013-01-17T11:47:38.993+01:00",
+      "ref": "8589014940205663292",
+      "type": "comment"
+    }
+  ],
+  "count": 6,
+  "id": "8589014940205663292",
+  "type": "post",
+  "url": "2013/01/how-would-you-like-to-configure-policy.html"
+}

@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "date": "03 May 2011 09:53",
+      "html": "I also try this with IOS 12.4(22)T<br />    * The router has four directly connected IP subnets; three of them are part of the OSPF routing protocol and all redistributed into OSPF<br />    * The Type-1 LSA has four stub networks<br />    * Connected subnets are inserted into the OSPF database as Type-5 LSAs only if OSPF is disabled on interface<br />    *  ip ospf area interface configuration command configured on two interfaces but results are just like network statement<br /><br />interface Loopback0<br /> ip address 192.0.0.1 255.255.255.255<br /> ip ospf 1 area 0<br />interface FastEthernet0/0<br /> ip address 192.0.1.1 255.255.255.0<br />interface FastEthernet1/0<br /> ip address 192.0.2.1 255.255.255.0<br /> ip ospf 1 area 0<br />interface FastEthernet2/0<br /> ip address 192.4.1.1 255.255.255.0<br /><br />router ospf 1<br /> redistribute connected subnets<br /> network 192.0.1.0 0.0.0.255 area 0<br /> network 192.0.2.0 0.0.0.255 area 0<br /><br />dyn1#sh ip ospf database<br />        OSPF Router with ID (192.0.0.1) (Process ID 1)<br />        Router Link States (Area 0)<br />Link ID         ADV Router      Age         Seq#       Checksum Link count<br />192.0.0.1       192.0.0.1       4           0x80000002 0x00F54D 3                            <br />        Type-5 AS External Link States<br />Link ID         ADV Router      Age         Seq#       Checksum Tag<br />192.4.1.0       192.0.0.1       4           0x80000001 0x001603 0<br /><br /><br />dyn1#sh ip ospf database router 192.0.0.1 | i Network<br />    Link connected to: a Stub Network<br />     (Link ID) Network/subnet number: 192.0.0.1<br />     (Link Data) Network Mask: 255.255.255.255<br />    Link connected to: a Stub Network<br />     (Link ID) Network/subnet number: 192.0.1.0<br />     (Link Data) Network Mask: 255.255.255.0<br />    Link connected to: a Stub Network<br />     (Link ID) Network/subnet number: 192.0.2.0<br />     (Link Data) Network Mask: 255.255.255.0",
+      "id": "4690952661762798036",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Nata",
+      "profile": null,
+      "pub": "2011-05-03T09:53:04.879+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    },
+    {
+      "date": "03 May 2011 09:54",
+      "html": "Just for fun, would you try it with &quot;network 0.0.0.0 0.0.0.0 area 0&quot;?",
+      "id": "1298117934138293468",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-05-03T09:54:12.260+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    },
+    {
+      "date": "03 May 2011 10:07",
+      "html": "router ospf 1<br />redistribute connected subnets <br />network 0.0.0.0 255.255.255.255 area 0<br /><br /><br />OSPF Router with ID (192.0.0.1) (Process ID 1)<br />Router Link States (Area 0)<br />Link ID         ADV Router      Age         Seq#       Checksum Link count<br />192.0.0.1       192.0.0.1       21          0x80000001 0x00C3A9 4<br /><br />interface Loopback0<br /> ip address 192.0.0.1 255.255.255.255<br /> ip ospf 1 area 0<br />interface FastEthernet0/0<br /> ip address 192.0.1.1 255.255.255.0<br />interface FastEthernet1/0<br /> ip address 192.0.2.1 255.255.255.0<br /> ip ospf 1 area 0<br />interface FastEthernet2/0<br /> ip address 192.4.1.1 255.255.255.0",
+      "id": "2889230058613729834",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Nata",
+      "profile": null,
+      "pub": "2011-05-03T10:07:38.929+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    },
+    {
+      "date": "03 May 2011 12:48",
+      "html": "So they obviously broke something in 15.0M ... and I just had to stumble upon the bug.",
+      "id": "7824937599374786994",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-05-03T12:48:33.736+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    },
+    {
+      "date": "03 May 2011 18:41",
+      "html": "MPLS - Sham-Link:<br />(from 12-4T config giude)<br />  Before you create a sham-link between PE routers in an MPLS VPN, you must:<br />  Configure a separate /32 address on the remote PE so that OSPF packets can be sent over the VPN backbone to the remote end of the sham-link. The /32 address must meet the following criteria:<br />  \u2013Not be advertised by OSPF.<br /><br />Redistribute connected breaks the above restriction.<br />been there, done that.",
+      "id": "2362496060872734798",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Jonbov",
+      "profile": null,
+      "pub": "2011-05-03T18:41:36.053+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    },
+    {
+      "date": "04 May 2011 15:50",
+      "html": "Found old link about Redistributing Connected Networks into OSPF<br />www.cisco.com/en/US/tech/tk365/technologies_tech_note09186a0080094707.shtml",
+      "id": "3782902282403332686",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Nata",
+      "profile": null,
+      "pub": "2011-05-04T15:50:40.725+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    },
+    {
+      "date": "05 May 2011 14:25",
+      "html": "Dejavu! I am cleaning up a  bunch of OSPF after some discussions with a very experienced network architect. I have decided to move down the path of all interface based configuration where possible, even if only because this same network is also running IPv6 and OSPFv3 as well.",
+      "id": "8609124219619103954",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Kurt Bales",
+      "profile": null,
+      "pub": "2011-05-05T14:25:13.774+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    },
+    {
+      "date": "08 May 2011 10:52",
+      "html": "Looks like a reappearance of a very old bug. Thank you!",
+      "id": "7411251616137621946",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-05-08T10:52:52.827+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    },
+    {
+      "date": "18 May 2011 23:35",
+      "html": "With IOS componetization some old bugs are being reintroduced, unfortunately.  This is mostly in post 15.x releases as there has been a big push into getting more and more features componetized.  In the long run it should make things more stable but there are some growing pains.",
+      "id": "6382459908380965513",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brian",
+      "profile": null,
+      "pub": "2011-05-18T23:35:29.989+02:00",
+      "ref": "7668276804425918827",
+      "type": "comment"
+    }
+  ],
+  "count": 9,
+  "id": "7668276804425918827",
+  "type": "post",
+  "url": "2011/05/ospf-and-connected-networks-to.html"
+}

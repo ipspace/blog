@@ -1,0 +1,162 @@
+{
+  "comments": [
+    {
+      "date": "14 August 2007 06:29",
+      "html": "I have read few of the topics here and i found them quite useful. I have a question! Once someone asked me how would i go about routing protocol conversion! Say the current routing protocol is EIGRP and the goal is convert it to pure OSPF with the minimal amount of network disruption in both the HQ and the branch offices! Of course that was an awkward and interesting question at the same time! Interesting in a sense that it brings some problem without showing how the current network look like! and awkward in a sense that it would need a lot of thinking, understanding, and analysis of the current network design and goals and therefore cannot be answered on the spot!! I know for sure that there are some general guidelines and best practices which i would appreciate if you could shed some light on this topic! <BR/><BR/>Thank you very much!",
+      "id": "1754619162348285343",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-08-14T06:29:00.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "14 August 2007 16:22",
+      "html": "to the first commenter checkout Vijay Gill's presentation of how ATDN converted their backbone from OSPF to ISIS http://www.nanog.org/mtg-0310/gill.html<BR/><BR/>On our tier 1 ISP network prior to a router reload we set ISIS overload which is similar to the OSPF command noted above.  We also shut down all eBGP sessions.  We then reboot the router.  After the router comes back and ISIS and MPLS-TE are reestablished we bring eBGP back up.",
+      "id": "7765038333100226427",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-08-14T16:22:00.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "14 August 2007 21:19",
+      "html": "There's a similar technique for IS-IS. What about EIGRP?",
+      "id": "131656468971072987",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-08-14T21:19:00.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "17 August 2007 10:52",
+      "html": "There is no similar functionality for EIGRP. The only thing you could do is to lower the bandwidth on all EIGRP-enabled interfaces.",
+      "id": "2027061797455494351",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-08-17T10:52:00.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "18 August 2007 22:49",
+      "html": "A side remark for the first commenter: I just wrote an article describing a potential routing protocol migration scenario (it's a bit different from the ATDN one, as it involves EIGRP-to-OSPF migration). If you'd like to receive it before it's published, go to my <A HREF=\"http://www.zaplana.net/Articles/about.asp\" REL=\"nofollow\">bio page</A> and send me a message.",
+      "id": "5855789044613648058",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-08-18T22:49:00.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "22 August 2007 03:59",
+      "html": "Will the max-metric also work for external routes (thinking about the default here)?<BR/><BR/>Thanks!",
+      "id": "961264245753421561",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-08-22T03:59:00.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "23 August 2007 17:24",
+      "html": "This is a great question (and a tricky one). Graceful shutdown (setting interface metric to 64K) will only influence E1 routes, as their cost is added to the internal cost. If you announce the default as an E2 route, the internal cost to the ASBR is ignored. <BR/><BR/>When I get some time, I'll produce router printouts documenting this.",
+      "id": "4922922309551504598",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-08-23T17:24:00.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "23 August 2009 19:23",
+      "html": "How do you do this gracefully with BGP?  I know I can shut the interface but there&#39;s still a lag..",
+      "id": "1786896916757730621",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guest",
+      "profile": null,
+      "pub": "2009-08-23T19:23:19.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "23 August 2009 19:45",
+      "html": "Configure an outbound prefix-list that filters all prefixes and do &quot;clear ip bgp * soft out&quot;. This will ensure all prefixes advertised by the BGP router are withdrawn.",
+      "id": "5193105234800541976",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-08-23T19:45:11.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "23 August 2009 21:41",
+      "html": "Nice thanks!",
+      "id": "2090546113588480234",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guest",
+      "profile": null,
+      "pub": "2009-08-23T21:41:45.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "16 January 2010 14:44",
+      "html": "how can we enable the gracefull shutdown using OSPF or Eigrp?",
+      "id": "1676447383220955949",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2010-01-16T14:44:31.000+01:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "18 January 2010 07:38",
+      "html": "OSPF: <br />Read this wiki page ... http://wiki.nil.com/OSPF_graceful_shutdown<br />... and this article ... http://www.nil.si/ipcorner/OSPFGracefulShutdown/<br /><br />EIGRP has no similar functionality. You could use &quot;distribute-list out&quot; with EIGRP.",
+      "id": "2000222321117847013",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-01-18T07:38:23.000+01:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "30 March 2010 07:33",
+      "html": "EIGRP has graceful shutdown if you set all the K values to 255.",
+      "id": "1811119493348683541",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2010-03-30T07:33:20.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    },
+    {
+      "date": "31 March 2010 08:49",
+      "html": "No, it doesn&#39;t. Setting all K values to 255 disrupts all adjacencies, resulting in potential packet loss until the network converges, while changing OSPF metric does disrupt the existing forwarding path until the network reconverges.",
+      "id": "8203129209954295880",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2010-03-31T08:49:47.000+02:00",
+      "ref": "2367141016006083867",
+      "type": "comment"
+    }
+  ],
+  "count": 14,
+  "id": "2367141016006083867",
+  "type": "post",
+  "url": "2007/08/ospf-graceful-shutdown.html"
+}

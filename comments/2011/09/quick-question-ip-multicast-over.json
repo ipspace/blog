@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "date": "22 September 2011 13:56",
+      "html": "Years ago I stuffed a multicast stream into a GRE tunnel with some success. The multicast was a unidirectional IP video stream pulled from a satellite. The streams source IP was an RFC-1918 that I couldn&#39;t route on our multicast enabled backbone, so I NAT&#39;d the stream to a routeable addresses using a PIX prior to sending outbound from the site. <br /><br />Unfortunately, the source had a TTL of 4, and the broadcast TV guys that uplinked the stream didn&#39;t know how to change that, so I stuffed the stream into GRE tunnels before crossing the backbone., just to keep the TTL from decrementing.<br /><br /> 8-)",
+      "id": "6713707438223026396",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Michael Janke",
+      "profile": null,
+      "pub": "2011-09-22T13:56:52.433+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "22 September 2011 14:27",
+      "html": "I&#39;ve done this sort of thing before too - a lot of the metro eth L2 services have a MAC address limit (say 50) for the port, and many of our futures trading clients commonly have a lot of multicast feeds with many groups, so we commonly stuff multicast traffic into GRE tunnels between the applicable sites in order not to exceed the MAC address limit with the multicast feeds.",
+      "id": "1009313333373538520",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dan Frein",
+      "profile": null,
+      "pub": "2011-09-22T14:27:21.355+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "22 September 2011 15:47",
+      "html": "OTV sounds like a good fit here.",
+      "id": "208698738648199996",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Matthew Stone",
+      "profile": null,
+      "pub": "2011-09-22T15:47:59.432+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "22 September 2011 16:53",
+      "html": "I&#39;ve used the &quot;Service Reflection&quot; feature on the Cat6k with some success for this. It appeared in SXI5 but I believe it&#39;s now fairly widely implemented on other platforms.<br /><br />Andrew.",
+      "id": "4939646112755502764",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Andrew Burns",
+      "profile": null,
+      "pub": "2011-09-22T16:53:02.795+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "22 September 2011 23:29",
+      "html": "OTV until just recently 5.2(1) needed native multicast itself so not sure that&#39;ll be viable, and it only runs on Nexus 7K and I think ASR 1K so may not be implemented everywhere. (pondering the question though... )....",
+      "id": "8675322849924952719",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Yandy",
+      "profile": null,
+      "pub": "2011-09-22T23:29:35.203+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2011 00:44",
+      "html": "For a generic IP backbone I would do a generic IP multicast implementation ;)<br /><br />Seriously though, I would avoid doing anything creative or special unless something within the IP backbone required it. I&#39;ve worked on IPTV networks using multicast and the users do not like it when it breaks. Server admins and users of VXLAN would be no different so keep it simple!",
+      "id": "803771698665960662",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "PG",
+      "profile": null,
+      "pub": "2011-09-23T00:44:53.502+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2011 03:11",
+      "html": "GRE doesnt  sound right.<br /><br />L2TP sounds better",
+      "id": "8335376897088280838",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Will",
+      "profile": null,
+      "pub": "2011-09-23T03:11:18.569+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "27 September 2011 20:28",
+      "html": "Enable IPmc on the IP backbone?  if it is a 3rd party service, like an MPLS VPN, it is probably capable of supporting IPmc with some configuration... even the death star supports PIM-SM BSR and autoRP and PIM-SSM on their AVN MPLS VPN service offering (although you have to specify that it be enabled, and tell them for what multicast groups if not using their standards for PIM-SSM).<br /><br />Alternative to that ... GRE?  (&quot;I can fix anything with a tunnel&quot;)",
+      "id": "3879551209231619671",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Sam Crooks",
+      "profile": null,
+      "pub": "2011-09-27T20:28:07.602+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "27 September 2011 20:29",
+      "html": "you haven&#39;t really mentioned much about scale... numbers of mcast groups, aggregate bandwidth of the IPmc traffic, etc",
+      "id": "712123649450004103",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Sam Crooks",
+      "profile": null,
+      "pub": "2011-09-27T20:29:30.907+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "01 October 2011 17:30",
+      "html": "Hi,<br /><br />There is a protocol, which is intended to carry multicast over not multicast enabled networks). It&#39;s a AMT (automatic multicast without explicit tunnels.)<br />Juniper might have implementation for this.<br /><br />Csilla",
+      "id": "8565260225801657079",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Csilla",
+      "profile": null,
+      "pub": "2011-10-01T17:30:32.673+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "05 October 2011 12:32",
+      "html": "Thanks for a pointer to another interesting technology. The way I understand it, you need a host-side part as well, which is not an option in this case (there are other more important bits and pieces missing in ESX/vSphere ;) )",
+      "id": "696147342003129353",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-10-05T12:32:18.833+02:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    },
+    {
+      "date": "23 November 2011 08:09",
+      "html": "how to multicast the ip address in logical router",
+      "id": "4871585179337496469",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "kunsang",
+      "profile": null,
+      "pub": "2011-11-23T08:09:14.157+01:00",
+      "ref": "459916420974591296",
+      "type": "comment"
+    }
+  ],
+  "count": 12,
+  "id": "459916420974591296",
+  "type": "post",
+  "url": "2011/09/quick-question-ip-multicast-over.html"
+}

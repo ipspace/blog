@@ -1,0 +1,98 @@
+{
+  "comments": [
+    {
+      "date": "21 November 2014 09:54",
+      "html": "Hi Ivan,<br />I&#39;ve done some testing on Neutron + OVS + GRE tunnels in the past and I seem to recall that I got higher numbers than 1.4 Gbps. That being said, I don&#39;t think I managed to get to 10Gbps either.<br />Obviously the page you&#39;re referring to is a quick-and-dirty benchmark. If you wanted the optimal numbers, you would have to tune quite a few parameters just like for hardware benchmarks (sysctl kernel parameters, Jumbo frames, ...). Using VLAN mode, I had no issue to get to 10Gbps. I presume the same is true if you use VXLAN with NICs that can do hardware offload. Check this report on the Mellanox site =&gt; http://community.mellanox.com/thread/1692<br />Anyway, thanks for the blog, I&#39;m always happy to read your content :)",
+      "id": "1842390448216752842",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "simonp",
+      "profile": "https://www.blogger.com/profile/03307568003244869677",
+      "pub": "2014-11-21T09:54:04.365+01:00",
+      "ref": "7964034100964562817",
+      "type": "comment"
+    },
+    {
+      "date": "21 November 2014 20:07",
+      "html": "http://openvswitch.org/support/ovscon2014/18/1600-ovs_perf.pptx slide 8 says 6.7 Gbps with VXLAN. As simonp says, with no encapsulation you get line rate.",
+      "id": "1066629744730881175",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Wes Felter",
+      "profile": "https://www.blogger.com/profile/01395217775195260835",
+      "pub": "2014-11-21T20:07:30.454+01:00",
+      "ref": "7964034100964562817",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "24 November 2014 21:42",
+          "html": "You lost three zeroes in that calculation (or I can&#39;t type anymore, which wouldn&#39;t exactly surprise me ;).",
+          "id": "5337176282591225095",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-11-24T21:42:49.037+01:00",
+          "ref": "4530005583033634593",
+          "type": "comment"
+        },
+        {
+          "date": "24 November 2014 22:15",
+          "html": "oops. re-calc: 18.72 *Gpps*, devided by 1,488,096 (the pps of 1 Gbps Eth) =&gt; 12.579 Gbps, which sounds reasonable ... <br /><br />The result remains the same, and that what counts ;-) (funny, my professors never bought this excuse either)<br /><br />And now, I shell prove I&#39;m not a robot...",
+          "id": "7979113987364615115",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Netboarder",
+          "profile": null,
+          "pub": "2014-11-24T22:15:07.247+01:00",
+          "ref": "4530005583033634593",
+          "type": "comment"
+        },
+        {
+          "date": "25 November 2014 07:09",
+          "html": "You&#39;re still missing your zeroes (or I&#39;m still asleep). That would be 12 Tbps, which is still a bit too much for an x86 server.",
+          "id": "5853018192434654153",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2014-11-25T07:09:41.426+01:00",
+          "ref": "4530005583033634593",
+          "type": "comment"
+        },
+        {
+          "date": "25 November 2014 20:48",
+          "html": "you&#39;re absolutely right. sorry for wasting your time. you may want to delete my useless comments. thanks for being so polite.<br />",
+          "id": "5361425919523916337",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Netboarder",
+          "profile": null,
+          "pub": "2014-11-25T20:48:10.253+01:00",
+          "ref": "4530005583033634593",
+          "type": "comment"
+        }
+      ],
+      "date": "24 November 2014 21:40",
+      "html": "The slides mentioned earlier (1600-ovs_perf.pptx) shows dpdk-ovs doing almost wirespeed (9.9 Gbps /  14.85 Mpps) with 64B packets.<br /><br />Is it possible they (Ludicrous Speed guys) meant: 72K flows, each at 260Kpps =&gt; 72k flows * 260kpps =  18.72 Mpps = 12.579 Gbps, which sounds reasonable for the 2 x 10GbE NICs server you&#39;ve mentioned, without using dpdk&#39;s kernel bypass / zero copy / poll mode drivers / etc.<br /><br />How about we just ask them what they meant ;-)<br /><br />",
+      "id": "4530005583033634593",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Netboarder",
+      "profile": null,
+      "pub": "2014-11-24T21:40:26.523+01:00",
+      "ref": "7964034100964562817",
+      "type": "comment"
+    },
+    {
+      "date": "17 November 2015 12:29",
+      "html": "Any followups on the OVS performance?",
+      "id": "3410787028508255097",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2015-11-17T12:29:24.271+01:00",
+      "ref": "7964034100964562817",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "7964034100964562817",
+  "type": "post",
+  "url": "2014/11/open-vswitch-performance-revisited.html"
+}

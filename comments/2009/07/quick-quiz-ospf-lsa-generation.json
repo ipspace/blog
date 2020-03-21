@@ -1,0 +1,184 @@
+{
+  "comments": [
+    {
+      "date": "31 July 2009 09:43",
+      "html": "2 LSAs- LSA Type 1 and LSA Type 2",
+      "id": "7204726442751335696",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guest",
+      "profile": null,
+      "pub": "2009-07-31T09:43:59.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "31 July 2009 10:03",
+      "html": "Assuming the passive-interface default, i&#39;ll say 2 LSA Type 1 : one for Loopback and another for The Serial.<br />And one LSA Type 2, the number depends of the nb of routers in the AREA.",
+      "id": "578736120439197283",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Youssef",
+      "profile": null,
+      "pub": "2009-07-31T10:03:33.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "31 July 2009 10:12",
+      "html": "No LSA will be generated",
+      "id": "4940596940761828515",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Andrei",
+      "profile": null,
+      "pub": "2009-07-31T10:12:00.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "31 July 2009 13:03",
+      "html": "The passive interface command only suppresses hellos on that interface, so an LSA type 1 will still be generated for that interface it just won&#39;t establish any neighbors on that interface.<br /><br />So, LSA type 1 for each interface: serial, loopback and ethernet. <br /><br />Assuming serial interface is p2p, no LSA type 2 will be generated.",
+      "id": "6205136807610225893",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guest",
+      "profile": null,
+      "pub": "2009-07-31T13:03:14.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "31 July 2009 13:19",
+      "html": "The passive interface e0 will prevent any OSPF adjacencies forming over that interface, hence there will be only 1 router on the e0 lan segment, &amp; hence no Type 2 LSAs, as 2 or more routers on same lan segment are required for a DR election.<br /><br />My answer: 1 LSA (Router LSA)<br />E0, S1 &amp; Lo0 will be seen as stub networks by OSPF.",
+      "id": "6918647207554458954",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Roy Waterman",
+      "profile": null,
+      "pub": "2009-07-31T13:19:34.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "31 July 2009 13:45",
+      "html": "No LSAs will be generated, the interfaces have no ip address and when you go ahead and try to start the OSPF process it will fail.",
+      "id": "6643011810666700150",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "galvezc",
+      "profile": null,
+      "pub": "2009-07-31T13:45:47.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "31 July 2009 18:48",
+      "html": "Four. One for each of the interfaces. One for the router.",
+      "id": "9032598658273859573",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "jkillian",
+      "profile": null,
+      "pub": "2009-07-31T18:48:23.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "01 August 2009 03:52",
+      "html": "Assuming all interfaces have IP address configured on them otherwise OSPF commands will not be allowed in Cisco IOS.<br /><br />By default, OSPF treats Loopback interfaces as STUB NETWORKS and will advertise them as STUB ROUTES (with mask /32). No LSAs are sent for loopback interfaces but they are still advertised. 8-)<br /><br />OSPF treats ethernet interfaces as Broadcast network and hence generate LSA Type 1 &amp; 2.<br /><br />OSPF treats serial interfaces as Point-to-point network and hence only LSA Type 1.",
+      "id": "3441168099690044770",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Guest",
+      "profile": null,
+      "pub": "2009-08-01T03:52:47.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "01 August 2009 10:18",
+      "html": "Router will generate only one Type 1 LSA, which describes all IPv4 links in &quot;up&quot; state.",
+      "id": "7678479062056066472",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "visir",
+      "profile": null,
+      "pub": "2009-08-01T10:18:30.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "01 August 2009 13:52",
+      "html": "Doh!<br />Galvezc is right.<br />No ip addresses = no ospf process = no lsas.<br /><br />Assumed that ip addresses were configured :)",
+      "id": "7649781840839244810",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Roy Waterman",
+      "profile": null,
+      "pub": "2009-08-01T13:52:43.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "03 August 2009 01:36",
+      "html": "Assuming that there are IP addresses configured on all interfaces, and that all interfaces up, there will be two LSAs generated. A Type-1, which will include information on Lo0 and Se1, and a Type-2, for Et0.<br /><br />Ethernet interfaces are treated as broadcast by default. As the Et0 interface is set to passsive, no adjacencies can form and this router can not participate in a DR election; it will therefore declare itself the DR for the Ethernet segment and originate a Type-2 LSA.<br /><br />(Of course, this assumes that all interfaces have been bound to an OSPF area; there are no &#39;network&#39; or &#39;ip ospf area&#39; commands to be seen...)",
+      "id": "318736325977549451",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Murali",
+      "profile": null,
+      "pub": "2009-08-03T01:36:08.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "25 August 2009 19:06",
+      "html": "From the sh running command, all I can say is that 2 LSA&#39;s will be generated.  LSA 1 and 2.  Only logical explanation in my mind is that only area 1 is defined.",
+      "id": "4580696928242887123",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Chandler",
+      "profile": null,
+      "pub": "2009-08-25T19:06:13.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "18 April 2010 15:07",
+      "html": "no lsa ;)",
+      "id": "6129681007168825003",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2010-04-18T15:07:37.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "13 May 2010 22:30",
+      "html": "hahaa :) nice quiz :)",
+      "id": "7531084022929686521",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "jabamachara",
+      "profile": null,
+      "pub": "2010-05-13T22:30:06.000+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "18 August 2011 08:23",
+      "html": "No LSA",
+      "id": "7807131231133835369",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2011-08-18T08:23:57.047+02:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    },
+    {
+      "date": "13 November 2011 02:33",
+      "html": "OSPF protocol will be down on interface as ip address is not configured, so LSAs will not be originated.",
+      "id": "121431451592313795",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "mahen",
+      "profile": null,
+      "pub": "2011-11-13T02:33:59.552+01:00",
+      "ref": "8588499365935089734",
+      "type": "comment"
+    }
+  ],
+  "count": 16,
+  "id": "8588499365935089734",
+  "type": "post",
+  "url": "2009/07/quick-quiz-ospf-lsa-generation.html"
+}

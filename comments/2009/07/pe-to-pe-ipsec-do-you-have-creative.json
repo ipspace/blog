@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "date": "16 July 2009 08:14",
+      "html": "Hi!<br /><br />I Think you should take a look on Cisco GET ( Group Encrypted Transport VPN ) <br />:)<br />http://www.cisco.com/en/US/products/ps7180/index.html",
+      "id": "3693759090935477553",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Runar",
+      "profile": null,
+      "pub": "2009-07-16T08:14:47.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 08:20",
+      "html": "GETVPN is a CE-to-CE solution. We&#39;re looking for a PE-to-PE solution for a single VRF.",
+      "id": "154477919676502577",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-07-16T08:20:01.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 09:09",
+      "html": "What about VRF aware IPsec feature? So create VRF B on both PEs as transit VRF and then run a VRF aware IP sec through it. Or some variation along those lines.  :)",
+      "id": "5928124587366215143",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Drb999",
+      "profile": null,
+      "pub": "2009-07-16T09:09:48.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 09:17",
+      "html": "If you don&#39;t trust the MPLS VPN of your provider, why would you trust his PE routers?",
+      "id": "1414066136329406030",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dirk-Jan",
+      "profile": null,
+      "pub": "2009-07-16T09:17:42.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 09:21",
+      "html": "I don&#39;t know the full background, but it could be site-deployed PE routers ... or someone trying to offload the burden of regulatory-enforced encryption to the SP.",
+      "id": "4965499752934353314",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-07-16T09:21:43.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 09:22",
+      "html": "You can indeed use IPSEC in a VRF mode.<br />2 options:<br />you can use the IGP core as tunnel endpoints, you will use global (not VRF!) loopbacks as the source and destination of the tunnel and just use the &quot;ip vrf forwarding&quot; under the tunnel (this is a very nice security feature that will make every successfully(!) decrypted packet enter the VRF specified in the &quot;ip vrf forwad&quot; command).<br />If you want the tunnel to initiate from within the VRF itself, you can ADD the &quot; tunnel vrf&quot; command to the tunnel - then, the source and destination will have to belong to the VRF context.<br /><br />Hope this helps!",
+      "id": "6315657127764591298",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ofer",
+      "profile": null,
+      "pub": "2009-07-16T09:22:01.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 09:27",
+      "html": "Thanks for the idea. Much better than mine ... but it destroys all the scalability of MPLS VPN, as you have to build per-VRF tunnels between the PE-routers (not to mention the routing mess you could make).",
+      "id": "2114083818276496882",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-07-16T09:27:11.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 09:28",
+      "html": "Hmmm, what about running MPLS/VPN over DMVPN between the PE ?",
+      "id": "1285217324148107958",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chris",
+      "profile": null,
+      "pub": "2009-07-16T09:28:22.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 09:31",
+      "html": "You&#39;re making my hallucinations scalable 8-) If nothing better comes along, we can always use this.",
+      "id": "2540767552188971319",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-07-16T09:31:22.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 10:46",
+      "html": "I agree MPLSoDMVPN is your friend if you&#39;re looking for  pure scalability, but MIGRATING from MPLS core to IP core and running mpls on tunnels is quite a change...certainty not feasible for SP (if that&#39;s the case)",
+      "id": "3086199939524569902",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ofer",
+      "profile": null,
+      "pub": "2009-07-16T10:46:15.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 16:37",
+      "html": "What about binding a crypto-map on the customer-facing interface(s) of the PE, so incoming traffic should be encrypted,  forwarded into the VRF and routed thru the VPN.<br />Don&#39;t know if this is possible but it may work...?",
+      "id": "1278226393420912766",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Christoph",
+      "profile": null,
+      "pub": "2009-07-16T16:37:34.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 17:38",
+      "html": "Because the crypto map works in the output direction.",
+      "id": "7485191983606598978",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chris",
+      "profile": null,
+      "pub": "2009-07-16T17:38:49.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "16 July 2009 23:43",
+      "html": "So I tried, it seems to work (if I didn&#39;t make any mistake) with a basic config (ie DMVPN without crypto):<br /><br />http://www.ipflow.utc.fr/configs/DMVPN_PE/<br /><br />(Sorry I don&#39;t have any drawing at this time)<br /><br />The &quot;mpls bgp forwarding&quot; command on the tunnel interface did the trick.",
+      "id": "2200961689488042910",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chris",
+      "profile": null,
+      "pub": "2009-07-16T23:43:35.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "17 July 2009 07:06",
+      "html": "Well Explained about the requirement of PE-PE Ip Sec Security<br /><br />http://etutorials.org/Networking/MPLS+VPN+security/Part+III+Practical+Guidelines+to+MPLS+VPN+Security/Chapter+6.+How+IPsec+Complements+MPLS/Location+of+the+IPsec+Termination+Points/",
+      "id": "432252452326704560",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "shivlu jain",
+      "profile": null,
+      "pub": "2009-07-17T07:06:39.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "17 July 2009 09:09",
+      "html": "Great job. Thanks! Can I use the configs in my other articles?<br /><br />BTW, using &quot;mpls ip&quot; on the tunnel interface should also work.",
+      "id": "4723516329145488540",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-07-17T09:09:06.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "17 July 2009 09:10",
+      "html": "Thanks. Great document (I wonder where it came from, it&#39;s too well written for a &quot;free tutorials&quot; web site).",
+      "id": "2960145358222419542",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2009-07-17T09:10:26.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "17 July 2009 09:19",
+      "html": "Yes, of course, no problem.<br /><br />About using LDP, I read in http://www.cisco.com/en/US/docs/solutions/Enterprise/WAN_and_MAN/ngwanempls.html that direct spoke-to-spoke communication is not possible except via the hub acting as a P router (I guess the PE cannot form a LDP adjacency ?)",
+      "id": "7533927158552210951",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chris",
+      "profile": null,
+      "pub": "2009-07-17T09:19:27.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "17 July 2009 12:06",
+      "html": "Hi think I missed your point, I guess the idea was to have &quot;mpls ip&quot; on the interface only to allow MPLS packets, not to establish LDP adjacencies.",
+      "id": "6243137383689335452",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "chris",
+      "profile": null,
+      "pub": "2009-07-17T12:06:09.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "17 July 2009 14:11",
+      "html": "google gives the answer ...<br /><br />http://my.safaribooksonline.com/1587051834/part01<br />MPLS VPN Security, by Michael H. Behringer; Monique J. Morrow<br /><br />Back to the topic, for me it&#39;s crazy idea <br />to have the SP encrypt the traffic of it&#39;s customers. <br />Possible ? Maybe, but who would like <br />to have such a network ?",
+      "id": "9046635080165809402",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "xls",
+      "profile": null,
+      "pub": "2009-07-17T14:11:05.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    },
+    {
+      "date": "18 July 2009 03:18",
+      "html": "Its not about the SP encrypting traffic for its users as a &quot;service&quot; , but more about maintaining security when using a carrier of carriers model . That means the SP is using the internet as the core between PEs. Happens frequently with VNOs.",
+      "id": "1497448334263911956",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "mayurgai",
+      "profile": null,
+      "pub": "2009-07-18T03:18:38.000+02:00",
+      "ref": "7827952359313437385",
+      "type": "comment"
+    }
+  ],
+  "count": 20,
+  "id": "7827952359313437385",
+  "type": "post",
+  "url": "2009/07/pe-to-pe-ipsec-do-you-have-creative.html"
+}

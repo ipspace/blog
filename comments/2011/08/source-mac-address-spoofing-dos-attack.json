@@ -1,0 +1,41 @@
+{
+  "comments": [
+    {
+      "date": "16 August 2011 10:37",
+      "html": "Ivan,<br /><br />A few points, I guess. Firstly, I sincerely hope not too many SPs today use enterprise gear for their networks nowadays, which means it is either MPLS/VPLS or MAC-in-MAC; in my experience it is the former in most cases. However, older access networks could well still be using Q-in-Q, and there the the issue may well be present.<br /><br />Very common way of dealing with the threat in question that I&#39;ve seen is limiting the number of MACs an SP service would learn from a UNI to something small, like 5. It is pretty non-disruptive from customer&#39;s point of view - even if you exceed the limit, you are still reachable (via flooding - see note on rate limiting below), and if traffic volume is small many people wouldn&#39;t even notice. Also it is very common to connect L2 services to routers (so no problem there in first place).<br /><br />&gt; traffic sent to them would be flooded throughout the network (and hitting storm control limits)<br /><br />Depends on configuration - storm control limits are often applied to broadcast separately from unknown unicast and yet separately from multicast, which means that while broadcast storm controls may be in place (which is a common practice), unknown unicast controls may be not.<br /><br />Also I don&#39;t think flooding will happen throughout the network - as far I can remember overflowing TCAM doesn&#39;t overwrite port VLAN membership configuration, so flooding will likely be contained with a particular VLAN - CE-VLAN or S-VLAN.",
+      "id": "4898931504210370984",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Dmitri Kalintsev",
+      "profile": null,
+      "pub": "2011-08-16T10:37:29.344+02:00",
+      "ref": "6881582595964770052",
+      "type": "comment"
+    },
+    {
+      "date": "17 August 2011 02:46",
+      "html": "We use port security and storm control. Our L2VPN services are sold as a service you must connect a router to, and only allow 8 MAC addresses on the UNI.",
+      "id": "8424542878781925905",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "PG",
+      "profile": null,
+      "pub": "2011-08-17T02:46:24.999+02:00",
+      "ref": "6881582595964770052",
+      "type": "comment"
+    },
+    {
+      "date": "17 August 2011 12:24",
+      "html": "I came up against questions like these a few years back running a metro-e service provider.  We often found that the mac limit per port would cause customers to have issues when they&#39;d accidentally bridge something to their WAN (happens more than you might like to think) and the routers would periodically drop out as too many things started broadcasting.  There&#39;s basically no way to tell the difference between an attack and customers doing something stupid.  But the Q-in-Q core and some decent security on the edge let it scale enough to end up deploying the whole thing over MPLS/VLL so I guess from that point of view it was sufficient.",
+      "id": "8514131345639762050",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Chris Pollock",
+      "profile": null,
+      "pub": "2011-08-17T12:24:29.899+02:00",
+      "ref": "6881582595964770052",
+      "type": "comment"
+    }
+  ],
+  "count": 3,
+  "id": "6881582595964770052",
+  "type": "post",
+  "url": "2011/08/source-mac-address-spoofing-dos-attack.html"
+}

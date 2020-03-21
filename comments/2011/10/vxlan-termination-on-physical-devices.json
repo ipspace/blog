@@ -1,0 +1,177 @@
+{
+  "comments": [
+    {
+      "date": "11 October 2011 02:42",
+      "html": "Ivan, just thinking out load here but I think as network guys we&#39;re going to have to get past the &quot;extra hops and unpredictable traffic flows&quot; hang up.  The paths and hops look ugly if you look at it from the perspective of the physical network, but it&#39;s all perfectly normal from the perspective of the virtual network.  The physical network needs to evolve to east-west non-blocking architectures to cope with network virtualization.  If the &quot;extra hops&quot; are really a problem, we need to be clear on why those are problem, not just &#39;because it looks ugly on a drawing&#39;.  If the latency is low and the bandwidth non-blocking, why are extra *physical* hops bad?  Just playing devils advocate (kinda) ;-)",
+      "id": "3418419792606616042",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brad Hedlund",
+      "profile": null,
+      "pub": "2011-10-11T02:42:54.467+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "11 October 2011 05:10",
+      "html": "Just a thought, how robust is this technology when sites are failing over and chaos rules. Seems like an outage could cause a disconnect for software to recover in a robust fashion.  All for Network Virtualization, need to experiment here.  8-)",
+      "id": "3051654315083710469",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Sallie Chait",
+      "profile": null,
+      "pub": "2011-10-11T05:10:17.292+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "11 October 2011 07:40",
+      "html": "One of the biggest drawbacks to virtual appliance versions of load balancers (or, lovingly, application delivery controllers) is the lack of SSL crypto hardware. Most load balancers today employ some type of SSL ASIC to handle the cryptographically intensive asymmetric encryption (RSA) that occurs at the start of any SSL/TLS connection. <br /><br />Intel recently added AES-NI to its server processor lineup (it&#39;s in the new E7&#39;s and 5600 series Xeon), however they only handle symmetric, not asymmetric. <br /><br />So as Ivan said, it&#39;s going to chew up a lot more CPU cycles than would otherwise be chewed.",
+      "id": "737007402682832276",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tony Bourke",
+      "profile": null,
+      "pub": "2011-10-11T07:40:59.837+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "11 October 2011 08:17",
+      "html": "Well, I wouldn&#39;t use VXLAN (or any other L2 technology) between data centers. It&#39;s a nice mechanism to implement many virtual segments within a single failure domain (availability zone), if you want to go beyond that, you need proper application architecture.",
+      "id": "1534361369543731927",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-10-11T08:17:15.289+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "11 October 2011 08:19",
+      "html": "The &quot;only&quot; reasons I dislike spaghetti-like virtual flows are:<br /><br />(A) troubleshooting complexities<br />(B) increased network utilization<br /><br />I don&#39;t really care about N/S shifting to E/W. That&#39;s happening anyway and needs to be solved, but wasting bandwidth is a different story.<br /><br />Of course, if you have too much bandwidth in your DC and too many CPU cycles (so you can do routing in VM appliances), you might not care.",
+      "id": "1638227976031599565",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-10-11T08:19:16.204+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "11 October 2011 14:16",
+      "html": "Interesting comment, especially in light of how much my System Admins would love the same subnets at both our data centers.  Is there a good solution for allowing hosts to migrate between data centers that don&#39;t share layer-2 adjacency via any technology (VLAN, VxLAN, etc)?  Maybe LISP?",
+      "id": "1873456099160354402",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Andrew",
+      "profile": null,
+      "pub": "2011-10-11T14:16:34.078+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "12 October 2011 13:48",
+      "html": "Ivan, while I (and probably 99% of network engineers) dislike spaghetti flows exactly for the reasons you mentioned, I agree with Brad\u2019s point here.  In virtualized / cloud environments we are going to see fewer and fewer \u201cclean\u201d designs (as depicted on the left side of your diagram), with well separated roles aligned with the physical network topology.  The network paths should be deterministic (moving virtual appliances around as load changes =&gt; not necessarily a good idea) and performance (incl. latency) needs to be kept under control, but otherwise I would not care about the number of physical hops.<br /><br />I think we\u2019re more likely to see a shared/virtualized pool of physical appliances (loadbalancers with SSL, firewalls, etc), connected to the \u201cnetwork fabric\u201d somewhat like service linecards in a 6500 chassis (and hopefully supporting VXLAN termination natively at some point to avoid the L2 issues you described).<br /><br />Still, VXLAN termination in hardware may help keep the spaghetti slightly less convoluted.",
+      "id": "1499181114194979818",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Michal Zawirski",
+      "profile": null,
+      "pub": "2011-10-12T13:48:54.709+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "16 October 2011 20:40",
+      "html": "Read this post first http://blog.ioshints.info/2011/09/long-distance-vmotion-for-disaster.html, and discuss the cost issue with the server admins ;)<br /><br />Once implemented properly, LISP will solve the IP address mobility problem, but not all the others.",
+      "id": "3498665136978892877",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-10-16T20:40:16.520+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "23 October 2011 21:37",
+      "html": "Gr8 post , thanks ivan",
+      "id": "5100007952034316472",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Rati Jokhadze",
+      "profile": null,
+      "pub": "2011-10-23T21:37:29.484+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "09 August 2012 15:42",
+          "html": "I would suggest you ask the above-mentioned Cisco insiders.",
+          "id": "5210383030421651525",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2012-08-09T15:42:00.951+02:00",
+          "ref": "6166273361663334849",
+          "type": "comment"
+        }
+      ],
+      "date": "09 August 2012 15:15",
+      "html": "According to Cisco insiders, ASA Firewall will implement VXLAN to VLAN Gateway mecanisms. <br />But when, and on which type of ASA ?",
+      "id": "6166273361663334849",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/14053980077799286588",
+      "pub": "2012-08-09T15:15:02.652+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "date": "26 August 2015 10:38",
+      "html": "A new open source tool Ubridge which can be downloaded under (inside iptools) sourceforge is available for bridge local Wundows machine to vxlan.  Pls refer to this webpage apps.e5link.com/blog",
+      "id": "6231984704896536981",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2015-08-26T10:38:31.191+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "11 September 2015 17:23",
+          "html": "Louis, the product information is totally out-of-date. Read more recent VXLAN posts for some details, will publish a comprehensive overview in near future.<br /><br />However, I wouldn&#39;t go down the VXLAN-VLAN-FW path (although you could). Why don&#39;t you virtualize the firewall?",
+          "id": "5741496218013592862",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-09-11T17:23:08.192+02:00",
+          "ref": "3156088908462630538",
+          "type": "comment"
+        },
+        {
+          "date": "14 September 2015 19:57",
+          "html": "Here&#39;s the blog post with more recent information (and plenty of comments):<br /><br />http://blog.ipspace.net/2015/09/vxlan-hardware-gateway-overview.html",
+          "id": "3988773330856352070",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-09-14T19:57:23.080+02:00",
+          "ref": "3156088908462630538",
+          "type": "comment"
+        }
+      ],
+      "date": "08 September 2015 01:41",
+      "html": "Ivan, is this still relevant to today&#39;s date? I have a datacenter which is currently using VRF to separate routing tables for different environments. They route out to their own environment&#39;s firewalls. I was thinking about using VXLAN to remove the VRF and VLAN configuration - but this would be an issue since they want to use their existing gear. ",
+      "id": "3156088908462630538",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/01547434616127430094",
+      "pub": "2015-09-08T01:41:59.539+02:00",
+      "ref": "8103270033521411588",
+      "type": "comment"
+    }
+  ],
+  "count": 15,
+  "id": "8103270033521411588",
+  "type": "post",
+  "url": "2011/10/vxlan-termination-on-physical-devices.html"
+}

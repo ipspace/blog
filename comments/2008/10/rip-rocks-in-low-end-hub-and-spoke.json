@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "date": "02 October 2008 04:09",
+      "html": "I'd much rather use EIGRP stub",
+      "id": "3915122963130052852",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/02800677084940224086",
+      "pub": "2008-10-02T04:09:00.000+02:00",
+      "ref": "1889768081132829304",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2008 05:05",
+      "html": "EIGRP stub feature does *NOT* prevent hub router from advertising all information to spokes -- you have to use distribute-list or summarization up to 0/0. I'd choose OSPF w/ \"ip ospf database-filter all out\" to reduce flooding in hub-n-spoke environment.",
+      "id": "8749114253656101273",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "uri",
+      "profile": "https://www.blogger.com/profile/13608771699731629666",
+      "pub": "2008-10-02T05:05:00.000+02:00",
+      "ref": "1889768081132829304",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2008 09:48",
+      "html": "@Michael: you might not have EIGRP on remote (low-end, low-cost) routers.<BR/><BR/>@Uri: RIP has exactly the same configuration overhead as EIGRP; you have to configure summary or default route advertisement.",
+      "id": "3458878901495686172",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-10-02T09:48:00.000+02:00",
+      "ref": "1889768081132829304",
+      "type": "comment"
+    },
+    {
+      "date": "02 October 2008 10:18",
+      "html": "Sure.. It does have the same overhead. Btw, living in the all-cisco world may be we should start \"ODR vs proto-X\" flame?<BR/><BR/>http://www.cisco.com/en/US/tech/tk365/technologies_white_paper09186a0080093fde.shtml<BR/><BR/>:)",
+      "id": "6236257298902342287",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "uri",
+      "profile": "https://www.blogger.com/profile/13608771699731629666",
+      "pub": "2008-10-02T10:18:00.000+02:00",
+      "ref": "1889768081132829304",
+      "type": "comment"
+    },
+    {
+      "date": "06 October 2008 23:40",
+      "html": "In a very large (hundreds of spokes) dual-homed remote RIP environment, what's the convergence time for a primary hub failure? I poked around looking for information on this, but didn't find anything.",
+      "id": "1216533900528579865",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Jay Swan",
+      "profile": "https://www.blogger.com/profile/02571029118821999072",
+      "pub": "2008-10-06T23:40:00.000+02:00",
+      "ref": "1889768081132829304",
+      "type": "comment"
+    },
+    {
+      "date": "07 October 2008 15:35",
+      "html": "@uri: Don't worry, I could start the ODR religious war ... I just need to figure out a good provocative intro.<BR/><BR/>@js: regardless of the number of spoke routers, the convergence time always depends on RIP timers. <BR/><BR/>You might have interesting problems sending a huge number of RIP updates from the hub router, though.",
+      "id": "8585680996346886133",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-10-07T15:35:00.000+02:00",
+      "ref": "1889768081132829304",
+      "type": "comment"
+    },
+    {
+      "date": "03 March 2009 18:08",
+      "html": "I find eigrp stub is an elegant solution in a large hub and spoke network. <BR/><BR/>Used with a single default distribution filter from the hub makes for a very small config and also allows the ability to leak certain routes beyond a default if desired to all spokes.<BR/><BR/>ODR is also a low overhead, small config, but does not allow the ability to leak routes to the stubs (some would also argue ODR is not a routing protocol as it leverages CDP). It is also proprietary.<BR/><BR/>For example, I blackhole host routes at the ingress by advertising them to the spokes in concert with uRPF.<BR/><BR/>I'm not certain that ospf could perform as well in a large hub/spoke along with those capabilities.<BR/><BR/>So I also think that RIPv2 could be a better fit in a large hub and spoke, providing a small and flexible config. (and then redistributing from the hub in/out of the core IGP)<BR/>Compared to EIGRP, the downside is the convergence time and periodic flooding. The upside is it is an open protocol.",
+      "id": "457274524100334713",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2009-03-03T18:08:00.000+01:00",
+      "ref": "1889768081132829304",
+      "type": "comment"
+    }
+  ],
+  "count": 7,
+  "id": "1889768081132829304",
+  "type": "post",
+  "url": "2008/10/rip-rocks-in-low-end-hub-and-spoke.html"
+}

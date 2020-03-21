@@ -1,0 +1,41 @@
+{
+  "comments": [
+    {
+      "date": "04 September 2013 06:11",
+      "html": "This post seems to conflate two different uses of the word &quot;interface&quot;.  Open vSwitch has a table named Interface, each row of which represents one OpenFlow port.  NVP does currently populate the Interface table with one row per tunnel.  This post seems to also use the word &quot;interface&quot; to refer to a Linux network device.  Open vSwitch does not create a Linux network device per tunnel, mostly for scale reasons (e.g. &quot;ifconfig&quot; with thousands of tunnels would generate voluminous output and take forever, and we found that it made other software such as XAPI unacceptably slow).  Older versions of Open vSwitch did create one Open vSwitch kernel datapath module port per tunnel, but we found a better way and current versions only create a single kernel port per tunnel type (e.g. one for GRE, one for VXLAN, ...).<br /><br />Recent versions of Open vSwitch do not actually require setting up an Interface row per tunnel.  Instead, one may set up a single tunnel-based Interface and handle everything in the flow table.<br /><br />I believe that Open vSwitch can actually handle multicast GRE.  We don&#39;t use it because it requires the physical network to be configured correctly for multicast.  In my understanding, many are not.<br /><br />The OVSDB daemon is named ovsdb-server (not ovsdb-proto).<br />",
+      "id": "8063098567404928416",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/11960399143242976987",
+      "pub": "2013-09-04T06:11:41.276+02:00",
+      "ref": "5524020268530058499",
+      "type": "comment"
+    },
+    {
+      "date": "05 September 2013 06:24",
+      "html": "What about NVO HW GW ?. <br /><br />Another concern is monitoring these tunnels using protocols like BFD. The amount of messages generated is going to be huge, leave out processing capacity of the end hosts.<br /><br />-Bhargav",
+      "id": "5168923271403169243",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Bhargav Bhikkaji",
+      "profile": null,
+      "pub": "2013-09-05T06:24:06.055+02:00",
+      "ref": "5524020268530058499",
+      "type": "comment"
+    },
+    {
+      "date": "07 October 2013 10:44",
+      "html": "Thanks a lot for this informative post.I&#39;ve got more information to read this post.Really,it&#39;s awesome.<br />Friends,I&#39;ve a fan blog based on Bradley vs Marquez fight.It&#39;s so interesting,exciting &amp; enjoyable site.If you want,you can<br />Visit: http://malaysiasquash.org/marquez-vs-bradley-bradley-vs-marquez/<br />I&#39;m sure that you must get more entertain &amp; news of boxing.<br />Don&#39;t miss this site.<br />",
+      "id": "5524027410989150521",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/08713960041689774056",
+      "pub": "2013-10-07T10:44:28.887+02:00",
+      "ref": "5524020268530058499",
+      "type": "comment"
+    }
+  ],
+  "count": 3,
+  "id": "5524020268530058499",
+  "type": "post",
+  "url": "2013/08/are-overlay-networking-tunnels.html"
+}

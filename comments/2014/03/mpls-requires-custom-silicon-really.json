@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "date": "13 March 2014 12:40",
+      "html": "Not so sure about the Trident, but BCM56330 series (powering Juniper ACX amongst others) definitely supports MPLS. Control plane is the hard part, only mastered by a few...",
+      "id": "1655727104727943007",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Daniel",
+      "profile": null,
+      "pub": "2014-03-13T12:40:23.968+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "13 March 2014 17:02",
+      "html": "BCM T+ and T2 both support MPLS. the LFIB isn&#39;t particularly great, but if you&#39;re clever you can do some very interesting things with this Si. <br /><br />finally, i would recommend a review of the latest segment routing drafts and a bit of pondering about how you can build very large networks out of relatively modest LFIB enabled devices with segment routing at your disposal.  you don&#39;t necessarily need LDP and RSVP to get the job done in an SR domain.",
+      "id": "6931517435061840320",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/13046728001822941225",
+      "pub": "2014-03-13T17:02:19.185+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "13 March 2014 17:52",
+      "html": "Juniper has been shipping the QFX Series that support MPLS since last year. These are Broadcom T1 and T2 chipsets.<br /><br />48x10G, 6x40G<br />32x40G",
+      "id": "1537046943124312192",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-13T17:52:49.401+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "13 March 2014 20:40",
+      "html": "I am not surprised though that many people believe what was said in the podcast. There is a reason that Cisco wont tell you that it is capable in hardware. They want to sell you the &quot;special&quot; MPLS hardware at a huge increase in price. And account managers and marketing TMEs will pile on the same dribble.",
+      "id": "3537667090658869219",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-13T20:40:22.272+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "15 March 2014 13:42",
+      "html": "We use a CS6500-48S4Q-EI switch based on Broadcom Trident chip and MPLS is supported (we run LDP signalled EoMPLS and VPLS). ",
+      "id": "9210825739502851331",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-15T13:42:32.339+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "16 March 2014 10:09",
+      "html": "Broadcom supports MPLS for a long time. It&#39;s not limited to TD and TD2, but a vast range of their chipset portfolio, even some lower cost. You have on the market MPLS capable 1G+10G switches, with all the hardware redundancy you need, for a few thousands $ (list-price). The only pitfall is about scaling and support of newer features.<br /><br />Entropy label? You have to wait for that.<br />Scaling? Well, it&#39;s reasonably good on recent chipset (TD2 mainly), it&#39;s just a matter of where you want that box. Honestly, if you&#39;re not a Tier1 SP (or similar), they usually are good enough.<br /><br />This is were Custom ASIC still have an edge. But even without a high focus from Broadcom, scaling is increased at each generation and will finally be no more &quot;an issue&quot;, and features are also added. Not sure MPLS will continue to add rich new features, so soon enough, no more discussion here.<br /><br />That being said, as mentioned, swaping label is not a challenge. You&#39;ll be linerate on your Tbps+ switch.<br /><br />Control Plane is all about the software. But don&#39;t assume to have the same features on the merchant silicon based switches with a vendor that has custom ASIC dedicated to MPLS (SP) also on their portfolio. You have to adapt the code, it&#39;s not trivial.<br /><br />But I&#39;m not saying merchand silicon is better than custom ASIC. The latter one gives you opportunity to do greater things, to give more control, capability on any kind of protocol where a merchand silicon will limit you up to the next gen.",
+      "id": "787313293893109922",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-16T10:09:41.532+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "19 March 2014 22:27",
+      "html": "It&#39;s all about software.<br /><br />The moment Vyos codes MPLS features (LDP, TE, VPN) then watch vendors completely lose their stuff.<br /><br />Hell, it&#39;s almost damn near free right now. Mikrotik RouterOS does it for 45$. I&#39;m pretty sure it&#39;d be REAL easy for them to get one of these chipsets and convert it to use RouterOS. <br /><br />What it ends up coming down to is that no vendor wants to release a device that can do all MPLS related features for cheap because it will completely destroy their more ROI products (the more expensive products) and therefore they&#39;d make a lot less money.",
+      "id": "2000137682825695480",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-19T22:27:11.673+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "26 March 2014 17:40",
+      "html": "HP 5900 TOR series also have BCM T+ and full support for MPLS L3VPN/L2VPN/VPLS.",
+      "id": "3934962597327696062",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-26T17:40:11.454+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "29 March 2014 12:59",
+      "html": "You do not need 5900. You can get way cheaper: HP A5500-HI (== H3C S5500-HI) use Broadcom\u00b4s BCM56526. According to configuration guide MPLS/VPLS is supported as well.",
+      "id": "7552205910726028190",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-03-29T12:59:05.332+01:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    },
+    {
+      "date": "06 April 2014 02:45",
+      "html": "Juniper QFX5100 (Broadcom Trident II) does MPLS very well, especially in P/LSR mode.  Forwards up to 3-label stacks.  and yes, it&#39;s all in the software -- (Auto-BW, LSP/TE, etc)",
+      "id": "3556045432398802835",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2014-04-06T02:45:22.614+02:00",
+      "ref": "6553284222160045412",
+      "type": "comment"
+    }
+  ],
+  "count": 10,
+  "id": "6553284222160045412",
+  "type": "post",
+  "url": "2014/03/mpls-requires-custom-silicon-really.html"
+}

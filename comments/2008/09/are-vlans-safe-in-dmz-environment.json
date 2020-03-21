@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "date": "09 September 2008 15:58",
+      "html": "Not to mention that if the switch gets compromised, you've just handed over the keys to your network.  Anything outside the firewall needs to be just that - outside the firewall.",
+      "id": "5098795790980622883",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-09-09T15:58:00.000+02:00",
+      "ref": "5655231607968037465",
+      "type": "comment"
+    },
+    {
+      "date": "09 September 2008 21:16",
+      "html": "I wouldn't call Vlan leaking a myth. At one time it was a very real and serious vulnerability that was exploited by overflowing the capacity of the switch you were attacking, and causing it to \"downgrade\" from switch to a hub. <BR/><BR/>As you mentioned though, this is 8 years ago. Most switches have evolved to the point where backplanes far exceed the traffic that could ever be injected into their switchports.<BR/><BR/>Even beyond backplane enhancements there are many ways to further firm up your security stance - Virtual Device Contexts, Not using Layer 3 SVI's on a DMZ VLAN, utilizing PVLANs, using port security, and many more.<BR/><BR/>I think the real question is not \"are VLANs safe in a DMZ\" I think the question is have you mitigated the risk of compromise to levels that are acceptable to your business. This question remains whether you have a standalone switch or not. <BR/><BR/>--Colin",
+      "id": "5451812461712777036",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-09-09T21:16:00.000+02:00",
+      "ref": "5655231607968037465",
+      "type": "comment"
+    },
+    {
+      "date": "10 September 2008 12:11",
+      "html": "I have had many arguments about the use of VLANs on DMZ switches.  It always cracks me up, as more often than not the provider in lots of cases delivered the WAN/Internet service via a cisco switch that... used VLANs.  <BR/><BR/>Though a lot of effort was often put in to separating zones and DMZs, through the use of dedicated and separated switches.  I often thought it was a bit of a waste of effort, as often the WAN and Internet service were separated by the Telco/Service Provider by nothing more than a Virtual CCT or VLAN etc.. ie both types of traffic were delivered over the same physical connection.<BR/><BR/>The times I have pointed this out to the security \"architects\" they could not see or understand my point.  It was there belief that the Telco would never  make mistakes or incorrectly configure the service securely.  It still cracks me up.   <BR/><BR/>It is my opinion that as long as you use the full suite of tools available to you (as mentioned by the previous comment) and you pro-actively monitor and manage the infrastructure, then VLANs are OK.",
+      "id": "2607864858819466908",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "MikeS",
+      "profile": "https://www.blogger.com/profile/06024401234695602064",
+      "pub": "2008-09-10T12:11:00.000+02:00",
+      "ref": "5655231607968037465",
+      "type": "comment"
+    },
+    {
+      "date": "10 September 2008 17:25",
+      "html": "Mike, I am glad that I wasn\u00b4t the only one  cracking up on this issue.<BR/>Ivan, I don\u00b4t agree with your analysis of a switch wipe being a justifiable reason:<BR/>* A DMZ would not be a single switch install as it would be aggregated over at least two switches for resilience.  It is not possible to  have one of switch fail and not know about it.<BR/>* The assumption  with a switch failure as you described would mean no management or monitoring.  Such a crime, in my opinion, would be a mandatory removal of the responsible engineer\u00b4s Cisco cert.<BR/>* Good practice would be to have multiple DMZs.  As a minimum at least two to separate processing and data.  Since the DMZ connections are via a firewall, the only method to enable this configuration is via dot1q.  If the firewall was using dot1q the scenario as described would not be possible.",
+      "id": "3086742467391523282",
+      "image": "https://2.bp.blogspot.com/-W1SexVXRzEM/XJnELf51L5I/AAAAAAAA6G8/yk-GZnQwdxQ69UMRRc3xZ-zSlSLKUnGUACK4BGAYYCw/s32/rb.jpg",
+      "name": "Ronald Bartels",
+      "profile": "https://www.blogger.com/profile/00515499915979264058",
+      "pub": "2008-09-10T17:25:00.000+02:00",
+      "ref": "5655231607968037465",
+      "type": "comment"
+    },
+    {
+      "date": "10 September 2008 18:10",
+      "html": "@mikes: That's one of the reasons why some customers of ours use IPSec on top of SP MPLS VPN offering :)",
+      "id": "5234419403527530537",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-09-10T18:10:00.000+02:00",
+      "ref": "5655231607968037465",
+      "type": "comment"
+    },
+    {
+      "date": "06 October 2008 14:03",
+      "html": "In a big/enterprise environment mixing two vlans in a DMZ switch is only a fat finger away. Load Balancing module does even NOT need a fat finger since without carefull management you get a packet from balanced server to routing-neraest VLAN and not the client-nearest.",
+      "id": "3856337498729684180",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-10-06T14:03:00.000+02:00",
+      "ref": "5655231607968037465",
+      "type": "comment"
+    },
+    {
+      "date": "04 March 2009 16:56",
+      "html": "When you have multiple switches from different brands (cisco and dell for instance) it is not easy to roll out your DMZ vlan's over the whole network. Time consuming it is and it requires a lot of documentation. To reduce human error and stay time efficient it might be better to get real switches instead of a vlan. Plus the security doesnt have to get configured in a lot of ways.",
+      "id": "980199792814631950",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2009-03-04T16:56:00.000+01:00",
+      "ref": "5655231607968037465",
+      "type": "comment"
+    }
+  ],
+  "count": 7,
+  "id": "5655231607968037465",
+  "type": "post",
+  "url": "2008/09/are-vlans-safe-in-dmz-environment.html"
+}

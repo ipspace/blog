@@ -1,0 +1,102 @@
+{
+  "comments": [
+    {
+      "date": "08 December 2015 10:52",
+      "html": "If you want a L4 LB you are probably better off playing with ECMP, the hashing algorithm (enabling the resilient feature to avoid rehashing), next-hop groups and a script to test your services and enable/disable available next-hops. At least compared to using openflow : )",
+      "id": "5421386975583317014",
+      "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
+      "name": "David Barroso",
+      "profile": "https://www.blogger.com/profile/08333059712411851393",
+      "pub": "2015-12-08T10:52:42.072+01:00",
+      "ref": "3693111340830139343",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "08 December 2015 20:14",
+          "html": "The real question is &quot;what do you want your LB to do&quot;, and if you want to do anything beyond baseline 5-tuple load balancing, hardware is not the way to go... at which point all the discussions about OpenFlow/P4/whatever become just a nice excuse to generate 2-column articles.<br /><br />L7 load balancing is a solved problem both at small scale and at Google/Facebook scale. An architecture using centralized control plane is the wrong tool for this job.<br /><br />Long-lived high-band sessions are an obvious exception.",
+          "id": "8834499344471189850",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-12-08T20:14:14.204+01:00",
+          "ref": "6403076202033179388",
+          "type": "comment"
+        }
+      ],
+      "date": "08 December 2015 19:39",
+      "html": "Perhaps forward looking this is a discussion of P4 rather than OpenFlow, possibly in concert with whatever Barefoot Networks is doing.",
+      "id": "6403076202033179388",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Steve Chalmers",
+      "profile": "https://www.blogger.com/profile/03172563417086934763",
+      "pub": "2015-12-08T19:39:50.009+01:00",
+      "ref": "3693111340830139343",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "09 December 2015 15:11",
+          "html": "You might find something relevant in this slide set:<br /><br />http://content.ipspace.net/bin/list?id=Scalable<br /><br />I also covered L4-7 load balancing in more details in here:<br /><br />http://my.ipspace.net/bin/list?id=DC30<br /><br />... or you could start with Wikipedia ;)",
+          "id": "712739020576288777",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2015-12-09T15:11:38.619+01:00",
+          "ref": "7380101991139375451",
+          "type": "comment"
+        }
+      ],
+      "date": "08 December 2015 22:13",
+      "html": "Really good post. <br /><br />I agree the real question is really what do you want to accomplish with LB balancing. Would you point me to articles that describe what are the main use cases for LB?<br /><br />Openflow doesn&#39;t really do L4 forwarding efficiently as you explained. But it MAY(or not) be a better programming interface than scripts. I have the feeling that there&#39;s still value in OpenFlow Based LB because it&#39;s cheap. One could use ECMP groups to spread load to anycast server farms as you mentioned, and then use a software load-balancer to do the rest of the job. I&#39;d assume that&#39;d be much cheaper than 100K Vendor Hardware.",
+      "id": "7380101991139375451",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Flavio Castro",
+      "profile": "https://www.linkedin.com/in/castroflavio",
+      "pub": "2015-12-08T22:13:51.314+01:00",
+      "ref": "3693111340830139343",
+      "type": "comment"
+    },
+    {
+      "date": "10 December 2015 04:39",
+      "html": "Load balancers also monitor the service health of the destination server, so unless you integrate monitors into the controller then this isn&#39;t going to be easy at all. Maybe find a programmer to integrate OpenFlow into Linux HAproxy...<br /><br />Amazon must be doing something SDN-like for their ELB services, so it&#39;s an interesting question that someone out there has probably managed to do.<br /><br />In the real world it will be much easier (maybe cheaper too) to just install an F5/A10/Netscalar/HAproxy solution.<br />",
+      "id": "3942441851059303622",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Kerry Thompson",
+      "profile": "https://www.blogger.com/profile/00439180073297788221",
+      "pub": "2015-12-10T04:39:59.458+01:00",
+      "ref": "3693111340830139343",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "06 September 2017 12:11",
+          "html": "Nothing has changed in the last 2 years... apart from everyone moving from OpenFlow to the next shiny new thing.",
+          "id": "3471473845309047141",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Ivan Pepelnjak",
+          "profile": "https://www.blogger.com/profile/13457151406311272386",
+          "pub": "2017-09-06T12:11:43.341+02:00",
+          "ref": "3497769540757778340",
+          "type": "comment"
+        }
+      ],
+      "date": "06 September 2017 12:10",
+      "html": "All these discussion had took place 2 years backs! So, now do we have any solutions for minimizing the latency ? has the limitations on theoretical part decreased ?",
+      "id": "3497769540757778340",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2017-09-06T12:10:13.514+02:00",
+      "ref": "3693111340830139343",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "3693111340830139343",
+  "type": "post",
+  "url": "2015/12/should-we-use-openflow-for-load.html"
+}

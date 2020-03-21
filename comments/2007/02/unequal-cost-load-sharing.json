@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "date": "11 February 2007 03:58",
+      "html": "This sounds like a great feature. <BR/>Sorry for a newbie question but does ip cef take into account the bandwidth setting on an interface so that dissimilar speed interfaces can be proportionally load balanced?  I'm thinking about load sharing between an adsl and a cable modem. my application makes many connections to the same destination address so it would be nice to efficiently load share based on a source port.  Will OER work better in this case?",
+      "id": "6088949386393875023",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-02-11T03:58:00.000+01:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    },
+    {
+      "date": "13 February 2007 16:56",
+      "html": "CEF (or any other load-sharing mechanism) does not consider interface bandwidth (the only exception being MPLS TE tunnels). To perform non-equal load split you need a different approach, for example, <A HREF=\"http://ioshints.blogspot.com/2007/02/unequal-load-split-with-static-routes.html\" REL=\"nofollow\">creative use of static routes</A>.",
+      "id": "2853592972896974690",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-02-13T16:56:00.000+01:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    },
+    {
+      "date": "28 January 2008 20:17",
+      "html": "Hi! Sorry for a very basic and stupid question... For the tunnel you set up, the next hop for the destinations are all 0.0.0.0. In my testing scenarios the destination address of the tunnel are shown. Do you have any idea why it is 0.0.0.0? Maybe I got something wrong in my TE setup... Thanks a lot!!!",
+      "id": "641060984117008904",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-01-28T20:17:00.000+01:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    },
+    {
+      "date": "28 January 2008 20:44",
+      "html": "I don't have the original lab setup handy any more, so I would have to recreate it from scratch. Just guessing: I was using unnumbered interfaces. Did you assign IP addresses to the tunnel interfaces? In any case, the tunnel interfaces are point-to-point, so the next hop is effectively ignored (it's important only on multi-access LAN/WAN interfaces).",
+      "id": "1685955032114182589",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-01-28T20:44:00.000+01:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    },
+    {
+      "date": "28 January 2008 21:02",
+      "html": "Thanks a lot for your information. I am using unnumbered tunnel ifc as well. It seems that this does not affect the routing (for the reason you mentioned) but I was just a little bit concerned.. :-)",
+      "id": "6083971202175247624",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-01-28T21:02:00.000+01:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    },
+    {
+      "date": "04 December 2008 12:18",
+      "html": "if i change bandwidth on tunnel <BR/>i have change RSVP reservation <BR/>but i have no changel IGP/CEF load-share count<BR/>any ideas ? ;)<BR/><BR/>cost changed only after \"clear ip route XXXXXX\"",
+      "id": "575776570705205980",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-12-04T12:18:00.000+01:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    },
+    {
+      "date": "04 December 2008 12:25",
+      "html": "Obviously IP routing entries and CEF entries only change when the IP routing table changes ... which is not triggered by tunnel RSVP reservation, just by actual change in topology. No idea what else you could do.",
+      "id": "7029349784981220389",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-12-04T12:25:00.000+01:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    },
+    {
+      "date": "02 June 2009 12:24",
+      "html": "hi friends,<br /><br /> ip cef accounting load-balance-hash hidden command will enable the counters of packets forwarded in to links (fifth column).<br /><br />any one know how to clear it ? :P",
+      "id": "5015456195025516456",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Rajeev",
+      "profile": "https://www.blogger.com/profile/11252600093819128481",
+      "pub": "2009-06-02T12:24:48.529+02:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    },
+    {
+      "date": "07 August 2015 06:02",
+      "html": "ok<br />100 points load balancing MPLS-TE<br />Giuliano Hans Vera C.<br />interface Tunnel10<br />ip unnumbered FastEthernet0/1<br />ip load-sharing per-packet<br />tunnel mode mpls traffic-eng<br />tunnel destination 10.0.4.1<br />tunnel mpls traffic-eng autoroute announce<br />tunnel mpls traffic-eng priority 1 1<br />tunnel mpls traffic-eng bandwidth 10000<br />tunnel mpls traffic-eng path-option 1 explicit name ruta10<br />tunnel mpls traffic-eng load-share 10",
+      "id": "6962857262448034188",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Giuliano Hans Vera C.",
+      "profile": "https://www.blogger.com/profile/12514083520654811888",
+      "pub": "2015-08-07T06:02:45.155+02:00",
+      "ref": "727181533500272517",
+      "type": "comment"
+    }
+  ],
+  "count": 9,
+  "id": "727181533500272517",
+  "type": "post",
+  "url": "2007/02/unequal-cost-load-sharing.html"
+}

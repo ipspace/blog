@@ -1,0 +1,111 @@
+{
+  "comments": [
+    {
+      "date": "28 October 2013 11:17",
+      "html": "Full paper is available at http://inl.info.ucl.ac.be/publications/improving-network-agility-seamless-bgp-reconfigurations",
+      "id": "3759312616006668716",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Olivier Bonaventure",
+      "profile": "https://www.blogger.com/profile/16010323799492079420",
+      "pub": "2013-10-28T11:17:57.800+01:00",
+      "ref": "1172369486347977034",
+      "type": "comment"
+    },
+    {
+      "date": "28 October 2013 19:11",
+      "html": "I&#39;ve never heard from anyone in the SP industry that this is supposed to be a big problem. Most configuration changes should be done outside business hours anyway. Would be interesting if someone could comment on this.",
+      "id": "3044690814132312985",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-10-28T19:11:58.298+01:00",
+      "ref": "1172369486347977034",
+      "type": "comment"
+    },
+    {
+      "date": "28 October 2013 20:22",
+      "html": "You&#39;re probably right in small networks. However,<br /><br />- In critical networks (e.g., financial institutions, SWIFT), **any** traffic disruption is bad.<br /><br />- In large networks---spanning multiple countries---and composed of hundreds (if not more) BGP routers, non-trivial BGP reconfiguration can take a long time. As comparison, it took one week for AOL to migrate from OSPF to ISIS: http://meetings.ripe.net/ripe-47/presentations/ripe47-eof-ospf.pdf It is therefore crucial to know that the network will stay consistent in all the intermediate states (you don&#39;t want a loop in your network lasting for days).<br /><br />Also, some *non-neglected* networks still run an iBGP full-mesh, just to get better paths diversity in order to load-balance BGP traffic or to feed fast-convergence mechanisms like BGP PIC with backup paths without using fancy BGP extensions like ADD-PATH.",
+      "id": "9176484098884273743",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Laurent Vanbever",
+      "profile": "https://www.blogger.com/profile/03583813630260845993",
+      "pub": "2013-10-28T20:22:39.846+01:00",
+      "ref": "1172369486347977034",
+      "type": "comment"
+    },
+    {
+      "date": "28 October 2013 20:35",
+      "html": "A few other comments related to Ivan&#39;s article.<br /><br />It is not only in pathological cases. In the presentation, I give results on an *actual* Tier1 topology, not on crazy academic ones---using best current practices---and we found that numerous forwarding loops can be created. I assume pervasive BGP though, not MPLS.<br /><br />You&#39;re right that MPLS does guarantee forwarding correctness. It does not however guarantee signaling correctness. Your BGP network can still oscillate during the reconfiguration.  This is annoying as you might send your eBGP traffic to different eBGP next-hops, potentially connected to different ASes. Your customers will wonder why they see perpetual changes in their paths&#39; performance and where do these strange traceroute outputs come from...<br /><br />To finish on a funny note, yes, most researchers confronted with a non-trivial BGP problem can probably show that it is NP-hard (-complete). Actually, we went one step further and proved that some BGP problems are Turing-complete by building AND/OR/NOT logic gates, as well as memory and clock circuits using *only* BGP configurations. Check out http://vanbever.eu/pdfs/vanbever_turing_icnp_2013.pdf if you want more details ;-)<br />",
+      "id": "8607205069047235882",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Laurent Vanbever",
+      "profile": "https://www.blogger.com/profile/03583813630260845993",
+      "pub": "2013-10-28T20:35:38.530+01:00",
+      "ref": "1172369486347977034",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "28 October 2013 22:38",
+          "html": "You&#39;re right that network engineers definitely know that things can go wrong when they modify anything in their configuration. The presentation was not about shedding light on a new problem, but rather solve an old one ;-)<br /><br />&quot;Micro-loops&quot; can turn into &quot;Mega-loops&quot; when they run over multiple intermediate reconfiguration steps. For instance, I reconfigure (manually, sic) router A and, doing so, creates a loop for a destination D because A starts to send traffic to B which is not reconfigured yet. That loop will stay until I reconfigure (at least) router B. But if you don&#39;t know that in advance, you may reconfigure router B at the very end, causing a loop for a large part of the reconfiguration process. Of course, as Ivan correctly pointed out, MPLS removes that problem.<br /><br />The BGP reconfiguration framework we describe at the end of the presentation leverages a similar idea of running two BGP control-planes, although we do have scalability in mind (i.e., avoiding to duplicate all BGP routes and the associated churn).",
+          "id": "6973534116662708098",
+          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+          "name": "Laurent Vanbever",
+          "profile": "https://www.blogger.com/profile/03583813630260845993",
+          "pub": "2013-10-28T22:38:25.087+01:00",
+          "ref": "4678359858472739150",
+          "type": "comment"
+        }
+      ],
+      "date": "28 October 2013 22:19",
+      "html": "I don&#39;t think the presentation really presents anything most SP engineers haven&#39;t known for a long time.  Transient loops will occur when making changes to a hierarchy of BGP peers causing micro-loops or sub-optimal routing.   When people start making liberal use of the &quot;next-hop self&quot; command it causes even more problems.  <br /><br />There are large providers today who just simply use a full BGP mesh, even with 50+ routers.  The reality is even though RP CPUs aren&#39;t the beefiest in the computing world, handling 50 BGP sessions and the related updates is nothing these days.  In a lot of instances route reflection just complicates matters.  <br /><br />There are solutions as well like using dual-plane topologies where you can effectively shut off a plane for maintenance, make your changes, and then turn it back up.  ",
+      "id": "4678359858472739150",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-10-28T22:19:24.490+01:00",
+      "ref": "1172369486347977034",
+      "type": "comment"
+    },
+    {
+      "comments": [
+        {
+          "date": "29 October 2013 12:49",
+          "html": "I mean &quot;provider edge routers&quot; in the POP instead of &quot;customer edge&quot;, of course...",
+          "id": "3799358186632043397",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Michael",
+          "profile": null,
+          "pub": "2013-10-29T12:49:45.464+01:00",
+          "ref": "5863381306338432233",
+          "type": "comment"
+        },
+        {
+          "date": "29 October 2013 15:30",
+          "html": "I have simulated networks using hardware test appliances along with other standard routing gear and been able to do hundreds of sessions in a full mesh.   Scale limits on most modern RPs from the main vendors is 2-4K sessions.   There are some topologies with things like Seamless MPLS or even BGP in the datacenter where you could potentially run quite a few BGP sessions on those edge aggregation nodes, not in a full mesh but a session is a session and the RR scenario is more taxing.<br />  <br />",
+          "id": "1463375119013130753",
+          "image": "https://resources.blogblog.com/img/blank.gif",
+          "name": "Anonymous",
+          "profile": null,
+          "pub": "2013-10-29T15:30:38.200+01:00",
+          "ref": "5863381306338432233",
+          "type": "comment"
+        }
+      ],
+      "date": "29 October 2013 12:39",
+      "html": "I have never been a friend of BGP reflectors. I understand that they are probably beneficial in very large networks. That is where I see a potential use case for them. For example in a POP that has a few backbone routers, while supplying lots of customer edge routers with full BGP feeds. Each POP needs a redundant setup of route reflectors then. This has to be carefully designed then, because it adds a degree of complexity and potential sources of failure.<br />A backbone network consisting of less than maybe a few dozen iBGP peers however, I would normally configure using an iBGP full mesh.<br />I believe that the manageability problem is overstated, because most networks do not change the topology of their BGP backbone each day.<br />I have wondered how far the iBGP full mesh would scale. I guess nobody knows, because nobody ever really tried. People follow conventional wisdom, which is that you should use route reflectors.<br />It does not appear to me that there is a lot of burden for a router in an iBGP session, and I believe it would scale to hundreds or thousands of peers.<br />So if the managemability problem for iBGP sessions could be mitigated or solved, then I believe that even fairly large networks could do without route reflectors.",
+      "id": "5863381306338432233",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Michael",
+      "profile": null,
+      "pub": "2013-10-29T12:39:34.113+01:00",
+      "ref": "1172369486347977034",
+      "type": "comment"
+    }
+  ],
+  "count": 9,
+  "id": "1172369486347977034",
+  "type": "post",
+  "url": "2013/10/ibgp-migrations-can-generate-forwarding.html"
+}

@@ -1,0 +1,173 @@
+{
+  "comments": [
+    {
+      "date": "16 December 2011 15:27",
+      "html": "c&#39;moooonnnn! we need at least some more details! is it a single broadcast domain?  :) do they do vmotion over the DCI?",
+      "id": "1308749932037007882",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "federic0",
+      "profile": null,
+      "pub": "2011-12-16T15:27:59.022+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "16 December 2011 15:29",
+      "html": "As far as I understood they had a single broadcast domain  =-X<br /><br />vMotion over DCI? That&#39;s usually one of the major requirements, but then nobody uses it once they figure out how slow it is.",
+      "id": "2962743264075917437",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-12-16T15:29:48.358+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "16 December 2011 19:20",
+      "html": "Hi Ivan,<br /><br />Thanks for sharing. I know you don&#39;t favor L2 DCI and I would agree with you on some of the points, however it had also been proven to be an excellent method for DC migration in hot-cold (active-standby) manner, which eliminates the need for re-IPing and all the associated nightmares to go along with it. Due to VMWare&#39;s live vMotion characteristics and limitations doing such migrations in active-active manner is indeed tough. <br /><br />I salute you for not disclosing real customer name, however I hope they know what they are doing. There are methods to provide L2 DCI while isolating each Data Center from STP perspective and the L3 to go along with it. If they had a broadcast storm that took down the entire environment, it is their specific design flaw, rather than a flawed concept :-)<br /><br />TRiLL/Fabric Path, OTV and BPDU Filtering along with Global DNS LB, host route injection or LISP can provide much safer L2 DCI, than uncontrolled port channels or wrongly deployed pseudowires, that I suspect this customer might have been using.<br /><br />My .02<br /><br />Thanks,<br />David",
+      "id": "7497381512027651823",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "David Klebanov",
+      "profile": null,
+      "pub": "2011-12-16T19:20:02.338+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "17 December 2011 06:33",
+      "html": "Have you looked at the draft from Huawei regarding their proxyarp+mpls l3vpn idea? It solves the broadcast, spanning-tree, etc issues I could think of.",
+      "id": "378507038954461143",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "nosx",
+      "profile": null,
+      "pub": "2011-12-17T06:33:53.432+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "17 December 2011 07:57",
+      "html": "Not yet, thanks for the pointer. Any links?<br /><br />BTW, the way you describe it, it seems to be LAM over MPLS/VPN. I hope I&#39;m wrong  :-E",
+      "id": "6654129951540412552",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-12-17T07:57:49.874+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "17 December 2011 20:18",
+      "html": "I wish i still had the pdf of that powerpoint deck from them, it was quite a hack. The gist of it was using proxy arp for local host reachability spanning the same subnet across 3+ datacenters, while at the same time hacking proxy-arp into BGP to advertise the individual /32&#39;s for hosts between the sites to intelligently deliver traffic to the right side (and proxy-arp at site 2 for a host in site 1 etc)...<br /><br />Anyways ill keep digging to see if i can unearth a copy. The nice part was it used existing protocols and mechanisms. The down side was that it exploded the routing table with a bunch of worthless /32 entries. Instead of doing MAC routing like other vendors, they wanted to do host level IP routing.",
+      "id": "2297631889871291496",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "nosx",
+      "profile": null,
+      "pub": "2011-12-17T20:18:59.069+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "17 December 2011 20:23",
+      "html": "Here we go, i think this might be some bits of it:<br />http://www.nanog.org/meetings/nanog52/abstracts.php?pt=MTc2MiZuYW5vZzUy&amp;nm=nanog52<br /><br />I think i saw in the context of an an IETF presentation, but the high level concept is spelled out fairly well. Id love to see a blog post analyzing this so we can argue about that as well ;P<br /><br />Compared to some of the L2 scaling technologies, a constrained /32 routing strategy with proxyarping might just be the lesser of many evils in same-subnet DCI space.<br /><br />Abstract: <br />Virtual Subnet (VS) provides a scalable IP-only L2VPN service by reusing the proven BGP/MPLS IP VPN [RFC4364] and ARP proxy [RFC925][RFC1027] technologies. VS could be used for interconnecting geographically dispersed data center locations at scale. In contrast with the existing VPLS solution, VS alleviates the broadcast storm impact on the network performance to a great extent by splitting the otherwise whole ARP broadcast and unknown unicast flooding domain associated with an IP subnet that has been extended across the MPLS/IP backbone, into multiple isolated parts per data center location, besides, the MAC table capacity demand on CE switches is greatly reduced due to the usage of ARP proxy.",
+      "id": "2168560366194363904",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "nosx",
+      "profile": null,
+      "pub": "2011-12-17T20:23:59.035+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "17 December 2011 20:25",
+      "html": "Also, the standards track doc http://tools.ietf.org/html/draft-xu-virtual-subnet-06",
+      "id": "7091498431267013188",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "nosx",
+      "profile": null,
+      "pub": "2011-12-17T20:25:33.611+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "19 December 2011 02:44",
+      "html": "David,<br /><br />I am the person that provided this story to Ivan, so I will attempt to provide some more detail.<br /><br />Firstly, the technical network staff involved are extremely competent and the &quot;cream of the crop&quot; in the region this story happened in. So no issues there, however they were overruled by a higher authority when advising not to implement L2 DCI (the server guys had done a great sales job about how great it would be to vMotion crap all over the place).<br /><br />TRILL/OTV/LISP etc were not available when the network was built, so port channels built over pseudowires to do all the bundling. STP isolation between DC&#39;s would not have helped the situation.<br /><br />What caused the loop and storm? Misconfiguration in VMware on an &quot;edge&quot; switch port - yes I am aware vSwitch etc has forms of split horizon but the server guys still managed to make a monumental stuff up that brought both DC&#39;s crashing down (all switch CPU&#39;s went over 99%) through some creative back end bridging.<br /><br />There was nothing more we could have done to mitigate against this type of problem, especially considering the loop was in an end host that doesn&#39;t run STP. Storm control could have contained it better, but as an example look at the latest generation of blades for the HP C7000 - with heavy virtualization you could have theoretically 700+ VM&#39;s running on a pair of uplinks - storm control causes its own problems for every host on that interface. Nexus 1000v fixes this to an extent of course by providing per vNIC storm control capabilities.<br /><br />So with current technologies available, I agree with Ivan that the concept has some huge technical flaws. Yes the incident was caused by misconfiguration, but we are humans and mistakes WILL happen :)",
+      "id": "5644196365403662272",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous-DC-Guy",
+      "profile": null,
+      "pub": "2011-12-19T02:44:33.015+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "19 December 2011 19:40",
+      "html": "David,<br /><br />Once you add together FabricPath (or TRILL), OTV, BPDU filtering, HSRP filtering and LISP/RHI, the solution becomes &quot;quite&quot; complex and &quot;somewhat&quot; challenging to debug at 2AM on Sunday morning when everything breaks down. <br /><br />I&#39;m not saying it can&#39;t be done, I&#39;m just saying it might not be the best way to deal with the problem at hand. Sometimes you simply have to tell the Apps people to fix their problems.<br /><br />My \u20ac0.0002<br />Ivan",
+      "id": "3905897919035422981",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-12-19T19:40:22.496+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "19 December 2011 19:41",
+      "html": "Thank you! Feedback in early January, I&#39;m wrapping up and disappearing in a few days  =-X",
+      "id": "2648859802990224209",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2011-12-19T19:41:55.860+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "21 December 2011 16:10",
+      "html": "i would like to strike a blow about re-IPing, it is easier than expected, most often DNS changes makes it transparent to clients/users , it makes your new DC infrastructure very clean and summariz-able  :-D<br />it&#39;s even a lot more easier when the customer takes care of changing IP on their servers 8-)<br /><br />(btw, this is fine if you ain&#39;t hard-coded IPs into some strange/exotic apps...)",
+      "id": "6928243301069053903",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "federic0",
+      "profile": null,
+      "pub": "2011-12-21T16:10:12.523+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "17 January 2012 03:25",
+      "html": "I&#39;m the author of that draft. Hoping to see more comments on that draft.",
+      "id": "1452767188723670886",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "xiaohu",
+      "profile": null,
+      "pub": "2012-01-17T03:25:05.338+01:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2012 06:33",
+      "html": "Hi Ivan,  <br /> <br />Forgive me for the simple question, but I&#39;m a virtualization dude and I can&#39;t seem to find a definitive answer. There&#39;re a couple data centers with a point-to-point fiber connection between Nexus 5020s. The distance is about one or two kilometers between data centers. This connection is only used for VMware&#39;s Site Recovery Manager (and thus storage replication with NetApp SnapMirror) for planned and unplanned migrations between the sites. The local staff call this connection a &quot;stretched VLAN,&quot; but I&#39;m not convinced they&#39;re using this term correctly. Only a single VLAN is trunked over this connection for replication traffic.  <br /> <br />Reading your material, stretched VLANs include a handful of advanced networking technologies, not a simple P2P, L2 fiber connection between 5020s.  <br /> <br />If this setup is not a stretched VLAN, then what is it?  <br /> <br />BTW, as a vitualization guy (with a networking foundation), your site is ripe with good info. I recommend ioshints.info and PacketPushers regularly to folks. Thanks for what you do.  <br /> <br />All the best,  <br /> <br />Mike",
+      "id": "7361504280468243491",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Mike Brown",
+      "profile": null,
+      "pub": "2012-04-09T06:33:38.678+02:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    },
+    {
+      "date": "09 April 2012 11:06",
+      "html": "Hi Mike,<br /><br />Stretched VLAN could be as simple as what you describe. Technology you use is not so important, the crucial question is &quot;are we bridging or routing?&quot; As long as you&#39;re bridging (some people would incorrectly call it &quot;switching&quot;) you&#39;re vulnerable to broadcast storms and (now this IS depending on technology you use) STP topology changes or device bugs.<br /><br />If you&#39;re using inter-DC link just for storage replication, I don&#39;t understand why it has to be a VLAN (most storage replication technologies work over IP, so you could use a routed solution), but it&#39;s definitely far better than tons of VLANs stretched across both data centers.<br /><br />Hope this helps, if not, please use &quot;Contact me&quot; link to send me an email<br />Ivan",
+      "id": "6871175180489920185",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Ivan Pepelnjak",
+      "profile": null,
+      "pub": "2012-04-09T11:06:52.802+02:00",
+      "ref": "384023114399335942",
+      "type": "comment"
+    }
+  ],
+  "count": 15,
+  "id": "384023114399335942",
+  "type": "post",
+  "url": "2011/12/large-scale-l2-dci-true-story.html"
+}

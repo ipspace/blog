@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "date": "16 May 2013 09:57",
+      "html": "I saw their website a while back, and checked out some introduction videos of them on YouTube, but there&#39;s still a foggy cloud surrounding their product to me. Imagine a SP network with 100+ routers, how do they keep the webinterface to-the-point and understandable? The way the WebUI looks to me right now is that it&#39;s something for ~10 devices. Apart from that, how does it handle multiple users working at the same time at configurations? Either through their WebUI or directly from device CLI?",
+      "id": "2739070096022594500",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-05-16T09:57:37.865+02:00",
+      "ref": "3219061854173882925",
+      "type": "comment"
+    },
+    {
+      "date": "16 May 2013 15:47",
+      "html": "Have mixed feelings about Tail-f. To me their solution looks like device api normalizer by Yang. What&#39;s still missing is network services modelling and by network service I mean service that spans more than one device. You need to understand topology, and service overlays. One of attempts to model network services is Quantum in OpenStack - but still very rudimentary.....",
+      "id": "8136654277134000536",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2013-05-16T15:47:56.812+02:00",
+      "ref": "3219061854173882925",
+      "type": "comment"
+    },
+    {
+      "date": "16 May 2013 16:45",
+      "html": "Dear Anonymous #1,<br /><br />Actually, we do have NCS up and running in real networks with 100+ routers without any concerns from the customers regarding the usability of the web interface. Now, if you&#39;ve looked closer at NCS (and if you haven&#39;t, I&#39;ll be happy to show you!) you know that the Web UI is driven by the device and service models providing a comfortable development environment based on the latest and greatest for web developers (e.g. bootstrap, backbone) so they can tailor the look and feel their hearts content.<br /><br />Happy also that you bring up management of change collisions through the northbound APIs (including across CLI, REST, Java API, etc). This is a first class feature in any transaction-oriented system like NCS. We have pretty cool demos that show live collision detection across all the interfaces allowing for controlled remediation.<br /><br />Managing out-of-band changes is also fundamental to our customers and a key part of NCS. We use very clever (if I may say so) check-sync features combined with the ability to remediate configuration changes to- or from the network. This is a point of very strong opinion among most network network engineers and the ability to allow the manager to overwrite the network OR the opposite is key. But it gets better. Since we have a strong association between network device configuration and service instances, we can also trivially show service impact information and allow that to be driving the decision of whether to overwrite the network or take the changes into the system. That&#39;s actually one of the highlights of our current demo and normally gets people to lean forward :-)<br /><br />Again; I&#39;ll be more than happy to show you this in more detail! Find me at calle@tail-f.com or @cmoberg.",
+      "id": "2093114748029451089",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Carl Moberg",
+      "profile": "http://www.tail-f.com/",
+      "pub": "2013-05-16T16:45:18.085+02:00",
+      "ref": "3219061854173882925",
+      "type": "comment"
+    },
+    {
+      "date": "16 May 2013 16:57",
+      "html": "Dear Anonymous #2,<br /><br />When you write: <br /><br />&quot;What&#39;s still missing is network services modelling and by network service I mean service that spans more than one device. You need to understand topology, and service overlays.&quot;<br /><br />...you&#39;re actually hitting a pretty decent description of what NCS does.<br /><br />We have large service providers and data centers running these types of services in production. We have gone through a very large SPs whole service portfolio (ranging from triple play for consumers to VPNs for businesses) and encoded them in YANG. It was *very* interesting I&#39;ll tell you :-) And it worked very well. And we have several other examples including BGP peering/transit services and datacenter multi-tenancy/service chaining (yes, including service insertion and retraction in real time across multiple appliance vendors).<br /><br />OpenStack Networking&#39;s (we&#39;re supposed to remind each other not to call it &quot;Quantum&quot; any more, right :-) view of the network world is currently a little too constrained in my mind. And it gets complicated in that it&#39;s a part of how OSN is designed at the core. Some activities going on in this area (e.g. the ML2 blueprint) and we are working on contributing solutions here as well. Stay tuned.<br /><br />And my invitation to demo is of course applicable generally. You too should feel free to find me at calle@tail-f.com or @cmoberg.<br />",
+      "id": "241442724750118335",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Carl Moberg",
+      "profile": "http://www.tail-f.com/",
+      "pub": "2013-05-16T16:57:04.753+02:00",
+      "ref": "3219061854173882925",
+      "type": "comment"
+    },
+    {
+      "date": "16 May 2013 23:08",
+      "html": "calle@tail-f.com or @cmoberg, you guys must be mighty Swedes! :-)<br />&quot; We have gone through a very large SPs whole service portfolio ... It was *very* interesting I&#39;ll tell you&quot;. <br /><br />I would have loved to have been there through that exercise, I did it with a telco and their SONET infrastructure 10 years ago and we never got anything of much value out of it. <br /><br />Definitely an intriguing product, hope to see it in action some day.",
+      "id": "6314204850631758239",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Unknown",
+      "profile": "https://www.blogger.com/profile/06282805246388430473",
+      "pub": "2013-05-16T23:08:29.227+02:00",
+      "ref": "3219061854173882925",
+      "type": "comment"
+    },
+    {
+      "date": "17 June 2014 16:40",
+      "html": "Congratulations to Tail-f &amp; Cisco on the acquisition ",
+      "id": "5970280401663828264",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "jem",
+      "profile": "https://www.blogger.com/profile/02405761282005308010",
+      "pub": "2014-06-17T16:40:15.911+02:00",
+      "ref": "3219061854173882925",
+      "type": "comment"
+    },
+    {
+      "date": "03 January 2018 20:32",
+      "html": "I  know its 4.5+ year old topic.  I wonder whats the current state of NSO ? Wondering how it matured over the last 4.5 years. ",
+      "id": "3243475202335574261",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2018-01-03T20:32:30.751+01:00",
+      "ref": "3219061854173882925",
+      "type": "comment"
+    }
+  ],
+  "count": 7,
+  "id": "3219061854173882925",
+  "type": "post",
+  "url": "2013/05/tail-f-network-control-system-first.html"
+}

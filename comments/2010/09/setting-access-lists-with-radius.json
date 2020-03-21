@@ -1,0 +1,63 @@
+{
+  "comments": [
+    {
+      "date": "22 September 2010 14:14",
+      "html": "Thanks, I&#39;m glad to see an article on RADIUS.  I was wondering what was wrong with me since there seemed to be a dearth of information on RADIUS for Cisco routers.",
+      "id": "5544717784142373162",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Brian Raaen",
+      "profile": null,
+      "pub": "2010-09-22T14:14:32.000+02:00",
+      "ref": "5926671661811549308",
+      "type": "comment"
+    },
+    {
+      "date": "22 September 2010 20:07",
+      "html": "Incidentally, if you apply an ACL to a virtual-template, it will _immediately_ trump the one(s) passed down by radius during PPP negotiation.  I assume it simply applies them sequentially, as you said.  <br /><br />So what I did was define an empty ACL, apply it to my radius accounts then wait two weeks to ensure all PPP sessions had that ACL installed.  Then I simply added lines to the middle of my ACL.<br /><br />Now we can hand down ACLs (and hopefully soon vrf configs) from our CMS (Platypus).  Thanks also to rancid for making the addition and maintenance of those ACLs much easier.",
+      "id": "8183794593563860279",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Christopher Hunt",
+      "profile": null,
+      "pub": "2010-09-22T20:07:13.000+02:00",
+      "ref": "5926671661811549308",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2010 08:20",
+      "html": "you can use this command<br />&quot;radius-server attribute 11 default direction in&quot;<br />and radius Filter-id attribute<br />&quot;showme           Cleartext-Password := &quot;1234&quot;<br />                 Service-Type = Framed-User,<br />                 Filter-Id = &quot;100&quot;,<br />                 Framed-Protocol = PPP&quot;",
+      "id": "8697346190999329621",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "vit",
+      "profile": null,
+      "pub": "2010-09-23T08:20:02.000+02:00",
+      "ref": "5926671661811549308",
+      "type": "comment"
+    },
+    {
+      "date": "23 September 2010 09:32",
+      "html": "&quot;and hopefully soon vrf configs&quot; You can configure like this:<br />1. AAA radius group has ip radius soure-interface loopback1 vrf VRF_NAME<br />2. loopback1 in vrf VRF_NAME<br />3. Virtual template has a string ip vrf forwarding VRF_NAME and ip unnumbered lo1<br />4. radius sent framed-ip or other attr.<br />You can&#39;t configure like that: <br />1. AAA radius group <br />2. Virtual template without ip unnumbered and  ip vrf forwarding VRF_NAME<br />3. radius sent ip-unnumbered lo1<br />4. radius sent ip-vrf , which removes ip-unnumbered<br />As you know, command &quot;ip vrf forwarding VRF_NAME&quot; on interface removes current ip-address. Make sure that the radius server sends the attributes in the correct order.",
+      "id": "4166077542655559204",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "vit",
+      "profile": null,
+      "pub": "2010-09-23T09:32:05.000+02:00",
+      "ref": "5926671661811549308",
+      "type": "comment"
+    },
+    {
+      "date": "26 September 2010 19:56",
+      "html": "We use something like the following in our radius for per-user acls.<br /><br />test                     User-Password = &quot;test&quot;<br />                                Service-Type = Framed-User,<br />                                Framed-Protocol = PPP,<br />                                Framed-IP-Address = x.x.x.x,<br />                                cisco-avpair=&quot;ip:inacl#1=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#2=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#3=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#4=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#5=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#6=permit ip host x any&quot;,<br />                                cisco-avpair=&quot;ip:inacl#7=deny   ip any any&quot;",
+      "id": "6433052210504443439",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Tassos",
+      "profile": null,
+      "pub": "2010-09-26T19:56:47.000+02:00",
+      "ref": "5926671661811549308",
+      "type": "comment"
+    }
+  ],
+  "count": 5,
+  "id": "5926671661811549308",
+  "type": "post",
+  "url": "2010/09/setting-access-lists-with-radius.html"
+}

@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "date": "06 December 2007 12:25",
+      "html": "Hi!<BR/><BR/>Is there a difference between the \"(no) neighbor x.y.z fall-over\" and the \"(no) bgp fast-external-fallover\" (except that the first one is for neighbors and the second one globally)?",
+      "id": "5070961371410857381",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-12-06T12:25:00.000+01:00",
+      "ref": "4756208637706054110",
+      "type": "comment"
+    },
+    {
+      "date": "06 December 2007 16:19",
+      "html": "sebastian,<BR/><BR/>I believe the \"(no) neighbor x.y.z fall-over\" applies to iBGP sessions (BGP sessions established to a neighbor in the same AS) and \"(no) bgp fast-external-fallover\" applies only to EBGP sessions (BGP sessions established to a neighbor with a different AS).",
+      "id": "4271374284224278442",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-12-06T16:19:00.000+01:00",
+      "ref": "4756208637706054110",
+      "type": "comment"
+    },
+    {
+      "date": "06 December 2007 18:24",
+      "html": "That's an interesting discovery, Ivan. I looked at a RFC before (didn't remember the number) and it said it normally would take 60 seconds to initiate the BGP session to a peer. I will post again after I found the RFC...",
+      "id": "7311596416425878438",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-12-06T18:24:00.000+01:00",
+      "ref": "4756208637706054110",
+      "type": "comment"
+    },
+    {
+      "date": "06 December 2007 19:01",
+      "html": "Okay, my memory was fading. It was actually 120 seconds as per RFC 1771. The BGP timer name was \"BGP ConnectRetry timer\" and it's set to 120 seconds by default in the IOS and cannot be changed. See the below exceprt taken from CCO:<BR/><BR/>Q. What is the default BGP ConnectRetry timer, and is it possible to tune the BGP ConnectRetry timer? <BR/><BR/>A. The default BGP ConnectRetry timer is 120 seconds. Only after this time passes does the BGP process check to see if the passive TCP session is established. If the passive TCP session is not established, then the BGP process starts a new active TCP attempt to connect to the remote BGP speaker. During this idle 120 seconds of the ConnectRetry timer, the remote BGP peer can establish a BGP session to it. Presently, the Cisco IOS ConnectRetry timer cannot be changed from its default of 120 seconds. <BR/><BR/>The URL is here:<BR/><BR/>http://www.cisco.com/en/US/tech/tk365/technologies_q_and_a_item09186a00800949e8.shtml#twenty-two",
+      "id": "4415634660291771042",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2007-12-06T19:01:00.000+01:00",
+      "ref": "4756208637706054110",
+      "type": "comment"
+    },
+    {
+      "date": "09 December 2007 09:34",
+      "html": "Thanks for all the comments ... it looks I've opened another can of worms. Obviously a good topic for another IP Corner article ;)",
+      "id": "5242478924212607564",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2007-12-09T09:34:00.000+01:00",
+      "ref": "4756208637706054110",
+      "type": "comment"
+    },
+    {
+      "date": "06 March 2008 10:20",
+      "html": "hi,<BR/><BR/>i see the neighbor fallover command on my 7600 but not on my 6500. can anybody confirm this?",
+      "id": "585072662944785901",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-03-06T10:20:00.000+01:00",
+      "ref": "4756208637706054110",
+      "type": "comment"
+    },
+    {
+      "date": "07 March 2008 15:35",
+      "html": "Whenever you want to know which trains include a specific command (6500 and 7600's have dedicated release trains), check the command reference. <A HREF=\"http://www.cisco.com/en/US/docs/ios/iproute/command/reference/irp_bgp3.html#wp1013842\" REL=\"nofollow\">Here's the one for the neighbor fall-over command</A>.",
+      "id": "2269718838731381612",
+      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+      "name": "Ivan Pepelnjak",
+      "profile": "https://www.blogger.com/profile/13457151406311272386",
+      "pub": "2008-03-07T15:35:00.000+01:00",
+      "ref": "4756208637706054110",
+      "type": "comment"
+    },
+    {
+      "date": "26 November 2008 11:32",
+      "html": "Hi!<BR/><BR/>My BGP Fast Session Deactivation (with Selective Address Tracking) immediately detects loss of neighbor, but doesn&#39;t establishes session after BGP neighbor becomes reachable via alternate route.<BR/><BR/>Nov 26 13:10:49.747: %BGP-5-ADJCHANGE: neighbor 172.31.255.65 Down Route to peer lost<BR/>Nov 26 13:10:49.783: RT: add 172.31.255.65/32 via 172.31.255.33, isis metric [115/20]<BR/>Nov 26 13:10:49.787: RT: NET-RED 172.31.255.65/32<BR/>Nov 26 13:10:49.787: RT: add 172.31.255.65/32 via 172.31.255.33, isis metric [115/20]<BR/>Nov 26 13:10:49.787: RT: NET-RED 172.31.255.65/32<BR/>Nov 26 13:10:49.791: BGP- ATF: EVENT 172.31.255.65/32 RIB update UP<BR/>Nov 26 13:10:49.791: BGP- ATF: 172.31.255.65/32 (0) Adding route<BR/>...<BR/>Nov 26 13:11:23.124: BGP- ATF: EVENT 172.31.255.65/32 (0) Track start<BR/>Nov 26 13:11:23.128: BGP- ATF: 172.31.255.65/32 (0) Adding track<BR/>Nov 26 13:11:23.128: RT: Try lookup less specific 172.31.255.65/32, default 1<BR/>Nov 26 13:11:23.128: RT: Found subnet on less specific 172.31.255.65/32<BR/>Nov 26 13:11:23.128: BGP- ATF: EVENT Query 172.31.255.65/32 (0) found route<BR/><BR/>Session establishes after 30 seconds +/- 3 s jitter.<BR/><BR/>Also, I&#39;m confused by follow messages:<BR/><BR/>ov 26 13:10:49.743: RT: Try lookup less specific 172.31.255.65/32, default 1<BR/>Nov 26 13:10:49.743: RT: Failed found subnet on less specific<BR/>Nov 26 13:10:49.743: RT: Found supernet on less specific 172.16.0.0/12<BR/>Nov 26 13:10:49.743: BGP- ATF: EVENT Query 172.31.255.65/32 (0) found route<BR/>Nov 26 13:10:49.743: BGP- ATF: 172.16.0.0/12 (0) Adding route<BR/>Nov 26 13:10:49.743: BGP- ATF: R 172.16.0.0/12 (0) -&gt; Updating route<BR/>Nov 26 13:10:49.743: BGP- ATF: R 172.16.0.0/12 (0) -&gt; Tu4 172.22.253.1 Notifying<BR/><BR/>Why BGP &quot;adding&quot; route? Is it specific for Cisco BGP implementation and it does not sence for this feature?",
+      "id": "6177656089186968321",
+      "image": "https://resources.blogblog.com/img/blank.gif",
+      "name": "Anonymous",
+      "profile": null,
+      "pub": "2008-11-26T11:32:00.000+01:00",
+      "ref": "4756208637706054110",
+      "type": "comment"
+    }
+  ],
+  "count": 8,
+  "id": "4756208637706054110",
+  "type": "post",
+  "url": "2007/12/bgp-fast-session-deactivation-also.html"
+}
