@@ -28,6 +28,7 @@ RECENT_PERIOD=180
 
 CONFIG={}
 BLOCK_TAGS=[]
+NOW=datetime.now(timezone.utc)
 
 def parseCLI():
   parser = argparse.ArgumentParser(description='Create blog metadata and templates')
@@ -45,6 +46,8 @@ def parseCLI():
                   help='Content directory')
   parser.add_argument('--log', dest='logging', action='store_true',
                   help='Enable basic logging')
+  parser.add_argument('--quiet', dest='quiet', action='store_true',
+                  help='Report only major errors')
   parser.add_argument('--verbose', dest='verbose', action='store_true',
                   help='Enable more verbose logging')
   return parser.parse_args()
@@ -74,6 +77,11 @@ def scanFile(path,archive,tags):
       pubdate = dateutil.parser.parse(date)
     except:
       return failure("Date parsing error %s in %s" % (sys.exc_info()[0],path))
+
+    if pubdate > NOW:
+      if not args.quiet:
+        print("Blog post %s is not published yet, skipping" % path)
+      return
 
     year = pubdate.year
     month = pubdate.month

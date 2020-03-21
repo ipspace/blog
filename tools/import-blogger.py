@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup,Comment
 import yaml
 from datetime import date, datetime, timezone
 import dateutil.parser
+import argparse
 
 POST_PATH="content/posts/"
 IMAGE_PATH="static/"
@@ -21,6 +22,7 @@ IMAGE_SERVER="bp.blogspot.com"
 IMAGE_URL="/"
 URL_LIMIT=""
 LOGGING=""
+LOGFILE=""
 
 def getElementText(parent,tag):
   elem = parent.find(tag)
@@ -83,8 +85,9 @@ def fetchAndSaveImage(obj,attr,path):
         f.write(url.read())
         f.close()
       obj[attr] = IMAGE_URL+imgname
-      LOGGING.write("Fetched image: "+imgpath+"\n")
-      LOGGING.flush
+      if LOGGING:
+        LOGFILE.write("Fetched image: "+imgpath+"\n")
+        LOGFILE.flush
       return 1
     else:
       sys.stderr.write("Error fetching "+href+": "+str(url.status)+" "+url.reason+"\n")
@@ -110,13 +113,15 @@ def fixScriptHide(tree,path):
   for s in tree("script"):
     jscode = s.string
     if jscode and jscode.find('startHide') >= 0:
-      LOGGING.write('... found old startHide')
-      LOGGING.flush()
+      if LOGGING:
+        LOGFILE.write('... found old startHide')
+        LOGFILE.flush()
       s.replace_with(Comment("more"))
       cnt = cnt + 1
     if jscode and jscode.find('endHide') >= 0:
-      LOGGING.write('... found old endHide')
-      LOGGING.flush()
+      if LOGGING:
+        LOGFILE.write('... found old endHide')
+        LOGFILE.flush()
       s.extract()
       cnt = cnt + 1
   return cnt
@@ -194,7 +199,9 @@ def dumpPost(entry):
   stdout = sys.stdout
   url = findLink(entry,"{http://www.w3.org/2005/Atom}link","alternate","text/html")
   if not(url):
-    return 0
+    url = findLink(entry,"{http://www.w3.org/2005/Atom}link","replies","text/html")
+    url = url.split("#")[0]
+    LOGFILE.write("Blog post without primary URL link, found %s\n" % url)
 
   id = findId(entry)
   idLookup[id] = {
@@ -317,7 +324,8 @@ def dumpComments(data):
       continue
 
     path = COMMENT_PATH + url.replace('.html','.yaml')
-    print('Writing comments %s' % path)
+    if LOGGING:
+      LOGFILE.write('Writing comments %s\n' % path)
     dir = os.path.dirname(path)
     if not os.path.exists(dir):
       os.makedirs(dir)
@@ -329,15 +337,29 @@ def dumpComments(data):
 #
 # Main code
 #
-if (len(sys.argv) == 0):
-  print("Insufficient arguments, need input XML file")
-  sys.exit()
+def parseCLI():
+  parser = argparse.ArgumentParser(description='Import Blogger XML dump')
+  parser.add_argument('input', action='store', help='Input file')
+  parser.add_argument('--limit',dest='limit', action='store', help='Limit post URL')
+  parser.add_argument('--comments', dest='comments', action='store_true',help='Import comments')
+  parser.add_argument('--log', dest='logging', action='store_true',
+                  help='Enable basic logging')
+  parser.add_argument('--verbose', dest='verbose', action='store_true',
+                  help='Enable more verbose logging')
+  return parser.parse_args()
 
-LOGGING=sys.stdout
-print("Reading from ",sys.argv[1])
 
-xml = ET.parse(sys.argv[1])
+args = parseCLI()
+
+LOGFILE=sys.stdout
+LOGGING=args.logging
+URL_LIMIT=args.limit
+
+print("Reading from ",args.input)
+
+xml = ET.parse(args.input)
 root = xml.getroot()
 
 dumpBlog(root)
-dumpComments(idLookup)
+if args.comments:
+  dumpComments(idLookup)

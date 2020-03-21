@@ -71,8 +71,10 @@ def buildComments(path):
       output = fname.replace('yaml','html')
       with open(fname,'r') as input:
         data = yaml.safe_load(input)
-      template(args.template+'comments.j2',data,output)
-      print("Written %s" % output)
+      if data:
+        template(args.template+'comments.j2',data,output)
+        if LOGGING:
+          print("Written %s" % output)
 
 args = parseCLI()
 LOGGING = args.logging or args.verbose
