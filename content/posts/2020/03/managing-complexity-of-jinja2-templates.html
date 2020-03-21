@@ -1,0 +1,19 @@
+---
+url: /2020/03/managing-complexity-of-jinja2-templates.html
+title: "Managing the Complexity of Jinja2 Templates in Ansible"
+date: "2020-03-19T13:41:00.001+01:00"
+tags: [ Ansible ]
+---
+
+<p>One of the first roadblocks you’ll hit in your “<em>let’s master Ansible</em>” journey will be a weird error deep inside a Jinja2 template. Can we manage that complexity somehow… or as one of the participants in our <a href="https://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course asked:</p>
+<blockquote><p>Is there any recommendation/best practices on Jinja templates size and/or complexity, when is it time to split single template into function portions, what do you guys do? And what is better in terms of where to put logic - into jinja or playbooks</p>
+</blockquote>
+<p>One of my friends described the challenge as “<em>Debugging Ansible is one of the most terrible experiences one can endure…</em>” and debugging Jinja2 errors within Ansible playbooks is even worse, but there are still a few things you can do.</p>
+<!--more--><p>To start with, I would strongly recommend keeping Jinja2 templates (and Ansible playbooks) as simple as possible, and I found two ways to manage large Jinja2 templates:</p>
+<ul><li>Split them into smaller templates and include those, or use multiple templates and Ansible <strong>assemble</strong> module. That helps readability (and your sanity) but does nothing to abstract the complexity;</li>
+<li>Extract common code into <a href="https://my.ipspace.net/bin/get/Ansible/J3%20-%20Variables,%20Macros%20and%20Includes.mp4?doccode=Ansible">Jinja2 macros</a>, potentially building a library of those macros that can be included into other templates.</li>
+</ul>
+<p>Also, don’t debug Jinja2 templates in Ansible, because Ansible passes templates into Jinja2 engine as strings, resulting in error messages along the lines of “<em>there’s something wrong with this template</em>”. It’s much better to write a <a href="https://github.com/ipspace/NetOpsWorkshop/blob/master/Jinja2/render.py">simple Python renderer that pushes YAML data through a Jinja2 file template</a>. See also: <a href="https://my.ipspace.net/bin/get/AnsibleOC/AD3%20-%20Debugging%20Jinja2%20Templates.mp4?doccode=AnsibleOC">debugging Jinja2 templates</a> (part of our Ansible and Network Automation <a href="https://www.ipspace.net/Courses">online courses</a>)</p>
+<p>Finally, anything reasonably complex deserves a custom Python plugin - you’ll find <a href="https://my.ipspace.net/bin/list?id=AnsibleOC#EXTEND">simple examples in our Ansible course</a> and the corresponding <a href="https://github.com/ipspace/NetOpsWorkshop/tree/master/Ansible/Plugins">Github repo</a>. If you’re not fluent in Python start with macros, and when you know what needs to be done pass the specs to a decent Python programmer (“decent” just to make sure you don’t get spaghetti code back).</p>
+<p><a href="https://www.ipspace.net/Author:Mat_Wood">Mat Wood</a> described exactly the dilemma described in this blog post in his <a href="https://my.ipspace.net/bin/list?id=NetAutSol&amp;module=6#M6S2">Managed Configurations presentation</a>. They decided to go for a custom Python filter instead of a Jinja2 macro every time they found something that had to be done several times in multiple places, or something that was too complex for Jinja2 (like my horrific write-only code that generated don’t-care subnet bits).</p>
+

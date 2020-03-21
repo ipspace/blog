@@ -1,0 +1,49 @@
+---
+url: /2020/02/do-we-need-complex-data-center-switches.html
+title: "Do We Need Complex Data Center Switches for VMware NSX Underlay"
+date: "2020-02-12T08:46:00.000+01:00"
+tags: [ Design,Data Center,Fabric,virtualization ]
+---
+
+<p>Got this question from one of <a href="https://www.ipspace.net/Subscription/">ipSpace.net subscribers</a>:</p>
+<blockquote><p>Do we really need those intelligent datacenter switches for underlay now that we have NSX in our datacenter? Now that we have taken a lot of the intelligence out of our underlying network, what must the underlying network really provide?</p>
+</blockquote>
+<p>Reading the marketing white papers the answer would be <em>IP connectivity</em>… but keep in mind that building your infrastructure based on information from vendor white papers usually gives you the results your gullibility deserves.<!--more--></p>
+<h3 id="the-basics">The Basics</h3><p>If you’re building a new VMware NSX-based infrastructure, you’d usually go for a leaf-and-spine fabric and connect hypervisor hosts (acting as compute, network, or management nodes) to the leaf switches.</p>
+<p>VMware NSX deployments are limited to ~1000 hypervisor hosts (not sure I would push the limits, but that’s a different story), or ~20 leaf switches - a perfect fit for a simple leaf-and-spine fabric.</p>
+<div class="info" data-markdown="1">VMware NSX-V and NSX-T are completely different products, but their scalability limits, and underlay connectivity requirements are almost the same. For more details, watch <a href="https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive">VMware NSX Technical Deep Dive</a> webinar. </div>
+<p>Reading the white papers claiming that you don’t need more than IP connectivity, you might go for a very simple design:</p>
+<ul><li>Layer-3-only fabric running a single routing protocol (BGP if you want to be hip, even though OSPF or IS-IS would do just fine).</li>
+<li>Single IP subnet per leaf switch, resulting in an extremely simple and robust network.</li>
+</ul>
+<div class="info" data-markdown="1">You’ll find more details in <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">Leaf-and-Spine Fabric Architectures</a> webinar. </div>
+<p>And once you start congratulating yourself on coming up with such a lovely design, the ugly reality intervenes.</p>
+<h3 id="what-we-really-need">What We Really Need</h3><p>NSX design guides recommended having <strong>three or four isolated forwarding domains</strong> in your data center fabric, providing complete isolation between management, kernel (vMotion), storage, VXLAN/Geneve, and user traffic. Welcome to the complex world of VLANs, VRFs, or ACLs.</p>
+<div class="info" data-markdown="1">It’s always wise to keep user traffic separate from management or storage traffic… but the separation inevitably results in a more complex fabric design. As always, it’s all about tradeoffs. </div>
+<p>With a few hundred hypervisor hosts you can’t afford to lose all hypervisor hosts connected to a leaf switch, so you’d almost always go for a redundant design, <strong>connecting each hypervisor host to two ToR switches</strong>.</p>
+<p>In the ideal world your life would be simple:</p>
+<ul><li>Each hypervisor host would have a loopback interface, and would send and receive overlay (VXLAN/Geneve) traffic from that IP address;</li>
+<li>Having a loopback interface as the source of overlay traffic would make the IP addresses on the physical uplinks irrelevant (from the overlay traffic forwarding perspective);</li>
+<li>Hosts would run a routing protocol with the network and advertise the loopback IP address. Add BFD to the mix and you have a simple, stable, and fast-converging solution that uses nothing more than IP routing.</li>
+</ul>
+<div class="info" data-markdown="1">I know a few OpenStack deployments using this design and they work like a charm (no surprise there). </div>
+<p>The ideal world described above rests on two assumptions:</p>
+<ul><li>The networking and the server teams work together and cooperate on the infrastructure design;</li>
+<li>The solution you’re using was created by someone who considered the overall complexity of the whole system.</li>
+</ul>
+<p>The first assumption might be true in some environments. If you decided to use VMware NSX, the second one unfortunately isn’t.</p>
+<h3 id="it-gets-worse-and-worse">It Gets Worse and Worse</h3><p>VMware decided to use the same old bag of tricks from the days of their <a href="https://blog.ipspace.net/2019/10/the-cost-of-disruptiveness-and.html">guerrilla marketing</a> to implement NSX underlay connectivity:</p>
+<ul><li>VXLAN (or Geneve) traffic is sent from VMkernel interfaces;</li>
+<li>VMkernel interfaces are tied to port groups which can be associated with multiple physical uplinks to implement redundant connectivity;</li>
+<li>ESXi hosts can change the active port group uplink at any time, resulting in IP address move from one physical uplink to another. The best you could hope for (from the networking perspective) is to get a Gratuitous ARP message when the move is made.</li>
+</ul>
+<div class="info" data-markdown="1">I described ESXi port groups and uplinks in <a href="https://www.ipspace.net/VSphere_6_Networking_Deep_Dive">vSphere 6 Networking Deep Dive</a> webinar, and NSX connectivity requirements in <a href="https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive">VMware NSX Technical Deep Dive</a> webinar. </div>
+<p><strong>End result</strong>: if you want to have ESXi hypervisors running NSX redundantly connected to leaf switches, you have to support fast IP address mobility, and there are exactly two ways to do that:</p>
+<ul><li>Stretch a VLAN across leaf (ToR) switches;</li>
+<li>Create host routes based on ARP/GARP messages, and redistribute them into a routing protocol… while making sure you don’t get duplicate routes after an IP address move (the details are left as an exercise for the reader).</li>
+</ul>
+<div class="info" data-markdown="1">For more details, watch <a href="https://my.ipspace.net/bin/list?id=Clos#L3_REDUNDANT">Layer-3 Fabrics with Redundant Server Connectivity</a> and <a href="https://my.ipspace.net/bin/list?id=Clos#L2_L3_FABRIC">Mixed L2+L3 Fabrics</a> parts of <a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">Leaf-and-Spine Fabric Architectures</a> webinar. </div>
+<p>The currently-fashionable way to implement IP address mobility in a data center environment, and support several VRFs in the data center fabric, is to use VXLAN overlays (to transport Ethernet frames belonging to a single VLAN across underlay IP fabric) combined with EVPN control plane (because why not).</p>
+<div class="info" data-markdown="1">You’ll find everything you want to know about EVPN in <a href="https://www.ipspace.net/EVPN_Technical_Deep_Dive">EVPN Technical Deep Dive</a> webinar. </div>
+<p>Some environments might add traditional MLAG or EVPN-based multihoming to the mix… and we’re back to square one - the data center fabric remains as complex as it ever was, we just added another layer of abstraction and complexity on top of that. Great job!</p>
+

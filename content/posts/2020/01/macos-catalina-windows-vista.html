@@ -1,0 +1,24 @@
+---
+url: /2020/01/macos-catalina-windows-vista.html
+title: "MacOS Catalina = Windows Vista"
+date: "2020-01-19T08:29:00.000+01:00"
+---
+
+<p>Remember the Windows version that was so security-focused that it broke everything, and needed a gazillion changes/updates/upgrades to get back to where you had a working computer? I think it was Vista, but maybe my memory is failing me. Anyway, Apple got its Vista moment with macOS Catalina.</p>
+<p>I was stupid enough to upgrade just before New Year, and I’m still struggling with aftereffects and skeletons falling out of every cupboard I look at. I appreciate Apple trying to make their operating system ever more secure, but breaking stuff every time I upgrade it is borderline ridiculous.<!--more--></p>
+<p>I will not go into how badly VirtualBox was broken. That’s a totally different story - and it seems they’re unable to get a decent performance on Retina displays no matter how much their users are screaming. At least that one was easy to solve: goodbye Oracle, welcome VMware Fusion, which works… sort of… after you discover you have to add a virtual sound device to your VM, and then all of a sudden you have a working solution. A day wasted, but at least I got Windows 10 running on decent hardware (modulo the keyboard… more about that later).</p>
+<p>Oh, and Vagrant wants to charge extra for VMware Fusion provider, and it’s somewhat hard to get Vagrant boxes for VMware Fusion, so I’m stuck with VirtualBox for my CLI-focused Linux stuff, and VMware Fusion for my Windows VM to get decent screen performance. Great job.</p>
+<p>The next borked software I found was Camtasia Recorder. That one was solved with a software upgrade, a half-dozen well-documented security settings (most of them changed during the installation process), and an interesting troubleshooting session to discover that the Camtasia <em>system sound</em> driver captures from the <em>default sound device</em> but not from anywhere else. Apart from that last bit, they did a great job… ignoring the nasty bug where Camtasia recorder leaves green border around the screen unless you start the recorder on the same screen you’re recording. Looks like TechSmith QA department doesn’t have the budget for a 2-monitor MacOS test station.</p>
+<p>BTW, don’t get me started on the wonderful idea to make headphone jack a different sound device than the internal speakers. I’m positive it made sense to whoever decided to do it, but getting a “<em>new audio hardware detected, do you want to use it</em>” prompt from whatever video-conferencing program I’m using every time I plug in my headphones is ridiculous.</p>
+<p>Finally, there’s the <em>small issue</em> of Wacom drivers. I’m blessed with two expensive pieces of ****, one of them with broken keyboard (I could spend hours ranting about ZX-Spectrum keyboard being better than the sticky **** Apple sold me in their MacBook Pro), the other one with broken drivers.</p>
+<p>The only way to get the Wacom tablet to work on MacOS Catalina (after installing the latest driver, completely removing Wacom software because it doesn’t work, and reinstalling the latest driver) seems to be to:</p>
+<ul><li>Unplug the tablet;</li>
+<li>Restart the computer;</li>
+<li>Turn on the tablet FIRST and THEN plug it into the USB port;</li>
+<li>Hope for the best;</li>
+<li>Lather, rinse, repeat. Add an ouija board as needed.</li>
+</ul>
+<p>… and eventually it works until MacBook goes to sleep. After that, you’re back to square one.</p>
+<div class="note" data-markdown="1">If you’re struggling with the same challenge: it <em>might</em> help to have Wacom Desktop Center open when you plug the USB cable into MacBook. OTOH, if you’ve solved this particular Catch-22 I’m totally open to any suggestion you might have - please write a comment. </div>
+<p><strong>Long story short</strong>: Apple &amp; Wacom are selling the most expensive gear on the market, and regardless of how much money idiots like myself throw at them, they can’t be bothered to make it work together. From where I’m sitting, the end-result is beyond disgusting. Maybe it’s time I go back to Windows.</p>
+

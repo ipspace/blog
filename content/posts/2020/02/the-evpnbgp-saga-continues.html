@@ -1,0 +1,34 @@
+---
+url: /2020/02/the-evpnbgp-saga-continues.html
+title: "The EVPN/BGP Saga Continues"
+date: "2020-02-05T08:37:00.000+01:00"
+tags: [ Design,BGP,EVPN ]
+---
+
+<p><a href="http://aldrinisaac.blogspot.com/">Aldrin</a> wrote a well-thought-out comment to my <em><a href="https://blog.ipspace.net/2019/11/the-evpn-dilemma.html">EVPN Dilemma</a></em> blog post explaining why he thinks it makes sense to use <a href="https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics#IBGP-Based_EVPN_on_Top_of_EBGP-Based_Fabric_Routing">Juniper’s IBGP (EVPN) over EBGP (underlay) design</a>. The only problem I have is that I forcefully disagree with many of his assumptions.</p>
+<p>He started with an in-depth explanation of why EBGP over directly-connected interfaces makes little sense:<!--more--></p>
+<blockquote><p>Following <a href="https://blog.noc.grnet.gr/2016/09/28/lab-on-evpn-vxlan-on-juniper-qfx5100-switches-3/">blog</a> captures in detail EVPN over EBGP using Junos dating back to 2016. You can see the multi-hop EBGP sessions for EVPN required to set the loopback as the VTEP IP (i.e. BGP protocol next-hop). [More about BGP next hop handling in the <a href="https://blog.ipspace.net/2019/11/the-evpn-dilemma.html?showComment=1575861244172#c3854070778949161857">original comment</a>].</p>
+</blockquote>
+<p>I agree with Aldrin that the best way to get the desired BGP next hop <em>in Junos EVPN implementation</em> is to use a BGP session between loopback interfaces (to be more precise, you have to use the same loopback interface for BGP session and VTEP IP)… but that’s just because <em>they decided not to set the correct BGP next hop when inserting the local EVPN route into the local BGP table</em>.</p>
+<p>Setting BGP next hop to a specific value when originating a BGP route is not a novel idea - it took me about 30 seconds to <a href="https://tools.ietf.org/html/rfc1403#page-14">find it in RFC 1403</a> (OK, I’m old enough to know where to look). Assuming an EVPN device wants to receive VXLAN packets with a specific destination IP address, I can’t figure out a good reason why it wouldn’t set that IP address as the BGP next hop <em>when originating the route</em>. Asking the network operator to run BGP sessions between loopback interfaces just so the BGP next hop would be set to the right value is stupid.</p>
+<div class="note" data-markdown="1">There might be something in Junos EVPN implementation that prevents them from setting the BGP next hop on route origination, but if that’s the case please <a href="https://blog.ipspace.net/2019/04/dont-sugarcoat-challenges-you-have.html">document that limitation and move on</a>. Trying to persuade me why I should consider a workaround a sane design won’t work. </div>
+<p>Moving on, Aldrin mentioned BGP next hop handling on EBGP sessions:</p>
+<blockquote><p>Hopefully folks also know that when using EBGP with EVPN, it’s important that intermediate EBGP hops do not rewrite the protocol next-hop set by the egress PE since we need the VXLAN tunnels to be addressed to the correct egress PE and not somewhere short of that.</p>
+</blockquote>
+<p>Please make your mind up. Your product marketing could either promote EBGP as the intra-domain routing protocol, and your engineering could support that by implementing sane defaults supporting that assumption, or you could tell people to stick with more traditional IGP+IBGP design and get rid of all the complexities.</p>
+<p>For example, FRRouting implementation decided to go all-in, and uses <strong>next-hop-unchanged</strong> as default behavior on EBGP EVPN sessions (which nicely matches Cumulus’ EBGP-only design). Most other vendors behave like deer in headlights.</p>
+<blockquote><p>All considered, IMO it’s more straight-forward to use IBGP with RRs for EVPN, rather than to force-fit EVPN into hop-by-hop EBGP route propagation.</p>
+</blockquote>
+<p>If you want to use the same defaults you used for the last 30 years, then YES, please use IBGP… but also stick to the designs we’ve been using during those 30 years, like running IBGP over OSPF or IS-IS. Those designs were good enough for largest ISPs on this planet… and now all of a sudden they’re not <a href="https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html">good enough for enterprise data centers with a few dozen switches</a>? Could someone please stop this lemming run before everyone hits the cliff?</p>
+<blockquote><p>Anyway it has been a long-standing convention to use IBGP for overlays within an instance of a transport domain.</p>
+</blockquote>
+<p>And it has been a long-standing convention to use OSPF or IS-IS as the underlying routing protocol in said transport domain. Unfortunately most data center switching vendors <a href="https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html">think they need to be hip</a>, and try to persuade us how well star-shaped pegs fit into round holes (hint: they do if you have a big-enough hammer).</p>
+<blockquote><p>FYI, Junos leans toward being explicit about configuration leaving it to automation to simplify management of network.</p>
+</blockquote>
+<p>The best reply to this line of reasoning is a comment I got from an attendee of my recent <em><a href="https://www.ipspace.net/VMware_NSX,_Cisco_ACI_or_Standard-Based_EVPN">VMware NSX, Cisco ACI or Standard-Based EVPN</a></em> workshop:</p>
+<blockquote><p>For medium businesses (IT dept of 5-10 people) who have never heard of BGP, VNID, multicast… EVPN is simply scary as hell. If they have to choose they go for ACI - presented as single point of management and magically solves world hunger and is “anywhere” versus BGP EVPN being marketed as being complex (people don’t want hear that they need to configure 70 lines of code per VXLAN per switch in the fabric versus a few clicks on ACI).</p>
+</blockquote>
+<p>I would understand why someone within Cisco would have a vested interest to make EVPN configurations complex, but I fail to see why Arista and Juniper are playing along.</p>
+<p><strong>Long story short</strong>: I’ve seen two simple and successful ways of deploying EVPN in non-hyperscale VXLAN-based data center fabrics - running IBGP over OSPF/IS-IS, or running EBGP between directly-connected interfaces with sane BGP next-hop defaults on BGP route origination and propagation. Everything else is just piles of unnecessary complexity that scares people away from what is otherwise the best technology to use if you really want to build layer-2 fabrics (and your vendor doesn’t believe in SPB).</p>
+<p><strong>Final note</strong>: Want to get beyond vendor arguments and marketing? You might want to watch our <a href="https://www.ipspace.net/EVPN_Technical_Deep_Dive">EVPN Technical Deep Dive</a> webinar - over 10 hours of (mostly) vendor-neutral fact-based material.</p>
+

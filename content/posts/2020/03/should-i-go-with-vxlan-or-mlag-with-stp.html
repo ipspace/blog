@@ -1,0 +1,30 @@
+---
+url: /2020/03/should-i-go-with-vxlan-or-mlag-with-stp.html
+title: "Should I Go with VXLAN or MLAG with STP?"
+date: "2020-03-05T08:04:00.000+01:00"
+tags: [ Design,bridging,VXLAN,Data Center,Fabric ]
+---
+
+<p><strong>TL&amp;DR</strong>: It’s 2020, and VXLAN with EVPN is all the rage. Thank you, you can stop reading.</p>
+<p>On a more serious note, I got this questions from an <a href="https://www.linkedin.com/in/johannes-spanier/">Johannes Spanier</a> after he read my <em><a href="https://blog.ipspace.net/2020/02/do-we-need-complex-data-center-switches.html">do we need complex data center switches for NSX underlay</a></em> blog post:</p>
+<blockquote><p>Would you agree that for smaller NSX designs (~100 hypervisors) a much simpler Layer2 based access-distribution design with MLAGs is feasible? One would have two distribution switches and redundant access switches MLAGed together.</p>
+</blockquote>
+<p>I would still prefer VXLAN for a number of reasons:<!--more--></p>
+<ul><li><strong>No dependency on MLAG</strong> (assuming you get the edge design right). MLAG (or any other technology that makes two devices pretend they’re a single device through convoluted state sharing) is a brittle kludge. I’ve seen several data center meltdowns caused by MLAG bugs, and haven’t heard of one caused by an IP forwarding bug for a very long time.</li>
+<li><a href="https://blog.ipspace.net/2014/08/stp-and-expert-beginners.html">I wouldn’t run a bridging-only fabric without STP</a>. STP is the only protection you have against stupidities like cable errors or <a href="https://blog.ipspace.net/2012/04/stp-loops-strike-again.html">technicians testing cables by plugging TX and RX ports together</a> (although modern connectors make that less likely). Unfortunately, <strong>STP is way worse than MLAG</strong>.</li>
+<li>I prefer having a “<em>we know what we’re doing</em>” behavior in my backbone instead of “<em><a href="https://blog.ipspace.net/2014/07/is-stp-really-evil.html"><strong>we haven’t heard anything so it must be OK to forward</strong></a></em>”.</li>
+<li>Call me old-fashioned but I <strong>prefer routing over bridging</strong> in my transport infrastructure.</li>
+<li>Finally, even though my friends at Avaya (now Extreme) tell me how well SPB works (and I believe them), I still prefer <strong>running a protocol that has been around for decades</strong> (like OSPF or IS-IS for IPv4/IPv6) hoping someone else already hit all the major bugs.</li>
+</ul>
+<blockquote><p>Alternatively, to put my question into another perspective: For “small” designs is there any problem leaf-spine VXLAN EVPN solves that STP free distribution/access cannot?</p>
+</blockquote>
+<p>Robustness, stability, standard-based, multi-vendor (not that <a href="https://blog.ipspace.net/2020/02/pragmatic-evpn-designs.html">I would focus on this one</a>)… pick one (or a few). Also note that you don’t have to run EVPN, VXLAN on top of simple IP network is good enough.</p>
+<p>If your data center design follows the traditional <em>every VLAN on every leaf switch</em> approach (lovingly known as “<a href="https://blog.ipspace.net/2015/04/what-is-layer-2-and-why-do-we-need-it.html">let’s turn our data center into a thick yellow cable</a>”), you’ll be equally well off having a static VXLAN flood list containing every ToR switch in your fabric. Obviously I’d hope you’d automate the generation of that flood list, but with four to six switches (all you need for ~100 hypervisors) you just might get by configuring it manually.</p>
+<p>And now for the ubiquitous list of where you could find way more details. You could go for our <a href="https://www.ipspace.net/Building_Next-Generation_Data_Center">data center course</a> (available with <a href="https://www.ipspace.net/Subscription/Individual">Expert Subscription</a>) or these webinars (available with <a href="https://www.ipspace.net/Subscription/Individual">Standard Subscription</a>):</p>
+<ul><li><a href="https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures">Leaf-and-Spine Fabric Architectures</a>;</li>
+<li><a href="https://www.ipspace.net/EVPN_Technical_Deep_Dive">EVPN Technical Deep Dive</a>;</li>
+<li><a href="https://www.ipspace.net/VXLAN_Technical_Deep_Dive">VXLAN Technical Deep Dive</a>;</li>
+<li><a href="https://www.ipspace.net/Data_Center_Fabrics">Data Center Fabrics</a>;</li>
+<li><a href="https://www.ipspace.net/Designing_Private_Cloud_Infrastructure">Designing Private Cloud Infrastructure</a></li>
+</ul>
+

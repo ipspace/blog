@@ -19,6 +19,7 @@ COMMENT_PATH="comments/"
 
 IMAGE_SERVER="bp.blogspot.com"
 IMAGE_URL="/"
+URL_LIMIT=""
 LOGGING=""
 
 def getElementText(parent,tag):
@@ -203,13 +204,14 @@ def dumpPost(entry):
     'count':0
   }
 
-  if url.find("2019/12/") < 0:
+  if URL_LIMIT and url.find(URL_LIMIT) < 0:
     return 0
 
   filepath = createOutputFile(url)
   if filepath:
     print("---")
     # print(u"url: %s" % url)
+    print("url: /%s" % filepath)
     printElementText(entry,u"title","{http://www.w3.org/2005/Atom}title")
     printElementText(entry,u"date","{http://www.w3.org/2005/Atom}published")
     printCategories(entry,u"tags","{http://www.w3.org/2005/Atom}category")
@@ -309,7 +311,7 @@ def dumpComments(data):
       continue
     if not 'comments' in item:
       continue
-    
+
     url = item.get('url')
     if not url:
       continue
