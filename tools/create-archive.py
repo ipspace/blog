@@ -14,6 +14,7 @@ import json
 import re
 from datetime import date, datetime, timezone
 import dateutil.parser
+import dateutil.tz
 from types import SimpleNamespace
 from jinja2 import Environment, FileSystemLoader, Undefined, StrictUndefined, make_logging_undefined
 import common
@@ -73,16 +74,28 @@ def scanFile(path,archive,tags):
     if not date:
       return failure("Date header missing in %s" % path)
 
+    # Parsing the publication date is weird
+    #
+    # * YAML might already have generated the datetime timestamp, so we have to go to string first
+    # * We have to use dateutil.parser so we can parse 'meaningful' and ISO timestamps
+    # * The result might or might not have a timezone, so we have to adjust that as well
+    #
     try:
-      pubdate = dateutil.parser.parse(date)
+      pubdate = dateutil.parser.parse(str(date))
     except:
-      return failure("Date parsing error %s in %s" % (sys.exc_info()[0],path))
+      return failure("Date %s parsing error %s in %s" % (date,sys.exc_info()[0],path))
+
+    if pubdate.tzinfo is None:
+      pubdate = pubdate.replace(tzinfo=dateutil.tz.tzlocal())
 
     if pubdate > NOW:
       if not args.quiet:
         print("Blog post %s is not published yet, skipping" % path)
       return
 
+    # Now we should know what the publish datetime is, and it's not in the future,
+    # so let's move forward and get some work done
+    #
     year = pubdate.year
     month = pubdate.month
 
