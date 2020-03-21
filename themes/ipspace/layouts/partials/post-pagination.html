@@ -27,8 +27,8 @@
   {{ if or .Next .Prev }}
   <div class="post-nav">
     <div class="container">
-      {{ if .Prev }}
-        <a class="post-nav__link prev" href="{{ .Prev.Permalink }}" title="Newer Post">
+      {{ if .Next }}
+        <a class="post-nav__link prev" href="{{ .Next.Permalink }}" title="Newer Post">
           <svg class="post-nav__icon">
             <use xlink:href="#arrow-left-big"></use>
           </svg>
@@ -36,8 +36,8 @@
         </a>
       {{ end }}
       <a class="post-nav__link overview" href="/">Home</a>
-      {{ if .Next }}
-        <a class="post-nav__link next" href="{{ .Next.Permalink  }}" title="Older Post">
+      {{ if .Prev }}
+        <a class="post-nav__link next" href="{{ .Prev.Permalink  }}" title="Older Post">
           <span class="post-nav__text">Older Post</span>
           <svg class="post-nav__icon">
             <use xlink:href="#arrow-right-big"></use>
