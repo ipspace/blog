@@ -1,10 +1,5 @@
 * Add 404 page
 
-Before production:
-
-* Import latest version of the blog
-* Schedule daily fixes
-
 Add later:
 
 * New comments
@@ -31,3 +26,6 @@ Done:
 * Atom feed
 * Related articles
 * Replace search box
+* Import latest version of the blog
+* Schedule daily fixes
+* Show comments URLs don't jump to the right place (missing anchor)
