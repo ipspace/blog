@@ -17,7 +17,7 @@
       {{ if $truncated }}
         {{ .Summary }}
       {{ else }}
-        {{ if and $full .Truncated (eq .File.Extension "html") }}
+        {{ if and $full .Truncated (and .File (eq .File.Extension "html")) }}
           {{ .Summary }}
         {{ end }}
         {{ .Content }}
