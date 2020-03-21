@@ -20,7 +20,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2685038696414754363">22 May 2019 09:41</a>
+                <a rel="nofollow" id="c2685038696414754363" href="#2685038696414754363">22 May 2019 09:41</a>
               </span>
             </div>
             <p class="comment-content">Hello Ivan,<br />In this very respect, what I still do not understand is, for instance, the reason why vendors keep pushing and (thus) customers keep purchasing very (cheap) shallow-buffer Leaves (some have a total 16MB for the whole box ...) as part of the Telco Cloud&#39;s IP Fabric. To me the interfaces&#39; clock differences on the Leaves as well as a much higher RTTs than those typical of DCs&#39;(as the north-south component is dominant over the east-west in a Telco cloud) and the inability of controlling the TCP Congestion Control Algorithm flavour in a telco cloud environment as opposed to a DC environment dramatically increases the chance of TCP-induced traffic bursting on such shallow-buffer Leaves and thus the chance of poor performance. <br />Hope you Ivan/guys can share the same design concern for these days&#39; Telco Clouds&#39; IP Fabrics.<br />Cheers,<br />Andrea</p>
@@ -39,7 +39,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7638969550985915395">22 May 2019 10:34</a>
+                <a rel="nofollow" id="c7638969550985915395" href="#7638969550985915395">22 May 2019 10:34</a>
               </span>
             </div>
             <p class="comment-content">Hi Andrea,<br /><br />As I wrote in the blog post, most people who know how TCP and buffers work agree that deep buffers don&#39;t make sense in environments like data center fabrics... with a few exceptions.<br /><br />Also, never focus on the $vendor-generated buzzwords like &quot;Telco Cloud&quot;. <br /><br />If the so-called &quot;Telco Cloud&quot; runs TCP-based applications like most other data centers in this world, then it just might work with the same equipment that most other people use. <br /><br />OTOH, if all you run in your environment is CBR voice traffic using 64-byte UDP packets then you might need a different solution.<br /><br />Long story short: always understand the problem you&#39;re trying to solve first, and then try to figure out how other people with more experience solved similar problems.<br /><br />Hope this helps,<br />Ivan</p>
@@ -64,7 +64,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17892204563666956100" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#840449128297940215">22 May 2019 11:22</a>
+                <a rel="nofollow" id="c840449128297940215" href="#840449128297940215">22 May 2019 11:22</a>
               </span>
             </div>
             <p class="comment-content">@Andrea: The problem that you have is called the bandwidth delay product. Here&#39;s a not so bad explanation (it&#39;s from Cisco but do connive) on buffers and TCP: https://youtu.be/ETpIp6fSw_4</p>
@@ -83,7 +83,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#323476703171112360">28 May 2019 13:00</a>
+                <a rel="nofollow" id="c323476703171112360" href="#323476703171112360">28 May 2019 13:00</a>
               </span>
             </div>
             <p class="comment-content">Hi Anonymous,<br />Thanks - I know I know ! I was once an R&amp;D on the subject of Router QoS and TCP performance in high bandwidth-delay product environments. The video you posted though holds for canonical DCs only and not also for Telco-clouds&#39; IP-FABRIC environments as 100 microseconds is considered by Tom Edsall in the video a large RTT !!! <br /><br />Coming back to us, I wouldn&#39;t be so sure about the current shallow buffer trend (probably fueled by some declination of the &#39;Stanford Model&#39;) on Fabric Leaves in a telco cloud environment after (re)reading the following Dovrolis&#39; papers:<br />https://www.caida.org/~amogh/papers/buffers-CCR06.pdf <br />https://www.cc.gatech.edu/~dovrolis/Papers/ravi-final-conext07.pdf<br /><br />Ciao <br />Andrea<br />Andrea</p>
@@ -101,7 +101,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17892204563666956100" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2087887107487892024">28 May 2019 19:55</a>
+                <a rel="nofollow" id="c2087887107487892024" href="#2087887107487892024">28 May 2019 19:55</a>
               </span>
             </div>
             <p class="comment-content">Those 100 microseconds RTT were maybe just an example for having an easy computation. Don&#39;t forget that 100 mircoseconds are 0.1 ms which is pretty fast. According to the bandwidth delay product you&#39;ll get even smaller buffers (product) when your RTT is low. But in a VoIP environment you&#39;re probably more interested in latency. Latency != RTT . UDP behaves differently than TCP (one has to keep the two separate). I can&#39;t imagine that big buffers would be beneficial in a &#39;Telco cloud&#39;.</p>
@@ -119,7 +119,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7338833188098130607">28 May 2019 23:59</a>
+                <a rel="nofollow" id="c7338833188098130607" href="#7338833188098130607">28 May 2019 23:59</a>
               </span>
             </div>
             <p class="comment-content">No, those 100 microseconds are a typical rtt of a canonical DC environment, not of a Telco cloud (e.g. virtualized sp edge), which is much more of a complex and challenging environment for tcp.  That guy is selling nexus for the DC market segment afterall - it makes sense to me. </p>
@@ -144,7 +144,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5614298008088969638">22 May 2019 11:49</a>
+                <a rel="nofollow" id="c5614298008088969638" href="#5614298008088969638">22 May 2019 11:49</a>
               </span>
             </div>
             <p class="comment-content">Hello Ivan,<br />Of course it helps - it&#39;s yours !!  :)<br />I am actually referring to the &#39;few exceptions&#39; that you mentioned. <br />The thing is, that, as far as I am seeing, the very same IP-Fabric is used in traditional DC environments as well as in Telco-Cloud environments with the latter still being a DC but with the SP&#39;s EDGE boxes&#39; (i.e. Business/Mobile PE and Residential NAS among others) data-plane been virtualised as VNF. I reckon these two environments can be very different in terms of RTTs (especially for the Business and Residential traffic as part of the mobile can and is TCP-proxied) and traffic direction (the dominant north-south component of Telco-Cloud exacerbates the IP Fabric Leaves&#39; interface-speed mismatch&#39;s impact on the traffic). <br />To me, the &quot;other people with more experience&quot;  seem to be the usual suspects  Google/Facebook/Amazon/..and the way they &quot;solved similar problems&quot; seem to be that of not using CUBIC for instance but well-engineered TCP Congestion Control Algorithms when in presence of shallow-buffer boxes. This is something a SP cannot do.<br />On a very similar note, the Google Global Caches solution I am witnessing within my SP for instance sees the deployment of a very-shallow-buffer Cisco box (16MB in total) as its network front-end and my suspect is that they are definitely not using CUBIC as the TCP Congestion Control Algorithm in order to avoid bursting and thus dropping. Will see ...<br /><br />Hope it makes sense<br />Ciao <br />Andrea    <br /><br />p.s. Having said that, at the very end, should there be any performance issues within the Telco Cloud environment due to the Leaves been shallow-buffered then I guess the $vendor could just swap the much cheaper Leaves with more expensive (as deep-buffered with GB of ASIC) boxes (acting now as Spines only) and still winning !!! :)</p>
@@ -162,7 +162,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17892204563666956100" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5127814271240126825">22 May 2019 17:21</a>
+                <a rel="nofollow" id="c5127814271240126825" href="#5127814271240126825">22 May 2019 17:21</a>
               </span>
             </div>
             <p class="comment-content">Have a look at my answer above it answers most of your questions/obscurities. Additionally in a Telco environment you may suffer from UDP dominance and TCP starvation. You can solve that problem with not mixing UDP and TCP traffic by using QoS (different queues) or separate them physically.</p>
@@ -181,7 +181,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3478423689486409096">28 May 2019 13:01</a>
+                <a rel="nofollow" id="c3478423689486409096" href="#3478423689486409096">28 May 2019 13:01</a>
               </span>
             </div>
             <p class="comment-content">Hi Anonymous,<br /><br />Thanks - I know I know ! I was once an R&amp;D on the subject of Router QoS and TCP performance in high bandwidth-delay product environments. The video you posted though holds for canonical DCs only and not also for Telco-clouds&#39; IP-FABRIC environments as 100 microseconds is considered by Tom Edsall in the video a large RTT !!! <br /><br />Coming back to us, I wouldn&#39;t be so sure about the current shallow buffer trend (probably fueled by some declination of the &#39;Stanford Model&#39;) on Fabric Leaves in a telco cloud environment after (re)reading the following Dovrolis&#39; papers:<br />https://www.caida.org/~amogh/papers/buffers-CCR06.pdf <br />https://www.cc.gatech.edu/~dovrolis/Papers/ravi-final-conext07.pdf<br />Ciao <br />Andrea</p>
@@ -206,7 +206,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04847257511165693348" rel="nofollow">Albert Siersema</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5662490915366618984">23 May 2019 12:30</a>
+                <a rel="nofollow" id="c5662490915366618984" href="#5662490915366618984">23 May 2019 12:30</a>
               </span>
             </div>
             <p class="comment-content">Limit MLAG to within a rack, e.g. servers -&gt; 2*ToR and L3-only Leaf/Spine from there. Unless of course you&#39;re running at real scale and can get away with a single ToR :)<br /></p>

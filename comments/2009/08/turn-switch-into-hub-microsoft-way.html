@@ -20,7 +20,7 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Steve Shaw</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#729108633197129574">21 August 2009 16:10</a>
+                <a rel="nofollow" id="c729108633197129574" href="#729108633197129574">21 August 2009 16:10</a>
               </span>
             </div>
             <p class="comment-content">Ivan,<br /><br />I ran into this recently with folks complaining about poor voice quality. As it turns out, the CPUs on our 6500s were getting pegged. We tracked it down to a couple &quot;clustered&quot; hosts running Microsoft NLB. We eventually moved them onto a DNS-based load balancing solution off our GSLB which met their needs.<br /><br />If you read the protocol design on Microsoft Technet, it is truly written by application developers. However, if you absolutely MUST run NLB in your network, definitely go with the multicast option with IGMP snooping to handle any flooding issues. Details here:<br /><br />http://www.cisco.com/en/US/products/hw/switches/ps708/products_configuration_example09186a0080a07203.shtml<br /><br />-Steve</p>
@@ -38,7 +38,7 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Carl Von Hassel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5261350225869861712">21 August 2009 21:17</a>
+                <a rel="nofollow" id="c5261350225869861712" href="#5261350225869861712">21 August 2009 21:17</a>
               </span>
             </div>
             <p class="comment-content">We also have ran into issues with the &quot;Microsoft&quot; solution. Not only do the switches suffer from high CPU but every host on the switch takes a CPU hit. We also had to dumb down our IPS because it sees this behavior as an attack.</p>
@@ -56,7 +56,7 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">John Herbert</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4287426825998228567">02 September 2009 03:48</a>
+                <a rel="nofollow" id="c4287426825998228567" href="#4287426825998228567">02 September 2009 03:48</a>
               </span>
             </div>
             <p class="comment-content">As Steve Shaw indicates, it&#39;s worth reading the Microsoft NLB documentation just so you can shake your head in wonder at the awesome logic of it:<br /><br />http://technet.microsoft.com/en-us/library/cc782694%28WS.10%29.aspx<br /><br />In unicast mode, the same MAC address is used for ALL cluster members (who are now of course unable to communicate with one another). The alternative is to use multicast mode - which sounds just peachy, but on a single LAN segment there are no membership requests to snoop so the data  floods out every port just like in the unicast model.<br /><br />Last time I came across this a few years back, my solution was the same as Dragan&#39;s - isolation by segmentation. *sigh*</p>

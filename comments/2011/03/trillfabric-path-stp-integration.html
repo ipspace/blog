@@ -20,7 +20,7 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3602000911444353526">29 August 2012 14:01</a>
+                <a rel="nofollow" id="c3602000911444353526" href="#3602000911444353526">29 August 2012 14:01</a>
               </span>
             </div>
             <p class="comment-content">&quot;Assuming the RBridges perform TRILL-based bridging between its edge ports, each access switch on the right-hand side belongs to an independent STP domain and becomes the root of a very small spanning tree.&quot; <br /><br />I think this depends... If the Rbridge forwards BPDUs between the ports where the CE switches are connected (both are connected to switch A) then one of the CE switches will become the root bridge because they see each others BPDUs. I understand B blocks, but the CE switches will still form a STP domain via the path over A.</p>
@@ -39,7 +39,7 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7585229316077241527">29 August 2012 19:08</a>
+                <a rel="nofollow" id="c7585229316077241527" href="#7585229316077241527">29 August 2012 19:08</a>
               </span>
             </div>
             <p class="comment-content">If RBridge works on edge physical interfaces, then the BPDUs should not be propagated between ports. If it works on VLAN interfaces, then BPDUs might get propagated.<br /><br />In any case, there might be corner cases where BPDUs are propagated between edge ports of the same RBridge. They should never be propagated across TRILL core.</p>
