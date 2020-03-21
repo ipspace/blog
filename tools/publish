@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+#
+# Create local publish branch if needed
+#
+if [ -z "`git branch -v|grep publish`" ]; then
+  echo "Local publish branch is missing, creating..."
+  git checkout -b publish origin/publish
+fi
+git checkout publish 2>&1|ack -v "Already|up to date"
+git pull --all --force|ack -v "Already|Fetching"
+git merge master -X theirs
+tools/create-archive.py
+tools/create-comments.py
+git add .
+git commit -m 'Master merge + update'
+git push
