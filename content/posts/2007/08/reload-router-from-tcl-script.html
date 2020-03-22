@@ -1,8 +1,10 @@
 ---
+date: 2007-08-20T07:09:00.000+02:00
+tags:
+- Tcl
+- you've asked for it
+title: Reload a router from Tcl script
 url: /2007/08/reload-router-from-tcl-script.html
-title: "Reload a router from Tcl script"
-date: "2007-08-20T07:09:00.000+02:00"
-tags: [ Tcl,You've asked for it ]
 ---
 
 In his comment, <a href="https://blog.ipspace.net/2007/04/execute-multiple-commands-at-once.html#comment-5486970742912595091">Michal has asked about the ability to execute IOS commands with prompts from Tcl shell</a>. I haven't found a generic solution yet, but you can reload a router from a Tcl script. First you have to define an <a href="https://blog.ipspace.net/tag/eem.html">EEM applet</a> that <a href="https://blog.ipspace.net/2007/04/reload-router-when-ping-fails.html">reloads the router</a> and can be triggered from command-line interface:<pre class="code">event manager applet forceReload<br/> event none<br/> action 1.0 reload</pre>Now you can use the <strong><a href="https://blog.ipspace.net/2007/04/executing-ios-commands-from-tcl-shell.html">exec</a> "event manager run forceReload"</strong> Tcl command in your Tcl script to run the applet (and reload the router).<br/><br/><div class="note"><p>Notes:</p>

@@ -1,8 +1,11 @@
 ---
+date: 2007-07-30T07:37:00.000+02:00
+tags:
+- Tcl
+- IP routing
+- show filters
+title: 'Update: The “show ip interface” command I''ve always wanted to have'
 url: /2007/07/update-show-ip-interface-command-i.html
-title: "Update: The “show ip interface” command I've always wanted to have"
-date: "2007-07-30T07:37:00.000+02:00"
-tags: [ Tcl,IP routing,Show filters ]
 ---
 
 <p>After I've <a href="https://blog.ipspace.net/2007/06/ip-interface-command-i-always-wanted-to.html">published the <span class="blsp-spelling-error" id="SPELLING_ERROR_0">Tcl</span> script that displays the interface <span class="blsp-spelling-error" id="SPELLING_ERROR_1">IP</span> parameters in a formatted table</a>, <a href="http://polydistortion.net/monkey/">cos</a> quickly pointed out a bug: I've expected the <span class="blsp-spelling-error" id="SPELLING_ERROR_2">IP</span> addresses in the <em>address mask</em> format. In the meantime, I've figured out the root cause of the problem (our remote labs are <a href="https://blog.ipspace.net/2007/07/changing-format-of-ip-routes.html">set to display <span class="blsp-spelling-error" id="SPELLING_ERROR_3">IP</span> masks in decimal format</a> for compatibility reasons) and fixed the <span class="blsp-spelling-error" id="SPELLING_ERROR_4">Tcl</span> script. It temporarily sets the <strong>terminal <span class="blsp-spelling-error" id="SPELLING_ERROR_5">ip</span> <span class="blsp-spelling-error" id="SPELLING_ERROR_6">netmask</span>-format</strong> to <strong>bit-count</strong> before executing the show command. The new script recognizes three parameters:</p>

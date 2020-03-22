@@ -1,8 +1,10 @@
 ---
+date: 2007-08-23T08:07:00.000+02:00
+tags:
+- you've asked for it
+- IP routing
+title: Install a static route when an IP address is NOT reachable
 url: /2007/08/install-static-route-when-ip-address-is.html
-title: "Install a static route when an IP address is NOT reachable"
-date: "2007-08-23T08:07:00.000+02:00"
-tags: [ You've asked for it,IP routing ]
 ---
 
 <a href="http://www.nil.com/ipcorner"><img src="http://www.nil.com/C1256F0A00429755/free_tips_IP_Corner.gif" style="float: right; margin: 2px 0px 6px 3px; border-width: 0px;"/></a>In my February <a href="http://www.nil.com/ipcorner">IP corner</a> article, <a href="http://www.nil.com/ipcorner/SmallSiteMultiHoming/">Small Site Multihoming</a>, I've described how to install a static route based on reachability of a remote IP address (as measured with the IP SLA feature of Cisco IOS) and one of my readers recently asked an interesting question: “How do you install a static route when an IP address is <em>not</em> reachable?”<br/><br/>Without going into the design reasons that prompted the question, you can actually track when IP SLA measurement fails with an obscure configuration syntax of the <strong>track</strong> objects.<!--more-->In my example, the route to 1.0.0.0/8 would be inserted in the IP routing table when the ping to 172.16.0.22 fails:<pre class="code">!<br/>! Define and start the IP SLA probe<br/>!<br/>ip sla 53<br/> icmp-echo 172.16.0.22<br/> timeout 500<br/> frequency 3<br/>ip sla schedule 53 life forever start-time now<br/>!<br/>! Define an object that tracks the SLA probe<br/>!<br/>track 13 rtr 53 reachability<br/>!<br/>! Define another object that is the negation of the previous object<br/>!<br/>track 14 list boolean and<br/> object 13 not<br/>!<br/>! Insert a static route if the second object is UP (thus the <br/>! IP SLA probe failed)<br/>!<br/>ip route 1.0.0.0 255.0.0.0 Null0 track 14</pre><p class="note"><span>Note: </span>This article is part of <a href="https://blog.ipspace.net/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="https://blog.ipspace.net/tag/youve-asked-for-it.html">series</a>.</p>
