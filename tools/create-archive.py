@@ -86,7 +86,7 @@ def scanFile(path,archive,tags):
       return failure("Date %s parsing error %s in %s" % (date,sys.exc_info()[0],path))
 
     if pubdate.tzinfo is None:
-      pubdate = pubdate.replace(tzinfo=dateutil.tz.tzlocal())
+      pubdate = pubdate.replace(tzinfo=timezone.utc)
 
     if pubdate > NOW:
       if not args.quiet:
