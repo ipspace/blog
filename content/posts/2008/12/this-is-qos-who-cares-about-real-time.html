@@ -1,8 +1,12 @@
 ---
+date: 2008-12-11T06:42:00.000+01:00
+tags:
+- network management
+- Tcl
+- you've asked for it
+- QoS
+title: This is QoS; who cares about real-time response?
 url: /2008/12/this-is-qos-who-cares-about-real-time.html
-title: "This is QoS; who cares about real-time response?"
-date: "2008-12-11T06:42:00.000+01:00"
-tags: [ network management,Tcl,You've asked for it,QoS ]
 ---
 
 <div class="bloggerBody"><p>It all started with a innocuous question: can you <a href="http://www.xmission.com/~hidden/aatqos/">detect voice traffic</a> with EEM? Looks simple enough: create a QoS class-map that matches voice calls and read the <tt>cbQosClassMapStats</tt> table in the CISCO-CLASS-BASED-QOS-MIB. The first obstacle was finding the correct indexes, but a <a href="http://wiki.nil.com/Class-based_QoS_MIB_indexes">Tcl script quickly solved that</a>; I was ready to create the EEM applet. The applet failed to work correctly and after lots of debugging I figured out the counters in the <tt>cbQosClassMapStats</tt> table <a href="https://blog.ipspace.net/2008/12/update-interval-for-ios-mib-counters.html">change only every 10 seconds</a>.</p>

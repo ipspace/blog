@@ -1,8 +1,12 @@
 ---
+date: 2011-05-13T06:56:00.001+02:00
+tags:
+- switching
+- data center
+- workshop
+- TRILL
+title: Ignoring STP? Be careful, be very careful
 url: /2011/05/ignoring-stp-be-careful-be-very-careful.html
-title: "Ignoring STP? Be careful, be very careful"
-date: "2011-05-13T06:56:00.001+02:00"
-tags: [ switching,Data Center,Workshop,TRILL ]
 ---
 
 <p>A while ago I described what it takes to <a href="https://blog.ipspace.net/2011/03/trillfabric-path-stp-integration.html">integrate TRILL backbone with the legacy equipment running Spanning Tree Protocol (STP)</a>. Unfortunately, Brocade decided to use a non-standard approach to BPDU handling when implementing their TRILL-like VCS fabric. VDX switches running in fabric mode can either drop incoming BPDU frames or transport them transparently across the fabric to other edge ports. Although VDX switches support STP, RSTP and MSTP (as well as RootGuard and BPDUGuard) when configured as standalone switches, the STP processing is disabled when you configure fabric mode; VCS fabric looks like a huge shared LAN segment to the end hosts and core switches.</p>

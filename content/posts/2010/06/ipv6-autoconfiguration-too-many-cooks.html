@@ -1,8 +1,10 @@
 ---
+date: 2010-06-09T06:44:00.006+02:00
+tags:
+- IPv6
+- workshop
+title: 'IPv6 autoconfiguration: too many cooks spoil the broth'
 url: /2010/06/ipv6-autoconfiguration-too-many-cooks.html
-title: "IPv6 autoconfiguration: too many cooks spoil the broth"
-date: "2010-06-09T06:44:00.006+02:00"
-tags: [ IPv6,Workshop ]
 ---
 
 <p><a href="http://si.linkedin.com/pub/andrej-kobal/5/112/9ba">Andrej Kobal</a> from Astec shared a few interesting facts during the <a href="https://blog.ipspace.net/2010/05/nat64-and-dns64-in-30-minutes.html">3<span style="vertical-align: super; font-size: 80%;">rd</span> Slovenian IPv6 summit</a>: they were deploying a pilot IPv6 subnet in a large network and wanted to retain tight control over the IPv6 address assignment (some people don’t consider <a href="http://tools.ietf.org/html/rfc3041">random address</a> chasing <a href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sag_ip_v6_imp_addr7.mspx?mfr=true">embraced by Windows</a> the best use of their time), so they’ve decided to use DHCPv6. Bad luck: DHCPv6 can’t tell you the IPv6 address of the default router (like DHCP does). You need ICMPv6 RA (part of <a href="http://tools.ietf.org/html/rfc4861">IPv6 Neighbor Discovery</a>) to figure out who the router is.</p>

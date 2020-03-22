@@ -1,8 +1,10 @@
 ---
+date: 2007-09-05T07:12:00.000+02:00
+tags:
+- you've asked for it
+- IP routing
+title: 'Get creative: static routing with Catalyst 3750'
 url: /2007/09/get-creative-static-routing-with.html
-title: "Get creative: static routing with Catalyst 3750"
-date: "2007-09-05T07:12:00.000+02:00"
-tags: [ You've asked for it,IP routing ]
 ---
 
 <a href="http://www.nil.com/ipcorner"><img src="http://www.nil.com/C1256F0A00429755/free_tips_IP_Corner.gif" style="float: right; margin: 2px 0px 6px 3px; border-width: 0px;"/></a>I've probably got this question due to my <a href="http://www.nil.com/ipcorner">IP Corner</a> article <a href="http://www.nil.com/ipcorner/SmallSiteMultiHoming/">Small site multi-homing</a>, where I've been describing reliable static routing. Here's the scenario: we have two sites, each using a Catalyst 3750 switch, and routing between them using static routes. There's a primary fiber link between them and we're using twisted-pair-to-fiber converters due to port limitations on Cat3750. These converters do not report <em>fiber link down</em> status correctly (the carrier is still present on twisted pair even if fiber is down), so the primary Ethernet interfaces do not go down if the fiber link breaks and the primary static route is not removed, requiring manual action to switch over to the backup link.<br/><a href="http://bp1.blogger.com/_K_pkZO5-tTg/RtVIfhNcG8I/AAAAAAAAAHw/l3VsuaNJ8jY/s1600-h/StaticCatalyst.jpg"><img alt="" border="0" id="BLOGGER_PHOTO_ID_5104065459022207938" src="http://bp1.blogger.com/_K_pkZO5-tTg/RtVIfhNcG8I/AAAAAAAAAHw/l3VsuaNJ8jY/s400/StaticCatalyst.jpg" style="display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;"/></a><br/>My initial reaction was a polite answer explaining that the dynamic routing protocols were invented to handle scenarios like this one, but the poor guy responded that <em>“<a href="http://www.dilbert.com/comics/dilbert/the_characters/index.html#boss">his boss</a> does not want to hear about a dynamic routing protocol.”</em> The next idea was the reliable static routing, tracking next-hop availability over both interfaces, but the Catalyst IOS does not support that, as it's based on 12.2 release.<br/><br/>I've got a few other ideas in the meantime (at least one of them working perfectly), but let's hear it from you first ... what would be your solution to this problem?

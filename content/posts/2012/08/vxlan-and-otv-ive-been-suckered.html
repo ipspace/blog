@@ -1,8 +1,12 @@
 ---
+date: 2012-08-27T07:07:00.000+02:00
+tags:
+- VXLAN
+- overlay networks
+- LAN
+- virtualization
+title: 'VXLAN and OTV: I’ve been suckered'
 url: /2012/08/vxlan-and-otv-ive-been-suckered.html
-title: "VXLAN and OTV: I’ve been suckered"
-date: "2012-08-27T07:07:00.000+02:00"
-tags: [ VXLAN,Overlay networks,LAN,virtualization ]
 ---
 
 <p>When VXLAN came out a year ago, a lot of us looked at the packet format and wondered why Cisco and VMware decided to use UDP instead of <a href="https://blog.ipspace.net/2011/09/nvgre-because-one-standard-just-wouldnt.html">more commonly used GRE</a>. One explanation was evident: UDP port numbers give you more entropy that you can use in 5-tuple-based load balancing. The other explanation looked even more promising: <a href="http://blogs.cisco.com/datacenter/vxlan-deep-dive-part-2-looking-at-the-options/">VXLAN and OTV use very similar packet format</a>, so the hardware already doing OTV encapsulation (Nexus 7000) could be used to do <a href="https://blog.ipspace.net/2011/10/vxlan-termination-on-physical-devices.html">VXLAN termination</a>. Boy have we been suckered.</p>
