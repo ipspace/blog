@@ -20,11 +20,12 @@ Even though I tried to test the setup as much as possible, there might be other 
 
 #### Already fixed
 
-Of course I missed a few things (or thought they could wait for a bit longer). Here are the fixes already put in place:
+Of course I missed a few things (or thought they could wait for a bit longer). Here are the fixes already put in place since the blog post was published:
 
 * Atom and RSS feeds work (had to change the URLs, but that shouldn't impact you if you used feed.ipspace.net URL in your RSS reader)
 * Replaced links to ioshints.blogspot.com and blog.ioshints.into. It's so nice when you could write a script that traverses the whole directory tree and fixes stuff ;)
 * Replaced links to category pages in blog posts
+* After being annoyed for years, I finally managed to unify tag capitalization (yes, I'm aware this is textbook OCD behavior, but it felt so good ;)
 
 ## In case you want to know more...
 
