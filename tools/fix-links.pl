@@ -23,6 +23,7 @@ sub fix_links($) {
   $fixed =~ s#http://ioshints.blogspot.com#https://blog.ipspace.net#gi;
   $fixed =~ s#https://blog.ipspace.net/2006/01/contact-me.html#https://www.ipspace.net/Contact#gi;
   $fixed =~ s#/search/label/([^'"]+)#"/tag/".urlize($1).".html"#gie;
+  $fixed =~ s#http://feeds.feedburner.com/ipspace#https://feed.ipspace.net#gi;
 #  $fixed =~ s#/search/label/#/tag#gi;
   if ($fixed ne $html) {
     print "Fixing $fname\n";
