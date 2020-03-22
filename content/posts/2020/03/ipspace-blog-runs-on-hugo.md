@@ -18,6 +18,14 @@ Unfortunately I don't see the quarantine lifted any time soon, so they might be 
 
 Even though I tried to test the setup as much as possible, there might be other broken bits and pieces. If you find them, please [contact me](https://www.ipspace.net/Contact#Fan) (for obvious reasons you can't write a comment ;).
 
+#### Already fixed
+
+Of course I missed a few things (or thought they could wait for a bit longer). Here are the fixes already put in place:
+
+* Atom and RSS feeds work (had to change the URLs, but that shouldn't impact you if you used feed.ipspace.net URL in your RSS reader)
+* Replaced links to ioshints.blogspot.com and blog.ioshints.into. It's so nice when you could write a script that traverses the whole directory tree and fixes stuff ;)
+* Replaced links to category pages in blog posts
+
 ## In case you want to know more...
 
 It wasn't exactly an easy journey. Being of a slightly masochistic persuasion I used Python (instead of Perl) to develop all the glue I needed, including:
