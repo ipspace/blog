@@ -11,7 +11,7 @@ Here's how you do it: <ul><li>No TCP RST packets should be sent as responses to 
 <li>Disable generation of ICMP unreachables with the <strong>no ip unreachables</strong> interface configuration command.</li>
 </ul>
 <!--more-->The relevant parts of router configuration are included below:<pre class="code">ip inspect name Internet tcp router-traffic<br/>ip inspect name Internet udp router-traffic<br/>ip inspect name Internet icmp router-traffic<br/>!<br/>interface FastEthernet0/0<br/> ip address <em>a.b.c.d x.y.z.w</em><br/> ip access-group Internet in<br/><span class="high"> no ip unreachables</span><br/> ip inspect Internet out<br/>!<br/>ip access-list extended Internet<br/> deny ip any any</pre><div class="note"><span>Notes: </span><ul><li>The sample router configuration is taken from a SOHO router doing PAT on the public interface. You might have to adjust the <em>Internet</em> access-list to your needs.</li>
-<li>This article is part of <a href="https://blog.ipspace.net/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="https://blog.ipspace.net/search/label/You%27ve%20asked%20for%20it">series</a>.</li>
+<li>This article is part of <a href="https://blog.ipspace.net/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="https://blog.ipspace.net/tag/youve-asked-for-it.html">series</a>.</li>
 </ul>
 </div>
 
