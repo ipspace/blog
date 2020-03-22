@@ -5,7 +5,7 @@ date: "2011-11-22T06:44:00.000+01:00"
 tags: [ MPLS,IS-IS,Junos ]
 ---
 
-<p>My <a href="http://blog.ioshints.info/2011/11/junos-versus-cisco-ios-explicit-versus.html"><em>Junos versus Cisco IOS: Explicit versus Implicit</em></a><em> </em>received a huge amount of helpful comments, some of them slightly philosophical, others highly practical – from using <strong>interfaces all </strong>combined with <strong>interface disable </strong>in routing protocol configuration, to using configuration groups (more about that fantastic concept in another post).</p>
+<p>My <a href="https://blog.ipspace.net/2011/11/junos-versus-cisco-ios-explicit-versus.html"><em>Junos versus Cisco IOS: Explicit versus Implicit</em></a><em> </em>received a huge amount of helpful comments, some of them slightly philosophical, others highly practical – from using <strong>interfaces all </strong>combined with <strong>interface disable </strong>in routing protocol configuration, to using configuration groups (more about that fantastic concept in another post).</p>
 <p>However, understanding what’s going on is not the same as being able to explain it in one sentence ... and <a href="https://twitter.com/jonahsfo">Dan (@jonahsfo) Backman</a> beautifully nailed that one.<!--more--></p>
 <p>We had a lengthy chat focused on Junos MPLS implementation (yet another blog post) and stumbled across my interfaces-and-protocols confusion. He started explaining how the interface configuration actually ties in with Ethertypes accepted through that interface and per-protocol forwarding tables (actually Radix trees) and then offered the following explanation ...</p>
 <blockquote class="cite">You know, you configure the data-plane functionality within the <strong>interfaces</strong> and control-plane functionality within the <strong>protocols</strong>.</blockquote>
@@ -15,5 +15,5 @@ tags: [ MPLS,IS-IS,Junos ]
 <li>Control plane functionality makes no sense if there’s no data plane forwarding structure to receive the results. Explains why LDP refuses to start on an interface lacking <strong>family mpls </strong>configuration.</li>
 </ul>
 <p>If only someone would take those wise words and add them to Junos documentation ... adding proper error messaging when there’s a control/data plane configuration mismatch would be almost too good to hope for ;)</p>
-<h4>Disclosure</h4><p>The only reason I learned the marginal bits &amp; pieces I know about Junos is because <a href="http://blog.ioshints.info/2011/11/junosphere-first-impressions.html"> Juniper kindly provided me with free access to Junosphere environment</a> (thanks to @abnerg) ... but I was not compensated for my blog posts, or asked to write about Junos or Junosphere. </p>
+<h4>Disclosure</h4><p>The only reason I learned the marginal bits &amp; pieces I know about Junos is because <a href="https://blog.ipspace.net/2011/11/junosphere-first-impressions.html"> Juniper kindly provided me with free access to Junosphere environment</a> (thanks to @abnerg) ... but I was not compensated for my blog posts, or asked to write about Junos or Junosphere. </p>
 

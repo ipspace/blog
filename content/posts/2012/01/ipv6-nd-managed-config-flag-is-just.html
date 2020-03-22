@@ -6,9 +6,9 @@ tags: [ IPv6,Workshop ]
 ---
 
 <p class="update">2012-01-19: The initial version of this post contained a serious error: Cisco IOS DHCPv6 server does not create host routes; without on-link prefix, the router cannot forward the packets to the attached end-hosts.</p>
-<p>IPv6 hosts can use <em>stateless </em>or <em>stateful </em>autoconfiguration. <a href="http://blog.ioshints.info/2011/10/ipv6-stateless-autoconfiguration-101.html">Stateless address autoconfiguration (SLAAC) uses IPv6 prefixes from Router Advertisement (RA) messages</a>; stateful autoconfiguration uses DHCPv6. The routers can use two flags in RA messages to tell the attached end hosts which method to use:<!--more--></p>
+<p>IPv6 hosts can use <em>stateless </em>or <em>stateful </em>autoconfiguration. <a href="https://blog.ipspace.net/2011/10/ipv6-stateless-autoconfiguration-101.html">Stateless address autoconfiguration (SLAAC) uses IPv6 prefixes from Router Advertisement (RA) messages</a>; stateful autoconfiguration uses DHCPv6. The routers can use two flags in RA messages to tell the attached end hosts which method to use:<!--more--></p>
 <ul class="ListParagraph"><li>Managed-Config-Flag tells the end-host to use DHCPv6 exclusively;</li>
-<li>Other-Config-Flag tells the end-host to use <a href="http://blog.ioshints.info/2011/02/dhcpv6slaacra-dhcpv4.html">SLAAC to get IPv6 address and DHCPv6 to get other parameters</a> (DNS server address, for example).</li>
+<li>Other-Config-Flag tells the end-host to use <a href="https://blog.ipspace.net/2011/02/dhcpv6slaacra-dhcpv4.html">SLAAC to get IPv6 address and DHCPv6 to get other parameters</a> (DNS server address, for example).</li>
 <li>Absence of both flags tells the end-host to use only SLAAC.</li>
 </ul>
 <p>One might assume that setting <em>managed-config-flag </em>in RA messages forces IPv6 hosts to use DHCPv6. Wrong, the two flags are just a polite suggestion.<!--more--></p>

@@ -9,6 +9,17 @@ In 2015 I've [seen Scott Lowe going from Wordpress to Jekyll](https://blog.scott
 <!--more-->
 Fast forward to early spring 2020. On March 12th we were [effectively told to stay at home](https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_Slovenia#Timeline) with more rigorous measures eventually put in place to contain morons who didn't get the memo, and I decided to resurface that old project. A week later the ipSpace.net blog is generated with Hugo and hosted as a set of static web pages.
 
+Some functionality is still missing, notably:
+
+* Popular posts
+* Adding new comments
+
+Unfortunately I don't see the quarantine lifted any time soon, so they might be done sooner than I would prefer...
+
+Even though I tried to test the setup as much as possible, there might be other broken bits and pieces. If you find them, please [contact me](https://www.ipspace.net/Contact#Fan) (for obvious reasons you can't write a comment ;).
+
+## In case you want to know more...
+
 It wasn't exactly an easy journey. Being of a slightly masochistic persuasion I used Python (instead of Perl) to develop all the glue I needed, including:
 
 * Converting Blogger XML dump into Hugo posts;
@@ -27,12 +38,3 @@ Final touches:
 
 * CI/CD configuration that recreates and republishes the whole blog on every change in the **publish** branch;
 * A script that merges **master** branch into **publish** branch, and recreates the comments and sidebar markup. That script is run every few minutes, and as a nice side effect triggers publishing of blog posts that have **date** set into the future.
-
-Some functionality is still missing, notably:
-
-* Popular posts
-* Adding new comments
-
-Unfortunately I don't see the quarantine lifted any time soon, so they might be done sooner than I would prefer...
-
-Even though I tried to test the setup as much as possible, there might be other broken bits and pieces. If you find them, please [contact me](https://www.ipspace.net/Contact#Fan) (for obvious reasons you can't write a comment ;).

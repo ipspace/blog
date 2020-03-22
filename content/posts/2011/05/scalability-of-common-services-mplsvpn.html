@@ -5,7 +5,7 @@ date: "2011-05-24T07:23:00.001+02:00"
 tags: [ Workshop,MPLS VPN ]
 ---
 
-<p><em>Nosx </em>added a very valid point-of-view to my <a href="http://blog.ioshints.info/2011/05/mplsvpn-common-services-design.html">MPLS/VPN Common Services Design</a> post:</p>
+<p><em>Nosx </em>added a very valid point-of-view to my <a href="https://blog.ipspace.net/2011/05/mplsvpn-common-services-design.html">MPLS/VPN Common Services Design</a> post:</p>
 <blockquote class="cite">This is an overly complex and unsupportable approach to shared services. Having to touch thousands of VRFs to create a shared services VPN is unacceptable. The correct approach is to touch only the "services" vrf, and import/export to each RT that you wish to insert the services into.</blockquote>
 <p>As always, the right answer is “it depends.” If you have few large customers, it makes way more sense to add their RTs to the common services VRF. If you have many small customers, adding RTs to the common services VRF does not scale.<!--more--></p>
 <p>Ignoring for a moment the great fun you’d have trying to troubleshoot an MPLS/VPN network where some BGP routes have hundreds of route targets (so much for <em>supportable</em>), you’re bound to hit some hard limits as you increase the number of customers.</p>
