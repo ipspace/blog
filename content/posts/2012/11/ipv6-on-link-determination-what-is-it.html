@@ -10,7 +10,7 @@ tags: [ IPv6 ]
 <li>If not, who will help me forward the packet (who is the first-hop router)?</li>
 </ul>
 <p>In IPv4 world, the host can get all the information it needs through DHCP. In IPv6 world, things are way more complex (but also way more <em>correct </em>if you’re a theoretician).<!--more--></p>
-<p class="note">This post is a follow-up to the <a href="http://blog.ioshints.info/2012/11/ipv6-router-advertisements-deep-dive.html">IPv6 Router Advertisement Deep Dive</a> post.</p>
+<p class="note">This post is a follow-up to the <a href="https://blog.ipspace.net/2012/11/ipv6-router-advertisements-deep-dive.html">IPv6 Router Advertisement Deep Dive</a> post.</p>
 <h4>The Magic of the Subnet Mask</h4><p>In the IPv4 world, the host gets the answer to the first question with a simple logical AND operation. To figure out if the destination address is in the same subnet, the IPv4 host ANDs its own and the destination IP address with the subnet mask. If (SourceAddr &amp; SubnetMask == DestinationAddr &amp; SubnetMask), the host can send the packet directly to the destination address (assuming it has the destination’s MAC address in its ARP cache).</p>
 <p class="note">We’ll ignore all the complexities introduced by having multiple interfaces and multiple IP addresses per interface; it’s important you get the generic idea.</p>
 <p>If the destination IPv4 address is not in the same subnet, the IPv4 host sends the packet to the first-hop router (sometimes called <em>default gateway </em>for historical reasons).</p>

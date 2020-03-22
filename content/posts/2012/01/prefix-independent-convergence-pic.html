@@ -5,7 +5,7 @@ date: "2012-01-27T07:18:00.000+01:00"
 tags: [ IS-IS,OSPF,Service Providers,BGP ]
 ---
 
-<p>Did you rush to try OSPF Loop Free Alternate on a Cisco 7200 after reading my <a href="http://blog.ioshints.info/2012/01/loop-free-alternate-ospf-meets-eigrp.html">LFA blog post</a> ... and disappointedly discovered that it only works on Cisco 7600? The reason is simple: while LFA does add feasible-successor-like behavior to OSPF, its primary mission is to improve RIB-to-FIB convergence time.<!--more--></p>
+<p>Did you rush to try OSPF Loop Free Alternate on a Cisco 7200 after reading my <a href="https://blog.ipspace.net/2012/01/loop-free-alternate-ospf-meets-eigrp.html">LFA blog post</a> ... and disappointedly discovered that it only works on Cisco 7600? The reason is simple: while LFA does add feasible-successor-like behavior to OSPF, its primary mission is to improve RIB-to-FIB convergence time.<!--more--></p>
 <p>If you want to know more details, I would strongly suggest you browse through the <a href="http://www.data.proidea.org.pl/euronog/1edycja/materialy/prezentacje/Pierre_Francois_IP_Fast_Reroute_Applicability.pdf">IP Fast Reroute Applicability</a> presentation Pierre Francois had @ EuroNOG 2011. To summarize what he told us:</p>
 <ul class="ListParagraph"><li>It’s relatively easy to fine-tune OSPF or IS-IS and get convergence times in tens of milliseconds. SPF runs reasonably fast on modern processors, more so with incremental SPF optimizations.</li>
 <li>A platform using software-based switching can use the SPF results immediately (thus there’s no real need for LFA on a Cisco 7200).</li>

@@ -11,10 +11,10 @@ tags: [ IP routing,EEM ]
 <pre class="code">track 42 stub-object<br/> default-state up</pre><p>Last step: create two EEM applets. One of them will set the track object’s state to <em>down </em>at the end of the business day, the other one will set it to <em>up </em>in the morning.</p>
 <pre class="code">event manager applet DisableBackup<br/> event timer cron name DisableBackup cron-entry "0 17 * * *"<br/> action 1.0 track set 42 state down<br/>!<br/>event manager applet EnableBackup<br/> event timer cron name EnableBackup cron-entry "0 8 * * 1-5"<br/> action 1.0 track set 42 state up</pre><p>You might wonder why you should use this slightly convoluted solution when you could simply modify the router configuration in EEM applets. The answer is simple: if your EEM applets are modifying the configuration, you never know whether you should save configuration changes before reloading the router ... and if you use a configuration monitoring tool, you might get lots of unnecessary alerts. </p>
 <h4>More information</h4><p>Related solutions:</p>
-<ul class="ListParagraph"><li><a href="http://blog.ioshints.info/2006/10/periodic-router-reload.html">Periodic router reload</a></li>
-<li><a href="http://blog.ioshints.info/2007/11/kron-poor-man-cron.html">Kron: poor-man's cron</a></li>
-<li><a href="http://blog.ioshints.info/2008/02/time-based-bgp-policy-routing.html">Time-based BGP policy routing</a></li>
+<ul class="ListParagraph"><li><a href="https://blog.ipspace.net/2006/10/periodic-router-reload.html">Periodic router reload</a></li>
+<li><a href="https://blog.ipspace.net/2007/11/kron-poor-man-cron.html">Kron: poor-man's cron</a></li>
+<li><a href="https://blog.ipspace.net/2008/02/time-based-bgp-policy-routing.html">Time-based BGP policy routing</a></li>
 <li><a href="http://wiki.nil.com/Time-based_wireless_interface_activity">Time-based wireless interface activity</a></li>
 </ul>
-<p>Obviously I was “a bit” upset about getting the same question too many times last year, so I wrote the <a href="http://blog.ioshints.info/2009/03/time-based-ios-actions.html">Time-based IOS actions</a> post ... and <a href="#wp1157622">here’s the official reference for the event timer command</a>.</p>
+<p>Obviously I was “a bit” upset about getting the same question too many times last year, so I wrote the <a href="https://blog.ipspace.net/2009/03/time-based-ios-actions.html">Time-based IOS actions</a> post ... and <a href="#wp1157622">here’s the official reference for the event timer command</a>.</p>
 

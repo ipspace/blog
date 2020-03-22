@@ -7,7 +7,7 @@ tags: [ switching,Workshop,virtualization ]
 
 <p>Chris sent me an interesting question:</p>
 <blockquote class="cite">Imagine L2 traffic between two VMs on different ESX hosts, both using Nexus 1000V. Will the physical switches see the traffic with source and destination MACs matching the VM's vNICs or traffic on NX1000V "packet" VLAN between VEMs (in this case, the packet VLAN would act as a virtual backplane)?</blockquote>
-<p class="more">To decode the acronyms in the question, please read my <a href="http://blog.ioshints.info/2011/06/what-exactly-is-nexus-1000v.html"><em>What exactly is a Nexus 1000V</em></a> post.<!--more--></p>
+<p class="more">To decode the acronyms in the question, please read my <a href="https://blog.ipspace.net/2011/06/what-exactly-is-nexus-1000v.html"><em>What exactly is a Nexus 1000V</em></a> post.<!--more--></p>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2011/08/s1600-NX1K_VLAN.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="320" src="/2011/08/s320-NX1K_VLAN.png" width="307"/></a></div>
 <h4>Digression into Nexus 1000V VLAN usage</h4><p>Nexus 1000V uses up to three VLANs for its communication needs:</p>
 <p><strong><em>Packet VLAN</em></strong><em> </em>is a data-plane VLAN used to exchange control protocol packets between VEMs and VSMs. It’s used to send CDP (as well as LACP and IGMP) packets received by a VEM to the VSM. It’s also used by the VSM to send CDP (or LACP) packets through the desired physical port(s) on desired VEM.</p>
