@@ -12,6 +12,7 @@ git merge origin/publish -X theirs|ack -v "Already|Fetching"
 git merge origin/master -X theirs|ack -v "up to date"
 tools/create-archive.py --quiet
 tools/create-comments.py
+tools/create-popular.py
 git add . -v
 if [ -n "`git status --short`" ]; then
   git commit -m 'Master merge + update' 2>&1
