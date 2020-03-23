@@ -103,12 +103,16 @@
               <link rel="enclosure" type="audio/mpeg" href="{{ . }}" />
             {{ end }}
             {{ $content := .Content }}
+            {{ $more    := "" }}
+            {{ $morefmt := "<div class='jump-link'><a href='%s'>Read more &hellip;</a></div>" }}
             {{ if .Description }}
               {{ $content = .Description }}
+              {{ $more    = printf $morefmt .Permalink }}
             {{ else if .Truncated }}
               {{ $content = .Summary }}
+              {{ $more    = printf $morefmt .Permalink }}
             {{ end }}
-            {{ printf `<content type="html"><![CDATA[%s]]></content>` $content | safeHTML }}
+            {{ printf `<content type="html"><![CDATA[%s%s]]></content>` $content $more | safeHTML }}
             {{ with site.Taxonomies }}
                 {{ range $taxo,$_ := . }} <!-- Defaults taxos: "tags", "categories" -->
                     {{ with $page.Param $taxo }}
