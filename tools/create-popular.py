@@ -68,7 +68,11 @@ def blog_metrics(results):
       'count': row['metrics'][0]['values'][0]
     })
 
-  return sorted(blog_posts, key=lambda x: int(x['count']), reverse=True)
+  popular = sorted(blog_posts, key=lambda x: int(x['count']), reverse=True)
+  for post in popular:
+    del post['count']
+
+  return popular
 
 def parseCLI():
   parser = argparse.ArgumentParser(description='Create blog metadata and templates')
