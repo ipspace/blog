@@ -2,6 +2,7 @@
 title: "OMG: What Is Layer-2"
 tags: [ bridging, Overlay networks ]
 date: 2020-03-23 08:12:00
+inspiration: https://www.iquila.com/About/What-is-Layer2/
 ---
 Found this "gem" describing the differences between layer-2 and layer-3 on an unnamed $vendor web site.
 
