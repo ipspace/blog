@@ -26,6 +26,7 @@ Of course I missed a few things (or thought they could wait for a bit longer). H
 * Replaced links to ioshints.blogspot.com and blog.ioshints.into. It's so nice when you could write a script that traverses the whole directory tree and fixes stuff ;)
 * Replaced links to category pages in blog posts
 * After being annoyed for years, I finally managed to unify tag capitalization (yes, I'm aware this is textbook OCD behavior, but it felt so good ;)
+* It turns out working with Google Analytics API is much simpler than I expected. Popular posts are back ;) (added 2020-03-23)
 
 ## In case you want to know more...
 
