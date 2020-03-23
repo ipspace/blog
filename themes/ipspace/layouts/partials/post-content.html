@@ -47,6 +47,9 @@
     <!-- comments -->
     <div class='post__meta'>
       {{ partial "post-share.html" . }}
+      {{ with .Params.media }}
+        <audio src="{{ . }}" controls="controls" preload="none"></audio>
+      {{ end }}
       {{ partial "post-tags.html" . }}
     </div>
   </article>

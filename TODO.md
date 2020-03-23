@@ -1,5 +1,4 @@
 * Add 404 page
-* Audio controls at the bottom of the blog post
 
 Add later:
 
@@ -30,3 +29,4 @@ Done:
 * Import latest version of the blog
 * Schedule daily fixes
 * Show comments URLs don't jump to the right place (missing anchor)
+* Audio controls at the bottom of the blog post
