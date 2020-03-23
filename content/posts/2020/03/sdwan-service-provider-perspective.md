@@ -1,5 +1,5 @@
 ---
-date: 2020-03-24 08:10:00
+date: 2020-03-25 08:10:00
 tags: [ SD-WAN,service providers ]
 title: "SD-WAN: A Service Provider Perspective"
 ---
