@@ -1,4 +1,5 @@
 * Add 404 page
+* Audio controls at the bottom of the blog post
 
 Add later:
 
