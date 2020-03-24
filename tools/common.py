@@ -25,6 +25,8 @@ def findRootConfig(dir='.',config='config.yaml'):
 def read_blog_post(path):
   with open(path, 'r') as stream:
     content = re.split(YAML_DELIMITER,stream.read())
+    if len(content) < 2:
+      return (None,None)
     frontmatter = content[1]
     text = YAML_DELIMITER.join(content[2:])
     stream.close()
