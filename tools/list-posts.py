@@ -31,6 +31,9 @@ def read_file(path,dir_list):
     print("Reading file %s" % path)
 
   (frontmatter,text) = common.read_blog_post(path)
+  if frontmatter is None:
+    return
+
   date = frontmatter.get('date')
   if frontmatter.get('draft'):
     date = None
