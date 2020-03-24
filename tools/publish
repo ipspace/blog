@@ -7,14 +7,31 @@ if [ -z "`git branch -v|grep publish`" ]; then
   git checkout -b publish origin/publish
 fi
 git checkout publish 2>&1|ack -v "Already|up to date"
-git fetch --all --force|ack -v "Already|Fetching"
-git merge origin/publish -X theirs|ack -v "Already|Fetching"
-git merge origin/master -X theirs|ack -v "up to date"
+POPULAR_BEFORE=`ls -l data/popular.json`
+if [ "$1" = "test" ]; then
+  echo "Test run, merging local branches..."
+  git merge master
+else
+  git fetch --all --force|ack -v "Already|Fetching"
+  git merge origin/publish -X theirs|ack -v "Already|Fetching"
+  git merge origin/master -X theirs|ack -v "up to date"
+fi
+POPULAR_AFTER=`ls -l data/popular.json`
+if [ "$POPULAR_BEFORE" != "$POPULAR_AFTER" ]; then
+  echo "Merge changed popular blog post list, rebuilding..."
+  tools/create-popular.py
+fi
 tools/create-archive.py --quiet
 tools/create-comments.py
-tools/create-popular.py
-git add . -v
-if [ -n "`git status --short`" ]; then
-  git commit -m 'Master merge + update' 2>&1
+if [ -z "`find data -name 'popular.json' -mtime -8 -print`" ]; then
+  tools/create-popular.py
 fi
-git push 2>&1|ack -vi "up-to-date"
+git add . -v
+if [ "$1" = "test" ]; then
+  echo "Test run, not pushing the changes..."
+else
+  if [ -n "`git status --short`" ]; then
+    git commit -m 'Master merge + update' 2>&1
+  fi
+  git push 2>&1|ack -vi "up-to-date"
+fi
