@@ -11,6 +11,7 @@ import os
 import argparse
 import yaml
 import json
+import glob
 from datetime import date, datetime, timezone
 import common
 
@@ -19,7 +20,7 @@ VERBOSE=False
 
 def parseCLI():
   parser = argparse.ArgumentParser(description='List posts in a directory(tree) by publish date')
-  parser.add_argument('dir', action='store',help='Directory to list')
+  parser.add_argument('dir', nargs='+',action='store',help='Directory to list')
   parser.add_argument('--log', dest='logging', action='store_true',
                   help='Enable basic logging')
   parser.add_argument('--verbose', dest='verbose', action='store_true',
@@ -47,14 +48,13 @@ def scan_posts(path,dir_list):
   if LOGGING:
     print("Scanning %s" % path)
 
-  with os.scandir(path) as dir:
-    for entry in dir:
-      entry_path = os.path.join(path,entry.name)
-      if entry.is_dir():
-        if not entry.name.startswith('.'):
-          scan_posts(entry_path,archive,tags)
-      elif entry.is_file():
-        read_file(entry_path,dir_list)
+  for entry in glob.glob(path + "/*"):
+    if VERBOSE:
+      print("Inspecting %s " % entry)
+    if os.path.isdir(entry):
+      scan_posts(entry,archive,tags)
+    elif os.path.isfile(entry):
+      read_file(entry,dir_list)
   return dir_list
 
 def print_dir(dir_list):
@@ -71,8 +71,11 @@ args = parseCLI()
 LOGGING = args.logging or args.verbose
 VERBOSE = args.verbose
 
-dir_list = sorted(scan_posts(args.dir,[]),key=lambda x: x['date'])
-print_dir(dir_list)
+dir_list = []
+for entry in args.dir:
+  dir_list = scan_posts(entry,dir_list)
+
+print_dir(sorted(dir_list,key=lambda x: x['date']))
 
 #for t in sorted(tags.keys(), key=lambda x: tags[x].weight, reverse=True):
 #  print("%-20s %f %i" % (t,tags[t].weight,tags[t].count))
