@@ -1,0 +1,29 @@
+{{ $full := .Scratch.Get "ArticleContext" }}
+<div class='post__item'>
+  <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
+    <header class='post__header'>
+      <h2 class='post__title' itemprop='name headline'>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+    </header>
+    <div class='post__content' itemprop='articleBody'>
+      {{ $truncated := and .Truncated (not $full) }}
+      {{ if $truncated }}
+        {{ .Summary }}
+      {{ else }}
+        {{ if and $full .Truncated (and .File (eq .File.Extension "html")) }}
+          {{ .Summary }}
+        {{ end }}
+        {{ .Content }}
+      {{ end }}
+    </div>
+    {{ if $truncated }}
+      <a class="post__read-more" href="{{ .RelPermalink }}">
+        read more
+        <svg class="post__arrow-icon">
+          <use xlink:href="#arrow-right-orange" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+        </svg>
+      </a>
+    {{ end }}
+  </article>
+</div>
