@@ -11,12 +11,16 @@ Let's stop right there (or you'll stop reading in the next 10 milliseconds). I w
 <!--more-->
 > If a BGP speaker R is advertising a prefix A with next hop N, how does the network know that N is actually alive and can be used to reach A?
 
-Time to get the first elephant out of the room:
+Time to get the first elephant out of the room: this is how distance-vector protocols work. You have to trust your neighbors.
+
+But nonetheless, even if our BGP neighbor did everything right (from the BGP protocol perspective), can we trust that the next hop it's advertising is usable for packet forwarding? Yet again, there's not much we can do:
 
 * If what R is telling you is the only path to the destination, you don't care;
 * If you have multiple paths to the destination, BGP best path selection process kicks in, and while it checks whether the advertised next hop is reachable via the routing table (potentially ignoring the default route), it doesn't consider whether the next hop is alive.
 
 **Long story short**: we could never know whether the BGP next hop (VTEP in Aldrin's question because he was talking about EVPN) is alive.
+
+Next question: can we do better than that? **TL&DR: No**... at least not when using traditional routing protocols. [SD-WAN with end-to-end data-plane probes](/2020/01/fast-failover-in-sd-wan-networks.html) is a different story.
 
 ## But Routing Protocols Work
 
@@ -42,7 +46,7 @@ In this setup an IBGP session is established between loopback interfaces R1 and 
 
 What really happens is that R2 uses recursive routing table lookup to find next hop to reach L1, and then hopes that if the next hop to L1 is reachable (for example, it's advertised by OSPF), it's safe to use it for any destinations with L1 as the next hop.
 
-You might say "_gee, that makes perfect sense_" (ignoring for the moment the ACL SNAFU I mentioned above), but consider how the packet forwarding with R1 is really implemented:
+You might say "_gee, that makes perfect sense_" (ignoring for the moment the ACL SNAFU I mentioned above), but consider how packet forwarding within R1 is really implemented:
 
 {{<figure src="/2020/04/Control-Data-Plane.jpg" caption="Control and data plane in a router running BGP" >}}
 
