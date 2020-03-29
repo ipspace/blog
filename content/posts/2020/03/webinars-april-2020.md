@@ -9,6 +9,6 @@ With webinars being the only way to deliver online content these days, we'll run
 
 * I was planning to update the [Introduction to Containers and Docker](https://www.ipspace.net/Docker101) material for ages... but then had to move the December 2019 workshop to March 2020, only to cancel it a week before the coronavirus exploded for real in Switzerland. I hope I'll manage to deliver the online version on April 9th ;)
 
-* Dinesh Dutt is back on April 16th with an update of [Network Automation Tools](https://www.ipspace.net/NetTools) webinar, in which he'll cover (among other things) the new network automation tools launched since we did the original webinar in 2016.
+* [Dinesh Dutt](https://www.ipspace.net/Author:Dinesh_Dutt) is back on April 16th with an update of [Network Automation Tools](https://www.ipspace.net/NetTools) webinar, in which he'll cover (among other things) the new network automation tools launched since we did the original webinar in 2016.
 
-* We have another webinar planned for April 23rd, but haven't received the necessary information from the author yet, so stay tuned ;)
+* On April 23rd [Pete Lumbis](https://www.ipspace.net/Author:Pete_Lumbis) plans to dive as deep into the intricacies of switching ASICs as he can without violating an NDA ;)
