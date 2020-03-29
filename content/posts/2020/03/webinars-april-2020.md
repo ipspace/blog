@@ -11,4 +11,4 @@ With webinars being the only way to deliver online content these days, we'll run
 
 * [Dinesh Dutt](https://www.ipspace.net/Author:Dinesh_Dutt) is back on April 16th with an update of [Network Automation Tools](https://www.ipspace.net/NetTools) webinar, in which he'll cover (among other things) the new network automation tools launched since we did the original webinar in 2016.
 
-* On April 23rd [Pete Lumbis](https://www.ipspace.net/Author:Pete_Lumbis) plans to dive as deep into the intricacies of switching ASICs as he can without violating an NDA ;)
+* On April 23rd [Pete Lumbis](https://www.ipspace.net/Author:Pete_Lumbis) plans to [dive as deep into the intricacies of switching ASICs](https://www.ipspace.net/Data_Center_Fabrics#Switching_ASIC_Deep_Dive) as he can without violating an NDA ;)
