@@ -3,7 +3,7 @@ title: Webinars in April 2020
 date: 2020-03-30 07:10:00
 tags: [ training ]
 ---
-With webinars being the only way to deliver online content these days, we'll run one every week in April 2020:
+With webinars being the only way to deliver training content these days, we'll run one every week in April 2020:
 
 * Starting on April 2nd I'll talk about one of my favorite topics: [switching, bridging and routing](https://www.ipspace.net/Net101), covering almost everything ever invented from virtual circuits and source route bridging to so-called _routing at layer-2_ and IP forwarding based on host routes;
 
