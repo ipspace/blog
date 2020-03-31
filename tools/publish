@@ -23,7 +23,7 @@ if [ "$POPULAR_BEFORE" != "$POPULAR_AFTER" ]; then
 fi
 tools/create-archive.py --quiet
 tools/create-comments.py
-if [ -z "`find data -name 'popular.json' -mtime -8 -print`" ]; then
+if [ -z "`find data -name 'popular.json' -mmin -480 -print`" ]; then
   tools/create-popular.py
 fi
 git add . -v
