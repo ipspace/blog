@@ -1,15 +1,18 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 from apiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 import os
 import json
 import argparse
+import sys
 
 SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
 KEY_FILE_LOCATION = ""
 VIEW_ID = '175841614'
-
+URL_LIMIT = ''
+FORMAT ='json'
+HOST = 'blog.ipspace.net'
 
 def initialize_analyticsreporting(keyfile):
   """Initializes an Analytics Reporting API V4 service object.
@@ -52,12 +55,14 @@ def get_report(analytics):
       }
   ).execute()
 
-def blog_metrics(results):
+def blog_metrics(results,limit):
   data = results['reports'][0]['data']['rows']
   blog_posts = []
   for row in data:
     (host,path,title) = row['dimensions']
-    if host != 'blog.ipspace.net':
+    if host != HOST:
+      continue
+    if limit and not limit in path:
       continue
     if len(path.split('/')) < 3:
       continue
@@ -74,12 +79,21 @@ def blog_metrics(results):
 
   return popular
 
+def print_html_list(blog_list):
+  if len(blog_list) == 0:
+    print('No entries matching your query')
+    return
+  for entry in blog_list:
+    print('* [%s](https://%s%s)' % (entry['title'],HOST,entry['url']))
+
 def parseCLI():
   parser = argparse.ArgumentParser(description='Create blog metadata and templates')
   parser.add_argument('--config', dest='config', action='store', default='~/.ga.json',
                   help='Google Analytics credentials')
   parser.add_argument('--output', dest='output', action='store', default='data/popular.json',
                   help='JSON output file')
+  parser.add_argument('--format', dest='format', action='store', help='Output format (JSON or HTML)')
+  parser.add_argument('--limit', dest='limit', action='store', help='Limit the search to specified URLs')
   parser.add_argument('--log', dest='logging', action='store_true',
                   help='Enable basic logging')
   parser.add_argument('--quiet', dest='quiet', action='store_true',
@@ -90,11 +104,20 @@ def parseCLI():
 
 def main():
   args = parseCLI()
-  analytics = initialize_analyticsreporting(os.path.expanduser(args.config),)
+
+  fmt = 'html' if args.limit else 'json'
+  fmt = args.format or fmt
+
+  analytics = initialize_analyticsreporting(os.path.expanduser(args.config))
   response = get_report(analytics)
-  with open(os.path.expanduser(args.output),"w") as output:
-    json.dump(blog_metrics(response),output,sort_keys=True,indent=2)
-    output.close()
+  metrics = blog_metrics(response,args.limit)
+
+  if fmt == 'json':
+    with open(os.path.expanduser(args.output),"w") as output:
+      json.dump(metrics,output,sort_keys=True,indent=2)
+      output.close()
+  elif fmt == 'html':
+    print_html_list(metrics)
 
 if __name__ == '__main__':
   main()
