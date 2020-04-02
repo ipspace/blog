@@ -13,3 +13,5 @@ There are only two things you have to do:
 * Implement RPKI in your network.
 
 Thank you, the Internet will be grateful.
+
+{{<note update>}}2020-04-02 16:00 UTC - based on [recent events](https://www.ripe.net/support/service-announcements/accidental-roa-deletion) we might need another document describing "_how to back up ROAs and have a recovery procedure that takes less than 20 hours_"{{</note>}}
