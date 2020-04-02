@@ -32,4 +32,3 @@ I'm positive that some proponents of indiscriminate use of EBGP-between-loopback
 
 * This design only makes sense if you have multiple parallel links between a pair of adjacent nodes;
 * When you have a single link between two nodes (like in a typical data center fabric design) it’s irrelevant whether you run the EVPN EBGP session between directly connected IP addresses or between loopback interfaces (unless the boxes you're using have interesting implementation limitations)… but one of the two options is simpler to configure;
-* I have yet to see a vendor document clearly explaining the above minor details. If there’s one out there, I’d appreciate a pointer.
