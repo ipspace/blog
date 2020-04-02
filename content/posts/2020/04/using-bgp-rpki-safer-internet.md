@@ -14,4 +14,4 @@ There are only two things you have to do:
 
 Thank you, the Internet will be grateful.
 
-{{<note update>}}2020-04-02 16:00 UTC - based on [recent events](https://www.ripe.net/support/service-announcements/accidental-roa-deletion) we might need another document describing "_how to back up ROAs and have a recovery procedure that takes less than 20 hours_"{{</note>}}
+{{<note update>}}2020-04-02 16:00 UTC - Two interesting events happened on April 1st. [This](https://radar.qrator.net/blog/how_you_deal_with_route_leaks) is why we badly need RPKI and [this](https://www.ripe.net/support/service-announcements/accidental-roa-deletion) is why we might need another document describing "_how to back up ROAs and have a recovery procedure that takes less than 20 hours_"{{</note>}}
