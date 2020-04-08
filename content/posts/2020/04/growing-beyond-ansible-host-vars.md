@@ -1,7 +1,6 @@
 ---
 title: Growing Beyond Ansible host_vars and group_vars
-###date: 2020-03-31 16:53:00
-draft: True
+date: 2020-04-16 6:53:00
 tags: [ Ansible, automation ]
 ---
 One of the attendees of my [Building Network Automation Solutions](http://www.ipspace.net/Building_Network_Automation_Solutions) online course quickly realized a limitation of Ansible (by far the most popular network automation tool): it stores all the information in random text files. Here’s what he wrote:
