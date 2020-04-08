@@ -23,7 +23,7 @@
                 <a rel="nofollow" id="c5213974876288671455" href="#5213974876288671455">09 October 2007 00:21</a>
               </span>
             </div>
-            <p class="comment-content">thanks for this awesome site! i am studying for my ccie and am reviewing ospf now.  i thought that the ospf network statements were executed top to bottom like an access list (if a match, then exit), but i now see correctly. :)</p>
+            <div class="comment-content">thanks for this awesome site! i am studying for my ccie and am reviewing ospf now.  i thought that the ospf network statements were executed top to bottom like an access list (if a match, then exit), but i now see correctly. :)</div>
           </div>
         </li>
       </div>
@@ -41,7 +41,7 @@
                 <a rel="nofollow" id="c6250953105295324839" href="#6250953105295324839">22 February 2008 19:18</a>
               </span>
             </div>
-            <p class="comment-content">Do you know from which release this feature is integrated?</p>
+            <div class="comment-content">Do you know from which release this feature is integrated?</div>
           </div>
         </li>
       </div>
@@ -59,7 +59,7 @@
                 <a rel="nofollow" id="c5664291932817607252" href="#5664291932817607252">22 February 2008 20:56</a>
               </span>
             </div>
-            <p class="comment-content">No idea ... even the 12.4 documentation still claims (incorrectly) that the network statements are processed sequentially in the order they were entered.</p>
+            <div class="comment-content">No idea ... even the 12.4 documentation still claims (incorrectly) that the network statements are processed sequentially in the order they were entered.</div>
           </div>
         </li>
       </div>
@@ -77,7 +77,7 @@
                 <a rel="nofollow" id="c1910101860937276953" href="#1910101860937276953">23 September 2008 05:30</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan!<BR/><BR/>FYI: I've just performed some tests w/ 3640's image and can confirm that changes in order dependency took place somewhere between 11.3T and 12.0:<BR/><BR/>11.3(9)T:<BR/>---------<BR/>#sh startup<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/>!<BR/><BR/>#sh run<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/>!<BR/><BR/>Note: When I try to enter initial ospf's config via CLI it alarms for each subsequent entry after 0.0.0.0/255.255.255.255:<BR/><BR/>% OSPF: "network 172.16.0.0 0.0.255.255 area 0.0.0.1" is ignored. It is a subset of a previous entry.<BR/><BR/><BR/>12.0(14):<BR/>---------<BR/><BR/>#sh startup<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/>!<BR/><BR/>#sh run<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/>!<BR/><BR/>#sh log<BR/>[snip]<BR/><BR/>%OSPF-6-AREACHG: 172.16.0.0/16 changed from area 0.0.0.0 to area 0.0.0.1<BR/><BR/>%OSPF-6-AREACHG: 172.16.2.0/23 changed from area 0.0.0.1 to area 0.0.0.2<BR/><BR/>%OSPF-6-AREACHG: 172.16.3.0/24 changed from area 0.0.0.2 to area 0.0.0.3<BR/><BR/>[snip]<BR/><BR/>   HTH!</p>
+            <div class="comment-content">Hi Ivan!<BR/><BR/>FYI: I've just performed some tests w/ 3640's image and can confirm that changes in order dependency took place somewhere between 11.3T and 12.0:<BR/><BR/>11.3(9)T:<BR/>---------<BR/>#sh startup<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/>!<BR/><BR/>#sh run<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/>!<BR/><BR/>Note: When I try to enter initial ospf's config via CLI it alarms for each subsequent entry after 0.0.0.0/255.255.255.255:<BR/><BR/>% OSPF: "network 172.16.0.0 0.0.255.255 area 0.0.0.1" is ignored. It is a subset of a previous entry.<BR/><BR/><BR/>12.0(14):<BR/>---------<BR/><BR/>#sh startup<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/>!<BR/><BR/>#sh run<BR/>[snip]<BR/>!<BR/>router ospf 1<BR/> network 172.16.3.0 0.0.0.255 area 0.0.0.3<BR/> network 172.16.2.0 0.0.1.255 area 0.0.0.2<BR/> network 172.16.0.0 0.0.255.255 area 0.0.0.1<BR/> network 0.0.0.0 255.255.255.255 area 0.0.0.0<BR/>!<BR/><BR/>#sh log<BR/>[snip]<BR/><BR/>%OSPF-6-AREACHG: 172.16.0.0/16 changed from area 0.0.0.0 to area 0.0.0.1<BR/><BR/>%OSPF-6-AREACHG: 172.16.2.0/23 changed from area 0.0.0.1 to area 0.0.0.2<BR/><BR/>%OSPF-6-AREACHG: 172.16.3.0/24 changed from area 0.0.0.2 to area 0.0.0.3<BR/><BR/>[snip]<BR/><BR/>   HTH!</div>
           </div>
         </li>
       </div>
@@ -95,7 +95,7 @@
                 <a rel="nofollow" id="c3627693923951873977" href="#3627693923951873977">23 September 2008 09:38</a>
               </span>
             </div>
-            <p class="comment-content">Thanks. This is great information :))</p>
+            <div class="comment-content">Thanks. This is great information :))</div>
           </div>
         </li>
       </div>

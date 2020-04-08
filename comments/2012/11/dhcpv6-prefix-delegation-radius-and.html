@@ -23,7 +23,7 @@
                 <a rel="nofollow" id="c272740548616342151" href="#272740548616342151">07 November 2012 14:47</a>
               </span>
             </div>
-            <p class="comment-content">now i just need to figure out how to log [AAA] delegated IPs from BRAS&#39;s local pools.<br /><br />i hope that using radius attrib &quot;Delegated-IPv6-Prefix&quot; or &quot;Framed-IPv6-Pool&quot; does the trick...</p>
+            <div class="comment-content">now i just need to figure out how to log [AAA] delegated IPs from BRAS&#39;s local pools.<br /><br />i hope that using radius attrib &quot;Delegated-IPv6-Prefix&quot; or &quot;Framed-IPv6-Pool&quot; does the trick...</div>
           </div>
         </li>
       </div>
@@ -41,7 +41,7 @@
                 <a rel="nofollow" id="c829530455175792735" href="#829530455175792735">07 November 2012 16:10</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;ve another question. Is &quot;delegated-IPv6-prefix&quot; supposed to bootstrap the per-user static? I had this working in 15.1S on ASR1K and suddenly it stopped working after upgrading. I now have to accompany each user with their own routing attributes as well as the delegation. Is this intentional? does anybody know?</p>
+            <div class="comment-content">I&#39;ve another question. Is &quot;delegated-IPv6-prefix&quot; supposed to bootstrap the per-user static? I had this working in 15.1S on ASR1K and suddenly it stopped working after upgrading. I now have to accompany each user with their own routing attributes as well as the delegation. Is this intentional? does anybody know?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -60,7 +60,7 @@
                 <a rel="nofollow" id="c144056283062605891" href="#144056283062605891">07 November 2012 19:59</a>
               </span>
             </div>
-            <p class="comment-content">Assuming the CPE asks for the prefix through DHCPv6 IA_PD REQUEST it sounds like a bug to me.</p>
+            <div class="comment-content">Assuming the CPE asks for the prefix through DHCPv6 IA_PD REQUEST it sounds like a bug to me.</div>
           </div>
         </li>
       </div>
@@ -85,7 +85,7 @@
                 <a rel="nofollow" id="c4108583327798668980" href="#4108583327798668980">09 November 2012 15:29</a>
               </span>
             </div>
-            <p class="comment-content">Thanks Ivan, it turns out, as you say, the client has to ask in order for us to create the per-user static. In the previous release we were running ,the client didn&#39;t have to ask, the per-user static was just automatically created, we then assumed we could just provision PD attr in RADIUS and it would cover all clients (those supporting PD and those not) , it seems when we went to the next release, the behaviour changed to &quot;only install the per-user static if the client asks for it&quot; so we&#39;ve now started including the framed-ipv6-route attr along with the PD attr. <br />Saying this, the latest build of the next (i.e after ours) release has reverted to the previous behaviour! perhaps it just doesn&#39;t have this new behaviour committed to it.</p>
+            <div class="comment-content">Thanks Ivan, it turns out, as you say, the client has to ask in order for us to create the per-user static. In the previous release we were running ,the client didn&#39;t have to ask, the per-user static was just automatically created, we then assumed we could just provision PD attr in RADIUS and it would cover all clients (those supporting PD and those not) , it seems when we went to the next release, the behaviour changed to &quot;only install the per-user static if the client asks for it&quot; so we&#39;ve now started including the framed-ipv6-route attr along with the PD attr. <br />Saying this, the latest build of the next (i.e after ours) release has reverted to the previous behaviour! perhaps it just doesn&#39;t have this new behaviour committed to it.</div>
           </div>
         </li>
       </div>
