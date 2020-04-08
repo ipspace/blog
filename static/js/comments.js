@@ -27,6 +27,6 @@ $(function() {
   if (comments.length) {
     var recent = $("<div id='recent_comments' style='clear: both;'></div>");
     recent.appendTo($("#comments"));
-    recent.load(server+"bin/comment/list",remove_duplicate_comments);
+    recent.load(server+"bin/comment/list?url="+location.pathname,remove_duplicate_comments);
   }
 });
