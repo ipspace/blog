@@ -5,5 +5,5 @@ $(function() {
 
   var recent = $("<div id='recent_comments' style='clear: both;'></div>");
   recent.appendTo($("#comments"));
-  recent.load("http://my.ipspace.net/bin/comment/list");
+  recent.load("https://my.ipspace.net/bin/comment/list");
 });
