@@ -21,6 +21,7 @@ if [ "$POPULAR_BEFORE" != "$POPULAR_AFTER" ]; then
   echo "Merge changed popular blog post list, rebuilding..."
   tools/create-popular.py
 fi
+CI_INCLUDE=~/web/dev/perl ~/web/dev/ci/comment-build.pl
 tools/create-archive.py --quiet
 tools/create-comments.py
 if [ -z "`find data -name 'popular.json' -mmin -480 -print`" ]; then
