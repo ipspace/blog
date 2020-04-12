@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "12 April 2020 02:47",
+         "html": "<p>Addressing the problem of BGP Next Hop reachability, I'm not familiar in the particular case of EVPN, but the Cisco implementation of BGP has 2 features enabled by default which are meant to address this issue specifically, the BGP Scanner process and (the even faster) Next Hop Tracking.</p>\n\n<p>And that's just for indirect / 3rd party next hop. If your BGP peering (regardless of whether it is iBGP or eBGP, even though the latter is the recommended best practice), then  fast externall fallover will immediately kill the neighbor and flush all routes which it learned from that neighbor.</p>\n\n<p>Of course, none of these features will protect you against gray SW/HW failures, such as faulty line card which still appears as UP but is not actually forwarding any traffic. </p>\n",
+         "id": "1",
+         "name": "Ciprian Chira",
+         "pub": "2020-04-12T14:47:46",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2020/04/can-we-trust-bgp-next-hops-part-1.html"
+}
