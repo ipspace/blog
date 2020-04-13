@@ -9,7 +9,7 @@ Then there are others... Here's a recent email I got:
 <!--more-->
 > Due to the closure of educational institutions and libraries, online learning has become a key component to maintain the continuity of learning for students. However, not everyone has the opportunity and ability to access content and pay for it. In the US alone, over 3 million people have already lost jobs and the numbers are staggering, globally. All of these people need to upgrade their skills and learn new things for them to find jobs. Most of this must happen online.
 
-So far it sounds like a Bullshit Bingo winner... but it was just an introduction to this "personal invitation":
+So far it sounds like a Bullshit Bingo winner (creating those seems to be a [favorite marketing pastime these days](https://twitter.com/jessica_salfia/status/1249000027198033922))... but it was just an introduction to this "personal invitation":
 
 >   We all are educators first. Hence we must fulfill our promise of teaching students however we can. With the support of our world-class instructors, $OurPlatform has put together a collection of over 250 eLearning courses that students can learn from at no cost. The current collection of our free courses is available here. I personally invite you to contribute to our COVID-19 eLearning Initiative and make some or all of your content freely available to students globally.
 
@@ -27,4 +27,4 @@ What happened to "fulfilling our promise" and "our e-learning initiative". This 
 
 > I request you to **upload your training material on our platform** as we are widely distributing the content via partnerships with various organizations.
 
-I couldn't decide whether to laugh, cry, or scream... What a blatant move to promote their platform in the name of charity, and to make it work off other people's efforts.
+I couldn't decide whether to laugh, cry, or scream... What a blatant move to get content for free and promote their platform in the name of charity.
