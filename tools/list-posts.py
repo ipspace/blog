@@ -13,6 +13,7 @@ import yaml
 import json
 import glob
 from datetime import date, datetime, timezone
+from termcolor import colored
 import common
 
 LOGGING=False
@@ -59,13 +60,16 @@ def scan_posts(path,dir_list):
 
 def print_dir(dir_list):
   last_day = -1
+  today = datetime.now().date()
   for entry in dir_list:
     date = entry['date']
     wday = date.weekday()
     if wday < last_day:
       print("-----")
     last_day = wday
-    print("%15s: %s" % (date.strftime('%a %Y-%m-%d %H:%M'),entry['name']))
+    line = "%15s: %s" % (date.strftime('%a %Y-%m-%d %H:%M'),entry['name'])
+    color = "green" if date.date() > today else "yellow" if date.date() == today else None
+    print(colored(line,color) if color else line)
 
 args = parseCLI()
 LOGGING = args.logging or args.verbose
