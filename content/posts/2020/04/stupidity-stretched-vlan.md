@@ -8,7 +8,7 @@ Let's agree for a millisecond that you can't find any other way to migrate your 
 There are two ways of solving today's challenge:
 <!--more-->
 * You could realize that your problem is **IP address mobility** and solve it by implementing routing on host IP addresses instead of routing on IP subnets ([turning IP into CLNP](https://blog.ipspace.net/2015/05/reinventing-clns-with-l3-only-forwarding.html), but that's yet another story).
-* You could take the shiniest hammer in your toolbox ([stretched VLANs implemented over L2VPN](https://blog.ipspace.net/2020/02/live-vmotion-into-vmware-on-aws-cloud.html)) and use it no matter what problem you're trying to solve. It's so much fun attacking Philips screws with a sledgehammer.
+* You could take the shiniest hammer in your toolbox ([stretched VLANs implemented over L2VPN](https://blog.ipspace.net/2020/02/live-vmotion-into-vmware-on-aws-cloud.html)) and use it no matter what problem you're trying to solve. It's so much fun attacking Phillips screws with a sledgehammer.
 
 Let's start with the _IP routing on host addresses_ camp:
 
