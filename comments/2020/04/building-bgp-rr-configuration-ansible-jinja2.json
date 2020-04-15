@@ -7,9 +7,17 @@
          "name": "Bryan Bartik",
          "pub": "2020-04-14T22:03:48",
          "type": "comment"
+      },
+      {
+         "date": "15 April 2020 12:01",
+         "html": "<p>Nothing wrong with your solution. Instead of modeling the BGP sessions with a data model (like I did), you decided to make them part of the business logic (<em>every leaf is a route reflector of every spine</em>), and of course that's as IaC-y as it gets... it's just that your data model is at a higher layer of abstraction than mine.</p>\n\n<p>As for the implementation: unless they radically improved Ansible network modules (fat chance) calling <strong>nxos_bgp_neighbor_af</strong> might get slow for a large number of leaf switches, as it executes <strong>show running</strong> every time you're calling the module.</p>\n",
+         "id": "7",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-04-15T12:01:29",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2020/04/building-bgp-rr-configuration-ansible-jinja2.html"
 }
