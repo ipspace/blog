@@ -20,7 +20,15 @@ $(function() {
     server = 'http://my.local:8080/'
   }
   $(".post__comment-add").click(function () {
-    $("#post__comment-form").load(server+"bin/comment/get");
+    /*
+    $("#post__comment-form").load(server+"bin/comment/get"); */
+    $.ajax({
+        url: server+"bin/comment/get",
+        dataType: 'html',
+        xhrFields: { withCredentials: true },
+        success: function(data) { $("#post__comment-form").html(data); },
+        failure: function(xhr,err) { alert ('Cannot load the comments form: '+err); }
+    });
   });
 
   var comments = $("#comments");
