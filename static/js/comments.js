@@ -1,6 +1,10 @@
 function remove_duplicate_comments() {
   var recent = $("#recent_comments");
-  var static = $("#comments div.comments-content").first()
+  var static = $("#comments div.comments-content");
+
+  /* If there's a single comment-contents DIV then we can't compare old to recent */
+  if (static.length <= 1) { return; }
+  static = static.first()
 
   recent.find("li.comment").each(function() {
     var me = $(this);
@@ -34,7 +38,8 @@ $(function() {
   var comments = $("#comments");
   if (comments.length) {
     var recent = $("<div id='recent_comments' style='clear: both;'></div>");
-    recent.appendTo($("#comments"));
+    var cmtlist = $("#comments");
+    recent.appendTo(cmtlist);
     recent.load(server+"bin/comment/list?url="+location.pathname,remove_duplicate_comments);
   }
 });
