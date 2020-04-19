@@ -106,13 +106,14 @@ def scanFile(path,archive,tags):
     age = datetime.now(timezone.utc) - pubdate
     weight = WEIGHT ** age.days
 
-    for t in doc.get('tags',[]):
-      if t in BLOCK_TAGS:
-        continue
-      tags.setdefault(t,SimpleNamespace(count=0,weight=0,recent=9999))
-      tags[t].count = tags[t].count + 1
-      tags[t].weight = tags[t].weight + weight
-      tags[t].recent = min(tags[t].recent,age.days)
+    if doc.get('tags'):
+      for t in doc.get('tags'):
+        if t in BLOCK_TAGS:
+          continue
+        tags.setdefault(t,SimpleNamespace(count=0,weight=0,recent=9999))
+        tags[t].count = tags[t].count + 1
+        tags[t].weight = tags[t].weight + weight
+        tags[t].recent = min(tags[t].recent,age.days)
   return
 
 def template(j2,data,dest):
