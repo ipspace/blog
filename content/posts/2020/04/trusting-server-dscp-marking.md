@@ -1,8 +1,7 @@
 ---
 title: Can We Trust Server DSCP Marking?
 tags: [ QoS ]
-draft: true
-##date: 2020-05-01 00:00:00
+date: 2020-04-23 06:44:00
 ---
 A reader of my blog sent me this question:
 
@@ -10,7 +9,7 @@ A reader of my blog sent me this question:
 
 As they say “not as far as you can throw them”.
 
-Does that mean that the network should do application recognition and marking on the ingress network node? Absolutely not.
+Does that mean that the network should do application recognition and marking on the ingress network node? Absolutely not, although the switch- and router vendors [adore the idea of solving all problems on their boxes](https://blog.ipspace.net/2013/06/network-virtualization-and-spaghetti.html).
 <!--more-->
 We have to get used to the fact that we should run our networks like a [utility service](http://localhost:1313/2013/04/they-want-networking-to-be-utility-lets.html)... and with every service comes **Service Level Agreement**.
 
