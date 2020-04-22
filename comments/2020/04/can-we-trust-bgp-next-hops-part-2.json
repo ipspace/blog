@@ -15,9 +15,17 @@
          "name": "Ivan Pepelnjak",
          "pub": "2020-04-21T15:14:05",
          "type": "comment"
+      },
+      {
+         "date": "22 April 2020 08:23",
+         "html": "<p>This problem arises from the fashion of centralized Route Reflectors.</p>\n\n<p>The course books were not updated in the last few decades from the state when enabling a Route Reflector could overload and break your router. So you need a centralized solution. Always, no exceptions in most people's mind...</p>\n\n<p>However, an IP network routing protocol by original design should share the fate of the links. So your iBGP sessions should follow exactly the physical topology. Then if a link goes down, then the corresponding single iBGP session goes down. There is no cascade of multiple iBGP sessions going down. There is no problem with a different virtual topology. </p>\n\n<p>The fully distributed RR setup is the safest and closest to the original intentions. However, it is not so easy to automate, since every transit router will become an RR and each of them will have a slightly different BGP configuration.</p>\n\n<p>Once you share the fate of the iBGP session with the fate of the link, then you do not even need to use loopbacks. Indeed you should use the real interfaces addresses. If you use loopbacks, then BGP is really just telling the overall reachability of your loopbacks, no information about the actual physical topology.</p>\n\n<p>By the way, centralized RRs are typically logical single point of failures by design. You can have RR hardware redundancy, you can do vendor diversity, but still you can misconfigure and a big chunk of your network has gone. I have seen it multiple times...</p>\n\n<p>With a distributed, fate sharing RR design, when BGP on one node is misconfigured then you just lose that single node and its links. No other impact on the rest of the network. If you had a redundant topology, then all services are still happy after convergence. </p>\n\n<p>Of course, in transit AS you have to take care about full Internet routing tables. But in most enterprise networks you are not a transit AS. So you do not have such scalability issues. You have the freedom to use a fully distributed RR design... If you prefer a robust network...</p>\n",
+         "id": "19",
+         "name": "Bela Varkonyi",
+         "pub": "2020-04-22T08:23:00",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2020/04/can-we-trust-bgp-next-hops-part-2.html"
 }

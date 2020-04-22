@@ -1,6 +1,6 @@
 
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -38,6 +38,39 @@
               </span>
             </div>
             <div class="comment-content"><p>"Why would you run eBGP [as the underlay data center fabric routing protocol]" &lt;&lt; I keep wondering that myself, but some vendors insist on doing that even though they never designed and/or adapted their software to that use case.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="19">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c19" href="#19">22 April 2020 08:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This problem arises from the fashion of centralized Route Reflectors.</p>
+
+<p>The course books were not updated in the last few decades from the state when enabling a Route Reflector could overload and break your router. So you need a centralized solution. Always, no exceptions in most people's mind...</p>
+
+<p>However, an IP network routing protocol by original design should share the fate of the links. So your iBGP sessions should follow exactly the physical topology. Then if a link goes down, then the corresponding single iBGP session goes down. There is no cascade of multiple iBGP sessions going down. There is no problem with a different virtual topology. </p>
+
+<p>The fully distributed RR setup is the safest and closest to the original intentions. However, it is not so easy to automate, since every transit router will become an RR and each of them will have a slightly different BGP configuration.</p>
+
+<p>Once you share the fate of the iBGP session with the fate of the link, then you do not even need to use loopbacks. Indeed you should use the real interfaces addresses. If you use loopbacks, then BGP is really just telling the overall reachability of your loopbacks, no information about the actual physical topology.</p>
+
+<p>By the way, centralized RRs are typically logical single point of failures by design. You can have RR hardware redundancy, you can do vendor diversity, but still you can misconfigure and a big chunk of your network has gone. I have seen it multiple times...</p>
+
+<p>With a distributed, fate sharing RR design, when BGP on one node is misconfigured then you just lose that single node and its links. No other impact on the rest of the network. If you had a redundant topology, then all services are still happy after convergence. </p>
+
+<p>Of course, in transit AS you have to take care about full Internet routing tables. But in most enterprise networks you are not a transit AS. So you do not have such scalability issues. You have the freedom to use a fully distributed RR design... If you prefer a robust network...</p>
 </div>
           </div>
         </li>
