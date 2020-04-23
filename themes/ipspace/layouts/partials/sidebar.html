@@ -9,7 +9,8 @@
   </nav>
   {{ partial "sidebar-social.html" }}
   {{ partial "sidebar-subscribe.html" }}
-  {{ partial "sidebar-popular.html" . }}
+  {{ partialCached "sidebar-updated.html" . }}
+  {{ partialCached "sidebar-popular.html" . }}
   {{ "/snippets/archive-sidebar.html" | readFile | safeHTML }}
   {{ "/snippets/tags-sidebar.html" | readFile | safeHTML }}
 </aside>

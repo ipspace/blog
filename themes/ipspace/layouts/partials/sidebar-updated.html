@@ -1,0 +1,18 @@
+{{ $pages := where (where (where .Site.Pages "Section" "posts") "Kind" "page") "Lastmod" "ge" (now.AddDate 0 -1 0) }}
+{{ $cnt := newScratch }}
+{{ $cnt.Set "UpdatedCount" 0 }}
+{{ range $pages }}
+  {{ if ne .PublishDate .Lastmod }}
+    {{ if eq ($cnt.Get "UpdatedCount") 0 }}
+<div class="widget PopularPosts">
+  <h3 class="sidebar__title">Recently updated</h3>
+  <ul>
+    {{ end }}
+    <li><a href='{{ .Permalink }}'>{{ .Title }}</a></li>
+    {{ $cnt.Add "UpdatedCount" 1 }}
+  {{ end }}
+{{ end }}
+{{ if ne ($cnt.Get "UpdatedCount") 0 }}
+  </ul>
+</div>
+{{ end }}
