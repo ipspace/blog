@@ -6,7 +6,9 @@
         <a class='timestamp-link' href="{{ .Permalink }}" title='permanent link'>
           <time datetime='{{ .Date.Format "Monday, January 2, 2006 15:04 MST" }}' itemprop='datePublished'>
             {{ .Date.Format "Monday, January 2, 2006 15:04 MST" }}</time>
-        </a>
+        </a>{{ if ne .PublishDate .Lastmod }}&hellip;
+          updated on {{ .Lastmod.Format "Monday, January 2, 2006 15:04 MST" }}
+        {{ end }}
       </p>
       <h2 class='post__title' itemprop='name headline'>
         <a href="{{ .Permalink }}">{{ .Title }}</a>

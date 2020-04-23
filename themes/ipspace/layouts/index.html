@@ -1,9 +1,9 @@
 {{ partial "header.html" . }}
 {{ $pag := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 {{ $full := .Scratch.Get "ArticleContext" }}
-{{ range $pag.Pages }}
+{{ range $index,$page := $pag.Pages }}
   {{ .Scratch.Set "ArticleContext" 0 }}
-  {{ partial "post-content.html" . }}
+  {{ partial "post-content.html" $page }}
 {{ end }}
 {{ partial "post-pagination.html" . }}
 {{ partial "footer.html" . }}
