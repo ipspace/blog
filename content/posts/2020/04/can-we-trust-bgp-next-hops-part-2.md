@@ -46,6 +46,8 @@ Let's add a few other minor details to the mix:
 * Then there's [BGP-to-IGP synchronization](https://blog.ipspace.net/2017/08/synchronizing-bgp-and-ospf-or-ospf-and.html) and [IGP-to-LDP synchronization](https://blog.ipspace.net/2011/11/ldp-igp-synchronization-in-mpls.html).
 * Finally, you could get corrupted LFIB anywhere on the path.
 
+For even more BGP fun, read [Considerations in Validating the Path in BGP](https://tools.ietf.org/html/rfc5123) (RFC 5123).
+
 After considering all that, do you really care whether R1 advertises a prefix with the next hop equal to the source IP address of its IBGP session, or with a third-party next hop that it believes works?
 
 ### Back to EVPN
