@@ -8,7 +8,7 @@ INFO: You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscript
 
 JUMP-LINK: [Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/1%20-%20Going%20Beneath%20the%20Surface.mp4?doccode=CiscoSDWAN)
 
-# Video: Fundamentals and Definitions
+# (Pub) Video: Fundamentals and Definitions
 
 After setting the stage clarifying the [current scenarios around Cisco SD-WAN](https://my.ipspace.net/bin/get/CiscoSDWAN/1%20-%20Going%20Beneath%20the%20Surface.mp4?doccode=CiscoSDWAN) [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) focuses on [covering fundamentals topics](https://my.ipspace.net/bin/get/CiscoSDWAN/2%20-%20Fundamentals%20and%20Definitions.mp4?doccode=CiscoSDWAN) that must be considered beforehand when dealing with solutions that abstract complexity from the administrator's eyes, including overlays, virtualization and benefits of SDN.
 
