@@ -23,7 +23,8 @@ Some of my favorite weird bugs:
 
 * File transfer triggering remote loopback on a modem;
 * ARP request consistently crashing a router;
-* Catalyst 7600 dropping into software switching (and losing 95% of its stated performance)
+* Xbox update crashing my Internet modem (nothing more than a bridge between fiber- and copper Ethernet) most of the time;
+* Catalyst 7600 dropping into software switching (and losing 95% of its stated performance);
 * Catalyst 7600 randomly copying incoming packets into wrong VRF.
 
 ### Back to automation
