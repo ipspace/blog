@@ -103,7 +103,7 @@ def scanFile(path,archive,tags):
     archive[year].setdefault(month,SimpleNamespace(count=0))
     archive[year][month].count = archive[year][month].count + 1
 
-    age = datetime.now(timezone.utc) - pubdate
+    age = datetime.now(timezone.utc).date() - pubdate.date()
     weight = WEIGHT ** age.days
 
     if doc.get('tags'):
