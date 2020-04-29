@@ -8,7 +8,7 @@ One of the attendees of our [Building Network Automation Solutions](https://www.
 
 > Has anyone wrote a playbook for putting a circuit into _maintenance mode_ — i.e. adjusting metrics to drain traffic away from a circuit that is going to be taken down for maintenance?
 
-As always, you have to figure out what you want to do before you can start to automating stuff.
+As always, you have to figure out what you want to do before you can start automating stuff.
 <!--more-->
 **Notes**:
 
