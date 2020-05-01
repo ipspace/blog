@@ -1,6 +1,6 @@
 ---
 title: "Example: Deploy a Web Server in AWS"
-date: 2020-05-05 06:52:00
+date: 2020-05-06 06:52:00
 tags: [ cloud ]
 ---
 The [third hands-on exercise](https://my.ipspace.net/bin/list?id=PubCloud&module=3#HOMEWORK) in our [Networking in Public Cloud Deployments](https://www.ipspace.net/PubCloud/) online course asks the students to deploy a web server in a public cloud of their choice using infrastructure-as-code principles.
