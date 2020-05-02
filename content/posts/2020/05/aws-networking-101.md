@@ -3,7 +3,7 @@ title: AWS Networking 101
 date: 2020-05-06 07:07:00
 tags: [ AWS, cloud, switching ]
 ---
-There was an obvious invisible elephant in the [virtual Cloud Field Day 7](https://techfieldday.com/event/cfd7/) (CFD7v?) event I attended in late April 2020. Most everyone was talking about AWS, how their [stuff runs on AWS](https://techfieldday.com/appearance/vmware-cloud-on-aws-onboarding-dc-extension-and-cloud-migration-at-cloud-field-day-7/), how it [integrates with AWS](https://techfieldday.com/appearance/vmware-cloud-on-aws-horizon-7-vdi-kubernetes-aws-services-and-marketplace-at-cloud-field-day-7/), or how it will [help others leapfrog AWS](https://techfieldday.com/video/pensando-distributed-services-platforms-at-work/) (yeah, sure...).
+There was an obvious invisible elephant in the [virtual Cloud Field Day 7](https://techfieldday.com/event/cfd7/) (CFD7v) event I attended in late April 2020. Most everyone was talking about AWS, how their [stuff runs on AWS](https://techfieldday.com/appearance/vmware-cloud-on-aws-onboarding-dc-extension-and-cloud-migration-at-cloud-field-day-7/), how it [integrates with AWS](https://techfieldday.com/appearance/vmware-cloud-on-aws-horizon-7-vdi-kubernetes-aws-services-and-marketplace-at-cloud-field-day-7/), or how it will [help others leapfrog AWS](https://techfieldday.com/video/pensando-distributed-services-platforms-at-work/) (yeah, sure...).
 
 Although you [REALLY SHOULD](https://tools.ietf.org/html/rfc6919) watch my [AWS Networking webinar](https://www.ipspace.net/Amazon_Web_Services_Networking) (or something equivalent) to understand what problems vendors like VMWare or Pensando are facing or solving, I'm pretty sure a lot of people think they can get away with CliffsNotes version of it, so here they are ;)
 <!--more-->
@@ -63,3 +63,5 @@ Consequences:
 * You could use a routing protocol between VMs in the same subnet, and use routes derived from the routing protocol for packet forwarding **across the shared subnet**... as long as the routing protocol uses only unicast IP traffic. BGP FTW ;)
 
 Need more details? I already told you [where to find them](https://www.ipspace.net/Amazon_Web_Services_Networking), and we covered [numerous BYOA (Bring Your Own Appliance) designs](https://my.ipspace.net/bin/list?id=PubCloud&module=7#M9S20) in [Networking in Public Cloud Deployments](https://www.ipspace.net/PubCloud/) online course.
+
+<!-- Disclosure: Companies presenting at CFD7 covered the event costs. Apart from the opportunity to ask questions, and getting to meet friends in a Zoom call I got nothing material or immaterial out of that event. -->
