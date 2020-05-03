@@ -22,7 +22,7 @@ Even though AWS networking is just networking (as my [friend Nicola Arnoldi wrot
 A few speculations first:
 
 * AWS is using an overlay virtual networking. We don't know what encapsulation protocol (GRE, VXLAN, ...) or what control plane they use... but we can be pretty sure it's not a centralized control plane or EVPN because those wouldn't scale to AWS size.
-* We know they do VPC packet processing (checking, forwarding...) in ingress and egress hypervisors (source: AWS re:Invent videos).
+* We know they do VPC packet processing (checking, forwarding...) in ingress and egress hypervisors (source: [AWS re:Invent video](https://www.youtube.com/watch?v=8gc2DgBqo9U)).
 
 Now for a few hard facts (if you don't trust me [go and test them yourself](https://blog.ipspace.net/2018/10/figuring-out-aws-networking.html)):
 
