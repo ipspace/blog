@@ -9,7 +9,7 @@ Although you [REALLY SHOULD](https://tools.ietf.org/html/rfc6919) watch my [AWS 
 <!--more-->
 ## High-Level Perspective
 
-* AWS virtual networking is implemented with isolated Virtual Private Clouds (**VPC**) that can be connected to outside world through Internet gateway, VPC-to-VPC peering, VPN gateways or Direct Connect (leased lines) gateways.
+* AWS virtual networking is implemented with isolated Virtual Private Clouds (**VPC**) that can be connected to outside world through Internet gateway, VPC-to-VPC peering, VPN gateways, Transit Gateways, or Direct Connect (leased lines) gateways.
 * VPC is limited to an **AWS region**.
 * Every VPC has one or more **subnets**. Each subnet is limited to an **AWS Availability zone**
 
@@ -21,8 +21,8 @@ Even though AWS networking is just networking (as my [friend Nicola Arnoldi wrot
 
 A few speculations first:
 
-* AWS is using an overlay virtual networking. We don't know what encapsulation protocol (GRE, VXLAN, ...) or what control plane they use... but we can be pretty sure it's not a centralized controller or EVPN because those wouldn't scale to AWS size.
-* We know they do VPC packet forwarding in ingress and egress hypervisors (source: AWS re:Invent videos).
+* AWS is using an overlay virtual networking. We don't know what encapsulation protocol (GRE, VXLAN, ...) or what control plane they use... but we can be pretty sure it's not a centralized control plane or EVPN because those wouldn't scale to AWS size.
+* We know they do VPC packet processing (checking, forwarding...) in ingress and egress hypervisors (source: AWS re:Invent videos).
 
 Now for a few hard facts (if you don't trust me [go and test them yourself](https://blog.ipspace.net/2018/10/figuring-out-aws-networking.html)):
 
@@ -31,10 +31,11 @@ Now for a few hard facts (if you don't trust me [go and test them yourself](http
 * VM IP and MAC addresses are controlled by the orchestration system. 
 * MAC address is passed to a VM as a (virtual) hardware parameter, 
 * DHCP is used to pass IPv4 and IPv6 addresses configured in the orchestration system to the VMs.
-* Packets within a VPC are delivered directly from ingress vNIC (virtual Network Interface Card) to egress vNIC _based on the IP addresses configured in the orchestration system_
+* Packets with destinations within the VPC address range are delivered directly from ingress vNIC (virtual Network Interface Card) to egress vNIC _based on the IP addresses configured in the orchestration system_
 * Route tables are used to influence traffic forwarding toward external destinations. Next hops in route tables are AWS instances (VM, NIC, Internet gateway, VPN gateway, VPC peering...) not IP addresses.
 * Even though the whole VPC behaves like a single forwarding domain (VRF), each subnet could have a different route table.
-* A route table can be used for _ingress_ VPC traffic to implement service insertion... but it only applies to traffic _entering a VPC_ through an Internet- or VPN gateway.
+* A separate route table can be used for _ingress_ VPC traffic to implement service insertion... but it only applies to traffic _entering a VPC_ through an Internet- or VPN gateway.
+* Route tables cannot contain prefixes within the VPC address range, the only exception being the _ingress_ route table attached to a gateway.
 * Route tables can be populated through the orchestration system or via **external** (VPN or DirectConnect) BGP sessions.
 
 {{<figure src="/2020/05/AWS-VPC-Route-Table.png" caption="Sample AWS VPC route table scenario" >}}
@@ -42,11 +43,11 @@ Now for a few hard facts (if you don't trust me [go and test them yourself](http
 Consequences:
 
 * There's no way you can influence intra-VPC packet delivery (apart from a gotcha explained below).
-* Changing an IP or MAC address in a VM usually results in a disconnected VM.
+* Changing an IP or a MAC address in a VM usually results in a disconnected VM.
 * First-hop routing protocols like HSRP or VRRP don't work. Changing a MAC address of a VM will just disconnect it.
 * The only way to pass an IP address from one VM to another is through an orchestration system call. The usual GARP tricks don't work.
-* Taking over an IP address of a failed instance doesn't change the packet forwarding. To do a proper HA failover you have to either change the route table (through orchestration system) or move an elastic NIC (the next hop) to another VM instance.
-* You cannot run a routing protocol between your instance and AWS VPC router. You could either use orchestration system to modify the subnet route table(s) based on VM instance route tables, or run BGP with a VPN gateway. Cisco used that approach with CSR1000v to implement hub-and-spoke VPC peering (and AWS took away that bonanza with Transit Gateway), and VMware still has to do that to connect multiple VMware-on-AWS instances together.
+* Taking over an IP address of a failed instance doesn't change packet forwarding behavior. To do a proper HA failover you have to either change the route table (through orchestration system) or move an elastic NIC (the next hop) to another VM instance.
+* You cannot run a routing protocol between your instance and AWS VPC router. You could either use orchestration system to modify the subnet route table(s) based on VM instance route tables, or run BGP with a VPN gateway. Cisco [used that approach with CSR1000v to implement hub-and-spoke VPC peering](https://blog.ipspace.net/2018/09/using-csr1000v-in-aws-instead-of.html) (and AWS took away that bonanza with Transit Gateway), and VMware [still has to do that to connect multiple VMware-on-AWS instances together](https://techfieldday.com/video/vmware-cloud-on-aws-network-connectivity-deep-dive/).
 
 ## It's Not That Simple
 
@@ -59,7 +60,7 @@ Consequences:
 
 * ARP caches contain meaningful MAC addresses (unlike Azure)
 * You can use static routes with intra-subnet next hops _within VMs_ to change the _VM egress traffic flow_... but they have to be configured _inside the VM_ and only work if the next hop is in the same subnet.
-* The moment you want to send the traffic to another subnet that trick stops working, AWS router takes over, and the traffic is delivered directly to destination vNIC.
+* The moment you want to send the traffic to another subnet that trick stops working, AWS VPC router takes over, and the traffic is delivered directly to destination vNIC.
 * You could use a routing protocol between VMs in the same subnet, and use routes derived from the routing protocol for packet forwarding **across the shared subnet**... as long as the routing protocol uses only unicast IP traffic. BGP FTW ;)
 
 Need more details? I already told you [where to find them](https://www.ipspace.net/Amazon_Web_Services_Networking), and we covered [numerous BYOA (Bring Your Own Appliance) designs](https://my.ipspace.net/bin/list?id=PubCloud&module=7#M9S20) in [Networking in Public Cloud Deployments](https://www.ipspace.net/PubCloud/) online course.
