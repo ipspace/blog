@@ -1,7 +1,7 @@
 ---
 title: "Video: Internet Has More than One Administrator"
 date: 2020-05-08 06:20:00
-tags: [ fundamentals, Internet, video ]
+tags: [ networking fundamentals, Internet, video ]
 ---
 It's amazing how many people assume that The Internet is _a thing_, whereas in reality it's a mishmash of interconnected independent operators running mostly on goodwill, misplaced trust in other people's competence, and (sometimes) pure dumb luck. 
 
