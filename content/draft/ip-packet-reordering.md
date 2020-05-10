@@ -1,7 +1,8 @@
 ---
 title: "Musings on IP Packet Reordering"
-date: 2020-05-02 16:36:00
+#date: 2020-05-02 16:36:00
 tags: [ IP routing, bridging ]
+draft: True
 ---
 During the [Comparing Transparent Bridging and IP Routing](https://my.ipspace.net/bin/list?id=Net101#SWITCH) part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar I said something along the lines of:
 

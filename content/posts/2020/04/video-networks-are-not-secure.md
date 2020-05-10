@@ -1,7 +1,7 @@
 ---
 title: "Video: Networks Are (Not) Secure"
 date: 2020-04-10 07:40:00
-tags: [ fundamentals, security, video ]
+tags: [ networking fundamentals, security, video ]
 ---
 It's amazing how many people still believe in Security Fairy (the mythical entity that makes your application magically secure), fueling the whole industry of security researchers who happily create [excruciatingly detailed talks of how you can use whatever security oversight to wreak havoc](https://blog.ipspace.net/2018/11/omg-vxlan-is-still-insecure.html) (even when the [limitations of a technology are clearly spelled out in an RFC](https://tools.ietf.org/html/rfc7348#section-7)).
 
