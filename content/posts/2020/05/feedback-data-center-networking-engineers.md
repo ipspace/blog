@@ -1,7 +1,6 @@
 ---
 title: "Feedback: Data Center for Networking Engineers"
-###date: 2020-03-30 12:03:00
-draft: True
+date: 2020-05-20 07:03:00
 tags: [ data center, training ]
 comments: False
 ---
@@ -18,11 +17,8 @@ Interestingly, even storage engineers find it useful. This is what I got from on
 I could say “*Mission accomplished* ;)” and move on, but I decided to make the materials even better. This is what I have planned for 2020:
 
 * Revisit data center firewalls: reflexive ACLs versus next-generation firewalls, virtual versus physical appliances, placement in leaf-and-spine fabric;
-
-* Redo *Bridging versus Routing* section as part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar;
-
+* Redo *Bridging versus Routing* section as part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar ([done](https://my.ipspace.net/bin/list?id=DC30#NETWORKING));
 * Improve *VLANs and VRFs* section;
-
 * Add service mesh to load balancing section.
 
 Do you feel that anything else needs fixing? [Send me a message](https://www.ipspace.net/Contact#Fan).
