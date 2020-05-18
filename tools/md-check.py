@@ -29,6 +29,7 @@ def parseCLI():
   return parser.parse_args()
 
 def reportError(err,path):
+  global ERRORS
   print("%s in %s" % (err,path))
   ERRORS=True
 
