@@ -3,7 +3,7 @@ title: "Intent-Based Networking: Another Victim of Sturgeon's Law"
 date: 2020-05-18 07:41:00
 tags: [ intent-based networking ]
 ---
-A few days ago Greg Ferro published an interesting post claiming [DHCP is an example of intent-based networking](https://etherealmind.com/was-dhcp-the-first-intent-networking-feature/) (a bit less tongue-in-cheek than my "_[so is OSPF configuration](http://localhost:1313/2017/09/intent-based-hype.html)_" rant from 2017). BTW, so is RADIUS or TACACS+ ;)
+A few days ago Greg Ferro published an interesting post claiming [DHCP is an example of intent-based networking](https://etherealmind.com/was-dhcp-the-first-intent-networking-feature/) (a bit less tongue-in-cheek than my "_[so is OSPF configuration](/2017/09/intent-based-hype.html)_" rant from 2017). BTW, so is RADIUS or TACACS+ ;)
 
 He got quickly "corrected" by Phil Gervasi who loosely relied on [Gartner's definition of Intent-Based Networking](https://blogs.gartner.com/andrew-lerner/2017/02/07/intent-based-networking/), and claimed that an [intent-based networking system should have three major components](https://networkphil.com/2020/05/12/blog-response-dhcp-is-not-intent-based-networking/):
 <!--more-->
