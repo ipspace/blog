@@ -3,7 +3,7 @@ draft: True
 ---
 # (Pub) Video: Going Beneath the Surface
 
-In order to demystify certain assumptions in regards to SD-WAN, [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) began imparting the Cisco SD-WAN webinar series. Startning by providing real world experience beyond marketing hype and [clearing misty messages](http://localhost:1313/) around what can or cannot be done with them.
+In order to demystify certain assumptions in regards to SD-WAN, [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) began imparting the Cisco SD-WAN webinar series. Startning by providing real world experience beyond marketing hype and clearing misty messages around what can or cannot be done with them.
 
 For that matter, the first video of the series focuses on going [beneath the surface](https://my.ipspace.net/bin/get/CiscoSDWAN/1%20-%20Going%20Beneath%20the%20Surface.mp4?doccode=CiscoSDWAN) of marketing and shiny corporate slides before discussing the solution's technical capabilities.
 

@@ -43,11 +43,14 @@ def check_file(path):
     reportError("Markdown file is probably missing frontmatter",path)
     return
 
-  if "localhost:1313" in text:
+  if "localhost:1313" in text.lower():
     reportError("Localhost link",path)
 
+  if "wwwint.ipspace.net" in text.lower():
+    reportError("Link to internal web site",path)
+
   if frontmatter is None:
-    reportError("Cannot find frontmatter",path)
+    reportError("Cannot find usable frontmatter",path)
     return
 
   draft = frontmatter.get('draft')
