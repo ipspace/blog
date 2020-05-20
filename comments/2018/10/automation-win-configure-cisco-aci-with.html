@@ -29,24 +29,24 @@
 uri:
 url: https://{{ inventory_hostname }}/api/aaaLogin.json
 method: POST
-body: '"{ "aaaUser" : { "attributes" : { "name" : "{{ username }}" , "pwd" : "{{ password }}" } } }"'
+body: '&quot;{ &quot;aaaUser&quot; : { &quot;attributes&quot; : { &quot;name&quot; : &quot;{{ username }}&quot; , &quot;pwd&quot; : &quot;{{ password }}&quot; } } }&quot;'
 status_code: 200
 validate_certs: False
 headers:
-  Content-Type: "application/json"
+  Content-Type: &quot;application/json&quot;
 no_log: True
 register: login</p></li>
 <li><p>name: Add Bridge Domain
 uri:
 url: https://{{ inventory_hostname }}/api/node/mo/uni/tn-{{ item.tenant }}/BD-{{ item.name }}.json
-body: {"fvBD":{"attributes":{"dn":"uni/tn-{{ item.tenant }}/BD-{{ item.name }}","name":"{{ item.name }}","descr":"{{ item.description }}","unicastRoute":"{{ item.unicast }}","rn":"BD-{{ item.name }}","status":"created"},"children":[{"fvRsCtx":{"attributes":{"tnFvCtxName":"{{ item.vrf }}","status":"created,modified"},"children":[]}}]}}
+body: {&quot;fvBD&quot;:{&quot;attributes&quot;:{&quot;dn&quot;:&quot;uni/tn-{{ item.tenant }}/BD-{{ item.name }}&quot;,&quot;name&quot;:&quot;{{ item.name }}&quot;,&quot;descr&quot;:&quot;{{ item.description }}&quot;,&quot;unicastRoute&quot;:&quot;{{ item.unicast }}&quot;,&quot;rn&quot;:&quot;BD-{{ item.name }}&quot;,&quot;status&quot;:&quot;created&quot;},&quot;children&quot;:[{&quot;fvRsCtx&quot;:{&quot;attributes&quot;:{&quot;tnFvCtxName&quot;:&quot;{{ item.vrf }}&quot;,&quot;status&quot;:&quot;created,modified&quot;},&quot;children&quot;:[]}}]}}
 method: POST
 body_format: json
 return_content: yes
 validate_certs: False
 headers:
-  Cookie: "{{ login.set_cookie }}"
-loop: "{{ bd }}"</p></li>
+  Cookie: &quot;{{ login.set_cookie }}&quot;
+loop: &quot;{{ bd }}&quot;</p></li>
 </ul>
 
 <p>Vars file for loop:</p>
@@ -54,9 +54,9 @@ loop: "{{ bd }}"</p></li>
 <hr />
 
 <p>bd:
- - {tenant: "common", name: "bd_192.168.1.0/24", description: "default", unicast: "false", vrf: "default"} 
- - {tenant: "common", name: "bd_192.168.2.0/24", description: "default", unicast: "true", vrf: "default"} 
- - {tenant: "common", name: "bd_192.168.3.0/24", description: "default", unicast: "false", vrf: "default"} </p>
+ - {tenant: &quot;common&quot;, name: &quot;bd_192.168.1.0/24&quot;, description: &quot;default&quot;, unicast: &quot;false&quot;, vrf: &quot;default&quot;} 
+ - {tenant: &quot;common&quot;, name: &quot;bd_192.168.2.0/24&quot;, description: &quot;default&quot;, unicast: &quot;true&quot;, vrf: &quot;default&quot;} 
+ - {tenant: &quot;common&quot;, name: &quot;bd_192.168.3.0/24&quot;, description: &quot;default&quot;, unicast: &quot;false&quot;, vrf: &quot;default&quot;} </p>
 </div>
           </div>
         </li>

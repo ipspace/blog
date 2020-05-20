@@ -20,20 +20,20 @@
             </div>
             <div class="comment-content"><p>Wow, I feel like I was on this same journey this week, glad I popped in :) I was trying to do the same thing this week and trying to do it without having any specific attribute called route reflector or rr-client (not sure why, just my feeling at the time). I used spine and leaf groups and spine and leaf roles.</p>
 
-<p>Since the spines treat all the leafs as RRCs, I figured I could just use roles and when the spine role is run, I take advantage of hostvars and the fact the leafs are grouped already. So I loop through each device and as long as its in the leafs group its the route-reflector-client option. It works but I am not even sure how to gauge the "IAC-ness" of this solution. Thoughts?</p>
+<p>Since the spines treat all the leafs as RRCs, I figured I could just use roles and when the spine role is run, I take advantage of hostvars and the fact the leafs are grouped already. So I loop through each device and as long as its in the leafs group its the route-reflector-client option. It works but I am not even sure how to gauge the &quot;IAC-ness&quot; of this solution. Thoughts?</p>
 
 <pre>
 $ cat roles/bgp-spine/tasks/main.yaml 
 - name: Configure BGP Neighbors with EVPN AF
   nxos_bgp_neighbor_af:
-    asn: &quot;65000&quot;
-    neighbor: &quot;&#123;&#123; item.value.routerid &#125;&#125;&quot;
+    asn: &amp;quot;65000&amp;quot;
+    neighbor: &amp;quot;&#123;&#123; item.value.routerid &#125;&#125;&amp;quot;
     afi: l2vpn
     safi: evpn
     send_community: both
     route_reflector_client: yes
     state: present
-  loop: &quot;&#123;&#123; hostvars|dict2items &#125;&#125;&quot;
+  loop: &amp;quot;&#123;&#123; hostvars|dict2items &#125;&#125;&amp;quot;
   when: item.key in item.value.groups.leafs
 </pre>
 </div>
@@ -75,7 +75,7 @@ $ cat roles/bgp-spine/tasks/main.yaml
                 <a rel="nofollow" id="c8" href="#8">16 April 2020 12:59</a>
               </span>
             </div>
-            <div class="comment-content"><p>Ah, good point on the "show run" every time. That is slow. Thanks Ivan!</p>
+            <div class="comment-content"><p>Ah, good point on the &quot;show run&quot; every time. That is slow. Thanks Ivan!</p>
 </div>
           </div>
         </li>
