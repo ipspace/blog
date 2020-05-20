@@ -27,9 +27,9 @@
 <ul>
 <li><p>name: Login
 uri:
-url: https://{{ inventory_hostname }}/api/aaaLogin.json
+url: https://&#123;&#123; inventory_hostname &#125;&#125;/api/aaaLogin.json
 method: POST
-body: '&quot;{ &quot;aaaUser&quot; : { &quot;attributes&quot; : { &quot;name&quot; : &quot;{{ username }}&quot; , &quot;pwd&quot; : &quot;{{ password }}&quot; } } }&quot;'
+body: &#39;&quot;&#123; &quot;aaaUser&quot; : &#123; &quot;attributes&quot; : &#123; &quot;name&quot; : &quot;&#123;&#123; username &#125;&#125;&quot; , &quot;pwd&quot; : &quot;&#123;&#123; password &#125;&#125;&quot; &#125; &#125; &#125;&quot;&#39;
 status_code: 200
 validate_certs: False
 headers:
@@ -38,15 +38,15 @@ no_log: True
 register: login</p></li>
 <li><p>name: Add Bridge Domain
 uri:
-url: https://{{ inventory_hostname }}/api/node/mo/uni/tn-{{ item.tenant }}/BD-{{ item.name }}.json
-body: {&quot;fvBD&quot;:{&quot;attributes&quot;:{&quot;dn&quot;:&quot;uni/tn-{{ item.tenant }}/BD-{{ item.name }}&quot;,&quot;name&quot;:&quot;{{ item.name }}&quot;,&quot;descr&quot;:&quot;{{ item.description }}&quot;,&quot;unicastRoute&quot;:&quot;{{ item.unicast }}&quot;,&quot;rn&quot;:&quot;BD-{{ item.name }}&quot;,&quot;status&quot;:&quot;created&quot;},&quot;children&quot;:[{&quot;fvRsCtx&quot;:{&quot;attributes&quot;:{&quot;tnFvCtxName&quot;:&quot;{{ item.vrf }}&quot;,&quot;status&quot;:&quot;created,modified&quot;},&quot;children&quot;:[]}}]}}
+url: https://&#123;&#123; inventory_hostname &#125;&#125;/api/node/mo/uni/tn-&#123;&#123; item.tenant &#125;&#125;/BD-&#123;&#123; item.name &#125;&#125;.json
+body: &#123;&quot;fvBD&quot;:&#123;&quot;attributes&quot;:&#123;&quot;dn&quot;:&quot;uni/tn-&#123;&#123; item.tenant &#125;&#125;/BD-&#123;&#123; item.name &#125;&#125;&quot;,&quot;name&quot;:&quot;&#123;&#123; item.name &#125;&#125;&quot;,&quot;descr&quot;:&quot;&#123;&#123; item.description &#125;&#125;&quot;,&quot;unicastRoute&quot;:&quot;&#123;&#123; item.unicast &#125;&#125;&quot;,&quot;rn&quot;:&quot;BD-&#123;&#123; item.name &#125;&#125;&quot;,&quot;status&quot;:&quot;created&quot;&#125;,&quot;children&quot;:[&#123;&quot;fvRsCtx&quot;:&#123;&quot;attributes&quot;:&#123;&quot;tnFvCtxName&quot;:&quot;&#123;&#123; item.vrf &#125;&#125;&quot;,&quot;status&quot;:&quot;created,modified&quot;&#125;,&quot;children&quot;:[]&#125;&#125;]&#125;&#125;
 method: POST
 body_format: json
 return_content: yes
 validate_certs: False
 headers:
-  Cookie: &quot;{{ login.set_cookie }}&quot;
-loop: &quot;{{ bd }}&quot;</p></li>
+  Cookie: &quot;&#123;&#123; login.set_cookie &#125;&#125;&quot;
+loop: &quot;&#123;&#123; bd &#125;&#125;&quot;</p></li>
 </ul>
 
 <p>Vars file for loop:</p>
@@ -54,9 +54,9 @@ loop: &quot;{{ bd }}&quot;</p></li>
 <hr />
 
 <p>bd:
- - {tenant: &quot;common&quot;, name: &quot;bd_192.168.1.0/24&quot;, description: &quot;default&quot;, unicast: &quot;false&quot;, vrf: &quot;default&quot;} 
- - {tenant: &quot;common&quot;, name: &quot;bd_192.168.2.0/24&quot;, description: &quot;default&quot;, unicast: &quot;true&quot;, vrf: &quot;default&quot;} 
- - {tenant: &quot;common&quot;, name: &quot;bd_192.168.3.0/24&quot;, description: &quot;default&quot;, unicast: &quot;false&quot;, vrf: &quot;default&quot;} </p>
+ - &#123;tenant: &quot;common&quot;, name: &quot;bd_192.168.1.0/24&quot;, description: &quot;default&quot;, unicast: &quot;false&quot;, vrf: &quot;default&quot;&#125; 
+ - &#123;tenant: &quot;common&quot;, name: &quot;bd_192.168.2.0/24&quot;, description: &quot;default&quot;, unicast: &quot;true&quot;, vrf: &quot;default&quot;&#125; 
+ - &#123;tenant: &quot;common&quot;, name: &quot;bd_192.168.3.0/24&quot;, description: &quot;default&quot;, unicast: &quot;false&quot;, vrf: &quot;default&quot;&#125; </p>
 </div>
           </div>
         </li>

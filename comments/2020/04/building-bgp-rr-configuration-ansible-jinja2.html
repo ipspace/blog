@@ -26,14 +26,14 @@
 $ cat roles/bgp-spine/tasks/main.yaml 
 - name: Configure BGP Neighbors with EVPN AF
   nxos_bgp_neighbor_af:
-    asn: &amp;quot;65000&amp;quot;
-    neighbor: &amp;quot;&#123;&#123; item.value.routerid &#125;&#125;&amp;quot;
+    asn: &quot;65000&quot;
+    neighbor: &quot;&#123;&#123; item.value.routerid &#125;&#125;&quot;
     afi: l2vpn
     safi: evpn
     send_community: both
     route_reflector_client: yes
     state: present
-  loop: &amp;quot;&#123;&#123; hostvars|dict2items &#125;&#125;&amp;quot;
+  loop: &quot;&#123;&#123; hostvars|dict2items &#125;&#125;&quot;
   when: item.key in item.value.groups.leafs
 </pre>
 </div>
@@ -54,9 +54,9 @@ $ cat roles/bgp-spine/tasks/main.yaml
                 <a rel="nofollow" id="c7" href="#7">15 April 2020 12:01</a>
               </span>
             </div>
-            <div class="comment-content"><p>Nothing wrong with your solution. Instead of modeling the BGP sessions with a data model (like I did), you decided to make them part of the business logic (<em>every leaf is a route reflector of every spine</em>), and of course that's as IaC-y as it gets... it's just that your data model is at a higher layer of abstraction than mine.</p>
+            <div class="comment-content"><p>Nothing wrong with your solution. Instead of modeling the BGP sessions with a data model (like I did), you decided to make them part of the business logic (<em>every leaf is a route reflector of every spine</em>), and of course that&#39;s as IaC-y as it gets... it&#39;s just that your data model is at a higher layer of abstraction than mine.</p>
 
-<p>As for the implementation: unless they radically improved Ansible network modules (fat chance) calling <strong>nxos_bgp_neighbor_af</strong> might get slow for a large number of leaf switches, as it executes <strong>show running</strong> every time you're calling the module.</p>
+<p>As for the implementation: unless they radically improved Ansible network modules (fat chance) calling <strong>nxos_bgp_neighbor_af</strong> might get slow for a large number of leaf switches, as it executes <strong>show running</strong> every time you&#39;re calling the module.</p>
 </div>
           </div>
         </li>
