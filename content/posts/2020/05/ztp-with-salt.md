@@ -1,6 +1,6 @@
 ---
 title: Zero-Touch Provisioning with Salt
-date: 2020-05-26 07:28:00
+date: 2020-05-25 07:28:00
 tags: [ automation ]
 ---
 Helping a friend of mine figure out the details of using Salt in Zero-Touch-Provisioning environments, [Zach Moody](https://www.linkedin.com/in/zachmoody/) sent me a description of their process, and was kind enough to allow me to turn it into a blog post.

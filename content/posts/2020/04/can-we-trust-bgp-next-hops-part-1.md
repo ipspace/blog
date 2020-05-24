@@ -58,6 +58,6 @@ IBGP session between L1 and L2 is up and running, or at least you got the last p
 
 **Conclusion**: Even if you do everything right, you can never be sure that traffic sent toward a BGP next hop will reach the advertised destination. You might as well stop bothering and get a life, networks usually work reasonably well.
 
-So far we covered the two simplest scenarios. In the next installment of this saga we'll talk about networks with more than two routers. Stay tuned...
-
-In the meantime you might want to watch [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar (parts of it are available with [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)) or explore [other BGP resources](https://www.ipspace.net/kb/tag/BGP) we've created in the last decade and a half.
+So far we covered the two simplest scenarios. The [next installment of this saga](/2020/04/can-we-trust-bgp-next-hops-part-2.html) describes networks with more than two routers.
+- - -
+You might also want to watch [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar (parts of it are available with [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)) or explore [other BGP resources](https://www.ipspace.net/kb/tag/BGP) we've created in the last decade and a half.
