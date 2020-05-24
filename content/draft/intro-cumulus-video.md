@@ -1,9 +1,10 @@
 ---
 title: Cumulus Linux Update 2019
-date: 2020-05-19 08:57:00
+#date: 2020-05-19 08:57:00
+draft: true
 tags: [ data center, switching, video ]
 ---
-## Updated: What is Cumulus Linux All About
+## (Pub) Updated: What is Cumulus Linux All About
 
 [Pete Lumbis](https://www.ipspace.net/Author:Pete_Lumbis) started his [Cumulus Linux 4.0 update](https://www.ipspace.net/Data_Center_Fabrics#Update_Sessions) with an overview of differences between Cumulus Linux on hardware switches and Cumulus VX, and continued with an in-depth list of ASIC families supported by Cumulus Linux.
 

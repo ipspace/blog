@@ -1,6 +1,6 @@
 ---
 title: Building a Multi-Vendor Automation Platform
-date: 2020-05-25 08:06:00
+date: 2020-06-01 08:06:00
 tags: [ automation ]
 ---
 One of the attendees in our [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course sent me this question:
