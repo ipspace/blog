@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "02 June 2020 08:42",
+         "html": "A couple of thoughts from a network transport perspective:<br />\n\n<p>1) Apart from a bad implementation or configuration or a bug of the hashing algorithm governing the load-balancing, can these days packet reordering still be introduced within an high-end router while traversing it&#39;s fabric layers from the input to the output port/card ? I remember witnessing it happening on some juniper boxes during the early 2000s after some very deep testing for an R&amp;D European project.</p>\n\n<p>2) there&#39;s no such an alarm/counter on a (stateless by definition) router as &#39;number of out of sequence packets&#39; .... since you&#39;d need to sequence every flow&#39;s packet (according to the forwarding chipset&#39;s configured flow hashing algorithm granularity...) coming in and then work out on a per-flow basis if there&#39;s some reordering been introduced while sending it out on a port....</p>\n\n<p>3) To my knowledge, very few providers stress-test their routers themselves in their labs the way you should to be able to spot such issues. And this should be tested every time you change code or card too...</p>\n\n<p>4) could therefore packet reordering be an Internet&#39;s\nphysiological issue (sort of background noise) that is fixable but at a cost so high that no one really cares unless it becomes a real problem for a complaining customers of yours (such as when you configure a brand new lag towards a customer and forget to change the load-balancing default algorithm from packet based to flow based as witnessed recently @ an IX) ?  </p>\n",
+         "id": "64",
+         "name": "Andrea Di Donato",
+         "pub": "2020-06-02T08:42:38",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2020/05/ip-packet-reordering.html"
+}
