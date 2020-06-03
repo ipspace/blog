@@ -15,9 +15,17 @@
          "name": "Ivan Pepelnjak",
          "pub": "2020-06-03T10:04:12",
          "type": "comment"
+      },
+      {
+         "date": "03 June 2020 10:26",
+         "html": "<p>I was involved in many issue investigations caused by the reordering during last 10 years.\nMost of them were caused by networking equipment coming from major vendors - stateful devices  usually are the culprit.</p>\n\n<p>Parallel processing not handled correctly especially during the phase of FW session establishment (packets are buffered during this period and the process of retrieving them from the buffer is challenging from the reorder handling perspective) is one of the common root cause example.</p>\n\n<p>I spent some time investigating these issues because of the performance degradation reported in the network (udp protocol failures, not-so-decent tcp implementation perf degradation, multicast audio streams affected, etc).</p>\n\n<p>We may think about these issues as a niche cases but they are real and we can simple change the legacy protocol.</p>\n\n<p>If it comes to vendors. They do some testing for typical protocols and scenarios (80% of use cases). For example multicast is poorly tested particularly on cheaper boxes. I would assume that cheap boxes are usually affected by reordering to certain degree.</p>\n\n<p>Every vendor when you report re-ordering issues denies it because this problem is generally solved (they mark packets incoming to the box and they transmit them preserving order). But as always we have corner cases e.g. what happens when we have not created the firewall state on the devices and we dot want to drop packet?</p>\n\n<p>It&#39;s rather complex topic.</p>\n",
+         "id": "68",
+         "name": "BOGDAN GOLAB",
+         "pub": "2020-06-03T10:26:43",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2020/05/ip-packet-reordering.html"
 }
