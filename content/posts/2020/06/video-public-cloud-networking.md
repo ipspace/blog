@@ -7,7 +7,7 @@ tags: [ cloud, AWS, Azure, video ]
 
 Last week we finally made it work - unfortunately only in a virtual event, so I got none of the famous Irish beer - and the video about [alternate universes of public cloud networking](https://www.youtube.com/watch?v=p8mQEOvRNmE&feature=youtu.be) is already online.
 
-Maximilian Wilhelm had [great fun turning my usual black-and-white statements into tweets](https://twitter.com/BarbarossaTM/status/1266402109274062849), here's a selection of them:
+Maximilian Wilhelm had [great fun turning my usual black-and-white statements into tweets](https://twitter.com/BarbarossaTM/status/1266402109274062849), including:
 <!--more-->
 > Everyone wanting to scale beyond that [1000 cloud/VM hosts] will figure out that Layer2 is a toxic environment
 
