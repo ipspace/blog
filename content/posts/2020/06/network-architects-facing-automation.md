@@ -1,7 +1,6 @@
 ---
 title: "How Should Network Architects Deal with Network Automation"
-draft: True
-##date: 2020-05-28 09:08:00
+date: 2020-06-10 07:08:00
 tags: [ automation ]
 ---
 A network architect friend of mine sent me a series of questions trying to figure out how he should approach network automation, and how deep he should go.
@@ -9,7 +8,7 @@ A network architect friend of mine sent me a series of questions trying to figur
 > There is so much focus right now on network automation, but it's difficult for me to know how to apply it, and how it all makes sense from an Architect's PoV. 
 
 A network architect should be the bridge between the customer requirements and the underlying technologies, which (in my opinion) means he has to have a good grasp of both as opposed to fluffy opinions glanced from vendor white papers, or brushed off so-called thought leaders. 
-
+<!--more-->
 Like a traditional architect has to understand the limitations of materials, tools and processes used to implement his creations, a network architect MUST understand the advantages and limitations of technologies used to implement and operate the network he designs.
 
 The absolute minimum a network architect thus needs to know about network automation is a firm grasp on the fundamentals needed to implement a successful network automation solution, including:
@@ -39,11 +38,11 @@ Network automation is just one of many technologies (or tools) a network archite
 
 Does that mean you have to learn Ansible? Sure. You have to hit the wall (hard) a few times to realize how limited it is. You have to try to run it on a large-scale deployment to figure out how slow it is. You have to try to implement a complex configuration template to figure out how much Jinja2 sucks without custom Python filters... or you could read IBM's white papers praising its beauties.
 
-NOTE: I'm not saying Ansible sucks (in general). It's just a tool, and every tool sucks when used incorrectly or in environment it's not good for. Just try hacking down a sequoia with a Swiss Army knife which happens to be a great tool... but not for that particular use case.
+{{<note>}}I'm not saying Ansible sucks (in general). It's just a tool, and every tool sucks when used incorrectly or in environment it's not good for. Just try hacking down a sequoia with a Swiss Army knife which happens to be a great tool... but not for that particular use case.{{</note>}}
 
 Unfortunately it's not just Ansible. There's Salt, Nornir, Terraform... and the very minimum a network architect should understand is the difference between Ansible- or Nornir-style step-by-step automation and infrastructure-as-code approach of tools like Terraform.
 
-NOTE: I know Nornir is a Python framework and can be made to do anything you wish it to do... but so can a Turing machine. The crucial difference between Terraform and Ansible or Nornir is that Terraform does the hard work of comparing and adjusting desired and current system state for you.
+{{<note>}}I know Nornir is a Python framework and can be made to do anything you wish it to do... but so can a Turing machine. The crucial difference between Terraform and Ansible or Nornir is that Terraform does the hard work of comparing and adjusting desired and current system state for you.{{</note>}}
 
 > How do you think an Architect should approach automation? Should I spend X amount of time there even though my role doesn't touch it currently?
 
