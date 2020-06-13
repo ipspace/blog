@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Lessons Learned from 20 Years of Hype Cycles"
-###date: 2020-03-31 20:01:00
-draft: True
+date: 2020-06-17 20:01:00
+tags: [ SDN ]
 ---
 Michael Mullany analyzed [20 years of Gartner hype cycles](https://www.linkedin.com/pulse/8-lessons-from-20-years-hype-cycles-michael-mullany) and got some (expected but still interesting) conclusions including:
 
@@ -10,4 +10,4 @@ Michael Mullany analyzed [20 years of Gartner hype cycles](https://www.linkedin.
 * We might get the idea right and fail badly at implementation
 * It takes a lot longer to solve some problems than anyone expected
 
-Enjoy the reading, and keep these lessons in mind the next time you’ll be sitting in a software-defined, intent-based or machine-learning $vendor presentation.
+Enjoy the reading, and keep these lessons in mind the next time you’ll be sitting in a software-defined, intent-based or [machine-learning](https://blog.ipspace.net/2018/10/worth-watching-machine-learning-in.html) $vendor presentation.

@@ -1,18 +1,17 @@
 ---
 title: "EVPN: The Great Unifying Theory of VPN Control Planes?"
-###date: 2020-03-31 12:23:00
-draft: True
+date: 2020-06-16 06:23:00
 tags: [ EVPN, VPN, MPLS ]
 ---
-I claimed that “*EVPN is the control plane for layer-2 and layer-3 VPNs*” in the *[Using VXLAN and EVPN to Build Active-Active Data Centers](https://blog.ipspace.net/2018/11/interview-active-active-data-centers.html)* interview and got this response from one of the readers:
+I claimed that “*EVPN is the control plane for layer-2 and layer-3 VPNs*” in the *[Using VXLAN and EVPN to Build Active-Active Data Centers](https://blog.ipspace.net/2018/11/interview-active-active-data-centers.html)* interview a long long while ago and got this response from one of the readers:
 
 > To me, that doesn’t compute. For layer-3 VPNs I couldn’t care less about EVPN, they have their own control planes.
 
-Apart from EVPN, there’s a single standardized scalable control plane for layer-3 VPNs: BGP VPNv4 address family using MPLS labels. Maybe EVPN could be a better solution.
+Apart from EVPN, there’s a single standardized scalable control plane for layer-3 VPNs: BGP VPNv4 address family using MPLS labels. Maybe EVPN could be a better solution (opinions differ, see [EVPN Technical Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar for more details).
 <!--more-->
 > For layer-2 VPNs (Carrier Ethernet) I couldn’t care less either.
 
-The L2VPN control plane protocols are a total mess. Either you’re working exclusively on layer-2 with Ethernet switches (have fun), or you have to use MPLS with LDP or BGP to build E-LAN meshes.
+The L2VPN control plane protocols are a total mess. Either you’re working exclusively on layer-2 with Ethernet switches (have fun), or you had to use MPLS with LDP or BGP to build E-LAN meshes.
 
 EVPN is an attempt at the great unifying theory of control plane protocols. It can carry MAC address, so it’s useful as L2VPN control plane. It can also carry IPv4/IPv6 prefixes, so it can be used as L3VPN control plane. As a bonus, it can also carry IPv4/IPv6 addresses (host routes), so you can use it to build a routed VPN (VPN forwarding on IPv4/IPv6 addresses instead of MAC addresses) that looks like an E-LAN but scales much better.
 
