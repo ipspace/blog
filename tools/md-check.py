@@ -58,8 +58,11 @@ def check_file(path):
   if not(draft):
     if not(frontmatter.get('date')):
       reportError("Date or Draft field missing",path)
-    if not(frontmatter.get('tags')):
-      reportError("Tags are missing",path)
+
+    tags = frontmatter.get('tags')
+    if type(tags) is not list:
+      reportError("Tags are missing or not a list",path)
+
     if not(frontmatter.get('title')):
       print("Title is missing",path)
 
