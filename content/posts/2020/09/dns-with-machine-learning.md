@@ -1,12 +1,12 @@
 ---
 title: When Machine Learning in Networking Might Make Sense
-date: 2020-06-29 07:12:00
+date: 2020-09-02 07:12:00
 tags: [ automation ]
 ---
 In March I explained why it's [unrealistic to expect to use machine learning to solve unknown problems in today's snowflake networks](https://blog.ipspace.net/2020/03/machine-learning-in-networking-products.html)... but are there other problems that could be solved?
 
 Here's an idea [Paul Greenberg](https://www.linkedin.com/in/greenpau/) pointed me to: [machine learning on public DNS data](https://github.com/chanakyaekbote/coredns_ml_plugin). Let's see whether it might make sense:
-
+<!--more-->
 * The training data is available (public DNS domain names) and does not depend on specific network design (everyone is querying the same public DNS records);
 * The project uses two sets of training data: DNS names that are known to be good, and DNS names that are known to be malicious. The two sets are coming from trusted sources.
 
