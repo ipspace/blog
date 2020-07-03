@@ -23,9 +23,6 @@ Usage:
 DOC
 }
 
-HUGO_START=10
-HUGO_CHANGE=3
-
 SCRIPT_DIR=$( dirname "${BASH_SOURCE[0]}" )
 . "$SCRIPT_DIR/blog-util-lib.sh"
 
@@ -36,11 +33,9 @@ fi
 
 case "$1" in
   fix)
-    BLOG_POST=$(get_filepath $2|sed 's#.*/posts##'|sed 's#md$#html#')
     HUGO_CHANGE=
     blog_edit_post $2
-    blog_start_hugo
-    open "http://localhost:1313$BLOG_POST"
+    blog_view_post $2
     ;;
   diff)
     git diff --patience --word-diff=color --word-diff-regex='[^ "'']+'

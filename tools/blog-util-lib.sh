@@ -2,6 +2,12 @@
 #
 # OSX hugo utilities - library
 #
+
+# Change the delays based on the speed of your platform
+#
+HUGO_START=10
+HUGO_CHANGE=3
+
 blog_edit_post() {
   open -a "IA Writer" $1
 # open -a "Sublime Text" $2
@@ -16,6 +22,12 @@ blog_start_hugo() {
       sleep $HUGO_CHANGE
     fi
   fi
+}
+
+blog_view_post() {
+  blog_start_hugo
+  BLOG_POST=$(get_filepath $1|sed 's#.*/posts##'|sed 's#md$#html#')
+  open "http://localhost:1313$BLOG_POST"
 }
 
 blog_new_file() {
