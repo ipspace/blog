@@ -37,11 +37,12 @@ until [ -d "$DIR" ]; do
   fi
 done
 read -e -p "Filename: " FNAME
-FNAME="worth-reading-$FILE.md"
+FNAME="worth-reading-$FNAME.md"
 if [ -e "$DIR/$FNAME" ]; then
   echo "File already exists, fixing..."
 else
   blog_new_file "$DIR/$FNAME" title "Worth Reading: $TITLE" text "[$TITLE]($URL)"
 fi
 blog_edit_post "$DIR/$FNAME"
-open "$URL"
+blog_view_post "$DIR/$FNAME" &
+(sleep 1; open "$URL") &
