@@ -5,7 +5,7 @@ tags: [ ]
 ---
 Almost [30 webinars](https://www.ipspace.net/Webinars/#Recent_webinars), an [online course](https://www.ipspace.net/PubCloud/), and [over 140 blog posts later](https://blog.ipspace.net/2020/) it's time for another summer break. 
 
-While we'll do our best to reply to support and sales requests (it might take us a bit longer than usual), don’t expect anything deeply technical for the new two months... but of course you can still [watch over 280 hours of existing content](https://www.ipspace.net/Subscription/Individual), [listen to over 100 podcast episodes](https://www.ipspace.net/Podcast/Software_Gone_Wild/), or [read over 3500 blog posts](https://blog.ipspace.net/).
+While we'll do our best to reply to support and sales requests (it might take us a bit longer than usual), don’t expect anything deeply technical for the next two months... but of course you can still [watch over 280 hours of existing content](https://www.ipspace.net/Subscription/Individual), [listen to over 100 podcast episodes](https://www.ipspace.net/Podcast/Software_Gone_Wild/), or [read over 3500 blog posts](https://blog.ipspace.net/).
 
 We’ll be back with [tons of new content](https://www.ipspace.net/Webinars/Sessions) in early September.
 
