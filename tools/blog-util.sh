@@ -9,6 +9,7 @@ Usage:
   blog home   - go to blog directory
   blog posts  - go to blog posts directory
 
+  blog open   - open a local blog post
   blog fix    - fix a blog post
   blog new    - new blog post
   blog draft  - new draft
@@ -35,6 +36,10 @@ case "$1" in
   fix)
     HUGO_CHANGE=
     blog_edit_post $2
+    blog_view_post $2
+    ;;
+  open)
+    HUGO_CHANGE=
     blog_view_post $2
     ;;
   diff)
