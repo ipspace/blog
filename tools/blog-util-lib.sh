@@ -82,6 +82,11 @@ blog_md_to_html() {
   echo $1|sed 's#[.]md$#.html#'
 }
 
+blog_open_published() {
+  echo $1
+#  open https://blog.ipspace.net/$(echo %|perl -pe 's/\.md/.html/')
+}
+
 get_filepath() {
   echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
 }

@@ -10,11 +10,18 @@ Usage:
   blog posts  - go to blog posts directory
 
   blog open   - open a local blog post
+  blog search - search for blog posts matching a regex within files matching a second regex
+                (example: blog search 'API|CLI' '201[5-9]')
+
   blog fix    - fix a blog post
   blog new    - new blog post
   blog draft  - new draft
   blog ls     - list blog posts
+
   blog tag    - list tags
+  blog title  - get a title of a published blog post. Use URL to print title on STDOUT,
+                'clip' for clipboard-to-clipboard operation, or 'md' for Markdown
+                clipboard-to-clipboard operation.
 
   blog diff   - start 'git diff --word-diff'
   blog commit - add content to commit staging area, commit with message
@@ -68,6 +75,12 @@ case "$1" in
     blog_start_hugo
     open "http://localhost:1313/`blog_md_to_html $BLOG_FILE`"
     ;;
+  search)
+    if [ -z "$3" ]; then
+      echo 'Usage: blog search <regex> <files>'
+    fi
+    ack -l "$2"|ack "$3"|sort|xargs -n 1 -I % $SCRIPT_DIR/blog-open-published.sh %
+    ;;
   draft)
     if [ -z "$2" ]; then
       echo "Need the filename of the draft post"
@@ -78,6 +91,25 @@ case "$1" in
       blog_start_hugo
       open "http://localhost:1313/draft/$(blog_md_to_html $(basename $BLOG_FILE))"
     fi
+    ;;
+  title)
+    case "$2" in
+      clip)
+        URL=$(pbpaste)
+        $SCRIPT_DIR/url-to-title.sh $URL|pbcopy
+        ;;
+      md)
+        URL=$(pbpaste)
+        TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
+        echo '*' "[$TITLE]($URL)"|pbcopy
+        ;;
+      http*)
+        $SCRIPT_DIR/url-to-title.sh $2
+        ;;
+      *)
+        echo "Usage: blog title url|clip|md"
+        ;;
+    esac
     ;;
   kill)
     ps -ef|grep hugo
