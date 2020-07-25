@@ -1,6 +1,6 @@
 ---
 title: Are Business Needs Just Excuses for Vendor Shenanigans?
-date: 2020-09-10 06:48:00
+date: 2020-09-17 06:48:00
 tags: [ virtualization, vMotion, design ]
 ---
 Every now and then I [call someone's baby ugly](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html) (or maybe it was their third cousin's baby and they nonetheless feel offended). In such cases a common resort is to cite _business_ or _market needs_ to prove how ignorant and clueless I am. Here's a sample LinkedIn comment talking about my ignorance about the need for smart NICs:
@@ -21,4 +21,4 @@ Remember **fault-tolerant servers** - the super-expensive thingies that had full
 
 But wait, it gets worse... we could use stretched VLANs and long-distance vMotion to implement disaster recovery (or so the [$vendor consultants told us](https://blog.ipspace.net/2020/02/live-vmotion-into-vmware-on-aws-cloud.html)). At this point we're way beyond the sane discussions of actual business needs. The whole idea was created by vendor marketers to sell more of their complex products, and happily adopted by most everyone in enterprise IT because it conveniently allows them to [push the problem down the stack](https://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html) until the brown substance lands in the networking team, which is then [blamed for being too rigid and too expensive](https://blog.ipspace.net/2016/07/why-is-every-sdn-vendor-bashing.html)... and ripe to be replaced by another $vendor magic, this time either software-defined, [intent-based](https://blog.ipspace.net/2020/05/intent-networking-marketing-ploy.html), or [machine-learned](https://blog.ipspace.net/2020/03/machine-learning-in-networking-products.html).
 
-**Long story short**: PLEASE, do your homework, and don't ever use the _some vendors are making it, so there must be a real market need for it_ or _[some people are using it, so there must be a real business need for it](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html)_ argument. You just might end with an egg on your face.
+**Long story short**: PLEASE, do your homework, and don't ever use the _some vendors are making it, so there must be a real market need for it_ or _[some people are using it, so there must be a real business need for it](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html)_ argument. You just might end with an egg on your face (although most people using these arguments happen to be egg-blind so they wouldn't ever realize what happened).
