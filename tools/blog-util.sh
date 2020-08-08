@@ -103,6 +103,14 @@ case "$1" in
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
         echo '*' "[$TITLE]($URL)"|pbcopy
         ;;
+      yaml)
+        URL=$(pbpaste)
+        TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
+        cat <<YAML|pbcopy
+  - link: $URL
+    title: "$TITLE"
+YAML
+        ;;
       http*)
         $SCRIPT_DIR/url-to-title.sh $2
         ;;
