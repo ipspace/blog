@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "14 August 2020 01:40",
+         "html": "<p>This has been known for what, 25 years now ? Isn&#39;t this the first thing they tell you in an IS-IS training: if you don&#39;t use areas, configure all your routers as L1-only or L2-only ? Isn&#39;t this in the first chapter on areas in every IS-IS book ?</p>\n\n<p>The problem here are not the vendors. It&#39;s the customers. :)\nSometimes you want to change the CLI. You want to change the default settings. You want to change a show-command. Maybe you want to remove something. Can&#39;t be done. Your Product Manager will tell you: &quot;never change anything that already exists&quot;. Even when the new behaviour is better. Even when the new behaviour will prevent lots of problems in the future.</p>\n\n<p>There is this obsession that customers should be able to upgrade (or downgrade) the software on their routers at any time, without any compatibility problems with the config. The default level of IS-IS in any router should always have been level-1 or level-2, not level-1-2. It&#39;s also ridiculous that the default metric-style in all routers are still narrow. More than 20 years after the introduction of wider metrics. Why hasn&#39;t that changed ? Why haven&#39;t narrow metrics not been removed from implementations yet ?</p>\n\n<p>The problem Chris Parker describes, with big surprise, actually happened in a real provider network in ~1995. The churn in L1 would cause every router to generate a new L2-LSP. Which would cause a L2 SPF. The IS-IS developer at cisco at the time told the ISP to go to L2-only. And he implemented PRC (Partial Route Computation). With PRC you only do a full SPF when adjacencies change. You only recompute the individual routes of the prefixes that change (cost of route = cost to get to the advertising router + cost as advertised in the TLV. Simple).</p>\n\n<p>BTW, Chris claims your network needs downtime to convert from L1L2 to L2-only. Is that true ? Can&#39;t you just set the overload-bit, wait till transit traffic dies down ? Then make the change to L2-only. And then clear the overload-bit ?</p>\n",
+         "id": "100",
+         "name": " Henk",
+         "pub": "2020-08-14T13:40:57",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2020/08/worth-reading-default-isis-configuration-prefix-bloat.html"
+}
