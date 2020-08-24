@@ -15,7 +15,7 @@ How about a few facts:
 
 * x86 server architecture hasn't been a limiting factor for ages. Luke Gorrie [demonstrated how to push 200 Gbps from an off-the-shelf x86 server in 2013](https://twitter.com/lukego/status/327714050219847680), managed to do that with [two CPU cores and 64-byte packets in 2016](https://twitter.com/lukego/status/721693707251105792), and explained his ideas in details in the [very first episode](https://blog.ipspace.net/2014/06/snabb-switch-and-nfv-on-openstack-in.html) of Software Gone Wild.
 
-{{<note info>}}Luke "cheated" by creating a fixed transmit ring for each NIC and just pointing the NIC to the packets to be sent. He did demonstrate that the x86 hardware architecture is NOT a performance bottleneck though.{{</note>}}
+{{<note info>}}Luke "cheated" by creating a fixed transmit ring for each NIC and just pointing the NIC to the packets to be sent. He did demonstrate that the architecture of a typical x86-based server is NOT a performance bottleneck though.{{</note>}}
 
 * In the meantime we did several Software Gone Wild episodes with people pushing the performance envelope of software-based forwarding, including [IPv4-over-IPv6 tunnel headend delivering 20 Gbps per x86 core](https://blog.ipspace.net/2016/03/x86-based-switching-at-ludicrous-speed.html)... in March 2016.
 
