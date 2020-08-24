@@ -11,7 +11,7 @@ In December 2019 I finally turned my _[focus on business challenges first](https
 
 {{<jump>}}Watch the video{{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note info>}}
+{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
 
 # (Pub) Video: Know Your Users' Needs
 
@@ -23,7 +23,7 @@ After explaining why you should focus on defining the problem before searching f
 
 {{<jump>}}Watch the video{{</jump>}}
 
-{{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note info>}}
+{{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
 # (Pub) Video: Should You Build or Buy a Solution?
 
@@ -35,7 +35,7 @@ I addressed that question in the third part of _[Focus on Business Challenges Fi
 
 {{<jump>}}Watch the video{{</jump>}}
 
-{{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note info>}}
+{{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
 # (Pub) Video: High-Level Technology Guidelines
 
