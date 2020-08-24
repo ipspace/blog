@@ -1,6 +1,6 @@
 ---
 title: "OMG: What Is Layer-2"
-tags: [ bridging, Overlay networks ]
+tags: [ bridging, overlay networks ]
 date: 2020-03-23 08:12:00
 inspiration: https://www.iquila.com/About/What-is-Layer2/
 ---
