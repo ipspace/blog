@@ -1,6 +1,6 @@
 ---
 title: When Machine Learning in Networking Might Make Sense
-date: 2020-09-02 07:12:00
+date: 2020-09-15 07:12:00
 tags: [ automation ]
 ---
 In March I explained why it's [unrealistic to expect to use machine learning to solve unknown problems in today's snowflake networks](https://blog.ipspace.net/2020/03/machine-learning-in-networking-products.html)... but are there other problems that could be solved?
