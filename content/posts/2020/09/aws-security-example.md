@@ -1,6 +1,6 @@
 ---
 title: "Example: Securing AWS Deployment"
-date: 2020-09-01 07:44:00
+date: 2020-09-02 07:44:00
 tags: [ cloud, AWS ]
 ---
 [Nadeem Lughmani](https://www.linkedin.com/in/nadeem-lughmani-38b4251/) created [an excellent solution](https://github.com/nadeemnet/NetworkingInPubClouds/tree/master/security) for the [_securing your cloud deployment_](https://my.ipspace.net/bin/list?id=PubCloud&module=6#HOMEWORK) hands-on exercise in our [public cloud online course](https://www.ipspace.net/PubCloud/). His Terraform-based solution includes:
