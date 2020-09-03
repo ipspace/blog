@@ -13,7 +13,7 @@ In December 2019 I finally turned my _[focus on business challenges first](https
 
 {{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
 
-# (Pub) Video: Know Your Users' Needs
+# Video: Know Your Users' Needs
 
 After explaining why you should focus on defining the problem before searching for a magic technology that will solve it, I continued the _[Focus on Business Challenges First](https://my.ipspace.net/bin/list?id=NetBiz#BF)_ presentation with another  set of seemingly simple questions:
 
@@ -25,7 +25,7 @@ After explaining why you should focus on defining the problem before searching f
 
 {{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
-# (Pub) Video: Should You Build or Buy a Solution?
+# Video: Should You Build or Buy a Solution?
 
 After _figuring out what business problem you're trying to solve_ and _what the users expect to get from you_ it's time for the next crucial question: should you buy a shrink-wrapped product/solution or build your own?
 
@@ -37,7 +37,7 @@ I addressed that question in the third part of _[Focus on Business Challenges Fi
 
 {{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
-# (Pub) Video: High-Level Technology Guidelines
+# Video: High-Level Technology Guidelines
 
 I concluded the _[Focus on Business Challenges First](https://my.ipspace.net/bin/list?id=NetBiz#BF)_ presentation (part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar) with a few technology guidelines starting with:
 
