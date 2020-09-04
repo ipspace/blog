@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -106,6 +106,37 @@
               </span>
             </div>
             <div class="comment-content"><p>In my experience using the Flow Data like NETFLOW can help to find how those App-Stack are communicating whit each other and then place the ACL for enforcement. last week i was tasked to put some VACL in Web-APP DMZ VLAN.i asked the App-Developers and those who support Applications that is there any connectivity between those Web-Servers ? they told me there is not any connection between those Web-server for sure and they only need to talk with their back-end DB that is on another VLAN/Segment protected by a classical Multi-Context-Firewall.i checked my Netflow logs for the last 3 months and i find too many API calls between those Web-servers on DMZ.if i trust those guys ,  i cloud create full disaster that could make the whole business down.after telling them that there are too many API calls , they said really ?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="115">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> A.W.</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c115" href="#115">04 September 2020 04:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Perhaps a paradigm shift is due for firewalls in general? I&#39;m thinking quickly here but wondering if we perhaps just had a protocol by which a host could request upstream firewall(s) to open access inbound on their behalf dynamically, the hosts themselves would then automatically inform the security device what ports they need / want opened upstream. The firewall would have the ability to permit or deny the traffic based on its larger policy definition. This would resolve both the issue of admins not knowing what ports are needed for an application and could help resolve the issue of &quot;stale&quot; policies left on the firewalls.</p>
+
+<p>This higher level firewall policies could be more of a grouped concept similar to how web filtering and IPS is managed by site, application, or signature category. OR alternatively it could be more granular by specific app / port... </p>
+
+<p>Permission time limits could also be requested by the hosts and negotiated etc..  timeouts would still apply unless the permission is renewed thus these timeouts not only close the &quot;session&quot; but also closes the permission for that application and thus the policy rule itself.</p>
+
+<p>Host firewalls capable of negotiating via this protocol could be set to mirror allowed ports inbound once approval is granted OR could just be set to wide open trusting upstream for all security. Of course identity verification is important between host and firewall in this model as you wouldn&#39;t want false requests made from false hosts on another&#39;s behalf, but if the host only opens its own firewall ports after it has requested and received approval for the policy by the external firewall you would have an added layer of protection.</p>
+
+<p>Perhaps some OS level simple application-to-port verification could be done too...</p>
+
+<p>I&#39;m sure there are many drawbacks to this idea not the least of which is scale but I wonder if we&#39;re just getting to the point where we need to get away from having to think in terms of lists of ports / apps and statically creating rules in general.</p>
+
+<p>Too crazy? :)</p>
 </div>
           </div>
         </li>
