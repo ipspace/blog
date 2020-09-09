@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "09 September 2020 02:13",
+         "html": "<p>Ivan, as always the answer for &quot;SmartNIC or CPU?&quot; is &quot;it depends&quot;, and the devil is in the details when talking about high throughput achieved in CPU. If you have many independent flows then of course the packets can be distributed to cores (either using the NIC or a load balancing core). However there are real deployments that have traffic coming on a single IPSec tunnel, so there is no easy way to take advantage of parallelism. If packets are fragmented that causes problems too for distributing the packets. Many protocols are also stateful, and if this shared state is accessed by many cores the throughput reduces significantly.</p>\n\n<p>Yet another aspect is that many cloud providers treat a lot of the packet processing as &quot;infrastructure overhead&quot;, and would rather not do it on cores since the cores can be rented out to customers to make money. So even if SmartNICs have higher power/price they may prefer to offload this work and free up all cores to be rented to customers - this is the approach taken by AWS with Nitro.</p>\n",
+         "id": "119",
+         "name": " Sanjay Padubidri",
+         "pub": "2020-09-09T14:13:49",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2020/09/need-smart-nic.html"
+}
