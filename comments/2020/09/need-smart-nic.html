@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -20,6 +20,30 @@
             <div class="comment-content"><p>Ivan, as always the answer for &quot;SmartNIC or CPU?&quot; is &quot;it depends&quot;, and the devil is in the details when talking about high throughput achieved in CPU. If you have many independent flows then of course the packets can be distributed to cores (either using the NIC or a load balancing core). However there are real deployments that have traffic coming on a single IPSec tunnel, so there is no easy way to take advantage of parallelism. If packets are fragmented that causes problems too for distributing the packets. Many protocols are also stateful, and if this shared state is accessed by many cores the throughput reduces significantly.</p>
 
 <p>Yet another aspect is that many cloud providers treat a lot of the packet processing as &quot;infrastructure overhead&quot;, and would rather not do it on cores since the cores can be rented out to customers to make money. So even if SmartNICs have higher power/price they may prefer to offload this work and free up all cores to be rented to customers - this is the approach taken by AWS with Nitro.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="120">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c120" href="#120">09 September 2020 04:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Relying on the CPU means an undeterministic behavior as more and more features are activated. Even by dedicating some CPU cores to specific tasks such as in the ISR4k family, the performance is not the same as features are added after a certain saturation point. 
+With a hardware based packet processing pipeline you could get a more deterministic behavior even at close to wire speeds. Of course, only if the architecture is designed properly.
+Better determinism might be important for safety critical networks. </p>
+
+<p>In most applications this is not a real issue, but there are some real-time needs that would be better fulfilled with SmartNICs. A generic example is high accuracy and precision time synchronization. Another example is one-way delay and delay variation measurements with sub-millisecond precision. 
+Critical voice and video streams might be also a use case. </p>
 </div>
           </div>
         </li>
