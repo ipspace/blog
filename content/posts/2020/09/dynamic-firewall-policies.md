@@ -7,15 +7,19 @@ One of the readers of the [Considerations for Host-Based Firewalls](https://blog
 
 > Perhaps a paradigm shift is due for firewalls in general? I'm thinking quickly here but wondering if we perhaps just had a protocol by which a host could request upstream firewall(s) to open access inbound on their behalf dynamically, the hosts themselves would then automatically inform the security device what ports they need/want opened upstream.
 
-Well, we have such a protocol (or could adapt it pretty easily for this particular use case): [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play).
+Well, we have at least two protocols that could fit the bill: [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) and [Port Control Protocol (RFC 6887)](https://tools.ietf.org/html/rfc6887).
 <!--more-->
-{{<note>}}An interesting bit of trivia: UPnP is a set of standards defined by [Open Connectivity Foundation](https://openconnectivity.org/foundation/) and published as ISO/IEC standards. One has to wonder what made them choose this standardization path instead of [working within IETF](/2020/09/worth-reading-making-rfc.html).{{</note>}}
+{{<note>}}Interesting bits of trivia: 
+
+* UPnP is a set of standards defined by [Open Connectivity Foundation](https://openconnectivity.org/foundation/) and published as ISO/IEC standards. One has to wonder what made them choose this standardization path instead of working within IETF. [Maybe this](/2020/09/worth-reading-making-rfc.html)?
+* PCP is [implemented on Junos](https://www.juniper.net/documentation/en_US/junos/topics/concept/nat-port-control-protocol.html) but not on Cisco IOS (at least I couldn't find it). No surprise there either...
+{{</note>}}
 
 However, we have a much bigger problem. Continuing with the comment...
 
 > The firewall would have the ability to permit or deny the traffic based on its larger policy definition. This would resolve both the issue of admins not knowing what ports are needed for an application and could help resolve the issue of "stale" policies left on the firewalls.
 
-Let's start with some ground rules. We expect firewalls to work at reasonably-high speeds, and as TCP/IP uses connectionless datagram transport at layer-3 (watch the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar if this sounds like Latin), the only information a firewall can use to decide whether to drop or pass an incoming IP packet is to:
+Let's start with some ground rules. We expect firewalls to work at reasonably-high speeds, and as TCP/IP uses connectionless datagram transport at layer-3 (watch [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar if this sounds like Latin), the only mechanism a firewall can use to decide whether to drop or pass an incoming IP packet is to:
 
 * Extract the relevant packet headers;
 * Identify the flow the packet belongs to (hoping other security mechanisms deployed in the network prevented too-blatant flow spoofing);
