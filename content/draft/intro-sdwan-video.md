@@ -27,7 +27,7 @@ INFO: You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscript
 
 JUMP-LINK: [Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/3%20-%20Solution%20Architecture%20and%20Components.mp4?doccode=CiscoSDWAN)
 
-# Video: Cisco SD-WAN Routing Goodness
+# (Pub) Video: Cisco SD-WAN Routing Goodness
 
 After covering the [solution components and its architecture](https://my.ipspace.net/bin/get/CiscoSDWAN/3%20-%20Solution%20Architecture%20and%20Components.mp4?doccode=CiscoSDWAN), [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) focuses on the [routing capabilities it offers](https://my.ipspace.net/bin/get/CiscoSDWAN/4%20-%20Routing%20Goodness.mp4?doccode=CiscoSDWAN) and its control plane characteristics, including types of routes and some scalability recommendations.
 
