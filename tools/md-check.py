@@ -33,6 +33,21 @@ def reportError(err,path):
   print("%s in %s" % (err,path))
   ERRORS=True
 
+def check_duplicate_date(path,date):
+  prefix = os.path.dirname(path)
+#  if VERBOSE:
+#    print("Checking duplicate date for %s in %s" % (path,prefix))
+
+  for entry in glob.glob(prefix + "/*"):
+    if entry != path:
+#      if VERBOSE:
+#        print("Inspecting %s " % entry)
+      if os.path.isfile(entry):
+        (pfront,ptext) = common.read_blog_post(entry)
+      pdate = pfront.get("date")
+      if pdate and pdate.date() == date.date():
+        reportError("Publication date %s overlaps with %s" % (date.date(),entry),path)
+
 def check_file(path):
   if VERBOSE:
     print("Reading file %s" % path)
@@ -56,8 +71,17 @@ def check_file(path):
   draft = frontmatter.get('draft')
 
   if not(draft):
-    if not(frontmatter.get('date')):
+    date = frontmatter.get('date')
+    if not(date):
       reportError("Date or Draft field missing",path)
+    else:
+      if date.hour > 10:
+        print("Warning: %s scheduled for afternoon publication on %s" % (path,date.strftime("%c")))
+      pathprefix = "%02i/%02i/" % (date.year,date.month)
+      if path.find(pathprefix) == 0 or path.find("/"+pathprefix) >= 0:
+        check_duplicate_date(path,date)
+      else:
+        reportError("Expected path prefix %s" % pathprefix,path)
 
     tags = frontmatter.get('tags')
     if type(tags) is not list:
