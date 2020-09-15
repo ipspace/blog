@@ -23,9 +23,17 @@
          "name": " Karim Tarek",
          "pub": "2020-09-14T22:11:04",
          "type": "comment"
+      },
+      {
+         "date": "15 September 2020 09:51",
+         "html": "<p>I have been involved in both setting up an ACI multi-pod fabric, and running an Arista EVPN based network, and either way you&#39;re gonna need to do your own automation, and have your own team of automation staff.</p>\n\n<p>To my mind ACI is simply overly complicated, and although it does automate certain things for you out of the box, such as building the underlay and adding new leafs, the learning curve to get there is simply way too steep. </p>\n\n<p>Yes, naming conventions is key, but if you&#39;ve never deployed an ACI fabric before, how on earth are you gonna know which conventions to use? And once you&#39;ve typed in a name in ACI, you can&#39;t change it! Already at this point you need to automate stuff, to roll back your initial naming mistakes, and fix them.</p>\n\n<p>Yes, linking routing and contracts is a big mistake by the designers. \nRouting is control-plane, and should work the second you enable it, irrespective of contracts.\nContracts is security policy, and just like firewalls, Azure NSGs etc., they should have no effect on routing.</p>\n\n<p>I haven&#39;t met anyone yet, who has done an application-centric implementation of ACI. They have all been network-centric, and the amount of steps you need to perform in the ACI GUI to perform even the simple operation of emulating a simple VLAN with Bridge Domain, EPG, Contracts, and linking it to a VRF is such, that you cannot perform it manually without making mistakes, and you simply NEED to automate that, to get it right.</p>\n\n<p>I recognize the fact, that if you wanna deploy an EVPN fabric such as Arista&#39;s using CloudVision, you also need to perform a fair amount of programming, and create your on &quot;source of truth&quot;. To be efficient you need to automate that too, but you could start out with simple well known CLI based templates and automate as you grow. It&#39;s so much easier to troubleshoot, CloudVision provides magnificent telemetrics, and you can apply the same technology both in the datacenter and in the campus, rather than having to struggle with the incompatible plugs of ACI and SDA.</p>\n",
+         "id": "131",
+         "name": "Erik Lawaetz",
+         "pub": "2020-09-15T09:51:15",
+         "type": "comment"
       }
    ],
-   "count": 3,
+   "count": 4,
    "type": "post",
    "url": "2020/09/cisco-aci-too-different.html"
 }
