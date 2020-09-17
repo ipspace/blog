@@ -15,9 +15,17 @@
          "name": " Michael Gonnason",
          "pub": "2020-09-13T22:06:21",
          "type": "comment"
+      },
+      {
+         "date": "17 September 2020 10:44",
+         "html": "<p>First, I agree with all the facts listed in this article. But my intended use cases are actually not covered.\nWith RSS, packet order is retained per flow (or maybe better, per CPU core). But there&#39;re elephant flows that just can&#39;t be handled by a single core. This is where a hardware packet order retaining mechanism is needed, which is common in NPUs. ASICs, especially BRCM ASICs, work in a pipeline mode, so packet orders are always retained.\nFor scheduling, I don&#39;t think a CPU is capable of multi-queue, multi-discipline scheduling across multiple cores. (Sometimes multiple hierachies are also needed for scheduling, but l&#39;d like to stick to datacenter use cases). Just think about the simple usecase of 8 queues with mixed strict priority, WRR scheduling and per queue bandwidth cap.\nThe point is that some jobs just can&#39;t be done easily in a distributed mode. </p>\n",
+         "id": "135",
+         "name": "Junhui Liu",
+         "pub": "2020-09-17T10:44:38",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2020/09/duty-calls-cpu-packet-forwarding.html"
 }
