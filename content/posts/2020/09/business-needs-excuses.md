@@ -9,6 +9,7 @@ Every now and then I [call someone's baby ugly](https://blog.ipspace.net/2011/09
 
 Now let's get something straight: while there are good reasons to use tons of different things that might look inappropriate, irrelevant or plain stupid to an outsider, I don't believe in _real market need_ argument being used to justify anything without supporting technical facts (tell me _why_ you need that stuff and prove to me that _[using it is the best way of solving a problem](https://blog.ipspace.net/2019/12/questions-to-ask-about-product-using.html)_).
 <!--more-->
+
 For example, Amazon has a real need for smart NICs to [support bare-metal server instances in their Virtual Private Clouds](https://blog.ipspace.net/2020/06/cloud-networking-architectures.html). That doesn't justify them being used in any other scenario (see also: [you're not Google](https://blog.ipspace.net/2020/03/the-stupidity-of-trying-to-be-like.html)).
 
 Just because [someone manages to sell something](https://blog.ipspace.net/2019/10/the-cost-of-disruptiveness-and.html), and other vendors jump on the same bandwagon because their product managers smell new markets, doesn't mean that anyone really needs it, or that the challenge the new stuff is supposedly solving couldn't have been solved in a simpler or better way. Let me illustrate this claim with a quick digression into my favorite topic: using [long-distance vMotion](https://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html) for disaster recovery (because it [wouldn't work for disaster avoidance anyway](https://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html)).
@@ -22,3 +23,13 @@ Remember **fault-tolerant servers** - the super-expensive thingies that had full
 But wait, it gets worse... we could use stretched VLANs and long-distance vMotion to implement disaster recovery (or so the [$vendor consultants told us](https://blog.ipspace.net/2020/02/live-vmotion-into-vmware-on-aws-cloud.html)). At this point we're way beyond the sane discussions of actual business needs. The whole idea was created by vendor marketers to sell more of their complex products, and happily adopted by most everyone in enterprise IT because it conveniently allows them to [push the problem down the stack](https://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html) until the brown substance lands in the networking team, which is then [blamed for being too rigid and too expensive](https://blog.ipspace.net/2016/07/why-is-every-sdn-vendor-bashing.html)... and ripe to be replaced by another $vendor magic, this time either software-defined, [intent-based](https://blog.ipspace.net/2020/05/intent-networking-marketing-ploy.html), or [machine-learned](https://blog.ipspace.net/2020/03/machine-learning-in-networking-products.html).
 
 **Long story short**: PLEASE, do your homework, and don't ever use the _some vendors are making it, so there must be a real market need for it_ or _[some people are using it, so there must be a real business need for it](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html)_ argument. You just might end with an egg on your face (although most people using these arguments happen to be egg-blind so they wouldn't ever realize what happened).
+
+---
+
+Addendum based on a [tweet by Andrew Yourtchenko](https://twitter.com/ayourtch/status/1306505455393439744):
+
+Obviously most of the products, services and solutions out there solve a real or perceived need (and there's sometimes a huge gap between the two).
+
+What I'm pointing out in this rant is the reverse reasoning along the lines "_vendor X is doing something, which confirms there's a real market need for it_". I've been in IT too long, and seen how the startup/VC sausage is made, to believe that fairy tale... and even when it's true, it doesn't necessarily imply that you need whatever vendor X is selling.
+
+For example, just because a mining operation needs huge trucks, it doesn't mean that everyone else needs them as well, regardless of what the truck manufacturers would love you to believe.
