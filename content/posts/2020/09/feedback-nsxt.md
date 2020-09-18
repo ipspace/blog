@@ -1,6 +1,6 @@
 ---
 title: "Feedback: VMware NSX Deep Dive"
-date: 2020-09-22 06:25:00
+date: 2020-09-29 06:25:00
 tags: [ NSX, training ]
 ---
 The mission of ipSpace.net is very simple: explain new networking technologies and products in a no-nonsense marketing-free and hopefully understandable way.
