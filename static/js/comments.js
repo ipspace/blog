@@ -27,7 +27,7 @@ $(function() {
     /*
     $("#post__comment-form").load(server+"bin/comment/get"); */
     $.ajax({
-        url: server+"bin/comment/get",
+        url: server+"bin/comment/get?url="+location.pathname,
         dataType: 'html',
         xhrFields: { withCredentials: true },
         success: function(data) { $("#post__comment-form").html(data); },
