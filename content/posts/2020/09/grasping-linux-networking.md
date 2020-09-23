@@ -13,7 +13,13 @@ It all depends on how deep you plan to go:
 
 {{<note>}}I'm hearing rumors that Broadcom is not exactly happy with Mellanox/Nvidia snapping up Cumulus. It might be that the best chance of having a documented open-source network operating system just transmogrified into another dead-end.{{</note>}}
 
-**Low-speed network device running on Linux**. You can use Linux-based solutions to implement a router (there's a reasonable chance your home router is already doing it), a firewall, or a load balancer (all high-volume web properties and CDNs run on Linux-based load balancers). As long as you're OK with out-of-the-box performance configure interfaces, populate the routing table, order a margarita, and enjoy the sunset.
+However, even though the documentation is pretty good, expect a few gotchas. As Dinesh Dutt told me:
+
+* Unlike a traditional NOS, Linux is not a monolithic entity. There's the kernel and there are software packages than run on top. To make installation and management easier, different folks put together different Linux distributions, and each of them might have different configuration mechanisms.
+* Configuring Linux networking consists of configuring different parts: interfaces and everything else. You can manually configure MACs, routes and such, but this distinction between interfaces and the rest is common.
+* How you configure interfaces and how you configure the rest depends on the software and Linux distribution you use.
+
+**Low-speed network device running on Linux**. You can use Linux-based solutions to implement a router (there's a reasonable chance your home router is already doing it), a firewall, or a load balancer (all high-volume web properties and CDNs run on Linux-based load balancers). As long as you're OK with out-of-the-box performance configure interfaces (see above for caveats), populate the routing table, order a margarita, and enjoy the sunset.
 
 Out-of-the-box performance obviously depends on CPU speed, whether the device performs packet forwarding or TCP session termination (where you can use NIC TCP offload to speed things up), and whether you plan to use multiple cores to get the job done. Vanilla Linux is not exactly a stellar platform when it comes to multi-core packet forwarding. Just saying...
 
