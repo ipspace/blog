@@ -35,6 +35,8 @@ In today's video we'll look at some of the supposed use cases and stable solutio
 
 {{<note info>}}The video available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
+# Video: Bridging beyond STP (to add)
+
 
 
 
