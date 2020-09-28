@@ -7,9 +7,17 @@
          "name": " Henk",
          "pub": "2020-09-27T22:19:09",
          "type": "comment"
+      },
+      {
+         "date": "28 September 2020 10:37",
+         "html": "<p>While Henk&#39;s comment above might very well have been correct for the specific case of CLNS vs IP switching on the Cisco 7k platform back in the mid 90s, what Ivan said above re variable-length vs fixed-length address/header, should also hold true in the broader context. I mean, while CLNS and IP forwarding at 150k-200k pps might have been equal, as the switching fabrics transitioned to much higher speeds later on, performance discrepancies would have started to show up, since certain issues only crop up at much higher bandwith.</p>\n\n<p>Good ol John Scudder has recently written an essay on the topic as well:</p>\n\n<p>https://blog.apnic.net/2020/06/04/modern-router-architecture-and-ipv6/</p>\n\n<p>Among other things, he mentioned fixed header length makes parsing easier, and no doubt, faster too. At Tbps and beyond, I believe every little thing counts, so even a small bit of improvement making little difference in the lower-speed realms, might be hugely advantageous at the bigger scale. </p>\n\n<p>Also, AFAIK, high-end routers, like CRS, T-series, MX series... all function internally like ATM switches. They break variable-length packets into fixed-sized cells, normally 64 bytes in size for, and switch these cells across the fabric. As the chips in these devices are normally micro-cycle synchronous and normally function in a pipeline as well, operating synchronously in fixed time slots simplifies the hardware including the fabric schedulers, and offers much greater forwarding efficiency and better latency than variable-length packet forwarding, which operates in overlapping time domains and so greatly increases scheduling (and hardware) complexity, among other things.</p>\n\n<p>Due to this kind of internal architecture, knowing in advance the header length to be looked up could help with timing, which translates directly to greater efficiency and throughput. </p>\n\n<p>If I misunderstand something or make mistakes, pls point it out :)) . </p>\n",
+         "id": "159",
+         "name": " Minh Ha",
+         "pub": "2020-09-28T10:37:56",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2020/09/worth-reading-clns-failure.html"
 }
