@@ -8,7 +8,7 @@ Got this interesting question from one of my readers
 > Based on my experience, the documentation regarding Linux networking is either elementary man pages for user-space utilities or [very complicated Linux kernel source code](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/net/ipv4/). Does getting deep into Linux networking mean reading source code?
 
 It all depends on how deep you plan to go:
-
+<!--more-->
 **Deploying whitebox switches**. If you're just starting you SHOULD buy a supported solution that includes hardware and a variant of Linux running on it. Your problem transformed into "configuring control-plane protocols on Linux". Congratulations, you'll be perfectly fine studying Cumulus Networks documentation. Apart from the secret-sauce-ASIC-blob they're using open-source software, so whatever you learn there should be transferrable to any other Linux networking environment.
 
 {{<note>}}I'm hearing rumors that Broadcom is not exactly happy with Mellanox/Nvidia snapping up Cumulus. It might be that the best chance of having a documented open-source network operating system just transmogrified into another dead-end.{{</note>}}
