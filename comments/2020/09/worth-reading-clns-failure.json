@@ -39,9 +39,17 @@
          "name": "Ivan Pepelnjak",
          "pub": "2020-09-29T20:56:38",
          "type": "comment"
+      },
+      {
+         "date": "01 October 2020 09:50",
+         "html": "<p>@Ivan &amp; Henk, thx a lot for the great discussion! It&#39;s always great to learn from the seasoned veterans who were there during the golden age of networking, like you guys. There&#39;re lots of &#39;aha&#39; moments from reading the insights in your comments, really.</p>\n\n<p>This is probably well known to both of you already, but I&#39;d like to mention what little I know on the subject anyway, re the variable-length address lookup part, as it&#39;s very interesting. We can take the case of 100Gbs Ethernet as example. At this speed, the interface lookup engine has about 6.7ns tops, to finish all the lookup work for a worst-case 64-byte packet. So say, if it does just prefix matching, and takes more than one memory access due to variable-length address, and one of the accesses spills over to the slower memory, this time constraint might fail. </p>\n\n<p>If we take into account other work in the lookup pipeline that might involve recirculation, which itself reduces both throughput and latency, then line-rate forwarding at small packets using store and forward method, could become intractable, or NP-hard as the some people love to say it :p. Cut-through switching might be able to pull it off though.</p>\n\n<p>If we take it to 400Gbs level, which reduces small packets&#39; lookup time to 1.6ns, even fixed-length lookup using TCAM with only 1 memory access for simple prefix matching, will fail. So at 400Gbs, from my limited understanding, it doesn&#39;t seem like line-rate forwarding for small packets is possible, unless they&#39;ve come up with ways to decrease TCAM access below the 1.6ns barrier. </p>\n\n<p>And lastly, I too personally think SR MPLS is better than SRV6 (thx Henk for bringing it up, I had no idea John was implying that), as if anything, SRMPLS requires less state to be kept, and so needs less chip areas, less power, and generates less heat. As things like board area, pin counts, power and heat are all constrained, unless there&#39;s a very good reason to go with SRV6, I don&#39;t think it&#39;s worth paying for. </p>\n",
+         "id": "163",
+         "name": " Minh Ha",
+         "pub": "2020-10-01T09:50:11",
+         "type": "comment"
       }
    ],
-   "count": 5,
+   "count": 6,
    "type": "post",
    "url": "2020/09/worth-reading-clns-failure.html"
 }
