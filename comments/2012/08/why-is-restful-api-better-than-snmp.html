@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>31 comments:</h4>
+  <h4>32 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -614,6 +614,45 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="165">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Rich Smith</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c165" href="#165">01 October 2020 10:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I know this article is very old by now, but as someone who spent many years working with SNMP, I strongly disagree with the conclusion. SNMP has one (possible) advantage over REST, which is that it is connectionless. After that, it is a horror show. </p>
+
+<p>The biggest issue is probably the amount of space that OIDs consume in limited-size packets. GetBulk did not end up implementing any OID compression, and so when walking a table of counters, gauges, or states, for example, almost the entire, precious 1500 byte packet capacity is consumed transporting OIDs. In the real world, packet fragmentation and reassembly does not work well, and so you have to carefully craft your request packets to avoid size overruns in responses. </p>
+
+<p>The only traversal semantic is SNMP is GetNext/GetBulk. There is no filtering, that I am aware of, and scoping is only available by specifying more of the OID prefix, which is limiting. </p>
+
+<p>Table walk semantics are difficult to implement correctly for sparse tables. Even if you implement that correctly, you have to be careful which other columns your GetBulk runs over into at the end of the table. We had a case where the last row of a table could never be fetched due to running over into an unrelated table with a too-large OCTET STRING. We had to create a custom table-walk algorithm for that specific table. </p>
+
+<p>Because many agents are single-threaded, you have to implement throttling on the management side to avoid spurious timeouts and retries. (Without throttling, requests queue up in the agent, including retries, and everything times out.)</p>
+
+<p>CRUD semantics for tables are difficult to implement correctly. At my last job, we almost got sued by a customer because one out of a sequence of SetRequest packets failed, and left a wide-open WLAN on their network. Since SetRequest is not idempotent, you cannot even retry those. </p>
+
+<p>There are other parts of the protocol I could pick on, such as community strings for authentication, or OID index parsing, or the difficult-to-use InetAddress/InetAddressType data types. There is a lot that did not age well. </p>
+
+<p>Another commenter stated that SNMP is a terrible protocol that needs to die. I don&#39;t know if I&#39;d go that far, but for managing a device of any complexity, it is so much better to implement a REST API. You have reliability and the ability to stream large amounts of data, if needed. Scoping and filtering are available via URLs and query parameters. JSON encoding is not even much more verbose than all of the SNMP OIDs that come back in GetBulk. When you ask for a table of data, you don&#39;t get unrelated tables. You don&#39;t have to implement &quot;sparse walk&quot;. </p>
+
+<p>REST APIs also allow for various authentication schemes that HTTP supports. TLS is supported simply. </p>
+
+<p>There are dozens of open source libraries and frameworks for HTTPS, REST, and JSON. </p>
+
+<p>REST is just superior. Anyone who says &quot;SNMP can do anything that REST does&quot; has, I would wager, never spent much time maintaining a sophisticated SNMP-based management application. I have done that, and I guarantee that the statement that the two protocols are equivalent is naive. </p>
+</div>
           </div>
         </li>
       </div>
