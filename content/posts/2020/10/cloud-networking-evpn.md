@@ -1,15 +1,14 @@
 ---
 title: EVPN Control Plane in Infrastructure Cloud Networking
-###date: 2020-06-16 06:36:00
-draft: True
-tags: [ cloud, EVPN ]
+date: 2020-10-06 06:36:00
+tags: [ cloud, EVPN, AWS, Azure ]
 ---
 One of my readers sent me this question (probably after stumbling upon a remark I made in the [AWS Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) webinar):
 
 > You had mentioned that AWS is probably not using EVPN for their overlay control-plane because _it doesn't work for their scale_. Can you elaborate please? I'm going through an EVPN PoC and curious to learn more.
 
 It's safe to assume AWS uses some sort of overlay virtual networking (like every other sane large-scale cloud provider). We don't know any details; AWS never felt the need to [use conferences as recruitment drives](https://blog.ipspace.net/2018/03/before-commenting-on-someone-mentioning.html), and [what little they told us at re:Invent](https://blog.ipspace.net/2018/10/figuring-out-aws-networking.html) described the system mostly from the customer perspective.
-
+<!--more-->
 It's also safe to assume they have hundreds of thousands of servers (overlay virtual networking endpoints) in a single region. Making BGP run on top of that would be an interesting engineering challenge, and filtering extraneous information not needed by the hypervisor hosts (RT-based ORF) would be great fun. However, that's not why I'm pretty sure they're not using EVPN - EVPN is simply the wrong tool for the job.
 
 While it seems like EVPN and whatever AWS or Azure are using solve the same problem (mapping customer IP- and MAC addresses into transport next hops), there are tons of fundamental differences between the environments EVPN was designed for and IaaS public cloud infrastructure.
@@ -39,7 +38,11 @@ EVPN is neither of those. Without information filtering in place, BGP is an even
 
 ### More information
 
-Want to know how networking in public clouds works? Start with [AWS Networking 101](https://blog.ipspace.net/2020/05/aws-networking-101.html) and [Azure Networking 101](https://blog.ipspace.net/2020/05/azure-networking-101.html). When you're ready for more dive into [AWS Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) and [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinars, and when you feel it's time to truly master cloud networking, go for the [Networking in Public Cloud Deployments online course](https://www.ipspace.net/PubCloud/).
+Want to know how networking in public clouds works? 
+
+* Start with [AWS Networking 101](https://blog.ipspace.net/2020/05/aws-networking-101.html) and [Azure Networking 101](https://blog.ipspace.net/2020/05/azure-networking-101.html).
+* When you're ready for more dive into [AWS Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) and [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinars.
+* When you feel it's time to truly master cloud networking, go for the [Networking in Public Cloud Deployments online course](https://www.ipspace.net/PubCloud/).
 
 Interested in EVPN? We have you covered - there are [tons of EVPN-related blog posts](https://blog.ipspace.net/tag/evpn.html), and we explored EVPN from data center and service provider perspective in the [EVPN Technical Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar.
 

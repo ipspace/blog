@@ -1,7 +1,6 @@
 ---
 title: "Must Read: Redistributing Full BGP Feed into OSPF"
-#date: 2020-06-18 07:42:00
-draft: True
+date: 2020-10-07 07:42:00
 tags: [ BGP, OSPF ]
 ---
 The idea of redistributing the full Internet routing table (840.000 routes at this moment) into OSPF sound as ridiculous as it is, but when fat fingers strike it should be relatively easy to recover, right? Just disable redistribution (assuming you can still log into the offending device) and move on.
