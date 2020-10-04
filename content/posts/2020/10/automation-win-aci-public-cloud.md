@@ -1,6 +1,6 @@
 ---
 title: "Automation Win: Recreating Cisco ACI Tenants in Public Cloud"
-date: 2020-10-08 06:22:00
+date: 2020-10-15 06:22:00
 tags: [ automation, cloud ]
 ---
 *This blog post was initially sent to the subscribers of our SDN and Network Automation mailing list. [Subscribe here](http://www.ipspace.net/Subscribe/Five_SDN_Tips).*

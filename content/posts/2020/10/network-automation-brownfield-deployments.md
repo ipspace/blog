@@ -1,7 +1,6 @@
 ---
 title: "Network Automation Products for Brownfield Deployments"
-#date: 2020-05-10 08:44:00
-draft: True
+date: 2020-10-08 06:44:00
 tags: [ automation ]
 ---
 Got this question from one of my long-time readers:
@@ -10,7 +9,9 @@ Got this question from one of my long-time readers:
 
 The two other solutions that come to mind are Apstra AOS and Cisco NSO. However, you probably won’t find a simple solution that would do what you want to do without heavy customization as every network tends to be a unique snowflake. 
 <!--more-->
-The best analogy to deploying a network automation solution in a brownfield environment is a new ERP system deployment (SAP, Microsoft Dynamics, Oracle ERP...). As every company creates invoices in a slightly different way (because they are so very special) and calculates salaries in slightly peculiar way (yet again, because they’re special), it’s usually impossible to take an off-the-shelf ERP system and deploy it without heavy customization… and after going through endless rounds of customizations, it’s really hard to get rid of the army of consultants tweaking the system on a daily basis to implement all the other bright ideas the business comes up with.
+The best analogy to deploying a network automation solution in a brownfield environment is a new Enterprise Resource Planning (ERP) system deployment (example: SAP, Microsoft Dynamics, Oracle ERP...).
+
+As every company creates invoices in a slightly different way (because they are so very special) and calculates salaries in slightly peculiar way (yet again, because they’re special), it’s usually impossible to take an off-the-shelf ERP system and deploy it without heavy customization… and after going through endless rounds of customizations, it’s really hard to get rid of the army of consultants tweaking the system on a daily basis to implement all the other bright ideas the business comes up with in the meantime.
 
 Being a grumpy skeptic who has seen too much, I see only three major ways forward for my reader:
 
