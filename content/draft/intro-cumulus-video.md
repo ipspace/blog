@@ -14,7 +14,7 @@ You can watch his presentation, as well as the more in-depth overview of Cumulus
 
 {{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
 
-## Video: Simplify Device Configurations with Cumulus Linux
+## (Pub) Video: Simplify Device Configurations with Cumulus Linux
 
 The designers of Cumulus Linux CLI were always focused on simplifying network device configurations. One of the first features along these lines was [BGP across unnumbered interfaces](https://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html), then they introduced simplified EVPN configurations, and recently [auto-MLAG and auto-BGP](https://blog.ipspace.net/2019/10/auto-mlag-and-auto-bgp-in-cumulus-linux.html).
 
