@@ -12,6 +12,7 @@ import argparse
 import yaml
 import json
 import glob
+import dateutil
 from datetime import date, datetime, timezone
 from termcolor import colored
 import common
@@ -72,12 +73,12 @@ def print_dir(dir_list):
   today = datetime.now().date()
   for entry in dir_list:
     date = entry['date']
-    wday = date.weekday()
+    wday = date.weekday() if date else -1
     if wday < last_day:
       print("-----")
     last_day = wday
-    line = "%15s: %s" % (date.strftime('%a %Y-%m-%d %H:%M'),entry['name'])
-    color = "green" if date.date() > today else "yellow" if date.date() == today else None
+    line = "%20s: %s" % (date.strftime('%a %Y-%m-%d %H:%M') if date else "DRAFT",entry['name'])
+    color = "red" if not date else "green" if date.date() > today else "yellow" if date.date() == today else None
     print(colored(line,color) if color else line)
 
 def print_html(dir_list,prefix):
@@ -90,13 +91,14 @@ VERBOSE = args.verbose
 
 dir_list = []
 tag_list = None
+max_date = dateutil.parser.parse('2100-01-01 00:00:00+00')
 if args.tags:
   tag_list = tag_filter.parse_tags(args.tags)
 
 for entry in args.dir:
   dir_list = scan_posts(entry,dir_list,tag_list)
 
-sorted_list = sorted(dir_list,key=lambda x: x['date'])
+sorted_list = sorted(dir_list,key=lambda x: x['date'] or max_date)
 if args.md:
   print_html(sorted_list,args.prefix)
 else:
