@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "17 October 2020 02:33",
+         "html": "<p>I&#39;ve re-read Dmytro&#39;s blog several times to make sure I didn&#39;t miss some important details. One question that came up was, since MaxAge LSAs are meant to be purged anyway, then after a flapping adj comes back up, isn&#39;t it better to program OSPF so that its neighbors know not to send MaxAge LSAs -- since they&#39;re useless wrt to building the LS topology -- to it? That way all the adj can go down once, due to the massive flooding of MaxAge LSAs, but not twice, and the network can get back to a clean slate after sometime? How come vendors don&#39;t implement OSPF this way? Can you elaborate on this Ivan?</p>\n\n<p>I also have this question for quite some time and his blog reminds me again. Assuming we have a network made up of only high-end routers, is there any reason that a good implementation of IS-IS with well-designed timers, running in such a network, cannot scale to, say 100k nodes, with a single-area design? Sheer flooding in dense topologies has always been a big issue, but it can be alleviated to some extent using IS-IS mesh group. Another reason was due to routers&#39; inadequate control-plane processing power and memory resources. But even so, there were networks consisting of 1k+ IS-IS routers in a single area back in the day. So surely our current routers can handle way more, can they? If they still can&#39;t, is it because IGPs still lack a dynamic flow control mechanism that BGP has, thanks to its use of TCP? </p>\n\n<p>And what about EIGRP? Given the same kind of network as above, can it handle a single routing domain of 200k-300k routers and 500k routes (the 500k route figure I found in Russ White&#39;s Complexities book)?  EIGRP is very much like BGP, in that it&#39;s distance-vector, incremental, partial, and bounded. So overall, EIGRP is a lot more stateless than LS IGPs, and should be more scalable right Ivan? </p>\n",
+         "id": "181",
+         "name": " Minh Ha",
+         "pub": "2020-10-17T02:33:52",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2020/10/redistributing-bgp-into-ospf.html"
+}
