@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -22,6 +22,29 @@
 <p>I also have this question for quite some time and his blog reminds me again. Assuming we have a network made up of only high-end routers, is there any reason that a good implementation of IS-IS with well-designed timers, running in such a network, cannot scale to, say 100k nodes, with a single-area design? Sheer flooding in dense topologies has always been a big issue, but it can be alleviated to some extent using IS-IS mesh group. Another reason was due to routers&#39; inadequate control-plane processing power and memory resources. But even so, there were networks consisting of 1k+ IS-IS routers in a single area back in the day. So surely our current routers can handle way more, can they? If they still can&#39;t, is it because IGPs still lack a dynamic flow control mechanism that BGP has, thanks to its use of TCP? </p>
 
 <p>And what about EIGRP? Given the same kind of network as above, can it handle a single routing domain of 200k-300k routers and 500k routes (the 500k route figure I found in Russ White&#39;s Complexities book)?  EIGRP is very much like BGP, in that it&#39;s distance-vector, incremental, partial, and bounded. So overall, EIGRP is a lot more stateless than LS IGPs, and should be more scalable right Ivan? </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="182">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c182" href="#182">17 October 2020 04:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The whole idea of OSPF is to have the eventually-consistent topology database synchronized across all routers in the area, and if you want to do that, you simply have to synchronize the DELETE operations as well as INSERT or UPDATE operations. There&#39;s no way around that.</p>
+
+<p>As for scaling link-state protocols, keep in mind that while flooding does burn CPU cycles, in the end Dijkstra algorithm isn&#39;t O(n), and that&#39;s what will eventually kill you no matter how fast the CPU is.</p>
+
+<p>EIGRP scales much better because its computational complexity depends on the number of routes and neighbors.</p>
 </div>
           </div>
         </li>
