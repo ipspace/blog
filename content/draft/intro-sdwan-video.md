@@ -35,7 +35,7 @@ INFO: You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscript
 
 JUMP-LINK: [Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/4%20-%20Routing%20Goodness.mp4?doccode=CiscoSDWAN)
 
-# Video: Cisco SD-WAN Onboarding Process
+# (pub) Video: Cisco SD-WAN Onboarding Process
 
 Once the architecture and routing capabilities are clear, [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) describes the [onboarding process](https://my.ipspace.net/bin/get/CiscoSDWAN/5%20-%20Onboarding%20Process.mp4?doccode=CiscoSDWAN) and tasks performed by the solution - like encryption, tunnel establishment and device onboarding - in it's so-called Orchestration Plane.
 
