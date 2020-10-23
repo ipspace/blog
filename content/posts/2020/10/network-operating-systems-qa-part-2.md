@@ -16,4 +16,3 @@ Unfortunately we got so far into the weeds at that time that we answered only ha
 And of course we couldn't avoid the famous _last question_: "_Should network engineers program network devices?_"
 
 You'll need [Standard or Expert ipSpace.net subscription](https://www.ipspace.net/Subscription/Individual) to [watch the videos](https://my.ipspace.net/bin/list?id=NOSModels#DDNOS).
-
