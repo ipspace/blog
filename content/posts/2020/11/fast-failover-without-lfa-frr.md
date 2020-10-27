@@ -1,6 +1,6 @@
 ---
 title: "Do We Need LFA or FRR for Fast Failover in ECMP Designs?"
-date: 2020-10-29 06:02:00
+date: 2020-11-04 06:02:00
 tags: [ ip routing, design ]
 ---
 One of my readers sent me a question along these lines:
