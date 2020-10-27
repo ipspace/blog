@@ -36,6 +36,6 @@ The next step was a brief detour into FG NET-2030 initiative (yay, [just the rig
 
 I know Twitter isn't exactly the place to exchange nuanced ideas, but the very minimum I would expect in a network engineering discussion is opinions supported by something resembling hard facts. Obviously, sometimes that's too much to ask.
 
-To make matters worse, there are tons of resources explaining the relevant fundamentals, including our [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar and [tons of great books](https://my.ipspace.net/bin/list?id=Net101#TEXTBOOK) (the first two books in that list are free). All you have to do is invest time in reading some of them instead of vendor whitepapers or industry press.
+To make matters worse, it's not hard to find resources explaining the relevant fundamentals, including our [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar and [tons of great books](https://my.ipspace.net/bin/list?id=Net101#TEXTBOOK) (the first two books in that list are free). All you have to do is invest time in reading some of them instead of vendor whitepapers or industry press.
 
 [^1]: Anyone old enough to remember the Internet-wide meltdowns caused by fast switching caches is probably smart enough not to touch another cache-based data-plane technology in their lifetime. Exposure to Nexus 7000 conversation learning (in particular after configuring SVI interfaces) is an added bonus.
