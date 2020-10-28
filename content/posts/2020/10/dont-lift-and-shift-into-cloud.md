@@ -1,8 +1,7 @@
 ---
 title: "Don't Lift-and-Shift Your Enterprise Spaghetti into a Public Cloud"
-# date: 2020-07-03 09:48:00
+date: 2020-10-29 07:48:00
 tags: [ cloud ]
-draft: True
 ---
 [Jon Kadis](https://www.linkedin.com/in/jon-kadis-006962/) spent most of his life working on enterprise networks, and sadly found out that even changing jobs and moving into a public cloud environment can't save you from people trying to [lift-and-shift](https://twitter.com/cloud_opinion/status/1271643349628280832) enterprise IT kludges into a greenfield environment.
 
