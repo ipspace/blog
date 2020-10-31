@@ -22,6 +22,12 @@ However, it looks like some vendors decided LFA or FRR is the only way to go... 
 
 > What the $vendor is telling me is that ECMP cannot provide fast-protection because the hash-buckets are reallocated by the control plane when a ECMP link fails
 
-Wait... WTF??? The hardware can be programmed to replace an entry in a next-hop group with a standby LFA/FRR entry, but it cannot remove an entry from a next-hop group? And even if that's true, nobody thought about using a dummy replacement entry that would point to one of the other valid next hops... which is what LFA would end up doing anyway?
+Wait... WTF??? The hardware can be programmed to replace an entry in a next-hop group with a standby LFA/FRR entry, but it cannot remove an entry from a next-hop group? And even if that's true, nobody thought about using a dummy replacement entry that would point to one of the other valid next hops until the control plane wakes up... which is what LFA would end up doing anyway?
 
-Real-life experience would be highly appreciated; if you KNOW the answer for any specific platform (as opposed to _this is how it SHOULD be_), please write a comment... and if you have a juicy dirty secret to share, send me an email and I'll add it to this blog post as an anonymous contribution.
+Here's what seems to be going on in some of the platforms out there (according to my reader):
+
+* Junos has _[ECMP fast reroute](https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/ecmp-fast-reroute-edit-forwarding-table.html)_ but it has to be configured, and it seems to work on PTX and QFX but not on MX;
+* Nokia has the clearest documentation, and their fast ECMP implementation is always on;
+* It looks like on IOS-XR LFA provides fast protection for ECMP prefixes.
+
+Any other real-life experience would be highly appreciated. If you KNOW the answer for any specific platform (as opposed to _this is how it SHOULD be_), please write a comment... and if you have a juicy dirty secret to share, send me an email and I'll add it to this blog post as another anonymous contribution.
