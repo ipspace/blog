@@ -26,8 +26,22 @@ Wait... WTF??? The hardware can be programmed to replace an entry in a next-hop 
 
 Here's what seems to be going on in some of the platforms out there (according to my reader):
 
-* Junos has _[ECMP fast reroute](https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/ecmp-fast-reroute-edit-forwarding-table.html)_ but it has to be configured, and it seems to work on PTX and QFX but not on MX;
-* Nokia has the clearest documentation, and their fast ECMP implementation is always on;
-* It looks like on IOS-XR LFA provides fast protection for ECMP prefixes.
+---
+
+It looks that amongst some of the high-end router vendors (Juniper MX960, Cisco ASR9922, Nokia 7950 XRS), IOS-XR ECMP implementation does not provide fast-protection while Nokia and Junos do. Cisco in fact needs LFA to provide fast-protection for ECMP'ed prefixes while Junos and Nokia don't run LFA for ECMP'ed prefixes as they don't need to. 
+
+LFA over ECMP'ed prefixes seems to provide (during protection and while the IGP converges), a lower grade of flows spraying when compared to pure ECMP  with the difference in flows number amongst destinations being an additional risk factor towards link saturation and/or QoS threshold crossing. 
+
+Junos seems to require the forwarding policy knob ECMP-FRR (why is it in the BGP section?) for some of the platforms while Nokia has a fast implementation of ECMP by default on any platform with its uniform-failover. It's not always clear though what kind of fast-protections (if any) hold for all forms of ECMP hashing: 
+
+* ECMP amongst (multipath) BGP next hops;
+* ECMP amongst L3 single-links;
+* L3 LAGs and/or amongst L2 links (e.g. LAG's individual links). 
+
+It's not always clear what their relation to LFA is either since they could be alternatives or coexist. I have no info from Huawei as do not have any of their boxes but they look promising as they seem to provide the best of both worlds where the fast IP/LDP ECMP implementation coexists with LFA and with the latter kicking in only when ECMP is not considered available anymore. 
+
+To me, this area of networking needs to be polished/clarified before even thinking of moving over to SR and TI-LFA designs.
+
+---
 
 Any other real-life experience would be highly appreciated. If you KNOW the answer for any specific platform (as opposed to _this is how it SHOULD be_), please write a comment... and if you have a juicy dirty secret to share, send me an email and I'll add it to this blog post as another anonymous contribution.
