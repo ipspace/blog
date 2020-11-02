@@ -1,7 +1,7 @@
 ---
 title: "OMG, Not Again: New Mobile Internet Protocol Vulnerabilities"
 date: 2020-07-29 07:20:00
-tags: [ security ]
+tags: [ security, worth reading ]
 ---
 Every now and then a security researcher "discovers" a tunneling protocol designed to be used over a protected transport core and "declares it vulnerable" assuming the attacker can connect to that transport network... even though the protocol [was purposefully designed that way](https://blog.ipspace.net/2015/04/omg-vxlan-encapsulation-has-no-security.html), and everyone with a bit of clue knew the whole story years ago (and/or it's even [documented in the RFC](https://tools.ietf.org/html/rfc7348#section-7)).
 

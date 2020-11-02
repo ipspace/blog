@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Seamless Suffering"
 date: 2020-08-12 08:57:00
-tags: [ MPLS,design ]
+tags: [ MPLS, design, worth reading ]
 ---
 When someone sent me a presentation on _seamless MPLS_ a long while ago my head (almost) exploded just by looking at the diagrams... or in the [immortal words of @amyengineer](https://twitter.com/amyengineer/status/1281389876001124352):
 

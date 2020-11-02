@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: The Burning Bag of Dung"
 date: 2020-05-30 06:55:00
-tags: [ SDN, vMotion, automation ]
+tags: [ SDN, vMotion, automation, worth reading ]
 ---
 Loved the [article from Philip Laplante about environmental antipatterns](http://queue.acm.org/detail.cfm?id=1035617). I’ve seen plenty of *founderitis* and *shoeless children* in my life, but it was *worshipping the golden calf* that made me LOL:
 
