@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Working with TC on Linux systems"
 date: 2020-07-15 07:09:00
-tags: [ switching ]
+tags: [ switching, worth reading ]
 ---
 Here's one of the weirdest ideas I've found recently: [patch together two dangling ends of virtual Ethernet cables with PBR](http://www.dasblinkenlichten.com/working-with-tc-on-linux-systems/). 
 

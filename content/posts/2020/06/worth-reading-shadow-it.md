@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: When Security Takes a Backseat to Productivity"
 date: 2020-06-20 07:53:00
-tags: [ security, cloud ]
+tags: [ security, cloud, worth reading ]
 ---
 Brian Krebs wrote an [interesting analysis of CIA's Wikileaks report](https://krebsonsecurity.com/2020/06/when-security-takes-a-backseat-to-productivity/). In a nutshell, they were a victim of "move fast to get the mission done" shadow IT.
 

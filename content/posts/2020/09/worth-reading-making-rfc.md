@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: The Making of an RFC in today’s IETF"
 date: 2020-09-12 08:15:00
-tags: [ ]
+tags: [ worth reading ]
 ---
 Years ago I was naive enough to participate in writing an IETF document. Three years later we [finally managed to turn it into an RFC](https://blog.ipspace.net/2015/02/rfc-7454-bgp-operations-and-security.html), and I decided that was enough for one lifetime.
 

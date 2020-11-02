@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: The Shared Irresponsibility Model in the Cloud"
 date: 2020-10-25 06:42:00
-tags: [ cloud ]
+tags: [ cloud, worth reading ]
 ---
 A long while ago I [wrote a blog post along the lines of](https://blog.ipspace.net/2014/05/its-ok-to-let-developers-go-amazon-web.html) "_it's ridiculous to allow developers to deploy directly to a public cloud while burdening them with all sorts of crazy barriers when deploying to an on-premises infrastructure_," effectively arguing for self-service approach to on-premises deployments.
 

@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: NetDevOps Concepts - Minimum Viable Product"
 date: 2020-08-19 06:30:00
-tags: [ automation ]
+tags: [ automation, worth reading ]
 ---
 Brett Lykins published an excellent description of 
 [what an automation Minimum Viable Product could be](https://blog.networktocode.com/post/netdevops-concepts-mvp/). 

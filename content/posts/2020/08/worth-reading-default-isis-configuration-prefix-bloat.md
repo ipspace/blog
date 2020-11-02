@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Redistributing Your Entire IS-IS Network By Mistake"
 date: 2020-08-14 08:57:00
-tags: [ IS-IS ]
+tags: [ IS-IS, worth reading ]
 ---
 Here's an interesting factoid: when using default IS-IS configuration (running L1 + L2 on all routers in your network), every router inserts every IP prefix from anywhere in your network into L2 topology... at least on Junos. 
 

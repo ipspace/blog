@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Emerging Communications Technologies"
 date: 2020-06-06 07:13:00
-tags: [ Internet ]
+tags: [ Internet, worth reading ]
 ---
 Every few years someone within the ITU-T (the standard organization that mattered when we were still dealing with phones, virtual circuits and modems) realizes how obsolete they are and tries to [hijack](https://blog.ipspace.net/2010/09/ipv6-experts-strike-again.html) and/or [fork](https://blog.ipspace.net/2010/11/what-is-mpls-tp-and-is-it-relevant.html) the Internet protocol development. Their latest attempt is the "New IP" framework, and Geoff Huston did a great job [completely tearing that stupidity apart in his May 2020 ISP column](https://www.potaroo.net/ispcol/2020-05/futuretech.html). My favorite quote:
 

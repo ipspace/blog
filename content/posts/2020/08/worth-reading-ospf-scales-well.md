@@ -1,7 +1,7 @@
 ---
 title: "MUST READ: What I've learned about scaling OSPF in Datacenters"
 date: 2020-08-24 06:48:00
-tags: [ OSPF, design ]
+tags: [ OSPF, design, worth reading ]
 ---
 Justin Pietsch published a fantastic 
 [recap of his experience running OSPF in AWS infrastructure](https://elegantnetwork.github.io/posts/What-Ive-learned-about-OSPF/). You MUST read what he wrote, here's the TL&DR summary:
