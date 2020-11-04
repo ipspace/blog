@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -87,6 +87,27 @@ You loose link #4: TI-LFA will provide fast failure, assuming there is another p
 </ul>
 
 <p>Whether you <em>need</em> that fast rerouting in your network, or if you can wait until the routing protocol converges, is of course a different question.  And likely depends on how <em>often</em> you have link failures. In the datacenter network I&#39;m managing, where links fail almost never, we would be OK with a convergence time of a minute or more; but our OSPF converges in a second or two, so no problem there.  (We still have the spines connected to each other, but for other reasons.)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="204">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c204" href="#204">04 November 2020 11:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Bellman: the behavior you describe depends on whether you designed a <a href="https://blog.ipspace.net/2018/09/valley-free-routing-in-data-center.html">valley-free routing topology</a> (in which case you&#39;ll experience packet drops until the routing protocol does its job, and a <a href="https://blog.ipspace.net/2018/09/implications-of-valley-free-routing-in.html">few other interesting things</a>) or not (in which case you&#39;ll experience path hunting and temporary loops).</p>
+
+<p>Even LFA wouldn&#39;t help in a leaf-and-spine fabric, you&#39;d need remote LFA to get to another spine switch.</p>
 </div>
           </div>
         </li>
