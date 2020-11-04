@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>6 comments:</h4>
+  <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -159,6 +159,31 @@ You loose link #4: TI-LFA will provide fast failure, assuming there is another p
 <p>Yes, that was exactly the point I was trying to make!  But I could obviously have been clearer about that.  A pure leaf-and-spine network inherently does not <em>have</em> a Loop-Free Alternative from the spines.  You need to break the topology somehow.  Tunnels to the other spines are one way of doing that, physical links to neighbouring spines another (the one I personally like best), and so on.</p>
 
 <p>(This was all a bit of a side-note to your main post.  I hope I have not derailed the discussion too much.)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="207">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> JeffT</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c207" href="#207">04 November 2020 11:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have addressed some of it in one of &ldquo;between 0x2 nerds&rdquo; webinars.
+In general - you are comparing 2 different techniques - IP FRR vs fast-rehash. IP FRR (xLFA) relies on pre-computed backup next-hop that is loop-free (could be ECMP) and is a control plane function (eventually end-result is downloaded into HW), it could take into consideration some additional data - SRLGs, interface load, etc.
+Fast-rehash is a forwarding construct, where the next-hop (could be called differently) is not a single entry but an array of entries (ECMP bundle as downloaded by the control plane).
+If one of them becomes unavailable (BFD or LoS or interface down events) it is simply removed from the array and the hashing is updated accordingly, since the name.
+Usually - you&rsquo;d see LFA implemented on a high end routers, it is much more intelligent/complex and provides non connected bypass (rLFA/TI-LFA).
+Fast-rehash on contrary protects only connected links and doesn&rsquo;t require any additional computation (ECMP alternatives are per definition loop-free). Usually implemented in DC environments. Hope this explains it.
+IP FRR RFCs are produced by IETF RTGWG</p>
 </div>
           </div>
         </li>
