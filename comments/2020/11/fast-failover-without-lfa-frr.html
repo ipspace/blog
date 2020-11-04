@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -53,6 +53,40 @@ You loose link #4: TI-LFA will provide fast failure, assuming there is another p
 <p>However, 10 msec loss could still be caused by CPU reprogramming the ECMP buckets. Have you experienced any difference in how long the outage was based on whether you had pure ECMP or LFA on top of it?</p>
 
 <p>Thank you! Ivan</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="203">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bellman</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c203" href="#203">04 November 2020 11:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>One thing to note is that in a pure spine-and-leaf network, you can, or perhaps even <em>will</em>, get loops when a link goes down, until the routing protocol has converged.</p>
+
+<p>Consider a network with two spines (S1,S2) and three leafs (L1, L2, L3).  A host connected to L1 send a packet to a host on L2.  L1 decides to send it to spine S1, but unbeknownst to the leafs, the link between S1 and L2 has gone down.  S1 has realized this, and reprogrammed itself, so when it receives the packet that needs to go to L2, it will try to send that to one of the other leafs, L1 or L3, and hope that they will send it to the <em>other</em> spine, S2, since it is the remaining path to L2.</p>
+
+<p>But, since L1 and L3 have not yet realized that S1 no longer has a link to L2, they may decide to send the packet back to S1.  In particular, L1 will almost certainly hash the packet the same way as when it got it the first time, and send it to S1 again.  Which will hash it the same way <em>it</em> did previously, and send it to L1.  Loop.</p>
+
+<p>Until the routing protocol converges a second or two later.</p>
+
+<p>This is inherent in a pure spine-and-leaf network, and the only way to avoid it is to have a less pure network design.  For example:</p>
+
+<ul>
+<li>Have multiple links between each spine and leaf.  If there had been two links between S1 and L2, the problem would not have happened, as S1 would just send the packet over the other direct link to L2.</li>
+<li>Connect the spines in a ring.  S1 would then have a shorter backup path towards L2 available (via S2) than by sending the packet back to some leaf.  (I personally like this design.)</li>
+</ul>
+
+<p>Whether you <em>need</em> that fast rerouting in your network, or if you can wait until the routing protocol converges, is of course a different question.  And likely depends on how <em>often</em> you have link failures. In the datacenter network I&#39;m managing, where links fail almost never, we would be OK with a convergence time of a minute or more; but our OSPF converges in a second or two, so no problem there.  (We still have the spines connected to each other, but for other reasons.)</p>
 </div>
           </div>
         </li>
