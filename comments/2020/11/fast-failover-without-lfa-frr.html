@@ -1,0 +1,41 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="201">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c201" href="#201">04 November 2020 09:57</a>
+              </span>
+            </div>
+            <div class="comment-content">I have done real lab tests with IOS-XR based routers in the following scenario:<br />
+- ECMP links running IS-IS<br />
+- IS-IS + Segment Routing + TI-LFA<br />
+
+<p>Topology: 4 x ECMP link between two routers</p>
+
+<p>This is what happens:
+You loose link #1: ECMP is still available: Minimal traffic loss (&lt;10ms) as traffic is simply re-distributed onto other ECMP links
+You loose link #2: Same happens as for link #1
+You loose link #3: Fast failover to last remaining link. BUT since ECMP is gone, TI-LFA will now calculate a backup path
+You loose link #4: TI-LFA will provide fast failure, assuming there is another path available.</p>
+
+<p>I <em>think</em> the ECMP behavior is independent of the routing protocol, because it is implemented in CEF / hardware. But have not tested it properly with LDP / BGP etc. myself.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

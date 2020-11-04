@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "04 November 2020 09:57",
+         "html": "I have done real lab tests with IOS-XR based routers in the following scenario:<br />\n- ECMP links running IS-IS<br />\n- IS-IS + Segment Routing + TI-LFA<br />\n\n<p>Topology: 4 x ECMP link between two routers</p>\n\n<p>This is what happens:\nYou loose link #1: ECMP is still available: Minimal traffic loss (&lt;10ms) as traffic is simply re-distributed onto other ECMP links\nYou loose link #2: Same happens as for link #1\nYou loose link #3: Fast failover to last remaining link. BUT since ECMP is gone, TI-LFA will now calculate a backup path\nYou loose link #4: TI-LFA will provide fast failure, assuming there is another path available.</p>\n\n<p>I <em>think</em> the ECMP behavior is independent of the routing protocol, because it is implemented in CEF / hardware. But have not tested it properly with LDP / BGP etc. myself.</p>\n",
+         "id": "201",
+         "name": " Jan",
+         "pub": "2020-11-04T09:57:33",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2020/11/fast-failover-without-lfa-frr.html"
+}
