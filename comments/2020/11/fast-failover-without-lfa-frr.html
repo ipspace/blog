@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -127,6 +127,38 @@ You loose link #4: TI-LFA will provide fast failure, assuming there is another p
               </span>
             </div>
             <div class="comment-content"><p>@Jan: thanks for your contribution. It&#39;s interesting as we&#39;re seeing a different behaviour. In our IOSXR, by default, LFA is calculated for ECMP&#39;ed prefixes and thus it kicks in even if just one link fails (e.g. your link #1). What&#39;s your configuration ? Have you excluded somehow via CLI the LFA computation for ECMP&#39;ed prefixes ? </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="206">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bellman</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c206" href="#206">04 November 2020 04:07</a>
+              </span>
+            </div>
+            <div class="comment-content">Ivan:<br />
+
+<p>Yes, you can certainly configure your network so the spines drop packages instead of trying to route around the broken link.</p>
+
+<p>However, will you be <em>happier</em> because the spine is now dropping 100% of the traffic it receives destined for L2, instead of looping (and then dropping) a fraction of that same traffic?  This is in the context of wanting very quick failovers, faster than the routing protocol can react, so presumably you you want as small outages as possible.</p>
+
+<p>(And if you [generic you, not specifically you, Ivan] prefer valley-free routing, remember to consider what happens if the broken link is the one to the leaf where your monitoring and/or management stations are connected.  Suddenly you have no way of managing and monitoring that spine...  Unless those stations are dual-homed to two leaf routers.  A physically separate management network just moves the problem to that network; or are valley-free proponents OK with a valleyed management network?)</p>
+
+<p>&gt; Even LFA wouldn&#39;t help in a leaf-and-spine fabric, you&#39;d need
+&gt; remote LFA to get to another spine switch.</p>
+
+<p>Yes, that was exactly the point I was trying to make!  But I could obviously have been clearer about that.  A pure leaf-and-spine network inherently does not <em>have</em> a Loop-Free Alternative from the spines.  You need to break the topology somehow.  Tunnels to the other spines are one way of doing that, physical links to neighbouring spines another (the one I personally like best), and so on.</p>
+
+<p>(This was all a bit of a side-note to your main post.  I hope I have not derailed the discussion too much.)</p>
 </div>
           </div>
         </li>

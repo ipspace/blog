@@ -39,9 +39,17 @@
          "name": "Andrea Di Donato",
          "pub": "2020-11-04T13:17:32",
          "type": "comment"
+      },
+      {
+         "date": "04 November 2020 04:07",
+         "html": "Ivan:<br />\n\n<p>Yes, you can certainly configure your network so the spines drop packages instead of trying to route around the broken link.</p>\n\n<p>However, will you be <em>happier</em> because the spine is now dropping 100% of the traffic it receives destined for L2, instead of looping (and then dropping) a fraction of that same traffic?  This is in the context of wanting very quick failovers, faster than the routing protocol can react, so presumably you you want as small outages as possible.</p>\n\n<p>(And if you [generic you, not specifically you, Ivan] prefer valley-free routing, remember to consider what happens if the broken link is the one to the leaf where your monitoring and/or management stations are connected.  Suddenly you have no way of managing and monitoring that spine...  Unless those stations are dual-homed to two leaf routers.  A physically separate management network just moves the problem to that network; or are valley-free proponents OK with a valleyed management network?)</p>\n\n<p>&gt; Even LFA wouldn&#39;t help in a leaf-and-spine fabric, you&#39;d need\n&gt; remote LFA to get to another spine switch.</p>\n\n<p>Yes, that was exactly the point I was trying to make!  But I could obviously have been clearer about that.  A pure leaf-and-spine network inherently does not <em>have</em> a Loop-Free Alternative from the spines.  You need to break the topology somehow.  Tunnels to the other spines are one way of doing that, physical links to neighbouring spines another (the one I personally like best), and so on.</p>\n\n<p>(This was all a bit of a side-note to your main post.  I hope I have not derailed the discussion too much.)</p>\n",
+         "id": "206",
+         "name": "Bellman",
+         "pub": "2020-11-04T16:07:01",
+         "type": "comment"
       }
    ],
-   "count": 5,
+   "count": 6,
    "type": "post",
    "url": "2020/11/fast-failover-without-lfa-frr.html"
 }
