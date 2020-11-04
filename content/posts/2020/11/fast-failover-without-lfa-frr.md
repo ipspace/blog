@@ -8,7 +8,7 @@ One of my readers sent me a question along these lines:
 > Imagine you have a router with four equal-cost paths to prefix  X, two toward _upstream-1_ and two toward _upstream-2_. Now let's suppose that one of those links goes down and you want to have link protection. Do I really need Loop-Free Alternate (LFA) or MPLS Fast Reroute (FRR) to get fast (= immediate) failover or could I rely on multiple equal-cost paths to get the job done? I'm getting different answers from different vendors...
 
 Please note that we're talking about a very specific question of whether in scenarios with equal-cost layer-3 paths the hardware forwarding data structures get adjusted automatically on link failure (without CPU reprogramming them), and whether LFA needs to be configured to make the adjustment happen.
-
+<!--more-->
 {{<note update>}}Update history:
 
 * 2020-11-04 10:05Z: added a few intro paragraphs to (hopefully) better explain the problem.{{</note>}}
