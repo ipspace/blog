@@ -63,9 +63,17 @@
          "name": "Jeff Sicuranza",
          "pub": "2020-11-05T00:20:27",
          "type": "comment"
+      },
+      {
+         "date": "05 November 2020 03:42",
+         "html": "<p>@Ivan: I double checked my notes and here is what I learned during lab testing, also checking with our engineering colleagues.</p>\n\n<p>Disclaimer:\n- I work for Cisco&#39;s CX organization.\n- Testing was done on Broadcom based XR platforms (NCS 5500). Might actually be different on other XR platforms, since the HW implementation DOES play a role.</p>\n\n<p>Hardware protection / programming for ECMP links is in fact (as written above) only activated when also activating a FRR feature (LFA, rLFA or TI-LFA).\nWithout it, no backup path is programmed in hardware and link down notifies IGP to start (re)convergence. </p>\n\n<p>With FRR enabled, it is pure hardware protection. Official convergence target is &lt;50ms, but might be quicker.\nIn testing, you can also see that not every traffic stream is affected. Most don&#39;t see any traffic loss, but a few packets where in the wrong NPU at the wrong time ;)</p>\n\n<p>@Andrea: I only tested with TI-LFA. I know that the LFA / rLFA implementation is quite different from TI-LFA so it could well be that they behave differently.</p>\n",
+         "id": "209",
+         "name": " Jan",
+         "pub": "2020-11-05T15:42:30",
+         "type": "comment"
       }
    ],
-   "count": 8,
+   "count": 9,
    "type": "post",
    "url": "2020/11/fast-failover-without-lfa-frr.html"
 }
