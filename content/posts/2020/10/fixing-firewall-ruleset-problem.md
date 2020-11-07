@@ -2,6 +2,7 @@
 title: "Fixing Firewall Ruleset Problem For Good"
 date: 2020-10-07 06:05:00
 tags: [ firewall, data center, design ]
+series: host-firewalls
 ---
 Before we start: if you're new to my blog (or stumbled upon this blog post by incident) you might want to read the [Considerations for Host-Based Firewalls](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html) for a brief overview of the challenge, and my explanation why [flow-tracking tools cannot be used to auto-generate firewall policies](https://blog.ipspace.net/2020/09/flow-tracking-halting-problem.html).
 

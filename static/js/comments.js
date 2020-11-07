@@ -20,7 +20,7 @@ function remove_duplicate_comments() {
 
 $(function() {
   var server = 'https://my.ipspace.net/';
-  if (location.host.indexOf('localhost') >= 0) {
+  if (location.host.indexOf('local') >= 0) {
     server = 'http://my.local:8080/'
   }
   $(".post__comment-add").click(function () {
