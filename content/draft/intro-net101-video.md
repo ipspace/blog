@@ -11,7 +11,7 @@ What exactly is the difference between the two, and what is bridging? I'm answer
 
 {{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
-# Video: Getting a Packet Across a Network
+# (Pub) Video: Getting a Packet Across a Network
 
 Now that we (hopefully) agree on what routing, bridging, and switching are, let's focus on the first important topic in this area: how do we get a packet across the network? Yet again, there are three fundamentally different technologies:
 

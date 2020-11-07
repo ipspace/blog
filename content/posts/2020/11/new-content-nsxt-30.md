@@ -5,7 +5,7 @@ tags: [ NSX ]
 ---
 When VMware NSX-T 3.0 came out, I planned to do an update session of the _[VMware NSX Technical Deep Dive](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive)_ webinar along the lines of what [I did for AWS Networking a few weeks ago](https://blog.ipspace.net/2020/10/aws-networking-update.html). However, it turned out that most of the new features didn't take more than a bullet or two on an existing slide, or at most a new slide. 
 
-Covering them in a live session and then slicing-and-dicing the resulting recording simply didn't make sense, so updated the videos in summer 2020 (the last batch was published in early August).
+Covering them in a live session and then slicing-and-dicing the resulting recording simply didn't make sense, so I updated the videos in summer 2020 (the last batch was published in early August).
 <!--more-->
 Features covered in updated videos include:
 
@@ -33,4 +33,4 @@ That left what I considered to be *major* features: VRF-Lite and EVPN, IP Multic
 
 I finally collected enough information in mid-October, but then it turned out that most of the new stuff doesn't take more than 10-15 minutes... yet again not warranting a live update session, so I just recorded short videos and published them.
 
-The only new feature left was NSX-T federation. NSX-T 3.0 release notes claimed it was not production ready, so I decided to postpone any related work, but of course a few days after I made that decision VMware released NSX-T 3.1 with improved federation support. The current plan is to have an NSX-T Federation update sometime during the winter... unless of course it turns out there's not much to say about it, in which case I'll just do another short video. In the meantime, you can get an overview of what it's all about in a [video](https://my.ipspace.net/bin/get/NSXACI/S2%20-%20NSX-T%20Multi-Site%20and%20Federation.mp4?doccode=NSXACI) I recorded when updating the [*VMware NSX, Cisco ACI, or EVPN *webinar](https://www.ipspace.net/VMware_NSX,_Cisco_ACI_or_Standard-Based_EVPN).
+The only new feature left was NSX-T federation. NSX-T 3.0 release notes claimed it was not production ready, so I decided to postpone any related work, but of course a few days after I made that decision VMware released NSX-T 3.1 with improved federation support. The current plan is to have an NSX-T Federation update sometime during the winter. In the meantime, you can get an overview of what it's all about in a [video](https://my.ipspace.net/bin/get/NSXACI/S2%20-%20NSX-T%20Multi-Site%20and%20Federation.mp4?doccode=NSXACI) I recorded when updating the [*VMware NSX, Cisco ACI, or EVPN* webinar](https://www.ipspace.net/VMware_NSX,Cisco_ACI_or_Standard-Based_EVPN).
