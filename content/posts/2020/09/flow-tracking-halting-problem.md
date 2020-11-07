@@ -2,6 +2,7 @@
 title: "Using Flow Tracking to Build Firewall Rulesets... and Halting Problem"
 date: 2020-09-23 06:37:00
 tags: [ firewall, security ]
+series: host-firewalls
 ---
 Peter Welcher identified the biggest network security hurdle faced by most enterprise IT environments in [his comment](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html#111) to [Considerations for Host-based Firewalls (Part 1)](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html) blog post:
 

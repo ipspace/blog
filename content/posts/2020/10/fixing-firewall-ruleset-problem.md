@@ -2,11 +2,14 @@
 title: "Fixing Firewall Ruleset Problem For Good"
 date: 2020-10-07 06:05:00
 tags: [ firewall, data center, design ]
+series: host-firewalls
 ---
 Before we start: if you're new to my blog (or stumbled upon this blog post by incident) you might want to read the [Considerations for Host-Based Firewalls](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html) for a brief overview of the challenge, and my explanation why [flow-tracking tools cannot be used to auto-generate firewall policies](https://blog.ipspace.net/2020/09/flow-tracking-halting-problem.html).
 
 As expected, the "_you cannot do it_" post on LinkedIn [generated numerous comments](https://www.linkedin.com/posts/ivanpepelnjak_using-flow-tracking-to-build-firewall-rulesets-activity-6714427175409348608-Vvj1/), ranging from good ideas to borderline ridiculous attempts to fix a problem that has been proven to be unfixable (see also: [perpetual motion](https://en.wikipedia.org/wiki/Perpetual_motion)).
 <!--more-->
+{{<series single="1">}}
+
 **You could use flow-tracking tools for discovery purposes**. Absolutely true. Is it worth the price of a Tetration installation? You tell me...
 
 **You could use flow-tracking tools to find unexpected flows**. Another good one. Assuming your desired firewall policy is documented in a machine-readable way, you could automatically check whether the observed flows should be permitted, and point out the discrepancies. Is this idea practical? As always it depends.
