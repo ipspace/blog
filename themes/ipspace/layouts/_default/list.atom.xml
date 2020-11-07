@@ -105,16 +105,12 @@
               {{ $more    = printf $morefmt .Permalink }}
             {{ end }}
             {{ printf `<content type="html"><![CDATA[%s%s]]></content>` $content $more | safeHTML }}
-            {{ with site.Taxonomies }}
-                {{ range $taxo,$_ := . }} <!-- Defaults taxos: "tags", "categories" -->
-                    {{ with $page.Param $taxo }}
-                        {{ $taxo_list := . }} <!-- $taxo_list will be the tags/categories list -->
-                        {{ with site.GetPage (printf "/%s" $taxo) }}
-                            {{ $taxonomy_page := . }}
-                            {{ range $taxo_list }} <!-- Below, assuming pretty URLs -->
-                                <category term="{{ . }}" />
-                            {{ end }}
-                        {{ end }}
+            {{ with $page.Params.tags }}
+                {{ $taxo_list := . }} <!-- $taxo_list will be the tags/categories list -->
+                {{ with site.GetPage (printf "/%s" "tags") }}
+                    {{ $taxonomy_page := . }}
+                    {{ range $taxo_list }} <!-- Below, assuming pretty URLs -->
+                        <category term="{{ . }}" />
                     {{ end }}
                 {{ end }}
             {{ end }}

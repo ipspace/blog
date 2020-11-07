@@ -8,6 +8,8 @@ Before we start: if you're new to my blog (or stumbled upon this blog post by in
 
 As expected, the "_you cannot do it_" post on LinkedIn [generated numerous comments](https://www.linkedin.com/posts/ivanpepelnjak_using-flow-tracking-to-build-firewall-rulesets-activity-6714427175409348608-Vvj1/), ranging from good ideas to borderline ridiculous attempts to fix a problem that has been proven to be unfixable (see also: [perpetual motion](https://en.wikipedia.org/wiki/Perpetual_motion)).
 <!--more-->
+{{<series single="1">}}
+
 **You could use flow-tracking tools for discovery purposes**. Absolutely true. Is it worth the price of a Tetration installation? You tell me...
 
 **You could use flow-tracking tools to find unexpected flows**. Another good one. Assuming your desired firewall policy is documented in a machine-readable way, you could automatically check whether the observed flows should be permitted, and point out the discrepancies. Is this idea practical? As always it depends.
