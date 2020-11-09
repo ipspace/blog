@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>10 comments:</h4>
+  <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -290,6 +290,33 @@ Last but not least, we should mention that LFA, as opposed to ECMP, is not resil
 <p>Cheers</p>
 
 <p>Andrea</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="221">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jeff Tantsura</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c221" href="#221">09 November 2020 11:04</a>
+              </span>
+            </div>
+            <div class="comment-content">Let me try to address in order:<br />
+@Ivan - 10ms includes failure detection, not just reprogramming HW, so it depends on how fast the failure is detected/propagated to HW.<br />
+In previous life, implementing IPFRR on E/// SSR (EZ), we got HW performance tuned to 2K NH changes per 1ms. Jericho (to my memory) would be using SuperFEC structure and should be much faster.<br />
+@Andrea - I don&#39;t work for Cisco and can&#39;t comment on internals of their hashing. It would also be a reasonable assumption that most chipsets (COTS) do 5 tuple hashing (not looking into GTP TEID or VXLAN VNI).<br />
+In most implementations, there&#39;s no load-based rebalancing within ECMP group (sticky), and ECMP is the only key to build the group (really basic grouping). LFA on contrary is computed by the control plane and can take a number of additional points into computation, SRLGs, common line cards, load on the link, etc.<br />
+The intent is often - give me a node protecting LFA and if there isn&#39;t, link protecting would do. Also note that implementation of any none directly connected protection schemes (TI-LFA) is an order of magnitude more complex than basic LFA.<br />
+My point is - this is not an apple to apple comparison, there&#39;s more to it.<br />
+
+
 </div>
           </div>
         </li>

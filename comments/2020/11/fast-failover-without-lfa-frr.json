@@ -79,9 +79,17 @@
          "name": "Andrea Di Donato",
          "pub": "2020-11-06T13:35:26",
          "type": "comment"
+      },
+      {
+         "date": "09 November 2020 11:04",
+         "html": "Let me try to address in order:<br />\n@Ivan - 10ms includes failure detection, not just reprogramming HW, so it depends on how fast the failure is detected/propagated to HW.<br />\nIn previous life, implementing IPFRR on E/// SSR (EZ), we got HW performance tuned to 2K NH changes per 1ms. Jericho (to my memory) would be using SuperFEC structure and should be much faster.<br />\n@Andrea - I don&#39;t work for Cisco and can&#39;t comment on internals of their hashing. It would also be a reasonable assumption that most chipsets (COTS) do 5 tuple hashing (not looking into GTP TEID or VXLAN VNI).<br />\nIn most implementations, there&#39;s no load-based rebalancing within ECMP group (sticky), and ECMP is the only key to build the group (really basic grouping). LFA on contrary is computed by the control plane and can take a number of additional points into computation, SRLGs, common line cards, load on the link, etc.<br />\nThe intent is often - give me a node protecting LFA and if there isn&#39;t, link protecting would do. Also note that implementation of any none directly connected protection schemes (TI-LFA) is an order of magnitude more complex than basic LFA.<br />\nMy point is - this is not an apple to apple comparison, there&#39;s more to it.<br />\n\n\n",
+         "id": "221",
+         "name": "Jeff Tantsura",
+         "pub": "2020-11-09T23:04:49",
+         "type": "comment"
       }
    ],
-   "count": 10,
+   "count": 11,
    "type": "post",
    "url": "2020/11/fast-failover-without-lfa-frr.html"
 }
