@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>15 comments:</h4>
+  <h4>16 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -424,6 +424,33 @@ TI-LFA - if not local protection available (e.g LFA), compute a tunnel that term
 <p>From reading Jan&#39;s 2nd comment, I get the impression that he only tested ECMP with xLFA though. It would be good if someone who has access to IOS-XR equipment to run vanilla IGP with ECMP, disable all xLFA, and run show cef internal to look at the FIB structure, including the hashbuckets, then enable LFA, and look at the hash buckets again. That way we can tell exactly what&#39;s going on, and it&#39;s pretty simple setup. </p>
 
 <p>Granted, what we see with cef internal is the software-FIB, but that software FIB is the input to create the more simplified hardware FIB, so what we see is the real thing happening on the hardware level.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="226">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c226" href="#226">10 November 2020 06:52</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Also Jeff, re xLFA being control-plane function and ECMP being data-plane construct -- your 1st comment, I don&#39;t think that&#39;s the case. LFA was meant from the beginning as a data-plane short-term quick relief, a firefighting workaround to ease the forwarding latency pressure, until the IGP can converge and provide the permanent solution again. That&#39;s why Andrea&#39;s 2nd comment re its possible cause of instability condition, its lack of resilience... was very much on point, because xLFA was never meant to be a long-term answer.</p>
+
+<p>Re the control-plane vs data-plane thingy, after all, we can argue, that ALL features within a router HAVE their roots in the control plane. After all, it&#39;s the control plane that sets up everything at the beginning. But in this case, xLFA is considered a data-plane construct because it was pushed into the FIB and activated the instant an error condition was detected, with no involvement from the software aka control plane. I think we&#39;re basically saying the same thing in different ways here btw :)).</p>
+
+<p>Also, while xLFA, esp. rLFA and TI-LFA are indeed more intelligent than stateless ECMP, it&#39;s intelligence that accompanies a great deal of complexity, is painful, and with consequences. X25 was intelligent, ATM was very intelligent, but both were probably too intelligent for their own good.</p>
+
+<p>Wrt to xLFA, when one looks at all the P-node, Q-node, PQ-node, the targeted LDP sessions, the tie-breaking algo, the amount of calculation... then it can quickly overwhelm one&#39;s mind. And all this complexity will scale quickly with the size of the network. With complexity comes fragility, esp. when one has to troubleshoot it or takes over a large network that has it implemented. All of this, for a temporary backup feature. </p>
+
+<p>I think that&#39;s why they want to reduce the complexity and the flow disruption with TI-LFA in segment routing, by having the routers calculate the post-convergence backup LFA route(s), but still, a lot of the complexity is still there. EVPN multi-homing with ESI is complex, seamless MPLS is complex, but xLFA trumps both IMO. I&#39;m not complaining or hating on xLFA; I just mean if one strikes for simplicity, ECMP might be good enough in a lot of cases ;) . </p>
 </div>
           </div>
         </li>
