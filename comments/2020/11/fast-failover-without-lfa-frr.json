@@ -103,9 +103,17 @@
          "name": "Jeff Tantsura",
          "pub": "2020-11-09T23:25:11",
          "type": "comment"
+      },
+      {
+         "date": "10 November 2020 05:40",
+         "html": "<p>@Ivan, re the 3rd bullet point that your reader asked:</p>\n\n<p>&quot;L3 LAGs and/or amongst L2 links (e.g. LAG&rsquo;s individual links).&quot;</p>\n\n<p>Cisco had a detailed write-up about the breakdown of the CEF load-balancing structure here:</p>\n\n<p>https://community.cisco.com/t5/service-providers-documents/asr9000-xr-load-balancing-architecture-and-characteristics/ta-p/3124809</p>\n\n<p>So looks like for hierarchical FIB, 3 hardware lookup tables are needed for a non-LAG lookup: a FIB, which points to a RDLI/NRDLI structure, which in turn points to adjaceny table, which in turn points either to physical OIF or yet another indirection table -- the 4th one, the LAG, which finally points to OIF.</p>\n\n<p>That means a max of 4 lookups in hardware for the destination, for a &#39;LAG in ECMP&#39; entry. That&#39;s just destination lookup, not further processing like ACL, QOS... which means no line-rate forwarding, at least not for smaller packets. Clearly they have to trade-off between performance and high-availability here. </p>\n\n<p>I&#39;m not trying to nit-pick on Cisco, I&#39;m pretty sure other vendors can&#39;t do much better (or if they can match Cisco) -- Juniper structure for ex, is just as lengthy. But if vendors start to claim things line-rate performance, that&#39;s when we need to be suspicious.</p>\n",
+         "id": "224",
+         "name": " Minh Ha",
+         "pub": "2020-11-10T05:40:34",
+         "type": "comment"
       }
    ],
-   "count": 13,
+   "count": 14,
    "type": "post",
    "url": "2020/11/fast-failover-without-lfa-frr.html"
 }
