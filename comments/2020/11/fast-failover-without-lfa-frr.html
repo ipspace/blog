@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>16 comments:</h4>
+  <h4>17 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -451,6 +451,30 @@ TI-LFA - if not local protection available (e.g LFA), compute a tunnel that term
 <p>Wrt to xLFA, when one looks at all the P-node, Q-node, PQ-node, the targeted LDP sessions, the tie-breaking algo, the amount of calculation... then it can quickly overwhelm one&#39;s mind. And all this complexity will scale quickly with the size of the network. With complexity comes fragility, esp. when one has to troubleshoot it or takes over a large network that has it implemented. All of this, for a temporary backup feature. </p>
 
 <p>I think that&#39;s why they want to reduce the complexity and the flow disruption with TI-LFA in segment routing, by having the routers calculate the post-convergence backup LFA route(s), but still, a lot of the complexity is still there. EVPN multi-homing with ESI is complex, seamless MPLS is complex, but xLFA trumps both IMO. I&#39;m not complaining or hating on xLFA; I just mean if one strikes for simplicity, ECMP might be good enough in a lot of cases ;) . </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="229">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Oezguer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c229" href="#229">11 November 2020 11:45</a>
+              </span>
+            </div>
+            <div class="comment-content">Referring to the Huawei part in the original post:<br />
+Huawei DC switches can be configured to use &quot;consistent hashing&quot; where no re-hashing happens if one of the ECMP links fail. This may lead to less optimal load distribution on the remaining ECMP links.<br />
+However re-hashing still occurs if a new link is added to the ECMP or the failed link recovers.<br />
+ECMP and FRR can be used at the same time and FRR kicks in only when all of the ECMP links fail.<br />
+
+
 </div>
           </div>
         </li>
