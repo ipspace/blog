@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>17 comments:</h4>
+  <h4>18 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -475,6 +475,76 @@ However re-hashing still occurs if a new link is added to the ECMP or the failed
 ECMP and FRR can be used at the same time and FRR kicks in only when all of the ECMP links fail.<br />
 
 
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="242">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c242" href="#242">13 November 2020 07:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@JeffT re. comment of 09 November 2020 11:04 <br />
+I agree with you Jeff that TI-LFA and LFA is much more than ECMP as it leverages the sophisticated control plane LFA computation but my point is that in a link-protection only scenario ECMP fast-rehash is way better than LFA or TI-LFA in terms of the degree of flows-spraying.&nbsp;   </p>
+
+<p>@JeffT re. comment of @ 09 November 2020 11:25 <br />
+As Minh Ha pointed out, I only wanted to highlight that in a link-protection only scenario it is paradoxical that with LFA or TI-LFA if both the protected link and the LFA-backup link went down, then LFA would actually provide &#39;fast discard&#39; while ECMP fast-rehash would correctly still provide fast protection.  </p>
+
+<p>@ Minh HA re. comment @ 10 November 2020 06:25 <br />
+The link you provided is for IOSXE actually - so am not sure it is relevant for IOSXR but it contains to me a pretty interesting info: It looks like that by default EIGRP prefers using ECMP fast-rehash as opposed to LFA while OSPF doesn&#39;t as it always enforces LFA. There is in fact for EIGRP  only a command to disable the ECMP fast-rehash behaviour in favour of LFA when LFA is configured.  Look at this link   https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9500/software/release/17-3/command_reference/b_173_9500_cr/ip_routing_commands.html#wp1624013282 <br />
+This is my understanding of that command at least -  it would help greatly if someone from Cisco could shed some light on this command.  </p>
+
+<p>Regarding the IOSXR config, it&#39;s just as simple as what follows: <br />
+router ospf BLA <br />
+ fast-reroute per-prefix  </p>
+
+<p>Regarding the IOSXR show command, here&#39;s an output <br />
+<pre>
+&lt;BLA&gt;#show cef IP/32
+IP/32, version 649067, internal 0x1000001 0x0 (ptr 0x788eb2b0) [3], 0x0 (0x7d02bfd8), 0xa20 (0x797ffc38)
+ Updated Jul 13 10:29:00.380 
+ remote adjacency to HundredGigE1
+ Prefix Len 32, traffic index 0, precedence n/a, priority 3
+   via IP#1/32, HundredGigE1, 10 dependencies, weight 0, class 0, protected, backup (Local-LFA) [flags 0x600]
+    path-idx 0 bkup-idx 3 NHID 0x0 [0x78662698 0x0], parent-ifh 0x4000140
+    next hop IP#1/32
+     local label 29621      labels imposed &#123;None&#125;
+   via IP#2/32, HundredGigE2, 10 dependencies, weight 0, class 0, protected [flags 0x400]
+    path-idx 1 bkup-idx 5 NHID 0x0 [0x786636a0 0x0], parent-ifh 0x40000c0
+    next hop IP#2/32
+     local label 29621      labels imposed &#123;None&#125;
+   via IP#3/32, HundredGigE3 dependencies, weight 0, class 0, protected, backup (Local-LFA) [flags 0x600]
+    path-idx 2 bkup-idx 5 NHID 0x0 [0x78663778 0x0], parent-ifh 0x4000440
+    next hop IP#3/32
+     local label 29621      labels imposed &#123;None&#125;
+   via IP#4/32, HundredGigE4, 10 dependencies, weight 0, class 0, protected, backup (Local-LFA) [flags 0x600]
+    path-idx 3 bkup-idx 0 NHID 0x0 [0x78660b98 0x0], parent-ifh 0x180000c0
+    next hop IP#4/32
+     local label 29621      labels imposed &#123;None&#125;
+   via IP#5/32, HundredGigE5, 9 dependencies, weight 0, class 0, protected [flags 0x400]
+    path-idx 4 bkup-idx 2 NHID 0x0 [0x78663850 0x0], parent-ifh 0x180003c0
+    next hop IP#5/32
+     local label 29621      labels imposed &#123;None&#125;
+   via IP#6/32, HundredGigE6, 9 dependencies, weight 0, class 0, protected, backup (Local-LFA) [flags 0x600]
+    path-idx 5 bkup-idx 2 NHID 0x0 [0x78663928 0x0], parent-ifh 0x180002c0
+    next hop IP#6/32
+   local label 29621      labels imposed &#123;None&#125;
+</pre>
+
+<p>Totally with you when you say: &quot;It would be good if someone who has access to IOS-XR equipment to run vanilla IGP with ECMP, disable all xLFA, and run show cef internal to look at the FIB structure, including the hashbuckets, then enable LFA, and look at the hash buckets again. That way we can tell exactly what&#39;s going on, and it&#39;s pretty simple setup.&quot; <br />
+IOSXR behaviour is actually also in line with this IETF draft (https://tools.ietf.org/html/draft-ietf-rtgwg-bgp-pic-12#section-6.1),  written by Cisco too, where it says that if LFA is on and the failure is local (e.g. interface down) then the LFA-protection  for that ECMP link down is triggered as opposed&nbsp; to the fast-rehashing of the ECMP set been triggered. The&nbsp; example in the draft is about PIC-CORE but at the end of the day the BGP-NH underneath is reachable via a set of&nbsp;  ECMP&#39;ed IGP NHs which, to me, provides no loss of generality as such. </p>
+
+<p>Cheers <br />
+Andrea</p>
 </div>
           </div>
         </li>
