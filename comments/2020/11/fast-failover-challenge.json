@@ -15,9 +15,17 @@
          "name": "Jeff Sicuranza",
          "pub": "2020-11-10T19:06:35",
          "type": "comment"
+      },
+      {
+         "date": "13 November 2020 09:25",
+         "html": "<p>Do we really need ms failover? \nAs usual, it depends... :-)</p>\n\n<p>If your flows are big compared to your available bandwidth, then probably yes, but only for some critical traffic.</p>\n\n<p>If you have plenty of bandwidth, then it is better to use simulcast. This the way how radio voice is now handled in ED-137, this is how radar sensor data is 4-times replicated using the ARTAS scheme. In the LAN you could use PRP or something similar.</p>\n\n<p>But even with simulcast, at the de-duplication point you have a lot to decide. How can I really detect that a flow is bad? Can I do a per-packet de-duplication reliably, or do I have choose the best stream? In the later case, how can I have some stability?</p>\n\n<p>With packet de-duplication, the problem is different delays. Either you have to have similar delays on alternate paths, or you have to introduce delay compensation. In either way, you will have additional delay. That is the price for your packet-level de-duplication.</p>\n\n<p>As usual, you have to make a trade-off...</p>\n",
+         "id": "231",
+         "name": "Bela Varkonyi",
+         "pub": "2020-11-13T09:25:14",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2020/11/fast-failover-challenge.html"
 }
