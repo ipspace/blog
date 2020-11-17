@@ -15,6 +15,7 @@ Usage:
 
   blog fix    - fix a blog post
   blog new    - new blog post
+  blog migrate- migrate an old HTML blog post into Markdown
   blog draft  - new draft
   blog ls     - list blog posts
 
@@ -44,6 +45,17 @@ case "$1" in
     HUGO_CHANGE=
     blog_edit_post $2
     blog_view_post $2
+    ;;
+  migrate)
+    if [ -f "$2" ]; then
+      MDFILE=$(blog_html_to_md $2)
+      echo "Migrating $2 to $MDFILE"
+      git mv $2 $MDFILE
+      blog_edit_post $MDFILE
+      blog_view_post $MDFILE
+    else
+      echo "Failed: cannot find $2"
+    fi
     ;;
   open)
     HUGO_CHANGE=

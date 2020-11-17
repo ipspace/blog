@@ -82,6 +82,10 @@ blog_md_to_html() {
   echo $1|sed 's#[.]md$#.html#'
 }
 
+blog_html_to_md() {
+  echo $1|sed 's#[.]html$#.md#'
+}
+
 blog_open_published() {
   echo $1
 #  open https://blog.ipspace.net/$(echo %|perl -pe 's/\.md/.html/')
