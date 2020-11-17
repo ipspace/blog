@@ -33,10 +33,13 @@ Command line parameters:
 #
 # title:    Displays MQC class map indexes
 # name:     cbindex.tcl
-# desc:     The script traverses the Class-based QoS MIB and displays service policies and classes
-#           attached to individual interfaces. The policy index and class index values are printed
-#           next to the policy/class name to help the operator fetch the desired SNMP variable from
-#           the statistics tables of the CISCO-CLASS-BASED-QOS-MIB.
+# desc:     The script traverses the Class-based QoS MIB and
+#           displays service policies and classes attached to 
+#           individual interfaces. The policy index and class
+#           index values are printed next to the policy/class
+#           name to help the operator fetch the desired SNMP 
+#           variable from the statistics tables of the 
+#           CISCO-CLASS-BASED-QOS-MIB.
 #
 
 proc snmpInit { oid } {
@@ -57,7 +60,9 @@ proc snmpGet { oid result } {
   if { [info exists r] } { unset r }
 
   set getResult [ snmp_getone $snmpCommunity $oid ]
-  if { [ regexp {snmp error.*text='(.*)'} $getResult ignore errtxt ] } { error "snmpGet - $errtxt"; return 0 }
+  if { [ regexp {snmp error.*text='(.*)'} $getResult ignore errtxt ] } { 
+    error "snmpGet - $errtxt"; return 0 
+  }
   if { [ regexp {oid='(.*)'.*val='(.*)'} $getResult ignore oid result ] } {
     if { ! [ string equal $result "NO_SUCH_INSTANCE_EXCEPTION" ] } {
       set r(OID) $oid ;
@@ -74,7 +79,9 @@ proc snmpGetNext { oid result } {
   if { [info exists r] } { unset r }
 
   set getResult [ snmp_getnext $snmpCommunity $oid ]
-  if { [ regexp {snmp error.*text='(.*)'} $getResult ignore errtxt ] } { error "snmpGet - $errtxt"; return 0 }
+  if { [ regexp {snmp error.*text='(.*)'} $getResult ignore errtxt ] } { 
+    error "snmpGet - $errtxt"; return 0 
+  }
   if { [ regexp {oid='(.*)'.*val='(.*)'} $getResult ignore oid result ] } {
     if { ! [ string equal $result "NO_SUCH_INSTANCE_EXCEPTION" ] } {
       set r(OID) $oid ;
