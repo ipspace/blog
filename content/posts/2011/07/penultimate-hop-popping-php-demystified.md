@@ -5,7 +5,7 @@ tags:
 - workshop
 title: Penultimate Hop Popping (PHP) demystified
 url: /2011/07/penultimate-hop-popping-php-demystified.html
-updated: 2020-11-18 06:28:00
+lastmod: 2020-11-18 06:28:00
 ---
 I got an interesting question after writing the [*Asymmetric MPLS MTU Problem*](https://blog.ipspace.net/2011/07/asymmetric-mpls-mtu-problem.html) post:
 

@@ -7,21 +7,13 @@ tags:
 title: OSPF configuration in Phase 1 DMVPN network
 url: /2011/01/ospf-configuration-in-phase-1-dmvpn.html
 ---
+[This is how you configure OSPF in a Phase 1 DMVPN network](https://my.ipspace.net/bin/get/DMVPN/D3%20-%20OSPF%20routing%20in%20Phase%201%20DMVPN.mp4?doccode=DMVPN) (read the [introductory post](https://blog.ipspace.net/2011/01/sometimes-you-need-to-step-back-and.html) and [Phase 1 DMVPN fundamentals](https://blog.ipspace.net/2011/01/dmvpn-phase-1-fundamentals.html) first):
 
-<p><a href="http://demo.ipspace.net/bin/watch?id=fa5eb562-3b98-11e1-96be-005056880254">This is how you configure OSPF in a Phase 1 DMVPN network</a> (read the <a href="https://blog.ipspace.net/2011/01/sometimes-you-need-to-step-back-and.html">introductory post</a> and <a href="https://blog.ipspace.net/2011/01/dmvpn-phase-1-fundamentals.html">Phase 1 DMVPN fundamentals</a> first):</p>
-<div class="separator" style="clear: both; text-align: center;"><a href="http://demo.ipspace.net/bin/watch?id=fa5eb562-3b98-11e1-96be-005056880254" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="277" src="/2011/01/s400-DMVPN_OSPF_Phase1_Play.png" width="400"/></a></div>
-<p>Remember:<!--more--></p>
-<ul class="ListParagraph"><li>Use <strong>point-to-multipoint </strong>network type on the hub router to ensure the hub router is always the IP next hop for the DMVPN routes.</li>
-<li>Use <strong>point-to-multipoint </strong>network type on the spoke routers to ensure the OSPF timers match with the hub router.</li>
-<li>The DMVPN part of your network should be a separate OSPF area; if at all possible, make it a stub or NSSA area.</li>
-<li>If absolutely needed, use <a href="http://wiki.nil.com/OSPF_flooding_filters_in_hub-and-spoke_environment">OSPF LSA flood filter</a> on the hub router and a static default route on the spokes.</li>
-</ul>
-<h4>More information</h4><p>The <em>Phase 1 DMVPN </em>section of the <a href="http://www.ioshints.info/DMVPN"><em>DMVPN: from Basics to Scalable Networks</em></a> webinar (<a href="http://dmvpn.eventbrite.com/">register here</a> or <a href="http://www.ioshints.info/Recordings">buy a recording</a>) also includes the following routing protocol-specific topics (as well as numerous others described in the previous post):</p>
-<ul class="ListParagraph"><li>OSPF routing in Phase 1 DMVPN networks;</li>
-<li>EIGRP routing in Phase 1 DMVPN networks;</li>
-<li>BGP routing in Phase 1 DMVPN networks;</li>
-<li>Dynamic BGP neighbors;</li>
-<li>DMVPN redundancy;</li>
-<li>Monitoring and troubleshooting guidelines.</li>
-</ul>
+Remember:
 
+-   Use **point-to-multipoint** network type on the hub router to ensure the hub router is always the IP next hop for the DMVPN routes.
+-   Use **point-to-multipoint** network type on the spoke routers to ensure the OSPF timers match with the hub router.
+-   The DMVPN part of your network should be a separate OSPF area; if at all possible, make it a stub or NSSA area.
+-   If absolutely needed, use [OSPF LSA flood filter](https://www.ipspace.net/kb/OSPF/OSPF_Flood_Reduction_Hub_Spoke.html) on the hub router and a static default route on the spokes.
+
+For more information, watch the *[DMVPN Technology and Configuration](http://ipspace.net/DMVPN)* webinar.
