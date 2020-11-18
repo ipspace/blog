@@ -19,9 +19,17 @@ I wasn't there when OSPF was designed, but I have a few possible explanations. L
 
 {{<note>}}That's also one of the reasons QUIC replaced TCP in HTTP/3 ([some more details](https://blog.cloudflare.com/http-3-vs-http-2/)).{{</note>}}
 
-Then there might have been other considerations, including:
+There's also **neighbor discovery**: As Enrique Vallejo pointed out in the comments, you still need a multicast-based *hello protocol* to discover adjacent routers if you find it unacceptable to configure them. That doesn't mean you can't use TCP to establish the sessions once the neighbors are discovered -- LDP uses UDP-over-multicast to discover neighbors, and TCP to exchange labels.
 
-**TCP was considered an overkill**. After all, TCP provided decent reliable end-to-end transport under a variety of conditions while all we need in OSPF is a single-hop quick fix.
+Finally, there might have been other considerations, including:
+
+**TCP was considered an overkill**. After all, TCP provided decent reliable end-to-end transport under a variety of conditions while all we needed in OSPF was a single-hop quick fix.
+
+Straight from _OSPF: Anatomy of an Internet Routing Protocol_ by John Moi (quote provided by Paul Hare):
+
+> We did not need the reliability of TCP; link-state routing protocols have their own reliability built into the flooding algorithms, and TCP would just get in the way. Also, the ease of applications in UNIX and other operation systems to sent and receive UDP packets was seen by some as a disadvantage; the necessity of gaining OS privileges was seen as providing some small amount of security. The additional small benefits of UDP encapsulation were outweighed by the extra 8 bytes of UDP header overhead that would appear in every protocol packet. So we decided to run OSPF directly over the IP network layer, and we received an assignment of IP protocol number 89 from the IANA
+
+{{<note>}}UNIX applications had to run as _root_ user if they wanted to listen on TCP or UDP port numbers below 1024 for a very long time (since at least [BSD release 4.1c](https://utcc.utoronto.ca/~cks/space/blog/unix/BSDRcmdsAndPrivPorts) in [1981](http://gunkies.org/wiki/4.1_BSD), while [RFC 1247](https://tools.ietf.org/html/rfc1247) was published in July 1991), so I'm considering the security argument of not using UDP  a bit bogus.{{</note>}}
 
 **TCP was considered to be a resource hog** by people writing networking code. I never understood this one, as it persisted long after WWW took off for real.
 
