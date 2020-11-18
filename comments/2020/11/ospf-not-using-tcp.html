@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -62,6 +62,37 @@
               </span>
             </div>
             <div class="comment-content"><p>@Enrique &amp; Paul: Thanks a million. Added to the blog post.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="246">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c246" href="#246">18 November 2020 01:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Note that recently there were idiots who suggested using TCP for the flooding of LSPs in IS-IS.
+https://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00</p>
+
+<p>This won&#39;t work over a multi-point network (like a switched Ethernet with more than 2 routers). This would work only over p2p links. But there are benefits (see draft):
+- flow-control, improving the speed of flooding of large numbers of LSPs
+- using reliability of TCP
+       which allows the IS-IS implementation to be a bit simpler. and keep less state.
+       and removes scaling factors like having to use large amounts of precise timers.
+- retransmission is done by the kernel, not by the IS-IS process.
+       which gives you a form of multi-threading for free
+- all future improvements to TCP can be used automatically by IS-IS</p>
+
+<p>But nah. The IETF LSR workgroup has decided they rather invent their own new wheel.</p>
 </div>
           </div>
         </li>

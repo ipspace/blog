@@ -23,9 +23,17 @@
          "name": "Ivan Pepelnjak",
          "pub": "2020-11-18T13:17:42",
          "type": "comment"
+      },
+      {
+         "date": "18 November 2020 01:55",
+         "html": "<p>Note that recently there were idiots who suggested using TCP for the flooding of LSPs in IS-IS.\nhttps://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00</p>\n\n<p>This won&#39;t work over a multi-point network (like a switched Ethernet with more than 2 routers). This would work only over p2p links. But there are benefits (see draft):\n- flow-control, improving the speed of flooding of large numbers of LSPs\n- using reliability of TCP\n       which allows the IS-IS implementation to be a bit simpler. and keep less state.\n       and removes scaling factors like having to use large amounts of precise timers.\n- retransmission is done by the kernel, not by the IS-IS process.\n       which gives you a form of multi-threading for free\n- all future improvements to TCP can be used automatically by IS-IS</p>\n\n<p>But nah. The IETF LSR workgroup has decided they rather invent their own new wheel.</p>\n",
+         "id": "246",
+         "name": " Henk",
+         "pub": "2020-11-18T13:55:22",
+         "type": "comment"
       }
    ],
-   "count": 3,
+   "count": 4,
    "type": "post",
    "url": "2020/11/ospf-not-using-tcp.html"
 }
