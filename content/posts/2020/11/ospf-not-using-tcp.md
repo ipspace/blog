@@ -25,7 +25,7 @@ Finally, there might have been other considerations, including:
 
 **TCP was considered an overkill**. After all, TCP provided decent reliable end-to-end transport under a variety of conditions while all we needed in OSPF was a single-hop quick fix.
 
-Straight from _OSPF: Anatomy of an Internet Routing Protocol_ by John Moi (quote provided by Paul Hare):
+Straight from _OSPF: Anatomy of an Internet Routing Protocol_ by John T. Moy (quote provided by Paul Hare):
 
 > We did not need the reliability of TCP; link-state routing protocols have their own reliability built into the flooding algorithms, and TCP would just get in the way. Also, the ease of applications in UNIX and other operation systems to sent and receive UDP packets was seen by some as a disadvantage; the necessity of gaining OS privileges was seen as providing some small amount of security. The additional small benefits of UDP encapsulation were outweighed by the extra 8 bytes of UDP header overhead that would appear in every protocol packet. So we decided to run OSPF directly over the IP network layer, and we received an assignment of IP protocol number 89 from the IANA
 
