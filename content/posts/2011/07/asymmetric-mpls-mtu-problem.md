@@ -18,7 +18,7 @@ S---CE---R1===R2---FW---C
 <!--more-->
 The only link using MPLS is between R1 and R2. FW is a misconfigured firewall blocking all ICMP packets. Furthermore, FW uses NAT making the client C appear to be directly connected to R2. Layer-2 payload size ([known as MTU on Cisco IOS](https://blog.ipspace.net/2011/07/all-mtus-are-not-same.html)) on all links is 1500 bytes. Unlabeled IP packets can be up to 1500 byte long; labeled IP packets cannot exceed 1496 bytes (depending on the size of the MPLS label stack).
 
-R1 and R2 advertise labels for all known prefixes to each other using LDP. R1 advertises a “real” label for S (because it’s reachable through a next-hop router); R2 advertises *implicit null* label for FW/C to R1 to enable [penultimate hop popping](https://www.ipspace.net/kb/MPLS/Implicit_Explicit_NULL.html).
+R1 and R2 advertise labels for all known prefixes to each other using LDP. R1 advertises a “real” label for S (because it’s reachable through a next-hop router); R2 advertises *implicit null* label for FW/C to R1 to enable [penultimate hop popping](https://www.ipspace.net/kb/tag/MPLS/Implicit_Explicit_NULL.html).
 
 {{<note info>}}Routers [advertise *implicit null* labels for directly connected prefixes and summary routes pointing to *null0*](/2011/07/penultimate-hop-popping-php-demystified.html). You can change that behavior with the **mpls ldp explicit-null** global configuration command that also allows you to limit the use of *explicit null* to specific IP prefixes or LDP peers.{{</note>}}
 
