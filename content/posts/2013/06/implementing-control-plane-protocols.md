@@ -15,7 +15,7 @@ In real world, your shiny new network has to communicate with the outside world 
 <!--more-->
 ### Hybrid-mode OpenFlow with traditional control plane
 
-If you're implementing [hybrid-mode OpenFlow](https://blog.ipspace.net/2012/06/hybrid-openflow-brocade-way.html), you'll probably rely on the traditional software running in the switches to handle the boring details of [control-plane protocols](http://wiki.nil.com/Control_and_Data_plane) and use OpenFlow only to add new functionality (example: [edge access lists](https://blog.ipspace.net/2011/11/openflow-enterprise-use-cases.html)).
+If you're implementing [hybrid-mode OpenFlow](https://blog.ipspace.net/2012/06/hybrid-openflow-brocade-way.html), you'll probably rely on the traditional software running in the switches to handle the boring details of [control-plane protocols](https://blog.ipspace.net/2013/08/management-control-and-data-planes-in.html) and use OpenFlow only to add new functionality (example: [edge access lists](https://blog.ipspace.net/2011/11/openflow-enterprise-use-cases.html)).
 
 Needless to say, this approach usually won't result in better forwarding behavior. For example, it would be hard to implement layer-2 multipathing in hybrid OpenFlow network if the switches rely on STP to detect and break the loops.
 
