@@ -50,9 +50,10 @@ case "$1" in
     if [ -f "$2" ]; then
       MDFILE=$(blog_html_to_md $2)
       echo "Migrating $2 to $MDFILE"
-      git mv $2 $MDFILE
+      $SCRIPT_DIR/migrate-post.py $2
       blog_edit_post $MDFILE
       blog_view_post $MDFILE
+      open "https://blog.ipspace.net/$2"
     else
       echo "Failed: cannot find $2"
     fi
