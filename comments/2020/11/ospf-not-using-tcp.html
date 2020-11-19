@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>6 comments:</h4>
+  <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -137,6 +137,49 @@ https://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00</p>
               </span>
             </div>
             <div class="comment-content"><p>@Henk: Considering that we&#39;re already using BGP on multi-access networks, and that flooding goes through DIS or DR, I don&#39;t see any reason why you couldn&#39;t use IS-IS over TCP over LLA on multi-access networks... but as you wrote, reinventing the wheels is so much more fun (and CV-generating).</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="250">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Tony Przygienda</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c250" href="#250">19 November 2020 03:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Well, I cannot resist to add some mud to clarify ;-) </p>
+
+<p>So, the story is very, very multi-faceted and talking about what makes sense depends very much WHEN you talk WHAT made sense and @ WHAT scale/speed you want things to happen.  </p>
+
+<p>First, architecturally, running control plane over TCP is a mild abomination that costed us dearly and I had my share of arguments with Yakov about that then (well, I was a young punk @ that time ;-). Short term, it was a great temporary shortcut. Long term it costed us a lot of pain in things like NSR (and still does). Anyway, for BGP it&#39;s history ;-) and we can&#39;t even get multiple parallel sessions standardized so we&#39;ll never wean it off TCP. </p>
+
+<p>So, let&#39;s talk about IGPs over TCP (and there are some, Open/R does it so it CAN be done). Pluses &amp; minuses modulo time scale here. </p>
+
+<p>In John&#39;s time bits very incredibly expensive for IGPs, really, incredibly, links were thin, memory was small, CPUs were glowing @ 600Mhz ;-) TCP for that purpose was massive overhead simply in terms of context switching, all the formatting, fast timers, and whatever not the kernel burns. Today, it&#39;s arguably less of an issue. </p>
+
+<p>Then, stock kernel TCP is fun but it looses its appeal real, real quick once you hit serious peer scale or look for really fast stuff. Reasons are a multitude but basically kernel TCP is mostly tuned to be a fairly docile animal and it does not allow you to fiddle with lots stuff you want to fiddle to get it start fast, support NSR and bazillion other little twists youi need on a serious scale, high end device. And then you pay kernel context switches as well. So you end up pulling TCP into user space and tweak the hell out of it or leave it in kernel space and tweak the hell out of it as well, neither of that is in any sense trivial. </p>
+
+<p>TCP also forces you onto an addressing scheme and that&#39;s not exiting, IGPs sometimes run on fun stuff like a single link local on all links, unnumbered overlapping and so on. Teaching TCP to do that properly can cause unexpected effects of limited fun. </p>
+
+<p>Then, if you use MTU 255 without special hacks TCP will happily build sessions all over the place for you ;-) So more kernel/user space special knobs. </p>
+
+<p>Head of line blocking is to some extent a problem @ very high speeds and low flooding rates but I&#39;d consider it marginal. On very slow links it was an issue, yes. </p>
+
+<p>Framing is an issue, anybody who wrote a really solid, good BGP framer resilient to all kind of misformatting knows it&#39;s not trivial. And the big the BGP buffer gets (64K updates, anyone?) and the more peers you have the higher the bloat to the point it starts to become noticable. Yes, we&#39;re talking 1000s of peers and arguably, IGP is almost never used in such a setup but neither is BGP except they are ;-)</p>
+
+<p>What more? Well, lots of warts and things like flushing, linger on going down and trying to restart peers fast, nightmarish collision FSMs and funky issues on fast interface address changes, next-hop changes TCP uses to resolve (hmm, where is that once TCP is in user space ;-) and other things that make you tear hair our as practitcioner (MD5 TCP option hacks anyone, SYN attacks anyone) and pretty soon you wish you wrote your own flooding and pump raw frames over an interface. Is that hard? Yeah, moderately so, especially first time. The real hard part is that it&#39;s unforgiving, you can&#39;t get it &quot;almost&quot; right, it has to be 105% right just like TCP is. Performance tunning is its own little game, IGP WG is enlightening people to an extent as we speak and that&#39;s good work albeit arguably implementation detail that matters @ scale only. </p>
+
+<p>I BTW disagree with the UDP angle (in today&#39;s times), John was right in his time but UDP gives you basically zero work to get off the ground on anything &amp; allows for very easy multiplexing. Anyone who implemented SNAP for ISIS on anything will know what kind of fun is better avoided ;-)</p>
+
+<p>So, I probably forgot bunch things but in sum, in underlay I vastly prefer special reliable session protocol (because that&#39;s what discovery/flooding gives you compared to TCP) on a protocol whereas when things move closer to database land (think BGP) where session bringup speed is less important, sessions live for very long time and pump lots of data where fastest convergence is not the primary concern I wish we had  a proper specialized session protocol for control plane (actually, that has been done if you look up e.g. RFC4960 AFAIR, recently QUIC is threading new ground). </p>
 </div>
           </div>
         </li>
