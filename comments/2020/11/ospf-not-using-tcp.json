@@ -55,9 +55,17 @@
          "name": "Tony Przygienda",
          "pub": "2020-11-19T03:09:57",
          "type": "comment"
+      },
+      {
+         "date": "19 November 2020 09:19",
+         "html": "<p>Ivan, re the &quot;TCP was considered a resource hog&quot; point, there&#39;s a seminal paper debunking that myth 31 years ago, in 1989 (It was also around this time that OSPF and ISIS came to be, IIRC):</p>\n\n<p>https://groups.csail.mit.edu/ana/Publications/PubPDFs/An%20Analysis%20of%20TCP%20Processing%20Overhead.pdf</p>\n\n<p>The paper went into the painstaking detail of breaking down the performance components of TCP into instruction level, so it&#39;s a pretty good read. </p>\n\n<p>What I like the most about the paper is one of its conclusions: &quot;It is not enough to be better than TCP and to be compatible with the form and function of silicon technology. The protocol itself is a small fraction of the problem.&quot; Looks like this statement is as applicable today as it was 30 years ago. </p>\n\n<p>People these days talk down TCP a lot and come up with all sorts of alternatives, but how much stress-test have those protocols gone through, in real-world environments, with real traffic, not in test/benchmark labs? Real-world traffic is neither Bernoulli nor Poisson, it&#39;s not beautifully distributed but bursty on many levels aka scale-invariant/long-range dependent. Just because a protocol works well in a lab or in controlled environments, doesn&#39;t mean it&#39;ll perform nice and clean in the wild. And then we have the problem of code-level maturity too. A protocol that has lovely functionality, might have horrible implementation under the hood, with all sorts of race conditions and other concurrency bugs. </p>\n\n<p>And while a lot of Tony&#39;s points are correct, esp. those re context-switch overhead, I&#39;m just wondering how many of them have been mitigated as TCP implementations matured over the years? Also, assuming OSPF runs on top of TCP, the problem of accidental full-BGP-table redistribution would be mitigated, as TCP has built-in flow control and the session would not flap due to overload, avoiding the massive clean-up issue. Using TCP as transports would also remove the need to maintain multiple, confusing link-state timers as well, as Henk rightly pointed out. Overall, these 2 points mean improved scalability for OSPF, and ISIS as well. </p>\n",
+         "id": "251",
+         "name": " Minh Ha",
+         "pub": "2020-11-19T09:19:24",
+         "type": "comment"
       }
    ],
-   "count": 7,
+   "count": 8,
    "type": "post",
    "url": "2020/11/ospf-not-using-tcp.html"
 }
