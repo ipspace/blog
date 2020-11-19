@@ -34,7 +34,7 @@ Ingress PE-routers use LSPs toward BGP next hops to send packets toward external
 
 ![](s400-BGP_FC_4.png)
 
-The last core router might send labeled or unlabeled IP packet (due to [penultimate hop popping](https://blog.ipspace.net/2011/07/penultimate-hop-popping-php-demystified.html)) to the egress PE-router. You can [influence this behavior with **mpls ldp explicit- null**](https://www.ipspace.net/kb/MPLS/Implicit_Explicit_NULL.html) configuration command.
+The last core router might send labeled or unlabeled IP packet (due to [penultimate hop popping](https://blog.ipspace.net/2011/07/penultimate-hop-popping-php-demystified.html)) to the egress PE-router. You can [influence this behavior with **mpls ldp explicit- null**](https://www.ipspace.net/kb/tag/MPLS/Implicit_Explicit_NULL.html) configuration command.
 
 #### Need help?
 
