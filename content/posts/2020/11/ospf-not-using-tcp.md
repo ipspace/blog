@@ -41,9 +41,9 @@ Straight from _OSPF: Anatomy of an Internet Routing Protocol_ by John T. Moy (qu
 
 You MUST read the extensive comments:
 
-* Henk Smit explaining the efforts to use [TCP transport with IS-IS](https://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00)
-* [Tony Przygienda](https://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html) describing tons of things that could go wrong in a transport protocol used by a routing protocol
-* Minh Ha debunking the _TCP is a resource hog_ myth
+* Henk Smit [explaining the efforts](https://blog.ipspace.net/2020/11/ospf-not-using-tcp.html#246) to use [TCP transport with IS-IS](https://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00)
+* [Tony Przygienda](https://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html) describing [tons of things that could go wrong](https://blog.ipspace.net/2020/11/ospf-not-using-tcp.html#250) in a transport protocol used by a routing protocol
+* Minh Ha [debunking the _TCP is a resource hog_ myth](https://blog.ipspace.net/2020/11/ospf-not-using-tcp.html#251)
 
 I also received pointers to:
 
