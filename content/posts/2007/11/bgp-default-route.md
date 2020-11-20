@@ -3,6 +3,7 @@ url: /2007/11/bgp-default-route.html
 title: "Use BGP Default Route to Replace Static Routing"
 date: "2007-11-15T06:23:00.004+01:00"
 tags: [ BGP ]
+series: bgp-essentials
 ---
 Martin Kluge sent me an interesting BGP question: he has two upstream links and runs BGP on both. Since his router is low on RAM, he cannot accept full routing, so he's just announcing his IP prefix and using static default routing toward upstream ISPs.
 
