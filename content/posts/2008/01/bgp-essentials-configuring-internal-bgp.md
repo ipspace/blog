@@ -1,5 +1,5 @@
 ---
-date: 2008-01-22 11:02:00.001000+01:00
+date: 2008-01-22 10:02:00
 tags:
 - BGP
 title: 'BGP Essentials: Configuring Internal BGP Sessions'
@@ -18,6 +18,7 @@ To configure an IBGP session following that best practice on Cisco IOS, specify 
 
 To configure IBGP session between R1 and R2 use the following configuration commands:
 
+{{<cc>}}BGP configuration on R1{{</cc>}}
 ```
 hostname R1
 !
@@ -29,8 +30,8 @@ router bgp 65001
  neighbor 10.0.0.2 description R2 
  neighbor 10.0.0.2 update-source loopback 0
 ```
-{{<cc>}}BGP configuration on R1{{</cc>}}
 
+{{<cc>}}BGP configuration on R2{{</cc>}}
 ```
 hostname R2
 !
@@ -42,4 +43,4 @@ router bgp 65001
  neighbor 10.0.0.1 description R1
  neighbor 10.0.0.1 update-source loopback 0
 ```
-{{<cc>}}BGP configuration on R1{{</cc>}}
+

@@ -27,6 +27,7 @@ The behavior of Cisco IOS BGP Route Reflector code was tested in the following n
 
 The following printouts include relevant parts of configurations of R1 and RR.
 
+{{<cc>}}Configuration of the BGP route reflector (RR){{</cc>}}
 ```
 hostname RR
 !
@@ -61,8 +62,8 @@ router bgp 64500
  neighbor 10.2.1.2 route-reflector-client
  no auto-summary
 ```
-{{<cc>}}Configuration of the BGP route reflector (RR){{</cc>}}
 
+{{<cc>}}Configuration of the RR client with an EBGP session (R1){{</cc>}}
 ```
 hostname R1
 !
@@ -94,7 +95,6 @@ router bgp 64500
  neighbor 10.2.1.1 remote-as 64500
  no auto-summary
 ```
-{{<cc>}}Configuration of the RR client with an EBGP session (R1){{</cc>}}
 
 ### Test results
 
