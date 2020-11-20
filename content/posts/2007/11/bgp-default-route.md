@@ -34,7 +34,7 @@ If you've [mastered default routes in other routing protocols](https://blog.ipsp
 -   Once you've configured default route advertising with the **neighbor default-originate**, it's announced to the neighbor even if the router doesn't have the default route itself.
 -   The default route advertised to a BGP neighbor with the **neighbor default-originate** does not pass through BGP output filters, so you cannot filter it.
 
-For even more details, read [_Default Routes in BGP_](https://www.ipspace.net/kb/BGP/Default_Route.html).
+For even more details, read [_Default Routes in BGP_](https://www.ipspace.net/kb/tag/BGP/Default_Route.html).
 
 To solve Martin's problem, you'd have to reconfigure BGP on E1 and E2 as follows (the **ip as-path** access list just ensures nothing else is sent to the customer router; obviously you could use a **route-map** instead):
 
@@ -51,5 +51,5 @@ Now that the default route is advertised via BGP, there is no need for a static 
 
 ### More details
 
-* [Default Routes in BGP](https://www.ipspace.net/kb/BGP/Default_Route.html)
+* [Default Routes in BGP](https://www.ipspace.net/kb/tag/BGP/Default_Route.html)
 * [Responsible generation of BGP default route](https://blog.ipspace.net/2011/09/responsible-generation-of-bgp-default.html)
