@@ -37,4 +37,17 @@ Straight from _OSPF: Anatomy of an Internet Routing Protocol_ by John T. Moy (qu
 
 **Networking is special**. We couldn't simply reuse a protocol that works. We have to invent something _more optimal_ (leading to tons of protocols with unique binary encodings instead of everyone using the same markup language). [Lack of understanding of what _presentation layer_ should provide](https://blog.ipspace.net/2019/09/response-osi-model-is-lie.html) didn't help either (considering the alternative could be ASN.1 maybe I shouldn't complain too much).
 
+### Keep Reading
+
+You MUST read the extensive comments:
+
+* Henk Smit explaining the efforts to use [TCP transport with IS-IS](https://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00)
+* [Tony Przygienda](https://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html) describing tons of things that could go wrong in a transport protocol used by a routing protocol
+* Minh Ha debunking the _TCP is a resource hog_ myth
+
+I also received pointers to:
+
+* [Experiments with IS-IS flooding](https://www.youtube.com/watch?v=TLa8puyZ_q4&feature=youtu.be&t=1629) by Sarah Chen and Tony Li ([PDF](https://datatracker.ietf.org/meeting/108/materials/slides-108-lsr-04-isisfloodingstudy-00)) from IETF108
+* [More tests of IS-IS flooding](https://youtu.be/OmBSdjGkfuI?t=1000) from IETF109
+
 Have I missed anything? Got it all wrong? Please write a comment or [send me an email](https://www.ipspace.net/Contact#Tech).
