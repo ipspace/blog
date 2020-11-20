@@ -5,6 +5,7 @@ tags:
 title: BGP Route Reflector Details
 url: /2008/08/bgp-route-reflector-details.html
 lastmod: 2020-11-20 09:24:00
+series: bgp-essentials
 ---
 BGP route reflectors have been supported in Cisco IOS well before I started to develop the first BGP course for Cisco in mid 1990s. It's a very simple feature, so I was pleasantly surprised when I started digging into it and discovered a few rarely known details.
 
