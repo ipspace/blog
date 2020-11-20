@@ -1,7 +1,7 @@
 {{ $pages := where (where (where .Site.Pages "Section" "posts") "Kind" "page") "Lastmod" "ge" (now.AddDate 0 -1 0) }}
 {{ $cnt := newScratch }}
 {{ $cnt.Set "UpdatedCount" 0 }}
-{{ range $pages }}
+{{ range (sort $pages "Lastmod" "desc") }}
   {{ if ne .PublishDate .Lastmod }}
     {{ if eq ($cnt.Get "UpdatedCount") 0 }}
 <div class="widget PopularPosts">
