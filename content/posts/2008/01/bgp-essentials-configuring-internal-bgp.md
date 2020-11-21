@@ -2,7 +2,7 @@
 date: 2008-01-22 10:02:00
 tags:
 - BGP
-title: 'BGP Essentials: Configuring Internal BGP Sessions'
+title: 'Configuring Internal BGP Sessions'
 series: bgp-essentials
 url: /2008/01/bgp-essentials-configuring-internal-bgp.html
 ---
