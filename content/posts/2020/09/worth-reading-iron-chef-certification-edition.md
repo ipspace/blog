@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Iron Chef - Certification Edition"
 date: 2020-09-26 07:07:00
-tags: [ certification, worth reading ]
+tags: [ certifications, worth reading ]
 ---
 In one of [his recent blog posts](https://networkingnerd.net/2020/08/28/iron-chef-certification-edition/) Tom Hollingsworth described what I semi-consciously felt about the CCIE lab exam for at least 25 years: it's full of contrived scenarios that look more like Iron Chef than real life. 
 
