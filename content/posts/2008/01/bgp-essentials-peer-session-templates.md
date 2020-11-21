@@ -2,7 +2,7 @@
 date: 2008-01-29 07:02:00+01:00
 tags:
 - BGP
-title: 'BGP Essentials: Peer Session Templates'
+title: 'BGP Peer Session and Policy Templates'
 lastmod: 2020-11-20 15:27:00
 url: /2008/01/bgp-essentials-peer-session-templates.html
 series: bgp-essentials
