@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -18,6 +18,30 @@
               </span>
             </div>
             <div class="comment-content"><p>Thought the ASR9000 chipsets aren&#39;t Broadcom based, just unfortunately similarly named</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="255">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Piotr Jablonski</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c255" href="#255">24 November 2020 04:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This is important statement to remember that hardware must be programmed. This is true not only for FRR, IPLFA, ECMP, but also for EIGRP Feasible Successor and Prefix Prioritization. For example Prefix Prioritization was added in hardware by Cisco somewhere in 2015 on some platforms. Prior that there was no guarantee that the order of prefixes configured in software was preserved in hardware.</p>
+
+<p>Just to clarify some points:
+- &quot;PIC Core (recursive next-hop resolution in a ECMP network)&quot; - PIC Core takes care of hierarchical FIB and resolution not only in ECMP.
+- On modern platforms PIC Core is enabled by default. On older like 7600 it requires an additional command. So to have hardware based backup path in IPFLA on ASR9k it is enough to turn on IPLFA.
+- &quot;keep in mind that on modern CPUs the reprogramming of forwarding tables might take longer than the time a routing protocol needs to do its job&quot; - It depends on the number of prefixes/objects to be programmed. Every hardware has its own FIB speed like ASR1k around 13k prefixes/second. This means that writing/removing 13k of prefixes takes 1 second. So a routing table computation can be faster but the overall convergence process will be longer as it requires also updating HW FIB.</p>
 </div>
           </div>
         </li>

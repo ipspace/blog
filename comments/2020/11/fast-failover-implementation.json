@@ -7,9 +7,17 @@
          "name": " Tim",
          "pub": "2020-11-24T13:46:45",
          "type": "comment"
+      },
+      {
+         "date": "24 November 2020 04:16",
+         "html": "<p>This is important statement to remember that hardware must be programmed. This is true not only for FRR, IPLFA, ECMP, but also for EIGRP Feasible Successor and Prefix Prioritization. For example Prefix Prioritization was added in hardware by Cisco somewhere in 2015 on some platforms. Prior that there was no guarantee that the order of prefixes configured in software was preserved in hardware.</p>\n\n<p>Just to clarify some points:\n- &quot;PIC Core (recursive next-hop resolution in a ECMP network)&quot; - PIC Core takes care of hierarchical FIB and resolution not only in ECMP.\n- On modern platforms PIC Core is enabled by default. On older like 7600 it requires an additional command. So to have hardware based backup path in IPFLA on ASR9k it is enough to turn on IPLFA.\n- &quot;keep in mind that on modern CPUs the reprogramming of forwarding tables might take longer than the time a routing protocol needs to do its job&quot; - It depends on the number of prefixes/objects to be programmed. Every hardware has its own FIB speed like ASR1k around 13k prefixes/second. This means that writing/removing 13k of prefixes takes 1 second. So a routing table computation can be faster but the overall convergence process will be longer as it requires also updating HW FIB.</p>\n",
+         "id": "255",
+         "name": "Piotr Jablonski",
+         "pub": "2020-11-24T16:16:30",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2020/11/fast-failover-implementation.html"
 }
