@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>9 comments:</h4>
+  <h4>10 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -222,6 +222,27 @@ It might be true for routers, but definitely not for switches, especially not fo
 <p>And this part &quot;keep in mind that on modern CPUs the reprogramming of forwarding tables might take longer than the time a routing protocol needs to do its job, so it might not make sense to make software-based failover too complex&hellip; unless of course your hardware supports PIC&quot;, I might have misunderstood what you meant here, as I though you meant PIC was 100% FIB-based recovery. If so, my apology Ivan. </p>
 
 <p>From what I know, PIC, both Core and Edge, rely on IGP&#39;s convergence to do its work before they can get down to business, so they can&#39;t converge any faster than the software, IGP reconvergence in this case. The purpose of PIC is to enhance BGP-specific forwarding reconvergence and do away with/decouple from BGP routing reconvergence delay, as that one takes rather long. PIC Core doesn&#39;t need BGP indirect next hop, it just needs IGP indirect next hop to work, but PIC Edge is more involved and requires both types of indirection to work. ALso, with PIC, there&#39;s no need to do FIB re-programming, as you just remove the pointer that points to the previous next hop. THe BGP indirect next hop structure resides outside the TCAM, in a SRAM table I suppose, for fast lookup, just like the adjacency table. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="263">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c263" href="#263">25 November 2020 05:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Minh Ha: Thanks a million for an extensive set of links and other details.</p>
+
+<p>As for my &quot;<em>don&#39;t bother with software complexities if you don&#39;t have PIC</em>&quot; bit: maybe I should have called it <em>hierarchical FIB</em>, and say &quot;<em>don&#39;t bother doing anything beyond decent routing protocol implementation if you don&#39;t have hierarchical FIB</em>&quot;</p>
 </div>
           </div>
         </li>
