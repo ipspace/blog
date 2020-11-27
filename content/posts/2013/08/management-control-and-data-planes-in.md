@@ -12,7 +12,7 @@ Every single network device (or a distributed system like [QFabric](http://blog.
 -   Interact with its owner (or NMS) through the **management plane**.
 
 Routers are used as a typical example in every text describing the three planes of operation, so let’s stick to this time-honored tradition:
-
+<!--more-->
 -   Interfaces, IP subnets and routing protocols are configured through **management plane protocols**, ranging from CLI to [NETCONF](http://blog.ipspace.net/2012/06/netconf-expect-on-steroids.html) and the latest buzzword – northbound [RESTful API](http://blog.ipspace.net/2012/08/why-is-restful-api-better-than-snmp.html);
 -   Router runs **control plane** routing protocols (OSPF, EIGRP, BGP …) to discover adjacent devices and the overall network topology (or reachability information in case of distance/path vector protocols);
 -   Router inserts the results of the control-plane protocols into [Routing Information Base (RIB) and Forwarding Information Base (FIB)](http://blog.ipspace.net/2010/09/ribs-and-fibs.html). **Data plane** software or ASICs uses FIB structures to forward the transit traffic.
