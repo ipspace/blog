@@ -25,7 +25,7 @@ After [explaining why you should focus on defining the problem before searching 
 
 {{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
-# Video: Should You Build or Buy a Solution?
+# (Pub) Video: Should You Build or Buy a Solution?
 
 After _figuring out what business problem you're trying to solve_ and _what the users expect to get from you_ it's time for the next crucial question: should you buy a shrink-wrapped product/solution or build your own?
 
