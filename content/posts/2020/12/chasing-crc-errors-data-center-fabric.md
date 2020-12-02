@@ -20,12 +20,12 @@ Fortunately my reader took a closer look at the data before they requested a who
 
 Knowing Ethernet fundamentals, one should ask a naive question at this point: "_isn't CRC checked when receiving packets and how could you get one on the transmit side?_" Fortunately my reader also understood the behavior of cut-through switching and quickly identified what was really going on:
 
-* The one link with no errors on the leaf switch had a bad transceiver, resulting in CRC errors on the spine switch, but no errors in the other direction;
+* The one link with no errors on the leaf switch had a bad cable, resulting in CRC errors on the spine switch, but no errors in the other direction;
 * The spine switch was configured for cut-through switching, so it propagated the corrupted packets, and _stomped the CRC on egress ports_ to prevent the downstream devices from accepting the packet... increasing the _transmit CRC error_ counter at the same time.
 * Downstream leaf switches received corrupted packets originally sent over the faulty link and increased their _receive CRC error_ counters.
 
 {{<figure src="DC_CRC_Errors.png" caption="Fabric-wide errors caused by a single faulty transceiver">}}
 
-They replaced the faulty SFP, the errors disappeared, and life was good. As for the original performance problem... maybe it wasn't the network ;)
+They replaced the faulty cable, the errors disappeared, and life was good. As for the original performance problem... maybe it wasn't the network ;)
 
 For more details watch the *[Store-and-Forward versus Cut-Through Switching](https://my.ipspace.net/bin/get/Net101/SW6%20-%20Store-and-Forward%20and%20Cut-Through%20Switching.mp4)* video in *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar and read [this excellent article](http://thenetworksherpa.com/cut-through-corruption-and-crc-stomping/) by John Harrington.
