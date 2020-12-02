@@ -24,7 +24,7 @@ fi
 CI_INCLUDE=~/web/dev/perl ~/web/dev/ci/comment-build.pl
 tools/create-archive.py --quiet
 tools/create-comments.py
-if [ -z "`find data -name 'popular.json' -mmin -480 -print`" ]; then
+if [ -z "`find data -name 'popular.json' -mmin -4320 -print`" ]; then
   tools/create-popular.py
 fi
 git add . -v
@@ -32,6 +32,8 @@ if [ "$1" = "test" ]; then
   echo "Test run, not pushing the changes..."
 else
   if [ -n "`git status --short`" ]; then
+    tools/create-popular.py
+    git add . -v
     git commit -m 'Master merge + update' 2>&1
   fi
   git push 2>&1|ack -vi "up-to-date"
