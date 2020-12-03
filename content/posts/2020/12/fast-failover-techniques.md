@@ -19,6 +19,8 @@ These technologies can provide various levels of failure detection and protectio
 
 **MPLS FRR** based on RSVP-TE signaling (which builds an end-to-end virtual circuit) can provide link, node, and path protection.
 
+{{<note info>}}Traffic engineering based MPLS FRR is the only fast failover mechanism that works with *virtual circuits* and can therefore provide *path protection*. LFA, rLFA and TI-LFA just redirect the traffic to a far-enough node. For more details on differences between circuit-based and hop-by-hop switching watch the *[Switching, Routing and Bridging](https://my.ipspace.net/bin/list?id=Net101#SWITCH)* part of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar.{{</note>}}
+
 **IP FRR** requires link-state routing protocol and LFA computation and can provide various levels of protection:
 
 * LFA and Remote LFA (rLFA) provide link and node protection and are topology dependent;
