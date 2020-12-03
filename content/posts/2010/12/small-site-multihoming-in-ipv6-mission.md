@@ -4,6 +4,7 @@ tags:
 - IPv6
 - NAT
 - Internet
+- high availability
 title: 'Small Site Multihoming in IPv6: Mission Impossible?'
 url: /2010/12/small-site-multihoming-in-ipv6-mission.html
 ---

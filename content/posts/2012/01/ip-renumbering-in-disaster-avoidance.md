@@ -5,6 +5,7 @@ tags:
 - workshop
 - load balancing
 - virtualization
+- high availability
 title: IP Renumbering in Disaster Avoidance Data Center Designs
 url: /2012/01/ip-renumbering-in-disaster-avoidance.html
 lastmod: 2020-11-17 16:49:00
