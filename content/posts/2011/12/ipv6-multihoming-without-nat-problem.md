@@ -2,7 +2,7 @@
 date: 2011-12-13 06:29:00+01:00
 title: 'IPv6 Multihoming Without NAT: the Problem'
 url: /2011/12/ipv6-multihoming-without-nat-problem.html
-tags: [ IPv6, NAT, Internet ]
+tags: [ IPv6, NAT, Internet, high availability ]
 ---
 Every time I write about [IPv6 multihoming issues](https://blog.ipspace.net/2010/12/small-site-multihoming-in-ipv6-mission.html) and the [need for NPT66](https://blog.ipspace.net/2011/12/we-just-might-need-nat66.html), I get a comment or two saying:
 
