@@ -7,15 +7,11 @@ title: MPLS TE Autoroute Fundamentals
 lastmod: 2020-12-04 14:02:00
 url: /2010/03/mpls-te-autoroute-basics.html
 ---
-A few days ago I had an interesting discussion about the [need for bidirectional MPLS TE tunnels when using MPLS TE forwarding adjacency](https://supportforums.cisco.com/thread/344998). 
-
-Although I'd always thought I knew how MPLS TE FA works, it took me a while to figure out all the details, so I decided to write an in-depth description of this interesting feature \... and realized after a few botched attempts it would be better to start with the fundamentals.
-<!--more-->
-{{<ct3_rescue>}}
-
-An MPLS Traffic Engineering (MPLS TE) tunnel is a unidirectional Label Switched Path (LSP) established between the tunnel head-end Label Switch Router (LSR) and tail-end LSR. Once the tunnel is established and operational, it’s ready to forward IPv4 data traffic. However, no traffic will enter the tunnel unless the IPv4 routing tables and CEF tables are modified. You can push the traffic into an MPLS TE tunnel manually with a static route or with policy-based routing (PBR) or modify the behavior of the link-state algorithm used to implement MPLS TE in your network.
+An MPLS Traffic Engineering (MPLS TE) tunnel is a _unidirectional_ Label Switched Path (LSP) established between the tunnel head-end Label Switch Router (LSR) and tail-end LSR. Once the tunnel is established and operational, it’s ready to forward IPv4 data traffic. However, no traffic will enter the tunnel unless the IPv4 routing tables and CEF tables are modified. You can push the traffic into an MPLS TE tunnel with a static route or with policy-based routing (PBR) or modify the behavior of the link-state algorithm used to implement MPLS TE in your network.
 
 The *autoroute* functionality configured with the **tunnel mpls autoroute announce** interface configuration command automatically inserts the MPLS TE tunnel in the SPF tree and ensures the tunnel is used to transport all the traffic from the head-end LSR to all destinations behind the tail-end LSR.
+<!--more-->
+{{<ct3_rescue>}}
 
 ### Theory of operation
 
