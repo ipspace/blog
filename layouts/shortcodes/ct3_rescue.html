@@ -1,10 +1,11 @@
 <div class='update'>
   The following text written by Ivan Pepelnjak in {{ dateFormat "2006" .Page.Date }} was originally published on
-  CT3 wiki. That web site became unreachable in early 2019; we retrieved the original text
-  from the Internet Archive and republished it on ipSpace.net blog
+  CT3 wiki. That web site became unreachable in early 2019. We retrieved the original text
+  from the Internet Archive, cleaned it up, updated it with recent information if necessary,
+  and republished it on ipSpace.net blog
   {{ if .Page.Params.rescued }}
     on {{ dateFormat "January 2, 2006" .Page.Params.rescued }}
-  {{ else }}
-    {{ with .Page.Lastmod }}{{ dateFormat "January 2, 2006" . }}{{ end}}
+  {{ else if .Page.Params.lastmod }}
+    on {{ with .Page.Lastmod }}{{ dateFormat "January 2, 2006" . }}{{ end }}
   {{ end }}
 </div>
