@@ -87,9 +87,17 @@
          "name": " Christoph",
          "pub": "2020-12-01T12:39:04",
          "type": "comment"
+      },
+      {
+         "date": "05 December 2020 11:31",
+         "html": "<p>Hi there,</p>\n\n<p>I just wanted to add a couple of info I have come across:</p>\n\n<p>1) Some implementations make use of the central CPU to scale BFD up (and not only BFD) since they provide the central CPU with the very same forwarding ASIC that is on the cards while others use the CPU on the line cards</p>\n\n<p>2) BGP PIC-CORE implementation is, to me, very much ECMP fast-rehashing but at a higher indirection level of the hierarchical FIB as it applies to service/BGP prefixes in a BGP multipath scenario. What I found regarding BFD is that in some implementations the trigger for the ECMP fast-rehashing at that higher level can be both an interface-down or a BFD session-down event but in other implementations it&rsquo;s the BFD session-down event only that triggers the ECMP fast-rehashing at that higher level of the hierarchical FIB. This latter case has some implications depending on your routing environment as you might not want to enable BGP Multipath for traffic/prefixes requiring ECMP fast-rehashing in case you loose for instance all of the primary interfaces towards one of the N x Multipath&#39;ed BGP-NHs and you have no intention or you cannot run BFD-MHOP. </p>\n\n<p>Ciao\nAndrea</p>\n",
+         "id": "293",
+         "name": "Andrea Di Donato",
+         "pub": "2020-12-05T11:31:31",
+         "type": "comment"
       }
    ],
-   "count": 11,
+   "count": 12,
    "type": "post",
    "url": "2020/11/fast-failover-implementation.html"
 }
