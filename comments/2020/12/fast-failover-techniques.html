@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -110,6 +110,52 @@
 <p>In the end, one just has to ask this question: if one cares so much about high availability, why not just increase the degree of ECMP? And to make it stronger, make each ECMP path a port channel. Granted, you trade-off performance for HA that way, but if HA is your goal, it might be worthwhile. And I&#39;m glad I&#39;m not the only one to think that, as Lukas Krattiger has similar view, that &quot;Most scalable approach is still classic ECMP with PIC Core.&quot;</p>
 
 <p>ECMP was originally used for load balancing, but thanks to the redundancy provided, it can provide protection as well. LFA is purely for protection, and temporary protection at that, while ECMP is permanent from the start. So why not kill 2 birds with one stone, actually 3, because with ECMP, you gain simplicity (and sanity) as well. TI-LFA in particular, looks to me like just an attempt to boost the image of Segment Routing, which itself seems like a resurrection of ATM LANE. Centralized-controller paradigm works well at small scale, and sucks big time at large scale, just like shared-memory vs crossbar fabrics. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="289">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c289" href="#289">05 December 2020 10:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@ Minha:    </p>
+
+<p>First of all thanks for your always priceless contributions!      </p>
+
+<p>Regarding your statement: <br />
+&ldquo;As I mentioned above, LFA only gets enforced when it&#39;s enabled/configured. Without LFA enabled, U|ECMP works just fine. In your config, you enabled LFA, so LFA took over and its first choice of backup path would be the ECMP paths if it used the default tie-breakers. <br />
+&ldquo; <br />
+The issue I have Minha is that on the very same router I have some prefixes that are ECMP&rsquo;ed while others aren&rsquo;t and I therefore need to have LFA for the non ECMP&rsquo;ed prefixes and at the very same time ECMP fast-rehash for the ECMP&rsquo;ed prefixes. <br />
+Regarding the tie-breakers , what I am seeing on IOSXR at least is that the first choice being an ECMP path means that by default one out of the N x ECNP-NHs is chosen as the LFA-backup-NH which is different from  spraying the flows over the N-1 ECMP NHs left which is what fast-rehash does.  </p>
+
+<p>=======================================  </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+What&#39;s their physical or logical relation? That might shed a light on their LFA relationship. <br />
+&ldquo; <br />
+Well spotted Minha !! What I am seeing in production is that IOSXR provides node-protection by default since on a per-prefix basis, every NH on box A is protected with a NH on Box B. The scenario is that of prefixes having N x ECMP-NHs, N/2 on box A and N/2 on box B. LFA is just powered on with no specific config.  </p>
+
+<p>=======================================   </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+As for PIC and LFA, they&#39;re not related. PIC is only relevant for BGP <br />
+&ldquo; <br />
+I just wanted to add here that BGP PIC-CORE implementation is, to me, very much fast-rehashing but at a higher indirection level of the hierarchical FIB as it applies to service/BGP prefixes in a BGP multipath scenario. What I found here is that in some implementations the trigger for the fast-rehashing at that higher level can be both an interface-down or a BFD session-down event but in other implementations it&rsquo;s the BFD session-down event only that triggers the fast-rehashing. This is important to know if you need to design a high-performance routing/network solution as in that latter case you might not want to enable BGP multipath for traffic requiring fast-protection via fast-rehashing. Having said that, to make things even more complex, I also found that some implementations make use of the central CPU to scale BFD up while others use the CPU on the line card. At the end of the day you do need to lab these solutions with the actual production HW and the actual production routing scenario and measure the convergence time which is not always easy when you have Terabytes of complex traffic flowing through your box&hellip;. &#x2639;  </p>
+
+<p>ciao <br />
+Andrea  </p>
 </div>
           </div>
         </li>

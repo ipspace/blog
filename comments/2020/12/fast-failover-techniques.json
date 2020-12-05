@@ -23,9 +23,17 @@
          "name": " Minh Ha",
          "pub": "2020-12-05T03:42:49",
          "type": "comment"
+      },
+      {
+         "date": "05 December 2020 10:44",
+         "html": "<p>@ Minha:    </p>\n\n<p>First of all thanks for your always priceless contributions!      </p>\n\n<p>Regarding your statement: <br />\n&ldquo;As I mentioned above, LFA only gets enforced when it&#39;s enabled/configured. Without LFA enabled, U|ECMP works just fine. In your config, you enabled LFA, so LFA took over and its first choice of backup path would be the ECMP paths if it used the default tie-breakers. <br />\n&ldquo; <br />\nThe issue I have Minha is that on the very same router I have some prefixes that are ECMP&rsquo;ed while others aren&rsquo;t and I therefore need to have LFA for the non ECMP&rsquo;ed prefixes and at the very same time ECMP fast-rehash for the ECMP&rsquo;ed prefixes. <br />\nRegarding the tie-breakers , what I am seeing on IOSXR at least is that the first choice being an ECMP path means that by default one out of the N x ECNP-NHs is chosen as the LFA-backup-NH which is different from  spraying the flows over the N-1 ECMP NHs left which is what fast-rehash does.  </p>\n\n<p>=======================================  </p>\n\n<p>Regarding your statement: <br />\n&ldquo; <br />\nWhat&#39;s their physical or logical relation? That might shed a light on their LFA relationship. <br />\n&ldquo; <br />\nWell spotted Minha !! What I am seeing in production is that IOSXR provides node-protection by default since on a per-prefix basis, every NH on box A is protected with a NH on Box B. The scenario is that of prefixes having N x ECMP-NHs, N/2 on box A and N/2 on box B. LFA is just powered on with no specific config.  </p>\n\n<p>=======================================   </p>\n\n<p>Regarding your statement: <br />\n&ldquo; <br />\nAs for PIC and LFA, they&#39;re not related. PIC is only relevant for BGP <br />\n&ldquo; <br />\nI just wanted to add here that BGP PIC-CORE implementation is, to me, very much fast-rehashing but at a higher indirection level of the hierarchical FIB as it applies to service/BGP prefixes in a BGP multipath scenario. What I found here is that in some implementations the trigger for the fast-rehashing at that higher level can be both an interface-down or a BFD session-down event but in other implementations it&rsquo;s the BFD session-down event only that triggers the fast-rehashing. This is important to know if you need to design a high-performance routing/network solution as in that latter case you might not want to enable BGP multipath for traffic requiring fast-protection via fast-rehashing. Having said that, to make things even more complex, I also found that some implementations make use of the central CPU to scale BFD up while others use the CPU on the line card. At the end of the day you do need to lab these solutions with the actual production HW and the actual production routing scenario and measure the convergence time which is not always easy when you have Terabytes of complex traffic flowing through your box&hellip;. &#x2639;  </p>\n\n<p>ciao <br />\nAndrea  </p>\n",
+         "id": "289",
+         "name": "Andrea Di Donato",
+         "pub": "2020-12-05T10:44:37",
+         "type": "comment"
       }
    ],
-   "count": 3,
+   "count": 4,
    "type": "post",
    "url": "2020/12/fast-failover-techniques.html"
 }
