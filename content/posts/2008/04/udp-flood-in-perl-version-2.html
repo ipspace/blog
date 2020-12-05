@@ -1,9 +1,0 @@
----
-url: /2008/04/udp-flood-in-perl-version-2.html
-title: "UDP flood in Perl: version 2"
-date: "2008-04-28T07:44:00.002+02:00"
-tags: [ QoS ]
----
-
-I had to do some precise QoS tests and needed a flooding tools that I could tightly control, so I rewrote the <a href="https://blog.ipspace.net/2008/03/udp-flood-in-perl.html">PERL UDP flooding program</a> to include a few additional parameters: you can specify the desired bandwidth or inter-packet delay. You can download the new source code from the <a href="http://wiki.nil.com/UDP_flood_in_Perl">CT<sup>3</sup> wiki</a>.<br/><br/>As my readers have mentioned in a comments to my previous post on this topic, you should use <a href="https://blog.ipspace.net/2008/03/udp-flood-in-perl.html?showComment=1207472640000#c5280967491071231469">kernel-based floods for high-performance</a> or you could use <a href="http://dast.nlanr.net/Projects/Iperf/">Iperf to do the UDP floods or TCP bandwidth measurements</a>. However, as I do the QoS tests in a <a href="http://www.nil.com/go/remote_labs_portfolio">remote lab with virtual PCs</a> that have no Internet connectivity for obvious security reasons, it's easiest to make changes to a PERL script over the console window.
-
