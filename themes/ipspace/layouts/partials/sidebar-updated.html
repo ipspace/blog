@@ -8,11 +8,18 @@
   <h3 class="sidebar__title">Recently updated</h3>
   <ul>
     {{ end }}
+    {{ if eq ($cnt.Get "UpdatedCount") 5 }}
+  </ul>
+  <ul class='additional-list'>
+    {{ end }}
     <li><a href='{{ .Permalink }}'>{{ .Title }}</a></li>
     {{ $cnt.Add "UpdatedCount" 1 }}
   {{ end }}
 {{ end }}
 {{ if ne ($cnt.Get "UpdatedCount") 0 }}
   </ul>
+  {{ if ge ($cnt.Get "UpdatedCount") 5 }}
+  <button class='sidebar__btn'>see more</button>
+  {{ end }}
 </div>
 {{ end }}
