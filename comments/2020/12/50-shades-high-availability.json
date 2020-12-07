@@ -39,9 +39,17 @@
          "name": " Minh Ha",
          "pub": "2020-12-03T10:00:31",
          "type": "comment"
+      },
+      {
+         "date": "07 December 2020 09:30",
+         "html": "<p>Hi Ivan.\nAt least in Azure VM can subscribe for about upcoming maintenance events: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/scheduled-events</p>\n\n<p>Then it can let Load Balancer know (by turning to unhealty state) that it will no longer accept new connections. Existing connections will still be kept on this VM until one of the sides (VM or remote endpoint) close it.\nhttps://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview#tcp-connections</p>\n\n<p>If application really cares, it has at least 10 minutes to gracefully drain all the connections, let client application reconnect smoothly.</p>\n\n<p>Yes, AZFW works exactly this way:\nhttps://docs.microsoft.com/en-us/azure/firewall/firewall-faq#how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures</p>\n\n<p>It&#39;s a little harder for Active/Standby apps like databases.\nMany Azure Native services do care about that and utilize these features.</p>\n\n<p>Of course in case of BSOD on VM or node failure all your statements are completely reasonable, but for planned maintenances it&#39;s completely manageable almost without even customer&#39;s notice.</p>\n",
+         "id": "297",
+         "name": " Alexey Vorobyev",
+         "pub": "2020-12-07T21:30:06",
+         "type": "comment"
       }
    ],
-   "count": 5,
+   "count": 6,
    "type": "post",
    "url": "2020/12/50-shades-high-availability.html"
 }

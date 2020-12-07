@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -121,6 +121,39 @@ one has to give it to MS on this one. </p>
               </span>
             </div>
             <div class="comment-content"><p>Also, pls keep these jam-packed, heavyweight posts coming Ivan!! They&#39;re deep and heavy, yet highly enjoyable at the same time :)).  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="297">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Alexey Vorobyev</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c297" href="#297">07 December 2020 09:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan.
+At least in Azure VM can subscribe for about upcoming maintenance events: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/scheduled-events</p>
+
+<p>Then it can let Load Balancer know (by turning to unhealty state) that it will no longer accept new connections. Existing connections will still be kept on this VM until one of the sides (VM or remote endpoint) close it.
+https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview#tcp-connections</p>
+
+<p>If application really cares, it has at least 10 minutes to gracefully drain all the connections, let client application reconnect smoothly.</p>
+
+<p>Yes, AZFW works exactly this way:
+https://docs.microsoft.com/en-us/azure/firewall/firewall-faq#how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures</p>
+
+<p>It&#39;s a little harder for Active/Standby apps like databases.
+Many Azure Native services do care about that and utilize these features.</p>
+
+<p>Of course in case of BSOD on VM or node failure all your statements are completely reasonable, but for planned maintenances it&#39;s completely manageable almost without even customer&#39;s notice.</p>
 </div>
           </div>
         </li>
