@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -205,6 +205,86 @@ Andrea  </p>
 <p>Re your point about PIC, yes, when PIC is combined with BGP multipaths, it&#39;s essentially ECMP from the data-plane&#39;s perspective. </p>
 
 <p>As for BFD, you said &quot;I also found that some implementations make use of the central CPU to scale BFD up while others use the CPU on the line card&quot;. I don&#39;t understand how centralizing BFD provides any advantage, what&#39;s the scale-up for? BFD&#39;s purpose is to quickly inform of failures and trigger reconvergence and LFA or ECMP rehash. So isn&#39;t it easier to have the LC CPU handle this and then notify the control plane to do reconvergence via IPC channels? Sending it to the central CPU and bypassing the LC CPU means the data plane cannot react quickly to failure, seem to defeat the purpose of doing LFA and ECMP in hardware?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="296">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c296" href="#296">07 December 2020 01:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@ Minh Ha: </p>
+
+<p>I am with you for an AWARD to Ivan !!!! priceless contribution for all of us working in the darkness of the unknowns&hellip;or&hellip;even worst, working with people that think they know as they are not educated to ask questions to themselves&hellip;XXIE-certified included unfortunately&hellip;.but this is a different and longer story..I guess for another blog !!   </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+I don&#39;t get this part. Can you elaborate on the setup? I thought all ECMP interfaces would have to be on the same router/box, for it to be ECMP :) . How&#39;s that possible? <br />
+&ldquo; <br />
+The scenario is exactly that depicted by one of Ivan&rsquo;s readers &hellip; @ this blog:   https://blog.ipspace.net/2020/11/fast-failover-without-lfa-frr.html <br />
+And I can actually provide you with more details regarding the show command output posted as part of the current last comment of the abovementioned blog.  Please, find below the backup-NH layout and the upstream router each NH belongs to. Let&rsquo;s remember this is the protection layout provided by IOSXR for just one destination out of the N x ECMP&rsquo;ed destinations; some other destinations will have this same protection layout while other destinations will have a different protection layout &ndash; I guess the protection layouts are distributed on a per destination basis in a round-robin fashion but haven&rsquo;t verified that as need a script &ndash; will do that asap.  </p>
+
+<p>NH    LFA-BACKUP-NH <br />
+0             3 <br />
+1             5 <br />
+2             5 <br />
+3             0 <br />
+4             2 <br />
+5             2     </p>
+
+<p>NH  UPSTREAM-ROUTER <br />
+0           B <br />
+1       A <br />
+2       A <br />
+3       A <br />
+4       B <br />
+5       B <br />
+Note how IOSXR provides node-protection and I guess it&rsquo;d provide a 1:1 protection even if link-protection only was configured as opposed to default to ECMP fast-rehashing (i.e. 1:N-1 protection) which is what my ideal router would be capable of doing.   </p>
+
+<p>=======================================   </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+So this cmd helps restore load balancing for ECMP paths if you have to enable TI-LFA. Too bad it&#39;s not applicable to LFA and RLFA. I wonder if Cisco can be requested to provide something similar? <br />
+&ldquo; <br />
+Very interesting command. We should investigate on that and its availability on other vendors&rsquo; routers.  </p>
+
+<p>======================================= </p>
+
+<p>Regarding your two statements: <br />
+&ldquo; <br />
+&lsquo;That&#39;s why IOS and Junos prefer node protection&rsquo; &amp; &lsquo;So there&#39;s no such thing as TI &lsquo; <br />
+&ldquo; <br />
+Could you expand further on these two statements as they are extremely interesting ?   </p>
+
+<p>=======================================     </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+Also, for TI-LFA, there&#39;s something murky re the amount of calculation required. <br />
+&ldquo; <br />
+Well, I would add the complexity of the microloops prevention calculations too then!! Let&rsquo;s remember RSVP-TE doesn&rsquo;t suffer from microloops (i.e. remote loops). So, careful when on shiny PPT you hear about moving from RSVP-TE to TI-LFA as a universal panacea. Cisco&rsquo;s proprietary solution for microloops for instance should be classified as &lsquo;microloop prevention&rsquo; and its method should be classified as &lsquo;Distributed tunnels&rsquo; based on RFC 5715. In particular, the &lsquo;draft-hegde-rtgwg-microloop-avoidance-using-spring-03&rsquo; classifies it as &ldquo;per destination non micro-looping path computation&rdquo; and it highlights its extreme computational cost which makes me even more think that a TI-LFA network is not conceivable without an SDN controller for large networks implementations since that computational cost can only be absorbed by a Controller/server rather than a router&rsquo;s CPU these days&hellip;but then we need to open another can of worms unfortunately since current SDN networks products (except one) prefer BGP-LU SBI to IGP adjacency SBI rather than the opposite which means that if an IGP conveyed metric (Cost/Overload, delay, jitter, optical degrade, packet-loss and so forth even emerging from the transmission layer underneath hopefully soon) changes then it is conveyed (if supported) by the slower BGP-LS to the SDN Controller acting as a PCE, this way adding further delay and thus either further drop, loop or suboptimal routing to the whole system/solution. Let&rsquo;s remember in fact that a metric change does not fast-trigger LFA!      </p>
+
+<p>=======================================   </p>
+
+<p>Regarding your statements: <br />
+&ldquo; <br />
+&lsquo; I don&#39;t understand how centralizing BFD provides any advantage, what&#39;s the scale-up for?&rsquo; &amp; &lsquo;seem to defeat the purpose of doing LFA and ECMP in hardware?&rsquo; <br />
+&ldquo; <br />
+Well, the scalability of BFD is intended in terms of number of sessions which also depends on how low you need to go in terms of timers. Some implementations have a much more powerful centralised CPU rather than the line card CPU and also have the centralised CPU front-ended by the very same forwarding chipset that is on the line-card. And, last but not least, with BFD if a failure happens on port BLA of card A then that failure must be notified to all of the ingress cards as the re-hashing/protection happens in the ingress direction and that notification might go via the central CPU anyway !!  So, in order to scale, some implementations/vendors prefer to centralise (not just BFD) rather than to distribute on the line cards.    </p>
+
+<p>Ciao <br />
+Andrea </p>
 </div>
           </div>
         </li>
