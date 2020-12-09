@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>6 comments:</h4>
+  <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -285,6 +285,67 @@ Well, the scalability of BFD is intended in terms of number of sessions which al
 
 <p>Ciao <br />
 Andrea </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="299">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c299" href="#299">09 December 2020 07:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Andrea,</p>
+
+<p>Thx for your clarification of your setup!! Now I can visualize your topology, and understand exactly what&#39;s going on. Looks like indeed IOS-XR LFA behaviour works according to Cisco documentation, as in it provides 1:1 protection and no more. So in case of ECMP, the ECMP paths are divided into pairs of primary &amp; LFA. Since Jan&#39;s first comment in the original post claimed ECMP-like behaviour with TI-LFA, that points to a potential inconsistency in Cisco&#39;s implementation across the feature set. I&#39;m saying potential because his comment was too brief with no detailed config provided. If it&#39;s indeed true, could that be an attempt by Cisco to boost TI-LFA and lure people into SR? I doubt that since a lot of people have a hard time understanding how xLFA work, let alone to that level of details, which is not well documented either, so to them it doesn&#39;t matter anyway. But regardless, it again proves the sheer complexity of xLFA, and complexity is never a good thing.</p>
+
+<p>Re my statement about xLFA causing loops with double faults with link-only protection, let&#39;s use figure 6 in the LFA RFC to illustrate:</p>
+
+<p>https://tools.ietf.org/html/rfc5286</p>
+
+<p>So say E is the PLR, and ES is the protected link. Assuming RLFA/TI-LFA calculate FB to be the non-connected bypass LFA for ES. Now imagine both ES and FB go down at the same time. Traffic normally going via ES now gets redirected to the LFA which is FB, but since FB goes down as well, F will bounce it back to E. This will continue until global repair has converged and FIB updated. That&#39;s why node protection is preferred by vendors over link-only protection. With Cisco, it&#39;s built-in, with Junos, since Juniper prefers explicit config, you have a knob called node-link-degration to enable this behaviour.</p>
+
+<p>With respect to TI-LFA, they claim it provides 100% coverage in all scenarios, hence the TI part. But using the above figure as example, what if S, the protected node goes down, and there are several leaf prefixes hanging off S and S alone? Those prefixes will go down with it, and that&#39;s that. So there&#39;s no such thing as TI :) .</p>
+
+<p>I had a look at the RFC &amp; drafts you mentioned. This one, RFC 5715, is a pre-RLFA RFC:</p>
+
+<p>https://tools.ietf.org/html/rfc5715</p>
+
+<p>So what&#39;s described in it was most likely what vendors used before RLFA became a standard. RLFA RFC came 5 yrs later so I suppose the behaviour of RLFA/micro-loop free alternate is now conformant to it:</p>
+
+<p>https://tools.ietf.org/html/rfc7490</p>
+
+<p>In RFC 5715, section 6.4, &#39;Distributed Tunnel&#39;, the last sentence was &quot;An alternative distributed tunnel mechanism is for all routers to tunnel to the not-via address [NOT-VIA] associated with the failure.&quot; This was exactly what caused SPF explosion and the resulting scalability issue with the original forms of RLFA, turning Not-via into Not-viable :p. I brought this up in my previous comment above. Original Not-via&#39;s and Tunnel&#39;s mechanics both caused (N-1)*rSPF, and Not-via also caused non-trivial memory overhead to store alternate configuration info, making it unworkable in huge networks. I don&#39;t think Not-via made it into production, for those reasons. That&#39;s why I said above, for RLFA, they had to take shortcut and made the protected node an anchor point to calculate rSPF from there, once. </p>
+
+<p>As I also commented, with TI-LFA, when they remove the protected node from the graph, where then do they base their rSPF from? I suspected they would come full circle to their original, non-scalable approach that performs a calculation from each and every destination&#39;s point of view. How else can they calculate the Q space then, I see no other way with the protected node removed. And thanks to you providing the draft on Spring&#39;s micro-loop avoidance -- which serves as a precursor to the TI-LFA draft I believe -- and RFC 5715, I managed to find out that indeed TI-LFA, in the case of node-protection, works as I suspected. </p>
+
+<p>As they mentioned in the SPRING draft, &quot;Per destination non micro-looping path computation is another approach to prevent micro-loops but it is computationally intensive.&quot; Of course it is. The name says it all. So basically in a N-size network, you perform (N-1) SPF calculation, for the Q space. No wonder Juniper&#39;s default TI-LFA calculation uses link-protection scenario, just like RLFA. So if you plan to do an IS-IS one-area setup with 5k-10k routers for simplicity, and have TI-LFA on using node protection, good luck.</p>
+
+<p>And to be honest, I fail to see how PCE controller is any more scalable than traditional MPLS TE. Yes, MPLS TE is centralized using headend router as the controller, so it has certain scalability issues, but how is implementing another controller-based solution gonna alleviate it? Not to mention, with SR-TE, apart from the well-known latency issues you brought up above, there&#39;s also the risk of label stack explosion. Variable-length header is never good when it comes to wire-rate forwarding, because it incurs significant penalty on the parser. Even if you try to implement your ASIC to accomodate the worst-case scenario, like for ex what Juniper does with their Trio, that kind of accommodation results in big complication to the ASIC and routing network, making the chip(s) bigger and more expensive, the PCB having more layers, all of which significantly complicate testing and increase time to market as well. And heat, don&#39;t forget the heat.</p>
+
+<p>Even if we don&#39;t care about the hardware, on the software side things still don&#39;t look too hot. With massive headers, if your network has to deliver smaller packets, you need a lot more bandwidth. Say you have 2GB worth of VOIP traffic. With huge label stack on top of other headers, your header is as big/bigger than your payload and you&#39;d need a 4GB or bigger pipe for your VOIP. That&#39;s why things like VXLAN look to me more like products of ego-networking than innovation. But who am I to talk :p?</p>
+
+<p>And thanks a lot for your detailed explanation of BFD :))!! I&#39;m not too well-versed with BFD architecture so your comment helps me get a clearer picture. Yes, I&#39;m aware that most (all) big routers these days have more powerful CP CPU than LC CPU, the former normally x86-multicore to do heavy computation, the latter some form of RISC. But still, I found it weird that vendors claim they implement centralized BFD to scale, as to me scaling using centralized approach makes little sense. So I dug in a little bit, and found some contents related to the topic. It seems vendors take quite a bit of liberty with BFD implementation, as you rightly pointed out. Nokia uses a centralized and distributed approach, but to scale the centralized scheme they use hardware offload on the control plane to ease up on the CPU:</p>
+
+<p>https://documentation.nokia.com/html/0_add-h-f/93-0267-HTML/7X50_Advanced_Configuration_Guide/BFD-Detection%20Configuration.html</p>
+
+<p>Juniper reasons that distributed BFD scales better, and they implement a client-server BFD architecture on both the LC and the CP:</p>
+
+<p>https://www.juniper.net/documentation/en_US/junos/topics/concept/bfd-distributed.html</p>
+
+<p>They also have inline BFD that offloads BFD to the NPU as well. Cisco uses the same architecture, with communication between LC CPU and CP CPU taking place via IPC channel:</p>
+
+<p>https://community.cisco.com/t5/service-providers-documents/bfd-support-on-cisco-asr9000/ta-p/3153191</p>
+
+<p>Lastly, you said &quot;with BFD if a failure happens on port BLA of card A then that failure must be notified to all of the ingress cards&quot;. Can you explain more? What is BLA port? I know that when BFD notification is received, control plane components that rely on it like IGP needs to be informed, but why do other LCs also need to know about the failure? Say if I configure LFA on interface1 on LC1, if that interface goes down, LFA will be triggered for that interface and IGP notified to start reconvergence, but for other LCs, wouldn&#39;t it be business as usual for them until IGP changes propagate there? Thx Andrea!</p>
 </div>
           </div>
         </li>
