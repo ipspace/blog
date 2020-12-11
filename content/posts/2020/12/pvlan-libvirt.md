@@ -27,7 +27,7 @@ I decided to use a totally isolated Linux bridge with no IP configured on it (pr
 ```
 config.vm.define "c1" do |c1|
 c1.vm.network :private_network,
-              :libvirt__network_name => "NBMA",
+              :libvirt__network_name => "PVLAN",
               :libvirt__forward_mode => "veryisolated",
               :libvirt__dhcp_enabled => false,
               :auto_config => false
@@ -72,16 +72,16 @@ Here's a screen shot of the first run of that playbook:
 Next step: enable port isolation on ports connecting two out of three virtual machines to my Linux bridge. To do that, I needed to know the names of the interfaces created by Vagrant libvirt provider. The easiest way to get them is to get the list of interfaces connected to the virtual machines I wanted to isolate:
 
 ```
-$ virsh domiflist NBMA_c2
+$ virsh domiflist PVLAN_c2
  Interface   Type      Source            Model   MAC
 --------------------------------------------------------------------
  vnet2       network   vagrant-libvirt   e1000   08:4f:a9:00:00:02
- vnet3       network   NBMA              e1000   52:54:00:55:90:8f
-$ virsh domiflist NBMA_c3
+ vnet3       network   PVLAN             e1000   52:54:00:55:90:8f
+$ virsh domiflist PVLAN_c3
  Interface   Type      Source            Model   MAC
 --------------------------------------------------------------------
  vnet4       network   vagrant-libvirt   e1000   08:4f:a9:00:00:03
- vnet5       network   NBMA              e1000   52:54:00:11:59:14
+ vnet5       network   PVLAN             e1000   52:54:00:11:59:14
 ```
 
 **Notes:**
@@ -97,7 +97,7 @@ The mandatory final step: automate all the boring tasks. The interface names can
 
 ```
 #!/bin/bash
-domain_prefix=NBMA
+domain_prefix=$(basename $(pwd))
 pvlan_switch=NBMA
 isolated='c2 c3'
 for node in $isolated
