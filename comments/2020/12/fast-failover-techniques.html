@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>7 comments:</h4>
+  <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -346,6 +346,75 @@ Andrea </p>
 <p>https://community.cisco.com/t5/service-providers-documents/bfd-support-on-cisco-asr9000/ta-p/3153191</p>
 
 <p>Lastly, you said &quot;with BFD if a failure happens on port BLA of card A then that failure must be notified to all of the ingress cards&quot;. Can you explain more? What is BLA port? I know that when BFD notification is received, control plane components that rely on it like IGP needs to be informed, but why do other LCs also need to know about the failure? Say if I configure LFA on interface1 on LC1, if that interface goes down, LFA will be triggered for that interface and IGP notified to start reconvergence, but for other LCs, wouldn&#39;t it be business as usual for them until IGP changes propagate there? Thx Andrea!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="307">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">andrea di donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c307" href="#307">11 December 2020 04:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@ Minh Ha:  </p>
+
+<p>You&rsquo;re welcome pal &ndash; pleasure ! </p>
+
+<p>=======================================    </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+could that be an attempt by Cisco to boost TI-LFA and lure people into SR? <br />
+&ldquo; <br />
+It could very well be what you said. Overall, what I can see from Cisco at least (it&rsquo;d be nice if they could confirm) is that high-end routers are equipped with (TI-)LFA and don&rsquo;t necessarily implement ECMP fast-rehash while cheaper DC boxes do implement  ECMP fast-rehashing but not (TI-)LFA. While the latter makes sense to me since Fabrics have a high degree of ECMP and expect to be built with cheaper boxes, I don&rsquo;t understand the former  as SP networks can have a high degree of ECMP as well and if you do deploy (TI-)LFA in your ASIC then I guess you can also deploy ECMP fast-rehash.  In that sense it could very well be what you&rsquo;re conjecturing, until proven otherwise.  </p>
+
+<p>======================================= </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+So there&#39;s no such thing as TI :) . <br />
+&ldquo; <br />
+Ahahahahaha, well, to be honest,  if a box is the only one injecting prefixes in the network and that box goes down &hellip;well&hellip;there&rsquo;s no much you can do, can&rsquo;t you !!?? This reminds me of the most evil of all failures in terms of fast convergence but in a multihomed scenario which is that of loosing one of the N exit PEs for VPN prefixes&hellip; well&hellip;having said that mobile chaps in 4G and 5G in fact use SCTP with path diversity to achieve fast protection at application/transport layer (I love SCTP for that by the way !!) as long as IP underneath provides path diversity. <br />
+Regarding your other statement: &lsquo;node protection is preferred by vendors over link-only protection&rsquo;, well..I guess that is exactly in order to cover some of the multiple link failure scenarios which is what happens when a box goes down.  </p>
+
+<p>=======================================  </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+And to be honest, I fail to see how PCE controller is any more scalable than traditional MPLS TE. <br />
+&ldquo; <br />
+Well, scalability here reminds me of the law of conservation of energy as the scalability just morphs from being distributed within the network as RSVP-TE state to being centralised within a PCE/SDN controller/orchestrator God box/system having to perform as a minimum and for the whole (!) and hopefully non flapping (!!) network BGP-LS and/or IGPoGRE, Telemetry, SR-TE computation, TI-LFA local and remote/microloops protection computations, N x FlexAlgo computations, BGP-SRTE and/or PCEP and/or NETCONF&hellip;.anything else ?? &hellip;well..why don&rsquo;t we also then add optical stuff as well while we&rsquo;re at it !? I do love all these technologies but I really cannot see them deployed full-blown on a very large SP network. The solution will have to be a hybrid one &ndash; that&rsquo;ll be the actual challenge, a pure architectural one. <br />
+Ah&hellip;and let&rsquo;s not forget the SRv6 ASIC gymnastic too on a 400Ge+ going forward (!) card but that is a different story&hellip; <br />
+&ldquo;   </p>
+
+<p>=======================================  </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+That&#39;s why things like VXLAN look to me more like products of ego-networking than innovation. But who am I to talk :p? <br />
+&ldquo; <br />
+You are more than entitled ! Networking is not, say, particle physics !!! you&rsquo;re not a particle physicist are you &#x1F60A; ? <br />
+Well, I&rsquo;d add SRv6 as the top entry of this list of infeasible technologies for large SP environments&hellip;    </p>
+
+<p>===========================================    </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+but for other LCs, wouldn&#39;t it be business as usual for them until IGP changes propagate there ? <br />
+&ldquo; <br />
+Ok. Say outgoing interface Z goes down. Z&rsquo;s egress ASIC detects the failure BUT the actual hashing of a packet entering the box happens in any of the ingress cards only. This means that there&rsquo;s always a dependency on internal notification from egress line-card to ingress line cards and that notification goes  via the central CPU anyway !! So, as you can see, implementing BFD centrally can make sense afterall. <br />
+&quot;  </p>
+
+<p>Cheers/Ciao <br />
+Andrea</p>
 </div>
           </div>
         </li>
