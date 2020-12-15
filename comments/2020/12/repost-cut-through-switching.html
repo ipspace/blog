@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -42,6 +42,29 @@
 <p>Also, the longer the paths between 2 endpoints, the less effective cut-through switching, due to other components of delay dominating total E-t-E delay. And at higher rate, say 100Gbe and more, pipeline processing delay dominates serialization delay, so the effect of cut-through is also diminished. One other thing is in case of jumbo-frame traffic, which gets a latency boost with cut-through, all else being equal, the reduced-latency of one flow may come at the expense of another. Say 2 packets destined for one egress port, one is a 9k jumbo packet, another 64 byte TCP ACK. If the 9k one gets scheduled ahead of the ACK, and assuming shared-memory architecture as it&#39;s often used for fast cut-thru, the ACK will have to wait in line until the whole 9K packet gets across, increasing its delay considerably, causing high jitter. So low latency for one flow comes at the cost of heavy toll for another. With VOQ crossbar, due to the way packets are cellified, and cells get interleaved between cell-times thanks to the crossbar scheduler, this jitter problem is mitigated, increasing fairness.</p>
 
 <p>So these are some subtle issues one should factor in when considering whether cut-through is the right thing. It would really help if vendors are open about their switching architecture, their pipeline latency, like how much VXLAN increase the total processing delay, with recirculation or no recirculation. Generally they keep those details hush-hush but one can always ask if they intend to do a big purchase :)) . </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="318">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c318" href="#318">15 December 2020 08:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Here&#39;s one of the primary reasons you&#39;ll see detailed packet walk and architecture presentations from Cisco but not from smaller vendors:</p>
+
+<p>https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html</p>
+
+<p>Cisco can afford to say **** B******* ;)</p>
 </div>
           </div>
         </li>
