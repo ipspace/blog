@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>10 comments:</h4>
+  <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -478,6 +478,39 @@ Andrea</p>
 <p>&gt; TI-LFA in particular, looks to me like just an attempt to boost the image of Segment Routing, which itself seems like a resurrection of ATM LANE</p>
 
 <p>I don&#39;t think that&#39;s the case, TI-LFA is better than LFA/RLFA is every possible way. Similarly, Segment Routing is better than LDP is every possible way for modern packet based networks. I think the SR-based MPLS control plane as a whole is a clear evolution compared to what existed before. I respect your opinion though!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="315">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c315" href="#315">15 December 2020 07:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Renato,</p>
+
+<p>Thx a lot for weighing in and giving your view on the topic! It&#39;s always great to hear a viewpoint well-explained :)! There&#39;s no absolutely right or wrong after all, as Ivan keeps pointing out now and again, they&#39;re all just tools, and depending on how well/badly we use them, they can be for us or against us.</p>
+
+<p>I agree with you that TI-LFA is better than RLFA, which is better than LFA in the sense that it generally provides a higher degree of backup protection, all else being equal. I don&#39;t think I claimed TI-LFA was inferior to either ;) . But I still think TI-LFA is an attempt to boost the public image of SR. </p>
+
+<p>The reason I said SR looks like a resurrection of LANE is because LANE also used a centralized controller to calculate path, and the degree of complexity/sophistication/granularity of ATM paths can be pretty high-end as well. SR is controller-based solution, which, has always existed alongside distributed forwarding since the dawn of networking, in one form or another. </p>
+
+<p>That said, controller-based solution is great in the sense that it has good global visibility that distributed paradigm lacks, so it can make better, well-informed decision about things like path calculation. No one can deny that. But also because of that, it doesn&#39;t scale as well as distributed forwarding, the same way link-state protocols, which are better-suited to things that require global info like traffic engineering path calculation, cannot match distance-vector protocols like EIGRP and BGP, in scalability alone. </p>
+
+<p>In fact, whenever scalability is of primary concern, distributed forwarding is always utilized, for ex: Cisco started with centralized CEF, then moved to distributed CEF in higher-end models because it scales much better. Another example is shared-memory vs crossbar architectures, the latter, being distributed in nature, is used for bigger-scale routers/switches. So yes, each paradigm has its own use. </p>
+
+<p>I&#39;m sure SR, with all of its sophistication, including the ability to harness it to implement valley-free routing without having to resort to running BGP as an IGP in DC fabrics, is absolutely beautiful. But with its intrinsic scalability limitation, which applies equally to all central controller-based solutions, it can run into problems with very large-scale deployments, as it causes latency issues, and potentially, may exceed label-stack depth limit.</p>
+
+<p>Btw, I&#39;ve just looked at your presentation, and looks like we&#39;re in violent agreement about quite a few things re TI-LFA, including its mechanics and implementation. Great job indeed, pls keep it up :)!</p>
 </div>
           </div>
         </li>
