@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>7 comments:</h4>
+  <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -134,6 +134,39 @@
               </span>
             </div>
             <div class="comment-content">&quot;Intel publishes all of their documentation.&quot;<br />Is not a true statement. They also require a NDA/SLA for their newest silicon.</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="320">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c320" href="#320">18 December 2020 09:41</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thx for pointing to this blog post Ivan! I&#39;ve read it along with the comments, the test and the papers linked. </p>
+
+<p>So basically a lot of vendors these days are just glorified Broadcom resellers :p. It&#39;s funny how some of them try to up themselves by saying they differentiate their offerings with their Network OS. First off, since all the heavy-weight data forwarding is done in the LC and the fabric, their devices, regardless of brand name, are essentially Broadcom routers/switches first and last. No matter how their OS is written, they will get stuck with Broadcom-provided fabric architecture and forwarding pipeline, with all of its limitations, sometimes severe ones like the horrible fabric scheduler that get pointed out in the Mellanox test. </p>
+
+<p>I won&#39;t go into too much detail here as it will dilute the bigger point I&#39;m trying to get at, but as we&#39;ve discussed before, providing line-rate for 64-byte packet at 100Gbps is mostly mission impossible, considering that packets arrive every 6.7 ns and you have probably less than half that time to finish an IP lookup if you want to make it in time. Couple that with a port count of 32 or 64, and basically classic crossbar fabric arbitration using central scheduler doesn&rsquo;t work anymore, as the scheduler will become both the bottleneck and power hot-spot, and one will have to use distributed schedulers to scale. From what Enrique observed and the way it played out accordingly in the Mellanox test, Broadcom&#39;s approach to scheduling -- basically centralized and attempt to compensate for its inefficiency by using grouping with 2 schedulers -- is nonsensical and pathetic. Why bother promoting 400Gbe when you&rsquo;re clearly incapable of handling 100Gbe properly? And believe it or not, small-packet line-rate processing is very important; DDOS survival for ex, needs that, plus it means when you start providing value-added classification besides basic IP lookup, your router won&rsquo;t fall over.</p>
+
+<p>Second, when it comes to Network OS, Cisco and Juniper have been in business for 36 and 24 years respectively, and as they got all the highest-class protocol implementers like Dave Katz and Henk Smit working for them during their formative years, their core routing and switching codes had matured and stabilized before some of the new vendors even came to be, so for younger vendors trying to differentiate themselves using the OS is laughable. Who trusts their code to be bug-free, esp. when it comes to complex protocols like OSPF, BGP, and yes, xLFA :p. </p>
+
+<p>All in all, these 2 points make it totally unjustifiable for merchant-silicon vendors these days to charge a premium for what amounts to essentially commoditized, off-the-shelf products. </p>
+
+<p>Monopoly is never good for any industry, and networking is no exception. Among other things, it stiffens innovation. And the result is what we&#39;ve been witnessing for a long time now, lazy networking and second-tiered products. Many vendors hardly invent anything these days anymore except crappy &#39;new&#39; encapsulation formats. And Broadcom, as they don&#39;t have any sizable competitor that can threaten their domination, they won&#39;t feel the need to improve and fix all the nasty dogshit in their chipsets anymore. </p>
+
+<p>And vendors still have to wonder why cloud companies are taking their business away :p. They only have themselves and their laziness to blame. The prize for not reinventing yourself is a one-way ticket to oblivion.</p>
+
+<p>On that note, vendors like Cisco and Juniper, who&#39;re trying hard the old-school way, to produce their own silicons, are worth admiring, no matter what the quality of their products. They deserve credit for at least trying.</p>
+</div>
           </div>
         </li>
       </div>
