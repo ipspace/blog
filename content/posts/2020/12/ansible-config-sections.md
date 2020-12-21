@@ -3,7 +3,7 @@ title: "How Ansible Configuration Parsing Made Me Pull My Hair Out"
 date: 2020-12-21 09:06:00
 tags: [ Ansible ]
 ---
-Yesterday I wrote a frustrated tweet after wasting a hour trying to figure out why a combination of OSPF and IS-IS routing worked on Cisco IOS but not on Nexus OS. Having to wait for a minute after Vagrant told me the Nexus 9300v was ready for NX-OS to "boot" its Ethernet module did't improve my mood either, and the inconsistencies in NX-OS interface naming (_Ethernet1/1_ is uppercase while _loopback0_ and _mgmt0_ are lowercase) was just the cherry on top of the pile of ****. Anyway, here's what I wrote:
+Yesterday I wrote a frustrated tweet after wasting an hour trying to figure out why a combination of OSPF and IS-IS routing worked on Cisco IOS but not on Nexus OS. Having to wait for a minute (after Vagrant told me SSH on Nexus 9300v was ready) for NX-OS to "boot" its Ethernet module did't improve my mood either, and the inconsistencies in NX-OS interface naming (_Ethernet1/1_ is uppercase while _loopback0_ and _mgmt0_ are lowercase) were just the cherry on top of the pile of ****. Anyway, here's what I wrote:
 
 > Can't tell you how much I hate Ansible's lame attempts to do idempotent device configuration changes. Wasted an hour trying to figure out what's wrong with my Nexus OS config... only to find out that "interface X" cannot appear twice in the configuration you want to push.
 
@@ -17,7 +17,9 @@ Anyway, there are two ways to deal with this crapscape. You could say "_it's a v
 
 ### The Problem
 
-I wanted to push this a configuration snippet configuring OSPF and IS-IS routing to a network device. In this blog post I'm using the Cisco IOS version of the template. Source code of a pretty minimal setup covering Cisco IOS, Cisco Nexus OS and Arista EOS is on Github in case you care ([inventory and templates](https://github.com/ipspace/netsim-examples/tree/master/config), [playbook](https://github.com/ipspace/netsim-tools/blob/master/config.ansible), [platform-specific included tasks](https://github.com/ipspace/netsim-tools/tree/master/ansible/config)) -- they all exhibit the same behavior (at least it's consistent).
+I wanted to push a configuration snippet configuring OSPF and IS-IS routing to a network device. In this blog post I'm using the Cisco IOS version of the template, but Cisco IOS, Cisco Nexus OS and Arista EOS all exhibit the same behavior (at least it's consistent). 
+
+Source code of a pretty minimal setup is on Github in case you care ([inventory and templates](https://github.com/ipspace/netsim-examples/tree/master/config), [playbook](https://github.com/ipspace/netsim-tools/blob/master/config.ansible), [platform-specific included tasks](https://github.com/ipspace/netsim-tools/tree/master/ansible/config)).
 
 {{<cc>}}Routing configuration template{{</cc>}}
 ```
