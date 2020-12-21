@@ -1,6 +1,6 @@
 ---
 title: "Feedback: AWS Networking"
-date: 2020-12-21 08:46:00
+date: 2020-12-22 08:46:00
 tags: [ AWS ]
 ---
 Deciding to create [AWS Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) and [Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinars wasn't easy -- after all, there's so much content out there covering all aspects of public cloud services, and a plethora of certification trainings (including free training from AWS).
