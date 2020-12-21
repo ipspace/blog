@@ -128,8 +128,20 @@ Dear Ansible team:
 
 Finally, am I really the only one unfortunate or stupid enough to stumble upon this? The network device configuration modules were added to Ansible release 2.1 almost half a decade ago, and I'm running release 2.10.3... and nobody ever complained about this?
 
+### How Realistic Is This Example?
+
+Yes, I am snarky and grumpy, but No, I didn't try to break Ansible. The template I created reflects the way I was thinking at the moment (focused on routing protocols)... and we could go into endless debates of whether it's better to group everything related to one protocol (Junos way) or to group everything related to one interface (Cisco IOS way). Some such debates started in [18th century](https://en.wikipedia.org/wiki/Gulliver's_Travels) and still [haven't come to a conclusion](https://en.wikipedia.org/wiki/Endianness).
+
+In this particular case, I find the OSPF-versus-IS-IS way of thinking cleaner than the workaround I had to implement with tons of IF statements inside an interface configuration block.
+
+Regardless, I understand that every tool has limitations and cannot be pushed beyond a breaking point, the real question is *how* it breaks, and Ansible broke in a truly horrible way.
+
 ### Why Did It Work in the First Place?
 
 Got so far? You might wonder why I got OSPF and IS-IS running on Cisco IOS, but not on Nexus OS. 
 
 Being lazy, I enabled OSPF with the **network** command on Cisco IOS, so I only configured each interface once in my Cisco IOS template. The same approach cannot be used on Nexus OS where you have to enable OSPF _and_ IS-IS on individual interface. Kaboom...
+
+### Release History
+
+Added _How Realistic Is this Example_ section after receiving several _why are you doing things this way_ or _it's not Ansible that's broken but your template_ replies on Twitter.
