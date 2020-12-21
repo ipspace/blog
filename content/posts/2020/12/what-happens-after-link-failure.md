@@ -1,6 +1,6 @@
 ---
 title: "What Exactly Happens after a Link Failure?"
-date: 2020-12-22 06:15:00
+date: 2020-12-23 06:15:00
 tags: [ networking fundamentals, IP routing, OSPF ]
 series: fast-failover
 ---
