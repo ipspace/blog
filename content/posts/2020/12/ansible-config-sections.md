@@ -7,7 +7,9 @@ Yesterday I wrote a frustrated tweet after wasting an hour trying to figure out 
 
 > Can't tell you how much I hate Ansible's lame attempts to do idempotent device configuration changes. Wasted an hour trying to figure out what's wrong with my Nexus OS config... only to find out that "interface X" cannot appear twice in the configuration you want to push.
 
-Not unexpectedly, I got a few (polite and diplomatic) replies from engineers who felt addressed by that tweet, so it's only fair to document exactly what made me so angry.
+Not unexpectedly, I got a few (polite and diplomatic) replies from engineers who felt addressed by that tweet, and less enthusiastic response from the product manager (no surprise there), so it's only fair to document exactly what made me so angry.
+
+**Update 2020-12-23**: In the meantime, [Ganesh Nalawade](https://github.com/ganeshrn) already [implemented a fix](https://github.com/ansible-collections/ansible.netcommon/pull/190) that solves my problem. Thanks you, awesome job!
 <!--more-->
 ### Background
 
@@ -144,4 +146,8 @@ Being lazy, I enabled OSPF with the **network** command on Cisco IOS, so I only 
 
 ### Release History
 
-Added _How Realistic Is this Example_ section after receiving several _why are you doing things this way_ or _it's not Ansible that's broken but your template_ replies on Twitter.
+2020-12-21
+: Added _How Realistic Is this Example_ section after receiving several _why are you doing things this way_ or _it's not Ansible that's broken but your template_ replies on Twitter.
+
+2020-11-23
+: Added a link to a pull request fixing the problem by Ganesh Nalawade
