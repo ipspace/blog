@@ -1,6 +1,6 @@
 ---
 title: "OMG, It's Graphs Everywhere"
-date: 2021-01-04 06:59:00
+date: 2021-01-11 06:59:00
 tags: [ networking fundamentals ]
 ---
 One of the subscribers watching the [Graph Algorithms in Networks](https://www.ipspace.net/Graph_Algorithms_in_Networks) webinar found the webinar had an interesting impact on his perspective (according to [his feedback](https://www.ipspace.net/Graph_Algorithms_in_Networks#Happy_Campers)):

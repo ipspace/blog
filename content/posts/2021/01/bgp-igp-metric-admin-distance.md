@@ -1,6 +1,6 @@
 ---
 title: "IBGP, IGP Metrics, and Administrative Distances"
-date: 2021-01-05 06:39:00
+date: 2021-01-06 06:39:00
 tags: [ BGP, networking fundamentals ]
 ---
 **TL&DR**: If you run multiple IGP protocols in your network, and add BGP on top of that, you might get the results you deserve. Even better, the results are platform-dependent.
