@@ -11,4 +11,6 @@ Having that in mind, it's so nice to [hear from people who found our AWS webinar
 
 > It can be hard to filter through the noise from cloud providers to get to the new features that actually make a difference to what we are doing. This series does exactly that for me. Brilliant as always. 
 
+Other engineers use our webinars to prepare for AWS certifications -- read [this blog post](https://neckercube.com/posts/2020-12-18-how-i-passed-the-aws-advanced-networking-specialty-exam/) by [Jedadiah Casey](https://twitter.com/Wax_Trax) for more details.
+ 
 [AWS Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) and [Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinars are available with [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/). For even deeper dive into cloud networking check out our [Networking in Public Cloud Deployments](https://www.ipspace.net/PubCloud/) online course.
