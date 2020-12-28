@@ -1,9 +1,0 @@
----
-url: /2008/03/router-fragmentation-is-gone-from-ipv6.html
-title: "Router fragmentation is gone from IPv6"
-date: "2008-03-05T07:53:00.001+01:00"
-tags: [ IPv6 ]
----
-
-<a href="http://www.nil.com/ipcorner"><img src="http://www.nil.com/C1256F0A00429755/free_tips_IP_Corner.gif" style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FLOAT: right; BORDER-BOTTOM-WIDTH: 0px; MARGIN: 2px 0px 6px 3px; BORDER-RIGHT-WIDTH: 0px"/></a>In response to my January <a href="http://www.nil.com/ipcorner">IP Corner</a> article <a href="http://www.nil.com/ipcorner/IP_Fragmentation/">The Never-Ending Story of IP Fragmentation</a>, Stojanco Cavdarov made an interesting observation: routers are not allowed to fragment IPv6 packets, they have to respond back with ICMP unreachable (effectively, routers behave as if IPv6 packets would have an implicit <em>don't fragment</em> bit).<br/><br/>To make life easier for non-TCP IPv6 applications (TCP is supposed to use Path MTU Discovery), the minimum IPv6 packet size that has to be supported on all links was increased to 1280 bytes (which, incidentally, fits very nicely into GRE+IPSec envelope transported across links with 1500-byte MTU).
-
