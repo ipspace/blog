@@ -1,9 +1,0 @@
----
-url: /2008/03/bgp-peer-selective-address-tracking-is.html
-title: "BGP Peer Selective Address Tracking is broken until 12.4(15)T3"
-date: "2008-03-11T07:27:00.002+01:00"
-tags: [ BGP ]
----
-
-In IOS release 12.4(15)T (and potentially in all older releases, I've tested it with 12.4(11)T4), the <strong>route-map</strong> option of the <strong>neighbor fall-over</strong> command that I've described in my March <a href="http://www.nil.com/ipcorner">IP Corner</a> article, <a href="http://www.nil.com/ipcorner/DesigningBGPNetworks/"><em>Designing Fast Converging BGP Networks</em></a>, is not saved in the startup configuration. You have to <a href="https://blog.ipspace.net/2007/04/fix-router-configuration-after-reload.html">reconfigure the BGP neighbors after each router reload</a>.<br/><br/>Furthermore, a BGP neighbor does not inherit the <strong>fall-over route-map</strong> option from a <a href="https://blog.ipspace.net/2008/01/bgp-essentials-peer-session-templates.html">peer session template</a>.<br/><br/>Both issues are fixed in 12.4(15)T3.
-
