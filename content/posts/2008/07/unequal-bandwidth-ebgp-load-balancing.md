@@ -4,6 +4,7 @@ tags:
 - BGP
 - load balancing
 title: Unequal-Bandwidth EBGP Load Balancing
+lastmod: 2020-12-28 12:44:00
 url: /2008/07/unequal-bandwidth-ebgp-load-balancing.html
 ---
 EIGRP was always described as the only routing protocol that can do unequal-cost load sharing. As it turns out, BGP is another one (although it\'s way more limited than EIGRP). For example, if you have two links into a neighbor AS, you can load-share across them proportionally to their bandwidth.
