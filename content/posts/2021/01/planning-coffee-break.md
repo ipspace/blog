@@ -33,4 +33,6 @@ Anyone buying new subscription in early 2021 should therefore get the value for 
 
 **What will happen to ipSpace.net blog?** How long do you think I'd be able to keep quiet? Of course I'll keep ranting, and there are thousands of old blog posts that need to be cleaned up and refreshed.
 
+**What will happen to Software Gone Wild podcast?** [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio) promised to take that over, [David Gee](https://www.ipspace.net/Author:David_Gee) volunteered to help him, and I solemnly swear I will publish whatever they send me.
+
 We've probably missed numerous details when preparing this wall of text. Please let us know what we've missed in the comments.
