@@ -43,7 +43,7 @@ INFO: You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscript
 
 JUMP-LINK: [Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/5%20-%20Onboarding%20Process.mp4?doccode=CiscoSDWAN)
 
-# Video: Cisco SD-WAN Policies and Centralized Magic
+# (pub) Video: Cisco SD-WAN Policies and Centralized Magic
 
 Right after devices are onboarded, how are the control and data plane tasks determined? In this section, [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) covers how the solution makes the most of its SDN nature: single point of [policy application and centralized management platform](https://my.ipspace.net/bin/get/CiscoSDWAN/6%20-%20Policies%20and%20Centralized%20Magic.mp4?doccode=CiscoSDWAN). The types of policies, the plane on which they act, their application and the actions that can performed are the main focus in this part of the series.
 
