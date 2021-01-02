@@ -3,9 +3,9 @@ date: 2011-01-20T07:02:00.002+01:00
 tags:
 - DMVPN
 - VPN
-- workshop
 title: VPN Network Design – Part 1
 url: /2011/01/vpn-network-design-part-1.html
+more_blurb: True
 ---
 
 <p>After all the <a href="https://blog.ipspace.net/tag/dmvpn.html">DMVPN-related posts</a> I’ve published in the last days, we’re ready for the <a href="https://blog.ipspace.net/2011/01/sometimes-you-need-to-step-back-and.html">OSPF-over-DMVPN design challenge</a>, but let’s step back a few more steps and start from where every design project should start: deriving the technical requirements and the WAN network design from the business needs.</p>
@@ -23,5 +23,3 @@ url: /2011/01/vpn-network-design-part-1.html
 <p>The fundamental question you have to consider is the need for direct spoke-to-spoke traffic flow. If the spoke sites need to communicate directly, you need DMVPN Phase 2 or 3; if it’s OK for the inter-spoke traffic to flow through the hub router, use simpler DMVPN Phase 1.</p>
 <p>Be pragmatic: hub-and-spoke DMVPN Phase 1 might be the best solution even if your users claim they need spoke-to-spoke traffic ... as long as the application exchanging data between the spoke sites is not latency-sensitive and the amount of inter-spoke traffic is low.</p>
 <p>For example: Active Directory deployment does not require Phase 2 DMVPN. The amount of traffic exchanged between spoke sites is relatively low and AD is a TCP-based application and thus survives a bit of extra delay. VoIP is a different story; the latency introduced by the extra hop through the hub router might break the maximum latency limit.</p>
-<h4>More information</h4><p>I’ve <a href="https://blog.ipspace.net/tag/dmvpn.html">published numerous blog posts describing various aspects of DMVPN</a>. To learn more, <a href="http://dmvpn.eventbrite.com/">register for</a> my <a href="http://www.ioshints.info/DMVPN:_From_Basics_to_Scalable_Networks">DMVPN: From Basics to Scalable Networks</a> webinar (or <a href="http://www.ioshints.info/Recordings">buy a recording</a>).</p>
-

@@ -3,10 +3,10 @@ date: 2011-02-09T13:04:00.002+01:00
 tags:
 - bridging
 - data center
-- workshop
 - IP routing
 title: 'Layer-3 gurus: asleep at the wheel'
 url: /2011/02/layer-3-gurus-asleep-at-wheel.html
+more_blurb: True
 ---
 
 <p>I just read a great article by Kurt (the Network Janitor) Bales <a href="http://www.network-janitor.net/2011/02/dcb-how-to-engineer-your-way-out-of-a-poor-architecture-decision/">eloquently describing how a series of stupid decisions led to the current situation</a> where everyone (but the people who actually work with the networking infrastructure) think stretched layer-2 domains are the mandatory stepping stone toward the cloudy nirvana.</p>
@@ -31,5 +31,3 @@ url: /2011/02/layer-3-gurus-asleep-at-wheel.html
 <p>The sad part of the whole story is that we had a L3 solution available for decades – Cisco’s Local Area Mobility (LAM), which created host routes based on ARP requests, was working quite well in the 1990s. IP mobility could be another option, but would obviously require modifications in the guest operating system, which is usually considered a taboo.</p>
 <p>It’s obvious that the programmers working on vSwitch/vMotion code (or Microsoft Network Load Balancing) lacked networking knowledge and rarely considered anything beyond their lab environment, declaring the product ready-to-deploy as soon as they could get two or three boxes working over a $9.99 switch. It’s also quite obvious that the networking vendors (including Cisco, Juniper, HP, and everyone else) did absolutely nothing to solve the problem. The worst offender (in my opinion) is Nexus 1000V. It could have been a great L3 platform, solving most of the architectural problems we’re endlessly debating, but instead Cisco decided to launch a product with a minimum feature set needed to get a reasonable foothold in the ESX space.</p>
 <p>It’s infinitely sad to watch all the networking vendors running around like headless chickens trying to promote yet-another <em>fabric routing at layer-2 </em>solution, instead of stepping back and solving the problem where it should have been solved: within layer 3.</p>
-<h4>More information</h4><p>To learn more about the challenges server virtualization brings to your Data Center network, watch my <a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/SingleRecording?code=DC30">buy a recording</a> or <a href="http://www.ioshints.info/Subscription">yearly subscription</a>). If you have to implement a layer-2 solution spanning multiple data centers, <a href="http://dci.eventbrite.com/">register for</a> the <a href="http://www.ioshints.info/DCI">Data Center Interconnect</a> webinar.</p>
-

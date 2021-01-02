@@ -1,17 +1,17 @@
 ---
 date: 2011-02-10T08:17:00.000+01:00
 tags:
-- workshop
 - BGP
 - MPLS VPN
 title: Changing VPNv4 route attributes within the MPLS/VPN network
 url: /2011/02/changing-vpnv4-route-attributes-within.html
 ---
 
-<p>John (not a real name for obvious reasons) sent me an interesting challenge after attending my <a href="http://www.ioshints.info/Enterprise_MPLS_VPN_Deployment">Enterprise MPLS/VPN Deployment</a> webinar (<a href="http://mpls.eventbrite.com/">register here</a>). He’s designed an MPLS/VPN network approximated by the following diagram:</p>
-<div class="separator" style="clear: both; text-align: center;"><a href="/2011/02/s1600-MPLS_Net_Diagram.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="304" src="/2011/02/s320-MPLS_Net_Diagram.png" width="320"/></a></div>
+<p>John (not a real name for obvious reasons) sent me an interesting challenge after attending my <a href="http://www.ioshints.info/Enterprise_MPLS_VPN_Deployment">Enterprise MPLS/VPN Deployment</a> webinar. He’s designed an MPLS/VPN network approximated by the following diagram:</p>
+<figure><img src="s1600-MPLS_Net_Diagram.png"></figure>
+<!--more-->
 <p>The two data centers are advertising the default route into the MPLS/VPN network and he’d like some PE-routers to prefer Data Center 1, while the others should prefer Data Center 2 (and all PE-routers have to receive both default routes for redundancy reasons).</p>
-<!--more--><p>He was already aware of the need for two different Route Distinguishers (due to a VPNv4 route reflector sitting somewhere in the MPLS/VPN network) but couldn’t get the top-side PE-routers to prefer one default route over the other.</p>
+<p>He was already aware of the need for two different Route Distinguishers (due to a VPNv4 route reflector sitting somewhere in the MPLS/VPN network) but couldn’t get the top-side PE-routers to prefer one default route over the other.</p>
 <p>After considering all sorts of crazy ideas, I’ve settled on what seems to be the simplest solution: modify inbound VPNv4 BGP updates on the top-side PE-routers. I was almost positive it should work (after all, a VPNv4 update is a BGP update like any other), but wondered whether John would need to attach standard BGP communities to the default routes or whether he could use extended BGP communities (route targets) already attached to them.</p>
 <p>Years ago, route map support for extended BGP communities was dismal, but obviously IOS got fixed in the meantime – it was quite easy to match on route targets attached to incoming VPNv4 BGP updates and use them to modify local preference (or MED or BGP weight, whichever happens to be your personal favorite). Here’s the configuration taken from a top-side PE-router (I’m <a href="https://blog.ipspace.net/2008/06/bgp-templates-on-mpls-vpn-pe-routers.html">always using BGP templates</a>; if you don’t like them, just apply the options directly to the BGP neighbors).</p>
 <pre class="code">router bgp 65000<br/> template peer-policy MPLSVPN<br/>  route-map ChoosePreferredVPNv4Routes in<br/>  send-community both<br/> exit-peer-policy<br/> !<br/> template peer-session MPLSVPN<br/>  remote-as 65000<br/>  update-source Loopback0<br/> exit-peer-session<br/> !<br/> no synchronization<br/> bgp log-neighbor-changes<br/> neighbor 10.0.1.3 inherit peer-session MPLSVPN<br/> neighbor 10.0.1.4 inherit peer-session MPLSVPN<br/> !<br/> address-family vpnv4<br/>  neighbor 10.0.1.3 activate<br/>  neighbor 10.0.1.3 send-community extended<br/>  neighbor 10.0.1.3 inherit peer-policy MPLSVPN<br/>  neighbor 10.0.1.4 activate<br/>  neighbor 10.0.1.4 send-community extended<br/>  neighbor 10.0.1.4 inherit peer-policy MPLSVPN<br/>!<br/>ip extcommunity-list standard PreferredRT permit rt 65000:123<br/>!<br/>route-map ChoosePreferredVPNv4Routes permit 10<br/> match extcommunity PreferredRT<br/> set local-preference 200<br/>!<br/>route-map ChoosePreferredVPNv4Routes permit 20</pre><p>After deploying the route map on all the PE-routers (and changing the route target matched in the <em>PreferredRT </em>extended community list on half of them), John has to add a single route target to the VRFs defined on the Data Center PE-router to make routes sent through that PE-router more preferred than the others.</p>
