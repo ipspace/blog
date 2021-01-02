@@ -2,16 +2,13 @@
 date: 2010-06-11T07:15:00.000+02:00
 tags:
 - IPv6
-- workshop
 - service providers
-- big picture
+- networking fundamentals
 title: Multi-topology IS-IS
 url: /2010/06/multi-topology-is-is.html
+more_blurb: True
 ---
 
 <p>IS-IS has “forever” (at least since <a href="http://datatracker.ietf.org/doc/rfc1195/">RFC 1195</a>) supported multiple layer-3 protocol, but always with a nasty side-effect: if a link in your network did not support one of them, you could get hard-to-diagnose black holes. The problem is illustrated in the left-hand column of the following diagram. Due to a single IS-IS topology, the shortest path between A and B is the direct link and since IPv6 is not enabled on that link (click on the diagram to get an enlarged version where you'll be able to see the link colors), A and B cannot exchange IPv6 traffic even though there’s an alternate path between them.</p>
 <p style="clear: both; text-align: center;"><a href="/2010/06/s1600-ISIS+Multi-Topology.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="/2010/06/s400-ISIS+Multi-Topology.png" width="400"/></a></p>
-<p class="more">I’m describing further implications of single/multi-topology IS-IS and deployment guidelines in the <a href="http://spipv6.eventbrite.com/"><em>Building IPv6 Service Provider Core</em></a> webinar.</p>
 <!--more--><p>When you enable multi-topology IS-IS (right-hand column in the diagram), the routers build two topologies, one for each L3 protocol (usually IPv4 and IPv6) and can find the optimum path for each L3 protocol even when some links in the network support only one of them.</p>
-<p class="note">You’ll find more details in the <a href="http://www.cisco.com/en/US/products/ps6553/products_white_paper09186a00801e199f.shtml">Multi-topology IS-IS white paper</a> published by Cisco.</p>
-

@@ -5,9 +5,10 @@ tags:
 - workshop
 title: 'DMVPN: Non-Unique NHRP Registrations'
 url: /2010/09/dmvpn-non-unique-nhrp-registrations.html
+more_blurb: True
 ---
 
-<p>During my last <a href="http://www.ioshints.info/DMVPN"><em>DMVPN: Advanced And Crazy Scenarios</em></a> webinar (<a href="http://dmvpn.eventbrite.com/">register here</a>), one of the students mentioned the need for non-unique NHRP registrations in environments where the public IP address of a DMVPN spoke site changes due to DHCP lease expiration or PPPoE session termination. Finally I found some time to recreate the scenario in my DMVPN lab; here are the results.</p>
+<p>During my last DMVPN webinar, one of the students mentioned the need for non-unique NHRP registrations in environments where the public IP address of a DMVPN spoke site changes due to DHCP lease expiration or PPPoE session termination. Finally I found some time to recreate the scenario in my DMVPN lab; here are the results.</p>
 <!--more--><h4>Default behavior</h4><p>Next-Hop Resolution Protocol (NHRP) was designed for large layer-2 switched network environments (example: ATM networks with SVC support). In those environments, the layer-2 address of a site never changes and thus NHRP clients uses <em>unique registrations </em>by default; the mapping between IP address (<em>protocol address </em>in terms of <a href="http://tools.ietf.org/html/rfc2332">RFC 2332</a>) and underlying layer-2 address (RFC 2332: <em>NBMA address</em>) is not supposed to change. </p>
 <p>NHRP clients set the <em>uniqueness </em>bit in the registration packets<em> </em>and Next-Hop Server (NHS) subsequently refuses all registration packets that try to set a different <em>NBMA address</em> for an already-known <em>protocol address</em>.</p>
 <h4>Impact on DMVPN networks</h4><p>In DMVPN world, <em>protocol address </em>is tunnel interface’s IP address and <em>NBMA address </em>is the IP address of the <strong>tunnel source </strong>(usually the outside – Internet-facing – interface). The tunnel interface flaps when the IP address on the outside interface changes, triggering NHRP registration request, but the registration requests are rejected by the NHS until the old registration expires (registration hold time is set by the client and configured with the <strong>ip nhrp holdtime </strong>interface configuration command).</p>
@@ -18,7 +19,3 @@ url: /2010/09/dmvpn-non-unique-nhrp-registrations.html
 <li>Establish routing adjacency.</li>
 </ul>
 <p>You can fine-tune steps 1-3 on the spoke router; step 4 sometime requires coordinated changes throughout the network.</p>
-<h4>More information</h4><p>Non-unique registrations are just one of many DMVPN features covered in the <a href="http://www.ioshints.info/DMVPN"><em>DMVPN: Advanced And Crazy Scenarios</em></a> webinar (<a href="http://dmvpn.eventbrite.com/">register here</a>). I’ve also added a new lab topology that allows you to test the impact of non-unique registrations on recovery time to the set of router configurations.</p>
-<p style="clear: both; text-align: center;"><a href="/2010/09/s1600-DMVPN+NonUnique+Topology.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="250" src="/2010/09/s400-DMVPN+NonUnique+Topology.png" width="400"/></a></p>
-<p class="note">Attendees of the previous DMVPN webinars will get access to the new recording and expanded router configurations after the next webinar.</p>
-

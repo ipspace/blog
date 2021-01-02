@@ -3,9 +3,9 @@ date: 2010-10-29T06:54:00.002+02:00
 tags:
 - DHCP
 - IPv6
-- workshop
 title: 'DHCPv6 relaying: another trouble spot?'
 url: /2010/10/dhcpv6-relaying-another-trouble-spot.html
+more_blurb: True
 ---
 
 <p>My <a href="https://blog.ipspace.net/2010/10/dhcpv6-over-pppoe-total-disaster.html">DHCPv6+PPPoE post</a> received a very comprehensive comment from Ole Troan (thank you!) in which he explains the context in which DHCPv6 was developed (a mechanism to give a static IPv6 prefix to a customer) and its intended usage (as the prefix is static, it should have a very long lifetime).</p>
@@ -21,6 +21,4 @@ url: /2010/10/dhcpv6-relaying-another-trouble-spot.html
 <p>Fortunately, DHCPv6 implementation in Cisco IOS is pretty smart. When you use a local IPv6 pool on the PE-router, the PE-router rebuilds the static routes from the local DHCPv6 bindings. If you use a local pool and store DHCP bindings in a database, they would survive router reload as well. </p>
 <p class="info">It’s highly recommended to use <strong>ipv6 dhcp database </strong>to store the delegated prefixes.</p>
 <p>But what if you decide to use a central DHCPv6 server and DHCPv6 relaying on the PE-router? How would that combination survive a link loss or a router reload? What am I missing?</p>
-<p>Of course, DHCPv6 considerations and the impact on IPv6 routing protocols will be part of the next <a href="http://www.ioshints.info/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider Core</em></a> webinar (<a href="http://spipv6.eventbrite.com/">register here</a>) and the attendees of the previous sessions will get the updated material and access to the new recording.</p>
-<p class="update">Update 2012-01-19: DHCP Bulk Lease, available in Cisco IOS release 15.1(S) and described in my new <a href="http://spipv6-blog.eventbrite.com/"><em>Building Large IPv6 Access Networks</em></a> webinar, solves the state loss in DHCPv6 relays.</p>
-
+<p class="update">Update 2012-01-19: DHCP Bulk Lease, available in Cisco IOS release 15.1(S) solves the state loss in DHCPv6 relays.</p>

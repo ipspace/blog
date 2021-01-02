@@ -4,9 +4,9 @@ tags:
 - DHCP
 - IPv6
 - PPP
-- workshop
 title: 'DHCPv6 over PPPoE: Total disaster'
 url: /2010/10/dhcpv6-over-pppoe-total-disaster.html
+more_blurb: True
 ---
 
 <p>Every time someone throws me an IPv6 curveball, I’m surprised when I discover another huge can of worms (I guess I should have learned by now). This time it started pretty innocently with a seemingly simple PPPoE question:</p>
@@ -25,5 +25,3 @@ url: /2010/10/dhcpv6-over-pppoe-total-disaster.html
 <p>However, the DHCPv6 client in the CPE router does not detect a link loss. While the <em>virtual access </em>interface does change state to <em>down</em>, the <em>dialer </em>interface doesn’t... and the DHCPv6 client is monitoring the <em>dialer </em>interface. The CPE router keeps using the old delegated prefix, which is no longer reachable (as the static route on BRAS is gone and the client did not send a renewal request yet). </p>
 <p><strong>Conclusion</strong>: the CPE router is stuck for the remaining duration of the DHCP lease unless you reset the DHCPv6 client manually with the <strong>clear ipv6 dhcp client </strong><strong><em>interface </em></strong>command (which can be done with an EEM applet ... but try explaining that to an average user).</p>
 <p><strong>Workaround</strong>: You could assign fixed IPv6 prefixes to individual users through RADIUS, but then you’d have to propagate per-user /64 prefixes between the routers (at least within your POP). </p>
-<p><strong>More information</strong>: Some of the challenges of IPv6 core routing are described in the <a href="http://www.ioshints.info/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider Core</em></a> webinar (<a href="http://spipv6.eventbrite.com/">register here</a>). The webinar attendees also get auxiliary materials, including numerous sets of tested router configurations and detailed BRAS configuration snippets. </p>
-

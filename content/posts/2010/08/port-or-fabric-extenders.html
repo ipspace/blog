@@ -6,11 +6,12 @@ tags:
 - workshop
 title: Port or Fabric Extenders?
 url: /2010/08/port-or-fabric-extenders.html
+more_blurb: True
 ---
 
 <p>Among other topics discussed during the <a href="http://packetpushers.net/show-16-big-hot-heavy-part-1/"><em>Big Hot and Heavy Switches (Part 1)</em></a> podcast (if you haven’t listened to it yet, it’s high time you do), we’ve mentioned port extenders. As our virtual whiteboard is not always clearly visible during the podcast (although we scribble heavily on it), here’s the big-picture architecture:</p>
-<p style="clear: both; text-align: center;"><a href="/2010/08/s1600-Port+Extenders.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="276" src="/2010/08/s400-Port+Extenders.png" width="400"/></a></p>
-<p>After the podcast I wanted to dig into a few minor technical details (just in case someone throws me a curveball during the <a href="http://datacenter20.eventbrite.com/">Data Center webinar</a>) and stumbled into a veritable <a href="http://www.dilbert.com/blog/entry/confusopolies/">confusopoly</a>.</p>
+<figure><img border="0" height="276" src="/2010/08/s1600-Port+Extenders.png" width="400"/></figure>
+<p>After the podcast I wanted to dig into a few minor technical details and stumbled into a veritable <a href="http://www.dilbert.com/blog/entry/confusopolies/">confusopoly</a>.</p>
 <!--more--><p><strong>Port or Fabric?</strong> Cisco uses the term <em>fabric extender</em>; <em>port extender </em>is used in the IEEE 802.1Qbh standard. Obviously one is a technology term, the other one a marketing term (or product name). It looks like everything in the Data Center is *Fabric*, everything in WAN is *Borderless*. Slowly I might get used to it.</p>
 <p>Another explanation I found says “Fabric Extender is a standalone implementation of a Port Extender”. I’m not buying it; see the <a href="http://www.ieee802.org/1/files/public/docs2010/bh-pelissier-draft00intro-0110.pdf">802.1Qbh introduction</a> (from Cisco) for details; it's very clear they are not talking about a virtualized environment.</p>
 <p><strong>Standardized or not?</strong><strong> </strong>Cisco brought the idea of port extenders to IEEE 802.1 and effectively started the 802.1Qbh working group. However, 802.1Qbh specifies only the control protocol between the <em>controlling bridge </em>and the <em>port extender</em>. It refers to 802.1Qbg for the specification of the tagging on the link between them. 802.1Qbg (which is close to VNTag/VNLink idea from Cisco) refers to 802.1Qbc standard (well hidden behind the paywall) which specifies the actual encapsulation mechanism. The claim that “Cisco has pioneered the VNTag scheme and IEEE 802.1Qbh will use it as a base for the standard” (Cisco Unified Computing System, Cisco Press 2010, page 85) is thus somewhat dubious.</p>
@@ -22,7 +23,6 @@ url: /2010/08/port-or-fabric-extenders.html
 <li><strong>Port extender transparency</strong>. You can connect anything (host or another bridge) to a port extender physical port. Nexus 2000 products allow only hosts to be connected to the downstream ports; BPDU guard is automatically configured on those ports.</li>
 </ul>
 <p><strong>Fabric Extender enhancements</strong>. As always, Cisco offers more than the standard it has launched. For example, you can use Virtual Port Channel to have dual-homed fabric extenders.</p>
-<h4>More Data Center-related technologies</h4><p><a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/SingleRecording?code=DC30">buy a recording</a> or <a href="http://www.ioshints.info/Subscription">yearly subscription</a>) covers a wide range of Data Center technologies, including port extenders, VNTags, FabricPath and TRILL.</p>
 <h4>Further reading</h4><ul class="ListParagraph"><li><a href="http://www.cciezone.com/?p=231">Introducing the Nexus 2148T (Fabric Extenders)</a></li>
 <li><a href="http://www.cciezone.com/?p=235">Methods for connecting FEXs</a></li>
 <li><a href="http://www.cciezone.com/?p=259">Why EtherChannels should be used for FEX interfaces</a></li>
