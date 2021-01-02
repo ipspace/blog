@@ -1,6 +1,6 @@
 ---
 title: "Repost: VMware Fault Tolerance Woes"
-date: 2021-01-07 07:55:00
+date: 2021-01-18 07:55:00
 tags: [ virtualization, high availability ]
 ---
 I [always claimed](https://blog.ipspace.net/2011/08/high-availability-fallacies.html) that VMware Fault Tolerance makes no sense. After all, the only thing it does is protect a VM against a server hardware failure... in the world where software crashes are way more common, and fat fingers cause most of the outages. 
