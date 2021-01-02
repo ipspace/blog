@@ -9,7 +9,7 @@ url: /2011/03/dont-try-to-fake-multi-chassis-link.html
 ---
 
 <p>Martin sent me an interesting challenge: he needs to connect an HP switch in a blade enclosure to a pair of Catalyst 3500G switches. His Catalysts are not stackable and he needs the full bandwidth between the switches, so he decided to fake the multi-chassis link aggregation functionality by configuring static LAG on the HP switch and disabling STP on it (the Catalysts have no idea they're talking to the same switch):</p>
-<div class="separator" style="clear: both; text-align: center;"><a href="/2011/03/s1600-FakeMLAG.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="234" src="/2011/03/s320-FakeMLAG.png" width="320"/></a></div>
+<figure><img src="s1600-FakeMLAG.png"></figure>
 <!--more--><p>He was already aware of at least two problems (but, as a vendor product manager told me in a recent phone call, "that's nothing that couldn't be solved with a bit of scripting"):</p>
 <ul class="ListParagraph"><li>If one of the links fails, static LAG will not detect link failure and some of the servers connected to the HP switch will lose connectivity to the network.</li>
 <li>If the link between the Catalysts fails, he’ll face a split-brain scenario, as they won’t be able to use the connectivity through the HP switch.</li>
@@ -22,5 +22,5 @@ url: /2011/03/dont-try-to-fake-multi-chassis-link.html
 <p>ARP will obviously work, as it has been designed for lossy unreliable networks. Some fainthearted protocols assuming Ethernet is lossless (I’m looking at you, FCoE) might not be so robust. Figuring out how various server clustering kludges (that rely on layer-2 connectivity between cluster nodes) work in this scenario would also be great fun.</p>
 <p>Last but not least, if B sends a broadcast packet, it will receive a copy of its own broadcast propagated through X-C1-C2 (or X-C2-C1).</p>
 <p><strong>Anything else?</strong> Is there something else that can go wrong? Please let me know in the comments!</p>
-<h4>More information</h4><p>Multi-chassis Link Aggregation (MLAG) technologies and data center architectures from Cisco, Juniper and HP are described in my <a href="http://www.ioshints.info/DataCenterIntro">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://datacenter20.eventbrite.com/">register for an online session</a> or <a href="http://www.ioshints.info/Recordings">buy a recording</a>).</p>
+<h4>More information</h4><p>Multi-chassis Link Aggregation (MLAG) technologies and data center architectures from Cisco, Juniper and HP are described in my <a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar.</p>
 
