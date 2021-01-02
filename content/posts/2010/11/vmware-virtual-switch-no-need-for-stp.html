@@ -3,13 +3,13 @@ date: 2010-11-29T07:12:00.002+01:00
 tags:
 - switching
 - data center
-- workshop
 - virtualization
 title: 'VMware Virtual Switch: no need for STP'
 url: /2010/11/vmware-virtual-switch-no-need-for-stp.html
+more_blurb: True
 ---
 
-<p>During the <a href="http://www.ioshints.info/DataCenterIntro"><em>Data Center 3.0</em></a> webinar (<a href="http://datacenter20.eventbrite.com/">register here</a>) I always mention that you can connect a VMware ESX server (with embedded virtual switch) to the network through multiple active uplinks without link aggregation. The response is very predictable: I get a few “how does that work” questions in the next seconds. </p>
+<p>During the <a href="http://www.ioshints.info/DC30"><em>Data Center 3.0</em></a> webinar I always mention that you can connect a VMware ESX server (with embedded virtual switch) to the network through multiple active uplinks without link aggregation. The response is very predictable: I get a few “how does that work” questions in the next seconds. </p>
 <p>VMware did a great job with the virtual switch embedded in the VMware hypervisor (vNetwork Standard Switch – vSS – or vNetwork Distributed Switch – vDS): it uses special forwarding rules (I call them <em>split horizon switching</em>, Cisco UCS documentation uses the term End Host Mode) that prevent forwarding loops without resorting to STP or port blocking.</p>
 <!--more--><h4>Physical and virtual NICs</h4><p>The ports of a virtual switch (Nexus 1000V uses the term Virtual Ethernet Module – VEM) are connected to either physical Network Interface Cards (uplinks) or virtual NICs of the virtual machines. The physical ports can be connected to one or more physical switches and don’t have to be aggregated into a port channel.</p>
 <p style="clear: both; text-align: center;"><a href="/2010/11/s1600-vswitch.png" imageanchor="1" style=""><img border="0" src="/2010/11/s320-vswitch.png"/></a></p>
@@ -29,7 +29,3 @@ url: /2010/11/vmware-virtual-switch-no-need-for-stp.html
 <div class="separator" style="clear: both; text-align: center;"><a href="/2010/11/s1600-vswitch_3.png" imageanchor="1" style=""><img border="0" height="311" src="/2010/11/s320-vswitch_3.png" width="320"/></a></div>
 <h4>Hyper-V is different</h4><p>If your server administrators are used to the ESX virtual switch and start deploying Microsoft’s Hyper-V, expect a few fun moments (Microsoft is making sure you’ll have them: the <a href="http://social.technet.microsoft.com/wiki/contents/articles/hyper-v-virtual-networking-best-practices.aspx"><em>Hyper-V Virtual Networking Best Practices</em></a><em> </em>document does not mention redundant uplinks at all).</p>
 <p>A potential solution is to bridge multiple physical NICs in Hyper-V ... creating a nice forwarding loop that will melt down large parts of your network (more so if you do that on a powerful server with multiple 10GE uplinks like the Cisco UCS blade servers). Configuring <strong>bpduguard </strong>on all <strong>portfast </strong>switch ports is thus a must.</p>
-<h4>More information</h4><ul><li>Brad Hedlund wrote a great article explaining <a href="http://bradhedlund.com/2010/10/22/cisco-ucs-qa-2-end-host-mode-forwarding-behavior/">Cisco UCS End Host Mode forwarding behavior</a>.</li>
-<li>VMware networking is just one of the many topics discussed in the <a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar (<a href="http://www.ioshints.info/SingleRecording?code=DC30">buy a recording</a> or <a href="http://www.ioshints.info/Subscription">yearly subscription</a>).</li>
-</ul>
-
