@@ -6,7 +6,7 @@ tags:
 - vMotion
 - virtualization
 - high availability
-title: High availability fallacies
+title: High Availability Fallacies
 url: /2011/08/high-availability-fallacies.html
 ---
 
@@ -15,5 +15,5 @@ url: /2011/08/high-availability-fallacies.html
 <p>VMware FT is an even more interesting case. It runs two parallel copies of the same VM (and <a href="http://lonesysadmin.net/2011/04/19/vmware-fault-tolerance-determinism-and-smp/">ensures they're continuously synchronized</a>) – a perfect solution if you’re running a very lengthy procedure and don’t want a hardware failure to interrupt it. Unfortunately, software failures happen more often than hardware ones ... and if the VM crashes, both copies (running in sync) will crash simultaneously. Likewise, if the application service running in the VM crashes (or hangs), it will do so in both copies of the VM.</p>
 <p class="update">Update 2011-08-09: As expected, an interesting Twitter discussion followed this blog post. Among other interesting remarks, Duncan (Yellow Bricks) Epping <a href="http://twitter.com/DuncanYB/status/100648418275364866">rightfully pointed out</a> that the VMware HA/FT products function exactly as described. That’s absolutely true – VMware’s documentation is extremely precise in describing how HA and FT work.</p>
 <p>You can read more about high availability fallacies in an <a href="http://searchnetworking.techtarget.com/news/2240039098/High-availability-virtualization-networking-is-a-fallacy">article I wrote for SearchNetworking</a> (the title is a bit misleading) ... and remember: scale-out application architecture combined with load balancers is still the only way to reach true high availability.</p>
-<h4>Even more information</h4><p>You’ll find in-depth discussions of high-availability architectures, impacts of vMotion and various types of data center interconnects in my webinars: <a href="http://www.ioshints.info/Data_Center_3.0_for_Networking_Engineers">Data Center 3.0 for Networking Engineers</a> (<a href="http://www.ioshints.info/Recordings?code=DC30">recording</a>), <a href="http://www.ioshints.info/DCI">Data Center Interconnects</a> (<a href="http://www.ioshints.info/Recordings?code=DCI">recording</a>) and <a href="http://www.ioshints.info/VMnet">VMware Networking Deep Dive</a> (<a href="http://www.ioshints.info/Recordings?code=VMnet">recording</a> or <a href="http://vnetwork.eventbrite.com/">live session</a>). All three webinars are also available as part of the <a href="http://www.ioshints.info/Subscription_to_ioshints_webinars">yearly subscription</a>.</p>
+<h4>Even more information</h4><p>You’ll find in-depth discussions of high-availability architectures, impacts of vMotion and various types of data center interconnects in my webinars: <a href="http://www.ioshints.info/Data_Center_3.0_for_Networking_Engineers">Data Center 3.0 for Networking Engineers</a>, <a href="http://www.ioshints.info/DCI">Data Center Interconnects</a> and <a href="http://www.ioshints.info/VMnet">VMware Networking Deep Dive</a>.</p>
 
