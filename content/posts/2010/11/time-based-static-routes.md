@@ -42,5 +42,3 @@ Related solutions:
 -   [Periodic router reload](https://blog.ipspace.net/2006/10/periodic-router-reload.html)
 -   [Kron: poor-man\'s cron](https://blog.ipspace.net/2007/11/kron-poor-man-cron.html)
 -   [Time-based BGP policy routing](https://blog.ipspace.net/2008/02/time-based-bgp-policy-routing.html)
-
-Obviously I was "a bit" upset about getting the same question too many times last year, so I wrote the [Time-based IOS actions](https://blog.ipspace.net/2009/03/time-based-ios-actions.html) post.
