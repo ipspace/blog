@@ -1,7 +1,7 @@
 ---
 title: "Making LLDP Work with Linux Bridge"
 date: 2020-12-16 07:05:00
-tags: [ switching, virtualization ]
+tags: [ switching, virtualization ]
 ---
 Last week I described how I [configured PVLAN on a Linux bridge](/2020/12/pvlan-libvirt.html). After checking the desired partial connectivity with **ios_ping** I wanted to verify it with LLDP neighbors. Ansible **ios_facts** module collects LLDP neighbor information, and it should be really easy using those facts to check whether port isolation works as expected.
 

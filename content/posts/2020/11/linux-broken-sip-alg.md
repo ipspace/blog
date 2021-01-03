@@ -1,7 +1,7 @@
 ---
 title: "Fun Times: Another Broken Linux ALG"
 date: 2020-11-28 09:12:00
-tags: [ security ]
+tags: [ security ]
 ---
 Dealing with protocols that embed network-layer addresses into application-layer messages (like FTP or SIP) is great fun, more so if the said protocol traverses a NAT device that has to find the IP addresses embedded in application messages while translating the addresses in IP headers. For whatever reason, the content rewriting functionality is called *application-level gateway* (ALG).
 
