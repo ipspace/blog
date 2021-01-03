@@ -12,7 +12,6 @@ Chris sent me an interesting question:
 
 > Imagine L2 traffic between two VMs on different ESX hosts, both using Nexus 1000V. Will the physical switches see the traffic with source and destination MACs matching the VM's vNICs or traffic on NX1000V "packet" VLAN between VEMs (in this case, the packet VLAN would act as a virtual backplane)?
 
-{{<note>}}To decode the acronyms in the question, please read my [*What exactly is a Nexus 1000V*](https://blog.ipspace.net/2011/06/what-exactly-is-nexus-1000v.html) post.{{</note>}}
 <!--more-->
 {{<figure src="/2011/08/s320-NX1K_VLAN.png" caption="VLANs used by Nexus 1000V">}}
 

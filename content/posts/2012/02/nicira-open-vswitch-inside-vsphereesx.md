@@ -8,7 +8,7 @@ tags:
 title: Nicira Open vSwitch Inside vSphere/ESX
 url: /2012/02/nicira-open-vswitch-inside-vsphereesx.html
 ---
-I got intrigued when reading [Nicira's white paper](http://www.nicira.com/en/network-virtualization-platform) claiming their Open vSwitch can run within vSphere/ESX hypervisor. There are three APIs that you could use to get that job done: [dvFilter API](http://blogs.vmware.com/vcloud/2010/04/what-actually-is-vmsafe-and-the-vmsafe-api.html) (intercepting VM NIC like [vCDNI](https://blog.ipspace.net/2011/04/vcloud-director-networking.html) does), the API used by Cisco's [Nexus 1000V](https://blog.ipspace.net/2011/06/what-exactly-is-nexus-1000v.html), or the device driver interface (intercepting uplink traffic). Turns out Nicira decided to use a fourth approach using nothing but publicly available APIs.
+I got intrigued when reading [Nicira's white paper](http://www.nicira.com/en/network-virtualization-platform) claiming their Open vSwitch can run within vSphere/ESX hypervisor. There are three APIs that you could use to get that job done: [dvFilter API](http://blogs.vmware.com/vcloud/2010/04/what-actually-is-vmsafe-and-the-vmsafe-api.html) (intercepting VM NIC like [vCDNI](https://blog.ipspace.net/2011/04/vcloud-director-networking.html) does), the undocumented virtual switch API used by Cisco's Nexus 1000v, or the device driver interface (intercepting uplink traffic). Turns out Nicira decided to use a fourth approach using nothing but publicly available APIs.
 <!--more-->
 {{<figure src="s1600-Nicira-ESX-API.png" caption="Available ESX APIs">}}
 
