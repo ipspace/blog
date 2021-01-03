@@ -9,7 +9,7 @@ I got a follow-up question to the [*Should I use 6PE or native IPv6*](https://bl
 
 > Am I remembering correctly that if you run IPv6 native throughout the network you need to enable BGP on all routers, even P routers? Why is that?
 
-I [wrote about BGP-free core before](https://blog.ipspace.net/2008/03/use-mpls-to-scale-your-internet.html), but evidently wasn’t clear enough, so I’ll try to fix that error.
+I wrote about BGP-free core before, but evidently wasn’t clear enough, so I’ll try to fix that error.
 
 Imagine a small ISP with a customer-facing PE-router (A), two PE-routers providing upstream connectivity (B and D), a core router (C), and a route reflector (R). The ISP is running IPv4 and IPv6 natively (no MPLS).
 <!--more-->

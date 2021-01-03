@@ -65,4 +65,4 @@ The control plane might pass outbound packets to the data plane, or use its own 
 
 {{<figure src="ControlPlanePunting.png" caption="Processing of Inbound and Outbound Control-Plane Packets">}}
 
-Regardless of the implementation details, it’s obvious the device CPU represents a significant bottleneck (in some cases the switch to CPU-based forwarding causes several magnitudes lower performance) – the main reason one has to rate-limit ACL logging and protect the device CPU with [*Control Plane Protection*](/2008/11/control-plane-protection.html) features.
+Regardless of the implementation details, it’s obvious the device CPU represents a significant bottleneck (in some cases the switch to CPU-based forwarding causes several magnitudes lower performance) – the main reason one has to rate-limit ACL logging and protect the device CPU with *Control Plane Protection* features.

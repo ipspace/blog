@@ -18,7 +18,7 @@ And since this post became way too long, here's a rough table of content:
 -   [Originating BGP routes](#bgp-next-hop-of-a-locally-originated-route)
 -   [Route reflectors](#route-reflector-cannot-change-bgp-next-hop-of-reflected-routes)
 -   [EBGP rules](#bgp-next-hop-is-set-to-routers-own-address-on-ebgp-sessions) and [forwarding optimization](#next-hop-optimization-on-ebgp-sessions)
--   [IBGP rules](bgp-next-hop-is-not-changed-on-ibgp-sessions) and [design guidelines](ibgp-next-hop-design-rules)
+-   [IBGP rules](#bgp-next-hop-is-not-changed-on-ibgp-sessions) and [design guidelines](#ibgp-next-hop-design-rules)
 
 ### BGP Next Hop of a Locally Originated Route
 
