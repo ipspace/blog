@@ -5,7 +5,7 @@ date: "2011-10-13T06:10:00.000+02:00"
 tags: [ IPv6 ]
 ---
 
-<p>While preparing for the <a href="http://www.reissromoli.com/index.php?option=com_content&amp;view=article&amp;id=189">IPv6 seminar I’m delivering in Rome</a>, I had to reinvent a few wheels, including slides explaining IPv6 addressing and host behavior ... giving me a perfect reason to study the RFCs and figure out how exactly IPv6 stateless autoconfiguration (RFC 4862) works.<!--more--></p>
+<p>While preparing for my Rome IPv6 seminar, I had to reinvent a few wheels, including slides explaining IPv6 addressing and host behavior ... giving me a perfect reason to study the RFCs and figure out how exactly IPv6 stateless autoconfiguration (RFC 4862) works.<!--more--></p>
 <p>Stateless autoconfiguration is performed in a number of steps. After initializing the physical interface, the IPv6 host:</p>
 <ul class="ListParagraph"><li>Creates its link-local address (LLA) using the FE80::/10 prefix and its MAC address encoded in EUI-64 format (see the diagram below).</li>
 </ul>
@@ -24,7 +24,3 @@ tags: [ IPv6 ]
 <div class="separator" style="clear: both; text-align: center;"><a href="/2011/10/s1600-IPv6_SLAAC_2.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" src="/2011/10/s540-IPv6_SLAAC_2.png"/></a></div>
 <p>The router advertisement received during the autoconfiguration process might contain the <em>managed address configuration </em>flag (in which case the host uses DHCPv6 instead of stateless autoconfiguration) or <em>other configuration </em>flag that triggers an extra step: the IPv6 host sends a DHCPv6 <em>information request </em>query to receive additional configuration information like DNS server IPv6 address, domain search list, or SIP server IPv6 address (DNS server: solved). The list of <a href="http://www.iana.org/assignments/dhcpv6-parameters/dhcpv6-parameters.xml">all registered DHCPv6 options is available on IANA’s web site</a>.</p>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2011/10/s1600-IPv6_SLAAC_DHCP.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" src="/2011/10/s540-IPv6_SLAAC_DHCP.png"/></a></div>
-<h4>More information</h4><p>IPv6 deployment issues in enterprise and service provider networks are described in two introductory webinars: <a href="https://www.ipspace.net/Enterprise_IPv6_-_the_First_Steps"><em>Enterprise IPv6 – the First Steps</em></a> and <a href="https://www.ipspace.net/Service_Provider_IPv6_Introduction"><em>Service Provider IPv6 Introduction</em></a><em> </em>(<a href="http://spipv6intro.eventbrite.com/">register</a>).</p>
-<p>Various IPv6 access and network configurations are described in my <a href="https://www.ipspace.net/Building_IPv6_Service_Provider_Core"><em>Building IPv6 Service Provider Core</em></a> webinar (<a href="https://www.ipspace.net/Recordings">buy the recording</a>). </p>
-<p>For more IPv6 webinars, check the <a href="https://www.ipspace.net/Roadmap/IPv6_webinars">IPv6 roadmap</a>; all of them are available as part of the <a href="https://www.ipspace.net/Subscription">yearly subscription package</a>.</p>
-

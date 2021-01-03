@@ -30,6 +30,3 @@ url: /2014/11/scaling-cloud-security-groups.html
 <li>Perform ACL matches based on group membership information derived in the previous steps.</li>
 </ul>
 <p>This algorithm replaces a single O(n^2) lookup with multiple simple lookups – group membership is a fixed-time lookup if your implementation uses MAC-to-group hash tables, and the time to match an ACL remains proportional to the ACL size, not to the product of group sizes.</p>
-<h4>Is anyone doing it?</h4><p>Nuage VSP is using this approach with Open vSwitch in the hypervisors (they convert group membership into metadata passed between OpenFlow matching tables), and it seems Cisco is doing something very similar with Endpoint Groups (EPG) in its ACI architecture.</p>
-<p>To get more details on the Nuage VSP approach (including the very smart use of BGP communities that allows you to extend security groups beyond the cloud infrastructure), <a href="https://www.eventbrite.com/e/scaling-overlay-virtual-networks-tickets-13583882759?ref=ebapi">register</a> for the free <a href="http://www.ipspace.net/Scaling_Overlay_Virtual_Networks"><em>Scaling Overlay Virtual Networks</em></a> webinar on November 20<span style="vertical-align: super; font-size: 80%;">th</span>. You’ll have to wait a bit longer for my take on Cisco ACI; I won’t be able to create a webinar describing it before spring 2015.</p>
-
