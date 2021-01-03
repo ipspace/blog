@@ -27,6 +27,8 @@ Here are a few guesses as to what might happen after that:
 
 Anyone buying new subscription in early 2021 should therefore get the value for their money. However, you might decide not to renew your subscription if it expires in the following months, and we'll stop sending out renewal notices on April 1st 2021.
 
+On a totally unrelated topic, it's [almost exactly 10 years since I launched the ipSpace.net subscription](/2010/12/yearly-subscription-to-my-webinars.html).
+
 **What will happen to online courses?** There will be no change for existing course attendees. I will keep supporting you in your studies and review hands-on assignments... but it might take a bit longer than usual.
 
 **What will happen to Expert ipSpace.net subscriptions?** If you're an existing Expert Subscriber, see above. We'll stop offering new Expert Subscriptions before June 2021 because they carry a 12-month help-and-support commitment, and it wouldn't be fair to promise that and then (partially) disappear.
@@ -36,3 +38,4 @@ Anyone buying new subscription in early 2021 should therefore get the value for 
 **What will happen to Software Gone Wild podcast?** [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio) promised to take that over, [David Gee](https://www.ipspace.net/Author:David_Gee) volunteered to help him, and I solemnly swear I will publish whatever they send me.
 
 We've probably missed numerous details when preparing this wall of text. Please let us know what we've missed in the comments.
+
