@@ -1,6 +1,6 @@
 ---
 date: 2014-10-06T07:20:00.000+02:00
-tags: [ link aggregation, IP routing ]
+tags: [ link aggregation, IP routing ]
 title: LAG versus ECMP
 url: /2014/10/lag-versus-ecmp.html
 ---
