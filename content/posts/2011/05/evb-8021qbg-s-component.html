@@ -8,7 +8,7 @@ tags:
 title: EVB (802.1Qbg) – the S component
 url: /2011/05/evb-8021qbg-s-component.html
 ---
-
+<div class='update'>Update 2021-01-03: IBM implemented EVB in Linux bridge, and Juniper added EVB support to Junos, but I haven't seen (or heard of) a single EVB implementation since I wrote this blog post almost 9 years ago.</div>
 <p>The Edge Virtual Bridging (EVB; 802.1Qbg) standard solves two important layer-2-based virtualization issues:</p>
 <ul class="ListParagraph"><li>Automatic provisioning of access switches based on hypervisor-signaled information (discussed in the <a href="https://blog.ipspace.net/2011/05/edge-virtual-bridging-evb-8021qbg-eases.html">EVB eases VLAN configuration pains article</a>)</li>
 <li>Multiplexing of multiple logical 802.1Q links over a single physical link.</li>
@@ -25,5 +25,3 @@ url: /2011/05/evb-8021qbg-s-component.html
 <p><strong>802.1Qbh supports multicast replication</strong> between logical links. 802.1Qbg supports multicast replication only within the hypervisor switch; when the access switch has to send the same multicast/broadcast packet across more than one logical link, it has to send multiple copies of the same packet.</p>
 <p>A full-blown EVB with VEB/VEPA/VDP hypervisor support would be a clear winner despite the S-component limitations due to tight hypervisor/access switch integration it provides. </p>
 <p class="info">Quick reality check: apart from vague “we will provide EVB support once the standard is ratified” statements, I haven’t heard anything about EVB-compliant hypervisors yet.</p>
-<h4>More information</h4><p>The details of VMware networking (including VN-Tag, VN-link and EVB/VEPA) are described in <a href="http://www.ioshints.info/VMnet">VMware Networking Deep Dive</a> webinar (<a href="http://vnetwork.eventbrite.com/">register here</a>). If you want to learn more about modern data center architectures, <a href="http://www.ioshints.info/Recordings?code=DC30">buy a recording</a> of my <a href="http://www.ioshints.info/DC30">Data Center 3.0 for Networking Engineers</a> webinar. Both webinars are also part of the <a href="http://www.ioshints.info/Subscription">yearly subscription package</a>.</p>
-
