@@ -16,5 +16,3 @@ url: /2012/10/vm-level-ip-multicast-over-vxlan.html
 <p>In the good old days when the hypervisor switches were truly dumb and used simple VLAN-based layer-2 switching, you could control the propagation of IP multicast traffic by deploying IGMP snooping on layer-2 switches (or, if you had Nexus 1000V, you could configure IGMP snooping directly on the hypervisor switch).</p>
 <p>Those days are gone (finally), but the brave new world still lacks a few features. No ToR switches are currently capable of digging into the VXLAN payload to find IGMP queries and joins, and it’s questionable whether Nexus 1000V can do IGMP snooping over VXLAN (IGMP snooping on Nexus 1000V is configured on VLANs).</p>
 <p><strong>End result</strong>: IP multicast running across a VXLAN segment will be delivered to all VMs in the same segment. Both hypervisor switches and VMs will to have spend CPU cycles to process unwanted multicast packets.</p>
-<h4>More information</h4><p>Further VXLAN technical details will be described in the <a href="http://www.ipspace.net/VXLAN">VXLAN Technical Deep Dive</a> webinar (<a href="http://vxlan.eventbrite.com/">register here</a>).</p>
-

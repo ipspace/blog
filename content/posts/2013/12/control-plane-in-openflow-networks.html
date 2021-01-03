@@ -3,6 +3,7 @@ url: /2013/12/control-plane-in-openflow-networks.html
 title: "Control Plane in OpenFlow Networks"
 date: "2013-12-11T07:54:00.000+01:00"
 tags: [ SDN,OpenFlow ]
+more_blurb: True
 ---
 
 <p>It’s <a href="https://www.opennetworking.org/sdn-resources/sdn-definition">easy to say</a> “<em>SDN is the physical separation of the network </em><a href="http://blog.ipspace.net/2013/08/management-control-and-data-planes-in.html"><em>control plane</em></a><em> from the forwarding plane, and where a control plane controls several devices</em>,” handwave over the details, and let someone else figure them out. Implementing that concept in a reliable manner is a totally different undertaking.<!--more--></p>
@@ -20,10 +21,3 @@ tags: [ SDN,OpenFlow ]
 <h4>In-Band Control Plane</h4><p>It’s possible (in theory) to get OpenFlow switches working with in-band control plane, but it’s a complex and potentially risky undertaking. To get an understanding of the complexities involved, read the <a href="http://git.openvswitch.org/cgi-bin/gitweb.cgi?p=openvswitch;a=blob;f=DESIGN;h=4d654d01d7b140a32e5974f7d0c7a08f6b5aa800;hb=HEAD#l599">relevant Open vSwitch documentation</a>, which succinctly explains the challenges and the OVS solution.</p>
 <p>That solution would work under optimal circumstances on properly configured switches, but would still use an out-of-band control plane in networks with transit OpenFlow-controlled switches (a transit switch being a switch passing control-plane traffic between controller and another switch).</p>
 <h4>But Google Got It to Work</h4><p>No, they didn’t. They <a href="http://blog.ipspace.net/2012/05/openflow-google-brilliant-but-not.html">use OpenFlow within the data center edge to control low-cost fixed-configuration switches</a> they used to implement a large-scale routing device. They still run IS-IS and BGP between data centers, and use something functionally equivalent to PCEP to download centrally computed traffic-engineering tunnels into the data center edge routers.</p>
-<h4>More details</h4><ul class="ListParagraph"><li>New to OpenFlow/SDN world? Not sure whether it makes sense? <a href="https://www.eventbrite.com/e/sdn-nfv-and-openflow-for-skeptics-tickets-9373529479?ref=ebapi">Register</a> for the free <a href="http://www.ipspace.net/SDN,_NFV_and_OpenFlow_for_Skeptics">SDN, OpenFlow and NFV for Skeptics</a> webinar.</li>
-<li>Need more OpenFlow details? Watch the recording of <a href="http://www.ipspace.net/OpenFlow_and_Software_Defined_Networking">OpenFlow and SDN</a> webinar.</li>
-<li>Interested in real-life data center OpenFlow implementation? You'll find all the details in the <a href="http://www.ipspace.net/ProgrammableFlow_Technical_Deep_Dive">ProgrammableFlow Technical Deep Dive</a> webinar.</li>
-<li>Looking for more SDN use cases? There's a <a href="http://www.ipspace.net/Real_Life_OpenFlow-based_SDN_Use_Cases">whole webinar describing them</a>.</li>
-<li>Need even more SDN/OpenFlow information? Check out my <a href="http://www.ipspace.net/SDN">SDN resources page</a>. </li>
-</ul>
-
