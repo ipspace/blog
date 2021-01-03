@@ -1,0 +1,9 @@
+---
+url: /2007/02/reliable-static-routing.html
+title: "Reliable static routing"
+date: "2007-02-16T14:51:00.000+01:00"
+tags: [ IP routing ]
+needs_fix: True
+---
+
+<a href="http://www.nil.com/ipcorner"><img src="http://www.nil.com/C1256F0A00429755/free_tips_IP_Corner.gif" style="float: right; margin: 2px 0px 6px 3px; border-width: 0px;"/></a>IOS release 12.3T introduced an interesting concept: static routes that are used only if an object a router is tracking (for example, next-hop router) is available. Named <a href="http://www.cisco.com/en/US/products/sw/iosswrel/ps5413/products_feature_guide09186a00801d862d.html">reliable static routing</a>, this feature allows you to constantly ping next-hop router (or any other IP address) and use the static routes only if the tested destination is reachable.<br/><br/>While the reliable static routes are easy to understand and configure, a careless implementation can lead to interesting routing loops or other instability problems. You'll find the needed in-depth design and implementation guidelines in my <a href="http://www.nil.com/ipcorner/">IP Corner</a> article <a href="http://www.nil.com/ipcorner/SmallSiteMultiHoming/">Small Site Multi-homing</a> (which is one of the prime applications for reliable static routing) in sections Not-so-Very-Static-Routes and End-to-End Connectivity Test.
