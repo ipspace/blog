@@ -7,7 +7,7 @@ title: VRF-aware services in Cisco IOS
 url: /2011/03/vrf-aware-services-in-cisco-ios.html
 ---
 
-<p>"<em>Which Cisco IOS services work in </em><em>a </em><em>VRF?</em>" is the question I get in almost any VRF-related discussion, so I made sure it’s covered very early in my <a href="http://www.ioshints.info/EnterpriseMPLS"><em>Enterprise MPLS/VPN deployment</em></a><em> </em>webinar. This is the explanation I usually give in the webinar:</p>
+<p>"<em>Which Cisco IOS services work in </em><em>a </em><em>VRF?</em>" is the question I get in almost any VRF-related discussion, so I made sure it’s covered very early in my <a href="https://www.ipspace.net/EnterpriseMPLS"><em>Enterprise MPLS/VPN deployment</em></a><em> </em>webinar. This is the explanation I usually give in the webinar:</p>
 <div style="text-align: center"><iframe allowfullscreen="" frameborder="0" height="390" src="http://www.youtube.com/embed/Ug9M1gjjGro?rel=0" title="YouTube video player" width="480"></iframe></div>
 <!--more--><p>The generic rules are quite simple:</p>
 <p><strong>TCP stack in Cisco IOS is VRF-aware</strong>. Every TCP server running in Cisco IOS is thus VRF-aware by definition – when the router receives the TCP SYN packet, it associates the TCP session with the incoming VRF and the replies use the correct VRF automatically.</p>
@@ -15,7 +15,7 @@ url: /2011/03/vrf-aware-services-in-cisco-ios.html
 <p><strong>Each client has to be made VRF-aware</strong>. TCP/UDP clients running in Cisco IOS (SNMP traps, AAA, IP SLA ...) must have explicit VRF support, including VRF-aware configuration commands. The client must specify which VRF to use when establishing outgoing sessions (or sending outgoing UDP packets) and they usually have to get that information from router configuration. The same is true for all transport mechanisms (GRE, IPsec, VPDN ...) and forwarding-path functions (NAT).</p>
 <p class="note">Sometimes you can push the outgoing packets through the correct VRF with local policy-based routing. Obviously this “solution” doesn’t scale.</p>
 <p>Many IOS services are already VRF-aware, but I’m positive you have your favorite grudge (for example, SSH client is still not VRF-aware). Please share it in the comments!</p>
-<h4>More information</h4><p>The concept of Virtual Routing and Forwarding (VRF) tables, VRF-aware services, inter-VRF routing leaking and inter-VRF NAT are described in my <a href="http://www.ioshints.info/EnterpriseMPLS"><em>Enterprise MPLS/VPN deployment</em></a><em> </em>webinar.</p>
-<p>The <a href="http://www.ioshints.info/DCI"><em>Data Center Interconnect</em></a> webinar describes how you can use MPLS/VPN between your data centers to ensure end-to-end layer-3 path isolation (or you could join the stretched VLAN craze and implement any of the L2 DCI technologies, which are also documented in the same webinar).</p>
-<p>Both webinars are also available as part of the <a href="http://www.ioshints.info/Subscription">yearly subscription package</a>.</p>
+<h4>More information</h4><p>The concept of Virtual Routing and Forwarding (VRF) tables, VRF-aware services, inter-VRF routing leaking and inter-VRF NAT are described in my <a href="https://www.ipspace.net/EnterpriseMPLS"><em>Enterprise MPLS/VPN deployment</em></a><em> </em>webinar.</p>
+<p>The <a href="https://www.ipspace.net/DCI"><em>Data Center Interconnect</em></a> webinar describes how you can use MPLS/VPN between your data centers to ensure end-to-end layer-3 path isolation (or you could join the stretched VLAN craze and implement any of the L2 DCI technologies, which are also documented in the same webinar).</p>
+<p>Both webinars are also available as part of the <a href="https://www.ipspace.net/Subscription">yearly subscription package</a>.</p>
 

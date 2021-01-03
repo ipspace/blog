@@ -9,7 +9,7 @@ url: /2010/11/vmware-virtual-switch-no-need-for-stp.html
 more_blurb: True
 ---
 
-<p>During the <a href="http://www.ioshints.info/DC30"><em>Data Center 3.0</em></a> webinar I always mention that you can connect a VMware ESX server (with embedded virtual switch) to the network through multiple active uplinks without link aggregation. The response is very predictable: I get a few “how does that work” questions in the next seconds. </p>
+<p>During the <a href="https://www.ipspace.net/DC30"><em>Data Center 3.0</em></a> webinar I always mention that you can connect a VMware ESX server (with embedded virtual switch) to the network through multiple active uplinks without link aggregation. The response is very predictable: I get a few “how does that work” questions in the next seconds. </p>
 <p>VMware did a great job with the virtual switch embedded in the VMware hypervisor (vNetwork Standard Switch – vSS – or vNetwork Distributed Switch – vDS): it uses special forwarding rules (I call them <em>split horizon switching</em>, Cisco UCS documentation uses the term End Host Mode) that prevent forwarding loops without resorting to STP or port blocking.</p>
 <!--more--><h4>Physical and virtual NICs</h4><p>The ports of a virtual switch (Nexus 1000V uses the term Virtual Ethernet Module – VEM) are connected to either physical Network Interface Cards (uplinks) or virtual NICs of the virtual machines. The physical ports can be connected to one or more physical switches and don’t have to be aggregated into a port channel.</p>
 <p style="clear: both; text-align: center;"><a href="/2010/11/s1600-vswitch.png" imageanchor="1" style=""><img border="0" src="/2010/11/s320-vswitch.png"/></a></p>
