@@ -2,7 +2,6 @@
 date: 2011-06-07T10:54:00.000+02:00
 tags:
 - workshop
-- you've asked for it
 - MPLS VPN
 title: Random MPLS/VPN Q&A
 url: /2011/06/random-mplsvpn-q.html
@@ -12,7 +11,7 @@ url: /2011/06/random-mplsvpn-q.html
 <blockquote class="cite">You said that the golden rule in simple VPN topologies is RD = export RT = import RT. Are there any other “generic rules”? How would you setup this RD&amp;RT association for hub&amp;spoke VPN scenario?</blockquote>
 <p>Common services VPN topologies could be implemented in two ways (on top of existing simple VPN topology):<!--more--></p>
 <ul class="ListParagraph"><li><strong>Low-touch scenario</strong>: Dedicated RD for common services VRF, customer import/export RT added to the common services VRF.</li>
-<li><strong>Scalable scenario</strong>: Dedicated RD for common services, asymmetric per-CS import/export RT (<a href="https://blog.ipspace.net/2011/05/mplsvpn-common-services-design.html">described here</a>).</li>
+<li><strong>Scalable scenario</strong>: Dedicated RD for common services, asymmetric per-CS import/export RT.</li>
 </ul>
 <p>There are at least two ways to implement hub&amp;spoke topology: the truly complex one described in my <a href="https://blog.ipspace.net/2007/06/using-mpls-vpn-books-to-study-for-ccip.html">MPLS/VPN Architectures book</a> and a slightly simpler one where the hub site advertises the default route to all spokes. In both cases you need two asymmetrical route targets (export RT for spokes imported into hub, export RT for hub imported into spokes) and unique RD for each VRF. </p>
 <blockquote class="cite">A reader of your blog said he uses L2TPv3 instead of LDP for MPLS implementation. Is this is similar to GRE encapsulation technique?</blockquote>

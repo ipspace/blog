@@ -12,7 +12,7 @@ A few days ago I received the following e-mail from one of my readers:
 
 Actually, I did... and exactly the same setup is included in the tested router configurations you get with the [*DMVPN: from Basics to Scalable Networks*](http://www.ioshints.info/DMVPN) webinar. While there are many things that can go wrong with DMVPN, I've never heard about *asymmetric routing* problems, so I started to investigate what's actually going on.
 <!--more-->
-As the story unfolded in the subsequent e-mails, I figured out the poor guy had been trying all sorts of random fixes: changing OSPF network type, changing the number of DMVPN subnets (one subnet with two hubs or two subnets with one hub each), doing weird inter-area aggregation tricks, even changing the administrative distance of OSPF neighbors (which [does not work too well with OSPF](https://blog.ipspace.net/2007/10/get-creative-ospf-route-filters.html)).
+As the story unfolded in the subsequent e-mails, I figured out the poor guy had been trying all sorts of random fixes: changing OSPF network type, changing the number of DMVPN subnets (one subnet with two hubs or two subnets with one hub each), doing weird inter-area aggregation tricks, even changing the administrative distance of OSPF neighbors (which does not work too well with OSPF).
 
 All that seemed totally weird; finally we managed to step back and focus on the business need: the two hub routers are widely separate (one is on the East Coast, the other one on the West Coast) and the spokes should use the closer one as the primary hub and the other one as the backup hub. I am positive the right combination of kludges could get you there with just two DMVPN subnets (one per hub), but a much cleaner design is the following:
 
