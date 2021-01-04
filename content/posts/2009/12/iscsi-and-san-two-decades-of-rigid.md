@@ -10,7 +10,7 @@ more_blurb: True
 ---
 Greg Ferro asked a very valid question in his blog: "[Why does iSCSI use TCP as the underlying transport protocol](http://etherealmind.com/why-does-iscsi-use-tcp/)"? It's possible to design storage-focused protocol that uses connectionless lower layers ([NFS](http://en.wikipedia.org/wiki/Network_File_System_(protocol)) comes to mind), but the storage industry has been too focused on their past to see past the artificial obstacles they've set up themselves.
 
-{{<figure src="s1600-History of SAN.png">}}
+{{<figure src="/2009/12/s1600-History of SAN.png">}}
 <!--more-->
 It all started in 1981 with [SCSI](http://en.wikipedia.org/wiki/SCSI): a standard way of connecting storage to hosts with [ribbon cables](http://en.wikipedia.org/wiki/SCSI). They've made the first mistake when they've decided to replace ribbon cables with fiber: instead of developing a network-oriented protocol, they replaced physical layer (cable) with another physical layer and retained whatever was running on top of the ribbon cable ([SCSI command protocol](http://en.wikipedia.org/wiki/SCSI)). If they wanted this approach to work, the new transport infrastructure had to have similar characteristics to the old one: almost no errors, no lost frames and guaranteed bandwidth. And thus Fiber Channel was born.
 <!--more-->

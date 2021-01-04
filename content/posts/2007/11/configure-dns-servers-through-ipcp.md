@@ -9,7 +9,7 @@ url: /2007/11/configure-dns-servers-through-ipcp.html
 ---
 After I\'ve fixed the default routing in my home office, I\'ve stumbled across another problem: the two ISPs I\'m using for my primary and backup link have DNS servers that reply solely to the DNS requests sent from their own IP address range:
 
-{{<figure src="homeSetupDNS.jpg">}}
+{{<figure src="/2007/11/homeSetupDNS.jpg">}}
 
 When the traffic is switched from the primary to the backup ISP, I therefore also need to switch the DNS servers. Fortunately, this is quite easy to do on a router; you just need to configure **ppp ipcp dns request** on the dialer interface and the router starts asking for the DNS server address as part of the IPCP negotiation.
 <!--more-->

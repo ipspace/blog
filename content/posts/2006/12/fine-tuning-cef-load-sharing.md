@@ -8,7 +8,7 @@ url: /2006/12/fine-tuning-cef-load-sharing.html
 ---
 In environments with a low number of IP hosts you have to fine-tune the CEF load-sharing algorithm to ensure that the traffic is spread between all parallel paths. A typical scenario is a primary-backup data center setup with pairs of replicating servers, as shown in the figure below.
 
-{{<figure src="LoadSharing_1.jpg">}}
+{{<figure src="/2006/12/LoadSharing_1.jpg">}}
 
 In these cases, you have to try different values of *seed* parameter of the [CEF universal algorithm.](https://blog.ipspace.net/2006/10/cef-per-destination-load-sharing.html)
 <!--more-->

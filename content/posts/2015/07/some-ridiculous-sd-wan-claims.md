@@ -13,7 +13,7 @@ url: /2015/07/some-ridiculous-sd-wan-claims.html
 
 Not surprisingly, the above paragraph triggered a severe case of Deja-Moo.
 <!--more-->
-![Deja-Moo](../../2021/01/deja-moo.jpg)
+![Deja-Moo](/2021/01/deja-moo.jpg)
 
 **Technology has nothing to do with it**. It's reasonably easy to deploy auto-configuring DMVPN network if you spend a few days studying how DMVPN work and thinking about configuration templates and auto-configuration mechanisms:
 
