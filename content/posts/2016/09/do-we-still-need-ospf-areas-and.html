@@ -28,7 +28,7 @@ url: /2016/09/do-we-still-need-ospf-areas-and.html
 <li>Preventing a change within an area from impacting other areas.</li>
 </ul>
 <p>The first reason is mostly bogus in 2016 unless you have a huge network.</p>
-<p>If you feel you might have a problem with the CPU load, you SHOULD change the vendor. Changes in inter-area LSAs should trigger partial SPF (the <a href="http://blog.ipspace.net/2008/02/when-ospf-becomes-distance-vector.html">distance vector part of OSPF</a>) which is relatively cheap compared to full SPF.</p>
+<p>If you feel you might have a problem with the CPU load, you SHOULD change the vendor. Changes in inter-area LSAs trigger partial SPF which is relatively cheap compared to full SPF.</p>
 <p>However, there’s the <em>failure domain separation </em>aspect of route summarization.</p>
 <h4>Areas and Route Summarization split network in isolated failure domains</h4><p>If you implement OSPF areas and route summarization correctly, you get excellent separation of failure domains:</p>
 <ul class="ListParagraph"><li>Failures in the core network don’t impact nodes in access network (particularly if you use totally stubby areas);</li>
