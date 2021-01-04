@@ -6,7 +6,7 @@ tags: [ BGP, OSPF, IS-IS, MPLS VPN, IP routing, EIGRP ]
 We had the usual gloomy December weather during the end-of-year holidays, and together with the partial lockdown (with confusing ever-changing rules only someone in Balkans could dream up) it managed to put me in OCD mood... and so I decided to remove broken links from the old blog posts. 
 
 While doing that I figured out how fragile our industry is -- I encountered a graveyard of ideas and products that would make [Google proud](https://killedbygoogle.com/). Some of those blog posts were removed, I left others intact because they still have some technical merits, and I made sure to write sarcastic update notices on product-focused ones. Consider those comments Easter eggs... now go and find them ;))
-
+<!--more-->
 Anyway, I also salvaged some of the old content I was stupid enough to publish somewhere else from archive.org. Here it is:
 
 * [Disable Flapping BGP Neighbors](https://blog.ipspace.net/2009/08/disable-flapping-bgp-neighbors.html)
