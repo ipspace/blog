@@ -16,7 +16,7 @@ And what's the "solution" proposed by Pica8? OpenFlow [Table Type Patterns](http
 
 > With TTP, network engineers and operators can now implement OpenFlow at greater scale -- in some cases, up to two million flows (a 1,000x increase from previous methodologies) -- while still using standard, white-box hardware.
 
-![Deja-Moo](../../2021/01/deja-moo.jpg)
+![Deja-Moo](/2021/01/deja-moo.jpg)
 
 An OpenFlow-based switch can do only whatever the underlying hardware can do and whatever the NOS vendor implemented in the OpenFlow agent. If Pica8 claims that their software works better with TTPs they're just saying that their previous software sucked.
 

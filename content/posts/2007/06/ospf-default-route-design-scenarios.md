@@ -11,9 +11,9 @@ Here's an interesting OSPF-related question I got::
 > "Which one is better: **default-information originate** or **default-information originate always**?"
 
 As always, the answer is *it depends*. If your OSPF edge routers have external default routes (for example, static default routes toward the Internet, see the next diagram), you\'d want them to announce the default route only when they have a default themselves (otherwise they would attract the traffic and then blackhole it). In this case, you\'d use **default-information originate**.
-
-{{<figure src="OSPF_A.jpg">}}
 <!--more-->
+{{<figure src="/2007/06/OSPF_A.jpg">}}
+
 If you use something else than OSPF as the core routing protocol of your network (as shown in the next diagram), then you\'d want the core routers to announce the default route into OSPF to attract the traffic from the edges regardless of whether they have the default route themselves or not. In this scenario, you\'d use **default-information originate always**.
 
 {{<figure src="OSPF_B.jpg">}}

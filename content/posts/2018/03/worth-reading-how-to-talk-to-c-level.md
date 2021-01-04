@@ -4,7 +4,7 @@ title: 'Worth Reading: How to Talk to a C-Level Executive'
 url: /2018/03/worth-reading-how-to-talk-to-c-level.html
 tags: [ worth reading ]
 ---
-Ever wondered who manages to produce [deja-moo](../../2021/01/deja-moo.jpg) like this one and why they'd do it?
+Ever wondered who manages to produce [deja-moo](/2021/01/deja-moo.jpg) like this one and why they'd do it?
 
 > We unveiled a vision to create an intuitive system that anticipates actions, stops security threats in their tracks, and continues to evolve and learn. It will help businesses to unlock new opportunities and solve previously unsolvable challenges in an era of increasing connectivity and distributed technology.
 

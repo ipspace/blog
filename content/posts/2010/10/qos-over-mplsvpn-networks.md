@@ -11,9 +11,9 @@ url: /2010/10/qos-over-mplsvpn-networks.html
 A while ago John McManus wrote a great [*DSCP QoS Over MPLS Thoughts*](http://etherealmind.com/dscp-qos-over-mpls-thoughts/) article at [Etherealmind blog](http://etherealmind.com/) explaining how 6-bit IP DSCP value gets mapped into 3-bit MPLS EXP bits (now [renamed to *Traffic Class* field](http://tools.ietf.org/html/rfc5462)). The most important lesson from his post should be "there is no direct DSCP-to-EXP mapping and you have to coordinate your ideas with the SP". Let's dig deeper into the SP architecture to truly understand the complexities of this topic.
 
 We'll start with a reference diagram: user traffic is flowing from Site-A to Site-B and the Service Provider is offering MPLS/VPN service between PE-A and PE-B. Traffic from multiple customer sites (including Site-A) is concentrated at SW-A and passed in individual VLANs to PE-A.
-
-{{<figure src="s1600-MPLSVPN_QoS.png" caption="QoS options in an MPLS/VPN network">}}
 <!--more-->
+{{<figure src="s1600-MPLSVPN_QoS.png" caption="QoS options in an MPLS/VPN network">}}
+
 Assuming the connection between Site-A and SW-A is a native IP connection (using native VLAN with no 802.1p markings), SW-A will apply its own marking rules to the inbound packets before sending them in 802.1q-tagged frames to PE-A. Most often, the DSCP values in the inbound IP packets will be ignored.
 
 SW-A might also perform inbound sub-rate policing. If you buy (for example) 20 Mbps service over 100 Mbps access link, it doesn't make sense to propagate your traffic bursts over the SW-A-PE-A link just to police (and drop) them on PE-A.

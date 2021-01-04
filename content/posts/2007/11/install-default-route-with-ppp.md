@@ -9,7 +9,7 @@ url: /2007/11/install-default-route-with-ppp.html
 ---
 In my home office, I\'m using DSL access to the Internet with ISDN backup to another ISP, as shown on the next figure:
 
-{{<figure src="homeSetup.jpg">}}
+{{<figure src="/2007/11/homeSetup.jpg">}}
 
 Obviously, I would like the ISDN backup to kick in whenever the primary connection goes down; two static default routes and [reliable static routing on the primary default](https://blog.ipspace.net/2007/02/reliable-static-routing.html) seem like a perfect solution.
 <!--more-->

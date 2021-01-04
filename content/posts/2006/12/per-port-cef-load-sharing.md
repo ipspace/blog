@@ -8,7 +8,7 @@ url: /2006/12/per-port-cef-load-sharing.html
 ---
 In designs with very low number of IP hosts, no per-destination load-sharing algorithm will work adequately. Consider, for example, an extranet design where a large number of IP hosts are NAT-ed to a single IP address which then accesses a single remote server.
 
-{{<figure src="LoadSharing_2.jpg">}}
+{{<figure src="/2006/12/LoadSharing_2.jpg">}}
 
 In this design, all the traffic flows between a single pair of IP addresses, making per-destination load-sharing unusable.
 <!--more-->

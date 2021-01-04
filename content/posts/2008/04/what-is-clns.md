@@ -8,7 +8,7 @@ url: /2008/04/what-is-clns.html
 ---
 According to the results of my recent *Do you use CLNS* poll, around 10% of my readers use CLNS in their network, while 36% of them wonder what that acronym stands for.
 
-{{<figure src="CLNSresults.jpg">}}
+{{<figure src="/2008/04/CLNSresults.jpg">}}
 
 Let\'s start with the acronyms. CLNS (Connection-Less Network Service) in combination with CLNP (Connection-Less Network Protocol) is the ISO (International Standards Organization) equivalent to IP.
 <!--more-->

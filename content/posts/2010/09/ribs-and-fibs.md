@@ -10,9 +10,9 @@ lastmod: 2020-12-26 13:51:00
 Every now and then, I'm asked about the difference between *Routing Information Base* (RIB), also known as IP Routing Table and *Forwarding Information Base* (FIB), also known as CEF table  (on Cisco's devices) or IP forwarding table.
 
 Let's start with an overview picture (which does tell you more than the next thousand words I'll write):
-
-{{<figure src="s1600-RibFib.png" caption="Interaction between routing protocols, routing table, and forwarding table">}}
 <!--more-->
+{{<figure src="/2010/09/s1600-RibFib.png" caption="Interaction between routing protocols, routing table, and forwarding table">}}
+
 A router has numerous ways of learning the best paths toward individual IP prefixes: they might be directly connected, configured as static routes or learned through dynamic routing protocols.
 
 Each dynamic routing protocol ([including RIP](https://blog.ipspace.net/2008/08/rip-route-database.html)) has its own set of internal data structures, known as OSPF/IS-IS database, EIGRP topology table or BGP table. The routing protocol updates its data structures based on routing protocol updates exchanged with its neighbors, eventually collecting all the relevant information. Throughout this article we'll work with 10.0.1.1/32 learned through OSPF and 10.0.11.11/32 learned through BGP, so let's inspect the relevant OSPF/BGP data structures.

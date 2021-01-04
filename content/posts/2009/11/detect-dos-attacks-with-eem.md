@@ -9,7 +9,7 @@ url: /2009/11/detect-dos-attacks-with-eem.html
 ---
 Someone sent me an interesting question a while ago: "is it possible to detect DOS flooding with an EEM applet?" Of course it is (assuming the DOS attack results in very high load on the Internet-facing interface) and the best option is the EEM interface event detector.
 
-{{<figure src="s400-Detect+interface+overload.png" caption="Detecting interface overload with EEM">}}
+{{<figure src="/2009/11/s400-Detect+interface+overload.png" caption="Detecting interface overload with EEM">}}
 
 The **interface** event detector is more user-friendly than the SNMP event detector. You can specify interface name and parameter name in the **interface** event detector; with SNMP event detector you have to specify SNMP object identifier (OID). The **interface** event detector stores the interface name, measured parameter name and its value in three convenient environment variables that you can use to generate *syslog* messages or alert the operators via e-mail.
 <!--more-->

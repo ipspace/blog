@@ -9,8 +9,9 @@ url: /2011/03/dont-try-to-fake-multi-chassis-link.html
 ---
 
 <p>Martin sent me an interesting challenge: he needs to connect an HP switch in a blade enclosure to a pair of Catalyst 3500G switches. His Catalysts are not stackable and he needs the full bandwidth between the switches, so he decided to fake the multi-chassis link aggregation functionality by configuring static LAG on the HP switch and disabling STP on it (the Catalysts have no idea they're talking to the same switch):</p>
-<figure><img src="s1600-FakeMLAG.png"></figure>
-<!--more--><p>He was already aware of at least two problems (but, as a vendor product manager told me in a recent phone call, "that's nothing that couldn't be solved with a bit of scripting"):</p>
+<!--more-->
+<figure><img src="/2011/03/s1600-FakeMLAG.png"></figure>
+<p>He was already aware of at least two problems (but, as a vendor product manager told me in a recent phone call, "that's nothing that couldn't be solved with a bit of scripting"):</p>
 <ul class="ListParagraph"><li>If one of the links fails, static LAG will not detect link failure and some of the servers connected to the HP switch will lose connectivity to the network.</li>
 <li>If the link between the Catalysts fails, he’ll face a split-brain scenario, as they won’t be able to use the connectivity through the HP switch.</li>
 </ul>
