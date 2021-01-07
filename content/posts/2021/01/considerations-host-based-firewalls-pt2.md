@@ -9,7 +9,7 @@ date: 2021-01-07 07:19:00
 A couple of months ago I had the pleasure to publish my [first guest post here](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html) and, as to be expected from ipspace.net, it triggered some great discussion.
 
 With this input and some open thoughts from the last post, I want to dive into a few more topics. 
-
+<!--more-->
 ## Application Engineering vs. (?) Network Engineering
 
 One trigger for the initial post was the question whether host-based firewalls (HBFs), potentially combined with solutions to learn rulesets based on flows, are intrinsically better than central firewalls. While we discussed the mileage around that already, comments and questions emphasized how often we have to handle a "software engineering vs. network engineering" mentality -- which should not involve any blame in either direction as this mindset is usually enforced by organizational structures. 
