@@ -2,8 +2,9 @@
 title: "Webinars in 2021"
 date: 2021-01-11 17:02:00
 tags: [ training ]
+series: coffee-break
 ---
-After [deciding to take a slightly longer coffee break](planning-coffee-break.html) I went through the list of outstanding projects trying to figure out which ones I could complete in first half of 2021, which ones I'll get to "eventually" and what's a lost cause.
+After [deciding to take a slightly longer coffee break](/2021/01/planning-coffee-break.html) I went through the list of outstanding projects trying to figure out which ones I could complete in first half of 2021, which ones I'll get to "eventually" and what's a lost cause.
 
 ### Guest Speakers
 
