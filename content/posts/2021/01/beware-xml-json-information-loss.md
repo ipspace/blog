@@ -2,6 +2,7 @@
 title: "Beware XML-to-JSON Information Loss (Junos with Ansible)"
 date: 2021-01-14 07:20:00
 tags: [ automation ]
+series: xml-json
 ---
 When you want to transport a complex data structure between components of a distributed system you're usually using a platform-independent data encoding format like XML, YAML, or JSON.
 
@@ -559,3 +560,7 @@ vagrant@vsrx> show route | display json
     ]
 }
 ```
+
+### Getting Your Hands Dirty
+
+Want to reproduce what I described? You'll find the sources in my [netsim-examples](https://github.com/ipspace/netsim-examples/tree/master/Ansible/XML) repository (and might find it useful to use my [netsim-tools](https://github.com/ipspace/netsim-tools) to generate Vagrantfile and Ansible inventory and configuration files).
