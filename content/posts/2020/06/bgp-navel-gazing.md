@@ -3,6 +3,7 @@ title: BGP Navel Gazing on Software Gone Wild
 date: 2020-06-25 05:57:00
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_112-BGP_Navel_Gazing.mp3
 tags: [ BGP, podcast, Software Gone Wild ]
+series: RPKI
 ---
 _This podcast introduction was written by [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio), the host of today's podcast._
 
