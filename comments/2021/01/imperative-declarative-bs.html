@@ -1,0 +1,37 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="343">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> AW</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c343" href="#343">15 January 2021 04:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Great thoughts! In addition to atomicity (in my mind this is tracking changes and rolling back the whole set if any fail) I want APIs to fully resolve the order of operations problem entirely. Simply, I think just having a start / stop point where all changes are rolled back if they are not all accepted is an important piece as well as being able to supply a list of desired outcomes <em>per object database</em>, but the ability to declare a configuration <em>set</em> which may reference multiple object databases, and be able to supply all of that in any order in a single transaction request and seeing it completed or rejected as a whole is I think my most desired feature. This may be part of what you meant in the article too and I&#39;m just agreeing with you :).</p>
+
+<p>For example, when I want to create a firewall policy or a new BGP neighbor configuration, I currently may need to create objects in several places in just the exact correct order before creating the policy / BGP config otherwise it gets rejected. </p>
+
+<p>In my mind, if vendor equipment has some requirement of a specific order of operations for a configuration set I think THEY really should be supplying the logic to make that happen, not the API consumer. The API consumer should only have to focus on the right settings in the agreed understandable format and then submit it via a transaction.</p>
+
+<p>I think the order of operations issue is by far the biggest frustration with many APIs. Needing to learn how to reference the specific object databases, learn the specific object models, AND the specific ORDER to accomplish a larger &quot;task&quot; puts the burden on the consumer to become experts on the ins and outs of how the consumed resource <em>thinks</em>. I really think that should be a vendor responsibility.</p>
+
+<p>Just my opinion! I&#39;d personally be a lot happier if REST APIs (my favorite offender) did this better!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
