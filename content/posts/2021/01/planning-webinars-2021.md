@@ -23,7 +23,7 @@ There are a few things I simply have to update to feel good:
 
 * First on the list: introduction to cloud networking section for *[Introduction to Cloud Computing](https://www.ipspace.net/Introduction_to_Cloud_Computing)* webinar.
 * Ansible webinar will get updated material on task includes, roles, and collections. I won't waste any more time describing their N+1-st attempt to get networking modules right.
-* The [network automation curriculum](https://www.ipspace.net/Roadmap/Network_Automation_webinars) is pretty well rounded, what's missing is a deep dive into network automation concepts (infrastructure-as-code, data models, data stores, single source of truth, intent-based networking...). I will try to get the material done before the summer break, and might have to run a few sessions in autumn
+* The [network automation curriculum](https://www.ipspace.net/Roadmap/Network_Automation_webinars) is pretty well rounded, what's missing is a [deep dive into network automation concepts](https://www.ipspace.net/Network_Automation_Concepts) (infrastructure-as-code, data models, data stores, single source of truth, intent-based networking...). I will try to get the material done before the summer break, and might have to run a few sessions in autumn
 * Gateway Load Balancer has to be added to AWS webinar.
 * [Miha Markočič](https://www.ipspace.net/Team:Miha_Markocic) has developed tons of AWS new automation examples -- they will be published in late January and February.
 * I have to add more *recommended design* information to [Designing Active-Active and Disaster Recovery Data Centers](https://www.ipspace.net/Designing_Active-Active_and_Disaster_Recovery_Data_Centers) webinar

@@ -73,7 +73,7 @@ Also keep in mind that many APIs that people would claim are *declarative* becau
 
 ### More Information
 
-I plan to cover intent-based networking and declarative- and policy APIs in Network Automation Concepts webinar (one of those things I feel need to get done before I [disappear for that coffee break](planning-coffee-break.html)).
+I plan to cover intent-based networking and declarative- and policy APIs in [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar (one of those things I feel need to get done before I [disappear for that coffee break](planning-coffee-break.html)).
 
 ### Revision History
 
