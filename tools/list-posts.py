@@ -75,11 +75,16 @@ def print_dir(dir_list):
   for entry in dir_list:
     date = entry['date']
     wday = date.weekday() if date else -1
-    color = "red" if not date else "green" if date.date() > today else "yellow" if date.date() == today else None
-    if last_date != None and date.date() == last_date.date():
+    if not date:
+      if last_date:
+        print("-----")
       color = "red"
-    elif wday <= last_day:
-      print("-----")
+    else:
+      color = "green" if date.date() > today else "yellow" if date.date() == today else None
+      if last_date != None and date.date() == last_date.date():
+        color = "red"
+      elif wday <= last_day:
+        print("-----")
     last_day = wday
     last_date = date
     line = "%20s: %s" % (date.strftime('%a %Y-%m-%d %H:%M') if date else "DRAFT",entry['name'])
