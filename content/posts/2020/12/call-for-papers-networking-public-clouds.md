@@ -2,6 +2,7 @@
 title: "Call for Presentations: Networking in Public Clouds"
 date: 2020-12-15 08:12:00
 tags: [ cloud ]
+draft: True
 ---
 In early November we organized a [2-day network automation event](https://www.ipspace.net/NetAutSol/Live) as part of our [Network Automation](https://www.ipspace.net/Building_Network_Automation_Solutions) course and the participants loved the new format... so we decided to use the same approach for the Spring 2021 [Networking in Public Clouds course](https://www.ipspace.net/PubCloud/).
 
