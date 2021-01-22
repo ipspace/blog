@@ -7,9 +7,17 @@
          "name": " Bellman",
          "pub": "2021-01-22T00:29:53",
          "type": "comment"
+      },
+      {
+         "date": "22 January 2021 07:20",
+         "html": "<p>Ivan, besides ROA--address origin validation, S-BGP also specifies Path Validation/Route Attestation. This one can deal with AS path spoofing, but comes with considerable overhead, both for the Update msg content, and the CPU utilization, so while path validation can be done, looks like major vendors like Cisco have opted not to implement it. </p>\n\n<p>And speaking of performance overhead associated with S-BGP, looks to me like it&#39;s often omitted in S-BGP discussions, but it can be a significant issue given the dynamics of the Internet. The Internet always has a high rate of BGP update/churn due to say, hot-potato routing changes, which is exacerbated by the density of connections in the lower-tier part of the Internet these days -- basically the Internet is getting both flatter and denser -- so doesn&#39;t processing S-BGP require considerable CPU power with this high-level of churn? Also, with the flatter and denser Internet topology, path hunting activity also tends to increase, again adding more updates to be processed. </p>\n\n<p>It would be very good to understand the performance implication as more and more prefixes make use of S-BGP. </p>\n\n<p>Also, S-BGP is more effective when there&#39;s widespread deployment. Looking at the current chart on the AWS blog post, we have 1.5m prefixes on the map as of now, which is good but still very small. So there&#39;s still a long way to go when S-BGP will become truly effective at preventing prefix hijacking, among other things. </p>\n\n<p>And just like you said, since BGP is such a complex ecosystem, one tool is never enough. As of now, the state of BGP security, for both control and data plane, is still very much incomplete and fragmented. The performance angle also needs to be worked out/cleared up as more and more prefixes &amp; AS are added, if it wants a chance of widespread adoption, or else it can potentially go the way of large-scale QOS or Multicast, or LISP even. </p>\n",
+         "id": "354",
+         "name": " Minh Ha",
+         "pub": "2021-01-22T07:20:45",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2021/01/bgp-rpki-aws.html"
 }

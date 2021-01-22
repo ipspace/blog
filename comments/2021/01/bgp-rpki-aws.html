@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -29,6 +29,33 @@
 <p>If the hijacker is further away, e.g. located in America, then there is a good chance that they can trick others in America to use their announcment.  But over here in Europe, there is reasonable chance that their announcment will lose against mine, since theirs is likely to have passed through more ASes than mine, <em>and</em> they have that one AS disadvantage to start with.  And within Sweden, they are even less likely to win.</p>
 
 <p>So RPKI can help a little bit, making life slightly more difficult for hijackers, but it is certainly not a panacea.  You should absolutely not <em>trust</em> it to protect you against hostile hijacks.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="354">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c354" href="#354">22 January 2021 07:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, besides ROA--address origin validation, S-BGP also specifies Path Validation/Route Attestation. This one can deal with AS path spoofing, but comes with considerable overhead, both for the Update msg content, and the CPU utilization, so while path validation can be done, looks like major vendors like Cisco have opted not to implement it. </p>
+
+<p>And speaking of performance overhead associated with S-BGP, looks to me like it&#39;s often omitted in S-BGP discussions, but it can be a significant issue given the dynamics of the Internet. The Internet always has a high rate of BGP update/churn due to say, hot-potato routing changes, which is exacerbated by the density of connections in the lower-tier part of the Internet these days -- basically the Internet is getting both flatter and denser -- so doesn&#39;t processing S-BGP require considerable CPU power with this high-level of churn? Also, with the flatter and denser Internet topology, path hunting activity also tends to increase, again adding more updates to be processed. </p>
+
+<p>It would be very good to understand the performance implication as more and more prefixes make use of S-BGP. </p>
+
+<p>Also, S-BGP is more effective when there&#39;s widespread deployment. Looking at the current chart on the AWS blog post, we have 1.5m prefixes on the map as of now, which is good but still very small. So there&#39;s still a long way to go when S-BGP will become truly effective at preventing prefix hijacking, among other things. </p>
+
+<p>And just like you said, since BGP is such a complex ecosystem, one tool is never enough. As of now, the state of BGP security, for both control and data plane, is still very much incomplete and fragmented. The performance angle also needs to be worked out/cleared up as more and more prefixes &amp; AS are added, if it wants a chance of widespread adoption, or else it can potentially go the way of large-scale QOS or Multicast, or LISP even. </p>
 </div>
           </div>
         </li>
