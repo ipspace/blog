@@ -2,6 +2,7 @@
 title: "Build Virtual Lab Topology: Dual Stack Addressing, ArcOS  and Junos Support"
 date: 2021-01-18 07:32:00
 tags: [ automation ]
+series: netsim-tools
 ---
 In mid-December I [announced a set of tools](https://blog.ipspace.net/2020/12/build-labs-netsim-tools.html) that will help you build Vagrant-based remote labs much faster than writing Vagrantfiles and Ansible inventories by hand.
 
