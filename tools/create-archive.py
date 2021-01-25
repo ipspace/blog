@@ -215,7 +215,7 @@ def scanPosts(path,archive,tags):
       if entry.is_dir():
         if not entry.name.startswith('.'):
           scanPosts(os.path.join(path,entry.name),archive,tags)
-      elif entry.is_file():
+      elif entry.is_file() and entry.name.find('.') > 0:
         scanFile(os.path.join(path,entry.name),archive,tags)
 
 args = parseCLI()
