@@ -38,7 +38,7 @@ You'll find more details (including other hybrids like Loose Source Routing) in 
 
 {{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
-# Video: Finding Paths Across the Network
+# (Pub) Video: Finding Paths Across the Network
 
 Regardless of the technology used to get packets across the network, someone has to know **how** to get from sender to receiver(s), and as always you have multiple options:
 
