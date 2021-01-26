@@ -13,6 +13,9 @@
       <h2 class='post__title' itemprop='name headline'>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
       </h2>
+      {{ with .Params.subtitle }}
+        <p class='subtitle'>{{ . }}</p>
+      {{ end }}
     </header>
     <div class='post__content' itemprop='articleBody'>
       {{ $truncated := and .Truncated (not $full) }}
