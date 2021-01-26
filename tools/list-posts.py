@@ -63,7 +63,7 @@ def scan_posts(path,dir_list,tag_list):
     if VERBOSE:
       print("Inspecting %s " % entry)
     if os.path.isdir(entry):
-      scan_posts(entry,archive,tags)
+      scan_posts(entry,dir_list,tag_list)
     elif os.path.isfile(entry):
       read_file(entry,dir_list,tag_list)
   return dir_list
