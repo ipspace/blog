@@ -1,6 +1,6 @@
 ---
 title: "MUST READ: Fast and Simple Disaster Recovery Solution"
-date: 2021-02-05 07:11:00
+date: 2021-02-04 07:11:00
 tags: [ high availability, design ]
 ---
 More than a year ago I was enjoying a cool beer with my friend [Nicola Modena](https://www.ipspace.net/Expert:Nicola_Modena) who started explaining how he solved the "_[you don't need IP address renumbering for disaster recovery](https://blog.ipspace.net/2019/12/you-dont-need-ip-renumbering-for.html)_" conundrum with _production_ and _standby_ VRFs. All it takes to flip the two is a few changes in import/export route targets.
