@@ -6,13 +6,13 @@ series: xml-json
 ---
 In the last weeks I described the challenges you might face when converting XML documents that contain lists with a single element into JSON, be it on device (Nexus OS) or in an Ansible module. Now let's see how we can fix that.
 
-{{<series>}}
+{{<series single="1">}}
 <!--more-->
 ### The Provably Correct Way
 
 Networking vendors are very vocal about their support for YANG data models. The correct approach would thus be to read the YANG data model before converting the XML document, identify XML elements that are supposed to be lists, and convert them into Python/JSON lists/arrays regardless of how many elements they have.
 
-That does sound like using a [Canadair CL-415](https://en.wikipedia.org/wiki/Canadair_CL-415) to put out a dumpster fire (if you ever find a video of that, please post it in the comments), but I'm positive there's a library out there doing exactly that (or a Rube Goldberg hack involving a half-dozen disparate projects glued together with Super Glue).
+It makes perfect sense to use YANG data model on the device when generating XML or JSON from common data structure, but doing it on your own just to convert some data you got from a **show** command sounds like using a [Canadair CL-415](https://en.wikipedia.org/wiki/Canadair_CL-415) to put out a dumpster fire (if you ever find a video of that, please post it in the comments), but I'm positive there's a library out there doing exactly that (or a Rube Goldberg hack involving a half-dozen disparate projects glued together with Super Glue).
 
 Gerhard Wieser was [quick to point out](https://twitter.com/G_wieser/status/1349658380034519040) that they wrote a tool to do exactly what I was asking, but looking at their [getting started page](https://docs.frinx.io/frinx-odl-distribution/oxygen/getting-started.html) it looks like the tool is focused more toward device configurations (that's a different problem) and running on top of Open Daylight, which feels like acquiring an aircraft carrier so you'll be able to launch your Canadair to put out that dumpster fire.
 
