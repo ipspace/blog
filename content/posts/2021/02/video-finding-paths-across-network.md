@@ -1,6 +1,6 @@
 ---
 title: "Video: Finding Paths Across the Network"
-date: 2021-01-29 07:21:00
+date: 2021-02-05 07:21:00
 tags: [ networking fundamentals, IP routing, switching, video ]
 ---
 Regardless of the [technology used to get packets across the network](/2021/01/video-multi-layer-switching-tunneling.html), someone has to know **how** to get from sender to receiver(s), and as always you have multiple options:
