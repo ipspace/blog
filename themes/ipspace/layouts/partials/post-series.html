@@ -1,4 +1,4 @@
-{{ if and .Params.series (not (.Scratch.Get "series")) }}
+{{ if and .Params.series (not (.Page.Scratch.Get "series")) }}
   {{ $me := .Permalink }}
   {{ $scr:= newScratch }}
   {{ with ($.Site.GetPage (printf "/series/%s" ( .Params.series | urlize ))) }}
@@ -10,7 +10,7 @@
         {{ range (.Pages).Reverse }}
           <li>
             {{ if eq .Permalink $me }}
-              {{ .Title }}
+              {{ .Title }} (this post)
             {{ else }}
               <a href="{{ .Permalink }}">{{ .Title }}</a>
             {{ end }}
