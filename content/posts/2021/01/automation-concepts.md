@@ -25,4 +25,7 @@ And just for the giggles I'll share my opinion on these "revolutionary" concepts
 
 The slide deck for *[Data Models and Data Stores](https://my.ipspace.net/bin/list?id=AutConcepts#DATAMODELS)* section is already online, the first live session will take place in early February 2021.
 
-I've probably missed something important -- please write a comment.
+### Revision History
+
+2021-01-29
+: Updated the [webinar description](https://www.ipspace.net/Network_Automation_Concepts) based on comments received on this blog post, in emails, and on LinkedIn. Thank you all!
