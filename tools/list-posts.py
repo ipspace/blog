@@ -81,6 +81,8 @@ def print_dir(dir_list):
       color = "red"
     else:
       color = "green" if date.date() > today else "yellow" if date.date() == today else None
+      if date.hour > 12:
+        color = "magenta"
       if last_date != None and date.date() == last_date.date():
         color = "red"
       elif wday <= last_day:

@@ -1,6 +1,6 @@
 ---
 title: "FreeRTR Deep Dive on Software Gone Wild"
-date: 2021-01-29 16:31:00
+date: 2021-01-29 06:31:00
 tags: [ BGP, IP routing, Software Gone Wild, podcast ]
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_115-FreeRTR.mp3
 ---
