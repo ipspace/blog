@@ -2,13 +2,12 @@
 title: "State Consistency in Distributed SDN Controller Clusters"
 subtitle: Why Can't We Have Good Things Like Partition-Resilient SDN Controllers
 date: 2021-02-10 06:57:00
-tags: [ SDN, design ]
+tags: [ SDN, design, high-availability ]
+series: consistent-state
 ---
 Every now and then I get a question along the lines of "_why can't we have a distributed SDN controller (because resiliency) that would survive network partitioning?_" This time, it's not the incompetency of solution architects or programmers, but the fundamental limitations of what can be done when you want to have consistent state across a distributed system.
 
-**TL&DR**: If your first thought was *[CAP Theorem](https://en.wikipedia.org/wiki/CAP_theorem)* you're absolutely right. You can probably stop reading right now. If you have no idea what I'm talking about, maybe it's time you get fluent in distributed systems concepts after you're finished with this blog post and all the reference material linked in it.
-
-I put together a [list of resources to get you started](https://www.ipspace.net/kb/tag/distributed-systems.html).
+**TL&DR**: If your first thought was *[CAP Theorem](https://en.wikipedia.org/wiki/CAP_theorem)* you're absolutely right. You can probably stop reading right now. If you have no idea what I'm talking about, maybe it's time you get fluent in distributed systems concepts after you're finished with this blog post and all the reference material linked in it. Don't know where to start? I put together a [list of resources I found useful](https://www.ipspace.net/kb/tag/distributed-systems.html).
 <!--more-->
 ## What State Are We Talking About?
 
