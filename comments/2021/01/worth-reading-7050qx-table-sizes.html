@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -20,6 +20,43 @@
             <div class="comment-content"><p>Surprisingly detailed documentation on their Trident 4 (including user guide and programming guide):</p>
 
 <p>https://www.broadcom.com/products/ethernet-connectivity/switching/strataxgs/bcm56780</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="371">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c371" href="#371">01 February 2021 08:37</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Going through the blog post, I&rsquo;ve several questions that most likely will be applicable to other chipsets as well, as they can overlap a lot in terms of architecture. </p>
+
+<p>First off, how come in just about every vendor&rsquo;s docos about how the FIB works, there&rsquo;s absolutely no info on how fast the TCAM is, in terms of clock frequency? Buyers need to know this, to have a rough estimate of the maximum lookup capability of their platform. For ex, if the TCAM is 170-200MHZ, that means a LC having even 1 100GE port most likely won&rsquo;t be able forward at line rate for small packets. NDA could be the reason it&rsquo;s being hidden here, but at the same time, this opens room for competition if certain vendors can come up with higher-performance chipsets. </p>
+
+<p>Second, how much of the CAM/TCAM is on-chip, and how much is off-chip? Considerable performance penalty can apply to off-chip lookup, due to the high RTT resulting from interconnect delay, and that&rsquo;s physics so it can&rsquo;t be changed. It&rsquo;d be good to know the arrangements of the memory banks. Here, for ex, Jericho LC chipset, which is used on NCS, has enough TCAM for 4m entries, but the bulk of it is off-chip. Broadcom. Cisco either made no mention of performance hit or claimed that it didn&rsquo;t affect lookup performance on NCS website as I recall, but that&rsquo;s selling:</p>
+
+<p>https://xrdocs.io/ncs5500/tutorials/Understanding-ncs5500-jericho-plus-systems/ </p>
+
+<p>I also notice Broadcom&rsquo;s (and vendors&rsquo;) docs usually just throw umbrella terms like chipset, ASIC, without specifying whether the ASIC is the LC or the fabric chipset. They do different things and so the distinction is very important. In this blog post, Arista was talking about the functionality of their LC Trident ASIC. </p>
+
+<p>Next, in the blog post, it said:</p>
+
+<p>&ldquo; the entry resources in the LPM table are large enough to be able to handle 64 bits worth of prefix information,  so we&rsquo;re able to program two 32 bit IPv4 routes per LPM entry. The first IPv4 route in the routing table consumes an LPM entry, and the next IPv4 route is able to be programmed in the second half of the same entry.&rdquo;</p>
+
+<p>Unless I&rsquo;m missing something, I don&rsquo;t thing that&rsquo;s how the hardware works. For TCAM LPM search, all of the entries are searched in parallel and then the first one among those having the longest prefix, is returned. So an entry either matches or it doesn&rsquo;t. How can you write the search logic to search half the entry??? My understanding is 8190 LPM entries are partitioned for maximum-length/double-wide IPv6 entries, meaning 2 entries are reported as one in EOS interface. On the hardware level, that would mean the TCAM chips have 16380 physical TCAM entries, with single-wide IPv6 and Ipv4 prefixes each occupying 1 entry probably 72-80 bit long, and double-wide/up-to-128 netmask IPv6 prefixes each occupying 2 entries for a total of 144-160 bits, making the lookup time twice as long for the double-wide IPv6 ones. The rest of the post seems to fit this description.</p>
+
+<p>Their ALPM trick for FIB compression is cool, but it comes with caveat. As now you have to do one more lookup to get to the precise prefix, lookup latency has increased. </p>
+
+<p>All in all, looking at how complicated things are just for the basic lookup phase, one can see the effect of cut-through switching adds minimal improvement to the total port-to-port delay, due to the many steps involved in getting the packets from ingress to egress, and the resulting latency. If Arista manages to improve nominal device delay, the improvement most likely comes from some of the architectural innovation in the forwarding pipeline or in the fabric, not from cut-through paradigm.</p>
 </div>
           </div>
         </li>
