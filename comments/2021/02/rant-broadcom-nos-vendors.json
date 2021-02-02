@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "02 February 2021 10:30",
+         "html": "<p>&lt;i&gt;providing line-rate for 64-byte packet at 100Gbps is mostly mission impossible, considering that packets arrive every 6.7 ns and you have probably less than half that time to finish an IP lookup if you want to make it in time&lt;/i&gt;</p>\n\n<p>I did not clearly understand this. It seems to imply that switch forwarding delay (as defined by RFC 4689) needs to be lower than packet transmission time in order to get line-rate processing. As far as I know, there are no commercial switches with sub-10 ns forwarding latency; Mellanox announces their 300 ns cut-through latency @ 100Gbps as the best latency. </p>\n\n<p>If the comment refers to the TCAM access becoming a bottleneck, I believe there are mechanisms to pipeline TCAM accesses and avoid the bottleneck (or other tricks such as banked implementations with parallel bank accesses, reuse previous cached results, etc.), or simply replication mechanisms to increase the throughput of this element. </p>\n\n<p>Could someone clarify this? Thanks!</p>\n",
+         "id": "377",
+         "name": " Enrique Vallejo",
+         "pub": "2021-02-02T10:30:46",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/02/rant-broadcom-nos-vendors.html"
+}
