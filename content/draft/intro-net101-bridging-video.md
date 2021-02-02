@@ -39,5 +39,3 @@ In today's video we'll look at some of the supposed use cases and stable solutio
 
 
 
-
-
