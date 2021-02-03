@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>9 comments:</h4>
+  <h4>10 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -170,6 +170,45 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="380">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> GME</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c380" href="#380">03 February 2021 09:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>I had a thought about this kind of setup last year.</p>
+
+<p>I was not happy with the setup, but basically I had 2 options:</p>
+
+<p>-1. - 2 VC of 2 members, each VC in 1 DC, connected via 2*10Gbps in a LAG (same as your &quot;Use IRF within the data center&quot; proposed solution)
+-2. - 1 VC of 4 members, accross 2 DC, connected via 2*10Gbps as the VC link</p>
+
+<p>One of these switch had to do the inter VLAN routing.</p>
+
+<p>I was concerned that the trafic coming from DC-B and going to DC-B will have to go to DC-A to be routed.
+For the 1st option, I knew there was nothing to do.
+For the 2nd one, I had a hope.</p>
+
+<p>I reached the vendor (Alcatel-Lucent Enterprise, and switches are 4*OS6900-X40) and he told me that, in their VC implementation, only the first frame of a flow is sent to the VC master.
+The VC master then inject forwarding rules in the VC slaves and next frames are forwarded locally (in DC-B only) and so the VC link is less charged.</p>
+
+<p>So I went for the option #2.</p>
+
+<p>Unfortunatelly I still don&#39;t see many options when customer network is mainly Layer2.</p>
+</div>
           </div>
         </li>
       </div>
