@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "04 February 2021 08:32",
+         "html": "<p>If I understand Adrian&#39;s solution correctly, he would also have VRF Prod and VRF DRP at the DRP site (see the last picture from his blog post). Both VRFs (Prod and DRP) at the DRP site are connected via so called pivot servers for management purposes. Those pivot servers will probably have one leg in VRF Prod (10.1.0.0/16) and one leg in VRF DRP (10.0.0.0/16). Then for customer facing services he relied on NAT and rerouting their public IP space by the ISP. The latter is suboptimal as you depend on someone else (ISP in this case). It&#39;s also questionable how often the VMs and DBs (storage) is replicated to DRP site. Adrian&#39;s solution is not bad but convoluted.\nNicola&#39;s solution looks more elegant to me as he only needs to reprogramm route target imports/exports.\nI&#39;m bothered about having the same IP addresses on both the production and DR site as it is not really needed. Most applications need some form of high availability which results in distributed systems. In the end it&#39;s all about the CAP theorem. You have to choose two, you can not have all three. The most important thing is your data. Maybe you can live with eventual consistency. If so spend more time in proper and intelligent load balancing (or failover). If you depend on consistency of your data then your application has to deal with failures.</p>\n",
+         "id": "384",
+         "name": "Anonymous",
+         "pub": "2021-02-04T20:32:13",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/02/fast-simple-disaster-recovery-solution.html"
+}
