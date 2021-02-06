@@ -8,7 +8,7 @@ I made a [flippant remark in a blog comment](https://blog.ipspace.net/2021/01/wo
 > While it's academically stimulating to think about forwarding small packets (and applicable to large-scale VoIP networks), most environments don't have to deal with those. Looks like it's such a non-issue that I couldn't find recent data; in the good old days ~50% of the packets were 1500 byte long.
 
 ... and Minh Ha (by now a regular contributor to my blog) quickly set me straight with a [lengthy comment](https://blog.ipspace.net/2021/01/worth-reading-7050qx-table-sizes.html#376) that's too good to be hidden somewhere at the bottom of a page. Here it is (slightly edited). Also, you might want to read other comments to the original blog post for context.
-
+<!--more-->
 ---
 
 I don't deny that small packets are not too much of an issue on a daily basis, but there're several considerations that put that topic beyond academia. First one is quite obvious. To benchmark how well a router/switch performs vs the next one, a common ground needs to be used, and as traditionally routers are evaluated using their worst-case performance, small packets are useful for benchmarking.
