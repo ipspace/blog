@@ -51,7 +51,7 @@ INFO: You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscript
 
 JUMP-LINK: [Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/6%20-%20Policies%20and%20Centralized%20Magic.mp4?doccode=CiscoSDWAN)
 
-# Video: Cisco SD-WAN Policies Review
+# (Pub) Video: Cisco SD-WAN Policies Review
 
 The second part of the series focuses on design considerations and trade-offs in several scenarios. [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) briefly reviews the [types of policies and their capabilities](https://my.ipspace.net/bin/get/CiscoSDWAN/7%20-%20Policies%20review.mp4?doccode=CiscoSDWAN) before discussing what to keep in mind when designing the solution.
 
