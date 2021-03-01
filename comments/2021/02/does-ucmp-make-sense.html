@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -56,6 +56,39 @@
               </span>
             </div>
             <div class="comment-content"><p>How about even Large CLOS networks with the same interface capacity, but accounting for things to fail; fabric cards, links or nodes in disaggregated units. You can either UCMP or drain large parts of your network to get the most out of ECMP.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="427">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c427" href="#427">01 March 2021 08:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Use-cases aside, I think the bigger question is: is it technically viable to implement UCMP in Link State Protocols? LFA, in its simplest form, is the LS&#39; version of UCMP, and it&#39;s computationally intensive when you do it for 1 leaf destination. When you generalize it to calculate UCMP paths to every destination in the network, and the number of nodes gets really huge, into the thousands, this can be computationally intractable. That&#39;s why vendors have to take shortcuts, for ex, not implementing TI-LFA for the case of node failure, only link-failure. </p>
+
+<p>The architects of SPB also faced this computational problem earlier on during their design phase. SPB&#39;s SPF calculation is way more painful than that of OSPF/ISIS, because instead of doing it once from the perspective of the computing router, a SPB switch has to do all-pair SPF calculations, once for each pair of source-destination in the whole topology. Even though they claim that the all-pair SPFs can be trivially parallelized on multi-core CPUs using B-VIDs as the tree identifiers, I don&#39;t believe SPB has ever been tested on real topology of 1000s of nodes. And there&#39;s a limit to multi-core, as the inter-core bus contention and the LLC become the dominating bottleneck factor. Finally, SPB is fundamentally incapable of doing UCMP because the requirement of LFA conflicts with SPB&#39;s path congruency requirement and RPFC will make sure LFA won&#39;t work. </p>
+
+<p>So even if there are situations that require the use of UCMP, one of which brought up by Pete, I don&#39;t think it&#39;s worth the pain for vendors to come up with a UCMP solution for LS protocols Ivan. This is because Link-state protocols essentially work on a common LSDB of global info, and this centralized model won&#39;t scale to very large DB sizes, just like Openflow has tried and failed. Advanced distance vector protocols handle this way more elegantly. </p>
+
+<p>Come to think of it, from the very beginning, in order to scale LS, their inventors had to resort to areas, basically turning LS protocols into distance-vector ones, inter-area-wise. And RIFT, in order to scale better than existing LS protocols in flood-heavy environments, also has to resort to distance-vector principles :)). BGP, the most scalable routing protocol, is a distance-vector protocol after all. </p>
+
+<p>And yet, protocols like EIGRP often got put down over the years in favor of OSPF:</p>
+
+<p>https://www.networkworld.com/article/2347622/eigrp-vs-ospf.html</p>
+
+<p>https://www.networkworld.com/article/2347735/two-more-perspectives-on-eigrp.html</p>
+
+<p>I feel at some point, you might want to write a detailed post on EIGRP to clarify these points raised by Jeff in the 2 articles, as you&#39;re the EIRGP guy Ivan ;) . I find the last sentence in the 2nd article kind of a hidden admission that deep down, Jeff knows EIRGP happens to be the better one among the two though. </p>
 </div>
           </div>
         </li>
