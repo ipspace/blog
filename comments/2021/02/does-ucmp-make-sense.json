@@ -31,9 +31,17 @@
          "name": " Minh Ha",
          "pub": "2021-03-01T08:30:28",
          "type": "comment"
+      },
+      {
+         "date": "01 March 2021 09:03",
+         "html": "<p>Re MPTCP, I think it (somewhat) provides an answer to your long-time quest for a session protocol for TCP Ivan :p.  And while MPCTP indeed has its use, in mobile networks where the RTT can vary big time between Wifi and 4G, MPTCP can suffer from HOL blocking on both sender and receiver side, when one sub-flow has to wait for another carrying earlier packets to arrive, basically out-of-order problem. Also, when the flow size is small and bandwidth is high, MPTCP might not have time to utilize the sub-flows or use them effectively, resulting in similar or even worse latency than vanilla TCP. </p>\n\n<p>In DC scenarios, again results vary. For workloads that make use of long-lived elephant flows, MPTCP can provide throughput benefits. For mice flows, which also account for a lot of traffic in DCs, MPTCP&#39;s setup and scheduling overhead outweighs its benefit, so latency performance can be lower than that of single-flow TCP. Also, for disk-bound workloads, since the network is much faster than the disk access time, using MPTCP again provides no benefit, as the bottleneck lies with the disk system.</p>\n\n<p>OTOH, MPTCP can cause starvation/fairness issues in partition/aggregate workload, like MapReduce, or any kind of many-to-one traffic. This kind of traffic can result in Incast scenarios, and TCP Incast can result in TCP Outcast problem for small flows destined to the same host as big flows.  MPTCP makes Outcast worse because of its multi-flow nature, adding to the total number of competing flows. </p>\n\n<p>I think wrt to DCs, DC-TCP provides a much better solution than MPTCP. It works well; it mitigates Incast and Outcast problems, and it does away with big buffer, improving latency. Practically speaking, DCs already have much smaller RTT latencies than WAN/Internet, so solutions that are not viable on the later can be applied here. I&#39;m referring specifically to per-packet ECMP. Per-packet ECMP provides close to ideal network capacity utilization, at the expense of potential reordering. But since DC links have plenty of capacity, DC networks also have much lower latencies, reordering is less likely (due to lots of bandwidth) and can be tolerable (due to much lower RTTs). Coupling that with DC-TCP which deals efficiently with congestion, and we can have a network that makes the best use of traffic load balancing, all without the need for MPTCP, which can be complex to implement.    </p>\n",
+         "id": "428",
+         "name": " Minh Ha",
+         "pub": "2021-03-01T09:03:28",
+         "type": "comment"
       }
    ],
-   "count": 4,
+   "count": 5,
    "type": "post",
    "url": "2021/02/does-ucmp-make-sense.html"
 }
