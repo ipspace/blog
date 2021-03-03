@@ -47,9 +47,17 @@
          "name": "Henk",
          "pub": "2021-03-01T13:39:51",
          "type": "comment"
+      },
+      {
+         "date": "03 March 2021 05:47",
+         "html": "<p>Henk, thx a lot for your insight :))! Indeed, your approach is exactly what vanilla LFA uses to calculate backup paths. LFA uses that to calculate the alternate path(s) for one node, by removing the link from the calculating router to the protected node from the LSDB, then perform x number of SPF, x = no of immediate neighbour, so I was initially having trouble visualizing how this approach generalizes to all nodes in a topology. At first, I was thinking of the simplistic way of doing this: do a reverse SPF, once for each and every node (rooted at them), back to the computing router, with the shortest path link toward that node removed, so the result will be the 2nd best path. That&#39;s very computationally intense and won&#39;t scale when the number of nodes get too high. Do you still remember the detailed algorithm Cisco used to generalize this UCMP calculation to every node in the topology? It&#39;d be really great to know.</p>\n\n<p>I also did a quick search, and found out that indeed IOS-XR supports UCMP for both IS-IS and OSPF. So looks like it&#39;s found its use in a niche somewhere :)</p>\n\n<p>https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-xr-software/213936-understanding-cef-weight-distributions-i.html</p>\n",
+         "id": "433",
+         "name": " Minh Ha",
+         "pub": "2021-03-03T05:47:31",
+         "type": "comment"
       }
    ],
-   "count": 6,
+   "count": 7,
    "type": "post",
    "url": "2021/02/does-ucmp-make-sense.html"
 }
