@@ -1,7 +1,7 @@
 ---
 title: "Webinars in 2021"
-date: 2021-01-11 17:02:00
-lastmod: 2021-01-30 08:49:00
+date: 2021-01-11 07:02:00
+lastmod: 2021-03-03 17:41:00
 tags: [ training ]
 series: coffee-break
 ---
@@ -12,9 +12,9 @@ After [deciding to take a slightly longer coffee break](/2021/01/planning-coffee
 [Irena](https://www.ipspace.net/Team:Irena_Marcetic) is telling me that I should stop inviting guest speakers -- our calendar is full until June 2021. Here's what we have planned and what we got done at the time of the last update ({{<lastmod>}}).
 <!--more-->
 * Deep dive into [NSX-T Federation](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive) by [Jerome Catrouillet](https://www.ipspace.net/Author:Jerome_Catrouillet) is [complete](https://my.ipspace.net/bin/list?id=NSX#FEDERATION), and concludes the NSX-T 3.0 update process.
-* Two more sessions of [Kubernetes Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive)
-* Several sessions of [Cisco ACI Deep Dive](https://www.ipspace.net/Cisco_ACI_Deep_Dive)
-* [Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor) will be back with an [intensive course on reliability theory](https://www.ipspace.net/Reliability_Theory:_Networking_through_a_Systems_Analysis_Lens)
+* In the [Kubernetes Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar we already covered basics, services, and details of Container Network Interface. Next on the list: service mesh.
+* We still have several sessions of [Cisco ACI Deep Dive](https://www.ipspace.net/Cisco_ACI_Deep_Dive) to do.
+* [Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor) started an [intensive course on reliability theory](https://www.ipspace.net/Reliability_Theory:_Networking_through_a_Systems_Analysis_Lens)
 * [Jason Belk](https://www.linkedin.com/in/jason-b-4ab11635/) will redo the NETCONF/YANG material and add RESTCONF to the mix
 * [Dinesh Dutt](https://www.ipspace.net/Author:Dinesh_Dutt) will talk about IP routing in 3-tier leaf-and-spine topology
 
@@ -22,9 +22,9 @@ After [deciding to take a slightly longer coffee break](/2021/01/planning-coffee
 
 There are a few things I simply have to update to feel good (last status update on {{<lastmod>}}):
 
-* First on the list: introduction to cloud networking section for *[Introduction to Cloud Computing](https://www.ipspace.net/Introduction_to_Cloud_Computing)* webinar.
-* Ansible webinar will get updated material on task includes, roles, collections ([published](https://my.ipspace.net/bin/list?id=Ansible#INCLUDES)). I will also redo the section on Ansible debugger, and add a short intro to Jinja2 includes. I won't however waste any more time describing their [N+1-st attempt to get networking modules right](https://my.ipspace.net/bin/get/Ansible/Errata-Network-Overview.md?doccode=Ansible).
-* The [network automation curriculum](https://www.ipspace.net/Roadmap/Network_Automation_webinars) is pretty well rounded, what's missing is a [deep dive into network automation concepts](https://www.ipspace.net/Network_Automation_Concepts) (infrastructure-as-code, data models, data stores, single source of truth, intent-based networking...). The webinar outline is done, I will run a few live sessions before the summer break, and continue in autumn.
+* [Networking part](https://my.ipspace.net/bin/list?id=Cloud101#NET) of *[Introduction to Cloud Computing](https://www.ipspace.net/Introduction_to_Cloud_Computing)* webinar is complete.
+* Ansible webinar already got updated material on task includes, roles, collections ([published](https://my.ipspace.net/bin/list?id=Ansible#INCLUDES)). I will also redo the section on Ansible debugger, and add a short intro to Jinja2 includes. I won't however waste any more time describing their [N+1-st attempt to get networking modules right](https://my.ipspace.net/bin/get/Ansible/Errata-Network-Overview.md?doccode=Ansible).
+* The [network automation curriculum](https://www.ipspace.net/Roadmap/Network_Automation_webinars) is pretty well rounded, what's missing is a [deep dive into network automation concepts](https://www.ipspace.net/Network_Automation_Concepts) (infrastructure-as-code, data models, data stores, single source of truth, intent-based networking...). We started with [data models](https://my.ipspace.net/bin/list?id=AutConcepts#DATAMODELS), more to come in late spring/early summer.
 * Gateway Load Balancer has to be added to AWS webinar.
 * Virtual Hub has to be added to Azure webinar.
 * [Miha Markočič](https://www.ipspace.net/Team:Miha_Markocic) has developed [tons of AWS new automation examples](https://blog.ipspace.net/2021/01/aws-networking-automation-examples.html) (already published).
@@ -59,6 +59,12 @@ I had a few more ideas on the back burner. They might happen in another lifetime
 Have I missed anything? Please send me an email (if you're a subscriber you know how to reach me, otherwise use the *Contact* form).
 
 ### Revision History
+
+2021-03-03
+: * Introduction to cloud networking is complete.
+  * Reliability course has started.
+  * Data models part of automation concepts is mostly complete, more to come in late spring.
+  * Kubernetes Deep Dive is progressing nicely.
 
 2021-01-30
 : Updated with a few more things to fix found in January 2021
