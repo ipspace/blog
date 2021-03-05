@@ -1,5 +1,6 @@
 ---
 title: "Chasing Anycast IP Addresses"
+lastmod: 2021-03-05 16:22:00
 date: 2021-03-03 06:02:00
 tags: [ IP routing, load balancing ]
 ---
@@ -22,4 +23,9 @@ Years ago, someone got a great idea to use speed of light to answer the question
 
 Deploying the probes shouldn't be a big deal. Even if you can't use [RIPE Atlas](https://atlas.ripe.net/), it shouldn't be a problem to deploy a few virtual machines in one of the large public clouds.
 
-A few months ago someone posted a link to a really good article describing an even better technique, but of course I lost it. Please write a comment if you happen to have it. Thank you!
+An even better idea is to send probes (example: pings, TCP SYNs) to the target IP address from a globe-spanning anycast network. If the destination is a unicast address, all responses will go to a single probing node (the one closest to the destination), if multiple probes receive the responses, you're almost certainly dealing with an anycast destination. For more details, [read this article](https://blog.apnic.net/2020/12/15/manycast2-using-anycast-to-measure-anycast/) (thanks a million to Alexander Grigorenko for posting the link in the comments).
+
+### Revision history
+
+2021-03-05
+: Reworded the last paragraph together with a link to MAnycast² article.
