@@ -59,13 +59,14 @@ INFO: You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscript
 
 JUMP-LINK: [Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/7%20-%20Policies%20review.mp4?doccode=CiscoSDWAN)
 
-# Video: Cisco SD-WAN Routing Design
+# (pub) Video: Cisco SD-WAN Routing Design
 
-After reviewing policies, its time to dig into the routing design. In this section, [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) enumerates several possible topologies, types of transport, their advantages and drawbacks, considerations for tunnel count and regional presence, and what you should consider beforehand when [designing the solution from the control plane's perspective](https://my.ipspace.net/bin/get/CiscoSDWAN/8.1%20-%20Routing%20Design.mp4?doccode=CiscoSDWAN).
+After reviewing Cisco SD-WAN policies, it's time to dig into the routing design. In this section, [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) enumerated several possible topologies, types of transport, their advantages and drawbacks, considerations for tunnel count and regional presence, and what you should consider beforehand when [designing the solution from the control plane's perspective](https://my.ipspace.net/bin/get/CiscoSDWAN/8.1%20-%20Routing%20Design.mp4?doccode=CiscoSDWAN).
 
-INFO: You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.
+{{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/8.1%20-%20Routing%20Design.mp4?doccode=CiscoSDWAN){{</jump>}}
 
-JUMP-LINK: [Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/8.1%20-%20Routing%20Design.mp4?doccode=CiscoSDWAN)
+{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+
 
 # Video: Cisco SD-WAN Site Design
 
