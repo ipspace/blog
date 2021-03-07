@@ -1,7 +1,8 @@
 ---
 title: "Azure Route Server: The Challenge"
 date: 2021-03-10 07:50:00
-tags: [ cloud, SD-WAN ]
+tags: [ Azure, cloud, SD-WAN ]
+series: azure-rs
 ---
 Imagine you decided to deploy an SD-WAN (or DMVPN) network and make an Azure region one of the sites in the new network because you already deployed some workloads in that region and would like to replace the VPN connectivity you're using today with the new shiny expensive gadget.
 
@@ -9,15 +10,15 @@ Everyone told you to deploy two SD-WAN instances in the public cloud virtual net
 
 {{<figure src="/2021/03/azure-rs-initial-design.png">}}
 <!--more-->
-In the next moment, you'll likely experience an extremely painful collision with reality, shattering most PowerPoint fairy  tales. The gray box labeled *Azure Vnet* is really a router (see [Azure Networking 101](https://blog.ipspace.net/2020/05/azure-networking-101.html) for details), and a router won't forward packets unless it has *routes to the destinations* ([details](https://blog.ipspace.net/2021/03/video-path-discovery-bridging-routing.html)).
+In the next moment, you'll likely experience an extremely painful collision with reality, shattering most PowerPoint fairy  tales. The gray box labeled *Azure VNet* is really a router (see [Azure Networking 101](https://blog.ipspace.net/2020/05/azure-networking-101.html) for details), and a router won't forward packets unless it has *routes to the destinations* ([details](https://blog.ipspace.net/2021/03/video-path-discovery-bridging-routing.html)).
 
 {{<figure src="/2021/03/azure-rs-virtual-router.png">}}
 
 To make your design work, you'd have to run a routing protocol between your SD-WAN appliances and the Azure virtual router (ignoring for the moment the *[we don't need routing protocols in SD-WAN](https://blog.ipspace.net/2015/06/software-defined-wanwell-orchestrated.html)* stupidities)... but you can't. 
 
-There are two ways to influence Azure Vnet routing:
+There are two ways to influence Azure VNet routing:
 
-* You're using a VPN connection to the Vnet, and run BGP over it;
+* You're using a VPN connection to the VNet, and run BGP over it;
 * You configure static routes (called *user-defined routes*).
 
 Cisco hyped the first solution a while ago: deploy two CSR instances in a separate virtual network, and establish VPN tunnels with the target virtual networks. [Clumsy, slow, and expensive](https://blog.ipspace.net/2018/09/using-csr1000v-in-aws-instead-of.html). This time you can have all three.
