@@ -1,6 +1,6 @@
 ---
 title: "Public Cloud Behind-the-Scenes Magic"
-date: 2021-03-11 07:27:00
+date: 2021-03-18 07:27:00
 tags: [ cloud ]
 ---
 One of my subscribers sent me this question after watching the [networking part](https://my.ipspace.net/bin/list?id=Cloud101#NET) of *[Introduction to Cloud Computing](https://www.ipspace.net/Introduction_to_Cloud_Computing)* webinar:
