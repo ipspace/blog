@@ -1,6 +1,6 @@
 ---
 title: "Topology- and Congestion-Driven Load Balancing"
-date: 2021-03-10 07:28:00
+date: 2021-03-11 07:28:00
 tags: [ load balancing ]
 ---
 When preparing an answer to an interesting idea left as a comment to my unequal-cost load balancing blog post, I realized I never described the difference between *topology-based* and *congestion-driven* load balancing.
