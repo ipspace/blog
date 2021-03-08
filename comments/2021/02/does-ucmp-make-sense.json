@@ -55,9 +55,17 @@
          "name": " Minh Ha",
          "pub": "2021-03-03T05:47:31",
          "type": "comment"
+      },
+      {
+         "date": "08 March 2021 03:26",
+         "html": "<p>Sorry for the delayed answer. I don&#39;t know how cisco has implemented UCMP.</p>\n\n<p>Your algorithm (remove one link, redo SPF, find backup-paths) will certainly give alternate paths. However, I don&#39;t think it guarantees those will be loop-free.</p>\n\n<p>You need to understand EIGRP first. And how it guarantees loop-free UCMP. This is used in IPFRR. It is even described in the RFC (rfc5286): https://tools.ietf.org/html/rfc5286#section-3.2</p>\n\n<p>&quot;Distance_opt(N, D) &lt; Distance_opt(N, E) + Distance_opt(E, D)&quot;</p>\n\n<p>In words: if a router N computes routes to D, and it wants to know if E is a loop-free alternate next-hop, it needs to know the distance between E and D.</p>\n\n<p>How does N know the distance beteen E and D? Well, the only way is that N does an SPF-computation with E as the origin and find the shortest path from E to D. Every neighbor of N can have loop-free alternate paths to destinations, so to compute loop-free alternates for all its routes, N needs to do a SPF for every neighbor it has. That&#39;s why UCMP scales with the number of neighbors. I hope this clears it up. Remember, it starts with understanding how EIGRP does UCMP (and why it is so easy and cheap for EIGRP).</p>\n",
+         "id": "449",
+         "name": " Henk",
+         "pub": "2021-03-08T15:26:17",
+         "type": "comment"
       }
    ],
-   "count": 7,
+   "count": 8,
    "type": "post",
    "url": "2021/02/does-ucmp-make-sense.html"
 }
