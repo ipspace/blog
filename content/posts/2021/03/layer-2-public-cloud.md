@@ -19,7 +19,7 @@ Before going into the technical details, please read the [pretty forthcoming blo
 
 I hope Oracle is not "brave" enough to let virtual network flooding ride on top of IP multicast (VMware tried and gave up), which means they have to use *source node replication*, which is a great amplification mechanism. Imagine you have 100 VMs in a virtual L2 network, and each one of them happens to be on a different hypervisor host (not unusual in environments having tens of thousands of physical servers). Every flooded packet sent by every VM is replicated 100 times. 
 
-Not a big deal if we're dealing with ARP (and they implemented ARP proxy anyway), but if someone happens to use [Microsoft NLB](https://blog.ipspace.net/2012/02/microsoft-network-load-balancing-behind.html) or something similarly stupid (remember: it's all about migrating existing \*\*\*\* into the cloud), it's going to get nasty... or maybe Oracle charges extra for replicated traffic, in which case the worst offenders might decide it's cheaper to get read of Microsoft NLB?
+Not a big deal if we're dealing with ARP (and they implemented ARP proxy anyway), but if someone happens to use [Microsoft NLB](https://blog.ipspace.net/2012/02/microsoft-network-load-balancing-behind.html) or something similarly stupid (remember: it's all about migrating existing \*\*\*\* into the cloud), it's going to get nasty... or maybe Oracle charges extra for replicated traffic, in which case the worst offenders might decide it's cheaper to get rid of Microsoft NLB?
 
 ### Dynamic Learning of MAC addresses
 
