@@ -41,7 +41,9 @@ Next time: hands-on route server experience (including waiting for an eternity w
 
 ### More Details
 
-Did parts of the above sound like Latin? You'll find the necessary details in [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinar. You could also use my [test setup](https://github.com/ipspace/pubcloud/tree/master/Azure/route-server) to take Azure route server for a spin.
+Did parts of the above sound like Latin? You'll find the necessary details in [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinar, which already includes [Azure Route Server video](https://my.ipspace.net/bin/get/AzureNet/4.4%20-%20Azure%20Route%20Server.mp4?doccode=AzureNet). 
+
+You could also use my [test setup](https://github.com/ipspace/pubcloud/tree/master/Azure/route-server) to take Azure route server for a spin.
 
 [^1]: Static routes for people who have no problems with networking terminology
 
