@@ -160,3 +160,7 @@ The only way I found to remove a route server was to use **az network routeserve
 ### Long Story Short
 
 Azure Route Server is definitely an interesting concept, and I'm positive a lot of people focused on transporting enterprise \*\*\*\* into a public cloud will find it very homey... but like with all preview stuff, I wouldn't use it in production for at least a few months.
+
+### More Details
+
+You'll find more Azure networking goodies in the [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinar, which already includes [Azure Route Server video](https://my.ipspace.net/bin/get/AzureNet/4.4%20-%20Azure%20Route%20Server.mp4?doccode=AzureNet).

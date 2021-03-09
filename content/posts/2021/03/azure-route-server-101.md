@@ -38,6 +38,6 @@ Next time: Route Server behind the scenes.
 ### More Details
 
 * Start with [Azure Networking 101](https://blog.ipspace.net/2020/05/azure-networking-101.html) blog post.
-* For more details, watch [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinar.
+* For more details, watch [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinar, which already includes [Azure Route Server video](https://my.ipspace.net/bin/get/AzureNet/4.4%20-%20Azure%20Route%20Server.mp4?doccode=AzureNet).
 * We covered [BYOA (Bring Your Own Appliance) scenarios](https://my.ipspace.net/bin/list?id=PubCloud&module=7#M9S20) in [Networking in Public Cloud Deployments](https://www.ipspace.net/PubCloud/) online course.
 * If you want to take Azure Route Server for a spin, you might want to start with [my test setup](https://github.com/ipspace/pubcloud/tree/master/Azure/route-server).
