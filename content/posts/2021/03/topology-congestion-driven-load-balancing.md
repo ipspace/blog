@@ -25,7 +25,7 @@ Let's add some heavy hitters to the mix: a few backup jobs are started and for w
 
 Modern forwarding hardware supports dynamic reassignment of output interfaces to hash buckets in a next-hop group. With per-bucket traffic counters and proper software support, L1 could rearrange the hash buckets so that the traffic across both uplinks becomes more balanced (fewer hash buckets pointing to S1 than to S2). In a best-case scenario the reshuffling could be done without reordering in-transit packets (hint: move a bucket when it's empty -- see also [flowlets](/2015/01/improving-ecmp-load-balancing-with.html)).
 
-{{<note info>}}Recent Broadcom data center switching silicon includes the hardware support for the *Dynamic Load Balancing* or *Adaptive Load Balancing* (choose your marketing lingo), it's just a question of whether it's implemented in the operating system. Arista EOS has it since at least 4.24.2F release.{{</note>}}
+{{<note info>}}Recent Broadcom data center switching silicon [includes the hardware support for the *Dynamic Load Balancing*](https://www.broadcom.com/blog/broadcom-s-trident-3-enhances-ecmp-with-dynamic-load-balancing) (HT: Jeroen van Bemmel) or *Adaptive Load Balancing* (choose your marketing lingo), it's just a question of whether it's implemented in the operating system. Arista EOS has it since at least 4.24.2F release.{{</note>}}
 
 ### Mission Impossible
 
