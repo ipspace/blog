@@ -25,9 +25,11 @@ Let's add some heavy hitters to the mix: a few backup jobs are started and for w
 
 Modern forwarding hardware supports dynamic reassignment of output interfaces to hash buckets in a next-hop group. With per-bucket traffic counters and proper software support, L1 could rearrange the hash buckets so that the traffic across both uplinks becomes more balanced (fewer hash buckets pointing to S1 than to S2). In a best-case scenario the reshuffling could be done without reordering in-transit packets (hint: move a bucket when it's empty -- see also [flowlets](/2015/01/improving-ecmp-load-balancing-with.html)).
 
+{{<note info>}}Recent Broadcom data center switching silicon includes the hardware support for the *Dynamic Load Balancing* or *Adaptive Load Balancing* (choose your marketing lingo), it's just a question of whether it's implemented in the operating system. Arista EOS has it since at least 4.24.2F release.{{</note>}}
+
 ### Mission Impossible
 
-Now for a really interesting scenario: imagine someone runs a bunch of backup jobs between L3 and L2, and they all land on S1-L2 link. The path L1-S1-L2 becomes congested (on the S1-L2 leg). Could L1 do anything about that? Most often, the answer is **no** and the only exception I'm aware of is Cisco ACI (at least they claim so).
+Now for a really interesting scenario: imagine someone runs a bunch of backup jobs between L3 and L2, and they all land on S1-L2 link. The path L1-S1-L2 becomes congested (on the S1-L2 leg). Could L1 do anything about that? Most often, the answer is **no** and the only exception I'm aware of is Cisco ACI (at least they claim so -- see also [CONGA paper](https://people.csail.mit.edu/alizadeh/papers/conga-sigcomm14.pdf) / HT: Minh Ha). Juniper claims [they do something similar in Virtual Chassis Fabric](https://www.juniper.net/documentation/en_US/junos/topics/concept/virtual-chassis-fabric-traffic-flow-understanding.html) (HT: Alexander Grigorenko)
 
 To change the forwarding behavior on L1 based on downstream congestion, there would have to be a mechanism telling L1 to reduce its utilization of one of the end-to-end paths. While that could be done with a routing protocol, no major vendor ever implemented anything along those lines for a good reason -- the positive feedback loop introduced by load-aware routing and resulting oscillations would be fun to troubleshoot. 
 
@@ -40,3 +42,10 @@ Ignoring the crazy ideas of SDN controller dynamically reprogramming edge switch
 * Connect hosts to the network with multiple IP interfaces, not MLAG kludges.
 * Use MP-TCP or similar to establish parallel TCP sessions across multiple paths using different pairs of source-destination IP addresses.
 * When multiple TCP sessions between a pair of hosts land on the same path due to load balancing hashing algorithms, use an irrelevant field in the packet header (TTL, flow label...) to change the hash values -- see [FlowBender paper](https://conferences2.sigcomm.org/co-next/2014/CoNEXT_papers/p149.pdf) for details.
+
+### Release Notes
+
+2021-03-13
+: * Link to Juniper VCF documentation
+  * Information on Broadcom supporting Dynamic Load Balancing
+  * Link to CONGA research paper
