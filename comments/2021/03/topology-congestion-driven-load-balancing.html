@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -106,6 +106,53 @@ https://www.juniper.net/documentation/en_US/junos/topics/concept/virtual-chassis
 <p>https://www.youtube.com/watch?v=CBcPLm-ujPI</p>
 
 <p>I don&#39;t know of any production controllers using this approach, but even without a controller, the visibility provides useful insight into fabric performance.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="469">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c469" href="#469">13 March 2021 01:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, a few thoughts after reading your post and the comments:</p>
+
+<p>Dynamic LB, is something available in Broadcom ASIC, so switches that make use of them like those of Arista for ex, have that feature. Juniper Adaptive LB, from Alex&#39;s link above, which was first made available with the Trio chipset AFAIK, works on the same principle. Basically in DLB and ALB, the sender monitors the ECMP bunble and dynamically adjust the loads to provide better balancing of traffic across member links. The sender has no visibility into what&#39;s going on at the downstream neighbors&#39; status, it makes traffic reshuffling decision based on its own local info of the loads on individual ECMP links.</p>
+
+<p>At first glance, that seems to be what ACI is doing too:</p>
+
+<p>https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/1-x/aci-fundamentals/b_ACI-Fundamentals/b_ACI-Fundamentals_chapter_010010.html#concept_F280C079790A451ABA76BC5C6427D746</p>
+
+<p>But in fact, ACI takes this concept one step further. Cisco was able to come up with a new scheme that enables the sender to see into the traffic condition at the downstream neighbors and adjust its sending rate accordingly. So yes, when the path L1-S1-L2 becomes congested (on the S1-L2 leg), L1 will get enough feedback from S1-L2 status to reduce its traffic rate. They dub this technology CONGA, or Congestion Aware LB, as confirmed by Cisco people here:</p>
+
+<p>https://community.cisco.com/t5/jive-developer-archive/nso-aci-scope/td-p/3572137</p>
+
+<p>CONGA acknowledges that SDN/centralized approaches are simply too slow to deal with low-latency DC environment, so distributed methods are needed. It also realizes that schemes like MPTCP, albeit providing some improvement, are essentially still reactive to congestion, and so, to provide better LB beyond what MPTCP can offer, a proactive scheme will have to be used. That&#39;s why it goes in that direction, which, coincidentally, is the same reasoning that underpins the concept of DC-TCP. </p>
+
+<p>Wrt to MPTCP, the flowbender paper also points out the very same weaknesses, i.e. it makes Incast worse (by causing starvation/Oucast problem) and it does nothing for short flows (due to its overhead),which can account for a big majority of flows in DC environment as well, and finally it may require a lot of sub-flows to work its magic. </p>
+
+<p>CONGA basically uses flowlet switching to deflect traffic on sensing congestion. Flowlet is alright, it&#39;s one step beyond ECMP when it comes to sophistication and effectiveness, but it&#39;s undoubtedly complex, as it involves figuring out the optimum inter-burst time, which has to be larger than the max latency among the ECMP paths, to avoid reordering. In practice, for ACI, this is set to a specific value, which, if too low (100us) can lead to lots of reordering, or if too high (500us) can lead to increased RTT. </p>
+
+<p>I personally feel the best way to go, utilization-wise, is to move beyond flowlet, to combine a proactive scheme like Conga or DCTCP or both (DCTCP doesn&#39;t require special hardware like CONGA) with packet-spraying ECMP, essentially amounting to how a high-end router operates internally within its crossbar or multi-stage fabric. </p>
+
+<p>The reason a router fabric can deal with reordering of cell is twofold. First, with internal speedup and close to zero (or zero) buffer crossbar, re-ordering is totally eliminated. Second, in case of multi-stage crossbar inside high-density routers like CRS, where the middle stage has buffer and re-ordering is inevitable, a small re-ordering buffer can be placed at the destination/egress port, for SAR purpose. </p>
+
+<p>A 2nd method of dealing with reordering in Multi-stage xbar router, as utilized by CRS, is to force switch-flow order by eliminating cell spray, effectively turning the inside of a CRS into a network of virtual circuits. With DCs having lots of bandwith these days, there are talks of bringing back to TDMA VC back into the DC to deal with latency as well. Everything old will be new again :)). </p>
+
+<p>DC networks usually are bandwidth-plenty (speedup condition), with low RTT making a bit of reordering tolerable to most apps. Add to that shallow-buffer switches, and we have all conditions necessary for packet spraying to be viable. That way you don&#39;t need multiple IPs for a host either. The reordering stage can be implemented on a SmartNIC, or by modifying the logic of GRO inside the hypervisor itself. </p>
+
+<p>This is the link to CONGA, if you want to take a deeper look:</p>
+
+<p>https://people.csail.mit.edu/alizadeh/papers/conga-sigcomm14.pdf</p>
 </div>
           </div>
         </li>
