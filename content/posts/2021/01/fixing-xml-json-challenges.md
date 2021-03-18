@@ -3,6 +3,7 @@ title: "Fixing XML-to-JSON Conversion Challenges"
 date: 2021-01-26 07:06:00
 tags: [ automation ]
 series: xml-json
+lastmod: 2021-03-17 06:40:00
 ---
 In the last weeks I described the challenges you might face when converting XML documents that contain lists with a single element into JSON, be it on device (Nexus OS) or in an Ansible module. Now let's see how we can fix that.
 
@@ -72,6 +73,8 @@ The "only" drawback of this approach: you have to be careful to pass all data th
 
 ---
 
+[Christopher Hart solved the same problem in a more creative way](https://www.chrisjhart.com/Normalizing-JSON-Data-Structure-Output-On-Cisco-NX-OS-With-Python/): Nexus OS uses a naming convention where everything that should be a list has a name starting with **ROW\_**, so it's pretty easy to take the whole data structure returned by Nexus OS and fix it in one go. One has to wonder why they didn't do it that way in the first place...
+
 ### The Hack (Take One)
 
 This is the [original Jinja2 hack](https://github.com/ipspace/VLAN-service/blob/VLAN_Cleanup/getinfo/nxos-vlans.j2) I used in January 2017. It relies on Jinja2 treating lists almost like dictionaries: if the VLAN row data contains a well-known attribute (VLAN ID) it must be a dictionary, otherwise it's a list and we need to iterate over a list. 
@@ -125,3 +128,9 @@ Since the times I wrote my original hack Ansible got **flatten** filter, so you 
 ### Getting Your Hands Dirty
 
 Download the [source code](https://github.com/ipspace/netsim-examples/tree/master/Ansible/XML) for these examples, [setup your virtual lab](https://github.com/ipspace/netsim-examples/blob/master/Ansible/XML/README.md), and have fun.
+
+## Revision History
+
+2021-03-17
+: Added a pointer to a Python-based workaround by Christopher Hart
+
