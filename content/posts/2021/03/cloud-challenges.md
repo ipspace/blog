@@ -1,6 +1,6 @@
 ---
 title: "Dealing with Cloud Challenges"
-date: 2021-03-22 07:13:00
+date: 2021-03-29 07:13:00
 tags: [ cloud ]
 ---
 Here's a message I got from one of my subscribers (probably based on one of my [recent public cloud rants](https://twitter.com/ioshints/status/1368601005424861191)):

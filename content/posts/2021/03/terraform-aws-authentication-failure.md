@@ -3,6 +3,8 @@ title: "Intermittent Terraform Authentication Failure Using AWS Provider in a Va
 date: 2021-03-30 07:47:00
 tags: [ cloud, automation, AWS ]
 ---
+**TL&DR**: Client clock skew could result in AWS authentication failure when running **terraform apply**
+
 When I wanted to [compare AWS and Azure orchestration speeds](/2021/03/public-cloud-orchestration-speed.html) I encountered a crazy Terraform error message when running **terraform apply**:
 
 ```
@@ -18,7 +20,7 @@ Obviously I did all the usual stuff before googling for a solution:
 * Changing my access keys (just in case, who knows)
 * Checking whether the access keys work with AWS CLI (they did)
 * Running **terraform plan** first (it worked)
-
+<!--more-->
 And then something weird happened: when searching for the exact error message, I felt like I dropped straight into the [Wisdom of the Ancients](https://xkcd.com/979/).
 
 I found a half-dozen Terraform support cases almost identical to my problem where the reporters did everything they could do to fix the problem (including switching the access keys), and collected all the necessary information, only to have their report closed with *It's not a good idea to publish your AWS access keys* (like that would be relevant) or *Looks like you can't use AWS IAM* or *Not a Terraform problem* or *Can't reproduce*.

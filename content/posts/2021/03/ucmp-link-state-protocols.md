@@ -3,6 +3,8 @@ title: "Unequal-Cost Multipath in Link State Protocols"
 date: 2021-03-23 07:36:00
 tags: [ IP routing, OSPF, IS-IS ]
 ---
+**TL&DR**: You get unequal-cost multipath for free with distance-vector routing protocols. Implementing it in link state routing protocols is an order of magnitude more CPU-consuming.
+
 Continuing our [exploration of the Unequal-Cost Multipath world](https://blog.ipspace.net/2021/02/does-ucmp-make-sense.html), why was it implemented in EIGRP decades ago, but not in OSPF or IS-IS?
 
 Ignoring for the moment the "*does it make sense*" dilemma: finding *downstream paths* (paths strictly shorter than the current best path) is a side effect of running distance vector algorithms. 
