@@ -4,12 +4,14 @@ date: 2021-03-24 06:25:00
 tags: [ cloud, Azure ]
 series: azure-rs
 ---
+**TL&DR**: Azure Route Server works as advertised. Setting it up is excruciatingly slow. You might want to start the process just before taking a long lunch break.
+
 I decided to take [Azure Route Server](/2021/03/azure-route-server-behind-the-scenes.html) for a ride. Simple setup, two Networking Virtual Appliance (NVA) instances running Quagga to advertise a single prefix (just to see how multipathing works).
 
 Here's the diagram of what I set up:
-
-{{<figure src="/2021/03/azure-rs-test-setup.png">}}
 <!--more-->
+{{<figure src="/2021/03/azure-rs-test-setup.png">}}
+
 In a nutshell:
 
 * Three subnets -- NVA subnet, internal subnet (with a web server) and route server subnet
