@@ -9,7 +9,9 @@ My [recent chat with David Bombal about networking careers' future](https://blog
 
 > No tangible solutions given, no path provided, no actionable advice detailed.
 
-I totally understand the resentment. Like a lot of other people, I spent way too much time looking for recipes for success. It was tough to admit *there are none* for a simple reason: if there was a recipe for easy success, everyone would be using it, and then we'd have to redefine success. Nobody would admit that being average is a success.
+I totally understand the resentment. Like a lot of other people, I spent way too much time looking for recipes for success. It was tough to admit *there are none* for a simple reason: if there was a recipe for easy success, everyone would be using it, and then we'd have to redefine success. Nobody would admit that being average is a success, or as [Jeroen van Bemmel](https://www.linkedin.com/in/jeroenvbemmel/) said in his [LinkedIn comment](https://www.linkedin.com/feed/update/urn:li:activity:6779734986879721472/?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A6779734986879721472%2C6779762484803969024%29):
+
+> Success requires differentiation, which cannot be achieved by copying others. As Steve Jobs put it: "Be hungry, stay foolish" 
 <!--more-->
 When I was still running a fast-growing company, one of my more futile endeavors was reading management magazines like Harvard Business Review, trying to get actionable ideas from their case studies. I failed consistently... until I realized that they cannot possibly give anyone a recipe because the right way to proceed depends on your circumstances and the market you're in.
 
