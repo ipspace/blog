@@ -55,9 +55,17 @@
          "name": "David Logan",
          "pub": "2020-06-25T19:56:46",
          "type": "comment"
+      },
+      {
+         "date": "22 March 2021 05:33",
+         "html": "<p>Ivan, I&#39;m very much in sync with you re MPLS requiring tight coupling between edge and core :)). But I think if that&#39;s the selling point of VXLAN, then it has a long way to go. Gotta try much harder than that. Let me explain.</p>\n\n<p>Yes, MPLS is tighly-coupled, but all of the complexity and heavy-duty work -- keeping track of VRFs and all -- are done by the PE at the edge. The core routers only concern with building a map between PEs, so the amount of state they keep is very much manageable, even if we speak of say, a few thousand PEs. With modern-day ASIC, this is doable, and it&#39;s high-end environments when we speak of PEs in the thousands. Both MPLS and VXLAN have to deal with IGP calculation, and at large scale, the overhead is fair game for both. LDP overhead is nowhere like that of Link State calculation, or TCAM programming delay.</p>\n\n<p>With MPLS in the core, we don&#39;t have BGP next hop&#39;s trust issue resulting from control and data path inconsistency. This is not a big deal for small networks, but can happen in big networks due to complexity.</p>\n\n<p>MPLS can do TE, VXLAN cannot.</p>\n\n<p>MPLS ESI multi-homing label is more natural, while with VXLAN it&#39;s more convoluted.</p>\n\n<p>VXLAN encapsulation overhead is huge vs MPLS.</p>\n\n<p>Re DC environment, as I said in the Cloud post (and was actually mentioned on page 1 of the VFP paper) the Cloud went with overlay model mainly because it&#39;s the cheapest they can use to implement virtual networking. Cloud providers make use of commoditized routers/switches in their environment, so MPLS is mostly not an option. By going with Directory service mapping in software, they sacrifice the performance of their vnet for lowering cost. MPLS is high-performance. </p>\n\n<p>But saying it like it is doesn&#39;t sound good for marketing purpose, for winning customers. When they say nothing scales to our environment, so we have to invent our own, they basically just dress it up in nice excuse, and it makes them look so cool and holier than thou as well ;). </p>\n\n<p>For ex, check out section 4.2 of this paper, you&#39;ll quickly find out MS reasoning for using Directory service is a direct result of bad design aka Flat-Earth, resulting in massive churns if done in hardware:</p>\n\n<p>https://web.eecs.umich.edu/~mosharaf/Readings/VL2.pdf</p>\n\n<p>Regardless, they are slowly coming full circle back to hardware, with their FPGA offloading :)).</p>\n\n<p>Also, modern ASICs have enough TCAM space to store 4 million LPM entries, e.g. Cisco NCS 6k. It&#39;s off-chip and so slower than on-ASIC TCAM of course, but still way faster than having the table stored in a different device, and in RAM, so the &#39;scale factor&#39; is a non-issue AFAIK. </p>\n\n<p>Minh</p>\n",
+         "id": "491",
+         "name": " Minh Ha",
+         "pub": "2021-03-22T05:33:00",
+         "type": "comment"
       }
    ],
-   "count": 7,
+   "count": 8,
    "type": "post",
    "url": "2020/05/need-vxlan-transport.html"
 }
