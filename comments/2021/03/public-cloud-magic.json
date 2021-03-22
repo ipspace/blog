@@ -23,9 +23,17 @@
          "name": " Brad Hedlund",
          "pub": "2021-03-21T01:23:32",
          "type": "comment"
+      },
+      {
+         "date": "22 March 2021 04:53",
+         "html": "<p>I&#39;ve also found this paper that describes in detail how MS has implemented their virtual networking platform over the years, and why they&#39;ve chosen to go with overlay/directory service model:</p>\n\n<p>https://www.usenix.org/system/files/conference/nsdi17/nsdi17-firestone.pdf</p>\n\n<p>Looks like the implementations of Azure and GCP&#39;s virtual networking (detailed in the Andromeda paper) overlap a fair bit. One thing is certain: Openflow, in its classic form, is unworkable/unscalable. The VFP paper hints at that as the reason why NSX scales poorly (1000 hosts). Both Azure and GCP had to make heavy modifications to OF model in order to scale their infrastructure. </p>\n\n<p>The overlay implementation obviously trades performance for scalability: section 5 of the VFP and sections 3, 4 of the Andromeda paper, give a glimpse into how slow their data planes can get as they give detailed architecture of the platforms. That&#39;s why MS decided, in the end, to go with hardware offloading, using FPGA SmartNiC -- essentially a specialized switch/router attached to a server -- to implement virtual networking, for better scalability. </p>\n\n<p>The directory service model is also a concept prevalent across AWS, Azure, and GCP, albeit under different names. in AWS, it&#39;s called the Mapping service, in Azure, Directory, and Hoverboard in GCP. They all use this service to scale their routing table to millions of entries on the cheap, again at the cost of performance hit, because it&#39;s done in software and requires communication to dedicated devices. Flow caching is used to improve performance, which is reminiscent of MLS back in the 90s. </p>\n\n<p>Overall, since the philosophy behind their VNET is very much similar, whoever has the sanest physical design will have the best performance relative to the others. AWS by far seems to be on top as their physical architecture looks the sanest to me. </p>\n",
+         "id": "490",
+         "name": " Minh Ha",
+         "pub": "2021-03-22T04:53:44",
+         "type": "comment"
       }
    ],
-   "count": 3,
+   "count": 4,
    "type": "post",
    "url": "2021/03/public-cloud-magic.html"
 }
