@@ -33,6 +33,12 @@ It's not that bad. In LS-protocols, doing UCMP scales with the number of direct 
 I remember discussing this in 1996. The first time I read about a vendor implementing UCMP in IS-IS was in 2015. I think IOS-XR can do it (please correct me if I'm wrong). The fact that it took 20 years to implement UCMP makes me suspect that no customer has ever asked for this feature.
 {{</long-quote>}}
 
+Hannes Gredler [chimed in from Twitter](https://twitter.com/hannesgredler/status/1374317525081726977?s=11):
+
+{{<long-quote>}}
+I second Henks experience here. Modern SPF implementations (Cache aware priority queues, O(1) 2way check and early termination (loop check) allow very quickly to determine if a neighbor provides a loop free check or not. We‘re talking about 1-2ms per neighbor for 1K node topology
+{{</long-quote>}}
+
 In any case, Cisco IOS XR documentation claims that:
 
 > Traditionally, EIGRP has been the only IGP that supports UCMP feature, but in IOS-XR UCMP is supported for all IGPs, static routing, and BGP.
@@ -42,3 +48,9 @@ In any case, Cisco IOS XR documentation claims that:
 ### More Details
 
 We started the [Multipath Forwarding](https://my.ipspace.net/bin/list?id=Net101#ADV_ROUTING) discussion in [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar late last year. More to come in the Spring 2021 live session.
+
+### Release Notes
+
+2021-03-23
+: Added a tweet by Hannes Gredler
+
