@@ -43,7 +43,15 @@ In any case, Cisco IOS XR documentation claims that:
 
 > Traditionally, EIGRP has been the only IGP that supports UCMP feature, but in IOS-XR UCMP is supported for all IGPs, static routing, and BGP.
 
-**Lesson learned**: while it's much more computationally expensive to get unequal-cost multipathing with link-state routing protocols than it is with distance-vector routing protocols, there's at least one production-grade OSPF/IS-IS UCMP implementation.
+Is anyone using that feature? This is what [Fred Cuiller](https://www.linkedin.com/in/fcuiller/) had to say (copied from the comments):
+
+{{<long-quote>}}
+I'm aware of only 2 Cisco IOS-XR customers who asked for (and used partially) UCMP for ISIS during the last 10 years. Implementation was done on CRS and ASR9k. 
+
+The first one did want to implement bundle/link aggregation (even for ECMP) and had different link speeds between 2 routers. He used UCMP instead of mixed speed bundles. The second one had almost the same use case for overseas interconnection with continent across long-distance/exotic transmission links.
+{{</long-quote>}}
+
+**Lesson learned**: while it's much more computationally expensive to get unequal-cost multipathing with link-state routing protocols than it is with distance-vector routing protocols, there's at least one production-grade OSPF/IS-IS UCMP implementation... but it's rarely used.
 
 ### More Details
 
@@ -53,4 +61,7 @@ We started the [Multipath Forwarding](https://my.ipspace.net/bin/list?id=Net101#
 
 2021-03-23
 : Added a tweet by Hannes Gredler
+
+2021-03-24
+: Added the real-life use cases described by Fred Cuiller
 
