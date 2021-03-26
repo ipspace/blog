@@ -1,7 +1,7 @@
 ---
 title: "Relative Speed of Public Cloud Orchestration Systems"
 date: 2021-03-25 07:15:00
-tags: [ cloud ]
+tags: [ cloud, Azure, AWS ]
 ---
 When I was [complaining about the speed (or lack thereof) of Azure orchestration system](https://twitter.com/ioshints/status/1371731265024618499), someone replied "*I tried to do $somethingComplicated on AWS and it also took forever*"
 
@@ -47,8 +47,13 @@ What worries me way more than the response time difference is the extreme variab
 
 {{<note>}}Supposedly it takes that long to create an Azure Virtual Hub, Virtual Network Gateway, or Route Server because they're running on Windows servers. Maybe it's time for Azure development teams to stop singing "*leveraging the investment*" and "*doing more with less*" incantations and use a faster platform?{{</note>}}
 
-To make matters even worse, the large variance in response times was observed *on parallel requests made by Terraform in the same Azure region*. One virtual network connection would be created or destroyed in a few minutes, the other one (started at the same time) would take more than 10 minutes.
+To make matters even worse, the large variance in response times was observed *on parallel requests made by Terraform in the same Azure region*. One virtual network connection would be created or destroyed in a few minutes, the other one (started at the same time) would take more than 10 minutes. Worst-case scenario I've heard of: 17 minutes to change an entry in a route table.
 
 Does the difference matter? It does to me when I'm trying to figure out how things work. It might not matter if you're making changes to your public cloud infrastructure every third blue moon... or you might care a lot if you plan to use Azure REST API for real-time dynamic modifications of your infrastructure like changing the next hop of user-defined route. 
 
 Interestingly, I got mixed messages on that last use case, from someone claiming it works great, to someone else saying he'd rather rely on the complex load balancing architecture than Azure API response times. Any further real-life experience would be highly appreciated.
+
+### History of Changes
+
+2021-03-25
+: Added a sample real-life UDR worst-case scenario
