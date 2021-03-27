@@ -1,6 +1,6 @@
 ---
 title: "Reader Question: What Networking Blogs Would You Recommend?"
-date: 2021-04-13 07:40:00
+date: 2021-04-07 07:40:00
 tags: [ worth reading ]
 ---
 A junior networking engineer asked me for a list of recommended entry-level networking blogs. I have no idea (I haven't been in that position for ages); the best I can do is to share my [list of networking-related RSS feeds](networking.opml) and the process I'm using to collect interesting blogs:
