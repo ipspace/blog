@@ -68,6 +68,10 @@ case "$1" in
   ls)
     shift
     case "$1" in
+      ideas*)
+        shift
+        $BLOG_HOME/tools/list-ideas.py $@
+        ;;
       draft*)
         (cd $BLOG_HOME && hugo list drafts)
         ;;

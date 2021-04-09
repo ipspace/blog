@@ -1,7 +1,7 @@
 ---
 draft: True
 ---
-# Video: Transparent Bridging Fundamentals
+# (Pub) Video: Transparent Bridging Fundamentals
 
 Years ago I wrote a series of blog posts comparing transparent bridging and IP routing, and creating [How Networks Really Work](https://www.ipspace.net/Net101) materials seemed like a perfect opportunity to make that information more structured, starting with Transparent Bridging Fundamentals
 
@@ -36,6 +36,4 @@ In today's video we'll look at some of the supposed use cases and stable solutio
 {{<note info>}}The video available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
 # Video: Bridging beyond STP (to add)
-
-
 
