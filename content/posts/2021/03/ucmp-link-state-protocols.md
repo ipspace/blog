@@ -2,6 +2,7 @@
 title: "Unequal-Cost Multipath in Link State Protocols"
 date: 2021-03-23 07:36:00
 tags: [ IP routing, OSPF, IS-IS ]
+series: UCMP
 ---
 **TL&DR**: You get unequal-cost multipath for free with distance-vector routing protocols. Implementing it in link state routing protocols is an order of magnitude more CPU-consuming.
 
