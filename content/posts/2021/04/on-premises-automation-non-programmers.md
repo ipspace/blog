@@ -3,12 +3,12 @@ title: "Starting Network Automation for Non-Programmers"
 date: 2021-04-19 06:22:00
 tags: [ automation ]
 ---
-The reader asking about infrastructure-as-code in public cloud deployments also wondered whether he has any chance at mastering on-premises network automation due to lack of programming skills.
+The reader asking about [infrastructure-as-code in public cloud deployments](/2021/04/starting-infrastructure-code.html) also wondered whether he has any chance at mastering on-premises network automation due to lack of programming skills.
 
 > I am starting to get concerned about not knowing automation, IaC, or any programming language. I didn't go to college, like a lot of my peers did, and they have some background in programming.
 
 First of all, thanks a million to *everyone needs to become a programmer* hipsters for thoroughly confusing people. Now for a tiny bit of reality.
-
+<!--more-->
 Dozens (if not hundreds… I never asked) networking engineers successfully completed our network automation course with no prior programming experience. What you do need to master however is computational thinking -- the ability to figure out step-by-step processes and data structures needed to support them -- as explained in these blog posts:
 
 * [You Don’t Need Programming Skills to Build Network Automation Solutions](https://blog.ipspace.net/2016/12/you-dont-need-programming-skills-to.html)

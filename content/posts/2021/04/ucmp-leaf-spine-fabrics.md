@@ -9,7 +9,7 @@ Scott submitted an interesting the comment to my *[Does Unequal-Cost Multipath 
 > How about even Large CLOS networks with the same interface capacity, but accounting for things to fail; fabric cards, links or nodes in disaggregated units. You can either UCMP or drain large parts of your network to get the most out of ECMP.
 
 Before I managed to write a reply (sometimes it takes months while an idea is simmering somewhere in my subconscious) [Jeff Tantsura](https://www.linkedin.com/in/jeff-tantsura/) pointed me to an [excellent article by Erico Vanini](https://www.usenix.org/conference/nsdi17/technical-sessions/presentation/vanini) that describes the types of asymmetries you might encounter in a leaf-and-spine fabric: an ideal starting point for this discussion.
-
+<!--more-->
 ## Defining the Problem
 
 Leaf-and-spine fabrics are usually *symmetrical* -- there's an equal number of paths (and equal number of hops) to get from any edge to any other edge. 
