@@ -26,7 +26,7 @@ To put things in perspective, here are a few typical serialization delays for a 
 | 10 GE               | 1,22 µs |
 | 100 GE              | 0,122 µs|
 
-Speed of signal propagation in a fiber optic cable is usually 70% of the speed of light in vacuum, or approximately 200.000 km/s, or 200 meters per microsecond.
+Speed of signal propagation in a fiber optic cable is usually 70% of the speed of light in vacuum ([copper cables are a bit faster](https://www.arista.com/assets/data/pdf/Copper-Faster-Than-Fiber-Brief.pdf) -- HT [Adeilson Rateiro](https://www.linkedin.com/in/adeilson-rateiro-mba-46680329/)), or approximately 200.000 km/s, or 200 meters per microsecond.
 
 In reality, there are two more components involved: transmit-side and receive-side transceivers. It's hard to get transceiver latency numbers, what I found (from an unreliable source) was 0.3 µs per link (transmit and receive) for SFP+ and 2.6 µs per link for 10GBASE-T. Pointers to better sources would be much appreciated.
 
@@ -64,3 +64,8 @@ Coming back to the original question: does it matter? It might when you're runni
 ## Finally: Spot the Elephant
 
 Hope you found the above discussion interesting, but it might be totally irrelevant -- I carefully avoided an elephant in the room. Can you spot it?
+
+## Revision History
+
+2021-04-16
+: Added a link to an Arista document describing their measurement of copper/SMF/MMF latency
