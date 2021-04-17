@@ -1,6 +1,6 @@
 ---
 title: "Blogging Rule#1: Own Your Content"
-date: 2021-04-28 07:28:00
+date: 2021-04-29 07:28:00
 tags: [ worth reading ]
 ---
 During my [interview with David Bombal](https://blog.ipspace.net/2021/03/interview-is-networking-dead.html) I made a recommendation I find crucial for anyone serious about blogging:
