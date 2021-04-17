@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>7 comments:</h4>
+  <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -151,6 +151,38 @@ My bet for the elephant will be QoS to lower the latency even further.</p>
 <p>Speaking of HFT, there seems to be a lot of fanfare going on there when it was big some 10 yrs ago. FPGA was often mentioned as the way they sped up their end-to-end latency. But I ran across comments of some of the guys who actually did HFT for a living sometime back, and they said it&#39;s all hot-air, with most of the stuff they try to optimize being on the software level, such as doing away with message queuing (and so, safely getting rid of locks) to unburden their programs of concurrency synchronization, which is a big latency killers. Staying away from language that performs garbage collection is another thing, as there&#39;s no one-size-fit-all garbage collection algorithm that&#39;s optimized for all use case, and regardless, it&#39;s an additional layer compared to explicit memory management, and more layer means slower.</p>
 
 <p>From what I know of RenTech, one of the biggest if not the biggest HFT (they also do other algorithmic trading besides HFT), they rely on software with big-data models, not fancy hardware. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="533">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">andrea di donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c533" href="#533">17 April 2021 09:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yet another true gem from Ivan - Thanks ever so much   </p>
+
+<p>I guess the Elephant is TCP and the correct router buffer sizing. Too small and you get drops and thus retransmission and thus delay, too big and you get the bufferbloat phenomenon and thus delay again. Having said that, you need to buffer if you are not fast enough at switching and/or if your chipset design is crap (e.g. use of external memory for lookups) and thus perhaps this might be an elephant too ?    </p>
+
+<p>Just one last thing on buffer sizing in a SP environment. I also hope to engage Minh Ha on this as I know he&#39;s passionate about this subject too (he once wrote about selfsimilarity of internet traffic) but maybe on another post of Ivan - Ivan permitting of course ;)!!! <br />
+I found this paper &quot;https://www.semanticscholar.org/paper/Internet-Traffic-is-not-Self-Similar-at-Timescales-Telkamp-Maghbouleh/6ca16fcd9959eb1bca89a52be63bf5cfbb3fcc00&quot; cited at CiscoLive and also associated to multicast and video transport that is my major area of interest as we speak. The CiscoLive PPT is this one @ https://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2015/pdf/BRKSPV-1919.pdf <br />
+Basically the Telkamp&#39;s paper is a theoretical paper and states that Internet Traffic is not SelfSimilar @ timescales relevant to QoS. This means that it is instead markovian and thus not bursty at timescale that really counts. <br />
+I also found though a pretty recent empirical paper from AT&amp;T Labs that managed (not an easy task at all) to look into real Internet backbone traffic @ very small scale (relevant to router QoS and thus @ ms grain) that observed that real internet traffic is instead indeed self-similar and thus bursty even at ms level. <br />
+The AT&amp;T lab paper is @ http://buffer-workshop.stanford.edu/papers/paper18.pdf       </p>
+
+<p>Would love to know what your take is on this pretty complex but tremendously important subject. Hope I haven&#39;t derailed too much from the main topic as DC traffic is totally different from SP traffic...unless you do ..... Telco Cloud  :) ?  In that case I hope it can be treated separately in a different post maybe - Ivan permitting of course !!    </p>
+
+<p>Cheers/Ciao <br />
+Andrea    </p>
 </div>
           </div>
         </li>
