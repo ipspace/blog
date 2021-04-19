@@ -5,6 +5,7 @@ tags:
 - IS-IS
 - OSPF
 - LDP
+- segment routing
 title: LDP-IGP Synchronization in MPLS Networks
 url: /2011/11/ldp-igp-synchronization-in-mpls.html
 lastmod: 2020-12-26 08:49:00
