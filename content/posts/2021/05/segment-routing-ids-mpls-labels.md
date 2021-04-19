@@ -2,7 +2,6 @@
 title: "Segment Routing Segment IDs and MPLS Labels"
 date: 2021-05-04 07:09:00
 tags: [ MPLS, segment routing ]
-draft: True
 ---
 In one of my [introductory Segment Routing videos](https://my.ipspace.net/bin/get/MPLS101/SR3%20-%20MPLS%20Label%20Distribution%20in%20Segment%20Routing.mp4), I made claims along the lines of "*Segment Routing totally simplifies the MPLS control plane, replacing LDP and local labels allocated to various prefixes with globally managed labels advertised in IGP*"
 
