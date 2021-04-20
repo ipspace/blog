@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "20 April 2021 05:27",
+         "html": "<p>I use UCMP not for failure scenarios like this but part of normal design.</p>\n\n<p>It works particularly well when using anycast with servers. You have to think down to the server layer and maybe even higher than the spine layer for the most dramatic affect.</p>\n\n<p>Within the fabric, maybe there are cases where different amounts of servers using the same ip address on each top of rack switch. The ECMP only method the spines would send equal traffic per top of rack switch. The UCMP would use its metric to balance it based on how many servers have the IP.</p>\n\n<p>If you look up to the router layer. The router could be connected to multiple fabrics. What if fabric A has 5 anycast servers sharing an IP and fabric B has 20. With ecmp the router would normally split this 50/50 leaving the 20 servers in fabric b under utilized and the 5 in A over utilized. UCMP enabled up to this layer can track how many servers are at each fabric and balance based on server count. That way no matter how unbalanced the anycast deployment is in a datacenter, this feature enabled will help to keep the load even n every server.</p>\n",
+         "id": "540",
+         "name": " Network Ninja",
+         "pub": "2021-04-20T17:27:25",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/04/ucmp-leaf-spine-fabrics.html"
+}

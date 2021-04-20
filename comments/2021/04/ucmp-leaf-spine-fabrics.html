@@ -1,0 +1,35 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="540">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Network Ninja</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c540" href="#540">20 April 2021 05:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I use UCMP not for failure scenarios like this but part of normal design.</p>
+
+<p>It works particularly well when using anycast with servers. You have to think down to the server layer and maybe even higher than the spine layer for the most dramatic affect.</p>
+
+<p>Within the fabric, maybe there are cases where different amounts of servers using the same ip address on each top of rack switch. The ECMP only method the spines would send equal traffic per top of rack switch. The UCMP would use its metric to balance it based on how many servers have the IP.</p>
+
+<p>If you look up to the router layer. The router could be connected to multiple fabrics. What if fabric A has 5 anycast servers sharing an IP and fabric B has 20. With ecmp the router would normally split this 50/50 leaving the 20 servers in fabric b under utilized and the 5 in A over utilized. UCMP enabled up to this layer can track how many servers are at each fabric and balance based on server count. That way no matter how unbalanced the anycast deployment is in a datacenter, this feature enabled will help to keep the load even n every server.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
