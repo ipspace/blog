@@ -10,7 +10,7 @@ Minh Ha left another extensive comment on my *[Is Switching Latency Relevant](/2
 I found Cisco apparently manages to [scale port-to-port latency down to 250ns for L3 switching](https://www.cisco.com/c/dam/en/us/products/collateral/switches/nexus-3550-series/esg-white-paper-ultralowlatency.pdf), which is astonishing, and way less (sub 100ns) for L1 and L2.
 
 I don't know where FPGA fits into this ultra low-latency picture, because FPGA, compared to ASIC, is bigger, and a few times slower, due to the use of Lookup Table in place of gate arrays, and programmable interconnects.
-
+<!--more-->
 {{<long-quote>}}
 No-one is talking about this in public (for obvious reasons), but what I've heard pointed in the direction of pre-processing data streams in FPGA before they even hit the switch-to-server links, probably to reduce the server CPU load/latency. 
 
