@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>10 comments:</h4>
+  <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -249,6 +249,50 @@ https://www.researchgate.net/profile/V_Sharma4/publication/266463879_Internet_Tr
 
 <p>Cheers/Ciao <br />
 Andrea      </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="552">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c552" href="#552">23 April 2021 11:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Andrea,</p>
+
+<p>Thx for providing the link. I&#39;ve had a read thru it. Basically in that paper, they intentionally targeted the timescale not present in the original and seminal work of Leland et al, and came up with the conclusion that the traffic pattern wasn&rsquo;t self-similar/fractal, at the low ms range. But they measured it over 1 link only, and then made some inference over the limited data obtained. Seriously, I had to suspect if this paper was a rushed attempt to make up a justification for Diffserv. Given the time period (2004) and with the benefit of hindsight, it&#39;s most likely the case, as around this period Diffserv was emerging as a viable answer to the false promise of Intserv. The paper&rsquo;s analysis was shallow, and from what was presented, I had to sa, that the authors&#39; understanding of the implications of self-similarity was insufficient, for them to draw informed conclusions out of it. </p>
+
+<p>No wonder the AT&amp;T empirical paper, which came out much later, and at a time when Internet traffic contained a lot more vid content than 2004 -- youtube came to be in 2005, Netflix and others much later -- refuted the finding of the former. Video traffic was proven to be self-similar in nature, and Broadcom also mentioned that in their presentation. It&#39;s pretty well-known. </p>
+
+<p>What the paper you linked failed to realize, is that self-similarity&#39;s implication has a lot to do with whether more buffer or more bandwidth, is needed to deal with Internet traffic congestion. The quick answer is, more bandwidth is the way to go, aka throwing bandwidth at the problem. With Poisson/Markovian traffic, which is short-range dependent, queue sizes decrease pretty quickly, therefore as does congestion, so big buffer can be used to temporarily hold the congested traffic, to wait it out. Not so with self-similar traffic. This is a direct quote from Leland&#39;s empirical paper, &quot;on the self-similarity of Ethernet traffic&quot;:</p>
+
+<p>&quot;In particular, overallpacket loss decreases very slowly with increasing buffer capacity, in sharp contrast to Poisson-based models where losses decrease exponentially fast with increasing buffer size. Moreover, packet delay always increases with buffer capacity, again in contrast to the formal models where delay does not exceed a fixed limit regardless of buffer size. This distinctive loss and delay behavior can be precisely explained in terms of the frequency domain manifestation of self-similarity (see Section 3.2). Because both low and high frequencies are significant, heavy losses and long delays occur during long time-frame bursts (due to the presence of low frequencies) and can, therefore, not be dealt with effectively by larger buffers.&quot;</p>
+
+<p>See, with self-similar traffic, intuitively, one can see that when congestion happens, queuing delay will decrease very slowly, regardless of buffer size, due to the significance of the low-frequency part of traffic arrival. The low-frequency part of arrived traffic matters, because self-similar traffic is long-range dependent (LRD). Low-frequency component of traffic matters not in Poisson/Markovian traffic because it&#39;s short-term dependent, in other words there&#39;s no correlation of patterns over a long range of time scales. The correlation over large timescales of self-similar traffic, is exactly why the use of big buffer as a form of low-pass filter is mostly useless, and will increase delay exponentially as queue size gets longer and longer under congestion.</p>
+
+<p>So to deal with self-similar traffic more effectively, increase the available bandwidth if possible (over-provisioning), have routers with powerful packet-processing capability, and pay attention to admission control/back-pressure, all with the goal of avoiding congestion. Because the nasty effect of self-similarity comes in when there&rsquo;s some form of congestion, which can happen due to link failure/maintenance, hot-potato routing changes, DDOS etc. </p>
+
+<p>Leland&#39;s empirical work (traffic measurements taken over 4 yrs in Bellcore network) brought to light the fractal nature of LAN traffic, and after further work was carried out in that direction, WAN and Internet traffics were also found out to exhibit LRD/self-similarity. And in DCs these days, microburst is an example of self-similarity at sub-ms timescale. Again, big buffer has been shown to be ineffective against microburst, with proactive schemes like DC-TCP being much better alternatives. In DC environment, features like Interrupt coalescing, TSO, GRO, definitely contribute to self-similarity because they create ON-OFF traffic patterns, with infinite variations in timeframe the bigger the DC and the more traffic sources you have.</p>
+
+<p>There&rsquo;s a proposed solution that&rsquo;s originally intended to address the latency issue in DC, but from what I can see, equally applies to alleviating self-similarity consequences in SP backbone as a result of congestion, here:</p>
+
+<p>https://people.csail.mit.edu/alizadeh/papers/hull-nsdi12.pdf</p>
+
+<p>This work, which involves Cisco, suggests the use of Phantom Queue as a form of link utilization monitoring. So when the phantom queue is full, which is a bit less than 100% of the actual link, action is taken. In the paper, this was in the form of DC-TCP&rsquo;s ECN marking, but it can be other things as well. The reason I bring it up is because I think this solution has values (and might be available in some Cisco platforms), unlike lots of other papers that get written for self-promotion or for securing tenure, with no useful practicality whatsoever. </p>
+
+<p>Since you are in SP/carrier sector, you can convey this idea to your peers. If enough interest is generated, resulting in further work being done in this direction by research groups, industrial or academic, that study backbone traffic conditions as an engineering topic, then maybe better networking products can be created down the road at some point.</p>
+
+<p>Cheers
+Minh</p>
 </div>
           </div>
         </li>
