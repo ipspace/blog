@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>10 comments:</h4>
+  <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -204,6 +204,27 @@
               </span>
             </div>
             <div class="comment-content">Excellent post. I&#39;m facing these questions very often because I work for vendor having servers, storages, and networking. I&#39;m long time vmware expert guy but with networking and storage overlap. I&#39;m always trying to explain difference among local-HA, geo-HA, DR and concept of failure domains (availability zones) to my customers when delivering vSphere designs. And I can tell you it is hard, really hard. IT staff are siloed and influenced by marketing teams of particular vendors. It is pretty difficult to explain them all these cross domain topics and disprove some product marketing &quot;simplifications&quot;. On top of that they don&#39;t have right requirements and SLAs from business. I personally also prefer good and fast enough DR against stretched metro clusters (geo-HA). You can test it and really know deterministically what you will get in case of disaster. I believe it can cover 95% of business workload requirements. However if there are real geo-HA requirements it seems to me that it can be designed correctly nowadays. But you have to use the newest technologies and products (this is the first risk) and you have to carefully consider all possible failure scenarios. Even you use CISCO OTV or similar technology for L2 network overlay over L3, even you use geo distributed storage like pair of EMC VPLEX, NetApp MetroCluster, HP 3PAR stretched volume, IBM SVC/Storwise, DELL Compellent LiveVolume, etc. which appears as single storage distributed across datacenters and ensures optimal DCI usage, even you have third site used as split brain arbiter allowing  automatically failover geo distributed storage nodes ... vSphere stretched HA cluster and Distributed Storage will be single failure zones. It is not bug. It is a feature by design!!! If you need it and want it go for it. If you prefer split available zones, don&#39;t do it. Period. Just my $0.02 and your milage may vary.</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="553">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">max nasarewski</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c553" href="#553">24 April 2021 09:00</a>
+              </span>
+            </div>
+            <div class="comment-content">easy method: GSLB aka DNS pointing to SLB(haproxy or nginx) where the SLB routes to site local Hosts!<br />
+
+<p>It solves the entire issue of spanning sites over the WAN and syncing massive &quot;dataset&quot;, as the only state that gets synced is the state of the SLB fronting the hosts on Site.</p>
+</div>
           </div>
         </li>
       </div>
