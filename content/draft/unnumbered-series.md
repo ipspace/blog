@@ -19,12 +19,7 @@ Why do we need unnumbered interfaces
 
 # Basics: Routing over Unnumbered Interfaces
 
-How does routing work?
 * Route points to an interface
-* There is no next hop
-* Assumption: layer-2 header has no device-specific address
-
-IPv4 versus IPv6
 
 # Basics: Unnumbered Ethernet Interfaces
 
