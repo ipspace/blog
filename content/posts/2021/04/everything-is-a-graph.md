@@ -1,6 +1,7 @@
 ---
 title: "Everything Is a Graph"
 date: 2021-04-26 09:55:00
+lastmod: 2021-05-01 17:44:00+02:00
 tags: [ networking fundamentals ]
 ---
 One of the viewers of [Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor)'s excellent *‌[Graph Algorithms in Networks](https://www.ipspace.net/Graph_Algorithms_in_Networks)* webinar sent me this feedback:
@@ -19,4 +20,9 @@ Just drawing the graphs would help you understand the complexities of your infra
 
 Here's just one example of what you could do with a graph. You could find the *cut set* -- the most critical nodes that tie the graph together. Removing them results in a partitioned graph; not exactly something you'd like to see. BTW, if you did the network design right, then the critical node will be a database instance, not your core switch.
 
-I'm positive you could find numerous other examples, and when you do, you're most welcome to write a comment. Thank you!
+I'm positive you could find numerous other examples, and when you do, you're most welcome to write a comment. You might also want to explore the [extensive list of GraphOps resources](https://dave.dev/blog/2021/02/23-02-2021-graphops/) David Gee put together.
+
+### Revision History
+
+2021-05-01
+: Added a link to David Gee's GraphOps resources page
