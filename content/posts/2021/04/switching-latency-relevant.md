@@ -2,6 +2,7 @@
 title: "Fundamentals: Is Switching Latency Relevant?"
 date: 2021-04-15 07:47:00
 tags: [ switching, networking fundamentals ]
+lastmod: 2021-05-01 18:19:00+02:00
 ---
 One of my readers wondered whether it makes sense to buy low-latency switches from Cisco or Juniper instead of switches based on merchant silicon like Trident-3 or Jericho (regardless of whether they are running NX-OS, Junos, EOS, or Linux).
 
@@ -63,9 +64,20 @@ Coming back to the original question: does it matter? It might when you're runni
 
 ## Finally: Spot the Elephant
 
-Hope you found the above discussion interesting, but it might be totally irrelevant -- I carefully avoided an elephant in the room. Can you spot it?
+Hope you found the above discussion interesting, but it might be totally irrelevant, as I carefully avoided a few elephants in the room.
+
+The first one is definitely congestion or queuing latency. Switching latency becomes irrelevant when you're dealing with an incast problem. 
+
+The endpoint latency is probably a pod of blue whales compared to everything else we've been discussing, and worthy of another blog post... but it's well worth measuring and understanding. 
+
+It doesn't make sense to optimize microseconds when the nodes connected to the network need milliseconds to respond. In other words: figure out what problem you're trying to solve, and focus on the lowest-hanging fruits first, regardless of which team is responsible for picking them.
+
+Finally, someone also mentioned that *QoS can lower the latency even further*. Unfortunately, that's a red herring. QoS can lower the latency of high-priority traffic during periods of congestion by placing them at the front of the queue, but it cannot beat the laws of physics. No QoS tricks can reduce whatever the serialization or switching latency happen to be under idle conditions. Also, keep in mind that QoS tends to be a zero-sum game -- you give someone more resources at the expense of someone else. The only exception I'm aware of is link compression, but I haven't seen anyone doing that since the days of sub-Mbps Frame Relay or ISDN circuits.
 
 ## Revision History
 
+2021-05-01
+: Added a few pointers to the elephants strolling about the room
+ 
 2021-04-16
 : Added a link to an Arista document describing their measurement of copper/SMF/MMF latency
