@@ -1,0 +1,10 @@
+---
+title: "Video: IP Routing Fundamentals"
+date: 2021-05-07 07:01:00
+tags: [ IP routing, networking fundamentals, video ]
+---
+A few weeks ago we covered [transparent bridging fundamentals](https://blog.ipspace.net/2021/04/video-transparent-bridging-fundamentals.html), now it's time to recap IP routing fundamentals... and then we'll be ready to compare the two.
+
+{{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/BR1.2%20-%20IP%20Routing%20Fundamentals.mp4?doccode=Net101){{</jump>}}
+
+{{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

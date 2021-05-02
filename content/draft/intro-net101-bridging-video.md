@@ -9,7 +9,7 @@ Years ago I wrote a series of blog posts comparing transparent bridging and IP r
 
 {{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
-# Video: IP Routing Fundamentals
+# (Pub) Video: IP Routing Fundamentals
 
 Last time we covered transparent bridging fundamentals, now it's time to recap IP routing fundamentals... and then we'll be ready to compare the two.
 
