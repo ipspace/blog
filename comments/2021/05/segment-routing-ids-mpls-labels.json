@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "04 May 2021 04:04",
+         "html": "<p>I think everyone agrees that the same SRGB is the best practice, it&#39;s interesting to discuss what problems can we expect if SRGB is different. </p>\n\n<p>One obvious problem is anycast routing - there is draft-ietf-spring-mpls-anycast-segments, but I don&#39;t know if any vendor supports it today. One of the solutions it offers is Anycast SRGB which still has to be the same across the network. Furthermore, this draft doesn&#39;t mention TI-LFA with anycast SID - normally it assumes that the post-convergence path can terminate on a different node than the primary path...now this can become another rabbit hole with different SRGB.</p>\n\n<p>Another advantage of SR vs other MPLS control planes is that egress label is the same for all ECMP paths, so we can spare platform hardware resources by consuming less Egress Encapsulation Database (EEDB) entries. With different SRGB we lose this.</p>\n\n<p>There are more hardware optimisations possible with the same SRGB, e.g. multiple SID protected by the same PQ router in TI-LFA can reuse the same tunnel. Of course this all depends on platform and might not apply equally to all vendors.</p>\n\n<p>Any other known problems when using different SRGB? I&#39;m curious to see more comments.</p>\n",
+         "id": "559",
+         "name": "Dmytro Shypovalov",
+         "pub": "2021-05-04T16:04:06",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/05/segment-routing-ids-mpls-labels.html"
+}
