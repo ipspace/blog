@@ -14,7 +14,6 @@ Imagine you're in a crowded ballroom and you want to do a random chat with Alice
 
 What about sitting in a quiet room with Bob seated across the table from you? Does it make sense to preface everything you're saying with "*Hey, Bob!*" Obviously not. 
 
-
 Similarly, you don't need link-layer addresses on point-to-point links, and yet we almost always use them for historical reasons:
 
 * SDLC, the grandfather of most serial-line protocols (including HDLC and PPP), supported multidrop -- the ability to connect more than two nodes to a single modem link -- and thus needed link-layer addresses. 
@@ -39,7 +38,11 @@ A few protocols got it right, though:
 
 Now you know why you need link-layer addresses on multi-access links, but do we need network-layer addresses on each interface?
 
-Coming back to the ballroom example: Bob has two ears, but when you want to chat with Bob, you start with "Hey, Bob..."  not with "Hey, Bob's left ear..." Likewise, you need a unique network address per node, not per node's interface, and yet the IP designers went the other way. We'll explore their reasoning in the second part of this series.
+Coming back to the ballroom example: Bob has two ears, but when you want to chat with Bob, you start with "Hey, Bob..."  not with "Hey, Bob's left ear...", or as [@odecentralize put it](https://twitter.com/ODecentralize/status/1389951805757575170): 
+
+> Assigning IP addresses to interfaces is like having people address you by a different name depending on which door they used entering the building.
+
+To reach a node, you need a unique network address per node, not per node's interface, and yet the IP designers went the other way. We'll explore their reasoning in the second part of this series.
 
 {{<figure src="/2021/05/Addr-ifaddr.png" caption="An IP node has to use a different IP address on every interface">}}
 
@@ -50,3 +53,8 @@ It's worth noting that the "address-per-node" paradigm is not gone even in the w
 ### More to Explore
 
 If you find this blog post interesting (or you wouldn't get this far), you might like the [Network Addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR) part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar.
+
+### Revision History
+
+2021-05-05
+: Added a tweet by @odecentralize
