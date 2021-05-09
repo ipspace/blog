@@ -68,7 +68,7 @@ After reviewing Cisco SD-WAN policies, it's time to dig into the routing design.
 {{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
 
 
-# Video: Cisco SD-WAN Site Design
+# (Pub) Video: Cisco SD-WAN Site Design
 
 There are some advantages you can make the most of when designing a site in Cisco SD-WAN. [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) briefly explains some of those [capabilities](https://my.ipspace.net/bin/get/CiscoSDWAN/8.2%20-%20Site%20Design.mp4?doccode=CiscoSDWAN), like extending transports between nodes or HA between them. How are the transports used and how to track an Internet-facing interface and a service beyond its next hop.
 
