@@ -3,13 +3,13 @@ title: Anycast series
 series: anycast
 draft: True
 ---
-# TCP Anycast Is Hard
+**Done: TCP Anycast Is Hard**
 
 * Describe the scenario
 * TCP challenges (adding new server)
 * State sync
 
-# Single-Metric UCMP Is Hard
+**Done: Single-Metric UCMP Is Hard**
 
 * What problem are we trying to solve?
 * Cost to network edge
