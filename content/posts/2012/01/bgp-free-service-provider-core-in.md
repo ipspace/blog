@@ -2,6 +2,7 @@
 url: /2012/01/bgp-free-service-provider-core-in.html
 title: "BGP-Free Service Provider Core in Pictures"
 date: "2012-01-11T07:04:00.000+01:00"
+lastmod: 2021-05-13 15:42:00
 tags: [ MPLS,IPv6,BGP ]
 series: bgp-essentials
 ---
@@ -27,7 +28,7 @@ After a BGP session between C and R is configured, C receives all global BGP rou
 
 ![](s400-BGP_FC_3.png)
 
-There is another solution: if you deploy MPLS in the network, LDP automatically builds virtual circuits (Label Switched Paths – LSP) between any two routers.
+There is another solution: if you deploy MPLS in the network, LDP automatically builds virtual circuits (Label Switched Paths – LSP) between any two routers. You could also use Segment Routing with MPLS to [build the virtual circuits from the IGP topology information](https://blog.ipspace.net/2021/05/segment-routing-ids-mpls-labels.html).
 
 {{<note info>}}Cisco IOS builds LSPs for all IGP destinations, Junos only for the loopback interfaces. More details in [*Junos and Cisco IOS: MPLS and LDP*](https://blog.ipspace.net/2011/11/junos-versus-cisco-ios-mpls-and-ldp.html), and [*Junos Day One: MPLS behind the scenes*](https://blog.ipspace.net/2011/12/junos-day-one-mpls-behind-scenes.html).{{</note>}}
 
@@ -37,6 +38,12 @@ Ingress PE-routers use LSPs toward BGP next hops to send packets toward external
 
 The last core router might send labeled or unlabeled IP packet (due to [penultimate hop popping](https://blog.ipspace.net/2011/07/penultimate-hop-popping-php-demystified.html)) to the egress PE-router. You can [influence this behavior with **mpls ldp explicit- null**](https://www.ipspace.net/kb/tag/MPLS/Implicit_Explicit_NULL.html) configuration command.
 
-#### Need help?
+### Why Should You Care?
 
-If you need a second opinion or a review of your MPLS or BGP design, check out the [ExpertExpress service](http://www.ipspace.net/ExpertExpress).
+There's a simple reason to build a BGP-free core network: the core routers (or switches) don't need to support the number of routes you're carrying around in BGP (above 900.000 entries if you're carrying the full Internet routing table), which means they could be cheaper, or faster, or both. 
+
+There's also the minor routing convergence detail: with a BGP-free core, the convergence of the network depends just on the ingress and egress nodes. With *BGP everywhere* design, you might get new prefixes installed on the edge nodes while the core nodes are still furiously processing incoming BGP updates, resulting in black holes or microloops. 
+
+Also, unless you're using a BGP-free core, a transit (core) switch shouldn't be used until its BGP table has been fully loaded, resulting in yet another protocol kludge: [IGP-BGP synchronization](https://blog.ipspace.net/2017/08/synchronizing-bgp-and-ospf-or-ospf-and.html).
+
+The tradeoffs (you know there are bound to be some, right)? You have to add yet another technology to your network (MPLS) and yet another protocol (LDP or SR-MPLS extensions for OSPF or IS-IS).
