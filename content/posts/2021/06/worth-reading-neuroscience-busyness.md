@@ -1,6 +1,6 @@
 ---
 title: "Worth Reading: The Neuroscience of Busyness"
-date: 2021-05-23 06:10:00
+date: 2021-06-06 06:10:00
 tags: [ worth reading ]
 ---
 In the [Neuroscience of Busyness](https://www.calnewport.com/blog/2021/05/06/the-neuroscience-of-busyness/) article, Cal Newport describes an interesting phenomenon: when solving problems, we tend to *add* components instead of *removing*  them. 
