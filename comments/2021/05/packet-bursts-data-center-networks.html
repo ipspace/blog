@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -64,6 +64,39 @@
 <p>@Xavier: As most traffic toward the client is client-generated in the first place, you wouldn&#39;t expect to see a massive incast problem, and as the TCP bursts gradually increase in size as the peers are trying to figure out what works, eventually the network-to-client link will get into packet drop territory and the inbound TCP sessions will reach an equilibrium.</p>
 
 <p>I would strongly suggest you figure out (A) how much buffering there is on your access switches and (B) what&#39;s the percentage of outbound packet drops caused by output queue overflow. You might not have that problem at all.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="583">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c583" href="#583">24 May 2021 08:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, spot on about deep buffering not required and a bit of drop (not too much) is fine in DC environments, where RTTs tend to be in us rather than ms range. Also, one implicit assumption on a lot of these discussions, is what we describe generally applies to busy to very busy DCs. For low-utilization DCs, it doesn&#39;t matter the design, just throw in hardware in a basic topology and often times it works acceptably :)).</p>
+
+<p>That said, congestion in busy DCs doesn&#39;t require saturation of every single port of a switch, core or leaf. Take the incast scenario -- the same effect can happen to a hang server. Say when A,B,C and a few others on L1 send to X simultaneously and X fails to respond due to whatever reason, leading to output queue saturation on X port of L2 switch. That will cause all other traffic destined to X (say X is hosting several busy VMs) to be dropped as well, causing big delay for other traffic. And the buffer saturation will now move back toward that of S1-L2 port, still on L2, causing VOQ saturation on that input port. Depending on how the VOQs are built, if they&#39;re quota-restricted, they won&#39;t cause buffer fill-up on that port, but if the packet buffer is shared among all VOQs with not quota enforced on each one, then buffer hogging by the saturating VOQ will occur, leading to more packet loss for all sources sending to that uplink as well. So basically all traffic sent to L2 from S1 will suffer, while S1 can be under-utilized. </p>
+
+<p>Also, another assumption we tend to make in high-level discussion is fabric scheduler&#39;s efficiency. But schedulers are not perfect, far from it. These schedulers, the majority of them some variants of iSLIP/PIM, tend to work well with uniform and uncorrelated traffic. When the traffic is bursty and correlated, plus there&#39;s congestion going on at some port, the scheduler&#39;s performance can drop pretty quickly. Also these schedulers are generally designed with the assumption of symmetry in mind. When switches have uplink ports whose link bandwidth are bigger than other ports, port scheduling can get inefficient. So in reality, all of these factors can cause congestion and increase delay greatly even when the core switches are under-utilized. </p>
+
+<p>Vendors also tend to post best-case performance numbers, so when they post things like 5 billions of packets in total for product xyz, we should expect the thing to perform worse in practice. Their method of calculation can be questionable as well -- they might test only a subset of ports, then multiply the result and call that total switching capacity, when in fact, due to scheduler&#39;s performance variation between low and high offered loads, plus all other reasons mentioned above, realistic performance doesn&#39;t even come close to that. </p>
+
+<p>Section 3.2 in this paper documents what happens when the authors attempt to create several traffic patterns on a leaf-spine topology. It&#39;s not a big setup, yet it can get ugly fast:</p>
+
+<p>https://arxiv.org/abs/1604.07621</p>
+
+<p>In big DCs with much bigger fan-in traffic, this situation can get worse. High fan-in can also cause work-conservation problem in switches as well. Say L1 in your diagram. When lots of ports all send to 1 or 2 uplinks at the same time, oversubscribing the uplinks, the scheduler performance can bog down because it&#39;s too hard to do efficient scheduling for that kind of traffic pattern, resulting in the uplinks not receiving as many packets as they can send out, aka they&#39;re not work-conserving. All of this can happen while L1&#39;s total load is nowhere near 100%. </p>
+
+<p>Work-conservation is a fundamental issue in switch design, and AFAIK, there&#39;s no scheduler to date that can deal with this optimally, and that for unicast traffic alone. Mixing in multicast traffic, and things can get messy pretty quickly. That&#39;s why I don&#39;t put much stock in the beautiful performance figures vendors put out. That said, we don&#39;t generally have these kinds of problems in the average enterprise DC because switches are pretty underused there :)). </p>
 </div>
           </div>
         </li>
