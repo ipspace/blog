@@ -1,6 +1,6 @@
 ---
 title: "Feedback: Kubernetes Networking Deep Dive"
-date: 2021-05-31 07:02:00
+date: 2021-05-24 11:02:00
 tags: [ containers ]
 ---
 Here's what one of the engineers watching [Stuart Charlton's Kubernetes webinar](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) [wrote about it](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive#Happy_Campers):
