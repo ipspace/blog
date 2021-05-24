@@ -31,9 +31,17 @@
          "name": "Minh Ha",
          "pub": "2021-05-24T08:32:53",
          "type": "comment"
+      },
+      {
+         "date": "24 May 2021 12:36",
+         "html": "<p>Thanks a million for another batch of &quot;further reading&quot;. Just two minor details:</p>\n\n<p>&gt; Say when A,B,C and a few others on L1 send to X simultaneously and X fails to respond due to whatever reason, leading to output queue saturation on X port of L2 switch.</p>\n\n<p>I hope we are not talking about lossless traffic here. Under the usual <em>IP is unreliable, use TCP</em> assumptions, if X does not respond, the traffic sent to it is lost (or at least unacknowledged), and the congestion on that port should be reduced (apart from occasional retransmissions).</p>\n\n<p>&gt; That will cause all other traffic destined to X (say X is hosting several busy VMs) to be dropped as well, causing big delay for other traffic.</p>\n\n<p>And that is solved by rate-limiting or shaping the traffic toward a VM within the server, making sure congestion detection/avoidance kicks in well before the physical uplink is saturated. Yeah, I&#39;m sure there are people out there <em>not</em> doing that, but that&#39;s a totally different story &#x1F937;&zwj;&#x2642;&#xFE0F;</p>\n",
+         "id": "584",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-05-24T12:36:51",
+         "type": "comment"
       }
    ],
-   "count": 4,
+   "count": 5,
    "type": "post",
    "url": "2021/05/packet-bursts-data-center-networks.html"
 }
