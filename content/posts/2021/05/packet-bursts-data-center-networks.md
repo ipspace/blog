@@ -1,6 +1,7 @@
 ---
 title: "Packet Bursts in Data Center Fabrics"
 date: 2021-05-18 07:40:00
+lastmod: 2021-05-24 12:05:00
 tags: [ data center, switching, QoS ]
 ---
 When I wrote about the [(non)impact of switching latency](https://blog.ipspace.net/2021/04/switching-latency-relevant.html), I was (also) thinking about packet bursts jamming core data center fabric links when I mentioned the elephants in the room... but when I started writing about them, I realized they might be yet another red herring (together with the [supposed need for large buffers in data center switches](https://blog.ipspace.net/2019/06/switch-buffer-sizes-and-fermi-estimates.html)).
@@ -45,10 +46,17 @@ There are [obvious pathological cases](https://blog.ipspace.net/2019/06/do-packe
 Speaking of pathological cases, someone told me about a pretty common one:
 
 * While it's true that TCP Selective Acknowledgement solves most of the packet drop issues, there's a corner case: if the last packet in a request is dropped, the receiver won't send a Selective ACK response, and as the sender keeps quiet (waiting for a response), we'll have to wait for the regular TCP timeout to kick in.
-* The default TCP retransmission timeout (in Linux) is 200 msec -- ridiculously large for environments where we love nagging about microsecond latencies.
+* The default minimum TCP retransmission timeout (RTO) in Linux is 200 msec -- ridiculously large for environments where we love nagging about microsecond latencies. 
 
 **End result**: if the network manages to lose just the right packet, end-to-end application latency can go through the roof. Even worse, it probably [won't show in the averages](https://blog.ipspace.net/2020/08/measuring-latency.html) your lovely single-pain-of-glass displays, but the users will definitely notice it.
 
-Most operating systems try to do their best estimating retransmission timeout ([here's a lengthy description of what Linux does](http://sgros.blogspot.com/2012/02/calculating-tcp-rto.html)), and if you care enough, you can set the initial RTO in Linux routing table... but of course it's easier to blame the network and demand large buffers everywhere. It might also be more expensive, but who cares -- it's some other teams' budget anyway.
+Most operating systems try to do their best estimating retransmission timeout ([here's a lengthy description of what Linux does](http://sgros.blogspot.com/2012/02/calculating-tcp-rto.html)), and if you care enough, you can set the minimum RTO in Linux routing table, [effectively eliminating incast collapse](https://www.cs.cmu.edu/~dga/papers/incast-sigcomm2009.pdf) and the need for big buffers. That's been known for over a decade, but of course it's easier to blame the network and demand large buffers everywhere. It might also be more expensive, but who cares -- it's some other teams' budget anyway.
 
+On a somewhat tangential topic, Linux can change IPv6 flow labels after encountering repetitive retransmissions, and if you use IPv6 flow labels as part of your in-fabric ECMP hashing, that could help TCP flows avoid a congested (or misbehaving) switch. For more details, watch the *[Self-healing Network of the Magic of Flow Labels](https://ripe82.ripe.net/archives/video/527)* presentation by Alexander Azimov
 
+## Revision History
+
+2021-05-24
+: Fixed the Linux RTO paragraph and added a link to Sigcomm 2009 paper measuring the impact of reduced minimum RTO. (source: Enrique Vallejo).
+
+: Added a link to RIPE82 presentation by Alexander Azimov (source: Blake Willis via LinkedIn)
