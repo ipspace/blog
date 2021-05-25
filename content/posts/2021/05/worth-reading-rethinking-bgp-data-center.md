@@ -11,7 +11,14 @@ In the meantime, while many hyperscalers moved beyond BGP-as-the-only-tool mantr
 
 {{<jump>}}[Watch the video](https://www.youtube.com/watch?v=pwxuhh7UIrU){{</jump>}}
 
-[^1]: Contrary to the above-mentioned gentlemen, Russ has real-life design and operations experience.
+## Revision History
+
+2021-05-25
+: Reworded the snarky footnote because (A) it wasn't exactly obvious who I had in mind and (B) because Trish vociferously insisted on making it gender-neutral. 
+
+: This is the last change to the blog post, and I won't reply to the comments any longer -- I have better things to do in my life.
+
+[^1]: Contrary to the ladies and gentlemen (most of them belonging to the above-mentioned groups) who vocally opine that "_BGP is the answer_" without even understanding what the question was, Russ has real-life design and operations experience.
 
 [^2]: In 2018 when he was still at LinkedIn and developing OpenFabric, so he might have been a bit biased.
 

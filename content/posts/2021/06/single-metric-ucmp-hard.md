@@ -1,6 +1,6 @@
 ---
 title: "Single-Metric Unequal-Cost Multipathing Is Hard"
-date: 2021-06-10 06:35:00
+date: 2021-06-01 06:35:00
 tags: [ IP routing, OSPF ]
 series: UCMP
 ---
@@ -20,7 +20,7 @@ How about the data center anycast use case I [mentioned the last time](/2021/06/
 
 What we'd like to have is 75% of the traffic going from L4 toward L1 (where it's spread between A,B, and C) and 25% of the traffic going toward L2. 
 
-A simplistic approach assign humongous costs to the server links (so that the intra-fabric cost would be negligible compared to the total cost), but you'd still be stuck with 50:50 ratio between L1 and L2 -- no implementation of a link-state protocol I've seen so far is reducing the link cost based on availability of parallel links. S1 would see 10.42.0.1/32 prefix being available through L1 with exactly the same cost as through L2.
+A simplistic approach could assign humongous costs to the server links (so that the intra-fabric cost would be negligible compared to the total cost), but you'd still be stuck with 50:50 ratio between L1 and L2 -- no implementation of a link-state protocol I've seen so far is reducing the link cost based on availability of parallel links. S1 would see 10.42.0.1/32 prefix being available through L1 with exactly the same cost as through L2.
 
 Yet again, you could tweak the metrics, and change them automatically every time you add or remove a server (congratulations, you implemented self-driving software-defined network), but I wish you luck trying to troubleshoot that Rube Goldberg invention.
 
