@@ -39,9 +39,17 @@
          "name": "Ivan Pepelnjak",
          "pub": "2021-05-24T12:36:51",
          "type": "comment"
+      },
+      {
+         "date": "25 May 2021 08:05",
+         "html": "<p>Hi Ivan, no, I was not talking about lossless fabric, just lossy ones; I intentionally left that one out because with lossless fabric, situations like this get much worse due to congestion spreading and HOL blocking :)) . Might even cause deadlock due to circular buffer dependency.</p>\n\n<p>You&#39;re right the traffic sent to X is lost and congestion should eventually reduce due to TCP congestion control and exponential backoff, but TCP RTOMin is in the ms range even when tuned, while the port buffer can fill up in us range, due to both high bandwidth and high fan-in, so quite a bit of loss can result and back up in the meantime. In that situation, traffic shaping doesn&#39;t help as cumulative shaped bandwidth of high fan-in can still overrun OQ buffer at X in us timeframe. </p>\n\n<p>Unfortunately, looks like data about DC congestion incidents are kept hush-hush -- if you know of any, pls let me know -- so we can&#39;t look deeper into specific cases and examine the dynamics. That would be a great way to improve our knowledge and experience, as one lifetime is too short to be able to witness all situations first hand :) . </p>\n",
+         "id": "588",
+         "name": "Minh Ha",
+         "pub": "2021-05-25T08:05:31",
+         "type": "comment"
       }
    ],
-   "count": 5,
+   "count": 6,
    "type": "post",
    "url": "2021/05/packet-bursts-data-center-networks.html"
 }
