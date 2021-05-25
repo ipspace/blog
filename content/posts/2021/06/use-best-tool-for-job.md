@@ -1,6 +1,6 @@
 ---
 title: "Routing Protocols: Use the Best Tool for the Job"
-date: 2021-05-27 07:00:00
+date: 2021-06-03 07:00:00
 tags: [ IP routing, networking fundamentals ]
 ---
 When I wrote about my [sample katacoda hands-on lab on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:6793903667410964480/) (mentioning how easy it is to set up an OSPF+BGP network), someone couldn't resist asking:
@@ -24,7 +24,7 @@ OSPF is just the opposite. It auto-discovers network topology, reacts (relativel
 
 Why don't we use OSPF everywhere? It can't carry too many routes ([redistributing the BGP table into OSPF is great fun](https://blog.ipspace.net/2020/10/redistributing-bgp-into-ospf.html)), and you cannot use it to implement a hop-by-hop policy -- all routers in the same area unconditionally share the same information.
 
-But didn't the hyperscalers prove that you can build [BGP-only data center fabrics](https://www.ipspace.net/Data_Center_BGP/)? Sure they did, and Petr Lapukhov [had good reasons](https://datatracker.ietf.org/doc/html/rfc7938#section-2.5) to build a BGP-only data center fabric at Microsoft. You can do the same, but it's not trivial unless you're using an operating system designed for that particular use case (Cumulus Linux with FRR). Does it make sense? Maybe not -- [you're not Microsoft or Facebook](https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html), and your network might not have the same scaling problems, regardless of [what the vendors would like you to believe](https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html).
+But didn't the hyperscalers prove that you can build [BGP-only data center fabrics](https://www.ipspace.net/Data_Center_BGP/)? Sure they did, and Petr Lapukhov [had good reasons](https://datatracker.ietf.org/doc/html/rfc7938#section-2.5) to build a BGP-only data center fabric at Microsoft. You can do the same, but it's not trivial unless you're using an operating system designed for that particular use case (Cumulus Linux with FRR). Does it make sense? Maybe not -- [you're not Microsoft or Facebook](https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html), and [your network might not have the same scaling problems](https://blog.ipspace.net/2021/05/worth-reading-rethinking-bgp-data-center.html), regardless of [what the vendors would like you to believe](https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html).
 
 Add "minor" details like vendors that love running EVPN over IBGP, and all of a sudden, you're in the [twisted IBGP-over-EBGP territory](https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html) just because someone insisted on not using two routing protocols where they should have.
 
