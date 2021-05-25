@@ -3,7 +3,7 @@ title: "Video: We Still Need Networking in Public Clouds"
 date: 2021-05-21 06:09:00
 tags: [ cloud, video ]
 ---
-Whenever someone starts mansplaining that you we need no networking when we move the workloads into a public cloud, please walk away -- he has just proved how clueless he is. 
+Whenever someone starts mansplaining that we need no networking when we move the workloads into a public cloud, please walk away -- he has just proved how clueless he is. 
 
 He might be a tiny bit correct when talking about software-as-a-service (after all, it's just someone else's web site), but when it comes to complex infrastructure virtual networks, there's plenty of networking involved, from packet filters and subnets to NAT, load balancers, firewalls, BGP and IPsec.
 
