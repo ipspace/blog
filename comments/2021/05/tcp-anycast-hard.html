@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -72,6 +72,29 @@ https://github.com/Demonware/balanced</p>
 <p>If you hit a backend scale up/down or failure, <em>and</em> you have an ECMP rehash to land on a different IPVS node, and you&#39;ve maintained a long-lived TCP connection through both of those events, then you <em>might</em> have impact to your connection if you are one of the subset of flows that got rehashed on the backend change (e.g. that 1/10 bit noted above).</p>
 
 <p>In practice, meeting all of those conditions is rare enough, and the efforts needed to mitigate for that as well (e.g. adding another indirection layer to punt to the previous host like Fastly implemented), that for our use case this type of setup is sufficient. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="598">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c598" href="#598">27 May 2021 07:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Michael: The <em>OMG, there are so few flow entries</em> realization is why I made so much fun of <em>solving global load balancing with OpenFlow</em> stupidity that was propagated as the highest achievement of mankind when OpenFlow was still young.</p>
+
+<p>On a more serious note, there are cases where you have few long-lived sessions, and hardware per-flow load balancing makes perfect sense. IIRC there was a startup using an Arista switch with DirectFlow to implement scale-out iSCSI cluster. Every host would connect to the same target, and the TCP session would be redirected to one of the (anycast) cluster members.</p>
+
+<p>@Hugo: Thanks a million for the pointer and the background info... and I agree, the edge cases are probably not worth worrying about in the HTTP world.</p>
 </div>
           </div>
         </li>
