@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "27 May 2021 10:49",
+         "html": "<p>Hi Ivan,\nas this is one of my fav topis, I couldn&#39;t <em>not</em> leave a comment.\nAFAIK, what networking vendors use is normally called &quot;resilient hashing&quot;. I&#39;ve no PhD in this area but it looks like consistent hashing is much more advanced and is still an active area of research (see https://medium.com/@dgryski/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8). My very simplified understanding is that resilient hashing is a similar idea but due to a small number of buckets and limited TCAM space cannot satisfy all of the properties of a consistent hashing algorithm. </p>\n\n<p>&gt; Is there an easy-to-deploy software solution out there that would allow you to build large-scale anycast TCP services\nIf we assume that &quot;large-scale&quot; and &quot;easy&quot; are not mutually exclusive, I believe there is. Due to how networking is implemented inside Kubernetes, you always get two layers of load-balancers (similar to cloud-scalers) with the first layer doing some form of consistent hashing and second layer doing the standard L7 LB (ingress). One prime example is Cilium https://cilium.io/blog/2020/11/10/cilium-19#maglev and although I don&#39;t have the exact numbers, I believe they test their releases against some pretty large number of nodes.</p>\n",
+         "id": "595",
+         "name": " Michael Kashin",
+         "pub": "2021-05-27T10:49:46",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/05/tcp-anycast-hard.html"
+}
