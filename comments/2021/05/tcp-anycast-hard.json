@@ -7,9 +7,17 @@
          "name": " Michael Kashin",
          "pub": "2021-05-27T10:49:46",
          "type": "comment"
+      },
+      {
+         "date": "27 May 2021 03:20",
+         "html": "<p>To add to my first comment, I have once tried to implement maglev-style load-balancing on an Arista switch. I used ECMP to spread the flows over multiple buckets and openflow agent to catch the first packet and install openflow (directflow) entries with timeouts (implementing the connection tracking part of maglev). This worked perfectly fine, I was able to add and remove anycast destinations without disrupting the existing traffic flows and it even survived the leaf switch outage (the second leaf in a pair would hash the flows in the same way). </p>\n\n<p>My dreams got shattered when I realised that the maximum number of directflow entries supported was limited to 1-2k and, since I was installing exact match entries, this would not usable in real life.</p>\n",
+         "id": "596",
+         "name": " Michael Kashin",
+         "pub": "2021-05-27T15:20:01",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2021/05/tcp-anycast-hard.html"
 }

@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -23,6 +23,27 @@ AFAIK, what networking vendors use is normally called &quot;resilient hashing&qu
 
 <p>&gt; Is there an easy-to-deploy software solution out there that would allow you to build large-scale anycast TCP services
 If we assume that &quot;large-scale&quot; and &quot;easy&quot; are not mutually exclusive, I believe there is. Due to how networking is implemented inside Kubernetes, you always get two layers of load-balancers (similar to cloud-scalers) with the first layer doing some form of consistent hashing and second layer doing the standard L7 LB (ingress). One prime example is Cilium https://cilium.io/blog/2020/11/10/cilium-19#maglev and although I don&#39;t have the exact numbers, I believe they test their releases against some pretty large number of nodes.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="596">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Michael Kashin</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c596" href="#596">27 May 2021 03:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>To add to my first comment, I have once tried to implement maglev-style load-balancing on an Arista switch. I used ECMP to spread the flows over multiple buckets and openflow agent to catch the first packet and install openflow (directflow) entries with timeouts (implementing the connection tracking part of maglev). This worked perfectly fine, I was able to add and remove anycast destinations without disrupting the existing traffic flows and it even survived the leaf switch outage (the second leaf in a pair would hash the flows in the same way). </p>
+
+<p>My dreams got shattered when I realised that the maximum number of directflow entries supported was limited to 1-2k and, since I was installing exact match entries, this would not usable in real life.</p>
 </div>
           </div>
         </li>
