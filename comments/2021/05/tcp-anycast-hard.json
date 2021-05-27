@@ -15,9 +15,17 @@
          "name": " Michael Kashin",
          "pub": "2021-05-27T15:20:01",
          "type": "comment"
+      },
+      {
+         "date": "27 May 2021 04:03",
+         "html": "<p>Similar to Michael&#39;s comment and re: the Cilium bits, we also drop an L4 IPVS layer in front of our k8s services that need access from outside a cluster. \nhttps://github.com/Demonware/balanced</p>\n\n<p>A BGP speaker on the IPVS nodes anycast the VIP to the network. IPVS has a consistent hashing algo (HRW / rendezvous hash). That way you don&#39;t depend on the network fabric to do any type of resilient hashing; you have a thin L4 software LB handle you resilience. This is done without coordination between the IPVS nodes (no flow state sync).</p>\n\n<p>With a consistent hash like that, you can still be susceptible to a partial rehash on backend add/drop, e.g. if you have 9 existing backends and add a tenth, then 1/10 of the connections from the existing backends will now hash to the new backend. However, IPVS does carry a tiny little bit of state in each node to also effectively implement resilient hashing to tolerate backend change. If you have a backend add/drop, if your flow is still traversing the same IPVS node then it will continue to forward your traffic to the same backend.</p>\n\n<p>If you hit a backend scale up/down or failure, <em>and</em> you have an ECMP rehash to land on a different IPVS node, and you&#39;ve maintained a long-lived TCP connection through both of those events, then you <em>might</em> have impact to your connection if you are one of the subset of flows that got rehashed on the backend change (e.g. that 1/10 bit noted above).</p>\n\n<p>In practice, meeting all of those conditions is rare enough, and the efforts needed to mitigate for that as well (e.g. adding another indirection layer to punt to the previous host like Fastly implemented), that for our use case this type of setup is sufficient. </p>\n",
+         "id": "597",
+         "name": " Hugo Slabbert",
+         "pub": "2021-05-27T16:03:14",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2021/05/tcp-anycast-hard.html"
 }

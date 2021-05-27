@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -44,6 +44,34 @@ If we assume that &quot;large-scale&quot; and &quot;easy&quot; are not mutually 
             <div class="comment-content"><p>To add to my first comment, I have once tried to implement maglev-style load-balancing on an Arista switch. I used ECMP to spread the flows over multiple buckets and openflow agent to catch the first packet and install openflow (directflow) entries with timeouts (implementing the connection tracking part of maglev). This worked perfectly fine, I was able to add and remove anycast destinations without disrupting the existing traffic flows and it even survived the leaf switch outage (the second leaf in a pair would hash the flows in the same way). </p>
 
 <p>My dreams got shattered when I realised that the maximum number of directflow entries supported was limited to 1-2k and, since I was installing exact match entries, this would not usable in real life.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="597">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Hugo Slabbert</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c597" href="#597">27 May 2021 04:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Similar to Michael&#39;s comment and re: the Cilium bits, we also drop an L4 IPVS layer in front of our k8s services that need access from outside a cluster. 
+https://github.com/Demonware/balanced</p>
+
+<p>A BGP speaker on the IPVS nodes anycast the VIP to the network. IPVS has a consistent hashing algo (HRW / rendezvous hash). That way you don&#39;t depend on the network fabric to do any type of resilient hashing; you have a thin L4 software LB handle you resilience. This is done without coordination between the IPVS nodes (no flow state sync).</p>
+
+<p>With a consistent hash like that, you can still be susceptible to a partial rehash on backend add/drop, e.g. if you have 9 existing backends and add a tenth, then 1/10 of the connections from the existing backends will now hash to the new backend. However, IPVS does carry a tiny little bit of state in each node to also effectively implement resilient hashing to tolerate backend change. If you have a backend add/drop, if your flow is still traversing the same IPVS node then it will continue to forward your traffic to the same backend.</p>
+
+<p>If you hit a backend scale up/down or failure, <em>and</em> you have an ECMP rehash to land on a different IPVS node, and you&#39;ve maintained a long-lived TCP connection through both of those events, then you <em>might</em> have impact to your connection if you are one of the subset of flows that got rehashed on the backend change (e.g. that 1/10 bit noted above).</p>
+
+<p>In practice, meeting all of those conditions is rare enough, and the efforts needed to mitigate for that as well (e.g. adding another indirection layer to punt to the previous host like Fastly implemented), that for our use case this type of setup is sufficient. </p>
 </div>
           </div>
         </li>
