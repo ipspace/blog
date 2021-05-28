@@ -40,15 +40,15 @@ Oh, and finally there's ICMP: ICMP replies include the original TCP/UDP port num
 
 ### Making Local TCP Anycast Work
 
-Does that mean that it's impossible to do local TCP anycast load balancing? Of course not -- every hyperscaler uses that trick to implement scale-out network load balancing. Microsoft engineers [wrote about their solution in 2013](https://conferences.sigcomm.org/sigcomm/2013/papers/sigcomm/p207.pdf), Fastly [documented their solution](https://www.fastly.com/blog/building-and-scaling-fastly-network-part-2-balancing-requests) in 2016[^2], Google has [Maglev](https://research.google/pubs/pub44824/), and we learned not to expect anything tangible from AWS anyway[^3]. 
+Does that mean that it's impossible to do local TCP anycast load balancing? Of course not -- every hyperscaler uses that trick to implement scale-out network load balancing. Microsoft engineers [wrote about their solution in 2013](https://conferences.sigcomm.org/sigcomm/2013/papers/sigcomm/p207.pdf), Fastly [documented their solution](https://www.fastly.com/blog/building-and-scaling-fastly-network-part-2-balancing-requests) in 2016[^2], Google has [Maglev](https://research.google/pubs/pub44824/), Facebook [open-sourced Katran](https://engineering.fb.com/2018/05/22/open-source/open-sourcing-katran-a-scalable-network-load-balancer/), we know AWS has Hyperplane, but all we got [from re:Invent videos](https://www.youtube.com/watch?v=8gc2DgBqo9U) was *it's awesome magic*. They [provided a few more details](https://www.facebook.com/watch/?v=2090077214598705) during Networking @Scale 2018 conference, but it was still at Karman line level.
 
 [^2]: Take your time and read the whole article. They went into intricate details I briefly touched upon in this blog post.
 
-[^3]: We know they call their magic _Hyperplane_, but that's about it.
-
 You could do something similar at a much smaller scale with a cluster of firewalls or load balancers (assuming your vendor manages to count beyond two active nodes), but the performance of network services clusters is usually far from linear -- the more boxes you add to the cluster, the less performance you gain with each additional box -- due to cluster-wide state maintenance.
 
-Is there an easy-to-deploy software solution out there that would allow you to build large-scale anycast TCP services? I'd love to hear about it -- please write a comment.
+There are at least some open-source software solutions out there that you can use to build large-scale anycast TCP services. If you don't feel comfortable using the hot-off-the-press gizmos like XDP, there's [Demonware's BalanceD](https://github.com/Demonware/balanced) using Linux IPVS.
+
+On the more academic side, there's [Cheetah](https://www.usenix.org/system/files/nsdi20-paper-barbette.pdf)... and in a rosy future we might eventually get a [pretty optimal solution](https://inl.info.ucl.ac.be/publications/making-multipath-tcp-friendlier-load-balancers-and-anycast.html) resembling a session layer with [Multipath TCP v1](https://datatracker.ietf.org/doc/html/rfc8684).
 
 ### More to Explore
 
@@ -56,5 +56,7 @@ Is there an easy-to-deploy software solution out there that would allow you to b
 * I described Microsoft's approach to scale-out load balancing and its implications in [SDN Use Cases](https://www.ipspace.net/SDN_Use_Cases) and in [load balancing](https://my.ipspace.net/bin/list?id=AzureNet#LB) part of [Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking) webinar.
 * The user-facing part of AWS load balancing is described in [Amazon Web Services Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) webinar.
 
+### Revision History
 
-
+2021-05-28
+: Added links to Katran, Hyperplane, BalanceD, Cheetah, and Multipath TCP. Thanks a million to Hugo Slabbert, Scott O'Brien, Lincoln Dale, Minh Ha, and Olivier Bonaventure for sending me the relevant links.
