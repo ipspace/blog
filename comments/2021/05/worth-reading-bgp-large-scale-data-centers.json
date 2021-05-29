@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "29 May 2021 02:45",
+         "html": "<p>In Russ White&#39;s presentation (from your post on May 23rd), he listed a few requirements to compare BGP, IS-IS and OSPF. Prefix distribution, filtering, TE, tagging, vendor-support, autoconfig and topology visibility. The one thing I was missing was: scalability.</p>\n\n<p>When I read about BGP-in-DC for the first time, a few years ago, I remember people claiming that IS-IS couldn&#39;t handle the flooding, when you have so many routers in your network. And the duplicate flooding was unsustainable when you have lots of neighbors (&gt;=64?). But Russ didn&#39;t mention scalability at all. On the other hand, we have 4 current drafts to improve IS-IS flooding (dynamic flooding, congestion control, proxy-area and 8-level-hierarchy).</p>\n\n<p>So my question is: do people still think IS-IS doesn&#39;t scale for large DCs? And if so, can anyone give me rough numbers of where things go wrong ? How many routers ? How many neighbors per router? Are we talking 10k routers in an area/domain? 100k? Why are areas not feasible? Anyone who has ever done any real performance measurements? (Not easy, I think). I&#39;d love to hear what people think (less what rumours people heard from others). I understand that these number vary largely per implementation, but I&#39;m still interested.</p>\n\n<p>I would imagine my personal favorite DC design would be:\n1) IS-IS for the underlay. Easy configuration.\n2) EVPN/BGP for the overlay. Scales very well.\n3) segment-routing in the data-plane. You can replace VXLAN, you can do TE if you want, etc.</p>\n\n<p>Or is segment-routing hardware still considered too expensive for large-scale DCs?</p>\n",
+         "id": "605",
+         "name": " Henk",
+         "pub": "2021-05-29T14:45:14",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/05/worth-reading-bgp-large-scale-data-centers.html"
+}
