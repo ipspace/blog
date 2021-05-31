@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>9 comments:</h4>
+  <h4>10 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -208,6 +208,29 @@ https://github.com/Demonware/balanced</p>
               </span>
             </div>
             <div class="comment-content"><p>The Katran, Cilium / eBPF, and MTCP options are all intriguing ones for sure. Lots more options becoming available. I need to dig into the multipath TCP options a bit more, but I&#39;m still stuck at the moment on thinking that for public VIPs with lots of backends it&#39;s feasible for IPv6 but starts to become untenable in terms of public address requirements for IPv4. But perhaps there you&#39;d shove a 4to6 translation or just straight TCP reverse proxy layer in there somewhere.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="615">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> takt</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c615" href="#615">31 May 2021 11:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; It&rsquo;s almost impossible to get into the situation where you&rsquo;d have equal-cost paths to two different sites anywhere in the Internet.</p>
+
+<p>I have to disagree with that statement. ECMP is heavily used within ISP networks. And if the ISPs network is built in a symmetric way with two peering points to another ISP having the same IGP distance (from the user location) it would do ECMP to two different sites. Any that is perfectly fine from a network design perspective.</p>
+
+<p>Anycast TCP is even less controllable on the public internet than it is in a datacenter. In the end, anycast is not load balancing. ECMP can of course be used for TCP traffic. But only to get the traffic into a set of load balancers (like Maglev, Katran, etc).</p>
 </div>
           </div>
         </li>
