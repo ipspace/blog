@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>10 comments:</h4>
+  <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -231,6 +231,29 @@ https://github.com/Demonware/balanced</p>
 <p>I have to disagree with that statement. ECMP is heavily used within ISP networks. And if the ISPs network is built in a symmetric way with two peering points to another ISP having the same IGP distance (from the user location) it would do ECMP to two different sites. Any that is perfectly fine from a network design perspective.</p>
 
 <p>Anycast TCP is even less controllable on the public internet than it is in a datacenter. In the end, anycast is not load balancing. ECMP can of course be used for TCP traffic. But only to get the traffic into a set of load balancers (like Maglev, Katran, etc).</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="616">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c616" href="#616">31 May 2021 03:05</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@takt: I know that ISPs use ECMP internally. That was not the point.</p>
+
+<p>If I&#39;m a content provider using anycast, I&#39;d advertise the same prefix from multiple sites (probably not close together for resiliency reasons), commonly over multiple ISPs or at multiple IXPs. Unless you&#39;re heavily tweaking BGP path selection rules, it would be hard to get ECMP under those assumptions.</p>
+
+<p>In practice, anycast TCP works well in the global Internet... at least for minor players like CloudFlare, LinkedIn, or AWS ;)</p>
 </div>
           </div>
         </li>
