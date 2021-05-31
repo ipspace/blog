@@ -7,9 +7,17 @@
          "name": " Henk",
          "pub": "2021-05-30T17:44:07",
          "type": "comment"
+      },
+      {
+         "date": "31 May 2021 09:01",
+         "html": "<p>I read the paper, and from what section 2 described, 180k looks like the total number of switches across 130 DCs. So indeed there&#39;re some 1400k switches per DC, on average. That makes more sense as I&#39;ve never believed you need even 10k switches for 100k-server DCs, even with commodity switches. Thx a lot Ivan, for bringing this data to light, putting an end to this question!!</p>\n\n<p>Also Ivan, I don&#39;t think at 10k switches or higher switch counts, these cloud-scale guys actually run flat networks. Previous studies from SPs show that they sub-divide their networks into smaller routing domains and run redistribution between them. I have my suspicion Cloud providers won&#39;t do any better. What goes into presentations and corporate PR release doesn&#39;t seem to match what happens at ground zero, often times. If you ever find any such info, pls share :).</p>\n\n<p>Re hardware problems, one would have thought after over 3 decades of building high-end hardware, this art had been refined into hard science. But looks like even for standard features like ECMP, hardware faults are still quite common. Some of the problems brought up by Fastly in their software load-balancing report include:</p>\n\n<p>Uneven hashing. Some switches under evaluation were incapable of hashing evenly. For this particular switch model, the most and least heavily loaded of the 256 ECMP nexthops differ in allocated traffic share by a factor of approximately six.</p>\n\n<p>Unusable nexthops. Some switches also have odd restrictions\non the number of usable ECMP nexthops for any given destination. In particular, one model we tested appears to only support ECMP nexthop set sizes that are of the form (1;2; : : : ;15) x 2^n, presumably because of hardware limitations.</p>\n\n<p>You can read more about them in section 6.3 of their paper:</p>\n\n<p>https://www.usenix.org/system/files/conference/nsdi18/nsdi18-araujo.pdf</p>\n\n<p>Why would vendors spend so much time adding bullshit features that hardly anyone uses, incl. shitty AI/ML capabilities, when they can&#39;t get their basics to work without hiccup??? And they expect us to believe in breath-taking technological progress. Wow!</p>\n",
+         "id": "614",
+         "name": "Minh Ha",
+         "pub": "2021-05-31T09:01:17",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2021/05/worth-reading-azure-switch-failure-analysis.html"
 }
