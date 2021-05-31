@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>4 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -86,6 +86,31 @@
               </span>
             </div>
             <div class="comment-content"><p>I&#39;m still impressed by BGP usage by Cumulus Linux team.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="613">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c613" href="#613">31 May 2021 08:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I second Henk&#39;s question re IS-IS scalability in large DCs given modern hardware -- I remember raising the same question in another post last year. I reached the same conclusion as Russ White for the control plane side, that 300k routes are doable for SPF calculation, for routers running modern day&#39;s multi-core CPUs. The only downside is the flooding. But this is where one cannot throw blanket conclusion such as: no, IS-IS won&#39;t scale with this many prefixes. If the network is static with very few changes, of course IS-IS can scale, thanks to reduced flooding. In a network with frequent changes, I doubt even BGP can scale. Why? Because there&#39;s another part to scalability: FIB update time. TCAM update time is inherently slow, and gets exponentially slower as your prefixes increase to the hundreds of thousands. IPv6 also will be twice as slow as IPV4. So it doesn&#39;t matter how BGP handles millions of prefix painlessly on control plane, the data-plane still takes a long, long time to update. So the 300m prefixes case that Russ brought up in the presentation, is only good for demo, won&#39;t work in practice. First of all, not sure if there&#39;s enough TCAM space to hold up anywhere near that many routes. AFAIK, there isn&#39;t.</p>
+
+<p>I also got struck with nostalgia reading FB&#39;s BGP use case, maybe because I&#39;m just old-schooled :). When was the last time we saw confederation brought up, let alone used in production? Also, I resonate big time with their overall philosophy, reflected well in each and every step of their design process: build a web-scale DC the same way the Internet is built, with hierarchy and summarization for scale, and keep it simple to the bare minimum. I remember we discussed this too via email the other month Ivan. </p>
+
+<p>I feel sick whenever I hear in Cloud Presentations, things like: nothing scales to our need, so we have to invent our own way. So the Internet is smaller in scale than yours? And their time-tested scalable design principles, along with proven, mature technologies, are no good for you? What arrogance and audacity you have. It&#39;s good and refreshing to know there&#39;re people who still champion the old ways, building network on solid fundamental principles, instead of fanfare and hype.  </p>
+
+<p>Pls keep sharing more stuff like this Ivan. Great work :))!!</p>
 </div>
           </div>
         </li>
