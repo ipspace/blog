@@ -39,9 +39,17 @@
          "name": " Vanish",
          "pub": "2021-06-02T20:34:15",
          "type": "comment"
+      },
+      {
+         "date": "03 June 2021 07:01",
+         "html": "<p>We started to use this setup in our out-of-band network where production devices have their fxp0, em0 and what not interfaces connected (it&#39;s all Juniper based). Initially, OoB network was just a flat switched network, but then one day due to human error we had forwarding loop there and ... let&#39;s just say control plane of almost all devices stopped running the actual network as it was too busy to process lovely flood of ARP packets. It wasn&#39;t pretty.\nBut back to unnumbered interfaces. We use EX3400 with QFX5100 for some aggregation in this out-of-band network. As it was mentioned, the best part is that from connected device&#39;s perspective, nothing has changed. We&#39;ve enabled also proxy-arp on these unnumbered interfaces. For downstream routing it&#39;s just static routes pointing to each downstream interface through qualified-next-hop and for upstream routing (each access EX3400 is dual uplinked for redundancy) we use venerable RIP protocol. Uplink interfaces are actually configured as aggregated ethernet interfaces with fast LACP and just single member. That is in order to make not so obvious link failures fast for RIP. Of course, one can be a license and use something else than RIP and maybe even VRFs if the same network serves multiple tenants, but for us this is good enough.\nIt&#39;s somewhat less elegant when we are connecting dual control plane devices, where each routing engine has its own IP address, but they also share third one. In this case, that third IP address must be able to move between two physical ports. And IRB interface can&#39;t be configured as unnumbered interface. Until we find better solution, we create local vlan dedicated for a given two switched downstream ports and loop it over two front ports (one is configured as vlan trunk and another as L3 interface with sub-interfaces). Three static routes then point to the L3 sub-interface.\nAlso to make it less painful to configure, we have commit script which transforms macro applied at interface level to all necessary statements in various places (the actual interface configuration, static route(s) and for dual RE case also vlan, new sub-interface, etc.).</p>\n",
+         "id": "633",
+         "name": " Martin Rusko",
+         "pub": "2021-06-03T07:01:52",
+         "type": "comment"
       }
    ],
-   "count": 5,
+   "count": 6,
    "type": "post",
    "url": "2021/06/unnumbered-ethernet-interfaces.html"
 }
