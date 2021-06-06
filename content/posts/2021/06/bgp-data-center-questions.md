@@ -1,6 +1,6 @@
 ---
 title: "Questions about BGP in the Data Center (with a Whiff of SRv6)"
-date: 2021-06-10 06:04:00
+date: 2021-06-17 06:04:00
 tags: [ data center, BGP, design ]
 ---
 Henk Smit left numerous questions in a comment referring to the [Rethinking BGP in the Data Center](https://blog.ipspace.net/2021/05/worth-reading-rethinking-bgp-data-center.html) presentation by Russ White:
@@ -31,4 +31,4 @@ That's more-or-less what I've been saying for years (excluding segment routing ;
 
 SR-MPLS is implementable on any decent merchant silicon ASIC -- just take a look at Arista EOS. Most merchant silicon supported MPLS (with some limitations) a decade ago, and as hyperscalers moved WAN forwarding decisions to edge web proxies instead of WAN routers, I'm positive at least some of them use MPLS forwarding at the WAN edge.
 
-SRv6 is a different story. Very few merchant ASICs support it (apart from _anything can be done with programmable silicon_ fairy tales). Jericho2c+ seems to be an exception... but it started _sampling_ last September, and we have no idea what its SRv6 limitations might be. Has anyone seen it in a shipping product? Are you aware of any other merchant silicon SRv6 implementation? Comments are most welcome!
+SRv6 is a different story. Very few merchant ASICs support it (apart from _anything can be done with programmable silicon_ fairy tales). Jericho2c+ seems to be one of the exceptions... but it started _sampling_ last September, and we have no idea what its SRv6 limitations might be. Has anyone seen it in a shipping product? Are you aware of any other merchant silicon SRv6 implementation and their limitations (segment stack depth comes to mind)? Comments are most welcome!

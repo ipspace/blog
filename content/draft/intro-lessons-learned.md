@@ -2,11 +2,11 @@
 draft: True
 title: Lessons Learned in 35 Years of Networking
 ---
-### Lessons Learned: Technology Still Matters
+### (Pub) Lessons Learned: Technology Still Matters
 
-In June 2020, a friend of mine asked me to do a short presentation on lessons learned during my 35 years of being a networking engineer. It went reasonably well, so I decided to turn it into a webinar, starting with "regardless of what the disruptive marketers tell you, technology still matters."
+In June 2020, a friend of mine asked me to do a short presentation on lessons learned during my 35 years of being a networking engineer. It went reasonably well, so I decided to [turn it into a webinar](https://my.ipspace.net/bin/list?id=NetBiz#LL), starting with "regardless of what the disruptive marketers tell you, technology still matters."
 
-{{<jump>}}Watch the video{{</jump>}}
+{{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/L1%20-%20Technology%20Still%20Matters.mp4?doccode=NetBiz){{</jump>}}
 
 {{<note info>}}You'll need a Free ipSpace.net Subscription to watch the video.{{</note>}}
 
