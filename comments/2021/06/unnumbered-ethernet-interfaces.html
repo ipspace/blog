@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>7 comments:</h4>
+  <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -157,6 +157,98 @@ Also to make it less painful to configure, we have commit script which transform
             <div class="comment-content"><p>Arista Networks EOS 4.23.0F introduced support for IPv4 unnumbered interfaces. EOS 4.26.0.1F is the latest version as of this comment.</p>
 
 <p>https://eos.arista.com/eos-4-23-0f/ipv4-unnumbered-interfaces/</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="649">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ph. Jounin</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c649" href="#649">10 June 2021 05:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hello Ivan,</p>
+
+<p>I tried a similar configuration in order to use three devices in a /30 segment.
+.1 and .2 devices where already running, my goal was to use the .0 (i am completly aware that using the .3 address was not a good idea). I used your configuration :
+<pre>
+interface Loopback2412
+  ip address 10.10.10.0 255.255.255.255
+interface GigabitEthernet0/1.2412
+  encapsulation dot1Q 2412
+  ip unnumbered Loopback2412
+ip route 10.10.10.0 255.255.255.252 GigabitEthernet0/1.2412
+</pre>
+
+<p>whereas the two other devices on the subnet have a regular configuration:
+<pre>
+lyo-maq-2901-08#sh run int gi 0/1.2412
+interface GigabitEthernet0/1.2412
+  encapsulation dot1Q 2412
+  ip address 10.10.10.1 255.255.255.252
+</pre>
+
+<p>I was able to arp the neighbours, but unfortunately not to ping them, since the neighbours do not answer even if they correctly learn the arp entry :
+<pre>
+lyo-maq-2901-08#sh arp
+Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+Internet  10.10.10.0              8   70ca.9bae.f8b1  ARPA   GigabitEthernet0/1.2412
+</pre>
+
+<p>I think the reason is to find inside the RFC 1812:
+&gt; a router [...]
+   (2) SHOULD silently discard on receipt (i.e., do not even deliver to
+        applications in the router) any packet addressed to 0.0.0.0 or &#123;
+        &lt;Network-prefix&gt;, 0 &#125;.  If these packets are not silently
+        discarded, they MUST be treated as IP broadcasts (see Section
+        [5.3.5]).  There MAY be a configuration option to allow receipt
+        of these packets.  This option SHOULD default to discarding
+        them.</p>
+
+<p>which matchs somehow the cef status on the neighbour :
+<pre>
+lyo-maq-2901-08#sh cef
+10.10.10.0/30        attached             GigabitEthernet0/1.2412
+10.10.10.0/32        receive              GigabitEthernet0/1.2412
+10.10.10.1/32        receive              GigabitEthernet0/1.2412
+10.10.10.3/32        receive              GigabitEthernet0/1.2412
+</pre>
+
+<p>Eventually, this can be bypassed by configuring the neighbours with the unnumbered trick :
+<pre>
+lyo-maq-2901-08#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+lyo-maq-2901-08(config)#int lo 2412
+lyo-maq-2901-08(config-if)#ip add 10.10.10.1 255.255.255.255
+lyo-maq-2901-08(config-if)#int gi 0/1.2412
+lyo-maq-2901-08(config-subif)#no ip addr
+lyo-maq-2901-08(config-subif)#ip unnumbered loopback 2412
+lyo-maq-2901-08(config-subif)#ip route 10.10.10.0 255.255.255.252 gi 0/1.2412
+lyo-maq-2901-08(config)#end
+lyo-maq-2901-08#sh ip cef
+Prefix               Next Hop             Interface
+10.10.10.0/30        attached             GigabitEthernet0/1.2412
+10.10.10.0/32        attached             GigabitEthernet0/1.2412
+10.10.10.1/32        receive              Loopback2412
+</pre>
+
+<p>Lab done, but not sure i want to deploy it :)
+<pre>
+lyo-maq-2901-09#ping 10.10.10.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.10.10.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+lyo-maq-2901-09#
+</pre>
 </div>
           </div>
         </li>

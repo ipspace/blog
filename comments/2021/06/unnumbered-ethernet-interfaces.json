@@ -55,9 +55,17 @@
          "name": "Corey A Hines",
          "pub": "2021-06-03T21:45:04",
          "type": "comment"
+      },
+      {
+         "date": "10 June 2021 05:34",
+         "html": "<p>Hello Ivan,</p>\n\n<p>I tried a similar configuration in order to use three devices in a /30 segment.\n.1 and .2 devices where already running, my goal was to use the .0 (i am completly aware that using the .3 address was not a good idea). I used your configuration :\n<pre>\r\ninterface Loopback2412\r\n  ip address 10.10.10.0 255.255.255.255\r\ninterface GigabitEthernet0/1.2412\r\n  encapsulation dot1Q 2412\r\n  ip unnumbered Loopback2412\r\nip route 10.10.10.0 255.255.255.252 GigabitEthernet0/1.2412\r\n</pre>\n\n<p>whereas the two other devices on the subnet have a regular configuration:\n<pre>\r\nlyo-maq-2901-08#sh run int gi 0/1.2412\r\ninterface GigabitEthernet0/1.2412\r\n  encapsulation dot1Q 2412\r\n  ip address 10.10.10.1 255.255.255.252\r\n</pre>\n\n<p>I was able to arp the neighbours, but unfortunately not to ping them, since the neighbours do not answer even if they correctly learn the arp entry :\n<pre>\r\nlyo-maq-2901-08#sh arp\r\nProtocol  Address          Age (min)  Hardware Addr   Type   Interface\r\nInternet  10.10.10.0              8   70ca.9bae.f8b1  ARPA   GigabitEthernet0/1.2412\r\n</pre>\n\n<p>I think the reason is to find inside the RFC 1812:\n&gt; a router [...]\n   (2) SHOULD silently discard on receipt (i.e., do not even deliver to\n        applications in the router) any packet addressed to 0.0.0.0 or &#123;\n        &lt;Network-prefix&gt;, 0 &#125;.  If these packets are not silently\n        discarded, they MUST be treated as IP broadcasts (see Section\n        [5.3.5]).  There MAY be a configuration option to allow receipt\n        of these packets.  This option SHOULD default to discarding\n        them.</p>\n\n<p>which matchs somehow the cef status on the neighbour :\n<pre>\r\nlyo-maq-2901-08#sh cef\r\n10.10.10.0/30        attached             GigabitEthernet0/1.2412\r\n10.10.10.0/32        receive              GigabitEthernet0/1.2412\r\n10.10.10.1/32        receive              GigabitEthernet0/1.2412\r\n10.10.10.3/32        receive              GigabitEthernet0/1.2412\r\n</pre>\n\n<p>Eventually, this can be bypassed by configuring the neighbours with the unnumbered trick :\n<pre>\r\nlyo-maq-2901-08#conf t\r\nEnter configuration commands, one per line.  End with CNTL/Z.\r\nlyo-maq-2901-08(config)#int lo 2412\r\nlyo-maq-2901-08(config-if)#ip add 10.10.10.1 255.255.255.255\r\nlyo-maq-2901-08(config-if)#int gi 0/1.2412\r\nlyo-maq-2901-08(config-subif)#no ip addr\r\nlyo-maq-2901-08(config-subif)#ip unnumbered loopback 2412\r\nlyo-maq-2901-08(config-subif)#ip route 10.10.10.0 255.255.255.252 gi 0/1.2412\r\nlyo-maq-2901-08(config)#end\r\nlyo-maq-2901-08#sh ip cef\r\nPrefix               Next Hop             Interface\r\n10.10.10.0/30        attached             GigabitEthernet0/1.2412\r\n10.10.10.0/32        attached             GigabitEthernet0/1.2412\r\n10.10.10.1/32        receive              Loopback2412\r\n</pre>\n\n<p>Lab done, but not sure i want to deploy it :)\n<pre>\r\nlyo-maq-2901-09#ping 10.10.10.1\r\nType escape sequence to abort.\r\nSending 5, 100-byte ICMP Echos to 10.10.10.1, timeout is 2 seconds:\r\n!!!!!\r\nSuccess rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms\r\nlyo-maq-2901-09#\r\n</pre>\n",
+         "id": "649",
+         "name": " Ph. Jounin",
+         "pub": "2021-06-10T17:34:02",
+         "type": "comment"
       }
    ],
-   "count": 7,
+   "count": 8,
    "type": "post",
    "url": "2021/06/unnumbered-ethernet-interfaces.html"
 }
