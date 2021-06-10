@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -20,6 +20,27 @@
             <div class="comment-content"><p>Ivan, I still don&#39;t understand this part here: &quot; S1 would see 10.42.0.1/32 prefix being available through L1 with exactly the same cost as through L2.&quot;</p>
 
 <p>Say, L1 and L2 both advertise 10.42.0.1/32 to S1. Wouldn&#39;t S1 get 4 OSPF entries of 10.42.0.1/32 with different metrics then? And so it would load-balance among the 4 entries accordingly. Why would S1 see 10.42.0.1/32 thru L1 with the same cost as thru L2, unless each of them only generates one 10.42.0.1/32 toward S1?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="650">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c650" href="#650">10 June 2021 06:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Minh Ha: Getting a definitive answer would involve digging through RFC 2328, and I don&#39;t have the nerves to do that anymore ;) Anyone reading this comment thread is most welcome to do it.</p>
+
+<p>I would be surprised to see three routing table entries on S1 pointing to L1 (and it might depend on whether L1 advertises type-5 LSA or connected subnets in type-1 LSA)... but it should be pretty easy to set this up in a lab and prove me wrong ;))</p>
 </div>
           </div>
         </li>
