@@ -1,8 +1,7 @@
 ---
 title: "ipSpace.net Subscription for System Administrators"
-# date: 2021-04-09 10:47:00
+date: 2021-06-14 06:47:00
 tags: [ training ]
-draft: True
 ---
 One of our subscribers sent me this question:
 
