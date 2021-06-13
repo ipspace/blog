@@ -17,7 +17,7 @@ Last time we covered transparent bridging fundamentals, now it's time to recap I
 
 {{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
-# Video: Comparing Routing and Bridging
+# (Pub) Video: Comparing Routing and Bridging
 
 After covering the basics of transparent Ethernet bridging and IP routing, we're finally ready to compare the two. Enjoy the ride ;)
 
