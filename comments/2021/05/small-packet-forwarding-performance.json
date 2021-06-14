@@ -9,6 +9,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "14 June 2021 04:42",
+               "html": "<p>Most ASICs I have encountered including the broadcom ones have mechanisms in place to handle bursts of small packets arriving one after the other without overwhelming the forwarding engine.</p>\n\n<p>In 11 years of operating networks with datacenter merchant silicon across many hundreds of thousands of deployed switches I have never seen a switch come anywhere need hitting a PPS limit outside of lab test scenarios designed to find them.</p>\n\n<p>Once you include Jumbo packets and TCP behaviors such delayed ack into the traffic profile the average packet size is measured in KB.</p>\n",
+               "id": "663",
+               "name": "colin whittaker",
+               "pub": "2021-06-14T16:42:51",
+               "ref": "570",
+               "type": "comment"
+            }
+         ],
          "date": "14 May 2021 05:29",
          "html": "<p>Hi Ivan,</p>\n\n<p>Very detailed analysis as usual, and I agree with most of what you said above :)) . The thing is, in my comment as you quoted above, I said 100-400GE links are mostly aggregate uplinks. So a 12.8Tbps switch would normally be a backbone switch. In that case, each uplink port will be the accumulator of packets from many different sources, and these packets come in unsync manner, meaning they can come one right after another, or many at the same time. Add to that many-to-one, incast-prone traffic patterns, and the number of small packets, i.e 64-300 byte packets, can overwhelm a backbone port&#39;s pps capacity, in a busy DC. </p>\n\n<p>Also, for some HPC scenarios, they remove the 64-byte packet size and have packets as small as 40-32 bytes:</p>\n\n<p>https://www.nextplatform.com/2019/08/16/how-cray-makes-ethernet-suited-for-hpc-and-ai-with-slingshot/</p>\n\n<p>So switches made for those environment (say high-energy physics apps which have very high data rate requirements) might be required to process a lot of small packets. </p>\n\n<p>You&#39;re very much on point about Broadcom not implementing high-end packet processing due to cost reasons. Economics come first. But I actually don&#39;t believe they, or anyone ATM, can do it at all. Processing 64-byte packets at 100GE requires per-packet processing budget of 6.7ns if your LC has only 1 port, and 6.7ns/n for n-port LCs. For 400Ge, the time budget is 4 times lower. I doubt that will ever be possible given technical constraints with TCAM speed, power budget and signal integrity problems at high speed. If I recall correctly, even at 10GE, the line-rate starts at 150 or 160-byte packet or something similar. Those numbers seem to have stuck throughout the decades. That&#39;s why at very high speed, label switching is preferable to IP, esp. to IPv6, due to its greater speed and lesser power requirement.</p>\n\n<p>I bring this up so we can all think about it and discuss the nuances/implications, not as a vendor-bickering exercise :)) .</p>\n\n<p>Cheers\nMinh</p>\n",
          "id": "570",
