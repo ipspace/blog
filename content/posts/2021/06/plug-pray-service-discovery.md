@@ -2,6 +2,7 @@
 title: "Deploying Plug-and-Pray Software in Large-Scale Networks"
 tags: [ IP routing ]
 date: 2021-06-16 07:45:00
+lastmod: 2021-06-18 15:46:00
 ---
 One of my readers sent me a sad story describing how Chromium service discovery broke a large multicast-enabled network.
 
@@ -22,3 +23,38 @@ Luckily I've passed through the very grumpy phase already and have prompted the 
 ---
 
 For whatever reason, this story reminds me of a handset OS vendor who refuses to implement DHCPv6 because *they know better*. Who cares about doing the right thing when we can persuade the users of our gadgets that it's the infrastructure teams' fault no matter what.
+
+Unfortunately, this is not the only _Service Discovery is breaking my network_ scenario. [Erik Auerswald](https://www.unix-ag.uni-kl.de/~auerswal/) sent me this one:
+
+---
+
+This interesting phenomenon came to light because of really large layer-2 domain combined with the fact that the switches the customer used sent every link-local multicast packet (groups in 224.0.0.0/24) to the CPU. 
+
+After changing the configuration of the wireless access points used by the customer, the switch CPU utilization would be a constant 100% for about an hour or two, observable in the NMS. No networking problem was detectable during those high CPU usage times, but it would generate alarms and might interfere negatively with troubleshooting network problems. 
+
+Here's what was going on: 
+
+* The APs performed a reboot to apply new configuration.
+* After booting, they started sending MDNS (224.0.0.251) and LLMNR (224.0.0.252) requests. 
+* Lots of end-systems would answer, because of the large layer-2 two domain, and use of common end-system operating systems.
+* The APs seemed to ignore the answers, and queried again, according to the retry mechanisms of MDNS and LLMNR.
+* The end-systems would answer those queries as well, the answer seemed to be ignored, additional queries generated and on and on and on.
+
+All those link-local multicast packets were sent to the switch CPUs, processed, and ignored. This kept the CPU load at 100% for quite some time. 
+
+The amount of MDNS & LLMNR messages per second eventually decreased, because the APs seemed to follow the exponential backoff algorithm specified for those protocols, so that they would "retry" once per hour, which did not result in switch CPU usage spikes noticeable in the NMS software (couple of minutes polling interval). 
+
+The implemented workaround was to stop the multicast packets from reaching the CPU via ACL (or [control plane] policy or whatever you may want to call it) without restricting forwarding of those packets. 
+
+To close the loop to SSDP: the APs did send SSDP queries as well, but since those are not link-local (239.255.255.250), they were not processed by the CPU (IGMP snooping was implemented by the switch ASIC). Thus I did not need to do anything about them. 
+
+The customer, of course, did not know if MDNS, LLMNR, and SSDP were actually needed by the end-systems. 
+
+Since MDNS & LLMNR use link-local multicast groups, they are not flooded over all of a routed multicast domain, thus they usually do not create problems there, opposed to SSDP. 
+
+---
+
+### Revision History
+
+2021-06-18
+: Added another SSDP / MDNS / LLMNR example by Erik Auerswald
