@@ -1,12 +1,20 @@
 ---
 title: "OSPF Inter-Process Route Selection"
 date: 2021-06-15 08:22:00
+lastmod: 2021-06-18 15:46:00
 tags: [ OSPF ]
 ---
 The traditional wisdom claimed that a Cisco IOS router cannot compare routes between different OSPF routing processes. The only parameter to consider when comparing routes coming from different routing processes is the admin distance, and unless you change the default admin distance for one of the processes, the results will be random.
 
 Following [Vladislav's comment to a decade-old blog post](https://blog.ipspace.net/2008/01/e1-and-e2-routes-in-ospf.html#639), I decided to do a quick test, and found out that code changes tend to invalidate traditional wisdom. OSPF inter-process route selection is no exception. That's why it's so stupid to rely on undefined behavior in your network design, memorize such trivia, test the memorization capabilities in certification labs, or read decades-old blog posts describing arcane behavior.
 <!--more-->
+
+Before we move on:
+
+* In case you haven't got the message: **do not** use anything described in this blog post outside of a CCIE lab. Good network designs do not depend on under-documented features.
+* The only reason I wrote this blog post was to document that the old wisdom is no longer true.
+* Have I told you not to use multiple OSPF processes with the same admin distance? Oh, I did. Keep that in mind, will you?
+
 ## Creating the Lab
 
 I decided to use a simple triangle topology with one of the links having a static IP prefix:
@@ -143,3 +151,8 @@ Now the router claims the prefix coming from OSPF process 1 has *closer admin di
 Just for the giggles, I removed the **ip ospf cost** interface configuration commands, making the paths through *e1* and *e2* equal cost. Whatever I did, *rtr* consistently chose the path through *e1*, so it looks like the inter-process route selection goes even further than the OSPF cost.
 
 Finally, what about the old blog posts I mentioned? Don't expect anyone to fix them, and be careful about the information you glean off the Internet. Hands-on lab results always beat google-and-paste.
+
+### Revision History
+
+2021-06-18
+: Added _you really really really should not be doing this_ section. Unfortunately I don't expect it to ever dissuade an insistent networking engineer trying to save a broken design with a horrible kludge.
