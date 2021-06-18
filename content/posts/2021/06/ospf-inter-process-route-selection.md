@@ -7,6 +7,13 @@ The traditional wisdom claimed that a Cisco IOS router cannot compare routes bet
 
 Following [Vladislav's comment to a decade-old blog post](https://blog.ipspace.net/2008/01/e1-and-e2-routes-in-ospf.html#639), I decided to do a quick test, and found out that code changes tend to invalidate traditional wisdom. OSPF inter-process route selection is no exception. That's why it's so stupid to rely on undefined behavior in your network design, memorize such trivia, test the memorization capabilities in certification labs, or read decades-old blog posts describing arcane behavior.
 <!--more-->
+
+Before we move on:
+
+* In case you haven't got the message: **do not** use anything described in this blog post outside of a CCIE lab. Good network designs do not depend on under-documented features.
+* The only reason I wrote this blog post was to document that the old wisdom is no longer true.
+* Have I told you not to use multiple OSPF processes with the same admin distance? Oh, I did. Keep that in mind, will you?
+
 ## Creating the Lab
 
 I decided to use a simple triangle topology with one of the links having a static IP prefix:
