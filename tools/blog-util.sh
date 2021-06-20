@@ -120,6 +120,11 @@ case "$1" in
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
         echo '*' "[$TITLE]($URL)"|pbcopy
         ;;
+      em)
+        URL=$(pbpaste)
+        TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
+        echo "_[$TITLE]($URL)_"|pbcopy
+        ;;
       wiki)
         URL=$(pbpaste)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)

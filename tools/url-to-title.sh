@@ -4,5 +4,4 @@ if [ -z "$1" ]; then
   exit
 fi
 URL=$1
-echo $(wget -qO- $URL|hxnormalize -x|hxselect -c head title|perl -0777 -pe 's/\s+&#171;.*$//igs')
-
+echo $(wget -qO- $URL|hxnormalize -x|hxselect -c head title|perl -0777 -pe 's/(\s+&#171;.*| - www.ipSpace.net)$//igs')
