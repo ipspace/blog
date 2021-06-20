@@ -11,6 +11,12 @@ I don't... so let's fix that omission. In this blog post we'll focus on pure lay
 <!--more-->
 We'll compare the traditional bridging (using MLAG) with VXLAN-based bridging using IP multicast in the underlay, head-end replication, or EVPN control plane. We'll stay at a pretty high level because it's [impossible to get the hardware documentation for switching ASICs](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html), and because the details always depend on the specific ASIC, [software vendor’s use of ASIC resources](https://blog.ipspace.net/2021/02/rant-broadcom-nos-vendors.html), quality of ASIC vendor SDK… and I’m definitely not touching those cans of worms.
 
+---
+
+[Pete Lumbis](https://www.ipspace.net/Author:Pete_Lumbis) and [Dinesh Dutt](https://www.ipspace.net/Author:Dinesh_Dutt) helped me figure out or confirmed some of the details. Thanks a million!
+
+---
+
 Every bridging implementation needs two data structures:
 
 * Interfaces (links)
