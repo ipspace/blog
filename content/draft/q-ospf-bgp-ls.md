@@ -1,1 +1,0 @@
-> But why BGP LS, PCE and PCEP was really needed to populate TED in controller for TE. Why can’t we run OSPF with controller by simulating a software based OSPF instance in every area to get topology view and use something like fibbing to control traffic paths. Also your thoughts on why people are not doing something similar for inter-area IP FRR
