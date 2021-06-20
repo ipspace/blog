@@ -25,7 +25,7 @@ After covering the basics of transparent Ethernet bridging and IP routing, we're
 
 {{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
-# Video: Typical Large-Scale Bridging Use Cases
+# (Pub) Video: Typical Large-Scale Bridging Use Cases
 
 In the previous video in the _[Switching, Routing and Bridging](https://my.ipspace.net/bin/list?id=Net101#SWITCH)_ section of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar we compared transparent bridging with IP routing. Not surprisingly (given my well-known bias toward stable solutions) I recommended using IP routing as much as possible, but there are still people out there pushing large-scale transparent bridging solutions. 
 
