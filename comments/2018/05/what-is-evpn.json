@@ -58,6 +58,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "25 June 2021 05:45",
+               "html": "<p>While you could use the underlay network for all the purposes you mentioned, those traffic types usually have different security requirements, so one would put them in different VLANs or VRFs anyway.</p>\n\n<p>Running them on top of EVPN is thus easier to set up.</p>\n\n<p>More details in a blog post (probably coming in early September).</p>\n",
+               "id": "692",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-06-25T17:45:12",
+               "ref": "691",
+               "type": "comment"
+            }
+         ],
          "date": "25 June 2021 09:29",
          "html": "<p>Hi,\nThere is something that i am wondering for a while, and trying hard to find any resources without success so far.</p>\n\n<p>Does it make sense and are there any inherent problems from design perspective to actually use the Underlay not only for transport of Overlay packets, but also for some services. For example:\nVMWare cluster, vmotion, VXLAN traffic, some basic infrastructure services that are prerequisite for the rest - e.g. DNS. To me this looks like a great idea because this is what the L3 underlay really is - simple and robust, and with least dependencies, and this is what these basic infrastructure need. \nNowadays you don&#39;t need stretched VLANs and subnets between the racks to run your VMWare, vSAN and etc. </p>\n\n<p>Continuing this line of thought, i was wondering about reasons for decision on placing the L3 underlay interfaces in default routing table or a VRF, i would really appreciate a meaningful conversation on that topic as well!</p>\n",
          "id": "691",
