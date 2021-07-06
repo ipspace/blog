@@ -1,14 +1,15 @@
 ---
 title: "Planning the Next Extended Coffee Break"
 date: 2021-01-05 08:44:00
+lastmod: 2021-07-06 08:55:00
 tags: [ training ]
 series: coffee-break
 ---
-**Long story short**: ipSpace.net is going on an extended coffee break on June 24th 2021. You can stop reading; the rest of the blog post is full of details you probably don't care about.
+**Long story short**: ipSpace.net is ~~going on an extended coffee break on June 24th 2021~~ [reducing the scope of activities](/2021/04/coffee-break-take-two.html) on July 1st 2021. You can stop reading; the rest of the blog post is full of details you probably don't care about.
 
-**What exactly does that mean?** Honestly, we don't know yet... but we felt that it's only fair to let engineers considering our subscriptions know months in advance what might happen. As the ideas are crystalizing, we're updating this blog post and [an overview of changes](https://www.ipspace.net/Break/Overview).
+**What exactly does that mean?** Since this blog post was published in January 2021, we pretty much [figured out a way forward](https://www.ipspace.net/Break/Overview), and I'm glad we let engineers considering our subscriptions know months in advance what might happen.
 
-Anyway, after investing [two lifetimes](https://www.smbc-comics.com/comic/2012-09-02) into this project, and a few planned changes coming just before our regular summer hiatus (see below) it's time for a longer break. ipSpace.net will revert back to Ivan working on some interesting stuff.
+Anyway, after investing [two lifetimes](https://www.smbc-comics.com/comic/2012-09-02) into this project, and a few planned changes coming just before our regular summer hiatus (see below) it's time for ~~a longer break~~ an adjustment. ipSpace.net will revert back to Ivan working on some interesting stuff.
 <!--more-->
 **What planned changes are you talking about?** Three years ago [Irena Marčetič](https://www.ipspace.net/Team:Irena_Marcetic) joined ipSpace.net (making us a *team* for the first time). She quickly took over day-to-day operations, making it possible for me to focus on creating things I hope you found valuable instead of dealing with support issues, video editing, guest speaker logistics, and a dozen other boring things that need to be do to keep a business running. 
 
@@ -32,11 +33,14 @@ On a totally unrelated topic, it's [almost exactly 10 years since I launched the
 
 **What will happen to ipSpace.net blog?** How long do you think I'd be able to keep quiet? Of course I'll keep ranting, and there are thousands of old blog posts that need to be cleaned up and refreshed.
 
-**What will happen to Software Gone Wild podcast?** [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio) decided to [start his own podcast](https://forwardingplane.net/2021/01/21/modemcast-podcast/), so we'll wrap up Software Gone Wild.  The last episode will be published in April 2021.
+**What will happen to Software Gone Wild podcast?** [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio) decided to [start his own podcast](https://forwardingplane.net/2021/01/21/modemcast-podcast/), so we wrapped up Software Gone Wild.  The last episode was published in April 2021.
 
 We've probably missed numerous details when preparing this wall of text. Please let us know what we've missed in the comments.
 
 ## Release History
+
+2021-07-06
+: Final update
 
 2021-03-30
 : Updated based on [most-recent decisions](/2021/04/coffee-break-take-two.html)
