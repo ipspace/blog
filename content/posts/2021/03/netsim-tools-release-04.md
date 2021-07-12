@@ -3,6 +3,7 @@ title: "netsim-tools: Release 0.4 Is Out"
 date: 2021-03-29 07:12:00
 tags: [ automation ]
 series: netsim-tools
+lastmod: 2021-07-12 18:00:03
 ---
 **TL&DR**: The [new release of netsim-tools](https://netsim-tools.readthedocs.io/en/latest/release/0.4.html) includes unnumbered interfaces, configuration modules, and OSPF configuration.
 
@@ -21,11 +22,16 @@ Finally, after implementing the unnumbered interfaces and configuration module f
 Building a full-blown OSPF test network became a simple process (details coming in another blog post):
 
 * Describe desired network topology in YAML file.
-* Run **create-topology** script to [create Ansible inventory and Vagrantfile](https://netsim-tools.readthedocs.io/en/latest/create-topology.html)
+* Run **create-topology** script to create Ansible inventory and Vagrantfile (this script has been replaced with **netlab create** command in release 0.8)
 * Start the lab with **vagrant up**. Wait... Wait some more...
-* [Deploy device configurations](https://netsim-tools.readthedocs.io/en/latest/configs.html) with **initial-config.ansible** playbook. The playbook deploys initial device configurations as well as any configuration modules (OSPF in my example).
+* [Deploy device configurations](https://netsim-tools.readthedocs.io/en/latest/configs.html) with **initial-config.ansible** playbook (this playbook is invoked with the **netlab create** command in release 0.8). The playbook deploys initial device configurations as well as any configuration modules (OSPF in my example).
 * Start doing the real testing instead of wasting time building and configuring a lab.
 
 Finally, no job is finished until the paperwork is done. I probably spent way more time [writing the documentation](https://netsim-tools.readthedocs.io/en/latest/index.html) than code, but in the end, it paid off. While "wasting" time on documentation, I figured out (and fixed) a few quirks in the system. I also [made parameter inheritance much more flexible](https://netsim-tools.readthedocs.io/en/latest/modules.html#merging-default-values) than what Ansible inventory groups could do.
 
 Finally, Job#4: Commit, merge, push. Hope you'll find the [new release](https://github.com/ipspace/netsim-tools/releases/tag/release_0.4) useful and [install](https://netsim-tools.readthedocs.io/en/latest/install.html) and use it ;) -- if you do, I'd appreciate hearing from you. You could also open a GitHub issue if there's something you'd like to see in an upcoming release (no promises, though).
+
+### Revision History
+
+2021-07-12
+: Added pointers to new **netlab** CLI introduced with release 0.8.

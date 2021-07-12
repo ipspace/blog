@@ -1,7 +1,7 @@
 ---
 title: "OSPF Inter-Process Route Selection"
 date: 2021-06-15 08:22:00
-lastmod: 2021-06-18 15:46:00
+lastmod: 2021-07-12 17:46:00
 tags: [ OSPF ]
 ---
 The traditional wisdom claimed that a Cisco IOS router cannot compare routes between different OSPF routing processes. The only parameter to consider when comparing routes coming from different routing processes is the admin distance, and unless you change the default admin distance for one of the processes, the results will be random.
@@ -44,9 +44,9 @@ links:
 Using *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)*, I had a lab up, running, and configured in three minutes. All it took were three commands:
 
 ```
-$ create-topology -t lab.yml -p -i -c 
+$ netlab create 
 $ vagrant up
-$ initial-config.ansible
+$ netlab initial
 ```
 
 Baseline check: *rtr* should have two equal-cost paths to the target prefix:
@@ -153,6 +153,9 @@ Just for the giggles, I removed the **ip ospf cost** interface configuration com
 Finally, what about the old blog posts I mentioned? Don't expect anyone to fix them, and be careful about the information you glean off the Internet. Hands-on lab results always beat google-and-paste.
 
 ### Revision History
+
+2021-07-12
+: Updated the blog post to use the new **netlab** CLI.
 
 2021-06-18
 : Added _you really really really should not be doing this_ section. Unfortunately I don't expect it to ever dissuade an insistent networking engineer trying to save a broken design with a horrible kludge.
