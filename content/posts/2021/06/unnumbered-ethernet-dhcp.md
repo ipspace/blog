@@ -1,6 +1,7 @@
 ---
 title: "Unnumbered Ethernet Interfaces, DHCP Edition"
 date: 2021-06-10 08:42:00
+lastmod: 2021-07-12 18:00:00
 tags: [ DHCP, IP routing, networking fundamentals ]
 series: unnumbered-interfaces
 ---
@@ -117,14 +118,20 @@ Want to build a lab in a few minutes and have it configured in seconds? You'll h
 After you got everything up and running:
 
 * Copy my [lab topology](https://github.com/ipspace/netsim-examples/blob/master/routing/lan-unnumbered/dhcp.yml) into **dhcp.yml** in an empty directory (or clone my [netsim-examples repository](https://github.com/ipspace/netsim-examples))
-* Execute **create-topology -t dhcp.yml -p -i -c ** to create Vagrantfile, Ansible inventory and Ansible configuration file
-* Execute **initial-config.ansible** to configure the devices.
+* Execute **netlab create dhcp.yml** to create Vagrantfile, Ansible inventory and Ansible configuration file
+* Execute **vagrant up** to start the lab
+* Execute **netlab initial** to configure the devices.
 
 You could apply the configuration changes outlined in this blog post manually. I decided to automate them:
 
 * Add [client-side](https://github.com/ipspace/netsim-examples/blob/master/routing/lan-unnumbered/dhcp-client.j2) and [server-side](https://github.com/ipspace/netsim-examples/blob/master/routing/lan-unnumbered/dhcp-server.j2) Jinja2 templates to your directory
-* Execute **‌config.ansible -e config=dhcp-server.j2 -l rtr**[^2] to configure the DHCP server
-* Execute **‌config.ansible -e config=dhcp-client.j2 -l c1,c2** to configure DHCP clients
-* Use **connect.sh** to connect to the routers and inspect the results.
+* Execute **‌netlab config dhcp-server.j2 -l rtr**[^2] to configure the DHCP server
+* Execute **‌netlab config dhcp-client.j2 -l c1,c2** to configure DHCP clients
+* Use **netlab connect** to connect to the routers and inspect the results.
 
-[^2]: **config.ansible** script is an Ansible playbook and accepts the usual **ansible-playbook** parameters. The **-e** parameter sets an extra variable, the **-l** parameter limits the playbook run to a subset of devices.
+[^2]: **netlab config** command invokes an Ansible playbook and accepts the usual **ansible-playbook** parameters. The **-l** parameter limits the playbook run to a subset of devices.
+
+### Revision History
+
+2021-07-12
+: Updated the blog post to use the new **netlab** CLI.
