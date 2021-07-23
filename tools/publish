@@ -4,7 +4,7 @@
 #
 if [ -z "`git branch -v|grep publish`" ]; then
   echo "Local publish branch is missing, creating..."
-  git checkout -b publish origin/publish
+  git checkout -b publish github/publish
 fi
 git checkout publish 2>&1|ack -v "Already|up to date"
 POPULAR_BEFORE=`ls -l data/popular.json`
@@ -12,9 +12,9 @@ if [ "$1" = "test" ]; then
   echo "Test run, merging local branches..."
   git merge master
 else
-  git fetch --all --force|ack -v "Already|Fetching"
-  git merge origin/publish -X theirs|ack -v "Already|Fetching"
-  git merge origin/master -X theirs|ack -v "up to date"
+  git fetch github --all --force|ack -v "Already|Fetching"
+  git merge github/publish -X theirs|ack -v "Already|Fetching"
+  git merge github/master -X theirs|ack -v "up to date"
 fi
 POPULAR_AFTER=`ls -l data/popular.json`
 if [ "$POPULAR_BEFORE" != "$POPULAR_AFTER" ]; then
@@ -36,5 +36,6 @@ else
     git add . -v
     git commit -m 'Master merge + update' 2>&1
   fi
-  git push 2>&1|ack -vi "up-to-date"
+  git push github 2>&1|ack -vi "up-to-date"
+  git push origin 2>&1|ack -vi "up-to-date"
 fi
