@@ -1,0 +1,22 @@
+{{ if .Page.Params.series }}
+  {{ $me := .Page.Permalink }}
+  {{ if (.Get "single") }}
+    {{ .Page.Scratch.Set "series" 1 }}
+  {{ end }}
+  <div class="content-box tiny-margin">
+    <h3>Blog posts in this series</h3>
+    {{ with ($.Site.GetPage (printf "/series/%s" ( .Page.Params.series | urlize ))) }}
+      <ul>
+        {{ range (.Pages).Reverse }}
+          <li>
+            {{ if eq .Permalink $me }}
+              {{ .Title }} (this post)
+            {{ else }}
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </div>
+{{ end }}
