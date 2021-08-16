@@ -142,7 +142,7 @@ YAML
         $SCRIPT_DIR/url-to-title.sh $2
         ;;
       *)
-        echo "Usage: blog title url|clip|md"
+        echo "Usage: blog title url|clip|md|em|wiki|yaml"
         ;;
     esac
     ;;

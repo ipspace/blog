@@ -15,7 +15,9 @@ blog_edit_post() {
 
 blog_start_hugo() {
   if [ -z "`pgrep hugo`" ]; then
-    (cd $BLOG_HOME && hugo server -F -D $@) &
+    echo "Starting Hugo (output redirected to /dev/null)"
+    (cd $BLOG_HOME && hugo server -F -D $@ >/dev/null) &
+    echo "... waiting $HUGO_START seconds for Hugo to start"
     sleep $HUGO_START
   else
     if [ -n "$HUGO_CHANGE" ]; then

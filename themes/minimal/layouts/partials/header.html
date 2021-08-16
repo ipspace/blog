@@ -9,7 +9,6 @@
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
 
     <title>{{ .Title }}</title>
-    {{ partial "opengraph.html" . }}
     <meta charset='utf-8' />
     <meta content='IE=edge' http-equiv='X-UA-Compatible' />
     <meta content='width=device-width, initial-scale=1' name='viewport' />
@@ -17,14 +16,8 @@
     <link href='https://www.ipspace.net/v3/css/blog.css?rev=3' rel='stylesheet' type='text/css' />
     <style>.footnoteNumber { display: none; }</style>
     <style>svg { display: none }</style>
-    {{ partial "extra-in-head.html" . }}
-    {{ partial "fathom.html" . }}
-    {{ if .OutputFormats.Get "RSS" }}
-    <link href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="alternate" type="application/rss+xml">
-    {{ end }}
 </head>
 <body>
-    {{ partial "body-svg.html" }}
     <div class='page-main-wrp'>
         <div class='container main'>
             <div class='page-content'>
