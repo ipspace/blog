@@ -1,8 +1,9 @@
 ---
 title: "Non-Stop Forwarding 101"
-date: 2021-09-30 00:47:00
+date: 2021-09-20 00:47:00
 draft: True
-tags: [ switching, networking fundamentals ]
+series: ha-switching
+tags: [ switching, high availability, networking fundamentals ]
 ---
 Non-Stop Forwarding (NSF) is one of those ideas that look great in a slide deck and marketing collaterals, but turn into a giant can of worms once you try to implement them properly (see also: stackable switches or [VMware Fault Tolerance](https://blog.ipspace.net/2021/01/vmware-fault-tolerance-woes.html)). 
 
