@@ -1,11 +1,10 @@
 ---
 title: "Non-Stop Forwarding 101"
-date: 2021-09-20 00:47:00
-draft: True
+date: 2021-09-07 06:47:00
 series: ha-switching
 tags: [ switching, high availability, networking fundamentals ]
 ---
-Non-Stop Forwarding (NSF) is one of those ideas that look great in a slide deck and marketing collaterals, but turn into a giant can of worms once you try to implement them properly (see also: stackable switches or [VMware Fault Tolerance](https://blog.ipspace.net/2021/01/vmware-fault-tolerance-woes.html)). 
+Non-Stop Forwarding (NSF) is one of those ideas that look great in a slide deck and marketing collaterals, but might turn into a giant can of worms once you try to implement them properly (see also: stackable switches or [VMware Fault Tolerance](https://blog.ipspace.net/2021/01/vmware-fault-tolerance-woes.html)). 
 
 {{<note info>}}NSF has been around for at least 15 years, so I'm positive at least some vendors got most of the details right; I'm also pretty sure a few people have scars to prove they've been around the non-optimal implementations.{{</note>}}
 <!--more-->
@@ -27,7 +26,7 @@ Good network design is always better than hidden complexity[^2], and it's always
 
 Real life might not be so accommodating, and there are at least two situations where non-stop forwarding might come handy:
 
-* Access layer (provider edge) devices
+* Access layer devices -- provider edge routers or data center leaf switches
 * Environments with very long convergence times
 
 ### Access Networks
@@ -38,6 +37,7 @@ In those cases you could decide to:
 
 * **Accept the reality** -- after all, if the end-user cannot afford two uplinks, whatever they're doing cannot be *that* critical, and will survive an eventual crash of the upstream (concentration) device. Software updates are obviously a big problem.
 * **Throw a complex solution at the problem** -- buy a redundant concentration device with two CPUs and non-stop forwarding functionality. Even if the control plane crashes[^4], the traffic keeps flowing... or so the vendor promised in their slide deck. Just for the giggles: after throwing away so much money, the software updates are still a big problem, because nobody trusts *In Service Software Updates* (ISSU) to work anyway.
+* **Try to be as quick as possible** -- restart the control plane fast enough that the neighbors don't notice (too much). Combined with ASIC-based non-stop forwarding and control-plane protocol kludges you could get pretty close to hitless upgrade.
 
 [^2]: I'm positive a lot of people will disagree with me, particularly when their compensation depends on sales of big shiny boxes.
 
@@ -51,9 +51,13 @@ In those cases it might be better to keep the routing table unchanged and hope t
 
 ## What Could Possibly Go Wrong?
 
-Let's start with the simplest case of a device with a forwarding ASIC and single control plane[^3]. Whenever the control plane software restarts, it reinitializes the forwarding ASIC, which will definitely stop the traffic flow until the routing protocols figure out what is where, and might also bring down the physical links, which means that *the traffic keeps flowing while the control plane is dead but stops when it wakes up*.
+Let's start with the simplest case of a device with a forwarding ASIC and single control plane (example: Arista EOS leaf switch doing [Smart System Upgrade](https://www.arista.com/en/um-eos/eos-leaf-smart-system-upgrade-leaf-ssu)). 
+
+Control plane software restart usually triggers reinitialization of the forwarding ASIC, which will definitely stop the traffic flow until the routing protocols figure out what is where, and might also bring down the physical links, which means that *the traffic keeps flowing while the control plane is dead but stops when it wakes up*. Obviously a vendor implementing smart upgrade like Arista EOS takes precautions not to do that, but what happens when the software crashes?
 
 Oh, and did I mention the control plane is dead? There's no LACP, ARP, LLDP, STP, or routing protocols. STP is a particularly funny protocol -- if the control plane stops working while the data plane is still forwarding traffic you get a forwarding loop. You can trust me on that; I've been there and it wasn't pretty.
+
+{{<note info>}}Arista EOS SSU solves LACP, LLDP, and STP challenges in an ingenious way: they buffer control-plane messages in hardware to be released as specific times, giving the adjacent nodes the impression everything works as expected while the software reboots.{{</note>}}
 
 Also, there's a reason the control plane crashed. It might be corrupted data structures, in which case one has to wonder how reliable the ASIC or linecard forwarding information is. Well, in a single-uplink scenario explained above we can choose between *sending the traffic somewhere* and *not sending the traffic*. I guess your choice depends on whether you're a pessimist or an optimist ;)
 
@@ -61,14 +65,11 @@ Moving on to redundant control plane architectures. Ignoring the elephant in the
 
 * The secondary control plane must realize the primary one is gone (byzantine failures are a never-ending source of fun).
 * The secondary control plane must take over all control plane protocols and reinitialize routing protocol adjacencies (unless you're using *Non-Stop Routing*, a topic for yet another blog post). At that point the adjacent nodes that were happily using the forwarding hardware in the crashed node give up -- yet another instance of *[black hole on recovery](https://blog.ipspace.net/2011/11/ldp-igp-synchronization-in-mpls.html)*. Of course we have a solution for this challenge: *Graceful Restart* (aka: the third can of worms in this wonderful voyage).
-* Failover must be done extremely carefully. At no time should the forwarding hardware be reinitialized in a way that would flap the physical links or we might trigger an *interface down* event in the adjacent nodes.
+* Failover must be done extremely carefully. At no time should the forwarding hardware be reinitialized in a way that would flap the physical links or we might trigger an *interface down* event in the adjacent nodes. How do you implement that when trying to reinitialize a borked ASIC? I have no idea.
 * The primary control plane crashed for a reason. Are you positive the secondary control plane won't crash as well after receiving the same information from the neighboring devices?
-
-[^3]: Non-Stop Forwarding implementations usually require two control planes with Stateful Switchover, but we have to start somewhere.
 
 ## To Recap
 
-Non-Stop Forwarding (and Graceful Restart, and Stateful Switchover and Non-Stop Routing) are intellectually stimulating technologies that look awesome in presentations and marketing materials. They are also interestingly complex.
+*Non-Stop Forwarding* (and *Graceful Restart*, and *Stateful Switchover* and *Non-Stop Routing*) are intellectually stimulating technologies that look awesome in presentations and marketing materials. They are also interestingly complex.
 
 There might be scenarios where NSF and friends might be the best (or only) solution to a design challenge, but there's nothing wrong with good network design using simple non-redundant components -- it might work much better than a pile of vendor magic.
-
