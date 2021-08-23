@@ -82,3 +82,7 @@ To summarize:
 Finally, considering all of the above, it might be worthwhile replacing vendor magic with proper network design.
 
 [^1]: It's worth noting that most of the tables in the [IOS XE 17 High Availability Guide](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ha/configuration/xe-17/ha-xe-17-book/ha-config-stateful-switchover.html) talk about ancient IOS software releases like 12.0S. Maybe it's time to hire a decent technical writer to spiff things up? Also, if you're aware of a more decent document, please add a link in a comment.
+
+## Behind the Scenes
+
+This post was made much better based on extensive feedback provided by [Nicola Modena](https://www.ipspace.net/Expert:Nicola_Modena). Thanks a million!
