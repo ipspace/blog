@@ -1,6 +1,7 @@
 ---
 title: "Comparing Forwarding Performance of Data Center Switches"
 date: 2021-09-06 06:34:00
+draft: True
 tags: [ data center, switching ]
 ---
 One of my subscribers is trying to decide whether to buy an -EX or an -FX version of a Cisco Nexus data center switch:
