@@ -10,7 +10,7 @@ In June 2020, a friend of mine asked me to do a short presentation on lessons le
 
 {{<note info>}}You'll need a Free ipSpace.net Subscription to watch the video.{{</note>}}
 
-### Lessons Learned: Fundamentals Haven't Changed
+### (Pub) Lessons Learned: Fundamentals Haven't Changed
 
 Here's another bitter pill to swallow if you desperately want to believe in the magic powers of unicorn dust: laws of physics and networking fundamentals haven't changed (see also: RFC 1925 Rule 11). Whenever someone is promises a miracle solution, it's probably due to them working in marketing or having no clue what they're talking about (or both)... or it might be another case of adding another layer of abstraction and pretending the problems disappeared because you can't see them anymore.
 
