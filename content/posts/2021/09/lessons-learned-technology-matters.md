@@ -1,6 +1,6 @@
 ---
 title: "Lessons Learned: Fundamentals Haven't Changed"
-date: 2021-09-09 07:10:00
+date: 2021-09-10 07:10:00
 tags: [ networking fundamentals, video ]
 ---
 Here's another bitter pill to swallow if you desperately want to [believe in the magic powers of unicorn dust](https://blog.ipspace.net/2016/01/the-sad-state-of-enterprise-networking.html): [laws of physics](https://blog.ipspace.net/2019/11/stretched-vlans-and-failing-firewall.html) and [networking fundamentals](https://www.ipspace.net/How_Networks_Really_Work) haven't changed (see also: RFC 1925 Rule 11). 

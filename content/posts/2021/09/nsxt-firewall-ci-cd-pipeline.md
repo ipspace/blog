@@ -6,8 +6,8 @@ tags: [ automation, firewall, NSX ]
 Initial implementation of [Noël Boulene](https://www.linkedin.com/in/noyelb/)'s [automated provisioning of NSX-T distributed firewall rules](automating-nsxt-firewall-configuration.html) changed NSX-T firewall configuration based on Terraform configuration files. To make the deployment fully automated he went a step further and added a [full-blown CI/CD pipeline using GitHub Actions and Terraform Cloud](https://netmemo.github.io/post/tf-gha-nsxt-cicd/).
 
 Not everyone is as lucky as Noël -- developers in his organization already use GitHub and Terraform Cloud, making his choices totally frictionless.
-
-{{<note info>}}A tip from Noël: don't fight the tool selection if at all possible. Use whatever everyone else is using.{{</note>}}.
+<!--more-->
+{{<note info>}}A tip from Noël: don't fight the tool selection if at all possible. Use whatever everyone else is using.{{</note>}}
 
 Apart from storing on-premises security rules in a third-party cloud (assuming you're running NSX-T on-premises and not in AWS), there's another slight glitch in Noël's solution: Terraform instance running within GitHub infrastructure (that's where the CI/CD pipeline is run) must be able to contact on-premises NSX-T Manager. I know a few people that would get shivers when faced with that idea.
 
