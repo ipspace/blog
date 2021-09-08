@@ -1,6 +1,6 @@
 ---
 title: "Worth Reading: Ops Questions in Software Engineering Interviews"
-date: 2021-09-10 06:49:00
+date: 2021-09-11 06:49:00
 tags: [ worth reading ]
 ---
 Charity Majors published another must-read article: *[why every software engineering interview should include ops questions](https://charity.wtf/2021/08/21/why-every-software-engineering-interview-should-include-ops-questions/)*. Just a quick teaser:
