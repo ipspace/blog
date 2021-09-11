@@ -3,7 +3,7 @@ title: "Interesting Concept: Time Dilation"
 date: 2021-09-17 06:59:00
 tags: [ worth reading ]
 ---
-I loved the Time Dilation blog post by Seth Godin. It explains so much, including why I won't accept a "*quick conf call to touch base and hash out ideas*" from someone coming out of the blue sky -- why should I be interested if they can't invest the time to organize their thoughts and pour them into an email.
+I loved the *[Time Dilation](https://seths.blog/2021/08/time-dilation/)* blog post by Seth Godin. It explains so much, including why I won't accept a "*[quick conf call to touch base and hash out ideas](https://twitter.com/ioshints/status/1436649548064165889)*" from someone coming out of the blue sky -- why should I be interested if they can't invest the time to organize their thoughts and pour them into an email.
 
 The concept of "creation-to-consumption" ratio is also interesting. Now I understand why I hate unedited opinionated chinwagging (many podcasts sadly fall into this category) or videos where someone blabbers into a camera while visibly trying to organize their thoughts.
 
