@@ -26,6 +26,7 @@ def parseCLI():
   parser.add_argument('dir', nargs='+',action='store',help='Directory to list')
   parser.add_argument('--tags',dest='tags',action='store',help='Limit printout by tags')
   parser.add_argument('--md', dest='md', action='store_true',help='Markdown printout')
+  parser.add_argument('--url', dest='url', action='store_true',help='URL printout')
   parser.add_argument('--log', dest='logging', action='store_true',help='Enable basic logging')
   parser.add_argument('--verbose', dest='verbose', action='store_true',help='Enable more verbose logging')
   parser.add_argument('--prefix',dest='prefix',action='store',help='URL prefix',default='/')
@@ -92,6 +93,10 @@ def print_dir(dir_list):
     line = "%20s: %s" % (date.strftime('%a %Y-%m-%d %H:%M') if date else "DRAFT",entry['name'])
     print(colored(line,color) if color else line)
 
+def print_url(sorted_list,prefix):
+  for entry in dir_list:
+    print("%s%s" % (prefix,entry['path']))
+
 def print_html(dir_list,prefix):
   for entry in dir_list:
     print('* [%s](%s%s)' % (entry['title'],prefix,entry['path']))
@@ -112,5 +117,7 @@ for entry in args.dir:
 sorted_list = sorted(dir_list,key=lambda x: x['date'] or max_date)
 if args.md:
   print_html(sorted_list,args.prefix)
+elif args.url:
+  print_url(sorted_list,args.prefix)
 else:
   print_dir(sorted_list)
