@@ -1,7 +1,6 @@
 ---
 title: "Building a Small Data Center Fabric with Four Switches"
-date: 2021-09-29 06:37:00
-draft: True
+date: 2021-09-23 06:37:00
 tags: [ data center, fabric, design ]
 ---
 One of my subscribers has to build a small data center fabric that's just a tad too big for [two switch design](https://www.ipspace.net/Optimize_Data_Center_Infrastructure/Build_an_Optimized_Fabric).
