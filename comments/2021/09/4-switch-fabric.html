@@ -1,0 +1,35 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="744">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c744" href="#744">23 September 2021 03:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The traffic would flow over the optimal paths if the two switch pairs were connected via MLAG, and all servers were connected to one switch pair via MLAG. But this would be a boring legacy setup that may allow for interesting, but rare, <a href="https://www.unix-ag.uni-kl.de/~auerswal/mlag_split_brain/">failure scenarios</a>. Additionally, VMware still prefers MAC based redundancy and load sharing instead of using LACP based LAGs. ;-)</p>
+
+<p>In a more fashionable layer 3 setup with VXLAN overlay (or an SPB-M based fabric &agrave; la Extreme), the link between switches of the same pair could be omitted unless an MLAG construct requires it (some vendors support <em>virtual</em> MLAG peer links), or it could be configured with a higher metric value such that it is not used for IP (resp. MAC-in-MAC) forwarding unless the two links to the other switch pair both fail. This again would result in optimal forwarding.</p>
+
+<p>If later there is a need to add more switches, a spine layer could be added &quot;in the middle.&quot;</p>
+
+<p>Thus with care for the details the physical full mesh is either not needed or not detrimental, depending on circumstances (which include the selected switch models and network operating systems, among other things).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

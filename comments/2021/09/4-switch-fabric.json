@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "23 September 2021 03:44",
+         "html": "<p>The traffic would flow over the optimal paths if the two switch pairs were connected via MLAG, and all servers were connected to one switch pair via MLAG. But this would be a boring legacy setup that may allow for interesting, but rare, <a href=\"https://www.unix-ag.uni-kl.de/~auerswal/mlag_split_brain/\">failure scenarios</a>. Additionally, VMware still prefers MAC based redundancy and load sharing instead of using LACP based LAGs. ;-)</p>\n\n<p>In a more fashionable layer 3 setup with VXLAN overlay (or an SPB-M based fabric &agrave; la Extreme), the link between switches of the same pair could be omitted unless an MLAG construct requires it (some vendors support <em>virtual</em> MLAG peer links), or it could be configured with a higher metric value such that it is not used for IP (resp. MAC-in-MAC) forwarding unless the two links to the other switch pair both fail. This again would result in optimal forwarding.</p>\n\n<p>If later there is a need to add more switches, a spine layer could be added &quot;in the middle.&quot;</p>\n\n<p>Thus with care for the details the physical full mesh is either not needed or not detrimental, depending on circumstances (which include the selected switch models and network operating systems, among other things).</p>\n",
+         "id": "744",
+         "name": " Erik Auerswald",
+         "pub": "2021-09-23T15:44:41",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/09/4-switch-fabric.html"
+}
