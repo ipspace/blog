@@ -115,6 +115,53 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="752">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c752" href="#752">25 September 2021 02:41</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>According to the diagram, servers are connected to one of two switch pairs. This is supported by using two different connection types, 10G copper vs. 10G/25G fiber, which is seldomly combined on a single server.</p>
+
+<p>Server to server (resp. VM to VM) ingress traffic of a given switch falls into three cases (without any link or device failures in the network):</p>
+
+<ol>
+<li>Egress to a directly connected host.</li>
+<li>Egress to a host connected to the other switch of the pair.</li>
+<li>Egress to a host connected to a switch of the other switch pair.</li>
+</ol>
+
+<p>Case 1 is trivially optimal regardless of inter switch links.</p>
+
+<p>With a full mesh and active/passive VM or server redundancy (&quot;no MLAG&quot;), both case 2 (intra switch pair) and case 3 (inter switch pair) traffic uses a single egress link.</p>
+
+<p>Without intra switch pair links (or high IP/underlay metric for those links) and active/passive VM or server redundancy (&quot;no MLAG&quot;), case 2 would use two egress links, while case 3 would still use a single egress link.</p>
+
+<p>Without intra switch pair links (or high IP/underlay metric for those links) and active/active VM or server redundancy (e.g., MLAG, EVPN multi-homing, or IP with routing protocol on the servers), case 2 is eliminated and case 3 uses two egress links.</p>
+
+<p>Adding two more switches as a &quot;spine&quot; and removing the intra switch pair links enables use of two egress links for cases 2 &amp; 3 of the &quot;no MLAG&quot; variant, but adds both capex and opex.</p>
+
+<p>Implicit requirements (e.g., servers don&#39;t use LAGs, MLAG is too complicated) can result in unnecessarily sub-optimal design decisions. The assumption that every host (VM or server) is effectively single attached (active/passive redundancy) leads to the conclusion that a full mesh is optimal for the &quot;two switch pairs&quot; design.</p>
+
+<p>If these details were made explicit (e.g., &quot;we use virtualization solution X and switch family Y, thus server LAGs and MLAG on switches are complicated and brittle&quot;), the full mesh were a good solution, because optimizing just case 2, but not case 3, would be an unneeded complication without additional knowledge about traffic flows.</p>
+
+<p>Both not blocking any inter switch links and using more than one egress link is another implicit requirement that leads to using a suitable technology. Both can be fulfilled for layer 2 and layer 3 traffic using different widely available solutions (details depend on the used switches).</p>
+
+<p>This shows that even a small fabric warrants a closer look.</p>
+
+<p>(LACP based LAGs for server redundancy to an MLAG pair can be both simple and reliable, depending on vendor choices, of course.)</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
