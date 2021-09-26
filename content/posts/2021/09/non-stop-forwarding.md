@@ -33,6 +33,8 @@ Real life might not be so accommodating, and there are at least two situations w
 
 In many access networks, the customers have a single uplink to a single provider edge device. Replacing that single point of failure with two redundant devices isn't impossible, but it quickly turns into _turtles all the way down_ scenario. 
 
+{{<figure src="/2021/09/NSF-access-router.png" caption="NSF used to provide uninterrupted connectivity in non-redundant access network">}}
+
 In those cases you could decide to:
 
 * **Accept the reality** -- after all, if the end-user cannot afford two uplinks, whatever they're doing cannot be *that* critical, and will survive an eventual crash of the upstream (concentration) device. Software updates are obviously a big problem.
@@ -46,6 +48,8 @@ In those cases you could decide to:
 ### Long Convergence Times
 
 Imagine an edge autonomous system receiving full Internet routing from two upstream ISPs on their underpowered edge router. It takes a long time to reevaluate and change the next hop for almost a million prefixes if your vendor spent $0.02 on the CPU in the router they sold you. 
+
+{{<figure src="/2021/09/NSF-BGP.png" caption="NSF used on PE-routers to work around the limitations of a CE router">}}
 
 In those cases it might be better to keep the routing table unchanged and hope that the hardware in the upstream provider edge router will keep forwarding packets while the software figures out how to recover from a crash. The potential outage might be shorter than the brownout caused by changing the best path for a million prefixes twice (assuming the primary upstream router crashed).
 

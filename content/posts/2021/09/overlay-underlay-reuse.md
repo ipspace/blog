@@ -1,8 +1,7 @@
 ---
 title: "Reusing Underlay Network for Infrastructure Services"
-date: 2021-09-28 06:32:00
+date: 2021-09-30 06:32:00
 tags: [ overlay networks, design ]
-draft: True
 ---
 Boris Lazarov [sent me an excellent question](https://blog.ipspace.net/2018/05/what-is-evpn.html#691):
 
@@ -20,7 +19,7 @@ Unfortunately, VMware [never mastered the art of using simple transport networks
 
 What's the easiest way to implement multiple forwarding domains in a modern data center fabric? Ask any vendor and they'll immediately reply EVPN with VXLAN (not a bad answer, I might skip the EVPN part but that's just me). The *underlay* network used by VMware NSX servers all of a sudden becomes an *overlay* fabric network that has to be implemented with another *underlay* network -- simple IP connectivity within the data center fabric. Does that mean you'll be running Geneve over VXLAN?[^1] Of course. Welcome to the modern world of infinite abstractions where bandwidth and CPU cycles seem to be free... or at least someone else is paying for them (hint: that would be you).
 
-Could we bypass that second layer of abstraction and connect all servers straight to the physical IP fabric? Be extremely careful. VXLAN and Geneve are simple data-plane encapsulation schemes that [have absolutely no security](https://blog.ipspace.net/2018/11/omg-vxlan-is-still-insecure.html)[^2]. The moment someone gains to the underlay network, they can inject any traffic into any overlay network[^3].
+Could we bypass that second layer of abstraction and connect all servers straight to the physical IP fabric? Be extremely careful. VXLAN and Geneve are simple data-plane encapsulation schemes that [have absolutely no security](https://blog.ipspace.net/2018/11/omg-vxlan-is-still-insecure.html)[^2]. The moment someone gains access to the underlay network, they can inject any traffic into any overlay network[^3].
 
 ## To Recap
 
