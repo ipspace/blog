@@ -14,7 +14,7 @@ For more details, watch the "We Still Need Networking in Public Clouds" video (p
 
 {{<note info>}}You need Free ipSpace.net Subscription to watch the video{{</note>}}
 
-# Video: Public Cloud Networking Is Different
+# (Pub) Video: Public Cloud Networking Is Different
 
 Even though you need plenty of traditional networking constructs to deploy a complex application stack in a public cloud (packet filters, firewalls, load balancers, VPN, BGP... more details here), once you start digging deep into the bowels of public cloud virtual networking, you'll find out it's significantly different from the traditional Ethernet+IP implementations common in enterprise data centers.
 
