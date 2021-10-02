@@ -1,9 +1,9 @@
 ---
 title: "Should You Build or Buy a Router?"
-date: 2021-10-07 07:11:00
+date: 2021-10-04 07:11:00
 tags: [ SDN ]
 ---
-Patrik Schindler sent me an interesting comment to my *Open-Source DMVPN Alternatives* blog post:
+[Patrik Schindler](https://www.pocnet.net/) sent me an interesting comment to my *Open-Source DMVPN Alternatives* blog post:
 
 {{<long-quote>}}
 I've done searches myself some time ago about the readymade Linux distros supporting DMVPN and [got exactly what I asked for](https://wiki.alpinelinux.org/wiki/Dynamic_Multipoint_VPN_(DMVPN)_Phase_3_with_Quagga_NHRPd).
@@ -20,9 +20,9 @@ Welcome to the *[build-or-buy](https://blog.ipspace.net/2020/12/video-build-or-b
 As always, there are numerous reasons why one might want to build a solution instead of buying it. The reasonable ones first:
 
 * **You can't get what you need**. In most cases, that means you should go back to the drawing board and rethink your requirements. You're often not as special as you think you are.
-* **You want an extensible solution** and you can only buy black boxes. As with the previous bullet, it's worth rethinking your requirements, and looking around a bit more. Admittedly, the router products are not as extension-friendly as the data center switching products, but if you're looking for high speeds, a deep buffer data center switch might be just what you need[^1].
-* **You want to build all elements of what you think is your core competence**. Wake up. You're not Google, AWS, Facebook, Azure, or LinkedIn. Find an extensible solution that fits your needs and go from there.
-* **It's cheaper to build than to buy**. In most cases, this is a fallacy based on incomplete information, and ignoring *time value of money* and *ongoing operations expenses*. Switching and IP routing are heavily commoditized; while there might be environments big enough to justify building your own stuff, there's a 99% chance you're in the *rest of the world* category.
+* **You want an extensible solution** and you can only buy black boxes. As with the previous bullet, it's worth rethinking your requirements, and looking around a bit more. Admittedly, the router products are not as extension-friendly as the data center switching products, but if you're looking for high speeds, a deep buffer data center switch might be just what you need[^1], and on the low-end you might want to look at OpenWRT (unless you want a [supported product with a severe case of featuritis](https://blog.ipspace.net/2018/12/can-i-replace-commercial-load-balancer.html)).
+* **You want to build all elements of what you think is your core competence**. Wake up. [You're not Google](https://blog.ipspace.net/2016/03/you-want-your-network-to-be-like.html), AWS, Facebook, Azure, or LinkedIn. Find an extensible solution that fits your needs and go from there. On a more serious note, master [Wardley maps](https://en.wikipedia.org/wiki/Wardley_map) and figure out which elements of your supposed core competence are commoditized and where it makes sense to add value by building stuff.
+* **It's cheaper to build than to buy**. In most cases, this is a fallacy based on incomplete information, and ignoring *time value of money* and *ongoing operations expenses*. Switching and IP routing are getting commoditized; while there might be environments big enough to justify building your own stuff, there's a 99% chance you're in the *rest of the world* category.
 
 [^1]: Assuming you're interested in simple high-speed services. The moment you want to squeeze every feature ever invented into a provider edge device, all bets are off, and you'll pay dearly for the privilege. For more details, listen to the _[SDN Internet Router Is in Production](https://blog.ipspace.net/2015/10/sdn-internet-router-is-in-production-on.html)_ podcast with David Barroso.
 
