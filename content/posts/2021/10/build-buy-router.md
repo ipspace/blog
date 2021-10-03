@@ -1,6 +1,6 @@
 ---
 title: "Should You Build or Buy a Router?"
-date: 2021-10-04 07:11:00
+date: 2021-10-07 07:11:00
 tags: [ SDN ]
 ---
 [Patrik Schindler](https://www.pocnet.net/) sent me an interesting comment to my *Open-Source DMVPN Alternatives* blog post:
