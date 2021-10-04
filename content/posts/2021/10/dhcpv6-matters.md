@@ -5,7 +5,9 @@ tags: [ IPv6, security, DHCP ]
 ---
 In case you missed it, there's a new season of _[Lack of DHCPv6 on Android](https://mailarchive.ietf.org/arch/msg/v6ops/LsWLNn7jBuNkjKlLzeZOTCrnPN8/)_ soap opera on [v6ops mailing list](https://mailarchive.ietf.org/arch/browse/v6ops/). Before going into the juicy details, I wanted to look at the big picture: why would anyone care about lack of DHCPv6 on Android?
 
-The requirements for DHCPv6-based address allocation come primarily from enterprise environments facing legal/compliance (or other [layer 8-10](https://en.wikipedia.org/wiki/Layer_8)) reasons to implement policy (*are you allowed to use the network*), control (*we want to decide who uses the network*) and attribution (*if something bad happens, we want to know who did it*).
+{{<note info>}}Please note that I'm not a DHCPv6 fan. DHCPv6 is just a tool not unlike sink plunger -- nobody loves it (I hope), but when you need it, you better have it handy.{{</note>}}
+
+The requirements for DHCPv6-based address allocation come primarily from enterprise environments facing legal/compliance/other [layer 8-10](https://en.wikipedia.org/wiki/Layer_8) reasons to implement policy (*are you allowed to use the network*), control (*we want to decide who uses the network*) and attribution (*if something bad happens, we want to know who did it*).
 <!--more-->
 
 ### But It Works in Service Provider Networks
@@ -15,7 +17,7 @@ You might wonder why the lack of DHCPv6 is not a big deal in mobile networks. As
 **Numbered point-to-point links** connecting a host to a router. 
 A prefix is assigned to the (physical or virtual[^1]) point-to-point link after the user has been authenticated. The prefix assigned to the link thus uniquely identifies the user, and it doesn't matter if the user uses SLAAC afterwards to auto-generate a usable IPv6 address on the link (or a dozen of them). Mobile networks use this approach; see [section 5.2](https://datatracker.ietf.org/doc/html/rfc6459#section-5.2) of *IPv6 in 3rd Generation Partnership Project (3GPP) Evolved Packet System (EPS)* (RFC 6459) for details.
 
-**LAN segments** (including Ethernet and WiFi) where all hosts share the same IPv6 prefix. IPv6 address is thus the only way to identify users once they are connected to the network. Allowing users to generate IPv6 addresses on the fly might clash with the legal/compliance requirements. There are only two ways out of this morass[^2]:
+**Multi-access segments** (including Ethernet and WiFi) where all hosts share the same IPv6 prefix. IPv6 address is thus the only way to identify users once they are connected to the network. Allowing users to generate IPv6 addresses on the fly might clash with the legal/compliance requirements. There are only two ways out of this morass[^2]:
 
 * Connect all Android users to an untrusted segment. That works well for mobile phones and tablets, but might not work for IoT devices using Android[^3].
 * Remain on IPv4.
@@ -28,7 +30,7 @@ People trying to keep everyone happy[^8] and reach some sort of compromise are a
 
 There's a fundamental problem with this approach[^4]: it would give you attribution, but not control or policy mechanisms. You could figure out **who** caused a security incident, but you could not stop someone from getting connectivity once they manage to get attached to the network. One could argue that you should use other mechanisms to lock down the network edge, but I've often heard security engineers talk about something called *[belt and braces](https://wiki.c2.com/?BeltAndBraces)* and it's never fun if someone yanks the belt out of your pants.
 
-Finally, the lack of controlled IPv6 address allocation wrecks many of the first-hop IPv6 security features available on modern campus gear useless[^9]. Trying to reconstruct valid IPv6-to-MAC mappings in environments using SLAAC is like chasing the horse that has bolted from the barn because someone removed the lock from the door[^5] -- you MUST have an **authoritative** source of allowed IPv6-to-MAC mappings for first-hop security to work well.
+Finally, the lack of controlled IPv6 address allocation wrecks many of the first-hop IPv6 security features available on modern campus gear[^9]. Trying to reconstruct valid IPv6-to-MAC mappings in environments using SLAAC is like chasing the horse that has bolted from the barn because someone removed the lock from the door[^5] -- you MUST have an **authoritative** source of allowed IPv6-to-MAC mappings for first-hop security to work well.
 
 Here's another workaround: [use targeted Router Advertisement messages to give each user a different IPv6 /64 prefix](https://blog.ipspace.net/2017/12/unique-ipv6-prefix-per-host-how-complex.html). WTF, really? All that just to work around an obstinate person who happens to control a feature of a protocol stack in a mobile platform? How did we ever manage to get to such a wrecked place?
 
