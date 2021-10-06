@@ -93,7 +93,7 @@ While there are legitimate uses for multiple IPv6 addresses per host, many of th
 
 Using RFC 7934 to justify not implementing DHCPv6 on Android is as bogus as it gets, and I'm positive people making those claims know that; they just use a *Best Practices RFC* as a stockpile of ammunition in useless battles.
 
-**What can we do?** Not much until an IoT vendor selling expensive gear running on top of Android starts losing deals to its competitors[^6], at which point the real behind-the-scenes screaming will start. 
+**What can we do?** Not much until an IoT vendor selling expensive gear running on top of Android starts losing deals to its competitors[^6], or someone within EU administration figures out they need another example of Google abusing its platform monopoly, at which point the real behind-the-scenes screaming will start. 
 
 In the meantime, please feel free to use this blog post in any IETF, NANOG, or RIPE discussion you wish to annoy the other side or to amuse the bystanders.
 
