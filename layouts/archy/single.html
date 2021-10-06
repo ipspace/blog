@@ -1,7 +1,7 @@
 {{ partial "header.html" . }}
 {{ $archYear := .Date.Format "2006" }}
-
 <h1 class='firstHeading'>Blog Posts in {{ $archYear }}</h1>
+<style>a.footnote-ref { display: none; }</style>
 <div class='post post__content'>
   {{ range (.Site.Pages.GroupByDate "2006") }}
       {{ if eq .Key $archYear }}
