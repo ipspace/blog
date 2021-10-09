@@ -1,76 +1,84 @@
 {
-  "comments": [
-    {
-      "date": "12 July 2017 07:28",
-      "html": "What&#39;s the reason they wanted different addresses for every port though? I&#39;m assuming based on the context that the ports were all in the same L2 domain in this case, so what would they gain by having more than one address?",
-      "id": "2973508504192686685",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/11890997522662363216",
-      "pub": "2017-07-12T07:28:23.231+02:00",
-      "ref": "2185559373946896836",
-      "type": "comment"
-    },
-    {
-      "date": "12 July 2017 11:05",
-      "html": "Very interesting article, but I don&#39;t understand why anybody would want L3 addresses on L2 interfaces on a switch. It&#39;s not like they are going to put IPv4 addresses on those interfaces either.",
-      "id": "1269966155840761682",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Daryl Stark",
-      "profile": "https://www.blogger.com/profile/12123885958752867165",
-      "pub": "2017-07-12T11:05:44.844+02:00",
-      "ref": "2185559373946896836",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "13 July 2017 09:27",
-          "html": "Ivan, are you sure your reader &amp; we&#39;re talking about pure L2 switches and not L3 switches?<br />In the context of L2 switches, this really makes not much sense especially when you also other L3 protocols (IPv4, f.e.) in the network.<br />But with L3 switches &amp; routed ports this might go into the direction of microsegmentation... - or even the CLNS way of adressing (sort of...).<br />However, the question of the use case remains of course...<br /><br />Regards<br />Christoph<br />",
-          "id": "7231980966021174918",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Christoph",
-          "profile": null,
-          "pub": "2017-07-13T09:27:46.685+02:00",
-          "ref": "4175194605599432147",
-          "type": "comment"
-        },
-        {
-          "date": "14 July 2017 07:36",
-          "html": "Well, that would definitely make some sense, but then you&#39;d need to generate /128 routes from DAD probes or something similar (probably opening the whole SAVI pool-of-worms)",
-          "id": "1777859221747866862",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2017-07-14T07:36:27.601+02:00",
-          "ref": "4175194605599432147",
-          "type": "comment"
-        }
-      ],
-      "date": "12 July 2017 15:36",
-      "html": "@Kim &amp; Daryl: I have no idea why someone would want to do it...",
-      "id": "4175194605599432147",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Ivan Pepelnjak",
-      "profile": "https://www.blogger.com/profile/13457151406311272386",
-      "pub": "2017-07-12T15:36:23.693+02:00",
-      "ref": "2185559373946896836",
-      "type": "comment"
-    },
-    {
-      "date": "13 July 2017 01:09",
-      "html": "I think much confusion comes from the distinction between &quot;ports&quot; and &quot;interfaces.&quot; To me, there is a significant difference between them. &quot;Ports&quot; are L2 forwarding entities where as &quot;interfaces&quot; are L3 forwarding entities (which contain IP addresses). This is why pretty much all 802.3 &amp; 802.1 IEEE stds use &quot;ports.&quot; But because Cisco first created routers back in the day, their CLI often treats them as synonyms (unfortunately). A VLAN interface can consist of multiple L2 ports. Spanning Tree can block 3 of 4 ports on a VLAN interface. If STP respans, you don&#39;t want an IP host to have to re-ARP. So as you said, an *interface* must be represented by a single MAC address for things like ARP. But, L2 protocols like STP, LACP, LLDP need to distinguish among a set of ports in the same broadcast domain to determine best paths, LAG members, and physical connections.",
-      "id": "4069390464539636663",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Gary Nigg",
-      "profile": "https://www.blogger.com/profile/00110704309415338999",
-      "pub": "2017-07-13T01:09:51.206+02:00",
-      "ref": "2185559373946896836",
-      "type": "comment"
-    }
-  ],
-  "count": 6,
-  "id": "2185559373946896836",
-  "type": "post",
-  "url": "2017/07/ipv6-link-local-addresses-and-vlan.html"
+   "comments": [
+      {
+         "date": "12 July 2017 07:28",
+         "html": "What&#39;s the reason they wanted different addresses for every port though? I&#39;m assuming based on the context that the ports were all in the same L2 domain in this case, so what would they gain by having more than one address?",
+         "id": "2973508504192686685",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/11890997522662363216",
+         "pub": "2017-07-12T07:28:23.231+02:00",
+         "ref": "2185559373946896836",
+         "type": "comment"
+      },
+      {
+         "date": "12 July 2017 11:05",
+         "html": "Very interesting article, but I don&#39;t understand why anybody would want L3 addresses on L2 interfaces on a switch. It&#39;s not like they are going to put IPv4 addresses on those interfaces either.",
+         "id": "1269966155840761682",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Daryl Stark",
+         "profile": "https://www.blogger.com/profile/12123885958752867165",
+         "pub": "2017-07-12T11:05:44.844+02:00",
+         "ref": "2185559373946896836",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "13 July 2017 09:27",
+               "html": "Ivan, are you sure your reader &amp; we&#39;re talking about pure L2 switches and not L3 switches?<br />In the context of L2 switches, this really makes not much sense especially when you also other L3 protocols (IPv4, f.e.) in the network.<br />But with L3 switches &amp; routed ports this might go into the direction of microsegmentation... - or even the CLNS way of adressing (sort of...).<br />However, the question of the use case remains of course...<br /><br />Regards<br />Christoph<br />",
+               "id": "7231980966021174918",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Christoph",
+               "profile": null,
+               "pub": "2017-07-13T09:27:46.685+02:00",
+               "ref": "4175194605599432147",
+               "type": "comment"
+            },
+            {
+               "date": "14 July 2017 07:36",
+               "html": "Well, that would definitely make some sense, but then you&#39;d need to generate /128 routes from DAD probes or something similar (probably opening the whole SAVI pool-of-worms)",
+               "id": "1777859221747866862",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2017-07-14T07:36:27.601+02:00",
+               "ref": "4175194605599432147",
+               "type": "comment"
+            }
+         ],
+         "date": "12 July 2017 15:36",
+         "html": "@Kim &amp; Daryl: I have no idea why someone would want to do it...",
+         "id": "4175194605599432147",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Ivan Pepelnjak",
+         "profile": "https://www.blogger.com/profile/13457151406311272386",
+         "pub": "2017-07-12T15:36:23.693+02:00",
+         "ref": "2185559373946896836",
+         "type": "comment"
+      },
+      {
+         "date": "13 July 2017 01:09",
+         "html": "I think much confusion comes from the distinction between &quot;ports&quot; and &quot;interfaces.&quot; To me, there is a significant difference between them. &quot;Ports&quot; are L2 forwarding entities where as &quot;interfaces&quot; are L3 forwarding entities (which contain IP addresses). This is why pretty much all 802.3 &amp; 802.1 IEEE stds use &quot;ports.&quot; But because Cisco first created routers back in the day, their CLI often treats them as synonyms (unfortunately). A VLAN interface can consist of multiple L2 ports. Spanning Tree can block 3 of 4 ports on a VLAN interface. If STP respans, you don&#39;t want an IP host to have to re-ARP. So as you said, an *interface* must be represented by a single MAC address for things like ARP. But, L2 protocols like STP, LACP, LLDP need to distinguish among a set of ports in the same broadcast domain to determine best paths, LAG members, and physical connections.",
+         "id": "4069390464539636663",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Gary Nigg",
+         "profile": "https://www.blogger.com/profile/00110704309415338999",
+         "pub": "2017-07-13T01:09:51.206+02:00",
+         "ref": "2185559373946896836",
+         "type": "comment"
+      },
+      {
+         "date": "09 October 2021 07:24",
+         "html": "<p>Definitely creates some funny results. Having dove in head first without much reading but going to town on some IPv6 configuration on alot of cisco IOS, addressing vlans with different LLA&#39;s does have interesting results, potentially makes it more complicated. Needless to say I believe this is how one learns as well. Forget the documentation until you&#39;ve entered enough commands into hundreds of devices :-P</p>\n",
+         "id": "785",
+         "name": " Grimish",
+         "pub": "2021-10-09T19:24:20",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "id": "2185559373946896836",
+   "type": "post",
+   "url": "2017/07/ipv6-link-local-addresses-and-vlan.html"
 }
