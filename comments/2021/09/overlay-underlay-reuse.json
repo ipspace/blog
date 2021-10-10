@@ -9,6 +9,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "10 October 2021 11:23",
+               "html": "<p>@Boris: I totally understand that someone painted you into a corner, and that you&#39;re trying to get out, but we&#39;re still walking in a circle in that tiny part of the room around the corner.</p>\n\n<p>Unfortunately, there&#39;s no simple way to change laws of physics, or pull a rabbit out of a hat. You could either ignore VMware recommendations and connect all management traffic to the underlay, or implement tenant networks with NSX-T, or live with the consequences of the decision to implement tenant networks on ToR switches. </p>\n\n<p>On a tangential topic, I&#39;ve been ranting against the idea of implementing tenant networks in hardware for over a decade, but of course nobody listens.</p>\n",
+               "id": "787",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-10-10T11:23:01",
+               "ref": "783",
+               "type": "comment"
+            }
+         ],
          "date": "08 October 2021 01:53",
          "html": "<p>Hi Ivan!</p>\n\n<p>I appreciate posting a dedicated blog post on my question.</p>\n\n<p>I totally agree with &ldquo;What problem am I trying to solve?&rdquo; and &ldquo;What is the best tool for the job?&rdquo;.</p>\n\n<p>My context is vSphere with VSAN and 100% custom made automation backend to provision tenants and services in EVPN, EdgeFW, ADC. Alongside a commercial off-the-shelf self-service &quot;cloud management&quot; frontend for end users.</p>\n\n<p>So far i have seen that the Nexus9k BGP EVPN control-plane is far from 100% reliable and it is not hard at all to make it &quot;misbehave&quot; by, for example, pushing wrong or too much config, or deleting objects in the wrong order.\nIn this project this part is dynamic, because it is based on front-end end-user self-service.\nSo in this respect - misbehaving tenant VRF is one problem, but misbehaving vSAN, vSphere cluster, other fundamental infrastructure services is a totally different problem to have. In my view none of the &quot;benefits&quot; that VXLAN/EVPN gives are needed for the infrastructure services, hence skipping further abstraction layers and most importantly dependencies is the best decision.</p>\n\n<p>Does it make sense?</p>\n",
          "id": "783",
