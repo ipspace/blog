@@ -18,7 +18,7 @@ Here's another bitter pill to swallow if you desperately want to believe in the 
 
 {{<note info>}}You'll need a Free ipSpace.net Subscription to watch the video.{{</note>}}
 
-### Lessons Learned: Complexity Will Kill Your System
+### (pub) Lessons Learned: Complexity Will Kill Your System
 
 You wouldn't believe the intricate network designs I created decades ago until I learned that having an uninterrupted sleep is worth more than proving I can get the impossible to work (see also: [using EBGP instead of IGP in a 4-node data center fabric](https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html)). 
 
