@@ -3,9 +3,9 @@ title: "Circular Dependencies Considered Harmful"
 date: 2021-10-21 06:48:00
 tags: [ design, networking fundamentals ]
 ---
-My friend Nicola Modena sent me an interesting question a while ago:
+A while ago my friend Nicola Modena sent me another intriguing curveball:
 
-> If you were to run a VM that operates as a BGP Route Reflector in a big multilayer datacenter, and you would like to bring OSPF or ISIS to that box to enable BGP ORR, would you use a GRE tunnel to avoid a dedicated VLAN or boring other hosts with routing protocol hello messages?
+> Imagine a CTO who has invested millions in a super-secure data center and wants to consolidate all compute workloads. If you were asked to run a BGP Route Reflector as a VM in that environment, and would like to bring OSPF or ISIS to that box to enable BGP ORR, would you use a GRE tunnel to avoid a dedicated VLAN or boring other hosts with routing protocol hello messages?
 
 While there might be good reasons for doing that, my first knee-jerk reaction was:
 <!--more-->
@@ -46,7 +46,7 @@ Every large-enough system is full of circular dependencies (someone should make 
 * Lack of authentication servers locked out the workstations;
 * The configuration server for the alerting and paging system went offline, making it impossible to redirect alerts to other locations.
 
-Couldn't we avoid the dependencies? Of course we could if someone would be able to visualize the whole picture[^1], but that tends to be impossible in large-enough systems. Another root cause might be the stability of the infrastructure[^2] -- when an infrastructure is stable enough, it's users take it as a given (see also: [first fallacy of distributed computing](https://my.ipspace.net/bin/get/Net101/F2.1%20-%20Network%20Is%20%28Not%29%20Reliable.mp4?doccode=Net101)).
+Couldn't we avoid the dependencies? Of course we could if someone would be able to visualize the whole picture[^1], but that tends to be impossible in large-enough systems. Another root cause might be the stability of the infrastructure[^2] -- when an infrastructure is stable enough, its users take it as a given (see also: [first fallacy of distributed computing](https://my.ipspace.net/bin/get/Net101/F2.1%20-%20Network%20Is%20%28Not%29%20Reliable.mp4?doccode=Net101)).
 
 What else could we do? Test, test, test. Trigger real failures ([don't fake them](https://blog.ipspace.net/2019/09/disaster-recovery-test-faking-another.html)), learn from them, and fix stuff. [All the big players do that](https://queue.acm.org/detail.cfm?id=2371297); maybe it's time for you to start as well.
 
