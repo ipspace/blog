@@ -3,15 +3,13 @@ title: "Do We Need Multiple Global IPv6 Addresses Per Interface (RFC 7934)"
 date: 2021-10-20 06:21:00
 tags: [ IPv6, DHCP ]
 ---
-I was happily munching popcorn while watching the latest season of _[Lack of DHCPv6 on Android](https://mailarchive.ietf.org/arch/msg/v6ops/LsWLNn7jBuNkjKlLzeZOTCrnPN8/)_ soap opera on [v6ops mailing list](https://mailarchive.ietf.org/arch/browse/v6ops/) when one of the players desperately searching for a technical argument to justify the current state of affairs [quoted an RFC to prove his rightful indignation with DHCPv6](https://mailarchive.ietf.org/arch/msg/v6ops/7AihJ8u7RotHzOnT-gHrkTQY0RM/):
+I was happily munching popcorn while watching the latest season of _[Lack of DHCPv6 on Android](https://mailarchive.ietf.org/arch/msg/v6ops/LsWLNn7jBuNkjKlLzeZOTCrnPN8/)_ soap opera on [v6ops mailing list](https://mailarchive.ietf.org/arch/browse/v6ops/) when one of the lead actors trying to justify the current state of affairs with a technical argument [quoted an RFC to prove his rightful indignation with DHCPv6](https://mailarchive.ietf.org/arch/msg/v6ops/7AihJ8u7RotHzOnT-gHrkTQY0RM/) and the decision not to implement it in Android:
 
 > [...not having multiple IPv6 addresses per interface...] is also harmful for a variety of reasons, and for general purpose devices, it's not recommended by the IETF. That's exactly what RFC 7934 is about - explaining why it's harmful.
 
-What he was really saying was "_DHCPv6 IA_NA cannot provide that, thus it makes no sense to implement it on Android. [Fix DHCPv6 first and then we can talk](https://mailarchive.ietf.org/arch/msg/v6ops/GeWHsiEm008tMtsWsI96dPND288/)_".
-<!--more-->
 {{<note info>}}If you're new to this discussion, you might want to start with *[Why Does DHCPv6 Matter](/2021/10/dhcpv6-matters.html)* blog post{{</note>}}
-
-Ignoring for the moment that the engineer referring to [RFC 7934](https://datatracker.ietf.org/doc/html/rfc7934) happens to be the lead author of that RFC, and that his statement seems to be just another attempt to delay the decision for another decade[^2], let's try to figure out whether there's any technical merit behind the _IPv6 hosts need multiple global addresses per interface_[^3].
+<!--more-->
+While this seems to me to be just another attempt to delay the decision for another decade[^2], let's try to figure out whether there's any technical merit behind _IPv6 hosts need multiple global addresses per interface_[^3] and _DHCPv6 can't provide that_.
 
 [^2]: ... while giving enterprises reluctant to deploy IPv6 perfect excuse not to do it, but who cares about enterprises these days anyway, it's not like they would be the entities exploitable through ad tracking and profiling.
 
@@ -84,7 +82,7 @@ You could also ask for multiple IPv6 addresses in the initial DHCPv6 request. He
 
 One could argue that the authors of RFC 7934 were not aware of changes made to DHCPv6, but as the work on RFC 8415 started before the first draft of RFC 7934, I find that unlikely. One could also argue that RFC 7934 prompted the addition of Section 6.6 into RFC 8415[^TL], in which case RFC 7934 achieved its goals.
 
-In any case, making the *we cannot use DHCPv6 because RFC 7934* argument in 2021 makes one look ridiculous[^BS].
+In any case, claiming that *"we cannot use DHCPv6 because it cannot provide more than one IPv6 address per interface as recommended by RFC 7934"* in 2021 makes one look uninformed and/or ridiculous[^BS].
 
 [^TL]: draft-ietf-dhc-rfc3315bis-00 was published on March 23, 2015. draft-ietf-v6ops-host-addr-availability-00 was published on July 31st 2015. Section 6.6 was added to draft-ietf-dhc-rfc3315bis-08 published on May 8th 2017.
 
