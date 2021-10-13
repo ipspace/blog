@@ -7,10 +7,10 @@ I was happily munching popcorn while watching the latest season of _[Lack of DHC
 
 > [...not having multiple IPv6 addresses per interface...] is also harmful for a variety of reasons, and for general purpose devices, it's not recommended by the IETF. That's exactly what RFC 7934 is about - explaining why it's harmful.
 
-The implication of that statement are obvious: DHCPv6 IA_NA cannot provide that, thus it makes no sense to implement it on Android. [Fix DHCPv6 first and then we can talk](https://mailarchive.ietf.org/arch/msg/v6ops/GeWHsiEm008tMtsWsI96dPND288/).
-
-{{<note info>}}If you're new to this discussion, you might want to start with *[Why Does DHCPv6 Matter](/2021/10/dhcpv6-matters.html)* blog post{{</note>}}
+What he was really saying was "_DHCPv6 IA_NA cannot provide that, thus it makes no sense to implement it on Android. [Fix DHCPv6 first and then we can talk](https://mailarchive.ietf.org/arch/msg/v6ops/GeWHsiEm008tMtsWsI96dPND288/)_".
 <!--more-->
+{{<note info>}}If you're new to this discussion, you might want to start with *[Why Does DHCPv6 Matter](/2021/10/dhcpv6-matters.html)* blog post{{</note>}}
+
 Ignoring for the moment that the engineer referring to [RFC 7934](https://datatracker.ietf.org/doc/html/rfc7934) happens to be the lead author of that RFC, and that his statement seems to be just another attempt to delay the decision for another decade[^2], let's try to figure out whether there's any technical merit behind the _IPv6 hosts need multiple global addresses per interface_[^3].
 
 [^2]: ... while giving enterprises reluctant to deploy IPv6 perfect excuse not to do it, but who cares about enterprises these days anyway, it's not like they would be the entities exploitable through ad tracking and profiling.
@@ -75,9 +75,22 @@ Correct. Now we're in the *application-specific IPv6 address* territory. What's 
 
 > The client obtains new temporary addresses by sending an IA_TA option with a new IAID to a server.  Requesting new temporary addresses from the server is the equivalent of generating new temporary addresses as described in [RFC4941].
 
-One could argue that the authors of RFC 7934 were not aware of this mechanism, but as the work on RFC 8415 started before the first draft of RFC 7934, I find that unlikely. In any case, IA_TA makes *we cannot use DHCPv6 because RFC 7934* argument totally bogus.
+You could also ask for multiple IPv6 addresses in the initial DHCPv6 request. Here's what [RFC 8415 section 6.6](https://datatracker.ietf.org/doc/html/rfc8415#section-6.6) (*Multiple Addresses and Prefixes*) has to say about that:
 
-Back to RFC 7934 *‌Benefits of Providing Multiple Addresses*:
+> DHCP allows a client to receive multiple addresses.  During typical operation, a client sends one instance of an IA_NA option and the server assigns at most one address from each prefix assigned to the link to which the client is attached [...]
+> 
+>  A client can explicitly request multiple addresses by sending
+   multiple IA_NA options (and/or IA_TA options; see Section 21.5).  A client can send multiple IA_NA (and/or IA_TA) options in its initial transmissions.  Alternatively, it can send an extra Request message with additional new IA_NA (and/or IA_TA) options (or include them in a Renew message).
+
+One could argue that the authors of RFC 7934 were not aware of changes made to DHCPv6, but as the work on RFC 8415 started before the first draft of RFC 7934, I find that unlikely. One could also argue that RFC 7934 prompted the addition of Section 6.6 into RFC 8415[^TL], in which case RFC 7934 achieved its goals.
+
+In any case, making the *we cannot use DHCPv6 because RFC 7934* argument in 2021 makes one look ridiculous[^BS].
+
+[^TL]: draft-ietf-dhc-rfc3315bis-00 was published on March 23, 2015. draft-ietf-v6ops-host-addr-availability-00 was published on July 31st 2015. Section 6.6 was added to draft-ietf-dhc-rfc3315bis-08 published on May 8th 2017.
+
+[^BS]: I tried really hard not to use more explicit language that might have included byproducts of large-sized ungulates.
+
+Back to RFC 7934 *Benefits of Providing Multiple Addresses*:
 
 > Identifier-Locator Addressing.
 
@@ -89,7 +102,7 @@ I've seen the same argument used by the proponents of "*every granny needs a /48
 
 ## Recap
 
-While there are legitimate uses for multiple IPv6 addresses per host, many of them don't apply to Android, or to the environments in which people want to see DHCPv6 working on Android, and DHCPv6 IA_TA solved the problem anyway. 
+While there are legitimate uses for multiple IPv6 addresses per host, many of them don't apply to Android, or to the environments in which people want to see DHCPv6 working on Android, and RFC 8415 solved the problem anyway. 
 
 Using RFC 7934 to justify not implementing DHCPv6 on Android is as bogus as it gets, and I'm positive people making those claims know that; they just use a *Best Practices RFC* as a stockpile of ammunition in useless battles.
 
