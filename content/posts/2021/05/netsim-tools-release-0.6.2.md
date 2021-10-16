@@ -2,7 +2,6 @@
 title: "netsim-tools release 0.6.2"
 date: 2021-05-17 06:26:00
 tags: [ automation ]
-series: netsim-tools
 ---
 Last week we pushed out netsim-tools release 0.6.2. It's a maintenance release, so mostly full of bug fixes apart from awesome contributions by [Leo Kirchner](https://blog.kirchne.red/) who 
 
