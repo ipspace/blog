@@ -1,5 +1,5 @@
 ---
-title: "netsim-tools: Release 0.4 Is Out"
+title: "netsim-tools: Unnumbered Interfaces, Configuration Modules, OSPF"
 date: 2021-03-29 07:12:00
 tags: [ automation ]
 series: netsim-tools
@@ -22,9 +22,9 @@ Finally, after implementing the unnumbered interfaces and configuration module f
 Building a full-blown OSPF test network became a simple process (details coming in another blog post):
 
 * Describe desired network topology in YAML file.
-* Run **create-topology** script to create Ansible inventory and Vagrantfile (this script has been replaced with **netlab create** command in release 0.8)
+* Run **netlab create** script to create Ansible inventory and Vagrantfile.
 * Start the lab with **vagrant up**. Wait... Wait some more...
-* [Deploy device configurations](https://netsim-tools.readthedocs.io/en/latest/configs.html) with **initial-config.ansible** playbook (this playbook is invoked with the **netlab create** command in release 0.8). The playbook deploys initial device configurations as well as any configuration modules (OSPF in my example).
+* [Deploy device configurations](https://netsim-tools.readthedocs.io/en/latest/configs.html) with **netlab initial** command. The playbook deploys initial device configurations as well as any configuration modules (OSPF in my example).
 * Start doing the real testing instead of wasting time building and configuring a lab.
 
 Finally, no job is finished until the paperwork is done. I probably spent way more time [writing the documentation](https://netsim-tools.readthedocs.io/en/latest/index.html) than code, but in the end, it paid off. While "wasting" time on documentation, I figured out (and fixed) a few quirks in the system. I also [made parameter inheritance much more flexible](https://netsim-tools.readthedocs.io/en/latest/modules.html#merging-default-values) than what Ansible inventory groups could do.
@@ -34,4 +34,7 @@ Finally, Job#4: Commit, merge, push. Hope you'll find the [new release](https://
 ### Revision History
 
 2021-07-12
-: Added pointers to new **netlab** CLI introduced with release 0.8.
+: Replaced old CLI commands with **netlab** CLI introduced with release 0.8.
+
+2021-10-13
+: A bit of polishing

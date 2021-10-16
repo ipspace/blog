@@ -1,6 +1,7 @@
 ---
 title: "When You Find Yourself on Mount Stupid"
-date: 2021-10-18 06:20:00
+# date: 2021-10-18 06:20:00
+draft: True
 tags: [ networking fundamentals ]
 ---
 The early October 2021 Facebook outage generated a predictable phenomenon -- [couch epidemiologists](https://twitter.com/dtemkin/status/1445199650655375360) became experts in little-known [Bridging the Gap Protocol](https://twitter.com/ACM_IMC2021/status/1445725066403196928) (BGP), including its Introvert and Extrovert variants. Unfortunately, I also witnessed several unexpected trips to [Mount Stupid](https://www.smbc-comics.com/?id=2475) by people who should have known better.
