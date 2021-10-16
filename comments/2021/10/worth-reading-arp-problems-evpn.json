@@ -7,9 +7,17 @@
          "name": "Philipp Rintz",
          "pub": "2021-10-16T10:55:06",
          "type": "comment"
+      },
+      {
+         "date": "16 October 2021 04:54",
+         "html": "The linked to blog post seems to make two main points:<br />\n\n<ol>\n<li>ARP suppression can break ARP-based liveliness probes (i.e., when they need to be forwarded via VXLAN, but this is suppressed).</li>\n<li>Withdrawal of EVPN type 2 MAC/IP routes when the MAC table entry of a leaf times out results in missing ARP table entries on different leaf switches, which can affect asymmetric routing EVPN/VXLAN setups.</li>\n</ol>\n\n<p>Synchronizing ARP and MAC timeouts can help with point 2, but not point 1.</p>\n\n<p>The classic reason to synchronize ARP and MAC timeouts is to avoid unknown unicast flooding caused by ECMP to a pair of first hop routers when all traffic out of the subnet goes via one router (e.g., the VRRP master) and return traffic (also) arrives at another (e.g., VRRP backup) router.</p>\n\n<p>It does not matter much if the MAC timeout is increased to match the ARP timeout, or the ARP timeout decreased to that of the MAC timeout, or both set to matching non-default values.</p>\n\n<p><em>Matching</em> here means that the ARP timeout should be slightly below the MAC timeout in order to refresh MAC tables entries with the ARP exchange.</p>\n\n<p>ExtremeXOS has a nice feature called &quot;ARP refresh&quot; that automatically generates ARP requests from the router before an ARP entry times out. If used in combination with appropriate MAC and ARP timeouts, this reliably avoids problems with not synchronized MAC and ARP tables, and avoids problems with the combination of so called silent devices, MAC authentication, and dynamic VLAN assignment.</p>\n\n<p>P.S. I&#39;m no CCIE, so I don&#39;t know about CCIE trick questions. ;-)</p>\n",
+         "id": "797",
+         "name": " Erik Auerswald",
+         "pub": "2021-10-16T16:54:29",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2021/10/worth-reading-arp-problems-evpn.html"
 }
