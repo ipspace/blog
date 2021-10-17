@@ -1,7 +1,7 @@
 ---
 title: "Circular Dependencies Considered Harmful"
 date: 2021-10-21 06:48:00
-tags: [ design, networking fundamentals ]
+tags: [ design, BGP, high availability, virtualization ]
 ---
 A while ago my friend Nicola Modena sent me another intriguing curveball:
 
