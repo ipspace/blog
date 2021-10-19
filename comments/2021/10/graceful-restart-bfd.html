@@ -1,0 +1,55 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="803">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c803" href="#803">19 October 2021 11:11</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&#39;d suggest to step back a bit and consider the bigger picture.</p>
+
+<p>What is BFD good for? What is GR/NSF/NSR/SSO good for?</p>
+
+<p>BFD and GR/NSF/NSR/SSO have different goals: one enables quick fail over, the other prevents fail over. Combining both promises to be interesting.</p>
+
+<p>Reliably and quickly detecting a forwarding failure is helpful when there is a different path to fail over to. When there is no alternative path, quick failure detection seems less important.</p>
+
+<p>BFD implementations often combine data plane (BFD echo mode) and control plane (BFD session) failure detection and thus assume a shared fate between data plane and control plane.</p>
+
+<p>GR and NSF are based on the assumption that the data plane can still function although the control planed has (temporarily) failed.</p>
+
+<p>NSR/SSO shall hide control plane failures by (more or less) transparently failing over to a different processor.</p>
+
+<p>Some combinations of GR/NSF/NSR/SSO can help to mask temporary control plane failures that do not affect the data plane.</p>
+
+<p>NSF+GR allows forwarding despite temporary control plane failures. Likewise NSF+NSR/SSO.</p>
+
+<p>[IMHO NSR/SSO <em>should</em> be implemented completely transparently and always be enabled when there are two or more control plane processors. Why even <em>have</em> hardware redundancy for the control plane when it does not work well enough to enable unconditionally?]</p>
+
+<p>When routers are not able to quickly react to topology changes (think (multiple) full Internet BGP tables with weak routers), GR seems useful to avoid churn and cascading failures.</p>
+
+<p>BFD is intended to reliably and timely detect forwarding failures. Now what should one do with this information? Continue forwarding down the known failed path with the help of something like GR/NSF/NSR/SSO? Why detect the forwarding failure at all, if it is to be ignored anyway?</p>
+
+<p>How can BFD be used with complex routers where the data plane can still function although the control plane has failed? How to handle a complex router with redundant control plane, e.g., two route processor modules? One idea could be to use BFD echo mode in the data plane with a short detection interval and a control plane session with a long detection interval (or no BFD control plane session at all). Combined with an additional path to fail over to if a data plane failure is detected this can help, but it does add a whole lot of complexity, which might reduce reliability in practice.</p>
+
+<p>A different, simpler approach to network redundancy would be to have less complex routers without NSF/NSR/SSO, but more of those to build redundant paths. Then quick and reliable failure detection, e.g., with BFD, can be used to fail over whenever a data plane or control plane failure is detected.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
