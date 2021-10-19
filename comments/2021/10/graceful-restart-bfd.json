@@ -15,9 +15,17 @@
          "name": " Dmitry Perets",
          "pub": "2021-10-19T15:39:43",
          "type": "comment"
+      },
+      {
+         "date": "19 October 2021 06:49",
+         "html": "<p>A distinction should be made between single link and multipath BFD.\nSingle link / single-hop BFD is only to connected neighbors, with their interface IPs on same subnet. It is enabled on the interface config and for the routing protocol. It should be processed by NPU, which could be on separate line card.</p>\n\n<p>Multipath / multi-hop BFD sessions are between loopback IPs.\nThe BGP neighbor is configured with something like &ldquo;fall-over bfd multi-hop&rdquo; and also requires a BFD map. It is not enabled on the interfaces. This would be process by the control plane CPU.</p>\n\n<p>For example, in the access network scenario. If there are multiple interfaces (paths) between 2 directly connected routers, then the BGP can be between their loopbacks. Multiple static routes are linked to BFD on the interfaces. BGP is not tied to BFD. If some of the interfaces fail then BFD detects that quickly and removes some static routes, BGP protocol and end-to-end path stays up. If all links fail, then then IGP route to BGP next hop is down. Recursive lookup means that even if BGP does not yet know about it all the routes are invalidated, they are still in BGP table but not in the RIB. You can also change the default next-hop-self behavior for routes received from eBGP neighbors and distribute their loopback into your IGP.</p>\n\n<p>It seems that NSF + GR can be used with BGP in this design while still having quick response to link/dataplane failure. Using separate IPs for data plane and control plane and BFD handled by NPU/ASIC/linecard means their failure detection and handling can be done differently.</p>\n\n<p>It is difficult to test BFD with simulators because the NPU can CPU is not separate, and sometimes BFD is even disabled for the virtual routers. Exact behavior is platform dependent and can differ between boxes are running the same NOS.  </p>\n",
+         "id": "805",
+         "name": " petrus",
+         "pub": "2021-10-19T18:49:25",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2021/10/graceful-restart-bfd.html"
 }
