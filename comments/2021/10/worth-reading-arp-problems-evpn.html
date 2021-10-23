@@ -196,6 +196,46 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="813">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c813" href="#813">23 October 2021 06:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>And I was wrong... again. With CEF switching, the incoming packet is buffered until the ARP entry is complete. Here&#39;s the debugging printout of a single CEF-switched packet:</p>
+
+<ul>
+<li>CEF input detailed debug message</li>
+<li>ARP debug messages</li>
+<li>CEF output detailed debug message</li>
+</ul>
+
+<pre>
+*Oct 23 16:16:02.849: CEF-Debug: Packet from 10.1.0.1 (Gi0/1) to 10.1.0.5
+*Oct 23 16:16:02.849:   ihl=20, length=84, tos=0, ttl=63, checksum=58291, offset=0 DF
+*Oct 23 16:16:02.849:     ICMP type=8, code=0, checksum=42374
+*Oct 23 16:16:02.849:          ECHO
+*Oct 23 16:16:02.850: IP ARP: creating incomplete entry for IP address: 10.1.0.5 interface GigabitEthernet0/2
+*Oct 23 16:16:02.850: IP ARP: sent req src 10.1.0.6 5254.00d4.e045,
+                 dst 10.1.0.5 0000.0000.0000 GigabitEthernet0/2
+*Oct 23 16:16:02.850: IP ARP: rcvd rep src 10.1.0.5 5254.0040.38b4, dst 10.1.0.6 GigabitEthernet0/2
+*Oct 23 16:16:02.851: CEF-Debug: Packet from 10.1.0.1 (Gi0/1) to 10.1.0.5 (Gi0/2)
+*Oct 23 16:16:02.851:   ihl=20, length=84, tos=0, ttl=63, checksum=58291, offset=0 DF
+*Oct 23 16:16:02.851:     ICMP type=8, code=0, checksum=42374
+*Oct 23 16:16:02.851:          ECHO
+</pre>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>

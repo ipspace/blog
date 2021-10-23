@@ -55,6 +55,15 @@
                "pub": "2021-10-22T15:00:47",
                "ref": "811",
                "type": "comment"
+            },
+            {
+               "date": "23 October 2021 06:19",
+               "html": "<p>And I was wrong... again. With CEF switching, the incoming packet is buffered until the ARP entry is complete. Here&#39;s the debugging printout of a single CEF-switched packet:</p>\n\n<ul>\n<li>CEF input detailed debug message</li>\n<li>ARP debug messages</li>\n<li>CEF output detailed debug message</li>\n</ul>\n\n<pre>\r\n*Oct 23 16:16:02.849: CEF-Debug: Packet from 10.1.0.1 (Gi0/1) to 10.1.0.5\r\n*Oct 23 16:16:02.849:   ihl=20, length=84, tos=0, ttl=63, checksum=58291, offset=0 DF\r\n*Oct 23 16:16:02.849:     ICMP type=8, code=0, checksum=42374\r\n*Oct 23 16:16:02.849:          ECHO\r\n*Oct 23 16:16:02.850: IP ARP: creating incomplete entry for IP address: 10.1.0.5 interface GigabitEthernet0/2\r\n*Oct 23 16:16:02.850: IP ARP: sent req src 10.1.0.6 5254.00d4.e045,\r\n                 dst 10.1.0.5 0000.0000.0000 GigabitEthernet0/2\r\n*Oct 23 16:16:02.850: IP ARP: rcvd rep src 10.1.0.5 5254.0040.38b4, dst 10.1.0.6 GigabitEthernet0/2\r\n*Oct 23 16:16:02.851: CEF-Debug: Packet from 10.1.0.1 (Gi0/1) to 10.1.0.5 (Gi0/2)\r\n*Oct 23 16:16:02.851:   ihl=20, length=84, tos=0, ttl=63, checksum=58291, offset=0 DF\r\n*Oct 23 16:16:02.851:     ICMP type=8, code=0, checksum=42374\r\n*Oct 23 16:16:02.851:          ECHO\r\n</pre>\n",
+               "id": "813",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-10-23T18:19:35",
+               "ref": "812",
+               "type": "comment"
             }
          ],
          "date": "19 October 2021 05:10",
