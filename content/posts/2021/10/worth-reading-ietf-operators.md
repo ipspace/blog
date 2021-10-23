@@ -7,7 +7,7 @@ Long long time ago (seven years to be precise), ISOC naively tried to bridge the
 
 [^1]: [Into the Future with the Internet Vendor Task Force](https://archive.psg.com/051000.sigcomm-ivtf.pdf), Randy Bush, 2005
 
-The result: [*Operators and the IETF*](https://datatracker.ietf.org/doc/html/draft-opsawg-operators-ietf-00) draft that never moved beyond -00 version. A quick glimpse into the [Potential Challenges](https://datatracker.ietf.org/doc/html/draft-opsawg-operators-ietf-00#section-3) will tell you why IETF preferred to kill the messenger.
+The result: [*Operators and the IETF*](https://datatracker.ietf.org/doc/html/draft-opsawg-operators-ietf-00) draft that never moved beyond -00 version. A quick glimpse into the [Potential Challenges](https://datatracker.ietf.org/doc/html/draft-opsawg-operators-ietf-00#section-3) will tell you why IETF preferred to kill the messenger (and why I published this blog post on Halloween).
 <!--more-->
 BTW, couldn't resist pointing out this gem that ties nicely with recent [DHCPv6 blog posts](https://blog.ipspace.net/2021/10/ipv6-multiple-addresses-per-interface.html) (and no, it wasn't me):
 
