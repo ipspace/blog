@@ -1,0 +1,11 @@
+---
+title: "netsim-tools Release 1.0"
+date: 2021-11-01 06:27:00
+tags: [ automation ]
+series: netsim-tools
+---
+It looks like *netsim-tools* reached a somewhat stable state, so it was time to do a cleanup and [publish release 1.0](https://github.com/ipspace/netsim-tools) (also available on PyPi, use **pip3 install --upgrade netsim-tools** to fetch it).
+
+During the cleanup, I removed all references to the obsolete scripts, leaving only the **[netlab](https://netsim-tools.readthedocs.io/en/latest/netlab/cli.html)** command. I also found an old bash script that [enabled LLDP passthrough on Linux bridges](https://blog.ipspace.net/2020/12/linux-bridge-lldp.html) and made it part of **netlab up** process; your *libvirt*-based labs will have LLDP enabled by default.
+
+Interested? [Install the tools](https://netsim-tools.readthedocs.io/en/latest/install.html) and [follow the tutorials](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) to get started.

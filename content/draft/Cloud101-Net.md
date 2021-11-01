@@ -24,7 +24,7 @@ For an overview of the differences watch the "Public Cloud Networking Is Differe
 
 {{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video{{</note>}}
 
-# Video: How Can You Master Public Cloud Networking?
+# (Pub) Video: How Can You Master Public Cloud Networking?
 
 By now I'm hoping you've realized there's still need for networking in public clouds, and mastering it requires slightly different set of skills. What could you as a networking engineer to get fluent in this different world? I collected a few hints in the last video in *Introduction to Public Cloud Networking* series.
 
