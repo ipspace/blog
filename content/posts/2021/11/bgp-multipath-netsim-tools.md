@@ -1,6 +1,6 @@
 ---
 title: "Creating BGP Multipath Lab with netsim-tools"
-date: 2021-11-02 07:03:00
+date: 2021-11-09 07:03:00
 tags: [ BGP ]
 series: netsim-tools
 ---
@@ -74,7 +74,7 @@ I used the graphing capabilities of *netsim-tools* together with *graphviz* to g
 
 ## The Smoke Test
 
-Deploying a virtual lab is a one-liner with *netsim-tools* release 0.9.3. All it takes is **netlab up** and you get a configured lab a minute or two later[^NX].
+Deploying a virtual lab is a one-liner with *netsim-tools* release 0.9.3 or later. All it takes is **netlab up** and you get a configured lab a minute or two later[^NX].
 
 [^NX]: Or a lunch break later if you decide to test a large topology built with Nexus 9000v.
 
@@ -128,7 +128,7 @@ VRF info: (vrf in name/id, vrf out name/id)
     y (10.1.0.26) 3 msec
 ```
 
-As you can see, sometimes the probes reach Y in two hops, sometimes is reached in two hops, sometimes the second hop happens to be D. What's going on? Write a comment!
+As you can see, sometimes the probes reach Y in two hops, and sometimes the second hop happens to be D. What's going on? Write a comment!
 
 ## Arista EOS Works the Same Way
 
