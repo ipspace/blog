@@ -3,11 +3,11 @@ title: "Where Would You Need DNS Anycast?"
 date: 2021-11-02 06:57:00
 tags: [ DNS, high availability ]
 ---
-One of the underlying reasons for the [October 2021 Facebook outage](/2021/10/circular-dependencies-considered-harmful.html) was an intricate interaction between BGP routing and their DNS servers needed to support optimal anycast configuration. Not surprisingly, it was all networking engineers' fault according to some opinions[^1]
+One of the publicly observable artifacts of the [October 2021 Facebook outage](/2021/10/circular-dependencies-considered-harmful.html) was an intricate interaction between BGP routing and their DNS servers needed to support optimal anycast configuration. Not surprisingly, it was all networking engineers' fault according to some opinions[^1]
 
-> ⁦‪There's no need for anycast[^2]/BGP advertisement for DNS servers. DNS is already highly available by design. Only network people never understand that, which leads to overengineering.
+> There's no need for anycast[^2]/BGP advertisement for DNS servers. DNS is already highly available by design. Only network people never understand that, which leads to overengineering.
 
-It's not that hard to find a counter-argument[^4]: while it looks like there are [only 13 root name servers](https://root-servers.org/), each one of them is a large set of instances advertising the same IP prefix[^3] to the Internet.
+It's not that hard to find a counter-argument[^CA]: while it looks like there are [only 13 root name servers](https://root-servers.org/)[^RNS], each one of them is a large set of instances advertising the same IP prefix[^3] to the Internet.
 <!--more-->
 [^1]: Details removed to protect the overconfidently naive
 
@@ -15,11 +15,13 @@ It's not that hard to find a counter-argument[^4]: while it looks like there are
 
 [^3]: Containing the IP address of the root name server
 
-[^4]: See also the first link in the *Want to Know More?* section
+[^CA]: See also the first link in the *Want to Know More?* section
 
-For example, in October 2021, 118 sites advertise the J name server, some of them locally (to adjacent ISPs), others globally. Furthermore, while there are over 1000 instances of root name servers worldwide, at least [RIPE often implements a K name server instance](https://labs.ripe.net/author/romeo_zwart/new-architecture-model-for-k-root-local-instances/) as a cluster of servers advertising the same IP address to the adjacent routers. *Local nodes* are implemented with two servers (even smaller *hosted nodes* have a single server), while the larger *global nodes* always run on a server farm.
+[^RNS]: While recording a podcast with [Corey Quinn](https://twitter.com/QuinnyPig), he pointed out that the "13 root name server" limitation is due to the maximum size of early DNS packets (512 bytes). [More details](https://lists.isc.org/pipermail/bind-users/2011-November/085653.html) from Mark Andrews.
 
-I guess there's no doubt root name servers use anycast. It must be the incompetent networking engineers setting them up like that, right? There might be other reasons -- the *[Evaluating The Effects Of Anycast On DNS Root Nameservers](https://www.ripe.net/publications/docs/ripe-393)* article (HT: @hugoslabbert) lists three goals of root name server anycast:
+For example, in October 2021, 118 sites advertised the J name server, some of them locally (to adjacent ISPs), others globally. Furthermore, while there are over 1000 instances of root name servers worldwide, at least [RIPE often implements a K name server instance](https://labs.ripe.net/author/romeo_zwart/new-architecture-model-for-k-root-local-instances/) as a cluster of servers advertising the same IP address to the adjacent routers. *Local nodes* are implemented with two servers (even smaller *hosted nodes* have a single server), while the larger *global nodes* always run on a server farm.
+
+I guess there's no doubt root name servers use anycast. It must be the incompetent networking engineers setting them up like that, right? There might be other reasons beyond the maximum size of a DNS reply packet -- the *[Evaluating The Effects Of Anycast On DNS Root Nameservers](https://www.ripe.net/publications/docs/ripe-393)* article (HT: @hugoslabbert) lists three goals of root name server anycast:
 
 * Increased resilience
 * Higher (improved) performance
@@ -36,6 +38,8 @@ Closer to the DNS clients, many organizations use anycast DNS servers as recursi
 OK, so we know root name servers use anycast, and many recursive resolvers use it to ensure better performance for suboptimal clients, but surely an authoritative DNS server for a small organization does not need to use anycast?
 
 Of course not. In the past, I had one name server running within the organization, and a secondary one running somewhere else to increase the resilience of name resolution[^5]. 
+
+[^5]: Even if my web site was down, it was nice to have working MX records to forward the mail to an alternate SMTP server.
 
 To be realistic: those days are long gone, I'm too old for that **** and use hosted DNS service... and all hosted solutions I would consider use anycast. It's amazing how influential those damn incompetent over-engineering networking people got in the meantime.
 
@@ -57,6 +61,4 @@ Finally, consider the amount of DNS traffic any member of the FAANG club must be
 * Your network or DNS traffic is not remotely similar to Facebook's (or root name servers).
 * Whatever lessons and experience you might have gained running your environment for ages might not be relevant in dissimilar-enough environments.
 * Sometimes people do stuff for good reasons. It might be worth figuring out what their reasoning is even if you disagree with them -- that's how we learn and become better engineers.
-
-[^5]: Even if my web site was down, it was nice to have working MX records to forward the mail to an alternate SMTP server.
 
