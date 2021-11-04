@@ -1,0 +1,21 @@
+{{ partial "header.html" . }}
+{{ range .Pages.ByTitle }}
+  {{ .Scratch.Set "ArticleContext" 0 }}
+  {{ if .Content }}
+    {{ partial "page-blurb.html" . }}
+  {{ end }}
+{{ end }}
+{{ $nt := where .Pages "Content" "==" "" }}
+{{ if len $nt }}
+<div class="post__item post__content">
+  <h3 class='firstHeading'>Other {{ .Title }}</h3>
+  <ul>
+  {{ range $nt.ByTitle }}
+    {{ if and (in .Title " ") }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  {{ end }}
+  </ul>
+</div>
+{{ end }}
+{{ partial "footer.html" . }}

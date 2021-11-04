@@ -9,7 +9,11 @@
       {{ end }}
     </header>
     <div class='post__content' itemprop='articleBody'>
-      {{ .Summary }}
+      {{ if .Truncated }}
+        {{ .Summary }}
+      {{ else }}
+        {{ .Content }}
+      {{ end }}
     </div>
     <a class="post__read-more" href="{{ .RelPermalink }}">
       read more
