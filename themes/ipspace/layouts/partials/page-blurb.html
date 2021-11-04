@@ -1,0 +1,30 @@
+<div class='post__item'>
+  <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
+    <header class='post__header'>
+      <h2 class='post__title firstHeading' itemprop='name headline'>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+      {{ with .Params.subtitle }}
+        <p class='subtitle'>{{ . }}</p>
+      {{ end }}
+    </header>
+    <div class='post__content' itemprop='articleBody'>
+      {{ .Summary }}
+    </div>
+    <a class="post__read-more" href="{{ .RelPermalink }}">
+      read more
+      <svg class="post__arrow-icon">
+        <use xlink:href="#arrow-right-orange" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+      </svg>
+    </a>
+    <div style='clear: both;'></div>
+    <!-- comments -->
+    <div class='post__meta'>
+      {{ partial "post-share.html" . }}
+      {{ with .Params.media }}
+        <audio src="{{ . }}" controls="controls" preload="none"></audio>
+      {{ end }}
+      {{ partial "post-tags.html" . }}
+    </div>
+  </article>
+</div>
