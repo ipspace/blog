@@ -1,7 +1,24 @@
-<div class="post-content clearfix">
-    {{ with .Params.Image }}
-        <img class="post-featured-image" src="{{ . }}">
-    {{ end }}
-
-    {{ .Content }}
+<div class='post__item'>
+  <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
+    <header class='post__header'>
+      <h2 class='post__title firstHeading' itemprop='name headline'>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+      {{ with .Params.subtitle }}
+        <p class='subtitle'>{{ . }}</p>
+      {{ end }}
+    </header>
+    <div class='post__content' itemprop='articleBody'>
+      {{ .Content }}
+    </div>
+    <div style='clear: both;'></div>
+    <!-- comments -->
+    <div class='post__meta'>
+      {{ partial "post-share.html" . }}
+      {{ with .Params.media }}
+        <audio src="{{ . }}" controls="controls" preload="none"></audio>
+      {{ end }}
+      {{ partial "post-tags.html" . }}
+    </div>
+  </article>
 </div>

@@ -95,7 +95,8 @@ args = parseCLI()
 #VERBOSE = args.verbose
 
 for entry in args.files:
-  check_file(entry)
+  if not 'series' in entry:
+    check_file(entry)
 
 if ERRORS:
   sys.exit(1)

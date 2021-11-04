@@ -2,6 +2,8 @@
 title: "Stateful Switchover (SSO) 101"
 date: 2021-09-14 06:51:00
 series: ha-switching
+series_tag: mechanism
+series_title: Stateful Switchover (SSO)
 tags: [ switching, high availability, networking fundamentals ]
 ---
 *Stateful Switchover (SSO)* is another seemingly awesome technology that can help you implement high availability when facing a ~~broken~~ non-redundant network design. Here's how it's supposed to work:
