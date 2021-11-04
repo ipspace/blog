@@ -1,0 +1,18 @@
+---
+title: High Availability Switching
+layout: custom
+minimal_sidebar: true
+---
+Networking vendors love promoting novel overly complex technologies instead of solving their customers' challenges with good network design. *High-availability switching* (the ability to continue packet forwarding during a control plane failure) is no exception.
+
+### Mechanisms
+
+{{<series-listing tag="mechanism">}}
+
+### Interaction With Other Control-Plane Protocols
+
+{{<series-listing tag="control">}}
+
+### Other Considerations
+
+{{<series-listing>}}
