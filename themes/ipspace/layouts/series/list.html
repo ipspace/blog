@@ -1,0 +1,15 @@
+{{ partial "header.html" . }}
+{{ if .Content }}
+<div class='post__item post__content' style="margin-top: 0">
+  <h1 class='firstHeading'>{{ .Title }}</h1>
+  <p class="crumbs"><a href="/">blog</a> » <a href="/series.html">series</a> » {{ .Title }}</p>
+  {{ .Content }}
+</div>
+{{ end }}
+{{ $pag := .Paginate .Pages }}
+{{ range $pag.Pages.Reverse }}
+  {{ .Scratch.Set "ArticleContext" 0 }}
+  {{ partial "post-content.html" . }}
+{{ end }}
+{{ partial "post-pagination.html" . }}
+{{ partial "footer.html" . }}
