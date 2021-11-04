@@ -10,7 +10,10 @@
   {{ partialCached "sidebar-social.html" . }}
   {{ partialCached "sidebar-subscribe.html" . }}
   {{ partialCached "sidebar-updated.html" . }}
-  {{ partialCached "sidebar-popular.html" . }}
-  {{ "/snippets/archive-sidebar.html" | readFile | safeHTML }}
-  {{ "/snippets/tags-sidebar.html" | readFile | safeHTML }}
+  {{ partialCached "sidebar-featured.html" . }}
+  {{ if not (.Params.minimal_sidebar) }}
+    {{ partialCached "sidebar-popular.html" . }}
+    {{ "/snippets/archive-sidebar.html" | readFile | safeHTML }}
+    {{ "/snippets/tags-sidebar.html" | readFile | safeHTML }}
+  {{ end }}
 </aside>

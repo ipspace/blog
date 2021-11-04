@@ -1,10 +1,11 @@
 {{ if and .Params.series (not (.Page.Scratch.Get "series")) }}
   {{ $me := .Permalink }}
   {{ $scr:= newScratch }}
-  {{ with ($.Site.GetPage (printf "/series/%s" ( .Params.series | urlize ))) }}
+  {{ $serurl:= (printf "/series/%s" ( .Params.series | urlize )) }}
+  {{ with ($.Site.GetPage $serurl) }}
     {{ if gt (len .Pages) 1 }}
 <div class="post__content">
-  <h3>Blog posts in this series</h3>
+  <h3>Blog posts in <a href="{{ $serurl }}.html">this series</a></h3>
   <div id="related_posts">
       <ul>
         {{ range (.Pages).Reverse }}

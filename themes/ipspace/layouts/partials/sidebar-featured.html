@@ -1,0 +1,11 @@
+{{ with ($.Site.GetPage "/series") }}
+{{ $pages := where .Pages "Layout" "custom" }}
+<div class="widget PopularPosts">
+  <h3 class="sidebar__title">Featured</h3>
+  <ul>
+  {{ range $pages }}
+    <li><a href='{{ .Permalink }}'>{{ .Title }}</a></li>
+  {{ end }}
+  </ul>
+</div>
+{{ end }}
