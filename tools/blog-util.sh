@@ -20,6 +20,7 @@ Usage:
   blog ls     - list blog posts
 
   blog tag    - list tags
+  blog series - series management
   blog title  - get a title of a published blog post. Use URL to print title on STDOUT,
                 'clip' for clipboard-to-clipboard operation, or 'md' for Markdown
                 clipboard-to-clipboard operation.
@@ -144,6 +145,22 @@ YAML
       *)
         echo "Usage: blog title url|clip|md|em|wiki|yaml"
         ;;
+    esac
+    ;;
+  series)
+    case "$2" in
+      new)
+        if [ -z "$3" ]; then
+          echo "Need series tag"
+          exit
+        fi
+        BLOG_SERIES="$BLOG_HOME/content/series"
+        mkdir -p "$BLOG_SERIES/$3"
+        touch "$BLOG_SERIES/$3/_index.md"
+        blog_edit_post "$BLOG_SERIES//$3/_index.md"
+        ;;
+      *)
+        echo "Usage blog series new <tag>"
     esac
     ;;
   kill)
