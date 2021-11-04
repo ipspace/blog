@@ -6,3 +6,4 @@ In September 2020, [Matthias Luft](https://www.ipspace.net/Author:Matthias_Luft)
 * Why don't we have dynamic firewall policies where the end-hosts could specify which TCP/UDP ports they need?
 * Can we use traffic flow analysis to reverse-engineer firewall rules?
 * Is there any chance of fixing this problem?
+
