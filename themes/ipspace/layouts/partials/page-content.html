@@ -1,11 +1,13 @@
 <div class='post__item'>
   <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
     <header class='post__header'>
-      <h2 class='post__title firstHeading' itemprop='name headline'>
+      <h1 class='post__title firstHeading' itemprop='name headline'>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
-      </h2>
+      </h1>
       {{ with .Params.subtitle }}
         <p class='subtitle'>{{ . }}</p>
+      {{ else }}
+        <p class="crumbs post__content"><a href="/">blog</a> » <a href="/{{ .Section }}.html">{{ .Section }}</a> » {{ .Title }}</p>
       {{ end }}
     </header>
     <div class='post__content' itemprop='articleBody'>
