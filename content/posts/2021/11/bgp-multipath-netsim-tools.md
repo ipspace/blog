@@ -61,7 +61,7 @@ As an aside: here's the corresponding data structure in pure YAML to illustrate 
  Finally, we need the links connecting the routers. Here they are:
  
 ```
- links: [ a-b, a-c, b-d, c-d, b-rr, d-rr, c-x, d-x ]
+ links: [ a-b, a-c, b-d, c-d, b-rr, d-rr, c-y, d-y ]
 ```
 
 ## Validating the Topology
@@ -158,3 +158,8 @@ BGP routing table entry for 10.42.42.0/24
 ```
 
 **Coming up next**: fixing suboptimal BGP routing with *additional paths* functionality.
+
+## Change History
+
+2021-11-09
+: Fixed the list of links based on a comment from an anonymous contributor
