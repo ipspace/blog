@@ -4,6 +4,7 @@ date: 2021-01-18 07:32:00
 lastmod: 2021-07-12 18:06:00
 tags: [ automation ]
 series: netsim-tools
+series_tag: release
 ---
 In mid-December I [announced a set of tools](https://blog.ipspace.net/2020/12/build-labs-netsim-tools.html) that will help you build Vagrant-based remote labs much faster than writing Vagrantfiles and Ansible inventories by hand.
 

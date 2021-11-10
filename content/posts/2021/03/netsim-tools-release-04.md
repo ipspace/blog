@@ -4,6 +4,7 @@ date: 2021-03-29 07:12:00
 tags: [ automation ]
 series: netsim-tools
 lastmod: 2021-07-12 18:00:03
+series_tag: release
 ---
 **TL&DR**: The [new release of netsim-tools](https://netsim-tools.readthedocs.io/en/latest/release/0.4.html) includes unnumbered interfaces, configuration modules, and OSPF configuration.
 

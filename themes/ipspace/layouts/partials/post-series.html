@@ -8,7 +8,7 @@
   <h3>Blog posts in <a href="{{ $serurl }}.html">this series</a></h3>
   <div id="related_posts">
       <ul>
-        {{ range (.Pages).Reverse }}
+        {{ range first (cond (gt (len .Pages) 10) 5 99) ((.Pages).Reverse) }}
           <li>
             {{ if eq .Permalink $me }}
               {{ .Title }} (this post)
@@ -19,6 +19,11 @@
         {{ end }}
       </ul>
   </div>
+      {{ if gt (len .Pages) 10 }}
+  <div class='jump-link'>
+    <a href="{{ $serurl }}.html">More related blog posts</a>
+  </div>
+      {{ end }}
 </div>
     {{ end }}
   {{ end }}
