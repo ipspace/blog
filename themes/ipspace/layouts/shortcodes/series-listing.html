@@ -3,6 +3,9 @@
   {{ if not (.Get "reverse") }}
   {{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}
   {{ end }}
+  {{ if (.Get "weight") }}
+  {{   .Page.Scratch.Set "pages" (sort (.Page.Scratch.Get "pages") "Params.series_weight" "desc") }}
+  {{ end }}
   {{ range (.Page.Scratch.Get "pages") }}
     <li>
       <a href="{{ .Permalink }}">{{ with .Params.series_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</a>
