@@ -4,6 +4,8 @@ date: 2021-09-09 07:16:00
 tags: [ automation ]
 series: netsim-tools
 series_weight: 100
+series_tag: overview
+series_title: Overview
 ---
 In December 2020, I got sick-and-tired of handcrafting Vagrantfiles and decided to write a tool that would, given a target networking lab topology in a text file, produce the corresponding Vagrantfile for my favorite environment (libvirt on Ubuntu). Nine months later, that idea turned into a pretty comprehensive tool targeting *networking engineers who like to work with CLI and text-based configuration files*. If you happen to be of the GUI/mouse persuasion, please stop reading; this tool is not for you.
 

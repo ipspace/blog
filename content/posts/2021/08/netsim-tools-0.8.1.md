@@ -3,6 +3,7 @@ title: "netsim-tools Release 0.8.1: Cumulus VX and Nokia SR Linux Containers"
 date: 2021-08-08 16:43:00
 tags: [ automation ]
 series: netsim-tools
+series_tag: release
 ---
 Two interesting container images were released in June/July 2021:
 
