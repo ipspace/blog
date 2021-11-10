@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "10 November 2021 11:58",
+         "html": "Here is a recent VLAN hopping exploit for you: Alcatel-Lucent Enterprise AP-Mode on AOS6<br />\n\n<p>This feature is related to authentication (802.1X or MAC) and VLAN assignment on a port where an wireless AP is discovered.\nAP is discovered using &quot;lldp.tlv.enable_system_cap.wlan_access_pt == 1&quot;.</p>\n\n<p>The switch assume the AP is in a NON-tunnel mode and that he will proceed authentication and tag traffic into the proper VLAN himself.\nThe idea is to avoid several authentication at AP and switch and speedup the process.</p>\n\n<p>So the switch is not authenticating devices seen on the AP port. =&gt; authentication bypass\nSwitch is also trusting all the VLAN tags coming from this port. =&gt; VLAN hopping</p>\n\n<p>This features is enabled by default. You can still disable it.\nWhen upgrading from a previous version that doesn&#39;t support it, the configuration is converted to enable it.</p>\n\n<p>I discovered it at a customer&#39;s place because they connected an AP to a unmanaged switch with an uplink to the ALE AOS6 switch.\nPC connected to the unmanaged switch were not getting DHCP or network access.</p>\n\n<p>I connected my PC, did a wireshark and saw 802.1q trafic.\nI configured an 802.1q interface and got access to all VLAN on the switch.</p>\n\n<p>I was able to exploit it at several customers by forging LLDP to look like an AP.</p>\n\n<p>I was not able to exploit it on AOS8.\nWhile AP-mode is also enabled by default, it doesn&#39;t work the same way as in AOS6.</p>\n\n<p>ALE doesn&#39;t consider it a security issue and won&#39;t change the default behavior of AOS6 as it&#39;s becoming end of life. Unfortunately, it&#39;s still used on a lot of switches.</p>\n",
+         "id": "837",
+         "name": " sjdkluytsiyklr",
+         "pub": "2021-11-10T11:58:13",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/11/separate-guest-vlan-infrastructure.html"
+}
