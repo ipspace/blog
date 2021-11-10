@@ -1,6 +1,7 @@
 ---
 title: "Creating BGP Multipath Lab with netsim-tools"
 date: 2021-11-09 07:03:00
+lastmod: 2021-11-10 09:42:00
 tags: [ BGP ]
 series: netsim-tools
 ---
@@ -159,7 +160,24 @@ BGP routing table entry for 10.42.42.0/24
 
 **Coming up next**: fixing suboptimal BGP routing with *additional paths* functionality.
 
+## Off-Topic: Nicer-Looking Graphs
+
+Jeroen van Bemmel suggested using [*graphviz* **rankdir** parameter](graphviz.gitlab.io/docs/attrs/rankdir/) to generate better-looking graphs. As you can set individual graph options with CLI parameters, I didn't have to change the .dot files generated with **netlab create**. All I had to do was to add an extra parameter to the **dot** command:
+
+```
+dot -Grankdir=LR -T png -o graph.png graph.dot
+```
+
+Here are the results:
+
+{{<figure src="/2021/11/BGP-alt-topo.png" caption="Lab topology created with **rankdir=LR**">}}
+
+{{<figure src="/2021/11/BGP-alt-bgp.png" caption="BGP sessions diagram created with **rankdir=LR**">}}
+
 ## Change History
+
+2021-11-10
+: Added *graphviz* graphs created with `rankdir=LR`
 
 2021-11-09
 : Fixed the list of links based on a comment from an anonymous contributor
