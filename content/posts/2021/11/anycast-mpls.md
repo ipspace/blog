@@ -4,6 +4,7 @@ date: 2021-11-17 07:24:00
 tags: [ MPLS, LDP ]
 series: netsim-tools
 series_tag: use
+lastmod: 2021-11-17 17:58:00
 ---
 I stumbled upon an article praising the beauties of SR-MPLS that claimed:
 
@@ -76,6 +77,7 @@ Using the **links** element to configure MPLS with LDP is a piece of cake:
 
 ```
 mpls ldp explicit-null
+mpls ldp router-id Loopback 0
 {% for l in links %}
 !
 interface {{ l.ifname }}
@@ -84,6 +86,15 @@ interface {{ l.ifname }}
 ```
 
 **[netlab config](https://netsim-tools.readthedocs.io/en/latest/netlab/config.html)** command allows you to configure lab devices with a custom Jinja2 template. **netlab config mpls-ldp.j2** was all I needed to configure MPLS in my lab.
+
+---
+
+Please note that the above template configures two LDP parameters:
+
+* Advertise explicit NULL to make the LFIB table on L2 and L3 look nicer;
+* Set LDP router ID to a loopback interface with a unique IP address (more about that at the end of the blog post)
+
+---
 
 Configuring anycast was even easier -- add another loopback interface:
 
@@ -183,3 +194,31 @@ VRF info: (vrf in name/id, vrf out name/id)
 ```
 
 **Myth busted**. Traditional MPLS offers more than P2P virtual circuits. MPLS forwarding entries follow the IP routing table entries. While I like SR-MPLS (as opposed to its ugly cousin SRv6), you don't need it to run anycast services; LDP works just fine.
+
+### The Curse of Duplicate Addresses
+
+While anycast works with MPLS/LDP (as demonstrated), LDP is not completely happy with the setup.
+
+Worst case, anycast servers choose the anycast IP address as the LDP Identifier, and the adjacent devices try to connect to the anycast IP address when establishing LDP TCP session. That can't end well. To fix this one, use **mpls ldp router-id** on Cisco IOS (and an equivalent command on your platform-of-choice).
+
+LDP also advertises all local IP addresses to LDP neighbors to help them map FIB next hops to LDP neighbors[^PLINK]. Multiple LDP neighbors advertising the same IP address make L2 decidedly unhappy[^LDPDup], resulting in syslog messages like this one:
+
+```
+%TAGCON-3-DUP_ADDR_RCVD: Duplicate Address 10.0.0.42 advertised ↩︎
+by peer 10.0.0.6:0 is already bound to 10.0.0.5:0
+%TAGCON-3-TDPID: peer 10.0.0.6:0, TDP Id/Addr mapping problem ↩︎
+(rcvd TDP address PIE, bind failed)
+```
+
+The setup still works, but the extraneous syslog messages might upset an overly fastidious networking engineer. To make LDP happy, run BGP (not OSPF) with the anycast servers, and distribute labels for anycast addresses with IPv4/IPv6 labeled unicast (BGP-LU) address family. 
+
+Yeah, I know I have to set up another lab to prove that ;) Mañana...
+
+[^PLINK]: You can also use the list of local addresses to identify parallel links.
+
+[^LDPDup]: The error messages appear only on devices that have more than one LDP session to anycast servers (L2 in our lab topology).
+
+### Revision History
+
+2021-11-17
+: The _curse of duplicate addresses_ section has been added based on [feedback from Dmytro Shypovalov](https://twitter.com/routingcraft/status/1461007769511907331). Thanks a million for keeping me on the straight and narrow!
