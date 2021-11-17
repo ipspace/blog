@@ -19,7 +19,7 @@ I created a tree network to test the *anycast with MPLS* idea:
 
 The whole network is running OSPF, and MPLS/LDP is enabled on all links. A1, A2 and A3 will advertise the same prefix (10.0.0.42/32) into OSPF. According to the "_no anycast with MPLS_" claim, L1 should not be able to reach all three anycast nodes.
 
-You probably know I prefer typing CLI commands over chasing rodents, so I used *netsim-tools* to build the lab. Here's the topology file (I don't think it can get any simpler than that)
+You probably know I prefer typing CLI commands over chasing rodents, so I used *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)* to build the lab. Here's the [topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf.yml) (I don't think it can get any simpler than that)
 
 ```
 module: ospf
@@ -32,13 +32,13 @@ nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
 
-I created the network diagram with **netlab create -o graph** command followed by **‌dot -Grankdir=RL -T png -o graph.ospf.png graph.dot** (using the [*rankdir* trick Jeroen van Bemmel taught me](https://blog.ipspace.net/2021/11/bgp-multipath-netsim-tools.html#off-topic-nicer-looking-graphs)).
+I [created the network diagram](https://netsim-tools.readthedocs.io/en/latest/outputs/graph.html) with **netlab create -o graph** command followed by **‌dot -Grankdir=RL -T png -o graph.ospf.png graph.dot** (using the [*rankdir* trick Jeroen van Bemmel taught me](https://blog.ipspace.net/2021/11/bgp-multipath-netsim-tools.html#off-topic-nicer-looking-graphs)).
 
-Next step: starting the lab with **netlab up** and waiting a minute or so.
+Next step: starting the lab with **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** and waiting a minute or so.
 
 Now for the fun part: *netsim-tools* don't support MPLS/LDP or anycast yet. Time for some custom Jinja2 templates.
 
-I used **netlab create -o yaml** to get the final data structure  that would be passed to Ansible playbooks -- there's a **links** element in every lab node describing its links. Alternatively, you could look into Ansible inventory:
+I used **netlab create -o yaml** to get the final data structure   that would be passed to Ansible playbooks [in YAML format](https://netsim-tools.readthedocs.io/en/latest/outputs/yaml-or-json.html) -- there's a **links** element in every lab node describing its links. Alternatively, you could look into Ansible inventory created with **[netlab create](https://netsim-tools.readthedocs.io/en/latest/netlab/create.html)** command.
 
 {{<cc>}}Ansible inventory data for S1{{</cc>}}
 ```
@@ -83,7 +83,7 @@ interface {{ l.ifname }}
 {% endfor %}
 ```
 
-**netlab config** command allows you to configure lab devices with a custom Jinja2 template. **netlab config mpls-ldp.j2** was all I needed to configure MPLS in my lab.
+**[netlab config](https://netsim-tools.readthedocs.io/en/latest/netlab/config.html)** command allows you to configure lab devices with a custom Jinja2 template. **netlab config mpls-ldp.j2** was all I needed to configure MPLS in my lab.
 
 Configuring anycast was even easier -- add another loopback interface:
 
@@ -97,7 +97,7 @@ I had to be careful when running **netlab config**. The loopback interface shoul
 
 ### Smoke Test
 
-Let's inspect the routing tables first (hint: **netlab connect** is an easy way to connect to lab devices without bothering with their IP addresses or /etc/hosts file). 
+Let's inspect the routing tables first (hint: **[netlab connect](https://netsim-tools.readthedocs.io/en/latest/netlab/connect.html)** is an easy way to connect to lab devices without bothering with their IP addresses or /etc/hosts file). 
 
 Here's the routing table entry for 10.0.0.42 on L2:
 
