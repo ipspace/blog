@@ -4,7 +4,7 @@ date: 2021-11-17 07:24:00
 tags: [ MPLS, LDP ]
 series: netsim-tools
 series_tag: use
-lastmod: 2021-11-17 17:58:00
+lastmod: 2021-11-18 07:15:00
 ---
 I stumbled upon an article praising the beauties of SR-MPLS that claimed:
 
@@ -161,7 +161,7 @@ Label      Label      or Tunnel Id     Switched      interface
 
 And here's the corresponding LFIB entry from L2. Please note that the anycast nodes advertise the anycast prefix with *explicit-null* label because I configured **‌mpls ldp explicit-null**.
 
-{{<cc>}}Anycast MPLS entry on S1{{</cc>}}
+{{<cc>}}Anycast MPLS entry on L2{{</cc>}}
 ```
 l2#show mpls forwarding-table 10.0.0.42 detail
 Local      Outgoing   Prefix           Bytes Label   Outgoing   Next Hop
@@ -193,6 +193,24 @@ VRF info: (vrf in name/id, vrf out name/id)
     a2 (10.1.0.17) 1 msec
 ```
 
+After increasing the probe count (as suggested by _Anonymous_ in the comments), the trace reaches all three anycast servers:
+
+{{<cc>}}Increasing the probe count on traceroute from L1 to anycast IP{{</cc>}}
+```
+l1#traceroute 10.0.0.42 port 80 probe 10
+Type escape sequence to abort.
+Tracing the route to 10.0.0.42
+VRF info: (vrf in name/id, vrf out name/id)
+  1 s1 (10.1.0.2) [MPLS: Label 25 Exp 0] 1 msec 1 msec...
+  2 l3 (10.1.0.9) [MPLS: Label 26 Exp 0] 1 msec 1 msec
+    l2 (10.1.0.5) [MPLS: Label 25 Exp 0] 1 msec 1 msec...
+  3 a2 (10.1.0.17) 1 msec *
+    a3 (10.1.0.21) 1 msec *
+    a1 (10.1.0.13) 1 msec *
+    a3 (10.1.0.21) 1 msec *
+    a1 (10.1.0.13) 1 msec *
+```
+
 **Myth busted**. Traditional MPLS offers more than P2P virtual circuits. MPLS forwarding entries follow the IP routing table entries. While I like SR-MPLS (as opposed to its ugly cousin SRv6), you don't need it to run anycast services; LDP works just fine.
 
 ### The Curse of Duplicate Addresses
@@ -222,3 +240,6 @@ Yeah, I know I have to set up another lab to prove that ;) Mañana...
 
 2021-11-17
 : The _curse of duplicate addresses_ section has been added based on [feedback from Dmytro Shypovalov](https://twitter.com/routingcraft/status/1461007769511907331). Thanks a million for keeping me on the straight and narrow!
+
+2021-11-18
+: Added a _traceroute_ printout with larger probe count as suggested by an anonymous commenter.

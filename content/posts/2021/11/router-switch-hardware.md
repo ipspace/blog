@@ -12,7 +12,7 @@ Let's get the terminology straight. [Router](https://blog.ipspace.net/2010/07/br
 Rephrasing the question: is there a hardware difference between a box *marketed as a router* and another box *marketed as a layer-3 switch*?
 
 **TL&DR: Yes.**
-
+<!--more-->
 Doing packet forwarding at high speeds is expensive, and simpler forwarding pipeline results in cheaper (or faster) silicon. 
 
 If you don't need complex high-speed functionality (like a thousand interface output queues with per-flow classifier), you create a simpler ASIC and call the device a switch. If you thrive on overpriced products, you create as complex an ASIC as you can make it and call the device using it a router. EX9200 is an obvious counterexample, but then Juniper always looked like DEC of networking to me.
