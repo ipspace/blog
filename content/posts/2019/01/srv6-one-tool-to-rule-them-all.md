@@ -12,6 +12,12 @@ I got some interesting feedback from one of my readers on Segment Routing with I
 
 Stupid me replied "*SRv6 is NOT an overlay solution but a source routing solution.*"
 <!--more-->
+{{<note info>}}Want to get a second (or third or fourth) opinion? Check out:
+
+* _[SR(x)6 - Snake Oil Or Salvation?](https://blog.ipspace.net/2020/08/worth-reading-srx6-snake-oil.html)_
+* _[Do We Need Segment Routing?](https://blog.ipspace.net/2021/10/worth-reading-need-segment-routing.html)_
+{{</note>}}
+
 #### So where would I need source routing?
 
 Considering that, where would you need source routing (the ability to specify intermediate hops in the path)? For example, it doesn't work well with service chaining unless your VNFs support it
