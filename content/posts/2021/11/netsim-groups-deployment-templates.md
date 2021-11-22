@@ -8,7 +8,7 @@ Using custom templates to [test IP anycast with MPLS](https://blog.ipspace.net/2
 
 It started with the need to specify individual devices in **netlab config** command to create new loopback interfaces on anycast servers but not on any other device in the lab. Wouldn't it be nice to have a *group of devices* (similar to Ansible groups) that one could use in the **limit** parameter of **netlab config**?
 <!--more-->
-A few hours later[^1], I had them. *netsim-tools* now support [custom device groups](https://netsim-tools.readthedocs.io/en/latest/groups.html). Here's the updated version of my topology file:
+A few hours later[^1], I had them. *netsim-tools* now support [custom device groups](https://netsim-tools.readthedocs.io/en/latest/groups.html). Here's the updated version of my [lab topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf.yml):
 
 [^1]: Obviously it would be easier and faster to execute those commands by hand for the next five years, but this was more fun.
 
@@ -27,7 +27,7 @@ nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
 
-**netlab create** or **netlab up** automatically create additional groups in Ansible inventory, and I can use the **anycast** group to execute `netlab config ospf-anycast-loopback.js --limit anycast`.
+**netlab create** or **netlab up** automatically create additional groups in Ansible inventory, and I can use the **anycast** group to execute `netlab config ospf-anycast-loopback.j2 --limit anycast`.
 
 Next: wouldn't it be cool to deploy additional configuration templates during lab creation time? How about specifying them in the topology file? Like this...
 
