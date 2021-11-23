@@ -15,8 +15,8 @@ In a word[^13]: sanity, performance and responsiveness.
 
 Networking engineers love to build artisanal wheels, and routing protocol designers are no better. Every routing protocol has a bespoke implementation of the same three major functionalities:
 
-* **Deal with neighbor**: discover them, keep them happy, and figure out when one of them keeps quiet for too long.
-* **Deal with updates**: receive them, acknowledge them (when the protocol designer thought he could do better than TCP), send new information out, and retransmit it if needed (yet again, only for people who think TCP sucks)[^DV]
+* **Deal with neighbors**: discover them, keep them happy, and figure out when one of them keeps quiet for too long.
+* **Deal with updates**: receive them, acknowledge them (when the protocol designer thought he could [do better than TCP](https://blog.ipspace.net/2020/11/ospf-not-using-tcp.html)), send new information out, and retransmit it if needed (yet again, only for people who think TCP sucks)[^DV]
 * **Deal with changes**: Update internal topology information based on received updates, calculate new routing tables, push new stuff into routing table to compete with other stuff.
 
 [^DV]: The second half of this functionality might be tightly coupled with the next bullet, in which case we're talking about a *distance vector* protocol.
@@ -63,7 +63,7 @@ Modern operating systems like Linux can do better. Processes or threads can be i
 
 {{<note info>}}The benefits of being able to jump it at any time and get a small job done are even higher once we start talking about almost-real-time stuff like BFD.{{</note>}}
 
-Coming back to FRR: according to [kernel threads documentation](http://docs.frrouting.org/projects/dev-guide/en/latest/process-architecture.html#kernel-thread-wrapper), they went way beyond the _neighbors + updates_ separation -- just look at how many threads in the **show thread cpu** printout have BGP in their name.
+Coming back to FRR: according to [process architecture documentation](http://docs.frrouting.org/projects/dev-guide/en/latest/process-architecture.html), they split BGP functionality into three threads: an I/O thread, a keepalive processing thread, and a _rest of the stuff_ thread.
 
 ### Performance!
 
