@@ -29,6 +29,15 @@
                "pub": "2021-11-24T08:22:45",
                "ref": "866",
                "type": "comment"
+            },
+            {
+               "date": "24 November 2021 11:23",
+               "html": "<p>Imho, multi-threading where you divide your workload in a fixed number of threads doesn&#39;t count. That&#39;s relatively trivial. E.g. a hello thread, an update thread and a route-computation thread. That&#39;s still O(1) scalability. To be able to brag, your code should be able to used a large number of cores on your route-processor.</p>\n\n<p>That being said, for link-state IGPs, it does not make sense to go beyond a fixed number of threads. E.g. as we mentioned, the hello, the update and the spf thread. Maybe a route-installation thread too. But that&#39;s about it. You don&#39;t need more.</p>\n\n<p>BGP is a whole different story. That&#39;s where the challenge is.</p>\n\n<p>Another thing to consider is how router OS&#39;s deal with multiple VRFs. Suppose you have a 1000 VRFs on a PE, and each VRF runs a routing protocol with a CE. What are you going to do? Spawn a 1000 processes? That doesn&#39;t scale really. Have one process per routing protocol, with 1 thread per VRF? Or are you going to use worker-threads? These are the harder questions.</p>\n\n<p>I have no idea how my current employer&#39;s BGP implementations are. Sorry. But I can tell you that my previous employer has a BGP implementation that does do &quot;scale-out multi-threading&quot; in BGP. Their CPM (route-processor) has 10 cores. Their BGP will use 6 cores for route-generation. That&#39;s very nice when you are a route-reflector. Alas other parts of their BGP code are still single threaded. Far from perfect.</p>\n\n<p>I am surprised about the lack of true improvement BGP implementations have made in the last 20 years. I mean architectual and performance wise. A lot of work has gone into the protocol (writing RFCs). But not in the implementations themselves, it seems. I guess it is easer to write drafts than to write code. As far as I know, there is no BGP implementation that does everything multi-threaded at scale. Reading from sockets, doing ingress policy, bestpath-computation, route-installation, egress-policy, generating output updates. It should be possible to do all of that on multiple cores, in every stage. Some stages require locking, or must be single-threaded. E.g. installing new routes in the Adj-RIB-In. But other things (policy, bestpath computation, rib-install, update-generation) you can do on many cores in parallel.</p>\n\n<p>I wonder why nobody has attempted to write such a &quot;perfect&quot; implementation yet. And I wonder why nobody has asked for one. Maybe current implementations are deemed &quot;good enough&quot;?</p>\n",
+               "id": "874",
+               "name": " Henk",
+               "pub": "2021-11-24T23:23:55",
+               "ref": "870",
+               "type": "comment"
             }
          ],
          "date": "23 November 2021 08:31",
