@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "24 November 2021 08:21",
+               "html": "<p>Yeah, that&#39;s another huge can of worms. Unless you can do policing per interface you&#39;re always open to a nasty DoS attack.</p>\n\n<p>Years ago it was trivial to kill box-wide ARP handling on a GRS - policer would kick in (protecting the CPU), but nobody would get their ARP replies because most requests were dropped, eventually resulting in loss of service.</p>\n",
+               "id": "869",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-24T08:21:05",
+               "ref": "865",
+               "type": "comment"
+            }
+         ],
          "date": "23 November 2021 08:02",
          "html": "<p>Junos used to spawn a dedicated thread only if the precision-timers knob (sub-15ms hold time) was applied, now I think it is baked in by default.  Design sanity is good but I think it&#39;s still a trivial job to choke keepalives..on any vendor platform not properly protected.  If there occurs a mega-failure someday it will probably be related to this.  Even the processes meant to protect systems (policers) can also smother it.</p>\n",
          "id": "865",
@@ -9,6 +20,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "24 November 2021 08:22",
+               "html": "<p>Thanks for the feedback - will add to the article. Would you happen to be aware of scale-out implementations (example: multiple threads computing updates in parallel)? It would be nice to add a few examples in that category.</p>\n",
+               "id": "870",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-24T08:22:45",
+               "ref": "866",
+               "type": "comment"
+            }
+         ],
          "date": "23 November 2021 08:31",
          "html": "<p>Ivan - all modern routing protocols implementations are multi-threaded, with a minimum separation of adj handeling, route calculations and update generation. Note - writing multi-threaded code for complex tasks is a non trivial exercise (you could search for thread safety and similar artifacts and what happens when not implemented correctly). Moving to a multi-threaded code in early 2010s resulted in a multi-release (year) effort and 100s of related bugs all around.\nFYI non preemptive is usually called &ldquo;run to completion&rdquo;</p>\n",
          "id": "866",
