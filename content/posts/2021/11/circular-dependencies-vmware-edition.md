@@ -29,6 +29,13 @@ For those of you who still don't appreciate how ridiculous the whole idea is: im
 
 Now don't get me wrong. If someone has a desperate urge to participate in Red Bull Flying Contest, I'm all for it, but describing the resulting Hero's Journey as part of official product documentation is a bit over the top. I can only hope there was a ginormous purchase order behind this requirement; bravado for bravado's sake never made much sense to me.
 
-Careful readers might point out that Nutanix uses a similar trick: a VM exposing an iSCSI or NFS target is running on top of a hypervisor using that same target. There's just a slight difference between the two: Nutanix comes as a prepackaged solution, not as a loose collection of hard-to-fit parts and IKEA-like instructions.
+Careful readers might point out that Nutanix uses a similar trick: a VM exposing an iSCSI or NFS target is running on top of a hypervisor using that same target[^NCD]. There's just a slight difference between the two: Nutanix comes as a prepackaged solution, not as a loose collection of hard-to-fit parts and IKEA-like instructions.
+
+[^NCD]: Although, as Erik Auerswald [explained in his comment](https://blog.ipspace.net/2021/11/circular-dependencies-vmware-edition.html#878), that does not create a circular dependency as the Nutanix VM runs off local storage in the ESXi host, and only then offers NFS/iSCSI target as an additional data store for other VMs.
 
 Finally, let's assume VMware does care enough about customers who want to deploy NSX-T on a 4-node cluster. The only sane way to meet that requirement would be to create a prepackaged one-click solution (aka "automate it", but with proper rollbacks when an error is encountered), not a Rube Goldberg machine. Come on, VMware, we know you CAN do better than that.
+
+### Release History
+
+2021-11-25
+: * Footnote: Nutanix does not create circular dependencies (based on the comment by Erik Auerswald).
