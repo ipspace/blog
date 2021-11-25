@@ -16,7 +16,7 @@ Fifteen minutes later[^1d] I had the lab up and running and could verify that BG
 
 ## Create Topology File
 
-The mandatory first step when using *netsim-tools* to create your virtual lab[^install]: create a YAML file describing the lab topology.
+The mandatory first step when using *netsim-tools* to create your virtual lab[^install]: create a [YAML file describing the lab topology](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/baseline.yml).
 
 [^install]: Assuming you [already installed everything you need](https://netsim-tools.readthedocs.io/en/latest/install.html), including [Vagrant images or Docker containers](https://netsim-tools.readthedocs.io/en/latest/install.html#building-the-lab-environment).
 
