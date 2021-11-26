@@ -1,7 +1,7 @@
 ---
-title: "Correction: Multi-Threaded Routing Daemons"
+title: "Multi-Threaded Routing Daemons"
 date: 2021-11-23 07:46:00
-lastmod: 2021-11-24 11:35:00
+lastmod: 2021-11-26 15:35:00
 tags: [ IP routing ]
 ---
 When I wrote the _[Why Does Internet Keep Breaking?](https://blog.ipspace.net/2021/11/internet-keeps-breaking.html)_ blog post a few weeks ago, I claimed that FRR still uses single-threaded routing daemons (after a too-cursory read of their documentation).
@@ -72,19 +72,36 @@ Other BGP implementations use even more threads, see for example  [IOS XR BGP th
 
 ### Performance!
 
-I mentioned that you could also use threads to increase performance when you happen to have too many CPU cores. For example, you could have multiple threads processing incoming BGP updates in parallel, and another bunch of threads building outgoing updates. I'm positive there would be a noticeable benefit in environments with dozens or hundreds of BGP neighbors[^THARD], and it seems [RustyBGP did get significant performance improvement](https://twitter.com/plajjan/status/1255267401639383042) by implementing per-neighbor threading model.
+I mentioned that you could use threads to increase performance when you happen to have too many CPU cores. For example, you could have multiple threads processing incoming BGP updates in parallel, and another bunch of threads building outgoing updates.
 
-[^THARD]: I'm also positive that anyone taking a single-threaded BGP daemon and implementing this functionality on top of that code would get some really nice bugs on the first try.
+Whenever you want to increase the performance of a software solution with a scale-out threading architecture you have to split the problem you're facing into smaller (hopefully independent[^LOCK]) *shards*[^THARD]. There are at least three solutions real-life BGP routing daemons use[^BGPONLY]:
 
-However, assuming your code is not needlessly stuck waiting for I/O operations[^FIXCODE], parallel threads increase performance only when you can assign more CPU cores to the problem. While BGP route reflectors or BGP route servers running as VMs could experience increased performance, most hardware networking devices are still built with the cheapest reasonable CPU the vendor can buy. Those CPUs still don't have more than a few cores or hardware threads[^NOTONE], so why bother building a scale-out multi-threaded architecture if you don't have tons of idle CPU cores?
+[^LOCK]: If the shards you're working on aren't independent enough, you'll spend a lot of time locking the data structures and waiting for other threads to unlock them, effectively wasting CPU cycles on synchronization activities.
 
-[^FIXCODE]: ... in which case you REALLY SHOULD use parallel threads, or a [better event loop](https://en.wikipedia.org/wiki/Event_loop), or rearchitect your code
+[^BGPONLY]: We'll focus on BGP; most other routing protocols are trivial (performance-wise) compared to what we're throwing at BGP. For example, you don't have to build outgoing updates in OSPF or IS-IS, all you have to do is to flood what came in.
 
-[^NOTONE]: Contrary to how some people managed to read this paragraph, I never said _vendors are shipping single-core CPUs in 2021_. I'm also sad that I have to point this out.
+[^THARD]: That tends to be a really hard problem unless you started with a routing protocol specifications and an architecture that considered scalability. I'm also positive that anyone taking a monolithic routing daemon and implementing multi-threading on top of that code would get some really nice bugs on the first try.
 
-Junos seems to be a notable exception. Release 19.4R1 added support for RIB sharing -- running multiple threads on the BGP RIB to build updates. If you want to know more, you'll find tons of details in the _[Deploying BGP RIB Sharding and Update Threading](https://www.juniper.net/documentation/en_US/day-one-books/DO_BGPSharding.pdf)_ Day One book -- chapter 1 does a great job of explaining the concepts.
+* **Per-neighbor thread** handling all neighbor-related I/O operations. [RustyBGP took that approach](https://twitter.com/plajjan/status/1255267401639383042) resulting in [phenomenal performance](https://elegantnetwork.github.io/posts/bgp-perf5-1000-internet-neighbors/) in an environment with many neighbors (as compared to other open-source BGP stacks). [IOS XR Distributed BGP](https://www.cisco.com/c/en/us/td/docs/routers/xr12000/software/xr12k_r4-1/routing/configuration/guide/routing_cg41xr12k_chapter1.html#con_1721889) goes a bit further, performing as much work as feasible (down to MED comparison) within the speaker threads.
+* **Per address family thread**. BGP tables of individual address families are totally independent from each other apart from next-hop references between VPN address families (VPNv4/VPNv6/EVPN) and IPv4 unicast address family. Having a thread per address family is thus a (conceptual) no-brainer[^AF]. Cisco IOS XR uses this approach in their [Distributed BGP](https://www.cisco.com/c/en/us/td/docs/routers/xr12000/software/xr12k_r4-1/routing/configuration/guide/routing_cg41xr12k_chapter1.html#con_1721889) implementation.
+* **RIB sharding**. Numerous threads are run in parallel on smaller chunks of BGP RIB. Junos release 19.4R1 introduced RIB sharing together with *update threading* (packing outgoing BGP updates in parallel threads). To learn more, read the *[Deploying BGP RIB Sharding and Update Threading](https://www.juniper.net/documentation/en_US/day-one-books/DO_BGPSharding.pdf)* Day One book -- chapter 1 does a great job of explaining the concepts.
+
+[^AF]: There's probably a large gap between theory and practice.
+
+Interestingly, it looks like the scale-out BGP daemons were implemented primarily in high-end routers used to run the Internet core, but not in data center switches[^BGP].
+
+There might be no need for high BGP performance in data center switches considering the forwarding table sizes in merchant silicon ASICs... although I do wonder how long it takes to bring up a new BGP session in large-scale EVPN deployments considering how many vendors [insist on running BGP sessions with EVPN address family between loopback interfaces](https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html).
+
+Another reason could be the underlying hardware -- I have a feeling that the data center switches still get the cheapest reasonable CPU the vendor can buy, in which case it would make no sense to optimize a routing daemon for many-core performance.
+
+[^BGP]: ... even though some data center pundits think BGP is the answer regardless of what the question is.
+
+[^EVPN]: I wonder 
 
 ### Revision History
+
+2021-11-26
+: Totally rewrote the *Performance* section
 
 2021-11-24
 : * Added a pointer to IOS XR threads (HT: [Kristian Larsson](https://twitter.com/plajjan/status/1463455078900240386))
