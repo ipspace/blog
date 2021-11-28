@@ -1,6 +1,6 @@
 ---
 title: "Optimal BGP Path Selection with BGP Additional Paths"
-date: 2021-12-03 07:40:00
+date: 2021-12-02 07:40:00
 tags: [ BGP ]
 series: netsim-tools
 series_tag: use
