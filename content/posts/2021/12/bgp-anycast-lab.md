@@ -1,0 +1,214 @@
+---
+title: "Building a BGP Anycast Lab"
+date: 2021-12-06 07:30:00
+tags: [ BGP ]
+series: netsim-tools
+series_tag: use
+pre_scroll: True
+---
+The _[Anycast Works Just Fine with MPLS/LDP](https://blog.ipspace.net/2021/11/anycast-mpls.html)_ blog post generated so much interest that I decided to check a few similar things, including running BGP-based anycast over a BGP-free core, and using BGP-LU.
+
+Tweaking the [existing lab](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf.yml) to use BGP instead of OSPF to advertise the anycast prefix seemed like a piece of cake -- just add BGP configuration module and BGP AS membership.
+
+{{<note>}}Hint: this is a long post, but don't give up. There's an interesting detail at the very end.{{</note>}}
+<!--more-->
+{{<cc>}}Initial topology file{{</cc>}}
+```
+module: [ ospf, bgp ]
+
+bgp:
+  as_list:
+    65000:
+      members: [ l1, l2, l3, s1 ]
+      rr: [ s1 ]
+    65101:
+      members: [ a1,a2,a3 ]
+
+nodes: 
+  [ l1, l2, l3, s1, a1, a2, a3 ]
+
+links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
+```
+
+Here are the BGP sessions I wanted to see in the lab:
+
+{{<figure src="/2021/12/bgp-anycast-sessions.png" caption="BGP sessions in the BGP anycast lab">}}
+
+{{<note>}}I would also get a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment (more about that later).{{</note>}}
+
+I knew I would have to enable *[BGP Additional Paths](https://blog.ipspace.net/2021/12/bgp-multipath-addpath.html)* in AS 65000, and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/topology.yml)):
+
+{{<cc>}}Defining _network_ and _anycast_ groups{{</cc>}}
+```
+groups:
+  network: 
+    members: [ l1, l2, l3, s1  ]
+    config: [ bgp-addpath.j2 ]
+  anycast: 
+    members: [ a1, a2, a3 ]
+    config: [ bgp-anycast-loopback.j2 ]
+```
+
+The "only" problem with this solution is duplicate data (and you know [I hate that](https://www.ipspace.net/kb/DataModels/)): I'm defining the same groups twice. Wouldn't it be great if the BGP configuration module created groups based on AS membership (as65000 and as65101 in our case).
+
+Sure thing -- *netsim-tools* release 1.0.2 includes [auto-generated BGP groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#automatic-bgp-groups) that can also be used to set any other group attribute, simplifying my group definition. I have to define the custom deployment template, and the group members are added by the BGP topology transformation module based on **bgp.as_list** definition.
+
+{{<cc>}}Setting custom deployment templates on auto-generated BGP groups{{</cc>}}
+```
+groups:
+  as65000: 
+    config: [ bgp-addpath.j2 ]
+  as65101: 
+    config: [ bgp-anycast-loopback.j2 ]
+```
+
+Next: I'd like to have an anycast attribute somewhere in the topology file instead of a hard-coded anycast prefix in the configuration template. **bgp.anycast** node data seems like a perfect choice, but I'd have to set it on three nodes, replacing my simple list of nodes with a more complex dictionary containing (yet again) duplicate data:
+
+{{<cc>}}Node list is converted into a dictionary to enable node attributes{{</cc>}}
+```
+nodes: 
+  l1:
+  l2:
+  l3:
+  s1:
+  a1:
+    bgp.anycast: 10.42.42.42/32
+  a2:
+    bgp.anycast: 10.42.42.42/32
+  a3:
+    bgp.anycast: 10.42.42.42/32
+```
+
+Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? A few hours later I could define [node data in groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#setting-node-data-in-groups), simplifying my lab topology back to:
+
+{{<cc>}}**bgp.anycast** attribute is set on all nodes in AS 65101{{</cc>}}
+```
+groups:
+  as65000: 
+    config: [ bgp-addpath.j2 ]
+  as65101: 
+    config: [ bgp-anycast-loopback.j2 ]
+    node_data:
+      bgp.anycast: 10.42.42.42/32
+
+nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
+```
+
+Here's the [Jinja2 template](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/bgp-anycast-loopback.j2) that uses **bgp.anycast** attribute to configure another loopback interface and advertise it into BGP:
+
+{{<cc>}}Creating a new loopback interface based on **bgp.anycast** node attribute{{</cc>}}
+```
+{% if bgp is defined and bgp.anycast is defined %}
+interface loopback 42
+ ip address {{ bgp.anycast|ipaddr('address') }} {{ bgp.anycast|ipaddr('netmask') }}
+!
+router bgp {{ bgp.as }}
+ address-family ipv4
+  network {{ bgp.anycast|ipaddr('address') }} mask {{ bgp.anycast|ipaddr('netmask') }}
+{% endif %}
+```
+
+Finally, I modified the IBGP Add Path template to enable bidirectional *Add Path* functionality within the autonomous system -- we need that to allow the edge routers to send multiple paths to the route reflectors:
+
+{{<cc>}}Simplified IBGP Add Path template{{</cc>}}
+```
+router bgp {{ bgp.as }}
+ address-family ipv4 unicast
+  bgp additional-paths select all
+  bgp additional-paths send receive
+  maximum-paths 16
+  maximum-paths ibgp 16
+{% for n in bgp.neighbors if n.type == 'ibgp' %}
+  neighbor {{ n.ipv4 }} advertise additional-paths all
+{% endfor %}
+```
+
+### Smoke Test
+
+I started the lab with **netlab up**, waited for a minute for BGP to wake up[^BW] and inspected the BGP table on S1 (the spine node):
+
+{{<cc>}}BGP paths toward the anycast prefix on the route reflector (S1){{</cc>}}
+```
+s1#show ip bgp 10.42.42.42
+BGP routing table entry for 10.42.42.42/32, version 10
+Paths: (3 available, best #2, table default)
+Multipath: eBGP iBGP
+  Path not advertised to any peer
+  Refresh Epoch 1
+  65101, (Received from a RR-client)
+    10.0.0.2 (metric 2) from 10.0.0.2 (10.0.0.2)
+      Origin IGP, metric 0, localpref 100, valid, internal
+      rx pathid: 0x1, tx pathid: 0
+  Path advertised to update-groups:
+     1
+  Refresh Epoch 1
+  65101, (Received from a RR-client)
+    10.0.0.2 (metric 2) from 10.0.0.2 (10.0.0.2)
+      Origin IGP, metric 0, localpref 100, valid, internal, multipath, best
+      rx pathid: 0x0, tx pathid: 0x0
+  Path advertised to update-groups:
+     1
+  Refresh Epoch 1
+  65101, (Received from a RR-client)
+    10.0.0.3 (metric 2) from 10.0.0.3 (10.0.0.3)
+      Origin IGP, metric 0, localpref 100, valid, internal, multipath(oldest), all
+      rx pathid: 0x0, tx pathid: 0x1
+```
+
+Wow, almost there. There are three paths in the BGP table on S1 (the route reflector), the only glitch is that one of the paths advertised by L2 is not advertised to route reflector clients (like L1). No wonder, it's identical to the other path advertised by L2 -- we have to turn off *next-hop-self* on AS edge routers.
+
+Turning off *next-hop-self* (the default setting) requires quite a bit of [attribute haggling](https://netsim-tools.readthedocs.io/en/latest/module/bgp.html#advanced-global-configuration-parameters) within *netsim-tools*:
+
+* Set **bgp.next_hop_self** to *false*;
+* Set **bgp.ebgp_role** to *stub* (default: *external*) to make sure the external subnets are included in the OSPF process;
+* Set **bgp.advertise_roles** to an empty list, otherwise we'd get all the external subnets in the BGP table.
+
+{{<cc>}}Changing global BGP attributes in the topology file to disable **next-hop-self** processing on IBGP sessions{{</cc>}}
+```
+bgp:
+  ebgp_role: stub
+  advertise_roles: []
+  next_hop_self: false
+```
+
+I could log into the individual devices (L2 and L3) and reconfigure them, but it's more convenient (and maybe even faster) to destroy the whole lab with **netlab down** and bring a new lab up with **netlab up**, enjoying a sip of coffee in the meantime.
+
+Here are the results of disabling **neighbor next-hop-self** on the AS edge routers:
+
+{{<cc>}}L2 is still changing the BGP next hop, even though **next-hop-self** has not been configured{{</cc>}}
+```
+s1#sh ip bgp 10.42.42.42
+BGP routing table entry for 10.42.42.42/32, version 11
+Paths: (3 available, best #3, table default)
+Multipath: eBGP iBGP
+  Path advertised to update-groups:
+     1
+  Refresh Epoch 1
+  65101, (Received from a RR-client)
+    10.1.0.21 (metric 2) from 10.0.0.3 (10.0.0.3)
+      Origin IGP, metric 0, localpref 100, valid, internal, multipath(oldest), all
+      rx pathid: 0x0, tx pathid: 0x1
+  Path not advertised to any peer
+  Refresh Epoch 1
+  65101, (Received from a RR-client)
+    10.0.0.2 (metric 2) from 10.0.0.2 (10.0.0.2)
+      Origin IGP, metric 0, localpref 100, valid, internal
+      rx pathid: 0x1, tx pathid: 0
+  Path advertised to update-groups:
+     1
+  Refresh Epoch 1
+  65101, (Received from a RR-client)
+    10.0.0.2 (metric 2) from 10.0.0.2 (10.0.0.2)
+      Origin IGP, metric 0, localpref 100, valid, internal, multipath, best
+      rx pathid: 0x0, tx pathid: 0x0
+```
+
+That's totally weird: L3 is advertising the anycast prefix with the original next hop (A3), L2 is advertising two paths to the anycast prefix (toward A1 and A2), but changes the next hop to itself even though *that was not configured*. Changing the BGP next hop behavior bought us nothing.
+
+Here's what's going on:
+
+* L2 has two equal-cost paths to the anycast prefix;
+* It tries to do its best, changing the next hop to itself ([more details](https://blog.ipspace.net/2011/08/bgp-next-hop-processing.html#bgp-next-hop-is-not-changed-on-ibgp-sessions)) to make sure it will get all the traffic for the anycast prefix and spread it across multiple paths;
+* Changing the next hop is unnecessary as we've configured *Additional Paths*, but it looks like those two bits of BGP code don't work together in the Cisco IOS release I was running. I retried with IOS XE 16.06 and got the same results.
+
+[^BW]: I have no idea why BGP waits a minute before selecting the best paths after it's started. It drives me mad and I can't find a knob to turn to speed it up.
