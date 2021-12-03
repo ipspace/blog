@@ -36,7 +36,7 @@ Here are the BGP sessions I wanted to see in the lab:
 
 {{<note>}}I would also get a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment (more about that later).{{</note>}}
 
-I knew I would have to enable *[BGP Additional Paths](https://blog.ipspace.net/2021/12/bgp-multipath-addpath.html)* in AS 65000, and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/topology.yml)):
+I knew I would have to enable *[BGP Additional Paths](https://blog.ipspace.net/2021/12/bgp-multipath-addpath.html)* in AS 65000 to ensure L1 gets multiple paths toward the anycast prefix (we'll need that for the MPLS part), and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/topology.yml)):
 
 {{<cc>}}Defining _network_ and _anycast_ groups{{</cc>}}
 ```
@@ -108,7 +108,7 @@ router bgp {{ bgp.as }}
 {% endif %}
 ```
 
-Finally, I modified the IBGP Add Path template to enable bidirectional *Add Path* functionality within the autonomous system -- we need that to allow the edge routers to send multiple paths to the route reflectors:
+Finally, I modified the IBGP Add Path template to enable bidirectional *Add Path* functionality within the autonomous system -- we need that to allow the edge routers to send multiple paths to the route reflectors, hoping S1 and L1 will get three BGP paths to the anycast prefix.
 
 {{<cc>}}Simplified IBGP Add Path template{{</cc>}}
 ```
@@ -155,7 +155,31 @@ Multipath: eBGP iBGP
       rx pathid: 0x0, tx pathid: 0x1
 ```
 
-Wow, almost there. There are three paths in the BGP table on S1 (the route reflector), the only glitch is that one of the paths advertised by L2 is not advertised to route reflector clients (like L1). No wonder, it's identical to the other path advertised by L2 -- we have to turn off *next-hop-self* on AS edge routers.
+Wow, almost there. There are three paths in the BGP table on S1 (the route reflector), the only glitch is that one of the paths advertised by L2 is not advertised to route reflector clients (like L1). No wonder, it's identical to the other path advertised by L2. Even worse, it doesn't get installed in the routing table either.
+
+{{<cc>}}Routing table for the anycast prefix on the spine node  (S1){{</cc>}}
+```
+s1#show ip route 10.42.42.42
+Routing entry for 10.42.42.42/32
+  Known via "bgp 65000", distance 200, metric 0
+  Tag 65101, type internal
+  Last update from 10.0.0.2 00:09:17 ago
+  Routing Descriptor Blocks:
+  * 10.1.0.21, from 10.0.0.3, 00:09:17 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 65101
+      MPLS label: none
+    10.0.0.2, from 10.0.0.2, 00:09:17 ago
+      Route metric is 0, traffic share count is 1
+      AS Hops 1
+      Route tag 65101
+      MPLS label: none
+```
+
+The correct solution to this challenge is to use the [DMZ Link Bandwidth BGP community](https://blog.ipspace.net/2021/06/ucmp-bgp-link-bandwidth.html), but let's try to fix it by turning off the *next-hop-self* on AS edge routers.
+
+### Tweaking the BGP Next Hops
 
 Turning off *next-hop-self* (the default setting) requires quite a bit of [attribute haggling](https://netsim-tools.readthedocs.io/en/latest/module/bgp.html#advanced-global-configuration-parameters) within *netsim-tools*:
 
@@ -173,7 +197,7 @@ bgp:
 
 I could log into the individual devices (L2 and L3) and reconfigure them, but it's more convenient (and maybe even faster) to destroy the whole lab with **netlab down** and bring a new lab up with **netlab up**, enjoying a sip of coffee in the meantime.
 
-Here are the results of disabling **neighbor next-hop-self** on the AS edge routers:
+Here's the BGP table on the route reflector (S1) after the changes to the lab topology file removed the **neighbor next-hop-self** configuration on the AS edge routers:
 
 {{<cc>}}L2 is still changing the BGP next hop, even though **next-hop-self** has not been configured{{</cc>}}
 ```
@@ -208,7 +232,9 @@ That's totally weird: L3 is advertising the anycast prefix with the original nex
 Here's what's going on:
 
 * L2 has two equal-cost paths to the anycast prefix;
-* It tries to do its best, changing the next hop to itself ([more details](https://blog.ipspace.net/2011/08/bgp-next-hop-processing.html#bgp-next-hop-is-not-changed-on-ibgp-sessions)) to make sure it will get all the traffic for the anycast prefix and spread it across multiple paths;
+* It tries to do its best, changing the next hop to itself ([more details](https://blog.ipspace.net/2011/08/bgp-next-hop-processing.html#bgp-next-hop-is-not-changed-on-ibgp-sessions)) to make sure it will get the traffic for the anycast prefix and spread it across multiple egress paths;
 * Changing the next hop is unnecessary as we've configured *Additional Paths*, but it looks like those two bits of BGP code don't work together in the Cisco IOS release I was running. I retried with IOS XE 16.06 and got the same results.
+
+Next time: fixing the problem the right way with *DMZ Link Bandwidth*.
 
 [^BW]: I have no idea why BGP waits a minute before selecting the best paths after it's started. It drives me mad and I can't find a knob to turn to speed it up.
