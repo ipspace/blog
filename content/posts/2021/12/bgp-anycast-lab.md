@@ -6,12 +6,35 @@ series: netsim-tools
 series_tag: use
 pre_scroll: True
 ---
-The _[Anycast Works Just Fine with MPLS/LDP](https://blog.ipspace.net/2021/11/anycast-mpls.html)_ blog post generated so much interest that I decided to check a few similar things, including running BGP-based anycast over a BGP-free core, and using BGP-LU.
+The _[Anycast Works Just Fine with MPLS/LDP](https://blog.ipspace.net/2021/11/anycast-mpls.html)_ blog post generated so much interest that I decided to check a few similar things, including running BGP-based anycast over a BGP-free core, and using BGP Labeled Unicast (BGP-LU).
 
-Tweaking the [existing lab](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf.yml) to use BGP instead of OSPF to advertise the anycast prefix seemed like a piece of cake -- just add BGP configuration module and BGP AS membership.
+### The Big Picture
 
-{{<note>}}Hint: this is a long post, but don't give up. There's an interesting detail at the very end.{{</note>}}
+We'll use the same physical topology we used in the [OSPF+MPLS anycast example](https://blog.ipspace.net/2021/11/anycast-mpls.html): a leaf-and-spine fabric (admittedly with a single spine) with three anycast servers advertising 10.42.42.42/32 attached to two of the leafs:
 <!--more-->
+{{<figure src="/2021/12/anycast-lab.jpg" caption="Lab topology">}}
+
+We'll use BGP as the endpoint reachability protocol and OSPF as the core IGP:
+
+* Switches run OSPF on the core links and belong to BGP AS 65000
+* Spine switches are also BGP route reflectors
+* Leaf switches are route reflector clients
+* IBGP sessions follow the physical fabric topology
+* Anycast servers run only BGP. They are in AS 65101
+* There are EBGP sessions between anycast servers and adjacent switches. There are no IBGP sessions between the anycast servers.
+
+{{<figure src="/2021/12/bgp-anycast-sessions.png" caption="BGP sessions in the BGP anycast lab">}}
+
+**Ideal end result**: three equal-cost paths toward the anycast prefix on L1 and S2.
+
+**Acceptable end result**: three equal-cost paths toward the anycast prefix on S1. All traffic from L1 has to go through S1 anyway (although that won't be the case once we turn on MPLS).
+
+**Backup plan**: 2-to-1 traffic split between L2 and L3 on S1 (and hopefully on L1).
+
+### Building the Lab Topology File
+
+We'll start with the [lab topology file we used for the OSPF+MPLS  lab](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf.yml), add BGP module, and describe the autonomous systems in the lab with **bgp.as_list** dictionary:
+
 {{<cc>}}Initial topology file{{</cc>}}
 ```
 module: [ ospf, bgp ]
@@ -30,11 +53,7 @@ nodes:
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
 
-Here are the BGP sessions I wanted to see in the lab:
-
-{{<figure src="/2021/12/bgp-anycast-sessions.png" caption="BGP sessions in the BGP anycast lab">}}
-
-{{<note>}}I would also get a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment (more about that later).{{</note>}}
+{{<note>}}The above topology file would result in a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment (more about that later).{{</note>}}
 
 I knew I would have to enable *[BGP Additional Paths](https://blog.ipspace.net/2021/12/bgp-multipath-addpath.html)* in AS 65000 to ensure L1 gets multiple paths toward the anycast prefix (we'll need that for the MPLS part), and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/topology.yml)):
 
@@ -177,7 +196,7 @@ Routing entry for 10.42.42.42/32
       MPLS label: none
 ```
 
-The correct solution to this challenge is to use the [DMZ Link Bandwidth BGP community](https://blog.ipspace.net/2021/06/ucmp-bgp-link-bandwidth.html), but let's try to fix it by turning off the *next-hop-self* on AS edge routers.
+The correct solution to this challenge is to use the [DMZ Link Bandwidth BGP community](https://blog.ipspace.net/2021/06/ucmp-bgp-link-bandwidth.html), resulting in our backup plan. Trying to reach the original goal, let's try to fix the problem by turning off the *next-hop-self* on AS edge routers.
 
 ### Tweaking the BGP Next Hops
 
