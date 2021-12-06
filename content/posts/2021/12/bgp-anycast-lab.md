@@ -17,15 +17,17 @@ We'll use the same physical topology we used in the [OSPF+MPLS anycast example](
 We'll use BGP as the endpoint reachability protocol and OSPF as the core IGP:
 
 * Switches run OSPF on the core links and belong to BGP AS 65000
-* Spine switches are also BGP route reflectors
+* Spine switch is also a BGP route reflectors[^RRMore]
 * Leaf switches are route reflector clients
 * IBGP sessions follow the physical fabric topology
 * Anycast servers run only BGP. They are in AS 65101
 * There are EBGP sessions between anycast servers and adjacent switches. There are no IBGP sessions between the anycast servers.
 
+[^RRMore]: In a real network you'd have more than one spine switch, and they would all be route reflectors for redundancy reasons.
+
 {{<figure src="/2021/12/bgp-anycast-sessions.png" caption="BGP sessions in the BGP anycast lab">}}
 
-**Ideal end result**: three equal-cost paths toward the anycast prefix on L1 and S2.
+**Ideal end result**: three equal-cost paths toward the anycast prefix on L1 and S1.
 
 **Acceptable end result**: three equal-cost paths toward the anycast prefix on S1. All traffic from L1 has to go through S1 anyway (although that won't be the case once we turn on MPLS).
 
@@ -184,7 +186,7 @@ Routing entry for 10.42.42.42/32
   Tag 65101, type internal
   Last update from 10.0.0.2 00:09:17 ago
   Routing Descriptor Blocks:
-  * 10.1.0.21, from 10.0.0.3, 00:09:17 ago
+  * 10.0.0.3, from 10.0.0.3, 00:09:17 ago
       Route metric is 0, traffic share count is 1
       AS Hops 1
       Route tag 65101
