@@ -35,7 +35,7 @@ We'll use BGP as the endpoint reachability protocol and OSPF as the core IGP:
 
 ### Building the Lab Topology File
 
-We'll start with the [lab topology file we used for the OSPF+MPLS  lab](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf.yml), add BGP module, and describe the autonomous systems in the lab with **bgp.as_list** dictionary:
+We'll start with the [lab topology file we used for the OSPF+MPLS lab](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf.yml), add BGP module, and describe the autonomous systems in the lab with **bgp.as_list** dictionary:
 
 {{<cc>}}Initial topology file{{</cc>}}
 ```
@@ -100,7 +100,7 @@ nodes:
     bgp.anycast: 10.42.42.42/32
 ```
 
-Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? A few hours later I could define [node data in groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#setting-node-data-in-groups), simplifying my lab topology back to:
+Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? A few hours later I could define [node data in groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#setting-node-data-in-groups), simplifying my lab topology back to ([final topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf%2Bbgp.yml)):
 
 {{<cc>}}**bgp.anycast** attribute is set on all nodes in AS 65101{{</cc>}}
 ```
@@ -207,6 +207,8 @@ Turning off *next-hop-self* (the default setting) requires quite a bit of [attri
 * Set **bgp.next_hop_self** to *false*;
 * Set **bgp.ebgp_role** to *stub* (default: *external*) to make sure the external subnets are included in the OSPF process;
 * Set **bgp.advertise_roles** to an empty list, otherwise we'd get all the external subnets in the BGP table.
+
+The [modified topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf%2Bbgp-external-next-hop.yml) is [available on GitHub](https://github.com/ipspace/netsim-examples/tree/master/routing/anycast-mpls).
 
 {{<cc>}}Changing global BGP attributes in the topology file to disable **next-hop-self** processing on IBGP sessions{{</cc>}}
 ```
