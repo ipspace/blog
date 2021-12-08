@@ -1,6 +1,6 @@
 ---
 title: "Fast Failover: Marketing and Reality"
-date: 2021-12-17 07:52:00
+date: 2021-12-16 07:52:00
 tags: [ networking fundamentals ]
 ---
 I wanted to cover fast failover (at least the basics and Prefix Independent Convergence -- PIC) in another live session of _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar in 2021, but unfortunately I ran out of time.
