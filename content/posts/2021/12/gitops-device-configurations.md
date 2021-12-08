@@ -16,6 +16,8 @@ There are a few tricks you can use in that case (for more details, follow the li
 
 **Check the command syntax**. Suppose you limit the changes an operator can make. In that case, it's easy to write a simple validation script that will check the syntax and the parameters of the few allowed commands (including _do we have **add** keyword in that **switchport** command?_).
 
+**Do sanity checks**. For example, is the configuration using ACLs that are never defined? Are there services that should not be enabled (like HTTP server)? [netlint](https://netlint.readthedocs.io/en/latest/) by [Leo Kirchner](https://blog.kirchne.red/) is a sample tool that you could use to get started; if you know a better tool please write a comment. 
+
 **Require manual approvals** for all changes beyond the pre-approved list of commands.
 
 **Use a static configuration analysis tool** like *Batfish*. It can't go beyond the usual SNAFUs if you haven't done your homework (written "expected network behavior" tests), but every little bit helps.
