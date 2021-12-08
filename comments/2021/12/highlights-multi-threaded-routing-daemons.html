@@ -63,6 +63,29 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="923">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c923" href="#923">08 December 2021 08:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Wes, you probably referred to my comment. Tbh, I&#39;m not aware of SGI scheduler. Just wondering what approach SGI scheduler uses, if it&#39;s not centralized/time-sharing, is it space-sharing/partitioning the resources and running multiple copies of the OS kernel?  Can you elaborate on that one :)? How does it deal with the performance problem of synchronization?</p>
+
+<p>As for compiler vs CPU parallelizing code, finding parallelism in program is an important topic in modern compiler design, even when we don&#39;t talk about SIMD/vectorization. Superscalar architecture tasks the CPU to find ILP at run-time, and it turned out to be inefficient and resource-intensive; that&#39;s part of the reason why Intel introduced VLIW/EPIC and SMT, to push compile-time parallelism. So either the compiler or the programmer will do the hard work.  </p>
+
+<p>But finding parallelism and taking advantage of different cache speeds in hierarchical memory seem to be very hard topics, so I&#39;m not aware of any compiler excelling at those, and the VLIW/EPIC architecture was scraped in the end. SMT itself has problem with data-intensive workloads because of cache thrashing, and large routing databases can exceed cache size. Cray MTA-2 architecture does away with hierarchical memory by using hundreds of hardware contexts to compensate for memory access delay, but their architecture is vertical, not general. </p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
