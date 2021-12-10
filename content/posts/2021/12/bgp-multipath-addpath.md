@@ -25,6 +25,8 @@ In the ideal world:
 
 To get there, the route reflector has to advertise D-Y and C-Y paths to A and M, but the rules of BGP ([RFC 4271](https://datatracker.ietf.org/doc/html/rfc4271)) prevent that. If RR advertises two paths to the same prefix, the second update overwrites the first one because they describe the same prefix. Back to the drawing board.
 
+{{<note info>}}You'll find more details of equal/unequal-cost multipathing and BGP multipathing in _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar.{{</note>}}
+
 ### Technology
 
 [RFC 7911](https://datatracker.ietf.org/doc/html/rfc7911) extends the *advertised prefix* (Network Layer Reachability Information -- NLRI) with a *Path Identifier* to solve the *multiple updates of the same prefix* conundrum. Obviously one cannot just send the new data structures to an unsuspecting BGP neighbor; BGP neighbors must *negotiate* the new functionality [with BGP capabilities exchange](/2021/11/bgp-dynamic-capability.html), usually bringing down the BGP session as an interesting side effect. 
@@ -175,3 +177,5 @@ groups:
 ```
 
 Want do to your own tests? [Install netsim-tools](https://netsim-tools.readthedocs.io/en/latest/install.html), build your own [virtual lab environment](https://netsim-tools.readthedocs.io/en/latest/install.html#building-the-lab-environment), and use [this set of configuration files](https://github.com/ipspace/netsim-examples/tree/master/BGP/Multipath).
+
+Want to learn more? Explore [BGP-related blog posts](https://blog.ipspace.net/tag/bgp.html) and _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar.

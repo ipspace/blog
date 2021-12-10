@@ -44,8 +44,11 @@ fi
 case "$1" in
   fix)
     HUGO_CHANGE=
-    blog_edit_post $2
-    blog_view_post $2
+    shift
+    for name in "$@"; do
+      blog_edit_post $name
+      blog_view_post $name
+    done
     ;;
   migrate)
     if [ -f "$2" ]; then
