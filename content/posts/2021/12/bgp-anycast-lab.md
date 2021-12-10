@@ -35,6 +35,10 @@ We'll use BGP as the endpoint reachability protocol and OSPF as the core IGP:
 
 ### Building the Lab Topology File
 
+Before digging into the details: a friend of mine was reading this blog post and said "_it looks like you have to turn a lot of nerd knobs to set it up_". He's right, but do keep in mind that the end result is a fully configured lab running OSPF, EBGP, IBGP, and BGP RR.
+
+Ready? Let's go!
+
 We'll start with the [lab topology file we used for the OSPF+MPLS lab](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/ospf.yml), add BGP module, and describe the autonomous systems in the lab with **bgp.as_list** dictionary:
 
 {{<cc>}}Initial topology file{{</cc>}}
