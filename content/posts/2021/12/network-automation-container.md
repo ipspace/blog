@@ -46,13 +46,15 @@ I created a [Ubuntu-based](https://github.com/ipspace/NetOpsWorkshop/tree/master
 
 ## Running a Network Automation Container
 
-Containers are started with **docker run** command, and if you want to have an interactive container you should add `-it` flags. You probably don't want to have a ton of expired containers lying around, so let's add `--rm` flag (remove a container after it exits). The rest of the command line is passed straight to the container -- this is how you would run **ansible-playbook**:
+Containers are started with **docker run** command, and if you want to have an interactive container you should add `-it` flags. You probably don't want to have a ton of expired containers lying around, so let's add `--rm` flag (remove a container after it exits). For more details, watch *[Starting, Stopping and Removing Containers](https://my.ipspace.net/bin/get/Docker101/2.1%20-%20Starting%2C%20Stopping%20and%20Removing%20Containers.mp4?doccode=Docker101)* part of *[Basic Docker Commands](https://my.ipspace.net/bin/list?id=Docker101#CLI)*
+
+The rest of the command line is passed straight to the container -- this is how you would run **ansible-playbook**:
 
 ```
 docker run -it --rm ipspace/automation:ubuntu ansible-playbook
 ```
 
-The "only" problem: the container cannot access your playbooks. You have to map the directories that should be accessible to your automation tools with the `--volume` parameter, and make sure the target directory is the current (working) directory when the desired command is executed. You could set the working directory with the `-w` flag, or map the current directory into the initial working directory specified in the Dockerfile (`/ansible`) -- that's what we'll do.
+The "only" problem: the container cannot access your playbooks. You have to map the directories that should be accessible to your automation tools with the `--volume` parameter, and make sure the target directory is the current (working) directory when the desired command is executed. You could set the working directory with the `-w` flag, or map the current directory into the initial working directory specified in the Dockerfile (`/ansible`) -- that's what we'll do (more details in *[Mapping Host Directories into Containers](https://my.ipspace.net/bin/get/Docker101/2.2%20-%20Mapping%20Host%20Directories%20into%20Containers.mp4?doccode=Docker101)*)
 
 You might also want to map your home directory into the container to get default settings like `.bashrc`. The simple command we started with thus becomes:
 
@@ -109,3 +111,5 @@ alias git='run-automation git'
 ```
 
 **Final tip**: if you're going to execute a series of automation commands, use `run-automation bash` to start a new shell within the automation container.
+
+For more details on building and running Docker containers, watch the _[Introduction to Docker](https://www.ipspace.net/Introduction_to_Docker)_ webinar.
