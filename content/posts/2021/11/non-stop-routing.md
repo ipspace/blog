@@ -3,7 +3,7 @@ title: "Non-Stop Routing (NSR) 101"
 date: 2021-11-11 06:54:00
 tags: [ IP routing ]
 series: ha-switching
-series_tag: mechanism
+ha-switching_tag: mechanism
 series_title: Non-Stop Routing (NSR)
 ---
 After [Non-Stop Forwarding](/2021/09/non-stop-forwarding.html), [Stateful Switchover](/2021/09/stateful-switchover.html) and [Graceful Restart](/2021/09/graceful-restart.html), it's time for the pinnacle of *high-availability switching*: Non-Stop Routing (NSR)[^JNSR].

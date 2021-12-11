@@ -2,7 +2,7 @@
 title: "Non-Stop Forwarding (NSF) 101"
 date: 2021-09-07 06:47:00
 series: ha-switching
-series_tag: mechanism
+ha-switching_tag: mechanism
 series_title: Non-Stop Forwarding (NSF)
 tags: [ switching, high availability, networking fundamentals ]
 ---
