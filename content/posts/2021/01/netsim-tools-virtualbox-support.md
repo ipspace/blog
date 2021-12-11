@@ -2,8 +2,8 @@
 title: "Build Virtual Lab Topology: VirtualBox Support"
 date: 2021-01-28 06:47:00
 tags: [ automation ]
-series: netsim-tools
-series_tag: release
+series: netsim
+netsim_tag: release
 ---
 When I blogged about release 0.2 of my lab-building tool, [Kristian Larsson](https://twitter.com/plajjan/status/1351607368065445890) was quick to reply: "now do vrnetlab". You could guess what my reply was (hint: "submit a pull request"), but I did realize I'd have to add multi-provider support before that would make sense.
 

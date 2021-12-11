@@ -2,8 +2,8 @@
 title: "Optimal BGP Path Selection with BGP Additional Paths"
 date: 2021-12-02 07:40:00
 tags: [ BGP ]
-series: netsim-tools
-series_tag: use
+series: netsim
+netsim_tag: use
 ---
 A month ago I explained how [using a BGP route reflector in a large-enough non-symmetrical network could result in suboptimal routing](https://blog.ipspace.net/2021/11/bgp-multipath-netsim-tools.html) (or loss of path diversity or multipathing). I also promised to explain how *Advertisement of Multiple Paths in BGP*  functionality[^AP] solves that problem. Here we go...
 

@@ -2,8 +2,8 @@
 title: "Build Your Virtual Lab Faster with My Network Simulation Tools"
 date: 2020-12-17 07:26:00
 tags: [ automation ]
-series: netsim-tools
-series_tag: overview
+series: netsim
+netsim_tag: overview
 ---
 I love my new Vagrant+Libvirt virtual lab environment -- it creates virtual machines in parallel and builds labs much faster than my previous VirtualBox-based setup. Eight CPU cores and 32 GB of RAM in my Intel NUC don't hurt either. 
 

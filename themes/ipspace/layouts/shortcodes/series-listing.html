@@ -1,5 +1,6 @@
+{{ $term := .Page.Data.Term }}
 <ul>
-  {{ .Page.Scratch.Set "pages" (where .Page.Pages "Params.series_tag" (.Get "tag")) }}
+  {{ .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) (.Get "tag")) }}
   {{ if not (.Get "reverse") }}
   {{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}
   {{ end }}

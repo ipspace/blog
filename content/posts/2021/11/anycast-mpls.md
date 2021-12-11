@@ -2,8 +2,8 @@
 title: "Anycast Works Just Fine with MPLS/LDP"
 date: 2021-11-17 07:24:00
 tags: [ MPLS, LDP ]
-series: netsim-tools
-series_tag: use
+series: netsim
+netsim_tag: use
 lastmod: 2021-11-18 07:15:00
 ---
 I stumbled upon an article praising the beauties of SR-MPLS that claimed:

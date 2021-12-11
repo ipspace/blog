@@ -2,8 +2,8 @@
 title: "netsim-tools: Start a Virtual Lab with a Single Command"
 date: 2021-10-18 06:57:00
 tags: [ automation ]
-series: netsim-tools
-series_tag: overview
+series: netsim
+netsim_tag: overview
 series_title: Start a Virtual Lab with a Single Command
 ---
 In mid-October I finally found time to add the icing to the *netsim-tools* cake: **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** command takes a lab topology and does everything needed to have a running virtual lab:
