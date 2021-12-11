@@ -2,7 +2,7 @@
 title: "Stateful Switchover (SSO) 101"
 date: 2021-09-14 06:51:00
 series: ha-switching
-series_tag: mechanism
+ha-switching_tag: mechanism
 series_title: Stateful Switchover (SSO)
 tags: [ switching, high availability, networking fundamentals ]
 ---

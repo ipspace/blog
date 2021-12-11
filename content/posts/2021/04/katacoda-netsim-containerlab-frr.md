@@ -2,8 +2,8 @@
 title: "Katacoda Scenario: netsim-tools with Containerlab and FRRouting"
 date: 2021-04-30 07:59:00
 tags: [ automation, BGP, OSPF ]
-series: netsim-tools
-series_tag: use
+series: netsim
+netsim_tag: use
 ---
 **TL&DR**: If you'd like to see how easy it is to deploy a full-blown OSPF+BGP network with [netsim-tools](https://netsim-tools.readthedocs.io/) together with [Containerlab](https://blog.ipspace.net/2021/04/netsim-containerlab.html) and FRRouting, check out [this Katacoda scenario](https://katacoda.com/ipspace/scenarios/netsim-containerlab-101).
 

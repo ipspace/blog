@@ -2,8 +2,8 @@
 title: "netsim-tools Release 1.0"
 date: 2021-11-01 06:27:00
 tags: [ automation ]
-series: netsim-tools
-series_tag: release
+series: netsim
+netsim_tag: release
 ---
 It looks like *netsim-tools* reached a somewhat stable state, so it was time to do a cleanup and [publish release 1.0](https://github.com/ipspace/netsim-tools) (also available on PyPi, use **pip3 install --upgrade netsim-tools** to fetch it).
 

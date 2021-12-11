@@ -2,7 +2,7 @@
 title: "Graceful Restart (GR) 101"
 date: 2021-09-28 06:30:00
 series: ha-switching
-series_tag: mechanism
+ha-switching_tag: mechanism
 series_title: Graceful Restart (GR)
 tags: [ IP routing, high availability, networking fundamentals ]
 ---

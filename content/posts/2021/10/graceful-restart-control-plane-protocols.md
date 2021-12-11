@@ -2,7 +2,7 @@
 title: "Graceful Restart and Other Control Plane Protocols"
 date: 2021-10-05 06:39:00
 series: ha-switching
-series_tag: control
+ha-switching_tag: control
 tags: [ IP routing, high availability, networking fundamentals ]
 ---
 In the [Graceful Restart 101](/2021/09/graceful-restart.html) blog post, I promised to discuss the ugly parts of this concept in a follow-up post. It turns out we'll need more than one; today, we'll focus on other control plane protocols in an access network scenario.

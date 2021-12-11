@@ -64,7 +64,10 @@ case "$1" in
     ;;
   open)
     HUGO_CHANGE=
-    blog_view_post $2
+    shift
+    for name in "$@"; do
+      blog_view_post $name
+    done
     ;;
   diff)
     git diff --patience --word-diff=color --word-diff-regex='[^ "'']+'
@@ -83,7 +86,7 @@ case "$1" in
         (cd $BLOG_HOME && hugo list future)
         ;;
       "")
-	$BLOG_HOME/tools/list-posts.py $(date +"%Y/%m") $(date -v+1m +"%Y/%m")
+        $BLOG_HOME/tools/list-posts.py $(date +"%Y/%m") $(date -v+1m +"%Y/%m")
         ;;
       *)
         $BLOG_HOME/tools/list-posts.py "$@"

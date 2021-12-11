@@ -2,8 +2,8 @@
 title: "netsim-tools: Network Topology Graphs"
 date: 2021-09-20 07:07:00
 tags: [ automation ]
-series: netsim-tools
-series_tag: overview
+series: netsim
+netsim_tag: overview
 series_title: Network Topology Graphs
 ---
 Someone using my *[netsim-tools](https://netsim-tools.readthedocs.io)* sent me an intriguing question: "*Would it be possible to get network topology graphs out of the tool?*"
