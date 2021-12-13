@@ -65,6 +65,8 @@ docker run -it --rm \
     ipspace/automation:ubuntu ansible-playbook
 ```
 
+{{<note warn>}}As Daniel Justice pointed out in a comment, it's a terrible idea to give a container access to your home directory unless you can absolutely trust it (for example, you built it yourself).{{</note>}}
+
 This approach works (try it out), but there's one more thing to do: programs inside the container run as *root* user and create files owned by *root* in your directories. Cleaning them up is annoying; wouldn't it be better if we could run the container as the current user? Sure, here's the final command (based on [this blog post](https://faun.pub/set-current-host-user-for-docker-container-4e521cef9ffc)):
 
 ```
@@ -113,3 +115,9 @@ alias git='run-automation git'
 **Final tip**: if you're going to execute a series of automation commands, use `run-automation bash` to start a new shell within the automation container.
 
 For more details on building and running Docker containers, watch the _[Introduction to Docker](https://www.ipspace.net/Introduction_to_Docker)_ webinar.
+
+## Revision History
+
+2021-12-13
+: Added a warning about giving container access to your home directory.
+
