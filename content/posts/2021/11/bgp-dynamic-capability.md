@@ -2,6 +2,7 @@
 title: "Dynamic Negotiation of BGP Capabilities"
 date: 2021-11-30 07:15:00
 tags: [ BGP ]
+series: bgp-cap
 ---
 I wanted to write a blog post explaining the intricacies of *Advertisement of Multiple Paths in BGP*, got into a yak-shaving exercise when discussing the need to exchange BGP capabilities to enable this feature, and decided to turn it into a separate prerequisite blog post. The optimal path selection with *BGP AddPath* post is coming in a few days.
 

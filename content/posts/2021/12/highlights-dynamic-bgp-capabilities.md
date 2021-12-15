@@ -2,6 +2,7 @@
 title: "Highlights: Dynamic Negotiation of BGP Capabilities"
 date: 2021-12-15 06:48:00
 tags: [ BGP ]
+series: bgp-cap
 ---
 The _[Dynamic Negotiation of BGP Capabilities](https://blog.ipspace.net/2021/11/bgp-dynamic-capability.html)_ blog post generated almost no comments, apart from the #facepalm realization that a [certain network operating system resets IBGP sessions when the sole EBGP session goes down](https://blog.ipspace.net/2021/11/bgp-dynamic-capability.html#891), but there were a few interesting comments on LinkedIn and Twitter.
 
@@ -24,6 +25,6 @@ A few examples I could easily think of:
 
 [Adam Chappell](https://twitter.com/packetsource/status/1465641402918969353) pointed out that (as is often the case) good design helps. For example, you could deploy a separate set of route reflectors per address family -- adding an address family on a PE router would never tear down an existing BGP session. 
 
-If your network is not big enough to justify a pair of devices per address family, you might want to cheat with per-address-family loopback interfaces. Unfortunately that doesn't work. BGP uses a session collision detection mechanism that allows a single BGP session between a pair of router IDs[^HACK], unless someone implemented [Multisession BGP draft](https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-multisession-07), another document that has been gathering dust for almost a decade.
+If your network is not big enough to justify a pair of devices per address family, you might want to cheat with per-address-family loopback interfaces. Unfortunately that doesn't work. BGP uses a session collision detection mechanism that allows a single BGP session between a pair of router IDs[^HACK], unless your vendor implemented [Multisession BGP draft](https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-multisession-07), another interesting idea that has been stuck in _draft_ limbo for almost a decade for no apparent reason. More about that one in the next blog post in this series.
 
 [^HACK]: I'm pretty positive there must be boxes out there that allow you to set router ID per neighbor or per address family, similar to what [Cisco IOS XE does per VRF](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/xe-16/irg-xe-16-book/per-vrf-assignment-of-bgp-router-id.html).
