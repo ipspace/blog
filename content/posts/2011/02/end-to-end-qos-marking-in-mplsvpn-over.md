@@ -8,7 +8,7 @@ tags:
 title: End-to-end QoS marking in MPLS/VPN-over-DMVPN networks
 url: /2011/02/end-to-end-qos-marking-in-mplsvpn-over.html
 ---
-I got a great question in one of my [Enterprise MPLS/VPN Deployment](http://www.ioshints.info/EnterpriseMPLS) webinars when I was describing how you could run MPLS/VPN across DMVPN cloud:
+I got a great question in one of my [Enterprise MPLS/VPN Deployment](http://www.ipspace.net/EnterpriseMPLS) webinars when I was describing how you could run MPLS/VPN across DMVPN cloud:
 
 > That sounds great, but how does end-to-end QoS work when you run IP-over-MPLS-over-GRE-over-IPSec-over-IP?
 
