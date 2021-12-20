@@ -1,7 +1,7 @@
 ---
 title: "Azure Route Server: The Challenge"
 date: 2021-03-10 07:50:00
-tags: [ Azure, cloud, SD-WAN ]
+tags: [ Azure, cloud, SD-WAN ]
 series: azure-rs
 ---
 Imagine you decided to deploy an SD-WAN (or DMVPN) network and make an Azure region one of the sites in the new network because you already deployed some workloads in that region and would like to replace the VPN connectivity you're using today with the new shiny expensive gadget.

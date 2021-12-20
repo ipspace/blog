@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Breaking Down Silos"
 date: 2021-09-24 07:12:00
-tags: [ worth reading ]
+tags: [ worth reading ]
 ---
 Here's another masterpiece by Charity Majors: [Why I hate the phrase "breaking down silos"](https://charity.wtf/2021/08/27/why-i-hate-the-phrase-breaking-down-silos/). A teaser in case you can't decide whether to click the link:
 

@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Azure: Remember Exchange Server?"
 date: 2021-04-22 06:53:00
-tags: [ cloud, Azure ]
+tags: [ cloud, Azure ]
 ---
 Recently I joked there's [significant difference between AWS and Azure launching features](https://twitter.com/ioshints/status/1368601005424861191):
 

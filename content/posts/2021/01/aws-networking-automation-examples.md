@@ -1,7 +1,7 @@
 ---
 title: "Deploying Advanced AWS Networking Features"
 date: 2021-01-27 07:41:00
-tags: [ AWS, cloud ]
+tags: [ AWS, cloud ]
 ---
 Miha Markočič created sample automation scripts (mostly Terraform configuration files + AWS CLI commands where needed) deploying these features described in AWS Networking webinar:
 

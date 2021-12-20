@@ -163,7 +163,7 @@ BGP routing table entry for 10.42.42.0/24
 
 ## Off-Topic: Nicer-Looking Graphs
 
-Jeroen van Bemmel suggested using [*graphviz* **rankdir** parameter](graphviz.gitlab.io/docs/attrs/rankdir/) to generate better-looking graphs. As you can set individual graph options with CLI parameters, I didn't have to change the .dot files generated with **netlab create**. All I had to do was to add an extra parameter to the **dot** command:
+Jeroen van Bemmel suggested using [*graphviz* **rankdir** parameter](https://graphviz.gitlab.io/docs/attrs/rankdir/) to generate better-looking graphs. As you can set individual graph options with CLI parameters, I didn't have to change the .dot files generated with **netlab create**. All I had to do was to add an extra parameter to the **dot** command:
 
 ```
 dot -Grankdir=LR -T png -o graph.png graph.dot

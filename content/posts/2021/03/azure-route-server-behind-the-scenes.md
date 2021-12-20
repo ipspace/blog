@@ -1,7 +1,7 @@
 ---
 title: "Azure Route Server: Behind the Scenes"
 date: 2021-03-15 07:47:00
-tags: [ Azure, cloud, SD-WAN ]
+tags: [ Azure, cloud, SD-WAN ]
 series: azure-rs
 ---
 Last week I [described the challenges Azure Route Server is supposed to solve](/2021/03/azure-route-server-101.html). Now let's dive deeper into how it's implemented and what those implementation details mean for your design.

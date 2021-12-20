@@ -1,7 +1,7 @@
 ---
 title: "Implementing Layer-2 Networks in a Public Cloud"
 date: 2021-03-08 07:46:00
-tags: [ cloud, switching, virtualization ]
+tags: [ cloud, switching, virtualization ]
 ---
 A few weeks ago I got an excited tweet from someone working at Oracle Cloud Infrastructure: they launched full-blown layer-2 virtual networks in their public cloud to support customers migrating existing enterprise spaghetti mess into the cloud.
 
