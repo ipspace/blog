@@ -2,7 +2,7 @@
 title: "Multi-Threaded Routing Daemons"
 date: 2021-11-23 07:46:00
 lastmod: 2021-11-26 15:35:00
-tags: [ IP routing ]
+tags: [ IP routing ]
 ---
 When I wrote the _[Why Does Internet Keep Breaking?](https://blog.ipspace.net/2021/11/internet-keeps-breaking.html)_ blog post a few weeks ago, I claimed that FRR still uses single-threaded routing daemons (after a too-cursory read of their documentation).
 

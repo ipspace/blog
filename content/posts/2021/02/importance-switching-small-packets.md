@@ -1,7 +1,7 @@
 ---
 title: "Repost: On the Importance of Line-Rate Switching of Small Packets"
 date: 2021-02-11 07:41:00
-tags: [ switching ]
+tags: [ switching ]
 ---
 I made a [flippant remark in a blog comment](https://blog.ipspace.net/2021/01/worth-reading-7050qx-table-sizes.html#374)...
 

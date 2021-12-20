@@ -1,7 +1,7 @@
 ---
 title: "Soap Opera: SRv6 Is Insecure"
 date: 2021-11-06 07:11:00
-tags: [ IPv6, security, worth reading ]
+tags: [ IPv6, security, worth reading ]
 ---
 I heard about SRv6 when it was still on the drawing board, and my initial reaction was "_Another attempt to implement source routing. We know how that ends._" The then-counter-argument by one of the proponents went along the lines of "_but we'll use signed headers to prevent abuse_" and I thought "_yeah, that will work really well in silicon implementations_".
 

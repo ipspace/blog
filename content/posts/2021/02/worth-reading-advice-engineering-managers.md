@@ -1,7 +1,7 @@
 ---
 title: "Worth Reading: Advice(s) for Engineering Managers"
 date: 2021-02-13 08:23:00
-tags: [ worth reading ]
+tags: [ worth reading ]
 ---
 Just in case you were recently promoted to be a team leader or a manager: read these somewhat-tongue-in-cheek advices:
 

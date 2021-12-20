@@ -1,7 +1,7 @@
 ---
-tags: [ IS-IS ]
 title: IS-IS Flooding Details
 date: 2021-09-22 07:24:00
+tags: [ IS-IS ]
 ---
 Last week I published an [unrolled version of Peter Paluch's explanation of flooding differences between OSPF and IS-IS](ospf-is-is-flooding.html). Here's the second part of the saga: [IS-IS flooding details](https://twitter.com/Peter_Paluch/status/1430270978207145991) (yet again, reposted in a more traditional format with Peter's permission).
 
