@@ -10,6 +10,7 @@ url: /2015/01/improving-ecmp-load-balancing-with.html
 Every time I write about [unequal traffic distribution across a link aggregation group](http://blog.ipspace.net/2015/01/load-balancing-elephant-storage-flows.html) (LAG, aka Etherchannel or Port Channel) or ECMP fabric, someone asks a simple question "*is there no way to reshuffle the traffic to make it more balanced?*"
 
 **TL&DR summary**: there are ways to do it, and some vendors already implemented them.
+<!--more-->
 
 ### The Problem
 
