@@ -29,6 +29,7 @@ Finally, while [Matthias Luft somewhat disagrees with me](https://blog.ipspace.n
 
 ### More Details
 
+* I mentioned microsegmentation in _[Virtual Firewalls](https://www.ipspace.net/Virtual_Firewalls)_ webinar and dived deep into IPv6-related details in _[IPv6 Microsegmentation](https://www.ipspace.net/IPv6_Microsegmentation)_
 * I compared VMware's and Cisco's implementation of microsegmentation in _[VMware NSX, Cisco ACI or Standard-Based EVPN](https://www.ipspace.net/VMware_NSX,_Cisco_ACI_or_Standard-Based_EVPN)_ webinar.
 * You'll find Cisco ACI implementation details in _[Cisco ACI Deep Dive](https://www.ipspace.net/Cisco_ACI_Deep_Dive)_ and NSX implementation details in _[VMware NSX Technical Deep Dive](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive)_
 * AWS Security Groups and Azure Network Security Groups are described in _[Amazon Web Services Networking](https://www.ipspace.net/Amazon_Web_Services_Networking)_ and _[Microsoft Azure Networking](https://www.ipspace.net/Microsoft_Azure_Networking)_ webinars.
