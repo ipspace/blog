@@ -12,5 +12,5 @@ I also liked his take on the value of this webinar:
 > I'm always amazed on how much other (offical) training vendors under deliver in their courses that cost thousands of dollars, compared to the real expert level stuff you've got here.
 
 Hope you'll like the webinar as much as he did -- you can get it with Standard or Expert [ipSpace.net Subscription](https://www.ipspace.net/Subscription/Individual).
-
+<!--more-->
 [^NSX]: ... and within 3 minutes of NSX Deep Dive at the time this blog post was published, proving we give competing solutions equal airtime #justkidding.
