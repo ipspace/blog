@@ -15,7 +15,7 @@ The [ipSpace.net network simulation tools](https://netsim-tools.readthedocs.io/e
 
 ### Release Notes
 
-{{<series-listing tag="release">}}
+{{<series-listing tag="release" reverse="true">}}
 
 <!--
 ### Other Considerations
