@@ -1,102 +1,110 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "28 May 2014 11:59",
-          "html": "Input queuing seems to be similar to virtual output queuing. Do you have any specific platform in mind?",
-          "id": "3716677579015295304",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2014-05-28T11:59:31.110+02:00",
-          "ref": "7842761212178552702",
-          "type": "comment"
-        },
-        {
-          "date": "29 May 2014 16:38",
-          "html": "generically, input queuing is useful for observing ingress bursts (as opposed to ingress policing) ",
-          "id": "3122093389518661495",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Ofer",
-          "profile": null,
-          "pub": "2014-05-29T16:38:23.472+02:00",
-          "ref": "7842761212178552702",
-          "type": "comment"
-        }
-      ],
-      "date": "27 May 2014 15:53",
-      "html": "Thanks; good article. i enjoyed reading it &amp; learned alot<br /><br />I have a question though. Is input queueing useful on the input port? some switches seem to support this.....??",
-      "id": "7842761212178552702",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2014-05-27T15:53:27.166+02:00",
-      "ref": "1159963119445138829",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "28 May 2014 11:58",
-          "html": "One would expect the lookup hardware to produce two (or more) ECMP paths, select one of them based on packet hash and send the packet to the right output (or virtual output) queue. Did you experience something else that you can share?",
-          "id": "2248542770620588677",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2014-05-28T11:58:49.981+02:00",
-          "ref": "6411400417640589867",
-          "type": "comment"
-        }
-      ],
-      "date": "28 May 2014 05:53",
-      "html": "Remembering old memories....I have question if there is LAG interface which is terminating on different line cards..In that case how the queuing will be done... ",
-      "id": "6411400417640589867",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Shivlu Jain",
-      "profile": "http://www.mplspvn.info",
-      "pub": "2014-05-28T05:53:08.258+02:00",
-      "ref": "1159963119445138829",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "29 May 2014 16:29",
-          "html": "You&#39;re absolutely correct. Slightly reworded the blog post and pointed to your fantastic comment. Thank you!",
-          "id": "5599214516378903739",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2014-05-29T16:29:36.017+02:00",
-          "ref": "4765563898141305223",
-          "type": "comment"
-        }
-      ],
-      "date": "28 May 2014 17:23",
-      "html": "The definition of Head-of-Line Blocking implicit in this post seems to be different from the one that I am familiar with.  I\u2019ve mainly seen Head-of-Line blocking used to refer to a situation where a downstream resource is left underutilized and unable to perform needed work, because of congestion of an otherwise independent resource.<br /><br />For example, input ports 1 and 2 are both sending traffic to output port 8 of a switch.  The sum of the traffic coming from 1&amp;2 is greater than the capacity of port 8, so port 8 becomes oversubscribed.  Ports 1&amp;2 can\u2019t send all the traffic that they want to port 8 across the fabric.  So traffic backs up in the input queues of ports 1 &amp; 2.   <br /><br />However, in addition to having traffic destined to output port 8, port 2 also receives traffic destined to output port 5.  Output port 5 is unutilized, and is ready and waiting to accept traffic from port 2.  But the traffic that port 2 has for output port 5 is sitting in port 2\u2019s input queue.  It can\u2019t get to output port 5 until the traffic queued to output port 8 is cleared.  So output port 5 continues to sit idle, even though the switch has traffic for it.  <br /><br />In this post, head-of-line blocking is used in the context of one application flow causing congestion that impacts another application flow.  This is not necessarily head-of-line blocking, in the context of the description given just above, because it does not necessarily result in any un(der)utilized downstream resources.  For all we know, the file transfer and the request response protocol could utilize the same downstream path, including the same destination server resources.  In this case, you might get a better overall user experience using Weighted Fair Queuing, etc. to separate the file transfer from the request/response transaction.    But it wouldn\u2019t be head-of-line blocking, at least not by the definition of head-of-line blocking that I\u2019m familiar with.<br /><br />Along these lines, VoQ\u2019s are typically created to be per-output port, so that traffic destined to different output ports go into different VoQ\u2019s.  In many cases  queues may be both per-traffic class and per-output port, so that traffic can be differentiated in both dimensions.  But with per-output port VoQ\u2019s it would not generally be true that \u201cVirtual output queues \u2026 cannot solve HoL blocking problems between flows of the same traffic\u201d.  It would only be true of flows of the same traffic class destined to the same output port.<br /><br />If my understanding of head-of-line blocking is not what you believe matches common usage, by all means please correct me.<br />",
-      "id": "4765563898141305223",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "J Hand",
-      "profile": null,
-      "pub": "2014-05-28T17:23:52.731+02:00",
-      "ref": "1159963119445138829",
-      "type": "comment"
-    },
-    {
-      "date": "31 May 2014 03:41",
-      "html": "I&#39;m thinking.....  leaf and spine,  leaf and spine... cut-through switching....  &#39;If you really think that  the network itself is the problem and QoS is the answer, then there is always another, very simple, response: get more bandwidth.&#39;<br />",
-      "id": "8312789728184545694",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Draco",
-      "profile": null,
-      "pub": "2014-05-31T03:41:09.313+02:00",
-      "ref": "1159963119445138829",
-      "type": "comment"
-    }
-  ],
-  "count": 8,
-  "id": "1159963119445138829",
-  "type": "post",
-  "url": "2014/05/queuing-mechanisms-in-modern-switches.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "28 May 2014 11:59",
+               "html": "Input queuing seems to be similar to virtual output queuing. Do you have any specific platform in mind?",
+               "id": "3716677579015295304",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2014-05-28T11:59:31.110+02:00",
+               "ref": "7842761212178552702",
+               "type": "comment"
+            },
+            {
+               "date": "29 May 2014 16:38",
+               "html": "generically, input queuing is useful for observing ingress bursts (as opposed to ingress policing) ",
+               "id": "3122093389518661495",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Ofer",
+               "profile": null,
+               "pub": "2014-05-29T16:38:23.472+02:00",
+               "ref": "7842761212178552702",
+               "type": "comment"
+            }
+         ],
+         "date": "27 May 2014 15:53",
+         "html": "Thanks; good article. i enjoyed reading it &amp; learned alot<br /><br />I have a question though. Is input queueing useful on the input port? some switches seem to support this.....??",
+         "id": "7842761212178552702",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2014-05-27T15:53:27.166+02:00",
+         "ref": "1159963119445138829",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "28 May 2014 11:58",
+               "html": "One would expect the lookup hardware to produce two (or more) ECMP paths, select one of them based on packet hash and send the packet to the right output (or virtual output) queue. Did you experience something else that you can share?",
+               "id": "2248542770620588677",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2014-05-28T11:58:49.981+02:00",
+               "ref": "6411400417640589867",
+               "type": "comment"
+            }
+         ],
+         "date": "28 May 2014 05:53",
+         "html": "Remembering old memories....I have question if there is LAG interface which is terminating on different line cards..In that case how the queuing will be done... ",
+         "id": "6411400417640589867",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Shivlu Jain",
+         "profile": "http://www.mplspvn.info",
+         "pub": "2014-05-28T05:53:08.258+02:00",
+         "ref": "1159963119445138829",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "29 May 2014 16:29",
+               "html": "You&#39;re absolutely correct. Slightly reworded the blog post and pointed to your fantastic comment. Thank you!",
+               "id": "5599214516378903739",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2014-05-29T16:29:36.017+02:00",
+               "ref": "4765563898141305223",
+               "type": "comment"
+            }
+         ],
+         "date": "28 May 2014 17:23",
+         "html": "The definition of Head-of-Line Blocking implicit in this post seems to be different from the one that I am familiar with.  I’ve mainly seen Head-of-Line blocking used to refer to a situation where a downstream resource is left underutilized and unable to perform needed work, because of congestion of an otherwise independent resource.<br /><br />For example, input ports 1 and 2 are both sending traffic to output port 8 of a switch.  The sum of the traffic coming from 1&amp;2 is greater than the capacity of port 8, so port 8 becomes oversubscribed.  Ports 1&amp;2 can’t send all the traffic that they want to port 8 across the fabric.  So traffic backs up in the input queues of ports 1 &amp; 2.   <br /><br />However, in addition to having traffic destined to output port 8, port 2 also receives traffic destined to output port 5.  Output port 5 is unutilized, and is ready and waiting to accept traffic from port 2.  But the traffic that port 2 has for output port 5 is sitting in port 2’s input queue.  It can’t get to output port 5 until the traffic queued to output port 8 is cleared.  So output port 5 continues to sit idle, even though the switch has traffic for it.  <br /><br />In this post, head-of-line blocking is used in the context of one application flow causing congestion that impacts another application flow.  This is not necessarily head-of-line blocking, in the context of the description given just above, because it does not necessarily result in any un(der)utilized downstream resources.  For all we know, the file transfer and the request response protocol could utilize the same downstream path, including the same destination server resources.  In this case, you might get a better overall user experience using Weighted Fair Queuing, etc. to separate the file transfer from the request/response transaction.    But it wouldn’t be head-of-line blocking, at least not by the definition of head-of-line blocking that I’m familiar with.<br /><br />Along these lines, VoQ’s are typically created to be per-output port, so that traffic destined to different output ports go into different VoQ’s.  In many cases  queues may be both per-traffic class and per-output port, so that traffic can be differentiated in both dimensions.  But with per-output port VoQ’s it would not generally be true that “Virtual output queues … cannot solve HoL blocking problems between flows of the same traffic”.  It would only be true of flows of the same traffic class destined to the same output port.<br /><br />If my understanding of head-of-line blocking is not what you believe matches common usage, by all means please correct me.<br />",
+         "id": "4765563898141305223",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "J Hand",
+         "profile": null,
+         "pub": "2014-05-28T17:23:52.731+02:00",
+         "ref": "1159963119445138829",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2014 03:41",
+         "html": "I&#39;m thinking.....  leaf and spine,  leaf and spine... cut-through switching....  &#39;If you really think that  the network itself is the problem and QoS is the answer, then there is always another, very simple, response: get more bandwidth.&#39;<br />",
+         "id": "8312789728184545694",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Draco",
+         "profile": null,
+         "pub": "2014-05-31T03:41:09.313+02:00",
+         "ref": "1159963119445138829",
+         "type": "comment"
+      },
+      {
+         "date": "10 January 2022 06:09",
+         "html": "<p>Is crossbar switching fabrics are used nowadays? </p>\n",
+         "id": "961",
+         "name": " Prasanth",
+         "pub": "2022-01-10T18:09:08",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "id": "1159963119445138829",
+   "type": "post",
+   "url": "2014/05/queuing-mechanisms-in-modern-switches.html"
 }
