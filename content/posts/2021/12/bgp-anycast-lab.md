@@ -5,6 +5,7 @@ tags: [ BGP ]
 series: netsim
 netsim_tag: use
 pre_scroll: True
+lastmod: 2022-01-16 07:58:00
 ---
 The _[Anycast Works Just Fine with MPLS/LDP](https://blog.ipspace.net/2021/11/anycast-mpls.html)_ blog post generated so much interest that I decided to check a few similar things, including running BGP-based anycast over a BGP-free core, and using BGP Labeled Unicast (BGP-LU).
 
@@ -119,7 +120,14 @@ groups:
 nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 ```
 
-Here's the [Jinja2 template](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/bgp-anycast-loopback.j2) that uses **bgp.anycast** attribute to configure another loopback interface and advertise it into BGP:
+Final touch: *netsim-tools* release 1.1 added stricter checks of module- and node data, so I had to tell the tool that I want to use **bgp.anycast** node attribute:
+
+{{<cc>}}Defining a [custom BGP attribute](https://netsim-tools.readthedocs.io/en/latest/extend-attributes.html){{</cc>}}
+```
+defaults.bgp.extra_attributes.node: [ anycast ]
+```
+
+Next step: [Jinja2 template](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls/bgp-anycast-loopback.j2) that uses **bgp.anycast** attribute to configure another loopback interface and advertise it into BGP:
 
 {{<cc>}}Creating a new loopback interface based on **bgp.anycast** node attribute{{</cc>}}
 ```
@@ -265,3 +273,8 @@ Here's what's going on:
 Next time: fixing the problem the right way with *DMZ Link Bandwidth*.
 
 [^BW]: I have no idea why BGP waits a minute before selecting the best paths after it's started. It drives me mad and I can't find a knob to turn to speed it up.
+
+### Revision History
+
+2022-01-16
+: Added definition of custom BGP attribute (not required at the time I published the original blog post).
