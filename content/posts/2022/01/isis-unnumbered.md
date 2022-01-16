@@ -10,7 +10,7 @@ Could we thus build a totally unnumbered IP network with IS-IS even when the net
 <!--more-->
 * It works like a charm on Arista EOS and Cisco IOS XE.
 * Cisco NXOS [has a few quirks](/2022/01/isis-unnumbered.html#addendum-nxos-quirks).
-* Junos (vSRX 20.3R1.8) refused to consider installing IPv4 prefixes into the IP routing table even though the topology database showed IPv4 and IPv6 unicast IS neighbors. IPv6 worked like a charm (no surprise there due to link-local addresses).
+* Junos vSRX works well with unnumbered IPv4 P2P links. IPv6 works like a charm (no surprise there due to link-local addresses).
 
 We'll use the following lab topology to run our tests. All devices run the same network operating system. All physical interfaces are unnumbered -- the only IP addresses in the lab are assigned to loopback interfaces. P2P links have cost 10, the LAN link has cost 5.
 
@@ -100,14 +100,14 @@ Long story short: use IS-IS 😁
 
 ## Addendum: NXOS Quirks
 
-Cisco NXOS is different. Not only does it need an incredible amount of time to boot, it doesn't like multi-access unnumbered IPv4 links... but it still uses them.
+Cisco NXOS is different. Not only does it need an incredible amount of time to boot, it doesn't like multi-access unnumbered IPv4 links... but you can still persuade it to use them (sort of).
 
 {{<note>}}Before someone starts yelling at me that I'm writing about irrelevant details: I know that. Most data center links are point-to-point links. It's still interesting to see how different implementations behave though.{{</note>}}
 
 Here's the full story:
 
 * To use **ip unnumbered** on NXOS you have to configure **medium p2p**
-* **medium p2p** seems to trigger point-to-point IS-IS links. With three NXOS switches connected to the same segment (R1/R2/R3) you get all the expected IS-IS adjacencies:
+* **medium p2p** seems to trigger point-to-point IS-IS links. With three NXOS switches connected to the same segment (R1, R2 and R3 are connected to Ethernet1/2) you get all the expected IS-IS adjacencies:
 
 ```
 r1# show isis adjacency
