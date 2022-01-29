@@ -28,7 +28,7 @@ Once I started valuing my free time, I tried to design things to be as simple as
 
 {{<note info>}}You'll need a Free ipSpace.net Subscription to watch the video.{{</note>}}
 
-### Lesson Learned: Some Services Are Not Worth Delivering
+### (pub) Lesson Learned: Some Services Are Not Worth Delivering
 
 Here's one of the secrets to AWS's unprecedented scale and financial success: they figured out very early on that some services are not worth delivering. Most everyone else believes in building snowflake single-customer solutions to solve imaginary problems, effectively losing money while doing so.
 
