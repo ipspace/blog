@@ -22,8 +22,8 @@ TITLE=$(wget -qO- "$URL"|\
   sed -e 's/ &#171;.*//')
 
 if [ -z "$TITLE" ]; then
-  echo "Could not get page title, aborting"
-  exit
+  echo "Warning: Could not get page title"
+  TITLE="WTF"
 fi
 
 echo ""
