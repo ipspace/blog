@@ -1,6 +1,7 @@
 ---
 title: "Sample Lab: SR-MPLS on Junos and SR Linux"
 date: 2022-01-31 07:36:00
+lastmod: 2022-01-31 19:26:00
 tags: [ traffic engineering, MPLS ]
 series: netsim
 netsim_tag: use
@@ -11,7 +12,9 @@ Last week I [published](https://blog.ipspace.net/2022/01/netsim-example-rsvp-te-
 <!--more-->
 ---
 
-SR Linux and Cumulus VX are still the only network operating systems I'm aware of that you can download in a ready-for-use format without registration. All you have to do to get the lab up and running is
+SR Linux, Cumulus VX, and Extreme Virtual EXOS are the only network operating systems I'm aware of that you can download in a ready-for-use format without registration. Anything else? Please write a comment.
+
+Even better, SR Linux and Cumulus VX are available as ready-to-run containers; Cumulus VX is also available as *libvirt* and *VirtualBox* Vagrant box. All you have to do to get the lab up and running is:
 
 * Install the prerequisite software (docker, containerlab, netsim-tools)
 * Copy topology.yml into an empty directory
@@ -24,3 +27,8 @@ Downloading device images from most other vendors requires registration followed
 Want even more platform options? Here's [another topology](https://github.com/ipspace/netsim-examples/tree/master/routing/sr-mpls-bgp) using Cisco CSR and Arista vEOS.
 
 The beauty of all these solutions: SR-MPLS is one of the [standard netsim-tools modules](https://netsim-tools.readthedocs.io/en/latest/module-reference.html), and getting it configured in your lab is as easy as adding **sr** to the **module** list.
+
+### Release History
+
+2022-01-31
+: Images for Extreme Virtual EXOS are available on GitHub
