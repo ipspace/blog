@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -72,6 +72,33 @@
 <p>The total/nominal device latency = ingress pipeline processing time + cell segmentation delay + input buffering delay + fabric arbitration time + transmission thru the fabric + cell reassembly in case of cell-based fabric + output queueing delay. That&#39;s why there&#39;s a big gap between inter-packet arrival time and total device delay. Devices with high-performance architecture and superior fabric scheduler generally have lower total delay. Packet buffering is the most dominating factor as they&#39;re generally the slowest part of the processing due to high memory RTT.</p>
 
 <p>As for TCAM pipelining, I&#39;m aware of SRAM pipelining as people seek an alternative higher-performance lookup memory than TCAM since TCAM clock rate is generally slow, but SRAM pipelining suffers from complex wiring and wastage of memory, and so, not yet found in mainstream routers. But I&#39;m not aware of TCAM pipelining. I know vendors have been using chip level parallelism with TCAM for years to overcome the low clock rate and high power usage issue as they need more Mbs to store bigger and bigger routing tables, but it&#39;s parallelism, not pipeline. The nature of TCAM doesn&#39;t lend itself to pipelining AFAIK. Chip parallelism is also the reason why vendors can afford tricks like TCAM carving/resizing and UFT. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="994">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Finch Alex</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c994" href="#994">01 February 2022 08:35</a>
+              </span>
+            </div>
+            <div class="comment-content">So basically a lot of vendors these days are just glorified Broadcom resellers : p. It&rsquo;s funny how some of them try to up themselves by saying they differentiate their offerings with their Network OS.<br />
+
+<p>First off, since all the heavy-weight data forwarding is done in the LC and the fabric, their devices, regardless of brand name, are essentially Broadcom routers/switches first and last. No matter how their OS is written, they will get stuck with Broadcom-provided fabric architecture and forwarding pipeline, with all of its limitations, sometimes severe ones like the horrible fabric scheduler that get pointed out in the Mellanox test.</p>
+
+<p>I won&rsquo;t go into too much detail here as it will dilute the bigger point I&rsquo;m trying to get at, but as we&rsquo;ve discussed before, providing line-rate for 64-byte packet at 100Gbps is mostly mission impossible, considering that packets arrive every 6.7 ns and you have probably less than half that time to finish an IP lookup if you want to make it in time. Couple that with a port count of 32 or 64, and basically classic crossbar fabric arbitration using central scheduler doesn&rsquo;t work anymore, as the scheduler will become both the bottleneck and power hot-spot, and one will have to use distributed schedulers to scale.</p>
+
+<hr />
+
+<p>&lt;a href=&quot;https://www.thewaterdepot.com/&quot;&gt;custom bottled water&lt;/a&gt;</p>
 </div>
           </div>
         </li>
