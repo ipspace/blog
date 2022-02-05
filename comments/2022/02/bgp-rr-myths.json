@@ -20,6 +20,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "05 February 2022 03:32",
+               "html": "<p>There&#39;s a non-zero probability that a BGP session is down. There is a lower, but still non-zero probability that nobody notices that (battle-hardened HSRP oldtimers are probably realizing where this is going by now). Bringing another BGP session down could thus result in unexpected partial connectivity which could be avoided by the IBGP session between route reflectors.</p>\n\n<p>Having more than two route reflectors significantly reduces the probability of an overall failure even without the IBGP full mesh between them. You&#39;ll find detailed explanation on how to compute that probability in https://ipspace.net/Reliability</p>\n\n<p>Obviously you can consider the probability of a configuration or software error to be low enough to make this an scholastic argument ;) and you might be right ;))</p>\n",
+               "id": "1001",
+               "name": "Ivan Pepelnjak ",
+               "pub": "2022-02-05T15:32:13",
+               "ref": "999",
+               "type": "comment"
+            }
+         ],
          "date": "04 February 2022 09:48",
          "html": "<p>Ivan, honestly I fail to understand how:</p>\n\n<ol>\n<li>Having inter-RR iBGP sessions improves redundancy</li>\n</ol>\n\n<p>In a &quot;normal&quot; design there should not exist a route that is known only to one RR. As Jeroen stated above, having iBGP between equivalent, fully connected route reflectors does not make sense. RR`s purpose in this scenario is to propagate routes, not to use them.</p>\n\n<ol>\n<li>Need for iBGP sessions corellates with the number of spine switches</li>\n</ol>\n\n<p>Do we have 2 or 200 spine switches, what`s the difference? How does that affect redundancy or reliability or the very need of iBGP sessions between them? Imagine your picture above with rr[3-100] added. Does it change anything?</p>\n",
          "id": "999",
