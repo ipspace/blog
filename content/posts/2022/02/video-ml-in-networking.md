@@ -1,6 +1,6 @@
 ---
 title: "Video: Use Cases for AI/ML in Networking"
-date: 2022-02-18 07:03:00
+date: 2022-02-25 07:03:00
 tags: [ AI, video ]
 ---
 In the first half of the _[AI/ML in Networking](https://www.ipspace.net/AI_and_ML_in_Networking)_ webinar, [Javier Antich](https://www.ipspace.net/Author:Javier_Antich) walked us through the [AI/ML hype](/2021/10/video-ai-ml-introduction.html), [basics of machine learning](/2021/12/video-machine-learning-101.html), and [machine learning techniques](/2022/01/video-machine-learning-techniques.html).
