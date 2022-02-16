@@ -1,7 +1,7 @@
 ---
 title: "Creating BGP Multipath Lab with netsim-tools"
 date: 2021-11-09 07:03:00
-lastmod: 2021-11-10 09:42:00
+lastmod: 2022-02-15 15:42:00
 tags: [ BGP ]
 series: netsim
 netsim_tag: use
@@ -10,21 +10,28 @@ I was editing the *[BGP Multipathing](https://my.ipspace.net/bin/get/Net101/AR4.
 
 {{<figure src="/2021/11/BGP-Multipath-Diagram.png">}}
 
-Fifteen minutes later[^1d] I had the lab up and running and could verify that BGP works exactly the way I explained it in the webinar (at least on Cisco IOS).
+Fifteen minutes later[^1d] I had the lab up and running and could verify that BGP works exactly the way I explained it in the webinar.
 <!--more-->
 [^1d]: ... plus another day spent coding **netlab up/down** functionality because I wanted this blog post to be as cool as possible 🤷‍♂️
 
+## Set Up the Environment
+
+I decided to run my tests with container version of Arista EOS (cEOS) on a Ubuntu server. To replicate the labs you'll have to:
+
+* [Set up a Linux server or virtual machine](https://netsim-tools.readthedocs.io/en/latest/install.html#creating-the-lab-environment). If you don't have a preferred distribution, use Ubuntu.
+* [Install Docker and containerlab](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) (**[netlab install containerlab](https://netsim-tools.readthedocs.io/en/latest/netlab/install.html)** is the easiest way to do it on Ubuntu).
+* [Download and install Arista cEOS image](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html#container-images).
+
 ## Create Topology File
 
-The mandatory first step when using *netsim-tools* to create your virtual lab[^install]: create a [YAML file describing the lab topology](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/baseline.yml).
+The mandatory first step when using *netsim-tools* to create your virtual lab: create a [YAML file describing the lab topology](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/baseline.yml).
 
-[^install]: Assuming you [already installed everything you need](https://netsim-tools.readthedocs.io/en/latest/install.html), including [Vagrant images or Docker containers](https://netsim-tools.readthedocs.io/en/latest/install.html#building-the-lab-environment).
-
-I decided to start my tests with IOSv (the fastest one to boot) and placed most of my routers in AS 65000. External router (Y) would be in AS 65100. The network runs OSPF as the internal routing protocol, and a combination of IBGP and EBGP.
+I used *containerlab* provider with *eos* devices, and placed most of my routers in AS 65000. External router (Y) would be in AS 65100. The network runs OSPF as the internal routing protocol, and a combination of IBGP and EBGP.
 
 ```
+provider: clab
 module: [ bgp, ospf ]
-defaults.device: iosv
+defaults.device: eos
 bgp.as: 65000
 ```
 
@@ -72,11 +79,11 @@ I used the graphing capabilities of *netsim-tools* together with *graphviz* to g
 
 {{<figure src="/2021/11/BGP-multipath-topo.png" caption="Lab topology created with **netlab create -o graph && dot graph.dot -T png -o topo.png**">}}
 
-{{<figure src="/2021/11/BGP-multipath-sess.png" caption="BGP sessions -- created with **netlab create -o graph:bp && dot graph.dot -T png -o topo.png**">}}
+{{<figure src="/2021/11/BGP-multipath-sess.png" caption="BGP sessions -- created with **netlab create -o graph:bgp && dot graph.dot -T png -o topo.png**">}}
 
 ## The Smoke Test
 
-Deploying a virtual lab is a one-liner with *netsim-tools* release 0.9.3 or later. All it takes is **netlab up** and you get a configured lab a minute or two later[^NX].
+Deploying a virtual lab is a one-liner with *netsim-tools* release 0.9.3 or later. All it takes is **netlab up baseline.yml** (that's how I named my topology file) and you get a configured lab a minute or two later[^NX].
 
 [^NX]: Or a lunch break later if you decide to test a large topology built with Nexus 9000v.
 
@@ -85,35 +92,59 @@ I had to wait a few more minutes for BGP to start and announce the configured pr
 Let's look at the loopback addresses first (so you'll understand the **show** printouts):
 
 ```
-a#show host | inc 10.0.0
-a                         None  (perm, OK)  0   IP    10.0.0.2
-b                         None  (perm, OK)  0   IP    10.0.0.3
-c                         None  (perm, OK)  0   IP    10.0.0.4
-d                         None  (perm, OK)  0   IP    10.0.0.5
-rr                        None  (perm, OK)  0   IP    10.0.0.1
-y                         None  (perm, OK)  0   IP    10.0.0.6
+a#show hosts
+
+Default domain is not configured
+Name/address lookup uses domain service
+Name servers are:
+IP Address VRF Priority
+---------- --- --------
+
+Static Mappings:
+Hostname IP   Addresses
+-------- ---- ---------
+b        IPV4 10.0.0.3
+              10.1.0.9
+              10.1.0.2
+              10.1.0.17
+c        IPV4 10.1.0.13
+              10.1.0.25
+              10.1.0.6
+              10.0.0.4
+d        IPV4 10.0.0.5
+              10.1.0.14
+              10.1.0.21
+              10.1.0.29
+              10.1.0.10
+rr       IPV4 10.1.0.22
+              10.1.0.18
+              10.0.0.1
+y        IPV4 10.1.0.26
+              10.0.0.6
+              10.1.0.30
 ```
 
 Now for the real test: the route toward 10.42.42.0/24.
 
 ```
 a#show ip bgp 10.42.42.0
-BGP routing table entry for 10.42.42.0/24, version 14
-Paths: (1 available, best #1, table default)
-  Not advertised to any peer
-  Refresh Epoch 1
+BGP routing table information for VRF default
+Router identifier 10.0.0.2, local AS number 65000
+BGP routing table entry for 10.42.42.0/24
+ Paths: 1 available
   65100
-    10.0.0.5 (metric 3) from 10.0.0.1 (10.0.0.1)
-      Origin IGP, metric 0, localpref 100, valid, internal, best
+    10.0.0.5 from 10.0.0.1 (10.0.0.1)
+      Origin INCOMPLETE, metric 0, localpref 100, IGP metric 30, weight 0, tag 0
+      Received 00:00:57 ago, valid, internal, best
       Originator: 10.0.0.5, Cluster list: 10.0.0.1
-      rx pathid: 0, tx pathid: 0x0
+      Rx SAFI: Unicast
 ```
 
 As expected, the route is coming from the route reflector (10.0.0.1) and the next hop is 10.0.0.5 (D), even though it would be better for A to use C as the next hop.
 
 ### Revenge of the IGP
 
-How about a simple brain-teaser? This is the **traceroute** printout from A to Y:
+How about a simple brain-teaser? This is the **traceroute** printout from A to Y (taken from the IOS version of the lab, see below):
 
 ```
 a#trace y source loop 0 probe 5
@@ -132,32 +163,15 @@ VRF info: (vrf in name/id, vrf out name/id)
 
 As you can see, sometimes the probes reach Y in two hops, and sometimes the second hop happens to be D. What's going on? Write a comment!
 
-## Arista EOS Works the Same Way
+## Testing Other Platforms
 
-Another beauty of *netsim-tools* is the ease of changing network devices or virtualization providers. All I had to do to replace Cisco IOSv with Arista EOS was an extra parameter in the **netlab up** command:
-
-```
-netlab up --device eos
-```
-
-A few minutes later, I had an identically configured lab[^diff], this time running Arista EOS, and as expected got an almost identical printout[^shorter]:
-
-[^diff]: Obviously using slightly different configuration -- Arista EOS is not a perfect clone of the _industry standard_ CLI.
-
-[^shorter]: I removed *weight* and *received* parts of the route details from the printouts to make them fit into the main column.
+Another beauty of *netsim-tools* is the ease of changing network devices or virtualization providers. All I had to do to replace Arista EOS with Cisco IOSv was two extra parameters in the **netlab up** command:
 
 ```
-a#sh ip bgp 10.42.42.0
-BGP routing table information for VRF default
-Router identifier 10.0.0.2, local AS number 65000
-BGP routing table entry for 10.42.42.0/24
- Paths: 1 available
-  65100
-    10.0.0.5 from 10.0.0.1 (10.0.0.1)
-      Origin INCOMPLETE, metric 0, localpref 100, IGP metric 30, valid, internal, best
-      Originator: 10.0.0.5, Cluster list: 10.0.0.1
-      Rx SAFI: Unicast
+netlab up baseline.yml --device iosv --provider libvirt
 ```
+
+A few minutes later, I had an identically configured lab, this time running Cisco IOS. I could have repeated the same tests on [over a dozen devices supported by *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/platforms.html) (if only I had all the necessary Vagrant boxes installed)
 
 **Coming up next**: fixing suboptimal BGP routing with *additional paths* functionality.
 
