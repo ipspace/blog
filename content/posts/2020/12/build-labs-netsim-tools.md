@@ -1,6 +1,7 @@
 ---
 title: "Build Your Virtual Lab Faster with My Network Simulation Tools"
 date: 2020-12-17 07:26:00
+lastmod: 2022-02-15 14:10:00
 tags: [ automation ]
 series: netsim
 netsim_tag: overview
@@ -11,9 +12,9 @@ However, it's still ridiculously boring to set up a new lab. Vagrantfiles descri
 <!--more-->
 So instead of spending 15 minutes editing a Vagrantfile to get the P2P links I needed and another five minutes furiously typing in Cisco IOS CLI, I [spent a few days](https://xkcd.com/1319/) writing tools to get the job done... but now I'll be able to build the next three labs [so much faster](https://xkcd.com/974/) ;)
 
-Anyway, you might find the tools interesting, so I pushed them into a [public Github repository](https://github.com/ipspace/netsim-tools).
+Anyway, you might find the tools interesting, so I pushed them into a [public Github repository](https://github.com/ipspace/netsim-tools) and wrote what I hope is [decent documentation](https://netsim-tools.readthedocs.io/en/latest/index.html).
 
-The crown jewel of the collection is a tool that takes network topology description in a YAML file that I made as simple as possible, creates addressing plan, Vagrantfile, Ansible inventory, and a data model describing all the network devices in details. For example, all I needed to get my lab up and running was this:
+The crown jewel of the collection is a tool that takes network topology description in a YAML file that I made as simple as possible, [creates addressing plan, Vagrantfile, Ansible inventory, and a data model describing all the network devices in details](https://netsim-tools.readthedocs.io/en/latest/netlab/create.html). For example, all I needed to get my lab up and running was this:
 
 ```
 defaults:
@@ -95,21 +96,13 @@ mgmt_ip: 192.168.121.101
 mgmt_mac: 08-4F-A9-00-00-01
 ```
 
-**Next step**: an Ansible playbook (**initial-config.ansible**) that generates initial device configuration based on interfaces and IP addresses specified in **links** dictionary. Single command, no parameters (apart from specifying Ansible inventory), no configuration (because I have per-platform initial configuration templates).
+**Next step**: an Ansible playbook started with **netlab initial** command that generates initial device configuration based on interfaces and IP addresses specified in **links** dictionary. Single command, no parameters (apart from specifying Ansible inventory), no configuration (because I have per-platform initial configuration templates).
 
-**Final step**: Configure OSPF using a custom Jinja2 template:
+The same playbook can also be used to configure OSPF, BGP, IS-IS, EIGRP...
 
-```
-router ospf 1
-!
-interface Loopback0
- ip ospf 1 area 0
-!
-{% for l in links %}
-interface {{ l.ifname }}
- ip ospf 1 area 0
-!
-{% endfor %}
-```
+**End result**: it takes just a few minutes to set up a brand-new lab topology. Of course I wasted more time developing the tools than I'll save in my lifetime, but maybe some of you will find them useful, add support for different Vagrant providers or network devices, and send a few karma points my way ;)
 
-**End result**: it takes just a few minutes to set up a brand-new lab topology. Of course I wasted more time developing the tools than I'll save in the next 10 years, but maybe some of you will find them useful and add support for different Vagrant providers or network devices.
+### Release History
+
+2022-02-15
+: Updated the blog post with features from netsim-tools release 1.1.

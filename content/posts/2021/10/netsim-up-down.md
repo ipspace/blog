@@ -13,9 +13,16 @@ In mid-October I finally found time to add the icing to the *netsim-tools* cake:
 * Start the lab with **vagrant up** or **containerlab deploy**
 * Deploy device configurations, from LLDP and interface addressing to routing protocols and Segment Routing
 <!--more-->
+{{<note>}}Later releases added [creation or configuration of Linux bridges](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html#provider-specific-initialization), including the *vagrant-libvirt* management network, to the lab startup process.{{</note>}}
+
 Similarly, **[netlab down](https://netsim-tools.readthedocs.io/en/latest/netlab/down.html)** destroys the virtual lab.
 
 Two other features made it into this release:
 
 * [Static node IDs](https://netsim-tools.readthedocs.io/en/latest/nodes.html#augmenting-node-data) in case you want to have very specific loopback IP addresses or router IDs.
 * [Static interface addresses](https://netsim-tools.readthedocs.io/en/latest/links.html#static-interface-addressing) on multi-access links.
+
+### Release History
+
+2022-02-15
+: Added information about Linux bridge setup
