@@ -21,7 +21,7 @@ The only reason I could see for the persistent use of ancient 1500-byte MTU migh
 
 The only particle-based platforms I encountered were Cisco 7200 and VIP line cards in Cisco 7500 (because they used repackaged Cisco 7200s inside). I went through the publicly available Cisco Cloud ASIC presentations and while they're full of "intelligent buffering" bragging, they don't mention anything even vaguely resembling scatter/gather architecture.
 
-The two O'Reilly books describing Juniper hardware that I happen to have on my bookshelf are uselessly vague[^BC]. [Expert Packet Walkthrough on the MX Series 3D](https://www.juniper.net/documentation/en_US/day-one-books/TW_MX3D_PacketWalkthrough.pdf) has more details; the way I read it, it claims the MX uses *parcels* (320 bytes) to store the input packets and fixed-size cells (64 bytes) to move the packets between forwarding engineers.
+The two O'Reilly books describing Juniper hardware that I happen to have on my bookshelf are uselessly vague[^BC]. [Expert Packet Walkthrough on the MX Series 3D](https://www.juniper.net/documentation/en_US/day-one-books/TW_MX3D_PacketWalkthrough.pdf) has more details; the way I read it, it claims the MX uses *parcels* (320 bytes) to store the input packets and fixed-size cells (64 bytes) to move the packets between forwarding engines.
 
 Finally, [Broadcom hates anyone telling us anything useful](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html).
 
