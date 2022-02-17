@@ -106,6 +106,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "17 February 2022 05:14",
+               "html": "<p>Thanks a million for the pointer. It sent me on a more focused search trip resulting in...</p>\n\n<p>https://en.wikipedia.org/wiki/Shebang_(Unix)#Character_interpretation</p>\n\n<p>... which totally explains the challenge and why -S solves it -- because a string starting with -S is split into argv components. Checked the https://github.com/coreutils/coreutils/blob/master/src/env.c code just to be on the safe side ;)</p>\n",
+               "id": "1030",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-02-17T17:14:14",
+               "ref": "1026",
+               "type": "comment"
+            }
+         ],
          "date": "17 February 2022 07:39",
          "html": "<p><code>#!/usr/bin/env -S ANSIBLE_STDOUT_CALLBACK=dense ansible-playbook</code></p>\n\n<p>&#39;env&#39; is MEANT to execute a command under a specific environment, many of those SO comments are dead wrong. While most people misuse env as they think it does some path magic .. .no, shell does that, env just uses it and we normalized on it since &#39;shebang&#39; requires a full path.</p>\n\n<p>note: i have found systems with <code>env</code> outside /usr/bin/ but they are the exception, 99.99% of the time it is there</p>\n",
          "id": "1026",
