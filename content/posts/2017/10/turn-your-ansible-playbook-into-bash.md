@@ -49,3 +49,7 @@ As Brian Coca explained in a comment, you have to use `-S` **env** parameter to 
 #!/usr/bin/env -S ANSIBLE_STDOUT_CALLBACK=dense ansible-playbook
 ```
 
+### Revision History
+
+2022-02-17
+: Added *adding environment variables* section
