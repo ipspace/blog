@@ -48,6 +48,15 @@
                "pub": "2022-02-19T08:36:59",
                "ref": "1034",
                "type": "comment"
+            },
+            {
+               "date": "21 February 2022 03:44",
+               "html": "<p>Hi Ivan,</p>\n\n<p>No, there&#39;s no mentioning of how the packets get stored on off-chip memory in MX chipset so I speculate. After all, there are only 2 forms of memory storage anyway: contiguous or scatter/gather :p.</p>\n\n<p>The xrdoc is the same on I referred to. That&#39;s what I meant by NCS ASIC&#39;s physical memory structure (sorry if I sounded ambiguous), not the off-chip packet storage buffering scheme. I meant the NCS&#39;s Jericho&#39;s ASIC physical memory structure and the MX&#39;s are rather similar. </p>\n\n<p>On pg 42 of the MX doc, it says &quot;the default maximum data buffer value is 100ms.&quot; So looks like if the interfaces are of 10Gbps, MX chipset (Trio I think) stores up to GBs of packets. </p>\n\n<p>Also, while it&#39;s true the hardware buffer can deal with any frame size because of its large size, Jumbo frames have other impacts when one think about it more closely. For ex, Jumbo frame can cause unpredictable delay for smaller packets when there&#39;re mix and match of Jumbo and tiny frames in the same queue, potentially delaying certain kinds of traffic more than they can tolerate. So when Jumbo frame is enabled, it&#39;s best to use CoS to separate elephant and mice traffic, depending on the levels of criticality. </p>\n\n<p>Another corner case: with buffered crossbar, where cells arriving at egress out of order is inherent to the architecture, as observed in practice by Andrea:</p>\n\n<p>https://blog.ipspace.net/2020/05/ip-packet-reordering.html#64</p>\n\n<p>When this happens with many Jumbo frames in the mix, the total cell waiting time at the egress interface can be exceeded due to cells arriving out of order, causing cell drop and consequently, frame drop, necessitating retransmission. So that&#39;s a potential side effect. In bufferless crossbar, this is not an issue. </p>\n\n<p>Minh</p>\n",
+               "id": "1037",
+               "name": " Minh",
+               "pub": "2022-02-21T03:44:44",
+               "ref": "1035",
+               "type": "comment"
             }
          ],
          "date": "19 February 2022 06:36",
