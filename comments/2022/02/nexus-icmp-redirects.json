@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "24 February 2022 02:12",
+               "html": "<p>I&#39;m about to write a blog post saying &quot;ICMP redirects are no longer needed&quot;, so I would love to see a scenario that still needs ICMP redirects to make the network work, regardless of how broken it is.</p>\n\n<p>But I agree with you, that design is definitely suboptimal, and stumbling upon ICMP redirects is a huge red flag if you care about good design.</p>\n",
+               "id": "1043",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-02-24T14:12:11",
+               "ref": "1041",
+               "type": "comment"
+            }
+         ],
          "date": "24 February 2022 12:36",
          "html": "<p>You&#39;re not wrong, per se.  <em>But</em> there are still lots of places where ICMP redirects are all that makes the network work, so blanket-disabling can just cause new problems.  (Granted, those problems are usually of the &quot;why would you design a network like this???&quot; variety, and are better served by a redesign than by disabling or enabling ICMP Redirects.)</p>\n\n<p>A &quot;more correct&quot; solution than to disable redirects, since the client using Nexus hardware, might be to deploy vPC and use vPC Peer Gateway instead of HSRP in the first place.</p>\n\n<p>Put another way, the presence <em>or</em> absence of ICMP Redirects is a red herring, usually pointing to architectural/design issues instead.  In this example, using vPC Peer Gateway or, better yet, running a minimal IGP instead of relying on static routes, eliminates ICMP Redirects from both the problem and solution spaces simultaneously.</p>\n",
          "id": "1041",
