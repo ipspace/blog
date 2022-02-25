@@ -10,6 +10,15 @@
                "pub": "2022-02-24T14:12:11",
                "ref": "1041",
                "type": "comment"
+            },
+            {
+               "date": "25 February 2022 09:44",
+               "html": "<p>I also wonder about a scenario where ICMP redirects are <em>required</em> and would like to learn about one.</p>\n\n<p>An ICMP redirect is intended to instruct the sending system to <em>directly</em> send the IP packets to the next-hop gateway of the gateway sending the ICMP redirect.  This allows to use a path that is shorter by one router hop.  Thus it is an optimization that <em>should</em> not be needed for correct packet transport.  Thus if this <em>optimization</em> results in <em>worse</em> performance, it seems prudent to disable it.</p>\n\n<p>I have seen many networks that function fine with disabled ICMP redirects.  Those include both networks with manually disabled ICMP redirects and those where vendor defaults regarding disabled ICMP redirects were kept.</p>\n\n<p>I can think of situations where an extra hop leads to problems due to TTL (think of <em>hop count</em>), but in such a situation the root cause is using a too low TTL value or lack of (or misconfigured) dynamic routing to ensure use of the intended path.</p>\n\n<p>Another possibility I can think of could be overloaded links due to using a suboptimal gateway.  But this can only be mitigated by ICMP redirects if ICMP redirect processing does not significantly impact forwarding performance by itself.</p>\n\n<p>I am well aware that I cannot know all possible scenarios and thus would like to learn of an example where ICMP redirects make the network work.</p>\n\n<p>[BTW in the scenario described in the blog post, changing the active gateway according to uplink state (e.g., via interface or object tracking and preemption) would have avoided ICMP redirect generation, too.]</p>\n",
+               "id": "1047",
+               "name": " Erik Auerswald",
+               "pub": "2022-02-25T09:44:56",
+               "ref": "1043",
+               "type": "comment"
             }
          ],
          "date": "24 February 2022 12:36",

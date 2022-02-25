@@ -48,6 +48,37 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="1047">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1047" href="#1047">25 February 2022 09:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I also wonder about a scenario where ICMP redirects are <em>required</em> and would like to learn about one.</p>
+
+<p>An ICMP redirect is intended to instruct the sending system to <em>directly</em> send the IP packets to the next-hop gateway of the gateway sending the ICMP redirect.  This allows to use a path that is shorter by one router hop.  Thus it is an optimization that <em>should</em> not be needed for correct packet transport.  Thus if this <em>optimization</em> results in <em>worse</em> performance, it seems prudent to disable it.</p>
+
+<p>I have seen many networks that function fine with disabled ICMP redirects.  Those include both networks with manually disabled ICMP redirects and those where vendor defaults regarding disabled ICMP redirects were kept.</p>
+
+<p>I can think of situations where an extra hop leads to problems due to TTL (think of <em>hop count</em>), but in such a situation the root cause is using a too low TTL value or lack of (or misconfigured) dynamic routing to ensure use of the intended path.</p>
+
+<p>Another possibility I can think of could be overloaded links due to using a suboptimal gateway.  But this can only be mitigated by ICMP redirects if ICMP redirect processing does not significantly impact forwarding performance by itself.</p>
+
+<p>I am well aware that I cannot know all possible scenarios and thus would like to learn of an example where ICMP redirects make the network work.</p>
+
+<p>[BTW in the scenario described in the blog post, changing the active gateway according to uplink state (e.g., via interface or object tracking and preemption) would have avoided ICMP redirect generation, too.]</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
