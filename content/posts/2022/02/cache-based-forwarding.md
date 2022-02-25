@@ -1,6 +1,7 @@
 ---
 title: "Cache-Based Packet Forwarding"
 date: 2022-02-24 08:57:00
+lastmod: 2022-02-25 14:53:00
 tags: [ networking fundamentals, switching ]
 series: forwarding
 ---
@@ -35,11 +36,27 @@ To make matters worse, Cisco implemented *fast switching* in hardware (*autonomo
 
 Internet core experienced numerous regional brownouts in those days until Cisco managed to get its act together and roll out Cisco Express Forwarding (CEF) -- a packet forwarding mechanism that relies on fully evaluated forwarding table[^MEM] instead of a forwarding cache.
 
-The laws of physics haven't changed in the interim[^MAGIC] -- whenever you encounter a cache-based forwarding scheme (conversation learning, LISP, Cisco SDA...) you can kill its performance with a simple address scanning tool, or as I said in the past "*cache-based forwarding never scaled.*"
+The laws of physics haven't changed in the interim[^MAGIC] -- whenever you encounter a cache-based forwarding scheme (conversation learning, original LISP, Cisco SDA...) you can kill its performance with a simple address scanning tool, or as I said in the past "*cache-based forwarding never scaled.*"
 
 There's an obvious exception to that rule: the forwarding cache might be large enough to hold all potential destinations... but then any cache-based forwarding scheme becomes nothing else but a steaming pile of unnecessary complexity.
 
 But wait, it gets worse. Every few years someone gets the awesome idea of caching individual TCP/UDP flows. What could possibly go wrong?
+
+### Another Data Point for RFC 1925 Rule 11
+
+When I was updating this blog post to ensure everyone understands I'm referring to the _original_ LISP ideas, I remembered an [extensive comment Victor Moreno wrote](https://blog.ipspace.net/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html#5200837098827991481) in 2017 on my _[Why Is Cisco Pushing LISP in Enterprise Campus?](https://blog.ipspace.net/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html)_ blog post.
+
+> The impact of mobility events in a LISP network (as you know from past reviews published in your blog) is limited to signaling amongst the network elements involved in active connections between the devices. However, the impact of mobility events in a BGP network is unbound. Even if you have conditional FIB programming, all changes are pushed to all participants. 
+
+And also...
+
+> I happened to be in the process of posting a document that describes a wealth of other functionality that is possible by the simple principle of the demand based control plane and a discussion on why this is best realized with a demand protocol. 
+
+Please note that the _demand-based control plane_ is a nice euphemism for _cache-based forwarding_. Now compare what Victor wrote in 2017 to what Bela wrote in 2021:
+
+> LISP is a more complex animal nowadays. Nowadays it is used with reliable transport and full PubSub. There is no caching behavior at all. Each xTR has a full routing table.
+
+I would say that the evolution of LISP proves (A) the point of this blog post as well as (B) RFC 1925 rule 11.
 
 ### More Details
 
@@ -49,3 +66,8 @@ But wait, it gets worse. Every few years someone gets the awesome idea of cachin
 [^MEM]: Limited amount of router memory was only reason Cisco went down the cache-based forwarding rabbit trail. Many routers didn't have enough memory to store two or three copies of routing information from the Internet default-free zone (BGP table, IP routing table, CEF table).
 
 [^MAGIC]: That might surprise believers in the magical powers of unicorn dust and PowerPoint slides. I'm pretty sure the regular readers of this blog are immune against that hallucination.
+
+### Revision History
+
+2022-02-25
+: Clarified that I had the _original_ LISP ideas in mind, and added a paragraph about evolution of LISP proving RFC 1925 Rule 11.
