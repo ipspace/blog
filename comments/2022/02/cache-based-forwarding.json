@@ -26,9 +26,17 @@
          "name": "Bela Varkonyi",
          "pub": "2022-02-25T12:38:15",
          "type": "comment"
+      },
+      {
+         "date": "26 February 2022 02:03",
+         "html": "<p>In general, I support the main point of the blog post: cache based forwarding is a problematic scalability mechanism, i.e., scalability is limited and performance collapses beyond the limit.</p>\n\n<p>Topology based forwarding has scalability limits, too. Once there are more routes than can fit the (hardware) forwarding tables, networking devices crash, fall back to CPU based forwarding (i.e., performance collapses), or deliver some packets to the wrong destination (I&#39;ve seen all of those&hellip;).</p>\n\n<p>Firewalls, i.e., devices where network topology is just a small part of the forwarding decision, often employ flow caches (for individual data flows) for performance optimization. In some &quot;high-end&quot; firewalls this flow cache is offloaded to hardware. Since per flow offload is often the best such a device can use, it is done in practice, and usually works well enough. [A stateless packet filter in front of a stateful firewall can help staying inside the performance envelope of said firewall.]</p>\n\n<p>Regarding networking devices primarily used for routing and bridging, the Enterasys Networks N-Series and their successors, K-Series and S-Series, based on CoreFlow resp. CoreFlow2 ASICs, used caching of individual flows in hardware forwarding tables as their only forwarding architecture. In practice, those switches worked well in the &quot;enterprise&quot; networks they were designed for. Of course it was possible to create overload with specific tests to demonstrate the potential for problems.</p>\n\n<p>Since per flow hardware offload allowed implementing complex, but still high performance, traffic filtering policies, replacing CoreFlow(2) based devices with networking devices using topology based forwarding often provided challenges regarding traffic filtering policies (i.e., either keep complex line-rate traffic filters, or use a different networking device with faster interfaces and topology based forwarding, but not both).</p>\n\n<p>I provide the above examples to illustrate the complexities involved. In theory, cache based forwarding does not scale. In practice, it may scale sufficiently, at least for a while (e.g., a decade inside an &quot;enterprise&quot; network before deploying the next device generation). It definitely breaks down when overloaded.</p>\n",
+         "id": "1050",
+         "name": "Erik Auerswald",
+         "pub": "2022-02-26T14:03:48",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2022/02/cache-based-forwarding.html"
 }
