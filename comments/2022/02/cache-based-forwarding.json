@@ -42,9 +42,17 @@
          "name": " Henk",
          "pub": "2022-02-27T17:13:31",
          "type": "comment"
+      },
+      {
+         "date": "27 February 2022 05:26",
+         "html": "<p>&gt; IP prefix (using a calculated subnet mask based on an &ldquo;interesting&rdquo; algorithm.</p>\n\n<p>Are you sure it was a prefix? That is not what I remember. (Note, I have never worked on forwarding, I probably don&#39;t know what I am talking about. And I am not speaking in behalf of previous, current or future employers).</p>\n\n<p>1) I remember doing &quot;show ip fast-switching&quot; or some sort command. Seeing destination ip-addresses. Not prefixes. It&#39;s been almost 30 years, so maybe I remember it wrong.</p>\n\n<p>2) When I heard about OpenFlow doing on-demand caching, I was already wondering how they would scale that. Because with on-demand caching, you can&#39;t do summarization. Well, I wouldn&#39;t know how to do that. Let&#39;s take an example:</p>\n\n<p>A router has 3 routes: 0/0 -&gt; eth0, 10.1/16 -&gt; eth1 and 10.1.1/24 -&gt; eth2. Suppose a packet arrives for 10.1.9.9. A cache lookup happens -&gt; no entry. So packet is sent to the controller (aka process-switched). 10.1/16 -&gt; eth1 matches. So an entry for 10.1/16-&gt;eth1 is created in the forwarding cache. Next a packet for 10.1.1.1 arrives. Box does a lookup in the cache, 10.1/16-&gt;eth1 matches. The packet is forwarded out eth1. That is wrong. I have no idea how to fix this, unless you a) do caching per ip-address in stead of prefix, or 2) prepopulate the cache (aka FIB-switching). If someone can solve this problem, please let us know.</p>\n\n<p>&gt; packets had to wait for things like OSPF SPF run or BGP table scan to complete before they could be processed</p>\n\n<p>Utter non-sense. Sorry. The IOS scheduler would indeed not interrupt processes. But that didn&#39;t mean processes would keep running forever. On the contrary. One of the arts of writing router-software was to cut you task up in smaller steps, and do so called &quot;process_yield()&quot;s between every step. The idea was that a process could run for a few milliseconds, and then voluntarily release the CPU. Next time that process was scheduled (e.g. after packets were forwarded or someone did a show-command), the process would continue with the SPF or table-walk were it left off last time. If a process didn&#39;t give up the CPU, a CPUHOG warning was displayed. And the IOS-programmer couild introduce more sched_yield()s in her/his code.</p>\n",
+         "id": "1052",
+         "name": "Henk Smit",
+         "pub": "2022-02-27T17:26:50",
+         "type": "comment"
       }
    ],
-   "count": 4,
+   "count": 5,
    "type": "post",
    "url": "2022/02/cache-based-forwarding.html"
 }
