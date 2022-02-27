@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>6 comments:</h4>
+  <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -201,6 +201,35 @@ There is no caching behavior at all. Each xTR has a full routing table.</p>
 <p>&gt; Limited memory was only reason Cisco went down the cache-based forwarding</p>
 
 <p>I don&#39;t think so. I think the reason was fast-forwarding was done during an interrupt-handler. And thus had to be quick. A simple hash-table was used as cache. If fast-switching had been using the RIB, the locking (or actually disabling interrupts) when changing the RIB would have been a nightmare. And as look-entries were a combination of recursive-lookup, arp-lookup and pre-computed encaps-header, why not put that in a separate table?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1055">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk Smit</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1055" href="#1055">27 February 2022 06:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; This implementation is not quite so &quot;obsolete&quot; as one might think; for example, 1000s of Nuage VRS/NSGs use it as we speak</p>
+
+<p>That is because you are talking about forwarding on a host. Not on a router. With current CPU and RAM, almost solution works to solve a toy problem on a toy device in a toy network.</p>
+
+<p>&gt; Firewalls, i.e., devices where network topology is just a small part of the forwarding decision, often employ flow caches (for individual data flows) for performance optimization.</p>
+
+<p>As you (Erik) note, firewalls are different from routers. Because 1) a firewall typically has fewer flows through it than a (core) router. 2) A typical firewalls has only 2 interface, &quot;inside&quot; and &quot;outside&quot;. And those interfaces don&#39;t change often. The challenges of a firewall are totally different than the challenges of a (core) router.</p>
+
+<p>&gt; In practice, it may scale sufficiently</p>
+
+<p>Again, when solving toy problems on toy devices in toy networks, almost anything will work. :)</p>
 </div>
           </div>
         </li>
