@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -98,6 +98,29 @@ There is no caching behavior at all. Each xTR has a full routing table.</p>
 <p>Since per flow hardware offload allowed implementing complex, but still high performance, traffic filtering policies, replacing CoreFlow(2) based devices with networking devices using topology based forwarding often provided challenges regarding traffic filtering policies (i.e., either keep complex line-rate traffic filters, or use a different networking device with faster interfaces and topology based forwarding, but not both).</p>
 
 <p>I provide the above examples to illustrate the complexities involved. In theory, cache based forwarding does not scale. In practice, it may scale sufficiently, at least for a while (e.g., a decade inside an &quot;enterprise&quot; network before deploying the next device generation). It definitely breaks down when overloaded.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1051">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1051" href="#1051">27 February 2022 05:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; we had to use router CPU to walk</p>
+
+<p>I think you are mixing up two things. The forwarding entries had a simple combination of: (destination, outgoing interface, mac-address (actually encaps header)). So during packet-forwarding, no walk needed to be done. Just a simple lookup. The &quot;walking you are referring to happened during &quot;routing table maintenance&quot;. E.g. BGP walking its NLRI entries, to check if the nexthop still had the best IGP-metric, and whether nexthops were still valid. This was not done during route-lookup.</p>
+
+<p>Two-stage lookups during forwarding were introduce later. Because of PIC. This allows the RIB to send 1 message to the FIB, and the FIB makes 1 adjustment, impacting many (possibly tens or hunderds of thousands of routes). The trade-off here is: slightly more complex lookup (2 stages) versus much quicker updating the FIB. Note, FIBs in hardware can do in the order of 10K+ changes per second. Not very fast.</p>
 </div>
           </div>
         </li>
