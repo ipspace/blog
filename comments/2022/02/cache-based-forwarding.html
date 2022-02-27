@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -152,6 +152,55 @@ There is no caching behavior at all. Each xTR has a full routing table.</p>
 <p>&gt; packets had to wait for things like OSPF SPF run or BGP table scan to complete before they could be processed</p>
 
 <p>Utter non-sense. Sorry. The IOS scheduler would indeed not interrupt processes. But that didn&#39;t mean processes would keep running forever. On the contrary. One of the arts of writing router-software was to cut you task up in smaller steps, and do so called &quot;process_yield()&quot;s between every step. The idea was that a process could run for a few milliseconds, and then voluntarily release the CPU. Next time that process was scheduled (e.g. after packets were forwarded or someone did a show-command), the process would continue with the SPF or table-walk were it left off last time. If a process didn&#39;t give up the CPU, a CPUHOG warning was displayed. And the IOS-programmer couild introduce more sched_yield()s in her/his code.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1054">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk Smit</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1054" href="#1054">27 February 2022 06:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; ECMP scenario, only a single path would be cached</p>
+
+<p>Not true. A single path for a particular IP-address would be cached. Very similar to today&#39;s hashing-function. The only difference is that in fast-switching, the port-number was not used in the hashing. What happened is that when a destination-address was encountered that was not in the cache yet, the packet was process-switched. And in the RIB, when a destination had multiple next-hops, the entry had a pointer to the last next-hop used. So process-switching used the next next-hop to install the fast-switch cache-entry. That is why it was said: process-switching load-balances per packet, fast-switching load-balances per ip-address. I remember giving advice to TAC-customers to disable fast-switching when they wanted per-packet load-balancing over 2 slow lines (e.g. 2 ISDN channels).</p>
+
+<p>&gt; Figuring out what entries one needs to invalidate must have been an interesting challenge</p>
+
+<p>I think this problem was never solved. Cisco tried a few approaches. And then realized it wasn&#39;t possible. I think this process lasted about a year (or less) (somewhere in 1995). In the end, the only valid solution was to invalidate the whole cache on any change to the routing table.</p>
+
+<p>Cisco then started with FIB-switching (which later was called CEF).</p>
+
+<p>&gt; they simply flushed the whole cache when they couldn&rsquo;t decide what to do</p>
+
+<p>That is what I remember too.</p>
+
+<p>&gt; ARP/ND table</p>
+
+<p>I think fast-switching was dead before IPv6 took off. I think all cisco platforms had switched to FIB-switching very quickly. The CEF project started spring 1996. I think all platforms, including low-end, had switched to CEF in 2, maybe 3 years. (Someone else might remember better than me). Nobody was seriously using IPv6 in 1998. I doubt fast-switching every supported IPv6.</p>
+
+<p>&gt; Internet core experienced numerous regional brownouts in those days until Cisco managed to get its act together</p>
+
+<p>This makes it look like cisco was clueless. May I remind you that in those years (1994-1997) there was the biggest explosion of growth of the Internet. And that besides cisco there were zero companies that could build routing software that came even close to working properly. It was until 1998-1999 that another company started selling routers that were deployable (and that software was mostly written by ex-cisco programmers).</p>
+
+<p>&gt; exception .... cache might be large enough to hold all potential destinations</p>
+
+<p>No, even then caching doesn&#39;t work. Not if the cache-entries change once in a while. The problem is not as much the size of the cache, it is the maintaining of the cache.</p>
+
+<p>An old joke about programming: &quot;There are only two hard things in Computer Science: cache invalidation and naming things&quot;. (Quote by Phil Karlton, according to the Internet). Fast-switching is another proof of this.</p>
+
+<p>&gt; Limited memory was only reason Cisco went down the cache-based forwarding</p>
+
+<p>I don&#39;t think so. I think the reason was fast-forwarding was done during an interrupt-handler. And thus had to be quick. A simple hash-table was used as cache. If fast-switching had been using the RIB, the locking (or actually disabling interrupts) when changing the RIB would have been a nightmare. And as look-entries were a combination of recursive-lookup, arp-lookup and pre-computed encaps-header, why not put that in a separate table?</p>
 </div>
           </div>
         </li>
