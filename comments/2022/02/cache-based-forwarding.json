@@ -36,6 +36,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "28 February 2022 05:13",
+               "html": "<p>Bad wording. Should have said &quot;multiple lookups in the IP routing table&quot;. Fixed.</p>\n",
+               "id": "1057",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-02-28T17:13:36",
+               "ref": "1051",
+               "type": "comment"
+            }
+         ],
          "date": "27 February 2022 05:13",
          "html": "<p>&gt; we had to use router CPU to walk</p>\n\n<p>I think you are mixing up two things. The forwarding entries had a simple combination of: (destination, outgoing interface, mac-address (actually encaps header)). So during packet-forwarding, no walk needed to be done. Just a simple lookup. The &quot;walking you are referring to happened during &quot;routing table maintenance&quot;. E.g. BGP walking its NLRI entries, to check if the nexthop still had the best IGP-metric, and whether nexthops were still valid. This was not done during route-lookup.</p>\n\n<p>Two-stage lookups during forwarding were introduce later. Because of PIC. This allows the RIB to send 1 message to the FIB, and the FIB makes 1 adjustment, impacting many (possibly tens or hunderds of thousands of routes). The trade-off here is: slightly more complex lookup (2 stages) versus much quicker updating the FIB. Note, FIBs in hardware can do in the order of 10K+ changes per second. Not very fast.</p>\n",
          "id": "1051",
