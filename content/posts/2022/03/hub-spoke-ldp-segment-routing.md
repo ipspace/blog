@@ -1,7 +1,7 @@
 ---
 title: "Segment Routing vs LDP in Hub-and-Spoke Networks"
 date: 2022-03-02 07:32:00
-tags: [ MPLS ]
+tags: [ MPLS, segment routing ]
 ---
 I got an interesting question that nicely illustrates why Segment Routing (the MPLS variant) is so much better than LDP. Imagine a redundant hub-and-spoke network with hundreds of spokes. Let's settle on 500 spokes -- IS-IS supposedly has no problem dealing with a link-state topology of that size.
 
