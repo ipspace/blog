@@ -1,6 +1,6 @@
 ---
 title: "Hub-and-Spoke VPLS: Revenge of LDP"
-date: 2022-03-09 07:55:00
+date: 2022-03-16 07:55:00
 tags: [ MPLS, segment routing ]
 ---
 In the [Segment Routing vs LDP in Hub-and-Spoke Networks](/2022/03/hub-spoke-ldp-segment-routing.html) blog post I explained why you could get into interesting scaling issues when running MPLS with LDP in a large hub-and-spoke network, and how you can use Segment Routing (MPLS edition) to simplify your design.
