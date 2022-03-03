@@ -3,7 +3,7 @@ title: "Data Plane Quirks in Virtual Network Devices"
 date: 2022-03-03 07:48:00
 tags: [ NFV ]
 ---
-Have you noticed an [interesting twist in the ICMP Redirects saga](/2022/02/nexus-icmp-redirects.html): operating systems of some network devices might install redirect entries and use then for control plane traffic -- an interesting implementation side effect of the architecture of most modern network devices.
+Have you noticed an [interesting twist in the ICMP Redirects saga](/2022/02/nexus-icmp-redirects.html): operating systems of some network devices might install redirect entries and use them for control plane traffic -- an interesting implementation side effect of the architecture of most modern network devices.
 
 A large majority of network devices run on some variant of Linux or \*BSD operating system, the only true exception being ancient operating systems like Cisco IOS[^XE]. The network daemons populate various routing protocol tables and compute the best routes that somehow get merged into a single routing table *that might still be just a data structure in some user-mode process*.
 <!--more-->
