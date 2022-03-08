@@ -32,7 +32,7 @@ But surely that's just a hardware limitation; [software-based flow based forward
 
 ### But It Does Work Sometimes
 
-Erik Auerswald made some excellent remarks about real-life flow-based forwarding in a comment to the _[Cache-Based Packet Forwarding](https://blog.ipspace.net/2022/02/cache-based-forwarding.html)_ blog post:
+[Erik Auerswald](https://www.linkedin.com/in/erik-auerswald-2b8b73171/) made some excellent remarks about real-life flow-based forwarding in a comment to the _[Cache-Based Packet Forwarding](https://blog.ipspace.net/2022/02/cache-based-forwarding.html)_ blog post:
 
 > Firewalls, i.e., devices where network topology is just a small part of the forwarding decision, often employ flow caches (for individual data flows) for performance optimization. In some "high-end" firewalls this flow cache is offloaded to hardware. Since per flow offload is often the best such a device can use, it is done in practice, and usually works well enough.
 
@@ -40,13 +40,13 @@ Apart from good engineering (which was somewhat lacking in the early versions of
 
 Speaking of hardware offload, Arista implemented the ultimate solution in its [DirectFlow Assist for Palo Alto firewalls](https://www.arista.com/assets/data/pdf/Whitepapers/AristaPAN_Solution_Brief.pdf). An Arista switch would monitor firewall syslog messages and install flow entries into TCAM to bypass the firewall for accepted high-volume flows like backups. I have never heard of anyone using that solution though.
 
-Eric also mentioned interesting experience with Enterasys switches:
+Erik also mentioned interesting experience with Enterasys switches:
 
 > Regarding networking devices primarily used for routing and bridging, the Enterasys Networks N-Series and their successors, K-Series and S-Series, based on CoreFlow resp. CoreFlow2 ASICs, used caching of individual flows in hardware forwarding tables as their only forwarding architecture. In practice, those switches worked well in the "enterprise" networks they were designed for. Of course it was possible to create overload with specific tests to demonstrate the potential for problems.
 
 It's nice to hear someone made hardware flow-based forwarding work in production networks (I never heard anything bad about Enterasys), but it's also worth keeping in mind that we're talking about gigabit campus edge devices with approximately 200 Gbps of throughput ([source](https://www.networkworld.com/article/2201700/enterasys-bolsters-switches-with-automation--access-control.html)). Assuming an average flow generates 1 MB of traffic, we're talking about ~25.000 flow setups (packet inspections) per second, which still seems to be a bit on the high side considering you'd be attaching individual users and access points to those gigabit ports. Anyway, you can get it done with a decent CPU and well-engineered hardware architecture that enables to CPU to push that many flow records into forwarding hardware.
 
-There's another benefit of using (large enough) hardware flow cache: it can be [implemented as a hash table instead of TCAM](https://blog.ipspace.net/2022/02/packet-forwarding-header-lookup.html) -- the device could implement complex policies in software and use cheaper hardware for high-speed packet forwarding. Back to Eric:
+There's another benefit of using (large enough) hardware flow cache: it can be [implemented as a hash table instead of TCAM](https://blog.ipspace.net/2022/02/packet-forwarding-header-lookup.html) -- the device could implement complex policies in software and use cheaper hardware for high-speed packet forwarding. Back to Erik:
 
 > Since per flow hardware offload allowed implementing complex, but still high performance, traffic filtering policies, replacing CoreFlow(2) based devices with networking devices using topology based forwarding often provided challenges regarding traffic filtering policies (i.e., either keep complex line-rate traffic filters, or use a different networking device with faster interfaces and topology based forwarding, but not both).
 
