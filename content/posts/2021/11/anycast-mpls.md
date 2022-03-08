@@ -217,6 +217,8 @@ Next:
 * Download the [lab topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) into an empty directory
 * Execute **netlab up**
 
+Alternatively, you can [download the configuration tarball into an empty directory](https://github.com/ipspace/netsim-examples/raw/master/routing/anycast-mpls-ospf/anycast-mpls-ospf.tar.gz), extract configuration files from it, and start the lab with *containerlab.*
+
 ### Revision History
 
 2021-11-17
@@ -228,3 +230,5 @@ Next:
 2022-02-16
 : Rewrote the blog post to use Arista cEOS. Also added lab setup instructions.
 
+2022-03-08
+: Added a link to configuration tarball
