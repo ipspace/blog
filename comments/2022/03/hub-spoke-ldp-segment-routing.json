@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "09 March 2022 10:14",
+               "html": "So you are telling us: &quot;The 2 main people from cisco east-coast told me that the cisco west-coast people messed it up&quot;? Yeah, right.<br />\n\n<p>(Besides, there was only one good programmer in Boston: Dan Tappan. Everybody else there was an &quot;architect&quot;. I don&#39;t believe east-coast would have done better.</p>\n\n<p>The issue is much simpler. UUnet and iMCI were designing their new backbones with routers at the edge, and all Fore ATM switches in the middle. That was a $100M market that cisco was losing out on. At the same time, Ipsilon came with their proprietary technology with some flow-based, connection-oriented, doing IP-packet switching over ATM  circuits. Lots of people at ISPs (and even at the IETF) loved the idea of having circuits. Old telephone people never change.</p>\n\n<p>So Yakhov came with MPLS (first called tag-switching). It was basically the idea of using connections (LSPs) to compete with Fore and Ipsilon. And nobody thought of doing &quot;connectionless labels&quot;. That is how we ended up with LDP and TE-RSVP. Because the people who made the purchasing decisions, and the VCs that invested in new technology, all wanted connection-oriented technology. And then BGP-MPLS-VPNs came. Another crappy idea. But it allowed ISPs to &quot;sell a managed service&quot;. Another reason why ISPs wanted MPLS.</p>\n\n<p>Yakhov once told me that they seriously thought about using the existing source-routing IP-header option. They decided to not use it, because IP-options had a bad rep. If have often thought: &quot;I wish they had done TE via IP-source-routing&quot;. I guess we got it after all, we just call it SRv6 now. :)</p>\n\n<p>The simple fact is, when MPLS came about, nobody thought of doing &quot;connectionless labels&quot;. I guess the connection-oriented mind-set was still active in many people.</p>\n",
+               "id": "1083",
+               "name": " Henk",
+               "pub": "2022-03-09T22:14:38",
+               "ref": "1077",
+               "type": "comment"
+            }
+         ],
          "date": "09 March 2022 11:08",
          "html": "<p>In 2014 when I did the first prototype implementation of MPLS-SR node labels, I was stunned that just with an incremental add of 500 Lines of code to the vanilla ipv4/ipv6 IS-IS codebase I got full any-to-any connectivity, no sync issues, no targeted sessions for R-LFA .... essentially labeled transport comes for free. Later I did ask George Swallow and Yakov Rekhter (The original MPLS design team) &quot;Why did you not do this right from the start ?&quot; and the answer was not pretty: &quot;IGPs have been done in San Jose and the MPLS design team was mostly located in the Boxborough office. At the time there was lots of stability issues with IGPs and management has asked us not to touch any IGP code&quot;</p>\n",
          "id": "1077",
