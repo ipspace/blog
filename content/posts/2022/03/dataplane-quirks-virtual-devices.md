@@ -2,6 +2,7 @@
 title: "Data Plane Quirks in Virtual Network Devices"
 date: 2022-03-03 07:48:00
 tags: [ NFV ]
+lastmod: 2022-03-09 07:44:00
 ---
 Have you noticed an [interesting twist in the ICMP Redirects saga](/2022/02/nexus-icmp-redirects.html): operating systems of some network devices might install redirect entries and use them for control plane traffic -- an interesting implementation side effect of the architecture of most modern network devices.
 
@@ -24,7 +25,18 @@ Here's what you might experience when doing that:
 
 Don't get me wrong: there's nothing wrong with virtual machines not implementing all the intricacies of the hardware data plane when they are supposed to be used for control-plane tests or validation... but you have to understand the limitations. You cannot expect to be able to fully validate network operation after a configuration change in a virtual lab if you cannot emulate all data plane functionality.
 
+### Containers Are Even More Interesting
+
+Some vendors provide virtual versions of their network operating systems in container format. You SHOULD NOT use them for anything more than control-plane functionality. Here are just a few minor details we found so far:
+
+* The last time I tested Juniper cRPD it couldn't report its interfaces, making it impossible to use Ansible to configure it.
+* Arista cEOS does not seem to have a working MPLS data plane. **ping mpls** and **traceroute mpls** work across a network of vEOS (VM) devices, but not cEOS containers (HT: [Bogdan Golab](https://www.linkedin.com/in/bogdan-golab-258558/)).
+* It's pretty much impossible to load a kernel module within a container. For example, Cumulus implementation of MLAG does not work in a container due to a custom **bridge** kernel module. Michael Kashin solved that problem by [packing a Firecracker VM into a container](https://networkop.co.uk/post/2021-05-cumulus-ignite/). While that approach solves the data plane issues, it loses most benefits we could get from containerized network devices like a single copy of Linux or shared code/memory.
+
 ### Revision History
+
+2022-03-09
+: Added a few container quirks.
 
 2022-03-04
 : Added the details provided by [Béla Várkonyi](https://www.linkedin.com/in/belavarkonyi/)
