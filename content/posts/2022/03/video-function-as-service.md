@@ -5,7 +5,7 @@ tags: [ cloud, video ]
 ---
 *Serverless computing* (marketing term for code running on servers managed by other people) is one of the must-have terms if you're playing a Buzzword Bingo, but what does it really mean and how does the whole thing work?
 
-[Matthias Luft](https://www.ipspace.net/Author:Matthias_Luft) and [Florian Barth](https://www.ipspace.net/Author:Florian_Barth) illustrated the concept during the _[Introduction to Cloud Computing](https://www.ipspace.net/Introduction_to_Cloud_Computing)_ webinar with a [short demo in which they build a simple AWS Lambda function](https://my.ipspace.net/bin/get/Cloud101/3%20-%20Functions-as-a-Service%20Demo.mp4?doccode=Cloud101).
+[Matthias Luft](https://www.ipspace.net/Author:Matthias_Luft) and [Florian Barth](https://www.ipspace.net/Author:Florian_Barth) illustrated the concept during the _[Introduction to Cloud Computing](https://www.ipspace.net/Introduction_to_Cloud_Computing)_ webinar with a [short demo in which they build a simple AWS Lambda function](https://my.ipspace.net/bin/get/Cloud101/3%20-%20Functions-as-a-Service%20Demo.mp4?doccode=Cloud101). For a more network-centric view, read the *[Can We Ping a Lambda Function](https://netmemo.github.io/post/lambdaping/)* blog post by [Noel Boulene](https://twitter.com/noyelb).
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/3%20-%20Functions-as-a-Service%20Demo.mp4?doccode=Cloud101){{</jump>}}
 
