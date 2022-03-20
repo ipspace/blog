@@ -56,8 +56,90 @@ included: /home/pipi/net101/tools/netsim/ansible/tasks/deploy-module.yml for pe1
 
 The first device in the batch has **module** set to `[ ospf, mpls ]`, and it looks like Ansible in its infinite optimization wisdom decides it's OK to use the same order for all other devices in the same batch. Even though PE1 (for example) has **module** set to `[ ospf, bgp, mpls ]`, the actual order of execution is `ospf, mpls, bgp`, and the BGP neighbors are never activated in the BGP-LU address family because they configuration snippets try to activate them before they are defined.
 
-The only workaround I could find was to set **serial** (batch size) to one[^FREE] to deploy configurations on a single device at a time (so Ansible has nothing to optimize). It works, but it also makes lab deployment way slower than it should have been.
+The only workaround I could find *within Ansible* was to set **serial** (batch size) to one[^FREE] to deploy configurations on a single device at a time (so Ansible has nothing to optimize). It works, but it also makes lab deployment way slower than it should have been.
 
 Maybe I made a wrong choice and shouldn't use something that thinks a data structure is a programming language for any serious work, but as they say, _the road to (automation) hell is paved with good intentions_.
+
+### Simple Tasks Are Not Affected
+
+I found it pretty impossible that something so unexpected would not get noticed and fixed, so I did something similar with a simple **debug** task:
+
+```
+- hosts: all
+  tasks:
+  - debug:
+      msg: "{{ item }} on {{ inventory_hostname }}"
+    loop: "{{ module }}"
+    when: module is defined
+```
+
+This time, the items did not get rearranged -- the debugging messages were printed in the order the modules were listed in **module** lists. The interleaving of tasks across multiple devices was interesting, but within a single device the order was correct.
+
+```
+TASK [debug] **************************
+ok: [p] => (item=ospf) =>
+  msg: ospf on p
+ok: [ce1] => (item=bgp) =>
+  msg: bgp on ce1
+ok: [pe2] => (item=ospf) =>
+  msg: ospf on pe2
+ok: [ce2] => (item=bgp) =>
+  msg: bgp on ce2
+ok: [pe1] => (item=ospf) =>
+  msg: ospf on pe1
+ok: [rr] => (item=ospf) =>
+  msg: ospf on rr
+ok: [p] => (item=mpls) =>
+  msg: mpls on p
+ok: [ce1] => (item=mpls) =>
+  msg: mpls on ce1
+ok: [rr] => (item=bgp) =>
+  msg: bgp on rr
+ok: [rr] => (item=mpls) =>
+  msg: mpls on rr
+ok: [pe2] => (item=bgp) =>
+  msg: bgp on pe2
+ok: [pe2] => (item=mpls) =>
+  msg: mpls on pe2
+ok: [ce2] => (item=mpls) =>
+  msg: mpls on ce2
+ok: [pe1] => (item=bgp) =>
+  msg: bgp on pe1
+ok: [pe1] => (item=mpls) =>
+  msg: mpls on pe1
+```
+
+**Conclusion**: The weird rearranging behavior applies to **include_tasks**, but not to regular tasks.
+
+### But Wait, It Gets Worse
+
+As the Ansible playbook I described above gets used from within *netsim-tools*, it might be possible to work around the "Ansible optimization strategy 🤪":
+
+* Create a new group (*modules*) that will contain only the devices with configuration modules, eliminating the need for a complex **when** condition and default values. Use this new group (instead of **all**) in the Ansible play.
+* Create a global list of modules (**netlab\_module**) in the correct order and save it as a group variable to make sure all hosts get the same value
+* Iterate over the global list of modules and include the *deploy module* task list only for those modules that are needed by individual devices (when the loop variable is in **module** list).
+
+The next iteration of the _Deploy module-specific configurations_ play was thus something along these lines:
+
+```
+- name: Deploy module-specific configurations
+  hosts: modules
+  strategy: "{{ netsim_strategy|default('linear') }}"
+  tags: [ module,test ]
+  tasks:
+  - include_tasks: "tasks/deploy-module.yml"
+    loop: "{{ netlab_module }}"
+    loop_control:
+      loop_var: config_module
+    when: config_module in module
+```
+
+Guess what... **it doesn't work**. The moment there's a *when* condition in the *include_tasks* task, Ansible starts rearranging the loop iterations. In the end, there's absolutely no difference between the original code (where we iterated over different lists for different devices) and the one above (where the list we iterate over is the same, but the task is not always executed).
+
+### The Final Workaround
+
+In the end, I decided that the only possible result of fighting software windmills is a damage to one's sanity, and gave up. I moved the **when** condition into the included task list -- the top-level includes are always executed, but then the tasks within the included task list might be skipped.
+
+The details are in [this commit](https://github.com/ipspace/netsim-tools/commit/2a1b1dedac8db99f5ccb5cbc2a5ef2bdc196887a).
 
 [^FREE]: One would expect the **free** strategy to work as well, but it doesn't -- it behaves in exactly the same way as the **linear** strategy.
