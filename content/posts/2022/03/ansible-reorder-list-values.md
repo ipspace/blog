@@ -140,6 +140,6 @@ Guess what... **it doesn't work**. The moment there's a *when* condition in the 
 
 In the end, I decided that the only possible result of fighting software windmills is a damage to one's sanity, and gave up. I moved the **when** condition into the included task list -- the top-level includes are always executed, but then the tasks within the included task list might be skipped.
 
-The details are in [this commit](https://github.com/ipspace/netsim-tools/commit/2a1b1dedac8db99f5ccb5cbc2a5ef2bdc196887a).
+The details are in [this commit](https://github.com/ipspace/netsim-tools/commit/da013c44d85bb0fd210ad478b70ffcb24bc762cd).
 
 [^FREE]: One would expect the **free** strategy to work as well, but it doesn't -- it behaves in exactly the same way as the **linear** strategy.
