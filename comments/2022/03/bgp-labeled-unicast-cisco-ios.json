@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "23 March 2022 10:53",
+         "html": "<p>Having one RIB for labeled and unlabeled unicast on IOS has caused weird interop problem in the field. Especially since most other implementations (even Cisco IOS-XR) have different RIB and negotiate labeled and unlabeled SAFI separately.</p>\n\n<p>Take for example 6PE - remote PE expects an update with :FFFF: nexthop + MPLS label. Unlabeled IPv6 SAFI is not used between PE so it will probably not be negotiated. IOS code has some checks which tell whether to attach label or not, depending on nexthop format, whether nexthop was changed etc. Sometimes it might decide to send an unlabeled update over a labeled unicast session.</p>\n\n<p>It can get even worse if the peer is pre-RFC7606, so it might just drop the BGP session with all AF because of this.</p>\n",
+         "id": "1104",
+         "name": "Dmytro Shypovalov",
+         "pub": "2022-03-23T10:53:24",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2022/03/bgp-labeled-unicast-cisco-ios.html"
+}
