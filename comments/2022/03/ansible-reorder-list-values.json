@@ -9,6 +9,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "24 March 2022 05:29",
+               "html": "<p>Of course you&#39;re right (and I love the large L2 domains analogy &#x1F923;)</p>\n\n<p>Going back to the first principles, I could have created an Ansible playbook on the fly (after all, it&#39;s just a YAML data structure) and execute it, but I was naive enough to think I could push through the idea of using host_vars data structures to drive flow of execution.</p>\n",
+               "id": "1110",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-03-24T17:29:32",
+               "ref": "1109",
+               "type": "comment"
+            }
+         ],
          "date": "24 March 2022 12:13",
          "html": "<p>Dynamic inclusion during runtime in Ansible (<code>include</code>, <code>include_tasks</code>, <code>include_role</code>) is like large layer-2 domains/long-distance VM motion to me ;-): it should be avoided as much as possible and quite often is not actually necessary. Replacing dynamic inclusion with static imports (<code>import_playbook</code>, <code>import_role</code>, <code>import_tasks</code>) usually requires rearchitecting though.</p>\n\n<p>PS: The use of <code>include_vars</code> is probably acceptable, although <code>inventory</code>/<code>host_vars</code>/<code>group_vars</code> should be preferred.</p>\n",
          "id": "1109",
