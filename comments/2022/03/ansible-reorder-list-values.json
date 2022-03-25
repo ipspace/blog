@@ -37,9 +37,17 @@
          "name": "Sebastian Schrader",
          "pub": "2022-03-24T12:13:26",
          "type": "comment"
+      },
+      {
+         "date": "25 March 2022 11:50",
+         "html": "<p>Hello Ivan,</p>\n\n<p>I am surely missing something, but i was not able to reproduce your issue with the following data and playbooks. My ansible (v 2.7 and 2.9) runs smoothly  and includes the tasks in the expected order.</p>\n\n<pre>\r\nark@amp-ansible:~/ipspace$ cat inventory.yml\r\nall:\r\n  hosts:\r\n    pe1:\r\n      modules: [ ospf, bgp, mpls ]\r\n    ce1:\r\n      modules: [ ospf, bgp, mpls, gre, ipsec ]\r\n    ce2:\r\n      modules: [ ospf, bgp, mpls, gre, ipsec ]\r\nark@amp-ansible:~/ipspace$ cat inner.yml\r\n---\r\n  - debug:\r\n      msg: &quot;&#123;&#123; module &#125;&#125; on &#123;&#123; inventory_hostname &#125;&#125;&quot;\r\n  - pause:\r\n      seconds: 1\r\nark@amp-ansible:~/ipspace$ cat multiple.yml\r\n- hosts: all\r\n  gather_facts: no\r\n  tasks:\r\n  - include_tasks: inner.yml\r\n    loop: &quot;&#123;&#123; modules &#125;&#125;&quot;\r\n    loop_control:\r\n        loop_var: module\r\n    when: modules is defined\r\nark@amp-ansible:~/ipspace$\r\nark@amp-ansible:~/ipspace$ /usr/local/bin/ansible-playbook -i inventory.yml multiple.yml | grep msg\r\n    &quot;msg&quot;: &quot;ospf on pe1&quot;\r\n    &quot;msg&quot;: &quot;ospf on ce1&quot;\r\n    &quot;msg&quot;: &quot;ospf on ce2&quot;\r\n    &quot;msg&quot;: &quot;bgp on pe1&quot;\r\n    &quot;msg&quot;: &quot;bgp on ce1&quot;\r\n    &quot;msg&quot;: &quot;bgp on ce2&quot;\r\n    &quot;msg&quot;: &quot;mpls on pe1&quot;\r\n    &quot;msg&quot;: &quot;mpls on ce1&quot;\r\n    &quot;msg&quot;: &quot;mpls on ce2&quot;\r\n    &quot;msg&quot;: &quot;gre on ce1&quot;\r\n    &quot;msg&quot;: &quot;gre on ce2&quot;\r\n    &quot;msg&quot;: &quot;ipsec on ce1&quot;\r\n    &quot;msg&quot;: &quot;ipsec on ce2&quot;\r\nark@amp-ansible:~/ipspace$\r\n</pre>\n",
+         "id": "1113",
+         "name": " Ark",
+         "pub": "2022-03-25T11:50:49",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2022/03/ansible-reorder-list-values.html"
 }
