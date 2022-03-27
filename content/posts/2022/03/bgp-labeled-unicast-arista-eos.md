@@ -6,7 +6,7 @@ pre_scroll: True
 ---
 A week ago I described how [Cisco IOS implemented BGP Labeled Unicast](bgp-labeled-unicast-cisco-ios.html). In this blog post we'll focus on Arista EOS using [the same lab as before](https://github.com/ipspace/netsim-examples/tree/master/MPLS/ldp-bgp-lu):
 
-{{<figure src="/2022/03/bgp-lu-topology.bgp.png" caption="BGP sessions in the BGP-LU lab">}}
+{{<figure src="/2022/03/bgp-lu-topology.bgp-eos.jpg" caption="BGP sessions in the BGP-LU lab">}}
 
 <!--more-->
 Arista EOS treats Labeled Unicast as a completely separate address family:
@@ -93,9 +93,11 @@ BGP routing table entry for 10.0.0.6/32
       Tunnel RIB eligible
 ```
 
-Even more interesting, Arista EOS does not enter the labeled unicast prefixes into the IP routing table by default. If we deactivate the neighbors in the IPv4 address family on the route reflector (turning the central AS into BGP-LU-only AS), the routing table on PE2 no longer contains the BGP route for CE1:
+Even more interesting, Arista EOS does not enter the labeled unicast prefixes into the IP routing table by default. After deactivating the neighbors in the IPv4 address family on the route reflector (turning the central AS into BGP-LU-only AS), the routing table on PE2 no longer contains the BGP route for CE1.
 
-{{<cc>}}BGP table and IP routing table on PE2{{</cc>}}
+{{<figure src="/2022/03/bgp-lu-only-topology.jpg" caption="Route reflector in AS6500 propagates only BGP-LU prefixes">}}
+
+{{<cc>}}BGP table and IP routing table on PE2 after the reconfiguration of route reflector in AS65000{{</cc>}}
 ```
 pe2#show ip bgp
 ...
@@ -138,7 +140,9 @@ The **bgp labeled-unicast rib ip** nerd knob solves the IP forwarding challenges
 I couldn't find a way to import routes from IPv4 address family into IPv4 Labeled Unicast address family, so it looks like we have these design options:
 
 * Use BGP-LU to distribute next hop labels for other services (Inter-AS MPLS/VPN Option C typically uses this approach as does SR-MPLS-over-BGP). IPv4-LU/IPv6-LU address families are totally independent from the IPv4/IPv6 address families and are not used for IP forwarding.
-* Use BGP-LU to distribute BGP prefixes that can be used for IP forwarding. Labeled prefixes are preferred over unlabeled ones, but you SHOULD run labeled- and unlabeled address families in parallel in a non-homogeneous environment to ensure at least one of them has a usable prefix. 
+* Use BGP-LU to distribute BGP prefixes that can be used for IP forwarding. Labeled prefixes are preferred over unlabeled ones, but you SHOULD run labeled- and unlabeled address families in parallel in a non-homogeneous environment to ensure at least one of them has a usable prefix.
+
+Have I missed something? Please write a comment!
 
 ### Summary: Arista EOS
 
