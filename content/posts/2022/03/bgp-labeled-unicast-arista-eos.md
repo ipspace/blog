@@ -9,6 +9,8 @@ A week ago I described how [Cisco IOS implemented BGP Labeled Unicast](bgp-label
 {{<figure src="/2022/03/bgp-lu-topology.bgp-eos.jpg" caption="BGP sessions in the BGP-LU lab">}}
 
 <!--more-->
+{{<note info>}}Arista EOS has two sets of routing daemons configured as *ribd* or *multi-agent* model. This blog post is describing the behavior of *multi-agent* model.{{</note>}}
+
 Arista EOS treats Labeled Unicast as a completely separate address family:
 
 {{<cc>}}BGP-LU configuration on Arista EOS{{</cc>}}
