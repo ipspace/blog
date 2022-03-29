@@ -1,6 +1,7 @@
 ---
 title: "Combining BGP and IGP in an Enterprise Network"
 date: 2022-03-28 08:42:00
+lastmod: 2022-03-29 16:54:00
 tags: [ BGP, IP routing, design ]
 ---
 Syed Khalid Ali left the following question on an old blog post [describing the use of IBGP and EBGP in an enterprise network](https://blog.ipspace.net/2011/08/ibgp-or-ebgp-in-enterprise-network.html):
@@ -27,8 +28,11 @@ Here are a few good reasons why you might want to use BGP in your network[^NV]:
 * If you insist on **having thousands of routers connected to the same subnet** (typically Carrier Ethernet or DMVPN). IGPs are delicate souls, and were not designed to survive such an abusive behavior.
 * If you want to **implement routing policies** that are more complex than "use LTE for backup" which can be solved with link cost. In this scenario, BGP is usually warranted in large multinational core networks with expensive core links. Use IBGP within regions (where you don't care about routing policy) and EBGP between the regions -- AS path is a nice mechanism to keep track of the regions the traffic would have to traverse.
 * If you're **using MPLS/VPN services**, and want to retain your sanity, run EBGP with the service provider. I covered that scenario in the _[Choose the Optimal VPN Service](https://www.ipspace.net/Choose_the_Optimal_VPN_Service)_ webinar.
+* If you're running a **routing protocol with servers or VM instances** in your data center, use EBGP to [build a trust barrier](https://blog.ipspace.net/2013/08/virtual-appliance-routing-network.html) between network and hosts.[^MF] 
 
 Have I missed something? Please write a comment!
+
+[^MF]: IBM mainframes supported only OSPF a long while ago, resulting in designs where a single link failure would inadvertently turn the mainframe into the most expensive (and slowest) core router you've ever seen.
 
 ### A Word on Redistribution
 
@@ -48,3 +52,10 @@ Alternatively, advertise the default route from all BGP speakers into IGP; the B
 out.
 
 [^BFC]: Of course you could also build a BGP-free MPLS core, but we agreed to keep things simple, right? 
+
+Finally, if you're running BGP between servers (or NSX-T edge gateways) and data center switches, there's usually no need to propagate these more-specific routes beyond the data center edge -- advertise a summary prefix (or a few of them) into the WAN network and move on.
+
+### Revision History
+
+2022-03-29
+: Added _routing on servers_ use case based on feedback from Sander Steffann.
