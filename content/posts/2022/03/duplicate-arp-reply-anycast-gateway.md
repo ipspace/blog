@@ -15,7 +15,7 @@ Let's start with a pair of leaf switches in an MLAG pair. You might configure an
 
 {{<figure src="/2022/03/MLAG-architecture.jpg">}}
 
-The scenario seems simple enough: the ARP request (broadcast) is sent over a single link in the LAG group, and whichever router gets the request will reply to it. For example, A sends the ARP request for gateway IP address to S2, and S2 replies to it. Missing accomplished.
+The scenario seems simple enough: the ARP request (broadcast) is sent over a single link in the LAG group, and whichever router gets the request will reply to it. For example, A sends the ARP request for gateway IP address to S2, and S2 replies to it. Mission accomplished.
 
 Reality is more complex than that. All broadcasts have to be propagated over the MLAG peer link because they might have to be sent to orphan nodes connected to the other switch in the MLAG pair. For example, A might have sent an ARP request for X to S2, and S2 must propagate it over the peer link to S1 so that it eventually reaches X.
 
