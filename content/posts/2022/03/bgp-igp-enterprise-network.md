@@ -1,7 +1,7 @@
 ---
 title: "Combining BGP and IGP in an Enterprise Network"
 date: 2022-03-28 08:42:00
-lastmod: 2022-03-29 16:54:00
+lastmod: 2022-03-31 16:54:00
 tags: [ BGP, IP routing, design ]
 ---
 Syed Khalid Ali left the following question on an old blog post [describing the use of IBGP and EBGP in an enterprise network](https://blog.ipspace.net/2011/08/ibgp-or-ebgp-in-enterprise-network.html):
@@ -23,6 +23,7 @@ Here are a few good reasons why you might want to use BGP in your network[^NV]:
 
 [^NV]: "Because my vendor told me to do so" is not one of them.
 
+* If you want to **advertise your address space to the public Internet** -- if you need redundant Internet connectivity, that's the only sane way to go.
 * If you plan to **run services that need BGP**, for example EVPN. In that case, please use the [simplest possible design](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics) (IBGP with IGP -- [more details](https://www.ipspace.net/kb/tag/BGP-DC.html)). [You're not Microsoft](https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html), and [don't have the scaling challenges](https://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol) that prompted them to use EBGP as an IGP.
 * If you have **too many prefixes and you're hitting IGP scaling limits**. In this case you might have to implement an edge IGP (to collect prefixes) and a different core IGP (to support IBGP). Does this sound too complex? It is; OSPF areas and route summarization might be a better fit unless you're dealing with a giant organically-grown mess. Also, CPUs today are a bit faster than they were the last time I was facing this particular design challenge.
 * If you insist on **having thousands of routers connected to the same subnet** (typically Carrier Ethernet or DMVPN). IGPs are delicate souls, and were not designed to survive such an abusive behavior.
@@ -59,3 +60,6 @@ Finally, if you're running BGP between servers (or NSX-T edge gateways) and data
 
 2022-03-29
 : Added _routing on servers_ use case based on feedback from Sander Steffann.
+
+2022-03-31
+: Added _redundant Internet connectivity_ use case
