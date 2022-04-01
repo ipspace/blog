@@ -21,7 +21,9 @@ I created a tree network to test the *anycast with MPLS* idea:
 
 The lab is built from Arista EOS containers running under *containerlab* (build instructions). The whole network is running OSPF, and MPLS/LDP will be enabled on all links. A1, A2 and A3 will advertise the same prefix (10.0.0.42/32) into OSPF. According to the "*no anycast with MPLS*" claim, L1 should not be able to reach all three anycast nodes.
 
-You probably know I prefer typing CLI commands over chasing rodents, so I used *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)* to build the lab. Here's the [topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) (I don't think it can get any simpler than that)
+You probably know I prefer typing CLI commands over chasing rodents[^RD], so I used *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)* to build the lab. Here's the [topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) (I don't think it can get any simpler than that)
+
+[^RD]: To be precise, _Mus computatorum_ species
 
 {{<cc>}}Initial version of the topology file{{</cc>}}
 ```
@@ -41,7 +43,7 @@ links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 
 Now for the fun part: *netsim-tools* don't support MPLS/LDP or anycast yet[^R113]. Time for some custom Jinja2 templates. 
 
-[^R113]: As of release 1.1.3
+[^R113]: As of release 1.1.3. MPLS and LDP were added in release 1.2.
 
 Fortunately, Arista EOS doesn't need any interface-level configuration to enable MPLS and LDP. The [configuration template](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls-ospf/mpls-ldp.j2) is thus as simple as it can get:
 
