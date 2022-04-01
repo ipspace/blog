@@ -1,6 +1,6 @@
 ---
 title: "Next Hops of BGP Routes Reflected by Arista EOS"
-date: 2022-04-04 06:09:00
+date: 2022-04-07 06:09:00
 tags: [ BGP ]
 pre_scroll: True
 ---
