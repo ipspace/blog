@@ -18,7 +18,9 @@ Let's start with the first answer.
 
 ## What Does MPLS Mean?
 
-For whatever reason some people understand _MPLS_ to mean _MPLS/VPN-based layer-3 connectivity services delivered by a service provider_, in which case "_do you care about MPLS?_" should really be "_are you buying/using MPLS/VPN services?_". That's an easy question -- as I explained last week, [MPLS/VPN is unnecessarily complex](https://blog.ipspace.net/2022/03/mpls-vpn-too-complex.html) (for a mix of good, bad, and ugly reasons), and so I'd prefer using anything else that meets the requirements[^CE].
+For whatever reason some people understand _MPLS_ to mean _MPLS/VPN-based layer-3 connectivity services delivered by a service provider_[^MPLSWORD], in which case "_do you care about MPLS?_" should really be "_are you buying/using MPLS/VPN services?_". That's an easy question -- as I explained last week, [MPLS/VPN is unnecessarily complex](https://blog.ipspace.net/2022/03/mpls-vpn-too-complex.html) (for a mix of good, bad, and ugly reasons), and so I'd prefer using anything else that meets the requirements[^CE].
+
+[^MPLSWORD]: For a deep dive into "_that is not what MPLS means_", read the _[You’re Probably Using The Term MPLS Wrong](https://www.networkfuntimes.com/youre-probably-using-the-term-mpls-wrong/)_ by Chris Parker.
 
 [^CE]: Keeping in mind that Carrier Ethernet is WAN bridging in disguise, so be careful how you use it.
 
