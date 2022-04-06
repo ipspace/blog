@@ -33,6 +33,45 @@
 
 <p>I know that some information can be obtained from market analysis firms (such as IDC) and that you have posts about some of the mentioned technologies. My point is not so much to ask specifically about each of them, but rather to highlight the lack of available up-to-date reliable information about the status of many technologies.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1139">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> James Harr</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1139" href="#1139">06 April 2022 03:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>TRILL more or less died a while ago. The notion of TRILL interop died really early on with each vendor doing their own control plane or data plane shenanigans.</p>
+
+<p>SPB more or less is gone too. From my perspective, when I was working with it, it was a beautiful story for campus networks. Stretch bridging domains strategically where you needed, keep backbone MAC tables clean and stable, and get simple L3VPNs.</p>
+
+<p>Avaya and Alcatel-Lucent were the only ones truly investing in it (SPB-M) from what I could tell. A few others like Enterasys were along for the ride (doing SPB-V). Avaya had the best story with very simple configuration, L3VPN support, and they even transparently implemented the loopbacks needed to deal with packet recirculation -- same problem most vxlan implementations had when implementing symmetric IRB in EVPN. You didn&#39;t even see that was happening in the config -- the loopbacks were hard wired, though you could never get them to actually tell you how much bandwidth was dedicated to it. Alcatel-Lucent-Enterprise made you install a loopback cable and a small pile of config to patch things together yourself.</p>
+
+<p>At any rate, the whole routing-in-and-out-of-tunnels thing I think really hampered SPBs its momentum. In the meantime, VXLAN (even with flood-and-learn forwarding semantics) gained popularity.</p>
+
+<p>Fast forward to today and I don&#39;t think much is being done with SPB. I&#39;ve implemented SPB (ALE&#39;s version) and it was OK. VXLAN-EVPN has a lot of promise but I can&#39;t see a campus network using it very often. There are too many knobs and too much config for limited gains. And hardware that has RIB/FIB space for a large campus gets pricy to run EVPN down to the access switch.</p>
+
+<p>That&#39;s the part I think we might have lost as an industry -- getting PE-like functionality down to the smallish scale, like access switches. It has its flaws and limitations but so does anything else.</p>
+
+<p>I might also just be romanticizing about what could have been ;-P     Markets rarely pick what&#39;s best and rarely is the definition of &quot;best&quot; consistent across businesses anyway. Still - I wouldn&#39;t consider SPB today any more than I&#39;d consider using ATM or flow based forwarding (sorry LISP)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
