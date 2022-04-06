@@ -47,7 +47,7 @@ And then the feature requests started:
 
 The list of MPLS/VPN features goes on and on. We have VRF selection using PBR, half-duplex VRF, RT rewrite, Inter-AS MPLS/VPN, RT-based ORF... There's a story behind every one of these features, often starting with a large service provider forcing a vendor to implement a nerd knob to fix a broken design.
 
-On top of that, service providers lacking the technical skills needed to run an outsourced core IP network increased the bad rap of MPLS/VPN technology. I had several customers who went directly from Frame Relay to Internet-based IPsec VPNs because they didn't trust the service provider to do a decent job. Those same service providers want to offer managed SD-WAN services today. I wish their customers plenty of luck; they might need it 🥴
+On top of that, service providers lacking the technical skills needed to run an outsourced core IP network increased the bad rap of MPLS/VPN technology. I had several customers who went directly from Frame Relay to Internet-based IPsec VPNs because they didn't trust the service provider to do a decent job. Those same service providers [want to offer managed SD-WAN services today](https://blog.ipspace.net/2020/03/sdwan-service-provider-perspective.html). I wish their customers plenty of luck; they might need it 🥴
 
 In the meantime (it's been over 20 years since my MPLS/VPN book was published), Carrier Ethernet became a viable alternative, and as much as it hurts me, I'm usually recommending customer-managed routers attached to Carrier Ethernet as a better (and safer) alternative to MPLS/VPN. You'll find more details in the _[Choose the Optimal VPN Service](https://www.ipspace.net/Choose_the_Optimal_VPN_Service)_ webinar.
 
@@ -56,3 +56,8 @@ In the meantime (it's been over 20 years since my MPLS/VPN book was published), 
 [^4ASN]: Instead of implementing 4-byte ASN. Networking industry loves to solve things with hacks. See also: NAT and CGN instead of IPv6.
 
 [^SAYNO]: And the SP account team would never say "_we don't do that because we'd be losing money on your stupid design_" (aka "_we sold it, it's Ops problem now_"). It's more convenient to wave a large P/O in front of the vendor account team, yell about missing features, and then blame the vendor for resulting complexity.
+
+### Revision History
+
+2022-04-05
+: Added a link to "SD-WAN: A Service Provider Perspective" blog post.
