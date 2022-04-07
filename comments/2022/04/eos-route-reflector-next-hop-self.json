@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "08 April 2022 12:32",
+               "html": "<p>To be fair, &#39;nexthop-self&#39; isn&#39;t the default behavior when advertising towards the RR client, if you notice the config:\n     neighbor 10.0.0.2 next-hop-self\nfor the RR client 10.0.0.2. If you don&#39;t configure that, it will be nexthop-unchanged, which would be compliant to the &#39;SHOULD&#39; behavior. </p>\n\n<p>So in a way, the default behavior difference here is really whether a config would take its face value, or a strict higher layer would always forbid it, by default. </p>\n",
+               "id": "1145",
+               "name": " Qing Yang",
+               "pub": "2022-04-08T00:32:10",
+               "ref": "1142",
+               "type": "comment"
+            }
+         ],
          "date": "07 April 2022 10:43",
          "html": "<p>Different vendor defaults can be surprising, indeed.</p>\n\n<p>Many vendors use a default different from the Arista EOS default described above. Some allow to configure similar behavior:</p>\n\n<ul>\n<li><p>On Cisco IOS-XR there is the command <code>ibgp policy out enforce-modifications</code> to get the behavior you described for Arista EOS above.</p></li>\n<li><p>On Cisco IOS the <code>neighbor &amp;lt;IP&amp;gt; internal-vpn-client</code> command enables this for iBGP PE&lt;---&gt;CE connections.</p></li>\n<li><p>Huawei VRP has the configuration command <code>reflect change-path-attribute</code> to enable changing path attribute of reflected routes via policy.</p></li>\n</ul>\n",
          "id": "1142",
