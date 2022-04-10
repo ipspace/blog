@@ -1,6 +1,6 @@
 ---
 title: "Everything Is Better with a GUI (even netsim-tools)"
-date: 2022-04-11 06:53:00
+date: 2022-04-18 06:53:00
 tags: [ automation ]
 series: netsim
 netsim_tag: overview
