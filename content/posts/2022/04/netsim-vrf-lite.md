@@ -1,6 +1,6 @@
 ---
 title: "Creating VRF Lite Labs With netsim-tools"
-date: 2022-04-18 06:30:00
+date: 2022-04-11 06:30:00
 tags: [ MPLS VPN ]
 series: netsim
 netsim_tag: use
