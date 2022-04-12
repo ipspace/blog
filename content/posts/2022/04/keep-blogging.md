@@ -21,7 +21,7 @@ Some people try to get around that by speeding up the videos. Supposedly that do
 
 [^IR]: Which happens to be incoherent rambling unless you did tons of preparations.
 
-**Takeaway:** smart people people who want to learn complex technical topics eventually figure out why it's better to read than to watch videos. People who want to be entertained watch videos because you can do that even when you're braindead[^WT].
+**Takeaway:** smart people people who want to learn complex technical topics eventually figure out why it's better to read than to watch videos. People who want to be entertained watch videos because you can do that even when you're too tired to think[^WT].
 
 On a related note, you might want to read [Deep Work](https://www.amazon.com/dp/B013UWFM52/) and [Digital Minimalism](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy-ebook/dp/B07DBRBP7G/) by Cal Newport. Unfortunately, his podcast leans toward the _stream of consciousness_ format, proving it's really hard to produce hour-long ad-lib content on your own.
 
