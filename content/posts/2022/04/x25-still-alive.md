@@ -23,4 +23,18 @@ Aside: X.25 was an ideal connectivity solution for check-in terminals:
 
 Fast forward at least 15 years. During an intro chat in one of my Expert Express engagements the networking engineer I was working with mentioned that they still supported X.25 (again, using XOT). My immediate reaction was "_do you work for an airline?_" to which he replied "_no, at an airport, but how did you know?_" They were still using check-in terminals with X.25 uplinks, and I'm positive some of those terminals are still in use today.
 
-Finally, a bizarre fact: France Telecom shut down [Minitel](https://en.wikipedia.org/wiki/Minitel) in 2012, at which time the service was still used by 800.000 terminals. Let me just mention that [Tim Berners-Lee had a working WWW implementation in late 1990](https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web#1989%E2%80%931993:_Origins_and_development) -- it took Minitel service over 20 years to be taken over by The Internet.
+Finally, a bizarre fact: France Telecom shut down [Minitel](https://en.wikipedia.org/wiki/Minitel) in 2012, at which time the service still had 800.000 terminals, and some POS credit card terminals used underlying X.25 network which was also discontinued (see [comment by Pierre](#1186)).
+
+Let me just mention that [Tim Berners-Lee had a working WWW implementation in late 1990](https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web#1989%E2%80%931993:_Origins_and_development) -- it took Minitel service over 20 years to be taken over by The Internet.
+
+### Speaking of Barbed Wire
+
+Parts of the X.25 protocol stack are used in environment with error rate resembling what you would expect from a barbed wire connection (VHF/UHF radio links):
+
+* [AX25](https://en.wikipedia.org/wiki/AX.25) is used by amateur radio operators to run [packet radio](https://en.wikipedia.org/wiki/Packet_radio) networks (HT: [ICT4F Marcus](https://twitter.com/Ict4F/status/1519227508096393216)).
+* X.25 is part of the [VHF Data Link](https://en.wikipedia.org/wiki/VHF_Data_Link) (aircraft-to-ground data links) protocol stack (see [comment by Bela Varkony](#1185)).
+
+### Revision History
+
+2022-04-28
+: Added further X.25 use cases based on readers' comments
