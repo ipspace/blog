@@ -25,7 +25,7 @@ Here's what worked for me:
 * Build a simple data model describing desired state of your networking infrastructure or service, and a simple deployment script that builds device configuration from that data model and deploys it. It could be as simple as “a list of NTP servers that have to be configured everywhere” or as complex as “deploy data center fabric with X leafs and Y spines”. You might get some ideas [looking at what others did](https://www.ipspace.net/NetAutSol/Solutions). 
 * Adding complexity to the previous example, deal with changes to the data model (instead of adds, deal with adds, updates, and deletions). You could cheat and use configure replace or do something more complex.
 * Build a [complete service deployment solution](https://theworldsgonemad.net/2021/automate-dc-pt1/).
-* Add [validation](https://github.com/johnsondnz/Blog/blob/master/Infrastructure%20as%20Code%20-%20Testing%20Data%20Models.md) and testing to that solution. NAPALM had validation for a long while, [Ansible](https://blog.ipspace.net/2021/03/ansible-validation.html) and [NetworkToCode](https://blog.ipspace.net/2021/03/schema-enforcer.html) launched their validation solutions earlier this year.
+* Add [validation](https://github.com/johnsondnz/ipspace-validation-example/blob/master/README.md) and testing to that solution. NAPALM had validation for a long while, [Ansible](https://blog.ipspace.net/2021/03/ansible-validation.html) and [NetworkToCode](https://blog.ipspace.net/2021/03/schema-enforcer.html) launched their validation solutions earlier this year.
 
 Not surprisingly, this is the exact sequence of steps we’re using in the [automation course](https://www.ipspace.net/Building_Network_Automation_Solutions) ;)
 
