@@ -52,6 +52,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "04 May 2022 04:41",
+               "html": "<p>While I agree with everything you wrote (see also my earlier posts on QFabric), none of those ideas were new:</p>\n\n<ul>\n<li>HIGIG was used instead of MPLS because Broadcom chipset had it, and sucked at MPLS.</li>\n<li>Packet lookup and classification on ingress and label switching through the fabric had been used in traditional MPLS solution for decade(s)</li>\n<li>Using BGP to propagate endpoint reachability information was not new. </li>\n</ul>\n\n<p>I do agree though that BGP had not been used for MAC addresses before, and that draft is indeed a precursor of EVPN, but that&#39;s not what QFabric was all about. Juniper wanted to build a single-management-entity fabric and they failed miserably.</p>\n",
+               "id": "1208",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-04T16:41:22",
+               "ref": "1207",
+               "type": "comment"
+            }
+         ],
          "date": "04 May 2022 02:48",
          "html": "Re: Footnote 2 and the death of QFabric.  It never really died as much as it evolved into the EVPN/VXLAN over IP fabrics we deploy today.  There were certainly too many management and control plane functions centralized in the Director, but it did many things we&#39;re still doing:<br />\n\n<ol>\n<li><p>Removed Ethernet switching from the fabric -- QF used Broadcom&#39;s HIGIG frame format between fabric nodes to enable tagged forwarding in the fabric.  The ingress Node (Leaf) performed a lookup on the destination MAC and marked the HIGIG header field with a &quot;tag&quot; that represented the destination switch.  The Interconnect (spine) layer performed forwarding on the data in the HIGIG field, not on the original Ethernet frame fields.</p></li>\n<li><p>All of the forwarding intelligence was contained at the Node (leaf) layer.  All forwarding decisions, both L2 and L3, were performed at the ingress Node (leaf).  The Interconnects (spines) were simply lean forwarders.</p></li>\n<li><p>All MAC and ARP learning happened in the QF control plane.  The system employed BGP and the MAC VPN draft (https://datatracker.ietf.org/doc/html/draft-raggarwa-mac-vpn-01) for MAC and ARP learning.</p></li>\n</ol>\n\n<p>It was surely a science project, and something that still makes customers and SE&#39;s cringe on occasion.  But I don&#39;t think we&#39;d be where we are without some of the capabilities that QF demonstrated.</p>\n",
          "id": "1207",
