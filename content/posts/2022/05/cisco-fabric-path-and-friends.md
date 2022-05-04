@@ -26,6 +26,16 @@ Now for individual technologies:
 
 [^HP]: An entity now known as HPE because someone realized pouring huge profits from toner packages into developing products that consistently stay in the "others" category in industry surveys makes no sense. I couldn't figure out what happened with H3C, the company developing the data center switches HP/HPE was selling under their own brand until the Aruba acquisition.
 
-How about standard-based layer-2 fabric implementations? I'm not aware of anyone (apart from HPE) ever implementing TRILL. Avaya had [interesting SPBM implementation](https://blog.ipspace.net/2014/04/is-is-in-avayas-spb-fabric-one-protocol.html) ([more details](https://blog.ipspace.net/2016/04/shortest-path-bridging-spb-and-avaya.html)), and they're [still selling SPBM switches](https://blog.ipspace.net/2016/12/would-you-use-avayas-spbm-solution.html) under the Extreme brand. I've heard someone mentioning a SP-focused vendor (Alcatel Lucent?) using SPB in Carrier Ethernet implementations a while ago, but I never looked at the details. 
+How about standard-based layer-2 fabric implementations? I'm not aware of anyone (apart from HPE) ever implementing TRILL[^TRILL]. Avaya had [interesting SPBM implementation](https://blog.ipspace.net/2014/04/is-is-in-avayas-spb-fabric-one-protocol.html) ([more details](https://blog.ipspace.net/2016/04/shortest-path-bridging-spb-and-avaya.html)), and they're [still selling SPBM switches](https://blog.ipspace.net/2016/12/would-you-use-avayas-spbm-solution.html) under the Extreme brand. I've heard someone mentioning a SP-focused vendor (Alcatel Lucent?) using SPB in Carrier Ethernet implementations a while ago, but I never looked at the details. 
 
 I probably missed a few things, in which case a comment from someone with more details (preferably with links to product documentation) would be most welcome.
+
+[^TRILL]: However, there's always someone saying "_I could use this technology to solve X_". According to [Kevin Myers](https://twitter.com/stubarea51/status/1521623586435444744?s=27&t=KXFFusJOyV2VgLVQklG26A), at least one company uses TRILL in their [fixed wireless mesh products](https://www.ignitenet.com/network-switches/meshlinq).
+
+### Revision History
+
+2022-05-03
+: Added more information on HPE data center switches
+
+2022-05-04
+: Added a footnote pointing to a TRILL implementation.
