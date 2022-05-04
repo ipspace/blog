@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "04 May 2022 09:38",
+               "html": "<p>TL;DR: your proposal solves the problem only for the default-route, my design for all the traffic.</p>\n\n<p>In the first part of the presentation I use the default-route to explain the advantages of ADD-PATH and ORR, while the subsequent integration of external routing on the route-reflector (slide 18) extends these advantages to all internal or external prefixes that can take advantage of multipath.\nIn my opinion, the &quot;old fashioned&quot; Load Balancing trough Anycast/IGP it&#39;s surpassed by bgp multipath that can be enriched with features such as edge-selection, unequal cost LB via bandwidth community or customized as desired with more or less standardized communities.\nFinally anycast LB is not suitable for any topology, introduces complexity for troubleshooting and is not very friendly with mpls.\nThanks for your comment, I hope I have convinced you</p>\n",
+               "id": "1212",
+               "name": " Nicola Modena",
+               "pub": "2022-05-04T21:38:27",
+               "ref": "1211",
+               "type": "comment"
+            }
+         ],
          "date": "04 May 2022 05:07",
          "html": "<p>Seems like a lot of effort to get the local default border router. \nWhy not advertise the same anycast loopback IP from all the POP/DC border routers via the IGP for that access area. Then either add static default route towards the border routers&rsquo; anycast IP on all the LAN routers or advertise the same default BGP route via the anycast next hop to all clients. The recursive lookup to the anycast gateway will ensure load balancing by the IGP whether there are 2,3 or 4 border routers at a POP.     </p>\n",
          "id": "1211",

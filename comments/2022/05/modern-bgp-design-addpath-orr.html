@@ -20,6 +20,38 @@
             <div class="comment-content"><p>Seems like a lot of effort to get the local default border router. 
 Why not advertise the same anycast loopback IP from all the POP/DC border routers via the IGP for that access area. Then either add static default route towards the border routers&rsquo; anycast IP on all the LAN routers or advertise the same default BGP route via the anycast next hop to all clients. The recursive lookup to the anycast gateway will ensure load balancing by the IGP whether there are 2,3 or 4 border routers at a POP.     </p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1212">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Nicola Modena</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1212" href="#1212">04 May 2022 09:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>TL;DR: your proposal solves the problem only for the default-route, my design for all the traffic.</p>
+
+<p>In the first part of the presentation I use the default-route to explain the advantages of ADD-PATH and ORR, while the subsequent integration of external routing on the route-reflector (slide 18) extends these advantages to all internal or external prefixes that can take advantage of multipath.
+In my opinion, the &quot;old fashioned&quot; Load Balancing trough Anycast/IGP it&#39;s surpassed by bgp multipath that can be enriched with features such as edge-selection, unequal cost LB via bandwidth community or customized as desired with more or less standardized communities.
+Finally anycast LB is not suitable for any topology, introduces complexity for troubleshooting and is not very friendly with mpls.
+Thanks for your comment, I hope I have convinced you</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
