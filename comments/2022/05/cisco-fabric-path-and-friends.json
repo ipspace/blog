@@ -50,9 +50,17 @@
          "name": " Adis Cato",
          "pub": "2022-05-03T19:44:39",
          "type": "comment"
+      },
+      {
+         "date": "04 May 2022 02:48",
+         "html": "Re: Footnote 2 and the death of QFabric.  It never really died as much as it evolved into the EVPN/VXLAN over IP fabrics we deploy today.  There were certainly too many management and control plane functions centralized in the Director, but it did many things we&#39;re still doing:<br />\n\n<ol>\n<li><p>Removed Ethernet switching from the fabric -- QF used Broadcom&#39;s HIGIG frame format between fabric nodes to enable tagged forwarding in the fabric.  The ingress Node (Leaf) performed a lookup on the destination MAC and marked the HIGIG header field with a &quot;tag&quot; that represented the destination switch.  The Interconnect (spine) layer performed forwarding on the data in the HIGIG field, not on the original Ethernet frame fields.</p></li>\n<li><p>All of the forwarding intelligence was contained at the Node (leaf) layer.  All forwarding decisions, both L2 and L3, were performed at the ingress Node (leaf).  The Interconnects (spines) were simply lean forwarders.</p></li>\n<li><p>All MAC and ARP learning happened in the QF control plane.  The system employed BGP and the MAC VPN draft (https://datatracker.ietf.org/doc/html/draft-raggarwa-mac-vpn-01) for MAC and ARP learning.</p></li>\n</ol>\n\n<p>It was surely a science project, and something that still makes customers and SE&#39;s cringe on occasion.  But I don&#39;t think we&#39;d be where we are without some of the capabilities that QF demonstrated.</p>\n",
+         "id": "1207",
+         "name": " Greg Bensimon",
+         "pub": "2022-05-04T14:48:14",
+         "type": "comment"
       }
    ],
-   "count": 5,
+   "count": 6,
    "type": "post",
    "url": "2022/05/cisco-fabric-path-and-friends.html"
 }
