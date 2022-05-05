@@ -1,5 +1,6 @@
 ---
 date: 2011-08-29 06:43:00+02:00
+lastmod: 2022-05-05 07:47:00
 tags:
 - design
 - BGP
@@ -90,6 +91,19 @@ If you don't change the BGP next hop on AS edge routers, you have to propagate e
 
 However, it's never a good idea to allow external events (like link flaps in your access network) to [influence the stability of your core IGP](https://blog.ipspace.net/2011/08/bgpigp-network-design-principles.html). Using **next-hop-self** on AS edge routers (and changing the external next hops into edge router's loopback address) is thus almost always the preferred design.
 
+### Summary
+
+Saravanan posted an excellent table summarizing the BGP next hop  behavior in a comment that got thoroughly mangled. Here it is (slightly edited):
+
+|Scenario|Typical use case|Next hop in BGP table|Next hop sent to peers|Comments|
+|--|--|--|--|--
+|**Locally originated** routes to both IBGP and EBGP peers|Connected interfaces or static routes with null0 next hop (blackholing)|0.0.0.0|Source address of the BGP session (source address of BGP packets sent by this BGP speaker)|Outgoing interface address if *update-source* is not used, else the value specified in update-source configuration.|
+|Received routes **sent to IBGP peers**|Redistributed IGP routes, EBGP routes, or Static routes with valid/non-null next hop|Next-hop advertised by IGP or EBGP|Next-hop value from BGP table is advertised to IBGP peers.|You can override BGP next hop with **next-hop-self** or **set next-hop** (route map) configuration.|
+|Received routes **sent to EBGP peers** where the EBGP peer IP address is not in the same subnet as the BGP next hop|Redistributed IGP routes, IBGP routes, EBGP routes, static routes with valid/non-null next hop|Next-hop advertised by IGP, IBGP or EBGP|Source address of the EBGP session|Outgoing interface address if *update-source* is not used, otherwise the value specified in update-source configuration.|
+|Received routes **sent to EBGP peers** where the EBGP peer IP address is not in the same subnet as the BGP next hop|Redistributed IGP routes, IBGP routes, EBGP routes, static routes with valid/non-null next hop|Next-hop advertised by IGP, IBGP or EBGP|BGP next hop is not modified -- this is called EBGP next hop optimization or third-party next hop.|Next-hop value in BGP table is advertised as-is unless you configured **next-hop-self** or used **set next-hop** in a route map.|
+|Route-reflector **reflecting IBGP routes**|IBGP routes only|Next-hop advertised by IBGP|BGP next hop is not modified|While it's discouraged in BGP RFC, some implementations allow you to change next hop on reflected routes|
+{.fmtTable}
+
 ### Further Reading
 
 * [Can We Trust BGP Next Hops (Part 1)?](https://blog.ipspace.net/2020/04/can-we-trust-bgp-next-hops-part-1.html)
@@ -97,3 +111,9 @@ However, it's never a good idea to allow external events (like link flaps in you
 * [Real Life BGP Route Origination and BGP Next Hop Intricacies](https://blog.ipspace.net/2014/04/real-life-bgp-route-origination-and-bgp.html)
 * [What is a BGP RIB failure](https://blog.ipspace.net/2007/12/what-is-bgp-rib-failure.html)
 * [Can BGP Route Reflectors Really Generate Forwarding Loops?](https://blog.ipspace.net/2013/10/can-bgp-route-reflectors-really.html)
+
+### Revision History
+
+2022-05-05
+: Added a summary table
+
