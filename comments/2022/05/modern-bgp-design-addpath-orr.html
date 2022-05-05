@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -52,6 +52,37 @@ Thanks for your comment, I hope I have convinced you</p>
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1214">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Petrus</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1214" href="#1214">05 May 2022 05:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It was not immediately clear to me how the routers inside the DC/POP would be able to reach the central RR before they have the default route, which they must still get from that RR. I assume that the border routers would distribute the RR&rsquo;s loopback IP from the core IGP area/level into the access IGP area.  Why not just also originate the default route via IGP into the access areas?
+Normally a router with full internet table, core/border in this design, would not have a default route. It can&rsquo;t distribute something it does not have but can originate it.</p>
+
+<p>The core/border routers would perform IP lookups for external destinations anyway, it can also IP lookup internal/customer destinations for remote DC/POP areas. The routers inside DC/POP only requires specific customer &amp; infrastructure routes local to that POP. Maybe full mesh between the co-located routers or on-path RR is ok?</p>
+
+<p>It seems the design it targeted at pure ISP operator where all the routes are in one global or default table, both infrastructure and service routes. The core routers also contain full internet table, they are not pure MPLS LSRs. </p>
+
+<p>When designing for a mixed ISP + VPN service provider then a further separation between control planes become possible; IP transport (IPv4 + SR-MPLS) and services (VPNv4, VPNv6, EVPN).
+It&rsquo;s not ideal to have all VPN instances configured on the area border and core routers to do IP lookups, better if they just lookup transport MPLS labels. Still makes sense to do &ldquo;two stage lookup&rdquo; for the public internet VPN. For other VPNs the routers inside DC/POP area need to push the full transport label stack and may need assistance from a PCE via an ODN request if they don&rsquo;t have the full topology. </p>
+
+<p>In this case using anycast SID on the area border routers can work well together with SR-MPLS.
+Maybe have a look at this modern BGP design for VPN service providers. Lots of traffic engineering and egress peer engineering possibilities.
+https://xrdocs.io/design/blogs/latest-converged-sdn-transport-hld</p>
+</div>
           </div>
         </li>
       </div>
