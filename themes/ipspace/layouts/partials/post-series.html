@@ -4,11 +4,17 @@
   {{ $serurl:= (printf "/series/%s" ( .Params.series | urlize )) }}
   {{ with ($.Site.GetPage $serurl) }}
     {{ if gt (len .Pages) 1 }}
+      {{ $scr.Set "pages" .Pages.Reverse }}
+      {{ $scr.Set "intro" "Blog posts" }}
+      {{ if gt (len .Pages) 10 }}
+        {{ $scr.Set "pages" (first 10 .Pages) }}
+        {{ $scr.Set "intro" "Latest blog posts" }}
+      {{ end }}
 <div class="post__content">
-  <h3>Blog posts in <a href="{{ $serurl }}.html">this series</a></h3>
+  <h3>{{ $scr.Get "intro" }} in {{ if in .Title " "}}<a href="{{ $serurl }}.html">{{.Title}}</a>{{else}}this{{end}} series</h3>
   <div id="related_posts">
       <ul>
-        {{ range first (cond (gt (len .Pages) 10) 5 99) ((.Pages).Reverse) }}
+        {{ range ($scr.Get "pages") }}
           <li>
             {{ if eq .Permalink $me }}
               {{ .Title }} (this post)
@@ -21,7 +27,7 @@
   </div>
       {{ if gt (len .Pages) 10 }}
   <div class='jump-link'>
-    <a href="{{ $serurl }}.html">More related blog posts</a>
+    <a href="{{ $serurl }}.html">More blog posts in this series</a>
   </div>
       {{ end }}
 </div>

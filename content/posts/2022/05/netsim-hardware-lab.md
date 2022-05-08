@@ -2,6 +2,8 @@
 title: "Configure Hardware Labs with netsim-tools"
 date: 2022-05-05 06:57:00
 tags: [ automation ]
+series: netsim
+netsim_tag: use
 ---
 *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)* started as a [simple tool to create virtual lab topologies](https://blog.ipspace.net/2020/12/build-labs-netsim-tools.html) (I hated creating *Vagrantfiles* describing complex topologies), but when it morphed into an ever-growing "_configure all the boring stuff in your lab from a high-level description_"  thingie, it gave creative networking engineers an interesting idea: could we use this tool to do all the stuff we always hated doing in our physical labs?
 
