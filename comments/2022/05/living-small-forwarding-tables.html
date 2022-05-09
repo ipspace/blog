@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -96,6 +96,56 @@
             </div>
             <div class="comment-content"><p>An alternative to SRD is to use BGP to manage the FIB. BGP allows the active routes to be quickly updated and when coupled with real-time top prefix measurements can significantly increase the effectiveness of a small hardware forwarding table, see <a href="https://blog.sflow.com/2016/07/internet-router-using-merchant-silicon.html">Internet router using merchant silicon</a></p>
 </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1223">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Krasimir Avramski</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1223" href="#1223">09 May 2022 05:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Combination of selective router download and mpls tunnels
+1. Advertise peers next-hops(/32) through bgp-lu
+2. Do not change bgp nexthop from peers
+3. Use bgp add-path for multi paths to the same prefix.
+Local IP lookup is bypassed by label operation pop and forward and is effectively delegated to remote intra-AS bgp routers. The idea is borrowed from EPE concepts.  </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1224">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1224" href="#1224">09 May 2022 05:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This might very creatively solve the problem for a core or egress router (assuming the ASIC in question supports MPLS). What about the ingress router?</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
