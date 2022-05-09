@@ -68,7 +68,9 @@ Unfortunately it's a bit hard to package that idea into a shipping product when 
 * Create a prefix list and use it as a filter between routing table and hardware forwarding table.
 * Periodically update the prefix list to cope with shifts in traffic patterns.
 
-The *selective route download* functionality is available in routers and switches from (at least) Arista and Juniper. If your favorite box supports it, please leave a comment.
+The *selective route download*[^SRD] functionality is available in (at least) Arista EOS, Junos, and Cisco IOS XE. If your favorite box supports it, please leave a comment.
+
+[^SRD]: *Selective Route Download* usually works as a filter between BGP table and routing table (RIB), not between routing table and FIB. If that's the case on your platform, you can only use it for BGP routes.
 
 For more details: 
 
