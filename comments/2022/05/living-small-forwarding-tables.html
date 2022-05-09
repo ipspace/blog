@@ -21,6 +21,35 @@
 
 <p>Of course this requires CAM in addition to TCAM in the ASIC. I would expect that the ASIC&#39;s forwarding pipeline needs support for this scheme, too (e.g., CAM lookup results usually do not include the next hop rewrite information required for IP forwarding). So this is probably not applicable to the ASIC in question.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1220">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1220" href="#1220">09 May 2022 04:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, Arista managed to use ARP or MAC table to do that on some merchant silicon ASIC. At the very least, that requires the ability of the lookup table to match a field at unusual offset.</p>
+
+<p>As for next hop rewrite, the result of that lookup could point to a dummy per-next-hop VRF with a default route pointing to the next hop.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
