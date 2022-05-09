@@ -46,6 +46,33 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="1222">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1222" href="#1222">09 May 2022 05:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The same trick, perhaps using the same merchant silicon ASIC, was used by Brocade (now Extreme). Others using said merchant silicon ASIC may have used this as well.</p>
+
+<p>AFAIR the actual prefix length stored in CAM was configurable. As such this would probably need the ability to apply a mask while addressing CAM.</p>
+
+<p>Using IP forwarding entries (&quot;ARP table&quot;) would probably suffice to save next hop information. I did not think of that, thanks! But different to an ARP or multicast group entry, the longest prefix match via TCAM might return a better match when, e.g., /24 prefixes are added to the fixed table, but, e.g., a /28 is found via TCAM.</p>
+
+<p>So a piece that may be missing in other ASICs could be the ability to use two different lookup operations and use the longest match from those for the forwarding decision.</p>
+
+<p>I had some indirection as described by you in mind when writing my comment. I have no idea if usual ASICs allow to add something like this to the processing pipeline if it was not envisioned when designing the ASIC. This is probably highly implementation specific.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
