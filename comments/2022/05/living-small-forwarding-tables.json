@@ -72,9 +72,17 @@
          "name": " Krasimir Avramski",
          "pub": "2022-05-09T17:45:53",
          "type": "comment"
+      },
+      {
+         "date": "09 May 2022 10:36",
+         "html": "<p>What I&rsquo;ve done most frequently is to engineer as intelligently of selective route download as possible.  This assumes 2 routers and iBGP between them (the 2 customer edge routers), and then at least 1 tier 1 upstream connected to each.  This is a fairly common scenario for small/medium entities who need that sort of redundancy, but can&rsquo;t (or won&rsquo;t) buy a box large enough to handle the full table. </p>\n\n<p>On each router I accept and filter out any prefix not originating from the tier 1, or it&rsquo;s customers. Depending on size you may have to filter on length as well. Then using LP you prefer those prefix on each router (depending on the customer side you may have to vary this some in the event that you prefer 1 carrier over the other because of bandwidth or other various reasons).  </p>\n\n<p>Then on each router you have a default that you&rsquo;re checking reachability to for everything not in the table. </p>\n",
+         "id": "1227",
+         "name": " David Bass",
+         "pub": "2022-05-09T22:36:16",
+         "type": "comment"
       }
    ],
-   "count": 3,
+   "count": 4,
    "type": "post",
    "url": "2022/05/living-small-forwarding-tables.html"
 }
