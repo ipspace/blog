@@ -3,7 +3,7 @@ title: "IPv6 Unique Local Addresses (ULA) Made Useless"
 date: 2022-05-10 06:30:00
 tags: [ IPv6 ]
 ---
-Recent news from the *Department of Unintended Consequences*: [RFC 6724](https://datatracker.ietf.org/doc/html/rfc6724) changed the IPv4/IPv6 source/destination address selection rules a decade ago, and it seems that the common interpretation of those rules makes IPv6 Unique Local Addresses (ULA) *less preferred* than the IPv4 addresses, at least according to the recent *[Unintended Operational Issues With ULA](https://www.ietf.org/id/draft-buraglio-v6ops-ula-01.html)* draft by [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio), Chris Cummings and [Russ White](https://www.ipspace.net/Author:Russ_White).
+Recent news from the *Department of Unintended Consequences*: [RFC 6724](https://datatracker.ietf.org/doc/html/rfc6724) changed the IPv4/IPv6 source/destination address selection rules a decade ago, and it seems that the common interpretation of those rules makes IPv6 Unique Local Addresses (ULA) *less preferred* than the IPv4 addresses, at least according to the recent *[Unintended Operational Issues With ULA](https://datatracker.ietf.org/doc/html/draft-buraglio-v6ops-ula-02)* draft by [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio), Chris Cummings and [Russ White](https://www.ipspace.net/Author:Russ_White).
 
 **End result**: If you use only ULA addresses in your dual-stack network[^NOULA], IPv6 won't be used **at all**. Even worse, if you use ULA addresses together with global IPv6 addresses (GUA) as a fallback mechanism, there might be hidden gotchas that you won't discover until you turn off IPv4. Looks like someone did a Truly Great Job, and ULA stands for Useless Local Addresses.
 <!--more-->
