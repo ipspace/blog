@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "13 May 2022 06:26",
+         "html": "<p>I tried it a few months ago in a home/lab environment - and yes, it doesn&#39;t work.</p>\n\n<p>In my setup I generated a new ULA /48 range and assigned a /64 to an internal WiFi-enabled subnet. I had 2 upstream Internet links:\n - a primary fast link dual-stacked to the ISP\n - a slow ADSL IPv4 only backup link with an he.net IPv6 tunnel</p>\n\n<p>A single router did NAT66 for the /64 blocks when traffic was routing over each uplink.</p>\n\n<p>I found devices always preferred IPv4 over IPv6-ULA. After hacking around on a Linux host I found where preferences were set, but they&#39;re horribly complex and you just can&#39;t fix other devices like Windows, Android, iOS, etc.</p>\n\n<p>So yes, a lot of docs say it should work but in real life it doesn&#39;t because the network stacks on almost all OS&#39;s are hard coded to prefer IPv4 over IPv6 ULA addresses.</p>\n\n<p>I reverted to using my he.net assigned public /64 on the LAN, and NAT66 when going over the other uplink. Real public IPv6 is preferred over IPv4, so it works as expected. But not ULA.</p>\n",
+         "id": "1232",
+         "name": " Kerry Thompson",
+         "pub": "2022-05-13T06:26:10",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2022/05/ipv6-ula-made-useless.html"
+}
