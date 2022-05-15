@@ -1,7 +1,7 @@
 ---
 title: "OMG: Hop-by-Hop Path MTU Discovery"
 date: 2022-04-23 06:49:00
-tags: [ Internet, MTU ]
+tags: [ IPv6, Internet, MTU ]
 ---
 Straight from the "Bad Ideas Never Die" (see also RFC 1925 Rule 11) department: Geoff Huston [described a proposal to use hop-by-hop IPv6 extension headers to implement Path MTU Discovery](https://www.potaroo.net/ispcol/2022-04/hopbyhop.html). In his words:
 
