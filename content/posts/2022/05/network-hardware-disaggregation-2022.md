@@ -73,4 +73,4 @@ The previous section should have made it abundantly clear that traditional netwo
 
 Then there's a plethora of niche vendors offering their network operating systems on whitebox hardware, including Arrcus (ArcOS), IP Infusion (OcNOS), Pluribus, and RtBrick.
 
-Have I missed something? Your comments (preferably including links to documentation) would be most welcome.
+Have I missed something? Your comments (preferably including links to documentation) would be most welcome. In case you want to send me a private message, you already have my email address if you have an [ipSpace.net subscription](https://www.ipspace.net/Subscription/), or if you're subscribed to my [SDN/automation mailing list](https://www.ipspace.net/Subscribe/Five_SDN_Tips), and there's the [Contact Us form](https://www.ipspace.net/Contact) for everyone else.
