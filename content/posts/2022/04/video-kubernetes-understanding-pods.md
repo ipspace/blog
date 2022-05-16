@@ -1,5 +1,5 @@
 ---
-title: "Video: Kubernetes Networking Model"
+title: "Video: Understanding Kubernetes Pods"
 date: 2022-04-22 06:48:00
 tags: [ containers, video ]
 ---
