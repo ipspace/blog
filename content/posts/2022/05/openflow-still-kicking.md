@@ -1,6 +1,6 @@
 ---
 title: "Is OpenFlow Still Kicking?"
-date: 2022-05-18 06:31:00
+date: 2022-05-19 06:31:00
 tags: [ OpenFlow ]
 ---
 Continuing the _[how real is the decade-old SDN hype](/2022/05/network-hardware-disaggregation-2022.html)_ thread, let's try to figure out if anyone still uses OpenFlow. OpenFlow was [declared dead](/2016/12/response-on-death-of-openflow.html) by the troubadour of the SDN movement in 2016, so it looks like the question is moot. However, nothing ever dies in networking (including [hop-by-hop IPv6 extension headers](https://blog.ipspace.net/2022/04/hop-by-hop-pmtud.html)), so here we go.
