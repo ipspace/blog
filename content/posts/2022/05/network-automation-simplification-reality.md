@@ -1,6 +1,6 @@
 ---
 title: "Simplify and Standardize Mantra Encounters Reality"
-date: 2022-05-19 06:04:00
+date: 2022-05-24 06:04:00
 tags: [ automation ]
 ---
 I'm usually telling networking engineers seriously considering whether to automate their networks to cleanup their design and simplify the network services first.
