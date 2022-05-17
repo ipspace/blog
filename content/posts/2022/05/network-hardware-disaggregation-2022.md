@@ -1,6 +1,7 @@
 ---
 title: "Networking Hardware/Software Disaggregation in 2022"
 date: 2022-05-16 06:36:00
+lastmod: 2022-05-17 14:31:00
 tags: [ SDN ]
 ---
 I started preparing the materials for the _SDN -- 10 years later_ webinar, and plan to publish a series of blog posts documenting what I found on various aspects of what could be considered SDN[^SDN]. I'm pretty sure I missed quite a few things; your comments are most welcome.
@@ -22,7 +23,9 @@ I found several widely-used open-source[^OS] network operating systems:
 
 It seems that most of these systems run on a variety of switches from whitebox- and traditional data center switching vendors.
 
-Then there are things likes [FBOSS](https://github.com/facebook/fboss). Is anyone (apart from their creator) using them? I have no idea.
+Then there are things likes [FBOSS](https://github.com/facebook/fboss) and [DANOS](https://www.danosproject.org/)[^DANOS]. Is anyone (apart from their creator) using them? I have no idea.
+
+[^DANOS]: Seems to be a failed AT&T's attempt to get other people to write software for free... considering the last news were published in 2019. No wonder when the "about the project" link downloads five pages of PDF-ed legalese.
 
 ### Linux Device Drivers
 
@@ -36,7 +39,7 @@ You need at least two software components to glue a network operating system to 
 There are two competing approaches to ASIC device drivers:
 
 * [Switch Abstraction Interface](https://www.opencompute.org/documents/switch-abstraction-interface-ocp-specification-v0-2-pdf) (SAI) -- standardized ASIC programming API embraced by Open Compute Project (OCP)
-* [switchdev](https://www.kernel.org/doc/html/latest/networking/switchdev.html) -- a Linux kernel API that offloads data plane processing from Linux kernel to an ASIC.
+* [switchdev](https://www.kernel.org/doc/html/latest/networking/switchdev.html) -- a Linux kernel API that [offloads data plane processing from Linux kernel to an ASIC](https://blog.ipspace.net/2018/01/packet-forwarding-on-linux-on-software.html).
 
 {{<note info>}}Want to know what's the difference between SAI and switchdev? Dinesh Dutt covered this topic in the _[Network Operating System Models](https://www.ipspace.net/Network_Operating_System_Models)_ webinar.{{</note>}}
 
@@ -71,6 +74,36 @@ The previous section should have made it abundantly clear that traditional netwo
 * Juniper is talking about _disaggregated Junos_, but all I could find was a [way to run Junos VM on their NFX150 CPE platform](https://www.juniper.net/documentation/us/en/software/junos/nfx150-getting-started/topics/topic-map/nfx150-overview.html), and a datasheet [claiming you can run Junos on a single Accton Edgecore switch](https://www.juniper.net/assets/us/en/local/pdf/datasheets/1000641-en.pdf).
 * Supposedly you could run Arista cEOS (EOS in a container) on third-party whitebox switches. Based on my [recent cEOS experience](https://blog.ipspace.net/2022/03/dataplane-quirks-virtual-devices.html) I have to wonder how much functionality you'd get beyond the basic L2+L3 forwarding. The only other reasonable hit I got for "Arista EOS whitebox" was a pointer to my [2015 April 1st blog post](https://blog.ipspace.net/2015/04/arista-eos-available-on-whitebox.html).
 
-Then there's a plethora of niche vendors offering their network operating systems on whitebox hardware, including Arrcus (ArcOS), IP Infusion (OcNOS), Pluribus, and RtBrick.
+Then there's a plethora of niche vendors offering their network operating systems on whitebox hardware, including Arrcus (ArcOS), DriveNets (DNOS), IP Infusion (OcNOS), NoviFlow (NoviWare)[^NF], Pluribus, and RtBrick.
 
-Have I missed something? Your comments (preferably including links to documentation) would be most welcome. In case you want to send me a private message, you already have my email address if you have an [ipSpace.net subscription](https://www.ipspace.net/Subscription/), or if you're subscribed to my [SDN/automation mailing list](https://www.ipspace.net/Subscribe/Five_SDN_Tips), and there's the [Contact Us form](https://www.ipspace.net/Contact) for everyone else.
+[^NF]: NoviWare seems to be an OpenFlow agent, not a full-blow network operating system.
+
+### Proprietary Control Plane in a VM or Container
+
+Imagine you've used gear from vendor X for ages, and want to deploy new control-plane functionality (example: BGP route reflector for EVPN). Wouldn't it be better to buy the control plane functionality you need in VM or container format than to be forced to buy a router or a switch even though you need a single port on the device?[^2RED]
+
+Networking vendors started offering VM versions of their operating systems years ago. You can get (in alphabetical order):
+
+* Arista vEOS
+* Cisco IOS XE, IOS XR, or Nexus OS (9000v)
+* Cumulus VX
+* Dell OS10
+* Juniper vSRX, vMX, or vQFX
+* Mikrotik RouterOS
+* Nokia SR OS and SR Linux
+
+For more details, see also [*netsim-tools* supported platforms](https://netsim-tools.readthedocs.io/en/latest/platforms.html).
+
+Some vendors went a step further and offered their control plane in a container. Arista cEOS and Juniper cRPD are the best-known examples.
+
+[^2RED]: Or two for redundancy ;)
+
+### Revision History
+
+2022-05-17
+* Added a pointer to DANOS, DriveNets and a podcast mentioning *switchdev*
+* Added the _Proprietary Control Plane in a VM or Container_ section
+
+### Have I missed something?
+
+Your comments (preferably including links to documentation) would be most welcome. In case you want to send me a private message, you already have my email address if you have an [ipSpace.net subscription](https://www.ipspace.net/Subscription/), or if you're subscribed to my [SDN/automation mailing list](https://www.ipspace.net/Subscribe/Five_SDN_Tips), and there's the [Contact Us form](https://www.ipspace.net/Contact) for everyone else.
