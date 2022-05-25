@@ -7,9 +7,16 @@
     entry: yamllint
     language: python
     types: [file, yaml]
+    exclude: "^styles/"
 
   - id: md-check
     name: Check Markdown frontmatter and LOCALHOST links
     entry: tools/md-check.py
     language: script
+    types: [file, markdown]
+
+  - id: spell-check
+    name: Check Markdown spelling and grammar
+    entry: vale
+    language: system
     types: [file, markdown]
