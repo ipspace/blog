@@ -9,6 +9,10 @@ The [ipSpace.net network simulation tools](https://netsim-tools.readthedocs.io/e
 
 {{<series-listing tag="overview" weight="1">}}
 
+### Using VRFs and VLANs
+
+{{<series-listing tag="vlan_vrf">}}
+
 ### Use Cases and Tutorials
 
 {{<series-listing tag="use">}}
