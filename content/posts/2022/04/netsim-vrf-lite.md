@@ -114,7 +114,7 @@ ip routing vrf red
 end
 ```
 
-If you start the lab with a router running Cisco IOS (execute `‌netlab up -s nodes.rtr.device=csr multi-vrf.yml`, you'll get the following router configuration:
+If you start the lab with a router running Cisco IOS (execute `‌netlab up -s nodes.rtr.device=csr multi-vrf.yml`), you'll get the following router configuration:
 
 ```
 vrf definition blue
