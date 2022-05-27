@@ -11,6 +11,10 @@ It's often used to implement redundant server connections; it was also popular i
 
 {{<series-listing tag="overview" weight="1">}}
 
+### Technology Deep Dive
+
+{{<series-listing tag="deepdive">}}
+
 ### Design Guidelines
 
 {{<series-listing tag="design">}}

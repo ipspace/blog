@@ -1,7 +1,6 @@
 ---
 title: "Data Center Switching ASICs Tradeoffs"
-date: 2022-06-01 06:01:00
-draft: True
+date: 2022-06-02 06:01:00
 tags: [ data center, switching ]
 ---
 A brief mention of Broadcom ASIC families in the _[Networking Hardware/Software Disaggregation in 2022](https://blog.ipspace.net/2022/05/network-hardware-disaggregation-2022.html)_ blog post triggered an interesting discussion of ASIC features and where one should use different ASIC families.
@@ -28,7 +27,9 @@ Worst case, a forwarding operation needs to search in the same forwarding table 
 
 **Programmable forwarding pipeline**. Having a forwarding pipeline in which every step can do anything you wish sounds wonderful... until you realize how much complexity you have to add to the switching silicon to make it happen.
 
-More complex silicon is either slower, or more expensive because you have to use better manufacturing process. Oh, and there's the tiny little detail of multiple steps in the pipeline using the same lookup tables (see above).
+More complex silicon is either slower, or more expensive because you have to use better manufacturing process, but the difference might not be huge. In a [paper published in 2013](https://dl.acm.org/doi/pdf/10.1145/2486001.2486011) (pointer to the paper provided by [Aaron Glenn](https://www.linkedin.com/in/aaglenn/)), the authors estimated that programmable pipeline increased the area of their ASIC by ~15% (see section 5.5).
+
+Oh, and there's the tiny little detail of multiple steps in the pipeline using the same lookup tables (see above).
 
 ### Real-Life Examples
 
@@ -48,7 +49,7 @@ Tomahawk 3 is thus all about performance:
 
 [Results of a quick Google search](https://itprice.com/arista-price-list/dcs-7060.html) claim an Arista switch with this ASIC and 32 400 GE ports costs around $55.000[^P].
 
-[^P]: Please don't tell me you can get Arista switches way cheaper, or that they cost more in your geography. All I'm interested in are the approximate price ratios. Also, I hope the switches I chose have been in the market long enough I haven't stumbled into some desperate "_we need to push new boxes to meet our quota_" promotion.
+[^P]: Please don't tell me you can get Arista switches way cheaper, or that they cost more in your geography. All I'm interested in are the approximate price ratios, and I hope the switches I chose have been in the market long enough I haven't stumbled into some desperate "_we need to push new boxes to meet our quota_" promotion. Even so, this is a very rough approximation -- there's only a vague correlation between what a switch vendor is paying for an ASIC and the final switch price.
 
 What could you do if you sacrifice performance? Welcome to Trident 3[^T3]:
 
@@ -63,13 +64,13 @@ The [same web page claims](https://itprice.com/arista-price-list/7050cx3-32s.htm
 
 What if the ASIC could be more expensive? Let's look at Jericho2:
 
-* Performance comparable to Tomahawk 3 (9.6 Tbps throughput, but still 2 Bpps)
+* Performance somewhere between Trident 3 and Tomahawk 3 (9.6 Tbps throughput, but still 2 Bpps)
 * Cell-based fabric
 * Complex packet processing
 * Large forwarding tables (1M IPv4/IPv6 table without a sweat)
 * 8 GB buffers implemented with [HBM2 cube](https://en.wikipedia.org/wiki/High_Bandwidth_Memory)
 
-It also has a "slightly" higher price tag. [Arista 7280R3 with 24 400GE ports](https://itprice.com/arista-price-list/7280r3.html) using two Jericho2 ASICs[^2J] costs between $129.000 and $209.000 depending on the forwarding table sizes and amount of buffer memory[^HSR]. The models with 32 100 GE ports and four 400 GE ports (an equivalent of 12 400 GE ports) cost around $75.000, or approximately 50% more than a Tomahawk-based switch with 32 400 GE ports.
+It also has a "slightly" higher price tag. [Arista 7280R3 with 24 400GE ports](https://itprice.com/arista-price-list/7280r3.html) using two Jericho2 ASICs[^2J] costs between $129.000 and $209.000 depending on the forwarding table sizes and amount of buffer memory[^HSR]. The single-ASIC models with 32 100 GE ports and four 400 GE ports (an equivalent of 12 400 GE ports) cost around $75.000, or approximately 50% more than a Tomahawk-based switch with 32 400 GE ports.
 
 [^2J]: According to the [data sheet](https://www.broadcom.com/products/ethernet-connectivity/switching/stratadnx/bcm88690) Jericho2 ASIC has 12 400GE lanes, to get 24 ports you have to connect two of them back-to-back.
 
