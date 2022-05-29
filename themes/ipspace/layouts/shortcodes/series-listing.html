@@ -1,15 +1,38 @@
 {{ $term := .Page.Data.Term }}
+{{ .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) (.Get "tag")) }}
+{{ if not (.Get "reverse") }}
+{{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}
+{{ end }}
+{{ if (.Get "weight") }}
+{{   .Page.Scratch.Set "pages" (sort (.Page.Scratch.Get "pages") "Params.series_weight" "desc") }}
+{{ end }}
+{{ if (.Get "title") }}
+{{   if (len (.Page.Scratch.Get "pages")) }}
+<h3>{{ .Get "title" }}</h3>
+{{   end }}
+{{ end }}
 <ul>
-  {{ .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) (.Get "tag")) }}
-  {{ if not (.Get "reverse") }}
-  {{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}
-  {{ end }}
-  {{ if (.Get "weight") }}
-  {{   .Page.Scratch.Set "pages" (sort (.Page.Scratch.Get "pages") "Params.series_weight" "desc") }}
-  {{ end }}
   {{ range (.Page.Scratch.Get "pages") }}
     <li>
       <a href="{{ .Permalink }}">{{ with .Params.series_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</a>
     </li>
   {{ end }}
 </ul>
+{{ if (.Get "soon") }}
+{{   $page := .Page }}
+{{   $page.Scratch.Set "first_soon" 1 }}
+{{   range (index .Page.Params (.Get "soon")) }}
+{{     $url := default "noSuchPage" (index . "page") }}
+{{     if not ($.Site.GetPage $url) }}
+{{       if ($page.Scratch.Get "first_soon") }}
+<p>Coming soon</p>
+<ul>
+{{         $page.Scratch.Set "first_soon" 0 }}
+{{       end }}
+  <li>{{ index . "title" }}</li>
+{{     end }}
+{{   end }}
+{{   if not ($page.Scratch.Get "first_soon") }}
+</ul>
+{{   end }}
+{{ end }}
