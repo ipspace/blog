@@ -56,6 +56,8 @@ Before discussing the data-plane details, we have to get working link aggregatio
 
 ICCP is a control-plane protocol that does all of the above, but we might need more. We'll discover the additional control-plane features needed in an MLAG cluster while figuring out how to make layer-2 and layer-3 forwarding work.
 
+{{<next-in-series page="/posts/2022/06/mlag-deep-dive-mac-learning.md">}}
+
 [^MT1]: Some implementations support more than two switches in an MLAG cluster
 
 [^BRMAC]: IEEE bridges don't have interface MAC addresses. They use a single system-wide MAC address.
