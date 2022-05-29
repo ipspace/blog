@@ -9,7 +9,7 @@ series_title: Simple VLAN Example
 I had no idea how convoluted VLANs could get until I tried to [implement them in *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html). We're not done yet -- we have access VLANs, VLAN trunks (including native VLAN support), and VLAN (SVI) interfaces, but we're still missing routed VLAN subinterfaces -- but we have enough functionality to show you a few VLAN examples.
 
 We'll start with the simplest option: [a single VLAN](https://github.com/ipspace/netsim-examples/tree/master/VLAN/vlan-access-stretch) stretched across two ~~bridges~~ switches with two Linux hosts connected to it. *netsim-tools* can [configure VLANs](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html#platform-support) on Arista EOS, Cisco IOSv, VyOS, Dell OS10, and Nokia SR Linux. We'll use the quickest (deployment-wise) option: Arista EOS on *containerlab*.
-
+<!--more-->
 {{<figure src="/2022/05/vlan-simple.png" caption="Simple VLAN topology">}}
 
 We'll use *[groups](/2021/11/netsim-groups-deployment-templates.html)* in the [lab topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
