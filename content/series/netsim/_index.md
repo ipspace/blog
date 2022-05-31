@@ -17,13 +17,13 @@ The [ipSpace.net network simulation tools](https://netsim-tools.readthedocs.io/e
 
 {{<series-listing tag="use">}}
 
+### Customizing and Extending *netsim-tools*
+
+{{<series-listing tag="extend">}}
+
 ### Contributing
 
 {{<series-listing tag="contribute">}}
-
-### Extending *netsim-tools*
-
-{{<series-listing tag="extend">}}
 
 ### Release Notes
 
