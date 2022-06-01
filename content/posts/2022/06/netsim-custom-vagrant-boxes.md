@@ -1,6 +1,6 @@
 ---
 title: "Using Custom Vagrant Boxes with netsim-tools"
-date: 2022-06-06 06:10:00
+date: 2022-06-09 06:10:00
 tags: [ automation ]
 series: netsim
 netsim_tag: extend
@@ -149,16 +149,18 @@ The final hurdle my friend was facing: he didn't like the way *netsim-tools* set
     end
 ```
 
-While you could edit that Jinja2 template within the Python package (and lose your changes after the next upgrade), there's currently no way to use custom template to create Vagrantfile with **[netlab create](https://netsim-tools.readthedocs.io/en/latest/netlab/create.html)** or **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** command... but there's another nerd knob to tweak: [output formats](https://netsim-tools.readthedocs.io/en/latest/outputs/index.html).
+*netsim-tools* release 1.2.4[^NSR] adds support for user templates -- all *netsim-tools* code using Jinja2 templates[^NOANS] looks for templates in current directory, `~/.netlab` directory, and Python package[^SPD]. Templates used to create Vagrantfile are within the provider-specific subdirectory (`libvirt` or `virtualbox`).
 
-**netlab create** command allows you to specify the outputs you want to create. The default value (`provider`, `yaml=netlab.snapshot.yml`, `ansible:dirs`) creates Vagrantfile, topology snapshot in YAML format, and Ansible inventory. All you have to do to keep your Vagrantfile intact is to change the list of output formats:
+[^NOANS]: But not the Ansible playbooks used by **netlab up** or **netlab initial**
 
-* Run `netlab create` to create the initial Vagrantfile
-* Edit the Vagrantfile to remove the settings you don't like
-* Make Vagrantfile read-only (just in case)
-* After changing the lab topology, run `netlab create` with `-o yaml=netlab.snapshot.yml -o ansible:dirs` parameters (hopefully inside a script).
+To change the template used to create Vagrantfile configuration for a Nexus OS *libvirt* box:
 
-You cannot specify output formats in **netlab up** command, so you have to use the two-step approach to starting the lab:
+* If you want to use the changed template for a specific topology, create `libvirt` directory within the directory the with lab topology.
+* If you want to use the changed template for all labs, create `libvirt` directory within the `~/.netlab` directory.
+* Find the original template in [*netsim-tools* sources](https://github.com/ipspace/netsim-tools/tree/dev/netsim/templates/provider) (example: [*libvirt* Nexus OS template](https://github.com/ipspace/netsim-tools/blob/dev/netsim/templates/provider/libvirt/nxos-domain.j2)).
+* Copy that template **with the same file name** into `libvirt` directory and modify it as needed.
+* Enjoy using *netsim-tools* with your custom Vagrant boxes.
 
-* Create the configuration files with `netlab create` (don't forget to add the modified list of output formats)
-* Start the lab from the topology snapshot file with `netlab up --snapshot`
+[^NSR]: If you want to test this functionality before version 1.2.4 is released, upgrade *netsim-tools* to the latest released development version with `pip3 install --upgrade --pre netsim-tools`
+
+[^SPD]: To see the template search path, run `netlab create --debug` and look for `TEMPLATE PATH` messages.
