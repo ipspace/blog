@@ -34,19 +34,38 @@ The nodes that have functioning links with a single member of an MLAG cluster ar
 
 MLAG members need a data-plane path between them to forward frames between orphan nodes (example: between X and Y). Standalone MLAG implementations usually use a dedicated _peer link_. Some implementations use the network core (fabric) to exchange data between MLAG members; we'll dive into the complexities of replacing a peer link with a fabric interconnect in a future blog post.
 
-Implementations using a peer link cannot live without it (more about that when we get to the data-plane details). Most design guides tell you to use multiple parallel links in a LAG (because we're in a bridged world) connected to multiple linecards if you use a chassis switch.
+### Peer Link Failure
 
-Even then, what should we do if a peer link fails? The minority part of the cluster has to remove directly connected LAG member links from the link aggregation groups[^ER], and the easiest way to do that is to shut them down. It could also try to restart LACP using a different system ID hoping that the remote nodes don't get confused, but I have yet to see an implementation that would go that far[^WC].
+Implementations using a peer link cannot live without it[^PLWHY]; it's crucial to make the peer link as reliable as possible. Most design guides tell you to use multiple parallel links in a LAG (because we're in a bridged world) connected to multiple linecards if you use a chassis switch.
 
-[^ER]: Anything else could result in weird forwarding behavior; the proof is left as an exercise for the reader. Keep in mind that the end-hosts with a single uplink (LAG is a single uplink) are often not running STP.
+[^PLWHY]: More about that when we get to the data-plane details
 
-[^WC]: I probably missed something. Should that be the case, please leave a comment.
+Even then, what should we do if a peer link fails? The minority part of the cluster has to remove directly connected LAG member links from the link aggregation groups[^ER], and the easiest way to do that is to shut them down. 
 
 The "shut down the LAG members" approach might have unintended consequences. In our scenario, if S2 decides it has to do that, C gets disconnected from the network. Unfortunately, we can do nothing about that.
 
-Finally, how do you decide which part of a two-node cluster is in the minority? Welcome to the _[Never Take Two Chronometers to the Sea](/2017/01/never-take-two-chronometers-to-sea.html)_ land. MLAG implementations go to [great lengths](/2010/10/multi-chassis-link-aggregation-stacking.html#read-the-smallprint) trying to figure out whether the other cluster member failed (in which case the LAG members should remain active) or whether the switch lost connectivity over the peer link. They don't always succeed, and the results could be suboptimal. 
+Smarter MLAG implementations (example: Cumulus Linux) try to recover from the disaster if they are reasonably sure that the primary MLAG member might have failed. In that case, the secondary MLAG member has to:
+
+* Drop from the cluster
+* Stop using cluster-wide LACP system ID and system MAC address
+* Revert to the local LACP system ID and system MAC address.
+* Restart LACP sessions using a different system ID hoping that the remote nodes don't get confused.
+
+Properly implemented remote nodes would renegotiate LACP session with the standalone former member of the MLAG cluster if they lost contact with the primary MLAG member, or reject the attempt to renegotiate the LACP session if the primary MLAG member is still operational (and we experienced network partitioning). 
+
+[^ER]: Anything else could result in weird forwarding behavior; the proof is left as an exercise for the reader. Keep in mind that the end-hosts with a single uplink (LAG is a single uplink) are often not running STP.
+
+{{<note info>}}[Cumulus Linux documentation](https://blog.ipspace.net/2022/06/mlag-deep-dive-overview.html#1284) has an extensive discussion of potential failure scenarios and resulting behavior of secondary MLAG switch{{</note>}}.
+
+Finally, how do you decide which part of a two-node cluster is in the minority? Welcome to the _[Never Take Two Chronometers to the Sea](/2017/01/never-take-two-chronometers-to-sea.html)_ land. MLAG implementations go to [great lengths](/2010/10/multi-chassis-link-aggregation-stacking.html#read-the-smallprint) trying to figure out whether the other cluster member failed (in which case the LAG members should remain active) or whether the other node is still active, but not reachable over the failed peer link.
+
+Using BFD across fabric uplinks is pretty common and does not depend on assistance of third-party devices[^IPR]. Some implementations also try to reach the other MLAG member over the attached LAGs. This can only work if the remote device is willing to resend the probe onto another LAG member through its control plane -- an IEEE bridge is not supposed to forward a packet to a link through which it has been received, and the whole LAG is treated as a single link. There is no standard way to send probes through LAG-attached clients; vendors supporting this functionality have developed incompatible proprietary solutions. 
+
+In our topology, S1 and S2 cannot use BFD as they don't have fabric uplinks. They could try to send probes through A and B, but that would only work if A and B assisted them, which means that S1, S2, A, and B would have to be switches from the same vendor.
  
-## Basic Control Plane Setup
+[^IPR]: Apart from the obvious need to have IP- or MAC-level forwarding ;)
+
+### Basic Control Plane Setup
 
 Before discussing the data-plane details, we have to get working link aggregation groups between S1/S2 and A, B, and C. S1 and S2 have to pretend they're a single device -- they must use the same LACP system ID and the same system MAC address[^BRMAC]. To get that done, we need a control-plane protocol that will:
 
@@ -61,3 +80,8 @@ ICCP is a control-plane protocol that does all of the above, but we might need m
 [^MT1]: Some implementations support more than two switches in an MLAG cluster
 
 [^BRMAC]: IEEE bridges don't have interface MAC addresses. They use a single system-wide MAC address.
+
+### Revision History
+
+2022-06-01
+: Updated the _what can secondary switch do after peer link failure_ part of the blog post based on feedback by Erik Auerswald. Also added a few more details on peer failure detection.
