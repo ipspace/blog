@@ -1,0 +1,107 @@
+---
+title: "netsim-tools: Combining VLANs with VRFs"
+date: 2022-06-13 06:38:00
+tags: [ automation ]
+series: netsim
+netsim_tag: vlan_vrf
+series_title: Combining VLANs with VRFs
+---
+Last two weeks we focused on [access VLANs](/2022/05/netsim-vlan-simple.html) and [VLAN trunk](/2022/06/netsim-vlan-trunk.html) implementation in *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)*. Can we combine them with [VRFs](/2022/04/netsim-vrf-lite.html)? Of course.
+
+The trick is very simple: attributes within a VLAN definition become attributes of VLAN interfaces. Add `vrf` attribute to a VLAN and you get all VLAN interfaces created for that VLAN in the corresponding VRF. Can't get any easier, can it?
+
+How about extending our VLAN trunk lab topology with VRFs? We'll put *red* VLAN in *red* VRF and *blue* VLAN in *blue* VRF.
+<!--more-->
+{{<figure src="/2022/06/vlan-vrf.png" caption="Combining VLANs with VRFs">}}
+
+We'll take the existing [VLAN trunk lab topology](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-trunk/topology.yml) and modify it a bit. First, we have to enable VRF support on the switches -- we'll add `vrf` module to the list of modules used by S1 and S2.
+
+{{<cc>}}Add VRF module to the switches group{{</cc>}}
+```
+groups:
+  switches:
+    members: [ s1, s2 ]
+    module: [ vlan,vrf ]
+    device: eos
+```
+
+Next, we have to define the VRFs.
+
+{{<cc>}}VRF definitions in lab topology{{</cc>}}
+```
+vrfs:
+  red:
+  blue:
+```
+
+{{<note info>}}*netsim-tools* automatically allocate route distinguishers and route targets to VRFs. Obviously you could override those values if you like particular RD/RT values or if you're building complex topologies.{{</note>}}
+
+Finally, a bit of magic dust: add `vrf` attribute to VLAN definitions:
+
+{{<cc>}}VLAN definitions in lab topology{{</cc>}}
+```
+vlans:
+  red:
+    vrf: red
+  blue:
+    vrf: blue
+```
+
+That's it. Execute **netlab up**[^HW] (after downloading the [final topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-trunk-vrf/topology.yml)) and you'll have a multi-VRF lab using a VLAN trunk.
+
+[^HW]: Assuming you completed your homework and [created a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html), [installed the software](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html), and [downloaded Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
+
+Here are the relevant parts of Arista cEOS configuration in case you're wondering what we achieved with the few extra lines in lab topology file:
+
+{{<cc>}}VRF+VLAN configuration on Arista cEOS{{</cc>}}
+```
+spanning-tree mode mstp
+!
+vlan 1000
+   name red
+!
+vlan 1001
+   name blue
+!
+vrf instance blue
+   rd 65000:2
+!
+vrf instance red
+   rd 65000:1
+!
+interface Ethernet1
+   mac-address 52:dc:ca:fe:05:01
+   switchport access vlan 1000
+!
+interface Ethernet2
+   mac-address 52:dc:ca:fe:05:02
+   switchport access vlan 1001
+!
+interface Ethernet3
+   description s1 -> s2
+   mac-address 52:dc:ca:fe:05:03
+   switchport trunk allowed vlan 1000-1001
+   switchport mode trunk
+!
+interface Vlan1000
+   description VLAN red (1000) -> [h1,s2,h2]
+   vrf red
+   ip address 172.16.0.5/24
+!
+interface Vlan1001
+   description VLAN blue (1001) -> [h3,s2,h4]
+   vrf blue
+   ip address 172.16.1.5/24
+!
+ip routing
+ip routing vrf blue
+ip routing vrf red
+```
+
+Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netsim-examples/tree/master/VLAN/vlan-trunk-vrf#changing-device-types)? No problem:
+
+* [Install netsim-tools](https://netsim-tools.readthedocs.io/en/latest/install.html)
+* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* Download the [topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-trunk-vrf/topology.yml) into an empty directory
+* Execute **netlab up**
+* Enjoy! 😊

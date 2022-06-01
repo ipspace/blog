@@ -1,6 +1,6 @@
 ---
 title: "MLAG Deep Dive: Dynamic MAC Learning"
-date: 2022-06-08 06:38:00
+date: 2022-06-07 06:38:00
 tags: [ switching ]
 series: mlag
 mlag_tag: deepdive
