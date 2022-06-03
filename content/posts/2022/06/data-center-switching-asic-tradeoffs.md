@@ -74,6 +74,11 @@ It also has a "slightly" higher price tag. [Arista 7280R3 with 24 400GE ports](h
 
 {{<next-in-series page="/posts/2022/06/select-data-center-switching-asic.md">}}
 
-[^2J]: According to the [data sheet](https://www.broadcom.com/products/ethernet-connectivity/switching/stratadnx/bcm88690) Jericho2 ASIC has 12 400GE lanes, to get 24 ports you have to connect two of them back-to-back.
+### Revision History
+
+2022-03-06
+: Fixed the footnote explaining how to use two back-to-back Jericho2 ASICs
+
+[^2J]: According to the [data sheet](https://www.broadcom.com/products/ethernet-connectivity/switching/stratadnx/bcm88690) Jericho2 ASIC has 12 400GE (96 x 50GE) lanes and 112 x 50GE fabric lanes. To get 24 400 GE ports you have to connect the fabric lanes of two ASICs back-to-back.
 
 [^HSR]: High-speed RAM is obviously still a bit on the expensive side.
