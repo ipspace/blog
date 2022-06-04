@@ -7,11 +7,11 @@ title: 'Worth Reading: Intent-Based Networking Taxonomy'
 lastmod: 2021-11-16 16:25:00
 url: /2018/09/worth-reading-intent-based-networking.html
 ---
-In September 2018, Saša Ratković (Apstra) published a must-read [Intent-Based Networking Taxonomy](https://web.archive.org/web/20180903030331/http://blog.apstra.com/intent-based-networking-taxonomy)[^1] which (not surprisingly) isn't too far from what I had to say about the topic in a [blog post](https://blog.ipspace.net/2017/09/intent-based-hype.html) and [related webinar](https://my.ipspace.net/bin/list?id=NetAutUC#CS_INTENT).
+In September 2018, Saša Ratković (Apstra) published a must-read [Intent-Based Networking Taxonomy](https://blogs.juniper.net/en-us/enterprise-cloud-and-transformation/intent-based-networking-automation-taxonomy)[^1] which (not surprisingly) isn't too far from what I had to say about the topic in a [blog post](https://blog.ipspace.net/2017/09/intent-based-hype.html) and [related webinar](https://my.ipspace.net/bin/list?id=NetAutUC#CS_INTENT).
 
 It's also interesting to note that the first three levels of intent-based networking he described match closely what we're discussing in [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course and what [David Barroso](https://www.ipspace.net/Author:David_Barroso) described in [Network Automation Use Cases webinar](https://my.ipspace.net/bin/list?id=NetAutUC):
 <!--more-->
-[^1]: Apstra got acquired by Juniper in the meantime, and as is usually the case they managed to lose all valuable content while merging the web sites. All that's left is a broken page on archive.org.
+[^1]: Apstra got acquired by Juniper in the meantime, and at least some of their content (including Saša's blog post) was migrated to Juniper's web site. You can also check the [archive.org copy of the original document](https://web.archive.org/web/20180903030331/http://blog.apstra.com/intent-based-networking-taxonomy).
 
 -   Start with basic device configuration automation;
 -   Migrate from "device configurations are the ultimate source of information" to single source of truth (abstracted network and services data model);
@@ -23,5 +23,5 @@ The final stage he's describing (self-operation, or [self-driving networks](http
 
 ## Revision History
 
-2021-11-16
-: Replaced the original link to blog.apstra.com with a link to an archived copy on archive.org.
+2022-06-04
+: Replaced the original link to `blog.apstra.com` with a link to a document migrate to Juniper web site.
