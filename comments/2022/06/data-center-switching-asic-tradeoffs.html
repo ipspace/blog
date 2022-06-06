@@ -42,6 +42,35 @@
 
 <p>You maintain the one-in, one-out, but you&#39;re now increasing the average rate. That&#39;s why the total delay is still in the hundreds of nanoseconds, it&#39;s parallelized.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1291">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1291" href="#1291">06 June 2022 03:11</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Pipelining is the obvious way to go (similar to modern CPUs), but if you want to process 8 packets per nanosecond, you still have to do one lookup of a particular type (let&#39;s say VLAN tag lookup in the first step of the pipeline) eight times per nanosecond. There&#39;s no way around that requirement.</p>
+
+<p>As Wes mentioned, Tomahawk has multiple parallel pipelines and lookup tables to get there making lookup times more realistic. Even so, if you assume that every lookup in the pipeline takes 1 ns (and it can&#39;t take much more or you&#39;d need massively parallel architecture), there&#39;s a huge gap between reasonable number of pipeline stages and 700 ns.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
