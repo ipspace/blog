@@ -20,6 +20,7 @@ To fix errors in a blog post:
 
 Contributing a guest blog post couldn't be easier:
 
+* Make sure you're OK with [our copyright terms](LICENSE.md)
 * Clone the repository
 * Create a new file with `.md` extension in `/content/draft` directory
 * Start with the standard YAML front matter. Try to use existing tags (you need a REALLY GOOD reason to introduce a new tag)
