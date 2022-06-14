@@ -2,6 +2,7 @@
 title: "Select the Best Switching ASIC For the Job"
 date: 2022-06-08 06:16:00
 tags: [ data center, switching ]
+series: ASIC
 ---
 Last week I described some of the [data center switching ASIC design tradeoffs](/2022/06/data-center-switching-asic-tradeoffs.html) and the ASIC families Broadcom created to fit somewhere in that multi-dimensional space. 
 
