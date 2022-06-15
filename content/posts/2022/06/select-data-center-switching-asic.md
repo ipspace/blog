@@ -45,3 +45,5 @@ Please note that you usually DO NOT need a deep buffer leaf switch (or deep buff
 [^CTR]: In particular, when you plan to connect containers straight to the data center fabric.
 
 [^INC]: Traffic sent from many sources to one or more destinations connected to the same link
+
+{{<next-in-series page="/posts/2022/06/beware-vendors-bringing-whitepapers.md" />}}
