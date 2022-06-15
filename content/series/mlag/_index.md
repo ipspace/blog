@@ -5,7 +5,9 @@ minimal_sidebar: true
 deep_dive:
 - page: /posts/2022/06/mlag-deep-dive-mac-learning.md
   title: Dynamic MAC Learning
-- title: Layer-2 Flooding
+- page: /posts/2022/06/mlag-deep-dive-flooding.md
+  title: Layer-2 Flooding
+- title: Active-Active Layer-3 Forwarding
 - title: ARP Handling
 - title: Routing Protocols
 - title: Using EVPN as MLAG Control Plane
