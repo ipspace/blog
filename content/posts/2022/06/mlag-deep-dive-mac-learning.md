@@ -31,3 +31,6 @@ You can solve this conundrum in several ways, depending on what the underlying h
 [^FLOOD]: More details when we get to layer-2 flooding.
 
 I'm positive we can find implementations of all three ideas in the wild; if you know how a particular MLAG implementation works, please leave a comment.
+
+{{<next-in-series page="/posts/2022/06/mlag-deep-dive-flooding.md" />}}
+

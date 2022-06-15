@@ -73,7 +73,7 @@ What if the ASIC could be more expensive? Let's look at Jericho2:
 
 It also has a "slightly" higher price tag. [Arista 7280R3 with 24 400GE ports](https://itprice.com/arista-price-list/7280r3.html) using two Jericho2 ASICs[^2J] costs between $129.000 and $209.000 depending on the forwarding table sizes and amount of buffer memory[^HSR]. The single-ASIC models with 32 100 GE ports and four 400 GE ports (an equivalent of 12 400 GE ports) cost around $75.000, or approximately 50% more than a Tomahawk-based switch with 32 400 GE ports.
 
-{{<next-in-series page="/posts/2022/06/select-data-center-switching-asic.md">}}
+{{<next-in-series page="/posts/2022/06/select-data-center-switching-asic.md" />}}
 
 ### Revision History
 
