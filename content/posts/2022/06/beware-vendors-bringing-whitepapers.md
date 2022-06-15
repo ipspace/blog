@@ -28,11 +28,11 @@ No surprise there. Juniper is selling numerous switches based on Broadcom mercha
 
 The white paper mentioned above compares switches using Broadcom Tomahawk ASIC with switches using Juniper Q5 ASIC, and wrongly concludes that you should use Tomahawk ASIC at the edge and Q5 ASIC at the core.
 
-Tomahawk ASIC is a pretty bad choice for a data center fabric edge -- it's missing a lot of functionality available in Broadcom Trident chipset (for example, VXLAN Routing In and Out of Tunnels), and it has less buffer space than the same-generation Trident family ASIC.
+Tomahawk ASIC is a pretty bad choice for a data center fabric edge -- it's missing a lot of functionality available in Broadcom Trident chipset (for example, VXLAN Routing In and Out of Tunnels), and it has less buffer space than a Trident family ASIC with comparable throughput.
 
 What about deep buffer switches at the spine layer? Do you really think you need tens of milliseconds of buffer space _per port_ on a spine switch? Is that what you want the fabric latency to be?
 
-Will it hurt to have deep buffers on spine switches? Probably not, particularly if you don't care about latency, but you might be paying through the nose for functionality you might not need. But then, if you have infinite budget, go for it.
+Will it hurt to have deep buffers on spine switches? Probably not, particularly if you don't care about latency, but you would be paying through the nose for functionality you might not need. But then, if you have infinite budget, go for it.
 
 To wrap up: when a white paper comparing Tomahawk and Q5 ASICs is saying...
 
@@ -49,7 +49,7 @@ Last question: why wouldn't Juniper recommend a Trident-based edge switch? Becau
 * Never forget Rule#2 of good network design: beware of vendors bringing white papers[^GBG].
 * When you decide to design a network based on vendor white papers, you'll get the network you deserve.
 
-Finally a note for the vendors (not that anyone would listen): I understand you have to post misleading white papers, but at least  fix them when you launch new products -- that document was written in 2015 and was still on Juniper's web site in mid-June 2022.
+Finally a note for the vendors (not that anyone would listen): I understand you have to present an alternate view of reality that's focused on what you want to sell, but could you at least fix it when you launch new products -- that document was written in 2015 and was still on Juniper's web site happily confusing unaware networking engineers in mid-June 2022.
 
 [^GBG]: Based on [beware of Greeks bearing gifts](https://en.wikipedia.org/wiki/Beware_of_Greeks_bearing_gifts), in particular when they look like a wooden horse.
 
