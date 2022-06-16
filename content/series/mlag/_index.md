@@ -7,11 +7,11 @@ deep_dive:
   title: Dynamic MAC Learning
 - page: /posts/2022/06/mlag-deep-dive-flooding.md
   title: Layer-2 Flooding
-- title: Active-Active Layer-3 Forwarding
-- title: ARP Handling
-- title: Routing Protocols
-- title: Using EVPN as MLAG Control Plane
+- page: /posts/2022/06/mlag-active-active-layer3.md
+  title: Active-Active Layer-3 Forwarding
+#- title: Routing Protocols
 - title: Replacing Peer-Link with Fabric
+- title: Using EVPN as MLAG Control Plane
 - title: Using VXLAN Fabric as MLAG Peer-Link
 - title: Load Balancing in VXLAN MLAG Scenarios
 ---
