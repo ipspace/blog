@@ -14,19 +14,23 @@ You [REALLY SHOULD](https://datatracker.ietf.org/doc/html/rfc6919#section-1) rea
 
 I haven't received a single comment saying "_you're totally wrong and here's a good technical article proving that_" so I'm assuming I'm not horrendously off the mark.
 
-Would you expect vendor product marketers to agree with the above? Of course not. Years ago, Arista enamored of deep-buffer switches... until Cisco launched a Jericho-based data center switch. At that point buffers stopped mattering... unless you were reading Cisco white papers.
+Would you expect vendor product marketers to agree with the above? Of course not. Years ago, Arista was enamored of deep-buffer switches... until Cisco launched a Jericho-based data center switch. At that point buffers stopped mattering... unless you were reading Cisco white papers.
 
 There were tons of rebuttal blog posts written at that time, so one would hope that the vendors got the message. That's too much to hope for, one of my readers [kindly pointed me to a Juniper white paper claiming just the opposite of the above TL&DR](https://blog.ipspace.net/2022/05/network-hardware-disaggregation-2022.html#1241):
 
----
-
-[An article from Juniper](https://www.juniper.net/content/dam/www/assets/white-papers/us/en/routers/deploying-data-center-switching-solutions.pdf) I found on the web was saying quite opposite [_from what you were saying_]: Low On-Chip Memory ASIC for low buffer leafs, Large External Memory ASIC for high speed/high buffer leaf and spine.
+{{<note info>}}The white paper discovered by my reader was removed from Juniper's web site less than 12 hours after this blog post has been published. I would like to thank [Ben Baker and his team](https://blog.ipspace.net/2022/06/beware-vendors-bringing-whitepapers.html#1302) for a swift and decisive reaction.{{</note>}}
 
 ---
+
+An article from Juniper[^NG] I found on the web was saying quite opposite [_from what you were saying_]: Low On-Chip Memory ASIC for low buffer leafs, Large External Memory ASIC for high speed/high buffer leaf and spine.
+
+---
+
+[^NG]: Now gone, but I have a downloaded copy somewhere ;)
 
 No surprise there. Juniper is selling numerous switches based on Broadcom merchant silicon (QFX 5000 series), and deep buffer ([100 milliseconds of buffers per port](https://www.juniper.net/us/en/products/switches/qfx-series/qfx10002-fixed-ethernet-switches-datasheet.html)) QFX 10000 switches using in-house silicon. What do you think they want you to buy?
 
-The white paper mentioned above compares switches using Broadcom Tomahawk ASIC with switches using Juniper Q5 ASIC, and wrongly concludes that you should use Tomahawk ASIC at the edge and Q5 ASIC at the core.
+The white paper my reader found compared switches using Broadcom Tomahawk ASIC with switches using Juniper Q5 ASIC, and wrongly concluded that you should use Tomahawk ASIC at the edge and Q5 ASIC at the core.
 
 Tomahawk ASIC is a pretty bad choice for a data center fabric edge -- it's missing a lot of functionality available in Broadcom Trident chipset (for example, VXLAN Routing In and Out of Tunnels), and it has less buffer space than a Trident family ASIC with comparable throughput.
 
@@ -49,7 +53,11 @@ Last question: why wouldn't Juniper recommend a Trident-based edge switch? Becau
 * Never forget Rule#2 of good network design: beware of vendors bringing white papers[^GBG].
 * When you decide to design a network based on vendor white papers, you'll get the network you deserve.
 
-Finally a note for the vendors (not that anyone would listen): I understand you have to present an alternate view of reality that's focused on what you want to sell, but could you at least fix it when you launch new products -- that document was written in 2015 and was still on Juniper's web site happily confusing unaware networking engineers in mid-June 2022.
+Finally a note for the vendors: I understand you have to present an alternate view of reality that's focused on what you want to sell, but could you at least fix it when you launch new products -- that document was written in 2015, removed from Juniper's web site in June 2022 and happily confusing unaware networking engineers in the meantime.
 
 [^GBG]: Based on [beware of Greeks bearing gifts](https://en.wikipedia.org/wiki/Beware_of_Greeks_bearing_gifts), in particular when they look like a wooden horse.
 
+### Revision History
+
+2022-06-16
+: The white paper was removed from Juniper's web site
