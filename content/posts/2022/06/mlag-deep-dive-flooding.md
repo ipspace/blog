@@ -1,6 +1,7 @@
 ---
 title: "MLAG Deep Dive: Layer-2 Flooding"
 date: 2022-06-16 06:55:00
+lastmod: 2022-06-19 16:02:00
 tags: [ switching ]
 series: mlag
 mlag_tag: deepdive
@@ -29,13 +30,19 @@ Let's assume our switches use a MAC forwarding table with an extra _default_ ent
 
 [^IEEESH]: Following the usual IEEE 802.1 split-horizon rule: never forward a frame to the port from which it has been received.
 
-These requirements are not too different from what we need to implement stackable switches, so we can expect most forwarding ASICs to contain mechanisms to deal with them. The ASIC could select one or the other _default_ entry based on the input port. It could also use metadata attached to the incoming frame[^PF], requiring additional (proprietary) encapsulation on the peer link.
+These requirements are not too different from what we need to implement stackable switches, so we can expect some forwarding ASICs to contain mechanisms to deal with them. The ASIC could select one or the other _default_ entry based on the input port, or use metadata attached to the incoming frame[^PF] if the MLAG implementation is using additional (proprietary) encapsulation on the peer link[^PE].
 
 [^PF]: A flag saying, "_this frame is coming from a peer link, please flood it to everyone that's not connected to me_."
+
+[^PE]: According to Dinesh Dutt, most modern MLAG implementations use standard Ethernet encapsulation on the peer link.
 
 The real fun starts when we try to replace the peer link with fabric connection using MPLS or VXLAN encapsulation. MPLS label stack is an obvious solution[^ML]: RFC 7432 contains a [lengthy convoluted section](https://datatracker.ietf.org/doc/html/rfc7432#section-8.3) explaining how to advertise and use an additional MPLS label to implement split horizon switching. 
 
 There's no _extra label_ in VXLAN, and the only solution ([detailed in RFC 8365](https://datatracker.ietf.org/doc/html/rfc8365#section-8.3.1)) is to use the source IP address of the VXLAN packets to figure out whether the packet is coming from the virtual peer link. That must be tremendous fun to program in forwarding hardware judging from the catastrophic bugs that riddled early EVPN-only MLAG implementations.
+
+Back to those two _default_ entries. The switch ASIC could support them, our you could use two MAC tables (one for regular ports, one for peer link) with a lot of VLAN magic, but there's a much more creative solution: use ACL on outgoing port. All you need is a high-priority entry on all LAG ports saying "_if the packet came from the peer link, drop it_."
+
+In our example, the switch software would configure an entry saying "_drop a packet if it came over the S1-S2 link_" on links to A and B, but not on links to X, Y, and C -- all those switches are connected to a single MLAG member, and have to receive flooded packets arriving through the peer link.
 
 [^ML]: All problems in networking that are worth solving can be solved with one or more additional MPLS labels 😜
 
@@ -43,3 +50,8 @@ There's no _extra label_ in VXLAN, and the only solution ([detailed in RFC 8365]
 ### What's Next?
 
 We're only three blog posts into this series and we already got layer-2 forwarding sorted out. It's time to move to layer-3 challenges, starting with active/active layer-3 forwarding – the topic of the next blog post in the [MLAG Deep Dive series](/series/mlag.html#technology-deep-dive).{{</next-in-series>}}
+
+### Revision History
+
+2022-06-19
+: Added the _outgoing ACL_ solution based on lengthy chat with Dinesh Dutt. Dinesh, thanks a million!

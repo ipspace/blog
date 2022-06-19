@@ -9,11 +9,10 @@ deep_dive:
   title: Layer-2 Flooding
 - page: /posts/2022/06/mlag-active-active-layer3.md
   title: Active-Active Layer-3 Forwarding
+- title: Connecting MLAG Cluster to VXLAN Fabric
+- title: Using EVPN/VXLAN with MLAG Clusters
 #- title: Routing Protocols
-- title: Replacing Peer-Link with Fabric
-- title: Using EVPN as MLAG Control Plane
-- title: Using VXLAN Fabric as MLAG Peer-Link
-- title: Load Balancing in VXLAN MLAG Scenarios
+- title: Replacing Peer-Link with VXLAN Fabric
 ---
 Multi-Chassis Link Aggregation (MLAG) is a solution that allows you to terminate a link aggregation group (sometimes also known as *etherchannel*) on multiple devices. 
 
