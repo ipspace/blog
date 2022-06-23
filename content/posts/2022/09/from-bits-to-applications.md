@@ -9,7 +9,7 @@ Long long time ago, Daniel Dib started an excellent Twitter discussion with [thi
 > How does a switch/router know from the bits it has received which layer each bit belongs to? Assume a switch received 01010101, how would it know which bits belong to the data link layer, which to the network layer and so on.
 
 As is often the case, Peter Paluch provided an [excellent answer in a Twitter thread](https://twitter.com/Peter_Paluch/status/1537822843601403904), and allowed me to save it for posterity.
-
+<!--more-->
 ---
 
 Ethernet frame has a fixed structure -- we know for sure that the header starts with the 6B destination MAC address, then 6B source MAC address, then 2B EtherType. 
