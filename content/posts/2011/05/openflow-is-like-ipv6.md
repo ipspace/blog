@@ -1,10 +1,15 @@
 ---
 url: /2011/05/openflow-is-like-ipv6.html
-title: "OpenFlow is like IPv6"
+title: "OpenFlow Is Like IPv6"
 date: "2011-05-10T06:45:00.000+02:00"
 tags: [ SDN,OpenFlow ]
+cdate: 2022-07-06
+comment: |
+  Some people never learn and vigorously chase every new hype, be it OpenFlow or IPv6 – the evangelists of both technologies promised way more than the technologies were ever capable of delivering.
+  
+  Not surprisingly, most of the overhyped technologies fail. It took IPv6 decades to get real-life adoption, and ([according to Gartner](https://blogs.gartner.com/andrew-lerner/2021/10/11/networking-hype-cycle-2021/)) OpenFlow/SDN died before ever reaching mainstream deployments.
 ---
-Frequent eruptions of OpenFlow-related hype (a [recent one](http://community.brocade.com/community/brocadeblogs/wingspan/blog/2011/05/03/being-open-about-virtualization-and-cloud-interoperability) caused by [Brocade Technology Day Summit](http://newsroom.brocade.com/easyir/customrel.do?easyirid=74A6E71C169DEDA9&version=live&prid=750964&releasejsp=custom_184); I’m positive Interop will not lag behind) call for a continuous myth-busting efforts. Let’s start with a [widely-quoted](http://bit.ly/iQW55Y) (and immediately glossed-over) fact from [Professor Scott Shenker](http://www.eecs.berkeley.edu/Faculty/Homepages/shenker.html), a [founding board member](http://www.networkworld.com/news/2011/041411-open-flow.html) of the [ONF](http://www.opennetworkingfoundation.org/): “\[OpenFlow\] doesn't let you do anything you couldn't do on a network before.”
+Frequent eruptions of OpenFlow-related hype (example: [Being Open about Virtualization and Cloud Interoperability](https://web.archive.org/web/20120505055833/http://community.brocade.com/community/brocadeblogs/wingspan/blog/2011/05/03/being-open-about-virtualization-and-cloud-interoperability) published after Brocade Technology Day Summit) call for a continuous myth-busting efforts. Let’s start with a [widely-quoted](http://bit.ly/iQW55Y) (and immediately glossed-over) fact from [Professor Scott Shenker](http://www.eecs.berkeley.edu/Faculty/Homepages/shenker.html), a founding board member of the [Open Networking Foundation](http://www.opennetworkingfoundation.org/): “\[OpenFlow\] doesn't let you do anything you couldn't do on a network before.”
 
 To understand his statement, remember that OpenFlow is nothing more than a standardized version of communication protocol between [control and data plane](/2013/08/management-control-and-data-planes-in.html). It does not define a radically new architecture, it does not solve distributed or virtualized networking challenges and it does not create new APIs that the applications could use. The only thing it provides is the [exchange of TCAM (flow) data between a controller and one or more switches](https://blog.ipspace.net/2011/04/what-is-openflow.html).
 
@@ -18,3 +23,12 @@ Learn from the past bubble bursts. Whenever someone makes an extraordinary claim
 -   Did it get used? If not, why not? What were the roadblocks? Why would OpenFlow remove them?
 
 Repeat this exercise regularly and you’ll probably discover the new emperor’s clothes aren’t nearly as shiny as some people would make you believe.
+
+### More to Explore
+
+Want to hear the real-life [SDN](https://www.ipspace.net/SDN), [OpenFlow](https://ipspace.net/OpenFlow) or [IPv6](https://www.ipspace.net/IPv6) story? Check out the [ipSpace.net webinars](https://www.ipspace.net/Webinar_roadmaps) available with [standard subscription](https://www.ipspace.net/Subscription).
+
+### Revision History
+
+2022-07-06
+: Replaced a link to a Brocade blog post with an archived copy
