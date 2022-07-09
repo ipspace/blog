@@ -3,7 +3,10 @@ date: 2011-10-29 20:31:00.001000+02:00
 title: Network Field Day 2 and OpenFlow Symposium
 url: /2011/10/network-field-day-first-impressions.html
 tags: [ OpenFlow, SDN ]
+series: sdn_hype
+sdn_hype_tag: initial
 cdate: 2022-07-06
+series: sdn_hype
 comment: |
   In just a few months after the [ONF launch](/2011/03/open-networking-foundation-fabric.html), everyone was talking about OpenFlow and SDN, and Stephen Foskett, the mastermind behind GestaltIT, decided to organize the first ever OpenFlow symposium in September 2011. 
 

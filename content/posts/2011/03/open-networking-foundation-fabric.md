@@ -4,6 +4,8 @@ cdate: 2022-07-06
 tags:
 - data center
 - OpenFlow
+series: sdn_hype
+sdn_hype_tag: initial
 title: Open Networking Foundation – Fabric Craziness Reaches New Heights
 url: /2011/03/open-networking-foundation-fabric.html
 comment: |

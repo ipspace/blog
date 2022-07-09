@@ -3,6 +3,12 @@ title: "Is OpenFlow Still Kicking?"
 date: 2022-05-19 06:31:00
 lastmod: 2022-05-20 10:20:00
 tags: [ OpenFlow ]
+series: sdn_hype
+sdn_hype_tag: back
+comment: |
+  More than a decade after the Open Networking Foundation started the OpenFlow/SDN hype (the blog post was written in 2022), OpenFlow remains a niche tool, and SDN means whatever you want it to mean.
+  
+  I would call that result a dismal failure; for whatever reason the (former) SDN evangelists tend to disagree with me and try to paint the SDN world in rosy colors. Judge for yourself ;)
 ---
 Continuing the _[how real is the decade-old SDN hype](/2022/05/network-hardware-disaggregation-2022.html)_ thread, let's try to figure out if anyone still uses OpenFlow. OpenFlow was [declared dead](/2016/12/response-on-death-of-openflow.html) by the troubadour of the SDN movement in 2016, so it looks like the question is moot. However, nothing ever dies in networking (including [hop-by-hop IPv6 extension headers](https://blog.ipspace.net/2022/04/hop-by-hop-pmtud.html)), so here we go.
 
