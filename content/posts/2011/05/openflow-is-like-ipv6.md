@@ -3,6 +3,8 @@ url: /2011/05/openflow-is-like-ipv6.html
 title: "OpenFlow Is Like IPv6"
 date: "2011-05-10T06:45:00.000+02:00"
 tags: [ SDN,OpenFlow ]
+series: sdn_hype
+sdn_hype_tag: initial
 cdate: 2022-07-06
 comment: |
   Some people never learn and vigorously chase every new hype, be it OpenFlow or IPv6 – the evangelists of both technologies promised way more than the technologies were ever capable of delivering.

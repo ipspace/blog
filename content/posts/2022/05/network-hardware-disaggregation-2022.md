@@ -3,6 +3,10 @@ title: "Networking Hardware/Software Disaggregation in 2022"
 date: 2022-05-16 06:36:00
 lastmod: 2022-05-17 14:31:00
 tags: [ SDN ]
+series: sdn_hype
+sdn_hype_tag: back
+comment:
+  The original SDN idea (centralized control plane) never took off because it's hard to break the laws of physics, but we got numerous unexpected benefits from the SDN movement, including network operating systems that can be run on third-party hardware platforms. This blog post describes the state of network hardware disaggregation in 2022.
 ---
 I started preparing the materials for the _SDN -- 10 years later_ webinar, and plan to publish a series of blog posts documenting what I found on various aspects of what could be considered SDN[^SDN]. I'm pretty sure I missed quite a few things; your comments are most welcome.
 

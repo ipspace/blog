@@ -4,6 +4,8 @@ tags:
 - MPLS
 - SDN
 - OpenFlow
+series: sdn_hype
+sdn_hype_tag: initial
 title: 'OpenFlow FAQ: Will the Hype Ever Stop?'
 url: /2011/04/openflow-faq-will-hype-ever-stop.html
 comment: |

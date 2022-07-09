@@ -2,6 +2,10 @@
 title: "SDN Controller Taxonomy"
 date: 2022-05-18 06:55:00
 tags: [ SDN ]
+series: sdn_hype
+sdn_hype_tag: back
+comment: |
+  While the original SDN idea (centralized control plane will solve all networking challenges) failed miserably, SDN became a must-use keyword, and vendors started calling _network management systems_ or _service provisioning systems_ SDN controllers.
 ---
 Even though Gartner declared SDN _obsolete before plateau_ in their 2021 [Networking Hype Cycle](https://blogs.gartner.com/andrew-lerner/2021/10/11/networking-hype-cycle-2021/), most vendor marketers never got the memo. Anything that interacts with network devices in any way[^ANS] is called an SDN controller. Let's try to throw some minimal amount of taxonomy into that mess based on how these controllers interact with network elements (physical or virtual).
 <!--more-->

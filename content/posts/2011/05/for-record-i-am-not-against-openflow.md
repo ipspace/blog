@@ -4,6 +4,8 @@ tags:
 - OpenFlow
 title: 'For the Record: I Am Not Against OpenFlow ...'
 url: /2011/05/for-record-i-am-not-against-openflow.html
+series: sdn_hype
+sdn_hype_tag: initial
 lastmod: 2022-07-06 14:40:00
 comment: |
   After the initial OpenFlow-related blog posts, the OpenFlow pundits quickly labeled me an OpenFlow hater, but I was just my grumpy old self ;) Here’s the blog post (from May 2011) that tried to set the record straight (not that such things would ever work).
