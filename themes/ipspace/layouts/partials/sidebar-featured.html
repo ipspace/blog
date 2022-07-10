@@ -3,7 +3,15 @@
 <div class="widget PopularPosts">
   <h3 class="sidebar__title">Featured</h3>
   <ul>
-  {{ range $pages }}
+  {{ range (where $pages "Params.sidebar_box" "==" nil) }}
+    <li><a href='{{ .Permalink }}'>{{ .Title }}</a></li>
+  {{ end }}
+  </ul>
+</div>
+<div class="widget PopularPosts">
+  <h3 class="sidebar__title">Software-Defined Networking</h3>
+  <ul>
+  {{ range (where $pages "Params.sidebar_box" "==" "SDN") }}
     <li><a href='{{ .Permalink }}'>{{ .Title }}</a></li>
   {{ end }}
   </ul>
