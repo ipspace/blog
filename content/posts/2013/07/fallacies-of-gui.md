@@ -9,7 +9,7 @@ series: sdn_hype
 sdn_hype_tag: clueless
 cdate: 2022-07-09
 comment: |
-  One of the major talking points of the SDN Hype Crusade was the CLI bashing. That's total nonsense (ask anyone who had the privilege to suffer through a large-scale GUI-based deployment), but the myth refuses to die. I wrote more than a dozen follow-up posts [focusing on REST API versus CLI](https://www.ipspace.net/kb/tag/cli-or-api.html).
+  One of the major talking points of the SDN Hype Crusade was the CLI bashing. That's total nonsense (ask anyone who had the privilege to [suffer through a GUI-based deployment](https://blog.ipspace.net/2011/01/vmware-cluster-up-and-running-in-three.html)), but the myth refuses to die. I wrote more than a dozen follow-up posts [focusing on REST API versus CLI](https://www.ipspace.net/kb/tag/cli-or-api.html).
 ---
 I love [Greg Ferro's characterization of CLI](http://etherealmind.com/thoughts-on-choosing-node-js-for-automation/):
 
