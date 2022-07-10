@@ -2,6 +2,7 @@
 title: The OpenFlow/SDN Hype
 layout: custom
 minimal_sidebar: true
+sidebar_box: SDN
 ---
 Academic researchers were working on OpenFlow concepts (distributed data plane with centralized controller) for years, but in early 2011 a fundamental marketing shift happened: major cloud providers (Google) and Internet Service Providers (Deutsche Telekom) created Open Networking Foundation (ONF) to push forward commercial adoption of OpenFlow and Software Defined Networking (SDN) – or at least their definition of it.
 
