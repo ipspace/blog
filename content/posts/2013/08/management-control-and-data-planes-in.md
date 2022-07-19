@@ -4,6 +4,11 @@ title: "Management, Control, and Data Planes in Network Devices and Systems"
 date: "2013-08-13T07:22:00.000+02:00"
 tags: [ networking fundamentals, OpenFlow ]
 lastmod: 2020-11-18 15:42:00
+series: openflow_101
+series_weight: 300
+openflow_101_tag: intro
+comment: |
+  The fundamental principle underlying [OpenFlow](/series/openflow_101.html) and [Software Defined Networking](/series/sdn_101.html) (as defined by Open Networking Foundation) is the decoupling of control- and data plane, with data (forwarding) plane running in a networking device (switch or router) and control plane being implemented in a central controller, which controls numerous dumb devices. Let’s start with the basics: what are data, control and management planes in a network device?
 ---
 Every single network device (or a distributed system like [QFabric](http://blog.ipspace.net/2011/09/qfabric-part-1-hardware-architecture.html)) has to perform at least three distinct activities:
 
