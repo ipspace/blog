@@ -7,6 +7,13 @@ tags:
 - virtualization
 title: What Is OpenFlow (Part 2)?
 url: /2011/10/what-is-openflow-part-2.html
+series: openflow_101
+series_weight: 270
+openflow_101_tag: intro
+comment: |
+  I started getting more detailed OpenFlow questions after the initial “[What is OpenFlow](/2011/04/what-is-openflow.html)” blog post, and tried to answer the most common ones in a follow-up post.
+  
+  Please note that [OpenFlow remains a mostly-academic protocol](/2022/05/openflow-still-kicking.html), and is not supported on most modern routers or switches.
 ---
 Got this set of questions from a CCIE pondering emerging technologies that could be of potential use in his data center:
 
@@ -28,17 +35,15 @@ Alternatively, you could use OpenFlow to create additional forwarding (actually 
 
 **Is it a virtualization technology?** Of course not. However, its data structures can be used to perform MAC address, IP address or MPLS label lookup and push user packets into VLANs (or push additional VLAN tags to implement Q-in-Q) or MPLS-labeled frames, so you can implement most commonly used virtualization techniques (VLANs, Q-in-Q VLANs, L2 MPLS-based VPNs or L3 MPLS-based VPNs) with it.
 
-There’s no reason you couldn’t control [soft switch](https://blog.ipspace.net/2011/08/soft-switching-might-not-scale-but-we.html) (embedded in the hypervisor) with OpenFlow. An open-source hypervisor switch implementation ([Open vSwitch](http://openvswitch.org/)) that has “[many extensions for virtualization](http://openvswitch.org/features/)” is already available and can be used with Xen/XenServer (it’s the default networking stack in XenServer 6.0) or KVM.
+There’s no reason you couldn’t control [a virtual switch](https://blog.ipspace.net/2011/08/soft-switching-might-not-scale-but-we.html) embedded in a hypervisor with OpenFlow -- [Open vSwitch](http://openvswitch.org/) is a well-known Linux implementation that includes [numerous virtualization-focused extensions](http://openvswitch.org/features/). Some of them were made part of OpenFlow standard, others remain a proprietary extension:
 
-I’m positive the list of Open vSwitch extensions is hidden somewhere in its somewhat cryptic documentation (or you could try to find them in the source code), but the [list of OpenFlow 1.2 proposals](http://www.openflow.org/wk/index.php/OpenFlow_1_2_proposal) implemented by Open vSwitch or sponsored by Nicira should give you some clues:
-
--   IPv6 matching (cool, finally IPv6 support) with IPv6 header rewrite (so they must be aiming at L3 hypervisor switch ... even cooler);
--   Virtual Port Tunnel configuration protocol and GRE/L3 tunnel support. Obviously they’re developing a VXLAN competitor or even IP-over-IP solution.
--   Controller master/slave switch. A must for resilient large-scale solutions.
+-   IPv6 matching with IPv6 header rewrite is part of OpenFlow 1.3.
+-   Controller master/slave switch (a must for resilient large-scale solutions) also became part of OpenFlow specifications.
+-   Virtual Port Tunnel configuration protocol and GRE/L3 tunnel support remains an OVS extension.
 
 **Summary**: OpenFlow is like C++. You can use it to implement all sorts of interesting solutions, but it’s just a tool.
 
-#### More information
+### More information
 
 Start with [What is OpenFlow](https://blog.ipspace.net/2011/04/what-is-openflow.html), and then check out these webinars:
 
@@ -46,4 +51,10 @@ Start with [What is OpenFlow](https://blog.ipspace.net/2011/04/what-is-openflow.
 * [Data Center Fabric Architectures](https://www.ipspace.net/Data_Center_Fabrics)
 * [Introduction to Virtualized Networking](https://www.ipspace.net/Introduction_to_Virtualized_Networking)
 
-You get all of them with the [yearly subscription](http://www.ipspace.net/Subscription).
+You get all of them with the [ipSpace.net subscription](http://www.ipspace.net/Subscription).
+
+### Revision History
+
+2022-07-15
+: Slight cleanup of OVS part of the blog post
+

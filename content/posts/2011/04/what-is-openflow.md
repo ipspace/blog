@@ -7,9 +7,12 @@ tags:
 - OpenFlow
 title: What is OpenFlow?
 url: /2011/04/what-is-openflow.html
+series: openflow_101
+series_weight: 280
+openflow_101_tag: intro
+comment: |
+  My [Open Networking Foundation rant](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html) got several thoughtful responses focusing on “*what is OpenFlow and what can we do with it?*” Let’s start with the easy part first: What exactly is OpenFlow?
 ---
-My [Open Networking Foundation rant](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html) got several thoughtful responses focusing on “*what is OpenFlow and what can we do with it?*” Let’s start with the easy part first: What exactly is OpenFlow?
-
 A typical networking device (bridge, router, switch, LSR ...) has [*control* and *data* plane](/2013/08/management-control-and-data-planes-in.html). The control plane runs all the control protocols (including port aggregation, STP, TRILL, MAC address learning and routing protocols) and downloads the forwarding instructions into the *data plane* structures, which can be simple lookup tables or specialized hardware (hash tables or TCAMs).
 <!--more-->
 In distributed architectures, the control plane has to use a communications protocol to download the forwarding information into data plane instances. Every vendor uses its own proprietary protocol (Cisco uses IPC – *InterProcess Communication* – to implement distributed CEF); OpenFlow tries to define a standard protocol between control plane and associated data plane elements.
@@ -18,7 +21,7 @@ The OpenFlow zealots would like you to believe that we’re just one small step 
 
 Moving into more distributed space, the [Borg fabric architectures](https://blog.ipspace.net/2011/03/data-center-fabric-architectures.html) use an OpenFlow-like protocol between the central control plane and forwarding instances. You might have noticed that all vendors link at most two high-end switches into Borg architecture at the moment; this decision has nothing to do with vendor lock-in and lack of open protocols but rather reflects the practical challenges of implementing a high-speed distributed architecture (alternatively, you might decide to believe the whole networking industry is a confusopoly of morons who are unable to implement what every post-graduate student can simulate with open source tools).
 
-Moving deeper into the technical details, the [*OpenFlow Specs*](http://www.openflow.org/wp/documents/) page on the [OpenFlow web site](http://www.openflow.org/) contains a link to the [OpenFlow Switch Specification v1.1.0](http://www.openflow.org/documents/openflow-spec-v1.1.0.pdf), which defines:
+Moving deeper into the technical details, the [*Technical Specifications*](https://opennetworking.org/software-defined-standards/specifications/) page on the [Open Networking Foundation web site](https://opennetworking.org/) contains a links to numerous versions of OpenFlow Switch Specification, which defines:
 
 -   OpenFlow tables (the TCAM structure used by OpenFlow);
 -   OpenFlow channel (the session between an OpenFlow switch and an OpenFlow controller);
@@ -35,12 +38,11 @@ To make the data plane structures scalable, OpenFlow introduces a concept of mul
 
 You can pass *metadata* between tables to make the architecture even more versatile.
 
-OpenFlow 1.0 uses a single TCAM (flow table) and is thus totally boring compared to rich OpenFlow 1.1 functionality.
+{{<note>}}OpenFlow 1.0 uses a single TCAM (flow table) and is thus totally boring compared to rich OpenFlow 1.1+ functionality.{{</note>}}
 
-The proposed flow table architecture is extremely versatile (and I’m positive there’s a PhD thesis being written proving that it is a superset of every known and imaginable forwarding paradigm), but it will have to meet the harsh reality before we’ll see a full-blown OpenFlow switch products. You can implement the flow tables in software (in which case the versatility never hurts, but you’ll have to wait a few years before the Moore Law curve catches up with terabit speeds) or in hardware where the large TCAM entries will drive the price up.
+The proposed flow table architecture is extremely versatile (and I’m positive someone got their PhD proving that it is a superset of every known and imaginable forwarding paradigm), but it failed miserably when meeting the harsh reality of switching ASICs, which [made OpenFlow obsolete within a decade after it was launched](/2022/05/openflow-still-kicking.html).
 
-OpenFlow 1.0 is close enough to TCAMs implemented in actual products that we might see shipping products in near future; we’ll probably have to wait at least a few years before we’ll see a full-blown hardware product implementing OpenFlow 1.1.
+### Revision History
 
-### More information
-
-To learn more about modern data center architectures and evolving fabric technologies, watch the [Data Center Infrastructure for Networking Engineers](https://www.ipspace.net/Data_Center_Infrastructure_for_Networking_Engineers) webinar.
+2022-07-15
+: Replaced links to OpenFlow specs, and changed the last paragraph to reflect the reality.
