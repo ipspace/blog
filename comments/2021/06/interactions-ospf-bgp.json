@@ -17,6 +17,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "20 July 2022 10:07",
+               "html": "<p>Yes, we use this same approach with EIGRP and BGP on nx-os, unsetting the weight and updating LP. I also didn&#39;t find much discussion online at the time, but it&#39;s been operating successfully for about 5 years now and put through it&#39;s paces.</p>\n",
+               "id": "1335",
+               "name": " James ",
+               "pub": "2022-07-20T10:07:19",
+               "ref": "688",
+               "type": "comment"
+            }
+         ],
          "date": "23 June 2021 10:55",
          "html": "<p>There may be an aspect I&#39;m missing here but this looks like the same issue we would run into frequently at an MSP I worked at using &quot;floating&quot; backup static routes for customers. The AD of the static route may be set higher (ie: 250) but due to the behavior of BGP redistributed routes you&#39;ll have an issue. If you add the static route after your BGP route was already loaded it&#39;s especially insidious because all looks fine until BGP bounces, then the redistributed static route gets loaded into BGP with default weight of 32768 and now when BGP comes back up the BGP learned route loses over the redistributed route and the static stays the active route.</p>\n\n<p>The solution we used was to just use route-map / policy to strip the weight of those redistributed floating static routes \n setting them to 0. That way when BGP compared the redistributed route you don&#39;t run into that issue. I believe we also set LP lower on the redistributed route as well to make that predictive since solving the weight issue and having equal LPs simply would move you to the locally originated and then AS-PATH length checks where both would fail to prefer the eBGP over the OSPF redistributed route.</p>\n\n<p>I thought at the time this was a well known problem but to be fair I haven&#39;t run into much discussion on it on the internet so glad to see it talked about here! Looking forward to seeing more comments!</p>\n",
          "id": "688",
