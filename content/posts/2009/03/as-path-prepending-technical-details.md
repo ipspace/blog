@@ -28,7 +28,7 @@ Only *a few* copies of the *local* AS-number should be prepended to the AS-p
 
 Throughout the article, the following test network will be used to generate router printouts. The initial router configurations are summarized in the *Initial router configuration* section. The routers were running Cisco IOS release 15.6(1)T.
 
-{{<figure src="AS-Path-Lab.png" caption="Diagram of the lab network">}}
+{{<figure src="/2009/03/AS-Path-Lab.png" caption="Diagram of the lab network">}}
 
 ### Cisco IOS Configuration
 
