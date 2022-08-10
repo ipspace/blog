@@ -48,6 +48,7 @@ Finally, consider the amount of DNS traffic any member of the FAANG club must be
 ### Want to know more? 
 
 * [Best Practices in DNS Service-Provision Architecture](https://meetings.icann.org/en/marrakech55/schedule/mon-tech/presentation-dns-service-provision-07mar16-en.pdf) is a must-read classic[^8]
+* [RFC 9199](https://www.rfc-editor.org/rfc/rfc9199.html) will tell you way more than you ever wanted to know about large-scale DNS deployments.
 * I covered [anycast as a load balancing technique](https://my.ipspace.net/bin/get/DC30/2.2.3.1%20-%20DNS%20and%20Anycast%20Load%20Balancing.mp4?doccode=DC30) in the _[Data Center Infrastructure for Networking Engineers](https://www.ipspace.net/Data_Center_Infrastructure_for_Networking_Engineers)_ webinar;
 * Nat Morris had a nice [Anycast on a Shoestring](https://ripe69.ripe.net/wp-content/uploads/presentations/36-Anycast-on-a-shoe-string-RIPE69.pdf) presentation at RIPE69[^7] ([video](https://ripe69.ripe.net/archives/video/180/))
 
