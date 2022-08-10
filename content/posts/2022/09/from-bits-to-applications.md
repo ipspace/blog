@@ -1,10 +1,9 @@
 ---
 title: "From Bits to Application Data"
-date: 2022-09-01 16:33:00
-draft: True
+date: 2022-09-05 06:33:00
 tags: [ networking fundamentals ]
 ---
-Long long time ago, Daniel Dib started an excellent Twitter discussion with [this seemingly simple question](https://twitter.com/danieldibswe/status/1537671262750879745):
+Long long time ago, Daniel Dib started an interesting Twitter discussion with [this seemingly simple question](https://twitter.com/danieldibswe/status/1537671262750879745):
 
 > How does a switch/router know from the bits it has received which layer each bit belongs to? Assume a switch received 01010101, how would it know which bits belong to the data link layer, which to the network layer and so on.
 
