@@ -42,4 +42,4 @@ A layer-2 switch (bridge) has _ports_. A layer-3 switch (a router) has interface
 
 To get there, we will have to walk through the strange land of routers doing bridging and take a detour through the VLAN Forest of Despair. Stay tuned.
 
-{{<next-in-series page="/posts/2022/09/routers-bridges-crb-irb.md">}}
+{{<next-in-series page="/posts/2022/09/routers-bridges-crb-irb.md" />}}

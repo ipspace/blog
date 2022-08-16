@@ -35,12 +35,14 @@ But what if we could route IPX and keep the IP subnet intact by bridging IP[^LAM
 
 OK, so we could route one protocol (example: IPX) across a set of interfaces and bridge another (example: IP) across the same interfaces, but how could you connect the bridged segment to the outside world? Use a loopback cable to connect the bridged interfaces with another routed interface. Yeah, we loved that as much as the younger engineers loved using external cables to connect M-series linecards to F-series linecards on Nexus 7000.
 
-Final solution: _Integrated Routing and Bridging_: Route traffic sent to router's MAC address, and bridge everything else[^MC].
+Final solution: _Integrated Routing and Bridging_: Route traffic sent to router's MAC address, and bridge everything else[^IPMC].
 
 To get there, one has to use the same MAC address (usually an extra MAC address not belonging to any physical interface) on all physical interfaces belonging to the same bridge group[^ER]. You also need a way to specify the IP address belonging to the shared MAC address, and as you usually configure the IP address on an interface, you need an extra (virtual) interface. And that's how we got Bridge Virtual Interface (BVI) on Cisco IOS -- the granddaddy of VLAN interfaces we're using on layer-3 switches.
 
-Wonder how we got from BVI interfaces to VLAN interfaces? We must take a detour through the VLAN Forest of Despair to get there. Stay tuned.
+Wonder how we got from BVI interfaces to VLAN interfaces? We must take a detour through the [VLAN Forest of Despair](2022/09/vlan-interfaces.html) to get there. Stay tuned.
 
-[^MC]: Ignoring IP multicast -- that's a juicy can of worms I'm not going to touch anytime soon.
+[^IPMC]: Ignoring IP multicast -- that's a juicy can of worms I'm not going to touch anytime soon.
 
 [^ER]: The proof is left as an exercise for the reader
+
+{{<next-in-series page="/posts/2022/09/vlan-interfaces.md" />}}
