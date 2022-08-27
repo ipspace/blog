@@ -14,7 +14,11 @@ As is often the case in networking, we got to this morass because vendors believ
 
 Decades ago, we called the thingy sitting between a computer and a cable an _interface_ because that's what it was -- an interface between software running on the computer and hardware transporting bits between computers.
 
-If a node had more than one interface and could forward packets between those interfaces, we called it a router[^IBM]. A firewall was just a router with more-or-less stateful packet filters inserted in the packet forwarding path, and we called load balancers proxy servers.
+If a node had more than one interface and could forward packets between those interfaces, we called it a router[^IBM]. Please note that router interfaces could use different layer-2 technologies, for example Ethernet and Token Ring for LAN connections and Frame Relay or ATM for WAN connections.
+
+
+
+A firewall was just a router with more-or-less stateful packet filters inserted in the packet forwarding path, and we called load balancers proxy servers.
 
 [^IBM]: If you're old enough, you might remember misconfiguring OSPF and turning an IBM mainframe into the most expensive router you've ever seen
 
@@ -26,7 +30,7 @@ Life was simple (terminology-wise) as long as networking meant connecting your n
 
 Those cables had physical limitations. For example, the [thin coax cable](https://en.wikipedia.org/wiki/10BASE2) used in early Ethernet networks could not be longer than 185 meters due to signal degradation across longer distances. At the same time, the maximum distance between two nodes on a single Ethernet network (dictated by the collision detection logic) could be significantly larger. A solution was obvious (and used for decades in telephony networks): use a repeater ([also called a hub](https://en.wikipedia.org/wiki/Ethernet_hub)) that would regenerate the signal. The [IEEE Ethernet standard](https://en.wikipedia.org/wiki/5-4-3_rule) allowed you to use up to four repeaters between two stations.
 
-It made no sense to call the hub cable attachment points _interfaces_ because there was nothing behind them but a bit repeater, so we called them _ports_.
+It made no sense to call the hub cable attachment points _interfaces_ because there was nothing behind them but a bit repeater, so we called them _ports_. Contrary to routers, hubs used the same layer-2 technology on all ports.
 
 When DEC introduced bridges (one of the [worst decisions ever made in networking](https://blog.ipspace.net/2010/07/bridges-kludge-that-shouldnt-exist.html)), they decided to use the hub terminology -- bridges had ports.
 

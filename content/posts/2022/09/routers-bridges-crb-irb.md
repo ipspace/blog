@@ -19,6 +19,8 @@ That leaves just one tricky question: what happens when someone wants to configu
 * Did we receive a packet on an interface within a bridge group? Extract the destination MAC address and forward the packet using the corresponding MAC table.
 * Did we receive a packet on any other interface? Use the Ethernet protocol type to figure out the network layer protocol. Do a lookup in the corresponding forwarding table to forward the packet.
 
+{{<figure src="/2022/09/isolated-routing-bridging.jpg" caption="A router performing independent routing and bridging">}}
+
 That simple world didn't last long. Someone inevitably figured out that it was easy to renumber IPX hosts (because IPX always used a SLAAC-like mechanism[^SLAAC]) but impossible to renumber IP hosts (because DHCP hadn't been invented yet). Splitting a large IPX segment into two was a no-brainer; splitting an IP subnet was Mission Impossible.
 
 [^SLAAC]: You didn't think IPv6 designers invented everything from scratch, did you?
@@ -28,6 +30,8 @@ But what if we could route IPX and keep the IP subnet intact by bridging IP[^LAM
 * Look at the Ethernet protocol type.
 * Use the protocol-specific forwarding table if the protocol type is a known network-layer protocol, and the router should route it.
 * Bridge the packet in all other cases (a bridged network-layer protocol or an unknown protocol).
+
+{{<figure src="/2022/09/concurrent-routing-bridging.jpg" caption="Protocol-based Concurrent Routing and Bridging (CRB)">}}
 
 [^LAM]: The correct solution would be to use IP routing based on host addresses, but _Local Area Mobility_ hasn't been invented yet. Decades later, we're going through the same conundrum -- another clear win for RFC 1925.
 
@@ -39,7 +43,9 @@ Final solution: _Integrated Routing and Bridging_: Route traffic sent to router'
 
 To get there, one has to use the same MAC address (usually an extra MAC address not belonging to any physical interface) on all physical interfaces belonging to the same bridge group[^ER]. You also need a way to specify the IP address belonging to the shared MAC address, and as you usually configure the IP address on an interface, you need an extra (virtual) interface. And that's how we got Bridge Virtual Interface (BVI) on Cisco IOS -- the granddaddy of VLAN interfaces we're using on layer-3 switches.
 
-Wonder how we got from BVI interfaces to VLAN interfaces? We must take a detour through the [VLAN Forest of Despair](2022/09/vlan-interfaces.html) to get there. Stay tuned.
+{{<figure src="/2022/09/integrated-routing-bridging.jpg" caption="Integrated Routing and Bridging (IRB)">}}
+
+Wonder how we got from BVI interfaces to VLAN interfaces? We must take a detour through the VLAN Forest of Despair to get there. Stay tuned.
 
 [^IPMC]: Ignoring IP multicast -- that's a juicy can of worms I'm not going to touch anytime soon.
 
