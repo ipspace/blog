@@ -1,7 +1,8 @@
 {{ if and .Params.series (not (.Page.Scratch.Get "series")) }}
+  {{ $series := cond (reflect.IsSlice .Params.series) (index .Params.series 0) .Params.series }}
   {{ $me := .Permalink }}
   {{ $scr:= newScratch }}
-  {{ $serurl:= (printf "/series/%s" ( .Params.series | urlize )) }}
+  {{ $serurl:= (printf "/series/%s" ( $series | urlize )) }}
   {{ with ($.Site.GetPage $serurl) }}
     {{ if gt (len .Pages) 1 }}
       {{ $scr.Set "pages" .Pages.Reverse }}
