@@ -1,12 +1,13 @@
 ---
-title: "Creating BGP Multipath Lab with netsim-tools"
+title: "Creating BGP Multipath Lab with netlab"
+series_title: "Creating BGP Multipath Lab"
 date: 2021-11-09 07:03:00
 lastmod: 2022-02-15 15:42:00
 tags: [ BGP ]
-series: netsim
-netsim_tag: use
+series: netlab
+netlab_tag: use
 ---
-I was editing the *[BGP Multipathing](https://my.ipspace.net/bin/get/Net101/AR4.3%20-%20BGP%20Multipath%20Basics.mp4?download=yes)* video in the *[Advanced Routing Protocols](https://my.ipspace.net/bin/list?id=Net101#ADV_ROUTING)* section of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar, got to the diagram I used to explain the intricacies of IBGP multipathing and said to myself "*that should be easy (and fun) to set up with netsim-tools*".
+I was editing the *[BGP Multipathing](https://my.ipspace.net/bin/get/Net101/AR4.3%20-%20BGP%20Multipath%20Basics.mp4?download=yes)* video in the *[Advanced Routing Protocols](https://my.ipspace.net/bin/list?id=Net101#ADV_ROUTING)* section of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar, got to the diagram I used to explain the intricacies of IBGP multipathing and said to myself "*that should be easy (and fun) to set up with netlab*".
 
 {{<figure src="/2021/11/BGP-Multipath-Diagram.png">}}
 
@@ -24,7 +25,7 @@ I decided to run my tests with container version of Arista EOS (cEOS) on a Ubunt
 
 ## Create Topology File
 
-The mandatory first step when using *netsim-tools* to create your virtual lab: create a [YAML file describing the lab topology](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/baseline.yml).
+The mandatory first step when using *netlab* to create your virtual lab: create a [YAML file describing the lab topology](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/baseline.yml).
 
 I used *containerlab* provider with *eos* devices, and placed most of my routers in AS 65000. External router (Y) would be in AS 65100. The network runs OSPF as the internal routing protocol, and a combination of IBGP and EBGP.
 
@@ -75,7 +76,7 @@ As an aside: here's the corresponding data structure in pure YAML to illustrate 
 
 ## Validating the Topology
 
-I used the graphing capabilities of *netsim-tools* together with *graphviz* to generate a diagram of the "physical" topology and BGP sessions. The diagrams were created with *graphviz* which has its own ideas how to place stuff. Their algorithms usually work well; for whatever reason my network diagrams always look messy.
+I used the *netlab* graphing capabilities together with *graphviz* to generate a diagram of the "physical" topology and BGP sessions. The diagrams were created with *graphviz* which has its own ideas how to place stuff. Their algorithms usually work well; for whatever reason my network diagrams always look messy.
 
 {{<figure src="/2021/11/BGP-multipath-topo.png" caption="Lab topology created with **netlab create -o graph && dot graph.dot -T png -o topo.png**">}}
 
@@ -83,7 +84,7 @@ I used the graphing capabilities of *netsim-tools* together with *graphviz* to g
 
 ## The Smoke Test
 
-Deploying a virtual lab is a one-liner with *netsim-tools* release 0.9.3 or later. All it takes is **netlab up baseline.yml** (that's how I named my topology file) and you get a configured lab a minute or two later[^NX].
+Deploying a virtual lab is a one-liner: all it takes is **netlab up baseline.yml** (that's how I named my topology file) and you get a configured lab a minute or two later[^NX].
 
 [^NX]: Or a lunch break later if you decide to test a large topology built with Nexus 9000v.
 
@@ -165,13 +166,13 @@ As you can see, sometimes the probes reach Y in two hops, and sometimes the seco
 
 ## Testing Other Platforms
 
-Another beauty of *netsim-tools* is the ease of changing network devices or virtualization providers. All I had to do to replace Arista EOS with Cisco IOSv was two extra parameters in the **netlab up** command:
+Another beauty of *netlab* is the ease of changing network devices or virtualization providers. All I had to do to replace Arista EOS with Cisco IOSv was two extra parameters in the **netlab up** command:
 
 ```
 netlab up baseline.yml --device iosv --provider libvirt
 ```
 
-A few minutes later, I had an identically configured lab, this time running Cisco IOS. I could have repeated the same tests on [over a dozen devices supported by *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/platforms.html) (if only I had all the necessary Vagrant boxes installed)
+A few minutes later, I had an identically configured lab, this time running Cisco IOS. I could have repeated the same tests on [over a dozen devices supported by *netlab*](https://netsim-tools.readthedocs.io/en/latest/platforms.html) (if only I had all the necessary Vagrant boxes installed)
 
 **Coming up next**: fixing suboptimal BGP routing with *additional paths* functionality.
 

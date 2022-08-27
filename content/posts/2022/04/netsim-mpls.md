@@ -1,11 +1,12 @@
 ---
-title: "netsim-tools, MPLS Edition"
+title: "netlab MPLS Support"
+series_title: "MPLS Support (Release 1.2.0)"
 date: 2022-04-04 06:52:00
 tags: [ MPLS, MPLS VPN ]
-series: netsim
-netsim_tag: release
+series: netlab
+netlab_tag: release
 ---
-*netsim-tools* release 1.2.0 adds full-blown MPLS and MPLS/VPN support:
+*netlab* release 1.2.0 adds full-blown MPLS and MPLS/VPN support:
 
 -  [VRF definitions and layer-3 VRFs](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html)
 -  [VRF-aware OSPF, IS-IS and BGP](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html#interaction-with-routing-protocols)

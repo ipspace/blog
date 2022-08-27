@@ -1,19 +1,17 @@
 ---
-title: "netsim-tools VLAN Trunk Example"
+title: "netlab VLAN Trunk Example"
 date: 2022-06-06 06:12:00
 tags: [ automation ]
-series: netsim
-netsim_tag: vlan_vrf
+series: netlab
+netlab_tag: vlan_vrf
 series_title: VLAN Trunk Example
 ---
-Last week I described [how easy it is to use access VLANs](https://blog.ipspace.net/2022/05/netsim-vlan-simple.html) in *netsim-tools*. Next step: VLAN trunks. 
-
-{{<note info>}}[VLAN trunks](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html) are supported from [*netsim-tools* release 1.2.2](https://netsim-tools.readthedocs.io/en/latest/release/1.2.html) and are [currently implemented](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html#platform-support) on Arista EOS, Cisco IOSv, VyOS, Dell OS10 and Nokia SR Linux.{{</note>}}
+Last week I described [how easy it is to use access VLANs](https://blog.ipspace.net/2022/05/netsim-vlan-simple.html) in *netlab*. Next step: VLAN trunks. 
 
 We'll add two Linux hosts to the lab topology used in the previous blog post, resulting in two switches, two Linux hosts in *red* VLAN and two Linux hosts in *blue* VLAN.
-<!--more-->
-{{<figure src="/2022/06/vlan-trunk.png" caption="Lab topology">}}
 
+{{<figure src="/2022/06/vlan-trunk.png" caption="Lab topology">}}
+<!--more-->
 Like in the previous example, we'll use *[groups](/2021/11/netsim-groups-deployment-templates.html)* in the [lab topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-trunk/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
 
 {{<cc>}}Defining nodes and groups{{</cc>}}
@@ -32,7 +30,7 @@ groups:
     device: eos
 ```
 
-Next, we'll define the VLANs. We need *red* and *blue* VLANs; as before, *netsim-tools* will assign 802.1q tags to VLANs as needed.
+Next, we'll define the VLANs. We need *red* and *blue* VLANs; as before, *netlab* will assign 802.1q tags to VLANs as needed.
 
 {{<cc>}}Defining VLANs{{</cc>}}
 ```
@@ -67,7 +65,7 @@ And that's all you have to do. Execute **netlab up**[^HW] and enjoy your first m
 
 [^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html), [installing the software](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html), and [downloading Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
 
-Here are the relevant parts of Arista cEOS configuration (for the two readers who still don't have a working *netsim-tools* environment):
+Here are the relevant parts of Arista cEOS configuration (for the two readers who still don't have a working *netlab* environment):
 
 {{<cc>}}Arista cEOS multi-VLAN configuration{{</cc>}}
 ```
@@ -104,7 +102,7 @@ interface Vlan1001
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netsim-examples/tree/master/VLAN/vlan-trunk#changing-device-types)? No problem:
 
-* [Install netsim-tools](https://netsim-tools.readthedocs.io/en/latest/install.html)
+* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
 * Download the [topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-trunk/topology.yml) into an empty directory
 * Execute **netlab up**

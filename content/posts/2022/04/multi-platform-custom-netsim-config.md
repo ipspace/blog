@@ -1,14 +1,15 @@
 ---
-title: "Multi-Platform Custom Configuration Templates in netsim-tools"
+title: "netlab Multi-Platform Custom Configuration Templates"
+series_title: "Multi-Platform Custom Configuration Templates"
 date: 2022-04-25 07:07:00
 tags: [ automation ]
-series: netsim
-netsim_tag: extend
+series: netlab
+netlab_tag: extend
 pre_scroll: True
 ---
-In the _[Building a BGP Anycast Lab](https://blog.ipspace.net/2021/12/bgp-anycast-lab.html)_ I described how you could use custom configuration templates to extend the functionality of *netsim-tools*. 
+In the _[Building a BGP Anycast Lab](https://blog.ipspace.net/2021/12/bgp-anycast-lab.html)_ I described how you could use custom configuration templates to extend the *netlab* functionality. 
 
-That example used Cisco IOS... but what if you want to test the same functionality on multiple platforms? *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)* provides a nice trick: the [custom configuration template](https://netsim-tools.readthedocs.io/en/latest/groups.html#custom-configuration-templates) could point to a directory with platform-specific templates. Let me show you how that works...
+That example used Cisco IOS... but what if you want to test the same functionality on multiple platforms? *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* provides a nice trick: the [custom configuration template](https://netsim-tools.readthedocs.io/en/latest/groups.html#custom-configuration-templates) could point to a directory with platform-specific templates. Let me show you how that works...
 <!--more-->
 We'll start with the [BGP anycast topology](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-bgp-addpath/topology.yml), but change the lab devices to a mix of Cisco IOS, Arista EOS, and Cumulus VX:
 
@@ -127,4 +128,4 @@ Ansible playbook printout generated during the lab initialization (using **netla
   * s1                         - changed=True --  ---------------------------------------------
 ```
 
-Want to test this functionality on your own? [Install netsim-tools](https://netsim-tools.readthedocs.io/en/latest/install.html) (and a bunch of other stuff), [download the lab topology and custom configuration templates from GitHub](https://github.com/ipspace/netsim-examples/tree/master/multi-platform/bgp-anycast), and execute **netlab up**.
+Want to test this functionality on your own? [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html) (and a bunch of other stuff), [download the lab topology and custom configuration templates from GitHub](https://github.com/ipspace/netsim-examples/tree/master/multi-platform/bgp-anycast), and execute **netlab up**.

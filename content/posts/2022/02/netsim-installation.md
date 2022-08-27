@@ -1,9 +1,9 @@
 ---
-title: "New netsim-tools Installation Instructions"
+title: "New netlab Installation Instructions"
 date: 2022-02-23 08:44:00
 tags: [ automation ]
-series: netsim
-netsim_tag: release
+series: netlab
+netlab_tag: release
 ---
 A long-time subscriber with a knack for telling me precisely why something I'm doing sucks big time sent me his opinion on netsim-tools installation instructions:
 

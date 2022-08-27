@@ -2,8 +2,8 @@
 title: "Anycast Works Just Fine with MPLS/LDP"
 date: 2021-11-17 07:24:00
 tags: [ MPLS, LDP ]
-series: netsim
-netsim_tag: use
+series: netlab
+netlab_tag: use
 lastmod: 2022-02-16 16:15:00
 pre_scroll: True
 ---
@@ -21,7 +21,7 @@ I created a tree network to test the *anycast with MPLS* idea:
 
 The lab is built from Arista EOS containers running under *containerlab* (build instructions). The whole network is running OSPF, and MPLS/LDP will be enabled on all links. A1, A2 and A3 will advertise the same prefix (10.0.0.42/32) into OSPF. According to the "*no anycast with MPLS*" claim, L1 should not be able to reach all three anycast nodes.
 
-You probably know I prefer typing CLI commands over chasing rodents[^RD], so I used *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)* to build the lab. Here's the [topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) (I don't think it can get any simpler than that)
+You probably know I prefer typing CLI commands over chasing rodents[^RD], so I used *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* to build the lab. Here's the [topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) (I don't think it can get any simpler than that)
 
 [^RD]: To be precise, _Mus computatorum_ species
 
@@ -41,7 +41,7 @@ links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 
 **Next step**: starting the lab with **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** and waiting a minute or so.
 
-Now for the fun part: *netsim-tools* don't support MPLS/LDP or anycast yet[^R113]. Time for some custom Jinja2 templates. 
+Now for the fun part: *netlab* doesn't support MPLS/LDP or anycast yet[^R113]. Time for some custom Jinja2 templates. 
 
 [^R113]: As of release 1.1.3. MPLS and LDP were added in release 1.2.
 
@@ -207,7 +207,7 @@ Yeah, I know I have to set up another lab to prove that ;) Mañana...
 To replicate this experiment:
 
 * [Set up a Linux server or virtual machine](https://netsim-tools.readthedocs.io/en/latest/install.html#creating-the-lab-environment). If you don't have a preferred distribution, use Ubuntu.
-* [Install netsim-tools](https://netsim-tools.readthedocs.io/en/latest/install.html#installing-netsim-tools-package)
+* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html#installing-netsim-tools-package)
 * [Install Docker and containerlab](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) (**[netlab install containerlab](https://netsim-tools.readthedocs.io/en/latest/netlab/install.html)** is the easiest way to do it on Ubuntu).
 * Install Ansible
 

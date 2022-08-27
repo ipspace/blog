@@ -1,12 +1,12 @@
 ---
-title: "netsim-tools: Combining VLANs with VRFs"
+title: "netlab: Combining VLANs with VRFs"
 date: 2022-06-13 06:38:00
 tags: [ automation ]
-series: netsim
-netsim_tag: vlan_vrf
+series: netlab
+netlab_tag: vlan_vrf
 series_title: Combining VLANs with VRFs
 ---
-Last two weeks we focused on [access VLANs](/2022/05/netsim-vlan-simple.html) and [VLAN trunk](/2022/06/netsim-vlan-trunk.html) implementation in *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)*. Can we combine them with [VRFs](/2022/04/netsim-vrf-lite.html)? Of course.
+Last two weeks we focused on [access VLANs](/2022/05/netsim-vlan-simple.html) and [VLAN trunk](/2022/06/netsim-vlan-trunk.html) *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* implementation. Can we combine them with [VRFs](/2022/04/netsim-vrf-lite.html)? Of course.
 
 The trick is very simple: attributes within a VLAN definition become attributes of VLAN interfaces. Add `vrf` attribute to a VLAN and you get all VLAN interfaces created for that VLAN in the corresponding VRF. Can't get any easier, can it?
 
@@ -34,7 +34,7 @@ vrfs:
   blue:
 ```
 
-{{<note info>}}*netsim-tools* automatically allocate route distinguishers and route targets to VRFs. Obviously you could override those values if you like particular RD/RT values or if you're building complex topologies.{{</note>}}
+{{<note info>}}*netlab* automatically allocates route distinguishers and route targets to VRFs. Obviously you could override those values if you like particular RD/RT values or if you're building complex topologies.{{</note>}}
 
 Finally, a bit of magic dust: add `vrf` attribute to VLAN definitions:
 
@@ -100,7 +100,7 @@ ip routing vrf red
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netsim-examples/tree/master/VLAN/vlan-trunk-vrf#changing-device-types)? No problem:
 
-* [Install netsim-tools](https://netsim-tools.readthedocs.io/en/latest/install.html)
+* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
 * Download the [topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-trunk-vrf/topology.yml) into an empty directory
 * Execute **netlab up**
