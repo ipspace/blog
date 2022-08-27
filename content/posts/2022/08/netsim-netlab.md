@@ -3,7 +3,7 @@ title: "netsim-tools Renamed to netlab"
 date: 2022-08-27 11:35:00
 tags: [ automation ]
 series: [ netlab, netsim ]
-netsim_tag: release
+netlab_tag: release
 ---
 **TL&DR**: we renamed *netsim-tools* to *netlab* as the project evolved from a bag of tools into a full-blown intent-based lab-as-code system (how's that for a Bullshit Bingo winner?).
 

@@ -2,8 +2,8 @@
 title: "netsim-tools Release 1.1.3"
 date: 2022-03-07 09:53:00
 tags: [ automation ]
-series: netsim
-netsim_tag: release
+series: netlab
+netlab_tag: release
 ---
 *netsim-tools* release 1.1.3 brings a number of goodies, including:
 
@@ -13,8 +13,10 @@ netsim_tag: release
 * Support for /31 IPv4 P2P links
 * Configurable MTU for VyOS and RouterOS
 
-If you're building your own *libvirt* boxes, you might also appreciate:
+{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab.html).{{</note>}}
 <!--more-->
+If you're building your own *libvirt* boxes, you might also appreciate:
+
 * **[netlab show](https://netsim-tools.readthedocs.io/en/latest/netlab/show.html)** command displays system settings (including image names) in tabular format
 * [Restructured installation documentation](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * Box creating scripts for [Cisco CSR 1000v](https://netsim-tools.readthedocs.io/en/latest/labs/csr.html) and [Juniper vSRX 3.0](https://netsim-tools.readthedocs.io/en/latest/labs/vsrx.html)

@@ -1,10 +1,11 @@
 ---
 title: "netsim-tools: Unnumbered Interfaces, Configuration Modules, OSPF"
+series_title: "Unnumbered Interfaces, Configuration Modules, OSPF"
 date: 2021-03-29 07:12:00
 tags: [ automation ]
-series: netsim
+series: netlab
 lastmod: 2021-07-12 18:00:03
-netsim_tag: release
+netlab_tag: archive
 ---
 **TL&DR**: The [new release of netsim-tools](https://netsim-tools.readthedocs.io/en/latest/release/0.4.html) includes unnumbered interfaces, configuration modules, and OSPF configuration.
 

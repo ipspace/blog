@@ -1,9 +1,10 @@
 ---
 title: "netsim-tools release 0.7: Cumulus VX, EIGRP, and BGP IPv6 AF"
+series_title: "Cumulus VX, EIGRP, and BGP IPv6 AF"
 date: 2021-05-31 06:58:00
 tags: [ automation ]
-series: netsim
-netsim_tag: release
+series: netlab
+netlab_tag: archive
 ---
 *netsim-tools* [release 0.7](https://github.com/ipspace/netsim-tools/releases/tag/release_0.7) is published, bringing you the following goodies (including stuff published a week ago as release 0.6.3):
 
@@ -34,5 +35,4 @@ Potential new devices:
 * Nokia might release their SR Linux in container format;
 * Someone already mentioned vASA in #netsim-tools channel, and it looks like it should be relatively easy to create a Vagrant box... but [there's way more work to be done](https://networktocode.slack.com/archives/C022DQHK8BH/p1622272039029800).
 
-{{<jump>}}[Download the new release](https://github.com/ipspace/netsim-tools)\
-[Read the docs](https://netsim-tools.readthedocs.io/){{</jump>}}
+{{<jump>}}[Read the docs](https://netsim-tools.readthedocs.io/){{</jump>}}

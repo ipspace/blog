@@ -1,9 +1,10 @@
 ---
-title: "netsim-tools: VLANs, Hardware Labs, VRF Loopbacks"
+title: "New in netlab: VLANs, Hardware Labs, VRF Loopbacks"
+series_title: "VLANs, Hardware Labs, VRF Loopbacks (Release 1.2.2)"
 date: 2022-05-11 06:36:00
 tags: [ automation ]
-series: netsim
-netsim_tag: release
+series: netlab
+netlab_tag: release
 ---
 Here's a short list of major goodies included in netsim-tools release 1.2.2:
 
@@ -13,4 +14,4 @@ Here's a short list of major goodies included in netsim-tools release 1.2.2:
 
 More details in the [release notes](https://netsim-tools.readthedocs.io/en/latest/release/1.2.html).
 
-To upgrade *netsim-tools*, use `pip3 install --upgrade netsim-tools`; if you're starting from scratch, read the [installation instructions](https://netsim-tools.readthedocs.io/en/latest/install.html).
+{{<note info>}}In release 1.3, we renamed *netsim-tools* to *netlab*.{{</note>}}

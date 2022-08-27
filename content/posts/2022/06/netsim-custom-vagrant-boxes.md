@@ -1,14 +1,14 @@
 ---
-title: "Using Custom Vagrant Boxes with netsim-tools"
+title: "Using Custom Vagrant Boxes with netlab"
 date: 2022-06-09 06:10:00
 tags: [ automation ]
-series: netsim
-netsim_tag: extend
+series: netlab
+netlab_tag: extend
 pre_scroll: True
 ---
-A friend of mine started using Vagrant with libvirt years ago (it was his enthusiasm that piqued my interest in this particular setup, eventually resulting in *netsim-tools*). Not surprisingly, he's built Vagrant boxes for any device he ever encountered, created quite a collection that way, and would like to use them with *netsim-tools*.
+A friend of mine started using Vagrant with libvirt years ago (it was his enthusiasm that piqued my interest in this particular setup, eventually resulting in *netlab*). Not surprisingly, he's built Vagrant boxes for any device he ever encountered, created quite a collection that way, and would like to use them with *netlab*.
 
-While I didn't think about this particular use case when programming the *netsim-tools* virtualization provider interface, I decided very early on that:
+While I didn't think about this particular use case when programming the *netlab* virtualization provider interface, I decided very early on that:
 
 * Everything worth changing will be specified in the system defaults
 * You will be able to change system defaults in topology file or user defaults.
@@ -43,7 +43,7 @@ defaults:
         image: ceos:4.27.0F
 ```
 
-You probably hate using a ruler to figure out proper YAML indentation as much as I do, so I added a neat trick to *netsim-tools* -- you can use dotted name syntax (similar to how sane programming languages deal with objects) in YAML files:
+You probably hate using a ruler to figure out proper YAML indentation as much as I do, so I added a neat trick to *netlab* YAML files -- you can use dotted name syntax (similar to how sane programming languages deal with objects):
 
 {{<cc>}}Changing Arista cEOS container image in lab topology -- dotted syntax{{</cc>}}
 ```
@@ -122,7 +122,7 @@ devices.eos.libvirt.group_vars.ansible_user: foobar
 
 ### Changing Vagrantfile
 
-The final hurdle my friend was facing: he didn't like the way *netsim-tools* sets up NX-OS boxes in generated Vagrantfile:
+The final hurdle my friend was facing: he didn't like the way *netlab* sets up NX-OS boxes in generated Vagrantfile:
 
 {{<cc>}}*libvirt* Vagrantfile template for NX-OS boxes{{</cc>}}
 ```
@@ -149,7 +149,7 @@ The final hurdle my friend was facing: he didn't like the way *netsim-tools* set
     end
 ```
 
-*netsim-tools* release 1.2.4[^NSR] adds support for user templates -- all *netsim-tools* code using Jinja2 templates[^NOANS] looks for templates in current directory, `~/.netlab` directory, and Python package[^SPD]. Templates used to create Vagrantfile are within the provider-specific subdirectory (`libvirt` or `virtualbox`).
+*netlab* release 1.2.4 adds support for user Jinja2 templates -- all *netlab* code using Jinja2 templates[^NOANS] looks for templates in current directory, `~/.netlab` directory, and Python package[^SPD]. Templates used to create Vagrantfile are within the provider-specific subdirectory (`libvirt` or `virtualbox`).
 
 [^NOANS]: But not the Ansible playbooks used by **netlab up** or **netlab initial**
 
@@ -157,10 +157,8 @@ To change the template used to create Vagrantfile configuration for a Nexus OS *
 
 * If you want to use the changed template for a specific topology, create `libvirt` directory within the directory the with lab topology.
 * If you want to use the changed template for all labs, create `libvirt` directory within the `~/.netlab` directory.
-* Find the original template in [*netsim-tools* sources](https://github.com/ipspace/netsim-tools/tree/dev/netsim/templates/provider) (example: [*libvirt* Nexus OS template](https://github.com/ipspace/netsim-tools/blob/dev/netsim/templates/provider/libvirt/nxos-domain.j2)).
+* Find the original template in [*netlab* sources](https://github.com/ipspace/netsim-tools/tree/dev/netsim/templates/provider) (example: [*libvirt* Nexus OS template](https://github.com/ipspace/netsim-tools/blob/dev/netsim/templates/provider/libvirt/nxos-domain.j2)).
 * Copy that template **with the same file name** into `libvirt` directory and modify it as needed.
-* Enjoy using *netsim-tools* with your custom Vagrant boxes.
-
-[^NSR]: If you want to test this functionality before version 1.2.4 is released, upgrade *netsim-tools* to the latest released development version with `pip3 install --upgrade --pre netsim-tools`
+* Enjoy using *netlab* with your custom Vagrant boxes.
 
 [^SPD]: To see the template search path, run `netlab create --debug` and look for `TEMPLATE PATH` messages.

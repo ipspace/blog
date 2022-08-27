@@ -1,21 +1,21 @@
 ---
-title: "Introducing netsim-tools Plugins"
+title: "Introducing netlab Plugins"
 date: 2022-01-19 07:09:00
 tags: [ automation ]
-series: netsim
-netsim_tag: extend
+series: netlab
+netlab_tag: extend
 ---
-Remember the [BGP anycast lab](/2021/12/bgp-anycast-lab.html) I described in December 2021? In that blog post I briefly mentioned a problem of extraneous IBGP sessions and promised to address it at a later date. Let's see how we can fix that with *netsim-tools* plugin.
+Remember the [BGP anycast lab](/2021/12/bgp-anycast-lab.html) I described in December 2021? In that blog post I briefly mentioned a problem of extraneous IBGP sessions and promised to address it at a later date. Let's see how we can fix that with a *netlab* plugin.
 
-We always knew that it's impossible to implement every nerd knob someone would like to have when building their labs, and extending the tool with Python plugins seemed like the only sane way to go. We added [custom plugins](https://netsim-tools.readthedocs.io/en/latest/plugins.html) to *netsim-tools* release 1.0.6, but I didn't want to write about them because we had to optimize the internal data structures first.
+We always knew that it's impossible to implement every nerd knob someone would like to have when building their labs, and extending the tool with Python plugins seemed like the only sane way to go. We added [custom plugins](https://netsim-tools.readthedocs.io/en/latest/plugins.html) to *netlab* in late 2021, but I didn't want to write about them because we had to optimize the internal data structures first.
 <!--more-->
-{{<note>}}Even though you don't need to know anything about the internal *netsim-tools* functions to write plugins, your code has to modify the lab topology data model, and we had to get that stabilized, which we hopefully managed to do over the [New Year break](/2022/01/netsim-tools-1.1.html).{{</note>}}
+{{<note>}}Even though you don't need to know anything about the internal *netlab* functions to write plugins, your code has to modify the lab topology data model, and we had to get that stabilized, which we hopefully managed to do over the [New Year break](/2022/01/netsim-tools-1.1.html).{{</note>}}
 
 Back to the original challenge. In the BGP anycast lab I wanted to have BGP sessions set up like this:
 
 {{<figure src="/2022/01/anycast-ibgp-plugin.png" caption="Desired BGP sessions">}}
 
-However, *netsim-tools* tries to do *the right thing* and creates IBGP full mesh  within an AS[^RR]. The configured BGP sessions within my lab looked like this:
+However, *netlab* tries to do *the right thing* and creates IBGP full mesh  within an AS[^RR]. The configured BGP sessions within my lab looked like this:
 
 {{<figure src="/2022/01/anycast-ibgp-sessions.png" caption="Actual BGP sessions">}}
 
@@ -79,7 +79,7 @@ Let's unpack that code:
 * If the **node.bgp.anycast** attribute is set, it's safe to work with BGP parameters, so we can assume that we can set **advertise_loopback** and that the node has a list of BGP neighbors in **node.bgp.neighbors**.
 * Every BGP session described in **node.bgp.neighbors** includes session type in **type** attribute, and the value of that parameter could be `ibgp` or `ebgp`. The list comprehension I used selects all list elements that are not IBGP sessions.
 
-Want to do something similar? It's not too hard once understand the data structures used by *netsim-tools*. Here's how you can get there:
+Want to do something similar? It's not too hard once understand the *netlab* data structures. Here's how you can get there:
 
 * Build a [lab topology](https://netsim-tools.readthedocs.io/en/latest/topology-reference.html)
 * Run `netlab create -o yaml` to get the final data model. You can also [limit the output to individual components of the data model](https://netsim-tools.readthedocs.io/en/latest/outputs/yaml-or-json.html).

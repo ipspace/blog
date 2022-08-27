@@ -1,9 +1,10 @@
 ---
 title: "Mikrotik RouterOS and VyOS Added to netsim-tools"
+series_title: "Mikrotik RouterOS and VyOS Support"
 date: 2021-11-29 07:13:00
 tags: [ automation ]
-series: netsim
-netsim_tag: release
+series: netlab
+netlab_tag: archive
 ---
 [Stefano Sasso](http://stefano.dscnet.org/about/) took my "_Don't complain, submit a PR_" advice seriously and did a wonderful job adding support for Mikrotik RouterOS and VyOS to *netsim-tools*, increasing the number of [supported platforms](https://netsim-tools.readthedocs.io/en/latest/platforms.html) to twelve. His additions are available in release 1.0.2 which also includes:
 

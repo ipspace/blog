@@ -2,8 +2,8 @@
 title: "Building a BGP Anycast Lab"
 date: 2021-12-06 07:30:00
 tags: [ BGP ]
-series: netsim
-netsim_tag: use
+series: netlab
+netlab_tag: use
 pre_scroll: True
 lastmod: 2022-01-16 07:58:00
 ---
@@ -77,7 +77,7 @@ groups:
 
 The "only" problem with this solution is duplicate data (and you know [I hate that](https://www.ipspace.net/kb/DataModels/)): I'm defining the same groups twice. Wouldn't it be great if the BGP configuration module created groups based on AS membership (as65000 and as65101 in our case).
 
-Sure thing -- *netsim-tools* release 1.0.2 includes [auto-generated BGP groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#automatic-bgp-groups) that can also be used to set any other group attribute, simplifying my group definition. I have to define the custom deployment template, and the group members are added by the BGP topology transformation module based on **bgp.as_list** definition.
+Sure thing -- *netlab* includes [auto-generated BGP groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#automatic-bgp-groups) that can also be used to set any other group attribute, simplifying my group definition. I have to define the custom deployment template, and the group members are added by the BGP topology transformation module based on **bgp.as_list** definition.
 
 {{<cc>}}Setting custom deployment templates on auto-generated BGP groups{{</cc>}}
 ```
@@ -120,7 +120,7 @@ groups:
 nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 ```
 
-Final touch: *netsim-tools* release 1.1 added stricter checks of module- and node data, so I had to tell the tool that I want to use **bgp.anycast** node attribute:
+Final touch: *netlab* release 1.1 added stricter checks of module- and node data, so I had to tell the tool that I want to use **bgp.anycast** node attribute:
 
 {{<cc>}}Defining a [custom BGP attribute](https://netsim-tools.readthedocs.io/en/latest/extend-attributes.html){{</cc>}}
 ```
@@ -214,7 +214,7 @@ The correct solution to this challenge is to use the [DMZ Link Bandwidth BGP com
 
 ### Tweaking the BGP Next Hops
 
-Turning off *next-hop-self* (the default setting) requires quite a bit of [attribute haggling](https://netsim-tools.readthedocs.io/en/latest/module/bgp.html#advanced-global-configuration-parameters) within *netsim-tools*:
+Turning off *next-hop-self* (the default setting) requires quite a bit of [attribute haggling](https://netsim-tools.readthedocs.io/en/latest/module/bgp.html#advanced-global-configuration-parameters) within *netlab* topology file:
 
 * Set **bgp.next_hop_self** to *false*;
 * Set **bgp.ebgp_role** to *stub* (default: *external*) to make sure the external subnets are included in the OSPF process;

@@ -1,8 +1,8 @@
 ---
 title: "netsim-tools: New in December 2021"
 date: 2022-01-03 09:13:00
-series: netsim
-netsim_tag: release
+series: netlab
+netlab_tag: archive
 tags: [ automation ]
 ---
 [Tons of new things](https://netsim-tools.readthedocs.io/en/latest/release/1.0.html) were added to *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/index.html)* in December 2021:
@@ -11,8 +11,10 @@ tags: [ automation ]
 * [Jeroen van Bemmel](https://github.com/jbemmel) contributed support for Nokia SR Linux and SR OS (including initial device configuration, OSPF, ISIS, BGP, and SR-MPLS).
 * I added Vagrant box names for IOSv, CSR and vSRX on VirtualBox. You still have to build the boxes, but at least you won’t have to change the default settings.
 
-But wait, there's more ;)
+{{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab.html).{{</note>}}
 <!--more-->
+But wait, there's more ;)
+
 * [Hierarchical device groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#hierarchical-groups)
 * Device-specific module attributes ([more details](https://netsim-tools.readthedocs.io/en/latest/dev/module-attributes.html))
 * You can apply [custom deployment templates](https://netsim-tools.readthedocs.io/en/latest/groups.html#custom-configuration-templates) to individual nodes. They are now deployed as part of [initial device configuration](https://netsim-tools.readthedocs.io/en/latest/netlab/initial.html), making them similar to configuration modules.

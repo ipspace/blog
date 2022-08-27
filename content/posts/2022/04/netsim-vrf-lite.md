@@ -1,13 +1,13 @@
 ---
-title: "Creating VRF Lite Labs With netsim-tools"
+title: "Creating VRF Lite Labs With netlab"
 date: 2022-04-11 06:30:00
 tags: [ MPLS VPN ]
-series: netsim
-netsim_tag: vlan_vrf
+series: netlab
+netlab_tag: vlan_vrf
 ---
 I always found VRF lab setups a chore. On top of the usual IPAM tasks you have to create VRFs, assign route targets and route distinguishers, do that on every PE-router in your lab... before you can start working on interesting things.
 
-I tried to remove as much friction as I could with the *netsim-tools* [VRF configuration module](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html) -- let me walk you through a few simple examples[^FANBOY] which will also serve to [illustrate the VRF configuration differences between Cisco IOS and Arista EOS](/2022/04/netsim-vrf-lite.html#differences).
+I tried to remove as much friction as I could with the *netlab* [VRF configuration module](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html) -- let me walk you through a few simple examples[^FANBOY] which will also serve to [illustrate the VRF configuration differences between Cisco IOS and Arista EOS](/2022/04/netsim-vrf-lite.html#differences).
 <!--more-->
 [^FANBOY]: Yes, I'm a fanboy, but it's a great tool ;)
 
@@ -17,7 +17,7 @@ Ignoring the trivial case (single VRF, single PE-router), the next simplest poss
 
 {{<figure src="/2022/04/vrf-lite-simple.png">}}
 
-You need just a few lines to describe the VRFs in [*netsim-tools* topology file](https://github.com/ipspace/netsim-examples/blob/master/VRF/vrf-lite-hosts/multi-vrf.yml):
+You need just a few lines to describe the VRFs in [*netlab* topology file](https://github.com/ipspace/netsim-examples/blob/master/VRF/vrf-lite-hosts/multi-vrf.yml):
 
 {{<cc>}}VRF definitions{{</cc>}}
 ```config
@@ -28,7 +28,7 @@ vrfs:
 
 That's it. RD and RT values are assigned automatically, and you get user-friendly names you can use in link definitions.
 
-{{<note info>}}*netsim-tools* use 2-byte-AS RT/RD format. If you don't use BGP in your lab, the default AS number is taken from the `vrf.as` global parameter which has the default value of 65000. RT/RD values for *red* VRF will thus be set to 65000:1.{{</note>}}
+{{<note info>}}*netlab* uses 2-byte-AS RT/RD format. If you don't use BGP in your lab, the default AS number is taken from the `vrf.as` global parameter which has the default value of 65000. RT/RD values for *red* VRF will thus be set to 65000:1.{{</note>}}
 
 Next, we have to define the lab devices. We'll use Linux hosts and an Arista EOS router in the middle (the router needs VRF configuration module).
 
@@ -62,7 +62,7 @@ links:
 
 And that's it. If you have a Ubuntu host handy:
 
-* [Install *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html)
+* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html)
 * Use `netlab install ubuntu ansible containerlab` to install all software packages
 * [Install Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html)
 * Copy [topology file](https://github.com/ipspace/netsim-examples/blob/master/VRF/vrf-lite-hosts/multi-vrf.yml) into an empty directory
@@ -170,7 +170,7 @@ The easiest way to implement overlapping VPN topology is to play with the route 
 
 {{<note info>}}In a single-router setup you don't have to import routes into the same VRF (example: *red* routes into *red* VRF), but it's good to get things right from the start or you'll have fun troubleshooting session when you'll try to migrate this scenario into a multi-node MPLS/VPN setup.{{</note>}}
 
-Defining these requirements in [*netsim-tools* lab topology file](https://github.com/ipspace/netsim-examples/blob/master/VRF/vrf-lite-hosts/vrf-route-leaking.yml) is as simple as this:
+Defining these requirements in [*netlab* lab topology file](https://github.com/ipspace/netsim-examples/blob/master/VRF/vrf-lite-hosts/vrf-route-leaking.yml) is as simple as this:
 
 {{<cc>}}VRF definition for overlapping VPN service{{</cc>}}
 ```
@@ -363,6 +363,6 @@ Told you -- labbing VRFs has never been easier ;)
 
 You'll find the [lab topology files on GitHub](https://github.com/ipspace/netsim-examples/tree/master/VRF/vrf-lite-hosts). To use them:
 
-* [Install *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/install.html) and your preferred lab environment. These days I find it easiest to use Arista cEOS with containerlab.
+* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html) and your preferred lab environment. These days I find it easiest to use Arista cEOS with containerlab.
 * Copy [topology files](https://github.com/ipspace/netsim-examples/tree/master/VRF/vrf-lite-hosts) into an empty directory
 * Execute **netlab up** with the parameters described above.

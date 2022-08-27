@@ -1,14 +1,17 @@
 ---
-title: "Building Unnumbered Ethernet Lab with netsim-tools"
+title: "Building Unnumbered Ethernet Lab with netlab"
 date: 2021-04-05 05:57:00
 tags: [ IP routing, automation ]
-series: netsim
+series: netlab
 lastmod: 2022-02-15 15:00:00
-netsim_tag: use
+netlab_tag: use
 ---
 Last week I described the new features [added to netsim-tools release 0.4](https://netsim-tools.readthedocs.io/en/latest/release/0.4.html), including support for [unnumbered interfaces](https://netsim-tools.readthedocs.io/en/latest/addressing.html#unnumbered-interface-support) and [OSPF routing](https://netsim-tools.readthedocs.io/en/latest/module/ospf.html). Now let's see how I used them to build a multi-vendor lab to test which platforms could be made to interoperate when running OSPF over unnumbered Ethernet interfaces.
 
-{{<note info>}}This blog post has been updated to use the new **netlab** CLI introduced in *netsim-tools* release 0.8 and new IPAM features introduced in release 1.0{{</note>}}
+{{<note info>}}
+* This blog post has been updated to use the new **netlab** CLI introduced in *netsim-tools* release 0.8 and new IPAM features introduced in release 1.0
+* *netsim-tools* project [has been renamed to *netlab*](/2022/08/netsim-netlab.html).
+{{</note>}}
 <!--more-->
 First I needed to make P2P links within the lab unnumbered. Setting **unnumbered** attribute on the built-in **p2p** pool is good enough (for more details read the [addressing tutorial](https://netsim-tools.readthedocs.io/en/latest/example/addressing-tutorial.html)):
 
@@ -55,7 +58,7 @@ links:
 
 ## Next Steps
 
-* [Install *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/install.html) and a lab virtualization provider of your choice.
+* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html) and a lab virtualization provider of your choice.
 * Create Vagrant and Ansible configuration files, start the lab, and configure it with a single command: **netlab up**. [Here's the log file](https://github.com/ipspace/netsim-examples/blob/master/routing/unnumbered/config.log) in case you'd like to see how it worked.
 * Wait for the network devices to boot. Write this blog post while waiting for Nexus 9300v and vSRX to boot. At least the *libvirt* provider starts them in parallel (as opposed to *virtualbox* provider that starts them in sequence).
 * Use **netlab connect** to connect to lab devices and inspect the results.
@@ -70,7 +73,7 @@ It works. The only glitch I encountered was the incorrect subnet mask in Arista 
 * Cisco IOS and Nexus OS [ignore the subnet mask](https://blog.ipspace.net/2008/10/ospf-ignores-subnet-mask-mismatch-on.html) and establish the adjacency.
 * Junos rejects the incoming hello packets due to invalid subnet mask.
 
-A quick search found an Arista EOS support article describing the **‌interface unnumbered hello mask tx 0.0.0.0** configuration command that solved the problem. Mission accomplished. I also added that command to EOS OSPF configuration template, so you don't have to worry about that when deploying your labs with *netsim-tools*.
+A quick search found an Arista EOS support article describing the **‌interface unnumbered hello mask tx 0.0.0.0** configuration command that solved the problem. Mission accomplished. I also added that command to EOS OSPF configuration template, so you don't have to worry about that when deploying your labs with *netlab*.
 
 ## More to Explore
 
@@ -84,6 +87,9 @@ A quick search found an Arista EOS support article describing the **‌interface
 You might also want to watch the *[Using OSPF in Leaf-and-Spine Fabrics](https://my.ipspace.net/bin/list?id=Clos#L3_SINGLE)* videos that inspired me to run this test.
 
 ### Revision History
+
+2022-08-27
+: *netsim-tools* has been renamed to *netlab*
 
 2022-02-15
 : Updated the blog post to use new features from *netsim-tools* release 1.1.
