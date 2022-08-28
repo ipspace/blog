@@ -38,12 +38,14 @@ I could see three solutions to that conundrum:
 * Implement a **bgp.peering.ibgp** (or something similar) nerd knob to enable/disable IBGP sessions. Doable, but we'd have to change all device configuration templates and forever keep track of which devices support this nerd knob. Sounds like a lot of technical debt to solve an edge case.
 * Write a plugin that removes unneeded IBGP sessions once the lab topology transformation is complete.
 
-The plugin turned out to be remarkably simple. I imported [Python Box](https://github.com/cdgriffith/Box)[^MYPY] and *netsim-tools* API modules.
+The plugin turned out to be remarkably simple. I imported [Python Box](https://github.com/cdgriffith/Box)[^MYPY] and *netlab* API modules[^NS].
 
 ```
 from box import Box
 from netsim import api
 ```
+
+[^NS]: The Python modules used by *netlab* are within *netsim* namespace for historical reasons.
 
 Next, I added **anycast** attribute to the list of allowed BGP node attributes in the plugin initialization code. I could do that in the topology file, but I wanted to end with a self-contained module (more about that in a week or so).
 
@@ -75,7 +77,7 @@ Let's unpack that code:
 * All plugin hooks are called with a single parameter -- current lab topology. When the **init** hook is called, you'll be working with the original topology definition, at the **post_transform** stage the data model has been extensively modified.
 * Lab devices are described in the [**nodes** dictionary](https://netsim-tools.readthedocs.io/en/latest/nodes.html) with the lab topology.
 * Each node is a dictionary that contains numerous parameters, including [configuration module](https://netsim-tools.readthedocs.io/en/latest/modules.html) settings (another dictionary).
-* Python Box module is a wonderful tool when you need to traverse deep hierarchies, but it does have a few side effects. With the default settings *netsim-tools* uses, Python Box automatically creates empty dictionaries when needed. That's awesome in 90% of the cases, but sometimes I don't want to get extra dictionaries, so I have to be a bit careful -- instead of `if node.bgp.anycast:` (which would work even if the node had no BGP parameters), I decided to do a check that would never auto-create empty data structures.
+* Python Box module is a wonderful tool when you need to traverse deep hierarchies, but it does have a few side effects. With the default *netlab* settings, Python Box automatically creates empty dictionaries when needed. That's awesome in 90% of the cases, but sometimes I don't want to get extra dictionaries, so I have to be a bit careful -- instead of `if node.bgp.anycast:` (which would work even if the node had no BGP parameters), I decided to do a check that would never auto-create empty data structures.
 * If the **node.bgp.anycast** attribute is set, it's safe to work with BGP parameters, so we can assume that we can set **advertise_loopback** and that the node has a list of BGP neighbors in **node.bgp.neighbors**.
 * Every BGP session described in **node.bgp.neighbors** includes session type in **type** attribute, and the value of that parameter could be `ibgp` or `ebgp`. The list comprehension I used selects all list elements that are not IBGP sessions.
 
@@ -85,6 +87,6 @@ Want to do something similar? It's not too hard once understand the *netlab* dat
 * Run `netlab create -o yaml` to get the final data model. You can also [limit the output to individual components of the data model](https://netsim-tools.readthedocs.io/en/latest/outputs/yaml-or-json.html).
 * Explore the data structures and figure out what needs to be modified.
 
-You can also open a discussion in [*netsim-tools* GitHub repository](https://github.com/ipspace/netlab/) or ask a question in [*netsim-tools* channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [networktocode Slack team](https://networktocode.slack.com) and we'll do our best to help you.
+You can also open a discussion in [*netlab* GitHub repository](https://github.com/ipspace/netlab/) or ask a question in [*netlab* channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [networktocode Slack team](https://networktocode.slack.com) and we'll do our best to help you.
 
 [^MYPY]: I had to import the Box module to keep **mypy** happy. If you don't care about static type checks (but you should), you could skip this step.

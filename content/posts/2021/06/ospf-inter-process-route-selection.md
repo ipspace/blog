@@ -41,12 +41,10 @@ links:
   role: stub
 ```
 
-Using *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)*, I had a lab up, running, and configured in three minutes. All it took were three commands:
+With *[netlab](https://netsim-tools.readthedocs.io/en/latest/)*, I had a lab up, running, and configured in three minutes. All it took was a single command:
 
 ```
-$ netlab create 
-$ vagrant up
-$ netlab initial
+$ netlab up
 ```
 
 Baseline check: *rtr* should have two equal-cost paths to the target prefix:

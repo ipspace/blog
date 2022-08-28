@@ -29,7 +29,7 @@ A long while ago I put together a build recipe for a [network automation contain
 * Git
 * Ansible
 * NAPALM
-* netsim-tools
+* netlab
 * PyATS
 * PyNetBox
 * paramiko, netlike, textfsm, jmespath, ntc-tempaltes, ttp

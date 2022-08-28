@@ -3,7 +3,7 @@ title: "BGP-Free MPLS Core with Segment Routing"
 date: 2021-05-11 06:54:00
 tags: [ segment routing, BGP, MPLS ]
 ---
-After I [created the Segment Routing lab](/2021/05/segment-routing-ids-mpls-labels.html) to test the relationship between Node Segment ID (SID) and MPLS labels (and added [support for IS-IS, SR-MPLS, and BGP](https://netsim-tools.readthedocs.io/en/latest/release/0.6.html) to [netsim-tools](https://github.com/ipspace/netlab)), I was just a minor step away from testing [BGP-free core](https://blog.ipspace.net/2012/01/bgp-free-service-provider-core-in.html) with [SR-MPLS](https://blog.ipspace.net/2011/11/ldp-igp-synchronization-in-mpls.html).
+After I [created the Segment Routing lab](/2021/05/segment-routing-ids-mpls-labels.html) to test the relationship between Node Segment ID (SID) and MPLS labels, I was just a minor step away from testing [BGP-free core](https://blog.ipspace.net/2012/01/bgp-free-service-provider-core-in.html) with [SR-MPLS](https://blog.ipspace.net/2011/11/ldp-igp-synchronization-in-mpls.html).
 
 I added two nodes to my lab setup, this time [using IOSv](https://github.com/ipspace/netlab-examples/blob/master/routing/sr-mpls-bgp/sr%2Bbgp.yml) as those nodes need nothing more than EBGP support (and IOSv is tiny compared to IOS XE on CSR):
 <!--more-->

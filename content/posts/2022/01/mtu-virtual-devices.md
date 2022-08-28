@@ -3,7 +3,7 @@ title: "MTU Settings in Virtual Network Devices"
 date: 2022-01-27 09:34:00
 tags: [ virtualization ]
 ---
-When I finally[^1] managed to get SR Linux running with *netsim-tools*, I wanted to test how it interacts with Cumulus VX and FRR in an OSPF+BGP lab... and failed. [Jeroen Van Bemmel](https://github.com/jbemmel) quickly identified the culprit: MTU. Yeah, it's always the MTU (or DNS, or BGP).
+When I finally[^1] managed to get SR Linux running with *netlab*, I wanted to test how it interacts with Cumulus VX and FRR in an OSPF+BGP lab... and failed. [Jeroen Van Bemmel](https://github.com/jbemmel) quickly identified the culprit: MTU. Yeah, it's always the MTU (or DNS, or BGP).
 
 I never experienced a similar problem, so of course I had to identify the root cause:
 <!--more-->
@@ -21,7 +21,7 @@ Next question: why would SR Linux and SR OS have a different default MTU sizes? 
 
 Finally, where did the high default MTU come from? It's not Linux default, and it's definitely not set that way in other container orchestration systems like Docker. Turns out that *containerlab* [sets the MTU to 9500](https://containerlab.srlinux.dev/manual/network/#point-to-point-links) on vEth links. Mystery solved ;)
 
-So how did we get Cumulus VX and SR Linux to work together? We had to implement MTU parameter (on interface, link, node, and lab level) in *netsim-tools*, and set the default to 1500 for container-based network devices. The fix is available in release 1.1.2; until we push it out use `pip3 install --upgrade 'netsim-tools>=1.1.2.dev'` to grab a snapshot of the development branch.
+So how did we get Cumulus VX and SR Linux to work together? We had to implement MTU parameter (on interface, link, node, and lab level) in *netlab*, and set the default to 1500 for container-based network devices.
 
 ## Keep Exploring
 

@@ -137,7 +137,7 @@ round-trip min/avg/max = 3.040/3.232/3.363 ms
 
 Next time, we'll fix IP routing and add OSPF routing process to the switches. You could also do it on your own:
 
-* [Set up a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html) or a bare-metal server with netsim-tools, Docker and containerlab
+* [Set up a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html) or a bare-metal server with netlab, Docker and containerlab
 * [Install Arista cEOS container image](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html)
 * Copy the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) into an empty directory
 * Start the lab with **netlab up** and start exploring
