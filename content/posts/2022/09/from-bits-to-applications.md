@@ -1,6 +1,6 @@
 ---
 title: "From Bits to Application Data"
-date: 2022-09-05 06:33:00
+date: 2022-09-08 06:33:00
 tags: [ networking fundamentals ]
 ---
 Long long time ago, Daniel Dib started an interesting Twitter discussion with [this seemingly simple question](https://twitter.com/danieldibswe/status/1537671262750879745):

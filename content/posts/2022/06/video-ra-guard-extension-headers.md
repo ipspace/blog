@@ -9,6 +9,6 @@ For years, the networking vendors were furiously trying to plug the holes create
 
 For more details watch the video by [Christopher Werny](https://www.ipspace.net/Author:Christopher_Werny) describing how [one could use IPv6 extension headers to circumvent IPv6 RA guard](https://my.ipspace.net/bin/get/IPv6Sec/E5.3%20-%20Extension%20Headers%20Circumvent%20RA%20Guard.mp4?doccode=IPv6Sec)
 
-{{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/IPv6Sec/E5.2%20-%20Rogue%20RA%20Challenges.mp4?doccode=IPv6Sec){{</jump>}}
+{{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/IPv6Sec/E5.3%20-%20Extension%20Headers%20Circumvent%20RA%20Guard.mp4?doccode=IPv6Sec){{</jump>}}
 
 {{<note info >}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
