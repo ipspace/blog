@@ -50,6 +50,6 @@ And that's it. Execute **netlab up** and you'll get default IP addressing config
 
 Next step(s): explore a dozen [configuration modules](https://netsim-tools.readthedocs.io/en/latest/module-reference.html) to prepare your lab for whatever tests you'd like to perform.
 
-Experiencing problems? We have a [channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [NetworkToCode Slack team](https://networktocode.herokuapp.com/), and if you're pretty sure you're dealing with a bug, please [open a GitHub issue](https://github.com/ipspace/netsim-tools/issues).
+Experiencing problems? We have a [channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [NetworkToCode Slack team](https://networktocode.herokuapp.com/), and if you're pretty sure you're dealing with a bug, please [open a GitHub issue](https://github.com/ipspace/netlab/issues).
 
 Last but not least: wouldn't it be great to have a tool that would collect operational device data (software version, LLDP neighbors, interface state) from your hardware lab and create the lab topology for you? Why don't you create something along these lines and submit a PR?

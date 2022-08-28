@@ -137,4 +137,4 @@ BGP routing table entry for 172.16.0.0/16
 
 <!-- More details coming in another blog post describing the interactions between routing protocols, routing table, and forwarding table. -->
 
-Want to try it yourself? The lab topology (using *vagrant-libvirt*) and device configurations are in my [*netsim-examples* GitHub repository](https://github.com/ipspace/netsim-examples/tree/master/BGP/IGP-metric).
+Want to try it yourself? The lab topology (using *vagrant-libvirt*) and device configurations are in [*netlab-examples* GitHub repository](https://github.com/ipspace/netlab-examples/tree/master/BGP/IGP-metric).

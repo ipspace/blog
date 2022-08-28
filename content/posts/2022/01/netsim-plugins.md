@@ -85,6 +85,6 @@ Want to do something similar? It's not too hard once understand the *netlab* dat
 * Run `netlab create -o yaml` to get the final data model. You can also [limit the output to individual components of the data model](https://netsim-tools.readthedocs.io/en/latest/outputs/yaml-or-json.html).
 * Explore the data structures and figure out what needs to be modified.
 
-You can also open a discussion in [*netsim-tools* GitHub repository](https://github.com/ipspace/netsim-tools/) or ask a question in [*netsim-tools* channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [networktocode Slack team](https://networktocode.slack.com) and we'll do our best to help you.
+You can also open a discussion in [*netsim-tools* GitHub repository](https://github.com/ipspace/netlab/) or ask a question in [*netsim-tools* channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [networktocode Slack team](https://networktocode.slack.com) and we'll do our best to help you.
 
 [^MYPY]: I had to import the Box module to keep **mypy** happy. If you don't care about static type checks (but you should), you could skip this step.

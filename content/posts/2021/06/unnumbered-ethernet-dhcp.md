@@ -17,7 +17,7 @@ I've first seen static routes created from DHCP responses in [DHCPv6 relays supp
 
 ## Does It Really Work?
 
-A lab test always beats academic discussions, and we already have the lab built. [We'll use the same lab setup as the last time](https://github.com/ipspace/netsim-examples/tree/master/routing/lan-unnumbered) with a slightly different IP addressing. Instead of static IP addresses and static routes, we'll configure DHCP server on the access router, and use DHCP-based address allocation on the clients.
+A lab test always beats academic discussions, and we already have the lab built. [We'll use the same lab setup as the last time](https://github.com/ipspace/netlab-examples/tree/master/routing/lan-unnumbered) with a slightly different IP addressing. Instead of static IP addresses and static routes, we'll configure DHCP server on the access router, and use DHCP-based address allocation on the clients.
 
 {{<figure src="/2021/06/Addr-Ethernet-Unnumbered-DHCP.png" caption="Lab topology">}}
 
@@ -113,20 +113,20 @@ Want to build a lab in a few minutes and have it configured in seconds? You'll h
 
 * Install [Vagrant and libvirt](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html). If you're running your lab on Windows or MacOS host, [use a Ubuntu virtual machine](https://blog.kirchne.red/netsim-tools-quickstart.html).
 * [Build CSR 1000v box](https://codingpackets.com/blog/cisco-iosv-vagrant-libvirt-box-install/)
-* [Install *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/install.html)
+* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html)
 
 After you got everything up and running:
 
-* Copy my [lab topology](https://github.com/ipspace/netsim-examples/blob/master/routing/lan-unnumbered/dhcp.yml) into **dhcp.yml** in an empty directory (or clone my [netsim-examples repository](https://github.com/ipspace/netsim-examples))
+* Copy my [lab topology](https://github.com/ipspace/netlab-examples/blob/master/routing/lan-unnumbered/dhcp.yml) into **dhcp.yml** in an empty directory (or clone my [netlab-examples repository](https://github.com/ipspace/netlab-examples))
 * Execute **netlab create dhcp.yml** to create Vagrantfile, Ansible inventory and Ansible configuration file
 * Execute **vagrant up** to start the lab
 * Execute **netlab initial** to configure the devices.
 
 You could apply the configuration changes outlined in this blog post manually. I decided to automate them:
 
-* Add [client-side](https://github.com/ipspace/netsim-examples/blob/master/routing/lan-unnumbered/dhcp-client.j2) and [server-side](https://github.com/ipspace/netsim-examples/blob/master/routing/lan-unnumbered/dhcp-server.j2) Jinja2 templates to your directory
-* Execute **‌netlab config dhcp-server.j2 -l rtr**[^2] to configure the DHCP server
-* Execute **‌netlab config dhcp-client.j2 -l c1,c2** to configure DHCP clients
+* Add [client-side](https://github.com/ipspace/netlab-examples/blob/master/routing/lan-unnumbered/dhcp-client.j2) and [server-side](https://github.com/ipspace/netlab-examples/blob/master/routing/lan-unnumbered/dhcp-server.j2) Jinja2 templates to your directory
+* Execute **netlab config dhcp-server.j2 -l rtr**[^2] to configure the DHCP server
+* Execute **netlab config dhcp-client.j2 -l c1,c2** to configure DHCP clients
 * Use **netlab connect** to connect to the routers and inspect the results.
 
 [^2]: **netlab config** command invokes an Ansible playbook and accepts the usual **ansible-playbook** parameters. The **-l** parameter limits the playbook run to a subset of devices.

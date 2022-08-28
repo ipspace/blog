@@ -127,7 +127,7 @@ Since the times I wrote my original hack Ansible got **flatten** filter, so you 
 
 ### Getting Your Hands Dirty
 
-Download the [source code](https://github.com/ipspace/netsim-examples/tree/master/Ansible/XML) for these examples, [setup your virtual lab](https://github.com/ipspace/netsim-examples/blob/master/Ansible/XML/README.md), and have fun.
+Download the [source code](https://github.com/ipspace/netlab-examples/tree/master/Ansible/XML) for these examples, [setup your virtual lab](https://github.com/ipspace/netlab-examples/blob/master/Ansible/XML/README.md), and have fun.
 
 ## Revision History
 

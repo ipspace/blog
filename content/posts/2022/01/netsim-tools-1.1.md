@@ -5,9 +5,9 @@ tags: [ automation ]
 series: netlab
 netlab_tag: archive
 ---
-New Year break was probably my busiest time (programming-wise) in years. [Jeroen van Bemmel](https://github.com/jbemmel) continued generating great ideas (and [writing code and device configuration templates](https://github.com/ipspace/netsim-tools/graphs/contributors)), and I found myself saying, "_why not, let's do the right thing!_" more often than I expected. In parallel, [Stefano Sasso](https://github.com/ssasso) fixed configuration templates for Junos, Mikrotik Router OS, and VyOS, and we were good to go.
+New Year break was probably my busiest time (programming-wise) in years. [Jeroen van Bemmel](https://github.com/jbemmel) continued generating great ideas (and [writing code and device configuration templates](https://github.com/ipspace/netlab/graphs/contributors)), and I found myself saying, "_why not, let's do the right thing!_" more often than I expected. In parallel, [Stefano Sasso](https://github.com/ssasso) fixed configuration templates for Junos, Mikrotik Router OS, and VyOS, and we were good to go.
 
-To give you an idea of [how fast we were moving](https://github.com/ipspace/netsim-tools/pulse/monthly): issue #84 was created on December 22nd, Sunday's pull request that pushed release 1.1 into the master branch was #135 (GitHub numbers everything you do sequentially).
+To give you an idea of [how fast we were moving](https://github.com/ipspace/netlab/pulse/monthly): issue #84 was created on December 22nd, Sunday's pull request that pushed release 1.1 into the master branch was #135 (GitHub numbers everything you do sequentially).
 
 {{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab.html).{{</note>}}
 <!--more-->

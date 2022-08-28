@@ -28,7 +28,7 @@ To create the graphs you have to:
 * Run one of the *graphviz* commands to create a graph in desired output format (they support over a dozen formats)
 * Enjoy the end results.
 
-For example, I was using the network topology from [one of my BGP examples](https://github.com/ipspace/netsim-examples/tree/master/BGP/LocPref-Prepend) to create a simple network topology graph:
+For example, I was using the network topology from [one of my BGP examples](https://github.com/ipspace/netlab-examples/tree/master/BGP/LocPref-Prepend) to create a simple network topology graph:
 
 ```
 netlab create -o graph

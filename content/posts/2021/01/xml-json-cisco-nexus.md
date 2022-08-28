@@ -156,10 +156,10 @@ $ connect.sh c_nxos "show vlan | json" | jq
 
 **Notes**
 
-* As before, I removed the contents of *‌vlanshowplist-ifidx* tag.
+* As before, I removed the contents of *vlanshowplist-ifidx* tag.
 * While Nexus OS displays nicely formatted XML document, its JSON printout is a mess. I decided to send it through `jq` so you'll be able to see what's going on without parsing levels of curly brackets by hand.
 * As Thomas pointed out in a comment, you could use **| json-pretty** filter and get a decent-looking JSON printout from the device itself.
-* **connect.sh** is my script that extracts host IP address and SSH parameters from Ansible inventory and uses them to connect to the device or execute a SSH command. You'll find it in my [netsim-tools](https://github.com/ipspace/netsim-tools) repository.
+* **connect.sh** is my script that extracts host IP address and SSH parameters from Ansible inventory and uses them to connect to the device or execute a SSH command. You'll find it in my [netsim-tools](https://github.com/ipspace/netlab) repository.
 
 But what happens when you execute the same command on a vanilla switch with a single VLAN? Here's what you get back:
 

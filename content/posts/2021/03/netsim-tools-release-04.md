@@ -11,7 +11,7 @@ netlab_tag: archive
 
 In mid-March, we enjoyed another excellent presentation by [Dinesh Dutt](https://www.ipspace.net/Author:Dinesh_Dutt), this time focused on [running OSPF in leaf-and-spine fabrics](https://my.ipspace.net/bin/list?id=Clos#L3_SINGLE). He astonished me when he mentioned unnumbered Ethernet interfaces being available on all major network operating systems. It was time to test things out, and I wanted to use my networking simulation builder to build the test lab.
 <!--more-->
-**Job#1**: add [unnumbered interface support](https://netsim-tools.readthedocs.io/en/latest/addressing.html#unnumbered-interface-support) to [netsim-tools](https://github.com/ipspace/netsim-tools).
+**Job#1**: add [unnumbered interface support](https://netsim-tools.readthedocs.io/en/latest/addressing.html#unnumbered-interface-support) to [netsim-tools](https://github.com/ipspace/netlab).
 
 I also wanted to have OSPF configured on all devices without logging into them and typing like a mad monkey. I was thinking about adding configuration modules (OSPF, BGP, EVPN...) to network topologies for a long while. This was a perfect opportunity to put the framework in place.
 
@@ -31,7 +31,7 @@ Building a full-blown OSPF test network became a simple process (details coming 
 
 Finally, no job is finished until the paperwork is done. I probably spent way more time [writing the documentation](https://netsim-tools.readthedocs.io/en/latest/index.html) than code, but in the end, it paid off. While "wasting" time on documentation, I figured out (and fixed) a few quirks in the system. I also [made parameter inheritance much more flexible](https://netsim-tools.readthedocs.io/en/latest/modules.html#merging-default-values) than what Ansible inventory groups could do.
 
-Finally, Job#4: Commit, merge, push. Hope you'll find the [new release](https://github.com/ipspace/netsim-tools/releases/tag/release_0.4) useful and [install](https://netsim-tools.readthedocs.io/en/latest/install.html) and use it ;) -- if you do, I'd appreciate hearing from you. You could also open a GitHub issue if there's something you'd like to see in an upcoming release (no promises, though).
+Finally, Job#4: Commit, merge, push. Hope you'll find the [new release](https://github.com/ipspace/netlab/releases/tag/release_0.4) useful and [install](https://netsim-tools.readthedocs.io/en/latest/install.html) and use it ;) -- if you do, I'd appreciate hearing from you. You could also open a GitHub issue if there's something you'd like to see in an upcoming release (no promises, though).
 
 ### Revision History
 

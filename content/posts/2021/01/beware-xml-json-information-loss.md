@@ -563,4 +563,4 @@ vagrant@vsrx> show route | display json
 
 ### Getting Your Hands Dirty
 
-Want to reproduce what I described? You'll find the sources in my [netsim-examples](https://github.com/ipspace/netsim-examples/tree/master/Ansible/XML) repository (and might find it useful to use my [netsim-tools](https://github.com/ipspace/netsim-tools) to generate Vagrantfile and Ansible inventory and configuration files).
+Want to reproduce what I described? You'll find the sources in my [netlab-examples](https://github.com/ipspace/netlab-examples/tree/master/Ansible/XML) repository (and might find it useful to use [netlab](https://github.com/ipspace/netlab) to generate Vagrantfile and Ansible inventory and configuration files).

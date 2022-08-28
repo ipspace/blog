@@ -8,11 +8,11 @@ series_title: Simple VLAN Example
 ---
 I had no idea how convoluted VLANs could get until I tried to [implement them in *netlab*](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html).
 
-We'll start with the simplest option: [a single VLAN](https://github.com/ipspace/netsim-examples/tree/master/VLAN/vlan-access-stretch) stretched across two ~~bridges~~ switches with two Linux hosts connected to it. *netlab* can [configure VLANs](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html#platform-support) on Arista EOS, Cisco IOSv, Cisco Nexus OS, VyOS, Dell OS10, and Nokia SR Linux. We'll use the quickest (deployment-wise) option: Arista EOS on *containerlab*.
+We'll start with the simplest option: [a single VLAN](https://github.com/ipspace/netlab-examples/tree/master/VLAN/vlan-access-stretch) stretched across two ~~bridges~~ switches with two Linux hosts connected to it. *netlab* can [configure VLANs](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html#platform-support) on Arista EOS, Cisco IOSv, Cisco Nexus OS, VyOS, Dell OS10, and Nokia SR Linux. We'll use the quickest (deployment-wise) option: Arista EOS on *containerlab*.
 
 {{<figure src="/2022/05/vlan-simple.png" caption="Simple VLAN topology">}}
 <!--more-->
-We'll use *[groups](/2021/11/netsim-groups-deployment-templates.html)* in the [lab topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
+We'll use *[groups](/2021/11/netsim-groups-deployment-templates.html)* in the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
 
 {{<cc>}}Defining nodes and groups{{</cc>}}
 ```
@@ -139,5 +139,5 @@ Next time, we'll fix IP routing and add OSPF routing process to the switches. Yo
 
 * [Set up a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html) or a bare-metal server with netsim-tools, Docker and containerlab
 * [Install Arista cEOS container image](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html)
-* Copy the [lab topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) into an empty directory
+* Copy the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) into an empty directory
 * Start the lab with **netlab up** and start exploring

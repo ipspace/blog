@@ -20,7 +20,7 @@ Whenever I get a question along the lines "_what would happen if..._" I always a
 
 Labeled Unicast IPv4 address family (IPv4-LU) will be enabled on all BGP sessions apart from the PE1-CE1 session, so we'll be able to observe BGP-LU behavior on IBGP and EBGP sessions, as well as propagation of information (or lack thereof) between unlabeled and labeled address families.
 
-The lab topology file is [available on GitHub](https://github.com/ipspace/netsim-examples/tree/master/MPLS/ldp-bgp-lu); you'll need *netsim-tools* release 1.2 to deploy the lab[^NSBeta].
+The lab topology file is [available on GitHub](https://github.com/ipspace/netlab-examples/tree/master/MPLS/ldp-bgp-lu); you'll need *netsim-tools* release 1.2 to deploy the lab[^NSBeta].
 
 [^NSBeta]: *netsim-tools* release 1.2 is available as a beta release. Follow the [installation instructions](https://netsim-tools.readthedocs.io/en/latest/install.html), and upgrade the *netsim-tools* package with `pip3 install --upgrade --pre netsim-tools`.
 

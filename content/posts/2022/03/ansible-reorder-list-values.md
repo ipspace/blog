@@ -8,7 +8,7 @@ pre_scroll: True
 
 A bit of a background first: I'm using an Ansible playbook within *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/)* to deploy [initial device configurations](https://netsim-tools.readthedocs.io/en/latest/netlab/initial.html). Among other things, that playbook deploys configuration snippets for [numerous configuration modules](https://netsim-tools.readthedocs.io/en/latest/modules.html), and the order of deployment is absolutely crucial. For example, you cannot activate BGP neighbors in Labeled Unicast (BGP-LU) address family (**mpls** module) before configuring BGP neighbors (**bgp** module).
 <!--more-->
-To make the ordered deployment of configuration snippets work, every *host* (Ansible term for *managed device*) has a list of modules in the **module** fact (Ansible term for *variable*) in its *host_vars*. For example, these are the values of the **module** fact for all devices in the [BGP-LU lab](https://github.com/ipspace/netsim-examples/tree/master/MPLS/ldp-bgp-lu):
+To make the ordered deployment of configuration snippets work, every *host* (Ansible term for *managed device*) has a list of modules in the **module** fact (Ansible term for *variable*) in its *host_vars*. For example, these are the values of the **module** fact for all devices in the [BGP-LU lab](https://github.com/ipspace/netlab-examples/tree/master/MPLS/ldp-bgp-lu):
 
 ```
 pe1:
@@ -140,6 +140,6 @@ Guess what... **it doesn't work**. The moment there's a *when* condition in the 
 
 In the end, I decided that the only possible result of fighting software windmills is a damage to one's sanity, and gave up. I moved the **when** condition into the included task list -- the top-level includes are always executed, but then the tasks within the included task list might be skipped.
 
-The details are in [this commit](https://github.com/ipspace/netsim-tools/commit/da013c44d85bb0fd210ad478b70ffcb24bc762cd).
+The details are in [this commit](https://github.com/ipspace/netlab/commit/da013c44d85bb0fd210ad478b70ffcb24bc762cd).
 
 [^FREE]: One would expect the **free** strategy to work as well, but it doesn't -- it behaves in exactly the same way as the **linear** strategy.

@@ -83,7 +83,7 @@ e1#sh ip bgp | begin Network
 
 ### Reproducibility Is the Key
 
-You'll find the [lab topology and configuration files on GitHub](https://github.com/ipspace/netsim-examples/tree/master/BGP/RR-next-hop-self). The *tar* archives contain device configurations  ([initial](https://github.com/ipspace/netsim-examples/raw/master/BGP/RR-next-hop-self/eos-rr-next-hop-self.tar.gz) and [fixed](https://github.com/ipspace/netsim-examples/raw/master/BGP/RR-next-hop-self/eos-rr-next-hop-self-fixed.tar.gz)) and *containerlab* configuration needed to set up the lab[^SAS]. 
+You'll find the [lab topology and configuration files on GitHub](https://github.com/ipspace/netlab-examples/tree/master/BGP/RR-next-hop-self). The *tar* archives contain device configurations  ([initial](https://github.com/ipspace/netlab-examples/raw/master/BGP/RR-next-hop-self/eos-rr-next-hop-self.tar.gz) and [fixed](https://github.com/ipspace/netlab-examples/raw/master/BGP/RR-next-hop-self/eos-rr-next-hop-self-fixed.tar.gz)) and *containerlab* configuration needed to set up the lab[^SAS]. 
 
 [^SAS]: Some Assembly Required: you'll have to install Docker, *containerlab* and Arista EOS container on a Linux host.
 

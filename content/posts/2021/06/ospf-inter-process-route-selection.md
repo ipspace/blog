@@ -21,7 +21,7 @@ I decided to use a simple triangle topology with one of the links having a stati
 
 {{<figure src="/2021/06/OSPF-Inter-Process.png" caption="Lab topology">}}
 
-This is how I [described it in a YAML file](https://github.com/ipspace/netsim-examples/tree/master/OSPF/multi-process):
+This is how I [described it in a YAML file](https://github.com/ipspace/netlab-examples/tree/master/OSPF/multi-process):
 
 ```
 ---

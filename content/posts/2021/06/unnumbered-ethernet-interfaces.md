@@ -54,7 +54,7 @@ ip route 10.2.1.3 255.255.255.255 GigabitEthernet3
 
 That's it. Now you can log in to one of the clients and ping the other client.
 
-{{<note warn>}}I'm ignoring a dirty detail -- you have to configure IP addresses on clients' uplinks. See [device configurations](https://github.com/ipspace/netsim-examples/tree/master/routing/lan-unnumbered/static-routes) for details.{{</note>}}
+{{<note warn>}}I'm ignoring a dirty detail -- you have to configure IP addresses on clients' uplinks. See [device configurations](https://github.com/ipspace/netlab-examples/tree/master/routing/lan-unnumbered/static-routes) for details.{{</note>}}
 
 ### How Does It Work?
 
@@ -95,5 +95,5 @@ Mission accomplished? Not exactly. While it's possible to automate static route 
 
 ### Want to Know More?
 
-* The configurations I used to generate the printouts are on [GitHub](https://github.com/ipspace/netsim-examples/tree/master/routing/lan-unnumbered).
+* The configurations I used to generate the printouts are on [GitHub](https://github.com/ipspace/netlab-examples/tree/master/routing/lan-unnumbered).
 * I discussed numerous aspects of network addressing in *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar.

@@ -23,7 +23,7 @@ You'll also get:
 
 ### Links
 
-* [Github repository](https://github.com/ipspace/netsim-tools)
+* [Github repository](https://github.com/ipspace/netlab)
 * [Documentation](https://netsim-tools.readthedocs.io/)
 * [Installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * [Platform support](https://netsim-tools.readthedocs.io/en/latest/platforms.html)

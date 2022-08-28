@@ -33,7 +33,7 @@ Next steps after installing Docker, [containerlab](https://containerlab.srlinux.
 
 Change the **provider** from *clab* to *libvirt* or *virtualbox* and you'll get a Vagrantfile that will set up two VMs with a point-to-point link between them[^1]. Add `module: [ ospf ]` and you'll get OSPF routing configured together with IP addresses. How cool is that? ;)
 
-For more details, [read the netsim-tools documentation](https://netsim-tools.readthedocs.io/en/latest/index.html), [download the code](https://github.com/ipspace/netsim-tools) or [install it as a Python3 package](https://netsim-tools.readthedocs.io/en/latest/install.html), and enjoy.
+For more details, [read the netsim-tools documentation](https://netsim-tools.readthedocs.io/en/latest/index.html), [download the code](https://github.com/ipspace/netlab) or [install it as a Python3 package](https://netsim-tools.readthedocs.io/en/latest/install.html), and enjoy.
 
 [^1]: The latest EOS version downloadable as Vagrant box is 4.21.14M.
 

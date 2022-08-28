@@ -25,7 +25,7 @@ OK, so it looks like we don't need to set *cluster id* on route reflectors -- th
 
 In an EBGP leaf-and-spine fabric we commonly use the same AS number on all spines to prevent *path hunting*. Using the analogy, it seems that we should use the same *cluster ID* on all route reflectors. Fortunately, route reflector path hunting isn't nearly as bad as EBGP path hunting.
 
-Never heard of *path hunting*? Let's see what's going on behind the scenes, using the [simplest possible lab topology](https://github.com/ipspace/netsim-examples/tree/master/BGP/RR-cluster-id):
+Never heard of *path hunting*? Let's see what's going on behind the scenes, using the [simplest possible lab topology](https://github.com/ipspace/netlab-examples/tree/master/BGP/RR-cluster-id):
 
 {{<figure src="/2022/02/rr-cluster-id.png" caption="BGP sessions in our sample lab (Graphviz hates drawing a leaf-and-spine fabric)">}}
 

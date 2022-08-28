@@ -25,7 +25,7 @@ I decided to run my tests with container version of Arista EOS (cEOS) on a Ubunt
 
 ## Create Topology File
 
-The mandatory first step when using *netlab* to create your virtual lab: create a [YAML file describing the lab topology](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/baseline.yml).
+The mandatory first step when using *netlab* to create your virtual lab: create a [YAML file describing the lab topology](https://github.com/ipspace/netlab-examples/blob/master/BGP/Multipath/baseline.yml).
 
 I used *containerlab* provider with *eos* devices, and placed most of my routers in AS 65000. External router (Y) would be in AS 65100. The network runs OSPF as the internal routing protocol, and a combination of IBGP and EBGP.
 
