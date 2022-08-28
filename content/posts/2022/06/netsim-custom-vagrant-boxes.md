@@ -15,7 +15,7 @@ While I didn't think about this particular use case when programming the *netlab
 <!--more-->
 ### Changing Vagrant Box or Container Name
 
-Parameters describing individual devices are grouped under **devices** dictionary in [system parameters](https://github.com/ipspace/netsim-tools/blob/dev/netsim/topology-defaults.yml). Each device is described as another dictionary, and that dictionary contains image names (box- or container names) for every virtualization provider supported by that device, for example:
+Parameters describing individual devices are grouped under **devices** dictionary in [system parameters](https://github.com/ipspace/netlab/blob/dev/netsim/topology-defaults.yml). Each device is described as another dictionary, and that dictionary contains image names (box- or container names) for every virtualization provider supported by that device, for example:
 
 ```
 devices:
@@ -157,7 +157,7 @@ To change the template used to create Vagrantfile configuration for a Nexus OS *
 
 * If you want to use the changed template for a specific topology, create `libvirt` directory within the directory the with lab topology.
 * If you want to use the changed template for all labs, create `libvirt` directory within the `~/.netlab` directory.
-* Find the original template in [*netlab* sources](https://github.com/ipspace/netsim-tools/tree/dev/netsim/templates/provider) (example: [*libvirt* Nexus OS template](https://github.com/ipspace/netsim-tools/blob/dev/netsim/templates/provider/libvirt/nxos-domain.j2)).
+* Find the original template in [*netlab* sources](https://github.com/ipspace/netlab/tree/dev/netsim/templates/provider) (example: [*libvirt* Nexus OS template](https://github.com/ipspace/netlab/blob/dev/netsim/templates/provider/libvirt/nxos-domain.j2)).
 * Copy that template **with the same file name** into `libvirt` directory and modify it as needed.
 * Enjoy using *netlab* with your custom Vagrant boxes.
 

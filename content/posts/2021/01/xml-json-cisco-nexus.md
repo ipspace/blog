@@ -116,7 +116,7 @@ While Cisco Nexus OS uses XML internally, it can also do an automatic XML-to-JSO
 
 {{<cc>}}JSON object describing two VLANs configured on a Nexus switch{{</cc>}}
 ```
-$ connect.sh c_nxos "show vlan | json" | jq
+$ netlab connect c_nxos "show vlan | json" | jq
 {
   "TABLE_vlanbrief": {
     "ROW_vlanbrief": [
@@ -156,16 +156,16 @@ $ connect.sh c_nxos "show vlan | json" | jq
 
 **Notes**
 
-* As before, I removed the contents of *‌vlanshowplist-ifidx* tag.
+* As before, I removed the contents of *vlanshowplist-ifidx* tag.
 * While Nexus OS displays nicely formatted XML document, its JSON printout is a mess. I decided to send it through `jq` so you'll be able to see what's going on without parsing levels of curly brackets by hand.
 * As Thomas pointed out in a comment, you could use **| json-pretty** filter and get a decent-looking JSON printout from the device itself.
-* **connect.sh** is my script that extracts host IP address and SSH parameters from Ansible inventory and uses them to connect to the device or execute a SSH command. You'll find it in my [netsim-tools](https://github.com/ipspace/netsim-tools) repository.
+* **netlab connect** is a [*netlab* command](https://netsim-tools.readthedocs.io/en/latest/netlab/connect.html) that extracts host IP address and SSH parameters from Ansible inventory and uses them to connect to the device or execute a SSH command.
 
 But what happens when you execute the same command on a vanilla switch with a single VLAN? Here's what you get back:
 
 {{<cc>}}JSON object describing two VLANs configured on a Nexus switch{{</cc>}}
 ```
-$ connect.sh c_nxos "show vlan | json" | jq
+$ netlab connect c_nxos "show vlan | json" | jq
 {
   "TABLE_vlanbrief": {
     "ROW_vlanbrief": {
@@ -229,6 +229,9 @@ What I particularly liked was this comment made by [Johann Lo](https://www.linke
 > The fact is that most enterprises still seem to insist on throwing net-engs at development problems instead of the other way round. Some of us may turn out to be great coders, but most of us will produce mediocre hacky code using much more time than a real dev who's been coding full time whilst we were wrangling BGP/OSPF/STP. And then we're all reinventing the wheel together, a million slightly different ways to get ansible running as a glorified looping machine over a bunch of json text files.
 
 ## Revision History
+
+2022-08-28
+: Use the new **netlab** CLI commands
 
 2021-03-17
 : Added a pointer to a Python-based workaround

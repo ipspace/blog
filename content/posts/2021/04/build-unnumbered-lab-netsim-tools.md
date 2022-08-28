@@ -59,7 +59,7 @@ links:
 ## Next Steps
 
 * [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html) and a lab virtualization provider of your choice.
-* Create Vagrant and Ansible configuration files, start the lab, and configure it with a single command: **netlab up**. [Here's the log file](https://github.com/ipspace/netsim-examples/blob/master/routing/unnumbered/config.log) in case you'd like to see how it worked.
+* Create Vagrant and Ansible configuration files, start the lab, and configure it with a single command: **netlab up**. [Here's the log file](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/config.log) in case you'd like to see how it worked.
 * Wait for the network devices to boot. Write this blog post while waiting for Nexus 9300v and vSRX to boot. At least the *libvirt* provider starts them in parallel (as opposed to *virtualbox* provider that starts them in sequence).
 * Use **netlab connect** to connect to lab devices and inspect the results.
 * Destroy the lab with **netlab down**.
@@ -73,16 +73,16 @@ It works. The only glitch I encountered was the incorrect subnet mask in Arista 
 * Cisco IOS and Nexus OS [ignore the subnet mask](https://blog.ipspace.net/2008/10/ospf-ignores-subnet-mask-mismatch-on.html) and establish the adjacency.
 * Junos rejects the incoming hello packets due to invalid subnet mask.
 
-A quick search found an Arista EOS support article describing the **‌interface unnumbered hello mask tx 0.0.0.0** configuration command that solved the problem. Mission accomplished. I also added that command to EOS OSPF configuration template, so you don't have to worry about that when deploying your labs with *netlab*.
+A quick search found an Arista EOS support article describing the **interface unnumbered hello mask tx 0.0.0.0** configuration command that solved the problem. Mission accomplished. I also added that command to EOS OSPF configuration template, so you don't have to worry about that when deploying your labs with *netlab*.
 
 ## More to Explore
 
-[Directory with all relevant lab files](https://github.com/ipspace/netsim-examples/tree/master/routing/unnumbered) including:
+[Directory with all relevant lab files](https://github.com/ipspace/netlab-examples/tree/master/routing/unnumbered) including:
 
-* [Network topology](https://github.com/ipspace/netsim-examples/blob/master/routing/unnumbered/topology.yml)
-* [Vagranfile](https://github.com/ipspace/netsim-examples/blob/master/routing/unnumbered/Vagrantfile) (imagine copy-pasting it together manually)
-* [Configuration deployment log file](https://github.com/ipspace/netsim-examples/blob/master/routing/unnumbered/config.log)
-* [Final device configurations](https://github.com/ipspace/netsim-examples/tree/master/routing/unnumbered/config)
+* [Network topology](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/topology.yml)
+* [Vagranfile](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/Vagrantfile) (imagine copy-pasting it together manually)
+* [Configuration deployment log file](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/config.log)
+* [Final device configurations](https://github.com/ipspace/netlab-examples/tree/master/routing/unnumbered/config)
 
 You might also want to watch the *[Using OSPF in Leaf-and-Spine Fabrics](https://my.ipspace.net/bin/list?id=Clos#L3_SINGLE)* videos that inspired me to run this test.
 

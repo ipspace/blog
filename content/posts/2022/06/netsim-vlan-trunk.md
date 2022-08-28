@@ -12,7 +12,7 @@ We'll add two Linux hosts to the lab topology used in the previous blog post, re
 
 {{<figure src="/2022/06/vlan-trunk.png" caption="Lab topology">}}
 <!--more-->
-Like in the previous example, we'll use *[groups](/2021/11/netsim-groups-deployment-templates.html)* in the [lab topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-trunk/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
+Like in the previous example, we'll use *[groups](/2021/11/netsim-groups-deployment-templates.html)* in the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk/topology.yml) to define our devices. Members of the *hosts* group will be Linux containers, members of the *switches* group will be Arista EOS containers using *vlan* configuration module:
 
 {{<cc>}}Defining nodes and groups{{</cc>}}
 ```
@@ -100,10 +100,10 @@ interface Vlan1001
    ip address 172.16.1.5/24
 ```
 
-Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netsim-examples/tree/master/VLAN/vlan-trunk#changing-device-types)? No problem:
+Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VLAN/vlan-trunk#changing-device-types)? No problem:
 
 * [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
-* Download the [topology file](https://github.com/ipspace/netsim-examples/blob/master/VLAN/vlan-trunk/topology.yml) into an empty directory
+* Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk/topology.yml) into an empty directory
 * Execute **netlab up**
 * Enjoy! 😊

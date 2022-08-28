@@ -7,7 +7,7 @@ netlab_tag: use
 ---
 A month ago I explained how [using a BGP route reflector in a large-enough non-symmetrical network could result in suboptimal routing](https://blog.ipspace.net/2021/11/bgp-multipath-netsim-tools.html) (or loss of path diversity or multipathing). I also promised to explain how *Advertisement of Multiple Paths in BGP*  functionality[^AP] solves that problem. Here we go...
 
-I extended the [original lab](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/baseline.yml) with another router to get a scenario where one route reflector (RR) client should use equal-cost paths to an external destination while another RR client should select a best path that is different from what the route reflector would select.
+I extended the [original lab](https://github.com/ipspace/netlab-examples/blob/master/BGP/Multipath/baseline.yml) with another router to get a scenario where one route reflector (RR) client should use equal-cost paths to an external destination while another RR client should select a best path that is different from what the route reflector would select.
 <!--more-->
 [^AP]: [RFC 7911](https://datatracker.ietf.org/doc/html/rfc7911), also know as *BGP Additional Paths* or *BGP AddPath*
 
@@ -176,6 +176,6 @@ groups:
 ...
 ```
 
-Want do to your own tests? [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html), build your own [virtual lab environment](https://netsim-tools.readthedocs.io/en/latest/install.html#building-the-lab-environment), and use [this set of configuration files](https://github.com/ipspace/netsim-examples/tree/master/BGP/Multipath).
+Want do to your own tests? [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html), build your own [virtual lab environment](https://netsim-tools.readthedocs.io/en/latest/install.html#building-the-lab-environment), and use [this set of configuration files](https://github.com/ipspace/netlab-examples/tree/master/BGP/Multipath).
 
 Want to learn more? Explore [BGP-related blog posts](https://blog.ipspace.net/tag/bgp.html) and _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar.

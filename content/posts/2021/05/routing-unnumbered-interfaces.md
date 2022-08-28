@@ -166,7 +166,7 @@ That trick helps you build the outgoing layer-2 header -- there's a well-defined
 
 ### Want to Know More?
 
-* The configurations I used to generate the printouts are on [GitHub](https://github.com/ipspace/netsim-examples/tree/master/routing/gre-unnumbered).
+* The configurations I used to generate the printouts are on [GitHub](https://github.com/ipspace/netlab-examples/tree/master/routing/gre-unnumbered).
 * I discussed numerous aspects of network addressing in *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar.
 
 [^1]: The table used for data-plane packet forwarding should be called the forwarding table, not the routing table (although some systems might use the same data structure for both).

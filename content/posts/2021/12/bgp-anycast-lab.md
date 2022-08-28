@@ -40,7 +40,7 @@ Before digging into the details: a friend of mine was reading this blog post and
 
 Ready? Let's go!
 
-We'll start with the [lab topology file we used for the OSPF+MPLS lab](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-mpls-ospf/topology.yml), add BGP module, and describe the autonomous systems in the lab with **bgp.as_list** dictionary:
+We'll start with the [lab topology file we used for the OSPF+MPLS lab](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/topology.yml), add BGP module, and describe the autonomous systems in the lab with **bgp.as_list** dictionary:
 
 {{<cc>}}Initial topology file{{</cc>}}
 ```
@@ -62,7 +62,7 @@ links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 
 {{<note>}}The above topology file would result in a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment (more about that later).{{</note>}}
 
-I knew I would have to enable *[BGP Additional Paths](https://blog.ipspace.net/2021/12/bgp-multipath-addpath.html)* in AS 65000 to ensure L1 gets multiple paths toward the anycast prefix (we'll need that for the MPLS part), and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netsim-examples/blob/master/BGP/Multipath/topology.yml)):
+I knew I would have to enable *[BGP Additional Paths](https://blog.ipspace.net/2021/12/bgp-multipath-addpath.html)* in AS 65000 to ensure L1 gets multiple paths toward the anycast prefix (we'll need that for the MPLS part), and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netlab-examples/blob/master/BGP/Multipath/topology.yml)):
 
 {{<cc>}}Defining _network_ and _anycast_ groups{{</cc>}}
 ```
@@ -105,7 +105,7 @@ nodes:
     bgp.anycast: 10.42.42.42/32
 ```
 
-Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? A few hours later I could define [node data in groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#setting-node-data-in-groups), simplifying my lab topology back to ([final topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-bgp-addpath/topology.yml)):
+Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? A few hours later I could define [node data in groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#setting-node-data-in-groups), simplifying my lab topology back to ([final topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-bgp-addpath/topology.yml)):
 
 {{<cc>}}**bgp.anycast** attribute is set on all nodes in AS 65101{{</cc>}}
 ```
@@ -127,7 +127,7 @@ Final touch: *netlab* release 1.1 added stricter checks of module- and node data
 defaults.bgp.extra_attributes.node: [ anycast ]
 ```
 
-Next step: [Jinja2 template](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-bgp-addpath/bgp-anycast.j2) that uses **bgp.anycast** attribute to configure another loopback interface and advertise it into BGP:
+Next step: [Jinja2 template](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-bgp-addpath/bgp-anycast.j2) that uses **bgp.anycast** attribute to configure another loopback interface and advertise it into BGP:
 
 {{<cc>}}Creating a new loopback interface based on **bgp.anycast** node attribute{{</cc>}}
 ```
@@ -220,7 +220,7 @@ Turning off *next-hop-self* (the default setting) requires quite a bit of [attri
 * Set **bgp.ebgp_role** to *stub* (default: *external*) to make sure the external subnets are included in the OSPF process;
 * Set **bgp.advertise_roles** to an empty list, otherwise we'd get all the external subnets in the BGP table.
 
-The [modified topology file](https://github.com/ipspace/netsim-examples/blob/master/routing/anycast-bgp-addpath/topology-external-next-hop.yml) is [available on GitHub](https://github.com/ipspace/netsim-examples/tree/master/routing/anycast-bgp-addpath).
+The [modified topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-bgp-addpath/topology-external-next-hop.yml) is [available on GitHub](https://github.com/ipspace/netlab-examples/tree/master/routing/anycast-bgp-addpath).
 
 {{<cc>}}Changing global BGP attributes in the topology file to disable **next-hop-self** processing on IBGP sessions{{</cc>}}
 ```

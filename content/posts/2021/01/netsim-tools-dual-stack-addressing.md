@@ -17,7 +17,7 @@ I always felt that the initial approach to lab addressing was a dirty hack that 
 
 Dave's enthusiasm ("_I'm using the tool daily_") also prompted me to document most of what's available including a [lab topology tutorial](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) and a full-blown description of how you define [nodes (network devices)](https://netsim-tools.readthedocs.io/en/latest/nodes.html), [links](https://netsim-tools.readthedocs.io/en/latest/links.html), and [address pools](https://netsim-tools.readthedocs.io/en/latest/addressing.html).
 
-You can [download the tools from GitHub](https://github.com/ipspace/netsim-tools) or [install them as a Python3 package](https://netsim-tools.readthedocs.io/en/latest/install.html), and [read the documentation on ReadTheDocs](https://netsim-tools.readthedocs.io/en/latest/).
+You can [download the tools from GitHub](https://github.com/ipspace/netlab) or [install them as a Python3 package](https://netsim-tools.readthedocs.io/en/latest/install.html), and [read the documentation on ReadTheDocs](https://netsim-tools.readthedocs.io/en/latest/).
 
 ### Revision History
 

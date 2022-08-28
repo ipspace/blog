@@ -21,8 +21,6 @@ Anyway, there are two ways to deal with this crapscape. You could say "_it's a v
 
 I wanted to push a configuration snippet configuring OSPF and IS-IS routing to a network device. In this blog post I'm using the Cisco IOS version of the template, but Cisco IOS, Cisco Nexus OS and Arista EOS all exhibit the same behavior (at least it's consistent). 
 
-Source code of a pretty minimal setup is on Github in case you care ([inventory and templates](https://github.com/ipspace/netsim-examples/tree/master/config), [playbook](https://github.com/ipspace/netsim-tools/blob/master/config.ansible), [platform-specific included tasks](https://github.com/ipspace/netsim-tools/tree/master/ansible/config)).
-
 {{<cc>}}Routing configuration template{{</cc>}}
 ```
 router ospf 1
@@ -120,7 +118,7 @@ You might notice that the commands extracted from my configuration template by A
 
 And this is where I went into [Artur Bergman mode](https://www.youtube.com/watch?v=oebqlzblfyo). Seriously, WTF??? The second time I specify I want to configure an interface **the interface selection command is simply dropped**... but not for **loopback0** but for all subsequent interfaces???
 
-Obviously there are tons of ways to work around this behavior ([Jeroen van Bemmel suggested the most appropriate one](https://twitter.com/jbemmel/status/1340890305814556672)), and after I realized what's going on it took me a minute to implement a [workaround](https://github.com/ipspace/netsim-examples/blob/master/BGP/IGP-metric/igp.nxos.j2), but I still think that a network automation platform that claims to do partial configuration updates on a network device should do better than what I experienced.
+Obviously there are tons of ways to work around this behavior ([Jeroen van Bemmel suggested the most appropriate one](https://twitter.com/jbemmel/status/1340890305814556672)), and after I realized what's going on it took me a minute to implement a workaround, but I still think that a network automation platform that claims to do partial configuration updates on a network device should do better than what I experienced.
 
 Dear Ansible team:
 

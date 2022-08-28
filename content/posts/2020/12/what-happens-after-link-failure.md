@@ -110,7 +110,7 @@ And finally, if you desperately want to have the old behavior back, configure **
 
 I did my tests on a Cisco CSR 1000v. While I could have rerun the tests on a variety of different platforms, I want to share some of the fun with you. 
 
-Run the tests on your favorite platform and report the results in the comments. [Here's my testbed](https://github.com/ipspace/netsim-examples/tree/master/routing/failover) if you want to have a convenient starting point.
+Run the tests on your favorite platform and report the results in the comments. [Here's my testbed](https://github.com/ipspace/netlab-examples/tree/master/routing/failover) if you want to have a convenient starting point.
 
 ### Want to Know More?
 

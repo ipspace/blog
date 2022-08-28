@@ -225,7 +225,7 @@ pe1#sh ip cef 10.42.42.0/24 internal
         <15 > IP adj out of GigabitEthernet2, addr 10.1.0.1 7F7249F24010
 ```
 
-If you want to reproduce my results, you'll [find the lab topology and configuration files on GitHub](https://github.com/ipspace/netsim-examples/tree/master/BGP/DMZ-BW).
+If you want to reproduce my results, you'll [find the lab topology and configuration files on GitHub](https://github.com/ipspace/netlab-examples/tree/master/BGP/DMZ-BW).
 
 ### Back to Leaf-and-Spine Fabrics
 

@@ -15,5 +15,5 @@ Last week we pushed out netsim-tools release 0.6.2. It's a maintenance release, 
 * Changes in FRR configuration process to use bash or vtysh as needed
 * **connect.sh** executing inline commands with **docker exec**
 
-{{<jump>}}[Download the new release](https://github.com/ipspace/netsim-tools)\
+{{<jump>}}[Download the new release](https://github.com/ipspace/netlab)\
 [Read the docs](https://netsim-tools.readthedocs.io/){{</jump>}}

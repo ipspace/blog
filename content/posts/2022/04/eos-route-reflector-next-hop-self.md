@@ -83,14 +83,14 @@ e1#sh ip bgp | begin Network
 
 ### Reproducibility Is the Key
 
-You'll find the [lab topology and configuration files on GitHub](https://github.com/ipspace/netsim-examples/tree/master/BGP/RR-next-hop-self). The *tar* archives contain device configurations  ([initial](https://github.com/ipspace/netsim-examples/raw/master/BGP/RR-next-hop-self/eos-rr-next-hop-self.tar.gz) and [fixed](https://github.com/ipspace/netsim-examples/raw/master/BGP/RR-next-hop-self/eos-rr-next-hop-self-fixed.tar.gz)) and *containerlab* configuration needed to set up the lab[^SAS]. 
+You'll find the [lab topology and configuration files on GitHub](https://github.com/ipspace/netlab-examples/tree/master/BGP/RR-next-hop-self). The *tar* archives contain device configurations  ([initial](https://github.com/ipspace/netlab-examples/raw/master/BGP/RR-next-hop-self/eos-rr-next-hop-self.tar.gz) and [fixed](https://github.com/ipspace/netlab-examples/raw/master/BGP/RR-next-hop-self/eos-rr-next-hop-self-fixed.tar.gz)) and *containerlab* configuration needed to set up the lab[^SAS]. 
 
 [^SAS]: Some Assembly Required: you'll have to install Docker, *containerlab* and Arista EOS container on a Linux host.
 
-Alternatively, you can use *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/index.html)* to set up the lab:
+Alternatively, you can use *[netlab](https://netsim-tools.readthedocs.io/en/latest/index.html)* to set up the lab:
 
-* [Install *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/install.html) and your preferred lab environment
+* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html) and your preferred lab environment
 * Copy *topology.yml* file into an empty directory
 * Execute **netlab up**
 
-You can [specify virtualization provider or default device type](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html) with **netlab up**, making it easy to test the route reflector behavior on a [dozen devices supported by *netsim-tools*](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-configuration-modules).
+You can [specify virtualization provider or default device type](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html) with **netlab up**, making it easy to test the route reflector behavior on a [dozen devices supported by *netlab*](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-configuration-modules).

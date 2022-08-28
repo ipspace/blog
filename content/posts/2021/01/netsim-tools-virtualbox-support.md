@@ -20,4 +20,4 @@ However:
 * I was unable to get Arista vEOS to work on my Mac (macOS Catalina, Vagrant 2.2.14, VirtualBox 6.1.18).
 * The code to deal with forwarded NETCONF and HTTP ports in Ansible inventory is not there. Both of them are pretty convoluted to implement correctly, and I'll only add them if there's significant interest (or you could fix it yourself and submit a pull request).
 
-Want to know more? [Documentation is online](https://netsim-tools.readthedocs.io/en/latest/), and the [source code is on GitHub](https://github.com/ipspace/netsim-tools).
+Want to know more? [Documentation is online](https://netsim-tools.readthedocs.io/en/latest/), and the [source code is on GitHub](https://github.com/ipspace/netlab).

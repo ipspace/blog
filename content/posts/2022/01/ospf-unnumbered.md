@@ -111,6 +111,6 @@ Internet  10.0.0.2               91   5254.00e1.4213  ARPA   GigabitEthernet2
 
 OK, so the theory sounds great. Does any vendor support that? Hint: how do you think I got the printouts?
 
-On a more serious note: I got OSPF running over unnumbered Ethernet interfaces on EOS ([requires a nerd knob](https://blog.ipspace.net/2021/04/build-unnumbered-lab-netsim-tools.html)), IOS, IOS XE, NX-OS, and Junos. I know it [works on Cumulus Linux](https://blog.ipspace.net/2014/06/unnumbered-ospf-interfaces-in-quagga.html) (and Quagga and FRR), but nobody implemented Cumulus/Linux unnumbered interface configuration in *netsim-tools* yet -- a PR fixing fixing that omission would be most welcome.
+On a more serious note: I got OSPF running over unnumbered Ethernet interfaces on EOS ([requires a nerd knob](https://blog.ipspace.net/2021/04/build-unnumbered-lab-netsim-tools.html)), IOS, IOS XE, NX-OS, and Junos. I know it [works on Cumulus Linux](https://blog.ipspace.net/2014/06/unnumbered-ospf-interfaces-in-quagga.html) (and Quagga and FRR), but nobody implemented Cumulus/Linux unnumbered interface configuration in *netlab* yet -- a PR fixing fixing that omission would be most welcome.
 
 [^TLDF]: Too Lazy, Didn't Follow
