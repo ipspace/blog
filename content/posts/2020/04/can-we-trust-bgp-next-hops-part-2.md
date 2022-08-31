@@ -2,6 +2,7 @@
 title: "Can We Trust BGP Next Hops (Part 2)?"
 date: 2020-04-21 06:45:00
 tags: [ BGP,IP routing ]
+series: bgp_nh
 ---
 Two weeks ago I started with a seemingly simple question:
 
