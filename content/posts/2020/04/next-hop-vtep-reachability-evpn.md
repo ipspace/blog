@@ -2,6 +2,7 @@
 title: "Response: Next-Hop and VTEP Reachability in EVPN Networks"
 date: 2020-04-14 07:02:00
 tags: [ EVPN, BGP ]
+series: bgp_nh
 ---
 [Jeff Tantsura](https://www.linkedin.com/in/jeff-tantsura-bb229b2/) published a great response to my _[Can We Trust BGP Next Hops](https://blog.ipspace.net/2020/04/can-we-trust-bgp-next-hops-part-1.html)_ blog post on LinkedIn, and I asked him for permission to save it in a more permanent form. Here it is (slightly edited)...
 - - -
@@ -32,3 +33,5 @@ As far as I'm aware no vendor implemented either option to check VTEP functional
 Also, running EVPN sessions between loopback (VTEP) addresses and expecting that presence of BGP sessions validates correct data-plane VTEP functionality is no more than wishful thinking.
 
 In the end we're back to "_networks work reasonably well, stay calm, stop worrying (too much) and get a life._"
+
+{{<next-in-series page="/posts/2020/04/can-we-trust-bgp-next-hops-part-2.html" />}}

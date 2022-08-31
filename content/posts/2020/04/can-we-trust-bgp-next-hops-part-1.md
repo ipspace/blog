@@ -2,6 +2,7 @@
 title: "Can We Trust BGP Next Hops (Part 1)?"
 date: 2020-04-07 07:45:00
 tags: [ BGP,IP routing ]
+series: bgp_nh
 ---
 [Aldrin](https://www.linkedin.com/in/aldrin-isaac-387864/) sent me an interesting question as a comment to one of my [EVPN blog posts](https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html):
 
@@ -61,3 +62,5 @@ IBGP session between L1 and L2 is up and running, or at least you got the last p
 So far we covered the two simplest scenarios. The [next installment of this saga](/2020/04/can-we-trust-bgp-next-hops-part-2.html) describes networks with more than two routers.
 - - -
 You might also want to watch [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar (parts of it are available with [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)) or explore [other BGP resources](https://www.ipspace.net/kb/tag/BGP) we've created in the last decade and a half.
+
+{{<next-in-series page="/posts/2020/04/next-hop-vtep-reachability-evpn.html" />}}
