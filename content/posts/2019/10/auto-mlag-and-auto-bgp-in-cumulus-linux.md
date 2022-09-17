@@ -3,6 +3,7 @@ date: 2019-10-23 09:12:00+02:00
 tags:
 - bridging
 - BGP
+- Cumulus Linux
 series: mlag
 mlag_tag: implement
 title: Auto-MLAG and Auto-BGP in Cumulus Linux

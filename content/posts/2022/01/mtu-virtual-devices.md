@@ -1,7 +1,7 @@
 ---
 title: "MTU Settings in Virtual Network Devices"
 date: 2022-01-27 09:34:00
-tags: [ virtualization ]
+tags: [ virtualization, Cumulus Linux ]
 ---
 When I finally[^1] managed to get SR Linux running with *netlab*, I wanted to test how it interacts with Cumulus VX and FRR in an OSPF+BGP lab... and failed. [Jeroen Van Bemmel](https://github.com/jbemmel) quickly identified the culprit: MTU. Yeah, it's always the MTU (or DNS, or BGP).
 
