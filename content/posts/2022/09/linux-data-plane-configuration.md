@@ -16,7 +16,7 @@ There are two major ways of configuring data plane constructs (interfaces, port 
 
 You don't want to use the CLI commands to manipulate network devices; it's a highway to [CRUD hell](/2018/09/infrastructure-as-code-netconf-and-rest.html#crud-hell) and really hard to do right if you want to build idempotent configuration scripts (scripts that won't crash and burn if you run them more than once). If you treasure your sanity, an intent-based system is the only way to go.
 
-To make matters even more interesting, you can choose among a plethora of intent-based systems, all solving the same problem in slightly different ways. Cumulus Linux made my life easier: it uses an improved version of ifupdown that knows how to handle the newer networking constructs like VRFs.
+To make matters even more interesting, you can choose among a plethora of intent-based systems, all solving the same problem in slightly different ways. Cumulus Linux made my life easier: it uses an improved version of *[ifupdown](https://manpages.ubuntu.com/manpages/bionic/man5/interfaces.5.html)* that knows how to handle the newer networking constructs like VRFs.
 
 As [expected from a Linux system utility](/2020/09/grasping-linux-networking.html), the documentation sucks. While the _ifupdown_ documentation does a great job explaining the basics, once you try to configure bridges, VXLAN interfaces, or VRFs, you get into a maze of underdocumented commands, some mentioned only in the source code on GitHub. Fortunately, the Cumulus Linux documentation always describes multiple ways of configuring Linux networking objects, giving me at least some hints of what I should be searching for.
 
@@ -33,7 +33,35 @@ Fortunately, *ifupdown* supports multiple configuration files and can even combi
 
 Long story short, I couldn't use `ifreload -a` to adjust the data plane state to the changed intent. I solved that with *ifupdown* classes (look at the *netlab* [configuration scripts](https://github.com/ipspace/netlab/tree/dev/netsim/ansible/templates) if you want to know the dirty details) and discovered all sorts of interesting quirks -- I guess nobody ever tried to put a single device into a half-dozen classes.
 
-To be fair, Cumulus engineers tried to solve the misery I just described with two systems: Network Command Line Utility (NCLU) in Cumulus Linux 4.x and NVIDIA User Experience (NVUE) in Cumulus Linux 5.x. Both of them look great until you hit their limits (more about that in subsequent rants), forcing you to go back to the underlying configuration files.
+### But Wait, It Gets Worse
+
+I thought I figured everything out, created templates using *ifupdown* for physical interfaces, bridges, VLAN interfaces, VLAN subinterfaces, VRFs, and VXLAN interfaces. Everything worked.
+
+Next day, I decided to unify the Cumulus Linux and FRR container BGP configuration[^FRBGP], and found out that the unnumbered EBGP sessions wouldn't start. Fortunately I had to deal with that in the past[^WH1] and knew exactly what the problem was: there was no IPv6 LLA on the interfaces. As the unnumbered EBGP sessions worked in earlier *netlab* releases, I thought the failure was caused by my rewriting of the interface configuration template.
+
+Hours later I came to the sad conclusion that:
+
+* It's impossible to configure IPv6 LLA with *ifupdown*. Even `iface inet6 auto`  (which would enable SLAAC, but also LLA) doesn't work on Cumulus Linux.
+* Changing IPv6 interface parameters in FRR has no impact.
+* The only way to enable IPv6 on an interface is \
+  `echo 0 >/proc/sys/net/ipv6/conf/_ifname_/disable_ipv6`. WT\*\*???
+
+I hate using three mechanisms to configure a single object (an interface). If anyone knows a better way to enable IPv6 LLA (without a static IPv6 address) on Cumulus Linux, please write a comment.
+
+Just in case you wonder what the root cause of my problem was:
+
+* Cumulus VX 4.4.0 VM has IPv6 enabled by default (EBGP unnumbered sessions work). So does Cumulus VX 4.3.0 container I'm using with *containerlab*.
+* Cumulus VX 4.4.0 container has IPv6 disabled by default, and while doing all sorts of other things, I also decided to change the default container version.
+
+[^WH1]: Read "I wasted three hours a few weeks ago, so I didn't have to waste them now". Cumulus Linux BGP Unnumbered documentation somehow fails to mention the "you need working IPv6 LLA" detail.
+
+[^FRBGP]: They are both using FRR, so it makes no sense to have two configuration templates doing the same stuff.
+
+### Now What?
+
+To be fair, Cumulus engineers tried to solve the misery I just described with two systems: Network Command Line Utility (NCLU) in Cumulus Linux 4.x and NVIDIA User Experience (NVUE) in Cumulus Linux 5.x. Both of them look great until you hit their limits. For example, I found no way to enable IPv6 LLA on an interface without configuring a static IPv6 address[^WTM] -- no surprise there, they are both tweaking `/etc/network/interfaces` and FRR configuration. In the end, you're forced to go back to the underlying configuration files and tweak system settings.
+
+[^WTM]: But wait, there's more. I have at least two other rants in the "to-write" queue.
 
 Not good enough? You could try Dell OS10 or VyOS -- they both seem to be riding on top of Linux and use yet another syntax to configure the same networking objects using the same CLI commands or Netlink calls. As Andrew Tanenbaum [said](https://wiki.c2.com/?AndrewTanenbaum):
 
