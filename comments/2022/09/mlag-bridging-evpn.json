@@ -26,9 +26,17 @@
          "name": " Jordi",
          "pub": "2022-09-20T23:54:00",
          "type": "comment"
+      },
+      {
+         "date": "23 September 2022 03:24",
+         "html": "<p>[disclaimer, some vendor bias may apply]</p>\n\n<p>Interesting article, but one of the things I&#39;d like to point out is that your MLAG domain stretches across 4 nodes. All implementations of MLAG or comparable technologies that I am aware of scale up to two nodes. This means that your spine will have at most 2* the amount of ports available on the devices that get chosen to act as spine. In addition to that, most MLAG implementations don&#39;t allow (or at least support, as in tested) mixing and matching different types of hardware, so migration will be a major pain.</p>\n\n<p>This means that for DC designs that require a bigger physical footprint than 2 devices, to have all-links active, you pretty much end up in a L3 design. We then tend to slap VXLAN (with or without EVPN) on top because a lot of applications still require that dreaded L2 connectivity, or we want EVPN goodies like multi-tenancy in the DC.</p>\n\n<p>PS - even then, MLAG is still being used in a lot of these designs because while EVPN multi-homing is great on paper, it also comes with some drawbacks, especially when looking at the amount of control-plane overhead it generates.</p>\n",
+         "id": "1393",
+         "name": "Joris",
+         "pub": "2022-09-23T15:24:28",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2022/09/mlag-bridging-evpn.html"
 }
