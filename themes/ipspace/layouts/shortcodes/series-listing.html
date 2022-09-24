@@ -12,7 +12,13 @@
 {{ end }}
 {{ if (.Get "title") }}
 {{   if (len (.Page.Scratch.Get "pages")) }}
-<h3>{{ .Get "title" }}</h3>
+{{     if (.Get "tag") }}
+<h3 id='{{ .Get "tag" }}'>
+{{     else }}
+<h3>
+{{     end }}
+{{ .Get "title" }}
+</h3>
 {{   end }}
 {{ end }}
 <ul>

@@ -9,7 +9,8 @@ deep_dive:
   title: Layer-2 Flooding
 - page: /posts/2022/06/mlag-active-active-layer3.md
   title: Active-Active Layer-3 Forwarding
-- title: Connecting MLAG Cluster to VXLAN Fabric
+- page: /posts/2022/09/mlag-deep-dive-vxlan-fabric.md
+  title: Connecting MLAG Cluster to VXLAN Fabric
 - title: Using EVPN/VXLAN with MLAG Clusters
 - title: Replacing Peer-Link with VXLAN Fabric
 # Routing protocol challenge: next hops should be anycast GW
