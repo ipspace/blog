@@ -13,6 +13,10 @@ The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help yo
 
 {{<series-listing tag="vlan_vrf">}}
 
+### Using VXLAN and EVPN
+
+{{<series-listing tag="vxlan_evpn">}}
+
 ### Use Cases and Tutorials
 
 {{<series-listing tag="use">}}
