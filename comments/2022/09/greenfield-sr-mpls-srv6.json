@@ -62,9 +62,17 @@
          "name": " Antti Ristimäki",
          "pub": "2022-09-23T11:34:35",
          "type": "comment"
+      },
+      {
+         "date": "25 September 2022 12:42",
+         "html": "<p>I have no clear opinion on SR-mpls vs SRv6 yet. SR-mpls has smaller labels, less overhead. With IPv6 you have one name-space. Both are a benefit, but not decisive for me.</p>\n\n<p>There is one aspect I don&#39;t see mentioned. Because most networks don&#39;t need it. Small(er) networks don&#39;t need it. Datacenter-networks don&#39;t need it. But if you are an ISP or a hyperscaler with a WAN network with several thousands of routers, this aspect becomes important.</p>\n\n<p>When you have a thousand routers in your networks, you can put all of them in one (IS-IS) area. Maybe with 2k routers as well. But when you have several thousand routers, you want to use areas. If only to limit the blast-radius. But there are several technologies where you need to know the SID of the router at the endpoint where you want to send traffic. That means in SR-MPLS you need to advertise the /32 (or /128) of every router in your network. Plus their SID. If you do flex-algo, multiple SIDs even. That starts to add up to a lot of info in your LSPDB. Your L1L2 routers might need to advertise several thousands of prefixes down. This is a practical concern. You can do things like increase lsp-mtu. Or implement RFC5311. I don&#39;t find that an elegant solution.</p>\n\n<p>The best thing would be to have summarizable SIDs. SR-MPLS doesn&#39;t have that. SRv6 does. So there SRv6 has an advantage, imho. But even when you have summarizable SIDs, you still need to know the mapping between /32 (or /128) and the SID. I don&#39;t think there&#39;s a good way to do that yet, besides advertising each individual /32 and SID combination.</p>\n\n<p>I&#39;ve been told a few times that &quot;routing is a solved problem&quot;. I don&#39;t agree. Routing is maybe a solved problem for networks with &lt;= 1000 routers. For larger networks, you still need to use a bunch of trick and kludges to make it work. We could use a better solution.</p>\n",
+         "id": "1397",
+         "name": " Henk",
+         "pub": "2022-09-25T12:42:55",
+         "type": "comment"
       }
    ],
-   "count": 4,
+   "count": 5,
    "type": "post",
    "url": "2022/09/greenfield-sr-mpls-srv6.html"
 }
