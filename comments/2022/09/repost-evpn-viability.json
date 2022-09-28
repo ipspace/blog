@@ -44,9 +44,17 @@
          "name": " Dmitri Kalintsev",
          "pub": "2022-09-28T03:17:39",
          "type": "comment"
+      },
+      {
+         "date": "28 September 2022 10:12",
+         "html": "<p>Regarding iBGP over eBGP &quot;saga&quot; let me repost a snippet from a comment I made in &quot;The EVPN/BGP Saga Continues&quot;.</p>\n\n<p>&quot;...  The grander EVPN story starts with its background and continued evolution across multiple domains and use cases. What is being called out here is a very specific data center reference design doc &mdash; there&rsquo;s a story behind that too, and it&rsquo;s not marketing.</p>\n\n<p>... a key goal of that doc is to expose what our fabric controller is driving under the covers. It starts with the basic use case of a simple IP fabric. Some folks don&rsquo;t need overlays. OSPF/ISIS is not ideal for very large fabrics so EBGP was chosen to avoid deploying different solutions for different size IP fabrics in the same company (think large enterprise or SP with many fabrics of different sizes geographically dispersed). ... However operators are free to replace EBGP with OSPF or ISIS if they see fit (and understand the flooding inefficiencies in large dense topologies). &gt;&gt; I started my comment in the original blog with this statement, which you ignored in this blog. &lt;&lt;</p>\n\n<p>Then we added the overlay use case on top of the IP fabric use case solution. Many of our larger customers don&rsquo;t want ANY overlay/tenant state in P routers (control or data plane) [i.e. rules out use of hop-by-hop EVPN route distribution]. So instead of the controller pushing different solutions for different customer types and fabric sizes (this too is complexity) we chose to keep it consistent given the outcome is the same in every case. In fact &gt;&gt;some customers have hosts in overlays and hosts in the underlay simultaneously&lt;&lt;, since only a subset of their endpoints need to be segmented away from the larger set, and/or they are migrating to host-based overlays or cloud-native application models.</p>\n\n<p>The controller hides the verbosity (explicit config), but when operator has to troubleshoot, detail is there under the covers. ... We provided a doc that exposes what we do under the controller. That&rsquo;s all. It&rsquo;s not marketing. ...&quot;</p>\n",
+         "id": "1406",
+         "name": " Aldrin",
+         "pub": "2022-09-28T22:12:16",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2022/09/repost-evpn-viability.html"
 }

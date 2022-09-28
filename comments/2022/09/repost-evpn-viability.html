@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -113,6 +113,33 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1406">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Aldrin</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1406" href="#1406">28 September 2022 10:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Regarding iBGP over eBGP &quot;saga&quot; let me repost a snippet from a comment I made in &quot;The EVPN/BGP Saga Continues&quot;.</p>
+
+<p>&quot;...  The grander EVPN story starts with its background and continued evolution across multiple domains and use cases. What is being called out here is a very specific data center reference design doc &mdash; there&rsquo;s a story behind that too, and it&rsquo;s not marketing.</p>
+
+<p>... a key goal of that doc is to expose what our fabric controller is driving under the covers. It starts with the basic use case of a simple IP fabric. Some folks don&rsquo;t need overlays. OSPF/ISIS is not ideal for very large fabrics so EBGP was chosen to avoid deploying different solutions for different size IP fabrics in the same company (think large enterprise or SP with many fabrics of different sizes geographically dispersed). ... However operators are free to replace EBGP with OSPF or ISIS if they see fit (and understand the flooding inefficiencies in large dense topologies). &gt;&gt; I started my comment in the original blog with this statement, which you ignored in this blog. &lt;&lt;</p>
+
+<p>Then we added the overlay use case on top of the IP fabric use case solution. Many of our larger customers don&rsquo;t want ANY overlay/tenant state in P routers (control or data plane) [i.e. rules out use of hop-by-hop EVPN route distribution]. So instead of the controller pushing different solutions for different customer types and fabric sizes (this too is complexity) we chose to keep it consistent given the outcome is the same in every case. In fact &gt;&gt;some customers have hosts in overlays and hosts in the underlay simultaneously&lt;&lt;, since only a subset of their endpoints need to be segmented away from the larger set, and/or they are migrating to host-based overlays or cloud-native application models.</p>
+
+<p>The controller hides the verbosity (explicit config), but when operator has to troubleshoot, detail is there under the covers. ... We provided a doc that exposes what we do under the controller. That&rsquo;s all. It&rsquo;s not marketing. ...&quot;</p>
+</div>
           </div>
         </li>
       </div>
