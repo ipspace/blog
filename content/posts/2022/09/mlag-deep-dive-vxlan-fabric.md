@@ -1,6 +1,6 @@
 ---
 title: "Combining MLAG Clusters with VXLAN Fabric"
-date: 2022-09-28 07:58:00
+date: 2022-09-28 09:27:00
 tags: [ switching,vxlan ]
 series: mlag
 mlag_tag: deepdive
@@ -53,5 +53,34 @@ There's a simple solution to this conundrum: use a different source VTEP IP addr
 Looking at various VXLAN implementations, it seems like the above requirements aren't exactly a walk in the park. Obviously we don't know what data center switch ASICs can do ([thanks a million](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html), Broadcom, NVIDIA and friends), and people who could answer that question are not allowed to, but if you could say something without violating an NDA signed in blood, or send me an anonymous hint, you'd be most welcome. 
 
 Finally, this is the perfect moment for EVPN pundits to tell me how all the problems I just described get solved with EVPN multihoming. That's not exactly true, and we'll discuss the nuances in the next blog post in this series.
+
+### Flooding Considerations
+
+Now that we know how unicast forwarding works in MLAG clusters connected to a VXLAN fabric, let's see how complex the flooding of BUM packets is.
+
+When the VXLAN fabric uses **multicast-based** BUM flooding, all egress devices listening to the VNI IP multicast address receive all the flooded traffic, and the MLAG cluster members might have a fun time deciding who should forward the flooded packets to the multi-homed hosts[^OHE].
+
+The easiest solution to this challenge is to use a single MLAG cluster member as a dedicated flooder and register the VNI IP multicast address only on that node[^REGALL]. The Ethernet frames received from the VXLAN fabric would be flooded to all ports on the dedicated flooder -- including the peer link -- and the other member(s) of the MLAG cluster would use the exact [same procedures they used in standalone MLAG cluster](/2022/06/mlag-deep-dive-flooding.html).[^REGCOM]
+
+[^REGALL]: Alternatively, all members of MLAG cluster could listen to the VNI IP multicast address, and everyone but the dedicated flooder ignores BUM packets received over the VXLAN interface. Not listening to IP multicast might be simpler ;)
+
+[^REGCOM]: If you're keen on generating tons of interesting hardware bugs, you could go for a more complex implementation where all cluster members listen to the VNI IP multicast traffic, the dedicated flooder sends the VXLAN BUM packet to all local ports _but not the peer link_, and all other MLAG members send the VXLAN BUM packet only to the orphan ports. Have fun.
+
+What about VXLAN fabrics using **ingress replication**? That's an even easier one. All MLAG cluster members advertise the same anycast VTEP IP address, and that address is used in the ingress replication lists on all other VTEPs. 
+
+When an ingress VTEP sends a replicated BUM packet to the anycast VTEP IP address, it's received by a random MLAG cluster members. That switch can treat the flooded packet like it would be coming from an orphan host: flood it to all other ports and the peer link. The [standard MLAG flooding procedures](/2022/06/mlag-deep-dive-flooding.html) take care of further flooding.
+
+[^OHE]: Orphan hosts are easy ;)
+
+### More Information
+
+Watch the [VXLAN Deep Dive](https://www.ipspace.net/VXLAN_Technical_Deep_Dive) webinar if you want to know more about  VXLAN, and [EVPN Multihoming](https://my.ipspace.net/bin/list?id=EVPN#MH) section of [EVPN Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar if you want to skip ahead and learn more about EVPN-based MLAG clusters.
+
+Both webinars are available with [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/).
+
+### Revision History
+
+2022-09-28
+: Added flooding considerations
 
 {{<next-in-series page="/posts/mlag-deep-dive-evpn-multihoming.md" />}}
