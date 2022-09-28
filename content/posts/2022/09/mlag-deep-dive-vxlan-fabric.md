@@ -1,6 +1,7 @@
 ---
 title: "Combining MLAG Clusters with VXLAN Fabric"
 date: 2022-09-28 09:27:00
+lastmod: 2022-09-28 17:22:00
 tags: [ switching,vxlan ]
 series: mlag
 mlag_tag: deepdive
@@ -25,7 +26,7 @@ Imagine host A having a lot of TCP or UDP sessions with host Z:
 * Ethernet frames with the same source MAC address (A) will be encapsulated into VXLAN frames on S1 and S2 and sent toward Sx.
 * Sx might receive frames from the same source MAC address coming from two different source VTEPs (S1 and S2). That will totally confuse Sx if it uses dynamic MAC learning to build MAC-to-VTEP mapping tables
 
-**Conclusion**: S1 and S2 must use the same source IP address when encapsulating the traffic coming from a dual-attached host.
+**Conclusion**: S1 and S2 must use the same source IP address when encapsulating the traffic coming from a dual-attached (MLAG) host.
 
 **Aside**: The requirement to use an anycast VTEP IP address complicates the device configuration. VTEP IP address is usually attached to a loopback interface, and IP addresses configured on loopback interfaces are commonly used to set OSPF or BGP router ID.
 
@@ -58,7 +59,14 @@ Finally, this is the perfect moment for EVPN pundits to tell me how all the prob
 
 Now that we know how unicast forwarding works in MLAG clusters connected to a VXLAN fabric, let's see how complex the flooding of BUM packets is.
 
-When the VXLAN fabric uses **multicast-based** BUM flooding, all egress devices listening to the VNI IP multicast address receive all the flooded traffic, and the MLAG cluster members might have a fun time deciding who should forward the flooded packets to the multi-homed hosts[^OHE].
+Outbound direction is easy: 
+
+* Packets received from a host (orphan or MLAG-connected) are flooded to all other hosts, the peer link *and the VXLAN fabric*.
+* Packets received from the peer link *should not be flooded to the VXLAN fabric*, as the MLAG peer already did that. From the perspective of the egress ACL discussed in [MLAG Layer-2 Flooding](/2022/06/mlag-deep-dive-flooding.html) blog post, VXLAN interface should be treated like an MLAG interface.
+
+Now for the inbound direction, where the fabric could use IP multicast or ingress replication to flood BUM traffic.
+
+When the VXLAN fabric uses **multicast-based** BUM flooding, all egress devices listening to the VNI IP multicast address receive all the flooded traffic, and the MLAG cluster members might have a fun time deciding who should forward the flooded packets to the MLAG hosts[^OHE].
 
 The easiest solution to this challenge is to use a single MLAG cluster member as a dedicated flooder and register the VNI IP multicast address only on that node[^REGALL]. The Ethernet frames received from the VXLAN fabric would be flooded to all ports on the dedicated flooder -- including the peer link -- and the other member(s) of the MLAG cluster would use the exact [same procedures they used in standalone MLAG cluster](/2022/06/mlag-deep-dive-flooding.html).[^REGCOM]
 
@@ -68,7 +76,7 @@ The easiest solution to this challenge is to use a single MLAG cluster member as
 
 What about VXLAN fabrics using **ingress replication**? That's an even easier one. All MLAG cluster members advertise the same anycast VTEP IP address, and that address is used in the ingress replication lists on all other VTEPs. 
 
-When an ingress VTEP sends a replicated BUM packet to the anycast VTEP IP address, it's received by a random MLAG cluster members. That switch can treat the flooded packet like it would be coming from an orphan host: flood it to all other ports and the peer link. The [standard MLAG flooding procedures](/2022/06/mlag-deep-dive-flooding.html) take care of further flooding.
+When an ingress VTEP sends a replicated BUM packet to the anycast VTEP IP address, it's received by a random MLAG cluster members. That switch can treat the flooded packet like it would be coming from an MLAG host: flood it to all other ports and the peer link. The [standard MLAG flooding procedures](/2022/06/mlag-deep-dive-flooding.html) take care of further flooding.
 
 [^OHE]: Orphan hosts are easy ;)
 
@@ -81,6 +89,6 @@ Both webinars are available with [Standard ipSpace.net Subscription](https://www
 ### Revision History
 
 2022-09-28
-: Added flooding considerations
+: Added flooding considerations, including outbound flooding based on comment by Erik Auerswald
 
 {{<next-in-series page="/posts/mlag-deep-dive-evpn-multihoming.md" />}}
