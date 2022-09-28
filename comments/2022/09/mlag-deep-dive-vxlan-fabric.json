@@ -9,6 +9,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "28 September 2022 07:03",
+               "html": "<p>... and you&#39;re absolutely right. Will fix, thank you!</p>\n",
+               "id": "1404",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-09-28T19:03:38",
+               "ref": "1403",
+               "type": "comment"
+            }
+         ],
          "date": "28 September 2022 06:58",
          "html": "<p>Hello Ivan,</p>\n\n<p>regarding <em>&quot;That switch can treat the flooded packet like it would be coming from an orphan host: flood it to all other ports and the peer link.&quot;</em>:</p>\n\n<p>I am not sure why you mention <em>orphan</em> port here. At least some MLAG implementations <em>always</em> flood via peer link and filter frames on egress to MLAG ports with active members on both switches.</p>\n\n<p>I even think correlating Anycast VTEP and an orphan port might be a dangerous suggestion, because, at least in the <em>filter on egress</em> model mentioned above, the Anycast VTEP needs to be handled identically to an <em>MLAG port</em>. If the peer switch&#39;s Anycast VTEP is active, BUM traffic received via peer link must <em>not</em> be flooded via VXLAN, but it <em>must</em> be flooded otherwise.</p>\n\n<p>One verification of the above I received was when I suggested a bug in the programming of said egress filters as cause for a network problem, and the vendor engineer looking into the case confirmed this suspicion.</p>\n",
          "id": "1403",
