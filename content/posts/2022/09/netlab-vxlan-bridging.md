@@ -6,7 +6,7 @@ series: netlab
 netlab_tag: vxlan_evpn
 series_title: Simple VXLAN Bridging
 ---
-[netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netsim-tools.readthedocs.io/en/latest/module/vxlan.html). Time to check how easy it is to replace a VLAN trunk with VXLAN transport. We'll use the lab topology from the [VLAN trunking example](/2022/06/netsim-vlan-trunk.html), replace the VLAN trunk between S1 and S2 with an IP underlay network, and transport Ethernet frames across that network with VXLAN.
+[netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netsim-tools.readthedocs.io/en/latest/module/vxlan.html). Time to check how easy it is to replace a VLAN trunk with VXLAN transport. We'll use the lab topology from the [VLAN trunking example](/2022/06/netsim-vlan-trunk.html), replace the VLAN trunk between S1 and S2 with an IP underlay network, and [transport Ethernet frames across that network with VXLAN](https://github.com/ipspace/netlab-examples/tree/master/VXLAN/vxlan-bridging).
 
 {{<figure src="/2022/09/vxlan-bridging.png" caption="Lab topology">}}
 <!--more-->
@@ -44,7 +44,7 @@ links:
   s2:
 ```
 
-Finally a touch of magic. We'll deploy VLAN, VXLAN and OSPF configuration modules on the switches -- and that's it.
+Finally a touch of magic. We'll deploy VLAN, VXLAN and OSPF configuration modules on the switches -- and that's it ([full topology](https://github.com/ipspace/netlab-examples/blob/master/VXLAN/vxlan-bridging/topology.yml)).
 
 {{<cc>}}Defining device groups{{</cc>}}
 ```
@@ -118,10 +118,10 @@ router ospf 1
 end
 ```
 
-Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VLAN/vlan-trunk#changing-device-types)? No problem:
+Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VXLAN/vxlan-bridging#changing-device-types)? No problem:
 
 * [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
-* Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VXLAN%2BEVPN/vxlan-bridging/topology.yml) into an empty directory
+* Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VXLAN/vxlan-bridging/topology.yml) into an empty directory
 * Execute **netlab up -d eos -p clab** if you want to run the lab with Arista cEOS in *containerlab*, or use whichever other device type in the `-d` parameter (you can skip the `-p` parameter if you're using *libvirt*).
 * Enjoy! 😊
