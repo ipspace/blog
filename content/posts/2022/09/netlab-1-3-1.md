@@ -1,6 +1,6 @@
 ---
 title: "netlab Release 1.3.1: BGP local-as, FRR and Cumulus Data Plane Enhancements"
-series_title: "BGP local-as, FRR and Cumulus Data Plane Enhancements (Release 1.3)"
+series_title: "BGP local-as, FRR and Cumulus Data Plane Enhancements (Release 1.3.1)"
 date: 2022-09-19 07:08:00
 tags: [ automation ]
 series: netlab
