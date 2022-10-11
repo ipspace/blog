@@ -1,6 +1,6 @@
 ---
 title: "EVPN VLAN-Aware Bundle Service"
-date: 2022-10-12 06:06:00
+date: 2022-10-13 06:06:00
 tags: [ EVPN, bridging ]
 pre_scroll: True
 ---
