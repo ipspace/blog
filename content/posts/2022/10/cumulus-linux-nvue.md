@@ -77,6 +77,10 @@ I'm a bit old and I might be missing things, and there might be a way to set the
 
 Does it matter? It depends. Do you want to deploy an "obscure" BGP design where you run IBGP sessions between loopback interfaces advertised with an IGP? Good luck, you can't use NVUE to configure that. Interestingly, the capability to set BGP update source was present in NCLU (`net add bgp neighbor <bgppeer> update-source (<ipv4>|<ipv6>|<interface-source>)`), so it was recognized as an important parameter, and someone must have made a conscious decision not to implement it in NVUE.
 
+{{<note>}}Joe Hlasnik found a way to set update source for a BGP session: you have to create a peer group, and set the update source as part of *peer group capabilities*. 
+
+Obvious, right 🥴 Nonetheless, I still couldn't find that mentioned anywhere in the documentation (apart from *list of NVUE commands*).{{</note>}}
+
 Well, as always there's an ugly workaround -- you can use [NVUE snippets](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-52/System-Configuration/NVIDIA-User-Experience-NVUE/NVUE-Snippets/) to add stuff to *FRR* or *ifupdown* configuration[^OTF]. That sounds cool until you get tired of configuring half of the BGP neighbor parameters with NVUE API calls and the other half with *FRR* configuration commands[^CNC] passed through NVUE API calls[^NXOS].
 
 [^OTF]: ... or any other text file if you like editing files through REST API
@@ -86,3 +90,8 @@ Well, as always there's an ugly workaround -- you can use [NVUE snippets](https:
 [^NXOS]: The whole thing reminds me of early NETCONF on Cisco Nexus OS that produced **show** printout in text format... but nicely wrapped in XML envelope.
 
 I'm positive that NVUE developers implemented what Cumulus customers were asking for, which tells you much about who and how uses Cumulus Linux. I also don't care why they didn't implement the most fundamental parameter you need to have  in an IBGP-based network. I simply [documented the shortcomings](https://netsim-tools.readthedocs.io/en/latest/caveats.html#cumulus-5-0-with-nvue) in *Platform Caveats* and moved on, but the whole thing did leave a pretty sour aftertaste.
+
+### Revision History
+
+2022-10-12
+: Joe Hlasnik found a way to set the BGP update source. Thanks a million!
