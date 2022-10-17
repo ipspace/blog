@@ -1,6 +1,6 @@
 ---
 title: "New Webinar: Internet Routing Security"
-date: 2022-10-20 07:32:00
+date: 2022-10-27 07:32:00
 tags: [ Internet, BGP, security ]
 ---
 I'm always a bit in a bind when I get an invitation to speak at a security conference (after all, I know just enough about security to make a fool of myself), but when the organizers of the [DEEP Conference](https://deep-conference.com/) invited me to talk about Internet routing security I simply couldn't resist -- the topic is dear and near to my heart, and I planned to do a  related webinar for a very long time.
