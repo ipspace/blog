@@ -1,6 +1,6 @@
 ---
 title: "Network Automation Considered Harmful"
-date: 2022-10-20 06:22:00
+date: 2022-10-25 06:22:00
 tags: [ automation ]
 ---
 Some of the blog comments never cease to amaze me. Here's one [questioning the value of network automation](https://blog.ipspace.net/2022/10/repost-whats-wrong-network-automation.html#1421):
