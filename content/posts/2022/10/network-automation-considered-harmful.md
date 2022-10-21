@@ -17,9 +17,9 @@ Introducing network automation in a small company network with a single router a
 
 [^1]: Although Ubiquity is still selling it's Software-Defined (not really) cloud-based network management system. They must have awesome marketing.
 
-I'm assuming that most of my readers run networks slightly larger than the one described above. I'm also assuming that for some of them "_Unless you're breaking stuff you're not moving fast enough_"[^2] remains a soundbite worthy of Mark Zuckerberg[^3] instead of their company culture. I was told that in environments that care about service availability manual processes represent a huge drawback because every change has to be planned, approved, and executed in a maintenance window, while every major cloud provider and residential ISP provisions new tenants or customers 24 hours a day.
+I'm assuming that most of my readers run networks slightly larger than the one described above. I'm also assuming that for some of them "_Unless you're breaking stuff you're not moving fast enough_"[^2] remains a soundbite worthy of Mark Zuckerberg[^3] instead of their company culture. I was told that in environments that care about service availability manual processes still represent a huge drawback because every change has to be planned, approved, and executed in a maintenance window, while every major cloud provider and residential ISP provisions new tenants or customers 24 hours a day.
 
-Even worse, you have to go through the same processes when making *identical changes* because you can never be sure that the infrastructure is configured in exactly the same way. Obviously that results in rubber-stamping and complacency until you hit a bit of infrastructure that's a different-enough snowflake, and then all hell breaks loose.
+Even worse, you have to go through the same processes when making *identical changes* because you can never be sure that the infrastructure is configured in exactly the same way. Obviously that results in rubber-stamping and complacency until you hit a bit of infrastructure that's a different-enough snowflake, and then all hell breaks loose anyway.
 
 I spent almost a decade writing about, talking about, and practicing network automation (resulting in over [380 blog posts](https://blog.ipspace.net/tag/automation.html), dozens of hours of [video content](https://my.ipspace.net/bin/list?id=NetOps), and a bunch of [GitHub repositories](https://github.com/ipspace)). If someone seriously wants to dig into various arguments we had during that time, you'll have plenty of stuff to read and watch. In the meantime, I'll conclude with a [wonderful reply left on that comment](https://blog.ipspace.net/2022/10/repost-whats-wrong-network-automation.html#1422):
 
@@ -39,4 +39,4 @@ Yes, having to run everything through an automation pipeline is less rapid than 
 
 ---
 
-Finally, there must be some networking engineers running large networks who shun automation as much as the original commenter. I have great news for them: most vendors will gladly sell them all the licenses they need to build a _Digital Twin_ of their network to practice on.
+Finally, there must be some networking engineers running large networks who shun automation as much as the original commenter. I have great news for them: most vendors will gladly sell them all the licenses they need to [build a _Digital Twin_ of their network](https://blog.ipspace.net/2019/09/if-you-have-to-simulate-your-whole.html) to practice on.

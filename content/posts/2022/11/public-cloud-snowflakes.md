@@ -7,7 +7,7 @@ I could spend days writing riffs on some of the more creative (in whatever dimen
 
 > If the problem is well known you can apply rules to it (automation). The problem with networking is that it results in a huge number of cases that are not known in advance. And I don't mean only the stuff you add/remove to fix operational problems. A friend in one of the biggest private clouds was saying that more than 50% of transport services are customized (a static route here, a PBR there etc) or require customization during their lifecycle (e.g. add/remove a knob). Telcos are "worse" and for good reasons.
 
-Yeah, I had discussions with a wide plethora of people building private and public (telco) clouds, and summarized the few things I learned (not many of them good) in *[Address the Business Challenges First](https://my.ipspace.net/bin/list?id=NetBiz#BF)* part of the _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar.
+Yeah, I've seen such environments. I had discussions with a wide plethora of people building private and public (telco) clouds, and summarized the few things I learned (not many of them good) in *[Address the Business Challenges First](https://my.ipspace.net/bin/list?id=NetBiz#BF)* part of the _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar.
 <!--more-->
 {{<note info>}}Want to [watch that talk](https://my.ipspace.net/bin/list?id=NetBiz#BF)? All you need is a [Free Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
@@ -17,11 +17,11 @@ I usually received interesting feedback from that presentation, ranging from "_I
 
 [^TA]: These days, you can meet Technical Alchemists or Systems Thinkers on LinkedIn, and some comments reflect their job titles.
 
-I would be glad if anyone could explain to me how you can provision on-demand services through an orchestration system if your infrastructure needs constant ad-hoc manual tweaking (which hopefully triggers a change review process and implementation in a maintenance window).
+I would be glad if anyone could explain to me how you can provision on-demand services through an orchestration system if your infrastructure needs constant ad-hoc manual tweaking, which hopefully triggers a change review process and implementation in a maintenance window.
 
 No takers? OK, I'll spoil the fun.
 
-I was told a huge multinational software vendor[^NO] once launched a public cloud that used physical firewalls[^NVF]. They didn't dare automating their configuration -- after all, firewalls might crash while being configured every other blue moon, and that would bring down the whole "cloud" -- and deployed a very efficient process to modify security rules:
+I was told a huge multinational software vendor[^NO] once launched a public cloud that used physical firewalls[^NVF]. They didn't dare automating the firewall configuration -- after all, firewalls might crash while being configured every other blue moon, and that would bring down the whole "cloud" -- and deployed a very efficient process to modify security rules:
 
 * You could modify security rules through the orchestration system
 * The system would log your request and open a ticket
@@ -31,7 +31,7 @@ I was told a huge multinational software vendor[^NO] once launched a public clou
 
 Anyway, back to the original comment. What the automation denier used as a counterexample isn't a private cloud. It's a badly managed large scale server virtualization infrastructure hell. You can't call you concoction a cloud if you can't even define the services you're about to offer.
 
-[^NO]: Not Oracle. I promise. It's easy to make fun of their cloud due to the reputation they have in other parts of their business, but the cloud seems solid. Even Corey Quinn doesn't hate it too much which says a lot.
+[^NO]: Not Oracle. I promise. It's easy to make fun of their cloud due to the [reputation they have in other parts of their business](https://twitter.com/QuinnyPig/status/1583240716305592321), but the cloud seems solid. Even Corey Quinn doesn't hate it too much which says a lot.
 
 [^NVF]: Who could ever trust a virtual firewall? Someone could break into one of them, deploy a zero-day hypervisor exploit, modify the in-memory rules of other firewall instances running on the same hypervisor, and break into other customers' networks... in Mission Impossible Part 6.
 
@@ -39,7 +39,9 @@ But wait, it gets better:
 
 > "more automation", "fix your pipelines", "fix your culture", "FAANGs do it" is the usual reaction but i doubt it takes people 10 years (or more since this conversation started) to learn to write yaml templates and playbooks :)
 
-The "write YAML templates and playbooks" derision is what you get when you allow a bunch of hipsters to evangelize a concept -- all we've heard from the most vocal proponents of network automation has been "_ANSIBLE!!!_" or "_everyone will become a Python programmer_". 
+The "write YAML templates and playbooks" derision is what you get when you have a bunch of hipsters evangelizing an otherwise sane concept -- all we've heard from the most vocal proponents of network automation has been "_ANSIBLE!!!_" or "_everyone will become a Python programmer_"[^MTTF]. 
+
+[^MTTF]: Of course they'll say their efforts "moved the discussion forward." SDN evangelists used the same pathetic excuse when that bubble burst.
 
 That works great in a science project proof-of-concept; real automation projects require much more, starting with understanding of the problem you're trying to solve and creating an optimal architecture of the whole system. We tried to address that in the _[Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions)_ online course, and hundreds of attendees created successful automation projects based on the knowledge gained from that course -- at least we have a real-life proof that it's not impossible to automate significant parts of large enterprise networks.
 
@@ -52,12 +54,12 @@ Finally, you know how much I adore people claiming [you should use the same appr
 * Tenants can configure their networks with point-and-click GUI, API, automation tools, CLI, infrastructure-as-code tools, or cats jumping on a keyboard. The infrastructure team doesn't care.
 * Infrastructure team is responsible for the proper operation of the infrastructure; the tenants are responsible for the results of their actions. AWS published a wonderful [shared responsibility model](https://aws.amazon.com/compliance/shared-responsibility-model/) document describing that.
 
-You can use the exact same approach in a private cloud. All you need to do is to pay for VMware NSX licenses. A well-supported OpenStack distribution might work as well[^BYO], although I haven't heard much about OpenStack in recent years. Is it still a thing?
+You can use the exact same approach in a private cloud, but you better start with VMware NSX licenses. A well-supported OpenStack distribution might work as well[^BYO], although I haven't heard much about OpenStack in recent years. Is it still a thing?
 
-Too expensive? It's cheaper to let the infrastructure engineers suffer through VLAN nightmares and static route quagmires? It might be just me, but if I were one of those engineers, I would already have a highly polished resume ;)
+Too expensive? It's cheaper to let the infrastructure engineers suffer through VLAN nightmares and static route quagmires? PBR in transport network? Seriously? It might be just me, but if I were one of those engineers, I would already have a highly polished resume ;)
 
 In other words, don't blame a concept if you have to work in a toxic environment where it's impossible to apply it.
 
-[^GT]: Keeping in mind most of the more popular talks from Google are nothing else but [thinly veiled recruitment drives](https://blog.ipspace.net/2018/03/before-commenting-on-someone-mentioning.html)
+[^GT]: Keeping in mind most of the more popular talks from Google are nothing else but [thinly veiled recruitment drives](https://blog.ipspace.net/2018/03/before-commenting-on-someone-mentioning.html) ([here's another example](https://www.micahlerner.com/2022/10/08/sdn-in-the-stratosphere-loons-aerospace-mesh-network.html)).
 
 [^BYO]: Or roll out your own version of OpenStack. I know people who needed a few years (and a few wasted millions) to realize that's hard.
