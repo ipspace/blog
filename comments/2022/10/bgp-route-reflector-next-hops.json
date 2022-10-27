@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "27 October 2022 10:39",
+               "html": "<p>Hi Ivan, great post as always, thanks for sharing</p>\n\n<p>&gt;&gt; [...] but there&rsquo;s a single scenario I&rsquo;m aware of where doing that is a must [...]</p>\n\n<p>Reiterating Erik&#39;s comment above, I believe <em>Seamless MPLS</em> is a reference architecture for Service Providers that uses in-band RR with next-hop adjustments, towards creating &quot;islands&quot; of MPLS. </p>\n\n<p>Discrete instances of IGP and MPLS share Border Nodes [BN] (like an ABR in LS protocols), with PEs peering to BN then BN peering to RR in the central island. BGP-LU runs inter-island. You end up with 3 layers of MPLS: Transport, Service, and VPN. I think this is what Erik is describing.</p>\n\n<p>https://datatracker.ietf.org/doc/html/draft-ietf-mpls-seamless-mpls-07</p>\n\n<p>All major vendors have good articles on the reference design, including great diagrams by Juniper and Huawei. (fwiw, Cisco have historically called this &quot;Unified&quot; MPLS, but its the same thing).</p>\n\n<ul>\n<li>https://support.huawei.com/enterprise/en/doc/EDOC1100065649/28ecd062/understanding-seamless-mpls</li>\n<li>https://www.juniper.net/content/dam/www/assets/white-papers/us/en/building-multi-generation-scalable-networks-with-end-to-end.pdf</li>\n<li>https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-3/configuration_guide/mpls/b_173_mpls_9300_cg/configuring_seamless_mpls.pdf</li>\n</ul>\n\n<p>You might suspect that controllers like Crosswork/WAE and Paragon/Northstar suit this design well when you want to conjoin RSVP paths.</p>\n\n<p>Thanks</p>\n",
+               "id": "1461",
+               "name": " Harley Bristow",
+               "pub": "2022-10-27T10:39:33",
+               "ref": "1460",
+               "type": "comment"
+            }
+         ],
          "date": "27 October 2022 09:19",
          "html": "<p>&gt; There&rsquo;s a single vendor I&rsquo;m aware of who realized the SNAFU and implemented EVPN in a way that violates the usual EBGP expectations.</p>\n\n<p>I know of two, with a hint regarding a third (with the third based on work from the first).\nI expect the first to be the one you have in mind.\n;-)</p>\n\n<p>&gt; Anything else? Please leave a comment!</p>\n\n<p>I have seen an MPLS design using RFC 3107 BGP-LU to build transport LSPs across IGP regions. They used IBGP with RRs. The region border routers were RRs that changed the next hop to themselves and generating a BGP-LU label.</p>\n\n<p>P.S. Sorry for the acronym soup.</p>\n",
          "id": "1460",

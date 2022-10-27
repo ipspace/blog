@@ -29,6 +29,53 @@ I expect the first to be the one you have in mind.
 
 <p>P.S. Sorry for the acronym soup.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1461">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Harley Bristow</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1461" href="#1461">27 October 2022 10:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, great post as always, thanks for sharing</p>
+
+<p>&gt;&gt; [...] but there&rsquo;s a single scenario I&rsquo;m aware of where doing that is a must [...]</p>
+
+<p>Reiterating Erik&#39;s comment above, I believe <em>Seamless MPLS</em> is a reference architecture for Service Providers that uses in-band RR with next-hop adjustments, towards creating &quot;islands&quot; of MPLS. </p>
+
+<p>Discrete instances of IGP and MPLS share Border Nodes [BN] (like an ABR in LS protocols), with PEs peering to BN then BN peering to RR in the central island. BGP-LU runs inter-island. You end up with 3 layers of MPLS: Transport, Service, and VPN. I think this is what Erik is describing.</p>
+
+<p>https://datatracker.ietf.org/doc/html/draft-ietf-mpls-seamless-mpls-07</p>
+
+<p>All major vendors have good articles on the reference design, including great diagrams by Juniper and Huawei. (fwiw, Cisco have historically called this &quot;Unified&quot; MPLS, but its the same thing).</p>
+
+<ul>
+<li>https://support.huawei.com/enterprise/en/doc/EDOC1100065649/28ecd062/understanding-seamless-mpls</li>
+<li>https://www.juniper.net/content/dam/www/assets/white-papers/us/en/building-multi-generation-scalable-networks-with-end-to-end.pdf</li>
+<li>https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-3/configuration_guide/mpls/b_173_mpls_9300_cg/configuring_seamless_mpls.pdf</li>
+</ul>
+
+<p>You might suspect that controllers like Crosswork/WAE and Paragon/Northstar suit this design well when you want to conjoin RSVP paths.</p>
+
+<p>Thanks</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
