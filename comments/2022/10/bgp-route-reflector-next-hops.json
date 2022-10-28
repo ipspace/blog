@@ -18,9 +18,17 @@
          "name": " Erik Auerswald",
          "pub": "2022-10-27T09:19:48",
          "type": "comment"
+      },
+      {
+         "date": "28 October 2022 02:19",
+         "html": "<p>&gt; BGP route reflectors are solving the &ldquo;propagation of information&rdquo; problem, \n&gt; not the &ldquo;finding the optimal path&rdquo; problem</p>\n\n<p>I guess they tried to do both, since BGP RR have been designed to send only the best path (from their point of view) to the network. And from a design point of view, this does not work well with moving the RR outside the data path.</p>\n\n<p>&gt;  there&rsquo;s a single scenario I&rsquo;m aware of where [changing the BGP next hop] is a must: hub-and-spoke DMVPN tunnels</p>\n\n<p>I would prefer to NOT configure the Hubs as RR (expect may be for the inter Hub sessions) :  you only need to collect remote routes and you do not want to send every route to every spoke when a single aggregate can do the the job. \nTo enforce that, i usually use a new AS for each Hub and use the same 65000 as for the spokes.</p>\n",
+         "id": "1464",
+         "name": " PJO",
+         "pub": "2022-10-28T14:19:46",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2022/10/bgp-route-reflector-next-hops.html"
 }
