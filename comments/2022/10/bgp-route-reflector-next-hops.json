@@ -20,6 +20,26 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "30 October 2022 08:38",
+               "html": "<p>&gt; I guess they tried to do both, since BGP RR have been designed to send only the best path (from their point of view) to the network. And from a design point of view, this does not work well with moving the RR outside the data path.</p>\n\n<p>Sending only the best path was the best they could do -- it was a side effect of the format of BGP update messages. A RR could send multiple paths but all but the last one would be ignored without the AddPaths support (read AddPaths RFC for more details). Changing the BGP update message format would open a whole other barrel of worms.</p>\n\n<p>Do remember that RFC 1966 was published in 1996, years before IPv6-over-BGP4 or BGP4 capabilities RFCs came along.</p>\n",
+               "id": "1466",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-10-30T08:38:04",
+               "ref": "1464",
+               "type": "comment"
+            },
+            {
+               "date": "30 October 2022 08:39",
+               "html": "<p>&gt; I would prefer to NOT configure the Hubs as RR (expect may be for the inter Hub sessions) : you only need to collect remote routes and you do not want to send every route to every spoke when a single aggregate can do the the job</p>\n\n<p>That&#39;s assuming you can aggregate the address space into a few well-defined prefixes.</p>\n",
+               "id": "1467",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-10-30T08:39:31",
+               "ref": "1464",
+               "type": "comment"
+            }
+         ],
          "date": "28 October 2022 02:19",
          "html": "<p>&gt; BGP route reflectors are solving the &ldquo;propagation of information&rdquo; problem, \n&gt; not the &ldquo;finding the optimal path&rdquo; problem</p>\n\n<p>I guess they tried to do both, since BGP RR have been designed to send only the best path (from their point of view) to the network. And from a design point of view, this does not work well with moving the RR outside the data path.</p>\n\n<p>&gt;  there&rsquo;s a single scenario I&rsquo;m aware of where [changing the BGP next hop] is a must: hub-and-spoke DMVPN tunnels</p>\n\n<p>I would prefer to NOT configure the Hubs as RR (expect may be for the inter Hub sessions) :  you only need to collect remote routes and you do not want to send every route to every spoke when a single aggregate can do the the job. \nTo enforce that, i usually use a new AS for each Hub and use the same 65000 as for the spokes.</p>\n",
          "id": "1464",

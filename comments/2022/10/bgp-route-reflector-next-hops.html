@@ -103,6 +103,58 @@ I expect the first to be the one you have in mind.
 <p>I would prefer to NOT configure the Hubs as RR (expect may be for the inter Hub sessions) :  you only need to collect remote routes and you do not want to send every route to every spoke when a single aggregate can do the the job. 
 To enforce that, i usually use a new AS for each Hub and use the same 65000 as for the spokes.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1466">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1466" href="#1466">30 October 2022 08:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; I guess they tried to do both, since BGP RR have been designed to send only the best path (from their point of view) to the network. And from a design point of view, this does not work well with moving the RR outside the data path.</p>
+
+<p>Sending only the best path was the best they could do -- it was a side effect of the format of BGP update messages. A RR could send multiple paths but all but the last one would be ignored without the AddPaths support (read AddPaths RFC for more details). Changing the BGP update message format would open a whole other barrel of worms.</p>
+
+<p>Do remember that RFC 1966 was published in 1996, years before IPv6-over-BGP4 or BGP4 capabilities RFCs came along.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1467">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1467" href="#1467">30 October 2022 08:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; I would prefer to NOT configure the Hubs as RR (expect may be for the inter Hub sessions) : you only need to collect remote routes and you do not want to send every route to every spoke when a single aggregate can do the the job</p>
+
+<p>That&#39;s assuming you can aggregate the address space into a few well-defined prefixes.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
