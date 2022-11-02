@@ -32,7 +32,7 @@ If we need alternate path calculation, we could either:
 
 [^BS]: That would break tons of unrelated things because you can't upgrade just one package in a network operating system.
 
-Anyway, back to the more interesting _we just need IP-to-SID mapping_ use case. That's no different from the ancient _we can't summarize loopbacks if we need to build a label-switched path with LSP_ challenge. Either you can fit all the information into the inter-area (or inter-level) part of your topology database or you use a protocol that's been used forever to distribute mappings between _whatever_ and next-hop addresses (hint: BGP). Obviously there a way to use BGP-LU to distribute SR SIDs (see [RFC 8669](https://www.rfc-editor.org/rfc/rfc8669.html) for details).
+Anyway, back to the more interesting _we just need IP-to-SID mapping_ use case. That's no different from the ancient _we can't summarize loopbacks if we need to build a label-switched path with LSP_ challenge. Either you can fit all the information into the inter-area (or inter-level) part of your topology database or you use a protocol that's been used forever to distribute mappings between _whatever_ and next-hop addresses (hint: BGP). Obviously there's a way to use BGP-LU to distribute SR SIDs (see [RFC 8669](https://www.rfc-editor.org/rfc/rfc8669.html) for details).
 
 However, at least IS-IS has an interesting problem: the amount of information any router could generate (including inter-level information leakage) is limited[^SO]. Still not sure whether that's a good or a bad thing :)
 
