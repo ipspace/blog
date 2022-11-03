@@ -1,6 +1,7 @@
 ---
 title: "More Arista EOS BGP Route Reflector Woes"
 date: 2022-10-06 06:05:00
+lastmod: 2022-11-03 16:36:00
 tags: [ BGP, EVPN ]
 ---
 Most BGP implementations I've worked with split the neighbor BGP configuration into two parts:
@@ -13,6 +14,8 @@ AS numbers, source interfaces, peer IPv4/IPv6 addresses, and passwords clearly b
 BGP policies like route maps and prefix lists clearly belong to the address family configuration, but what about things like route reflector clients and next hop processing?
 
 One might argue that these parameters belong to the address family configuration. After all, they affect BGP updates within an address family. One might also argue that it doesn't make sense to have different route reflector topologies for individual address families. That might have been the argument that caused Arista to implement **neighbor route-reflector-client** and **neighbor next-hop-self** commands on the global BGP configuration level. I would have no problem with that if only they were implemented consistently.
+
+{{<note info>}}Starting with EOS release 4.29.0F, you can [configure the **neighbor next-hop-self** option within IPv4 and IPv6 address families](https://www.arista.com/en/support/toi/eos-4-29-0f/16340-next-hop-self-in-address-family-mode-for-ipv4-and-ipv6-unicast). Great job!{{</note>}}
 
 As I [described in April 2022](https://blog.ipspace.net/2022/04/eos-route-reflector-next-hop-self.html), Arista EOS takes **next-hop-self** a bit too literally -- that option also changes the next hops on reflected routes. No problem, one can also use **bgp route-reflector preserve-attributes** command to fix it. The "only" problem: that command does not work on all address families, and there's no way to fix that.
 
@@ -91,3 +94,8 @@ route-map next-hop-self-ipv4 permit 20
 
 * Want to reproduce my tests? [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html) and [use Arista cEOS containers](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
 * Want to learn more about EVPN? There's probably no better source than [EVPN Deep Dive webinar](https://www.ipspace.net/EVPN_Technical_Deep_Dive) with Dinesh Dutt (the author of *BGP in the Data Center*), Lukas Krattiger (the author of *Building Data Centers with VXLAN BGP EVPN*), and Krzysztof Grzegorz Szarkowicz (the author of *MPLS in the SDN Era*)
+
+### Revision History
+
+2022-11-03
+: Arista EOS supports per-AF next-hop-self in release 4.29.0F
