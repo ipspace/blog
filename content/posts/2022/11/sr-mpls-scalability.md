@@ -1,6 +1,7 @@
 ---
 title: "Scalability Aspects of SR-MPLS"
 date: 2022-11-02 07:37:00
+lastmod: 2022-11-03 09:35:00
 tags: [ segment routing, MPLS ]
 ---
 Henk Smit left a [wonderful comment discussing various scalability aspects of SR-MPLS](https://blog.ipspace.net/2022/09/greenfield-sr-mpls-srv6.html#1397). Let's go through the points he made:
@@ -61,3 +62,55 @@ Anyone claiming that _routing is a solved problem_ has as much in-depth experien
 However, I don't think it's realistic to expect a single unified solution to a complex challenge[^UTE]. Solving a complex-enough task usually requires multiple tools and the knowledge and experience to select the best tool for the next step in the process. I do a bit of woodworking when I get tired of networking, and I have a garage full of tools. Obviously I could replace most of them with either a brutally expensive CNC machine, or with a Swiss Army knife. Neither of them would be optimal for my needs ;)
 
 [^UTE]: It looks like most physicists would agree (at least in private) with the exception of those still searching the for the Great Unified Theory of Everything. And yeah, I've spent way too much time reading [Sabine Hossenfelder's juicy blog posts](http://backreaction.blogspot.com/) lately.
+
+### Selected Feedback
+
+As is often the case, a [LinkedIn pointer to this blog post](https://www.linkedin.com/feed/update/urn:li:activity:6993583354784669696/) resulted in numerous thoughtful comments, starting with [Jeff Tantsura](https://www.linkedin.com/in/jeff-tantsura/)'s take on scalability:
+
+{{<long-quote>}}
+There's a number of dimensions to overall scale:
+
+* total size/amount of information needed to be maintained 
+* ability to distribute the information efficiently and timely
+* amount of time taken to process the information at each node 
+
+Each dimension has a set of different limitations and requires different approaches to scale:
+
+* Clean it up! - IGP is not a dumpster truck (we have got BGP for that :)) these OSPF routes you have redistributed 12 years ago really shouldn't be there
+* Each implementation exposes a different set of knobs for optimization/fine-tuning, don't be fooled by common names, they behave differently, in a multi-vendor environment wrong combination could be rather painful - engage your vendor (if you use opensource - make sure you have got people who have a clue (not just python kids)), understand what's exactly happening, test/test/test
+* There are significant implementation differences between vendors, without going into semantics of internals. It doesn't really matter how fast is your fastest router, it does matter however, how slow is your slowest.
+
+{{</long-quote>}}
+
+It also seems like "thousand routers in an IS-IS area" is an outdated number. Here's Jeff's take on the subject:
+
+{{<long-quote>}}
+In a well tunned IS-IS flat L2 (dual-stacked + SR) you could go long way with about upto 3k routers, keeping SPF times low ane topology stable (long links are an interesting challenge though). When you start pushing above 5k, things might get nasty :)
+
+As for IETF, there’s draft-ietf-lsr-isis-flood-reflection, I’d let [Dr. Tony Przygienda](https://www.linkedin.com/in/dr-tony-przygienda-018501/) to talk about.
+{{</long-quote>}}
+
+No surprise, Tony quickly provided more in-depth information:
+
+{{<long-quote>}}
+Number are somewhat higher than what Jeff mentions, at least in world's most scalable implementations but yes, those limitations are being hit ;-)
+
+Flood reflection stretches it to arbitrary number really without L1/L2 topology restrictions while supporting TE & SR (we may publish some drafts next on that).
+
+SR in itself is one of the drivers for the ISIS scale explosion given it works best on something "flat" since SIDs are flat [until they're summarized or are basically reinventing themselves as IP addresses as predicted by lots of old hands when original idea was shown ;-)] and call for lots of "flat IGP" network design. FR in ISIS itself is on the cusp of RFC, built and deployed ;-)
+{{</long-quote>}}
+
+Tony also had a few thoughts on the implementation quality:
+
+{{<long-quote>}}
+I can only say "just buy best quality/scale stuff you can get you hands on rather than looking for free lunches" ;-) High scale routing is hard though it seems simple and leans itself to well-meant promises based on assumptions, especially to people who read the RFCs but never implemented and more importantly fought large scale operational deployment realities ;-)
+
+As another dimension, a network should be preferably designed in a disciplined way to contain the abstractions and summarize. Having e'thing being a SID e'one in the network needs to know is not particularly disciplined ;-)
+
+If we could have e'thing e'where all'e'time, L2 bridging the planet would have worked just fine ;-) or even hard crosswiring it with one gigantic infinitely fast cross-connect matrix ;-) As further observation, cost of scaled-up, distributed, synchronized state in any networking technology is a non-linear function ;-)
+{{</long-quote>}}
+
+### Revision History
+
+2022-11-03
+: Added feedback from LinkedIn comments
