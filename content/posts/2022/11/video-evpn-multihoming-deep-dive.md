@@ -1,5 +1,5 @@
 ---
-title: "EVPN Multihoming: Taxonomy and Overview"
+title: "Video: EVPN Multihoming Deep Dive"
 date: 2022-11-04 07:02:00
 tags: [ video, EVPN, MLAG]
 ---
