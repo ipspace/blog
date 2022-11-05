@@ -12,6 +12,7 @@ deep_dive:
 - page: /posts/2022/09/mlag-deep-dive-vxlan-fabric.md
   title: Connecting MLAG Cluster to VXLAN Fabric
 - title: Using EVPN/VXLAN with MLAG Clusters
+  page: /posts/2022/11/mlag-vxlan-evpn.md
 - title: Replacing Peer-Link with VXLAN Fabric
 # Routing protocol challenge: next hops should be anycast GW
 - title: Running Routing Protocols over MLAG Links
