@@ -10,6 +10,15 @@
                "pub": "2022-11-05T18:22:55",
                "ref": "1473",
                "type": "comment"
+            },
+            {
+               "date": "06 November 2022 04:15",
+               "html": "<p>RFC 5283 allows LDP to use a label for an IP FEC even though the RIB does not contain an exact match for this IP FEC.  This is still MPLS, and each FEC in use requires a distinct label.  This allows to reduce the routing table and thus FIB size via aggregation, but does not by itself reduce the LFIB size.</p>\n\n<p>This addresses the &quot;<em>we can&rsquo;t summarize loopbacks if we need to build a label-switched path with [LDP] challenge</em>.&quot;</p>\n\n<p>The use of Downstream-on-Demand label allocation allows to reduce the LFIB size by requesting labels only for required FECs, e.g., only for those PEs participating in locally configured L3VPNs (i.e., for the learned BGP next hops).</p>\n\n<p>In the context of &quot;Seamless MPLS&quot; this is intended to allow the use of smaller access network devices and still extend MPLS transport to the network edge.</p>\n\n<p>This does not change MPLS transport.  MPLS forwarding is still based on exact match, not longest prefix match.  An LSR does not split one LSP into two.</p>\n",
+               "id": "1486",
+               "name": " Erik Auerswald",
+               "pub": "2022-11-06T16:15:27",
+               "ref": "1483",
+               "type": "comment"
             }
          ],
          "date": "02 November 2022 11:42",
