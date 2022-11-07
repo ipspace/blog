@@ -37,7 +37,7 @@ So here's your challenge: design a protocol that will compute optimal end-to-end
 
 Now imagine that you decide to split the network into smaller chunks (because your dismal CPU can't run SPF on a 200-node network) and figure out how that protocol would have to work to find optimal paths in the following network:
 
-```
+{{<ascii>}}
      ┌──────┐           ┌───┐
   ┌──┤ ABR1 ├───────────┤ C │
   │  └──────┘           └─┬─┘
@@ -45,7 +45,7 @@ Now imagine that you decide to split the network into smaller chunks (because yo
 ┌─┴─┐            ┌──────┐ │
 │ X ├────────────┤ ABR2 ├─┘
 └───┘            └──────┘
-```
+{{</ascii>}}
 
 **Notes:**
 * Line length is proportional to link cost (let's say the cost ABR1-X is 1, and the of C-ABR1 is 2).
