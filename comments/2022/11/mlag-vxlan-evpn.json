@@ -20,6 +20,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "10 November 2022 01:10",
+               "html": "<p>JunOS also implements ECMP with underlay/overlay networks. I think all vendors have some working implementation of this. Not sure why Ivan isn&#39;t aware of that.</p>\n\n<p>JunOS adds multiple entries to a unilist, then an indirect next hop list, then finally a chained composite next hop list (when using EVPN-VXLAN).</p>\n\n<p>Most of the complaints in this blog are a non-issue.</p>\n",
+               "id": "1497",
+               "name": " DM",
+               "pub": "2022-11-10T01:10:12",
+               "ref": "1496",
+               "type": "comment"
+            }
+         ],
          "date": "09 November 2022 05:58",
          "html": "<p>&quot;However, the forwarding hardware limitations require anycast VTEP IP addresses&quot;</p>\n\n<p>I can&#39;t comment on how other implementations work, but FRR/Cumulus implementation of MAC-ECMP does not fallback on anycast.\nWhat you said about forwarding hardware requiring a single destination for a MAC is accurate, but their implementation achieves MAC-ECMP by pointing the fdb entry (mac) at single destination that is an ECMP container holding the VTEP address of each member of the remote ESI rather than pointing to a single VTEP address.</p>\n\n<p>In Linux, the ECMP container is implemented using &quot;nexthop&quot; objects (one nexthop &quot;group&quot; pointing to several nexthop entries).\nFRR populates an ES cache based on &quot;per ES&quot; Type-1 routes, which maintains a list of active VTEP addresses per ESI. One NHG is allocated in the kernel per known ESI and one NHE is allocated per active VTEP. When a MAC is learned via the remote ESI, the VXLAN driver&#39;s fdb entry points to the ID of the nexthop group (&quot;nhid&quot;) for a hash lookup to select which underlay DIP will be used.</p>\n\n<p>In Mellanox ASICs the same principle applies - an ECMP container is allocated based on the kernel NHG and it contains underlay VTEP addresses. So the hardware fdb points to the ECMP container to select a remote underlay DIP for the VXLAN tunnel (not anycast) and then the encapsulated packet goes through the route lookup based on the DIP returned by the ECMP hash lookup.</p>\n",
          "id": "1496",

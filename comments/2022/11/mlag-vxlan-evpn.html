@@ -82,6 +82,37 @@ FRR populates an ES cache based on &quot;per ES&quot; Type-1 routes, which maint
 
 <p>In Mellanox ASICs the same principle applies - an ECMP container is allocated based on the kernel NHG and it contains underlay VTEP addresses. So the hardware fdb points to the ECMP container to select a remote underlay DIP for the VXLAN tunnel (not anycast) and then the encapsulated packet goes through the route lookup based on the DIP returned by the ECMP hash lookup.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1497">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> DM</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1497" href="#1497">10 November 2022 01:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>JunOS also implements ECMP with underlay/overlay networks. I think all vendors have some working implementation of this. Not sure why Ivan isn&#39;t aware of that.</p>
+
+<p>JunOS adds multiple entries to a unilist, then an indirect next hop list, then finally a chained composite next hop list (when using EVPN-VXLAN).</p>
+
+<p>Most of the complaints in this blog are a non-issue.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
