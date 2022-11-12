@@ -2,6 +2,7 @@
 title: "Network Automation Cargo Cults"
 date: 2022-11-17 07:33:00
 tags: [ automation ]
+draft: True
 ---
 Some network automation skeptics came to that place the hard way: they got burned by half-baked semi-tested systems. This is what one of my good friends had to say in a LinkedIn comment:
 
