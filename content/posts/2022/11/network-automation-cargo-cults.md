@@ -9,8 +9,8 @@ Some network automation skeptics came to that place the hard way: they got burne
 > I am suspicious of automation, as I've unfortunately seen too many outages caused by either human error or faulty automation. Every time it required human CLI/GUI intervention to correct it. The problem is that the more automation we push, the fewer people know how to use the "old school" way to administer stuff.
 
 Network automation is not the only IT discipline that could cause hard-to-correct errors requiring manual intervention. I'm positive everyone knows at least one horror story resulting in the manual tweaking of the Windows registry or a sequence of arcane SQL commands.
-
-However, one would expect that the outages would be rare and a one-off event -- after all, we've been developing software for decades. For serious software development organizations, concepts like version control, transactions, and thorough testing are considered table stakes. Unfortunately, that's not how the pundits were selling network automation benefits to the networking engineers eager to get out of the manual configuration quagmire.
+<!--more-->
+However, one would expect that catastrophic outages would be rare and a one-off event -- after all, we've been developing software for decades, and we should have learned a few lessons along the way. For serious software development organizations, concepts like version control, transactions, and thorough testing are considered table stakes. Unfortunately, that's not how the pundits were selling network automation benefits to the networking engineers eager to get out of the manual configuration quagmire.
 
 As every software engineer or architect worth their salary knows, one should start with (at least) the following:
 
