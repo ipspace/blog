@@ -27,9 +27,17 @@
          "name": "Sander Steffann",
          "pub": "2022-11-15T11:37:31",
          "type": "comment"
+      },
+      {
+         "date": "15 November 2022 08:30",
+         "html": "<p>On Mellanox ASICs, routes will index into a host table using (next-hop IP, egress router interface) as the key, and the address-family of the next-hop does not need to match the address-family of the route. The host entry determines the DMAC that will be used after the Ethernet header is re-written post-routing.</p>\n\n<p>On Broadcom ASICs, routes don&#39;t directly point to a next-hop or host table; instead they index into an &quot;egress&quot; table by ID. So Broadcom natively has a decoupling of a route and the L2 rewrite information returned by the LPM lookup, this allowing the control plane to choose what rules it wishes to enforce with regards to address-families of routes vs next-hops. Another fun tidbit, the ARP/NDP tables are actually collapsed into the LPM lookup as if they were host routes, and these entries also index into the same egress table.</p>\n",
+         "id": "1513",
+         "name": " TA",
+         "pub": "2022-11-15T20:30:57",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2022/11/bgp-unnumbered-duct-tape.html"
 }
