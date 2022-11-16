@@ -141,7 +141,23 @@ By now it should be evident how Linux kernel makes the packet forwarding decisio
 * A lookup into the neighbor table produces the MAC address of the next hop
 * The next hop MAC address is used as the destination MAC address when building the outgoing MAC header.
 
-The above explanation works well for software-based forwarding, but what happens on a Cumulus Linux switch where the packet forwarding is done in hardware, and the hardware forwarding tables are derived from Linux kernel tables? I would be surprised if all forwarding hardware would be as flexible as the Linux kernel, which is probably where the fake static ARP entries for 169.254.0.1 come into play:
+The above explanation works well for software-based forwarding, but what happens on a Cumulus Linux switch where the packet forwarding is done in hardware, and the hardware forwarding tables are derived from Linux kernel tables? According to [_TA_](#1513), the forwarding hardware is surprisingly flexible:
 
-* If the forwarding hardware requires an IPv4 next hop for an IPv4 prefix, the hardware forwarding table is programmed with link-scope next hop IPv4 address 169.254.0.1
-* Whenever required, a next-hop entry is created mapping IPv4 address 169.254.0.1 and the outgoing interface into the MAC address of the downstream router (derived from that router's IPv6 neighbor entry).
+{{<long-quote>}}
+On Mellanox ASICs, routes will index into a host table using (next-hop IP, egress router interface) as the key, and the address-family of the next-hop does not need to match the address-family of the route. The host entry determines the DMAC that will be used after the Ethernet header is re-written post-routing.
+
+On Broadcom ASICs, routes don't directly point to a next-hop or host table; instead they index into an "egress" table by ID. So Broadcom natively has a decoupling of a route and the L2 rewrite information returned by the LPM lookup, this allowing the control plane to choose what rules it wishes to enforce with regards to address-families of routes vs next-hops. Another fun tidbit, the ARP/NDP tables are actually collapsed into the LPM lookup as if they were host routes, and these entries also index into the same egress table.
+{{</long-quote>}}
+
+Finally, what's the deal with the fake static ARP entries for 169.254.0.1? They were needed in the old days when Linux kernel didn't support IPv6 next hops for IPv4 routes, and they're left there in case someone disables nexthop-groups, or as [Donald Sharp](https://www.linkedin.com/in/donaldsharp/) explained:
+
+{{<long-quote>}}
+The 169.254.0.1 neighbor table entries are an artifact from pre-nexthop group implementations in FRR. Prior to nexthop groups the linux kernel would not accept a v6 nexthop for a v4 prefix. So the routes were entered with a 169.254.0.1/outgoing-intf as the actual nexthop.
+
+The code to add this entry just has not gotten removed yet, since they have not done any current harm. Additionally they are there for when the operator enters the command to turn off nexthop groups for installation into the linux kernel.
+{{</long-quote>}}
+
+### Revision History
+
+2022-11-16
+: Updated the _hardware forwarding_ and _static ARP entries_ parts of the blog post based on comment by _TA_ and Donald Sharp.
