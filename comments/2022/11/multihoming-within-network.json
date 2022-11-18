@@ -36,6 +36,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "18 November 2022 11:40",
+               "html": "<p>Thank you! Maybe I should use &quot;O-LISP&quot; for &quot;Original LISP&quot; ;)</p>\n\n<p>I totally agree that properly fine-tuned LISP is useful, and I&#39;m glad to hear you&#39;re pushing it forwarding. I guess we can also agree that LISP is not a solution to global host multihoming the way it was claimed to be.</p>\n",
+               "id": "1523",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-11-18T11:40:16",
+               "ref": "1519",
+               "type": "comment"
+            }
+         ],
          "date": "18 November 2022 10:23",
          "html": "<p>Real life commercially implemented LISP is different. It is using reliable transport and PubSub. Then it has no cache problem. The convergence is usually much faster than with other routing protocols.\nThe size of the EID table is a matter of capacity planning and memory profiles. Here there is something to do. Aggregation could help.\nA hybridization of the push vs. pull model would be available by selective PubSub subscription. This is not implemented commercially yet, but we are pushing for this. :-)\nWe have just finished a large validation exercise successfully in a consortia of 10 big companies for using a specially profiled version of LISP called Ground Based LISP (GB-LISP) for multilink mobility in aviation networks. It uses a special protocol on the air-ground link. GB-LISP is limited to integrate radio access networks and ground users in the ground networks. This will be further improved to fulfill all the strict requirements for a safety critical application. Now it is under codification as one of the recommended implementations for upcoming ICAO and EUROCA/RTCA standards.\nThe major IETF LISP RFCs have been recently updated from Experimental to Standards Track. This is driven by finding new use cases that are better than the original ideas. Another two rounds of IETF LISP standardizations are foreseen...</p>\n",
          "id": "1519",
@@ -44,6 +55,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "18 November 2022 11:42",
+               "html": "<p>You&#39;re comparing apples and cheeseburgers. Phone number portability is really a DNS function (and we both know how convoluted call setups can be).</p>\n\n<p>It&#39;s easier to solve some things (like number portability) if you have multiple name spaces, and you don&#39;t have to involve all of them in fast path.</p>\n\n<p>Anyway, I should have been more precise: you cannot solve host multihoming <em>within the network layer</em>.</p>\n",
+               "id": "1524",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-11-18T11:42:45",
+               "ref": "1520",
+               "type": "comment"
+            }
+         ],
          "date": "18 November 2022 10:40",
          "html": "<p>Actually, the telephony network, including mobiles, is already upgraded for a ID vs. location separation. This is called number portability and enforced by laws and regulation, so you have no freedom to ignore it or go any other ways.\nIt works with large portability databases for millions or even hundred millions of users. Of course, this is specially designed for this challenge and costly. But it still has a positive business case at the end.\nSo if those old telcos can solve similar problems, then why do you think it is not possible to solve it for IP networks with a similar scheme? I know the devil is the details, but not all services have the same continuity requirements. Most of the services can tolerate some drops and some delays to make an address resolution. \nFor highly demanding services, of course, you need other methods. But this is a small minority only. That is where we promote a selective simulcast solution.\nI agree that the best to do such simulcast at the application layer. Our company was a driver behind the radio voice linked session EUROCAE standards. This is a double simulcast between the voice application components. It is also needed for having a maximum independence of the two alternate network paths. \nOur company has also pushed forward the simulcast scheme for surveillance information. This is now used all over the air traffic control domain for radar sensor data with up 4-times redundancy. \nSince simulcast is costly, especially in the narrowband safety critical networks, simulcast should be selective by application or traffic class on limited radio links. You would apply it only when it is absolutely needed. Otherwise, you would just do failover at certain speed as required.\nBy the way, the latest UAS standards promote that the link failover decision is at the hand of the remote pilot. We are now fighting with this. since uncoordinated path selection could make congestion even worse...</p>\n",
          "id": "1520",
@@ -52,6 +74,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "18 November 2022 11:44",
+               "html": "<p>Thanks for pointing this out -- I got a pointer from someone about a deployed BT solution a long while ago, and still haven&#39;t found time to blog about it.</p>\n\n<p>If you&#39;re using something similar to what BT is doing, then you have a pair of MP-TCP proxies, effectively reinventing ML-PPP (or SD-WAN).</p>\n\n<p>Am I missing something? Do you have a more interesting setup?</p>\n",
+               "id": "1525",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-11-18T11:44:35",
+               "ref": "1521",
+               "type": "comment"
+            }
+         ],
          "date": "18 November 2022 11:07",
          "html": "<p>I am just using MP-TCP for my Internet connection. As millions and millions of users. But not at the application layers, rather as an underlay transmission solution. What IP guys tend to forget, that a real network is a hierarchy of a large number of transport layers. Not the OSI model. That has nothing to do with real wide area networks. People should study the ITU-T G.800 series. That is where real networks are properly modeled. We have a cultural problem here, denial of telco know-how...</p>\n\n<p>As soon as you have multiple transmission layers, you have more than just one ID and location separation. Actually, you have a number of addresses to be mapped together, more than two. Like in an MPLS stack those multiple labels on top of each other. This is daily business for telcos for ages and they know how to do it.</p>\n\n<p>On the other hand telcos are using SCTP for ages inside their infrastructure. Because they could use software specifically designed for SCTP, they do not need backward compatibility to socket APIs. And it works well for high-availability and &quot;multi-homing&quot;.</p>\n\n<p>This multi-homing is a problem only if you are limited to old enterprise feature sets on your devices. It is also not taught in most courses how to design high-availability networks... :-)</p>\n\n<p>In many cases, you cannot change your end systems, they are not able to support multi-homing directly, and then you shift the problem to the network if feasible. If you put a multiple attached proxy in front of such a legacy device, then you can achieve a very good availability, since the local link, that is a single point of failure, might be good enough in reliability. Virtual IP addresses are also used quite successfully in such scenarios. </p>\n\n<p>Another simple solution used in safety critical networks is to use multiple end user devices with the same functionality. Then if you have an operational issues, you just move to the next workstation. This is the ultimate high-availability, but of course with some cost.</p>\n\n<p>I am a big fan of the &quot;design to cost&quot; and a risk management approach in engineering. For each cost level you might need different architectures. There is no single solution for everything. We need diversity as well. This also fundamental for safety. It is needed from the business perspective for leveraging you negotiation opportunities...</p>\n",
          "id": "1521",
