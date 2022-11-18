@@ -11,6 +11,10 @@ Henk made an [interesting comment](https://blog.ipspace.net/2022/11/worth-readin
 
 Proponents of various clean-slate (RINA) and pimp-my-Internet (LISP) approaches are quick to point out how their solution solves multihoming. I might be missing something, but it seems like that problem cannot be solved within the network.
 <!--more-->
+**TL&DR**: You cannot solve host multihoming within the network layer while having summarizable network addresses. You have to solve it somewhere at the upper edge of the transport layer[^WC].
+
+[^WC]: I might have missed something significant, in which case please free to point it out in a comment.
+
 Imagine a mobile phone with a WiFi and 5G connection provided by two different ISPs. Those ISPs have some upstream ISPs until a pair of them meets at some exchange point.
 
 {{<ascii>}}
@@ -51,3 +55,8 @@ Back to the drawing board (take two). What if we'd implement multihoming within 
 As much as I like MP-TCP, the limitations of its environment force it to remain a half-baked solution. It has to emulate the TCP socket API and thus has to establish the first TCP session with a well-known server IP address, so the server cannot be multihomed to multiple providers. The only way to fix that is to [change the socket API](https://blog.ipspace.net/2009/08/what-went-wrong-socket-api.html) (fat chance) and hopefully [add session layer to TCP/IP protocol stack ](https://blog.ipspace.net/2009/08/what-went-wrong-tcpip-lacks-session.html)while doing that.
 
 [^SIRI]: Not sure whether MP-TCP is widely deployed? When was the last time you've seen [someone using Siri](https://support.apple.com/en-us/HT201373)?
+
+### Revision History
+
+2022-11-18
+: Added TL&DR summary
