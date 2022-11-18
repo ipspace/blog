@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -37,6 +37,53 @@
               </span>
             </div>
             <div class="comment-content"><p>I am interested to see if HIP fixes all of this in the future. It looks like it has the potential to be a well-designed solution. It doesn&#39;t meet your &quot;widely-deployed&quot; criteria yet but it looks promising and it doesn&#39;t feel hackish.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1518">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1518" href="#1518">18 November 2022 08:58</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;(according to RINA) build an overlay network with global host addresses on top of that?&quot;</p>
+
+<p>I&#39;m not an expert on RINA, but nowhere have I read that&#39;s what RINA proposes: definitely not host address in the routing table. Can you show me where it&#39;s written? </p>
+
+<p>&quot;Under that scenario, host would be known only by its node address (H). Everyone between the bifurcation point (IXP) and the host needs to know that there are two paths toward the host, and what their state is. That includes ISP-A, ISP-B, and all upstream ISPs including upstream ISPs directly connected to IXP2.&quot;</p>
+
+<p>Why? What&#39;s the point of summarization then? The point of addressing that&#39;s pushed forward by John Day, father of RINA, which I agree with, is an address should be route-independent. Summarization done with hierarchical addressing can even bound the number of routes in the Internet RIB. With current interface addressing BS, the global RIB is about a million routes and counting. Why does it keep rising? Because it has no boundary condition imposed. Why are network engineers called engineers when they have no understanding of boundary conditions, a fundamental aspect in engineering? </p>
+
+<p>Akamai uses 2-level DNS to implement their infrastructure; it&#39;s the same concept as hierarchical addressing, and it works for them. Now coming back to the example, ISP A and B just needs the summary routes of whatever blocks C and D possess, and on and on it goes. How should this fail to work?</p>
+
+<p>Also, in our discussion of the same topic way earlier, you pointed out that money is an incentive, no ISP can make money if hierarchical addressing is used. Fair enough. But the next question is, since money ruins a lot of things in life (IT is no exception), is money the right question to ask? When something is considered national security or national asset too valuable to fall into private hands with dubious interests, like the main grid or the oil-gas pipelines, govts will be responsible for building and managing it. Why is communication infrastructure any different? Isn&#39;t it part of national critical infrastructure these days? Why give it to private hands when they can potentially sell out to your enemies? </p>
+
+<p>Back to the global RIB, we have tight-coupling and complexity-collapse problem. Just because it hasn&#39;t happened yet (or it might have) doesn&#39;t mean it won&#39;t. The same way the financial idiots keep claiming that derivatives are all well and good, until they blew up in their faces and were so close to bringing down the whole financial system in 97-98 and 2008; even now the global financial system is fucked up in more ways than one; just a looming failure of Credit Suisse risks bringing down the whole shebang. Global tight-coupling complexity surely is a good thing. </p>
+
+<p>IPv6 helps make things worse, and way worse for those who know hardware. So while &#39;worst decision ever&#39; is debatable, it&#39;s pretty up there among the very bad ones. CLNP recognizes the need for hierarchy in addressing, that&#39;s what we can learn from. Should we go back to it? Hell no. IPv4 is simple, and everything simple is good. Start with this simplicity, and improve it. Funny the MPLS guys got it right by accident; they unconsciously implemented hierarchical addressing with MPLS VPN; it worked.  </p>
+
+<p>Another point that you mention somewhere is: depending on the scenarios, at worst you might end up with millions of routes in the local network, in exchange for a clean, short global RIB. I don&#39;t think that&#39;s the case if you implement the hierarchical addressing the right way, but let&#39;s just assume this is the case, is it that terrible? The blast radius is contained within the network. OTOH, a global RIB with millions of routes has the potential to result in massive errors that can bring down the whole or a large part of the Internet. Containment vs contagion: a clear win to me. </p>
+
+<p>Looks like John Day is demonized as an anti-IP guy. He&#39;s not. Just because he invented RINA, doesn&#39;t mean he&#39;s gone nuts about it; that&#39;s what I like about him: common sense and simplicity. His views on addressing and multihoming are here for anyone with an open mind:</p>
+
+<p>https://pouzinsociety.org/sites/default/files/LocIDSplit090309.pdf</p>
+
+<p>https://psoc.i2cat.net/sites/default/files/PSOC-tutorials-naming-addressing.pdf?_ga=2.82479954.572590943.1668752621-682182543.1668752621</p>
+
+<p>https://psoc.i2cat.net/sites/default/files/PSOC-tutorial-Mobility-made-simple.pdf?_ga=2.219319261.572590943.1668752621-682182543.1668752621</p>
+
+<p>As for complaint on why his book wasn&#39;t written from an engineering perspective, well, he already stated that in the book and made clear in the title of the book for those with subtlety. He tried to propose an alternative model of networking based on his decades of experience (no, he&#39;s not just an armchair expert in academia), and that hierarchical model works well when applied to IP. </p>
+
+<p>MP-TCP and SCMP are just lipstick on a pig. A typical result of adding more complexity to solve complexity, and still failing to solve it, when the fundamentals are wrong. </p>
 </div>
           </div>
         </li>
