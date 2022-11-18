@@ -1,6 +1,6 @@
 ---
 title: "What Causes ICMP Redirects?"
-date: 2022-11-24 07:25:00
+date: 2022-11-30 07:25:00
 tags: [ IP routing ]
 ---
 A while ago, I wrote a blog post [explaining why we should (mostly) disable ICMP redirects](https://blog.ipspace.net/2022/02/nexus-icmp-redirects.html), triggering a series of comments discussing the root cause of ICMP redirects. A few of those blamed static routes, including:
