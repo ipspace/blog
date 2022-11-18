@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -133,6 +133,37 @@ I agree that the best to do such simulcast at the application layer. Our company
 Our company has also pushed forward the simulcast scheme for surveillance information. This is now used all over the air traffic control domain for radar sensor data with up 4-times redundancy. 
 Since simulcast is costly, especially in the narrowband safety critical networks, simulcast should be selective by application or traffic class on limited radio links. You would apply it only when it is absolutely needed. Otherwise, you would just do failover at certain speed as required.
 By the way, the latest UAS standards promote that the link failover decision is at the hand of the remote pilot. We are now fighting with this. since uncoordinated path selection could make congestion even worse...</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1521">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1521" href="#1521">18 November 2022 11:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I am just using MP-TCP for my Internet connection. As millions and millions of users. But not at the application layers, rather as an underlay transmission solution. What IP guys tend to forget, that a real network is a hierarchy of a large number of transport layers. Not the OSI model. That has nothing to do with real wide area networks. People should study the ITU-T G.800 series. That is where real networks are properly modeled. We have a cultural problem here, denial of telco know-how...</p>
+
+<p>As soon as you have multiple transmission layers, you have more than just one ID and location separation. Actually, you have a number of addresses to be mapped together, more than two. Like in an MPLS stack those multiple labels on top of each other. This is daily business for telcos for ages and they know how to do it.</p>
+
+<p>On the other hand telcos are using SCTP for ages inside their infrastructure. Because they could use software specifically designed for SCTP, they do not need backward compatibility to socket APIs. And it works well for high-availability and &quot;multi-homing&quot;.</p>
+
+<p>This multi-homing is a problem only if you are limited to old enterprise feature sets on your devices. It is also not taught in most courses how to design high-availability networks... :-)</p>
+
+<p>In many cases, you cannot change your end systems, they are not able to support multi-homing directly, and then you shift the problem to the network if feasible. If you put a multiple attached proxy in front of such a legacy device, then you can achieve a very good availability, since the local link, that is a single point of failure, might be good enough in reliability. Virtual IP addresses are also used quite successfully in such scenarios. </p>
+
+<p>Another simple solution used in safety critical networks is to use multiple end user devices with the same functionality. Then if you have an operational issues, you just move to the next workstation. This is the ultimate high-availability, but of course with some cost.</p>
+
+<p>I am a big fan of the &quot;design to cost&quot; and a risk management approach in engineering. For each cost level you might need different architectures. There is no single solution for everything. We need diversity as well. This also fundamental for safety. It is needed from the business perspective for leveraging you negotiation opportunities...</p>
 </div>
           </div>
         </li>
