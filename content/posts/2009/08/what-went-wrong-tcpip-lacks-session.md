@@ -4,7 +4,7 @@ tags:
 - IPv6
 - Internet
 - networking fundamentals
-title: 'What went wrong: TCP/IP lacks a session layer'
+title: 'What Went Wrong: TCP/IP Lacks a Session Layer'
 url: /2009/08/what-went-wrong-tcpip-lacks-session.html
 ---
 One of the biggest challenges facing the Internet core today is the [explosion of the IP routing and forwarding tables](https://blog.ipspace.net/2009/06/internet-anarchy-ill-advertise-whatever.html), which is caused primarily by traffic engineering and multihoming requirements. Things were supposed to get better when IPv6 introduced strict hierarchical addressing (similar to the phone number addressing, where the first few digits always denote the country code).
