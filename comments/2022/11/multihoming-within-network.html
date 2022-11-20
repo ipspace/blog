@@ -184,6 +184,47 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="1531">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1531" href="#1531">20 November 2022 02:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, the multihoming problem is a problem of delivery (2 interface addresses appear as 2 hosts to the sender, confusing the heck out of them), so it&#39;s by nature a network problem. </p>
+
+<p>&quot;Do you have one TCP session or two?&quot;</p>
+
+<p>One. Like I said, there&#39;s nothing different from the way things work now except TCP session now uses node address instead of interface address.</p>
+
+<p>&quot;Are they tied to link addresses or node addresses?&quot;</p>
+
+<p>They&#39;re tied to node address, so if link addresses go down, sessions won&#39;t reset as long as there&#39;s a route to the node address present somewhere in the path. </p>
+
+<p>&quot;What happens with the TCP session tied to ISP-A address when the link to ISP-A goes down?&quot;</p>
+
+<p>Then the host connects to Server via ISP B, using link address to ISP B to forward packets to Server. The TCP session remains unchanged (not reset), because the node addresses remain the same. As long as ISP B has an entry to route to Server&#39;s network, packets get delivered, session won&#39;t reset. Node address is route-independent in that sense. It cares nothing about the failure or non-failure of the underlying link addresses, as long as there&#39;s still at least 1 link up that it can use to reach the destination, the session will remain on. Apart from that small detail, it&#39;s the same standard datagram delivery throughout the network. </p>
+
+<p>That&#39;s where the missing 1 layer comes from. So in current IP communication, we have interface IP address in the IP layer. In the 2 layer addressing, we have TCP&#39;s IP (the node address) and interface IP (link address). Only the node networks (the network entry, not individual host entries) go into the global RIB. The interface IP networks can remain private. Hope I make myself clear. </p>
+
+<p>And from that, we can see that the MAC layer is redundant because it performs the same function as the interface IP (both name/identify the interface), so it can be removed, and we retain the same number of layers for simplicity (whether it can be removed due to vested interest of vendors putting so much money into it, is another issue). </p>
+
+<p>Btw, Bela wrote in one of his comments below:</p>
+
+<p>&quot;As soon as you have multiple transmission layers, you have more than just one ID and location separation. Actually, you have a number of addresses to be mapped together, more than two. Like in an MPLS stack those multiple labels on top of each other. This is daily business for telcos for ages and they know how to do it.&quot;</p>
+
+<p>Bela just repeated the hierarchical addressing model that John Day mentions in his work, in slightly different wording. Looks like Bela, through his vast experience and knowledge, has also come to see the need for hierarchical addressing for scalability. Needless to say, I agree with him 100% on that.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
