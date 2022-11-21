@@ -246,6 +246,51 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="1533">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1533" href="#1533">21 November 2022 08:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;which devices and networks know where the node address is&quot;</p>
+
+<p>Since Host&#39;s network blocks (2 in this case) are given to it by ISP A and ISP B from their respective blocks, ISP A and B know their own given blocks, but by default, not the other one&#39;s block.</p>
+
+<p>This poses the question: when Server communicates back to Host using ISP B link (because A has failed), because the session is still up (this session uses an IP given by ISP A to establish the initial channel) the node address therefore hasn&#39;t changed and when ISP B receives the packet, it wouldn&#39;t know where to forward. </p>
+
+<p>This should not be a problem if ISP A and B negotiate to carry routes for their dual-home customers. Then they can place each other&#39;s block entries into their RIBs. These will be network entries, not host entries, so no RIB explosion. And resource accounting can be turned on at the entry point to each ISP to keep track of the amount of data that one ISP carries for the other, so they can bill each other accordingly -- or whatever policy they&#39;d agree to.</p>
+
+<p>ISP D and C don&#39;t have to keep track of ISP A and B&#39;s specific routes. This is where we can use the dynamic layer of nature as proposed by John Day. By having packets getting out of B to D (or A to C) encapsulated with another address from B or A (the total number of layers now is 3, no more), C and D simply forward msg coming back from Server to Host via the same path from which they come, and we have path stickiness with mininum effort. The border routers at B or A are the only ones keeping track of this -- border routers are supposed to be powerful, so they have the hardware needed.</p>
+
+<p>Note that this is what RINA means in a nutshell: do away with a fixed number of layers, and add the capability to spawn another layer if need be (dynamic layering). Will this lead to layer explosion? Not at all. You need max 3 layers if you implement this situation. Most of the time you need only 2 if multi-ISP dual home is not used.  This is OS&#39; virtual memory scheme applied to network.</p>
+
+<p>Of course, if C and D are willing to carry A and B&#39;s routes as well, then we only need 2 layers. Their RIBs will be bigger, but given that 1) by routing on node address, we considerably reduce the number of global RIB entries and cut back severely on the number of updates due to routing change (node addresses don&#39;t change a lot like interface) 2)not every customer needs this level of HA (dual home to 2 ISPs) that should not be an issue.</p>
+
+<p>Also note that in reality, if a company considers itself important enough to have dual-ISP multihoming, very likely they are either trunked or dually connected to each ISP, so total ISP failure is rare. Our network is one of those that need HA -- we serve roughly 60k users, many of them demanding due to the nature of their collaborative work, on a regular basis -- so we have 2 links to our ISP. That&#39;s 2 links dual-homed to 1 ISP. In the past 13 years, we never had, not once, a case of total cut-off. That&#39;s how rare total failure is when things are simple. </p>
+
+<p>So given that low frequency of total failure, most of the time, if we use node level addressing for TCP sessions, we wouldn&#39;t have session reset and our traffic will just traverse one ISP from start to end. So the case of total ISP failure is really an outlier/corner case, can be treated as such if money is a concern: that is, customer can opt to have session reset in those cases instead of paying extra for the 2 ISPs to cooperate with each other on the customer&#39;s traffic. Of course, as explained above, if they want even that final bit squeezed out, we can still do it for them using 2-level addressing scheme. We can even reference how the mobile guys implement roaming to learn a few implementational tricks from them. The point is: this becomes a non-tech and non-structural issue. </p>
+
+<p>&quot;which ones know the mapping between node address and interface addresses?&quot;</p>
+
+<p>This should be mostly answered above already. Each ISP knows their own node-level blocks that they give out to customers, and some of each others&#39;  block if they want to cooperate -- this is the kind of address that goes into their global BGP RIB. As to interface addresses, they&#39;re internal to each router in the network so each router keeps track of their own interface addresses individually; they&#39;re local, not shared. The mapping between node and ifc addresses are therefore, maintained individually on the routers, the same way they currently maintain the mapping between IP and MAC, or IP and outgoing ifc, no change at all.</p>
+
+<p>We use Hierarchical FIB to store this mapping (you&#39;ve had several blog posts discussing H-FIB in the past). So yeah, the hardware forwarding process stays the same as they are now, no change whatsoever.</p>
+
+<p>In fact, I don&#39;t see any change at all to all the RIB/FIB structures, or the way routing and forwarding, both intra- and inter-node, are done, compared to now. NONE. The only thing that changes is we add a true Internetwork layer, with true Internetwork Address (the node address) to the mix, and this kind of address goes into the global BGP RIB. The interface addresses are relegated to the local router&#39;s internal tables. </p>
+
+<p>So essentially we only make 1 small change to the addressing structure to complete what&#39;s missing, and that&#39;s it. This is exactly the OS&#39; virtual memory structure, in order to scale the system to very large memory. Everything else, remains the same as now.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
