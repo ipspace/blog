@@ -11,7 +11,7 @@ series_title: IRB with Anycast Gateways
 {{<figure src="/2022/06/vlan-trunk.png" caption="Lab topology">}}
 
 We'll start with the [VLAN trunk lab topology](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk/topology.yml) and make the following changes:
-
+<!--more-->
 * We'll rearrange the node list to make sure the switches get the lowest possible node ID:
 
 {{<code>}}nodes: [ <b>s1, s2</b>, h1, h2, h3, h4 ]
