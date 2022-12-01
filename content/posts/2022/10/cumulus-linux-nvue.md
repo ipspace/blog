@@ -20,7 +20,11 @@ Having a strict data model could be a good thing. It prevents all sorts of weird
 
 [^BM]: While blaming the vendors supplying the paint for the path they took while painting the room.
 
-Here's one that triggered this blog post[^YK]: it's impossible to set the source IP address of an IBGP session (the equivalent of **neighbor update-source** *FRR* configuration command). Here's what Cumulus Linux 5.2.1 allows you to set on a BGP neighbor:
+Here's one that triggered this blog post[^YK]: it's impossible to set the source IP address of an IBGP session (the equivalent of **neighbor update-source** *FRR* configuration command). 
+
+{{<note update>}}**2022-12-01**: According to an email I got from [Eric Pulvino](https://www.linkedin.com/in/pulvino/) a few days ago, Cumulus Linux v5.3.0 includes support for **neighbor update-source** configuration via NVUE. Well done!{{</note>}}
+
+Here's what Cumulus Linux 5.2.1 allows you to set on a BGP neighbor:
 
 [^YK]: You knew it was coming, didn't you?
 
@@ -92,6 +96,9 @@ Well, as always there's an ugly workaround -- you can use [NVUE snippets](https:
 I'm positive that NVUE developers implemented what Cumulus customers were asking for, which tells you much about who and how uses Cumulus Linux. I also don't care why they didn't implement the most fundamental parameter you need to have  in an IBGP-based network. I simply [documented the shortcomings](https://netsim-tools.readthedocs.io/en/latest/caveats.html#cumulus-5-0-with-nvue) in *Platform Caveats* and moved on, but the whole thing did leave a pretty sour aftertaste.
 
 ### Revision History
+
+2022-12-01
+: Cumulus Linux v5.3.0 includes support for NVUE-based **neighbor update-source** configuration
 
 2022-10-12
 : Joe Hlasnik found a way to set the BGP update source. Thanks a million!
