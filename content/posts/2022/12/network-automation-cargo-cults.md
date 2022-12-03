@@ -1,6 +1,6 @@
 ---
 title: "Network Automation Cargo Cults"
-date: 2022-12-06 07:33:00
+date: 2022-12-13 07:33:00
 tags: [ automation ]
 draft: True
 ---
