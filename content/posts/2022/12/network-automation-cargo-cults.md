@@ -1,5 +1,5 @@
 ---
-title: "Network Automation Cargo Cults"
+title: "Network Automation Expert Beginners"
 date: 2022-12-13 07:33:00
 tags: [ automation ]
 draft: True
@@ -10,7 +10,7 @@ Some network automation skeptics came to that place the hard way: they got burne
 
 Network automation is not the only IT discipline that could cause hard-to-correct errors requiring manual intervention. I'm positive everyone knows at least one horror story resulting in the manual tweaking of the Windows registry or a sequence of arcane SQL commands.
 <!--more-->
-However, one would expect that catastrophic outages would be rare and a one-off event -- after all, we've been developing software for decades, and we should have learned a few lessons along the way. For serious software development organizations, concepts like version control, transactions, and thorough testing are considered table stakes. Unfortunately, that's not how the pundits were selling network automation benefits to the networking engineers eager to get out of the manual configuration quagmire.
+However, one would expect that catastrophic outages would be rare and a one-off event -- after all, we've been developing software for decades, and we should have learned a few lessons along the way. For serious software development organizations, concepts like version control, transactions, thorough testing, and input validation are considered table stakes. Unfortunately, that's not how the pundits were selling network automation benefits to the networking engineers eager to get out of the manual configuration quagmire.
 
 As every software engineer or architect worth their salary knows, one should start with (at least) the following:
 
