@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "06 December 2022 09:48",
+         "html": "<p>Regarding &quot;<em>In that case, S2 forwards the packet toward S1 over the peer link (due to the destination MAC address), but S1 cannot forward it to A (because it arrived over the peer link).</em>&quot;</p>\n\n<p>While that is basically true(*) for bridged traffic, I see no problem to IP forward (route) an IP packet that arrived via peer link out of a local MLAG port. So while this is not optimal, it should work in general.</p>\n\n<p>To make this more explicit: An Ethernet frame addressed to S1 arrives on an MLAG port of S2. S2 bridges the frame to S1. S1 conceptually receives the frame and performs an IP lookup. It then does IP forwarding (a.k.a. routing) and in principle creates a new Ethernet frame (actually re-writes the existing frame) to send towards the directly connected host A.</p>\n\n<p>Technically, an ACL installed to drop bridged frames on egress on a local MLAG port needs to allow routed traffic.  That could be implemented by allowing the local switch&#39;s source MAC, or via a flag set in the packet processing pipeline.  I would expect that there are further implementation possibilities.</p>\n\n<p>(This would affect peer link sizing, because in that situation one would expect about half the routed traffic from the router needing to traverse the peer link. Thus using a shared router MAC and so on could be used as an optimization.)</p>\n\n<p>(*) In this case, i.e., when an Ethernet frame from an MLAG with an active port on the peer arrives via peer link, it must not be bridged to any local MLAG port where the peer also has an active MLAG port in the same MLAG, because then the peer has already sent the frame to those MLAGs. With individual link failures frames arriving via peer link may need to be bridged to local MLAG ports.</p>\n",
+         "id": "1550",
+         "name": "Erik Auerswald",
+         "pub": "2022-12-06T09:48:37",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2022/12/mlag-routing.html"
+}
