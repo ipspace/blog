@@ -29,6 +29,35 @@
 
 <p>(*) In this case, i.e., when an Ethernet frame from an MLAG with an active port on the peer arrives via peer link, it must not be bridged to any local MLAG port where the peer also has an active MLAG port in the same MLAG, because then the peer has already sent the frame to those MLAGs. With individual link failures frames arriving via peer link may need to be bridged to local MLAG ports.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1551">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1551" href="#1551">06 December 2022 03:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, I was thinking along the same lines when trying to figure out the limitations of L3 forwarding (that&#39;s why I included the link to that blog post). </p>
+
+<p>Turns out that the easiest way to implement peer link filters (for bridging) is to have an egress ACL that matches on ingress interface (peer link), and the ingress interface doesn&#39;t change if the packet is routed.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
