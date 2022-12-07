@@ -29,6 +29,15 @@
                "pub": "2022-12-06T17:03:20",
                "ref": "1554",
                "type": "comment"
+            },
+            {
+               "date": "07 December 2022 10:33",
+               "html": "<p>I just tested this in the lab (with hardware, thus ASIC based forwarding with ACLs and everything):</p>\n\n<ul>\n<li>S1, S2, R, and A according to the diagram in the blog post</li>\n<li>S1 and S2 are MLAG peers</li>\n<li>OSPF as routing protocol</li>\n<li>a &quot;host&quot; VLAN for A with VRRP in active/active mode on S1 and S2</li>\n<li>a &quot;transfer&quot; VLAN between S1, S2, and R</li>\n<li>all links and protocols active and functional</li>\n</ul>\n\n<p>I then pinged A from R and checked which outgoing link was used by R (using port counters). It was the port leading directly to the next-hop, in this case S1. Thus I increased the OSPF cost for the &quot;host&quot; VLAN on S1, such that R changed its next-hop to S2. R still used the same local port to send the Ethernet frame to S1. The port counters indicated that the ping now went via the peer link from S1 to S2 (bridging). S2 then used IP forwarding (routing) to send the packet to the host, using the local MLAG port. The host answered via the link to S1, and S1 routed the answer via the local port to R.</p>\n\n<p>I then verified via port mirror and Wireshark that the peer link indeed carried ping packets inside Ethernet frames sent from R&#39;s MAC address to S2&#39;s MAC address transported (bridged) from S1 to S2.</p>\n\n<p>The little documentation there is on details of this MLAG implementation clearly states that egress ACLs are used on MLAG ports to stop frames ingressing via peer link from being flooded to local MLAG ports (unless the peer&#39;s respective ports are down).</p>\n\n<p>Thus I&#39;d say that MLAG implementations differ, and at least one works the way one might expect based on bridging and routing fundamentals.</p>\n",
+               "id": "1557",
+               "name": "Erik Auerswald",
+               "pub": "2022-12-07T10:33:07",
+               "ref": "1555",
+               "type": "comment"
             }
          ],
          "date": "06 December 2022 04:53",

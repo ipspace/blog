@@ -106,6 +106,42 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="1557">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1557" href="#1557">07 December 2022 10:33</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I just tested this in the lab (with hardware, thus ASIC based forwarding with ACLs and everything):</p>
+
+<ul>
+<li>S1, S2, R, and A according to the diagram in the blog post</li>
+<li>S1 and S2 are MLAG peers</li>
+<li>OSPF as routing protocol</li>
+<li>a &quot;host&quot; VLAN for A with VRRP in active/active mode on S1 and S2</li>
+<li>a &quot;transfer&quot; VLAN between S1, S2, and R</li>
+<li>all links and protocols active and functional</li>
+</ul>
+
+<p>I then pinged A from R and checked which outgoing link was used by R (using port counters). It was the port leading directly to the next-hop, in this case S1. Thus I increased the OSPF cost for the &quot;host&quot; VLAN on S1, such that R changed its next-hop to S2. R still used the same local port to send the Ethernet frame to S1. The port counters indicated that the ping now went via the peer link from S1 to S2 (bridging). S2 then used IP forwarding (routing) to send the packet to the host, using the local MLAG port. The host answered via the link to S1, and S1 routed the answer via the local port to R.</p>
+
+<p>I then verified via port mirror and Wireshark that the peer link indeed carried ping packets inside Ethernet frames sent from R&#39;s MAC address to S2&#39;s MAC address transported (bridged) from S1 to S2.</p>
+
+<p>The little documentation there is on details of this MLAG implementation clearly states that egress ACLs are used on MLAG ports to stop frames ingressing via peer link from being flooded to local MLAG ports (unless the peer&#39;s respective ports are down).</p>
+
+<p>Thus I&#39;d say that MLAG implementations differ, and at least one works the way one might expect based on bridging and routing fundamentals.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
