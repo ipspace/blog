@@ -23,6 +23,23 @@ I mentioned tunneling several times. We could debate for hours what tunneling is
 
 Finally, you could use VLANs or xWDM wavelengths (lambdas) instead of tunnels. Dedicating a lambda to every tenant (or legacy protocol) might be a bit expensive, and VLANs turn your whole network into a single failure domain. If you want to build a stable transport network, you usually use layer-3 technologies; overlays often happen to be the best tool for the job.
 
+### The Tradeoffs
+
+As Russ White loves to say, _if you haven’t found the tradeoffs, you haven’t looked hard enough._ Here are some of the tradeoffs identified by [Deepak Arora](https://www.linkedin.com/in/anetworkartist/)[^CLI]:
+
+---
+- Impact of overlay networks on visibility, reporting and performance management  
+- Additional control plane that would result in additional abstraction layers and interaction surfaces and hence cascading effect in many situations  
+- Impact on troubleshooting: how many solutions do we see in the market that can correlate underlay and overlay problems?
+- When it comes to sizing equipment in terms of control plane or data plane, it poses a new level of complexity an architect would need to deal with and in most cases vendors themselves won't be able to offer much help in general rather than just asking you to believe in their words  
+- I see lot of VXLAN and EVPN preachers, but let's agree that mapping VLAN to VXLAN on 1:1 basis tells me you don't know your stuff and believe too much in vendor marketing  
+- EBGP underlay with IBGP overlay...man we can do better  
+- Stitching two EVPN DCs with MPLS and SR: most of the implementations that I have seen were too complex and too fragile and thus results in a complex "policy."
+
+---
+
+[^CLI]: Copied from his LinkedIn comment because I hate good content going to waste.
+
 ### More Information
 
 If you're interested in this topic, you might want to watch these webinars (all of them part of [Standard ipSpace.net subscription](https://www.ipspace.net/Subscription/)):
@@ -33,3 +50,9 @@ If you're interested in this topic, you might want to watch these webinars (all 
 * [Choose the Optimal VPN Service](https://www.ipspace.net/Choose_the_Optimal_VPN_Service)
 
 Haven't found what you're looking for? Send me an [interesting question for the ipSpace.net design clinic](https://designclinic.ipspace.net/pages/submit/).
+
+### Revision History
+
+2022-08-12
+: Added _Tradeoffs_ section based on comments Deepak Arora made on LinkedIn.
+
