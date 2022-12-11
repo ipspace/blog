@@ -1,6 +1,6 @@
 ---
 title: "Network Automation Expert Beginners"
-date: 2022-12-13 07:33:00
+date: 2023-01-17 07:33:00
 tags: [ automation ]
 draft: True
 ---
