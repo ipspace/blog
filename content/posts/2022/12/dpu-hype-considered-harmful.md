@@ -17,8 +17,8 @@ In any case, most of the ESXi hypervisor still runs on the primary server; the o
 
 [^LS]: ... and [lose Network IO Control, traffic shaping policies, and security intercept at the NIC level](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-41AB1101-D943-490A-BF1A-E53433855C07.html) (DV filter) while doing that.
 
-Finally, VMware **does not support DPU offload with bare-metal servers** anyway. The whole idea was a non-starter.
+Finally, VMware **does not support DPU offload with bare-metal servers** in the initial vSphere 8/NSX 4.0.1 release anyway. The whole idea was a non-starter.
 
-Now for an off-topic thought. This particular instance of hype got me thinking about how far System Architects need to understand the underlying technologies used in their solutions. It's pretty clear one cannot trust vendor marketing or industry press which often does a great job rephrasing vendor press releases[^SP]. Depending on the in-house experts would be the obvious solution, but we all know how well that works. Unfortunately, I have no good answer and would appreciate your comments.
+Now for an off-topic thought. This particular instance of hype got me thinking about how far System Architects need to understand the underlying technologies used in their solutions. It's pretty clear one cannot trust vendor marketing or industry press which often does a great job cluelessly rephrasing vendor press releases[^SP]. Depending on the in-house experts would be the obvious solution, but we all know how well that works. Unfortunately, I have no good answer and would appreciate your comments.
 
-[^AP]: We'll ignore sponsored podcasts with technically competent hosts politely avoiding pointed questions for the moment.
+[^SP]: We'll ignore sponsored podcasts with technically competent hosts politely avoiding pointed questions for the moment.
