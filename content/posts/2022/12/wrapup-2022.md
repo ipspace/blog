@@ -14,7 +14,7 @@ Finally, I couldn't resist posting a few teasers of what's coming in early 2023[
 * AWS Cloud WAN
 * Internet routing security
 * The final chapter in the MLAG saga
-* Network automation expert beginners
+* Beware of network automation expert beginners
 * Is it time to replace TCP in the data center?
 * Will SmartNICs (DPUs) change networking forever?
 
