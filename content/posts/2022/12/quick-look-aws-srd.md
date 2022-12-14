@@ -17,7 +17,7 @@ SRD consumers are [supposed to deal with packet reordering](https://aws.amazon.c
 
 Dropping the "in-order delivery" requirement allows AWS to send SRD packets in parallel over all alternate paths. That approach also diminishes link congestion -- instead of a long burst of packets landing on a single link, the packet burst is spread across many parallel links.
 
-Next step: ENA Express uses SRD instead of GRE (or VXLAN or GENEVE) to transport Ethernet frames between hypervisor hosts, resulting in faster, reliable delivery of potentially reordered packets. It's obvious why that increases the throughput of a single TCP session -- packets from a single session can be sent over multiple links[^BRC] -- but why does it decrease the tail latency?
+Next step: [ENA Express uses SRD instead of GRE](https://aws.amazon.com/about-aws/whats-new/2022/11/elastic-network-adapter-ena-express-amazon-ec2-instances/) (or VXLAN or GENEVE) to transport Ethernet frames between hypervisor hosts, resulting in faster, reliable delivery of potentially reordered packets. It's obvious why that increases the throughput of a single TCP session -- packets from a single session can be sent over multiple links[^BRC] -- but why does it decrease the tail latency?
 
 [^BRC]: Brocade did [something similar ages ago in the VCS Fabric](https://blog.ipspace.net/2011/04/brocade-vcs-fabric-has-almost-perfect.html).
 
