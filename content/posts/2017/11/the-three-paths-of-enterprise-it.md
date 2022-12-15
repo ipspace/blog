@@ -1,5 +1,6 @@
 ---
 date: 2017-11-06 09:35:00+01:00
+lastmod: 2022-12-15 10:07:11
 tags:
 - design
 - cloud
@@ -62,4 +63,4 @@ Disagree? Write a comment!
 ### Revision History
 
 2022-12-15
-: Added three more types of data centers
+: Added other common types of data centers to the _Data Centers Are Not Created Equal_ section.
