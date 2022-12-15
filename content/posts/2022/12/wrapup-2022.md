@@ -10,11 +10,11 @@ I hope you'll find a few days to disconnect from the crazy pace of the networkin
 Finally, I couldn't resist posting a few teasers of what's coming in early 2023[^SITG]:
 
 <!--more-->
-* CI/CD pipelines and input validation in network automation
-* AWS Cloud WAN
-* Internet routing security
-* The final chapter in the MLAG saga
-* Beware of network automation expert beginners
+* [CI/CD pipelines and input validation in network automation](https://www.ipspace.net/Network_Automation_Concepts)
+* [AWS Cloud WAN](https://www.ipspace.net/Amazon_Web_Services_Networking)
+* [Internet routing security](https://www.ipspace.net/Internet_Routing_Security)
+* The final chapter in the [MLAG Deep Dive saga](https://blog.ipspace.net/series/mlag.html#deepdive)
+* Beware of network automation [expert beginners](https://daedtech.com/how-developers-stop-learning-rise-of-the-expert-beginner/)
 * Is it time to replace TCP in the data center?
 * Will SmartNICs (DPUs) change networking forever?
 
