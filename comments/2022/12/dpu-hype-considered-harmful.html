@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -18,6 +18,43 @@
               </span>
             </div>
             <div class="comment-content"><p>People should follow your example and read the docs. If the docs don&#39;t say you can do it, you can&#39;t do it. And if the docs say you can do it, you still need to do a POC to flush out any bugs.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1576">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Johannes Spanier</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1576" href="#1576">18 December 2022 04:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I utterly fail to understand on a deeper level the &quot;how&quot; and &quot;what&quot; a DPU actually offloads and accelerates. If I read the VMware KB articles, they only ever mention mysterious &quot;infrastructure&quot; and &quot;networking&quot; functions that are accelerated.</p>
+
+<p>Lets follow a frame from the wire to the application socket in a VM</p>
+
+<p>slow and low, traditional:
+HW RX_RING -&gt; NIC MEM -&gt; DMA to Kernel RX_RING -&gt; via CPU to VM RX_RING -&gt; via CPU to VM Userspace. (shorter and DMA if NIC has HW queues)</p>
+
+<p>PMD approach:
+HW RX_RING -&gt; NIC MEM -&gt; via CPU poll to Userspace (if NIC supports HW queues)</p>
+
+<p>SRIOV Passthrough:
+HW RX_RING -&gt; NIC MEM (queues per VF) -&gt; DMA to VM Kernel RX_RING -&gt; via CPU to VM RX_RING -&gt; via CPU to VM Userspace. (PMD also possible)</p>
+
+<p>DPU?
+HW RX_RING -&gt; NIC_MEM -&gt; &#123;mysterious DPU things&#125; -&gt; via DMA to VM RX_RING (???) </p>
+
+<p>Especially that last bit (copy via CPU from VM Kernelspace to VM Userspace or PMD&#39;ing it ) can obviously not be avoided in any scenario, even with DPUs. And that is the most CPU intensive task in all the processing of a frame. So, how do DPUs accelerate frame processing or even offload it significantly?</p>
+
+<p>And another thing: dVS offloaded to DPU? So Inter-VM traffic on same host has to pass though DPU??? I recon that is a significant overhead.</p>
 </div>
           </div>
         </li>
