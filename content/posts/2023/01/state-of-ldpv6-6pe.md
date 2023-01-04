@@ -24,7 +24,7 @@ In greenfield networks, SR-MPLSv6[^SRA] would be a [viable alternative to LDPv6]
 
 Finally, if you need an excuse to [burn way too much money replacing still-working gear with the latest gizmos](https://blog.ipspace.net/2022/09/greenfield-sr-mpls-srv6.html) while ensuring job security for the next decade or so, you could decide to go for an IPv6-only network implementing all services with SRv6. I wish you plenty of luck, and would love to hear how well it worked out for you. 
 
-[^MP]: At least we did make some progress since I [last wrote about LDPv6](https://blog.ipspace.net/2009/11/who-needs-ipv6.html) in 2009.
+[^MP]: At least we did make some progress since [the last time someone mentioned LDPv6 on my blog](https://blog.ipspace.net/2009/11/who-needs-ipv6.html) in 2009.
 
 [^SRA]: Or however we should write that combo of acronyms
 
