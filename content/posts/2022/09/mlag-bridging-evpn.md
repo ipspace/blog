@@ -1,7 +1,9 @@
 ---
 title: "EVPN/VXLAN or Bridged Data Center Fabric?"
 date: 2022-09-20 07:55:00
-tags: [ EVPN, MLAG, data center, design ]
+tags: [ EVPN, data center, design ]
+series: mlag
+mlag_tag: design
 ---
 An attendee in the [Building Next-Generation Data Center](https://www.ipspace.net/Building_Next-Generation_Data_Center) online course sent me an interesting dilemma:
 

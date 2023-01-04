@@ -1,7 +1,10 @@
 ---
-title: "EVPN Multihoming: Taxonomy and Overview"
+title: "Video: EVPN Multihoming Taxonomy and Overview"
 date: 2022-10-21 09:02:00
-tags: [ video, EVPN, MLAG]
+tags: [ video, EVPN ]
+series: mlag
+mlag_tag: video
+series_title: "EVPN Multihoming Taxonomy and Overview"
 ---
 I promised you a blog post explaining the intricacies of implementing MLAG with EVPN, but (as is often the case) it's taking longer than expected. In the meantime, enjoy the [EVPN Multihoming Taxonomy and Overview](https://my.ipspace.net/bin/get/EVPN/M1%20-%20Taxonomy%20and%20Overview.mp4?doccode=EVPN) video from Lukas Krattiger's [EVPN Multihoming versus MLAG](https://my.ipspace.net/bin/list?id=EVPN#MH) presentation (part of [EVPN Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar).
 

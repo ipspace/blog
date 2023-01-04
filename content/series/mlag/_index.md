@@ -41,3 +41,8 @@ It's often used to implement redundant server connections; it was also popular i
 ### Using MLAG on Server-to-Network Links
 
 {{<series-listing tag="server">}}
+
+### Videos
+
+{{<series-listing tag="video">}}
+
