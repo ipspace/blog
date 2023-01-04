@@ -88,6 +88,8 @@ def print_dir(dir_list):
         color = "red"
       elif wday <= last_day:
         print("-----")
+      elif wday > last_day + 1 and wday <= 5:
+        print(".....")
     last_day = wday
     last_date = date
     line = "%20s: %s" % (date.strftime('%a %Y-%m-%d %H:%M') if date else "DRAFT",entry['name'])
