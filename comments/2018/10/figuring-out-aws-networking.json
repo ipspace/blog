@@ -1,124 +1,132 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "23 October 2018 15:57",
-          "html": "Thank you for sharing that. It&#39;s all nice and dandy but fails to answer these questions:<br /><br />A) why doesn&#39;t AWS reply with the same MAC address for every IP?<br />B) what does the source hypervisor use to figure out the packet is sent to instance B?<br />C) what happens if A has a static route for X pointing to B?<br /><br />I&#39;d guess that these are the details that are totally irrelevant to an application developer but might be crucial for a networking engineer.",
-          "id": "4783653144694444",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-10-23T15:57:12.101+02:00",
-          "ref": "9026881533789456686",
-          "type": "comment"
-        },
-        {
-          "date": "06 December 2018 03:02",
-          "html": "Check out: https://www.youtube.com/watch?v=St3SE4LWhKo<br />and<br />http://packetpushers.net/podcast/podcasts/show-387-aws-networking-view-inside/<br /><br />A) AWS routes based on MAC address inside a VPC. For traffic coming in there&#39;s a custom SDN that maps IP address-VPC combinations to where they are in the network. The day in the life of a billion packets presentation by Eric Brandwine covers this in pretty good detail. More recently by Colm in his networking sessions.<br />B) There are cached mappings sent to each hypervisor (or Nitro card) that have those mappings so they don&#39;t need to create broadcast traffic or reactive packet lookups on new flows.<br />C) There&#39;s not a lot about AWS networking in detail written down, but you&#39;re pretty safe to assume there&#39;s not static routes in the physical hosts :)<br /><br />You could argue crucial or not. ARP works. Layer 2 doesn&#39;t. No ARP spoofing or rogue DHCP servers. No worries about subnet size. The only time this really comes up is when you try to run some third party router on an instance and it expects all networks it ever sees to support the same layer 2 features everywhere (GARP, multicast, broadcast, etc.). Even then, almost all of those use cases are better suited to use Transit VPC or now Transit Gateway where all the routing functionality happens through BGP and VPN rather than at layer 2 constructs. <br /><br />-nick<br />",
-          "id": "4864956285467164219",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Nick Matthews",
-          "profile": "https://twitter.com/nickpowpow",
-          "pub": "2018-12-06T03:02:19.490+01:00",
-          "ref": "9026881533789456686",
-          "type": "comment"
-        }
-      ],
-      "date": "23 October 2018 13:06",
-      "html": "Hi Ivan,<br /><br />some of insights into AWS can be found in AWS Certified Advanced Networking Official Study Guide. Excerpt from this book: Tenant isolation is a core function of Amazon VPC. In order to understand which<br />resources are part of a given VPC, Amazon VPC uses a mapping service. The mapping service<br />abstracts your VPC from the underlying AWS infrastructure. For any given VPC, the<br />mapping service maintains information about all of its resources, their VPC IP addresses,<br />and the IP addresses of the underlying physical server on which the resource is running. It<br />is the definitive source of topology information for each VPC.<br />When an Amazon EC2 instance, say Instance A, in your VPC initiates communication<br />with another Amazon EC2 instance, say Instance B, over IPv4, Instance A will broadcast<br />an Address Resolution Protocol (ARP) packet to obtain the Instance B\u2019s Media Access<br />Control (MAC) address. The ARP packet leaving Instance A is intercepted by the server<br />Hypervisor. The Hypervisor queries the mapping service to identify whether Instance B<br />exists in the VPC and, if so, obtains its MAC address. The Hypervisor returns a synthetic<br />ARP response to Instance A containing Instance B\u2019s MAC address.<br />Instance A is now ready to send an IP packet to Instance B. The IP packet has Instance<br />A\u2019s source IP and Instance B\u2019s destination IP. The IP packet is encapsulated in an Ethernet<br />header with Instance A\u2019s MAC as the source address and Instance B\u2019s MAC as the destination<br />address. The Ethernet packet is then transmitted from Instance A\u2019s network interface.<br />As Instance A emits the packet, it is intercepted by the server Hypervisor. The Hypervisor<br />queries the mapping service to learn the IPv4 address of the physical server on which Instance<br />B is running. Once the mapping service provides this data, the packet emitted by Instance A<br />is encapsulated in a VPC header that identifies this specific VPC and then encapsulated again<br />in an IP packet with a source IP address of Instance A\u2019s physical server and a destination IPv4<br />address of Instance B\u2019s physical server. The packet is then placed on to the AWS network.<br />When the packet arrives at Instance B\u2019s physical server, the outer IPv4 header and VPC<br />header are inspected. The instance Hypervisor queries the mapping service to confirm that<br />Instance A exists on the specific source physical server and in the specific VPC identified<br />in the received packet. When the mapping service confirms that the mapping is correct, the<br />Hypervisor strips off the outer encapsulation and delivers the packet that Instance A emitted<br />to the Instance B network interface.<br />The details of packet exchange in Amazon VPC should provide you clarity on why, for<br />example, Amazon VPC does not support broadcast and multicast. These same reasons<br />explain why packet sniffing does not work. As you reason about Amazon VPC operation<br />and functionality, consider this example.",
-      "id": "9026881533789456686",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/18412927262033925106",
-      "pub": "2018-10-23T13:06:46.540+02:00",
-      "ref": "3001019721570251792",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "23 October 2018 15:58",
-          "html": "Thank you. Was it CLB or ELB?... and were you accessing your instances over the public Internet?",
-          "id": "4760317523344299011",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-10-23T15:58:18.692+02:00",
-          "ref": "15601884346586286",
-          "type": "comment"
-        },
-        {
-          "date": "23 October 2018 17:16",
-          "html": "Here: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html<br />He&#39;s using static PAT. What an evolution in networking!",
-          "id": "1089966234326995186",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2018-10-23T17:16:16.166+02:00",
-          "ref": "15601884346586286",
-          "type": "comment"
-        },
-        {
-          "date": "23 October 2018 18:49",
-          "html": "Thanks a million. I decided load balancing is out of scope of the webinar when I started creating the content. Obviously I was wrong... will add it to the content.",
-          "id": "8497360838945276044",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-10-23T18:49:53.323+02:00",
-          "ref": "15601884346586286",
-          "type": "comment"
-        }
-      ],
-      "date": "23 October 2018 15:35",
-      "html": "The most interesting fact I learned earlier this year was having EC2-based SSH proxies in public subnets is not strictly necessary to reach my private subnet resources. Configuring a CLB (in a public subnet) to do the same will work just fine. In this way, all my EC2s (and othe private resources) could live in private subnets as part of my internal routing domain, making maintenance and management much cleaner and simpler. I tested this in the past but failed, then later discovered my testing methodology was incorrect, and I lost a year of suboptimal architecture because of it. I hope that experience may help someone else in the future.",
-      "id": "15601884346586286",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/06839060631802008000",
-      "pub": "2018-10-23T15:35:37.068+02:00",
-      "ref": "3001019721570251792",
-      "type": "comment"
-    },
-    {
-      "date": "23 October 2018 22:37",
-      "html": "There have been some re:Invent presentations that cover AWS networking internals; sadly I don&#39;t think that information was ever released in article form.<br /><br />https://www.youtube.com/watch?v=Zd5hsL-JNY4<br />https://www.youtube.com/watch?v=St3SE4LWhKo<br />https://www.youtube.com/watch?v=8gc2DgBqo9U",
-      "id": "5770866651529429370",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Wes Felter",
-      "profile": "https://www.blogger.com/profile/01395217775195260835",
-      "pub": "2018-10-23T22:37:53.745+02:00",
-      "ref": "3001019721570251792",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "25 October 2018 09:05",
-          "html": "Let&#39;s focus on (B) first. The important details is &quot;does the hypervisor look up destination IP or destination MAC?&quot;... and that is not answered in the excerpt.<br /><br />Now for (A): if the hypervisor uses destination IP address, why do they bother with destination MACs? Wouldn&#39;t it be the same if they&#39;d just use the same MAC address for every IP address?<br /><br />As usual, things are a bit more complex than they seem...",
-          "id": "8762047689746333724",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-10-25T09:05:50.788+02:00",
-          "ref": "1728908637698567915",
-          "type": "comment"
-        }
-      ],
-      "date": "23 October 2018 23:32",
-      "html": "A) Why should it? You would need to rewrite it then.<br />B) For me that is actually answered in excerpt<br />C) you cannot configure more specific route than your VPC local prefix (you will get an error)",
-      "id": "1728908637698567915",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/18412927262033925106",
-      "pub": "2018-10-23T23:32:51.112+02:00",
-      "ref": "3001019721570251792",
-      "type": "comment"
-    }
-  ],
-  "count": 10,
-  "id": "3001019721570251792",
-  "type": "post",
-  "url": "2018/10/figuring-out-aws-networking.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "23 October 2018 15:57",
+               "html": "Thank you for sharing that. It&#39;s all nice and dandy but fails to answer these questions:<br /><br />A) why doesn&#39;t AWS reply with the same MAC address for every IP?<br />B) what does the source hypervisor use to figure out the packet is sent to instance B?<br />C) what happens if A has a static route for X pointing to B?<br /><br />I&#39;d guess that these are the details that are totally irrelevant to an application developer but might be crucial for a networking engineer.",
+               "id": "4783653144694444",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-10-23T15:57:12.101+02:00",
+               "ref": "9026881533789456686",
+               "type": "comment"
+            },
+            {
+               "date": "06 December 2018 03:02",
+               "html": "Check out: https://www.youtube.com/watch?v=St3SE4LWhKo<br />and<br />http://packetpushers.net/podcast/podcasts/show-387-aws-networking-view-inside/<br /><br />A) AWS routes based on MAC address inside a VPC. For traffic coming in there&#39;s a custom SDN that maps IP address-VPC combinations to where they are in the network. The day in the life of a billion packets presentation by Eric Brandwine covers this in pretty good detail. More recently by Colm in his networking sessions.<br />B) There are cached mappings sent to each hypervisor (or Nitro card) that have those mappings so they don&#39;t need to create broadcast traffic or reactive packet lookups on new flows.<br />C) There&#39;s not a lot about AWS networking in detail written down, but you&#39;re pretty safe to assume there&#39;s not static routes in the physical hosts :)<br /><br />You could argue crucial or not. ARP works. Layer 2 doesn&#39;t. No ARP spoofing or rogue DHCP servers. No worries about subnet size. The only time this really comes up is when you try to run some third party router on an instance and it expects all networks it ever sees to support the same layer 2 features everywhere (GARP, multicast, broadcast, etc.). Even then, almost all of those use cases are better suited to use Transit VPC or now Transit Gateway where all the routing functionality happens through BGP and VPN rather than at layer 2 constructs. <br /><br />-nick<br />",
+               "id": "4864956285467164219",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Nick Matthews",
+               "profile": "https://twitter.com/nickpowpow",
+               "pub": "2018-12-06T03:02:19.490+01:00",
+               "ref": "9026881533789456686",
+               "type": "comment"
+            }
+         ],
+         "date": "23 October 2018 13:06",
+         "html": "Hi Ivan,<br /><br />some of insights into AWS can be found in AWS Certified Advanced Networking Official Study Guide. Excerpt from this book: Tenant isolation is a core function of Amazon VPC. In order to understand which<br />resources are part of a given VPC, Amazon VPC uses a mapping service. The mapping service<br />abstracts your VPC from the underlying AWS infrastructure. For any given VPC, the<br />mapping service maintains information about all of its resources, their VPC IP addresses,<br />and the IP addresses of the underlying physical server on which the resource is running. It<br />is the definitive source of topology information for each VPC.<br />When an Amazon EC2 instance, say Instance A, in your VPC initiates communication<br />with another Amazon EC2 instance, say Instance B, over IPv4, Instance A will broadcast<br />an Address Resolution Protocol (ARP) packet to obtain the Instance B’s Media Access<br />Control (MAC) address. The ARP packet leaving Instance A is intercepted by the server<br />Hypervisor. The Hypervisor queries the mapping service to identify whether Instance B<br />exists in the VPC and, if so, obtains its MAC address. The Hypervisor returns a synthetic<br />ARP response to Instance A containing Instance B’s MAC address.<br />Instance A is now ready to send an IP packet to Instance B. The IP packet has Instance<br />A’s source IP and Instance B’s destination IP. The IP packet is encapsulated in an Ethernet<br />header with Instance A’s MAC as the source address and Instance B’s MAC as the destination<br />address. The Ethernet packet is then transmitted from Instance A’s network interface.<br />As Instance A emits the packet, it is intercepted by the server Hypervisor. The Hypervisor<br />queries the mapping service to learn the IPv4 address of the physical server on which Instance<br />B is running. Once the mapping service provides this data, the packet emitted by Instance A<br />is encapsulated in a VPC header that identifies this specific VPC and then encapsulated again<br />in an IP packet with a source IP address of Instance A’s physical server and a destination IPv4<br />address of Instance B’s physical server. The packet is then placed on to the AWS network.<br />When the packet arrives at Instance B’s physical server, the outer IPv4 header and VPC<br />header are inspected. The instance Hypervisor queries the mapping service to confirm that<br />Instance A exists on the specific source physical server and in the specific VPC identified<br />in the received packet. When the mapping service confirms that the mapping is correct, the<br />Hypervisor strips off the outer encapsulation and delivers the packet that Instance A emitted<br />to the Instance B network interface.<br />The details of packet exchange in Amazon VPC should provide you clarity on why, for<br />example, Amazon VPC does not support broadcast and multicast. These same reasons<br />explain why packet sniffing does not work. As you reason about Amazon VPC operation<br />and functionality, consider this example.",
+         "id": "9026881533789456686",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/18412927262033925106",
+         "pub": "2018-10-23T13:06:46.540+02:00",
+         "ref": "3001019721570251792",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "23 October 2018 15:58",
+               "html": "Thank you. Was it CLB or ELB?... and were you accessing your instances over the public Internet?",
+               "id": "4760317523344299011",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-10-23T15:58:18.692+02:00",
+               "ref": "15601884346586286",
+               "type": "comment"
+            },
+            {
+               "date": "23 October 2018 17:16",
+               "html": "Here: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html<br />He&#39;s using static PAT. What an evolution in networking!",
+               "id": "1089966234326995186",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2018-10-23T17:16:16.166+02:00",
+               "ref": "15601884346586286",
+               "type": "comment"
+            },
+            {
+               "date": "23 October 2018 18:49",
+               "html": "Thanks a million. I decided load balancing is out of scope of the webinar when I started creating the content. Obviously I was wrong... will add it to the content.",
+               "id": "8497360838945276044",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-10-23T18:49:53.323+02:00",
+               "ref": "15601884346586286",
+               "type": "comment"
+            }
+         ],
+         "date": "23 October 2018 15:35",
+         "html": "The most interesting fact I learned earlier this year was having EC2-based SSH proxies in public subnets is not strictly necessary to reach my private subnet resources. Configuring a CLB (in a public subnet) to do the same will work just fine. In this way, all my EC2s (and othe private resources) could live in private subnets as part of my internal routing domain, making maintenance and management much cleaner and simpler. I tested this in the past but failed, then later discovered my testing methodology was incorrect, and I lost a year of suboptimal architecture because of it. I hope that experience may help someone else in the future.",
+         "id": "15601884346586286",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/06839060631802008000",
+         "pub": "2018-10-23T15:35:37.068+02:00",
+         "ref": "3001019721570251792",
+         "type": "comment"
+      },
+      {
+         "date": "23 October 2018 22:37",
+         "html": "There have been some re:Invent presentations that cover AWS networking internals; sadly I don&#39;t think that information was ever released in article form.<br /><br />https://www.youtube.com/watch?v=Zd5hsL-JNY4<br />https://www.youtube.com/watch?v=St3SE4LWhKo<br />https://www.youtube.com/watch?v=8gc2DgBqo9U",
+         "id": "5770866651529429370",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Wes Felter",
+         "profile": "https://www.blogger.com/profile/01395217775195260835",
+         "pub": "2018-10-23T22:37:53.745+02:00",
+         "ref": "3001019721570251792",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "25 October 2018 09:05",
+               "html": "Let&#39;s focus on (B) first. The important details is &quot;does the hypervisor look up destination IP or destination MAC?&quot;... and that is not answered in the excerpt.<br /><br />Now for (A): if the hypervisor uses destination IP address, why do they bother with destination MACs? Wouldn&#39;t it be the same if they&#39;d just use the same MAC address for every IP address?<br /><br />As usual, things are a bit more complex than they seem...",
+               "id": "8762047689746333724",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-10-25T09:05:50.788+02:00",
+               "ref": "1728908637698567915",
+               "type": "comment"
+            }
+         ],
+         "date": "23 October 2018 23:32",
+         "html": "A) Why should it? You would need to rewrite it then.<br />B) For me that is actually answered in excerpt<br />C) you cannot configure more specific route than your VPC local prefix (you will get an error)",
+         "id": "1728908637698567915",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/18412927262033925106",
+         "pub": "2018-10-23T23:32:51.112+02:00",
+         "ref": "3001019721570251792",
+         "type": "comment"
+      },
+      {
+         "date": "08 January 2023 02:40",
+         "html": "<p>I am just starting to deep into AWS network constructs, but for the moment I can see this &quot;MPLS-analogy&quot; for the TGW, although for sure this is very simplistic and it is really more complex:</p>\n\n<ul>\n<li>The TGW works as an MPLS backbone  - underlay.</li>\n<li>The attachment of the VPC to the TGW is like &quot;connecting the physical cable into a PE port&quot;.</li>\n<li>Every RT in the TGW works as a VRF (BUT in a different PE with no import/export policies)</li>\n<li>The association of the attachment into an RT is like linking the subnet into a VRF.</li>\n<li>The propagation of the routes from attachments into an RT is like creating a RT-import policy</li>\n</ul>\n\n<p>Most probably I am making a mistake thinking all the time to link the &quot;classical behaviour&quot; and looking for a real-overlay-scenario, but for the moment and until I can be fully immersed, I am at this point.</p>\n\n<p>Thanks for all your posts, Ivan!</p>\n",
+         "id": "1589",
+         "name": "networking_guy",
+         "pub": "2023-01-08T14:40:05",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "id": "3001019721570251792",
+   "type": "post",
+   "url": "2018/10/figuring-out-aws-networking.html"
 }
