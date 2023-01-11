@@ -50,4 +50,4 @@ However, once you get the approval to build a production solution that will be u
 ### Revision History
 
 2023-01-11
-: David Gee and Cristian Sirbu provided extended feedback that made this blog post much better than the original draft (all the errors and the snark are still mine 😉) Thanks a million!
+: David Gee and Cristian Sirbu provided extensive feedback that made this blog post much better than the original draft (all the errors and the snark are still mine 😉) Thanks a million!
