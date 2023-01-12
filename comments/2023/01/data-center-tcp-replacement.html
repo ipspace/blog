@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -50,6 +50,41 @@
 I am so tired of them... Since the early nineties... :-)</p>
 
 <p>Most of those research guys have no ideas about realities. They should read your blog to capture some stuff... :-) Keep going! </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1592">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1592" href="#1592">12 January 2023 09:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I don&#39;t have problem with people wanting to push protocols. My thinking on this is similar to that of Rodney Brooks: try thousands of things, a lot of them will fail, but we&#39;ll learn a lot and realize what&#39;s working to keep. But people should go beyond talking about protocols on papers; it rings hollow. Have the guts to implement them in the real world (or are they afraid of risking their own money?) If a protocol can prove itself, surely it&#39;ll catch on in time.</p>
+
+<p>Having said that, there&#39;s no need to use the typical tactic of talking down another one to boost your own, and if you do so, stick to the right metrics. I agree with the majority of what you wrote in this blog. TCP has its own flaws, serious ones at that, but a lot of what John brought up was bogus. For ex:</p>
+
+<p>&quot;In TCP, when a host&rsquo;s link is overloaded (either for incoming or outgoing traffic), TCP attempts to share the available bandwidth equally among the active connections. This approach is also referred to as &ldquo;fair scheduling.&rdquo;</p>
+
+<p>BS, a transport protocol does none of that, neither should it. TCP doesn&#39;t do it either. Why should TCP or any transport protocol care about scheduling? Queuing/scheduling is a network function, be it done in the NIC or in the routers/switches. If I&#39;m wrong, pls point out.</p>
+
+<p>TCP needs in-order delivery: utter nonsense. What are its segment number and retransmission mechanism for? </p>
+
+<p>&quot;it assumes that out-of-order arrivals indicate packet drops.&quot; Don&#39;t think so. When a packet doesn&#39;t come within its expected time window, then TCP assumes it&#39;s lost in transit/dropped and attempts rectification. If it arrives out of order but doesn&#39;t get lost, TCP couldn&#39;t care less.</p>
+
+<p>&quot;packet spraying cannot be used with TCP&quot;: per-packet LB has existed for so long. It&#39;s used within networks (not on Internet where flow-based LB is used) to promote better LB than flow-based and because within a network, it&#39;s easier to control QoS. </p>
+
+<p>&quot;I hypothesize that flow-consistent routing is responsible for virtually all of the congestion that occurs in the core of data center networks&quot;: congestion often happens due to hotspots, which can be due to sudden overload (link failure, flapping), or incast, LRD/self-similar traffic...Whether you use flow-based or packet-based routing, you can&#39;t get over these inconveniences. That&#39;s why trivial traffic modeling can&#39;t speak for reality, and we need to put protocols in action instead of just testing them in some simplistic lab scenarios.</p>
+
+<p>Homa has its merit, so John and his team should spend their effort pushing it in real networks and see how it fares in reality. That will be more productive and helpful, than writing paper talking down TCP on faults it&#39;s not responsible for. </p>
 </div>
           </div>
         </li>
