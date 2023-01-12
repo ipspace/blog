@@ -86,6 +86,53 @@ I am so tired of them... Since the early nineties... :-)</p>
 
 <p>Homa has its merit, so John and his team should spend their effort pushing it in real networks and see how it fares in reality. That will be more productive and helpful, than writing paper talking down TCP on faults it&#39;s not responsible for. </p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1593">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> tmp</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1593" href="#1593">12 January 2023 02:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I think you are accusing technical incompetence where you should be critisising weak phrasing.</p>
+
+<p>&quot;BS, a transport protocol does none of that, neither should it. TCP doesn&#39;t do it either. Why should TCP or any transport protocol care about scheduling? Queuing/scheduling is a network function, be it done in the NIC or in the routers/switches. If I&#39;m wrong, pls point out.&quot;</p>
+
+<p>Fair scheduling probably is not the most precise term, but congestion control basically trickles down to trying to achieve something approaching fairness.</p>
+
+<p>&quot;TCP needs in-order delivery: utter nonsense. What are its segment number and retransmission mechanism for?&quot;</p>
+
+<p>Avoiding much out-of-order delivery is important still if you care about performance, which is what this paper is all about.</p>
+
+<p>&quot;Don&#39;t think so. When a packet doesn&#39;t come within its expected time window, then TCP assumes it&#39;s lost in transit/dropped and attempts rectification. If it arrives out of order but doesn&#39;t get lost, TCP couldn&#39;t care less.&quot;</p>
+
+<p>However, with many in-between packets as can occur in the decribed context (packet-granular link load balancing), fast retransmit may cause additional traffic and reduce the congestion window/sending rate. </p>
+
+<p>&quot;per-packet LB has existed for so long. It&#39;s used within networks (not on Internet where flow-based LB is used) to promote better LB than flow-based and because within a network, it&#39;s easier to control QoS.&quot;
+I do however agree with this. The prevalent notion that packet spraying causes heavy out-of-order delivery is usually wrong on paths with symmetric link capacities and similar delay.</p>
+
+<p>&quot;congestion often happens due to hotspots, which can be due to sudden overload (link failure, flapping), or incast, LRD/self-similar traffic&quot;
+again, the argument is not really that flow-consistent routing is actually the root cause, but that, if it were not for that, the available link capacity could be used more effectively.</p>
+
+<p>All in all, while i do agree that with a title like that, he is just asking for angry responses, i also wonder whether the critics could be a bit more fair and maybe even more polite. The notion that this guy has just no idea what he is talking about because he is an academic is cheap and just plain wrong.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
