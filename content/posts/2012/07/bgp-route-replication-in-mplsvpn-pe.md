@@ -4,7 +4,7 @@ tags:
 - BGP
 - load balancing
 - MPLS VPN
-title: BGP route replication in MPLS/VPN PE-routers
+title: BGP Route Replication in MPLS/VPN PE-routers
 url: /2012/07/bgp-route-replication-in-mplsvpn-pe.html
 ---
 Whenever I'm explaining MPLS/VPN technology, I recommend using the same route targets (RT) and route distinguishers (RD) in all VRFs belonging to the same simple VPN. The *Single RD per VPN* recommendation [doesn't work well for multi-homed sites](https://blog.ipspace.net/2011/02/load-balancing-in-mplsvpn-networks-with.html), so one might wonder whether it would be better to use a different RD in every VRF. The RD-per-VRF design also works, but results in significantly increased memory usage on PE-routers.
