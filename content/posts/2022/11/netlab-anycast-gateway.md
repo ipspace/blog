@@ -20,19 +20,19 @@ We'll start with the [VLAN trunk lab topology](https://github.com/ipspace/netlab
 * The switches have to use the new **gateway** module:
 
 {{<code>}}groups:
-  switches:
-    members: [ s1, s2 ]
-    module: [ vlan, <b>gateway</b> ]
-    device: eos
+&nbsp;&nbsp;switches:
+&nbsp;&nbsp;&nbsp;&nbsp;members: [ s1, s2 ]
+&nbsp;&nbsp;&nbsp;&nbsp;module: [ vlan, <b>gateway</b> ]
+&nbsp;&nbsp;&nbsp;&nbsp;device: eos
 {{</code>}}
 
 * We have to enable first-hop gateway on VLAN links:
 
 {{<code>}}vlans:
-  red:
-    <b>gateway: True</b>
-  blue:
-    <b>gateway: True</b>
+&nbsp;&nbsp;red:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>gateway: True</b>
+&nbsp;&nbsp;blue:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>gateway: True</b>
 {{</code>}}
 
 * The default FHRP protocol is **anycast** (we could also use VRRP), and the default shared IP address is the last IP address in the subnet. We'll use the first IP address in the subnet:
