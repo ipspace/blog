@@ -19,6 +19,54 @@
             </div>
             <div class="comment-content"><p>One of the biggest limitations I&#39;ve seen in using multiple IPv4 subnets on a single interface was the fact that DHCP Relay can only be used for the primary subnet, as there is no way for the switch/router to distinguish in which of the configured subnets the host is requesting IP in.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1606">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1606" href="#1606">19 January 2023 02:28</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The usual solution to that is called a &quot;superscope&quot; on the DHCP server (at least on MS DHCP servers). The server uses, e.g.,  the first available address from any of the subnets comprising the superscope.</p>
+
+<p>If specific hosts shall receive addresses from specific subnets, then this needs to be configured explicitly on the DHCP server (e.g., based on client ID).</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1607">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeff Behrns</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1607" href="#1607">19 January 2023 02:28</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Daniel, DHCP server &quot;shared network&quot; and vendor specific tricks like &quot;dhcp smart relay&quot; can address the problem you mention.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
