@@ -1,6 +1,6 @@
 ---
 title: "Hiding Malicious Packets Behind LLC SNAP Header"
-date: 2023-01-23 07:55:00
+date: 2023-01-26 07:55:00
 tags: [ LAN, security ]
 ---
 A random tweet[^DT] pointed me to [Vulnerability Note VU#855201](https://kb.cert.org/vuls/id/855201) that documents four vulnerabilities exploiting a weird combination of LLC and VLAN headers can bypass layer-2 security on most network devices.
