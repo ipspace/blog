@@ -5,7 +5,7 @@ tags: [ AWS, switching ]
 ---
 One of the most exciting announcements from the last AWS re:Invent was the [Elastic Network Adapter (ENA) Express](https://aws.amazon.com/about-aws/whats-new/2022/11/elastic-network-adapter-ena-express-amazon-ec2-instances/) functionality that uses the [Scalable Reliable Datagram (SRD)](https://ieeexplore.ieee.org/document/9167399) protocol as the transport protocol for the overlay virtual networks. AWS claims ENA Express can push 25 Gbps over a single TCP flow and that SRD improves the tail latency (99.9 percentile) for high-throughput workloads by 85%.
 
-Ignoring the "_DPUs could change the network forever_" blogosphere reactions (hint: they won't), let's see what could be happening behind the scenes and why SRD improves TCP throughput and tail latency.
+Ignoring the "_[DPUs could change the network forever](https://blog.ipspace.net/2023/01/dpu-change-network-forever.html)_" blogosphere reactions (hint: they won't), let's see what could be happening behind the scenes and why SRD improves TCP throughput and tail latency.
 <!--more-->
 AWS developed SRD as a transport protocol for Elastic Fabric Adapters (the networking part of their HPC implementation). There's no magic behind SRD; it's just another data point in the transport protocol solution space:
 
@@ -15,9 +15,13 @@ AWS developed SRD as a transport protocol for Elastic Fabric Adapters (the netwo
 
 SRD consumers are [supposed to deal with packet reordering](https://aws.amazon.com/blogs/hpc/in-the-search-for-performance-theres-more-than-one-way-to-build-a-network/) (unlike some UDP consumers that drop reordered packets).
 
-Dropping the "in-order delivery" requirement allows AWS to send SRD packets in parallel over all alternate paths. That approach also diminishes link congestion -- instead of a long burst of packets landing on a single link, the packet burst is spread across many parallel links.
+Dropping the "in-order delivery" requirement allows AWS to send SRD packets in parallel over all alternate paths. That approach also reduces link congestion -- instead of a long burst of packets landing on a single link, the packet burst is spread across many parallel links.
 
-Next step: [ENA Express uses SRD instead of GRE](https://aws.amazon.com/about-aws/whats-new/2022/11/elastic-network-adapter-ena-express-amazon-ec2-instances/) (or VXLAN or GENEVE) to transport Ethernet frames between hypervisor hosts, resulting in faster, reliable delivery of potentially reordered packets. It's obvious why that increases the throughput of a single TCP session -- packets from a single session can be sent over multiple links[^BRC] -- but why does it decrease the tail latency?
+Next step: [ENA Express uses SRD instead of GRE](https://aws.amazon.com/about-aws/whats-new/2022/11/elastic-network-adapter-ena-express-amazon-ec2-instances/) (or VXLAN or GENEVE) to transport Ethernet frames between hypervisor hosts, resulting in faster, reliable delivery. According to [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ena-express.html), they even reorder incoming SRD packets into the proper sequence before passing them to the VM TCP/IP stack:
+
+> Handles some tasks directly in the network layer, such as packet reordering on the receiving end, and most retransmits that are needed. This frees up the application layer for other work.
+
+It's obvious why SRD increases the throughput of a single TCP session -- packets from a single session can be sent over multiple links[^BRC] -- but why does it decrease the tail latency?
 
 [^BRC]: Brocade did [something similar ages ago in the VCS Fabric](https://blog.ipspace.net/2011/04/brocade-vcs-fabric-has-almost-perfect.html).
 
@@ -32,6 +36,11 @@ Now that you understand some of the reasons why ENA Express improves performance
 
 * Is this a new idea? Of course not. We've used reliable frame transport for ages on media that were too noisy (or drop-prone) for TCP, starting with X.25 and analog modems using V.42 error correction and continuing with radio networks.
 * Do you need a DPU to implement something like ENA Express? Absolutely not; you could implement it in the virtual switch like GRE, VXLAN, or GENEVE. It's just the question of which CPU cycles you like to burn.
-* Could someone else do something similar? Of course, but it would require a focus on customer performance, a deep understanding of transport protocols, and engineering prowess.  Charging the customers for services they consume also helps to focus your thinking. Is it fair to expect any of that from a company that needed years to add LACP to its virtual switch?
+* Could someone else do something similar? Of course, but it would require a focus on customer performance, a deep understanding of transport protocols, and engineering prowess. Charging the customers for services they consume also helps to focus your thinking. Is it fair to expect any of that from a company that needed years to add LACP to its virtual switch?
 
 Want to know more about networking in AWS? Watch the [Amazon Web Services Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) webinar ;)
+
+## Revision History
+
+2023-01-26
+: One of my readers politely pointed out that ENA Express reorders incoming SRD packets if needed. Fixed the relevant bits in the blog post.
