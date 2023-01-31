@@ -2,6 +2,9 @@
 title: "Integrated Routing and Bridging (IRB) Design Models"
 date: 2022-11-23 07:58:00
 tags: [ IP routing, fabric, networking fundamentals ]
+series: irb
+irb_tag: design
+series_title: Design Models Overview
 ---
 Imagine you built a layer-2 fabric with tons of VLANs stretched all over the place. Now the users want to exchange traffic between those VLANs, and the obvious question is: which devices should do layer-2 forwarding (bridging) and which ones should do layer-3 forwarding (routing)?
 
@@ -70,4 +73,4 @@ Routing on ingress and egress looks like business as usual to anyone familiar wi
 
 Regardless of how a particular implementation answers those questions, the forwarding path between a set of hosts in different subnets is always symmetrical, resulting in the Symmetric IRB name.
 
-Subsequent blog posts will focus on the intricate details of each one of these designs, but it might take me a while to publish them. If you're in a hurry, you'll find those details in [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) and [EVPN Technical Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinars.
+{{<next-in-series page="/posts/2023/02/irb-edge-routing.html">}}
