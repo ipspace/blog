@@ -6,6 +6,7 @@ title: What Is Anycast?
 series_title: Overview
 url: /2008/07/anycast.html
 series: anycast
+series_weight: 1000
 anycast_tag: intro
 lastmod: 2023-02-01 07:49:00
 ---

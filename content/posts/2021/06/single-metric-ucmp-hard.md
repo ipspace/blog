@@ -2,7 +2,8 @@
 title: "Single-Metric Unequal-Cost Multipathing Is Hard"
 date: 2021-06-01 06:35:00
 tags: [ IP routing, OSPF ]
-series: UCMP
+series: [ UCMP, anycast ]
+anycast_tag: ecmp
 ---
 A while ago we discussed whether [unequal-cost multipathing (UCMP) makes sense](/2021/02/does-ucmp-make-sense.html) (TL&DR: rarely), and whether we could implement it in [link-state routing protocols](/2021/03/ucmp-link-state-protocols.html) (TL&DR: yes). Even though we could modify OSPF or IS-IS to support UCMP, and Cisco IOS XR even implemented those changes ([they are not exactly widely used](https://blog.ipspace.net/2021/03/ucmp-link-state-protocols.html#496)), the results are... suboptimal.
 

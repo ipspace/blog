@@ -2,6 +2,8 @@
 title: "Weird: Wrong Subnet Mask Causing Unicast Flooding"
 date: 2020-10-22 07:36:00
 tags: [ data center, bridging, IP routing ]
+series: anycast
+anycast_tag: ecmp
 ---
 When I still [cared about CCIE certification](https://blog.ipspace.net/2008/07/why-im-no-longer-active-ccie.html), I was always tripped up by the [weird scenario](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html#broadcast) with (A) mismatched ARP and MAC timeouts and (B) default gateway outside of the forwarding path. When done just right you could get persistent unicast flooding, and I've met someone who reported average unicast flooding reaching ~1 Gbps in his data center fabric.
 

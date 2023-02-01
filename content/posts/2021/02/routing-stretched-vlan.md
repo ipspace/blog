@@ -2,6 +2,8 @@
 title: "Routing in Stretched VLAN Designs"
 date: 2021-02-24 07:48:00
 tags: [ switching, design ]
+series: anycast
+anycast_tag: design
 ---
 One of my readers was "blessed" with the *stretched VLANs* requirement combined with the need for inter-VLAN routing and sub-par equipment from a vendor not exactly known for their data center switching products. Before going on, you might want to [read his description of the challenge he's facing](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html#380) and what I had to say about the [idea of building stackable switches across multiple locations](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html).
 
