@@ -117,28 +117,29 @@ case "$1" in
     fi
     ;;
   title)
-    case "$2" in
+    URL=$(pbpaste)
+    FIXURL=$(echo $URL|sed -e 's#http://localhost:1313##')
+    case "${2:-link}" in
       clip)
-        URL=$(pbpaste)
         $SCRIPT_DIR/url-to-title.sh $URL|pbcopy
         ;;
-      md)
-        URL=$(pbpaste)
+      link)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
-        echo '*' "[$TITLE]($URL)"|pbcopy
+        echo "[$TITLE]($FIXURL)"|pbcopy
+        ;;
+      md)
+        TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
+        echo '*' "[$TITLE]($FIXURL)"|pbcopy
         ;;
       em)
-        URL=$(pbpaste)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
-        echo "_[$TITLE]($URL)_"|pbcopy
+        echo "_[$TITLE]($FIXURL)_"|pbcopy
         ;;
       wiki)
-        URL=$(pbpaste)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
-        echo '*' "[$URL $TITLE]"|pbcopy
+        echo '*' "[$FIXURL $TITLE]"|pbcopy
         ;;
       yaml)
-        URL=$(pbpaste)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
         cat <<YAML|pbcopy
   - link: $URL
@@ -146,7 +147,7 @@ case "$1" in
 YAML
         ;;
       http*)
-        $SCRIPT_DIR/url-to-title.sh $2
+        $SCRIPT_DIR/url-to-title.sh $2|pbcopy
         ;;
       *)
         echo "Usage: blog title url|clip|md|em|wiki|yaml"
