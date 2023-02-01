@@ -2,8 +2,9 @@
 title: "Anycast Works Just Fine with MPLS/LDP"
 date: 2021-11-17 07:24:00
 tags: [ MPLS, LDP ]
-series: netlab
+series: [ netlab, anycast ]
 netlab_tag: use
+anycast_tag: lab
 lastmod: 2022-02-16 16:15:00
 pre_scroll: True
 ---

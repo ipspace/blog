@@ -2,8 +2,9 @@
 title: "IRB Models: Edge Routing"
 date: 2023-02-02 07:31:00
 tags: [ IP routing, fabric, networking fundamentals ]
-series: irb
+series: [ irb, anycast ]
 irb_tag: design
+anycast_tag: design
 series_title: Routing at the Outer Edge of the Fabric
 ---
 The simplest way to implement layer-3 forwarding in a network fabric is to offload it to an external device[^R6], be it a WAN edge router, a firewall, a load balancer, or any other network appliance.
@@ -50,6 +51,8 @@ There are no good solutions to this problem; the only thing you can do is to cho
 -   Give up and accept that having a redundant solution that is more than 50% loaded doesn't make sense anyway. That will make your CFO unhappy, but you might still have a running network after one of the devices fails during the peak traffic period.
 
 [^FWC]: One of my customers managed to (consistently) crash a firewall from a major vendor when doing daily backups over the network.
+
+You'll find more details in the [VRRP, Anycasts, Fabrics and Optimal Forwarding](/2013/06/vrrp-anycasts-fabrics-and-optimal.html) blog post.
 
 ### What's Next?
 

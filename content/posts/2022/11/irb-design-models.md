@@ -2,9 +2,10 @@
 title: "Integrated Routing and Bridging (IRB) Design Models"
 date: 2022-11-23 07:58:00
 tags: [ IP routing, fabric, networking fundamentals ]
-series: irb
+series: [ irb, anycast ]
 irb_tag: design
-series_title: Design Models Overview
+anycast_tag: design
+series_title: IRB Design Models Overview
 ---
 Imagine you built a layer-2 fabric with tons of VLANs stretched all over the place. Now the users want to exchange traffic between those VLANs, and the obvious question is: which devices should do layer-2 forwarding (bridging) and which ones should do layer-3 forwarding (routing)?
 

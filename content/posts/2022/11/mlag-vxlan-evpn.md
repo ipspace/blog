@@ -3,8 +3,9 @@ title: "Using EVPN/VXLAN with MLAG Clusters"
 date: 2022-11-09 07:34:00
 lastmod: 2022-11-10 07:58:00
 tags: [ evpn,vxlan ]
-series: mlag
+series: [ mlag, anycast ]
 mlag_tag: deepdive
+anycast_tag: fabric
 ---
 There's no better way to start this blog post than with a widespread myth: we don't need MLAG now that most vendors have implemented EVPN multihoming.
 
