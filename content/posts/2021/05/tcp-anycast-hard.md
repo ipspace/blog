@@ -2,6 +2,9 @@
 title: "Local TCP Anycast Is Really Hard"
 date: 2021-05-27 06:55:00
 tags: [ load balancing, data center ]
+series: anycast
+anycast_tag: intro
+series_weight: 400
 ---
 [Pete Lumbis](https://blog.ipspace.net/2021/02/does-ucmp-make-sense.html#421) and [Network Ninja](https://blog.ipspace.net/2021/04/ucmp-leaf-spine-fabrics.html#540) mentioned an interesting Unequal-Cost Multipathing (UCMP) data center use case in their comments to my [UCMP-related blog posts](https://blog.ipspace.net/series/ucmp.html): anycast servers.
 

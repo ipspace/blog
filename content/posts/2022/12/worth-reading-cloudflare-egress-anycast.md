@@ -4,6 +4,7 @@ date: 2022-12-03 10:36:00
 tags: [ worth reading ]
 series: anycast
 anycast_tag: reading
+series_title: "Egress Anycast in Cloudflare Network"
 ---
 Cloudflare has been using [ingress anycast](https://blog.ipspace.net/2021/11/anycast-principles.html) (advertising the same set of prefixes from all data centers) for ages. Now they did a giant leap forward and implemented another "_this thing can never work_" technology: egress anycast. Servers from multiple data centers use source addresses from the prefix that's advertised by all data centers.
 
