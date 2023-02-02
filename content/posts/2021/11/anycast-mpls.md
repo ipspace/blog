@@ -20,7 +20,7 @@ I created a tree network to test the *anycast with MPLS* idea:
 
 {{<figure src="/2021/11/MPLS-anycast-ospf-topo.png" caption="Anycast test network">}}
 
-The lab is built from Arista EOS containers running under *containerlab* (build instructions). The whole network is running OSPF, and MPLS/LDP will be enabled on all links. A1, A2 and A3 will advertise the same prefix (10.0.0.42/32) into OSPF. According to the "*no anycast with MPLS*" claim, L1 should not be able to reach all three anycast nodes.
+The lab is built from Arista cEOS virtual machines. The whole network is running OSPF, and MPLS/LDP will be enabled on all links. A1, A2 and A3 will advertise the same prefix (10.0.0.42/32) into OSPF. According to the "*no anycast with MPLS*" claim, L1 should not be able to reach all three anycast nodes.
 
 You probably know I prefer typing CLI commands over chasing rodents[^RD], so I used *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* to build the lab. Here's the [topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) (I don't think it can get any simpler than that)
 
@@ -28,10 +28,9 @@ You probably know I prefer typing CLI commands over chasing rodents[^RD], so I u
 
 {{<cc>}}Initial version of the topology file{{</cc>}}
 ```
-module: ospf
-
 defaults.device: eos
-provider: clab
+module: [ ospf, mpls ]
+mpls.ldp.explicit_null: True
 
 nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 
@@ -42,51 +41,29 @@ links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 
 **Next step**: starting the lab with **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** and waiting a minute or so.
 
-Now for the fun part: *netlab* doesn't support MPLS/LDP or anycast yet[^R113]. Time for some custom Jinja2 templates. 
-
-[^R113]: As of release 1.1.3. MPLS and LDP were added in release 1.2.
-
-Fortunately, Arista EOS doesn't need any interface-level configuration to enable MPLS and LDP. The [configuration template](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/mpls-ldp.j2) is thus as simple as it can get:
-
-{{<cc>}}mpls-ldp.j2: Enable MPLS and LDP on Arista EOS{{</cc>}}
-```
-mpls ip
-!
-mpls ldp
- router-id interface Loopback0
- label local-termination explicit-null
- no shutdown
-```
-
-Please note that the above template configures two LDP parameters:
-
-* Advertise explicit NULL to make the LFIB table on L2 and L3 look nicer;
-* Set LDP router ID to a loopback interface with a unique IP address (more about that at the [end of the blog post](#the-curse-of-duplicate-addresses))
-
-I needed [another custom template](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/ospf-anycast-loopback.j2) to create the loopback interface on the anycast nodes and advertise it into OSPF:
+I needed [a custom template](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/ospf-anycast-loopback.j2) to create the loopback interface on the anycast nodes and advertise it into OSPF. I also had to enable LDP on the new loopback interface due to the way _netlab_ configures LDP on Arista EOS.
 
 {{<cc>}}ospf-anycast-loopback.j2: Advertise anycast prefix from anycast nodes{{</cc>}}
 ```
 interface Loopback42
  ip address 10.0.0.42/32
  ip ospf area 0.0.0.0
+ mpls ldp interface
 ```
 
-I could use **[netlab config](https://netsim-tools.readthedocs.io/en/latest/netlab/config.html)** command to configure lab devices with a custom Jinja2 template, but decided to make the custom configuration part of the lab topology -- MPLS/LDP and anycast loopbacks will be configured every time the lab is started with **netlab up**. I used *[groups](https://netsim-tools.readthedocs.io/en/latest/groups.html)* to apply the configuration templates to groups of lab devices:
+I could use **[netlab config](https://netsim-tools.readthedocs.io/en/latest/netlab/config.html)** command to configure lab devices with a custom Jinja2 template, but decided to make the custom configuration part of the lab topology -- anycast loopbacks will be configured every time the lab is started with **netlab up**. I used *[groups](https://netsim-tools.readthedocs.io/en/latest/groups.html)* to apply the configuration templates to groups of lab devices:
 
 {{<cc>}}Lab topology with custom configuration templates{{</cc>}}
 ```
-module: [ ospf ]
-
 defaults.device: eos
-provider: clab
+
+module: [ ospf,mpls ]
+mpls.ldp.explicit_null: True
 
 groups:
   anycast:
     members: [ a1, a2, a3 ]
     config: [ ospf-anycast-loopback.j2 ]
-  all:
-    config: [ mpls-ldp.j2 ]
 
 nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 
@@ -208,21 +185,18 @@ Yeah, I know I have to set up another lab to prove that ;) Mañana...
 To replicate this experiment:
 
 * [Set up a Linux server or virtual machine](https://netsim-tools.readthedocs.io/en/latest/install.html#creating-the-lab-environment). If you don't have a preferred distribution, use Ubuntu.
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html#installing-netsim-tools-package)
-* [Install Docker and containerlab](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) (**[netlab install containerlab](https://netsim-tools.readthedocs.io/en/latest/netlab/install.html)** is the easiest way to do it on Ubuntu).
-* Install Ansible
-
-The easiest way to do all of the above is to [follow these instructions](https://netsim-tools.readthedocs.io/en/latest/labs/virtualbox.html).
+* [Install netlab and the other prerequisite software](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html)
 
 Next:
  
-* [Download and install Arista cEOS image](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html#container-images) -- I can't automate that, as you have to register on Arista's web site to get access to the cEOS image.
+* [Download Arista vEOS image and build a Vagrant box](https://netsim-tools.readthedocs.io/en/latest/labs/eos.html)
 * Download the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) into an empty directory
 * Execute **netlab up**
 
-Alternatively, you can [download the configuration tarball into an empty directory](https://github.com/ipspace/netlab-examples/raw/master/routing/anycast-mpls-ospf/anycast-mpls-ospf.tar.gz), extract configuration files from it, and start the lab with *containerlab.*
-
 ### Revision History
+
+2023-02-02
+: Moved back to vEOS -- cEOS does not support MPLS data plane and _netlab_ refuses to configure MPLS on cEOS.
 
 2021-11-17
 : The _curse of duplicate addresses_ section has been added based on [feedback from Dmytro Shypovalov](https://twitter.com/routingcraft/status/1461007769511907331). Thanks a million for keeping me on the straight and narrow!
