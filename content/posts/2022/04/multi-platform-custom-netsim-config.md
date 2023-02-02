@@ -44,7 +44,7 @@ nodes:
   a2:
     device: eos
   a3:
-	  device: cumulus
+    device: cumulus
 
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
