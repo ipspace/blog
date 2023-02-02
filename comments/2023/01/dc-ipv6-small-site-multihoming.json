@@ -12,6 +12,15 @@
                "type": "comment"
             },
             {
+               "date": "02 February 2023 07:13",
+               "html": "<p>I agree NPTv66 seems like the best practical answer here but what IPv6 should be used on the &quot;inside&quot; of the network then? ULA is pretty useless, as Burgalio helped point out. Using 2001:db8::/32 seems like a bad idea as well. </p>\n",
+               "id": "1640",
+               "name": "Gary Ossewaarde",
+               "pub": "2023-02-02T19:13:29",
+               "ref": "1633",
+               "type": "comment"
+            },
+            {
                "date": "02 February 2023 04:16",
                "html": "<p>Yeah, but the implementation varies, unfortunately:\nF.e. in IOS-XE 16.x, NPTv6 is there but you can only configure a translation of you internal ULA prefix to a <em>single</em> external GUA prefix globally. Because of that, it&#39;s totally unusable for small-site IPv6 multihoming unless you &quot;solve&quot; it by throwing additional hardware onto the problem (f.e. one dedicated router per IPv6-NPTv6-enabled circuit), IMHO.\nI would have hoped for a more flexible approach, interface-centric, policy-based or whatever...\nAnyway, besides that, the Cisco implementation might also to break IPv6 traceroute (only asterisks...), at least in my case - but I&#39;m not sure if that&#39;s NPTv6, ZBF or combination of the two (you&#39;re doomed to use ZBF because simple reflexive ACLs are not supported in IOS-XE).</p>\n\n<p>I don&#39;t know about the track record of other vendors in that regard (and if they made similar bad implementation choices), but at least the implementation of f.e. Vyatta / VyOS looks more promising / flexible in that regards.</p>\n",
                "id": "1638",
