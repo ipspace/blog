@@ -4,6 +4,7 @@ date: 2022-01-19 07:09:00
 tags: [ automation ]
 series: netlab
 netlab_tag: extend
+pre_scroll: True
 ---
 Remember the [BGP anycast lab](/2021/12/bgp-anycast-lab.html) I described in December 2021? In that blog post I briefly mentioned a problem of extraneous IBGP sessions and promised to address it at a later date. Let's see how we can fix that with a *netlab* plugin.
 
@@ -52,10 +53,13 @@ Next, I added **anycast** attribute to the list of allowed BGP node attributes i
 {{<cc>}}Add a custom BGP attribute to topology defaults{{</cc>}}
 ```
 def init(topo: Box) -> None:
-  topo.defaults.bgp.attributes.node.append('anycast')
+  topo.defaults.bgp.attributes.node.anycast = { 'type': 'ipv4', 'use': 'prefix' }
 ```
 
-{{<note>}}Python Box module makes deeply nested dictionaries a pleasure to work with -- imagine having to do the same with traditional hodgepodge of square brackets and quotes.{{</note>}}
+{{<note>}}
+* Python Box module makes deeply nested dictionaries a pleasure to work with -- imagine having to do the same with traditional hodgepodge of square brackets and quotes.
+* BGP anycast attribute is explained in the [Building a BGP Anycast Lab](https://blog.ipspace.net/2021/12/bgp-anycast-lab.html) blog post.
+{{</note>}}
 
 Finally, I wanted to modify the lists of BGP neighbors once the [topology transformation](https://netsim-tools.readthedocs.io/en/latest/dev/transform.html) has been complete. **post_transform** seemed the perfect [hook to use](https://netsim-tools.readthedocs.io/en/latest/plugins.html), and all I had to do was to:
 
@@ -78,7 +82,7 @@ Let's unpack that code:
 * Lab devices are described in the [**nodes** dictionary](https://netsim-tools.readthedocs.io/en/latest/nodes.html) with the lab topology.
 * Each node is a dictionary that contains numerous parameters, including [configuration module](https://netsim-tools.readthedocs.io/en/latest/modules.html) settings (another dictionary).
 * Python Box module is a wonderful tool when you need to traverse deep hierarchies, but it does have a few side effects. With the default *netlab* settings, Python Box automatically creates empty dictionaries when needed. That's awesome in 90% of the cases, but sometimes I don't want to get extra dictionaries, so I have to be a bit careful -- instead of `if node.bgp.anycast:` (which would work even if the node had no BGP parameters), I decided to do a check that would never auto-create empty data structures.
-* If the **node.bgp.anycast** attribute is set, it's safe to work with BGP parameters, so we can assume that we can set **advertise_loopback** and that the node has a list of BGP neighbors in **node.bgp.neighbors**.
+* If the **node.bgp.anycast** attribute is set, it's safe to work with BGP parameters, so we can assume that we can set **advertise_loopback** and that the node has a list of BGP neighbors in **node.bgp.neighbors** (even if that list happens to be empty).
 * Every BGP session described in **node.bgp.neighbors** includes session type in **type** attribute, and the value of that parameter could be `ibgp` or `ebgp`. The list comprehension I used selects all list elements that are not IBGP sessions.
 
 Want to do something similar? It's not too hard once understand the *netlab* data structures. Here's how you can get there:
@@ -90,3 +94,8 @@ Want to do something similar? It's not too hard once understand the *netlab* dat
 You can also open a discussion in [*netlab* GitHub repository](https://github.com/ipspace/netlab/) or ask a question in [*netlab* channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [networktocode Slack team](https://networktocode.slack.com) and we'll do our best to help you.
 
 [^MYPY]: I had to import the Box module to keep **mypy** happy. If you don't care about static type checks (but you should), you could skip this step.
+
+### Revision History
+
+2023-03-02
+: Updated the plugin code to work with _netlab_ release 1.5.

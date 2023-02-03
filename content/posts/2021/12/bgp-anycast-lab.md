@@ -61,9 +61,9 @@ nodes:
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
 
-{{<note>}}The above topology file would result in a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment (more about that later).{{</note>}}
+{{<note>}}The above topology file would result in a full mesh of IBGP sessions between A1, A2, and A3, but we'll ignore them for the moment. We'll [fix that with a _netlab_ plugin](/2022/01/netsim-plugins.html).{{</note>}}
 
-I knew I would have to enable *[BGP Additional Paths](https://blog.ipspace.net/2021/12/bgp-multipath-addpath.html)* in AS 65000 to ensure L1 gets multiple paths toward the anycast prefix (we'll need that for the MPLS part), and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netlab-examples/blob/master/BGP/Multipath/topology.yml)):
+I knew I would have to enable *[BGP Additional Paths](https://blog.ipspace.net/2021/12/bgp-multipath-addpath.html)* in AS 65000 to ensure L1 gets multiple paths toward the anycast prefix (we'll need that when we add MPLS transport to the lab), and the easiest way to do that would be to create a group  with a custom deployment template (like I did in the [BGP AddPath lab](https://github.com/ipspace/netlab-examples/blob/master/BGP/Multipath/topology.yml)):
 
 {{<cc>}}Defining _network_ and _anycast_ groups{{</cc>}}
 ```
@@ -106,7 +106,7 @@ nodes:
     bgp.anycast: 10.42.42.42/32
 ```
 
-Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? A few hours later I could define [node data in groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#setting-node-data-in-groups), simplifying my lab topology back to ([final topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-bgp-addpath/topology.yml)):
+Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? As it happens, [_netlab_ allows you to add node data to groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#setting-node-data-in-groups), significantly simplifying my lab topology ([final topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-bgp-addpath/topology.yml)):
 
 {{<cc>}}**bgp.anycast** attribute is set on all nodes in AS 65101{{</cc>}}
 ```
@@ -115,8 +115,7 @@ groups:
     config: [ bgp-addpath.j2 ]
   as65101: 
     config: [ bgp-anycast-loopback.j2 ]
-    node_data:
-      bgp.anycast: 10.42.42.42/32
+    bgp.anycast: 10.42.42.42/32
 
 nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 ```
@@ -128,6 +127,13 @@ Final touch: *netlab* release 1.1 added stricter checks of module- and node data
 defaults.bgp.extra_attributes.node: [ anycast ]
 ```
 
+Release 1.5 introduced even better attribute checks -- it allows us to specify the type of individual attributes. We know that we want the **bgp.anycast** attribute to be an IPv4 prefix; instead of specifying **extra_attributes** we can just add the new attribute to BGP module attributes:
+
+{{<cc>}}Defining a new node-level BGP attribute that must be an IPv4 prefix{{</cc>}}
+```
+defaults.bgp.attributes.node.anycast: { type: ipv4, use: prefix }
+```
+ 
 Next step: [Jinja2 template](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-bgp-addpath/bgp-anycast.j2) that uses **bgp.anycast** attribute to configure another loopback interface and advertise it into BGP:
 
 {{<cc>}}Creating a new loopback interface based on **bgp.anycast** node attribute{{</cc>}}
@@ -159,7 +165,7 @@ router bgp {{ bgp.as }}
 
 ### Smoke Test
 
-I started the lab with **netlab up**, waited for a minute for BGP to wake up[^BW] and inspected the BGP table on S1 (the spine node):
+I started the lab with **netlab up** and inspected the BGP table on S1 (the spine node):
 
 {{<cc>}}BGP paths toward the anycast prefix on the route reflector (S1){{</cc>}}
 ```
@@ -273,9 +279,10 @@ Here's what's going on:
 
 Next time: fixing the problem the right way with *DMZ Link Bandwidth*.
 
-[^BW]: I have no idea why BGP waits a minute before selecting the best paths after it's started. It drives me mad and I can't find a knob to turn to speed it up.
-
 ### Revision History
+
+2023-02-03
+: Introduced new features available in release 1.5.0
 
 2022-04-07
 : Fixed GitHub links
