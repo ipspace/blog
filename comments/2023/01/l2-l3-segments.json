@@ -56,6 +56,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "03 February 2023 10:03",
+               "html": "<p>This is a great example regarding the problems created by ignoring this <em>rule of thumb</em> or <em>best practice</em>: what do people even mean when they make statements regarding the construct?</p>\n\n<p>In usual host configurations, the host knows about one local IP subnet and one default router. To send IP packets to a host in a different subnet, it uses the default gateway. The host usually does not know about VLANs or that it could send the data directly, because both subnets are configured on the same VLAN.</p>\n\n<p>But this could be changed via host configuration, such that hosts in different subnets, but the same VLAN, do communicate directly&sup1;.</p>\n\n<p>Additionally, any host in the VLAN can see the other subnets via packet capture (e.g., via ARP frames). Thus the different IP subnets do not really separate the hosts in a VLAN, but by default the hosts do not communicate directly, i.e., they seem to be separated somehow.</p>\n\n<p>All this added complexity results in higher likelihood to have a wrong understanding and make mistakes.</p>\n\n<p>&sup1; Example:</p>\n\n<ul>\n<li>two hosts, A and B, connected to some VLAN with two IP subnets 192.0.2.0/24 and 198.51.100.0/24</li>\n<li>Linux host A has IP address 192.0.2.42/24 using interface eth0</li>\n<li>Linux host B has IP address 198.51.100.0/24 using interface eth0</li>\n<li>add direct route on host A to the other subnet: <code>ip route add 198.51.100.0/24 dev eth0</code></li>\n<li>add direct route on host B to the other subnet: <code>ip route add 192.0.2.0/24 dev eth0</code></li>\n<li>now host A and B communicate directly without using a gateway</li>\n</ul>\n",
+               "id": "1646",
+               "name": "Erik Auerswald",
+               "pub": "2023-02-03T10:03:41",
+               "ref": "1631",
+               "type": "comment"
+            }
+         ],
          "date": "30 January 2023 01:15",
          "html": "<p>The sentence that &bdquo;If you have multiple subnets on a single VLAN, then (in the IPv4 world) the hosts have to send traffic to other hosts on the same VLAN through a router.&ldquo; does not make sense to me. If I split these multiple subnets across multiple VLANs, the traffic still needs to be sent through the same router.</p>\n",
          "id": "1631",
