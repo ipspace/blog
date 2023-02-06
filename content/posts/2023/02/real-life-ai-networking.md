@@ -13,7 +13,7 @@ After wasting a few hours figuring out how to work with OpenAI API, IMAP and SMT
 * Ask GPT-3 to create a reply in predefined style
 * Send the reply bcc-ing me for the sole purpose of evaluating the quality of the replies[^YS]
 
-Most of the replies are pretty boilerplate[^BP], but there's an occasional gem like this one:
+Most of the replies are pretty boilerplate[^BP], but there's an occasional gem like this one...
 
 > Dear Julius McGee,
 >
@@ -21,6 +21,16 @@ Most of the replies are pretty boilerplate[^BP], but there's an occasional gem l
 >
 > Yours truly,
 > Charles GPT Dickens
+
+... and sometimes GPT-3 manages to nail the "_letter in the style of Charles Dickens_" part:
+
+> It was not with a feeling of pleasure that I read your polite and earnest enquiry as to whether I would be interested in discussing things further with you. That you appeared to believe there would be some mutual benefit to be derived from such a meeting startled me more than a little. 
+>
+> Never before have I associated myself with something termed as 'work management', this software of yours seems an oddity to me. The concept of visual analytics and planning on something such as a canvas is beyond my comprehension and knowledge - That said, I do admire the level of commitment you hold for your goals. 
+>
+> My website is devised solely for the purpose of sharing ideas and experiences. To help those struggling in whatever small way I can whilst operating within the bounds of honesty and truthfulness which are so important in life, although it does sadden me that you clearly disagree on such matters when offering commissions based around sales for commercial means. On this matter I stand firmly against any notion of partnering now or in the future.  
+>
+> In conclusion, engaging in any conversations as suggested by yourself would not come to fruition even if opportunity were somehow created through some accidental mishap between now and eternity itself. Your links shall be forever ignored making passing time the only true victor here today. 
 
 Need a similar tool? Clone my GitHub repository and have fun (improvement PRs are most welcome).
 
