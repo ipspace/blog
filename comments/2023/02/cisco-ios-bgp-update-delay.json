@@ -17,6 +17,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "08 February 2023 08:05",
+               "html": "<p>FRR has two modes for this <code>datacenter</code> mode where the update delay is set to 0( just start doing the work ) and <code>traditional</code> where the update delay is 120 seconds as you have experienced.  </p>\n",
+               "id": "1653",
+               "name": "Donald Sharp",
+               "pub": "2023-02-08T20:05:26",
+               "ref": "1652",
+               "type": "comment"
+            }
+         ],
          "date": "08 February 2023 07:45",
          "html": "<p>Hi Ivan,</p>\n\n<p>As you correctly mentioned, it&#39;s crucial to be cautious when modifying this timer as doing so may result in unexpected consequences.</p>\n\n<p>For example, in a multihomed design where the CE receives the default route from both PEs, if the primary PE restarts and establishes the CE-PE peering, it may start sending the Default route before VPNv4 convergence is complete, potentially causing traffic to be blackholed for some time.</p>\n\n<p>Therefore, depending on the number of peerings and routes involved, maintaining or even increasing the update-delay timer may be necessary in certain use cases.</p>\n\n<p>BTW, a quick point regarding the update-delay timer: The update-delay timer waits after the FIRST neighbor is established before starting its calculation.</p>\n\n<p>I just wanted to share this use case with the readers.</p>\n",
          "id": "1652",
