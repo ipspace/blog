@@ -32,6 +32,8 @@ Most of the replies are pretty boilerplate[^BP], but there's an occasional gem l
 >
 > In conclusion, engaging in any conversations as suggested by yourself would not come to fruition even if opportunity were somehow created through some accidental mishap between now and eternity itself. Your links shall be forever ignored making passing time the only true victor here today. 
 
+[Derek Lowe](https://en.wikipedia.org/wiki/Derek_Lowe_(chemist)) was obviously correct when [he wrote](https://www.science.org/content/blog-post/thoughts-chatgpt-and-its-ilk) that the large-language models are _very accomplished bullshit generators_.
+
 Need a similar tool? Clone my GitHub repository and have fun (improvement PRs are most welcome).
 
 [^BP]: What would you expect from an AI model that was forced to be politically correct?
