@@ -8,7 +8,7 @@ netlab_tag: use
 It's incredible how little CPU resources some network devices consume in a steady state -- a *netlab* user managed to run almost 100 Mikrotik routers on a 24-core server. Starting them simultaneously (like **vagrant up** tries to do when used with the *vagrant-libvirt* plugin) is a different story. The router virtual machines are configured with two CPU cores for a good reason, and if they don't get enough CPU cycles during the boot time, they get sluggish, Vagrant gives up, and the lab start procedure fails.
 
 One could use a nasty workaround:
-
+<!--more-->
 -   Start the lab with **netlab up**.
 -   Expect the Vagrant initialization process to fail.
 -   Rerun **vagrant up** (which skips already-active virtual machines) as often as needed.
