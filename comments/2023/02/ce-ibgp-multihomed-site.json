@@ -26,9 +26,17 @@
          "name": " Viki",
          "pub": "2023-02-15T10:12:55",
          "type": "comment"
+      },
+      {
+         "date": "15 February 2023 10:48",
+         "html": "<p>In such a small deployment I assume that both ISPs offer transit, so that both CEs would get a default route from their upstream. </p>\n\n<p>In this case I would not iBGP the CEs together but have HSRP running on the two CEs and track the uplink (interface and/of BGP session) to determine the active gateway.</p>\n\n<p>It&#39;s simpler, less memory intensive the convergence will be faster and you don&#39;t have to care about the GRT.</p>\n\n<p>And if you wanted to IBGP them anyway, I would put a route-map on it to only exchange the default route from the upstreams, so that both CEs have a 0/0 route with different distance. The only thing I don&#39;t understand is in which failure scenario traffic would end up on a CE without an active BGP uplink.</p>\n",
+         "id": "1669",
+         "name": "pvh",
+         "pub": "2023-02-15T10:48:37",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2023/02/ce-ibgp-multihomed-site.html"
 }
