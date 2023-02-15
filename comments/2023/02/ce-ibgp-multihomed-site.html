@@ -95,6 +95,33 @@ Viki</p>
 
 <p>And if you wanted to IBGP them anyway, I would put a route-map on it to only exchange the default route from the upstreams, so that both CEs have a 0/0 route with different distance. The only thing I don&#39;t understand is in which failure scenario traffic would end up on a CE without an active BGP uplink.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1670">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeff Behrns</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1670" href="#1670">15 February 2023 02:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>pvh, not a good idea.  Sometimes your ISP has routing failures during which all physical links and BGP sessions remain up, but no routes get advertised / exchanged.  The only correct option is to establish an IBGP overlay, even if using FHRP.  As the &quot;site&quot; grows it may require route reflection.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
