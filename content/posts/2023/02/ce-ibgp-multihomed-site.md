@@ -1,7 +1,7 @@
 ---
 title: "CE-to-CE IBGP Session in a Multihomed Site"
 date: 2023-02-15 07:13:00
-tags: [ BGP ]
+tags: [ BGP, design, WAN ]
 ---
 One of my readers sent me a question along these lines:
 
