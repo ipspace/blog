@@ -84,6 +84,6 @@ If you just want to check the initial device configurations:
 
 * Install netlab
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/timing/topology.yml) used by the measurement script into an empty directory
-* Execute `netlab create -d <device>` followed by netlab initial -o` and inspect the **config** subdirectory.
+* Execute `netlab create -d <device>` followed by `netlab initial -o` and inspect the `config` subdirectory.
 
 [^NR]: I'm not rich enough to buy the amount of RAM some vendors think their devices need.
