@@ -3,12 +3,11 @@ title: "Measuring Virtual Network Device Boot Times"
 date: 2023-02-22 06:45:00
 tags: [ automation ]
 ---
-A _Distinguished Engineer at Juniper Networks_[^LI] wasn't happy with me [mentioning](https://blog.ipspace.net/2023/02/cisco-ios-bgp-update-delay.html#fn:2) *resource hogs* and *Junos platforms* in the same statement. Instead of engaging in never-ending _angels dancing on pins_ deliberations comparing the virtues of Junos with other network operating systems, I decided to throw a bit of real-life data into the mix -- I [created a simple script](https://github.com/ipspace/netlab-examples/tree/master/timing) that measures:
+A senior engineer at Juniper Networks wasn't happy with me [mentioning](https://blog.ipspace.net/2023/02/cisco-ios-bgp-update-delay.html#fn:2) *resource hogs* and *Junos platforms* in the same statement. Instead of engaging in never-ending _angels dancing on pins_ deliberations comparing the virtues of Junos with other network operating systems, I decided to throw a bit of real-life data into the mix -- I [created a simple script](https://github.com/ipspace/netlab-examples/tree/master/timing) that measures:
 
 * The time it takes to execute **vagrant up** to start a single network device.
 * The time it takes to deploy simple initial configuration on that device.
 <!--more-->
-[^LI]: According to his LinkedIn profile
 
 Before going into the details, it's worth acknowledging that the device boot time is not something most customers care deeply about[^NXOS], and thus not something that vendors would invest into. It's just that I get annoyed every single time I have to go and make a sandwich while waiting for my lab to start.
 
@@ -50,7 +49,7 @@ But that's not all. A network device has to be configured to be useful. The foll
 * `netlab initial` deployed minimal initial configuration, including a loopback interface and one physical interface with an IPv4 address.
 * It looks like the SSH server on vSRX starts working way before the device is in a steady state. The configuration time fell down to 45 seconds if I inserted a 120-second delay between lab initialization and initial configuration.
 
-### Let Them Eat Cake
+### Containers Are Faster
 
 Frustrated by my obnoxious opinions, the Juniper engineer suggested a workaround that should make Junos shine:
 
