@@ -9,6 +9,10 @@ The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help yo
 
 {{<series-listing tag="overview" weight="1">}}
 
+### Getting Started Videos
+
+{{<series-listing tag="video" weight="1">}}
+
 ### Using VRFs and VLANs
 
 {{<series-listing tag="vlan_vrf">}}
