@@ -3,7 +3,7 @@ title: "Could I Use netlab instead of GNS3?"
 date: 2022-10-28 07:26:00
 tags: [ automation, video ]
 series: netlab
-netlab_tag: overview
+netlab_tag: video
 ---
 I'm often getting questions along the lines of _"I'm using GNS3. Could I replace it with [netlab](https://netsim-tools.readthedocs.io/en/latest/)?"_
 
