@@ -48,7 +48,7 @@ def check_duplicate_date(path,date):
       if pdate and pdate.date() == date.date():
         reportError("Publication date %s overlaps with %s" % (date.date(),entry),path)
 
-def check_file(path):
+def check_file(path,listing):
   if VERBOSE:
     print("Reading file %s" % path)
 
@@ -71,6 +71,12 @@ def check_file(path):
   draft = frontmatter.get('draft')
 
   if not(draft):
+    if not(frontmatter.get('title')):
+      reportError("Title is missing",path)
+
+    if listing:
+      return
+
     date = frontmatter.get('date')
     if not(date):
       reportError("Date or Draft field missing",path)
@@ -87,16 +93,13 @@ def check_file(path):
     if type(tags) is not list:
       reportError("Tags are missing or not a list",path)
 
-    if not(frontmatter.get('title')):
-      print("Title is missing",path)
-
 args = parseCLI()
 #LOGGING = args.logging or args.verbose
 #VERBOSE = args.verbose
 
 for entry in args.files:
-  if not 'series' in entry:
-    check_file(entry)
+  listing = 'series' in entry or 'tags' in entry
+  check_file(entry,listing)
 
 if ERRORS:
   sys.exit(1)
