@@ -2,6 +2,8 @@
 title: "Validate Ansible YAML Data with JSON Schema"
 date: 2020-10-21 06:25:00
 tags: [ automation ]
+series: [ cicd ]
+cicd_tag: tools
 ---
 When I published the _[Optimize Network Data Models](https://www.ipspace.net/kb/DataModels/)_ series a long while ago, someone made an interesting comment along the lines of "_You should use [JSON Schema](https://json-schema.org/) to validate the data model._"
 
