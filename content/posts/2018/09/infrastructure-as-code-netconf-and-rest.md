@@ -5,6 +5,8 @@ tags:
 - AWS
 title: Infrastructure-as-Code, NETCONF and REST API
 url: /2018/09/infrastructure-as-code-netconf-and-rest.html
+series: [ niac ]
+niac_tag: rest
 ---
 *This is the* *third* *blog post in "thinking out loud while preparing Network Infrastructure as Code presentation for the *[*network automation course*](https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog)*" series.* *You might want to start with* [*Network-Infrastructure-as-Code Is Nothing New*](https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html) *and* [*Adjusting System State*](https://blog.ipspace.net/2018/09/adjusting-system-state-with.html) *blog posts.*
 
@@ -49,3 +51,8 @@ The worst API model you might have to deal with when implementing infrastructure
 Does this remind you of the way we were configuring network devices in the past... executing carefully orchestrated dance of configuration commands (now API calls) to get from where we were to where we wanted to be? One has to wonder why some people prefer to call this *progress* and why they're so [obsessed with REST API](https://blog.ipspace.net/2018/04/dont-get-obsessed-with-rest-api.html).
 
 Finally, let me mention that most orchestration systems, cloud management systems, SDN controllers and intent-based networking products I've seen use this approach. Go figure.
+
+### More Information
+
+We talked about [network infrastructure-as-code](https://my.ipspace.net/bin/list?id=AutConcepts#NIAC) in the [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar.
+
