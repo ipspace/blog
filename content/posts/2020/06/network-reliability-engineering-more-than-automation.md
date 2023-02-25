@@ -2,12 +2,14 @@
 title: Network Reliability Engineering Should Be More than Software or Automation
 date: 2020-06-15 06:35:00
 tags: [ automation ]
+series: [ niac ]
+niac_tag: rant
 ---
 *This blog post was initially sent to the subscribers of my SDN and Network Automation mailing list. [Subscribe here](http://www.ipspace.net/Subscribe/Five_SDN_Tips).*
 
 In late 2018 Juniper started aggressively promoting [Network Reliability Engineering](https://www.juniper.net/uk/en/products-services/what-is/nre/) - the networking variant of concepts of software-driven operations derived from [GIFEE](https://github.com/GIFEE/GIFEE) SRE concept (because it must [make perfect sense to mimic whatever Google is doing](https://blog.ipspace.net/2016/03/you-want-your-network-to-be-like.html), right?).
 
-There’s nothing wrong with promoting network automation, or [infrastructure-as-code concepts](https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html), and Matt Oswalt and his team did an awesome job with [NRE Labs](https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html) (huge “Thank you!” to whoever is financing them), but is that really all NRE should be?
+There’s nothing wrong with promoting network automation, or [infrastructure-as-code concepts](https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html), and Matt Oswalt and his team did an awesome job with [NRE Labs](https://nrelabs.io/) (now defunct, huge “Thank you!” to whoever was financing them), but is that really all NRE should be?
 <!--more-->
 Just looking at the acronym it has three words in it:
 
