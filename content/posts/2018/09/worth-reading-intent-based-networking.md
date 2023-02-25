@@ -6,6 +6,7 @@ tags:
 title: 'Worth Reading: Intent-Based Networking Taxonomy'
 lastmod: 2021-11-16 16:25:00
 url: /2018/09/worth-reading-intent-based-networking.html
+intent-based-networking_tag: overview
 ---
 In September 2018, Saša Ratković (Apstra) published a must-read [Intent-Based Networking Taxonomy](https://blogs.juniper.net/en-us/enterprise-cloud-and-transformation/intent-based-networking-automation-taxonomy)[^1] which (not surprisingly) isn't too far from what I had to say about the topic in a [blog post](https://blog.ipspace.net/2017/09/intent-based-hype.html) and [related webinar](https://my.ipspace.net/bin/list?id=NetAutUC#CS_INTENT).
 

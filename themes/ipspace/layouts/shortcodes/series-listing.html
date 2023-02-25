@@ -2,7 +2,11 @@
 {{ if (.Get "tag") }}
 {{   .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) (.Get "tag")) }}
 {{ else }}
-{{   .Page.Scratch.Set "pages" .Page.Pages }}
+{{   if (.Get "notag") }}
+{{     .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) "eq" nil) }}
+{{   else }}
+{{     .Page.Scratch.Set "pages" .Page.Pages }}
+{{   end }}
 {{ end }}
 {{ if not (.Get "reverse") }}
 {{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}

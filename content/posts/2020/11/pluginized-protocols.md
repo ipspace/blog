@@ -2,6 +2,7 @@
 title: "Worth Exploring: Pluginized Protocols"
 date: 2020-11-30 07:47:00
 tags: [ BGP, intent-based networking ]
+intent-based-networking_tag: related
 ---
 Remember my _[BGP route selection rules are a clear failure of intent-based networking paradigm](https://blog.ipspace.net/2018/01/bgp-route-selection-failure-of-intent.html)_ blog post? I wrote it almost three years ago, so maybe you want to start by rereading it...
 

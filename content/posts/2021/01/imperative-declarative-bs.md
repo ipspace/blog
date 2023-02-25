@@ -3,6 +3,8 @@ title: "Imperative and Declarative API: Another Pile of Marketing Deja-Moo"
 date: 2021-01-13 07:24:00
 tags: [ automation, intent-based networking ]
 lastmod: 2021-01-14 08:01:00
+intent-based-networking_tag: declarative
+series_weight: 500
 ---
 Looks like some vendor marketers (you know, the same group of people who brought us the [switching/routing/bridging](https://blog.ipspace.net/2011/02/how-did-we-ever-get-into-this-switching.html) stupidity) felt the need to go beyond the usual SDN and intent-based hype and started misusing the *imperative* versus *declarative* concepts. Unfortunately some networking engineers fell for the ploy; here's a typical feedback along these lines I got from one of my readers:
 

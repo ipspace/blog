@@ -2,8 +2,10 @@
 date: 2018-10-25 07:51:00+02:00
 tags:
 - automation
+- intent-based networking
 title: What’s the Big Deal with Validation?
 url: /2018/10/whats-big-deal-with-validation.html
+intent-based-networking_tag: related
 ---
 *This blog post was initially sent to subscribers of my mailing list. *[*Subscribe here*](http://www.ipspace.net/Subscribe/Five_SDN_Tips)*.*
 

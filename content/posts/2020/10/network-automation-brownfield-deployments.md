@@ -1,7 +1,8 @@
 ---
 title: "Network Automation Products for Brownfield Deployments"
 date: 2020-10-08 06:44:00
-tags: [ automation ]
+tags: [ automation, intent-based networking ]
+intent-based-networking_tag: drawback
 ---
 Got this question from one of my long-time readers:
 
