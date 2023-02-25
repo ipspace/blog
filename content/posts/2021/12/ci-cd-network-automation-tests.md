@@ -2,7 +2,8 @@
 title: "What Are You Going to Test in Network Automation CI/CD Pipeline?"
 date: 2021-12-08 07:25:00
 tags: [ automation ]
-series: automation-testing
+series: [ cicd ]
+cicd_tag: testing
 ---
 Network automation [CI/CD pipeline](https://en.wikipedia.org/wiki/CI/CD) seems to be the next hot thing, with [vendors](https://techfieldday.com/video/arista-next-generation-automation-architectures/) and [bloggers](https://juliopdx.com/2021/10/20/building-a-network-ci-cd-pipeline-part-1/) describing in detail how you could get it done. How realistic is that idea for an average environment that's barely starting its automation journey? 
 

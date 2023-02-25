@@ -2,7 +2,8 @@
 title: "Checking Network Device Configurations in a GitOps CI Pipeline"
 date: 2021-12-14 07:54:00
 tags: [ automation ]
-series: automation-testing
+series: [ cicd ]
+cicd_tag: testing
 ---
 Here's a fun fact network automation pundits don't want to hear: if you're working with [replaceable device configurations](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html) (as we did for the past 20 years, at least those fortunate enough to buy Junos), you already meet the [Infrastructure-as-Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) requirements. [Storing device configurations in a version control system](https://blog.ipspace.net/2018/08/gitops-in-networking.html) and using reviews and merge requests to change them (aka GitOps) is just a cherry on the cake.
 
