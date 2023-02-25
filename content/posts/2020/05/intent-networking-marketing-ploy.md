@@ -2,6 +2,7 @@
 title: "Intent-Based Networking: Another Victim of Sturgeon's Law"
 date: 2020-05-18 07:41:00
 tags: [ intent-based networking ]
+intent-based-networking_tag: drawback
 ---
 A few days ago Greg Ferro published an interesting post claiming [DHCP is an example of intent-based networking](https://etherealmind.com/was-dhcp-the-first-intent-networking-feature/) (a bit less tongue-in-cheek than my "_[so is OSPF configuration](/2017/09/intent-based-hype.html)_" rant from 2017). BTW, so is RADIUS or TACACS+ ;)
 
@@ -33,4 +34,4 @@ You can happily participate in that game and enjoy glitzy product pitches... or 
 * If not, [what tools would you need](https://blog.ipspace.net/2019/01/network-automations-is-more-than-just.html) to solve the problem?
 * Even if you had those tools, would you be able to use them, or [would you be back to square one due to people/processes](https://blog.ipspace.net/2013/11/typical-enterprise-application.html)?
 
-Want to know more? Explore our [Intent-Based Networking Resources ](https://www.ipspace.net/kb/tag/intent-based-networking.html).
+Want to know more? Explore our [Intent-Based Networking Resources ](/tag/intent-based-networking.html) or watch [Intent-Based Networking](https://my.ipspace.net/bin/list?id=AutConcepts#INTENT) section of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar.
