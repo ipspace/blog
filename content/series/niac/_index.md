@@ -17,7 +17,7 @@ These blog posts cover NIAC principles:
 
 {{<series-listing tag="principles">}}
 
-You might also want to watch the [Network Infrastructure as Code](https://my.ipspace.net/bin/list?id=AutConcepts#NIAC) part of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar and [explore CI/CD in Networking](/series/cicd.html) and Single Source of Truth concepts.
+You might also want to watch the [Network Infrastructure as Code](https://my.ipspace.net/bin/list?id=AutConcepts#NIAC) part of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar and [explore CI/CD in Networking](/series/cicd.html) and [Single Source of Truth](/series/ssot.html) concepts.
 
 ### Implementation Details and Tools
 
