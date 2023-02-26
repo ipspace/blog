@@ -9,6 +9,8 @@ minimal_sidebar: true
 
 {{<series-listing tag="build">}}
 
+### Implementation Details
+
 {{<plushy master>}}Ready for a deep dive into the interesting details? Off we go...
 
 {{<series-listing tag="details">}}
