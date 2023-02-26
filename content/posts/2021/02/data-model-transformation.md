@@ -2,6 +2,8 @@
 title: "Data Model Transformations in Network Automation Solutions"
 date: 2021-02-18 07:47:00
 tags: [ automation ]
+series: [ ssot ]
+ssot_tag: details
 ---
 Last year I wrote an article describing data model optimization going from a simple *[this is what we need to configure individual devices](https://www.ipspace.net/kb/DataModels/index.html)* to a highly polished high-level *[network nodes and links](https://www.ipspace.net/kb/DataModels/40-Link%20Prefixes.html)* model. Not surprisingly, as [Jeremy Schulman](https://www.ipspace.net/Author:Jeremy_Schulman) was quick to point out, the latter one had Jinja2 templates you wouldn't want to debug. Ever. You can't run away from complexity... but you can manage it.
 
