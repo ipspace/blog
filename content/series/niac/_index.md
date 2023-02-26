@@ -11,7 +11,7 @@ Translated into plain English: Describe the desired state of networking infrastr
 
 You could use Network-Infrastructure-as-Code (NIAC) to manage traditional device configurations (which would be a very-low-level intent) or as part of a solution that uses abstract high-level data model.
 
-### NIAC Principles
+### {{<plushy confused>}}Network-Infrastructure-as-Code Principles
 
 These blog posts cover NIAC principles:
 
@@ -19,7 +19,7 @@ These blog posts cover NIAC principles:
 
 You might also want to watch the [Network Infrastructure as Code](https://my.ipspace.net/bin/list?id=AutConcepts#NIAC) part of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar and [explore CI/CD in Networking](/series/cicd.html) and [Single Source of Truth](/series/ssot.html) concepts.
 
-### Implementation Details and Tools
+### {{<plushy master>}}Implementation Details and Tools
 
 Other blog posts dived deeper into implementation details and related tools:
 
@@ -33,7 +33,7 @@ You know you can always expect to see a few rants on ipSpace.net. Here are the N
 
 {{<series-listing tag="rant">}}
 
-### More Information
+### {{<plushy happy>}}More Information
 
 We covered numerous NIAC implementation details in [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course:
 
