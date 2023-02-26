@@ -13,9 +13,9 @@ minimal_sidebar: true
 
 {{<series-listing tag="details">}}
 
-### {{<plushy magic>}}Sample Solutions
+### Sample Solutions
 
-Want a few success stories? Here we go:
+{{<plushy magic>}}Want a few success stories? Here we go:
 
 {{<series-listing tag="solution">}}
 
@@ -29,9 +29,9 @@ You might also enjoy the solutions built by attendees of [Building Network Autom
 
 Want even more ideas? Check out the [solutions showcase](https://www.ipspace.net/NetAutSol/Solutions).
 
-### {{<plushy happy>}}More Information
+### More Information
 
-You'll find more details in the [Single Source of Truth](https://my.ipspace.net/bin/list?id=AutConcepts#SSOT) part of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar.
+{{<plushy happy>}}You'll find more details in the [Single Source of Truth](https://my.ipspace.net/bin/list?id=AutConcepts#SSOT) part of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar.
 
 Several presenters in the [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course implicitly described how they built the single source of truth when describing their automation solutions:
 
