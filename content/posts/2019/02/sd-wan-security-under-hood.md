@@ -7,7 +7,7 @@ tags:
 - WAN
 title: SD-WAN Security Under the Hood
 url: /2019/02/sd-wan-security-under-hood.html
-sd-wan_tag: reality
+sd-wan_tag: security
 ---
 A while ago we published a guest blog post by [Christoph Jaggi](https://www.ipspace.net/Author:Christoph_Jaggi) explaining the [high-level security challenges of most SD-WAN solutions](https://blog.ipspace.net/2018/08/security-aspects-of-sd-wan-solutions.html)... but what about the low-level details?
 

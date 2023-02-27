@@ -36,9 +36,15 @@ SD-WAN sounds great, but does it work as expected? Maybe not:
 
 {{<series-listing tag="reality" year="of course">}}
 
-Some service providers want to use SD-WAN to offer managed services. Not surprisingly, some people don't find that a good idea:
+Is it secure? Some products seem to be nothing more than a bunch of open-source component glued together with clueless Python code:
+
+{{<series-listing tag="security" year="of course">}}
+
+Some service providers want to use SD-WAN to offer managed services. Not surprisingly, some people[^SPC] don't find that a good idea:
 
 {{<series-listing tag="ms" year="of course">}}
+
+[^SPC]: Including those working for said service providers or their customers
 
 Then there are some technical details vendors love to gloss over:
 
