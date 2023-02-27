@@ -1,8 +1,9 @@
 ---
 title: "Overlay Networking with Ouroboros on Software Gone Wild"
 date: 2020-04-24 07:10:00
-tags: [ overlay networks, podcast, Software Gone Wild ]
+tags: [ overlay networks, podcast, SD-WAN, Software Gone Wild ]
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_109-Ouroboros.mp3
+sd-wan_tag: weird
 ---
 _This podcast introduction was written by [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio), the host of today's podcast._
 - - -

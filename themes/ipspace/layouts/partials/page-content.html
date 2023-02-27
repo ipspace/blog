@@ -2,7 +2,7 @@
   <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
     <header class='post__header'>
       <h1 class='post__title firstHeading' itemprop='name headline'>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        <a href="{{ .Permalink }}">{{ if .Params.page_title }}{{ .Params.page_title }}{{ else }}{{ .Title }}{{ end }}</a>
       </h1>
       {{ with .Params.subtitle }}
         <p class='subtitle'>{{ . }}</p>

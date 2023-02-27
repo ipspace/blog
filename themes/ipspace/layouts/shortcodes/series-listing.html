@@ -25,10 +25,12 @@
 </h3>
 {{   end }}
 {{ end }}
+{{ $show_year := .Get "year" }}
 <ul>
   {{ range (.Page.Scratch.Get "pages") }}
     <li>
       <a href="{{ .Permalink }}">{{ with .Params.series_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</a>
+      {{ if $show_year }}({{ .Date.Format "2006" }}){{ end }}
     </li>
   {{ end }}
 </ul>

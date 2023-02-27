@@ -1,7 +1,9 @@
 ---
 title: "Video: Cisco SD-WAN Policy Design"
+series_title: "Cisco SD-WAN Policy Design"
 date: 2021-06-04 06:55:00
 tags: [ SD-WAN, video ]
+sd-wan_tag: cisco
 ---
 In the final video in his [Cisco SD-WAN webinar](https://www.ipspace.net/Cisco_SD-WAN_Foundations_and_Design_Aspects),  [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) discusses site ID assignments and policy processing order. 
 
