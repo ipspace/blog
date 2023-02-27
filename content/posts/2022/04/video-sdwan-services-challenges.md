@@ -1,7 +1,9 @@
 ---
 title: "Video: Challenges of Managed SD-WAN Services"
+series_title: "Challenges of Managed SD-WAN Services"
 date: 2022-04-15 06:17:00
 tags: [ SD-WAN, service providers, video ]
+sd-wan_tag: ms
 ---
 When I published a link to the _[Is MPLS/VPN Too Complex?](https://blog.ipspace.net/2022/03/mpls-vpn-too-complex.html)_ blog post to LinkedIn, someone asked whether I'm skeptical about service provider SD-WAN services due to lack of skills, and [Kristijan Taskovski](https://www.linkedin.com/in/kristijan-taskovski/) quickly identified the root cause in his reply:
 

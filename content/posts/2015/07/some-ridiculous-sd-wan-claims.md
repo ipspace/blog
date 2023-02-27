@@ -2,10 +2,9 @@
 date: 2015-07-09 09:30:00+02:00
 tags:
 - SD-WAN
-- SDN
-- WAN
 title: Some Ridiculous SD-WAN Claims
 url: /2015/07/some-ridiculous-sd-wan-claims.html
+sd-wan_tag: rant
 ---
 [SDx Central](https://www.sdxcentral.com/) is usually a pretty good web site that I love to read, but even they occasionally manage to publish a [gem](https://www.sdxcentral.com/articles/contributed/sd-wan-disrupt-enterprise-networking-jeff-vance/2015/07/) like this one:
 
@@ -36,7 +35,7 @@ Also, when we're talking about *new offices in distant regions*, there might be 
 
 Finally, *immediately connecting a startup* might involve a nasty case of dual NAT, which will probably trip most SD-WAN products (which is what the author of that article is promoting), but of course the software-defined evangelists love to gloss over dirty details like this one.
 
-### The advantages of SD-WAN
+### The Advantages of SD-WAN
 
 Things are usually not totally black-and-white. Most SD-WAN products do have advantages (particularly in enterprise networks) over more traditional solutions:
 
@@ -45,7 +44,7 @@ Things are usually not totally black-and-white. Most SD-WAN products do have adv
 
 However, I'm still waiting to see how well the SD-WAN products survive the clash with enterprise reality (you might want to read [Tom Hollingsworth's take on Meraki](http://networkingnerd.net/2015/07/07/meraki-will-never-be-a-large-enterprise-solution/), which is facing a similar problem).
 
-### But wait, there's more
+### But Wait, There's More
 
 As you might expect, the rest of that article fares no better than it's beginning. Here's another Deja-Moo claim:
 
@@ -59,6 +58,6 @@ As you might expect, the rest of that article fares no better than it's beginnin
 
 While [some lock-in is usually inevitable](http://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html), at the moment, [every single SD-WAN solution is a total lock-in](http://blog.ipspace.net/2015/06/software-defined-wanwell-orchestrated.html), and anyone who claims otherwise is either clueless or trying to mislead you.
 
-### A note to marketers
+### A Note to Marketers
 
 I think I wrote this before -- I understand you have to do what you have to do, but you don't have to make yourself looking totally ridiculous in the process.

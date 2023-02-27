@@ -2,6 +2,7 @@
 date: 2020-03-25 08:10:00
 tags: [ SD-WAN,service providers ]
 title: "SD-WAN: A Service Provider Perspective"
+sd-wan_tag: ms
 ---
 A reader of my blog was "blessed" with hands-on experience with SD-WAN offered by large service providers. Based on that experience he sent me his views on whether that makes sense. Enjoy ;)
 - - -

@@ -2,6 +2,7 @@
 title: "Feedback from Another SD-WAN Fan"
 date: 2020-05-14 06:21:00
 tags: [ SD-WAN ]
+sd-wan_tag: reality
 ---
 I don't know what's wrong with me, but I rarely get emails along the lines of "_I deployed SD-WAN and it was the best thing we did in the last decade_" (trust me, I would publish those if they'd come from a semi-trusted source). 
 

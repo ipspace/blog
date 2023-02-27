@@ -6,6 +6,7 @@ tags:
 - WAN
 title: Business Case for SD-WAN
 url: /2015/07/business-case-for-sd-wan.html
+sd-wan_tag: bc
 ---
 An anonymous commenter wrote this comment to my [initial SD-WAN post](http://blog.ipspace.net/2015/06/software-defined-wanwell-orchestrated.html):
 
