@@ -3,7 +3,7 @@ title: "Another SD-WAN Security SNAFU: SQL Injections in Cisco SD-WAN Admin Inte
 date: 2021-09-21 06:43:00
 tags: [ SD-WAN, security ]
 lastmod: 2021-09-24 07:05:00
-sd-wan_tag: details
+sd-wan_tag: security
 ---
 [Christoph Jaggi](https://www.ipspace.net/Author:Christoph_Jaggi) sent me a link to an interesting article describing [security vulnerabilities pentesters found in Cisco SD-WAN admin/management code](https://www.sstic.org/media/SSTIC2021/SSTIC-actes/the_security_of_sd-wan_the_cisco_case/SSTIC2021-Article-the_security_of_sd-wan_the_cisco_case-legras.pdf). 
 

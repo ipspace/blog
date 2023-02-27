@@ -2,7 +2,7 @@
 title: "SD-WAN Security: A Product Liability Insurance Law Would Certainly Help"
 date: 2020-06-02 07:06:00
 tags: [ SD-WAN, security ]
-sd-wan_tag: reality
+sd-wan_tag: security
 ---
 On May 14th 2020, [Marcel Gamma](https://www.linkedin.com/in/marcel-gamma-61536127/), tech industry journalist, and editor-in-chief at inside-it.ch and inside-channels.ch, published an [article discussing several glaring security vulnerabilities in Silver Peak's SD-WAN products](https://www.inside-it.ch/de/post/eine-produkthaftpflicht-wuerde-sicher-helfen-20200514) on inside-it.ch. The original article was written in German; Marcel was kind enough to translate it into English and get permission from his publisher to have the English version published on ipSpace.net.
 - - -
