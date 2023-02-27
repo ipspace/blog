@@ -80,12 +80,24 @@ blog_get_md_file() {
   echo "`echo $1|sed 's#[.]md$##'`.md"
 }
 
+blog_skip_url() {
+  echo $1|sed 's#https://blog[.]ipspace[.]net/##'|sed 's#http://localhost:1313/##'
+}
+
 blog_md_to_html() {
   echo $1|sed 's#[.]md$#.html#'
 }
 
 blog_html_to_md() {
   echo $1|sed 's#[.]html$#.md#'
+}
+
+blog_find_file() {
+  if [ -f "$1" ]; then
+    echo $1
+  else
+    blog_html_to_md $1
+  fi
 }
 
 blog_open_published() {

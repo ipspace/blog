@@ -33,6 +33,13 @@ Usage:
 DOC
 }
 
+blog_argument() {
+  if [ $# -lt 2 ]; then
+    echo "Missing argument to blog $1"
+    exit 1
+  fi
+}
+
 SCRIPT_DIR=$( dirname "${BASH_SOURCE[0]}" )
 . "$SCRIPT_DIR/blog-util-lib.sh"
 
@@ -46,20 +53,24 @@ case "$1" in
     HUGO_CHANGE=
     shift
     for name in "$@"; do
+      name=$(blog_skip_url $name)
+      name=$(blog_find_file $name)
       blog_edit_post $name
       blog_view_post $name
     done
     ;;
   migrate)
-    if [ -f "$2" ]; then
-      MDFILE=$(blog_html_to_md $2)
-      echo "Migrating $2 to $MDFILE"
-      $SCRIPT_DIR/migrate-post.py $2
+    blog_argument "$@"
+    INFILE=$(blog_skip_url $2)
+    if [ -f "$INFILE" ]; then
+      MDFILE=$(blog_html_to_md $INFILE)
+      echo "Migrating $INFILE to $MDFILE"
+      $SCRIPT_DIR/migrate-post.py $INFILE
       blog_edit_post $MDFILE
       blog_view_post $MDFILE
-      open "https://blog.ipspace.net/$2"
+      open "https://blog.ipspace.net/$INFILE"
     else
-      echo "Failed: cannot find $2"
+      echo "Failed: cannot find $INFILE"
     fi
     ;;
   open)
@@ -93,6 +104,7 @@ case "$1" in
     esac
     ;;
   new)
+    blog_argument "$@"
     BLOG_FILE="`blog_get_md_file $2`"
     blog_new_file "$BLOG_FILE"
     blog_edit_post "$BLOG_FILE"
