@@ -3,6 +3,8 @@ cicd_tag: solution
 date: 2021-09-13 06:20:00+00:00
 series:
 - cicd
+- niac
+niac_tag: solution
 tags:
 - automation
 - firewall

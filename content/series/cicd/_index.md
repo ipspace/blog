@@ -25,14 +25,15 @@ Here are a few tools you might find useful:
 
 ### {{<plushy magic>}}Sample Solutions
 
-Several attendees of [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course used CI/CD pipelines in their automation solutions:
-
-{{<series-listing tag="solution">}}
-
-Some of those solutions are published on GitHub, giving you a glimpse into working code:
+Several attendees of [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course used CI/CD pipelines in [their automation solutions](https://www.ipspace.net/NetAutSol/Solutions). Some of those solutions are published on GitHub, giving you a glimpse into working code:
 
 * Daniel Teycheney [created a CI pipeline](https://github.com/writememe/BlgNetAutoSol/tree/master/5_Logging_Testing_Validation) that validates Ansible playbooks before they're merged with the *master* branch.
 * Donald Johnson [checks data models before committing them into a Git-based repository](https://github.com/johnsondnz/ipspace-validation-example/blob/master/README.md)
+
+I also blogged about these CI/CD solutions:
+
+{{<series-listing tag="solution">}}
+
 
 ### {{<plushy happy>}}More Information
 

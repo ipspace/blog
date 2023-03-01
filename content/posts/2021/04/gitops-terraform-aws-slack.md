@@ -4,7 +4,7 @@ series_title: "Deploy AWS Security Rules in a GitOps World with Terraform, GitLa
 date: 2021-04-27 07:48:00
 tags: [ cloud, automation, worth reading ]
 series: [ niac, cicd ]
-niac_tag: implement
+niac_tag: solution
 cicd_tag: solution
 ---
 I know the title sounds like a buzzword-bingo-winning clickbait, but it's true. [Adrian Giacometti](https://adriangiacometti.net/index.php/about-adrian/) decided to merge the topics of two [ipSpace.net online courses](https://www.ipspace.net/Courses) and automated deployment of AWS security rules using Terraform within GitLab CI pipeline, with Slack messages serving as manual checks and approvals.

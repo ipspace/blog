@@ -3,7 +3,7 @@ title: "Start Automating Public Cloud Deployments with Infrastructure-as-Code"
 date: 2021-04-12 06:14:00
 tags: [ cloud, automation ]
 series: [ niac ]
-niac_tag: implement
+niac_tag: principles
 ---
 One of my readers sent me a series of "*how do I get started with...*" questions including:
 
