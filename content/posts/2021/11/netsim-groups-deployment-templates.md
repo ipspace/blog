@@ -1,10 +1,10 @@
 ---
-title: "netlab Custom Groups and Deployment Templates"
-series_title: "Custom Groups and Deployment Templates"
-date: 2021-11-22 07:15:00
-tags: [ automation ]
-series: netlab
+date: 2021-11-22 07:15:00+00:00
 netlab_tag: overview
+series_title: Custom Groups and Deployment Templates
+tags:
+- netlab
+title: netlab Custom Groups and Deployment Templates
 ---
 Using custom templates to [test IP anycast with MPLS](https://blog.ipspace.net/2021/11/anycast-mpls.html) was fun, but as I got into interesting discussions focusing on convoluted details, I found myself going through the same set of steps too many times.
 

@@ -1,8 +1,8 @@
 ---
-title: "netlab Release 1.3.3: Bug Fixes"
-date: 2022-10-16 06:22:00
-tags: [ automation ]
-series: netlab
+date: 2022-10-16 06:22:00+00:00
+tags:
+- netlab
+title: 'netlab Release 1.3.3: Bug Fixes'
 ---
 Just FYI: I pushed out [*netlab*](https://netsim-tools.readthedocs.io/) release 1.3.3 yesterday. It's a purely bug fix release, new functionality and a few breaking changes are coming in release 1.4 in a few weeks.
 

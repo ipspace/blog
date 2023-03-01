@@ -1,10 +1,11 @@
 ---
-title: "Building Unnumbered Ethernet Lab with netlab"
-date: 2021-04-05 05:57:00
-tags: [ IP routing, automation ]
-series: netlab
+date: 2021-04-05 05:57:00+00:00
 lastmod: 2022-02-15 15:00:00
 netlab_tag: use
+tags:
+- IP routing
+- netlab
+title: Building Unnumbered Ethernet Lab with netlab
 ---
 Last week I described the new features [added to netsim-tools release 0.4](https://netsim-tools.readthedocs.io/en/latest/release/0.4.html), including support for [unnumbered interfaces](https://netsim-tools.readthedocs.io/en/latest/addressing.html#unnumbered-interface-support) and [OSPF routing](https://netsim-tools.readthedocs.io/en/latest/module/ospf.html). Now let's see how I used them to build a multi-vendor lab to test which platforms could be made to interoperate when running OSPF over unnumbered Ethernet interfaces.
 

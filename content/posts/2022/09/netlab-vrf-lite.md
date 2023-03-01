@@ -1,10 +1,10 @@
 ---
-title: "netlab: VRF Lite Topology with VLAN Trunks"
-date: 2022-09-12 06:01:00
-tags: [ automation ]
-series: netlab
+date: 2022-09-12 06:01:00+00:00
 netlab_tag: vlan_vrf
 series_title: VRF Lite Topology with VLAN Trunks
+tags:
+- netlab
+title: 'netlab: VRF Lite Topology with VLAN Trunks'
 ---
 In the [last blog post in the *VLANs and VRFs in netlab*](/2022/06/netsim-vlan-vrf.html) series, I described how we can combine VLANs and VRFs and create a VRF Lite solution with stretched VLANs. Wonder how hard would it be to create a routed multi-hop [VRF Lite](/2022/04/netsim-vrf-lite.html) topology? It's trivial.
 

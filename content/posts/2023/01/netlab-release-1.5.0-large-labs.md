@@ -1,10 +1,10 @@
 ---
-title: "netlab Release 1.5.0: Larger Lab Topologies"
-date: 2023-01-30 07:24:00
-series_title: "Larger Lab Topologies (Release 1.5.0)"
-tags: [ automation ]
-series: netlab
+date: 2023-01-30 07:24:00+00:00
 netlab_tag: release
+series_title: Larger Lab Topologies (Release 1.5.0)
+tags:
+- netlab
+title: 'netlab Release 1.5.0: Larger Lab Topologies'
 ---
 _netlab_ release 1.5.0 includes features that will help you start very large lab topologies (someone managed to run over 90 Mikrotik routers on a 24-core server):
 

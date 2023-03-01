@@ -1,10 +1,11 @@
 ---
-title: "netlab VXLAN Router-on-a-Stick Example"
-date: 2022-11-14 07:18:00
-tags: [ automation ]
-series: netlab
+date: 2022-11-14 07:18:00+00:00
 netlab_tag: vxlan_evpn
 series_title: VXLAN Router-on-a-Stick Example
+tags:
+- netlab
+- VXLAN
+title: netlab VXLAN Router-on-a-Stick Example
 ---
 In October 2022 I described how you could [build a VLAN router-on-a-stick topology with _netlab_](/2022/10/netlab-router-stick.html). With the new [features added in netlab release 1.4](/2022/11/netlab-release-1-4-0.html)[^VLI] we can do the same for VXLAN-enabled VLANs -- we'll build a lab where a router-on-a-stick will do VXLAN-to-VXLAN routing.
 

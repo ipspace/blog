@@ -1,10 +1,10 @@
 ---
-title: "Introducing netlab Plugins"
-date: 2022-01-19 07:09:00
-tags: [ automation ]
-series: netlab
+date: 2022-01-19 07:09:00+00:00
 netlab_tag: extend
-pre_scroll: True
+pre_scroll: true
+tags:
+- netlab
+title: Introducing netlab Plugins
 ---
 Remember the [BGP anycast lab](/2021/12/bgp-anycast-lab.html) I described in December 2021? In that blog post I briefly mentioned a problem of extraneous IBGP sessions and promised to address it at a later date. Let's see how we can fix that with a *netlab* plugin.
 

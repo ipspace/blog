@@ -1,9 +1,10 @@
 ---
-title: "Creating VRF Lite Labs With netlab"
-date: 2022-04-11 06:30:00
-tags: [ MPLS VPN ]
-series: netlab
+date: 2022-04-11 06:30:00+00:00
 netlab_tag: vlan_vrf
+tags:
+- MPLS VPN
+- netlab
+title: Creating VRF Lite Labs With netlab
 ---
 I always found VRF lab setups a chore. On top of the usual IPAM tasks you have to create VRFs, assign route targets and route distinguishers, do that on every PE-router in your lab... before you can start working on interesting things.
 

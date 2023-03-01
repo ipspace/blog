@@ -1,10 +1,10 @@
 ---
-title: "netlab Router-on-a-Stick Example"
-date: 2022-10-17 06:12:00
-tags: [ automation ]
-series: netlab
+date: 2022-10-17 06:12:00+00:00
 netlab_tag: vlan_vrf
 series_title: Router-on-a-Stick Example
+tags:
+- netlab
+title: netlab Router-on-a-Stick Example
 ---
 In early June 2022 I described [a netlab topology using VLAN trunks](/2022/06/netsim-vlan-trunk.html) in *netlab*. That topology provided pure bridging service for two IP subnets. Now let's go a step further and add a router-on-a-stick: 
 

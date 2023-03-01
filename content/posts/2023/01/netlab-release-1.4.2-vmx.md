@@ -1,10 +1,10 @@
 ---
-title: "netlab Release 1.4.2: Juniper vMX and Junos Features"
-date: 2023-01-09 07:20:00
-series_title: "Juniper vMX and Junos/CSR1000v Features (Release 1.4.2)"
-tags: [ automation ]
-series: netlab
+date: 2023-01-09 07:20:00+00:00
 netlab_tag: release
+series_title: Juniper vMX and Junos/CSR1000v Features (Release 1.4.2)
+tags:
+- netlab
+title: 'netlab Release 1.4.2: Juniper vMX and Junos Features'
 ---
 One of the last things I did before going on the Christmas break was to push out [netlab release 1.4.2](https://netsim-tools.readthedocs.io/en/latest/release/1.4.html#release-1-4-2). Its highlights include:
 

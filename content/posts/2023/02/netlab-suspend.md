@@ -1,9 +1,9 @@
 ---
-title: "Suspending Devices in netlab Labs"
-date: 2023-02-27 07:02:00
-tags: [ automation ]
-series: netlab
+date: 2023-02-27 07:02:00+00:00
 netlab_tag: use
+tags:
+- netlab
+title: Suspending Devices in netlab Labs
 ---
 A networking engineer [tired of waiting for network devices to start](https://blog.ipspace.net/2023/02/virtual-device-boot-times.html) sent me this question:
 

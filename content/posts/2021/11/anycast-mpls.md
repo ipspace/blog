@@ -1,12 +1,16 @@
 ---
-title: "Anycast Works Just Fine with MPLS/LDP"
-date: 2021-11-17 07:24:00
-tags: [ MPLS, LDP ]
-series: [ netlab, anycast ]
-netlab_tag: use
 anycast_tag: lab
+date: 2021-11-17 07:24:00+00:00
 lastmod: 2022-02-16 16:15:00
-pre_scroll: True
+netlab_tag: use
+pre_scroll: true
+series:
+- anycast
+tags:
+- MPLS
+- LDP
+- netlab
+title: Anycast Works Just Fine with MPLS/LDP
 ---
 I stumbled upon an article praising the beauties of SR-MPLS that claimed:
 

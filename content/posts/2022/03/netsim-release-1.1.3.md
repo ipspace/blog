@@ -1,9 +1,9 @@
 ---
-title: "netsim-tools Release 1.1.3"
-date: 2022-03-07 09:53:00
-tags: [ automation ]
-series: netlab
+date: 2022-03-07 09:53:00+00:00
 netlab_tag: release
+tags:
+- netlab
+title: netsim-tools Release 1.1.3
 ---
 *netsim-tools* release 1.1.3 brings a number of goodies, including:
 

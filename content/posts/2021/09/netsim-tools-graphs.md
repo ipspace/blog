@@ -1,10 +1,10 @@
 ---
-title: "netlab Network Topology Graphs"
-date: 2021-09-20 07:07:00
-tags: [ automation ]
-series: netlab
+date: 2021-09-20 07:07:00+00:00
 netlab_tag: overview
 series_title: Network Topology Graphs
+tags:
+- netlab
+title: netlab Network Topology Graphs
 ---
 A [*netlab*](https://netsim-tools.readthedocs.io) user sent me an intriguing question: "*Would it be possible to get network topology graphs out of the tool?*"
 

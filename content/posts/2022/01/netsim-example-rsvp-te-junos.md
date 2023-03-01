@@ -1,9 +1,10 @@
 ---
-title: "Sample Lab: RSVP TE on Junos"
-date: 2022-01-24 07:36:00
-tags: [ traffic engineering ]
-series: netlab
+date: 2022-01-24 07:36:00+00:00
 netlab_tag: use
+tags:
+- traffic engineering
+- netlab
+title: 'Sample Lab: RSVP TE on Junos'
 ---
 It's amazing how creative networking engineers become once they have the basic tools to get the job done a bit quicker. Last week Pete Crocker [published the largest topology](https://github.com/ipspace/netlab-examples/tree/master/routing/rsvp-mpls-vsrx) I've seen built with *netlab* so far: a 13-router lab running RSVP TE to transport IP traffic between external autonomous systems[^1].
 

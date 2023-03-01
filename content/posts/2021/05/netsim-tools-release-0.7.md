@@ -1,10 +1,10 @@
 ---
-title: "netsim-tools release 0.7: Cumulus VX, EIGRP, and BGP IPv6 AF"
-series_title: "Cumulus VX, EIGRP, and BGP IPv6 AF"
-date: 2021-05-31 06:58:00
-tags: [ automation ]
-series: netlab
+date: 2021-05-31 06:58:00+00:00
 netlab_tag: archive
+series_title: Cumulus VX, EIGRP, and BGP IPv6 AF
+tags:
+- netlab
+title: 'netsim-tools release 0.7: Cumulus VX, EIGRP, and BGP IPv6 AF'
 ---
 *netsim-tools* [release 0.7](https://github.com/ipspace/netlab/releases/tag/release_0.7) is published, bringing you the following goodies (including stuff published a week ago as release 0.6.3):
 

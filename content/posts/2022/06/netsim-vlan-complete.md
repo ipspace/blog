@@ -1,10 +1,10 @@
 ---
-title: "netlab VLAN Module Is Complete"
-series_title: "VLAN Module Is Complete (Release 1.2.4)"
-date: 2022-06-23 06:12:00
-tags: [ automation ]
-series: netlab
+date: 2022-06-23 06:12:00+00:00
 netlab_tag: release
+series_title: VLAN Module Is Complete (Release 1.2.4)
+tags:
+- netlab
+title: netlab VLAN Module Is Complete
 ---
 One of the last things I did before starting the 2022 summer break was to push out the [next netlab release](https://netsim-tools.readthedocs.io/en/latest/release.html). 
 

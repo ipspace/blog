@@ -1,11 +1,12 @@
 ---
-title: "Creating BGP Multipath Lab with netlab"
-series_title: "Creating BGP Multipath Lab"
-date: 2021-11-09 07:03:00
+date: 2021-11-09 07:03:00+00:00
 lastmod: 2022-02-15 15:42:00
-tags: [ BGP ]
-series: netlab
 netlab_tag: use
+series_title: Creating BGP Multipath Lab
+tags:
+- BGP
+- netlab
+title: Creating BGP Multipath Lab with netlab
 ---
 I was editing the *[BGP Multipathing](https://my.ipspace.net/bin/get/Net101/AR4.3%20-%20BGP%20Multipath%20Basics.mp4?download=yes)* video in the *[Advanced Routing Protocols](https://my.ipspace.net/bin/list?id=Net101#ADV_ROUTING)* section of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar, got to the diagram I used to explain the intricacies of IBGP multipathing and said to myself "*that should be easy (and fun) to set up with netlab*".
 

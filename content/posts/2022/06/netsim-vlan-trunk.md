@@ -1,10 +1,10 @@
 ---
-title: "netlab VLAN Trunk Example"
-date: 2022-06-06 06:12:00
-tags: [ automation ]
-series: netlab
+date: 2022-06-06 06:12:00+00:00
 netlab_tag: vlan_vrf
 series_title: VLAN Trunk Example
+tags:
+- netlab
+title: netlab VLAN Trunk Example
 ---
 Last week I described [how easy it is to use access VLANs](https://blog.ipspace.net/2022/05/netsim-vlan-simple.html) in *netlab*. Next step: VLAN trunks. 
 

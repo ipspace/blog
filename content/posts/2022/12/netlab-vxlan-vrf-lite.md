@@ -1,11 +1,12 @@
 ---
-title: "netlab: VRF Lite over VXLAN Transport"
-date: 2022-12-05 07:44:00
-tags: [ automation ]
-series: netlab
+date: 2022-12-05 07:44:00+00:00
 netlab_tag: vxlan_evpn
+pre_scroll: true
 series_title: VRF Lite over VXLAN Transport
-pre_scroll: True
+tags:
+- netlab
+- VXLAN
+title: 'netlab: VRF Lite over VXLAN Transport'
 ---
 One of the comments I received after publishing the _[Use VRFs for VXLAN-Enabled VLANs](https://blog.ipspace.net/2022/10/use-vrf-for-vxlan-vlans.html)_ claimed that:
 

@@ -1,9 +1,9 @@
 ---
-title: "Start Large netlab Topologies in Smaller Batches"
-date: 2023-02-13 07:08:00
-tags: [ automation ]
-series: netlab
+date: 2023-02-13 07:08:00+00:00
 netlab_tag: use
+tags:
+- netlab
+title: Start Large netlab Topologies in Smaller Batches
 ---
 It's incredible how little CPU resources some network devices consume in a steady state -- a *netlab* user managed to run almost 100 Mikrotik routers on a 24-core server. Starting them simultaneously (like **vagrant up** tries to do when used with the *vagrant-libvirt* plugin) is a different story. The router virtual machines are configured with two CPU cores for a good reason, and if they don't get enough CPU cycles during the boot time, they get sluggish, Vagrant gives up, and the lab start procedure fails.
 

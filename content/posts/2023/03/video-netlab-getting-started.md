@@ -1,10 +1,11 @@
 ---
-title: "Video: Getting Started with netlab"
-date: 2023-03-03 07:49:00
-tags: [ automation, video ]
-series: netlab
-series_title: Getting Started with netlab
+date: 2023-03-03 07:49:00+00:00
 netlab_tag: video
+series_title: Getting Started with netlab
+tags:
+- video
+- netlab
+title: 'Video: Getting Started with netlab'
 ---
 After explaining [how _netlab_ fits into the _virtual lab orchestration_ picture](/2022/10/replacing-gns3-netlab.html) and [what exactly it can do](https://my.ipspace.net/bin/get/NetTools/N2%20-%20What%20Can%20netlab%20Do.mp4?doccode=NetTools), let's focus on _what's the easiest way to get started_.
 

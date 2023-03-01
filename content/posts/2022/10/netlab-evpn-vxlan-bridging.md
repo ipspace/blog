@@ -1,11 +1,13 @@
 ---
-title: "netlab EVPN/VXLAN Bridging Example"
-date: 2022-10-03 07:21:00
-tags: [ automation, VXLAN,EVPN ]
-series: netlab
+date: 2022-10-03 07:21:00+00:00
 netlab_tag: vxlan_evpn
+pre_scroll: true
 series_title: Simple EVPN/VXLAN Bridging
-pre_scroll: True
+tags:
+- VXLAN
+- EVPN
+- netlab
+title: netlab EVPN/VXLAN Bridging Example
 ---
 [netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netsim-tools.readthedocs.io/en/latest/module/vxlan.html) and [EVPN control plane](https://netsim-tools.readthedocs.io/en/latest/module/evpn.html). Last week we [replaced a VLAN trunk with VXLAN transport](/2022/09/netlab-vxlan-bridging.html), now we'll [replace static ingress replication with EVPN control plane](https://github.com/ipspace/netlab-examples/tree/master/EVPN/vxlan-bridging).
 

@@ -1,10 +1,10 @@
 ---
-title: "Using Custom Vagrant Boxes with netlab"
-date: 2022-06-09 06:10:00
-tags: [ automation ]
-series: netlab
+date: 2022-06-09 06:10:00+00:00
 netlab_tag: extend
-pre_scroll: True
+pre_scroll: true
+tags:
+- netlab
+title: Using Custom Vagrant Boxes with netlab
 ---
 A friend of mine started using Vagrant with libvirt years ago (it was his enthusiasm that piqued my interest in this particular setup, eventually resulting in *netlab*). Not surprisingly, he's built Vagrant boxes for any device he ever encountered, created quite a collection that way, and would like to use them with *netlab*.
 

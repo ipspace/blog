@@ -1,10 +1,10 @@
 ---
-title: "netlab: Combining VLANs with VRFs"
-date: 2022-06-13 06:38:00
-tags: [ automation ]
-series: netlab
+date: 2022-06-13 06:38:00+00:00
 netlab_tag: vlan_vrf
 series_title: Combining VLANs with VRFs
+tags:
+- netlab
+title: 'netlab: Combining VLANs with VRFs'
 ---
 Last two weeks we focused on [access VLANs](/2022/05/netsim-vlan-simple.html) and [VLAN trunk](/2022/06/netsim-vlan-trunk.html) *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* implementation. Can we combine them with [VRFs](/2022/04/netsim-vrf-lite.html)? Of course.
 

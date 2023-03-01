@@ -1,9 +1,10 @@
 ---
-title: "netsim-tools (now netlab) on the Modem Podcast"
-date: 2022-02-18 07:30:00
-tags: [ automation, podcast ]
-series: netlab
+date: 2022-02-18 07:30:00+00:00
 netlab_tag: overview
+tags:
+- podcast
+- netlab
+title: netsim-tools (now netlab) on the Modem Podcast
 ---
 A few weeks ago, [Nick Buraglio](https://www.ipspace.net/Expert:Nick_Buraglio) and [Chris Cummings](https://slash64.tech/) invited me for an [hour-long chat about netlab on the Modem Podcast](https://www.modem.show/post/s02e01/)[^NL].
 
