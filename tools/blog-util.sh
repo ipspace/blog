@@ -16,6 +16,7 @@ Usage:
   blog fix    - fix a blog post
   blog new    - new blog post
   blog migrate- migrate an old HTML blog post into Markdown
+  blog sertag - applies series tag to a Markdown blog post
   blog draft  - new draft
   blog ls     - list blog posts
 
@@ -72,6 +73,27 @@ case "$1" in
     else
       echo "Failed: cannot find $INFILE"
     fi
+    ;;
+  sertag)
+    HUGO_CHANGE=
+    if [ -z "BLOG_SERIES" ]; then
+      echo "Set BLOG_SERIES environment variable first"
+      exit 1
+    fi
+    if [ -z "BLOG_SERIES_TAG" ]; then
+      echo "Set BLOG_SERIES_TAG environment variable first"
+      exit 1
+    fi
+    shift
+    set -e
+    for name in "$@"; do
+      echo "Applying $BLOG_SERIES tag $BLOG_SERIES_TAG to $name"
+      name=$(blog_skip_url $name)
+      name=$(blog_find_file $name)
+      $SCRIPT_DIR/series-tag-post.py $name
+      blog_edit_post $name
+      blog_view_post $name
+    done
     ;;
   open)
     HUGO_CHANGE=

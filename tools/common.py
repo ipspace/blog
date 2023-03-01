@@ -54,3 +54,16 @@ def read_blog_post(path):
     doc['date'] = pubdate
 
   return(doc,text)
+
+def set_series_tag(post):
+  series = os.environ.get('BLOG_SERIES')
+  if series:
+    c_value = post.get('series',None)
+    if c_value and isinstance(c_value,str):
+      post['series'] = [ c_value ]
+    elif c_value is None:
+      post['series'] = []
+    post['series'].append(series)
+  s_tag = os.environ.get('BLOG_SERIES_TAG')
+  if s_tag:
+    post[series+"_tag"] = s_tag

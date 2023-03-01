@@ -22,7 +22,22 @@ def htmlToMarkdown(html):
     capture_output=True, \
     input=html,text=True)
 
-  return result.stdout
+  md = []
+  md_stack = []
+  for line in result.stdout.split('\n'):
+    if line == '::: jump-link' or line == '::: {.jump-link markdown="1"}':
+      line = '{{<jump>}}'
+      md_stack = [ 'jump' ] + md_stack
+    if line == '::: {.note markdown="1"}':
+      line = '{{<note>}}'
+      md_stack = [ 'note' ] + md_stack
+    elif line == ':::':
+      if md_stack:
+        line = '{{</'+md_stack[0]+'>}}'
+        md_stack = md_stack[1:]
+
+    md.append(line)
+  return '\n'.join(md)
 
 def convertToMarkdown(html):
   moreText = '<!--more-->'
@@ -47,6 +62,13 @@ def migrateToMarkdown(fname):
     raise RuntimeError('Cannot get HTML text from %s' % fname)
 
   md = convertToMarkdown(html)
+
+  series = os.environ.get('BLOG_SERIES')
+  if series:
+    post['series'] = [ series ]
+  s_tag = os.environ.get('BLOG_SERIES_TAG')
+  if s_tag:
+    post[series+"_tag"] = s_tag
 
   ofile = "%s.md" % file
   with open(ofile,"wt") as output:
