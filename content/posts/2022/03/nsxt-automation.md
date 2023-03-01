@@ -1,6 +1,6 @@
 ---
 date: 2022-03-21 07:54:00+00:00
-niac_tag: implement
+niac_tag: solution
 series:
 - niac
 tags:

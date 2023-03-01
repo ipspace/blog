@@ -3,7 +3,7 @@ title: "Automating NSX-T Firewall Configuration"
 date: 2021-09-02 07:14:00
 tags: [ automation, NSX, firewall ]
 series: [ niac ]
-niac_tag: implement
+niac_tag: solution
 ---
 [Noël Boulene](https://www.linkedin.com/in/noyelb/) decided to [automate provisioning of NSX-T distributed firewall rules](https://netmemo.github.io/post/nsxt-tf-firewall/) as part of his [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) hands-on work.
 

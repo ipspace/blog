@@ -2,6 +2,8 @@
 title: "Lessons Learned: Automating Site Deployments"
 date: 2020-12-08 07:18:00
 tags: [ automation ]
+series: [ niac ]
+niac_tag: solution
 ---
 Some networking engineers renew their ipSpace.net subscription every year, and when they drop off the radar, I try to get in touch with them to understand whether they moved out of networking or whether we did a bad job.
 

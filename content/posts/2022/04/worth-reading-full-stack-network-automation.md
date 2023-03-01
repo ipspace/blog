@@ -1,7 +1,7 @@
 ---
 cicd_tag: solution
 date: 2022-04-10 08:33:00+00:00
-niac_tag: implement
+niac_tag: solution
 series:
 - niac
 - cicd

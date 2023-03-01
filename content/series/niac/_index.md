@@ -33,6 +33,12 @@ You know you can always expect to see a few rants on ipSpace.net. Here are the N
 
 {{<series-listing tag="rant">}}
 
+### {{<plushy magic>}}Real-Life Implementations
+
+Finally, you might enjoy these real-life NIAC-based solutions:
+
+{{<series-listing tag="solution">}}
+
 ### {{<plushy happy>}}More Information
 
 We covered numerous NIAC implementation details in [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course:
@@ -46,9 +52,3 @@ We even did a podcast or two on the topic:
 {{<series-listing tag="podcast">}}
 
 [Low-level device configuration management with Git](https://my.ipspace.net/bin/list?id=AnsibleOC#SAMPLES) is described in [Ansible for Networking Engineers](https://www.ipspace.net/Ansible_for_Networking_Engineers) online course; source code is [available in our GitHub repository](https://github.com/ipspace/ansible-examples/tree/master/Config-to-Git).
-
-Finally, you might enjoy these automation wins:
-
-* [Real-Life: How to Start Your Automation Journey](https://blog.ipspace.net/2021/05/starting-automation.html)
-* [Lessons Learned: Automating Site Deployments](https://blog.ipspace.net/2020/12/automating-site-deployments.html)
-* [Configuring NSX-T Firewall with a CI/CD Pipeline](https://blog.ipspace.net/2021/09/nsxt-firewall-ci-cd-pipeline.html)
