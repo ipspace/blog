@@ -25,6 +25,7 @@ def parseCLI():
   parser = argparse.ArgumentParser(description='List posts in a directory(tree) by publish date')
   parser.add_argument('dir', nargs='+',action='store',help='Directory to list')
   parser.add_argument('--tags',dest='tags',action='store',help='Limit printout by tags')
+  parser.add_argument('--series',dest='series',action='store',help='Limit printout by series')
   parser.add_argument('--md', dest='md', action='store_true',help='Markdown printout')
   parser.add_argument('--url', dest='url', action='store_true',help='URL printout')
   parser.add_argument('--log', dest='logging', action='store_true',help='Enable basic logging')
@@ -32,7 +33,7 @@ def parseCLI():
   parser.add_argument('--prefix',dest='prefix',action='store',help='URL prefix',default='/')
   return parser.parse_args()
 
-def read_file(path,dir_list,tag_list):
+def read_file(path,dir_list,tag_list,series):
   if VERBOSE:
     print("Reading file %s" % path)
 
@@ -48,6 +49,10 @@ def read_file(path,dir_list,tag_list):
     if not tag_filter.match_tags(frontmatter.get('tags'),tag_list):
       return
 
+  if series:
+    if not series in frontmatter.get('series',[]):
+      return
+
   dir_list.append({
     'name': os.path.basename(path),
     'path': path,
@@ -56,7 +61,7 @@ def read_file(path,dir_list,tag_list):
     'title':frontmatter.get('title')
     })
 
-def scan_posts(path,dir_list,tag_list):
+def scan_posts(path,dir_list,tag_list,series):
   if LOGGING:
     print("Scanning %s" % path)
 
@@ -64,9 +69,9 @@ def scan_posts(path,dir_list,tag_list):
     if VERBOSE:
       print("Inspecting %s " % entry)
     if os.path.isdir(entry):
-      scan_posts(entry,dir_list,tag_list)
+      scan_posts(entry,dir_list,tag_list,series)
     elif os.path.isfile(entry):
-      read_file(entry,dir_list,tag_list)
+      read_file(entry,dir_list,tag_list,series)
   return dir_list
 
 def print_dir(dir_list):
@@ -114,7 +119,7 @@ if args.tags:
   tag_list = tag_filter.parse_tags(args.tags)
 
 for entry in args.dir:
-  dir_list = scan_posts(entry,dir_list,tag_list)
+  dir_list = scan_posts(entry,dir_list,tag_list,args.series)
 
 sorted_list = sorted(dir_list,key=lambda x: x['date'] or max_date)
 if args.md:
