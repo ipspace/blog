@@ -5,7 +5,7 @@ minimal_sidebar: true
 ---
 You must use BGP as the endpoint reachability routing protocol in your data center fabric if you decide to run VXLAN with EVPN control plane... but should you also run it as the transport (underlay) routing protocol instead of OSPF or IS-IS? The resources collected on this page might help you make that decision.
 
-We covered this topic in these webinars, articles, and podcasts:
+{{<plushy happy>}}We covered this topic in these webinars, articles, and podcasts:
 
 -   [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures)
 -   [EVPN Technical Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive)
@@ -19,15 +19,15 @@ We covered this topic in these webinars, articles, and podcasts:
 
 {{<series-listing tag="sdn" year="sure">}}
 
-We also tried to answer the question "*Do we need a new routing protocol for data center fabrics?*" in these Software Gone Wild episodes and related blog posts (TL&DL: No):
+{{<plushy confused>}}We also tried to answer the question "*Do we need a new routing protocol for data center fabrics?*" in these Software Gone Wild episodes and related blog posts (TL&DL: No):
 
 {{<series-listing tag="newrp" year="please do" weight="yes">}}
 
-I covered the design aspects of using BGP in data centers (in particular in combination with EVPN) in these blog posts:
+{{<plushy master>}}I covered the design aspects of using BGP in data centers (in particular in combination with EVPN) in these blog posts:
 
 {{<series-listing tag="design" year="please do" weight="yes">}}
 
-It's also popular to run BGP on redundantly connected servers, or on edge appliances connecting overlay virtual networks with physical world. More details in these blog posts and in the [Routing on Servers](https://my.ipspace.net/bin/list?id=Clos#ROUTING_SERVERS) part of [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar.
+{{<plushy magic>}}It's also popular to run BGP on redundantly connected servers, or on edge appliances connecting overlay virtual networks with physical world. More details in these blog posts and in the [Routing on Servers](https://my.ipspace.net/bin/list?id=Clos#ROUTING_SERVERS) part of [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar.
 
 {{<series-listing tag="server" year="please do" weight="yes">}}
 
@@ -39,7 +39,7 @@ Some vendors love making your life overly complex, inventing ridiculous architec
 
 {{<series-listing tag="rant" year="needed">}}
 
-Two other interesting topics often pop up in BGP-related discussions: [anycast](/series/anycast.html) and [multipathing](/series/ucmp.html):
+{{<plushy magic>}}Two other interesting topics often pop up in BGP-related discussions: [anycast](/series/anycast.html) and [multipathing](/series/ucmp.html):
 
 {{<series-listing tag="interesting" year="sure">}}
 
@@ -47,7 +47,7 @@ You might also find these blog posts somewhat relevant to your data center BGP d
 
 {{<series-listing tag="relevant" year="sure">}}
 
-These BGP details might help you when designing or deploying your next BGP-based network:
+{{<plushy master>}}These BGP details might help you when designing or deploying your next BGP-based network:
 
 {{<series-listing tag="details" year="why not">}}
 
