@@ -122,6 +122,8 @@ tag_list = None
 max_date = dateutil.parser.parse('2100-01-01 00:00:00+00')
 if args.tags:
   tag_list = tag_filter.parse_tags(args.tags)
+  if args.verbose:
+    print(f'Limiting printout by tags {tag_list}')
 
 if not args.dir:              # Iterate over all posts when nothing is specified
   args.dir = ['*']

@@ -11,10 +11,12 @@ def match_tags(taglist,matchlist):
   if taglist is None:
     return False
 
+  taglist = [ x.lower() for x in taglist ]
+#  print(f'taglist: {taglist} matchlist: {matchlist}')
   for t_and in matchlist:
     match = True
     for t in t_and:
-      match = match and t in taglist
+      match = match and t.lower() in taglist
     if match:
       return True
   return False
