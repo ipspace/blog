@@ -4,8 +4,9 @@ tags:
 - bridging
 - BGP
 - Cumulus Linux
-series: mlag
+series: [ mlag, dcbgp ]
 mlag_tag: implement
+dcbgp_tag: cl
 title: Auto-MLAG and Auto-BGP in Cumulus Linux
 url: /2019/10/auto-mlag-and-auto-bgp-in-cumulus-linux.html
 ---

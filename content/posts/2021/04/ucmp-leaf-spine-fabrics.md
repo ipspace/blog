@@ -2,7 +2,8 @@
 title: "Using Unequal-Cost Multipath to Cope with Leaf-and-Spine  Fabric Failures"
 date: 2021-04-20 07:15:00
 tags: [ fabric, design ]
-series: UCMP
+series: [ UCMP, dcbgp ]
+dcbgp_tag: interesting
 ---
 Scott submitted an interesting the comment to my *[Does Unequal-Cost Multipath (UCMP) Make Sense](https://blog.ipspace.net/2021/02/does-ucmp-make-sense.html)* blog post:
 

@@ -2,6 +2,8 @@
 title: "Questions about BGP in the Data Center (with a Whiff of SRv6)"
 date: 2021-06-17 06:04:00
 tags: [ data center, BGP, design ]
+series: dcbgp
+dcbgp_tag: newrp
 ---
 Henk Smit left numerous questions in a comment referring to the [Rethinking BGP in the Data Center](https://blog.ipspace.net/2021/05/worth-reading-rethinking-bgp-data-center.html) presentation by Russ White:
 

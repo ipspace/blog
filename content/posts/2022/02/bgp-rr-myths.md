@@ -1,7 +1,11 @@
 ---
-title: "BGP Route Reflector Myths"
-date: 2022-02-01 07:54:00
-tags: [ BGP ]
+date: 2022-02-01 07:54:00+00:00
+dcbgp_tag: relevant
+series:
+- dcbgp
+tags:
+- BGP
+title: BGP Route Reflector Myths
 ---
 New networking myths are continuously popping up. Here's a BGP one I encountered a few days ago:
 

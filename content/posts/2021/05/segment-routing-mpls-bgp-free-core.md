@@ -1,7 +1,13 @@
 ---
-title: "BGP-Free MPLS Core with Segment Routing"
-date: 2021-05-11 06:54:00
-tags: [ segment routing, BGP, MPLS ]
+date: 2021-05-11 06:54:00+00:00
+dcbgp_tag: relevant
+series:
+- dcbgp
+tags:
+- segment routing
+- BGP
+- MPLS
+title: BGP-Free MPLS Core with Segment Routing
 ---
 After I [created the Segment Routing lab](/2021/05/segment-routing-ids-mpls-labels.html) to test the relationship between Node Segment ID (SID) and MPLS labels, I was just a minor step away from testing [BGP-free core](https://blog.ipspace.net/2012/01/bgp-free-service-provider-core-in.html) with [SR-MPLS](https://blog.ipspace.net/2011/11/ldp-igp-synchronization-in-mpls.html).
 

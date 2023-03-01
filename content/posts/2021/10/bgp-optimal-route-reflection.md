@@ -1,7 +1,11 @@
 ---
-title: "BGP Optimal Route Reflection 101"
-date: 2021-10-14 06:23:00
-tags: [ BGP ]
+date: 2021-10-14 06:23:00+00:00
+dcbgp_tag: relevant
+series:
+- dcbgp
+tags:
+- BGP
+title: BGP Optimal Route Reflection 101
 ---
 Almost a decade ago I described a scenario in which a [perfectly valid IBGP topology could result in a permanent routing loop](https://blog.ipspace.net/2013/10/can-bgp-route-reflectors-really.html). While one wouldn't expect to see such a scenario in a well designed network, it's been known for ages[^ORR-1] that using BGP route reflectors could result in suboptimal forwarding.
 

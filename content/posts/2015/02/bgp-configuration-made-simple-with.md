@@ -6,6 +6,9 @@ tags:
 - Cumulus Linux
 title: BGP Configuration Made Simple with Cumulus Linux
 url: /2015/02/bgp-configuration-made-simple-with.html
+dcbgp_tag: cl
+series:
+- dcbgp
 ---
 BGP is without doubt the most scalable routing protocol, which made it a popular choice for large-scale deployments from service provider networks to [enterprise WAN/VPN](http://blog.ipspace.net/search?q=DMVPN+BGP) networks and even [data centers](http://blog.ipspace.net/2013/10/exception-routing-with-bgp-sdn-done.html). Its only significant drawback is the tedious configuration process (which almost reminds me of writing COBOL programs decades ago).
 <!--more-->

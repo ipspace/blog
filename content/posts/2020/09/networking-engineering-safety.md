@@ -2,6 +2,9 @@
 title: "Networking, Engineering and Safety"
 date: 2020-09-07 07:07:00
 tags: [ BGP, design ]
+dcbgp_tag: rant
+series:
+- dcbgp
 ---
 You might remember my [occasional rants about lack of engineering](https://blog.ipspace.net/2018/12/bifurcation-of-knowledge.html) in networking. A long while ago [David Barroso](https://www.ipspace.net/Author:David_Barroso) nicely [summarized the situation in a tweet](https://twitter.com/dbarrosop/status/1204306828500312064) responding to my _[BGP and Car Safety](https://blog.ipspace.net/2019/12/bgp-and-car-safety.html)_ blog post:
 

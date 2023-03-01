@@ -1,15 +1,21 @@
 ---
-date: 2018-09-06T09:56:00.000+02:00
-tags: [ design, BGP, IP routing ]
+date: 2018-09-06 09:56:00+02:00
+dcbgp_tag: abstract
+series:
+- valley-free
+- dcbgp
+tags:
+- design
+- BGP
+- IP routing
 title: Valley-Free Routing
 url: /2018/09/valley-free-routing.html
-series: valley-free
 ---
 Reading academic articles about Internet-wide routing challenges you might stumble upon *valley-free routing* – a pretty important concept with applications in WAN and data center routing design.
 
 If you’re interested in the academic discussions, you’ll find a pretty exhaustive list of papers on this topic in the *Informative References* section of [RFC 7908](https://tools.ietf.org/html/rfc7908); here’s the over-simplified version.
 <!--more-->
-#### The Challenge
+### The Challenge
 
 Imagine a typical multi-layer somewhat-hierarchical routing structure. It could be a hierarchical WAN design, data center fabric, or the global Internet (we’ll focus on the latter in this blog post). You’d expect the traffic to flow from the source leaf node up the layers until it hits a path toward the destination leaf node where it makes a turn and starts flowing down the layers until it gets to the destination leaf node.
 
@@ -21,7 +27,7 @@ Unfortunately life isn’t always as neat and tidy. For example, a dual-homed cu
 
 **Loose definition**: A routed network with no traffic flow valleys for any source-destination pair has *valley-free routing*.
 
-#### Removing the Valleys
+### Removing the Valleys
 
 Two mechanisms are commonly used to remove traffic flow valleys from a hierarchical network:
 
@@ -33,7 +39,7 @@ Two mechanisms are commonly used to remove traffic flow valleys from a hierarchi
 
 {{<figure src="/2018/09/s550-VF_RouteFilters.png" caption="Removing a valley with route filters">}}
 
-#### Getting Formal
+### Getting Formal
 
 I’m positive at least one of the academic papers listed in RFC 7908 contains a rigorous definition of valley-free routing (pointers welcome); here’s a pretty loose attempt:
 

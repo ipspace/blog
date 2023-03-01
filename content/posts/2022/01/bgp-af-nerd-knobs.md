@@ -1,7 +1,11 @@
 ---
-title: "Three Dimensions of BGP Address Family Nerd Knobs"
-date: 2022-01-26 08:03:00
-tags: [ BGP ]
+date: 2022-01-26 08:03:00+00:00
+dcbgp_tag: details
+series:
+- dcbgp
+tags:
+- BGP
+title: Three Dimensions of BGP Address Family Nerd Knobs
 ---
 Got into an interesting BGP discussion a few days ago, resulting in a wild chase through recent SRv6 and BGP drafts and RFCs. You might find the results mildly interesting ;)
 

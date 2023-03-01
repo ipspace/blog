@@ -1,5 +1,9 @@
 ---
 date: 2016-02-17 11:32:00+01:00
+dcbgp_tag: server
+series:
+- dcbgp
+series_weight: 900
 tags:
 - data center
 - BGP
@@ -32,4 +36,4 @@ Juniper Contrail and Nuage VSP use BGP to [connect to the outside world](http://
 
 Lately, I've seen very smart full-stack engineers (read: sysadmins who understand networking) use recent versions of Quagga (with [Cumulus Networks patches](http://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html)) to run BGP across [unnumbered links](http://blog.ipspace.net/2014/06/unnumbered-ospf-interfaces-in-quagga.html) between servers and ToR switches totally simplifying both BGP configurations as well as deployment procedures (not to mention turning the whole fabric into pure L3 fabric with no VLANs on ToR switches).
 
-Want to know more? Dinesh Dutt mentioned the idea in a [recent webinar we did for Cumulus Networks](http://go.cumulusnetworks.com/networking-webinars) and will expand on it in the upcoming session of the [Leaf-and-Spine Fabric Designs](http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar.
+Want to know more? Dinesh Dutt described the idea in the [Leaf-and-Spine Fabric Architectures](http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar.

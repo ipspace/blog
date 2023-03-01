@@ -2,8 +2,10 @@
 title: BGP AS Numbers on MLAG Members
 date: 2020-05-21 07:03:00
 tags: [ BGP, EVPN, data center, fabric, design ]
-series: mlag
+series: [ mlag, dcbgp ]
 mlag_tag: design
+dcbgp_tag: design
+series_weight: 800
 ---
 I got this question about the use of AS numbers on data center leaf switches participating in an MLAG cluster:
 

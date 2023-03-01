@@ -1,9 +1,13 @@
 ---
-title: "Highlights: Dynamic Negotiation of BGP Capabilities"
-date: 2021-12-15 06:48:00
-tags: [ BGP ]
-series: bgp-cap
+date: 2021-12-15 06:48:00+00:00
+dcbgp_tag: details
 lastmod: 2021-12-20 18:44:00
+series:
+- bgp-cap
+- dcbgp
+tags:
+- BGP
+title: 'Highlights: Dynamic Negotiation of BGP Capabilities'
 ---
 The _[Dynamic Negotiation of BGP Capabilities](https://blog.ipspace.net/2021/11/bgp-dynamic-capability.html)_ blog post generated almost no comments, apart from the #facepalm realization that a [certain network operating system resets IBGP sessions when the sole EBGP session goes down](https://blog.ipspace.net/2021/11/bgp-dynamic-capability.html#891), but there were a few interesting comments on LinkedIn and Twitter.
 

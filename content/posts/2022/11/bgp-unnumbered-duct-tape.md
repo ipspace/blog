@@ -3,6 +3,9 @@ title: "BGP Unnumbered Duct Tape"
 date: 2022-11-15 07:18:00
 tags: [ BGP ]
 pre_scroll: True
+dcbgp_tag: cl
+series:
+- dcbgp
 ---
 Every time I mention unnumbered BGP sessions in a webinar, someone inevitably asks "_and how exactly does that work?_" I always replied "_gee, that's a blog post I should write one of these days,_" and although some readers might find it long overdue, here it is ;)
 
