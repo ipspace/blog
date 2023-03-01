@@ -1,10 +1,10 @@
 ---
-title: "netlab Simple VLAN Example"
-date: 2022-05-30 05:57:00
-tags: [ automation ]
-series: netlab
+date: 2022-05-30 05:57:00+00:00
 netlab_tag: vlan_vrf
 series_title: Simple VLAN Example
+tags:
+- netlab
+title: netlab Simple VLAN Example
 ---
 I had no idea how convoluted VLANs could get until I tried to [implement them in *netlab*](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html).
 

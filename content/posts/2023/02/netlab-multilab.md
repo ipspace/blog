@@ -1,10 +1,10 @@
 ---
-title: "Start Multiple netlab Labs on the Same Server"
-date: 2023-02-20 06:52:00
-tags: [ automation ]
-series: netlab
+date: 2023-02-20 06:52:00+00:00
 netlab_tag: use
 series_title: Start Multiple Lab Instances on the Same Server
+tags:
+- netlab
+title: Start Multiple netlab Labs on the Same Server
 ---
 A heavy _netlab_ user sent me an email along these lines:
 

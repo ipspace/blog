@@ -1,9 +1,9 @@
 ---
-title: "netsim-tools Release 1.0"
-date: 2021-11-01 06:27:00
-tags: [ automation ]
-series: netlab
+date: 2021-11-01 06:27:00+00:00
 netlab_tag: archive
+tags:
+- netlab
+title: netsim-tools Release 1.0
 ---
 It looks like *netsim-tools* reached a somewhat stable state, so it was time to do a cleanup and [publish release 1.0](https://github.com/ipspace/netlab) (also available on PyPi, use **pip3 install --upgrade netsim-tools** to fetch it).
 

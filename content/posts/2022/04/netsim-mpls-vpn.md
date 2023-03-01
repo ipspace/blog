@@ -1,10 +1,11 @@
 ---
-title: "Creating MPLS/VPN Labs With netlab"
-date: 2022-04-28 06:30:00
-tags: [ MPLS VPN ]
-series: netlab
+date: 2022-04-28 06:30:00+00:00
 netlab_tag: vlan_vrf
-pre_scroll: True
+pre_scroll: true
+tags:
+- MPLS VPN
+- netlab
+title: Creating MPLS/VPN Labs With netlab
 ---
 Two week ago I described how to create a simple VRF Lite lab with *netlab* [VRF configuration module](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html). Adding MPLS/VPN to the mix and creating a full-blown MPLS/VPN lab is a piece of cake. In this blog post we'll build a simple topology with two VRFs (*red* and *blue*) and two PE-routers:
 

@@ -1,9 +1,9 @@
 ---
-title: "Just Out: netsim-tools Release 1.1"
-date: 2022-01-11 08:01:00
-tags: [ automation ]
-series: netlab
+date: 2022-01-11 08:01:00+00:00
 netlab_tag: archive
+tags:
+- netlab
+title: 'Just Out: netsim-tools Release 1.1'
 ---
 New Year break was probably my busiest time (programming-wise) in years. [Jeroen van Bemmel](https://github.com/jbemmel) continued generating great ideas (and [writing code and device configuration templates](https://github.com/ipspace/netlab/graphs/contributors)), and I found myself saying, "_why not, let's do the right thing!_" more often than I expected. In parallel, [Stefano Sasso](https://github.com/ssasso) fixed configuration templates for Junos, Mikrotik Router OS, and VyOS, and we were good to go.
 

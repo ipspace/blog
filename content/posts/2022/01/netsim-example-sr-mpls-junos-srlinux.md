@@ -1,10 +1,12 @@
 ---
-title: "Sample Lab: SR-MPLS on Junos and SR Linux"
-date: 2022-01-31 07:36:00
+date: 2022-01-31 07:36:00+00:00
 lastmod: 2022-01-31 19:26:00
-tags: [ traffic engineering, MPLS ]
-series: netlab
 netlab_tag: use
+tags:
+- traffic engineering
+- MPLS
+- netlab
+title: 'Sample Lab: SR-MPLS on Junos and SR Linux'
 ---
 Last week I [published](https://blog.ipspace.net/2022/01/netsim-example-rsvp-te-junos.html) a link to [Pete Crocker](https://blog.petecrocker.com/about/)'s [RSVP-TE lab](https://github.com/ipspace/netlab-examples/tree/master/routing/rsvp-mpls-vsrx), but there's more: he [created another lab](https://github.com/ipspace/netlab-examples/tree/master/routing/sr-isis-te-vsrx) using the same topology that uses SR-MPLS with IS-IS to get the job done.
 

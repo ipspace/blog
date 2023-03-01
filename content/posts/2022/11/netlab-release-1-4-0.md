@@ -1,10 +1,10 @@
 ---
-title: "netlab Release 1.4.0: EVPN Asymmetric IRB, Anycast Gateways, VRRP"
-series_title: "EVPN Asymmetric IRB, Anycast Gateways, VRRP (Release 1.4.0)"
-date: 2022-11-07 07:41:00
-tags: [ automation ]
-series: netlab
+date: 2022-11-07 07:41:00+00:00
 netlab_tag: release
+series_title: EVPN Asymmetric IRB, Anycast Gateways, VRRP (Release 1.4.0)
+tags:
+- netlab
+title: 'netlab Release 1.4.0: EVPN Asymmetric IRB, Anycast Gateways, VRRP'
 ---
 The big three features of the [*netlab* release 1.4.0](https://netsim-tools.readthedocs.io/en/latest/release/1.4.html) are:
 

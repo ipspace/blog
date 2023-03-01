@@ -1,10 +1,10 @@
 ---
-title: "netlab Release 1.3.2: Mikrotik RouterOS 7, Additional EVPN Platforms"
-series_title: "Mikrotik RouterOS 7, Additional EVPN Platforms (Release 1.3.2)"
-date: 2022-10-10 06:22:00
-tags: [ automation ]
-series: netlab
+date: 2022-10-10 06:22:00+00:00
 netlab_tag: release
+series_title: Mikrotik RouterOS 7, Additional EVPN Platforms (Release 1.3.2)
+tags:
+- netlab
+title: 'netlab Release 1.3.2: Mikrotik RouterOS 7, Additional EVPN Platforms'
 ---
 The star of the [*netlab* release 1.3.2](https://netsim-tools.readthedocs.io/en/latest/release/1.3.html) is [Mikrotik RouterOS version 7](https://netsim-tools.readthedocs.io/en/latest/platforms.html). Stefano Sasso did a fantastic job adding support for VLANs, VRFs, OSPFv2, OSPFv3, BGP, MPLS, and MPLS/VPN, plus the libvirt [box-building recipe](https://netsim-tools.readthedocs.io/en/latest/labs/routeros7.html).
 

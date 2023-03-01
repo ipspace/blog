@@ -1,9 +1,9 @@
 ---
-title: "netsim-tools: New in December 2021"
-date: 2022-01-03 09:13:00
-series: netlab
+date: 2022-01-03 09:13:00+00:00
 netlab_tag: archive
-tags: [ automation ]
+tags:
+- netlab
+title: 'netsim-tools: New in December 2021'
 ---
 [Tons of new things](https://netsim-tools.readthedocs.io/en/latest/release/1.0.html) were added to *[netsim-tools](https://netsim-tools.readthedocs.io/en/latest/index.html)* in December 2021:
 

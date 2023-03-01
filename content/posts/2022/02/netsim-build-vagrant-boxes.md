@@ -1,10 +1,10 @@
 ---
-title: "Build Vagrant Boxes for Your Network Devices"
-date: 2022-02-10 07:45:00
-tags: [ automation ]
-series: netlab
-netlab_tag: overview
+date: 2022-02-10 07:45:00+00:00
 lastmod: 2022-02-15 14:37:00
+netlab_tag: overview
+tags:
+- netlab
+title: Build Vagrant Boxes for Your Network Devices
 ---
 One of the toughest hurdles to overcome when building your own virtual networking lab is the slog of downloading VM images for your favorite network devices and building Vagrant boxes[^VB] in case you want to use them with Vagrant or [netlab](https://netsim-tools.readthedocs.io/en/latest/index.html).
 

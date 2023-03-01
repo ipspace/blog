@@ -1,10 +1,10 @@
 ---
-title: "netlab Release 1.4.1: Cisco ASAv"
-series_title: "Cisco ASAv (Release 1.4.1)"
-date: 2022-11-28 07:12:00
-tags: [ automation ]
-series: netlab
+date: 2022-11-28 07:12:00+00:00
 netlab_tag: release
+series_title: Cisco ASAv (Release 1.4.1)
+tags:
+- netlab
+title: 'netlab Release 1.4.1: Cisco ASAv'
 ---
 The star of the [*netlab* release 1.4.1](https://netsim-tools.readthedocs.io/en/latest/release/1.4.html) is [Cisco ASAv support](https://netsim-tools.readthedocs.io/en/latest/platforms.html): IPv4 and IPv6 addressing, IS-IS and BGP, and libvirt box building instructions.
 

@@ -1,11 +1,11 @@
 ---
-title: "netlab: Building a Layer-2 Fabric"
-date: 2023-01-23 07:44:00
-tags: [ automation ]
-series: netlab
+date: 2023-01-23 07:44:00+00:00
 netlab_tag: vlan_vrf
+pre_scroll: true
 series_title: Building a Layer-2 Fabric
-pre_scroll: True
+tags:
+- netlab
+title: 'netlab: Building a Layer-2 Fabric'
 ---
 A friend of mine decided to use _netlab_ to build a simple traditional data center fabric, and asked me a question along these lines:
 

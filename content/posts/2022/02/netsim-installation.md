@@ -1,9 +1,9 @@
 ---
-title: "New netlab Installation Instructions"
-date: 2022-02-23 08:44:00
-tags: [ automation ]
-series: netlab
+date: 2022-02-23 08:44:00+00:00
 netlab_tag: release
+tags:
+- netlab
+title: New netlab Installation Instructions
 ---
 A long-time subscriber with a knack for telling me precisely why something I'm doing sucks big time sent me his opinion on netlab[^NL] installation instructions:
 

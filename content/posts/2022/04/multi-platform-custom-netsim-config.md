@@ -1,11 +1,11 @@
 ---
-title: "netlab Multi-Platform Custom Configuration Templates"
-series_title: "Multi-Platform Custom Configuration Templates"
-date: 2022-04-25 07:07:00
-tags: [ automation ]
-series: netlab
+date: 2022-04-25 07:07:00+00:00
 netlab_tag: extend
-pre_scroll: True
+pre_scroll: true
+series_title: Multi-Platform Custom Configuration Templates
+tags:
+- netlab
+title: netlab Multi-Platform Custom Configuration Templates
 ---
 In the _[Building a BGP Anycast Lab](https://blog.ipspace.net/2021/12/bgp-anycast-lab.html)_ I described how you could use custom configuration templates to extend the *netlab* functionality. 
 

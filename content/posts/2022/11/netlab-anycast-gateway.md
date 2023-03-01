@@ -1,11 +1,13 @@
 ---
-title: "netlab: IRB with Anycast Gateways"
-date: 2022-11-21 06:18:00
-tags: [ automation ]
-series: [ netlab, anycast ]
-netlab_tag: vlan_vrf
 anycast_tag: lab
+date: 2022-11-21 06:18:00+00:00
+netlab_tag: vlan_vrf
+series:
+- anycast
 series_title: IRB with Anycast Gateways
+tags:
+- netlab
+title: 'netlab: IRB with Anycast Gateways'
 ---
 [netlab release 1.4](/2022/11/netlab-release-1-4-0.html) added support for static anycast gateways and VRRP. Today we'll use that functionality to add anycast gateways to the [VLAN trunk lab](/2022/06/netsim-vlan-trunk.html):
 

@@ -1,10 +1,10 @@
 ---
-title: "New in netlab: VLANs, Hardware Labs, VRF Loopbacks"
-series_title: "VLANs, Hardware Labs, VRF Loopbacks (Release 1.2.2)"
-date: 2022-05-11 06:36:00
-tags: [ automation ]
-series: netlab
+date: 2022-05-11 06:36:00+00:00
 netlab_tag: release
+series_title: VLANs, Hardware Labs, VRF Loopbacks (Release 1.2.2)
+tags:
+- netlab
+title: 'New in netlab: VLANs, Hardware Labs, VRF Loopbacks'
 ---
 Here's a short list of major goodies included in netsim-tools release 1.2.2:
 

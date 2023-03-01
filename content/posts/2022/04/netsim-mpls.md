@@ -1,10 +1,12 @@
 ---
-title: "netlab MPLS Support"
-series_title: "MPLS Support (Release 1.2.0)"
-date: 2022-04-04 06:52:00
-tags: [ MPLS, MPLS VPN ]
-series: netlab
+date: 2022-04-04 06:52:00+00:00
 netlab_tag: release
+series_title: MPLS Support (Release 1.2.0)
+tags:
+- MPLS
+- MPLS VPN
+- netlab
+title: netlab MPLS Support
 ---
 *netlab* release 1.2.0 adds full-blown MPLS and MPLS/VPN support:
 

@@ -1,10 +1,10 @@
 ---
-title: "netlab Python Package and Unified CLI"
-date: 2021-09-01 06:07:00
-tags: [ automation ]
-series: netlab
+date: 2021-09-01 06:07:00+00:00
 netlab_tag: overview
 series_title: Python Package and Unified CLI
+tags:
+- netlab
+title: netlab Python Package and Unified CLI
 ---
 One of the major challenges of using *netsim-tools* (now renamed to *netlab*) was the installation process -- pull the code from GitHub, install the prerequisites, set up search paths... I knew how to fix it (turn the whole thing into a Python package) but I was always too busy to open that enormous can of worms.
 

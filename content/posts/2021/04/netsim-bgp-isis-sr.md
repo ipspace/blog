@@ -1,10 +1,10 @@
 ---
-title: "netsim-tools Release 0.6: BGP, IS-IS, SR-MPLS, FRR"
-series_title: "BGP, IS-IS, SR-MPLS, FRR"
-date: 2021-04-28 06:25:00
-tags: [ automation, BGP, IS-IS, segment routing ]
-series: netlab
+date: 2021-04-28 06:25:00+00:00
 netlab_tag: archive
+series_title: BGP, IS-IS, SR-MPLS, FRR
+tags:
+- netlab
+title: 'netsim-tools Release 0.6: BGP, IS-IS, SR-MPLS, FRR'
 ---
 **TL&DR**: If you want to test BGP, OSPF, IS-IS, or SR-MPLS in a virtual lab, you might build the lab faster with netsim-tools release 0.6.
 

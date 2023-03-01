@@ -1,9 +1,9 @@
 ---
-title: "Everything Is Better with a GUI (even netlab)"
-date: 2022-04-19 06:53:00
-tags: [ automation ]
-series: netlab
+date: 2022-04-19 06:53:00+00:00
 netlab_tag: overview
+tags:
+- netlab
+title: Everything Is Better with a GUI (even netlab)
 ---
 Some people think that [everything is better with Bluetooth](https://www.youtube.com/watch?v=0KXoBcQER_0). They're clearly wrong; according to the ancient wisdom of product managers working for networking vendors, everything is better with a GUI.
 

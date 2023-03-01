@@ -1,10 +1,10 @@
 ---
-title: "netlab Release 1.3: VXLAN and EVPN"
-series_title: "VXLAN and EVPN (Release 1.3)"
-date: 2022-09-05 07:05:00
-tags: [ automation ]
-series: netlab
+date: 2022-09-05 07:05:00+00:00
 netlab_tag: release
+series_title: VXLAN and EVPN (Release 1.3)
+tags:
+- netlab
+title: 'netlab Release 1.3: VXLAN and EVPN'
 ---
 *netlab* release 1.3 contains two major additions:
 

@@ -1,10 +1,10 @@
 ---
-title: "Mix Containers and VMs with netlab Release 1.5.0"
-date: 2023-02-06 06:51:00
-series_title: "Mix Containers and VMs in the Same Lab Topology"
-tags: [ automation ]
-series: netlab
+date: 2023-02-06 06:51:00+00:00
 netlab_tag: use
+series_title: Mix Containers and VMs in the Same Lab Topology
+tags:
+- netlab
+title: Mix Containers and VMs with netlab Release 1.5.0
 ---
 Maybe it's just me, but I always need a few extra devices in my virtual labs to have endpoints I could ping to/from or to have external routing information sources. We used VRF- and VLAN tricks in the days when we had to use physical devices to carve out a dozen hosts out of a single Cisco 2501, and life became much easier when you could spin up a few additional virtual machines in a virtual lab instead.
 

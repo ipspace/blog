@@ -1,13 +1,17 @@
 ---
-title: "Building a BGP Anycast Lab"
-date: 2021-12-06 07:30:00
-tags: [ BGP ]
-series: [ netlab, anycast, dcbgp ]
-netlab_tag: use
 anycast_tag: lab
+date: 2021-12-06 07:30:00+00:00
 dcbgp_tag: interesting
-pre_scroll: True
 lastmod: 2022-01-16 07:58:00
+netlab_tag: use
+pre_scroll: true
+series:
+- anycast
+- dcbgp
+tags:
+- BGP
+- netlab
+title: Building a BGP Anycast Lab
 ---
 The _[Anycast Works Just Fine with MPLS/LDP](https://blog.ipspace.net/2021/11/anycast-mpls.html)_ blog post generated so much interest that I decided to check a few similar things, including running BGP-based anycast over a BGP-free core, and using BGP Labeled Unicast (BGP-LU).
 

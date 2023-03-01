@@ -1,10 +1,11 @@
 ---
-title: "New in netlab: More MPLS and VRFs, Dell OS10, Cumulus 5.0 on Containerlab"
-series_title: "More MPLS and VRFs, Dell OS10, Cumulus 5.0 on Containerlab (Release 1.2.1)"
-date: 2022-04-21 07:41:00
-tags: [ automation ]
-series: netlab
+date: 2022-04-21 07:41:00+00:00
 netlab_tag: release
+series_title: More MPLS and VRFs, Dell OS10, Cumulus 5.0 on Containerlab (Release
+  1.2.1)
+tags:
+- netlab
+title: 'New in netlab: More MPLS and VRFs, Dell OS10, Cumulus 5.0 on Containerlab'
 ---
 I already mentioned the [netsim-tools Easter Egg](/2022/04/netsim-tools-better-with-gui.html), here are the other cool features shipping in release 1.2.1:
 
