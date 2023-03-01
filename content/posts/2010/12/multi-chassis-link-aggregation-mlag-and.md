@@ -1,11 +1,12 @@
 ---
 date: 2010-12-08 06:31:00.006000+01:00
+mlag_tag: overview
+series:
+- mlag
 tags:
 - link aggregation
 - switching
 - data center
-series: mlag
-mlag_tag: overview
 title: Multi-Chassis Link Aggregation (MLAG) and Hot Potato Switching
 url: /2010/12/multi-chassis-link-aggregation-mlag-and.html
 ---

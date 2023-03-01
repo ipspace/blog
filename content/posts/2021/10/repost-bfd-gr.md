@@ -1,8 +1,11 @@
 ---
-title: "Interactions Between BFD and Graceful Restart"
-date: 2021-10-26 06:52:00
-tags: [ IP routing, high availability ]
-series: ha-switching
+date: 2021-10-26 06:52:00+00:00
+series:
+- ha-switching
+tags:
+- IP routing
+- high availability
+title: Interactions Between BFD and Graceful Restart
 ---
 _We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Dmitry Perets on the [interactions between BFD and GR](https://blog.ipspace.net/2021/10/graceful-restart-bfd.html#804)_.
 

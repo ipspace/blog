@@ -1,8 +1,11 @@
 ---
-title: "Data Center Switching ASICs Tradeoffs"
-date: 2022-06-02 06:01:00
-tags: [ data center, switching ]
-series: ASIC
+date: 2022-06-02 06:01:00+00:00
+series:
+- ASIC
+tags:
+- data center
+- switching
+title: Data Center Switching ASICs Tradeoffs
 ---
 A brief mention of Broadcom ASIC families in the _[Networking Hardware/Software Disaggregation in 2022](https://blog.ipspace.net/2022/05/network-hardware-disaggregation-2022.html)_ blog post triggered an interesting discussion of ASIC features and where one should use different ASIC families.
 

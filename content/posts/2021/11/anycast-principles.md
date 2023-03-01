@@ -1,10 +1,12 @@
 ---
-title: "Anycast Fundamentals"
-date: 2021-11-24 07:15:00
-tags: [ IP routing ]
-series: anycast
 anycast_tag: intro
+date: 2021-11-24 07:15:00+00:00
+series:
+- anycast
 series_weight: 900
+tags:
+- IP routing
+title: Anycast Fundamentals
 ---
 I got into an interesting debate after I published the _[Anycast Works Just Fine with MPLS/LDP](https://blog.ipspace.net/2021/11/anycast-mpls.html)_ blog post, and after a while it turned out we have a slightly different understanding what *anycast* means. Time to fall back to a [Wikipedia definition](https://en.wikipedia.org/wiki/Anycast):
 

@@ -1,8 +1,10 @@
 ---
-title: "Fast Failover: Topologies"
-date: 2020-11-19 07:28:00
-tags: [ IP routing ]
-series: fast-failover
+date: 2020-11-19 07:28:00+00:00
+series:
+- fast-failover
+tags:
+- IP routing
+title: 'Fast Failover: Topologies'
 ---
 In the [blog post introducing fast failover challenge](/2020/11/fast-failover-challenge.html) I mentioned several typical topologies used in fast failover designs. It's time to explore them. 
 

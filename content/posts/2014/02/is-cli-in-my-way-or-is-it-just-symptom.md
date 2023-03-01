@@ -1,17 +1,24 @@
 ---
+cdate: 2022-07-10
+comment: 'Some SDN proponents claim that the way we configure networking devices (using
+  CLI) is the biggest networking problem we’re facing today. They also conveniently
+  forget that every scalable IT solution uses automation, text files and CLI… because
+  they work, and allow experienced operators to work faster.
+
+
+  Since I wrote this blog post, the debate shifted to _API is better than CLI_, and
+  I had a [few choice things to say about that fake dilemma](https://www.ipspace.net/kb/tag/cli-or-api.html).
+
+  '
 date: 2014-02-18 07:05:00+01:00
+sdn_101_tag: extra
+series:
+- sdn_101
+series_weight: 130
 tags:
 - SDN
 title: Is CLI In My Way … or Is It Just a Symptom of a Bigger Problem?
-series: sdn_101
-sdn_101_tag: extra
-series_weight: 130
 url: /2014/02/is-cli-in-my-way-or-is-it-just-symptom.html
-cdate: 2022-07-10
-comment: |
-  Some SDN proponents claim that the way we configure networking devices (using CLI) is the biggest networking problem we’re facing today. They also conveniently forget that every scalable IT solution uses automation, text files and CLI… because they work, and allow experienced operators to work faster.
-  
-  Since I wrote this blog post, the debate shifted to _API is better than CLI_, and I had a [few choice things to say about that fake dilemma](https://www.ipspace.net/kb/tag/cli-or-api.html).
 ---
 My good friend Ethan recently published a blog post [rightfully complaining how various vendor CLIs hamper our productivity](https://ethancbanks.com/abstract-all-the-things-or-why-clis-are-in-my-way/). He's absolutely correct from the productivity standpoint, and I agree with his conclusions (we need a layer of abstraction), but there's more behind the scenes.
 <!--more-->

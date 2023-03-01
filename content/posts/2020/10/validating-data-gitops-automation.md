@@ -1,9 +1,11 @@
 ---
-title: "Validating Data in GitOps-Based Automation"
-date: 2020-10-13 06:31:00
-tags: [ automation ]
-series: [ cicd ]
 cicd_tag: testing
+date: 2020-10-13 06:31:00+00:00
+series:
+- cicd
+tags:
+- automation
+title: Validating Data in GitOps-Based Automation
 ---
 Anyone using [text files as a poor man's database](https://blog.ipspace.net/2019/04/text-files-or-relational-database.html) eventually stumbles upon the challenge left as a comment in [Automating Cisco ACI Environments](https://blog.ipspace.net/2019/03/automating-cisco-aci-environment-with.html) blog post:
 

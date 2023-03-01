@@ -1,13 +1,14 @@
 ---
 date: 2010-11-01 07:02:00.005000+01:00
+mlag_tag: implement
 more_blurb: true
+series:
+- mlag
 tags:
 - link aggregation
 - data center
-title: 'External Brains Driving an MLAG Cluster'
+title: External Brains Driving an MLAG Cluster
 url: /2010/11/multi-chassis-link-aggregation-mlag.html
-series: mlag
-mlag_tag: implement
 ---
 {{<note warn>}}The architecture described in this blog post is long gone, but it's worth remembering what vendors tried in the past and why it failed -- someone will inevitably try to sell an obsolete idea as the next best thing since sliced bread (see also RFC 1925 Rule 11){{</note>}}
 

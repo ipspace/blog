@@ -1,18 +1,26 @@
 ---
+cdate: 2022-07-06
+comment: 'The industry press jumped onto the [ONF/OpenFlow hype](/2011/03/open-networking-foundation-fabric.html)
+  with gusto, without ever trying to figure out what it''s all about. Not surprisingly,
+  the articles they managed to produce were full of nonsense, prompting me to write
+  yet another rant in April 2011.
+
+
+  Sad fact: some publications never clean up the mess they made, even when there''s
+  a huge clash between what they published and the reality. The Network World article
+  was still on their web site in July 2022.
+
+  '
 date: 2011-04-19 07:23:00+02:00
+sdn_hype_tag: initial
+series:
+- sdn_hype
 tags:
 - MPLS
 - SDN
 - OpenFlow
-series: sdn_hype
-sdn_hype_tag: initial
 title: 'OpenFlow FAQ: Will the Hype Ever Stop?'
 url: /2011/04/openflow-faq-will-hype-ever-stop.html
-comment: |
-  The industry press jumped onto the [ONF/OpenFlow hype](/2011/03/open-networking-foundation-fabric.html) with gusto, without ever trying to figure out what it's all about. Not surprisingly, the articles they managed to produce were full of nonsense, prompting me to write yet another rant in April 2011.
-  
-  Sad fact: some publications never clean up the mess they made, even when there's a huge clash between what they published and the reality. The Network World article was still on their web site in July 2022.
-cdate: 2022-07-06
 ---
 Network World has published another masterpiece last week: [*FAQ: What is OpenFlow and why is it needed?*](https://www.networkworld.com/article/2202144/data-center-faq-what-is-openflow-and-why-is-it-needed.html) Following the [physics-changing promises made during the Open Network Foundation launch](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html), one would hope to get some straight facts; obviously things don't work that way. Let's walk through some of the points. While most of them might not be too incorrect from an oversimplified perspective, they do over-hype a potentially useful technology way out of proportions.
 

@@ -1,8 +1,11 @@
 ---
-title: "Repost: Using MP-TCP to Utilize Unequal Links"
-date: 2021-03-17 06:59:00
-tags: [ TCP, QoS ]
-series: UCMP
+date: 2021-03-17 06:59:00+00:00
+series:
+- UCMP
+tags:
+- TCP
+- QoS
+title: 'Repost: Using MP-TCP to Utilize Unequal Links'
 ---
 In the *[Does Unequal-Cost Multipathing Make Sense](https://blog.ipspace.net/2021/02/does-ucmp-make-sense.html)* blog post I wrote (paraphrased):
 

@@ -1,11 +1,12 @@
 ---
 date: 2010-12-21 09:40:00.002000+01:00
+mlag_tag: overview
+series:
+- mlag
 tags:
 - link aggregation
 - load balancing
 title: MLAG and Load Balancing
-series: mlag
-mlag_tag: overview
 url: /2010/12/mlag-and-load-balancing.html
 ---
 FullMesh added an excellent comment to my [Multi-Chassis Link Aggregation (MLAG) and hot potato switching](https://blog.ipspace.net/2010/12/multi-chassis-link-aggregation-mlag-and.html) post. He wrote:

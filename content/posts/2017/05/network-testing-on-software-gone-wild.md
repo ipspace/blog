@@ -1,15 +1,16 @@
 ---
+cicd_tag: podcast
 date: 2017-05-12 12:45:00+02:00
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_78-Network_Testing.mp3
+series:
+- cicd
+series_weight: 500
 tags:
 - automation
 - podcast
 - Software Gone Wild
 title: Network Testing on Software Gone Wild
 url: /2017/05/network-testing-on-software-gone-wild.html
-series: [ cicd ]
-cicd_tag: podcast
-series_weight: 500
 ---
 Network automation and orchestration is a great idea... but how do you verify that what your automation script wants to do won't break the network? In [Episode 78](http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_78-Network_Testing.mp3) of Software Gone Wild we discussed the intricacies of testing network automation solutions with [Kristian Larsson](https://twitter.com/plajjan) (developer of [Terastream](http://blog.ipspace.net/2013/11/terastream-part-2-lightweight-4over6.html) orchestration softare) and [David Barroso](http://www.ipspace.net/Author:David_Barroso) of the [NAPALM](http://blog.ipspace.net/search?q=napalm) and [SDN Internet Router](http://blog.ipspace.net/search?q=sdn+internet+router) fame.
 <!--more-->

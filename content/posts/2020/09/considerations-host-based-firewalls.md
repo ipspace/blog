@@ -1,8 +1,11 @@
 ---
-title: "Considerations for Host-based Firewalls (Part 1)"
-date: 2020-09-03 06:57:00
-tags: [ security,firewall ]
-series: host-firewalls
+date: 2020-09-03 06:57:00+00:00
+series:
+- host-firewalls
+tags:
+- security
+- firewall
+title: Considerations for Host-based Firewalls (Part 1)
 ---
 *This is a guest blog post by [Matthias Luft](https://www.linkedin.com/in/matthias-luft-b50b7219/), Principal Platform Security Engineer @ Salesforce, and a regular [ipSpace.net guest speaker](https://www.ipspace.net/Author:Matthias_Luft).*
 

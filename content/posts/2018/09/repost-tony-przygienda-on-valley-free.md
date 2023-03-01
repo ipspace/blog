@@ -1,9 +1,13 @@
 ---
-date: 2018-09-08T11:59:00.000+02:00
-tags: [ design, data center, IP routing ]
+date: 2018-09-08 11:59:00+02:00
+series:
+- valley-free
+tags:
+- design
+- data center
+- IP routing
 title: 'Repost: Tony Przygienda on Valley-Free (or Non-ZigZag) Routing'
 url: /2018/09/repost-tony-przygienda-on-valley-free.html
-series: valley-free
 ---
 Most blog posts generate the usual noise from the anonymous peanut gallery (if only they'd have at least a sliver of Statler and Waldorf in them), but every now and then there's a comment that's pure gold. The one [made by Tony Przygienda](https://blog.ipspace.net/2018/09/valley-free-routing.html?showComment=1536260167668#c9162579753181718524) (of [RIFT fame](https://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html)) on [Valley-Free Routing](https://blog.ipspace.net/2018/09/valley-free-routing.html) post is so good and relevant that I decided to republish it as a separate blog post. Enjoy!
 <!--more-->

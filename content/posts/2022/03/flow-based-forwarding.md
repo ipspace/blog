@@ -1,8 +1,11 @@
 ---
-title: "Flow-Based Packet Forwarding"
-date: 2022-03-08 06:12:00
-tags: [ networking fundamentals, switching ]
-series: forwarding
+date: 2022-03-08 06:12:00+00:00
+series:
+- forwarding
+tags:
+- networking fundamentals
+- switching
+title: Flow-Based Packet Forwarding
 ---
 In the _[Cache-Based Packet Forwarding](https://blog.ipspace.net/2022/02/cache-based-forwarding.html)_ blog post I described what happens when someone tries to bypass the complexities of IP routing table lookup with a forwarding cache. 
 

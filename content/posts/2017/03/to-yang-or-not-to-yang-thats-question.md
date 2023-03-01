@@ -1,12 +1,13 @@
 ---
+cicd_tag: tools
 date: 2017-03-15 07:38:00+01:00
+series:
+- cicd
 tags:
 - automation
 - NETCONF
 title: To YANG or Not to YANG, That’s the Question
 url: /2017/03/to-yang-or-not-to-yang-thats-question.html
-series: [ cicd ]
-cicd_tag: tools
 ---
 Yannis sent me an interesting challenge after reading my short "[*this is how I wasted my time*](http://blog.ipspace.net/2016/12/generating-ospf-bgp-and-mplsvpn.html)" update:
 

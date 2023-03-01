@@ -1,8 +1,10 @@
 ---
-title: "Running IS-IS over Unnumbered Ethernet Interfaces"
-date: 2022-01-17 07:04:00
-tags: [ IS-IS ]
-series: unnumbered-interfaces
+date: 2022-01-17 07:04:00+00:00
+series:
+- unnumbered-interfaces
+tags:
+- IS-IS
+title: Running IS-IS over Unnumbered Ethernet Interfaces
 ---
 Last time we figured out that we [cannot run OSPF over unnumbered interfaces](/2022/01/ospf-unnumbered.html) that are not point-to-point links because OSPF makes assumptions about interface IP addresses. IS-IS makes no such assumptions; IPv4 and IPv6 prefixes are just a bunch of TLVs exchanged between routers over a [dedicated layer-3 protocol](/2009/06/is-is-is-not-running-over-clnp.html) with ridiculously long network addresses. 
 

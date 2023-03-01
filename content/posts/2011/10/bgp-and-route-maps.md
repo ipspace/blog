@@ -1,10 +1,11 @@
 ---
 date: 2011-10-19 07:15:00+02:00
+series:
+- bgp-essentials
 tags:
 - BGP
 title: BGP and Route Maps
 url: /2011/10/bgp-and-route-maps.html
-series: bgp-essentials
 ---
 This is a nice email I got from an engineer struggling with multi-homing BGP setup:
 

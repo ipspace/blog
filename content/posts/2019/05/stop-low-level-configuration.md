@@ -1,12 +1,13 @@
 ---
 date: 2019-05-16 08:39:00+02:00
+niac_tag: implement
+series:
+- niac
 tags:
 - automation
 - configuration
 title: Stop the Low-Level Configuration Manipulation
 url: /2019/05/stop-low-level-configuration.html
-series: [ niac ]
-niac_tag: implement
 ---
 *This blog post was initially sent to subscribers of my SDN and Network Automation mailing list. *[*Subscribe here*](http://www.ipspace.net/Subscribe/Five_SDN_Tips)*.*
 

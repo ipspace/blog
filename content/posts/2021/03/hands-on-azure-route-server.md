@@ -1,8 +1,11 @@
 ---
-title: "Hands-On: Azure Route Server"
-date: 2021-03-24 06:25:00
-tags: [ cloud, Azure ]
-series: azure-rs
+date: 2021-03-24 06:25:00+00:00
+series:
+- azure-rs
+tags:
+- cloud
+- Azure
+title: 'Hands-On: Azure Route Server'
 ---
 **TL&DR**: Azure Route Server works as advertised. Setting it up is excruciatingly slow. You might want to start the process just before taking a long lunch break.
 

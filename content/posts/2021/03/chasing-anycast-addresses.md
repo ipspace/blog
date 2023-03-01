@@ -1,11 +1,14 @@
 ---
-title: "Chasing Anycast IP Addresses"
-lastmod: 2021-03-05 16:22:00
-date: 2021-03-03 06:02:00
-tags: [ IP routing, load balancing ]
-series: anycast
 anycast_tag: intro
+date: 2021-03-03 06:02:00+00:00
+lastmod: 2021-03-05 16:22:00
+series:
+- anycast
 series_weight: 100
+tags:
+- IP routing
+- load balancing
+title: Chasing Anycast IP Addresses
 ---
 One of my readers sent me this question:
 

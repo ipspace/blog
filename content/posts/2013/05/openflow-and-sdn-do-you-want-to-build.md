@@ -1,18 +1,26 @@
 ---
+cdate: 2022-07-10
+comment: 'It’s reasonably easy to add automation and orchestration on top of existing
+  network implementation. Throwing away decades of field experience and replacing
+  existing solutions with an OpenFlow-based controller is a totally different story
+  as I explained in May 2013.
+
+
+  In the meantime, most projects trying to implement centralized  control plane turned
+  into abandonware -- it turns out it''s too hard to reinvent all the wheels even
+  if you''re a networking vendor or VC-funded startup -- and [Open Daylight got nowhere](https://blog.ipspace.net/2017/05/is-anyone-using-open-daylight.html).
+
+  '
 date: 2013-05-23 07:07:00+02:00
+sdn_101_tag: extra
+series:
+- sdn_101
+series_weight: 100
 tags:
 - SDN
 - OpenFlow
 title: OpenFlow and SDN – Do You Want to Build Your Own Racing Car?
 url: /2013/05/openflow-and-sdn-do-you-want-to-build.html
-series: sdn_101
-sdn_101_tag: extra
-series_weight: 100
-cdate: 2022-07-10
-comment: |
-  It’s reasonably easy to add automation and orchestration on top of existing network implementation. Throwing away decades of field experience and replacing existing solutions with an OpenFlow-based controller is a totally different story as I explained in May 2013.
-  
-  In the meantime, most projects trying to implement centralized  control plane turned into abandonware -- it turns out it's too hard to reinvent all the wheels even if you're a networking vendor or VC-funded startup -- and [Open Daylight got nowhere](https://blog.ipspace.net/2017/05/is-anyone-using-open-daylight.html).
 ---
 The OpenFlow zealots are quick to point out the beauties of the centralized control plane, and the huge savings you can expect from using commodity hardware and open-source software. What they usually forget to tell you is that you also have to reinvent all the wheels the networking industry has invented in the last 30 years.
 <!--more-->

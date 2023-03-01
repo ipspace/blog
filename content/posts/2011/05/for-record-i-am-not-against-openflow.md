@@ -1,16 +1,24 @@
 ---
-date: 2011-05-27 06:03:00
+comment: 'After the initial OpenFlow-related blog posts, the OpenFlow pundits quickly
+  labeled me an OpenFlow hater, but I was just my grumpy old self ;) Here’s the blog
+  post (from May 2011) that tried to set the record straight (not that such things
+  would ever work).
+
+
+  In the meantime, the whole argument became moot -- OpenFlow is mostly dead and forgotten
+  -- but the "_don''t expect miracles_" message is as relevant today as it''s ever
+  been.
+
+  '
+date: 2011-05-27 06:03:00+00:00
+lastmod: 2022-07-06 14:40:00
+sdn_hype_tag: initial
+series:
+- sdn_hype
 tags:
 - OpenFlow
 title: 'For the Record: I Am Not Against OpenFlow ...'
 url: /2011/05/for-record-i-am-not-against-openflow.html
-series: sdn_hype
-sdn_hype_tag: initial
-lastmod: 2022-07-06 14:40:00
-comment: |
-  After the initial OpenFlow-related blog posts, the OpenFlow pundits quickly labeled me an OpenFlow hater, but I was just my grumpy old self ;) Here’s the blog post (from May 2011) that tried to set the record straight (not that such things would ever work).
-  
-  In the meantime, the whole argument became moot -- OpenFlow is mostly dead and forgotten -- but the "_don't expect miracles_" message is as relevant today as it's ever been.
 ---
 ... as some of its supporters seem to believe every now and then (I do get severe allergic reaction when someone claims it will [change the laws of physics](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html) or when I'm faced with [technical inaccuracies peddled by an Instant Expert](https://web.archive.org/web/20111018065642/https://www.networkworld.com/news/2011/052511-openflow-expert.html) not to mention [knee-jerking financial experts](https://www.barrons.com/articles/BL-TB-32802)). Even more, assuming it can [cross the adoption gap](http://etherealmind.com/openflow-why-it-can-cross-the-adoption-gap/)[^DN], it could fundamentally change the business models of networking vendors (maybe not in the way you'd like them to be changed). 
 

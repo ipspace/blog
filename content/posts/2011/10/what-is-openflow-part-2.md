@@ -1,5 +1,18 @@
 ---
-date: 2011-10-11T06:17:00.000+02:00
+comment: 'I started getting more detailed OpenFlow questions after the initial “[What
+  is OpenFlow](/2011/04/what-is-openflow.html)” blog post, and tried to answer the
+  most common ones in a follow-up post.
+
+
+  Please note that [OpenFlow remains a mostly-academic protocol](/2022/05/openflow-still-kicking.html),
+  and is not supported on most modern routers or switches.
+
+  '
+date: 2011-10-11 06:17:00+02:00
+openflow_101_tag: intro
+series:
+- openflow_101
+series_weight: 270
 tags:
 - SDN
 - data center
@@ -7,13 +20,6 @@ tags:
 - virtualization
 title: What Is OpenFlow (Part 2)?
 url: /2011/10/what-is-openflow-part-2.html
-series: openflow_101
-series_weight: 270
-openflow_101_tag: intro
-comment: |
-  I started getting more detailed OpenFlow questions after the initial “[What is OpenFlow](/2011/04/what-is-openflow.html)” blog post, and tried to answer the most common ones in a follow-up post.
-  
-  Please note that [OpenFlow remains a mostly-academic protocol](/2022/05/openflow-still-kicking.html), and is not supported on most modern routers or switches.
 ---
 Got this set of questions from a CCIE pondering emerging technologies that could be of potential use in his data center:
 

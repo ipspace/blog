@@ -1,16 +1,17 @@
 ---
 date: 2018-03-30 09:33:00+02:00
+dcbgp_tag: newrp
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_88-RIFT.mp3
+series:
+- dcbgp
+series_title: Data Center Routing with RIFT with Dr. Tony Przygienda
+series_weight: 900
 tags:
 - podcast
 - data center
 - IP routing
 - Software Gone Wild
-series: dcbgp
-series_weight: 900
-dcbgp_tag: newrp
 title: Data Center Routing with RIFT on Software Gone Wild
-series_title: Data Center Routing with RIFT with Dr. Tony Przygienda
 url: /2018/03/data-center-routing-with-rift-on.html
 ---
 Years ago Petr Lapukhov decided that it's a waste of time to try to make OSPF or IS-IS work in large-scale data center leaf-and-spine fabrics and figured out how to [use BGP as a better IGP](http://blog.ipspace.net/2016/02/using-bgp-in-data-center-fabrics.html).

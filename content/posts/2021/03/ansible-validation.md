@@ -1,9 +1,11 @@
 ---
-title: "New Ansible Data Validation Module(s)"
-date: 2021-03-04 07:20:00
-tags: [ automation ]
-series: [ cicd ]
 cicd_tag: tools
+date: 2021-03-04 07:20:00+00:00
+series:
+- cicd
+tags:
+- automation
+title: New Ansible Data Validation Module(s)
 ---
 A few months ago I described how you could [use JSON Schema to validate your automation data models](https://www.ipspace.net/kb/DataModels/70-Validation.html), host/group variable files, or even Ansible inventory file. 
 

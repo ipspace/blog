@@ -1,8 +1,11 @@
 ---
-title: "Big Picture: BFD, Non-Stop Forwarding, and Graceful Restart"
-date: 2021-10-28 07:25:00
-tags: [ networking fundamentals, high availability ]
-series: ha-switching
+date: 2021-10-28 07:25:00+00:00
+series:
+- ha-switching
+tags:
+- networking fundamentals
+- high availability
+title: 'Big Picture: BFD, Non-Stop Forwarding, and Graceful Restart'
 ---
 _We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Erik Auerswald's [excellent summary of BFD, NSF, and GR](https://blog.ipspace.net/2021/10/graceful-restart-bfd.html#803)_.
 

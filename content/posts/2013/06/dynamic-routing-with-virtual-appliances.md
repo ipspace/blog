@@ -1,5 +1,8 @@
 ---
+anycast_tag: use
 date: 2013-06-10 07:02:00+02:00
+series:
+- anycast
 tags:
 - data center
 - overlay networks
@@ -7,8 +10,6 @@ tags:
 - high availability
 title: Dynamic Routing with Virtual Appliances
 url: /2013/06/dynamic-routing-with-virtual-appliances.html
-series: anycast
-anycast_tag: use
 ---
 Meeting Brad Hedlund in person was definitely one of the highlights of my Interop 2013 week. We had an awesome conversation and quickly realized how closely aligned our views of [VLANs](https://blog.ipspace.net/2013/04/vlans-are-wrong-abstraction-for-virtual.html), [overlay networks](https://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html) and [virtual appliances](https://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html) are.
 

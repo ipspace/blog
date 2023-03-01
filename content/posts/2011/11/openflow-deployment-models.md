@@ -1,20 +1,27 @@
 ---
+comment: "The all-or-nothing approach to OpenFlow was quickly replaced with a more\
+  \ realistic approach. An OpenFlow-only deployment is potentially viable in dedicated\
+  \ greenfield environments, but even there it’s sometimes better to rely on functionality\
+  \ already available in networking devices instead of reinventing all the features\
+  \ and protocols that were designed, programmed, tested and deployed in the last\
+  \ 20 years. \n\nNot surprisingly, the traditional networking vendors quickly moved\
+  \ from OpenFlow-only approach to a plethora of hybrid solutions, and even the startups\
+  \ pushing OpenFlow-only model had to [distribute control plane functionality to\
+  \ make their solutions work](https://blog.ipspace.net/2015/02/big-cloud-fabric-scaling-openflow-fabric.html).\n\
+  \nPlease note that the blog post refers to OpenFlow implementations that might be\
+  \ obsolete -- NEC stopped selling ProgrammableFlow, and Juniper implemented a more\
+  \ traditional approach to OpenFlow than what Dave Ward was telling us in 2011.\n"
 date: 2011-11-02 07:28:00+01:00
+openflow_101_tag: use
+series:
+- openflow_101
+series_weight: 200
 tags:
 - design
 - SDN
 - OpenFlow
 title: OpenFlow Deployment Models
 url: /2011/11/openflow-deployment-models.html
-series: openflow_101
-series_weight: 200
-openflow_101_tag: use
-comment: |
-  The all-or-nothing approach to OpenFlow was quickly replaced with a more realistic approach. An OpenFlow-only deployment is potentially viable in dedicated greenfield environments, but even there it’s sometimes better to rely on functionality already available in networking devices instead of reinventing all the features and protocols that were designed, programmed, tested and deployed in the last 20 years. 
-
-  Not surprisingly, the traditional networking vendors quickly moved from OpenFlow-only approach to a plethora of hybrid solutions, and even the startups pushing OpenFlow-only model had to [distribute control plane functionality to make their solutions work](https://blog.ipspace.net/2015/02/big-cloud-fabric-scaling-openflow-fabric.html).
-  
-  Please note that the blog post refers to OpenFlow implementations that might be obsolete -- NEC stopped selling ProgrammableFlow, and Juniper implemented a more traditional approach to OpenFlow than what Dave Ward was telling us in 2011.
 ---
 I hope you never believed the "OpenFlow networking nirvana" hype in which smart open-source programmable controllers control dumb low-cost switches, busting the "networking = mainframes" model and bringing the Linux-like golden age to every network. As the debates during the [OpenFlow symposium](http://techfieldday.com/2011/openflow-symposium/) clearly illustrated, the OpenFlow reality is way more complex than it appears at a first glance.
 

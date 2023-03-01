@@ -1,12 +1,13 @@
 ---
 date: 2011-01-26 06:45:00.011000+01:00
+mlag_tag: server
+series:
+- mlag
 tags:
 - link aggregation
 - switching
 - virtualization
 title: vSwitch in Multi-chassis Link Aggregation (MLAG) environment
-series: mlag
-mlag_tag: server
 url: /2011/01/vswitch-in-multi-chassis-link.html
 ---
 Yesterday I described how the [lack of LACP support in VMware's vSwitch and vDS can limit the load balancing options offered by the upstream switches](https://blog.ipspace.net/2011/01/vmware-vswitch-does-not-support-lacp.html). The situation gets totally out-of-hand when you connect an ESX server with two uplinks to two (or more) switches that are part of a Multi-chassis Link Aggregation (MLAG) cluster.

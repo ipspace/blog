@@ -1,8 +1,12 @@
 ---
-title: "Back to Basics: The History of IP Interface Addresses"
-date: 2021-05-12 06:59:00
-tags: [ IP routing, bridging, networking fundamentals ]
-series: unnumbered-interfaces
+date: 2021-05-12 06:59:00+00:00
+series:
+- unnumbered-interfaces
+tags:
+- IP routing
+- bridging
+- networking fundamentals
+title: 'Back to Basics: The History of IP Interface Addresses'
 ---
 In the [previous blog post](/2021/05/fundamentals-need-interface-addresses.html) in [this series](/series/unnumbered-interfaces.html), we figured out that you might not need link-layer addresses on point-to-point links. We also started exploring whether you need network-layer addresses on individual interfaces but didn't get very far. We'll fix that today and discover the secrets behind IP address-per-interface design.
 

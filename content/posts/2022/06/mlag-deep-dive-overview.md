@@ -1,10 +1,12 @@
 ---
-title: "MLAG Deep Dive: System Overview"
-date: 2022-06-01 06:11:00
-tags: [ switching ]
-series: mlag
+date: 2022-06-01 06:11:00+00:00
 mlag_tag: deepdive
+series:
+- mlag
 series_title: System Overview
+tags:
+- switching
+title: 'MLAG Deep Dive: System Overview'
 ---
 [Multi-Chassis Link Aggregation](/series/mlag.html) (MLAG) -- the ability to terminate a Port Channel/Link Aggregation Group on multiple switches -- is one of the more convoluted[^EVPN] bridging technologies[^BR]. After all, it's not trivial to persuade two boxes to behave like one and handle the myriad corner cases correctly.
 

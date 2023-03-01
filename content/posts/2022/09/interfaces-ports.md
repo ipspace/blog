@@ -1,8 +1,12 @@
 ---
-title: "Router Interfaces and Switch Ports"
-date: 2022-09-01 06:43:00
-tags: [ switching, IP routing, networking fundamentals ]
-series: if_port
+date: 2022-09-01 06:43:00+00:00
+series:
+- if_port
+tags:
+- switching
+- IP routing
+- networking fundamentals
+title: Router Interfaces and Switch Ports
 ---
 When I started implementing the [netlab VLAN module](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html), I encountered (at least) three different ways of configuring physical interfaces and bridging domains even though the underlying packet forwarding operations (and sometimes even the forwarding hardware) are the same. That [confusopoly](https://en.wikipedia.org/wiki/Confusopoly) is guaranteed to make your head spin for years, and the only way to figure out what's going on behind the scenes is to go back to the fundamentals.
 <!--more-->

@@ -1,9 +1,13 @@
 ---
-title: "Duplicate ARP Replies with Anycast Gateways"
-date: 2022-03-30 07:11:00
-series: anycast
 anycast_tag: fabric
-tags: [ ARP, EVPN, bridging ]
+date: 2022-03-30 07:11:00+00:00
+series:
+- anycast
+tags:
+- ARP
+- EVPN
+- bridging
+title: Duplicate ARP Replies with Anycast Gateways
 ---
 A reader sent me the following intriguing question:
 

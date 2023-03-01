@@ -1,17 +1,24 @@
 ---
-date: 2011-03-31 06:40:00.003000+02:00
 cdate: 2022-07-06
+comment: 'In March 2011, industry media quickly picked up the buzz created by the
+  Open Networking Foundation (ONF) press releases and started exaggerating the already
+  extravagant claims made by ONF, prompting me to write the following blog post.
+
+
+  Not surprisingly, most of the hype was just that, and in the intervening years ONF
+  dropped OpenFlow like a hot potato, while most everyone refocused on things that
+  really matter like network automation.
+
+  '
+date: 2011-03-31 06:40:00.003000+02:00
+sdn_hype_tag: initial
+series:
+- sdn_hype
 tags:
 - data center
 - OpenFlow
-series: sdn_hype
-sdn_hype_tag: initial
 title: Open Networking Foundation – Fabric Craziness Reaches New Heights
 url: /2011/03/open-networking-foundation-fabric.html
-comment: |
-  In March 2011, industry media quickly picked up the buzz created by the Open Networking Foundation (ONF) press releases and started exaggerating the already extravagant claims made by ONF, prompting me to write the following blog post.
-  
-  Not surprisingly, most of the hype was just that, and in the intervening years ONF dropped OpenFlow like a hot potato, while most everyone refocused on things that really matter like network automation.
 ---
 Some of the biggest buyers of the networking gear have decided to squeeze some extra discount out of the networking vendors and threatened them with open-source alternative, hoping to repeat the Linux/Apache/MySQL/PHP saga that made it possible to build server farms out of low-cost commodity gear with almost zero licensing costs. They [formed the *Open Networking Foundation*](https://opennetworking.org/news-and-events/press-releases/onf-formed-to-speed-network-innovation/), found a convenient technology (OpenFlow) and launched another major entrant in the Buzzword Bingo -- Software-Defined Networking (SDN).
 

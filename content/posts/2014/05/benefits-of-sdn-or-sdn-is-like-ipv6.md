@@ -1,15 +1,18 @@
 ---
+comment: 'Every new networking technology is supposed to solve most of our headaches.
+  SDN is no exception. The reality might be a bit different.
+
+  '
 date: 2014-05-23 09:43:00+02:00
+sdn_101_tag: intro
+series:
+- sdn_101
+series_weight: 170
 tags:
 - IPv6
 - SDN
 title: 'Benefits of SDN (or: SDN is like IPv6)'
-series: sdn_101
-series_weight: 170
-sdn_101_tag: intro
 url: /2014/05/benefits-of-sdn-or-sdn-is-like-ipv6.html
-comment: |
-  Every new networking technology is supposed to solve most of our headaches. SDN is no exception. The reality might be a bit different.
 ---
 A while ago [Paul Stewart wrote a fantastic blog post](https://web.archive.org/web/20140704214845/http://www.packetu.com/2014/05/02/one-cares-sdn/) listing the potential business benefits of SDN (as promoted by SDN evangelists and SDN-washing vendors).
 

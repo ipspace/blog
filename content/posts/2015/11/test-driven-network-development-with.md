@@ -1,6 +1,10 @@
 ---
+cicd_tag: podcast
 date: 2015-11-13 08:01:00+01:00
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_44-Test-Driven_Network_Development.mp3
+series:
+- cicd
+series_weight: 100
 tags:
 - podcast
 - SDN
@@ -8,9 +12,6 @@ tags:
 - Software Gone Wild
 title: Test-Driven Network Development with Michael Kashin on Software Gone Wild
 url: /2015/11/test-driven-network-development-with.html
-series: [ cicd ]
-cicd_tag: podcast
-series_weight: 100
 ---
 Imagine you'd design your network by documenting the desired traffic flow across the network under all failure conditions, and only then do a low-level design, create configurations, and deploy the network... while being able to use the desired traffic flows as a testing tool to verify that the network still behaves as expected, both in a test lab as well as in the live network.
 <!--more-->

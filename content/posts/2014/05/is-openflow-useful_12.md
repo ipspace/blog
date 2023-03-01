@@ -1,12 +1,13 @@
 ---
 date: 2014-05-12 07:58:00+02:00
+openflow_101_tag: intro
+series:
+- openflow_101
+series_weight: 140
 tags:
 - OpenFlow
 title: Is OpenFlow Useful?
 url: /2014/05/is-openflow-useful_12.html
-series: openflow_101
-series_weight: 140
-openflow_101_tag: intro
 ---
 The [*Does Centralized Control Plane Make Sense*](http://blog.ipspace.net/2014/05/does-centralized-control-plane-make.html) post triggered several comments along the lines of "*do you think there's no need for OpenFlow?*"
 

@@ -1,13 +1,14 @@
 ---
 date: 2013-10-15 07:31:00+02:00
+openflow_101_tag: use
+series:
+- openflow_101
+series_weight: 190
 tags:
 - SDN
 - OpenFlow
 title: Forwarding Models in OpenFlow Networks
 url: /2013/10/forwarding-models-in-openflow-networks.html
-series: openflow_101
-series_weight: 190
-openflow_101_tag: use
 ---
 OpenFlow is a simple TCAM programming protocol, and can be used to implement any network forwarding paradigm as long as:
 

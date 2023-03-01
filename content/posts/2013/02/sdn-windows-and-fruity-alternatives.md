@@ -1,15 +1,18 @@
 ---
+comment: '“Openness” (for whatever value of “Open”) is another perceived benefit of
+  SDN. In reality, you’re trading hardware vendor lock-in for controller vendor lock-in.
+
+  '
 date: 2013-02-05 06:42:00+01:00
+sdn_101_tag: extra
+series:
+- sdn_101
+series_weight: 90
 tags:
 - SDN
 - OpenFlow
 title: SDN, Windows and Fruity Alternatives
 url: /2013/02/sdn-windows-and-fruity-alternatives.html
-series: sdn_101
-sdn_101_tag: extra
-series_weight: 90
-comment: |
-  “Openness” (for whatever value of “Open”) is another perceived benefit of SDN. In reality, you’re trading hardware vendor lock-in for controller vendor lock-in.
 ---
 Brad Hedlund made a [pretty valid comment](https://blog.ipspace.net/2013/01/nec-launched-virtual-openflow-switch.html?showComment=1359669279989#c3603529289800692734) to my "[*NEC Launched a Virtual OpenFlow Switch*](https://blog.ipspace.net/2013/01/nec-launched-virtual-openflow-switch.html)*"* blog post: "On the other hand, it\'s NEC end-to-end or no dice", implicating the ultimate vendor lock-in.
 

@@ -1,9 +1,12 @@
 ---
-title: "Where Would You Need DNS Anycast?"
-date: 2021-11-02 06:57:00
-tags: [ DNS, high availability ]
-series: anycast
 anycast_tag: use
+date: 2021-11-02 06:57:00+00:00
+series:
+- anycast
+tags:
+- DNS
+- high availability
+title: Where Would You Need DNS Anycast?
 ---
 One of the publicly observable artifacts of the [October 2021 Facebook outage](/2021/10/circular-dependencies-considered-harmful.html) was an intricate interaction between BGP routing and their DNS servers needed to support optimal anycast configuration. Not surprisingly, it was all networking engineers' fault according to some opinions[^1]
 

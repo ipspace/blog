@@ -1,10 +1,12 @@
 ---
-title: "Using YAML Instead of Excel in Network Automation Solutions"
-date: 2021-03-16 07:45:00
-tags: [ automation ]
-series: ssot
-ssot_tag: details
+date: 2021-03-16 07:45:00+00:00
 lastmod: 2021-03-17 06:30:00
+series:
+- ssot
+ssot_tag: details
+tags:
+- automation
+title: Using YAML Instead of Excel in Network Automation Solutions
 ---
 One of the attendees of our network automation course asked a question along these lines:
 

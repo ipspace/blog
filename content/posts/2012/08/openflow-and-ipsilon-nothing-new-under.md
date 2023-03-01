@@ -1,18 +1,27 @@
 ---
+cdate: 2022-07-18
+comment: 'OpenFlow did not introduce any new (or revolutionary) ideas. FORCeS has
+  been around for a while (with almost zero traction), and concepts similar to reactive
+  flow setup were floated in 1990’s and failed miserably. For more details, read [Flow-Based
+  Packet Forwarding](/2022/03/flow-based-forwarding.html).
+
+
+  Not surprisingly, the flow-based forwarding ideas floundered (yet again) in the
+  decade since I wrote this blog post. There are few hardware implementations, and
+  even virtual switches [experienced severe performance penalty](/2014/02/flow-based-forwarding-doesnt-work-well.html)
+  when trying to use so-called microflows.
+
+  '
 date: 2012-08-13 06:31:00+02:00
+openflow_101_tag: ugly
+series:
+- openflow_101
+series_weight: 170
 tags:
 - MPLS
 - SDN
 - OpenFlow
 title: 'OpenFlow and Ipsilon: Nothing New Under the Sun'
-series: openflow_101
-series_weight: 170
-openflow_101_tag: ugly
-cdate: 2022-07-18
-comment: |
-  OpenFlow did not introduce any new (or revolutionary) ideas. FORCeS has been around for a while (with almost zero traction), and concepts similar to reactive flow setup were floated in 1990’s and failed miserably. For more details, read [Flow-Based Packet Forwarding](/2022/03/flow-based-forwarding.html).
-  
-  Not surprisingly, the flow-based forwarding ideas floundered (yet again) in the decade since I wrote this blog post. There are few hardware implementations, and even virtual switches [experienced severe performance penalty](/2014/02/flow-based-forwarding-doesnt-work-well.html) when trying to use so-called microflows.
 url: /2012/08/openflow-and-ipsilon-nothing-new-under.html
 ---
 I'd promised to record another MPLS-related podcast and wanted to refresh my failing memory and revisit the beginnings of Tag Switching (Cisco's proprietary technology that was used as the basis for MPLS). Several companies were [trying to solve the IP+ATM integration problem in mid-nineties](https://blog.ipspace.net/2011/01/campfire-true-story-of-mpls.html), most of them using IP-based architectures (Cisco, IBM, 3Com), while Ipsilon tried its luck with a flow-based solutions.

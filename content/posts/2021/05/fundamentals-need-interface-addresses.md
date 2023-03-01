@@ -1,8 +1,12 @@
 ---
-title: "Back to Basics: Do We Need Interface Addresses?"
-date: 2021-05-05 07:21:00
-tags: [ IP routing, bridging, networking fundamentals ]
-series: unnumbered-interfaces
+date: 2021-05-05 07:21:00+00:00
+series:
+- unnumbered-interfaces
+tags:
+- IP routing
+- bridging
+- networking fundamentals
+title: 'Back to Basics: Do We Need Interface Addresses?'
 ---
 In the world of ubiquitous Ethernet and IP, it's common to think that one needs addresses in packet headers in every layer of the protocol stack. We have MAC addresses, IP addresses, and TCP/UDP port numbers... and low-level addresses are assigned to individual interfaces, not nodes.
 

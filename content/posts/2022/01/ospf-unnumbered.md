@@ -1,8 +1,10 @@
 ---
-title: "Running OSPF over Unnumbered Ethernet Interfaces"
-date: 2022-01-10 07:04:00
-tags: [ OSPF ]
-series: unnumbered-interfaces
+date: 2022-01-10 07:04:00+00:00
+series:
+- unnumbered-interfaces
+tags:
+- OSPF
+title: Running OSPF over Unnumbered Ethernet Interfaces
 ---
 Remember the *unnumbered IP interfaces* saga? Let's conclude it with the final challenge: can we run link-state routing protocols (OSPF or IS-IS) over unnumbered interfaces?
 

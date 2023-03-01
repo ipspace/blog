@@ -1,9 +1,12 @@
 ---
-title: "Cache-Based Packet Forwarding"
-date: 2022-02-24 08:57:00
+date: 2022-02-24 08:57:00+00:00
 lastmod: 2022-02-28 16:07:00
-tags: [ networking fundamentals, switching ]
-series: forwarding
+series:
+- forwarding
+tags:
+- networking fundamentals
+- switching
+title: Cache-Based Packet Forwarding
 ---
 In the previous blog post in this series I described [how convoluted routing table lookups could become](/2022/02/packet-forwarding-header-lookup.html) when you have to deal with numerous layers of indirection (BGP prefix ⇨ BGP next hop ⇨ IGP next hop ⇨ link bundle ⇨ outgoing interface). Modern high-end hardware can deal with the resulting complexity; decades ago we had to use router CPU to do multiple (potentially recursive) lookups in the IP routing table (there was no FIB at that time).
 

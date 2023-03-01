@@ -1,15 +1,16 @@
 ---
+anycast_tag: use
 date: 2013-08-29 10:14:00+02:00
+lastmod: 2023-02-01 13:35:00
+series:
+- anycast
 tags:
 - firewall
 - data center
 - IP routing
 - virtualization
-series: anycast
-anycast_tag: use
 title: Virtual Appliance Routing – Network Engineer’s Survival Guide
 url: /2013/08/virtual-appliance-routing-network.html
-lastmod: 2023-02-01 13:35:00
 ---
 Routing protocols running on virtual appliances [significantly increase the flexibility of virtual-to-physical network integration](http://blog.ipspace.net/2013/06/dynamic-routing-with-virtual-appliances.html) -- you can easily [move the whole application stack across subnets or data centers](http://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html) without changing the physical network configuration.
 

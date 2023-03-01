@@ -1,12 +1,13 @@
 ---
 date: 2019-05-22 08:10:00+02:00
+mlag_tag: design
+series:
+- mlag
 tags:
 - VXLAN
 - data center
 - WAN
 - design
-series: mlag
-mlag_tag: design
 title: Don't Base Your Design on Vendor Marketing
 url: /2019/05/dont-base-your-design-on-vendor.html
 ---

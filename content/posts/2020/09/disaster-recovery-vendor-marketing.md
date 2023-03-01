@@ -1,8 +1,13 @@
 ---
-title: "Disaster Recovery: a Vendor Marketing Tale"
-date: 2020-09-10 08:25:00
-tags: [ virtualization, data center, vMotion, high availability ]
-series: dr-faking
+date: 2020-09-10 08:25:00+00:00
+series:
+- dr-faking
+tags:
+- virtualization
+- data center
+- vMotion
+- high availability
+title: 'Disaster Recovery: a Vendor Marketing Tale'
 ---
 Several engineers formerly working for a large virtualization vendor were pretty upset with me when I claimed that the [virtualization consultants promote](https://blog.ipspace.net/2019/10/disaster-recovery-faking-take-two.html) "_disaster recovery using stretched VLANs_" designs instead of alternatives that would implement proper separation of failure domains.
 

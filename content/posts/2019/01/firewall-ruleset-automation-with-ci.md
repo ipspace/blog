@@ -1,12 +1,13 @@
 ---
+cicd_tag: solution
 date: 2019-01-11 08:38:00+01:00
+series:
+- cicd
 tags:
 - automation
 - firewall
 title: Firewall Ruleset Automation with CI Pipeline
 url: /2019/01/firewall-ruleset-automation-with-ci.html
-series: [ cicd ]
-cicd_tag: solution
 ---
 One of my readers sent me a description of their automation system that manages firewall rulesets on Fortigate firewalls [using NAPALM to manage device configurations](https://my.ipspace.net/bin/list?id=Ansible#NAPALM).
 

@@ -1,12 +1,13 @@
 ---
 date: 2018-10-30 08:53:00+01:00
+lastmod: 2021-01-15 17:02:00
+series:
+- RPKI
 tags:
 - Internet
 - BGP
-title: "Internet Routing Security: It’s All About Business…"
+title: 'Internet Routing Security: It’s All About Business…'
 url: /2018/10/its-all-about-business.html
-lastmod: 2021-01-15 17:02:00
-series: RPKI
 ---
 A few years ago I got cornered by an enthusiastic academic praising the beauties of his cryptography-based system that would (after replacing the whole Internet) solve all the supposed woes we're facing with BGP today.
 
