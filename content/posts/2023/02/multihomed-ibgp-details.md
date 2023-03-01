@@ -25,6 +25,8 @@ It's easy to adjust HSRP/VRRP priority based on uplink status. I never tried to 
 
 Some network operating systems can adjust HSRP/VRRP priority based on a complex tracked object, and on some network operating systems it's possible (with enough effort) to have the BGP default route as that tracked object[^EEM]. However, it might be simpler to have that IBGP session in place.
 
+{{<note>}}Please note that I'm not saying "*you don't need FHRP on the LAN interfaces of the CE-routers*" (that's a completely different discussion) but "_you can't rely on FHRP priority to get LAN packets to the router that knows how to forward them_."{{</note>}}
+
 [^EEM]: If nothing else, you could develop some crazy EEM magic on Cisco IOS -- read some [ancient blog posts](https://blog.ipspace.net/tag/eem.html) on this site if you're interested in that particular strain of job security.
 
 I also received an interesting comment on [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7031529539725877248/) saying:
@@ -61,3 +63,7 @@ While two default routes might work well for a content _consumer_ (because it's 
 
 We discussed whether to use just the default route, a subset of prefixes, or a locally-generated default route in [September 2022](https://my.ipspace.net/bin/list?id=Design#2022_09) session of _[ipSpace.net Design Clinic](https://www.ipspace.net/IpSpace.net_Design_Clinic)_. You might also want to watch the _[Surviving the Internet Default Free Zone](https://www.ipspace.net/Surviving_the_Internet_Default_Free_Zone)_ webinar.
 
+### Revision History
+
+2023-03-01
+: Added a "you might need FHRP on LAN interfaces" note based on a comment from Mr. Anonymous.
