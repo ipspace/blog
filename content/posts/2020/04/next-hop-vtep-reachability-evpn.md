@@ -1,8 +1,13 @@
 ---
-title: "Response: Next-Hop and VTEP Reachability in EVPN Networks"
-date: 2020-04-14 07:02:00
-tags: [ EVPN, BGP ]
-series: bgp_nh
+date: 2020-04-14 07:02:00+00:00
+dcbgp_tag: abstract
+series:
+- bgp_nh
+- dcbgp
+tags:
+- EVPN
+- BGP
+title: 'Response: Next-Hop and VTEP Reachability in EVPN Networks'
 ---
 [Jeff Tantsura](https://www.linkedin.com/in/jeff-tantsura-bb229b2/) published a great response to my _[Can We Trust BGP Next Hops](https://blog.ipspace.net/2020/04/can-we-trust-bgp-next-hops-part-1.html)_ blog post on LinkedIn, and I asked him for permission to save it in a more permanent form. Here it is (slightly edited)...
 - - -

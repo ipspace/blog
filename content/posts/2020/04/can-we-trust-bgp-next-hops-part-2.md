@@ -1,8 +1,13 @@
 ---
-title: "Can We Trust BGP Next Hops (Part 2)?"
-date: 2020-04-21 06:45:00
-tags: [ BGP,IP routing ]
-series: bgp_nh
+date: 2020-04-21 06:45:00+00:00
+dcbgp_tag: abstract
+series:
+- bgp_nh
+- dcbgp
+tags:
+- BGP
+- IP routing
+title: Can We Trust BGP Next Hops (Part 2)?
 ---
 Two weeks ago I started with a seemingly simple question:
 

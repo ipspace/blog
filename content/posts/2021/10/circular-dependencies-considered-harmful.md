@@ -1,7 +1,14 @@
 ---
-title: "Circular Dependencies Considered Harmful"
-date: 2021-10-21 06:48:00
-tags: [ design, BGP, high availability, virtualization ]
+date: 2021-10-21 06:48:00+00:00
+dcbgp_tag: relevant
+series:
+- dcbgp
+tags:
+- design
+- BGP
+- high availability
+- virtualization
+title: Circular Dependencies Considered Harmful
 ---
 A while ago my friend Nicola Modena sent me another intriguing curveball:
 

@@ -2,9 +2,10 @@
 title: "Building a BGP Anycast Lab"
 date: 2021-12-06 07:30:00
 tags: [ BGP ]
-series: [ netlab, anycast ]
+series: [ netlab, anycast, dcbgp ]
 netlab_tag: use
 anycast_tag: lab
+dcbgp_tag: interesting
 pre_scroll: True
 lastmod: 2022-01-16 07:58:00
 ---

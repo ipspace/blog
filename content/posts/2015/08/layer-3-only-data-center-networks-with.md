@@ -11,6 +11,9 @@ tags:
 - podcast
 title: Layer-3-Only Data Center Networks with Cumulus Linux on Software Gone Wild
 url: /2015/08/layer-3-only-data-center-networks-with.html
+dcbgp_tag: cl
+series:
+- dcbgp
 ---
 With the advent of layer-3 leaf-and-spine data center fabrics, it became (almost) possible to build [pure layer-3-only data center networks](http://blog.ipspace.net/2015/04/rearchitecting-l3-only-networks.html)... if only the networking vendors would do the very last step and make every server-to-ToR interface a layer-3 interface. Cumulus decided to do just that.
 <!--more-->

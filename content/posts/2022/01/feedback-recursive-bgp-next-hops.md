@@ -1,7 +1,11 @@
 ---
-title: "Feedback: Recursive BGP Next Hop Resolution"
-date: 2022-01-12 06:27:00
-tags: [ BGP ]
+date: 2022-01-12 06:27:00+00:00
+dcbgp_tag: details
+series:
+- dcbgp
+tags:
+- BGP
+title: 'Feedback: Recursive BGP Next Hop Resolution'
 ---
 The _[Recursive BGP Next Hops: an RFC 4271 Quirk](https://blog.ipspace.net/2022/01/bgp-recursive-next-hops-rfc.html)_ blog post generated tons of feedback (thanks a million to everyone writing a comment on my blog or [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A6884535946654572544/)).
 

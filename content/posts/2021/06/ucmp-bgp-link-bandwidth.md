@@ -2,7 +2,8 @@
 title: "Unequal-Cost Multipath with BGP DMZ Link Bandwidth"
 date: 2021-06-08 07:00:00
 tags: [ IP routing, BGP ]
-series: UCMP
+series: [ UCMP, dcbgp ]
+dcbgp_tag: interesting
 ---
 In the [previous blog post](/2021/06/single-metric-ucmp-hard.html) in this series, I described why it's (almost) impossible to implement unequal-cost multipathing for anycast services (multiple servers advertising the same IP address or range) with OSPF. Now let's see how easy it is to solve the same challenge with [BGP DMZ Link Bandwidth](https://datatracker.ietf.org/doc/html/draft-ietf-idr-link-bandwidth-07) attribute.
 

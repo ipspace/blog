@@ -1,8 +1,12 @@
 ---
-title: "Mixed Feelings about BGP Route Reflector Cluster ID"
-date: 2022-02-08 07:54:00
-tags: [ BGP ]
-pre_scroll: True
+date: 2022-02-08 07:54:00+00:00
+dcbgp_tag: relevant
+pre_scroll: true
+series:
+- dcbgp
+tags:
+- BGP
+title: Mixed Feelings about BGP Route Reflector Cluster ID
 ---
 Here's another BGP Route Reflector myth:
 

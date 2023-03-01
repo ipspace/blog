@@ -2,6 +2,10 @@
 title: "Running BGP between Virtual Machines and Data Center Fabric"
 date: 2022-02-16 09:03:00
 tags: [ BGP, data center, virtualization, design ]
+dcbgp_tag: server
+series:
+- dcbgp
+series_weight: 600
 ---
 Got this question from one of my readers:
 

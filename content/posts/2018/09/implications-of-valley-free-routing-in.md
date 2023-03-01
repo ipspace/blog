@@ -1,8 +1,16 @@
 ---
-date: 2018-09-27T09:05:00.000+02:00
-tags: [ design, data center, fabric, BGP, EVPN ]
+date: 2018-09-27 09:05:00+02:00
+dcbgp_tag: abstract
+series:
+- valley-free
+- dcbgp
+tags:
+- design
+- data center
+- fabric
+- BGP
+- EVPN
 title: Implications of Valley-Free Routing in Data Center Fabrics
-series: valley-free
 url: /2018/09/implications-of-valley-free-routing-in.html
 ---
 As I explained in a [previous blog post](https://blog.ipspace.net/2018/09/valley-free-routing-in-data-center.html), most leaf-and-spine best-practices (as in: what to do if you have no clue) use [BGP as the IGP routing protocol](https://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol) ([regardless of whether it’s needed](https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html)) with the [same AS number shared across all spine switches](https://www.ipspace.net/Data_Center_BGP/Autonomous_Systems_and_AS_Numbers) to implement valley-free routing.
@@ -39,10 +47,8 @@ As I said years ago: [the road to broken design is paved with great recipes](htt
 
 Don’t get me wrong. There might be valid reasons to use IBGP EVPN sessions on top of EBGP underlay. There are valid reasons to use IBGP route reflectors implemented as VNF appliances for scalability… but the designs promoted by most networking vendors these days make little sense once you figure out how routing really works.
 
-#### For the few people interested in the red pill
+### For the Few People Interested in the Red Pill
 
 If you want to know more about leaf-and-spine fabrics (and be able to figure out where exactly the vendor marketers cross the line between unicorn-colored reality and plain bullshit), start with the [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) and [EVPN Technical Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinars (both are part of [Standard ipSpace.net subscription](https://www.ipspace.net/Subscription)).
-
-You can take one step further and enroll in the [Designing and Building Data Center Fabrics](https://www.ipspace.net/Designing_and_Building_Data_Center_Fabrics) online course which includes three design assignments reviewed by a [member of ipSpace.net ExpertExpress team](https://www.ipspace.net/ExpertExpress).
 
 Finally, when you want to be able to design more than just the data center fabrics, check out the [Building Next-Generation Data Center online course](https://www.ipspace.net/Building_Next-Generation_Data_Center).

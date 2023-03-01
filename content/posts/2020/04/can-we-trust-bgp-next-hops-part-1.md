@@ -1,8 +1,13 @@
 ---
-title: "Can We Trust BGP Next Hops (Part 1)?"
-date: 2020-04-07 07:45:00
-tags: [ BGP,IP routing ]
-series: bgp_nh
+date: 2020-04-07 07:45:00+00:00
+dcbgp_tag: abstract
+series:
+- bgp_nh
+- dcbgp
+tags:
+- BGP
+- IP routing
+title: Can We Trust BGP Next Hops (Part 1)?
 ---
 [Aldrin](https://www.linkedin.com/in/aldrin-isaac-387864/) sent me an interesting question as a comment to one of my [EVPN blog posts](https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html):
 
@@ -23,7 +28,7 @@ But nonetheless, even if our BGP neighbor did everything right (from the BGP pro
 
 Next question: can we do better than that? **TL&DR: No**... at least not when using traditional routing protocols. [SD-WAN with end-to-end data-plane probes](/2020/01/fast-failover-in-sd-wan-networks.html) is a different story.
 
-## But Routing Protocols Work
+### But Routing Protocols Work
 
 We're usually too busy to bother with ethereal questions like this, and the routing protocols do a pretty good job to make networks work. The usual workaround is to rely on **shared fate** - if we have a working routing protocol session with IP address X, and that same neighbor tells us X is the next hop for Y, we blindly believe that X is alive and well, and that it's safe to use it to reach Y. Throw BFD into the mix and you'll know how healthy X is in a few milliseconds. Mission accomplished.
 
@@ -37,7 +42,7 @@ R1 is announcing prefix A with directly-connected next hop, and R2 can validate 
 
 We also have no idea about the forwarding performance of R1. Maybe traffic toward prefix A is software-switched and it would be better to use an alternate path that might have higher cost (due to lower-speed links) but better forwarding performance. We simply don't know. No routing protocol would give you that information (for a very good reason: scalability and stability).
 
-## From EBGP to IBGP
+### From EBGP to IBGP
 
 How about a simple IBGP setup like this one:
 

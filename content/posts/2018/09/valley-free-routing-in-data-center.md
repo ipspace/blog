@@ -1,9 +1,15 @@
 ---
-date: 2018-09-17T07:48:00.000+02:00
-tags: [ design, data center, BGP ]
+date: 2018-09-17 07:48:00+02:00
+dcbgp_tag: abstract
+series:
+- valley-free
+- dcbgp
+tags:
+- design
+- data center
+- BGP
 title: Valley-Free Routing in Data Center Fabrics
 url: /2018/09/valley-free-routing-in-data-center.html
-series: valley-free
 ---
 You might have noticed that almost every *[BGP as Data Center IGP](https://www.ipspace.net/Data_Center_BGP)* design uses [the same AS number on all spine switches](https://www.ipspace.net/Data_Center_BGP/Autonomous_Systems_and_AS_Numbers) (there are exceptions coming from people who use BGP as RIP with AS-path length serving as hop count… but let’s not go there).
 
@@ -34,4 +40,4 @@ In larger fabrics you’d probably want to use four spine switches, and you need
 
 **Takeaway [recipe](https://blog.ipspace.net/2011/08/road-to-complex-designs-is-paved-with.html):** If you have two spine switches, use OSPF or IS-IS (instead of turning BGP into RIP). If you have more than two spine switches and you think you need BGP as the underlay routing protocol, use the same AS number on all spines to get valley-free routing.
 
-ipSpace.net subscribers can find way more details in [Leaf-and-Spine Fabrics webinar](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures); if you want to add interactive discussions and mentoring to your learning process, go for the [Designing and Building Data Center Fabrics](https://www.ipspace.net/Designing_and_Building_Data_Center_Fabrics) or [Building Next-Generation Data Centers](https://www.ipspace.net/Building_Next-Generation_Data_Center) online course.
+ipSpace.net subscribers can find way more details in [Leaf-and-Spine Fabrics webinar](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures); if you want to add interactive discussions and mentoring to your learning process, go for the [Building Next-Generation Data Centers](https://www.ipspace.net/Building_Next-Generation_Data_Center) online course.
