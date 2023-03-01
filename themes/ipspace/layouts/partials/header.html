@@ -8,7 +8,7 @@
     <link rel="alternate" type="application/rss+xml" title="ipSpace.net - RSS" href="https://feed.ipspace.net/blog/?rss=1" />
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
 
-    <title>{{ .Title }} &#171; ipSpace.net blog</title>
+    <title>{{ with .Params.page_title }}{{ . }}{{ else }}{{ .Title }}{{ end }} &#171; ipSpace.net blog</title>
     {{ partial "opengraph.html" . }}
     <meta charset='utf-8' />
     <meta content='IE=edge' http-equiv='X-UA-Compatible' />
