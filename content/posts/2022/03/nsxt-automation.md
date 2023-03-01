@@ -1,7 +1,12 @@
 ---
-title: "Automating NSX-T Deployments"
-date: 2022-03-21 07:54:00
-tags: [ NSX, automation ]
+date: 2022-03-21 07:54:00+00:00
+niac_tag: implement
+series:
+- niac
+tags:
+- NSX
+- automation
+title: Automating NSX-T Deployments
 ---
 Nicholas Michel [open-sourced an automation solution](https://github.com/vmware-nsx/sddc-demos) ([video](https://www.youtube.com/watch?v=9M0UJXiBVbw)) that deploys the whole NSX-T infrastructure stack including:
 
