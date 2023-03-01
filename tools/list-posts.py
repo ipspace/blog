@@ -23,11 +23,12 @@ VERBOSE=False
 
 def parseCLI():
   parser = argparse.ArgumentParser(description='List posts in a directory(tree) by publish date')
-  parser.add_argument('dir', nargs='+',action='store',help='Directory to list')
+  parser.add_argument('dir', nargs='*',action='store',help='Directory to list')
   parser.add_argument('--tags',dest='tags',action='store',help='Limit printout by tags')
   parser.add_argument('--series',dest='series',action='store',help='Limit printout by series')
   parser.add_argument('--md', dest='md', action='store_true',help='Markdown printout')
   parser.add_argument('--url', dest='url', action='store_true',help='URL printout')
+  parser.add_argument('--file', dest='file', action='store_true',help='Filename printout')
   parser.add_argument('--log', dest='logging', action='store_true',help='Enable basic logging')
   parser.add_argument('--verbose', dest='verbose', action='store_true',help='Enable more verbose logging')
   parser.add_argument('--prefix',dest='prefix',action='store',help='URL prefix',default='/')
@@ -108,6 +109,10 @@ def print_html(dir_list,prefix):
   for entry in dir_list:
     print('* [%s](%s%s)' % (entry['title'],prefix,entry['path']))
 
+def print_filename(dir_list):
+  for entry in dir_list:
+    print(entry['path'])
+
 args = parseCLI()
 LOGGING = args.logging or args.verbose
 VERBOSE = args.verbose
@@ -118,6 +123,9 @@ max_date = dateutil.parser.parse('2100-01-01 00:00:00+00')
 if args.tags:
   tag_list = tag_filter.parse_tags(args.tags)
 
+if not args.dir:              # Iterate over all posts when nothing is specified
+  args.dir = ['*']
+
 for entry in args.dir:
   dir_list = scan_posts(entry,dir_list,tag_list,args.series)
 
@@ -126,5 +134,7 @@ if args.md:
   print_html(sorted_list,args.prefix)
 elif args.url:
   print_url(sorted_list,args.prefix)
+elif args.file:
+  print_filename(sorted_list)
 else:
   print_dir(sorted_list)
