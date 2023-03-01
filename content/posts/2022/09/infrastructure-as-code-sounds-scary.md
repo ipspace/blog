@@ -1,7 +1,11 @@
 ---
-title: "Infrastructure-as-Code Sounds Scary"
-date: 2022-09-13 06:53:00
-tags: [ automation ]
+date: 2022-09-13 06:53:00+00:00
+niac_tag: principles
+series:
+- niac
+tags:
+- automation
+title: Infrastructure-as-Code Sounds Scary
 ---
 One of my readers preparing for public cloud deployment sent me an interesting observation:
 

@@ -2,6 +2,8 @@
 title: "Git as a Source of Truth for Network Automation"
 date: 2021-11-28 07:28:00
 tags: [ automation, worth reading ]
+series: [ ssot ]
+ssot_tag: solution
 ---
 In [Git as a source of truth for network automation](https://vincent.bernat.ch/en/blog/2021-source-of-truth-network), Vincent Bernat explained why they decided to use Git-managed YAML files as the source of truth in their network automation project instead of relying on a database-backed GUI/API product like NetBox.
 

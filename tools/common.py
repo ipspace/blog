@@ -55,8 +55,9 @@ def read_blog_post(path):
 
   return(doc,text)
 
-def set_series_tag(post):
-  series = os.environ.get('BLOG_SERIES')
+def set_series_tag(post,series=None,s_tag=None):
+  if not series:
+    series = os.environ.get('BLOG_SERIES')
   if series:
     c_value = post.get('series',None)
     if c_value and isinstance(c_value,str):
@@ -64,6 +65,8 @@ def set_series_tag(post):
     elif c_value is None:
       post['series'] = []
     post['series'].append(series)
-  s_tag = os.environ.get('BLOG_SERIES_TAG')
+
+  if not s_tag:
+    s_tag = os.environ.get('BLOG_SERIES_TAG')
   if s_tag:
     post[series+"_tag"] = s_tag

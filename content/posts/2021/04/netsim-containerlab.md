@@ -2,7 +2,8 @@
 title: "Netsim-tools Release 0.5 Work with Containerlab"
 date: 2021-04-14 07:26:00
 lastmod: 2021-07-12 18:12:00
-tags: [ automation, containers, Docker ]
+tags: [ netlab ]
+netlab_tag: archive
 ---
 **TL&DR**: If you happen to like working with containers, you could use netsim-tools release 0.5 to provision your container-based Arista EOS labs.
 

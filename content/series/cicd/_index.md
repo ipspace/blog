@@ -5,7 +5,6 @@ minimal_sidebar: true
 ---
 {{<quote source="ChatGPT explaining CI/CD in networking">}}CI/CD in networking is a process that helps ensure networking configurations are continuously integrated and deployed in a safe and efficient manner. This involves using automated tools to check the networking configurations for errors and misconfigurations before deploying them to the network infrastructure. If issues are found, developers are alerted to make the necessary fixes. This process helps to prevent network downtime, improve network reliability, and ensure that users have a seamless experience.{{</quote>}}
 
-
 ### {{<plushy confused>}}What Exactly Is CI/CD?
 
 Interested? Let's start with the fundamentals:

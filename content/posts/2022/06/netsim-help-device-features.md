@@ -1,7 +1,8 @@
 ---
 title: "Help Appreciated: netsim-tools Device Features"
 date: 2022-06-20 06:17:00
-tags: [ automation ]
+tags: [ netlab ]
+netlab_tag: contribute
 ---
 There are (at least) two steps to get new functionality (like VLANs) implemented in [netsim-tools](https://netsim-tools.readthedocs.io/en/latest/):
 

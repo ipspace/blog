@@ -1,7 +1,8 @@
 ---
 title: "Largest netlab Topology I've Seen So Far"
 date: 2022-05-23 06:41:00
-tags: [ automation ]
+tags: [ netlab ]
+netlab_tag: use
 ---
 I stumbled upon a blog post by [Diptanshu Singh](https://dipsingh.github.io/about/) discussing whether [IS-IS flooding in highly meshed fabric](https://dipsingh.github.io/IS-IS-Flooding/) is as much of a problem as some people would like to make it. I won't spoil the fun, read his blog post ;)
 

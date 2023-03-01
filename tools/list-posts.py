@@ -46,7 +46,7 @@ def read_file(path,dir_list,tag_list,series):
   if frontmatter.get('draft'):
     date = None
 
-  if tag_list is not None:
+  if tag_list:
     if not tag_filter.match_tags(frontmatter.get('tags'),tag_list):
       return
 

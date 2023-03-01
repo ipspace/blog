@@ -1,7 +1,8 @@
 ---
 title: "vagrant-libvirt Dependency Hell"
 date: 2022-12-12 08:30:00
-tags: [ automation ]
+tags: [ netlab ]
+netlab_tag: release
 pre_scroll: True
 ---
 One of the tiny details Open Networking preachers conveniently forget to mention is the tendency of open-source software to use a [gazillion small packages from numerous independent sources](https://xkcd.com/2347/) to get the job done. Vendors selling commercial products (for example, Cumulus Linux) try their best to select the correct version of every package involved in their product; open-source projects could [quickly end in dependency hell](https://xkcd.com/1579/).
