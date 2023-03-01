@@ -9,7 +9,7 @@ Got mentioned in [this tweet](https://twitter.com/vpackets/status/12533710827882
 
 Maybe I've missed some breaking news, but assuming I haven't my opinion on that subject hasn't changed.
 <!--more-->
-I've been writing, talking, and teaching about various aspects of using BGP in data center fabrics (including "_do we really need it_") for over five years, and I know it's hard to collect all that information, so I did it for you in ipSpace.net [BGP in Data Center Fabrics resource page](https://www.ipspace.net/kb/tag/BGP-DC.html).
+I've been writing, talking, and teaching about various aspects of using BGP in data center fabrics (including "_do we really need it_") for almost a decade, and I know it's hard to collect all that information, so I did it for you in ipSpace.net [BGP in Data Center Fabrics resource page](/series/dcbgp.html).
 
 As for the hotness of the topic: 
 
@@ -19,4 +19,4 @@ As for the hotness of the topic:
 
 No wonder Apstra sees BGP-only data centers as a gift from networking gods ;)
 
-{{<jump>}}[Explore ipSpace.net BGP in Data Center Fabrics resources](https://www.ipspace.net/kb/tag/BGP-DC.html){{</jump>}}
+{{<jump>}}[BGP in Data Center Fabrics](/series/dcbgp.html){{</jump>}}

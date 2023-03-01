@@ -118,6 +118,12 @@ case "$1" in
       future*)
         (cd $BLOG_HOME && hugo list future)
         ;;
+      series*)
+        $BLOG_HOME/tools/list-posts.py --series $1
+        ;;
+      tags*)
+        $BLOG_HOME/tools/list-posts.py --tags $1
+        ;;
       "")
         $BLOG_HOME/tools/list-posts.py $(date +"%Y/%m") $(date -v+1m +"%Y/%m")
         ;;

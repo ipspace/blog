@@ -42,5 +42,5 @@ I did a series of podcasts with routing protocol gurus trying to figure out whet
 
 Prefer webinars over podcasts? Start with *[Routing Protocols](https://my.ipspace.net/bin/list?id=Net101#ROUTING)* part of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)*, and explore the best ways to [use BGP and OSPF](https://my.ipspace.net/bin/list?id=Clos#L3_SINGLE) in [leaf-and-spine fabrics](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) and in [EVPN networks](https://www.ipspace.net/EVPN_Technical_Deep_Dive).
 
-Need even more information? Explore our extensive *[BGP in Data Center Fabrics](https://www.ipspace.net/kb/tag/BGP-DC.html)* resources.
+Need even more information? Explore our extensive [BGP in Data Center Fabrics](/series/dcbgp.html) series.
 
