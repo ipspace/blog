@@ -11,7 +11,7 @@ It looks like a bad case of suboptimal terminology for this particular audience.
 <!--more-->
 [^NP]: Don't get me started on the "_do we all have to become programmers_" stupidity. I hope we're beyond that.
 
-In reality, [infrastructure-as-code](https://www.ipspace.net/kb/tag/network-infrastructure-as-code.html) means _using the same methodology to handle your infrastructure configuration as you would use for your source code_:
+In reality, [infrastructure-as-code](/series/niac.html) means _using the same methodology to handle your infrastructure configuration as you would use for your source code_:
 
 * It has to be in a text file (so it's possible to diff the changes)
 * It has to be machine-readable and human-readable (goodbye, XML and JSON 😜)
