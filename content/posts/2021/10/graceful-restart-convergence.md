@@ -1,9 +1,13 @@
 ---
-title: "Graceful Restart and Routing Protocol Convergence"
-date: 2021-10-12 06:35:00
-series: ha-switching
+date: 2021-10-12 06:35:00+00:00
 ha-switching_tag: control
-tags: [ IP routing, high availability, networking fundamentals ]
+series:
+- ha-switching
+tags:
+- IP routing
+- high availability
+- networking fundamentals
+title: Graceful Restart and Routing Protocol Convergence
 ---
 I'm always amazed when I encounter networking engineers who want to have a fast-converging network using Non-Stop Forwarding (which implies Graceful Restart). It's even worse than asking for smooth-running heptagonal wheels.
 

@@ -1,19 +1,27 @@
 ---
+cdate: 2022-07-19
+comment: 'The blog post was written in 2011, when the shortcomings of OpenFlow weren’t
+  well understood, and some people still thought that just mentioning OpenFlow will
+  magically bring the related controller software to life.
+
+
+  A decade later, [OpenFlow remains a niche protocol](/2022/05/openflow-still-kicking.html),
+  and while we have a few controllers (commercial and open-source), no major vendor
+  got interested enough in OpenFlow to launch OpenFlow-based switches or develop an
+  OpenFlow controller (paying a few developers to work on Open DayLight does not count).
+
+  '
 date: 2011-04-08 17:15:00.003000+02:00
+openflow_101_tag: ugly
+series:
+- openflow_101
+series_weight: 160
 tags:
 - SDN
 - data center
 - OpenFlow
 title: 'OpenFlow: BIOS Does Not a Server Make'
 url: /2011/04/openflow-bios-does-not-server-make.html
-series: openflow_101
-series_weight: 160
-openflow_101_tag: ugly
-cdate: 2022-07-19
-comment: |
-  The blog post was written in 2011, when the shortcomings of OpenFlow weren’t well understood, and some people still thought that just mentioning OpenFlow will magically bring the related controller software to life.
-  
-  A decade later, [OpenFlow remains a niche protocol](/2022/05/openflow-still-kicking.html), and while we have a few controllers (commercial and open-source), no major vendor got interested enough in OpenFlow to launch OpenFlow-based switches or develop an OpenFlow controller (paying a few developers to work on Open DayLight does not count).
 ---
 Last week Greg (\@etherealmind) Ferro invited me to the [OpenFlow Packet Pushers podcast](http://packetpushers.net/show-40-upending-networking/) with Matt Davey. I was pleasantly surprised by Matt's realistic attitude (you should really [listen to the whole podcast](http://packetpushers.net/show-40-upending-networking/)), it was nice to hear that they're running a country-wide pilot with OpenFlow-enabled switches deployed at several universities, and some of the applications he mentioned (for example, the capability to download ACLs into the switch from your customized application) definitely tickled my inner geek. However, I'm even more convinced that the brouhaha surrounding [Open Networking Foundation](http://www.opennetworkingfoundation.org/) has [little grounds in the realities of OpenFlow](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html).
 <!--more-->

@@ -1,11 +1,12 @@
 ---
 date: 2014-01-20 07:13:00+01:00
+mlag_tag: design
+series:
+- mlag
 tags:
 - link aggregation
 - data center
 - virtualization
-series: mlag
-mlag_tag: design
 title: vSphere Does Not Need LAG Bandaids – the Network Might
 url: /2014/01/vsphere-does-not-need-lag-bandaids.html
 ---

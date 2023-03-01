@@ -1,15 +1,19 @@
 ---
+comment: 'It seems it’s easy to define what a [network device control plane](/2013/08/management-control-and-data-planes-in.html)
+  is (and how it’s different from the data plane)… until someone starts unearthing
+  the interesting corner cases. This blog post is trying to address some of them.
+
+  '
 date: 2013-10-07 07:25:00+02:00
+openflow_101_tag: intro
+series:
+- openflow_101
+series_weight: 290
 tags:
 - IP routing
 - SDN
 title: What Exactly Is The Control Plane?
 url: /2013/10/what-exactly-is-control-plane.html
-series: openflow_101
-openflow_101_tag: intro
-series_weight: 290
-comment: |
-  It seems it’s easy to define what a [network device control plane](/2013/08/management-control-and-data-planes-in.html) is (and how it’s different from the data plane)… until someone starts unearthing the interesting corner cases. This blog post is trying to address some of them.
 ---
 Tassos opened an [interesting can of worms](http://blog.ipspace.net/2013/08/management-control-and-data-planes-in.html?showComment=1378762930370#c568301941276652542) in a comment to my [*Management, Control and Data Planes*](http://blog.ipspace.net/2013/08/management-control-and-data-planes-in.html?showComment=1378762930370) post: *Is ICMP response to a forwarded packet (TTL exceeded, fragmentation needed or destination unreachable) a control- or data-plane activity?*
 <!--more-->

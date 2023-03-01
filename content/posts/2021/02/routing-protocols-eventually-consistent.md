@@ -1,8 +1,12 @@
 ---
-title: "Link-State Routing Protocols Are Eventually Consistent"
-date: 2021-02-17 06:38:00
-tags: [ networking fundamentals, OSPF, IS-IS ]
-series: consistent-state
+date: 2021-02-17 06:38:00+00:00
+series:
+- consistent-state
+tags:
+- networking fundamentals
+- OSPF
+- IS-IS
+title: Link-State Routing Protocols Are Eventually Consistent
 ---
 One of my readers sent me this interesting question:
 

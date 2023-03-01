@@ -1,9 +1,11 @@
 ---
-title: "Fixing XML-to-JSON Conversion Challenges"
-date: 2021-01-26 07:06:00
-tags: [ automation ]
-series: xml-json
+date: 2021-01-26 07:06:00+00:00
 lastmod: 2021-03-17 06:40:00
+series:
+- xml-json
+tags:
+- automation
+title: Fixing XML-to-JSON Conversion Challenges
 ---
 In the last weeks I described the challenges you might face when converting XML documents that contain lists with a single element into JSON, be it on device (Nexus OS) or in an Ansible module. Now let's see how we can fix that.
 

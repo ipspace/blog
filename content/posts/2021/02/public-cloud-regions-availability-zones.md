@@ -1,8 +1,10 @@
 ---
-title: "Availability Zones and Regions in AWS, Azure and GCP"
-date: 2021-02-16 07:14:00
-tags: [ cloud ]
-series: cloud-subnets
+date: 2021-02-16 07:14:00+00:00
+series:
+- cloud-subnets
+tags:
+- cloud
+title: Availability Zones and Regions in AWS, Azure and GCP
 ---
 My friend Daniel Dib sent me this interesting question:
 

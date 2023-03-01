@@ -1,8 +1,12 @@
 ---
-title: "How Routers Became Bridges"
-date: 2022-09-07 07:05:00
-tags: [ switching, IP routing, networking fundamentals ]
-series: if_port
+date: 2022-09-07 07:05:00+00:00
+series:
+- if_port
+tags:
+- switching
+- IP routing
+- networking fundamentals
+title: How Routers Became Bridges
 ---
 Network terminology was easy in the 1980s: bridges forwarded frames between Ethernet segments based on MAC addresses, and routers forwarded network layer packets between network segments. That nirvana couldn't last long; eventually, a big-enough customer told Cisco: "_I don't want to buy another box if I already have your too-expensive router. I want your router to be a bridge._"
 

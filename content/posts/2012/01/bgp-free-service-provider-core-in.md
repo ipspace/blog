@@ -1,10 +1,14 @@
 ---
-url: /2012/01/bgp-free-service-provider-core-in.html
-title: "BGP-Free Service Provider Core in Pictures"
-date: "2012-01-11T07:04:00.000+01:00"
+date: 2012-01-11 07:04:00+01:00
 lastmod: 2021-05-13 15:42:00
-tags: [ MPLS,IPv6,BGP ]
-series: bgp-essentials
+series:
+- bgp-essentials
+tags:
+- MPLS
+- IPv6
+- BGP
+title: BGP-Free Service Provider Core in Pictures
+url: /2012/01/bgp-free-service-provider-core-in.html
 ---
 I got a follow-up question to the [*Should I use 6PE or native IPv6*](https://blog.ipspace.net/2012/01/should-i-use-6pe-or-native-ipv6.html) post: 
 

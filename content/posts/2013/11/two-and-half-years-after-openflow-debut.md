@@ -1,17 +1,25 @@
 ---
+cdate: 2022-07-09
+comment: 'SDN and the idea of centralized control plane were hotly debated in the
+  early 2010s, and we tried to bring at least some sanity into the discussion. The
+  so-called "_industry press_" couldn''t be bothered -- here’s my response to a particularly
+  misleading article written in November 2013.
+
+
+  Fun fact: while HP did have a few interesting [SDN/OpenFlow-based solutions](https://blog.ipspace.net/2015/05/openflow-in-hp-campus-solutions-on.html),
+  they never managed to get any reasonable foothold beyond ~~cheap~~ optimally-priced
+  campus networking, and finally resorted to acquisitions to stay in that business.
+
+  '
 date: 2013-11-11 05:59:00+01:00
+sdn_hype_tag: clueless
+series:
+- sdn_hype
 tags:
 - SDN
 - OpenFlow
 title: Two and a Half Years after OpenFlow Debut, the Media Remains Clueless
 url: /2013/11/two-and-half-years-after-openflow-debut.html
-series: sdn_hype
-sdn_hype_tag: clueless
-cdate: 2022-07-09
-comment: |
-  SDN and the idea of centralized control plane were hotly debated in the early 2010s, and we tried to bring at least some sanity into the discussion. The so-called "_industry press_" couldn't be bothered -- here’s my response to a particularly misleading article written in November 2013.
-  
-  Fun fact: while HP did have a few interesting [SDN/OpenFlow-based solutions](https://blog.ipspace.net/2015/05/openflow-in-hp-campus-solutions-on.html), they never managed to get any reasonable foothold beyond ~~cheap~~ optimally-priced campus networking, and finally resorted to acquisitions to stay in that business.
 ---
 If you repeat something often enough, it becomes a "fact" (or an urban myth). SDN is no exception, industry press [loves to explain SDN like this](https://web.archive.org/web/20140111002549/https://www.businessinsider.com/the-hp-woman-knocking-out-cisco-2013-11):
 

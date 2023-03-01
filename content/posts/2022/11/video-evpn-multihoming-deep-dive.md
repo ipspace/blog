@@ -1,10 +1,13 @@
 ---
-title: "Video: EVPN Multihoming Deep Dive"
-date: 2022-11-04 07:02:00
-tags: [ video, EVPN ]
-series: mlag
+date: 2022-11-04 07:02:00+00:00
 mlag_tag: video
-series_title: "EVPN Multihoming Deep Dive"
+series:
+- mlag
+series_title: EVPN Multihoming Deep Dive
+tags:
+- video
+- EVPN
+title: 'Video: EVPN Multihoming Deep Dive'
 ---
 After starting the [EVPN multihoming versus MLAG](https://my.ipspace.net/bin/list?id=EVPN#MH) presentation (part of [EVPN Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive) webinar) with the [taxonomy of EVPN-based multihoming](https://blog.ipspace.net/2022/10/video-evpn-multihoming-overview.html), Lukas Krattiger did a [deep dive into its intricacies](https://my.ipspace.net/bin/get/EVPN/M2%20-%20EVPN%20Multihoming%20Deep%20Dive.mp4?doccode=EVPN) including:
 

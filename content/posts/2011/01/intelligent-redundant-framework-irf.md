@@ -1,10 +1,11 @@
 ---
 date: 2011-01-24 06:56:00.007000+01:00
+mlag_tag: implement
+series:
+- mlag
 tags:
 - link aggregation
 - switching
-mlag_tag: implement
-series: mlag
 title: Intelligent Redundant Framework (IRF) – Stacking as Usual
 url: /2011/01/intelligent-redundant-framework-irf.html
 ---

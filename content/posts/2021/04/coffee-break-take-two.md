@@ -1,8 +1,10 @@
 ---
-title: "Planning the Extended Coffee Break: Three Months Later"
-date: 2021-04-01 06:48:00
-tags: [ training ]
-series: coffee-break
+date: 2021-04-01 06:48:00+00:00
+series:
+- coffee-break
+tags:
+- training
+title: 'Planning the Extended Coffee Break: Three Months Later'
 ---
 It's almost exactly three months since I announced [ipSpace.net going on an extended coffee break](https://blog.ipspace.net/2021/01/planning-coffee-break.html). We had some ideas of what we plan to do at that time, but there were still many gray areas, and thanks to tons of discussions I had with many of my friends, subscribers, and readers, they mostly [crystallized into this](https://www.ipspace.net/Break/Overview):
 

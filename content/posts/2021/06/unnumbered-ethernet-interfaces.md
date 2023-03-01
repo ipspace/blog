@@ -1,8 +1,11 @@
 ---
-title: "Unnumbered Ethernet Interfaces"
-date: 2021-06-02 08:59:00
-tags: [ IP routing, networking fundamentals ]
-series: unnumbered-interfaces
+date: 2021-06-02 08:59:00+00:00
+series:
+- unnumbered-interfaces
+tags:
+- IP routing
+- networking fundamentals
+title: Unnumbered Ethernet Interfaces
 ---
 Imagine an Internet Service Provider offering Ethernet-based Internet access (aka everyone using fiber access, excluding people believing in [Russian dolls](https://blog.ipspace.net/2008/10/internet-access-russian-dolls.html)). If they know how to spell security, they might be nervous about connecting numerous customers to the same multi-access network, but it seems they have only two ways to solve this challenge:
 

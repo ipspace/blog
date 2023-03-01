@@ -1,5 +1,14 @@
 ---
-date: 2011-04-05T07:12:00.002+02:00
+comment: 'My [Open Networking Foundation rant](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html)
+  got several thoughtful responses focusing on “*what is OpenFlow and what can we
+  do with it?*” Let’s start with the easy part first: What exactly is OpenFlow?
+
+  '
+date: 2011-04-05 07:12:00.002000+02:00
+openflow_101_tag: intro
+series:
+- openflow_101
+series_weight: 280
 tags:
 - SDN
 - switching
@@ -7,11 +16,6 @@ tags:
 - OpenFlow
 title: What is OpenFlow?
 url: /2011/04/what-is-openflow.html
-series: openflow_101
-series_weight: 280
-openflow_101_tag: intro
-comment: |
-  My [Open Networking Foundation rant](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html) got several thoughtful responses focusing on “*what is OpenFlow and what can we do with it?*” Let’s start with the easy part first: What exactly is OpenFlow?
 ---
 A typical networking device (bridge, router, switch, LSR ...) has [*control* and *data* plane](/2013/08/management-control-and-data-planes-in.html). The control plane runs all the control protocols (including port aggregation, STP, TRILL, MAC address learning and routing protocols) and downloads the forwarding instructions into the *data plane* structures, which can be simple lookup tables or specialized hardware (hash tables or TCAMs).
 <!--more-->

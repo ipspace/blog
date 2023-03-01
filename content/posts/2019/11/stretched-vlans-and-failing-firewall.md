@@ -1,5 +1,7 @@
 ---
 date: 2019-11-12 08:14:00+01:00
+series:
+- dr-faking
 tags:
 - design
 - firewall
@@ -7,7 +9,6 @@ tags:
 - high availability
 title: Stretched VLANs and Failing Firewall Clusters
 url: /2019/11/stretched-vlans-and-failing-firewall.html
-series: dr-faking
 ---
 After publishing the *[Disaster Recovery Faking, Take Two](https://blog.ipspace.net/2019/10/disaster-recovery-faking-take-two.html)* blog post (you might want to read that one before proceeding) I was severely reprimanded by several people with ties to virtualization vendors for blaming virtualization consultants when it was obvious the firewall clusters stretched across two data centers caused the total data center meltdown.
 

@@ -1,5 +1,19 @@
 ---
+cdate: 2022-07-10
+comment: "Ever since the SDN hype started, vendors and pundits were quick to tell\
+  \ us how the SDN controllers (and programmers) will replace the traditional networking\
+  \ engineers. \n\nIn 2012 I thought there's no need to worry about that happening\
+  \ in foreseeable future, and not much has changed since then (apart from the obnoxious\
+  \ never-ending _[should networking engineers become programmers](https://blog.ipspace.net/2014/06/will-network-engineers-become.html)_\
+  \ debate).\n\nIn related news:\n\n* CCIE certification is still relevant (in 2022),\
+  \ and Cisco introduced DevNet certification\n* While MP-TCP got into limited production,\
+  \ we still haven't solved the major problems of the TCP/IP protocol stack\n* In\
+  \ 2021 Hype Cycle, Gartner declared OpenFlow-based SDN _dead before reaching plateau_\n"
 date: 2012-09-25 07:24:00+02:00
+sdn_101_tag: extra
+series:
+- sdn_101
+series_weight: 80
 tags:
 - SDN
 - data center
@@ -7,20 +21,6 @@ tags:
 - certifications
 title: SDN, Career Choices and Magic Graphs
 url: /2012/09/sdn-career-choices-and-magic-graphs.html
-series: sdn_101
-sdn_101_tag: extra
-series_weight: 80
-cdate: 2022-07-10
-comment: |
-  Ever since the SDN hype started, vendors and pundits were quick to tell us how the SDN controllers (and programmers) will replace the traditional networking engineers. 
-  
-  In 2012 I thought there's no need to worry about that happening in foreseeable future, and not much has changed since then (apart from the obnoxious never-ending _[should networking engineers become programmers](https://blog.ipspace.net/2014/06/will-network-engineers-become.html)_ debate).
-  
-  In related news:
-  
-  * CCIE certification is still relevant (in 2022), and Cisco introduced DevNet certification
-  * While MP-TCP got into limited production, we still haven't solved the major problems of the TCP/IP protocol stack
-  * In 2021 Hype Cycle, Gartner declared OpenFlow-based SDN _dead before reaching plateau_
 ---
 The current explosion of SDN hype (further fueled by recent VMworld announcement of Software-Defined Data Centers) made some networking engineers understandably nervous. This is the question I got from one of them:
 

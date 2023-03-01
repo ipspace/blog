@@ -1,10 +1,12 @@
 ---
-title: "MLAG Deep Dive: Dynamic MAC Learning"
-date: 2022-06-07 06:38:00
-tags: [ switching ]
-series: mlag
+date: 2022-06-07 06:38:00+00:00
 mlag_tag: deepdive
+series:
+- mlag
 series_title: Dynamic MAC Learning
+tags:
+- switching
+title: 'MLAG Deep Dive: Dynamic MAC Learning'
 ---
 In the [first blog post](/2022/06/mlag-deep-dive-overview.html) of the [*MLAG Technology Deep Dive* series](/series/mlag.html#technology-deep-dive), we explored the components of an MLAG system and the fundamental control plane requirements. 
 

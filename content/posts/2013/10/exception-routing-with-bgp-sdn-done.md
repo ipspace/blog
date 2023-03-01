@@ -1,5 +1,8 @@
 ---
 date: 2013-10-09 07:37:00+02:00
+dcbgp_tag: sdn
+series:
+- dcbgp
 tags:
 - MPLS
 - SDN
@@ -7,8 +10,6 @@ tags:
 - BGP
 title: 'Exception Routing with BGP: SDN Done Right'
 url: /2013/10/exception-routing-with-bgp-sdn-done.html
-series: dcbgp
-dcbgp_tag: sdn
 ---
 One of the holy grails of data center SDN evangelists is controller-driven traffic engineering (throwing more leaf-and-spine bandwidth at the problem might be cheaper, but definitely not sexier). Obviously they don't call it traffic engineering as they don't want to scare their audience with MPLS TE nightmares, but the idea is the same.
 

@@ -1,12 +1,13 @@
 ---
+anycast_tag: fabric
 date: 2013-06-04 07:16:00+02:00
+series:
+- anycast
 tags:
 - data center
 - fabric
 - IP routing
 - LAN
-series: anycast
-anycast_tag: fabric
 title: VRRP, Anycasts, Fabrics and Optimal Forwarding
 url: /2013/06/vrrp-anycasts-fabrics-and-optimal.html
 ---

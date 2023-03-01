@@ -1,8 +1,12 @@
 ---
-title: "Impact of Azure Subnets on High Availability Designs"
-date: 2021-03-02 07:16:00
-tags: [ cloud, high availability, design ]
-series: cloud-subnets
+date: 2021-03-02 07:16:00+00:00
+series:
+- cloud-subnets
+tags:
+- cloud
+- high availability
+- design
+title: Impact of Azure Subnets on High Availability Designs
 ---
 Now that you know all about [regions and availability zones (AZ)](/2021/02/public-cloud-regions-availability-zones.html) and the ways [AWS and Azure implement subnets](/2021/02/vpc-subnets-aws-azure-gcp.html), let's get to the crux of the [original question Daniel Dib sent me](https://twitter.com/danieldibswe/status/1356498909443612672?s=11):
 

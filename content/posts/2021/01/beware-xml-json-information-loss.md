@@ -1,8 +1,10 @@
 ---
-title: "Beware XML-to-JSON Information Loss (Junos with Ansible)"
-date: 2021-01-14 07:20:00
-tags: [ automation ]
-series: xml-json
+date: 2021-01-14 07:20:00+00:00
+series:
+- xml-json
+tags:
+- automation
+title: Beware XML-to-JSON Information Loss (Junos with Ansible)
 ---
 When you want to transport a complex data structure between components of a distributed system you're usually using a platform-independent data encoding format like XML, YAML, or JSON.
 

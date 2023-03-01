@@ -1,9 +1,12 @@
 ---
-title: "How Fast Can We Detect a Network Failure?"
-date: 2020-11-17 07:46:00
-tags: [ IP routing, networking fundamentals ]
+date: 2020-11-17 07:46:00+00:00
 lastmod: 2020-11-20 15:10:00
-series: fast-failover
+series:
+- fast-failover
+tags:
+- IP routing
+- networking fundamentals
+title: How Fast Can We Detect a Network Failure?
 ---
 In the [introductory fast failover blog post](https://blog.ipspace.net/2020/11/fast-failover-challenge.html) I mentioned the challenge of fast link- and node failure detection, and how it makes little sense to waste your efforts on fast failover tricks if the routing protocol convergence time has the same order of magnitude as failure detection time.
 

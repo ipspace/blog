@@ -1,12 +1,13 @@
 ---
+anycast_tag: fabric
 date: 2013-05-29 07:14:00+02:00
+series:
+- anycast
 tags:
 - data center
 - ARP
 - fabric
 - IP routing
-series: anycast
-anycast_tag: fabric
 title: Optimal L3 Forwarding with VARP and Active/Active VRRP
 url: /2013/05/optimal-l3-forwarding-with-varp-and.html
 ---

@@ -1,14 +1,17 @@
 ---
+comment: 'Just in case you’re wondering how the OpenFlow/SDN movement started, here’s
+  a bit of pre-2011 history.
+
+  '
 date: 2014-01-13 07:29:00+01:00
+sdn_101_tag: intro
+series:
+- sdn_101
+series_weight: 200
 tags:
 - SDN
 title: How Did Software Defined Networking Start?
 url: /2014/01/how-did-software-defined-networking.html
-series: sdn_101
-series_weight: 200
-sdn_101_tag: intro
-comment: |
-  Just in case you’re wondering how the OpenFlow/SDN movement started, here’s a bit of pre-2011 history.
 ---
 *Software-Defined Networking* is clearly a tautological term -- after all, software defined networking device behavior ever since we stopped using Token Ring MAUs and unmanaged hubs. Open Networking Foundation [claims it owns the definition of the term](https://www.opennetworking.org/sdn-definition) (which makes approximately as much sense as someone claiming they own the definition of *red-colored clouds*), but I was always wondering who coined the term in the first place.
 <!--more-->

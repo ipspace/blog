@@ -1,9 +1,13 @@
 ---
-title: "Unnumbered Ethernet Interfaces, DHCP Edition"
-date: 2021-06-10 08:42:00
+date: 2021-06-10 08:42:00+00:00
 lastmod: 2021-07-12 18:00:00
-tags: [ DHCP, IP routing, networking fundamentals ]
-series: unnumbered-interfaces
+series:
+- unnumbered-interfaces
+tags:
+- DHCP
+- IP routing
+- networking fundamentals
+title: Unnumbered Ethernet Interfaces, DHCP Edition
 ---
 Last week we explored the [basics of unnumbered IPv4 Ethernet interfaces](https://blog.ipspace.net/2021/06/unnumbered-ethernet-interfaces.html), and how you could use them to save IPv4 address space in routed access networks. I also mentioned that you could simplify the head-end router configuration if you're using DHCP instead of per-host static routes.
 

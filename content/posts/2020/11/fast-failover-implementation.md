@@ -1,8 +1,10 @@
 ---
-title: "Fast Failover: Hardware and Software Implementations"
-date: 2020-11-24 08:23:00
-tags: [ IP routing ]
-series: fast-failover
+date: 2020-11-24 08:23:00+00:00
+series:
+- fast-failover
+tags:
+- IP routing
+title: 'Fast Failover: Hardware and Software Implementations'
 ---
 In previous blog posts in this series we discussed whether it [makes sense to invest into fast failover network designs](https://blog.ipspace.net/2020/11/fast-failover-challenge.html), the [topologies you can use in such designs](https://blog.ipspace.net/2020/11/fast-failover-topologies.html), and the [fault detection techniques](https://blog.ipspace.net/2020/11/detecting-network-failure.html). I also hinted at different fast failover implementations; this blog post focuses on some of them.
 

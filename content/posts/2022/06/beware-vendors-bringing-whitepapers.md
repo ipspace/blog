@@ -1,8 +1,10 @@
 ---
-title: "Beware of Vendors Bringing White Papers"
-date: 2022-06-15 06:20:00
-tags: [ switching ]
-series: ASIC
+date: 2022-06-15 06:20:00+00:00
+series:
+- ASIC
+tags:
+- switching
+title: Beware of Vendors Bringing White Papers
 ---
 A few weeks ago I wrote about [tradeoffs vendors have to make when designing data center switching ASICs](/2022/06/data-center-switching-asic-tradeoffs.html), followed by another blog post [discussing how to select the ASICs for various roles in data center fabrics](/2022/06/select-data-center-switching-asic.html).
 

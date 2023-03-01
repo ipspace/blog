@@ -1,9 +1,12 @@
 ---
-title: "Does Unequal-Cost Multipathing Make Sense?"
-date: 2021-02-25 07:22:00
-tags: [ IP routing,SD-WAN ]
-series: UCMP
+date: 2021-02-25 07:22:00+00:00
 sd-wan_tag: details
+series:
+- UCMP
+tags:
+- IP routing
+- SD-WAN
+title: Does Unequal-Cost Multipathing Make Sense?
 ---
 Every now and then I'm getting questions along the lines "*why doesn't X support unequal-cost multipathing (UCMP)?*" for X in [ OSPF, BGP, IS-IS ]. 
 

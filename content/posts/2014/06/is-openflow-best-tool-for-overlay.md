@@ -1,19 +1,25 @@
 ---
+cdate: 2022-07-19
+comment: 'When you have a hammer, every problem seems like a nail -- Nicira (acquired
+  by VMware to form the foundation layers of VMware NSX) and later Open Daylight tried
+  to implement network virtualization with OpenFlow.
+
+
+  As it turns out, they might have used a wrong tool, but old habits die hard: VMware
+  NSX-T is still using Open vSwitch on Linux-based hypervisors.
+
+  '
 date: 2014-06-12 07:41:00+02:00
+openflow_101_tag: ugly
+series:
+- openflow_101
+series_weight: 150
 tags:
 - OpenFlow
 - overlay networks
 - virtualization
 title: Is OpenFlow the Best Tool for Overlay Virtual Networks?
 url: /2014/06/is-openflow-best-tool-for-overlay.html
-series: openflow_101
-series_weight: 150
-openflow_101_tag: ugly
-cdate: 2022-07-19
-comment: |
-  When you have a hammer, every problem seems like a nail -- Nicira (acquired by VMware to form the foundation layers of VMware NSX) and later Open Daylight tried to implement network virtualization with OpenFlow.
-  
-  As it turns out, they might have used a wrong tool, but old habits die hard: VMware NSX-T is still using Open vSwitch on Linux-based hypervisors.
 ---
 Overlay virtual networks were the first commercial-grade OpenFlow use case -- [Nicira's Network Virtualization Platform](http://blog.ipspace.net/2011/10/what-is-nicira-really-up-to.html) (NVP -- rebranded as VMware NSX for Multiple Hypervisors after the acquisition, and finally rearchitected into VMware NSX-T) used OpenFlow to program the hypervisor virtual switches (Open vSwitches -- OVS).
 

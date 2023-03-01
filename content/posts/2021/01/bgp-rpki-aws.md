@@ -1,8 +1,11 @@
 ---
-title: "How Important is BGP RPKI?"
-date: 2021-01-21 07:28:00
-tags: [ BGP, Internet ]
-series: RPKI
+date: 2021-01-21 07:28:00+00:00
+series:
+- RPKI
+tags:
+- BGP
+- Internet
+title: How Important is BGP RPKI?
 ---
 Corey Quinn [mentioned me in a tweet](https://twitter.com/QuinnyPig/status/1349626652674801664) linking to [AWS announcement that they are the biggest user of BGP RPKI](https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing/) (by the size of signed address space) worldwide. Good for them -- I'm sure it got their marketing excited. It's also trivial to do once you have the infrastructure in place. Just saying...
 

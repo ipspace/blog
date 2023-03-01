@@ -1,7 +1,8 @@
 ---
 date: 2020-03-05 08:04:00+01:00
 mlag_tag: design
-series: mlag
+series:
+- mlag
 tags:
 - design
 - bridging

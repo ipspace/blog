@@ -1,10 +1,11 @@
 ---
 date: 2018-03-22 08:22:00+01:00
+mlag_tag: design
+series:
+- mlag
 tags:
 - link aggregation
 - data center
-series: mlag
-mlag_tag: design
 title: Is MLAG an Alternative to Stackable Switches?
 url: /2018/03/is-mlag-alternative-to-stackable.html
 ---

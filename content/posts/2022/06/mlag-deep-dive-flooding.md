@@ -1,11 +1,13 @@
 ---
-title: "MLAG Deep Dive: Layer-2 Flooding"
-date: 2022-06-16 06:55:00
+date: 2022-06-16 06:55:00+00:00
 lastmod: 2022-06-19 16:02:00
-tags: [ switching ]
-series: mlag
 mlag_tag: deepdive
+series:
+- mlag
 series_title: Layer-2 Flooding
+tags:
+- switching
+title: 'MLAG Deep Dive: Layer-2 Flooding'
 ---
 In the [previous blog post](/2022/06/mlag-deep-dive-mac-learning.html) of the [*MLAG Technology Deep Dive* series](/series/mlag.html#technology-deep-dive), we explored the intricacies of layer-2 unicast forwarding. Now let's focus on layer-2 BUM[^BUM] flooding functionality of an MLAG system. 
 

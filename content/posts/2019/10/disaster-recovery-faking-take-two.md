@@ -1,12 +1,13 @@
 ---
 date: 2019-10-17 08:22:00+02:00
+series:
+- dr-faking
 tags:
 - design
 - data center
 - high availability
 title: Disaster Recovery Faking, Take Two
 url: /2019/10/disaster-recovery-faking-take-two.html
-series: dr-faking
 ---
 An anonymous (for reasons that will be obvious pretty soon) commenter left a gem on my [Disaster Recovery Test Faking](https://blog.ipspace.net/2019/09/disaster-recovery-test-faking-another.html) blog post that is way too valuable to be left hidden and unannotated.
 

@@ -1,5 +1,7 @@
 ---
 date: 2019-09-12 09:37:00+02:00
+series:
+- dr-faking
 tags:
 - design
 - bridging
@@ -7,7 +9,6 @@ tags:
 - high availability
 title: 'Disaster Recovery Test Faking: Another Use Case for Stretched VLANs'
 url: /2019/09/disaster-recovery-test-faking-another.html
-series: dr-faking
 ---
 The March 2019 Packet Pushers Virtual Design Clinic had to deal with an interesting question:
 

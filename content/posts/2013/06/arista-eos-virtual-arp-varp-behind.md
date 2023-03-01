@@ -1,13 +1,14 @@
 ---
+anycast_tag: fabric
 date: 2013-06-19 06:53:00+02:00
+series:
+- anycast
 tags:
 - data center
 - ARP
 - fabric
 title: Arista EOS Virtual ARP (VARP) Behind the Scenes
 url: /2013/06/arista-eos-virtual-arp-varp-behind.html
-series: anycast
-anycast_tag: fabric
 ---
 In the _[Optimal L3 Forwarding with VARP and Active/Active VRRP](https://blog.ipspace.net/2013/05/optimal-l3-forwarding-with-varp-and.html)_ blog post I made a remark along the lines of "_Things might get nasty [in Arista EOS Virtual ARP world] if you have configuration mismatches_", resulting in a lengthy and amazingly insightful email exchange with [Lincoln Dale](http://www.linkedin.com/in/ltdatinterlinkcomau) during which we ventured deeper and deeper down the Virtual ARP (VARP) rabbit hole. Here's what I learned during out trip:
 <!--more-->

@@ -1,10 +1,11 @@
 ---
 date: 2011-03-21 06:32:00+01:00
+mlag_tag: design
+series:
+- mlag
 tags:
 - bridging
 - link aggregation
-series: mlag
-mlag_tag: design
 title: Don’t Try to Fake Multi-chassis Link Aggregation (MLAG)
 url: /2011/03/dont-try-to-fake-multi-chassis-link.html
 ---

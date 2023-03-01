@@ -1,9 +1,11 @@
 ---
-title: "Planning the Next Extended Coffee Break"
-date: 2021-01-05 08:44:00
+date: 2021-01-05 08:44:00+00:00
 lastmod: 2021-07-06 08:55:00
-tags: [ training ]
-series: coffee-break
+series:
+- coffee-break
+tags:
+- training
+title: Planning the Next Extended Coffee Break
 ---
 **Long story short**: ipSpace.net is ~~going on an extended coffee break on June 24th 2021~~ [reducing the scope of activities](/2021/04/coffee-break-take-two.html) on July 1st 2021. You can stop reading; the rest of the blog post is full of details you probably don't care about.
 

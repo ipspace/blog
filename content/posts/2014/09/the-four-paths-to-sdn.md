@@ -1,14 +1,15 @@
 ---
 date: 2014-09-16 06:57:00+02:00
+dcbgp_tag: sdn
+lastmod: 2023-02-28 17:46:00
+series:
+- dcbgp
 tags:
 - SDN
 - OpenFlow
 - BGP
 title: The Four Paths to SDN
 url: /2014/09/the-four-paths-to-sdn.html
-series: dcbgp
-dcbgp_tag: sdn
-lastmod: 2023-02-28 17:46:00
 ---
 After the initial onslaught of SDN washing, four distinct approaches to SDN have started to emerge, from centralized control plane architectures to smart reuse of existing protocols.
 

@@ -1,23 +1,24 @@
 ---
+cdate: 2022-07-10
+comment: "Every now and then, someone generates clickbait content recycling the \"\
+  _networking engineers are a dying breed_\" hype. \n\nHere's what I wrote as a response\
+  \ to a particular instance of that stupidity in 2013. Not surprisingly, networking\
+  \ engineers are doing well in 2022, marketing VPs are still generating nonsense,\
+  \ and the author of that article probably still keeps spreading it.\n\nIn related\
+  \ news (from July 2022 perspective):\n\n* NEC ProgrammableFlow disappeared\n* [So-called\
+  \ SDN controllers are everywhere](/2022/05/sdn-controller-taxonomy.html) (including\
+  \ campus and wireless), but they are mostly just another layer of complexity on\
+  \ top of the networking infrastructure. We called those things \"network management\
+  \ systems\" before SDN was cool.\n* We're still dealing with VLANs\n"
 date: 2013-06-12 07:20:00+02:00
+sdn_101_tag: extra
+series:
+- sdn_101
+series_weight: 80
 tags:
 - SDN
 title: 'Response: SDN’s Casualties'
 url: /2013/06/response-sdns-casualties.html
-series: sdn_101
-sdn_101_tag: extra
-series_weight: 80
-cdate: 2022-07-10
-comment: |
-  Every now and then, someone generates clickbait content recycling the "_networking engineers are a dying breed_" hype. 
-  
-  Here's what I wrote as a response to a particular instance of that stupidity in 2013. Not surprisingly, networking engineers are doing well in 2022, marketing VPs are still generating nonsense, and the author of that article probably still keeps spreading it.
-  
-  In related news (from July 2022 perspective):
-  
-  * NEC ProgrammableFlow disappeared
-  * [So-called SDN controllers are everywhere](/2022/05/sdn-controller-taxonomy.html) (including campus and wireless), but they are mostly just another layer of complexity on top of the networking infrastructure. We called those things "network management systems" before SDN was cool.
-  * We're still dealing with VLANs
 ---
 An individual focused more on sensationalism than content deemed it appropriate to [publish an article](http://www.theregister.co.uk/2013/05/24/network_configuration_automation/) declaring networking engineers an endangered species on an industry press web site that I considered somewhat reliable in the past.
 

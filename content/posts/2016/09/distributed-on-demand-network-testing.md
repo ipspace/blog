@@ -1,15 +1,16 @@
 ---
+cicd_tag: podcast
 date: 2016-09-30 07:56:00+02:00
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_63-ToDD.mp3
+series:
+- cicd
+series_weight: 400
 tags:
 - automation
 - podcast
 - Software Gone Wild
 title: Distributed On-Demand Network Testing (ToDD) with Matt Oswalt
 url: /2016/09/distributed-on-demand-network-testing.html
-series: [ cicd ]
-cicd_tag: podcast
-series_weight: 400
 ---
 In March 2016 my friend Matt Oswalt announced a [distributed network testing framework](https://keepingitclassless.net/2016/03/test-driven-network-automation/) that he used for validation in his network automation / continuous integration projects. Initial tests included ping and DNS probes, and he [added HTTP testing](https://keepingitclassless.net/2016/05/introducing-http-testing-todd/) in May 2016.
 

@@ -1,8 +1,10 @@
 ---
-title: "Fast Failover: The Challenge"
-date: 2020-11-10 07:14:00
-tags: [ IP routing ]
-series: fast-failover
+date: 2020-11-10 07:14:00+00:00
+series:
+- fast-failover
+tags:
+- IP routing
+title: 'Fast Failover: The Challenge'
 ---
 Sometimes you're asked to design a network that will reroute around a failure in milliseconds. Is that feasible? Maybe. Is it simple? Absolutely not. 
 

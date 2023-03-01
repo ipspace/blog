@@ -1,9 +1,13 @@
 ---
-title: "Configuring NSX-T Firewall with a CI/CD Pipeline"
-date: 2021-09-13 06:20:00
-tags: [ automation, firewall, NSX ]
-series: [ cicd ]
 cicd_tag: solution
+date: 2021-09-13 06:20:00+00:00
+series:
+- cicd
+tags:
+- automation
+- firewall
+- NSX
+title: Configuring NSX-T Firewall with a CI/CD Pipeline
 ---
 Initial implementation of [Noël Boulene](https://www.linkedin.com/in/noyelb/)'s [automated provisioning of NSX-T distributed firewall rules](/2021/09/automating-nsxt-firewall-configuration.html) changed NSX-T firewall configuration based on Terraform configuration files. To make the deployment fully automated he went a step further and added a [full-blown CI/CD pipeline using GitHub Actions and Terraform Cloud](https://netmemo.github.io/post/tf-gha-nsxt-cicd/).
 

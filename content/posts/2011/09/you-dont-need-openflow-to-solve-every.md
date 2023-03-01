@@ -1,16 +1,19 @@
 ---
+comment: "Networking engineers’ reactions to OpenFlow were easy to predict – from\
+  \ “this will never work” to “here’s how I can solve my problem with OpenFlow.” It\
+  \ turns out we can solve many problems without involving OpenFlow; the traditional\
+  \ networking protocols are often good enough. \n"
 date: 2011-09-13 06:29:00+02:00
+openflow_101_tag: ugly
+series:
+- openflow_101
+series_weight: 180
 tags:
 - SDN
 - switching
 - OpenFlow
 title: You Don’t Need OpenFlow to Solve Every Age-Old Problem
 url: /2011/09/you-dont-need-openflow-to-solve-every.html
-series: openflow_101
-series_weight: 180
-openflow_101_tag: ugly
-comment: |
-  Networking engineers’ reactions to OpenFlow were easy to predict – from “this will never work” to “here’s how I can solve my problem with OpenFlow.” It turns out we can solve many problems without involving OpenFlow; the traditional networking protocols are often good enough. 
 ---
 I read two great blog posts on Sunday: evergreen [*Fallacies of Distributed Computing*](http://lonesysadmin.net/2011/09/10/fallacies-of-distributed-computing/) from Bob Plankers and forward-looking [*Understanding Hadoop Clusters and the Network*](https://bradhedlund.com/2011/09/10/understanding-hadoop-clusters-and-the-network/) from Brad Hedlund. Read them both before continuing (they are both great reads) and try to figure out why I'm mentioning them in the same sentence (no, it's not the fact that Hadoop uses distributed computing).
 <!--more-->

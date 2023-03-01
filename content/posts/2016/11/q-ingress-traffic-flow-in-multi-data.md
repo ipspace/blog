@@ -1,5 +1,9 @@
 ---
+anycast_tag: design
 date: 2016-11-28 09:46:00+01:00
+series:
+- anycast
+series_title: Ingress Traffic Flow in Multi-Data Center Deployments
 tags:
 - design
 - data center
@@ -7,9 +11,6 @@ tags:
 - high availability
 title: 'Q&A: Ingress Traffic Flow in Multi-Data Center Deployments'
 url: /2016/11/q-ingress-traffic-flow-in-multi-data.html
-series: anycast
-series_title: "Ingress Traffic Flow in Multi-Data Center Deployments"
-anycast_tag: design
 ---
 One of my readers was watching the [Building Active-Active Data Centers webinar](http://www.ipspace.net/Designing_Active-Active_and_Disaster_Recovery_Data_Centers) and sent me this question:
 

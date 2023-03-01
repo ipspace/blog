@@ -1,10 +1,14 @@
 ---
-title: "Graceful Restart (GR) 101"
-date: 2021-09-28 06:30:00
-series: ha-switching
+date: 2021-09-28 06:30:00+00:00
 ha-switching_tag: mechanism
+series:
+- ha-switching
 series_title: Graceful Restart (GR)
-tags: [ IP routing, high availability, networking fundamentals ]
+tags:
+- IP routing
+- high availability
+- networking fundamentals
+title: Graceful Restart (GR) 101
 ---
 In the *Non-Stop Forwarding* (NSF) article, I mentioned that the routers adjacent to the device using NSF have to play along to make the idea work. That capability is called *Graceful Restart*. Today we'll explore its intricate details, be diplomatic, and leave the shortcomings and tradeoffs for the next blog post.
 

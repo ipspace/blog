@@ -1,12 +1,13 @@
 ---
 date: 2011-08-29 06:43:00+02:00
 lastmod: 2022-05-05 07:47:00
+series:
+- bgp-essentials
 tags:
 - design
 - BGP
 title: BGP Next Hop Processing
 url: /2011/08/bgp-next-hop-processing.html
-series: bgp-essentials
 ---
 Following my [*IBGP or EBGP in an enterprise network*](https://blog.ipspace.net/2011/08/ibgp-or-ebgp-in-enterprise-network.html) post a few people have asked for a more graphical explanation of IBGP/EBGP differences. Apart from the obvious ones (AS path does not change inside an AS) and more arcane ones (local preference is only propagated on IBGP sessions, MED of an EBGP route is not propagated to other EBGP neighbors), the most important difference between IBGP and EBGP is BGP next hop processing.
 <!--more-->

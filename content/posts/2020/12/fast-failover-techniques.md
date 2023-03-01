@@ -1,8 +1,10 @@
 ---
-title: "Fast Failover: Techniques and Technologies"
-date: 2020-12-03 06:59:00
-tags: [ IP routing ]
-series: fast-failover
+date: 2020-12-03 06:59:00+00:00
+series:
+- fast-failover
+tags:
+- IP routing
+title: 'Fast Failover: Techniques and Technologies'
 ---
 Continuing our [Fast Failover saga](https://blog.ipspace.net/series/fast-failover.html), let's focus on techniques and technologies available to implement it (assuming you [still think it's worth the effort](https://blog.ipspace.net/2020/11/fast-failover-challenge.html)).
 

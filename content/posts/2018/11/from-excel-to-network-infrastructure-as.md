@@ -1,14 +1,15 @@
 ---
 date: 2018-11-23 08:17:00+01:00
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_95-Automation_Journey.mp3
+niac_tag: podcast
+series:
+- niac
 tags:
 - automation
 - podcast
 - Software Gone Wild
 title: From Excel to Network Infrastructure as Code with Carl Buchmann
 url: /2018/11/from-excel-to-network-infrastructure-as.html
-series: niac
-niac_tag: podcast
 ---
 After a series of forward-looking podcast episodes we returned to real life and talked with [Carl Buchmann](https://www.linkedin.com/in/carl-buchmann-6b436727/) about his network automation journey, from managing upgrades with Excel and using Excel as the configuration consistency tool to network-infrastructure-as-code concepts he [described in a guest blog post in February 2018](https://blog.ipspace.net/2018/02/automation-isnt-about-building-button.html)
 <!--more-->

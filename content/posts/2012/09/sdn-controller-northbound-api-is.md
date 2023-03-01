@@ -1,22 +1,35 @@
 ---
+cdate: 2022-07-19
+comment: 'Open Networking Foundation (ONF) created a ginormous amount of OpenFlow
+  hype, declared Mission Accomplished, and never even tried to focus on what interface
+  the SDN controllers will offer to the outside world.
+
+
+  Nor surprisingly, every controller vendor used a different API, creating [another
+  layer of lock-in](/2015/01/lock-in-is-inevitable-get-used-to-it.html), but ONF never
+  cared about that, because the most influential founding members planned to write
+  their own controllers anyway.
+
+
+  A decade after I wrote this blog post the debate is moot -- there are not enough
+  OpenFlow controllers out there to worry about being lock-in -- but we''re experiencing
+  the same dilemma  in network automation and intent-based networking space.
+
+
+  On a totally unrelated note, nothing ever came out of Cisco ONE marketing machinery,
+  but we did get REST API on Nexus OS and decent NETCONF on Cisco IOS XE.
+
+  '
 date: 2012-09-27 06:48:00+02:00
+openflow_101_tag: ugly
+series:
+- openflow_101
+series_weight: 150
 tags:
 - SDN
 - OpenFlow
 title: SDN Controller Northbound API Is the Crucial Missing Piece
-series: openflow_101
-series_weight: 150
-openflow_101_tag: ugly
 url: /2012/09/sdn-controller-northbound-api-is.html
-cdate: 2022-07-19
-comment: |
-  Open Networking Foundation (ONF) created a ginormous amount of OpenFlow hype, declared Mission Accomplished, and never even tried to focus on what interface the SDN controllers will offer to the outside world.
-  
-  Nor surprisingly, every controller vendor used a different API, creating [another layer of lock-in](/2015/01/lock-in-is-inevitable-get-used-to-it.html), but ONF never cared about that, because the most influential founding members planned to write their own controllers anyway.
-  
-  A decade after I wrote this blog post the debate is moot -- there are not enough OpenFlow controllers out there to worry about being lock-in -- but we're experiencing the same dilemma  in network automation and intent-based networking space.
-  
-  On a totally unrelated note, nothing ever came out of Cisco ONE marketing machinery, but we did get REST API on Nexus OS and decent NETCONF on Cisco IOS XE.
 ---
 Imagine you'd like to write a simple Perl (or Python, Ruby, JavaScript -- you get the idea) script to automate a burdensome function on your server (or router/switch from any vendor running Linux/BSD behind the scenes) that the vendor never bothered to implement. The script interpreter relies on numerous APIs being available from the operating system -- from process API (to load and start the interpreter) to file system API, console I/O API, memory management API, and probably a few others.
 

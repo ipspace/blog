@@ -1,19 +1,30 @@
 ---
+comment: 'With Open Networking Foundation [adamantly promoting their definition of
+  SDN](/2014/01/what-exactly-is-sdn-and-does-it-make.html), and based on experiences
+  with previous (now mostly extinct) centralized architectures, one has to ask a simple
+  question: does it make sense?
+
+
+  Here’s what I thought in May 2014; for more details, read the [Packet Forwarding
+  101](/series/forwarding.html) blog posts and watch the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)
+  webinar.
+
+
+  Also note that most of the solutions I listed as successful (limited) implementations
+  of centralized control plane in 2014 withered in the meantime, and we''re back to
+  distributed networking (this time often coupled with automated configuration deployment).
+
+  '
 date: 2014-05-08 07:04:00+02:00
+sdn_101_tag: intro
+series:
+- sdn_101
+series_weight: 180
 tags:
 - SDN
 - OpenFlow
 title: Does Centralized Control Plane Make Sense?
 url: /2014/05/does-centralized-control-plane-make.html
-series: sdn_101
-series_weight: 180
-sdn_101_tag: intro
-comment: |
-  With Open Networking Foundation [adamantly promoting their definition of SDN](/2014/01/what-exactly-is-sdn-and-does-it-make.html), and based on experiences with previous (now mostly extinct) centralized architectures, one has to ask a simple question: does it make sense?
-  
-  Here’s what I thought in May 2014; for more details, read the [Packet Forwarding 101](/series/forwarding.html) blog posts and watch the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar.
-  
-  Also note that most of the solutions I listed as successful (limited) implementations of centralized control plane in 2014 withered in the meantime, and we're back to distributed networking (this time often coupled with automated configuration deployment).
 ---
 A friend of mine sent me a challenging question:
 

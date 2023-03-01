@@ -1,13 +1,14 @@
 ---
 date: 2010-10-01 07:24:00.008000+02:00
 lastmod: 2022-05-08 09:21:00
+mlag_tag: overview
+series:
+- mlag
 tags:
 - link aggregation
 - switching
 - data center
 title: Multi-Chassis Link Aggregation (MLAG) Basics
-series: mlag
-mlag_tag: overview
 url: /2010/10/multi-chassis-link-aggregation-basics.html
 ---
 If you ask any networking engineer building layer-2 fabrics the traditional way about his worst pains, I'm positive Spanning Tree Protocol (STP) will be very high on the shortlist. In a well-designed fully redundant hierarchical bridged network where every device connects to at least two devices higher in the hierarchy, you lose half the bandwidth to STP loop prevention whims.

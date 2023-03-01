@@ -1,17 +1,24 @@
 ---
+cdate: 2022-07-09
+comment: 'The very strict definition of SDN as understood by Open Networking Foundation
+  promotes an architecture with strict separation between a controller and totally
+  dumb devices that cannot do more than forward packets based on forwarding rules
+  downloaded from the controller. Does that definition make sense?
+
+
+  This is what I wrote in January 2014. The centralized control plane idea was mostly
+  debunked in the meantime, and even ONF abandoned OpenFlow in favor of P4.
+
+  '
 date: 2014-01-16 07:17:00+01:00
+sdn_101_tag: intro
+series:
+- sdn_101
+series_weight: 190
 tags:
 - SDN
 title: What Exactly Is SDN (And Does It Make Sense)?
 url: /2014/01/what-exactly-is-sdn-and-does-it-make.html
-series: sdn_101
-series_weight: 190
-sdn_101_tag: intro
-cdate: 2022-07-09
-comment: |
-  The very strict definition of SDN as understood by Open Networking Foundation promotes an architecture with strict separation between a controller and totally dumb devices that cannot do more than forward packets based on forwarding rules downloaded from the controller. Does that definition make sense?
-  
-  This is what I wrote in January 2014. The centralized control plane idea was mostly debunked in the meantime, and even ONF abandoned OpenFlow in favor of P4.
 ---
 When Open Networking Foundation claimed ownership of Software-Defined Networking, they [defined it as separation of control and data plane](https://www.opennetworking.org/sdn-definition):
 

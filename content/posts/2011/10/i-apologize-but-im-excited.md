@@ -1,17 +1,25 @@
 ---
+cdate: 2022-07-06
+comment: 'The real-life approach of numerous vendors I’ve seen during [Networking
+  Field Day 2 and OpenFlow Symposium](/2011/10/network-field-day-first-impressions.html)
+  made me overly optimistic – I thought we just might be able to get to real-life
+  OpenFlow and SDN use cases without the usual vendor jousting and get-rich-quick
+  startup mentality.
+
+
+  I wrote the following blog post in October 2011. Looking back (from a safe distance
+  of over a decade), I was wrong. Nothing much came out of OpenFlow.
+
+  '
 date: 2011-10-30 19:40:00.001000+01:00
+sdn_hype_tag: initial
+series:
+- sdn_hype
 tags:
 - SDN
 - OpenFlow
-series: sdn_hype
-sdn_hype_tag: initial
 title: I Apologize, but I’m Excited
 url: /2011/10/i-apologize-but-im-excited.html
-cdate: 2022-07-06
-comment: |
-  The real-life approach of numerous vendors I’ve seen during [Networking Field Day 2 and OpenFlow Symposium](/2011/10/network-field-day-first-impressions.html) made me overly optimistic – I thought we just might be able to get to real-life OpenFlow and SDN use cases without the usual vendor jousting and get-rich-quick startup mentality.
-  
-  I wrote the following blog post in October 2011. Looking back (from a safe distance of over a decade), I was wrong. Nothing much came out of OpenFlow.
 ---
 The last few days were exquisite fun: it was great meeting so many people focusing on a single technology (OpenFlow) and concept (Software-Defined Networking, whatever that means) that just might overcome some of the old obstacles (and introduce new ones). You should be at least a bit curious what this is all about, and even if you don't see yourself ever using OpenFlow or any other incarnation of SDN in your network, it never hurts to enhance your resume with another technology (as long as it's relevant; don't put CICS programmer at the top of it).
 <!--more-->

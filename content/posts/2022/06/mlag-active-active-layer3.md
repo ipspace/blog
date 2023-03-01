@@ -1,10 +1,12 @@
 ---
-title: "MLAG Deep Dive: Layer-3 Forwarding"
-date: 2022-06-22 06:55:00
-tags: [ switching ]
-series: mlag
+date: 2022-06-22 06:55:00+00:00
 mlag_tag: deepdive
+series:
+- mlag
 series_title: Layer-3 Forwarding
+tags:
+- switching
+title: 'MLAG Deep Dive: Layer-3 Forwarding'
 ---
 The [layer-2 forwarding](/2022/06/mlag-deep-dive-mac-learning.html) and [flooding](/2022/06/mlag-deep-dive-flooding.html) in an MLAG cluster are intricate but still reasonably easy to understand. Layer-3 gets more interesting; its quirks depend heavily on layer-2 implementation. While most MLAG implementations exhibit similar bridging behavior, expect interesting differences in routing behavior.
 

@@ -1,23 +1,39 @@
 ---
+cdate: 2022-07-09
+comment: 'In January 2014 I took another look at what the Open Networking Foundation
+  founding members managed to achieve between March 2011 (the [beginning of OpenFlow/SDN
+  hype](/2011/03/open-networking-foundation-fabric.html)) and early 2014. The only
+  one that made significant progress on the “centralized control plane” front was
+  Google.
+
+
+  Since I wrote this blog post:
+
+
+  * Facebook launched their own switch operating system, which is just another classical
+  network operating system running on Linux.
+
+  * Deutsche Telekom killed the Terastream pilot
+
+  * BGP in the data center is the next big thing, and some hype scalers use it to
+  disseminate forwarding information from the controller to traditional BGP routers.
+
+  * Big Switch was acquired by Arista, and I''ve never met anyone using it in a production
+  network.
+
+  * Cisco Nexus 1000v died, and IBM virtual switch never got far beyond marketing
+  materials.
+
+  '
 date: 2014-01-21 07:31:00+01:00
+sdn_hype_tag: back
+series:
+- sdn_hype
 tags:
 - SDN
 - OpenFlow
 title: Control and Data Plane Separation – Three Years Later
 url: /2014/01/control-and-data-plane-separation-three.html
-series: sdn_hype
-sdn_hype_tag: back
-cdate: 2022-07-09
-comment: |
-  In January 2014 I took another look at what the Open Networking Foundation founding members managed to achieve between March 2011 (the [beginning of OpenFlow/SDN hype](/2011/03/open-networking-foundation-fabric.html)) and early 2014. The only one that made significant progress on the “centralized control plane” front was Google.
-
-  Since I wrote this blog post:
-
-  * Facebook launched their own switch operating system, which is just another classical network operating system running on Linux.
-  * Deutsche Telekom killed the Terastream pilot
-  * BGP in the data center is the next big thing, and some hype scalers use it to disseminate forwarding information from the controller to traditional BGP routers.
-  * Big Switch was acquired by Arista, and I've never met anyone using it in a production network.
-  * Cisco Nexus 1000v died, and IBM virtual switch never got far beyond marketing materials.
 ---
 Almost three years ago the [OpenFlow/SDN hype exploded](http://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html) and the [Open Networking Foundation started promoting the concept of physically separate control and data planes](http://blog.ipspace.net/2014/01/what-exactly-is-sdn-and-does-it-make.html). Let's see how far its founding members got in the meantime:
 <!--more-->

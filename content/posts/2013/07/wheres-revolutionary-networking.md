@@ -1,18 +1,29 @@
 ---
+cdate: 2022-07-09
+comment: 'Numerous marketers and SDN/OpenFlow pundits keep repeating how they’ll save
+  the (networking) world and bring true nirvana to the network operations with their
+  flashy new gadgets. Nothing can be further from the truth because we cannot get
+  rid of the legacy permeating the whole TCP/IP stack, as I explained in this post
+  written in July 2013.
+
+
+  Note: Joe was obliquely touting the benefits of what became Cisco ACI versus the
+  "more traditional" implementations like [VMware NSX](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive).
+  While [Cisco ACI does have an interesting architecture](https://www.ipspace.net/Cisco_ACI_Deep_Dive),
+  that architecture is too complex for many deployments, and ACI often gets used as
+  a centralized VLAN provisioning tool.
+
+  '
 date: 2013-07-23 07:52:00+02:00
+sdn_hype_tag: clueless
+series:
+- sdn_hype
 tags:
 - data center
 - overlay networks
 - virtualization
 title: Where’s the Revolutionary Networking Innovation?
 url: /2013/07/wheres-revolutionary-networking.html
-series: sdn_hype
-sdn_hype_tag: clueless
-cdate: 2022-07-09
-comment: |
-  Numerous marketers and SDN/OpenFlow pundits keep repeating how they’ll save the (networking) world and bring true nirvana to the network operations with their flashy new gadgets. Nothing can be further from the truth because we cannot get rid of the legacy permeating the whole TCP/IP stack, as I explained in this post written in July 2013.
-  
-  Note: Joe was obliquely touting the benefits of what became Cisco ACI versus the "more traditional" implementations like [VMware NSX](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive). While [Cisco ACI does have an interesting architecture](https://www.ipspace.net/Cisco_ACI_Deep_Dive), that architecture is too complex for many deployments, and ACI often gets used as a centralized VLAN provisioning tool.
 ---
 In his [recent blog post](https://web.archive.org/web/20161224170304/http://www.definethecloud.net/its-our-time-down-here-underlays/) [Joe Onisick](http://www.linkedin.com/in/jonisick) wrote "*What network virtualization doesn't provide, in any form, is a change to the model we use to deploy networks and support applications. \[\...\] All of the same broken or misused methodologies are carried forward. \[\...\] Faithful replication of today's networking challenges as virtual machines with encapsulation tunnels doesn't move the bar for deploying applications.*"
 <!--more-->

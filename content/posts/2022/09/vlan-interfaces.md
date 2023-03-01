@@ -1,8 +1,12 @@
 ---
-title: "VLAN Interfaces and Subinterfaces"
-date: 2022-09-14 07:31:00
-tags: [ switching, IP routing, networking fundamentals ]
-series: if_port
+date: 2022-09-14 07:31:00+00:00
+series:
+- if_port
+tags:
+- switching
+- IP routing
+- networking fundamentals
+title: VLAN Interfaces and Subinterfaces
 ---
 Early bridges [implemented a single bridging domain across all ports](/2022/09/interfaces-ports.html). Within a few years, we got multiple bridging domains within a single device (including [bridging implementation in Cisco IOS](/2022/09/routers-bridges-crb-irb.html)). The capability to have multiple bridging domains stretched across several devices was still missing... until the modern-day Pandora opened the VLAN box and forever swamped us in the complexities of large-scale bridging.
 <!--more-->

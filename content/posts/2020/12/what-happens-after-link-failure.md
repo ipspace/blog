@@ -1,8 +1,12 @@
 ---
-title: "What Exactly Happens after a Link Failure?"
-date: 2020-12-23 06:15:00
-tags: [ networking fundamentals, IP routing, OSPF ]
-series: fast-failover
+date: 2020-12-23 06:15:00+00:00
+series:
+- fast-failover
+tags:
+- networking fundamentals
+- IP routing
+- OSPF
+title: What Exactly Happens after a Link Failure?
 ---
 Imagine the following network running OSPF as the routing protocol. PE1--P1--PE2 is the primary path and PE1--P2--PE2 is the backup path. What happens on PE1 when the PE1--P1 link fails? What happens on PE2?
 

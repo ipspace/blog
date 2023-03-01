@@ -1,18 +1,24 @@
 ---
+cdate: 2022-07-06
+comment: "In just a few months after the [ONF launch](/2011/03/open-networking-foundation-fabric.html),\
+  \ everyone was talking about OpenFlow and SDN, and Stephen Foskett, the mastermind\
+  \ behind GestaltIT, decided to organize the first ever OpenFlow symposium in September\
+  \ 2011. \n\nThe vendor and user presentations we’ve seen at that symposium, combined\
+  \ with the vendor presentations we’ve attended during the Networking Tech Field\
+  \ Day 2 seemed very promising – everyone was talking about the right topics and\
+  \ tried to address real-life scalability concerns.\n\nLooking back at those days\
+  \ after more than a decade makes me sad -- while we made a huge progress in many\
+  \ areas, we wasted an enormous amount of goodwill, enthusiasm and hard work on OpenFlow\
+  \ and OpenFlow controllers trying to solve the wrong problem. \n"
 date: 2011-10-29 20:31:00.001000+02:00
+sdn_hype_tag: initial
+series:
+- sdn_hype
+tags:
+- OpenFlow
+- SDN
 title: Network Field Day 2 and OpenFlow Symposium
 url: /2011/10/network-field-day-first-impressions.html
-tags: [ OpenFlow, SDN ]
-series: sdn_hype
-sdn_hype_tag: initial
-cdate: 2022-07-06
-series: sdn_hype
-comment: |
-  In just a few months after the [ONF launch](/2011/03/open-networking-foundation-fabric.html), everyone was talking about OpenFlow and SDN, and Stephen Foskett, the mastermind behind GestaltIT, decided to organize the first ever OpenFlow symposium in September 2011. 
-
-  The vendor and user presentations we’ve seen at that symposium, combined with the vendor presentations we’ve attended during the Networking Tech Field Day 2 seemed very promising – everyone was talking about the right topics and tried to address real-life scalability concerns.
-  
-  Looking back at those days after more than a decade makes me sad -- while we made a huge progress in many areas, we wasted an enormous amount of goodwill, enthusiasm and hard work on OpenFlow and OpenFlow controllers trying to solve the wrong problem. 
 ---
 We finished a fantastic [Network Field Day (second edition)](http://techfieldday.com/2011/nfd2/) yesterday. While it will take me a while (and 20+ blog posts) to recover from the information blast I received during the last two days, here are the first impressions:
 

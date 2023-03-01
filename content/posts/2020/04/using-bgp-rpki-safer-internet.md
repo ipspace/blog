@@ -1,8 +1,12 @@
 ---
-title: "MUST READ: Using BGP RPKI for a Safer Internet"
-date: 2020-04-02 07:37:00
-tags: [ BGP, security, Internet ]
-series: RPKI
+date: 2020-04-02 07:37:00+00:00
+series:
+- RPKI
+tags:
+- BGP
+- security
+- Internet
+title: 'MUST READ: Using BGP RPKI for a Safer Internet'
 ---
 As I explained in [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) and [Upcoming Internet Challenges](https://www.ipspace.net/Upcoming_Internet_Challenges) webinars, routing security, and [BGP security in particular](https://blog.ipspace.net/2019/07/rant-some-internet-service-providers.html) remain one of the unsolved challenges we've been facing for decades (see also: [what makes BGP a hot mess](https://blog.ipspace.net/2019/11/facts-and-fiction-bgp-is-hot-mess.html)).
 

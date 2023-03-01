@@ -1,8 +1,11 @@
 ---
-title: "Why Don't We Have Dynamic Firewall Policies"
-date: 2020-09-16 06:20:00
-tags: [ security, firewall ]
-series: host-firewalls
+date: 2020-09-16 06:20:00+00:00
+series:
+- host-firewalls
+tags:
+- security
+- firewall
+title: Why Don't We Have Dynamic Firewall Policies
 ---
 One of the readers of the [Considerations for Host-Based Firewalls](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html) blog post [wrote this interesting comment](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html#115):
 

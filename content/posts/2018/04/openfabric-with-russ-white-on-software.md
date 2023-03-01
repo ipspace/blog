@@ -1,6 +1,11 @@
 ---
 date: 2018-04-20 08:36:00+02:00
+dcbgp_tag: newrp
 media: http://media.blubrry.com/ipspace/stream.ipspace.net/nuggets/podcast/Show_89-OpenFabric.mp3
+series:
+- dcbgp
+series_title: OpenFabric with Russ White
+series_weight: 850
 tags:
 - podcast
 - data center
@@ -8,11 +13,7 @@ tags:
 - IP routing
 - Software Gone Wild
 title: OpenFabric with Russ White on Software Gone Wild
-series_title: OpenFabric with Russ White
 url: /2018/04/openfabric-with-russ-white-on-software.html
-series: dcbgp
-series_weight: 850
-dcbgp_tag: newrp
 ---
 Continuing the series of [data center routing protocol podcasts](http://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html), we sat down with Russ White (of the CCDE fame), author of another proposal: [OpenFabric](https://tools.ietf.org/html/draft-white-openfabric-05).
 

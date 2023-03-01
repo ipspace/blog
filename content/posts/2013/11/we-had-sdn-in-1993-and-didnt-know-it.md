@@ -1,14 +1,18 @@
 ---
+comment: 'Assuming we forget the [ONF-promoted definition of SDN](/2014/01/what-exactly-is-sdn-and-does-it-make.html)
+  and define SDN as “network programmed from a central controller”, it’s obvious we
+  had SDN for decades, starting (at least) from the early 1990s.
+
+  '
 date: 2013-11-28 07:56:00+01:00
+sdn_101_tag: extra
+series:
+- sdn_101
+series_weight: 150
 tags:
 - SDN
 title: We Had SDN in 1993 … and Didn’t Know It
 url: /2013/11/we-had-sdn-in-1993-and-didnt-know-it.html
-series: sdn_101
-sdn_101_tag: extra
-series_weight: 150
-comment: |
-  Assuming we forget the [ONF-promoted definition of SDN](/2014/01/what-exactly-is-sdn-and-does-it-make.html) and define SDN as “network programmed from a central controller”, it’s obvious we had SDN for decades, starting (at least) from the early 1990s.
 ---
 I had three [SDN 101](http://www.ipspace.net/SDN,_NFV_and_OpenFlow_for_Skeptics) presentations during last week's visit to South Africa and had tried really hard to overcome my grumpy skeptic self and find the essence of SDN while preparing for them. As I've been thinking about controllers, central visibility and network device programmability, it struck me: we already had SDN in 1993.
 <!--more-->

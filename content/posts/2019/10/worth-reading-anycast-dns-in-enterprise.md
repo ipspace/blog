@@ -1,11 +1,12 @@
 ---
+anycast_tag: reading
 date: 2019-10-05 09:01:00+02:00
+series:
+- anycast
+series_title: Anycast DNS in Enterprise Networks
 tags:
 - design
 - DNS
-series: anycast
-anycast_tag: reading
-series_title: Anycast DNS in Enterprise Networks
 title: 'Worth Reading: Anycast DNS in Enterprise Networks'
 url: /2019/10/worth-reading-anycast-dns-in-enterprise.html
 ---

@@ -1,11 +1,12 @@
 ---
 date: 2012-11-29 07:14:00+01:00
+mlag_tag: design
+series:
+- mlag
 tags:
 - data center
 - fabric
 - load balancing
-series: mlag
-mlag_tag: design
 title: Stackable Data Center Switches? Do the Math!
 url: /2012/11/stackable-data-center-switches-do-math.html
 ---

@@ -1,9 +1,12 @@
 ---
-title: "Running Routing Protocols over MLAG Links"
-date: 2022-12-06 07:06:00
-tags: [ IP routing, switching ]
-series: mlag
+date: 2022-12-06 07:06:00+00:00
 mlag_tag: deepdive
+series:
+- mlag
+tags:
+- IP routing
+- switching
+title: Running Routing Protocols over MLAG Links
 ---
 It took vendors like Cisco years to start supporting routing protocols between MLAG-attached routers and a pair of switches in the MLAG cluster. That seems like a no-brainer scenario, so there must be some hidden complexities. Let's figure out what they are.
 
