@@ -1,6 +1,7 @@
 ---
 title: "Measuring Virtual Network Device Boot Times"
 date: 2023-02-22 06:45:00
+lastmod: 2023-03-02 15:13:00
 tags: [ automation ]
 ---
 A senior engineer at Juniper Networks wasn't happy with me [mentioning](https://blog.ipspace.net/2023/02/cisco-ios-bgp-update-delay.html#fn:2) *resource hogs* and *Junos platforms* in the same statement. Instead of engaging in never-ending _angels dancing on pins_ deliberations comparing the virtues of Junos with other network operating systems, I decided to throw a bit of real-life data into the mix -- I [created a simple script](https://github.com/ipspace/netlab-examples/tree/master/timing) that measures:
@@ -31,6 +32,8 @@ Back to the facts. The following table contains the boot time as measured with `
 * All network devices apart from Cisco IOSv got [two vCPU cores plus the recommended minimum amount of memory](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-virtualization-providers)[^NR].
 * The lab server I was using has 8 cores and 32GB of memory. Nothing else was running on it during the measurement process.
 * `vagrant up` exits once it can log into a device with SSH. The boot time is thus the time from the moment the VM is started to the moment SSH server accepts an incoming session. 
+
+Some devices also need a lot of time to figure out what to do with their interfaces: Cisco NX-OS took over five minutes (5:13.35) to boot when I started it with 32 Ethernet interfaces.
 
 But that's not all. A network device has to be configured to be useful. The following table lists the time needed to deploy initial device configuration with `netlab initial`. That command starts an Ansible playbook; a few seconds of the configuration time might be consumed by Ansible, but obviously not more than ~4 seconds (the lowest configuration time) 
 
@@ -87,3 +90,8 @@ If you just want to check the initial device configurations:
 * Execute `netlab create -d <device>` followed by `netlab initial -o` and inspect the `config` subdirectory.
 
 [^NR]: I'm not rich enough to buy the amount of RAM some vendors think their devices need.
+
+### Revision History
+
+2023-03-02
+: Documented drastic increase in boot time for Nexus OS VM with many interfaces.
