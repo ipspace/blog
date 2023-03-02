@@ -4,8 +4,8 @@ tags:
 - design
 - SD-WAN
 - video
-title: 'Video: SDWAN Reference Design'
-series_title: SDWAN Reference Design
+title: 'Video: SD-WAN Reference Design'
+series_title: SD-WAN Reference Design
 url: /2018/11/video-sdwan-reference-design.html
 sd-wan_tag: "101"
 ---
