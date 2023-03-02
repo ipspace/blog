@@ -1,6 +1,6 @@
 ---
 date: 2022-05-05 06:57:00+00:00
-netlab_tag: use
+netlab_tag: guidelines
 tags:
 - netlab
 title: Configure Hardware Labs with netlab

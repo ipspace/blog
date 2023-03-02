@@ -1,6 +1,6 @@
 ---
 date: 2023-02-20 06:52:00+00:00
-netlab_tag: use
+netlab_tag: guidelines
 series_title: Start Multiple Lab Instances on the Same Server
 tags:
 - netlab
