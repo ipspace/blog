@@ -6,13 +6,17 @@ minimal_sidebar: true
 ---
 The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help you be more proficient once you decide to drop GUI-based network simulators and build your labs using CLI and [infrastructure-as-code](https://www.ipspace.net/kb/tag/network-infrastructure-as-code.html) principles.
 <!--more-->
-### Getting Started
+### {{<plushy confused>}}Getting Started
 
 {{<series-listing tag="overview" weight="1">}}
 
 ### Getting Started Videos
 
 {{<series-listing tag="video" weight="1">}}
+
+### {{<plushy master>}}Usage Guidelines
+
+{{<series-listing tag="guidelines" weight="1">}}
 
 ### Using VRFs and VLANs
 
@@ -22,11 +26,11 @@ The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help yo
 
 {{<series-listing tag="vxlan_evpn">}}
 
-### Use Cases and Tutorials
+### {{<plushy happy>}}Use Cases and Tutorials
 
 {{<series-listing tag="use">}}
 
-### Customizing and Extending *netlab*
+### {{<plushy magic>}}Customizing and Extending *netlab*
 
 {{<series-listing tag="extend">}}
 

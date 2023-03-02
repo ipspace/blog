@@ -1,6 +1,6 @@
 ---
 date: 2023-02-06 06:51:00+00:00
-netlab_tag: use
+netlab_tag: guidelines
 series_title: Mix Containers and VMs in the Same Lab Topology
 tags:
 - netlab
