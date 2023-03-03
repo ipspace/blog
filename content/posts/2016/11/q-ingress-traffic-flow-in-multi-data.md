@@ -1,6 +1,7 @@
 ---
 anycast_tag: design
 date: 2016-11-28 09:46:00+01:00
+high-availability_tag: external
 series:
 - anycast
 series_title: Ingress Traffic Flow in Multi-Data Center Deployments

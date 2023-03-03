@@ -1,6 +1,7 @@
 ---
 anycast_tag: use
 date: 2021-11-02 06:57:00+00:00
+high-availability_tag: external
 series:
 - anycast
 tags:

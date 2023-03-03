@@ -31,6 +31,9 @@ def htmlToMarkdown(html):
     elif line == '::: {.note markdown="1"}':
       line = '{{<note>}}'
       md_stack = [ 'note' ] + md_stack
+    elif line == '::: {.info markdown="1"}':
+      line = '{{<note info>}}'
+      md_stack = [ 'note' ] + md_stack      
     elif line == '::: {.warn markdown="1"}':
       line = '{{<note warn>}}'
       md_stack = [ 'note' ] + md_stack      
@@ -66,13 +69,7 @@ def migrateToMarkdown(fname):
 
   md = convertToMarkdown(html)
 
-  series = os.environ.get('BLOG_SERIES')
-  if series:
-    post['series'] = [ series ]
-  s_tag = os.environ.get('BLOG_SERIES_TAG')
-  if s_tag:
-    post[series+"_tag"] = s_tag
-
+  common.set_series_tag(post)
   ofile = "%s.md" % file
   with open(ofile,"wt") as output:
     output.write('---\n')

@@ -1,6 +1,7 @@
 ---
 anycast_tag: use
 date: 2013-06-10 07:02:00+02:00
+high-availability_tag: external
 series:
 - anycast
 tags:

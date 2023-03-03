@@ -1,5 +1,6 @@
 ---
 date: 2021-10-26 06:52:00+00:00
+high-availability_tag: external
 series:
 - ha-switching
 tags:

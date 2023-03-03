@@ -1,7 +1,13 @@
 ---
+date: 2020-09-17 06:48:00+00:00
+high-availability_tag: need
+series_weight: 750
+tags:
+- virtualization
+- vMotion
+- design
+- high availability
 title: Are Business Needs Just Excuses for Vendor Shenanigans?
-date: 2020-09-17 06:48:00
-tags: [ virtualization, vMotion, design, high availability ]
 ---
 Every now and then I [call someone's baby ugly](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html) (or maybe it was their third cousin's baby and they nonetheless feel offended). In such cases a common resort is to cite _business_ or _market needs_ to prove how ignorant and clueless I am. Here's a sample LinkedIn comment talking about my ignorance about the need for smart NICs:
 

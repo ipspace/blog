@@ -1,11 +1,13 @@
 ---
 date: 2017-09-28 09:28:00+02:00
+high-availability_tag: need
+lastmod: 2021-11-02 15:57:00
+series_weight: 700
 tags:
 - design
 - data center
 - high availability
 title: Redundancy Does Not Result in Resiliency
-lastmod: 2021-11-02 15:57:00
 url: /2017/09/redundancy-does-not-result-in-resiliency.html
 ---
 A while ago a large airline had a bad-hair day claiming it was caused by a faulty power supply. Not surprisingly, I got a question along the lines of "*is that feasible?*"

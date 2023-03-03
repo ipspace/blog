@@ -1,7 +1,11 @@
 ---
-title: "Interesting: Differential Availability"
-date: 2020-12-05 07:06:00
-tags: [ high availability ]
+date: 2020-12-05 07:06:00+00:00
+high-availability_tag: need
+series_weight: 500
+tags:
+- high availability
+title: 'Interesting: Differential Availability'
+series_title: 'Differential Availability'
 ---
 Someone pointed me to a [high-level overview of Google's Spanner database](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/45855.pdf) which included this gem:
 
