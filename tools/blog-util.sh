@@ -61,6 +61,7 @@ case "$1" in
     done
     ;;
   migrate)
+    set -e
     blog_argument "$@"
     INFILE=$(blog_skip_url $2)
     if [ -f "$INFILE" ]; then
@@ -77,8 +78,10 @@ case "$1" in
   sertag)
     HUGO_CHANGE=
     if [ -z "BLOG_SERIES" ]; then
-      echo "Set BLOG_SERIES environment variable first"
-      exit 1
+      if [ -z "BLOG_CATEGORY" ]; then
+        echo "Set BLOG_SERIES or BLOG_CATEGORY environment variable first"
+        exit 1
+      fi
     fi
     if [ -z "BLOG_SERIES_TAG" ]; then
       echo "Set BLOG_SERIES_TAG environment variable first"
@@ -87,7 +90,7 @@ case "$1" in
     shift
     set -e
     for name in "$@"; do
-      echo "Applying $BLOG_SERIES tag $BLOG_SERIES_TAG to $name"
+      echo "Applying ${BLOG_SERIES:-$BLOG_CATEGORY} tag $BLOG_SERIES_TAG to $name"
       name=$(blog_skip_url $name)
       name=$(blog_find_file $name)
       $SCRIPT_DIR/series-tag-post.py $name

@@ -58,15 +58,26 @@ def read_blog_post(path):
 def set_series_tag(post,series=None,s_tag=None):
   if not series:
     series = os.environ.get('BLOG_SERIES')
-  if series:
+
+  if not series:
+    print("Cannot tag a post without series/category value")
+    return
+
+  if series and not series in post.get('tags',[]):
     c_value = post.get('series',None)
     if c_value and isinstance(c_value,str):
       post['series'] = [ c_value ]
     elif c_value is None:
       post['series'] = []
-    post['series'].append(series)
+
+    if not series in post['series']:
+      post['series'].append(series)
 
   if not s_tag:
     s_tag = os.environ.get('BLOG_SERIES_TAG')
-  if s_tag:
+  if s_tag and series:
+    series = series.lower().replace(' ','-')
     post[series+"_tag"] = s_tag
+    if os.environ.get('BLOG_SERIES_WEIGHT'):
+      if not post.get("series_weight"):
+        post["series_weight"] = int(os.environ.get('BLOG_SERIES_WEIGHT'))

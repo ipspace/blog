@@ -11,6 +11,7 @@ import subprocess
 def parseCLI():
   parser = argparse.ArgumentParser(description='Migrate blog posts from HTML to Markdown')
   parser.add_argument('files', nargs='+',action='store',help='Files to check')
+  parser.add_argument('-c','--category', dest='category', action='store',help='Tag blog post if it has this category')
   parser.add_argument('-s','--series', dest='series', action='store',help='Tag blog post with this series')
   parser.add_argument('-t','--tag', dest='tag',action='store',help='Apply this intra-series tag')
   parser.add_argument('--log', dest='logging', action='store_true',help='Enable basic logging')
@@ -30,8 +31,16 @@ def series_tag_file(fname,args):
   if not(html):
     raise RuntimeError('Cannot get HTML text from %s' % fname)
 
+  if not args.category and os.environ.get('BLOG_CATEGORY'):
+    args.category = os.environ.get('BLOG_CATEGORY')
+
+  if args.category:
+    if not args.category in post.get('tags',[]):
+      print(f'File {fname} not in category {args.category}, skipping')
+      sys.exit(1)
+
   old_yaml = yaml.dump(post,allow_unicode=True)
-  common.set_series_tag(post,args.series,args.tag)
+  common.set_series_tag(post,args.series or args.category,args.tag)
   new_yaml =  yaml.dump(post,allow_unicode=True)
   if old_yaml == new_yaml:
     return None
