@@ -1,6 +1,6 @@
 ---
 title: "Leaf-and-Spine Fabrics Between Theory and Reality"
-date: 2023-03-07 07:01:00
+date: 2023-03-09 07:01:00
 tags: [ fabric, design ]
 ---
 I'm always envious of how easy networking challenges seem when you're solving them in PowerPoint, for example, when an *innovation specialist* explains how scalability works in leaf-and-spine fabrics in a *LinkedIn* comment:
