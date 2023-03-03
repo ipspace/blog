@@ -1,7 +1,11 @@
 ---
-title: "Fifty Shades of High Availability"
-date: 2020-12-01 07:16:00
-tags: [ design, high availability ]
+date: 2020-12-01 07:16:00+00:00
+high-availability_tag: need
+series_weight: 800
+tags:
+- design
+- high availability
+title: Fifty Shades of High Availability
 ---
 A while ago we had an interesting exchange of ideas around inserting high-availability network appliance into a public cloud environment (TL&DR: it was really hard until AWS introduced Gateway Load Balancing), and someone quickly pointed out we're solving the wrong challenge because...
 

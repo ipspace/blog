@@ -1,6 +1,7 @@
 ---
 date: 2021-10-12 06:35:00+00:00
 ha-switching_tag: control
+high-availability_tag: external
 series:
 - ha-switching
 tags:
