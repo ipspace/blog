@@ -31,7 +31,9 @@ Some network operating systems can adjust HSRP/VRRP priority based on a complex 
 
 I also received an interesting comment on [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7031529539725877248/) saying:
 
-> You need a static default route pointing towards the second CE with a metric inferior to the route installed by EBGP for failover purpose.
+> You need a static default route pointing towards the second CE with a metric [sic] inferior to the route installed by EBGP for failover purpose.
+
+{{<note>}}Obviously you'd need a static route with higher admin distance (or whatever your preferred implementation calls it); one usually cannot compare metrics between different routing sources. HT: [A Random Guy](https://blog.ipspace.net/2023/02/multihomed-ibgp-details.html#1689).{{</note>}}
 
 That would also work. I still think IBGP session is simpler, and it helps ensure that all (BGP) routers in an autonomous system have the same view of the network.
 
