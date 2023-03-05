@@ -1,8 +1,11 @@
 ---
 date: 2011-06-10 06:27:00.004000+02:00
+high-availability_tag: ignore
+ha-cluster_tag: overview
+series:
+- ha-cluster
 tags:
 - data center
-- workshop
 - high availability
 title: 'Stretched Clusters: Almost as Good as Heptagonal Wheels'
 url: /2011/06/stretched-clusters-almost-as-good-as.html
@@ -19,7 +22,7 @@ Did I mention the services were *restarted*? That's a lengthy outage right there
 
 **Hoping it won't happen doesn't help**. Think twice before writing "*if we lose our DCI link, the split brain will be the least of our problems*" in the comments. Do you really want to bet your whole IT infrastructure on a WAN link?
 
-**What can I do** **to stop it?** Sometimes not much, because everyone else crazed by the flat-earth nirvana stories won't listen. In this case make sure you document your objections and predictions -- at least you'll have an "*I told you so*" document.
+**What can I do to stop it?** Sometimes not much, because everyone else crazed by the flat-earth nirvana stories won't listen. In this case make sure you document your objections and predictions -- at least you'll have an "*I told you so*" document.
 
 Sometimes it might help to ask the stretched cluster designers what happens if the DCI link does goes down and the cluster partitions. They just might pause and reconsider.
 

@@ -27,6 +27,7 @@ You can use a plethora of approaches depending on your availability targets:
 I wrote {{<page-count round="10">}} blog posts on these topics. It would be impossible to list all of them on a single page; major high availability technologies or concepts thus got dedicated pages:
 
 * [Global and local load balancing with IP anycast](/series/anycast.html)
+* [High availability clusters](/series/ha-cluster.html)
 * [High availability packet forwarding](/series/ha-switching.html)
 
 {{<series-untagged title="Other High Availability Blog Posts" format="2006">}}
