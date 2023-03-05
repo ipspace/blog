@@ -1,10 +1,11 @@
-{{ with ($.Site.GetPage "/series") }}
-{{ $pages := where .Pages "Layout" "custom" }}
+{{ $pages := where $.Site.Pages "Layout" "custom" }}
 <div class="widget PopularPosts">
   <h3 class="sidebar__title">Featured</h3>
   <ul>
-  {{ range (where $pages "Params.sidebar_box" "==" nil) }}
-    <li><a href='{{ .Permalink }}'>{{ .Title }}</a></li>
+  {{ range (where $pages "Params.sidebar_box" "==" nil).ByTitle }}
+    <li><a href='{{ .Permalink }}'>
+      {{ with .Params.page_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}
+    </a></li>
   {{ end }}
   </ul>
 </div>
@@ -12,8 +13,9 @@
   <h3 class="sidebar__title">Software-Defined Networking</h3>
   <ul>
   {{ range (where $pages "Params.sidebar_box" "==" "SDN") }}
-    <li><a href='{{ .Permalink }}'>{{ .Title }}</a></li>
+    <li><a href='{{ .Permalink }}'>
+      {{ with .Params.page_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}
+    </a></li>
   {{ end }}
   </ul>
 </div>
-{{ end }}
