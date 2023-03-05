@@ -30,4 +30,4 @@ And [also](https://twitter.com/mipsytipsy/status/1628299299867226113):
 
 > The antipattern I see in so many places with devs and architects is the same fucking problem they have with devs and ops. "No time to be on call, too busy writing important software" ~turns into~ "No time to write code, too busy telling other people how to write code."
 
-FWIW, you should read the whole thread (assuming Twitter still works when you're reading this).
+FWIW, you should read the whole thread (assuming Twitter still works when you're reading this), and continue with Martin Fowler 's take on [Who Needs an Architect](https://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf).
