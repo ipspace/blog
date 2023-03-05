@@ -1,6 +1,10 @@
 ---
 date: 2011-04-18 06:29:00.010000+02:00
+high-availability_tag: ignore
+ha-cluster_tag: firewall
 needs_fix: true
+series:
+- ha-cluster
 tags:
 - firewall
 - data center

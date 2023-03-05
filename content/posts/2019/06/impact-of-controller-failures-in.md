@@ -1,5 +1,10 @@
 ---
 date: 2019-06-20 08:14:00+02:00
+ha-cluster_tag: sdn
+high-availability_tag: ignore
+sd-wan_tag: myth
+series:
+- ha-cluster
 tags:
 - SD-WAN
 - SDN
@@ -7,7 +12,6 @@ tags:
 - high availability
 title: Impact of Controller Failures in Software-Defined Networks
 url: /2019/06/impact-of-controller-failures-in.html
-sd-wan_tag: myth
 ---
 [Christoph Jaggi](http://uebermeister.com/about.html) sent me this observation during one of our SD-WAN discussions:
 

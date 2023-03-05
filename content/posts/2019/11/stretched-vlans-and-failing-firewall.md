@@ -1,7 +1,10 @@
 ---
 date: 2019-11-12 08:14:00+01:00
+ha-cluster_tag: firewall
+high-availability_tag: ignore
 series:
 - dr-faking
+- ha-cluster
 tags:
 - design
 - firewall
