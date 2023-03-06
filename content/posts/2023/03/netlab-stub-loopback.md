@@ -20,9 +20,7 @@ nodes: [ r1, r2 ]
 links:
 - r1-r2
 - r1:
-  type: loopback
 - r2:
-  type: loopback
 ```
 
 That works very well until you hit the limit mentioned above, at which point it might be a good idea to turn some of those LAN interfaces into loopbacks.
@@ -72,10 +70,16 @@ links:
 - x2
 ```
 
-{{<note warn>}}The default settings are not checked in the same way as topology attributes -- you'll get no error message if you make a type (do I have to explain how I know that?){{</note>}}
+{{<note warn>}}The default settings are not checked in the same way as topology attributes -- you'll get no error message if you make a typo (do I have to explain how I know that?){{</note>}}
 
 ### Getting Started
 
 To get more details and learn about additional features included in release 1.5.0, [read the release notes](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-0). To upgrade, execute `pip3 install --upgrade networklab`.
 
 New to *netlab*? Start with the [Getting Started document](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) and the [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html).
+
+### Revision History
+
+2023-03-06
+: Fixed the initial lab topology which incorrectly included **type: loopback** (thanks a million to Sander Steffann for reporting the typo).
+
