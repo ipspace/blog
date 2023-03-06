@@ -99,7 +99,7 @@ Finally the DHCP server template. This one is a beast:
 * For each relaying interface, the template excludes its IPv4 address from the DHCP pool, and creates a corresponding pool with the relaying interface IPv4 address as the default router.
 * I also turned on debugging in the configuration template so I could log into the DHCP server and inspect the logs immediately after **netlab up** completes its job.
 
-{{<cc>}}DHCP relay configuration template{{</cc>}}
+{{<cc>}}DHCP server configuration template{{</cc>}}
 ```
 logging buffered
 no service timestamp debug
