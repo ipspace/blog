@@ -1,7 +1,11 @@
 ---
-title: "AWS Automatic EC2 Instance Recovery"
-date: 2022-04-13 06:42:00
-tags: [ AWS, virtualization, high availability ]
+date: 2022-04-13 06:42:00+00:00
+high-availability_tag: cloud
+tags:
+- AWS
+- virtualization
+- high availability
+title: AWS Automatic EC2 Instance Recovery
 ---
 On March 30th 2022, AWS [announced](https://aws.amazon.com/about-aws/whats-new/2022/03/amazon-ec2-default-automatic-recovery/) automatic recovery of EC2 instances. Does that mean that AWS got feature-parity with VMware High Availability, or that VMware got it right from the very start? No and No.
 

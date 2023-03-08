@@ -5,6 +5,7 @@ series:
 tags:
 - cloud
 - IP routing
+- high availability
 title: Virtual Networks and Subnets in AWS, Azure, and GCP
 ---
 Now that we know what [regions and availability zones are](/2021/02/public-cloud-regions-availability-zones.html), let's go back to Daniel Dib's question:
