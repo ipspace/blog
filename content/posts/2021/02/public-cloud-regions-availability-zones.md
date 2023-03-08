@@ -4,6 +4,7 @@ series:
 - cloud-subnets
 tags:
 - cloud
+- high availability
 title: Availability Zones and Regions in AWS, Azure and GCP
 ---
 My friend Daniel Dib sent me this interesting question:

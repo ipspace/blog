@@ -30,4 +30,10 @@ I wrote {{<page-count round="10">}} blog posts on these topics. It would be impo
 * [High availability packet forwarding](/series/ha-switching.html)
 * [Global and local load balancing with IP anycast](/series/anycast.html)
 
+### High Availability in Public Clouds
+
+Migrating your applications into a public cloud won't solve it's high availability challenges; public cloud infrastructure is usually designed for application developers that know what they're doing. For more details read:
+
+{{<series-listing tag="cloud" year="yes" weight="yeah">}}
+
 {{<series-untagged title="Other High Availability Blog Posts" format="2006">}}

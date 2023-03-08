@@ -57,7 +57,7 @@ def read_blog_post(path):
 
 def set_series_tag(post,series=None,s_tag=None):
   if not series:
-    series = os.environ.get('BLOG_SERIES')
+    series = os.environ.get('BLOG_SERIES') or os.environ.get('BLOG_CATEGORY')
 
   if not series:
     print("Cannot tag a post without series/category value")
