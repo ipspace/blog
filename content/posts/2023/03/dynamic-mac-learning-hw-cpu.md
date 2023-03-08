@@ -41,9 +41,15 @@ Why would you want to punt an activity to the CPU if it could be handled by the 
 >
 > Others will want the hardware updated immediately because the CPU can’t keep up. eg in the core.
 
-Finally, the discussion might be moot in a multi-ASIC switch[^MA] -- MAC tables have to be updated on all ASICs regardless of whether they've seen the packet triggering dynamic MAC learning. As [Diego explained](https://twitter.com/ddompe/status/1631324758909263872):
+The discussion might be moot in a multi-ASIC switch[^MA] -- MAC tables have to be updated on all ASICs regardless of whether they've seen the packet triggering dynamic MAC learning. As [Diego explained](https://twitter.com/ddompe/status/1631324758909263872):
 
 > Also, if the ASIC is used in a chassis, you still need to propagate the learning to other ASICs, so NOS CPU will get involved anyway.
+
+As is usually the case, Jeff Tantsura wrote a nice summary as [LinkedIn comment](https://www.linkedin.com/feed/update/urn:li:activity:7038768712052559872/):
+
+> The answer is (as often) it depends ;-) most modern ASICs do it in HW(configurable). In a chassis, there would be a form of IPC (potentially multi-point) to update each LC/ASIC directly from ingress (ASIC that has learnt the new MAC).
+>
+> In EVPN (using generic names), there would be a L2manager talking to L2RIB/L3RIB and BGP that would emulate flooding (at the end, basic EVPN EVI emulates a bridge) and send a RT-2 route (separately MAC only and then when binding is learnt - MAC/IP) to each member of that domain (every participant that has announced their membership through RT-3 route before).
 
 Finally, [Aaron Glenn provided a link](https://twitter.com/networkservice/status/1631329668866494467) to (public!!!) [Broadcom Jericho2 documentation](https://docs.broadcom.com/doc/88690-88800-88480-88280-Packet-Processing-Programming-Guide). It might make for a great reading if you're afraid of sleepless nights -- it has "only" 850 pages.
 

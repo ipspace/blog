@@ -16,18 +16,18 @@ Not surprisingly, IT vendors sell magic infrastructure solutions as the high-ava
 
 {{<series-listing tag="fail" year="yes" weight="yeah">}}
  
+### High Availability Concepts, Technologies and Solutions
+
 You can use a plethora of approaches depending on your availability targets:
 
 * Disaster recovery is the right tool for the job in you're OK with the system being down for a few hours.
 * Automatic restart of application instances combined with disaster recovery is acceptable if you can accept your system to be down ~0.1% of the time (99.9% availability)
 * Availability targets higher than 99.9% can only be reached reliably with proper application design supported by well-designed infrastructure.
 
-### High Availability Concepts, Technologies and Solutions
-
 I wrote {{<page-count round="10">}} blog posts on these topics. It would be impossible to list all of them on a single page; major high availability technologies or concepts thus got dedicated pages:
 
-* [Global and local load balancing with IP anycast](/series/anycast.html)
 * [High availability clusters](/series/ha-cluster.html)
 * [High availability packet forwarding](/series/ha-switching.html)
+* [Global and local load balancing with IP anycast](/series/anycast.html)
 
 {{<series-untagged title="Other High Availability Blog Posts" format="2006">}}
