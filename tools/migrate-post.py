@@ -28,7 +28,7 @@ def htmlToMarkdown(html):
     if line == '::: jump-link' or line == '::: {.jump-link markdown="1"}':
       line = '{{<jump>}}'
       md_stack = [ 'jump' ] + md_stack
-    elif line == '::: {.note markdown="1"}':
+    elif line == '::: note' or line == '::: {.note markdown="1"}':
       line = '{{<note>}}'
       md_stack = [ 'note' ] + md_stack
     elif line == '::: {.info markdown="1"}':
