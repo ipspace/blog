@@ -1,5 +1,6 @@
 ---
 date: 2021-02-23 07:52:00+00:00
+high-availability_tag: cloud
 series:
 - cloud-subnets
 tags:
