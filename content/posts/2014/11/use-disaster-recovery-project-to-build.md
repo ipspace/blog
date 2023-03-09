@@ -1,6 +1,9 @@
 ---
 date: 2014-11-03 07:24:00+01:00
+ha-cloud_tag: private
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - design
 - data center

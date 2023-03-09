@@ -1,6 +1,9 @@
 ---
 date: 2020-01-30 10:57:00+01:00
+ha-cloud_tag: intro
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - design
 - cloud

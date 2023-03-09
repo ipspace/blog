@@ -1,6 +1,9 @@
 ---
 date: 2013-11-04 07:43:00+01:00
+ha-cloud_tag: intro
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - firewall
 - cloud

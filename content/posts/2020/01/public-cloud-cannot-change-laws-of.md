@@ -1,6 +1,10 @@
 ---
 date: 2020-01-21 08:33:00+01:00
+ha-cloud_tag: stretch
+series_weight: 1000
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - design
 - cloud

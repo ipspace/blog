@@ -1,7 +1,14 @@
 ---
+date: 2020-05-27 07:17:00+00:00
+ha-cloud_tag: design
+series_weight: 900
+series:
+- ha-cloud
+tags:
+- Azure
+- cloud
+- switching
 title: Azure Networking 101
-date: 2020-05-27 07:17:00
-tags: [ Azure, cloud, switching ]
 ---
 A few weeks ago I [described the basics of AWS networking](https://blog.ipspace.net/2020/05/aws-networking-101.html), now it's time to describe how different Azure is. 
 

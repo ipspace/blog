@@ -1,7 +1,12 @@
 ---
-title: "Multi-Cloud: Myths and Reality"
-date: 2022-09-15 07:44:00
-tags: [ cloud ]
+date: 2022-09-15 07:44:00+00:00
+ha-cloud_tag: stretch
+series_weight: 700
+series:
+- ha-cloud
+tags:
+- cloud
+title: 'Multi-Cloud: Myths and Reality'
 ---
 I keep hearing numerous variations of the following argument from people believing in the unlimited powers of [multi-cloud](https://en.wikipedia.org/wiki/Multicloud)[^WBS] (deploying your workloads in multiple public cloud providers):
 

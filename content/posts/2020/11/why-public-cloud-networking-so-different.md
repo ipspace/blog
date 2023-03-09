@@ -1,7 +1,15 @@
 ---
-title: "Why Is Public Cloud Networking So Different?"
-date: 2020-11-23 07:00:00
-tags: [ cloud, IP routing, AWS, Azure ]
+date: 2020-11-23 07:00:00+00:00
+ha-cloud_tag: design
+series_weight: 1000
+series:
+- ha-cloud
+tags:
+- cloud
+- IP routing
+- AWS
+- Azure
+title: Why Is Public Cloud Networking So Different?
 ---
 A while ago (eons before AWS introduced Gateway Load Balancer) I discussed the intricacies of [AWS](https://blog.ipspace.net/2020/05/aws-networking-101.html) and [Azure](https://blog.ipspace.net/2020/05/azure-networking-101.html) networking with a very smart engineer working for a security appliance vendor, and he said something along the lines of "_it shows these things were designed by software developers -- they have no idea how networks should work._" 
 
