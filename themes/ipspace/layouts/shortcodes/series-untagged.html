@@ -2,24 +2,26 @@
 {{ $showseries := .Get "showseries" }}
 {{ $format := or (.Get "format") "2006-01" }}
 {{ .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) "eq" nil) }}
-{{ if (.Get "title") }}
+{{ if (.Page.Scratch.Get "pages")|len }}
+{{   if (.Get "title") }}
 <h3>{{ .Get "title" }}</h3>
-{{ else }}
+{{   else }}
 <h3>Other Blog Posts in This Category</h3>
-{{ end }}
+{{   end }}
 <dl>
-{{ range (.Page.Scratch.Get "pages").GroupByDate $format }}
+{{   range (.Page.Scratch.Get "pages").GroupByDate $format }}
 <dt>{{ .Key }}</dt>
 <dd>
   <ul>
-  {{ range .Pages }}
+    {{ range .Pages }}
     <li>
       <a href="{{ .Permalink }}">{{ with .Params.series_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</a>
       {{ if (and $showseries .Params.series) }}
         - {{ .Params.series }}
       {{ end }}
     </li>
-  {{ end }}
+    {{ end }}
   </ul>
 </dd>
+{{   end }}
 {{ end }}
