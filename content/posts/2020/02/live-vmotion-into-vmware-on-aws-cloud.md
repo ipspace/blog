@@ -1,6 +1,9 @@
 ---
 date: 2020-02-20 07:35:00+01:00
+ha-cloud_tag: stretch
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - vMotion
 - cloud

@@ -1,6 +1,9 @@
 ---
 date: 2022-04-13 06:42:00+00:00
+ha-cloud_tag: design
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - AWS
 - virtualization

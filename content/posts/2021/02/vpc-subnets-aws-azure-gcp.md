@@ -1,8 +1,10 @@
 ---
 date: 2021-02-23 07:52:00+00:00
+ha-cloud_tag: design
 high-availability_tag: cloud
 series:
 - cloud-subnets
+- ha-cloud
 tags:
 - cloud
 - IP routing

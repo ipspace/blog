@@ -1,6 +1,10 @@
 ---
 date: 2020-02-26 08:29:00+01:00
+ha-cloud_tag: stretch
 high-availability_tag: cloud
+series_weight: 900
+series:
+- ha-cloud
 tags:
 - design
 - data center

@@ -1,6 +1,9 @@
 ---
 date: 2015-10-06 08:05:00+02:00
+ha-cloud_tag: private
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - design
 - cloud

@@ -1,7 +1,14 @@
 ---
+date: 2020-04-15 06:32:00+00:00
+ha-cloud_tag: stretch
+series_weight: 800
+series:
+- ha-cloud
+tags:
+- cloud
+- vMotion
+- bridging
 title: When All You Have Are Stretched VLANs...
-date: 2020-04-15 06:32:00
-tags: [ cloud, vMotion, bridging ]
 ---
 Let's agree for a millisecond that you can't find any other way to migrate your workload into a public cloud than to [move the existing VMs one-by-one without renumbering them](https://blog.ipspace.net/2020/02/the-myth-of-scaling-from-on-premises.html). Doing a clumsy cloud migration like this will get you the headaches and the cloud bill you deserve, but that's a different story. Today we'll talk about being clumsy the right and the wrong way.
 

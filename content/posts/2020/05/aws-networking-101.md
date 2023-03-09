@@ -1,7 +1,14 @@
 ---
+date: 2020-05-06 07:07:00+00:00
+ha-cloud_tag: design
+series_weight: 950
+series:
+- ha-cloud
+tags:
+- AWS
+- cloud
+- switching
 title: AWS Networking 101
-date: 2020-05-06 07:07:00
-tags: [ AWS, cloud, switching ]
 ---
 There was an obvious invisible elephant in the [virtual Cloud Field Day 7](https://techfieldday.com/event/cfd7/) (CFD7v) event I attended in late April 2020. Most everyone was talking about AWS, how their [stuff runs on AWS](https://techfieldday.com/appearance/vmware-cloud-on-aws-onboarding-dc-extension-and-cloud-migration-at-cloud-field-day-7/), how it [integrates with AWS](https://techfieldday.com/appearance/vmware-cloud-on-aws-horizon-7-vdi-kubernetes-aws-services-and-marketplace-at-cloud-field-day-7/), or how it will [help others leapfrog AWS](https://techfieldday.com/video/pensando-distributed-services-platforms-at-work/) (yeah, sure...).
 

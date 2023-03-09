@@ -1,6 +1,9 @@
 ---
 date: 2011-10-03 07:47:00.002000+02:00
+ha-cloud_tag: intro
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - cloud
 - high availability

@@ -1,6 +1,9 @@
 ---
 date: 2014-02-13 06:49:00+01:00
+ha-cloud_tag: private
 high-availability_tag: cloud
+series:
+- ha-cloud
 tags:
 - firewall
 - cloud
