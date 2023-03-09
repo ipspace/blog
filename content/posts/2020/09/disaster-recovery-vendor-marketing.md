@@ -1,7 +1,9 @@
 ---
 date: 2020-09-10 08:25:00+00:00
+dr_tag: vendor
+high-availability_tag: dr
 series:
-- dr-faking
+- dr
 tags:
 - virtualization
 - data center

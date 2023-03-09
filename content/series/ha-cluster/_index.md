@@ -13,6 +13,10 @@ You should also understand how these solutions work:
 * Node or service failure in an active/standby setup might cause significant downtime while the service is restarted on another cluster member.
 * No clustering solution will protect you against operator mistakes.
 
+Once you grasp these fundamentals, it's perfectly possible to design and deploy well-functioning clusters including network services clusters:
+
+{{<series-listing tag="design">}}
+
 Not surprisingly, solutions created by networking vendors (including [multi-chassis link aggregation](/series/mlag.html) clusters) ignore all of the above. This is what I had to say about the sad state of affairs:
 
 {{<series-listing tag="overview">}}

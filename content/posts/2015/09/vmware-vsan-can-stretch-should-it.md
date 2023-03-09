@@ -1,8 +1,11 @@
 ---
 date: 2015-09-17 08:40:00+02:00
+dr_tag: vendor
 ha-cluster_tag: overview
+high-availability_tag: dr
 series:
 - ha-cluster
+- dr
 tags:
 - data center
 - SAN

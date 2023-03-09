@@ -1,7 +1,15 @@
 ---
-title: "Worth Reading: Understand Your Single Points of Failure"
-date: 2021-04-25 07:53:00
-tags: [ high availability, cloud, design ]
+date: 2021-04-25 07:53:00+00:00
+dr_tag: other
+high-availability_tag: dr
+series:
+- dr
+series_title: Understand Your Single Points of Failure
+tags:
+- high availability
+- cloud
+- design
+title: 'Worth Reading: Understand Your Single Points of Failure'
 ---
 I've been saying the same thing for years, but never as succinctly as Alastair Cooke did in his 
 [*Understand Your Single Points of Failure (SPOF)*](http://demitasse.co.nz/2021/04/aws-principles-understand-your-single-points-of-failure/) blog post:

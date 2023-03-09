@@ -1,8 +1,11 @@
 ---
 date: 2019-11-19 10:51:00+01:00
 dcbgp_tag: design
+ha-cluster_tag: design
+high-availability_tag: ignore
 series:
 - dcbgp
+- ha-cluster
 series_weight: 900
 tags:
 - design

@@ -1,7 +1,14 @@
 ---
-title: "MUST READ: Designing a Simple Disaster Recovery Solution"
-date: 2021-02-22 08:15:00
-tags: [ high availability, design ]
+date: 2021-02-22 08:15:00+00:00
+dr_tag: other
+high-availability_tag: dr
+series:
+- dr
+series_title: Designing a Simple Disaster Recovery Solution
+tags:
+- high availability
+- design
+title: 'MUST READ: Designing a Simple Disaster Recovery Solution'
 ---
 A few weeks ago Adrian Giacometti [described a no-stretched-VLANs disaster recovery design](https://blog.ipspace.net/2021/02/fast-simple-disaster-recovery-solution.html) he used for one of his customers.
 

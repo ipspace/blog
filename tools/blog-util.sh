@@ -88,14 +88,24 @@ case "$1" in
       exit 1
     fi
     shift
+    SERTAG_EDIT=True
+    if [ "$1" == "--noedit" ]; then
+      SERTAG_EDIT=
+      shift
+    fi
+    if [[ "$BLOG_SERTAG_CLI" ]]; then
+      SERTAG_EDIT=
+    fi
     set -e
     for name in "$@"; do
       echo "Applying ${BLOG_SERIES:-$BLOG_CATEGORY} tag $BLOG_SERIES_TAG to $name"
       name=$(blog_skip_url $name)
       name=$(blog_find_file $name)
       $SCRIPT_DIR/series-tag-post.py $name
-      blog_edit_post $name
-      blog_view_post $name
+      if [[ $SERTAG_EDIT ]]; then
+        blog_edit_post $name
+        blog_view_post $name
+      fi
     done
     ;;
   open)
