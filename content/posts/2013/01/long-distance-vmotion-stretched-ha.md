@@ -1,5 +1,9 @@
 ---
 date: 2013-01-30 09:00:00.001000+01:00
+dr_tag: intro
+high-availability_tag: dr
+series:
+- dr
 tags:
 - data center
 - vMotion

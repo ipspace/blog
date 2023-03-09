@@ -1,7 +1,14 @@
 ---
+date: 2020-06-18 07:01:00+00:00
+dr_tag: fail
+high-availability_tag: dr
+series:
+- dr
+tags:
+- data center
+- design
+- high availability
 title: Bridging Loops in Disaster Recovery Designs
-date: 2020-06-18 07:01:00
-tags: [ data center, design, high availability ]
 ---
 One of the readers commenting the ideas in my *[Disaster Recovery and Failure Domains](https://blog.ipspace.net/2019/12/disaster-recover-and-failure-domains.html)* blog post effectively said "*In an active/passive DR scenario, having L3 DCI separation doesn't protect you from STP loop/flood in your active DC, so why do you care?*"
 

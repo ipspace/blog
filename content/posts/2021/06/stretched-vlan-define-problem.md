@@ -1,7 +1,14 @@
 ---
-title: "Stretched VLANs: What Problem Are You Trying to Solve?"
-date: 2021-06-24 07:13:00
-tags: [ high availability, data center, design ]
+date: 2021-06-24 07:13:00+00:00
+dr_tag: stretch
+high-availability_tag: dr
+series:
+- dr
+tags:
+- high availability
+- data center
+- design
+title: 'Stretched VLANs: What Problem Are You Trying to Solve?'
 ---
 One of ipSpace.net subscribers sent me this interesting question:
 

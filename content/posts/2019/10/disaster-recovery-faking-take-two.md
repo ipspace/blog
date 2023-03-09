@@ -1,7 +1,9 @@
 ---
 date: 2019-10-17 08:22:00+02:00
+dr_tag: fake
+high-availability_tag: dr
 series:
-- dr-faking
+- dr
 tags:
 - design
 - data center

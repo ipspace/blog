@@ -26,6 +26,7 @@ You can use a plethora of approaches depending on your availability targets:
 
 I wrote {{<page-count round="10">}} blog posts on these topics. It would be impossible to list all of them on a single page; major high availability technologies or concepts thus got dedicated pages:
 
+* [Disaster recovery and avoidance](/series/dr.html)
 * [High availability clusters](/series/ha-cluster.html)
 * [Public and private cloud deployments](/series/ha-cloud.html)
 * [High availability packet forwarding](/series/ha-switching.html)

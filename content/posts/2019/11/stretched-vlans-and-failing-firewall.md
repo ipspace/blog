@@ -1,10 +1,11 @@
 ---
 date: 2019-11-12 08:14:00+01:00
+dr_tag: vendor
 ha-cluster_tag: firewall
-high-availability_tag: ignore
+high-availability_tag: dr
 series:
-- dr-faking
 - ha-cluster
+- dr
 tags:
 - design
 - firewall

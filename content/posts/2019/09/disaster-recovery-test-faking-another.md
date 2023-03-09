@@ -1,7 +1,9 @@
 ---
 date: 2019-09-12 09:37:00+02:00
+dr_tag: fake
+high-availability_tag: dr
 series:
-- dr-faking
+- dr
 tags:
 - design
 - bridging

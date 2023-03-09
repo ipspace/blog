@@ -1,5 +1,10 @@
 ---
 date: 2019-12-12 08:54:00+01:00
+series_weight: 1000
+dr_tag: stretch
+high-availability_tag: dr
+series:
+- dr
 tags:
 - design
 - data center

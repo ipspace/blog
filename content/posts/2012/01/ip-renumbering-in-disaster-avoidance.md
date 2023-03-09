@@ -1,5 +1,10 @@
 ---
-date: 2012-01-20T12:03:00.000+01:00
+date: 2012-01-20 12:03:00+01:00
+dr_tag: stretch
+high-availability_tag: dr
+lastmod: 2020-11-17 16:49:00
+series:
+- dr
 tags:
 - data center
 - workshop
@@ -8,7 +13,6 @@ tags:
 - high availability
 title: IP Renumbering in Disaster Avoidance Data Center Designs
 url: /2012/01/ip-renumbering-in-disaster-avoidance.html
-lastmod: 2020-11-17 16:49:00
 ---
 It’s hard for me to admit, but there just might be a [corner use case for split subnets and inter-DC bridging](https://blog.ipspace.net/2011/08/quotes-of-week.html): even if you move a cold VM between data centers in a controlled disaster avoidance process (moving live VMs [rarely makes sense](https://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html)), you [might not be able to change its IP address](http://www.yellow-bricks.com/2012/01/19/avoid-changing-your-vms-ip-in-a-dr-procedure/) due to hard-coded IP addresses, be it in application code or configuration files.
 
