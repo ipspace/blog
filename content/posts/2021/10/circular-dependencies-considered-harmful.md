@@ -1,6 +1,7 @@
 ---
 date: 2021-10-21 06:48:00+00:00
 dcbgp_tag: relevant
+high-availability_tag: fail
 series:
 - dcbgp
 tags:

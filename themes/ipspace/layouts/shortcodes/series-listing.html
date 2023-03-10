@@ -1,13 +1,17 @@
 {{ $term := .Page.Data.Term }}
 {{ $show_weight := .Get "showweight" }}
 {{ $show_tag    := .Get "showtag" }}
+{{ $title := .Page.Title }}
+{{ if (.Get "site_tag") }}
+{{   .Page.Scratch.Set "pages" (where .Site.Pages ".Params.tags" "intersect" (slice $title)) }}
+{{ else }}
+{{   .Page.Scratch.Set "pages" .Page.Pages }}
+{{ end }}
 {{ if (.Get "tag") }}
-{{   .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) (.Get "tag")) }}
+{{   .Page.Scratch.Set "pages" (where (.Page.Scratch.Get "pages") (printf "Params.%s_tag" $term) (.Get "tag")) }}
 {{ else }}
 {{   if (.Get "notag") }}
-{{     .Page.Scratch.Set "pages" (where .Page.Pages (printf "Params.%s_tag" $term) "eq" nil) }}
-{{   else }}
-{{     .Page.Scratch.Set "pages" .Page.Pages }}
+{{     .Page.Scratch.Set "pages" (where (.Page.Scratch.Get "pages") (printf "Params.%s_tag" $term) "eq" nil) }}
 {{   end }}
 {{ end }}
 {{ if not (.Get "reverse") }}

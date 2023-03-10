@@ -1,7 +1,11 @@
 ---
-title: "Optimizing the Time-to-First-Byte"
-date: 2021-11-16 07:12:00
-tags: [ design, high availability, cloud ]
+date: 2021-11-16 07:12:00+00:00
+high-availability_tag: app
+tags:
+- design
+- high availability
+- cloud
+title: Optimizing the Time-to-First-Byte
 ---
 I don't think I've ever met someone saying "_I wish my web application would run slower_." Everyone wants their stuff to run faster, but most environments are not willing to pay the cost (rearchitecting the application). Welcome to the wonderful world of PowerPoint "solutions".
 
