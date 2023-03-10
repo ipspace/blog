@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "10 March 2023 07:00",
+               "html": "<p>Just out of curiosity, what kind of kit?  I haven&rsquo;t seen any issues with VRF-aware DHCP relay and EVPN asymmetrical IRB on Arista Trident3 or Tomahawk kit, so wondering if it&rsquo;s a vendor or chipset implementation issue, or something specific to the setup.</p>\n",
+               "id": "1697",
+               "name": "Jason Alert",
+               "pub": "2023-03-10T07:00:26",
+               "ref": "1695",
+               "type": "comment"
+            }
+         ],
          "date": "09 March 2023 11:36",
          "html": "<p>DHCP in EVPN/VXLAN (with anycast) is so evil that we&#39;re thinking of running standalone DHCP Relay servers in vrfs outside EVPN/VXLAN.</p>\n\n<p>Why do I mean by evil (or maybe just badly implemented in our kit): </p>\n\n<ul>\n<li>DHCP requests going to old servers that are no longer configured</li>\n<li>DHCP requests being mangled for IRBs that are not configured for it</li>\n<li>DHCP requests going nowhere: debug traces say &quot;DHCP packet being forwarded&quot; but if you capture all the traffic from all interfaces... it&#39;s nowhere to be seen.</li>\n</ul>\n\n<p>I&#39;d strongly recommend anybody that has to use this to get a complete understanding of how it&#39;s supposed to work, it&#39;s not a simple &quot;configure ip helper address on the respective IRBs and you&#39;re done&quot;</p>\n",
          "id": "1695",
