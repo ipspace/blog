@@ -1,5 +1,5 @@
 ---
-title: "Worth Reading: The War on Expertise | SubnetZero"
+title: "Worth Reading: The War on Expertise"
 date: 2023-03-11 07:42:00
 tags: [ worth reading ]
 ---
