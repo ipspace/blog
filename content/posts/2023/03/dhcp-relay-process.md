@@ -40,6 +40,8 @@ So far so good, but life is never as easy as that. [RFC 3046](https://www.rfc-ed
 
 It's also worth noting that the DHCP server copies option 82 into DHCP reply messages[^VSX]. A DHCP relay could use option 82 from the reply message instead of **giaddr** to select the outgoing interface for the forwarded reply.
 
+With the generic *relay information option* infrastructure in place, vendor creativity soared. Cisco SDA [uses *remote ID* sub-option to encode VNI and RLOC](https://www.theasciiconstruct.com/post/sda_8/), and DMVPN uses it to [store the transport IP address of the DMVPN spoke](https://blog.ipspace.net/2023/03/dhcp-relay-process.html#1696).
+
 [^VSX]: Apart from one of the Virtual Subnet Selection sub-options. Read [RFC 6607](https://www.rfc-editor.org/rfc/rfc6607.html) if you crave those details.
 
 But wait, that's not all. [IANA DHCP registry](https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml#relay-agent-sub-options) defines over 20 sub-options of option 82, including [DOCSIS device class](https://www.rfc-editor.org/rfc/rfc3256.html), [Subscriber ID](https://www.rfc-editor.org/rfc/rfc3993.html)[^SID], [RADIUS attributes](https://www.rfc-editor.org/rfc/rfc4014.html)[^RD], [Authentication](https://www.rfc-editor.org/rfc/rfc4030.html)[^RI]...
@@ -75,3 +77,8 @@ Now for the magic bit: because the DHCP relay asked the server to lie to the cli
 Now that we know the relevant DHCP relaying details, it's easy(er) to figure out how to make it work in EVPN/VXLAN environment (or you'll have to wait for the follow-up blog post).
 
 [^SAV]: Ignoring yet another detour: the client VPN/VRF membership could be determined by the DHCP server ;)
+
+### Revision History
+
+2023-03-10
+: Added option-82 examples
