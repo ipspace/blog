@@ -1,7 +1,12 @@
 ---
-title: "Alternatives to IBGP within Multihomed Sites"
-date: 2023-02-28 07:21:00
-tags: [ BGP, design ]
+date: 2023-02-28 07:21:00+00:00
+multihoming_tag: bgp
+series:
+- multihoming
+tags:
+- BGP
+- design
+title: Alternatives to IBGP within Multihomed Sites
 ---
 Two weeks ago I explained why you might want to run IBGP between CE-routers on a multihomed site. One of the blog readers [didn't like my ideas](https://blog.ipspace.net/2023/02/ce-ibgp-multihomed-site.html#1669):
 

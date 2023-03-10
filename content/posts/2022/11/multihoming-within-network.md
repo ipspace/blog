@@ -1,7 +1,11 @@
 ---
-title: "Multihoming Cannot Be Solved within a Network"
-date: 2022-11-17 06:51:00
-tags: [ networking fundamentals ]
+date: 2022-11-17 06:51:00+00:00
+multihoming_tag: session
+series:
+- multihoming
+tags:
+-  networking fundamentals
+title: Multihoming Cannot Be Solved within a Network
 ---
 Henk made an [interesting comment](https://blog.ipspace.net/2022/11/worth-reading-routing-never-solved-problem.html#1487) that finally triggered me to organize my thoughts about network-level host multihoming[^SM]:
 

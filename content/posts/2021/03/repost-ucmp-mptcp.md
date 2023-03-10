@@ -1,7 +1,9 @@
 ---
 date: 2021-03-17 06:59:00+00:00
+multihoming_tag: session
 series:
 - UCMP
+- multihoming
 tags:
 - TCP
 - QoS

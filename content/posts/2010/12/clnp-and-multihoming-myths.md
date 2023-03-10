@@ -1,5 +1,8 @@
 ---
 date: 2010-12-07 06:08:00+01:00
+multihoming_tag: server
+series:
+- multihoming
 tags:
 - IPv6
 - Internet

@@ -1,7 +1,13 @@
 ---
-title: "CE-to-CE IBGP Session in a Multihomed Site"
-date: 2023-02-15 07:13:00
-tags: [ BGP, design, WAN ]
+date: 2023-02-15 07:13:00+00:00
+multihoming_tag: bgp
+series:
+- multihoming
+tags:
+- BGP
+- design
+- WAN
+title: CE-to-CE IBGP Session in a Multihomed Site
 ---
 One of my readers sent me a question along these lines:
 

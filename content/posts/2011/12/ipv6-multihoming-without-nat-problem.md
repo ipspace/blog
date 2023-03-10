@@ -1,8 +1,23 @@
 ---
+cdate: 2023-03-10
+comment: 'It seems the engineers who have to deal with this kind of scenarios reached
+  a reluctant consensus since I wrote this blog post more than a decade ago: NAT66
+  or NPT66 is the way to go. For obvious reasons, that conclusion will never make
+  it past IETF IPv6 True Believers.
+
+  '
 date: 2011-12-13 06:29:00+01:00
+high-availability_tag: multihoming
+multihoming_tag: ipv6
+series:
+- multihoming
+tags:
+- IPv6
+- NAT
+- Internet
+- high availability
 title: 'IPv6 Multihoming Without NAT: the Problem'
 url: /2011/12/ipv6-multihoming-without-nat-problem.html
-tags: [ IPv6, NAT, Internet, high availability ]
 ---
 Every time I write about [IPv6 multihoming issues](https://blog.ipspace.net/2010/12/small-site-multihoming-in-ipv6-mission.html) and the [need for NPT66](https://blog.ipspace.net/2011/12/we-just-might-need-nat66.html), I get a comment or two saying:
 
@@ -12,7 +27,7 @@ The commentators are right, you can have multiple IPv6 addresses on the same int
 
 The source address selection rules are specified in [RFC 3484](http://tools.ietf.org/html/rfc3484) (Greg translated that RFC into an [easy-to-consume format](http://etherealmind.com/ipv6-which-address-multiple-ipv6-address-default-address-selection/) a while ago), but they are not very helpful as they cannot be influenced by the CPE router. Let's look at the details.
 <!--more-->
-### Phase 1 -- single ISP connection
+### Phase 1 -- Single ISP Connection
 
 We have a simple SMB network: a single CPE router connected to one ISP and a host sitting behind the router (ignore the PE-B part for the moment). CPE router asks ISPA for a delegated prefix (using IA_PD option in DHCPv6) and uses part of that prefix to address its LAN interface.
 
@@ -44,7 +59,7 @@ The IPv6 client receives RA messages sent by the CPE and creates an IPv6 address
 
 The client is now able to communicate with the IPv6 Internet. Problem solved \... until someone figures out a single upstream connection is a single point of failure and orders a second Internet service.
 
-### Phase 2 -- Two ISP uplinks
+### Phase 2 -- Two ISP Uplinks
 
 The second ISP uplink is configured almost identically to the first. Since you cannot have two RA-generated default routes in Cisco IOS release 15.1M, I had to use a floating static default route and hard-code the next-hop router's IPv6 address in it.
 
@@ -104,11 +119,11 @@ The whole situation might have been survivable were this the only problem to sol
 
 Please don't try to tell me that the whole thing works if you use two CPE routers. It might work once the [host stacks implement RFC 3484 bis](http://tools.ietf.org/html/draft-ietf-6man-rfc3484-revise-03#section-2.3), but we're not there yet (and I'll describe that scenario in an upcoming blog post).
 
-### More information and tested router configurations
+### More Information and Tested Router Configurations
 
 Various IPv6 access- and core network designs and numerous sample configurations are included in the [Building Large IPv6 Service Provider Networks](http://www.ipspace.net/Building_IPv6_Service_Provider_Core) webinar.
 
-### Do your own tests
+### Do Your Own Tests
 
 If you want to test how your hosts behave in this scenario or try to fix my router configurations, use these configurations as a starting point:
 

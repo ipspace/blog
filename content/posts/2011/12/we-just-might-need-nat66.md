@@ -1,5 +1,8 @@
 ---
 date: 2011-12-06 07:12:00+01:00
+multihoming_tag: ipv6
+series:
+- multihoming
 tags:
 - IPv6
 - NAT
@@ -8,7 +11,7 @@ url: /2011/12/we-just-might-need-nat66.html
 ---
 My friend Tom Hollingsworth has written another [NAT66-is-evil](http://networkingnerd.net/2011/12/01/whats-the-point-of-nat66/) blog post. While I agree with him in principle, and most everyone agrees NAT as we know it from IPv4 world is plain stupid in IPv6 world (NAPT more so than NAT), we just might need NPT66 ([Network Prefix Translation; RFC 6296](http://www.rfc-editor.org/rfc/rfc6296.txt)) to support [small-site multihoming](/2009/05/small-site-multihoming-tutorial.html) \... and yet again, it seems that many leading IPv6 experts grudgingly agree with me.
 <!--more-->
-### What's the problem
+### The Problem
 
 There's plenty of multihoming going on in the current Internet without anyone being aware of it. Anyone using Internet for mission-critical applications (or business-grade cloud access) can get two Internet connections from two upstream providers and [use pretty simple NAT tricks to use those connections](/2009/05/small-site-multihoming-tutorial.html) in either active-standby or active-active mode. I'm personally aware of a few large multinational organizations using similar designs for remote office or retail access.
 

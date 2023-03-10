@@ -1,5 +1,16 @@
 ---
+cdate: 2023-03-10
+comment: 'We made absolutely no progress on this front in over a decade. Small-site
+  multihoming is still mission impossible, and in February 2023 another draft was
+  created in v6ops working group effectively describing the same problems I described
+  in 2010.
+
+  '
 date: 2010-12-02 09:17:00.001000+01:00
+high-availability_tag: multihoming
+multihoming_tag: ipv6
+series:
+- multihoming
 tags:
 - IPv6
 - NAT
@@ -24,7 +35,7 @@ Worst case, if we can't make small-site multihoming work reliably with IPv6, a l
 
 **Alternative approaches?** Multihoming was supposed to be an integral part of IPv6 (not really, a lot of details are missing -- another topic of my [*Upcoming Internet Challenges*](http://www.ipSpace.net/InternetChallenges) webinar), but maybe the following trick would work for small sites. Please share your opinions in the comments.
 
-### Could this work?
+### Could This Work?
 
 A CPE router with two uplinks will get delegated prefixes from both ISPs through DHCPv6. You can assign both prefixes to the LAN interface and your IPv6 hosts using stateless autoconfiguration (SLAAC -- [RFC 4862](http://tools.ietf.org/html/rfc4862)) will get an address from each delegated prefix (having multiple IPv6 addresses per interface is a standard IPv6 feature). However, the address selection rules the IPv6 hosts are suppose to use ([RFC 3484](http://tools.ietf.org/html/rfc3484)) don't take in account the path availability.
 
@@ -34,4 +45,4 @@ Assuming [DHCPv6 prefix delegation and DHCPv6 clients in CPE routers work as int
 
 Last but not least, unless you use some crazy EEM-triggered tricks, your IPv6 hosts will have addresses from both ISPs most of the time. Influencing address selection rules is not trivial ([this is how you can do it on Linux](http://www.davidc.net/networking/ipv6-source-address-selection-linux) and [this is the procedure for Windows](http://technet.microsoft.com/en-us/library/bb877985.aspx)) and unless you're pretty experienced your hosts will select one path or the other based on whatever internal decisions they make, not based on the primary/backup selection you'd like to have.
 
-What do you think? Would the end-users who need redundant connectivity implement this kludge or would they request PI address space, BGP AS number and implement BGP (or just ask both ISPs to install static routes for their PI prefix) \... or shall we wait for NAT66?
+What do you think? Would the end-users who need redundant connectivity implement this kludge or would they request PI address space, BGP AS number and implement BGP (or just ask both ISPs to install static routes for their PI prefix)... or shall we wait for NAT66?
