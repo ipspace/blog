@@ -1,5 +1,6 @@
 ---
 date: 2017-12-12 08:53:00+01:00
+high-availability_tag: app
 tags:
 - DNS
 - Internet

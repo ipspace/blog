@@ -29,7 +29,14 @@ I wrote {{<page-count round="10">}} blog posts on these topics. It would be impo
 * [Disaster recovery and avoidance](/series/dr.html)
 * [High availability clusters](/series/ha-cluster.html)
 * [Public and private cloud deployments](/series/ha-cloud.html)
-* [High availability packet forwarding](/series/ha-switching.html)
 * [Global and local load balancing with IP anycast](/series/anycast.html)
+
+One of the prerequisites for highly available services is also redundant networking infrastructure:
+
+{{<series-listing tag="infra" year="yes" site_tag="true" weight="yeah">}}
+
+Regardless of what approach you use, the only sustainable way to get highly available services is the correct design of the application stack. For more details, watch the [Designing Active-Active and Disaster Recovery Data Centers](https://www.ipspace.net/Designing_Active-Active_and_Disaster_Recovery_Data_Centers) webinar; I also wrote a few blog posts on the topic:
+
+{{<series-listing tag="app" year="yes" weight="yeah">}}
 
 {{<series-untagged title="Other High Availability Blog Posts" format="2006">}}
