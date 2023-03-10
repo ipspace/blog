@@ -1,8 +1,10 @@
 ---
 date: 2016-03-22 08:56:00+01:00
 dcbgp_tag: server
+multihoming_tag: server
 series:
 - dcbgp
+- multihoming
 series_weight: 700
 tags:
 - data center
@@ -34,4 +36,4 @@ Assuming we can't fix the application code, so we're stuck with "IP address = se
 -   It's available in many ToR switches (excluding greedy vendors who want to slap SP tax on everyone using BGP).
 -   It's available in every Linux distribution (not sure about Windows Server, comments most welcome).
 
-Finally, if you want to know how the whole thing works, register watch the [Leaf-and-Spine Fabric Designs](http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs) webinar; guest star Dinesh Dutt covered numerous implementation details in his part of the session.
+Finally, if you want to know how the whole thing works, watch the [Leaf-and-Spine Fabric Designs](http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs) webinar; guest star Dinesh Dutt covered numerous implementation details in his part of the session.

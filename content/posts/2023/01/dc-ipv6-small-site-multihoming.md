@@ -1,7 +1,12 @@
 ---
-title: "Design Clinic: Small-Site IPv6 Multihoming"
-date: 2023-01-31 07:50:00
-tags: [ IPv6, design ]
+date: 2023-01-31 07:50:00+00:00
+multihoming_tag: ipv6
+series:
+- multihoming
+tags:
+- IPv6
+- design
+title: 'Design Clinic: Small-Site IPv6 Multihoming'
 ---
 I decided to stop caring about IPv6 when the protocol became old enough to buy its own beer (now even in US), but its [second-system effects](https://en.wikipedia.org/wiki/Second-system_effect) keep coming back to haunt us. Here's a question I got for the [February 2023 ipSpace.net Design Clinic](https://designclinic.ipspace.net/):
 

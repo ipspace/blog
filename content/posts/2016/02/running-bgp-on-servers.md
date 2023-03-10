@@ -1,8 +1,11 @@
 ---
 date: 2016-02-17 11:32:00+01:00
 dcbgp_tag: server
+high-availability_tag: multihoming
+multihoming_tag: server
 series:
 - dcbgp
+- multihoming
 series_weight: 900
 tags:
 - data center

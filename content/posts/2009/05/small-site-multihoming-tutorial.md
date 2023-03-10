@@ -1,10 +1,13 @@
 ---
 date: 2009-05-15 06:39:00.003000+02:00
+lastmod: 2020-11-20 07:00:00
+multihoming_tag: site
+series:
+- multihoming
 tags:
 - NAT
 - IP routing
 title: Small Site Multihoming Tutorial
-lastmod: 2020-11-20 07:00:00
 url: /2009/05/small-site-multihoming-tutorial.html
 ---
 In 2007 and 2008 I wrote several articles covering small-site multihoming (a site connected to two ISPs without having its own public address space or running BGP).

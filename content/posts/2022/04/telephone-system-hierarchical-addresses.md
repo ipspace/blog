@@ -1,7 +1,11 @@
 ---
-title: "Telephone System Is a Bad Example of Hierarchical Addresses"
-date: 2022-04-14 06:24:00
-tags: [ Internet ]
+date: 2022-04-14 06:24:00+00:00
+multihoming_tag: session
+series:
+- multihoming
+tags:
+- Internet
+title: Telephone System Is a Bad Example of Hierarchical Addresses
 ---
 Networking engineers proposing strict hierarchical addressing scheme as a solution to global BGP table explosion often cite the international telephone system numbering plan ([E.164](https://en.wikipedia.org/wiki/E.164)) as a perfect example of an addressing plan that uses hierarchy to minimize routing table sizes. Even more, widespread mobile roaming and [local number portability](https://en.wikipedia.org/wiki/Local_number_portability) indicate that we could solve IP mobility and multihoming if only _insert-your-favorite-opinion-here_.
 <!--more-->

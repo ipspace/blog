@@ -1,10 +1,13 @@
 ---
 date: 2008-05-20 07:20:00.001000+02:00
+lastmod: 2020-12-04 17:41:00
+multihoming_tag: bgp
+series:
+- multihoming
 tags:
 - BGP
 title: Multihoming to a Single ISP
 url: /2008/05/multihoming-to-single-isp.html
-lastmod: 2020-12-04 17:41:00
 ---
 *Multihoming to a single ISP* is a design scenario in which a customer uses multiple Internet connections to the same Internet Service Provider. This design provides resilience against link and device failures, but does not provide protection against major outages within the Service Provider network.
 

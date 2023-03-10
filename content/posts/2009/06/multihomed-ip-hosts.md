@@ -1,17 +1,20 @@
 ---
 date: 2009-06-03 07:17:00.001000+02:00
+lastmod: 2020-12-26 14:04:00
+multihoming_tag: server
+series:
+- multihoming
 tags:
 - IP routing
 - LAN
 title: Multihomed IP Hosts
 url: /2009/06/multihomed-ip-hosts.html
-lastmod: 2020-12-26 14:04:00
 ---
 IP host (workstations, servers or communication equipment) is *multihomed* if it has more than one IP address. An IP host can be multihomed in numerous ways, using one or more layer-3 interfaces for network connectivity. Some multihoming scenarios are well understood and commonly used, while others (multiple physical layer-3 interfaces in the same IP subnet) could be hard to implement on common operating systems.
 
 {{<note>}}A host having a routable IP address on an external interface and on or more IP addresses on internal interfaces like the *loopback* interface is not considered multihomed.{{</note>}}
 <!--more-->
-### Multihoming scenarios
+### Multihoming Scenarios
 
 [RFC 1122](https://tools.ietf.org/html/rfc1122) (Requirements for Internet Hosts) documents three multihoming scenarios:
 
@@ -36,7 +39,7 @@ Multihomed IP hosts face two significant challenges:
 
 These challenges are well documented in RFC 1122 (see also the discussion below). Some operating systems or add-on networking software (for example, stateful host firewalls) might impose additional limitations.
 
-### Session endpoint addressing
+### Session Endpoint Addressing
 
 A multihomed host could use any one of its IP addresses as the source IP address of outgoing IP datagrams carrying TCP or UDP packets. To ensure that the remote host is able to match its side of a TCP or UDP session with the received IP datagram, RFC 1122 imposes the following rules on IP address selection:
 
@@ -49,13 +52,13 @@ A server running on a multihomed host should therefore use the destination IP ad
 
 On some operating systems, the client application on a multihomed host can specify the source IP address of the TCP or UDP session ([socket library example](http://mail.python.org/pipermail/python-list/2006-October/582995.html)).
 
-### Datagram forwarding
+### Datagram Forwarding
 
 RFC 1122 documents datagram forwarding to local subnets and datagram forwarding to default gateways (it also allows hosts to use static routes), but does not address the interface selection rules when a multihomed host has multiple default gateways or multiple interfaces in the same IP subnet (*Multiple logical hosts*). These decisions are implementation dependent and many IP stacks use the first-match rule, sending majority of the outbound datagrams through a single interface.
 
 Some operating systems (or add-on networking software) allow the administrator to define load sharing or policy routing rules. For example, the Linux **iproute2** package allows you to  [configure a policy where the source IP address selects the outgoing interface](http://www.linuxjournal.com/article/7291)
 
-### Multiple logical hosts issues
+### Multiple Logical Hosts Issues
 
 Even though the *multiple logical hosts* design (a host with two interfaces in the same IP subnet) is documented in RFC 1122, you could experience significant roadblocks when trying to use multiple IP addresses from the same IP subnet on multiple physical interfaces with modern operating systems, including:
 
@@ -69,7 +72,7 @@ Even though the *multiple logical hosts* design (a host with two interfaces in
 
 {{<note>}}Some operating systems avoid the link loss issues by supporting transfer of IP and MAC addresses between physical interfaces.{{</note>}}
 
-## More details
+### More Details
 
 * [Redundant Server-to-Network Connectivity](https://www.ipspace.net/Redundant_Server-to-Network_Connectivity)
 * [Redundant Layer-3-Only Data Center Fabrics](https://www.ipspace.net/kb/Layer3Fabrics/)

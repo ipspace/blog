@@ -1,5 +1,8 @@
 ---
 date: 2009-08-17 07:02:00+02:00
+multihoming_tag: session
+series:
+- multihoming
 tags:
 - IPv6
 - Internet
