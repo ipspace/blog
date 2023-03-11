@@ -2,6 +2,7 @@
 title: "DHCP Relaying Details"
 date: 2023-03-09 07:54:00
 tags: [ DHCP ]
+series: [ dhcp-relay ]
 ---
 Chinar Trivedi asked an [interesting question](https://twitter.com/cloudnetworkguy/status/1631891785478971392) about DHCP relaying in VXLAN/EVPN world on Twitter and my first thought was "_that shouldn't be hard_" but when I [read the first answer](https://twitter.com/aninchat/status/1631952450189131776) that turned into "_wait a minute, how exactly does DHCP relaying works?_"
 
@@ -77,6 +78,11 @@ Now for the magic bit: because the DHCP relay asked the server to lie to the cli
 Now that we know the relevant DHCP relaying details, it's easy(er) to figure out how to make it work in EVPN/VXLAN environment (or you'll have to wait for the follow-up blog post).
 
 [^SAV]: Ignoring yet another detour: the client VPN/VRF membership could be determined by the DHCP server ;)
+
+{{<next-in-series page="/posts/2023/03/netlab-dhcp-relay.md">}}
+### Coming Up Next
+
+Now that we know how DHCP relaying works, it's time to test it in a lab.{{</next-in-series>}}
 
 ### Revision History
 
