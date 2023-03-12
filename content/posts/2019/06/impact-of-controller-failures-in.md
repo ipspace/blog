@@ -1,10 +1,13 @@
 ---
 date: 2019-06-20 08:14:00+02:00
+distributed-systems_tag: sdn
 ha-cluster_tag: sdn
 high-availability_tag: ignore
 sd-wan_tag: myth
 series:
 - ha-cluster
+- distributed-systems
+series_weight: 1400
 tags:
 - SD-WAN
 - SDN

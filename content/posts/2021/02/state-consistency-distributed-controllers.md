@@ -1,10 +1,13 @@
 ---
 date: 2021-02-10 06:57:00+00:00
+distributed-systems_tag: sdn
 ha-cluster_tag: sdn
 high-availability_tag: ignore
 series:
 - consistent-state
 - ha-cluster
+- distributed-systems
+series_weight: 2000
 subtitle: Why Can't We Have Good Things Like Partition-Resilient SDN Controllers
 tags:
 - SDN

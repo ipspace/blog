@@ -1,9 +1,11 @@
 ---
 date: 2021-11-11 06:54:00+00:00
+distributed-systems_tag: device
 ha-switching_tag: mechanism
 high-availability_tag: external
 series:
 - ha-switching
+- distributed-systems
 series_title: Non-Stop Routing (NSR)
 tags:
 - IP routing

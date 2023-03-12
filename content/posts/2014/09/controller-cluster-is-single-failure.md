@@ -1,9 +1,12 @@
 ---
 date: 2014-09-08 18:19:00+02:00
-high-availability_tag: ignore
+distributed-systems_tag: sdn
 ha-cluster_tag: overview
+high-availability_tag: ignore
 series:
 - ha-cluster
+- distributed-systems
+series_weight: 1600
 tags:
 - SDN
 - high availability
