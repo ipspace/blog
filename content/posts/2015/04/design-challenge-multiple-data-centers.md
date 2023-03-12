@@ -17,7 +17,7 @@ One of my readers sent me this question:
 
 > What is best practice to get a copy of the VM image from DC1 to DC2 for DR when you have subrate (155 Mbps in my case) Metro Ethernet services between DC1 and DC2?
 
-The slow link between the data centers effectively rules out any ideas of [live VM migration](http://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html); to figure out what you should be doing, you have to [focus on business needs](http://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html).
+The slow link between the data centers effectively rules out any ideas of [live VM migration](https://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html); to figure out what you should be doing, you have to [focus on business needs](http://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html).
 <!--more-->
 In this particular case, you have to figure out what the [Recovery Point Objective](http://en.wikipedia.org/wiki/Recovery_point_objective) (RPO) is, or (to put it bluntly) how fresh the data should be. It's also nice to know what the [Recovery Time Objective](http://en.wikipedia.org/wiki/Recovery_time_objective) (RTO) is, or how long it can take to restore the services.
 

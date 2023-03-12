@@ -22,7 +22,7 @@ I have some bad news for the true believers in virtualization-supported high ava
 
 **High-availability clusters** like [Windows Server Failover Clustering](http://www.microsoft.com/windowsserver2008/en/us/failover-clustering-multisite.aspx) restart a failed service (for example, the SQL server) on the same or on another server. The restart can take from a few seconds to a few minutes (or sometimes even longer if the database has to do extensive recovery). A nine lost.
 
-**Bridging between data centers** (the typical design recommended by VMware-focused consultants) might cause long-distance forwarding loops, or you might see the flood of traffic caused by a forwarding loop spilled over the WAN link into the other data center, killing all other inter-DC traffic (including cluster heartbeats if you’re brave enough to use [long-distance clusters](http://blog.ioshints.info/2011/06/stretched-clusters-almost-as-good-as.html), and storage replication). 
+**Bridging between data centers** (the typical design recommended by VMware-focused consultants) might cause long-distance forwarding loops, or you might see the flood of traffic caused by a forwarding loop spilled over the WAN link into the other data center, killing all other inter-DC traffic (including cluster heartbeats if you’re brave enough to use [long-distance clusters](https://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html), and storage replication). 
 
 Want a data point: we experienced a forwarding loop caused by an intra-site STP failure. Recovery time: close to 30 minutes *with NMS noticing the problem immediately and operator being available on site*. Admittedly some of that time has been spent collecting evidence for post-mortem analysis.
 

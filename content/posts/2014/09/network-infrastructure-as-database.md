@@ -7,7 +7,7 @@ series: [ niac ]
 niac_tag: implement
 url: /2014/09/network-infrastructure-as-database.html
 ---
-A while ago I wrote about the idea of [treating network infrastructure (and all other infrastructure) as code](http://blog.ipspace.net/2014/06/infrastructure-as-code-actually-makes.html), and using the same processes application developers are using to write, test and deploy code to design and implement networks.
+A while ago I wrote about the idea of [treating network infrastructure (and all other infrastructure) as code](https://blog.ipspace.net/2014/06/infrastructure-as-code-actually-makes.html), and using the same processes application developers are using to write, test and deploy code to design and implement networks.
 
 That approach clearly works well if you can virtualize (and clone ad infinitum) everything. We can virtualize appliances or even routers, but installed equipment and high-speed physical infrastructure remain somewhat resistant to that idea. We need a different paradigm, and the best analogy I could come up with is a database.
 <!--more-->
@@ -31,7 +31,7 @@ And now for the usual set of objections:
 
 Have you encountered any other objections? Write a comment!
 
-Finally, you might decide that your network isn't big enough to warrant a network automation solution (or that you don't have the manpower to work on it). The next best thing you might do is [decoupling](http://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html): [move the dynamic parts of your network infrastructure into the virtual world](http://blog.ipspace.net/2013/04/virtual-appliance-performance-is.html) where you can [treat is as code](http://blog.ipspace.net/2014/06/infrastructure-as-code-actually-makes.html), and keep the physical part of your network infrastructure as static as possible.
+Finally, you might decide that your network isn't big enough to warrant a network automation solution (or that you don't have the manpower to work on it). The next best thing you might do is [decoupling](https://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html): [move the dynamic parts of your network infrastructure into the virtual world](http://blog.ipspace.net/2013/04/virtual-appliance-performance-is.html) where you can [treat is as code](http://blog.ipspace.net/2014/06/infrastructure-as-code-actually-makes.html), and keep the physical part of your network infrastructure as static as possible.
 
 ### More Information
 

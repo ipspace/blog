@@ -62,6 +62,6 @@ Try to remain realistic when estimating the available bandwidth between applicat
 
 ### Isn't This Obvious?
 
-It should be, but as one of my fellow networking gurus recently told me: "You have no idea how many times your [*Do the math before considering long-distance vMotion*](http://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html) post saved my day".
+It should be, but as one of my fellow networking gurus recently told me: "You have no idea how many times your [*Do the math before considering long-distance vMotion*](https://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html) post saved my day".
 
 Also, keep in mind that these days bandwidth is no longer the primary constraint. Latency plays a much bigger role than it used to.

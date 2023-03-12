@@ -14,11 +14,11 @@ In an amazing turn of events, at least one IETF working group recognized we have
 
 Here are a few really old blog posts just in case you don't know what I'm talking about (and make sure you read the comments as well):
 <!--more-->
--   [Lack of IPv6 multihoming -- the elephant in the room](http://blog.ipspace.net/2009/05/lack-of-ipv6-multihoming-elephant-in.html) (May 2009)
--   [Small-Site Multihoming in IPv6 -- Mission Impossible](http://blog.ipspace.net/2010/12/small-site-multihoming-in-ipv6-mission.html) (December 2010)
--   [IPv6 Multihoming without NAT -- The Problem](http://blog.ipspace.net/2011/12/ipv6-multihoming-without-nat-problem.html) (December 2011)
--   [We just might need NAT66](http://blog.ipspace.net/2011/12/we-just-might-need-nat66.html) (December 2011)
--   [IPv6 Legends and Myths -- more opinions than data points](http://blog.ipspace.net/2012/04/ipv6-legends-and-myths-more-opinions.html) (April 2012)
+-   [Lack of IPv6 multihoming -- the elephant in the room](https://blog.ipspace.net/2009/05/lack-of-ipv6-multihoming-elephant-in.html) (May 2009)
+-   [Small-Site Multihoming in IPv6 -- Mission Impossible](https://blog.ipspace.net/2010/12/small-site-multihoming-in-ipv6-mission.html) (December 2010)
+-   [IPv6 Multihoming without NAT -- The Problem](https://blog.ipspace.net/2011/12/ipv6-multihoming-without-nat-problem.html) (December 2011)
+-   [We just might need NAT66](https://blog.ipspace.net/2011/12/we-just-might-need-nat66.html) (December 2011)
+-   [IPv6 Legends and Myths -- more opinions than data points](https://blog.ipspace.net/2012/04/ipv6-legends-and-myths-more-opinions.html) (April 2012)
 
 After that I mostly gave up and focused on more interesting topics.
 

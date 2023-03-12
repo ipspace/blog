@@ -18,15 +18,15 @@ You're absolutely right, and from this perspective the Software-Defined Security
 
 Changing the Software-Defined terminology to something that makes sense is a lost battle, but at least we can hope to find a useful definition. The one focusing on "*managing services through* [*abstraction*](https://my.ipspace.net/bin/get?doc=14cb35a0-d02e-11e5-a2b0-005056880254) *of* *lower-lever functionality*" works reasonably well. I would also ask for:
 
--   [Well-documented API](http://blog.ipspace.net/2014/02/cli-or-api-wait-do-you-really-have-to.html) that can be used to extract operational state from the device and change device configuration or soft state;
--   Capability to create security services on demand and [insert them in the forwarding path](http://blog.ipspace.net/2014/02/service-insertion-with-openflow.html) on as-needed basis.
+-   [Well-documented API](https://blog.ipspace.net/2014/02/cli-or-api-wait-do-you-really-have-to.html) that can be used to extract operational state from the device and change device configuration or soft state;
+-   Capability to create security services on demand and [insert them in the forwarding path](https://blog.ipspace.net/2014/02/service-insertion-with-openflow.html) on as-needed basis.
 
 > Security is a process and not a single function. The objective of the process is to have data and network security. Encryption, intrusion detection, intrusion prevention, DDoS mitigation and data loss prevention are just some of the functions that support the process. Where does Software Defined Security (SDS) fit in?
 
 All of the functions you mentioned can be abstracted and made simpler to consume. For example:
 
--   [Microsegmentation solutions](https://my.ipspace.net/bin/get?doc=8b38b330-ba2f-11e5-a2b0-005056880254) automatically deploy [distributed firewall rules built from data contained in orchestration system](http://blog.ipspace.net/2015/03/microsegmentation-in-vmware-nsx-on.html) (example: VM names or groups mapped into IP addresses);
--   [Software-Defined WAN solutions](http://blog.ipspace.net/search?q=sd-wan) automatically protect all traffic transported across public networks;
+-   [Microsegmentation solutions](https://my.ipspace.net/bin/get?doc=8b38b330-ba2f-11e5-a2b0-005056880254) automatically deploy [distributed firewall rules built from data contained in orchestration system](https://blog.ipspace.net/2015/03/microsegmentation-in-vmware-nsx-on.html) (example: VM names or groups mapped into IP addresses);
+-   [Software-Defined WAN solutions](https://blog.ipspace.net/search?q=sd-wan) automatically protect all traffic transported across public networks;
 -   [Service chaining solutions](https://my.ipspace.net/bin/get?doc=cb9671a6-bfb1-11e5-a2b0-005056880254) allow an operator to stitch together multiple security services on demand.
 -   [Network Function Virtualization](http://www.ipspace.net/Network_Function_Virtualization) (NFV) frameworks allow users to deploy instances of security functions on as-needed basis.
 
@@ -58,10 +58,10 @@ I would start with [Gartner's Shiny New Object](http://blogs.gartner.com/andrew-
 -   Do I have existing network or security capabilities that can address most of the technology requirements?
 -   If we buy new technology, do we have the right processes and expertise to properly use it?
 
-In many cases it turns out that the root cause of the problem we're trying to solve is [not technology](http://blog.ipspace.net/2014/09/youve-been-doing-same-thing-for-last-20.html) but people, silos, [broken processes](http://blog.ipspace.net/2013/11/typical-enterprise-application.html) or rigid policies... and even if we buy new technology we won't solve the root cause.
+In many cases it turns out that the root cause of the problem we're trying to solve is [not technology](https://blog.ipspace.net/2014/09/youve-been-doing-same-thing-for-last-20.html) but people, silos, [broken processes](http://blog.ipspace.net/2013/11/typical-enterprise-application.html) or rigid policies... and even if we buy new technology we won't solve the root cause.
 
 If however you have to buy new technology (including new deployments and regular refresh cycles) I'd check that:
 
--   You can get the functionality you need in [virtual format](http://blog.ipspace.net/2013/04/virtual-appliance-performance-is.html) (even if you end up buying a physical box);
+-   You can get the functionality you need in [virtual format](https://blog.ipspace.net/2013/04/virtual-appliance-performance-is.html) (even if you end up buying a physical box);
 -   You can interact with the security functions (software solutions, VMs or physical appliances) through a well-documented API;
 -   The solution you plan to deploy includes the minimum possible amount of moving parts (gateways, integration points, plugins...).

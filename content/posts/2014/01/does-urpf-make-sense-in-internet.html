@@ -7,7 +7,7 @@ tags: [ security ]
 
 <p>Every time someone wonders about the viability of unicast reverse path forwarding (uRPF) as source address validation technique at the edge of an ISP network, someone else inevitably claims it can’t possibly work due to asymmetrical routing issues. Is the situation really so black-and-white?<!--more--></p>
 <h4>What Is uRPF?</h4><p>uRPF is a very simple (and crude) source IP address validation mechanism. It uses IP routing table to verify whether the source IP address of an incoming packet makes sense:</p>
-<ul class="ListParagraph"><li><em>Strict uRPF</em> requires a match between the input interface and the <a href="http://blog.ipspace.net/2010/09/ribs-and-fibs.html">FIB</a> next-hop interface for the source IP address;</li>
+<ul class="ListParagraph"><li><em>Strict uRPF</em> requires a match between the input interface and the <a href="https://blog.ipspace.net/2010/09/ribs-and-fibs.html">FIB</a> next-hop interface for the source IP address;</li>
 <li><em>Loose uRPF</em> requires the presence of a prefix matching source IP address in the FIB. Default route may or may not be considered a match.</li>
 </ul>
 <h4>What can uRPF check?</h4><p>Strict uRPF is ideal when you want to check the traffic coming from a user with a single uplink. As the user has a single uplink, the only path to reach the user is through the provider edge (PE) router performing the uRPF check. If the source IP address of an incoming packet doesn’t match the reverse path, the user is obviously trying to spoof its source IP address.</p>

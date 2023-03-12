@@ -22,7 +22,7 @@ One has to wonder what led someone to such a level of paranoia.
 
 ### The Clumsy Configuration Interface
 
-SDN evangelists are quick to point out how CLI is the root of all evil (guess what: it's not), but there is something [fundamentally wrong with most CLIs](http://blog.ipspace.net/2014/02/is-cli-in-my-way-or-is-it-just-symptom.html) used on networking gear today: they were never designed with scripting, automation or machine-to-machine communication in mind. They were always targeting a lone network operator furiously typing on the keyboard; even cut-and-paste didn't always work, as some devices didn't do proper input buffering.
+SDN evangelists are quick to point out how CLI is the root of all evil (guess what: it's not), but there is something [fundamentally wrong with most CLIs](https://blog.ipspace.net/2014/02/is-cli-in-my-way-or-is-it-just-symptom.html) used on networking gear today: they were never designed with scripting, automation or machine-to-machine communication in mind. They were always targeting a lone network operator furiously typing on the keyboard; even cut-and-paste didn't always work, as some devices didn't do proper input buffering.
 
 While it might be possible to fix the configuration part of the CLI mess (Cisco used to have CLI police that would stop the programmers from messing up too badly, but they must had disbanded it by the time MQC was coded), the instrumentation/monitoring part might be beyond hopeless.
 

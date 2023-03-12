@@ -13,11 +13,11 @@ tags: [ IP routing ]
 <ul class="ListParagraph"><li>Forwarding entries using interface X are removed as soon as interface X goes down;</li>
 <li>Lacking alternate ECMP entries to the same destination, the router would install pre-computed backup entries (for example, the results of LFA computation) into the forwarding table;</li>
 </ul>
-<p class="more">We’ll ignore the details of how the backup entries are installed. Ideally the <a href="http://blog.ipspace.net/2012/01/prefix-independent-convergence-pic.html">control-plane software changes the next-hop groups</a> not the actual forwarding entries.</p>
+<p class="more">We’ll ignore the details of how the backup entries are installed. Ideally the <a href="https://blog.ipspace.net/2012/01/prefix-independent-convergence-pic.html">control-plane software changes the next-hop groups</a> not the actual forwarding entries.</p>
 <ul class="ListParagraph"><li>Lacking pre-computed backup entries, the router will recalcuate the main routing table (there might be alternate routes with higher administrative distance) and repopulate the forwarding table if such entries exist.</li>
 </ul>
 <p>There’s nothing else the routing/forwarding table manipulation software can do at that moment. </p>
-<p>In our scenario, A and B have a <a href="http://blog.ipspace.net/2012/01/loop-free-alternate-ospf-meets-eigrp.html">loop-free alternate path</a> to C, and if you configured LFA on them the FIB manipulation software would install the alternate route (A =&gt; B and B =&gt; A) resulting in a temporary forwarding loop… unless you configured <a href="http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-3s/iro-lfa-frr-xe.html#GUID-08D08712-F317-4BAF-A45B-0AC5AFA374AD">LFA Downstream Path</a>.</p>
+<p>In our scenario, A and B have a <a href="https://blog.ipspace.net/2012/01/loop-free-alternate-ospf-meets-eigrp.html">loop-free alternate path</a> to C, and if you configured LFA on them the FIB manipulation software would install the alternate route (A =&gt; B and B =&gt; A) resulting in a temporary forwarding loop… unless you configured <a href="http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-3s/iro-lfa-frr-xe.html#GUID-08D08712-F317-4BAF-A45B-0AC5AFA374AD">LFA Downstream Path</a>.</p>
 <p>If you haven’t configured LFA, A and B will have no usable route to C (we’ll ignore summary/default routes for the moment) and the traffic sent to C will be dropped.</p>
 <p>At the same time, the routing protocols monitoring interface X kick in and start their work:</p>
 <ul class="ListParagraph"><li>New router LSA/LSP is generated (assuming we’re not dealing with P2P links) unless there have been so many recent changes that the LSA generation is throttled;</li>

@@ -7,7 +7,7 @@ title: 'Follow-up: Nexus-OS Dropping Configuration Commands'
 url: /2017/05/follow-up-nexus-os-dropping.html
 tags: [ automation ]
 ---
-Not long after I published the [*let's drop some configuration commands*](http://blog.ipspace.net/2017/04/lets-drop-some-random-commands-shall-we.html) rant I got a very nice email from [Nicolas Delecroix](https://www.linkedin.com/in/nicolasdelecroix/), Technical Marketing Engineer in Cisco INSBU, effectively saying "*Would you have time for a short WebEx call to discuss the root cause of the problem and what we did to fix it*?"
+Not long after I published the [*let's drop some configuration commands*](https://blog.ipspace.net/2017/04/lets-drop-some-random-commands-shall-we.html) rant I got a very nice email from [Nicolas Delecroix](https://www.linkedin.com/in/nicolasdelecroix/), Technical Marketing Engineer in Cisco INSBU, effectively saying "*Would you have time for a short WebEx call to discuss the root cause of the problem and what we did to fix it*?"
 
 Of course I agreed and here's what they told me:
 <!--more-->

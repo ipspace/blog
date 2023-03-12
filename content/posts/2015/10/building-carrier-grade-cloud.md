@@ -23,13 +23,13 @@ This is not an NSX-related blog post. It just happened that the attendee tried t
 
 I've encountered two compute infrastructure products that were probably close to what people call [*carrier-grade*](https://en.wikipedia.org/wiki/Carrier_grade) in my days -- IBM mainframes and Tandem minicomputers. Both were incredibly complex and expensive, and ran short user-written transactions on top of fully redundant software and hardware infrastructure.
 
-It's impossible to reproduce the same feat in an Infrastructure-as-a-Service cloud environment because the workload isn't composed of short ACID transactions but of servers of unknown quality. You *might* be able to build a cloud infrastructure with [5-nine reliability](https://en.wikipedia.org/wiki/Five_nines), but it would be a totally wasted effort if the workload running on top of it crashes (or is brought down for patching). See also [High Availability Fallacies](http://blog.ipspace.net/2011/08/high-availability-fallacies.html) for more details.
+It's impossible to reproduce the same feat in an Infrastructure-as-a-Service cloud environment because the workload isn't composed of short ACID transactions but of servers of unknown quality. You *might* be able to build a cloud infrastructure with [5-nine reliability](https://en.wikipedia.org/wiki/Five_nines), but it would be a totally wasted effort if the workload running on top of it crashes (or is brought down for patching). See also [High Availability Fallacies](https://blog.ipspace.net/2011/08/high-availability-fallacies.html) for more details.
 
 The only way to build a solution with more than 99.9% availability is ([according to James Hamilton](https://youtu.be/JIQETrFC_SQ?t=18m50s)) to build an application-layer solution running in multiple availability zones, and once you do that, you don't care that much about the availability of individual zones as long as it's reasonably high.
 
 ### Building Carrier-Grade Infrastructure
 
-Twenty-five years ago we had simple routers and switches, and we knew how to build resilient networks with redundant boxes and routing protocols. Then the traditional service providers learned how to spell IP and wanted to implement their existing operational practices in this brave new world... prompting the networking vendors to build increasingly complex infrastructure products like redundant supervisors, non-stop forwarding, and [in-service software upgrade](http://blog.ipspace.net/2015/06/so-you-need-issu-on-your-tor-switch.html).
+Twenty-five years ago we had simple routers and switches, and we knew how to build resilient networks with redundant boxes and routing protocols. Then the traditional service providers learned how to spell IP and wanted to implement their existing operational practices in this brave new world... prompting the networking vendors to build increasingly complex infrastructure products like redundant supervisors, non-stop forwarding, and [in-service software upgrade](https://blog.ipspace.net/2015/06/so-you-need-issu-on-your-tor-switch.html).
 
 Guess what -- complex products tend to be expensive to build and operate. The carriers complaining about high cost of the networking gear and lustfully looking at what Google, Facebook, Amazon and Azure are doing should stop yammering and admit that they got what they asked for.
 
@@ -49,7 +49,7 @@ The more I look at what various organizations are doing (and succeeding or faili
 
 Numerous large-scale companies have proven that this approach works, but of course it requires a major change in the way your company develops and deploy applications.
 
-You could also decide to ignore this trend and continue building [ever](http://blog.ipspace.net/2014/10/vxlan-and-otv-saga-continues.html) [more](http://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html) [complex](http://blog.ipspace.net/2015/09/vsan-as-always-latency-is-real-killer.html) infrastructure, and [get the results you deserve](http://blog.ipspace.net/2013/09/sooner-or-later-someone-will-pay-for.html).
+You could also decide to ignore this trend and continue building [ever](https://blog.ipspace.net/2014/10/vxlan-and-otv-saga-continues.html) [more](http://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html) [complex](http://blog.ipspace.net/2015/09/vsan-as-always-latency-is-real-killer.html) infrastructure, and [get the results you deserve](http://blog.ipspace.net/2013/09/sooner-or-later-someone-will-pay-for.html).
 
 ### Want to know more?
 

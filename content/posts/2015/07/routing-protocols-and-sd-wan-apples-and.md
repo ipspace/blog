@@ -32,7 +32,7 @@ The *routing protocols choose only the best path based on cost* mantra is wrong.
 
 However, as long as we stick to the *hop-by-hop* forwarding behavior, we're severely limited in the set of paths a routing protocol can select -- a routing protocol can never select a path that could result in a forwarding loop (the proof is left as an exercise for the interested reader).
 
-Finally, all routing protocols assume [*shared fate*](http://blog.ipspace.net/2014/08/fate-sharing-in-ip-networks.html) between routing protocol updates and the forwarding path. The moment this assumption is broken, we might experience interesting challenges (just ask anyone who had to configure OSPF on partially-meshed Frame Relay in the CCIE lab without using P2MP interfaces).
+Finally, all routing protocols assume [*shared fate*](https://blog.ipspace.net/2014/08/fate-sharing-in-ip-networks.html) between routing protocol updates and the forwarding path. The moment this assumption is broken, we might experience interesting challenges (just ask anyone who had to configure OSPF on partially-meshed Frame Relay in the CCIE lab without using P2MP interfaces).
 
 {{<note>}}The situation is particularly bad in IXP environments using BGP route servers, and while [people keep proposing solutions to that problem](https://ripe70.ripe.net/archives/video/11/), none of them is anywhere close to perfect.{{</note>}}
 
@@ -71,7 +71,7 @@ The true difference between SD-WAN solutions and traditional forwarding implemen
 
 {{<note info>}}Please note that you could have done that with multi-topology routing or DiffServ-aware MPLS-TE for years. It just took way too much effort to deploy.{{</note>}}
 
--   Some SD-WAN solutions might perform available bandwidth monitoring (based on increased end-to-end delay) and adjust the packet sending rate, similar to what TCP optimization solutions are doing. For more details, listen to [Episode 25](http://blog.ipspace.net/2015/03/tcp-optimization-with-juho-snellman-on.html) of [Software Gone Wild](http://www.ipspace.net/Podcast/Software_Gone_Wild).
+-   Some SD-WAN solutions might perform available bandwidth monitoring (based on increased end-to-end delay) and adjust the packet sending rate, similar to what TCP optimization solutions are doing. For more details, listen to [Episode 25](https://blog.ipspace.net/2015/03/tcp-optimization-with-juho-snellman-on.html) of [Software Gone Wild](http://www.ipspace.net/Podcast/Software_Gone_Wild).
 
 However, these operations have nothing to do with *routing protocols* -- they are (like Cisco's OER or PfR) *local decisions made on the device* based on current characteristics of transport paths.
 
@@ -85,7 +85,7 @@ While I've seen some service providers using QoS-based MPLS TE (DiffServ-Aware T
 
 You see, shifting traffic across alternate paths works very well in SD-WAN world, because the amount of shifted traffic represents a minuscule part of the overall traffic in the ISP network, whereas shifting traffic based on routing protocol decisions results in significant traffic shifts, which can result in interesting feedback loops in oscillations.
 
-For more details, listen to the [Episode 34](http://blog.ipspace.net/2015/05/network-monitoring-in-sdn-era-on.html) of [Software Gone Wild](http://www.ipspace.net/Podcast/Software_Gone_Wild) in which we discussed network monitoring in the SDN era.
+For more details, listen to the [Episode 34](https://blog.ipspace.net/2015/05/network-monitoring-in-sdn-era-on.html) of [Software Gone Wild](http://www.ipspace.net/Podcast/Software_Gone_Wild) in which we discussed network monitoring in the SDN era.
 
 ### More Details
 

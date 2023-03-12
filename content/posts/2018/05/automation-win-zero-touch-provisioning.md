@@ -22,7 +22,7 @@ As Hans Verkerk discovered when he tried to [implement zero-touch provisioning w
 **Notes:**
 
 -   Before doing anything else, go and read the awesome [Zero-Touch Provisioning DIY Tutorial](https://networklore.com/ztp-tutorial/) by Patrick Ogenstad.
--   Some vendors neatly solved the problem with automated procedures that can do anything from figuring out where their device is in the network to upgrading software and downloading tailored configuration. Similar to [network automation RFP requirements](http://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html), make ease of zero-touch provisioning using a well-documented standards-based approach a mandatory requirement when buying the next batch of hardware;
+-   Some vendors neatly solved the problem with automated procedures that can do anything from figuring out where their device is in the network to upgrading software and downloading tailored configuration. Similar to [network automation RFP requirements](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html), make ease of zero-touch provisioning using a well-documented standards-based approach a mandatory requirement when buying the next batch of hardware;
 -   If you have to provision Cisco Catalyst switches, check out the [FreeZTP server](https://github.com/convergeone/freeztp);
 -   I know someone who solved the same problem with Salt – have to persuade him to talk about it one of these days.
 

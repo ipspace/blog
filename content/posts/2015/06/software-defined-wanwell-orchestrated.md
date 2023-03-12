@@ -14,13 +14,13 @@ One of the Software Defined Evangelists has declared 2015 as the Year of SD-WAN,
 
 Don't misinterpret this blog post. I am not against SD-WAN; in fact, I love some of the ideas I've seen so far and the clean and unified architecture of some of the products.
 
-I am, however, disgusted by all the hype cloaked as technical discussions and think the networking *engineers* (as opposed to marketers or managers) should approach SD-WAN like [any other technology](http://blog.ipspace.net/2015/03/response-why-technology-still-matters.html) and try to understand how it really works and what the real challenges and solutions are.
+I am, however, disgusted by all the hype cloaked as technical discussions and think the networking *engineers* (as opposed to marketers or managers) should approach SD-WAN like [any other technology](https://blog.ipspace.net/2015/03/response-why-technology-still-matters.html) and try to understand how it really works and what the real challenges and solutions are.
 
 ### What Is SD-WAN?
 
 With no definition from a respectable body, let's fall back to the [description on Open Networking User Group web site](http://opennetworkingusergroup.com/onug-spring-2014-use-cases/software-defined-wide-area-network-sd-wan/). Looking at their diagrams, it looks like SD-WAN is the thing that allows you to use the public Internet in parallel with private WAN to reduce the costs.
 
-Wait, what? We've been doing that for ages, and most our customers weaned themselves off MPLS/VPN years ago, using solutions like IPsec, DMVPN, or even [MPLS/VPN-over-GRE-over-IPsec](http://blog.ipspace.net/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html).
+Wait, what? We've been doing that for ages, and most our customers weaned themselves off MPLS/VPN years ago, using solutions like IPsec, DMVPN, or even [MPLS/VPN-over-GRE-over-IPsec](https://blog.ipspace.net/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html).
 
 The marketing gurus working for SD-WAN vendors will quickly tell you that what they do is fundamentally different: the thing we've been doing in the past is *hybrid WAN* and the new thing is *software defined*, uses central controller, and therefore doesn't have to use a complex plethora of protocols like IKE, IPsec, GRE, NHRP, NBAR, IP SLA, PBR or routing protocols like BGP or OSPF. All that is replaced by some secret sauce proprietary to each startup (yeah, that's a comforting thought right there).
 
@@ -60,7 +60,7 @@ Every SD-WAN solution has to reinvent all the wheels we use in *hybrid WAN* netw
 
 There is, however, a fundamental difference between a hodgepodge of traditional protocols that were force-fit into a hybrid WAN architecture and SD-WAN -- the architects of SD-WAN products were not burdened with legacy implementations, or forced to reuse code base that was meant to solve a totally different problem or protocols that were suboptimal for the job (why is anyone using OSPF in DMVPN networks when it's clear that BGP scales much better?). The individual features that they use to reinvent the wheels are also tightly integrated, because they were designed from day one to be used together.
 
-The architecture of most SD-WAN products is thus much cleaner and easier to configure than traditional hybrid networks. However, do keep in mind that most of them use proprietary protocols, resulting in a [perfect lock-in](http://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html).
+The architecture of most SD-WAN products is thus much cleaner and easier to configure than traditional hybrid networks. However, do keep in mind that most of them use proprietary protocols, resulting in a [perfect lock-in](https://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html).
 
 ### More Details
 

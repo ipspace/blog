@@ -10,5 +10,5 @@ tags: [ IPv6, high availability ]
 <p><strong>RA-based failover relies on host IP stack</strong>. You never know what the hosts will do once a router’s lifetime expires (I’ve seen quite a few unexpected things in the IPv6 world already), and the behavior might change after a software update.</p>
 <p><strong>You might not want to use RAs</strong> in <a href="https://blog.ipspace.net/2012/10/dont-use-ipv6-ra-on-server-lans.html">environments where some hosts (particularly servers) are not dual-stacked</a>, as the IPv4-only hosts might decide they want to use IPv6 even though they don’t have a valid IPv6 address.</p>
 <p><strong>RAs are processed by every host</strong>. If you decide to use fast RA-based failover, every server (or VM) in your network will have to process several RAs per second. Not a problem, unless you have thousands of VMs – heaps of small overhead tend to add up.</p>
-<p class="update">2014-03-25: Another gotcha: <a href="http://blog.ipspace.net/2014/03/can-we-use-ipv6-router-advertisements.html">RA-based failover probably won't work in MLAG environments</a>.</p>
+<p class="update">2014-03-25: Another gotcha: <a href="https://blog.ipspace.net/2014/03/can-we-use-ipv6-router-advertisements.html">RA-based failover probably won't work in MLAG environments</a>.</p>
 

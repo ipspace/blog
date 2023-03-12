@@ -37,8 +37,8 @@ You might have network design that's a perfect match to BGP's capabilities, and 
 
 For example:
 
--   Cisco implemented dynamic BGP neighbors in Cisco IOS at least twice. Together with the [changes to BGP route reflector functionality](http://blog.ipspace.net/2014/04/changes-in-ibgp-next-hop-processing.html) they make [BGP-over-DMVPN deployments almost trivial](http://blog.ipspace.net/2014/03/scaling-bgp-based-dmvpn-networks.html);
--   Cumulus Linux implemented [BGP over unnumbered interfaces](http://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html), and relaxed the remote AS checking -- you have to specify whether the neighbor is internal or external, and the BGP routing daemon does the rest;
+-   Cisco implemented dynamic BGP neighbors in Cisco IOS at least twice. Together with the [changes to BGP route reflector functionality](https://blog.ipspace.net/2014/04/changes-in-ibgp-next-hop-processing.html) they make [BGP-over-DMVPN deployments almost trivial](http://blog.ipspace.net/2014/03/scaling-bgp-based-dmvpn-networks.html);
+-   Cumulus Linux implemented [BGP over unnumbered interfaces](https://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html), and relaxed the remote AS checking -- you have to specify whether the neighbor is internal or external, and the BGP routing daemon does the rest;
 
 For more details, start with the [Simplifying BGP Configurations](https://my.ipspace.net/bin/get?doc=46d9b3b4-e1ea-11e5-a2b0-005056880254) video in which Dinesh Dutt explains how easy it is to run BGP in a leaf-and-spine fabric, and continue with the rest of the [Leaf-and-Spine Architectures](http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar.
 

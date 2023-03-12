@@ -6,7 +6,7 @@ tags: [ configuration,BGP ]
 ---
 
 <p>Here’s a trick question:</p>
-<ul class="ListParagraph"><li>Imagine you have a network <a href="http://blog.ipspace.net/2016/12/generating-ospf-bgp-and-mplsvpn.html">running IPv4 and VPNv4 services</a>;</li>
+<ul class="ListParagraph"><li>Imagine you have a network <a href="https://blog.ipspace.net/2016/12/generating-ospf-bgp-and-mplsvpn.html">running IPv4 and VPNv4 services</a>;</li>
 <li>You want to use <strong>neighbor next-hop-self </strong>on IPv4 sessions, but not on VPNv4 sessions;</li>
 </ul>
 <p>To implement this request you use the following configuration commands (plenty of other commands removed because they don’t impact the results):</p>
@@ -16,5 +16,5 @@ tags: [ configuration,BGP ]
 <li>The moment you enter <strong>maximum-paths ibgp </strong>command the configuration parser exits the <strong>address-family vpnv4 </strong>context and enters <strong>router bgp </strong>context;</li>
 <li>Because the <strong>ipv4 </strong>address family is the default context within <strong>router bgp </strong>(for legacy reasons) all the subsequent commands are executed within the <strong>address-family ipv4 </strong>context <em>removing next-hop self from neighbors in IPv4 address family.</em></li>
 </ul>
-<p>No wonder David Barroso named his library NAPALM (you’ll find the full story in <a href="http://blog.ipspace.net/2016/10/napalm-update-on-software-gone-wild.html">this</a> or <a href="http://blog.ipspace.net/2015/06/napalm-integrating-ansible-with-network.html">this</a> podcast).</p>
+<p>No wonder David Barroso named his library NAPALM (you’ll find the full story in <a href="https://blog.ipspace.net/2016/10/napalm-update-on-software-gone-wild.html">this</a> or <a href="http://blog.ipspace.net/2015/06/napalm-integrating-ansible-with-network.html">this</a> podcast).</p>
 

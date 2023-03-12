@@ -20,14 +20,14 @@ This blog post describes some of the more common OpenFlow use cases (assuming yo
 <!--more-->
 ### Point OpenFlow Deployments
 
-Sometimes you can [solve your problem](http://blog.ipspace.net/2011/11/openflow-enterprise-use-cases.html) by using OpenFlow on individual (uncoupled) devices. Typical use cases:
+Sometimes you can [solve your problem](https://blog.ipspace.net/2011/11/openflow-enterprise-use-cases.html) by using OpenFlow on individual (uncoupled) devices. Typical use cases:
 
--   **Edge security policy** -- authenticate users (or VMs) and deploy per-user ACLs before connecting a user to the network (example: [IPv6 first-hop security](http://blog.ipspace.net/2012/10/ipv6-first-hop-security-ideal-openflow.html));
+-   **Edge security policy** -- authenticate users (or VMs) and deploy per-user ACLs before connecting a user to the network (example: [IPv6 first-hop security](https://blog.ipspace.net/2012/10/ipv6-first-hop-security-ideal-openflow.html));
 -   **Programmable SPAN ports** -- use OpenFlow entries on a single switch to mirror selected traffic to SPAN port;
 -   **DoS traffic blackholing** -- use OpenFlow to block DoS traffic as close to the source as possible, using N-tuples for more selective traffic targeting than the more traditional RTBH approach.
 -   **Traffic redirection** -- use OpenFlow to redirect interesting subset of traffic to network services appliance (example: IDS).
 
-Using OpenFlow on one or more isolated devices is simple (no interaction with adjacent devices) and linearly scalable -- you can add more devices and controllers as needed because there's no [tight coupling anywhere in the system](http://blog.ipspace.net/2013/09/openflow-fabric-controllers-are-light.html).
+Using OpenFlow on one or more isolated devices is simple (no interaction with adjacent devices) and linearly scalable -- you can add more devices and controllers as needed because there's no [tight coupling anywhere in the system](https://blog.ipspace.net/2013/09/openflow-fabric-controllers-are-light.html).
 
 ### Fabric OpenFlow Deployments
 
@@ -35,19 +35,19 @@ Most OpenFlow products tried to solve the OpenFlow fabric use case. In these sce
 
 Not surprisingly, developers of these products took different approaches based on their understanding of networking challenges and limitations of OpenFlow devices.
 
-**Bypass the fabric.** Some solutions (example: [VMware NSX](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive)) [bypass the complexities of fabric forwarding by establishing end-to-end something-over-IP tunnels](http://blog.ipspace.net/2013/08/nicira-nvp-control-plane.html), effectively reducing the fabric to a single hop.
+**Bypass the fabric.** Some solutions (example: [VMware NSX](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive)) [bypass the complexities of fabric forwarding by establishing end-to-end something-over-IP tunnels](https://blog.ipspace.net/2013/08/nicira-nvp-control-plane.html), effectively reducing the fabric to a single hop.
 
-**Path-based forwarding**. Install end-to-end path forwarding entries into the fabric and assign user traffic to paths at the edge nodes (aka [Edge and Core OpenFlow](http://blog.ipspace.net/2013/01/edge-and-core-openflow-and-why-mpls-is.html)). Bonus points if you're smart enough to pre-compute and install backup paths.
+**Path-based forwarding**. Install end-to-end path forwarding entries into the fabric and assign user traffic to paths at the edge nodes (aka [Edge and Core OpenFlow](https://blog.ipspace.net/2013/01/edge-and-core-openflow-and-why-mpls-is.html)). Bonus points if you're smart enough to pre-compute and install backup paths.
 
 {{<note>}}If this looks like a description of MPLS LSPs, FECs and FRR, you're spot on. There are only so many ways you can solve a problem in a scalable way.{{</note>}}
 
 The dirty details of path-based forwarding vary based on the hardware capabilities of the switches you use and your programming preferences. Using MPLS or PBB would be the cleanest option -- those packet formats are well understood by network troubleshooting tools, so an unlucky engineer trying to fix a problem in an OpenFlow-based fabric would have a fighting chance.
 
-Unfortunately I haven't seen a data center switch that would implement OpenFlow support for PBB or MPLS. OpenFlow controller developers were trying to bypass those problems with creative uses of packet headers ([VLAN or MAC rewrite](http://blog.ipspace.net/2012/02/virtual-circuits-in-openflow-10-world.html) comes to mind), making a troubleshooters job much more interesting.
+Unfortunately I haven't seen a data center switch that would implement OpenFlow support for PBB or MPLS. OpenFlow controller developers were trying to bypass those problems with creative uses of packet headers ([VLAN or MAC rewrite](https://blog.ipspace.net/2012/02/virtual-circuits-in-openflow-10-world.html) comes to mind), making a troubleshooters job much more interesting.
 
-**Hop-by-hop forwarding**. Install flow-matching N-tuples in every switch along the path. Results in an architecture that works great in PowerPoint and lab tests, but breaks down in anything remotely similar to a production network due to [scalability problems](http://highscalability.com/blog/2012/6/4/openflowsdn-is-not-a-silver-bullet-for-network-scalability.html), primarily [FIB update challenges](http://blog.ipspace.net/2012/01/fib-update-challenges-in-openflow.html).
+**Hop-by-hop forwarding**. Install flow-matching N-tuples in every switch along the path. Results in an architecture that works great in PowerPoint and lab tests, but breaks down in anything remotely similar to a production network due to [scalability problems](http://highscalability.com/blog/2012/6/4/openflowsdn-is-not-a-silver-bullet-for-network-scalability.html), primarily [FIB update challenges](https://blog.ipspace.net/2012/01/fib-update-challenges-in-openflow.html).
 
-If an OpenFlow controller using hop-by-hop forwarding paradigm implements proactive flow installation (install N-tuples based on configuration and topology), it just might work in small deployments. If it uses [reactive flow installation](http://networkstatic.net/openflow-proactive-vs-reactive-flows/) ([punts new flows to the controller](http://blog.ipspace.net/2013/03/controller-based-packet-forwarding-in.html), and installs [microflow entries on every hop for each new flow](http://blog.ipspace.net/2012/08/openstackquantum-sdn-based-virtual.html)), it deserves a nomination for Darwin Award.
+If an OpenFlow controller using hop-by-hop forwarding paradigm implements proactive flow installation (install N-tuples based on configuration and topology), it just might work in small deployments. If it uses [reactive flow installation](http://networkstatic.net/openflow-proactive-vs-reactive-flows/) ([punts new flows to the controller](https://blog.ipspace.net/2013/03/controller-based-packet-forwarding-in.html), and installs [microflow entries on every hop for each new flow](http://blog.ipspace.net/2012/08/openstackquantum-sdn-based-virtual.html)), it deserves a nomination for Darwin Award.
 
 ### Why does it matter?
 

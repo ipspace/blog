@@ -18,7 +18,7 @@ After heavy snows on Thursday we got a hefty dose of sleet on Friday. The trees 
 
 ![](/2014/02/s320-IceAge.png)
 
-**Lesson#1:** Things that look great might actually do more harm than good. Technologies that [look great in PowerPoint](http://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html) might bring down your network.
+**Lesson#1:** Things that look great might actually do more harm than good. Technologies that [look great in PowerPoint](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html) might bring down your network.
 
 ### The First Steps to Recovery
 
@@ -26,7 +26,7 @@ We live in a small village in Slovenian hills. Heavy snows are not unusual, and 
 
 Being in the middle of a winter storm, I was most worried about us staying warm. Time to fire up our ceramic wood oven (a slightly less ancient version of [this thingy](https://sl.wikipedia.org/wiki/Slika:Pocarija_kru%C5%A1na_pe%C4%8D.jpg)). Half an hour later the fire was happily burning.
 
-**Lesson#2:** Simple technologies work best. Find the simplest possible technology that will [meet your recovery time objectives](http://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html) and stick with it.
+**Lesson#2:** Simple technologies work best. Find the simplest possible technology that will [meet your recovery time objectives](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html) and stick with it.
 
 **Lesson#3:** Go for easy wins that solve the most pressing problems. Establish connectivity, get the critical services up and running. Take a deep breath, relax, and continue.
 

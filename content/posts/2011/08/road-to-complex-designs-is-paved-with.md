@@ -43,4 +43,4 @@ There are numerous changes one could make to simplify this design, for example:
 
 Last but definitely not least, **remove OSPF from DMZ**, as all the reasons for using it are gone.
 
-Anything else? Please write a comment! And while speaking of misapplied recipes, [*Knowledge or recipes*](http://blog.ipspace.net/2008/09/knowledge-or-recipes.html) blog post comes to mind.
+Anything else? Please write a comment! And while speaking of misapplied recipes, [*Knowledge or recipes*](https://blog.ipspace.net/2008/09/knowledge-or-recipes.html) blog post comes to mind.

@@ -15,7 +15,7 @@ Using EBGP instead of an IGP (OSPF or IS-IS) in leaf-and-spine data center fabri
 
 The usual argument defending this design choice is "*BGP scales better than OSPF or IS-IS*". That's usually true (see also: Internet), and so far, EBGP is the only reasonable choice in very large leaf-and-spine fabrics... but does it really scale better than a link-state IGP in smaller fabrics?
 <!--more-->
-There are operators running single-level IS-IS networks with thousands of devices, and yet most everyone claims you [cannot use OSPF or IS-IS in a leaf-and-spine fabric with more than a few hundred nodes](http://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html) due to [inordinate amount of flooding traffic caused by the fabric topology](http://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html).
+There are operators running single-level IS-IS networks with thousands of devices, and yet most everyone claims you [cannot use OSPF or IS-IS in a leaf-and-spine fabric with more than a few hundred nodes](https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html) due to [inordinate amount of flooding traffic caused by the fabric topology](http://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html).
 
 This is the moment when a skeptic should say "*are you sure BGP works any better?*" and the answer is (not surprisingly) "*not exactly*", at least if you get your design wrong.
 

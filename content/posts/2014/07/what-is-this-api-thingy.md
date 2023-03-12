@@ -22,7 +22,7 @@ It seems Cisco's OnePK follows this path -- it defines a large number of functio
 
 Client-server APIs usually use a request-response protocol, where the client encodes its function call into whatever protocol message, sends the message to the server, which executes the call, and returns the results of the function back to the client.
 
-One of the most popular client-server API methods is [REST](http://blog.ipspace.net/2012/08/why-is-restful-api-better-than-snmp.html), which encodes the parameters or function results in JSON (think: JavaScript) or XML format (both of them are pretty easy to parse in a computer program) and uses HTTP(S) as the transport protocol to exchange data between the client and the server.
+One of the most popular client-server API methods is [REST](https://blog.ipspace.net/2012/08/why-is-restful-api-better-than-snmp.html), which encodes the parameters or function results in JSON (think: JavaScript) or XML format (both of them are pretty easy to parse in a computer program) and uses HTTP(S) as the transport protocol to exchange data between the client and the server.
 
 {{<note>}}One of the beauties of the REST API is that you can use Unix/OSX command line utilities like *curl* to execute function calls on a remote device.{{</note>}}
 
@@ -30,8 +30,8 @@ For example, you can use REST API to configure an Arista switch. Instead of logg
 
 {{<figure src="/2014/07/s1600-AristaEAPI.png" caption="An example of interactive eAPI browsing (source: Arista Networks)">}}
 
-{{<note info>}}Junos had similar functionality for years, but it's not as easily accessible as REST API. They use [NETCONF](http://blog.ipspace.net/2012/06/netconf-expect-on-steroids.html) and XML, and neither one of them is exactly a mainstream programming technology these days.{{</note>}}
+{{<note info>}}Junos had similar functionality for years, but it's not as easily accessible as REST API. They use [NETCONF](https://blog.ipspace.net/2012/06/netconf-expect-on-steroids.html) and XML, and neither one of them is exactly a mainstream programming technology these days.{{</note>}}
 
-Obviously there's no need for the [API to mirror the CLI functionality](http://blog.ipspace.net/2014/02/cli-or-api-wait-do-you-really-have-to.html). The features available through the API could be totally different from the CLI commands, or a small subset of them. The API could also work on the control plane, or allow you to plug your code straight into the data plane (like F5 iRules).
+Obviously there's no need for the [API to mirror the CLI functionality](https://blog.ipspace.net/2014/02/cli-or-api-wait-do-you-really-have-to.html). The features available through the API could be totally different from the CLI commands, or a small subset of them. The API could also work on the control plane, or allow you to plug your code straight into the data plane (like F5 iRules).
 
 {{<note info>}}For a more in-depth discussion of APIs, read [an excellent intro by The API Evangelist](http://apievangelist.com/index.html).{{</note>}}

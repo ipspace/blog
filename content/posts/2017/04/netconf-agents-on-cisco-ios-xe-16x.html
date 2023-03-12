@@ -5,12 +5,12 @@ date: "2017-04-11T09:22:00.000+02:00"
 tags: [ NETCONF ]
 ---
 
-<p>Evgeny made an interesting observation while testing the NETCONF client on IOS XE 16.x (see also <a href="http://blog.ipspace.net/2017/03/netconf-transactional-consistency-on.html?showComment=1489131647516#c5986873470098400846">this comment on my blog</a>):</p>
+<p>Evgeny made an interesting observation while testing the NETCONF client on IOS XE 16.x (see also <a href="https://blog.ipspace.net/2017/03/netconf-transactional-consistency-on.html?showComment=1489131647516#c5986873470098400846">this comment on my blog</a>):</p>
 <blockquote class="cite">The most interesting part: for unknown reason IOS-XE gives different answers about capabilities on ports 830 and 22.</blockquote>
-<p>Einar <a href="http://blog.ipspace.net/2017/03/netconf-transactional-consistency-on.html?showComment=1489150887319#c9027214728272755615">quickly explained the mysterious behavior</a>:<!--more--></p>
+<p>Einar <a href="https://blog.ipspace.net/2017/03/netconf-transactional-consistency-on.html?showComment=1489150887319#c9027214728272755615">quickly explained the mysterious behavior</a>:<!--more--></p>
 <blockquote class="cite">Port 22 hosts the legacy NETCONF agent on IOS-XE, which only supports NETCONF 1.0 with a Cisco-proprietary payload (same as all other vendors). Port 830, when <strong>netconf-yang</strong> is enabled, hosts the model-based agent.</blockquote>
 <p>Let me rephrase: Cisco IOS XE has not one but two NETCONF agents. One of them (accessible on port 22 and enabled with <strong>netconf ssh</strong>) is the old **** that we all love to hate, the other one (accessible on port 830 and enabled with <strong>netconf-yang</strong>) is really ConfD running on IOS XE.</p>
-<p class="info">As for “same as other vendors” part – Juniper didn’t have to include a second NETCONF agent in Junos to support IETF and OpenConfig data models. More details in <a href="http://blog.ipspace.net/2017/02/openconfig-from-basics-to.html">this podcast</a>.</p>
+<p class="info">As for “same as other vendors” part – Juniper didn’t have to include a second NETCONF agent in Junos to support IETF and OpenConfig data models. More details in <a href="https://blog.ipspace.net/2017/02/openconfig-from-basics-to.html">this podcast</a>.</p>
 <p>Here are a few more fun facts: </p>
 <ul class="ListParagraph"><li>You configure the old agent with <strong>netconf </strong>configuration commands and the new agent with <strong>netconf-yang</strong><strong> </strong>configuration commands;</li>
 <li>The old agent is debugged with <strong>debug netconf </strong><strong><em>whatever</em></strong><strong> </strong>and I found absolutely no way to debug the new agent;</li>

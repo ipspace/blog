@@ -15,14 +15,14 @@ Another week, another [ExpertExpress](http://www.ipspace.net/ExpertExpress) sess
 I gave the customer engineers my usual recommendations:
 <!--more-->
 -   Try to get rid of stretched VLANs, or at least minimize the number of VLANs that span both data centers;
--   Try to identify the [real business needs](http://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html) and solve them with the right tool(s) for the job (example: VMware SRM instead of [stretched HA cluster](http://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html));
+-   Try to identify the [real business needs](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html) and solve them with the right tool(s) for the job (example: VMware SRM instead of [stretched HA cluster](http://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html));
 -   Split applications (and subnets) across both data centers so that every application (and subnet) is active only in one data center, having the second one as a backup;
 -   Consider the storage failover: if the storage failover is not automatic, it doesn't make sense to even consider a stretched HA cluster (the proof is left as an exercise for the reader ;)
 -   Sometimes good enough is good enough -- you can create VLANs and subnets in the alternate location with automation scripts before starting the data center recovery.
 
 They understood all the arguments and agreed with most of them, but it was obvious every single one of them was going to be an uphill battle for them.
 
-In the end, we were left with the question of the [stretched firewall cluster](http://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html). As we already agreed to try to keep (active parts of the) subnets in a single data center, it would be easy to split the cluster in two independent firewalls, each one of them serving a subset of IP subnets, but then they'd lose the redundancy features.
+In the end, we were left with the question of the [stretched firewall cluster](https://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html). As we already agreed to try to keep (active parts of the) subnets in a single data center, it would be easy to split the cluster in two independent firewalls, each one of them serving a subset of IP subnets, but then they'd lose the redundancy features.
 
 The obvious solution was to deploy two independent firewall clusters, but they didn't have the budget to buy additional boxes, so the only advice I could give them was ***you have to decide how badly you want to fail (and when)***:
 

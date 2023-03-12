@@ -12,12 +12,12 @@ Continuing the IPv6 address selection discussion we have a few days ago, Luka Ma
 
 Sounds great, but as always, the reality tends to be a bit harsher.
 <!--more-->
-The crucial question is: can you turn off [*autoconfiguration* flag](http://blog.ipspace.net/2012/11/ipv6-router-advertisements-deep-dive.html) in individual prefixes advertised in RA messages? As always, the answer is *it depends*.
+The crucial question is: can you turn off [*autoconfiguration* flag](https://blog.ipspace.net/2012/11/ipv6-router-advertisements-deep-dive.html) in individual prefixes advertised in RA messages? As always, the answer is *it depends*.
 
 I checked latest configuration guides from Cisco (Nexus 9300), Juniper (QFX5200, Junos release 15.1), Arista (EOS 14.5) and HP (5900 switches). All these switches allow you to configure flags on every single prefix advertised in router advertisement... apart from QFX5200 where it seems like you can't do a thing (even though [RA twiddling was available before Junos version 7.4](http://www.juniper.net/techpubs/en_US/junos15.1/topics/reference/configuration-statement/autonomous-edit-protocols-router-advertisement.html) on MX-series routers).
 
 **Moral of the story**: do a thorough check of how well your vendor supports obscure IPv6 features that might become crucial in your IPv6 deployment.
 
-As always, there's an alternative: [disable RA processing on Windows servers](http://www.excaliburtech.net/archives/192), and use static default routing and [IPv6 VRRP](http://blog.ipspace.net/2012/12/do-we-need-fhrp-hsrp-or-vrrp-for-ipv6.html). Welcome back to the 90s.
+As always, there's an alternative: [disable RA processing on Windows servers](http://www.excaliburtech.net/archives/192), and use static default routing and [IPv6 VRRP](https://blog.ipspace.net/2012/12/do-we-need-fhrp-hsrp-or-vrrp-for-ipv6.html). Welcome back to the 90s.
 
 [![](/2016/01/s320-3977613.jpg)](/2016/01/s1600-3977613.jpg)

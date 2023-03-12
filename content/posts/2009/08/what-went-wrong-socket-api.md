@@ -47,7 +47,7 @@ Address: 66.196.121.40
 The DNS entry for *scs.msg.yahoo.com* looks awesome, but doesn't help a bit unless the client application uses that information. In reality, most applications:
 
 * Perform the *getaddrinfo()* call which returns the list of addresses (regardless of whether they are reachable or not) 
-* Use the first address (or all of them in sequence) in the *connect()* call ([happy eyeballs](http://blog.ipspace.net/2013/03/happy-eyeballs-happiness-defined-by.html) implementations are an obvious exception).
+* Use the first address (or all of them in sequence) in the *connect()* call ([happy eyeballs](https://blog.ipspace.net/2013/03/happy-eyeballs-happiness-defined-by.html) implementations are an obvious exception).
 
 If the DNS lookup returned a temporarily unreachable IP address you're doomed.
 

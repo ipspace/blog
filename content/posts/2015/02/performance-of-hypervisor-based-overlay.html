@@ -5,11 +5,11 @@ date: "2015-02-19T11:10:00.000+01:00"
 tags: [ switching,virtualization ]
 ---
 
-<p>Years ago I managed to saturate a 10GE uplink on a vSphere server I tested with a single Linux VM using less than one vCPU. On the other hand, <a href="http://blog.ipspace.net/2014/11/open-vswitch-performance-revisited.html">squeezing 1 Gbps out of Open vSwitch using GRE encapsulation was called <em>ludicrous speed</em></a><em> </em>not so long ago. Implementing overlay virtual networking in the hypervisor obviously carries a huge performance penalty, right? Not so fast…<!--more--></p>
+<p>Years ago I managed to saturate a 10GE uplink on a vSphere server I tested with a single Linux VM using less than one vCPU. On the other hand, <a href="https://blog.ipspace.net/2014/11/open-vswitch-performance-revisited.html">squeezing 1 Gbps out of Open vSwitch using GRE encapsulation was called <em>ludicrous speed</em></a><em> </em>not so long ago. Implementing overlay virtual networking in the hypervisor obviously carries a huge performance penalty, right? Not so fast…<!--more--></p>
 <h4>TL&amp;DR Summary</h4><p>Just because the release of your preferred virtual switch that you chose for your deployment doesn’t work as fast as you want it to work doesn’t mean that linerate overlay virtual networking cannot be done in hypervisor kernels (despite <a href="https://vimeo.com/119471817">claims to the contrary</a>).</p>
 <h4>Data points</h4><p>It seems hypervisor-based virtual networking sucks:</p>
 <ul class="ListParagraph"><li>There have been multiple reports of out-of-box OVS pushing around 1Gbps with GRE encapsulation (use your Google-Fu to find them);</li>
-<li>Nicira decided to use <a href="http://blog.ipspace.net/2012/03/do-we-really-need-stateless-transport.html">STT encapsulation</a> to improve performance for I/O intensive workloads;</li>
+<li>Nicira decided to use <a href="https://blog.ipspace.net/2012/03/do-we-really-need-stateless-transport.html">STT encapsulation</a> to improve performance for I/O intensive workloads;</li>
 </ul>
 <p>On the other hand, hypervisor-based virtual networking might rock:</p>
 <ul class="ListParagraph"><li>VMware measured only <a href="http://www.vmware.com/files/pdf/techpaper/VMware-vSphere-VXLAN-Perf.pdf">small performance loss</a> with VXLAN encapsulation in vSphere 5.1;</li>

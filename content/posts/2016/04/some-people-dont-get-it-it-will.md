@@ -10,11 +10,11 @@ tags:
 title: 'Some People Don’t Get It: It Will Eventually Fail'
 url: /2016/04/some-people-dont-get-it-it-will.html
 ---
-Mark Baker left [this comment](http://blog.ipspace.net/2015/11/stretched-firewalls-across-layer-3-dci.html?showComment=1458854318103#c1267210791129657664) on my [*Stretched Firewalls across Layer-3 DCI*](http://blog.ipspace.net/2015/11/stretched-firewalls-across-layer-3-dci.html) blog post:
+Mark Baker left [this comment](https://blog.ipspace.net/2015/11/stretched-firewalls-across-layer-3-dci.html?showComment=1458854318103#c1267210791129657664) on my [*Stretched Firewalls across Layer-3 DCI*](http://blog.ipspace.net/2015/11/stretched-firewalls-across-layer-3-dci.html) blog post:
 
 > Strange how inter-DC clustering failure is considered a certainty in this blog.
 
-Call it experience or exposure to a larger dataset. Anything you build will [eventually fail](http://blog.ipspace.net/2012/10/if-something-can-fail-it-will.html); just because you haven't experienced the failure yet doesn't mean that the system will never fail but only that you were lucky so far.
+Call it experience or exposure to a larger dataset. Anything you build will [eventually fail](https://blog.ipspace.net/2012/10/if-something-can-fail-it-will.html); just because you haven't experienced the failure yet doesn't mean that the system will never fail but only that you were lucky so far.
 <!--more-->
 Let me use a trivial example from real world to illustrate the point. When I was a kid, we didn't use seat belts, because everyone knew that a traffic accident couldn't possibly happen to him (or his dad/mom). When I was a teenager, I was fortunate enough to use a seat belt (even though it wasn't common), or I wouldn't be writing this blog post.
 

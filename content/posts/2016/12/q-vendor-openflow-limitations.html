@@ -7,7 +7,7 @@ title: 'Q&A: Vendor OpenFlow Limitations'
 url: /2016/12/q-vendor-openflow-limitations.html
 ---
 
-<p>I <a href="http://blog.ipspace.net/2016/12/response-on-death-of-openflow.html">rarely</a> get OpenFlow questions these days; here’s one I got not so long ago:</p>
+<p>I <a href="https://blog.ipspace.net/2016/12/response-on-death-of-openflow.html">rarely</a> get OpenFlow questions these days; here’s one I got not so long ago:</p>
 <blockquote class="cite">I've just spent the last 2 days of my life consuming the ONF 1.3.3 white paper in addition to the $vendor SDN guide to try and reconcile what features it does or does not support and have come away disappointed...</blockquote>
 <p>You’re not the only one ;)<!--more--></p>
 <blockquote class="cite">I was hoping I would have the ability to modify more L3 header fields. As it is, $vendor OpenFlow 1.3 implementation only allows me to modify the source and destination MAC addresses and VLAN tags as well as set the DSCP markings.</blockquote>
@@ -16,7 +16,7 @@ url: /2016/12/q-vendor-openflow-limitations.html
 <p><strong>Software limitations</strong> - some OpenFlow implementations from major vendors are plain ridiculous. Juniper used to be the worst of them all, and a few others are not far behind. For more details of what individual vendors support, watch the “OpenFlow Support” vendor-specific videos in my <a href="http://my.ipspace.net/bin/list?id=DCFabric">Data Center Fabrics</a> webinar. </p>
 <p class="note">Keep in mind that I update those videos once or twice a year, and although vendor OpenFlow support is moving at glacial speeds, do check the release notes as well.</p>
 <blockquote class="cite">I was really hoping for the ability to also modify the source and destination IP addresses as well (want to use $vendor hardware as high-speed NAT tool using OpenFlow). I have scoured the internet and can only find one vendor that makes a switch that allows me to at least modify the destination IP address. Is there literally no other switch that your aware of that can do this?</blockquote>
-<p>If you need a NAT tool at gigabit speeds, you’d be far better off using x86-based solution, for example something riding on Snabb Switch (Igalia made <a href="http://blog.ipspace.net/2016/03/x86-based-switching-at-ludicrous-speed.html">4-over-6 tunneling work at 20 Gbps <em>per core</em></a>).</p>
+<p>If you need a NAT tool at gigabit speeds, you’d be far better off using x86-based solution, for example something riding on Snabb Switch (Igalia made <a href="https://blog.ipspace.net/2016/03/x86-based-switching-at-ludicrous-speed.html">4-over-6 tunneling work at 20 Gbps <em>per core</em></a>).</p>
 <p>For terabit speeds you do need hardware solution, but there are only a few chipsets on the market that can do that, and their NAT table is probably tied to TCAM and thus pretty small. There are a few exceptions that use NPUs or yet-to-be-unveiled hardware riding on unicorn dust, but you might not like the price tag.</p>
 <p>Finally, you might have to reformulate the problem (here’s an example of how you can do <a href="https://www.fastly.com/blog/building-and-scaling-fastly-network-part-2-balancing-requests">load balancing at scale</a>). People doing load balancing with OpenFlow (or similar technologies) use anycast IP addresses on the servers with direct server return, like what Coho Data is doing for iSCSI/NFS traffic (for more details, watch the Network Services videos in my <a href="http://my.ipspace.net/bin/list?id=SDNUseCases">SDN Use Cases</a> webinar).</p>
 

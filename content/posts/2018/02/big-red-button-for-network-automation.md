@@ -18,14 +18,14 @@ Obviously once you figure out what the problem was and what workaround you could
 
 There are two ways to do it:
 
--   You have a mechanism to [automate exceptions](http://blog.ipspace.net/2016/07/automate-exceptions.html) -- per tenant, interface, box, site, network... ideally all of the above;
+-   You have a mechanism to [automate exceptions](https://blog.ipspace.net/2016/07/automate-exceptions.html) -- per tenant, interface, box, site, network... ideally all of the above;
 -   You have a big red button that stops the automation and keeps the network running in its current state until the programmers adjust their code or templates to deal with the new reality.
 
 It doesn't matter which approach you take -- as long as you don't count on [crying "*Wilma!!!*"](https://youtu.be/GJu8RreAGnM?t=33s) after locking yourself out of your network.
 
 ### Want to Know More?
 
-We'll have fun discussing these topics (and things like [*intent-based whatever*](http://blog.ipspace.net/2017/09/intent-based-hype.html)) in [Building Network Automation Solutions online course](http://www.ipspace.net/Building_Network_Automation_Solutions).
+We'll have fun discussing these topics (and things like [*intent-based whatever*](https://blog.ipspace.net/2017/09/intent-based-hype.html)) in [Building Network Automation Solutions online course](http://www.ipspace.net/Building_Network_Automation_Solutions).
 
 ### Speaking of Red Buttons
 
