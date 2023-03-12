@@ -1,21 +1,32 @@
-{{ $pages := where $.Site.Pages "Layout" "custom" }}
-<div class="widget PopularPosts">
+{{ $pages := where (where $.Site.Pages "Layout" "custom") "Params.sidebar_box" "!=" "skip" }}
+<div class="widget BlogArchive">
   <h3 class="sidebar__title">Featured</h3>
   <ul>
-  {{ range (where $pages "Params.sidebar_box" "==" nil).ByTitle }}
-    <li><a href='{{ .Permalink }}'>
-      {{ with .Params.page_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}
-    </a></li>
+  {{ range (where $pages "Params.sidebar_box" "!=" "nil").GroupByParam "sidebar_box" }}
+    <li>
+      <a class="open-dropdown" href='#'>
+        {{ with index $.Site.Data.sidebar_lookup .Key }}{{ . }}{{ else }}{{ .Key }}{{ end }}</a>
+      <ul class="dropdown">
+    {{ range .Pages.ByTitle }}
+        <li><a href='{{ .Permalink }}'>
+          {{ with .Params.page_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}
+        </a></li>
+    {{ end }}
+      </ul>
+    <li>
   {{ end }}
-  </ul>
-</div>
-<div class="widget PopularPosts">
-  <h3 class="sidebar__title">Software-Defined Networking</h3>
-  <ul>
-  {{ range (where $pages "Params.sidebar_box" "==" "SDN") }}
-    <li><a href='{{ .Permalink }}'>
-      {{ with .Params.page_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}
-    </a></li>
+{{ $other := (where $pages "Params.sidebar_box" "==" nil) }}
+{{ if (len $other) }}
+    <li>
+      <a class="open-dropdown" href='#'>Other Resources</a>
+      <ul class="dropdown">
+  {{ range $other.ByTitle }}
+        <li><a href='{{ .Permalink }}'>
+          {{ with .Params.page_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}
+        </a></li>
   {{ end }}
+      </ul>
+    </li>
+{{ end }}
   </ul>
 </div>

@@ -5,6 +5,7 @@ minimal_sidebar: true
 tags: [ high availability ]
 high-availability_tag: infra
 date: 2023-03-10 07:47:00
+sidebar_box: HA
 ---
 {{<quote source="ChatGPT explaining multihoming">}}Multihoming is the practice of connecting a computer or network to multiple Internet Service Providers (ISPs) at the same time. This allows the network to have multiple paths to the internet, which can improve network reliability, speed, and redundancy.{{</quote>}}
 

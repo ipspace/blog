@@ -2,6 +2,7 @@
 title: Network Infrastructure as Code
 layout: custom
 minimal_sidebar: true
+sidebar_box: NetOps
 ---
 {{<quote source="Wikipedia" link="https://en.wikipedia.org/wiki/Infrastructure_as_code">}}Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.{{</quote>}}
 

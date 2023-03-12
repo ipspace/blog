@@ -2,6 +2,7 @@
 title: Single Source of Truth (SSoT) in Network Automation
 layout: custom
 minimal_sidebar: true
+sidebar_box: NetOps
 ---
 {{<quote source="ChatGPT explaining SSoT">}}Single source of truth (SSOT) in network automation refers to a centralized and authoritative data repository that holds all the information required for network management and operation. It ensures that every network device or system uses the same accurate and up-to-date information to perform its tasks, eliminating inconsistencies and errors caused by outdated or conflicting data. SSOT enables efficient and reliable network automation by providing a unified view of the network and allowing for quick and informed decision-making.{{</quote>}}
 

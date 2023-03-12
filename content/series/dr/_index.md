@@ -2,6 +2,7 @@
 title: Disaster Recovery
 layout: custom
 minimal_sidebar: true
+sidebar_box: HA
 ---
 {{<quote source="ChatGPT explaining disaster recovery in simple terms">}}Disaster recovery is a process of restoring data and systems after a disruptive event such as a natural disaster, cyber attack, or power outage. It involves creating a plan to minimize the impact of the disaster, recovering lost data and resources, and restoring normal operations as quickly as possible. The goal of disaster recovery is to ensure business continuity, protect critical data, and minimize financial losses in the event of a disaster.{{</quote>}}
 

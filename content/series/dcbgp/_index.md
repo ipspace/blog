@@ -2,6 +2,7 @@
 title: BGP in Data Center Fabrics
 layout: custom
 minimal_sidebar: true
+sidebar_box: rb
 ---
 You must use BGP as the endpoint reachability routing protocol in your data center fabric if you decide to run VXLAN with EVPN control plane... but should you also run it as the transport (underlay) routing protocol instead of OSPF or IS-IS? The resources collected on this page might help you make that decision.
 
