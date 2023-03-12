@@ -2,6 +2,7 @@
 title: Integrated Routing and Bridging (IRB) Designs
 layout: custom
 minimal_sidebar: true
+sidebar_box: rb
 design:
 - title: Centralized Routing
 - title: Routing on Ingress

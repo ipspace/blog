@@ -2,6 +2,7 @@
 title: High Availability Service Clusters
 layout: custom
 minimal_sidebar: true
+sidebar_box: HA
 ---
 Clusters of servers offering the same service in active/standby or active/active setup are a common high availability solution. They work very well as long as:
 

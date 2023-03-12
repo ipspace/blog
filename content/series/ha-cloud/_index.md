@@ -2,6 +2,7 @@
 title: High Availability in Private and Public Clouds
 layout: custom
 minimal_sidebar: true
+sidebar_box: HA
 ---
 Migrating your applications into a private or public cloud won't solve it's high availability challenges. Public cloud infrastructure is usually designed for application developers that know what they're doing; to make the most out of a public cloud deployment your applications have to be well-designed. For more details read:
 

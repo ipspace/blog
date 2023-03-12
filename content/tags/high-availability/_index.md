@@ -3,6 +3,7 @@ title: high availability
 page_title: High-Availability Solutions
 minimal_sidebar: true
 layout: custom
+sidebar_box: HA
 ---
 {{<quote source="ChatGPT explaining application high availability to a high school kid">}}
 High availability refers to the ability of a system or application to keep running even if there is a problem or failure. This is important because if a system or application goes down, it can cause problems for the people who rely on it. To achieve high availability, multiple copies of the system or application are set up in different locations so that if one fails, the others can take over and keep things running smoothly. This helps ensure that the system or application is always available when it is needed.

@@ -3,6 +3,7 @@ title: SD-WAN
 page_title: Software-Defined WAN (SD-WAN)
 minimal_sidebar: true
 layout: custom
+sidebar_box: SDN
 ---
 Software-Defined WAN (SD-WAN) is the second "software-defined" marketing attempt (after the original SDN) to dress a conglomerate of old technologies into shiny new clothes. Even Wikipedia article promotes some of the usual software-defined hype, quoting Network World claim that:
 

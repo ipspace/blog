@@ -2,6 +2,7 @@
 title: Anycast Resources
 layout: custom
 minimal_sidebar: true
+sidebar_box: rb
 ---
 Anycast is a design in which a single destination IP address is shared by devices in multiple locations. It can be used to implement large-scale UDP services (example: DNS) or to build multi-site high-availability solutions without DNS-based load balancing.
 
