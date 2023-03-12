@@ -1,11 +1,14 @@
 ---
+cli_tag: api-challenge
 date: 2019-04-16 08:38:00+02:00
+niac_tag: rest
+series:
+- niac
+- cli
 tags:
 - automation
 title: REST API Is Not Transactional
 url: /2019/04/rest-api-is-not-transactional.html
-series: [ niac ]
-niac_tag: rest
 ---
 *This blog post was initially sent to subscribers of my SDN and Network Automation mailing list. *[*Subscribe here*](http://www.ipspace.net/Subscribe/Five_SDN_Tips)*.*
 

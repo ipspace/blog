@@ -1,7 +1,12 @@
 ---
-title: "Network Automation and Hammer of Thor"
-date: 2020-04-27 06:01:00
-tags: [ automation ]
+cli_tag: fail
+date: 2020-04-27 06:01:00+00:00
+series:
+- cli
+series_weight: 900
+tags:
+- automation
+title: Network Automation and Hammer of Thor
 ---
 Imagine that you just stumbled upon the hammer Thor carelessly dropped, and you’re so proud of your new tool that everything looks like a nail even though it might be a lightbulb or an orange.
 
@@ -27,7 +32,7 @@ Some of my favorite weird bugs:
 * Catalyst 7600 dropping into software switching (and losing 95% of its stated performance);
 * Catalyst 7600 randomly copying incoming packets into wrong VRF.
 
-### Back to automation
+### Back to Automation
 
 While you can automate tons of troubleshooting tasks (and you should), the only way to solve unexpected hard problems is still to:
 

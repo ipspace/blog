@@ -1,9 +1,11 @@
 ---
+cli_tag: real
 date: 2015-01-28 07:27:00+01:00
 ha-cluster_tag: sdn
 high-availability_tag: ignore
 series:
 - ha-cluster
+- cli
 tags:
 - SDN
 - data center
