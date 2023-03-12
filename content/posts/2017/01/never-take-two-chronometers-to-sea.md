@@ -12,7 +12,7 @@ tags:
 title: Never Take Two Chronometers to Sea
 url: /2017/01/never-take-two-chronometers-to-sea.html
 ---
-One of the quotes I found in the [Mythical Man-Month](http://blog.ipspace.net/2017/01/worth-reading-mythical-man-month.html) came from the pre-GPS days: "*never go to sea with two chronometers, take one or three*", and it's amazing the networking industry (and a few others) never got the message.
+One of the quotes I found in the [Mythical Man-Month](https://blog.ipspace.net/2017/01/worth-reading-mythical-man-month.html) came from the pre-GPS days: "*never go to sea with two chronometers, take one or three*", and it's amazing the networking industry (and a few others) never got the message.
 <!--more-->
 ### Wait, What?
 
@@ -40,4 +40,4 @@ There's a good reason the server clustering solutions with two nodes use a disk 
 
 ### Meh, You're Just Spreading FUD
 
-Sure. I've seen enough real-life failures to [believe in simpler solutions](http://blog.ipspace.net/2016/11/reliability-of-clustered-solutions.html), but of course you shouldn't trust anything you read in a blog post. For a long list of split-brain failures from production environments, read [this ACM queue article](http://queue.acm.org/detail.cfm?id=2655736). Enjoy!
+Sure. I've seen enough real-life failures to [believe in simpler solutions](https://blog.ipspace.net/2016/11/reliability-of-clustered-solutions.html), but of course you shouldn't trust anything you read in a blog post. For a long list of split-brain failures from production environments, read [this ACM queue article](http://queue.acm.org/detail.cfm?id=2655736). Enjoy!

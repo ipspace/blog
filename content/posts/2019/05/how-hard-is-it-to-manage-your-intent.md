@@ -24,8 +24,8 @@ Note: the only exception I know of is Junos that treats device configuration as 
 
 Now imagine you're evaluating an abstracted intent-based system with a beautiful GUI and a REST API. Don't forget to ask these questions (and don't back down until you get the answers):
 
--   Can you easily [replace your intent when you want to](http://blog.ipspace.net/2018/04/dont-get-obsessed-with-rest-api.html) or do you have to [work through GUI (or API calls)](http://blog.ipspace.net/2018/05/layers-of-single-pane-of-glass.html) to massage the current state of the system into what you want it to be?
--   Can you see all of your intent in a single place or do you have to [navigate through GUI screens and take notes of what's configured](http://blog.ipspace.net/2018/06/automation-win-document-cisco-aci.html) (or execute a dozen of API calls to get it)?
+-   Can you easily [replace your intent when you want to](https://blog.ipspace.net/2018/04/dont-get-obsessed-with-rest-api.html) or do you have to [work through GUI (or API calls)](http://blog.ipspace.net/2018/05/layers-of-single-pane-of-glass.html) to massage the current state of the system into what you want it to be?
+-   Can you see all of your intent in a single place or do you have to [navigate through GUI screens and take notes of what's configured](https://blog.ipspace.net/2018/06/automation-win-document-cisco-aci.html) (or execute a dozen of API calls to get it)?
 -   Can you track a history of changes to your intent?
 -   Can you track the changes to your intent with standard version-control tools like Git/GitLab/GitHub/... or do you have to use tools embedded into the system? Are there any such tools available in the system?
 -   How easy is it to automate changes to your intent (like implementing the same fix to all tenants configured in the system)?

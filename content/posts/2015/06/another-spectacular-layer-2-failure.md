@@ -26,7 +26,7 @@ You might wonder what the root cause for the outage was. Here's the relevant twe
 
 {{<figure src="/2015/06/s1600-285C27B7-B885-4FA3-BD46-A2DA4092C2E6.png">}}
 
-As I said many times before, it's not a question of *whether* a [large layer-2 fabric](http://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html) will crash, it's only the [question of *when* and *how badly*](http://blog.ipspace.net/2012/10/if-something-can-fail-it-will.html).
+As I said many times before, it's not a question of *whether* a [large layer-2 fabric](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html) will crash, it's only the [question of *when* and *how badly*](http://blog.ipspace.net/2012/10/if-something-can-fail-it-will.html).
 
 Also, keep in mind that there are a few significant differences between AMS-IX and clueless geniuses that tell you to build large layer-2 fabric (hopefully stretched across two data centers):
 
@@ -36,4 +36,4 @@ Also, keep in mind that there are a few significant differences between AMS-IX a
 
 ### Want Even More Horror Stories?
 
-[Jay Swan pointed me to a recent Cisco Live presentation](https://twitter.com/sanjuanswan/status/609341083403706369) (BRKDCT-3102), which documented several interesting layer-2 failures, including a split-brain cluster -- I was [telling people](http://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html) about [these scenarios](http://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html) for years, and it's so nice to have corroboration from a major vendor (not sure what the evangelists of layer-2 fabrics and DCI solutions working for that same vendor think about that presentation ;).
+[Jay Swan pointed me to a recent Cisco Live presentation](https://twitter.com/sanjuanswan/status/609341083403706369) (BRKDCT-3102), which documented several interesting layer-2 failures, including a split-brain cluster -- I was [telling people](https://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html) about [these scenarios](http://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html) for years, and it's so nice to have corroboration from a major vendor (not sure what the evangelists of layer-2 fabrics and DCI solutions working for that same vendor think about that presentation ;).

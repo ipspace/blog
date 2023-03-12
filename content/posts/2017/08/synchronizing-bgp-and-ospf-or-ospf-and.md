@@ -40,7 +40,7 @@ A few minutes later C1 recovers. IGP establishes adjacencies between C1 and its 
 
 In the meantime, E1 sees two equal-cost paths toward E2 and starts sending traffic toward external destinations to C1, which immediately drops it, resulting in a temporary traffic black hole until C1 receives all the BGP updates and installs BGP prefixes into its IP routing and forwarding tables.
 
-You'll experience the same problem any time you're trying to use functionality (IP forwarding) that relies on information supplied by two independent eventually-consistent systems (OSPF and BGP). [MPLS forwarding using LDP exhibits very similar behavior](http://blog.ipspace.net/2011/11/ldp-igp-synchronization-in-mpls.html); see also [this blog post](http://blog.ipspace.net/2008/02/use-slow-igp-startup-in-ldp-only-mpls.html).
+You'll experience the same problem any time you're trying to use functionality (IP forwarding) that relies on information supplied by two independent eventually-consistent systems (OSPF and BGP). [MPLS forwarding using LDP exhibits very similar behavior](https://blog.ipspace.net/2011/11/ldp-igp-synchronization-in-mpls.html); see also [this blog post](http://blog.ipspace.net/2008/02/use-slow-igp-startup-in-ldp-only-mpls.html).
 
 Rich's question: how can I fix that?
 

@@ -17,11 +17,11 @@ url: /2016/12/q-building-layer-2-data-center-fabric.html
 <p>And now for the elephant in the room: L2 fabrics.</p>
 <p>If you want to build a Cisco-based L2 fabric these days you have four design options (see also: <a href="https://xkcd.com/927/">standards</a>):</p>
 <ul class="ListParagraph"><li><strong>STP + MLAG (vPC)</strong>. When was the last time you checked your calendar?</li>
-<li><strong>FabricPath</strong>. While it’s elegant, it’s also clearly a <a href="http://blog.ipspace.net/2016/09/replacing-fabricpath-with-vxlan-evpn-or.html">dead-end technology</a>. Every data center switching vendor (apart from Avaya) is rushing to board the VXLAN+EVPN train. Brocade, Cisco and Juniper have shipping implementations. Arista is supposedly talking about one. TRILL and SPBM are dying (in the data center), as are proprietary L2 fabrics (it was about time). I wouldn’t invest in one of those in 2016</li>
+<li><strong>FabricPath</strong>. While it’s elegant, it’s also clearly a <a href="https://blog.ipspace.net/2016/09/replacing-fabricpath-with-vxlan-evpn-or.html">dead-end technology</a>. Every data center switching vendor (apart from Avaya) is rushing to board the VXLAN+EVPN train. Brocade, Cisco and Juniper have shipping implementations. Arista is supposedly talking about one. TRILL and SPBM are dying (in the data center), as are proprietary L2 fabrics (it was about time). I wouldn’t invest in one of those in 2016</li>
 <li><strong>ACI</strong>. Maybe not. It’s a lot of hidden complexity, particularly if you need nothing more than a-bit-more-stable VLANs.</li>
 </ul>
 <p>What’s left? VXLAN, in one of its three incarnations:</p>
-<ul class="ListParagraph"><li><strong>Multicast-based</strong>. Why should you introduce IP multicast in your data center network just because <a href="http://blog.ipspace.net/2012/07/virtualized-squashed-complexity-sausage.html">someone tried to shift the problem around</a>?</li>
+<ul class="ListParagraph"><li><strong>Multicast-based</strong>. Why should you introduce IP multicast in your data center network just because <a href="https://blog.ipspace.net/2012/07/virtualized-squashed-complexity-sausage.html">someone tried to shift the problem around</a>?</li>
 <li><strong>Static ingress node replication</strong>. Perfect for small or fully-automated networks that need nothing more than L2 connectivity.</li>
 <li><strong>EVPN</strong>. Ideal for people who believe virtual networking (including L2+L3 fabrics) should be done on ToR switches and not in the hypervisors.</li>
 </ul>

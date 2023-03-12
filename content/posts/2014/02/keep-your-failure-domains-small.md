@@ -11,7 +11,7 @@ tags:
 title: Keep Your Failure Domains Small
 url: /2014/02/keep-your-failure-domains-small.html
 ---
-A week after the [disastrous sleet](http://blog.ipspace.net/2014/02/disasters-and-recoveries-part-1.html) that kicked whole regions of Slovenia off power grid the servicemen of the local power distribution company (working literally days and nights) managed to restore electricity to the closest town ... but it still might take days or even weeks before everyone gets it. One of the reasons: huge failure domains.
+A week after the [disastrous sleet](https://blog.ipspace.net/2014/02/disasters-and-recoveries-part-1.html) that kicked whole regions of Slovenia off power grid the servicemen of the local power distribution company (working literally days and nights) managed to restore electricity to the closest town ... but it still might take days or even weeks before everyone gets it. One of the reasons: huge failure domains.
 <!--more-->
 The 10 KV power lines that bring electricity to the transformer near my house (luckily I have an underground cable) are hardwired together in a multidrop fashion that would have made SDLC oldtimers either immensely proud or scared to death (because they knew how much havoc a single misbehaving modem could wreak).
 
@@ -23,15 +23,15 @@ The crucial problem: there's no [disconnector](http://en.wikipedia.org/wiki/Disc
 
 ### Back to Bits and Bytes
 
-Wondering what this blog post has to do with networking? You do remember that [every bridged network (aka layer-2 network) is also a single failure domain](http://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html), right? A [forwarding loop](http://blog.ipspace.net/2012/04/stp-loops-strike-again.html) might bring down the whole domain (which some people [enthusiastically extend across multiple data centers](http://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html)).
+Wondering what this blog post has to do with networking? You do remember that [every bridged network (aka layer-2 network) is also a single failure domain](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html), right? A [forwarding loop](http://blog.ipspace.net/2012/04/stp-loops-strike-again.html) might bring down the whole domain (which some people [enthusiastically extend across multiple data centers](http://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html)).
 
 ### What Can We Do?
 
 Here are a few things to keep in mind:
 
 -   Keep your failure domains as small as possible. Terminate bridging as soon as possible;
--   Insert as much failure isolation as you can. [Overlay virtual networks](http://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html) nicely isolate the single failure domain of a layer-2 virtual network from the robust layer-3 transport infrastructure;
--   Use technologies that reduce the size of a failure domain. [Layer-3 hypervisor switching](http://blog.ipspace.net/2013/12/hyper-v-network-virtualization-packet.html) eliminates layer-2 failure domains altogether (other failure domains like single cluster of managements systems are obviously still an issue);
+-   Insert as much failure isolation as you can. [Overlay virtual networks](https://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html) nicely isolate the single failure domain of a layer-2 virtual network from the robust layer-3 transport infrastructure;
+-   Use technologies that reduce the size of a failure domain. [Layer-3 hypervisor switching](https://blog.ipspace.net/2013/12/hyper-v-network-virtualization-packet.html) eliminates layer-2 failure domains altogether (other failure domains like single cluster of managements systems are obviously still an issue);
 -   Build a hierarchy of failure domains. Availability zones in your private cloud are the necessary first step.
 -   Analyze the structure of mission-critical applications (covered in more details in the fantastic [Scalability Rules](http://www.amazon.com/gp/product/0321753887?ie=UTF8&camp=1789&creativeASIN=0321753887&linkCode=xm2&tag=cisioshinandt-20) book).
 

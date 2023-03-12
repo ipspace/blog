@@ -14,7 +14,7 @@ I was listening to the fantastic [OTV Deep Dive PQ Packet Pushers](http://packet
 
 So what were the use cases they were mentioning?
 <!--more-->
-I loved one of them -- someone **using OTV to get away from L2 interconnect**. They had a traditional L2 interconnect (and all the [associated "goodies"](http://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html)), decided to convert it to L3 interconnect, but still needed some stretched VLANs in the migration period.
+I loved one of them -- someone **using OTV to get away from L2 interconnect**. They had a traditional L2 interconnect (and all the [associated "goodies"](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html)), decided to convert it to L3 interconnect, but still needed some stretched VLANs in the migration period.
 
 And here are the other use cases I gleaned from the podcast:
 

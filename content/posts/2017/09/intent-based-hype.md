@@ -8,7 +8,7 @@ title: Intent-Based Hype
 url: /2017/09/intent-based-hype.html
 intent-based-networking_tag: drawback
 ---
-It all started with a realistic response I got to my [*automation and orchestration*](http://blog.ipspace.net/2017/07/automation-or-orchestration.html) blog post (here's a [unicorn-driving-a-DeLorean](http://blog.ipspace.net/2017/07/promises-gone-wild.html) one in case you missed it):
+It all started with a realistic response I got to my [*automation and orchestration*](https://blog.ipspace.net/2017/07/automation-or-orchestration.html) blog post (here's a [unicorn-driving-a-DeLorean](http://blog.ipspace.net/2017/07/promises-gone-wild.html) one in case you missed it):
 
 > Maybe you could also add the "intent-based network" which is also not so far from orchestration?
 
@@ -42,7 +42,7 @@ David Barroso came up with a good definition in an email exchange:
 >
 > Imperative: Configure vlan 10, remove vlan 11, configure vlan 20, remove vlan 21, 30, 40 and pray.
 
-You probably know that David [got so frustrated dealing with so many broken devices](http://blog.ipspace.net/2015/06/napalm-integrating-ansible-with-network.html) that cannot take new configuration and apply it the way we handle configuration changes in Linux world where we usually just reload the server that he [started the NAPALM project to deal with it](http://blog.ipspace.net/2016/10/napalm-update-on-software-gone-wild.html)... and got infinitely more exposure to the network device brokenness than he would have had otherwise.
+You probably know that David [got so frustrated dealing with so many broken devices](https://blog.ipspace.net/2015/06/napalm-integrating-ansible-with-network.html) that cannot take new configuration and apply it the way we handle configuration changes in Linux world where we usually just reload the server that he [started the NAPALM project to deal with it](http://blog.ipspace.net/2016/10/napalm-update-on-software-gone-wild.html)... and got infinitely more exposure to the network device brokenness than he would have had otherwise.
 
 Is intent-based networking just the capability to apply new device configuration without worrying how to get from the old to the new one? That would make sense, but it's not flashy enough for vendor marketing.
 
@@ -69,9 +69,9 @@ Every time someone adds yet another layer of abstraction, it reminds me of RFC 1
 
 There's also the [Law of Leaky Abstractions](https://en.wikipedia.org/wiki/Leaky_abstraction), which will definitely bite you (intentionally or otherwise).
 
-Every time someone claims their solution will reduce the complexity of whatever, I start thinking about [squashed complexity sausage](http://blog.ipspace.net/2012/07/virtualized-squashed-complexity-sausage.html).
+Every time someone claims their solution will reduce the complexity of whatever, I start thinking about [squashed complexity sausage](https://blog.ipspace.net/2012/07/virtualized-squashed-complexity-sausage.html).
 
-And every time someone tells me about an umbrella system that will tie together disparate systems, [I hear lock-in](http://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html).
+And every time someone tells me about an umbrella system that will tie together disparate systems, [I hear lock-in](https://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html).
 
 Then there's lack of standards. Somehow you have to communicate with the wonderful intent-based system (whatever it really is). Will you use GUI to do that? I wish you luck. Will you use an API? Is it standardized? Hint: no.
 

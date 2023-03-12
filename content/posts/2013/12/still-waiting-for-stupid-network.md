@@ -17,7 +17,7 @@ tags:
 title: Still Waiting for the Stupid Network
 url: /2013/12/still-waiting-for-stupid-network.html
 ---
-In 1998, the cover story of [ACM netWorker](http://networker.acm.org/) magazine discussed the [dawn of the stupid network](http://www.isen.com/papers/Dawnstupid.html) -- an architecture with [smart edge nodes and simple packet forwarding code](http://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html). Obviously we learned nothing in all those years -- we're [still having the same discussions](http://blog.ipspace.net/2013/06/network-virtualization-and-spaghetti.html).
+In 1998, the cover story of [ACM netWorker](http://networker.acm.org/) magazine discussed the [dawn of the stupid network](http://www.isen.com/papers/Dawnstupid.html) -- an architecture with [smart edge nodes and simple packet forwarding code](https://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html). Obviously we learned nothing in all those years -- we're [still having the same discussions](http://blog.ipspace.net/2013/06/network-virtualization-and-spaghetti.html).
 
 Here are a few juicy quotes from that article (taken completely out of context solely for your enjoyment).
 <!--more-->

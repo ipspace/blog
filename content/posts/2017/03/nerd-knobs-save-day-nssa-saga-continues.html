@@ -5,18 +5,18 @@ date: "2017-03-02T13:43:00.000+01:00"
 tags: [ OSPF ]
 ---
 
-<p>Remember the <a href="http://blog.ipspace.net/2017/02/the-unintended-consequences-of-nssa.html">OSPF NSSA Forwarding Address</a> kludge and <a href="http://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html">its consequences</a>? Let’s figure out whether the nerd knobs available in Cisco IOS can save the day.</p>
+<p>Remember the <a href="https://blog.ipspace.net/2017/02/the-unintended-consequences-of-nssa.html">OSPF NSSA Forwarding Address</a> kludge and <a href="http://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html">its consequences</a>? Let’s figure out whether the nerd knobs available in Cisco IOS can save the day.</p>
 <p><strong>TL&amp;DR</strong>: Don’t use OSPF areas if you can avoid them. Don’t use NSSA areas.<!--more--></p>
 <h4>The OSPF Forwarding Address and NSSA Saga</h4><p>This blog post is the last in a series of six blog posts, and the only reason I published it was a huge <em>Thank You </em>I got from one of my friends when we met at Cisco Live Berlin. He said “<em>I forwarded your blog posts to a customer who planned on building a network using OSPF NSSA areas. They probably changed his mind.</em>”</p>
-<p>So let's conclude the saga with a <a href="http://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html">MacGyver fix</a> – a series of nerd knobs that have to be adjusted to make the network work. If this won't persuade you to stay away from NSSA areas nothing will.</p>
+<p>So let's conclude the saga with a <a href="https://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html">MacGyver fix</a> – a series of nerd knobs that have to be adjusted to make the network work. If this won't persuade you to stay away from NSSA areas nothing will.</p>
 <h4>Other Blog Posts in This Saga</h4><p>You might want to read these blog posts before continuing:</p>
-<ul class="ListParagraph"><li><a href="http://blog.ipspace.net/2017/01/ospf-forwarding-address-yet-another.html">OSPF Forwarding Address – Yet Another Kludge</a></li>
-<li><a href="http://blog.ipspace.net/2017/01/ospf-forwarding-address-yak-take-2.html">OSPF Forwarding Address – Take 2</a></li>
-<li><a href="http://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html">Why OSPF Needs Forwarding Address with NSSA Areas</a></li>
-<li><a href="http://blog.ipspace.net/2017/02/the-unintended-consequences-of-nssa.html">The Unintended Consequences of NSSA Kludges</a></li>
-<li><a href="http://blog.ipspace.net/2017/02/more-thoughts-on-ospf-forwarding-address.html">More Thoughts on OSPF Forwarding Address</a></li>
+<ul class="ListParagraph"><li><a href="https://blog.ipspace.net/2017/01/ospf-forwarding-address-yet-another.html">OSPF Forwarding Address – Yet Another Kludge</a></li>
+<li><a href="https://blog.ipspace.net/2017/01/ospf-forwarding-address-yak-take-2.html">OSPF Forwarding Address – Take 2</a></li>
+<li><a href="https://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html">Why OSPF Needs Forwarding Address with NSSA Areas</a></li>
+<li><a href="https://blog.ipspace.net/2017/02/the-unintended-consequences-of-nssa.html">The Unintended Consequences of NSSA Kludges</a></li>
+<li><a href="https://blog.ipspace.net/2017/02/more-thoughts-on-ospf-forwarding-address.html">More Thoughts on OSPF Forwarding Address</a></li>
 </ul>
-<h4>Breaking the Network</h4><p>As before, we’ll start with what seems to be a perfectly designed network (trust me, <a href="http://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html">there's a snake in this paradise</a>):</p>
+<h4>Breaking the Network</h4><p>As before, we’ll start with what seems to be a perfectly designed network (trust me, <a href="https://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html">there's a snake in this paradise</a>):</p>
 <div class="separator"><a href="/2017/03/s1600-OSPF_NSSA_1.png" imageanchor="1"><img border="0" src="/2017/03/s500-OSPF_NSSA_1.png"/></a></div>
 <p class="info">If you want to replicate the results published in this blog post use <a href="https://github.com/ipspace/VIRL/blob/master/OSPF-NSSA-Forwarding-Address.virl">this VIRL topology file</a> from my <a href="https://github.com/ipspace/VIRL">VIRL topologies GitHub repository</a>.</p>
 <p>As expected, C1 has two equal-cost paths to 192.168.1.0/24 and can reach 192.168.1.1:</p>

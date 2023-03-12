@@ -11,7 +11,7 @@ tags:
 title: Typical EVPN BGP Routing Designs
 url: /2018/05/typical-evpn-bgp-routing-designs.html
 ---
-As discussed in a [previous blog post](http://blog.ipspace.net/2018/05/what-is-evpn.html), IETF designed EVPN to be next-generation BGP-based VPN technology providing scalable layer-2 and layer-3 VPN functionality. EVPN was initially designed to be used with MPLS data plane and was later extended to use numerous data plane encapsulations, VXLAN being the most common one.
+As discussed in a [previous blog post](https://blog.ipspace.net/2018/05/what-is-evpn.html), IETF designed EVPN to be next-generation BGP-based VPN technology providing scalable layer-2 and layer-3 VPN functionality. EVPN was initially designed to be used with MPLS data plane and was later extended to use numerous data plane encapsulations, VXLAN being the most common one.
 
 ### Design Requirements
 
@@ -19,7 +19,7 @@ Like any other BGP-based solution, EVPN uses BGP to transport endpoint reachabil
 <!--more-->
 The most obvious approach would thus be to use BGP-based control plane with an underlying IGP (or even Fast Reroute) providing fast-converging paths to BGP next hops. You can use the same design with EVPN regardless of whether you use MPLS or VXLAN data plane:
 
--   Use [any IGP suitable for the size of your network](http://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html). Some service providers have over a thousand routers in a single OSPF or IS-IS area. Even in highly-meshed environments (leaf-and-spine fabrics), OSPF or IS-IS easily scale to over a hundred switches.
+-   Use [any IGP suitable for the size of your network](https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html). Some service providers have over a thousand routers in a single OSPF or IS-IS area. Even in highly-meshed environments (leaf-and-spine fabrics), OSPF or IS-IS easily scale to over a hundred switches.
 -   Use IBGP to transport EVPN BGP updates, and BGP route reflectors for scalability.
 
 In data centers using EBGP as an IGP replacement, you could use the existing EBGP sessions to carry IPv4 (underlay) and EVPN (overlay) address families. For more information on this approach and some alternative designs read the [BGP in EVPN-Based Data Center Fabrics](http://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics) part of [Using BGP in Data Center Leaf-and-Spine Fabrics](http://www.ipspace.net/Data_Center_BGP) document.

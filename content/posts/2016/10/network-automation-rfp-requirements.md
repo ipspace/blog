@@ -108,7 +108,7 @@ We waited long enough to get them. I don't want to wait another decade for the v
 
 ### Feature Parity
 
-Paraphrasing [Ron Broersma](http://blog.ipspace.net/2016/07/cutting-through-ipv6-requirements-red.html): *All functionality requested in the RFP must be fully supported by the device API and meet the above requirements*.
+Paraphrasing [Ron Broersma](https://blog.ipspace.net/2016/07/cutting-through-ipv6-requirements-red.html): *All functionality requested in the RFP must be fully supported by the device API and meet the above requirements*.
 
 ### Anything Else?
 

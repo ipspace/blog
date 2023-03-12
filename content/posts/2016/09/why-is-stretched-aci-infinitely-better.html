@@ -9,7 +9,7 @@ title: Why Is Stretched ACI Infinitely Better than OTV?
 url: /2016/09/why-is-stretched-aci-infinitely-better.html
 ---
 
-<p><a name="_GoBack"></a>Eluehike Chedu asked an interesting question after my explanation of why stretched ACI fabric (or alternatives, see below) is the <a href="http://blog.ipspace.net/2016/07/stretched-aci-fabric-is-sometimes-least.html">least horrible way of stretching a subnet</a>: What about OTV?</p>
+<p><a name="_GoBack"></a>Eluehike Chedu asked an interesting question after my explanation of why stretched ACI fabric (or alternatives, see below) is the <a href="https://blog.ipspace.net/2016/07/stretched-aci-fabric-is-sometimes-least.html">least horrible way of stretching a subnet</a>: What about OTV?</p>
 <p>Time to go back to the basics. As Dinesh Dutt explained in our <a href="http://go.cumulusnetworks.com/roh-l2-webinar">Routing on Hosts webinar</a>, there are (at least) three reasons why people want to see stretched subnets:<!--more--></p>
 <ul class="ListParagraph"><li>Service or node discovery based on broadcasts;</li>
 <li>Multicast cluster heartbeats;</li>
@@ -17,12 +17,12 @@ url: /2016/09/why-is-stretched-aci-infinitely-better.html
 </ul>
 <p>While there’s not much one could do about the first two (apart from enabling IP multicast in the data center fabric), there are two ways of solving the third one:</p>
 <ul class="ListParagraph"><li>The wrong way: stretched VLAN;</li>
-<li>The right way: admitting that the IP subnet paradigm doesn’t fit all environments and <a href="http://blog.ipspace.net/2015/05/reinventing-clns-with-l3-only-forwarding.html">going back to routing based on host identifiers</a> (hint: CLNS got there decades ago).</li>
+<li>The right way: admitting that the IP subnet paradigm doesn’t fit all environments and <a href="https://blog.ipspace.net/2015/05/reinventing-clns-with-l3-only-forwarding.html">going back to routing based on host identifiers</a> (hint: CLNS got there decades ago).</li>
 </ul>
-<p>What’s the difference between the two approaches? The <em>stretched VLAN </em>approach uses the <a href="http://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html">wrong forwarding paradigm</a> (panic-and-flood when you don’t know) that was <a href="http://blog.ipspace.net/2015/04/what-is-layer-2-and-why-do-we-need-it.html">invented</a> to <a href="http://blog.ipspace.net/2015/02/lets-get-rid-of-thick-yellow-cable.html">emulate a yellow coax cable</a>. The <em>routing on host identifiers </em>approach is still routing (drop when you don’t know) but using more granular forwarding table.</p>
+<p>What’s the difference between the two approaches? The <em>stretched VLAN </em>approach uses the <a href="https://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html">wrong forwarding paradigm</a> (panic-and-flood when you don’t know) that was <a href="http://blog.ipspace.net/2015/04/what-is-layer-2-and-why-do-we-need-it.html">invented</a> to <a href="http://blog.ipspace.net/2015/02/lets-get-rid-of-thick-yellow-cable.html">emulate a yellow coax cable</a>. The <em>routing on host identifiers </em>approach is still routing (drop when you don’t know) but using more granular forwarding table.</p>
 <p class="info">You might have noticed I said <em>host identifiers </em>and not <em>IP addresses</em>. It really doesn’t matter that much if you do routing based on MAC or IP addresses as long as it’s deterministic and there’s no flooding. Figuring out why it still matters whether you use MAC or IP addresses is left as an exercise for the reader ;)</p>
 <p>Various VLAN extension approaches like OTV are just lipstick on a pig. They have to use all sorts of tricks to fix the problems caused by using the wrong forwarding behavior (bridging):</p>
-<ul class="ListParagraph"><li>First-hop gateway selection (otherwise you get <a href="http://blog.ipspace.net/2011/02/traffic-trombone-what-it-is-and-how-you.html">traffic trombones</a>);</li>
+<ul class="ListParagraph"><li>First-hop gateway selection (otherwise you get <a href="https://blog.ipspace.net/2011/02/traffic-trombone-what-it-is-and-how-you.html">traffic trombones</a>);</li>
 <li>Suboptimal ingress traffic problems;</li>
 <li>Excessive flooding across lower-speed links;</li>
 <li>Unnecessary unicast flooding.</li>
@@ -38,8 +38,8 @@ url: /2016/09/why-is-stretched-aci-infinitely-better.html
 <li>Cisco ACI</li>
 <li>Cisco DFA</li>
 <li>EVPN with symmetrical IRB (asymmetrical IRB still uses too much bridging), for example on Cisco Nexus switches</li>
-<li>Cumulus Linux <a href="http://blog.ipspace.net/2015/08/layer-3-only-data-center-networks-with.html">Redistribute ARP</a></li>
-<li>Enterasys (now Extreme Networks) <a href="http://blog.ipspace.net/2013/08/enterasys-host-routing-optimal-l3.html">host routing</a>.</li>
+<li>Cumulus Linux <a href="https://blog.ipspace.net/2015/08/layer-3-only-data-center-networks-with.html">Redistribute ARP</a></li>
+<li>Enterasys (now Extreme Networks) <a href="https://blog.ipspace.net/2013/08/enterasys-host-routing-optimal-l3.html">host routing</a>.</li>
 </ul>
-<p>We covered this idea in detail in the <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs">Leaf-and-Spine Fabric Designs</a> webinar, but if you need just an overview, watch my <a href="http://blog.ipspace.net/2015/04/video-ipv6-microsegmentation.html">IPv6 microsegmentation Troopers talk</a> or <a href="https://www.ipspace.net/IPv6_Microsegmentation">IPv6 microsegmentation webinar</a>.</p>
+<p>We covered this idea in detail in the <a href="http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs">Leaf-and-Spine Fabric Designs</a> webinar, but if you need just an overview, watch my <a href="https://blog.ipspace.net/2015/04/video-ipv6-microsegmentation.html">IPv6 microsegmentation Troopers talk</a> or <a href="https://www.ipspace.net/IPv6_Microsegmentation">IPv6 microsegmentation webinar</a>.</p>
 

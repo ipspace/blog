@@ -12,12 +12,12 @@ tags: [ Internet,LDP,MPLS VPN ]
 <ul class="ListParagraph"><li>LDP is started on the interface, allowing the router to establish LDP adjacencies and exchange labels across that interface;</li>
 <li>MPLS is enabled in the data plane, allowing the router to receive labeled packets through the interface.</li>
 </ul>
-<p class="note"><a href="http://blog.ipspace.net/2011/11/junos-versus-cisco-ios-mpls-and-ldp.html">Junos has two independent commands</a>, one to enable LDP, another one to enable MPLS on an interface – a fantastic brain scrambler if you’re too IOS-intoxicated.</p>
-<p>Regardless of the label distribution mechanism, Cisco IOS installs prefix-to-label mappings in the CEF table. That information is used to compose the MPLS label stack used by MPLS/VPN (with the top label in the stack pointing toward BGP next hop) as well as for regular packet forwarding. No wonder you’ll see labels on packets forwarded through the global <a href="http://blog.ipspace.net/2010/09/ribs-and-fibs.html">forwarding (CEF) table</a>.</p>
-<p class="info">If all this sounds like Latin, check out my <a href="http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment">MPLS/VPN webinar</a> or Cisco Press <a href="http://blog.ipspace.net/2007/06/using-mpls-vpn-books-to-study-for-ccip.html">MPLS/VPN books</a>.</p>
+<p class="note"><a href="https://blog.ipspace.net/2011/11/junos-versus-cisco-ios-mpls-and-ldp.html">Junos has two independent commands</a>, one to enable LDP, another one to enable MPLS on an interface – a fantastic brain scrambler if you’re too IOS-intoxicated.</p>
+<p>Regardless of the label distribution mechanism, Cisco IOS installs prefix-to-label mappings in the CEF table. That information is used to compose the MPLS label stack used by MPLS/VPN (with the top label in the stack pointing toward BGP next hop) as well as for regular packet forwarding. No wonder you’ll see labels on packets forwarded through the global <a href="https://blog.ipspace.net/2010/09/ribs-and-fibs.html">forwarding (CEF) table</a>.</p>
+<p class="info">If all this sounds like Latin, check out my <a href="http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment">MPLS/VPN webinar</a> or Cisco Press <a href="https://blog.ipspace.net/2007/06/using-mpls-vpn-books-to-study-for-ccip.html">MPLS/VPN books</a>.</p>
 <h4>Is There a Workaround?</h4><p>Whenever there’s a challenge, there’s a kludge. This is what you can do:</p>
 <ul class="ListParagraph"><li>Use different BGP next hops for VPNv4 (MPLS/VPN) routes and IPv4 routes, and advertise labels only for VPNv4 next hops.</li>
-<li>Run IP-only core network without MPLS and <a href="http://blog.ipspace.net/2011/01/mplsvpn-over-mgre-strikes-again.html">transport MPLS/VPN traffic across mGRE tunnels</a>.</li>
+<li>Run IP-only core network without MPLS and <a href="https://blog.ipspace.net/2011/01/mplsvpn-over-mgre-strikes-again.html">transport MPLS/VPN traffic across mGRE tunnels</a>.</li>
 </ul>
-<p>Me, I wouldn’t bother. I prefer having a <a href="http://blog.ipspace.net/2012/01/bgp-free-service-provider-core-in.html">BGP-free MPLS core</a> (although I have to admit <a href="http://blog.ipspace.net/2013/11/deutsche-telekom-terastream-designed.html">an IP-only core</a> has its advantages).</p>
+<p>Me, I wouldn’t bother. I prefer having a <a href="https://blog.ipspace.net/2012/01/bgp-free-service-provider-core-in.html">BGP-free MPLS core</a> (although I have to admit <a href="http://blog.ipspace.net/2013/11/deutsche-telekom-terastream-designed.html">an IP-only core</a> has its advantages).</p>
 

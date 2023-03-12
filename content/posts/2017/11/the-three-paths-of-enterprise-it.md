@@ -48,7 +48,7 @@ During the [Open Networking](http://www.ipspace.net/Open_Networking_for_Large-Sc
 
 I had discussions with engineers who were heavily involved in cloudy infrastructures, and they claim your AWS bill has to be in the million-per-year range before it makes sense to think about internal infrastructure (due to costs of running that infrastructure).
 
-Russ put the low-end size for the third type of organization to ~10.000 server ports in the [Whitebox Switching @ LinkedIn podcast](http://blog.ipspace.net/2016/09/whitebox-switching-at-linkedin-with.html) and Giacomo Bernardi also mentioned thousands of boxes in [Build Your Own Service Provider Gear](http://blog.ipspace.net/2016/06/build-your-own-service-provider-gear-on.html) podcast.
+Russ put the low-end size for the third type of organization to ~10.000 server ports in the [Whitebox Switching @ LinkedIn podcast](https://blog.ipspace.net/2016/09/whitebox-switching-at-linkedin-with.html) and Giacomo Bernardi also mentioned thousands of boxes in [Build Your Own Service Provider Gear](http://blog.ipspace.net/2016/06/build-your-own-service-provider-gear-on.html) podcast.
 
 However, as Russ pointed out in our (private) conversation:
 

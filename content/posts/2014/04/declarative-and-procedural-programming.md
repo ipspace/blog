@@ -28,4 +28,4 @@ The real difference between Puppet manifests and router configurations is the le
 
 Did I say *implementation details*? Isn't that procedural programming? No, we're still in the realm of declarative programming (we never tell the switches **how** to implement VLANs, do we?), but working at a lower level of abstraction and dealing with how individual devices (or vendors) expect things to be declared.
 
-Confusing? Sure it is, but don't worry. It's no more confusing than [other things we have to deal with](http://en.wikipedia.org/wiki/OSI_model). You just need a bit of practice... and don't forget to [focus on principles, not implementation details](http://blog.ipspace.net/2008/09/knowledge-or-recipes.html).
+Confusing? Sure it is, but don't worry. It's no more confusing than [other things we have to deal with](http://en.wikipedia.org/wiki/OSI_model). You just need a bit of practice... and don't forget to [focus on principles, not implementation details](https://blog.ipspace.net/2008/09/knowledge-or-recipes.html).

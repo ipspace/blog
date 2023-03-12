@@ -12,7 +12,7 @@ tags:
 title: Don’t Run OSPF with Your Customers
 url: /2016/03/dont-run-ospf-with-your-customers.html
 ---
-Salman left an interesting comment on my [*Running BGP on Servers*](http://blog.ipspace.net/2016/02/running-bgp-on-servers.html) blog post:
+Salman left an interesting comment on my [*Running BGP on Servers*](https://blog.ipspace.net/2016/02/running-bgp-on-servers.html) blog post:
 
 > My prior counterparts thought running OSPF on Mainframes was a good idea. Then we had a routing blackhole due to misconfiguration on the server. Twice! The main issue was the Mainframe admins lack of networking/OSPF knowledge.
 
@@ -46,6 +46,6 @@ In other words, anyone who's part of an OSPF domain can insert any stupidity the
 
 ### To Summarize
 
-As I [wrote 2.5 years ago](http://blog.ipspace.net/2013/08/virtual-appliance-routing-network.html): Don't ever run OSPF with a third party, even if that third party happens to be your friendly server administrator. It's not that you wouldn't trust him, it's just that you don't need so many additional sources of semi-reliable information plugged straight into the heart of your network.
+As I [wrote 2.5 years ago](https://blog.ipspace.net/2013/08/virtual-appliance-routing-network.html): Don't ever run OSPF with a third party, even if that third party happens to be your friendly server administrator. It's not that you wouldn't trust him, it's just that you don't need so many additional sources of semi-reliable information plugged straight into the heart of your network.
 
 Finally, to learn more about running BGP between servers and ToR switches, watch the [Leaf-and-Spine Fabric Designs](http://www.ipspace.net/Leaf-and-Spine_Fabric_Designs) webinar.

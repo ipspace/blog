@@ -8,11 +8,11 @@ tags:
 title: Solving the Problem in the Right Place
 url: /2017/10/solving-problem-in-right-place.html
 ---
-Sometimes I have this weird feeling that I'm the only loony in town desperately preaching against the [stupidities heaped upon infrastructure](http://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html), so it's really nice when I find a fellow lost soul. This is what another senior networking engineer sent me:
+Sometimes I have this weird feeling that I'm the only loony in town desperately preaching against the [stupidities heaped upon infrastructure](https://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html), so it's really nice when I find a fellow lost soul. This is what another senior networking engineer sent me:
 
 > I\'m belonging to a small group of people who are thinking that the source of the problem are the apps and the associated business/security rules: their nature, their complexity, their lifecycle\...
 
-Sounds familiar (I probably wrote a [few blog posts](http://blog.ipspace.net/2013/11/typical-enterprise-application.html) on this topic in the past), and it only got better.
+Sounds familiar (I probably wrote a [few blog posts](https://blog.ipspace.net/2013/11/typical-enterprise-application.html) on this topic in the past), and it only got better.
 <!--more-->
 > You could add the maximum agility at every layer and the orchestrator of your dream, it would not change the complexity of an app. and its security (and small networking) requirements.
 >

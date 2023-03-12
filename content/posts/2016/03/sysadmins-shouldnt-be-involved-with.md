@@ -18,13 +18,13 @@ I had a great chat with [Enno Rey](https://twitter.com/Enno_Insinuator) the morn
 
 As (almost) always, it turned out that we were still in violent agreement ;)
 <!--more-->
-We quickly agreed that [running OSPF on servers is a patently bad idea](http://blog.ipspace.net/2016/03/dont-run-ospf-with-your-customers.html), and expecting hosts to act as peers in network path calculations is another one.
+We quickly agreed that [running OSPF on servers is a patently bad idea](https://blog.ipspace.net/2016/03/dont-run-ospf-with-your-customers.html), and expecting hosts to act as peers in network path calculations is another one.
 
 Then there's the gray area of hypervisor connectivity. Like it or not, hypervisors are really the new network edge, and you can link them with the physical networks in one of three ways:
 
 -   You pretend they aren't there, and give them simple IP connectivity which they can use to build whatever-over-IP tunnels (aka *overlay virtual networking*);
--   You allow them to dump [whatever \*\*\*\* they have into the network](http://blog.ipspace.net/2011/12/vmware-vswitch-baseline-of-simplicity.html) and deal with the consequences (aka *VLAN-based virtual networking*);
--   You accept them as the new network edge and start treating them as PE-routers (the [*Project Calico* way](http://blog.ipspace.net/2015/06/project-calico-is-it-any-good.html)). Unfortunately, this approach works well only when you can enforce the residential ISP mentality in your service offering (*Here's your IP address, take it and stop complaining. And no, you cannot move it*), otherwise you're quickly stuck in a quagmire of host routes or end-to-end paths (VLANs, tunnels or LSPs).
+-   You allow them to dump [whatever \*\*\*\* they have into the network](https://blog.ipspace.net/2011/12/vmware-vswitch-baseline-of-simplicity.html) and deal with the consequences (aka *VLAN-based virtual networking*);
+-   You accept them as the new network edge and start treating them as PE-routers (the [*Project Calico* way](https://blog.ipspace.net/2015/06/project-calico-is-it-any-good.html)). Unfortunately, this approach works well only when you can enforce the residential ISP mentality in your service offering (*Here's your IP address, take it and stop complaining. And no, you cannot move it*), otherwise you're quickly stuck in a quagmire of host routes or end-to-end paths (VLANs, tunnels or LSPs).
 
 However, coming back to the original question: Should we run a routing protocol on a regular (application) server? As I said, I don't think we should... and yet I'm advocating running BGP on those same servers. I must be confused, right?
 

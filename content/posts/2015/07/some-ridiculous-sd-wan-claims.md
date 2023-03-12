@@ -23,7 +23,7 @@ Not surprisingly, the above paragraph triggered a severe case of Deja-Moo.
 
 {{<note info>}}You might want to consider watching [DMVPN](http://www.ipspace.net/DMVPN_trilogy) and [Ansible](http://www.ipspace.net/Using_Ansible,_YAML_and_Jinja2) webinars if you don't know what I'm talking about ;){{</note>}}
 
-**It's all about the processes and procedures**. The real reason service deployment in typical enterprise network is slow are [broken processes](http://blog.ipspace.net/2014/09/youve-been-doing-same-thing-for-last-20.html):
+**It's all about the processes and procedures**. The real reason service deployment in typical enterprise network is slow are [broken processes](https://blog.ipspace.net/2014/09/youve-been-doing-same-thing-for-last-20.html):
 
 -   [Organic growth](#/media/File:Chabolas_a_plomo.jpg) coupled with lack of good network design (because managers think anyone can do it and thus don't want to pay for it);
 -   Lack of configuration templates (aka the death by thousand kludges);
@@ -56,7 +56,7 @@ As you might expect, the rest of that article fares no better than it's beginnin
 
 **The elimination of vendor lock-in** -- ah, that's why Greg Ferro [wrote](http://etherealmind.com/concerns-about-sd-wan-standards-and-interoperability/) "*\[While standards are important\], I don't believe they are practical in the current situation around the WAN*"
 
-While [some lock-in is usually inevitable](http://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html), at the moment, [every single SD-WAN solution is a total lock-in](http://blog.ipspace.net/2015/06/software-defined-wanwell-orchestrated.html), and anyone who claims otherwise is either clueless or trying to mislead you.
+While [some lock-in is usually inevitable](https://blog.ipspace.net/2015/01/lock-in-is-inevitable-get-used-to-it.html), at the moment, [every single SD-WAN solution is a total lock-in](http://blog.ipspace.net/2015/06/software-defined-wanwell-orchestrated.html), and anyone who claims otherwise is either clueless or trying to mislead you.
 
 ### A Note to Marketers
 

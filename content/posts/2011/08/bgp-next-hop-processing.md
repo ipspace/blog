@@ -44,7 +44,7 @@ Large autonomous systems use BGP route reflectors. [With a few exceptions](https
 
 **Exceptions**:
 
-* Cisco IOS allows setting next-hop to **self** on reflected routes with the **neighbor next-hop-self all** configuration command. See [Changes in IBGP Next Hop Processing](http://blog.ipspace.net/2014/04/changes-in-ibgp-next-hop-processing.html) blog post for more details.
+* Cisco IOS allows setting next-hop to **self** on reflected routes with the **neighbor next-hop-self all** configuration command. See [Changes in IBGP Next Hop Processing](https://blog.ipspace.net/2014/04/changes-in-ibgp-next-hop-processing.html) blog post for more details.
 * You can change BGP next hop on a route reflector with an *inbound* route-map. Don't do this outside of a CCIE lab.
 
 **Example**: Prefix 10.0.1.0/24 originated by PE-A is propagated by RR to PE-B. BGP next hop is still 10.0.0.1.
