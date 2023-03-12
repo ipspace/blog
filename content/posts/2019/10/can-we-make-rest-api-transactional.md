@@ -1,12 +1,15 @@
 ---
+cli_tag: api-challenge
 date: 2019-10-22 08:27:00+02:00
+niac_tag: rest
+series:
+- niac
+- cli
 tags:
 - automation
 - SDN
 title: Can We Make REST API Transactional Across Multiple Calls?
 url: /2019/10/can-we-make-rest-api-transactional.html
-series: [ niac ]
-niac_tag: rest
 ---
 I got interesting feedback from one of my readers after publishing my [REST API Is Not Transactional](https://blog.ipspace.net/2019/04/rest-api-is-not-transactional.html) blog post:
 

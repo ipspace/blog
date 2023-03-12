@@ -1,12 +1,15 @@
 ---
+cli_tag: real
 date: 2019-06-06 08:18:00+02:00
+intent-based-networking_tag: drawback
+series:
+- cli
 tags:
 - automation
 - intent-based networking
 - SDN
 title: Stop Using GUI to Configure SDN or Intent-Based Products
 url: /2019/06/stop-using-gui-to-configure-sdn-or.html
-intent-based-networking_tag: drawback
 ---
 *This blog post was initially sent to subscribers of my SDN and Network Automation mailing list. *[*Subscribe here*](http://www.ipspace.net/Subscribe/Five_SDN_Tips)*.*
 

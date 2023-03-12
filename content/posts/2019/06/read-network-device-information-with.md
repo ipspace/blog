@@ -1,12 +1,15 @@
 ---
+cli_tag: api-use
 date: 2019-06-18 08:07:00+02:00
+series:
+- ssot
+- cli
+ssot_tag: details
 tags:
 - automation
 - data models
 title: Read Network Device Information with REST API and Store It Into a Database
 url: /2019/06/read-network-device-information-with.html
-series: [ ssot ]
-ssot_tag: details
 ---
 One of my readers sent me this question:
 

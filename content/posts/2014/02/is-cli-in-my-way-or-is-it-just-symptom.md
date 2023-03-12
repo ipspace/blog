@@ -1,5 +1,6 @@
 ---
 cdate: 2022-07-10
+cli_tag: cli-api
 comment: 'Some SDN proponents claim that the way we configure networking devices (using
   CLI) is the biggest networking problem we’re facing today. They also conveniently
   forget that every scalable IT solution uses automation, text files and CLI… because
@@ -14,6 +15,7 @@ date: 2014-02-18 07:05:00+01:00
 sdn_101_tag: extra
 series:
 - sdn_101
+- cli
 series_weight: 130
 tags:
 - SDN

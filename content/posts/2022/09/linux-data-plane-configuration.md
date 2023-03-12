@@ -1,7 +1,13 @@
 ---
-title: "Linux Networking Data Plane Configuration"
-date: 2022-09-21 06:20:00
-tags: [ networking fundamentals, Cumulus Linux ]
+cli_tag: fail
+date: 2022-09-21 06:20:00+00:00
+series:
+- cli
+series_weight: 300
+tags:
+- networking fundamentals
+- Cumulus Linux
+title: Linux Networking Data Plane Configuration
 ---
 I spent a rainy day [implementing VLANs, VRFs, and VXLAN on Cumulus Linux VX](/2022/09/netlab-1-3-1.html) and came to "appreciate" the beauties of Linux networking configuration.
 

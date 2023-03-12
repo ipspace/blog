@@ -1,8 +1,10 @@
 ---
+cli_tag: real
 date: 2019-05-16 08:39:00+02:00
 niac_tag: implement
 series:
 - niac
+- cli
 tags:
 - automation
 - configuration
