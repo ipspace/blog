@@ -1,7 +1,13 @@
 ---
-title: "Impact of Centralized Control Plane Partitioning"
-date: 2021-02-03 07:15:00
-tags: [ SDN, fabric ]
+date: 2021-02-03 07:15:00+00:00
+distributed-systems_tag: sdn
+series:
+- distributed-systems
+series_weight: 1300
+tags:
+- SDN
+- fabric
+title: Impact of Centralized Control Plane Partitioning
 ---
 A long-time reader sent me a series of questions about the impact of WAN partitioning in case of an SDN-based network spanning multiple locations after watching the [Architectures](https://my.ipspace.net/bin/list?id=DCFabric#ARCHITECTURES) part of [Data Center Fabrics](https://www.ipspace.net/Data_Center_Fabrics) webinar. He therefore focused on the specific case of *centralized control plane* (read: an equivalent of a stackable switch) with *distributed controller cluster* (read: switch stack spread across multiple locations).
 

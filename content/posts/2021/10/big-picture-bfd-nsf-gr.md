@@ -1,8 +1,10 @@
 ---
 date: 2021-10-28 07:25:00+00:00
+distributed-systems_tag: device
 high-availability_tag: external
 series:
 - ha-switching
+- distributed-systems
 tags:
 - networking fundamentals
 - high availability
