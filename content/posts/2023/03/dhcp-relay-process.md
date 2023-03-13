@@ -1,7 +1,7 @@
 ---
 title: "DHCP Relaying Details"
 date: 2023-03-09 07:54:00
-tags: [ DHCP ]
+tags: [ DHCP, IP routing ]
 series: [ dhcp-relay ]
 ---
 Chinar Trivedi asked an [interesting question](https://twitter.com/cloudnetworkguy/status/1631891785478971392) about DHCP relaying in VXLAN/EVPN world on Twitter and my first thought was "_that shouldn't be hard_" but when I [read the first answer](https://twitter.com/aninchat/status/1631952450189131776) that turned into "_wait a minute, how exactly does DHCP relaying works?_"

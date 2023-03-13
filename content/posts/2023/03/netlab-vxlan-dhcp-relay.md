@@ -2,7 +2,7 @@
 date: 2023-03-27 07:15:00+00:00
 netlab_tag: use
 series_title: DHCP Relaying in VXLAN Segments
-tags: [ netlab ]
+tags: [ netlab, IP routing, DHCP, VXLAN ]
 title: DHCP Relaying in VXLAN Segments
 pre_scroll: True
 series: [ dhcp-relay ]

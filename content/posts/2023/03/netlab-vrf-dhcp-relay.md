@@ -2,7 +2,7 @@
 date: 2023-03-20 07:15:00+00:00
 netlab_tag: use
 series_title: VRF-Aware DHCP Relaying Lab
-tags: [ netlab ]
+tags: [ DHCP, netlab, IP routing ]
 title: Test VRF-Aware DHCP Relaying with netlab
 pre_scroll: True
 series: [ dhcp-relay ]
