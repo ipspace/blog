@@ -1,4 +1,4 @@
 ---
-title: Fast Failover
+title: BGP Essentials
 sidebar_box: rb
 ---

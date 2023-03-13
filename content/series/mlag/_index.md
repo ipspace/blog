@@ -2,7 +2,7 @@
 title: Multi-Chassis Link Aggregation
 layout: custom
 minimal_sidebar: true
-sidebar_box: rb
+sidebar_box: sw
 deep_dive:
 - page: /posts/2022/06/mlag-deep-dive-mac-learning.md
   title: Dynamic MAC Learning

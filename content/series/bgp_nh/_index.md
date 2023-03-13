@@ -1,4 +1,4 @@
 ---
-title: Fast Failover
+title: BGP Next Hops
 sidebar_box: rb
 ---

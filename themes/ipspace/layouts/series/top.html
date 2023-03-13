@@ -1,21 +1,44 @@
+{{ $pages := where (union .Pages (where $.Site.Pages "Layout" "custom")) ".Params.sidebar_box" "!=" "skip" }}
 {{ partial "header.html" . }}
-{{ range .Pages.ByTitle }}
-  {{ .Scratch.Set "ArticleContext" 0 }}
-  {{ if .Content }}
-    {{ partial "page-blurb.html" . }}
-  {{ end }}
-{{ end }}
-{{ $nt := where .Pages "Content" "==" "" }}
-{{ if len $nt }}
-<div class="post__item post__content">
-  <h3 class='firstHeading'>Other {{ .Title }}</h3>
-  <ul>
-  {{ range $nt.ByTitle }}
-    {{ if and (in .Title " ") }}
-    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+<div class='post__item post'>
+  <header class='post__header'>
+    <h1 class='post__title firstHeading' itemprop='name headline'>
+      <a href="{{ .Permalink }}">{{ if .Params.page_title }}{{ .Params.page_title }}{{ else }}{{ .Title }}{{ end }}</a>
+    </h1>
+    <p class="crumbs post__content"><a href="/">blog</a> » Technology resources</p>
+  </header>
+  <div class='post__content' itemprop='articleBody'>
+    {{ .Content }}
+    {{ range $.Site.Data.sidebar_lookup.display }}
+    {{   $pg := where $pages ".Params.sidebar_box" "==" . }}
+    {{   if len $pg }}
+    <h3>{{ with index $.Site.Data.sidebar_lookup . }}{{ . }}{{ else }}{{ . }}{{ end }}</a></h3>
+    <ul>
+    {{     range $pg.ByTitle }}
+      {{ $title := or .Params.page_title .Title }}
+      <li><a href="{{ .Permalink }}">{{ $title }}</a></li>
+    {{     end }}
+    </ul>
+    {{   end }}
     {{ end }}
-  {{ end }}
-  </ul>
+  <!--
+    {{ $nt := where .Pages ".Params.sidebar_box" "==" nil }}
+    {{ if len $nt }}
+    <div class="post__item post__content">
+      <h3 class='firstHeading'>Other Blog Post Series</h3>
+      <ul>
+      {{ range $nt.ByTitle }}
+        {{ if (in .Title " ") }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ else }}
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ end }}
+      {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+-->
+  </div>
 </div>
-{{ end }}
+
 {{ partial "footer.html" . }}

@@ -1,4 +1,4 @@
 ---
-title: Fast Failover
+title: DHCP Relaying
 sidebar_box: rb
 ---

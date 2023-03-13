@@ -1,5 +1,6 @@
 ---
 title: Firewalls on End Hosts
+sidebar_box: sec
 ---
 In September 2020, [Matthias Luft](https://www.ipspace.net/Author:Matthias_Luft) wrote an introductory article describing host-based firewalls (traffic filtering functionality deployed on end-hosts). His article triggered numerous questions including:
 
