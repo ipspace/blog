@@ -2,7 +2,6 @@
 date: 2021-04-11 07:12:00+00:00
 dr_tag: other
 high-availability_tag: dr
-series: Fail-Fast is Failing... Fast
 tags:
 - worth reading
 - high availability
