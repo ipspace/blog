@@ -12,4 +12,4 @@ sd-wan_tag: "101"
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/SDWAN/1%20-%20What%20Is%20SDWAN.mp4){{</jump>}}
 
-{{<note info>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch his answer.{{<note>}}
+{{<note info>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch his answer.{{</note>}}

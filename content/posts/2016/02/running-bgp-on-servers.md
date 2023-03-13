@@ -35,8 +35,8 @@ The old ideas resurfaced in the mainstream networking as [means of connecting th
 
 {{<note info>}}
 Juniper Contrail and Nuage VSP use BGP to [connect to the outside world](https://blog.ipspace.net/2014/01/interfacing-overlay-virtual-networks.html), but not from end-hosts, so they're out of the scope of this article.
-{{<note>}}
+{{</note>}}
 
-Lately, I've seen very smart full-stack engineers (read: sysadmins who understand networking) use recent versions of Quagga (with [Cumulus Networks patches](https://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html)) to run BGP across [unnumbered links](http://blog.ipspace.net/2014/06/unnumbered-ospf-interfaces-in-quagga.html) between servers and ToR switches totally simplifying both BGP configurations as well as deployment procedures (not to mention turning the whole fabric into pure L3 fabric with no VLANs on ToR switches).
+Lately, I've seen very smart full-stack engineers (read: sysadmins who understand networking) use FRR to run BGP across [unnumbered links](http://blog.ipspace.net/2014/06/unnumbered-ospf-interfaces-in-quagga.html) between servers and ToR switches totally simplifying both BGP configurations as well as deployment procedures (not to mention turning the whole fabric into pure L3 fabric with no VLANs on ToR switches).
 
 Want to know more? Dinesh Dutt described the idea in the [Leaf-and-Spine Fabric Architectures](http://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar.

@@ -1,7 +1,6 @@
 ---
 title: CLI versus API
 layout: custom
-minimal_sidebar: true
 sidebar_box: NetOps
 ---
 While the "*We don't need no CLI*" or "*CLI hinders the innovation*" or "*SDN will get rid of CLI*" stupidities keep erupting on various social media, you might enjoy an antidote of past ipSpace.net blog posts.
