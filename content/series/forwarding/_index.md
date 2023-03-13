@@ -1,4 +1,4 @@
 ---
-title: DHCP Relaying
-sidebar_box: rb
+title: Packet Forwarding Basics
+sidebar_box: sw
 ---
