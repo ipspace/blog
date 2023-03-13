@@ -2,7 +2,7 @@
 date: 2023-03-13 07:01:00+00:00
 netlab_tag: use
 series_title: DHCP Relaying Lab
-tags: [ netlab ]
+tags: [ netlab, DHCP, IP routing ]
 title: Test DHCP Relaying with netlab
 pre_scroll: True
 series: [ dhcp-relay ]
