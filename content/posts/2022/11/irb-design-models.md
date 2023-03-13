@@ -74,4 +74,4 @@ Routing on ingress and egress looks like business as usual to anyone familiar wi
 
 Regardless of how a particular implementation answers those questions, the forwarding path between a set of hosts in different subnets is always symmetrical, resulting in the Symmetric IRB name.
 
-{{<next-in-series page="/posts/2023/02/irb-edge-routing.html">}}
+{{<next-in-series page="/posts/2023/02/irb-edge-routing.html" />}}

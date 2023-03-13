@@ -54,7 +54,7 @@ There's only one good advice you can give someone who's faced with an enormous t
 
 {{<note info>}}
 Several attendees of our [network automation course](https://www.ipspace.net/Building_Network_Automation_Solutions) decided to do exactly this as one of the hands-on assignments, [usually across numerous platforms from a half-dozen vendors](https://blog.ipspace.net/2018/01/synchronize-network-management.html).
-{{<note>}}
+{{</note>}}
 
 You might be lucky enough to have equipment from a vendor that can spell *data models* or *candidate device configuration* (hint: [focus on these requirements](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html) instead of PowerPoint-based unicorn poop the next time you're buying networking gear) in which case the integration process is reasonably simple. If you're not so lucky, explore the [brownfield automation solution](https://www.ipspace.net/kb/ConfigRegex/) described by Josef Fuchs.
 

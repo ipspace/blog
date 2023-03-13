@@ -7,4 +7,4 @@ I wrote two dozen blog posts describing IP anycast concepts, from first-hop anyc
 
 That's fixed: everything I ever wrote about anycast is nicely structured on the new [Anycast Resources](/series/anycast.html) page.
 
-{{<jump>}}[Explore](/series/anycast.html){{<jump>}}
+{{<jump>}}[Explore](/series/anycast.html){{</jump>}}

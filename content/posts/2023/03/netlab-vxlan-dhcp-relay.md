@@ -52,7 +52,7 @@ You can [view the complete topology file on GitHub](https://github.com/ipspace/n
 
 ### Device Configurations
 
-In addition to IP addressing, VLAN, VXLAN, and OSPF configuration I configured anycast gateways and simple DHCP relay on the Arista switches, and a DHCP pool on the Cisco IOSv router. The [final device configurations](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vxlan-relay/config) (with Cisco IOSv as DHCP relay) are available in [netlab-examples GitHub repository](https://github.com/ipspace/netlab-examples).
+In addition to IP addressing, VLAN, VXLAN, and OSPF configuration I configured anycast gateways and simple DHCP relay on the Arista switches, and a DHCP pool on the Cisco IOSv router. The [final device configurations](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vxlan-relay/config) are available in [netlab-examples GitHub repository](https://github.com/ipspace/netlab-examples).
 
 {{<cc>}}Arista vEOS VLAN/VXLAN DHCP relay configuration{{</cc>}}
 ```
