@@ -13,8 +13,15 @@ In reality:
 
 - It doesn't matter whether you have two or sixteen spines -- the blast radius is the same. It is true that you're pretty low on redundancy if you have just two spines and of them exploded, so make that three.
 - Adding a spine switch often results in the rewiring of the physical fabric; the only exception would be going from three to four spines when you're using leaf switches with four uplinks. Next step: an exciting configuration exercise unless you've decided to use unnumbered leaf-to-spine links when deploying the fabric. 
-- The number of uplink ports on the leaf switches limits the maximum number of spine switches. Most leaf switches have four uplinks (some Cisco switches have six) -- the only realistic options you have are thus two, three, or four spine switches.
+- The number of uplink ports on the leaf switches limits the maximum number of spine switches. Most leaf switches have four uplinks, although there are some with six[^CSCO] or eight[^JR] uplinks -- the only realistic options in many environments are thus two, three, or four spine switches.
+- Obviously you could also buy switches with high-speed ports (example: 100GE) and use some of those as four lower-speed ports (example: 25GE) with breakout cables. That makes your design totally flexible regarding the number of uplinks and the oversubscription ratio, but the breakout cables could get messy, although not as much as the next option[^MS].
 - You could build much larger fabrics if you split leaf switch uplinks into individual lanes (100GE ports into four 25GE lanes), but you don't want to know how messy the cabling gets with the octopus cables or complex behind-the-scenes wiring between patch panels.
+
+[^CSCO]: Many Cisco switches had six uplinks years ago.
+
+[^JR]: For example, Arista 7280SR3
+
+[^MS]: And I don't want to know how messy it gets when you decide you need extra uplink ports and have to rewire the whole fabric because some of the ports that used breakout cables became uplinks.
 
 {{<note info>}}Brad Hedlund [explained that idea](https://my.ipspace.net/bin/list?id=Clos#PHY_TOPOLOGY) in the [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar.{{</note>}}
 
@@ -30,4 +37,9 @@ And [also](https://twitter.com/mipsytipsy/status/1628299299867226113):
 
 > The antipattern I see in so many places with devs and architects is the same fucking problem they have with devs and ops. "No time to be on call, too busy writing important software" ~turns into~ "No time to write code, too busy telling other people how to write code."
 
-FWIW, you should read the whole thread (assuming Twitter still works when you're reading this), and continue with Martin Fowler 's take on [Who Needs an Architect](https://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf).
+FWIW, you should read the whole thread (assuming Twitter still works when you're reading this) and the [resulting blog post](https://charity.wtf/2023/03/09/architects-anti-patterns-and-organizational-fuckery/), and continue with Martin Fowler 's take on [Who Needs an Architect](https://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf).
+
+### Revision History
+
+2023-03-14
+: Sander Steffann pointed out that there are more switches with six or even eight uplinks than I expected. Also added the 'local breakout cables' option.

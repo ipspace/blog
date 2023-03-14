@@ -135,7 +135,7 @@ Temp  sub net mask: 255.255.255.0
 * The DHCP client thinks one of the directly-connected switches is the DHCP server. That's the only way to get a DHCP request across VRF boundary.
 * When using Arista EOS as the DHCP relay, the DHCP server IP address used by the client is the unicast (not anycast) IPv4 address of the switch.
 * Different clients could be using different switches as their "DHCP servers".
-* If the unicast IPv4 address of the relaying switch disappears, the client loses its path to the DHCP server, and cannot extend its lease. Be careful when doing maintenance that takes longer than the DHCP lease time.
+* If the unicast IPv4 address of the relaying switch disappears, the client loses its path to the DHCP server, and cannot extend its lease, but the rebinding process (section 4.4.5 of [RFC 2131](https://www.rfc-editor.org/rfc/rfc2131)) should take care of that. With the default settings, the rebinding process starts before 90% of the lease time expires which should be more than enough.
 
 Apart from the minor details listed above, it all looks like a walk in the park, right? It is, and it should work with any DHCP server and any decently-implemented data center switch... as long as you're using a single DHCP server. More about this juicy detail in the last blog post in this series.
 
@@ -154,4 +154,4 @@ Want to run this lab on your own, or try it out with different devices? No probl
 {{<next-in-series page="/posts/2023/04/dhcp-relay-redundancy.md">}}
 ### Coming Up Next
 
-We had a smooth journey so far (apart from an unknown Arista EOS  developer failing to read the RFC), but we're about to hit a roadblock: what happens if we want to have redundant DHCP servers? Stay tuned...{{</next-in-series>}}
+We had a smooth journey so far (apart from an unknown Arista EOS  developer failing to read the RFC 6607), but we're about to hit a minor hurdle: what happens if we want to have redundant DHCP servers? Stay tuned...{{</next-in-series>}}
