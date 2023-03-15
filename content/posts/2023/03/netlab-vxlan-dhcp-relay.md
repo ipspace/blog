@@ -367,8 +367,8 @@ Want to run this lab on your own, or try it out with different devices? No probl
 * Make sure your preferred device supports DHCP relaying
 * [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
-* Download the [DHCP in VXLAN segment relaying example](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vxlan-relay) directory
-* If you want to use a relaying device that's not Cisco IOS or Arista EOS, add a configuration template to `dhcp-relay` subdirectory.
+* Download the [DHCP in VXLAN segment relaying example](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vxlan-relay) into an empty directory
+* If you want to use a relaying device that's not Arista EOS, add a configuration template to `dhcp-relay` subdirectory.
 * Execute **netlab up**
 * Enjoy! 😊
 
