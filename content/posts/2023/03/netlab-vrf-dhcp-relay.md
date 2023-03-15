@@ -13,7 +13,7 @@ After [figuring out how DHCP relaying works](/2023/03/dhcp-relay-process.html) a
 
 I had to make just a few changes to the [DHCP relaying lab topology](https://github.com/ipspace/netlab-examples/blob/master/DHCP/relay/topology.yml):
 
-* DHCP server is running on CSR 1000v. VRF-aware DHCP pools didn't work on IOSv.
+* DHCP server is running on CSR 1000v. IOSv DHCP server does not support subnet selection DHCP option and thus doesn't work with relays that do inter-VRF DHCP relaying.
 * I put the link between the DHCP client and DHCP relay into a VRF. 
 <!--more-->
 {{<cc>}}Changes in lab topology{{</cc>}}
@@ -78,7 +78,7 @@ ip dhcp pool p_172.16.0.0
 
 ### Does It Work?
 
-It does... once I figured out IOSv DHCP server doesn't work well with VRFs and switched to CSR 1000v[^ST]. Let's go into some of the interesting (cleaned up) debugging printouts on the DHCP server:
+It does... once I figured out IOSv DHCP server doesn't work well with inter-VRF DHCP relaying and switched to CSR 1000v[^ST]. Let's go into some of the interesting (cleaned up) debugging printouts on the DHCP server. Full [client](https://github.com/ipspace/netlab-examples/blob/master/DHCP/vrf-relay/config/user.log) and [server](https://github.com/ipspace/netlab-examples/blob/master/DHCP/vrf-relay/config/srv.log) logs are [available on GitHub](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vrf-relay).
 
 [^ST]: My stubbornness wasted a few hours of my life :(
 
@@ -100,8 +100,9 @@ Here's what's going on behind the scenes.
 DHCP relay:
 
 * Specified its global IPv4 address (10.1.0.1) as the relay IPv4 address (**giaddr**)
-* Included client VPN information (option 82 sub-option 150) and desired subnet (option 221?)
-* Set the desired server ID to its VRF IP address (option 82 sub-option 11)
+* Used link selection sub-option (option 82 sub-option 5, defined in [RFC 3527](https://www.rfc-editor.org/rfc/rfc3527.html)) to pass the information about the VRF IP subnet in which the client resides.
+* Included client VPN information (option 82 sub-option 150, defined in [RFC 6607](https://www.rfc-editor.org/rfc/rfc6607.html))
+* Set the desired server ID to its VRF IP address (option 82 sub-option 11, defined in [RFC 5107](https://www.rfc-editor.org/rfc/rfc5107.html))
 
 DHCP server therefore assigned an IP address from 172.16.0.0 pool to the client, set the server ID to 172.16.0.2, and sent the reply to 10.1.0.1. Similar processing happens for all subsequent packets.
 
@@ -146,7 +147,17 @@ DHCPD: client's VPN is .
 
 According to RFC 6607, the VPN selection sub-option (sub-option 151) starts with [Virtual Subnet Selection Type](https://www.rfc-editor.org/rfc/rfc6607.html#section-3.5) (a binary zero for VRF name), and that's what Cisco IOS XE expects.
 
-Arista EOS documentation claims that the value of sub-option 151 created by EOS contains just the VPN name (without the intervening binary zero meaning "what follows is the VPN name"). Faced `client` as the value of sub-option 151, Cisco IOS understands the VSS Type to be 99 (ASCII value of `c`), which is invalid. The DHCP server on CSR 1000v thus ignores sub-option 151.
+Arista EOS 4.29.1F documentation (section 13.1.9 -- DHCP Relay Across VRF) claims that the value of sub-option 151 created by EOS contains just the VPN name (without the intervening binary zero meaning "what follows is the VPN name"). Faced with `client` as the value of sub-option 151, Cisco IOS understands the VSS Type to be 99 (ASCII value of `c`), which is invalid. The DHCP server on CSR 1000v thus ignores sub-option 151.
+
+### Takeaways
+
+* Inter-VRF DHCP relaying is complex -- it's trying to make a simple protocol do things it was never designed to do. We'll get back to the fun implications of this Rube Goldberg stack of kludges when we get to redundant designs.
+* Two or three sub-options of option-82 are involved in inter-VRF DHCP relaying, and DHCP relays and servers have to support them perfectly for the whole thing to work.
+* In particular, the DHCP relay and DHCP server MUST support *server identifier override* sub-options of option 82 and MUST  support the same way of identifying the client subnet.
+* There are at least two ways of specifying the client subnet in DHCP -- *link selection* sub-option of option 82 and *subnet selection option* (option 118). In the ideal world, all relay agents and servers would use *link selection* sub-option -- after all, it was designed to be used in DHCP relaying scenarios. I wouldn't be surprised if the networking vendors fail to reach that level of consistency.
+* *Virtual Subnet Selection Suboption* (option 151) it not needed for inter-VRF DHCP relaying, but is required to implement multi-tenant DHCP with overlapping address pools. At least one vendor implemented it incorrectly.
+
+I'm positive that you've experienced your share of horror stories on other platforms. Please share them in the comments!
 
 ### Reference: Configuration Templates
 
@@ -211,7 +222,7 @@ Want to run this lab on your own, or try it out with different devices? No probl
 * Make sure your preferred device supports DHCP relaying
 * [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
-* Download the [VRF-aware DHCP relaying example](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vrf-relay) directory
+* Download the [VRF-aware DHCP relaying example](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vrf-relay) into an empty directory
 * If you want to use a relaying device that's not Cisco IOS or Arista EOS, add a configuration template to `dhcp-relay` subdirectory.
 * Execute **netlab up**
 * Enjoy! 😊

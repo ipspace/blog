@@ -143,15 +143,15 @@ Apart from the minor details listed above, it all looks like a walk in the park,
 
 Want to run this lab on your own, or try it out with different devices? No problem:
 
-* Make sure your preferred device supports DHCP relaying
+* Make sure your preferred device supports inter-VRF DHCP relaying, VXLANs and EVPN.
 * [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
 * [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
-* Download the [VRF-aware DHCP relaying example](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vrf-relay) directory
-* If you want to use a relaying device that's not Cisco IOS or Arista EOS, add a configuration template to `dhcp-relay` subdirectory.
+* Download the [EVPN VRF DHCP relaying example](https://github.com/ipspace/netlab-examples/tree/master/DHCP/evpn-relay) into an empty directory
+* If you want to use a relaying device that's not Arista EOS, add a configuration template to `dhcp-relay` subdirectory.
 * Execute **netlab up**
 * Enjoy! 😊
 
-{{<next-in-series page="/posts/2023/04/dhcp-relay-redundancy.md">}}
+{{<next-in-series page="/posts/2023/04/dhcp-redundant-relay.md">}}
 ### Coming Up Next
 
 We had a smooth journey so far (apart from an unknown Arista EOS  developer failing to read the RFC 6607), but we're about to hit a minor hurdle: what happens if we want to have redundant DHCP servers? Stay tuned...{{</next-in-series>}}
