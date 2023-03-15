@@ -11,15 +11,11 @@ Isn't that wonderful? If you need more bandwidth, sprinkle the magic spine powde
 <!--more-->
 In reality:
 
-- It doesn't matter whether you have two or sixteen spines -- the blast radius is the same. It is true that you're pretty low on redundancy if you have just two spines and of them exploded, so make that three.
-- Adding a spine switch often results in the rewiring of the physical fabric; the only exception would be going from three to four spines when you're using leaf switches with four uplinks. Next step: an exciting configuration exercise unless you've decided to use unnumbered leaf-to-spine links when deploying the fabric. 
-- The number of uplink ports on the leaf switches limits the maximum number of spine switches. Most leaf switches have four uplinks, although there are some with six[^CSCO] or eight[^JR] uplinks -- the only realistic options in many environments are thus two, three, or four spine switches.
+- It doesn't matter whether you have two or sixteen spines -- the blast radius is the same. It is true that you're pretty low on redundancy if you have just two spines and one of them exploded, so make that three.
+- Adding a spine switch often results in the rewiring of the physical fabric; the only exception would be going from three to four spines when you're using leaf switches with four uplinks (and similarly for switches with eight uplinks). Next step: an exciting configuration exercise unless you've decided to use unnumbered leaf-to-spine links when deploying the fabric. 
+- The number of uplink ports on the leaf switches limits the maximum number of spine switches. Most leaf switches used to have four uplinks. These days, a lot of switches come with six or eight uplinks, making it easier to implement the scale-out nirvana ;)
 - Obviously you could also buy switches with high-speed ports (example: 100GE) and use some of those as four lower-speed ports (example: 25GE) with breakout cables. That makes your design totally flexible regarding the number of uplinks and the oversubscription ratio, but the breakout cables could get messy, although not as much as the next option[^MS].
 - You could build much larger fabrics if you split leaf switch uplinks into individual lanes (100GE ports into four 25GE lanes), but you don't want to know how messy the cabling gets with the octopus cables or complex behind-the-scenes wiring between patch panels.
-
-[^CSCO]: Many Cisco switches had six uplinks years ago.
-
-[^JR]: For example, Arista 7280SR3
 
 [^MS]: And I don't want to know how messy it gets when you decide you need extra uplink ports and have to rewire the whole fabric because some of the ports that used breakout cables became uplinks.
 
@@ -43,3 +39,6 @@ FWIW, you should read the whole thread (assuming Twitter still works when you're
 
 2023-03-14
 : Sander Steffann pointed out that there are more switches with six or even eight uplinks than I expected. Also added the 'local breakout cables' option.
+
+2023-03-15
+: Another dose of reality: Erik Auerswald pointed out that many switches using Trident3 or Trident4 ASICs have eight uplinks. More details in a follow-up blog post.
