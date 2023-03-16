@@ -13,7 +13,7 @@ In reality:
 
 - It doesn't matter whether you have two or sixteen spines -- the blast radius is the same. It is true that you're pretty low on redundancy if you have just two spines and one of them exploded, so make that three.
 - Adding a spine switch often results in the rewiring of the physical fabric; the only exception would be going from three to four spines when you're using leaf switches with four uplinks (and similarly for switches with eight uplinks). Next step: an exciting configuration exercise unless you've decided to use unnumbered leaf-to-spine links when deploying the fabric. 
-- The number of uplink ports on the leaf switches limits the maximum number of spine switches. Most leaf switches used to have four uplinks. These days, a lot of switches come with six or eight uplinks, making it easier to implement the scale-out nirvana ;)
+- The number of uplink ports on the leaf switches limits the maximum number of spine switches. Most leaf switches used to have four uplinks. These days, a lot of switches come with six or eight uplinks, making it easier to build fabrics with more spines and thus lower oversubscription ratio. The maximum fabric size is still limited by the number of ports on the spine switches though.
 - Obviously you could also buy switches with high-speed ports (example: 100GE) and use some of those as four lower-speed ports (example: 25GE) with breakout cables. That makes your design totally flexible regarding the number of uplinks and the oversubscription ratio, but the breakout cables could get messy, although not as much as the next option[^MS].
 - You could build much larger fabrics if you split leaf switch uplinks into individual lanes (100GE ports into four 25GE lanes), but you don't want to know how messy the cabling gets with the octopus cables or complex behind-the-scenes wiring between patch panels.
 
@@ -35,6 +35,11 @@ And [also](https://twitter.com/mipsytipsy/status/1628299299867226113):
 
 FWIW, you should read the whole thread (assuming Twitter still works when you're reading this) and the [resulting blog post](https://charity.wtf/2023/03/09/architects-anti-patterns-and-organizational-fuckery/), and continue with Martin Fowler 's take on [Who Needs an Architect](https://martinfowler.com/ieeeSoftware/whoNeedsArchitect.pdf).
 
+{{<next-in-series page="/posts/2023/03/leaf-four-uplinks.md">}}
+### What Happened to Switches with Four Uplinks?
+
+The original version of this blog post (see *revision history* below) talked about leaf switches with four uplinks. I quickly got corrected -- many modern leaf switches have four uplinks. What happened? We'll explore that in the next blog post in this series.{{</next-in-series>}}
+
 ### Revision History
 
 2023-03-14
@@ -42,3 +47,6 @@ FWIW, you should read the whole thread (assuming Twitter still works when you're
 
 2023-03-15
 : Another dose of reality: Erik Auerswald pointed out that many switches using Trident3 or Trident4 ASICs have eight uplinks. More details in a follow-up blog post.
+
+2023-03-16
+: The number of uplinks a switch has doesn't matter (apart from the oversubscription ratio). The maximum fabric size is still limited by the number of ports on the spine switches.
