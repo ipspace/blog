@@ -101,7 +101,7 @@ DHCP relay:
 
 * Specified its global IPv4 address (10.1.0.1) as the relay IPv4 address (**giaddr**)
 * Used link selection sub-option (option 82 sub-option 5, defined in [RFC 3527](https://www.rfc-editor.org/rfc/rfc3527.html)) to pass the information about the VRF IP subnet in which the client resides.
-* Included client VPN information (option 82 sub-option 150, defined in [RFC 6607](https://www.rfc-editor.org/rfc/rfc6607.html))
+* Included client VPN information (option 82 sub-option 151, defined in [RFC 6607](https://www.rfc-editor.org/rfc/rfc6607.html))
 * Set the desired server ID to its VRF IP address (option 82 sub-option 11, defined in [RFC 5107](https://www.rfc-editor.org/rfc/rfc5107.html))
 
 DHCP server therefore assigned an IP address from 172.16.0.0 pool to the client, set the server ID to 172.16.0.2, and sent the reply to 10.1.0.1. Similar processing happens for all subsequent packets.
