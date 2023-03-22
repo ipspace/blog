@@ -43,8 +43,17 @@ def read_file(path,dir_list,tag_list,series):
     return
 
   date = frontmatter.get('date')
+  file_entry = {
+    'name': os.path.basename(path),
+    'path': path,
+    'date': date,
+    'tags': frontmatter.get('tags'),
+    'title':frontmatter.get('title')
+  }
+
   if frontmatter.get('draft'):
-    date = None
+    file_entry['date'] = None
+    file_entry['dir']  = date.strftime('%Y/%m')
 
   if tag_list:
     if not tag_filter.match_tags(frontmatter.get('tags'),tag_list):
@@ -54,13 +63,7 @@ def read_file(path,dir_list,tag_list,series):
     if not series in frontmatter.get('series',[]):
       return
 
-  dir_list.append({
-    'name': os.path.basename(path),
-    'path': path,
-    'date': date,
-    'tags': frontmatter.get('tags'),
-    'title':frontmatter.get('title')
-    })
+  dir_list.append(file_entry)
 
 def scan_posts(path,dir_list,tag_list,series):
   if LOGGING:
@@ -98,7 +101,7 @@ def print_dir(dir_list):
         print(".....")
     last_day = wday
     last_date = date
-    line = "%20s: %s" % (date.strftime('%a %Y-%m-%d %H:%M') if date else "DRAFT",entry['name'])
+    line = "%20s: %s" % (date.strftime('%a %Y-%m-%d %H:%M') if date else f"{entry['dir']} DRAFT",entry['name'])
     print(colored(line,color) if color else line)
 
 def print_url(sorted_list,prefix):
