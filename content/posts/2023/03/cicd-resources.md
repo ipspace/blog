@@ -1,5 +1,5 @@
 ---
-title: "New: CD/CD in Networking Resource Page"
+title: "New: CI/CD in Networking Resource Page"
 date: 2023-03-22 06:42:00
 tags: [ worth reading ]
 ---
