@@ -48,3 +48,31 @@ But wait, it gets better:
 I'm positive another leak resulted in Comcast and Verizon reporting problems, but not in early June 2019.
 
 The worst (or the scariest) part of my interaction with ChatGPT: it all looked reasonable. Job Snijders is working on improving BGP, and it's feasible that he might have been working with RIPE (he's a frequent presenter at RIPE meetings). The rest of the story sounds legit until you start verifying the claims (including sending it to Job) and could be easily believed. What a fun world we live in, and it will only get better when the next generation of AI starts training on AI-generated stuff. As a well-known podcaster kept saying: "_never let facts get in the way of a good story_."
+
+### GPT-4 Is Still Hallucinating
+
+The obvious question after being faced with ChatGPT nonsense is "_would GPT-4 fare any better?_" I'm in no hurry to know that, and am therefore not willing to pay for the privilege of discovering the answer, but Andrew Yourtchenko (of the [Happy Eyeballs](https://blog.ipspace.net/2013/03/happy-eyeballs-happiness-defined-by.html) fame) kindly offered to run the queries for me. GPT-4 survived the first query but ([like any decent salesperson](https://blog.ipspace.net/2023/03/worth-reading-dangers-knowing-everything.html)) couldn't resist adding irrelevant information:
+
+{{<figure src="/2023/03/gpt4-1.jpg">}}
+
+The second query caused another bout of hallucination, this time inventing a researcher we never heard about:
+
+{{<figure src="/2023/03/gpt4-2.jpg">}}
+
+### Bing Fares Much Better
+
+I asked Bing Chatbot the same questions. It couldn't find anything related to the first query (because the disruption wasn't Internet-wide):
+
+> I’m sorry but I couldn’t find any information about the specific event you mentioned. However, there have been instances where BGP misconfigurations have caused internet-wide disruptions. BGP is what makes data routing on the internet possible and advertises viable routes for data. If BGP stops working, those routes can’t be found and disappear from the internet, so the data has nowhere to go.
+
+Even better, it found the exact incident I was looking for after the second query:
+
+> On 27 August 2010, the RIPE NCC’s Routing Information Service (RIS) was involved in an experiment using optional attributes in the Border Gateway Protocol (BGP). As a result of this experiment, a small but significant percentage of global Internet traffic was disrupted for a period of about 30 minutes
+
+### Lesson Learned
+
+Large language models still seem to be little more than stochastic parrots regardless of how well they perform on standardized tests[^ST], but you can get great results if you use them to implement smarter search or as a [front-end to another knowledge-based service](https://writings.stephenwolfram.com/2023/03/chatgpt-gets-its-wolfram-superpowers/).
+
+Obviously that approach wouldn't make VCs happy -- imagine you have to admit that instead of the first stepping stone toward Artificial General Intelligence you created a better user interface ;)
+
+[^ST]: Or maybe that just validates the opinion many people have about standardized tests ;)
