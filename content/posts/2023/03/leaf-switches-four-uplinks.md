@@ -35,7 +35,7 @@ For example, if your ASIC has 128 25GE lanes, and you can bundle all of them, yo
 
 Anyway, we still don't know why the old switches had four uplinks while the new ones have eight. The number of ASIC lanes hasn't changed. According to exceedingly-sparse public Broadcom documentation [Trident2](https://www.broadcom.com/products/ethernet-connectivity/switching/strataxgs/bcm56850-series) had 128 10GE lanes, and most switches used just 64 of them (48 x 10GE ports, 4 x 40GE ports). [Trident3](https://www.broadcom.com/products/ethernet-connectivity/switching/strataxgs/bcm56870-series) has 128 25GE lanes, and most switches use 80 of them (48 x 25GE ports, 8 x 100GE ports @ 4 lanes).
 
-It could be that it became cheaper to add high-speed ports (not transceivers), so it doesn't hurt to have switches with more uplinks addressing the needs of customers requiring lower oversubscription ratios. It could also be that the true limiting factor was the packet-per-second performance -- when using all lanes, the [forwarding performance of small packets](https://blog.ipspace.net/2021/02/importance-switching-small-packets.html) would be way below the advertised bandwidth figure.
+It could be that it became cheaper to add high-speed ports (not transceivers), so it doesn't hurt to have switches with more uplinks addressing the needs of customers requiring lower oversubscription ratios. It could also be that the true limiting factor was the packet-per-second performance -- when using all lanes, the [forwarding performance of small packets](https://blog.ipspace.net/2021/02/importance-switching-small-packets.html) would be way below the advertised bandwidth figure. Or maybe Broadcom made different versions of Trident2 ASICs (like they do with Trident3) without ever telling us about them, and the switches with four uplinks used cheaper versions of Trident2 ASIC.
 
 Your guess is as good as mine -- comments highly appreciated ;)
 
@@ -47,4 +47,6 @@ While trying to figure out the mystery of missing links, I rediscovered the beau
 
 * Broadcom always claimed that the ASICs bandwidth is the number of lanes x lane speed. For example, [Trident3-X7](https://www.broadcom.com/products/ethernet-connectivity/switching/strataxgs/bcm56870-series) has 128 25GE lanes and 3.2 Tbps of forwarding capacity.
 * Switch manufacturers usually claim twice the bandwidth Broadcom claims in its ASIC specs, sometimes adding "bidirectional" to the inflated figure. For example, Arista claims 7050X3 switches have 6.4 Tbps of switching bandwidth.
-* The vendor claims are an obvious example of marketing math. The forwarding performance of an ASIC (or a switch) is the sum of all packets *entering* the switch. Counting each packet twice (once entering once leaving the ASIC) and claiming that's the true forwarding performance is nonsense.
+* The vendor claims are an obvious example of marketing math[^46A]. The forwarding performance of an ASIC (or a switch) is the sum of all packets *entering* the switch. Counting each packet twice (once entering once leaving the ASIC) and claiming that's the true forwarding performance is nonsense.
+
+[^46A]: Unless Arista uses 4-6 ASICs in 7050X3 switches. The "_why do we need 4-6 ASICs and not two_" question is left as an exercise for the reader.
