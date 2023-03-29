@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Chris Marget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2540111596655328753">05 December 2011 22:08</a>
+                <a rel="nofollow" id="c2540111596655328753" href="#2540111596655328753">05 December 2011 22:08</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, that sounds like a lot of hoops to jump through in order to implement a feature that was available with both  VTP and GVRP.<br /><br />Perhaps I&#39;m missing something, but it seems that this problem has been long solved.  Why reinvent this wheel?  We had open standard VLAN pruning on CatOS 5.4, afterall.<br /><br />&quot;brought to you by the same people who won&#39;t run LACP or even MAC-learning bridges&quot;<br /><br />...oh.  Nevermind.</p>
+            <div class="comment-content">Ivan, that sounds like a lot of hoops to jump through in order to implement a feature that was available with both  VTP and GVRP.<br /><br />Perhaps I&#39;m missing something, but it seems that this problem has been long solved.  Why reinvent this wheel?  We had open standard VLAN pruning on CatOS 5.4, afterall.<br /><br />&quot;brought to you by the same people who won&#39;t run LACP or even MAC-learning bridges&quot;<br /><br />...oh.  Nevermind.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1012489447295833298">05 December 2011 22:22</a>
+                <a rel="nofollow" id="c1012489447295833298" href="#1012489447295833298">05 December 2011 22:22</a>
               </span>
             </div>
-            <p class="comment-content">You know I&#39;m not a switching person  ;) Anyhow, figured out today that VTP, GVRP and MVRP do more-or-less the same thing - they all allow you to prune VLANs on inter-switch trunks based on _what&#39;s configured on the access ports (or trunks)_<br /><br />The main problem in vSwitch-pSwitch integration is &quot;how do I guess which VLANs to configure on the pSwitch access ports?&quot; and there&#39;s no ideal solution for that (because vSwitches keep mum about their needs). After you know which VLANs you need on access ports, VTP/GVRP/MVRP does the rest.</p>
+            <div class="comment-content">You know I&#39;m not a switching person  ;) Anyhow, figured out today that VTP, GVRP and MVRP do more-or-less the same thing - they all allow you to prune VLANs on inter-switch trunks based on _what&#39;s configured on the access ports (or trunks)_<br /><br />The main problem in vSwitch-pSwitch integration is &quot;how do I guess which VLANs to configure on the pSwitch access ports?&quot; and there&#39;s no ideal solution for that (because vSwitches keep mum about their needs). After you know which VLANs you need on access ports, VTP/GVRP/MVRP does the rest.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Will</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1453278599511784571">06 December 2011 00:56</a>
+                <a rel="nofollow" id="c1453278599511784571" href="#1453278599511784571">06 December 2011 00:56</a>
               </span>
             </div>
-            <p class="comment-content">Here&#39;s my solution thus far for a 5K+ server data center -<br />   Customer X requests a range of IPs for a new program.  If the program fits in existing virtual-enabled subnets, fine.  If not, when the server folks start their builds, they ping me and ask me to create a port-profile if it is missing.  I install the Vlans on the access switches as part of building the vlan on the Cisco 1KV.  It takes five minutes, what&#39;s the big deal?  Yes i know Cisco and VMWare are trying to edge out the network engineer(and also SAN?) requirement for their builds but doesn&#39;t anyone remember entire campuses being wiped out by vlan auto-config protocols?</p>
+            <div class="comment-content">Here&#39;s my solution thus far for a 5K+ server data center -<br />   Customer X requests a range of IPs for a new program.  If the program fits in existing virtual-enabled subnets, fine.  If not, when the server folks start their builds, they ping me and ask me to create a port-profile if it is missing.  I install the Vlans on the access switches as part of building the vlan on the Cisco 1KV.  It takes five minutes, what&#39;s the big deal?  Yes i know Cisco and VMWare are trying to edge out the network engineer(and also SAN?) requirement for their builds but doesn&#39;t anyone remember entire campuses being wiped out by vlan auto-config protocols?</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7342859585414497309">06 December 2011 08:19</a>
+                <a rel="nofollow" id="c7342859585414497309" href="#7342859585414497309">06 December 2011 08:19</a>
               </span>
             </div>
-            <p class="comment-content">Will, thanks for sharing a real-life example!<br /><br />Am I right in assuming you allow the VMs for a new application (that needs a new VLAN) to be deployed only on a limited range of servers, thus limiting the scope of the newly-created VLANs? If that&#39;s the case and if the number of VLANs running on any particular server is small, it doesn&#39;t make sense to worry about the mismatch between VLANs needed by the server and VLANs configured on the access switch.<br /><br />If, however, VLANs span hundreds of servers, and you have a large number of sparsely populated VLANs with VMs randomly spread all over the place, then the dynamic VLAN adjustments make sense.<br /><br />Ivan</p>
+            <div class="comment-content">Will, thanks for sharing a real-life example!<br /><br />Am I right in assuming you allow the VMs for a new application (that needs a new VLAN) to be deployed only on a limited range of servers, thus limiting the scope of the newly-created VLANs? If that&#39;s the case and if the number of VLANs running on any particular server is small, it doesn&#39;t make sense to worry about the mismatch between VLANs needed by the server and VLANs configured on the access switch.<br /><br />If, however, VLANs span hundreds of servers, and you have a large number of sparsely populated VLANs with VMs randomly spread all over the place, then the dynamic VLAN adjustments make sense.<br /><br />Ivan</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Chris Marget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1070731487753641288">06 December 2011 13:25</a>
+                <a rel="nofollow" id="c1070731487753641288" href="#1070731487753641288">06 December 2011 13:25</a>
               </span>
             </div>
-            <p class="comment-content">Nobody uses those VLAN pruning schemes...  With the exception of Greg Ferro (discipline, dammit!), network admins are universally terrified of VTP, and GVRP is CatOS only (I think).<br /><br />You&#39;re absolutely right that the problem is the vSwitch &quot;keeping mum&quot;...  But it&#39;s a big leap from:<br />&quot;I won&#39;t tell the pSwitch what I need&quot;<br />to:<br />&quot;I need SNMP access to configure pSwitch ports for what I need&quot;<br /><br />Hey, why doesn&#39;t the vSwitch just *communicate* its needs?<br /><br />Will&#39;s concerns about VLAN distribution schemes wiping out data centers is well founded...  But those issues happened when the whole problem (and mistake) was owned by one administrative group.  Do we really want vCenter reconfiguring the physical network?  How&#39;s that an improvement over a far more limited auto-provisioning scheme that we can&#39;t get right?</p>
+            <div class="comment-content">Nobody uses those VLAN pruning schemes...  With the exception of Greg Ferro (discipline, dammit!), network admins are universally terrified of VTP, and GVRP is CatOS only (I think).<br /><br />You&#39;re absolutely right that the problem is the vSwitch &quot;keeping mum&quot;...  But it&#39;s a big leap from:<br />&quot;I won&#39;t tell the pSwitch what I need&quot;<br />to:<br />&quot;I need SNMP access to configure pSwitch ports for what I need&quot;<br /><br />Hey, why doesn&#39;t the vSwitch just *communicate* its needs?<br /><br />Will&#39;s concerns about VLAN distribution schemes wiping out data centers is well founded...  But those issues happened when the whole problem (and mistake) was owned by one administrative group.  Do we really want vCenter reconfiguring the physical network?  How&#39;s that an improvement over a far more limited auto-provisioning scheme that we can&#39;t get right?</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6112238607757251270">10 December 2011 22:22</a>
+                <a rel="nofollow" id="c6112238607757251270" href="#6112238607757251270">10 December 2011 22:22</a>
               </span>
             </div>
-            <p class="comment-content">&gt; VLANs span hundreds of servers<br /><br />In case of VMware-based virtualisation environment, Is there a point in provisioning any individual VLAN beyond an individual vSphere cluster it is serving (which is limited to 32 hosts today)? If not, then the argument is weakened, is it not?</p>
+            <div class="comment-content">&gt; VLANs span hundreds of servers<br /><br />In case of VMware-based virtualisation environment, Is there a point in provisioning any individual VLAN beyond an individual vSphere cluster it is serving (which is limited to 32 hosts today)? If not, then the argument is weakened, is it not?</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8677749812461571970">11 December 2011 11:16</a>
+                <a rel="nofollow" id="c8677749812461571970" href="#8677749812461571970">11 December 2011 11:16</a>
               </span>
             </div>
-            <p class="comment-content">That&#39;s one of those questions we could debate ad nauseam. In principle we all agree with you, in practice the server admins want to have &quot;I can deploy and/or move any VM to any host&quot; environment.<br /><br />There are probably valid use cases in scale-out environments (you don&#39;t want all instances on the same cluster), there are some maintenance scenarios where you want to evacuate a complete cluster ... in most cases it&#39;s the &quot;keep it simple&quot; approach. Provision all VLANs on all server-facing ports and as long as everything works you don&#39;t have to touch the switches anymore.</p>
+            <div class="comment-content">That&#39;s one of those questions we could debate ad nauseam. In principle we all agree with you, in practice the server admins want to have &quot;I can deploy and/or move any VM to any host&quot; environment.<br /><br />There are probably valid use cases in scale-out environments (you don&#39;t want all instances on the same cluster), there are some maintenance scenarios where you want to evacuate a complete cluster ... in most cases it&#39;s the &quot;keep it simple&quot; approach. Provision all VLANs on all server-facing ports and as long as everything works you don&#39;t have to touch the switches anymore.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">James</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1825997883457677198">16 October 2012 06:50</a>
+                <a rel="nofollow" id="c1825997883457677198" href="#1825997883457677198">16 October 2012 06:50</a>
               </span>
             </div>
-            <p class="comment-content">Enterasys have a VM aware networking solution, Data Center Manager. Also, Linux MacVTap supports 802.1Qbg Virtual Ethernet Port Aggregator.</p>
+            <div class="comment-content">Enterasys have a VM aware networking solution, Data Center Manager. Also, Linux MacVTap supports 802.1Qbg Virtual Ethernet Port Aggregator.</div>
           </div>
         </li>
       </div>

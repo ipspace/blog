@@ -1,0 +1,200 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1381">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Sander Steffann</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1381" href="#1381">22 September 2022 09:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I like SR-MPLS because it doesn&rsquo;t switch labels on every hop, (assuming uniformly configured node SIDs) which makes debugging easier.</p>
+
+<p>I used to think SRv6 was great, until I started looking at what was needed to prevent 3rd parties from sending traffic across weird paths in my network. Then I realised that having a separate layer like MPLS has its benefits :)</p>
+
+<p>It&rsquo;s hard to get traffic to VMs, but it&rsquo;s also much harder for (customer?) VMs to mess with my network&hellip;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1384">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jorge Ravazzola</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1384" href="#1384">22 September 2022 04:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Many thanks for such an interesting post.</p>
+
+<p>Do you think vendors current supported label max stack might be an issue when trying to route a packet from source using Adj-SIDs on relatively big sized (and meshed) cores? Many seem to be proposing to use SRv6 to overcome this...</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1387">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1387" href="#1387">22 September 2022 05:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>... and I&#39;d like to hear about hardware that has problems with MPLS label stack but can handle SRv6 extension headers.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1388">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jorge Ravazzola</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1388" href="#1388">22 September 2022 06:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Completely agree with that.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1385">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> David Sinn</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1385" href="#1385">22 September 2022 05:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The problem with SR-MPLS is that it does not play well with commodity hardware and ECMP. The label stack depth renders many commodity ASIC&#39;s unable to make a ECMP decision to send the flow on. Entropy labels doesn&#39;t really help since each takes two-labels and, on some commodity hardware, would require one every 2 SR labels. So the solution is great if you want to continue to purchase big iron ASIC&#39;s for the middle of your network.</p>
+
+<p>SRv6 offsets this via the entropy field. Allowing the ingress point to set a entropy value which mid-points in the network can hash on.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1386">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1386" href="#1386">22 September 2022 05:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>... and the problem with SRv6 is that it doesn&#39;t seem to be supported by commodity hardware at all.</p>
+
+<p>Found a document claiming &quot;25 hardware implementations&quot;, but never found a corresponding list with 25 entries (unless it&#39;s the Jericho chipset, which one could hardly call &quot;commodity&quot;).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1391">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Antti Ristimäki</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1391" href="#1391">23 September 2022 11:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The thing with SR-MPLS is that most of the presentations and slideshows available tend to emphasize how SR-MPLS is based on a lot of stacked MPLS labels or &quot;instructions&quot;, with which to steer the traffic throughout the network via desired path. But at least in our case the main driver for migrating from LDP and RSVP-TE to SR-MPLS was to <em>simplify</em> the network and as such most of our traffic is essentially forwarded with only one transport label, or temporarily with a few if TI-LFA is doing a local repair. It is beautifully simple, easy to understand and debug.</p>
+
+<p>The traffic-engineering capabilities of SR-MPLS are great but I&#39;d hope that people would also value much higher the simplicity that one can achieve with SR-MPLS. This also somehow relates to what Sander wrote above that it is so much fun when the label remains unchanged when the packet traverses through the network.</p>
+
+<p>As a next step we are considering migrating from 6VPE to native IPv6 next-hops in order to get rid of all the IPv6 mapped IPv4 addresses.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1397">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1397" href="#1397">25 September 2022 12:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have no clear opinion on SR-mpls vs SRv6 yet. SR-mpls has smaller labels, less overhead. With IPv6 you have one name-space. Both are a benefit, but not decisive for me.</p>
+
+<p>There is one aspect I don&#39;t see mentioned. Because most networks don&#39;t need it. Small(er) networks don&#39;t need it. Datacenter-networks don&#39;t need it. But if you are an ISP or a hyperscaler with a WAN network with several thousands of routers, this aspect becomes important.</p>
+
+<p>When you have a thousand routers in your networks, you can put all of them in one (IS-IS) area. Maybe with 2k routers as well. But when you have several thousand routers, you want to use areas. If only to limit the blast-radius. But there are several technologies where you need to know the SID of the router at the endpoint where you want to send traffic. That means in SR-MPLS you need to advertise the /32 (or /128) of every router in your network. Plus their SID. If you do flex-algo, multiple SIDs even. That starts to add up to a lot of info in your LSPDB. Your L1L2 routers might need to advertise several thousands of prefixes down. This is a practical concern. You can do things like increase lsp-mtu. Or implement RFC5311. I don&#39;t find that an elegant solution.</p>
+
+<p>The best thing would be to have summarizable SIDs. SR-MPLS doesn&#39;t have that. SRv6 does. So there SRv6 has an advantage, imho. But even when you have summarizable SIDs, you still need to know the mapping between /32 (or /128) and the SID. I don&#39;t think there&#39;s a good way to do that yet, besides advertising each individual /32 and SID combination.</p>
+
+<p>I&#39;ve been told a few times that &quot;routing is a solved problem&quot;. I don&#39;t agree. Routing is maybe a solved problem for networks with &lt;= 1000 routers. For larger networks, you still need to use a bunch of trick and kludges to make it work. We could use a better solution.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,205 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="717">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c717" href="#717">06 September 2021 03:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Subscriber should also take into account recent End-of-Life Announcement from Cisco about Nexus 93180YC-EX models. Replacement product is N9K-C93180YC-FX3 which has also 1200 Mpps forwarding rate. That should be sufficient for most environments.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="718">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Adeilson Rateiro</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c718" href="#718">06 September 2021 07:58</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Last month, I made a lab test with FX version using Spirent with 48x25Gbps. We got a maximum of ~68% of throughput without loss. If I&rsquo;m not wrong, it represents almost 1600 Mpps.
+About the main focus of the blog post, I agree that the requirements are so important to spend money properly according to the project. &#x1F605;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="719">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Krzysztof Ciepłucha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c719" href="#719">06 September 2021 09:11</a>
+              </span>
+            </div>
+            <div class="comment-content">You can find some answers in this post on cisco community site:<br />
+https: //community.cisco.com/t5/switching/what-difference-the-platforms-between-nexus-9300-ex-and-nexus/td-p/3327315<br />
+
+<p>... which refers to the following slide deck from Cisco Live:
+https://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2020/pdf/BRKDCN-3222.pdf</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="720">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Chris Stephan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c720" href="#720">07 September 2021 12:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Just thinking out loud here, but if your measure is the current environment, wouldn&rsquo;t the current switches maximum pps be the limiting factor? I say this because going back to requirements if the goal is simply to replace the current implementation with no less than what it can do, this seems like a reasonable limitation. I would think the it is a reasonable assumption that most environments will grow, require more traffic, faster delivery, etc. as the source to destination interface SERDES ratio continues to increase, timely delivery becomes more and more important. Lower latency from
+Experience can definitely decrease buffer utilization during burst. So the question really becomes what feature can we love without to benefit packet delivery? And at what cost financially? It always comes down to economics doesn&rsquo;t it. Anyways, great article as always!</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="721">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c721" href="#721">07 September 2021 06:11</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;... but if your measure is the current environment, wouldn&rsquo;t the current switches maximum pps be the limiting factor&quot; -- it depends on whether the network is the weakest link (= bottleneck). </p>
+
+<p>It rarely is... unless you have an ancient 3-tier fabric built with Nexus 7000s and Fabric Extenders ;))</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="731">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c731" href="#731">16 September 2021 06:33</a>
+              </span>
+            </div>
+            <div class="comment-content">Re this question:<br />
+
+<p>&#39;I don&rsquo;t know if that means that the -FX variant can not give all the bandwidth to all ports at the same time, or if it is not a non-blocking switch.&#39;</p>
+
+<p>There&#39;s no non-blocking switch at this level of bandwidth; I stand by this statement until am proven wrong. The fabric scheduler is the limiting factor, and just like what we learn with OpenFlow, centralized anything doesn&#39;t scale. Nick Mckeown, inventor of the beautifully simple Islip scheduler -- used widely thanks to its simplicity -- admitted the limitation of the scheduler; that&#39;s why he loved the idea of a load-balanced switch, which does away with painful fabric scheduling.</p>
+
+<p>Also, I&#39;d take pps mentioned with a grain of salt, because many of these platforms are not deterministic. Their pps performance tends to degrade as more and more features are activated in the forwarding pipeline, due to various nonlinear effects. That&#39;s why a switch with better small packet performance should perform better than another one, as more features like traffic classification, are enabled. So 2600 Mpps of basic Layer 2 or Layer 3 switching, might halve as you pack on more features.</p>
+
+<p>Correlation of traffic also degrades pps, so a figure like 2600 Mpps for ex, needs context. Is 2600 Mpps achieved under Markovian traffic, or more realistic fractal and correlated traffic? Real life is almost always non-Markovian, non-linear, non-equilibrium... so those numbers specified in manuals, should only be used as a rough guideline, just like models. </p>
+
+<p>That said, unless you run a hard real-time or other specialized systems with strict timing requirement, most switches today are more than powerful enough. You only need to understand the finer details to avoid being fooled by vendor marketing :)). </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="822">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">jim warner</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c822" href="#822">06 November 2021 06:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The -EX has a 2-slice ASIC. Each slice contributes half of the PPS forwarding capacity. The -FX has a single slice ASIC. A slice is a self-contained packet forwarding engine with its own buffer memory. In a multi-slice design there is some sort of internal interconnect to bridge all the slices together. It is hard for me to think of the EX as having twice the performance of the FX since in the real world, some significant portion of the traffic will need to pass between the slices. But this may be a personality defect on my part.</p>
+
+<p>I prefer single slice designs because the full packet memory is available to absorb microbursts.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="825">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c825" href="#825">08 November 2021 05:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;It is hard for me to think of the EX as having twice the performance of the FX since in the real world, some significant portion of the traffic will need to pass between the slices. But this may be a personality defect on my part.&quot; &lt;&lt; I guess the real questions are:</p>
+
+<ul>
+<li>How much bandwidth is there between the slices? Is it a non-oversubscribed design?</li>
+<li>What happens to packets that traverse both slices? Is there an additional lookup on the second slice?</li>
+</ul>
+
+<p>Haven&#39;t seen the answers in Cisco Live slide deck (or maybe I missed them).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2242790454915218344">12 May 2007 20:50</a>
+                <a rel="nofollow" id="c2242790454915218344" href="#2242790454915218344">12 May 2007 20:50</a>
               </span>
             </div>
-            <p class="comment-content">A request for the an article here, or the next edition of your book is how to configure PPTP through NAT for remote access to a LAN server.<BR/><BR/>It seems straightforward enough: enable PPTP and gre (via an access list ...) from out to in, but if you limit in to out traffic, you need to configure PPTP and gre in that direction too.<BR/><BR/>But here's the kicker. I have a rule that denies in->out traffic that claims to be from my next hop out (as well certain broadcasts). This is what SDM deposits, just as it did for classic ACLs.  Unfortunately, when combined with NAT, the in-out gre tunnel appears to be coming from my WAN ip address (ie, self) and so gets dropped.  The solution seems to be to allow gre to precede the spoofing filter.</p>
+            <div class="comment-content">A request for the an article here, or the next edition of your book is how to configure PPTP through NAT for remote access to a LAN server.<BR/><BR/>It seems straightforward enough: enable PPTP and gre (via an access list ...) from out to in, but if you limit in to out traffic, you need to configure PPTP and gre in that direction too.<BR/><BR/>But here's the kicker. I have a rule that denies in->out traffic that claims to be from my next hop out (as well certain broadcasts). This is what SDM deposits, just as it did for classic ACLs.  Unfortunately, when combined with NAT, the in-out gre tunnel appears to be coming from my WAN ip address (ie, self) and so gets dropped.  The solution seems to be to allow gre to precede the spoofing filter.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03707647106949843227" rel="nofollow">Luís Santos</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6859995555839950693">17 July 2007 11:41</a>
+                <a rel="nofollow" id="c6859995555839950693" href="#6859995555839950693">17 July 2007 11:41</a>
               </span>
             </div>
-            <p class="comment-content">If somebody tries to activate NAT/PAT (just run "ip nat inside / outside commands, even <BR/><BR/>with an empty or dummy access-list so that NAT/PAT is really unused) with the zone-based <BR/><BR/>policy firewall (ZPF) feature a surprise will happen when the router/firewall starts <BR/><BR/>receiving GRE packets from both sides (triggered by an on-going PPTP session to an inside <BR/><BR/>VPN server). In my scenario the class map access lists I'm using show "apparently" strange <BR/><BR/>results. If somebody want I can share detailed configuration/information and an <BR/><BR/>"unfriendly" but functional workaround. I'm running IOS Version 12.3(11r)T2, RELEASE SOFTWARE (fc1).<BR/>I suppose this is an IOS bug. I suggest that Cisco starts supporting automatically GRE <BR/><BR/>tunnels created by PPTP sessions like PIX products already supports. Suggested workarounds make the configuration complex and error prone. I appreciate more comments on this subject.<BR/>By the way ... I find out that the ESMTP L7 DPI inspection is also very restrictive/poor. For instance, it is not possible to use it with Microsoft Echange servers since this server uses several unsupported service extensions.</p>
+            <div class="comment-content">If somebody tries to activate NAT/PAT (just run "ip nat inside / outside commands, even <BR/><BR/>with an empty or dummy access-list so that NAT/PAT is really unused) with the zone-based <BR/><BR/>policy firewall (ZPF) feature a surprise will happen when the router/firewall starts <BR/><BR/>receiving GRE packets from both sides (triggered by an on-going PPTP session to an inside <BR/><BR/>VPN server). In my scenario the class map access lists I'm using show "apparently" strange <BR/><BR/>results. If somebody want I can share detailed configuration/information and an <BR/><BR/>"unfriendly" but functional workaround. I'm running IOS Version 12.3(11r)T2, RELEASE SOFTWARE (fc1).<BR/>I suppose this is an IOS bug. I suggest that Cisco starts supporting automatically GRE <BR/><BR/>tunnels created by PPTP sessions like PIX products already supports. Suggested workarounds make the configuration complex and error prone. I appreciate more comments on this subject.<BR/>By the way ... I find out that the ESMTP L7 DPI inspection is also very restrictive/poor. For instance, it is not possible to use it with Microsoft Echange servers since this server uses several unsupported service extensions.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6625936164063392311">26 July 2007 19:15</a>
+                <a rel="nofollow" id="c6625936164063392311" href="#6625936164063392311">26 July 2007 19:15</a>
               </span>
             </div>
-            <p class="comment-content">I too have fallen foul of this PPTP/GRE problem with zone-based firewall.<BR/><BR/>I am trying to connect to a Win VPN/RAS server out on the internet but am getting an XP client "Error 806: A connection between your computer and the VPN server has been established, but the VPN connection cannot be completed.... Verify that protocol 47 (GRE) is allowed..."<BR/><BR/>Unfortunately neither SDM not the CLI allows me to specify "gre" as a class-map match protocol.<BR/><BR/>I've even tried opening up everything to that destination but with no success:<BR/>class-map type inspect match-any ABC-VPN<BR/> match protocol tcp<BR/> match protocol udp<BR/> match protocol icmp<BR/><BR/>I'm not clear how I'd use an ACL at the same time to specify it.<BR/><BR/>I have a static NAT for the client (i.e. no pool/overloaded ports).<BR/><BR/>IOS: 12.4(11)T2 and now 12.4(15)T1 running on a C1841.<BR/><BR/>Any ideas or pointers?</p>
+            <div class="comment-content">I too have fallen foul of this PPTP/GRE problem with zone-based firewall.<BR/><BR/>I am trying to connect to a Win VPN/RAS server out on the internet but am getting an XP client "Error 806: A connection between your computer and the VPN server has been established, but the VPN connection cannot be completed.... Verify that protocol 47 (GRE) is allowed..."<BR/><BR/>Unfortunately neither SDM not the CLI allows me to specify "gre" as a class-map match protocol.<BR/><BR/>I've even tried opening up everything to that destination but with no success:<BR/>class-map type inspect match-any ABC-VPN<BR/> match protocol tcp<BR/> match protocol udp<BR/> match protocol icmp<BR/><BR/>I'm not clear how I'd use an ACL at the same time to specify it.<BR/><BR/>I have a static NAT for the client (i.e. no pool/overloaded ports).<BR/><BR/>IOS: 12.4(11)T2 and now 12.4(15)T1 running on a C1841.<BR/><BR/>Any ideas or pointers?</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03707647106949843227" rel="nofollow">Luís Santos</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3322771519217289950">02 August 2007 15:29</a>
+                <a rel="nofollow" id="c3322771519217289950" href="#3322771519217289950">02 August 2007 15:29</a>
               </span>
             </div>
-            <p class="comment-content">Below is the solution I’m using as a “reasonable” workaround to the problem. Basically the router is instructed to inspect incoming PPTP traffic and to open holes (“pass”) on both directions to the GRE traffic.<BR/>*******************************************<BR/>OUT (Internet) -> IN (VPN concentrator’s network)<BR/><BR/>ip access-list extended outin-vpn-acl<BR/>   remark VPN Concentrator (PPTP sessions)<BR/>   100    permit  ip    any                 host IP_VPN_SERVER     ! VPN Concentrator<BR/>  exit<BR/><BR/>ip access-list extended outin-vpn-gre-tunnels-acl<BR/>   remark Workaround: GRE tunnel traffic target to the VPN Concentrator<BR/>   100    permit  gre   any                 host IP_VPN_SERVER     ! VPN Concentrator<BR/>  exit<BR/><BR/>class-map type inspect match-all outin-vpn-cm<BR/>  description Match PPTP sessions targetted to the internal VPN concentrator.<BR/>  match access-group name outin-vpn-acl<BR/>  match protocol pptp<BR/> exit<BR/><BR/>class-map type inspect match-all outin-vpn-gre-tunnels-cm<BR/>  description Workaround. Match GRE traffic targeted to the internal VPN concentrator.<BR/>  match access-group name outin-vpn-gre-tunnels-acl<BR/> exit <BR/><BR/><BR/>policy-map type inspect out-in-pm<BR/><BR/> !MUST BE THE FIRST SENTENCE<BR/> class type inspect outin-vpn-gre-tunnels-cm<BR/>    pass<BR/>   exit<BR/>  …<BR/> class type inspect outin-vpn-cm<BR/>   inspect<BR/>  exit <BR/><BR/>*******************************************<BR/>IN (VPN concentrator’s network) -> OUT (Internet)<BR/><BR/>!######## Return traffic from VPN server <BR/>!Workaround. The source address should be limited to the VPN servers public address.<BR/>!However the current IOS version has problems dealing with GRE packets.<BR/>!Review on a next IOS version > 12.4(11)T2<BR/>ip access-list extended inout-vpn-gre-tunnels-acl<BR/>   100   permit   gre  any    any   ! Nortel VPN Concentrator<BR/>   110   permit   gre  any    any   ! Nortel VPN Concentrator<BR/>  exit<BR/><BR/>!######## VPN (GRE) class map (to be used by the "in-out-pm" policy map)<BR/>!Workaround. Check notes for the "inout-vpn-gre-tunnels-acl" ACL.<BR/>class-map type inspect match-all inout-vpn-gre-tunnels-cm<BR/>  description Workaround. Match GRE traffic sourced the VPN concentrator.<BR/>  match access-group name inout-vpn-gre-tunnels-acl<BR/> exit<BR/><BR/>policy-map type inspect in-out-pm<BR/>  !Workaround. Check the notes written at the "inout-vpn-gre-tunnels-acl" ACL.<BR/>  class type inspect inout-vpn-gre-tunnels-cm<BR/>    pass<BR/>   exit</p>
+            <div class="comment-content">Below is the solution I’m using as a “reasonable” workaround to the problem. Basically the router is instructed to inspect incoming PPTP traffic and to open holes (“pass”) on both directions to the GRE traffic.<BR/>*******************************************<BR/>OUT (Internet) -> IN (VPN concentrator’s network)<BR/><BR/>ip access-list extended outin-vpn-acl<BR/>   remark VPN Concentrator (PPTP sessions)<BR/>   100    permit  ip    any                 host IP_VPN_SERVER     ! VPN Concentrator<BR/>  exit<BR/><BR/>ip access-list extended outin-vpn-gre-tunnels-acl<BR/>   remark Workaround: GRE tunnel traffic target to the VPN Concentrator<BR/>   100    permit  gre   any                 host IP_VPN_SERVER     ! VPN Concentrator<BR/>  exit<BR/><BR/>class-map type inspect match-all outin-vpn-cm<BR/>  description Match PPTP sessions targetted to the internal VPN concentrator.<BR/>  match access-group name outin-vpn-acl<BR/>  match protocol pptp<BR/> exit<BR/><BR/>class-map type inspect match-all outin-vpn-gre-tunnels-cm<BR/>  description Workaround. Match GRE traffic targeted to the internal VPN concentrator.<BR/>  match access-group name outin-vpn-gre-tunnels-acl<BR/> exit <BR/><BR/><BR/>policy-map type inspect out-in-pm<BR/><BR/> !MUST BE THE FIRST SENTENCE<BR/> class type inspect outin-vpn-gre-tunnels-cm<BR/>    pass<BR/>   exit<BR/>  …<BR/> class type inspect outin-vpn-cm<BR/>   inspect<BR/>  exit <BR/><BR/>*******************************************<BR/>IN (VPN concentrator’s network) -> OUT (Internet)<BR/><BR/>!######## Return traffic from VPN server <BR/>!Workaround. The source address should be limited to the VPN servers public address.<BR/>!However the current IOS version has problems dealing with GRE packets.<BR/>!Review on a next IOS version > 12.4(11)T2<BR/>ip access-list extended inout-vpn-gre-tunnels-acl<BR/>   100   permit   gre  any    any   ! Nortel VPN Concentrator<BR/>   110   permit   gre  any    any   ! Nortel VPN Concentrator<BR/>  exit<BR/><BR/>!######## VPN (GRE) class map (to be used by the "in-out-pm" policy map)<BR/>!Workaround. Check notes for the "inout-vpn-gre-tunnels-acl" ACL.<BR/>class-map type inspect match-all inout-vpn-gre-tunnels-cm<BR/>  description Workaround. Match GRE traffic sourced the VPN concentrator.<BR/>  match access-group name inout-vpn-gre-tunnels-acl<BR/> exit<BR/><BR/>policy-map type inspect in-out-pm<BR/>  !Workaround. Check the notes written at the "inout-vpn-gre-tunnels-acl" ACL.<BR/>  class type inspect inout-vpn-gre-tunnels-cm<BR/>    pass<BR/>   exit</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7122849429746922924">13 June 2012 10:33</a>
+                <a rel="nofollow" id="c7122849429746922924" href="#7122849429746922924">13 June 2012 10:33</a>
               </span>
             </div>
-            <p class="comment-content">&quot;To control traffic that the router can send into a zone use a zone-pair from self to another zone. Use inspect in the service-policy to allow the return traffic.&quot;<br /><br />I believe that traffic to/from self zone cannot be inspected, just passed, at least with ios 12.4(24)T.</p>
+            <div class="comment-content">&quot;To control traffic that the router can send into a zone use a zone-pair from self to another zone. Use inspect in the service-policy to allow the return traffic.&quot;<br /><br />I believe that traffic to/from self zone cannot be inspected, just passed, at least with ios 12.4(24)T.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -110,10 +105,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5703207485468257191">13 June 2012 14:45</a>
+                <a rel="nofollow" id="c5703207485468257191" href="#5703207485468257191">13 June 2012 14:45</a>
               </span>
             </div>
-            <p class="comment-content">That was a limitation in early ZBFW implementation. I think it should work now (I vaguely remember discussing this subject, but it was year or two ago).</p>
+            <div class="comment-content">That was a limitation in early ZBFW implementation. I think it should work now (I vaguely remember discussing this subject, but it was year or two ago).</div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01929133503144666434" rel="nofollow">Joe B</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#686198211672318855">25 March 2013 23:24</a>
+                <a rel="nofollow" id="c686198211672318855" href="#686198211672318855">25 March 2013 23:24</a>
               </span>
             </div>
-            <p class="comment-content">Hello Ivan,  I added your ZBFW shortcut to my Safari books online bookshelf because it is a good reference.   Were you planning to update it or publish it?</p>
+            <div class="comment-content">Hello Ivan,  I added your ZBFW shortcut to my Safari books online bookshelf because it is a good reference.   Were you planning to update it or publish it?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1813594643333726016">26 March 2013 09:48</a>
+                <a rel="nofollow" id="c1813594643333726016" href="#1813594643333726016">26 March 2013 09:48</a>
               </span>
             </div>
-            <p class="comment-content">If &quot;publish&quot; means in paper form, the answer is &quot;no&quot;, but you can buy it on Kindle or as PDF.<br /><br />The update decision is in hands of Cisco Press and I haven&#39;t heard from them in years. Also the sales are pretty low, so I don&#39;t expect them to approach me with an update idea any time soon.</p>
+            <div class="comment-content">If &quot;publish&quot; means in paper form, the answer is &quot;no&quot;, but you can buy it on Kindle or as PDF.<br /><br />The update decision is in hands of Cisco Press and I haven&#39;t heard from them in years. Also the sales are pretty low, so I don&#39;t expect them to approach me with an update idea any time soon.</div>
           </div>
         </li>
       </div>

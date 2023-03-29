@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">AaronD</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7536690218772967814">07 January 2010 17:25</a>
+                <a rel="nofollow" id="c7536690218772967814" href="#7536690218772967814">07 January 2010 17:25</a>
               </span>
             </div>
-            <p class="comment-content">I can run a simple tcl command at the command prompt such as:<br />3825-r01(tcl)#exec &quot;sho run&quot; | redirect tftp://192.168.10.20/data1<br />I&#39;d like to copy a tcl script containing this command into the router&#39;s flash and have it run every day at<br />say 6AM. This should be simple but I can&#39;t find any posts about it.</p>
+            <div class="comment-content">I can run a simple tcl command at the command prompt such as:<br />3825-r01(tcl)#exec &quot;sho run&quot; | redirect tftp://192.168.10.20/data1<br />I&#39;d like to copy a tcl script containing this command into the router&#39;s flash and have it run every day at<br />say 6AM. This should be simple but I can&#39;t find any posts about it.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Bryan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4495697739352384055">08 January 2010 18:53</a>
+                <a rel="nofollow" id="c4495697739352384055" href="#4495697739352384055">08 January 2010 18:53</a>
               </span>
             </div>
-            <p class="comment-content">Put your command in a file and copy it to the routers flash.  You can create it in Notepad and copy using FTP/TFTP.  Or there&#39;s a nifty trick on this site to write it directly via TCL...<br /><br />As far as scheduling, you can register an EEM Applet which will trigger on a timer<br /><br />event manager applet BackupRunning<br /> event timer cron name BackupRunning cron-entry &quot;0 23 * * 6&quot;<br /> action 1 cli command &quot;enable&quot;<br /> action 2 cli command &quot;tclsh flash:BackupRunning.tcl&quot;<br /><br />Note - In my limited but painful experience, AAA will kill you with TCL.  So if you using AAA you&#39;re on your own with automating it...  :-)<br /><br />IOS v15 does have a new option when you register the applet to specify authorization bypass that may solve my AAA woes, but I haven&#39;t had a chance to test it out. <br /><br />event manager applet BackupRunning authorization bypass</p>
+            <div class="comment-content">Put your command in a file and copy it to the routers flash.  You can create it in Notepad and copy using FTP/TFTP.  Or there&#39;s a nifty trick on this site to write it directly via TCL...<br /><br />As far as scheduling, you can register an EEM Applet which will trigger on a timer<br /><br />event manager applet BackupRunning<br /> event timer cron name BackupRunning cron-entry &quot;0 23 * * 6&quot;<br /> action 1 cli command &quot;enable&quot;<br /> action 2 cli command &quot;tclsh flash:BackupRunning.tcl&quot;<br /><br />Note - In my limited but painful experience, AAA will kill you with TCL.  So if you using AAA you&#39;re on your own with automating it...  :-)<br /><br />IOS v15 does have a new option when you register the applet to specify authorization bypass that may solve my AAA woes, but I haven&#39;t had a chance to test it out. <br /><br />event manager applet BackupRunning authorization bypass</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8097840069345181074">08 January 2010 19:28</a>
+                <a rel="nofollow" id="c8097840069345181074" href="#8097840069345181074">08 January 2010 19:28</a>
               </span>
             </div>
-            <p class="comment-content">Thanks, Bryan! BTW, this is how you solve the AAA problem:<br /><br />http://blog.ioshints.info/2007/05/command-authorization-fails-with-eem.html<br /><br />There was also a bug where AAA authorization would fail under weird circumstances. I know a bug report was filed, I&#39;m not sure whether it was fixed or when.</p>
+            <div class="comment-content">Thanks, Bryan! BTW, this is how you solve the AAA problem:<br /><br />http://blog.ioshints.info/2007/05/command-authorization-fails-with-eem.html<br /><br />There was also a bug where AAA authorization would fail under weird circumstances. I know a bug report was filed, I&#39;m not sure whether it was fixed or when.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Bryan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1250117354201104769">08 January 2010 22:39</a>
+                <a rel="nofollow" id="c1250117354201104769" href="#1250117354201104769">08 January 2010 22:39</a>
               </span>
             </div>
-            <p class="comment-content">Ivan - <br /><br />Ah, curses you are right...  :-)  I had tried that and it didn&#39;t work at first so I moved on to trying to bypass AAA in other ways.  I&#39;ve revisited and determined that I needed both the cli username and the action &quot;enable&quot; to work (I didn&#39;t have that originally).  Thank you very much for prompting the fresh look!  <br /><br />There was a bug with 12.4(22)T where TCL would only send a null username to AAA.  That was fixed in 12.4(22)T2.<br /><br />Here&#39;s my script and EEM config if it is helpful to anyone else.  This is to backup flash on a CME router.<br /><br />- Bryan<br /><br />flash:CopyFlash.tcl<br />------------------------------------<br />proc get_dir {} {<br />  set dir_flash [ exec &quot;dir flash:\n&quot; ]<br />  foreach result $dir_flash {<br />    #Match words ending in .xxx, exclude .bin<br />    if [regexp -nocase {(\S+\.\w+[^bin]$)} $result] {<br />      lappend dir_out $result<br />    }<br />  }<br />  return $dir_out<br />}<br /><br />#Replace ftp user/pass and server IP as appropriate<br />foreach f [get_dir] {<br />  puts &quot;$f&quot;<br />  typeahead &quot;\n&quot;; exec &quot;copy $f ftp://cmehi-1-a:cmehi-1-a@172.27.1.8\n&quot;<br />}<br /><br />EEM Config:<br />-------------------------------------<br />event manager session cli username &quot;cmnq981&quot;<br /><br />event manager applet CopyFlash<br />  event timer cron name CopyFlash cron-entry &quot;0 23 * * 6&quot; maxrun 1800<br />  action 1 cli command &quot;enable&quot;<br />  action 2 cli command &quot;tclsh flash:CopyFlash.tcl&quot;</p>
+            <div class="comment-content">Ivan - <br /><br />Ah, curses you are right...  :-)  I had tried that and it didn&#39;t work at first so I moved on to trying to bypass AAA in other ways.  I&#39;ve revisited and determined that I needed both the cli username and the action &quot;enable&quot; to work (I didn&#39;t have that originally).  Thank you very much for prompting the fresh look!  <br /><br />There was a bug with 12.4(22)T where TCL would only send a null username to AAA.  That was fixed in 12.4(22)T2.<br /><br />Here&#39;s my script and EEM config if it is helpful to anyone else.  This is to backup flash on a CME router.<br /><br />- Bryan<br /><br />flash:CopyFlash.tcl<br />------------------------------------<br />proc get_dir {} {<br />  set dir_flash [ exec &quot;dir flash:\n&quot; ]<br />  foreach result $dir_flash {<br />    #Match words ending in .xxx, exclude .bin<br />    if [regexp -nocase {(\S+\.\w+[^bin]$)} $result] {<br />      lappend dir_out $result<br />    }<br />  }<br />  return $dir_out<br />}<br /><br />#Replace ftp user/pass and server IP as appropriate<br />foreach f [get_dir] {<br />  puts &quot;$f&quot;<br />  typeahead &quot;\n&quot;; exec &quot;copy $f ftp://cmehi-1-a:cmehi-1-a@172.27.1.8\n&quot;<br />}<br /><br />EEM Config:<br />-------------------------------------<br />event manager session cli username &quot;cmnq981&quot;<br /><br />event manager applet CopyFlash<br />  event timer cron name CopyFlash cron-entry &quot;0 23 * * 6&quot; maxrun 1800<br />  action 1 cli command &quot;enable&quot;<br />  action 2 cli command &quot;tclsh flash:CopyFlash.tcl&quot;</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">mtimmsj</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8359526842402572342">15 July 2010 10:40</a>
+                <a rel="nofollow" id="c8359526842402572342" href="#8359526842402572342">15 July 2010 10:40</a>
               </span>
             </div>
-            <p class="comment-content">One reason these packages are not available from Tclsh is because they are in the tmpsys file system which is controlled, managed and owned by the EEM development team at Cisco.  The Tcl development team can&#39;t rely on the packages and libraries always being there since they don&#39;t own them.  So they are not available to Tclsh as auto-loaded packages.  At one point in time these packages were stored in the system file system but later they were moved.  Such a change would have caused issues with Tclsh if they were still looking for them in system.</p>
+            <div class="comment-content">One reason these packages are not available from Tclsh is because they are in the tmpsys file system which is controlled, managed and owned by the EEM development team at Cisco.  The Tcl development team can&#39;t rely on the packages and libraries always being there since they don&#39;t own them.  So they are not available to Tclsh as auto-loaded packages.  At one point in time these packages were stored in the system file system but later they were moved.  Such a change would have caused issues with Tclsh if they were still looking for them in system.</div>
           </div>
         </li>
       </div>

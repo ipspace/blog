@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>9 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://cumulusnetworks.com/" rel="nofollow">Nolan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7994625647661264432">15 January 2016 23:22</a>
+                <a rel="nofollow" id="c7994625647661264432" href="#7994625647661264432">15 January 2016 23:22</a>
               </span>
             </div>
-            <p class="comment-content">They call Open Switch &quot;100% open source&quot;, and this page:<br />http://openswitch.net/documents/dev/ops-switchd-opennsl-plugin/design<br />says &quot;It uses open APIs published in OpenNSL SDK (open source SDK for Broadcom switch ASICs).&quot;<br /><br />But OpenNSL (like Cumulus&#39;s switchd) is actually closed-source and proprietary.<br /><br />Ironically, the &quot;open source&quot; Open Switch ships with 40MB of binary-only, proprietary code, while Cumulus Linux ships 33MB of binary-only, proprietary code.<br /><br />-- <br />Nolan Leake<br />co-founder/CTO, Cumulus Networks</p>
+            <div class="comment-content">They call Open Switch &quot;100% open source&quot;, and this page:<br />http://openswitch.net/documents/dev/ops-switchd-opennsl-plugin/design<br />says &quot;It uses open APIs published in OpenNSL SDK (open source SDK for Broadcom switch ASICs).&quot;<br /><br />But OpenNSL (like Cumulus&#39;s switchd) is actually closed-source and proprietary.<br /><br />Ironically, the &quot;open source&quot; Open Switch ships with 40MB of binary-only, proprietary code, while Cumulus Linux ships 33MB of binary-only, proprietary code.<br /><br />-- <br />Nolan Leake<br />co-founder/CTO, Cumulus Networks</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7013844047830338760">23 January 2016 00:25</a>
+                <a rel="nofollow" id="c7013844047830338760" href="#7013844047830338760">23 January 2016 00:25</a>
               </span>
             </div>
-            <p class="comment-content">Nolan,<br /><br />The equivalent of Cumulus&#39; switchd in openswitch is the the ops-switchd (also available at the git repo), that uses plugin interfaces to provide the datapath (opennsl being one of them, but there are already plugins to use ovs or p4 as data planes). All of the plugins are open, and the opennsl implementation happens to use a binary blob from the ASIC vendor, but this is their decision as it&#39;s their intelectual property. HPE actually worked along with Broadcom to ensure that their kernel drivers where release as GPL in order to enable the community to rebuild the kernel. Other plugins like the P4   for ASICs could be completely open if the ASIC vendor decides to do so.<br /><br />The statistic about binary proprietary code is quite misleading since this may vary depending of the version of the code shipping, and again this is going to vary on per-platform basis. Even most Linux distributions ship with binary firmware for certain hardware. Unlike Cumulus, anyone can download the code, build it, modify it, and even run the regression test suites. The virtual appliances from OpenSwitch came with full source code (since they don&#39;t have ASIC dependencies), where areas Cumulus doesn&#39;t make the source for VX available.<br /><br />Open Source is more than just the code, is about community and direction. OpenSwitch has open mailing lists, IRC channels, code reviews and bug trackers to enable a developer community. While they are challenges to be addressed in how to make the solutions more open with any ASIC, I think the OpenSwitch project has taken the steps in the right direction. <br /><br />Diego Dompe<br />OpenSwitch Developer/ HPE Employee<br /></p>
+            <div class="comment-content">Nolan,<br /><br />The equivalent of Cumulus&#39; switchd in openswitch is the the ops-switchd (also available at the git repo), that uses plugin interfaces to provide the datapath (opennsl being one of them, but there are already plugins to use ovs or p4 as data planes). All of the plugins are open, and the opennsl implementation happens to use a binary blob from the ASIC vendor, but this is their decision as it&#39;s their intelectual property. HPE actually worked along with Broadcom to ensure that their kernel drivers where release as GPL in order to enable the community to rebuild the kernel. Other plugins like the P4   for ASICs could be completely open if the ASIC vendor decides to do so.<br /><br />The statistic about binary proprietary code is quite misleading since this may vary depending of the version of the code shipping, and again this is going to vary on per-platform basis. Even most Linux distributions ship with binary firmware for certain hardware. Unlike Cumulus, anyone can download the code, build it, modify it, and even run the regression test suites. The virtual appliances from OpenSwitch came with full source code (since they don&#39;t have ASIC dependencies), where areas Cumulus doesn&#39;t make the source for VX available.<br /><br />Open Source is more than just the code, is about community and direction. OpenSwitch has open mailing lists, IRC channels, code reviews and bug trackers to enable a developer community. While they are challenges to be addressed in how to make the solutions more open with any ASIC, I think the OpenSwitch project has taken the steps in the right direction. <br /><br />Diego Dompe<br />OpenSwitch Developer/ HPE Employee<br /></div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://cumulusnetworks.com/" rel="nofollow">Nolan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7508593791282296989">28 January 2016 21:15</a>
+                <a rel="nofollow" id="c7508593791282296989" href="#7508593791282296989">28 January 2016 21:15</a>
               </span>
             </div>
-            <p class="comment-content">&gt; The equivalent of Cumulus&#39; switchd in openswitch is the the ops-switchd<br /><br />While the names are very similar, they play a different role in the system.  Switchd is an API server that clients program with RFC3549 netlink messages over a socket, and it in turn programs the ASIC via a proprietary SDK.  OpenNSL is an API server that clients program using OpenNSL-specific messages over a socket, and it in turn programs the ASIC via a proprietary SDK.<br /><br />Since we&#39;re using standard netlink messages, we don&#39;t need a separate &quot;ops-switchd&quot; translator to take messages from (for example) quagga to give to the code that actually programs the ASIC.<br /><br />&gt; HPE actually worked along with Broadcom to ensure that their kernel drivers where release as GPL<br /><br />We&#39;ve been working with Broadcom on that as well, as was BigSwitch.  We&#39;ve been shipping the GPLed kernel modules in Cumulus Linux since our first public release in 2013.<br /><br />&gt; Unlike Cumulus, anyone can download the code, build it, modify it, and even run the regression test suites.<br /><br />The only part of this that is true is that we don&#39;t release our regression test suite.  All the code and instructions to build it are available, so anyone interested in building a CentCumulus would just have to remove our trademarks.  And multiple people have built things using the code we&#39;ve released.<br /><br />-- <br />Nolan Leake<br />co-founder/CTO, Cumulus Networks</p>
+            <div class="comment-content">&gt; The equivalent of Cumulus&#39; switchd in openswitch is the the ops-switchd<br /><br />While the names are very similar, they play a different role in the system.  Switchd is an API server that clients program with RFC3549 netlink messages over a socket, and it in turn programs the ASIC via a proprietary SDK.  OpenNSL is an API server that clients program using OpenNSL-specific messages over a socket, and it in turn programs the ASIC via a proprietary SDK.<br /><br />Since we&#39;re using standard netlink messages, we don&#39;t need a separate &quot;ops-switchd&quot; translator to take messages from (for example) quagga to give to the code that actually programs the ASIC.<br /><br />&gt; HPE actually worked along with Broadcom to ensure that their kernel drivers where release as GPL<br /><br />We&#39;ve been working with Broadcom on that as well, as was BigSwitch.  We&#39;ve been shipping the GPLed kernel modules in Cumulus Linux since our first public release in 2013.<br /><br />&gt; Unlike Cumulus, anyone can download the code, build it, modify it, and even run the regression test suites.<br /><br />The only part of this that is true is that we don&#39;t release our regression test suite.  All the code and instructions to build it are available, so anyone interested in building a CentCumulus would just have to remove our trademarks.  And multiple people have built things using the code we&#39;ve released.<br /><br />-- <br />Nolan Leake<br />co-founder/CTO, Cumulus Networks</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12247158109473578398" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5391112264773183365">17 January 2016 17:43</a>
+                <a rel="nofollow" id="c5391112264773183365" href="#5391112264773183365">17 January 2016 17:43</a>
               </span>
             </div>
-            <p class="comment-content">This comment has been removed by the author.</p>
+            <div class="comment-content">This comment has been removed by the author.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12247158109473578398" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9016219415975073685">17 January 2016 17:44</a>
+                <a rel="nofollow" id="c9016219415975073685" href="#9016219415975073685">17 January 2016 17:44</a>
               </span>
             </div>
-            <p class="comment-content">great post, thanks for sharing.<br /><br />this database centric approach for distributed system is not new, sysdb is around for a decade. <br /><br />but make use of ovsdb&#39;s json-rpc is kind of interesting, isn&#39;t this too slow in some case? <br /></p>
+            <div class="comment-content">great post, thanks for sharing.<br /><br />this database centric approach for distributed system is not new, sysdb is around for a decade. <br /><br />but make use of ovsdb&#39;s json-rpc is kind of interesting, isn&#39;t this too slow in some case? <br /></div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12954553379070252408" rel="nofollow">Saumya Hegde</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3163052680379570662">22 January 2016 13:15</a>
+                <a rel="nofollow" id="c3163052680379570662" href="#3163052680379570662">22 January 2016 13:15</a>
               </span>
             </div>
-            <p class="comment-content">Among ONOS, OPS, ODL and RYU, which one is likely to be a winner?</p>
+            <div class="comment-content">Among ONOS, OPS, ODL and RYU, which one is likely to be a winner?</div>
           </div>
         </li>
       </div>
@@ -143,10 +138,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00255082095002903773" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6324997275662349985">04 February 2016 02:56</a>
+                <a rel="nofollow" id="c6324997275662349985" href="#6324997275662349985">04 February 2016 02:56</a>
               </span>
             </div>
-            <p class="comment-content">At 1:05 near the end of the podcast, Ivan asked what switches that you can actually get can run the code. Part of the answer did not make it through the podcast distortion filter. A model number was given for the Trident II+ switch under development, but my ear can&#39;t pull out anything I can look up.  We were commended to the archive of the mail list for discussions of work on other platforms. I scanned through the archive, and there is lots of interesting stuff, but I&#39;m not sure how to search for work on porting to new platforms.<br /><br />Can anyone help me?<br /><br />jim warner, UCSC</p>
+            <div class="comment-content">At 1:05 near the end of the podcast, Ivan asked what switches that you can actually get can run the code. Part of the answer did not make it through the podcast distortion filter. A model number was given for the Trident II+ switch under development, but my ear can&#39;t pull out anything I can look up.  We were commended to the archive of the mail list for discussions of work on other platforms. I scanned through the archive, and there is lots of interesting stuff, but I&#39;m not sure how to search for work on porting to new platforms.<br /><br />Can anyone help me?<br /><br />jim warner, UCSC</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -162,10 +157,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://cumulusnetworks.com/" rel="nofollow">Nolan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4063080899146405702">05 February 2016 03:19</a>
+                <a rel="nofollow" id="c4063080899146405702" href="#4063080899146405702">05 February 2016 03:19</a>
               </span>
             </div>
-            <p class="comment-content">http://openswitch.net/documents/user/hardware-compatibility<br /><br />Just the Accton 5712 (under various brands) today.  6712 should be coming reasonably soon.</p>
+            <div class="comment-content">http://openswitch.net/documents/user/hardware-compatibility<br /><br />Just the Accton 5712 (under various brands) today.  6712 should be coming reasonably soon.</div>
           </div>
         </li>
       </div>
@@ -187,10 +182,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12576388672709021272" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1467090704317474149">02 September 2016 13:19</a>
+                <a rel="nofollow" id="c1467090704317474149" href="#1467090704317474149">02 September 2016 13:19</a>
               </span>
             </div>
-            <p class="comment-content">Any chance of Broadcom CPE support (BCM63xx series)?<br /></p>
+            <div class="comment-content">Any chance of Broadcom CPE support (BCM63xx series)?<br /></div>
           </div>
         </li>
       </div>

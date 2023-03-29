@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02493336432858313215" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8876650702835896743">08 April 2008 17:07</a>
+                <a rel="nofollow" id="c8876650702835896743" href="#8876650702835896743">08 April 2008 17:07</a>
               </span>
             </div>
-            <p class="comment-content">link you posted doesn't exist. Can you explain in details?</p>
+            <div class="comment-content">link you posted doesn't exist. Can you explain in details?</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1300524543402314594">08 April 2008 17:15</a>
+                <a rel="nofollow" id="c1300524543402314594" href="#1300524543402314594">08 April 2008 17:15</a>
               </span>
             </div>
-            <p class="comment-content">Link said (via Google cache) :<BR/><BR/><BR/>Preventing AS from becoming Transit AS<BR/>Published October 24, 2007 Access-lists , IP Routing , bgp<BR/><BR/>To prevent your AS from becoming a Transit AS, use following startegy<BR/><BR/>Create a route map say “transit” in config mode<BR/><BR/>route-map transit permit 10<BR/><BR/>match as-path 1<BR/><BR/>In config mode, use following command<BR/><BR/>ip as-path access-list 1 deny ^$<BR/><BR/>This command will only allow routes with origin code “i” and filter all routes with incomplete as-path.<BR/><BR/>Apply the above route-map  with neighbor statement<BR/><BR/>router bgp 64000<BR/><BR/>neighbor 2.2.2.2 route-map transit in<BR/><BR/>Only routes with origin code” i” will enter your AS.</p>
+            <div class="comment-content">Link said (via Google cache) :<BR/><BR/><BR/>Preventing AS from becoming Transit AS<BR/>Published October 24, 2007 Access-lists , IP Routing , bgp<BR/><BR/>To prevent your AS from becoming a Transit AS, use following startegy<BR/><BR/>Create a route map say “transit” in config mode<BR/><BR/>route-map transit permit 10<BR/><BR/>match as-path 1<BR/><BR/>In config mode, use following command<BR/><BR/>ip as-path access-list 1 deny ^$<BR/><BR/>This command will only allow routes with origin code “i” and filter all routes with incomplete as-path.<BR/><BR/>Apply the above route-map  with neighbor statement<BR/><BR/>router bgp 64000<BR/><BR/>neighbor 2.2.2.2 route-map transit in<BR/><BR/>Only routes with origin code” i” will enter your AS.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#705769763745765681">08 April 2008 19:31</a>
+                <a rel="nofollow" id="c705769763745765681" href="#705769763745765681">08 April 2008 19:31</a>
               </span>
             </div>
-            <p class="comment-content">@jdenoy: Thanks for the text. It's amazing how quickly the Internet landscape changes (and luckily Google caches a few things :).<BR/><BR/>@singh: I apologize for the brevity of my text, I shall write a follow-up one explaining the principles of the non-transit AS (and what you have to filter and where). However, here are the details as they relate to the text jdenoy included:<BR/><BR/>* Every as-path access-list has an implicit "deny all" at the end. The as-path access-list in the example thus matches nothing at all.<BR/><BR/>* The routes received from an EBGP neighbor always have at least one AS number in the AS path. The "deny ^$" pattern (which matches an empty AS-path) is thus irrelevant. But, as said above, everything else would be dropped as well.<BR/><BR/>* You cannot use an as-path access-list to match the origin code (even though it looks like the origin code is part of an AS-path, it's not).<BR/><BR/>* There is no such thing as incomplete AS-paths.<BR/><BR/>* The 'incomplete' origin code is a leftover of the past long gone and is mostly irrelevant these days. It definitely has nothing to do with (non)transit behavior.<BR/><BR/>* The route-map in the text supplied by jdenoy when applied to inbound updates from an EBGP peer would drop all inbound BGP prefixes.<BR/><BR/>Hope this helps<BR/>Ivan</p>
+            <div class="comment-content">@jdenoy: Thanks for the text. It's amazing how quickly the Internet landscape changes (and luckily Google caches a few things :).<BR/><BR/>@singh: I apologize for the brevity of my text, I shall write a follow-up one explaining the principles of the non-transit AS (and what you have to filter and where). However, here are the details as they relate to the text jdenoy included:<BR/><BR/>* Every as-path access-list has an implicit "deny all" at the end. The as-path access-list in the example thus matches nothing at all.<BR/><BR/>* The routes received from an EBGP neighbor always have at least one AS number in the AS path. The "deny ^$" pattern (which matches an empty AS-path) is thus irrelevant. But, as said above, everything else would be dropped as well.<BR/><BR/>* You cannot use an as-path access-list to match the origin code (even though it looks like the origin code is part of an AS-path, it's not).<BR/><BR/>* There is no such thing as incomplete AS-paths.<BR/><BR/>* The 'incomplete' origin code is a leftover of the past long gone and is mostly irrelevant these days. It definitely has nothing to do with (non)transit behavior.<BR/><BR/>* The route-map in the text supplied by jdenoy when applied to inbound updates from an EBGP peer would drop all inbound BGP prefixes.<BR/><BR/>Hope this helps<BR/>Ivan</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02493336432858313215" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5679771923965842332">09 April 2008 04:55</a>
+                <a rel="nofollow" id="c5679771923965842332" href="#5679771923965842332">09 April 2008 04:55</a>
               </span>
             </div>
-            <p class="comment-content">This comment has been removed by the author.</p>
+            <div class="comment-content">This comment has been removed by the author.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02493336432858313215" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6569444662620606714">09 April 2008 05:06</a>
+                <a rel="nofollow" id="c6569444662620606714" href="#6569444662620606714">09 April 2008 05:06</a>
               </span>
             </div>
-            <p class="comment-content">I think the comment by jdenoy above just shows an ip as-path access list. if a person reading BGP article doesn't know that every acceess-list has implicit deny at the end then I am not sure how come reader is jumping his horses and learning about BGP communities :). anyway I used the as-path access list mentioned by jdenoy,  and addedd <BR/><BR/>ip as-path aceess-list 1 permit any and it prevent AS from becoming the transit AS. so I think even if blogger has mistyped something, readers should use their brains while using it on production network.</p>
+            <div class="comment-content">I think the comment by jdenoy above just shows an ip as-path access list. if a person reading BGP article doesn't know that every acceess-list has implicit deny at the end then I am not sure how come reader is jumping his horses and learning about BGP communities :). anyway I used the as-path access list mentioned by jdenoy,  and addedd <BR/><BR/>ip as-path aceess-list 1 permit any and it prevent AS from becoming the transit AS. so I think even if blogger has mistyped something, readers should use their brains while using it on production network.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15599351273832431005" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#454600240114894400">10 April 2008 12:07</a>
+                <a rel="nofollow" id="c454600240114894400" href="#454600240114894400">10 April 2008 12:07</a>
               </span>
             </div>
-            <p class="comment-content">I do it proper way:<BR/><BR/>router bgp 12345<BR/> [...]<BR/> neighbor 1.2.3.4 prefix-list AS12345 out<BR/> [...]<BR/>!<BR/>ip prefix-list AS12345 seq 5 permit 2.3.4.0/24<BR/>ip prefix-list AS12345 seq 10 permit 2.3.5.0/24<BR/>ip prefix-list AS12345 seq 15 permit 2.3.6.0/24<BR/>!</p>
+            <div class="comment-content">I do it proper way:<BR/><BR/>router bgp 12345<BR/> [...]<BR/> neighbor 1.2.3.4 prefix-list AS12345 out<BR/> [...]<BR/>!<BR/>ip prefix-list AS12345 seq 5 permit 2.3.4.0/24<BR/>ip prefix-list AS12345 seq 10 permit 2.3.5.0/24<BR/>ip prefix-list AS12345 seq 15 permit 2.3.6.0/24<BR/>!</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5210012212263509920">16 April 2008 18:01</a>
+                <a rel="nofollow" id="c5210012212263509920" href="#5210012212263509920">16 April 2008 18:01</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for the prefix-list hint. I've included it in the <A HREF="http://wiki.ioshints.info/%28Non%29Transit_Autonomous_System" REL="nofollow">non-transit AS tutorial</A>.</p>
+            <div class="comment-content">Thanks for the prefix-list hint. I've included it in the <A HREF="http://wiki.ioshints.info/%28Non%29Transit_Autonomous_System" REL="nofollow">non-transit AS tutorial</A>.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5615800024796590606">09 August 2010 22:36</a>
+                <a rel="nofollow" id="c5615800024796590606" href="#5615800024796590606">09 August 2010 22:36</a>
               </span>
             </div>
-            <p class="comment-content">:-E *DONT_KNOW*</p>
+            <div class="comment-content">:-E *DONT_KNOW*</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4004523866946952482">09 August 2010 22:36</a>
+                <a rel="nofollow" id="c4004523866946952482" href="#4004523866946952482">09 August 2010 22:36</a>
               </span>
             </div>
-            <p class="comment-content">:-E *DONT_KNOW*</p>
+            <div class="comment-content">:-E *DONT_KNOW*</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8420827858547899007">09 July 2012 12:23</a>
+                <a rel="nofollow" id="c8420827858547899007" href="#8420827858547899007">09 July 2012 12:23</a>
               </span>
             </div>
-            <p class="comment-content">Thank you for the explanation.</p>
+            <div class="comment-content">Thank you for the explanation.</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10909241530837115913" rel="nofollow">anasilk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#626030091830906546">07 August 2015 10:56</a>
+                <a rel="nofollow" id="c626030091830906546" href="#626030091830906546">07 August 2015 10:56</a>
               </span>
             </div>
-            <p class="comment-content">Hi, I just want to ask you. My Hub router DMVPN(Phase 2) is using IP as-path, <br />ip as-path access-list 100 deny _65000$<br />ip as-path access-list 100 permit .*<br /><br />I would like to deny for 65000 but allowing all for the spokes.<br />I can see the dynamic tunnel is up however the BGP routing showing the next hop to reach destination still going to Hub IP, then only reach to destination. When I removed the IP AS-Path, then the spoke router getting the correct information on BGP and able traverse via dynamic tunnels to other spoke. Is this a limitation of DMVPN or IP AS-Path?</p>
+            <div class="comment-content">Hi, I just want to ask you. My Hub router DMVPN(Phase 2) is using IP as-path, <br />ip as-path access-list 100 deny _65000$<br />ip as-path access-list 100 permit .*<br /><br />I would like to deny for 65000 but allowing all for the spokes.<br />I can see the dynamic tunnel is up however the BGP routing showing the next hop to reach destination still going to Hub IP, then only reach to destination. When I removed the IP AS-Path, then the spoke router getting the correct information on BGP and able traverse via dynamic tunnels to other spoke. Is this a limitation of DMVPN or IP AS-Path?</div>
           </div>
         </li>
       </div>

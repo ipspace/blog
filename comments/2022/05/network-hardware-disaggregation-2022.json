@@ -1,0 +1,191 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "17 May 2022 04:12",
+               "html": "<p>Thank you, will add.</p>\n\n<p>Although, is this the same AT&amp;T that tried really hard to persuade everyone else to do their job for them by open-sourcing DANOS? &#x1F923;</p>\n",
+               "id": "1251",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-05-17T16:12:59",
+               "ref": "1235",
+               "type": "comment"
+            }
+         ],
+         "date": "16 May 2022 09:35",
+         "html": "<p>You could add Drivenets under the proprietary NOS on top of white boxes. AT&amp;T seems to have deployed this in their next-gen core or something.</p>\n\n<p>https://drivenets.com/news-and-events/press-release/att-deploys-drivenets-network-cloud-in-their-next-gen-core/</p>\n",
+         "id": "1235",
+         "name": " Thomas Tsagklas ",
+         "pub": "2022-05-16T09:35:31",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "17 May 2022 04:18",
+               "html": "<p>Thanks a million, really helped me get a slide or two more focused (obviously with full attribution).</p>\n",
+               "id": "1252",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-17T16:18:18",
+               "ref": "1236",
+               "type": "comment"
+            }
+         ],
+         "date": "16 May 2022 09:45",
+         "html": "https: //anetworkartist.blogspot.com/2019/11/the-white-box-obsession-in-enterprise.html<br />\n\n\n",
+         "id": "1236",
+         "name": "Deepak Arora",
+         "pub": "2022-05-16T09:45:37",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "17 May 2022 04:20",
+               "html": "<p>Thanks a million for the feedback -- so it&#39;s yet again the question of &quot;where do you want to hide the complexity&quot; ;)</p>\n",
+               "id": "1253",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-17T16:20:32",
+               "ref": "1237",
+               "type": "comment"
+            }
+         ],
+         "date": "16 May 2022 12:57",
+         "html": "<p>P4 is not just for programming. It is intended to be used as generic pipeline architecture description language. The various pipeline architectures started in ONOS, but then they were tired of it and wanted to move downwards closer to the hardware, so the SDN controller would be more unified. Google had the power to enforce this, so Stratum was born. ONOS has a new variant written in GoLang called MicroONOS. This is a streamlined version that supports only P4 as a southbound API. So the SDN contoller would not have a zoo of drivers and a zoo of pipeline modules. The configuration complexity is now moved away from the SDN operator to the switch designer. However, the SDN controller code will be much more complex, since it needs to interpret P4. But the SDN operator has less work to do.\nIf an ASIC is not programmable, you could still write a generic network operation system using P4. This is the theory, but for simpler hardware OpenFlow is good enough and there are mature implementations. \nThe P4 SDN development is rather slow, since there is not a big business drive for it. \nSome companies changed from open systems to closed systems. For example, HPE. They have recognized that many companies do not care, they just need a simple to operate solution. Interoperability with different vendors is just for nerds or telcos. Not for the average enterprise. They are happy with a black box, single vendor solution if it works enough well...</p>\n",
+         "id": "1237",
+         "name": "Bela Varkonyi",
+         "pub": "2022-05-16T12:57:12",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "16 May 2022 04:21",
+               "html": "<p>Memory and feature richness are orthogonal issues, you can have low memory and feature richness.  Typically in a lean spine fabric design you have features on the edge (leaf).  Only leafs terminating external and security services typically would need high buffer so you can use the right ASIC for the role. </p>\n",
+               "id": "1242",
+               "name": " Emanuel Stoia",
+               "pub": "2022-05-16T16:21:37",
+               "ref": "1241",
+               "type": "comment"
+            }
+         ],
+         "date": "16 May 2022 02:50",
+         "html": "<p>Hi, Ivan! Very nice article, thank you! May I ask about the use-cases you mentioned?\nAt the end of the article you said:</p>\n\n<ul>\n<li><p>Feature-rich Broadcom ASIC used on leaf switches,</p></li>\n<li><p>High-speed Broadcom ASIC used on spine switches</p></li>\n</ul>\n\n<p>The other article from Juniper I found on the web (https://www.juniper.net/content/dam/www/assets/white-papers/us/en/routers/deploying-data-center-switching-solutions.pdf) was saying quite opposite:</p>\n\n<ul>\n<li><p>Low On-Chip Memory ASIC: High speed/low buffer leaf </p></li>\n<li><p>Large External Memory ASIC: High speed/high buffer leaf and spine</p></li>\n</ul>\n\n<p>Here (https://elegantnetwork.github.io/posts/A-Summary-of-Network-ASICs/) it says that &quot;Historically these chips (merchant silicon) have been used for ToR switches, but some networks especially hyperscalers are using them throughout the network, usually in the form of small fixed form factor (pizza boxes.)&quot;</p>\n\n<p>I guess there is a naming confusing (e.g. do we call ToR as Leaf or no). May I ask you to clarify what is the best use-case of each type of ASIC?</p>\n",
+         "id": "1241",
+         "name": "Aleksei Chuvakov",
+         "pub": "2022-05-16T14:50:50",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "17 May 2022 04:33",
+               "html": "<p>Thank you - totally missed the &quot;control plane in VM/container&quot; aspect. Added.</p>\n",
+               "id": "1255",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-17T16:33:38",
+               "ref": "1243",
+               "type": "comment"
+            },
+            {
+               "date": "18 May 2022 04:35",
+               "html": "<p>Yes, cRPD runs since a bit on top of wet string up to whitebox HW and probably even funkier stuff ;-) Ivan, I recommend to grab someone like Emanuel or one of our key SEs dealing with cRPD in different envs and do a little podcast just about this stuff. AFAIS the future points to something like cRPD as most succesful approach given how small/cheap/fast-boot the container is (and yes, southbound API evreyone is so excited about is largely circumstantial, cRPD simply chopped off the southbound [very rich] JNPR ASIC API and replaced it with bunch other things with cost of adding other southbound APIs being fairly cheap though mostly loosing good amount of functionality since such APIs [and off the shelf ASICs or even Linux fwd path] are much less feature rich than J&#39;s silicon. As theyu say, what you pay for but generally it&#39;s just one layer API squeezing a whale into a needle often ;-) ... why I say future points that way is that the real hard stuff in integraion of all that stuff iis really in northbound (like netconf or yang)/telemetry/JET API and so on. It&#39;s sexy t o talk about building a &quot;better BGP&quot; but once you have it you have nothing yet in a large network that needs automating/operating/unified, large scale solid northbounds. And once you really start to look at it servers/hosts start to slide into it for a couple reasons (as in RotH) the discussion of scale/running stuff on host securely and so on points hard towards something like cRPD again. my 2c.</p>\n",
+               "id": "1259",
+               "name": " Tony P",
+               "pub": "2022-05-18T16:35:38",
+               "ref": "1243",
+               "type": "comment"
+            },
+            {
+               "date": "18 May 2022 08:23",
+               "html": "<p>Thanks a million (as always) for the feedback -- it&#39;s really nice to see I got it mostly right (although I will need another blog post to explain it).</p>\n",
+               "id": "1260",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-05-18T20:23:02",
+               "ref": "1259",
+               "type": "comment"
+            }
+         ],
+         "date": "16 May 2022 04:31",
+         "html": "<p>Great article Ivan!  With the cloud evolution the last 10 years the entire definition of networking has evolved.  Networking is a service that can run anywhere depending on customer requirement.  The ability to run a mature BGP or even L7 Security stack on a containerized platform in a on premise server or cloud workload shows how flexible infrastructure has become.  Here&#39;s Juniper&#39;s cRPD documentation https://www.juniper.net/documentation/us/en/software/crpd/crpd-deployment/topics/concept/understanding-crpd.html</p>\n",
+         "id": "1243",
+         "name": " Emanuel Stoia",
+         "pub": "2022-05-16T16:31:38",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "17 May 2022 04:32",
+               "html": "<p>You&#39;re absolutely right, and that&#39;s why I wrote &quot;using whatever definition of open&quot; &#x1F974;</p>\n",
+               "id": "1254",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-05-17T16:32:43",
+               "ref": "1244",
+               "type": "comment"
+            }
+         ],
+         "date": "16 May 2022 06:20",
+         "html": "<p>In SONIC the SAIs are proprietary but I guess you can download them for free. In Cumulus, switchd is proprietary and you can&#39;t get it for free; I&#39;m not sure if such a &quot;closed core&quot; model is what people expect from open source.</p>\n",
+         "id": "1244",
+         "name": "Wes Felter",
+         "pub": "2022-05-16T18:20:44",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "16 May 2022 07:57",
+               "html": "<p>I love switchdev but 99% of network engineers/operators cannot handle it because there&#39;s no vendor support/education/ecosystem. I guess we can view it as a discount for open-minded people. :-)</p>\n",
+               "id": "1246",
+               "name": "Wes Felter",
+               "pub": "2022-05-16T19:57:33",
+               "ref": "1245",
+               "type": "comment"
+            },
+            {
+               "date": "16 May 2022 08:41",
+               "html": "<p>Is that still true? A lot of data center network edge functionality has moved to the Linux hosts to support virtualization / containers so there are many operators with Linux / network crossover skills. Having a single NOS end to end greatly simplifies end to end troubleshooting.</p>\n",
+               "id": "1247",
+               "name": " Peter Phaal",
+               "pub": "2022-05-16T20:41:08",
+               "ref": "1246",
+               "type": "comment"
+            }
+         ],
+         "date": "16 May 2022 07:24",
+         "html": "<p><a href=\"https://www.nvidia.com/en-us/networking/ethernet-switching/linux-switch/\">NVIDIA Linux Switch</a> is an interesting approach. All the hardware drivers are included in the stock Linux kernel so you can install any recent Linux distribution and use Linux applications from the distro for routing, monitoring, and configuration management (e.g. <a href=\"https://frrouting.org/\">FRR</a>, <a href=\"https://sflow.net/\">Host sFlow</a>, <a href=\"https://www.ansible.com/\">Ansible</a>, etc.)</p>\n",
+         "id": "1245",
+         "name": " Peter Phaal",
+         "pub": "2022-05-16T19:24:50",
+         "type": "comment"
+      },
+      {
+         "date": "18 May 2022 05:31",
+         "html": "<p>Ivan - with all the traction which SONiC is getting, I would love to add some colors on the multi-vendor SONiC deployment/Support and tier-2 adoption for it. Thanks, Vishal</p>\n",
+         "id": "1257",
+         "name": " Vishal Shukla",
+         "pub": "2022-05-18T05:31:15",
+         "type": "comment"
+      },
+      {
+         "date": "07 June 2022 09:58",
+         "html": "<p>There&#39;s PicOS from Pica8. They&#39;ve presented at a couple <a href=\"https://techfieldday.com/companies/pica8/\">Networking Field Days</a>.</p>\n",
+         "id": "1292",
+         "name": " Bruno Wollmann",
+         "pub": "2022-06-07T21:58:18",
+         "type": "comment"
+      },
+      {
+         "date": "30 July 2022 01:45",
+         "html": "<p>We should also add reference to DENTos - targeting edge-usecases (Retail networking, campus, etc). Major driving force behind DENTos is Amazon.</p>\n",
+         "id": "1337",
+         "name": " Sridhar Rao",
+         "pub": "2022-07-30T13:45:05",
+         "type": "comment"
+      }
+   ],
+   "count": 10,
+   "type": "post",
+   "url": "2022/05/network-hardware-disaggregation-2022.html"
+}

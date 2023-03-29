@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">sh0x</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5054121377852564280">09 December 2011 07:36</a>
+                <a rel="nofollow" id="c5054121377852564280" href="#5054121377852564280">09 December 2011 07:36</a>
               </span>
             </div>
-            <p class="comment-content">Great post Ivan. What methods are available to provide scalable L3 isolation between the virtual L2 networks? MPLS/VPN and VPLS would seem reasonable though obviously not an available solution for vswitch at this point, not to mention cost of hardware goes up, choice of vendors goes down, and I don&#39;t believe there are any high port density 10G ToR switches available with the necessary protocol support. What other scalable options are there?</p>
+            <div class="comment-content">Great post Ivan. What methods are available to provide scalable L3 isolation between the virtual L2 networks? MPLS/VPN and VPLS would seem reasonable though obviously not an available solution for vswitch at this point, not to mention cost of hardware goes up, choice of vendors goes down, and I don&#39;t believe there are any high port density 10G ToR switches available with the necessary protocol support. What other scalable options are there?</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ben Jencks</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8503784297308023182">09 December 2011 22:00</a>
+                <a rel="nofollow" id="c8503784297308023182" href="#8503784297308023182">09 December 2011 22:00</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;m actually not convinced Amazon does something like that, at least for the majority of their VMs. Remember, they don&#39;t support any VM or IP mobility. Their solution to maintenance on a host box is just to reboot or kill all the VMs running on the box. As a result, they can build an incredibly simple, aggregatable, entirely L3-routing based network. I wouldn&#39;t be surprised if the routing begins on the host itself, using proxy-ARP to get the packets.<br /><br />It&#39;s true that Virtual Private Cloud lets you bring your own addresses and has more flexibility in assigning them, but even there I don&#39;t believe they give you an L2 domain with the usual broadcast/multicast semantics -- it&#39;s just a bunch of machines with IPs from the same subnet. They probably use IP-in-IP or IP-in-MPLS to handle it; I strongly doubt ethernet headers get beyond the virtualization host.</p>
+            <div class="comment-content">I&#39;m actually not convinced Amazon does something like that, at least for the majority of their VMs. Remember, they don&#39;t support any VM or IP mobility. Their solution to maintenance on a host box is just to reboot or kill all the VMs running on the box. As a result, they can build an incredibly simple, aggregatable, entirely L3-routing based network. I wouldn&#39;t be surprised if the routing begins on the host itself, using proxy-ARP to get the packets.<br /><br />It&#39;s true that Virtual Private Cloud lets you bring your own addresses and has more flexibility in assigning them, but even there I don&#39;t believe they give you an L2 domain with the usual broadcast/multicast semantics -- it&#39;s just a bunch of machines with IPs from the same subnet. They probably use IP-in-IP or IP-in-MPLS to handle it; I strongly doubt ethernet headers get beyond the virtualization host.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">@jedelman8</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2745807074903287510">09 December 2011 22:02</a>
+                <a rel="nofollow" id="c2745807074903287510" href="#2745807074903287510">09 December 2011 22:02</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, nice write up.  I wouldn&#39;t mind hearing your thoughts and speculation on using CAPWAP between virtual switches.  Cough cough Nicira.  Maybe it will help with de-coupling the control plane reliance from the physical network, but not so helpful with VLAN scale?</p>
+            <div class="comment-content">Ivan, nice write up.  I wouldn&#39;t mind hearing your thoughts and speculation on using CAPWAP between virtual switches.  Cough cough Nicira.  Maybe it will help with de-coupling the control plane reliance from the physical network, but not so helpful with VLAN scale?</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1824277383451101554">10 December 2011 13:42</a>
+                <a rel="nofollow" id="c1824277383451101554" href="#1824277383451101554">10 December 2011 13:42</a>
               </span>
             </div>
-            <p class="comment-content">Amazon runs IP-over-IP with L3 switch in the hypervisor (or something equivalent). Follow the link in the blog post for more details.</p>
+            <div class="comment-content">Amazon runs IP-over-IP with L3 switch in the hypervisor (or something equivalent). Follow the link in the blog post for more details.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6037274524173496099">10 December 2011 13:43</a>
+                <a rel="nofollow" id="c6037274524173496099" href="#6037274524173496099">10 December 2011 13:43</a>
               </span>
             </div>
-            <p class="comment-content">I don&#39;t think Nicira uses more than CAPWAP encapsulation in the Open vSwitch. They seem to be relying exclusively on P2P inter-hypervisor tunnels and use whatever encapsulation comes handy, be it GRE, CAPWAP or VXLAN.</p>
+            <div class="comment-content">I don&#39;t think Nicira uses more than CAPWAP encapsulation in the Open vSwitch. They seem to be relying exclusively on P2P inter-hypervisor tunnels and use whatever encapsulation comes handy, be it GRE, CAPWAP or VXLAN.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1882167402519559901">12 December 2011 20:47</a>
+                <a rel="nofollow" id="c1882167402519559901" href="#1882167402519559901">12 December 2011 20:47</a>
               </span>
             </div>
-            <p class="comment-content">As long as you stay in the L2 domain (be it VLANs, VXLAN-based virtual networks or anything else), the L3 isolation is automatic. Once you cross L3 boundaries and want to keep L3 path separation, MPLS/VPN is the only widely-available scalable technology (MultiVRF doesn&#39;t scale).</p>
+            <div class="comment-content">As long as you stay in the L2 domain (be it VLANs, VXLAN-based virtual networks or anything else), the L3 isolation is automatic. Once you cross L3 boundaries and want to keep L3 path separation, MPLS/VPN is the only widely-available scalable technology (MultiVRF doesn&#39;t scale).</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">hitekalex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5190316074188024335">18 December 2011 18:31</a>
+                <a rel="nofollow" id="c5190316074188024335" href="#5190316074188024335">18 December 2011 18:31</a>
               </span>
             </div>
-            <p class="comment-content">I am not sure I understand why using Core Multicast for L2 flooding is a bad thing, that needs to be avoided?   Any modern Core IP platform is designed to handle large-scale Multicast forwarding, and majority of Enterprise datacenter Core networks are already Multicast enabled.   <br /><br />Why invent something new and kludgy (like full mesh of hypervisor tunnels), when the most efficient IP-based solution has already been invented and proven in real networks?   <br /><br />Not to mention, Unicast-based flooding will be inherintly less efficient than Multicast-based.  Think about it - a hypervisor that needs to flood a frame to 10 other hypervisors needs to send that frame to the IP Core (to Multicast group for that L2 domain) just once.. as opposed to forwarding that frame 10 times via Unicast across 10 tunnels.    Multicast was invented for this.</p>
+            <div class="comment-content">I am not sure I understand why using Core Multicast for L2 flooding is a bad thing, that needs to be avoided?   Any modern Core IP platform is designed to handle large-scale Multicast forwarding, and majority of Enterprise datacenter Core networks are already Multicast enabled.   <br /><br />Why invent something new and kludgy (like full mesh of hypervisor tunnels), when the most efficient IP-based solution has already been invented and proven in real networks?   <br /><br />Not to mention, Unicast-based flooding will be inherintly less efficient than Multicast-based.  Think about it - a hypervisor that needs to flood a frame to 10 other hypervisors needs to send that frame to the IP Core (to Multicast group for that L2 domain) just once.. as opposed to forwarding that frame 10 times via Unicast across 10 tunnels.    Multicast was invented for this.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6306299933545288674">19 December 2011 20:02</a>
+                <a rel="nofollow" id="c6306299933545288674" href="#6306299933545288674">19 December 2011 20:02</a>
               </span>
             </div>
-            <p class="comment-content">Arista: 4000 multicast entries per linecard<br />Nexus 7000: 32000 MC entries, 15000 in vPC environment<br />Nexus 5548: 2000 (verified), 4000 (maximum)<br />QFabric: No info. OOPS?<br /><br />Not that much if you want to have an IP MC group per VNI. A blog post coming in early January (it&#39;s already on the to-write list).</p>
+            <div class="comment-content">Arista: 4000 multicast entries per linecard<br />Nexus 7000: 32000 MC entries, 15000 in vPC environment<br />Nexus 5548: 2000 (verified), 4000 (maximum)<br />QFabric: No info. OOPS?<br /><br />Not that much if you want to have an IP MC group per VNI. A blog post coming in early January (it&#39;s already on the to-write list).</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Mikkel Shinn</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1467888061095769584">04 January 2012 20:50</a>
+                <a rel="nofollow" id="c1467888061095769584" href="#1467888061095769584">04 January 2012 20:50</a>
               </span>
             </div>
-            <p class="comment-content">The latter example of MAC encapsulation struck me as an interesting place to apply some form of SDN. Instead of applying solutions like OpenFlow to the transport network, VM vendors could implement (ideally) open SDN APIs in the hypervisor networking, separating physical networking from virtual networking.<br /><br />Though I&#39;m neither an SDN or a virtualisation guy, so this is likely nothing new.</p>
+            <div class="comment-content">The latter example of MAC encapsulation struck me as an interesting place to apply some form of SDN. Instead of applying solutions like OpenFlow to the transport network, VM vendors could implement (ideally) open SDN APIs in the hypervisor networking, separating physical networking from virtual networking.<br /><br />Though I&#39;m neither an SDN or a virtualisation guy, so this is likely nothing new.</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6913145374235468753">04 January 2012 21:41</a>
+                <a rel="nofollow" id="c6913145374235468753" href="#6913145374235468753">04 January 2012 21:41</a>
               </span>
             </div>
-            <p class="comment-content">... this is exactly how I understand Open vSwitch/Nicira controller to work. OVS already supports OpenFlow API.</p>
+            <div class="comment-content">... this is exactly how I understand Open vSwitch/Nicira controller to work. OVS already supports OpenFlow API.</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Mikkel Shinn</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1802950747854766816">04 January 2012 21:53</a>
+                <a rel="nofollow" id="c1802950747854766816" href="#1802950747854766816">04 January 2012 21:53</a>
               </span>
             </div>
-            <p class="comment-content">Heh, I&#39;ll be exercising my caveat now.</p>
+            <div class="comment-content">Heh, I&#39;ll be exercising my caveat now.</div>
           </div>
         </li>
       </div>

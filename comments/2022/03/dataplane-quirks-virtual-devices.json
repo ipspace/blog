@@ -1,0 +1,50 @@
+{
+   "comments": [
+      {
+         "date": "03 March 2022 01:20",
+         "html": "About Digital Twin for Netsim Tools: https://srlinux-at-your-service.medium.com/%EF%B8%8E-digital-reverse-engineering-in-networking-netlab-704e339885e9<br />\n\n\n",
+         "id": "1071",
+         "name": " Jeroen van Bemmel",
+         "pub": "2022-03-03T13:20:30",
+         "type": "comment"
+      },
+      {
+         "date": "03 March 2022 01:56",
+         "html": "<p>The single IOS process in IOS XE is not the same as the old IOS. This is only a subset, since all data plane forwarding functions are implemented separately with dedicated CPU cores in ISR 4000, but with ASICs in ASR900, Cat9000 or Cat8000. The original all-software IOS does not support such an architecture. A lot of things in IOS XE are also platform specific. </p>\n\n<p>Because of that, an IOS XE simulation using a VM might be far away from real behavior. Whenever you have a platform specific limitation, optimization, bugs, etc. the simulation would not be the same as the real device.</p>\n\n<p>Simulation is a good starting point, but not a proper validation even for you functionality. Real hardware might give you surprises...</p>\n",
+         "id": "1072",
+         "name": "Bela Varkonyi",
+         "pub": "2022-03-03T13:56:55",
+         "type": "comment"
+      },
+      {
+         "date": "03 March 2022 02:02",
+         "html": "<p>For IOS XR you have two simulation images. One is focusing on control plane and designed as an RR. The other IOS XR VM has a full data plane, but it is again significantly different from the real hardware implementation. Especially, that most IOS XR devices have a distributed CPU / line card architecture. </p>\n\n<p>Here again, you have tons of hardware platform specific features, limitations, bugs, etc. Those you cannot experience in a simulation...</p>\n\n<p>In a large Cisco shop, you might use a simulation for proof-of-concept and have a real hardware lab for acceptence test, problem management, troubleshooting. The real hardware lab is more difficult to access for many projects competing for resources, so it still makes sense to make your first checks in simulation, but it is not enough before you want to deploy something at the customer. </p>\n",
+         "id": "1073",
+         "name": "Bela Varkonyi",
+         "pub": "2022-03-03T14:02:30",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "09 March 2022 07:22",
+               "html": "<p>Thanks a million!</p>\n",
+               "id": "1081",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-03-09T19:22:30",
+               "ref": "1080",
+               "type": "comment"
+            }
+         ],
+         "date": "09 March 2022 07:15",
+         "html": "<p>You were wondering about the data plane VM within Juniper&#39;s VMX. The second edition of Harry Reynolds book &quot;Juniper MX Series&quot; has a short chapter on this. </p>\n\n<p>The lookup portion of the Trio chipset is virtualized within the data plane VM. This is said to be the same microcode that they use on the physical ASIC just compiled for Intel x86 instead. The queueing features are rewritten using Intel DPDK.</p>\n",
+         "id": "1080",
+         "name": " Ian Logan",
+         "pub": "2022-03-09T19:15:11",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2022/03/dataplane-quirks-virtual-devices.html"
+}

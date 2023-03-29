@@ -1,0 +1,85 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="275">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Mark Pawson</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c275" href="#275">02 December 2020 11:33</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Dear Ivan,</p>
+
+<p>Thank you for this excellent article.  It&rsquo;s educated me very much.  In it you wrote &ldquo; stomped the CRC on egress ports&rdquo;.  Could you elaborate on this sentence.  It is not clear to me exactly what you mean.</p>
+
+<p>Thank you.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="276">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c276" href="#276">02 December 2020 04:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Mark! So nice to hear you like the article. For more details, follow the links in the paragraph starting with &quot;<em>For more details...</em>&quot;. <a href="https://www.google.com/search?q=stomped+crc">This</a> might also help.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="282">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c282" href="#282">04 December 2020 10:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, I don&#39;t know about you, but I think cut-through and deep buffer are nothing but scams, and it&#39;s subtle problems like this that open one&#39;s eyes to the difference between reality and academy. Cut-through switching might improve nominal device latency a little bit compared to store-and-forward (SAF), but when one puts it into the bigger end-to-end context, it&#39;s mostly useless. </p>
+
+<p>Take the topology in the post, say if the spine switch operates in cut-thru mode, then it can forward the frames a bit faster, only to be blocked up at the slower device(s) down the chain, as they&#39;re lower-end devices and so, can&#39;t handle the higher rate -- asynchronous speeds -- and being at the lower end, they might be SAF devices themselves. The downstream devices then become the bottlenecks, so end-to-end latency is hardly any better.  Also, as cut-thru switches can&#39;t check CRC, they will just cause retransmission of bad packets, and along with it, an increase in end-to-end latency. </p>
+
+<p>Even within the cut-thru switch itself, cut-thru mode is not always viable. Let&#39;s use Nexus 5k as an example. It uses single-stage xbar fabric with VOQ. If you have output contention, which you always do if your network is highly utilized, then the packets need to be buffered at the input waiting for the output to be available. In that case, cut-thru behaviour is essentially as good as SAF; both have to buffer the packets and wait for their turns to transmit. </p>
+
+<p>Also, Nexus 5k (and other xbar switches) uses cell-based fabric + VOQ to deal with HOL blocking. So basically the xbar has to provide speed-up/overspeed to both compensate for cell tax and evade the HOL blocking problem. Since the xbar is therefore faster than the input interfaces, the asynchronous-speeds situation once again surface, and cells will have to be buffered before being sent across the xbar. Plus, in each cell time, there&#39;re arbitration decisions made by the xbar schedulers in regard to which cells get to enter the fabric, so buffering and waiting are inevitable. </p>
+
+<p>All in all, the (dubious) benefit of cut-thru switching seems to be almost totally nullified. Not to mention cut-thru switches have more complicated ASICs and wiring than simple SAF switches, making it more expensive for no tangible gains. </p>
+
+<p>I think cut-thru switching only makes sense if the whole network fabric runs the same model of switches, with simple protocol stack. So the place where it makes sense is niche markets like HPC cluster running low-overhead infiniband, or HFT trading, but the latter are mostly criminals trying to front-run each other anyway, so not sure if it&#39;s ethical to provide a tools for them to do damage to society. </p>
+
+<p>In day-to-day networks that deal with a mixture of traffic types and aggressive traffic patterns, cut-thru switching, like deep buffer, is just a diversion, and provides yet another opportunity for vendors to sell their overpriced boxes.</p>
+
+<p>I must admit, I did find Cisco very admirable for having the guts to come out and say it like it is, that these days Cut-thru and SAF are very similar performance-wise.  </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

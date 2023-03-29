@@ -1,0 +1,47 @@
+{
+   "comments": [
+      {
+         "date": "19 March 2021 07:47",
+         "html": "<p>Ivan, in addition to the above, there are 2 papers from Google detailing some of their network&#39;s design principle s and practices:</p>\n\n<p>https://cseweb.ucsd.edu/~vahdat/papers/b4-sigcomm13.pdf</p>\n\n<p>https://people.eecs.berkeley.edu/~sylvia/cs268-2019/papers/ramesh16a.pdf</p>\n\n<p>In the first one, on page 4, they briefly mentioned their own B4 switch, which has Clos internal architecture similar to FB&#39;s Six-Pack. Overall, looks like Google makes heavy use of BGP, IS-IS and MPLS to scale their infrastructure. </p>\n\n<p>Also, correct me if I&#39;m wrong, but surely MPLS is a viable technology to build L3 virtual network if one doesn&#39;t want to resort to Overlay, no? Overlay is complex and therefore slow. MPLS is simpler and faster. The downside with MPLS is the more VRFs you have, the more CAM/TCAM resources are required and this can prove prohibitive given how scarce they are even in modern ASICs.    </p>\n",
+         "id": "485",
+         "name": " Minh Ha",
+         "pub": "2021-03-19T07:47:46",
+         "type": "comment"
+      },
+      {
+         "date": "19 March 2021 08:10",
+         "html": "<p>Ah, the B4 paper... aka &quot;look, we&#39;re so cool, we decided to become a router manufacturer&quot;. See https://blog.ipspace.net/2012/05/openflow-google-brilliant-but-not.html</p>\n\n<p>As for MPLS as transport topology instead of an overlay, see https://blog.ipspace.net/2020/05/need-vxlan-transport.html</p>\n\n<p>Kind regards, Ivan</p>\n",
+         "id": "486",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-03-19T08:10:53",
+         "type": "comment"
+      },
+      {
+         "date": "21 March 2021 01:23",
+         "html": "<p>Hi Ivan,\nAfter 6 years of working at AWS I don&rsquo;t really know how it works either. For the basic principles of VPC under the hood your subscribers might like this video. It&rsquo;s a bit old, but still pretty relevant.</p>\n\n<p>https://m.youtube.com/watch?v=Zd5hsL-JNY4</p>\n",
+         "id": "489",
+         "name": " Brad Hedlund",
+         "pub": "2021-03-21T01:23:32",
+         "type": "comment"
+      },
+      {
+         "date": "22 March 2021 04:53",
+         "html": "<p>I&#39;ve also found this paper that describes in detail how MS has implemented their virtual networking platform over the years, and why they&#39;ve chosen to go with overlay/directory service model:</p>\n\n<p>https://www.usenix.org/system/files/conference/nsdi17/nsdi17-firestone.pdf</p>\n\n<p>Looks like the implementations of Azure and GCP&#39;s virtual networking (detailed in the Andromeda paper) overlap a fair bit. One thing is certain: Openflow, in its classic form, is unworkable/unscalable. The VFP paper hints at that as the reason why NSX scales poorly (1000 hosts). Both Azure and GCP had to make heavy modifications to OF model in order to scale their infrastructure. </p>\n\n<p>The overlay implementation obviously trades performance for scalability: section 5 of the VFP and sections 3, 4 of the Andromeda paper, give a glimpse into how slow their data planes can get as they give detailed architecture of the platforms. That&#39;s why MS decided, in the end, to go with hardware offloading, using FPGA SmartNiC -- essentially a specialized switch/router attached to a server -- to implement virtual networking, for better scalability. </p>\n\n<p>The directory service model is also a concept prevalent across AWS, Azure, and GCP, albeit under different names. in AWS, it&#39;s called the Mapping service, in Azure, Directory, and Hoverboard in GCP. They all use this service to scale their routing table to millions of entries on the cheap, again at the cost of performance hit, because it&#39;s done in software and requires communication to dedicated devices. Flow caching is used to improve performance, which is reminiscent of MLS back in the 90s. </p>\n\n<p>Overall, since the philosophy behind their VNET is very much similar, whoever has the sanest physical design will have the best performance relative to the others. AWS by far seems to be on top as their physical architecture looks the sanest to me. </p>\n",
+         "id": "490",
+         "name": " Minh Ha",
+         "pub": "2021-03-22T04:53:44",
+         "type": "comment"
+      },
+      {
+         "date": "23 January 2022 09:23",
+         "html": "https: //www.youtube.com/watch?v=8Kyoj3bKepY<br />\n\n\n",
+         "id": "974",
+         "name": "marten cassel",
+         "pub": "2022-01-23T21:23:20",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2021/03/public-cloud-magic.html"
+}

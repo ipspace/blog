@@ -1,0 +1,87 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="542">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c542" href="#542">21 April 2021 01:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, thx a lot for your feedback :)) ! Thanks to your reminder, I remember the FPGA wrt HFT now. Basically some 10 yrs ago, Xilinx was proposing to implement the whole trading program within FPGA itself, and cut down end to end latency to a few microseconds, thanks to FPGA massively-parallel and fast, deterministic performance. The reconfigurability of FPGA is utilized for updating the trading program when they change the code. ASIC won&rsquo;t be able to do this obviously. </p>
+
+<p>IEX that you mentioned is an Exchange. Exchanges like IEX were created to promote fairness after there were so many claims/complains/court cases about HFT firms using speed advantage for predatory tactics like front-running, and profiting unfairly. So naturally, as you mentioned, they&rsquo;d use stuff like equal-length fibre cables to implement speed-bumps, in order to level the playing field for all participants. But that equal-length speed-bump only applies equally to traders located within close-enough distance to the Exchange i.e. within the same country. It doesn&rsquo;t make sense for someone too far away to attempt to do HFT against, say US firms, using US-based exchange, because their speed, in the ms range, would place them at great disadvantage against the US-based players, despite the speed-bump. They&rsquo;ll get front-run and lose out. In any case, HFT is in decline these days &ndash; thank God -- after all the low-hanging fruits have been picked, so they&rsquo;re a niche market. </p>
+
+<p>Re the 64-bye packet thing, I mentioned the reasons previously already, and again in the comment responding to Andre&#39;s, but even besides that, TCP ACK is min-size 64 bytes, and small packet 200-300 bytes or less are quite common in DC, including FB DCs. TCP ACKs take up a fair amount of traffic in the Internet and also inside a DC, so for this reason alone it&#39;s worth having a chipset capable of processing 64-byte packets efficiently. And since 100GE links are normally aggregate links, they accumulate even more of those small packets from different sources. That makes small-packet processing even more important. </p>
+
+<p>Also, by having a powerful ASICs being able to do massive rates of packet processing &ndash; which is what small-packet processing amounts to &ndash; there&rsquo;ll be less need for on-chip buffer, and so, the chipset will be able to accommodate higher port count/density/radix, translating to better cost-efficiency and higher return on investment for both vendors and users. Having faster-processing engine alone also translates to higher density, because obviously there&rsquo;s no point jamming more ports into a line-card unless its ASIC can handle the accumulated packet rate. </p>
+
+<p>I understand the laws of physics are absolute, and have no problem at all with vendor chipsets incapable of improving their horsepower, beyond a certain point. What I find laughable, is vendors sugarcoating the challenge they have. While I always bash Cisco C-level execs for their pathetic business practices, I keep finding myself in love with Cisco tech people&#39;s honesty. People like Lukas Krattiger and many more, are very down to earth, possess good old common sense, and say it like it is. For ex, one can look at Cisco&#39;s public doccos, and see that they acknowledge when they can&#39;t do small packet, and they don&#39;t try to dress it up with poor-taste jokes like &quot;don&#39;t optimize for this and that&quot;. I&#39;m happy to be corrected and will change my opinion of Cisco accordingly.</p>
+
+<p>And I still consider the Cloud a step backward in terms of progress, for the reason they commoditize technology and disincentivize new breakthroughs in both software and hardware. Pls don&#39;t take my comment personally. I say this to everyone I know, not just you Ivan :)). I don&#39;t even want to bring up other filthy aspects of the Cloud, as you already made a post about how much a scam AI is ;) . And yeah, their shareholders have a lot to answer for, technologically and socially, but it&#39;s a multi-disciplinary discussion, and will be far too long to discuss here.  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="545">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jeff Sicuranza</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c545" href="#545">21 April 2021 11:52</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>While on the subject of ASICs - Has there been any updates on Cisco&#39;s Unified Access Data Plane (UADP) ASIC that the community is aware about?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="549">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c549" href="#549">22 April 2021 10:24</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Jeff,</p>
+
+<p>The latest update about UADP ASIC that I can find is this blog from 2 weeks back:</p>
+
+<p>https://ciscolicense.com/blog/cisco-uadp-asic-chipset/</p>
+
+<p>So looks like there&#39;s not much change from last year, when they made a presentation about it here:</p>
+
+<p>https://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2020/pdf/BRKCRS-2901.pdf</p>
+
+<p>On page 46, it was mentioned UADP 3.0 was supposed to use 14nm process and have 19.2b transistors. It seems a lot of that transistor budget goes into the on-chip buffer of 36MB. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

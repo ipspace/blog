@@ -1,85 +1,93 @@
 {
-  "comments": [
-    {
-      "date": "16 January 2007 13:16",
-      "html": "Hello, Ivan.<br />First thank you for your blog and for your articles. You do a great work.<br />I want to ask you to grant for me the permission to translate your article \"Keep Track of Router Configurations with Configuration Archive\" into russian and publish it in cisco_ru (http://community.livejournal.com/cisco_ru/profile) - russian Cisco LiveJournal community, in my blog (http://romik-g.livejournal.com/) and on http://www.opennet.ru/ site, which is one of the largest russian system and network administration info server.",
-      "id": "7573809672198841483",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2007-01-16T13:16:00.000+01:00",
-      "ref": "2185775102781914725",
-      "type": "comment"
-    },
-    {
-      "date": "17 January 2008 04:36",
-      "html": "I copy my configs to a tftp server, and I've just realised that the archived configs (archive.cfg-1, archive.cfg-2 etc) are overwritten  when the configs are backed up after the router reloads for any reason.",
-      "id": "3826485681437725355",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Rob",
-      "profile": "https://www.blogger.com/profile/08442813178020212331",
-      "pub": "2008-01-17T04:36:00.000+01:00",
-      "ref": "2185775102781914725",
-      "type": "comment"
-    },
-    {
-      "date": "17 January 2008 11:10",
-      "html": "As I wrote in my article, the counter is reset after each reload (see the first note on the first page). If you want to make the file names unique, include the date in the archive <B>path</B> (Table 1 on the first page of the article).",
-      "id": "2383242765139154513",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Ivan Pepelnjak",
-      "profile": "https://www.blogger.com/profile/13457151406311272386",
-      "pub": "2008-01-17T11:10:00.000+01:00",
-      "ref": "2185775102781914725",
-      "type": "comment"
-    },
-    {
-      "date": "02 April 2008 11:06",
-      "html": "Great trick, but I'm having problems with IOS will not save a config when I specify a path.<BR/>Not on a router but on a switch.<BR/><BR/>%scp: error: unexpected filename: /path/config<BR/><BR/>%Error writing scp://scpuser@hostname//path/config (Permission denied)<BR/><BR/>but a path with only \"config\" will work.. Strange stuff :)",
-      "id": "1964959694722875944",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2008-04-02T11:06:00.000+02:00",
-      "ref": "2185775102781914725",
-      "type": "comment"
-    },
-    {
-      "date": "02 April 2008 12:31",
-      "html": "You have a double // in the URL (...//path...). The SCP server might interpret that as a potential attack.",
-      "id": "39264002802105670",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Ivan Pepelnjak",
-      "profile": "https://www.blogger.com/profile/13457151406311272386",
-      "pub": "2008-04-02T12:31:00.000+02:00",
-      "ref": "2185775102781914725",
-      "type": "comment"
-    },
-    {
-      "date": "02 April 2008 13:11",
-      "html": "Thanks Ivan for quick respons :)<BR/><BR/>But the dobbelslash is actually added by the \"wizard\"..<BR/><BR/>switchname#copy run scp:<BR/>Address or name of remote host []? zzz.xxx.yyy.nnn <BR/>Destination username [switchname]? scpuser<BR/>Destination filename [switchname-confg]? /path/config<BR/>Writing /path/config <BR/>Password: <BR/>%scp: error: unexpected filename: /path/config<BR/><BR/><BR/>%Error writing scp://scpuser@zzz.xxx.yyy.nnn//path/config (Permission denied)<BR/><BR/>It makes no difference if I use copy run \"scp://scpuser:password@zzz.xxx.yyy.nnn/path/config\" or \"//path/config\"<BR/><BR/>Found something on this page:<BR/>http://www.cisco.com/en/US/docs/switches/lan/catalyst6500/ios/12.2SXF/hybrid/release/notes/ol_4563.html<BR/><BR/>###<BR/>When you connect to a Cisco IOS Secure Copy (SCP) server, and then you specify a full path consisting of one or more directories for the destination-url parameter in the copy scp:destination-url command, the following message is displayed: <BR/>%scp: error: unexpected filename: /tmp/test %Error writing <BR/>scp://root@172.18.124.187//tmp/test (Permission denied)<BR/><BR/><BR/>Workaround: Specify the destination IP address in the command. The file will be placed in the top level of the destination file directory. Move the file internally into the desired directory. <BR/><BR/>This problem is resolved in Release 12.2(18)SXF6. (CSCsb62045)<BR/>####<BR/>Testing this on this box:<BR/>Cisco IOS Software, C3560 Software (C3560-IPBASEK9-M), Version 12.2(40)SE, RELEASE SOFTWARE (fc3",
-      "id": "8236232581548295667",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2008-04-02T13:11:00.000+02:00",
-      "ref": "2185775102781914725",
-      "type": "comment"
-    },
-    {
-      "date": "21 October 2008 09:23",
-      "html": "Hi,<BR/><BR/>You go through storing the configs on a windows http server. However i'm trying to work out how to do this on a linux server using apache and a php script to receive the config and store it in a mysql database.<BR/><BR/>Have you tried this type of setup? As it seems that the cisco router sends half the config and then stops. I have tried searching for someone else thats tried this scenario but have come up empty handed. It would be appreciated if you had any insight into this problem.<BR/><BR/>Thanks",
-      "id": "8835398171807082909",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2008-10-21T09:23:00.000+02:00",
-      "ref": "2185775102781914725",
-      "type": "comment"
-    }
-  ],
-  "count": 7,
-  "id": "2185775102781914725",
-  "type": "post",
-  "url": "2007/01/ios-configuration-archive.html"
+   "comments": [
+      {
+         "date": "16 January 2007 13:16",
+         "html": "Hello, Ivan.<br />First thank you for your blog and for your articles. You do a great work.<br />I want to ask you to grant for me the permission to translate your article \"Keep Track of Router Configurations with Configuration Archive\" into russian and publish it in cisco_ru (http://community.livejournal.com/cisco_ru/profile) - russian Cisco LiveJournal community, in my blog (http://romik-g.livejournal.com/) and on http://www.opennet.ru/ site, which is one of the largest russian system and network administration info server.",
+         "id": "7573809672198841483",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2007-01-16T13:16:00.000+01:00",
+         "ref": "2185775102781914725",
+         "type": "comment"
+      },
+      {
+         "date": "17 January 2008 04:36",
+         "html": "I copy my configs to a tftp server, and I've just realised that the archived configs (archive.cfg-1, archive.cfg-2 etc) are overwritten  when the configs are backed up after the router reloads for any reason.",
+         "id": "3826485681437725355",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Rob",
+         "profile": "https://www.blogger.com/profile/08442813178020212331",
+         "pub": "2008-01-17T04:36:00.000+01:00",
+         "ref": "2185775102781914725",
+         "type": "comment"
+      },
+      {
+         "date": "17 January 2008 11:10",
+         "html": "As I wrote in my article, the counter is reset after each reload (see the first note on the first page). If you want to make the file names unique, include the date in the archive <B>path</B> (Table 1 on the first page of the article).",
+         "id": "2383242765139154513",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Ivan Pepelnjak",
+         "profile": "https://www.blogger.com/profile/13457151406311272386",
+         "pub": "2008-01-17T11:10:00.000+01:00",
+         "ref": "2185775102781914725",
+         "type": "comment"
+      },
+      {
+         "date": "02 April 2008 11:06",
+         "html": "Great trick, but I'm having problems with IOS will not save a config when I specify a path.<BR/>Not on a router but on a switch.<BR/><BR/>%scp: error: unexpected filename: /path/config<BR/><BR/>%Error writing scp://scpuser@hostname//path/config (Permission denied)<BR/><BR/>but a path with only \"config\" will work.. Strange stuff :)",
+         "id": "1964959694722875944",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2008-04-02T11:06:00.000+02:00",
+         "ref": "2185775102781914725",
+         "type": "comment"
+      },
+      {
+         "date": "02 April 2008 12:31",
+         "html": "You have a double // in the URL (...//path...). The SCP server might interpret that as a potential attack.",
+         "id": "39264002802105670",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Ivan Pepelnjak",
+         "profile": "https://www.blogger.com/profile/13457151406311272386",
+         "pub": "2008-04-02T12:31:00.000+02:00",
+         "ref": "2185775102781914725",
+         "type": "comment"
+      },
+      {
+         "date": "02 April 2008 13:11",
+         "html": "Thanks Ivan for quick respons :)<BR/><BR/>But the dobbelslash is actually added by the \"wizard\"..<BR/><BR/>switchname#copy run scp:<BR/>Address or name of remote host []? zzz.xxx.yyy.nnn <BR/>Destination username [switchname]? scpuser<BR/>Destination filename [switchname-confg]? /path/config<BR/>Writing /path/config <BR/>Password: <BR/>%scp: error: unexpected filename: /path/config<BR/><BR/><BR/>%Error writing scp://scpuser@zzz.xxx.yyy.nnn//path/config (Permission denied)<BR/><BR/>It makes no difference if I use copy run \"scp://scpuser:password@zzz.xxx.yyy.nnn/path/config\" or \"//path/config\"<BR/><BR/>Found something on this page:<BR/>http://www.cisco.com/en/US/docs/switches/lan/catalyst6500/ios/12.2SXF/hybrid/release/notes/ol_4563.html<BR/><BR/>###<BR/>When you connect to a Cisco IOS Secure Copy (SCP) server, and then you specify a full path consisting of one or more directories for the destination-url parameter in the copy scp:destination-url command, the following message is displayed: <BR/>%scp: error: unexpected filename: /tmp/test %Error writing <BR/>scp://root@172.18.124.187//tmp/test (Permission denied)<BR/><BR/><BR/>Workaround: Specify the destination IP address in the command. The file will be placed in the top level of the destination file directory. Move the file internally into the desired directory. <BR/><BR/>This problem is resolved in Release 12.2(18)SXF6. (CSCsb62045)<BR/>####<BR/>Testing this on this box:<BR/>Cisco IOS Software, C3560 Software (C3560-IPBASEK9-M), Version 12.2(40)SE, RELEASE SOFTWARE (fc3",
+         "id": "8236232581548295667",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2008-04-02T13:11:00.000+02:00",
+         "ref": "2185775102781914725",
+         "type": "comment"
+      },
+      {
+         "date": "21 October 2008 09:23",
+         "html": "Hi,<BR/><BR/>You go through storing the configs on a windows http server. However i'm trying to work out how to do this on a linux server using apache and a php script to receive the config and store it in a mysql database.<BR/><BR/>Have you tried this type of setup? As it seems that the cisco router sends half the config and then stops. I have tried searching for someone else thats tried this scenario but have come up empty handed. It would be appreciated if you had any insight into this problem.<BR/><BR/>Thanks",
+         "id": "8835398171807082909",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2008-10-21T09:23:00.000+02:00",
+         "ref": "2185775102781914725",
+         "type": "comment"
+      },
+      {
+         "date": "08 April 2020 12:45",
+         "html": "<p>The IP Corner article is a bit hard to find these days (although it's still on the web), so it might be time to migrate it to www.ipspace.net ;)</p>\n",
+         "id": "23760",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-04-08T12:45:08",
+         "type": "comment"
+      }
+   ],
+   "count": 8,
+   "id": "2185775102781914725",
+   "type": "post",
+   "url": "2007/01/ios-configuration-archive.html"
 }

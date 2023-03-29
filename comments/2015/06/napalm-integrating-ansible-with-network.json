@@ -1,54 +1,70 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "15 June 2015 09:48",
-          "html": "&gt; who automated the inventories? Provisioning tools?<br /><br />You can use napalm to build the inventory as well. You will need to have a list of IPs or FQDN&#39;s but the get_facts method should be enough to build an initial inventory as you can get hostnames, vendor, models, S/N, etc... In any case, if you want to automate your network you need to have some sort of asset inventory; either in YAML files as in the demo or in some database.<br /><br />&gt; Imagine the variability in the WAN....<br /><br />It&#39;s a matter of standarizdizing your services. I guess you have a service catalogue or something similar, then you just need roles/templates for each service. And if you don&#39;t have a service catalogue maybe you should start by building one ; )<br /><br />&gt; Looks like you need programming professional services :)<br /><br />It&#39;s just configuration templates, any operator should be able to do it. I understand that building napalm requires some programming knowledge but templating configuration should be easy for any network operator. At the end of the day, most operators just google what they want to do, find a configuration snippet in some blog and then they adapt that snippet for their needs ; )",
-          "id": "7518646221559998543",
-          "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
-          "name": "David Barroso",
-          "profile": "https://www.blogger.com/profile/08333059712411851393",
-          "pub": "2015-06-15T09:48:03.723+02:00",
-          "ref": "4390759132391633108",
-          "type": "comment"
-        }
-      ],
-      "date": "13 June 2015 10:15",
-      "html": "Hi, is interesting but is again the same question. who automated the inventories? Provisioning tools?<br />I made something similar at work with operators just putting parameters, afterwards scripts build the inventories, run ansible to get configs and config upload is done by scripts. Unfortunately I am dealing with devices with no atomic changes (IOS) and the more straight forward way is to load on startup and reboot ( I know, is a piece of shit) but the other workaround is using clogin ( parser for cisco) comming with rancid (really wesome network config differences) and paste the commands in the proper order, without breaking nothing in the meantime. The problem is that our scenario is for the WAN not the DC, where much more scenarios than leaf-spine are needed and thats where these tools become complex, and the structure in roles and services is really customer dependant. <br />For example, what happens if ipfabric role used in the video is not using BGP? new templates and variables are needed... Imagine the variability in the WAN.... Looks like you need programming professional services :)",
-      "id": "4390759132391633108",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/08629856490090275127",
-      "pub": "2015-06-13T10:15:54.983+02:00",
-      "ref": "3067045128917801732",
-      "type": "comment"
-    },
-    {
-      "date": "19 October 2015 09:22",
-      "html": "@David.Is there a better way to secure the plain text passwords due to security constraints ?<br />Also for example some networks have only basic console connections while deploying new pop. Is there a way to deploy these configs through serial connections ?",
-      "id": "6093135380081381879",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2015-10-19T09:22:10.265+02:00",
-      "ref": "3067045128917801732",
-      "type": "comment"
-    },
-    {
-      "date": "19 October 2015 12:53",
-      "html": "&gt; Is there a better way to secure the plain text passwords due to security constraints?<br /><br />If you are using ansible check ansible-vault. That can encrypt the plays or var files where you have sensitive data.<br /><br />&gt; Also for example some networks have only basic console connections while deploying new pop. Is there a way to deploy these configs through serial connections ?<br /><br />I am afraid not. What we do is we generate the configuration files using the same playbooks but instead of pushing them with NAPALM we bootstrap the switches with ZTP. Then we keep managing the devices normally with NAPALM.<br />",
-      "id": "4857981398850220106",
-      "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
-      "name": "David Barroso",
-      "profile": "https://www.blogger.com/profile/08333059712411851393",
-      "pub": "2015-10-19T12:53:29.249+02:00",
-      "ref": "3067045128917801732",
-      "type": "comment"
-    }
-  ],
-  "count": 4,
-  "id": "3067045128917801732",
-  "type": "post",
-  "url": "2015/06/napalm-integrating-ansible-with-network.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "15 June 2015 09:48",
+               "html": "&gt; who automated the inventories? Provisioning tools?<br /><br />You can use napalm to build the inventory as well. You will need to have a list of IPs or FQDN&#39;s but the get_facts method should be enough to build an initial inventory as you can get hostnames, vendor, models, S/N, etc... In any case, if you want to automate your network you need to have some sort of asset inventory; either in YAML files as in the demo or in some database.<br /><br />&gt; Imagine the variability in the WAN....<br /><br />It&#39;s a matter of standarizdizing your services. I guess you have a service catalogue or something similar, then you just need roles/templates for each service. And if you don&#39;t have a service catalogue maybe you should start by building one ; )<br /><br />&gt; Looks like you need programming professional services :)<br /><br />It&#39;s just configuration templates, any operator should be able to do it. I understand that building napalm requires some programming knowledge but templating configuration should be easy for any network operator. At the end of the day, most operators just google what they want to do, find a configuration snippet in some blog and then they adapt that snippet for their needs ; )",
+               "id": "7518646221559998543",
+               "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
+               "name": "David Barroso",
+               "profile": "https://www.blogger.com/profile/08333059712411851393",
+               "pub": "2015-06-15T09:48:03.723+02:00",
+               "ref": "4390759132391633108",
+               "type": "comment"
+            }
+         ],
+         "date": "13 June 2015 10:15",
+         "html": "Hi, is interesting but is again the same question. who automated the inventories? Provisioning tools?<br />I made something similar at work with operators just putting parameters, afterwards scripts build the inventories, run ansible to get configs and config upload is done by scripts. Unfortunately I am dealing with devices with no atomic changes (IOS) and the more straight forward way is to load on startup and reboot ( I know, is a piece of shit) but the other workaround is using clogin ( parser for cisco) comming with rancid (really wesome network config differences) and paste the commands in the proper order, without breaking nothing in the meantime. The problem is that our scenario is for the WAN not the DC, where much more scenarios than leaf-spine are needed and thats where these tools become complex, and the structure in roles and services is really customer dependant. <br />For example, what happens if ipfabric role used in the video is not using BGP? new templates and variables are needed... Imagine the variability in the WAN.... Looks like you need programming professional services :)",
+         "id": "4390759132391633108",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/08629856490090275127",
+         "pub": "2015-06-13T10:15:54.983+02:00",
+         "ref": "3067045128917801732",
+         "type": "comment"
+      },
+      {
+         "date": "19 October 2015 09:22",
+         "html": "@David.Is there a better way to secure the plain text passwords due to security constraints ?<br />Also for example some networks have only basic console connections while deploying new pop. Is there a way to deploy these configs through serial connections ?",
+         "id": "6093135380081381879",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2015-10-19T09:22:10.265+02:00",
+         "ref": "3067045128917801732",
+         "type": "comment"
+      },
+      {
+         "date": "19 October 2015 12:53",
+         "html": "&gt; Is there a better way to secure the plain text passwords due to security constraints?<br /><br />If you are using ansible check ansible-vault. That can encrypt the plays or var files where you have sensitive data.<br /><br />&gt; Also for example some networks have only basic console connections while deploying new pop. Is there a way to deploy these configs through serial connections ?<br /><br />I am afraid not. What we do is we generate the configuration files using the same playbooks but instead of pushing them with NAPALM we bootstrap the switches with ZTP. Then we keep managing the devices normally with NAPALM.<br />",
+         "id": "4857981398850220106",
+         "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
+         "name": "David Barroso",
+         "profile": "https://www.blogger.com/profile/08333059712411851393",
+         "pub": "2015-10-19T12:53:29.249+02:00",
+         "ref": "3067045128917801732",
+         "type": "comment"
+      },
+      {
+         "date": "22 May 2020 09:59",
+         "html": "<p>I have preaching Ansible at my new workplace however they use Rancid and a lot free ssh tools to do their automated tasks. I would like to build the case for Ansible however I&#39;m falling short to say Ansible is better than Rancid. Any ideas/recommendations would be helpful.</p>\n",
+         "id": "45",
+         "name": "George Varkey",
+         "pub": "2020-05-22T21:59:07",
+         "type": "comment"
+      },
+      {
+         "date": "24 May 2020 09:59",
+         "html": "<p>@George: Ansible is not &quot;a tool to end all tools&quot;. It&#39;s just another potentially useful tool in your toolbox. </p>\n\n<p>Sometimes it&#39;s the best tool for the job, and you should use it (example: automating a series of tasks to be executed in parallel on a large number of devices), sometimes other tools do a better job (Oxidized is definitely better at collecting device configurations).</p>\n\n<p>Always start with &quot;what problem are we trying to solve&quot; and then &quot;what tool in my toolbox would be a best fit&quot;. The more tools you have in your toolbox, the easier your life will be.</p>\n",
+         "id": "46",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-05-24T09:59:45",
+         "type": "comment"
+      }
+   ],
+   "count": 6,
+   "id": "3067045128917801732",
+   "type": "post",
+   "url": "2015/06/napalm-integrating-ansible-with-network.html"
 }

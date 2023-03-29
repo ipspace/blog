@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>46 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14125341240086592055" rel="nofollow">Michael Kashin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8135500048995480039">16 March 2017 09:25</a>
+                <a rel="nofollow" id="c8135500048995480039" href="#8135500048995480039">16 March 2017 09:25</a>
               </span>
             </div>
-            <p class="comment-content">There is a way of out this. Have your nexus 1k as a VM on every host and user VMs, each in their own locally unique VLAN, connected to the nexus VM via these p2p VLANs. There&#39;s one SDN vendor that does exactly that.</p>
+            <div class="comment-content">There is a way of out this. Have your nexus 1k as a VM on every host and user VMs, each in their own locally unique VLAN, connected to the nexus VM via these p2p VLANs. There&#39;s one SDN vendor that does exactly that.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07643793289499039056" rel="nofollow">kaisero</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7671715006945797912">16 March 2017 10:08</a>
+                <a rel="nofollow" id="c7671715006945797912" href="#7671715006945797912">16 March 2017 10:08</a>
               </span>
             </div>
-            <p class="comment-content">Sounds like a poor design decision. If you would get into a NSX (DLR in kernel) vs deploy 1 VM for every host and hairpin all your traffic through that VM discussion, its obvious what would be the prefered solution. :) </p>
+            <div class="comment-content">Sounds like a poor design decision. If you would get into a NSX (DLR in kernel) vs deploy 1 VM for every host and hairpin all your traffic through that VM discussion, its obvious what would be the prefered solution. :) </div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14125341240086592055" rel="nofollow">Michael Kashin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1936412496807497867">16 March 2017 10:41</a>
+                <a rel="nofollow" id="c1936412496807497867" href="#1936412496807497867">16 March 2017 10:41</a>
               </span>
             </div>
-            <p class="comment-content">Obviously there will be some performance penalty. That is exactly what Vmware are trying to do. No product should fit in better than NSX.</p>
+            <div class="comment-content">Obviously there will be some performance penalty. That is exactly what Vmware are trying to do. No product should fit in better than NSX.</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2273220491971463848">16 March 2017 17:09</a>
+                <a rel="nofollow" id="c2273220491971463848" href="#2273220491971463848">16 March 2017 17:09</a>
               </span>
             </div>
-            <p class="comment-content">That&#39;s what Nicira was doing and what Nuage is probably still doing. The &quot;only&quot; problem: traversing userland kills performance. Nuage improved it by using SR-IOV on the external VM connection, but still. <br /><br />While it&#39;s easy to make fun of how limited VMware virtual switch is, its performance was always stellar (at least compared to alternatives).<br /><br />Not to mention that this becomes a nightmare to manage, more so as you a different VLAN on every inter-VM connection (or traffic gets bridged before it hits _your_ virtual switch)</p>
+            <div class="comment-content">That&#39;s what Nicira was doing and what Nuage is probably still doing. The &quot;only&quot; problem: traversing userland kills performance. Nuage improved it by using SR-IOV on the external VM connection, but still. <br /><br />While it&#39;s easy to make fun of how limited VMware virtual switch is, its performance was always stellar (at least compared to alternatives).<br /><br />Not to mention that this becomes a nightmare to manage, more so as you a different VLAN on every inter-VM connection (or traffic gets bridged before it hits _your_ virtual switch)</div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14125341240086592055" rel="nofollow">Michael Kashin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8443593435279556387">18 March 2017 12:18</a>
+                <a rel="nofollow" id="c8443593435279556387" href="#8443593435279556387">18 March 2017 12:18</a>
               </span>
             </div>
-            <p class="comment-content">I wouldn&#39;t say it &quot;kills&quot; performance. It&#39;s a lot less detrimental then traversing a chained NFV(e.g. firewall). Nuage were doing it because they didn&#39;t have a strong hardware story. Cisco, on the other hand, can ditch the VS altogether and extended these p2p vlans to the hardware switches, similar to what they&#39;re doing with their Neutron plugin. This way they can keep the per-VM granularity with hardware performance. The only price they pay in this case is the ability to innovate and add new features. But like you said, nothing that can&#39;t be fixed with a bit of NAT, PBR and VXLAN</p>
+            <div class="comment-content">I wouldn&#39;t say it &quot;kills&quot; performance. It&#39;s a lot less detrimental then traversing a chained NFV(e.g. firewall). Nuage were doing it because they didn&#39;t have a strong hardware story. Cisco, on the other hand, can ditch the VS altogether and extended these p2p vlans to the hardware switches, similar to what they&#39;re doing with their Neutron plugin. This way they can keep the per-VM granularity with hardware performance. The only price they pay in this case is the ability to innovate and add new features. But like you said, nothing that can&#39;t be fixed with a bit of NAT, PBR and VXLAN</div>
           </div>
         </li>
       </div>
@@ -110,10 +105,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1175743262310268918">18 March 2017 14:30</a>
+                <a rel="nofollow" id="c1175743262310268918" href="#1175743262310268918">18 March 2017 14:30</a>
               </span>
             </div>
-            <p class="comment-content">&quot;It&#39;s a lot less detrimental then traversing a chained NFV(e.g. firewall).&quot; &lt;&lt; It&#39;s exactly the same thing.<br /><br />&quot;Cisco, on the other hand, can ditch the VS altogether and extended these p2p vlans to the hardware switches&quot; &lt;&lt; Don&#39;t forget that you can&#39;t turn off vSwitch in ESXi or reconfigure it at will like you can in Linux.</p>
+            <div class="comment-content">&quot;It&#39;s a lot less detrimental then traversing a chained NFV(e.g. firewall).&quot; &lt;&lt; It&#39;s exactly the same thing.<br /><br />&quot;Cisco, on the other hand, can ditch the VS altogether and extended these p2p vlans to the hardware switches&quot; &lt;&lt; Don&#39;t forget that you can&#39;t turn off vSwitch in ESXi or reconfigure it at will like you can in Linux.</div>
           </div>
         </li>
       </div>
@@ -128,10 +123,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14125341240086592055" rel="nofollow">Michael Kashin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2618645602918073146">18 March 2017 15:09</a>
+                <a rel="nofollow" id="c2618645602918073146" href="#2618645602918073146">18 March 2017 15:09</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Don&#39;t forget that you can&#39;t turn off vSwitch in ESXi or reconfigure it at will like you can in Linux&quot; &lt;&lt; Nothing special is needed in this case. SDN controller only needs basic integration with vCenter to make 2 API calls - 1) create an sPG 2) Attach a VM to this sPG. </p>
+            <div class="comment-content">&quot;Don&#39;t forget that you can&#39;t turn off vSwitch in ESXi or reconfigure it at will like you can in Linux&quot; &lt;&lt; Nothing special is needed in this case. SDN controller only needs basic integration with vCenter to make 2 API calls - 1) create an sPG 2) Attach a VM to this sPG. </div>
           </div>
         </li>
       </div>
@@ -146,10 +141,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6796723340915715778">18 March 2017 19:24</a>
+                <a rel="nofollow" id="c6796723340915715778" href="#6796723340915715778">18 March 2017 19:24</a>
               </span>
             </div>
-            <p class="comment-content">To recap:<br />* One port group (or more) per EPG<br />* Separate VLAN for every EPG<br />* Private VLANs if you don&#39;t want VMs within EPG to communicate<br />* SDN controller creating vSphere port groups and attaching VMs to port groups behind the scenes.<br /><br />I&#39;m sure it will work and scale amazingly well, and everyone will be delighted (including vSphere admins), and I&#39;m only imagining problems where there are none...</p>
+            <div class="comment-content">To recap:<br />* One port group (or more) per EPG<br />* Separate VLAN for every EPG<br />* Private VLANs if you don&#39;t want VMs within EPG to communicate<br />* SDN controller creating vSphere port groups and attaching VMs to port groups behind the scenes.<br /><br />I&#39;m sure it will work and scale amazingly well, and everyone will be delighted (including vSphere admins), and I&#39;m only imagining problems where there are none...</div>
           </div>
         </li>
       </div>
@@ -171,10 +166,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7332710613897920956">16 March 2017 10:08</a>
+                <a rel="nofollow" id="c7332710613897920956" href="#7332710613897920956">16 March 2017 10:08</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Some VMware training material&quot; - could you be more specific?</p>
+            <div class="comment-content">&quot;Some VMware training material&quot; - could you be more specific?</div>
           </div>
         </li>
       </div>
@@ -189,10 +184,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">g9ais</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6836036850575096083">16 March 2017 10:29</a>
+                <a rel="nofollow" id="c6836036850575096083" href="#6836036850575096083">16 March 2017 10:29</a>
               </span>
             </div>
-            <p class="comment-content">Note that Cisco states that Microsegmentation in ACI can be achieved also when running DVS, through creative use of private vlans on DVS + Mac filters in Leaf switches + Proxy ARP. Would this be a case of just because you can, doesn&#39;t mean you should?</p>
+            <div class="comment-content">Note that Cisco states that Microsegmentation in ACI can be achieved also when running DVS, through creative use of private vlans on DVS + Mac filters in Leaf switches + Proxy ARP. Would this be a case of just because you can, doesn&#39;t mean you should?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -208,10 +203,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09272777243328964166" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#69485760491740216">16 March 2017 11:21</a>
+                <a rel="nofollow" id="c69485760491740216" href="#69485760491740216">16 March 2017 11:21</a>
               </span>
             </div>
-            <p class="comment-content">Well true at high level but the implementation detail is more complicated, which allows for usage of uSeg at scale.<br />Also to be honest, VMM integration is great, but far from mandatory. You can achieve exactly the same level of integration by putting some automation in place and use physical domains...no functional difference in the end. So who cares except VMware fanboys who are anyway too emotional to limit DC design to real requirements?</p>
+            <div class="comment-content">Well true at high level but the implementation detail is more complicated, which allows for usage of uSeg at scale.<br />Also to be honest, VMM integration is great, but far from mandatory. You can achieve exactly the same level of integration by putting some automation in place and use physical domains...no functional difference in the end. So who cares except VMware fanboys who are anyway too emotional to limit DC design to real requirements?</div>
           </div>
         </li>
       </div>
@@ -226,10 +221,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Herman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6859870381642290978">17 March 2017 02:03</a>
+                <a rel="nofollow" id="c6859870381642290978" href="#6859870381642290978">17 March 2017 02:03</a>
               </span>
             </div>
-            <p class="comment-content">s/VMware fanboys/Cisco fanboys/<br />Seriously, why are Cisco staff so petty?</p>
+            <div class="comment-content">s/VMware fanboys/Cisco fanboys/<br />Seriously, why are Cisco staff so petty?</div>
           </div>
         </li>
       </div>
@@ -251,10 +246,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04433412437498680888" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1043931369789895127">17 March 2017 00:29</a>
+                <a rel="nofollow" id="c1043931369789895127" href="#1043931369789895127">17 March 2017 00:29</a>
               </span>
             </div>
-            <p class="comment-content">If VMWare eliminated the API they would burn bridges with existing customers who are using VSphere + ACI.  Not just small ones, I&#39;m referring to large corporations such as banks.<br /><br />They would also screw other partners such as Bigswitch who rely on the same APIs.<br /><br />If VMWare would want to do such a thing and push the world even closer to using open source hypervisors and containers, so be it.</p>
+            <div class="comment-content">If VMWare eliminated the API they would burn bridges with existing customers who are using VSphere + ACI.  Not just small ones, I&#39;m referring to large corporations such as banks.<br /><br />They would also screw other partners such as Bigswitch who rely on the same APIs.<br /><br />If VMWare would want to do such a thing and push the world even closer to using open source hypervisors and containers, so be it.</div>
           </div>
         </li>
       </div>
@@ -269,10 +264,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9222430102665936795">17 March 2017 14:55</a>
+                <a rel="nofollow" id="c9222430102665936795" href="#9222430102665936795">17 March 2017 14:55</a>
               </span>
             </div>
-            <p class="comment-content">Times change, Nicolas...<br /><br />http://static-void.io/vmware-nsx-use-case-simplifying-disaster-recovery-part-1/<br /><br />Before joining Cisco, you have been a VMware / NSX fanboy as well ;-)</p>
+            <div class="comment-content">Times change, Nicolas...<br /><br />http://static-void.io/vmware-nsx-use-case-simplifying-disaster-recovery-part-1/<br /><br />Before joining Cisco, you have been a VMware / NSX fanboy as well ;-)</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -288,10 +283,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09272777243328964166" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2272364154054254757">17 March 2017 19:06</a>
+                <a rel="nofollow" id="c2272364154054254757" href="#2272364154054254757">17 March 2017 19:06</a>
               </span>
             </div>
-            <p class="comment-content">Well not fanboy, but I still do like NSX and all the VMware products in general and still working with them on a daily basis. Path to VCDX taught me how to tackle global design exercises...which has nothing to do with products, but requirements. Sometimes people tend to forget this and this is a pity.</p>
+            <div class="comment-content">Well not fanboy, but I still do like NSX and all the VMware products in general and still working with them on a daily basis. Path to VCDX taught me how to tackle global design exercises...which has nothing to do with products, but requirements. Sometimes people tend to forget this and this is a pity.</div>
           </div>
         </li>
       </div>
@@ -306,10 +301,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16488361009215312027" rel="nofollow">Murali</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4460420065614380424">21 March 2017 13:53</a>
+                <a rel="nofollow" id="c4460420065614380424" href="#4460420065614380424">21 March 2017 13:53</a>
               </span>
             </div>
-            <p class="comment-content">@anonymous So, what&#39;s your insinuation? This is still hopefully a technology page not a high-school debate gotcha! <br />He wrote a blog on how to use NSX for a particular usecase. Is that bad? Atleast, he can say he understands both products. <br /></p>
+            <div class="comment-content">@anonymous So, what&#39;s your insinuation? This is still hopefully a technology page not a high-school debate gotcha! <br />He wrote a blog on how to use NSX for a particular usecase. Is that bad? Atleast, he can say he understands both products. <br /></div>
           </div>
         </li>
       </div>
@@ -331,10 +326,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9114424419391138438">17 March 2017 16:44</a>
+                <a rel="nofollow" id="c9114424419391138438" href="#9114424419391138438">17 March 2017 16:44</a>
               </span>
             </div>
-            <p class="comment-content">Other than speculating and pointing to other blogs hinting at technical difficulties you haven&#39;t cared to verify yourself, what actual facts can you point us all to? If VMware discontinues support for the vDS API, how do you suggest their own tools provision vDS?</p>
+            <div class="comment-content">Other than speculating and pointing to other blogs hinting at technical difficulties you haven&#39;t cared to verify yourself, what actual facts can you point us all to? If VMware discontinues support for the vDS API, how do you suggest their own tools provision vDS?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -350,10 +345,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7875879705285605996">17 March 2017 17:04</a>
+                <a rel="nofollow" id="c7875879705285605996" href="#7875879705285605996">17 March 2017 17:04</a>
               </span>
             </div>
-            <p class="comment-content">There&#39;s the management API and then there&#39;s the &quot;3rd party data plane API&quot; that switches like Nexus 1000V use to integrate with vDS framework within vSphere. Based on the tone of your comment I would expect you to know that.<br /><br />Also, based on the fact you chose to remain anonymous my end of this discussion stops right here.</p>
+            <div class="comment-content">There&#39;s the management API and then there&#39;s the &quot;3rd party data plane API&quot; that switches like Nexus 1000V use to integrate with vDS framework within vSphere. Based on the tone of your comment I would expect you to know that.<br /><br />Also, based on the fact you chose to remain anonymous my end of this discussion stops right here.</div>
           </div>
         </li>
       </div>
@@ -375,10 +370,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17252322269397556994" rel="nofollow">Mitko</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7010290319203644161">21 March 2017 08:43</a>
+                <a rel="nofollow" id="c7010290319203644161" href="#7010290319203644161">21 March 2017 08:43</a>
               </span>
             </div>
-            <p class="comment-content">Spot on :)</p>
+            <div class="comment-content">Spot on :)</div>
           </div>
         </li>
       </div>
@@ -393,10 +388,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17721867360338634399" rel="nofollow">Nillo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9030401547431762114">21 March 2017 08:58</a>
+                <a rel="nofollow" id="c9030401547431762114" href="#9030401547431762114">21 March 2017 08:58</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, I believe you are miss informed. I am not talking specifically about the vSphere API that AVS uses, and the constant rumours about it, but more about ACI in general.<br /><br />It is true that VMware is becoming a company where their technology is increasingly vertically integrated and eventually they want that if you use their hypervisor you have to use their SDN solution and their orchestration system and their VDI and ... I think the market will steer things otherwise … but we shall see! 😃<br /><br />I don’t know how much of an opportunity you had to have hands-on with ACI recently. I’d love to spend time showing you how some of the things we do with ACI work. Meanwhile I provide here my respectful feedback.<br /><br />I definitely disagree with some comments that you made. Some are in fact open for debate, for instance:<br /><br />“You can’t do all that on ToR switches, and need control of the virtual switch”.<br /><br />I wouldd say you can do a lot of what you need to do for server networking on a modern ToR. And yet you are right, and you do need a virtual switch. That is clear. How much functionality you put on one vs. another is a subject for debate with pros and cons.<br /><br />But in an SDN world with programmable APIs, it does not mean you need YOUR virtual switch in order to control it. You just need one virtual switch that you can program. That is all.<br /><br />There’s a lot that we can do on AVS that we can do on OVS too. And we do it on OVS too. There’s a lot with do on AVS that we can’t do with VDS. But there’s enough that we can do in VDS so that when combining it with what we do on the ToR we deliver clever things (read more below).<br /><br />The below comment on the other hand is imho misinformed:<br /><br />“That [running without AVS] would degrade Cisco ACI used in vSphere environments into a smarter L2+L3 data center fabric. Is that worth the additional complexity you get with ACI? &quot;<br /><br />First, it is wrong to assume that in a vSphere environment ACI is no more than smarter L2+L3 data center fabric. But even if it was only that … it is a WAY smarter L2+L3 fabric.<br /><br />And that leads me to your second phrase. What is up with the “additional complexity you get with ACI?”.<br /><br />This bugs me greatly. ACI has a learning curve, no doubt. But we need to understand that the line between “complex” and “different” is crossed by eliminating ignorance.<br /><br />Anyone that has done an upgrade on anymore than a handful of switches from any vendor and then conducts a network upgrade (or downgrade) on dozens and dozens of switches under APIC control will see how it becomes much simpler.<br /><br />Configuring a new network service involving L2 and L3 across dozens and dozens of switches on multiple data centers is incredibly simpler. Presenting those new networks to multiple vCenters? Piece of cake. Finding a VM on the fabric querying for the VM name? … done. Reverting the creation on the previously created network service is incredibly simpler too. I mean … compared to traditional networking … let me highlight: INCREDIBLY simpler.<br /><br />Changing your routing policies to announce or not specific subnets from your fabric, or making a change in order to upgrade storm control policies to hundreds or thousands of ports, … or - again - reverting any of those changes, becomes real simple. Particularly when you think how you were doing it on NX-OS or on any other vendor’s box-by-box configuration system.<br /><br />And the truth is that APIC accomplishes all of that, and more, with a very elegant architecture based on distributed intelligence in the fabric combined with a centralised policy and management plane on a scale-out controller cluster.<br /><br />Other vendors require combining six different VM performing three different functions just to achieve a distributed default gateway that is only available to workloads running on a single-vendor hypervisor. Now that’s complex, regardless of how well you know the solution.<br /><br />Full response with details about how we do uSeg with VDS here:<br />http://nillosmind.blogspot.com/2017/03/a-response-to-running-vsphere-on-cisco.html</p>
+            <div class="comment-content">Ivan, I believe you are miss informed. I am not talking specifically about the vSphere API that AVS uses, and the constant rumours about it, but more about ACI in general.<br /><br />It is true that VMware is becoming a company where their technology is increasingly vertically integrated and eventually they want that if you use their hypervisor you have to use their SDN solution and their orchestration system and their VDI and ... I think the market will steer things otherwise … but we shall see! 😃<br /><br />I don’t know how much of an opportunity you had to have hands-on with ACI recently. I’d love to spend time showing you how some of the things we do with ACI work. Meanwhile I provide here my respectful feedback.<br /><br />I definitely disagree with some comments that you made. Some are in fact open for debate, for instance:<br /><br />“You can’t do all that on ToR switches, and need control of the virtual switch”.<br /><br />I wouldd say you can do a lot of what you need to do for server networking on a modern ToR. And yet you are right, and you do need a virtual switch. That is clear. How much functionality you put on one vs. another is a subject for debate with pros and cons.<br /><br />But in an SDN world with programmable APIs, it does not mean you need YOUR virtual switch in order to control it. You just need one virtual switch that you can program. That is all.<br /><br />There’s a lot that we can do on AVS that we can do on OVS too. And we do it on OVS too. There’s a lot with do on AVS that we can’t do with VDS. But there’s enough that we can do in VDS so that when combining it with what we do on the ToR we deliver clever things (read more below).<br /><br />The below comment on the other hand is imho misinformed:<br /><br />“That [running without AVS] would degrade Cisco ACI used in vSphere environments into a smarter L2+L3 data center fabric. Is that worth the additional complexity you get with ACI? &quot;<br /><br />First, it is wrong to assume that in a vSphere environment ACI is no more than smarter L2+L3 data center fabric. But even if it was only that … it is a WAY smarter L2+L3 fabric.<br /><br />And that leads me to your second phrase. What is up with the “additional complexity you get with ACI?”.<br /><br />This bugs me greatly. ACI has a learning curve, no doubt. But we need to understand that the line between “complex” and “different” is crossed by eliminating ignorance.<br /><br />Anyone that has done an upgrade on anymore than a handful of switches from any vendor and then conducts a network upgrade (or downgrade) on dozens and dozens of switches under APIC control will see how it becomes much simpler.<br /><br />Configuring a new network service involving L2 and L3 across dozens and dozens of switches on multiple data centers is incredibly simpler. Presenting those new networks to multiple vCenters? Piece of cake. Finding a VM on the fabric querying for the VM name? … done. Reverting the creation on the previously created network service is incredibly simpler too. I mean … compared to traditional networking … let me highlight: INCREDIBLY simpler.<br /><br />Changing your routing policies to announce or not specific subnets from your fabric, or making a change in order to upgrade storm control policies to hundreds or thousands of ports, … or - again - reverting any of those changes, becomes real simple. Particularly when you think how you were doing it on NX-OS or on any other vendor’s box-by-box configuration system.<br /><br />And the truth is that APIC accomplishes all of that, and more, with a very elegant architecture based on distributed intelligence in the fabric combined with a centralised policy and management plane on a scale-out controller cluster.<br /><br />Other vendors require combining six different VM performing three different functions just to achieve a distributed default gateway that is only available to workloads running on a single-vendor hypervisor. Now that’s complex, regardless of how well you know the solution.<br /><br />Full response with details about how we do uSeg with VDS here:<br />http://nillosmind.blogspot.com/2017/03/a-response-to-running-vsphere-on-cisco.html</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -412,10 +407,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6913840323339929612">21 March 2017 20:58</a>
+                <a rel="nofollow" id="c6913840323339929612" href="#6913840323339929612">21 March 2017 20:58</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for an extensive reply. I&#39;ll stick to the technical details, in particular the PVLAN part. While I admire the ingenuity of the idea, the deviation from IEEE 802.1 forwarding paradigm worries me. For example, if you have to flood traffic from ToR switch to an EPG member, everyone in the same PVLAN will get the traffic even if they&#39;re not in the same EPG.</p>
+            <div class="comment-content">Thanks for an extensive reply. I&#39;ll stick to the technical details, in particular the PVLAN part. While I admire the ingenuity of the idea, the deviation from IEEE 802.1 forwarding paradigm worries me. For example, if you have to flood traffic from ToR switch to an EPG member, everyone in the same PVLAN will get the traffic even if they&#39;re not in the same EPG.</div>
           </div>
         </li>
       </div>
@@ -430,10 +425,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17721867360338634399" rel="nofollow">Nillo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8548676146492851638">22 March 2017 09:59</a>
+                <a rel="nofollow" id="c8548676146492851638" href="#8548676146492851638">22 March 2017 09:59</a>
               </span>
             </div>
-            <p class="comment-content">There is no deviation Ivan. There is nothing magical here. Again, I extend the offer to spend time with you actually testing this, so we can move on from theoretical discussion. It is the best way to stick to the technical details and remove assumptions.</p>
+            <div class="comment-content">There is no deviation Ivan. There is nothing magical here. Again, I extend the offer to spend time with you actually testing this, so we can move on from theoretical discussion. It is the best way to stick to the technical details and remove assumptions.</div>
           </div>
         </li>
       </div>
@@ -448,10 +443,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09272777243328964166" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4345879726059125600">23 March 2017 10:56</a>
+                <a rel="nofollow" id="c4345879726059125600" href="#4345879726059125600">23 March 2017 10:56</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;m not sure I understand this point, this is the principle of a bridge-domain, ie. flooding boundary, PVLAN or not, it&#39;s always been the case. You can also optionally flood in EPG.<br />In addition, although this is PVLAN in the VDS, it&#39;s not PVLAN on the ToR. This means:<br />- normal ACI BD semantics are applied, regardless of whether EPG is enabled for uSeg or not (understand PVLAN pushed to port-group). All EPGs inside the same bridge-domain receive the same PVLAN ids. (no burning of VLANs). Then secondary isolated VLAN in ACI translates into a reserved pcTag that is set with deny({src,dst}=isolated encap). no PVLAN implementation there at all...<br />- MAC-based classification is pushed on ToR for the base EPG<br />- List is updated upon VM-based attributes defined by the user to re-classify EP in to specific uSeg EPGs.<br />- You need to specify a BD for uSeg EPG<br />- Flooding will happen THERE.</p>
+            <div class="comment-content">I&#39;m not sure I understand this point, this is the principle of a bridge-domain, ie. flooding boundary, PVLAN or not, it&#39;s always been the case. You can also optionally flood in EPG.<br />In addition, although this is PVLAN in the VDS, it&#39;s not PVLAN on the ToR. This means:<br />- normal ACI BD semantics are applied, regardless of whether EPG is enabled for uSeg or not (understand PVLAN pushed to port-group). All EPGs inside the same bridge-domain receive the same PVLAN ids. (no burning of VLANs). Then secondary isolated VLAN in ACI translates into a reserved pcTag that is set with deny({src,dst}=isolated encap). no PVLAN implementation there at all...<br />- MAC-based classification is pushed on ToR for the base EPG<br />- List is updated upon VM-based attributes defined by the user to re-classify EP in to specific uSeg EPGs.<br />- You need to specify a BD for uSeg EPG<br />- Flooding will happen THERE.</div>
           </div>
         </li>
       </div>
@@ -466,10 +461,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4455386084874894738">24 March 2017 20:57</a>
+                <a rel="nofollow" id="c4455386084874894738" href="#4455386084874894738">24 March 2017 20:57</a>
               </span>
             </div>
-            <p class="comment-content">I defy anyone to look at the diagram contained in the ACI Virtualization Guide on this topic and say this is a supportable or scalable solution...<br /><br />http://www.cisco.com/c/dam/en/us/td/i/500001-600000/500001-510000/500001-501000/500655.jpg</p>
+            <div class="comment-content">I defy anyone to look at the diagram contained in the ACI Virtualization Guide on this topic and say this is a supportable or scalable solution...<br /><br />http://www.cisco.com/c/dam/en/us/td/i/500001-600000/500001-510000/500001-501000/500655.jpg</div>
           </div>
         </li>
       </div>
@@ -484,10 +479,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09272777243328964166" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1157597898075761856">26 March 2017 20:09</a>
+                <a rel="nofollow" id="c1157597898075761856" href="#1157597898075761856">26 March 2017 20:09</a>
               </span>
             </div>
-            <p class="comment-content">Hey Anonymous :-)<br />Apparently you didn&#39;t understand the principle. This is one (Pimary ,Secondary) pair per Bridge Domain (BD), not per ACI VLAN encap. You can have many EPGs per BD...so scale is really not the issue.<br />But as you&#39;ve chosen to stay anonymous, I guess the discussion doesn&#39;t need to go any further anyway.<br /></p>
+            <div class="comment-content">Hey Anonymous :-)<br />Apparently you didn&#39;t understand the principle. This is one (Pimary ,Secondary) pair per Bridge Domain (BD), not per ACI VLAN encap. You can have many EPGs per BD...so scale is really not the issue.<br />But as you&#39;ve chosen to stay anonymous, I guess the discussion doesn&#39;t need to go any further anyway.<br /></div>
           </div>
         </li>
       </div>
@@ -502,10 +497,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04798538618197248046" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6767729136984496053">29 March 2017 07:47</a>
+                <a rel="nofollow" id="c6767729136984496053" href="#6767729136984496053">29 March 2017 07:47</a>
               </span>
             </div>
-            <p class="comment-content">There is always a workaround or right architecture when you deploy these solutions specially in enterprise environments and not in lab. Forcing traffic via PVLAN (i cant believe we still using this technology), proxy ARP, inconsistent state between what you see on vpshere vs ACI and not to mention sub optimal traffic forwarding and inspection. Does make sense to me just because you need to have a tick mark</p>
+            <div class="comment-content">There is always a workaround or right architecture when you deploy these solutions specially in enterprise environments and not in lab. Forcing traffic via PVLAN (i cant believe we still using this technology), proxy ARP, inconsistent state between what you see on vpshere vs ACI and not to mention sub optimal traffic forwarding and inspection. Does make sense to me just because you need to have a tick mark</div>
           </div>
         </li>
       </div>
@@ -527,10 +522,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16488361009215312027" rel="nofollow">Murali</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1849654279041742874">21 March 2017 14:13</a>
+                <a rel="nofollow" id="c1849654279041742874" href="#1849654279041742874">21 March 2017 14:13</a>
               </span>
             </div>
-            <p class="comment-content">I do work for Cisco in the ACI team. However, I used to work at Oracle. This whole topic is a massive deja vu.<br /><br />&quot;.. it seems VMware might throw another spanner in the works.&quot;<br />Funny how Vmware played the open/choice card vis-a-vis Oracle software running on Vmware hypervisor environment but now are making Oracle&#39;s arguments against Cisco ;-). Hypocrisy much?<br />Let me refresh your mind:<br /><br />Oracle support policy&gt;&gt;<br />https://mikedietrichde.com/2011/01/17/is-oracle-certified-to-run-on-vmware/<br />Did you know about what Vmware says to Oracle that has a similar approach when someone runs Oracle <br />software/databases in an Vmware ESXi environment?<br />&gt;&gt;https://www.vmware.com/support/policies/oracle-support.html<br /><br />So, coming back to AVS/N1KV being turned off...<br /><br />It would be a really interesting conversation that this vendor would have with customers who have deployed AVS and N1KV if they decided to turn APIs off. <br /><br />Ivan (@ioshints), would be nice if you spent some time with someone who actually breathes ACI and/or validate it in detail yourself. <br />You make some comments here that seem to be assumptions like &quot;would degrade Cisco ACI&quot; that would be nice to validate. <br /><br />Further, Ivan(@ioshints), you make it sound like closing down APIs is a good thing or an inevitable fact of life. </p>
+            <div class="comment-content">I do work for Cisco in the ACI team. However, I used to work at Oracle. This whole topic is a massive deja vu.<br /><br />&quot;.. it seems VMware might throw another spanner in the works.&quot;<br />Funny how Vmware played the open/choice card vis-a-vis Oracle software running on Vmware hypervisor environment but now are making Oracle&#39;s arguments against Cisco ;-). Hypocrisy much?<br />Let me refresh your mind:<br /><br />Oracle support policy&gt;&gt;<br />https://mikedietrichde.com/2011/01/17/is-oracle-certified-to-run-on-vmware/<br />Did you know about what Vmware says to Oracle that has a similar approach when someone runs Oracle <br />software/databases in an Vmware ESXi environment?<br />&gt;&gt;https://www.vmware.com/support/policies/oracle-support.html<br /><br />So, coming back to AVS/N1KV being turned off...<br /><br />It would be a really interesting conversation that this vendor would have with customers who have deployed AVS and N1KV if they decided to turn APIs off. <br /><br />Ivan (@ioshints), would be nice if you spent some time with someone who actually breathes ACI and/or validate it in detail yourself. <br />You make some comments here that seem to be assumptions like &quot;would degrade Cisco ACI&quot; that would be nice to validate. <br /><br />Further, Ivan(@ioshints), you make it sound like closing down APIs is a good thing or an inevitable fact of life. </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -546,10 +541,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1947634524048460206">21 March 2017 20:47</a>
+                <a rel="nofollow" id="c1947634524048460206" href="#1947634524048460206">21 March 2017 20:47</a>
               </span>
             </div>
-            <p class="comment-content">I agree the whole thing is a massive deja vu all over again. Unfortunately that&#39;s how the industry we work in works. See also RFC 1925.<br /><br />As for &quot;It would be a really interesting conversation that this vendor would have with customers who have deployed AVS and N1KV if they decided to turn APIs off.&quot; - they did that with dvFilter API which was used by way more products. There must have been heated conversations. I haven&#39;t heard about them from any of my customers.<br /><br />&quot;would be nice if you spent some time with someone who actually breathes ACI&quot; &lt;&lt; I did ;)<br /><br />&quot;you make it sound like closing down APIs is a good thing&quot; &lt;&lt; where did I do that?<br /><br />&quot;or an inevitable fact of life.&quot; &lt;&lt; That&#39;s probably true. BTW, what happened to OnePK API?</p>
+            <div class="comment-content">I agree the whole thing is a massive deja vu all over again. Unfortunately that&#39;s how the industry we work in works. See also RFC 1925.<br /><br />As for &quot;It would be a really interesting conversation that this vendor would have with customers who have deployed AVS and N1KV if they decided to turn APIs off.&quot; - they did that with dvFilter API which was used by way more products. There must have been heated conversations. I haven&#39;t heard about them from any of my customers.<br /><br />&quot;would be nice if you spent some time with someone who actually breathes ACI&quot; &lt;&lt; I did ;)<br /><br />&quot;you make it sound like closing down APIs is a good thing&quot; &lt;&lt; where did I do that?<br /><br />&quot;or an inevitable fact of life.&quot; &lt;&lt; That&#39;s probably true. BTW, what happened to OnePK API?</div>
           </div>
         </li>
       </div>
@@ -564,10 +559,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09272777243328964166" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6447179054021753276">22 March 2017 00:51</a>
+                <a rel="nofollow" id="c6447179054021753276" href="#6447179054021753276">22 March 2017 00:51</a>
               </span>
             </div>
-            <p class="comment-content">This comment has been removed by the author.</p>
+            <div class="comment-content">This comment has been removed by the author.</div>
           </div>
         </li>
       </div>
@@ -589,10 +584,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07267516785767923381" rel="nofollow">jsicuran</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2631700387507194274">21 March 2017 15:28</a>
+                <a rel="nofollow" id="c2631700387507194274" href="#2631700387507194274">21 March 2017 15:28</a>
               </span>
             </div>
-            <p class="comment-content">As has been mentioned here, ACI has too many moving parts. I recall reading &quot;The Policy Driven Data Center with ACI: Architecture, Concepts, and Methodology&quot; a few years back and just going through that text back then I came to the same conclusion. </p>
+            <div class="comment-content">As has been mentioned here, ACI has too many moving parts. I recall reading &quot;The Policy Driven Data Center with ACI: Architecture, Concepts, and Methodology&quot; a few years back and just going through that text back then I came to the same conclusion. </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -608,10 +603,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6895623561715482534">22 March 2017 03:32</a>
+                <a rel="nofollow" id="c6895623561715482534" href="#6895623561715482534">22 March 2017 03:32</a>
               </span>
             </div>
-            <p class="comment-content">Have to disagree with that:  Having ACI as your fabric effectively gives you ONE moving piece, which in turn enables you to consolidate the hundreds of moving pieces we&#39;ve been dealing with for decades.</p>
+            <div class="comment-content">Have to disagree with that:  Having ACI as your fabric effectively gives you ONE moving piece, which in turn enables you to consolidate the hundreds of moving pieces we&#39;ve been dealing with for decades.</div>
           </div>
         </li>
       </div>
@@ -633,10 +628,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05799900326087453343" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4657828699234939319">23 March 2017 16:36</a>
+                <a rel="nofollow" id="c4657828699234939319" href="#4657828699234939319">23 March 2017 16:36</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, I&#39;ve been a reader of your blogs for many years and appreciate your contents.<br /><br />I was one of the founders of ACI and very disappointing to see how it is represented here. I&#39;ll stay away from NSX comparison but want to highlight value prop of ACI.<br /><br />In datacenter, you have VMs, Bare metal (storage and servers) and evolving into containers in a VM, or containers nativly in BM. <br /><br />Now think about managing networking/vSwitches in vSphere, Hyper-V, KVM for your VMs - may be you have one type or you are considering to deploy another vendor, physical switches for bare metals, container networking, and then vxlan-vlan gatewatey for BM-&lt;&gt;VM connectivity etc. <br /><br />Not only managing complexity but then operation, troubleshooting and policy consistency. And then making sure it all works at scale and hopefully doesn&#39;t change when new technology like container is to be deployed.<br /><br />Please read one of my blogs:<br /><br />http://blogs.cisco.com/datacenter/aci-the-sdn-purpose-built-for-data-center-operations-and-automation<br /><br />At the end, customer validate the technology and I&#39;m very proud to hear from customers that the ACI is game changer.<br /><br />I&#39;ll close with one paragraph from my blog:<br /><br />&quot;ACI was architected to provide a unified network independent of the type of workload – bare metal, virtual machine, or container. At the end of the day, workloads are IP endpoints and two IP end points want to connect. They need load balancing, security, and other services. Their life cycle may be static, may need migration, or simply a quick start/stop. ACI handles it all.&quot;</p>
+            <div class="comment-content">Ivan, I&#39;ve been a reader of your blogs for many years and appreciate your contents.<br /><br />I was one of the founders of ACI and very disappointing to see how it is represented here. I&#39;ll stay away from NSX comparison but want to highlight value prop of ACI.<br /><br />In datacenter, you have VMs, Bare metal (storage and servers) and evolving into containers in a VM, or containers nativly in BM. <br /><br />Now think about managing networking/vSwitches in vSphere, Hyper-V, KVM for your VMs - may be you have one type or you are considering to deploy another vendor, physical switches for bare metals, container networking, and then vxlan-vlan gatewatey for BM-&lt;&gt;VM connectivity etc. <br /><br />Not only managing complexity but then operation, troubleshooting and policy consistency. And then making sure it all works at scale and hopefully doesn&#39;t change when new technology like container is to be deployed.<br /><br />Please read one of my blogs:<br /><br />http://blogs.cisco.com/datacenter/aci-the-sdn-purpose-built-for-data-center-operations-and-automation<br /><br />At the end, customer validate the technology and I&#39;m very proud to hear from customers that the ACI is game changer.<br /><br />I&#39;ll close with one paragraph from my blog:<br /><br />&quot;ACI was architected to provide a unified network independent of the type of workload – bare metal, virtual machine, or container. At the end of the day, workloads are IP endpoints and two IP end points want to connect. They need load balancing, security, and other services. Their life cycle may be static, may need migration, or simply a quick start/stop. ACI handles it all.&quot;</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -652,10 +647,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17739226158584019302" rel="nofollow">rodeo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3034996903648244575">24 March 2017 05:58</a>
+                <a rel="nofollow" id="c3034996903648244575" href="#3034996903648244575">24 March 2017 05:58</a>
               </span>
             </div>
-            <p class="comment-content">Right on. Ronak</p>
+            <div class="comment-content">Right on. Ronak</div>
           </div>
         </li>
       </div>
@@ -670,10 +665,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3315300503465931240">24 March 2017 08:53</a>
+                <a rel="nofollow" id="c3315300503465931240" href="#3315300503465931240">24 March 2017 08:53</a>
               </span>
             </div>
-            <p class="comment-content">Praveen,<br /><br />Thanks for the comment. Could we please focus on what I wrote and not what Cisco&#39;s engineers read between the lines, or what marketing messages they might like to propagate?<br /><br />Please note that there are no generic comments on ACI applicability, or how your customers might perceive it in this blog post, it deals with the potential impact of not having AVS in vSphere anymore.<br /><br />Whoever claims that you can get the exact same functionality in vSphere environment without AVS is mistaken, as I&#39;ll explain in a follow-up blog post.<br /><br />Finally, you might want to watch the Networking Field Day videos (including the latest ones from CLEUR) to get a wider perspective on my ACI views.<br /><br />Kind regards,<br />Ivan</p>
+            <div class="comment-content">Praveen,<br /><br />Thanks for the comment. Could we please focus on what I wrote and not what Cisco&#39;s engineers read between the lines, or what marketing messages they might like to propagate?<br /><br />Please note that there are no generic comments on ACI applicability, or how your customers might perceive it in this blog post, it deals with the potential impact of not having AVS in vSphere anymore.<br /><br />Whoever claims that you can get the exact same functionality in vSphere environment without AVS is mistaken, as I&#39;ll explain in a follow-up blog post.<br /><br />Finally, you might want to watch the Networking Field Day videos (including the latest ones from CLEUR) to get a wider perspective on my ACI views.<br /><br />Kind regards,<br />Ivan</div>
           </div>
         </li>
       </div>
@@ -688,10 +683,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05799900326087453343" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7939000134541335574">24 March 2017 14:14</a>
+                <a rel="nofollow" id="c7939000134541335574" href="#7939000134541335574">24 March 2017 14:14</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />First, AVS is an optional component of ACI. Let me give an example of using vDS and implementing micro-segmentation. <br /><br />And before I do that, let me ask you, why micro-segmentation is only for VMware Vms, why bare metals and containers, and other hypervisors don&#39;t deserve that treatment? That&#39;s what exactly customers get when they deploy ACI, a consistent policy, a consistent micro-segmentation, across all workloads.<br /><br />EPG is micro-segments in ACI. Define any number of them and put them under same BD (a segment). Put contract/policy across them. When using VMware, each EPG will be pushed as separate port-groups and policy enforced by EPG. At the same time flood semantic of BD is maintained across. Same thing works with bare metal, containers, Hyper-V etc. <br /><br />Here is my blog on micro-seg:<br />http://blogs.cisco.com/datacenter/microsegmentation<br /><br />There are other ways to achieve that in ACI using private vlans but let&#39;s leave it for some other time.<br /><br />If you say &quot;That would degrade Cisco ACI used in vSphere environments into a smarter L2+L3 data center fabric.&quot; Citing this without deep dive is what I&#39;m not happy about.<br /><br />I&#39;m not going to compare feature by feature here; please do a hands on or talk to customers who deployed this.<br /><br />BTW, I&#39;m no longer in Cisco and now I only get news like everybody else does. Here is what I saw yesterday<br /><br />https://www.linkedin.com/feed/update/urn:li:activity:6250791574444347392/<br /><br />Cheers<br />Praveen</p>
+            <div class="comment-content">Ivan,<br /><br />First, AVS is an optional component of ACI. Let me give an example of using vDS and implementing micro-segmentation. <br /><br />And before I do that, let me ask you, why micro-segmentation is only for VMware Vms, why bare metals and containers, and other hypervisors don&#39;t deserve that treatment? That&#39;s what exactly customers get when they deploy ACI, a consistent policy, a consistent micro-segmentation, across all workloads.<br /><br />EPG is micro-segments in ACI. Define any number of them and put them under same BD (a segment). Put contract/policy across them. When using VMware, each EPG will be pushed as separate port-groups and policy enforced by EPG. At the same time flood semantic of BD is maintained across. Same thing works with bare metal, containers, Hyper-V etc. <br /><br />Here is my blog on micro-seg:<br />http://blogs.cisco.com/datacenter/microsegmentation<br /><br />There are other ways to achieve that in ACI using private vlans but let&#39;s leave it for some other time.<br /><br />If you say &quot;That would degrade Cisco ACI used in vSphere environments into a smarter L2+L3 data center fabric.&quot; Citing this without deep dive is what I&#39;m not happy about.<br /><br />I&#39;m not going to compare feature by feature here; please do a hands on or talk to customers who deployed this.<br /><br />BTW, I&#39;m no longer in Cisco and now I only get news like everybody else does. Here is what I saw yesterday<br /><br />https://www.linkedin.com/feed/update/urn:li:activity:6250791574444347392/<br /><br />Cheers<br />Praveen</div>
           </div>
         </li>
       </div>
@@ -706,10 +701,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05799900326087453343" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3429071281161489176">24 March 2017 14:28</a>
+                <a rel="nofollow" id="c3429071281161489176" href="#3429071281161489176">24 March 2017 14:28</a>
               </span>
             </div>
-            <p class="comment-content">Direct link on DataVita datacenter built on ACI. <br /><br />http://blogs.cisco.com/datacenter/never-better-time-for-cisco-aci-enabled-data-center-providers</p>
+            <div class="comment-content">Direct link on DataVita datacenter built on ACI. <br /><br />http://blogs.cisco.com/datacenter/never-better-time-for-cisco-aci-enabled-data-center-providers</div>
           </div>
         </li>
       </div>
@@ -724,10 +719,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09272777243328964166" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1803036932241005065">26 March 2017 20:21</a>
+                <a rel="nofollow" id="c1803036932241005065" href="#1803036932241005065">26 March 2017 20:21</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />you can be sure that it&#39;s not because VMware is closing APIs that we won&#39;t propose any alternative architecture to the AVS.<br />It&#39;s clearly not the &quot;death&quot; of AVS, and customers currently running AVS can be guaranteed that we&#39;ll do everything required to maintain their commitment to ACI and add AVS &quot;services&quot; to their environment post vsphere 6.5u1.<br /></p>
+            <div class="comment-content">Ivan,<br /><br />you can be sure that it&#39;s not because VMware is closing APIs that we won&#39;t propose any alternative architecture to the AVS.<br />It&#39;s clearly not the &quot;death&quot; of AVS, and customers currently running AVS can be guaranteed that we&#39;ll do everything required to maintain their commitment to ACI and add AVS &quot;services&quot; to their environment post vsphere 6.5u1.<br /></div>
           </div>
         </li>
       </div>
@@ -749,10 +744,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Faek Soussi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8584272581594237830">28 March 2017 15:15</a>
+                <a rel="nofollow" id="c8584272581594237830" href="#8584272581594237830">28 March 2017 15:15</a>
               </span>
             </div>
-            <p class="comment-content">sadly when big vendor do these changes/movement on direction the only loss is for the small customer...it was the same when cisco said to through all nexus 7k/5k and buy the nexus 9k if you want automation...it&#39;s just the customer that invest money has to deal with these changes and the loss :(</p>
+            <div class="comment-content">sadly when big vendor do these changes/movement on direction the only loss is for the small customer...it was the same when cisco said to through all nexus 7k/5k and buy the nexus 9k if you want automation...it&#39;s just the customer that invest money has to deal with these changes and the loss :(</div>
           </div>
         </li>
       </div>
@@ -767,10 +762,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Piotr Jablonski</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6143193291641226636">02 April 2017 03:33</a>
+                <a rel="nofollow" id="c6143193291641226636" href="#6143193291641226636">02 April 2017 03:33</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Update 2017-03-21: As is often the case I stand corrected (thanks to g9ais and Nillo) - you can use PVLAN to pull all traffic out of the hypervisor to the ToR switch, and process it there. I still think there are things that can go wrong with that approach with just the right mix of flooded traffic, so I don&#39;t think it&#39;s functionally equivalent to having full control of the virtual switch. Can&#39;t figure out at the moment whether that&#39;s relevant or not - any comment would be highly welcome.&quot;<br /><br />The functionality equivalent to having full control of the virtual switch is definitely not the same. Loosing a host-based local switching and routing is one of the examples. But in this case as Nillo mentioned the traffic optimization here is not the big issue from a practical standpoint. What is a bigger disadvantage from the real-life scenario is a lack of service insertion into the L2 path or intra-L3 subnet path. In theory ACI can use usegments and use contracts between them but still no service insertion into the L2 path. What’s more usegments with so many contracts do not scale even on the next gen 93180YC-EX. In comparison NSX do this natively with many security vendors. Without the effective micro segmentation ACI cannot offer spoofguard to protect against man in the middle attacks or IP address spoofing. The best switch on the market will no see flows which are switched locally on the host. How the security can be fully provided if there is no full visibility of applications running on hosts? So security I would say is the biggest concern in terms of the solution which is hw-switch based not vswitch based.<br /><br />To anticipate some arguments:<br />Yes, NSX-v is for vSphere and NSX-T is for multihypervisor.<br />Yes, I also recommend hardware based solutions where critical apps are on the bare metal.<br />Yes, Visibility of the underlay is not an issue.<br />Yes, Virtual firewalls plays a vital role to protect apps in the virtual environment.<br />Yes, Both NSX and ACI have its own pros and cons. :)</p>
+            <div class="comment-content">&quot;Update 2017-03-21: As is often the case I stand corrected (thanks to g9ais and Nillo) - you can use PVLAN to pull all traffic out of the hypervisor to the ToR switch, and process it there. I still think there are things that can go wrong with that approach with just the right mix of flooded traffic, so I don&#39;t think it&#39;s functionally equivalent to having full control of the virtual switch. Can&#39;t figure out at the moment whether that&#39;s relevant or not - any comment would be highly welcome.&quot;<br /><br />The functionality equivalent to having full control of the virtual switch is definitely not the same. Loosing a host-based local switching and routing is one of the examples. But in this case as Nillo mentioned the traffic optimization here is not the big issue from a practical standpoint. What is a bigger disadvantage from the real-life scenario is a lack of service insertion into the L2 path or intra-L3 subnet path. In theory ACI can use usegments and use contracts between them but still no service insertion into the L2 path. What’s more usegments with so many contracts do not scale even on the next gen 93180YC-EX. In comparison NSX do this natively with many security vendors. Without the effective micro segmentation ACI cannot offer spoofguard to protect against man in the middle attacks or IP address spoofing. The best switch on the market will no see flows which are switched locally on the host. How the security can be fully provided if there is no full visibility of applications running on hosts? So security I would say is the biggest concern in terms of the solution which is hw-switch based not vswitch based.<br /><br />To anticipate some arguments:<br />Yes, NSX-v is for vSphere and NSX-T is for multihypervisor.<br />Yes, I also recommend hardware based solutions where critical apps are on the bare metal.<br />Yes, Visibility of the underlay is not an issue.<br />Yes, Virtual firewalls plays a vital role to protect apps in the virtual environment.<br />Yes, Both NSX and ACI have its own pros and cons. :)</div>
           </div>
         </li>
       </div>
@@ -785,10 +780,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10562240567667879482" rel="nofollow">lcw</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6066134457747492207">24 April 2017 20:18</a>
+                <a rel="nofollow" id="c6066134457747492207" href="#6066134457747492207">24 April 2017 20:18</a>
               </span>
             </div>
-            <p class="comment-content">Most of our unfortunate coupling of network technologies has been in pursuit of performance. E.g., VMware will talk your ear off about the value of NSX local switching/routing/FW (though they&#39;ll go curiously quiet when working on NSX edge designs).<br /><br />But it seems that with VMXNET3 driver support, DirectPath I/O, SR-IOV, and VXLAN+TCP offload support, we&#39;ve got enough network performance that maybe it&#39;s time to shift all the vSwitch bloat into a VM.<br /><br />vArmour gets by just fine completely with VM-based switching -- they use one VM on each host for traffic interception and redirection. Some traffic is redirected w/VXLAN to the main firewall VMs. Other traffic is forwarded directly to the uplinks or other VMs on the host. Their approach is totally agnostic to the hypervisor vSwitch, so it works with every hypervisor and cloud environment. It doesn&#39;t have the raw speed of heavily-coupled hardware/hypervisor forwarding, but it&#39;s close enough that the only ones who will raise a stink about it are the sales engineers.<br /><br />Cisco did the same thing with Virtual Topology System (VTS) -- it began as a totally decoupled software VXLAN engine with distributed L2 control plane -- perfect for extending L2 between different hypervisors located anywhere in the world. They&#39;ve since spun VTS into something slightly different, but maybe Cisco should bring back and reemphasize its hypervisor-agnostic switching capabilities.</p>
+            <div class="comment-content">Most of our unfortunate coupling of network technologies has been in pursuit of performance. E.g., VMware will talk your ear off about the value of NSX local switching/routing/FW (though they&#39;ll go curiously quiet when working on NSX edge designs).<br /><br />But it seems that with VMXNET3 driver support, DirectPath I/O, SR-IOV, and VXLAN+TCP offload support, we&#39;ve got enough network performance that maybe it&#39;s time to shift all the vSwitch bloat into a VM.<br /><br />vArmour gets by just fine completely with VM-based switching -- they use one VM on each host for traffic interception and redirection. Some traffic is redirected w/VXLAN to the main firewall VMs. Other traffic is forwarded directly to the uplinks or other VMs on the host. Their approach is totally agnostic to the hypervisor vSwitch, so it works with every hypervisor and cloud environment. It doesn&#39;t have the raw speed of heavily-coupled hardware/hypervisor forwarding, but it&#39;s close enough that the only ones who will raise a stink about it are the sales engineers.<br /><br />Cisco did the same thing with Virtual Topology System (VTS) -- it began as a totally decoupled software VXLAN engine with distributed L2 control plane -- perfect for extending L2 between different hypervisors located anywhere in the world. They&#39;ve since spun VTS into something slightly different, but maybe Cisco should bring back and reemphasize its hypervisor-agnostic switching capabilities.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -804,10 +799,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Matt</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7286130937198278632">15 May 2017 16:54</a>
+                <a rel="nofollow" id="c7286130937198278632" href="#7286130937198278632">15 May 2017 16:54</a>
               </span>
             </div>
-            <p class="comment-content">Hi Craig.  I work for vArmour and wanted to correct you on one point.  You&#39;re right about vArmour for the most part, but I think you&#39;re working with somewhat outdated information.  There is no forwarding or offloading to separate FW VMs.  This was the behavior of the system in a previous generation.  The current VXLAN implementation is for control plane only.  Everything inside the hypervisor gets L7 inspected and forwarded on the normal switching path.  This is true regardless of whether it&#39;s deployed in ACI or non-ACI mode.<br /><br />And you&#39;re right about the performance.  With some of Intel&#39;s latest libraries, you can make userspace VMs run pretty fast from an I/O perspective.  8+ Gbps performance per vCPU with application ID and verbose logging with 1500 byte MTU.</p>
+            <div class="comment-content">Hi Craig.  I work for vArmour and wanted to correct you on one point.  You&#39;re right about vArmour for the most part, but I think you&#39;re working with somewhat outdated information.  There is no forwarding or offloading to separate FW VMs.  This was the behavior of the system in a previous generation.  The current VXLAN implementation is for control plane only.  Everything inside the hypervisor gets L7 inspected and forwarded on the normal switching path.  This is true regardless of whether it&#39;s deployed in ACI or non-ACI mode.<br /><br />And you&#39;re right about the performance.  With some of Intel&#39;s latest libraries, you can make userspace VMs run pretty fast from an I/O perspective.  8+ Gbps performance per vCPU with application ID and verbose logging with 1500 byte MTU.</div>
           </div>
         </li>
       </div>
@@ -829,10 +824,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.snarchs.com" rel="nofollow">Mateja Jovanovic</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2672226442192204306">08 June 2017 17:07</a>
+                <a rel="nofollow" id="c2672226442192204306" href="#2672226442192204306">08 June 2017 17:07</a>
               </span>
             </div>
-            <p class="comment-content">One my favourite things in Ivan´s posts is the discussion that spontaneously develops in the comments, call it the right topic or hitting the nerve... <br />Im a true ACI and NSX fan, also VCIX-NV, but I really don´t like that VMware closed the APIs for 3rd party integration, its a bit coward-ish facing the competitors technology that way. a real potential of SDN is in how you handle the Hypervisor Virtual Switch, and both Cisco and Nuage need to completely change the strategy. <br />My question is: Does anyone know if VMware just stopped supporting the solutions with a 3rd party virtual switch, or are the APIs closed all together? Could we, as a System Integrator, support vCenter+AVS?<br /></p>
+            <div class="comment-content">One my favourite things in Ivan´s posts is the discussion that spontaneously develops in the comments, call it the right topic or hitting the nerve... <br />Im a true ACI and NSX fan, also VCIX-NV, but I really don´t like that VMware closed the APIs for 3rd party integration, its a bit coward-ish facing the competitors technology that way. a real potential of SDN is in how you handle the Hypervisor Virtual Switch, and both Cisco and Nuage need to completely change the strategy. <br />My question is: Does anyone know if VMware just stopped supporting the solutions with a 3rd party virtual switch, or are the APIs closed all together? Could we, as a System Integrator, support vCenter+AVS?<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -848,10 +843,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15264124054761045280" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4484138945765811237">14 June 2017 10:36</a>
+                <a rel="nofollow" id="c4484138945765811237" href="#4484138945765811237">14 June 2017 10:36</a>
               </span>
             </div>
-            <p class="comment-content">no it s closed the API and will focus the vmware engineer to work on their products like the DVS API etc..</p>
+            <div class="comment-content">no it s closed the API and will focus the vmware engineer to work on their products like the DVS API etc..</div>
           </div>
         </li>
       </div>
@@ -873,10 +868,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07168050563653074130" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1971453690128264615">20 June 2017 04:09</a>
+                <a rel="nofollow" id="c1971453690128264615" href="#1971453690128264615">20 June 2017 04:09</a>
               </span>
             </div>
-            <p class="comment-content">Hi!Your way of writing blog is so nice and interesting one too.Thank you.<br /><a href="https://www.gclub-casino.com/baccarat/" rel="nofollow">บาคาร่า</a><br /><a href="https://www.gclub-casino.com" rel="nofollow">gclub จีคลับ</a><br /><a href="http://www.gtznk.com" rel="nofollow">gclub casino</a></p>
+            <div class="comment-content">Hi!Your way of writing blog is so nice and interesting one too.Thank you.<br /><a href="https://www.gclub-casino.com/baccarat/" rel="nofollow">บาคาร่า</a><br /><a href="https://www.gclub-casino.com" rel="nofollow">gclub จีคลับ</a><br /><a href="http://www.gtznk.com" rel="nofollow">gclub casino</a></div>
           </div>
         </li>
       </div>
@@ -891,10 +886,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15940142788428222663" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1379515139965674363">21 November 2017 12:32</a>
+                <a rel="nofollow" id="c1379515139965674363" href="#1379515139965674363">21 November 2017 12:32</a>
               </span>
             </div>
-            <p class="comment-content">Hi.<br />interesting blog and comments.<br /><br />As we&#39;re 9 months down the line, what is the situation now?<br /><br />AVS will not work at all in vSphere 6.5 ?<br />Are Cisco working on a VM-based v-switch to replace AVS?<br />Raw speed is not important to me, I&#39;d rather have the functionality of an ACI-integrated vswitch.<br />I&#39;m not interested in using VMware&#39;s VDS, not in the slightest (I hope VMware are reading this!).<br /></p>
+            <div class="comment-content">Hi.<br />interesting blog and comments.<br /><br />As we&#39;re 9 months down the line, what is the situation now?<br /><br />AVS will not work at all in vSphere 6.5 ?<br />Are Cisco working on a VM-based v-switch to replace AVS?<br />Raw speed is not important to me, I&#39;d rather have the functionality of an ACI-integrated vswitch.<br />I&#39;m not interested in using VMware&#39;s VDS, not in the slightest (I hope VMware are reading this!).<br /></div>
           </div>
         </li>
       </div>
@@ -909,10 +904,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15940142788428222663" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#577258843699433353">21 November 2017 12:35</a>
+                <a rel="nofollow" id="c577258843699433353" href="#577258843699433353">21 November 2017 12:35</a>
               </span>
             </div>
-            <p class="comment-content">I think i&#39;ve answered my own question:<br />https://supportforums.cisco.com/t5/application-centric/aci-integration-with-vm/td-p/3030792<br /></p>
+            <div class="comment-content">I think i&#39;ve answered my own question:<br />https://supportforums.cisco.com/t5/application-centric/aci-integration-with-vm/td-p/3030792<br /></div>
           </div>
         </li>
       </div>

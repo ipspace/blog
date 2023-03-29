@@ -1,0 +1,43 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "15 November 2022 03:46",
+               "html": "<p>The 169.254.0.1 neighbor table entries are an artifact from pre-nexthop group implementations in FRR.  Prior to nexthop groups the linux kernel would not accept a v6 nexthop for a v4 prefix.  So the routes were entered with a 169.254.0.1 &lt;iif&gt; as the actual nexthop.  The code to add this entry just has not gotten removed yet, since they have not done any current harm.  Additionally they are there for when the operator enters the command to turn off nexthop groups for installation into the linux kernel.</p>\n",
+               "id": "1511",
+               "name": " donald sharp",
+               "pub": "2022-11-15T15:46:56",
+               "ref": "1510",
+               "type": "comment"
+            },
+            {
+               "date": "15 November 2022 04:46",
+               "html": "<p>Thank you, now it all makes sense.</p>\n\n<p>I remembered the 169.254.0.1 entries and was surprised when they weren&#39;t in the Linux routing table, then found various messages explaining the v6 next hops and nexthop group commits. Great work!</p>\n",
+               "id": "1512",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-11-15T16:46:11",
+               "ref": "1511",
+               "type": "comment"
+            }
+         ],
+         "date": "15 November 2022 11:37",
+         "html": "<p>&#x2764;&#xFE0F;</p>\n",
+         "id": "1510",
+         "name": "Sander Steffann",
+         "pub": "2022-11-15T11:37:31",
+         "type": "comment"
+      },
+      {
+         "date": "15 November 2022 08:30",
+         "html": "<p>On Mellanox ASICs, routes will index into a host table using (next-hop IP, egress router interface) as the key, and the address-family of the next-hop does not need to match the address-family of the route. The host entry determines the DMAC that will be used after the Ethernet header is re-written post-routing.</p>\n\n<p>On Broadcom ASICs, routes don&#39;t directly point to a next-hop or host table; instead they index into an &quot;egress&quot; table by ID. So Broadcom natively has a decoupling of a route and the L2 rewrite information returned by the LPM lookup, this allowing the control plane to choose what rules it wishes to enforce with regards to address-families of routes vs next-hops. Another fun tidbit, the ARP/NDP tables are actually collapsed into the LPM lookup as if they were host routes, and these entries also index into the same egress table.</p>\n",
+         "id": "1513",
+         "name": " TA",
+         "pub": "2022-11-15T20:30:57",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/11/bgp-unnumbered-duct-tape.html"
+}

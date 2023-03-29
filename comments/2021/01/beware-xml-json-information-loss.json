@@ -1,0 +1,31 @@
+{
+   "comments": [
+      {
+         "date": "14 January 2021 09:09",
+         "html": "<p>For Jinja2 templates it would help if Ansible (or the jonus_command module) used a custom dictionary type in Python where element[0] just returns element, and where iterating over the dictionary would do the same. It would break iterating over the dictionary keys, but IMHO that&#39;s worth the price for templates.</p>\n",
+         "id": "341",
+         "name": " Sander Steffann",
+         "pub": "2021-01-14T09:09:58",
+         "type": "comment"
+      },
+      {
+         "date": "14 January 2021 10:52",
+         "html": "<p>thanks for the analysis. One way how to address that issue is to use the YANG models when you translate between XML to JSON. We do that in our software and that allows us to always present correct JSON to the applications. E.g., we always present a list in JSON even if its one element only in XML.</p>\n",
+         "id": "342",
+         "name": " Gerhard Wieser",
+         "pub": "2021-01-14T10:52:53",
+         "type": "comment"
+      },
+      {
+         "date": "19 January 2021 10:04",
+         "html": "i had same problem parsing ISIS LSDB from Junos in python:<br />\n1) netmiko to get LSDB<br />\n2) xmltodict to convert XML to python Dict<br />\n3) then &quot;if isinstance(entry[&#39;isis-neighbor&#39;], List):&quot;<br />\n* List if multiple ISIS neighbors and Dict otherwise<br />\n:(<br />\n\n\n",
+         "id": "348",
+         "name": " pato",
+         "pub": "2021-01-19T10:04:23",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2021/01/beware-xml-json-information-loss.html"
+}

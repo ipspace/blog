@@ -1,0 +1,23 @@
+{
+   "comments": [
+      {
+         "date": "15 April 2022 09:18",
+         "html": "<p>Telephone addressing system is indeed not clean, as it&#39;s built bottom-up, and should never be used as an example of hierarchical addressing. Indeed some(many?) of the numbers are names, not addresses. Their roaming implementations turn mobile numbers into names, so you&#39;re right on all counts Ivan. It&#39;s hierarchical addressing that one needs to give much thought to, not a bad example like that of the phone companies. </p>\n\n<p>Also, anyone who positions hierarchical addressing ALONE, as the cure for BGP table explosion, is missing the point (most likely due to not understanding addressing fundamentals). BGP table (and the amount of update) exploded due to IP naming only the interface, and the scope of BGP being the whole Internet. We need a node-level addressing scheme to stop that. H-addressing can help finesse it further, but a two-level addressing scheme is the real fundamental step, with H-addressing being optional but desirable, to the scheme.</p>\n\n<p>One other thing needs to be made clear: addressing schemes are independent of networking models. So be they OSI, RINA...they can all use the same addressing semantics, like IP. </p>\n\n<p>Jeroen posted a very valuable presentation by Radia Perlman last time about these same problems. Watch from 28:00 for her view on how IPv6 is just a red herring (which I agree):</p>\n\n<p>https://www.youtube.com/watch?v=5D1v42nw25E</p>\n\n<p>Some people like Geoff Huston -- otherwise a reasonable person whose many points I also agree with -- downplay the problem of tight coupling and complexity associated with the BGP table and update explosions. This paper, released back in 1997 when the BGP table contained a mere 45k routes, shows how bad the problem could already be at this scale:</p>\n\n<p>https://conferences.sigcomm.org/sigcomm/1997/papers/p109.pdf</p>\n\n<p>At a million route and counting, it&#39;ll be much worse when accidents happen, much like the FB Oct crash. Their network rarely crashes, but when it does, due to its complexity, there can be hell to pay as a result of nonlinear interactions in a tightly coupled system. The last thing we want is to make a complex system bigger and bigger. </p>\n",
+         "id": "1168",
+         "name": " Minh",
+         "pub": "2022-04-15T09:18:07",
+         "type": "comment"
+      },
+      {
+         "date": "20 April 2022 01:28",
+         "html": "<p>Let&#39;s switch over to FidoNet instead :-)</p>\n",
+         "id": "1178",
+         "name": "Albert Siersema",
+         "pub": "2022-04-20T13:28:00",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/04/telephone-system-hierarchical-addresses.html"
+}

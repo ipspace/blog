@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>12 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lcg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2383049498199626290">26 January 2011 12:11</a>
+                <a rel="nofollow" id="c2383049498199626290" href="#2383049498199626290">26 January 2011 12:11</a>
               </span>
             </div>
-            <p class="comment-content">It&#39;s not necessarily as bad as the diagram indicates...yes, this is what happens when the VMs are on different ESX hosts, but any VMs in the same port group on the same host will be switched within the vSwitch.  So in the diagram, if A and D are running on the same ESX and are on the same VLAN, they can be in the same port group and none of the traffic between them will leave the host.  For this reason, any VMs that send high amounts of data over the network to each other, we will often add DRS affinity rules to keep them on the same host.</p>
+            <div class="comment-content">It&#39;s not necessarily as bad as the diagram indicates...yes, this is what happens when the VMs are on different ESX hosts, but any VMs in the same port group on the same host will be switched within the vSwitch.  So in the diagram, if A and D are running on the same ESX and are on the same VLAN, they can be in the same port group and none of the traffic between them will leave the host.  For this reason, any VMs that send high amounts of data over the network to each other, we will often add DRS affinity rules to keep them on the same host.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">jumbo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#31932965872362159">26 January 2011 15:29</a>
+                <a rel="nofollow" id="c31932965872362159" href="#31932965872362159">26 January 2011 15:29</a>
               </span>
             </div>
-            <p class="comment-content">I think Ivan&#39;s example is on purpose build around the fact that A and D are on different ESX. DRS Affinity rules are nice, but somehow manual....</p>
+            <div class="comment-content">I think Ivan&#39;s example is on purpose build around the fact that A and D are on different ESX. DRS Affinity rules are nice, but somehow manual....</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrismarget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8650075904095203188">26 January 2011 15:52</a>
+                <a rel="nofollow" id="c8650075904095203188" href="#8650075904095203188">26 January 2011 15:52</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />Is this a workable scenario?<br /><br />If I understand correctly, you&#39;re saying that we&#39;ve got two static MLAGs configured: one to each ESX host.<br /><br />Your second drawing appears to show MAC addresses being learned on *physical*ethernet*ports*, rather than the logical aggregate interfaces.<br /><br />Assuming the static aggregations are Po1 (left ESX) and Po2 (right ESX), then the resulting MAC-&gt;port mapping on *both* pSwitches should be:<br /><br />A -&gt; Po1<br />B -&gt; Po1<br />C -&gt; Po2<br />D -&gt; Po2<br /><br />...Because MACs don&#39;t get learned on link members of an aggregation.<br /><br />A frame from A to C will be okay, because it&#39;s path is:<br />- ingress left pSwitch on Po1<br />- egress left pSwitch on Po2<br />- ingress right ESX on the *correct* pNIC<br /><br />A frame from A to D will fail, because its path is:<br />- ingress left pSwitch on Po1<br />- egress left pSwitch on Po2<br />- ingress right ESX on the *wrong* pNIC.<br /><br />A-&gt;D frames will ingress the ESX host on the pNIC that&#39;s pinned to vm C.  I expect that the vSwitch split horizon bridging will drop this frame.  Maybe it doesn&#39;t?</p>
+            <div class="comment-content">Ivan,<br /><br />Is this a workable scenario?<br /><br />If I understand correctly, you&#39;re saying that we&#39;ve got two static MLAGs configured: one to each ESX host.<br /><br />Your second drawing appears to show MAC addresses being learned on *physical*ethernet*ports*, rather than the logical aggregate interfaces.<br /><br />Assuming the static aggregations are Po1 (left ESX) and Po2 (right ESX), then the resulting MAC-&gt;port mapping on *both* pSwitches should be:<br /><br />A -&gt; Po1<br />B -&gt; Po1<br />C -&gt; Po2<br />D -&gt; Po2<br /><br />...Because MACs don&#39;t get learned on link members of an aggregation.<br /><br />A frame from A to C will be okay, because it&#39;s path is:<br />- ingress left pSwitch on Po1<br />- egress left pSwitch on Po2<br />- ingress right ESX on the *correct* pNIC<br /><br />A frame from A to D will fail, because its path is:<br />- ingress left pSwitch on Po1<br />- egress left pSwitch on Po2<br />- ingress right ESX on the *wrong* pNIC.<br /><br />A-&gt;D frames will ingress the ESX host on the pNIC that&#39;s pinned to vm C.  I expect that the vSwitch split horizon bridging will drop this frame.  Maybe it doesn&#39;t?</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#91396374000321683">26 January 2011 16:40</a>
+                <a rel="nofollow" id="c91396374000321683" href="#91396374000321683">26 January 2011 16:40</a>
               </span>
             </div>
-            <p class="comment-content">The point is that you NEED static LAGs configured unless you want to get weird traffic flow shown in the diagrams. Without static LAGs you might get a lot of traffic across inter-switch link.<br /><br />And since you HAVE TO HAVE static LAGs, you also need IP-hash-based load balancing in ESX, otherwise the incoming frames arriving through the wrong port will get dropped.</p>
+            <div class="comment-content">The point is that you NEED static LAGs configured unless you want to get weird traffic flow shown in the diagrams. Without static LAGs you might get a lot of traffic across inter-switch link.<br /><br />And since you HAVE TO HAVE static LAGs, you also need IP-hash-based load balancing in ESX, otherwise the incoming frames arriving through the wrong port will get dropped.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2658333096396285650">26 January 2011 16:46</a>
+                <a rel="nofollow" id="c2658333096396285650" href="#2658333096396285650">26 January 2011 16:46</a>
               </span>
             </div>
-            <p class="comment-content">Also - reworded the introductory description to make lack of link aggregation more explicit. Thank you!</p>
+            <div class="comment-content">Also - reworded the introductory description to make lack of link aggregation more explicit. Thank you!</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1065519804276828333">26 January 2011 16:47</a>
+                <a rel="nofollow" id="c1065519804276828333" href="#1065519804276828333">26 January 2011 16:47</a>
               </span>
             </div>
-            <p class="comment-content">Also - reworded the introductory description to make lack of link aggregation more explicit. Thank you, it was more than just a bit vague.</p>
+            <div class="comment-content">Also - reworded the introductory description to make lack of link aggregation more explicit. Thank you, it was more than just a bit vague.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrismarget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3970616877427802284">26 January 2011 17:40</a>
+                <a rel="nofollow" id="c3970616877427802284" href="#3970616877427802284">26 January 2011 17:40</a>
               </span>
             </div>
-            <p class="comment-content">Hrm, I don&#39;t think we&#39;re on the same page yet.<br /><br />Certainly ESX hash-based and static LAG *must* go together.  There&#39;s no disagreement there.<br /><br />But I disagree with &quot;Each VM appears to be single-homed to one of the switches.&quot;<br /><br />From the pSwitch perspective, each VM is homed to an *aggregation*, and MAC learning will happen on the aggregation, regardless of the link member where they arrive.<br /><br />Taking just the left pSwitch, all of A&#39;s frames will arrive on link member 0 and all of C&#39;s frames will arrive on link member 1...  But the pSwitch won&#39;t notice this.  The pSwitch will associate both MACs with the aggregate interface, and will forward downstream frames according to whichever hashing method is configured, totally ignoring which MAC showed up on which link member.<br /><br />Traffic won&#39;t flow across the inter-switch link.  It will flow *down* the aggregate, and only *maybe* get delivered to the VMs.</p>
+            <div class="comment-content">Hrm, I don&#39;t think we&#39;re on the same page yet.<br /><br />Certainly ESX hash-based and static LAG *must* go together.  There&#39;s no disagreement there.<br /><br />But I disagree with &quot;Each VM appears to be single-homed to one of the switches.&quot;<br /><br />From the pSwitch perspective, each VM is homed to an *aggregation*, and MAC learning will happen on the aggregation, regardless of the link member where they arrive.<br /><br />Taking just the left pSwitch, all of A&#39;s frames will arrive on link member 0 and all of C&#39;s frames will arrive on link member 1...  But the pSwitch won&#39;t notice this.  The pSwitch will associate both MACs with the aggregate interface, and will forward downstream frames according to whichever hashing method is configured, totally ignoring which MAC showed up on which link member.<br /><br />Traffic won&#39;t flow across the inter-switch link.  It will flow *down* the aggregate, and only *maybe* get delivered to the VMs.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lcg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2050689746485537325">27 January 2011 05:39</a>
+                <a rel="nofollow" id="c2050689746485537325" href="#2050689746485537325">27 January 2011 05:39</a>
               </span>
             </div>
-            <p class="comment-content">Chris, I think Ivan&#39;s statement, &quot;Each VM appears to be single-homed to one of the switches,&quot; refers to the default port ID vSwitch NIC teaming policy, not the IP-hash policy, so there are no port channels to the ESX hosts in the scenario where that statement applies...</p>
+            <div class="comment-content">Chris, I think Ivan&#39;s statement, &quot;Each VM appears to be single-homed to one of the switches,&quot; refers to the default port ID vSwitch NIC teaming policy, not the IP-hash policy, so there are no port channels to the ESX hosts in the scenario where that statement applies...</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8580124117625638837">27 January 2011 09:49</a>
+                <a rel="nofollow" id="c8580124117625638837" href="#8580124117625638837">27 January 2011 09:49</a>
               </span>
             </div>
-            <p class="comment-content">Exactly!</p>
+            <div class="comment-content">Exactly!</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrismarget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5540351440880928645">27 January 2011 14:17</a>
+                <a rel="nofollow" id="c5540351440880928645" href="#5540351440880928645">27 January 2011 14:17</a>
               </span>
             </div>
-            <p class="comment-content">&quot;the switches have been configured as a MLAG cluster&quot;...&quot;link aggregation is not used&quot;<br /><br />Ah!  Okay, I&#39;d missed the &quot;aggregation is not used&quot; sentence until just now.  Looking back at your previous comment, I guess this is the part that got clarified (after my misunderstanding of the topology was firmly cemented in my brain)<br /><br />The extra east-west hop would be nice to avoid.</p>
+            <div class="comment-content">&quot;the switches have been configured as a MLAG cluster&quot;...&quot;link aggregation is not used&quot;<br /><br />Ah!  Okay, I&#39;d missed the &quot;aggregation is not used&quot; sentence until just now.  Looking back at your previous comment, I guess this is the part that got clarified (after my misunderstanding of the topology was firmly cemented in my brain)<br /><br />The extra east-west hop would be nice to avoid.</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">solgae</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8959983761069396489">07 March 2011 18:52</a>
+                <a rel="nofollow" id="c8959983761069396489" href="#8959983761069396489">07 March 2011 18:52</a>
               </span>
             </div>
-            <p class="comment-content">VM A and D are connected to different vSwitches if you look at the above diagram, so traffic will still need to go thru the physical switch stack if those VMs need to communicate even if they&#39;re on the same physical host and on the same VLAN. There is no way the traffic can flow between different vSwitches within the same host unless you purposefully introduce bridging between two vSwitches.</p>
+            <div class="comment-content">VM A and D are connected to different vSwitches if you look at the above diagram, so traffic will still need to go thru the physical switch stack if those VMs need to communicate even if they&#39;re on the same physical host and on the same VLAN. There is no way the traffic can flow between different vSwitches within the same host unless you purposefully introduce bridging between two vSwitches.</div>
           </div>
         </li>
       </div>
@@ -217,10 +212,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3232372576213314226">07 March 2011 19:36</a>
+                <a rel="nofollow" id="c3232372576213314226" href="#3232372576213314226">07 March 2011 19:36</a>
               </span>
             </div>
-            <p class="comment-content">VM-A and VM-D are in two different ESX servers.</p>
+            <div class="comment-content">VM-A and VM-D are in two different ESX servers.</div>
           </div>
         </li>
       </div>

@@ -1,0 +1,167 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "29 September 2021 02:51",
+               "html": "<p>I think this article is missing context. Without the boost license, the scheduler has the capability to guarantee to a high degree proper performance to all tasks (packet forwarding, QOS, Filtering, etc). When you enable the boost license, the scheduler will schedule all cores to 100% with many run-to-complete tasks. So that means that the predictability of your performance goes out of the window.</p>\n\n<p>So its (as always) a trade-off.</p>\n",
+               "id": "756",
+               "name": " Rens Luitjens",
+               "pub": "2021-09-29T14:51:09",
+               "ref": "755",
+               "type": "comment"
+            },
+            {
+               "date": "30 September 2021 08:43",
+               "html": "<p>@Rens: While you&#39;re technically correct in your description of the impact of CPU overload, that&#39;s how routers behaved since 1980s and charging more (boost license) to get worse overall experience makes absolutely no sense.</p>\n\n<p>Also, one would expect a router to generate an error message saying &quot;I&#39;m overloaded, please do something&quot; instead of &quot;pay more to squeeze the last bits out of the CPU&quot;.</p>\n",
+               "id": "765",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-09-30T08:43:25",
+               "ref": "756",
+               "type": "comment"
+            },
+            {
+               "date": "30 September 2021 09:17",
+               "html": "<p>If you&rsquo;re an MSP that is offering a guaranteed service, you benefit for from predictable performance than squeezing every last drop out of the CPU.</p>\n\n<p>They&rsquo;re the target audience for these devices.</p>\n",
+               "id": "767",
+               "name": " Rens Luijtjens",
+               "pub": "2021-09-30T09:17:33",
+               "ref": "765",
+               "type": "comment"
+            },
+            {
+               "date": "30 September 2021 11:50",
+               "html": "<p>@Rens: In the &quot;guaranteed service&quot; case, it would make perfect sense to rate-limit the total throughput and make that a configurable option. I would love to see a vendor doing that <em>for the quality-of-experience</em> reasons.</p>\n\n<p>What we&#39;re discussing is a clearly-less-than-optimal marketing decision that has nothing to do with technology (see other comments, there&#39;s nobody else saying &quot;it makes sense&quot;), but I guess one&#39;s perception of it depends on which side of the fence one&#39;s sitting. </p>\n",
+               "id": "769",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-09-30T11:50:05",
+               "ref": "767",
+               "type": "comment"
+            },
+            {
+               "date": "29 September 2021 04:41",
+               "html": "<p>That&#39;s true, but the point here it&#39;s nobody would expect a performance limit so severe and obscure, some of them have a price tag over 1k and do not offer enough performance to even use a 100mbps link</p>\n\n<p>Boost license it&#39;s also quite expensive, as much as the router itself.</p>\n\n<p>These routers are current substitutes for 1900/2900/3900 but do not perform even as much as an 88x for simple use cases.</p>\n",
+               "id": "758",
+               "name": " donpinpon",
+               "pub": "2021-09-29T16:41:20",
+               "ref": "756",
+               "type": "comment"
+            }
+         ],
+         "date": "29 September 2021 02:22",
+         "html": "<p>ASR 1000 series have also the same performance limitation schema, you have to purchase the throughput level license.</p>\n\n<p>https://www.cisco.com/c/en_in/products/collateral/routers/asr-1000-series-aggregation-services-routers/datasheet-c78-731632.html</p>\n\n<p>Also note that performance is the aggregatted inbound traffic of all interfaces, so for a bidirectional 1 Gbps traffic performance you need at least a 2Gbps license.</p>\n",
+         "id": "755",
+         "name": " donpinpon",
+         "pub": "2021-09-29T14:22:12",
+         "type": "comment"
+      },
+      {
+         "date": "29 September 2021 02:52",
+         "html": "<p>Cisco added software based throughput rate limit licensing when the ISR 4Ks came out in 2014. This went over like a lead balloon with customers, so they removed the throughput licensing for the newer Catalyst 8200/8300/8500 series routers intended to replace the ISR 4Ks which came out in 2020. This is only for the Catalyst 8000s running &quot;autonomous mode&quot; (i.e. traditional standalone IOS-XE), throughput licensing still exists if you want to run them in SD-WAN mode.</p>\n",
+         "id": "757",
+         "name": " Ryan Hitch",
+         "pub": "2021-09-29T14:52:40",
+         "type": "comment"
+      },
+      {
+         "date": "29 September 2021 07:51",
+         "html": "<p>There is technical document about boost in ISR 4k\n&#39;Performance License on Cisco ISR4000&#39;\nhttps://www.cisco.com/c/en/us/support/docs/routers/4000-series-integrated-services-routers/217135-performance-license-on-cisco-isr4000.html</p>\n",
+         "id": "759",
+         "name": " cbr",
+         "pub": "2021-09-29T19:51:21",
+         "type": "comment"
+      },
+      {
+         "date": "29 September 2021 09:01",
+         "html": "<p>This is my biggest frustration with Cisco. Their engineering and product teams build great tech and then someone on the business side always ruins it with licensing. They charge what they can get away with and seem like they are on a never ending quest to squeeze out more from their current customer base. I love Cisco so much but hope they stop the madness. They seem to overcharge until competition starts to pull business away, and then they just lower their prices once they risk losing marketshare and it&#39;s &quot;forgive and forget&quot; about all the time they took advantage of their dominant position. Hope they change this.</p>\n\n<p>Of course I could go on and on on QA that feels like beta testing in prod and poor user experience of their user interfaces but we&#39;ll save that for a second &quot;I love you but need you to change&quot; rant about Cisco :)</p>\n",
+         "id": "762",
+         "name": " AW",
+         "pub": "2021-09-29T21:01:53",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "30 September 2021 02:04",
+               "html": "<p>Hi @Rik, we&#39;re about to go through the same here with a 4351 and a 4431, except we haven&#39;t yet bought the licenses. Would you be able to share which routers, licenses and IPSec throughput limit you saw?</p>\n",
+               "id": "764",
+               "name": " John",
+               "pub": "2021-09-30T02:04:31",
+               "ref": "763",
+               "type": "comment"
+            }
+         ],
+         "date": "29 September 2021 10:44",
+         "html": "<p>We ran into this in a recent deployment when IPSec traffic hit the ceiling. Figuring out the issue, then purchasing the &quot;fix&quot; (which required an IOS update) is not great. And even the process of adding the license to the device is off-putting. </p>\n\n<p>It&#39;s just not worth the extra cost or the bruises. Between performance licensing and the feature licensing (Sec vs AXV vs V vs AX vs VSec), I am looking and using other things like Vyos and pfSense/TNSR. </p>\n",
+         "id": "763",
+         "name": " Rik",
+         "pub": "2021-09-29T22:44:13",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "01 October 2021 03:43",
+               "html": "<p>Yes the licensing has become ridiculously complex.   I&rsquo;ve worked for many Cisco partners over the past twenty five years, and it was only in the last few that a three day licensing class or per product day long how to sell class became mandatory.  This is not why I did a CCIE.</p>\n",
+               "id": "772",
+               "name": " Simon",
+               "pub": "2021-10-01T03:43:23",
+               "ref": "768",
+               "type": "comment"
+            }
+         ],
+         "date": "30 September 2021 11:03",
+         "html": "<p>The below was my experience with the 4000series back in 2015 when we were deploying them for IPSec tunnels on 100mbps full duplex circuits;</p>\n\n<p>Throughput figures provided are total throughput so 100mbps performance on the platform would have only been sufficient for 50mbps full duplex circuit and as such insufficient so we had to make sure every router was capable of 200mbps for full duplex, and then we ran IPsec over the tunnels expecting uncapped throughput.</p>\n\n<p>This was probably my fault at the time for not reading the documentation in full depth but without the additional Hseck license I was limited to 85mbps!  I do believe this was patched out in later revisions of IOS, but at the time it felt like Cisco were being underhanded with this and weren&#39;t upfront about this initially.</p>\n\n<p>Cisco licensing used to be relatively easy to understand but in recent years it feels like its just disjointed and confusing.</p>\n",
+         "id": "768",
+         "name": " John",
+         "pub": "2021-09-30T11:03:52",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "01 October 2021 11:58",
+               "html": "<p>That&#39;s the sleaziest example of marketing math I&#39;ve seen so far. To make it worse, the marketing materials use the word &quot;throughput&quot; not &quot;bandwidth&quot;. </p>\n\n<p>Hope it was just a SNAFU and got fixed in the meantime -- highway robbery seems fair compared to this.</p>\n",
+               "id": "774",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-10-01T11:58:30",
+               "ref": "773",
+               "type": "comment"
+            }
+         ],
+         "date": "01 October 2021 09:56",
+         "html": "<p>The biggest &ldquo;gotcha&rdquo; that&rsquo;s not immediately apparent is that the limit is &ldquo;one way&rdquo;.</p>\n\n<p>So say you have a 5G licence for an ASR.  That means you can push 2.5 Gig through the box after which it&rsquo;ll start dropping packets.  Cos like &ldquo;2.5 in&rdquo; + &ldquo;2.5 out&rdquo; = 5.  Rather than 2.5 forwarded = 2.5.</p>\n\n<p>I&rsquo;m glad I&rsquo;m not dealing with Cisco any more, or at least that line of products.</p>\n",
+         "id": "773",
+         "name": "Cathal Mooney",
+         "pub": "2021-10-01T09:56:25",
+         "type": "comment"
+      },
+      {
+         "date": "01 October 2021 01:41",
+         "html": "<p>I believe it&#39;s rather telling when you look at the ASR1001-X licensing docs and read &quot;You can upgrade the throughput of the ESP from 2.5 Gbps (default) to 5 Gbps, 10 Gbps, or <strong>20 Gbps</strong> &quot; - the 20G value kind of gives it away. <br />\nMy time in the ISP world showed licensing issues with ISR/ASR are <strong>always</strong> a theme. Someone forgets to apply the 20G perf license on the main DC WAN router or doesn&#39;t do a restart or doesn&#39;t apply the RTU license + restart during the initial installation. And then you&#39;re the lucky one to discover the main DC is running on the default 2.5 Gbps simplex license and you need to do a reboot in the quarterly downtime window on some Saturday night. <br />\nBonus points if the end customer is the one pointing out this licensing issue and you&#39;re trying not to facedesk. <br />\nDon&#39;t even get me started on the 10G interface licenses for the same ASR1K-X.</p>\n",
+         "id": "776",
+         "name": "Maxim Ash",
+         "pub": "2021-10-01T13:41:41",
+         "type": "comment"
+      },
+      {
+         "date": "05 October 2021 01:01",
+         "html": "<p>This licensing is the price you have to pay for a non-ASIC, generic CPU router. You cannot make wonders, if you add more features at some point there will be a break down in the effective throughput. If you want to have a deterministic performance than you should not buy the boost license, but rather a bigger router.</p>\n",
+         "id": "777",
+         "name": " Bela Varkonyi",
+         "pub": "2021-10-05T13:01:17",
+         "type": "comment"
+      },
+      {
+         "date": "12 October 2021 09:35",
+         "html": "<p>Who cares? We have FRR and it doesn&#39;t requires anything, though feature set is much reacher. Let Cisco die silently among their corporate adepts.</p>\n",
+         "id": "792",
+         "name": " Dima",
+         "pub": "2021-10-12T21:35:10",
+         "type": "comment"
+      }
+   ],
+   "count": 10,
+   "type": "post",
+   "url": "2021/09/isr-performance.html"
+}

@@ -1,0 +1,108 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "01 December 2021 05:10",
+               "html": "<p>I think that has more to do with there being an IETF meeting. I found that draft in an overview article by Geoff Huston.</p>\n",
+               "id": "893",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-12-01T17:10:21",
+               "ref": "889",
+               "type": "comment"
+            }
+         ],
+         "date": "30 November 2021 10:48",
+         "html": "<p>The draft about BGP dynamic capability has been updated last month after being dead. Is that something you triggered? The changes include something about add-path.</p>\n",
+         "id": "889",
+         "name": " Vincent Bernat",
+         "pub": "2021-11-30T22:48:36",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "01 December 2021 11:57",
+               "html": "Junos Example: Preventing BGP Session Resets<br />\nhttps: //www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-sessions.html<br />\n\n\n",
+               "id": "891",
+               "name": "Alexander Grigorenko",
+               "pub": "2021-12-01T11:57:38",
+               "ref": "890",
+               "type": "comment"
+            },
+            {
+               "date": "01 December 2021 05:08",
+               "html": "<p>What a juicy can of worms. Thanks for sharing!</p>\n",
+               "id": "892",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-12-01T17:08:40",
+               "ref": "891",
+               "type": "comment"
+            }
+         ],
+         "date": "01 December 2021 11:55",
+         "html": "I think you will like this example https:<br />\n\n\n",
+         "id": "890",
+         "name": "Alexander Grigorenko",
+         "pub": "2021-12-01T11:55:42",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "09 December 2021 09:44",
+               "html": "<p>Yeah, I found that one once I started digging into BGP-over-QUIC -- it&#39;s so much fun to solve a problem (real or perceived) with shiny new toys instead of doing it the right way a decade ago ;)</p>\n\n<p>All of a sudden, multi-session makes perfect sense, while that draft was languishing in the IDR WG for over 17 years.</p>\n",
+               "id": "932",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-12-09T09:44:15",
+               "ref": "931",
+               "type": "comment"
+            },
+            {
+               "date": "09 December 2021 10:02",
+               "html": "<p>We were actually adding a new Afi/safi to an existing peering between 7200 and 7600, once added there was no BGP flap (surprisingly) thanks to this multisession being enabled by default on those : back in the 2008 it was like wow,this is so cool for the future!</p>\n",
+               "id": "933",
+               "name": " Alex",
+               "pub": "2021-12-09T10:02:15",
+               "ref": "932",
+               "type": "comment"
+            },
+            {
+               "date": "09 December 2021 10:07",
+               "html": "<p>Ah, so it&#39;s been implemented in Cisco IOS (and probably others as well). Thanks a million for that tidbit, time to do some testing...</p>\n",
+               "id": "934",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-12-09T10:07:00",
+               "ref": "933",
+               "type": "comment"
+            },
+            {
+               "date": "09 December 2021 11:55",
+               "html": "<p>At that time the IOS versions had that enabled by default (not sure if it was not a bug), later on it moved under </p>\n\n<p>&quot;neighbor $X transport multi-session&quot;</p>\n\n<p>so needed to be enabled explicitly.</p>\n\n<p>Thank you Ivan for the blog and all the info you share.\nRegards,\nAlex</p>\n",
+               "id": "935",
+               "name": "Alex",
+               "pub": "2021-12-09T11:55:46",
+               "ref": "934",
+               "type": "comment"
+            }
+         ],
+         "date": "09 December 2021 09:37",
+         "html": "<p>Reminds me of BGP mutisession</p>\n\n<p>https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-multisession</p>\n",
+         "id": "931",
+         "name": " Alex",
+         "pub": "2021-12-09T09:37:03",
+         "type": "comment"
+      },
+      {
+         "date": "28 December 2021 03:18",
+         "html": "<p>Every version of IOS, IOS XE, and ASA OS I&#39;ve used requires manual clearing of BGP neighbors to renegotiate capabilities, so imagine my surprise when I gave our firewall team the green light to turn on graceful restart on their FPR HA pair via FMC which would be followed by bouncing BGP in a change window, only to see the BGP neighbor relationships all reset as soon as the config change was pushed.</p>\n\n<p>I really appreciate the consistency, Cisco.</p>\n",
+         "id": "955",
+         "name": "Avery Abbott",
+         "pub": "2021-12-28T15:18:51",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2021/11/bgp-dynamic-capability.html"
+}

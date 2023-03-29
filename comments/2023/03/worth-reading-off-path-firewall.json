@@ -1,0 +1,45 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "26 March 2023 11:48",
+               "html": "<p>Absolutely agree. PBR is usually implemented with the same lookup hardware as ACLs, so there&#39;s pretty high chance that a platform that can do packet filters in hardware could also do simple PBR in hardware.</p>\n\n<p>Even better, as the IP address of the backup server is usually well-known, you could easily turn this into a pure routing challenge. See https://www.ipspace.net/kb/Internet/ScalablePolicyRouting/ for details.</p>\n",
+               "id": "1725",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-03-26T11:48:26",
+               "ref": "1724",
+               "type": "comment"
+            }
+         ],
+         "date": "26 March 2023 10:32",
+         "html": "<p>IMO PBR or policy-based routing is only a valid solution if it could be done in hardware. You might overload little switch&#39;s or router&#39;s CPU with PBR.</p>\n",
+         "id": "1724",
+         "name": "Anonymous",
+         "pub": "2023-03-26T10:32:04",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 March 2023 07:38",
+               "html": "<p>&gt; Does the ipSpace Data Center course help with answering questions in this problem space?</p>\n\n<p>I don&#39;t think so. You&#39;re trying to solve a tough routing problem, and that&#39;s not what we focused on in the data center course. We discussed something similar in the last Design Clinic and I could expand on that in one of the future sessions.</p>\n",
+               "id": "1727",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-03-26T19:38:21",
+               "ref": "1726",
+               "type": "comment"
+            }
+         ],
+         "date": "26 March 2023 07:14",
+         "html": "<p>Cool, thanks for sharing. This is one of the most relevant subjects for me at the moment. Check out this series of excellent and detailed posts about using BGP communities to decide to firewall or not to firewall. My favourite bit is detailed in part 2, where they create an optimal path so you only have to traverse a single firewall instead of two firewalls.\nhttps://stubarea51.net/2021/11/08/utilizing-bgp-communities-for-traffic-steering-part-1-firewalls/\nhttps://stubarea51.net/2022/03/20/bgp-communities-for-traffic-steering-part-2-state-management-across-data-centers/\nhttps://stubarea51.net/2022/06/12/bgp-communities-part-3-customer-bgp-traffic-engineering-communities/\nhttps://stubarea51.net/2022/07/24/bgp-communities-part-4-active-active-datacenter/</p>\n\n<p>Ideally I&#39;d do something like this for all services, but if you have a considerable amount of firewalled subnets you&#39;ll end up with a considerable amount of VRF&#39;s (and BGP sessions between L3 switches and firewalls for all of those VRF&#39;s).</p>\n\n<p>Some more idea&#39;s I have are related to integrating firewalls with VXLAN or MPLS, but I haven&#39;t grokked this direction yet.</p>\n\n<p>Does the ipSpace Data Center course help with answering questions in this problem space?</p>\n",
+         "id": "1726",
+         "name": " Jaap de Vos",
+         "pub": "2023-03-26T19:14:16",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2023/03/worth-reading-off-path-firewall.html"
+}

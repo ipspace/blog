@@ -1,0 +1,50 @@
+{
+   "comments": [
+      {
+         "date": "09 February 2022 02:34",
+         "html": "<p>Since the beginning of time, SR OS has had the notion of different port types:\n* Network facing ports (default)\n* User-facing access ports (untrusted)\n* Hybrid ports</p>\n\n<p>For example, VXLAN is not accepted on user facing ports. I am pretty sure VTP isn&#39;t supported (though there may be others - all vendors have their oversights)</p>\n\n<p>Time for a Netsim-Tools &quot;hardening&quot; plugin?</p>\n",
+         "id": "1009",
+         "name": " Jeroen van Bemmel",
+         "pub": "2022-02-09T14:34:43",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "14 February 2022 04:50",
+               "html": "<p>&gt; Whilst I&#39;ve never seen this as out of the box configuration this has been pretty much standard procedure for years in the same way you apply root guard, storm control, mac address limits, DHCP snooping and DAI.</p>\n\n<p>Yeah, we can invoke the magic power of automation and declare Mission Accomplished... but as vendors love to throw tons of new features into the kitchen sink called <em>Network Operating System</em>, how do you know your hardened configuration is up-to-date and secure?</p>\n",
+               "id": "1014",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-02-14T16:50:53",
+               "ref": "1013",
+               "type": "comment"
+            }
+         ],
+         "date": "14 February 2022 09:53",
+         "html": "<p>&quot;Would it be really THAT hard to have two sets of defaults for core (trusted) and edge (hardened) ports&quot; </p>\n\n<p>Whilst I&#39;ve never seen this as out of the box configuration this has been pretty much standard procedure for years in the same way you apply root guard, storm control, mac address limits, DHCP snooping and DAI.</p>\n\n<p>Whilst its interesting that you can write a short script to hijack VTP, I would consider your network poorly designed if you have VTP enabled on access ports.</p>\n\n<p>If we are going down the rabbit hole of badly configured access ports;</p>\n\n<p>switchport mode dynamic auto.</p>\n",
+         "id": "1013",
+         "name": "John",
+         "pub": "2022-02-14T09:53:53",
+         "type": "comment"
+      },
+      {
+         "date": "16 February 2022 10:46",
+         "html": "Security is a delicated balancing act between multiple aligned security environments: physical, logical, administrative, legal, etc. Focusing on vulnerability management is just a waste of efforts and resources. You should have an overall risk management approach.<br />\n\n<p>Adding a complex security mechanism might even make things worse, since no one would be able to understand it, operate it, troubleshoot it. Backdoors and bugs would be more difficult to detect and fix.</p>\n\n<p>A simple solution with better quality operations, good baseline and anomaly detection is sometimes much better. </p>\n\n<p>Separation of core network and user access ports is possible for decades. You just have to use it. In many companies you also have NAC with certificates, compliance checks, and quarantines.</p>\n\n<p>The network infrastructure must be protected by multiple environments. If someone cuts you fiber or wire, it is would be also a big problem. Good physcial environment control is needed anyhow.</p>\n\n<p>However, if you look at classical systems, the efficient security is focusing on deterrence instead of protection. Your biggest real problem is always humans, not technology...</p>\n\n<p>Deterrence is based on creating evidence. This should be one of your priorities.</p>\n",
+         "id": "1017",
+         "name": "Bela Varkonyi",
+         "pub": "2022-02-16T10:46:45",
+         "type": "comment"
+      },
+      {
+         "date": "22 February 2022 05:00",
+         "html": "<p>If I&#39;m not mistaken I believe they probably meant to say DTP rather than VTP. Forging a DTP packet allows you to turn an access port into a trunk and get access to all vlans. I don&#39;t believe forging a VTP packet could do the same. Also I have seen a similar video specifically showing this done with DTP.</p>\n",
+         "id": "1038",
+         "name": " AW",
+         "pub": "2022-02-22T17:00:41",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2022/02/vtp-insecure.html"
+}

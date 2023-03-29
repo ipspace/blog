@@ -1,0 +1,39 @@
+{
+   "comments": [
+      {
+         "date": "10 June 2021 09:43",
+         "html": "<p>Ivan, I still don&#39;t understand this part here: &quot; S1 would see 10.42.0.1/32 prefix being available through L1 with exactly the same cost as through L2.&quot;</p>\n\n<p>Say, L1 and L2 both advertise 10.42.0.1/32 to S1. Wouldn&#39;t S1 get 4 OSPF entries of 10.42.0.1/32 with different metrics then? And so it would load-balance among the 4 entries accordingly. Why would S1 see 10.42.0.1/32 thru L1 with the same cost as thru L2, unless each of them only generates one 10.42.0.1/32 toward S1?</p>\n",
+         "id": "647",
+         "name": "Minh Ha",
+         "pub": "2021-06-10T09:43:44",
+         "type": "comment"
+      },
+      {
+         "date": "10 June 2021 06:14",
+         "html": "<p>@Minh Ha: Getting a definitive answer would involve digging through RFC 2328, and I don&#39;t have the nerves to do that anymore ;) Anyone reading this comment thread is most welcome to do it.</p>\n\n<p>I would be surprised to see three routing table entries on S1 pointing to L1 (and it might depend on whether L1 advertises type-5 LSA or connected subnets in type-1 LSA)... but it should be pretty easy to set this up in a lab and prove me wrong ;))</p>\n",
+         "id": "650",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-06-10T18:14:08",
+         "type": "comment"
+      },
+      {
+         "date": "12 June 2021 04:13",
+         "html": "Thx for the pointer Ivan : ))! I was initially, simply thinking of all individual host routes getting advertised in Type-1 LSA from L1 and L2. After digging through rfc 2328 looking for host routes, looks like it only has general guidelines on them, for ex in section C.7. Basically host routes are considered stub networks and get advertised with /32 netmask in Type-1 LSA.<br />\n\n<p>Jeff Doyle&#39;s Routing TCP/IP and OSPF and IS-IS: Choosing an IGP for Large-Scale Network, didn&#39;t mention anything more specific than rfc 2328 either. So I think this is one of those gray areas that&#39;re subject to implementation, as anycast wasn&#39;t widely used back in the day, when those books and rfcs were written. One of our staff has a Cisco rack to deliver a CCNA course, so I&#39;ll ask him to replicate this scenario and see what the behaviour is like on Cisco equipment :)). </p>\n",
+         "id": "651",
+         "name": "Minh Ha",
+         "pub": "2021-06-12T04:13:34",
+         "type": "comment"
+      },
+      {
+         "date": "12 June 2021 11:14",
+         "html": "<p>Did a few tests. Blog post coming when I find time to polish it and draw the diagrams, setup and configs are here: https://github.com/ipspace/netsim-examples/tree/master/OSPF/anycast</p>\n\n<p>As expected, OSPF does not install multiple routes with the same next hop or alternate routes with different traffic shares, and I have a vague feeling that behavior can be traced back to the RFC.</p>\n",
+         "id": "652",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-06-12T11:14:25",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2021/06/single-metric-ucmp-hard.html"
+}

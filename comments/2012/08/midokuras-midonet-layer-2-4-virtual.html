@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>23 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://bradhedlund.com" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1791103873792913431">30 August 2012 18:37</a>
+                <a rel="nofollow" id="c1791103873792913431" href="#1791103873792913431">30 August 2012 18:37</a>
               </span>
             </div>
-            <p class="comment-content">There is mention of a &quot;central database&quot;, but it&#39;s also stated this is a distributed system with no centralized control plane. How do the forwarding agents in each OVS synchronize and achieve consistent state?<br /></p>
+            <div class="comment-content">There is mention of a &quot;central database&quot;, but it&#39;s also stated this is a distributed system with no centralized control plane. How do the forwarding agents in each OVS synchronize and achieve consistent state?<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00017181371305926422" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1680184180772397376">01 September 2012 15:15</a>
+                <a rel="nofollow" id="c1680184180772397376" href="#1680184180772397376">01 September 2012 15:15</a>
               </span>
             </div>
-            <p class="comment-content">Hi Brad, that&#39;s a very good question.  Without going into the precise details of the synchronization mechanisms, here&#39;s the basic idea:  Virtual network configuration, such as the virtual topology, is eventually consistent with respect to changes made via the REST API, while per flow state is statistically highly consistent, though not linearizable.  We use a combination of ZooKeeper and Cassandra to implement the &quot;central database&quot;.  MidoNet agents make independent decisions, such as handling control packets like ARP, ICMP, DHCP and setting up new flows, based on their local view of the virtual network state.  If the virtual network configuration (virtual topology as well as virtual device config) changes and two edges see that change with a lag delta, then some flows will be forwarded according to the old configuration while others are forwarded according to the new configuration (during the period of convergence). The flows are all correct with respect to at least one valid configuration (since decisions are all taken at the ingress edge node). Which flows are still being forwarded according to the old configuration is arbitrary, but that&#39;s fine. Existing flows are also invalidated and recomputed when configuration changes.</p>
+            <div class="comment-content">Hi Brad, that&#39;s a very good question.  Without going into the precise details of the synchronization mechanisms, here&#39;s the basic idea:  Virtual network configuration, such as the virtual topology, is eventually consistent with respect to changes made via the REST API, while per flow state is statistically highly consistent, though not linearizable.  We use a combination of ZooKeeper and Cassandra to implement the &quot;central database&quot;.  MidoNet agents make independent decisions, such as handling control packets like ARP, ICMP, DHCP and setting up new flows, based on their local view of the virtual network state.  If the virtual network configuration (virtual topology as well as virtual device config) changes and two edges see that change with a lag delta, then some flows will be forwarded according to the old configuration while others are forwarded according to the new configuration (during the period of convergence). The flows are all correct with respect to at least one valid configuration (since decisions are all taken at the ingress edge node). Which flows are still being forwarded according to the old configuration is arbitrary, but that&#39;s fine. Existing flows are also invalidated and recomputed when configuration changes.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15113372029146990395" rel="nofollow">Pablo Carlier</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4319470658087907553">26 September 2012 21:07</a>
+                <a rel="nofollow" id="c4319470658087907553" href="#4319470658087907553">26 September 2012 21:07</a>
               </span>
             </div>
-            <p class="comment-content">So Cassandra and ZooKeeper work as a replacement for OpenFlow. No network protocols. No central controller. Distributed state synchronised via a distributed DB and distributed systems tools.<br /><br />Why not go with OpenFlow?<br />How are convergence times calculated?<br />What happens with wrong flows that are setup before state is consistent? Are they a drop &amp; retry? Is the flow forwarded to the correct destination by the previous destination as if nothing had happened?<br /><br />Many thanks, innovative solution. ;)<br /><br />Pablo Carlier. - (Disclaimer: I am a Cisco Systems Engineer).  </p>
+            <div class="comment-content">So Cassandra and ZooKeeper work as a replacement for OpenFlow. No network protocols. No central controller. Distributed state synchronised via a distributed DB and distributed systems tools.<br /><br />Why not go with OpenFlow?<br />How are convergence times calculated?<br />What happens with wrong flows that are setup before state is consistent? Are they a drop &amp; retry? Is the flow forwarded to the correct destination by the previous destination as if nothing had happened?<br /><br />Many thanks, innovative solution. ;)<br /><br />Pablo Carlier. - (Disclaimer: I am a Cisco Systems Engineer).  </div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5871062788172552129">30 August 2012 19:37</a>
+                <a rel="nofollow" id="c5871062788172552129" href="#5871062788172552129">30 August 2012 19:37</a>
               </span>
             </div>
-            <p class="comment-content">Do they mention if their firewall or load-balancing logic is modular in a way that third party vendors could develop their own MidoNet FW or LB module? </p>
+            <div class="comment-content">Do they mention if their firewall or load-balancing logic is modular in a way that third party vendors could develop their own MidoNet FW or LB module? </div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Rob</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3120109469177740417">30 August 2012 20:44</a>
+                <a rel="nofollow" id="c3120109469177740417" href="#3120109469177740417">30 August 2012 20:44</a>
               </span>
             </div>
-            <p class="comment-content">10Gig throughput...wow.<br /><br />  If that&#39;s the case then install a few OC12 PCI express cards in your UCS chassis or blade enclosure and toss those ASRs out.<br /><br />I hear Cisco has similar functionality with their CRS.</p>
+            <div class="comment-content">10Gig throughput...wow.<br /><br />  If that&#39;s the case then install a few OC12 PCI express cards in your UCS chassis or blade enclosure and toss those ASRs out.<br /><br />I hear Cisco has similar functionality with their CRS.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Rob</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4669957140503570153">30 August 2012 20:44</a>
+                <a rel="nofollow" id="c4669957140503570153" href="#4669957140503570153">30 August 2012 20:44</a>
               </span>
             </div>
-            <p class="comment-content">CSR rather.</p>
+            <div class="comment-content">CSR rather.</div>
           </div>
         </li>
       </div>
@@ -143,10 +138,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15412047994121954944" rel="nofollow">Derick Winkworth</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3425581617705793327">31 August 2012 05:10</a>
+                <a rel="nofollow" id="c3425581617705793327" href="#3425581617705793327">31 August 2012 05:10</a>
               </span>
             </div>
-            <p class="comment-content">This is very cool... could run BGP from their stuff into a PER...  keep security zones separate as VRFs...  This is kind of awesome right here.</p>
+            <div class="comment-content">This is very cool... could run BGP from their stuff into a PER...  keep security zones separate as VRFs...  This is kind of awesome right here.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -162,10 +157,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00017181371305926422" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5849766880240154880">01 September 2012 15:33</a>
+                <a rel="nofollow" id="c5849766880240154880" href="#5849766880240154880">01 September 2012 15:33</a>
               </span>
             </div>
-            <p class="comment-content">Hi Derick, thanks for the positive comment!<br /><br />We created this virtual device model in order to provide a familiar interface that blends be best of VRFs, Amazon VPC, and L2 switching.<br /><br />The VRF model seems to map well to the multi-tenant IaaS cloud (OpenStack) use case.  Our OpenStack plugin creates a virtual router per &quot;project&quot; (virtual data center, VPC, whatever term you like), and attaches multiple L2 networks to it.  The service provider&#39;s virtual router is wired to each of the projects for routing global IPs.</p>
+            <div class="comment-content">Hi Derick, thanks for the positive comment!<br /><br />We created this virtual device model in order to provide a familiar interface that blends be best of VRFs, Amazon VPC, and L2 switching.<br /><br />The VRF model seems to map well to the multi-tenant IaaS cloud (OpenStack) use case.  Our OpenStack plugin creates a virtual router per &quot;project&quot; (virtual data center, VPC, whatever term you like), and attaches multiple L2 networks to it.  The service provider&#39;s virtual router is wired to each of the projects for routing global IPs.</div>
           </div>
         </li>
       </div>
@@ -187,10 +182,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#251854323643624700">08 September 2012 02:45</a>
+                <a rel="nofollow" id="c251854323643624700" href="#251854323643624700">08 September 2012 02:45</a>
               </span>
             </div>
-            <p class="comment-content">How is vMotion handled ?</p>
+            <div class="comment-content">How is vMotion handled ?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -206,10 +201,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00017181371305926422" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7965810962382943639">20 September 2012 05:57</a>
+                <a rel="nofollow" id="c7965810962382943639" href="#7965810962382943639">20 September 2012 05:57</a>
               </span>
             </div>
-            <p class="comment-content">When a VM is migrated by the cloud management system, e.g. OpenStack, the virtual port to which the VM is logically attached is bound to a tap/veth on the target host, at the end of the migration process.  At that time, the new mapping of vport to host is propagated to all MidoNet edges who have flows going to that vport, at which point those flows are updated to tunnel to the new target host.  So unlike some other forms of vMotion, there is no need to use gratuitous ARP to update switch state, or any such nonsense.</p>
+            <div class="comment-content">When a VM is migrated by the cloud management system, e.g. OpenStack, the virtual port to which the VM is logically attached is bound to a tap/veth on the target host, at the end of the migration process.  At that time, the new mapping of vport to host is propagated to all MidoNet edges who have flows going to that vport, at which point those flows are updated to tunnel to the new target host.  So unlike some other forms of vMotion, there is no need to use gratuitous ARP to update switch state, or any such nonsense.</div>
           </div>
         </li>
       </div>
@@ -231,10 +226,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09932349058210537344" rel="nofollow">Vividh Siddha</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#692334154192027811">14 September 2012 04:48</a>
+                <a rel="nofollow" id="c692334154192027811" href="#692334154192027811">14 September 2012 04:48</a>
               </span>
             </div>
-            <p class="comment-content">This comment has been removed by the author.</p>
+            <div class="comment-content">This comment has been removed by the author.</div>
           </div>
         </li>
       </div>
@@ -249,10 +244,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09932349058210537344" rel="nofollow">Vividh Siddha</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7053515302522236765">14 September 2012 04:49</a>
+                <a rel="nofollow" id="c7053515302522236765" href="#7053515302522236765">14 September 2012 04:49</a>
               </span>
             </div>
-            <p class="comment-content">If the virtual router is a abstract concept how is BGP peering on the Provider Virtual Router implemented? Is OSPF used between Tenant Virtual Router and Provider Virtual Router?</p>
+            <div class="comment-content">If the virtual router is a abstract concept how is BGP peering on the Provider Virtual Router implemented? Is OSPF used between Tenant Virtual Router and Provider Virtual Router?</div>
           </div>
         </li>
       </div>
@@ -267,10 +262,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00017181371305926422" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#366428128132615791">20 September 2012 05:43</a>
+                <a rel="nofollow" id="c366428128132615791" href="#366428128132615791">20 September 2012 05:43</a>
               </span>
             </div>
-            <p class="comment-content">The virtual routers are not really instances of routers, but rather just configuration state which the MidoNet agents at the edges use to simulate the flows as they would traverse the virtual network topology.  So while the virtual router is abstract, the uplink ports of the virtual router are bound to actual ethernet interfaces on edge gateway nodes.  The edge gateway nodes run BGP sessions with the upstream peers, and update the routing table in the distributed database, which is then shared with other MidoNet agents, as needed. </p>
+            <div class="comment-content">The virtual routers are not really instances of routers, but rather just configuration state which the MidoNet agents at the edges use to simulate the flows as they would traverse the virtual network topology.  So while the virtual router is abstract, the uplink ports of the virtual router are bound to actual ethernet interfaces on edge gateway nodes.  The edge gateway nodes run BGP sessions with the upstream peers, and update the routing table in the distributed database, which is then shared with other MidoNet agents, as needed. </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -286,10 +281,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15252780112453885537" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2919710727226242179">09 November 2012 12:19</a>
+                <a rel="nofollow" id="c2919710727226242179" href="#2919710727226242179">09 November 2012 12:19</a>
               </span>
             </div>
-            <p class="comment-content">This comment has been removed by the author.</p>
+            <div class="comment-content">This comment has been removed by the author.</div>
           </div>
         </li>
       </div>
@@ -304,10 +299,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15252780112453885537" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7803456666219222227">09 November 2012 12:52</a>
+                <a rel="nofollow" id="c7803456666219222227" href="#7803456666219222227">09 November 2012 12:52</a>
               </span>
             </div>
-            <p class="comment-content">Are the edge gateway nodes linux servers or vendor routers ?If they are vendor routers does that mean we have to configure gre tunnels for this to work ?</p>
+            <div class="comment-content">Are the edge gateway nodes linux servers or vendor routers ?If they are vendor routers does that mean we have to configure gre tunnels for this to work ?</div>
           </div>
         </li>
       </div>
@@ -329,10 +324,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8187044519721473877">30 October 2012 09:48</a>
+                <a rel="nofollow" id="c8187044519721473877" href="#8187044519721473877">30 October 2012 09:48</a>
               </span>
             </div>
-            <p class="comment-content">Is MidoNet forwarding agent using Intel&#39;s DPDK?</p>
+            <div class="comment-content">Is MidoNet forwarding agent using Intel&#39;s DPDK?</div>
           </div>
         </li>
       </div>
@@ -347,10 +342,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Lennie</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3422447321060086387">17 April 2013 21:37</a>
+                <a rel="nofollow" id="c3422447321060086387" href="#3422447321060086387">17 April 2013 21:37</a>
               </span>
             </div>
-            <p class="comment-content">Why does this company or at least their solution not get more publicity ?<br /><br />There should be a lot more companies doing this.<br /><br />And why were these never mentioned on the packetpushers website or in the podcast ? ;-)<br /><br />No really, I&#39;ve been searching for a similar to their solution for months now. I know it kind of looks like it they are going against the whole networking industry, but this really is the natural evolution.</p>
+            <div class="comment-content">Why does this company or at least their solution not get more publicity ?<br /><br />There should be a lot more companies doing this.<br /><br />And why were these never mentioned on the packetpushers website or in the podcast ? ;-)<br /><br />No really, I&#39;ve been searching for a similar to their solution for months now. I know it kind of looks like it they are going against the whole networking industry, but this really is the natural evolution.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -366,10 +361,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6602777169435844385">18 April 2013 07:59</a>
+                <a rel="nofollow" id="c6602777169435844385" href="#6602777169435844385">18 April 2013 07:59</a>
               </span>
             </div>
-            <p class="comment-content">Because they started in the wrong geography? It&#39;s amazing how many great solutions are hidden &quot;out there&quot; as compared to some of the mediocre stuff that gets funded in the Valley.<br /><br />As for packetpushers, you&#39;d have to ask the podcast hosts.<br /><br />Finally, send me an email if you&#39;d like to get in touch with Midokura but can&#39;t find their contact details.</p>
+            <div class="comment-content">Because they started in the wrong geography? It&#39;s amazing how many great solutions are hidden &quot;out there&quot; as compared to some of the mediocre stuff that gets funded in the Valley.<br /><br />As for packetpushers, you&#39;d have to ask the podcast hosts.<br /><br />Finally, send me an email if you&#39;d like to get in touch with Midokura but can&#39;t find their contact details.</div>
           </div>
         </li>
       </div>
@@ -384,10 +379,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Lennie</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2959595040786689178">18 April 2013 08:38</a>
+                <a rel="nofollow" id="c2959595040786689178" href="#2959595040786689178">18 April 2013 08:38</a>
               </span>
             </div>
-            <p class="comment-content">Now that I know who they are I can get in contact with them.<br /><br />I meant I&#39;ve not seen any other company or open source project which has a virtual router on the hypervisor. And I only found this article yesterday. I can setup routing software on Linux, if Linux is running the hypervisor, but then you have to figure it all out on yourself.</p>
+            <div class="comment-content">Now that I know who they are I can get in contact with them.<br /><br />I meant I&#39;ve not seen any other company or open source project which has a virtual router on the hypervisor. And I only found this article yesterday. I can setup routing software on Linux, if Linux is running the hypervisor, but then you have to figure it all out on yourself.</div>
           </div>
         </li>
       </div>
@@ -402,10 +397,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5905679479907716088">18 April 2013 08:44</a>
+                <a rel="nofollow" id="c5905679479907716088" href="#5905679479907716088">18 April 2013 08:44</a>
               </span>
             </div>
-            <p class="comment-content">Contrail also has L3 functionality in the hypervisor, as does Hyper-V Networking Virtualization.</p>
+            <div class="comment-content">Contrail also has L3 functionality in the hypervisor, as does Hyper-V Networking Virtualization.</div>
           </div>
         </li>
       </div>
@@ -420,10 +415,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Lennie</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7557687084619370875">20 April 2013 16:32</a>
+                <a rel="nofollow" id="c7557687084619370875" href="#7557687084619370875">20 April 2013 16:32</a>
               </span>
             </div>
-            <p class="comment-content">Maybe I was looking in the wrong place, but I never found good documentation about Hyper-V Network Virtualization that did L3.</p>
+            <div class="comment-content">Maybe I was looking in the wrong place, but I never found good documentation about Hyper-V Network Virtualization that did L3.</div>
           </div>
         </li>
       </div>
@@ -438,10 +433,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Lennie</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3402534887746341338">21 April 2013 13:28</a>
+                <a rel="nofollow" id="c3402534887746341338" href="#3402534887746341338">21 April 2013 13:28</a>
               </span>
             </div>
-            <p class="comment-content">Maybe I should explain what I want: I want the host running the hypervisor to use dynamic routing to route it&#39;s overlay traffic around L2 or L3 failures. Servers are equipped with multiple network connections why don&#39;t we use them to their maximum potential.</p>
+            <div class="comment-content">Maybe I should explain what I want: I want the host running the hypervisor to use dynamic routing to route it&#39;s overlay traffic around L2 or L3 failures. Servers are equipped with multiple network connections why don&#39;t we use them to their maximum potential.</div>
           </div>
         </li>
       </div>
@@ -463,10 +458,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#265649803030556468">01 June 2013 17:46</a>
+                <a rel="nofollow" id="c265649803030556468" href="#265649803030556468">01 June 2013 17:46</a>
               </span>
             </div>
-            <p class="comment-content">Could you please comment on nCloudX platform from Anuta Networks. Thanks</p>
+            <div class="comment-content">Could you please comment on nCloudX platform from Anuta Networks. Thanks</div>
           </div>
         </li>
       </div>

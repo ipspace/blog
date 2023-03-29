@@ -1,0 +1,52 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "14 December 2022 01:43",
+               "html": "<p>In the AWS case, SRD is used instead of VXLAN/GENEVE to transport customer data, so it&#39;s still Ethernet/IP/TCP above it.</p>\n\n<p>Replacing TCP with SRD is hard because the original designers of the socket API wrote QDS code before thinking it through... https://blog.ipspace.net/2009/08/what-went-wrong-socket-api.html</p>\n\n<p>As for &quot;replacing TCP in data center&quot;, that article is so full of bullshit that I postponed writing a reply till next year ;)</p>\n",
+               "id": "1572",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-12-14T13:43:46",
+               "ref": "1571",
+               "type": "comment"
+            },
+            {
+               "date": "14 December 2022 04:45",
+               "html": "<p>I thought it was your idea for a next step to use SRD as a replacement for overlays because you wrote &bdquo;Next step&ldquo;. Sorry. </p>\n\n<p>But could it replace TCP for real? I&rsquo;m not talking overlays, just plain TCP. </p>\n",
+               "id": "1573",
+               "name": " Daniel S",
+               "pub": "2022-12-14T16:45:21",
+               "ref": "1572",
+               "type": "comment"
+            },
+            {
+               "date": "14 December 2022 04:51",
+               "html": "<p>Could SRD replace TCP? Of course not. Applications consuming TCP streams expect in-order delivery. You could add in-order delivery to SRD, but then you just reinvented TCP ;)</p>\n",
+               "id": "1574",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-12-14T16:51:30",
+               "ref": "1573",
+               "type": "comment"
+            }
+         ],
+         "date": "14 December 2022 01:02",
+         "html": "<p>Wouldn&#39;t it make sense to implement SRD into, for example, the linux kernel and get rid of TCP for a lot of applications? I don&#39;t see it replacing UDP. But SRD for all of webtraffic? Wouldn&#39;t be that bad. \nI read somewhere a few days ago that we should replace TCP in the datacenter; HA.. I found it again: https://arxiv.org/pdf/2210.00714.pdf \nThey&#39;re talking about &quot;Homa&quot;, I don&#39;t know enough application and transport stuff to know if the Homa idea is good or bad. And how it relates to SRD. </p>\n",
+         "id": "1571",
+         "name": " Daniel S",
+         "pub": "2022-12-14T13:02:38",
+         "type": "comment"
+      },
+      {
+         "date": "16 December 2022 01:38",
+         "html": "<p>When I first read about AWS ENA and SRD I was thinking, did AWS &ldquo;roll their own&rdquo; in a manner like RTP. EIGRP&rsquo;s own protocol to reliably send data to all &quot;nodes&quot;, with piggyback acks, etc that uses multicast and unicast methods.</p>\n",
+         "id": "1575",
+         "name": " jsicuran",
+         "pub": "2022-12-16T01:38:34",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/12/quick-look-aws-srd.html"
+}

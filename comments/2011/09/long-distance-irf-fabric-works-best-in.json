@@ -1,109 +1,133 @@
 {
-  "comments": [
-    {
-      "date": "14 September 2011 04:28",
-      "html": "Unfortunately, the comments here about IRF technology, applied in long distance link, aren\u00b4t correct. The author describes the IRF technology from his point of view, but definitely he isn\u00b4t an expert on that and I will demonstrate that below:<br />1. Talking about only HP IRF technology and not about the HP boxes, we shouldn\u00b4t assume that there are only two switches in IRF domain, one in the main site and another on in backup site. In fact, HP has products that can operate with more than two switches in one IRF domain, such as, HP 5830, HP 5820, HP 5800, HP 10500 (future) and HP 12500 (future). Said that, anyone is crazy enough to setup a Data Center with only one DC Core, which means a SPOF (single point of failure) certainly. A DC specialist could create an IRF domain with 4 unit boxes and deploy at least two of them in each site.<br />2. MAD doesn\u00b4t impact the operation of switches once the link between IRF boxes goes down, because they are in the different sites and it seems to them like a shutdown in the IRF, where the secondary keeps up and running during disaster time. Let me explain that in details: when we have a IRF domain with two switches in the same subnet and the IRF links between go down, the secondary switch monitors the ARP packets from master to avoid that two switches forward the packets, causing the looping (MAD technology). However, when we shut down the master switch in IRF domain, the secondary assumes the main function and keep the forwarding of packets. In fact, when we have IRF deployed in long distance links and these links go down, the secondary switch assumes the main function, once that he didn\u00b4t monitor any ARP packet from master switch; in other words; this situation is a split of IRF domain, where the both keep up and running. If it wouldn\u00b4t work like that, why HP would use IRF?<br />Since we setup the information above, all premises mentioned by author in this article became invalids and affect directly the credibility of this article.<br />Study a little bit more and update this information, please.",
-      "id": "5360941022428602563",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Alex",
-      "profile": null,
-      "pub": "2011-09-14T04:28:12.486+02:00",
-      "ref": "6202836387716153013",
-      "type": "comment"
-    },
-    {
-      "date": "14 September 2011 08:26",
-      "html": "Good morning, Alex, and thanks for a lengthy reply.<br /><br />Indeed I describe IRF technology (and any other technology I write about) from my point of view - that&#39;s the value my readers find in my blog. I never claimed I&#39;m an expert in every technology I describe and vendors have contacted me numerous times to help me get the facts straight. You (or anyone else from HP) has the same option, just use the &quot;contact me&quot; link in the header of each page.<br /><br />Next, let&#39;s talk about credibility. Everyone who clicks the &quot;About&quot; link on my blog can learn who I am, what I&#39;m doing and what my standpoints are. You decided not to disclose who you are and what your affiliation with HP is. Still, I have no problem with that, but it might affect your credibility in some readers&#39; eyes. <br /><br />I usually judge how credible something is based on purely technical facts, so let&#39;s walk through them.<br /><br />(A) Two or four switches in an IRF domain. You just confirmed what I wrote - today, you can link only two high-end switches in an IRF domain. Using stackable switches to build your data center? Sure, go ahead ... but that does tell a lot about the type of data centers you build.<br /><br />(B) Your description of what happens after the link failure is correct (and does not contradict anything I wrote in the article). You will, however, get split subnet issues regardless of how many devices you have in the IRF fabric - that&#39;s a simple fact of life for any L2 DCI and cannot be talked away.<br /><br />(C) You might want to check HP documentation (I read the documentation for A7500 and A5800) to see what happens after the DCI link is reestablished. According to the HP documentation, one of the A7500&#39;s will reload and one part of the A5800 partitioned cluster will go into &quot;failure recovery&quot; mode and effectively block itself.<br /><br />Yet again, I am not criticizing the IRF technology (which is approximately as good as any other similar technology), but the particular design (inter-DC IRF) which simply doesn&#39;t make sense, more so as there&#39;s a completely safe alternate design I presented in the article. <br /><br />Now, I can&#39;t help if someone designed and deployed inter-DC IRF and now has a credibility problem because of my article. The facts are as they are, at least according to publicly available documentation from HP.  If you still feel I&#39;ve misinterpreted the facts, let me know.<br /><br />Ivan",
-      "id": "3362967575353907328",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2011-09-14T08:26:33.629+02:00",
-      "ref": "6202836387716153013",
-      "type": "comment"
-    },
-    {
-      "date": "14 September 2011 13:31",
-      "html": "vendor disclosure. I do work for HP Networking.  I personally agree with your criticisms of the L2 shared fault domain of this design. I think ALex&#39;s issue is the perceived slite of IRF OAS a technology. It is a very good technology and does have some pretty amazing failover times even when compared to the published numbers of other similar technologies in similar class of devices. Personally, budget constraints with standing, i&#39;m a fan of the third option. IRF pair In Each data center and a MLAG bundle between the two pairs. All of the benefits, none of the inter-data center split brain madness.<br /><br />Marketing departments get a little overzealous because the technology is really, really good. Unfortunately they sometimes miss basic good design principals. On the bright side F5 fixes all of the potential sun, moon, split subnet issues with the introduction of unicorn tears into BIG LTM 10. Great stuff really!<br /><br />I personally feel that this kind of healthy critical reasoning is great and I appreciate the fact that it&#39;s applied liberally to all of the vendors. although you have been a little snarky on HP lately ;) <br /><br />Please stop. It hurts my feelings. :)<br /><br /><br />@netmanchris",
-      "id": "8473370314253769736",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Chris Young",
-      "profile": null,
-      "pub": "2011-09-14T13:31:59.637+02:00",
-      "ref": "6202836387716153013",
-      "type": "comment"
-    },
-    {
-      "date": "14 September 2011 13:55",
-      "html": "Hi Chris,<br /><br />Thanks for the reply. I agree IRF is a good technology and has evolved significantly during the last 18 months (if I remember correctly, partitions were deadly a year ago).<br /><br />BTW, why would a two-fabric solution with MLAG be different from budgetary perspective than the inter-DC-fabric one? Licensing?<br /><br />As for snarkiness - I try to apply it fairly across all vendors  :-P Just read some IPv6-in-DC posts 8-)<br /><br />All the best!<br />Ivan",
-      "id": "2313653178575446268",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2011-09-14T13:55:11.101+02:00",
-      "ref": "6202836387716153013",
-      "type": "comment"
-    },
-    {
-      "date": "14 September 2011 23:28",
-      "html": "LOL  For sure. I love the equal opporutnity snarkyness. :) <br /><br />From an HP perspective, there&#39;s no difference in the licensing. It&#39;s more the seperation of the shared-fate domain. <br /><br />As you know, technologies like IRF only become a good idea if the downstream devices are dual homed to the virtualized switch ( Is there an industry standard term to describe a switch in a VSS/IRF/Virtual Chassis configuration?).    Unless you are dual-homed, there&#39;s no point ( in my opinion) in stretching your control-plane across the data centers.<br /><br />Where I have seen this applied in a VERY cool design is by doing multi-floor closets in enterprise lan which do have the appropriate calbing infrastructure in place to allow for this from a stackable switch.<br /><br />This allows us to have the redundency and fast failover, the redundant paths and the single point of managment which is not available today in any Cisco stackable switches.  Very cool in an enterprise LAN design scenario.<br /><br />My favorite Ivan was the thoughts on VMWare&#39;s motivations in the packet pushers podcast. :)<br /><br />cheers!<br /><br />@netmanchris",
-      "id": "1048051052193421076",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Chris Young",
-      "profile": null,
-      "pub": "2011-09-14T23:28:52.355+02:00",
-      "ref": "6202836387716153013",
-      "type": "comment"
-    },
-    {
-      "date": "19 January 2012 11:40",
-      "html": "There are few things that r right here however many others that r wrong. The subject is a matter of design and internetworking;  whether it is local or geo IRF it will also still a matter of design and internetworking. There are best practices and the current facts of the requirements the DC/DCs that will dictate the choice of the (combined) approach (es). There are also<br /><br />If you suppose that the option number two is the central DC - part of the 3 tiers DC disaster recovery design ( this is: this is the central/operation DC which connects to the local backup DC center and to the remote backup DC = disaster recovery approch), then if you have branches offices, you could balance their access to the DC by connecting one branch to to each DC: operation DC, local backup DC and remote backup DC. This way the 3 DCs have to be down for the brabch to loose connectivity to the DC.<br /><br />Geo IRF can come into the play here between the Branch offices. Lets suppose that apart from  the branch offices requirement to access the DC they also each have their own applications and requirement that must be localy served. Then geo IRF comes into the play by enabling between the branches a level of disaster recovery for these requirements too up to LH70 distance.<br /><br />Nota Bene: I used to work for 3Com and do not work anymore for HP.<br /><br />Last but not least, I like much reading from your blog. Though sometime I get the impression that you know well and good only when it is about Cisco technology.<br /><br />Anyway! Thanks for you good writtings!<br /><br />A+",
-      "id": "8558812323271169156",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "shirin",
-      "profile": null,
-      "pub": "2012-01-19T11:40:26.350+01:00",
-      "ref": "6202836387716153013",
-      "type": "comment"
-    },
-    {
-      "date": "20 January 2012 19:04",
-      "html": "I still think it doesn&#39;t make sense to have a subnets let alone single control plane stretched across multiple locations no matter what vendors claim ... and it doesn&#39;t matter whether it&#39;s HP, Cisco or someone else promoting long-distance bridging.<br /><br />Thanks for the feedback!<br />Ivan",
-      "id": "7438384995198403473",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2012-01-20T19:04:46.513+01:00",
-      "ref": "6202836387716153013",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "18 March 2015 09:05",
-          "html": "If you insist on having L2 across multiple buildings (not a good idea), I&#39;d go with a solution that has a distributed control plane, not with an architecture where a single control plane runs multiple geographically dispersed locations, but that&#39;s just me being careful (after being hit too many times).",
-          "id": "437212360390165598",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-03-18T09:05:50.791+01:00",
-          "ref": "1386745014519480382",
-          "type": "comment"
-        }
-      ],
-      "date": "17 March 2015 14:03",
-      "html": "Hello Ivan,<br /><br />I&#39;m in the process of evaluating equipment to replace our aging switches on a ring involving 5 sites.<br /><br />I&#39;d like to know your thoughts about using IRF to eliminate STP on this ring.  There would be only one logical link between any two buildings.  So in my reasoning, aside from losing two links/switches at the same time, I should not encounter any problems with split-brain or whatever, right?<br /><br />The only real problem would be updating the switches&#39; software as an IRF domain needs to update all switches at the same time.<br /><br />Thanks",
-      "id": "1386745014519480382",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/13537480040156681728",
-      "pub": "2015-03-17T14:03:41.002+01:00",
-      "ref": "6202836387716153013",
-      "type": "comment"
-    }
-  ],
-  "count": 9,
-  "id": "6202836387716153013",
-  "type": "post",
-  "url": "2011/09/long-distance-irf-fabric-works-best-in.html"
+   "comments": [
+      {
+         "date": "14 September 2011 04:28",
+         "html": "Unfortunately, the comments here about IRF technology, applied in long distance link, aren´t correct. The author describes the IRF technology from his point of view, but definitely he isn´t an expert on that and I will demonstrate that below:<br />1. Talking about only HP IRF technology and not about the HP boxes, we shouldn´t assume that there are only two switches in IRF domain, one in the main site and another on in backup site. In fact, HP has products that can operate with more than two switches in one IRF domain, such as, HP 5830, HP 5820, HP 5800, HP 10500 (future) and HP 12500 (future). Said that, anyone is crazy enough to setup a Data Center with only one DC Core, which means a SPOF (single point of failure) certainly. A DC specialist could create an IRF domain with 4 unit boxes and deploy at least two of them in each site.<br />2. MAD doesn´t impact the operation of switches once the link between IRF boxes goes down, because they are in the different sites and it seems to them like a shutdown in the IRF, where the secondary keeps up and running during disaster time. Let me explain that in details: when we have a IRF domain with two switches in the same subnet and the IRF links between go down, the secondary switch monitors the ARP packets from master to avoid that two switches forward the packets, causing the looping (MAD technology). However, when we shut down the master switch in IRF domain, the secondary assumes the main function and keep the forwarding of packets. In fact, when we have IRF deployed in long distance links and these links go down, the secondary switch assumes the main function, once that he didn´t monitor any ARP packet from master switch; in other words; this situation is a split of IRF domain, where the both keep up and running. If it wouldn´t work like that, why HP would use IRF?<br />Since we setup the information above, all premises mentioned by author in this article became invalids and affect directly the credibility of this article.<br />Study a little bit more and update this information, please.",
+         "id": "5360941022428602563",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Alex",
+         "profile": null,
+         "pub": "2011-09-14T04:28:12.486+02:00",
+         "ref": "6202836387716153013",
+         "type": "comment"
+      },
+      {
+         "date": "14 September 2011 08:26",
+         "html": "Good morning, Alex, and thanks for a lengthy reply.<br /><br />Indeed I describe IRF technology (and any other technology I write about) from my point of view - that&#39;s the value my readers find in my blog. I never claimed I&#39;m an expert in every technology I describe and vendors have contacted me numerous times to help me get the facts straight. You (or anyone else from HP) has the same option, just use the &quot;contact me&quot; link in the header of each page.<br /><br />Next, let&#39;s talk about credibility. Everyone who clicks the &quot;About&quot; link on my blog can learn who I am, what I&#39;m doing and what my standpoints are. You decided not to disclose who you are and what your affiliation with HP is. Still, I have no problem with that, but it might affect your credibility in some readers&#39; eyes. <br /><br />I usually judge how credible something is based on purely technical facts, so let&#39;s walk through them.<br /><br />(A) Two or four switches in an IRF domain. You just confirmed what I wrote - today, you can link only two high-end switches in an IRF domain. Using stackable switches to build your data center? Sure, go ahead ... but that does tell a lot about the type of data centers you build.<br /><br />(B) Your description of what happens after the link failure is correct (and does not contradict anything I wrote in the article). You will, however, get split subnet issues regardless of how many devices you have in the IRF fabric - that&#39;s a simple fact of life for any L2 DCI and cannot be talked away.<br /><br />(C) You might want to check HP documentation (I read the documentation for A7500 and A5800) to see what happens after the DCI link is reestablished. According to the HP documentation, one of the A7500&#39;s will reload and one part of the A5800 partitioned cluster will go into &quot;failure recovery&quot; mode and effectively block itself.<br /><br />Yet again, I am not criticizing the IRF technology (which is approximately as good as any other similar technology), but the particular design (inter-DC IRF) which simply doesn&#39;t make sense, more so as there&#39;s a completely safe alternate design I presented in the article. <br /><br />Now, I can&#39;t help if someone designed and deployed inter-DC IRF and now has a credibility problem because of my article. The facts are as they are, at least according to publicly available documentation from HP.  If you still feel I&#39;ve misinterpreted the facts, let me know.<br /><br />Ivan",
+         "id": "3362967575353907328",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2011-09-14T08:26:33.629+02:00",
+         "ref": "6202836387716153013",
+         "type": "comment"
+      },
+      {
+         "date": "14 September 2011 13:31",
+         "html": "vendor disclosure. I do work for HP Networking.  I personally agree with your criticisms of the L2 shared fault domain of this design. I think ALex&#39;s issue is the perceived slite of IRF OAS a technology. It is a very good technology and does have some pretty amazing failover times even when compared to the published numbers of other similar technologies in similar class of devices. Personally, budget constraints with standing, i&#39;m a fan of the third option. IRF pair In Each data center and a MLAG bundle between the two pairs. All of the benefits, none of the inter-data center split brain madness.<br /><br />Marketing departments get a little overzealous because the technology is really, really good. Unfortunately they sometimes miss basic good design principals. On the bright side F5 fixes all of the potential sun, moon, split subnet issues with the introduction of unicorn tears into BIG LTM 10. Great stuff really!<br /><br />I personally feel that this kind of healthy critical reasoning is great and I appreciate the fact that it&#39;s applied liberally to all of the vendors. although you have been a little snarky on HP lately ;) <br /><br />Please stop. It hurts my feelings. :)<br /><br /><br />@netmanchris",
+         "id": "8473370314253769736",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Chris Young",
+         "profile": null,
+         "pub": "2011-09-14T13:31:59.637+02:00",
+         "ref": "6202836387716153013",
+         "type": "comment"
+      },
+      {
+         "date": "14 September 2011 13:55",
+         "html": "Hi Chris,<br /><br />Thanks for the reply. I agree IRF is a good technology and has evolved significantly during the last 18 months (if I remember correctly, partitions were deadly a year ago).<br /><br />BTW, why would a two-fabric solution with MLAG be different from budgetary perspective than the inter-DC-fabric one? Licensing?<br /><br />As for snarkiness - I try to apply it fairly across all vendors  :-P Just read some IPv6-in-DC posts 8-)<br /><br />All the best!<br />Ivan",
+         "id": "2313653178575446268",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2011-09-14T13:55:11.101+02:00",
+         "ref": "6202836387716153013",
+         "type": "comment"
+      },
+      {
+         "date": "14 September 2011 23:28",
+         "html": "LOL  For sure. I love the equal opporutnity snarkyness. :) <br /><br />From an HP perspective, there&#39;s no difference in the licensing. It&#39;s more the seperation of the shared-fate domain. <br /><br />As you know, technologies like IRF only become a good idea if the downstream devices are dual homed to the virtualized switch ( Is there an industry standard term to describe a switch in a VSS/IRF/Virtual Chassis configuration?).    Unless you are dual-homed, there&#39;s no point ( in my opinion) in stretching your control-plane across the data centers.<br /><br />Where I have seen this applied in a VERY cool design is by doing multi-floor closets in enterprise lan which do have the appropriate calbing infrastructure in place to allow for this from a stackable switch.<br /><br />This allows us to have the redundency and fast failover, the redundant paths and the single point of managment which is not available today in any Cisco stackable switches.  Very cool in an enterprise LAN design scenario.<br /><br />My favorite Ivan was the thoughts on VMWare&#39;s motivations in the packet pushers podcast. :)<br /><br />cheers!<br /><br />@netmanchris",
+         "id": "1048051052193421076",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Chris Young",
+         "profile": null,
+         "pub": "2011-09-14T23:28:52.355+02:00",
+         "ref": "6202836387716153013",
+         "type": "comment"
+      },
+      {
+         "date": "19 January 2012 11:40",
+         "html": "There are few things that r right here however many others that r wrong. The subject is a matter of design and internetworking;  whether it is local or geo IRF it will also still a matter of design and internetworking. There are best practices and the current facts of the requirements the DC/DCs that will dictate the choice of the (combined) approach (es). There are also<br /><br />If you suppose that the option number two is the central DC - part of the 3 tiers DC disaster recovery design ( this is: this is the central/operation DC which connects to the local backup DC center and to the remote backup DC = disaster recovery approch), then if you have branches offices, you could balance their access to the DC by connecting one branch to to each DC: operation DC, local backup DC and remote backup DC. This way the 3 DCs have to be down for the brabch to loose connectivity to the DC.<br /><br />Geo IRF can come into the play here between the Branch offices. Lets suppose that apart from  the branch offices requirement to access the DC they also each have their own applications and requirement that must be localy served. Then geo IRF comes into the play by enabling between the branches a level of disaster recovery for these requirements too up to LH70 distance.<br /><br />Nota Bene: I used to work for 3Com and do not work anymore for HP.<br /><br />Last but not least, I like much reading from your blog. Though sometime I get the impression that you know well and good only when it is about Cisco technology.<br /><br />Anyway! Thanks for you good writtings!<br /><br />A+",
+         "id": "8558812323271169156",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "shirin",
+         "profile": null,
+         "pub": "2012-01-19T11:40:26.350+01:00",
+         "ref": "6202836387716153013",
+         "type": "comment"
+      },
+      {
+         "date": "20 January 2012 19:04",
+         "html": "I still think it doesn&#39;t make sense to have a subnets let alone single control plane stretched across multiple locations no matter what vendors claim ... and it doesn&#39;t matter whether it&#39;s HP, Cisco or someone else promoting long-distance bridging.<br /><br />Thanks for the feedback!<br />Ivan",
+         "id": "7438384995198403473",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2012-01-20T19:04:46.513+01:00",
+         "ref": "6202836387716153013",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "18 March 2015 09:05",
+               "html": "If you insist on having L2 across multiple buildings (not a good idea), I&#39;d go with a solution that has a distributed control plane, not with an architecture where a single control plane runs multiple geographically dispersed locations, but that&#39;s just me being careful (after being hit too many times).",
+               "id": "437212360390165598",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-03-18T09:05:50.791+01:00",
+               "ref": "1386745014519480382",
+               "type": "comment"
+            }
+         ],
+         "date": "17 March 2015 14:03",
+         "html": "Hello Ivan,<br /><br />I&#39;m in the process of evaluating equipment to replace our aging switches on a ring involving 5 sites.<br /><br />I&#39;d like to know your thoughts about using IRF to eliminate STP on this ring.  There would be only one logical link between any two buildings.  So in my reasoning, aside from losing two links/switches at the same time, I should not encounter any problems with split-brain or whatever, right?<br /><br />The only real problem would be updating the switches&#39; software as an IRF domain needs to update all switches at the same time.<br /><br />Thanks",
+         "id": "1386745014519480382",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/13537480040156681728",
+         "pub": "2015-03-17T14:03:41.002+01:00",
+         "ref": "6202836387716153013",
+         "type": "comment"
+      },
+      {
+         "date": "03 February 2021 09:06",
+         "html": "<p>Hi Ivan,</p>\n\n<p>I had a thought about this kind of setup last year.</p>\n\n<p>I was not happy with the setup, but basically I had 2 options:</p>\n\n<p>-1. - 2 VC of 2 members, each VC in 1 DC, connected via 2*10Gbps in a LAG (same as your &quot;Use IRF within the data center&quot; proposed solution)\n-2. - 1 VC of 4 members, accross 2 DC, connected via 2*10Gbps as the VC link</p>\n\n<p>One of these switch had to do the inter VLAN routing.</p>\n\n<p>I was concerned that the trafic coming from DC-B and going to DC-B will have to go to DC-A to be routed.\nFor the 1st option, I knew there was nothing to do.\nFor the 2nd one, I had a hope.</p>\n\n<p>I reached the vendor (Alcatel-Lucent Enterprise, and switches are 4*OS6900-X40) and he told me that, in their VC implementation, only the first frame of a flow is sent to the VC master.\nThe VC master then inject forwarding rules in the VC slaves and next frames are forwarded locally (in DC-B only) and so the VC link is less charged.</p>\n\n<p>So I went for the option #2.</p>\n\n<p>Unfortunatelly I still don&#39;t see many options when customer network is mainly Layer2.</p>\n",
+         "id": "380",
+         "name": " GME",
+         "pub": "2021-02-03T21:06:19",
+         "type": "comment"
+      },
+      {
+         "date": "24 February 2021 10:30",
+         "html": "<p>Maybe you can have give-and-take scenario with sysadmins?\nSetup 2VC with 2 members,  use each VC for routing. Add 2 VIP,  each living as active in different DC, and agree with sysadmins that by default hosts located in dc1 should use gw1, hosts in dc2 use gw2. It should be rule for sysadmin, if they setup properly def gw on os, routing will be optimal. \nI know that is not clean solution from networkig perspective, and will bring nrw problems, but....</p>\n",
+         "id": "419",
+         "name": " Piotr",
+         "pub": "2021-02-24T10:30:08",
+         "type": "comment"
+      },
+      {
+         "date": "24 February 2021 03:32",
+         "html": "<p>@Piotr: I had a customer doing exactly that. Trying to figure out all possible redundancy scenarios with various WAN links, Internet connections, and edge nodes failing (with traffic going through firewalls based on static routes) was a nightmare.</p>\n\n<p>It&#39;s much better (and simpler in the long run) to do a proper design without stretched VLANs, like what Adrian described in recent blog posts:</p>\n\n<p>https://blog.ipspace.net/2021/02/simple-dr-design.html</p>\n",
+         "id": "420",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-02-24T15:32:35",
+         "type": "comment"
+      }
+   ],
+   "count": 12,
+   "id": "6202836387716153013",
+   "type": "post",
+   "url": "2011/09/long-distance-irf-fabric-works-best-in.html"
 }

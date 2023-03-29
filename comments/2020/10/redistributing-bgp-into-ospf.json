@@ -1,0 +1,31 @@
+{
+   "comments": [
+      {
+         "date": "17 October 2020 02:33",
+         "html": "<p>I&#39;ve re-read Dmytro&#39;s blog several times to make sure I didn&#39;t miss some important details. One question that came up was, since MaxAge LSAs are meant to be purged anyway, then after a flapping adj comes back up, isn&#39;t it better to program OSPF so that its neighbors know not to send MaxAge LSAs -- since they&#39;re useless wrt to building the LS topology -- to it? That way all the adj can go down once, due to the massive flooding of MaxAge LSAs, but not twice, and the network can get back to a clean slate after sometime? How come vendors don&#39;t implement OSPF this way? Can you elaborate on this Ivan?</p>\n\n<p>I also have this question for quite some time and his blog reminds me again. Assuming we have a network made up of only high-end routers, is there any reason that a good implementation of IS-IS with well-designed timers, running in such a network, cannot scale to, say 100k nodes, with a single-area design? Sheer flooding in dense topologies has always been a big issue, but it can be alleviated to some extent using IS-IS mesh group. Another reason was due to routers&#39; inadequate control-plane processing power and memory resources. But even so, there were networks consisting of 1k+ IS-IS routers in a single area back in the day. So surely our current routers can handle way more, can they? If they still can&#39;t, is it because IGPs still lack a dynamic flow control mechanism that BGP has, thanks to its use of TCP? </p>\n\n<p>And what about EIGRP? Given the same kind of network as above, can it handle a single routing domain of 200k-300k routers and 500k routes (the 500k route figure I found in Russ White&#39;s Complexities book)?  EIGRP is very much like BGP, in that it&#39;s distance-vector, incremental, partial, and bounded. So overall, EIGRP is a lot more stateless than LS IGPs, and should be more scalable right Ivan? </p>\n",
+         "id": "181",
+         "name": " Minh Ha",
+         "pub": "2020-10-17T02:33:52",
+         "type": "comment"
+      },
+      {
+         "date": "17 October 2020 04:59",
+         "html": "<p>The whole idea of OSPF is to have the eventually-consistent topology database synchronized across all routers in the area, and if you want to do that, you simply have to synchronize the DELETE operations as well as INSERT or UPDATE operations. There&#39;s no way around that.</p>\n\n<p>As for scaling link-state protocols, keep in mind that while flooding does burn CPU cycles, in the end Dijkstra algorithm isn&#39;t O(n), and that&#39;s what will eventually kill you no matter how fast the CPU is.</p>\n\n<p>EIGRP scales much better because its computational complexity depends on the number of routes and neighbors.</p>\n",
+         "id": "182",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-10-17T16:59:03",
+         "type": "comment"
+      },
+      {
+         "date": "18 October 2020 04:34",
+         "html": "<p>Thx a lot for the clear answers Ivan!!! Indeed I wasn&#39;t thinking from the DB aspect of OSPF. And only a select few like yourself have the deep knowledge encompassing many fields, to discern this kind of issue. And thanks for confirming EIGRP, as an advanced distance-vector IGP, can indeed scale much better. </p>\n\n<p>Re the Dijkstra algorithm/SPF computation complexity, looks like even routers some 15 yrs back could finish the computation in about a second or so, for very large-size areas, and it was no longer considered the scaling bottleneck. Apparently the maximum complexity of Dijstra is O(N^2) -- I could be wrong here, so it&#39;s 100m calculations for a 100k-node area. This could be an issue if the control plane is already busy with other stuff.</p>\n\n<p>The time to transfer RIB to FIB for very large RIB was considered a bigger issue I think, but even that was found to be acceptable for 1m prefixes, hence my question re the capability of current routers :)) . Part of my curiosity wrt the limit of modern IGPs, particularly of the better ones like IS-IS and EIGRP, using current-day hardware, stemmed from the way BGP has been hailed as the best IGP in DC leaf-spine fabrics for quite some time now, and the bold claim that BGP is needed there because IGPs have trouble scaling there. I find it absolutely ridiculous, and strongly believe there&#39;s massive vested interest in spreading this kind of BS propaganda to the uninitiated. </p>\n\n<p>IMO, just because some big guys fail to scale their networks using IGP and resort to BGP, doesn&#39;t mean it&#39;s the right way to do things. Size doesn&#39;t necessarily mean they know/care what they&#39;re doing. MS, despite all their size and money, couldn&#39;t deliver a proper microkernel and a stable windows OS to begin with. I&#39;ve been using windows for 18 yrs, and my XP was having less trouble than my current win10 box -- no jokes, and XP was never great to begin with. Google can&#39;t write a proper chrome browser that doesn&#39;t hog memory like there&#39;s no tomorrow, and the list goes on. How come suddenly these guys become the sages of networking and their choices of routing protocol becomes the gospel? </p>\n",
+         "id": "183",
+         "name": " Minh Ha",
+         "pub": "2020-10-18T04:34:49",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2020/10/redistributing-bgp-into-ospf.html"
+}

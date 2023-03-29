@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00439180073297788221" rel="nofollow">Kerry Thompson</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5428188325108467371">08 September 2016 06:23</a>
+                <a rel="nofollow" id="c5428188325108467371" href="#5428188325108467371">08 September 2016 06:23</a>
               </span>
             </div>
-            <p class="comment-content">I was thinking about something similar just recently, and a weird idea came to mind - why not run RIP between the VM and the TOR?<br /><br />I know, I know, and before you laugh and spurt coffee out your nose at the thought of such an old crusty IGP in a DC maybe think about it for a minute.<br /><br />RIPv2 supports easy summarization and route filtering for the TOR. With reduced timers (and maybe BFD) convergence could come down to a second or three. ECMP works too. Oh, and it has very few nerd-knobs for the server guys to play with.<br /><br />It just seems like a much simpler solution than BGP into the hypervisors &amp; VMs.<br /></p>
+            <div class="comment-content">I was thinking about something similar just recently, and a weird idea came to mind - why not run RIP between the VM and the TOR?<br /><br />I know, I know, and before you laugh and spurt coffee out your nose at the thought of such an old crusty IGP in a DC maybe think about it for a minute.<br /><br />RIPv2 supports easy summarization and route filtering for the TOR. With reduced timers (and maybe BFD) convergence could come down to a second or three. ECMP works too. Oh, and it has very few nerd-knobs for the server guys to play with.<br /><br />It just seems like a much simpler solution than BGP into the hypervisors &amp; VMs.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5417202828553912709">08 September 2016 06:26</a>
+                <a rel="nofollow" id="c5417202828553912709" href="#5417202828553912709">08 September 2016 06:26</a>
               </span>
             </div>
-            <p class="comment-content">My coffee cup survived ;)<br /><br />I could see two drawbacks of using RIPv2:<br /><br />* It has to be configured on every ToR switch (you can&#39;t use a route server);<br />* Per-neighbor route filtering (if you want to do that) could get interestingly complex.<br /><br />If all you want to do is to collect whatever VMs are telling you, then obviously RIPv2 is the tool for the job.</p>
+            <div class="comment-content">My coffee cup survived ;)<br /><br />I could see two drawbacks of using RIPv2:<br /><br />* It has to be configured on every ToR switch (you can&#39;t use a route server);<br />* Per-neighbor route filtering (if you want to do that) could get interestingly complex.<br /><br />If all you want to do is to collect whatever VMs are telling you, then obviously RIPv2 is the tool for the job.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12311252099106406536" rel="nofollow">dotwaffle</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4615499660776903244">08 September 2016 15:03</a>
+                <a rel="nofollow" id="c4615499660776903244" href="#4615499660776903244">08 September 2016 15:03</a>
               </span>
             </div>
-            <p class="comment-content">To me, peering with the ToR switch is confusing... The route servers (reflectors) make good sense, but I&#39;d have thought peering with a daemon on the hypervisor and that reflecting it up (in the case of iBGP) would be a better solution? You can have the same IP as a loopback on every hypervisor and not worry.</p>
+            <div class="comment-content">To me, peering with the ToR switch is confusing... The route servers (reflectors) make good sense, but I&#39;d have thought peering with a daemon on the hypervisor and that reflecting it up (in the case of iBGP) would be a better solution? You can have the same IP as a loopback on every hypervisor and not worry.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12311252099106406536" rel="nofollow">dotwaffle</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#771197242469918081">08 September 2016 15:04</a>
+                <a rel="nofollow" id="c771197242469918081" href="#771197242469918081">08 September 2016 15:04</a>
               </span>
             </div>
-            <p class="comment-content">Or even better, don&#39;t run BGP on the VM and just redistribute connected interfaces from the hypervisor. </p>
+            <div class="comment-content">Or even better, don&#39;t run BGP on the VM and just redistribute connected interfaces from the hypervisor. </div>
           </div>
         </li>
       </div>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7332579139171275881">08 September 2016 15:25</a>
+                <a rel="nofollow" id="c7332579139171275881" href="#7332579139171275881">08 September 2016 15:25</a>
               </span>
             </div>
-            <p class="comment-content">That would be Project Calico (not exactly, they don&#39;t run BGP with the hypervisors, but it&#39;s an open-source project, so hey...). However, that idea doesn&#39;t work with VM mobility.</p>
+            <div class="comment-content">That would be Project Calico (not exactly, they don&#39;t run BGP with the hypervisors, but it&#39;s an open-source project, so hey...). However, that idea doesn&#39;t work with VM mobility.</div>
           </div>
         </li>
       </div>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8387396784984498534">08 September 2016 15:25</a>
+                <a rel="nofollow" id="c8387396784984498534" href="#8387396784984498534">08 September 2016 15:25</a>
               </span>
             </div>
-            <p class="comment-content">&quot;redistribute connected interfaces&quot; - doesn&#39;t work for clustering services where a VM takes over an IP address from another failed VM.</p>
+            <div class="comment-content">&quot;redistribute connected interfaces&quot; - doesn&#39;t work for clustering services where a VM takes over an IP address from another failed VM.</div>
           </div>
         </li>
       </div>
@@ -136,10 +131,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09023765657674084072" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1564761698739207584">10 September 2016 19:34</a>
+                <a rel="nofollow" id="c1564761698739207584" href="#1564761698739207584">10 September 2016 19:34</a>
               </span>
             </div>
-            <p class="comment-content">you can inject the same VIP with different AS_PATH lengths and/or other attributes to facilitate active/standby model, though. <br /><br />Robust primary node election, on the other hand, is trickier problem, unless there is a global locking service available :)</p>
+            <div class="comment-content">you can inject the same VIP with different AS_PATH lengths and/or other attributes to facilitate active/standby model, though. <br /><br />Robust primary node election, on the other hand, is trickier problem, unless there is a global locking service available :)</div>
           </div>
         </li>
       </div>

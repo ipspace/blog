@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>9 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">GFC</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7823608127428219536">14 June 2010 22:43</a>
+                <a rel="nofollow" id="c7823608127428219536" href="#7823608127428219536">14 June 2010 22:43</a>
               </span>
             </div>
-            <p class="comment-content">The best information about EIGRP MTU so far in the internet, and even on books, cause they always say that MTU is not used at all for calculation(and its not) and thats all, no one really explains the actual meaning of it. Finally someone really explained the meaning of the MTU value on EIGRP, thanks !</p>
+            <div class="comment-content">The best information about EIGRP MTU so far in the internet, and even on books, cause they always say that MTU is not used at all for calculation(and its not) and thats all, no one really explains the actual meaning of it. Finally someone really explained the meaning of the MTU value on EIGRP, thanks !</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">shook</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5777009529299201371">10 February 2011 22:43</a>
+                <a rel="nofollow" id="c5777009529299201371" href="#5777009529299201371">10 February 2011 22:43</a>
               </span>
             </div>
-            <p class="comment-content">thanks for answering my question! :-)</p>
+            <div class="comment-content">thanks for answering my question! :-)</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter Palúch</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9150630783115208789">28 February 2012 19:24</a>
+                <a rel="nofollow" id="c9150630783115208789" href="#9150630783115208789">28 February 2012 19:24</a>
               </span>
             </div>
-            <p class="comment-content">Hello Ivan,  <br /> <br />I hope this message reaches you. I have tried to verify the assumption about MTU being a tie-breaker in path selection on a lab gear but to my dismay, manipulating the MTU had no effect whatsoever on EIGRP&#39;s path selection - whether it were equal-cost best paths or equal-cost feasible successor paths, both with and without the &quot;maximum-metric&quot; command.  <br /> <br />After talking to a gentleman from Cisco closely involved with EIGRP, he confirmed that the idea of using MTU was considered but never really implemented.  <br /> <br />So I wonder... is there any document that would say otherwise? Alternatively, do you have a suggested test config that worked for you?  <br /> <br />The issue of MTU in EIGRP is admittedly a neverending story... :-D  <br /> <br />Best regards,  <br />Peter Palúch  <br />CCIE #23527 R&amp;S, CCIP, Cisco CSC Designated VIP 2011-2012</p>
+            <div class="comment-content">Hello Ivan,  <br /> <br />I hope this message reaches you. I have tried to verify the assumption about MTU being a tie-breaker in path selection on a lab gear but to my dismay, manipulating the MTU had no effect whatsoever on EIGRP&#39;s path selection - whether it were equal-cost best paths or equal-cost feasible successor paths, both with and without the &quot;maximum-metric&quot; command.  <br /> <br />After talking to a gentleman from Cisco closely involved with EIGRP, he confirmed that the idea of using MTU was considered but never really implemented.  <br /> <br />So I wonder... is there any document that would say otherwise? Alternatively, do you have a suggested test config that worked for you?  <br /> <br />The issue of MTU in EIGRP is admittedly a neverending story... :-D  <br /> <br />Best regards,  <br />Peter Palúch  <br />CCIE #23527 R&amp;S, CCIP, Cisco CSC Designated VIP 2011-2012</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#286716708042990836">28 February 2012 20:38</a>
+                <a rel="nofollow" id="c286716708042990836" href="#286716708042990836">28 February 2012 20:38</a>
               </span>
             </div>
-            <p class="comment-content">I vaguely remember doing actual tests with 12.4 (or so) code. You have to make sure you have more than &quot;maximum-metric&quot; equal-cost paths and that the MTU in the EIGRP topology database is correct (it&#39;s not updated if you change MTU on the interface).</p>
+            <div class="comment-content">I vaguely remember doing actual tests with 12.4 (or so) code. You have to make sure you have more than &quot;maximum-metric&quot; equal-cost paths and that the MTU in the EIGRP topology database is correct (it&#39;s not updated if you change MTU on the interface).</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter Palúch</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4490271435580644105">28 February 2012 21:03</a>
+                <a rel="nofollow" id="c4490271435580644105" href="#4490271435580644105">28 February 2012 21:03</a>
               </span>
             </div>
-            <p class="comment-content">Hello Ivan,<br /><br />Thank you very much for responding.<br /><br />I made sure from the beginning that all you suggested was the case - more routes than allowed by &quot;maximum-paths&quot;, MTU being correctly reflected in EIGRP topology database and properly shown even in the &quot;show ip route X.X.X.X&quot; output afterwards. However, the results stand - the MTU does not appear to have any effect. The timing may have contributed to the confusion here - sometimes the routing table displayed the routes with the highest available MTUs, but disabling an interface on a path with a high MTU and reenabling it later did not cause the EIGRP to reinstate the route with the highest available MTU - the existing routes simply stayed in the routing table and were not preempted by higher-MTU paths.<br /><br />Any ideas?<br /><br />Best regards,<br />Peter</p>
+            <div class="comment-content">Hello Ivan,<br /><br />Thank you very much for responding.<br /><br />I made sure from the beginning that all you suggested was the case - more routes than allowed by &quot;maximum-paths&quot;, MTU being correctly reflected in EIGRP topology database and properly shown even in the &quot;show ip route X.X.X.X&quot; output afterwards. However, the results stand - the MTU does not appear to have any effect. The timing may have contributed to the confusion here - sometimes the routing table displayed the routes with the highest available MTUs, but disabling an interface on a path with a high MTU and reenabling it later did not cause the EIGRP to reinstate the route with the highest available MTU - the existing routes simply stayed in the routing table and were not preempted by higher-MTU paths.<br /><br />Any ideas?<br /><br />Best regards,<br />Peter</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter Palúch</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4206205813412868445">03 March 2012 23:01</a>
+                <a rel="nofollow" id="c4206205813412868445" href="#4206205813412868445">03 March 2012 23:01</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />I apologize for being tiresome here but I would be very, very thankful if you tried to reproduce your experiments - if you have some time to spare, of course. Cisco employees I talked to were absolutely adamant that there is no regard in EIGRP to the MTU in the best path selection process. I also could not see any effect of MTU on the path selection as I conducted my experiments, in alignment with your recommendations.<br /><br />Thank you very much!<br /><br />Best regards,<br />Peter</p>
+            <div class="comment-content">Ivan,<br /><br />I apologize for being tiresome here but I would be very, very thankful if you tried to reproduce your experiments - if you have some time to spare, of course. Cisco employees I talked to were absolutely adamant that there is no regard in EIGRP to the MTU in the best path selection process. I also could not see any effect of MTU on the path selection as I conducted my experiments, in alignment with your recommendations.<br /><br />Thank you very much!<br /><br />Best regards,<br />Peter</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10459540729504830009" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4851600774035279518">28 November 2013 08:17</a>
+                <a rel="nofollow" id="c4851600774035279518" href="#4851600774035279518">28 November 2013 08:17</a>
               </span>
             </div>
-            <p class="comment-content">Пиздохен Шванц!<br />Thank you very much!</p>
+            <div class="comment-content">Пиздохен Шванц!<br />Thank you very much!</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6692203805380974157">03 November 2015 11:36</a>
+                <a rel="nofollow" id="c6692203805380974157" href="#6692203805380974157">03 November 2015 11:36</a>
               </span>
             </div>
-            <p class="comment-content">According to CISCO this is correct, it is used as a tie breaker with equal cost paths. highest minimum MTU is preferred.</p>
+            <div class="comment-content">According to CISCO this is correct, it is used as a tie breaker with equal cost paths. highest minimum MTU is preferred.</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17783635023339781751" rel="nofollow">Innokentiy</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7444279328737349356">11 July 2017 12:32</a>
+                <a rel="nofollow" id="c7444279328737349356" href="#7444279328737349356">11 July 2017 12:32</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;ve made a thorough test and got the following results:<br /><br />1. There is no MTU tie-breaker in best path selection algorithm. When several routes with same CD but different MTU exist in the topology table, only route age in the topology table serves as a tie-breaker: first come - first served. The order of receiving update matters only.<br /><br />1a. When a router receive a route with the same CD as the current successor, it just installs them in the RIB. If it cannot install the route in RIB because of maximum-paths limit, it just ignores the route disregarding its MTU. So the routes are installed simply in the order or receiving updates, even if the first updates had lower MTU.<br /><br />1b. Even if we reduce maximum-paths on the fly, the router prefers those routes that were received first, disregarding MTU.<br /><br />2. In some situations there is a correlation between MTU and received updates order, so better-MTU updates come first.<br /><br />2a. The effect is very weak. It&#39;s stronger on old IOSes; on newer hardware or virtual platforms I wasn&#39;t able to reproduce it.<br /><br />2b. It obviously depends on a topology.<br /><br />2c. I still cannot understand what causes this effect.</p>
+            <div class="comment-content">I&#39;ve made a thorough test and got the following results:<br /><br />1. There is no MTU tie-breaker in best path selection algorithm. When several routes with same CD but different MTU exist in the topology table, only route age in the topology table serves as a tie-breaker: first come - first served. The order of receiving update matters only.<br /><br />1a. When a router receive a route with the same CD as the current successor, it just installs them in the RIB. If it cannot install the route in RIB because of maximum-paths limit, it just ignores the route disregarding its MTU. So the routes are installed simply in the order or receiving updates, even if the first updates had lower MTU.<br /><br />1b. Even if we reduce maximum-paths on the fly, the router prefers those routes that were received first, disregarding MTU.<br /><br />2. In some situations there is a correlation between MTU and received updates order, so better-MTU updates come first.<br /><br />2a. The effect is very weak. It&#39;s stronger on old IOSes; on newer hardware or virtual platforms I wasn&#39;t able to reproduce it.<br /><br />2b. It obviously depends on a topology.<br /><br />2c. I still cannot understand what causes this effect.</div>
           </div>
         </li>
       </div>

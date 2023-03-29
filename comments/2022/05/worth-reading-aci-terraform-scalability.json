@@ -1,0 +1,23 @@
+{
+   "comments": [
+      {
+         "date": "29 May 2022 10:41",
+         "html": "A talented CLI jockey might be faster than the 2 hours : D<br />\nThere&#39;s one advantage when doing it with Terraform. You know pretty well how your environment is configured (declarative way). So no need to first export configurations out of SDN controller (via API) into an Excel spreadsheet :D<br />\n\n\n",
+         "id": "1280",
+         "name": "Anonymous",
+         "pub": "2022-05-29T10:41:08",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2022 06:01",
+         "html": "<p>We&#39;ve had success with working around the constraint in workaround 3 in the article by associating both a &quot;tagged&quot; and &quot;untagged&quot; phys domain to each EPG that requires both tagged and untagged interfaces in the same vlan. The tagged domain maps vlan to EPG on the AEP. This allows us to trunk all of these EPGs/vlans to all tagged interfaces on all ports with no static bindings. We create static bindings just for the dot1p access ports. We try to enforce tagged interfaces on all hosts as much as possible to keep the static bindings to a minimum. Depending on the pruning needs or how granular one wants to get with AEPs, domains, and vlan pools, this may not work for everyone, but it keeps our object creation count low in our automation workflows for EPG and switchport rollouts. Deploying dozens, if not hundreds of EPGs, or switch ports is trivial. We do have scenarios where we opt to prune vlans and use static bindings, but 99% of our switchport add activities require zero static bindings. This is all off of a brownfield environment where we must support the migration of workloads from a legacy environment.  Granted we don&#39;t use Terraform but that seems more or less irrelevant to the constraint in the workaround.</p>\n",
+         "id": "1281",
+         "name": "Andrew Hegler",
+         "pub": "2022-05-31T18:01:08",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/05/worth-reading-aci-terraform-scalability.html"
+}

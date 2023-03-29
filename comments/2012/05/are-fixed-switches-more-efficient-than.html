@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12675510409950425811" rel="nofollow">RPM</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6219342747210232862">16 May 2012 17:08</a>
+                <a rel="nofollow" id="c6219342747210232862" href="#6219342747210232862">16 May 2012 17:08</a>
               </span>
             </div>
-            <p class="comment-content">Actually, if you stick with the single-trident-chip 64-port switches like the Arista 7050S-64, you an do the same sort of Clos fabric with just 125W per switch. You&#39;d need 12 edge switches and 6 spine switches. The power works out to &lt;6W per port &quot;typical&quot; according to the Arista spec sheet.<br /><br />Again you have an issue of 32 ports divided by 6 spine switches, but since it&#39;s statistically non-blocking, that should&#39;t matter too much, and the ECMP won&#39;t care if some of the links terminate on the same spine switch.<br /><br />You can argue that there would be a cabling mess, but I would suspect it would be less so than trying to run 384 fibers into one rack from all over the datacenter. With the 1U solution, the edge ports are distributed short copper, without expensive optics. MPO ribbon fibers and patch panels would be used from leaf to spine just as they would with 40G connectors to cut down on the number of cables needed, and you would probably divide the spine switches into just two locations in the DC.<br /><br />The real benefit of the 1U solution is being able to adjust the number of leafs and spines you need based on actual traffic patterns, oversubscribing at the edge where that makes economic sense. You don&#39;t have that same flexibility with $350k+ chassis solutions (remember you need *two* of those beasts for redundancy).</p>
+            <div class="comment-content">Actually, if you stick with the single-trident-chip 64-port switches like the Arista 7050S-64, you an do the same sort of Clos fabric with just 125W per switch. You&#39;d need 12 edge switches and 6 spine switches. The power works out to &lt;6W per port &quot;typical&quot; according to the Arista spec sheet.<br /><br />Again you have an issue of 32 ports divided by 6 spine switches, but since it&#39;s statistically non-blocking, that should&#39;t matter too much, and the ECMP won&#39;t care if some of the links terminate on the same spine switch.<br /><br />You can argue that there would be a cabling mess, but I would suspect it would be less so than trying to run 384 fibers into one rack from all over the datacenter. With the 1U solution, the edge ports are distributed short copper, without expensive optics. MPO ribbon fibers and patch panels would be used from leaf to spine just as they would with 40G connectors to cut down on the number of cables needed, and you would probably divide the spine switches into just two locations in the DC.<br /><br />The real benefit of the 1U solution is being able to adjust the number of leafs and spines you need based on actual traffic patterns, oversubscribing at the edge where that makes economic sense. You don&#39;t have that same flexibility with $350k+ chassis solutions (remember you need *two* of those beasts for redundancy).</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://bing.com" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#324492402069390526">16 May 2012 17:08</a>
+                <a rel="nofollow" id="c324492402069390526" href="#324492402069390526">16 May 2012 17:08</a>
               </span>
             </div>
-            <p class="comment-content">Let&#39;s redefine &quot;fixed&quot; as &quot;single-chip&quot; boxes, as it this is normally their biggest benefit (though not all fixed boxes are single chip, of course). Take the trident chip to build a 32x32=1024 port fabric: you will need 32+16 devices. There are some &quot;packaging&quot; games when doing all those scale-out fabrics, so for ease of breakout we want to pick up the number of switches based on switch radix.<br /><br />Let&#39;s pick up 7050S or Nexus 3064X, which use trident&#39;s integrated phy&#39;s to yield typical power draw in the range 120-130W. The resulting cost per &quot;front panel&quot; port will be significantly lower as compared to a chassis box (unfortunately, I can&#39;t give the exact pricing, but one can get very good numbers for fixed boxes, especially when buying in quantities). Furthermore, the power draw per &quot;front port&quot; will be around 18*130/384=6W. <br /><br />Downside - lot&#39;s of boxes and wiring, but that the price you have to pay :) Managing this many boxes is not that difficult, provided that automated provisioning/monitoring and remediation system is in place. <br /><br />Conclusion - using single-chip boxes makes sense when building cheap larger fabrics. This being said, we should remember that number of links in butterfly/clos grows following the power low with the base of switch radix and power of number of stages. At some point you would rather increase switch radix than add another stage. So let&#39;s wait for Trident2 device to hit the market.</p>
+            <div class="comment-content">Let&#39;s redefine &quot;fixed&quot; as &quot;single-chip&quot; boxes, as it this is normally their biggest benefit (though not all fixed boxes are single chip, of course). Take the trident chip to build a 32x32=1024 port fabric: you will need 32+16 devices. There are some &quot;packaging&quot; games when doing all those scale-out fabrics, so for ease of breakout we want to pick up the number of switches based on switch radix.<br /><br />Let&#39;s pick up 7050S or Nexus 3064X, which use trident&#39;s integrated phy&#39;s to yield typical power draw in the range 120-130W. The resulting cost per &quot;front panel&quot; port will be significantly lower as compared to a chassis box (unfortunately, I can&#39;t give the exact pricing, but one can get very good numbers for fixed boxes, especially when buying in quantities). Furthermore, the power draw per &quot;front port&quot; will be around 18*130/384=6W. <br /><br />Downside - lot&#39;s of boxes and wiring, but that the price you have to pay :) Managing this many boxes is not that difficult, provided that automated provisioning/monitoring and remediation system is in place. <br /><br />Conclusion - using single-chip boxes makes sense when building cheap larger fabrics. This being said, we should remember that number of links in butterfly/clos grows following the power low with the base of switch radix and power of number of stages. At some point you would rather increase switch radix than add another stage. So let&#39;s wait for Trident2 device to hit the market.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://bing.com" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6778488046835496356">17 May 2012 03:53</a>
+                <a rel="nofollow" id="c6778488046835496356" href="#6778488046835496356">17 May 2012 03:53</a>
               </span>
             </div>
-            <p class="comment-content">It&#39;s funny to see two almost identical comments made by different people :)</p>
+            <div class="comment-content">It&#39;s funny to see two almost identical comments made by different people :)</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03014282355010119539" rel="nofollow">Michael67</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#950045637587662354">17 May 2012 20:37</a>
+                <a rel="nofollow" id="c950045637587662354" href="#950045637587662354">17 May 2012 20:37</a>
               </span>
             </div>
-            <p class="comment-content">Well, lower power consumption means lower cost. But what about one time setup fees and service (hardware+software) support contracts?<br /><br />Many vendors offer better standard hardware warranties on their non-chassis switches, sometime offer basic software updates for free on some of their products. service contract costs are sometimes way lower on stackables. TCO can be lower<br /><br />e.g. HP<br /><br />- Have you ever configured a A10500 with service contracts? Instead take a look at the A58XX series...</p>
+            <div class="comment-content">Well, lower power consumption means lower cost. But what about one time setup fees and service (hardware+software) support contracts?<br /><br />Many vendors offer better standard hardware warranties on their non-chassis switches, sometime offer basic software updates for free on some of their products. service contract costs are sometimes way lower on stackables. TCO can be lower<br /><br />e.g. HP<br /><br />- Have you ever configured a A10500 with service contracts? Instead take a look at the A58XX series...</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">igp2bgp</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4355915979061724503">21 May 2012 08:35</a>
+                <a rel="nofollow" id="c4355915979061724503" href="#4355915979061724503">21 May 2012 08:35</a>
               </span>
             </div>
-            <p class="comment-content">Use TOR to build a clos network is not even close to chassis based fabric.<br />Chasis based solution is more expensive, mainly due to the voq design.<br />I wonder if fix switch only can support massive data flow?</p>
+            <div class="comment-content">Use TOR to build a clos network is not even close to chassis based fabric.<br />Chasis based solution is more expensive, mainly due to the voq design.<br />I wonder if fix switch only can support massive data flow?</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.douglasgourlay.com" rel="nofollow">Douglas Gourlay</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1777776834608939547">12 June 2012 23:18</a>
+                <a rel="nofollow" id="c1777776834608939547" href="#1777776834608939547">12 June 2012 23:18</a>
               </span>
             </div>
-            <p class="comment-content">Given that the Arista 7508 draws 10W per port (per the data sheet) as opposed to 18W per Brad - I would err on the side of the data sheet, 40% less power...<br /><br />(Average power draw under 50% load at 25C ambient is 3800W/loaded Arista 7508)</p>
+            <div class="comment-content">Given that the Arista 7508 draws 10W per port (per the data sheet) as opposed to 18W per Brad - I would err on the side of the data sheet, 40% less power...<br /><br />(Average power draw under 50% load at 25C ambient is 3800W/loaded Arista 7508)</div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://internetworksolutions.net/cisco-training/cisco-ccie/ccie-training/" rel="nofollow">john@ccie certification</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1892699828464947900">15 June 2012 12:41</a>
+                <a rel="nofollow" id="c1892699828464947900" href="#1892699828464947900">15 June 2012 12:41</a>
               </span>
             </div>
-            <p class="comment-content">fixed switches offer higher port density and lower per-port power consumption than chassis-based ones  However, the relevant message here is that Fixed switches are faster to market with higher speed interfaces than chassis switches and customers can benefit from that.</p>
+            <div class="comment-content">fixed switches offer higher port density and lower per-port power consumption than chassis-based ones  However, the relevant message here is that Fixed switches are faster to market with higher speed interfaces than chassis switches and customers can benefit from that.</div>
           </div>
         </li>
       </div>
@@ -153,10 +148,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">mateusz b</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3594110122738195803">10 July 2012 22:46</a>
+                <a rel="nofollow" id="c3594110122738195803" href="#3594110122738195803">10 July 2012 22:46</a>
               </span>
             </div>
-            <p class="comment-content">and what would be your recommendation for wiring closet network with hundreds of 1G LAN ports?</p>
+            <div class="comment-content">and what would be your recommendation for wiring closet network with hundreds of 1G LAN ports?</div>
           </div>
         </li>
       </div>

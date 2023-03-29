@@ -1,0 +1,86 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="5">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bryan Bartik</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c5" href="#5">14 April 2020 10:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Wow, I feel like I was on this same journey this week, glad I popped in :) I was trying to do the same thing this week and trying to do it without having any specific attribute called route reflector or rr-client (not sure why, just my feeling at the time). I used spine and leaf groups and spine and leaf roles.</p>
+
+<p>Since the spines treat all the leafs as RRCs, I figured I could just use roles and when the spine role is run, I take advantage of hostvars and the fact the leafs are grouped already. So I loop through each device and as long as its in the leafs group its the route-reflector-client option. It works but I am not even sure how to gauge the &quot;IAC-ness&quot; of this solution. Thoughts?</p>
+
+<pre>
+$ cat roles/bgp-spine/tasks/main.yaml 
+- name: Configure BGP Neighbors with EVPN AF
+  nxos_bgp_neighbor_af:
+    asn: &quot;65000&quot;
+    neighbor: &quot;&#123;&#123; item.value.routerid &#125;&#125;&quot;
+    afi: l2vpn
+    safi: evpn
+    send_community: both
+    route_reflector_client: yes
+    state: present
+  loop: &quot;&#123;&#123; hostvars|dict2items &#125;&#125;&quot;
+  when: item.key in item.value.groups.leafs
+</pre>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="7">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c7" href="#7">15 April 2020 12:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Nothing wrong with your solution. Instead of modeling the BGP sessions with a data model (like I did), you decided to make them part of the business logic (<em>every leaf is a route reflector of every spine</em>), and of course that&#39;s as IaC-y as it gets... it&#39;s just that your data model is at a higher layer of abstraction than mine.</p>
+
+<p>As for the implementation: unless they radically improved Ansible network modules (fat chance) calling <strong>nxos_bgp_neighbor_af</strong> might get slow for a large number of leaf switches, as it executes <strong>show running</strong> every time you&#39;re calling the module.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="8">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bryan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c8" href="#8">16 April 2020 12:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ah, good point on the &quot;show run&quot; every time. That is slow. Thanks Ivan!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

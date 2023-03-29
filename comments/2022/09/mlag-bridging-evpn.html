@@ -1,0 +1,221 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1373">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> kon</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1373" href="#1373">20 September 2022 11:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The tradeoff is that bridging is simple and low cost. You can build access sites (smallish metro or RAN rings) with low cost and minimal integration efforts. It may be &quot;ancient&quot; and spanning tree may be an anathema but not everything is servers connected single hop to a L3 domain with the luxury of direct multi-homing links. And from what i hear we are still discussing spanning tree on EVPN/VXLAN access, there must be a good reason :)</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1374">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">kon </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1374" href="#1374">20 September 2022 12:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>...you can ignore just realized the context was DC :)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1375">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jordi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1375" href="#1375">20 September 2022 11:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Interesting article Ivan. Another major problem I see for EPVN, is the incompatibility between vendors, even though it is an open standard. With today&rsquo;s crazy switch delivery times, we want a multi-vendor solution like BGP or LACP, but EVPN (due to vendors) isn&rsquo;t ready for a multi-vendor production network fabric.</p>
+
+<p>Another issue with EVPN is cost in terms of price and project (delivery times). To have a robust &amp; stable solution you should start with Trident III as if you go with Tomahawk I you will need re-circulation&hellip; (I would suggest avoiding that&hellip;) and with Trident II+ you lack 100Gbps and 25Gbps&hellip; which it is the standard today. There are not many Trident III switches today in the secondhand market and a new one would take 1 year to be delivered. Without EVPN, you could obtain a Tomahawk switch for half the price and even lower latency if that nanosec difference really matters to you.</p>
+
+<p>Another problem, that vendors have been solving lately with ranges, was the kilometer long configuration in EVPN and uniqueness with the rd for each vni per switch, making the list of config even longer than in HER.</p>
+
+<p>And all these without mentioning the bugs that each vendor has when using EVPN on their switches&hellip;. Making it an unstable feature to turn on today. In the other hand, EVPN Multi-homing, on paper, solve lots of issues</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1417">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Sergej</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1417" href="#1417">04 October 2022 08:28</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>But! How would you manage to build a vendor-agnostic data-center fabric using MLAG?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1420">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1420" href="#1420">04 October 2022 08:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The same way you&#39;d build a vendor-agnostic data-center fabric using EVPN: you wouldn&#39;t. There are enough tiny discrepancies to make you go crazy (or buy Apstra&#39;s software) in particular if you have to support hosts LAG-attached to multiple switches (which is MLAG regardless of how it&#39;s implemented).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1393">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Joris</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1393" href="#1393">23 September 2022 03:24</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>[disclaimer, some vendor bias may apply]</p>
+
+<p>Interesting article, but one of the things I&#39;d like to point out is that your MLAG domain stretches across 4 nodes. All implementations of MLAG or comparable technologies that I am aware of scale up to two nodes. This means that your spine will have at most 2* the amount of ports available on the devices that get chosen to act as spine. In addition to that, most MLAG implementations don&#39;t allow (or at least support, as in tested) mixing and matching different types of hardware, so migration will be a major pain.</p>
+
+<p>This means that for DC designs that require a bigger physical footprint than 2 devices, to have all-links active, you pretty much end up in a L3 design. We then tend to slap VXLAN (with or without EVPN) on top because a lot of applications still require that dreaded L2 connectivity, or we want EVPN goodies like multi-tenancy in the DC.</p>
+
+<p>PS - even then, MLAG is still being used in a lot of these designs because while EVPN multi-homing is great on paper, it also comes with some drawbacks, especially when looking at the amount of control-plane overhead it generates.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1394">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1394" href="#1394">23 September 2022 04:35</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; ... one of the things I&#39;d like to point out is that your MLAG domain stretches across 4 nodes. All implementations of MLAG or comparable technologies that I am aware of scale up to two nodes.</p>
+
+<p>That&#39;s on purpose -- it triggers critical thinking ;)</p>
+
+<p>The only exceptions to &quot;2 node MLAG&quot; rule that I&#39;m aware of were HP IRF, Juniper Virtual Chassis (Fabric), and Brocade VCS Fabric. Most of them are probably obsolete by now, and all of them could not run four chassis switches in a cluster.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1418">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Sergej Pioch</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1418" href="#1418">04 October 2022 08:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I think in an MLAG setup Arista is limited to two nodes, too. The only way to circumvent this limitation is to use BGP EVPN multihoming, which again is not MLAG...</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1419">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Sergej Pioch</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1419" href="#1419">04 October 2022 08:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ah... didn&#39;t read well. Sorry.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

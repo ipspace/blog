@@ -1,0 +1,62 @@
+{
+   "comments": [
+      {
+         "date": "28 September 2022 03:58",
+         "html": "<p>Hi Ivan, \nGreat blog as usual. For Orphan hosts,  I am not sure how it is of any concern if the MLAG peer link has to be used if the traffic lands on other switch. You can always build a 80G or a 200G etherchannel (still they will be underutilized most of the times) MLAG peer link if there are too many orphan hosts. I think using single/anycast VTEP IP address in MLAG is perfect and works for all scenarios.</p>\n\n<p>On your other question on EVPN ESI Multihoming, Route Types 1 and 4 exactly come to the rescue here for BUM traffic and Designated Forwarder concept from the ESI cluster members. \nBut the 2 or &gt;2 A/A ESI leafs from the ESI members will have lot of BGP EVPN route updates state churn happening within the layer 3 fabric.</p>\n",
+         "id": "1402",
+         "name": "Chinar Trivedi",
+         "pub": "2022-09-28T15:58:12",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "28 September 2022 07:03",
+               "html": "<p>... and you&#39;re absolutely right. Will fix, thank you!</p>\n",
+               "id": "1404",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-09-28T19:03:38",
+               "ref": "1403",
+               "type": "comment"
+            }
+         ],
+         "date": "28 September 2022 06:58",
+         "html": "<p>Hello Ivan,</p>\n\n<p>regarding <em>&quot;That switch can treat the flooded packet like it would be coming from an orphan host: flood it to all other ports and the peer link.&quot;</em>:</p>\n\n<p>I am not sure why you mention <em>orphan</em> port here. At least some MLAG implementations <em>always</em> flood via peer link and filter frames on egress to MLAG ports with active members on both switches.</p>\n\n<p>I even think correlating Anycast VTEP and an orphan port might be a dangerous suggestion, because, at least in the <em>filter on egress</em> model mentioned above, the Anycast VTEP needs to be handled identically to an <em>MLAG port</em>. If the peer switch&#39;s Anycast VTEP is active, BUM traffic received via peer link must <em>not</em> be flooded via VXLAN, but it <em>must</em> be flooded otherwise.</p>\n\n<p>One verification of the above I received was when I suggested a bug in the programming of said egress filters as cause for a network problem, and the vendor engineer looking into the case confirmed this suspicion.</p>\n",
+         "id": "1403",
+         "name": " Erik Auerswald",
+         "pub": "2022-09-28T18:58:44",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "29 September 2022 06:30",
+               "html": "<p>You haven&#39;t seen the ESI LAG mess yet ;)</p>\n",
+               "id": "1409",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-09-29T18:30:09",
+               "ref": "1408",
+               "type": "comment"
+            },
+            {
+               "date": "29 September 2022 11:55",
+               "html": "<p>I am eager to see it then! </p>\n",
+               "id": "1413",
+               "name": "Michael Gonnason ",
+               "pub": "2022-09-29T23:55:29",
+               "ref": "1409",
+               "type": "comment"
+            }
+         ],
+         "date": "29 September 2022 06:10",
+         "html": "<p>Man, it sounds like adding MLAG to EVPN really creates a rather complex mess.</p>\n\n<p>Under what circumstances would you choose this over a ESI LAG? </p>\n",
+         "id": "1408",
+         "name": " Michael Gonnason",
+         "pub": "2022-09-29T18:10:04",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2022/09/mlag-deep-dive-vxlan-fabric.html"
+}

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.hazard.maks.net" rel="nofollow">hazard</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8479673747374477594">16 January 2013 08:40</a>
+                <a rel="nofollow" id="c8479673747374477594" href="#8479673747374477594">16 January 2013 08:40</a>
               </span>
             </div>
-            <p class="comment-content">IMO the easiest CLI is in Linux. Create an iptables rule to match the packet and set a mark, and then create a separate routing table for that mark and add you entries there. So, if we limit ourselves to dedicated routers only, I&#39;d say the easiest is Mikrotik with RouterOS, since it also follows similar approach.<br /><br />P.S. I find JunOS CLI more convoluted than IOS in general. Too verbose, too much typing ...<br /></p>
+            <div class="comment-content">IMO the easiest CLI is in Linux. Create an iptables rule to match the packet and set a mark, and then create a separate routing table for that mark and add you entries there. So, if we limit ourselves to dedicated routers only, I&#39;d say the easiest is Mikrotik with RouterOS, since it also follows similar approach.<br /><br />P.S. I find JunOS CLI more convoluted than IOS in general. Too verbose, too much typing ...<br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03315325422507197897" rel="nofollow">Ian</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3238946607946753812">16 January 2013 14:55</a>
+                <a rel="nofollow" id="c3238946607946753812" href="#3238946607946753812">16 January 2013 14:55</a>
               </span>
             </div>
-            <p class="comment-content">This comment has been removed by the author.</p>
+            <div class="comment-content">This comment has been removed by the author.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08195400942656152609" rel="nofollow">The Silent Rider</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1458340047411797420">16 January 2013 15:18</a>
+                <a rel="nofollow" id="c1458340047411797420" href="#1458340047411797420">16 January 2013 15:18</a>
               </span>
             </div>
-            <p class="comment-content">JunOS can be alot of typing, but if you do it right the templates and groups can make your work a lot easier. Staying on topic... PBR is a pain in JunOS too. Last I recall you had to at the minimum create another forwarding instance and import the connected routes, then setup a new default route for that instance and use a firewall filter to kick traffic into it.</p>
+            <div class="comment-content">JunOS can be alot of typing, but if you do it right the templates and groups can make your work a lot easier. Staying on topic... PBR is a pain in JunOS too. Last I recall you had to at the minimum create another forwarding instance and import the connected routes, then setup a new default route for that instance and use a firewall filter to kick traffic into it.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13046728001822941225" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8025133329159735531">16 January 2013 18:22</a>
+                <a rel="nofollow" id="c8025133329159735531" href="#8025133329159735531">16 January 2013 18:22</a>
               </span>
             </div>
-            <p class="comment-content">or perhaps CLI is totally the wrong abstraction for any of this.</p>
+            <div class="comment-content">or perhaps CLI is totally the wrong abstraction for any of this.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Arron</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4946395049442929037">17 January 2013 03:46</a>
+                <a rel="nofollow" id="c4946395049442929037" href="#4946395049442929037">17 January 2013 03:46</a>
               </span>
             </div>
-            <p class="comment-content">Its not very original and its off the cuff but how does the following sound;<br /><br />On the basis of very familiar # ip route {src} {mask} {dst}. <br /><br /># pbr route mac 0000.1111.2222 int fa0/1 ip 10.1.1.1<br /># pbr route int fa0/0 tcp dst port 80 int fa0/2 ip 10.2.2.2<br /># pbr route ipx all int fa0/2<br /><br />While this approach is one-line configuration and lacks sophisticated if-then/flow options, I believe PBR shouldn&#39;t be used for general purpose as it doesn&#39;t scale. Rules would need to be definined, ie more specific TCP beats least specific MAC.<br /><br />This seems like a logical approach, for a scaleable CLI driven solution. <br /><br />SDN style centralised (GUI as mentioned) be an approach for complexity. But if the world wide phone system and the internet have worked with least/most specific routing (as the default underlying rules) without GUI&#39;s then PBR CLI interfaces should be able to work.</p>
+            <div class="comment-content">Its not very original and its off the cuff but how does the following sound;<br /><br />On the basis of very familiar # ip route {src} {mask} {dst}. <br /><br /># pbr route mac 0000.1111.2222 int fa0/1 ip 10.1.1.1<br /># pbr route int fa0/0 tcp dst port 80 int fa0/2 ip 10.2.2.2<br /># pbr route ipx all int fa0/2<br /><br />While this approach is one-line configuration and lacks sophisticated if-then/flow options, I believe PBR shouldn&#39;t be used for general purpose as it doesn&#39;t scale. Rules would need to be definined, ie more specific TCP beats least specific MAC.<br /><br />This seems like a logical approach, for a scaleable CLI driven solution. <br /><br />SDN style centralised (GUI as mentioned) be an approach for complexity. But if the world wide phone system and the internet have worked with least/most specific routing (as the default underlying rules) without GUI&#39;s then PBR CLI interfaces should be able to work.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16795482308125483743" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4380273485843432986">17 January 2013 11:47</a>
+                <a rel="nofollow" id="c4380273485843432986" href="#4380273485843432986">17 January 2013 11:47</a>
               </span>
             </div>
-            <p class="comment-content">In 12.2 juniper add new option for PBR with next-hop or next-interface directly in the firewall filter.<br /><br />The juniper approach of routing instance give you more options for example verify next-hop with BFD etc ...<br /><br />And to the topic I think that PBR can be done with openflow so may be it should be used with static flows CLI <br /> <br />http://www.juniper.net/techpubs/en_US/junos12.2/information-products/topic-collections/release-notes/12.2/index.html?topic-66800.html<br /><br />Nitzan<br /></p>
+            <div class="comment-content">In 12.2 juniper add new option for PBR with next-hop or next-interface directly in the firewall filter.<br /><br />The juniper approach of routing instance give you more options for example verify next-hop with BFD etc ...<br /><br />And to the topic I think that PBR can be done with openflow so may be it should be used with static flows CLI <br /> <br />http://www.juniper.net/techpubs/en_US/junos12.2/information-products/topic-collections/release-notes/12.2/index.html?topic-66800.html<br /><br />Nitzan<br /></div>
           </div>
         </li>
       </div>

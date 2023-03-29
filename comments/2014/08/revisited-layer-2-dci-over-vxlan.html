@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>24 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://comeroutewithme.wordpress.com" rel="nofollow">Carl</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3318923527079971901">19 August 2014 16:06</a>
+                <a rel="nofollow" id="c3318923527079971901" href="#3318923527079971901">19 August 2014 16:06</a>
               </span>
             </div>
-            <p class="comment-content">Interesting to read the comments in the &#39;VXLAN is not a Data Center Interconnect&#39; post from 2012 :)<br />Still no control-plane, still basically the same landscape with maybe just a bit broader support. <br /><br />I&#39;d be interested to hear your thoughts on unicast-mode VXLAN vs &#39;standard&#39; (draft) VXLAN when it comes to layer 2 extension (while I&#39;m 100% with you that the &#39;requirement&#39; for layer 2 extension is a mostly/entirely BS requirement). I&#39;m not fully versed in how all the magic happens, but I would assume that the VSM acts as some sort of control plane, and helps to create the VTEP to MAC mappings... I would suspect that this would help to alleviate some of the MAC flooding issues that aren&#39;t (adequately) addressed in multicast mode? As a further bandaid (definitely not a &#39;real&#39; solution) I wonder about the effectiveness of implementing storm-control on port-profiles in the 1000v as an extra method to limit broadcast storm type traffic within the bridge-domain. <br /><br />Of course none of this addresses the traffic trombone issues, or lack of active/active gateway type functionality (outside of NSX I guess? Also to an extent ACI I suppose). Of course there are also some scale limitations to consider with unicast-mode VXLAN -- particularly surrounding the gateway functionality.<br /><br />Lastly, although this would *never* fly in a production environment, for kicks you could deploy a CSR with an interface in a VXLAN, and use it to extend the VXLAN to a VLAN in another data-center... its filthy, but it works... in a lab... :)<br /><br />Carl</p>
+            <div class="comment-content">Interesting to read the comments in the &#39;VXLAN is not a Data Center Interconnect&#39; post from 2012 :)<br />Still no control-plane, still basically the same landscape with maybe just a bit broader support. <br /><br />I&#39;d be interested to hear your thoughts on unicast-mode VXLAN vs &#39;standard&#39; (draft) VXLAN when it comes to layer 2 extension (while I&#39;m 100% with you that the &#39;requirement&#39; for layer 2 extension is a mostly/entirely BS requirement). I&#39;m not fully versed in how all the magic happens, but I would assume that the VSM acts as some sort of control plane, and helps to create the VTEP to MAC mappings... I would suspect that this would help to alleviate some of the MAC flooding issues that aren&#39;t (adequately) addressed in multicast mode? As a further bandaid (definitely not a &#39;real&#39; solution) I wonder about the effectiveness of implementing storm-control on port-profiles in the 1000v as an extra method to limit broadcast storm type traffic within the bridge-domain. <br /><br />Of course none of this addresses the traffic trombone issues, or lack of active/active gateway type functionality (outside of NSX I guess? Also to an extent ACI I suppose). Of course there are also some scale limitations to consider with unicast-mode VXLAN -- particularly surrounding the gateway functionality.<br /><br />Lastly, although this would *never* fly in a production environment, for kicks you could deploy a CSR with an interface in a VXLAN, and use it to extend the VXLAN to a VLAN in another data-center... its filthy, but it works... in a lab... :)<br /><br />Carl</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6764555675324079286">20 August 2014 12:05</a>
+                <a rel="nofollow" id="c6764555675324079286" href="#6764555675324079286">20 August 2014 12:05</a>
               </span>
             </div>
-            <p class="comment-content">Unicast-mode VXLAN has centralized control plane (VSM) and thus represents an interesting failure scenario: what happens if the DCI link fails? <br /><br />There are only two alternatives:<br />* You eventually lose half of the VXLAN subnet (because VEMs lose connectivity to VSM) - best case its topology would be frozen;<br />* You have redundant VSMs and they go into split-brain mode.<br /><br />Not fun.</p>
+            <div class="comment-content">Unicast-mode VXLAN has centralized control plane (VSM) and thus represents an interesting failure scenario: what happens if the DCI link fails? <br /><br />There are only two alternatives:<br />* You eventually lose half of the VXLAN subnet (because VEMs lose connectivity to VSM) - best case its topology would be frozen;<br />* You have redundant VSMs and they go into split-brain mode.<br /><br />Not fun.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://comeroutewithme.com" rel="nofollow">Carl</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5229283044506288672">20 August 2014 15:49</a>
+                <a rel="nofollow" id="c5229283044506288672" href="#5229283044506288672">20 August 2014 15:49</a>
               </span>
             </div>
-            <p class="comment-content">I think thats only partly true though. In the event the VSM goes away the VEMs still have their mapping (for at least some time). I suspect BUM traffic would be broken, but normal unicast would live on, assuming you don&#39;t need to change any port-profiles or bring up new hosts etc.! I agree, its certainly not good for DCI, just playing devils advocate for fun!<br /><br />One last question -- assuming you did deploy redundant VSMs in each of two data centers, if the DCI link fails is it really that big of a deal for the VSMs to go split-brained? If they can maintain operations within each DC that would be better than being totally broken I would think.</p>
+            <div class="comment-content">I think thats only partly true though. In the event the VSM goes away the VEMs still have their mapping (for at least some time). I suspect BUM traffic would be broken, but normal unicast would live on, assuming you don&#39;t need to change any port-profiles or bring up new hosts etc.! I agree, its certainly not good for DCI, just playing devils advocate for fun!<br /><br />One last question -- assuming you did deploy redundant VSMs in each of two data centers, if the DCI link fails is it really that big of a deal for the VSMs to go split-brained? If they can maintain operations within each DC that would be better than being totally broken I would think.</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4635450117407435160">20 August 2014 15:52</a>
+                <a rel="nofollow" id="c4635450117407435160" href="#4635450117407435160">20 August 2014 15:52</a>
               </span>
             </div>
-            <p class="comment-content">&quot;normal unicast would live on, assuming you don&#39;t need to change any port-profiles or bring up new hosts etc.&quot; ... or move a VM or use DRS or HA or ...<br /><br />&quot; is it really that big of a deal for the VSMs to go split-brained&quot; ... and what happens when the DCI link comes back?</p>
+            <div class="comment-content">&quot;normal unicast would live on, assuming you don&#39;t need to change any port-profiles or bring up new hosts etc.&quot; ... or move a VM or use DRS or HA or ...<br /><br />&quot; is it really that big of a deal for the VSMs to go split-brained&quot; ... and what happens when the DCI link comes back?</div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://comeroutewithme.com" rel="nofollow">Carl</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8981021158448189615">20 August 2014 17:16</a>
+                <a rel="nofollow" id="c8981021158448189615" href="#8981021158448189615">20 August 2014 17:16</a>
               </span>
             </div>
-            <p class="comment-content">Hah yeah, again, not saying it would be a good idea :)<br /><br />I have no idea how a split brained VSM would react (failure of a single VSM and re-joining is pretty smooth though), perhaps I&#39;ll have and excuse to lab it up now!</p>
+            <div class="comment-content">Hah yeah, again, not saying it would be a good idea :)<br /><br />I have no idea how a split brained VSM would react (failure of a single VSM and re-joining is pretty smooth though), perhaps I&#39;ll have and excuse to lab it up now!</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08517209064574010376" rel="nofollow">Randall Greer</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3225945583309424804">19 August 2014 16:25</a>
+                <a rel="nofollow" id="c3225945583309424804" href="#3225945583309424804">19 August 2014 16:25</a>
               </span>
             </div>
-            <p class="comment-content">&quot;VXLAN is the least horrible technology&quot;<br /><br />Could you please elaborate on how VXLAN is a better option than OTV? As far as I can see, OTV doesn&#39;t suffer from the traffic tromboning you get from VXLAN. Sure you have to stretch your VLANs, but you&#39;re protected from bridging failures going over your DCI. OTV is also able to have multiple edge devices per site, so there&#39;s no single failure domain. It&#39;s even integrated with LISP to mitigate any sub-optimal traffic flows.<br /><br />If I simply misinterpreted your post, I apologize.</p>
+            <div class="comment-content">&quot;VXLAN is the least horrible technology&quot;<br /><br />Could you please elaborate on how VXLAN is a better option than OTV? As far as I can see, OTV doesn&#39;t suffer from the traffic tromboning you get from VXLAN. Sure you have to stretch your VLANs, but you&#39;re protected from bridging failures going over your DCI. OTV is also able to have multiple edge devices per site, so there&#39;s no single failure domain. It&#39;s even integrated with LISP to mitigate any sub-optimal traffic flows.<br /><br />If I simply misinterpreted your post, I apologize.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -136,10 +131,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Paul H</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4183754916558271601">19 August 2014 19:54</a>
+                <a rel="nofollow" id="c4183754916558271601" href="#4183754916558271601">19 August 2014 19:54</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;d hazard a guess that OTV may well be better. However, IIRC it&#39;s only supported on Nexus 7000s and requires both licenses for the VDC option as well as OTV (last time I looked - it might have changed) so if you&#39;re not a Cisco shop, or you don&#39;t have Nexus 7000s, then VXLAN may well be the least horrible option. There are plenty of things that support VXLAN (if you&#39;re using VMware then the Nexus 1000v, or VCNS or NSX would all do the job)</p>
+            <div class="comment-content">I&#39;d hazard a guess that OTV may well be better. However, IIRC it&#39;s only supported on Nexus 7000s and requires both licenses for the VDC option as well as OTV (last time I looked - it might have changed) so if you&#39;re not a Cisco shop, or you don&#39;t have Nexus 7000s, then VXLAN may well be the least horrible option. There are plenty of things that support VXLAN (if you&#39;re using VMware then the Nexus 1000v, or VCNS or NSX would all do the job)</div>
           </div>
         </li>
       </div>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08517209064574010376" rel="nofollow">Randall Greer</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5778666566286458194">19 August 2014 20:10</a>
+                <a rel="nofollow" id="c5778666566286458194" href="#5778666566286458194">19 August 2014 20:10</a>
               </span>
             </div>
-            <p class="comment-content">ASR 1ks  and the virtual CSRs also support OTV, and are way cheaper than the M cards on the 7ks. If you went the VXLAN route, and have bare metal servers (or maybe other VMs that don&#39;t live in ESX) that need access to the servers on the VXLAN segment, they have to go through the VXLAN gateway which might be on the opposite side of the DCI, resulting in tromboning. <br /><br />I wonder if what the cost of the added latency and bandwidth usage of the DCI is, and if it would be offset by just purchasing something that supports OTV.<br /><br />Semi-related fun fact: OTV has an RFC draft (currently expired though) out there so it looks like the intention is to let anyone use OTV. <br />http://www.ietf.org/archive/id/draft-hasmit-otv-04.txt</p>
+            <div class="comment-content">ASR 1ks  and the virtual CSRs also support OTV, and are way cheaper than the M cards on the 7ks. If you went the VXLAN route, and have bare metal servers (or maybe other VMs that don&#39;t live in ESX) that need access to the servers on the VXLAN segment, they have to go through the VXLAN gateway which might be on the opposite side of the DCI, resulting in tromboning. <br /><br />I wonder if what the cost of the added latency and bandwidth usage of the DCI is, and if it would be offset by just purchasing something that supports OTV.<br /><br />Semi-related fun fact: OTV has an RFC draft (currently expired though) out there so it looks like the intention is to let anyone use OTV. <br />http://www.ietf.org/archive/id/draft-hasmit-otv-04.txt</div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2084061393133298242">20 August 2014 03:00</a>
+                <a rel="nofollow" id="c2084061393133298242" href="#2084061393133298242">20 August 2014 03:00</a>
               </span>
             </div>
-            <p class="comment-content">Why wouldn&#39;t first hop filtering work as well on vxlan ?<br />make the mac address the same .</p>
+            <div class="comment-content">Why wouldn&#39;t first hop filtering work as well on vxlan ?<br />make the mac address the same .</div>
           </div>
         </li>
       </div>
@@ -197,10 +192,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://network-insight.net/" rel="nofollow">Matt Conran</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6686014385275127274">04 September 2014 22:11</a>
+                <a rel="nofollow" id="c6686014385275127274" href="#6686014385275127274">04 September 2014 22:11</a>
               </span>
             </div>
-            <p class="comment-content">Will traffic trombones generated by stateful appliances be resolved with ASA clustering in ver 9.x? I understand that the ASA clustering feature will soon be supported over OTV LAN extensions. Maybe VXLAN in the near future?? Any thoughts</p>
+            <div class="comment-content">Will traffic trombones generated by stateful appliances be resolved with ASA clustering in ver 9.x? I understand that the ASA clustering feature will soon be supported over OTV LAN extensions. Maybe VXLAN in the near future?? Any thoughts</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -216,10 +211,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1836050456143869443">05 September 2014 11:02</a>
+                <a rel="nofollow" id="c1836050456143869443" href="#1836050456143869443">05 September 2014 11:02</a>
               </span>
             </div>
-            <p class="comment-content">http://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html<br /><br />See also RFC 1925, sections 2.5, 2.6 and 2.11 ;)</p>
+            <div class="comment-content">http://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html<br /><br />See also RFC 1925, sections 2.5, 2.6 and 2.11 ;)</div>
           </div>
         </li>
       </div>
@@ -241,10 +236,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://network-insight.net/" rel="nofollow">Matt Conran</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8839242577121434912">05 September 2014 17:17</a>
+                <a rel="nofollow" id="c8839242577121434912" href="#8839242577121434912">05 September 2014 17:17</a>
               </span>
             </div>
-            <p class="comment-content">mm much clearer now...<br />so lets wait for this to be a Cisco Validated Design before we recommend to clients :)<br /><br /></p>
+            <div class="comment-content">mm much clearer now...<br />so lets wait for this to be a Cisco Validated Design before we recommend to clients :)<br /><br /></div>
           </div>
         </li>
       </div>
@@ -259,10 +254,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5016470524725184048">15 September 2014 09:09</a>
+                <a rel="nofollow" id="c5016470524725184048" href="#5016470524725184048">15 September 2014 09:09</a>
               </span>
             </div>
-            <p class="comment-content">How does the VLAN to VNI mapping works when a VM migrates to another DC maintaining flat layer2 connectivity. I assume the VLAN the VM uses will not change so the VLAN to VNI mapping should be the same in the new location. This practically can limit the number of VNIs to 4K (the number of VLAN ids)</p>
+            <div class="comment-content">How does the VLAN to VNI mapping works when a VM migrates to another DC maintaining flat layer2 connectivity. I assume the VLAN the VM uses will not change so the VLAN to VNI mapping should be the same in the new location. This practically can limit the number of VNIs to 4K (the number of VLAN ids)</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -278,10 +273,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4843623861824476806">15 September 2014 19:19</a>
+                <a rel="nofollow" id="c4843623861824476806" href="#4843623861824476806">15 September 2014 19:19</a>
               </span>
             </div>
-            <p class="comment-content">Short answer: it depends.<br /><br />Assuming you&#39;re using vSphere 5.5 or earlier, you have to have a vDS that spans both data centers, which means that hypervisors in the second data center automatically have the same port groups (and VNIs) as those in the first data center.</p>
+            <div class="comment-content">Short answer: it depends.<br /><br />Assuming you&#39;re using vSphere 5.5 or earlier, you have to have a vDS that spans both data centers, which means that hypervisors in the second data center automatically have the same port groups (and VNIs) as those in the first data center.</div>
           </div>
         </li>
       </div>
@@ -303,10 +298,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3319927749631181799">16 September 2014 11:02</a>
+                <a rel="nofollow" id="c3319927749631181799" href="#3319927749631181799">16 September 2014 11:02</a>
               </span>
             </div>
-            <p class="comment-content">This works if the VTEP is in the hypervisor. What happens if the VTEP is in the TOR? Is the port group visible to the TOR switch?</p>
+            <div class="comment-content">This works if the VTEP is in the hypervisor. What happens if the VTEP is in the TOR? Is the port group visible to the TOR switch?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -322,10 +317,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7302962070369273309">16 September 2014 20:03</a>
+                <a rel="nofollow" id="c7302962070369273309" href="#7302962070369273309">16 September 2014 20:03</a>
               </span>
             </div>
-            <p class="comment-content">There is no standard solution for that problem. Talk to whoever is trying to sell you ToR VTEP ;)</p>
+            <div class="comment-content">There is no standard solution for that problem. Talk to whoever is trying to sell you ToR VTEP ;)</div>
           </div>
         </li>
       </div>
@@ -347,10 +342,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7295582170420358931">20 October 2014 18:13</a>
+                <a rel="nofollow" id="c7295582170420358931" href="#7295582170420358931">20 October 2014 18:13</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />To Randell Greer&#39;s point above, your statement &quot;VXLAN is the least horrible technology&quot; does it have to do with the requirement of specialized hardware (Nexus 7k or ASR 1k) or reliance on Cisco for N1v? If you ignore the hardware requirements for OTV for a moment for L2 DCI would VXLAN still be better bet over OTV? We are not Cisco shop at least not in the data center, we are Arista shop so VXLAN (NSX would awesome and we are even considering NSX) makes perfect sense for us but if OTV is better point solution to satisfy L2 dependencies of few legacy apps we won&#39;t mind spending money for couple pairs of ASR 1ks.   </p>
+            <div class="comment-content">Ivan,<br /><br />To Randell Greer&#39;s point above, your statement &quot;VXLAN is the least horrible technology&quot; does it have to do with the requirement of specialized hardware (Nexus 7k or ASR 1k) or reliance on Cisco for N1v? If you ignore the hardware requirements for OTV for a moment for L2 DCI would VXLAN still be better bet over OTV? We are not Cisco shop at least not in the data center, we are Arista shop so VXLAN (NSX would awesome and we are even considering NSX) makes perfect sense for us but if OTV is better point solution to satisfy L2 dependencies of few legacy apps we won&#39;t mind spending money for couple pairs of ASR 1ks.   </div>
           </div>
         </li>
       </div>
@@ -365,10 +360,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7887796447944179378">20 October 2014 18:22</a>
+                <a rel="nofollow" id="c7887796447944179378" href="#7887796447944179378">20 October 2014 18:22</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />Please ignore my last post above dated 20 October, 2014 18:13, I already found you blogpost specifically addressing Randell&#39;s question. Awesome. Thank you sir.</p>
+            <div class="comment-content">Ivan,<br /><br />Please ignore my last post above dated 20 October, 2014 18:13, I already found you blogpost specifically addressing Randell&#39;s question. Awesome. Thank you sir.</div>
           </div>
         </li>
       </div>
@@ -383,10 +378,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01457223451374946937" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#411026189214139585">15 October 2015 07:00</a>
+                <a rel="nofollow" id="c411026189214139585" href="#411026189214139585">15 October 2015 07:00</a>
               </span>
             </div>
-            <p class="comment-content">Dear Ivan, i am planing to design private virtual cloud which include multiple data center and want work load mobality on demand to any data center to any.I want to use Cisco OTV,LISP,Vmware NSX and VXLAN.I want  to use VXLAN for east to west traffic within DC and for noth to south want to use OTV and LISP.Could you please provide any use case and  detail technical information for how OTV and LISP integrate with NSX</p>
+            <div class="comment-content">Dear Ivan, i am planing to design private virtual cloud which include multiple data center and want work load mobality on demand to any data center to any.I want to use Cisco OTV,LISP,Vmware NSX and VXLAN.I want  to use VXLAN for east to west traffic within DC and for noth to south want to use OTV and LISP.Could you please provide any use case and  detail technical information for how OTV and LISP integrate with NSX</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -402,10 +397,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7418780691786197765">15 October 2015 08:45</a>
+                <a rel="nofollow" id="c7418780691786197765" href="#7418780691786197765">15 October 2015 08:45</a>
               </span>
             </div>
-            <p class="comment-content">Simple answer: No. <br /><br />In my opinion it makes no sense to agglutinate so many complex technologies into a single Rube Goldberg construction, regardless of what vendors tell you, and have no plans to waste my time trying to figure out how to make them work.<br /><br />Workload mobility is a myth and works best in vendor PPTs. Get over it and build something that has a chance of being operated and supported by average ops people.<br /><br />I apologize if I depressed you, but I&#39;m sick-and-tired of the vendor posturing.</p>
+            <div class="comment-content">Simple answer: No. <br /><br />In my opinion it makes no sense to agglutinate so many complex technologies into a single Rube Goldberg construction, regardless of what vendors tell you, and have no plans to waste my time trying to figure out how to make them work.<br /><br />Workload mobility is a myth and works best in vendor PPTs. Get over it and build something that has a chance of being operated and supported by average ops people.<br /><br />I apologize if I depressed you, but I&#39;m sick-and-tired of the vendor posturing.</div>
           </div>
         </li>
       </div>
@@ -427,10 +422,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00138130459251026848" rel="nofollow">MS</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#836157292920594033">14 June 2017 16:49</a>
+                <a rel="nofollow" id="c836157292920594033" href="#836157292920594033">14 June 2017 16:49</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, regarding what you said : &quot;Traffic trombones generated by stateful appliances (inter-subnet firewalls or load balancers) are impossible to solve.&quot;<br /><br />&gt; Is this still your view? Some Firewalls are capable of synchronizing their states (sessions) with other members, yet they are in StandAlone (not in cluster), would you say this can resolve the &quot;stretched cluster&quot; problems ?<br /><br />IMHO, this may resolve some problems:<br />&gt; The cluster (especially the A/P) mode which can be seen as a single failure domain (software problem/bug...)<br />&gt; The Asymmetric flow/routing (i.e. no need for LISP if &quot;Traffic trombones&quot; is not a problem)<br /><br />So now, we may add as many Firewalls to the topology which becomes like a &quot;Firewall Fabric&quot; :)</p>
+            <div class="comment-content">Ivan, regarding what you said : &quot;Traffic trombones generated by stateful appliances (inter-subnet firewalls or load balancers) are impossible to solve.&quot;<br /><br />&gt; Is this still your view? Some Firewalls are capable of synchronizing their states (sessions) with other members, yet they are in StandAlone (not in cluster), would you say this can resolve the &quot;stretched cluster&quot; problems ?<br /><br />IMHO, this may resolve some problems:<br />&gt; The cluster (especially the A/P) mode which can be seen as a single failure domain (software problem/bug...)<br />&gt; The Asymmetric flow/routing (i.e. no need for LISP if &quot;Traffic trombones&quot; is not a problem)<br /><br />So now, we may add as many Firewalls to the topology which becomes like a &quot;Firewall Fabric&quot; :)</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -446,10 +441,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2405691576179299747">14 June 2017 17:45</a>
+                <a rel="nofollow" id="c2405691576179299747" href="#2405691576179299747">14 June 2017 17:45</a>
               </span>
             </div>
-            <p class="comment-content">No, I haven&#39;t changed my mind. IMHO it&#39;s really hard to change the laws of physics (or networking), and whatever glitzy miracle comes out is usually just a reiteration of old stuff.</p>
+            <div class="comment-content">No, I haven&#39;t changed my mind. IMHO it&#39;s really hard to change the laws of physics (or networking), and whatever glitzy miracle comes out is usually just a reiteration of old stuff.</div>
           </div>
         </li>
       </div>
@@ -464,10 +459,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00138130459251026848" rel="nofollow">MS</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1512099864236259854">15 June 2017 09:52</a>
+                <a rel="nofollow" id="c1512099864236259854" href="#1512099864236259854">15 June 2017 09:52</a>
               </span>
             </div>
-            <p class="comment-content">Thanks, that&#39;s clear. For the sake of all of us understanding better, why &quot;states synchronization&quot; on FWs/LB would not solve the &quot;the Traffic trombones generated by stateful appliances&quot; ?</p>
+            <div class="comment-content">Thanks, that&#39;s clear. For the sake of all of us understanding better, why &quot;states synchronization&quot; on FWs/LB would not solve the &quot;the Traffic trombones generated by stateful appliances&quot; ?</div>
           </div>
         </li>
       </div>
@@ -482,10 +477,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7781989391722901303">15 June 2017 17:04</a>
+                <a rel="nofollow" id="c7781989391722901303" href="#7781989391722901303">15 June 2017 17:04</a>
               </span>
             </div>
-            <p class="comment-content">http://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html<br /><br />http://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html<br /><br />http://blog.ipspace.net/2015/11/stretched-firewalls-across-layer-3-dci.html</p>
+            <div class="comment-content">http://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html<br /><br />http://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html<br /><br />http://blog.ipspace.net/2015/11/stretched-firewalls-across-layer-3-dci.html</div>
           </div>
         </li>
       </div>

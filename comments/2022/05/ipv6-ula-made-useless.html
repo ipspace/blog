@@ -1,0 +1,118 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1232">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Kerry Thompson</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1232" href="#1232">13 May 2022 06:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I tried it a few months ago in a home/lab environment - and yes, it doesn&#39;t work.</p>
+
+<p>In my setup I generated a new ULA /48 range and assigned a /64 to an internal WiFi-enabled subnet. I had 2 upstream Internet links:
+ - a primary fast link dual-stacked to the ISP
+ - a slow ADSL IPv4 only backup link with an he.net IPv6 tunnel</p>
+
+<p>A single router did NAT66 for the /64 blocks when traffic was routing over each uplink.</p>
+
+<p>I found devices always preferred IPv4 over IPv6-ULA. After hacking around on a Linux host I found where preferences were set, but they&#39;re horribly complex and you just can&#39;t fix other devices like Windows, Android, iOS, etc.</p>
+
+<p>So yes, a lot of docs say it should work but in real life it doesn&#39;t because the network stacks on almost all OS&#39;s are hard coded to prefer IPv4 over IPv6 ULA addresses.</p>
+
+<p>I reverted to using my he.net assigned public /64 on the LAN, and NAT66 when going over the other uplink. Real public IPv6 is preferred over IPv4, so it works as expected. But not ULA.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1233">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1233" href="#1233">13 May 2022 01:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Some years ago, before some parts of RFC 6724 were implemented in common operating systems, the situation was different. Using ULA did not work.</p>
+
+<p>ULA was treated identically to GUA. If one added ULA addressing for local only IPv6 tests to an existing IPv4 network with Internet connectivity, Internet connectivity would break (no <a href="https://www.rfc-editor.org/info/rfc6555">Happy Eyeballs</a> or <a href="https://www.rfc-editor.org/info/rfc8305">Happy Eyeballs v2</a>), or it would be slower due to trying IPv4 later than IPv6.</p>
+
+<p>Unique Local Addresses were worse than useless, they were harmful, because local use of Unique Local Addresses negatively affected global connectivity.</p>
+
+<p>(This problem was documented in <a href="https://datatracker.ietf.org/doc/html/rfc5220#section-2.2.2">RFC 5220 section 2.2.2</a> from 2008, referenced in RFC 6724.)</p>
+
+<p>Useless, but no longer harmful, ULA could be seen as an improvement. :-)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1234">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Misak Khachatryan </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1234" href="#1234">14 May 2022 09:21</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>We use ULA as WAN address for our GPON ONUs as additional security measurement to prevent most of the internet to brute force passwords and to have little bit more safety from exploiting know vulnerabilities of ONU vendors. They love to left backdoors and write unsecure code. Then customers get delegated prefix of global IPv6 addresses.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1342">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Rob</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1342" href="#1342">03 August 2022 06:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I haven&#39;t seen this behavior on (modern) Ubuntu 20.04/22.04 and Win10.</p>
+
+<p>I have a switch with ULA address (I don&#39;t have PIA space at home) and an ipv4(RFC1918) address.  A dns lookup returns the ULA address &amp; ipv4 address.  Using ping or ssh to the dns name always has me connecting to the ULA address.</p>
+
+<p>https://twitter.com/5SpeedFun/status/1518047636166746114</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

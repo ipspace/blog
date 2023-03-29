@@ -1,0 +1,31 @@
+{
+   "comments": [
+      {
+         "date": "04 February 2021 08:32",
+         "html": "<p>If I understand Adrian&#39;s solution correctly, he would also have VRF Prod and VRF DRP at the DRP site (see the last picture from his blog post). Both VRFs (Prod and DRP) at the DRP site are connected via so called pivot servers for management purposes. Those pivot servers will probably have one leg in VRF Prod (10.1.0.0/16) and one leg in VRF DRP (10.0.0.0/16). Then for customer facing services he relied on NAT and rerouting their public IP space by the ISP. The latter is suboptimal as you depend on someone else (ISP in this case). It&#39;s also questionable how often the VMs and DBs (storage) is replicated to DRP site. Adrian&#39;s solution is not bad but convoluted.\nNicola&#39;s solution looks more elegant to me as he only needs to reprogramm route target imports/exports.\nI&#39;m bothered about having the same IP addresses on both the production and DR site as it is not really needed. Most applications need some form of high availability which results in distributed systems. In the end it&#39;s all about the CAP theorem. You have to choose two, you can not have all three. The most important thing is your data. Maybe you can live with eventual consistency. If so spend more time in proper and intelligent load balancing (or failover). If you depend on consistency of your data then your application has to deal with failures.</p>\n",
+         "id": "384",
+         "name": "Anonymous",
+         "pub": "2021-02-04T20:32:13",
+         "type": "comment"
+      },
+      {
+         "date": "05 February 2021 06:36",
+         "html": "<p>As always, make it a network problem</p>\n",
+         "id": "386",
+         "name": " Ibi",
+         "pub": "2021-02-05T06:36:40",
+         "type": "comment"
+      },
+      {
+         "date": "05 February 2021 09:14",
+         "html": "<p>The VRFs are connected through a NATing device.\nThe pivot servers are inside the DRP VRF and accessed from the outside like any other service in the DRP VRF, by using a NAT from outside.\nWe only NAT main services IP (like the VIP load balancer), the pivot server (so admins can enter the DRP and manage local locally), and nothing else.\nInternal users come from internal MPLS.\nWhile internet users come from Internet, and we had no choice but to ask the ISP, to reroute the segment. As I mention, is not easy to reconfigure hundreds of business partner&#39;s VPN.\nNicola&#39;s solution is good, but it requires human intervention and BGP routes updates in the whole region, shouldn&#39;t be a big deal and it could even be automated.\nThis solution is different since does not require any BGP and is always online, but of course, you have a trade-off, the NAT.\nI should make part2 post, I over simplified the first one.</p>\n",
+         "id": "388",
+         "name": "adrian giacometti",
+         "pub": "2021-02-05T09:14:57",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2021/02/fast-simple-disaster-recovery-solution.html"
+}

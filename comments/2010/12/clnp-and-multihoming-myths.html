@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">plapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5229192967750076622">07 December 2010 08:35</a>
+                <a rel="nofollow" id="c5229192967750076622" href="#5229192967750076622">07 December 2010 08:35</a>
               </span>
             </div>
-            <p class="comment-content">Oh, the Node/PoA ID confusion was only a PART of the problem with IP, though a serious one.  You may find an intro overview of the problem here:<br /><br />http://pouzin.pnanetworks.com/images/KoreaNamingFund100218.pdf<br /><br />The fallacy you talk about here is the belief that hierarchical routing is the ONLY form of scalable routing and that all we should care about is better summarization. This &quot;statement&quot; has been widely accepted since the initial work published by Kleinrock and Kamoun. <br /><br />However, hierarchical routing per-se has serious scaling limitations in self-similar (power-law) network graphs, though SOME approaches exist to help here, such as topology summarization, found for instance in PNNI or Nimrod or more recently in TARA. There is a lot of other, alternate approaches to scalable routing though: e.g. check out flat-space routing models such as found in ROFL or VRR.<br /><br />The main problem with SIP/IPv6 was that it did not really attempt to solve anything but larger address pace problem. And that&#39;s for more that 15 years of &quot;evolution&quot;! Add the larger prefix size to the problems with scalable hierarchical routing in self-similar networks and you get more issues than we had with IPv4. At least CLNP was SOME step in the right direction, trying to resolve the &quot;naming&quot; problem.</p>
+            <div class="comment-content">Oh, the Node/PoA ID confusion was only a PART of the problem with IP, though a serious one.  You may find an intro overview of the problem here:<br /><br />http://pouzin.pnanetworks.com/images/KoreaNamingFund100218.pdf<br /><br />The fallacy you talk about here is the belief that hierarchical routing is the ONLY form of scalable routing and that all we should care about is better summarization. This &quot;statement&quot; has been widely accepted since the initial work published by Kleinrock and Kamoun. <br /><br />However, hierarchical routing per-se has serious scaling limitations in self-similar (power-law) network graphs, though SOME approaches exist to help here, such as topology summarization, found for instance in PNNI or Nimrod or more recently in TARA. There is a lot of other, alternate approaches to scalable routing though: e.g. check out flat-space routing models such as found in ROFL or VRR.<br /><br />The main problem with SIP/IPv6 was that it did not really attempt to solve anything but larger address pace problem. And that&#39;s for more that 15 years of &quot;evolution&quot;! Add the larger prefix size to the problems with scalable hierarchical routing in self-similar networks and you get more issues than we had with IPv4. At least CLNP was SOME step in the right direction, trying to resolve the &quot;naming&quot; problem.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7286788589626641613">07 December 2010 11:00</a>
+                <a rel="nofollow" id="c7286788589626641613" href="#7286788589626641613">07 December 2010 11:00</a>
               </span>
             </div>
-            <p class="comment-content">Eh, Petr, the link you quoted is just more of the old-same. If the guy believes CLNP could have resulted in better networks, that&#39;s his decision. It&#39;s no less wrong.<br /><br />Will check the alternative approaches (at the very least that will be a mind-challenging academic exercise), but based on current approach to scalable routing and forwarding (which CLNP shares with IP) ... and ignoring the fancy powerpoint architecture slides, the only solution lies in end-hosts as proven by SCTP.</p>
+            <div class="comment-content">Eh, Petr, the link you quoted is just more of the old-same. If the guy believes CLNP could have resulted in better networks, that&#39;s his decision. It&#39;s no less wrong.<br /><br />Will check the alternative approaches (at the very least that will be a mind-challenging academic exercise), but based on current approach to scalable routing and forwarding (which CLNP shares with IP) ... and ignoring the fancy powerpoint architecture slides, the only solution lies in end-hosts as proven by SCTP.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">plapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5440207681468062954">07 December 2010 18:33</a>
+                <a rel="nofollow" id="c5440207681468062954" href="#5440207681468062954">07 December 2010 18:33</a>
               </span>
             </div>
-            <p class="comment-content">Oh wait, SCTP? Doesn&#39;t it emulate the session layer as found in OSI&#39;s and implemented by ISO 8327? :D Besides, SCTP solves the multi-homing problem but not the host mobility task. Of course, there is mSTCP extension, but how much better it is than say  HIP? And i see you don&#39;t seem to have faith in LISP either ;)<br /><br />The naming problem is much more fundamental that it may look like, as it defines the core properties of architecture, but that&#39;s a separate discussion topics, due to the abstract nature of the subject. It&#39;s not that it easy as it may look like though :D<br /><br />As for OSI routing scalability using ISIS coupled with &quot;some inter-domain&quot; routing protocol (ECMA/BCP), it&#39;s the SAME as of IPv4 or IPv6, since they all use hierarchical routing. Unsummarizable System-IDs? Compare this to Host-ID in IPv6. But notice that with CLNP you do not have to advertise the &quot;transit&quot; link prefixes into routing protocols (okay you can do the same with IPv4 now using prefix suppression or unnumbered links kludge). <br /><br />Furthermore, NSAP addresses could be structured the way you need to reflect a hierarchy and summarized at domain boundaries just the same way say IPv6 prefixes could be. I think there was an RFC adopting the use of NSAP for Internet addressing. Next, what we call &quot;Ethernet VLANs with thousands of MACs&quot; could have been implemented as ISIS Level1 domains with routed mobility - unless you&#39;re still using Ethernet hubs ;) The same scaling properties as IPv4 with &quot;TRIL&#39;ish&quot; features ;)<br /><br />I know there is no way back to CLNP or whatever we had in the past. I just wish there would more real work toward improving the existing architecture, rather than using band-aid solutions ;)</p>
+            <div class="comment-content">Oh wait, SCTP? Doesn&#39;t it emulate the session layer as found in OSI&#39;s and implemented by ISO 8327? :D Besides, SCTP solves the multi-homing problem but not the host mobility task. Of course, there is mSTCP extension, but how much better it is than say  HIP? And i see you don&#39;t seem to have faith in LISP either ;)<br /><br />The naming problem is much more fundamental that it may look like, as it defines the core properties of architecture, but that&#39;s a separate discussion topics, due to the abstract nature of the subject. It&#39;s not that it easy as it may look like though :D<br /><br />As for OSI routing scalability using ISIS coupled with &quot;some inter-domain&quot; routing protocol (ECMA/BCP), it&#39;s the SAME as of IPv4 or IPv6, since they all use hierarchical routing. Unsummarizable System-IDs? Compare this to Host-ID in IPv6. But notice that with CLNP you do not have to advertise the &quot;transit&quot; link prefixes into routing protocols (okay you can do the same with IPv4 now using prefix suppression or unnumbered links kludge). <br /><br />Furthermore, NSAP addresses could be structured the way you need to reflect a hierarchy and summarized at domain boundaries just the same way say IPv6 prefixes could be. I think there was an RFC adopting the use of NSAP for Internet addressing. Next, what we call &quot;Ethernet VLANs with thousands of MACs&quot; could have been implemented as ISIS Level1 domains with routed mobility - unless you&#39;re still using Ethernet hubs ;) The same scaling properties as IPv4 with &quot;TRIL&#39;ish&quot; features ;)<br /><br />I know there is no way back to CLNP or whatever we had in the past. I just wish there would more real work toward improving the existing architecture, rather than using band-aid solutions ;)</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4044975712341012259">07 December 2010 20:00</a>
+                <a rel="nofollow" id="c4044975712341012259" href="#4044975712341012259">07 December 2010 20:00</a>
               </span>
             </div>
-            <p class="comment-content">Now we&#39;re almost in perfect alignment.<br /><br />SCTP: never tracked its history, but it gets the job done. Not sure the ISO session layer would be able to run multiple connections between NSAPs in different areas (which would be needed).<br /><br />OSI routing scalability: absolutely agree.<br /><br />&quot;Transit link prefixes&quot;: they give IP better scalability. If you insist on having host addresses, you can use link-local prefixes in IPv6 (the unnumbered kludge is gone).<br /><br />&quot;Ethernet VLANs with thousands of MACs&quot; - we both know that&#39;s stupidity. Didn&#39;t want to go into this particular can of worms (but will do, don&#39;t worry), but yet again, if you love host routes, you can have them in IPv4 as well ... if only someone would dust off the LAM code base.<br /><br />&quot;More real work done on improving architectures&quot; - as we both know, it&#39;s almost impossible to change anything beyond networking devices (and even these are hard to change). They had a window of opportunity 15+ years ago when they could have changed TCP as well, but that fell apart.</p>
+            <div class="comment-content">Now we&#39;re almost in perfect alignment.<br /><br />SCTP: never tracked its history, but it gets the job done. Not sure the ISO session layer would be able to run multiple connections between NSAPs in different areas (which would be needed).<br /><br />OSI routing scalability: absolutely agree.<br /><br />&quot;Transit link prefixes&quot;: they give IP better scalability. If you insist on having host addresses, you can use link-local prefixes in IPv6 (the unnumbered kludge is gone).<br /><br />&quot;Ethernet VLANs with thousands of MACs&quot; - we both know that&#39;s stupidity. Didn&#39;t want to go into this particular can of worms (but will do, don&#39;t worry), but yet again, if you love host routes, you can have them in IPv4 as well ... if only someone would dust off the LAM code base.<br /><br />&quot;More real work done on improving architectures&quot; - as we both know, it&#39;s almost impossible to change anything beyond networking devices (and even these are hard to change). They had a window of opportunity 15+ years ago when they could have changed TCP as well, but that fell apart.</div>
           </div>
         </li>
       </div>

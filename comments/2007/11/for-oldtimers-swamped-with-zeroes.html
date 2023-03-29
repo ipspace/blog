@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02471507557492256198" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4719478106856448037">03 November 2007 07:20</a>
+                <a rel="nofollow" id="c4719478106856448037" href="#4719478106856448037">03 November 2007 07:20</a>
               </span>
             </div>
-            <p class="comment-content">I would do a ping with one's and the link would stay up and response.<BR/>like this;<BR/>ip 1.2.3.4 size 1000 data 1111</p>
+            <div class="comment-content">I would do a ping with one's and the link would stay up and response.<BR/>like this;<BR/>ip 1.2.3.4 size 1000 data 1111</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4909111562388260049">03 November 2007 07:34</a>
+                <a rel="nofollow" id="c4909111562388260049" href="#4909111562388260049">03 November 2007 07:34</a>
               </span>
             </div>
-            <p class="comment-content">:)) And how would you ensure that an accidental user data packet wouldn't bring the link down?</p>
+            <div class="comment-content">:)) And how would you ensure that an accidental user data packet wouldn't bring the link down?</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1452637437020492545">03 November 2007 09:28</a>
+                <a rel="nofollow" id="c1452637437020492545" href="#1452637437020492545">03 November 2007 09:28</a>
               </span>
             </div>
-            <p class="comment-content">might depend on the link in question, but assuming that this e.g. might be an PPP link or a hdlc link, using a compression technique might solve the issue, because the long string of zeroes would not be transmitted as such.<BR/>Of course, compression might be infeasible because of some reason, but just a thought...<BR/>/bernhard</p>
+            <div class="comment-content">might depend on the link in question, but assuming that this e.g. might be an PPP link or a hdlc link, using a compression technique might solve the issue, because the long string of zeroes would not be transmitted as such.<BR/>Of course, compression might be infeasible because of some reason, but just a thought...<BR/>/bernhard</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9086541956439924346">03 November 2007 10:36</a>
+                <a rel="nofollow" id="c9086541956439924346" href="#9086541956439924346">03 November 2007 10:36</a>
               </span>
             </div>
-            <p class="comment-content">From what I recall you would have this problem on earlier line codes such as NRZ. If you're transmitting the same bit the system would loose sync as there are no state changes. Later encodings addressed this problem in various ways, for example Manchester does a transition at mid-bit.<BR/><BR/>Using encryption such as IPSEC would ensure that long sequencues of zero bits is a very rare condition. :)</p>
+            <div class="comment-content">From what I recall you would have this problem on earlier line codes such as NRZ. If you're transmitting the same bit the system would loose sync as there are no state changes. Later encodings addressed this problem in various ways, for example Manchester does a transition at mid-bit.<BR/><BR/>Using encryption such as IPSEC would ensure that long sequencues of zero bits is a very rare condition. :)</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02980177795988579469" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2107385287573627579">03 November 2007 11:30</a>
+                <a rel="nofollow" id="c2107385287573627579" href="#2107385287573627579">03 November 2007 11:30</a>
               </span>
             </div>
-            <p class="comment-content">will LFI solve this issue?</p>
+            <div class="comment-content">will LFI solve this issue?</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3060652980998687486">03 November 2007 13:15</a>
+                <a rel="nofollow" id="c3060652980998687486" href="#3060652980998687486">03 November 2007 13:15</a>
               </span>
             </div>
-            <p class="comment-content">The real solution is bit stuffing. But hey, considering we have to make do with what we have on the router already . . .<BR/><BR/>Bunch of answers so far - IPSec and compression look to "hide" the repeating sequence of 0x00s in the data stream. Too bad both of them are relatively "new" features to IOS - 11.x<BR/><BR/>I specially liked LFI - a cheap way to perform some kind of stuffing :)<BR/><BR/>Yours is an incomplete scenario - we don't know how many bits/bytes of 0x00 would trigger the issue . . .<BR/><BR/>Anyway - I had two solutions to propose. GRE tunnels was the first - been around for a long time (10.x). But I will go with a lower overhead one - change the interface MTU to the minimum of 64 bytes for Ethernet. With a 20-bytes IP header and a 20-bytes TCP header (if using TCP), that leaves about 24 bytes for data - as long as your "trigger pattern" is > 24 bytes, you should be OK.<BR/><BR/>Sadly, it might break applications that set DF and don't do PMTU. In that case, go GRE :)</p>
+            <div class="comment-content">The real solution is bit stuffing. But hey, considering we have to make do with what we have on the router already . . .<BR/><BR/>Bunch of answers so far - IPSec and compression look to "hide" the repeating sequence of 0x00s in the data stream. Too bad both of them are relatively "new" features to IOS - 11.x<BR/><BR/>I specially liked LFI - a cheap way to perform some kind of stuffing :)<BR/><BR/>Yours is an incomplete scenario - we don't know how many bits/bytes of 0x00 would trigger the issue . . .<BR/><BR/>Anyway - I had two solutions to propose. GRE tunnels was the first - been around for a long time (10.x). But I will go with a lower overhead one - change the interface MTU to the minimum of 64 bytes for Ethernet. With a 20-bytes IP header and a 20-bytes TCP header (if using TCP), that leaves about 24 bytes for data - as long as your "trigger pattern" is > 24 bytes, you should be OK.<BR/><BR/>Sadly, it might break applications that set DF and don't do PMTU. In that case, go GRE :)</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4617732706147504442">04 November 2007 16:48</a>
+                <a rel="nofollow" id="c4617732706147504442" href="#4617732706147504442">04 November 2007 16:48</a>
               </span>
             </div>
-            <p class="comment-content">@Vladimir: <A HREF="http://en.wikipedia.org/wiki/Manchester_coding" REL="nofollow">Manchester encoding</A> requires twice the frequency spectrum of NRZ/NRZI encoding, so it's not widely used where you have frequency limitations (like telephone wires). <BR/><BR/>As a side note, it has an interesting property: assuming zero and one have opposing polarities (like +12 and -12V), there's no DC component (the average voltage is zero).</p>
+            <div class="comment-content">@Vladimir: <A HREF="http://en.wikipedia.org/wiki/Manchester_coding" REL="nofollow">Manchester encoding</A> requires twice the frequency spectrum of NRZ/NRZI encoding, so it's not widely used where you have frequency limitations (like telephone wires). <BR/><BR/>As a side note, it has an interesting property: assuming zero and one have opposing polarities (like +12 and -12V), there's no DC component (the average voltage is zero).</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3355146079688450944">04 November 2007 17:50</a>
+                <a rel="nofollow" id="c3355146079688450944" href="#3355146079688450944">04 November 2007 17:50</a>
               </span>
             </div>
-            <p class="comment-content">Instead of using this poor buggy hardware the student should switch to RFC1149 or (better) RFC2549. It solves <B>both</B> issues: the link-down and the recurring cost!</p>
+            <div class="comment-content">Instead of using this poor buggy hardware the student should switch to RFC1149 or (better) RFC2549. It solves <B>both</B> issues: the link-down and the recurring cost!</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5410117686126120996">04 November 2007 18:01</a>
+                <a rel="nofollow" id="c5410117686126120996" href="#5410117686126120996">04 November 2007 18:01</a>
               </span>
             </div>
-            <p class="comment-content">GRE has option to garble data with 32bit key. Using<BR/><BR/>interface tunnel0<BR/> tunnel mode gre<BR/> tunnel key 3735928559<BR/><BR/>should solve the problem on old IOS too.</p>
+            <div class="comment-content">GRE has option to garble data with 32bit key. Using<BR/><BR/>interface tunnel0<BR/> tunnel mode gre<BR/> tunnel key 3735928559<BR/><BR/>should solve the problem on old IOS too.</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7106531755055799551">04 November 2007 18:15</a>
+                <a rel="nofollow" id="c7106531755055799551" href="#7106531755055799551">04 November 2007 18:15</a>
               </span>
             </div>
-            <p class="comment-content">The simplest and harmless solution should be using "invert data" in configuration of the serial interface. Doing that changes HDLC algorithm from insert zeroes to insert ones. This should be enought to solve the problem.</p>
+            <div class="comment-content">The simplest and harmless solution should be using "invert data" in configuration of the serial interface. Doing that changes HDLC algorithm from insert zeroes to insert ones. This should be enought to solve the problem.</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2426124723258431080">05 November 2007 00:35</a>
+                <a rel="nofollow" id="c2426124723258431080" href="#2426124723258431080">05 November 2007 00:35</a>
               </span>
             </div>
-            <p class="comment-content">That's a dangerous misconception there - GRE never used the key to encrypt nor "garble" data in any way. It was thought as a very simple check method to prevent insertion of bogus traffic by a 3rd party - you either know the key or you don't.<BR/>But they key travels in the clear on the GRE header, and it isn't used in any way to perform any kind of processing on the payload.<BR/>Check RFC-1701 and RFC-2890 - quoting:<BR/><BR/>"2.1. Key Field (4 octets)<BR/><BR/>   The Key field contains a four octet number which was inserted by the<BR/>   encapsulator. The actual method by which this Key is obtained is<BR/>   beyond the scope of the document. The Key field is intended to be<BR/>   used for identifying an individual traffic flow within a tunnel. For<BR/>   example, packets may need to be routed based on context information<BR/>   not present in the encapsulated data.  The Key field provides this<BR/>   context and defines a logical traffic flow between encapsulator and<BR/>   decapsulator.  Packets belonging to a traffic flow are encapsulated<BR/>   using the same Key value and the decapsulating tunnel endpoint<BR/>   identifies packets belonging to a traffic flow based on the Key Field<BR/>   value."</p>
+            <div class="comment-content">That's a dangerous misconception there - GRE never used the key to encrypt nor "garble" data in any way. It was thought as a very simple check method to prevent insertion of bogus traffic by a 3rd party - you either know the key or you don't.<BR/>But they key travels in the clear on the GRE header, and it isn't used in any way to perform any kind of processing on the payload.<BR/>Check RFC-1701 and RFC-2890 - quoting:<BR/><BR/>"2.1. Key Field (4 octets)<BR/><BR/>   The Key field contains a four octet number which was inserted by the<BR/>   encapsulator. The actual method by which this Key is obtained is<BR/>   beyond the scope of the document. The Key field is intended to be<BR/>   used for identifying an individual traffic flow within a tunnel. For<BR/>   example, packets may need to be routed based on context information<BR/>   not present in the encapsulated data.  The Key field provides this<BR/>   context and defines a logical traffic flow between encapsulator and<BR/>   decapsulator.  Packets belonging to a traffic flow are encapsulated<BR/>   using the same Key value and the decapsulating tunnel endpoint<BR/>   identifies packets belonging to a traffic flow based on the Key Field<BR/>   value."</div>
           </div>
         </li>
       </div>

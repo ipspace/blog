@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15818883829738651247" rel="nofollow">shah</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7126721554836529756">08 January 2014 16:03</a>
+                <a rel="nofollow" id="c7126721554836529756" href="#7126721554836529756">08 January 2014 16:03</a>
               </span>
             </div>
-            <p class="comment-content">How many IP addresses we will see on server&#39;s NIC, One for link local, one Global unicast range, one ULA and one IPv4 address for backward comaptibility. It is operational nighmare. </p>
+            <div class="comment-content">How many IP addresses we will see on server&#39;s NIC, One for link local, one Global unicast range, one ULA and one IPv4 address for backward comaptibility. It is operational nighmare. </div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00215952350534860438" rel="nofollow">Dmitriy Fedorov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5161100784101060451">08 January 2014 21:38</a>
+                <a rel="nofollow" id="c5161100784101060451" href="#5161100784101060451">08 January 2014 21:38</a>
               </span>
             </div>
-            <p class="comment-content">I suspect that having multiple ULA for internal company communication and global for communication with the Intenet will cause lots of issues with application guys since now application has to bind to specific ip for internal communications and another ip to go to the internet. I see many server guys now have very fuzzy understanding of the windows or unix/linux networking so ULA and global will make life a nightmare.<br /><br />many companies use NAT for traffic engineering purposes (especially customer/vendor extranets) and it&#39;s easier to  NAT traffic to make it going the way you want than setting up PBR all over the place. <br /><br />We all know about dark messy corners of the corporate networks, NAT may be the simplest solution to make things done (adding more mess though but that&#39;s another story, we need to get things done and may not have time to redesign existing infrastructure.<br /><br />I am sure that customers will push vendors to implement NAT66 because they need/want it and it will be done regardless if IETF thinks it&#39;s ok or not. <br /></p>
+            <div class="comment-content">I suspect that having multiple ULA for internal company communication and global for communication with the Intenet will cause lots of issues with application guys since now application has to bind to specific ip for internal communications and another ip to go to the internet. I see many server guys now have very fuzzy understanding of the windows or unix/linux networking so ULA and global will make life a nightmare.<br /><br />many companies use NAT for traffic engineering purposes (especially customer/vendor extranets) and it&#39;s easier to  NAT traffic to make it going the way you want than setting up PBR all over the place. <br /><br />We all know about dark messy corners of the corporate networks, NAT may be the simplest solution to make things done (adding more mess though but that&#39;s another story, we need to get things done and may not have time to redesign existing infrastructure.<br /><br />I am sure that customers will push vendors to implement NAT66 because they need/want it and it will be done regardless if IETF thinks it&#39;s ok or not. <br /></div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11493982547680410823" rel="nofollow">Ed Horley</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7611418958071815363">19 January 2014 20:27</a>
+                <a rel="nofollow" id="c7611418958071815363" href="#7611418958071815363">19 January 2014 20:27</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, great blog post. I agree with your thoughts on ULA and Global Unicast and you could certainly run ULA for your corporate connection requirements and use Global Unicast from either PI or PA for each site. I was trying to address more of the BGP multihomed corporate office with a remote branch off that doesn&#39;t do BGP. I think both solutions would work, yours might be a better design long term - go figure, you are smarter than me ;)<br />In regards to Dmitriy&#39;s comments about application guys having to bind to specific IP&#39;s for internal. If the OS is following RFC 6724 then applications will benefit from being passed the correct information for source/destination selection and will get an ordered list. This problem is no different for IPv4 hosts that have multiple IPv4 addresses, there has to be some sort of logic to pick one verse the other. Someone has to make a decision about what IP address to bind to or just bind to them all and reserve a port instead. I disagree with his comments about NAT and PBR. I believe the current IPv4 solution puts many artificial restrictions on redundancy, path selection and artificially imposes restrictions on having to pass through stateful devices. IPv6 gives companies enough addresses but also network prefixes to not have to worry about NAT. This allows you to truly have global and universal firewall rules that are not concerned with things like did the source traffic come as RFC 1918 or the real IPv4 address etc.<br />Finally, I guess we also need to decide, is it NPT66 or NPTv6 - I was using the name from the RFC (http://tools.ietf.org/html/rfc6296) but I have seen you and several others say NPT66 instead. I guess I will update my post to tell folks you might see it referenced either way for now.<br />- Ed<br /></p>
+            <div class="comment-content">Ivan, great blog post. I agree with your thoughts on ULA and Global Unicast and you could certainly run ULA for your corporate connection requirements and use Global Unicast from either PI or PA for each site. I was trying to address more of the BGP multihomed corporate office with a remote branch off that doesn&#39;t do BGP. I think both solutions would work, yours might be a better design long term - go figure, you are smarter than me ;)<br />In regards to Dmitriy&#39;s comments about application guys having to bind to specific IP&#39;s for internal. If the OS is following RFC 6724 then applications will benefit from being passed the correct information for source/destination selection and will get an ordered list. This problem is no different for IPv4 hosts that have multiple IPv4 addresses, there has to be some sort of logic to pick one verse the other. Someone has to make a decision about what IP address to bind to or just bind to them all and reserve a port instead. I disagree with his comments about NAT and PBR. I believe the current IPv4 solution puts many artificial restrictions on redundancy, path selection and artificially imposes restrictions on having to pass through stateful devices. IPv6 gives companies enough addresses but also network prefixes to not have to worry about NAT. This allows you to truly have global and universal firewall rules that are not concerned with things like did the source traffic come as RFC 1918 or the real IPv4 address etc.<br />Finally, I guess we also need to decide, is it NPT66 or NPTv6 - I was using the name from the RFC (http://tools.ietf.org/html/rfc6296) but I have seen you and several others say NPT66 instead. I guess I will update my post to tell folks you might see it referenced either way for now.<br />- Ed<br /></div>
           </div>
         </li>
       </div>

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>9 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">KAV</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5604018522234232229">17 January 2012 07:55</a>
+                <a rel="nofollow" id="c5604018522234232229" href="#5604018522234232229">17 January 2012 07:55</a>
               </span>
             </div>
-            <p class="comment-content">simpler solution: <br /><br />have multiple dmvpn hubs and spokes and multiple ISP on each side <br />to connect it together we need dedicated VRF for each ISP (outside VRFs) and dedicated VRF for each tunnel-interface (inside VRFs). then, configuring each tunnel-interface as usual and redistributing routes between inside VRFs via BGP. <br /><br />with this scheme we have all possible connectivity between any number of hubs and spokes with any number of ISP connections each. <br /><br />P.S.: sorry for bad english.</p>
+            <div class="comment-content">simpler solution: <br /><br />have multiple dmvpn hubs and spokes and multiple ISP on each side <br />to connect it together we need dedicated VRF for each ISP (outside VRFs) and dedicated VRF for each tunnel-interface (inside VRFs). then, configuring each tunnel-interface as usual and redistributing routes between inside VRFs via BGP. <br /><br />with this scheme we have all possible connectivity between any number of hubs and spokes with any number of ISP connections each. <br /><br />P.S.: sorry for bad english.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">KAV</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2326531067624567264">17 January 2012 08:02</a>
+                <a rel="nofollow" id="c2326531067624567264" href="#2326531067624567264">17 January 2012 08:02</a>
               </span>
             </div>
-            <p class="comment-content">addition to my early post - can provide configuration examples <br />also, this scheme working good with linux (but in static tunnel end-poing configuration with linux host. not found the time and desire to properly configure NHRP daemon on linux side</p>
+            <div class="comment-content">addition to my early post - can provide configuration examples <br />also, this scheme working good with linux (but in static tunnel end-poing configuration with linux host. not found the time and desire to properly configure NHRP daemon on linux side</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16171580325527887235" rel="nofollow">Shamal W</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4273135706654026993">13 November 2012 04:52</a>
+                <a rel="nofollow" id="c4273135706654026993" href="#4273135706654026993">13 November 2012 04:52</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />I&#39;ve been trying to find a solution for this scenario for last three months.<br /><br />I have 3 routers each one has ADSL and 3G interfaces. one of them will be a hub and the other two will be spokes. What is the best way to have redundancy for this topology?. I am thinking of configuring 2 DMVPN clouds, one on the DSL and other on the 3G. I know that, if I change the metrics of tunnel interfaces I can make the routers to prefer DSL with EIGRP. <br /><br />All DSL IPs are static Public and the 3G interface on the Hub is also stati. But spokes&#39; 3G IPs are dynamic.<br /><br />So my conundrum is,<br /><br />If I implement the secondary DMVPN as mentioned above, How am I going to configure default routes on the HUB?. ( I can have a specific route on the Spokes, pointing the HUB&#39;s 3G IP, out via it&#39;s 3G interface because I already know the HUB&#39;s 3G IP address(static).)But on the Hub, I already have a default route via DSL interface. Because the Spokes 3G IPs are dynamic, I can&#39;t specify a route on the Hub so that the Hub can reply to ISAKMP initiation traffic received from Spokes 3G-IP back via Hubs 3G interface. So even though hub gets the spokes initiation traffic(for secondary DMVPN) from it&#39;s 3G interface, it&#39;s gonna reply using it&#39;s DSL interface ( is it ?). So I think this may cause lots of issues..<br /><br />Can you please put me in the right direction.. May be there is a better way. This has been a pain in the back side for too long now.<br /><br />Thank you in advance.<br /></p>
+            <div class="comment-content">Hi Ivan,<br /><br />I&#39;ve been trying to find a solution for this scenario for last three months.<br /><br />I have 3 routers each one has ADSL and 3G interfaces. one of them will be a hub and the other two will be spokes. What is the best way to have redundancy for this topology?. I am thinking of configuring 2 DMVPN clouds, one on the DSL and other on the 3G. I know that, if I change the metrics of tunnel interfaces I can make the routers to prefer DSL with EIGRP. <br /><br />All DSL IPs are static Public and the 3G interface on the Hub is also stati. But spokes&#39; 3G IPs are dynamic.<br /><br />So my conundrum is,<br /><br />If I implement the secondary DMVPN as mentioned above, How am I going to configure default routes on the HUB?. ( I can have a specific route on the Spokes, pointing the HUB&#39;s 3G IP, out via it&#39;s 3G interface because I already know the HUB&#39;s 3G IP address(static).)But on the Hub, I already have a default route via DSL interface. Because the Spokes 3G IPs are dynamic, I can&#39;t specify a route on the Hub so that the Hub can reply to ISAKMP initiation traffic received from Spokes 3G-IP back via Hubs 3G interface. So even though hub gets the spokes initiation traffic(for secondary DMVPN) from it&#39;s 3G interface, it&#39;s gonna reply using it&#39;s DSL interface ( is it ?). So I think this may cause lots of issues..<br /><br />Can you please put me in the right direction.. May be there is a better way. This has been a pain in the back side for too long now.<br /><br />Thank you in advance.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7576380775332927602">13 November 2012 07:34</a>
+                <a rel="nofollow" id="c7576380775332927602" href="#7576380775332927602">13 November 2012 07:34</a>
               </span>
             </div>
-            <p class="comment-content">Use different VRFs for different transport (Internet, 3G) networks, then you can have a default route in each VRF.<br /><br />This design is described in my DMVPN webinars (and you get tested router configs implementing it), and also here: http://blog.ioshints.info/2012/01/redundant-dmvpn-designs-part-2-multiple.html</p>
+            <div class="comment-content">Use different VRFs for different transport (Internet, 3G) networks, then you can have a default route in each VRF.<br /><br />This design is described in my DMVPN webinars (and you get tested router configs implementing it), and also here: http://blog.ioshints.info/2012/01/redundant-dmvpn-designs-part-2-multiple.html</div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16171580325527887235" rel="nofollow">Shamal W</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6220369692757159168">13 November 2012 08:09</a>
+                <a rel="nofollow" id="c6220369692757159168" href="#6220369692757159168">13 November 2012 08:09</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />Thanks for your reply. <br /><br />I just bought all 3 DMVPN webinars (special offer :)). Awesome stuff. I will go through those and get back to you if I still have problems.<br /><br />Thanks<br /></p>
+            <div class="comment-content">Hi Ivan,<br /><br />Thanks for your reply. <br /><br />I just bought all 3 DMVPN webinars (special offer :)). Awesome stuff. I will go through those and get back to you if I still have problems.<br /><br />Thanks<br /></div>
           </div>
         </li>
       </div>
@@ -110,10 +105,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16171580325527887235" rel="nofollow">Shamal W</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7598384546552626102">14 November 2012 00:26</a>
+                <a rel="nofollow" id="c7598384546552626102" href="#7598384546552626102">14 November 2012 00:26</a>
               </span>
             </div>
-            <p class="comment-content">I went through your material. Very informative and spot on. Just one thing I want to clarify regarding the above scenario, My spokes need local Internet access ( normal NAT overload). In your videos you recommend to use different VRFs for ISP uplinks and not to use PBR.  <br /><br />So my question is, can I use VRFs and still allow internal users to access internet without going through the hub? <br />What would be my best option here..??<br />Thanks a lot for taking time for this. :)</p>
+            <div class="comment-content">I went through your material. Very informative and spot on. Just one thing I want to clarify regarding the above scenario, My spokes need local Internet access ( normal NAT overload). In your videos you recommend to use different VRFs for ISP uplinks and not to use PBR.  <br /><br />So my question is, can I use VRFs and still allow internal users to access internet without going through the hub? <br />What would be my best option here..??<br />Thanks a lot for taking time for this. :)</div>
           </div>
         </li>
       </div>
@@ -128,10 +123,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2497146152833172884">14 November 2012 07:27</a>
+                <a rel="nofollow" id="c2497146152833172884" href="#2497146152833172884">14 November 2012 07:27</a>
               </span>
             </div>
-            <p class="comment-content">Use a separate VRF for every Internet uplink, global routing table for your internal network. Default route in each VRF points to the corresponding uplink. Internet routing solved.<br /><br />Next, add a default route in the global routing table pointing to one of the Internet uplinks (you MUST include interface in the static route), and configure inter-VRF NAT. <br /><br />Shameless plug: inter-VRF NAT is described in details (together with router configs) in Enterprise MPLS/VPN webinar and my MPLS/VPN books.</p>
+            <div class="comment-content">Use a separate VRF for every Internet uplink, global routing table for your internal network. Default route in each VRF points to the corresponding uplink. Internet routing solved.<br /><br />Next, add a default route in the global routing table pointing to one of the Internet uplinks (you MUST include interface in the static route), and configure inter-VRF NAT. <br /><br />Shameless plug: inter-VRF NAT is described in details (together with router configs) in Enterprise MPLS/VPN webinar and my MPLS/VPN books.</div>
           </div>
         </li>
       </div>
@@ -146,10 +141,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16171580325527887235" rel="nofollow">Shamal W</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1884537097843990569">15 November 2012 11:05</a>
+                <a rel="nofollow" id="c1884537097843990569" href="#1884537097843990569">15 November 2012 11:05</a>
               </span>
             </div>
-            <p class="comment-content">Thanks so much Ivan. Will do that. I wouldn&#39;t hesitate to buy the MPLS/VPN series as well.. because I&#39;m pretty sure they are as good as DMVPN ones. Lot to learn. Totally worth the money ! </p>
+            <div class="comment-content">Thanks so much Ivan. Will do that. I wouldn&#39;t hesitate to buy the MPLS/VPN series as well.. because I&#39;m pretty sure they are as good as DMVPN ones. Lot to learn. Totally worth the money ! </div>
           </div>
         </li>
       </div>
@@ -171,10 +166,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08229688027406056448" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4683767954408580577">11 September 2016 21:51</a>
+                <a rel="nofollow" id="c4683767954408580577" href="#4683767954408580577">11 September 2016 21:51</a>
               </span>
             </div>
-            <p class="comment-content">Hi,<br /><br />I have a bunch of Spoke&#39;s in my Dual Hub Design. And i get the phenomenon that some of them won&#39;t reconnect to the HUB. ( DMVPN Config is all the same) The &quot;sh dmvpn&quot; command shows me &quot;NHRP&quot; and they get stucked. After dis/en -able all works fine. Any suggestions ?</p>
+            <div class="comment-content">Hi,<br /><br />I have a bunch of Spoke&#39;s in my Dual Hub Design. And i get the phenomenon that some of them won&#39;t reconnect to the HUB. ( DMVPN Config is all the same) The &quot;sh dmvpn&quot; command shows me &quot;NHRP&quot; and they get stucked. After dis/en -able all works fine. Any suggestions ?</div>
           </div>
         </li>
       </div>

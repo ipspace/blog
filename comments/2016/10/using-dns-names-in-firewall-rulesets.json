@@ -1,181 +1,200 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "06 October 2016 16:24",
-          "html": "There&#39;s another cool trick you can use there (assuming your firewall supports it): extract server name from TLS certificate sent to the client during TLS key exchange. Not sure how many firewall vendors support that.",
-          "id": "8799020980437821783",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-10-06T16:24:45.423+02:00",
-          "ref": "1564701125440218114",
-          "type": "comment"
-        },
-        {
-          "date": "08 October 2016 21:39",
-          "html": "I know a firewall vendor that at last check (~2 years ago) was able to do that, however they were not able to combine it with certificate validation (CA-based). I&#39;ll let you see the issue with that....",
-          "id": "896943445813769233",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "R.-Adrian F.",
-          "profile": "https://www.blogger.com/profile/11418671261451939355",
-          "pub": "2016-10-08T21:39:39.702+02:00",
-          "ref": "1564701125440218114",
-          "type": "comment"
-        },
-        {
-          "date": "10 October 2016 16:34",
-          "html": "F5 can do this. The ADC part of f5 sees this naturally and can push it to f5 network firewall. ",
-          "id": "3624386594183990506",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "-Brett Wolmarans",
-          "profile": null,
-          "pub": "2016-10-10T16:34:34.175+02:00",
-          "ref": "1564701125440218114",
-          "type": "comment"
-        }
-      ],
-      "date": "06 October 2016 11:10",
-      "html": "I think this would only work if a firewall will keep track of all DNS entries in configuration,regularly refresh cached DNS entries honoring the TTL setting and update IP flow rules every time the change happens. Otherwise you will have traffic blockholing every time someone changes the IP address of the website.<br />As a side node, since Cisco&#39;s ASAs follow the similar approach (resolve hostnames when rules are created and install IP addresses), it makes it really difficult to create firewall rules for SaaS services (O365, Salesforce). And the official workaround is to include huge ranges (/18, /19) that those SaaS services use(hoping that they use them exclusively). Needless to say that it requires update every time they add a new hosting location.",
-      "id": "1564701125440218114",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Michael Kashin",
-      "profile": "https://www.blogger.com/profile/14125341240086592055",
-      "pub": "2016-10-06T11:10:35.529+02:00",
-      "ref": "5290955057712853668",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "06 October 2016 16:23",
-          "html": "Use a different hostname that lists all potential IP addresses used for DNS-based load balancing. Obviously this doesn&#39;t work with third-party services (see comment by Michael Kashin)",
-          "id": "1019903831823766618",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-10-06T16:23:41.927+02:00",
-          "ref": "5389022699768917410",
-          "type": "comment"
-        }
-      ],
-      "date": "06 October 2016 13:52",
-      "html": "Hi Ivan,<br />How would this approach work in case DNS load-balancing is used in the environment?",
-      "id": "5389022699768917410",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2016-10-06T13:52:07.580+02:00",
-      "ref": "5290955057712853668",
-      "type": "comment"
-    },
-    {
-      "date": "06 October 2016 14:21",
-      "html": "The scenario you describe is pretty similar to what I built in the past. In our case we didn&#39;t use DNS though, we used instead puppet classes (we were using puppet for server mgmt). So developers could express what they needed in the form of &quot;src: frontend_svca, dst: backend_b, port: tcp/12345&quot;. Ansible then would expand frontend_svca and backend_b using the data in puppetdb and deploy the address-book and the policy in the firewall. Every time a new frontend or backend was deployed/decomissioned the playbook would be run and the address-book would be updated. In this scenario only new policies had to be approved. If a new server was deployed everything could be deployed automatically.",
-      "id": "2724711624523331849",
-      "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
-      "name": "David Barroso",
-      "profile": "https://www.blogger.com/profile/08333059712411851393",
-      "pub": "2016-10-06T14:21:26.835+02:00",
-      "ref": "5290955057712853668",
-      "type": "comment"
-    },
-    {
-      "date": "06 October 2016 14:48",
-      "html": "Palo Alto do this with FQDN objects. A DNS name is configured in the FQDN object in a security policy. Once committed the management plane performs the DNS lookup and the the resulting IP address(es) are pushed to the data plane (PAN-OS 7.1 allows 32 IP addresses for each FQDN object). The result is then checked every 30 mins by default.<br /><br />https://www.google.com/patents/US8621556",
-      "id": "916017006139929876",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Macca",
-      "profile": "https://www.blogger.com/profile/12304167718910388622",
-      "pub": "2016-10-06T14:48:03.608+02:00",
-      "ref": "5290955057712853668",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "07 October 2016 09:27",
-          "html": "Then you need a firewall with L7 DPI capabilities so it can look into TLS certificate or HTTP GET request.",
-          "id": "3816985206411876786",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-10-07T09:27:32.573+02:00",
-          "ref": "1913091461548004675",
-          "type": "comment"
-        }
-      ],
-      "date": "07 October 2016 09:24",
-      "html": "What happen if multiple websites using same IP (I think it&#39;s common in cloud service today) and we want block one while allow another one website..? ",
-      "id": "1913091461548004675",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2016-10-07T09:24:47.212+02:00",
-      "ref": "5290955057712853668",
-      "type": "comment"
-    },
-    {
-      "date": "07 October 2016 14:56",
-      "html": "I see 2 main points here.<br /><br /> - Ivan&#39;s point is to manage ``on site&#39;&#39; security policy with names rather than IP address. It&#39;s definitively the way to go. I&#39;ll argue that now the best way I see is container micro-services where developers are responsible to define their policies for IP communications. It&#39;s not perfect because devs were big fans of &quot;chmod -R 777&quot; on unix, so I fear they are not to be completely trusted for defining security policies.<br /><br /> - On another side, most comments are asking for filtering &quot;*.download.windowsupdate.com&quot; on the firewall. This particular issue, filtering websites domains, can be easily managed with a good old web proxy. It&#39;s way better than any firewall tricks. Moreover, you can authenticate the requests at the proxy level.",
-      "id": "7613908181768948526",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2016-10-07T14:56:02.831+02:00",
-      "ref": "5290955057712853668",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "09 October 2016 12:54",
-          "html": "None, apart from hoping they&#39;ll go down the route of dinosaurs (together with COBOL apps and a few other things). I know a large global company that a perfect scale-out application infrastructure and destroyed the whole thing by using IP addresses in configuration files spread across all hosts &quot;because you can&#39;t trust an internal DNS server&quot;. Makes you cry...",
-          "id": "3848826382118081714",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-10-09T12:54:19.849+02:00",
-          "ref": "2033281541191010439",
-          "type": "comment"
-        },
-        {
-          "date": "09 October 2016 12:55",
-          "html": "s/that a perfect/that HAS a perfect/",
-          "id": "343744904810178876",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-10-09T12:55:02.774+02:00",
-          "ref": "2033281541191010439",
-          "type": "comment"
-        }
-      ],
-      "date": "08 October 2016 21:45",
-      "html": "Do you happen to have any hint for dealing with people that don&#39;t trust DNS ? I&#39;m not talking only about data, there&#39;s a population that doesn&#39;t trust DNS at all (to the point they don&#39;t publish data into DNS - reliability is part of their argument).",
-      "id": "2033281541191010439",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "R.-Adrian F.",
-      "profile": "https://www.blogger.com/profile/11418671261451939355",
-      "pub": "2016-10-08T21:45:39.057+02:00",
-      "ref": "5290955057712853668",
-      "type": "comment"
-    },
-    {
-      "date": "13 October 2016 12:01",
-      "html": "I think using DNS to update firewall rules always lacks accuracy. Even if see your DNS as a source of truth. You have to take DNS propagation time into account. But how long does it takes? 4 hours? 24 hours? More? On the one hand, client&#39;s TTL may times out faster than firewall control plane&#39;s TTL. Clients will try to connect to new IP - and fail! On the other hand it&#39;s an issue vice-versa, too. Anyway, the DNS approach ends in a multifaceted issue for changes.<br />I guess the only valid &quot;dynamic&quot; way for internal destinations is to use a service discovery system like Consul etc. These directories have an clear view of instances available for a service (plus used tcp/udp port). If an instance is removed, firewall control plane can update the rule.<br />In case of external destinations looking into certificate details is a valid approach but only for TLS/SSL secured connections.",
-      "id": "8340877031926676132",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2016-10-13T12:01:31.146+02:00",
-      "ref": "5290955057712853668",
-      "type": "comment"
-    }
-  ],
-  "count": 15,
-  "id": "5290955057712853668",
-  "type": "post",
-  "url": "2016/10/using-dns-names-in-firewall-rulesets.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "06 October 2016 16:24",
+               "html": "There&#39;s another cool trick you can use there (assuming your firewall supports it): extract server name from TLS certificate sent to the client during TLS key exchange. Not sure how many firewall vendors support that.",
+               "id": "8799020980437821783",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-10-06T16:24:45.423+02:00",
+               "ref": "1564701125440218114",
+               "type": "comment"
+            },
+            {
+               "date": "08 October 2016 21:39",
+               "html": "I know a firewall vendor that at last check (~2 years ago) was able to do that, however they were not able to combine it with certificate validation (CA-based). I&#39;ll let you see the issue with that....",
+               "id": "896943445813769233",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "R.-Adrian F.",
+               "profile": "https://www.blogger.com/profile/11418671261451939355",
+               "pub": "2016-10-08T21:39:39.702+02:00",
+               "ref": "1564701125440218114",
+               "type": "comment"
+            },
+            {
+               "date": "10 October 2016 16:34",
+               "html": "F5 can do this. The ADC part of f5 sees this naturally and can push it to f5 network firewall. ",
+               "id": "3624386594183990506",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "-Brett Wolmarans",
+               "profile": null,
+               "pub": "2016-10-10T16:34:34.175+02:00",
+               "ref": "1564701125440218114",
+               "type": "comment"
+            }
+         ],
+         "date": "06 October 2016 11:10",
+         "html": "I think this would only work if a firewall will keep track of all DNS entries in configuration,regularly refresh cached DNS entries honoring the TTL setting and update IP flow rules every time the change happens. Otherwise you will have traffic blockholing every time someone changes the IP address of the website.<br />As a side node, since Cisco&#39;s ASAs follow the similar approach (resolve hostnames when rules are created and install IP addresses), it makes it really difficult to create firewall rules for SaaS services (O365, Salesforce). And the official workaround is to include huge ranges (/18, /19) that those SaaS services use(hoping that they use them exclusively). Needless to say that it requires update every time they add a new hosting location.",
+         "id": "1564701125440218114",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Michael Kashin",
+         "profile": "https://www.blogger.com/profile/14125341240086592055",
+         "pub": "2016-10-06T11:10:35.529+02:00",
+         "ref": "5290955057712853668",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 October 2016 16:23",
+               "html": "Use a different hostname that lists all potential IP addresses used for DNS-based load balancing. Obviously this doesn&#39;t work with third-party services (see comment by Michael Kashin)",
+               "id": "1019903831823766618",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-10-06T16:23:41.927+02:00",
+               "ref": "5389022699768917410",
+               "type": "comment"
+            }
+         ],
+         "date": "06 October 2016 13:52",
+         "html": "Hi Ivan,<br />How would this approach work in case DNS load-balancing is used in the environment?",
+         "id": "5389022699768917410",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2016-10-06T13:52:07.580+02:00",
+         "ref": "5290955057712853668",
+         "type": "comment"
+      },
+      {
+         "date": "06 October 2016 14:21",
+         "html": "The scenario you describe is pretty similar to what I built in the past. In our case we didn&#39;t use DNS though, we used instead puppet classes (we were using puppet for server mgmt). So developers could express what they needed in the form of &quot;src: frontend_svca, dst: backend_b, port: tcp/12345&quot;. Ansible then would expand frontend_svca and backend_b using the data in puppetdb and deploy the address-book and the policy in the firewall. Every time a new frontend or backend was deployed/decomissioned the playbook would be run and the address-book would be updated. In this scenario only new policies had to be approved. If a new server was deployed everything could be deployed automatically.",
+         "id": "2724711624523331849",
+         "image": "https://1.bp.blogspot.com/-LMLfK3vIwBg/VtcDJHiLQzI/AAAAAAAABik/TMb1dNS7AP8/s32/IMG_0919.png",
+         "name": "David Barroso",
+         "profile": "https://www.blogger.com/profile/08333059712411851393",
+         "pub": "2016-10-06T14:21:26.835+02:00",
+         "ref": "5290955057712853668",
+         "type": "comment"
+      },
+      {
+         "date": "06 October 2016 14:48",
+         "html": "Palo Alto do this with FQDN objects. A DNS name is configured in the FQDN object in a security policy. Once committed the management plane performs the DNS lookup and the the resulting IP address(es) are pushed to the data plane (PAN-OS 7.1 allows 32 IP addresses for each FQDN object). The result is then checked every 30 mins by default.<br /><br />https://www.google.com/patents/US8621556",
+         "id": "916017006139929876",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Macca",
+         "profile": "https://www.blogger.com/profile/12304167718910388622",
+         "pub": "2016-10-06T14:48:03.608+02:00",
+         "ref": "5290955057712853668",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "07 October 2016 09:27",
+               "html": "Then you need a firewall with L7 DPI capabilities so it can look into TLS certificate or HTTP GET request.",
+               "id": "3816985206411876786",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-10-07T09:27:32.573+02:00",
+               "ref": "1913091461548004675",
+               "type": "comment"
+            }
+         ],
+         "date": "07 October 2016 09:24",
+         "html": "What happen if multiple websites using same IP (I think it&#39;s common in cloud service today) and we want block one while allow another one website..? ",
+         "id": "1913091461548004675",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2016-10-07T09:24:47.212+02:00",
+         "ref": "5290955057712853668",
+         "type": "comment"
+      },
+      {
+         "date": "07 October 2016 14:56",
+         "html": "I see 2 main points here.<br /><br /> - Ivan&#39;s point is to manage ``on site&#39;&#39; security policy with names rather than IP address. It&#39;s definitively the way to go. I&#39;ll argue that now the best way I see is container micro-services where developers are responsible to define their policies for IP communications. It&#39;s not perfect because devs were big fans of &quot;chmod -R 777&quot; on unix, so I fear they are not to be completely trusted for defining security policies.<br /><br /> - On another side, most comments are asking for filtering &quot;*.download.windowsupdate.com&quot; on the firewall. This particular issue, filtering websites domains, can be easily managed with a good old web proxy. It&#39;s way better than any firewall tricks. Moreover, you can authenticate the requests at the proxy level.",
+         "id": "7613908181768948526",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2016-10-07T14:56:02.831+02:00",
+         "ref": "5290955057712853668",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "09 October 2016 12:54",
+               "html": "None, apart from hoping they&#39;ll go down the route of dinosaurs (together with COBOL apps and a few other things). I know a large global company that a perfect scale-out application infrastructure and destroyed the whole thing by using IP addresses in configuration files spread across all hosts &quot;because you can&#39;t trust an internal DNS server&quot;. Makes you cry...",
+               "id": "3848826382118081714",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-10-09T12:54:19.849+02:00",
+               "ref": "2033281541191010439",
+               "type": "comment"
+            },
+            {
+               "date": "09 October 2016 12:55",
+               "html": "s/that a perfect/that HAS a perfect/",
+               "id": "343744904810178876",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-10-09T12:55:02.774+02:00",
+               "ref": "2033281541191010439",
+               "type": "comment"
+            }
+         ],
+         "date": "08 October 2016 21:45",
+         "html": "Do you happen to have any hint for dealing with people that don&#39;t trust DNS ? I&#39;m not talking only about data, there&#39;s a population that doesn&#39;t trust DNS at all (to the point they don&#39;t publish data into DNS - reliability is part of their argument).",
+         "id": "2033281541191010439",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "R.-Adrian F.",
+         "profile": "https://www.blogger.com/profile/11418671261451939355",
+         "pub": "2016-10-08T21:45:39.057+02:00",
+         "ref": "5290955057712853668",
+         "type": "comment"
+      },
+      {
+         "date": "13 October 2016 12:01",
+         "html": "I think using DNS to update firewall rules always lacks accuracy. Even if see your DNS as a source of truth. You have to take DNS propagation time into account. But how long does it takes? 4 hours? 24 hours? More? On the one hand, client&#39;s TTL may times out faster than firewall control plane&#39;s TTL. Clients will try to connect to new IP - and fail! On the other hand it&#39;s an issue vice-versa, too. Anyway, the DNS approach ends in a multifaceted issue for changes.<br />I guess the only valid &quot;dynamic&quot; way for internal destinations is to use a service discovery system like Consul etc. These directories have an clear view of instances available for a service (plus used tcp/udp port). If an instance is removed, firewall control plane can update the rule.<br />In case of external destinations looking into certificate details is a valid approach but only for TLS/SSL secured connections.",
+         "id": "8340877031926676132",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2016-10-13T12:01:31.146+02:00",
+         "ref": "5290955057712853668",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "15 July 2021 06:17",
+               "html": "<p>Nothing fundamental has changed since 2016 ;) It still all depends on whether you trust DNS.</p>\n\n<p>If you want to do things fast, you have to filter on IP addresses, and maybe use DNS to change the ACLs in the background. </p>\n\n<p>However, if you&#39;re already doing deep packet inspection, then of course you could use TLS negotiation to figure out the real server name (and maybe even check its certificate) or as someone wrote in the comments &quot;use the good old web proxy&quot;</p>\n",
+               "id": "697",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-07-15T18:17:14",
+               "ref": "695",
+               "type": "comment"
+            }
+         ],
+         "date": "15 July 2021 01:46",
+         "html": "<p>Apologies for bringing up an old topic, but I am curious if your thinking on this has changed? </p>\n\n<p>We are seeing more business applications that require cloud based services (such as licensing servers) that dont have static IP addresses, so rely on firewall rules that use DNS hostnames. </p>\n",
+         "id": "695",
+         "name": "Carl Thomas",
+         "pub": "2021-07-15T13:46:53",
+         "type": "comment"
+      }
+   ],
+   "count": 9,
+   "id": "5290955057712853668",
+   "type": "post",
+   "url": "2016/10/using-dns-names-in-firewall-rulesets.html"
 }

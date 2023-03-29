@@ -1,0 +1,63 @@
+{
+   "comments": [
+      {
+         "date": "22 January 2021 12:29",
+         "html": "<p>&gt; <em>RPKI cannot be used to validate the path between your network and the origin. The bad guys can still spoof the AS path.</em>\n&gt; <em>Can we stop the bad guys doing that? Yes, but not with RPKI.</em></p>\n\n<p>This is true, but not the full story.  While you can&#39;t <em>stop</em> the bad guys with RPKI, RPKI can often limit the <em>reach</em> of the bad guys.</p>\n\n<p>Let&#39;s say that I am announcing 2001:db8:1200::/40 in Sweden, and have RPKI saying that it can only be announced by AS 65001, and /40 is the longest prefix length allowed for that prefix.  A hijacker can then not use more specific announcments (e.g. 2001:db8:1200::/41) to win over my legitimate announcement.  Instead they need to announce the exact same prefix I do, but with a shorter AS path.  And getting a shorter AS path can actually be difficult.</p>\n\n<p>To get the announcement out, the hijacker needs to be a customer of some transit provider, and have an AS number of their own, e.g. 65002.  The transit provider will not accept an announcment from them with an AS path consisting of <em>only</em> AS 65001; they need to send the AS path &quot;65002&nbsp;65001&quot;, which immediately gives them a disadvantage, since <em>my</em>, legitimate, announcment consists of only AS 65001.  If I and the hijacker use the same transit provider, they lose immediately.</p>\n\n<p>If the hijacker is further away, e.g. located in America, then there is a good chance that they can trick others in America to use their announcment.  But over here in Europe, there is reasonable chance that their announcment will lose against mine, since theirs is likely to have passed through more ASes than mine, <em>and</em> they have that one AS disadvantage to start with.  And within Sweden, they are even less likely to win.</p>\n\n<p>So RPKI can help a little bit, making life slightly more difficult for hijackers, but it is certainly not a panacea.  You should absolutely not <em>trust</em> it to protect you against hostile hijacks.</p>\n",
+         "id": "353",
+         "name": " Bellman",
+         "pub": "2021-01-22T00:29:53",
+         "type": "comment"
+      },
+      {
+         "date": "22 January 2021 07:20",
+         "html": "<p>Ivan, besides ROA--address origin validation, S-BGP also specifies Path Validation/Route Attestation. This one can deal with AS path spoofing, but comes with considerable overhead, both for the Update msg content, and the CPU utilization, so while path validation can be done, looks like major vendors like Cisco have opted not to implement it. </p>\n\n<p>And speaking of performance overhead associated with S-BGP, looks to me like it&#39;s often omitted in S-BGP discussions, but it can be a significant issue given the dynamics of the Internet. The Internet always has a high rate of BGP update/churn due to say, hot-potato routing changes, which is exacerbated by the density of connections in the lower-tier part of the Internet these days -- basically the Internet is getting both flatter and denser -- so doesn&#39;t processing S-BGP require considerable CPU power with this high-level of churn? Also, with the flatter and denser Internet topology, path hunting activity also tends to increase, again adding more updates to be processed. </p>\n\n<p>It would be very good to understand the performance implication as more and more prefixes make use of S-BGP. </p>\n\n<p>Also, S-BGP is more effective when there&#39;s widespread deployment. Looking at the current chart on the AWS blog post, we have 1.5m prefixes on the map as of now, which is good but still very small. So there&#39;s still a long way to go when S-BGP will become truly effective at preventing prefix hijacking, among other things. </p>\n\n<p>And just like you said, since BGP is such a complex ecosystem, one tool is never enough. As of now, the state of BGP security, for both control and data plane, is still very much incomplete and fragmented. The performance angle also needs to be worked out/cleared up as more and more prefixes &amp; AS are added, if it wants a chance of widespread adoption, or else it can potentially go the way of large-scale QOS or Multicast, or LISP even. </p>\n",
+         "id": "354",
+         "name": " Minh Ha",
+         "pub": "2021-01-22T07:20:45",
+         "type": "comment"
+      },
+      {
+         "date": "22 January 2021 01:36",
+         "html": "<p>@Minh Ha: Tried to find anything about real-life S-BGP deployment and failed. Do you have anything you could point me to?</p>\n\n<p>While the computational complexity of S-BGP could potentially reduce the churn (like using bitcoins instead of credit cards would probably reduce the number of e-commerce transactions ;) keep in mind the minor inconvenience of bringing a new BGP session up after a link failure or node restart. Do you really want to wait for minutes or hours to have the full BGP feed properly validated while the customers annoyed with suboptimal performance are screaming at you?</p>\n",
+         "id": "355",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-01-22T13:36:17",
+         "type": "comment"
+      },
+      {
+         "date": "22 January 2021 09:59",
+         "html": "<p>&gt; ignore invalid prefixes and prefer signed over unsigned prefixes&hellip;</p>\n\n<p>This seems quite strange: for a given prefix, you can&#39;t be both signed and unsigned and almost no vendor allows you to override prefix specificity to select a route (Linux would be able to do that by chaining two routing tables, one with signed prefixes and one with unsigned ones).</p>\n",
+         "id": "356",
+         "name": " Vincent Bernat",
+         "pub": "2021-01-22T21:59:57",
+         "type": "comment"
+      },
+      {
+         "date": "22 January 2021 10:04",
+         "html": "To correct my previous comment: it does not even make sense to prefer a less specific signed prefix over a more specific non signed prefix since this is not a possible configuration: either the more specific prefix is also signed or it is invalid.<br />\n\n\n",
+         "id": "357",
+         "name": " Vincent Bernat",
+         "pub": "2021-01-22T22:04:14",
+         "type": "comment"
+      },
+      {
+         "date": "24 January 2021 07:54",
+         "html": "<p>@Ivan, none at all :/. I&#39;ve also tried digging around, but come up dry. Looks to me like since S-BGP offers an incomplete solution, at potentially considerable performance cost, and offers no competitive advantage, economics-wise, to first movers, plus it requires wholesale deployment to the whole Internet to work effectively, which won&#39;t happen anytime soon given the decentralized-democracy Internet model, it simply hasn&#39;t gained much traction over the decades. </p>\n\n<p>So S-BGP seems to indeed look like large-scale QoS, Multicast, LISP and IPv6 multihoming problems. I don&#39;t want to sound like a permabear in a raging bull market after Uncle Jeff&#39;s announcement of AWS adoption of S-BGP, but it appears any effort that requires total-coverage deployment to work, has failed to gain widespread acceptance in the democratic Internet, till date. </p>\n\n<p>I did find something that looks like a survey of S-BGP ROA coverage here:</p>\n\n<p>https://ripe69.ripe.net/presentations/103-route-origin-validation.pdf</p>\n\n<p>It was in Nov 2014 so it was recent enough to still be relevant. You might want to read it Ivan, as Randy Bush is also part of that :)) .</p>\n\n<p>The same people also wrote an accompanying report/paper covering the same topic in greater detail, which answers at least part of Vincent&#39;s question above, from what I can see:</p>\n\n<p>https://www.semanticscholar.org/paper/Measuring-BGP-Route-Origin-Registration-and-Iamartino-Pelsser/f5e3b51727b164962794b3e3cf523f4dc86cd31d</p>\n\n<p>According to them, looks like invalid prefixes that get rejected by ROA can be rescued by summary prefixes that cover them. That raises a question of effectiveness for S-BGP re prefix hijacking prevention, even if it gets deployed more widely. </p>\n\n<p>As for the prefix hijacking/spoofing problem alone, which is one of the things S-BGP proposes to solve with considerable pain and suffering, IMO it&#39;s best to leave the complexity at the edge, and build the intelligence into the endpoints, to be able to detect the destination&#39;s integrity, instead of trying to turn the network into a kitchen sink, and a dirty one at that. But given the tendency to turn the network into a be-all end-all sort of omnipotent god, I don&#39;t see how it&#39;s happening in a hurry :p. </p>\n",
+         "id": "359",
+         "name": " Minh Ha",
+         "pub": "2021-01-24T07:54:42",
+         "type": "comment"
+      },
+      {
+         "date": "24 January 2021 07:20",
+         "html": "<p>@Vincent: while what I wrote is (probably) technically correct (at least the initial idea was to set lower LOCPREF for valid signed prefixes), an unsigned prefix for which a ROA exists would be marked <em>invalid</em>, so it&#39;s a purely hypothetical scenario. Thanks for pointing it out!</p>\n",
+         "id": "360",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-01-24T19:20:49",
+         "type": "comment"
+      }
+   ],
+   "count": 7,
+   "type": "post",
+   "url": "2021/01/bgp-rpki-aws.html"
+}

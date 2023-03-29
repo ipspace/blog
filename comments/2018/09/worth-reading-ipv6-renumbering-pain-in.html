@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>9 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#129044401493062718">07 September 2018 10:28</a>
+                <a rel="nofollow" id="c129044401493062718" href="#129044401493062718">07 September 2018 10:28</a>
               </span>
             </div>
-            <p class="comment-content">Cisco has some magic for you: IPv6 Generic Prefix</p>
+            <div class="comment-content">Cisco has some magic for you: IPv6 Generic Prefix</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6781459731917952624">07 September 2018 11:50</a>
+                <a rel="nofollow" id="c6781459731917952624" href="#6781459731917952624">07 September 2018 11:50</a>
               </span>
             </div>
-            <p class="comment-content">I remember that feature. I either wrote about that a long while ago, or covered it in IPv6 design &amp; configuration webinar: https://www.ipspace.net/Building_Large_IPv6_Service_Provider_Networks<br /><br />However, AFAIK, while you can use generic prefix to number interfaces, you can&#39;t use in an IPv6 ACL (even on the same box) or anywhere else in the network. Have I missed something?</p>
+            <div class="comment-content">I remember that feature. I either wrote about that a long while ago, or covered it in IPv6 design &amp; configuration webinar: https://www.ipspace.net/Building_Large_IPv6_Service_Provider_Networks<br /><br />However, AFAIK, while you can use generic prefix to number interfaces, you can&#39;t use in an IPv6 ACL (even on the same box) or anywhere else in the network. Have I missed something?</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://ericduplantis-plus-ipspace-at-gmail.com" rel="nofollow">Eric Duplantis</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6275842004308762583">10 September 2018 23:10</a>
+                <a rel="nofollow" id="c6275842004308762583" href="#6275842004308762583">10 September 2018 23:10</a>
               </span>
             </div>
-            <p class="comment-content">Interesting read. I couldn&#39;t help but feel like this is an apples-to-oranges test, though. I can&#39;t deny that not having to renumber private IPv4 is less work than having to renumber IPv6, but I don&#39;t think that means that IPv6 is intrinsically all that much harder to renumber. How well does IPv4 fare when you do a merger/acquisition and have to renumber or internally NAT to avoid overlapping use of RFC 1918 addresses? What&#39;s even worse is that the addresses might not be as obviously wrong in ACLs/firewall rules/service configurations because you&#39;re still using 10 space, but that same prefix now means something different than it used to.<br /><br />Another thing is that a lot of the config files and firewall rules that had to be modified here were governing internal access (mail, logs, DNS, firewall rules to reach those things, etc.). To me this strikes me as a good case study on the importance of deploying ULA prefixes alongside global unicast. I suppose it&#39;s doubly important if you can foresee having to renumber (not having PI space, for example). Also, ULA&#39;s randomized prefixes help it avoid the circumstance above where you might be forced to readdress your private space.  <br /><br />Nonetheless, still a good reminder that the existence of RAs and preferred lifetimes doesn&#39;t automagically trivialize re-addressing.</p>
+            <div class="comment-content">Interesting read. I couldn&#39;t help but feel like this is an apples-to-oranges test, though. I can&#39;t deny that not having to renumber private IPv4 is less work than having to renumber IPv6, but I don&#39;t think that means that IPv6 is intrinsically all that much harder to renumber. How well does IPv4 fare when you do a merger/acquisition and have to renumber or internally NAT to avoid overlapping use of RFC 1918 addresses? What&#39;s even worse is that the addresses might not be as obviously wrong in ACLs/firewall rules/service configurations because you&#39;re still using 10 space, but that same prefix now means something different than it used to.<br /><br />Another thing is that a lot of the config files and firewall rules that had to be modified here were governing internal access (mail, logs, DNS, firewall rules to reach those things, etc.). To me this strikes me as a good case study on the importance of deploying ULA prefixes alongside global unicast. I suppose it&#39;s doubly important if you can foresee having to renumber (not having PI space, for example). Also, ULA&#39;s randomized prefixes help it avoid the circumstance above where you might be forced to readdress your private space.  <br /><br />Nonetheless, still a good reminder that the existence of RAs and preferred lifetimes doesn&#39;t automagically trivialize re-addressing.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://blog.webernetz.net" rel="nofollow">Johannes Weber</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4820455041150825354">11 September 2018 14:17</a>
+                <a rel="nofollow" id="c4820455041150825354" href="#4820455041150825354">11 September 2018 14:17</a>
               </span>
             </div>
-            <p class="comment-content">Hey Eric,<br /><br />yes, you are totally correct that the comparison between &quot;using RFC 1918 for IPv4 &lt;- no renumbering&quot; to &quot;using IPv6 GUI &lt;- renumber&quot; is not fair. Indeed, renumbering an IPv4 network with public addresses *inside* your network would be the same work as for IPv6.<br /><br />Hence the post at least shows that the current practice (RFC 1918 for IPv4 while GUA for IPv6) is unequal when it comes to an ISP change.<br /><br />And yes, it forces another discussion whether ULAs are good/useful or not. To my mind it is still recommended to avoid any kind of NAT/NPT/whatever to decrease the complexity of your network. You SHOULD go for PI space. However, not having PI space you must balance reasons whether to use ULAs (and NAT) or GUAs with the risk of renumbering...<br /><br />Thanks for your note anyway. I&#39;ll add a sentence to the blog post stating that it is not an &quot;IPv6 is bad&quot; thing, but rather an &quot;since we don&#39;t use public IPv4 addresses inside our networks, we have new challenges with IPv6 when it comes to an ISP change&quot;.<br /><br />Ciao,<br />Johannes<br /></p>
+            <div class="comment-content">Hey Eric,<br /><br />yes, you are totally correct that the comparison between &quot;using RFC 1918 for IPv4 &lt;- no renumbering&quot; to &quot;using IPv6 GUI &lt;- renumber&quot; is not fair. Indeed, renumbering an IPv4 network with public addresses *inside* your network would be the same work as for IPv6.<br /><br />Hence the post at least shows that the current practice (RFC 1918 for IPv4 while GUA for IPv6) is unequal when it comes to an ISP change.<br /><br />And yes, it forces another discussion whether ULAs are good/useful or not. To my mind it is still recommended to avoid any kind of NAT/NPT/whatever to decrease the complexity of your network. You SHOULD go for PI space. However, not having PI space you must balance reasons whether to use ULAs (and NAT) or GUAs with the risk of renumbering...<br /><br />Thanks for your note anyway. I&#39;ll add a sentence to the blog post stating that it is not an &quot;IPv6 is bad&quot; thing, but rather an &quot;since we don&#39;t use public IPv4 addresses inside our networks, we have new challenges with IPv6 when it comes to an ISP change&quot;.<br /><br />Ciao,<br />Johannes<br /></div>
           </div>
         </li>
       </div>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://ericduplantis-plus-ipspace-at-gmail.com" rel="nofollow">Eric Duplantis</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4065449466752827636">11 September 2018 17:49</a>
+                <a rel="nofollow" id="c4065449466752827636" href="#4065449466752827636">11 September 2018 17:49</a>
               </span>
             </div>
-            <p class="comment-content">Hi Johannes, thanks for the note. Yes, I definitely got your original point as written --- the current addressing reality isn&#39;t changing so the asymmetry in difficulty still exists in practice. Adding a note might help misunderstanding for folks who are still on the fence about whether they should be deploying v6 at all :)<br /><br />And yes, I completely agree. NAT should be avoided unless absolutely necessary (AS multihoming with 2 sets of non-PI space?). The goal for ULAs is not to NAT66 it to the outside, but rather to put RFC 6724 to the test. If you construct your ACLs/rules around the ULA addresses and make sure that your DNS resolvers give out ULA addresses for local clients, they should make the right choice and connect with ULA even when a global address exists.</p>
+            <div class="comment-content">Hi Johannes, thanks for the note. Yes, I definitely got your original point as written --- the current addressing reality isn&#39;t changing so the asymmetry in difficulty still exists in practice. Adding a note might help misunderstanding for folks who are still on the fence about whether they should be deploying v6 at all :)<br /><br />And yes, I completely agree. NAT should be avoided unless absolutely necessary (AS multihoming with 2 sets of non-PI space?). The goal for ULAs is not to NAT66 it to the outside, but rather to put RFC 6724 to the test. If you construct your ACLs/rules around the ULA addresses and make sure that your DNS resolvers give out ULA addresses for local clients, they should make the right choice and connect with ULA even when a global address exists.</div>
           </div>
         </li>
       </div>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4021113467188181106">11 September 2018 18:32</a>
+                <a rel="nofollow" id="c4021113467188181106" href="#4021113467188181106">11 September 2018 18:32</a>
               </span>
             </div>
-            <p class="comment-content">&quot;If you construct your ACLs/rules around the ULA addresses and make sure that your DNS resolvers give out ULA addresses for local clients, they should make the right choice and connect with ULA even when a global address exists.&quot; &lt;&lt; I&#39;m afraid that people who tested real-life implementations don&#39;t necessarily share your optimism ;))</p>
+            <div class="comment-content">&quot;If you construct your ACLs/rules around the ULA addresses and make sure that your DNS resolvers give out ULA addresses for local clients, they should make the right choice and connect with ULA even when a global address exists.&quot; &lt;&lt; I&#39;m afraid that people who tested real-life implementations don&#39;t necessarily share your optimism ;))</div>
           </div>
         </li>
       </div>
@@ -143,10 +138,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://ericduplantis-plus-ipspace-at-gmail.com" rel="nofollow">Eric Duplantis</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5235626009602106973">11 September 2018 19:30</a>
+                <a rel="nofollow" id="c5235626009602106973" href="#5235626009602106973">11 September 2018 19:30</a>
               </span>
             </div>
-            <p class="comment-content">I suppose that&#39;s why I phrased it as &quot;put[ting] RFC 6724 to the test.&quot; I&#39;m not as optimistic as the narrative I suggest...<br /><br />Do you know of any test results regarding implementations that have problems using multiple address classes? A lot of the case studies I&#39;ve read have more been focused on Happy Eyeballs I and II with v4 rather than source v6 address choice. I haven&#39;t done my own testing (yet) as to how well implementers actually did ...</p>
+            <div class="comment-content">I suppose that&#39;s why I phrased it as &quot;put[ting] RFC 6724 to the test.&quot; I&#39;m not as optimistic as the narrative I suggest...<br /><br />Do you know of any test results regarding implementations that have problems using multiple address classes? A lot of the case studies I&#39;ve read have more been focused on Happy Eyeballs I and II with v4 rather than source v6 address choice. I haven&#39;t done my own testing (yet) as to how well implementers actually did ...</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -162,10 +157,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://insinuator.net/tag/ipv6/" rel="nofollow">Enno Rey</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2453472657114020546">11 September 2018 19:39</a>
+                <a rel="nofollow" id="c2453472657114020546" href="#2453472657114020546">11 September 2018 19:39</a>
               </span>
             </div>
-            <p class="comment-content">Hi Eric,<br /><br />we did some RFC 6724 related testing a while ago. The results can be found here:<br />https://static.ernw.de/whitepaper/ERNW_Whitepaper57_IPv6_lab_source_address_selection_signed.pdf<br />slides of talk at RIPE74: https://ripe74.ripe.net/wp-content/uploads/presentations/108-ERNW_RIPE74_IPv6_AddressSelection.pdf<br />video of that one: https://ripe74.ripe.net/archives/video/98/<br /><br />hope this helps,<br />best<br /><br />Enno</p>
+            <div class="comment-content">Hi Eric,<br /><br />we did some RFC 6724 related testing a while ago. The results can be found here:<br />https://static.ernw.de/whitepaper/ERNW_Whitepaper57_IPv6_lab_source_address_selection_signed.pdf<br />slides of talk at RIPE74: https://ripe74.ripe.net/wp-content/uploads/presentations/108-ERNW_RIPE74_IPv6_AddressSelection.pdf<br />video of that one: https://ripe74.ripe.net/archives/video/98/<br /><br />hope this helps,<br />best<br /><br />Enno</div>
           </div>
         </li>
       </div>
@@ -180,10 +175,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://ericduplantis-plus-ipspace-at-gmail.com" rel="nofollow">Eric Duplantis</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6698545480374774577">11 September 2018 22:10</a>
+                <a rel="nofollow" id="c6698545480374774577" href="#6698545480374774577">11 September 2018 22:10</a>
               </span>
             </div>
-            <p class="comment-content">Enno, this is a fantastic resource. Thanks for chiming in with this. I&#39;m also pleasantly surprised to see that the real world implementations aren&#39;t actually as bad as they could have been considering the complexity of the rules.</p>
+            <div class="comment-content">Enno, this is a fantastic resource. Thanks for chiming in with this. I&#39;m also pleasantly surprised to see that the real world implementations aren&#39;t actually as bad as they could have been considering the complexity of the rules.</div>
           </div>
         </li>
       </div>

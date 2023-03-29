@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>13 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Stefan Paletta</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4582293303470111508">30 September 2013 09:56</a>
+                <a rel="nofollow" id="c4582293303470111508" href="#4582293303470111508">30 September 2013 09:56</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />correct me if I’m wrong, but thanks to RFC 6724 we can have a single ULA space in the VPN and ISP PA addresses at each site. No need for NAT, and no need for including the ISP PA in the VPN.</p>
+            <div class="comment-content">Hi Ivan,<br /><br />correct me if I’m wrong, but thanks to RFC 6724 we can have a single ULA space in the VPN and ISP PA addresses at each site. No need for NAT, and no need for including the ISP PA in the VPN.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2281641705902400087">30 September 2013 14:34</a>
+                <a rel="nofollow" id="c2281641705902400087" href="#2281641705902400087">30 September 2013 14:34</a>
               </span>
             </div>
-            <p class="comment-content">Of course that&#39;s the right way to do it ... but it needs ULA (which was my point).</p>
+            <div class="comment-content">Of course that&#39;s the right way to do it ... but it needs ULA (which was my point).</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Lennie</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7399795543962703524">30 September 2013 10:39</a>
+                <a rel="nofollow" id="c7399795543962703524" href="#7399795543962703524">30 September 2013 10:39</a>
               </span>
             </div>
-            <p class="comment-content">RA supports sending multiple prefixes, routing and DNS resolver information including seperate TTL for prefixes.<br /><br />So why not:<br />- send prefix for ULA<br />- send prefix for ISP1 before and during transition<br />- send prefix for ISP2 during and after transition<br />- configure firewall on the outside to only let traffic out<br />- put hosts in DNS with ULA-addresses<br />- firewall the servers to only allow for ULA-traffic<br /><br />I didn&#39;t see a need for NAT.<br /><br />Linux supports all of this, I believe. So if your hosts use Linux you could be done, right ? SEND would be interesting too but let&#39;s talk about one problem at a time.<br /><br />So RA has everything that you need, right ? This breaks down if you know that at least Windows doesn&#39;t support the DNS RA-option. So you&#39;ll need DHCPv6 too.</p>
+            <div class="comment-content">RA supports sending multiple prefixes, routing and DNS resolver information including seperate TTL for prefixes.<br /><br />So why not:<br />- send prefix for ULA<br />- send prefix for ISP1 before and during transition<br />- send prefix for ISP2 during and after transition<br />- configure firewall on the outside to only let traffic out<br />- put hosts in DNS with ULA-addresses<br />- firewall the servers to only allow for ULA-traffic<br /><br />I didn&#39;t see a need for NAT.<br /><br />Linux supports all of this, I believe. So if your hosts use Linux you could be done, right ? SEND would be interesting too but let&#39;s talk about one problem at a time.<br /><br />So RA has everything that you need, right ? This breaks down if you know that at least Windows doesn&#39;t support the DNS RA-option. So you&#39;ll need DHCPv6 too.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8864376991522081846">30 September 2013 14:35</a>
+                <a rel="nofollow" id="c8864376991522081846" href="#8864376991522081846">30 September 2013 14:35</a>
               </span>
             </div>
-            <p class="comment-content">Would this help? http://blog.ipspace.net/2011/12/ipv6-multihoming-without-nat-problem.html</p>
+            <div class="comment-content">Would this help? http://blog.ipspace.net/2011/12/ipv6-multihoming-without-nat-problem.html</div>
           </div>
         </li>
       </div>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Lennie</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6199159477134357017">01 October 2013 00:50</a>
+                <a rel="nofollow" id="c6199159477134357017" href="#6199159477134357017">01 October 2013 00:50</a>
               </span>
             </div>
-            <p class="comment-content">OK, I like a challenge. ;-)<br /><br />The setup below isn&#39;t perfect, my comment was about replacing one ISP with an other. Not permanent multihoming.<br /><br />Here is an attempt: you make sure the traffic of both ISP prefixes is send to the same router connected to both ISPs.<br /><br />Traffic that arrives at the router can just source route the traffic to the right ISP. I do at home with 2 tunnel providers, works pretty good.<br /><br />The router is a PC-router and pings the other endpoint of the tunnel. And I do use the short TTL and remove the prefix from the RA when a tunnel is down.</p>
+            <div class="comment-content">OK, I like a challenge. ;-)<br /><br />The setup below isn&#39;t perfect, my comment was about replacing one ISP with an other. Not permanent multihoming.<br /><br />Here is an attempt: you make sure the traffic of both ISP prefixes is send to the same router connected to both ISPs.<br /><br />Traffic that arrives at the router can just source route the traffic to the right ISP. I do at home with 2 tunnel providers, works pretty good.<br /><br />The router is a PC-router and pings the other endpoint of the tunnel. And I do use the short TTL and remove the prefix from the RA when a tunnel is down.</div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04540820319538497395" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6363947721769876550">30 September 2013 14:44</a>
+                <a rel="nofollow" id="c6363947721769876550" href="#6363947721769876550">30 September 2013 14:44</a>
               </span>
             </div>
-            <p class="comment-content">We have a problem that we can´t fix easy in IPv6.<br /><br />We provide outsourcing.<br /><br />We have 94.x.x.x for external addressing and 10.x.x.x for internal addressing.<br /><br />Our network mangement system creates access-list to isolate each customer in a /24. By default customers are no allowed to talk to eash other. But it can be opened.<br />Still each customer is able to connect to other customers on external IP because of firewall u-turn policy´s.<br /><br />How do you do this in IPv6? We don´t want run dedicated firewalls for every customer and or vlan based firewalls.<br /><br />The only solution i see is ULA?<br /><br />Thomas</p>
+            <div class="comment-content">We have a problem that we can´t fix easy in IPv6.<br /><br />We provide outsourcing.<br /><br />We have 94.x.x.x for external addressing and 10.x.x.x for internal addressing.<br /><br />Our network mangement system creates access-list to isolate each customer in a /24. By default customers are no allowed to talk to eash other. But it can be opened.<br />Still each customer is able to connect to other customers on external IP because of firewall u-turn policy´s.<br /><br />How do you do this in IPv6? We don´t want run dedicated firewalls for every customer and or vlan based firewalls.<br /><br />The only solution i see is ULA?<br /><br />Thomas</div>
           </div>
         </li>
       </div>
@@ -143,10 +138,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17446363221396052047" rel="nofollow">Sander Steffann</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6439255588148257872">30 September 2013 18:32</a>
+                <a rel="nofollow" id="c6439255588148257872" href="#6439255588148257872">30 September 2013 18:32</a>
               </span>
             </div>
-            <p class="comment-content">For the mid-size organisations another option is to use a LISP based ISP for your addresses and one or more &#39;normal&#39; ISPs just for the uplinks. Packets between multiple sites will even automatically use the normal routing path between the CPEs :-)</p>
+            <div class="comment-content">For the mid-size organisations another option is to use a LISP based ISP for your addresses and one or more &#39;normal&#39; ISPs just for the uplinks. Packets between multiple sites will even automatically use the normal routing path between the CPEs :-)</div>
           </div>
         </li>
       </div>
@@ -161,10 +156,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://tnt.aufbix.org/" rel="nofollow">jernej horvat</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3053160476880376478">30 September 2013 23:04</a>
+                <a rel="nofollow" id="c3053160476880376478" href="#3053160476880376478">30 September 2013 23:04</a>
               </span>
             </div>
-            <p class="comment-content">€50/year per RIR object <br />AS# + IPv6 = 100€ <br />+ taxes </p>
+            <div class="comment-content">€50/year per RIR object <br />AS# + IPv6 = 100€ <br />+ taxes </div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.nerd-residenz.de" rel="nofollow">TabTwo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4243824582373445607">04 October 2013 13:32</a>
+                <a rel="nofollow" id="c4243824582373445607" href="#4243824582373445607">04 October 2013 13:32</a>
               </span>
             </div>
-            <p class="comment-content">The tablegroth won&#39;t be a problem because theres LISP, everywhere! It&#39;s more common than IPv6 I&#39;ve been told.</p>
+            <div class="comment-content">The tablegroth won&#39;t be a problem because theres LISP, everywhere! It&#39;s more common than IPv6 I&#39;ve been told.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -198,10 +193,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3927047024628523785">04 October 2013 17:36</a>
+                <a rel="nofollow" id="c3927047024628523785" href="#3927047024628523785">04 October 2013 17:36</a>
               </span>
             </div>
-            <p class="comment-content">Yeah, I know that approach. &quot;LISP is the answer ... what exactly is the problem?&quot;<br /><br />Assuming you&#39;re not totally trolling us, do check the IPv6 stats<br /><br />http://www.internetsociety.org/deploy360/ipv6/statistics/<br /><br />When you find something remotely similar for LISP, do let me know. I&#39;m waiting ... ;)</p>
+            <div class="comment-content">Yeah, I know that approach. &quot;LISP is the answer ... what exactly is the problem?&quot;<br /><br />Assuming you&#39;re not totally trolling us, do check the IPv6 stats<br /><br />http://www.internetsociety.org/deploy360/ipv6/statistics/<br /><br />When you find something remotely similar for LISP, do let me know. I&#39;m waiting ... ;)</div>
           </div>
         </li>
       </div>
@@ -223,10 +218,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00215952350534860438" rel="nofollow">Dmitriy Fedorov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4324800971173713054">08 October 2013 05:25</a>
+                <a rel="nofollow" id="c4324800971173713054" href="#4324800971173713054">08 October 2013 05:25</a>
               </span>
             </div>
-            <p class="comment-content">The refusal of IETF to implement NAT66 will result in large amount of incompatible proprietary NAT66 implementations, there will be high demand for sure. Nobody mentioned here that source NAT is used quite extensively in corporate networks to ensure traffic is routed back to the source appropriately if there are multiple entrances and traffic crosses firewalls, load balancers, etc.  <br />I suspect that financial organizations paranoid about security will not like idea deploying internal servers on globally routable IPv6 ip-s and put them on ULA. Companies merge quite often and there will be possibility of ULA conflict since all people think similarly and everybody will use fd00:0:0:0::/64 similar to 10.0.0.0/24 :-)  </p>
+            <div class="comment-content">The refusal of IETF to implement NAT66 will result in large amount of incompatible proprietary NAT66 implementations, there will be high demand for sure. Nobody mentioned here that source NAT is used quite extensively in corporate networks to ensure traffic is routed back to the source appropriately if there are multiple entrances and traffic crosses firewalls, load balancers, etc.  <br />I suspect that financial organizations paranoid about security will not like idea deploying internal servers on globally routable IPv6 ip-s and put them on ULA. Companies merge quite often and there will be possibility of ULA conflict since all people think similarly and everybody will use fd00:0:0:0::/64 similar to 10.0.0.0/24 :-)  </div>
           </div>
         </li>
       </div>
@@ -241,10 +236,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00215952350534860438" rel="nofollow">Dmitriy Fedorov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#824599958867863269">08 October 2013 12:51</a>
+                <a rel="nofollow" id="c824599958867863269" href="#824599958867863269">08 October 2013 12:51</a>
               </span>
             </div>
-            <p class="comment-content">well, not sure why i said about incompatible nat66 implementations, there will be just proprietary implementations...</p>
+            <div class="comment-content">well, not sure why i said about incompatible nat66 implementations, there will be just proprietary implementations...</div>
           </div>
         </li>
       </div>
@@ -259,10 +254,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14508392154453584343" rel="nofollow">garegin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2858061685517878218">12 January 2014 05:07</a>
+                <a rel="nofollow" id="c2858061685517878218" href="#2858061685517878218">12 January 2014 05:07</a>
               </span>
             </div>
-            <p class="comment-content">I don&#39;t understand the issue with ULA. Without it, you are essentially addressing hosts on a LAN by their internet addresses, which is a bit stupid. Imagine your computer trying to print to a printer or get some files from a NAS. In addition, imagine a dead internet service. All your hosts on the LAN are unreachable because the addresses are tied to the Internet.<br />I&#39;m not old enough how people set up their LANs prior to the advent of NAT, just I imagine that it involved making some host addresses (ex. printer) non-routable.</p>
+            <div class="comment-content">I don&#39;t understand the issue with ULA. Without it, you are essentially addressing hosts on a LAN by their internet addresses, which is a bit stupid. Imagine your computer trying to print to a printer or get some files from a NAS. In addition, imagine a dead internet service. All your hosts on the LAN are unreachable because the addresses are tied to the Internet.<br />I&#39;m not old enough how people set up their LANs prior to the advent of NAT, just I imagine that it involved making some host addresses (ex. printer) non-routable.</div>
           </div>
         </li>
       </div>

@@ -1,0 +1,106 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1015">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1015" href="#1015">14 February 2022 06:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>LISP is a difficult animal. It has multiple variants.
+Nowadays, lot of people use it with PubSub and reliable transport.
+This is very much different from the original LISP. It is not a pull model anymore.</p>
+
+<p>Since with PubSub new routes are pushed as soon as possible, there is no real caching problem.</p>
+
+<p>However, selective subscription is not implemented yet by Cisco, so it is a half baked solution. All of your xTRs will have a full routing table, that might be OK for a LAN, but not for a bigger WAN. This global PubSub is creating a potential scalability problem. Let us hope, that selective subscription will be implemented sometimes in the future... Then it might become useful in bigger WANs.</p>
+
+<p>LISP has a big advantage compared to BGP. No best path selection, so it is much faster. It is the ideal protocol for network mobility, especially for multi-link, multi-homed scenarios.
+However, this use case requires a lot of further development yet...</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1016">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1016" href="#1016">14 February 2022 07:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It seems to me that the PubSub LISP you described is functionally equivalent to a well-implemented BGP route reflector with RT-based ORF (or whatever that thing is called). </p>
+
+<p>The only icing missing from that cake seems to be a fast BGP route selection mechanism -- after all, if a node only has sessions with IBGP RRs, and if the network designer claims they should be sending identical information, why go through the route selection at all? Just take whatever comes in. What am I missing?</p>
+
+<p>Thanks a million! Ivan</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1027">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1027" href="#1027">17 February 2022 08:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I always enjoy Bela&#39;s great insights, esp. on hardware and transport networks, but this time I beg to differ. LISP, is a false economy. It was twisted from the start, unscalable right from the getgo. In Networking and OS, to name (ID) something is to locate it, and vice versa. So the name LISP itself reflects a false distinction. Due to this misconception, LISP proponents are unable to establish the right boundary conditions, leading to the size of xTRs&#39; RIB diverging (going unbounded). In a word, it has come full circle back to BGP, an exemplary manifestation of RFC 1925 rule 6. </p>
+
+<p>As always, misunderstanding the fundamentals leads to exploding complexity and dead ends, so LISP has problems with path liveness check and state synchronization as well:</p>
+
+<p>https://tools.ietf.org/html/draft-meyer-loc-id-implications-01#section-4</p>
+
+<p>All 3 problems severely limit scalability, so LISP essentially fails in its original goal. One can argue that LISP works fine for small networks, but small networks need no design. There, a brute-force sequential search (flat) method for routing is good enough, in a word, anything goes. It&#39;s the big networks that need hierarchy, and LISP can&#39;t enforce this hierarchy essential for scaling, because it can&#39;t impose the right boundary conditions.</p>
+
+<p>LISP is in a pretty similar situation to TCP congestion control, wherein people, due to a lack of understanding, naively think it can be solved by &quot;careful tuning&quot; of parameters. It cannot, because end-to-end CC is a dead end. So as long as you keep clinging to it, all you do is putting lipstick on a pig. </p>
+
+<p>Just as the key with CC is understanding that end-to-end CC attempts to solve problem on the wrong layer, and so all end-to-end transport protocols, try as they may, are fundamentally incapable of resolving it, and what has to be done, is a renormalization of the CC&#39;s length scale and layering, the key to understanding why LISP is unworkable on large scale, is realizing that people have been asking the wrong question. Routing explosion is an addressing problem; it has to be solved based on an understanding of how addressing should be structured. </p>
+
+<p>As it stands, IP is missing more than half the structure, with IP and MAC redundantly naming the same thing (the interface). This, coupled with provider-based addressing, plus one global address space for the entire Internet, will always lead to unbounded RIB sizes, and routing update explosion. Topological addressing can deal with that, and when we think in terms of topology, new structures start to emerge, including the understanding that provider-independent address assignment, is the right way to go. Topological PI addressing will help set up the proper boundary conditions, and RIB size can go down by several times and potentially be bounded too.</p>
+
+<p>Tony P&#39;s comments on Valley-free routing, is essentially a description of topology-based (resilient) addressing, where distortion on the network graph has no impact on underlying addressing structure -- it&#39;s topologically protected:</p>
+
+<p>https://blog.ipspace.net/2018/09/repost-tony-przygienda-on-valley-free.html</p>
+
+<p>Since this scaling metric is universal enough, the same solution applies equally to DC networks, which essentially are just one type of SP network. It can lead to better simplification and less pain. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>12 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6709554098225584960">08 March 2016 21:26</a>
+                <a rel="nofollow" id="c6709554098225584960" href="#6709554098225584960">08 March 2016 21:26</a>
               </span>
             </div>
-            <p class="comment-content">(disclaimer: i&#39;m the anonymous referenced by Ivan above and i&#39;d like to share more information.  i&#39;m posting anonymous again to protect the guilty)<br /><br />several vendors have commented that mlag (vlag, vpc, mc-ae, mct, we had them all) is &quot;a way to get rid of spanning tree&quot;.  don&#39;t fall into that trap.  last network i worked on did this at the core.  as a result there were a hundred mstp islands each with their own root as the core was silently gobbling the bpdus (since stp was fully disabled - seemed to me to be a retarded thing to do....).  enabling stp was a no-go given the size of the l2 domain (500+ switches) and the impact to letting stp settle.<br /><br />the comment that you never know what device will cause a loop.  how bout a vendor implementation of standard lacp which will forward frames on a port in an lacp bundle even when there are no lacp pdus seen, rather than go lacp-blocked.  insta-loop in the face of cpu utilization spikes and missing lacp short timers. oops...<br /><br />oh, and mstp is nice and all, but when you put all vlans in the same instance you don&#39;t really gain a whole lot over rstp except the scale; some switches don&#39;t support a lot of rstp instances.  the obvious takeaway there is, when the uplink port goes blocking because of a loop somewhere, all vlans drop at the same time.  in some cases including the inband vlan you use to manage switches.  debugging that network in the face of outage is a monstrous mess.<br /><br />and as an aside here:  <br /><br />other things that bit us hard were small unknown things like etherchannel guard.  i&#39;d never heard of that one, but once a loop occurred it took a lot down because the Po went err-disabled and the gateway was over that link.<br /><br />and, shout out to the expert express.  Ivan was a champ to do an hour+ call to try to help us work through our former stupidity.  i&#39;d *strongly* recommend him to anyone that asked.<br /></p>
+            <div class="comment-content">(disclaimer: i&#39;m the anonymous referenced by Ivan above and i&#39;d like to share more information.  i&#39;m posting anonymous again to protect the guilty)<br /><br />several vendors have commented that mlag (vlag, vpc, mc-ae, mct, we had them all) is &quot;a way to get rid of spanning tree&quot;.  don&#39;t fall into that trap.  last network i worked on did this at the core.  as a result there were a hundred mstp islands each with their own root as the core was silently gobbling the bpdus (since stp was fully disabled - seemed to me to be a retarded thing to do....).  enabling stp was a no-go given the size of the l2 domain (500+ switches) and the impact to letting stp settle.<br /><br />the comment that you never know what device will cause a loop.  how bout a vendor implementation of standard lacp which will forward frames on a port in an lacp bundle even when there are no lacp pdus seen, rather than go lacp-blocked.  insta-loop in the face of cpu utilization spikes and missing lacp short timers. oops...<br /><br />oh, and mstp is nice and all, but when you put all vlans in the same instance you don&#39;t really gain a whole lot over rstp except the scale; some switches don&#39;t support a lot of rstp instances.  the obvious takeaway there is, when the uplink port goes blocking because of a loop somewhere, all vlans drop at the same time.  in some cases including the inband vlan you use to manage switches.  debugging that network in the face of outage is a monstrous mess.<br /><br />and as an aside here:  <br /><br />other things that bit us hard were small unknown things like etherchannel guard.  i&#39;d never heard of that one, but once a loop occurred it took a lot down because the Po went err-disabled and the gateway was over that link.<br /><br />and, shout out to the expert express.  Ivan was a champ to do an hour+ call to try to help us work through our former stupidity.  i&#39;d *strongly* recommend him to anyone that asked.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11890997522662363216" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2401430269155727169">09 March 2016 09:57</a>
+                <a rel="nofollow" id="c2401430269155727169" href="#2401430269155727169">09 March 2016 09:57</a>
               </span>
             </div>
-            <p class="comment-content">Regarding your first paragraph, not that I necessarily disagree with it as a whole, but what&#39;s wrong with having a lot of MSTP islands with their own roots? They shouldn&#39;t interfere with each other, and to me it seems like it&#39;d even scale better (not that you SHOULD need something that scales better than a single MSTP domain).</p>
+            <div class="comment-content">Regarding your first paragraph, not that I necessarily disagree with it as a whole, but what&#39;s wrong with having a lot of MSTP islands with their own roots? They shouldn&#39;t interfere with each other, and to me it seems like it&#39;d even scale better (not that you SHOULD need something that scales better than a single MSTP domain).</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14135269129889078657" rel="nofollow">HairyBear</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1255065455513124866">09 March 2016 12:04</a>
+                <a rel="nofollow" id="c1255065455513124866" href="#1255065455513124866">09 March 2016 12:04</a>
               </span>
             </div>
-            <p class="comment-content">You can use all the protection mechanisms available and still have issues if you don&#39;t control your L2 domain. I had a customer with both data centres melting down because a supervisor blade had some wierd failure that cause a loop over the inter data centre links. I suggested switching over to the redundant supervisor which fixed the problem .... until the problem supervisor rebooted and took over again, even though it was configured not to take over. We had to eject that supervisor blade. The hardware vendor was very keen to get that one back and analyze it!</p>
+            <div class="comment-content">You can use all the protection mechanisms available and still have issues if you don&#39;t control your L2 domain. I had a customer with both data centres melting down because a supervisor blade had some wierd failure that cause a loop over the inter data centre links. I suggested switching over to the redundant supervisor which fixed the problem .... until the problem supervisor rebooted and took over again, even though it was configured not to take over. We had to eject that supervisor blade. The hardware vendor was very keen to get that one back and analyze it!</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06646973209424821070" rel="nofollow">chris marget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3668275515002043458">14 March 2016 00:41</a>
+                <a rel="nofollow" id="c3668275515002043458" href="#3668275515002043458">14 March 2016 00:41</a>
               </span>
             </div>
-            <p class="comment-content">I certainly agree that disabling STP (and not replacing it with some other L2 loop prevention scheme) is ridiculous, but this bit has me confused:<br /><br />&quot;the core was silently gobbling the bpdus&quot;<br /><br />Disabling STP shouldn&#39;t cause that. In fact, the only reason that STP BPDUs are limited to link scope is because 802.1D (and later) devices know they&#39;re supposed to sink BPDUs. A non-802.D speaker should flood these frames to all ports because they have the I/G bit set. They&#39;re just regular frames to such a bridge.<br /><br />Section 5.8.2 of my favorite technical book addresses the issue somewhat humorously: http://www.slideshare.net/siswisnu/wileytheallnewswitchbookthecompleteguidetolanswitchingtechnologyaug2008/287<br /><br />Unless... Did these folks *disable* STP and then *enable* BPDUfilter?</p>
+            <div class="comment-content">I certainly agree that disabling STP (and not replacing it with some other L2 loop prevention scheme) is ridiculous, but this bit has me confused:<br /><br />&quot;the core was silently gobbling the bpdus&quot;<br /><br />Disabling STP shouldn&#39;t cause that. In fact, the only reason that STP BPDUs are limited to link scope is because 802.1D (and later) devices know they&#39;re supposed to sink BPDUs. A non-802.D speaker should flood these frames to all ports because they have the I/G bit set. They&#39;re just regular frames to such a bridge.<br /><br />Section 5.8.2 of my favorite technical book addresses the issue somewhat humorously: http://www.slideshare.net/siswisnu/wileytheallnewswitchbookthecompleteguidetolanswitchingtechnologyaug2008/287<br /><br />Unless... Did these folks *disable* STP and then *enable* BPDUfilter?</div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3876566881890229189">14 March 2016 04:34</a>
+                <a rel="nofollow" id="c3876566881890229189" href="#3876566881890229189">14 March 2016 04:34</a>
               </span>
             </div>
-            <p class="comment-content">anonymous here.   it wasn&#39;t cisco, and no, we didn&#39;t enable bpdufilter.  hence the comment i thought it was silly that the vendor was doing that.  it shouldn&#39;t have been.<br /><br /></p>
+            <div class="comment-content">anonymous here.   it wasn&#39;t cisco, and no, we didn&#39;t enable bpdufilter.  hence the comment i thought it was silly that the vendor was doing that.  it shouldn&#39;t have been.<br /><br /></div>
           </div>
         </li>
       </div>
@@ -110,10 +105,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06646973209424821070" rel="nofollow">chris marget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2488014373700655222">14 March 2016 18:09</a>
+                <a rel="nofollow" id="c2488014373700655222" href="#2488014373700655222">14 March 2016 18:09</a>
               </span>
             </div>
-            <p class="comment-content">&quot;we didn&#39;t enable bpdufilter&quot;<br /><br />Wow. Sinking BPDUs while not participating in STP is the worst possible combination of behaviors. It&#39;s like the vendor was *trying* to melt the network.<br /><br />Why not name the vendor? Public shaming (or the threat of it) is sometimes the only way to get better behavior (too bad it doesn&#39;t work with VMware, eh Ivan?)<br /><br />The only device I&#39;ve seen which does this was a SMC cable modem/gateway box provided by Comcast. It had four LAN ports which blocked BPDUs, but didn&#39;t speak STP.</p>
+            <div class="comment-content">&quot;we didn&#39;t enable bpdufilter&quot;<br /><br />Wow. Sinking BPDUs while not participating in STP is the worst possible combination of behaviors. It&#39;s like the vendor was *trying* to melt the network.<br /><br />Why not name the vendor? Public shaming (or the threat of it) is sometimes the only way to get better behavior (too bad it doesn&#39;t work with VMware, eh Ivan?)<br /><br />The only device I&#39;ve seen which does this was a SMC cable modem/gateway box provided by Comcast. It had four LAN ports which blocked BPDUs, but didn&#39;t speak STP.</div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09771677856264877238" rel="nofollow">Jeff Behrns</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3607104869405415263">09 March 2016 06:40</a>
+                <a rel="nofollow" id="c3607104869405415263" href="#3607104869405415263">09 March 2016 06:40</a>
               </span>
             </div>
-            <p class="comment-content">the worst part about &quot;mlag kills STP&quot; pitches is that many vendor reps *actually believe* it to be true</p>
+            <div class="comment-content">the worst part about &quot;mlag kills STP&quot; pitches is that many vendor reps *actually believe* it to be true</div>
           </div>
         </li>
       </div>
@@ -153,10 +148,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03873218205240277853" rel="nofollow">Henk van Gruijthuijsen</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2806345992030165977">10 March 2016 19:40</a>
+                <a rel="nofollow" id="c2806345992030165977" href="#2806345992030165977">10 March 2016 19:40</a>
               </span>
             </div>
-            <p class="comment-content">UDLD can help preventing the unidirectional link scenario.</p>
+            <div class="comment-content">UDLD can help preventing the unidirectional link scenario.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -172,10 +167,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7799919122094908504">10 March 2016 20:21</a>
+                <a rel="nofollow" id="c7799919122094908504" href="#7799919122094908504">10 March 2016 20:21</a>
               </span>
             </div>
-            <p class="comment-content">As Antonio wrote: &quot;Only vendor kludges can save you&quot;.</p>
+            <div class="comment-content">As Antonio wrote: &quot;Only vendor kludges can save you&quot;.</div>
           </div>
         </li>
       </div>
@@ -197,10 +192,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.subnetzero.info" rel="nofollow">Jeff McLaughlin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8244058324980435334">10 March 2016 23:09</a>
+                <a rel="nofollow" id="c8244058324980435334" href="#8244058324980435334">10 March 2016 23:09</a>
               </span>
             </div>
-            <p class="comment-content">I think the worst decision in the protocol design of STP was making the lower switch ID win in root bridge election.  If the priorities are set to the default, this generally means the oldest switch in the network becomes root.  When I was in TAC I had numerous cases of customers having meltdowns because of some ancient Cabletron sitting in a back room somewhere and having fits.  (Invariably these cases came to the routing protocols team because OSPF/EIGRP was flapping and it was considered a &quot;routing protocol issue.&quot;  Thus I spent a lot of time on the RP team troubleshooting spanning tree.  But anyways...)  These things being said, I agree that it is best left running and hopefully configured properly.  I also saw some nasty cases when STP was left off because &quot;spanning tree is bad.&quot;  Often these folks would have a bridging loop meltdown and then call it a &quot;spanning tree loop&quot; and thus perpetuate an irrational hatred of STP!</p>
+            <div class="comment-content">I think the worst decision in the protocol design of STP was making the lower switch ID win in root bridge election.  If the priorities are set to the default, this generally means the oldest switch in the network becomes root.  When I was in TAC I had numerous cases of customers having meltdowns because of some ancient Cabletron sitting in a back room somewhere and having fits.  (Invariably these cases came to the routing protocols team because OSPF/EIGRP was flapping and it was considered a &quot;routing protocol issue.&quot;  Thus I spent a lot of time on the RP team troubleshooting spanning tree.  But anyways...)  These things being said, I agree that it is best left running and hopefully configured properly.  I also saw some nasty cases when STP was left off because &quot;spanning tree is bad.&quot;  Often these folks would have a bridging loop meltdown and then call it a &quot;spanning tree loop&quot; and thus perpetuate an irrational hatred of STP!</div>
           </div>
         </li>
       </div>
@@ -215,10 +210,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/18433992102893508928" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5049650811469014873">11 March 2016 18:07</a>
+                <a rel="nofollow" id="c5049650811469014873" href="#5049650811469014873">11 March 2016 18:07</a>
               </span>
             </div>
-            <p class="comment-content">In principle, I agree with minimizing the STP blast radius or replacing with L3 built paths - but just wanted to say that large L2 domains can work.  <br /><br />Admittedly, we use MST and some vendor specific tweaks, but we have deployed up to ~300 switches in per region.</p>
+            <div class="comment-content">In principle, I agree with minimizing the STP blast radius or replacing with L3 built paths - but just wanted to say that large L2 domains can work.  <br /><br />Admittedly, we use MST and some vendor specific tweaks, but we have deployed up to ~300 switches in per region.</div>
           </div>
         </li>
       </div>
@@ -233,10 +228,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01516467255777865408" rel="nofollow">Amastelek Technologies</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3903151824342459317">30 April 2019 10:19</a>
+                <a rel="nofollow" id="c3903151824342459317" href="#3903151824342459317">30 April 2019 10:19</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;m glad I was not the only one who broke a country....<br /><br />https://medium.com/the-technology-burrow/the-day-the-country-came-to-a-standstill-80b85e0e0db8</p>
+            <div class="comment-content">I&#39;m glad I was not the only one who broke a country....<br /><br />https://medium.com/the-technology-burrow/the-day-the-country-came-to-a-standstill-80b85e0e0db8</div>
           </div>
         </li>
       </div>

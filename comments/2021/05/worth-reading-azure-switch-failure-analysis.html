@@ -1,0 +1,111 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="612">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c612" href="#612">30 May 2021 05:44</a>
+              </span>
+            </div>
+            <div class="comment-content">Interesting data-point from the summary by The Next Platform:<br />
+
+<p>&quot;data from over 180,000 switches running in its datacenters, which spanned 130 different geographical locations&quot;</p>
+
+<p>So that&#39;s an average of 1400 switches per geographical location. Can we conclude that the average fabric-size of the Azure network is ~1400 routers? I assume not all geographical locations have the same size of fabric. So what&#39;s the largest fabric at Azure? 10k routers maybe? Definitely smaller than 100k routers.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="614">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c614" href="#614">31 May 2021 09:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I read the paper, and from what section 2 described, 180k looks like the total number of switches across 130 DCs. So indeed there&#39;re some 1400k switches per DC, on average. That makes more sense as I&#39;ve never believed you need even 10k switches for 100k-server DCs, even with commodity switches. Thx a lot Ivan, for bringing this data to light, putting an end to this question!!</p>
+
+<p>Also Ivan, I don&#39;t think at 10k switches or higher switch counts, these cloud-scale guys actually run flat networks. Previous studies from SPs show that they sub-divide their networks into smaller routing domains and run redistribution between them. I have my suspicion Cloud providers won&#39;t do any better. What goes into presentations and corporate PR release doesn&#39;t seem to match what happens at ground zero, often times. If you ever find any such info, pls share :).</p>
+
+<p>Re hardware problems, one would have thought after over 3 decades of building high-end hardware, this art had been refined into hard science. But looks like even for standard features like ECMP, hardware faults are still quite common. Some of the problems brought up by Fastly in their software load-balancing report include:</p>
+
+<p>Uneven hashing. Some switches under evaluation were incapable of hashing evenly. For this particular switch model, the most and least heavily loaded of the 256 ECMP nexthops differ in allocated traffic share by a factor of approximately six.</p>
+
+<p>Unusable nexthops. Some switches also have odd restrictions
+on the number of usable ECMP nexthops for any given destination. In particular, one model we tested appears to only support ECMP nexthop set sizes that are of the form (1;2; : : : ;15) x 2^n, presumably because of hardware limitations.</p>
+
+<p>You can read more about them in section 6.3 of their paper:</p>
+
+<p>https://www.usenix.org/system/files/conference/nsdi18/nsdi18-araujo.pdf</p>
+
+<p>Why would vendors spend so much time adding bullshit features that hardly anyone uses, incl. shitty AI/ML capabilities, when they can&#39;t get their basics to work without hiccup??? And they expect us to believe in breath-taking technological progress. Wow!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="617">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c617" href="#617">31 May 2021 03:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Minh Ha: I can easily answer the last question: &quot;<em>Why would vendors spend so much time adding bullshit features that hardly anyone uses, incl. shitty AI/ML capabilities, when they can&#39;t get their basics to work without hiccup?</em>&quot; - because bullshit sells, and fixing bugs doesn&#39;t.</p>
+
+<p>When was the last time a major organization made code quality one of the important buying decisions in a public RFP?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="618">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c618" href="#618">01 June 2021 11:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>100% Ivan! And we have even more BS now than say 15-20 yrs ago, because after all the low-hanging fruits in R&amp;D have been picked, coming up with better products is getting more and more painful for vendors.</p>
+
+<p>Ethan Banks wrote a funny piece about this tech disillusionment of his over the years, which you might find entertaining ;) :</p>
+
+<p>https://packetpushers.net/i-used-to-think-now-i-think/  </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

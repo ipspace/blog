@@ -1,0 +1,142 @@
+<div class="comments post" id="comments">
+  <h4>6 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="186">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Joe</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c186" href="#186">23 October 2020 11:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>How about setting the MAC aging time to a high value on the switches , Would it be a good protection for this kind of behavior ?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="187">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c187" href="#187">24 October 2020 01:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, re EVPN, I think it was designed to deal with, among other things, this situation, with its route type 2 and ARP suppression. Assuming the leaf switches here are PE running the anycast gateway, S1 will snoop A&#39;s ARP and create the routes for A. EVPN propagates this update in the underlay to all other interested VTEPs. So L4 will be eventually-consistent with L1 wrt knowledge of A. Even when the MAC table entry times out first due to badly designed timers, one route type 2 of A will be wiped but not the other created by ARP snooping, that one will stand as long as ARP hasn&#39;t timed out, AFAIK anyway. So with any decent implementation, L4 can take a look at the RIB and see the MAC+IP route for A and forward it to L1 across the underlay. With this 2-level fabric, it doesn&#39;t matter whether you use MPLS or VXLAN as transport.</p>
+
+<p>If one adds another superspine layer to the fabric, and the spines now become the PE, EVPN logics still prevent this flooding, then things get complicated fast with ESI and split-horizon, and the amount of flooding will increase nonetheless vs the 2-layer case because DF election doesn&#39;t prevent BUM from being sent to non-DF, only has them drop it on reception. IMO, in this situation with 3 layers and ESI and everything, EVPN MPLS is superior to EVPN VXLAN because it allows the handling BUM traffic and loop prevention in a simpler and therefore more elegant and robust way. The VXLAN&#39;s way of dealing with this sounds more like a kludge to me, due to its inability to do stacking. And with MPLS, one can also achieve valley-free routing even in that kind of complex fabric, if one insists on it. </p>
+
+<p>And I&#39;m not sure why people still want to run SPB in 2020. Sounds like RFC 1925 rule 3. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="188">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c188" href="#188">24 October 2020 01:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Sorry, the 2nd paragraph in my comment should read like this (would be great if comments are editable here Ivan :))</p>
+
+<p>If one adds another superspine layer to the fabric and the spines now become the PE, then things get complicated fast with ESI and split-horizon. EVPN logics still prevent this flooding, but the amount of flooding will increase nonetheless vs the 2-layer case because DF election doesn&#39;t prevent BUM from being sent to non-DF, only has them drop it on reception. IMO, in this situation with 3 layers and ESI and everything, EVPN MPLS is superior to EVPN VXLAN because it allows the handling BUM traffic and loop prevention in a simpler and therefore more elegant and robust way. The VXLAN&#39;s way of dealing with this sounds more like a kludge to me, due to its inability to do stacking. And with MPLS, one can also achieve valley-free routing even in that kind of complex fabric, if one insists on it, again thanks to label stacking. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="191">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c191" href="#191">24 October 2020 03:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Joe: Increasing MAC timer would help in the original scenario (where MAC table aged out before ARP table), but not in this one.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="192">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c192" href="#192">24 October 2020 03:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Minh Ha: I would keep things simpler and have VXLAN encapsulation on the fabric edge, not in the middle (spine) layer.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="434">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c434" href="#434">03 March 2021 06:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, I don&#39;t know if by now you&#39;ve found the answer to the 3rd question, but it seems I&#39;ve come across it by accident the other day, when searching your blogs for old posts on SPB. </p>
+
+<p>On this one, Ludovico, who worked for Avaya, made some comments about the mechanics of their SPB platform:</p>
+
+<p>https://blog.ipspace.net/2014/04/is-is-in-avayas-spb-fabric-one-protocol.html </p>
+
+<p>Reading through it, and looks like they&#39;ve implemented their product very much aligned with SPBM standard. So essentially the MAC learning part is all data-plane, much like VPLS, Fabric Path and the likes. </p>
+
+<p>The reason EVPN can be safe to this unicast flooding behaviour is because it implements control-plane learning of MAC in addition to data-plane flood-and-learn, so it has an additional source of truth to check when needing info. The pure data-plane products are therefore, all stuck with this flooding vulnerability.</p>
+
+<p>So looks like that would address question 1 as well, as this condition applies to all data-plane-learning only fabrics :)) . </p>
+
+<p>And yes, I&#39;ll still stick to my original view that SPBM, itself being a great engineering effort, is still an effort to make pigs fly nonetheless. Reason being they try to force-fit a hierarchical paradigm (IP) into a flat scheme (Ethernet).  </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

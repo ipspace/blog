@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10562240567667879482" rel="nofollow">lcw</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5018157963562813414">07 December 2015 16:32</a>
+                <a rel="nofollow" id="c5018157963562813414" href="#5018157963562813414">07 December 2015 16:32</a>
               </span>
             </div>
-            <p class="comment-content">Even with simple L3/L4, a pure openflow load-balancer would require the controller be involved in every connection setup. It might be able to outperform a 1997-era LocalDirector, but not much else.<br /><br />More realistic is a slow/fast-path approach. E.g., a standalone load-balancer directs the initial connection setup and then uses openflow to fast-path the remainder of the connection. I&#39;m guessing this is how NSX&#39;s distributed load-balancer will work.<br /><br />HP&#39;s SDN App Store does have a <a href="http://h20195.www2.hp.com/V2/getpdf.aspx/4AA4-5984ENW.pdf?ver=1.0" rel="nofollow">Kemp load-balancer</a> adapted for OpenFlow. The solution brief indicates that openflow is used for load and health measurements only, not for connection setup or for fast-path mode.</p>
+            <div class="comment-content">Even with simple L3/L4, a pure openflow load-balancer would require the controller be involved in every connection setup. It might be able to outperform a 1997-era LocalDirector, but not much else.<br /><br />More realistic is a slow/fast-path approach. E.g., a standalone load-balancer directs the initial connection setup and then uses openflow to fast-path the remainder of the connection. I&#39;m guessing this is how NSX&#39;s distributed load-balancer will work.<br /><br />HP&#39;s SDN App Store does have a <a href="http://h20195.www2.hp.com/V2/getpdf.aspx/4AA4-5984ENW.pdf?ver=1.0" rel="nofollow">Kemp load-balancer</a> adapted for OpenFlow. The solution brief indicates that openflow is used for load and health measurements only, not for connection setup or for fast-path mode.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#91794165005201834">07 December 2015 16:59</a>
+                <a rel="nofollow" id="c91794165005201834" href="#91794165005201834">07 December 2015 16:59</a>
               </span>
             </div>
-            <p class="comment-content">According to Kemp whitepaper, they use information from the SDN controller to identify bottlenecks between the load balancer and individual servers in the server farm. <br /><br />Looks like a solution in search of a problem to me. Throwing more bandwidth at the problem is probably cheaper and definitely less complex.</p>
+            <div class="comment-content">According to Kemp whitepaper, they use information from the SDN controller to identify bottlenecks between the load balancer and individual servers in the server farm. <br /><br />Looks like a solution in search of a problem to me. Throwing more bandwidth at the problem is probably cheaper and definitely less complex.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11303994285469306441" rel="nofollow">Jeroen van Bemmel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3570567399078876668">07 December 2015 21:28</a>
+                <a rel="nofollow" id="c3570567399078876668" href="#3570567399078876668">07 December 2015 21:28</a>
               </span>
             </div>
-            <p class="comment-content">You can use OpenFlow for ECMP routing, which can be used as a crude form of load distribution ( with multiple static routes to the same virtual IP, via different real server IPs ). It is only  &quot;balanced&quot; in a statistical sense, there is no mechanism to detect liveness of servers, and the return path may get asymmetrical - which limits the applicability to a select set of use cases</p>
+            <div class="comment-content">You can use OpenFlow for ECMP routing, which can be used as a crude form of load distribution ( with multiple static routes to the same virtual IP, via different real server IPs ). It is only  &quot;balanced&quot; in a statistical sense, there is no mechanism to detect liveness of servers, and the return path may get asymmetrical - which limits the applicability to a select set of use cases</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.cohodata.com/blog/author/andy/" rel="nofollow">Andy Warfield</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1503289233264722492">08 December 2015 07:51</a>
+                <a rel="nofollow" id="c1503289233264722492" href="#1503289233264722492">08 December 2015 07:51</a>
               </span>
             </div>
-            <p class="comment-content">Jen Rexford and team had a <a href="http://cial.csie.ncku.edu.tw/st2014/pdf/OpenFlow-Based%20Server%20Load%20Balancing%20Gone%20Wild.pdf" rel="nofollow">fun paper</a> about this idea at HotNets a few years ago -- it&#39;s a quick and insightful read:  <br /><br />Ivan&#39;s comment about the possibility of doing this in a storage context are exactly right -- Coho Data (my company) does this in an enterprise storage product today.  Using Openflow onto Arista ToRs, we are able to present a single IP address for NFS v3, but then dynamically steer traffic over large numbers of 10Gb storage nodes.  This turns out to be a pretty big win in enterprise contexts where you can&#39;t change the client storage protocol (e.g. to deploy pNFS), and where you want to scale traffic over large numbers of very fast flash devices.<br /><br />If you&#39;re interested, I recently did a <a href="http://vimeo.com/143189231" rel="nofollow">talk</a> on this aspect of our system, as well as some related challenges facing network connectivity/perf in storage systems..<br /><br />@andywarfield</p>
+            <div class="comment-content">Jen Rexford and team had a <a href="http://cial.csie.ncku.edu.tw/st2014/pdf/OpenFlow-Based%20Server%20Load%20Balancing%20Gone%20Wild.pdf" rel="nofollow">fun paper</a> about this idea at HotNets a few years ago -- it&#39;s a quick and insightful read:  <br /><br />Ivan&#39;s comment about the possibility of doing this in a storage context are exactly right -- Coho Data (my company) does this in an enterprise storage product today.  Using Openflow onto Arista ToRs, we are able to present a single IP address for NFS v3, but then dynamically steer traffic over large numbers of 10Gb storage nodes.  This turns out to be a pretty big win in enterprise contexts where you can&#39;t change the client storage protocol (e.g. to deploy pNFS), and where you want to scale traffic over large numbers of very fast flash devices.<br /><br />If you&#39;re interested, I recently did a <a href="http://vimeo.com/143189231" rel="nofollow">talk</a> on this aspect of our system, as well as some related challenges facing network connectivity/perf in storage systems..<br /><br />@andywarfield</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06647820876420119603" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#806763139082028275">13 December 2015 14:28</a>
+                <a rel="nofollow" id="c806763139082028275" href="#806763139082028275">13 December 2015 14:28</a>
               </span>
             </div>
-            <p class="comment-content">Andy any links to this article or this talk? A link to the summarised and technical content will be much appreciated.<br />Thanks</p>
+            <div class="comment-content">Andy any links to this article or this talk? A link to the summarised and technical content will be much appreciated.<br />Thanks</div>
           </div>
         </li>
       </div>

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11418671261451939355" rel="nofollow">R.-Adrian F.</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3496681502104640008">10 April 2014 18:53</a>
+                <a rel="nofollow" id="c3496681502104640008" href="#3496681502104640008">10 April 2014 18:53</a>
               </span>
             </div>
-            <p class="comment-content">Hello,<br /><br />The case is interesting, but I find the solution in the category &quot;we do things, but we don&#39;t know why we do them&quot;. Let me explain:<br /> - Wasn&#39;t *i*BGP supposed to be used within an *autonomous* (routing) system ? Such as &quot;same entity controls all equipment within the AS&quot; ? <br /> - Another question is why the CE (*customer* edge) is managed by the provider not the  customer (which happens to already able to run/operate BGP on other equipment) ?<br /><br />Globally it is a workaround to a problem that was supposed to be a solution in the first place.</p>
+            <div class="comment-content">Hello,<br /><br />The case is interesting, but I find the solution in the category &quot;we do things, but we don&#39;t know why we do them&quot;. Let me explain:<br /> - Wasn&#39;t *i*BGP supposed to be used within an *autonomous* (routing) system ? Such as &quot;same entity controls all equipment within the AS&quot; ? <br /> - Another question is why the CE (*customer* edge) is managed by the provider not the  customer (which happens to already able to run/operate BGP on other equipment) ?<br /><br />Globally it is a workaround to a problem that was supposed to be a solution in the first place.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1966216363519910753">10 April 2014 19:01</a>
+                <a rel="nofollow" id="c1966216363519910753" href="#1966216363519910753">10 April 2014 19:01</a>
               </span>
             </div>
-            <p class="comment-content">Good points, but sometimes reality intervenes ;) Provider-controlled CE-router (yeah, I know, an oxymoron) is a pretty common scenario, usually due to SLA issues, so I would say this is in the &quot;we do things because we have to do them this way&quot; category.<br />.<br />BTW, do you object to IBGP being run within the main site or not being run across DMVPN?</p>
+            <div class="comment-content">Good points, but sometimes reality intervenes ;) Provider-controlled CE-router (yeah, I know, an oxymoron) is a pretty common scenario, usually due to SLA issues, so I would say this is in the &quot;we do things because we have to do them this way&quot; category.<br />.<br />BTW, do you object to IBGP being run within the main site or not being run across DMVPN?</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11418671261451939355" rel="nofollow">R.-Adrian F.</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#470003123278351276">11 April 2014 12:46</a>
+                <a rel="nofollow" id="c470003123278351276" href="#470003123278351276">11 April 2014 12:46</a>
               </span>
             </div>
-            <p class="comment-content">As a general rule, neither of the 2 aspects can be objected, but this assumes that &quot;withing the main site&quot; means &quot;within the same location of the autonomous system&quot; and &quot;one autonomous system, one AS number&quot; (basic BGP-related assumption). This is obviously not the case. It&#39;s like saying &quot;red is blue&quot;.<br /><br />Concerning the &quot;provided-controlled CE&quot; (a.k.a. &quot;managed services&quot;), this is something that can be negotiated; it&#39;s not easy, but it may be possible (evoking a &quot;possible deal-breaker condition&quot; helps). As for the SLAs, &quot;waiting the next maintenance window&quot; for static routes modification, this sounds like a serious issue to me. So yes, reality hits, and sometimes for the wrong reasons.<br /><br />I would also like to present some other possible scenarios (hopefully they did not seem to be applied case here) : <br /> - The provider operating the CE decides to force (ex. via route-map) the next-hop for the incoming routes to a &quot;known-good&quot; gateway (BGP peer, previously-agreed &quot;Default gateway, .....<br /> - The provider uses filters inbound routes. If you need to announce new routes you may need their prefix-list updated, with the same reactivity as adding static routes.<br /><br />Those being said, this may be an interesting school-case for learning how BGP signalling works, iBGP edition (for the eBGP edition I would definitely choose the route-servers from an IXP).</p>
+            <div class="comment-content">As a general rule, neither of the 2 aspects can be objected, but this assumes that &quot;withing the main site&quot; means &quot;within the same location of the autonomous system&quot; and &quot;one autonomous system, one AS number&quot; (basic BGP-related assumption). This is obviously not the case. It&#39;s like saying &quot;red is blue&quot;.<br /><br />Concerning the &quot;provided-controlled CE&quot; (a.k.a. &quot;managed services&quot;), this is something that can be negotiated; it&#39;s not easy, but it may be possible (evoking a &quot;possible deal-breaker condition&quot; helps). As for the SLAs, &quot;waiting the next maintenance window&quot; for static routes modification, this sounds like a serious issue to me. So yes, reality hits, and sometimes for the wrong reasons.<br /><br />I would also like to present some other possible scenarios (hopefully they did not seem to be applied case here) : <br /> - The provider operating the CE decides to force (ex. via route-map) the next-hop for the incoming routes to a &quot;known-good&quot; gateway (BGP peer, previously-agreed &quot;Default gateway, .....<br /> - The provider uses filters inbound routes. If you need to announce new routes you may need their prefix-list updated, with the same reactivity as adding static routes.<br /><br />Those being said, this may be an interesting school-case for learning how BGP signalling works, iBGP edition (for the eBGP edition I would definitely choose the route-servers from an IXP).</div>
           </div>
         </li>
       </div>

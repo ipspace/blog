@@ -1,0 +1,35 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "08 February 2022 06:49",
+               "html": "<p>I&#39;m positive there&#39;s a use case for that and it&#39;s been around for a very long time -- no-client-to-client reflection nerd knob has been available on Cisco IOS for decades.</p>\n\n<p>Not sure I want to know what it is though ;)</p>\n",
+               "id": "1003",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-02-08T18:49:57",
+               "ref": "1002",
+               "type": "comment"
+            },
+            {
+               "date": "09 February 2022 12:18",
+               "html": "<p>One concern is scale when using unique cluster-id per RR. Reflected routes from non-client east-west interRR sessions can quickly add to the rib scale on RRs. Scale can be tricky to handle as it directly affects route propagation delay in a hierarchical RR topology.</p>\n",
+               "id": "1008",
+               "name": " Nilesh K",
+               "pub": "2022-02-09T12:18:03",
+               "ref": "1002",
+               "type": "comment"
+            }
+         ],
+         "date": "08 February 2022 11:49",
+         "html": "<p>What is your feeling about using multiple cluster IDs per route reflector? </p>\n\n<p>This can be used to assign unique cluster-ID is per RR client (neighbor a.b.c.d cluster-id w.x.y.z ) or set of clients which have iBGP mesh between each other. For example two co-located PE routers have iBGP with each other and the RRs. The RR is then also configured not to reflect to clients with the same cluster ID. (no bgp client-to-client reflection intra-cluster cluster-id any). Reflection can also be disabled for a list of specific cluster-IDs.</p>\n",
+         "id": "1002",
+         "name": "Petrus Potgieter",
+         "pub": "2022-02-08T11:49:00",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2022/02/bgp-rr-cluster-myths.html"
+}

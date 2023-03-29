@@ -1,0 +1,109 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "07 October 2022 07:46",
+               "html": "<p>Hi Ivan,\n  Did you try adding &#39;always&#39; to preserve-attributes?</p>\n\n<p>bgp route-reflector preserve-attributes always</p>\n\n<p>If you do that, I think the nexthop should be preserved.</p>\n",
+               "id": "1428",
+               "name": " Asang Dani",
+               "pub": "2022-10-07T07:46:20",
+               "ref": "1427",
+               "type": "comment"
+            },
+            {
+               "date": "07 October 2022 09:21",
+               "html": "<p>Thanks for the suggestion. No change.</p>\n\n<p>The problem is that &#39;next-hop-self&#39; applies to EVPN AF while &#39;bgp route-reflector preserve-attributes&#39; does not, and I found no knob to undo &#39;next-hop-self&#39; on IBGP sessions for EVPN AF.</p>\n",
+               "id": "1429",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-10-07T09:21:06",
+               "ref": "1428",
+               "type": "comment"
+            },
+            {
+               "date": "10 October 2022 07:28",
+               "html": "<p>Hi Ivan. One more thing that might work. Configure</p>\n\n<p>next-hop resolution disabled</p>\n\n<p>under</p>\n\n<p>address-family evpn</p>\n",
+               "id": "1432",
+               "name": " Asang Dani",
+               "pub": "2022-10-10T07:28:30",
+               "ref": "1429",
+               "type": "comment"
+            },
+            {
+               "date": "10 October 2022 09:41",
+               "html": "<p>Thanks a million for your efforts, but this does seem like throwing spaghetti at the wall to see what sticks ;)... and no, it doesn&#39;t work.</p>\n",
+               "id": "1433",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-10-10T09:41:14",
+               "ref": "1432",
+               "type": "comment"
+            },
+            {
+               "date": "10 October 2022 11:50",
+               "html": "<p>Can you share the version of EOS that you are using? I will track this issue and fix it.</p>\n",
+               "id": "1434",
+               "name": "Asang Dani",
+               "pub": "2022-10-10T11:50:29",
+               "ref": "1433",
+               "type": "comment"
+            }
+         ],
+         "date": "06 October 2022 10:26",
+         "html": "<p>Unfortunately this is not the only unexpectedly global-only BGP configuration - redistribution of connected and static routes, until recent versions (4.27 or 4.28?), were not configurable per address-family and so required both IPv4 and IPv6 policies to share a route-map</p>\n",
+         "id": "1427",
+         "name": " Richard Tector",
+         "pub": "2022-10-06T10:26:13",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "01 November 2022 07:47",
+               "html": "<p>Yes, among many other similar things. No impact :(</p>\n\n<p>Thank you! Ivan</p>\n",
+               "id": "1471",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-11-01T19:47:27",
+               "ref": "1470",
+               "type": "comment"
+            },
+            {
+               "date": "04 November 2022 12:00",
+               "html": "<p>It has to be something with the version, I run multiple IP fabrics with a Arista spines using iBGP as RRs and haven&#39;t seen this issue.</p>\n\n<p>My testing with vEOS and cEOS has been positive as well with this same design.</p>\n",
+               "id": "1480",
+               "name": " Joe Hlasnik",
+               "pub": "2022-11-04T00:00:54",
+               "ref": "1471",
+               "type": "comment"
+            }
+         ],
+         "date": "01 November 2022 01:35",
+         "html": "<p>Did you happen to try &quot;bgp next-hop-unchanged&quot;?\n<pre>\r\n   address-family evpn\r\n      bgp next-hop-unchanged\r\n      neighbor spines activate\r\n!\r\n</pre>\n",
+         "id": "1470",
+         "name": " Joe Hlasnik",
+         "pub": "2022-11-01T13:35:23",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "03 November 2022 05:29",
+               "html": "<p>Awesome. Thanks a million for the update!</p>\n",
+               "id": "1478",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-11-03T17:29:13",
+               "ref": "1477",
+               "type": "comment"
+            }
+         ],
+         "date": "03 November 2022 11:42",
+         "html": "<p>Hi Ivan,</p>\n\n<p>It seems that you have been heard! ;)</p>\n\n<p>The new 4.29.0.2F EOS version which has just been released supports BGP NHS per AFI (only IPv4 &amp; IPv6 for the moment...).</p>\n\n<p>Here an extract from the public release note: &quot;The next-hop-self option can be configured in the address family mode for IPv4 and IPv6 unicast address families. (689914)&quot;</p>\n\n<p>PS: I&#39;m an Arista employee...</p>\n",
+         "id": "1477",
+         "name": " Florent",
+         "pub": "2022-11-03T11:42:24",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2022/10/arista-route-reflector-woes.html"
+}

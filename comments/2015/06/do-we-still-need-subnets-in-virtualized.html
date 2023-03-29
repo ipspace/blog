@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1924772063059945766">10 June 2015 11:51</a>
+                <a rel="nofollow" id="c1924772063059945766" href="#1924772063059945766">10 June 2015 11:51</a>
               </span>
             </div>
-            <p class="comment-content">Why not ? If your inserted vnic firewall could convert the ARP bcast into a tenant mcast, then it would work, same IP with different MAC addresses :) LOL</p>
+            <div class="comment-content">Why not ? If your inserted vnic firewall could convert the ARP bcast into a tenant mcast, then it would work, same IP with different MAC addresses :) LOL</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">BGermain</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5221948724178588593">10 June 2015 17:21</a>
+                <a rel="nofollow" id="c5221948724178588593" href="#5221948724178588593">10 June 2015 17:21</a>
               </span>
             </div>
-            <p class="comment-content">the title is misleading vs what the post describes.<br /><br />Everything, and I mean everything, in the networking world has standardized on IP and Ethernet (or 802.2 framing).  Thus for better for worse, the notion of a subnet or a mean to organize the IP addressing space will always be required.<br /><br />What is happening with network virtualization, starting with MPLS actually, is dissociating things from IP that should have never been there in the first place...  but we did not have much choices at the time.  Things like proxying the identity of an individual, a group or  a function via a subnet (HR department = subnet A or VoIP = subnet B), geo-location (subnet X exists only in data center A or city XX), etc.<br /><br />IP is a forwarding mechanism, period.  It has its characteristics that need to be engineered to work well and as such things like NAT and subnets will be required.<br /><br />from a security perspective, relying on attributes that do not have any dependencies as to which address you have, network you came from or trying to reach (approach which is continuously failing us) is the right way to go.<br /><br />Yes unfortunately I have heard that a flat network was just fine in the virtual world but I have heard more similar &quot;truths&quot; from the traditional networking and security teams which are just taking shortcuts rather than trying to understand how technology features can be associated and leveraged to deliver elegant solutions.<br /></p>
+            <div class="comment-content">the title is misleading vs what the post describes.<br /><br />Everything, and I mean everything, in the networking world has standardized on IP and Ethernet (or 802.2 framing).  Thus for better for worse, the notion of a subnet or a mean to organize the IP addressing space will always be required.<br /><br />What is happening with network virtualization, starting with MPLS actually, is dissociating things from IP that should have never been there in the first place...  but we did not have much choices at the time.  Things like proxying the identity of an individual, a group or  a function via a subnet (HR department = subnet A or VoIP = subnet B), geo-location (subnet X exists only in data center A or city XX), etc.<br /><br />IP is a forwarding mechanism, period.  It has its characteristics that need to be engineered to work well and as such things like NAT and subnets will be required.<br /><br />from a security perspective, relying on attributes that do not have any dependencies as to which address you have, network you came from or trying to reach (approach which is continuously failing us) is the right way to go.<br /><br />Yes unfortunately I have heard that a flat network was just fine in the virtual world but I have heard more similar &quot;truths&quot; from the traditional networking and security teams which are just taking shortcuts rather than trying to understand how technology features can be associated and leveraged to deliver elegant solutions.<br /></div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03365178952937983707" rel="nofollow">Georgi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4740673241940249447">11 June 2015 03:10</a>
+                <a rel="nofollow" id="c4740673241940249447" href="#4740673241940249447">11 June 2015 03:10</a>
               </span>
             </div>
-            <p class="comment-content">This comment has been removed by the author.</p>
+            <div class="comment-content">This comment has been removed by the author.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03365178952937983707" rel="nofollow">Georgi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#41254398336960960">11 June 2015 03:11</a>
+                <a rel="nofollow" id="c41254398336960960" href="#41254398336960960">11 June 2015 03:11</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br />strangely enough what you described is exactly what we implemented 2 years ago at one of my previous employers.<br />The decision was to use /16 subnets for everything. So you would have a /16 for PROD, another one for DEV and another one for PREPROD etc.<br />Fully virtualized environment on ESX 4.1 with Nexus 1000v and Juniper vGW (imagine the support nightmware once the vendor blame game bagan).<br />Next hop gateway for VMs was vrf interface on Nexus 7k for respective environment. And Load balancer hanging off in one-arm mode off the 7k and SNAT. No physical DMZ for web servers, Web and App were all on the same bunch of ESX servers and security controlled by vGW kernel firewall. Definitely a powerpoint design that made it into production (and still running &quot;somehow&quot;).<br />That being said I think this setup works but the moment you connect it to a traditional data center it becomes a huge mess. I can attest to it as I was there :). And to top it all off we had duplicate subnets in other environments protected by firewalls in the hope nobody would leak routes in and out of the respective &quot;bubble&quot;.</p>
+            <div class="comment-content">Hi Ivan,<br />strangely enough what you described is exactly what we implemented 2 years ago at one of my previous employers.<br />The decision was to use /16 subnets for everything. So you would have a /16 for PROD, another one for DEV and another one for PREPROD etc.<br />Fully virtualized environment on ESX 4.1 with Nexus 1000v and Juniper vGW (imagine the support nightmware once the vendor blame game bagan).<br />Next hop gateway for VMs was vrf interface on Nexus 7k for respective environment. And Load balancer hanging off in one-arm mode off the 7k and SNAT. No physical DMZ for web servers, Web and App were all on the same bunch of ESX servers and security controlled by vGW kernel firewall. Definitely a powerpoint design that made it into production (and still running &quot;somehow&quot;).<br />That being said I think this setup works but the moment you connect it to a traditional data center it becomes a huge mess. I can attest to it as I was there :). And to top it all off we had duplicate subnets in other environments protected by firewalls in the hope nobody would leak routes in and out of the respective &quot;bubble&quot;.</div>
           </div>
         </li>
       </div>

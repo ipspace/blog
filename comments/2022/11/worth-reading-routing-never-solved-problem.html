@@ -1,0 +1,181 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1485">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Mark Seery</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1485" href="#1485">06 November 2022 01:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you!!!</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1487">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1487" href="#1487">06 November 2022 04:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&#39;m happy to hear routing is not a solved problem. :) <br />
+But for the rest, I&#39;m not sure I agree with Mark.  </p>
+
+<p>&gt; There will never be perfect information</p>
+
+<p>This touches a core principle of routing. <br />
+We gain scalability because of 2 things: hierarchy and summarization. <br />
+But as soon as you summarize something, you lose some information. <br />
+This is indeed a choice that the operator must make (to summarize or not). <br />
+But you can&#39;t have both: reduction of information and perfect information.  </p>
+
+<p>&gt; There will always be an area of futzing to find optimization points <br />
+&gt; across multiple competing objectives  </p>
+
+<p>When this is configurable, each customer can tweak his network. <br />
+I don&#39;t see this as a reason why networking is not a solved problem.  </p>
+
+<p>&gt; just beginning .... much discovery yet to happen  </p>
+
+<p>What problems are you thinking about?  </p>
+
+<p>All the problems that I see as reasons why routing is not a solved <br />
+problem, were already known problems 25-30 years ago. <br />
+We aren&#39;t done yet, not because of new incoming problems. <br />
+We are not done yet, because so little real progress has been made.  </p>
+
+<p>Physics, timing, ordering, I don&#39;t see those as limitations. <br />
+We know how to deal with those things. <br />
+Different requirements for different networks: <br />
+just implement everything, and then make stuff configurable.  </p>
+
+<p>The problems I see with routing are: <br />
+*) site multi-homing <br />
+*) host multi-homing <br />
+*) easy renumbering (with persistent connections during the renumbering) <br />
+*) mobility  </p>
+
+<p>To solve some of those, we should have true identifier/locator separation. <br />
+Not an after-thought like LISP. <br />
+But something built into the layer-3 addressing architecture. <br />
+IPv6 was a chance, but we messed that chance up.  </p>
+
+<p>You could add a few more practical issue: <br />
+Like trustworthiness of BGP global routes.</p>
+
+<p>As I said earlier, how can we do hierarchy (in IGPs, with areas), <br />
+and still have all our features work across ABRs? In a scalable way. <br />
+From my perspective we don&#39;t really have that yet.  </p>
+
+<p>Another issue is configuration and troubleshooting. <br />
+I think we can make improvements there (and make running a network easier).  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1490">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Mark Seery</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1490" href="#1490">07 November 2022 06:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you for the feedback Henk. </p>
+
+<p>While I feel the observation that the laws of physics are invariant may lead to different sense of what a &quot;solved problem is&quot;, one specific clarification I would ask is whether the following is an agreement or a disagreement:</p>
+
+<p>&quot;But you can&#39;t have both: reduction of information and perfect information&quot;</p>
+
+<p>It reads a little like an agreement.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1491">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk  </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1491" href="#1491">07 November 2022 11:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; &quot;But you can&#39;t have both: reduction of information and perfect information&quot;</p>
+
+<p>Yes, we agree there. <br />
+I&#39;m not sure we&#39;re thinking about the same details. :) But your statement was certainly correct. But not because of physics or timing or ordering. For me the main reason is: you want to summarize for scaling, but you do not want to summarize if you want to find optimal routes.</p>
+
+<p>Many networks don&#39;t need summarization. Because scalability is not a real issue for them. But for the biggest networks (e.g. 10k+ routers in one IGP domain), we do need summarization. So those networks lose optimal routes. This is a fundamental issue that I don&#39;t see an easy solution for.</p>
+
+<p>One aspect of a solution would if operators would design their networks with a few more constraints. But it seems the stubborn bastards don&#39;t like that. :)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1492">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Mark Seery</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1492" href="#1492">08 November 2022 08:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Well resources are not infinite, but that is another issue. Some people claim route processor scaling etc is a solved problem, others disagree.</p>
+
+<p>I&#39;ll right a little more to see if I can strike some different language. Some things can be mitigated, but that does not mean they are remediated. It is in this sense I am saying somethings will never be solved.</p>
+
+<p>Best
+Mark</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,10 +1,5 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
-  <h4>10 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/18412927262033925106" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9026881533789456686">23 October 2018 13:06</a>
+                <a rel="nofollow" id="c9026881533789456686" href="#9026881533789456686">23 October 2018 13:06</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />some of insights into AWS can be found in AWS Certified Advanced Networking Official Study Guide. Excerpt from this book: Tenant isolation is a core function of Amazon VPC. In order to understand which<br />resources are part of a given VPC, Amazon VPC uses a mapping service. The mapping service<br />abstracts your VPC from the underlying AWS infrastructure. For any given VPC, the<br />mapping service maintains information about all of its resources, their VPC IP addresses,<br />and the IP addresses of the underlying physical server on which the resource is running. It<br />is the definitive source of topology information for each VPC.<br />When an Amazon EC2 instance, say Instance A, in your VPC initiates communication<br />with another Amazon EC2 instance, say Instance B, over IPv4, Instance A will broadcast<br />an Address Resolution Protocol (ARP) packet to obtain the Instance B’s Media Access<br />Control (MAC) address. The ARP packet leaving Instance A is intercepted by the server<br />Hypervisor. The Hypervisor queries the mapping service to identify whether Instance B<br />exists in the VPC and, if so, obtains its MAC address. The Hypervisor returns a synthetic<br />ARP response to Instance A containing Instance B’s MAC address.<br />Instance A is now ready to send an IP packet to Instance B. The IP packet has Instance<br />A’s source IP and Instance B’s destination IP. The IP packet is encapsulated in an Ethernet<br />header with Instance A’s MAC as the source address and Instance B’s MAC as the destination<br />address. The Ethernet packet is then transmitted from Instance A’s network interface.<br />As Instance A emits the packet, it is intercepted by the server Hypervisor. The Hypervisor<br />queries the mapping service to learn the IPv4 address of the physical server on which Instance<br />B is running. Once the mapping service provides this data, the packet emitted by Instance A<br />is encapsulated in a VPC header that identifies this specific VPC and then encapsulated again<br />in an IP packet with a source IP address of Instance A’s physical server and a destination IPv4<br />address of Instance B’s physical server. The packet is then placed on to the AWS network.<br />When the packet arrives at Instance B’s physical server, the outer IPv4 header and VPC<br />header are inspected. The instance Hypervisor queries the mapping service to confirm that<br />Instance A exists on the specific source physical server and in the specific VPC identified<br />in the received packet. When the mapping service confirms that the mapping is correct, the<br />Hypervisor strips off the outer encapsulation and delivers the packet that Instance A emitted<br />to the Instance B network interface.<br />The details of packet exchange in Amazon VPC should provide you clarity on why, for<br />example, Amazon VPC does not support broadcast and multicast. These same reasons<br />explain why packet sniffing does not work. As you reason about Amazon VPC operation<br />and functionality, consider this example.</p>
+            <div class="comment-content">Hi Ivan,<br /><br />some of insights into AWS can be found in AWS Certified Advanced Networking Official Study Guide. Excerpt from this book: Tenant isolation is a core function of Amazon VPC. In order to understand which<br />resources are part of a given VPC, Amazon VPC uses a mapping service. The mapping service<br />abstracts your VPC from the underlying AWS infrastructure. For any given VPC, the<br />mapping service maintains information about all of its resources, their VPC IP addresses,<br />and the IP addresses of the underlying physical server on which the resource is running. It<br />is the definitive source of topology information for each VPC.<br />When an Amazon EC2 instance, say Instance A, in your VPC initiates communication<br />with another Amazon EC2 instance, say Instance B, over IPv4, Instance A will broadcast<br />an Address Resolution Protocol (ARP) packet to obtain the Instance B’s Media Access<br />Control (MAC) address. The ARP packet leaving Instance A is intercepted by the server<br />Hypervisor. The Hypervisor queries the mapping service to identify whether Instance B<br />exists in the VPC and, if so, obtains its MAC address. The Hypervisor returns a synthetic<br />ARP response to Instance A containing Instance B’s MAC address.<br />Instance A is now ready to send an IP packet to Instance B. The IP packet has Instance<br />A’s source IP and Instance B’s destination IP. The IP packet is encapsulated in an Ethernet<br />header with Instance A’s MAC as the source address and Instance B’s MAC as the destination<br />address. The Ethernet packet is then transmitted from Instance A’s network interface.<br />As Instance A emits the packet, it is intercepted by the server Hypervisor. The Hypervisor<br />queries the mapping service to learn the IPv4 address of the physical server on which Instance<br />B is running. Once the mapping service provides this data, the packet emitted by Instance A<br />is encapsulated in a VPC header that identifies this specific VPC and then encapsulated again<br />in an IP packet with a source IP address of Instance A’s physical server and a destination IPv4<br />address of Instance B’s physical server. The packet is then placed on to the AWS network.<br />When the packet arrives at Instance B’s physical server, the outer IPv4 header and VPC<br />header are inspected. The instance Hypervisor queries the mapping service to confirm that<br />Instance A exists on the specific source physical server and in the specific VPC identified<br />in the received packet. When the mapping service confirms that the mapping is correct, the<br />Hypervisor strips off the outer encapsulation and delivers the packet that Instance A emitted<br />to the Instance B network interface.<br />The details of packet exchange in Amazon VPC should provide you clarity on why, for<br />example, Amazon VPC does not support broadcast and multicast. These same reasons<br />explain why packet sniffing does not work. As you reason about Amazon VPC operation<br />and functionality, consider this example.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4783653144694444">23 October 2018 15:57</a>
+                <a rel="nofollow" id="c4783653144694444" href="#4783653144694444">23 October 2018 15:57</a>
               </span>
             </div>
-            <p class="comment-content">Thank you for sharing that. It&#39;s all nice and dandy but fails to answer these questions:<br /><br />A) why doesn&#39;t AWS reply with the same MAC address for every IP?<br />B) what does the source hypervisor use to figure out the packet is sent to instance B?<br />C) what happens if A has a static route for X pointing to B?<br /><br />I&#39;d guess that these are the details that are totally irrelevant to an application developer but might be crucial for a networking engineer.</p>
+            <div class="comment-content">Thank you for sharing that. It&#39;s all nice and dandy but fails to answer these questions:<br /><br />A) why doesn&#39;t AWS reply with the same MAC address for every IP?<br />B) what does the source hypervisor use to figure out the packet is sent to instance B?<br />C) what happens if A has a static route for X pointing to B?<br /><br />I&#39;d guess that these are the details that are totally irrelevant to an application developer but might be crucial for a networking engineer.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://twitter.com/nickpowpow" rel="nofollow">Nick Matthews</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4864956285467164219">06 December 2018 03:02</a>
+                <a rel="nofollow" id="c4864956285467164219" href="#4864956285467164219">06 December 2018 03:02</a>
               </span>
             </div>
-            <p class="comment-content">Check out: https://www.youtube.com/watch?v=St3SE4LWhKo<br />and<br />http://packetpushers.net/podcast/podcasts/show-387-aws-networking-view-inside/<br /><br />A) AWS routes based on MAC address inside a VPC. For traffic coming in there&#39;s a custom SDN that maps IP address-VPC combinations to where they are in the network. The day in the life of a billion packets presentation by Eric Brandwine covers this in pretty good detail. More recently by Colm in his networking sessions.<br />B) There are cached mappings sent to each hypervisor (or Nitro card) that have those mappings so they don&#39;t need to create broadcast traffic or reactive packet lookups on new flows.<br />C) There&#39;s not a lot about AWS networking in detail written down, but you&#39;re pretty safe to assume there&#39;s not static routes in the physical hosts :)<br /><br />You could argue crucial or not. ARP works. Layer 2 doesn&#39;t. No ARP spoofing or rogue DHCP servers. No worries about subnet size. The only time this really comes up is when you try to run some third party router on an instance and it expects all networks it ever sees to support the same layer 2 features everywhere (GARP, multicast, broadcast, etc.). Even then, almost all of those use cases are better suited to use Transit VPC or now Transit Gateway where all the routing functionality happens through BGP and VPN rather than at layer 2 constructs. <br /><br />-nick<br /></p>
+            <div class="comment-content">Check out: https://www.youtube.com/watch?v=St3SE4LWhKo<br />and<br />http://packetpushers.net/podcast/podcasts/show-387-aws-networking-view-inside/<br /><br />A) AWS routes based on MAC address inside a VPC. For traffic coming in there&#39;s a custom SDN that maps IP address-VPC combinations to where they are in the network. The day in the life of a billion packets presentation by Eric Brandwine covers this in pretty good detail. More recently by Colm in his networking sessions.<br />B) There are cached mappings sent to each hypervisor (or Nitro card) that have those mappings so they don&#39;t need to create broadcast traffic or reactive packet lookups on new flows.<br />C) There&#39;s not a lot about AWS networking in detail written down, but you&#39;re pretty safe to assume there&#39;s not static routes in the physical hosts :)<br /><br />You could argue crucial or not. ARP works. Layer 2 doesn&#39;t. No ARP spoofing or rogue DHCP servers. No worries about subnet size. The only time this really comes up is when you try to run some third party router on an instance and it expects all networks it ever sees to support the same layer 2 features everywhere (GARP, multicast, broadcast, etc.). Even then, almost all of those use cases are better suited to use Transit VPC or now Transit Gateway where all the routing functionality happens through BGP and VPN rather than at layer 2 constructs. <br /><br />-nick<br /></div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06839060631802008000" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#15601884346586286">23 October 2018 15:35</a>
+                <a rel="nofollow" id="c15601884346586286" href="#15601884346586286">23 October 2018 15:35</a>
               </span>
             </div>
-            <p class="comment-content">The most interesting fact I learned earlier this year was having EC2-based SSH proxies in public subnets is not strictly necessary to reach my private subnet resources. Configuring a CLB (in a public subnet) to do the same will work just fine. In this way, all my EC2s (and othe private resources) could live in private subnets as part of my internal routing domain, making maintenance and management much cleaner and simpler. I tested this in the past but failed, then later discovered my testing methodology was incorrect, and I lost a year of suboptimal architecture because of it. I hope that experience may help someone else in the future.</p>
+            <div class="comment-content">The most interesting fact I learned earlier this year was having EC2-based SSH proxies in public subnets is not strictly necessary to reach my private subnet resources. Configuring a CLB (in a public subnet) to do the same will work just fine. In this way, all my EC2s (and othe private resources) could live in private subnets as part of my internal routing domain, making maintenance and management much cleaner and simpler. I tested this in the past but failed, then later discovered my testing methodology was incorrect, and I lost a year of suboptimal architecture because of it. I hope that experience may help someone else in the future.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4760317523344299011">23 October 2018 15:58</a>
+                <a rel="nofollow" id="c4760317523344299011" href="#4760317523344299011">23 October 2018 15:58</a>
               </span>
             </div>
-            <p class="comment-content">Thank you. Was it CLB or ELB?... and were you accessing your instances over the public Internet?</p>
+            <div class="comment-content">Thank you. Was it CLB or ELB?... and were you accessing your instances over the public Internet?</div>
           </div>
         </li>
       </div>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1089966234326995186">23 October 2018 17:16</a>
+                <a rel="nofollow" id="c1089966234326995186" href="#1089966234326995186">23 October 2018 17:16</a>
               </span>
             </div>
-            <p class="comment-content">Here: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html<br />He&#39;s using static PAT. What an evolution in networking!</p>
+            <div class="comment-content">Here: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html<br />He&#39;s using static PAT. What an evolution in networking!</div>
           </div>
         </li>
       </div>
@@ -136,10 +131,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8497360838945276044">23 October 2018 18:49</a>
+                <a rel="nofollow" id="c8497360838945276044" href="#8497360838945276044">23 October 2018 18:49</a>
               </span>
             </div>
-            <p class="comment-content">Thanks a million. I decided load balancing is out of scope of the webinar when I started creating the content. Obviously I was wrong... will add it to the content.</p>
+            <div class="comment-content">Thanks a million. I decided load balancing is out of scope of the webinar when I started creating the content. Obviously I was wrong... will add it to the content.</div>
           </div>
         </li>
       </div>
@@ -161,10 +156,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01395217775195260835" rel="nofollow">Wes Felter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5770866651529429370">23 October 2018 22:37</a>
+                <a rel="nofollow" id="c5770866651529429370" href="#5770866651529429370">23 October 2018 22:37</a>
               </span>
             </div>
-            <p class="comment-content">There have been some re:Invent presentations that cover AWS networking internals; sadly I don&#39;t think that information was ever released in article form.<br /><br />https://www.youtube.com/watch?v=Zd5hsL-JNY4<br />https://www.youtube.com/watch?v=St3SE4LWhKo<br />https://www.youtube.com/watch?v=8gc2DgBqo9U</p>
+            <div class="comment-content">There have been some re:Invent presentations that cover AWS networking internals; sadly I don&#39;t think that information was ever released in article form.<br /><br />https://www.youtube.com/watch?v=Zd5hsL-JNY4<br />https://www.youtube.com/watch?v=St3SE4LWhKo<br />https://www.youtube.com/watch?v=8gc2DgBqo9U</div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/18412927262033925106" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1728908637698567915">23 October 2018 23:32</a>
+                <a rel="nofollow" id="c1728908637698567915" href="#1728908637698567915">23 October 2018 23:32</a>
               </span>
             </div>
-            <p class="comment-content">A) Why should it? You would need to rewrite it then.<br />B) For me that is actually answered in excerpt<br />C) you cannot configure more specific route than your VPC local prefix (you will get an error)</p>
+            <div class="comment-content">A) Why should it? You would need to rewrite it then.<br />B) For me that is actually answered in excerpt<br />C) you cannot configure more specific route than your VPC local prefix (you will get an error)</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -198,10 +193,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8762047689746333724">25 October 2018 09:05</a>
+                <a rel="nofollow" id="c8762047689746333724" href="#8762047689746333724">25 October 2018 09:05</a>
               </span>
             </div>
-            <p class="comment-content">Let&#39;s focus on (B) first. The important details is &quot;does the hypervisor look up destination IP or destination MAC?&quot;... and that is not answered in the excerpt.<br /><br />Now for (A): if the hypervisor uses destination IP address, why do they bother with destination MACs? Wouldn&#39;t it be the same if they&#39;d just use the same MAC address for every IP address?<br /><br />As usual, things are a bit more complex than they seem...</p>
+            <div class="comment-content">Let&#39;s focus on (B) first. The important details is &quot;does the hypervisor look up destination IP or destination MAC?&quot;... and that is not answered in the excerpt.<br /><br />Now for (A): if the hypervisor uses destination IP address, why do they bother with destination MACs? Wouldn&#39;t it be the same if they&#39;d just use the same MAC address for every IP address?<br /><br />As usual, things are a bit more complex than they seem...</div>
           </div>
         </li>
       </div>
@@ -209,6 +204,37 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1589">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">networking_guy</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1589" href="#1589">08 January 2023 02:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I am just starting to deep into AWS network constructs, but for the moment I can see this &quot;MPLS-analogy&quot; for the TGW, although for sure this is very simplistic and it is really more complex:</p>
+
+<ul>
+<li>The TGW works as an MPLS backbone  - underlay.</li>
+<li>The attachment of the VPC to the TGW is like &quot;connecting the physical cable into a PE port&quot;.</li>
+<li>Every RT in the TGW works as a VRF (BUT in a different PE with no import/export policies)</li>
+<li>The association of the attachment into an RT is like linking the subnet into a VRF.</li>
+<li>The propagation of the routes from attachments into an RT is like creating a RT-import policy</li>
+</ul>
+
+<p>Most probably I am making a mistake thinking all the time to link the &quot;classical behaviour&quot; and looking for a real-overlay-scenario, but for the moment and until I can be fully immersed, I am at this point.</p>
+
+<p>Thanks for all your posts, Ivan!</p>
+</div>
           </div>
         </li>
       </div>

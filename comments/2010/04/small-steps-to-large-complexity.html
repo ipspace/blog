@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ian Triggs</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3889435642766443458">06 April 2010 09:20</a>
+                <a rel="nofollow" id="c3889435642766443458" href="#3889435642766443458">06 April 2010 09:20</a>
               </span>
             </div>
-            <p class="comment-content">Hi there,<br /><br />Long time reader but first time poster.  I&#39;m a bit of a novice and thought I&#39;d take a stab at this.  Could you apply a route-map to each of the interfaces on the LNS router with no match statement, and make it set the exit interface to the opposite interface?  You wouldn&#39;t need to know any addresses, just interfaces.<br /><br />Ian.</p>
+            <div class="comment-content">Hi there,<br /><br />Long time reader but first time poster.  I&#39;m a bit of a novice and thought I&#39;d take a stab at this.  Could you apply a route-map to each of the interfaces on the LNS router with no match statement, and make it set the exit interface to the opposite interface?  You wouldn&#39;t need to know any addresses, just interfaces.<br /><br />Ian.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4320684221574331332">06 April 2010 10:15</a>
+                <a rel="nofollow" id="c4320684221574331332" href="#4320684221574331332">06 April 2010 10:15</a>
               </span>
             </div>
-            <p class="comment-content">You could set the default route on the LNS pointing towards the LACs and forward all traffic coming with a branch source ip address to the next-hop of the core router by using policy routing</p>
+            <div class="comment-content">You could set the default route on the LNS pointing towards the LACs and forward all traffic coming with a branch source ip address to the next-hop of the core router by using policy routing</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Robert</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3324660737983042554">06 April 2010 14:12</a>
+                <a rel="nofollow" id="c3324660737983042554" href="#3324660737983042554">06 April 2010 14:12</a>
               </span>
             </div>
-            <p class="comment-content">Option 1) use PBR on the virtual-template interface with set ip default next-hop pointing to the internal router or<br />Option 2) put the inside interface and virtual-template in a VRF or<br />Option 3) ask the SP if they can announce their LAC IP addresses with BGP so that we do not need a static default route for reaching the LACs<br /><br />I prefer option 1</p>
+            <div class="comment-content">Option 1) use PBR on the virtual-template interface with set ip default next-hop pointing to the internal router or<br />Option 2) put the inside interface and virtual-template in a VRF or<br />Option 3) ask the SP if they can announce their LAC IP addresses with BGP so that we do not need a static default route for reaching the LACs<br /><br />I prefer option 1</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">mirek</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4316359438700694050">06 April 2010 15:44</a>
+                <a rel="nofollow" id="c4316359438700694050" href="#4316359438700694050">06 April 2010 15:44</a>
               </span>
             </div>
-            <p class="comment-content">Hi! I don&#39;t use L2TP in my network but I have somewhat similar setup with DMVPN, where SP provides IP connectivity from spokes to hub within SP&#39;s network and Internet access is being router centrally via a firewall. I was posed with the same question, which way the default route should be pointed, since spokes&#39; addresses are dynamic. <br />So I resolved this with the following configuration at hub:<br />crypto dynamic-map [SP-DMVPN map name] 10<br /> set transform-set [DMVPN TS name]<br /> reverse-route remote-peer [next hop at SP&#39;s side] gateway<br />interface GigabitEthernet0/0.2<br /> description SP tunnel termination<br /> ip address [SP provided address]<br /> service-policy output [SP-DMVPN map name]<br />0/0 route is being received by this router via OSPF and points to the campus core network.<br /><br />Now when spokes dynamically establish IPSec with hub, crypto subsystem adds static routes pointing to their Internet IPs via hub&#39;s SP-facing interface:<br /><br />tunnelhub#sh crypto route<br /><br />VPN Routing Table: Shows RRI and VTI created routes<br />Codes: RRI - Reverse-Route, VTI- Virtual Tunnel Interface<br />        S - Static Map ACLs<br /><br />Routes created in table GLOBAL DEFAULT<br />[spoke SP IP]/255.255.255.255 [1/0] via [hub SP nexthop] tag 0<br />                                on GigabitEthernet0/0.2 RRI<br /><br />I&#39;m really not sure if this is applicable for L2TP, anyway, maybe someone would find this hint useful.</p>
+            <div class="comment-content">Hi! I don&#39;t use L2TP in my network but I have somewhat similar setup with DMVPN, where SP provides IP connectivity from spokes to hub within SP&#39;s network and Internet access is being router centrally via a firewall. I was posed with the same question, which way the default route should be pointed, since spokes&#39; addresses are dynamic. <br />So I resolved this with the following configuration at hub:<br />crypto dynamic-map [SP-DMVPN map name] 10<br /> set transform-set [DMVPN TS name]<br /> reverse-route remote-peer [next hop at SP&#39;s side] gateway<br />interface GigabitEthernet0/0.2<br /> description SP tunnel termination<br /> ip address [SP provided address]<br /> service-policy output [SP-DMVPN map name]<br />0/0 route is being received by this router via OSPF and points to the campus core network.<br /><br />Now when spokes dynamically establish IPSec with hub, crypto subsystem adds static routes pointing to their Internet IPs via hub&#39;s SP-facing interface:<br /><br />tunnelhub#sh crypto route<br /><br />VPN Routing Table: Shows RRI and VTI created routes<br />Codes: RRI - Reverse-Route, VTI- Virtual Tunnel Interface<br />        S - Static Map ACLs<br /><br />Routes created in table GLOBAL DEFAULT<br />[spoke SP IP]/255.255.255.255 [1/0] via [hub SP nexthop] tag 0<br />                                on GigabitEthernet0/0.2 RRI<br /><br />I&#39;m really not sure if this is applicable for L2TP, anyway, maybe someone would find this hint useful.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brian Knight</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8444171101384917613">06 April 2010 20:17</a>
+                <a rel="nofollow" id="c8444171101384917613" href="#8444171101384917613">06 April 2010 20:17</a>
               </span>
             </div>
-            <p class="comment-content">I would look into establishing a separate VRF for the internal interfaces of the LNS router, specifically the internal Ethernet interface and the Virtual-Template interface.<br /><br />One could also put the external interface in a VRF, but that is more complex and may not be supported in PPPoE/L2TP.  (I do know for a fact it is supported in recent versions of IOS&#39; IPsec implementation.)<br /><br />Not having worked with PPPoE/L2TP, I couldn&#39;t tell you without research whether VRF-based separation would work.</p>
+            <div class="comment-content">I would look into establishing a separate VRF for the internal interfaces of the LNS router, specifically the internal Ethernet interface and the Virtual-Template interface.<br /><br />One could also put the external interface in a VRF, but that is more complex and may not be supported in PPPoE/L2TP.  (I do know for a fact it is supported in recent versions of IOS&#39; IPsec implementation.)<br /><br />Not having worked with PPPoE/L2TP, I couldn&#39;t tell you without research whether VRF-based separation would work.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Nitzan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3559551784248684738">06 April 2010 20:22</a>
+                <a rel="nofollow" id="c3559551784248684738" href="#3559551784248684738">06 April 2010 20:22</a>
               </span>
             </div>
-            <p class="comment-content">You can put the vpdn-group in vrf by using vpn command inside it and the interface of the LAC in that VRF<br />Then you can route the default of the L2TP to the LAC inside the VRF  and to the LAN outside the VRF</p>
+            <div class="comment-content">You can put the vpdn-group in vrf by using vpn command inside it and the interface of the LAC in that VRF<br />Then you can route the default of the L2TP to the LAC inside the VRF  and to the LAN outside the VRF</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Christoph</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7682472528943143557">06 April 2010 20:31</a>
+                <a rel="nofollow" id="c7682472528943143557" href="#7682472528943143557">06 April 2010 20:31</a>
               </span>
             </div>
-            <p class="comment-content">I think asking the provider which LAC addresses they use would be the easiest way.<br />Otherwise maybe some kind of an &quot;outside LNS&quot; (located in the internet) could be depolyed which accepts the sessions forwarded by the ISP&#39;s LAC and forwards them once again to an &quot;inside LNS&quot; (which is the already existing ISDN hub-router).</p>
+            <div class="comment-content">I think asking the provider which LAC addresses they use would be the easiest way.<br />Otherwise maybe some kind of an &quot;outside LNS&quot; (located in the internet) could be depolyed which accepts the sessions forwarded by the ISP&#39;s LAC and forwards them once again to an &quot;inside LNS&quot; (which is the already existing ISDN hub-router).</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Gabriel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#385347651147077638">09 June 2010 22:11</a>
+                <a rel="nofollow" id="c385347651147077638" href="#385347651147077638">09 June 2010 22:11</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan, where you get those cool routers, clouds, etc. symbols, icons or how you name it? <br />Hidden Cisco icon packet? <br />Software?</p>
+            <div class="comment-content">Hi Ivan, where you get those cool routers, clouds, etc. symbols, icons or how you name it? <br />Hidden Cisco icon packet? <br />Software?</div>
           </div>
         </li>
       </div>

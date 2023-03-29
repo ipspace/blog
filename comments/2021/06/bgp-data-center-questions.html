@@ -1,0 +1,140 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="670">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c670" href="#670">17 June 2021 09:48</a>
+              </span>
+            </div>
+            <div class="comment-content">On the question of possible flooding problems:<br />
+
+<p>It&#39;s hard to get good information on the practical problems with link-state routing in &quot;large scale data centers&quot; (whatever you may consider &quot;large&quot;&hellip;). The best I have found so far (linked to from this blog IIRC) is &quot;What I&#39;ve learned about scaling OSPF in Datacenters&quot; from Justin Pietsch (https://elegantnetwork.github.io/posts/What-Ive-learned-about-OSPF/).</p>
+
+<p>There is an interesting bit regarding flooding: &quot;Which means you have to be very careful about what is flooded, what are the areas, and how things are summarized. I didn&rsquo;t understand this until I had a simulation and I could try things out with areas or without, and the effect was dramatic.&quot;</p>
+
+<p>In I think this March Dinesh Dutt did a Webinar on ipSpace called &quot;Using OSPF in Leaf-and-Spine Fabrics&quot; where he added some details on how to make areas and summarization work in this setting (there are subtle, but important differences in the results of this and the RFC 7938 BGP setup).</p>
+
+<p>Another bit of information regarding the alleged flooding problems can be gleaned from Google paper &quot;Jupiter Rising: A Decade of Clos Topologies and Centralized Control in Google&rsquo;s Datacenter Network&quot;. Section 5.2.2 describes how they prevent(ed?) flooding problems (back then?). One could use IS-IS Mesh Groups as described in the informational RFC 2973 and implemented by many vendors to build something similar.</p>
+
+<p>The expired Openfabric draft from Russ White attempted to reduce flooding. That makes one wonder why Russ white did not mention this point in his &quot;Rethinking BGP in the Data Center&quot; presentation.</p>
+
+<p>Anyway, most &quot;Enterprise&quot; data centers should be of sufficiently small size to not show any problems with a basic deployment of OSPF or IS-IS in the underlay. I&#39;d like to point at tables 2 and 3 of RFC 2329 from 1998 regarding OSPF scalability information over two decades ago. But please observe that this report does not mention the number of full adjacencies per router, which is the stated problem in Clos style networks.</p>
+
+<p>I&#39;d say the classic approach of an IGP (e.g., OSPF or IS-IS) in the underlay and MP-BGP in the overlay is a simple and proven approach. I think it is easier to understand and work with than using BGP twice, one set of sessions as underlay IGP and another for the overlay. Using BGP once for a combination of underlay and overlay (the FRR way as pushed by Cumulus^WNvidia) is fine, too, if supported by your vendor.</p>
+
+<p>In another recent webinar (&quot;Multi-Vendor EVPN Deployments&quot; from May) on ipSpace, Dinesh Dutt listed OSPF+BGP as the most commonly supported basis for EVPN on data center switches.</p>
+
+<p>Thanks,
+Erik</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="673">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Alex Nidetch</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c673" href="#673">17 June 2021 09:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>On the question of VXLAN vs SR-MPLS; are there any reasons why VXLAN seems to be the defacto choice? Is it that white box software, which is popular in the DC, just finds regular IP routing with VXLAN encapsulation alot easier to work with than SR-MPLS? Do DC engineers just not like working with MPLS in the DC?</p>
+
+<p>I think the main reason that SRv6 seems to be stalled is that every vender is still coming up with different solutions to solve the extra overhead of the IPv6 header. Juniper is pushing SRm6 while Cisco just released their SRv6 uSID. It seems like we wont know which way the industry will go for another few years but it seems that regular SRv6 is dead. </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="676">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c676" href="#676">18 June 2021 05:41</a>
+              </span>
+            </div>
+            <div class="comment-content">On the topic of VXLAN versus MPLS:<br />
+
+<ul>
+<li>https://blog.ipspace.net/2018/11/using-mplsevpn-in-data-center-fabrics.html</li>
+<li>https://blog.ipspace.net/2020/05/need-vxlan-transport.html</li>
+</ul>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="677">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Alex Nidetch</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c677" href="#677">19 June 2021 04:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Neat. Thanks for the info.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="685">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Blake</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c685" href="#685">22 June 2021 02:24</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Drivenets made a J2C+ box announcement about a month ago:
+https://www.prnewswire.com/il/news-releases/drivenets-network-cloud-is-first-to-support-broadcom-j2c-and-triple-network-scale-with-largest-networking-solution-in-the-market-898000194.html</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+{
+   "comments": [
+      {
+         "date": "13 December 2022 10:50",
+         "html": "<p>People should follow your example and read the docs. If the docs don&#39;t say you can do it, you can&#39;t do it. And if the docs say you can do it, you still need to do a POC to flush out any bugs.</p>\n",
+         "id": "1570",
+         "name": "Wes Felter",
+         "pub": "2022-12-13T22:50:09",
+         "type": "comment"
+      },
+      {
+         "date": "18 December 2022 04:23",
+         "html": "<p>I utterly fail to understand on a deeper level the &quot;how&quot; and &quot;what&quot; a DPU actually offloads and accelerates. If I read the VMware KB articles, they only ever mention mysterious &quot;infrastructure&quot; and &quot;networking&quot; functions that are accelerated.</p>\n\n<p>Lets follow a frame from the wire to the application socket in a VM</p>\n\n<p>slow and low, traditional:\nHW RX_RING -&gt; NIC MEM -&gt; DMA to Kernel RX_RING -&gt; via CPU to VM RX_RING -&gt; via CPU to VM Userspace. (shorter and DMA if NIC has HW queues)</p>\n\n<p>PMD approach:\nHW RX_RING -&gt; NIC MEM -&gt; via CPU poll to Userspace (if NIC supports HW queues)</p>\n\n<p>SRIOV Passthrough:\nHW RX_RING -&gt; NIC MEM (queues per VF) -&gt; DMA to VM Kernel RX_RING -&gt; via CPU to VM RX_RING -&gt; via CPU to VM Userspace. (PMD also possible)</p>\n\n<p>DPU?\nHW RX_RING -&gt; NIC_MEM -&gt; &#123;mysterious DPU things&#125; -&gt; via DMA to VM RX_RING (???) </p>\n\n<p>Especially that last bit (copy via CPU from VM Kernelspace to VM Userspace or PMD&#39;ing it ) can obviously not be avoided in any scenario, even with DPUs. And that is the most CPU intensive task in all the processing of a frame. So, how do DPUs accelerate frame processing or even offload it significantly?</p>\n\n<p>And another thing: dVS offloaded to DPU? So Inter-VM traffic on same host has to pass though DPU??? I recon that is a significant overhead.</p>\n",
+         "id": "1576",
+         "name": "Johannes Spanier",
+         "pub": "2022-12-18T16:23:15",
+         "type": "comment"
+      },
+      {
+         "date": "18 December 2022 06:34",
+         "html": "<p>&gt; I utterly fail to understand on a deeper level the &quot;how&quot; and &quot;what&quot; a DPU actually offloads and accelerates</p>\n\n<p>There was a pretty good article describing how it works that I can&#39;t find anymore, but it said pretty much what this blog is saying: https://cormachogan.com/2022/09/27/vsphere-distributed-services-engine-networking-offload-and-acceleration-preview/</p>\n\n<p>You could either use SR-IOV or some mechanism that looks like software (kernel) patch cables between VMs and DPU. The &quot;heavy lifting&quot; (VXLAN, DFW) would be done on the DPU.</p>\n\n<p>&gt; So, how do DPUs accelerate VM frame processing or even offload it significantly?</p>\n\n<p>Of course they do not. There&#39;s no magic.</p>\n\n<p>&gt; So Inter-VM traffic on same host has to pass though DPU</p>\n\n<p>Correct.</p>\n\n<p>&gt; I recon that is a significant overhead.</p>\n\n<p>Of course there&#39;s overhead. I have no idea how significant it is.</p>\n",
+         "id": "1578",
+         "name": " Ivan Pepelnjak",
+         "pub": "2022-12-18T18:34:52",
+         "type": "comment"
+      },
+      {
+         "date": "19 December 2022 03:25",
+         "html": "<p>Thanks. That link led me to two comprehensible videos that actually explain DPUs at a deeper technical level without the usual marketing kerfuffle. Many mysteries remain, but I am getting closer to understand DPUs.</p>\n\n<p>https://www.youtube.com/watch?v=Qjbll68I2tk\nwhich is basically the TL;DR version of\nhttps://www.vmware.com/explore/video-library/video-landing.html?sessionid=1652202889974001lYkd&amp;videoId=6311751939112</p>\n",
+         "id": "1580",
+         "name": "Johannes Spanier",
+         "pub": "2022-12-19T15:25:58",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2022/12/dpu-hype-considered-harmful.html"
+}

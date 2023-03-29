@@ -1,89 +1,121 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "11 September 2019 07:01",
-          "html": "Thanks for the extensive comment. While I might agree that a creative reading of ISO/IEC 7498-1 might result in your perspective (and I was always fond of creative reading), there are numerous detailed provisions in the standard that would make most people converge on the standard interpretation. For example:<br /><br />&quot;5.3.2.1. For information to be exchanged between two or more (N+1) entities, an association is established between them in N-layer using N-protocol&quot;<br /><br />This one would directly imply protocol(s) at each layer.<br /><br />Clause 5.6.2.1 and figure 9 when applied recursively results in exactly the stack of headers you drew above, although the wording allows headers or trailers (or anything else).<br /><br />And finally, &quot;5.8.8.1.1 - Control information and user data are transferred between N-entities in N-PDUs. An N-PDU is a unit of data specified in N-protocol and contains N-protocol-control-information and possibly N-user-data&quot; reads as &quot;every N-PDU must have N-header and may have N+1-data&quot; and while we may be creative again and say &quot;but a null layer would have null headers&quot; the generic interpretation of a stack of seven headers (even if some of them are null) would still be correct.<br /><br />There are other places in the text requiring strict communication between layers (N+1-layer entities talk through N-layer entities).<br /><br />I could go on, but I hate retyping text from a scanned paper copy (which is what I got from the ISO web site).<br /><br />So if nothing else, I completely understand how everyone gets their idea even if the preamble to the standard is vaguer than that.",
-          "id": "3020771012298250798",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2019-09-11T07:01:22.489+02:00",
-          "ref": "6658127076918961874",
-          "type": "comment"
-        },
-        {
-          "date": "11 September 2019 14:31",
-          "html": "Well, it&#39;s clear that &quot;N-protocol&quot; term exists in the standard, as it is specified as &quot;A set of rules and formats (semantic and syntactic) which determines the communication behavior of (N)-entities in the performance of (N)-functions.&quot;<br /><br />My point is those N-protocols *by definition* rely on N-functions performed by N-entities. If a protocol specifies a set of rules and formats which determine behavior of entities in the performance of functions in several layers, it is by definition not an N-protocol.<br /><br />For example, Ethernet is not L2-protocol in this sense, but 802.3 chapters 6-9 are L1-protocol for 10BASE-5 (Figure 8-1, IEEE Std 802.3-2018, p.216), chapters 2-5 are L2-protocol for any Ethernet network (same as above), and 802.1D is L3-protocol for switched Ethernet. The &quot;Ethernet protocol&quot; in modern sense is just a set of N-protocols in terms of OSI model, where each protocol specifies its own N-functions.<br /><br />&gt; Clause 5.6.2.1 and figure 9 when applied recursively results in exactly the stack of headers you drew above, although the wording allows headers or trailers (or anything else).<br /><br />Figure 9, indeed, illustrate something very similar to what we see in Wireshark, with sequential headers in order that resemble a common &quot;understanding&quot; of N-protocols in OSI. However, even if we assume that the figure show exactly those blocks of bits and how they&#39;re transferred from layer to layer being encapsulated and de-encapsulated, the notes 2 and 3 make all this concept very weak:<br />* Note 2: This figure DOES NOT imply any positional relationship between protocol-control-information and user-data in protocol-data-unit. // there can be header, footer, or control information can be scrambled into data, or whatever<br />* Note 3: An (N)-protocol-data-unit may be mapped one-to-one into an (N - l)-service-data-unit, but OTHER RELATIONSHIPS ARE POSSIBLE. // there can be close to zero relationship between what we see on N+1 layer and &quot;payload&quot; (or SDU) on N-layer.<br /><br />What is even more important, the N-SDU (or N-layer &quot;payload&quot;) is not what we see in Wireshark. If we see a typical sniffed Telnet packet, we only see L1-SDU and not L2-L7 PDUs. The L4 PDU is NOT some extracted substring from it, marked as TCP header, it is by definition an entity existing only withing the L4-entities (loosely saying, TCP handlers on end nodes, even though it&#39;s not about TCP at all).<br /><br />When L4-entity processes its L4-SDU (data), it reads necessary service data from it, adds L4-PCI (some memory structure, which in case of TCP is different from what we know as TCP header at least we need to know a socket, not just a port number), generates L4-PDU, then calls L3-handler and transfers its L4-PDU there, while converting the latter to L3-SDU (providing it with necessary L3 service data).<br /><br />Again, it&#39;s not about Telnet, TCP, BSD sockets, Wireshark or any actual implementation of any existing or fictional protocol. It&#39;s about network functions that can or cannot be implemented in any particular way. OSI model (as well as DoD one) was created not to be a nice representation of onion-like data structures, but to restrict vendors from implementing something that is impossible to reproduce. Those were attempts to regulate vendors and prohibit them to sell solutions that are incompatible not only between different vendors but often even within a single product line. Before that it was possible to implement a remote shell protocol that only worked on a specific OS on a specific mainframe model over a specific cables. Because it would be very dumb to create a standard that whitelists all possible protocols, both models describe not the protocols but network functions, and they restrict relations between those functions.<br /><br />&gt;  I completely understand how everyone gets their idea<br /><br />It&#39;s easy to think that headers order in a *typical* modern packet represents OSI layering, while to read the standard is almost an impossible thing.",
-          "id": "5337252034006545509",
-          "image": "https://3.bp.blogspot.com/-IviEX3AE3jU/XacIjx7m__I/AAAAAAAAH18/LsHy1oO5CDI-ADjqKgG-8pVw3T_7WaaiQCK4BGAYYCw/s32/19-08-21-filonovawed-18-34-02-01.jpg",
-          "name": "Innokentiy",
-          "profile": "https://www.blogger.com/profile/17783635023339781751",
-          "pub": "2019-09-11T14:31:57.406+02:00",
-          "ref": "6658127076918961874",
-          "type": "comment"
-        }
-      ],
-      "date": "10 September 2019 16:32",
-      "html": "There is a huge lie on OSI model. Or misunderstanding. Or a lie. I prefer to think it&#39;s a worldwide lie, and I explain here why.<br /><br />It&#39;s funny that every course, every book teaching us networks begins with that famous model, and it&#39;s always illustrated with the famous ladder-style picture with headers. You know it, something like that:<br /><br />                     Data<br />                  L7|Data<br />               L6|L7|Data<br />            L5|L6|L7|Data<br />         L4|L5|L6|L7|Data<br />      L3|L4|L5|L6|L7|Data<br />   L2|L3|L4|L5|L6|L7|Data<br />L1|L2|L3|L4|L5|L6|L7|Data<br /><br />Sometimes they understand there is no headers on L1 so they omit it. Sometimes they remember Ethernet and PPP-style protocols has trailers so they add FCS. Sometimes they understand that there are always have doubts where in L5-L7 everything is, so they omit them too.<br /><br />This concept explains basics of encapsulation and de-encapsulation on example of OSI model, and obviously this ladder-style thing is senseless in 2019. Protocol encapsulations can be much, incredibly much more complicated than just 7 layers. Moreover, they all agree that Ethernet is L2 protocol and IP is L3 protocol, so if we take, for example, MPLS, it should be... L2.5?<br /><br />Anyway, they all agree that:<br />* There are layers, numbered from 1 to 7, with some crappy names that must be remembered.<br />* Each network protocol corresponds (or means to) to a single layer.<br />* These 7 layers are not enough in 2019, there should be more layers to represent modern protocols<br />* Some of these layers are obsolete and not used in modern world<br />* Notable layers are 2 for Ethernet, 3 for IP, and 4 for TCP<br /><br />----- NOW FUNNY THINGS START -----<br />Only a few people in the world know *what is* that model actually. It&#39;s specified in ISO/IEC 7498, publicly available on ISO website, and almost nobody ever tried to read it.<br /><br />In the list above only one thing is true: it&#39;s actually 7 layers in this model. All the rest claims are false.<br /><br />* The OSI model in ISO/IEC 7498-1 : 1994(E) DOES NOT specify layers for PROTOCOLS.<br /><br />1.18 This Reference Model does not specify services and protocols for OSI. It is neither an implementation specification for systems, nor a basis for appraising the conformance of implementations.<br /><br />* It&#39;s network FUNCTIONS what corresponds to layers in OSI model. Layers are organized in that way that they are mutually exclusive and collectively exhaustive, so 7 is enough for any possible network function. Boundaries between layers help to determine to which layer a single network function belongs to.<br />* PROTOCOLS don&#39;t correspond to layers in OSI model.<br />* Modern (and not so modern) protocols often implement FUNCTIONS that correspond to different layers.<br /><br />For example, modern switched Ethernet implements L1, L2 and L3 functions:<br />- it specifies a communication path in the physical media among two or more physical entities, that&#39;s L1 function per 7.7.2<br />- it specifies data-link connection that is built on top of physical connection, that&#39;s L2 function per 7.6.2.1<br />- it specifies the relaying of data across different physical links, and that&#39;s L3 function per 7.5.2.1<br /><br />And TCP actually does not only L4 tasks like multiplexing data, it actually creates sessions (L5), and selects use of session-services by using TCP options (L6).<br /><br />Please don&#39;t confuse OSI model with OSI protocols stack, that&#39;s a whole another story.<br /><br />I would be happy to hear your objections and additions, accompanied with cites from the standard. Moreover, Ivan, if you would like to tell the truth to the world, I&#39;d gladly assist you with that.",
-      "id": "6658127076918961874",
-      "image": "https://3.bp.blogspot.com/-IviEX3AE3jU/XacIjx7m__I/AAAAAAAAH18/LsHy1oO5CDI-ADjqKgG-8pVw3T_7WaaiQCK4BGAYYCw/s32/19-08-21-filonovawed-18-34-02-01.jpg",
-      "name": "Innokentiy",
-      "profile": "https://www.blogger.com/profile/17783635023339781751",
-      "pub": "2019-09-10T16:32:07.441+02:00",
-      "ref": "7608761858685883405",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "11 September 2019 07:03",
-          "html": "... or you could say that ARP is N-protocol-control-information for IP ;)... but of course I agree that OSPF is an application with its own transport layer (LSA flooding and retransmissions), session layer (hello exchanges) and presentation layer (OSPF packet format).",
-          "id": "1593272817793632193",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2019-09-11T07:03:16.172+02:00",
-          "ref": "2425570707971458682",
-          "type": "comment"
-        },
-        {
-          "date": "11 September 2019 12:53",
-          "html": "&gt; TCP/IP is just an implementation of OSI.<br /><br />TCP/IP (or DoD, if you prefer that) model was created in late 60&#39;s, while ISO OSI model was published in 1978. I would say those american guys did awesome job to implement something that became to exist 10 year later.",
-          "id": "810720758628495155",
-          "image": "https://3.bp.blogspot.com/-IviEX3AE3jU/XacIjx7m__I/AAAAAAAAH18/LsHy1oO5CDI-ADjqKgG-8pVw3T_7WaaiQCK4BGAYYCw/s32/19-08-21-filonovawed-18-34-02-01.jpg",
-          "name": "Innokentiy",
-          "profile": "https://www.blogger.com/profile/17783635023339781751",
-          "pub": "2019-09-11T12:53:39.348+02:00",
-          "ref": "2425570707971458682",
-          "type": "comment"
-        }
-      ],
-      "date": "10 September 2019 23:40",
-      "html": "Almost nobody has read the ISO draft. People just assume what they&#39;ve heard about the OSI model is true. That&#39;s how we get silly ideas like &quot;ARP is layer 2&quot; or &quot;OSPF is layer 3&quot; when they&#39;re both actually layer 7 application protocols. And the TCP/IP vs OSI dichotomy is nonsense. TCP/IP is just an implementation of OSI.<br /><br />Everyone would benefit if people spent less time venting on social media and more time studying their profession.",
-      "id": "2425570707971458682",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Ben",
-      "profile": "https://www.blogger.com/profile/04785323784057485449",
-      "pub": "2019-09-10T23:40:15.552+02:00",
-      "ref": "7608761858685883405",
-      "type": "comment"
-    },
-    {
-      "date": "12 September 2019 10:19",
-      "html": "I found the OSI model most useful to understand all how all the different protocol stacks related to each other. This was important if you had multiple protocol stacks running on the same network, and/or you were going from one customer to another and troubleshooting different stacks at each customer.<br /><br />The Network Associates Guide to Communications Protocols was probably one of the most useful diagrams to me for many years.<br />https://sebsauvage.net/comprendre/tcpip/protocols.pdf",
-      "id": "4552343928635109507",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "HairyBear",
-      "profile": "https://www.blogger.com/profile/14135269129889078657",
-      "pub": "2019-09-12T10:19:15.645+02:00",
-      "ref": "7608761858685883405",
-      "type": "comment"
-    }
-  ],
-  "count": 7,
-  "id": "7608761858685883405",
-  "type": "post",
-  "url": "2019/09/response-osi-model-is-lie.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "11 September 2019 07:01",
+               "html": "Thanks for the extensive comment. While I might agree that a creative reading of ISO/IEC 7498-1 might result in your perspective (and I was always fond of creative reading), there are numerous detailed provisions in the standard that would make most people converge on the standard interpretation. For example:<br /><br />&quot;5.3.2.1. For information to be exchanged between two or more (N+1) entities, an association is established between them in N-layer using N-protocol&quot;<br /><br />This one would directly imply protocol(s) at each layer.<br /><br />Clause 5.6.2.1 and figure 9 when applied recursively results in exactly the stack of headers you drew above, although the wording allows headers or trailers (or anything else).<br /><br />And finally, &quot;5.8.8.1.1 - Control information and user data are transferred between N-entities in N-PDUs. An N-PDU is a unit of data specified in N-protocol and contains N-protocol-control-information and possibly N-user-data&quot; reads as &quot;every N-PDU must have N-header and may have N+1-data&quot; and while we may be creative again and say &quot;but a null layer would have null headers&quot; the generic interpretation of a stack of seven headers (even if some of them are null) would still be correct.<br /><br />There are other places in the text requiring strict communication between layers (N+1-layer entities talk through N-layer entities).<br /><br />I could go on, but I hate retyping text from a scanned paper copy (which is what I got from the ISO web site).<br /><br />So if nothing else, I completely understand how everyone gets their idea even if the preamble to the standard is vaguer than that.",
+               "id": "3020771012298250798",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2019-09-11T07:01:22.489+02:00",
+               "ref": "6658127076918961874",
+               "type": "comment"
+            },
+            {
+               "date": "11 September 2019 14:31",
+               "html": "Well, it&#39;s clear that &quot;N-protocol&quot; term exists in the standard, as it is specified as &quot;A set of rules and formats (semantic and syntactic) which determines the communication behavior of (N)-entities in the performance of (N)-functions.&quot;<br /><br />My point is those N-protocols *by definition* rely on N-functions performed by N-entities. If a protocol specifies a set of rules and formats which determine behavior of entities in the performance of functions in several layers, it is by definition not an N-protocol.<br /><br />For example, Ethernet is not L2-protocol in this sense, but 802.3 chapters 6-9 are L1-protocol for 10BASE-5 (Figure 8-1, IEEE Std 802.3-2018, p.216), chapters 2-5 are L2-protocol for any Ethernet network (same as above), and 802.1D is L3-protocol for switched Ethernet. The &quot;Ethernet protocol&quot; in modern sense is just a set of N-protocols in terms of OSI model, where each protocol specifies its own N-functions.<br /><br />&gt; Clause 5.6.2.1 and figure 9 when applied recursively results in exactly the stack of headers you drew above, although the wording allows headers or trailers (or anything else).<br /><br />Figure 9, indeed, illustrate something very similar to what we see in Wireshark, with sequential headers in order that resemble a common &quot;understanding&quot; of N-protocols in OSI. However, even if we assume that the figure show exactly those blocks of bits and how they&#39;re transferred from layer to layer being encapsulated and de-encapsulated, the notes 2 and 3 make all this concept very weak:<br />* Note 2: This figure DOES NOT imply any positional relationship between protocol-control-information and user-data in protocol-data-unit. // there can be header, footer, or control information can be scrambled into data, or whatever<br />* Note 3: An (N)-protocol-data-unit may be mapped one-to-one into an (N - l)-service-data-unit, but OTHER RELATIONSHIPS ARE POSSIBLE. // there can be close to zero relationship between what we see on N+1 layer and &quot;payload&quot; (or SDU) on N-layer.<br /><br />What is even more important, the N-SDU (or N-layer &quot;payload&quot;) is not what we see in Wireshark. If we see a typical sniffed Telnet packet, we only see L1-SDU and not L2-L7 PDUs. The L4 PDU is NOT some extracted substring from it, marked as TCP header, it is by definition an entity existing only withing the L4-entities (loosely saying, TCP handlers on end nodes, even though it&#39;s not about TCP at all).<br /><br />When L4-entity processes its L4-SDU (data), it reads necessary service data from it, adds L4-PCI (some memory structure, which in case of TCP is different from what we know as TCP header at least we need to know a socket, not just a port number), generates L4-PDU, then calls L3-handler and transfers its L4-PDU there, while converting the latter to L3-SDU (providing it with necessary L3 service data).<br /><br />Again, it&#39;s not about Telnet, TCP, BSD sockets, Wireshark or any actual implementation of any existing or fictional protocol. It&#39;s about network functions that can or cannot be implemented in any particular way. OSI model (as well as DoD one) was created not to be a nice representation of onion-like data structures, but to restrict vendors from implementing something that is impossible to reproduce. Those were attempts to regulate vendors and prohibit them to sell solutions that are incompatible not only between different vendors but often even within a single product line. Before that it was possible to implement a remote shell protocol that only worked on a specific OS on a specific mainframe model over a specific cables. Because it would be very dumb to create a standard that whitelists all possible protocols, both models describe not the protocols but network functions, and they restrict relations between those functions.<br /><br />&gt;  I completely understand how everyone gets their idea<br /><br />It&#39;s easy to think that headers order in a *typical* modern packet represents OSI layering, while to read the standard is almost an impossible thing.",
+               "id": "5337252034006545509",
+               "image": "https://3.bp.blogspot.com/-IviEX3AE3jU/XacIjx7m__I/AAAAAAAAH18/LsHy1oO5CDI-ADjqKgG-8pVw3T_7WaaiQCK4BGAYYCw/s32/19-08-21-filonovawed-18-34-02-01.jpg",
+               "name": "Innokentiy",
+               "profile": "https://www.blogger.com/profile/17783635023339781751",
+               "pub": "2019-09-11T14:31:57.406+02:00",
+               "ref": "6658127076918961874",
+               "type": "comment"
+            }
+         ],
+         "date": "10 September 2019 16:32",
+         "html": "There is a huge lie on OSI model. Or misunderstanding. Or a lie. I prefer to think it&#39;s a worldwide lie, and I explain here why.<br /><br />It&#39;s funny that every course, every book teaching us networks begins with that famous model, and it&#39;s always illustrated with the famous ladder-style picture with headers. You know it, something like that:<br /><br />                     Data<br />                  L7|Data<br />               L6|L7|Data<br />            L5|L6|L7|Data<br />         L4|L5|L6|L7|Data<br />      L3|L4|L5|L6|L7|Data<br />   L2|L3|L4|L5|L6|L7|Data<br />L1|L2|L3|L4|L5|L6|L7|Data<br /><br />Sometimes they understand there is no headers on L1 so they omit it. Sometimes they remember Ethernet and PPP-style protocols has trailers so they add FCS. Sometimes they understand that there are always have doubts where in L5-L7 everything is, so they omit them too.<br /><br />This concept explains basics of encapsulation and de-encapsulation on example of OSI model, and obviously this ladder-style thing is senseless in 2019. Protocol encapsulations can be much, incredibly much more complicated than just 7 layers. Moreover, they all agree that Ethernet is L2 protocol and IP is L3 protocol, so if we take, for example, MPLS, it should be... L2.5?<br /><br />Anyway, they all agree that:<br />* There are layers, numbered from 1 to 7, with some crappy names that must be remembered.<br />* Each network protocol corresponds (or means to) to a single layer.<br />* These 7 layers are not enough in 2019, there should be more layers to represent modern protocols<br />* Some of these layers are obsolete and not used in modern world<br />* Notable layers are 2 for Ethernet, 3 for IP, and 4 for TCP<br /><br />----- NOW FUNNY THINGS START -----<br />Only a few people in the world know *what is* that model actually. It&#39;s specified in ISO/IEC 7498, publicly available on ISO website, and almost nobody ever tried to read it.<br /><br />In the list above only one thing is true: it&#39;s actually 7 layers in this model. All the rest claims are false.<br /><br />* The OSI model in ISO/IEC 7498-1 : 1994(E) DOES NOT specify layers for PROTOCOLS.<br /><br />1.18 This Reference Model does not specify services and protocols for OSI. It is neither an implementation specification for systems, nor a basis for appraising the conformance of implementations.<br /><br />* It&#39;s network FUNCTIONS what corresponds to layers in OSI model. Layers are organized in that way that they are mutually exclusive and collectively exhaustive, so 7 is enough for any possible network function. Boundaries between layers help to determine to which layer a single network function belongs to.<br />* PROTOCOLS don&#39;t correspond to layers in OSI model.<br />* Modern (and not so modern) protocols often implement FUNCTIONS that correspond to different layers.<br /><br />For example, modern switched Ethernet implements L1, L2 and L3 functions:<br />- it specifies a communication path in the physical media among two or more physical entities, that&#39;s L1 function per 7.7.2<br />- it specifies data-link connection that is built on top of physical connection, that&#39;s L2 function per 7.6.2.1<br />- it specifies the relaying of data across different physical links, and that&#39;s L3 function per 7.5.2.1<br /><br />And TCP actually does not only L4 tasks like multiplexing data, it actually creates sessions (L5), and selects use of session-services by using TCP options (L6).<br /><br />Please don&#39;t confuse OSI model with OSI protocols stack, that&#39;s a whole another story.<br /><br />I would be happy to hear your objections and additions, accompanied with cites from the standard. Moreover, Ivan, if you would like to tell the truth to the world, I&#39;d gladly assist you with that.",
+         "id": "6658127076918961874",
+         "image": "https://3.bp.blogspot.com/-IviEX3AE3jU/XacIjx7m__I/AAAAAAAAH18/LsHy1oO5CDI-ADjqKgG-8pVw3T_7WaaiQCK4BGAYYCw/s32/19-08-21-filonovawed-18-34-02-01.jpg",
+         "name": "Innokentiy",
+         "profile": "https://www.blogger.com/profile/17783635023339781751",
+         "pub": "2019-09-10T16:32:07.441+02:00",
+         "ref": "7608761858685883405",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "11 September 2019 07:03",
+               "html": "... or you could say that ARP is N-protocol-control-information for IP ;)... but of course I agree that OSPF is an application with its own transport layer (LSA flooding and retransmissions), session layer (hello exchanges) and presentation layer (OSPF packet format).",
+               "id": "1593272817793632193",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2019-09-11T07:03:16.172+02:00",
+               "ref": "2425570707971458682",
+               "type": "comment"
+            },
+            {
+               "date": "11 September 2019 12:53",
+               "html": "&gt; TCP/IP is just an implementation of OSI.<br /><br />TCP/IP (or DoD, if you prefer that) model was created in late 60&#39;s, while ISO OSI model was published in 1978. I would say those american guys did awesome job to implement something that became to exist 10 year later.",
+               "id": "810720758628495155",
+               "image": "https://3.bp.blogspot.com/-IviEX3AE3jU/XacIjx7m__I/AAAAAAAAH18/LsHy1oO5CDI-ADjqKgG-8pVw3T_7WaaiQCK4BGAYYCw/s32/19-08-21-filonovawed-18-34-02-01.jpg",
+               "name": "Innokentiy",
+               "profile": "https://www.blogger.com/profile/17783635023339781751",
+               "pub": "2019-09-11T12:53:39.348+02:00",
+               "ref": "2425570707971458682",
+               "type": "comment"
+            }
+         ],
+         "date": "10 September 2019 23:40",
+         "html": "Almost nobody has read the ISO draft. People just assume what they&#39;ve heard about the OSI model is true. That&#39;s how we get silly ideas like &quot;ARP is layer 2&quot; or &quot;OSPF is layer 3&quot; when they&#39;re both actually layer 7 application protocols. And the TCP/IP vs OSI dichotomy is nonsense. TCP/IP is just an implementation of OSI.<br /><br />Everyone would benefit if people spent less time venting on social media and more time studying their profession.",
+         "id": "2425570707971458682",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Ben",
+         "profile": "https://www.blogger.com/profile/04785323784057485449",
+         "pub": "2019-09-10T23:40:15.552+02:00",
+         "ref": "7608761858685883405",
+         "type": "comment"
+      },
+      {
+         "date": "12 September 2019 10:19",
+         "html": "I found the OSI model most useful to understand all how all the different protocol stacks related to each other. This was important if you had multiple protocol stacks running on the same network, and/or you were going from one customer to another and troubleshooting different stacks at each customer.<br /><br />The Network Associates Guide to Communications Protocols was probably one of the most useful diagrams to me for many years.<br />https://sebsauvage.net/comprendre/tcpip/protocols.pdf",
+         "id": "4552343928635109507",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "HairyBear",
+         "profile": "https://www.blogger.com/profile/14135269129889078657",
+         "pub": "2019-09-12T10:19:15.645+02:00",
+         "ref": "7608761858685883405",
+         "type": "comment"
+      },
+      {
+         "date": "27 September 2020 08:45",
+         "html": "<p>The OSI model is a specific implementation of the generic layered services. The standardization was led by the IBM networking solution and the result of a bad political compromise.</p>\n\n<p>For really learning how network layering is actually built in real life, you should read the ITU-T G.805 and G.809 standards. It is a much better framework and the OSI model is just a very specific instance of the real models. </p>\n\n<p>But most networks are actually not following the OSI model. However, with the ITU-T G.800 series you could model every network more precisely. </p>\n",
+         "id": "155",
+         "name": "Bela Varkonyi",
+         "pub": "2020-09-27T20:45:58",
+         "type": "comment"
+      },
+      {
+         "date": "23 January 2021 09:27",
+         "html": "<p>Getting into the history of what was intended to mean what should be subservient to the idea of what is practical today. If you look at a general packet on wireshark, you can see three headers in front of the data: The TCP or UDP header, the IP header, and the Ethernet header. In practical terms then, there are 4 parts to deal with, and then the idea of the physical medium that the data has to travel to get to the next point.</p>\n\n<p>The OSI model does not map to this idea, just as the original TCP/IP model doesn&#39;t. A 5 layer model that acknowledges TCP/UDP, IPv4/IPv6 and maybe even Ethernet as the standards that they are is what we should be focusing on using so that we can stop having these stupid arguments. The OSI model has absolutely no practical value except as a historical reference, and even that need is dubious.</p>\n",
+         "id": "358",
+         "name": " roostercrab",
+         "pub": "2021-01-23T21:27:23",
+         "type": "comment"
+      },
+      {
+         "date": "25 January 2021 01:14",
+         "html": "<p>&gt; Getting into the history of what was intended to mean what should be subservient to the idea of what is practical today.</p>\n\n<p>... and brings us RFC 1025 rules 4 and 11. Or, as someone much smarter than me once said...</p>\n\n<p>&gt; Those who cannot remember the past are condemned to repeat it.</p>\n\n<p>It&#39;s always worth understanding how things should work, and why they deviated from that ideal... but I completely understand that if you&#39;re focused on troubleshooting daily brokenness with Wireshark, then all this sounds completely academic. </p>\n\n<p>Unfortunately, it also sounds academic to most people designing &quot;disruptive&quot; virtual networking solutions, and so we end with a spaghetti mess of software-defined NAT and static routes.</p>\n",
+         "id": "364",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-01-25T13:14:04",
+         "type": "comment"
+      },
+      {
+         "date": "19 May 2021 05:28",
+         "html": "<p>I believe you are making the same point as me then Ivan.</p>\n\n<p>The reality of a packet is not understood and instead weird academic bloat ideas are making their way into real software and creating a weirdly complex mishmash of spaghetti code justified by people pointing to &quot;standards&quot; like OSI for their reasoning.</p>\n\n<p>Teaching people the simplified reality that packets are just headers with a purpose is what we should be doing. The history is interesting from a historical perspective, but these horses have been beaten to dust and the rest of the world is driving cars now.</p>\n",
+         "id": "580",
+         "name": " roostercrab",
+         "pub": "2021-05-19T17:28:20",
+         "type": "comment"
+      }
+   ],
+   "count": 11,
+   "id": "7608761858685883405",
+   "type": "post",
+   "url": "2019/09/response-osi-model-is-lie.html"
 }

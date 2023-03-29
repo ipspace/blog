@@ -1,0 +1,71 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "10 November 2021 05:19",
+               "html": "<p>Thanks a million for this gem. When I think I&#39;ve seen everything, someone sends me another vendor stupidity that makes my day (in some sense).</p>\n\n<p>However, this is not VLAN hopping, at least not the &quot;original&quot; data-plane SNAFU. This is unprotected control plane due to vendor stupidity. Cisco has (had?) a similar problem with VTP:</p>\n\n<p>https://designclinic.ipspace.net/topic/network-device-hardening/</p>\n\n<p>Finally, if I understood it correctly, this particular stupidity requires access to a physical switch port, not guest VLAN access. If someone can access a &quot;core&quot; (intra-network) port you have bigger problems than VLAN hopping ;)</p>\n",
+               "id": "838",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-10T17:19:03",
+               "ref": "837",
+               "type": "comment"
+            },
+            {
+               "date": "11 November 2021 01:57",
+               "html": "<p>Yeah, not exactly &quot;dataplane VLAN hopping&quot;.\nRefering to your Wikipedia link, it&#39;s more &quot;Switch/AP spoofing&quot;.</p>\n\n<p>About Cisco, it&#39;s more DTP wich is vulnerable to &quot;Switch/AP spoofing&quot; to exploit &quot;VLAN hopping&quot; instead of VTP.</p>\n\n<p>About AP-mode exploit condition, you just need to be connected to a port that require authentication like 802.1x or MAB with AP-mode enabled (default configuration).\nMost of the time, it&#39;s the kind of access port facing employees or guests.\nIf authentication succeed, employee can access the LAN.\nIf not, guest will access a guest VLAN with very restricted access or will not access anything.</p>\n\n<p>I actually discovered the vulnerability because of a guest reporting network access issue to customer while he should had access to internet.</p>\n",
+               "id": "840",
+               "name": " sjdkluytsiyklr",
+               "pub": "2021-11-11T13:57:30",
+               "ref": "838",
+               "type": "comment"
+            },
+            {
+               "date": "23 November 2021 11:53",
+               "html": "<p>I have actually already reported this stupid vulnerability more than two years ago and Ialso sent the reproduction steps to ALE PSIRT. They then only implemented a fix so that you could disable the ap-mode.\nAOS 6.7 if i remember it correctly. Tough luck for the ones using the AP functionality though.\nALE is working on making code changes to solve this and from what I have heard it will be made available even in the AOS6. But I haven&#39;t seen the code yet so it&#39;s still vapor ware.</p>\n",
+               "id": "867",
+               "name": " PST",
+               "pub": "2021-11-23T23:53:07",
+               "ref": "840",
+               "type": "comment"
+            }
+         ],
+         "date": "10 November 2021 11:58",
+         "html": "Here is a recent VLAN hopping exploit for you: Alcatel-Lucent Enterprise AP-Mode on AOS6<br />\n\n<p>This feature is related to authentication (802.1X or MAC) and VLAN assignment on a port where an wireless AP is discovered.\nAP is discovered using &quot;lldp.tlv.enable_system_cap.wlan_access_pt == 1&quot;.</p>\n\n<p>The switch assume the AP is in a NON-tunnel mode and that he will proceed authentication and tag traffic into the proper VLAN himself.\nThe idea is to avoid several authentication at AP and switch and speedup the process.</p>\n\n<p>So the switch is not authenticating devices seen on the AP port. =&gt; authentication bypass\nSwitch is also trusting all the VLAN tags coming from this port. =&gt; VLAN hopping</p>\n\n<p>This features is enabled by default. You can still disable it.\nWhen upgrading from a previous version that doesn&#39;t support it, the configuration is converted to enable it.</p>\n\n<p>I discovered it at a customer&#39;s place because they connected an AP to a unmanaged switch with an uplink to the ALE AOS6 switch.\nPC connected to the unmanaged switch were not getting DHCP or network access.</p>\n\n<p>I connected my PC, did a wireshark and saw 802.1q trafic.\nI configured an 802.1q interface and got access to all VLAN on the switch.</p>\n\n<p>I was able to exploit it at several customers by forging LLDP to look like an AP.</p>\n\n<p>I was not able to exploit it on AOS8.\nWhile AP-mode is also enabled by default, it doesn&#39;t work the same way as in AOS6.</p>\n\n<p>ALE doesn&#39;t consider it a security issue and won&#39;t change the default behavior of AOS6 as it&#39;s becoming end of life. Unfortunately, it&#39;s still used on a lot of switches.</p>\n",
+         "id": "837",
+         "name": " sjdkluytsiyklr",
+         "pub": "2021-11-10T11:58:13",
+         "type": "comment"
+      },
+      {
+         "date": "21 November 2021 01:13",
+         "html": "<p>This year i met incident on the customer wireless infra (only Cisco HW/SW AIR-OS; APs in flexconnect mode with guest WLAN locally switched).\nDue to bug in SW, under certain conditions APs have been losing configured guest VLAN totally &amp; somehow assigned office VLAN to the guest WLAN bridge. Effectively guests obtained full connectivity in the internal office VLAN still being connected to the Guest SSID. It shouldnt happen ever but it did.</p>\n",
+         "id": "859",
+         "name": " Andy Oliinyk",
+         "pub": "2021-11-21T13:13:25",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 December 2021 03:13",
+               "html": "<p>&quot;Often it&#39;s not the security team you need to convince, but auditors&quot; &lt;&lt; in which case you&#39;re absolutely right, it&#39;s often more efficient to retain your sanity and waste some money on extra boxes. Fortunately I was always working with auditors who knew what they were doing.</p>\n\n<p>Also, I&#39;ve heard it&#39;s easier to get budget to fix the audit findings than to improve the network ;))</p>\n",
+               "id": "913",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-12-06T15:13:53",
+               "ref": "908",
+               "type": "comment"
+            }
+         ],
+         "date": "06 December 2021 10:17",
+         "html": "<p>Often it&#39;s not the security team you need to convince, but auditors. Having a guest network -- or an outsourced OT network for building controls, or surveillance cameras etc. -- be physically completely separate makes that aspect of the job a lot easier. In short, it&#39;s easier to make fit the checkboxes for audits, and it&#39;s simple to explain to even non-technical people. From an engineering standpoint a waste of money, but from a sanity perspective sometimes worth it.</p>\n",
+         "id": "908",
+         "name": " Toivo Voll",
+         "pub": "2021-12-06T10:17:02",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2021/11/separate-guest-vlan-infrastructure.html"
+}

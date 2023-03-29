@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>9 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16576726865924052243" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8011304285786841519">24 April 2013 11:05</a>
+                <a rel="nofollow" id="c8011304285786841519" href="#8011304285786841519">24 April 2013 11:05</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />Thanks for the detailed response. :) I probably should have been a bit clearer in my first comment - I meant kernel module firewalls, rather than simply VNIC-level ones. In addition to Juniper&#39;s vGW, there is one from Checkpoint (Security Gateway Virtual Edition, which can be either deployed either in a VM, which can&#39;t do VNIC-level filtering IIRC, or as a kernel module, which I&#39;m almost certain can).<br /><br />When talking about the host resource consumption, another clarification is probably in order: I&#39;m not too fussed about VM-based firewalls, because you can explicitly control host resources available to VMs; however when it comes to kernel modules, I&#39;m much less sure and comfortable. I&#39;m also not quite sure what DRS can do if a kernel module gets &quot;hot&quot;, starving the host.<br /><br />Now, here&#39;s another consideration: if I understand it correctly, VNIC-level firewalls are deployed one or a redundant pair per host, and have to serve *all* VMs running on that host. On the other hand, &quot;regular&quot;, non-VNIC firewalls, can be deployed in multitude (one or more per customer, spread across different hosts, and potentially shuffled around by DRS), which in my eyes is a more scalable way of doing things, plus if one of them is hosed, it&#39;s only affects one customer.<br /><br />Hope this makes sense..</p>
+            <div class="comment-content">Hi Ivan,<br /><br />Thanks for the detailed response. :) I probably should have been a bit clearer in my first comment - I meant kernel module firewalls, rather than simply VNIC-level ones. In addition to Juniper&#39;s vGW, there is one from Checkpoint (Security Gateway Virtual Edition, which can be either deployed either in a VM, which can&#39;t do VNIC-level filtering IIRC, or as a kernel module, which I&#39;m almost certain can).<br /><br />When talking about the host resource consumption, another clarification is probably in order: I&#39;m not too fussed about VM-based firewalls, because you can explicitly control host resources available to VMs; however when it comes to kernel modules, I&#39;m much less sure and comfortable. I&#39;m also not quite sure what DRS can do if a kernel module gets &quot;hot&quot;, starving the host.<br /><br />Now, here&#39;s another consideration: if I understand it correctly, VNIC-level firewalls are deployed one or a redundant pair per host, and have to serve *all* VMs running on that host. On the other hand, &quot;regular&quot;, non-VNIC firewalls, can be deployed in multitude (one or more per customer, spread across different hosts, and potentially shuffled around by DRS), which in my eyes is a more scalable way of doing things, plus if one of them is hosed, it&#39;s only affects one customer.<br /><br />Hope this makes sense..</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#728335012001244401">25 April 2013 11:36</a>
+                <a rel="nofollow" id="c728335012001244401" href="#728335012001244401">25 April 2013 11:36</a>
               </span>
             </div>
-            <p class="comment-content">You can control (and reserve) vmkernel resources as well. See my post here:http://fojta.wordpress.com/2013/04/19/hypervisor-overhead-reservable-vs-raw-compute-resources/</p>
+            <div class="comment-content">You can control (and reserve) vmkernel resources as well. See my post here:http://fojta.wordpress.com/2013/04/19/hypervisor-overhead-reservable-vs-raw-compute-resources/</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16576726865924052243" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1040270088603035418">26 April 2013 08:00</a>
+                <a rel="nofollow" id="c1040270088603035418" href="#1040270088603035418">26 April 2013 08:00</a>
               </span>
             </div>
-            <p class="comment-content">Hi Tom,<br /><br />Thanks so much for the link!</p>
+            <div class="comment-content">Hi Tom,<br /><br />Thanks so much for the link!</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8576223980425970852">24 April 2013 17:19</a>
+                <a rel="nofollow" id="c8576223980425970852" href="#8576223980425970852">24 April 2013 17:19</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Now, here&#39;s another consideration: if I understand it correctly, VNIC-level firewalls are deployed one or a redundant pair per host, and have to serve *all* VMs running on that host. On the other hand, &quot;regular&quot;, non-VNIC firewalls, can be deployed in multitude (one or more per customer, spread across different hosts, and potentially shuffled around by DRS), which in my eyes is a more scalable way of doing things, plus if one of them is hosed, it&#39;s only affects one customer.&quot;<br /><br />Not true with Cisco&#39;s VSG at least.</p>
+            <div class="comment-content">&quot;Now, here&#39;s another consideration: if I understand it correctly, VNIC-level firewalls are deployed one or a redundant pair per host, and have to serve *all* VMs running on that host. On the other hand, &quot;regular&quot;, non-VNIC firewalls, can be deployed in multitude (one or more per customer, spread across different hosts, and potentially shuffled around by DRS), which in my eyes is a more scalable way of doing things, plus if one of them is hosed, it&#39;s only affects one customer.&quot;<br /><br />Not true with Cisco&#39;s VSG at least.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16576726865924052243" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6934724371368518789">24 April 2013 23:14</a>
+                <a rel="nofollow" id="c6934724371368518789" href="#6934724371368518789">24 April 2013 23:14</a>
               </span>
             </div>
-            <p class="comment-content">Do you mean &quot;not true&quot; in the sense that not all VMs *have* to go via VSG, but only those that are explicitly configured to do so?<br /><br />If yes, it doesn&#39;t change the premise of my comment then. If not, could you please clarify?<br /><br />-- Dmitri</p>
+            <div class="comment-content">Do you mean &quot;not true&quot; in the sense that not all VMs *have* to go via VSG, but only those that are explicitly configured to do so?<br /><br />If yes, it doesn&#39;t change the premise of my comment then. If not, could you please clarify?<br /><br />-- Dmitri</div>
           </div>
         </li>
       </div>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/18056687667967806573" rel="nofollow">Andrew Storrs</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5798273297783208029">25 April 2013 01:10</a>
+                <a rel="nofollow" id="c5798273297783208029" href="#5798273297783208029">25 April 2013 01:10</a>
               </span>
             </div>
-            <p class="comment-content">With Cisco&#39;s VSG each HA pair is responsible for one tenant and manages all the security policies for VMs belonging to that tenant across up to 64 hosts. <br /><br />VSG policies are then applied to port-profiles on the Nexus 1000V which are then applied to virtual machines (to a VMware admin this is just picking the network label in the drop-down to assign it to a particular network).<br /><br />The actual traffic is switched locally by the hypervisor (the Nexus 1000V VEM module built into ESX to be specific), only the first packet of a new conversation is checked against the VSG, then a rule is basically cached on the local host and processing continues without involving VSG (until a policy change occurs on the VSG or the cached copy times out). <br /><br />VNMC (the centralized management console) can manage up to 128 VSGs (or 600 hosts).<br /><br />I&#39;ve had the VSG in production since August 2011 and it&#39;s been extremely solid for us. We&#39;ve only encountered one significant issue that we&#39;re still forced to workaround; overall it&#39;s been a great solution (and way better than private VLANs, etc.).</p>
+            <div class="comment-content">With Cisco&#39;s VSG each HA pair is responsible for one tenant and manages all the security policies for VMs belonging to that tenant across up to 64 hosts. <br /><br />VSG policies are then applied to port-profiles on the Nexus 1000V which are then applied to virtual machines (to a VMware admin this is just picking the network label in the drop-down to assign it to a particular network).<br /><br />The actual traffic is switched locally by the hypervisor (the Nexus 1000V VEM module built into ESX to be specific), only the first packet of a new conversation is checked against the VSG, then a rule is basically cached on the local host and processing continues without involving VSG (until a policy change occurs on the VSG or the cached copy times out). <br /><br />VNMC (the centralized management console) can manage up to 128 VSGs (or 600 hosts).<br /><br />I&#39;ve had the VSG in production since August 2011 and it&#39;s been extremely solid for us. We&#39;ve only encountered one significant issue that we&#39;re still forced to workaround; overall it&#39;s been a great solution (and way better than private VLANs, etc.).</div>
           </div>
         </li>
       </div>
@@ -136,10 +131,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16576726865924052243" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5878671008658809739">26 April 2013 07:56</a>
+                <a rel="nofollow" id="c5878671008658809739" href="#5878671008658809739">26 April 2013 07:56</a>
               </span>
             </div>
-            <p class="comment-content">Hi Andrew,<br /><br />Thanks for the clarification. Looks like the availability of the VSG services depends on the N1KV kernel module. Also I imagine that with only first packet going through the VSG, more complex firewall tasks requiring packet reassembly, etc. are probably not possible.</p>
+            <div class="comment-content">Hi Andrew,<br /><br />Thanks for the clarification. Looks like the availability of the VSG services depends on the N1KV kernel module. Also I imagine that with only first packet going through the VSG, more complex firewall tasks requiring packet reassembly, etc. are probably not possible.</div>
           </div>
         </li>
       </div>
@@ -161,10 +156,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6079583450753381962">25 April 2013 07:36</a>
+                <a rel="nofollow" id="c6079583450753381962" href="#6079583450753381962">25 April 2013 07:36</a>
               </span>
             </div>
-            <p class="comment-content">t would be interesting to see if the security community would consider Cisco VSG as a stateful firewall. Is it possible to meet that claim by checking only the first packet of a flow/connnection or just the handshake? Or is the VSG more of a reflexive ACL engine?<br /><br />Firewalls like Cisco ASA, Checkpoint, Netscreen &amp; the virtual counterparts like Juniper vGW, vShield Edge &amp; vShield App Distributed Firewall all do many checks in the connection tracking area, see some of the NSS &amp; ICSA criteria around those checks.<br /><br />Ivan - it would be interesting to do a blog around where ACLs stop and Firewalls begin and their intersection in the virtualization space.... </p>
+            <div class="comment-content">t would be interesting to see if the security community would consider Cisco VSG as a stateful firewall. Is it possible to meet that claim by checking only the first packet of a flow/connnection or just the handshake? Or is the VSG more of a reflexive ACL engine?<br /><br />Firewalls like Cisco ASA, Checkpoint, Netscreen &amp; the virtual counterparts like Juniper vGW, vShield Edge &amp; vShield App Distributed Firewall all do many checks in the connection tracking area, see some of the NSS &amp; ICSA criteria around those checks.<br /><br />Ivan - it would be interesting to do a blog around where ACLs stop and Firewalls begin and their intersection in the virtualization space.... </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -180,10 +175,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3653235830795869451">25 April 2013 08:20</a>
+                <a rel="nofollow" id="c3653235830795869451" href="#3653235830795869451">25 April 2013 08:20</a>
               </span>
             </div>
-            <p class="comment-content">Hi Serge, nice to hear from you ;)<br /><br />You probably have something like this in mind: http://blog.ioshints.info/2013/03/the-spectrum-of-firewall-statefulness.html<br /><br />If the above description of VSG is correct, then it&#39;s definitely a reflexive ACL firewall. Also, I don&#39;t think VEM does IP or TCP reassembly to check validity of TCP segments (one more argument for reflexive ACL classification).<br /><br />On the other hand, it would be interesting to hear what vShield App does that&#39;s more than that. Anything you can share?<br /><br />Thank you!<br />Ivan</p>
+            <div class="comment-content">Hi Serge, nice to hear from you ;)<br /><br />You probably have something like this in mind: http://blog.ioshints.info/2013/03/the-spectrum-of-firewall-statefulness.html<br /><br />If the above description of VSG is correct, then it&#39;s definitely a reflexive ACL firewall. Also, I don&#39;t think VEM does IP or TCP reassembly to check validity of TCP segments (one more argument for reflexive ACL classification).<br /><br />On the other hand, it would be interesting to hear what vShield App does that&#39;s more than that. Anything you can share?<br /><br />Thank you!<br />Ivan</div>
           </div>
         </li>
       </div>

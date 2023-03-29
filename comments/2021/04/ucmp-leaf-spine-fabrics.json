@@ -1,0 +1,47 @@
+{
+   "comments": [
+      {
+         "date": "20 April 2021 05:27",
+         "html": "<p>I use UCMP not for failure scenarios like this but part of normal design.</p>\n\n<p>It works particularly well when using anycast with servers. You have to think down to the server layer and maybe even higher than the spine layer for the most dramatic affect.</p>\n\n<p>Within the fabric, maybe there are cases where different amounts of servers using the same ip address on each top of rack switch. The ECMP only method the spines would send equal traffic per top of rack switch. The UCMP would use its metric to balance it based on how many servers have the IP.</p>\n\n<p>If you look up to the router layer. The router could be connected to multiple fabrics. What if fabric A has 5 anycast servers sharing an IP and fabric B has 20. With ecmp the router would normally split this 50/50 leaving the 20 servers in fabric b under utilized and the 5 in A over utilized. UCMP enabled up to this layer can track how many servers are at each fabric and balance based on server count. That way no matter how unbalanced the anycast deployment is in a datacenter, this feature enabled will help to keep the load even n every server.</p>\n",
+         "id": "540",
+         "name": " Network Ninja",
+         "pub": "2021-04-20T17:27:25",
+         "type": "comment"
+      },
+      {
+         "date": "21 April 2021 02:26",
+         "html": "<p>At this point in time, RIFT solution to UCMP looks absolutely superior to any other approach (but I&rsquo;m biased as you know ;-))</p>\n",
+         "id": "541",
+         "name": "JeffT  ",
+         "pub": "2021-04-21T02:26:22",
+         "type": "comment"
+      },
+      {
+         "date": "21 April 2021 01:42",
+         "html": "<p>Hi Ivan, wrt to asymmetry of load and congestion when link failure happens, I brought up Conga previously in another post of yours re load-balancing. Conga helps with this situation because it holds global congestion information and therefore can alleviate this. It&#39;s a point-solution for two-level leaf-spine fabric that scale to 27.6k 10Ge ports. Pretty nice invention from Cisco and is available in their ACI, but Conga can be implemented independent of ACI:</p>\n\n<p>https://people.csail.mit.edu/alizadeh/papers/conga-sigcomm14.pdf</p>\n",
+         "id": "543",
+         "name": "Minh Ha",
+         "pub": "2021-04-21T13:42:54",
+         "type": "comment"
+      },
+      {
+         "date": "21 April 2021 06:18",
+         "html": "<p>@Network Ninja: Thank you -- I&#39;m aware of that use case (Pete Lumbis mentioned it in a comment to the first article in this series), just haven&#39;t found the time to write about it yet.</p>\n\n<p>@Minh Ha: I know you mentioned Conga. The solution from Erico Vanini&#39;s article is much more elegant and they claim it&#39;s comparable (performance-wise) to Conga. Will write a blog post about it (eventually...).</p>\n",
+         "id": "544",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-04-21T18:18:22",
+         "type": "comment"
+      },
+      {
+         "date": "22 April 2021 10:18",
+         "html": "https: //github.com/brunorijsman/rift-python/blob/master/ietf-108/ietf-108---rift-wg---open-source-update.pdf slides 30+ for an example of NECMP in RIFT<br />\n\n\n",
+         "id": "550",
+         "name": " Bruno Rijsman",
+         "pub": "2021-04-22T22:18:17",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2021/04/ucmp-leaf-spine-fabrics.html"
+}

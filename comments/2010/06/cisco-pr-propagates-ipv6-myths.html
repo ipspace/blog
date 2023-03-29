@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ole Troan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2920454798535651415">24 June 2010 13:05</a>
+                <a rel="nofollow" id="c2920454798535651415" href="#2920454798535651415">24 June 2010 13:05</a>
               </span>
             </div>
-            <p class="comment-content">With regards to the &quot;simplified packet header for routing efficiency&quot;. There is actually something to this claim. With a fixed header size compared to IPv4&#39;s variable length header, the 64 bit alignment and the removal of the checksum. One could certainly make the claim that the header is better optimized for forwarding than the IPv4 one.<br /><br />Options in IPv4 aren&#39;t used and the checksum isn&#39;t that hard to compute.  The benefit of 64 bit alignment, especially if the L2 header isn&#39;t aligned isn&#39;t that great and compared to the lookup of the much longer address I doubt anyone has an implementation with equal hardware forwarding IPv6 faster than IPv4. But sure, the _intention_ of making IPv6 better was there.</p>
+            <div class="comment-content">With regards to the &quot;simplified packet header for routing efficiency&quot;. There is actually something to this claim. With a fixed header size compared to IPv4&#39;s variable length header, the 64 bit alignment and the removal of the checksum. One could certainly make the claim that the header is better optimized for forwarding than the IPv4 one.<br /><br />Options in IPv4 aren&#39;t used and the checksum isn&#39;t that hard to compute.  The benefit of 64 bit alignment, especially if the L2 header isn&#39;t aligned isn&#39;t that great and compared to the lookup of the much longer address I doubt anyone has an implementation with equal hardware forwarding IPv6 faster than IPv4. But sure, the _intention_ of making IPv6 better was there.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5333193960223855813">25 June 2010 12:18</a>
+                <a rel="nofollow" id="c5333193960223855813" href="#5333193960223855813">25 June 2010 12:18</a>
               </span>
             </div>
-            <p class="comment-content">You&#39;re absolutely correct. However, most of the other IPv6 benefits were true 15 years ago when the standards were ready, including the &quot;reduction in IPv6 routing tables due to hierarchical addressing&quot;, &quot;better QoS (due to flow field)&quot;, &quot;better mobility&quot; and even &quot;better security&quot; (IPSec on IPv4 was rare in those days). Today they are just myths.<br /><br />Going into technical details: it&#39;s my understanding that while IPv6 headers might be better aligned than IPv4 headers, they always require extension headers, which could be routing options or upper layer protocols. Forwarding IPv6 packets thus always requires a lookup into the extension headers, whether it&#39;s needed or not, while checking the length of IPv4 header (and, in most cases, dropping any packet with options) is a simple comparison.</p>
+            <div class="comment-content">You&#39;re absolutely correct. However, most of the other IPv6 benefits were true 15 years ago when the standards were ready, including the &quot;reduction in IPv6 routing tables due to hierarchical addressing&quot;, &quot;better QoS (due to flow field)&quot;, &quot;better mobility&quot; and even &quot;better security&quot; (IPSec on IPv4 was rare in those days). Today they are just myths.<br /><br />Going into technical details: it&#39;s my understanding that while IPv6 headers might be better aligned than IPv4 headers, they always require extension headers, which could be routing options or upper layer protocols. Forwarding IPv6 packets thus always requires a lookup into the extension headers, whether it&#39;s needed or not, while checking the length of IPv4 header (and, in most cases, dropping any packet with options) is a simple comparison.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ole Troan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8587284954363992470">25 June 2010 12:58</a>
+                <a rel="nofollow" id="c8587284954363992470" href="#8587284954363992470">25 June 2010 12:58</a>
               </span>
             </div>
-            <p class="comment-content">Forwarding of an IPv6 packet does not require that a router look into the L4 header or extension headers. Features like ACLs might require it, just like for IPv4.<br /><br />In fact I have it from a reliable source that IPv6 was specifically designed to make it hard for routers to look any deeper into the packet than the L3 header.<br /><br />Too early to say, but I wouldn&#39;t be surprised if extension headers will be as rare as IPv4 options are.<br /><br />But just to be clear, I fully agree with you. IPv6 is all about the extra address space. Allowing the continuing growth of the Internet. The other changes are insignificant.</p>
+            <div class="comment-content">Forwarding of an IPv6 packet does not require that a router look into the L4 header or extension headers. Features like ACLs might require it, just like for IPv4.<br /><br />In fact I have it from a reliable source that IPv6 was specifically designed to make it hard for routers to look any deeper into the packet than the L3 header.<br /><br />Too early to say, but I wouldn&#39;t be surprised if extension headers will be as rare as IPv4 options are.<br /><br />But just to be clear, I fully agree with you. IPv6 is all about the extra address space. Allowing the continuing growth of the Internet. The other changes are insignificant.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#550836359270515299">25 June 2010 14:39</a>
+                <a rel="nofollow" id="c550836359270515299" href="#550836359270515299">25 June 2010 14:39</a>
               </span>
             </div>
-            <p class="comment-content">Hop-by-hop Extension Header (admittedly deprecated): &quot;is used to carry optional information that must be examined by every node along a packet&#39;s delivery path.&quot; (http://tools.ietf.org/html/rfc2460#section-4.3)<br /><br />Routing Header (should be disabled on the routers): equivalent to loose source routing in IPv4<br /><br />An intermediate IPv6 router has to examine these two (if they&#39;re present). Very similar to IPv4, the datagram with any of these options is probably punted to the CPU (or slow switching, depending on your platform). I can see no real difference with IPv4 options.</p>
+            <div class="comment-content">Hop-by-hop Extension Header (admittedly deprecated): &quot;is used to carry optional information that must be examined by every node along a packet&#39;s delivery path.&quot; (http://tools.ietf.org/html/rfc2460#section-4.3)<br /><br />Routing Header (should be disabled on the routers): equivalent to loose source routing in IPv4<br /><br />An intermediate IPv6 router has to examine these two (if they&#39;re present). Very similar to IPv4, the datagram with any of these options is probably punted to the CPU (or slow switching, depending on your platform). I can see no real difference with IPv4 options.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Xavier Nicollet</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6656702530566372580">13 July 2010 12:46</a>
+                <a rel="nofollow" id="c6656702530566372580" href="#6656702530566372580">13 July 2010 12:46</a>
               </span>
             </div>
-            <p class="comment-content">There is no in transit fragmentation in IPv6. Moreover the header is fixed-length. The differences observed may come from non optimised asic from vendors, where ipv6 represents less than 1% of the traffic.<br /><br />Bigger MTU and shorter routing tables may also help in the future. Time will tell.</p>
+            <div class="comment-content">There is no in transit fragmentation in IPv6. Moreover the header is fixed-length. The differences observed may come from non optimised asic from vendors, where ipv6 represents less than 1% of the traffic.<br /><br />Bigger MTU and shorter routing tables may also help in the future. Time will tell.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#980172725382848165">13 July 2010 12:51</a>
+                <a rel="nofollow" id="c980172725382848165" href="#980172725382848165">13 July 2010 12:51</a>
               </span>
             </div>
-            <p class="comment-content">There is no in-transit fragmentation in IPv4 ... at least not in the fast path. A while ago fragmentation kicked you down to process switching (exception: GRE packets). Everyone is trying to avoid it anyway. Myth#1 busted.<br /><br />IPv4 header is also fixed length (unless you&#39;re writing a research paper). Nobody is using IP options and anyone sensible enough has them turned off anyway. BTW, IP options kick you to process switching. Myth #2 busted.<br /><br />Shorter routing tables? That&#39;s myth#3. Read my other articles about IPv6 myths, they cover this one pretty thoroughly.<br /><br />http://www.google.com/search?q=ipv6+myth+pepelnjak</p>
+            <div class="comment-content">There is no in-transit fragmentation in IPv4 ... at least not in the fast path. A while ago fragmentation kicked you down to process switching (exception: GRE packets). Everyone is trying to avoid it anyway. Myth#1 busted.<br /><br />IPv4 header is also fixed length (unless you&#39;re writing a research paper). Nobody is using IP options and anyone sensible enough has them turned off anyway. BTW, IP options kick you to process switching. Myth #2 busted.<br /><br />Shorter routing tables? That&#39;s myth#3. Read my other articles about IPv6 myths, they cover this one pretty thoroughly.<br /><br />http://www.google.com/search?q=ipv6+myth+pepelnjak</div>
           </div>
         </li>
       </div>

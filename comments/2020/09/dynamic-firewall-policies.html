@@ -1,0 +1,99 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="132">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> KarstenI</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c132" href="#132">16 September 2020 10:11</a>
+              </span>
+            </div>
+            <div class="comment-content">There is one more important drawback to this dynamic solution:<br />
+The infected PC would probably ask the firewall to allow all IPs on all ports. No, I don&#39;t want that.<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="133">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Sander Steffann</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c133" href="#133">16 September 2020 05:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>If you trust the host to be able to decide its own security policy, then the only firewall policy you need is &quot;if dst.ip == X then allow&quot;. The only thing a more granular firewall policy would give you is to drop rejected packets one or two hops sooner :)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="134">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Frederic</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c134" href="#134">17 September 2020 09:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Service mesh can be an interesting option here - where each application announces its service(s) to the service registry, with corresponding ACLs. That removes the gap between applications &amp; firewall owners, and it simplifies the cleanup process (which rarely happens in many enterprises).</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="138">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Claer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c138" href="#138">17 September 2020 07:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The idea for the host to control its own security is bad as mentioned by Steffann</p>
+
+<p>What have been done in the past are distributed host agents firewalls. Here are the benefits:
+ - Host has visibility on user connected and program launched. You can define your rules based on programm name rather than classical UDP/TCP/IP tuple.
+ - Distributed Load. Its easier to distribute the load when you apply the filtering policies on the hosts directly
+ - Traffic filtering on the same subnet is possible. </p>
+
+<p>As always, there are drawbacks. 
+ - Manage another software agent can be problematic (think different OS versions like RHEL 6,  RHEL 8 and what to do with that business critical FreeBSD who has no agent available?)
+ - Policies are harder to define and manage 
+ - IP filtering at the subnet level does not immune you to L2 attacks.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

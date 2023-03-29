@@ -1,80 +1,108 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "24 July 2012 21:11",
-          "html": "Thank you. Updated the blog post.<br /><br />BTW, per-PE-per-VRF RDs won&#39;t cause a memory hit on route reflectors (they have to store all prefixes anyway, unless you use a RR hierarchy), but on the PE-routers, where the BGP memory consumption will probably increase by around 80%.",
-          "id": "7224653901814233709",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-07-24T21:11:08.225+02:00",
-          "ref": "6505654794346669753",
-          "type": "comment"
-        }
-      ],
-      "date": "21 July 2012 15:52",
-      "html": "If you plan to ever support multipath load sharing or fast failover for your customers networks, the per-PE-per-VRF unique RD approach, usually in the formation ipv4.loop.back.address:vpnid, will be very important. It also aids in the identification of prefix origin during troubleshoots of large complex networks with tiered hierarchical design.<br /><br />The ability to ensure that multiple or alternate paths via different originating PE&#39;s in the same VPN are made available to the far end PE is beneficial enough to outweigh the need for additional memory. Its not as if we cant always add hundreds of gigs of ram to route reflectors, the biggest limitation in most modern carrier networks is the size of the average devices hardware forwarding table (TCAM in most devices)",
-      "id": "6505654794346669753",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "nosx",
-      "profile": "http://3.3.3.3",
-      "pub": "2012-07-21T15:52:13.061+02:00",
-      "ref": "7361989097455028992",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "16 June 2014 06:00",
-          "html": "Pretty sure by default on Cisco if no VRF contains the import statement for a particular RT, then the VPNv4 containing the &quot;missing&quot; RT is rejected and does not even make it to the RIB.  This behaviour can be changed by command.",
-          "id": "8402139615598508060",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2014-06-16T06:00:44.427+02:00",
-          "ref": "2774332871848263321",
-          "type": "comment"
-        }
-      ],
-      "date": "20 June 2013 16:22",
-      "html": "Hi, <br /><br />One thing is not clear to me regarding actual import of route from BGP VPNv4 RIB to VRF RIB. If RT import statement is removed from VRF config than we can not see any more particular route in VRF RIB ant that is clear, because there is no matching RT inside of VRF and we can not import VPNv4 route. But in my simulation when RT import is removed from config also i cant see that same route in BGP VPNv4 RIB. Why? Is this VPNv4 route rejected by BGP VPNv4 as well? I tought that VPNv4 route is maintained in BGP VPNv4 RIB and after RT import is applied then moves to VRF RIB, but it looks aparently that BGP VPNv4 table is discarding this route without RT as well?!<br /><br />Thanks for comments<br />",
-      "id": "2774332871848263321",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Internetwork Expert",
-      "profile": "https://www.blogger.com/profile/13723752226050334751",
-      "pub": "2013-06-20T16:22:11.674+02:00",
-      "ref": "7361989097455028992",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "08 October 2015 18:05",
-          "html": "Yeah, that should work.",
-          "id": "3090191567432671111",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-10-08T18:05:56.629+02:00",
-          "ref": "44781089992367220",
-          "type": "comment"
-        }
-      ],
-      "date": "08 October 2015 18:01",
-      "html": "How about &quot;bgp additional-paths send receive&quot; now ?",
-      "id": "44781089992367220",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2015-10-08T18:01:27.037+02:00",
-      "ref": "7361989097455028992",
-      "type": "comment"
-    }
-  ],
-  "count": 6,
-  "id": "7361989097455028992",
-  "type": "post",
-  "url": "2012/07/bgp-route-replication-in-mplsvpn-pe.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "24 July 2012 21:11",
+               "html": "Thank you. Updated the blog post.<br /><br />BTW, per-PE-per-VRF RDs won&#39;t cause a memory hit on route reflectors (they have to store all prefixes anyway, unless you use a RR hierarchy), but on the PE-routers, where the BGP memory consumption will probably increase by around 80%.",
+               "id": "7224653901814233709",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-07-24T21:11:08.225+02:00",
+               "ref": "6505654794346669753",
+               "type": "comment"
+            }
+         ],
+         "date": "21 July 2012 15:52",
+         "html": "If you plan to ever support multipath load sharing or fast failover for your customers networks, the per-PE-per-VRF unique RD approach, usually in the formation ipv4.loop.back.address:vpnid, will be very important. It also aids in the identification of prefix origin during troubleshoots of large complex networks with tiered hierarchical design.<br /><br />The ability to ensure that multiple or alternate paths via different originating PE&#39;s in the same VPN are made available to the far end PE is beneficial enough to outweigh the need for additional memory. Its not as if we cant always add hundreds of gigs of ram to route reflectors, the biggest limitation in most modern carrier networks is the size of the average devices hardware forwarding table (TCAM in most devices)",
+         "id": "6505654794346669753",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "nosx",
+         "profile": "http://3.3.3.3",
+         "pub": "2012-07-21T15:52:13.061+02:00",
+         "ref": "7361989097455028992",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "16 June 2014 06:00",
+               "html": "Pretty sure by default on Cisco if no VRF contains the import statement for a particular RT, then the VPNv4 containing the &quot;missing&quot; RT is rejected and does not even make it to the RIB.  This behaviour can be changed by command.",
+               "id": "8402139615598508060",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2014-06-16T06:00:44.427+02:00",
+               "ref": "2774332871848263321",
+               "type": "comment"
+            },
+            {
+               "date": "16 January 2023 09:39",
+               "html": "<p>Pretty sure this is 100% accurate. We also experience no imports even if the VRF has an RT import statement, but no interfaces are assigned to that VRF. </p>\n\n<p>That may be default behavior or it may be that we use RTC as well, I could be wrong!</p>\n",
+               "id": "1599",
+               "name": "Christian Hitchcock",
+               "pub": "2023-01-16T21:39:16",
+               "ref": "8402139615598508060",
+               "type": "comment"
+            }
+         ],
+         "date": "20 June 2013 16:22",
+         "html": "Hi, <br /><br />One thing is not clear to me regarding actual import of route from BGP VPNv4 RIB to VRF RIB. If RT import statement is removed from VRF config than we can not see any more particular route in VRF RIB ant that is clear, because there is no matching RT inside of VRF and we can not import VPNv4 route. But in my simulation when RT import is removed from config also i cant see that same route in BGP VPNv4 RIB. Why? Is this VPNv4 route rejected by BGP VPNv4 as well? I tought that VPNv4 route is maintained in BGP VPNv4 RIB and after RT import is applied then moves to VRF RIB, but it looks aparently that BGP VPNv4 table is discarding this route without RT as well?!<br /><br />Thanks for comments<br />",
+         "id": "2774332871848263321",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Internetwork Expert",
+         "profile": "https://www.blogger.com/profile/13723752226050334751",
+         "pub": "2013-06-20T16:22:11.674+02:00",
+         "ref": "7361989097455028992",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "08 October 2015 18:05",
+               "html": "Yeah, that should work.",
+               "id": "3090191567432671111",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-10-08T18:05:56.629+02:00",
+               "ref": "44781089992367220",
+               "type": "comment"
+            }
+         ],
+         "date": "08 October 2015 18:01",
+         "html": "How about &quot;bgp additional-paths send receive&quot; now ?",
+         "id": "44781089992367220",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2015-10-08T18:01:27.037+02:00",
+         "ref": "7361989097455028992",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "18 January 2023 09:12",
+               "html": "<p>Thanks a million! Made my day ;)</p>\n",
+               "id": "1603",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-01-18T09:12:06",
+               "ref": "1600",
+               "type": "comment"
+            }
+         ],
+         "date": "16 January 2023 09:42",
+         "html": "<p>I know this is an old thread but I wanna say a huge thank you to the site owner for these explanations. You&#39;ve made understanding MPVPN nuances <em>soooo</em> much easier and I can&#39;t thank you enough!</p>\n",
+         "id": "1600",
+         "name": "Christian Hitchcock",
+         "pub": "2023-01-16T21:42:28",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "id": "7361989097455028992",
+   "type": "post",
+   "url": "2012/07/bgp-route-replication-in-mplsvpn-pe.html"
 }

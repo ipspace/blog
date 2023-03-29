@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>28 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03838720091591599118" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7639706633170946803">01 December 2016 15:33</a>
+                <a rel="nofollow" id="c7639706633170946803" href="#7639706633170946803">01 December 2016 15:33</a>
               </span>
             </div>
-            <p class="comment-content">Something confuses me about the debate between VXLAN and other overlay technologies. VXLAN is typically initiated by hosts on the network, e.g., ESXi or HyperV.  It is an *overylay* network.  It creates a Layer-2 segment that sits on top of the underlay network.  Great.  That gives us a huge amount of flexibility.  Millions of networks could be created/removed as services are created/removed.  It can support micro-segmentation, ephemeral networks and multi-tenancy.  Those services could be VMs, containers, whatever.  <br /><br />That&#39;s fantastic and completely eliminates any limitations in the underlay network.  Also, it&#39;s controlled by the end-host, so VMWare and Microsoft are free to innovate as quickly as they like without waiting for the underlay architecture to catch up.<br /><br />But what technology do we build the underlay with?  <br /><br />1. A routed IP network is a mature technology and works great except there are a number of limitations:<br />1a. There is (possibly) a lot of manual configuration.  Do we use a truck load of /30 networks all over the place?<br />1b. There is no built-in support for multi-tenancy (for the underlay) unless we deploy VRF, MPLS, RFC2547, etc.  Those features are not available unless you start buying much more expensive gear.<br /><br />2. You can use regular VLANs with Spanning Tree.  It&#39;s 2016.  STP stinks.  We all want out of that dungeon.<br /><br />3. SDN is an option where I continue to have doubts.  My old network with standard routing protocols was distributed; failures were localized.  If I have a pair of controllers working to orchestrate everything than I have a centralized system with a single point of failure.  <br /><br />4. We have SPB and TRILL.  They support millions of segments.  They support multi-tenancy.  They support ECMP.  We have chipsets in inexpensive gear that can move these types of Ethernet frames at line rate.<br /><br />I agree that vendor lock-in should be a consideration.  I agree there are not very many engineers that know SPB and TRILL.  But I also know the IT field is staffed by capable people that can accommodate change in technology better than any other segment of the population!<br /><br />Can&#39;t I ask for a world where VXLAN sits on top of something sane?</p>
+            <div class="comment-content">Something confuses me about the debate between VXLAN and other overlay technologies. VXLAN is typically initiated by hosts on the network, e.g., ESXi or HyperV.  It is an *overylay* network.  It creates a Layer-2 segment that sits on top of the underlay network.  Great.  That gives us a huge amount of flexibility.  Millions of networks could be created/removed as services are created/removed.  It can support micro-segmentation, ephemeral networks and multi-tenancy.  Those services could be VMs, containers, whatever.  <br /><br />That&#39;s fantastic and completely eliminates any limitations in the underlay network.  Also, it&#39;s controlled by the end-host, so VMWare and Microsoft are free to innovate as quickly as they like without waiting for the underlay architecture to catch up.<br /><br />But what technology do we build the underlay with?  <br /><br />1. A routed IP network is a mature technology and works great except there are a number of limitations:<br />1a. There is (possibly) a lot of manual configuration.  Do we use a truck load of /30 networks all over the place?<br />1b. There is no built-in support for multi-tenancy (for the underlay) unless we deploy VRF, MPLS, RFC2547, etc.  Those features are not available unless you start buying much more expensive gear.<br /><br />2. You can use regular VLANs with Spanning Tree.  It&#39;s 2016.  STP stinks.  We all want out of that dungeon.<br /><br />3. SDN is an option where I continue to have doubts.  My old network with standard routing protocols was distributed; failures were localized.  If I have a pair of controllers working to orchestrate everything than I have a centralized system with a single point of failure.  <br /><br />4. We have SPB and TRILL.  They support millions of segments.  They support multi-tenancy.  They support ECMP.  We have chipsets in inexpensive gear that can move these types of Ethernet frames at line rate.<br /><br />I agree that vendor lock-in should be a consideration.  I agree there are not very many engineers that know SPB and TRILL.  But I also know the IT field is staffed by capable people that can accommodate change in technology better than any other segment of the population!<br /><br />Can&#39;t I ask for a world where VXLAN sits on top of something sane?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14125341240086592055" rel="nofollow">Michael Kashin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7505009594591601617">01 December 2016 23:00</a>
+                <a rel="nofollow" id="c7505009594591601617" href="#7505009594591601617">01 December 2016 23:00</a>
               </span>
             </div>
-            <p class="comment-content">underlay with unnumbered BGP(or any other routing protocol that can give you ECMP routing). EVPN as an additional AF only for the places where you need break out into the physical world. multitenancy can implemented with microsegmentation(Calico does that). <br />SDN means centralised network view, it doesn&#39;t mean centralised SPOF, controllers can scale horizontally. <br />SPB/TRILL limit the ability of vendors to innovate, i.e. peddle new gear to their clients. Most hw vendors can do VXLAN but we already have GENEVE on the horizon.</p>
+            <div class="comment-content">underlay with unnumbered BGP(or any other routing protocol that can give you ECMP routing). EVPN as an additional AF only for the places where you need break out into the physical world. multitenancy can implemented with microsegmentation(Calico does that). <br />SDN means centralised network view, it doesn&#39;t mean centralised SPOF, controllers can scale horizontally. <br />SPB/TRILL limit the ability of vendors to innovate, i.e. peddle new gear to their clients. Most hw vendors can do VXLAN but we already have GENEVE on the horizon.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03838720091591599118" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9096296226055199929">02 December 2016 21:11</a>
+                <a rel="nofollow" id="c9096296226055199929" href="#9096296226055199929">02 December 2016 21:11</a>
               </span>
             </div>
-            <p class="comment-content">I like the concept of using unnumbered interfaces.  That takes a lot of admin overhead out of the system.  Also, I&#39;m comfortable with using BGP/MPLS/VRF.  I really want our &quot;legacy&quot; technologies to work because they have been proven stable for 10+ years.<br /><br />But we still have a couple problems with a traditional IP core.<br /><br />1. The IP/LDP/MPLS/BGP/VRF/OSPF stack is a lot of moving pieces.  I may be comfortable with each of these protocols, but I&#39;m *not* comfortable with how *many* protocols I need to get the job done.  Also, I&#39;ve been doing this for fifteen years.  A more junior person is going to have difficulty.<br />2. I&#39;m not going to get BGP/MPLS/VRF in anything but the top-end datacenter gear.  That costs a lot of money.  Ugh.<br /><br />I guess if you are building a datacenter, you might be in the price-range for the proper gear to do BGP/MPLS/VRF.  But I build a lot of enterprise networks too.  I have user-facing closet switches and enterprise core.  For Cisco people, we&#39;re talking Catalyst 4500, 3850 and 3650.  For HPE, we&#39;re talking the 5400R.<br /><br />I have many of the same needs as a datacenter.<br /><br />1. I want ECMP.  I don&#39;t want to shut off all links but one (STP).  <br />2. I&#39;d like multitenancy.  Example: My guest wireless shouldn&#39;t interact with my other traffic.  <br />3. I might want a VLAN to span across multiple different areas of a campus.  Example: I have a campus with five buildings, and each of them needs a VLAN (security partition) for the HVAC controls.  Should that be one VLAN or five?  Logically, it&#39;s only one application with one security profile.  But I don&#39;t want STP to span across the entire campus.<br /><br />It seems an SPB or TRILL type of technology would solve my problems.  If I could get one of these into the type of gear I use for enterprise builds I could get rid of STP forever!! <br /></p>
+            <div class="comment-content">I like the concept of using unnumbered interfaces.  That takes a lot of admin overhead out of the system.  Also, I&#39;m comfortable with using BGP/MPLS/VRF.  I really want our &quot;legacy&quot; technologies to work because they have been proven stable for 10+ years.<br /><br />But we still have a couple problems with a traditional IP core.<br /><br />1. The IP/LDP/MPLS/BGP/VRF/OSPF stack is a lot of moving pieces.  I may be comfortable with each of these protocols, but I&#39;m *not* comfortable with how *many* protocols I need to get the job done.  Also, I&#39;ve been doing this for fifteen years.  A more junior person is going to have difficulty.<br />2. I&#39;m not going to get BGP/MPLS/VRF in anything but the top-end datacenter gear.  That costs a lot of money.  Ugh.<br /><br />I guess if you are building a datacenter, you might be in the price-range for the proper gear to do BGP/MPLS/VRF.  But I build a lot of enterprise networks too.  I have user-facing closet switches and enterprise core.  For Cisco people, we&#39;re talking Catalyst 4500, 3850 and 3650.  For HPE, we&#39;re talking the 5400R.<br /><br />I have many of the same needs as a datacenter.<br /><br />1. I want ECMP.  I don&#39;t want to shut off all links but one (STP).  <br />2. I&#39;d like multitenancy.  Example: My guest wireless shouldn&#39;t interact with my other traffic.  <br />3. I might want a VLAN to span across multiple different areas of a campus.  Example: I have a campus with five buildings, and each of them needs a VLAN (security partition) for the HVAC controls.  Should that be one VLAN or five?  Logically, it&#39;s only one application with one security profile.  But I don&#39;t want STP to span across the entire campus.<br /><br />It seems an SPB or TRILL type of technology would solve my problems.  If I could get one of these into the type of gear I use for enterprise builds I could get rid of STP forever!! <br /></div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#418917320691455487">05 December 2016 19:53</a>
+                <a rel="nofollow" id="c418917320691455487" href="#418917320691455487">05 December 2016 19:53</a>
               </span>
             </div>
-            <p class="comment-content">@Dan (Q#1)<br /><br />&quot;But what technology do we build the underlay with?&quot;<br /><br />Simple routed network (like Internet). Works every time.<br /><br />&quot;There is (possibly) a lot of manual configuration. Do we use a truck load of /30 networks all over the place?&quot;<br /><br />One VLAN per ToR switch if you don&#39;t need redundancy. One VLAN per ToR switch pair if you need redundant server access. L3 toward the spine. Well covered in leaf-and-spine fabric designs webinar.<br /><br />&quot;There is no built-in support for multi-tenancy (for the underlay) unless we deploy VRF, MPLS, RFC2547, etc.&quot;<br /><br />Why do you need multi-tenancy in underlay if you&#39;re running multi-tenant networks in the overlay? Separating storage and VXLAN? Use two VLAN-based VRFs.<br /></p>
+            <div class="comment-content">@Dan (Q#1)<br /><br />&quot;But what technology do we build the underlay with?&quot;<br /><br />Simple routed network (like Internet). Works every time.<br /><br />&quot;There is (possibly) a lot of manual configuration. Do we use a truck load of /30 networks all over the place?&quot;<br /><br />One VLAN per ToR switch if you don&#39;t need redundancy. One VLAN per ToR switch pair if you need redundant server access. L3 toward the spine. Well covered in leaf-and-spine fabric designs webinar.<br /><br />&quot;There is no built-in support for multi-tenancy (for the underlay) unless we deploy VRF, MPLS, RFC2547, etc.&quot;<br /><br />Why do you need multi-tenancy in underlay if you&#39;re running multi-tenant networks in the overlay? Separating storage and VXLAN? Use two VLAN-based VRFs.<br /></div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1069275691547819564">05 December 2016 19:55</a>
+                <a rel="nofollow" id="c1069275691547819564" href="#1069275691547819564">05 December 2016 19:55</a>
               </span>
             </div>
-            <p class="comment-content">@Dan (Q#2) - If you need physical multi-tenancy in a DC environment go with EVPN+VXLAN. Supported by most DC switching vendors these days.<br /><br />Campus is a different story. SPB might be interesting there because many existing chipsets support PBB (for SP applications). TRILL is totally new encapsulation, so new chipset; I&#39;d prefer VXLAN over TRILL.</p>
+            <div class="comment-content">@Dan (Q#2) - If you need physical multi-tenancy in a DC environment go with EVPN+VXLAN. Supported by most DC switching vendors these days.<br /><br />Campus is a different story. SPB might be interesting there because many existing chipsets support PBB (for SP applications). TRILL is totally new encapsulation, so new chipset; I&#39;d prefer VXLAN over TRILL.</div>
           </div>
         </li>
       </div>
@@ -110,10 +105,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.sanet.sk" rel="nofollow">Marian Ďurkovič</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6926084318079780860">06 December 2016 23:31</a>
+                <a rel="nofollow" id="c6926084318079780860" href="#6926084318079780860">06 December 2016 23:31</a>
               </span>
             </div>
-            <p class="comment-content">@Dan: You exactly expressed my opinion on the topic. All unnecessary complexity just makes the whole system hard to configure &amp; maintain, and less reliable (more pieces =&gt; more bugs, more possibilities to fail).<br /><br />Thus we went for much simpler &amp; straightforward approach and built national academic network using TRILL. It&#39;s not new encapsulation, all BCM ASICs support it for several years already - just the vendors haven&#39;t enabled it in software. And of course, all programable ASICs can support it as well.<br /><br />Experience? TRILL took all the good things from routed IP world and implemented it into layer2. You configure it in a few minutes, and can forget about it - because it just works. <br /><br />For an enterprise network, I wouldn&#39;t even start thinking about MPLS or VXLAN anymore. But obviously, solutions like TRILL don&#39;t get much attention from vendors, since complex technologies could be sold for more money and you&#39;ll probably also need to buy some expert services just to get them working. But we, end-users, need to push for solutions we need, instead of blindly buying complex solutions just because they are loudly marketed.<br /></p>
+            <div class="comment-content">@Dan: You exactly expressed my opinion on the topic. All unnecessary complexity just makes the whole system hard to configure &amp; maintain, and less reliable (more pieces =&gt; more bugs, more possibilities to fail).<br /><br />Thus we went for much simpler &amp; straightforward approach and built national academic network using TRILL. It&#39;s not new encapsulation, all BCM ASICs support it for several years already - just the vendors haven&#39;t enabled it in software. And of course, all programable ASICs can support it as well.<br /><br />Experience? TRILL took all the good things from routed IP world and implemented it into layer2. You configure it in a few minutes, and can forget about it - because it just works. <br /><br />For an enterprise network, I wouldn&#39;t even start thinking about MPLS or VXLAN anymore. But obviously, solutions like TRILL don&#39;t get much attention from vendors, since complex technologies could be sold for more money and you&#39;ll probably also need to buy some expert services just to get them working. But we, end-users, need to push for solutions we need, instead of blindly buying complex solutions just because they are loudly marketed.<br /></div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3936202273105072796">01 December 2016 19:49</a>
+                <a rel="nofollow" id="c3936202273105072796" href="#3936202273105072796">01 December 2016 19:49</a>
               </span>
             </div>
-            <p class="comment-content">I am in avaya working on SPB and I feel they did not advertise/market it properly in early years. They did not create eco system. Now when they have started marketing it, the world has changed so they are just doing catch up. Even sales doesn&#39;t know much about the technology. With uncertainty hanging around the company, it will be more difficult. Regarding comparing with VXLAN, vxlan packet has more overhead than SPB packet.</p>
+            <div class="comment-content">I am in avaya working on SPB and I feel they did not advertise/market it properly in early years. They did not create eco system. Now when they have started marketing it, the world has changed so they are just doing catch up. Even sales doesn&#39;t know much about the technology. With uncertainty hanging around the company, it will be more difficult. Regarding comparing with VXLAN, vxlan packet has more overhead than SPB packet.</div>
           </div>
         </li>
       </div>
@@ -153,10 +148,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12247158109473578398" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6455881680962945881">03 December 2016 08:22</a>
+                <a rel="nofollow" id="c6455881680962945881" href="#6455881680962945881">03 December 2016 08:22</a>
               </span>
             </div>
-            <p class="comment-content">checkout apstra&#39;s aos, if you don&#39;t like vendor lockin</p>
+            <div class="comment-content">checkout apstra&#39;s aos, if you don&#39;t like vendor lockin</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -172,10 +167,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1518969022235934128">03 December 2016 08:23</a>
+                <a rel="nofollow" id="c1518969022235934128" href="#1518969022235934128">03 December 2016 08:23</a>
               </span>
             </div>
-            <p class="comment-content">And you&#39;ll never be locked into AOS, right? Wake up...</p>
+            <div class="comment-content">And you&#39;ll never be locked into AOS, right? Wake up...</div>
           </div>
         </li>
       </div>
@@ -197,10 +192,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03014282355010119539" rel="nofollow">Michael67</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3711469068245941815">04 December 2016 21:18</a>
+                <a rel="nofollow" id="c3711469068245941815" href="#3711469068245941815">04 December 2016 21:18</a>
               </span>
             </div>
-            <p class="comment-content">What about the H3C S6830 (HP 5940): MPLS, VPLS, EVPN, BGP, VRF, SPB, TRILL,... 48x SFP+ (10G) + 6x QSFP+ (100Gbe) for ~9000$ Does anyone really use those in datacenters?<br /></p>
+            <div class="comment-content">What about the H3C S6830 (HP 5940): MPLS, VPLS, EVPN, BGP, VRF, SPB, TRILL,... 48x SFP+ (10G) + 6x QSFP+ (100Gbe) for ~9000$ Does anyone really use those in datacenters?<br /></div>
           </div>
         </li>
       </div>
@@ -215,10 +210,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03838720091591599118" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9791467644656677">04 December 2016 22:06</a>
+                <a rel="nofollow" id="c9791467644656677" href="#9791467644656677">04 December 2016 22:06</a>
               </span>
             </div>
-            <p class="comment-content">I found a link to a video that I remember viewing a while back.<br />https://vimeo.com/155635184<br />The presentation is talking about their fancy new ASIC in the Catalyst 3850 and how the processing pipeline is programmable with new microcode.  They are crowing about being able to handle wireless CAPWAP traffic on-chip.  But check out the 00:29:30 mark.  The presenter claims they have not committed to, but have considered microcode to do TRILL and SPB!<br /><br />That was nine months ago.  I headed over to the newest release notes.  Looks like they are real serious about new features.  The 3850 microcode can now do MPLS framing and the software can do LDP.  <br /><br />They have also introduced something called Campus Fabric which looks like it uses LISP.  <br />https://goo.gl/l8ykcJ<br /><br />Anybody have any info on Campus Fabric?<br /><br />Anybody on this forum work for Cisco Skunkworks and can tell us when TRILL and SPB will be released on the 3850?  :-)<br /></p>
+            <div class="comment-content">I found a link to a video that I remember viewing a while back.<br />https://vimeo.com/155635184<br />The presentation is talking about their fancy new ASIC in the Catalyst 3850 and how the processing pipeline is programmable with new microcode.  They are crowing about being able to handle wireless CAPWAP traffic on-chip.  But check out the 00:29:30 mark.  The presenter claims they have not committed to, but have considered microcode to do TRILL and SPB!<br /><br />That was nine months ago.  I headed over to the newest release notes.  Looks like they are real serious about new features.  The 3850 microcode can now do MPLS framing and the software can do LDP.  <br /><br />They have also introduced something called Campus Fabric which looks like it uses LISP.  <br />https://goo.gl/l8ykcJ<br /><br />Anybody have any info on Campus Fabric?<br /><br />Anybody on this forum work for Cisco Skunkworks and can tell us when TRILL and SPB will be released on the 3850?  :-)<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -234,10 +229,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03838720091591599118" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5531562818880489198">04 December 2016 22:07</a>
+                <a rel="nofollow" id="c5531562818880489198" href="#5531562818880489198">04 December 2016 22:07</a>
               </span>
             </div>
-            <p class="comment-content">By the way, I&#39;ve seen Barefoot mentioned a couple times at packetpushers.net<br />https://goo.gl/6AM5HY<br />Did Cisco beat Barefoot to market with a programmable pipeline and nobody noticed?<br /><br /></p>
+            <div class="comment-content">By the way, I&#39;ve seen Barefoot mentioned a couple times at packetpushers.net<br />https://goo.gl/6AM5HY<br />Did Cisco beat Barefoot to market with a programmable pipeline and nobody noticed?<br /><br /></div>
           </div>
         </li>
       </div>
@@ -252,10 +247,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1529541795675880061">05 December 2016 07:24</a>
+                <a rel="nofollow" id="c1529541795675880061" href="#1529541795675880061">05 December 2016 07:24</a>
               </span>
             </div>
-            <p class="comment-content">Programmable pipelines have been around forever (IIRC even Intel&#39;s FM6000 has one). <br /><br />Barefoot ASIC might be faster and/or cheaper than the alternatives, but that remains to be seen.<br /><br />The rest is hype generated to attract funding (see also: OpenFlow).</p>
+            <div class="comment-content">Programmable pipelines have been around forever (IIRC even Intel&#39;s FM6000 has one). <br /><br />Barefoot ASIC might be faster and/or cheaper than the alternatives, but that remains to be seen.<br /><br />The rest is hype generated to attract funding (see also: OpenFlow).</div>
           </div>
         </li>
       </div>
@@ -270,10 +265,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10562240567667879482" rel="nofollow">lcw</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1686210660181615094">09 December 2016 23:31</a>
+                <a rel="nofollow" id="c1686210660181615094" href="#1686210660181615094">09 December 2016 23:31</a>
               </span>
             </div>
-            <p class="comment-content"><a href="https://clnv.s3.amazonaws.com/2015/usa/pdf/BRKARC-3467.pdf" rel="nofollow"><b>BRKARC-3467</b></a> has a slide that shows TRILL, SPB, LISP, and VXLAN as future possibilities for the Catalyst 3850 UADP ASIC.<br /><br />Cisco just added MPLS L3VPN and VXLAN is due next year. Something tells me SPB isn&#39;t on their radar anymore. :)<br /><br />Cisco also told me they had a proof-of-concept of P4 language running on the Catalyst 3850 UADP! It&#39;s a very cool and versatile chip.</p>
+            <div class="comment-content"><a href="https://clnv.s3.amazonaws.com/2015/usa/pdf/BRKARC-3467.pdf" rel="nofollow"><b>BRKARC-3467</b></a> has a slide that shows TRILL, SPB, LISP, and VXLAN as future possibilities for the Catalyst 3850 UADP ASIC.<br /><br />Cisco just added MPLS L3VPN and VXLAN is due next year. Something tells me SPB isn&#39;t on their radar anymore. :)<br /><br />Cisco also told me they had a proof-of-concept of P4 language running on the Catalyst 3850 UADP! It&#39;s a very cool and versatile chip.</div>
           </div>
         </li>
       </div>
@@ -295,10 +290,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3430547960032105093">04 December 2016 22:44</a>
+                <a rel="nofollow" id="c3430547960032105093" href="#3430547960032105093">04 December 2016 22:44</a>
               </span>
             </div>
-            <p class="comment-content">Alcatel-Lucent Enterprise and HP seems to ramp up their SPB implementations. Put the routing outside the SPB if you like and use it as the efficient transport it is. The separation of the logical vs physical network is the goal and the efficient configuration the enabler. It&#39;s not that complicated to debug once you have read up on it. At least not harder than other proprietary/open source &quot;SDN&quot; solutions giving the same benefits. I agree strongly with the use cases Dan Massameno presents above and are going to implement a SPB as soon as I get to buy the gear. Cisco Campus fabric is a waste of time in comparison. If you eventually want to exit SPB just shrink the size of the fabric until gone. The switches runs the other protocols as well...</p>
+            <div class="comment-content">Alcatel-Lucent Enterprise and HP seems to ramp up their SPB implementations. Put the routing outside the SPB if you like and use it as the efficient transport it is. The separation of the logical vs physical network is the goal and the efficient configuration the enabler. It&#39;s not that complicated to debug once you have read up on it. At least not harder than other proprietary/open source &quot;SDN&quot; solutions giving the same benefits. I agree strongly with the use cases Dan Massameno presents above and are going to implement a SPB as soon as I get to buy the gear. Cisco Campus fabric is a waste of time in comparison. If you eventually want to exit SPB just shrink the size of the fabric until gone. The switches runs the other protocols as well...</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -314,10 +309,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2475358014995931034">04 December 2016 22:57</a>
+                <a rel="nofollow" id="c2475358014995931034" href="#2475358014995931034">04 December 2016 22:57</a>
               </span>
             </div>
-            <p class="comment-content">We had Juniper taking about their DC solutions a couple of weeks ago and I mentioned my interest in SPB and they very vaguely said they heard rumours about Juniper supporting it in future. I hold my thumbs.</p>
+            <div class="comment-content">We had Juniper taking about their DC solutions a couple of weeks ago and I mentioned my interest in SPB and they very vaguely said they heard rumours about Juniper supporting it in future. I hold my thumbs.</div>
           </div>
         </li>
       </div>
@@ -339,10 +334,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10562240567667879482" rel="nofollow">lcw</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2410928999065748072">09 December 2016 23:09</a>
+                <a rel="nofollow" id="c2410928999065748072" href="#2410928999065748072">09 December 2016 23:09</a>
               </span>
             </div>
-            <p class="comment-content">Having spent the last few months working in an SPB network, I can vouch that it&#39;s easy and solid. It&#39;s a lot like Cisco FabricPath.<br /><br />But like FabricPath, SPB does nothing to discourage poor network design. It happily accepts sloppy cabling, daisy-chained devices, inconsistent naming, weird link speeds, mismatched firmware, etc.<br /><br />Sure you can make a mess of VXLAN too, but it&#39;s a lot harder since you&#39;re forced to think separately about the underlay fabric and the overlay data networks. And if you plan to use the VXLAN/EVPN&#39;s distributed layer-3 routing, a clean design is a must.</p>
+            <div class="comment-content">Having spent the last few months working in an SPB network, I can vouch that it&#39;s easy and solid. It&#39;s a lot like Cisco FabricPath.<br /><br />But like FabricPath, SPB does nothing to discourage poor network design. It happily accepts sloppy cabling, daisy-chained devices, inconsistent naming, weird link speeds, mismatched firmware, etc.<br /><br />Sure you can make a mess of VXLAN too, but it&#39;s a lot harder since you&#39;re forced to think separately about the underlay fabric and the overlay data networks. And if you plan to use the VXLAN/EVPN&#39;s distributed layer-3 routing, a clean design is a must.</div>
           </div>
         </li>
       </div>
@@ -357,10 +352,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03838720091591599118" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8239838691510426154">10 December 2016 18:18</a>
+                <a rel="nofollow" id="c8239838691510426154" href="#8239838691510426154">10 December 2016 18:18</a>
               </span>
             </div>
-            <p class="comment-content">With a programmable pipeline, the flexible ability to handle framing at Layer-2 and the P4 language, maybe the industry can do some core research/development and innovation.  <br /><br />For instance, I know everyone pretty much things Ethernet is so ubiquitous it will never go away.  But there are serious design issues that are now inappropriate for modern networks.<br /><br />For instance: there twelve bytes of address information in the header.  That&#39;s 2^96 addresses.  But if we have a PTP routed link to the next switch, don’t we need only two addresses?  How about no addresses; it will arrive at the other side and we don&#39;t need addresses.  Talk about bloat.  Let the upper layer do the addressing (it already does!)<br /></p>
+            <div class="comment-content">With a programmable pipeline, the flexible ability to handle framing at Layer-2 and the P4 language, maybe the industry can do some core research/development and innovation.  <br /><br />For instance, I know everyone pretty much things Ethernet is so ubiquitous it will never go away.  But there are serious design issues that are now inappropriate for modern networks.<br /><br />For instance: there twelve bytes of address information in the header.  That&#39;s 2^96 addresses.  But if we have a PTP routed link to the next switch, don’t we need only two addresses?  How about no addresses; it will arrive at the other side and we don&#39;t need addresses.  Talk about bloat.  Let the upper layer do the addressing (it already does!)<br /></div>
           </div>
         </li>
       </div>
@@ -375,10 +370,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#343843560012952006">21 December 2016 19:55</a>
+                <a rel="nofollow" id="c343843560012952006" href="#343843560012952006">21 December 2016 19:55</a>
               </span>
             </div>
-            <p class="comment-content">Sometimes you have to look beyond technology and consider soft factors, for example readily-available skills. There are zillions of engineers familiar with IP and IP routing protocols, and thousands of engineers familiar with MPLS. Fewer people had in-depth exposure to PBB (SPBM data plane) and only a few have hands-on SPBM experience (not to mention experience with Avaya’s extensions).<br /><br />LOL that a good one....SPB fabric is work of art that makes networking easy ...<br />The operator Need to be completely halfwit to mess that up...<br /><br /></p>
+            <div class="comment-content">Sometimes you have to look beyond technology and consider soft factors, for example readily-available skills. There are zillions of engineers familiar with IP and IP routing protocols, and thousands of engineers familiar with MPLS. Fewer people had in-depth exposure to PBB (SPBM data plane) and only a few have hands-on SPBM experience (not to mention experience with Avaya’s extensions).<br /><br />LOL that a good one....SPB fabric is work of art that makes networking easy ...<br />The operator Need to be completely halfwit to mess that up...<br /><br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -394,10 +389,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7378030711119663005">21 December 2016 19:56</a>
+                <a rel="nofollow" id="c7378030711119663005" href="#7378030711119663005">21 December 2016 19:56</a>
               </span>
             </div>
-            <p class="comment-content">And you never had to troubleshoot something that looked so easy it&#39;s impossible to mess up? Can I mention a few rules from RFC 1925?</p>
+            <div class="comment-content">And you never had to troubleshoot something that looked so easy it&#39;s impossible to mess up? Can I mention a few rules from RFC 1925?</div>
           </div>
         </li>
       </div>
@@ -412,10 +407,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4144722942212721674">21 December 2016 20:35</a>
+                <a rel="nofollow" id="c4144722942212721674" href="#4144722942212721674">21 December 2016 20:35</a>
               </span>
             </div>
-            <p class="comment-content">L2 Tunnel (Avaya vsn)<br />Switch A<br />Conf t<br />i-sid 100 vlan 100<br /><br />Switch B<br />Conf t<br />i-sid 100 vlan 100<br /><br />even big ape like me can manage that<br />And no I don&#39;t work for Avaya <br />just a dude that loves to keep it&#39;s simple <br /><br /><br /><br /><br /></p>
+            <div class="comment-content">L2 Tunnel (Avaya vsn)<br />Switch A<br />Conf t<br />i-sid 100 vlan 100<br /><br />Switch B<br />Conf t<br />i-sid 100 vlan 100<br /><br />even big ape like me can manage that<br />And no I don&#39;t work for Avaya <br />just a dude that loves to keep it&#39;s simple <br /><br /><br /><br /><br /></div>
           </div>
         </li>
       </div>
@@ -437,10 +432,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.bluesodium.com" rel="nofollow">Nnanna Obuba</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#458560020099606030">08 February 2017 22:26</a>
+                <a rel="nofollow" id="c458560020099606030" href="#458560020099606030">08 February 2017 22:26</a>
               </span>
             </div>
-            <p class="comment-content">I don&#39;t really think your arguments for not using Avaya SPBM are very valid at all. The biggest argument for not using Avaya, might be that one is reluctant to learn the tech behind it.<br />As far as being forced to use Avaya end to end, that&#39;s simply not true. You can certainly mix the Avaya fabric with a traditional network.<br />You can use 2 cheap Avaya VSP 4000s to create an overlay network , connect cisco switches at either end, do a &quot;show cdp neighbor&quot; and the Cisco switches would think they are on the same LAN. And thats just one use case..<br /><br />If you plan to do any multicast on your network, then there&#39;s no discussion to be had. Avaya is flat out better.<br />I make an argument for Avaya SPBM over cisco here...I&#39;ve had a CCIE for over 15 years.<br />http://www.bluesodium.com/blog/8-reasons-to-choose-avaya-instead-of-cisco-for-your-data-network/</p>
+            <div class="comment-content">I don&#39;t really think your arguments for not using Avaya SPBM are very valid at all. The biggest argument for not using Avaya, might be that one is reluctant to learn the tech behind it.<br />As far as being forced to use Avaya end to end, that&#39;s simply not true. You can certainly mix the Avaya fabric with a traditional network.<br />You can use 2 cheap Avaya VSP 4000s to create an overlay network , connect cisco switches at either end, do a &quot;show cdp neighbor&quot; and the Cisco switches would think they are on the same LAN. And thats just one use case..<br /><br />If you plan to do any multicast on your network, then there&#39;s no discussion to be had. Avaya is flat out better.<br />I make an argument for Avaya SPBM over cisco here...I&#39;ve had a CCIE for over 15 years.<br />http://www.bluesodium.com/blog/8-reasons-to-choose-avaya-instead-of-cisco-for-your-data-network/</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -456,10 +451,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3082916867100935606">09 February 2017 16:16</a>
+                <a rel="nofollow" id="c3082916867100935606" href="#3082916867100935606">09 February 2017 16:16</a>
               </span>
             </div>
-            <p class="comment-content">I don&#39;t think your arguments are very persuasive either ;), they go mostly into the &quot;it&#39;s cheaper&quot; direction.<br /><br />In any case, it seems you&#39;re selling Avaya boxes, and I&#39;m just a consultant who has to point out all the pros and cons to the customer, so no surprise our perspectives are different.</p>
+            <div class="comment-content">I don&#39;t think your arguments are very persuasive either ;), they go mostly into the &quot;it&#39;s cheaper&quot; direction.<br /><br />In any case, it seems you&#39;re selling Avaya boxes, and I&#39;m just a consultant who has to point out all the pros and cons to the customer, so no surprise our perspectives are different.</div>
           </div>
         </li>
       </div>
@@ -474,10 +469,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.bluesodium.com" rel="nofollow">Nnanna Obuba</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5358301850017283956">09 February 2017 21:11</a>
+                <a rel="nofollow" id="c5358301850017283956" href="#5358301850017283956">09 February 2017 21:11</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Its cheaper&quot; is pretty persuasive if you get the same functionality. That&#39;s why there are whole websites dedicated to comparing prices of things.<br /><br />I don&#39;t actually sell any boxes.<br /><br />What are the actual Pros and Cons you point out in your article, since the lock-in argument does not fly?<br />Kindly break it down to a list of Pros / Cons for each of Cisco and Avaya. I&#39;d be extremely happy to have this discussion.</p>
+            <div class="comment-content">&quot;Its cheaper&quot; is pretty persuasive if you get the same functionality. That&#39;s why there are whole websites dedicated to comparing prices of things.<br /><br />I don&#39;t actually sell any boxes.<br /><br />What are the actual Pros and Cons you point out in your article, since the lock-in argument does not fly?<br />Kindly break it down to a list of Pros / Cons for each of Cisco and Avaya. I&#39;d be extremely happy to have this discussion.</div>
           </div>
         </li>
       </div>
@@ -499,10 +494,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Gates</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7383752381198031583">09 August 2017 08:29</a>
+                <a rel="nofollow" id="c7383752381198031583" href="#7383752381198031583">09 August 2017 08:29</a>
               </span>
             </div>
-            <p class="comment-content">Just tumbled upon this post. I can understand Ivan is trying to be vendor neutral. <br /><br />However, the typical networking equipment life cycle is about 5 years and many of Medium sized businesses prefer single vendor during the life time of the network, larger business likely have two-vendor policy. Lock-in, maybe, for longtime, no way. <br /><br />According to Avaya SPB deployments reached 1200+ mark. I would say it is not longer an untested solution.<br /><br />In reality, VXLAN and EVPN are designed for Data Centers not campus networks.<br /><br />If there is a solution that is easy to deploy, easy to operate, automated service creation, you can enjoy it for 5 years, great. If anything better available after 5 years, go for it.<br /><br /></p>
+            <div class="comment-content">Just tumbled upon this post. I can understand Ivan is trying to be vendor neutral. <br /><br />However, the typical networking equipment life cycle is about 5 years and many of Medium sized businesses prefer single vendor during the life time of the network, larger business likely have two-vendor policy. Lock-in, maybe, for longtime, no way. <br /><br />According to Avaya SPB deployments reached 1200+ mark. I would say it is not longer an untested solution.<br /><br />In reality, VXLAN and EVPN are designed for Data Centers not campus networks.<br /><br />If there is a solution that is easy to deploy, easy to operate, automated service creation, you can enjoy it for 5 years, great. If anything better available after 5 years, go for it.<br /><br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -518,10 +513,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4255640080361856017">13 October 2017 19:49</a>
+                <a rel="nofollow" id="c4255640080361856017" href="#4255640080361856017">13 October 2017 19:49</a>
               </span>
             </div>
-            <p class="comment-content">Gates <br />I found SPBM very attractive to utility companies that have some big networks.<br /> moving from Legacy SONT/SDH to Ethernet.<br />That switch is a perfect match to that application <br />https://www.al-enterprise.com/en/products/switches/omniswitch-6865<br /><br /></p>
+            <div class="comment-content">Gates <br />I found SPBM very attractive to utility companies that have some big networks.<br /> moving from Legacy SONT/SDH to Ethernet.<br />That switch is a perfect match to that application <br />https://www.al-enterprise.com/en/products/switches/omniswitch-6865<br /><br /></div>
           </div>
         </li>
       </div>
@@ -543,10 +538,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03557194585135639785" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7933717521221542658">08 January 2018 15:17</a>
+                <a rel="nofollow" id="c7933717521221542658" href="#7933717521221542658">08 January 2018 15:17</a>
               </span>
             </div>
-            <p class="comment-content">This article is out of touch with reality.  SPBm is an IEEE standard and not proprietary.  Avaya, Ciena, Alcotel, HP, hauwei, and Fujitsu all support SPBm.   So you are not trapped.  Now that Brocade and avaya have been bought up by extreme, you can add that to the list.<br /><br /></p>
+            <div class="comment-content">This article is out of touch with reality.  SPBm is an IEEE standard and not proprietary.  Avaya, Ciena, Alcotel, HP, hauwei, and Fujitsu all support SPBm.   So you are not trapped.  Now that Brocade and avaya have been bought up by extreme, you can add that to the list.<br /><br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -562,10 +557,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#96963502996596728">08 January 2018 15:21</a>
+                <a rel="nofollow" id="c96963502996596728" href="#96963502996596728">08 January 2018 15:21</a>
               </span>
             </div>
-            <p class="comment-content">As I wrote in the blog post (you did spend more than three seconds reading it, did you?) the layer-2 part is standard, everything else that makes Avaya&#39;s solution really interesting is Avaya&#39;s proprietary extension.</p>
+            <div class="comment-content">As I wrote in the blog post (you did spend more than three seconds reading it, did you?) the layer-2 part is standard, everything else that makes Avaya&#39;s solution really interesting is Avaya&#39;s proprietary extension.</div>
           </div>
         </li>
       </div>

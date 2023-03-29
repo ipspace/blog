@@ -1,0 +1,111 @@
+{
+   "comments": [
+      {
+         "date": "24 November 2020 01:46",
+         "html": "<p>Thought the ASR9000 chipsets aren&#39;t Broadcom based, just unfortunately similarly named</p>\n",
+         "id": "253",
+         "name": " Tim",
+         "pub": "2020-11-24T13:46:45",
+         "type": "comment"
+      },
+      {
+         "date": "24 November 2020 04:16",
+         "html": "<p>This is important statement to remember that hardware must be programmed. This is true not only for FRR, IPLFA, ECMP, but also for EIGRP Feasible Successor and Prefix Prioritization. For example Prefix Prioritization was added in hardware by Cisco somewhere in 2015 on some platforms. Prior that there was no guarantee that the order of prefixes configured in software was preserved in hardware.</p>\n\n<p>Just to clarify some points:\n- &quot;PIC Core (recursive next-hop resolution in a ECMP network)&quot; - PIC Core takes care of hierarchical FIB and resolution not only in ECMP.\n- On modern platforms PIC Core is enabled by default. On older like 7600 it requires an additional command. So to have hardware based backup path in IPFLA on ASR9k it is enough to turn on IPLFA.\n- &quot;keep in mind that on modern CPUs the reprogramming of forwarding tables might take longer than the time a routing protocol needs to do its job&quot; - It depends on the number of prefixes/objects to be programmed. Every hardware has its own FIB speed like ASR1k around 13k prefixes/second. This means that writing/removing 13k of prefixes takes 1 second. So a routing table computation can be faster but the overall convergence process will be longer as it requires also updating HW FIB.</p>\n",
+         "id": "255",
+         "name": "Piotr Jablonski",
+         "pub": "2020-11-24T16:16:30",
+         "type": "comment"
+      },
+      {
+         "date": "24 November 2020 04:21",
+         "html": "<p>@Piotr: Thanks a million for the ASR1K data point - exactly what I needed. Any pointers to documentation I could use?</p>\n\n<p>My point was &quot;<em>if it takes 1 second to reprogram the FIB, who cares if it takes 1 msec or 100 msec to find the alternate path</em>&quot;.</p>\n",
+         "id": "256",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-11-24T16:21:10",
+         "type": "comment"
+      },
+      {
+         "date": "24 November 2020 04:39",
+         "html": "<p>&gt;&gt;Thought the ASR9000 chipsets aren&#39;t Broadcom based, just unfortunately similarly named\nThe NPUs are EZchip-silicon, at least for Trident &amp; Typhoon, Tomahawk &amp; Lightspeed maybe too. But they&#39;re also using Broadcom with the switch fabric which is (to my knowlege) just a big Broadcom-silicon-based switch.\nNot sure, but that&#39;s perhaps where the generation-name is derived from.</p>\n\n<p>&gt;&gt;On modern platforms PIC Core is enabled by default.\nThat&#39;s probably not true in all cases.\nIt might be true for routers, but definitely not for switches, especially not for datacenter switches. The reason for that is the compromise you have to take in lookup time vs convergence time which is flat FIB vs hierarchical FIB (a.k.a. &quot;PIC Code&quot;).</p>\n",
+         "id": "257",
+         "name": " Christoph",
+         "pub": "2020-11-24T16:39:34",
+         "type": "comment"
+      },
+      {
+         "date": "24 November 2020 05:43",
+         "html": "<p>@Christoph</p>\n\n<p>On your comment of:\n&gt;&gt;That&#39;s probably not true in all cases. \n&gt;&gt;It might be true for routers, but definitely \n&gt;&gt;not for switches, especially not for \n&gt;&gt;datacenter switches. The reason for that \n&gt;&gt;is the compromise you have to take in \n&gt;&gt;lookup time vs convergence time which \n&gt;&gt;is flat FIB vs hierarchical FIB (a.k.a. &quot;PIC Code&quot;).</p>\n\n<p>This is not accurate. Majority of the Switching Silicon (ASIC) supports hierarchical FIB and this is true for Merchant and Custom Silicon. For example, the Cisco Nexus 9000 (Cisco Silicon) as well as the Nexus 3600-R (Merchant Silicon) supports it and the same is true for the broader Merchant Silicon set across Broadcom, Innovium, Barefoot etc. The difference is in the detail but hierarchical FIB is today a pretty standard in Switch Silicon (ASIC).</p>\n",
+         "id": "258",
+         "name": "Lukas Krattiger",
+         "pub": "2020-11-24T17:43:00",
+         "type": "comment"
+      },
+      {
+         "date": "24 November 2020 10:09",
+         "html": "<p>@Ivan: FIB Speed is rare info available publicly. The most data today you can get about NCS: https://xrdocs.io/ncs5500/tutorials/ncs5500-fib-programming-speed. Other platforms via Cisco representatives or own testing.</p>\n",
+         "id": "259",
+         "name": "Piotr Jablonski",
+         "pub": "2020-11-24T22:09:22",
+         "type": "comment"
+      },
+      {
+         "date": "24 November 2020 10:16",
+         "html": "<p>&gt;&gt; My point was &quot;if it takes 1 second to reprogram the FIB, who cares if it takes 1 msec or 100 msec to find the alternate path&quot;</p>\n\n<p>@Ivan: Agree. In such a case just a prefix prioritization may be good enough.</p>\n",
+         "id": "260",
+         "name": "Piotr Jablonski",
+         "pub": "2020-11-24T22:16:05",
+         "type": "comment"
+      },
+      {
+         "date": "25 November 2020 08:51",
+         "html": "<p>Ivan, here&#39;s an article from Broadcom describing their ECMP process in their ASICs like Trident and Tomahawk:</p>\n\n<p>https://www.broadcom.com/blog/broadcom-s-trident-3-enhances-ecmp-with-dynamic-load-balancing</p>\n\n<p>What they call Dynamic LB, is their equivalent of Juniper&#39;s Trio chipset&#39;s adaptive LB method. They both monitor the load and do flow redirection on sensing elephant flows hogging a link. So all of Juniper&#39;s platforms that make use of Trio chipsets, run ECMP in hardware. Their QFX5100 use Broadcom Trident 2, and since it&#39;d kill forwarding speed and lead to packet loss as well if they don&#39;t do it in hardware, most of all when the hardware natively supports it, I can&#39;t see any reason QFX5100 doesn&#39;t perform hardware ECMP.</p>\n\n<p>Cumulus, when they&#39;re indepdent, used both Mellanox and Broadcom ASIC, and they describe their ECMP behaviour here -- it varies depending on the ASIC in use, which basically tells us that it&#39;s done in hardware:</p>\n\n<p>https://docs.cumulusnetworks.com/cumulus-linux-41/Layer-3/Equal-Cost-Multipath-Load-Sharing-Hardware-ECMP/</p>\n\n<p>As to FIB speed, while vendors don&#39;t disclose much, we can get some rough idea of what&#39;s going on by looking at doccos from part suppliers, like this one here:</p>\n\n<p>https://www.xilinx.com/support/documentation/ip_documentation/tcam/pg190-tcam.pdf</p>\n\n<p>Xilin&#39;s TCAM lookup speed is 170MHZ. Assuming one lookup per packet, that Xilinx&#39;s particular TCAM can handle up to 170 Mpps, which exceeds 100GbE&#39;s max capacity of 150mpps. I&#39;ve heard of much higher clock rate, and this is probably something you can verify with your industry contact, as they likely know better. </p>\n\n<p>Xilin&#39;s TCAM update speed is, understandably, lower, due to TCAM&#39;s fundamental limitations. And interestingly, this fundamental limit can be seen manifested in the NCS5500 link shared by Piotr&#39;s above, in which FIB programming speed lags deletion speed quite a bit, 27.8k/s vs 32.6k/s.</p>\n\n<p>This is also exactly the reason why SDN radicals and Openflow fundamentalists have failed miserably to date. They promised the world with their centralized controller model, but fell woefully short when it came to delivery, as the intrinsic nature/limitation of TCAM deals a huge blow to the overly dynamic flow-update requirement of flow-based switching, leading to massive latency issues, to say nothing of the heat dissipation problem caused by the sheer amount of insertion/deletion. On top of that, flow-based entries take way more states/bits to represent in TCAM compared to MPLS or IPv4, leading to multiple lookup per entries, severely cutting back on the lookup speed and the Mpps, and contribute to the heat and power utilization issue as well. That&#39;s why flow-based forwarding will never work, and the SDN guys were/are contemplating flow aggregation, which brings them back full-circle, to MPLS/IP paradigm.</p>\n\n<p>IPv6 suffers from the same later issue, so for ex, in Cat6500 6T engine architecture docco, Cisco stated that their LC could handle 60Mpps for IPv4, and 30Mpps for IPv6. This is what happens when the software guys aka IPv6 designers, were disconnected from forwarding-plane reality. Segment routing, with its massive label stack, can fall prey to the exact same resource utilization problem, and itself comes with big complexities all over the place, while offering not much in return (what&#39;s the big problem it&#39;s supposed to solve?). And some people even have the audacity to preach abominations, insanities the likes of Srv6, totally disregarding how it&#39;s gonna melt their ASIC to liquid. Unbelievable! </p>\n\n<p>Try as they might, centralized paradigm, due to various hideous problems, will never scale as well as distributed routing/switching. </p>\n",
+         "id": "261",
+         "name": " Minh Ha",
+         "pub": "2020-11-25T08:51:32",
+         "type": "comment"
+      },
+      {
+         "date": "25 November 2020 09:16",
+         "html": "<p>Also, I agree with Lukas&#39; comment above. Hierarchical FIB, is pretty standard for high-end silicons. MX routers, for ex, have H-FIB by default and you cannot turn it off. </p>\n\n<p>And this part &quot;keep in mind that on modern CPUs the reprogramming of forwarding tables might take longer than the time a routing protocol needs to do its job, so it might not make sense to make software-based failover too complex&hellip; unless of course your hardware supports PIC&quot;, I might have misunderstood what you meant here, as I though you meant PIC was 100% FIB-based recovery. If so, my apology Ivan. </p>\n\n<p>From what I know, PIC, both Core and Edge, rely on IGP&#39;s convergence to do its work before they can get down to business, so they can&#39;t converge any faster than the software, IGP reconvergence in this case. The purpose of PIC is to enhance BGP-specific forwarding reconvergence and do away with/decouple from BGP routing reconvergence delay, as that one takes rather long. PIC Core doesn&#39;t need BGP indirect next hop, it just needs IGP indirect next hop to work, but PIC Edge is more involved and requires both types of indirection to work. ALso, with PIC, there&#39;s no need to do FIB re-programming, as you just remove the pointer that points to the previous next hop. THe BGP indirect next hop structure resides outside the TCAM, in a SRAM table I suppose, for fast lookup, just like the adjacency table. </p>\n",
+         "id": "262",
+         "name": " Minh Ha",
+         "pub": "2020-11-25T09:16:03",
+         "type": "comment"
+      },
+      {
+         "date": "25 November 2020 05:16",
+         "html": "<p>@Minh Ha: Thanks a million for an extensive set of links and other details.</p>\n\n<p>As for my &quot;<em>don&#39;t bother with software complexities if you don&#39;t have PIC</em>&quot; bit: maybe I should have called it <em>hierarchical FIB</em>, and say &quot;<em>don&#39;t bother doing anything beyond decent routing protocol implementation if you don&#39;t have hierarchical FIB</em>&quot;</p>\n",
+         "id": "263",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-11-25T17:16:28",
+         "type": "comment"
+      },
+      {
+         "date": "01 December 2020 12:39",
+         "html": "<p>@Lukas\nMy comment based on what I was told. That was a couple years ago, it might be outdated or simply wrong, so thanks for the correction! :-)</p>\n",
+         "id": "272",
+         "name": " Christoph",
+         "pub": "2020-12-01T12:39:04",
+         "type": "comment"
+      },
+      {
+         "date": "05 December 2020 11:31",
+         "html": "<p>Hi there,</p>\n\n<p>I just wanted to add a couple of info I have come across:</p>\n\n<p>1) Some implementations make use of the central CPU to scale BFD up (and not only BFD) since they provide the central CPU with the very same forwarding ASIC that is on the cards while others use the CPU on the line cards</p>\n\n<p>2) BGP PIC-CORE implementation is, to me, very much ECMP fast-rehashing but at a higher indirection level of the hierarchical FIB as it applies to service/BGP prefixes in a BGP multipath scenario. What I found regarding BFD is that in some implementations the trigger for the ECMP fast-rehashing at that higher level can be both an interface-down or a BFD session-down event but in other implementations it&rsquo;s the BFD session-down event only that triggers the ECMP fast-rehashing at that higher level of the hierarchical FIB. This latter case has some implications depending on your routing environment as you might not want to enable BGP Multipath for traffic/prefixes requiring ECMP fast-rehashing in case you loose for instance all of the primary interfaces towards one of the N x Multipath&#39;ed BGP-NHs and you have no intention or you cannot run BFD-MHOP. </p>\n\n<p>Ciao\nAndrea</p>\n",
+         "id": "293",
+         "name": "Andrea Di Donato",
+         "pub": "2020-12-05T11:31:31",
+         "type": "comment"
+      },
+      {
+         "date": "11 December 2020 10:21",
+         "html": "<p>@Ivan, I really enjoy reading your blog posts, it&#39;s time well spent.\nAnd what makes it even more interesting is the comments section.\nIt is really amazing how much information can one find there.</p>\n",
+         "id": "308",
+         "name": "Daniel Lazar",
+         "pub": "2020-12-11T22:21:57",
+         "type": "comment"
+      }
+   ],
+   "count": 13,
+   "type": "post",
+   "url": "2020/11/fast-failover-implementation.html"
+}

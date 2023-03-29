@@ -1,54 +1,90 @@
 {
-  "comments": [
-    {
-      "date": "19 March 2012 17:53",
-      "html": "what symbols are used in the as-path display to indicate AS_SEQ, AS_SET, AS_CONFED_SEQ and AS_CONFED_SET?  &lt;nothing&gt;, {}, (), and []?&lt;/nothing&gt;",
-      "id": "7305220387165705754",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2012-03-19T17:53:59.671+01:00",
-      "ref": "2166242349094545341",
-      "type": "comment"
-    },
-    {
-      "date": "19 March 2012 20:55",
-      "html": "I don&#39;t know the internal details, but it appears from the outside like the BGP process would convert AS path into a string that you can see in the &quot;show ip bgp&quot; printout, and match that string with the regular expression. Helps?",
-      "id": "6950997996943442536",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2012-03-19T20:55:29.312+01:00",
-      "ref": "2166242349094545341",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "31 October 2014 06:54",
-          "html": "That would stop the route leaking - you&#39;d advertise your own routes and nothing else (which is the right thing to do).<br /><br />To make sure someone is not misusing you for transit and sending you traffic regardless of what you announce, you&#39;d have to deploy packet filters on the ISP-facing interfaces. Probably not worth the effort from the traffic flow perspective these days (but might be worth it from security perspective).",
-          "id": "6339810934554641057",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2014-10-31T06:54:29.057+01:00",
-          "ref": "3316716719144036606",
-          "type": "comment"
-        }
-      ],
-      "date": "31 October 2014 04:02",
-      "html": "How can the customer itself can avoiding itself being used as a transit path in a multihomed netowork with 2 ISPs ?<br /><br />neigh  filter-list 1 out<br />ip as-path acces-list 1 permit ^$<br /><br />Would this be fine ?",
-      "id": "3316716719144036606",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2014-10-31T04:02:54.836+01:00",
-      "ref": "2166242349094545341",
-      "type": "comment"
-    }
-  ],
-  "count": 4,
-  "id": "2166242349094545341",
-  "type": "post",
-  "url": "2008/02/as-path-based-filter-of-customer-bgp.html"
+   "comments": [
+      {
+         "date": "19 March 2012 17:53",
+         "html": "what symbols are used in the as-path display to indicate AS_SEQ, AS_SET, AS_CONFED_SEQ and AS_CONFED_SET?  &lt;nothing&gt;, {}, (), and []?&lt;/nothing&gt;",
+         "id": "7305220387165705754",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2012-03-19T17:53:59.671+01:00",
+         "ref": "2166242349094545341",
+         "type": "comment"
+      },
+      {
+         "date": "19 March 2012 20:55",
+         "html": "I don&#39;t know the internal details, but it appears from the outside like the BGP process would convert AS path into a string that you can see in the &quot;show ip bgp&quot; printout, and match that string with the regular expression. Helps?",
+         "id": "6950997996943442536",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2012-03-19T20:55:29.312+01:00",
+         "ref": "2166242349094545341",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "31 October 2014 06:54",
+               "html": "That would stop the route leaking - you&#39;d advertise your own routes and nothing else (which is the right thing to do).<br /><br />To make sure someone is not misusing you for transit and sending you traffic regardless of what you announce, you&#39;d have to deploy packet filters on the ISP-facing interfaces. Probably not worth the effort from the traffic flow perspective these days (but might be worth it from security perspective).",
+               "id": "6339810934554641057",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2014-10-31T06:54:29.057+01:00",
+               "ref": "3316716719144036606",
+               "type": "comment"
+            }
+         ],
+         "date": "31 October 2014 04:02",
+         "html": "How can the customer itself can avoiding itself being used as a transit path in a multihomed netowork with 2 ISPs ?<br /><br />neigh  filter-list 1 out<br />ip as-path acces-list 1 permit ^$<br /><br />Would this be fine ?",
+         "id": "3316716719144036606",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2014-10-31T04:02:54.836+01:00",
+         "ref": "2166242349094545341",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "27 June 2022 10:23",
+               "html": "<p>Oh, it&#39;s simple (conceptually):</p>\n\n<ul>\n<li>Analyze your traffic to figure out which prefixes and autonomous systems you&#39;re interested in (example: https://blog.ipspace.net/2015/01/sdn-router-spotify-on-software-gone-wild.html)</li>\n<li>If you insist on using AS-path regexp filters, figure out the AS paths used to advertise prefixes from those autonomous systems to you.</li>\n<li>Create your AS-path filter.</li>\n</ul>\n\n<p>Alternatively, you could use RIB-to-FIB IP prefix filters if your router supports something along those lines.</p>\n",
+               "id": "1320",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-06-27T10:23:46",
+               "ref": "1319",
+               "type": "comment"
+            },
+            {
+               "date": "27 June 2022 10:46",
+               "html": "<p>You mean, first i need to figure out around 2000 prefixes which i want to learn from ISP ...right?</p>\n\n<p>Note:- As of now we are allowing default route (0.0.0.0/0) from ISP and lets assume using 100 AS on ISP side.</p>\n",
+               "id": "1321",
+               "name": " Ankit",
+               "pub": "2022-06-27T10:46:45",
+               "ref": "1320",
+               "type": "comment"
+            }
+         ],
+         "date": "27 June 2022 09:30",
+         "html": "<p>How we can learn 2000-5000 customer routes from ISP using BGP regular expression? </p>\n",
+         "id": "1319",
+         "name": " Ankit",
+         "pub": "2022-06-27T09:30:09",
+         "type": "comment"
+      },
+      {
+         "date": "28 June 2022 07:21",
+         "html": "<p>HI, Could you please confirm my below doubt which i have replied above in your comment?\nYou mean, first i need to figure out around 2000 prefixes which i want to learn from ISP ...right?</p>\n\n<p>Note:- As of now we are allowing default route (0.0.0.0/0) from ISP and lets assume using 100 AS on ISP side.</p>\n",
+         "id": "1322",
+         "name": " Ankit",
+         "pub": "2022-06-28T07:21:00",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "id": "2166242349094545341",
+   "type": "post",
+   "url": "2008/02/as-path-based-filter-of-customer-bgp.html"
 }

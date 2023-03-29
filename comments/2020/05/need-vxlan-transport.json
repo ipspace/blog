@@ -1,0 +1,79 @@
+{
+   "comments": [
+      {
+         "date": "29 May 2020 05:55",
+         "html": "<p>Great Post. But does MTU limitations factor into consideration? Our SP was previously looking to provide a layer 2 service across the internet and found that cisco in the last year has put some work into beefing up their MPLS over DMVPN solution on IOS-XE. While VXLAN makes more sense in DCs and even on campus networks what about larger networks? If my math is right using a MPLS over DMVPN with IPSEC enabled solution has less overhead than using VXLAN over DMVPN/IPSEC?</p>\n",
+         "id": "56",
+         "name": "Alex",
+         "pub": "2020-05-29T17:55:14",
+         "type": "comment"
+      },
+      {
+         "date": "30 May 2020 04:37",
+         "html": "<p>I honestly don&#39;t want to know anything about a layer-2 service across the Internet. Just the thought makes me shudder...</p>\n\n<p>As for MPLS- or VXLAN-over-DMVPN, I don&#39;t think I&#39;ve seen anyone using VXLAN yet, but I&#39;m sure that&#39;s about to change. From the overhead perspective MPLS definitely makes more sense.</p>\n",
+         "id": "57",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-05-30T16:37:29",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2020 04:55",
+         "html": "<p>I completely agree with you about the layer 2 service over the internet; just because you can do something doesn&#39;t mean you should. But I bet dollar to doughnuts that some SD-WAN vendor is going to offer it and market it as some great achievement. It wouldn&#39;t even be that hard for them since some of the vendors already use VXLAN as a transport technology. </p>\n\n<p>I think the reason I have seen Cisco put deployment effort into fleshing out MPLS over DMVPN was since a client of their&#39;s, SpaceX, wanted to leverage it for some reason.</p>\n",
+         "id": "60",
+         "name": "Alex",
+         "pub": "2020-05-31T04:55:22",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2020 04:54",
+         "html": "<p>I completely agree with you about the layer 2 service over the internet; just because you can do something doesn&#39;t mean you should. But I bet dollar to doughnuts that some SD-WAN vendor is going to offer it and market it as some great achievement. It wouldn&#39;t even be that hard for them since some of the vendors already use VXLAN as a transport technology. \nI think the reason I have seen Cisco put deployment effort into fleshing out MPLS over DMVPN was since a client of their&#39;s, SpaceX, wanted to leverage it for some reason. </p>\n",
+         "id": "59",
+         "name": "Alex",
+         "pub": "2020-05-31T04:54:39",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2020 01:30",
+         "html": "<p>People wanted to run MPLS-over-GRE-over-IPSec (and DMVPN is just a special use case) to build their own MPLS/VPN networks on top of public (or Service Provider) IP infrastructure for a long time. The usual reason is VRF scalability (= we don&#39;t want to have a different DMVPN tunnel for every VRF).</p>\n\n<p>https://blog.ipspace.net/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html</p>\n\n<p>It&rsquo;s just that the sane way of running MPLS-over-DMVPN wasn&#39;t well supported due to the way IP multicast/broadcast propagation works over DMVPN. I think I covered various scenarios in either DMVPN or Enterprise MPLS webinars.</p>\n",
+         "id": "61",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-05-31T13:30:04",
+         "type": "comment"
+      },
+      {
+         "date": "01 June 2020 10:08",
+         "html": "<p>I witnessed a design proposal from DC guys where the entire inter-dc mpls-vpn dedicated backbone (i.e. the ethernet connectivity between P routers) was meant to be migrated over to a vxlan-based full-mesh of tunnels between gateways (I&#39;d call them P gateways) whose IP connectivity was provided by the main and already shared by mobile and fixed and business customers MPLS VPN backbone. Basically a vxlan-based overlaid inner backbone. A true folly. Thank god it didn&#39;t pass in the end. They laughed at us when we (backbone/transport engineers) proposed CsC as a solution. This use case fits I guess in the vxlan cathegory that Ivan called &quot;separation between edge (customer-facing) and core (transport) networks&quot; but with the customer being your DC guys and the Provider being your backbone guys as these two groups don&#39;t always trust each other. Thank god common sense transport still prevails at times.</p>\n",
+         "id": "62",
+         "name": "Andrea Di Donato",
+         "pub": "2020-06-01T10:08:24",
+         "type": "comment"
+      },
+      {
+         "date": "25 June 2020 07:56",
+         "html": "<p>In support of VxLAN, there&#39;s also benefits/advantages to be found in its ability to connect multi-vendor environments with multi-layer use cases (just like OSPF, BPG, ...) and it also has potential to be simply used as a standards-based tag-and-tunnel mechanism which has many LAN, WAN, DC-DC use cases potentially.</p>\n",
+         "id": "79",
+         "name": "David Logan",
+         "pub": "2020-06-25T19:56:46",
+         "type": "comment"
+      },
+      {
+         "date": "22 March 2021 05:33",
+         "html": "<p>Ivan, I&#39;m very much in sync with you re MPLS requiring tight coupling between edge and core :)). But I think if that&#39;s the selling point of VXLAN, then it has a long way to go. Gotta try much harder than that. Let me explain.</p>\n\n<p>Yes, MPLS is tighly-coupled, but all of the complexity and heavy-duty work -- keeping track of VRFs and all -- are done by the PE at the edge. The core routers only concern with building a map between PEs, so the amount of state they keep is very much manageable, even if we speak of say, a few thousand PEs. With modern-day ASIC, this is doable, and it&#39;s high-end environments when we speak of PEs in the thousands. Both MPLS and VXLAN have to deal with IGP calculation, and at large scale, the overhead is fair game for both. LDP overhead is nowhere like that of Link State calculation, or TCAM programming delay.</p>\n\n<p>With MPLS in the core, we don&#39;t have BGP next hop&#39;s trust issue resulting from control and data path inconsistency. This is not a big deal for small networks, but can happen in big networks due to complexity.</p>\n\n<p>MPLS can do TE, VXLAN cannot.</p>\n\n<p>MPLS ESI multi-homing label is more natural, while with VXLAN it&#39;s more convoluted.</p>\n\n<p>VXLAN encapsulation overhead is huge vs MPLS.</p>\n\n<p>Re DC environment, as I said in the Cloud post (and was actually mentioned on page 1 of the VFP paper) the Cloud went with overlay model mainly because it&#39;s the cheapest they can use to implement virtual networking. Cloud providers make use of commoditized routers/switches in their environment, so MPLS is mostly not an option. By going with Directory service mapping in software, they sacrifice the performance of their vnet for lowering cost. MPLS is high-performance. </p>\n\n<p>But saying it like it is doesn&#39;t sound good for marketing purpose, for winning customers. When they say nothing scales to our environment, so we have to invent our own, they basically just dress it up in nice excuse, and it makes them look so cool and holier than thou as well ;). </p>\n\n<p>For ex, check out section 4.2 of this paper, you&#39;ll quickly find out MS reasoning for using Directory service is a direct result of bad design aka Flat-Earth, resulting in massive churns if done in hardware:</p>\n\n<p>https://web.eecs.umich.edu/~mosharaf/Readings/VL2.pdf</p>\n\n<p>Regardless, they are slowly coming full circle back to hardware, with their FPGA offloading :)).</p>\n\n<p>Also, modern ASICs have enough TCAM space to store 4 million LPM entries, e.g. Cisco NCS 6k. It&#39;s off-chip and so slower than on-ASIC TCAM of course, but still way faster than having the table stored in a different device, and in RAM, so the &#39;scale factor&#39; is a non-issue AFAIK. </p>\n\n<p>Minh</p>\n",
+         "id": "491",
+         "name": " Minh Ha",
+         "pub": "2021-03-22T05:33:00",
+         "type": "comment"
+      },
+      {
+         "date": "22 March 2021 05:35",
+         "html": "<p>Btw, just in case you haven&#39;t seen this Ivan, there&#39;s a group that manages to make use of MPLS in their DC fabric here:</p>\n\n<p>https://www.youtube.com/watch?v=TCtR_cujulk&amp;t=1274s </p>\n",
+         "id": "492",
+         "name": " Minh Ha",
+         "pub": "2021-03-22T05:35:58",
+         "type": "comment"
+      }
+   ],
+   "count": 9,
+   "type": "post",
+   "url": "2020/05/need-vxlan-transport.html"
+}

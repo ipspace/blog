@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">plapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5069673967706001359">13 December 2010 17:16</a>
+                <a rel="nofollow" id="c5069673967706001359" href="#5069673967706001359">13 December 2010 17:16</a>
               </span>
             </div>
-            <p class="comment-content">Hey, wait a sec, FEC0:: ? Hasn&#39;t this range been deprecated like 6 years ago?  :-D</p>
+            <div class="comment-content">Hey, wait a sec, FEC0:: ? Hasn&#39;t this range been deprecated like 6 years ago?  :-D</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2171996995238236814">13 December 2010 17:20</a>
+                <a rel="nofollow" id="c2171996995238236814" href="#2171996995238236814">13 December 2010 17:20</a>
               </span>
             </div>
-            <p class="comment-content">Adapting to change is hard for the sclerotic old-timers, more so if they have to live in damp towers ...  :-P</p>
+            <div class="comment-content">Adapting to change is hard for the sclerotic old-timers, more so if they have to live in damp towers ...  :-P</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Pelle</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2769968768573490197">14 December 2010 09:23</a>
+                <a rel="nofollow" id="c2769968768573490197" href="#2769968768573490197">14 December 2010 09:23</a>
               </span>
             </div>
-            <p class="comment-content">Most of this works fine on SRD4 as well. The only exception[0] (AFAICS) is that the command &quot;show ipv6 dhcp relay bindings&quot; doesn&#39;t exist.<br /><br />SRD4#sh ver<br />Cisco IOS Software, 7200 Software (C7200P-ADVIPSERVICESK9-M), Version 12.2(33)SRD4, RELEASE SOFTWARE (fc2)<br /><br />SRD4#sh run int gi0/2.601<br />interface GigabitEthernet0/2.601<br /> encapsulation dot1Q 601<br /> ipv6 address FD00:8C0:4701:601::1/64<br /> ipv6 enable<br /> ipv6 mtu 1500<br /> ipv6 dhcp relay destination FD00:8C0:199::199<br />end<br /><br />SRD4#debug ipv6 dhcp relay<br />IPv6 DHCP relay debugging is on<br /><br />SRD4#<br />Dec 14 08:50:55.194: IPv6 DHCP_RELAY: Relaying SOLICIT from FD00:8C0:4701:601::30 on GigabitEthernet0/2.601<br />Dec 14 08:50:55.194: IPv6 DHCP_RELAY: Packet forwarded to FD00:8C0:199::199<br />Dec 14 08:50:55.194: IPv6 DHCP_RELAY: Relaying RELAY-REPLY from FD00:8C0:1::20 on GigabitEthernet0/1<br />Dec 14 08:50:55.194: IPv6 DHCP_RELAY: Packet forwarded to FD00:8C0:4701:601::30 via GigabitEthernet0/2.601<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Relaying REQUEST from FD00:8C0:4701:601::30 on GigabitEthernet0/2.601<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Packet forwarded to FD00:8C0:199::199<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Relaying RELAY-REPLY from FD00:8C0:1::20 on GigabitEthernet0/1<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Route added: FD00:8C0:474F::/56 via FD00:8C0:4701:601::30 dist 1 iaid 000A0001 lifetime 43200<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Packet forwarded to FD00:8C0:4701:601::30 via GigabitEthernet0/2.601<br /><br />SRD4#sh ipv6 dhcp ?<br />  binding    DHCP bindings<br />  database   DHCP binding database<br />  interface  DHCPv6 interface information<br />  pool       DHCPv6 pool statistics<br />  |          Output modifiers<br />  &lt;cr&gt;<br /><br />SRD4#sh ipv6 dhcp binding<br />SRD4#<br /><br /><br />SRD4#show ipv6 route interface gi0/2.601<br />S   FD00:8C0:2100::3:30/128 [1/0], tag 26000<br />     via FD00:8C0:4701:601::30, GigabitEthernet0/2.601<br />C   FD00:8C0:4701:601::/64 [0/0]<br />     via GigabitEthernet0/2.601, directly connected<br />L   FD00:8C0:4701:601::1/128 [0/0]<br />     via GigabitEthernet0/2.601, receive<br />S   FD00:8C0:474F::/56 [1/0]<br />     via FD00:8C0:4701:601::30, GigabitEthernet0/2.601<br /><br /><br />Dec 14 08:58:20.536: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to down<br />Dec 14 08:58:20.536: IPv6 DHCP_RELAY: Static route removed: FD00:8C0:474F::/56 via FD00:8C0:4701:601::30<br />Dec 14 08:58:31.885: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to up<br />Dec 14 08:58:32.885: IPv6 DHCP_RELAY: Static route added: FD00:8C0:474F::/56 via FD00:8C0:4701:601::30<br /><br /><br />SRD4#ping FD00:8C0:474F:1:219:AAFF:FE85:9980<br />Sending 5, 100-byte ICMP Echos to FD00:8C0:474F:1:219:AAFF:FE85:9980, timeout is 2 seconds:<br />!!!!!<br />Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/4 ms<br />SRD4#<br /><br /><br />[0] You are using link-local addresses on the PE-CE link. Unfortunately my dhcp-server (ISC 4.1.1) doesn&#39;t support that (at least I haven&#39;t been able to configure it). <br />&lt;/cr&gt;</p>
+            <div class="comment-content">Most of this works fine on SRD4 as well. The only exception[0] (AFAICS) is that the command &quot;show ipv6 dhcp relay bindings&quot; doesn&#39;t exist.<br /><br />SRD4#sh ver<br />Cisco IOS Software, 7200 Software (C7200P-ADVIPSERVICESK9-M), Version 12.2(33)SRD4, RELEASE SOFTWARE (fc2)<br /><br />SRD4#sh run int gi0/2.601<br />interface GigabitEthernet0/2.601<br /> encapsulation dot1Q 601<br /> ipv6 address FD00:8C0:4701:601::1/64<br /> ipv6 enable<br /> ipv6 mtu 1500<br /> ipv6 dhcp relay destination FD00:8C0:199::199<br />end<br /><br />SRD4#debug ipv6 dhcp relay<br />IPv6 DHCP relay debugging is on<br /><br />SRD4#<br />Dec 14 08:50:55.194: IPv6 DHCP_RELAY: Relaying SOLICIT from FD00:8C0:4701:601::30 on GigabitEthernet0/2.601<br />Dec 14 08:50:55.194: IPv6 DHCP_RELAY: Packet forwarded to FD00:8C0:199::199<br />Dec 14 08:50:55.194: IPv6 DHCP_RELAY: Relaying RELAY-REPLY from FD00:8C0:1::20 on GigabitEthernet0/1<br />Dec 14 08:50:55.194: IPv6 DHCP_RELAY: Packet forwarded to FD00:8C0:4701:601::30 via GigabitEthernet0/2.601<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Relaying REQUEST from FD00:8C0:4701:601::30 on GigabitEthernet0/2.601<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Packet forwarded to FD00:8C0:199::199<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Relaying RELAY-REPLY from FD00:8C0:1::20 on GigabitEthernet0/1<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Route added: FD00:8C0:474F::/56 via FD00:8C0:4701:601::30 dist 1 iaid 000A0001 lifetime 43200<br />Dec 14 08:50:56.370: IPv6 DHCP_RELAY: Packet forwarded to FD00:8C0:4701:601::30 via GigabitEthernet0/2.601<br /><br />SRD4#sh ipv6 dhcp ?<br />  binding    DHCP bindings<br />  database   DHCP binding database<br />  interface  DHCPv6 interface information<br />  pool       DHCPv6 pool statistics<br />  |          Output modifiers<br />  &lt;cr&gt;<br /><br />SRD4#sh ipv6 dhcp binding<br />SRD4#<br /><br /><br />SRD4#show ipv6 route interface gi0/2.601<br />S   FD00:8C0:2100::3:30/128 [1/0], tag 26000<br />     via FD00:8C0:4701:601::30, GigabitEthernet0/2.601<br />C   FD00:8C0:4701:601::/64 [0/0]<br />     via GigabitEthernet0/2.601, directly connected<br />L   FD00:8C0:4701:601::1/128 [0/0]<br />     via GigabitEthernet0/2.601, receive<br />S   FD00:8C0:474F::/56 [1/0]<br />     via FD00:8C0:4701:601::30, GigabitEthernet0/2.601<br /><br /><br />Dec 14 08:58:20.536: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to down<br />Dec 14 08:58:20.536: IPv6 DHCP_RELAY: Static route removed: FD00:8C0:474F::/56 via FD00:8C0:4701:601::30<br />Dec 14 08:58:31.885: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to up<br />Dec 14 08:58:32.885: IPv6 DHCP_RELAY: Static route added: FD00:8C0:474F::/56 via FD00:8C0:4701:601::30<br /><br /><br />SRD4#ping FD00:8C0:474F:1:219:AAFF:FE85:9980<br />Sending 5, 100-byte ICMP Echos to FD00:8C0:474F:1:219:AAFF:FE85:9980, timeout is 2 seconds:<br />!!!!!<br />Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/4 ms<br />SRD4#<br /><br /><br />[0] You are using link-local addresses on the PE-CE link. Unfortunately my dhcp-server (ISC 4.1.1) doesn&#39;t support that (at least I haven&#39;t been able to configure it). <br />&lt;/cr&gt;</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Frank Bulk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#231307908547848941">14 December 2010 15:20</a>
+                <a rel="nofollow" id="c231307908547848941" href="#231307908547848941">14 December 2010 15:20</a>
               </span>
             </div>
-            <p class="comment-content">I labbed this last week Wednesday on a 7609 with an RSP720C and 67xx line cards (no ES+ or ES20) using the Advanced IP Services feature set and got identical results.<br /><br />Frank</p>
+            <div class="comment-content">I labbed this last week Wednesday on a 7609 with an RSP720C and 67xx line cards (no ES+ or ES20) using the Advanced IP Services feature set and got identical results.<br /><br />Frank</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Frank Bulk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3646300521438523242">16 December 2010 00:51</a>
+                <a rel="nofollow" id="c3646300521438523242" href="#3646300521438523242">16 December 2010 00:51</a>
               </span>
             </div>
-            <p class="comment-content">It appears I may need to take back what I said.  When I performed my test, I had not replicated my existing environment.<br /><br />This works:<br />interface GigabitEthernet8/1<br /> description Testing IPv6 CPE<br /> no ip address<br /> ipv6 address 2607:FE28:1000::1/56<br /> ipv6 enable<br /> ipv6 nd managed-config-flag<br /> ipv6 dhcp relay destination 2607:FE28:0:1000::7<br />end<br /><br />This doesn’t:<br />interface Vlan99<br /> no ip address<br /> ipv6 address 2607:FE28:1000::1/56<br /> ipv6 enable<br /> ipv6 nd managed-config-flag<br /> ipv6 dhcp relay destination 2607:FE28:0:1000::7<br /> ipv6 dhcp relay source-interface Vlan99<br />end<br /><br />interface GigabitEthernet8/1<br /> description Testing IPv6 CPE<br /> switchport<br /> switchport access vlan 99<br /> switchport mode access<br />end<br /><br />“debug ipv6 dhcp” and “debug ipv6 dhcp relay” doesn’t show anything using the SVI approach.<br /><br />If anyone has any ideas why, let me know.</p>
+            <div class="comment-content">It appears I may need to take back what I said.  When I performed my test, I had not replicated my existing environment.<br /><br />This works:<br />interface GigabitEthernet8/1<br /> description Testing IPv6 CPE<br /> no ip address<br /> ipv6 address 2607:FE28:1000::1/56<br /> ipv6 enable<br /> ipv6 nd managed-config-flag<br /> ipv6 dhcp relay destination 2607:FE28:0:1000::7<br />end<br /><br />This doesn’t:<br />interface Vlan99<br /> no ip address<br /> ipv6 address 2607:FE28:1000::1/56<br /> ipv6 enable<br /> ipv6 nd managed-config-flag<br /> ipv6 dhcp relay destination 2607:FE28:0:1000::7<br /> ipv6 dhcp relay source-interface Vlan99<br />end<br /><br />interface GigabitEthernet8/1<br /> description Testing IPv6 CPE<br /> switchport<br /> switchport access vlan 99<br /> switchport mode access<br />end<br /><br />“debug ipv6 dhcp” and “debug ipv6 dhcp relay” doesn’t show anything using the SVI approach.<br /><br />If anyone has any ideas why, let me know.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Frank Bulk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1384978892010745502">28 January 2011 16:55</a>
+                <a rel="nofollow" id="c1384978892010745502" href="#1384978892010745502">28 January 2011 16:55</a>
               </span>
             </div>
-            <p class="comment-content">Six weeks after the case was opened with Cisco, the bug that was opened earlier this week on my issue was closed.<br /><br />The short of it is that &quot;ipv6 multicast-routing&quot; needs to be enabled in order for DHCPv6-relay to operate on a SVI.  <br /><br />From Cisco&#39;s mouth:<br /> Since IPv6 SOLICIT packets are multicast packets, when it arrives on a routed port it is <br /> forwarded to the RP because of the Flood index set.<br /> But the same is not true for SVI interface since this can lead to potential DoS attack if all <br /> the flood index packets are sent to RP , this will kill the RP.<br /> So when we enable IPv6 multicast, the router is added as a mrouter port and hence the<br /> SOLICIT message reaches the RP.<br /><br />I&#39;ve asked that the Cisco documentation on DHCPv6 relay be updated to reflect this information.<br /><br />Frank</p>
+            <div class="comment-content">Six weeks after the case was opened with Cisco, the bug that was opened earlier this week on my issue was closed.<br /><br />The short of it is that &quot;ipv6 multicast-routing&quot; needs to be enabled in order for DHCPv6-relay to operate on a SVI.  <br /><br />From Cisco&#39;s mouth:<br /> Since IPv6 SOLICIT packets are multicast packets, when it arrives on a routed port it is <br /> forwarded to the RP because of the Flood index set.<br /> But the same is not true for SVI interface since this can lead to potential DoS attack if all <br /> the flood index packets are sent to RP , this will kill the RP.<br /> So when we enable IPv6 multicast, the router is added as a mrouter port and hence the<br /> SOLICIT message reaches the RP.<br /><br />I&#39;ve asked that the Cisco documentation on DHCPv6 relay be updated to reflect this information.<br /><br />Frank</div>
           </div>
         </li>
       </div>

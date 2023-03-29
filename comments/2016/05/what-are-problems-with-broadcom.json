@@ -1,87 +1,95 @@
 {
-  "comments": [
-    {
-      "date": "12 May 2016 14:26",
-      "html": "Hi Ivan,<br /><br />You are completely right, while the internal design could be secret, ASIC designers and switch vendors should clearly define the capabilities and limitations of their products. <br /> <br />The Mellanox report that you link is really interesting and insightful. While I don&#39;t know the internal architecture of the ASIC, the unfairness problems in Tomahawk seem to come from a hierarchical organization of the switch. One such organization was presented by Kim <i>et al</i> in &quot;Microarchitecture of a High-Radix Router&quot;, ISCA&#39;05 (<a href=\"http://dl.acm.org/citation.cfm?id=1070005\" rel=\"nofollow\">link</a>). The design proposed in the paper organizes the ports in groups of 8 ports in the same &quot;row&quot;, with different groups connected by &quot;columns&quot;. <br /><br />The problem of hierarchical organizations is global fairness. While a simple round-robin (RR) arbitration mechanism is locally fair, a multi-level RR mechanism is not globally fair. This problem is clearly presented by Abts <i>et al</i> in &quot;Age-based packet arbitration in large-radix k-ary n-cubes&quot;, SC&#39;07 (see Figure 4 in this <a href=\"http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5348862&amp;tag=1\" rel=\"nofollow\">link</a>), and seems to be related to the fairness issues of the Tomahawk.<br /><br />The results in Figures 2 and 3 of the report are consistent with a hierarchical switch organization, in which ports are divided into two groups of 16 ports. In particular, with the following division: group 1 containing ports 1-8 and 25-32, and group 2 with ports 9-24. If you observe carefully the results, you can notice that each of the two groups always get 50% of the bandwidth, which is later divided evenly between the active ports of each group (this may not be obvious at first sight since the number of ports in group 1 is not consecutive, particularly in test 2 in Figure 3, but it holds in all cases). The other latency and packet loss results highlight that Tomahawk employs an internal architecture which is lossy, while Mellanox probably inherits the design from its lossless Infiniband switches. <br /><br />It is very interesting to consider that solutions designed to provide fairness at L2 (such as DCB QCN, which converges to fair shares between flows) will fail if the individual switches are not fair. Related to this, there was a European company called Gnodal (from Bristol, UK) which designed an Ethernet solution with global fairness. It employed a proprietary overlay encapsulation mechanism within its fabric, which included an &quot;Age&quot; field in the frame header used to provide per-port global fairness. Too bad they went bankrupt and their IP assets were bought by the American HPC company Cray (which had already used age-arbitration in its XC supercomputer series), maybe in a near future we might find some HPC solution from them using Ethernet with global fairness.<br /><br />If Broadcom didn&#39;t have such a dominant market share, these types of issues could cause a significant loss. Let&#39;s see if some more companies enter the 100G ASIC market. ",
-      "id": "297424727205150228",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Enrique Vallejo",
-      "profile": "http://personales.unican.es/vallejoe/",
-      "pub": "2016-05-12T14:26:47.376+02:00",
-      "ref": "4504414666354032007",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "12 May 2016 17:42",
-          "html": "David Roy is not a Juniper employee though, he basically debugged MX internal structure by himself as a customer (and continues to do so). But yes, it&#39;s an incredible booklet, really helpful, and I wish every vendor would write something like that from time to time.<br /><br />PS: David Roy&#39;s blog is just as incredible, I love his posts. Periodic packet management details, bgp flowspec, event scripts, helpful hints for traffic capture, well everything. ",
-          "id": "842587890942692067",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2016-05-12T17:42:58.148+02:00",
-          "ref": "5985496487097213968",
-          "type": "comment"
-        }
-      ],
-      "date": "12 May 2016 14:29",
-      "html": "Juniper has an amazing &quot;An Expert Packet Walkthrough on the MX Series 3D ...&quot; publication by David Roy. Comparable to or even better that ones from  Cisco.",
-      "id": "5985496487097213968",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/07629947431990431275",
-      "pub": "2016-05-12T14:29:01.269+02:00",
-      "ref": "4504414666354032007",
-      "type": "comment"
-    },
-    {
-      "date": "12 May 2016 18:44",
-      "html": "All of the Juniper books (MX, QFX) always have an amazingly detailed packet walk through. I believe the Juniper QFX5100 book was the first to have a very detailed Broadcom walk-through.",
-      "id": "5568593051934427538",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2016-05-12T18:44:23.845+02:00",
-      "ref": "4504414666354032007",
-      "type": "comment"
-    },
-    {
-      "date": "16 May 2016 17:35",
-      "html": "Cisco has also found that Tomahawk is unable to NOT drop pause frames. So much for PFC, FCoE and RoCE!",
-      "id": "6225955144164224907",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "lcw",
-      "profile": "https://www.blogger.com/profile/10562240567667879482",
-      "pub": "2016-05-16T17:35:02.793+02:00",
-      "ref": "4504414666354032007",
-      "type": "comment"
-    },
-    {
-      "date": "03 July 2016 12:50",
-      "html": "At Broadcom there seem to be different ASIC lines:<br />- Trident+ =&gt; Trident II =&gt; Tomahawk<br />- Broadcom DNX<br /><br />So, what about that DNX Qumran MX+? Does this ASIC have the same Problems?<br /><br />=&gt; http://community.hpe.com/hpeb/attachments/hpeb/switching-a-series-forum/7787/2/H3C-2016.pdf",
-      "id": "4917580362466018470",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Michael67",
-      "profile": "https://www.blogger.com/profile/03014282355010119539",
-      "pub": "2016-07-03T12:50:32.627+02:00",
-      "ref": "4504414666354032007",
-      "type": "comment"
-    },
-    {
-      "date": "27 August 2017 18:15",
-      "html": "&quot;Intel publishes all of their documentation.&quot;<br />Is not a true statement. They also require a NDA/SLA for their newest silicon.",
-      "id": "9028809708055906273",
-      "image": "https://1.bp.blogspot.com/_O6ZGt6mukT4/R8Cr1x_bP4I/AAAAAAAAAAQ/SYTBrz_9_s4/S220-s32/Lumpkins_pic.jpg",
-      "name": "William Lumpkins SCV Pace Chair 2008",
-      "profile": "https://www.blogger.com/profile/11879161035003722305",
-      "pub": "2017-08-27T18:15:14.543+02:00",
-      "ref": "4504414666354032007",
-      "type": "comment"
-    }
-  ],
-  "count": 7,
-  "id": "4504414666354032007",
-  "type": "post",
-  "url": "2016/05/what-are-problems-with-broadcom.html"
+   "comments": [
+      {
+         "date": "12 May 2016 14:26",
+         "html": "Hi Ivan,<br /><br />You are completely right, while the internal design could be secret, ASIC designers and switch vendors should clearly define the capabilities and limitations of their products. <br /> <br />The Mellanox report that you link is really interesting and insightful. While I don&#39;t know the internal architecture of the ASIC, the unfairness problems in Tomahawk seem to come from a hierarchical organization of the switch. One such organization was presented by Kim <i>et al</i> in &quot;Microarchitecture of a High-Radix Router&quot;, ISCA&#39;05 (<a href=\"http://dl.acm.org/citation.cfm?id=1070005\" rel=\"nofollow\">link</a>). The design proposed in the paper organizes the ports in groups of 8 ports in the same &quot;row&quot;, with different groups connected by &quot;columns&quot;. <br /><br />The problem of hierarchical organizations is global fairness. While a simple round-robin (RR) arbitration mechanism is locally fair, a multi-level RR mechanism is not globally fair. This problem is clearly presented by Abts <i>et al</i> in &quot;Age-based packet arbitration in large-radix k-ary n-cubes&quot;, SC&#39;07 (see Figure 4 in this <a href=\"http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5348862&amp;tag=1\" rel=\"nofollow\">link</a>), and seems to be related to the fairness issues of the Tomahawk.<br /><br />The results in Figures 2 and 3 of the report are consistent with a hierarchical switch organization, in which ports are divided into two groups of 16 ports. In particular, with the following division: group 1 containing ports 1-8 and 25-32, and group 2 with ports 9-24. If you observe carefully the results, you can notice that each of the two groups always get 50% of the bandwidth, which is later divided evenly between the active ports of each group (this may not be obvious at first sight since the number of ports in group 1 is not consecutive, particularly in test 2 in Figure 3, but it holds in all cases). The other latency and packet loss results highlight that Tomahawk employs an internal architecture which is lossy, while Mellanox probably inherits the design from its lossless Infiniband switches. <br /><br />It is very interesting to consider that solutions designed to provide fairness at L2 (such as DCB QCN, which converges to fair shares between flows) will fail if the individual switches are not fair. Related to this, there was a European company called Gnodal (from Bristol, UK) which designed an Ethernet solution with global fairness. It employed a proprietary overlay encapsulation mechanism within its fabric, which included an &quot;Age&quot; field in the frame header used to provide per-port global fairness. Too bad they went bankrupt and their IP assets were bought by the American HPC company Cray (which had already used age-arbitration in its XC supercomputer series), maybe in a near future we might find some HPC solution from them using Ethernet with global fairness.<br /><br />If Broadcom didn&#39;t have such a dominant market share, these types of issues could cause a significant loss. Let&#39;s see if some more companies enter the 100G ASIC market. ",
+         "id": "297424727205150228",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Enrique Vallejo",
+         "profile": "http://personales.unican.es/vallejoe/",
+         "pub": "2016-05-12T14:26:47.376+02:00",
+         "ref": "4504414666354032007",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "12 May 2016 17:42",
+               "html": "David Roy is not a Juniper employee though, he basically debugged MX internal structure by himself as a customer (and continues to do so). But yes, it&#39;s an incredible booklet, really helpful, and I wish every vendor would write something like that from time to time.<br /><br />PS: David Roy&#39;s blog is just as incredible, I love his posts. Periodic packet management details, bgp flowspec, event scripts, helpful hints for traffic capture, well everything. ",
+               "id": "842587890942692067",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2016-05-12T17:42:58.148+02:00",
+               "ref": "5985496487097213968",
+               "type": "comment"
+            }
+         ],
+         "date": "12 May 2016 14:29",
+         "html": "Juniper has an amazing &quot;An Expert Packet Walkthrough on the MX Series 3D ...&quot; publication by David Roy. Comparable to or even better that ones from  Cisco.",
+         "id": "5985496487097213968",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/07629947431990431275",
+         "pub": "2016-05-12T14:29:01.269+02:00",
+         "ref": "4504414666354032007",
+         "type": "comment"
+      },
+      {
+         "date": "12 May 2016 18:44",
+         "html": "All of the Juniper books (MX, QFX) always have an amazingly detailed packet walk through. I believe the Juniper QFX5100 book was the first to have a very detailed Broadcom walk-through.",
+         "id": "5568593051934427538",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2016-05-12T18:44:23.845+02:00",
+         "ref": "4504414666354032007",
+         "type": "comment"
+      },
+      {
+         "date": "16 May 2016 17:35",
+         "html": "Cisco has also found that Tomahawk is unable to NOT drop pause frames. So much for PFC, FCoE and RoCE!",
+         "id": "6225955144164224907",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "lcw",
+         "profile": "https://www.blogger.com/profile/10562240567667879482",
+         "pub": "2016-05-16T17:35:02.793+02:00",
+         "ref": "4504414666354032007",
+         "type": "comment"
+      },
+      {
+         "date": "03 July 2016 12:50",
+         "html": "At Broadcom there seem to be different ASIC lines:<br />- Trident+ =&gt; Trident II =&gt; Tomahawk<br />- Broadcom DNX<br /><br />So, what about that DNX Qumran MX+? Does this ASIC have the same Problems?<br /><br />=&gt; http://community.hpe.com/hpeb/attachments/hpeb/switching-a-series-forum/7787/2/H3C-2016.pdf",
+         "id": "4917580362466018470",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Michael67",
+         "profile": "https://www.blogger.com/profile/03014282355010119539",
+         "pub": "2016-07-03T12:50:32.627+02:00",
+         "ref": "4504414666354032007",
+         "type": "comment"
+      },
+      {
+         "date": "27 August 2017 18:15",
+         "html": "&quot;Intel publishes all of their documentation.&quot;<br />Is not a true statement. They also require a NDA/SLA for their newest silicon.",
+         "id": "9028809708055906273",
+         "image": "https://1.bp.blogspot.com/_O6ZGt6mukT4/R8Cr1x_bP4I/AAAAAAAAAAQ/SYTBrz_9_s4/S220-s32/Lumpkins_pic.jpg",
+         "name": "William Lumpkins SCV Pace Chair 2008",
+         "profile": "https://www.blogger.com/profile/11879161035003722305",
+         "pub": "2017-08-27T18:15:14.543+02:00",
+         "ref": "4504414666354032007",
+         "type": "comment"
+      },
+      {
+         "date": "18 December 2020 09:41",
+         "html": "<p>Thx for pointing to this blog post Ivan! I&#39;ve read it along with the comments, the test and the papers linked. </p>\n\n<p>So basically a lot of vendors these days are just glorified Broadcom resellers :p. It&#39;s funny how some of them try to up themselves by saying they differentiate their offerings with their Network OS. First off, since all the heavy-weight data forwarding is done in the LC and the fabric, their devices, regardless of brand name, are essentially Broadcom routers/switches first and last. No matter how their OS is written, they will get stuck with Broadcom-provided fabric architecture and forwarding pipeline, with all of its limitations, sometimes severe ones like the horrible fabric scheduler that get pointed out in the Mellanox test. </p>\n\n<p>I won&#39;t go into too much detail here as it will dilute the bigger point I&#39;m trying to get at, but as we&#39;ve discussed before, providing line-rate for 64-byte packet at 100Gbps is mostly mission impossible, considering that packets arrive every 6.7 ns and you have probably less than half that time to finish an IP lookup if you want to make it in time. Couple that with a port count of 32 or 64, and basically classic crossbar fabric arbitration using central scheduler doesn&rsquo;t work anymore, as the scheduler will become both the bottleneck and power hot-spot, and one will have to use distributed schedulers to scale. From what Enrique observed and the way it played out accordingly in the Mellanox test, Broadcom&#39;s approach to scheduling -- basically centralized and attempt to compensate for its inefficiency by using grouping with 2 schedulers -- is nonsensical and pathetic. Why bother promoting 400Gbe when you&rsquo;re clearly incapable of handling 100Gbe properly? And believe it or not, small-packet line-rate processing is very important; DDOS survival for ex, needs that, plus it means when you start providing value-added classification besides basic IP lookup, your router won&rsquo;t fall over.</p>\n\n<p>Second, when it comes to Network OS, Cisco and Juniper have been in business for 36 and 24 years respectively, and as they got all the highest-class protocol implementers like Dave Katz and Henk Smit working for them during their formative years, their core routing and switching codes had matured and stabilized before some of the new vendors even came to be, so for younger vendors trying to differentiate themselves using the OS is laughable. Who trusts their code to be bug-free, esp. when it comes to complex protocols like OSPF, BGP, and yes, xLFA :p. </p>\n\n<p>All in all, these 2 points make it totally unjustifiable for merchant-silicon vendors these days to charge a premium for what amounts to essentially commoditized, off-the-shelf products. </p>\n\n<p>Monopoly is never good for any industry, and networking is no exception. Among other things, it stiffens innovation. And the result is what we&#39;ve been witnessing for a long time now, lazy networking and second-tiered products. Many vendors hardly invent anything these days anymore except crappy &#39;new&#39; encapsulation formats. And Broadcom, as they don&#39;t have any sizable competitor that can threaten their domination, they won&#39;t feel the need to improve and fix all the nasty dogshit in their chipsets anymore. </p>\n\n<p>And vendors still have to wonder why cloud companies are taking their business away :p. They only have themselves and their laziness to blame. The prize for not reinventing yourself is a one-way ticket to oblivion.</p>\n\n<p>On that note, vendors like Cisco and Juniper, who&#39;re trying hard the old-school way, to produce their own silicons, are worth admiring, no matter what the quality of their products. They deserve credit for at least trying.</p>\n",
+         "id": "320",
+         "name": " Minh Ha",
+         "pub": "2020-12-18T09:41:27",
+         "type": "comment"
+      }
+   ],
+   "count": 8,
+   "id": "4504414666354032007",
+   "type": "post",
+   "url": "2016/05/what-are-problems-with-broadcom.html"
 }

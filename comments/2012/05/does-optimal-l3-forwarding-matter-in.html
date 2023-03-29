@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>18 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Xavier Nicollet</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2745335930893253430">07 May 2012 14:03</a>
+                <a rel="nofollow" id="c2745335930893253430" href="#2745335930893253430">07 May 2012 14:03</a>
               </span>
             </div>
-            <p class="comment-content">In a previous company, we went with TOR routing, even with a L2 extended everywhere: because of the many vlans used.<br />For firewall: iptables on every host, acls and monitoring.<br /><br />You should go with ToR from the beginning, if you can afford it.</p>
+            <div class="comment-content">In a previous company, we went with TOR routing, even with a L2 extended everywhere: because of the many vlans used.<br />For firewall: iptables on every host, acls and monitoring.<br /><br />You should go with ToR from the beginning, if you can afford it.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6726479723303281572">07 May 2012 15:04</a>
+                <a rel="nofollow" id="c6726479723303281572" href="#6726479723303281572">07 May 2012 15:04</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Does it Matter?&quot; Not really. In a real cloud L3 hops are largely in appliances and x86 machines.<br />Nice post Ivan.</p>
+            <div class="comment-content">&quot;Does it Matter?&quot; Not really. In a real cloud L3 hops are largely in appliances and x86 machines.<br />Nice post Ivan.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Forrequi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4066994000248863481">07 May 2012 18:01</a>
+                <a rel="nofollow" id="c4066994000248863481" href="#4066994000248863481">07 May 2012 18:01</a>
               </span>
             </div>
-            <p class="comment-content">I think I&#39;ve here a typical datacenter, with:<br /><br />DataCenter:<br /><br />9 x ToR L2 stackable-switch, with 2x10Gbps aggregation to the 2 Core Switches and each ToR has 2 units with 48x1Gbps ports;<br /><br />2 x L3 Core DataCenter Switchs, with 12 VLANs, and L3 between &quot;Core DataCenter Switchs&quot; and &quot;Core Users Switchs&quot;<br /><br />On Core Users Switchs, we have 95 VLANs.<br /><br />Don&#39;t think in L3 on ToR, yet.</p>
+            <div class="comment-content">I think I&#39;ve here a typical datacenter, with:<br /><br />DataCenter:<br /><br />9 x ToR L2 stackable-switch, with 2x10Gbps aggregation to the 2 Core Switches and each ToR has 2 units with 48x1Gbps ports;<br /><br />2 x L3 Core DataCenter Switchs, with 12 VLANs, and L3 between &quot;Core DataCenter Switchs&quot; and &quot;Core Users Switchs&quot;<br /><br />On Core Users Switchs, we have 95 VLANs.<br /><br />Don&#39;t think in L3 on ToR, yet.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1188557878640954733">07 May 2012 19:45</a>
+                <a rel="nofollow" id="c1188557878640954733" href="#1188557878640954733">07 May 2012 19:45</a>
               </span>
             </div>
-            <p class="comment-content">IMHO, it is less about optimal layer 3 forwarding and more about simplifying your network. I truly large network needs to be automated, and not with points and clicks. I feel bad for all the people that need to support vMotion on their network. As the South Park meme states, &quot;You&#39;re gonna have a bad time&quot; if you try to scale it out. http://qkme.me/3p631g<br /><br />L3 TOR will typically provide much better flow hashing than glbp/hsrp/vrrp. You get per flow hashing and not per host hashing. It is also easier to go more than 2 wide above your TORs with L3 vs L2. Troubleshooting L3 is much saner than trying to troubleshoot evil protocols like virtual port-channels.<br /><br />Optimal forwarding is nice. I see L3 as orthogonal  to firewalls and load balancers, at least at scale.<br /><br />If you are talking about a &quot;datacenter&quot; with a few dozen racks where all the config is hand managed, it probably doesn&#39;t matter. If you&#39;re network is small enough that a single engineer can hand manage it, stunt networking with vPC and vlans everywhere won&#39;t be an issue. Until you try grow it out by an order of magnitude. Then you&#39;ll be screwed.<br /><br />IMHO</p>
+            <div class="comment-content">IMHO, it is less about optimal layer 3 forwarding and more about simplifying your network. I truly large network needs to be automated, and not with points and clicks. I feel bad for all the people that need to support vMotion on their network. As the South Park meme states, &quot;You&#39;re gonna have a bad time&quot; if you try to scale it out. http://qkme.me/3p631g<br /><br />L3 TOR will typically provide much better flow hashing than glbp/hsrp/vrrp. You get per flow hashing and not per host hashing. It is also easier to go more than 2 wide above your TORs with L3 vs L2. Troubleshooting L3 is much saner than trying to troubleshoot evil protocols like virtual port-channels.<br /><br />Optimal forwarding is nice. I see L3 as orthogonal  to firewalls and load balancers, at least at scale.<br /><br />If you are talking about a &quot;datacenter&quot; with a few dozen racks where all the config is hand managed, it probably doesn&#39;t matter. If you&#39;re network is small enough that a single engineer can hand manage it, stunt networking with vPC and vlans everywhere won&#39;t be an issue. Until you try grow it out by an order of magnitude. Then you&#39;ll be screwed.<br /><br />IMHO</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Forrequi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4869439520051898210">07 May 2012 20:15</a>
+                <a rel="nofollow" id="c4869439520051898210" href="#4869439520051898210">07 May 2012 20:15</a>
               </span>
             </div>
-            <p class="comment-content">I think that my network is small, compared with some large scales datacenter in Google Apple era. My ARP table on Core DataCenter switch has 1100 lines. My ARP table on Core Users switch has 4838 lines.</p>
+            <div class="comment-content">I think that my network is small, compared with some large scales datacenter in Google Apple era. My ARP table on Core DataCenter switch has 1100 lines. My ARP table on Core Users switch has 4838 lines.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Rob</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7631016462639242277">07 May 2012 21:14</a>
+                <a rel="nofollow" id="c7631016462639242277" href="#7631016462639242277">07 May 2012 21:14</a>
               </span>
             </div>
-            <p class="comment-content">Sure it does.<br /><br />Strictly M1 F1 card speaking - Nexus 7000 switches require an M1 card to route traffic.  Each M1 card can route 80Gb throughput.  If i have one M1 card and 9 F1 cards and all servers are on their own subnet (hello VSheild Edge or VSG) then they need to get routed.  Routing over-subscription can reach 1 to 36.<br /><br />M2/F2 series run into same issues with lower OSR.<br /><br />If you want your 7K pair to never be oversubscribed then you need to plan around routing.<br /><br />That&#39;s why I try to design L2 domains that will rarely route to other L2 domains in a data center if i can prevent it.</p>
+            <div class="comment-content">Sure it does.<br /><br />Strictly M1 F1 card speaking - Nexus 7000 switches require an M1 card to route traffic.  Each M1 card can route 80Gb throughput.  If i have one M1 card and 9 F1 cards and all servers are on their own subnet (hello VSheild Edge or VSG) then they need to get routed.  Routing over-subscription can reach 1 to 36.<br /><br />M2/F2 series run into same issues with lower OSR.<br /><br />If you want your 7K pair to never be oversubscribed then you need to plan around routing.<br /><br />That&#39;s why I try to design L2 domains that will rarely route to other L2 domains in a data center if i can prevent it.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4072708181682796740">07 May 2012 23:06</a>
+                <a rel="nofollow" id="c4072708181682796740" href="#4072708181682796740">07 May 2012 23:06</a>
               </span>
             </div>
-            <p class="comment-content">If you want your 7k pair to never be oversubscribed, only use M108s. Done. I am spoiled in that I don&#39;t need to support bridging a broadcast domain across multiple racks. If I need multiple security domains, I prefer having different physical routers. It is way easier to scale wide with simple blocks than trying to support stunt networking.<br /><br />If you can connect all your racks to a single pair of routers, it probably isn&#39;t a big deal.<br /><br />IMHO</p>
+            <div class="comment-content">If you want your 7k pair to never be oversubscribed, only use M108s. Done. I am spoiled in that I don&#39;t need to support bridging a broadcast domain across multiple racks. If I need multiple security domains, I prefer having different physical routers. It is way easier to scale wide with simple blocks than trying to support stunt networking.<br /><br />If you can connect all your racks to a single pair of routers, it probably isn&#39;t a big deal.<br /><br />IMHO</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7478826087827808556">07 May 2012 23:07</a>
+                <a rel="nofollow" id="c7478826087827808556" href="#7478826087827808556">07 May 2012 23:07</a>
               </span>
             </div>
-            <p class="comment-content">If you want your 7k pair to never be oversubscribed, only use M108s. Done. I am spoiled in that I don&#39;t need to support bridging a broadcast domain across multiple racks. If I need multiple security domains, I prefer having different physical routers. It is way easier to scale wide with simple blocks than trying to support stunt networking.<br /><br />If you can connect all your racks to a single pair of routers, it probably isn&#39;t a big deal.<br /><br />IMHO</p>
+            <div class="comment-content">If you want your 7k pair to never be oversubscribed, only use M108s. Done. I am spoiled in that I don&#39;t need to support bridging a broadcast domain across multiple racks. If I need multiple security domains, I prefer having different physical routers. It is way easier to scale wide with simple blocks than trying to support stunt networking.<br /><br />If you can connect all your racks to a single pair of routers, it probably isn&#39;t a big deal.<br /><br />IMHO</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tony S</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8044632969380060237">07 May 2012 23:10</a>
+                <a rel="nofollow" id="c8044632969380060237" href="#8044632969380060237">07 May 2012 23:10</a>
               </span>
             </div>
-            <p class="comment-content">This is an interesting discussion that we have thought  about recently when we decided to build a few data centers to consolidate many DCs handling 15K apps. VM and HP&#39;s equivalent were to support  80% of these apps. <br /><br />2 DCs are paired by DWDM and short distances to be able to accommodate capacities in excess of 100 Gbps and low latencies for whatever FC or Ethernet based replications people want to do. <br /><br />At each DC we have a lan core of 2xN7Ks, end of row of 2xN5Ks for every row, and the N2Ks FECs for the top of rack which connect to blade/chassis based switches. So, many port channels and many trunks everywhere.<br /><br />Naturally, the biggest point of disagreement between the server/application teams and the network team was the border between L2 and L3. Ultimately, we brought L2 back to the lan core. To the other DC, rest of the Wan, load balancing infrastructure, or services on the other side of firewalls, we route at L3. <br /><br />Suboptimal forwarding performance, within the L2/L3 switched lan environment, is less a concern to us, than the performance limitations we have when traversing our firewalls, IPSs, or Wan. Even when packets or frames need to come back to the core, we are probably looking microseconds of additional delay versus milliseconds of delay. <br /><br />Another important consideration for us, is routing into and out of the pair of data centers requiring symmetry for wan optimization and security. This forced a certain level of suboptimal routing into the design.<br /><br />Another reader mentioned simplicity of design. In my opinion, this is even more critical than sub-optimal routing to the performance of a data center within the data center. If only high level engineers can troubleshoot and resolve issues, due to the complexities of the data center, then the time to resolution increases substantially as there are generally fewer of these engineers around. <br /><br />The only caveat is that the uplinks and hardware has the capacity to be able to forward the traffic.</p>
+            <div class="comment-content">This is an interesting discussion that we have thought  about recently when we decided to build a few data centers to consolidate many DCs handling 15K apps. VM and HP&#39;s equivalent were to support  80% of these apps. <br /><br />2 DCs are paired by DWDM and short distances to be able to accommodate capacities in excess of 100 Gbps and low latencies for whatever FC or Ethernet based replications people want to do. <br /><br />At each DC we have a lan core of 2xN7Ks, end of row of 2xN5Ks for every row, and the N2Ks FECs for the top of rack which connect to blade/chassis based switches. So, many port channels and many trunks everywhere.<br /><br />Naturally, the biggest point of disagreement between the server/application teams and the network team was the border between L2 and L3. Ultimately, we brought L2 back to the lan core. To the other DC, rest of the Wan, load balancing infrastructure, or services on the other side of firewalls, we route at L3. <br /><br />Suboptimal forwarding performance, within the L2/L3 switched lan environment, is less a concern to us, than the performance limitations we have when traversing our firewalls, IPSs, or Wan. Even when packets or frames need to come back to the core, we are probably looking microseconds of additional delay versus milliseconds of delay. <br /><br />Another important consideration for us, is routing into and out of the pair of data centers requiring symmetry for wan optimization and security. This forced a certain level of suboptimal routing into the design.<br /><br />Another reader mentioned simplicity of design. In my opinion, this is even more critical than sub-optimal routing to the performance of a data center within the data center. If only high level engineers can troubleshoot and resolve issues, due to the complexities of the data center, then the time to resolution increases substantially as there are generally fewer of these engineers around. <br /><br />The only caveat is that the uplinks and hardware has the capacity to be able to forward the traffic.</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Sherry Wei</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5682660892037012750">07 May 2012 23:50</a>
+                <a rel="nofollow" id="c5682660892037012750" href="#5682660892037012750">07 May 2012 23:50</a>
               </span>
             </div>
-            <p class="comment-content">It seems people go with large L2 domain because vMotion requires the same VLAN domain for moved to host and moved from host. Is there something fundamental that prevents vMotion to work across different but reachable subnets?</p>
+            <div class="comment-content">It seems people go with large L2 domain because vMotion requires the same VLAN domain for moved to host and moved from host. Is there something fundamental that prevents vMotion to work across different but reachable subnets?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -200,10 +195,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2723480841969435524">15 May 2012 06:53</a>
+                <a rel="nofollow" id="c2723480841969435524" href="#2723480841969435524">15 May 2012 06:53</a>
               </span>
             </div>
-            <p class="comment-content">Yeah, I suppose you can do vMotion across different subnets if you can make DNS act in milli-second level and figure out a way to flush client DNS entry also in milli-seconds.</p>
+            <div class="comment-content">Yeah, I suppose you can do vMotion across different subnets if you can make DNS act in milli-second level and figure out a way to flush client DNS entry also in milli-seconds.</div>
           </div>
         </li>
       </div>
@@ -218,10 +213,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4455848832975601716">15 May 2012 06:56</a>
+                <a rel="nofollow" id="c4455848832975601716" href="#4455848832975601716">15 May 2012 06:56</a>
               </span>
             </div>
-            <p class="comment-content">Even that won&#39;t work, TCP connection will break when IP address changes.</p>
+            <div class="comment-content">Even that won&#39;t work, TCP connection will break when IP address changes.</div>
           </div>
         </li>
       </div>
@@ -236,10 +231,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1961522221337213645">15 May 2012 08:08</a>
+                <a rel="nofollow" id="c1961522221337213645" href="#1961522221337213645">15 May 2012 08:08</a>
               </span>
             </div>
-            <p class="comment-content">There&#39;s a mechanism that works - host routes. There&#39;s not much difference between having /32 prefix in IP table and MAC address in MAC table ... apart from the fact that one of them is predictable (based on routing protocols) and the other is guesswork (based on traffic gleaning).<br /><br />However, routing protocols require actual configuration, some knowledge, and might take a few seconds to converge.</p>
+            <div class="comment-content">There&#39;s a mechanism that works - host routes. There&#39;s not much difference between having /32 prefix in IP table and MAC address in MAC table ... apart from the fact that one of them is predictable (based on routing protocols) and the other is guesswork (based on traffic gleaning).<br /><br />However, routing protocols require actual configuration, some knowledge, and might take a few seconds to converge.</div>
           </div>
         </li>
       </div>
@@ -254,10 +249,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3343743829913554125">16 May 2012 03:58</a>
+                <a rel="nofollow" id="c3343743829913554125" href="#3343743829913554125">16 May 2012 03:58</a>
               </span>
             </div>
-            <p class="comment-content">I don&#39;t understand your argument, how host route is related to vMotion at all? could you please elaborate?</p>
+            <div class="comment-content">I don&#39;t understand your argument, how host route is related to vMotion at all? could you please elaborate?</div>
           </div>
         </li>
       </div>
@@ -272,10 +267,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2291226955108566593">05 July 2012 20:44</a>
+                <a rel="nofollow" id="c2291226955108566593" href="#2291226955108566593">05 July 2012 20:44</a>
               </span>
             </div>
-            <p class="comment-content">The problem with vMotion between subnets is that the IP changes (moving from one /24 to another, your IP *must* change in order for the routed infrastructure to find the new location).  However, if the IP of the VM guest is announced to the network (maybe by the hypervisor) as a /32, then the guest can migrate to virtually anywhere on the network and the new hypervisor simply announces the /32, the old one stops announcing, and the guest has been migrated (ok, so it&#39;s maybe not all that &quot;simple&quot; but it&#39;s possible).</p>
+            <div class="comment-content">The problem with vMotion between subnets is that the IP changes (moving from one /24 to another, your IP *must* change in order for the routed infrastructure to find the new location).  However, if the IP of the VM guest is announced to the network (maybe by the hypervisor) as a /32, then the guest can migrate to virtually anywhere on the network and the new hypervisor simply announces the /32, the old one stops announcing, and the guest has been migrated (ok, so it&#39;s maybe not all that &quot;simple&quot; but it&#39;s possible).</div>
           </div>
         </li>
       </div>
@@ -297,10 +292,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Sherry Wei</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3521775083751406468">07 May 2012 23:51</a>
+                <a rel="nofollow" id="c3521775083751406468" href="#3521775083751406468">07 May 2012 23:51</a>
               </span>
             </div>
-            <p class="comment-content">It seems people go with large L2 domain because vMotion requires the same VLAN domain for moved to host and moved from host. Is there something fundamental that prevents vMotion to work across different but reachable subnets?</p>
+            <div class="comment-content">It seems people go with large L2 domain because vMotion requires the same VLAN domain for moved to host and moved from host. Is there something fundamental that prevents vMotion to work across different but reachable subnets?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -316,10 +311,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12675510409950425811" rel="nofollow">RPM</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7171215554019569627">09 May 2012 05:33</a>
+                <a rel="nofollow" id="c7171215554019569627" href="#7171215554019569627">09 May 2012 05:33</a>
               </span>
             </div>
-            <p class="comment-content">There&#39;s a few protocols that don&#39;t like a host to switch IPs and subnets. Namely all of them. Remember vmotion moves a live running server between hosts.</p>
+            <div class="comment-content">There&#39;s a few protocols that don&#39;t like a host to switch IPs and subnets. Namely all of them. Remember vmotion moves a live running server between hosts.</div>
           </div>
         </li>
       </div>
@@ -341,10 +336,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.queuefull.net/~bensons/" rel="nofollow">Benson Schliesser</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7927818369699456218">16 May 2012 23:41</a>
+                <a rel="nofollow" id="c7927818369699456218" href="#7927818369699456218">16 May 2012 23:41</a>
               </span>
             </div>
-            <p class="comment-content">I hate to give this answer, but: It depends.<br /><br />Given the typical tools of VLAN and VRF, many datacenters would find that VRF support is lacking and/or burdensome to support in access and aggregation tiers. So VLANs make more sense, bridging at the access/agg with routing happening in the &quot;core&quot; or WAN edge. Of course, this also gives a larger broadcast domain and might facilitate mobility, plug and play behaviors, etc.<br /><br />As to traffic patterns: If we&#39;re using VRFs for  the routing edge, then maybe it doesn&#39;t matter - if the VRFs are supporting different VPNs then inter-VLAN traffic isn&#39;t likely anyway. On the other hand, if each VRF is routing (e.g. locally) between multiple VLANs then you get a traffic trombone. It&#39;s not very efficient of course, in terms of capacity etc, but even a &quot;traffic trombone&quot; is possibly a good tradeoff in terms of centralizing the VRF capability and configuration. And as you point out, we may have this traffic pattern anyway because of e.g. the location of the security edge (firewall) or load-balancer.<br /><br />In other environments, VRF support may not be necessary for L3, e.g. because we&#39;re attaching everything to &quot;the Internet&quot; or some other common network. In that case, it might make more sense to route in the access and/or aggregation layer. Plain L3 routing is more likely to be supported in various equipment, and it&#39;s somewhat easier to manage.<br /><br />And we can always run both L2 and L3 throughout the datacenter - L3 on the access node for routing to the Internet and L2 for carrying traffic to centralized VRF PEs, or something like that. You can probably imagine other ways to combine these; the point is that each design will be judged based on the purpose / goal of the datacenter, so there&#39;s probably no &quot;one size fits all&quot; answer here.<br /><br />Of course, all of this might become moot with overlays and SDN architectures. At some point, the underlying network can be all-L3 and the &quot;service&quot; can be a mix of L2 and L3. Depending on how much control is built into the control plane, we might be able to do interesting policy and non-traditional forwarding... But that&#39;s a topic for another day. :)</p>
+            <div class="comment-content">I hate to give this answer, but: It depends.<br /><br />Given the typical tools of VLAN and VRF, many datacenters would find that VRF support is lacking and/or burdensome to support in access and aggregation tiers. So VLANs make more sense, bridging at the access/agg with routing happening in the &quot;core&quot; or WAN edge. Of course, this also gives a larger broadcast domain and might facilitate mobility, plug and play behaviors, etc.<br /><br />As to traffic patterns: If we&#39;re using VRFs for  the routing edge, then maybe it doesn&#39;t matter - if the VRFs are supporting different VPNs then inter-VLAN traffic isn&#39;t likely anyway. On the other hand, if each VRF is routing (e.g. locally) between multiple VLANs then you get a traffic trombone. It&#39;s not very efficient of course, in terms of capacity etc, but even a &quot;traffic trombone&quot; is possibly a good tradeoff in terms of centralizing the VRF capability and configuration. And as you point out, we may have this traffic pattern anyway because of e.g. the location of the security edge (firewall) or load-balancer.<br /><br />In other environments, VRF support may not be necessary for L3, e.g. because we&#39;re attaching everything to &quot;the Internet&quot; or some other common network. In that case, it might make more sense to route in the access and/or aggregation layer. Plain L3 routing is more likely to be supported in various equipment, and it&#39;s somewhat easier to manage.<br /><br />And we can always run both L2 and L3 throughout the datacenter - L3 on the access node for routing to the Internet and L2 for carrying traffic to centralized VRF PEs, or something like that. You can probably imagine other ways to combine these; the point is that each design will be judged based on the purpose / goal of the datacenter, so there&#39;s probably no &quot;one size fits all&quot; answer here.<br /><br />Of course, all of this might become moot with overlays and SDN architectures. At some point, the underlying network can be all-L3 and the &quot;service&quot; can be a mix of L2 and L3. Depending on how much control is built into the control plane, we might be able to do interesting policy and non-traditional forwarding... But that&#39;s a topic for another day. :)</div>
           </div>
         </li>
       </div>

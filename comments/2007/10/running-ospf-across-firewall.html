@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6107745729607043669">16 October 2007 17:24</a>
+                <a rel="nofollow" id="c6107745729607043669" href="#6107745729607043669">16 October 2007 17:24</a>
               </span>
             </div>
-            <p class="comment-content">That's crazy, IMHO.<BR/>I think the reason SOME people still don't want to run a routing protocol in the firewall isn't a technical/security one - but a trust issue/political issue/who does what issue.<BR/>We know that in past times (not so long, and still being done) the network guys were in charge of the routers/switches/etc, while the security folks were in charge of the firewall/IDS/VPN devices, etc. And neither group trusted each other - and heck, for sure the security folks wouldn't trust any route they got from the network folks. "Gimme a default to rule them all" - very Tolkien - was SECOPS approach.<BR/>And it isn't a security concern at all. Heck, I've seen BIG customers running RIP on their CHKP firewalls - without even plain text authentication. So don't give me the security excuse ;)<BR/>So let's see the pros and cons of using OSPF on the firewall vs static routes:<BR/>* using OSPF allows the firewall to actually react to network topology changes - both internal _and_ external. Specially relevant in HA scenarios<BR/>* the static routes don't allow for dynamic changes - not to mention they're a PITA to maintain. I've seen more than once people getting "cut off" the Internet 'cause someone changed the Internet facing router, did some addressing changes - but SNAFU, the firewall folks weren't notified, or were, but they didn't apply the change<BR/>* security-wise, running OSPF with MD5 authentication should be good enuf to leave bogus routing updates out. And as you yourself say - if someone was to get control of the router in front of the firewall, all bets are off - no matter if using OSPF or static routing. Heck, if *I* was to get control of that router, I wouldn't mess with the routing at all - I *want* for the traffic to come my way, so I can do something like policy routing, and shoot the traffic I'm interested in down a GRE tunnel to a remote place where I can capture, analyze, on-the-fly modify and reinject.<BR/><BR/>It is, IMHO, once again the problem of "not doing the risk assesment right". If anyone actually sat down and DID the risk assesment/value proposition of sticking to the '80s and using static routes vs joining us all in 2007 and doing OSPF . . . <BR/><BR/>And on top of that - if the firewall is doing a "default-information originate", it would be better to also have a sinkhole on the internal network doing the same - with a higher metric - so if the default on the firewall was to dissapear because the Internet-facing router went down, traffic wouldn't go to the firewall - but to the sinkhole, where it could be sent to null0 - and everyone's now happy.<BR/><BR/>Or if you don't want to transport the traffic all the way to the sinkhole, just to drop it, do the good old "remote triggered blackhole routing" over BGP.<BR/>Come on - there are many ways to skin this particular cat. Sticking to "no routing protocol on the firewall" it only shows whoever says so doesn't know his business.</p>
+            <div class="comment-content">That's crazy, IMHO.<BR/>I think the reason SOME people still don't want to run a routing protocol in the firewall isn't a technical/security one - but a trust issue/political issue/who does what issue.<BR/>We know that in past times (not so long, and still being done) the network guys were in charge of the routers/switches/etc, while the security folks were in charge of the firewall/IDS/VPN devices, etc. And neither group trusted each other - and heck, for sure the security folks wouldn't trust any route they got from the network folks. "Gimme a default to rule them all" - very Tolkien - was SECOPS approach.<BR/>And it isn't a security concern at all. Heck, I've seen BIG customers running RIP on their CHKP firewalls - without even plain text authentication. So don't give me the security excuse ;)<BR/>So let's see the pros and cons of using OSPF on the firewall vs static routes:<BR/>* using OSPF allows the firewall to actually react to network topology changes - both internal _and_ external. Specially relevant in HA scenarios<BR/>* the static routes don't allow for dynamic changes - not to mention they're a PITA to maintain. I've seen more than once people getting "cut off" the Internet 'cause someone changed the Internet facing router, did some addressing changes - but SNAFU, the firewall folks weren't notified, or were, but they didn't apply the change<BR/>* security-wise, running OSPF with MD5 authentication should be good enuf to leave bogus routing updates out. And as you yourself say - if someone was to get control of the router in front of the firewall, all bets are off - no matter if using OSPF or static routing. Heck, if *I* was to get control of that router, I wouldn't mess with the routing at all - I *want* for the traffic to come my way, so I can do something like policy routing, and shoot the traffic I'm interested in down a GRE tunnel to a remote place where I can capture, analyze, on-the-fly modify and reinject.<BR/><BR/>It is, IMHO, once again the problem of "not doing the risk assesment right". If anyone actually sat down and DID the risk assesment/value proposition of sticking to the '80s and using static routes vs joining us all in 2007 and doing OSPF . . . <BR/><BR/>And on top of that - if the firewall is doing a "default-information originate", it would be better to also have a sinkhole on the internal network doing the same - with a higher metric - so if the default on the firewall was to dissapear because the Internet-facing router went down, traffic wouldn't go to the firewall - but to the sinkhole, where it could be sent to null0 - and everyone's now happy.<BR/><BR/>Or if you don't want to transport the traffic all the way to the sinkhole, just to drop it, do the good old "remote triggered blackhole routing" over BGP.<BR/>Come on - there are many ways to skin this particular cat. Sticking to "no routing protocol on the firewall" it only shows whoever says so doesn't know his business.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1511045555050799075">16 October 2007 21:52</a>
+                <a rel="nofollow" id="c1511045555050799075" href="#1511045555050799075">16 October 2007 21:52</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, I see some discrepance between your statement "you can't filter routing updates in OSPF" and the docs at http://www.cisco.com/en/US/products/ps6350/products_configuration_guide_chapter09186a00804556f4.html - may you explain it a bit more?</p>
+            <div class="comment-content">Ivan, I see some discrepance between your statement "you can't filter routing updates in OSPF" and the docs at http://www.cisco.com/en/US/products/ps6350/products_configuration_guide_chapter09186a00804556f4.html - may you explain it a bit more?</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1624714016188609472">17 October 2007 01:36</a>
+                <a rel="nofollow" id="c1624714016188609472" href="#1624714016188609472">17 October 2007 01:36</a>
               </span>
             </div>
-            <p class="comment-content">You mean http://tinyurl.com/2ydr9t ?</p>
+            <div class="comment-content">You mean http://tinyurl.com/2ydr9t ?</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2359308957420020745">17 October 2007 14:13</a>
+                <a rel="nofollow" id="c2359308957420020745" href="#2359308957420020745">17 October 2007 14:13</a>
               </span>
             </div>
-            <p class="comment-content">@anonymous: That's available in IOS, not in PIX/ASA, which is a few releases behind IOS in OSPF functionality.<BR/><BR/>@BlueDemon: I guess we agree to disagree :) As you've said, &ldquo;<I>I think the reason SOME people still don't want to run a routing protocol in the firewall isn't a technical/security one - but a trust issue/political issue/who does what issue.</I>&rdquo; &hellip; and I agree with you completely, but I disagree with the security implications. <BR/><BR/>Your statement that &ldquo;<I>Heck, I've seen BIG customers running RIP on their CHKP firewalls - without even plain text authentication.</I>&rdquo; is also true, but that does not necessarily imply that what they're doing is secure, only that they feel it's secure enough for them (or haven't been bitten yet). If someone big or important is doing something, that doesn't mean it's a smart thing to do.<BR/><BR/>I also mostly agree with your statements about static vs. dynamic routing (I am absolutely not a proponent of static routes, as you probably know :).<BR/><BR/>However (and I will not go any deeper), there is a good reason someone a long time (probably <A HREF="http://en.wikipedia.org/wiki/Defence_in_depth" REL="nofollow">hundreds of years</A>) ago started talking about <A HREF="http://en.wikipedia.org/wiki/Defense_in_Depth_(computing)" REL="nofollow">defense in depth</A>. If you link your external router and your firewall, you've just weakened your second line of defense. Whether that's important enough or negligible is a personal opinion (and here's where we differ).<BR/><BR/>Other than that, thanks for a great comment ;)</p>
+            <div class="comment-content">@anonymous: That's available in IOS, not in PIX/ASA, which is a few releases behind IOS in OSPF functionality.<BR/><BR/>@BlueDemon: I guess we agree to disagree :) As you've said, &ldquo;<I>I think the reason SOME people still don't want to run a routing protocol in the firewall isn't a technical/security one - but a trust issue/political issue/who does what issue.</I>&rdquo; &hellip; and I agree with you completely, but I disagree with the security implications. <BR/><BR/>Your statement that &ldquo;<I>Heck, I've seen BIG customers running RIP on their CHKP firewalls - without even plain text authentication.</I>&rdquo; is also true, but that does not necessarily imply that what they're doing is secure, only that they feel it's secure enough for them (or haven't been bitten yet). If someone big or important is doing something, that doesn't mean it's a smart thing to do.<BR/><BR/>I also mostly agree with your statements about static vs. dynamic routing (I am absolutely not a proponent of static routes, as you probably know :).<BR/><BR/>However (and I will not go any deeper), there is a good reason someone a long time (probably <A HREF="http://en.wikipedia.org/wiki/Defence_in_depth" REL="nofollow">hundreds of years</A>) ago started talking about <A HREF="http://en.wikipedia.org/wiki/Defense_in_Depth_(computing)" REL="nofollow">defense in depth</A>. If you link your external router and your firewall, you've just weakened your second line of defense. Whether that's important enough or negligible is a personal opinion (and here's where we differ).<BR/><BR/>Other than that, thanks for a great comment ;)</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3650421605524118953">17 October 2007 16:59</a>
+                <a rel="nofollow" id="c3650421605524118953" href="#3650421605524118953">17 October 2007 16:59</a>
               </span>
             </div>
-            <p class="comment-content">Although this is a nice trick to get OSPF peering to work "across" the PIX/ASA, however this leaves the PIX/ASA in the dark as far as how and when to route/re-route traffic out via different interfaces. Any routing changes on the outside or inside router will not be seen by the PIX/ASA, thus the firewall can potentially blackhole the traffic.<BR/><BR/>Cisco had gone great length to implement OSPF and EIGRP on these smart firewalls so we should enable routing protocols to allow the firewall to make smart routing decision when routing change occurs.</p>
+            <div class="comment-content">Although this is a nice trick to get OSPF peering to work "across" the PIX/ASA, however this leaves the PIX/ASA in the dark as far as how and when to route/re-route traffic out via different interfaces. Any routing changes on the outside or inside router will not be seen by the PIX/ASA, thus the firewall can potentially blackhole the traffic.<BR/><BR/>Cisco had gone great length to implement OSPF and EIGRP on these smart firewalls so we should enable routing protocols to allow the firewall to make smart routing decision when routing change occurs.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#839414005352577629">17 October 2007 19:22</a>
+                <a rel="nofollow" id="c839414005352577629" href="#839414005352577629">17 October 2007 19:22</a>
               </span>
             </div>
-            <p class="comment-content">Hey, Ivan:<BR/><BR/>My comment about RIP was meant as an example of "how to do the right thing the wrong way". I was speechless when I saw that - and I had to take a couple deep breaths - I was about to blurb "this rates about 11 on the 1-to-10 scale of moronic" ;)<BR/><BR/>And I spent a couple more mins thinking about this while walking the dog (mind-numbing task if there's such a thing). static routing from the firewall to the internal network, or a static default from the internal network pointing to the firewall brings an interesting concept/idea to the table - whoever is doing that trust s the ARP protocol more than OSPF with MD5 ;)<BR/><BR/>Sooner or later, someone (router or firewall) will need to ARP for the other guy MAC - good time then to do some ARP spoofing and redirect traffic.<BR/><BR/>yeah, yeah, needs L2 access - I would bet getting said L2 access would be easier than compromising the router/firewall to change routing - all things being equal, and asumming a password != 'cisco' on any device ;)</p>
+            <div class="comment-content">Hey, Ivan:<BR/><BR/>My comment about RIP was meant as an example of "how to do the right thing the wrong way". I was speechless when I saw that - and I had to take a couple deep breaths - I was about to blurb "this rates about 11 on the 1-to-10 scale of moronic" ;)<BR/><BR/>And I spent a couple more mins thinking about this while walking the dog (mind-numbing task if there's such a thing). static routing from the firewall to the internal network, or a static default from the internal network pointing to the firewall brings an interesting concept/idea to the table - whoever is doing that trust s the ARP protocol more than OSPF with MD5 ;)<BR/><BR/>Sooner or later, someone (router or firewall) will need to ARP for the other guy MAC - good time then to do some ARP spoofing and redirect traffic.<BR/><BR/>yeah, yeah, needs L2 access - I would bet getting said L2 access would be easier than compromising the router/firewall to change routing - all things being equal, and asumming a password != 'cisco' on any device ;)</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2969508969987446902">13 August 2008 20:50</a>
+                <a rel="nofollow" id="c2969508969987446902" href="#2969508969987446902">13 August 2008 20:50</a>
               </span>
             </div>
-            <p class="comment-content">I tried running OSPF between 2 routers across a firewall, by establshing a GRE tunnel and running OSPF through it. This takes care of the Hello packets (they have a TTL of 1) also.<BR/><BR/>The only hitch is that the firewall must support the pass-through of GRE.<BR/><BR/>I was also looking for a solution to run the OSPF across a fiewwall without using a GRE tunnel. One can configure the connected interfaces (with the firewall in between behaving like a router) not to broadcast (in our case multicast) OSPF. But then this stops the Hello packets also.<BR/><BR/>Is there any way to sort of unicast the Hello packets across the Firewall? And to increase the TTL of Hello packets to more than 1?</p>
+            <div class="comment-content">I tried running OSPF between 2 routers across a firewall, by establshing a GRE tunnel and running OSPF through it. This takes care of the Hello packets (they have a TTL of 1) also.<BR/><BR/>The only hitch is that the firewall must support the pass-through of GRE.<BR/><BR/>I was also looking for a solution to run the OSPF across a fiewwall without using a GRE tunnel. One can configure the connected interfaces (with the firewall in between behaving like a router) not to broadcast (in our case multicast) OSPF. But then this stops the Hello packets also.<BR/><BR/>Is there any way to sort of unicast the Hello packets across the Firewall? And to increase the TTL of Hello packets to more than 1?</div>
           </div>
         </li>
       </div>

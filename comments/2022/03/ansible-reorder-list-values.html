@@ -1,0 +1,201 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1108">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Robert</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1108" href="#1108">24 March 2022 11:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You could use Ansible roles to specify dependencies. So MPLS is dependent on BGP, BGP is dependent on OSPF, OSPF is dependent on some kind of common module.</p>
+
+<p>https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#using-role-dependencies</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1111">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1111" href="#1111">24 March 2022 05:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, roles could be a solution for the dependency management, but in 90+% of the cases I&#39;d just like to have a different template for each module, and I don&#39;t feel like adding the same task list to every role just to be able to deploy the templates.</p>
+
+<p>Time to go back to the drawing board...</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1109">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Sebastian Schrader</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1109" href="#1109">24 March 2022 12:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Dynamic inclusion during runtime in Ansible (<code>include</code>, <code>include_tasks</code>, <code>include_role</code>) is like large layer-2 domains/long-distance VM motion to me ;-): it should be avoided as much as possible and quite often is not actually necessary. Replacing dynamic inclusion with static imports (<code>import_playbook</code>, <code>import_role</code>, <code>import_tasks</code>) usually requires rearchitecting though.</p>
+
+<p>PS: The use of <code>include_vars</code> is probably acceptable, although <code>inventory</code>/<code>host_vars</code>/<code>group_vars</code> should be preferred.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1110">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1110" href="#1110">24 March 2022 05:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Of course you&#39;re right (and I love the large L2 domains analogy &#x1F923;)</p>
+
+<p>Going back to the first principles, I could have created an Ansible playbook on the fly (after all, it&#39;s just a YAML data structure) and execute it, but I was naive enough to think I could push through the idea of using host_vars data structures to drive flow of execution.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1113">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ark</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1113" href="#1113">25 March 2022 11:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hello Ivan,</p>
+
+<p>I am surely missing something, but i was not able to reproduce your issue with the following data and playbooks. My ansible (v 2.7 and 2.9) runs smoothly  and includes the tasks in the expected order.</p>
+
+<pre>
+ark@amp-ansible:~/ipspace$ cat inventory.yml
+all:
+  hosts:
+    pe1:
+      modules: [ ospf, bgp, mpls ]
+    ce1:
+      modules: [ ospf, bgp, mpls, gre, ipsec ]
+    ce2:
+      modules: [ ospf, bgp, mpls, gre, ipsec ]
+ark@amp-ansible:~/ipspace$ cat inner.yml
+---
+  - debug:
+      msg: &quot;&#123;&#123; module &#125;&#125; on &#123;&#123; inventory_hostname &#125;&#125;&quot;
+  - pause:
+      seconds: 1
+ark@amp-ansible:~/ipspace$ cat multiple.yml
+- hosts: all
+  gather_facts: no
+  tasks:
+  - include_tasks: inner.yml
+    loop: &quot;&#123;&#123; modules &#125;&#125;&quot;
+    loop_control:
+        loop_var: module
+    when: modules is defined
+ark@amp-ansible:~/ipspace$
+ark@amp-ansible:~/ipspace$ /usr/local/bin/ansible-playbook -i inventory.yml multiple.yml | grep msg
+    &quot;msg&quot;: &quot;ospf on pe1&quot;
+    &quot;msg&quot;: &quot;ospf on ce1&quot;
+    &quot;msg&quot;: &quot;ospf on ce2&quot;
+    &quot;msg&quot;: &quot;bgp on pe1&quot;
+    &quot;msg&quot;: &quot;bgp on ce1&quot;
+    &quot;msg&quot;: &quot;bgp on ce2&quot;
+    &quot;msg&quot;: &quot;mpls on pe1&quot;
+    &quot;msg&quot;: &quot;mpls on ce1&quot;
+    &quot;msg&quot;: &quot;mpls on ce2&quot;
+    &quot;msg&quot;: &quot;gre on ce1&quot;
+    &quot;msg&quot;: &quot;gre on ce2&quot;
+    &quot;msg&quot;: &quot;ipsec on ce1&quot;
+    &quot;msg&quot;: &quot;ipsec on ce2&quot;
+ark@amp-ansible:~/ipspace$
+</pre>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1114">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1114" href="#1114">26 March 2022 10:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Your test is not exactly the same as Ivan&#39;s one. Look closely at the variable &quot;module&quot; in Ivan&#39;s example. In your example the &quot;modules&quot; variable of all hosts starts with [ ospf, bgp, mpls ]. In Ivan&#39;s example the order is different: [ ospf, mpls ] versus [ ospf, bgp, mpls ] versus [ bgp, mpls ]. Also not all hosts have ospf module.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

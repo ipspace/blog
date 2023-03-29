@@ -1,0 +1,87 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "21 September 2022 04:25",
+               "html": "<p>I use systemd&rsquo;s networkctl for my configs and I think it&rsquo;s okay. I managed to put together some unit templates that puts FRR and a set of interfaces into their own network namespace. I like it this way because no other services run in the same namespace unless I configure them to explicitly do so (with a other template). I put it up on GH so others can benefit: https://github.com/brotherdust/systemd-netns-frr</p>\n",
+               "id": "1378",
+               "name": " Jarad O",
+               "pub": "2022-09-21T16:25:29",
+               "ref": "1377",
+               "type": "comment"
+            },
+            {
+               "date": "21 September 2022 05:25",
+               "html": "<p>@Stefano: And this is how I learn something new every day. Thank you!</p>\n\n<p>@Jarad: Thanks a million!</p>\n",
+               "id": "1379",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-09-21T17:25:53",
+               "ref": "1378",
+               "type": "comment"
+            },
+            {
+               "date": "21 September 2022 06:28",
+               "html": "<p>@Ivan on the &quot;real world&quot; devices, Dell OS10 works with Broadcom chipsets</p>\n",
+               "id": "1380",
+               "name": "Stefano Sasso",
+               "pub": "2022-09-21T18:28:02",
+               "ref": "1379",
+               "type": "comment"
+            }
+         ],
+         "date": "21 September 2022 01:49",
+         "html": "<p>Dell OS10 &quot;config plane&quot; is based on Linux, but it&#39;s more like Arista... i.e., you can run bash &amp; co, but it does not really use the standard Linux forwarding capabilities.</p>\n\n<p>On the other hand, VyOS it&#39;s really using the Linux standard forwarding plane, it&#39;s &quot;only&quot; a config layer for multiple backends (i.e., networking, FRR, Strongswan, ...).</p>\n",
+         "id": "1377",
+         "name": "Stefano Sasso",
+         "pub": "2022-09-21T13:49:43",
+         "type": "comment"
+      },
+      {
+         "date": "22 September 2022 12:20",
+         "html": "<p>Just a reminder that NetPlan exists.</p>\n\n<p>https://netplan.io/</p>\n\n<p>It doesn&#39;t fix everything, but it will fix small issues like &quot;I edited the static address in /etc/network/interfaces, restarted networking, and now I have an old and new address on that interface&quot;</p>\n\n<p>I&#39;ve used it in a few places, but not widely. And yes this does fall into the trap of &quot;there are too many standards, I&#39;m going to create one more to unify them all, except now it&#39;s just a +1&quot;</p>\n",
+         "id": "1383",
+         "name": " James Harr",
+         "pub": "2022-09-22T12:20:54",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "23 September 2022 04:55",
+               "html": "<p>So the long rant did confuse someone. Straight from the blog post ;)</p>\n\n<p>&gt; Cumulus Linux ships with IPv6 enabled (but not configured) on all interfaces, so you always get IPv6 link-local addresses, and unnumbered EBGP sessions work.</p>\n\n<p>In other words, you cannot <em>enable</em> or <em>disable</em> IPv6 packet processing on an interface with NCLU or NVUE (or at least I haven&#39;t found a way of doing that).</p>\n",
+               "id": "1395",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-09-23T16:55:34",
+               "ref": "1389",
+               "type": "comment"
+            }
+         ],
+         "date": "22 September 2022 07:26",
+         "html": "<p>&quot;The inability to enable IPv6 LLA4 on an interface without configuring a static IPv6 address is one of them.&quot;</p>\n\n<p>That&#39;s surprising to hear when you can configure BGP unnumbered using IPv6 LLA on Cumulus without specifying unicast IPv6 addressing on an interface.</p>\n\n<p>https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-44/Layer-3/Border-Gateway-Protocol-BGP/Basic-BGP-Configuration/</p>\n",
+         "id": "1389",
+         "name": "Avery Abbott",
+         "pub": "2022-09-22T19:26:46",
+         "type": "comment"
+      },
+      {
+         "date": "23 September 2022 09:45",
+         "html": "<p>Have you tried SONiC? Specific the Dell/Broadcom distribution?</p>\n\n<p>It comes with &quot;sonic-cli&quot; that make all of this a breeze </p>\n",
+         "id": "1390",
+         "name": " Andrea Florio ",
+         "pub": "2022-09-23T09:45:09",
+         "type": "comment"
+      },
+      {
+         "date": "25 September 2022 11:50",
+         "html": "<p>Fortunately, on OpenBSD we have NSH that specifically addresses this problem: \nhttps://github.com/yellowman/nsh\nalmost all system networking config handled from one CLI &amp; stored in one file :-)</p>\n",
+         "id": "1396",
+         "name": " Blake",
+         "pub": "2022-09-25T11:50:41",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2022/09/linux-data-plane-configuration.html"
+}

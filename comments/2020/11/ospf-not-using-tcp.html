@@ -1,0 +1,239 @@
+<div class="comments post" id="comments">
+  <h4>9 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="243">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Enrique Vallejo</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c243" href="#243">18 November 2020 10:05</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Related to the first point about point-to-point sessions in TCP, I would also add that OSPF neighbor discovery (via broadcast of Hello messages) is impossible to be implemented over TCP. You might replace IP multicast for multiple individual TCP sessions to disseminate LSA information (your first point), but you cannot implement neighbor discovery using TCP, because you need to know the other endpoint in order to establish the TCP connection.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="244">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Paul Hare</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c244" href="#244">18 November 2020 11:15</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&#39;ve got a copy of &quot;OSPF: Anatomy of an Internet Routing Protocol&quot; by  John T Moy ISBN 0-201-63472-4.</p>
+
+<p>I hope the quote below proves of interest. </p>
+
+<p>Section 3.2 which discusses the choice of  encapsulation (Page 51 in my copy)</p>
+
+<p>&quot;We did not need the reliability of TCP; link-state routing protocols have their own reliability built into the flooding algorithms, and TCP would just get in the way. Also, the ease of applications in UNIX and other operation systems to sent and receive UDP packets was seen by some as a disadvantage; the necessity of gaining OS privileges was seen as providing some small amount of security. The additional small benefits of UDP encapsulation were outweighed by the extra 8 bytes of UDP header overhead that would appear in every protocol packet. So we decided to run OSPF directly over the IP network layer, and we received an assignment of IP protocol number 89 from the IANA&quot;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="245">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c245" href="#245">18 November 2020 01:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Enrique &amp; Paul: Thanks a million. Added to the blog post.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="246">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c246" href="#246">18 November 2020 01:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Note that recently there were idiots who suggested using TCP for the flooding of LSPs in IS-IS.
+https://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00</p>
+
+<p>This won&#39;t work over a multi-point network (like a switched Ethernet with more than 2 routers). This would work only over p2p links. But there are benefits (see draft):
+- flow-control, improving the speed of flooding of large numbers of LSPs
+- using reliability of TCP
+       which allows the IS-IS implementation to be a bit simpler. and keep less state.
+       and removes scaling factors like having to use large amounts of precise timers.
+- retransmission is done by the kernel, not by the IS-IS process.
+       which gives you a form of multi-threading for free
+- all future improvements to TCP can be used automatically by IS-IS</p>
+
+<p>But nah. The IETF LSR workgroup has decided they rather invent their own new wheel.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="247">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c247" href="#247">18 November 2020 03:37</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>ASN.1 has nothing to do with the with the real-time behaviour of the network. It is a domain specific protocol design language that is compiled to some programming language to create an packet assembler or interpreter. Similar to yacc/lex, just optimized for networking protocols. Then you just need to add your state machines and you have a working protocol stack. You could create both the transmit and the receive sides from the same source code, so it would be guaranteed to be consistent. </p>
+
+<p>You could also specify your protocols by any other languages, including English text files, although this gives less opportunities for automation than ASN.1. You can also have a JSON presentation of ASN.1. It is also possible to translate between XML and ASN.1. ASN.1 also enables developing TTCN-3 based automated protocol testing. </p>
+
+<p>ASN.1 is a widely used tool even today. Most of the 3GPP protocols are specified by that. It has its own decades long evolution path and it will not disappear for a long time. </p>
+
+<p>Of course, ASN.1 is not for the faint hearted, and it does not support well the popular ad hoc, implusive, political protocol development. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="248">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c248" href="#248">18 November 2020 04:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Henk: Considering that we&#39;re already using BGP on multi-access networks, and that flooding goes through DIS or DR, I don&#39;t see any reason why you couldn&#39;t use IS-IS over TCP over LLA on multi-access networks... but as you wrote, reinventing the wheels is so much more fun (and CV-generating).</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="250">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Tony Przygienda</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c250" href="#250">19 November 2020 03:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Well, I cannot resist to add some mud to clarify ;-) </p>
+
+<p>So, the story is very, very multi-faceted and talking about what makes sense depends very much WHEN you talk WHAT made sense and @ WHAT scale/speed you want things to happen.  </p>
+
+<p>First, architecturally, running control plane over TCP is a mild abomination that costed us dearly and I had my share of arguments with Yakov about that then (well, I was a young punk @ that time ;-). Short term, it was a great temporary shortcut. Long term it costed us a lot of pain in things like NSR (and still does). Anyway, for BGP it&#39;s history ;-) and we can&#39;t even get multiple parallel sessions standardized so we&#39;ll never wean it off TCP. </p>
+
+<p>So, let&#39;s talk about IGPs over TCP (and there are some, Open/R does it so it CAN be done). Pluses &amp; minuses modulo time scale here. </p>
+
+<p>In John&#39;s time bits very incredibly expensive for IGPs, really, incredibly, links were thin, memory was small, CPUs were glowing @ 600Mhz ;-) TCP for that purpose was massive overhead simply in terms of context switching, all the formatting, fast timers, and whatever not the kernel burns. Today, it&#39;s arguably less of an issue. </p>
+
+<p>Then, stock kernel TCP is fun but it looses its appeal real, real quick once you hit serious peer scale or look for really fast stuff. Reasons are a multitude but basically kernel TCP is mostly tuned to be a fairly docile animal and it does not allow you to fiddle with lots stuff you want to fiddle to get it start fast, support NSR and bazillion other little twists youi need on a serious scale, high end device. And then you pay kernel context switches as well. So you end up pulling TCP into user space and tweak the hell out of it or leave it in kernel space and tweak the hell out of it as well, neither of that is in any sense trivial. </p>
+
+<p>TCP also forces you onto an addressing scheme and that&#39;s not exiting, IGPs sometimes run on fun stuff like a single link local on all links, unnumbered overlapping and so on. Teaching TCP to do that properly can cause unexpected effects of limited fun. </p>
+
+<p>Then, if you use MTU 255 without special hacks TCP will happily build sessions all over the place for you ;-) So more kernel/user space special knobs. </p>
+
+<p>Head of line blocking is to some extent a problem @ very high speeds and low flooding rates but I&#39;d consider it marginal. On very slow links it was an issue, yes. </p>
+
+<p>Framing is an issue, anybody who wrote a really solid, good BGP framer resilient to all kind of misformatting knows it&#39;s not trivial. And the big the BGP buffer gets (64K updates, anyone?) and the more peers you have the higher the bloat to the point it starts to become noticable. Yes, we&#39;re talking 1000s of peers and arguably, IGP is almost never used in such a setup but neither is BGP except they are ;-)</p>
+
+<p>What more? Well, lots of warts and things like flushing, linger on going down and trying to restart peers fast, nightmarish collision FSMs and funky issues on fast interface address changes, next-hop changes TCP uses to resolve (hmm, where is that once TCP is in user space ;-) and other things that make you tear hair our as practitcioner (MD5 TCP option hacks anyone, SYN attacks anyone) and pretty soon you wish you wrote your own flooding and pump raw frames over an interface. Is that hard? Yeah, moderately so, especially first time. The real hard part is that it&#39;s unforgiving, you can&#39;t get it &quot;almost&quot; right, it has to be 105% right just like TCP is. Performance tunning is its own little game, IGP WG is enlightening people to an extent as we speak and that&#39;s good work albeit arguably implementation detail that matters @ scale only. </p>
+
+<p>I BTW disagree with the UDP angle (in today&#39;s times), John was right in his time but UDP gives you basically zero work to get off the ground on anything &amp; allows for very easy multiplexing. Anyone who implemented SNAP for ISIS on anything will know what kind of fun is better avoided ;-)</p>
+
+<p>So, I probably forgot bunch things but in sum, in underlay I vastly prefer special reliable session protocol (because that&#39;s what discovery/flooding gives you compared to TCP) on a protocol whereas when things move closer to database land (think BGP) where session bringup speed is less important, sessions live for very long time and pump lots of data where fastest convergence is not the primary concern I wish we had  a proper specialized session protocol for control plane (actually, that has been done if you look up e.g. RFC4960 AFAIR, recently QUIC is threading new ground). </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="251">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c251" href="#251">19 November 2020 09:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, re the &quot;TCP was considered a resource hog&quot; point, there&#39;s a seminal paper debunking that myth 31 years ago, in 1989 (It was also around this time that OSPF and ISIS came to be, IIRC):</p>
+
+<p>https://groups.csail.mit.edu/ana/Publications/PubPDFs/An%20Analysis%20of%20TCP%20Processing%20Overhead.pdf</p>
+
+<p>The paper went into the painstaking detail of breaking down the performance components of TCP into instruction level, so it&#39;s a pretty good read. </p>
+
+<p>What I like the most about the paper is one of its conclusions: &quot;It is not enough to be better than TCP and to be compatible with the form and function of silicon technology. The protocol itself is a small fraction of the problem.&quot; Looks like this statement is as applicable today as it was 30 years ago. </p>
+
+<p>People these days talk down TCP a lot and come up with all sorts of alternatives, but how much stress-test have those protocols gone through, in real-world environments, with real traffic, not in test/benchmark labs? Real-world traffic is neither Bernoulli nor Poisson, it&#39;s not beautifully distributed but bursty on many levels aka scale-invariant/long-range dependent. Just because a protocol works well in a lab or in controlled environments, doesn&#39;t mean it&#39;ll perform nice and clean in the wild. And then we have the problem of code-level maturity too. A protocol that has lovely functionality, might have horrible implementation under the hood, with all sorts of race conditions and other concurrency bugs. </p>
+
+<p>And while a lot of Tony&#39;s points are correct, esp. those re context-switch overhead, I&#39;m just wondering how many of them have been mitigated as TCP implementations matured over the years? Also, assuming OSPF runs on top of TCP, the problem of accidental full-BGP-table redistribution would be mitigated, as TCP has built-in flow control and the session would not flap due to overload, avoiding the massive clean-up issue. Using TCP as transports would also remove the need to maintain multiple, confusing link-state timers as well, as Henk rightly pointed out. Overall, these 2 points mean improved scalability for OSPF, and ISIS as well. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="313">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">PaweÅ M.</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c313" href="#313">14 December 2020 07:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;TCP has built-in flow control and the session would not flap due to overload, avoiding the massive clean-up issue&quot; -- well, it can also contribute to massive routing mess instead ;) https://mailarchive.ietf.org/arch/msg/idr/L9nWFBpW0Tci0c9DGfMoqC1j_sA/</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

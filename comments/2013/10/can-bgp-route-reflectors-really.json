@@ -1,148 +1,167 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "08 October 2013 10:13",
-          "html": "Sounds like a good plan ;)",
-          "id": "8832386002536454288",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-10-08T10:13:47.445+02:00",
-          "ref": "5898219983034033720",
-          "type": "comment"
-        }
-      ],
-      "date": "08 October 2013 08:52",
-      "html": "Try to follow the physical topology, always peer clients with at least two RRs. If you can afford it (RIB wise) use unique cluster-ID. If using MPLS VPN use unique RD per VRF per PE.<br /><br />Would you agree with the above statements?",
-      "id": "5898219983034033720",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2013-10-08T08:52:16.717+02:00",
-      "ref": "2935978546227629216",
-      "type": "comment"
-    },
-    {
-      "date": "09 October 2013 00:41",
-      "html": "Just ensure routers peer with both RRs. They either have both or none. <br />It&#39;s difficult to emulate something similar in production...<br /><br />Nikolay",
-      "id": "5369717873369666048",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2013-10-09T00:41:07.596+02:00",
-      "ref": "2935978546227629216",
-      "type": "comment"
-    },
-    {
-      "date": "09 October 2013 09:34",
-      "html": "I solve this by setting SOO community on the E1/E2 routers. SOO is copied to OSPF using a route tag (if OSPF is used as PE-CE protocol).<br /><br />http://www.cisco.com/en/US/docs/ios/12_4t/12_4t11/htbgpsoo.html<br />",
-      "id": "6856023878872324607",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ianislav Trendafilov",
-      "profile": null,
-      "pub": "2013-10-09T09:34:39.501+02:00",
-      "ref": "2935978546227629216",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "12 October 2013 13:46",
-          "html": "It is ;)",
-          "id": "722864718033678053",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-10-12T13:46:43.646+02:00",
-          "ref": "5247687925660057276",
-          "type": "comment"
-        }
-      ],
-      "date": "12 October 2013 13:44",
-      "html": "I suppose AddPath (http://tools.ietf.org/html/draft-walton-bgp-add-paths-06) is elegant approach for resolving this issue.",
-      "id": "5247687925660057276",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/07881920807165431544",
-      "pub": "2013-10-12T13:44:37.733+02:00",
-      "ref": "2935978546227629216",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "16 October 2013 07:58",
-          "html": "Doesn&#39;t solve the problem - root cause is route selection process in route reflectors, not BGP next hops.",
-          "id": "3394299978022562005",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-10-16T07:58:20.073+02:00",
-          "ref": "688114574294305528",
-          "type": "comment"
-        }
-      ],
-      "date": "15 October 2013 23:27",
-      "html": "Couldn&#39;t E1/2 use next-hop-self in this scenario to avoid even introducing the external prefix into the mix?",
-      "id": "688114574294305528",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2013-10-15T23:27:32.547+02:00",
-      "ref": "2935978546227629216",
-      "type": "comment"
-    },
-    {
-      "date": "31 October 2013 21:36",
-      "html": "Idea with best external , add-path with n or all , shadow RRs or session all adds extra state and require extra memory. If logical bgp topology cannot follow phsycail ( it should ) , then I believe best two approach is , first R1 could take the C1&#39;s IGP cost to external peering router into consideration and calculate best path from C1&#39;s point of view or there is one another draft which is angular distance aproach which puts the al the nodes basically in a circle and calculate the angular distance from RR to other nodes. First approach is like secondary SPF calculation of remofe LFA or  Not-Via tunnels so it adds maybe extra initial processing load but end result is less memory need, agree Ivan ? <br /><br />Thanks",
-      "id": "482780599354263970",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Orhan ERGUN",
-      "profile": "http://packetpushers.net",
-      "pub": "2013-10-31T21:36:29.620+01:00",
-      "ref": "2935978546227629216",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "03 March 2014 17:51",
-          "html": "Reread the blog post. The forwarding loop is between C1 and C2.",
-          "id": "8351480192393418812",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2014-03-03T17:51:47.335+01:00",
-          "ref": "3759179689694555872",
-          "type": "comment"
-        }
-      ],
-      "date": "03 March 2014 17:30",
-      "html": "Did you actually test this? Based on BGP route selection criteria, the E routers should pick the eBGP route over the reflected iBGP route. So, from what I can see, there shouldn&#39;t be any loops in your set-up.",
-      "id": "3759179689694555872",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2014-03-03T17:30:03.675+01:00",
-      "ref": "2935978546227629216",
-      "type": "comment"
-    },
-    {
-      "date": "08 September 2017 12:02",
-      "html": "is there no BGP peering between C1 and E1 ? why won`t C1 forward the traffic to E1 directly ?",
-      "id": "429690933299761594",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/05281240140117292641",
-      "pub": "2017-09-08T12:02:29.771+02:00",
-      "ref": "2935978546227629216",
-      "type": "comment"
-    }
-  ],
-  "count": 12,
-  "id": "2935978546227629216",
-  "type": "post",
-  "url": "2013/10/can-bgp-route-reflectors-really.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "08 October 2013 10:13",
+               "html": "Sounds like a good plan ;)",
+               "id": "8832386002536454288",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-10-08T10:13:47.445+02:00",
+               "ref": "5898219983034033720",
+               "type": "comment"
+            }
+         ],
+         "date": "08 October 2013 08:52",
+         "html": "Try to follow the physical topology, always peer clients with at least two RRs. If you can afford it (RIB wise) use unique cluster-ID. If using MPLS VPN use unique RD per VRF per PE.<br /><br />Would you agree with the above statements?",
+         "id": "5898219983034033720",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2013-10-08T08:52:16.717+02:00",
+         "ref": "2935978546227629216",
+         "type": "comment"
+      },
+      {
+         "date": "09 October 2013 00:41",
+         "html": "Just ensure routers peer with both RRs. They either have both or none. <br />It&#39;s difficult to emulate something similar in production...<br /><br />Nikolay",
+         "id": "5369717873369666048",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2013-10-09T00:41:07.596+02:00",
+         "ref": "2935978546227629216",
+         "type": "comment"
+      },
+      {
+         "date": "09 October 2013 09:34",
+         "html": "I solve this by setting SOO community on the E1/E2 routers. SOO is copied to OSPF using a route tag (if OSPF is used as PE-CE protocol).<br /><br />http://www.cisco.com/en/US/docs/ios/12_4t/12_4t11/htbgpsoo.html<br />",
+         "id": "6856023878872324607",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ianislav Trendafilov",
+         "profile": null,
+         "pub": "2013-10-09T09:34:39.501+02:00",
+         "ref": "2935978546227629216",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "12 October 2013 13:46",
+               "html": "It is ;)",
+               "id": "722864718033678053",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-10-12T13:46:43.646+02:00",
+               "ref": "5247687925660057276",
+               "type": "comment"
+            }
+         ],
+         "date": "12 October 2013 13:44",
+         "html": "I suppose AddPath (http://tools.ietf.org/html/draft-walton-bgp-add-paths-06) is elegant approach for resolving this issue.",
+         "id": "5247687925660057276",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/07881920807165431544",
+         "pub": "2013-10-12T13:44:37.733+02:00",
+         "ref": "2935978546227629216",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "16 October 2013 07:58",
+               "html": "Doesn&#39;t solve the problem - root cause is route selection process in route reflectors, not BGP next hops.",
+               "id": "3394299978022562005",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-10-16T07:58:20.073+02:00",
+               "ref": "688114574294305528",
+               "type": "comment"
+            }
+         ],
+         "date": "15 October 2013 23:27",
+         "html": "Couldn&#39;t E1/2 use next-hop-self in this scenario to avoid even introducing the external prefix into the mix?",
+         "id": "688114574294305528",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2013-10-15T23:27:32.547+02:00",
+         "ref": "2935978546227629216",
+         "type": "comment"
+      },
+      {
+         "date": "31 October 2013 21:36",
+         "html": "Idea with best external , add-path with n or all , shadow RRs or session all adds extra state and require extra memory. If logical bgp topology cannot follow phsycail ( it should ) , then I believe best two approach is , first R1 could take the C1&#39;s IGP cost to external peering router into consideration and calculate best path from C1&#39;s point of view or there is one another draft which is angular distance aproach which puts the al the nodes basically in a circle and calculate the angular distance from RR to other nodes. First approach is like secondary SPF calculation of remofe LFA or  Not-Via tunnels so it adds maybe extra initial processing load but end result is less memory need, agree Ivan ? <br /><br />Thanks",
+         "id": "482780599354263970",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Orhan ERGUN",
+         "profile": "http://packetpushers.net",
+         "pub": "2013-10-31T21:36:29.620+01:00",
+         "ref": "2935978546227629216",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "03 March 2014 17:51",
+               "html": "Reread the blog post. The forwarding loop is between C1 and C2.",
+               "id": "8351480192393418812",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2014-03-03T17:51:47.335+01:00",
+               "ref": "3759179689694555872",
+               "type": "comment"
+            }
+         ],
+         "date": "03 March 2014 17:30",
+         "html": "Did you actually test this? Based on BGP route selection criteria, the E routers should pick the eBGP route over the reflected iBGP route. So, from what I can see, there shouldn&#39;t be any loops in your set-up.",
+         "id": "3759179689694555872",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2014-03-03T17:30:03.675+01:00",
+         "ref": "2935978546227629216",
+         "type": "comment"
+      },
+      {
+         "date": "08 September 2017 12:02",
+         "html": "is there no BGP peering between C1 and E1 ? why won`t C1 forward the traffic to E1 directly ?",
+         "id": "429690933299761594",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/05281240140117292641",
+         "pub": "2017-09-08T12:02:29.771+02:00",
+         "ref": "2935978546227629216",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 June 2022 09:06",
+               "html": "<p>I hope you wouldn&#39;t see anything like this in real life -- as I wrote, you have to be clumsy enough ;)</p>\n\n<p>However, were you unlucky enough to have just the right combination of BGP sessions failing... Nah, that would never happen, we all monitor the state of our BGP sessions and react the moment they flap, don&#39;t we &#x1F61C;</p>\n",
+               "id": "1288",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-06-04T09:06:12",
+               "ref": "1287",
+               "type": "comment"
+            }
+         ],
+         "date": "04 June 2022 02:25",
+         "html": "<p>Good post!</p>\n\n<p>But I would be really surprised if I saw anything like this in real life.  RR is there to resolve the overhead caused by IBGP full-mesh.  And the reason for IBGP full-mesh is to ensure all IBGP speakers &ldquo;see&rdquo; the same. Back to this topology, E1,E2 are the common clients for R1 and R2, however, C1 and C2 belong to only one RR. If we remove the RR from the picture, we would see a topology that IBGP full mesh is not there. So to resolve this problem, just have C1 join the Cluster with R1 and C2 join the cluster with R2.</p>\n",
+         "id": "1287",
+         "name": "Mu",
+         "pub": "2022-06-04T02:25:50",
+         "type": "comment"
+      }
+   ],
+   "count": 9,
+   "id": "2935978546227629216",
+   "type": "post",
+   "url": "2013/10/can-bgp-route-reflectors-really.html"
 }

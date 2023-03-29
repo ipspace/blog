@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4898931504210370984">16 August 2011 10:37</a>
+                <a rel="nofollow" id="c4898931504210370984" href="#4898931504210370984">16 August 2011 10:37</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />A few points, I guess. Firstly, I sincerely hope not too many SPs today use enterprise gear for their networks nowadays, which means it is either MPLS/VPLS or MAC-in-MAC; in my experience it is the former in most cases. However, older access networks could well still be using Q-in-Q, and there the the issue may well be present.<br /><br />Very common way of dealing with the threat in question that I&#39;ve seen is limiting the number of MACs an SP service would learn from a UNI to something small, like 5. It is pretty non-disruptive from customer&#39;s point of view - even if you exceed the limit, you are still reachable (via flooding - see note on rate limiting below), and if traffic volume is small many people wouldn&#39;t even notice. Also it is very common to connect L2 services to routers (so no problem there in first place).<br /><br />&gt; traffic sent to them would be flooded throughout the network (and hitting storm control limits)<br /><br />Depends on configuration - storm control limits are often applied to broadcast separately from unknown unicast and yet separately from multicast, which means that while broadcast storm controls may be in place (which is a common practice), unknown unicast controls may be not.<br /><br />Also I don&#39;t think flooding will happen throughout the network - as far I can remember overflowing TCAM doesn&#39;t overwrite port VLAN membership configuration, so flooding will likely be contained with a particular VLAN - CE-VLAN or S-VLAN.</p>
+            <div class="comment-content">Ivan,<br /><br />A few points, I guess. Firstly, I sincerely hope not too many SPs today use enterprise gear for their networks nowadays, which means it is either MPLS/VPLS or MAC-in-MAC; in my experience it is the former in most cases. However, older access networks could well still be using Q-in-Q, and there the the issue may well be present.<br /><br />Very common way of dealing with the threat in question that I&#39;ve seen is limiting the number of MACs an SP service would learn from a UNI to something small, like 5. It is pretty non-disruptive from customer&#39;s point of view - even if you exceed the limit, you are still reachable (via flooding - see note on rate limiting below), and if traffic volume is small many people wouldn&#39;t even notice. Also it is very common to connect L2 services to routers (so no problem there in first place).<br /><br />&gt; traffic sent to them would be flooded throughout the network (and hitting storm control limits)<br /><br />Depends on configuration - storm control limits are often applied to broadcast separately from unknown unicast and yet separately from multicast, which means that while broadcast storm controls may be in place (which is a common practice), unknown unicast controls may be not.<br /><br />Also I don&#39;t think flooding will happen throughout the network - as far I can remember overflowing TCAM doesn&#39;t overwrite port VLAN membership configuration, so flooding will likely be contained with a particular VLAN - CE-VLAN or S-VLAN.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">PG</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8424542878781925905">17 August 2011 02:46</a>
+                <a rel="nofollow" id="c8424542878781925905" href="#8424542878781925905">17 August 2011 02:46</a>
               </span>
             </div>
-            <p class="comment-content">We use port security and storm control. Our L2VPN services are sold as a service you must connect a router to, and only allow 8 MAC addresses on the UNI.</p>
+            <div class="comment-content">We use port security and storm control. Our L2VPN services are sold as a service you must connect a router to, and only allow 8 MAC addresses on the UNI.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Chris Pollock</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8514131345639762050">17 August 2011 12:24</a>
+                <a rel="nofollow" id="c8514131345639762050" href="#8514131345639762050">17 August 2011 12:24</a>
               </span>
             </div>
-            <p class="comment-content">I came up against questions like these a few years back running a metro-e service provider.  We often found that the mac limit per port would cause customers to have issues when they&#39;d accidentally bridge something to their WAN (happens more than you might like to think) and the routers would periodically drop out as too many things started broadcasting.  There&#39;s basically no way to tell the difference between an attack and customers doing something stupid.  But the Q-in-Q core and some decent security on the edge let it scale enough to end up deploying the whole thing over MPLS/VLL so I guess from that point of view it was sufficient.</p>
+            <div class="comment-content">I came up against questions like these a few years back running a metro-e service provider.  We often found that the mac limit per port would cause customers to have issues when they&#39;d accidentally bridge something to their WAN (happens more than you might like to think) and the routers would periodically drop out as too many things started broadcasting.  There&#39;s basically no way to tell the difference between an attack and customers doing something stupid.  But the Q-in-Q core and some decent security on the edge let it scale enough to end up deploying the whole thing over MPLS/VLL so I guess from that point of view it was sufficient.</div>
           </div>
         </li>
       </div>

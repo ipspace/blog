@@ -1,0 +1,37 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1503">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1503" href="#1503">10 November 2022 11:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>If you look into Figure 3 in RFC 1966 then you can still see that they follow the physical topology. RRs were selected by their central positions in the network and not in a separate plane independent from the data plane and centralized in an offset position. At that time it would be anyhow too expensive. </p>
+
+<p>Please, also remember that at that time the networks were much smaller. So following the physical topology was straightforward and you had no automation because of the small scale. The centralized RR has one strong motivation on making writing automatic scripts easier. </p>
+
+<p>And as you identified already, seamless MPLS is a kind of hybrid of the two approaches. 
+However, in the old thinking, all kind of BGP sessions were assumed to share the fate with data plane. There was no separation from the BGP and the physical topology. In the opposite, the RR was invented to keep the physical topology and the BGP topology aligned. Since the full mesh requirement of iBGP violated this basic principle. The RR was restoring the compliance to the routing principle. It was more than just a scalability solution. Do not forget that rebuilding a BGP session and sending all advertisements again was a costly and slow operation. A centralized RR with dozens of sessions in those days would need a very long recovery time with random sequencing. RR aligned with the physical topology reduced the CPU resources needs and convergence time to the minimum. 
+Later, with the more CPU resources, this consideration was less important...</p>
+
+<p>Of course, changing the next hop is more an academical possibility and in most networks an unnecessary complication. I just wanted to point out that there is no theory against it. However, an engineering design should take into account a lot of other considerations, even business issues. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

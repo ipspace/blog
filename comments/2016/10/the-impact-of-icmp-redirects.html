@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Andrea</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6653482109438342225">10 October 2016 09:56</a>
+                <a rel="nofollow" id="c6653482109438342225" href="#6653482109438342225">10 October 2016 09:56</a>
               </span>
             </div>
-            <p class="comment-content">Got to debug it couple of times.<br /><br />Had to admit not only the platform generating the ICMP had issue, but also the upstream router receiving it.. all the subsequent packets went nuts toward the slowest possible path!!!!<br /><br />So the downstream router sending ICMP was a little more on CPU, but the upstream receiving it was either punting all the ICMP to the CPU (no bug deal unless you have the 0.0001$ CPU in it, sometimes it happens), but if understood and used, this ICMP caused all the flows for that destination to being punted to CPU.<br /><br />I observed it on JunOS EX series (upstream, 100℅ CPU with 2-3 Mbit/s), on Brocade MLX (downstream, couple on Mbit/s, upstream tens of Mbit/s), fortigate (upstream, in the order of less 1 Mbit/s).<br /><br />The less worse implementation I saw was Cisco (classical old platforms like IOS 6500/3750/2600/2800 etc. and also some Nexus 7k).<br /><br />Basically all the low cost implementation using very low powerful CPU on the control plane were really shitty..</p>
+            <div class="comment-content">Got to debug it couple of times.<br /><br />Had to admit not only the platform generating the ICMP had issue, but also the upstream router receiving it.. all the subsequent packets went nuts toward the slowest possible path!!!!<br /><br />So the downstream router sending ICMP was a little more on CPU, but the upstream receiving it was either punting all the ICMP to the CPU (no bug deal unless you have the 0.0001$ CPU in it, sometimes it happens), but if understood and used, this ICMP caused all the flows for that destination to being punted to CPU.<br /><br />I observed it on JunOS EX series (upstream, 100℅ CPU with 2-3 Mbit/s), on Brocade MLX (downstream, couple on Mbit/s, upstream tens of Mbit/s), fortigate (upstream, in the order of less 1 Mbit/s).<br /><br />The less worse implementation I saw was Cisco (classical old platforms like IOS 6500/3750/2600/2800 etc. and also some Nexus 7k).<br /><br />Basically all the low cost implementation using very low powerful CPU on the control plane were really shitty..</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#868445870138282997">10 October 2016 13:54</a>
+                <a rel="nofollow" id="c868445870138282997" href="#868445870138282997">10 October 2016 13:54</a>
               </span>
             </div>
-            <p class="comment-content">On Cisco switching platforms, at least Catalyst 3750, 4500, 6500 and Nexus 3k, 5k, 7k the original packet requiring ICMP Redirect generation gets punted to the CPU and therefore even the original packet takes the slower forwarding path. We had several cases at Cisco TAC opened for poor switching performance due to an invalid design or misconfiguration resulting in ICMP Redirect generation and packets punted to CPU.<br /><br />If you do a netdr (CPU capture) or ELAM capture (packet capture in the hardware path - i.e. dataplane) of the packets, you will see it uses a special destination index, that is 0x7f07 which means &quot;Punt to CPU for ICMP Redirect&quot;. I cannot share any internal documentation but the closest I could find is this:<br />http://certification.codergenie.com/certification/post/2013/12/15/Troubleshooting-Routing-Loops-On-IOS-And-IOS-XR.aspx<br /><br />The Catalyst 4500 guide confirms this too:<br />&quot;In this case, a packet is routed through the same interface, which leads to the issue of an ICMP redirect for each packet. This root cause is one of the common reasons for high CPU utilization on the Catalyst 4500.&quot;<br />http://www.cisco.com/c/en/us/support/docs/switches/catalyst-4000-series-switches/65591-cat4500-high-cpu.html</p>
+            <div class="comment-content">On Cisco switching platforms, at least Catalyst 3750, 4500, 6500 and Nexus 3k, 5k, 7k the original packet requiring ICMP Redirect generation gets punted to the CPU and therefore even the original packet takes the slower forwarding path. We had several cases at Cisco TAC opened for poor switching performance due to an invalid design or misconfiguration resulting in ICMP Redirect generation and packets punted to CPU.<br /><br />If you do a netdr (CPU capture) or ELAM capture (packet capture in the hardware path - i.e. dataplane) of the packets, you will see it uses a special destination index, that is 0x7f07 which means &quot;Punt to CPU for ICMP Redirect&quot;. I cannot share any internal documentation but the closest I could find is this:<br />http://certification.codergenie.com/certification/post/2013/12/15/Troubleshooting-Routing-Loops-On-IOS-And-IOS-XR.aspx<br /><br />The Catalyst 4500 guide confirms this too:<br />&quot;In this case, a packet is routed through the same interface, which leads to the issue of an ICMP redirect for each packet. This root cause is one of the common reasons for high CPU utilization on the Catalyst 4500.&quot;<br />http://www.cisco.com/c/en/us/support/docs/switches/catalyst-4000-series-switches/65591-cat4500-high-cpu.html</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03155088835115045660" rel="nofollow">Igro</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7056440700020563839">11 October 2016 18:54</a>
+                <a rel="nofollow" id="c7056440700020563839" href="#7056440700020563839">11 October 2016 18:54</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;ve also had a horrible experience with Brocade MLX routers.<br /><br />If, for example, there is a trunk with 2 VLAN&#39;s and traffic is routed between 2 SVI&#39;s - Brocade will send an ICMP Redirect. Not sure what is the logic behind it but looks like the fact that packet enters and leaves via the same physical(!) interface triggers this behavior.<br />In some cases, the box can become jammed completely with just a few Mb/s of traffic.<br /><br />Richard Steenbergen summarized it perfectly some time ago (apparently, things haven&#39;t changed since 2006) :)<br />https://puck.nether.net/pipermail/foundry-nsp/2006-December/005390.html<br /><br /><br />-Igor</p>
+            <div class="comment-content">I&#39;ve also had a horrible experience with Brocade MLX routers.<br /><br />If, for example, there is a trunk with 2 VLAN&#39;s and traffic is routed between 2 SVI&#39;s - Brocade will send an ICMP Redirect. Not sure what is the logic behind it but looks like the fact that packet enters and leaves via the same physical(!) interface triggers this behavior.<br />In some cases, the box can become jammed completely with just a few Mb/s of traffic.<br /><br />Richard Steenbergen summarized it perfectly some time ago (apparently, things haven&#39;t changed since 2006) :)<br />https://puck.nether.net/pipermail/foundry-nsp/2006-December/005390.html<br /><br /><br />-Igor</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06839060631802008000" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5708144952500747662">12 October 2016 13:07</a>
+                <a rel="nofollow" id="c5708144952500747662" href="#5708144952500747662">12 October 2016 13:07</a>
               </span>
             </div>
-            <p class="comment-content">Thanks, Igor, that&#39;s was a great explanation indeed 🙂.</p>
+            <div class="comment-content">Thanks, Igor, that&#39;s was a great explanation indeed 🙂.</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5950987803828581056">12 October 2016 23:51</a>
+                <a rel="nofollow" id="c5950987803828581056" href="#5950987803828581056">12 October 2016 23:51</a>
               </span>
             </div>
-            <p class="comment-content">What are the usecases for ICMP redirects ?</p>
+            <div class="comment-content">What are the usecases for ICMP redirects ?</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01420794823298910724" rel="nofollow">JM</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7897640853696662117">13 October 2016 01:30</a>
+                <a rel="nofollow" id="c7897640853696662117" href="#7897640853696662117">13 October 2016 01:30</a>
               </span>
             </div>
-            <p class="comment-content">What could be the impact on high-end platforms with powerful processors? For i.e on Cisco platforms ICMP redirects is automatically enabled when HSRP is configured to prevent hosts from discovering the interface MAC address of the node. </p>
+            <div class="comment-content">What could be the impact on high-end platforms with powerful processors? For i.e on Cisco platforms ICMP redirects is automatically enabled when HSRP is configured to prevent hosts from discovering the interface MAC address of the node. </div>
           </div>
         </li>
       </div>

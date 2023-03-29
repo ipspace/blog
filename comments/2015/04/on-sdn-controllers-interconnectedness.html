@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03172563417086934763" rel="nofollow">Steve Chalmers</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1159843797418827629">27 April 2015 20:23</a>
+                <a rel="nofollow" id="c1159843797418827629" href="#1159843797418827629">27 April 2015 20:23</a>
               </span>
             </div>
-            <p class="comment-content">(Dons asbestos suit.) <br /><br />But what happens at the intersection of BGP and SDN?  For example, it seems to me that in Petr Lapukhov&#39;s BGP data center design, the BGP route reflector is a de facto SDN controller.  Would that approach then behave as you describe SDN rather than as you describe BGP?</p>
+            <div class="comment-content">(Dons asbestos suit.) <br /><br />But what happens at the intersection of BGP and SDN?  For example, it seems to me that in Petr Lapukhov&#39;s BGP data center design, the BGP route reflector is a de facto SDN controller.  Would that approach then behave as you describe SDN rather than as you describe BGP?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4953365319850289620">28 April 2015 14:53</a>
+                <a rel="nofollow" id="c4953365319850289620" href="#4953365319850289620">28 April 2015 14:53</a>
               </span>
             </div>
-            <p class="comment-content">Really good one. In Petr&#39;s design, the SDN controller talks to every BGP router, so a bug in the controller would affect all routers (even though you could still implement protection mechanisms on the routers like maximum number of prefixes accepted from the BGP controller).<br /><br />However, compared to &quot;centralized control plane&quot; architectures, the BGP-based SDN has a crucial advantage: if the controller fails (or you kill it when it goes crazy), the network settles down to &quot;business-as-usual&quot; behavior.</p>
+            <div class="comment-content">Really good one. In Petr&#39;s design, the SDN controller talks to every BGP router, so a bug in the controller would affect all routers (even though you could still implement protection mechanisms on the routers like maximum number of prefixes accepted from the BGP controller).<br /><br />However, compared to &quot;centralized control plane&quot; architectures, the BGP-based SDN has a crucial advantage: if the controller fails (or you kill it when it goes crazy), the network settles down to &quot;business-as-usual&quot; behavior.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.kontrolissues.net" rel="nofollow">Christopher Young</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#908839668325868921">06 May 2015 17:28</a>
+                <a rel="nofollow" id="c908839668325868921" href="#908839668325868921">06 May 2015 17:28</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />Disclaimer: I work for HP networking and we do sell SDN controllers, apps, and OpenFlow hardware.<br /><br />It was great chatting with you at Interop last week. I think you&#39;re criticism of centralized controllers is spot-on, assuming that you&#39;re talking about an architecture where all control plane functionality is performed by the controller. <br /><br />HP has recognized this potential issue issue and has taken the approach of a hybrid control plane. Essentially, we put higher priority flow rules into the devices to enable exception based actions with a last priority rule that will forward off to the normal pipeline. <br /><br />If traffic goes through the OpenFlow table and doesn&#39;t match on any other rules, the last rule will say &quot;do what you would normally do&quot; and use the forwarding behavior defined by the traditional network control plane. The end result being, exactly as you described above. In the event that the controller goes away the network will settle down to &quot;business-as-usual&quot; behavior.<br /><br />We&#39;re still early on, but I think it&#39;s important to recognize that there are ways for us to mitigate some of the more obvious limitations of centralized controller architectures while still reaping the benefits.<br /><br />see you on the twitters!<br /><br />@netmanchris</p>
+            <div class="comment-content">Hi Ivan,<br /><br />Disclaimer: I work for HP networking and we do sell SDN controllers, apps, and OpenFlow hardware.<br /><br />It was great chatting with you at Interop last week. I think you&#39;re criticism of centralized controllers is spot-on, assuming that you&#39;re talking about an architecture where all control plane functionality is performed by the controller. <br /><br />HP has recognized this potential issue issue and has taken the approach of a hybrid control plane. Essentially, we put higher priority flow rules into the devices to enable exception based actions with a last priority rule that will forward off to the normal pipeline. <br /><br />If traffic goes through the OpenFlow table and doesn&#39;t match on any other rules, the last rule will say &quot;do what you would normally do&quot; and use the forwarding behavior defined by the traditional network control plane. The end result being, exactly as you described above. In the event that the controller goes away the network will settle down to &quot;business-as-usual&quot; behavior.<br /><br />We&#39;re still early on, but I think it&#39;s important to recognize that there are ways for us to mitigate some of the more obvious limitations of centralized controller architectures while still reaping the benefits.<br /><br />see you on the twitters!<br /><br />@netmanchris</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Nicolai van der Smagt</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3381269723629995326">28 April 2015 08:31</a>
+                <a rel="nofollow" id="c3381269723629995326" href="#3381269723629995326">28 April 2015 08:31</a>
               </span>
             </div>
-            <p class="comment-content">This sounds like a page from the architecture whitepaper of a MP-BGP federated SDN controller, such as Opencontrail or Nuage. They use BGP to loosely couple their controllers, unlike previous generation controllers that use tighter coupling, for pretty much exactly the reasons you describe. Well that, and other BGP advantages such as scalability and provenness.<br /><br />No accident that Juniper and ALU went down that route, from experience they understand what is required to keep networks alive better than most of the originators of controllers based on Openflow or proprietary solutions.</p>
+            <div class="comment-content">This sounds like a page from the architecture whitepaper of a MP-BGP federated SDN controller, such as Opencontrail or Nuage. They use BGP to loosely couple their controllers, unlike previous generation controllers that use tighter coupling, for pretty much exactly the reasons you describe. Well that, and other BGP advantages such as scalability and provenness.<br /><br />No accident that Juniper and ALU went down that route, from experience they understand what is required to keep networks alive better than most of the originators of controllers based on Openflow or proprietary solutions.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8369730598065001644">28 April 2015 14:56</a>
+                <a rel="nofollow" id="c8369730598065001644" href="#8369730598065001644">28 April 2015 14:56</a>
               </span>
             </div>
-            <p class="comment-content">Not just Juniper and ALU, everyone (apart from VMware NSX ... at least so far) is going down that route, including next version of Hyper-V.</p>
+            <div class="comment-content">Not just Juniper and ALU, everyone (apart from VMware NSX ... at least so far) is going down that route, including next version of Hyper-V.</div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://yahoo.com" rel="nofollow">bgolab</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#504261586430867526">07 May 2015 22:18</a>
+                <a rel="nofollow" id="c504261586430867526" href="#504261586430867526">07 May 2015 22:18</a>
               </span>
             </div>
-            <p class="comment-content">FIBbing - hybrid IGP (centralized and distribuded at the same ) - an SDN-like approach<br /><br />http://inl.info.ucl.ac.be/system/files/hotnets-XIII-final74.pdf</p>
+            <div class="comment-content">FIBbing - hybrid IGP (centralized and distribuded at the same ) - an SDN-like approach<br /><br />http://inl.info.ucl.ac.be/system/files/hotnets-XIII-final74.pdf</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -144,10 +139,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5415246911008204469">08 May 2015 08:06</a>
+                <a rel="nofollow" id="c5415246911008204469" href="#5415246911008204469">08 May 2015 08:06</a>
               </span>
             </div>
-            <p class="comment-content">Another awesome idea from UC Louvain. Those guys really rock ;))</p>
+            <div class="comment-content">Another awesome idea from UC Louvain. Those guys really rock ;))</div>
           </div>
         </li>
       </div>

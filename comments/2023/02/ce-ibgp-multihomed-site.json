@@ -1,0 +1,53 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "15 February 2023 08:46",
+               "html": "<p>It is. Thank you, fixed.</p>\n",
+               "id": "1664",
+               "name": " Ivan Pepelnjak",
+               "pub": "2023-02-15T08:46:25",
+               "ref": "1663",
+               "type": "comment"
+            }
+         ],
+         "date": "15 February 2023 08:33",
+         "html": "<p>&quot;causing the other CE-router to prefer IBGP paths over IBGP ones&quot; Must be a typo</p>\n",
+         "id": "1663",
+         "name": " Rati",
+         "pub": "2023-02-15T08:33:28",
+         "type": "comment"
+      },
+      {
+         "date": "15 February 2023 10:12",
+         "html": "<p>Ivan,</p>\n\n<p>I hope this IBGP neighborship will also help in forming an SDWAN Tunnel from CE-B to remote sites using ISP-A and from CE-A to remote sites using ISP-B? </p>\n\n<p>Thanks,\nViki</p>\n",
+         "id": "1668",
+         "name": " Viki",
+         "pub": "2023-02-15T10:12:55",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "15 February 2023 02:01",
+               "html": "<p>pvh, not a good idea.  Sometimes your ISP has routing failures during which all physical links and BGP sessions remain up, but no routes get advertised / exchanged.  The only correct option is to establish an IBGP overlay, even if using FHRP.  As the &quot;site&quot; grows it may require route reflection.</p>\n",
+               "id": "1670",
+               "name": " Jeff Behrns",
+               "pub": "2023-02-15T14:01:17",
+               "ref": "1669",
+               "type": "comment"
+            }
+         ],
+         "date": "15 February 2023 10:48",
+         "html": "<p>In such a small deployment I assume that both ISPs offer transit, so that both CEs would get a default route from their upstream. </p>\n\n<p>In this case I would not iBGP the CEs together but have HSRP running on the two CEs and track the uplink (interface and/of BGP session) to determine the active gateway.</p>\n\n<p>It&#39;s simpler, less memory intensive the convergence will be faster and you don&#39;t have to care about the GRT.</p>\n\n<p>And if you wanted to IBGP them anyway, I would put a route-map on it to only exchange the default route from the upstreams, so that both CEs have a 0/0 route with different distance. The only thing I don&#39;t understand is in which failure scenario traffic would end up on a CE without an active BGP uplink.</p>\n",
+         "id": "1669",
+         "name": "pvh",
+         "pub": "2023-02-15T10:48:37",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2023/02/ce-ibgp-multihomed-site.html"
+}

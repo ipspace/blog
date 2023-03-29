@@ -1,0 +1,141 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="451">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Michele Bergonzoni</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c451" href="#451">08 March 2021 11:33</a>
+              </span>
+            </div>
+            <div class="comment-content">Fix the typo: &quot;get read of Microsoft NLB&quot;<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="452">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c452" href="#452">09 March 2021 09:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you, fixing...</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="453">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Çetin ARDAL</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c453" href="#453">10 March 2021 03:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hello Ivan,</p>
+
+<p>As Oracle Consulting, I have personally implemented together with Palo Alto professional services, clustering solutions relying on secondary IP moving from one instance to another, for an active-standby Palo Alto clusters on OCI.</p>
+
+<p>Is it good idea to put a virtual appliance in cloud another is another topic &#x1F605;</p>
+
+<p>But the result was sub-second failover under load. No session drop.</p>
+
+<p>The API call to move a &laquo;&nbsp;VIP&nbsp;&raquo; (what is called a Secondary IP in OCI terms) is fast. Like no comparison with what the PAN PS team saw on other clouds. &#x1F605;</p>
+
+<p>Regarding L2 extension, it is intra Availability Domain &laquo;&nbsp;only&nbsp;&raquo; (equivalent to AZ). Yet, traffic in a region, nor the peering gateways are not billed upon.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="454">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c454" href="#454">10 March 2021 08:15</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi &Ccedil;etin,</p>
+
+<p>Thanks a million for the feedback. So glad to hear someone got the orchestration system architecture right (as opposed to $anotherCloud where it takes seconds to do anything useful).</p>
+
+<p>As for L2 extension, it would be nice to see how far it scales, but I totally understand you can&#39;t share those numbers.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="461">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Çetin ARDAL</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c461" href="#461">10 March 2021 01:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I know that you have <a href="https://blog.ipspace.net/2020/08/selecting-public-cloud.html">your reservations</a> regarding cloud networking exploration and there is a finite amount of time for each day, but I bet you would be really surprised by the user experience using OCI Networking services.</p>
+
+<p>In region services are basically free to explore (no billing cost associated for vcn, data transfer, ephemeral/reserved public ip, gateways, etc ...).</p>
+
+<p>Private connectivity: You only have to start worrying about cost if you want to test FastConnect or your egress traffic is more than 10TB/month (Managed VPN have no associated cost, FastConnect cost DO cover the transfer costs).</p>
+
+<p>Testing L2 Network requires a 3-node VMware Cloud Foundation cluster as a starting point, using OCVS (Oracle Cloud VMware Solution): you have to be bold to test with your own credit card :-D</p>
+
+<p>An OCVS cluster can be up to 64 ESXi hosts -&gt; that&#39;s an ESXi cluster with 3328 Cores + 48TB Ram. Each OCVS cluster gets his own set of L2 segments.
+I did not had the opportunity to work on such large OVCS clusters, so I don&#39;t have specific numbers to share :-)</p>
+
+<p>But let&#39;s do some theory-craft for fun of it:</p>
+
+<ul>
+<li>assuming a fair 5:1 vCPU:CPU consolidation ration, that gives 33280 vCPUs (counting HT) at 100% load, 23296 vCPUs at 70% load</li>
+<li>assuming a 2-vCPUs single vnic VMs, that&#39;s ~11648 MAC addresses to handle for each (such LARGE) OCVS cluster. Bigger VMs = less MAC addresses.</li>
+</ul>
+
+<p>Is it a big number?</p>
+
+<p>A more reasonable ESXi cluster that we would probably see around in the typical enterprise, would be between 8 and 16 hosts -&gt; ~720 MAC addresses for a 16 hosts cluster with the same assumptions.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

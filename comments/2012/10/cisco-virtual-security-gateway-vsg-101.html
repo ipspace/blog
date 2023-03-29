@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16576726865924052243" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1254585282785581731">11 October 2012 08:56</a>
+                <a rel="nofollow" id="c1254585282785581731" href="#1254585282785581731">11 October 2012 08:56</a>
               </span>
             </div>
-            <p class="comment-content">&gt; VMware’s vSphere App<br /><br />That&#39;d probably be the &quot;vShield App&quot;?<br /><br />&gt; Initial packets of every session are always redirected to the service VM. After inspecting and approving the session<br /><br />Wonder how the trade-offs play here - use up resources on each host for a local service gw copy, or save ram/cpu but lug traffic around (which could be a fair bit, depending on traffic profile)<br /><br />Another thing that&#39;s interesting here is how well (if at all) is this integrated into vCloud Director interface...</p>
+            <div class="comment-content">&gt; VMware’s vSphere App<br /><br />That&#39;d probably be the &quot;vShield App&quot;?<br /><br />&gt; Initial packets of every session are always redirected to the service VM. After inspecting and approving the session<br /><br />Wonder how the trade-offs play here - use up resources on each host for a local service gw copy, or save ram/cpu but lug traffic around (which could be a fair bit, depending on traffic profile)<br /><br />Another thing that&#39;s interesting here is how well (if at all) is this integrated into vCloud Director interface...</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1859058645588541132">11 October 2012 17:51</a>
+                <a rel="nofollow" id="c1859058645588541132" href="#1859058645588541132">11 October 2012 17:51</a>
               </span>
             </div>
-            <p class="comment-content">It&#39;s indeed vShield App. Thank you - fixed.<br /><br />The trade-offs depend primarily on what you&#39;re protecting. If you&#39;re protecting all VMs, and you have a high-end server with tens of VMs, it might make sense to have a per-server firewall VM. If you&#39;re protecting only a few VMs per server, less so.<br /><br />Another question is the manageability of VM-per-server solution versus a somewhat more centralized firewall VM.<br /><br />Finally, there&#39;s no integration with vCloud Director. vCD doesn&#39;t support any of the NIC-level firewalls (including vShield App).</p>
+            <div class="comment-content">It&#39;s indeed vShield App. Thank you - fixed.<br /><br />The trade-offs depend primarily on what you&#39;re protecting. If you&#39;re protecting all VMs, and you have a high-end server with tens of VMs, it might make sense to have a per-server firewall VM. If you&#39;re protecting only a few VMs per server, less so.<br /><br />Another question is the manageability of VM-per-server solution versus a somewhat more centralized firewall VM.<br /><br />Finally, there&#39;s no integration with vCloud Director. vCD doesn&#39;t support any of the NIC-level firewalls (including vShield App).</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://vegaskid.net" rel="nofollow">Matt</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#982687938673376576">11 October 2012 13:14</a>
+                <a rel="nofollow" id="c982687938673376576" href="#982687938673376576">11 October 2012 13:14</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for this Ivan. Nice and compact with some great keys points.</p>
+            <div class="comment-content">Thanks for this Ivan. Nice and compact with some great keys points.</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09921719270863233800" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#94607549650698396">11 October 2012 14:01</a>
+                <a rel="nofollow" id="c94607549650698396" href="#94607549650698396">11 October 2012 14:01</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />In your sample webinar&#39;s dialog, you state that a vGW solution does not scale in multi-tenant solutions, stating a need for one firewall per tenant per host. Not exactly true.<br /><br />vGW can be deployed in a multi-tenant solution, with the following limitations:<br /><br />*No built-in separation of logging for tenants<br />*No RBAC in the management interface<br />*Common IDS Policy<br /><br />The above two limitations can be either worked around with a front-end system that separates logging and allows a RBAC&#39;d interface to vGW with the decently robust API. Not ideal, but certainly an option avoiding the tenancy problem.<br /><br />vGW 5.5, released weeks ago, states you can &quot;split&quot; the interface to service multi-tenancy customers, but I have not tested this yet.</p>
+            <div class="comment-content">Ivan,<br /><br />In your sample webinar&#39;s dialog, you state that a vGW solution does not scale in multi-tenant solutions, stating a need for one firewall per tenant per host. Not exactly true.<br /><br />vGW can be deployed in a multi-tenant solution, with the following limitations:<br /><br />*No built-in separation of logging for tenants<br />*No RBAC in the management interface<br />*Common IDS Policy<br /><br />The above two limitations can be either worked around with a front-end system that separates logging and allows a RBAC&#39;d interface to vGW with the decently robust API. Not ideal, but certainly an option avoiding the tenancy problem.<br /><br />vGW 5.5, released weeks ago, states you can &quot;split&quot; the interface to service multi-tenancy customers, but I have not tested this yet.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5598457649752219221">11 October 2012 19:54</a>
+                <a rel="nofollow" id="c5598457649752219221" href="#5598457649752219221">11 October 2012 19:54</a>
               </span>
             </div>
-            <p class="comment-content">If you want to give each customer a firewall they can configure, vGW, vShield App, or any other dvFilter-based firewall doesn&#39;t scale. <br /><br />Of course you can always add another layer of abstraction, in our case your own orchestration system (see also RFC 1925, truth 6a).</p>
+            <div class="comment-content">If you want to give each customer a firewall they can configure, vGW, vShield App, or any other dvFilter-based firewall doesn&#39;t scale. <br /><br />Of course you can always add another layer of abstraction, in our case your own orchestration system (see also RFC 1925, truth 6a).</div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02947457495695713308" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7712889654756846559">15 October 2012 10:57</a>
+                <a rel="nofollow" id="c7712889654756846559" href="#7712889654756846559">15 October 2012 10:57</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for this. Very interesting. One question though, maybe I misunderstood (I hope). In the video you were saying that with solutions like Juniper&#39;s vGW you need one virtual firewall per virtual machine you want to protect. 20 VMs on one Host = 20 virtual firewalls on the same host. Huh? You sure about that?</p>
+            <div class="comment-content">Thanks for this. Very interesting. One question though, maybe I misunderstood (I hope). In the video you were saying that with solutions like Juniper&#39;s vGW you need one virtual firewall per virtual machine you want to protect. 20 VMs on one Host = 20 virtual firewalls on the same host. Huh? You sure about that?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -144,10 +139,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6842747887140049177">15 October 2012 11:07</a>
+                <a rel="nofollow" id="c6842747887140049177" href="#6842747887140049177">15 October 2012 11:07</a>
               </span>
             </div>
-            <p class="comment-content">I hope I said &quot;per tenant&quot; ;) Have to check.<br /><br />If you can use a centrally-configured policy for all VMs on the same hypervisor host, you need a single vGW VM per host.<br /><br />See also the comment made by Jonathan.</p>
+            <div class="comment-content">I hope I said &quot;per tenant&quot; ;) Have to check.<br /><br />If you can use a centrally-configured policy for all VMs on the same hypervisor host, you need a single vGW VM per host.<br /><br />See also the comment made by Jonathan.</div>
           </div>
         </li>
       </div>
@@ -169,10 +164,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://umairhoodbhoy.net" rel="nofollow">Umair Hoodbhoy</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#531433213014671944">18 January 2013 00:11</a>
+                <a rel="nofollow" id="c531433213014671944" href="#531433213014671944">18 January 2013 00:11</a>
               </span>
             </div>
-            <p class="comment-content">Actually, VXLAN support was introduced in vPath 1.5, not 2.0 if I&#39;m not mistaken.</p>
+            <div class="comment-content">Actually, VXLAN support was introduced in vPath 1.5, not 2.0 if I&#39;m not mistaken.</div>
           </div>
         </li>
       </div>

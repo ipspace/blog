@@ -1,223 +1,242 @@
 {
-  "comments": [
-    {
-      "date": "01 March 2016 13:16",
-      "html": "&gt;&gt;&quot;or if a switch loses its control plane (for example, due to a memory leak)&quot;<br /><br />Perfect example for this:<br />Any Cisco router with EtherSwitch-based (HWIC-...ESW, EHWIC-...ESG and associated ISR routers) switchports. All ports on a module are one single broadcast domain &amp; are up/up at power on not matter what was configured - until IOS is running has parsed the configuration.<br />",
-      "id": "4741560440372431235",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Christoph",
-      "profile": null,
-      "pub": "2016-03-01T13:16:27.199+01:00",
-      "ref": "5249842431567098861",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "03 March 2016 08:31",
-          "html": "Sadly, until everyone stops the bad practices of allowing bridging across multiple interfaces (including Windows and Linux hosts), or implements a proper signaling protocol (which even the data center fabric vendors can&#39;t really agree on), we still need STP to detect forwarding loops.",
-          "id": "566898534362966727",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-03-03T08:31:12.182+01:00",
-          "ref": "2352971840170695842",
-          "type": "comment"
-        },
-        {
-          "date": "03 March 2016 09:57",
-          "html": "&quot;It doesn\u2019t matter if you\u2019re doing routing on layer-2 (TRILL, SPB) or on layer-3 (IP) \u2013 you need a proper routing protocol to use alternate paths.&quot;<br /><br />I thought that load balancing at Layer 2 as implemented in TRILL has nothing to do with Layer 3 load balancing. Having Layer 2 load balancing is about having greater capacity i.e. using redundant links for traffic.<br />Layer 3 load balancing about using several L3 gateways - we do not care how layer 2 traffic is distributed at the physical layer (balanced or not). It&#39;s different topic how the routing protocols cope with multiply same L3-cost paths<br /><br />If you could comment on your original statements to clarify what you are had in mind.<br />Bogdan Golab",
-          "id": "2490279503026508893",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2016-03-03T09:57:59.593+01:00",
-          "ref": "2352971840170695842",
-          "type": "comment"
-        },
-        {
-          "date": "03 March 2016 11:57",
-          "html": "Apart from the flooding behavior (and summarization implications) layer-2 and layer-3 forwarding are today just two sides of the same coin.<br /><br />Also, you have to start thinking in layers and not agglutinate multiple problems into a bigger mess (see also RFC 1925 section 2.5). ",
-          "id": "2762578152904009063",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-03-03T11:57:17.279+01:00",
-          "ref": "2352971840170695842",
-          "type": "comment"
-        },
-        {
-          "date": "05 March 2016 12:02",
-          "html": "Probably I am not smart enough to understand it;)<br />Bogdan Golab",
-          "id": "1421393948071905341",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2016-03-05T12:02:47.362+01:00",
-          "ref": "2352971840170695842",
-          "type": "comment"
-        }
-      ],
-      "date": "01 March 2016 23:51",
-      "html": "Ivan, I think it&#39;s time you write one more post on STP. I humbly suggest this title &quot;The Death of Spanning Tree Protocol&quot;...",
-      "id": "2352971840170695842",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": "http://blog.reissromoli.com",
-      "pub": "2016-03-01T23:51:01.362+01:00",
-      "ref": "5249842431567098861",
-      "type": "comment"
-    },
-    {
-      "date": "01 March 2016 23:57",
-      "html": "The biggest problem with STP that I&#39;ve seen is when people who aren&#39;t exactly experts configure new switches and then disable spanning tree - because they heard from the experts that it&#39;s bad.<br />I try to tell them that spanning tree is like smoke detectors - yes, they can be annoying and sometimes need maintenance, but don&#39;t just turn them off.",
-      "id": "8769026229678414993",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Kerry Thompson",
-      "profile": "https://www.blogger.com/profile/00439180073297788221",
-      "pub": "2016-03-01T23:57:40.170+01:00",
-      "ref": "5249842431567098861",
-      "type": "comment"
-    },
-    {
-      "date": "02 March 2016 04:00",
-      "html": "I think STP (and it&#39;s various kludges) are here to stay, and will not be going anywhere anytime soon. Yes, a pure layer 3 solution would be a nice goal for many (after you weigh the pros and cons - ie: VM mobility, cost of L3 ToR switch, staff experience, etc). Until then, as Ivan had mentioned, there are always alternatives which may require a forklift upgrade in hardware (TRILL, Fabricpath, SPB).. or wait for the good &#39;ol SDN market/products to mature and prove themselves out (hopefully not in the same track record as IPv6). I for one will always try to minimize any L2 STP or bridge domains as far away from the core as possible, down to a pair of ToR switches, or if possible at the virtual switch edge. If it&#39;s one thing I&#39;ve learned throughout these very informative blog posts, it&#39;s that you should never extend that L2 domain across the DC, STP will bite you sooner than later.. it&#39;s just not worth the risk. Use OTV (point solution), or better yet have L3 between DC&#39;s in place and take advantage of some form of scripting/automation for VM mobility. ",
-      "id": "7506372020907291075",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Mario",
-      "profile": null,
-      "pub": "2016-03-02T04:00:11.150+01:00",
-      "ref": "5249842431567098861",
-      "type": "comment"
-    },
-    {
-      "date": "02 March 2016 07:33",
-      "html": "Even that STP has some challenges, never ever turn it off. You might not know who creates a loop accidentally. Let it be a misconnected cable or a booting device with strange port interconnects temporarily. STP is there as a last resort safety tool.<br />I have seen big meltdowns when someone turned off STP. Once it was not even in the Ethernet switches (since they were oversized and could cope with the increased traffic), but in the connected firewalls. Whoever it has stopped the air travel for a half a day in a whole country. So be careful!<br /><br />The good practice is to keep the STP domain as small as possible. And remember: STP was designed originally for maximum 7 hops and few switches and some dozens of host devices in mind. It is definitely not designed for connecting big data centers into a single bridge domain. <br /><br />Do not use something for a use case it was not design for and not fully tested and analyzed...<br /><br />And do not forget, if you create large bridge domains you also created large error domains. Cut-through switching is a tool for distributing and amplifying errors...<br />",
-      "id": "1947289460426927261",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Bela",
-      "profile": "https://www.blogger.com/profile/07985346761439657130",
-      "pub": "2016-03-02T07:33:02.565+01:00",
-      "ref": "5249842431567098861",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "03 March 2016 08:31",
-          "html": "Thank you. Added",
-          "id": "435894075991917835",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-03-03T08:31:49.553+01:00",
-          "ref": "1931589443157448166",
-          "type": "comment"
-        }
-      ],
-      "date": "02 March 2016 07:44",
-      "html": "I&#39;d like to add unidirectional links to the list of STP problems, this can happen because a bad transceiver or a fiber is broken or bad manipulated, and only vendor kludges can solve you, adding an intervendor compatibility problem ",
-      "id": "1931589443157448166",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Antonio Ojea",
-      "profile": "https://www.blogger.com/profile/14615081241229714383",
-      "pub": "2016-03-02T07:44:35.899+01:00",
-      "ref": "5249842431567098861",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "08 March 2016 11:11",
-          "html": "Disagree. Bridging was never a good (let alone great) idea. However, among all possible options, 802.1aq or TRILL are the least horrible.",
-          "id": "7670204373921686576",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-03-08T11:11:19.374+01:00",
-          "ref": "556930115677446174",
-          "type": "comment"
-        },
-        {
-          "date": "06 April 2016 19:48",
-          "html": "802.1aq does not solve lot of the serious problems and still runs MSTP through the network. Its loadbalancing over parallel links is at best weird and overall usefulness of 802.1aq is very questionable. On the other hand, TRILL effectively removes all typical L2 problems, since it in fact transparently converts L2 network into L3 routed domain - ingress switch packs incoming L2 packet into TRILL container, TRILL network routes the container using usual L3 routing principles, protocols (IS-IS) and safety belts (TTL, RPF check) and the egress switch discards the container and sends L2 packet to its final destination.",
-          "id": "2424746577624069642",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Marian \u010eurkovi\u010d",
-          "profile": null,
-          "pub": "2016-04-06T19:48:38.228+02:00",
-          "ref": "556930115677446174",
-          "type": "comment"
-        },
-        {
-          "date": "06 April 2016 20:10",
-          "html": "Marian, I would suggest that before comparing two technologies you get your facts right. While your description of TRILL data plane is correct, the rest of your claims aren&#39;t.",
-          "id": "5758753081209775541",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-04-06T20:10:29.025+02:00",
-          "ref": "556930115677446174",
-          "type": "comment"
-        },
-        {
-          "date": "08 April 2016 09:50",
-          "html": "Ivan, I have hands-on experience with both. OK I should have formulated it more precisely - so I better copy the whole paragraph from RIPE TRILL tutorial: <br /><br />Spanning Tree:<br />TRILL RBridges block spanning tree and provide a new level above bridging but below Layer 3 routing. <br />SPB bridges run at the bridging level. They continue to maintain a spanning tree (or multiple spanning trees) hooking together any attached bridging to produce one huge spanning tree. Frames are forwarded by spanning tree or by shortest path depending on VLAN.<br /><br />And regarding load-balancing over parallel paths - TRILL uses standard L3 per-hop routing decisions including usual ECMP support, while 802.1aq computes multiple trees by XORing SYSIDs with different bitmasks which produces suboptimal results and doesn&#39;t consider per-hop specifics.",
-          "id": "1149550752551694940",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Marian \u010eurkovi\u010d",
-          "profile": null,
-          "pub": "2016-04-08T09:50:46.557+02:00",
-          "ref": "556930115677446174",
-          "type": "comment"
-        },
-        {
-          "date": "08 April 2016 14:25",
-          "html": "Do keep in mind that the RIPE TRILL tutorial was delivered by a TRILL evangelist, so you can&#39;t possibly hope for an unbiased view.<br /><br />As I said, your understanding of the data planes is correct, but I disagree with the control plane summary. In most cases the fabric switches would run STP with the access layer for numerous reasons, and you could either integrate the fabric with STP or make the fabric switches root bridges in the access layer.<br /><br />Also, while the ECMP argument is valid, I don&#39;t think there&#39;s any significant difference between the two mechanisms in leaf-and-spine fabrics.<br /><br />Obviously, if you have real-life experience please share it.<br /><br />Finally, I did cover both in the last session of the leaf-and-spine fabric designs webinar 2 days ago, so I&#39;m a bit fluent on the differences ;)",
-          "id": "2089488772875501469",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2016-04-08T14:25:16.189+02:00",
-          "ref": "556930115677446174",
-          "type": "comment"
-        },
-        {
-          "date": "08 April 2016 20:44",
-          "html": "Well, large STP domains are major problem in L2 which SPB doesn&#39;t solve. TRILL&#39;s approach of removing STP from the core and limiting it to smallest possible islands is IMHO much safer.<br /><br />Yes, in leaf&amp;spine fabrics, SPB&#39;s weird load-balancing approach gives similar results - as long as all links are up. But try to disconnect one of the links... And the real fun starts with more complex / arbitrary topologies ;-)<br />",
-          "id": "8126850030525468119",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Marian \u010eurkovi\u010d",
-          "profile": null,
-          "pub": "2016-04-08T20:44:23.433+02:00",
-          "ref": "556930115677446174",
-          "type": "comment"
-        }
-      ],
-      "date": "08 March 2016 11:08",
-      "html": "802.1aq shortest path bridging was a great idea, implemented about 10 years too late...",
-      "id": "556930115677446174",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Blake",
-      "profile": "http://l33.fr",
-      "pub": "2016-03-08T11:08:38.769+01:00",
-      "ref": "5249842431567098861",
-      "type": "comment"
-    },
-    {
-      "date": "09 March 2016 04:01",
-      "html": "I don&#39;t have strong feelings either way on spanning tree but I did have an expectation that it would be on by default for any switch I purchased.  Cisco Ethernet Switch modules for the ISR4K have spanning tree turned off by default. Let the buyer beware. http://www.cisco.com/c/en/us/products/collateral/routers/3900-series-integrated-services-routers-isr/data_sheet_c78-612808.html",
-      "id": "9014053307736805223",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Robert Thomson",
-      "profile": null,
-      "pub": "2016-03-09T04:01:58.806+01:00",
-      "ref": "5249842431567098861",
-      "type": "comment"
-    }
-  ],
-  "count": 19,
-  "id": "5249842431567098861",
-  "type": "post",
-  "url": "2016/03/spanning-tree-protocol-stp-and-bridging.html"
+   "comments": [
+      {
+         "date": "01 March 2016 13:16",
+         "html": "&gt;&gt;&quot;or if a switch loses its control plane (for example, due to a memory leak)&quot;<br /><br />Perfect example for this:<br />Any Cisco router with EtherSwitch-based (HWIC-...ESW, EHWIC-...ESG and associated ISR routers) switchports. All ports on a module are one single broadcast domain &amp; are up/up at power on not matter what was configured - until IOS is running has parsed the configuration.<br />",
+         "id": "4741560440372431235",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Christoph",
+         "profile": null,
+         "pub": "2016-03-01T13:16:27.199+01:00",
+         "ref": "5249842431567098861",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "03 March 2016 08:31",
+               "html": "Sadly, until everyone stops the bad practices of allowing bridging across multiple interfaces (including Windows and Linux hosts), or implements a proper signaling protocol (which even the data center fabric vendors can&#39;t really agree on), we still need STP to detect forwarding loops.",
+               "id": "566898534362966727",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-03-03T08:31:12.182+01:00",
+               "ref": "2352971840170695842",
+               "type": "comment"
+            },
+            {
+               "date": "03 March 2016 09:57",
+               "html": "&quot;It doesn’t matter if you’re doing routing on layer-2 (TRILL, SPB) or on layer-3 (IP) – you need a proper routing protocol to use alternate paths.&quot;<br /><br />I thought that load balancing at Layer 2 as implemented in TRILL has nothing to do with Layer 3 load balancing. Having Layer 2 load balancing is about having greater capacity i.e. using redundant links for traffic.<br />Layer 3 load balancing about using several L3 gateways - we do not care how layer 2 traffic is distributed at the physical layer (balanced or not). It&#39;s different topic how the routing protocols cope with multiply same L3-cost paths<br /><br />If you could comment on your original statements to clarify what you are had in mind.<br />Bogdan Golab",
+               "id": "2490279503026508893",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2016-03-03T09:57:59.593+01:00",
+               "ref": "2352971840170695842",
+               "type": "comment"
+            },
+            {
+               "date": "03 March 2016 11:57",
+               "html": "Apart from the flooding behavior (and summarization implications) layer-2 and layer-3 forwarding are today just two sides of the same coin.<br /><br />Also, you have to start thinking in layers and not agglutinate multiple problems into a bigger mess (see also RFC 1925 section 2.5). ",
+               "id": "2762578152904009063",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-03-03T11:57:17.279+01:00",
+               "ref": "2352971840170695842",
+               "type": "comment"
+            },
+            {
+               "date": "05 March 2016 12:02",
+               "html": "Probably I am not smart enough to understand it;)<br />Bogdan Golab",
+               "id": "1421393948071905341",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2016-03-05T12:02:47.362+01:00",
+               "ref": "2352971840170695842",
+               "type": "comment"
+            }
+         ],
+         "date": "01 March 2016 23:51",
+         "html": "Ivan, I think it&#39;s time you write one more post on STP. I humbly suggest this title &quot;The Death of Spanning Tree Protocol&quot;...",
+         "id": "2352971840170695842",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": "http://blog.reissromoli.com",
+         "pub": "2016-03-01T23:51:01.362+01:00",
+         "ref": "5249842431567098861",
+         "type": "comment"
+      },
+      {
+         "date": "01 March 2016 23:57",
+         "html": "The biggest problem with STP that I&#39;ve seen is when people who aren&#39;t exactly experts configure new switches and then disable spanning tree - because they heard from the experts that it&#39;s bad.<br />I try to tell them that spanning tree is like smoke detectors - yes, they can be annoying and sometimes need maintenance, but don&#39;t just turn them off.",
+         "id": "8769026229678414993",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Kerry Thompson",
+         "profile": "https://www.blogger.com/profile/00439180073297788221",
+         "pub": "2016-03-01T23:57:40.170+01:00",
+         "ref": "5249842431567098861",
+         "type": "comment"
+      },
+      {
+         "date": "02 March 2016 04:00",
+         "html": "I think STP (and it&#39;s various kludges) are here to stay, and will not be going anywhere anytime soon. Yes, a pure layer 3 solution would be a nice goal for many (after you weigh the pros and cons - ie: VM mobility, cost of L3 ToR switch, staff experience, etc). Until then, as Ivan had mentioned, there are always alternatives which may require a forklift upgrade in hardware (TRILL, Fabricpath, SPB).. or wait for the good &#39;ol SDN market/products to mature and prove themselves out (hopefully not in the same track record as IPv6). I for one will always try to minimize any L2 STP or bridge domains as far away from the core as possible, down to a pair of ToR switches, or if possible at the virtual switch edge. If it&#39;s one thing I&#39;ve learned throughout these very informative blog posts, it&#39;s that you should never extend that L2 domain across the DC, STP will bite you sooner than later.. it&#39;s just not worth the risk. Use OTV (point solution), or better yet have L3 between DC&#39;s in place and take advantage of some form of scripting/automation for VM mobility. ",
+         "id": "7506372020907291075",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Mario",
+         "profile": null,
+         "pub": "2016-03-02T04:00:11.150+01:00",
+         "ref": "5249842431567098861",
+         "type": "comment"
+      },
+      {
+         "date": "02 March 2016 07:33",
+         "html": "Even that STP has some challenges, never ever turn it off. You might not know who creates a loop accidentally. Let it be a misconnected cable or a booting device with strange port interconnects temporarily. STP is there as a last resort safety tool.<br />I have seen big meltdowns when someone turned off STP. Once it was not even in the Ethernet switches (since they were oversized and could cope with the increased traffic), but in the connected firewalls. Whoever it has stopped the air travel for a half a day in a whole country. So be careful!<br /><br />The good practice is to keep the STP domain as small as possible. And remember: STP was designed originally for maximum 7 hops and few switches and some dozens of host devices in mind. It is definitely not designed for connecting big data centers into a single bridge domain. <br /><br />Do not use something for a use case it was not design for and not fully tested and analyzed...<br /><br />And do not forget, if you create large bridge domains you also created large error domains. Cut-through switching is a tool for distributing and amplifying errors...<br />",
+         "id": "1947289460426927261",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Bela",
+         "profile": "https://www.blogger.com/profile/07985346761439657130",
+         "pub": "2016-03-02T07:33:02.565+01:00",
+         "ref": "5249842431567098861",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "03 March 2016 08:31",
+               "html": "Thank you. Added",
+               "id": "435894075991917835",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-03-03T08:31:49.553+01:00",
+               "ref": "1931589443157448166",
+               "type": "comment"
+            }
+         ],
+         "date": "02 March 2016 07:44",
+         "html": "I&#39;d like to add unidirectional links to the list of STP problems, this can happen because a bad transceiver or a fiber is broken or bad manipulated, and only vendor kludges can solve you, adding an intervendor compatibility problem ",
+         "id": "1931589443157448166",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Antonio Ojea",
+         "profile": "https://www.blogger.com/profile/14615081241229714383",
+         "pub": "2016-03-02T07:44:35.899+01:00",
+         "ref": "5249842431567098861",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "08 March 2016 11:11",
+               "html": "Disagree. Bridging was never a good (let alone great) idea. However, among all possible options, 802.1aq or TRILL are the least horrible.",
+               "id": "7670204373921686576",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-03-08T11:11:19.374+01:00",
+               "ref": "556930115677446174",
+               "type": "comment"
+            },
+            {
+               "date": "06 April 2016 19:48",
+               "html": "802.1aq does not solve lot of the serious problems and still runs MSTP through the network. Its loadbalancing over parallel links is at best weird and overall usefulness of 802.1aq is very questionable. On the other hand, TRILL effectively removes all typical L2 problems, since it in fact transparently converts L2 network into L3 routed domain - ingress switch packs incoming L2 packet into TRILL container, TRILL network routes the container using usual L3 routing principles, protocols (IS-IS) and safety belts (TTL, RPF check) and the egress switch discards the container and sends L2 packet to its final destination.",
+               "id": "2424746577624069642",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Marian Ďurkovič",
+               "profile": null,
+               "pub": "2016-04-06T19:48:38.228+02:00",
+               "ref": "556930115677446174",
+               "type": "comment"
+            },
+            {
+               "date": "06 April 2016 20:10",
+               "html": "Marian, I would suggest that before comparing two technologies you get your facts right. While your description of TRILL data plane is correct, the rest of your claims aren&#39;t.",
+               "id": "5758753081209775541",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-04-06T20:10:29.025+02:00",
+               "ref": "556930115677446174",
+               "type": "comment"
+            },
+            {
+               "date": "08 April 2016 09:50",
+               "html": "Ivan, I have hands-on experience with both. OK I should have formulated it more precisely - so I better copy the whole paragraph from RIPE TRILL tutorial: <br /><br />Spanning Tree:<br />TRILL RBridges block spanning tree and provide a new level above bridging but below Layer 3 routing. <br />SPB bridges run at the bridging level. They continue to maintain a spanning tree (or multiple spanning trees) hooking together any attached bridging to produce one huge spanning tree. Frames are forwarded by spanning tree or by shortest path depending on VLAN.<br /><br />And regarding load-balancing over parallel paths - TRILL uses standard L3 per-hop routing decisions including usual ECMP support, while 802.1aq computes multiple trees by XORing SYSIDs with different bitmasks which produces suboptimal results and doesn&#39;t consider per-hop specifics.",
+               "id": "1149550752551694940",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Marian Ďurkovič",
+               "profile": null,
+               "pub": "2016-04-08T09:50:46.557+02:00",
+               "ref": "556930115677446174",
+               "type": "comment"
+            },
+            {
+               "date": "08 April 2016 14:25",
+               "html": "Do keep in mind that the RIPE TRILL tutorial was delivered by a TRILL evangelist, so you can&#39;t possibly hope for an unbiased view.<br /><br />As I said, your understanding of the data planes is correct, but I disagree with the control plane summary. In most cases the fabric switches would run STP with the access layer for numerous reasons, and you could either integrate the fabric with STP or make the fabric switches root bridges in the access layer.<br /><br />Also, while the ECMP argument is valid, I don&#39;t think there&#39;s any significant difference between the two mechanisms in leaf-and-spine fabrics.<br /><br />Obviously, if you have real-life experience please share it.<br /><br />Finally, I did cover both in the last session of the leaf-and-spine fabric designs webinar 2 days ago, so I&#39;m a bit fluent on the differences ;)",
+               "id": "2089488772875501469",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2016-04-08T14:25:16.189+02:00",
+               "ref": "556930115677446174",
+               "type": "comment"
+            },
+            {
+               "date": "08 April 2016 20:44",
+               "html": "Well, large STP domains are major problem in L2 which SPB doesn&#39;t solve. TRILL&#39;s approach of removing STP from the core and limiting it to smallest possible islands is IMHO much safer.<br /><br />Yes, in leaf&amp;spine fabrics, SPB&#39;s weird load-balancing approach gives similar results - as long as all links are up. But try to disconnect one of the links... And the real fun starts with more complex / arbitrary topologies ;-)<br />",
+               "id": "8126850030525468119",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Marian Ďurkovič",
+               "profile": null,
+               "pub": "2016-04-08T20:44:23.433+02:00",
+               "ref": "556930115677446174",
+               "type": "comment"
+            }
+         ],
+         "date": "08 March 2016 11:08",
+         "html": "802.1aq shortest path bridging was a great idea, implemented about 10 years too late...",
+         "id": "556930115677446174",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Blake",
+         "profile": "http://l33.fr",
+         "pub": "2016-03-08T11:08:38.769+01:00",
+         "ref": "5249842431567098861",
+         "type": "comment"
+      },
+      {
+         "date": "09 March 2016 04:01",
+         "html": "I don&#39;t have strong feelings either way on spanning tree but I did have an expectation that it would be on by default for any switch I purchased.  Cisco Ethernet Switch modules for the ISR4K have spanning tree turned off by default. Let the buyer beware. http://www.cisco.com/c/en/us/products/collateral/routers/3900-series-integrated-services-routers-isr/data_sheet_c78-612808.html",
+         "id": "9014053307736805223",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Robert Thomson",
+         "profile": null,
+         "pub": "2016-03-09T04:01:58.806+01:00",
+         "ref": "5249842431567098861",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "02 April 2022 04:03",
+               "html": "<p>STP has no concept of adjacencies, and treats lack of incoming BPDUs as a permission to use the link for forwarding, so I would say we&#39;re talking about a suboptimal protocol design.</p>\n\n<p>UDLD is just a vendor-specific kludge solving a problem that shouldn&#39;t have existed in the first place.</p>\n\n<p>Obviously you could claim that &quot;if you haven&#39;t configured UDLD, it&#39;s your fault that STP brought down your network&quot;, but the root cause for the need to have two protocols configured when one should do is still STP.</p>\n",
+               "id": "1132",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-04-02T16:03:33",
+               "ref": "1129",
+               "type": "comment"
+            }
+         ],
+         "date": "01 April 2022 11:18",
+         "html": "<p>&quot;unidirectional links&quot; cause STP problems? Well they do if you don&#39;t configure UDLD on your STP links. So that is a configuration problem. It isn&#39;t STP&#39;s fault.</p>\n",
+         "id": "1129",
+         "name": " Katoomba",
+         "pub": "2022-04-01T23:18:29",
+         "type": "comment"
+      }
+   ],
+   "count": 9,
+   "id": "5249842431567098861",
+   "type": "post",
+   "url": "2016/03/spanning-tree-protocol-stp-and-bridging.html"
 }

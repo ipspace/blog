@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14579645045631302258" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4422468465412414099">26 February 2019 09:26</a>
+                <a rel="nofollow" id="c4422468465412414099" href="#4422468465412414099">26 February 2019 09:26</a>
               </span>
             </div>
-            <p class="comment-content">Does it make sense to use an &quot;abstraction&quot; layer for the stored data?<br />For example, if my single source of truth is a CMBD system (which is not operated by the networking team). Most of the time (I guess) the export functionality of these tools is very static - meaning the format and content is dictated by the vendor. Maybe the vendor changes the exporting/database format with software updates and the backend scripts (ansible etc.) no longer work correctly.<br /><br />The question is if it&#39;s advisable to create an own database or data structure format (e.g. json) and populate this by external tools and scripts (Cisco Prime, CMDB). Backend tools (like ansible, other NMS systems etc.) can use the abstraction layer format to access the device list. In case the single source of truth changes, only one script (Source -&gt; Abstraction format) must be adjusted and not all backend scripts... (just thinking loud) ...</p>
+            <div class="comment-content">Does it make sense to use an &quot;abstraction&quot; layer for the stored data?<br />For example, if my single source of truth is a CMBD system (which is not operated by the networking team). Most of the time (I guess) the export functionality of these tools is very static - meaning the format and content is dictated by the vendor. Maybe the vendor changes the exporting/database format with software updates and the backend scripts (ansible etc.) no longer work correctly.<br /><br />The question is if it&#39;s advisable to create an own database or data structure format (e.g. json) and populate this by external tools and scripts (Cisco Prime, CMDB). Backend tools (like ansible, other NMS systems etc.) can use the abstraction layer format to access the device list. In case the single source of truth changes, only one script (Source -&gt; Abstraction format) must be adjusted and not all backend scripts... (just thinking loud) ...</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02533617552720883323" rel="nofollow">Josh Clark</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#179245209141258479">26 February 2019 13:42</a>
+                <a rel="nofollow" id="c179245209141258479" href="#179245209141258479">26 February 2019 13:42</a>
               </span>
             </div>
-            <p class="comment-content">Sounds to me like it depends. It depends on the scope of tools and scale of the tooling.<br /><br />If, for example, it&#39;s mostly homebrew tools that all run on a single box, I don&#39;t think it makes sense to create an entire layer. You could simplify and just write a library that does the conversion that you then call from whatever tools you want. I&#39;d call that less of a layer and more a good application of the DRY principle of development.<br /><br />However, if it&#39;s a large enterprise with multiple tools on multiple servers, that sort of data conditioning step could be useful, especially if device inventory and device status (or other metrics) are in different tools. That sounds more similar to the data science construct of ETL, which aims to get all the data into a usable format.</p>
+            <div class="comment-content">Sounds to me like it depends. It depends on the scope of tools and scale of the tooling.<br /><br />If, for example, it&#39;s mostly homebrew tools that all run on a single box, I don&#39;t think it makes sense to create an entire layer. You could simplify and just write a library that does the conversion that you then call from whatever tools you want. I&#39;d call that less of a layer and more a good application of the DRY principle of development.<br /><br />However, if it&#39;s a large enterprise with multiple tools on multiple servers, that sort of data conditioning step could be useful, especially if device inventory and device status (or other metrics) are in different tools. That sounds more similar to the data science construct of ETL, which aims to get all the data into a usable format.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17970010131320482831" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2426673112934892959">26 February 2019 15:00</a>
+                <a rel="nofollow" id="c2426673112934892959" href="#2426673112934892959">26 February 2019 15:00</a>
               </span>
             </div>
-            <p class="comment-content"><br />Thank you for your blog.  This is a particularly interesting topic for those that outgrow the use of simplistic methods of data files, whether they be YAML, CSV, XML, JSON, etc.  At some point, one begins to realize that managing all of the data and relationships becomes beyond the means of &quot;simple&quot; files, and they should (need) go into the realm of using databases.  I would submit that there are going to be folks that never outgrow the use of data-files, most likely due to the fact that they don&#39;t have a &quot;big enough&quot; network or a &quot;complex enough&quot; set of services.  So to each their own, of course.  But when someone *does* outgrow, then what ..., eh?<br /><br />You pointed out the need for at least an inventory source of truth; and I absolutely agree.  But what about the &quot;network application&quot; source of truth?  What I mean by this is the following.  I believe that every network service, considered as a whole, is as a distributed application.  While people outside the network industry think of &quot;the network&quot; as infrastructure, really the configurations in place create a service; and that service is more akin to the characteristics of an application than of infrastructure.  For example, if one is building a datacenter to provide EVPN-VXLAN services, then they need to build/buy/borrow a network automation tool to support that application.  That same application will not be suitable to managing WAN, or campus/branch, etc.  So from an application point of view, I would submit there needs to be network services &quot;source of truth&quot; databases.  Would you agree? and if so is this a concept you are teaching as of yet?<br /></p>
+            <div class="comment-content"><br />Thank you for your blog.  This is a particularly interesting topic for those that outgrow the use of simplistic methods of data files, whether they be YAML, CSV, XML, JSON, etc.  At some point, one begins to realize that managing all of the data and relationships becomes beyond the means of &quot;simple&quot; files, and they should (need) go into the realm of using databases.  I would submit that there are going to be folks that never outgrow the use of data-files, most likely due to the fact that they don&#39;t have a &quot;big enough&quot; network or a &quot;complex enough&quot; set of services.  So to each their own, of course.  But when someone *does* outgrow, then what ..., eh?<br /><br />You pointed out the need for at least an inventory source of truth; and I absolutely agree.  But what about the &quot;network application&quot; source of truth?  What I mean by this is the following.  I believe that every network service, considered as a whole, is as a distributed application.  While people outside the network industry think of &quot;the network&quot; as infrastructure, really the configurations in place create a service; and that service is more akin to the characteristics of an application than of infrastructure.  For example, if one is building a datacenter to provide EVPN-VXLAN services, then they need to build/buy/borrow a network automation tool to support that application.  That same application will not be suitable to managing WAN, or campus/branch, etc.  So from an application point of view, I would submit there needs to be network services &quot;source of truth&quot; databases.  Would you agree? and if so is this a concept you are teaching as of yet?<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6389936688583439969">26 February 2019 15:01</a>
+                <a rel="nofollow" id="c6389936688583439969" href="#6389936688583439969">26 February 2019 15:01</a>
               </span>
             </div>
-            <p class="comment-content">Quick answers to the last two questions: YES and YES ;)</p>
+            <div class="comment-content">Quick answers to the last two questions: YES and YES ;)</div>
           </div>
         </li>
       </div>
@@ -107,10 +102,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10452262248456484824" rel="nofollow">Kiran at Anuta Networks</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7440071724250824561">01 March 2019 23:27</a>
+                <a rel="nofollow" id="c7440071724250824561" href="#7440071724250824561">01 March 2019 23:27</a>
               </span>
             </div>
-            <p class="comment-content">Disclaimer: I work for Anuta Networks, a network automation vendor. <br /><br />I don&#39;t mean to promote the product, but in case of our Anuta ATOM software, we have the following approach, let me know if you see a problem with this:<br /><br />1. Just like all other tools, ATOM uses CDP, LLDP to discover the devices and build the topology.<br /><br />2. ATOM then reads the configs from all vendor devices and normalizes them into a unified data model (JSON or XML format) using abstraction. These JSON objects can be manipulated via API.<br /><br />3. ATOM then periodically reconciles with the underlying infrastructure. If the config changed manually, ATOM can restore original config back to the devices. <br /><br />Few of our customers like F5 Silverline are using ATOM as the single source of truth for network configurations and analytics data.<br /><br />This works across multiple vendors and multiple-domains (Campus, WAN, DC, MPLS core etc).</p>
+            <div class="comment-content">Disclaimer: I work for Anuta Networks, a network automation vendor. <br /><br />I don&#39;t mean to promote the product, but in case of our Anuta ATOM software, we have the following approach, let me know if you see a problem with this:<br /><br />1. Just like all other tools, ATOM uses CDP, LLDP to discover the devices and build the topology.<br /><br />2. ATOM then reads the configs from all vendor devices and normalizes them into a unified data model (JSON or XML format) using abstraction. These JSON objects can be manipulated via API.<br /><br />3. ATOM then periodically reconciles with the underlying infrastructure. If the config changed manually, ATOM can restore original config back to the devices. <br /><br />Few of our customers like F5 Silverline are using ATOM as the single source of truth for network configurations and analytics data.<br /><br />This works across multiple vendors and multiple-domains (Campus, WAN, DC, MPLS core etc).</div>
           </div>
         </li>
       </div>

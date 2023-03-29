@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>23 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5554410204791451414">25 January 2018 12:50</a>
+                <a rel="nofollow" id="c5554410204791451414" href="#5554410204791451414">25 January 2018 12:50</a>
               </span>
             </div>
-            <p class="comment-content">&quot;&quot;&quot;In these cases, run EVPN over IBGP sessions assuming you can use an IGP as your routing protocol. Run away from vendors that try to sell you the idea of running EBGP between leaf and spine switches, and IBGP between leaf switches on top of intra-fabric EBGP.&quot;&quot;&quot;<br /><br />Can you please explain your logic behind this statement?<br />What&#39;s the difference between &quot;underlay IGP + overlay iBGP&quot; and &quot;underlay eBGP + overlay iBGP&quot; cases?<br />In latter case you just need to use two different AS numbers on leaf switch - one unique eBGP AS per each ToR and one single AS for iBGP overlay.<br />Or, in other words, you need two independent BGP sessions on ToR switch - one for underlay and another for overlay.</p>
+            <div class="comment-content">&quot;&quot;&quot;In these cases, run EVPN over IBGP sessions assuming you can use an IGP as your routing protocol. Run away from vendors that try to sell you the idea of running EBGP between leaf and spine switches, and IBGP between leaf switches on top of intra-fabric EBGP.&quot;&quot;&quot;<br /><br />Can you please explain your logic behind this statement?<br />What&#39;s the difference between &quot;underlay IGP + overlay iBGP&quot; and &quot;underlay eBGP + overlay iBGP&quot; cases?<br />In latter case you just need to use two different AS numbers on leaf switch - one unique eBGP AS per each ToR and one single AS for iBGP overlay.<br />Or, in other words, you need two independent BGP sessions on ToR switch - one for underlay and another for overlay.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#134197803865724930">25 January 2018 15:26</a>
+                <a rel="nofollow" id="c134197803865724930" href="#134197803865724930">25 January 2018 15:26</a>
               </span>
             </div>
-            <p class="comment-content">Would it work? Probably.<br /><br />Is it sane? We probably disagree on this aspect.<br /><br />Is it supported? I would love to see how many vendors officially support this (apart from the one that I&#39;ve seen using this design), but I won&#39;t waste my time investigating it.<br /><br />Is it easy to understand? Yet again, I would love to see how you explain this to the guy that has to do troubleshooting @ 2AM on Sunday morning.<br /><br />Will someone go and design a customer network this way? Sure. <br /><br />Will they be upset when the customer reads my blog post? Probably.</p>
+            <div class="comment-content">Would it work? Probably.<br /><br />Is it sane? We probably disagree on this aspect.<br /><br />Is it supported? I would love to see how many vendors officially support this (apart from the one that I&#39;ve seen using this design), but I won&#39;t waste my time investigating it.<br /><br />Is it easy to understand? Yet again, I would love to see how you explain this to the guy that has to do troubleshooting @ 2AM on Sunday morning.<br /><br />Will someone go and design a customer network this way? Sure. <br /><br />Will they be upset when the customer reads my blog post? Probably.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1301064109337351698">26 January 2018 00:05</a>
+                <a rel="nofollow" id="c1301064109337351698" href="#1301064109337351698">26 January 2018 00:05</a>
               </span>
             </div>
-            <p class="comment-content">In other words, Juniper isn&#39;t big enough player in this market for you to pay attention? So sad...</p>
+            <div class="comment-content">In other words, Juniper isn&#39;t big enough player in this market for you to pay attention? So sad...</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#726601205804442097">26 January 2018 10:13</a>
+                <a rel="nofollow" id="c726601205804442097" href="#726601205804442097">26 January 2018 10:13</a>
               </span>
             </div>
-            <p class="comment-content">This design (eBGP + iBGP) looks confusing only in the &quot;industry-standard CLI&quot;.<br />In JunOS it is simple and logical - clear separation of underlay and overlay:<br /><br />alex@vQFX1# show protocols bgp <br />group underlay {<br />    type external;<br />    export direct;<br />    local-as 65011;<br />    family inet {<br />        unicast;<br />    }<br />    multipath multiple-as;<br />    neighbor 192.168.0.0 { ### SPINE1<br />        peer-as 65001;<br />    }<br />    neighbor 192.168.0.4 { ### SPINE2<br />        peer-as 65002;<br />    }<br />}<br />group overlay {<br />    type internal;<br />    local-as 65000;<br />    local-address 11.11.11.11; ### loopback<br />    family evpn {<br />        signaling;<br />    }<br />    multipath;<br />    neighbor 2.2.2.2;  ### EVPN RR1<br />    neighbor 1.1.1.1;  ### EVPN RR2<br />}<br /><br />I don&#39;t think it&#39;s more complex and confusing than no-nexthop-change option in case of eBGP only design.<br /><br /><br />I hope you&#39;ll find some time to look at Juniper design options for EVPN fabrics, they have some pretty good stuff there. <br />For example, this book https://www.juniper.net/us/en/training/jnbooks/day-one/data-center-technologies/data-center-deployment-evpn-vxlan/ part 3 regarding eBGP+iBGP design.<br />Apart from that, they managed to implement proper EVPN multihoming, not MLAG-dependent cludges.<br /></p>
+            <div class="comment-content">This design (eBGP + iBGP) looks confusing only in the &quot;industry-standard CLI&quot;.<br />In JunOS it is simple and logical - clear separation of underlay and overlay:<br /><br />alex@vQFX1# show protocols bgp <br />group underlay {<br />    type external;<br />    export direct;<br />    local-as 65011;<br />    family inet {<br />        unicast;<br />    }<br />    multipath multiple-as;<br />    neighbor 192.168.0.0 { ### SPINE1<br />        peer-as 65001;<br />    }<br />    neighbor 192.168.0.4 { ### SPINE2<br />        peer-as 65002;<br />    }<br />}<br />group overlay {<br />    type internal;<br />    local-as 65000;<br />    local-address 11.11.11.11; ### loopback<br />    family evpn {<br />        signaling;<br />    }<br />    multipath;<br />    neighbor 2.2.2.2;  ### EVPN RR1<br />    neighbor 1.1.1.1;  ### EVPN RR2<br />}<br /><br />I don&#39;t think it&#39;s more complex and confusing than no-nexthop-change option in case of eBGP only design.<br /><br /><br />I hope you&#39;ll find some time to look at Juniper design options for EVPN fabrics, they have some pretty good stuff there. <br />For example, this book https://www.juniper.net/us/en/training/jnbooks/day-one/data-center-technologies/data-center-deployment-evpn-vxlan/ part 3 regarding eBGP+iBGP design.<br />Apart from that, they managed to implement proper EVPN multihoming, not MLAG-dependent cludges.<br /></div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6097663668705119390">26 January 2018 11:46</a>
+                <a rel="nofollow" id="c6097663668705119390" href="#6097663668705119390">26 January 2018 11:46</a>
               </span>
             </div>
-            <p class="comment-content">@Alex: &quot;In other words, Juniper isn&#39;t big enough player in this market for you to pay attention? So sad...&quot;<br /><br />Just because someone has a non-zero market share doesn&#39;t mean that <br /><br />(A) I&#39;ll actively track everything they do. There are too many more interesting things out there, and I never claimed to be an industry analyst. With many vendors I have friendly SEs who send me an occasional email saying &quot;read this&quot;.<br /><br />(B) I agree with what they&#39;re doing just because they are Vendor X. Every vendor got upset with my vies every now and then. Now it looks it&#39;s Juniper&#39;s turn ;)<br /><br />(C) What they&#39;re doing makes sense. Remember that we&#39;re talking about reasonably-sized data center fabrics... and even if you have a data center fabric use case that needs EVPN at scale where IGP is no longer a viable underlay option, I&#39;d guess it&#39;s an outlier due to very peculiar circumstances.<br /><br />Finally, I was never talking only about configuration complexity (and related IOS or EOS configuration has similar complexity as Junos) but the complexity of what&#39;s going on behind the scenes. Also, you might have missed the &quot;ignore AS-path check&quot; tweak (or is Junos turning off BGP loop prevention logic by default?)<br /><br />As for &quot;MLAG-dependent kludges&quot;, I&#39;m pointing that out every time I talk about EVPN and MLAG, but because they did one thing right doesn&#39;t mean that everything else they do makes equal sense.<br /><br />As I wrote above, I think we can agree that we disagree on whether this is sane and move on. At least I will.</p>
+            <div class="comment-content">@Alex: &quot;In other words, Juniper isn&#39;t big enough player in this market for you to pay attention? So sad...&quot;<br /><br />Just because someone has a non-zero market share doesn&#39;t mean that <br /><br />(A) I&#39;ll actively track everything they do. There are too many more interesting things out there, and I never claimed to be an industry analyst. With many vendors I have friendly SEs who send me an occasional email saying &quot;read this&quot;.<br /><br />(B) I agree with what they&#39;re doing just because they are Vendor X. Every vendor got upset with my vies every now and then. Now it looks it&#39;s Juniper&#39;s turn ;)<br /><br />(C) What they&#39;re doing makes sense. Remember that we&#39;re talking about reasonably-sized data center fabrics... and even if you have a data center fabric use case that needs EVPN at scale where IGP is no longer a viable underlay option, I&#39;d guess it&#39;s an outlier due to very peculiar circumstances.<br /><br />Finally, I was never talking only about configuration complexity (and related IOS or EOS configuration has similar complexity as Junos) but the complexity of what&#39;s going on behind the scenes. Also, you might have missed the &quot;ignore AS-path check&quot; tweak (or is Junos turning off BGP loop prevention logic by default?)<br /><br />As for &quot;MLAG-dependent kludges&quot;, I&#39;m pointing that out every time I talk about EVPN and MLAG, but because they did one thing right doesn&#39;t mean that everything else they do makes equal sense.<br /><br />As I wrote above, I think we can agree that we disagree on whether this is sane and move on. At least I will.</div>
           </div>
         </li>
       </div>
@@ -110,10 +105,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5948479216282687836">26 January 2018 12:40</a>
+                <a rel="nofollow" id="c5948479216282687836" href="#5948479216282687836">26 January 2018 12:40</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Also, you might have missed the &quot;ignore AS-path check&quot; tweak (or is Junos turning off BGP loop prevention logic by default?)&quot;<br /><br />I used to think about eBGP and iBGP in this design as two completely independent protocols, which doesn&#39;t share routes between each other. So I don&#39;t really understand your concern about loop prevention here... Maybe I&#39;m missing something.<br /><br />But anyway, thank you for detailed explanation of your point of view. I really appreciate your hard work of clarifying so complex (sadly) world of modern networking.</p>
+            <div class="comment-content">&quot;Also, you might have missed the &quot;ignore AS-path check&quot; tweak (or is Junos turning off BGP loop prevention logic by default?)&quot;<br /><br />I used to think about eBGP and iBGP in this design as two completely independent protocols, which doesn&#39;t share routes between each other. So I don&#39;t really understand your concern about loop prevention here... Maybe I&#39;m missing something.<br /><br />But anyway, thank you for detailed explanation of your point of view. I really appreciate your hard work of clarifying so complex (sadly) world of modern networking.</div>
           </div>
         </li>
       </div>
@@ -128,10 +123,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8783107733490029644">26 January 2018 12:45</a>
+                <a rel="nofollow" id="c8783107733490029644" href="#8783107733490029644">26 January 2018 12:45</a>
               </span>
             </div>
-            <p class="comment-content">Hmm, I thought you had this running in a life/PoC network.<br /><br />If you want to run IBGP between ToR switches, they all have to be in the same AS. If the spine is in a different AS, you have the &quot;I&#39;m receiving EBGP prefixes originating from my own AS&quot; problem, which usually requires &quot;allowas-in&quot; tweak or whatever it&#39;s called on a specific platform.<br /><br /></p>
+            <div class="comment-content">Hmm, I thought you had this running in a life/PoC network.<br /><br />If you want to run IBGP between ToR switches, they all have to be in the same AS. If the spine is in a different AS, you have the &quot;I&#39;m receiving EBGP prefixes originating from my own AS&quot; problem, which usually requires &quot;allowas-in&quot; tweak or whatever it&#39;s called on a specific platform.<br /><br /></div>
           </div>
         </li>
       </div>
@@ -146,10 +141,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4333767599688057799">26 January 2018 13:06</a>
+                <a rel="nofollow" id="c4333767599688057799" href="#4333767599688057799">26 January 2018 13:06</a>
               </span>
             </div>
-            <p class="comment-content">We have this design running successfully for one of our customers. And I also played a lot with this config during my JNCIE-DC preparation. By &quot;missing something&quot; I mean in the BGP internal implementation side.<br /><br />And, sorry, again I don&#39;t understand your logic... In this design spine does not receive any EVPN routes at all. All that spine see is just eBGP IPv4 routes from leafs, like in simple L3-only fabric.<br /><br />Leaf switch doesn&#39;t need &quot;to be&quot; in one single AS - it uses one AS number for eBGP, and another completely independent AS number for iBGP. Look for config example above. This is complete BGP config - AS number is not configured under routing-options stanza. So in this example leaf switch in AS 65011 for eBGP and in AS 65000 for iBGP simultaneously.</p>
+            <div class="comment-content">We have this design running successfully for one of our customers. And I also played a lot with this config during my JNCIE-DC preparation. By &quot;missing something&quot; I mean in the BGP internal implementation side.<br /><br />And, sorry, again I don&#39;t understand your logic... In this design spine does not receive any EVPN routes at all. All that spine see is just eBGP IPv4 routes from leafs, like in simple L3-only fabric.<br /><br />Leaf switch doesn&#39;t need &quot;to be&quot; in one single AS - it uses one AS number for eBGP, and another completely independent AS number for iBGP. Look for config example above. This is complete BGP config - AS number is not configured under routing-options stanza. So in this example leaf switch in AS 65011 for eBGP and in AS 65000 for iBGP simultaneously.</div>
           </div>
         </li>
       </div>
@@ -164,10 +159,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7061148231084158516">27 January 2018 08:24</a>
+                <a rel="nofollow" id="c7061148231084158516" href="#7061148231084158516">27 January 2018 08:24</a>
               </span>
             </div>
-            <p class="comment-content">Read the Junos documentation on &quot;local-as&quot; and it seems to me this feature is the usual &quot;lie what my AS number is&quot;, not &quot;I can run two BGP instances with different AS numbers&quot;. I wouldn&#39;t say that masquerading your AS number reduces complexity ;)</p>
+            <div class="comment-content">Read the Junos documentation on &quot;local-as&quot; and it seems to me this feature is the usual &quot;lie what my AS number is&quot;, not &quot;I can run two BGP instances with different AS numbers&quot;. I wouldn&#39;t say that masquerading your AS number reduces complexity ;)</div>
           </div>
         </li>
       </div>
@@ -182,10 +177,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1449444919986986131">29 January 2018 00:17</a>
+                <a rel="nofollow" id="c1449444919986986131" href="#1449444919986986131">29 January 2018 00:17</a>
               </span>
             </div>
-            <p class="comment-content">Summarized my views regarding this subject in this blog post: http://jncie.tech/2018/01/28/bgp-design-options-for-evpn-in-data-center-fabrics/</p>
+            <div class="comment-content">Summarized my views regarding this subject in this blog post: http://jncie.tech/2018/01/28/bgp-design-options-for-evpn-in-data-center-fabrics/</div>
           </div>
         </li>
       </div>
@@ -200,10 +195,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4989418837399297415">29 January 2018 08:47</a>
+                <a rel="nofollow" id="c4989418837399297415" href="#4989418837399297415">29 January 2018 08:47</a>
               </span>
             </div>
-            <p class="comment-content">And we&#39;re mostly in agreement ;) Thank you - will make sure to add the link to your blog post to the article once I find the time to update it.</p>
+            <div class="comment-content">And we&#39;re mostly in agreement ;) Thank you - will make sure to add the link to your blog post to the article once I find the time to update it.</div>
           </div>
         </li>
       </div>
@@ -225,10 +220,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3126731201810262775">25 January 2018 13:30</a>
+                <a rel="nofollow" id="c3126731201810262775" href="#3126731201810262775">25 January 2018 13:30</a>
               </span>
             </div>
-            <p class="comment-content">IMHO eBGP only design is the one that should be avoided for one simple reason - why bother your spine switches with EVPN routes from all connected leaf switches (and there are a LOT of routes in EVPN).<br />In your own words - &quot;complexity should belong to edges&quot;.<br />If you need RR for iBGP (of course you do) - just use your DC GW routers or, even better, virtual routers like vMX.</p>
+            <div class="comment-content">IMHO eBGP only design is the one that should be avoided for one simple reason - why bother your spine switches with EVPN routes from all connected leaf switches (and there are a LOT of routes in EVPN).<br />In your own words - &quot;complexity should belong to edges&quot;.<br />If you need RR for iBGP (of course you do) - just use your DC GW routers or, even better, virtual routers like vMX.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -244,10 +239,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6468213573687601109">25 January 2018 15:14</a>
+                <a rel="nofollow" id="c6468213573687601109" href="#6468213573687601109">25 January 2018 15:14</a>
               </span>
             </div>
-            <p class="comment-content">I agree with this part - but then you should go for IBGP + IGP. Running a single layer-2 domain across a data center fabric that is big enough to require EBGP as the routing protocol (= more than a few hundred switches) is asking for disaster. <br /><br />Most organizations that deal with networks of this size try to keep layer-2 domains as small as possible or move the problem to the real network edge - the hypervisors.</p>
+            <div class="comment-content">I agree with this part - but then you should go for IBGP + IGP. Running a single layer-2 domain across a data center fabric that is big enough to require EBGP as the routing protocol (= more than a few hundred switches) is asking for disaster. <br /><br />Most organizations that deal with networks of this size try to keep layer-2 domains as small as possible or move the problem to the real network edge - the hypervisors.</div>
           </div>
         </li>
       </div>
@@ -269,10 +264,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#289269006316338893">26 January 2018 10:02</a>
+                <a rel="nofollow" id="c289269006316338893" href="#289269006316338893">26 January 2018 10:02</a>
               </span>
             </div>
-            <p class="comment-content">Hi - <br /><br />I have read documentation from a Vendor that claims they offer two variants of EVPN; <br /> IGP underlay + iBGP Overlay<br /> eBGP underlay + eBGP Overlay<br /><br />The latter would seem neat as a single eBGP session from leaf to spine would support two &quot;address families&quot; (IPv4 for underlay and EVPN for Overlay). However, as Alex suggests above, it would seem to result in a bloated forwarding tables on the spines as they have to retain (and process) all the EVPN routes. <br /><br />However, the vendor claims to have a config &quot;switch&quot; that prevents this - does this ring true? If so, it would seem to suggest their eBGP model would be preferable?<br /><br /><br />Regards, <br />James</p>
+            <div class="comment-content">Hi - <br /><br />I have read documentation from a Vendor that claims they offer two variants of EVPN; <br /> IGP underlay + iBGP Overlay<br /> eBGP underlay + eBGP Overlay<br /><br />The latter would seem neat as a single eBGP session from leaf to spine would support two &quot;address families&quot; (IPv4 for underlay and EVPN for Overlay). However, as Alex suggests above, it would seem to result in a bloated forwarding tables on the spines as they have to retain (and process) all the EVPN routes. <br /><br />However, the vendor claims to have a config &quot;switch&quot; that prevents this - does this ring true? If so, it would seem to suggest their eBGP model would be preferable?<br /><br /><br />Regards, <br />James</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -288,10 +283,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4184553043210370443">26 January 2018 10:21</a>
+                <a rel="nofollow" id="c4184553043210370443" href="#4184553043210370443">26 January 2018 10:21</a>
               </span>
             </div>
-            <p class="comment-content">This magic config &quot;switch&quot; prevents EVPN routes from installing into forwarding table on spines, but what about  routing tables on spines and all related memory/CPU load?<br />And also think about the possibility of EVPN overlay implementation in already running eBGP IP fabric - would you want to add another family to already running eBGP sessions?</p>
+            <div class="comment-content">This magic config &quot;switch&quot; prevents EVPN routes from installing into forwarding table on spines, but what about  routing tables on spines and all related memory/CPU load?<br />And also think about the possibility of EVPN overlay implementation in already running eBGP IP fabric - would you want to add another family to already running eBGP sessions?</div>
           </div>
         </li>
       </div>
@@ -306,10 +301,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#611317682065648406">26 January 2018 14:00</a>
+                <a rel="nofollow" id="c611317682065648406" href="#611317682065648406">26 January 2018 14:00</a>
               </span>
             </div>
-            <p class="comment-content">Fair point about adding a new AF to an existing BGP session - but I was thinking in the context of a new build. <br />Do you think PBB-EVPN has a part to play within the DC?</p>
+            <div class="comment-content">Fair point about adding a new AF to an existing BGP session - but I was thinking in the context of a new build. <br />Do you think PBB-EVPN has a part to play within the DC?</div>
           </div>
         </li>
       </div>
@@ -331,10 +326,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15493370358037866116" rel="nofollow">Aldrin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6280117953014365767">26 January 2018 23:08</a>
+                <a rel="nofollow" id="c6280117953014365767" href="#6280117953014365767">26 January 2018 23:08</a>
               </span>
             </div>
-            <p class="comment-content">There&#39;s nothing wrong with eBGP in place of a traditional IGP protocol with iBGP for EVPN overlay.  This is consistent with using ISIS or other IGP with iBGP for EVPN overlay.  Here we just swap out ISIS/OSPF for RFC7938.  Any other approach seems divergent.</p>
+            <div class="comment-content">There&#39;s nothing wrong with eBGP in place of a traditional IGP protocol with iBGP for EVPN overlay.  This is consistent with using ISIS or other IGP with iBGP for EVPN overlay.  Here we just swap out ISIS/OSPF for RFC7938.  Any other approach seems divergent.</div>
           </div>
         </li>
       </div>
@@ -349,10 +344,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2388060776410469055">18 March 2018 04:40</a>
+                <a rel="nofollow" id="c2388060776410469055" href="#2388060776410469055">18 March 2018 04:40</a>
               </span>
             </div>
-            <p class="comment-content"> Context of the original blog is incorrect.  I’ve built multiple fabrics with eBGP underlays and iBGP overlays hosting 50K MACs and it works perfectly (assuming you know what you’re doing).  Disappointing to see people stating incorrect views/interpretations as fact.</p>
+            <div class="comment-content"> Context of the original blog is incorrect.  I’ve built multiple fabrics with eBGP underlays and iBGP overlays hosting 50K MACs and it works perfectly (assuming you know what you’re doing).  Disappointing to see people stating incorrect views/interpretations as fact.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -368,10 +363,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1159405113843443375">18 March 2018 11:31</a>
+                <a rel="nofollow" id="c1159405113843443375" href="#1159405113843443375">18 March 2018 11:31</a>
               </span>
             </div>
-            <p class="comment-content">In case you&#39;re referring to my &quot;Run away from vendors that try to sell you the idea of running EBGP between leaf and spine switches, and IBGP between leaf switches on top of intra-fabric EBGP&quot; you might have noticed it&#39;s my view or opinion, based not on the technical viability of the solution (yes, it works) but of its unnecessary complexity.<br /><br />You might consider it incorrect, and I have no problem with that. I might also consider anonymous comments saying &quot;my concoction works perfectly assuming you know what you&#39;re doing&quot; highly irrelevant as it clearly applies to a zillion of &quot;just because you could doesn&#39;t mean that you should&quot; ideas, and your &quot;assuming you know what you&#39;re doing&quot; remark only validates my opinion. Thanks for that ;)</p>
+            <div class="comment-content">In case you&#39;re referring to my &quot;Run away from vendors that try to sell you the idea of running EBGP between leaf and spine switches, and IBGP between leaf switches on top of intra-fabric EBGP&quot; you might have noticed it&#39;s my view or opinion, based not on the technical viability of the solution (yes, it works) but of its unnecessary complexity.<br /><br />You might consider it incorrect, and I have no problem with that. I might also consider anonymous comments saying &quot;my concoction works perfectly assuming you know what you&#39;re doing&quot; highly irrelevant as it clearly applies to a zillion of &quot;just because you could doesn&#39;t mean that you should&quot; ideas, and your &quot;assuming you know what you&#39;re doing&quot; remark only validates my opinion. Thanks for that ;)</div>
           </div>
         </li>
       </div>
@@ -393,10 +388,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2719207452314710704">19 March 2018 02:12</a>
+                <a rel="nofollow" id="c2719207452314710704" href="#2719207452314710704">19 March 2018 02:12</a>
               </span>
             </div>
-            <p class="comment-content">No worries.  I have no idea who you are or what you know (google brought me here in a search), but if you believe segregating control and data planes via eBGP and iBGP is complex, then running an IP fabric isn’t for you (and there’s nothing wrong with that).  Finding good talent is incredibly hard.  There way more mediocre network engineers out there who have a limited working knowledge of BGP vs truly talented ones who really understand the protocol inside and out.  Apologies for the anonymous posts, but circumstances dictate.  Best of luck for the future with your site.</p>
+            <div class="comment-content">No worries.  I have no idea who you are or what you know (google brought me here in a search), but if you believe segregating control and data planes via eBGP and iBGP is complex, then running an IP fabric isn’t for you (and there’s nothing wrong with that).  Finding good talent is incredibly hard.  There way more mediocre network engineers out there who have a limited working knowledge of BGP vs truly talented ones who really understand the protocol inside and out.  Apologies for the anonymous posts, but circumstances dictate.  Best of luck for the future with your site.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -412,10 +407,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6252351647484338551">19 March 2018 08:26</a>
+                <a rel="nofollow" id="c6252351647484338551" href="#6252351647484338551">19 March 2018 08:26</a>
               </span>
             </div>
-            <p class="comment-content">Nicely played mr. Anonymous, but I&#39;m not biting ;)</p>
+            <div class="comment-content">Nicely played mr. Anonymous, but I&#39;m not biting ;)</div>
           </div>
         </li>
       </div>
@@ -437,10 +432,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.nasa.gov" rel="nofollow">Paul</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5055854090187969717">23 March 2018 20:28</a>
+                <a rel="nofollow" id="c5055854090187969717" href="#5055854090187969717">23 March 2018 20:28</a>
               </span>
             </div>
-            <p class="comment-content">Interesting discussion guys, and there’s nothing &quot;technically&quot; wrong with using a single instance of eBGP in an IP fabric.  But …. with a link failure you could potentially have millions of MAC routes withdrawn and relearned (or at least we do on the scale we build/deploy to).  When using eBGP underlays and iBGP overlays, link failures don’t cause the iBGP overlay (with our ~1M MAC routes) to re-converge and impact performance.  I understand it’s added complexity on the front-end, but BGP control/data plane segregation will save you issues down the road when dealing wth large IP fabrics.  Granted our IP fabric networks are larger than most and not typical, but after looking at this problem space for 3 years this is the solution that works for us.  As always, your mileage may vary.</p>
+            <div class="comment-content">Interesting discussion guys, and there’s nothing &quot;technically&quot; wrong with using a single instance of eBGP in an IP fabric.  But …. with a link failure you could potentially have millions of MAC routes withdrawn and relearned (or at least we do on the scale we build/deploy to).  When using eBGP underlays and iBGP overlays, link failures don’t cause the iBGP overlay (with our ~1M MAC routes) to re-converge and impact performance.  I understand it’s added complexity on the front-end, but BGP control/data plane segregation will save you issues down the road when dealing wth large IP fabrics.  Granted our IP fabric networks are larger than most and not typical, but after looking at this problem space for 3 years this is the solution that works for us.  As always, your mileage may vary.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -456,10 +451,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#87906423801529339">24 March 2018 20:17</a>
+                <a rel="nofollow" id="c87906423801529339" href="#87906423801529339">24 March 2018 20:17</a>
               </span>
             </div>
-            <p class="comment-content">Absolutely agree: at your scale it&#39;s either IBGP overlay on top of EBGP (I&#39;m guessing you have hundreds of switches) or overlay networking in the hypervisor (which seems not to be an option).<br /><br />Would love to know more if you could share the details (offline).</p>
+            <div class="comment-content">Absolutely agree: at your scale it&#39;s either IBGP overlay on top of EBGP (I&#39;m guessing you have hundreds of switches) or overlay networking in the hypervisor (which seems not to be an option).<br /><br />Would love to know more if you could share the details (offline).</div>
           </div>
         </li>
       </div>

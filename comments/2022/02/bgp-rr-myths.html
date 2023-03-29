@@ -1,0 +1,126 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="992">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c992" href="#992">01 February 2022 04:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Appreciate you sharing your insights and lessons learnt from the past.</p>
+
+<p>I think I may know where that silly notion came from, and you are right of course: One can construct a network topology in which iBGP between route reflectors is useful/required.</p>
+
+<p>However, in a topology where the route reflectors are intended as equivalent redundant options to form a full iBGP mesh, they would (normally) each have the exact same connectivity to other devices. If not, you would have snowflakes (https://blog.ipspace.net/2021/12/worth-reading-snowflake-network-devices.html). This is especially true for a cluster of &#39;pure&#39; route reflectors that only do control plane and no packet forwarding.</p>
+
+<p>So: Do we need iBGP sessions between truly equivalent, fully connected route reflectors?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="993">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c993" href="#993">01 February 2022 06:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>How about &quot;Without that full mesh you&rsquo;re losing redundancy.&quot; and &quot;The need for the IBGP sessions between spine switches diminishes if as the number of spine switches grows unless someone &ldquo;wisely&rdquo; decided to use only two of the spines as route reflectors&quot;</p>
+
+<p>As always, pick your poison (aka &quot;it depends&quot;), and whatever you do, make sure you know what you&#39;re doing as opposed to following PowerPoint-based &quot;best practices&quot;</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="999">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Pavel Glushkov</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c999" href="#999">04 February 2022 09:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, honestly I fail to understand how:</p>
+
+<ol>
+<li>Having inter-RR iBGP sessions improves redundancy</li>
+</ol>
+
+<p>In a &quot;normal&quot; design there should not exist a route that is known only to one RR. As Jeroen stated above, having iBGP between equivalent, fully connected route reflectors does not make sense. RR`s purpose in this scenario is to propagate routes, not to use them.</p>
+
+<ol>
+<li>Need for iBGP sessions corellates with the number of spine switches</li>
+</ol>
+
+<p>Do we have 2 or 200 spine switches, what`s the difference? How does that affect redundancy or reliability or the very need of iBGP sessions between them? Imagine your picture above with rr[3-100] added. Does it change anything?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1001">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1001" href="#1001">05 February 2022 03:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>There&#39;s a non-zero probability that a BGP session is down. There is a lower, but still non-zero probability that nobody notices that (battle-hardened HSRP oldtimers are probably realizing where this is going by now). Bringing another BGP session down could thus result in unexpected partial connectivity which could be avoided by the IBGP session between route reflectors.</p>
+
+<p>Having more than two route reflectors significantly reduces the probability of an overall failure even without the IBGP full mesh between them. You&#39;ll find detailed explanation on how to compute that probability in https://ipspace.net/Reliability</p>
+
+<p>Obviously you can consider the probability of a configuration or software error to be low enough to make this an scholastic argument ;) and you might be right ;))</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

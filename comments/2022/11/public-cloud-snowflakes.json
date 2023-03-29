@@ -1,0 +1,34 @@
+{
+   "comments": [
+      {
+         "date": "03 November 2022 10:07",
+         "html": "<p>Openstack sure is still a thing. Check the numbers yourself and you will see the continuous growth. And the development lifecycle. It is another topic how hard it is or it can be (to get nice, scalable and rock solid deployment), but one thing is clear - it is not for everybody...</p>\n",
+         "id": "1475",
+         "name": " Plamen",
+         "pub": "2022-11-03T10:07:33",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "05 November 2022 07:00",
+               "html": "<p>&gt; Then we start talking to the OpenStack vendors and every one requires VLANs. And not for any good reason either; it looks like they just cargo-culted ideas from previous VMware best practices.</p>\n\n<p>No surprise there :(( but that makes no sense whatsoever -- I know an organization running OpenStack with VXLAN between loopback interfaces of Linux servers advertised over BGP with FRR. Works like a charm.</p>\n",
+               "id": "1484",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-11-05T19:00:14",
+               "ref": "1479",
+               "type": "comment"
+            }
+         ],
+         "date": "03 November 2022 07:57",
+         "html": "<p>Oh man, this is pure gold even by your standards Ivan.</p>\n\n<p>At my last job the mandate was to build a proper private cloud. For the physical network we designed a textbook L3 Clos that provided one IP address per server. No VLANs, etc. Fully automated through Ansible ;-) even though the config was completely static. Everything else will be handled by OpenStack.</p>\n\n<p>Then we start talking to the OpenStack vendors and every one requires VLANs. And not for any good reason either; it looks like they just cargo-culted ideas from previous VMware best practices. So now the underlay has to have EVPN and the config is 10x bigger and more fragile. And of course OpenStack has its own overlay so there&#39;s double encapsulation (I carefully configured MTUs everywhere so users could remain unaware).</p>\n",
+         "id": "1479",
+         "name": "Wes Felter",
+         "pub": "2022-11-03T19:57:20",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/11/public-cloud-snowflakes.html"
+}

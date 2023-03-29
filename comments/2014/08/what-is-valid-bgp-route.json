@@ -1,223 +1,245 @@
 {
-  "comments": [
-    {
-      "date": "14 August 2014 20:31",
-      "html": "Why don&#39;t you ask Carlos? If the route is valid due to RPKI, then he would know about it or can at least check his config for it.",
-      "id": "8424984843104408102",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2014-08-14T20:31:26.196+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "29 August 2014 04:00",
-          "html": "I don&#39;t understand why you bring ICMP into the conversation.  ICMP should have no bearing on routing protocol decision.  The presence or absence of echo replies is of little importance.  ICMP depends on the routing protocol for ICMP to functon.  The routing protocol does not (and should not) depend on ICMP.",
-          "id": "3400104055472219230",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Jeff Behrns",
-          "profile": "http://www.jeffbehrns.com",
-          "pub": "2014-08-29T04:00:30.978+02:00",
-          "ref": "4497621972855924719",
-          "type": "comment"
-        }
-      ],
-      "date": "14 August 2014 21:04",
-      "html": "IMHO, this is one of the idiosyncrasies of Cisco IOS. Why should a route with invalid Next-Hop be considered valid ? IMHO such a route should be considered invalid, as any route that does not participate to the BGP selection process. I would have used one more letter to indicate this phenomenon in the first column of the &quot;show ip bgp&quot; (or the newer version &quot;show bgp ipv4 unicast&quot;), instead of the &quot;*&quot;, which in this case is surely misleading. <br />Junos, for instance, put routes with inaccessible Next-Hop in the &quot;hidden&quot; part of  the routing table, you don&#39;t see them in the the routing table (you may see them using &quot;show route hidden&quot;).<br /><br />But I would like to make you another question concerning BGP Next-Hop. Are we sure that a route with &quot;not pingable&quot; Next-Hop never participates to the BGP selection process. The obvious answer is &quot;Are you new to BGP ? For sure a route with &quot;not pingable&quot; Next-Hop DOES NOT participate to the BGP selection process&quot;. WRONG ! It could sound incredible but it can happen (it happened to me, and also see this discussion : https://learningnetwork.cisco.com/message/160879#160879).<br /><br />Don&#39;t you think that this is a &quot;big bug&quot; ? You may see this behaviour both in IOS and Junos. I strongly disagree with their point of view !!! They should do something to correct this behaviour (I have to investigate further, perhaps something has been done on Cisco IOS XR, but I&#39;m not sure).",
-      "id": "4497621972855924719",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": null,
-      "pub": "2014-08-14T21:04:15.320+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "15 August 2014 04:12",
-          "html": "Sorry you may be right with RPKI....",
-          "id": "3594325036022295056",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Erwan",
-          "profile": null,
-          "pub": "2014-08-15T04:12:44.188+02:00",
-          "ref": "645355577042253522",
-          "type": "comment"
-        },
-        {
-          "date": "15 August 2014 04:21",
-          "html": "Sorry for the spam, just did some ol&#39;googling and found this<br />http://www.slideshare.net/mynog/rpki-introduction-by-randy-bush<br /><br />Slide 40 and 41 show RPKI valid and invalid paths, the line mentioned in your blog post isn&#39;t changed regardless of the RPKI state.<br />",
-          "id": "4785559268189354545",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Erwan",
-          "profile": null,
-          "pub": "2014-08-15T04:21:07.560+02:00",
-          "ref": "645355577042253522",
-          "type": "comment"
-        }
-      ],
-      "date": "15 August 2014 03:59",
-      "html": "If you do a sh ip bgp, is there a * next to this route? There shouldn&#39;t be.  The * and this representation of &quot;validity&quot; are two different things.  The representation of valid you are referring to I believe is the validity of the AS path, which comes from soBGP which I don&#39;t think ever took off but was something Cisco came up with.   I would be surprised if you ever saw that line show anything but valid (unless you find a device which supports soBGP and you learned the route with an &#39;invalid&#39; AS path)<br /><br />May be wrong tho...if anyone has a contact at Cisco, ask them :)",
-      "id": "645355577042253522",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Erwan",
-      "profile": null,
-      "pub": "2014-08-15T03:59:44.957+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "15 August 2014 09:10",
-          "html": "Looks like you&#39;ve solved the mystery. Thank you!<br /><br />Note to self: read RFCs before asking stupid questions ;)",
-          "id": "2903327544398151246",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2014-08-15T09:10:42.789+02:00",
-          "ref": "4940421947429643289",
-          "type": "comment"
-        },
-        {
-          "date": "15 August 2014 16:58",
-          "html": "Well thanks for asking the question - it forced me to look it up :)",
-          "id": "4424067564141766511",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "bryan",
-          "profile": null,
-          "pub": "2014-08-15T16:58:31.674+02:00",
-          "ref": "4940421947429643289",
-          "type": "comment"
-        }
-      ],
-      "date": "15 August 2014 07:03",
-      "html": "RFC 4271, Section 6 says that routes are marked invalid after a TCP connection closes. The route is then removed. So if you have a route in loc-rib but the adj-rib-in has been cleared - the route is invalid. It is possible we may never see a route as &quot;invalid&quot; since it is already gone from the CLI output at that point.<br /><br />&quot;The phrase &quot;the BGP connection is closed&quot; means the TCP connection has been closed, the associated Adj-RIB-In has been cleared, and all resources for that BGP connection have been deallocated.  Entries in the Loc-RIB associated with the remote peer are marked as invalid. The local system recalculates its best routes for the destinations of the routes marked as invalid.  Before the invalid routes are deleted from the system, it advertises, to its peers, either withdraws for<br />the routes marked as invalid, or the new best routes before the invalid routes are deleted from the system.&quot;",
-      "id": "4940421947429643289",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "bryan",
-      "profile": null,
-      "pub": "2014-08-15T07:03:12.219+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "15 August 2014 11:54",
-      "html": "Thank you Brian!<br />I do not remember how many docs define valid as reachable NH. I do not remember how many times I eluded the issue while teaching (guilty here!). Some traces of this can also be found by searching the Internet...<br />-Carlos",
-      "id": "4464946351073969248",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Carlos Mendioroz",
-      "profile": null,
-      "pub": "2014-08-15T11:54:42.633+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "15 August 2014 17:01",
-      "html": "Hmm, I went ahed and read the RFC, and even though section 6 says &quot;mark as invalid&quot; (in the Loc-RIB), it is also the case that section 9.1.2.1 it says that inaccessible NH routes would be invalid. <br />The thing is... &quot;valid&quot; is not clearly defined in one place, so... the only way to be sure would be to have an insider let us know what the cisco&#39;s show ip bgp valid tag means.<br />I&#39;ll try to discover if closing a connection makes teh valid go away (i.e. if there is a window of visibility of that state).<br />-Carlos",
-      "id": "358482447914615994",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Carlos Mendioroz",
-      "profile": null,
-      "pub": "2014-08-15T17:01:48.815+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "15 August 2014 20:28",
-      "html": "I still think that the valid shown in the above output is not referring to a valid route as described in the RFC above.  The word &quot;valid&quot; in the above output is part the &quot;Origin&quot; field not part of the BGP status codes.<br /><br />See http://www.cisco.com/c/en/us/td/docs/ios/iproute_bgp/command/reference/irg_book/irg_bgp5.html#wp1156281<br /><br />Table: 28 shows the BGP status codes where if the NH is not reachable it will not have a *, as is not valid etc...<br /><br />Table 29 shows the &quot;Origin&quot; field, where it described the above output, whether or not the Origin is valid (which I think it always will be right now...as RPKI shows on a different output.  Still think it may be left over from soBGP possibly)",
-      "id": "7038948992961613958",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Erwan",
-      "profile": null,
-      "pub": "2014-08-15T20:28:07.444+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "15 August 2014 21:14",
-      "html": "It seems to me that the real problem is to understand what is the real meaning that Cisco assigns to the word &quot;valid&quot;. I do not think either that Cisco uses the word &quot;valid&quot; conforming to Section 6 of RFC 4271. Whatever the point of view of Cisco, I prefer the Junos approach, which clearly differs between routes with reachable or unreachable Next-Hop. You can see the former in the routing table while you can see the latter only in the &quot;hidden&quot; part of the routing table.<br /><br />But what really worries me is the definition of &quot;unreachable Next-Hop&quot;. According to IOS and Junos, a Next-Hop is considered unreachable even if it is not pingable (tested it, a default-route is sufficient to declare the Next-Hop reachable !). Don&#39;t you think this should be fixed, to avoid traffic black-holes ?",
-      "id": "3104533008057151569",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": null,
-      "pub": "2014-08-15T21:14:43.860+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "15 August 2014 21:19",
-      "html": "Sorry, I made a typo in the comment above. The last lines should be read as follows : &quot;According to IOS and Junos, a Next-Hop is considered reachable even if it is not pingable (tested it, a default-route is sufficient to declare the Next-Hop reachable !). ",
-      "id": "6742143852865508118",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tiziano",
-      "profile": null,
-      "pub": "2014-08-15T21:19:00.445+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "16 August 2014 16:14",
-      "html": "Ok, I did some cheating... and it seems I have the answer:<br />The status of the routes have three state fields, represented by three chars:<br />Route state: supressed, valid or else (s/*/  )<br />Selection state: history/damped/selected/multipath (h/d/&gt;/m)<br />Internal state: internal or else (i/  )<br /><br />In this &quot;Route state&quot; sense, valid is defined as not historical, i.e., a remembered route for dampening purpouses... whenever you don&#39;t have an &#39;h&#39; in the second char, you will see a &#39;*&#39; in the first.<br /><br />Go figure that!<br />-Carlos<br />",
-      "id": "7005128342244191187",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Carlos Mendioroz",
-      "profile": null,
-      "pub": "2014-08-16T16:14:47.073+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "16 August 2014 16:28",
-      "html": "Ah. So we wont see &quot;valid&quot; if the route has been dampened. Good find! ",
-      "id": "4931672398327202014",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "bryan",
-      "profile": null,
-      "pub": "2014-08-16T16:28:38.038+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "20 October 2014 14:07",
-      "html": "completition to my above comment:<br />Junos uses a special command to display unresolved routes (hidden) &gt; show route resolution unresolved <br /><br />",
-      "id": "3872473134133365103",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/12149840099615070519",
-      "pub": "2014-10-20T14:07:53.762+02:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "03 November 2016 19:55",
-      "html": "A dampened route might be valid :<br /><br />Status codes: s suppressed, d damped, h history, * <br />valid, &gt; best, i - <br />internal <br />Origin codes: i - IGP, e - EGP, ? - incomplete <br />   Network          From            Flaps Duration <br />Reuse    Path <br />*d 10.41.144.0/24   10.1.100.104    2     00:03:17 <br />00:12:20 6504  ",
-      "id": "2260865480412252982",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Kamyar Djoneidi",
-      "profile": "https://www.blogger.com/profile/08929617298996606348",
-      "pub": "2016-11-03T19:55:22.150+01:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    },
-    {
-      "date": "28 January 2019 20:20",
-      "html": "If you want to see an Invalid BGP route just declare any non-existant prefix in your BGP process: ex:<br /><br />router bgp 65001<br />  address-family ipv4 unicast<br />    network 169.169.169.169/32<br /><br />VDC2(config)# show ip route 169.169.169.169/32<br />IP Route Table for VRF &quot;default&quot;<br /><br />Route not found<br /><br />VDC2(config)# show ip bgp 169.169.169.169/32<br />BGP routing table information for VRF default, address family IPv4 Unicast<br />BGP routing table entry for 169.169.169.169/32, version 26<br />Paths: (1 available, best #0)<br />Flags: (0x080002) on xmit-list, is not in urib<br /><br />  Path type: local, path is invalid, no labeled nexthop<br />  AS-Path: NONE, path locally originated<br />    0.0.0.0 (metric 0) from 0.0.0.0 (198.18.13.1)<br />      Origin IGP, MED not set, localpref 100, weight 32768",
-      "id": "902479432405783320",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/05277971708633407121",
-      "pub": "2019-01-28T20:20:05.886+01:00",
-      "ref": "2375444612675346302",
-      "type": "comment"
-    }
-  ],
-  "count": 19,
-  "id": "2375444612675346302",
-  "type": "post",
-  "url": "2014/08/what-is-valid-bgp-route.html"
+   "comments": [
+      {
+         "date": "14 August 2014 20:31",
+         "html": "Why don&#39;t you ask Carlos? If the route is valid due to RPKI, then he would know about it or can at least check his config for it.",
+         "id": "8424984843104408102",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2014-08-14T20:31:26.196+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "29 August 2014 04:00",
+               "html": "I don&#39;t understand why you bring ICMP into the conversation.  ICMP should have no bearing on routing protocol decision.  The presence or absence of echo replies is of little importance.  ICMP depends on the routing protocol for ICMP to functon.  The routing protocol does not (and should not) depend on ICMP.",
+               "id": "3400104055472219230",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Jeff Behrns",
+               "profile": "http://www.jeffbehrns.com",
+               "pub": "2014-08-29T04:00:30.978+02:00",
+               "ref": "4497621972855924719",
+               "type": "comment"
+            }
+         ],
+         "date": "14 August 2014 21:04",
+         "html": "IMHO, this is one of the idiosyncrasies of Cisco IOS. Why should a route with invalid Next-Hop be considered valid ? IMHO such a route should be considered invalid, as any route that does not participate to the BGP selection process. I would have used one more letter to indicate this phenomenon in the first column of the &quot;show ip bgp&quot; (or the newer version &quot;show bgp ipv4 unicast&quot;), instead of the &quot;*&quot;, which in this case is surely misleading. <br />Junos, for instance, put routes with inaccessible Next-Hop in the &quot;hidden&quot; part of  the routing table, you don&#39;t see them in the the routing table (you may see them using &quot;show route hidden&quot;).<br /><br />But I would like to make you another question concerning BGP Next-Hop. Are we sure that a route with &quot;not pingable&quot; Next-Hop never participates to the BGP selection process. The obvious answer is &quot;Are you new to BGP ? For sure a route with &quot;not pingable&quot; Next-Hop DOES NOT participate to the BGP selection process&quot;. WRONG ! It could sound incredible but it can happen (it happened to me, and also see this discussion : https://learningnetwork.cisco.com/message/160879#160879).<br /><br />Don&#39;t you think that this is a &quot;big bug&quot; ? You may see this behaviour both in IOS and Junos. I strongly disagree with their point of view !!! They should do something to correct this behaviour (I have to investigate further, perhaps something has been done on Cisco IOS XR, but I&#39;m not sure).",
+         "id": "4497621972855924719",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": null,
+         "pub": "2014-08-14T21:04:15.320+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "15 August 2014 04:12",
+               "html": "Sorry you may be right with RPKI....",
+               "id": "3594325036022295056",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Erwan",
+               "profile": null,
+               "pub": "2014-08-15T04:12:44.188+02:00",
+               "ref": "645355577042253522",
+               "type": "comment"
+            },
+            {
+               "date": "15 August 2014 04:21",
+               "html": "Sorry for the spam, just did some ol&#39;googling and found this<br />http://www.slideshare.net/mynog/rpki-introduction-by-randy-bush<br /><br />Slide 40 and 41 show RPKI valid and invalid paths, the line mentioned in your blog post isn&#39;t changed regardless of the RPKI state.<br />",
+               "id": "4785559268189354545",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Erwan",
+               "profile": null,
+               "pub": "2014-08-15T04:21:07.560+02:00",
+               "ref": "645355577042253522",
+               "type": "comment"
+            }
+         ],
+         "date": "15 August 2014 03:59",
+         "html": "If you do a sh ip bgp, is there a * next to this route? There shouldn&#39;t be.  The * and this representation of &quot;validity&quot; are two different things.  The representation of valid you are referring to I believe is the validity of the AS path, which comes from soBGP which I don&#39;t think ever took off but was something Cisco came up with.   I would be surprised if you ever saw that line show anything but valid (unless you find a device which supports soBGP and you learned the route with an &#39;invalid&#39; AS path)<br /><br />May be wrong tho...if anyone has a contact at Cisco, ask them :)",
+         "id": "645355577042253522",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Erwan",
+         "profile": null,
+         "pub": "2014-08-15T03:59:44.957+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "15 August 2014 09:10",
+               "html": "Looks like you&#39;ve solved the mystery. Thank you!<br /><br />Note to self: read RFCs before asking stupid questions ;)",
+               "id": "2903327544398151246",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2014-08-15T09:10:42.789+02:00",
+               "ref": "4940421947429643289",
+               "type": "comment"
+            },
+            {
+               "date": "15 August 2014 16:58",
+               "html": "Well thanks for asking the question - it forced me to look it up :)",
+               "id": "4424067564141766511",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "bryan",
+               "profile": null,
+               "pub": "2014-08-15T16:58:31.674+02:00",
+               "ref": "4940421947429643289",
+               "type": "comment"
+            }
+         ],
+         "date": "15 August 2014 07:03",
+         "html": "RFC 4271, Section 6 says that routes are marked invalid after a TCP connection closes. The route is then removed. So if you have a route in loc-rib but the adj-rib-in has been cleared - the route is invalid. It is possible we may never see a route as &quot;invalid&quot; since it is already gone from the CLI output at that point.<br /><br />&quot;The phrase &quot;the BGP connection is closed&quot; means the TCP connection has been closed, the associated Adj-RIB-In has been cleared, and all resources for that BGP connection have been deallocated.  Entries in the Loc-RIB associated with the remote peer are marked as invalid. The local system recalculates its best routes for the destinations of the routes marked as invalid.  Before the invalid routes are deleted from the system, it advertises, to its peers, either withdraws for<br />the routes marked as invalid, or the new best routes before the invalid routes are deleted from the system.&quot;",
+         "id": "4940421947429643289",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "bryan",
+         "profile": null,
+         "pub": "2014-08-15T07:03:12.219+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "date": "15 August 2014 11:54",
+         "html": "Thank you Brian!<br />I do not remember how many docs define valid as reachable NH. I do not remember how many times I eluded the issue while teaching (guilty here!). Some traces of this can also be found by searching the Internet...<br />-Carlos",
+         "id": "4464946351073969248",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Carlos Mendioroz",
+         "profile": null,
+         "pub": "2014-08-15T11:54:42.633+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "date": "15 August 2014 17:01",
+         "html": "Hmm, I went ahed and read the RFC, and even though section 6 says &quot;mark as invalid&quot; (in the Loc-RIB), it is also the case that section 9.1.2.1 it says that inaccessible NH routes would be invalid. <br />The thing is... &quot;valid&quot; is not clearly defined in one place, so... the only way to be sure would be to have an insider let us know what the cisco&#39;s show ip bgp valid tag means.<br />I&#39;ll try to discover if closing a connection makes teh valid go away (i.e. if there is a window of visibility of that state).<br />-Carlos",
+         "id": "358482447914615994",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Carlos Mendioroz",
+         "profile": null,
+         "pub": "2014-08-15T17:01:48.815+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "date": "15 August 2014 20:28",
+         "html": "I still think that the valid shown in the above output is not referring to a valid route as described in the RFC above.  The word &quot;valid&quot; in the above output is part the &quot;Origin&quot; field not part of the BGP status codes.<br /><br />See http://www.cisco.com/c/en/us/td/docs/ios/iproute_bgp/command/reference/irg_book/irg_bgp5.html#wp1156281<br /><br />Table: 28 shows the BGP status codes where if the NH is not reachable it will not have a *, as is not valid etc...<br /><br />Table 29 shows the &quot;Origin&quot; field, where it described the above output, whether or not the Origin is valid (which I think it always will be right now...as RPKI shows on a different output.  Still think it may be left over from soBGP possibly)",
+         "id": "7038948992961613958",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Erwan",
+         "profile": null,
+         "pub": "2014-08-15T20:28:07.444+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "30 August 2022 10:33",
+               "html": "<p>I&#39;d rephrase Tiziano&#39;s observation with the following: Some OSs (to be tested - would love to have insights on this), keep announcing a BGP route (with the BGP Holdtime being the upper time limit) whose BGP-NH is withdrawn (either implicitly or explicitly) by the underlying IGP if they manage to resolve it recursively with either other BGP prefixes or the Default route if any. <br />\nI find this conceptually wrong. I&#39;d give priority to what the IGP says instead of keeping alive for the BGP Holdtime timer duration (ish) the prefix of a dead BGP-NH. I&#39;d love to know other opinions on this aspect. <br />\nAndrea  </p>\n",
+               "id": "1349",
+               "name": "Andrea Di Donato",
+               "pub": "2022-08-30T10:33:52",
+               "ref": "3104533008057151569",
+               "type": "comment"
+            }
+         ],
+         "date": "15 August 2014 21:14",
+         "html": "It seems to me that the real problem is to understand what is the real meaning that Cisco assigns to the word &quot;valid&quot;. I do not think either that Cisco uses the word &quot;valid&quot; conforming to Section 6 of RFC 4271. Whatever the point of view of Cisco, I prefer the Junos approach, which clearly differs between routes with reachable or unreachable Next-Hop. You can see the former in the routing table while you can see the latter only in the &quot;hidden&quot; part of the routing table.<br /><br />But what really worries me is the definition of &quot;unreachable Next-Hop&quot;. According to IOS and Junos, a Next-Hop is considered unreachable even if it is not pingable (tested it, a default-route is sufficient to declare the Next-Hop reachable !). Don&#39;t you think this should be fixed, to avoid traffic black-holes ?",
+         "id": "3104533008057151569",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": null,
+         "pub": "2014-08-15T21:14:43.860+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "30 August 2022 10:43",
+               "html": "<p>I&#39;d rephrase Tiziano&#39;s observation with the following: Some OSs (to be tested - would love to have insights on this), keep announcing a BGP route (with the BGP Holdtime being the upper time limit) whose BGP-NH is withdrawn (either implicitly or explicitly) by the underlying IGP if they manage to resolve it recursively with either other BGP prefixes or the Default route if any.\nI find this conceptually wrong. I&#39;d give priority to what the IGP says instead of keeping alive for the BGP Holdtime timer duration (ish) the prefix of a dead BGP-NH. I&#39;d love to know other opinions on this aspect.\nAndrea</p>\n",
+               "id": "1350",
+               "name": "Andrea Di Donato",
+               "pub": "2022-08-30T10:43:32",
+               "ref": "6742143852865508118",
+               "type": "comment"
+            }
+         ],
+         "date": "15 August 2014 21:19",
+         "html": "Sorry, I made a typo in the comment above. The last lines should be read as follows : &quot;According to IOS and Junos, a Next-Hop is considered reachable even if it is not pingable (tested it, a default-route is sufficient to declare the Next-Hop reachable !). ",
+         "id": "6742143852865508118",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tiziano",
+         "profile": null,
+         "pub": "2014-08-15T21:19:00.445+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "date": "16 August 2014 16:14",
+         "html": "Ok, I did some cheating... and it seems I have the answer:<br />The status of the routes have three state fields, represented by three chars:<br />Route state: supressed, valid or else (s/*/  )<br />Selection state: history/damped/selected/multipath (h/d/&gt;/m)<br />Internal state: internal or else (i/  )<br /><br />In this &quot;Route state&quot; sense, valid is defined as not historical, i.e., a remembered route for dampening purpouses... whenever you don&#39;t have an &#39;h&#39; in the second char, you will see a &#39;*&#39; in the first.<br /><br />Go figure that!<br />-Carlos<br />",
+         "id": "7005128342244191187",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Carlos Mendioroz",
+         "profile": null,
+         "pub": "2014-08-16T16:14:47.073+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "date": "16 August 2014 16:28",
+         "html": "Ah. So we wont see &quot;valid&quot; if the route has been dampened. Good find! ",
+         "id": "4931672398327202014",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "bryan",
+         "profile": null,
+         "pub": "2014-08-16T16:28:38.038+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "date": "20 October 2014 14:07",
+         "html": "completition to my above comment:<br />Junos uses a special command to display unresolved routes (hidden) &gt; show route resolution unresolved <br /><br />",
+         "id": "3872473134133365103",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/12149840099615070519",
+         "pub": "2014-10-20T14:07:53.762+02:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "date": "03 November 2016 19:55",
+         "html": "A dampened route might be valid :<br /><br />Status codes: s suppressed, d damped, h history, * <br />valid, &gt; best, i - <br />internal <br />Origin codes: i - IGP, e - EGP, ? - incomplete <br />   Network          From            Flaps Duration <br />Reuse    Path <br />*d 10.41.144.0/24   10.1.100.104    2     00:03:17 <br />00:12:20 6504  ",
+         "id": "2260865480412252982",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Kamyar Djoneidi",
+         "profile": "https://www.blogger.com/profile/08929617298996606348",
+         "pub": "2016-11-03T19:55:22.150+01:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      },
+      {
+         "date": "28 January 2019 20:20",
+         "html": "If you want to see an Invalid BGP route just declare any non-existant prefix in your BGP process: ex:<br /><br />router bgp 65001<br />  address-family ipv4 unicast<br />    network 169.169.169.169/32<br /><br />VDC2(config)# show ip route 169.169.169.169/32<br />IP Route Table for VRF &quot;default&quot;<br /><br />Route not found<br /><br />VDC2(config)# show ip bgp 169.169.169.169/32<br />BGP routing table information for VRF default, address family IPv4 Unicast<br />BGP routing table entry for 169.169.169.169/32, version 26<br />Paths: (1 available, best #0)<br />Flags: (0x080002) on xmit-list, is not in urib<br /><br />  Path type: local, path is invalid, no labeled nexthop<br />  AS-Path: NONE, path locally originated<br />    0.0.0.0 (metric 0) from 0.0.0.0 (198.18.13.1)<br />      Origin IGP, MED not set, localpref 100, weight 32768",
+         "id": "902479432405783320",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/05277971708633407121",
+         "pub": "2019-01-28T20:20:05.886+01:00",
+         "ref": "2375444612675346302",
+         "type": "comment"
+      }
+   ],
+   "count": 14,
+   "id": "2375444612675346302",
+   "type": "post",
+   "url": "2014/08/what-is-valid-bgp-route.html"
 }

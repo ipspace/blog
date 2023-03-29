@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://jedelman.com" rel="nofollow">Jason Edelman (@jedelman8)</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#670593426729059975">20 November 2012 02:11</a>
+                <a rel="nofollow" id="c670593426729059975" href="#670593426729059975">20 November 2012 02:11</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan :)<br /><br />I don&#39;t deny OTV/LISP is a nice solution.  It&#39;s a great solution. <br /><br />But it comes down to many factors such as time to deploy, cost, size of L2 domain, does this L2 domain even need an L3 gateway, traffic types, connectivity between sites, and the list can keep going. <br /> <br />My hope is OTV becomes available on the Cloud Services Router based on ASR 1K IOS XE.  Doubt it, but one can hope.<br /><br />I look forward to hearing some case studies soon regarding VXLAN intra or inter-DC ;)<br /><br />-Jason<br /><br /></p>
+            <div class="comment-content">Hi Ivan :)<br /><br />I don&#39;t deny OTV/LISP is a nice solution.  It&#39;s a great solution. <br /><br />But it comes down to many factors such as time to deploy, cost, size of L2 domain, does this L2 domain even need an L3 gateway, traffic types, connectivity between sites, and the list can keep going. <br /> <br />My hope is OTV becomes available on the Cloud Services Router based on ASR 1K IOS XE.  Doubt it, but one can hope.<br /><br />I look forward to hearing some case studies soon regarding VXLAN intra or inter-DC ;)<br /><br />-Jason<br /><br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3538613498485898222">20 November 2012 07:30</a>
+                <a rel="nofollow" id="c3538613498485898222" href="#3538613498485898222">20 November 2012 07:30</a>
               </span>
             </div>
-            <p class="comment-content">Jason, regardless of the factors you mention - when the L2 DCI link fails, you have a split subnet on your hands.<br /><br />As for OTV on CSR: http://blog.ioshints.info/2012/03/stretched-layer-2-subnets-server.html</p>
+            <div class="comment-content">Jason, regardless of the factors you mention - when the L2 DCI link fails, you have a split subnet on your hands.<br /><br />As for OTV on CSR: http://blog.ioshints.info/2012/03/stretched-layer-2-subnets-server.html</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16079437118272611265" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#332527592704551746">27 November 2012 23:55</a>
+                <a rel="nofollow" id="c332527592704551746" href="#332527592704551746">27 November 2012 23:55</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, thank you for the informative article.<br /><br />I would point out three advantages of VXLAN compared with OTV:<br /><br />   1. Multi-vendor support.  OTV is a single-vendor solution, and while an internet-draft has been published, it is actually incompatible with the N7k OTV implementation (a completely different encap).<br /><br />   2. Virtualize at the edge.  OTV pushes the 2-over-3 encap to the data center core (N7k), meaning there&#39;s a big layer 2 network within the DC, with all of the problems that brings (4k vlan limit, mac address table limitations, spanning tree, etc).  With VXLAN, there are cost-effective edge implementations that free you from all of these constraints (16M layer-2 domains, no worries about overflowing the MAC table in your core switches, taking advantage of L3 ECMP end-to-end, etc).<br /><br />   3. VMware interoperability.  VSphere 5.1 ships with VXLAN support in the hypervisor.  VXLAN is coming to Xen/KVM as well.<br /><br />Most of the limitations you describe will be addressed in the next year or so.  Due to its multi-vendor nature, VXLAN is the clear long-term solution (think ISL versus 802.1q).  So even if I were deploying today, I should think I would go VXLAN and bet on the roadmap rather than tie my network architecture to a single-vendor solution despite some short-term advantages.<br /><br />Kenneth Duda<br />CTO &amp; SVP Software<br />Arista Networks, Inc.<br /></p>
+            <div class="comment-content">Ivan, thank you for the informative article.<br /><br />I would point out three advantages of VXLAN compared with OTV:<br /><br />   1. Multi-vendor support.  OTV is a single-vendor solution, and while an internet-draft has been published, it is actually incompatible with the N7k OTV implementation (a completely different encap).<br /><br />   2. Virtualize at the edge.  OTV pushes the 2-over-3 encap to the data center core (N7k), meaning there&#39;s a big layer 2 network within the DC, with all of the problems that brings (4k vlan limit, mac address table limitations, spanning tree, etc).  With VXLAN, there are cost-effective edge implementations that free you from all of these constraints (16M layer-2 domains, no worries about overflowing the MAC table in your core switches, taking advantage of L3 ECMP end-to-end, etc).<br /><br />   3. VMware interoperability.  VSphere 5.1 ships with VXLAN support in the hypervisor.  VXLAN is coming to Xen/KVM as well.<br /><br />Most of the limitations you describe will be addressed in the next year or so.  Due to its multi-vendor nature, VXLAN is the clear long-term solution (think ISL versus 802.1q).  So even if I were deploying today, I should think I would go VXLAN and bet on the roadmap rather than tie my network architecture to a single-vendor solution despite some short-term advantages.<br /><br />Kenneth Duda<br />CTO &amp; SVP Software<br />Arista Networks, Inc.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#920776460268666613">28 November 2012 08:28</a>
+                <a rel="nofollow" id="c920776460268666613" href="#920776460268666613">28 November 2012 08:28</a>
               </span>
             </div>
-            <p class="comment-content">Ken, thanks for excellent feedback.<br /><br />As I wrote, _current_ VXLAN implementations are not what I&#39;d expect to see in robust L2 DCI designs (ignoring for the moment my personal opinion that L2 DCI is usually not based on actual business requirements but inability of the various IT teams to talk to each other). <br /><br />I know there are numerous vendors working on VXLAN extensions and additions, and I will be more than glad to report on the progress as actual products or software ship. Please keep me in the loop.<br /><br />Kind regards,<br />Ivan</p>
+            <div class="comment-content">Ken, thanks for excellent feedback.<br /><br />As I wrote, _current_ VXLAN implementations are not what I&#39;d expect to see in robust L2 DCI designs (ignoring for the moment my personal opinion that L2 DCI is usually not based on actual business requirements but inability of the various IT teams to talk to each other). <br /><br />I know there are numerous vendors working on VXLAN extensions and additions, and I will be more than glad to report on the progress as actual products or software ship. Please keep me in the loop.<br /><br />Kind regards,<br />Ivan</div>
           </div>
         </li>
       </div>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://jedelman.com" rel="nofollow">Jason Edelman (@jedelman8)</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5201525068748647953">28 November 2012 13:39</a>
+                <a rel="nofollow" id="c5201525068748647953" href="#5201525068748647953">28 November 2012 13:39</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ken,  <br /><br />You mention VXLAN is the clear long term solution and many of the issues will be addressed in the next year or so.  Can you give some insight into the Arista roadmap with VXLAN - will we see a control plane? :)<br /><br />Thanks,<br />Jason </p>
+            <div class="comment-content">Hi Ken,  <br /><br />You mention VXLAN is the clear long term solution and many of the issues will be addressed in the next year or so.  Can you give some insight into the Arista roadmap with VXLAN - will we see a control plane? :)<br /><br />Thanks,<br />Jason </div>
           </div>
         </li>
       </div>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10593455504357461005" rel="nofollow">Kenneth Duda</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#484224124423351122">28 November 2012 19:58</a>
+                <a rel="nofollow" id="c484224124423351122" href="#484224124423351122">28 November 2012 19:58</a>
               </span>
             </div>
-            <p class="comment-content">No disagreement Ivan, and I look forward to connecting on this topic at the right time.<br /><br />Jason, all I can say right now is that we are well aware of the limitations and are hard at work on solutions.  Sorry to be a bit vague but there are a lot of moving parts.<br /><br />     -Ken<br /></p>
+            <div class="comment-content">No disagreement Ivan, and I look forward to connecting on this topic at the right time.<br /><br />Jason, all I can say right now is that we are well aware of the limitations and are hard at work on solutions.  Sorry to be a bit vague but there are a lot of moving parts.<br /><br />     -Ken<br /></div>
           </div>
         </li>
       </div>
@@ -136,10 +131,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13207436943074333635" rel="nofollow">spryguy</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7314002808590514538">29 August 2013 06:08</a>
+                <a rel="nofollow" id="c7314002808590514538" href="#7314002808590514538">29 August 2013 06:08</a>
               </span>
             </div>
-            <p class="comment-content">WRT multivendor support why isn&#39;t EVPN even being mentioned?  It runs on what you probably have deployed today in the WAN, has multivendor support, and should be out the same time if not sooner than reasonable VXLAN DCI options. </p>
+            <div class="comment-content">WRT multivendor support why isn&#39;t EVPN even being mentioned?  It runs on what you probably have deployed today in the WAN, has multivendor support, and should be out the same time if not sooner than reasonable VXLAN DCI options. </div>
           </div>
         </li>
       </div>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6058550379322793188">29 August 2013 11:15</a>
+                <a rel="nofollow" id="c6058550379322793188" href="#6058550379322793188">29 August 2013 11:15</a>
               </span>
             </div>
-            <p class="comment-content">This blog post isn&#39;t an overview of L2 DCI solutions, but my opinion on why VXLAN isn&#39;t one of them ;)</p>
+            <div class="comment-content">This blog post isn&#39;t an overview of L2 DCI solutions, but my opinion on why VXLAN isn&#39;t one of them ;)</div>
           </div>
         </li>
       </div>
@@ -172,10 +167,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13207436943074333635" rel="nofollow">spryguy</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1792347982211834472">30 August 2013 16:50</a>
+                <a rel="nofollow" id="c1792347982211834472" href="#1792347982211834472">30 August 2013 16:50</a>
               </span>
             </div>
-            <p class="comment-content">Fair.  It was more to the commenter&#39;s than the blog ;)  Great stuff as always-Thanks!</p>
+            <div class="comment-content">Fair.  It was more to the commenter&#39;s than the blog ;)  Great stuff as always-Thanks!</div>
           </div>
         </li>
       </div>
@@ -197,10 +192,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02665450770257068729" rel="nofollow">Victor Moreno</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2157385484012124564">03 December 2012 23:29</a>
+                <a rel="nofollow" id="c2157385484012124564" href="#2157385484012124564">03 December 2012 23:29</a>
               </span>
             </div>
-            <p class="comment-content">I think Ivan&#39;s seminal premise prevails: VXLAN is not a DCI technology (not in its current form). <br /><br />VXLAN was designed originally to enable the creation of a large number of virtual segments in the vein of the virtual app that had virtual nodes, but no good virtual segment service. With that goal in mind, the group opted for an over simplistic approach to the creation of the VXLAN overlay. One that does not satisfy the DCI requirements, but has the potential to provide a large number of virtual segments to the orchestrator creating virtual apps. I say has the potential to deliver this, because none of the implementations out there today actually deliver this large number of segments. Standard or proprietary, it is what it is, not more not less, definitely not a DCI tool.<br /><br />Enhancing VXLAN to become a full fledged L2 VPN service is a potential future and once we are done adding the necessary enhancements, we will have indeed completed a similar engineering cycle to that which we went over in 2007 for OTV. In the mean time (while we re-invent the wheel), there is existing, matured, widely deployed and hardened technology that is designed with DCI requirements in mind and can be deployed today.<br /><br />Regarding the points Ken brings:<br /><br />Multi-vendor: The encapsulation currently in use is in place to satisfy a rapid market. Cisco has consistently volunteered its IP in the interest of fostering interoperability. A quick scan at the drafts will show that the encapsulation being used in VXLAN is borrowed from earlier OTV and LISP drafts and is indeed what we are standardizing on for IP overlays: LISP, OTV and VXLAN. This is the vision we&#39;ve had for a long time and we are glad that the industry is following. All that said, the encapsulation is the least interesting element in all of this. The meat is in the control plane and that is what is not defined in VXLAN as of today and I have not witnessed any open standards discussion on that front.<br /><br />Virtualize on the edge: The important item is not so much where the tunnel end-point resides, it is in how the overlay is realized. A flood based overlay like VXLAN pushed across data centers means any flood activity in any DC is seen everywhere (think ubiquitous arp storms). This negates to a large extent the resiliency benefits of having more than one facility. So creating an L3 network, just to overlay a flat virtual flood domain onto it, is not a healthy practice for the interconnection of DCs. I think this was clearly articulated by Ivan. If desired, the OTV edge functionality could be pushed to the access ports, but there are much better ways to design a data center fabric than to simply flatten it out.<br /><br />VMware interoperability: That is where we use VXLAN and why Cisco supports VXLAN extensively. Actually Cisco is the first vendor to have released VXLAN in shipping product and we have a solid committed roadmap for it. But that doesn&#39;t mean that the DCI functionality needs to be bundled into this portion of the orchestration, nor does it mean that everything you did in networking until now is obsoleted by the introduction of VXLAN. Each task has its right tool. VXLAN may be a nice hammer, but I am still not going to hammer in my screws.<br /><br />BTW. As of today, both VXLAN and OTV are simply individual contributions and not adopted by any WG at the IETF. So neither one is even remotely close to being a standard.</p>
+            <div class="comment-content">I think Ivan&#39;s seminal premise prevails: VXLAN is not a DCI technology (not in its current form). <br /><br />VXLAN was designed originally to enable the creation of a large number of virtual segments in the vein of the virtual app that had virtual nodes, but no good virtual segment service. With that goal in mind, the group opted for an over simplistic approach to the creation of the VXLAN overlay. One that does not satisfy the DCI requirements, but has the potential to provide a large number of virtual segments to the orchestrator creating virtual apps. I say has the potential to deliver this, because none of the implementations out there today actually deliver this large number of segments. Standard or proprietary, it is what it is, not more not less, definitely not a DCI tool.<br /><br />Enhancing VXLAN to become a full fledged L2 VPN service is a potential future and once we are done adding the necessary enhancements, we will have indeed completed a similar engineering cycle to that which we went over in 2007 for OTV. In the mean time (while we re-invent the wheel), there is existing, matured, widely deployed and hardened technology that is designed with DCI requirements in mind and can be deployed today.<br /><br />Regarding the points Ken brings:<br /><br />Multi-vendor: The encapsulation currently in use is in place to satisfy a rapid market. Cisco has consistently volunteered its IP in the interest of fostering interoperability. A quick scan at the drafts will show that the encapsulation being used in VXLAN is borrowed from earlier OTV and LISP drafts and is indeed what we are standardizing on for IP overlays: LISP, OTV and VXLAN. This is the vision we&#39;ve had for a long time and we are glad that the industry is following. All that said, the encapsulation is the least interesting element in all of this. The meat is in the control plane and that is what is not defined in VXLAN as of today and I have not witnessed any open standards discussion on that front.<br /><br />Virtualize on the edge: The important item is not so much where the tunnel end-point resides, it is in how the overlay is realized. A flood based overlay like VXLAN pushed across data centers means any flood activity in any DC is seen everywhere (think ubiquitous arp storms). This negates to a large extent the resiliency benefits of having more than one facility. So creating an L3 network, just to overlay a flat virtual flood domain onto it, is not a healthy practice for the interconnection of DCs. I think this was clearly articulated by Ivan. If desired, the OTV edge functionality could be pushed to the access ports, but there are much better ways to design a data center fabric than to simply flatten it out.<br /><br />VMware interoperability: That is where we use VXLAN and why Cisco supports VXLAN extensively. Actually Cisco is the first vendor to have released VXLAN in shipping product and we have a solid committed roadmap for it. But that doesn&#39;t mean that the DCI functionality needs to be bundled into this portion of the orchestration, nor does it mean that everything you did in networking until now is obsoleted by the introduction of VXLAN. Each task has its right tool. VXLAN may be a nice hammer, but I am still not going to hammer in my screws.<br /><br />BTW. As of today, both VXLAN and OTV are simply individual contributions and not adopted by any WG at the IETF. So neither one is even remotely close to being a standard.</div>
           </div>
         </li>
       </div>
@@ -215,10 +210,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05626852098311384388" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6870688468605702944">15 October 2013 10:32</a>
+                <a rel="nofollow" id="c6870688468605702944" href="#6870688468605702944">15 October 2013 10:32</a>
               </span>
             </div>
-            <p class="comment-content">Lot&#39;s of time has passed (in the context of IT) and I reckon it would be really interesting to read current views on this topic. I am in the process of forming my personal view and I am looking for more broad discussions.<br /><br />I like this conversation as it has credible contributors and seems to be a balanced and mature conversation.<br /><br />Anyone interested in posting some current views?</p>
+            <div class="comment-content">Lot&#39;s of time has passed (in the context of IT) and I reckon it would be really interesting to read current views on this topic. I am in the process of forming my personal view and I am looking for more broad discussions.<br /><br />I like this conversation as it has credible contributors and seems to be a balanced and mature conversation.<br /><br />Anyone interested in posting some current views?</div>
           </div>
         </li>
       </div>

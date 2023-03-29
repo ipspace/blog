@@ -1,0 +1,55 @@
+{
+   "comments": [
+      {
+         "date": "23 October 2020 11:29",
+         "html": "<p>How about setting the MAC aging time to a high value on the switches , Would it be a good protection for this kind of behavior ?</p>\n",
+         "id": "186",
+         "name": " Joe",
+         "pub": "2020-10-23T23:29:12",
+         "type": "comment"
+      },
+      {
+         "date": "24 October 2020 01:00",
+         "html": "<p>Ivan, re EVPN, I think it was designed to deal with, among other things, this situation, with its route type 2 and ARP suppression. Assuming the leaf switches here are PE running the anycast gateway, S1 will snoop A&#39;s ARP and create the routes for A. EVPN propagates this update in the underlay to all other interested VTEPs. So L4 will be eventually-consistent with L1 wrt knowledge of A. Even when the MAC table entry times out first due to badly designed timers, one route type 2 of A will be wiped but not the other created by ARP snooping, that one will stand as long as ARP hasn&#39;t timed out, AFAIK anyway. So with any decent implementation, L4 can take a look at the RIB and see the MAC+IP route for A and forward it to L1 across the underlay. With this 2-level fabric, it doesn&#39;t matter whether you use MPLS or VXLAN as transport.</p>\n\n<p>If one adds another superspine layer to the fabric, and the spines now become the PE, EVPN logics still prevent this flooding, then things get complicated fast with ESI and split-horizon, and the amount of flooding will increase nonetheless vs the 2-layer case because DF election doesn&#39;t prevent BUM from being sent to non-DF, only has them drop it on reception. IMO, in this situation with 3 layers and ESI and everything, EVPN MPLS is superior to EVPN VXLAN because it allows the handling BUM traffic and loop prevention in a simpler and therefore more elegant and robust way. The VXLAN&#39;s way of dealing with this sounds more like a kludge to me, due to its inability to do stacking. And with MPLS, one can also achieve valley-free routing even in that kind of complex fabric, if one insists on it. </p>\n\n<p>And I&#39;m not sure why people still want to run SPB in 2020. Sounds like RFC 1925 rule 3. </p>\n",
+         "id": "187",
+         "name": " Minh Ha",
+         "pub": "2020-10-24T01:00:58",
+         "type": "comment"
+      },
+      {
+         "date": "24 October 2020 01:08",
+         "html": "<p>Sorry, the 2nd paragraph in my comment should read like this (would be great if comments are editable here Ivan :))</p>\n\n<p>If one adds another superspine layer to the fabric and the spines now become the PE, then things get complicated fast with ESI and split-horizon. EVPN logics still prevent this flooding, but the amount of flooding will increase nonetheless vs the 2-layer case because DF election doesn&#39;t prevent BUM from being sent to non-DF, only has them drop it on reception. IMO, in this situation with 3 layers and ESI and everything, EVPN MPLS is superior to EVPN VXLAN because it allows the handling BUM traffic and loop prevention in a simpler and therefore more elegant and robust way. The VXLAN&#39;s way of dealing with this sounds more like a kludge to me, due to its inability to do stacking. And with MPLS, one can also achieve valley-free routing even in that kind of complex fabric, if one insists on it, again thanks to label stacking. </p>\n",
+         "id": "188",
+         "name": " Minh Ha",
+         "pub": "2020-10-24T01:08:37",
+         "type": "comment"
+      },
+      {
+         "date": "24 October 2020 03:02",
+         "html": "<p>@Joe: Increasing MAC timer would help in the original scenario (where MAC table aged out before ARP table), but not in this one.</p>\n",
+         "id": "191",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-10-24T15:02:15",
+         "type": "comment"
+      },
+      {
+         "date": "24 October 2020 03:03",
+         "html": "<p>@Minh Ha: I would keep things simpler and have VXLAN encapsulation on the fabric edge, not in the middle (spine) layer.</p>\n",
+         "id": "192",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-10-24T15:03:50",
+         "type": "comment"
+      },
+      {
+         "date": "03 March 2021 06:10",
+         "html": "<p>Ivan, I don&#39;t know if by now you&#39;ve found the answer to the 3rd question, but it seems I&#39;ve come across it by accident the other day, when searching your blogs for old posts on SPB. </p>\n\n<p>On this one, Ludovico, who worked for Avaya, made some comments about the mechanics of their SPB platform:</p>\n\n<p>https://blog.ipspace.net/2014/04/is-is-in-avayas-spb-fabric-one-protocol.html </p>\n\n<p>Reading through it, and looks like they&#39;ve implemented their product very much aligned with SPBM standard. So essentially the MAC learning part is all data-plane, much like VPLS, Fabric Path and the likes. </p>\n\n<p>The reason EVPN can be safe to this unicast flooding behaviour is because it implements control-plane learning of MAC in addition to data-plane flood-and-learn, so it has an additional source of truth to check when needing info. The pure data-plane products are therefore, all stuck with this flooding vulnerability.</p>\n\n<p>So looks like that would address question 1 as well, as this condition applies to all data-plane-learning only fabrics :)) . </p>\n\n<p>And yes, I&#39;ll still stick to my original view that SPBM, itself being a great engineering effort, is still an effort to make pigs fly nonetheless. Reason being they try to force-fit a hierarchical paradigm (IP) into a flat scheme (Ethernet).  </p>\n",
+         "id": "434",
+         "name": " Minh Ha",
+         "pub": "2021-03-03T06:10:04",
+         "type": "comment"
+      }
+   ],
+   "count": 6,
+   "type": "post",
+   "url": "2020/10/wrong-netmask-unicast-flood.html"
+}

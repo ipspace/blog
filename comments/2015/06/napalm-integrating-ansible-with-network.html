@@ -1,10 +1,5 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
-  <h4>4 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08629856490090275127" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4390759132391633108">13 June 2015 10:15</a>
+                <a rel="nofollow" id="c4390759132391633108" href="#4390759132391633108">13 June 2015 10:15</a>
               </span>
             </div>
-            <p class="comment-content">Hi, is interesting but is again the same question. who automated the inventories? Provisioning tools?<br />I made something similar at work with operators just putting parameters, afterwards scripts build the inventories, run ansible to get configs and config upload is done by scripts. Unfortunately I am dealing with devices with no atomic changes (IOS) and the more straight forward way is to load on startup and reboot ( I know, is a piece of shit) but the other workaround is using clogin ( parser for cisco) comming with rancid (really wesome network config differences) and paste the commands in the proper order, without breaking nothing in the meantime. The problem is that our scenario is for the WAN not the DC, where much more scenarios than leaf-spine are needed and thats where these tools become complex, and the structure in roles and services is really customer dependant. <br />For example, what happens if ipfabric role used in the video is not using BGP? new templates and variables are needed... Imagine the variability in the WAN.... Looks like you need programming professional services :)</p>
+            <div class="comment-content">Hi, is interesting but is again the same question. who automated the inventories? Provisioning tools?<br />I made something similar at work with operators just putting parameters, afterwards scripts build the inventories, run ansible to get configs and config upload is done by scripts. Unfortunately I am dealing with devices with no atomic changes (IOS) and the more straight forward way is to load on startup and reboot ( I know, is a piece of shit) but the other workaround is using clogin ( parser for cisco) comming with rancid (really wesome network config differences) and paste the commands in the proper order, without breaking nothing in the meantime. The problem is that our scenario is for the WAN not the DC, where much more scenarios than leaf-spine are needed and thats where these tools become complex, and the structure in roles and services is really customer dependant. <br />For example, what happens if ipfabric role used in the video is not using BGP? new templates and variables are needed... Imagine the variability in the WAN.... Looks like you need programming professional services :)</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08333059712411851393" rel="nofollow">David Barroso</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7518646221559998543">15 June 2015 09:48</a>
+                <a rel="nofollow" id="c7518646221559998543" href="#7518646221559998543">15 June 2015 09:48</a>
               </span>
             </div>
-            <p class="comment-content">&gt; who automated the inventories? Provisioning tools?<br /><br />You can use napalm to build the inventory as well. You will need to have a list of IPs or FQDN&#39;s but the get_facts method should be enough to build an initial inventory as you can get hostnames, vendor, models, S/N, etc... In any case, if you want to automate your network you need to have some sort of asset inventory; either in YAML files as in the demo or in some database.<br /><br />&gt; Imagine the variability in the WAN....<br /><br />It&#39;s a matter of standarizdizing your services. I guess you have a service catalogue or something similar, then you just need roles/templates for each service. And if you don&#39;t have a service catalogue maybe you should start by building one ; )<br /><br />&gt; Looks like you need programming professional services :)<br /><br />It&#39;s just configuration templates, any operator should be able to do it. I understand that building napalm requires some programming knowledge but templating configuration should be easy for any network operator. At the end of the day, most operators just google what they want to do, find a configuration snippet in some blog and then they adapt that snippet for their needs ; )</p>
+            <div class="comment-content">&gt; who automated the inventories? Provisioning tools?<br /><br />You can use napalm to build the inventory as well. You will need to have a list of IPs or FQDN&#39;s but the get_facts method should be enough to build an initial inventory as you can get hostnames, vendor, models, S/N, etc... In any case, if you want to automate your network you need to have some sort of asset inventory; either in YAML files as in the demo or in some database.<br /><br />&gt; Imagine the variability in the WAN....<br /><br />It&#39;s a matter of standarizdizing your services. I guess you have a service catalogue or something similar, then you just need roles/templates for each service. And if you don&#39;t have a service catalogue maybe you should start by building one ; )<br /><br />&gt; Looks like you need programming professional services :)<br /><br />It&#39;s just configuration templates, any operator should be able to do it. I understand that building napalm requires some programming knowledge but templating configuration should be easy for any network operator. At the end of the day, most operators just google what they want to do, find a configuration snippet in some blog and then they adapt that snippet for their needs ; )</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6093135380081381879">19 October 2015 09:22</a>
+                <a rel="nofollow" id="c6093135380081381879" href="#6093135380081381879">19 October 2015 09:22</a>
               </span>
             </div>
-            <p class="comment-content">@David.Is there a better way to secure the plain text passwords due to security constraints ?<br />Also for example some networks have only basic console connections while deploying new pop. Is there a way to deploy these configs through serial connections ?</p>
+            <div class="comment-content">@David.Is there a better way to secure the plain text passwords due to security constraints ?<br />Also for example some networks have only basic console connections while deploying new pop. Is there a way to deploy these configs through serial connections ?</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,52 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08333059712411851393" rel="nofollow">David Barroso</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4857981398850220106">19 October 2015 12:53</a>
+                <a rel="nofollow" id="c4857981398850220106" href="#4857981398850220106">19 October 2015 12:53</a>
               </span>
             </div>
-            <p class="comment-content">&gt; Is there a better way to secure the plain text passwords due to security constraints?<br /><br />If you are using ansible check ansible-vault. That can encrypt the plays or var files where you have sensitive data.<br /><br />&gt; Also for example some networks have only basic console connections while deploying new pop. Is there a way to deploy these configs through serial connections ?<br /><br />I am afraid not. What we do is we generate the configuration files using the same playbooks but instead of pushing them with NAPALM we bootstrap the switches with ZTP. Then we keep managing the devices normally with NAPALM.<br /></p>
+            <div class="comment-content">&gt; Is there a better way to secure the plain text passwords due to security constraints?<br /><br />If you are using ansible check ansible-vault. That can encrypt the plays or var files where you have sensitive data.<br /><br />&gt; Also for example some networks have only basic console connections while deploying new pop. Is there a way to deploy these configs through serial connections ?<br /><br />I am afraid not. What we do is we generate the configuration files using the same playbooks but instead of pushing them with NAPALM we bootstrap the switches with ZTP. Then we keep managing the devices normally with NAPALM.<br /></div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="45">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">George Varkey</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c45" href="#45">22 May 2020 09:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have preaching Ansible at my new workplace however they use Rancid and a lot free ssh tools to do their automated tasks. I would like to build the case for Ansible however I&#39;m falling short to say Ansible is better than Rancid. Any ideas/recommendations would be helpful.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="46">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c46" href="#46">24 May 2020 09:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@George: Ansible is not &quot;a tool to end all tools&quot;. It&#39;s just another potentially useful tool in your toolbox. </p>
+
+<p>Sometimes it&#39;s the best tool for the job, and you should use it (example: automating a series of tasks to be executed in parallel on a large number of devices), sometimes other tools do a better job (Oxidized is definitely better at collecting device configurations).</p>
+
+<p>Always start with &quot;what problem are we trying to solve&quot; and then &quot;what tool in my toolbox would be a best fit&quot;. The more tools you have in your toolbox, the easier your life will be.</p>
+</div>
           </div>
         </li>
       </div>

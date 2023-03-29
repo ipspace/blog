@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">KK</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3125626859251592300">16 February 2015 21:07</a>
+                <a rel="nofollow" id="c3125626859251592300" href="#3125626859251592300">16 February 2015 21:07</a>
               </span>
             </div>
-            <p class="comment-content">Are we comparing apples-to-apples ?.<br /><br />Comparison should be made between bare-metal with *No TCP* offload to a system having vSwitch in it. Obviously, one may need to burn more CPUs for this.<br /><br />Comparing vSwitch performance with TCP-offloaded system seems not right but comparing Offloaded-vSwitch + TCP to pure TCP offloaded system is a probably right. Intelligent NICs have scalability limit too, so is it beneficial to have intelligent NICs or have them on HW boxes ? I am not sure if there any pointers that take in to consideration for all the variables like #CPUs, Offload, vSwitch table size, cost.<br /><br />Finally,<br /><br />Performance &amp; Scalability are inversely proportional after certain point. If one can size vSwitch to 4K, works without performance impact for 4K flows only (assuming hashing works perfectly). Anything more than 4K will have performance issue. Of-course, one could off-set it by adding more CPUs.<br /></p>
+            <div class="comment-content">Are we comparing apples-to-apples ?.<br /><br />Comparison should be made between bare-metal with *No TCP* offload to a system having vSwitch in it. Obviously, one may need to burn more CPUs for this.<br /><br />Comparing vSwitch performance with TCP-offloaded system seems not right but comparing Offloaded-vSwitch + TCP to pure TCP offloaded system is a probably right. Intelligent NICs have scalability limit too, so is it beneficial to have intelligent NICs or have them on HW boxes ? I am not sure if there any pointers that take in to consideration for all the variables like #CPUs, Offload, vSwitch table size, cost.<br /><br />Finally,<br /><br />Performance &amp; Scalability are inversely proportional after certain point. If one can size vSwitch to 4K, works without performance impact for 4K flows only (assuming hashing works perfectly). Anything more than 4K will have performance issue. Of-course, one could off-set it by adding more CPUs.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4339426922776737508">17 February 2015 11:34</a>
+                <a rel="nofollow" id="c4339426922776737508" href="#4339426922776737508">17 February 2015 11:34</a>
               </span>
             </div>
-            <p class="comment-content">KK, I&#39;m talking about the impact of large-scale deployments on performance, not about actual performance figures. The point is that there&#39;s little forwarding performance difference between small and large deployments.<br /><br />On the topic of hash table sizing - most implementations resize the table once the load factor exceeds a certain limit. Resizing is admittedly hard in real-time environments, but even Wikipedia lists a few tricks you can use.</p>
+            <div class="comment-content">KK, I&#39;m talking about the impact of large-scale deployments on performance, not about actual performance figures. The point is that there&#39;s little forwarding performance difference between small and large deployments.<br /><br />On the topic of hash table sizing - most implementations resize the table once the load factor exceeds a certain limit. Resizing is admittedly hard in real-time environments, but even Wikipedia lists a few tricks you can use.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://sage-nets.com" rel="nofollow">Angelos Vassiliou</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3115928411205331050">18 February 2015 10:02</a>
+                <a rel="nofollow" id="c3115928411205331050" href="#3115928411205331050">18 February 2015 10:02</a>
               </span>
             </div>
-            <p class="comment-content">Hello Ivan,<br /><br />I am not sure about this, but from what i understood, Sunay was only saying that forwarding in software is not optimized for tunnels, but only for direct TCP/IP/Ethernet. As a result, the third bullet in your list is actually (as currently implemented) quite expensive.<br />Due to this expense, they are trying to offload the third step of the list (the &quot;adding tunnel encapsulation&quot; part) away from traditional OS kernels which are not optimized for this function.<br /><br />These are not my opinions, this is just what i understood from reading and watching the video.</p>
+            <div class="comment-content">Hello Ivan,<br /><br />I am not sure about this, but from what i understood, Sunay was only saying that forwarding in software is not optimized for tunnels, but only for direct TCP/IP/Ethernet. As a result, the third bullet in your list is actually (as currently implemented) quite expensive.<br />Due to this expense, they are trying to offload the third step of the list (the &quot;adding tunnel encapsulation&quot; part) away from traditional OS kernels which are not optimized for this function.<br /><br />These are not my opinions, this is just what i understood from reading and watching the video.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3570434840753120368">18 February 2015 10:09</a>
+                <a rel="nofollow" id="c3570434840753120368" href="#3570434840753120368">18 February 2015 10:09</a>
               </span>
             </div>
-            <p class="comment-content">There were two parts of the argument:<br /><br />(A) Doing tunnel encapsulation in software is expensive<br />(B) Hypervisor-based tunnels don&#39;t scale, it&#39;s better to do them on the ToR switches.<br /><br />This blog post is focused on (B), tomorrow I&#39;ll cover (A) ;)</p>
+            <div class="comment-content">There were two parts of the argument:<br /><br />(A) Doing tunnel encapsulation in software is expensive<br />(B) Hypervisor-based tunnels don&#39;t scale, it&#39;s better to do them on the ToR switches.<br /><br />This blog post is focused on (B), tomorrow I&#39;ll cover (A) ;)</div>
           </div>
         </li>
       </div>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://testlog.ru" rel="nofollow">Mikhail</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5231248512810580636">18 February 2015 17:16</a>
+                <a rel="nofollow" id="c5231248512810580636" href="#5231248512810580636">18 February 2015 17:16</a>
               </span>
             </div>
-            <p class="comment-content">Join to Angelos message. I&#39;ve got the same point from watching video.<br /><br />Waiting for post about (A).<br /></p>
+            <div class="comment-content">Join to Angelos message. I&#39;ve got the same point from watching video.<br /><br />Waiting for post about (A).<br /></div>
           </div>
         </li>
       </div>

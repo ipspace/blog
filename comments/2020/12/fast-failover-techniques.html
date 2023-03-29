@@ -1,0 +1,572 @@
+<div class="comments post" id="comments">
+  <h4>13 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="281">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> andrea di donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c281" href="#281">04 December 2020 10:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Fantastic wrap-up Ivan/Jeff!</p>
+
+<p>I just wanted to add what we already discussed on this other previous blog @ https://blog.ipspace.net/2020/11/fast-failover-without-lfa-frr.html regarding the comparison between LFA/TI-LFA and Fast-rehash of ECMP-paths:</p>
+
+<p>TI-LFA and LFA are much more than Fast-rehash of ECMP-paths as LFA techniques leverage a more sophisticated control-plane computation but in a link-protection only scenario ECMP fast-rehash is way better than LFA or TI-LFA in terms of the degree of flows-spraying especially if the number of flows per destination varies a lot (e.g. either systemic and/or in an IP tunnelling environment such as GTP, VxLAN and so fort). In this kind of environment in fact the high-end router could carry on spraying the tunnels&rsquo; destinations flows over the N-1 links left (I am assuming an high-end router chipset is capable of performing per-flow loadbalancing of mpls-encapsulated GTP or VxLAN traffic otherwise it is not an high-end router to me ) with fast-rehash rather than sending all of the flows of a tunnel destination over the single LFA/TI-LFA backup NH in order to provide fast link-protection.</p>
+
+<p>Moreover, if both the protected link and the LFA-backup link went down, then LFA would actually and paradoxically provide &#39;fast discard&#39; while ECMP fast-rehash would correctly still provide fast link-protection over the N-2 ECMP links left. </p>
+
+<p>I&#39;d be important if on high-end routers you could disable (with a knob rather than with complex LFA policies) LFA/TI-LFA in favour of ECMP fast-rehash when you require just fast link-protection in an ECMP scenario. </p>
+
+<p>Andrea</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="283">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Prabhu raj</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c283" href="#283">04 December 2020 09:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Some questions</p>
+
+<p>*Does IP FRR work across inter ospf domains where the source is located in OSPF area X and destination is located in OSPF area Y.</p>
+
+<p>*Does IP FRR work across multiple IGP protocols where the source is located in a OSPF region and the destination is located inside a IS-IS region.</p>
+
+<p>*How BFD can utilitized by existing control plane protocols to detect link and node failures and recalculate. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="284">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c284" href="#284">05 December 2020 03:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Andrea,</p>
+
+<p>Re your last paragraph, ECMP is independent of xLFA and just works if you don&#39;t enable any of the xLFA features. ECMP was in existence way before LFA was even conceived. So let&#39;s say you just unbox a bunch of routers with zero config, then build your physical topology in an ECMP manner, you can easily achieve (U|E)CMP with a maximum-paths command. Seriously I don&#39;t understand why that reader in Ivan&#39;s original post asked that question. I strongly believe he misunderstood what his vendor rep told him, that or the vendor rep himself was misguided. </p>
+
+<p>This is the config guide for configuring UCMP for NCS 5500 running IOS-XR, no mention of xLFA whatsoever:</p>
+
+<p>https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5500/routing/63x/b-routing-cg-ncs5500-63x/b-routing-cg-ncs5500-63x_chapter_01001.html</p>
+
+<p>And this is how ECMP works on the data-plane level for ASR9k, again with no bullshit xLFAs noise:</p>
+
+<p>https://community.cisco.com/t5/service-providers-documents/asr9000-xr-load-balancing-architecture-and-characteristics/ta-p/3124809/page/9 </p>
+
+<p>Obviously, since Broadcom high-end chipsets, some of which are used by ASR9k and NCS5500, support ECMP, ECMP failover is done on the hardware/data-plane level. Tomahawk 3&#39;s ECMP&#39;s max no of groups + hardware table size can be viewed here:</p>
+
+<p>https://docs.broadcom.com/doc/56980-DS</p>
+
+<p>And yes, you&#39;re absolutely right about ECMP being superior to xLFA in terms of flow spraying, because that&#39;s what ECMP was built to do. xLFAs, with all of their hideous complexities -- if they&#39;re already so complex at this high-level view, imagine how much more complex and buggy the code would be -- are never meant to be anything but a quick relief while global repair aka control-plane IGP convergence and FIB update, takes place. They&#39;re never intended to be a delicate balancing act.</p>
+
+<p>Also, I just saw your last comment on the original post. Yes, I&#39;m aware that I posted LFA&#39;s selection criteria for IOS-XE, as it&#39;s hard to locate one for IOS-XR at the time, but it was close. I managed to locate one for IOS-XR in the meantime, here:</p>
+
+<p>https://www.ciscolive.com/c/dam/r/ciscolive/us/docs/2016/pdf/BRKRST-3020.pdf</p>
+
+<p>For IOS-XR IS-IS, the default tie-breakers are indeed in the order that I commented in the original post. The Juniper order I got were documented by their own engineers, so it was correct too. It&#39;s weird Cisco didn&#39;t mention default tie-breakers for OSPF, so I assume it&#39;s like IS-IS as they&#39;re both LS IGP.  In any case, it doesn&#39;t matter as this is configurable :) .</p>
+
+<p>&quot;by default EIGRP prefers using ECMP fast-rehash as opposed to LFA while OSPF doesn&#39;t as it always enforces LFA.&quot;</p>
+
+<p>As I mentioned above, LFA only gets enforced when it&#39;s enabled/configured. Without LFA enabled, U|ECMP works just fine. In your config, you enabled LFA, so LFA took over and its first choice of backup path would be the ECMP paths if it used the default tie-breakers.</p>
+
+<p>Your command output is very interesting. So among 6 paths (equal cost I believe), there are 2 groups of 3, within each there&#39;s one protected and 2 back-up. WHat I notice is the first 3 interfaces have similar &quot;parent-ifh&quot; index, all starting with 0x4000, while the rest 3 are 0x18000. What&#39;s their physical or logical relation? That might shed a light on their LFA relationship. </p>
+
+<p>As for PIC and LFA, they&#39;re not related. PIC is only relevant for BGP and is intended to speed up BGP data-plane convergence after IGP and BGP re-convergence, while LFA was used as a temporary relief while waiting for IGP re-convergence. I read that PIC link you provided, but it&#39;s only applicable to PIC, PIC-CORE to be exact. </p>
+
+<p>Cisco has some restrictions between PIC and LFA. If you enable PIC and LFA, you cannot use them to protect the same prefix:</p>
+
+<p>https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r6-5/routing/configuration/guide/b-routing-cg-asr9000-65x/b-routing-cg-asr9000-65x_chapter_01000.html</p>
+
+<p>In the end, one just has to ask this question: if one cares so much about high availability, why not just increase the degree of ECMP? And to make it stronger, make each ECMP path a port channel. Granted, you trade-off performance for HA that way, but if HA is your goal, it might be worthwhile. And I&#39;m glad I&#39;m not the only one to think that, as Lukas Krattiger has similar view, that &quot;Most scalable approach is still classic ECMP with PIC Core.&quot;</p>
+
+<p>ECMP was originally used for load balancing, but thanks to the redundancy provided, it can provide protection as well. LFA is purely for protection, and temporary protection at that, while ECMP is permanent from the start. So why not kill 2 birds with one stone, actually 3, because with ECMP, you gain simplicity (and sanity) as well. TI-LFA in particular, looks to me like just an attempt to boost the image of Segment Routing, which itself seems like a resurrection of ATM LANE. Centralized-controller paradigm works well at small scale, and sucks big time at large scale, just like shared-memory vs crossbar fabrics. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="289">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c289" href="#289">05 December 2020 10:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@ Minha:    </p>
+
+<p>First of all thanks for your always priceless contributions!      </p>
+
+<p>Regarding your statement: <br />
+&ldquo;As I mentioned above, LFA only gets enforced when it&#39;s enabled/configured. Without LFA enabled, U|ECMP works just fine. In your config, you enabled LFA, so LFA took over and its first choice of backup path would be the ECMP paths if it used the default tie-breakers. <br />
+&ldquo; <br />
+The issue I have Minha is that on the very same router I have some prefixes that are ECMP&rsquo;ed while others aren&rsquo;t and I therefore need to have LFA for the non ECMP&rsquo;ed prefixes and at the very same time ECMP fast-rehash for the ECMP&rsquo;ed prefixes. <br />
+Regarding the tie-breakers , what I am seeing on IOSXR at least is that the first choice being an ECMP path means that by default one out of the N x ECNP-NHs is chosen as the LFA-backup-NH which is different from  spraying the flows over the N-1 ECMP NHs left which is what fast-rehash does.  </p>
+
+<p>=======================================  </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+What&#39;s their physical or logical relation? That might shed a light on their LFA relationship. <br />
+&ldquo; <br />
+Well spotted Minha !! What I am seeing in production is that IOSXR provides node-protection by default since on a per-prefix basis, every NH on box A is protected with a NH on Box B. The scenario is that of prefixes having N x ECMP-NHs, N/2 on box A and N/2 on box B. LFA is just powered on with no specific config.  </p>
+
+<p>=======================================   </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+As for PIC and LFA, they&#39;re not related. PIC is only relevant for BGP <br />
+&ldquo; <br />
+I just wanted to add here that BGP PIC-CORE implementation is, to me, very much fast-rehashing but at a higher indirection level of the hierarchical FIB as it applies to service/BGP prefixes in a BGP multipath scenario. What I found here is that in some implementations the trigger for the fast-rehashing at that higher level can be both an interface-down or a BFD session-down event but in other implementations it&rsquo;s the BFD session-down event only that triggers the fast-rehashing. This is important to know if you need to design a high-performance routing/network solution as in that latter case you might not want to enable BGP multipath for traffic requiring fast-protection via fast-rehashing. Having said that, to make things even more complex, I also found that some implementations make use of the central CPU to scale BFD up while others use the CPU on the line card. At the end of the day you do need to lab these solutions with the actual production HW and the actual production routing scenario and measure the convergence time which is not always easy when you have Terabytes of complex traffic flowing through your box&hellip;. &#x2639;  </p>
+
+<p>ciao <br />
+Andrea  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="294">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c294" href="#294">07 December 2020 05:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Andrea,</p>
+
+<p>Thanks for your valuable input! It&#39;s always great to have more insight from ground zero :) . And we owe all these great discussions to Ivan who have created and coordinated this ipspace platform as a medium of knowledge exchange. Ivan&#39;s contribution to the community over the years, is just immense and goes way beyond simple education. He should receive some kind of award for all this tireless work and inspiration. Thx a million Ivan and pls keep up the great work!!</p>
+
+<p>Yes, unfortunately if you have LFA configured on ECMP interface(s) then LFA logic will take over. This is exactly why I hate complexity. As vendors keep piling features on top of features, suddenly there&#39;s unexpected interaction or corner case not accounted for, and even vendor documentation cannot cover all possible scenarios anymore, and we have to rely on field experience to identify possible issues, like these :( . That&#39;s why nothing beats operational experience &amp; maturity. </p>
+
+<p>Cisco IOS-XR indeed prefers node-protection and tries to provide it whenever possible. In Junos configuration is more explicit and you can choose to enable node-link-protection or just link protection. </p>
+
+<p>So from your output and your explanation of it, I can see that IOS-XR can provide more than 1 ECMP backup NH for LFA, as among the 6 paths, there&#39;re 2 backups for each primary.  </p>
+
+<p>&quot;The scenario is that of prefixes having N x ECMP-NHs, N/2 on box A and N/2 on box B. &quot;</p>
+
+<p>I don&#39;t get this part. Can you elaborate on the setup? I thought all ECMP interfaces would have to be on the same router/box, for it to be ECMP :) .  How&#39;s that possible?</p>
+
+<p>In Junos, and only with TI-LFA for Segment Routing, there&#39;s a cmd to enable more than 1 ECMP backup path, this one here:</p>
+
+<p>https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/protocols-isis-backup-spf-options-use-post-convergence-lfa.html</p>
+
+<p>So this cmd helps restore load balancing for ECMP paths if you have to enable TI-LFA. Too bad it&#39;s not applicable to LFA and RLFA. I wonder if Cisco can be requested to provide something similar?</p>
+
+<p>In the end, I still fail to understand how even RLFA and TI-LFA are superior to ECMP. In case of double-link failure for link-only protection setup, both RLFA anf TI-LFA risk permanent loop until global repair finishes its reconvergence, so they would be useless, while ECMP can still provide some hit if it has more than 2 paths. That&#39;s why IOS and Junos prefer node protection.</p>
+
+<p>And both RLFA &amp; TI LFA fail to provide 100% coverage, the latter despite its name. For RLFA, it&#39;s obvious when there&#39;s no PQ node, you&#39;re screwed. For TI-LFA, when some leaf networks can only be accessed off the primary/protected node, and that node goes down, bad luck. You just can&#39;t find any other backup path in the network because the only path to those leaves is via the node that&#39;s RIP. So there&#39;s no such thing as TI.  </p>
+
+<p>Also, for TI-LFA, there&#39;s something murky re the amount of calculation required. Say the local repair needs to remove the primary/protected host in order to calculate the post convergence topology in case that host goes down -- node protection scenario. By default for RLFA/TI-LFA, in order to remove non-scalable massive overhead, people try to take shortcut by calculating a reverse SPF from the primary/protected node&#39;s perspective. That cuts down the number of SPF calculation. But by removing that node, where would be your new anchor point to do reverse SPF? This doesn&#39;t seem to be documented anywhere, but this is crucial for LFA viability. Trying to perform rSPF on every node in the routing area, would be suicidal for very large-scale IGP deployments having say 1k routers or more. For vanilla LFA, the number of SPF to be done is proportional to the node degree, so it&#39;s definitely non-trivial in very large networks as well, though to a way less extent and still viable. Also, vanilla LFA performs weakly (low protection coverage) in large networks with low node degree.</p>
+
+<p>So all in all, despite their sophistication, I still don&#39;t see how they&#39;re better than ECMP. So yes, if one needs LFA because there&#39;s no choice, then surely have it on, but otherwise I&#39;d say ECMP works well for most cases. For LFA, if you tweak timer to be too low, you run the risk of false positives as well, triggering the backup path while the primary path is still OK. And don&#39;t forget, after every global convergence, LFA algorithm is run again, so it&#39;s pretty resource-intensive if your network is both large and quick-changing or experiencing instability. </p>
+
+<p>Re your point about PIC, yes, when PIC is combined with BGP multipaths, it&#39;s essentially ECMP from the data-plane&#39;s perspective. </p>
+
+<p>As for BFD, you said &quot;I also found that some implementations make use of the central CPU to scale BFD up while others use the CPU on the line card&quot;. I don&#39;t understand how centralizing BFD provides any advantage, what&#39;s the scale-up for? BFD&#39;s purpose is to quickly inform of failures and trigger reconvergence and LFA or ECMP rehash. So isn&#39;t it easier to have the LC CPU handle this and then notify the control plane to do reconvergence via IPC channels? Sending it to the central CPU and bypassing the LC CPU means the data plane cannot react quickly to failure, seem to defeat the purpose of doing LFA and ECMP in hardware?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="296">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c296" href="#296">07 December 2020 01:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@ Minh Ha: </p>
+
+<p>I am with you for an AWARD to Ivan !!!! priceless contribution for all of us working in the darkness of the unknowns&hellip;or&hellip;even worst, working with people that think they know as they are not educated to ask questions to themselves&hellip;XXIE-certified included unfortunately&hellip;.but this is a different and longer story..I guess for another blog !!   </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+I don&#39;t get this part. Can you elaborate on the setup? I thought all ECMP interfaces would have to be on the same router/box, for it to be ECMP :) . How&#39;s that possible? <br />
+&ldquo; <br />
+The scenario is exactly that depicted by one of Ivan&rsquo;s readers &hellip; @ this blog:   https://blog.ipspace.net/2020/11/fast-failover-without-lfa-frr.html <br />
+And I can actually provide you with more details regarding the show command output posted as part of the current last comment of the abovementioned blog.  Please, find below the backup-NH layout and the upstream router each NH belongs to. Let&rsquo;s remember this is the protection layout provided by IOSXR for just one destination out of the N x ECMP&rsquo;ed destinations; some other destinations will have this same protection layout while other destinations will have a different protection layout &ndash; I guess the protection layouts are distributed on a per destination basis in a round-robin fashion but haven&rsquo;t verified that as need a script &ndash; will do that asap.  </p>
+
+<p>NH    LFA-BACKUP-NH <br />
+0             3 <br />
+1             5 <br />
+2             5 <br />
+3             0 <br />
+4             2 <br />
+5             2     </p>
+
+<p>NH  UPSTREAM-ROUTER <br />
+0           B <br />
+1       A <br />
+2       A <br />
+3       A <br />
+4       B <br />
+5       B <br />
+Note how IOSXR provides node-protection and I guess it&rsquo;d provide a 1:1 protection even if link-protection only was configured as opposed to default to ECMP fast-rehashing (i.e. 1:N-1 protection) which is what my ideal router would be capable of doing.   </p>
+
+<p>=======================================   </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+So this cmd helps restore load balancing for ECMP paths if you have to enable TI-LFA. Too bad it&#39;s not applicable to LFA and RLFA. I wonder if Cisco can be requested to provide something similar? <br />
+&ldquo; <br />
+Very interesting command. We should investigate on that and its availability on other vendors&rsquo; routers.  </p>
+
+<p>======================================= </p>
+
+<p>Regarding your two statements: <br />
+&ldquo; <br />
+&lsquo;That&#39;s why IOS and Junos prefer node protection&rsquo; &amp; &lsquo;So there&#39;s no such thing as TI &lsquo; <br />
+&ldquo; <br />
+Could you expand further on these two statements as they are extremely interesting ?   </p>
+
+<p>=======================================     </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+Also, for TI-LFA, there&#39;s something murky re the amount of calculation required. <br />
+&ldquo; <br />
+Well, I would add the complexity of the microloops prevention calculations too then!! Let&rsquo;s remember RSVP-TE doesn&rsquo;t suffer from microloops (i.e. remote loops). So, careful when on shiny PPT you hear about moving from RSVP-TE to TI-LFA as a universal panacea. Cisco&rsquo;s proprietary solution for microloops for instance should be classified as &lsquo;microloop prevention&rsquo; and its method should be classified as &lsquo;Distributed tunnels&rsquo; based on RFC 5715. In particular, the &lsquo;draft-hegde-rtgwg-microloop-avoidance-using-spring-03&rsquo; classifies it as &ldquo;per destination non micro-looping path computation&rdquo; and it highlights its extreme computational cost which makes me even more think that a TI-LFA network is not conceivable without an SDN controller for large networks implementations since that computational cost can only be absorbed by a Controller/server rather than a router&rsquo;s CPU these days&hellip;but then we need to open another can of worms unfortunately since current SDN networks products (except one) prefer BGP-LU SBI to IGP adjacency SBI rather than the opposite which means that if an IGP conveyed metric (Cost/Overload, delay, jitter, optical degrade, packet-loss and so forth even emerging from the transmission layer underneath hopefully soon) changes then it is conveyed (if supported) by the slower BGP-LS to the SDN Controller acting as a PCE, this way adding further delay and thus either further drop, loop or suboptimal routing to the whole system/solution. Let&rsquo;s remember in fact that a metric change does not fast-trigger LFA!      </p>
+
+<p>=======================================   </p>
+
+<p>Regarding your statements: <br />
+&ldquo; <br />
+&lsquo; I don&#39;t understand how centralizing BFD provides any advantage, what&#39;s the scale-up for?&rsquo; &amp; &lsquo;seem to defeat the purpose of doing LFA and ECMP in hardware?&rsquo; <br />
+&ldquo; <br />
+Well, the scalability of BFD is intended in terms of number of sessions which also depends on how low you need to go in terms of timers. Some implementations have a much more powerful centralised CPU rather than the line card CPU and also have the centralised CPU front-ended by the very same forwarding chipset that is on the line-card. And, last but not least, with BFD if a failure happens on port BLA of card A then that failure must be notified to all of the ingress cards as the re-hashing/protection happens in the ingress direction and that notification might go via the central CPU anyway !!  So, in order to scale, some implementations/vendors prefer to centralise (not just BFD) rather than to distribute on the line cards.    </p>
+
+<p>Ciao <br />
+Andrea </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="299">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c299" href="#299">09 December 2020 07:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Andrea,</p>
+
+<p>Thx for your clarification of your setup!! Now I can visualize your topology, and understand exactly what&#39;s going on. Looks like indeed IOS-XR LFA behaviour works according to Cisco documentation, as in it provides 1:1 protection and no more. So in case of ECMP, the ECMP paths are divided into pairs of primary &amp; LFA. Since Jan&#39;s first comment in the original post claimed ECMP-like behaviour with TI-LFA, that points to a potential inconsistency in Cisco&#39;s implementation across the feature set. I&#39;m saying potential because his comment was too brief with no detailed config provided. If it&#39;s indeed true, could that be an attempt by Cisco to boost TI-LFA and lure people into SR? I doubt that since a lot of people have a hard time understanding how xLFA work, let alone to that level of details, which is not well documented either, so to them it doesn&#39;t matter anyway. But regardless, it again proves the sheer complexity of xLFA, and complexity is never a good thing.</p>
+
+<p>Re my statement about xLFA causing loops with double faults with link-only protection, let&#39;s use figure 6 in the LFA RFC to illustrate:</p>
+
+<p>https://tools.ietf.org/html/rfc5286</p>
+
+<p>So say E is the PLR, and ES is the protected link. Assuming RLFA/TI-LFA calculate FB to be the non-connected bypass LFA for ES. Now imagine both ES and FB go down at the same time. Traffic normally going via ES now gets redirected to the LFA which is FB, but since FB goes down as well, F will bounce it back to E. This will continue until global repair has converged and FIB updated. That&#39;s why node protection is preferred by vendors over link-only protection. With Cisco, it&#39;s built-in, with Junos, since Juniper prefers explicit config, you have a knob called node-link-degration to enable this behaviour.</p>
+
+<p>With respect to TI-LFA, they claim it provides 100% coverage in all scenarios, hence the TI part. But using the above figure as example, what if S, the protected node goes down, and there are several leaf prefixes hanging off S and S alone? Those prefixes will go down with it, and that&#39;s that. So there&#39;s no such thing as TI :) .</p>
+
+<p>I had a look at the RFC &amp; drafts you mentioned. This one, RFC 5715, is a pre-RLFA RFC:</p>
+
+<p>https://tools.ietf.org/html/rfc5715</p>
+
+<p>So what&#39;s described in it was most likely what vendors used before RLFA became a standard. RLFA RFC came 5 yrs later so I suppose the behaviour of RLFA/micro-loop free alternate is now conformant to it:</p>
+
+<p>https://tools.ietf.org/html/rfc7490</p>
+
+<p>In RFC 5715, section 6.4, &#39;Distributed Tunnel&#39;, the last sentence was &quot;An alternative distributed tunnel mechanism is for all routers to tunnel to the not-via address [NOT-VIA] associated with the failure.&quot; This was exactly what caused SPF explosion and the resulting scalability issue with the original forms of RLFA, turning Not-via into Not-viable :p. I brought this up in my previous comment above. Original Not-via&#39;s and Tunnel&#39;s mechanics both caused (N-1)*rSPF, and Not-via also caused non-trivial memory overhead to store alternate configuration info, making it unworkable in huge networks. I don&#39;t think Not-via made it into production, for those reasons. That&#39;s why I said above, for RLFA, they had to take shortcut and made the protected node an anchor point to calculate rSPF from there, once. </p>
+
+<p>As I also commented, with TI-LFA, when they remove the protected node from the graph, where then do they base their rSPF from? I suspected they would come full circle to their original, non-scalable approach that performs a calculation from each and every destination&#39;s point of view. How else can they calculate the Q space then, I see no other way with the protected node removed. And thanks to you providing the draft on Spring&#39;s micro-loop avoidance -- which serves as a precursor to the TI-LFA draft I believe -- and RFC 5715, I managed to find out that indeed TI-LFA, in the case of node-protection, works as I suspected. </p>
+
+<p>As they mentioned in the SPRING draft, &quot;Per destination non micro-looping path computation is another approach to prevent micro-loops but it is computationally intensive.&quot; Of course it is. The name says it all. So basically in a N-size network, you perform (N-1) SPF calculation, for the Q space. No wonder Juniper&#39;s default TI-LFA calculation uses link-protection scenario, just like RLFA. So if you plan to do an IS-IS one-area setup with 5k-10k routers for simplicity, and have TI-LFA on using node protection, good luck.</p>
+
+<p>And to be honest, I fail to see how PCE controller is any more scalable than traditional MPLS TE. Yes, MPLS TE is centralized using headend router as the controller, so it has certain scalability issues, but how is implementing another controller-based solution gonna alleviate it? Not to mention, with SR-TE, apart from the well-known latency issues you brought up above, there&#39;s also the risk of label stack explosion. Variable-length header is never good when it comes to wire-rate forwarding, because it incurs significant penalty on the parser. Even if you try to implement your ASIC to accomodate the worst-case scenario, like for ex what Juniper does with their Trio, that kind of accommodation results in big complication to the ASIC and routing network, making the chip(s) bigger and more expensive, the PCB having more layers, all of which significantly complicate testing and increase time to market as well. And heat, don&#39;t forget the heat.</p>
+
+<p>Even if we don&#39;t care about the hardware, on the software side things still don&#39;t look too hot. With massive headers, if your network has to deliver smaller packets, you need a lot more bandwidth. Say you have 2GB worth of VOIP traffic. With huge label stack on top of other headers, your header is as big/bigger than your payload and you&#39;d need a 4GB or bigger pipe for your VOIP. That&#39;s why things like VXLAN look to me more like products of ego-networking than innovation. But who am I to talk :p?</p>
+
+<p>And thanks a lot for your detailed explanation of BFD :))!! I&#39;m not too well-versed with BFD architecture so your comment helps me get a clearer picture. Yes, I&#39;m aware that most (all) big routers these days have more powerful CP CPU than LC CPU, the former normally x86-multicore to do heavy computation, the latter some form of RISC. But still, I found it weird that vendors claim they implement centralized BFD to scale, as to me scaling using centralized approach makes little sense. So I dug in a little bit, and found some contents related to the topic. It seems vendors take quite a bit of liberty with BFD implementation, as you rightly pointed out. Nokia uses a centralized and distributed approach, but to scale the centralized scheme they use hardware offload on the control plane to ease up on the CPU:</p>
+
+<p>https://documentation.nokia.com/html/0_add-h-f/93-0267-HTML/7X50_Advanced_Configuration_Guide/BFD-Detection%20Configuration.html</p>
+
+<p>Juniper reasons that distributed BFD scales better, and they implement a client-server BFD architecture on both the LC and the CP:</p>
+
+<p>https://www.juniper.net/documentation/en_US/junos/topics/concept/bfd-distributed.html</p>
+
+<p>They also have inline BFD that offloads BFD to the NPU as well. Cisco uses the same architecture, with communication between LC CPU and CP CPU taking place via IPC channel:</p>
+
+<p>https://community.cisco.com/t5/service-providers-documents/bfd-support-on-cisco-asr9000/ta-p/3153191</p>
+
+<p>Lastly, you said &quot;with BFD if a failure happens on port BLA of card A then that failure must be notified to all of the ingress cards&quot;. Can you explain more? What is BLA port? I know that when BFD notification is received, control plane components that rely on it like IGP needs to be informed, but why do other LCs also need to know about the failure? Say if I configure LFA on interface1 on LC1, if that interface goes down, LFA will be triggered for that interface and IGP notified to start reconvergence, but for other LCs, wouldn&#39;t it be business as usual for them until IGP changes propagate there? Thx Andrea!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="307">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">andrea di donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c307" href="#307">11 December 2020 04:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@ Minh Ha:  </p>
+
+<p>You&rsquo;re welcome pal &ndash; pleasure ! </p>
+
+<p>=======================================    </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+could that be an attempt by Cisco to boost TI-LFA and lure people into SR? <br />
+&ldquo; <br />
+It could very well be what you said. Overall, what I can see from Cisco at least (it&rsquo;d be nice if they could confirm) is that high-end routers are equipped with (TI-)LFA and don&rsquo;t necessarily implement ECMP fast-rehash while cheaper DC boxes do implement  ECMP fast-rehashing but not (TI-)LFA. While the latter makes sense to me since Fabrics have a high degree of ECMP and expect to be built with cheaper boxes, I don&rsquo;t understand the former  as SP networks can have a high degree of ECMP as well and if you do deploy (TI-)LFA in your ASIC then I guess you can also deploy ECMP fast-rehash.  In that sense it could very well be what you&rsquo;re conjecturing, until proven otherwise.  </p>
+
+<p>======================================= </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+So there&#39;s no such thing as TI :) . <br />
+&ldquo; <br />
+Ahahahahaha, well, to be honest,  if a box is the only one injecting prefixes in the network and that box goes down &hellip;well&hellip;there&rsquo;s no much you can do, can&rsquo;t you !!?? This reminds me of the most evil of all failures in terms of fast convergence but in a multihomed scenario which is that of loosing one of the N exit PEs for VPN prefixes&hellip; well&hellip;having said that mobile chaps in 4G and 5G in fact use SCTP with path diversity to achieve fast protection at application/transport layer (I love SCTP for that by the way !!) as long as IP underneath provides path diversity. <br />
+Regarding your other statement: &lsquo;node protection is preferred by vendors over link-only protection&rsquo;, well..I guess that is exactly in order to cover some of the multiple link failure scenarios which is what happens when a box goes down.  </p>
+
+<p>=======================================  </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+And to be honest, I fail to see how PCE controller is any more scalable than traditional MPLS TE. <br />
+&ldquo; <br />
+Well, scalability here reminds me of the law of conservation of energy as the scalability just morphs from being distributed within the network as RSVP-TE state to being centralised within a PCE/SDN controller/orchestrator God box/system having to perform as a minimum and for the whole (!) and hopefully non flapping (!!) network BGP-LS and/or IGPoGRE, Telemetry, SR-TE computation, TI-LFA local and remote/microloops protection computations, N x FlexAlgo computations, BGP-SRTE and/or PCEP and/or NETCONF&hellip;.anything else ?? &hellip;well..why don&rsquo;t we also then add optical stuff as well while we&rsquo;re at it !? I do love all these technologies but I really cannot see them deployed full-blown on a very large SP network. The solution will have to be a hybrid one &ndash; that&rsquo;ll be the actual challenge, a pure architectural one. <br />
+Ah&hellip;and let&rsquo;s not forget the SRv6 ASIC gymnastic too on a 400Ge+ going forward (!) card but that is a different story&hellip; <br />
+&ldquo;   </p>
+
+<p>=======================================  </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+That&#39;s why things like VXLAN look to me more like products of ego-networking than innovation. But who am I to talk :p? <br />
+&ldquo; <br />
+You are more than entitled ! Networking is not, say, particle physics !!! you&rsquo;re not a particle physicist are you &#x1F60A; ? <br />
+Well, I&rsquo;d add SRv6 as the top entry of this list of infeasible technologies for large SP environments&hellip;    </p>
+
+<p>===========================================    </p>
+
+<p>Regarding your statement: <br />
+&ldquo; <br />
+but for other LCs, wouldn&#39;t it be business as usual for them until IGP changes propagate there ? <br />
+&ldquo; <br />
+Ok. Say outgoing interface Z goes down. Z&rsquo;s egress ASIC detects the failure BUT the actual hashing of a packet entering the box happens in any of the ingress cards only. This means that there&rsquo;s always a dependency on internal notification from egress line-card to ingress line cards and that notification goes  via the central CPU anyway !! So, as you can see, implementing BFD centrally can make sense afterall. <br />
+&quot;  </p>
+
+<p>Cheers/Ciao <br />
+Andrea</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="309">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c309" href="#309">12 December 2020 07:43</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Andrea,</p>
+
+<p>Thx for clearing up the BFD dependency scenario;  I can see it now :)) ! </p>
+
+<p>And yes, I&#39;m with you 100% on bloated featurism and its impracticality. Scalability and simplicity always go hand in hand, always. That&#39;s why the big Clouds decide to make their own gears; they&#39;re sick of big vendors&#39; bloatware ;) . </p>
+
+<p>Cisco in particular, was dumb and stupid under John Chambers, the ego-maniac who cared more about stock price than core business, resulting in countless misdirections, Cisco being overtaken by Huawei, and (ironically), Cisco&#39;s market cap struggling even to this day. Being someone who knows a little bit about the history of the company, I like a lot of their products and inventions, but am totally disappointed in their terrible execution in the past decade. Hopefully under Chuck Robbins, they can regain their momentum, but as always I&#39;m just digressing :p .</p>
+
+<p>It&#39;s nice discussing with you and it&#39;s always wonderful to meet someone with great interest in and passion for network technologies, beyond the level of black-box magic :)) . Have a great weekend!!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="311">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Renato Westphal</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c311" href="#311">13 December 2020 01:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Excellent write-up as usual!</p>
+
+<p>&gt; Usually you&rsquo;d see LFA implemented on a high end router</p>
+
+<p>FWIW, the open-source FRR routing stack now supports the LFA/RLFA/TI-LFA trio:
+* TI-LFA: https://github.com/FRRouting/frr/pull/7011
+* Classic LFA: https://github.com/FRRouting/frr/pull/7590
+* RLFA (code under review): https://github.com/FRRouting/frr/pull/7707</p>
+
+<p>Link to a presentation about the FRR TI-LFA implementation I did a couple of months ago: https://www.dropbox.com/s/24c09sez1ny3wzq/frr-ti-lfa.pdf?dl=0</p>
+
+<p>&gt; if one cares so much about high availability, why not just increase the degree of ECMP?</p>
+
+<p>Indeed, that&#39;s probably why you don&#39;t hear much about LFA in the datacenter world, where ECMP redundancy is cheap. In telco networks, however, physical redundancy might be expensive, so IP-FRR can be a sensible alternative.</p>
+
+<p>&gt; TI-LFA in particular, looks to me like just an attempt to boost the image of Segment Routing, which itself seems like a resurrection of ATM LANE</p>
+
+<p>I don&#39;t think that&#39;s the case, TI-LFA is better than LFA/RLFA is every possible way. Similarly, Segment Routing is better than LDP is every possible way for modern packet based networks. I think the SR-based MPLS control plane as a whole is a clear evolution compared to what existed before. I respect your opinion though!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="315">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c315" href="#315">15 December 2020 07:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Renato,</p>
+
+<p>Thx a lot for weighing in and giving your view on the topic! It&#39;s always great to hear a viewpoint well-explained :)! There&#39;s no absolutely right or wrong after all, as Ivan keeps pointing out now and again, they&#39;re all just tools, and depending on how well/badly we use them, they can be for us or against us.</p>
+
+<p>I agree with you that TI-LFA is better than RLFA, which is better than LFA in the sense that it generally provides a higher degree of backup protection, all else being equal. I don&#39;t think I claimed TI-LFA was inferior to either ;) . But I still think TI-LFA is an attempt to boost the public image of SR. </p>
+
+<p>The reason I said SR looks like a resurrection of LANE is because LANE also used a centralized controller to calculate path, and the degree of complexity/sophistication/granularity of ATM paths can be pretty high-end as well. SR is controller-based solution, which, has always existed alongside distributed forwarding since the dawn of networking, in one form or another. </p>
+
+<p>That said, controller-based solution is great in the sense that it has good global visibility that distributed paradigm lacks, so it can make better, well-informed decision about things like path calculation. No one can deny that. But also because of that, it doesn&#39;t scale as well as distributed forwarding, the same way link-state protocols, which are better-suited to things that require global info like traffic engineering path calculation, cannot match distance-vector protocols like EIGRP and BGP, in scalability alone. </p>
+
+<p>In fact, whenever scalability is of primary concern, distributed forwarding is always utilized, for ex: Cisco started with centralized CEF, then moved to distributed CEF in higher-end models because it scales much better. Another example is shared-memory vs crossbar architectures, the latter, being distributed in nature, is used for bigger-scale routers/switches. So yes, each paradigm has its own use. </p>
+
+<p>I&#39;m sure SR, with all of its sophistication, including the ability to harness it to implement valley-free routing without having to resort to running BGP as an IGP in DC fabrics, is absolutely beautiful. But with its intrinsic scalability limitation, which applies equally to all central controller-based solutions, it can run into problems with very large-scale deployments, as it causes latency issues, and potentially, may exceed label-stack depth limit.</p>
+
+<p>Btw, I&#39;ve just looked at your presentation, and looks like we&#39;re in violent agreement about quite a few things re TI-LFA, including its mechanics and implementation. Great job indeed, pls keep it up :)!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="316">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c316" href="#316">15 December 2020 08:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Minh Ha: Forget all the marketing/SDN BS. SR-MPLS is in essence just a different label allocation/distribution mechanism with network-wide namespace.</p>
+
+<p>I described why it&#39;s better than LDP (in some cases ;) here:</p>
+
+<p>https://my.ipspace.net/bin/list?id=MPLS101</p>
+
+<p>As for LFA applications, TI-LFA doesn&#39;t need additional tunnels assuming SR labels are already set up, and it&#39;s possible to use multiple hops (label stack) to get across the gap between P-space and Q-space. Yet again, that calculation can be done locally given a LS database, no need for a centralized controller.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="319">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c319" href="#319">15 December 2020 09:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;Forget all the marketing/SDN BS.&quot;</p>
+
+<p>As always, you&#39;re so harsh Ivan ;) !! And yes, SR in a nutshell is just another method of label distribution, and while in some cases better than LDP, brings with itself other complexities to the table. LDP might be less sophisticated and so weaker in some scenarios, but it has beautiful simplicity.</p>
+
+<p>&quot;that calculation can be done locally given a LS database, no need for a centralized controller.&quot;</p>
+
+<p>Again I&#39;m with you 100% here :) . TI-LFA is essentially rLFA on steroids, and as rLFA doesn&#39;t need no controller, neither does TI-LFA. It&#39;s just that vendors seem to offer only TI-LFA to SR, seemingly as a competitive advantage. It&#39;s for this reason that I said TI-LFA was an attempt to boost the public image of SR in the first instance.   </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

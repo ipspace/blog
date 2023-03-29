@@ -1,0 +1,82 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="227">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">pemiolatunji</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c227" href="#227">10 November 2020 11:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I love this write up. Good work. As an aspiring young network engineer...you work keeps my mind imagining... I truly love the efforts</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="228">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jeff Sicuranza</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c228" href="#228">10 November 2020 07:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yes you always learn from Ivan for he always covers the topics of the day very well with a great and sometimes humors perspective on things, plus his training is outstanding. </p>
+
+<p>This is a great topic. </p>
+
+<p>I don&#39;t know if this what was discussed prior but maybe some consideration on the types of failures should be covered initially to align with the discussion on when fast failover should occur?  Maybe a subcategory after item #1 For example  L1 failure with a low/med/high category for when fast fail is used plus upward/downward signaling.  Outline the  same for  L2-7 types. Maybe include a simple table of the common types of failures noted these days and align to the Fast Fail over approach expected to be used or when used.   When designing we need to know clearly when to &quot;go all in&quot; on fast fail over and when not to plus when to return to recovered state(the failure is corrected and original path is in use- no stickiness). Think dampening mechanisms or false negatives tripping off Fast Fail over.  This will tie nicely to the rest of the basics outline listed. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="231">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c231" href="#231">13 November 2020 09:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Do we really need ms failover? 
+As usual, it depends... :-)</p>
+
+<p>If your flows are big compared to your available bandwidth, then probably yes, but only for some critical traffic.</p>
+
+<p>If you have plenty of bandwidth, then it is better to use simulcast. This the way how radio voice is now handled in ED-137, this is how radar sensor data is 4-times replicated using the ARTAS scheme. In the LAN you could use PRP or something similar.</p>
+
+<p>But even with simulcast, at the de-duplication point you have a lot to decide. How can I really detect that a flow is bad? Can I do a per-packet de-duplication reliably, or do I have choose the best stream? In the later case, how can I have some stability?</p>
+
+<p>With packet de-duplication, the problem is different delays. Either you have to have similar delays on alternate paths, or you have to introduce delay compensation. In either way, you will have additional delay. That is the price for your packet-level de-duplication.</p>
+
+<p>As usual, you have to make a trade-off...</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

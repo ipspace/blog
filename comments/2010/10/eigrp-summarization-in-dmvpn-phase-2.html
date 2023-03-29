@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2825649684718204814">23 October 2010 00:44</a>
+                <a rel="nofollow" id="c2825649684718204814" href="#2825649684718204814">23 October 2010 00:44</a>
               </span>
             </div>
-            <p class="comment-content">Oh yes, now for the comment! Firstly to answer your question - summarization will hide the next-hop address and prevent phase 2 from creating spoke-to-spoke tunnels, as this functionality requires CEF adjacency to have the next-hop IP of the other spoke. Phase 2 was merely a crude hack to get NHRP working with CEF :)<br /><br />Next, for the thoughts I have. Summarizing routes with EIGRP in Phase 2 deployments does not significantly improve scalability if the spokes support EIGRP stub feature. Indeed, the main problem with EIGRP scalability is query scoping, which is effectively implemented using the stub feature. Being distance-vector, EIGRP is not very sensitive to topology change events in hub &amp; spoke networks - incremental updates handle this smoothly. Unlike link-state protocols, EIGRP routing for Phase 2 may handle large hub and spoke topologies better. Of course, for large deployments, BGP could be a better option anyways.<br /><br />To finish with, I would like to recall my favorite RFC 1925, truth #11. Back in 2003 DMVPN was proclaimed as uniquely new solution that, however, was built upon the technology used for CLIP optimization back in 90s! And it took Cisco forever to finally stabilize and come with Phase 3. Seriously, shame on them :)</p>
+            <div class="comment-content">Oh yes, now for the comment! Firstly to answer your question - summarization will hide the next-hop address and prevent phase 2 from creating spoke-to-spoke tunnels, as this functionality requires CEF adjacency to have the next-hop IP of the other spoke. Phase 2 was merely a crude hack to get NHRP working with CEF :)<br /><br />Next, for the thoughts I have. Summarizing routes with EIGRP in Phase 2 deployments does not significantly improve scalability if the spokes support EIGRP stub feature. Indeed, the main problem with EIGRP scalability is query scoping, which is effectively implemented using the stub feature. Being distance-vector, EIGRP is not very sensitive to topology change events in hub &amp; spoke networks - incremental updates handle this smoothly. Unlike link-state protocols, EIGRP routing for Phase 2 may handle large hub and spoke topologies better. Of course, for large deployments, BGP could be a better option anyways.<br /><br />To finish with, I would like to recall my favorite RFC 1925, truth #11. Back in 2003 DMVPN was proclaimed as uniquely new solution that, however, was built upon the technology used for CLIP optimization back in 90s! And it took Cisco forever to finally stabilize and come with Phase 3. Seriously, shame on them :)</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3023150631393566789">11 March 2013 21:56</a>
+                <a rel="nofollow" id="c3023150631393566789" href="#3023150631393566789">11 March 2013 21:56</a>
               </span>
             </div>
-            <p class="comment-content">Hello. What would be the problem with having the spokes summarize their networks in phase 2? Won&#39;t the hubs re-advertise this summary to the rest of the spokes?</p>
+            <div class="comment-content">Hello. What would be the problem with having the spokes summarize their networks in phase 2? Won&#39;t the hubs re-advertise this summary to the rest of the spokes?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3389196751307295638">12 March 2013 09:17</a>
+                <a rel="nofollow" id="c3389196751307295638" href="#3389196751307295638">12 March 2013 09:17</a>
               </span>
             </div>
-            <p class="comment-content">Auto-summarization could generate all sorts of interesting side effects, so I disable it by default. Other than that, using summarization on spokes is fine - you shall not use it on the hub router (Phase 2 DMVPN only).</p>
+            <div class="comment-content">Auto-summarization could generate all sorts of interesting side effects, so I disable it by default. Other than that, using summarization on spokes is fine - you shall not use it on the hub router (Phase 2 DMVPN only).</div>
           </div>
         </li>
       </div>

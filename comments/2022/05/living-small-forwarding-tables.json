@@ -1,0 +1,96 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "09 May 2022 04:14",
+               "html": "<p>Yeah, Arista managed to use ARP or MAC table to do that on some merchant silicon ASIC. At the very least, that requires the ability of the lookup table to match a field at unusual offset.</p>\n\n<p>As for next hop rewrite, the result of that lookup could point to a dummy per-next-hop VRF with a default route pointing to the next hop.</p>\n",
+               "id": "1220",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-05-09T16:14:53",
+               "ref": "1219",
+               "type": "comment"
+            },
+            {
+               "date": "09 May 2022 05:13",
+               "html": "<p>The same trick, perhaps using the same merchant silicon ASIC, was used by Brocade (now Extreme). Others using said merchant silicon ASIC may have used this as well.</p>\n\n<p>AFAIR the actual prefix length stored in CAM was configurable. As such this would probably need the ability to apply a mask while addressing CAM.</p>\n\n<p>Using IP forwarding entries (&quot;ARP table&quot;) would probably suffice to save next hop information. I did not think of that, thanks! But different to an ARP or multicast group entry, the longest prefix match via TCAM might return a better match when, e.g., /24 prefixes are added to the fixed table, but, e.g., a /28 is found via TCAM.</p>\n\n<p>So a piece that may be missing in other ASICs could be the ability to use two different lookup operations and use the longest match from those for the forwarding decision.</p>\n\n<p>I had some indirection as described by you in mind when writing my comment. I have no idea if usual ASICs allow to add something like this to the processing pipeline if it was not envisioned when designing the ASIC. This is probably highly implementation specific.</p>\n",
+               "id": "1222",
+               "name": " Erik Auerswald",
+               "pub": "2022-05-09T17:13:45",
+               "ref": "1220",
+               "type": "comment"
+            }
+         ],
+         "date": "09 May 2022 11:05",
+         "html": "<p>Another mechanism used in some routers (&quot;switches&quot;) is to use CAM table space for one prefix length, e.g., /24, in addition to TCAM. The route lookup then uses both a longest prefix match via TCAM and a CAM lookup for the designated prefix length to determine the next hop.</p>\n\n<p>Of course this requires CAM in addition to TCAM in the ASIC. I would expect that the ASIC&#39;s forwarding pipeline needs support for this scheme, too (e.g., CAM lookup results usually do not include the next hop rewrite information required for IP forwarding). So this is probably not applicable to the ASIC in question.</p>\n",
+         "id": "1219",
+         "name": "Erik Auerswald",
+         "pub": "2022-05-09T11:05:24",
+         "type": "comment"
+      },
+      {
+         "date": "09 May 2022 04:38",
+         "html": "<p>An alternative to SRD is to use BGP to manage the FIB. BGP allows the active routes to be quickly updated and when coupled with real-time top prefix measurements can significantly increase the effectiveness of a small hardware forwarding table, see <a href=\"https://blog.sflow.com/2016/07/internet-router-using-merchant-silicon.html\">Internet router using merchant silicon</a></p>\n",
+         "id": "1221",
+         "name": " Peter Phaal",
+         "pub": "2022-05-09T16:38:45",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "09 May 2022 05:48",
+               "html": "<p>This might very creatively solve the problem for a core or egress router (assuming the ASIC in question supports MPLS). What about the ingress router?</p>\n",
+               "id": "1224",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-09T17:48:20",
+               "ref": "1223",
+               "type": "comment"
+            },
+            {
+               "date": "09 May 2022 05:57",
+               "html": "<p>As I mentioned the IP lookup is effectively offloaded to the ingress routers.</p>\n",
+               "id": "1225",
+               "name": " Krasimir Avramski",
+               "pub": "2022-05-09T17:57:38",
+               "ref": "1224",
+               "type": "comment"
+            },
+            {
+               "date": "09 May 2022 07:55",
+               "html": "<p>Lets move that ingress labeling function to the server generating the content! Wait what, we now rebuild Fastly CDN with a small change in packet format &#x1F643;\nhttps://www.fastly.com/blog/building-and-scaling-fastly-network-part-1-fighting-fib</p>\n",
+               "id": "1226",
+               "name": " Stefan de Kooter",
+               "pub": "2022-05-09T19:55:04",
+               "ref": "1225",
+               "type": "comment"
+            }
+         ],
+         "date": "09 May 2022 05:45",
+         "html": "<p>Combination of selective router download and mpls tunnels\n1. Advertise peers next-hops(/32) through bgp-lu\n2. Do not change bgp nexthop from peers\n3. Use bgp add-path for multi paths to the same prefix.\nLocal IP lookup is bypassed by label operation pop and forward and is effectively delegated to remote intra-AS bgp routers. The idea is borrowed from EPE concepts.  </p>\n",
+         "id": "1223",
+         "name": " Krasimir Avramski",
+         "pub": "2022-05-09T17:45:53",
+         "type": "comment"
+      },
+      {
+         "date": "09 May 2022 10:36",
+         "html": "<p>What I&rsquo;ve done most frequently is to engineer as intelligently of selective route download as possible.  This assumes 2 routers and iBGP between them (the 2 customer edge routers), and then at least 1 tier 1 upstream connected to each.  This is a fairly common scenario for small/medium entities who need that sort of redundancy, but can&rsquo;t (or won&rsquo;t) buy a box large enough to handle the full table. </p>\n\n<p>On each router I accept and filter out any prefix not originating from the tier 1, or it&rsquo;s customers. Depending on size you may have to filter on length as well. Then using LP you prefer those prefix on each router (depending on the customer side you may have to vary this some in the event that you prefer 1 carrier over the other because of bandwidth or other various reasons).  </p>\n\n<p>Then on each router you have a default that you&rsquo;re checking reachability to for everything not in the table. </p>\n",
+         "id": "1227",
+         "name": " David Bass",
+         "pub": "2022-05-09T22:36:16",
+         "type": "comment"
+      },
+      {
+         "date": "10 May 2022 05:35",
+         "html": "<p>The virtual aggregation option reminded me of the <a href=\"https://www.cs.cornell.edu/~tuancao/2008-HotNets-ViAggre.pdf\">ViAggre Paper</a>.</p>\n",
+         "id": "1228",
+         "name": "John Coke",
+         "pub": "2022-05-10T05:35:39",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2022/05/living-small-forwarding-tables.html"
+}

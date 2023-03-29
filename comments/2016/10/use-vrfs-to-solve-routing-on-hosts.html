@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2483867108218290197">03 October 2016 12:44</a>
+                <a rel="nofollow" id="c2483867108218290197" href="#2483867108218290197">03 October 2016 12:44</a>
               </span>
             </div>
-            <p class="comment-content">Actually you could do that without VRFs too. Just make an OSPF stub area for customer services with strict filtering on ABRs. <br /><br />You can&#39;t filter router/network LSAs in one area, but you can filter the translation from router/network LSA to a summary LSA on ABR before sending them to another area.<br /></p>
+            <div class="comment-content">Actually you could do that without VRFs too. Just make an OSPF stub area for customer services with strict filtering on ABRs. <br /><br />You can&#39;t filter router/network LSAs in one area, but you can filter the translation from router/network LSA to a summary LSA on ABR before sending them to another area.<br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11529916018516958539" rel="nofollow">Salman Naqvi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6477933684782261736">03 October 2016 14:38</a>
+                <a rel="nofollow" id="c6477933684782261736" href="#6477933684782261736">03 October 2016 14:38</a>
               </span>
             </div>
-            <p class="comment-content">It seems Mainframes are more common than I once thought. Having to deal with the same situation myself, we moved away from OSPF to a much simpler advertised-static-routes solution. Simplicity tends to be good for everyone!<br /><br />We realized that the Mainframe &quot;internal&quot; network only needed to advertise about 20 routes - which could be summarized into even fewer routes, and new routes barely need to be added even once a year. I worked with the Mainframe team to setup static routes instead of using OSPF, and advertised the few static routes via OSPF/redistribution myself for routes which needed reachability. I&#39;d take static route over OSPF-with-Mainframe any day! :)<br /><br />Redundancy is often cited as reason for using dynamic routing (OSPF or RIP), however, we used HSRP VIPs for network level redundancy, which was tested successfully. <br /><br />(I don&#39;t know why, but, I was told that many Mainframe &quot;internal&quot; routes don&#39;t actually need reachability outside of Mainframe. They just tend to get advertised due to some poor best practices mentioned in the IBM guides. This further allowed us to control exactly what routes were advertised potentially leading to better security posture.)</p>
+            <div class="comment-content">It seems Mainframes are more common than I once thought. Having to deal with the same situation myself, we moved away from OSPF to a much simpler advertised-static-routes solution. Simplicity tends to be good for everyone!<br /><br />We realized that the Mainframe &quot;internal&quot; network only needed to advertise about 20 routes - which could be summarized into even fewer routes, and new routes barely need to be added even once a year. I worked with the Mainframe team to setup static routes instead of using OSPF, and advertised the few static routes via OSPF/redistribution myself for routes which needed reachability. I&#39;d take static route over OSPF-with-Mainframe any day! :)<br /><br />Redundancy is often cited as reason for using dynamic routing (OSPF or RIP), however, we used HSRP VIPs for network level redundancy, which was tested successfully. <br /><br />(I don&#39;t know why, but, I was told that many Mainframe &quot;internal&quot; routes don&#39;t actually need reachability outside of Mainframe. They just tend to get advertised due to some poor best practices mentioned in the IBM guides. This further allowed us to control exactly what routes were advertised potentially leading to better security posture.)</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16111534966079333136" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7301385858293796068">03 October 2016 16:59</a>
+                <a rel="nofollow" id="c7301385858293796068" href="#7301385858293796068">03 October 2016 16:59</a>
               </span>
             </div>
-            <p class="comment-content">I often do routing to &quot;customers&quot; with a separate OSPF process and IOS distribute-list command, which filters OSPF to RIB/FIB.<br /><br />In IOS &quot;redistribute&quot; starts from the RIB (not from the source protocol), so this is enough for not accepting rogue prefixes and not distributing them as well.<br /><br />Of course we are still prone to DoS by memory consumption, and separate OSPF process is definitely not scalable on some older platforms.<br /></p>
+            <div class="comment-content">I often do routing to &quot;customers&quot; with a separate OSPF process and IOS distribute-list command, which filters OSPF to RIB/FIB.<br /><br />In IOS &quot;redistribute&quot; starts from the RIB (not from the source protocol), so this is enough for not accepting rogue prefixes and not distributing them as well.<br /><br />Of course we are still prone to DoS by memory consumption, and separate OSPF process is definitely not scalable on some older platforms.<br /></div>
           </div>
         </li>
       </div>

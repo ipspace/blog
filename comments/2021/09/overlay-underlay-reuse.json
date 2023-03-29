@@ -1,0 +1,52 @@
+{
+   "comments": [
+      {
+         "date": "30 September 2021 06:50",
+         "html": "<p>All networking professional should learn ITU-T G.805 and G.809. Then they would not be surprised. However, lot of them are stopped at the OSI reference model. Then they have difficulties to understand the real word of infinitely embedded overlays and underlays... \nFor an old telco guy, this is nothing new. Just think about a hierarchical TDM network...</p>\n",
+         "id": "771",
+         "name": " Bela Varkonyi",
+         "pub": "2021-09-30T18:50:00",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "10 October 2021 11:23",
+               "html": "<p>@Boris: I totally understand that someone painted you into a corner, and that you&#39;re trying to get out, but we&#39;re still walking in a circle in that tiny part of the room around the corner.</p>\n\n<p>Unfortunately, there&#39;s no simple way to change laws of physics, or pull a rabbit out of a hat. You could either ignore VMware recommendations and connect all management traffic to the underlay, or implement tenant networks with NSX-T, or live with the consequences of the decision to implement tenant networks on ToR switches. </p>\n\n<p>On a tangential topic, I&#39;ve been ranting against the idea of implementing tenant networks in hardware for over a decade, but of course nobody listens.</p>\n",
+               "id": "787",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-10-10T11:23:01",
+               "ref": "783",
+               "type": "comment"
+            },
+            {
+               "date": "10 October 2021 01:33",
+               "html": "<p>Which VMWare recommendations are you referring to?</p>\n",
+               "id": "788",
+               "name": "Borislav Lazarov",
+               "pub": "2021-10-10T13:33:58",
+               "ref": "787",
+               "type": "comment"
+            },
+            {
+               "date": "12 October 2021 07:08",
+               "html": "<p>@Boris, just a thought, in line with Ivan&#39;s simplicity here. Since engineering is all about intuitive simplification of problems, and you&#39;ve already had an intuition about how VXLAN/EVPN isn&#39;t needed for infrastructure services, why not use the simple physical IP fabric? Occam&#39;s razor is a time-tested wisdom, or RFC 1925 rule 12 if you want a modern-day version.</p>\n\n<p>As for security, Ivan blogged about it here:</p>\n\n<p>https://blog.ipspace.net/2018/11/omg-vxlan-is-still-insecure.html</p>\n\n<p>Sprint, Verizon, big ISPs, have been running huge MPLS networks for decades, and they have the same physical security issue -- or non-issue, depends on your perspective -- here. Probably beneficial to go in that direction and research how they physically secure their underlay. </p>\n\n<p>Speaking of MPLS, there&#39;s one group that successfully leveraged it for their Cloud services as well, here, if you want to take a deeper look:</p>\n\n<p>https://www.youtube.com/watch?v=TCtR_cujulk&amp;t=30s</p>\n",
+               "id": "791",
+               "name": " Minh",
+               "pub": "2021-10-12T07:08:58",
+               "ref": "788",
+               "type": "comment"
+            }
+         ],
+         "date": "08 October 2021 01:53",
+         "html": "<p>Hi Ivan!</p>\n\n<p>I appreciate posting a dedicated blog post on my question.</p>\n\n<p>I totally agree with &ldquo;What problem am I trying to solve?&rdquo; and &ldquo;What is the best tool for the job?&rdquo;.</p>\n\n<p>My context is vSphere with VSAN and 100% custom made automation backend to provision tenants and services in EVPN, EdgeFW, ADC. Alongside a commercial off-the-shelf self-service &quot;cloud management&quot; frontend for end users.</p>\n\n<p>So far i have seen that the Nexus9k BGP EVPN control-plane is far from 100% reliable and it is not hard at all to make it &quot;misbehave&quot; by, for example, pushing wrong or too much config, or deleting objects in the wrong order.\nIn this project this part is dynamic, because it is based on front-end end-user self-service.\nSo in this respect - misbehaving tenant VRF is one problem, but misbehaving vSAN, vSphere cluster, other fundamental infrastructure services is a totally different problem to have. In my view none of the &quot;benefits&quot; that VXLAN/EVPN gives are needed for the infrastructure services, hence skipping further abstraction layers and most importantly dependencies is the best decision.</p>\n\n<p>Does it make sense?</p>\n",
+         "id": "783",
+         "name": "Borislav Lazarov",
+         "pub": "2021-10-08T13:53:13",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2021/09/overlay-underlay-reuse.html"
+}

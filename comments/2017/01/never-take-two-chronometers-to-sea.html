@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>15 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8151815618284630448">23 January 2017 12:07</a>
+                <a rel="nofollow" id="c8151815618284630448" href="#8151815618284630448">23 January 2017 12:07</a>
               </span>
             </div>
-            <p class="comment-content">Even if I get your point, I would say that two is better than one. The mean value gets better with the number of components, and you would have half the error of a wrong chrono.</p>
+            <div class="comment-content">Even if I get your point, I would say that two is better than one. The mean value gets better with the number of components, and you would have half the error of a wrong chrono.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04119820131776913727" rel="nofollow">Marko Milivojević</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2008850409248761752">23 January 2017 14:06</a>
+                <a rel="nofollow" id="c2008850409248761752" href="#2008850409248761752">23 January 2017 14:06</a>
               </span>
             </div>
-            <p class="comment-content">I disagree. With one component, the failure modes and mitigation (hot spare). With two, the problem space is greater, and split. Rain issues are difficult to diagnose and mitigate (re-read Ivan&#39;s text).</p>
+            <div class="comment-content">I disagree. With one component, the failure modes and mitigation (hot spare). With two, the problem space is greater, and split. Rain issues are difficult to diagnose and mitigate (re-read Ivan&#39;s text).</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10795510625878803462" rel="nofollow">tron</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1018212523530470625">24 January 2017 10:55</a>
+                <a rel="nofollow" id="c1018212523530470625" href="#1018212523530470625">24 January 2017 10:55</a>
               </span>
             </div>
-            <p class="comment-content">I was not thinking about hot spare but active active. And IMHO, the cluster control problem and the metering problem do not seem to be the same.<br />Do you disagree with the only statement I made ? That the error of a measure would be halved ?</p>
+            <div class="comment-content">I was not thinking about hot spare but active active. And IMHO, the cluster control problem and the metering problem do not seem to be the same.<br />Do you disagree with the only statement I made ? That the error of a measure would be halved ?</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09957754776098733138" rel="nofollow">Silvio Fonseca</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5676460795223340725">23 January 2017 18:03</a>
+                <a rel="nofollow" id="c5676460795223340725" href="#5676460795223340725">23 January 2017 18:03</a>
               </span>
             </div>
-            <p class="comment-content">This is quite similar to the usual error detection and correction mechanisms we use like CRC. With no parity bits you can&#39;t assert anything (single chrono). With 1 bit you can detect 1 error but not correct (two chronos, second is the &quot;parity&quot;). With 2 bits of parity you can detect and correct 1 error (three chronos where 2 agree and 1 doesn&#39;t).<br /><br />As for two-node cluster, you are golden if the node can detect its own failure and remove himself from the cluster or if the second node can detect the first failed and take over the cluster by itself.<br /><br />I understand Marko&#39;s comment but from a practical purposes I would still rather have a 2-node cluster and prepare to respond to the problems that might eventually emerge from it than have a single node. I wouldn&#39;t put &quot;hot spare&quot; as a solution to single node, this is a 2-node in primary/standby and the same caveats apply (detect errors for switch over, could incorrectly become master with split brain, etc.).</p>
+            <div class="comment-content">This is quite similar to the usual error detection and correction mechanisms we use like CRC. With no parity bits you can&#39;t assert anything (single chrono). With 1 bit you can detect 1 error but not correct (two chronos, second is the &quot;parity&quot;). With 2 bits of parity you can detect and correct 1 error (three chronos where 2 agree and 1 doesn&#39;t).<br /><br />As for two-node cluster, you are golden if the node can detect its own failure and remove himself from the cluster or if the second node can detect the first failed and take over the cluster by itself.<br /><br />I understand Marko&#39;s comment but from a practical purposes I would still rather have a 2-node cluster and prepare to respond to the problems that might eventually emerge from it than have a single node. I wouldn&#39;t put &quot;hot spare&quot; as a solution to single node, this is a 2-node in primary/standby and the same caveats apply (detect errors for switch over, could incorrectly become master with split brain, etc.).</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#426827139409453974">23 January 2017 18:14</a>
+                <a rel="nofollow" id="c426827139409453974" href="#426827139409453974">23 January 2017 18:14</a>
               </span>
             </div>
-            <p class="comment-content">It&#39;s definitely better to have a spare than no spare, but the real problem is somewhere else: there&#39;s absolutely no reliable way of doing automatic failover in a 2-node cluster regardless of what the vendors are telling you.</p>
+            <div class="comment-content">It&#39;s definitely better to have a spare than no spare, but the real problem is somewhere else: there&#39;s absolutely no reliable way of doing automatic failover in a 2-node cluster regardless of what the vendors are telling you.</div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13921265026411812124" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3229720222916584428">23 January 2017 18:32</a>
+                <a rel="nofollow" id="c3229720222916584428" href="#3229720222916584428">23 January 2017 18:32</a>
               </span>
             </div>
-            <p class="comment-content">Hey Ivan,<br /><br />Regarding the comments about stackables. Trying to understand your thinking here as I don&#39;t see this as really the same thing. In the case of the chronometers, this is a multi-master model where both are processing data ( time ) at the same time and capable of spitting out different outputs.  More like a Cisco Nexus VPC MLAG or Arista MLAG scenario.  In the case of Cisco VSS, Juniper Virtual Chassis, or HPE IRF, there&#39;s one master in the group that has full control and all the other units are simply subscribed ( more or less ) to the master&#39;s view of the world.  The failover will happen regardless of whether there&#39;s 2 or more because the next box in priority is going to become the master and life goes on.   <br /><br />not to say there aren&#39;t other issues with borg scenarios, as I know you&#39;re well aware, but I just don&#39;t know if this particular comparison is fair.  <br /><br />Thoughts?<br /><br />@netmanchris</p>
+            <div class="comment-content">Hey Ivan,<br /><br />Regarding the comments about stackables. Trying to understand your thinking here as I don&#39;t see this as really the same thing. In the case of the chronometers, this is a multi-master model where both are processing data ( time ) at the same time and capable of spitting out different outputs.  More like a Cisco Nexus VPC MLAG or Arista MLAG scenario.  In the case of Cisco VSS, Juniper Virtual Chassis, or HPE IRF, there&#39;s one master in the group that has full control and all the other units are simply subscribed ( more or less ) to the master&#39;s view of the world.  The failover will happen regardless of whether there&#39;s 2 or more because the next box in priority is going to become the master and life goes on.   <br /><br />not to say there aren&#39;t other issues with borg scenarios, as I know you&#39;re well aware, but I just don&#39;t know if this particular comparison is fair.  <br /><br />Thoughts?<br /><br />@netmanchris</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -144,10 +139,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6234979627835230105">23 January 2017 20:24</a>
+                <a rel="nofollow" id="c6234979627835230105" href="#6234979627835230105">23 January 2017 20:24</a>
               </span>
             </div>
-            <p class="comment-content">The problems seem different, but are pretty similar - in both cases the challenge is &quot;what is the majority if we get divergence&quot;, in our case &quot;what should each part of the cluster do if we get partition?&quot;<br /><br />While an even number of cluster members is always a challenge, it might not be as bad if you have 4 or 6. You might be able to fake it by giving the master another half vote ;) Have to think a bit more about it... or someone could send me a link to the result (which would be highly appreciated).</p>
+            <div class="comment-content">The problems seem different, but are pretty similar - in both cases the challenge is &quot;what is the majority if we get divergence&quot;, in our case &quot;what should each part of the cluster do if we get partition?&quot;<br /><br />While an even number of cluster members is always a challenge, it might not be as bad if you have 4 or 6. You might be able to fake it by giving the master another half vote ;) Have to think a bit more about it... or someone could send me a link to the result (which would be highly appreciated).</div>
           </div>
         </li>
       </div>
@@ -169,10 +164,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11194529584766534758" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8469769178536710427">23 January 2017 19:47</a>
+                <a rel="nofollow" id="c8469769178536710427" href="#8469769178536710427">23 January 2017 19:47</a>
               </span>
             </div>
-            <p class="comment-content">Or maybe we can stop taking two control plane and binding them together? Stop with the IRF and Virtual chassis and VSS and etc&#39;? Stop mchassis lags and use routing for active active links</p>
+            <div class="comment-content">Or maybe we can stop taking two control plane and binding them together? Stop with the IRF and Virtual chassis and VSS and etc&#39;? Stop mchassis lags and use routing for active active links</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -188,10 +183,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2222660736754910830">23 January 2017 20:25</a>
+                <a rel="nofollow" id="c2222660736754910830" href="#2222660736754910830">23 January 2017 20:25</a>
               </span>
             </div>
-            <p class="comment-content">That is never going to happen. Vendors calls that &quot;differentiation&quot;, I call it snake oil ;)</p>
+            <div class="comment-content">That is never going to happen. Vendors calls that &quot;differentiation&quot;, I call it snake oil ;)</div>
           </div>
         </li>
       </div>
@@ -213,10 +208,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13921265026411812124" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9079553915902728821">24 January 2017 01:57</a>
+                <a rel="nofollow" id="c9079553915902728821" href="#9079553915902728821">24 January 2017 01:57</a>
               </span>
             </div>
-            <p class="comment-content">Lol Couldn&#39;t agree more. L3 everywhere for the win. Can&#39;t wait until host-based routing is a reality.  But until all the applications that we&#39;re forced to work with will run in a resilient way in a L3 environment, then I&#39;m afraid that we&#39;re doomed to repeat the stupid network tricks over and over again. </p>
+            <div class="comment-content">Lol Couldn&#39;t agree more. L3 everywhere for the win. Can&#39;t wait until host-based routing is a reality.  But until all the applications that we&#39;re forced to work with will run in a resilient way in a L3 environment, then I&#39;m afraid that we&#39;re doomed to repeat the stupid network tricks over and over again. </div>
           </div>
         </li>
       </div>
@@ -231,10 +226,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3245704807334210824">24 January 2017 18:45</a>
+                <a rel="nofollow" id="c3245704807334210824" href="#3245704807334210824">24 January 2017 18:45</a>
               </span>
             </div>
-            <p class="comment-content">In the case of MLAG, the lacp peers act as witnesses. If both switches in a MLAG think they&#39;re the master at the same time, they report a different lacp id. The other end won&#39;t bond a link with different ID&#39;s and becomes the &quot;tiebreaker&quot;.<br /><br />Of course every vendor&#39;s MLAG implementation is a little different &amp; I wouldn&#39;t be surprised if at least one of them messed up an important detail of the split brain scenario in a subtle but unfortunate way.</p>
+            <div class="comment-content">In the case of MLAG, the lacp peers act as witnesses. If both switches in a MLAG think they&#39;re the master at the same time, they report a different lacp id. The other end won&#39;t bond a link with different ID&#39;s and becomes the &quot;tiebreaker&quot;.<br /><br />Of course every vendor&#39;s MLAG implementation is a little different &amp; I wouldn&#39;t be surprised if at least one of them messed up an important detail of the split brain scenario in a subtle but unfortunate way.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -250,10 +245,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5394866471051018952">24 January 2017 18:48</a>
+                <a rel="nofollow" id="c5394866471051018952" href="#5394866471051018952">24 January 2017 18:48</a>
               </span>
             </div>
-            <p class="comment-content">And they both advertise the same subnet to the core, and when the packet arrives to one of the switches it cannot get to the host because that path is down due to LACP system ID mismatch. <br /><br />The only sane way to handle MLAG cluster (or switch stack) splits is to shut down half of it, but the of course you don&#39;t know which part to shut down. QED.</p>
+            <div class="comment-content">And they both advertise the same subnet to the core, and when the packet arrives to one of the switches it cannot get to the host because that path is down due to LACP system ID mismatch. <br /><br />The only sane way to handle MLAG cluster (or switch stack) splits is to shut down half of it, but the of course you don&#39;t know which part to shut down. QED.</div>
           </div>
         </li>
       </div>
@@ -275,10 +270,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07267516785767923381" rel="nofollow">jsicuran</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4077139381401382829">24 January 2017 21:14</a>
+                <a rel="nofollow" id="c4077139381401382829" href="#4077139381401382829">24 January 2017 21:14</a>
               </span>
             </div>
-            <p class="comment-content">Great recommendation on the book for network architects and engineers by Ivan.<br />Brooks Jr., Frederick P.. The Mythical Man-Month, Anniversary Edition: Essays On Software Engineering (Kindle Locations 754-758). Pearson Education. Kindle Edition.<br />Especially chapter 5 the Second System Effect -  all Network architects and engineers should consider a read. <br />The essay on Interactive Discipline for the Architect is still very applicable in today&#39;s fast paced design to implementation and environment and  when dealing with a Vendor(s) who is acting as the Architect or Implementer.<br />The essay on Self-Discipline - The second -System Effect<br />Especially about the concept of Stretch. <br />“Consider as a stronger case the architecture, implementation, and even the realization of the Stretch computer, an outlet for the pent-up inventive desires of many people, and a second system for most of them. As Strachey says in a review: I get the impression that Stretch is in some way the end of one line of development. Like some early computer programs it is immensely ingenious, immensely complicated, and extremely effective, but somehow at the same time crude, wasteful, and inelegant, and one feels that there must be a better way of doing things.”<br /><br />--------------<br /><br />“How does the architect avoid the second-system effect? Well, obviously he can&#39;t skip his second system. But he can be conscious of the peculiar hazards of that system, and exert extra self-discipline to avoid functional ornamentation and to avoid extrapolation of functions that are obviated by changes in assumptions and purposes.”<br />And comparing the concept of stretch from Mythical Man Month above to the definition/concept of Stretch in Network Architectures from White, Russ; Donohue, Denise. The Art of Network Architecture: Business-Driven Design (Networking Technology) (p. 81). Pearson Education. Kindle Edition.<br />“Modularization and Optimization If modularization brings so many benefits to network architecture, why shouldn’t every network be modularized at every point possible? Isn’t more aggregation always better than less aggregation? Network design is, as all things, a matter of choosing trade-offs— there is no such thing as a free lunch! <br /><br /></p>
+            <div class="comment-content">Great recommendation on the book for network architects and engineers by Ivan.<br />Brooks Jr., Frederick P.. The Mythical Man-Month, Anniversary Edition: Essays On Software Engineering (Kindle Locations 754-758). Pearson Education. Kindle Edition.<br />Especially chapter 5 the Second System Effect -  all Network architects and engineers should consider a read. <br />The essay on Interactive Discipline for the Architect is still very applicable in today&#39;s fast paced design to implementation and environment and  when dealing with a Vendor(s) who is acting as the Architect or Implementer.<br />The essay on Self-Discipline - The second -System Effect<br />Especially about the concept of Stretch. <br />“Consider as a stronger case the architecture, implementation, and even the realization of the Stretch computer, an outlet for the pent-up inventive desires of many people, and a second system for most of them. As Strachey says in a review: I get the impression that Stretch is in some way the end of one line of development. Like some early computer programs it is immensely ingenious, immensely complicated, and extremely effective, but somehow at the same time crude, wasteful, and inelegant, and one feels that there must be a better way of doing things.”<br /><br />--------------<br /><br />“How does the architect avoid the second-system effect? Well, obviously he can&#39;t skip his second system. But he can be conscious of the peculiar hazards of that system, and exert extra self-discipline to avoid functional ornamentation and to avoid extrapolation of functions that are obviated by changes in assumptions and purposes.”<br />And comparing the concept of stretch from Mythical Man Month above to the definition/concept of Stretch in Network Architectures from White, Russ; Donohue, Denise. The Art of Network Architecture: Business-Driven Design (Networking Technology) (p. 81). Pearson Education. Kindle Edition.<br />“Modularization and Optimization If modularization brings so many benefits to network architecture, why shouldn’t every network be modularized at every point possible? Isn’t more aggregation always better than less aggregation? Network design is, as all things, a matter of choosing trade-offs— there is no such thing as a free lunch! <br /><br /></div>
           </div>
         </li>
       </div>
@@ -293,10 +288,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07267516785767923381" rel="nofollow">jsicuran</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9208889511665621815">24 January 2017 21:14</a>
+                <a rel="nofollow" id="c9208889511665621815" href="#9208889511665621815">24 January 2017 21:14</a>
               </span>
             </div>
-            <p class="comment-content"><br /><br />-----------------------<br />One of the trade-offs we deal with all the time is state versus stretch. Stretch, quite simply, is the difference between the optimum path through the network (for any pair of hosts) and the actual path through the network. For instance, if the shortest actual path available is 2 hops, but traffic is flowing along a 3 hop path, the stretch is 1. Why should we ever have stretch in a network? It seems like you’d just never, ever, want stretch, because stretch always represents suboptimal use of available resources. But you always end up with stretch, because one of the other fundamental concepts of network design is the use of information hiding to break up failure domains. Hierarchical network design, in fact, is the intentional use of aggregation to reduce the state information— the routing table size, in most cases— in the control plane, so that changes in one area of the network don’t cause changes in the routing table halfway around the world. How does this relate to stretch? Anytime you hide state you increase stretch. This might not be obvious in all networks— specifically, anytime 100% of your traffic flows north/ south, decreasing state will not impact stretch. <br />--------------------<br />But if you have a combination of north/ south and east/ west traffic, then aggregation— reducing state— will always cause traffic to take a suboptimal path through the network— thus increasing stretch. Spanning tree is a perfect example of running to one extreme of the state/ stretch trade-off. Spanning tree reduces the state by forcing all traffic along a single tree in the network and blocking links that don’t belong to that tree. Control plane state is absolutely minimized at the cost of increasing the stretch through the network to the maximum possible— to the point that we often design network topologies around the elimination of links not used on the single tree.”<br /></p>
+            <div class="comment-content"><br /><br />-----------------------<br />One of the trade-offs we deal with all the time is state versus stretch. Stretch, quite simply, is the difference between the optimum path through the network (for any pair of hosts) and the actual path through the network. For instance, if the shortest actual path available is 2 hops, but traffic is flowing along a 3 hop path, the stretch is 1. Why should we ever have stretch in a network? It seems like you’d just never, ever, want stretch, because stretch always represents suboptimal use of available resources. But you always end up with stretch, because one of the other fundamental concepts of network design is the use of information hiding to break up failure domains. Hierarchical network design, in fact, is the intentional use of aggregation to reduce the state information— the routing table size, in most cases— in the control plane, so that changes in one area of the network don’t cause changes in the routing table halfway around the world. How does this relate to stretch? Anytime you hide state you increase stretch. This might not be obvious in all networks— specifically, anytime 100% of your traffic flows north/ south, decreasing state will not impact stretch. <br />--------------------<br />But if you have a combination of north/ south and east/ west traffic, then aggregation— reducing state— will always cause traffic to take a suboptimal path through the network— thus increasing stretch. Spanning tree is a perfect example of running to one extreme of the state/ stretch trade-off. Spanning tree reduces the state by forcing all traffic along a single tree in the network and blocking links that don’t belong to that tree. Control plane state is absolutely minimized at the cost of increasing the stretch through the network to the maximum possible— to the point that we often design network topologies around the elimination of links not used on the single tree.”<br /></div>
           </div>
         </li>
       </div>
@@ -311,10 +306,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11329035181762386541" rel="nofollow">Jimmy G</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3674434474497876840">25 January 2017 20:34</a>
+                <a rel="nofollow" id="c3674434474497876840" href="#3674434474497876840">25 January 2017 20:34</a>
               </span>
             </div>
-            <p class="comment-content">A spectacular case of clustering and protocol gone awry:<br /><br />Amazon S3 Availability Event: July 20, 2008<br />status.aws.amazon.com/s3-20080720.html<br /><br />Some theoretical/practical background papers by Leslie Lamport:<br /><br />The Byzantine Generals Problem<br />research.microsoft.com/en-us/um/people/lamport/pubs/byz.pdf<br /><br />Time, Clocks, and the Ordering of Events in a Distributed System<br />research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf</p>
+            <div class="comment-content">A spectacular case of clustering and protocol gone awry:<br /><br />Amazon S3 Availability Event: July 20, 2008<br />status.aws.amazon.com/s3-20080720.html<br /><br />Some theoretical/practical background papers by Leslie Lamport:<br /><br />The Byzantine Generals Problem<br />research.microsoft.com/en-us/um/people/lamport/pubs/byz.pdf<br /><br />Time, Clocks, and the Ordering of Events in a Distributed System<br />research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf</div>
           </div>
         </li>
       </div>

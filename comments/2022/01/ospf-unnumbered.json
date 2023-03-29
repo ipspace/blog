@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "12 January 2022 01:24",
+         "html": "<p>hello Ivan, </p>\n\n<p>Interesting post as always. </p>\n\n<p>Just one observation on the mask check thingy as it has always puzzled me.</p>\n\n<p>I came to the conclusion that the reason for checking the mask (carried within the hello messages) to spot possible network mismatches is based on the fact that unicast encapsulation of ospf messages always happens regardless of the OSPF network type (see Direct-ACKs, DBD messages and LSA retransmissions for instance if am not mistaken) and thus ARP is always required but it is not gonna work (this way breaking OSPF) if there&#39;s a network (not just a mask) mismatch.  </p>\n\n<p>Having said that, there is though one exception which is the P2P OSPF network type as in that case there&#39;s no actual need for ARP since what goes into one side comes out at the other side and thus ARP can actually be avoided by simply looking at the SRC IP and MAC of the incoming Hello packets. So, there&rsquo;s no need to check the mask in this case. Could anyone confirm this conjecture ? Having said that though, the various implementations then kick in and I remember testing p2p numbered ospf interfaces in IOS and JUNOS and finding out that IOS complains (as.. it complains and doesn&rsquo;t form adjacency) about a netmask mismatch but not about a network mismatch while JUNOS complains about both mismatches (!!). I then tested with JUNOS a p2p unnumbered interface with a network mismatch and it was fine with it which was expected but it makes the previous test results on p2p numbered interfaces mismatches even more obscure.    </p>\n\n<p>This should be tested again really - maybe a specific post ?    </p>\n\n<p>Cheers/Ciao  </p>\n\n<p>Andrea   </p>\n",
+         "id": "963",
+         "name": "Andrea Di Donato",
+         "pub": "2022-01-12T13:24:28",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2022/01/ospf-unnumbered.html"
+}

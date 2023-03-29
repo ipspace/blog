@@ -1,0 +1,53 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "01 March 2023 06:14",
+               "html": "<p>Thank you, you&#39;re absolutely right. Added a note.</p>\n",
+               "id": "1687",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-03-01T18:14:38",
+               "ref": "1685",
+               "type": "comment"
+            }
+         ],
+         "date": "28 February 2023 08:13",
+         "html": "<p>It depends if your southbound devices (often firewalls) support routing protocols (preferably BGP). Most enterprises use static routing on WAN edge. So you&#39;ll have to use FHRP on your CE routers. <br />\nAlso you can&#39;t assume that the default route from your service providers is somewhat reliable. There&#39;s no default route in the internet (hence the name default-free zone). You&#39;ll have to do your own tracking e. g. pinging multiple external destinations. <br />\nNormally you don&#39;t need full BGP table. Just filter AS numbers &quot;directly&quot; connected to your service provider (one AS away) and run IBGP session (direct links or BFD) between CE routers to get some more &quot;direct&quot; external routing. All other traffic you catch with your tracked default route. This has also the benefit of comparing peerings between your service providers. Also your routing convergence is much faster.</p>\n",
+         "id": "1685",
+         "name": "Anonymous",
+         "pub": "2023-02-28T20:13:32",
+         "type": "comment"
+      },
+      {
+         "date": "28 February 2023 10:19",
+         "html": "<p>I have isps that act as bgp peer with transit, but the default route they feed me is static... Had to setup path monitoring for fail over (python cron) after a CE blackholed my traffic on a beautiful Tuesday morning... </p>\n",
+         "id": "1686",
+         "name": " E",
+         "pub": "2023-02-28T22:19:02",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 March 2023 10:17",
+               "html": "<p>You&#39;re obviously correct. Added a note. Thank you!</p>\n",
+               "id": "1690",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-03-04T10:17:28",
+               "ref": "1689",
+               "type": "comment"
+            }
+         ],
+         "date": "02 March 2023 10:56",
+         "html": "<p>It doesn&#39;t sound correct:</p>\n\n<p>&quot;You need a static default route pointing towards the second CE with a metric inferior to the route installed by EBGP for failover purpose.&quot;</p>\n\n<p>Wouldn&#39;t it be more like this? :</p>\n\n<p>&quot;You need a static default route pointing towards the second CE with A LESS PRIVILEGED ADMINISTRATIVE DISTANCE AND a LESS PRIVILEGED metric THAN the route installed by EBGP for failover purpose.&quot;</p>\n",
+         "id": "1689",
+         "name": " A random guy",
+         "pub": "2023-03-02T22:56:51",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2023/02/multihomed-ibgp-details.html"
+}

@@ -1,0 +1,64 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "24 March 2022 05:31",
+               "html": "<p>Yeah, roles could be a solution for the dependency management, but in 90+% of the cases I&#39;d just like to have a different template for each module, and I don&#39;t feel like adding the same task list to every role just to be able to deploy the templates.</p>\n\n<p>Time to go back to the drawing board...</p>\n",
+               "id": "1111",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-03-24T17:31:54",
+               "ref": "1108",
+               "type": "comment"
+            }
+         ],
+         "date": "24 March 2022 11:20",
+         "html": "<p>You could use Ansible roles to specify dependencies. So MPLS is dependent on BGP, BGP is dependent on OSPF, OSPF is dependent on some kind of common module.</p>\n\n<p>https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#using-role-dependencies</p>\n",
+         "id": "1108",
+         "name": " Robert",
+         "pub": "2022-03-24T11:20:29",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "24 March 2022 05:29",
+               "html": "<p>Of course you&#39;re right (and I love the large L2 domains analogy &#x1F923;)</p>\n\n<p>Going back to the first principles, I could have created an Ansible playbook on the fly (after all, it&#39;s just a YAML data structure) and execute it, but I was naive enough to think I could push through the idea of using host_vars data structures to drive flow of execution.</p>\n",
+               "id": "1110",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-03-24T17:29:32",
+               "ref": "1109",
+               "type": "comment"
+            }
+         ],
+         "date": "24 March 2022 12:13",
+         "html": "<p>Dynamic inclusion during runtime in Ansible (<code>include</code>, <code>include_tasks</code>, <code>include_role</code>) is like large layer-2 domains/long-distance VM motion to me ;-): it should be avoided as much as possible and quite often is not actually necessary. Replacing dynamic inclusion with static imports (<code>import_playbook</code>, <code>import_role</code>, <code>import_tasks</code>) usually requires rearchitecting though.</p>\n\n<p>PS: The use of <code>include_vars</code> is probably acceptable, although <code>inventory</code>/<code>host_vars</code>/<code>group_vars</code> should be preferred.</p>\n",
+         "id": "1109",
+         "name": "Sebastian Schrader",
+         "pub": "2022-03-24T12:13:26",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 March 2022 10:08",
+               "html": "<p>Your test is not exactly the same as Ivan&#39;s one. Look closely at the variable &quot;module&quot; in Ivan&#39;s example. In your example the &quot;modules&quot; variable of all hosts starts with [ ospf, bgp, mpls ]. In Ivan&#39;s example the order is different: [ ospf, mpls ] versus [ ospf, bgp, mpls ] versus [ bgp, mpls ]. Also not all hosts have ospf module.</p>\n",
+               "id": "1114",
+               "name": "Anonymous",
+               "pub": "2022-03-26T10:08:59",
+               "ref": "1113",
+               "type": "comment"
+            }
+         ],
+         "date": "25 March 2022 11:50",
+         "html": "<p>Hello Ivan,</p>\n\n<p>I am surely missing something, but i was not able to reproduce your issue with the following data and playbooks. My ansible (v 2.7 and 2.9) runs smoothly  and includes the tasks in the expected order.</p>\n\n<pre>\r\nark@amp-ansible:~/ipspace$ cat inventory.yml\r\nall:\r\n  hosts:\r\n    pe1:\r\n      modules: [ ospf, bgp, mpls ]\r\n    ce1:\r\n      modules: [ ospf, bgp, mpls, gre, ipsec ]\r\n    ce2:\r\n      modules: [ ospf, bgp, mpls, gre, ipsec ]\r\nark@amp-ansible:~/ipspace$ cat inner.yml\r\n---\r\n  - debug:\r\n      msg: &quot;&#123;&#123; module &#125;&#125; on &#123;&#123; inventory_hostname &#125;&#125;&quot;\r\n  - pause:\r\n      seconds: 1\r\nark@amp-ansible:~/ipspace$ cat multiple.yml\r\n- hosts: all\r\n  gather_facts: no\r\n  tasks:\r\n  - include_tasks: inner.yml\r\n    loop: &quot;&#123;&#123; modules &#125;&#125;&quot;\r\n    loop_control:\r\n        loop_var: module\r\n    when: modules is defined\r\nark@amp-ansible:~/ipspace$\r\nark@amp-ansible:~/ipspace$ /usr/local/bin/ansible-playbook -i inventory.yml multiple.yml | grep msg\r\n    &quot;msg&quot;: &quot;ospf on pe1&quot;\r\n    &quot;msg&quot;: &quot;ospf on ce1&quot;\r\n    &quot;msg&quot;: &quot;ospf on ce2&quot;\r\n    &quot;msg&quot;: &quot;bgp on pe1&quot;\r\n    &quot;msg&quot;: &quot;bgp on ce1&quot;\r\n    &quot;msg&quot;: &quot;bgp on ce2&quot;\r\n    &quot;msg&quot;: &quot;mpls on pe1&quot;\r\n    &quot;msg&quot;: &quot;mpls on ce1&quot;\r\n    &quot;msg&quot;: &quot;mpls on ce2&quot;\r\n    &quot;msg&quot;: &quot;gre on ce1&quot;\r\n    &quot;msg&quot;: &quot;gre on ce2&quot;\r\n    &quot;msg&quot;: &quot;ipsec on ce1&quot;\r\n    &quot;msg&quot;: &quot;ipsec on ce2&quot;\r\nark@amp-ansible:~/ipspace$\r\n</pre>\n",
+         "id": "1113",
+         "name": " Ark",
+         "pub": "2022-03-25T11:50:49",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2022/03/ansible-reorder-list-values.html"
+}

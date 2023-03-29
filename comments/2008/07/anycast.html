@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6155296464604647931">03 July 2008 07:42</a>
+                <a rel="nofollow" id="c6155296464604647931" href="#6155296464604647931">03 July 2008 07:42</a>
               </span>
             </div>
-            <p class="comment-content">You know, the myth that anycast and tcp don't mix well is just that, a myth. There are many many large anycast clouds serving thousands of tcp sessions.<BR/><BR/>A couple of papers on anycast + tcp:<BR/><BR/>http://www.nanog.org/mtg-0606/pdf/matt.levine.pdf<BR/>http://www.netcat.ca/tag/tcp-anycast/<BR/><BR/>It is true that if the node goes down that the tcp sessions would fail, however, that is the case if you're using anycast or not.</p>
+            <div class="comment-content">You know, the myth that anycast and tcp don't mix well is just that, a myth. There are many many large anycast clouds serving thousands of tcp sessions.<BR/><BR/>A couple of papers on anycast + tcp:<BR/><BR/>http://www.nanog.org/mtg-0606/pdf/matt.levine.pdf<BR/>http://www.netcat.ca/tag/tcp-anycast/<BR/><BR/>It is true that if the node goes down that the tcp sessions would fail, however, that is the case if you're using anycast or not.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06517186494484977438" rel="nofollow">Roland Dobbins</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#769617682435213829">03 July 2008 09:28</a>
+                <a rel="nofollow" id="c769617682435213829" href="#769617682435213829">03 July 2008 09:28</a>
               </span>
             </div>
-            <p class="comment-content">I want to agree and expand upon Patrick's comments - multi-tier Web applications typically don't carry a lot of state on the front-end in the first place, and, secondly, if you're experiencing so many fluctuations in your IGP that this would be problematic at the TCP level, you've larger problems which need solving first, anyways.<BR/><BR/>The best way to do anycasting is to run a routing daemon on the host, so as to minimize the risk of blackholing traffic in the event of a host outage.</p>
+            <div class="comment-content">I want to agree and expand upon Patrick's comments - multi-tier Web applications typically don't carry a lot of state on the front-end in the first place, and, secondly, if you're experiencing so many fluctuations in your IGP that this would be problematic at the TCP level, you've larger problems which need solving first, anyways.<BR/><BR/>The best way to do anycasting is to run a routing daemon on the host, so as to minimize the risk of blackholing traffic in the event of a host outage.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3445899245305332328">06 July 2008 20:16</a>
+                <a rel="nofollow" id="c3445899245305332328" href="#3445899245305332328">06 July 2008 20:16</a>
               </span>
             </div>
-            <p class="comment-content">The problem with TCP-over-Anycast is that the change in global BGP state (nothing to do with the stability of the servers or IGP) could redirect the end-user's traffic to another Anycast server, resulting in disrupted TCP session. The presentation Patrick mentioned in his comment admits and addresses this concern in numerous ways:<BR/><BR/>* Your upstream ISP has to provide effective BGP communities (#4)<BR/>* Coasts and countries appear to provide enough padding for route instability (#6)<BR/>* Nodes that are near by could possibly require state between each node if routes are unstable (#6)<BR/>* There's also the "Gotchas" slide (#20)<BR/><BR/>However, the actual statistical data they've provided (#19) indicate that the failure rate is so low that you can ignore it, meaning that although my reservations were valid, they were mostly academic :) Thanks for pointing that out.</p>
+            <div class="comment-content">The problem with TCP-over-Anycast is that the change in global BGP state (nothing to do with the stability of the servers or IGP) could redirect the end-user's traffic to another Anycast server, resulting in disrupted TCP session. The presentation Patrick mentioned in his comment admits and addresses this concern in numerous ways:<BR/><BR/>* Your upstream ISP has to provide effective BGP communities (#4)<BR/>* Coasts and countries appear to provide enough padding for route instability (#6)<BR/>* Nodes that are near by could possibly require state between each node if routes are unstable (#6)<BR/>* There's also the "Gotchas" slide (#20)<BR/><BR/>However, the actual statistical data they've provided (#19) indicate that the failure rate is so low that you can ignore it, meaning that although my reservations were valid, they were mostly academic :) Thanks for pointing that out.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06517186494484977438" rel="nofollow">Roland Dobbins</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4142675054712405462">07 July 2008 14:29</a>
+                <a rel="nofollow" id="c4142675054712405462" href="#4142675054712405462">07 July 2008 14:29</a>
               </span>
             </div>
-            <p class="comment-content">In most cases, BGP things which happen outside one's own network won't have any effect at all on which TCP front-end server ends up servicing the requests.  But as stated above, and as you note, this is firstly rare, and secondly, given modern applications architectures, won't matter if it happens, anyways.</p>
+            <div class="comment-content">In most cases, BGP things which happen outside one's own network won't have any effect at all on which TCP front-end server ends up servicing the requests.  But as stated above, and as you note, this is firstly rare, and secondly, given modern applications architectures, won't matter if it happens, anyways.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4580669273338271501">07 July 2008 23:53</a>
+                <a rel="nofollow" id="c4580669273338271501" href="#4580669273338271501">07 July 2008 23:53</a>
               </span>
             </div>
-            <p class="comment-content">One popular use of anycast is in IP Multicast to support the redundant rendezvous points (aka Anycast RP). See this white paper below:<BR/><BR/>http://www.cisco.com/en/US/docs/ios/solutions_docs/ip_multicast/White_papers/anycast.pdf<BR/><BR/>It's using MSDP to make Anycast RP possible.</p>
+            <div class="comment-content">One popular use of anycast is in IP Multicast to support the redundant rendezvous points (aka Anycast RP). See this white paper below:<BR/><BR/>http://www.cisco.com/en/US/docs/ios/solutions_docs/ip_multicast/White_papers/anycast.pdf<BR/><BR/>It's using MSDP to make Anycast RP possible.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3015496845818093130">07 August 2008 04:00</a>
+                <a rel="nofollow" id="c3015496845818093130" href="#3015496845818093130">07 August 2008 04:00</a>
               </span>
             </div>
-            <p class="comment-content">You should use anycast whereever you ask the customer to hard code an IP address. This allows you to alter your topology at something faster than the rate of change of your slowest customer.<BR/><BR/>Anycast is also commonly used for DNS and RADIUS. For an introduction on DNS Anycast see http://www.gdt.id.au/~gdt/presentations/2006-07-18-linuxsa-anycast/</p>
+            <div class="comment-content">You should use anycast whereever you ask the customer to hard code an IP address. This allows you to alter your topology at something faster than the rate of change of your slowest customer.<BR/><BR/>Anycast is also commonly used for DNS and RADIUS. For an introduction on DNS Anycast see http://www.gdt.id.au/~gdt/presentations/2006-07-18-linuxsa-anycast/</div>
           </div>
         </li>
       </div>

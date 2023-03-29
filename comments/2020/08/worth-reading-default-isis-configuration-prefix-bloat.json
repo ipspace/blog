@@ -1,0 +1,39 @@
+{
+   "comments": [
+      {
+         "date": "14 August 2020 01:40",
+         "html": "<p>This has been known for what, 25 years now ? Isn&#39;t this the first thing they tell you in an IS-IS training: if you don&#39;t use areas, configure all your routers as L1-only or L2-only ? Isn&#39;t this in the first chapter on areas in every IS-IS book ?</p>\n\n<p>The problem here are not the vendors. It&#39;s the customers. :)\nSometimes you want to change the CLI. You want to change the default settings. You want to change a show-command. Maybe you want to remove something. Can&#39;t be done. Your Product Manager will tell you: &quot;never change anything that already exists&quot;. Even when the new behaviour is better. Even when the new behaviour will prevent lots of problems in the future.</p>\n\n<p>There is this obsession that customers should be able to upgrade (or downgrade) the software on their routers at any time, without any compatibility problems with the config. The default level of IS-IS in any router should always have been level-1 or level-2, not level-1-2. It&#39;s also ridiculous that the default metric-style in all routers are still narrow. More than 20 years after the introduction of wider metrics. Why hasn&#39;t that changed ? Why haven&#39;t narrow metrics not been removed from implementations yet ?</p>\n\n<p>The problem Chris Parker describes, with big surprise, actually happened in a real provider network in ~1995. The churn in L1 would cause every router to generate a new L2-LSP. Which would cause a L2 SPF. The IS-IS developer at cisco at the time told the ISP to go to L2-only. And he implemented PRC (Partial Route Computation). With PRC you only do a full SPF when adjacencies change. You only recompute the individual routes of the prefixes that change (cost of route = cost to get to the advertising router + cost as advertised in the TLV. Simple).</p>\n\n<p>BTW, Chris claims your network needs downtime to convert from L1L2 to L2-only. Is that true ? Can&#39;t you just set the overload-bit, wait till transit traffic dies down ? Then make the change to L2-only. And then clear the overload-bit ?</p>\n",
+         "id": "100",
+         "name": " Henk",
+         "pub": "2020-08-14T13:40:57",
+         "type": "comment"
+      },
+      {
+         "date": "14 August 2020 06:13",
+         "html": "<p>&quot;This has been known for what, 25 years now&quot; &lt;&lt; have to admit I never thought about it... even though I worked on an IS-IS deep dive course in the &#39;90s. So there are definitely some dumbos out there (myself obviously included) who didn&#39;t get the memo.</p>\n\n<p>And of course I agree with everything else you wrote.</p>\n",
+         "id": "101",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-08-14T18:13:46",
+         "type": "comment"
+      },
+      {
+         "date": "20 August 2020 04:56",
+         "html": "<p>Hi Ivan,</p>\n\n<p>In Chris&#39; article, he mentioned &quot;this lack of L1 won&rsquo;t affect the way MPLS LSPs are calculated &ndash; because by default, RSVP paths are calculated using the IS-IS Level 2 database&quot;. What about LDP? Is it using IS-IS Level 2 by default as well? </p>\n\n<p>Also, while we&#39;re talking about routing, I came across this piece of info when I read about IS-IS sometime ago:</p>\n\n<p>&quot;A decade ago it was common to run IGPs over a tunnel. But running dynamic routing protocols over a tunnel is almost always a recipe for disaster. Things behave really badly if the total IGP cost over the tunnel undermines the total topologies&rsquo; cost. What happens next is that the tunnel &ldquo;wraps&rdquo; around itself, ultimately causing a meltdown of the entire network. Having those glorious meltdowns in mind, designers put a few restrictions on re-advertising a TE tunnel as part of the IS-IS topology. First of all, no IS-IS Hellos are sent down a tunnel. The router considers this forwarding adjacency to be up when the tunnel is up. If there is a change in topology and the tunnel goes down, then the forwarding adjacency will go down as well. Because no Hellos are sent down the tunnel there is no infinite recursion problem as there was when tunnelling IGPs in the 1990s.&quot;</p>\n\n<p>Youngsters like me are very much interested in learning about these historical problems, as these scenarios are tremendous eye openers regarding what should and shouldn&#39;t be done/implemented. But unfortunately these old issues rarely get mentioned, let alone in depth. In regard to the above IGP and infinite tunnelling causing meltdown in the 90s, I tried to find out more about it but ended up getting nowhere. As one of the foremost experts when it comes to routing, could you do some kind of &quot;deep dive&quot; post on it? That would be great :)) . </p>\n\n<p>Minh</p>\n",
+         "id": "102",
+         "name": "Minh Ha",
+         "pub": "2020-08-20T04:56:15",
+         "type": "comment"
+      },
+      {
+         "date": "20 August 2020 05:00",
+         "html": "<p>LDP is routing-protocol-independent and uses the main IP routing table as its source of reachable prefixes.</p>\n\n<p>Thanks for the suggestion, will add tunneling considerations to <em>routing protocol deep dive</em> topics in <em>How Networks Really Work</em> webinar.</p>\n",
+         "id": "104",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-08-20T17:00:28",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2020/08/worth-reading-default-isis-configuration-prefix-bloat.html"
+}

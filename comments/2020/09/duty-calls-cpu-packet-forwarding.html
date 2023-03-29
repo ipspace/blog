@@ -1,0 +1,91 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="125">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">A.A</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c125" href="#125">13 September 2020 03:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan is right. Even Cisco High-end Firewall/NGFW use only CPU complex for packet filtering and forwarding.Cisco FP9300 SM-56 module contain too many CPU Core (not sure but i think it is 48 Core per socket) and each SM can handle 80Gbps of stateful traffic. but with the help of some special Intel NIC and controller .the problem is if you want DIY and make an opens-source NFV solution , it is hard and you need to have a good level of expertise in that field , something that regular network/security engineer lagging behind.the secret sauce is what big company like Cisco is hiding from the others to their benefit.some software based packet forwarding use VPP in commercial products but there is no real and ready to use open-source NFV based on those technology.Cisco use VPP in most of devices that use CPU for packet forwading (like ISR4K  and new boost License that double the performance of router).Another concern is the maximum speed for software-based packet forwarding is around Multi-Gbps and not Tbps.i really really like the idea of Ivan &quot;you only need to switches for most DC&quot;.just loading your servers with maximum CPU socket and RAM and Disks and you can have 1500 VM in just a single rack.but how i can effectively put those L4-7 NFV when each TOR switch can handle Tbps of traffic but my NFV is struggling light traffic.Again Ivan had a good topic about &quot;Stateless ACL&quot;  years ago and i am totally agree with him.Cisco introduced Nexus 9364-GX2 with 64x400G (2U with 25Tbps) a month ago.how current NFV solution that struggling with only some Gbps traffic are going to cope with the kind of traffic ? If company like VMware let some technology like VEPA  work with their VS , i will put in place all Traffic filtering and forwarding back in to the hardware as new hardware is improved . Nexus 9364-GX2 TCAM is much larger than older N9K . it support 72K ACE in hardware and it is large enough for Micro-Segmentation and regular packet filtering.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="126">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Michael Gonnason</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c126" href="#126">13 September 2020 10:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Checkpoint is heavily CPU based also, but you allocate CPU cores to different purposes. Each core gets its own copy of the firewall kernel to process traffic.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="135">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Junhui Liu</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c135" href="#135">17 September 2020 10:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>First, I agree with all the facts listed in this article. But my intended use cases are actually not covered.
+With RSS, packet order is retained per flow (or maybe better, per CPU core). But there&#39;re elephant flows that just can&#39;t be handled by a single core. This is where a hardware packet order retaining mechanism is needed, which is common in NPUs. ASICs, especially BRCM ASICs, work in a pipeline mode, so packet orders are always retained.
+For scheduling, I don&#39;t think a CPU is capable of multi-queue, multi-discipline scheduling across multiple cores. (Sometimes multiple hierachies are also needed for scheduling, but l&#39;d like to stick to datacenter use cases). Just think about the simple usecase of 8 queues with mixed strict priority, WRR scheduling and per queue bandwidth cap.
+The point is that some jobs just can&#39;t be done easily in a distributed mode. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="136">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c136" href="#136">17 September 2020 11:24</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Junhui: Agree on megaflows being an exception that probably requires a NPU or smart NIC for packet forwarding (session termination is a different story and left as an exercise for the reader)... but then I never claimed that we can solve all networking problems in this world with a properly-sized x86 server.</p>
+
+<p>As for queuing on &quot;regular&quot; NIC, check out the Intel XL710 datasheet... and if that&#39;s not good enough, you could always dedicate a core to output queue processing.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

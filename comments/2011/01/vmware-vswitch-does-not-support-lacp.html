@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>22 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lcg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8893211613987226538">25 January 2011 12:30</a>
+                <a rel="nofollow" id="c8893211613987226538" href="#8893211613987226538">25 January 2011 12:30</a>
               </span>
             </div>
-            <p class="comment-content">Can you define &quot;per-session load balancing&quot; in VMware terms?  Do you mean the &quot;Route based on IP-hash&quot; policy?  If so, then yes, you need to configure the port-channel interface and use &quot;channel-group X mode on&quot; in the member interface configs. It also works best if you configure global command &quot;port-channel load-balance src-dst-ip&quot;.  There are a couple items/issues I know of that it helps to be aware of if you go this route, linked below.<br /><br />http://kb.vmware.com/kb/1001938<br />http://www.yellow-bricks.com/2010/08/06/standby-nics-in-an-ip-hash-configuration/<br /><br />If you&#39;re using vSphere 4.1 and a distributed vSwitch, you might also be in the Load Based Teaming option, http://kb.vmware.com/kb/1022590.<br /><br />Cheers,<br />-Loren</p>
+            <div class="comment-content">Can you define &quot;per-session load balancing&quot; in VMware terms?  Do you mean the &quot;Route based on IP-hash&quot; policy?  If so, then yes, you need to configure the port-channel interface and use &quot;channel-group X mode on&quot; in the member interface configs. It also works best if you configure global command &quot;port-channel load-balance src-dst-ip&quot;.  There are a couple items/issues I know of that it helps to be aware of if you go this route, linked below.<br /><br />http://kb.vmware.com/kb/1001938<br />http://www.yellow-bricks.com/2010/08/06/standby-nics-in-an-ip-hash-configuration/<br /><br />If you&#39;re using vSphere 4.1 and a distributed vSwitch, you might also be in the Load Based Teaming option, http://kb.vmware.com/kb/1022590.<br /><br />Cheers,<br />-Loren</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4506081624902145000">25 January 2011 20:14</a>
+                <a rel="nofollow" id="c4506081624902145000" href="#4506081624902145000">25 January 2011 20:14</a>
               </span>
             </div>
-            <p class="comment-content">Indeed I had the &quot;IP-hash-based load balancing&quot; in mind. Fixed the terminology. Thanks.<br /><br />Thank you for all the links. They give interesting insight into how vSwitch actually works, but the fundamental question remains: what happens (apart from MAC table trashing in the pSwitch)  if you enable &quot;IP-hash-based&quot; LB in vSwitch but do not configure the EtherChannel on the pSwitch.</p>
+            <div class="comment-content">Indeed I had the &quot;IP-hash-based load balancing&quot; in mind. Fixed the terminology. Thanks.<br /><br />Thank you for all the links. They give interesting insight into how vSwitch actually works, but the fundamental question remains: what happens (apart from MAC table trashing in the pSwitch)  if you enable &quot;IP-hash-based&quot; LB in vSwitch but do not configure the EtherChannel on the pSwitch.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">John</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2087610466516999350">25 January 2011 20:26</a>
+                <a rel="nofollow" id="c2087610466516999350" href="#2087610466516999350">25 January 2011 20:26</a>
               </span>
             </div>
-            <p class="comment-content">I use &#39;mode on&#39; on the access switch, src-dst ip hashing on both the vswitch and the access-switch.  I also enable bpdu-guard on the vmware-facing hosts<br /><br />I wish that you could do port-security on etherchannels so that you can limit MACs to some reasonable number and sticky MAC learning to prevent MAC thrashing.<br /><br />While we&#39;re in the neighborhood I&#39;d like to remind everyone that you can run the port-channel hash with the &#39;test etherchannel load-balance interface&#39; command.  Fun.</p>
+            <div class="comment-content">I use &#39;mode on&#39; on the access switch, src-dst ip hashing on both the vswitch and the access-switch.  I also enable bpdu-guard on the vmware-facing hosts<br /><br />I wish that you could do port-security on etherchannels so that you can limit MACs to some reasonable number and sticky MAC learning to prevent MAC thrashing.<br /><br />While we&#39;re in the neighborhood I&#39;d like to remind everyone that you can run the port-channel hash with the &#39;test etherchannel load-balance interface&#39; command.  Fun.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrismarget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4535818305794861837">25 January 2011 21:31</a>
+                <a rel="nofollow" id="c4535818305794861837" href="#4535818305794861837">25 January 2011 21:31</a>
               </span>
             </div>
-            <p class="comment-content">Hey Ivan,<br /><br />Something funny happened - sorry if this shows up as a double post.<br /><br />&quot;Are you aware of the specific drawbacks of using per-session load balancing without static LAG on the switch?&quot;<br /><br />You&#39;re not suggesting that someone would run this way, ignore the &quot;MAC is flapping&quot; messages and let the CAM table thrash, are you?<br /><br />Some Cisco platforms will drop frames for &quot;flapping&quot; destinations each time that message is logged.  It&#39;s a loop prevention thing: don&#39;t forward frames that might loop endlessly.<br /><br />The duration of the drop interval is in the tens of seconds each time the &quot;flap&quot; threshold (moves/interval) is exceeded.<br /><br />Frustratingly, exactly what constitutes a &quot;flap&quot;, whether traffic is dropped and for how long is platform and OS dependent.<br /><br />Static LAG (channel-group X mode on) comes with its own set of drawbacks, of course.  There are ways for things to go wrong that LACP would notice, but &quot;on&quot; will not.</p>
+            <div class="comment-content">Hey Ivan,<br /><br />Something funny happened - sorry if this shows up as a double post.<br /><br />&quot;Are you aware of the specific drawbacks of using per-session load balancing without static LAG on the switch?&quot;<br /><br />You&#39;re not suggesting that someone would run this way, ignore the &quot;MAC is flapping&quot; messages and let the CAM table thrash, are you?<br /><br />Some Cisco platforms will drop frames for &quot;flapping&quot; destinations each time that message is logged.  It&#39;s a loop prevention thing: don&#39;t forward frames that might loop endlessly.<br /><br />The duration of the drop interval is in the tens of seconds each time the &quot;flap&quot; threshold (moves/interval) is exceeded.<br /><br />Frustratingly, exactly what constitutes a &quot;flap&quot;, whether traffic is dropped and for how long is platform and OS dependent.<br /><br />Static LAG (channel-group X mode on) comes with its own set of drawbacks, of course.  There are ways for things to go wrong that LACP would notice, but &quot;on&quot; will not.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6773155721395459765">25 January 2011 22:23</a>
+                <a rel="nofollow" id="c6773155721395459765" href="#6773155721395459765">25 January 2011 22:23</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;m not suggesting you should do that. Maybe I need to reword the question ;)<br /><br />I did not know what exactly the reaction to CAM table trashing would be (never tested it in the lab) and you provided just the answer I needed. Thank you!</p>
+            <div class="comment-content">I&#39;m not suggesting you should do that. Maybe I need to reword the question ;)<br /><br />I did not know what exactly the reaction to CAM table trashing would be (never tested it in the lab) and you provided just the answer I needed. Thank you!</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrismarget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8728009105079356095">25 January 2011 22:38</a>
+                <a rel="nofollow" id="c8728009105079356095" href="#8728009105079356095">25 January 2011 22:38</a>
               </span>
             </div>
-            <p class="comment-content">I may have made this up, but...<br /><br />I have the idea that programming TCAM is an expensive operation.  Expensive relative to moving frames around anyway.  I don&#39;t think it&#39;s something you want the switch to be doing thousands of times per second.  :-)<br /><br />...Never mind the logging overhead it creates.<br /><br />I opened a TAC case a few years ago to find out exactly what constitutes &quot;a flap&quot;.  The answer was: &quot;what platform?&quot;<br /><br />After a little digging, TAC replied:<br /><br />------------------------------<br />The host flapping detection behavior is somewhat different between Cat4k<br />CatOS and Cat4k IOS.  The big difference between Cat4k CatOS and Cat4k IOS<br />is, in CatOS, the cat4k drops traffic from the flapping host for<br />approximately 15 seconds.  In IOS, the cat4k does not drop traffic because<br />of host flapping.<br /> <br />Both Cat4k CatOS and IOS use the following algorithm to declare a host<br />flapping:<br /> <br />If the supervisor see 4 or more moves between ports from a single source mac<br />in a window of around 15 seconds, then it declares the host to be flapping.<br />------------------------------</p>
+            <div class="comment-content">I may have made this up, but...<br /><br />I have the idea that programming TCAM is an expensive operation.  Expensive relative to moving frames around anyway.  I don&#39;t think it&#39;s something you want the switch to be doing thousands of times per second.  :-)<br /><br />...Never mind the logging overhead it creates.<br /><br />I opened a TAC case a few years ago to find out exactly what constitutes &quot;a flap&quot;.  The answer was: &quot;what platform?&quot;<br /><br />After a little digging, TAC replied:<br /><br />------------------------------<br />The host flapping detection behavior is somewhat different between Cat4k<br />CatOS and Cat4k IOS.  The big difference between Cat4k CatOS and Cat4k IOS<br />is, in CatOS, the cat4k drops traffic from the flapping host for<br />approximately 15 seconds.  In IOS, the cat4k does not drop traffic because<br />of host flapping.<br /> <br />Both Cat4k CatOS and IOS use the following algorithm to declare a host<br />flapping:<br /> <br />If the supervisor see 4 or more moves between ports from a single source mac<br />in a window of around 15 seconds, then it declares the host to be flapping.<br />------------------------------</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrismarget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2416330634787823887">25 January 2011 22:49</a>
+                <a rel="nofollow" id="c2416330634787823887" href="#2416330634787823887">25 January 2011 22:49</a>
               </span>
             </div>
-            <p class="comment-content">Does the &quot;IP-hash&quot; vSwitch policy preclude access switch diversity?<br /><br />Assuming vPC/VSS/SMLT style MLAG isn&#39;t available, can the traditional vSwitch create two &quot;IP-hash&quot; aggregations to two different switches?<br /><br />We&#39;d need the vSwitch algorithm to do split-horizon bridging between two uplink bundles, and then do IP-hash link selection within these &quot;mode on&quot; aggregations.<br /><br />If this sort of scheme isn&#39;t possible, then &quot;IP-hash&quot; balancing suggests that you can only have a single access switch for an ESX server.  Not very resilient!</p>
+            <div class="comment-content">Does the &quot;IP-hash&quot; vSwitch policy preclude access switch diversity?<br /><br />Assuming vPC/VSS/SMLT style MLAG isn&#39;t available, can the traditional vSwitch create two &quot;IP-hash&quot; aggregations to two different switches?<br /><br />We&#39;d need the vSwitch algorithm to do split-horizon bridging between two uplink bundles, and then do IP-hash link selection within these &quot;mode on&quot; aggregations.<br /><br />If this sort of scheme isn&#39;t possible, then &quot;IP-hash&quot; balancing suggests that you can only have a single access switch for an ESX server.  Not very resilient!</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3258858215642146915">25 January 2011 23:15</a>
+                <a rel="nofollow" id="c3258858215642146915" href="#3258858215642146915">25 January 2011 23:15</a>
               </span>
             </div>
-            <p class="comment-content">Oh the frustration of %SW_MATM-4-MACFLAP_NOTIF message :D Honestly, I am not aware of any precise flap suppression limits in different Cisco switches as this hasn&#39;t been well documented. I wonder if you could disable MAC-address learning on the upstream switch :D This, of course, will make it utilize both downstream ports equally, but will remove any flapping MAC address learning issues.</p>
+            <div class="comment-content">Oh the frustration of %SW_MATM-4-MACFLAP_NOTIF message :D Honestly, I am not aware of any precise flap suppression limits in different Cisco switches as this hasn&#39;t been well documented. I wonder if you could disable MAC-address learning on the upstream switch :D This, of course, will make it utilize both downstream ports equally, but will remove any flapping MAC address learning issues.</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">plapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4705122352649634732">25 January 2011 23:17</a>
+                <a rel="nofollow" id="c4705122352649634732" href="#4705122352649634732">25 January 2011 23:17</a>
               </span>
             </div>
-            <p class="comment-content">That Guest was me, apparently :)</p>
+            <div class="comment-content">That Guest was me, apparently :)</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lcg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3740622313529734923">26 January 2011 02:19</a>
+                <a rel="nofollow" id="c3740622313529734923" href="#3740622313529734923">26 January 2011 02:19</a>
               </span>
             </div>
-            <p class="comment-content">Yes, that&#39;s one reason we chose not to use it.  We have an absolute requirement for device redundancy at every layer...  If the vSwitch interfaces are connected to different (non-VSS-connected) northbound switches, then you cannot use the IP-hash vswitch policy.<br /><br />And no, a vSwitch cannot create two LAGs to different switches...that&#39;s been on my wishlist for a couple years now...</p>
+            <div class="comment-content">Yes, that&#39;s one reason we chose not to use it.  We have an absolute requirement for device redundancy at every layer...  If the vSwitch interfaces are connected to different (non-VSS-connected) northbound switches, then you cannot use the IP-hash vswitch policy.<br /><br />And no, a vSwitch cannot create two LAGs to different switches...that&#39;s been on my wishlist for a couple years now...</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lcg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4064922308233873050">26 January 2011 02:23</a>
+                <a rel="nofollow" id="c4064922308233873050" href="#4064922308233873050">26 January 2011 02:23</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, all that happens is exactly what you say...the vSwitch starts distributing packets across multiple northbound interfaces (based on a src-dst-ip hash).  So the MAC shows up on multiple interfaces on the switch, confusing the heck out of the switch.<br /><br />If you do this on the vswitch with the Service Console interface, the ESX host will likely become unmanageable via the network and you&#39;ll have to console into it to fix things.</p>
+            <div class="comment-content">Ivan, all that happens is exactly what you say...the vSwitch starts distributing packets across multiple northbound interfaces (based on a src-dst-ip hash).  So the MAC shows up on multiple interfaces on the switch, confusing the heck out of the switch.<br /><br />If you do this on the vswitch with the Service Console interface, the ESX host will likely become unmanageable via the network and you&#39;ll have to console into it to fix things.</div>
           </div>
         </li>
       </div>
@@ -217,10 +212,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">davej</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7578426180459471524">28 January 2011 10:01</a>
+                <a rel="nofollow" id="c7578426180459471524" href="#7578426180459471524">28 January 2011 10:01</a>
               </span>
             </div>
-            <p class="comment-content">To me your article should of said &quot;Dynamic LACP is not supported on vSwitches&quot;.  To my understanding to use aggregates you must use ip hash on the NICs in the portgroup on the vSwitch and then on the physical switch ports that th NICs connect to you can use EtherChannel (it is  Staic by definition) or Static LACP or Static 802.3ad.  You can not use dynamic LACP or dynamic 802.3ad on the physical switch ports since LACP/802.3ad are not supported on the vSwitch.  Dynamic means the protocol (LACP/802.3ad) is only enabled if the other side supports it.</p>
+            <div class="comment-content">To me your article should of said &quot;Dynamic LACP is not supported on vSwitches&quot;.  To my understanding to use aggregates you must use ip hash on the NICs in the portgroup on the vSwitch and then on the physical switch ports that th NICs connect to you can use EtherChannel (it is  Staic by definition) or Static LACP or Static 802.3ad.  You can not use dynamic LACP or dynamic 802.3ad on the physical switch ports since LACP/802.3ad are not supported on the vSwitch.  Dynamic means the protocol (LACP/802.3ad) is only enabled if the other side supports it.</div>
           </div>
         </li>
       </div>
@@ -235,10 +230,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">davej</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4165128643912346649">28 January 2011 10:05</a>
+                <a rel="nofollow" id="c4165128643912346649" href="#4165128643912346649">28 January 2011 10:05</a>
               </span>
             </div>
-            <p class="comment-content">Forgot to include this link from Scott Lowe that does a nice job in explaining NIC utilizaton: http://blog.scottlowe.org/2008/07/16/understanding-nic-utilization-in-vmware-esx/</p>
+            <div class="comment-content">Forgot to include this link from Scott Lowe that does a nice job in explaining NIC utilizaton: http://blog.scottlowe.org/2008/07/16/understanding-nic-utilization-in-vmware-esx/</div>
           </div>
         </li>
       </div>
@@ -253,10 +248,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2942079106965074200">29 January 2011 15:33</a>
+                <a rel="nofollow" id="c2942079106965074200" href="#2942079106965074200">29 January 2011 15:33</a>
               </span>
             </div>
-            <p class="comment-content">There is no &quot;dynamic LACP&quot;. A bundle of links (what is otherwise known as EtherChannel or Port Channel) is officially called Link Aggregation Group and is standardized in 802.3ad/802.1X. LAG could be statically configured or negotiated dynamically with LACP.<br /><br />There is no LACP in vSwitch, but it does have something that resembles static LAG.</p>
+            <div class="comment-content">There is no &quot;dynamic LACP&quot;. A bundle of links (what is otherwise known as EtherChannel or Port Channel) is officially called Link Aggregation Group and is standardized in 802.3ad/802.1X. LAG could be statically configured or negotiated dynamically with LACP.<br /><br />There is no LACP in vSwitch, but it does have something that resembles static LAG.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -272,10 +267,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.rickardnobel.se" rel="nofollow">Rickard Nobel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1852341762053953530">18 July 2012 13:32</a>
+                <a rel="nofollow" id="c1852341762053953530" href="#1852341762053953530">18 July 2012 13:32</a>
               </span>
             </div>
-            <p class="comment-content">Should it not be 802.1AX? ;)</p>
+            <div class="comment-content">Should it not be 802.1AX? ;)</div>
           </div>
         </li>
       </div>
@@ -290,10 +285,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6789386671244879733">18 July 2012 13:34</a>
+                <a rel="nofollow" id="c6789386671244879733" href="#6789386671244879733">18 July 2012 13:34</a>
               </span>
             </div>
-            <p class="comment-content">Of course. Thanks!</p>
+            <div class="comment-content">Of course. Thanks!</div>
           </div>
         </li>
       </div>
@@ -315,10 +310,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">davej</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7854734545196474775">30 January 2011 07:11</a>
+                <a rel="nofollow" id="c7854734545196474775" href="#7854734545196474775">30 January 2011 07:11</a>
               </span>
             </div>
-            <p class="comment-content">Thank-you.</p>
+            <div class="comment-content">Thank-you.</div>
           </div>
         </li>
       </div>
@@ -333,10 +328,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Michael Arends</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3042210684603606868">09 September 2011 10:29</a>
+                <a rel="nofollow" id="c3042210684603606868" href="#3042210684603606868">09 September 2011 10:29</a>
               </span>
             </div>
-            <p class="comment-content">The vswitch can use an LACP connection to the physical switch using it for years now....  <br /><br />http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1004048<br /><br />http://www.cisco.com/en/US/docs/solutions/Enterprise/Data_Center/vmware/VMware.html</p>
+            <div class="comment-content">The vswitch can use an LACP connection to the physical switch using it for years now....  <br /><br />http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1004048<br /><br />http://www.cisco.com/en/US/docs/solutions/Enterprise/Data_Center/vmware/VMware.html</div>
           </div>
         </li>
       </div>
@@ -351,10 +346,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6533233399498690989">09 September 2011 10:41</a>
+                <a rel="nofollow" id="c6533233399498690989" href="#6533233399498690989">09 September 2011 10:41</a>
               </span>
             </div>
-            <p class="comment-content">Michael, please note there is a &quot;slight&quot; distinction between being able to send packets across two or more links (Link Aggregation Group = LAG, thus the term &quot;static LAG&quot;) and supporting the __standard signaling protocol__ defined in the 802.3ad standard (LACP).<br /><br />VMware supports static LAG (or EtherChannel or Port Channel), but not LACP.</p>
+            <div class="comment-content">Michael, please note there is a &quot;slight&quot; distinction between being able to send packets across two or more links (Link Aggregation Group = LAG, thus the term &quot;static LAG&quot;) and supporting the __standard signaling protocol__ defined in the 802.3ad standard (LACP).<br /><br />VMware supports static LAG (or EtherChannel or Port Channel), but not LACP.</div>
           </div>
         </li>
       </div>
@@ -369,10 +364,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#635956944543788722">28 March 2012 23:39</a>
+                <a rel="nofollow" id="c635956944543788722" href="#635956944543788722">28 March 2012 23:39</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />So my question may be redundant, but is this why when looking at the port statistics of the LAG group on a 48 port DGS-1210-48 switch, one of the members of the LAG group (2 intel nics on a Dell Vmware server) is receiving and transmitting, while the 2nd member is ONLY transmitting packets?  Is this because the MAC address of the virtual vswitch can really only be assigned to one of the nics?<br /><br />The vSwitch is set to Load Balance, route based on ip hash.  The switch&#39;s LAG configuration is static.  If we set it to LACP, we lose connection to the internal VMs.  A third nic keeps us connected to the management interface.<br /><br />Luke</p>
+            <div class="comment-content">Hi Ivan,<br /><br />So my question may be redundant, but is this why when looking at the port statistics of the LAG group on a 48 port DGS-1210-48 switch, one of the members of the LAG group (2 intel nics on a Dell Vmware server) is receiving and transmitting, while the 2nd member is ONLY transmitting packets?  Is this because the MAC address of the virtual vswitch can really only be assigned to one of the nics?<br /><br />The vSwitch is set to Load Balance, route based on ip hash.  The switch&#39;s LAG configuration is static.  If we set it to LACP, we lose connection to the internal VMs.  A third nic keeps us connected to the management interface.<br /><br />Luke</div>
           </div>
         </li>
       </div>
@@ -387,10 +382,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1731687318423790787">28 March 2012 23:51</a>
+                <a rel="nofollow" id="c1731687318423790787" href="#1731687318423790787">28 March 2012 23:51</a>
               </span>
             </div>
-            <p class="comment-content">The setup you have seems OK (BTW, you can&#39;t use LACP. ESX does not support it, so the link will never come up), I&#39;m guessing your problem might be the load balancing algorithm the switch (or VMware) uses. Just because you&#39;ve enabled &quot;ip hash based&quot; load balancing doesn&#39;t mean that you&#39;ll get per-packet load sharing (you won&#39;t - that would break some applications). According to VMware&#39;s documentation they select the outbound link based on a hash of source+destination IP address.<br /><br />Also, just because you have a LAG on the switch doesn&#39;t mean that the switch won&#39;t do load balancing solely based on destination MAC address (or a combination of source+destination MAC).<br /><br />Hope this helps<br />Ivan</p>
+            <div class="comment-content">The setup you have seems OK (BTW, you can&#39;t use LACP. ESX does not support it, so the link will never come up), I&#39;m guessing your problem might be the load balancing algorithm the switch (or VMware) uses. Just because you&#39;ve enabled &quot;ip hash based&quot; load balancing doesn&#39;t mean that you&#39;ll get per-packet load sharing (you won&#39;t - that would break some applications). According to VMware&#39;s documentation they select the outbound link based on a hash of source+destination IP address.<br /><br />Also, just because you have a LAG on the switch doesn&#39;t mean that the switch won&#39;t do load balancing solely based on destination MAC address (or a combination of source+destination MAC).<br /><br />Hope this helps<br />Ivan</div>
           </div>
         </li>
       </div>
@@ -405,10 +400,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://public.madeinengland.co.nz" rel="nofollow">Lewis</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#977916250257033604">26 September 2012 02:25</a>
+                <a rel="nofollow" id="c977916250257033604" href="#977916250257033604">26 September 2012 02:25</a>
               </span>
             </div>
-            <p class="comment-content">Is IP Hash the best option here?</p>
+            <div class="comment-content">Is IP Hash the best option here?</div>
           </div>
         </li>
       </div>

@@ -1,10 +1,5 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
-  <h4>8 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7842761212178552702">27 May 2014 15:53</a>
+                <a rel="nofollow" id="c7842761212178552702" href="#7842761212178552702">27 May 2014 15:53</a>
               </span>
             </div>
-            <p class="comment-content">Thanks; good article. i enjoyed reading it &amp; learned alot<br /><br />I have a question though. Is input queueing useful on the input port? some switches seem to support this.....??</p>
+            <div class="comment-content">Thanks; good article. i enjoyed reading it &amp; learned alot<br /><br />I have a question though. Is input queueing useful on the input port? some switches seem to support this.....??</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3716677579015295304">28 May 2014 11:59</a>
+                <a rel="nofollow" id="c3716677579015295304" href="#3716677579015295304">28 May 2014 11:59</a>
               </span>
             </div>
-            <p class="comment-content">Input queuing seems to be similar to virtual output queuing. Do you have any specific platform in mind?</p>
+            <div class="comment-content">Input queuing seems to be similar to virtual output queuing. Do you have any specific platform in mind?</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ofer</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3122093389518661495">29 May 2014 16:38</a>
+                <a rel="nofollow" id="c3122093389518661495" href="#3122093389518661495">29 May 2014 16:38</a>
               </span>
             </div>
-            <p class="comment-content">generically, input queuing is useful for observing ingress bursts (as opposed to ingress policing) </p>
+            <div class="comment-content">generically, input queuing is useful for observing ingress bursts (as opposed to ingress policing) </div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.mplspvn.info" rel="nofollow">Shivlu Jain</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6411400417640589867">28 May 2014 05:53</a>
+                <a rel="nofollow" id="c6411400417640589867" href="#6411400417640589867">28 May 2014 05:53</a>
               </span>
             </div>
-            <p class="comment-content">Remembering old memories....I have question if there is LAG interface which is terminating on different line cards..In that case how the queuing will be done... </p>
+            <div class="comment-content">Remembering old memories....I have question if there is LAG interface which is terminating on different line cards..In that case how the queuing will be done... </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2248542770620588677">28 May 2014 11:58</a>
+                <a rel="nofollow" id="c2248542770620588677" href="#2248542770620588677">28 May 2014 11:58</a>
               </span>
             </div>
-            <p class="comment-content">One would expect the lookup hardware to produce two (or more) ECMP paths, select one of them based on packet hash and send the packet to the right output (or virtual output) queue. Did you experience something else that you can share?</p>
+            <div class="comment-content">One would expect the lookup hardware to produce two (or more) ECMP paths, select one of them based on packet hash and send the packet to the right output (or virtual output) queue. Did you experience something else that you can share?</div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">J Hand</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4765563898141305223">28 May 2014 17:23</a>
+                <a rel="nofollow" id="c4765563898141305223" href="#4765563898141305223">28 May 2014 17:23</a>
               </span>
             </div>
-            <p class="comment-content">The definition of Head-of-Line Blocking implicit in this post seems to be different from the one that I am familiar with.  I’ve mainly seen Head-of-Line blocking used to refer to a situation where a downstream resource is left underutilized and unable to perform needed work, because of congestion of an otherwise independent resource.<br /><br />For example, input ports 1 and 2 are both sending traffic to output port 8 of a switch.  The sum of the traffic coming from 1&amp;2 is greater than the capacity of port 8, so port 8 becomes oversubscribed.  Ports 1&amp;2 can’t send all the traffic that they want to port 8 across the fabric.  So traffic backs up in the input queues of ports 1 &amp; 2.   <br /><br />However, in addition to having traffic destined to output port 8, port 2 also receives traffic destined to output port 5.  Output port 5 is unutilized, and is ready and waiting to accept traffic from port 2.  But the traffic that port 2 has for output port 5 is sitting in port 2’s input queue.  It can’t get to output port 5 until the traffic queued to output port 8 is cleared.  So output port 5 continues to sit idle, even though the switch has traffic for it.  <br /><br />In this post, head-of-line blocking is used in the context of one application flow causing congestion that impacts another application flow.  This is not necessarily head-of-line blocking, in the context of the description given just above, because it does not necessarily result in any un(der)utilized downstream resources.  For all we know, the file transfer and the request response protocol could utilize the same downstream path, including the same destination server resources.  In this case, you might get a better overall user experience using Weighted Fair Queuing, etc. to separate the file transfer from the request/response transaction.    But it wouldn’t be head-of-line blocking, at least not by the definition of head-of-line blocking that I’m familiar with.<br /><br />Along these lines, VoQ’s are typically created to be per-output port, so that traffic destined to different output ports go into different VoQ’s.  In many cases  queues may be both per-traffic class and per-output port, so that traffic can be differentiated in both dimensions.  But with per-output port VoQ’s it would not generally be true that “Virtual output queues … cannot solve HoL blocking problems between flows of the same traffic”.  It would only be true of flows of the same traffic class destined to the same output port.<br /><br />If my understanding of head-of-line blocking is not what you believe matches common usage, by all means please correct me.<br /></p>
+            <div class="comment-content">The definition of Head-of-Line Blocking implicit in this post seems to be different from the one that I am familiar with.  I’ve mainly seen Head-of-Line blocking used to refer to a situation where a downstream resource is left underutilized and unable to perform needed work, because of congestion of an otherwise independent resource.<br /><br />For example, input ports 1 and 2 are both sending traffic to output port 8 of a switch.  The sum of the traffic coming from 1&amp;2 is greater than the capacity of port 8, so port 8 becomes oversubscribed.  Ports 1&amp;2 can’t send all the traffic that they want to port 8 across the fabric.  So traffic backs up in the input queues of ports 1 &amp; 2.   <br /><br />However, in addition to having traffic destined to output port 8, port 2 also receives traffic destined to output port 5.  Output port 5 is unutilized, and is ready and waiting to accept traffic from port 2.  But the traffic that port 2 has for output port 5 is sitting in port 2’s input queue.  It can’t get to output port 5 until the traffic queued to output port 8 is cleared.  So output port 5 continues to sit idle, even though the switch has traffic for it.  <br /><br />In this post, head-of-line blocking is used in the context of one application flow causing congestion that impacts another application flow.  This is not necessarily head-of-line blocking, in the context of the description given just above, because it does not necessarily result in any un(der)utilized downstream resources.  For all we know, the file transfer and the request response protocol could utilize the same downstream path, including the same destination server resources.  In this case, you might get a better overall user experience using Weighted Fair Queuing, etc. to separate the file transfer from the request/response transaction.    But it wouldn’t be head-of-line blocking, at least not by the definition of head-of-line blocking that I’m familiar with.<br /><br />Along these lines, VoQ’s are typically created to be per-output port, so that traffic destined to different output ports go into different VoQ’s.  In many cases  queues may be both per-traffic class and per-output port, so that traffic can be differentiated in both dimensions.  But with per-output port VoQ’s it would not generally be true that “Virtual output queues … cannot solve HoL blocking problems between flows of the same traffic”.  It would only be true of flows of the same traffic class destined to the same output port.<br /><br />If my understanding of head-of-line blocking is not what you believe matches common usage, by all means please correct me.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -144,10 +139,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5599214516378903739">29 May 2014 16:29</a>
+                <a rel="nofollow" id="c5599214516378903739" href="#5599214516378903739">29 May 2014 16:29</a>
               </span>
             </div>
-            <p class="comment-content">You&#39;re absolutely correct. Slightly reworded the blog post and pointed to your fantastic comment. Thank you!</p>
+            <div class="comment-content">You&#39;re absolutely correct. Slightly reworded the blog post and pointed to your fantastic comment. Thank you!</div>
           </div>
         </li>
       </div>
@@ -169,10 +164,29 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Draco</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8312789728184545694">31 May 2014 03:41</a>
+                <a rel="nofollow" id="c8312789728184545694" href="#8312789728184545694">31 May 2014 03:41</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;m thinking.....  leaf and spine,  leaf and spine... cut-through switching....  &#39;If you really think that  the network itself is the problem and QoS is the answer, then there is always another, very simple, response: get more bandwidth.&#39;<br /></p>
+            <div class="comment-content">I&#39;m thinking.....  leaf and spine,  leaf and spine... cut-through switching....  &#39;If you really think that  the network itself is the problem and QoS is the answer, then there is always another, very simple, response: get more bandwidth.&#39;<br /></div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="961">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Prasanth</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c961" href="#961">10 January 2022 06:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Is crossbar switching fabrics are used nowadays? </p>
+</div>
           </div>
         </li>
       </div>

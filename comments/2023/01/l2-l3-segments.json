@@ -1,0 +1,81 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "19 January 2023 02:28",
+               "html": "<p>The usual solution to that is called a &quot;superscope&quot; on the DHCP server (at least on MS DHCP servers). The server uses, e.g.,  the first available address from any of the subnets comprising the superscope.</p>\n\n<p>If specific hosts shall receive addresses from specific subnets, then this needs to be configured explicitly on the DHCP server (e.g., based on client ID).</p>\n",
+               "id": "1606",
+               "name": "Erik Auerswald",
+               "pub": "2023-01-19T14:28:06",
+               "ref": "1605",
+               "type": "comment"
+            },
+            {
+               "date": "19 January 2023 02:28",
+               "html": "<p>Daniel, DHCP server &quot;shared network&quot; and vendor specific tricks like &quot;dhcp smart relay&quot; can address the problem you mention.</p>\n",
+               "id": "1607",
+               "name": " Jeff Behrns",
+               "pub": "2023-01-19T14:28:25",
+               "ref": "1605",
+               "type": "comment"
+            }
+         ],
+         "date": "19 January 2023 11:12",
+         "html": "<p>One of the biggest limitations I&#39;ve seen in using multiple IPv4 subnets on a single interface was the fact that DHCP Relay can only be used for the primary subnet, as there is no way for the switch/router to distinguish in which of the configured subnets the host is requesting IP in.</p>\n",
+         "id": "1605",
+         "name": " Daniel",
+         "pub": "2023-01-19T11:12:21",
+         "type": "comment"
+      },
+      {
+         "date": "19 January 2023 02:33",
+         "html": "I think that a 1: 1 relationship between VLANs and subnets avoids the complexities of either using multiple subnets in a single VLAN or splitting a single subnet across several VLANs. Keeping things simple helps operating the network.<br />\n\n\n",
+         "id": "1608",
+         "name": "Erik Auerswald",
+         "pub": "2023-01-19T14:33:43",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "19 January 2023 03:09",
+               "html": "I agree that for Dual-Stack IPv4 and IPv6 there should usually be a 1: 1:1 relationship (1 VLAN, 1 IPv4 subnet, 1 GUA IPv6 subnet) unless there is a good reason for something else.<br />\n\n<p>IPv6 always adds link-local addressing, and there may be reasons for additional IPv6 on-link prefixes.</p>\n\n<p>IMHO needless complexity should be avoided.</p>\n",
+               "id": "1610",
+               "name": "Erik Auerswald",
+               "pub": "2023-01-19T15:09:55",
+               "ref": "1609",
+               "type": "comment"
+            }
+         ],
+         "date": "19 January 2023 02:41",
+         "html": "Perhaps 1: 1 for each IP version? We can argue about &quot;best&quot;, but every modern OS out there assigns one of each to every interface by default...<br />\n\n\n",
+         "id": "1609",
+         "name": "Jeroen van Bemmel",
+         "pub": "2023-01-19T14:41:45",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "03 February 2023 10:03",
+               "html": "<p>This is a great example regarding the problems created by ignoring this <em>rule of thumb</em> or <em>best practice</em>: what do people even mean when they make statements regarding the construct?</p>\n\n<p>In usual host configurations, the host knows about one local IP subnet and one default router. To send IP packets to a host in a different subnet, it uses the default gateway. The host usually does not know about VLANs or that it could send the data directly, because both subnets are configured on the same VLAN.</p>\n\n<p>But this could be changed via host configuration, such that hosts in different subnets, but the same VLAN, do communicate directly&sup1;.</p>\n\n<p>Additionally, any host in the VLAN can see the other subnets via packet capture (e.g., via ARP frames). Thus the different IP subnets do not really separate the hosts in a VLAN, but by default the hosts do not communicate directly, i.e., they seem to be separated somehow.</p>\n\n<p>All this added complexity results in higher likelihood to have a wrong understanding and make mistakes.</p>\n\n<p>&sup1; Example:</p>\n\n<ul>\n<li>two hosts, A and B, connected to some VLAN with two IP subnets 192.0.2.0/24 and 198.51.100.0/24</li>\n<li>Linux host A has IP address 192.0.2.42/24 using interface eth0</li>\n<li>Linux host B has IP address 198.51.100.0/24 using interface eth0</li>\n<li>add direct route on host A to the other subnet: <code>ip route add 198.51.100.0/24 dev eth0</code></li>\n<li>add direct route on host B to the other subnet: <code>ip route add 192.0.2.0/24 dev eth0</code></li>\n<li>now host A and B communicate directly without using a gateway</li>\n</ul>\n",
+               "id": "1646",
+               "name": "Erik Auerswald",
+               "pub": "2023-02-03T10:03:41",
+               "ref": "1631",
+               "type": "comment"
+            }
+         ],
+         "date": "30 January 2023 01:15",
+         "html": "<p>The sentence that &bdquo;If you have multiple subnets on a single VLAN, then (in the IPv4 world) the hosts have to send traffic to other hosts on the same VLAN through a router.&ldquo; does not make sense to me. If I split these multiple subnets across multiple VLANs, the traffic still needs to be sent through the same router.</p>\n",
+         "id": "1631",
+         "name": " Arne",
+         "pub": "2023-01-30T13:15:12",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2023/01/l2-l3-segments.html"
+}

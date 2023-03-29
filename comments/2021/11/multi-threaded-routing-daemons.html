@@ -1,0 +1,286 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="865">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeff Behrns</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c865" href="#865">23 November 2021 08:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Junos used to spawn a dedicated thread only if the precision-timers knob (sub-15ms hold time) was applied, now I think it is baked in by default.  Design sanity is good but I think it&#39;s still a trivial job to choke keepalives..on any vendor platform not properly protected.  If there occurs a mega-failure someday it will probably be related to this.  Even the processes meant to protect systems (policers) can also smother it.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="869">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c869" href="#869">24 November 2021 08:21</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, that&#39;s another huge can of worms. Unless you can do policing per interface you&#39;re always open to a nasty DoS attack.</p>
+
+<p>Years ago it was trivial to kill box-wide ARP handling on a GRS - policer would kick in (protecting the CPU), but nobody would get their ARP replies because most requests were dropped, eventually resulting in loss of service.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="866">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> JeffT </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c866" href="#866">23 November 2021 08:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan - all modern routing protocols implementations are multi-threaded, with a minimum separation of adj handeling, route calculations and update generation. Note - writing multi-threaded code for complex tasks is a non trivial exercise (you could search for thread safety and similar artifacts and what happens when not implemented correctly). Moving to a multi-threaded code in early 2010s resulted in a multi-release (year) effort and 100s of related bugs all around.
+FYI non preemptive is usually called &ldquo;run to completion&rdquo;</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="870">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c870" href="#870">24 November 2021 08:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for the feedback - will add to the article. Would you happen to be aware of scale-out implementations (example: multiple threads computing updates in parallel)? It would be nice to add a few examples in that category.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="874">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c874" href="#874">24 November 2021 11:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Imho, multi-threading where you divide your workload in a fixed number of threads doesn&#39;t count. That&#39;s relatively trivial. E.g. a hello thread, an update thread and a route-computation thread. That&#39;s still O(1) scalability. To be able to brag, your code should be able to used a large number of cores on your route-processor.</p>
+
+<p>That being said, for link-state IGPs, it does not make sense to go beyond a fixed number of threads. E.g. as we mentioned, the hello, the update and the spf thread. Maybe a route-installation thread too. But that&#39;s about it. You don&#39;t need more.</p>
+
+<p>BGP is a whole different story. That&#39;s where the challenge is.</p>
+
+<p>Another thing to consider is how router OS&#39;s deal with multiple VRFs. Suppose you have a 1000 VRFs on a PE, and each VRF runs a routing protocol with a CE. What are you going to do? Spawn a 1000 processes? That doesn&#39;t scale really. Have one process per routing protocol, with 1 thread per VRF? Or are you going to use worker-threads? These are the harder questions.</p>
+
+<p>I have no idea how my current employer&#39;s BGP implementations are. Sorry. But I can tell you that my previous employer has a BGP implementation that does do &quot;scale-out multi-threading&quot; in BGP. Their CPM (route-processor) has 10 cores. Their BGP will use 6 cores for route-generation. That&#39;s very nice when you are a route-reflector. Alas other parts of their BGP code are still single threaded. Far from perfect.</p>
+
+<p>I am surprised about the lack of true improvement BGP implementations have made in the last 20 years. I mean architectual and performance wise. A lot of work has gone into the protocol (writing RFCs). But not in the implementations themselves, it seems. I guess it is easer to write drafts than to write code. As far as I know, there is no BGP implementation that does everything multi-threaded at scale. Reading from sockets, doing ingress policy, bestpath-computation, route-installation, egress-policy, generating output updates. It should be possible to do all of that on multiple cores, in every stage. Some stages require locking, or must be single-threaded. E.g. installing new routes in the Adj-RIB-In. But other things (policy, bestpath computation, rib-install, update-generation) you can do on many cores in parallel.</p>
+
+<p>I wonder why nobody has attempted to write such a &quot;perfect&quot; implementation yet. And I wonder why nobody has asked for one. Maybe current implementations are deemed &quot;good enough&quot;?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="875">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Justin Pietsch</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c875" href="#875">25 November 2021 01:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I agree Henk, I&#39;m disappointed that there aren&#39;t more scalable solutions. I want BGP daemons to catch up to modern databases. How do we get Network router vendors to think the same way that current database people do, they should not be held back by hardware and they should take advantage of hardware. At what point do I take an in memory no-sql database and hook on a simple BGP protocol parser?</p>
+
+<p>I wonder how often we can&#39;t even consider new architectures because we assume we have software from 1987. </p>
+
+<p>Also, I want data more than I want a discussion in English about how best to break it up. I don&#39;t want to dismiss the good work that the FRR team is doing, but they still have a long way to go to take advantage of modern hardware. https://elegantnetwork.github.io/posts/bgp-perf5-1000-internet-neighbors/. I want the BGP industry to catch up to database technology. </p>
+
+<p>While we are at it, I also want protocol stacks made in memory safe languages like Rust and not c. </p>
+
+<p>Don&#39;t get me started about how I want them to change the way that they test software. (I know, I know, I&#39;ve heard that Arista has modern approaches to testing.)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="868">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Mario</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c868" href="#868">24 November 2021 03:21</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I found this paper released from Facebook fairly interesting. They do mention the creation of their own standards based BGP agent written in C++. I found it interesting they compared the performance of BIRD/QUAGGA with their own implementation. The paper also mentions Facebook&#39;s approach to ASN reuse with BGP confederations, spine pods and hierarchical per POD ipv6 prefix suppression. Pretty interesting approach to yet another BGP use case in the DC.</p>
+
+<p>An excerpt from their paper:</p>
+
+<p>&quot;Our implementation employs multiple system threads, such as the
+peer thread and RIB thread, to leverage the multi-core CPU.
+The peer thread maintains the BGP state machine for each
+peer and handles parsing, serializing, sending, and receiving
+BGP messages over TCP sockets.&quot;</p>
+
+<p>https://research.fb.com/wp-content/uploads/2021/03/Running-BGP-in-Data-Centers-at-Scale_final.pdf</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="871">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c871" href="#871">24 November 2021 08:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for the link. Looks like they went down the same path as FRR - splitting the routing protocol functionality into independent threads along the lines of the comment by JeffT.</p>
+
+<p>Couldn&#39;t figure out from the article whether they implemented anything beyond that, for example a scale-out architecture with parallel threads handling (for example) outbound updates.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="873">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c873" href="#873">24 November 2021 06:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Modern OSes and hypervisor can have fractional virtual CPUs. Your mentioned limitations on one thread per CPU core is a kind of problem slowly fading away. So when there is I/O blocking another thread can be scheduled on the same CPU core in modern systems. 
+With real processes you do not have this problem for ages, since multiple processes could be easily scheduled in a single CPU.</p>
+
+<p>However, process isolation is not done as good on Unix/Linux as on VMS or ESA. So they had to invent containers. I did not need such tricks on my VAX/VMS already in 1987. I had proper isolation and full resource allocation control. You could also have hard real-time systems on VAXELN. I also used QNX with nicely isolated, robust processes already in the 80s. It was a pity when Cisco dropped QNX from IOS XR...</p>
+
+<p>IBM has had virtual fractional CPU cores already for decades, but people are usually not willing to pay for good quality engineering... :-)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="880">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c880" href="#880">26 November 2021 09:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, re process vs thread, the easiest (but still technically correct) way to think about them, is that process is the environment (address space, register set etc) where a collection of worker threads do work. A process is physically represented by PCB, while a thread, by a TCB object. So a one-thread process is still technically not a thread. </p>
+
+<p>Juniper implements all of their routing protocols inside RPD, and while it&#39;s clear they do this for performance reason as well as the fact that in Junos, there&#39;s no such thing as interaction between protocols say in redistribution, but all protocols interact only with the RIB, by housing many threads doing quite a diversity of stuff (OSPF, ISIS, BGP...) into one process, they risk a failure of one thread bringing down everything else since they all share the same process environment, esp. when protocols get more and more complex with new features being introduced.</p>
+
+<p>Wrt to their BGP RIB sharding document, while it&#39;s obviously great, it also has some downsides worth mentioning, mostly due to multi-threading overhead. The RIB to FIB ratio of 4:1 or higher for good performance means it only works great when the number of multipaths are very large. </p>
+
+<p>But the FIB download time is most crucial. Again this problem has been known for over 10 yrs; it&#39;s the FIB download and installation time that&#39;s the biggest bottleneck in modern routers, not the control-plane side of thing. And this problem gets exponentially worse the higher the number of routes one has in the RIB. In short, according to Juniper, RIB sharding may or may not help with FIB download time. I suppose there&#39;s only so much maths/algorithmics can do in the face of physical constraints. </p>
+
+<p>Re classic IOS, it&#39;s true it&#39;s non-preemptive, again for performance reason as memory and CPU were scarce 35 yrs ago, and context switch very expensive. But it does partially compensate for it by implementing per-process watchdog timer as some coarse-grained form of quantum/time slice, to guard against runaway processes. After two watchdog quantums expire, IOS scheduler terminates a process and brings another one in. Two seconds would be an eternity now, but not too terrible back in the day. </p>
+
+<p>IOS also has a crude form of protecting against memory corruption by erroneous process by implementing gaps between memory regions. The show region command can display the regions and their gaps. If a problematic process starts writing garbage into memory, it&#39;s forced to stop when encountering a gap. This trick can be useful even today, but of course IOS-XR implementing microkernel and multithreading is overall a much better architecture than the monolithic IOS, cleaner for one.</p>
+
+<p>Henk&#39;s point on the lack of improvement in BGP implementation in the last 20 yrs is very much worth paying attention to, and his remark &quot;it is easer to write drafts than to write code&quot; is spot-on. Could it be that due to the explosion of the code base, now in the hundred thousand lines of code, it&#39;s simply led to architectural dead end due to complexity and therefore, too hard to convert this code base into a multithreading equivalent? </p>
+
+<p>Among the biggest issues of multithreading are synchronization and inter-dependency, and this gets much harder to solve as the code gets more and more complex. Inter-thread synchronization overhead and OS-scheduler inefficiency are the main reasons why as we start to add more core, performance will hit a peak and then reverse as more cores are added. In fact, Juniper&#39;s RIB sharding touches on this topic as well. </p>
+
+<p>So not only do we need better implementation of protocols, don&#39;t forget the centralized (again, centralization doesn&#39;t scale) OS scheduler will be one of the biggest, if not the biggest bottleneck, as you have more and more cores at your disposal. This problem is exactly the same one plaguing router&#39;s crossbar fabric, as the central scheduler hits its limit when interface speed improves by leaps and bounds. </p>
+
+<p>And don&#39;t forget the compiler. Just because CPU vendors come up with more cores, doesn&#39;t mean they can come up with a superb compiler that can generate codes that take advantage of the cores. The failure of VLIW/EPIC Itanium is a glaring example; certain things only work in PPT. When it comes to massive parallelism, we can&#39;t omit any factor as they&#39;re not isolated, but interplay into complex outcomes.</p>
+
+<p>And Bela&#39;s fractional virtual CPUs just don&#39;t scale. That&#39;s why VM vendors like VMware highly recommend matching the physics, that is having congruent vCPU and pCPU topologies. I don&#39;t know anything about VAX scheduler to have a comment, but given 50 yrs of scheduling research has so far failed solve the problem, I won&#39;t hold my breath on VAX (or OS for that matter) weaving magic. </p>
+
+<p>In a word, imho, don&#39;t expect any significant improvement in quality of BGP implementations anytime soon. Plus pay more attention to the FIB download and insertion bottleneck. This can be the most painful part of the problem and can get really nasty at the million-route scale or higher. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

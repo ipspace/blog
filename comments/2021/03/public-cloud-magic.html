@@ -1,0 +1,132 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="485">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c485" href="#485">19 March 2021 07:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, in addition to the above, there are 2 papers from Google detailing some of their network&#39;s design principle s and practices:</p>
+
+<p>https://cseweb.ucsd.edu/~vahdat/papers/b4-sigcomm13.pdf</p>
+
+<p>https://people.eecs.berkeley.edu/~sylvia/cs268-2019/papers/ramesh16a.pdf</p>
+
+<p>In the first one, on page 4, they briefly mentioned their own B4 switch, which has Clos internal architecture similar to FB&#39;s Six-Pack. Overall, looks like Google makes heavy use of BGP, IS-IS and MPLS to scale their infrastructure. </p>
+
+<p>Also, correct me if I&#39;m wrong, but surely MPLS is a viable technology to build L3 virtual network if one doesn&#39;t want to resort to Overlay, no? Overlay is complex and therefore slow. MPLS is simpler and faster. The downside with MPLS is the more VRFs you have, the more CAM/TCAM resources are required and this can prove prohibitive given how scarce they are even in modern ASICs.    </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="486">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c486" href="#486">19 March 2021 08:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ah, the B4 paper... aka &quot;look, we&#39;re so cool, we decided to become a router manufacturer&quot;. See https://blog.ipspace.net/2012/05/openflow-google-brilliant-but-not.html</p>
+
+<p>As for MPLS as transport topology instead of an overlay, see https://blog.ipspace.net/2020/05/need-vxlan-transport.html</p>
+
+<p>Kind regards, Ivan</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="489">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Brad Hedlund</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c489" href="#489">21 March 2021 01:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,
+After 6 years of working at AWS I don&rsquo;t really know how it works either. For the basic principles of VPC under the hood your subscribers might like this video. It&rsquo;s a bit old, but still pretty relevant.</p>
+
+<p>https://m.youtube.com/watch?v=Zd5hsL-JNY4</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="490">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c490" href="#490">22 March 2021 04:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&#39;ve also found this paper that describes in detail how MS has implemented their virtual networking platform over the years, and why they&#39;ve chosen to go with overlay/directory service model:</p>
+
+<p>https://www.usenix.org/system/files/conference/nsdi17/nsdi17-firestone.pdf</p>
+
+<p>Looks like the implementations of Azure and GCP&#39;s virtual networking (detailed in the Andromeda paper) overlap a fair bit. One thing is certain: Openflow, in its classic form, is unworkable/unscalable. The VFP paper hints at that as the reason why NSX scales poorly (1000 hosts). Both Azure and GCP had to make heavy modifications to OF model in order to scale their infrastructure. </p>
+
+<p>The overlay implementation obviously trades performance for scalability: section 5 of the VFP and sections 3, 4 of the Andromeda paper, give a glimpse into how slow their data planes can get as they give detailed architecture of the platforms. That&#39;s why MS decided, in the end, to go with hardware offloading, using FPGA SmartNiC -- essentially a specialized switch/router attached to a server -- to implement virtual networking, for better scalability. </p>
+
+<p>The directory service model is also a concept prevalent across AWS, Azure, and GCP, albeit under different names. in AWS, it&#39;s called the Mapping service, in Azure, Directory, and Hoverboard in GCP. They all use this service to scale their routing table to millions of entries on the cheap, again at the cost of performance hit, because it&#39;s done in software and requires communication to dedicated devices. Flow caching is used to improve performance, which is reminiscent of MLS back in the 90s. </p>
+
+<p>Overall, since the philosophy behind their VNET is very much similar, whoever has the sanest physical design will have the best performance relative to the others. AWS by far seems to be on top as their physical architecture looks the sanest to me. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="974">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">marten cassel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c974" href="#974">23 January 2022 09:23</a>
+              </span>
+            </div>
+            <div class="comment-content">https: //www.youtube.com/watch?v=8Kyoj3bKepY<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

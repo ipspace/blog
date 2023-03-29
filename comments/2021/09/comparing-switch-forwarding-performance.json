@@ -1,0 +1,78 @@
+{
+   "comments": [
+      {
+         "date": "06 September 2021 03:17",
+         "html": "<p>Subscriber should also take into account recent End-of-Life Announcement from Cisco about Nexus 93180YC-EX models. Replacement product is N9K-C93180YC-FX3 which has also 1200 Mpps forwarding rate. That should be sufficient for most environments.</p>\n",
+         "id": "717",
+         "name": "Anonymous",
+         "pub": "2021-09-06T15:17:58",
+         "type": "comment"
+      },
+      {
+         "date": "06 September 2021 07:58",
+         "html": "<p>Last month, I made a lab test with FX version using Spirent with 48x25Gbps. We got a maximum of ~68% of throughput without loss. If I&rsquo;m not wrong, it represents almost 1600 Mpps.\nAbout the main focus of the blog post, I agree that the requirements are so important to spend money properly according to the project. &#x1F605;</p>\n",
+         "id": "718",
+         "name": " Adeilson Rateiro",
+         "pub": "2021-09-06T19:58:55",
+         "type": "comment"
+      },
+      {
+         "date": "06 September 2021 09:11",
+         "html": "You can find some answers in this post on cisco community site:<br />\nhttps: //community.cisco.com/t5/switching/what-difference-the-platforms-between-nexus-9300-ex-and-nexus/td-p/3327315<br />\n\n<p>... which refers to the following slide deck from Cisco Live:\nhttps://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2020/pdf/BRKDCN-3222.pdf</p>\n",
+         "id": "719",
+         "name": " Krzysztof Ciepłucha",
+         "pub": "2021-09-06T21:11:56",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "07 September 2021 06:11",
+               "html": "<p>&quot;... but if your measure is the current environment, wouldn&rsquo;t the current switches maximum pps be the limiting factor&quot; -- it depends on whether the network is the weakest link (= bottleneck). </p>\n\n<p>It rarely is... unless you have an ancient 3-tier fabric built with Nexus 7000s and Fabric Extenders ;))</p>\n",
+               "id": "721",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-09-07T18:11:13",
+               "ref": "720",
+               "type": "comment"
+            }
+         ],
+         "date": "07 September 2021 12:38",
+         "html": "<p>Just thinking out loud here, but if your measure is the current environment, wouldn&rsquo;t the current switches maximum pps be the limiting factor? I say this because going back to requirements if the goal is simply to replace the current implementation with no less than what it can do, this seems like a reasonable limitation. I would think the it is a reasonable assumption that most environments will grow, require more traffic, faster delivery, etc. as the source to destination interface SERDES ratio continues to increase, timely delivery becomes more and more important. Lower latency from\nExperience can definitely decrease buffer utilization during burst. So the question really becomes what feature can we love without to benefit packet delivery? And at what cost financially? It always comes down to economics doesn&rsquo;t it. Anyways, great article as always!</p>\n",
+         "id": "720",
+         "name": " Chris Stephan",
+         "pub": "2021-09-07T12:38:40",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 November 2021 06:22",
+               "html": "<p>The -EX has a 2-slice ASIC. Each slice contributes half of the PPS forwarding capacity. The -FX has a single slice ASIC. A slice is a self-contained packet forwarding engine with its own buffer memory. In a multi-slice design there is some sort of internal interconnect to bridge all the slices together. It is hard for me to think of the EX as having twice the performance of the FX since in the real world, some significant portion of the traffic will need to pass between the slices. But this may be a personality defect on my part.</p>\n\n<p>I prefer single slice designs because the full packet memory is available to absorb microbursts.</p>\n",
+               "id": "822",
+               "name": "jim warner",
+               "pub": "2021-11-06T06:22:36",
+               "ref": "731",
+               "type": "comment"
+            },
+            {
+               "date": "08 November 2021 05:40",
+               "html": "<p>&quot;It is hard for me to think of the EX as having twice the performance of the FX since in the real world, some significant portion of the traffic will need to pass between the slices. But this may be a personality defect on my part.&quot; &lt;&lt; I guess the real questions are:</p>\n\n<ul>\n<li>How much bandwidth is there between the slices? Is it a non-oversubscribed design?</li>\n<li>What happens to packets that traverse both slices? Is there an additional lookup on the second slice?</li>\n</ul>\n\n<p>Haven&#39;t seen the answers in Cisco Live slide deck (or maybe I missed them).</p>\n",
+               "id": "825",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-08T17:40:57",
+               "ref": "822",
+               "type": "comment"
+            }
+         ],
+         "date": "16 September 2021 06:33",
+         "html": "Re this question:<br />\n\n<p>&#39;I don&rsquo;t know if that means that the -FX variant can not give all the bandwidth to all ports at the same time, or if it is not a non-blocking switch.&#39;</p>\n\n<p>There&#39;s no non-blocking switch at this level of bandwidth; I stand by this statement until am proven wrong. The fabric scheduler is the limiting factor, and just like what we learn with OpenFlow, centralized anything doesn&#39;t scale. Nick Mckeown, inventor of the beautifully simple Islip scheduler -- used widely thanks to its simplicity -- admitted the limitation of the scheduler; that&#39;s why he loved the idea of a load-balanced switch, which does away with painful fabric scheduling.</p>\n\n<p>Also, I&#39;d take pps mentioned with a grain of salt, because many of these platforms are not deterministic. Their pps performance tends to degrade as more and more features are activated in the forwarding pipeline, due to various nonlinear effects. That&#39;s why a switch with better small packet performance should perform better than another one, as more features like traffic classification, are enabled. So 2600 Mpps of basic Layer 2 or Layer 3 switching, might halve as you pack on more features.</p>\n\n<p>Correlation of traffic also degrades pps, so a figure like 2600 Mpps for ex, needs context. Is 2600 Mpps achieved under Markovian traffic, or more realistic fractal and correlated traffic? Real life is almost always non-Markovian, non-linear, non-equilibrium... so those numbers specified in manuals, should only be used as a rough guideline, just like models. </p>\n\n<p>That said, unless you run a hard real-time or other specialized systems with strict timing requirement, most switches today are more than powerful enough. You only need to understand the finer details to avoid being fooled by vendor marketing :)). </p>\n",
+         "id": "731",
+         "name": " Minh",
+         "pub": "2021-09-16T06:33:19",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2021/09/comparing-switch-forwarding-performance.html"
+}

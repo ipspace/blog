@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15371986872621474116" rel="nofollow">Craig</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7686963062730759055">18 February 2015 13:30</a>
+                <a rel="nofollow" id="c7686963062730759055" href="#7686963062730759055">18 February 2015 13:30</a>
               </span>
             </div>
-            <p class="comment-content">CPU L1 cache has a lot of similarities to TCAM, so the performance scalability concerns make a lot of sense.  Dedicating a core or 2 to forwarding gives you a dedicated cache.  <br /><br />Keeping the table sizes small is important - really not too dissimilar to the same concerns you&#39;d have in a ToR switch.  Some tricks like conversational-based L2 &amp; L3 push to cache might help here.</p>
+            <div class="comment-content">CPU L1 cache has a lot of similarities to TCAM, so the performance scalability concerns make a lot of sense.  Dedicating a core or 2 to forwarding gives you a dedicated cache.  <br /><br />Keeping the table sizes small is important - really not too dissimilar to the same concerns you&#39;d have in a ToR switch.  Some tricks like conversational-based L2 &amp; L3 push to cache might help here.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Bhargav</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6906209744940735605">18 February 2015 15:38</a>
+                <a rel="nofollow" id="c6906209744940735605" href="#6906209744940735605">18 February 2015 15:38</a>
               </span>
             </div>
-            <p class="comment-content">Ivan.<br /><br />Reading both the threads, You suggest that <br /><br />1) Scale is not a problem as there is always unlimited memory on hypervisor.  <br /><br />2) There is no performance difference between tunnels (NVO) &amp; non-tunnels (VLANs or no VLANs) but Performance depends on CPU cache size. If size-of-table &gt; CPU-cache then there is performance hit. <br /><br />3) Another angle to the discussion is cost. Which of the following is less expensive ? <br /> - Burning extra CPUs for forwarding.<br /> - NIC offloads<br /> - Is dedicated hardware better ?</p>
+            <div class="comment-content">Ivan.<br /><br />Reading both the threads, You suggest that <br /><br />1) Scale is not a problem as there is always unlimited memory on hypervisor.  <br /><br />2) There is no performance difference between tunnels (NVO) &amp; non-tunnels (VLANs or no VLANs) but Performance depends on CPU cache size. If size-of-table &gt; CPU-cache then there is performance hit. <br /><br />3) Another angle to the discussion is cost. Which of the following is less expensive ? <br /> - Burning extra CPUs for forwarding.<br /> - NIC offloads<br /> - Is dedicated hardware better ?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2890110508260184752">18 February 2015 15:46</a>
+                <a rel="nofollow" id="c2890110508260184752" href="#2890110508260184752">18 February 2015 15:46</a>
               </span>
             </div>
-            <p class="comment-content">#1 - Almost. Memory is always limited unless you have an ideal Turing machine ;) ... but I don&#39;t expect anyone to build a virtual network that would be large enough to exceed the memory size of modern servers ;))<br /><br />#2 - Coming to that one (tomorrow). The actual performance hit depends on whether NIC hardware supports TCP offload over tunnels or not, but there won&#39;t be much difference in performance (if any - due to all other things that need to be done) based on the lookup table sizes.<br /><br />#3 - As always, the answer is &quot;it depends&quot;. In most environments, the hypervisors have some spare CPU capacity, but of course it&#39;s always better to have dedicated hardware (particularly if it&#39;s bundled with the default server hardware configuration).</p>
+            <div class="comment-content">#1 - Almost. Memory is always limited unless you have an ideal Turing machine ;) ... but I don&#39;t expect anyone to build a virtual network that would be large enough to exceed the memory size of modern servers ;))<br /><br />#2 - Coming to that one (tomorrow). The actual performance hit depends on whether NIC hardware supports TCP offload over tunnels or not, but there won&#39;t be much difference in performance (if any - due to all other things that need to be done) based on the lookup table sizes.<br /><br />#3 - As always, the answer is &quot;it depends&quot;. In most environments, the hypervisors have some spare CPU capacity, but of course it&#39;s always better to have dedicated hardware (particularly if it&#39;s bundled with the default server hardware configuration).</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12675510409950425811" rel="nofollow">RPM</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6204928509032254588">19 February 2015 15:11</a>
+                <a rel="nofollow" id="c6204928509032254588" href="#6204928509032254588">19 February 2015 15:11</a>
               </span>
             </div>
-            <p class="comment-content">I believe the Linux/BSD kernels have the concept of a &quot;forwarding cache&quot;, which is a small hash table based on 5 or 7-tuple that fits in a few cache lines. This holds forwarding information for recently seen flows.<br /><br />Wouldn&#39;t this mean that forwarding latency on software based hosts does in fact scale with the number of *flows*, decreasing rapidly when there are enough flows to require hash table accesses to L2/L3 cache?<br /><br />OVS, DPDK, and other user-space forwarding techniques could be different than kernel-based forwarding I suppose.</p>
+            <div class="comment-content">I believe the Linux/BSD kernels have the concept of a &quot;forwarding cache&quot;, which is a small hash table based on 5 or 7-tuple that fits in a few cache lines. This holds forwarding information for recently seen flows.<br /><br />Wouldn&#39;t this mean that forwarding latency on software based hosts does in fact scale with the number of *flows*, decreasing rapidly when there are enough flows to require hash table accesses to L2/L3 cache?<br /><br />OVS, DPDK, and other user-space forwarding techniques could be different than kernel-based forwarding I suppose.</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06288888696116892326" rel="nofollow">mojzucha</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1496878412172654581">06 March 2015 10:14</a>
+                <a rel="nofollow" id="c1496878412172654581" href="#1496878412172654581">06 March 2015 10:14</a>
               </span>
             </div>
-            <p class="comment-content">Love that joke with line noise!</p>
+            <div class="comment-content">Love that joke with line noise!</div>
           </div>
         </li>
       </div>

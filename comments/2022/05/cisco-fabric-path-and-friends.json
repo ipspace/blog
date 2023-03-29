@@ -1,0 +1,116 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "03 May 2022 05:08",
+               "html": "<p>Thank you! Updated the blog post.</p>\n",
+               "id": "1202",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-05-03T17:08:05",
+               "ref": "1197",
+               "type": "comment"
+            }
+         ],
+         "date": "03 May 2022 01:35",
+         "html": "<p>Hi Ivan,</p>\n\n<p>as for footnote #3: I don&#39;t know what happend to the H3C company, but the products are still alive under HPE. Named &quot;FlexFabric&quot; (Datacenter) and &quot;FlexNetworks&quot; (Campus). The still run the ComwareOS (Version 7 now) and support EVPN/VXLAN. \nA hardware refresh happend last autumn. I know a few customer who use them in the campus or &#39;datacenter&#39; (10ish racks + VLANs) and the whole reason they use them is because &quot;We buy them every time&quot;. \nAruba launched a new SwitchOS (Aruba AOS-CX) a few years ago and they aim to built one OS for Access to Core to Datacenter. Works quite well for standard use cases including EVPN/VXLAN. \nBTW: Both Comware 7 and Aruba AOS-CX are available for virtualization, the last one free of charge.  </p>\n",
+         "id": "1197",
+         "name": " Philipp",
+         "pub": "2022-05-03T13:35:42",
+         "type": "comment"
+      },
+      {
+         "date": "03 May 2022 06:37",
+         "html": "<p>It would be good to understand why TRILL/SPB failed so we can avoid making the same mistake again. It seems that network vendors were blindsided by the much faster development velocity of the hypervisor/OS/cloud vendors.</p>\n",
+         "id": "1203",
+         "name": "Wes Felter",
+         "pub": "2022-05-03T18:37:03",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 May 2022 04:46",
+               "html": "<p>Yeah, haven&#39;t seen Roger for ages :( Time to fix that, I guess...</p>\n",
+               "id": "1210",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-04T16:46:30",
+               "ref": "1204",
+               "type": "comment"
+            },
+            {
+               "date": "28 May 2022 03:15",
+               "html": "Ohh please do that : -)<br />\nThe old Avaya material was excellent !!but need some refresh&hellip;<br />\nI specially liked the software gone wild podcast very good discussion &hellip;<br />\n\n\n",
+               "id": "1279",
+               "name": " Shay",
+               "pub": "2022-05-28T15:15:48",
+               "ref": "1210",
+               "type": "comment"
+            }
+         ],
+         "date": "03 May 2022 06:50",
+         "html": "<p>Hi Ivan</p>\n\n<p>The extreme SPBM is alive and kicking.\nYou should ask Roger Lapuh for update&hellip;Extreme evolve the solution with ZTP Fabric ,ISIS Multi area &hellip;factors from CPE size to chassis.\nYes they do something different and that&rsquo;s IMO refreshing!!</p>\n",
+         "id": "1204",
+         "name": " Shay",
+         "pub": "2022-05-03T18:50:07",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 May 2022 04:45",
+               "html": "<p>I definitely agree that SPBM with extensions nicely solves some challenges in less complex ways than the more traditional stacks... assuming you don&#39;t grow too large, and don&#39;t need routing integration with the outside world (SPBM to PIM gateway must be great fun).</p>\n\n<p>As for &quot;budget-friendly switches&quot;, PBB is a much simpler data plane (fewer lookups needed at tunnel egress), and it got implemented in older/simpler (and now cheaper) chipsets.</p>\n",
+               "id": "1209",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-04T16:45:46",
+               "ref": "1205",
+               "type": "comment"
+            }
+         ],
+         "date": "03 May 2022 07:39",
+         "html": "A few comments regarding SPB:<br />\n\n<p>The Alcatel-Lucent Enterprise (ALE) OmniSwitch series and Extreme Networks VSP/ERS series (formerly Avaya and before that Nortel) are still supporting SPB with active production deployments. Extreme did not kill it after the Avaya acquisition and is still pushing it as Extreme FabricConnect. ALE is more quiet, but isn&#39;t showing any signs of deprecating it either. Both vendors support additional L3VPN capabilities on top of L2 virtualization regular 802.1aq/SPB provides. I wouldn&#39;t count on full interoperability between their implementations though.</p>\n\n<p>Nokia inherited an SPB implementation from the Alcatel-Lucent Service Provider line (SR series). I don&#39;t know if there are/were any significant production deployments. HPE/H3C had an implementation on some ComWare gear, but it&#39;s considered a legacy feature.</p>\n\n<p>Standardization efforts in the IETF seem to have halted completely (e.g. https://datatracker.ietf.org/doc/draft-unbehagen-spb-ip-ipvpn/ and https://datatracker.ietf.org/doc/draft-unbehagen-lldp-spb/). I don&#39;t if that&#39;s due to IETF politics or the vendors simply losing interest. On the IEEE side, at least some efforts seem to be going on https://1.ieee802.org/tsn/802-1qcj/ but who knows, as IEEE is mostly a walled garden.</p>\n\n<p>Although SPB is still a Layer 2 technology, there is a certain charm about its elegance and simplicity: A single IS-IS control plane for STP/Unicast Underlay Routing/Multicast Underlay Routing/Unicast Overlay Routing/Multicast Overlay Routing. VXLAN EVPN is much much more complicated in this regard.</p>\n\n<p>At least in campus networks SPB is still worth a consideration, if you&#39;re willing to accept niche vendors. VXLAN EVPN hasn&#39;t really reached budget-friendly access switches yet, there are budget-friendly SPBM switches available though.</p>\n",
+         "id": "1205",
+         "name": "Sebastian Schrader",
+         "pub": "2022-05-03T19:39:50",
+         "type": "comment"
+      },
+      {
+         "date": "03 May 2022 07:44",
+         "html": "<p>When it comes to H3C, skimming over documentation reveals that just VxLAN is mentioned, not TRILL.</p>\n",
+         "id": "1206",
+         "name": " Adis Cato",
+         "pub": "2022-05-03T19:44:39",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 May 2022 04:41",
+               "html": "<p>While I agree with everything you wrote (see also my earlier posts on QFabric), none of those ideas were new:</p>\n\n<ul>\n<li>HIGIG was used instead of MPLS because Broadcom chipset had it, and sucked at MPLS.</li>\n<li>Packet lookup and classification on ingress and label switching through the fabric had been used in traditional MPLS solution for decade(s)</li>\n<li>Using BGP to propagate endpoint reachability information was not new. </li>\n</ul>\n\n<p>I do agree though that BGP had not been used for MAC addresses before, and that draft is indeed a precursor of EVPN, but that&#39;s not what QFabric was all about. Juniper wanted to build a single-management-entity fabric and they failed miserably.</p>\n",
+               "id": "1208",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-04T16:41:22",
+               "ref": "1207",
+               "type": "comment"
+            }
+         ],
+         "date": "04 May 2022 02:48",
+         "html": "Re: Footnote 2 and the death of QFabric.  It never really died as much as it evolved into the EVPN/VXLAN over IP fabrics we deploy today.  There were certainly too many management and control plane functions centralized in the Director, but it did many things we&#39;re still doing:<br />\n\n<ol>\n<li><p>Removed Ethernet switching from the fabric -- QF used Broadcom&#39;s HIGIG frame format between fabric nodes to enable tagged forwarding in the fabric.  The ingress Node (Leaf) performed a lookup on the destination MAC and marked the HIGIG header field with a &quot;tag&quot; that represented the destination switch.  The Interconnect (spine) layer performed forwarding on the data in the HIGIG field, not on the original Ethernet frame fields.</p></li>\n<li><p>All of the forwarding intelligence was contained at the Node (leaf) layer.  All forwarding decisions, both L2 and L3, were performed at the ingress Node (leaf).  The Interconnects (spines) were simply lean forwarders.</p></li>\n<li><p>All MAC and ARP learning happened in the QF control plane.  The system employed BGP and the MAC VPN draft (https://datatracker.ietf.org/doc/html/draft-raggarwa-mac-vpn-01) for MAC and ARP learning.</p></li>\n</ol>\n\n<p>It was surely a science project, and something that still makes customers and SE&#39;s cringe on occasion.  But I don&#39;t think we&#39;d be where we are without some of the capabilities that QF demonstrated.</p>\n",
+         "id": "1207",
+         "name": " Greg Bensimon",
+         "pub": "2022-05-04T14:48:14",
+         "type": "comment"
+      },
+      {
+         "date": "06 May 2022 08:57",
+         "html": "<p>My last fabricpath deployment is back to 2016, and recently years there&#39;re a lot of customers are migrate it to VXLAN/EVPN. You&#39;ll be surprised that how wildly people have deployed this technology. They really use it to extend the L2 fabric everywhere across DCs. Now it&#39;ll be a nightmare for us to migrate it to new fabric infrastructures.</p>\n",
+         "id": "1215",
+         "name": "lwy7688",
+         "pub": "2022-05-06T08:57:23",
+         "type": "comment"
+      }
+   ],
+   "count": 7,
+   "type": "post",
+   "url": "2022/05/cisco-fabric-path-and-friends.html"
+}

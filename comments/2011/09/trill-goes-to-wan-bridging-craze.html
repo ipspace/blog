@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Mark</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5535992853198940701">11 October 2011 02:36</a>
+                <a rel="nofollow" id="c5535992853198940701" href="#5535992853198940701">11 October 2011 02:36</a>
               </span>
             </div>
-            <p class="comment-content">So you also disagree with VPLS? It seems to me that functionally, TRILL over a WAN is VPLS without an MPLS forwarding plane.</p>
+            <div class="comment-content">So you also disagree with VPLS? It seems to me that functionally, TRILL over a WAN is VPLS without an MPLS forwarding plane.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1384133070922237958">11 October 2011 08:27</a>
+                <a rel="nofollow" id="c1384133070922237958" href="#1384133070922237958">11 October 2011 08:27</a>
               </span>
             </div>
-            <p class="comment-content">Not even close. VPLS supports numerous broadcast domains, TRILL only one. But it&#39;s a very valid question, will write a blog post about it.<br /><br />Oh, and incidentally, I also disagree with lots of VPLS use cases ;) It only makes sense as a vehicle providing end-to-end L2 transport in SP environment with routers around it.</p>
+            <div class="comment-content">Not even close. VPLS supports numerous broadcast domains, TRILL only one. But it&#39;s a very valid question, will write a blog post about it.<br /><br />Oh, and incidentally, I also disagree with lots of VPLS use cases ;) It only makes sense as a vehicle providing end-to-end L2 transport in SP environment with routers around it.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Mark</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1504916061778002908">19 October 2011 00:18</a>
+                <a rel="nofollow" id="c1504916061778002908" href="#1504916061778002908">19 October 2011 00:18</a>
               </span>
             </div>
-            <p class="comment-content">I was looking at TRILL vs VPLS from the users point of view, and that&#39;s where I think functionally they&#39;re no different.<br /><br />I&#39;ll admit that I haven&#39;t read it yet, however the following is the original paper that inspired the TRILL effort, which probably should be an input into your blog post -<br /><br />http://www.ieee-infocom.org/2004/Papers/26_1.PDF<br /><br />Due to the author&#39;s reputation and achievements in the field, I&#39;d be willing to put some weight on her judgements about whether it is wise or not to extend TRILL across the WAN ;-) The 2nd edition of her book also touches on some of these subjects.<br /><br />It seems to me that there would be two objects to running TRILL across the WAN -<br /><br />* broadcast domain size<br />* flat routing (i.e. lack of address aggregation)<br /><br />They&#39;re reasonable concerns, however as always, it is a trade off. Today&#39;s WANs pretty much have the same broadcast, multicast and unicast characteristics as the 1990s LANs, so 1990s LAN protocols and LAN designs would be applicable to today&#39;s WANs in a lot of cases. I remember one of those rules being &quot;switch where you can, route where you must&quot;, due to the cost and performance differences between forwarding at layer 2 and layer 3. Those cost concerns still apply.</p>
+            <div class="comment-content">I was looking at TRILL vs VPLS from the users point of view, and that&#39;s where I think functionally they&#39;re no different.<br /><br />I&#39;ll admit that I haven&#39;t read it yet, however the following is the original paper that inspired the TRILL effort, which probably should be an input into your blog post -<br /><br />http://www.ieee-infocom.org/2004/Papers/26_1.PDF<br /><br />Due to the author&#39;s reputation and achievements in the field, I&#39;d be willing to put some weight on her judgements about whether it is wise or not to extend TRILL across the WAN ;-) The 2nd edition of her book also touches on some of these subjects.<br /><br />It seems to me that there would be two objects to running TRILL across the WAN -<br /><br />* broadcast domain size<br />* flat routing (i.e. lack of address aggregation)<br /><br />They&#39;re reasonable concerns, however as always, it is a trade off. Today&#39;s WANs pretty much have the same broadcast, multicast and unicast characteristics as the 1990s LANs, so 1990s LAN protocols and LAN designs would be applicable to today&#39;s WANs in a lot of cases. I remember one of those rules being &quot;switch where you can, route where you must&quot;, due to the cost and performance differences between forwarding at layer 2 and layer 3. Those cost concerns still apply.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#186658585226121004">21 October 2011 13:16</a>
+                <a rel="nofollow" id="c186658585226121004" href="#186658585226121004">21 October 2011 13:16</a>
               </span>
             </div>
-            <p class="comment-content">As you quote Radia Perlman, you might as well listen to her TRILL talk on YouTube where she explains how unhappy she was with the whole bridging idea.<br /><br />Next, the &quot;bridge where you can, route where you must&quot; recommendation was made in days when:<br /><br />A) routing was done in SW and some bridging was done in HW<br />B) routers were multi-protocol beasts<br />C) routing was complex and bridging was simple.<br /><br />TRILL is no simpler than IP routing, L2 and L3 switching work at wire speed, and those claims were usually made by people who didn&#39;t want to invest into routing software.<br /><br />On a WAN link, there is minor cost or performance difference if you do bridging or routing correctly ... at least if your WAN bandwidth is a small percentage of your LAN bandwidth, in which case bridging over WAN will kill you as surely as it did those idiots that tried to use it over 64 kbps links.</p>
+            <div class="comment-content">As you quote Radia Perlman, you might as well listen to her TRILL talk on YouTube where she explains how unhappy she was with the whole bridging idea.<br /><br />Next, the &quot;bridge where you can, route where you must&quot; recommendation was made in days when:<br /><br />A) routing was done in SW and some bridging was done in HW<br />B) routers were multi-protocol beasts<br />C) routing was complex and bridging was simple.<br /><br />TRILL is no simpler than IP routing, L2 and L3 switching work at wire speed, and those claims were usually made by people who didn&#39;t want to invest into routing software.<br /><br />On a WAN link, there is minor cost or performance difference if you do bridging or routing correctly ... at least if your WAN bandwidth is a small percentage of your LAN bandwidth, in which case bridging over WAN will kill you as surely as it did those idiots that tried to use it over 64 kbps links.</div>
           </div>
         </li>
       </div>

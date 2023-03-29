@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">jumbo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7376075135139140502">18 May 2011 14:18</a>
+                <a rel="nofollow" id="c7376075135139140502" href="#7376075135139140502">18 May 2011 14:18</a>
               </span>
             </div>
-            <p class="comment-content">Interesting enough I have just spoken about a similar design with a global MPLS provider and they specifically stated they will not put any special import/export (and certainly not import/export route-maps) on their PE routers. Their argumentation is that they can only provide standard solution which is templated on their PE routers, and adding couples &quot;special&quot; lines under my VRFs to 1000+ PE routers creates an unmanagable solution for them.....</p>
+            <div class="comment-content">Interesting enough I have just spoken about a similar design with a global MPLS provider and they specifically stated they will not put any special import/export (and certainly not import/export route-maps) on their PE routers. Their argumentation is that they can only provide standard solution which is templated on their PE routers, and adding couples &quot;special&quot; lines under my VRFs to 1000+ PE routers creates an unmanagable solution for them.....</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#750182384122803577">18 May 2011 16:17</a>
+                <a rel="nofollow" id="c750182384122803577" href="#750182384122803577">18 May 2011 16:17</a>
               </span>
             </div>
-            <p class="comment-content">... and then there are those that wonder why anyone ever contemplates anything as stupid as running private MPLS/VPN cloud over IP over public MPLS/VPN cloud.  :-E Because the SP&#39;s can&#39;t deliver  :&#39;(</p>
+            <div class="comment-content">... and then there are those that wonder why anyone ever contemplates anything as stupid as running private MPLS/VPN cloud over IP over public MPLS/VPN cloud.  :-E Because the SP&#39;s can&#39;t deliver  :&#39;(</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">tl</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3323236483548622497">18 May 2011 21:10</a>
+                <a rel="nofollow" id="c3323236483548622497" href="#3323236483548622497">18 May 2011 21:10</a>
               </span>
             </div>
-            <p class="comment-content">I work with an enterprise customer that has implemented a self-managed RFC 4364BGP/MPLS IP VPNs as an overlay an exiting SP&#39;s cloud even though the SP offers the same service.  This was to empower the enterprise&#39;s engineers with control over routing and VRF isolation.</p>
+            <div class="comment-content">I work with an enterprise customer that has implemented a self-managed RFC 4364BGP/MPLS IP VPNs as an overlay an exiting SP&#39;s cloud even though the SP offers the same service.  This was to empower the enterprise&#39;s engineers with control over routing and VRF isolation.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">nosx</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7189703682313690913">19 May 2011 09:24</a>
+                <a rel="nofollow" id="c7189703682313690913" href="#7189703682313690913">19 May 2011 09:24</a>
               </span>
             </div>
-            <p class="comment-content">This is an overly complex and unsupportable approach to shared services. Having to touch 650+ PE routers and thousands of VRFs to create a shared services VPN is unacceptable. The correct approach is to touch only the &quot;services&quot; vrf, and import/export to each RT that you wish to insert the services into. Furthermore, a route-map MUST be applied to the services VPN blocking RFC1918 space, as well as the default route and any other overlapping prefixes. For examples where the shared services VPN is for management and monitoring of CPE devices, there must be globally unique addressing between all VPNs for the endpoints that need to communicate with the shared services VPN. If we learn the 10.1.1.0/24 prefix from 20 customers, hosts in those networks will be unable to use shared services.</p>
+            <div class="comment-content">This is an overly complex and unsupportable approach to shared services. Having to touch 650+ PE routers and thousands of VRFs to create a shared services VPN is unacceptable. The correct approach is to touch only the &quot;services&quot; vrf, and import/export to each RT that you wish to insert the services into. Furthermore, a route-map MUST be applied to the services VPN blocking RFC1918 space, as well as the default route and any other overlapping prefixes. For examples where the shared services VPN is for management and monitoring of CPE devices, there must be globally unique addressing between all VPNs for the endpoints that need to communicate with the shared services VPN. If we learn the 10.1.1.0/24 prefix from 20 customers, hosts in those networks will be unable to use shared services.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1689321262263503465">19 May 2011 09:53</a>
+                <a rel="nofollow" id="c1689321262263503465" href="#1689321262263503465">19 May 2011 09:53</a>
               </span>
             </div>
-            <p class="comment-content">Interesting point of view. As always, there is no &quot;right&quot; answer; it depends on whether you have several large customers (in which case adding customer RT to CS VRF makes sense) or many small ones (in which case per-CS asymmetric RT works better). <br /><br />It also depends on whether you provision common services at the same time you create customer VRFs or at a later time ... and also whether you use an automatic provisioning system or configure VRFs by hand.<br /><br />As for RFC 1918 and overlapping addresses - I clearly stated that in the very first paragraph. In most cases inter-VRF NAT is a safer option (how many MPLS VPN customers do you have that use public IP addresses in their network?)</p>
+            <div class="comment-content">Interesting point of view. As always, there is no &quot;right&quot; answer; it depends on whether you have several large customers (in which case adding customer RT to CS VRF makes sense) or many small ones (in which case per-CS asymmetric RT works better). <br /><br />It also depends on whether you provision common services at the same time you create customer VRFs or at a later time ... and also whether you use an automatic provisioning system or configure VRFs by hand.<br /><br />As for RFC 1918 and overlapping addresses - I clearly stated that in the very first paragraph. In most cases inter-VRF NAT is a safer option (how many MPLS VPN customers do you have that use public IP addresses in their network?)</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">nosx</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5723594021921425462">19 May 2011 11:38</a>
+                <a rel="nofollow" id="c5723594021921425462" href="#5723594021921425462">19 May 2011 11:38</a>
               </span>
             </div>
-            <p class="comment-content">In the past when we deploy managed endpoints, such as handsets for managed telephone service, or managed CPE routers, the phones and routers were assigned globally routable address space. This was due to the common services vrf design and its failures.<br /><br />For new customers that design is superceded for the phones by use of session border controllers with back-to-back user agent configuration. Now that SBCs are starting to support fully virtualized routing tables just like the PE&#39;s the duplicate address space is a non-issue, and the SBCs drastically improve compliance with CALEA.<br /><br />The same is true for managed services monitoring, instead of using common services vrfs and the trouble they bring, we just use vmware to spin up a probe with one leg on the customer network and one leg on the management network to handle all the administrative tasks.<br /><br />All in all, the common services VRF concept should be retired. It created far more problems than it solved, and better solutions (more secure, more scalable, more managable) are available now.</p>
+            <div class="comment-content">In the past when we deploy managed endpoints, such as handsets for managed telephone service, or managed CPE routers, the phones and routers were assigned globally routable address space. This was due to the common services vrf design and its failures.<br /><br />For new customers that design is superceded for the phones by use of session border controllers with back-to-back user agent configuration. Now that SBCs are starting to support fully virtualized routing tables just like the PE&#39;s the duplicate address space is a non-issue, and the SBCs drastically improve compliance with CALEA.<br /><br />The same is true for managed services monitoring, instead of using common services vrfs and the trouble they bring, we just use vmware to spin up a probe with one leg on the customer network and one leg on the management network to handle all the administrative tasks.<br /><br />All in all, the common services VRF concept should be retired. It created far more problems than it solved, and better solutions (more secure, more scalable, more managable) are available now.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Derick Winkworth</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1791016254945088792">25 May 2011 17:30</a>
+                <a rel="nofollow" id="c1791016254945088792" href="#1791016254945088792">25 May 2011 17:30</a>
               </span>
             </div>
-            <p class="comment-content">I agree and disagree at the same time.  The common services VRF as is commonly depicted is severely flawed, but you can&#39;t get around the fact that highly leveraged servers/load-balancers/etc exist in an IP cloud separate from your customers.  You can&#39;t put public addressing on thousands of IP endpoints in your services environment.  <br /><br />I think with some modifications the shared services model can work wonderfully.  If you are in the business of pushing out IP apps/services to thousands of customers then at some point you need to accept some complexity as you are basically intersecting with thousands of networks.  <br /><br />1.  NVI is a no-go if you need customized NAT (can&#39;t reuse global address from one VRF to another). Virtualize your NAT router with &quot;match-in-vrf&quot; and you can customize NAT and inject routes as needed from one point.  With our design we can even control bandwidth into the services environment on a per-customer basis on the NAT router.  <br /><br />2.  Route-leaking is  a terrible idea.  Just give each shared services environment a pair of redundant PEs, assymetric route-targets (as described in Ivan&#39;s post) and be done with it.<br /><br />3.  Automation.  Quit being cheap bastards and build tools for EMAC work.  Hire a linux/perl geek and throw up a site built on catalyst.  Utilize the tools that vendors provide you (on-box Tcl, XML-PI, JUNOScript).</p>
+            <div class="comment-content">I agree and disagree at the same time.  The common services VRF as is commonly depicted is severely flawed, but you can&#39;t get around the fact that highly leveraged servers/load-balancers/etc exist in an IP cloud separate from your customers.  You can&#39;t put public addressing on thousands of IP endpoints in your services environment.  <br /><br />I think with some modifications the shared services model can work wonderfully.  If you are in the business of pushing out IP apps/services to thousands of customers then at some point you need to accept some complexity as you are basically intersecting with thousands of networks.  <br /><br />1.  NVI is a no-go if you need customized NAT (can&#39;t reuse global address from one VRF to another). Virtualize your NAT router with &quot;match-in-vrf&quot; and you can customize NAT and inject routes as needed from one point.  With our design we can even control bandwidth into the services environment on a per-customer basis on the NAT router.  <br /><br />2.  Route-leaking is  a terrible idea.  Just give each shared services environment a pair of redundant PEs, assymetric route-targets (as described in Ivan&#39;s post) and be done with it.<br /><br />3.  Automation.  Quit being cheap bastards and build tools for EMAC work.  Hire a linux/perl geek and throw up a site built on catalyst.  Utilize the tools that vendors provide you (on-box Tcl, XML-PI, JUNOScript).</div>
           </div>
         </li>
       </div>

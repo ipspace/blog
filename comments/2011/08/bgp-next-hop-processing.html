@@ -1,10 +1,5 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
-  <h4>18 comments:</h4>
+  <h4>14 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">The Other Guy</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#159095993942192741">30 August 2011 03:00</a>
+                <a rel="nofollow" id="c159095993942192741" href="#159095993942192741">30 August 2011 03:00</a>
               </span>
             </div>
-            <p class="comment-content">Hi, <br /><br />Isn&#39;t MED actually propagated on EBGP routes?</p>
+            <div class="comment-content">Hi, <br /><br />Isn&#39;t MED actually propagated on EBGP routes?</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">M Kh</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4179127801875226932">30 August 2011 03:28</a>
+                <a rel="nofollow" id="c4179127801875226932" href="#4179127801875226932">30 August 2011 03:28</a>
               </span>
             </div>
-            <p class="comment-content">MED that is received on a prefix from a(n EBGP) neighbor is not propagated to an EBGP neigbor. I.e. if PE-A receives a prefix from X1 with a MED set, and then advertises that same prefix to X2, the MED attributed will not be set (by default).</p>
+            <div class="comment-content">MED that is received on a prefix from a(n EBGP) neighbor is not propagated to an EBGP neigbor. I.e. if PE-A receives a prefix from X1 with a MED set, and then advertises that same prefix to X2, the MED attributed will not be set (by default).</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">plapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7817639673849333301">30 August 2011 16:56</a>
+                <a rel="nofollow" id="c7817639673849333301" href="#7817639673849333301">30 August 2011 16:56</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan, excellent summary, but there are few statements that may require a little bit of clarification.<br /><br />Firstly, for leaking the edge link IP prefixes into IGP. A while ago, it made total sense to either change the next-hop to self or leak edge prefixes into BGP, to maintain reachability to provider managed devices at customer premises. This ensured network stability, to some extent. Nowadays, the requirements for fast convergence based on BGP NHT/PIC may dictate that edge link prefixes are leaked into IGP, for the purpose of fast event propagation. Furthermore, preserving the eBGP next-hop has some useful accounting implications, e.g. when exporting BGP next-hop in Netflow and looking to construct &quot;external&quot; traffic matrix. And network stability could be still controlled by using exponential event dampening (low-pass filtering).<br /><br />Secondly, using redistribution no longer has advantage of &quot;faster SPF&quot; over type-1 LSA injection with the introduction of iSPF (invented in ARPANet!) to both OSPF/ISIS. Even without iSPF, SPF takes insignificant time of overall convergence process on modern CPU&#39;s - the majority of time is spent updating distributed forwarding tables after a change. Furthermore, redistribution might be even considered dangerous due to type-5 LSA&#39;s having larger flooding scope (there have been well-known precedents with that), not to mention that type-5 LSAs consume more memory and create more flooding overhead (less of concern, though). <br /><br />Thirdly, changing next-hop to self on a route-reflector *may* be required even in production network if you need to ensure that RR is in the forwarding path to avoid route deflection (not the best design, though). This operation is also a key component for building hierarchical LSPs using BGP-based label propagation for overlay LSPs.<br /><br />Regards,<br /><br />Petr</p>
+            <div class="comment-content">Hi Ivan, excellent summary, but there are few statements that may require a little bit of clarification.<br /><br />Firstly, for leaking the edge link IP prefixes into IGP. A while ago, it made total sense to either change the next-hop to self or leak edge prefixes into BGP, to maintain reachability to provider managed devices at customer premises. This ensured network stability, to some extent. Nowadays, the requirements for fast convergence based on BGP NHT/PIC may dictate that edge link prefixes are leaked into IGP, for the purpose of fast event propagation. Furthermore, preserving the eBGP next-hop has some useful accounting implications, e.g. when exporting BGP next-hop in Netflow and looking to construct &quot;external&quot; traffic matrix. And network stability could be still controlled by using exponential event dampening (low-pass filtering).<br /><br />Secondly, using redistribution no longer has advantage of &quot;faster SPF&quot; over type-1 LSA injection with the introduction of iSPF (invented in ARPANet!) to both OSPF/ISIS. Even without iSPF, SPF takes insignificant time of overall convergence process on modern CPU&#39;s - the majority of time is spent updating distributed forwarding tables after a change. Furthermore, redistribution might be even considered dangerous due to type-5 LSA&#39;s having larger flooding scope (there have been well-known precedents with that), not to mention that type-5 LSAs consume more memory and create more flooding overhead (less of concern, though). <br /><br />Thirdly, changing next-hop to self on a route-reflector *may* be required even in production network if you need to ensure that RR is in the forwarding path to avoid route deflection (not the best design, though). This operation is also a key component for building hierarchical LSPs using BGP-based label propagation for overlay LSPs.<br /><br />Regards,<br /><br />Petr</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#235180027434563832">09 December 2012 00:33</a>
+                <a rel="nofollow" id="c235180027434563832" href="#235180027434563832">09 December 2012 00:33</a>
               </span>
             </div>
-            <p class="comment-content">Ivan got owned...</p>
+            <div class="comment-content">Ivan got owned...</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Will</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#284540523533427860">31 August 2011 03:21</a>
+                <a rel="nofollow" id="c284540523533427860" href="#284540523533427860">31 August 2011 03:21</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />Excellent post.  Loved it!  Really brought closure to the previous post.  Thanks so much.<br /><br />Will</p>
+            <div class="comment-content">Ivan,<br /><br />Excellent post.  Loved it!  Really brought closure to the previous post.  Thanks so much.<br /><br />Will</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Yap Chin Hoong</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9123849822157428687">11 October 2011 12:15</a>
+                <a rel="nofollow" id="c9123849822157428687" href="#9123849822157428687">11 October 2011 12:15</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for this post, I eventually sit down and read through it.<br />Just to add a minor point for other readers, the &quot;Next hop optimization on EBGP sessions&quot; is also known as the &quot;third-party next-hop&quot; feature. :)</p>
+            <div class="comment-content">Thanks for this post, I eventually sit down and read through it.<br />Just to add a minor point for other readers, the &quot;Next hop optimization on EBGP sessions&quot; is also known as the &quot;third-party next-hop&quot; feature. :)</div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Yap Chin Hoong</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8147315720551904040">11 October 2011 12:33</a>
+                <a rel="nofollow" id="c8147315720551904040" href="#8147315720551904040">11 October 2011 12:33</a>
               </span>
             </div>
-            <p class="comment-content">The observation of SPF run for advertising the DMZ link into IGPs (IS-IS and OSPF) is really SUPERB! :-)<br /><br />also found 2 nice linkz about SPF...<br />http://routingfreak.wordpress.com/2008/03/04/shortest-path-first-calculation-in-ospf-and-is-is/<br />http://routingfreak.wordpress.com/2008/03/06/the-complete-and-partial-spf-in-is-is/</p>
+            <div class="comment-content">The observation of SPF run for advertising the DMZ link into IGPs (IS-IS and OSPF) is really SUPERB! :-)<br /><br />also found 2 nice linkz about SPF...<br />http://routingfreak.wordpress.com/2008/03/04/shortest-path-first-calculation-in-ospf-and-is-is/<br />http://routingfreak.wordpress.com/2008/03/06/the-complete-and-partial-spf-in-is-is/</div>
           </div>
         </li>
       </div>
@@ -153,10 +148,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Terry Boedeker</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#956611440417665252">07 November 2011 19:31</a>
+                <a rel="nofollow" id="c956611440417665252" href="#956611440417665252">07 November 2011 19:31</a>
               </span>
             </div>
-            <p class="comment-content">All of your posts are top notch - thank you and keep up the great blog! 8-)</p>
+            <div class="comment-content">All of your posts are top notch - thank you and keep up the great blog! 8-)</div>
           </div>
         </li>
       </div>
@@ -171,10 +166,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Mat</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1027764927242628181">07 July 2012 08:19</a>
+                <a rel="nofollow" id="c1027764927242628181" href="#1027764927242628181">07 July 2012 08:19</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />I just ran into an issue I was not expecting that made me search on google about BGP routes with next-hop resolved through another BGP routes.<br />In my case an iBGP route&#39;s next-hop was resolved through another iBGP route. Both routes were installed in the routing table. The next-hop itself was reachable (ping/traceroute). However the destination was not: when debugging with &#39;debug ip packet&#39;, the router picked a loopback as the source (instead of the outgoing interface) and then declared the packet unroutable. Making the next-hop known through IGP fixed the problem. <br />Did you ever run into such an issue ? I could not find any explanation for it. My release is 12.4(15)T10.<br /><br /><br />Thanks for all the great information you share on your site.<br />Cheers,<br />Mat</p>
+            <div class="comment-content">Hi Ivan,<br /><br />I just ran into an issue I was not expecting that made me search on google about BGP routes with next-hop resolved through another BGP routes.<br />In my case an iBGP route&#39;s next-hop was resolved through another iBGP route. Both routes were installed in the routing table. The next-hop itself was reachable (ping/traceroute). However the destination was not: when debugging with &#39;debug ip packet&#39;, the router picked a loopback as the source (instead of the outgoing interface) and then declared the packet unroutable. Making the next-hop known through IGP fixed the problem. <br />Did you ever run into such an issue ? I could not find any explanation for it. My release is 12.4(15)T10.<br /><br /><br />Thanks for all the great information you share on your site.<br />Cheers,<br />Mat</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -190,10 +185,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3923982101781763934">08 July 2012 20:40</a>
+                <a rel="nofollow" id="c3923982101781763934" href="#3923982101781763934">08 July 2012 20:40</a>
               </span>
             </div>
-            <p class="comment-content">Effectively what you&#39;ve discovered is that an IBGP next hop must be an IGP route, which makes perfect sense, otherwise you could get into all sorts of recursive routing.<br /><br />No, I&#39;ve never run into such an issue, I never tried to do something like that.</p>
+            <div class="comment-content">Effectively what you&#39;ve discovered is that an IBGP next hop must be an IGP route, which makes perfect sense, otherwise you could get into all sorts of recursive routing.<br /><br />No, I&#39;ve never run into such an issue, I never tried to do something like that.</div>
           </div>
         </li>
       </div>
@@ -215,10 +210,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Mat</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3976925022199881942">11 July 2012 09:12</a>
+                <a rel="nofollow" id="c3976925022199881942" href="#3976925022199881942">11 July 2012 09:12</a>
               </span>
             </div>
-            <p class="comment-content">Yes, nobody ever want to do that, it just happens that in some infamous lab environment they make you run into that kind of issue ! :)<br />I am still surprised that the routes were installed in the routing table though ! It&#39;s a strange logic to install a route in the RIB and then decide that it is not valid.<br /><br />Thanks,<br />Mat</p>
+            <div class="comment-content">Yes, nobody ever want to do that, it just happens that in some infamous lab environment they make you run into that kind of issue ! :)<br />I am still surprised that the routes were installed in the routing table though ! It&#39;s a strange logic to install a route in the RIB and then decide that it is not valid.<br /><br />Thanks,<br />Mat</div>
           </div>
         </li>
       </div>
@@ -233,10 +228,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.joera.in" rel="nofollow">J Thomas</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3245294065255439639">31 July 2012 14:05</a>
+                <a rel="nofollow" id="c3245294065255439639" href="#3245294065255439639">31 July 2012 14:05</a>
               </span>
             </div>
-            <p class="comment-content">Confusing... I am pulling my hair... <br /><br />Can we say it like this? <br /><br />In EBGP, the next hop address is changed as the routes are passed to the neighbor routers. At last when the routes reach an IBGP, the next hop address is kept as the last EBGP routers address? <br /><br />Simply, EBGP will update the next-hop address as the routes are passed to the neighbor routers but IBGP will NOT update the next-hop address as the routes are passed to the neighbor routers?<br /><br />We have to go to the each router inside IBGP network and run the command &quot;next-hop-self&quot; to inform the next downstream router that &quot;handover the packet to me&quot; to reach the destination network ???</p>
+            <div class="comment-content">Confusing... I am pulling my hair... <br /><br />Can we say it like this? <br /><br />In EBGP, the next hop address is changed as the routes are passed to the neighbor routers. At last when the routes reach an IBGP, the next hop address is kept as the last EBGP routers address? <br /><br />Simply, EBGP will update the next-hop address as the routes are passed to the neighbor routers but IBGP will NOT update the next-hop address as the routes are passed to the neighbor routers?<br /><br />We have to go to the each router inside IBGP network and run the command &quot;next-hop-self&quot; to inform the next downstream router that &quot;handover the packet to me&quot; to reach the destination network ???</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -252,10 +247,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2481431269885316168">31 July 2012 14:13</a>
+                <a rel="nofollow" id="c2481431269885316168" href="#2481431269885316168">31 July 2012 14:13</a>
               </span>
             </div>
-            <p class="comment-content">You&#39;re almost correct. <br /><br />Next hop will be changed on EBGP session __unless_ the neighbor&#39;s IP address is in the same subnet as the current next hop.<br /><br />Next hop will NOT be changed on IBGP session __unless__ you specify next-hop-self, which you&#39;d do only on the AS boundary (usually you want to use IGP to control intra-AS routing toward BGP next hops).<br /><br />Then there are the weird cases including &#39;next-hop-unchanged&#39; for inter-AS MPLS/VPN or setting the next hop to a bogus value for remote-triggered black holes ;)<br /><br />As for pulling your hair - we all went through that phase when faced with BGP.</p>
+            <div class="comment-content">You&#39;re almost correct. <br /><br />Next hop will be changed on EBGP session __unless_ the neighbor&#39;s IP address is in the same subnet as the current next hop.<br /><br />Next hop will NOT be changed on IBGP session __unless__ you specify next-hop-self, which you&#39;d do only on the AS boundary (usually you want to use IGP to control intra-AS routing toward BGP next hops).<br /><br />Then there are the weird cases including &#39;next-hop-unchanged&#39; for inter-AS MPLS/VPN or setting the next hop to a bogus value for remote-triggered black holes ;)<br /><br />As for pulling your hair - we all went through that phase when faced with BGP.</div>
           </div>
         </li>
       </div>
@@ -270,10 +265,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.joera.in" rel="nofollow">J Thomas</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7448631824438260295">31 July 2012 17:03</a>
+                <a rel="nofollow" id="c7448631824438260295" href="#7448631824438260295">31 July 2012 17:03</a>
               </span>
             </div>
-            <p class="comment-content">Thanks a lot Sir...<br /><br />The BGP feature &quot;EBGP session __unless_ the neighbor&#39;s IP address is in the same subnet as the current next hop&quot; may be enabled because in Multi-access environments the BGP routers may need to pass the packets one or two extra hops.<br /><br />What I meant was in EBGP Multiaccess environments all the other routers in a subnet are reachable from any router, but may not be BGP neighbors. This may cause additional hops? <br /><br />Am I right Sir?</p>
+            <div class="comment-content">Thanks a lot Sir...<br /><br />The BGP feature &quot;EBGP session __unless_ the neighbor&#39;s IP address is in the same subnet as the current next hop&quot; may be enabled because in Multi-access environments the BGP routers may need to pass the packets one or two extra hops.<br /><br />What I meant was in EBGP Multiaccess environments all the other routers in a subnet are reachable from any router, but may not be BGP neighbors. This may cause additional hops? <br /><br />Am I right Sir?</div>
           </div>
         </li>
       </div>
@@ -288,10 +283,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2609149383645572324">31 July 2012 17:18</a>
+                <a rel="nofollow" id="c2609149383645572324" href="#2609149383645572324">31 July 2012 17:18</a>
               </span>
             </div>
-            <p class="comment-content">EBGP next hop processing tries to avoid unnecessary packet forwarding across a single subnet. It works (recursively) even when there&#39;s only a partial mesh of EBGP sessions across the subnet _as long as_ nobody changes the next-hop manually.</p>
+            <div class="comment-content">EBGP next hop processing tries to avoid unnecessary packet forwarding across a single subnet. It works (recursively) even when there&#39;s only a partial mesh of EBGP sessions across the subnet _as long as_ nobody changes the next-hop manually.</div>
           </div>
         </li>
       </div>
@@ -306,10 +301,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.joera.in" rel="nofollow">J Thomas</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9035932469580059401">31 July 2012 17:26</a>
+                <a rel="nofollow" id="c9035932469580059401" href="#9035932469580059401">31 July 2012 17:26</a>
               </span>
             </div>
-            <p class="comment-content">Got it Sir..<br /><br />Thank you very much...</p>
+            <div class="comment-content">Got it Sir..<br /><br />Thank you very much...</div>
           </div>
         </li>
       </div>
@@ -331,10 +326,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ishan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5725309263581042688">25 February 2018 09:02</a>
+                <a rel="nofollow" id="c5725309263581042688" href="#5725309263581042688">25 February 2018 09:02</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />Great post!<br />However can you please summarize what does it exactly mean by &quot;Next-Hop Optimization on eBGP sessions&quot;. Spent my past 3 hours looking for an explanation but could not find anything satisfactory.<br /><br />Thanks!</p>
+            <div class="comment-content">Hi Ivan,<br /><br />Great post!<br />However can you please summarize what does it exactly mean by &quot;Next-Hop Optimization on eBGP sessions&quot;. Spent my past 3 hours looking for an explanation but could not find anything satisfactory.<br /><br />Thanks!</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -350,10 +345,189 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7305808911106344833">25 February 2018 10:27</a>
+                <a rel="nofollow" id="c7305808911106344833" href="#7305808911106344833">25 February 2018 10:27</a>
               </span>
             </div>
-            <p class="comment-content">The rest of that section is (IMHO) a pretty good summary. Think about all possible scenarios of using BGP between multiple AS connected to the same LAN (I specifically mentioned Internet Exchange Points), and figure out how to ensure optimal traffic flow regardless of how the BGP sessions are set up.<br /><br />Sometimes you need to think about a problem, draw a bit, and get your hands dirty in a lab instead of looking around... or as someone said &quot;you can observe a lot by just watching&quot; ;)</p>
+            <div class="comment-content">The rest of that section is (IMHO) a pretty good summary. Think about all possible scenarios of using BGP between multiple AS connected to the same LAN (I specifically mentioned Internet Exchange Points), and figure out how to ensure optimal traffic flow regardless of how the BGP sessions are set up.<br /><br />Sometimes you need to think about a problem, draw a bit, and get your hands dirty in a lab instead of looking around... or as someone said &quot;you can observe a lot by just watching&quot; ;)</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1196">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Saravanan </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1196" href="#1196">02 May 2022 06:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>tried to summarise with a table in html format, but it is not reflected as a table, so deleted the original content.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1213">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1213" href="#1213">05 May 2022 09:57</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Managed to recover your excellent summary table and made it part of the blog post. Thanks a million!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1261">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Saravanan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1261" href="#1261">18 May 2022 09:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks Ivan.  There is one typo in the scenario column of last-but-one row - &quot;EBGP peer IP address is not in the same subnet as the BGP next hop&quot;; should have been &quot;same subnet&quot; instead of &quot;not&quot;.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1267">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1267" href="#1267">19 May 2022 04:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you, fixed.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1262">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Kirit Dawda</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1262" href="#1262">19 May 2022 04:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>IS the AS in top left corner, AS 65001 (it may have a typo as it is shown to have AS 65000)?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1266">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1266" href="#1266">19 May 2022 04:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, one of those autonomous systems should have a different AS number... but everything works as explained even if they have the same AS number assuming PE-A does not do AS path checks on outbound updates (Cisco IOS doesn&#39;t IIRC)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1505">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Vladimir</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1505" href="#1505">11 November 2022 10:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have a one question. If we have a scenario:  AS with 2 Route reflectors, which have iBGP peering between those RRs. Should there be a next-hop-self command on the iBGP peering between Route reflectors? Or what is the design recommendation and why ?
+I&#39;ve run into an issue if the next-hop-self command is not used. </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1506">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1506" href="#1506">11 November 2022 04:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The correct answer depends on the platform you&#39;re using, but assuming you&#39;re working with Cisco products, keep in mind that &quot;next-hop-self&quot; changes the next hop of EBGP routes (which is probably what you have to have in your design), but not of reflected routes.</p>
+
+<p>Searching for &quot;route reflector next hop site:blog.ipspace.net&quot; will probably produce a few additional useful hits.</p>
+</div>
           </div>
         </li>
       </div>

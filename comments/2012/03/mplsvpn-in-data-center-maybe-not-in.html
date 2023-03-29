@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>13 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ofer</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6029302767795054329">19 March 2012 11:17</a>
+                <a rel="nofollow" id="c6029302767795054329" href="#6029302767795054329">19 March 2012 11:17</a>
               </span>
             </div>
-            <p class="comment-content">&quot;...L2 hypervisor switches could use BGP MPLS Based MAC VPN.&quot;<br />you&#39;re almost there  :)<br />but this one is better &quot;draft-sajassi-l2vpn-pbb-evpn&quot;</p>
+            <div class="comment-content">&quot;...L2 hypervisor switches could use BGP MPLS Based MAC VPN.&quot;<br />you&#39;re almost there  :)<br />but this one is better &quot;draft-sajassi-l2vpn-pbb-evpn&quot;</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Matthew</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1086790202581608119">19 March 2012 16:14</a>
+                <a rel="nofollow" id="c1086790202581608119" href="#1086790202581608119">19 March 2012 16:14</a>
               </span>
             </div>
-            <p class="comment-content">What if you used a trunk to the TOR switch and applied a VPLS xconnect to a sub-interface? You&#39;d be limited to 4095 guests per server, but I think there are some other limiting factors in that case. That way you could put different servers in VPLS groups based on VLAN assignment by the vSwitch, but the TOR switch applies the labels and creates the LSPs for the entire rack.  <br /> <br />The only way BGP convergence would hurt you is if you&#39;re using a true MPLS VPN where routes are actually redistributed into BGP for each VRF. If you&#39;re using VPLS then LDP will just distribute the corresponding labels to their destination and BGP isn&#39;t required.  <br /> <br />Just a thought. Not sure how well it would scale.</p>
+            <div class="comment-content">What if you used a trunk to the TOR switch and applied a VPLS xconnect to a sub-interface? You&#39;d be limited to 4095 guests per server, but I think there are some other limiting factors in that case. That way you could put different servers in VPLS groups based on VLAN assignment by the vSwitch, but the TOR switch applies the labels and creates the LSPs for the entire rack.  <br /> <br />The only way BGP convergence would hurt you is if you&#39;re using a true MPLS VPN where routes are actually redistributed into BGP for each VRF. If you&#39;re using VPLS then LDP will just distribute the corresponding labels to their destination and BGP isn&#39;t required.  <br /> <br />Just a thought. Not sure how well it would scale.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6389197132740231335">20 March 2012 08:57</a>
+                <a rel="nofollow" id="c6389197132740231335" href="#6389197132740231335">20 March 2012 08:57</a>
               </span>
             </div>
-            <p class="comment-content">At least two problems:<br /><br />* If you needed more than 4K virtual segments, you would have overlapping VLAN address spaces, which would  be a nightmare to manage;<br />* Automatic provisioning of such a solution doesn&#39;t exist. It would require tight coupling between hypervisors and ToR switches and although there are solutions along those lines, none of them is easily adaptable to new topologies.<br /><br />On the other hand, MPLS scaling would be an order of magnitude easier to achieve (as you need LSP per ToR switch, not per hypervisor host), but you&#39;d still be without a control plane and rely on flooding to figure out where the VMs are.</p>
+            <div class="comment-content">At least two problems:<br /><br />* If you needed more than 4K virtual segments, you would have overlapping VLAN address spaces, which would  be a nightmare to manage;<br />* Automatic provisioning of such a solution doesn&#39;t exist. It would require tight coupling between hypervisors and ToR switches and although there are solutions along those lines, none of them is easily adaptable to new topologies.<br /><br />On the other hand, MPLS scaling would be an order of magnitude easier to achieve (as you need LSP per ToR switch, not per hypervisor host), but you&#39;d still be without a control plane and rely on flooding to figure out where the VMs are.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">FullMesh</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5741502421741179282">01 April 2012 02:25</a>
+                <a rel="nofollow" id="c5741502421741179282" href="#5741502421741179282">01 April 2012 02:25</a>
               </span>
             </div>
-            <p class="comment-content">What is different about SDN controllers that would suggest they will be better at handling the high churn or a significant disruptive event in large-scale data centers than a good BGP/MPLS implementation (using RRs, RT-constrain, etc)?</p>
+            <div class="comment-content">What is different about SDN controllers that would suggest they will be better at handling the high churn or a significant disruptive event in large-scale data centers than a good BGP/MPLS implementation (using RRs, RT-constrain, etc)?</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#552445411698401900">01 April 2012 03:22</a>
+                <a rel="nofollow" id="c552445411698401900" href="#552445411698401900">01 April 2012 03:22</a>
               </span>
             </div>
-            <p class="comment-content">They can ensure transactional consistency (should one so desire) whereas BGP has eventual consistency (unless the number of updates is too high, see also: Internet).<br /><br />Disruptive event shouldn&#39;t really impact the hypervisors if they use MAC-over-IP encapsulation. Even if you lose tons of servers in one go, you won&#39;t restart those VMs on another server in a second (if at all).</p>
+            <div class="comment-content">They can ensure transactional consistency (should one so desire) whereas BGP has eventual consistency (unless the number of updates is too high, see also: Internet).<br /><br />Disruptive event shouldn&#39;t really impact the hypervisors if they use MAC-over-IP encapsulation. Even if you lose tons of servers in one go, you won&#39;t restart those VMs on another server in a second (if at all).</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">FullMesh</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8757720487239809631">03 April 2012 04:38</a>
+                <a rel="nofollow" id="c8757720487239809631" href="#8757720487239809631">03 April 2012 04:38</a>
               </span>
             </div>
-            <p class="comment-content">Transactional consistency in SDN is not what I&#39;m understanding from Casada&#39;s blog (ex:  http://networkheresy.wordpress.com/2011/08/09/what-might-an-sdn-controller-api-look-like-and-should-we-standardize-it).</p>
+            <div class="comment-content">Transactional consistency in SDN is not what I&#39;m understanding from Casada&#39;s blog (ex:  http://networkheresy.wordpress.com/2011/08/09/what-might-an-sdn-controller-api-look-like-and-should-we-standardize-it).</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">FullMesh</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6116839006988836115">05 April 2012 03:59</a>
+                <a rel="nofollow" id="c6116839006988836115" href="#6116839006988836115">05 April 2012 03:59</a>
               </span>
             </div>
-            <p class="comment-content">Agree with &quot;MPLS/VPN could also use IP or GRE+IP transport as defined in RFC 4023, in which case the scalability argument is gone.&quot;  Furthermore, E-VPN  (http://tools.ietf.org/html/draft-ietf-l2vpn-evpn-00)  can be used to populate the vswitch tables with MACs (among other things) and enable highly flexible topologies using RT combinations.</p>
+            <div class="comment-content">Agree with &quot;MPLS/VPN could also use IP or GRE+IP transport as defined in RFC 4023, in which case the scalability argument is gone.&quot;  Furthermore, E-VPN  (http://tools.ietf.org/html/draft-ietf-l2vpn-evpn-00)  can be used to populate the vswitch tables with MACs (among other things) and enable highly flexible topologies using RT combinations.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">FullMesh</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1106992435027954627">05 April 2012 04:54</a>
+                <a rel="nofollow" id="c1106992435027954627" href="#1106992435027954627">05 April 2012 04:54</a>
               </span>
             </div>
-            <p class="comment-content">with pbb-evpn you are limited to B-MACs (~ vswitch tenant instance) being the leaves of your vpn topologies versus individual machines.  hence topologies such as &quot;private vlan&quot; are not possible.  also we&#39;re back to data plane mac learning across sites with pbb-evpn.  the scaling advantages don&#39;t come free.</p>
+            <div class="comment-content">with pbb-evpn you are limited to B-MACs (~ vswitch tenant instance) being the leaves of your vpn topologies versus individual machines.  hence topologies such as &quot;private vlan&quot; are not possible.  also we&#39;re back to data plane mac learning across sites with pbb-evpn.  the scaling advantages don&#39;t come free.</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7493568528720379093">05 June 2012 07:09</a>
+                <a rel="nofollow" id="c7493568528720379093" href="#7493568528720379093">05 June 2012 07:09</a>
               </span>
             </div>
-            <p class="comment-content">Trying to understand the transactional consistency requirement, and I can only see a need in a security context (make sure no traffic leaks out). But this is only needed if your isolation depends on ACLs as is the case in Amazon. Why is transactional consistency so important in an MPLS model, where the penalty of inconsistency is just some lost packets. Is this such a big deal when you are rebooting servers?</p>
+            <div class="comment-content">Trying to understand the transactional consistency requirement, and I can only see a need in a security context (make sure no traffic leaks out). But this is only needed if your isolation depends on ACLs as is the case in Amazon. Why is transactional consistency so important in an MPLS model, where the penalty of inconsistency is just some lost packets. Is this such a big deal when you are rebooting servers?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -182,10 +177,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8218679331164804439">05 June 2012 07:24</a>
+                <a rel="nofollow" id="c8218679331164804439" href="#8218679331164804439">05 June 2012 07:24</a>
               </span>
             </div>
-            <p class="comment-content">You need transactional consistency when you move VMs. You wouldn&#39;t want to rely on best-effort eventually-consistent model like BGP in that case (particularly if you move a large number of VMs at once).</p>
+            <div class="comment-content">You need transactional consistency when you move VMs. You wouldn&#39;t want to rely on best-effort eventually-consistent model like BGP in that case (particularly if you move a large number of VMs at once).</div>
           </div>
         </li>
       </div>
@@ -200,10 +195,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4643962893058544440">27 July 2012 04:37</a>
+                <a rel="nofollow" id="c4643962893058544440" href="#4643962893058544440">27 July 2012 04:37</a>
               </span>
             </div>
-            <p class="comment-content">What about BGP is best effort?</p>
+            <div class="comment-content">What about BGP is best effort?</div>
           </div>
         </li>
       </div>
@@ -225,10 +220,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16488361009215312027" rel="nofollow">Murali</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#499352633325277245">20 July 2012 06:46</a>
+                <a rel="nofollow" id="c499352633325277245" href="#499352633325277245">20 July 2012 06:46</a>
               </span>
             </div>
-            <p class="comment-content">Pardon me for my ignorance, what do you mean by &quot;transactional consistency&quot; mean in this article&#39;s context? Could you pls explain a little bit.</p>
+            <div class="comment-content">Pardon me for my ignorance, what do you mean by &quot;transactional consistency&quot; mean in this article&#39;s context? Could you pls explain a little bit.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -244,10 +239,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6120813627707929824">20 July 2012 11:26</a>
+                <a rel="nofollow" id="c6120813627707929824" href="#6120813627707929824">20 July 2012 11:26</a>
               </span>
             </div>
-            <p class="comment-content">When a VM is moved, every hypervisor participating in that virtual network should be updated before the move is complete, so that no traffic is sent to the VM&#39;s old attachment point.<br /><br />BGP cannot enforce that, as it has no transactional semantics (or barriers like OpenFlow).</p>
+            <div class="comment-content">When a VM is moved, every hypervisor participating in that virtual network should be updated before the move is complete, so that no traffic is sent to the VM&#39;s old attachment point.<br /><br />BGP cannot enforce that, as it has no transactional semantics (or barriers like OpenFlow).</div>
           </div>
         </li>
       </div>

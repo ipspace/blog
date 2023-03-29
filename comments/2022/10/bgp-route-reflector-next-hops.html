@@ -1,0 +1,214 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1460">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1460" href="#1460">27 October 2022 09:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; There&rsquo;s a single vendor I&rsquo;m aware of who realized the SNAFU and implemented EVPN in a way that violates the usual EBGP expectations.</p>
+
+<p>I know of two, with a hint regarding a third (with the third based on work from the first).
+I expect the first to be the one you have in mind.
+;-)</p>
+
+<p>&gt; Anything else? Please leave a comment!</p>
+
+<p>I have seen an MPLS design using RFC 3107 BGP-LU to build transport LSPs across IGP regions. They used IBGP with RRs. The region border routers were RRs that changed the next hop to themselves and generating a BGP-LU label.</p>
+
+<p>P.S. Sorry for the acronym soup.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1461">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Harley Bristow</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1461" href="#1461">27 October 2022 10:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, great post as always, thanks for sharing</p>
+
+<p>&gt;&gt; [...] but there&rsquo;s a single scenario I&rsquo;m aware of where doing that is a must [...]</p>
+
+<p>Reiterating Erik&#39;s comment above, I believe <em>Seamless MPLS</em> is a reference architecture for Service Providers that uses in-band RR with next-hop adjustments, towards creating &quot;islands&quot; of MPLS. </p>
+
+<p>Discrete instances of IGP and MPLS share Border Nodes [BN] (like an ABR in LS protocols), with PEs peering to BN then BN peering to RR in the central island. BGP-LU runs inter-island. You end up with 3 layers of MPLS: Transport, Service, and VPN. I think this is what Erik is describing.</p>
+
+<p>https://datatracker.ietf.org/doc/html/draft-ietf-mpls-seamless-mpls-07</p>
+
+<p>All major vendors have good articles on the reference design, including great diagrams by Juniper and Huawei. (fwiw, Cisco have historically called this &quot;Unified&quot; MPLS, but its the same thing).</p>
+
+<ul>
+<li>https://support.huawei.com/enterprise/en/doc/EDOC1100065649/28ecd062/understanding-seamless-mpls</li>
+<li>https://www.juniper.net/content/dam/www/assets/white-papers/us/en/building-multi-generation-scalable-networks-with-end-to-end.pdf</li>
+<li>https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-3/configuration_guide/mpls/b_173_mpls_9300_cg/configuring_seamless_mpls.pdf</li>
+</ul>
+
+<p>You might suspect that controllers like Crosswork/WAE and Paragon/Northstar suit this design well when you want to conjoin RSVP paths.</p>
+
+<p>Thanks</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1464">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> PJO</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1464" href="#1464">28 October 2022 02:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; BGP route reflectors are solving the &ldquo;propagation of information&rdquo; problem, 
+&gt; not the &ldquo;finding the optimal path&rdquo; problem</p>
+
+<p>I guess they tried to do both, since BGP RR have been designed to send only the best path (from their point of view) to the network. And from a design point of view, this does not work well with moving the RR outside the data path.</p>
+
+<p>&gt;  there&rsquo;s a single scenario I&rsquo;m aware of where [changing the BGP next hop] is a must: hub-and-spoke DMVPN tunnels</p>
+
+<p>I would prefer to NOT configure the Hubs as RR (expect may be for the inter Hub sessions) :  you only need to collect remote routes and you do not want to send every route to every spoke when a single aggregate can do the the job. 
+To enforce that, i usually use a new AS for each Hub and use the same 65000 as for the spokes.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1466">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1466" href="#1466">30 October 2022 08:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; I guess they tried to do both, since BGP RR have been designed to send only the best path (from their point of view) to the network. And from a design point of view, this does not work well with moving the RR outside the data path.</p>
+
+<p>Sending only the best path was the best they could do -- it was a side effect of the format of BGP update messages. A RR could send multiple paths but all but the last one would be ignored without the AddPaths support (read AddPaths RFC for more details). Changing the BGP update message format would open a whole other barrel of worms.</p>
+
+<p>Do remember that RFC 1966 was published in 1996, years before IPv6-over-BGP4 or BGP4 capabilities RFCs came along.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1467">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1467" href="#1467">30 October 2022 08:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; I would prefer to NOT configure the Hubs as RR (expect may be for the inter Hub sessions) : you only need to collect remote routes and you do not want to send every route to every spoke when a single aggregate can do the the job</p>
+
+<p>That&#39;s assuming you can aggregate the address space into a few well-defined prefixes.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1481">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1481" href="#1481">04 November 2022 01:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The original RR design has a lot of limitations. For usual enterprise networks I always suggested to follow the topology with RRs (every interim node is an RR), since this would become the most robust configuration where a link failure would have the less impact. Of course, this would work well only with relatively small routing tables.
+It is also more difficult to automate. But for small networks this would be a safe bet...</p>
+
+<p>In large, centralized RR designs, a single link failure might cause a lot of transitions that would take a lot of time. Not nice for high availability.</p>
+
+<p>For safety critical networks we always have to enable additional paths for RRs. Otherwise, you convergence time would be usually too slow. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1482">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1482" href="#1482">04 November 2022 01:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>If you implement a native RR topology following the physical topology, then changing the next hop might be meaningful, since the RR is always in the user data plane path and shares the fate of user data packets. 
+BTW, this is the original IP networking concept. The routing protocol shall follow the same path than the user data plane. The centralized RR design violates the basic IP network principles with all its consequences. The centralized design is a step back to the classical TDM telco architecture. :-)</p>
+
+<p>Seamless MPLS is a hybrid between the fully distributed and centralized RR approaches.</p>
+
+<p>Ivan loves criticizing the centralized SDN controller design. The centralized RR design has almost the same issues... :-)
+I know people still prefer doing that, but this was not the original intention of RR. It is a misuse of the original RR concept.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

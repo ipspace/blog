@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3735961312266679743">24 September 2008 02:47</a>
+                <a rel="nofollow" id="c3735961312266679743" href="#3735961312266679743">24 September 2008 02:47</a>
               </span>
             </div>
-            <p class="comment-content">Hi, thank you for the article. Could you go over some reasons why you would require IBGP in general as well as in a non-internet or non-mpls environment. For eg in typical extranet type enterprise environment often IBGP is used between redundant edge routers and redundant inside routers and EBGP between the edge and inside through a firewall. Is this a recommended design and if so what is the real advantage of running IBGP between the inside routers. Thx</p>
+            <div class="comment-content">Hi, thank you for the article. Could you go over some reasons why you would require IBGP in general as well as in a non-internet or non-mpls environment. For eg in typical extranet type enterprise environment often IBGP is used between redundant edge routers and redundant inside routers and EBGP between the edge and inside through a firewall. Is this a recommended design and if so what is the real advantage of running IBGP between the inside routers. Thx</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3869335401757581739">24 September 2008 18:59</a>
+                <a rel="nofollow" id="c3869335401757581739" href="#3869335401757581739">24 September 2008 18:59</a>
               </span>
             </div>
-            <p class="comment-content">The nice thing about running BGP across firewall is that it's just another TCP session from the firewall's perspective, so you don't need any extra security rules. When I get a few hours of spare time, I'll write a post about typical design scenario.<BR/><BR/>See also <A HREF="http://forum.nil.com/viewtopic.php?f=10&t=18" REL="nofollow">this thread in NIL forums for other reasons to use BGP in enterprise network</A>.</p>
+            <div class="comment-content">The nice thing about running BGP across firewall is that it's just another TCP session from the firewall's perspective, so you don't need any extra security rules. When I get a few hours of spare time, I'll write a post about typical design scenario.<BR/><BR/>See also <A HREF="http://forum.nil.com/viewtopic.php?f=10&t=18" REL="nofollow">this thread in NIL forums for other reasons to use BGP in enterprise network</A>.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Gabriel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3899312519152023996">25 December 2010 13:16</a>
+                <a rel="nofollow" id="c3899312519152023996" href="#3899312519152023996">25 December 2010 13:16</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />I recently took the ROUTE exam and, while studying BGP and playing with it in GNS3, I noticed that you need update-source loopback0 configured only on one side. I was a bit puzzled by this, so I googled around but I only found this link [1] mentioning it.<br /><br />After thinking a bit about this, it actually makes sense. BGP uses a client-server model when setting up the neighbor relationship. The &quot;client&quot; sends the first SYN from a port above 1024 and connects to the &quot;server&quot; on port 179. When configuring update-source loopback on both neighbors, the router that is configured first will probably initiate the connection and become the client.<br /><br />However, when update-source loopback is configured on only one of the peers (let&#39;s say 10.0.0.1), that peer will _always_ be the client because it is only itself that can correctly initiate the connection (by using the right source IP). The &quot;server&quot; (10.0.0.2) notices that the source address (10.0.0.1) of the incoming SYN matches its neighbor statement and replies with a packet that has as source address its own loopback (because that was the destination address of the first SYN - 10.0.0.2). The client matches that with its own neighbor statement, so the connection is established.<br /><br />Anyway, this is probably common knowledge and is as important as the master - slave election when 2 OSPF routers become neighbors, but it was fun investigating and discovering it on my own. :)<br /><br />Merry Christmas and a happy New Year to you and your loved ones!<br /><br /><br />P.S.: Maybe it&#39;s just me, but when I read your post and saw AS11 and AS12, I was wondering &quot;why would he choose routers in different ASes when configuring iBGP?&quot;. Then I looked at the actual config and realized that the hostnames were misleading. :)<br /><br />[1] http://www.mail-archive.com/cisco@groupstudy.com/msg16373.html</p>
+            <div class="comment-content">Hi Ivan,<br /><br />I recently took the ROUTE exam and, while studying BGP and playing with it in GNS3, I noticed that you need update-source loopback0 configured only on one side. I was a bit puzzled by this, so I googled around but I only found this link [1] mentioning it.<br /><br />After thinking a bit about this, it actually makes sense. BGP uses a client-server model when setting up the neighbor relationship. The &quot;client&quot; sends the first SYN from a port above 1024 and connects to the &quot;server&quot; on port 179. When configuring update-source loopback on both neighbors, the router that is configured first will probably initiate the connection and become the client.<br /><br />However, when update-source loopback is configured on only one of the peers (let&#39;s say 10.0.0.1), that peer will _always_ be the client because it is only itself that can correctly initiate the connection (by using the right source IP). The &quot;server&quot; (10.0.0.2) notices that the source address (10.0.0.1) of the incoming SYN matches its neighbor statement and replies with a packet that has as source address its own loopback (because that was the destination address of the first SYN - 10.0.0.2). The client matches that with its own neighbor statement, so the connection is established.<br /><br />Anyway, this is probably common knowledge and is as important as the master - slave election when 2 OSPF routers become neighbors, but it was fun investigating and discovering it on my own. :)<br /><br />Merry Christmas and a happy New Year to you and your loved ones!<br /><br /><br />P.S.: Maybe it&#39;s just me, but when I read your post and saw AS11 and AS12, I was wondering &quot;why would he choose routers in different ASes when configuring iBGP?&quot;. Then I looked at the actual config and realized that the hostnames were misleading. :)<br /><br />[1] http://www.mail-archive.com/cisco@groupstudy.com/msg16373.html</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#814680126634842426">25 December 2010 20:38</a>
+                <a rel="nofollow" id="c814680126634842426" href="#814680126634842426">25 December 2010 20:38</a>
               </span>
             </div>
-            <p class="comment-content">Great job! You&#39;re obviously one of those seeking the in-depth understanding, not the quick recipes.<br /><br />Also: fixed the hostnames in the table, thanks for the hint.</p>
+            <div class="comment-content">Great job! You&#39;re obviously one of those seeking the in-depth understanding, not the quick recipes.<br /><br />Also: fixed the hostnames in the table, thanks for the hint.</div>
           </div>
         </li>
       </div>

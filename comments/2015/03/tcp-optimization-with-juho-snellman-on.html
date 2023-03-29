@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02004215342995023858" rel="nofollow">Frank Bulk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9163836782634196279">14 March 2015 23:19</a>
+                <a rel="nofollow" id="c9163836782634196279" href="#9163836782634196279">14 March 2015 23:19</a>
               </span>
             </div>
-            <p class="comment-content">Can you really call it 1M &quot;sessions&quot; when one is not really terminating each side?  It&#39;s an apples/oranges comparison of TCP session scalability.</p>
+            <div class="comment-content">Can you really call it 1M &quot;sessions&quot; when one is not really terminating each side?  It&#39;s an apples/oranges comparison of TCP session scalability.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.snellman.net/blog/" rel="nofollow">Juho Snellman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3109723089391536327">15 March 2015 00:26</a>
+                <a rel="nofollow" id="c3109723089391536327" href="#3109723089391536327">15 March 2015 00:26</a>
               </span>
             </div>
-            <p class="comment-content">That&#39;s a good question, I think it&#39;s quite fair to call it that :-)<br /><br />After the handshake the behavior of the system would be hard to distinguish from a transparent proxy that terminated the connection, but just miraculously happened to negotiate the same TCP options / sequence numbers on both sides. It&#39;ll for example react in similar ways to incoming packets, and needs to store very similar data as a terminating proxy.<br /><br />That data includes all the TCP state variables (e.g. sequence numbers, window scale, congestion control state, SACK blocks, etc), RTT measurements, various kinds of timers, all the payload data that has been sent by one endpoint but not yet acknowledged by the other, and so on. And of course you need separate copies of all of this state for each half. So each session from our point of view is really matching the two paired connections that a terminating proxy would create.<br /><br />The main advantages from not terminating are related to robustness, such as being drop out from optimizing the connection without confusing the endpoints. There aren&#39;t really any scalability benefits.<br /><br />(1M sessions is actually understating things a bit; we expect about 200K concurrent sessions per 1Gbps of traffic in a typical mobile network. So for a 10Gbps deployment you&#39;d be looking at a typical case of 2M concurrent sessions, and needing to dimension for a worst case of at least 5M).<br /></p>
+            <div class="comment-content">That&#39;s a good question, I think it&#39;s quite fair to call it that :-)<br /><br />After the handshake the behavior of the system would be hard to distinguish from a transparent proxy that terminated the connection, but just miraculously happened to negotiate the same TCP options / sequence numbers on both sides. It&#39;ll for example react in similar ways to incoming packets, and needs to store very similar data as a terminating proxy.<br /><br />That data includes all the TCP state variables (e.g. sequence numbers, window scale, congestion control state, SACK blocks, etc), RTT measurements, various kinds of timers, all the payload data that has been sent by one endpoint but not yet acknowledged by the other, and so on. And of course you need separate copies of all of this state for each half. So each session from our point of view is really matching the two paired connections that a terminating proxy would create.<br /><br />The main advantages from not terminating are related to robustness, such as being drop out from optimizing the connection without confusing the endpoints. There aren&#39;t really any scalability benefits.<br /><br />(1M sessions is actually understating things a bit; we expect about 200K concurrent sessions per 1Gbps of traffic in a typical mobile network. So for a 10Gbps deployment you&#39;d be looking at a typical case of 2M concurrent sessions, and needing to dimension for a worst case of at least 5M).<br /></div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Patrick Diener</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7881154211235638362">17 March 2015 08:17</a>
+                <a rel="nofollow" id="c7881154211235638362" href="#7881154211235638362">17 March 2015 08:17</a>
               </span>
             </div>
-            <p class="comment-content">Great show, thank you guys!<br /><br />This episode was almost like a godsend to me, since I am in the middle of troubleshooting an issue with a new version of a VPN client no longer working over mobile connections of a certain mobile provider. We could track the problem down to the mobile network sending a SYN/ACK for about everything (obviously they don&#39;t use the teclo product ;-)) and the captive portal detection feature of the new VPN client version... I was really in doubt of what I was seeing in the sniffer trace. Does the mobile provider mess with the TCP?!? Apparently they do! Some in a better some in a worse way ;-)</p>
+            <div class="comment-content">Great show, thank you guys!<br /><br />This episode was almost like a godsend to me, since I am in the middle of troubleshooting an issue with a new version of a VPN client no longer working over mobile connections of a certain mobile provider. We could track the problem down to the mobile network sending a SYN/ACK for about everything (obviously they don&#39;t use the teclo product ;-)) and the captive portal detection feature of the new VPN client version... I was really in doubt of what I was seeing in the sniffer trace. Does the mobile provider mess with the TCP?!? Apparently they do! Some in a better some in a worse way ;-)</div>
           </div>
         </li>
       </div>

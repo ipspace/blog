@@ -1,0 +1,83 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="377">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Enrique Vallejo</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c377" href="#377">02 February 2021 10:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&lt;i&gt;providing line-rate for 64-byte packet at 100Gbps is mostly mission impossible, considering that packets arrive every 6.7 ns and you have probably less than half that time to finish an IP lookup if you want to make it in time&lt;/i&gt;</p>
+
+<p>I did not clearly understand this. It seems to imply that switch forwarding delay (as defined by RFC 4689) needs to be lower than packet transmission time in order to get line-rate processing. As far as I know, there are no commercial switches with sub-10 ns forwarding latency; Mellanox announces their 300 ns cut-through latency @ 100Gbps as the best latency. </p>
+
+<p>If the comment refers to the TCAM access becoming a bottleneck, I believe there are mechanisms to pipeline TCAM accesses and avoid the bottleneck (or other tricks such as banked implementations with parallel bank accesses, reuse previous cached results, etc.), or simply replication mechanisms to increase the throughput of this element. </p>
+
+<p>Could someone clarify this? Thanks!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="378">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c378" href="#378">02 February 2021 01:28</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I don&#39;t know what I did to be mentioned in the same sentence as Dave Katz. I apologize. I didn&#39;t do it on purpose, I swear.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="379">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c379" href="#379">03 February 2021 10:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Enrique, </p>
+
+<p>When I said 6.7ns, I was referring to the inter-packet arrival time at 100Gbps for 64 byte packet. It was 6.7ns because the total frame size is in fact 84 bytes after adding inter-frame padding. To get line rate processing at 100Gbps for 64 byte packet, therefore, the line-card&#39;s packet processing pipeline stage delay will have to be less than or equal to this, otherwise packet will arrive faster than it can process. It basically translate to about 149 million packets per seconds. This is, of course, assuming that the entire LC has only 1 port. If a LC has, say 8x100Gbps and only 1 packet processing pipeline inside the ASIC, then that pipeline stage delay will have to be 8 times faster. Since the lookup is one stage within the pipeline, it will have to complete a lookup and return in 6.7ns or less, and many times faster if the LC has more ports. So the TCAM&#39;s clock rate will have to be fast enough to support this kind of latency. In fact, even when the LC houses only 1x100G port, the TCAM has to finish way faster than 6.7ns, because for many years now vendors have made use of hierarchical FIB instead of flat FIB, to avoid the slow update issue inherent in TCAM, something that kills Openflow fine-grained flow-based switching. BGP PIC is one of those attempts to avoid unecessary FIB update on re-convergence. With hierarchical FIB, there&#39;re multiple lookups to get the destination interface, so TCAM will have to finish much quicker than 6.7ns if the whole lookup thing is to complete within the time budget. </p>
+
+<p>That&#39;s why for very high speed switching, MPLS is preferred over IP because it&#39;s more high-performance. And MPLS uses CAM, not TCAM, so it&#39;s more power-efficient as well. There&#39;s no substitute for label switching at the highest speed. </p>
+
+<p>Mellanox&#39;s 300ns cut-thru latency is the total device latency. To be honest, I read that for cut-thru switching, the method of measurement is the time gap between when the first bit enters the ingress until that same bit reaches the egress, and not counting the time between reaching the egress and going out of the egress aka time sitting in reordering buffer and output queue. That&#39;s likely why they can claim this kind of latency. And even then, I think this kind of total latency only applies when they do L2 cut-thru, the simplest, most lightweight form of packet processing, and with uniform synthetic traffic anyway. </p>
+
+<p>The total/nominal device latency = ingress pipeline processing time + cell segmentation delay + input buffering delay + fabric arbitration time + transmission thru the fabric + cell reassembly in case of cell-based fabric + output queueing delay. That&#39;s why there&#39;s a big gap between inter-packet arrival time and total device delay. Devices with high-performance architecture and superior fabric scheduler generally have lower total delay. Packet buffering is the most dominating factor as they&#39;re generally the slowest part of the processing due to high memory RTT.</p>
+
+<p>As for TCAM pipelining, I&#39;m aware of SRAM pipelining as people seek an alternative higher-performance lookup memory than TCAM since TCAM clock rate is generally slow, but SRAM pipelining suffers from complex wiring and wastage of memory, and so, not yet found in mainstream routers. But I&#39;m not aware of TCAM pipelining. I know vendors have been using chip level parallelism with TCAM for years to overcome the low clock rate and high power usage issue as they need more Mbs to store bigger and bigger routing tables, but it&#39;s parallelism, not pipeline. The nature of TCAM doesn&#39;t lend itself to pipelining AFAIK. Chip parallelism is also the reason why vendors can afford tricks like TCAM carving/resizing and UFT. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

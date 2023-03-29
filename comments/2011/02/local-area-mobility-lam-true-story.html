@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Bob</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8630047806756711233">17 September 2011 21:46</a>
+                <a rel="nofollow" id="c8630047806756711233" href="#8630047806756711233">17 September 2011 21:46</a>
               </span>
             </div>
-            <p class="comment-content">I worked with a moderate-sized hospital that was using LAM as of about 18 months ago to deal with medical modailty machines (portable MRI and ultrasound equipment, etc) that would move between multiple wings of the building. The machines had static IPs and were more-or-less &quot;unchangeable.&quot; According to the manufacturer changing the IP address was a major operation, and would invalidate all earlier studies by disassociating the machine with its prior studies in the database.<br /><br />LAM was used to deal with this, apparently on advice from Cisco TAC. I found it to be buggy though. One thing we encountered multiple times was that the router would occasionally do an ARP check to validate that the LAM&#39;d device was still on the segment, and use that to persist the injected /32 route. Problem was, a well-meaning but poorly-configured L3 switch interface on the same segment would respond to the ARP with the proxy ARP feature and &quot;refresh&quot; the entry on the router. So the router would draw traffic for that device toward it even when the device had moved back to it&#39;s &quot;real&quot; subnet. The router didn&#39;t seem to track or notice a change in the MAC associated with that mis-located IP.<br /><br />But as usual, this network-layer kludgery &quot;fixed&quot; an abhorrent application design...</p>
+            <div class="comment-content">I worked with a moderate-sized hospital that was using LAM as of about 18 months ago to deal with medical modailty machines (portable MRI and ultrasound equipment, etc) that would move between multiple wings of the building. The machines had static IPs and were more-or-less &quot;unchangeable.&quot; According to the manufacturer changing the IP address was a major operation, and would invalidate all earlier studies by disassociating the machine with its prior studies in the database.<br /><br />LAM was used to deal with this, apparently on advice from Cisco TAC. I found it to be buggy though. One thing we encountered multiple times was that the router would occasionally do an ARP check to validate that the LAM&#39;d device was still on the segment, and use that to persist the injected /32 route. Problem was, a well-meaning but poorly-configured L3 switch interface on the same segment would respond to the ARP with the proxy ARP feature and &quot;refresh&quot; the entry on the router. So the router would draw traffic for that device toward it even when the device had moved back to it&#39;s &quot;real&quot; subnet. The router didn&#39;t seem to track or notice a change in the MAC associated with that mis-located IP.<br /><br />But as usual, this network-layer kludgery &quot;fixed&quot; an abhorrent application design...</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14587615344625475361" rel="nofollow">Justin Goldberg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2563104549820111857">24 October 2012 07:54</a>
+                <a rel="nofollow" id="c2563104549820111857" href="#2563104549820111857">24 October 2012 07:54</a>
               </span>
             </div>
-            <p class="comment-content">Perhaps an SSL VPN router attached to the MRI machine would accomplish this. But that would require some renumbering wizardry and other changes.</p>
+            <div class="comment-content">Perhaps an SSL VPN router attached to the MRI machine would accomplish this. But that would require some renumbering wizardry and other changes.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/18136855206137771382" rel="nofollow">Vince</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3592985008856500853">25 June 2015 21:41</a>
+                <a rel="nofollow" id="c3592985008856500853" href="#3592985008856500853">25 June 2015 21:41</a>
               </span>
             </div>
-            <p class="comment-content">I wrote a white paper back in October 2004 on how we used LAM in two instances; one like Bob mentioned above for a hospital while we migrated the network (so it was used temporarily then removed) and once to migrate a data center - again as a temp feature, but worked perfectly.</p>
+            <div class="comment-content">I wrote a white paper back in October 2004 on how we used LAM in two instances; one like Bob mentioned above for a hospital while we migrated the network (so it was used temporarily then removed) and once to migrate a data center - again as a temp feature, but worked perfectly.</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10562240567667879482" rel="nofollow">lcw</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6060739751976424780">17 December 2018 16:37</a>
+                <a rel="nofollow" id="c6060739751976424780" href="#6060739751976424780">17 December 2018 16:37</a>
               </span>
             </div>
-            <p class="comment-content">For history buffs, some of the same folks behind LAM went on to help with &quot;LISP extended subnet mode multihop mobility.&quot; This feature also creates host routes in the DC closest to where a mobile host currently is, but it (a) works with stretched subnets/L2, and (b) supports live migration. Despite &quot;LISP&quot; in its name, its configured only on the default gateways; there&#39;s no need for full LISP (xTR&#39;s, encapsulation, etc).  It&#39;s supported on Nexus 7000 and IOS-XE routers like the ASR 1000 and CSR 1000v.<br /><br />It&#39;s 2018, and I still use LAM (and LAM-inspired static host routes) to help with migrations. You can find a walk through at https://community.cisco.com/t5/switching/local-area-mobility/m-p/3759749/highlight/true#M453970</p>
+            <div class="comment-content">For history buffs, some of the same folks behind LAM went on to help with &quot;LISP extended subnet mode multihop mobility.&quot; This feature also creates host routes in the DC closest to where a mobile host currently is, but it (a) works with stretched subnets/L2, and (b) supports live migration. Despite &quot;LISP&quot; in its name, its configured only on the default gateways; there&#39;s no need for full LISP (xTR&#39;s, encapsulation, etc).  It&#39;s supported on Nexus 7000 and IOS-XE routers like the ASR 1000 and CSR 1000v.<br /><br />It&#39;s 2018, and I still use LAM (and LAM-inspired static host routes) to help with migrations. You can find a walk through at https://community.cisco.com/t5/switching/local-area-mobility/m-p/3759749/highlight/true#M453970</div>
           </div>
         </li>
       </div>

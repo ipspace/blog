@@ -1,0 +1,55 @@
+{
+   "comments": [
+      {
+         "date": "27 September 2020 10:19",
+         "html": "<p>&quot;The biggest problem of CLNP addresses was the variable address length&quot;.</p>\n\n<p>I think this is wrong. You might wanna ask someone who was involved with cisco&#39;s SSE (the Silicon Switch Engine in the cisco 7000, from the mid-nineties). E.g. Tony Li worked on the microcode, if I&#39;m not mistaken. IPv4 and CLNS were both sse-switched. Performance was equal. Somewhere around 150k-200k pps, if I recall correctly (this was 25 years ago, pfff, so excuse me if I have the number wrong).</p>\n\n<p>The SSE was proof that variable-length addresses were very viable. Personally I think variable-length addresses are better than fixed-length addresses. I think the majority of routing guys at cisco at the time thought so. After all, they supported TUBA as well.</p>\n\n<p>&quot;TCP/IP folks focused on getting something done&quot;. I think it&#39;s more precise to say: &quot;some TCP/IP folks focused on getting things done&quot;. E.g. the folks at cisco who supported variable-length addresses. The majority of TCP/IP folks were/are just as clueless, or imagination-less, as the majority of OSI folks were. Proof ? IPv6. Imho the whole history of IPv6 is not that much different from the history of OSI. Lots of talk, little code and little deployment. At least some parts of the OSI stack had smart ideas in them.</p>\n",
+         "id": "156",
+         "name": " Henk",
+         "pub": "2020-09-27T22:19:09",
+         "type": "comment"
+      },
+      {
+         "date": "28 September 2020 10:37",
+         "html": "<p>While Henk&#39;s comment above might very well have been correct for the specific case of CLNS vs IP switching on the Cisco 7k platform back in the mid 90s, what Ivan said above re variable-length vs fixed-length address/header, should also hold true in the broader context. I mean, while CLNS and IP forwarding at 150k-200k pps might have been equal, as the switching fabrics transitioned to much higher speeds later on, performance discrepancies would have started to show up, since certain issues only crop up at much higher bandwith.</p>\n\n<p>Good ol John Scudder has recently written an essay on the topic as well:</p>\n\n<p>https://blog.apnic.net/2020/06/04/modern-router-architecture-and-ipv6/</p>\n\n<p>Among other things, he mentioned fixed header length makes parsing easier, and no doubt, faster too. At Tbps and beyond, I believe every little thing counts, so even a small bit of improvement making little difference in the lower-speed realms, might be hugely advantageous at the bigger scale. </p>\n\n<p>Also, AFAIK, high-end routers, like CRS, T-series, MX series... all function internally like ATM switches. They break variable-length packets into fixed-sized cells, normally 64 bytes in size for, and switch these cells across the fabric. As the chips in these devices are normally micro-cycle synchronous and normally function in a pipeline as well, operating synchronously in fixed time slots simplifies the hardware including the fabric schedulers, and offers much greater forwarding efficiency and better latency than variable-length packet forwarding, which operates in overlapping time domains and so greatly increases scheduling (and hardware) complexity, among other things.</p>\n\n<p>Due to this kind of internal architecture, knowing in advance the header length to be looked up could help with timing, which translates directly to greater efficiency and throughput. </p>\n\n<p>If I misunderstand something or make mistakes, pls point it out :)) . </p>\n",
+         "id": "159",
+         "name": " Minh Ha",
+         "pub": "2020-09-28T10:37:56",
+         "type": "comment"
+      },
+      {
+         "date": "28 September 2020 11:50",
+         "html": "<p>@Henk: If you have a domain-specific programmable device (aka NPU), and all you have to do is to walk down the FIB tree/trie, then I agree with you. Variable-length addresses don&#39;t matter as you do a walk down the data structures anyway, and the only question is &quot;when will we hit a leaf&quot;. If you want to implement the same idea with streamlined fixed pipeline using TCAM or similar (like modern terabit single-chip ASICs), you might care about the maximum size of TCAM rows.</p>\n\n<p>Also, extracting information past the variable-length address like transport layer endpoints (because networking vendors made sure routers and switches are not just that anymore) might get you into the same set of challenges as IPv6 extension headers.</p>\n\n<p>Just my uninformed opinion ;)</p>\n",
+         "id": "160",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-09-28T11:50:28",
+         "type": "comment"
+      },
+      {
+         "date": "29 September 2020 11:29",
+         "html": "<p>Sure, it takes (a bit) more work for hardware to deal with variable length addresses. My point was: I don&#39;t think that was the reason why CLNS failed in the nineties (as Ivan wrote). Scudder&#39;s points are well taken. But I think he mainly says: don&#39;t include TLVs in your headers, don&#39;t go crazy with the stacking of headers, and the hidden message: SR-mpls is better/smarter/cheaper than SRv6.</p>\n\n<p>But regarding variable length addresses, I think the hardware guys would have been able to deal with that. I might be interesting to ask a npu-hardware designer about his opinion. (As we all seem to be software/networking people here, and not hardware designers).</p>\n\n<p>The reasons that CLNS failed, imho, were: level-4 to level-7 were much more complex, therefor implemenations of those in OS-stacks were more rare. And there were a lot fewer applications you could use. Meanwhile, the usefulness of applications over the Internet explodes. Especially when the web started. The reason the OSI stack failed was not because it was not good enough. It was because the IPv4-Internet was already there, and giving everybody what they wanted. Other protocols were just not needed anymore.</p>\n\n<p>Same applies to IPv6. Why use it, if IPv4 gives you everything you want ? (If you already have IPv4 address-space, of course).</p>\n",
+         "id": "161",
+         "name": "Henk Smit",
+         "pub": "2020-09-29T11:29:53",
+         "type": "comment"
+      },
+      {
+         "date": "29 September 2020 08:56",
+         "html": "<p>@Henk: Agree with everything you wrote - OSI L4-7 were too late and too convoluted for the taste of the Internet crowd (which then had to reinvent most of the stuff OSI had years later once they figured out what problem OSI people were trying to solve, but that&#39;s a different story).</p>\n\n<p>What really sunk CLNS (not the whole OSI stack) as the basis for IPng (TUBA) was the &quot;not invented here, plus we hate those guys&quot; sentiment in the IP community.</p>\n",
+         "id": "162",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-09-29T20:56:38",
+         "type": "comment"
+      },
+      {
+         "date": "01 October 2020 09:50",
+         "html": "<p>@Ivan &amp; Henk, thx a lot for the great discussion! It&#39;s always great to learn from the seasoned veterans who were there during the golden age of networking, like you guys. There&#39;re lots of &#39;aha&#39; moments from reading the insights in your comments, really.</p>\n\n<p>This is probably well known to both of you already, but I&#39;d like to mention what little I know on the subject anyway, re the variable-length address lookup part, as it&#39;s very interesting. We can take the case of 100Gbs Ethernet as example. At this speed, the interface lookup engine has about 6.7ns tops, to finish all the lookup work for a worst-case 64-byte packet. So say, if it does just prefix matching, and takes more than one memory access due to variable-length address, and one of the accesses spills over to the slower memory, this time constraint might fail. </p>\n\n<p>If we take into account other work in the lookup pipeline that might involve recirculation, which itself reduces both throughput and latency, then line-rate forwarding at small packets using store and forward method, could become intractable, or NP-hard as the some people love to say it :p. Cut-through switching might be able to pull it off though.</p>\n\n<p>If we take it to 400Gbs level, which reduces small packets&#39; lookup time to 1.6ns, even fixed-length lookup using TCAM with only 1 memory access for simple prefix matching, will fail. So at 400Gbs, from my limited understanding, it doesn&#39;t seem like line-rate forwarding for small packets is possible, unless they&#39;ve come up with ways to decrease TCAM access below the 1.6ns barrier. </p>\n\n<p>And lastly, I too personally think SR MPLS is better than SRV6 (thx Henk for bringing it up, I had no idea John was implying that), as if anything, SRMPLS requires less state to be kept, and so needs less chip areas, less power, and generates less heat. As things like board area, pin counts, power and heat are all constrained, unless there&#39;s a very good reason to go with SRV6, I don&#39;t think it&#39;s worth paying for. </p>\n",
+         "id": "163",
+         "name": " Minh Ha",
+         "pub": "2020-10-01T09:50:11",
+         "type": "comment"
+      }
+   ],
+   "count": 6,
+   "type": "post",
+   "url": "2020/09/worth-reading-clns-failure.html"
+}

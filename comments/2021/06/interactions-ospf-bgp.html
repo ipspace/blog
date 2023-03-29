@@ -1,0 +1,139 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="684">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Donald Sharp</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c684" href="#684">22 June 2021 01:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I was actually looking at just this situation with static routes and BGP a few weeks back.  In my opinion this is a bug plain and simple.  Any situation where an order of operations causes different results is something that needs to be fixed.  There is no need for speculation.  BGP already knows the admin distance of the route that won and can easily do a comparison to see if it would win and if so send it&#39;s route down to the RIB.  This would solve the problem.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="686">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c686" href="#686">22 June 2021 08:02</a>
+              </span>
+            </div>
+            <div class="comment-content">The question is: Does the affected subnet belong to the company or not? It&#39;s either one or the other (or you would have a problem). Then based on whether it&#39;s internal or external to the company you would choose the right routing protocol. The numbers of administrative distance for the various routing protocols are there for a reason. They are based on reliability and trustworthiness of the routing protocol. I see no need for complicated redistribution on multiple points. So definitely rethink your design.<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="688">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> AW</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c688" href="#688">23 June 2021 10:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>There may be an aspect I&#39;m missing here but this looks like the same issue we would run into frequently at an MSP I worked at using &quot;floating&quot; backup static routes for customers. The AD of the static route may be set higher (ie: 250) but due to the behavior of BGP redistributed routes you&#39;ll have an issue. If you add the static route after your BGP route was already loaded it&#39;s especially insidious because all looks fine until BGP bounces, then the redistributed static route gets loaded into BGP with default weight of 32768 and now when BGP comes back up the BGP learned route loses over the redistributed route and the static stays the active route.</p>
+
+<p>The solution we used was to just use route-map / policy to strip the weight of those redistributed floating static routes 
+ setting them to 0. That way when BGP compared the redistributed route you don&#39;t run into that issue. I believe we also set LP lower on the redistributed route as well to make that predictive since solving the weight issue and having equal LPs simply would move you to the locally originated and then AS-PATH length checks where both would fail to prefer the eBGP over the OSPF redistributed route.</p>
+
+<p>I thought at the time this was a well known problem but to be fair I haven&#39;t run into much discussion on it on the internet so glad to see it talked about here! Looking forward to seeing more comments!</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1335">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> James </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1335" href="#1335">20 July 2022 10:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yes, we use this same approach with EIGRP and BGP on nx-os, unsetting the weight and updating LP. I also didn&#39;t find much discussion online at the time, but it&#39;s been operating successfully for about 5 years now and put through it&#39;s paces.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="690">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Dmytro Shypovalov</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c690" href="#690">24 June 2021 07:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>EOS in single-agent (gated) mode doesn&#39;t check whether the route is local (redistributed/aggregate) or received from a BGP peer. But multi-agent prefers local over received, much like Cisco.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="693">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c693" href="#693">30 June 2021 03:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I used to see this a lot with MPLS WAN, where the BGP at a site redistributed OSPF or EIGRP site routes promiscuously, and there was no filter so that remote prefixes would also be learned. When a remote link goes down, one of two site BGP peers loses the prefix and learns the local copy, which stays stuck then, even when the remote link comes back up. My conclusion (consistent with this blog) is to filter ALWAYS ALWAYS and don&#39;t redistribute into BGP remote routes from a local routing protocol. And use IBGP for lateral handoffs. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

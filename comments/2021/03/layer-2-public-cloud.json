@@ -1,0 +1,47 @@
+{
+   "comments": [
+      {
+         "date": "08 March 2021 11:33",
+         "html": "Fix the typo: &quot;get read of Microsoft NLB&quot;<br />\n\n\n",
+         "id": "451",
+         "name": "Michele Bergonzoni",
+         "pub": "2021-03-08T23:33:04",
+         "type": "comment"
+      },
+      {
+         "date": "09 March 2021 09:25",
+         "html": "<p>Thank you, fixing...</p>\n",
+         "id": "452",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-03-09T09:25:12",
+         "type": "comment"
+      },
+      {
+         "date": "10 March 2021 03:17",
+         "html": "<p>Hello Ivan,</p>\n\n<p>As Oracle Consulting, I have personally implemented together with Palo Alto professional services, clustering solutions relying on secondary IP moving from one instance to another, for an active-standby Palo Alto clusters on OCI.</p>\n\n<p>Is it good idea to put a virtual appliance in cloud another is another topic &#x1F605;</p>\n\n<p>But the result was sub-second failover under load. No session drop.</p>\n\n<p>The API call to move a &laquo;&nbsp;VIP&nbsp;&raquo; (what is called a Secondary IP in OCI terms) is fast. Like no comparison with what the PAN PS team saw on other clouds. &#x1F605;</p>\n\n<p>Regarding L2 extension, it is intra Availability Domain &laquo;&nbsp;only&nbsp;&raquo; (equivalent to AZ). Yet, traffic in a region, nor the peering gateways are not billed upon.</p>\n",
+         "id": "453",
+         "name": " Çetin ARDAL",
+         "pub": "2021-03-10T03:17:44",
+         "type": "comment"
+      },
+      {
+         "date": "10 March 2021 08:15",
+         "html": "<p>Hi &Ccedil;etin,</p>\n\n<p>Thanks a million for the feedback. So glad to hear someone got the orchestration system architecture right (as opposed to $anotherCloud where it takes seconds to do anything useful).</p>\n\n<p>As for L2 extension, it would be nice to see how far it scales, but I totally understand you can&#39;t share those numbers.</p>\n",
+         "id": "454",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-03-10T08:15:23",
+         "type": "comment"
+      },
+      {
+         "date": "10 March 2021 01:36",
+         "html": "<p>I know that you have <a href=\"https://blog.ipspace.net/2020/08/selecting-public-cloud.html\">your reservations</a> regarding cloud networking exploration and there is a finite amount of time for each day, but I bet you would be really surprised by the user experience using OCI Networking services.</p>\n\n<p>In region services are basically free to explore (no billing cost associated for vcn, data transfer, ephemeral/reserved public ip, gateways, etc ...).</p>\n\n<p>Private connectivity: You only have to start worrying about cost if you want to test FastConnect or your egress traffic is more than 10TB/month (Managed VPN have no associated cost, FastConnect cost DO cover the transfer costs).</p>\n\n<p>Testing L2 Network requires a 3-node VMware Cloud Foundation cluster as a starting point, using OCVS (Oracle Cloud VMware Solution): you have to be bold to test with your own credit card :-D</p>\n\n<p>An OCVS cluster can be up to 64 ESXi hosts -&gt; that&#39;s an ESXi cluster with 3328 Cores + 48TB Ram. Each OCVS cluster gets his own set of L2 segments.\nI did not had the opportunity to work on such large OVCS clusters, so I don&#39;t have specific numbers to share :-)</p>\n\n<p>But let&#39;s do some theory-craft for fun of it:</p>\n\n<ul>\n<li>assuming a fair 5:1 vCPU:CPU consolidation ration, that gives 33280 vCPUs (counting HT) at 100% load, 23296 vCPUs at 70% load</li>\n<li>assuming a 2-vCPUs single vnic VMs, that&#39;s ~11648 MAC addresses to handle for each (such LARGE) OCVS cluster. Bigger VMs = less MAC addresses.</li>\n</ul>\n\n<p>Is it a big number?</p>\n\n<p>A more reasonable ESXi cluster that we would probably see around in the typical enterprise, would be between 8 and 16 hosts -&gt; ~720 MAC addresses for a 16 hosts cluster with the same assumptions.</p>\n",
+         "id": "461",
+         "name": " Çetin ARDAL",
+         "pub": "2021-03-10T13:36:39",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2021/03/layer-2-public-cloud.html"
+}

@@ -1,0 +1,121 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1571">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daniel S</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1571" href="#1571">14 December 2022 01:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Wouldn&#39;t it make sense to implement SRD into, for example, the linux kernel and get rid of TCP for a lot of applications? I don&#39;t see it replacing UDP. But SRD for all of webtraffic? Wouldn&#39;t be that bad. 
+I read somewhere a few days ago that we should replace TCP in the datacenter; HA.. I found it again: https://arxiv.org/pdf/2210.00714.pdf 
+They&#39;re talking about &quot;Homa&quot;, I don&#39;t know enough application and transport stuff to know if the Homa idea is good or bad. And how it relates to SRD. </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1572">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1572" href="#1572">14 December 2022 01:43</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In the AWS case, SRD is used instead of VXLAN/GENEVE to transport customer data, so it&#39;s still Ethernet/IP/TCP above it.</p>
+
+<p>Replacing TCP with SRD is hard because the original designers of the socket API wrote QDS code before thinking it through... https://blog.ipspace.net/2009/08/what-went-wrong-socket-api.html</p>
+
+<p>As for &quot;replacing TCP in data center&quot;, that article is so full of bullshit that I postponed writing a reply till next year ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1573">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daniel S</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1573" href="#1573">14 December 2022 04:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I thought it was your idea for a next step to use SRD as a replacement for overlays because you wrote &bdquo;Next step&ldquo;. Sorry. </p>
+
+<p>But could it replace TCP for real? I&rsquo;m not talking overlays, just plain TCP. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1574">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1574" href="#1574">14 December 2022 04:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Could SRD replace TCP? Of course not. Applications consuming TCP streams expect in-order delivery. You could add in-order delivery to SRD, but then you just reinvented TCP ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1575">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> jsicuran</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1575" href="#1575">16 December 2022 01:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>When I first read about AWS ENA and SRD I was thinking, did AWS &ldquo;roll their own&rdquo; in a manner like RTP. EIGRP&rsquo;s own protocol to reliably send data to all &quot;nodes&quot;, with piggyback acks, etc that uses multicast and unicast methods.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

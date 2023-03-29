@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>22 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tiziano</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8319287886988287470">16 November 2011 09:22</a>
+                <a rel="nofollow" id="c8319287886988287470" href="#8319287886988287470">16 November 2011 09:22</a>
               </span>
             </div>
-            <p class="comment-content">As a matter of fact, in my J-series routers (and also with Olive, JUNOS 10.4R1.9) I am able to start LDP session without specifying any interfaces under the [protocols mpls] stanza, even if in all JUNOS documents you find that you have to enable interfaces inside  [protocols mpls] also. <br />What I find is that if you wanto to setup an MPLS-TE VC you need to enable interfaces under  [protocols mpls] (and under  [protocols rsvp] also !), but not for LDP (at least in real J-series routers, and Olive) . <br />Frankly, from a conceptual point of view,  I do not understand the need to specify interfaces under  [protocols mpls] also when you want to enable LDP. LDP Hello messages start as soon as you commit configuration after enabling interfaces under  [protocols ldp], and that is enough to start LDP sessions. I do not whether I am missing some points, but so far all LDP related configurations I made work fine.</p>
+            <div class="comment-content">As a matter of fact, in my J-series routers (and also with Olive, JUNOS 10.4R1.9) I am able to start LDP session without specifying any interfaces under the [protocols mpls] stanza, even if in all JUNOS documents you find that you have to enable interfaces inside  [protocols mpls] also. <br />What I find is that if you wanto to setup an MPLS-TE VC you need to enable interfaces under  [protocols mpls] (and under  [protocols rsvp] also !), but not for LDP (at least in real J-series routers, and Olive) . <br />Frankly, from a conceptual point of view,  I do not understand the need to specify interfaces under  [protocols mpls] also when you want to enable LDP. LDP Hello messages start as soon as you commit configuration after enabling interfaces under  [protocols ldp], and that is enough to start LDP sessions. I do not whether I am missing some points, but so far all LDP related configurations I made work fine.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tiziano</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8148313919319846712">16 November 2011 11:58</a>
+                <a rel="nofollow" id="c8148313919319846712" href="#8148313919319846712">16 November 2011 11:58</a>
               </span>
             </div>
-            <p class="comment-content">I have a kind request to all people partecipating to this blog. I am surely an old-fashioned guy so I do not have any Facebook or Twitter accounts (I prefer climbing mountains instead of wasting my free time in front a &quot;cold&quot; PC).<br /><br />Could you please avoid to use Twitter to post your interesting comments ? Thanks a lot.</p>
+            <div class="comment-content">I have a kind request to all people partecipating to this blog. I am surely an old-fashioned guy so I do not have any Facebook or Twitter accounts (I prefer climbing mountains instead of wasting my free time in front a &quot;cold&quot; PC).<br /><br />Could you please avoid to use Twitter to post your interesting comments ? Thanks a lot.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5438238565861659033">16 November 2011 12:42</a>
+                <a rel="nofollow" id="c5438238565861659033" href="#5438238565861659033">16 November 2011 12:42</a>
               </span>
             </div>
-            <p class="comment-content">I got LDP/MPLS up and running without listing the interfaces in [protocols mpls], but had to specify &quot;family mpls&quot; under [interfaces]. Not sure whether that&#39;s connected with the need to specify &quot;transport-address&quot; within [protocols ldp] or not.</p>
+            <div class="comment-content">I got LDP/MPLS up and running without listing the interfaces in [protocols mpls], but had to specify &quot;family mpls&quot; under [interfaces]. Not sure whether that&#39;s connected with the need to specify &quot;transport-address&quot; within [protocols ldp] or not.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tiziano</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#756447943907058289">16 November 2011 14:14</a>
+                <a rel="nofollow" id="c756447943907058289" href="#756447943907058289">16 November 2011 14:14</a>
               </span>
             </div>
-            <p class="comment-content">No, the &quot;family mpls&quot; under [edit interfaces name-interface.unit] is needed since Juniper touters interfaces by default accept IPv4 packets only. Adding &quot;family mpls&quot; instructs the router to accept packet from other protocols also. For instance, if you want an interface accept IPv6 packets you must add &quot;family inet6&quot;, for IS-IS messages you must include &quot;family iso&quot;, and so forth.<br />But for whatever reason, if you forget to enable &quot;family mpls&quot; on an interface, on that interface you cannot have any LDP sessions, even if an LDP session does not require to be set up any MPLS packet. Probably the idea is that if you set up an LDP session on an interfacce, sometime in the future that interface will receive MPLS packets.<br />Concerning &quot;transport-address&quot; you have to be very careful, since by default JUNOS uses as RID for every protocols (OSPF, BGP, LDP) the IP address configured under [routing-options] stanza. While for BGP and OSPF this address may be arbitrary (even unreachable, or totally invented) for LDP it must be L3-reachable since it is used by default for the TCP connection. So the best-practice I use is to define the router-id equal to the loopback interface address.<br />This is different from IOS, where you can define different RID for each protocol. As a matter of fact, I use the same best prectice in Cisco IOS also. I usually define the RID of each protocol equal to the IP address of the Loopback 0 interface (and of course I advertise this interface in IGP !)</p>
+            <div class="comment-content">No, the &quot;family mpls&quot; under [edit interfaces name-interface.unit] is needed since Juniper touters interfaces by default accept IPv4 packets only. Adding &quot;family mpls&quot; instructs the router to accept packet from other protocols also. For instance, if you want an interface accept IPv6 packets you must add &quot;family inet6&quot;, for IS-IS messages you must include &quot;family iso&quot;, and so forth.<br />But for whatever reason, if you forget to enable &quot;family mpls&quot; on an interface, on that interface you cannot have any LDP sessions, even if an LDP session does not require to be set up any MPLS packet. Probably the idea is that if you set up an LDP session on an interfacce, sometime in the future that interface will receive MPLS packets.<br />Concerning &quot;transport-address&quot; you have to be very careful, since by default JUNOS uses as RID for every protocols (OSPF, BGP, LDP) the IP address configured under [routing-options] stanza. While for BGP and OSPF this address may be arbitrary (even unreachable, or totally invented) for LDP it must be L3-reachable since it is used by default for the TCP connection. So the best-practice I use is to define the router-id equal to the loopback interface address.<br />This is different from IOS, where you can define different RID for each protocol. As a matter of fact, I use the same best prectice in Cisco IOS also. I usually define the RID of each protocol equal to the IP address of the Loopback 0 interface (and of course I advertise this interface in IGP !)</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8701117023584016248">16 November 2011 15:25</a>
+                <a rel="nofollow" id="c8701117023584016248" href="#8701117023584016248">16 November 2011 15:25</a>
               </span>
             </div>
-            <p class="comment-content">JunOS doesn&#39;t tie MPLS to LDP like Cisco does. RSVP is given equal footing in their label distribution protocols.</p>
+            <div class="comment-content">JunOS doesn&#39;t tie MPLS to LDP like Cisco does. RSVP is given equal footing in their label distribution protocols.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">tonhe</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1706308567075441802">16 November 2011 20:51</a>
+                <a rel="nofollow" id="c1706308567075441802" href="#1706308567075441802">16 November 2011 20:51</a>
               </span>
             </div>
-            <p class="comment-content">| Reload might have helped ;)<br /><br />You&#39;re just begging for the JunOS fanboy trolls to come in, aren&#39;t you? :)<br /><br />On a more serious note, thank you for clearing up some of the issues I was having.. expecting IOS behavior out of a Juniper router is hardly normal, but I had my own concerns with getting things functioning 100/100.</p>
+            <div class="comment-content">| Reload might have helped ;)<br /><br />You&#39;re just begging for the JunOS fanboy trolls to come in, aren&#39;t you? :)<br /><br />On a more serious note, thank you for clearing up some of the issues I was having.. expecting IOS behavior out of a Juniper router is hardly normal, but I had my own concerns with getting things functioning 100/100.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5193065189043408225">16 November 2011 23:15</a>
+                <a rel="nofollow" id="c5193065189043408225" href="#5193065189043408225">16 November 2011 23:15</a>
               </span>
             </div>
-            <p class="comment-content">Actually, I managed to totally confuse Junos (or shall I say JunOS to feed the trolls ;) ) a few times during the last days. A perfectly legal configuration that I couldn&#39;t possibly make to work ... until after a reload. <br /><br />I&#39;m positive it&#39;s just me, the negative energy I&#39;m emitting, and my grumpy attitude.</p>
+            <div class="comment-content">Actually, I managed to totally confuse Junos (or shall I say JunOS to feed the trolls ;) ) a few times during the last days. A perfectly legal configuration that I couldn&#39;t possibly make to work ... until after a reload. <br /><br />I&#39;m positive it&#39;s just me, the negative energy I&#39;m emitting, and my grumpy attitude.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Will</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7730658380033737145">17 November 2011 00:40</a>
+                <a rel="nofollow" id="c7730658380033737145" href="#7730658380033737145">17 November 2011 00:40</a>
               </span>
             </div>
-            <p class="comment-content">Is that what the configuration on a Junos router looks like?  <br /><br />I think I&#39;ve just been sold on never even considering Junos switches and routers.</p>
+            <div class="comment-content">Is that what the configuration on a Junos router looks like?  <br /><br />I think I&#39;ve just been sold on never even considering Junos switches and routers.</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5867187073018023721">17 November 2011 08:51</a>
+                <a rel="nofollow" id="c5867187073018023721" href="#5867187073018023721">17 November 2011 08:51</a>
               </span>
             </div>
-            <p class="comment-content">I think you made a wrong decision  :-P</p>
+            <div class="comment-content">I think you made a wrong decision  :-P</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">ccie15672</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5856047536654780551">17 November 2011 14:59</a>
+                <a rel="nofollow" id="c5856047536654780551" href="#5856047536654780551">17 November 2011 14:59</a>
               </span>
             </div>
-            <p class="comment-content">Like this fanboy!?  <br /><br />&quot;commit full&quot;   &lt;-- &#39;full&#39; is hidden keyword, but it forces complete rebuild of config internal to routing-engine... fixes things sometimes.</p>
+            <div class="comment-content">Like this fanboy!?  <br /><br />&quot;commit full&quot;   &lt;-- &#39;full&#39; is hidden keyword, but it forces complete rebuild of config internal to routing-engine... fixes things sometimes.</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">ccie15672</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2424034927043774590">17 November 2011 15:03</a>
+                <a rel="nofollow" id="c2424034927043774590" href="#2424034927043774590">17 November 2011 15:03</a>
               </span>
             </div>
-            <p class="comment-content">Also... Ivan, you should be using 10.4R7...  seriously.</p>
+            <div class="comment-content">Also... Ivan, you should be using 10.4R7...  seriously.</div>
           </div>
         </li>
       </div>
@@ -217,10 +212,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">ccie15672</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7571524302760743220">17 November 2011 15:04</a>
+                <a rel="nofollow" id="c7571524302760743220" href="#7571524302760743220">17 November 2011 15:04</a>
               </span>
             </div>
-            <p class="comment-content">The family xxxx statement under the interface units is telling the router to listen for certain ethertypes...</p>
+            <div class="comment-content">The family xxxx statement under the interface units is telling the router to listen for certain ethertypes...</div>
           </div>
         </li>
       </div>
@@ -235,10 +230,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1129770026207174034">17 November 2011 15:05</a>
+                <a rel="nofollow" id="c1129770026207174034" href="#1129770026207174034">17 November 2011 15:05</a>
               </span>
             </div>
-            <p class="comment-content">Thank you: I like fanboys that help us newbies ;)</p>
+            <div class="comment-content">Thank you: I like fanboys that help us newbies ;)</div>
           </div>
         </li>
       </div>
@@ -253,10 +248,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2003845801442348164">17 November 2011 15:06</a>
+                <a rel="nofollow" id="c2003845801442348164" href="#2003845801442348164">17 November 2011 15:06</a>
               </span>
             </div>
-            <p class="comment-content">Not available in Junosphere. Either 10.3 or 11.4 (experimental and &quot;somewhat&quot; buggy)</p>
+            <div class="comment-content">Not available in Junosphere. Either 10.3 or 11.4 (experimental and &quot;somewhat&quot; buggy)</div>
           </div>
         </li>
       </div>
@@ -271,10 +266,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6428021315751070860">17 November 2011 23:35</a>
+                <a rel="nofollow" id="c6428021315751070860" href="#6428021315751070860">17 November 2011 23:35</a>
               </span>
             </div>
-            <p class="comment-content">No? Prefer the old crappy dinosaur way of IOS?</p>
+            <div class="comment-content">No? Prefer the old crappy dinosaur way of IOS?</div>
           </div>
         </li>
       </div>
@@ -289,10 +284,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Chris Jones</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3665595199507931282">17 November 2011 23:37</a>
+                <a rel="nofollow" id="c3665595199507931282" href="#3665595199507931282">17 November 2011 23:37</a>
               </span>
             </div>
-            <p class="comment-content">The Junos way makes a lot more sense. LDP is a protocol and should therefore be under protocols. Just like with OSPF - configuring OSPF information on the interface like newer-IOS makes no sense... it&#39;s not an interface configuration, its a protocol.</p>
+            <div class="comment-content">The Junos way makes a lot more sense. LDP is a protocol and should therefore be under protocols. Just like with OSPF - configuring OSPF information on the interface like newer-IOS makes no sense... it&#39;s not an interface configuration, its a protocol.</div>
           </div>
         </li>
       </div>
@@ -307,10 +302,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Chris Jones</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1768226898861629706">17 November 2011 23:38</a>
+                <a rel="nofollow" id="c1768226898861629706" href="#1768226898861629706">17 November 2011 23:38</a>
               </span>
             </div>
-            <p class="comment-content">Feed the trolls? Are you saying I&#39;m a troll for saying people should capitalize a trademark correctly?</p>
+            <div class="comment-content">Feed the trolls? Are you saying I&#39;m a troll for saying people should capitalize a trademark correctly?</div>
           </div>
         </li>
       </div>
@@ -325,10 +320,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Chris Jones</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8096447107393959507">17 November 2011 23:40</a>
+                <a rel="nofollow" id="c8096447107393959507" href="#8096447107393959507">17 November 2011 23:40</a>
               </span>
             </div>
-            <p class="comment-content">Just wanted to point out that they don&#39;t listen for IPv4 by default either. You have to specify family inet for that to happen.</p>
+            <div class="comment-content">Just wanted to point out that they don&#39;t listen for IPv4 by default either. You have to specify family inet for that to happen.</div>
           </div>
         </li>
       </div>
@@ -343,10 +338,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Juniper JTAC</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2441635902530765622">17 November 2011 23:56</a>
+                <a rel="nofollow" id="c2441635902530765622" href="#2441635902530765622">17 November 2011 23:56</a>
               </span>
             </div>
-            <p class="comment-content">@will -Common misconception -  that&#39;s just the display mode - you don&#39;t type or manage the curly braces - just type single-line commands in what soon becomes very familiar fashion with auto-complete, inline help, etc. System organizes for display (and is XML under the covers). Also the basis for our scripting capability.</p>
+            <div class="comment-content">@will -Common misconception -  that&#39;s just the display mode - you don&#39;t type or manage the curly braces - just type single-line commands in what soon becomes very familiar fashion with auto-complete, inline help, etc. System organizes for display (and is XML under the covers). Also the basis for our scripting capability.</div>
           </div>
         </li>
       </div>
@@ -361,10 +356,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3945398147079672678">11 December 2013 22:22</a>
+                <a rel="nofollow" id="c3945398147079672678" href="#3945398147079672678">11 December 2013 22:22</a>
               </span>
             </div>
-            <p class="comment-content">Hi. Can anyone predict, that numbers of NextHop will be diffrent in &quot;Box Uplinks&quot; compare to &quot;Butterfly Uplinks&quot;, with LDP+TE/FRR enabled on juniper boxes?</p>
+            <div class="comment-content">Hi. Can anyone predict, that numbers of NextHop will be diffrent in &quot;Box Uplinks&quot; compare to &quot;Butterfly Uplinks&quot;, with LDP+TE/FRR enabled on juniper boxes?</div>
           </div>
         </li>
       </div>
@@ -379,10 +374,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Barranett Farquharson Jr</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#598688908558698903">12 April 2016 20:32</a>
+                <a rel="nofollow" id="c598688908558698903" href="#598688908558698903">12 April 2016 20:32</a>
               </span>
             </div>
-            <p class="comment-content">Does the Juniper method of Ordered LDP operation allows it to be more scalable than Cisco. </p>
+            <div class="comment-content">Does the Juniper method of Ordered LDP operation allows it to be more scalable than Cisco. </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -398,10 +393,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8969190591805872846">12 April 2016 20:34</a>
+                <a rel="nofollow" id="c8969190591805872846" href="#8969190591805872846">12 April 2016 20:34</a>
               </span>
             </div>
-            <p class="comment-content">In theory, yes. In practice, I don&#39;t think so.<br /><br />The _huge_ difference, however, is that Junos assigns labels to /32s (loopbacks) whereas Cisco IOS assigns labels to all non-BGP prefixes.</p>
+            <div class="comment-content">In theory, yes. In practice, I don&#39;t think so.<br /><br />The _huge_ difference, however, is that Junos assigns labels to /32s (loopbacks) whereas Cisco IOS assigns labels to all non-BGP prefixes.</div>
           </div>
         </li>
       </div>

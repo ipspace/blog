@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Juan Tarrio Brocade</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8113414577208805433">25 January 2012 10:40</a>
+                <a rel="nofollow" id="c8113414577208805433" href="#8113414577208805433">25 January 2012 10:40</a>
               </span>
             </div>
-            <p class="comment-content">Technically, the Fibre Channel standard defines multiple classes of service to be able to offer different types of transport. Class 1 offers a connection-oriented transport with frame acknowledgement, offering a completely reliable transport. But in the real world nobody implemented such classes of service, and the one used for storage 99,999% of the time is class 3 which is unreliable.<br /><br />Also, FC does not minimize packet loss by overprovisioning the network. It just uses flow control, it&#39;s that simple.</p>
+            <div class="comment-content">Technically, the Fibre Channel standard defines multiple classes of service to be able to offer different types of transport. Class 1 offers a connection-oriented transport with frame acknowledgement, offering a completely reliable transport. But in the real world nobody implemented such classes of service, and the one used for storage 99,999% of the time is class 3 which is unreliable.<br /><br />Also, FC does not minimize packet loss by overprovisioning the network. It just uses flow control, it&#39;s that simple.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4523315612640015565">25 January 2012 14:43</a>
+                <a rel="nofollow" id="c4523315612640015565" href="#4523315612640015565">25 January 2012 14:43</a>
               </span>
             </div>
-            <p class="comment-content">In my simplistic understanding of FC, Class 1 offers reliable transport because frames are acknowledged by the final receiver, very similarly to what TCP does in IP world. Am I wrong?<br /><br />As for &quot;over provisioning&quot;, you do need large buffers if you want to have reasonable performance with high-speed flow-controlled links, don&#39;t you?</p>
+            <div class="comment-content">In my simplistic understanding of FC, Class 1 offers reliable transport because frames are acknowledged by the final receiver, very similarly to what TCP does in IP world. Am I wrong?<br /><br />As for &quot;over provisioning&quot;, you do need large buffers if you want to have reasonable performance with high-speed flow-controlled links, don&#39;t you?</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">wmf</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6284376263507059364">25 January 2012 20:28</a>
+                <a rel="nofollow" id="c6284376263507059364" href="#6284376263507059364">25 January 2012 20:28</a>
               </span>
             </div>
-            <p class="comment-content">I think Infiniband gets pretty good utilization with small buffers thanks to credit-based flow control. Incast can cause congestion trees, though.</p>
+            <div class="comment-content">I think Infiniband gets pretty good utilization with small buffers thanks to credit-based flow control. Incast can cause congestion trees, though.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ashish Shah</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#305431235876317171">26 January 2012 01:17</a>
+                <a rel="nofollow" id="c305431235876317171" href="#305431235876317171">26 January 2012 01:17</a>
               </span>
             </div>
-            <p class="comment-content">Completely agree. From the end application point of view, VXLAN and transport over UDP are completely transparent. The applications will see only the internal packet (TCP or not) and expect the reliability associated with the internal protocol.</p>
+            <div class="comment-content">Completely agree. From the end application point of view, VXLAN and transport over UDP are completely transparent. The applications will see only the internal packet (TCP or not) and expect the reliability associated with the internal protocol.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Juan Tarrio Brocade</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7432133139629497465">26 January 2012 10:59</a>
+                <a rel="nofollow" id="c7432133139629497465" href="#7432133139629497465">26 January 2012 10:59</a>
               </span>
             </div>
-            <p class="comment-content">You only need large amounts of buffers for long-distance links to keep the link utilized. For local links you really don&#39;t need that many. For end devices you typically allocate 16 buffers. In FC all buffers have the same size (a full frame or 2148 bytes) and you use one up whether you transmit a full-size frame or a smaller frame. Is that really that much? That, in my book, it not overprovisioning.<br /><br />Especially if you say &quot;overprovisioning&quot; with the same meaning as Greg Ferro seems to like so much: FC switch vendors (and the whole storage industry) are greedy and have been stealing your money over the past 15 years just because they like to, to the point of calling users &quot;idiots&quot; for buying into such &quot;bullshit&quot;. And since you linked to his article where he expresses just this position, I thought you might endorse that position.<br /><br />FC switches have the memory resources they need to provide the reliability they need to provide for the criticality of the applications that run on them. They are not overprovisioned so that FC switch vendors can be rich.</p>
+            <div class="comment-content">You only need large amounts of buffers for long-distance links to keep the link utilized. For local links you really don&#39;t need that many. For end devices you typically allocate 16 buffers. In FC all buffers have the same size (a full frame or 2148 bytes) and you use one up whether you transmit a full-size frame or a smaller frame. Is that really that much? That, in my book, it not overprovisioning.<br /><br />Especially if you say &quot;overprovisioning&quot; with the same meaning as Greg Ferro seems to like so much: FC switch vendors (and the whole storage industry) are greedy and have been stealing your money over the past 15 years just because they like to, to the point of calling users &quot;idiots&quot; for buying into such &quot;bullshit&quot;. And since you linked to his article where he expresses just this position, I thought you might endorse that position.<br /><br />FC switches have the memory resources they need to provide the reliability they need to provide for the criticality of the applications that run on them. They are not overprovisioned so that FC switch vendors can be rich.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Juan Tarrio Brocade</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5105267389696030555">26 January 2012 11:13</a>
+                <a rel="nofollow" id="c5105267389696030555" href="#5105267389696030555">26 January 2012 11:13</a>
               </span>
             </div>
-            <p class="comment-content">BTW you are correct about Class 1. And not only that. Class 1 is a connection-oriented class of service so you create, maintain and dedicate a path through the fabric for a particular data flow, and all bandwidth along that path is dedicated for that flow. Class 4 is also connection-oriented but allows for a fraction of the bandwidth to be reserved. Again, neither class 1 nor 4 have ever been implemented by any FC switch vendor.<br /><br />Class 2 is a connectionless class of service but provides reliability by acknowledging frame delivery. It also supports end-to-end flow control by use of end-to-end credits (EE_credits) on top of the buffer-to-buffer flow control (BB_credits) on every hop. Although most (probably all) FC switch vendors have always implemented this class of service, very few end devices have ever used it. Some HBAs supported it but there were basically no storage devices that did. So if the two devices didn&#39;t support class 2, they reverted back to class 3 which ended up being the only class of service ever actually used in practice.<br /><br />Some more background: http://intranet.tataelxsi.co.in/Training_Web/Articles/SSG_Articles/Fibre_Channe_Services.PDF</p>
+            <div class="comment-content">BTW you are correct about Class 1. And not only that. Class 1 is a connection-oriented class of service so you create, maintain and dedicate a path through the fabric for a particular data flow, and all bandwidth along that path is dedicated for that flow. Class 4 is also connection-oriented but allows for a fraction of the bandwidth to be reserved. Again, neither class 1 nor 4 have ever been implemented by any FC switch vendor.<br /><br />Class 2 is a connectionless class of service but provides reliability by acknowledging frame delivery. It also supports end-to-end flow control by use of end-to-end credits (EE_credits) on top of the buffer-to-buffer flow control (BB_credits) on every hop. Although most (probably all) FC switch vendors have always implemented this class of service, very few end devices have ever used it. Some HBAs supported it but there were basically no storage devices that did. So if the two devices didn&#39;t support class 2, they reverted back to class 3 which ended up being the only class of service ever actually used in practice.<br /><br />Some more background: http://intranet.tataelxsi.co.in/Training_Web/Articles/SSG_Articles/Fibre_Channe_Services.PDF</div>
           </div>
         </li>
       </div>

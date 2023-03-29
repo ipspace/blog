@@ -1,0 +1,181 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1649">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jose</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1649" href="#1649">07 February 2023 05:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>What about BIRD on Linux? I started using it for my &quot;vendor-neutral&quot; posts, and I have been very positively surprised about its versatility.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1650">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> JeffT </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1650" href="#1650">07 February 2023 06:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Please note - (somewhat vendor dependent) when GR is not negotiated - EoR is not sent; most BGP implementations will use 1st (well, technically 2nd) keepalive as an indicator that the sender is done and best path can be run</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1665">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1665" href="#1665">15 February 2023 08:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>yes - I have just experienced this with IOSXR and it is very annoying as we wanted to track EoR to measure the BGP convergence time throughout major faults and build some stats/data to then analyse. <br />
+In a major router vendor, EoR is only available for GR and Enhanced Route Refresh (clear bgp soft). <br />
+Having said that, RFC 4742 says: <br />
+&quot;
+Although the End-of-RIB marker is specified for the purpose of BGP graceful restart, it is noted that the generation of such a marker upon completion of the initial update would be useful for routing convergence in general, and thus the practice is recommended.
+&quot; </p>
+
+<p>Cheers/Ciao <br />
+Andrea </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1652">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Mehdi SFAR</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1652" href="#1652">08 February 2023 07:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>As you correctly mentioned, it&#39;s crucial to be cautious when modifying this timer as doing so may result in unexpected consequences.</p>
+
+<p>For example, in a multihomed design where the CE receives the default route from both PEs, if the primary PE restarts and establishes the CE-PE peering, it may start sending the Default route before VPNv4 convergence is complete, potentially causing traffic to be blackholed for some time.</p>
+
+<p>Therefore, depending on the number of peerings and routes involved, maintaining or even increasing the update-delay timer may be necessary in certain use cases.</p>
+
+<p>BTW, a quick point regarding the update-delay timer: The update-delay timer waits after the FIRST neighbor is established before starting its calculation.</p>
+
+<p>I just wanted to share this use case with the readers.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1653">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Donald Sharp</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1653" href="#1653">08 February 2023 08:05</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>FRR has two modes for this <code>datacenter</code> mode where the update delay is set to 0( just start doing the work ) and <code>traditional</code> where the update delay is 120 seconds as you have experienced.  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1676">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Oleg</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1676" href="#1676">22 February 2023 11:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>update-delay is 0 In FRR regardless of which mode is selected.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1666">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1666" href="#1666">15 February 2023 09:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Another production use-case for which this timer is useful is to avoid sending aggregates before sending all of their contributors too, this way avoiding blackholing. </p>
+
+<p>Cheers/Ciao</p>
+
+<p>Andrea</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

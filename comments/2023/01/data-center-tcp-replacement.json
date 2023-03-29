@@ -1,0 +1,96 @@
+{
+   "comments": [
+      {
+         "date": "10 January 2023 03:30",
+         "html": "<p>Hi Ivan,</p>\n\n<p>Thank you for this article.</p>\n\n<p>While &quot;expectation of in-order packet delivery&quot; was an eyebrow-raiser for me (it&#39;s literally the opposite!), the complaint that TCP has HoL blocking when unrelated messages are fired into a single socket was my signal to put this paper down and do something else.</p>\n\n<p>I hope those fanning the hype on this topic can reorganize around reasonable criticisms and actual problems experienced by sensibly written applications.</p>\n\n<p>Oh... And Golang absolutely needs more jabs for its ridiculous violation of both Postel&#39;s law and the Principle of Least Surprise with its insane TCP_NODELAY defaults. While it&#39;s probably too late to un-ring that bell, the situation sure smells like a similar bad call based on somebody&#39;s narrow view on what constitutes a widespread problem.</p>\n",
+         "id": "1590",
+         "name": "chris marget ",
+         "pub": "2023-01-10T15:30:05",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "01 February 2023 11:20",
+               "html": "<p>Hmmm, I read the three relevant papers (2 homa papers + the position paper) and John&#39;s response (see comments below) after this post. My impression is quite the opposite: it appears that the &quot;research guys&quot; actually went into great depth in understanding the problems and measuring the performance, while some &quot;real engineers&quot; are too prone to dismiss interesting things that go against their intuition or get bogged down with secondary issues.</p>\n\n<p>I agree that the position paper could have been worded better and it definitely has some inaccurate/incorrect claims about TCP. But, overall, I find the author&#39;s response rather convincing.</p>\n\n<hr />\n\n<p>B. Montazeri, Y. Li, M. Alizadeh, and J. Ousterhout, &quot;Homa: A Receiver-Driven Low-Latency Transport Protocol Using Network Priorities,&quot; Proc. ACM SIGCOMM 2018, August 2018, pp. 221&ndash;235. <a href=\"http://arxiv.org/abs/1803.09615\">Complete version</a></p>\n\n<p>J. Ousterhout, [&quot;A Linux Kernel Implementation of the Homa Transport Protocol,&quot;](J. Ousterhout, &quot;A Linux Kernel Implementation of the Homa Transport Protocol,&quot; 2021 USENIX Annual Technical Conference (USENIX ATC &#39;21), July 2021, pp. 773&ndash;787.) 2021 USENIX Annual Technical Conference (USENIX ATC &#39;21), July 2021, pp. 773&ndash;787.</p>\n",
+               "id": "1634",
+               "name": "kc",
+               "pub": "2023-02-01T11:20:19",
+               "ref": "1591",
+               "type": "comment"
+            },
+            {
+               "date": "01 February 2023 01:30",
+               "html": "<p>As far as I&#39;m concerned, Homa might be the best transport protocol ever invented, and they could have done a great implementation job.</p>\n\n<p>However, the measurement methodology used in the deep dive papers makes the comparison between TCP and Homa useless, as does ignoring a half-dozen other technologies that I mentioned in the blog post. </p>\n\n<p>Version 1 of the position paper published on October 3rd 2022 makes several obviously invalid claims, ignores prior art and real-life deployment of production-grade solutions like RDMA within HPC clusters, SRD within AWS, or RoCE within Azure, and fails to explain why Homa would be better than any of the obviously-successful alternatives. Please don&#39;t claim that the &quot;networking engineers are too prone to dismiss interesting things that go against their intuition or get bogged down with secondary issues&quot; if the authors proposing new ideas don&#39;t get the obvious stuff right.</p>\n",
+               "id": "1635",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-02-01T13:30:52",
+               "ref": "1634",
+               "type": "comment"
+            }
+         ],
+         "date": "10 January 2023 06:23",
+         "html": "<p>Thanks for this article! I have enjoyed reading it...</p>\n\n<p>I have regularly get such academic ideas without seeing a proper experience in real-life networking. \nI am so tired of them... Since the early nineties... :-)</p>\n\n<p>Most of those research guys have no ideas about realities. They should read your blog to capture some stuff... :-) Keep going! </p>\n",
+         "id": "1591",
+         "name": "Bela Varkonyi",
+         "pub": "2023-01-10T18:23:39",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "12 January 2023 02:06",
+               "html": "<p>I think you are accusing technical incompetence where you should be critisising weak phrasing.</p>\n\n<p>&quot;BS, a transport protocol does none of that, neither should it. TCP doesn&#39;t do it either. Why should TCP or any transport protocol care about scheduling? Queuing/scheduling is a network function, be it done in the NIC or in the routers/switches. If I&#39;m wrong, pls point out.&quot;</p>\n\n<p>Fair scheduling probably is not the most precise term, but congestion control basically trickles down to trying to achieve something approaching fairness.</p>\n\n<p>&quot;TCP needs in-order delivery: utter nonsense. What are its segment number and retransmission mechanism for?&quot;</p>\n\n<p>Avoiding much out-of-order delivery is important still if you care about performance, which is what this paper is all about.</p>\n\n<p>&quot;Don&#39;t think so. When a packet doesn&#39;t come within its expected time window, then TCP assumes it&#39;s lost in transit/dropped and attempts rectification. If it arrives out of order but doesn&#39;t get lost, TCP couldn&#39;t care less.&quot;</p>\n\n<p>However, with many in-between packets as can occur in the decribed context (packet-granular link load balancing), fast retransmit may cause additional traffic and reduce the congestion window/sending rate. </p>\n\n<p>&quot;per-packet LB has existed for so long. It&#39;s used within networks (not on Internet where flow-based LB is used) to promote better LB than flow-based and because within a network, it&#39;s easier to control QoS.&quot;\nI do however agree with this. The prevalent notion that packet spraying causes heavy out-of-order delivery is usually wrong on paths with symmetric link capacities and similar delay.</p>\n\n<p>&quot;congestion often happens due to hotspots, which can be due to sudden overload (link failure, flapping), or incast, LRD/self-similar traffic&quot;\nagain, the argument is not really that flow-consistent routing is actually the root cause, but that, if it were not for that, the available link capacity could be used more effectively.</p>\n\n<p>All in all, while i do agree that with a title like that, he is just asking for angry responses, i also wonder whether the critics could be a bit more fair and maybe even more polite. The notion that this guy has just no idea what he is talking about because he is an academic is cheap and just plain wrong.</p>\n",
+               "id": "1593",
+               "name": " tmp",
+               "pub": "2023-01-12T14:06:58",
+               "ref": "1592",
+               "type": "comment"
+            },
+            {
+               "date": "13 January 2023 08:43",
+               "html": "<p>Hi tmp,</p>\n\n<p>Thx for your thought. No, I&#39;m not angry with John, otherwise I&#39;d not have said Homa has merits and John and his team should spend more effort trying to implement it in real networks that they can build/get their hands on. That&#39;s a literal comment, not sarcasm. </p>\n\n<p>As for:</p>\n\n<p>&quot;Fair scheduling probably is not the most precise term, but congestion control basically trickles down to trying to achieve something approaching fairness.&quot;</p>\n\n<p>A man of John&#39;s stature should know the terms better, esp. if he wants his ideas to be taken more seriously. Congestion control is, as its name suggests, about relieving congestion, not about fair go between flows.  For fair go between flows, that&#39;s technically a network problem and should be solved in the network, using QoS, with superior results. Putting scheduling into the transport protocol, is far from ideal, to put it mildly. </p>\n\n<p>Also, besides the point, but adding crappy kludges like fast retransmit and delayed ack is a classic way of generating more complexity due to an incomplete understanding of the problem&#39;s (congestion control) nature. DCTCP ECN is a step in the right direction, but taken at the wrong layer, hence the limited effect. In DC environment though, due to the small size of the network (vs the big Internet), DCTCP ECN should be &quot;good enough&quot; for the most use cases though. </p>\n\n<p>&quot;Avoiding much out-of-order delivery is important still if you care about performance, which is what this paper is all about.&quot;</p>\n\n<p>Yes, I agree. However, the wording is wrong: &quot;However, packet spraying cannot be used with TCP since it could change the order in which packets arrive at their destination.&quot; Here John implied that TCP needs in-order delivery. TCP doesn&#39;t NEED in-order delivery. It can be good to have it if latency is of concerns, but NEED implies something essential, which is not the case here, as packet spraying/per-packet LB has existed for ages, and TCP ran on top of it no problem. Again, a man like John should have known the difference. Did he not know, or did he intentionally mislead, in order to promote Homa over TCP? That&#39;s my beef.</p>\n\n<p>&quot;the argument is not really that flow-consistent routing is actually the root cause&quot;</p>\n\n<p>John&#39;s wording &quot;I hypothesize that flow-consistent routing is responsible for virtually all of the congestion that occurs in the core of data center networks,&quot; suggests to me he thinks it&#39;s the root cause :)) .</p>\n\n<p>Like I said, I don&#39;t think people should be restricted to 1 or 2 transport protocols. They should try more, and keep what works. Protocol reverence and holy wars are just dumb. But when criticizing, stick to the relevant problems. Making additional sockets to send unrelated msg is a task that should be the responsibility of the applications, which are aware of what they are sending and when. Dumping more complexity into the transport protocol is the wrong way to do things. The transport protocol should be generic enough and simple enough to scale well, as should the network. Policy should be independent of mechanism, and the transport protocol, like the network, should worry about the mechanism, the how, not the what. The L4 OS, for ex, gets its breathtaking speed from stripping off all non-essential elements. Simplicity is can be very performance-enhancing. Want a fast network and fast transport? Do the same. </p>\n",
+               "id": "1595",
+               "name": " Minh",
+               "pub": "2023-01-13T08:43:08",
+               "ref": "1593",
+               "type": "comment"
+            },
+            {
+               "date": "13 January 2023 12:10",
+               "html": "<p>&quot;A man of John&#39;s stature should know the terms better, esp. if he wants his ideas to be taken more seriously.&quot;</p>\n\n<p>No reason to purposely &quot;misunderstand&quot; what he is writing though. Also, i still take him seriously, because he seems to be doing interesting and solid work and some appreciate that. </p>\n\n<p>&quot;Congestion control is, as its name suggests, about relieving congestion, not about fair go between flows. For fair go between flows, that&#39;s technically a network problem and should be solved in the network, using QoS, with superior results. Putting scheduling into the transport protocol, is far from ideal, to put it mildly.&quot;</p>\n\n<p>That is arguable at best and more importantly totally irrelevant to what the paper was alluding to.</p>\n\n<p>&quot;However, the wording is wrong. [...]&quot;</p>\n\n<p>That&#39;s what i&#39;ve been saying. The wording could be better, but implying that this is actually meant and extending further argumentation based on that serves nothing but self-gratification. </p>\n\n<p>John&#39;s wording &quot;I hypothesize that flow-consistent routing is responsible for virtually all of the congestion that occurs in the core of data center networks,&quot; suggests to me he thinks it&#39;s the root cause :)) .</p>\n\n<p>Again. Obviously the routing in itself is seldom the root cause. It&#39;s an argument for the benefit of being able to allow for more fine-granular routing. He claims that the benefits are larger compared to improvements based on other routing techniques, i.e. without it you are less efficient and therefore &quot;create congestion&quot; when traffic load is high. The claim of that being the biggest improvement is in most cases not true imo, but it depends on topology, traffic and what you compare to. But implying he thinks that flow-consistent routing would somehow create congestion, not bc of being less efficient, but as a root cause, is either ill-natured or lacks empathy. </p>\n",
+               "id": "1596",
+               "name": " tmp",
+               "pub": "2023-01-13T12:10:10",
+               "ref": "1595",
+               "type": "comment"
+            }
+         ],
+         "date": "12 January 2023 09:03",
+         "html": "<p>I don&#39;t have problem with people wanting to push protocols. My thinking on this is similar to that of Rodney Brooks: try thousands of things, a lot of them will fail, but we&#39;ll learn a lot and realize what&#39;s working to keep. But people should go beyond talking about protocols on papers; it rings hollow. Have the guts to implement them in the real world (or are they afraid of risking their own money?) If a protocol can prove itself, surely it&#39;ll catch on in time.</p>\n\n<p>Having said that, there&#39;s no need to use the typical tactic of talking down another one to boost your own, and if you do so, stick to the right metrics. I agree with the majority of what you wrote in this blog. TCP has its own flaws, serious ones at that, but a lot of what John brought up was bogus. For ex:</p>\n\n<p>&quot;In TCP, when a host&rsquo;s link is overloaded (either for incoming or outgoing traffic), TCP attempts to share the available bandwidth equally among the active connections. This approach is also referred to as &ldquo;fair scheduling.&rdquo;</p>\n\n<p>BS, a transport protocol does none of that, neither should it. TCP doesn&#39;t do it either. Why should TCP or any transport protocol care about scheduling? Queuing/scheduling is a network function, be it done in the NIC or in the routers/switches. If I&#39;m wrong, pls point out.</p>\n\n<p>TCP needs in-order delivery: utter nonsense. What are its segment number and retransmission mechanism for? </p>\n\n<p>&quot;it assumes that out-of-order arrivals indicate packet drops.&quot; Don&#39;t think so. When a packet doesn&#39;t come within its expected time window, then TCP assumes it&#39;s lost in transit/dropped and attempts rectification. If it arrives out of order but doesn&#39;t get lost, TCP couldn&#39;t care less.</p>\n\n<p>&quot;packet spraying cannot be used with TCP&quot;: per-packet LB has existed for so long. It&#39;s used within networks (not on Internet where flow-based LB is used) to promote better LB than flow-based and because within a network, it&#39;s easier to control QoS. </p>\n\n<p>&quot;I hypothesize that flow-consistent routing is responsible for virtually all of the congestion that occurs in the core of data center networks&quot;: congestion often happens due to hotspots, which can be due to sudden overload (link failure, flapping), or incast, LRD/self-similar traffic...Whether you use flow-based or packet-based routing, you can&#39;t get over these inconveniences. That&#39;s why trivial traffic modeling can&#39;t speak for reality, and we need to put protocols in action instead of just testing them in some simplistic lab scenarios.</p>\n\n<p>Homa has its merit, so John and his team should spend their effort pushing it in real networks and see how it fares in reality. That will be more productive and helpful, than writing paper talking down TCP on faults it&#39;s not responsible for. </p>\n",
+         "id": "1592",
+         "name": " Minh",
+         "pub": "2023-01-12T09:03:20",
+         "type": "comment"
+      },
+      {
+         "date": "19 January 2023 06:32",
+         "html": "<p>Ivan raises lots of interesting points, as do the comments above. I&#39;ve written a response and posted it on the Homa Wiki: <a href=\"https://homa-transport.atlassian.net/l/cp/27FLingq\">https://homa-transport.atlassian.net/l/cp/27FLingq</a>. Additional comments are welcome.</p>\n",
+         "id": "1611",
+         "name": " John Ousterhout",
+         "pub": "2023-01-19T18:32:53",
+         "type": "comment"
+      },
+      {
+         "date": "23 February 2023 07:50",
+         "html": "<p>The proliferation of scientific papers that are flawed, lack evidence or facts, and ignore logic is a growing concern in the scientific community. While the format of scientific papers may lend them an air of authenticity, the reality is that many of these papers are little more than opinionated tweets masquerading as serious research.</p>\n\n<p>One of the primary reasons for the rise in flawed scientific papers is the pressure to publish. In academia, publishing research is often seen as a key metric of success, and this pressure can lead to researchers cutting corners or rushing to publish without proper peer review or fact-checking. As a result, many papers lack rigor and fail to meet the basic standards of scientific inquiry.</p>\n\n<p>Another factor is the increasing influence of politics and ideology on scientific research. In some cases, researchers may be more interested in advancing a particular political or ideological agenda than in conducting rigorous research. This can lead to biased research, cherry-picking of data, and other practices that undermine the credibility of scientific inquiry.</p>\n\n<p>The consequences of flawed scientific papers can be severe, ranging from wasted resources to public health risks. In some cases, flawed research can lead to false conclusions that can have a real-world impact on policy decisions, medical treatments, and public health interventions. This highlights the urgent need for more rigorous standards and oversight of scientific research, as well as greater transparency and accountability in the publishing process.</p>\n\n<p>In summary, the prevalence of flawed scientific papers is a serious issue that undermines the credibility of scientific inquiry and can have real-world consequences. To address this issue, it&#39;s important to promote rigorous standards, greater transparency, and increased oversight of the publishing process.</p>\n",
+         "id": "1678",
+         "name": " Kent",
+         "pub": "2023-02-23T07:50:26",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2023/01/data-center-tcp-replacement.html"
+}

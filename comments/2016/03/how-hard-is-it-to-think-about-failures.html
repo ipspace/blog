@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>9 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01346466217359422202" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7897220316744052991">21 March 2016 13:27</a>
+                <a rel="nofollow" id="c7897220316744052991" href="#7897220316744052991">21 March 2016 13:27</a>
               </span>
             </div>
-            <p class="comment-content">Ivan:<br /><br />I wanted to add a similar story, not related to DC.  For years and years (and even still) most people deploying firewalls do so in a redundant fashion.  They set up high-speed state sync between two boxes.  If you were to ask any of them why they do this, they almost invariably say, &quot;Because redundancy.&quot;   <br /><br />This is the truth, though.  Most firewall failures have been the result of of high availability features on the firewall.  If one of the firewall vomits all over the place, it almost invariably screws up the high availability features.  When this is discussed with firewall folk or the vendor, we eventually get around to a statement like this: &quot;These features are really about failures that happen around the firewall, not for failures in the firewalls themselves.&quot;  That is, if a switch link or switch, or router dies, then traffic will find it&#39;s way to the opposite firewall and everybody will be happy.<br /><br />The issue with this is that the firewall failures that do happen because of these features tend to be things like configuration changes to the firewalls, port scans on a common subnet between them, routing events when the firewalls are routing, etc.  <br /><br />It has been my recommendation for some time to just not use these features on firewalls.  Build a redundant infrastructure in the dedicated forwarding stuff around the firewalls.  Ensure that traffic will tend to find it&#39;s way back to the same firewall as much as possible.  Without these HA features enabled, firewalls have much lower fail rates.  Overall everyone will be happier.<br /><br />Personally, I put firewall state sync features in the same bucket as ISSU features:  Wishful thinking at best, destructive nonsense at worst.<br /><br />Derick<br />aka @Cloudtoad</p>
+            <div class="comment-content">Ivan:<br /><br />I wanted to add a similar story, not related to DC.  For years and years (and even still) most people deploying firewalls do so in a redundant fashion.  They set up high-speed state sync between two boxes.  If you were to ask any of them why they do this, they almost invariably say, &quot;Because redundancy.&quot;   <br /><br />This is the truth, though.  Most firewall failures have been the result of of high availability features on the firewall.  If one of the firewall vomits all over the place, it almost invariably screws up the high availability features.  When this is discussed with firewall folk or the vendor, we eventually get around to a statement like this: &quot;These features are really about failures that happen around the firewall, not for failures in the firewalls themselves.&quot;  That is, if a switch link or switch, or router dies, then traffic will find it&#39;s way to the opposite firewall and everybody will be happy.<br /><br />The issue with this is that the firewall failures that do happen because of these features tend to be things like configuration changes to the firewalls, port scans on a common subnet between them, routing events when the firewalls are routing, etc.  <br /><br />It has been my recommendation for some time to just not use these features on firewalls.  Build a redundant infrastructure in the dedicated forwarding stuff around the firewalls.  Ensure that traffic will tend to find it&#39;s way back to the same firewall as much as possible.  Without these HA features enabled, firewalls have much lower fail rates.  Overall everyone will be happier.<br /><br />Personally, I put firewall state sync features in the same bucket as ISSU features:  Wishful thinking at best, destructive nonsense at worst.<br /><br />Derick<br />aka @Cloudtoad</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://noiproute.wordpress.com" rel="nofollow">John Ellis</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5172977488857857077">21 March 2016 14:05</a>
+                <a rel="nofollow" id="c5172977488857857077" href="#5172977488857857077">21 March 2016 14:05</a>
               </span>
             </div>
-            <p class="comment-content">Amen to this, ive long since argued the point that HA on firewall is an exercise in fate sharing, not a fine example of how we should be managing failover between devices.  <br /><br />Yes we need redundancy, no we don&#39;t need our backup device sharing the same fate as our primary because user error or some undocumented feature (bug) wrote rubbish all over our config and (as you aptly put) vomited all over itself or trashes the state table.<br /><br />Id much rather wear the risk of having a pair of independent firewalls and manage the rulebase independently (SDN use case here to orchestrate?) and rely on L3 to deal with my redundancy, sure ill lose state and have a momentary interruption, but ill have isolated the failure domain and if the business accepts the risk, where&#39;s the harm in having an outage for a few seconds as L3 reconverges, as opposed to trying to fix broken/misconfigured firewalls?</p>
+            <div class="comment-content">Amen to this, ive long since argued the point that HA on firewall is an exercise in fate sharing, not a fine example of how we should be managing failover between devices.  <br /><br />Yes we need redundancy, no we don&#39;t need our backup device sharing the same fate as our primary because user error or some undocumented feature (bug) wrote rubbish all over our config and (as you aptly put) vomited all over itself or trashes the state table.<br /><br />Id much rather wear the risk of having a pair of independent firewalls and manage the rulebase independently (SDN use case here to orchestrate?) and rely on L3 to deal with my redundancy, sure ill lose state and have a momentary interruption, but ill have isolated the failure domain and if the business accepts the risk, where&#39;s the harm in having an outage for a few seconds as L3 reconverges, as opposed to trying to fix broken/misconfigured firewalls?</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tommy McNicholas</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1468587035140649413">21 March 2016 14:54</a>
+                <a rel="nofollow" id="c1468587035140649413" href="#1468587035140649413">21 March 2016 14:54</a>
               </span>
             </div>
-            <p class="comment-content">I can agree with a lot of this. You do create problems elsewhere though. Maintaining consistent rule-sets across independent firewalls can be a small nightmare in itself. It really just depends on what level of redundancy you&#39;re designing for here. The same applies to say... load balancers.</p>
+            <div class="comment-content">I can agree with a lot of this. You do create problems elsewhere though. Maintaining consistent rule-sets across independent firewalls can be a small nightmare in itself. It really just depends on what level of redundancy you&#39;re designing for here. The same applies to say... load balancers.</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1211636137381084408">21 March 2016 15:03</a>
+                <a rel="nofollow" id="c1211636137381084408" href="#1211636137381084408">21 March 2016 15:03</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Maintaining consistent rule-sets across independent firewalls can be a small nightmare&quot;<br /><br />That&#39;s true as long as you configure rulesets manually. You don&#39;t have that problem if you generate them from a template, and deploy them automatically.</p>
+            <div class="comment-content">&quot;Maintaining consistent rule-sets across independent firewalls can be a small nightmare&quot;<br /><br />That&#39;s true as long as you configure rulesets manually. You don&#39;t have that problem if you generate them from a template, and deploy them automatically.</div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14135269129889078657" rel="nofollow">HairyBear</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#470285729287290642">22 March 2016 03:10</a>
+                <a rel="nofollow" id="c470285729287290642" href="#470285729287290642">22 March 2016 03:10</a>
               </span>
             </div>
-            <p class="comment-content">Some firewall vendors allow state sync between independent firewalls, which can be centrally managed so that the firewall policy is consistent. You can then allow your surrounding devices to determine which firewall path to take and the only thing to worry about is the state sync</p>
+            <div class="comment-content">Some firewall vendors allow state sync between independent firewalls, which can be centrally managed so that the firewall policy is consistent. You can then allow your surrounding devices to determine which firewall path to take and the only thing to worry about is the state sync</div>
           </div>
         </li>
       </div>
@@ -110,10 +105,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09771677856264877238" rel="nofollow">Jeff Behrns</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#401180514417085830">22 March 2016 04:45</a>
+                <a rel="nofollow" id="c401180514417085830" href="#401180514417085830">22 March 2016 04:45</a>
               </span>
             </div>
-            <p class="comment-content">And what about &quot;next gen&quot; FW features which make decisions not just on transit traffic properties, but also on data extrapolated from an external source like LDAP server and correlated to the packets transiting the FW?  Seems like the same shared fate issue exists, maybe even worse.</p>
+            <div class="comment-content">And what about &quot;next gen&quot; FW features which make decisions not just on transit traffic properties, but also on data extrapolated from an external source like LDAP server and correlated to the packets transiting the FW?  Seems like the same shared fate issue exists, maybe even worse.</div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Piotr Jablonski</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#730859248825190510">21 March 2016 15:15</a>
+                <a rel="nofollow" id="c730859248825190510" href="#730859248825190510">21 March 2016 15:15</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, a read-only network is not really a failed network especially that you are not a big fan of VMotion. :) Applications will be still working giving time to change a mode of NSX or redeploy a cluster of controllers.<br /><br />An another discussion is what is a failure domain? Is it when the failure’s impact in one part  of a network or Data Center is propagated to an another part? Actually you can have a non-zero probability in any solution under a common administration. Even in a BGP-only solution someone can inject an inappropriate subnet by mistake causing an outage in all Data Centers. You can say that NSX can cause an outage by design not because of a human mistake. IMHO not really. Under a common administration one mistake in a prefix policy can cause a fate sharing even in the BGP-based Data Centers (without SDN). So in BGP a mistake is also propagated. Unless there are different admins and policies which just decreases probability. So there is a better control in BGP but does it mean that your setup cannot fail? Yes, it can. Does it mean that the BGP-based DC is a single failure domain? Partially yes. A case with a Youtube prefix hijack proves that at the end the Internet is also a single failure domain. Of course there is a lower failure probability of BGP than L2 VLAN extension or SDN solution but still there is. What do you think?<br /><br />Thank you for your interesting posts! <br />Kind regards,<br /><br />Piotr</p>
+            <div class="comment-content">Ivan, a read-only network is not really a failed network especially that you are not a big fan of VMotion. :) Applications will be still working giving time to change a mode of NSX or redeploy a cluster of controllers.<br /><br />An another discussion is what is a failure domain? Is it when the failure’s impact in one part  of a network or Data Center is propagated to an another part? Actually you can have a non-zero probability in any solution under a common administration. Even in a BGP-only solution someone can inject an inappropriate subnet by mistake causing an outage in all Data Centers. You can say that NSX can cause an outage by design not because of a human mistake. IMHO not really. Under a common administration one mistake in a prefix policy can cause a fate sharing even in the BGP-based Data Centers (without SDN). So in BGP a mistake is also propagated. Unless there are different admins and policies which just decreases probability. So there is a better control in BGP but does it mean that your setup cannot fail? Yes, it can. Does it mean that the BGP-based DC is a single failure domain? Partially yes. A case with a Youtube prefix hijack proves that at the end the Internet is also a single failure domain. Of course there is a lower failure probability of BGP than L2 VLAN extension or SDN solution but still there is. What do you think?<br /><br />Thank you for your interesting posts! <br />Kind regards,<br /><br />Piotr</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8063273201023797336">21 March 2016 16:33</a>
+                <a rel="nofollow" id="c8063273201023797336" href="#8063273201023797336">21 March 2016 16:33</a>
               </span>
             </div>
-            <p class="comment-content">Piotr,<br /><br />Thanks for a very elaborate answer. I think Dmitri provided enough in-depth information on what might fail in what scenario for the readers to form their own opinion.<br /><br />And yes, there is only one absolute guarantee in life (as we know it so far), everything else has a non-zero failure rate. However, you _could_ protect yourself against certain failures (even though you don&#39;t) and you _can&#39;t_ protect yourself against certain other failures. In the BGP case you mention, it was not a BGP failure, but a negligence on part of the upstream provider who had no BGP filters toward their customers, so you really can&#39;t compare the two. Even the best tool can fail when used improperly.<br /><br />Ivan</p>
+            <div class="comment-content">Piotr,<br /><br />Thanks for a very elaborate answer. I think Dmitri provided enough in-depth information on what might fail in what scenario for the readers to form their own opinion.<br /><br />And yes, there is only one absolute guarantee in life (as we know it so far), everything else has a non-zero failure rate. However, you _could_ protect yourself against certain failures (even though you don&#39;t) and you _can&#39;t_ protect yourself against certain other failures. In the BGP case you mention, it was not a BGP failure, but a negligence on part of the upstream provider who had no BGP filters toward their customers, so you really can&#39;t compare the two. Even the best tool can fail when used improperly.<br /><br />Ivan</div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Piotr Jablonski</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5542482851104142304">21 March 2016 15:27</a>
+                <a rel="nofollow" id="c5542482851104142304" href="#5542482851104142304">21 March 2016 15:27</a>
               </span>
             </div>
-            <p class="comment-content">To add to a previous post, maybe you should consider solutions in two categories of a single domain: <br />1. A level of impact of a data plane domain.<br />2. A level of impact of a control plane domain. <br /><br />In the first categories there are L2 extensions, VLANs, VPLS, OTV, VXLAN, etc. In the second category there will be the NSX cluster of controllers, BGP, etc. Every technology has its own propability. So a failure domain in VXLAN is much smaller and segmented comparing to extending VLAN natively as DCI. In the control plane category BGP has a lower probability than others.</p>
+            <div class="comment-content">To add to a previous post, maybe you should consider solutions in two categories of a single domain: <br />1. A level of impact of a data plane domain.<br />2. A level of impact of a control plane domain. <br /><br />In the first categories there are L2 extensions, VLANs, VPLS, OTV, VXLAN, etc. In the second category there will be the NSX cluster of controllers, BGP, etc. Every technology has its own propability. So a failure domain in VXLAN is much smaller and segmented comparing to extending VLAN natively as DCI. In the control plane category BGP has a lower probability than others.</div>
           </div>
         </li>
       </div>

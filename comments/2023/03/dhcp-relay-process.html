@@ -1,0 +1,129 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1695">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Pere Camps</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1695" href="#1695">09 March 2023 11:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>DHCP in EVPN/VXLAN (with anycast) is so evil that we&#39;re thinking of running standalone DHCP Relay servers in vrfs outside EVPN/VXLAN.</p>
+
+<p>Why do I mean by evil (or maybe just badly implemented in our kit): </p>
+
+<ul>
+<li>DHCP requests going to old servers that are no longer configured</li>
+<li>DHCP requests being mangled for IRBs that are not configured for it</li>
+<li>DHCP requests going nowhere: debug traces say &quot;DHCP packet being forwarded&quot; but if you capture all the traffic from all interfaces... it&#39;s nowhere to be seen.</li>
+</ul>
+
+<p>I&#39;d strongly recommend anybody that has to use this to get a complete understanding of how it&#39;s supposed to work, it&#39;s not a simple &quot;configure ip helper address on the respective IRBs and you&#39;re done&quot;</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1697">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jason Alert</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1697" href="#1697">10 March 2023 07:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Just out of curiosity, what kind of kit?  I haven&rsquo;t seen any issues with VRF-aware DHCP relay and EVPN asymmetrical IRB on Arista Trident3 or Tomahawk kit, so wondering if it&rsquo;s a vendor or chipset implementation issue, or something specific to the setup.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1698">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1698" href="#1698">10 March 2023 07:35</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>DHCP relaying is a control-plane activity (it would be really hard to rewrite the packet and add option-82 in hardware), so it&#39;s most probably a vendor software implementation issue.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1699">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jason Alert</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1699" href="#1699">10 March 2023 04:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Agreed on the control plane activity. I only mention chipset since (speculation on my part based on other bugs I have seen) differences in hardware pipeline may result in alternate code paths involved when punting to CPU, so I wouldn&rsquo;t completely rule out seeing bugs affecting a subset of platforms from the same vendor.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1696">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> chris marget</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1696" href="#1696">09 March 2023 02:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Daisy-chaining DHCP relays? Goodness.</p>
+
+<p>A related and fun rabbit trail is when you&#39;re using DHCP for DMVPN spokes.</p>
+
+<p>There&#39;s some unicast levers which need to be pulled, but more interesting is how the relay (the DMVPN hub) delivers the Offer and Ack to the DMVPN spoke. Neither giaddr nor broadcast mode will get it there. We need the tunnel&#39;s NBMA address.</p>
+
+<p>The hub/relay packs the sender/client NBMA address into option 82 when relaying messages from the client, and then relies on that same field to target the server replies back toward the client.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

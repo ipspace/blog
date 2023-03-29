@@ -1,0 +1,71 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1542">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1542" href="#1542">30 November 2022 09:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Since ICMP redirects can be used for MITM attacks, hosts are often configured to ignore them. In this case, ICMP redirects should also be disabled on segments with directly-connected hosts.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1545">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1545" href="#1545">30 November 2022 11:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&#39;m not sure I understand the topology. Are C1 and C2 bridges or routers? You don&#39;t call them routers, so maybe they are not routers? You give them different colours, so maybe they are not routers? You talk about BGP on C1 and C2, so maybe they are routers? All 4 devices are in a picture called &quot;Layer-3 connectivity&quot;, so maybe C1 and C2 are routers? Also, real shared ethernet doesn&#39;t exist anymore. For that picture to work, there needs to be a bridge in between those 4 devices. Another clue that all four E1, E2, C1, C2 are routers?</p>
+
+<p>If C1 and C2 are bridges, then the hosts (which are beneath C1 and C2 in that picture) pick the default-gateway: E1 or E2. And they set the mac-address in their outgoing frames to E1&#39;s or E2&#39;s mac-address. C1 and C2, as they are bridges, can only forward based on that. In this case, having redirects is good. Because the hosts will switch next-hop for individual destinations as required. In this case, keep redirects on E1 and E2 enabled. That will help optimize traffic.</p>
+
+<p>If C1 and C2 are routers, everything changes.</p>
+
+<p>A very old rule of thumb that I learned 3 decades ago: Hosts listen to redirects. Routers do not. So if this is still true, then having redirects enabled on E1 and E2 won&#39;t help, because C1 and C2 won&#39;t listen/use the redirects anyway.</p>
+
+<p>But if it is that simple, why would E1 and E2 even try to send redirects to C1 and C2? My first Google search hits this page: <br />
+https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13714-43.html#topic1</p>
+
+<p>When Are ICMP Redirects Sent? <br />
+Cisco routers send ICMP redirects when all of these conditions are met: <br />
+1. The interface on which the packet comes into the router is the same interface on which the packet gets routed out. <br />
+2. The subnet or network of the source IP address is on the same subnet or network of the next-hop IP address of the routed packet. <br />
+&lt;2 more conditions, deleted&gt;</p>
+
+<p>This is just IOS-XE. I don&#39;t know if other OSes do the same thing. (I don&#39;t even know what the OS I work on does, sorry).</p>
+
+<p>Look at rule 2. &quot;The subnet or network of the source IP address is on the same subnet or network of the next-hop IP address of the routed packet.&quot; That means that in your scenario, when C1 and C2 are routers, the interfaces of E1 and E2 will not be in the same subnet as the ip-addresses of the hosts below C1 and C2. And thus that 2nd rule here won&#39;t apply. And thus E1 and E2 will not send redirects to C1 and C2. Even when E1 and E2 have redirects enabled.</p>
+
+<p>Your Friendly Router Vendor has already taken care of the issue, it seems. :)</p>
+
+<p>Am I missing something?</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

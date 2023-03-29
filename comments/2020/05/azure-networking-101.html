@@ -1,0 +1,125 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="55">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Stephen Ombre</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c55" href="#55">28 May 2020 02:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan,</p>
+
+<p>Insightful article.
+I do have a question though: why this statement:
+There is no L2 forwarding in Azure (<strong>major difference with AWS</strong>).</p>
+
+<p>Is there also no L2 forwarding in AWS?
+Can you elaborate?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="58">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c58" href="#58">30 May 2020 04:41</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Forwarding within an AWS VPC subnet is based on destination MAC address (unicast only, no flooding), forwarding across subnets is based on destination IP address. You&#39;ll find an overview here...</p>
+
+<p>https://blog.ipspace.net/2020/05/aws-networking-101.html</p>
+
+<p>... and the expected deep dive in the <a href="https://www.ipspace.net/Amazon_Web_Services_Networking">AWS Networking</a> webinar.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="103">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Michael Kashin</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c103" href="#103">20 August 2020 12:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Another gotcha with Azure is &quot;IP forwarding&quot;. If you expect an Azure NIC to emit any packets that have a non-default source IP (e.g. the case of virtual router appliance), you have to enable this feature, otherwise, the packets will get dropped on the egress. 
+https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#enable-or-disable-ip-forwarding</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="976">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bruce Ronning</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c976" href="#976">24 January 2022 11:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi, Can you comment on using eBGP multihop between NVA&#39;s in different subnets of an Azure vNet, or between peered vNet?s In theory this should work but I&#39;ve had no success. I can get the peering up and routes are exchanged, appearing as &quot;next hop (eBGP peer IP&gt; recursive via &lt;snet GW IP&gt;&quot; but without explicitly adding the destination network in the RT via the eBGP peer, traffic is not forwarded.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="977">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c977" href="#977">25 January 2022 08:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I would say the second diagram answers your question. Imagine an eBGP session between A and C and follow a packet between A and C every step of the way.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

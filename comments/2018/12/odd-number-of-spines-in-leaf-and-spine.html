@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03172563417086934763" rel="nofollow">Steve Chalmers</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3262069562093223092">05 December 2018 10:25</a>
+                <a rel="nofollow" id="c3262069562093223092" href="#3262069562093223092">05 December 2018 10:25</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, I retired a couple of years ago so no longer get NDA briefings on ASICs.  The arms race between the ASIC providers on hash algorithms (ie ECMP) is at a much higher level of complexity than indicated above, the hyperscalers have probably &quot;helped&quot; with even more requirements on ECMP hashing since I retired; and all of this is under NDAs so deep no one is likely to answer the question central to this blog.</p>
+            <div class="comment-content">Ivan, I retired a couple of years ago so no longer get NDA briefings on ASICs.  The arms race between the ASIC providers on hash algorithms (ie ECMP) is at a much higher level of complexity than indicated above, the hyperscalers have probably &quot;helped&quot; with even more requirements on ECMP hashing since I retired; and all of this is under NDAs so deep no one is likely to answer the question central to this blog.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Bellman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2101129738288021865">05 December 2018 10:39</a>
+                <a rel="nofollow" id="c2101129738288021865" href="#2101129738288021865">05 December 2018 10:39</a>
               </span>
             </div>
-            <p class="comment-content">There&#39;s of course also the question whether it *matters* that the distribution is uneven.  If you happen to get a 40%-40%-20% load towards your spines from a certain leaf instead of the ideal 33%-34%-33%, you will still be better off than if you have two spines, getting 50%-50%.<br /><br />Remember also that if an uneven distribution like that is bad for you, then you are in trouble if you have four spines and one of them fail...<br /><br />Also, a good implementation of ECMP will add a local identifier, something that uniquely identifies the switch/router itself, e.g. its own MAC address or serial number, into the mix.  Otherwise, an identical switch downstream would get the same hashes for every packet it receives, and only utilize one of *its* ECMP outputs.  I believe at least the Broadcom Trident II and Tomahawk chips do this.  Each leaf switch will then get a different distribution over its odd number of uplinks, and the total load over the spines might even out.</p>
+            <div class="comment-content">There&#39;s of course also the question whether it *matters* that the distribution is uneven.  If you happen to get a 40%-40%-20% load towards your spines from a certain leaf instead of the ideal 33%-34%-33%, you will still be better off than if you have two spines, getting 50%-50%.<br /><br />Remember also that if an uneven distribution like that is bad for you, then you are in trouble if you have four spines and one of them fail...<br /><br />Also, a good implementation of ECMP will add a local identifier, something that uniquely identifies the switch/router itself, e.g. its own MAC address or serial number, into the mix.  Otherwise, an identical switch downstream would get the same hashes for every packet it receives, and only utilize one of *its* ECMP outputs.  I believe at least the Broadcom Trident II and Tomahawk chips do this.  Each leaf switch will then get a different distribution over its odd number of uplinks, and the total load over the spines might even out.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10562240567667879482" rel="nofollow">lcw</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1021005332625755858">05 December 2018 19:18</a>
+                <a rel="nofollow" id="c1021005332625755858" href="#1021005332625755858">05 December 2018 19:18</a>
               </span>
             </div>
-            <p class="comment-content">Today&#39;s ECMP hash algorithms and bucket-to-link mappings are non-uniform, even for even/binary number of links. E.g., given two spines and a perfectly hashable mix of packets, you might find 52% and 48% distribution.  This is all great and no one cares about hash polarization anymore. On the flip-side, fragmented packets are handled worse today than ever before -- something that hurts poorly-deployed overlays and crypto.<br /><br />I find that the number of spines is more a function of  physical environment. E.g., number of available leaf uplink ports, power/cable diversity, red/blue color coding, familiarity for the operations folks, etc.</p>
+            <div class="comment-content">Today&#39;s ECMP hash algorithms and bucket-to-link mappings are non-uniform, even for even/binary number of links. E.g., given two spines and a perfectly hashable mix of packets, you might find 52% and 48% distribution.  This is all great and no one cares about hash polarization anymore. On the flip-side, fragmented packets are handled worse today than ever before -- something that hurts poorly-deployed overlays and crypto.<br /><br />I find that the number of spines is more a function of  physical environment. E.g., number of available leaf uplink ports, power/cable diversity, red/blue color coding, familiarity for the operations folks, etc.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://l33.fr" rel="nofollow">Blake</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5490368010501621047">06 December 2018 05:04</a>
+                <a rel="nofollow" id="c5490368010501621047" href="#5490368010501621047">06 December 2018 05:04</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for posting this, Ivan.<br /><br />Everything I&#39;m designing right now that doesn&#39;t need crazy amounts of bandwidth revolves around triplets.  Why?<br /><br /> - smallest # of boxes that will get you true N+1 redundancy (not 2N).  I find 3x to be the smallest you can get &amp; still call it &quot;leaf/spine fabric&quot; <br /> - law of diminishing returns (50/33/25/20/etc); moving from 50% to 33% gives the most incremental gain, by a factor of &gt;2<br /> - there are many more ToRs out there with 6 uplink ports than with 8, &amp; they&#39;re cheaper. <br /> - getting budget for the 3rd box is hard enough; the 4th one is truly a luxury in many orgs<br /> - a triangle is the smallest redundant full mesh, with the simplest rules:  &quot;connect this one to the other two&quot;.  None of the links are optional if you want any redundancy whatsoever.<br /><br />Anyone care to add others?</p>
+            <div class="comment-content">Thanks for posting this, Ivan.<br /><br />Everything I&#39;m designing right now that doesn&#39;t need crazy amounts of bandwidth revolves around triplets.  Why?<br /><br /> - smallest # of boxes that will get you true N+1 redundancy (not 2N).  I find 3x to be the smallest you can get &amp; still call it &quot;leaf/spine fabric&quot; <br /> - law of diminishing returns (50/33/25/20/etc); moving from 50% to 33% gives the most incremental gain, by a factor of &gt;2<br /> - there are many more ToRs out there with 6 uplink ports than with 8, &amp; they&#39;re cheaper. <br /> - getting budget for the 3rd box is hard enough; the 4th one is truly a luxury in many orgs<br /> - a triangle is the smallest redundant full mesh, with the simplest rules:  &quot;connect this one to the other two&quot;.  None of the links are optional if you want any redundancy whatsoever.<br /><br />Anyone care to add others?</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10939581110701056032" rel="nofollow">James Harr</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1908499317876663039">06 December 2018 06:17</a>
+                <a rel="nofollow" id="c1908499317876663039" href="#1908499317876663039">06 December 2018 06:17</a>
               </span>
             </div>
-            <p class="comment-content">Somewhat tangential...<br /><br />We&#39;re working on a new DC Fabric in the near future and while 2 spines would serve us well for bandwidth and resiliency, I&#39;m contemplating forcing a minimum of 3 spines just so no vendor/engineer will waste our time calling MC-LAG between two core switches leaf-spine.</p>
+            <div class="comment-content">Somewhat tangential...<br /><br />We&#39;re working on a new DC Fabric in the near future and while 2 spines would serve us well for bandwidth and resiliency, I&#39;m contemplating forcing a minimum of 3 spines just so no vendor/engineer will waste our time calling MC-LAG between two core switches leaf-spine.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03014282355010119539" rel="nofollow">Michael67</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2611981399488545018">28 January 2019 20:26</a>
+                <a rel="nofollow" id="c2611981399488545018" href="#2611981399488545018">28 January 2019 20:26</a>
               </span>
             </div>
-            <p class="comment-content">For IPv6 flow label, some vendors seem to have a kind of annoying ~bug: https://www.youtube.com/watch?v=b0CRjOpnT7w</p>
+            <div class="comment-content">For IPv6 flow label, some vendors seem to have a kind of annoying ~bug: https://www.youtube.com/watch?v=b0CRjOpnT7w</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -128,10 +123,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5278458607392629559">30 January 2019 18:30</a>
+                <a rel="nofollow" id="c5278458607392629559" href="#5278458607392629559">30 January 2019 18:30</a>
               </span>
             </div>
-            <p class="comment-content">It would be great to know which Broadcom hardware supports hashing based on flow label, whether it&#39;s enabled by default or not, and if not which vendor enabled that by default (I know it Arista EOS started using flow label in ECMP hash a while ago, but I always understood it had to be configured).</p>
+            <div class="comment-content">It would be great to know which Broadcom hardware supports hashing based on flow label, whether it&#39;s enabled by default or not, and if not which vendor enabled that by default (I know it Arista EOS started using flow label in ECMP hash a while ago, but I always understood it had to be configured).</div>
           </div>
         </li>
       </div>

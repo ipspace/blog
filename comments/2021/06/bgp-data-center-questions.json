@@ -1,0 +1,51 @@
+{
+   "comments": [
+      {
+         "date": "17 June 2021 09:48",
+         "html": "On the question of possible flooding problems:<br />\n\n<p>It&#39;s hard to get good information on the practical problems with link-state routing in &quot;large scale data centers&quot; (whatever you may consider &quot;large&quot;&hellip;). The best I have found so far (linked to from this blog IIRC) is &quot;What I&#39;ve learned about scaling OSPF in Datacenters&quot; from Justin Pietsch (https://elegantnetwork.github.io/posts/What-Ive-learned-about-OSPF/).</p>\n\n<p>There is an interesting bit regarding flooding: &quot;Which means you have to be very careful about what is flooded, what are the areas, and how things are summarized. I didn&rsquo;t understand this until I had a simulation and I could try things out with areas or without, and the effect was dramatic.&quot;</p>\n\n<p>In I think this March Dinesh Dutt did a Webinar on ipSpace called &quot;Using OSPF in Leaf-and-Spine Fabrics&quot; where he added some details on how to make areas and summarization work in this setting (there are subtle, but important differences in the results of this and the RFC 7938 BGP setup).</p>\n\n<p>Another bit of information regarding the alleged flooding problems can be gleaned from Google paper &quot;Jupiter Rising: A Decade of Clos Topologies and Centralized Control in Google&rsquo;s Datacenter Network&quot;. Section 5.2.2 describes how they prevent(ed?) flooding problems (back then?). One could use IS-IS Mesh Groups as described in the informational RFC 2973 and implemented by many vendors to build something similar.</p>\n\n<p>The expired Openfabric draft from Russ White attempted to reduce flooding. That makes one wonder why Russ white did not mention this point in his &quot;Rethinking BGP in the Data Center&quot; presentation.</p>\n\n<p>Anyway, most &quot;Enterprise&quot; data centers should be of sufficiently small size to not show any problems with a basic deployment of OSPF or IS-IS in the underlay. I&#39;d like to point at tables 2 and 3 of RFC 2329 from 1998 regarding OSPF scalability information over two decades ago. But please observe that this report does not mention the number of full adjacencies per router, which is the stated problem in Clos style networks.</p>\n\n<p>I&#39;d say the classic approach of an IGP (e.g., OSPF or IS-IS) in the underlay and MP-BGP in the overlay is a simple and proven approach. I think it is easier to understand and work with than using BGP twice, one set of sessions as underlay IGP and another for the overlay. Using BGP once for a combination of underlay and overlay (the FRR way as pushed by Cumulus^WNvidia) is fine, too, if supported by your vendor.</p>\n\n<p>In another recent webinar (&quot;Multi-Vendor EVPN Deployments&quot; from May) on ipSpace, Dinesh Dutt listed OSPF+BGP as the most commonly supported basis for EVPN on data center switches.</p>\n\n<p>Thanks,\nErik</p>\n",
+         "id": "670",
+         "name": " Erik Auerswald",
+         "pub": "2021-06-17T09:48:04",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "18 June 2021 05:41",
+               "html": "On the topic of VXLAN versus MPLS:<br />\n\n<ul>\n<li>https://blog.ipspace.net/2018/11/using-mplsevpn-in-data-center-fabrics.html</li>\n<li>https://blog.ipspace.net/2020/05/need-vxlan-transport.html</li>\n</ul>\n",
+               "id": "676",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-06-18T17:41:34",
+               "ref": "673",
+               "type": "comment"
+            },
+            {
+               "date": "19 June 2021 04:49",
+               "html": "<p>Neat. Thanks for the info.</p>\n",
+               "id": "677",
+               "name": "Alex Nidetch",
+               "pub": "2021-06-19T04:49:43",
+               "ref": "676",
+               "type": "comment"
+            }
+         ],
+         "date": "17 June 2021 09:14",
+         "html": "<p>On the question of VXLAN vs SR-MPLS; are there any reasons why VXLAN seems to be the defacto choice? Is it that white box software, which is popular in the DC, just finds regular IP routing with VXLAN encapsulation alot easier to work with than SR-MPLS? Do DC engineers just not like working with MPLS in the DC?</p>\n\n<p>I think the main reason that SRv6 seems to be stalled is that every vender is still coming up with different solutions to solve the extra overhead of the IPv6 header. Juniper is pushing SRm6 while Cisco just released their SRv6 uSID. It seems like we wont know which way the industry will go for another few years but it seems that regular SRv6 is dead. </p>\n",
+         "id": "673",
+         "name": "Alex Nidetch",
+         "pub": "2021-06-17T21:14:30",
+         "type": "comment"
+      },
+      {
+         "date": "22 June 2021 02:24",
+         "html": "<p>Drivenets made a J2C+ box announcement about a month ago:\nhttps://www.prnewswire.com/il/news-releases/drivenets-network-cloud-is-first-to-support-broadcom-j2c-and-triple-network-scale-with-largest-networking-solution-in-the-market-898000194.html</p>\n",
+         "id": "685",
+         "name": " Blake",
+         "pub": "2021-06-22T14:24:58",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2021/06/bgp-data-center-questions.html"
+}

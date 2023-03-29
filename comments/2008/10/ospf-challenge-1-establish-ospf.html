@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07035210425520362588" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2407956517798586461">18 October 2008 08:07</a>
+                <a rel="nofollow" id="c2407956517798586461" href="#2407956517798586461">18 October 2008 08:07</a>
               </span>
             </div>
-            <p class="comment-content">Change both interface OSPF network type from Broadcast to Point-to-Point, it will ignore the mask mismatch when established OSPF adjacency.<BR/><BR/>Johnson<BR/>CCIE#11440</p>
+            <div class="comment-content">Change both interface OSPF network type from Broadcast to Point-to-Point, it will ignore the mask mismatch when established OSPF adjacency.<BR/><BR/>Johnson<BR/>CCIE#11440</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9042030050356238504">18 October 2008 12:46</a>
+                <a rel="nofollow" id="c9042030050356238504" href="#9042030050356238504">18 October 2008 12:46</a>
               </span>
             </div>
-            <p class="comment-content">I guess I would work without any changes of the configuration (which can't do anyway) because R1 has the IP address 192.168.1.17 on Fa0/0 which is included in the network 192.168.1.18/30 on interface Fa0/0 of R2.<BR/>I didn't test it in a Lab but I guess OSPF does not check if the subnet masks are matching. In this case it would work (but it's really dirty...).<BR/><BR/>Regards<BR/>Christoph</p>
+            <div class="comment-content">I guess I would work without any changes of the configuration (which can't do anyway) because R1 has the IP address 192.168.1.17 on Fa0/0 which is included in the network 192.168.1.18/30 on interface Fa0/0 of R2.<BR/>I didn't test it in a Lab but I guess OSPF does not check if the subnet masks are matching. In this case it would work (but it's really dirty...).<BR/><BR/>Regards<BR/>Christoph</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07004543871778538918" rel="nofollow">troyand</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2427609905494809864">18 October 2008 14:06</a>
+                <a rel="nofollow" id="c2427609905494809864" href="#2427609905494809864">18 October 2008 14:06</a>
               </span>
             </div>
-            <p class="comment-content">I think that CCIE#11440 has already spoiled the fun, so there is nothing wrong in writing this post.<BR><BR/>The solution is quite easy if we refer to the previous post on <A HREF="http://blog.ioshints.info/2008/10/ospf-ignores-subnet-mask-mismatch-on.html" REL="nofollow">OSPF subnet mask ignoring</A>. It paid attention to the possible strange results, which might happen on the point-to-point links. But referring to RFC states that this behaviour doesn't really rely on the link type, but rather on the network type, though in normal cases they are just the same. But in some weird situations we are allowed tune this parameter (in fact we are lying to the router and it might have not very pleasant consequences). So it is necessary to issue the<BR><BR/>ip ospf network point-to-point<BR><BR/>command under each interface and the routers will establish OSPF adjacency. After that the routing table looks like that:<BR><BR/>     192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks<BR><BR/>O       192.168.1.0/24 [110/20] via 192.168.1.17, 00:25:14, FastEthernet0/0<BR><BR/>C       192.168.1.16/30 is directly connected, FastEthernet0/0<BR><BR/>which is quite unnatural for me as I am far away from CCIE.<BR><BR/>But after all, if we think about it, such thing as network mask is almost nonsense in the point-to-point world. There is only this side and that side and the way we get to any of these is obvious after we have discovered all the necessary information during IPCP.</p>
+            <div class="comment-content">I think that CCIE#11440 has already spoiled the fun, so there is nothing wrong in writing this post.<BR><BR/>The solution is quite easy if we refer to the previous post on <A HREF="http://blog.ioshints.info/2008/10/ospf-ignores-subnet-mask-mismatch-on.html" REL="nofollow">OSPF subnet mask ignoring</A>. It paid attention to the possible strange results, which might happen on the point-to-point links. But referring to RFC states that this behaviour doesn't really rely on the link type, but rather on the network type, though in normal cases they are just the same. But in some weird situations we are allowed tune this parameter (in fact we are lying to the router and it might have not very pleasant consequences). So it is necessary to issue the<BR><BR/>ip ospf network point-to-point<BR><BR/>command under each interface and the routers will establish OSPF adjacency. After that the routing table looks like that:<BR><BR/>     192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks<BR><BR/>O       192.168.1.0/24 [110/20] via 192.168.1.17, 00:25:14, FastEthernet0/0<BR><BR/>C       192.168.1.16/30 is directly connected, FastEthernet0/0<BR><BR/>which is quite unnatural for me as I am far away from CCIE.<BR><BR/>But after all, if we think about it, such thing as network mask is almost nonsense in the point-to-point world. There is only this side and that side and the way we get to any of these is obvious after we have discovered all the necessary information during IPCP.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/18067647693954733854" rel="nofollow">Shivlu Jain</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2630867493124642449">22 October 2008 11:06</a>
+                <a rel="nofollow" id="c2630867493124642449" href="#2630867493124642449">22 October 2008 11:06</a>
               </span>
             </div>
-            <p class="comment-content">OSPF neighborship works on multicast. So during neighborship it will not check the subnets.</p>
+            <div class="comment-content">OSPF neighborship works on multicast. So during neighborship it will not check the subnets.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/18067647693954733854" rel="nofollow">Shivlu Jain</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4084910966810239251">22 October 2008 12:46</a>
+                <a rel="nofollow" id="c4084910966810239251" href="#4084910966810239251">22 October 2008 12:46</a>
               </span>
             </div>
-            <p class="comment-content">I tested but it works only on serial interfaces not on fe or broadcast media.</p>
+            <div class="comment-content">I tested but it works only on serial interfaces not on fe or broadcast media.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03620347308206286769" rel="nofollow">Alessandro</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1062513125051640134">24 October 2008 11:25</a>
+                <a rel="nofollow" id="c1062513125051640134" href="#1062513125051640134">24 October 2008 11:25</a>
               </span>
             </div>
-            <p class="comment-content">RFC 2328 say: <BR/>" The Hello packet also contains the IP address<BR/>  mask of the attached network (Network Mask).  On unnumbered<BR/>  point-to-point networks and on virtual links this field should be set to 0.0.0.0."<BR/><BR/>But... I have try with dynamips/gns3: 2 cisco 36xx 12.4 ios. <BR/><BR/>Using  point-to-point command under fastethernet the netmask in the ospf hellos is always present and the adjacency came up. <BR/>So i think that there is an algoritm inside ios that make the router do not consider the netmask when, in a broadcast network, you simulate a point to point link.<BR/>From cisco website: "  When you configure the command on the Multiaccess interface (that is, Ethernet) or the loopback interface, the following messages are displayed:<BR/><BR/>    RouterA(config)# int e0 <BR/>    RouterA(config-if)# ip unnumbered serial 0 <BR/>    Point-to-point (non-multi-access) interfaces only <BR/>    RouterA(config-if)# ip unnumbered loopback 0 <BR/>    Point-to-point (non-multi-access) interfaces only IP and IP Unnumbered"<BR/><BR/>So...<BR/>I' ve tested the serial connections: <BR/>I've  set the ip address under the serial. The netmask is always present in the ospf hellos, but the adjancency is done.<BR/><BR/>Then I have configured the serial interface as unnumbered...finally as rfc say... the netmask in the ospf hellos is 0.0.0.0 and the adjacency came up.<BR/><BR/><BR/>Note: on gns3 you can sniff the serial interfaces. See gns3 documentation<BR/><BR/><BR/>Thanks<BR/><BR/>Alessandro</p>
+            <div class="comment-content">RFC 2328 say: <BR/>" The Hello packet also contains the IP address<BR/>  mask of the attached network (Network Mask).  On unnumbered<BR/>  point-to-point networks and on virtual links this field should be set to 0.0.0.0."<BR/><BR/>But... I have try with dynamips/gns3: 2 cisco 36xx 12.4 ios. <BR/><BR/>Using  point-to-point command under fastethernet the netmask in the ospf hellos is always present and the adjacency came up. <BR/>So i think that there is an algoritm inside ios that make the router do not consider the netmask when, in a broadcast network, you simulate a point to point link.<BR/>From cisco website: "  When you configure the command on the Multiaccess interface (that is, Ethernet) or the loopback interface, the following messages are displayed:<BR/><BR/>    RouterA(config)# int e0 <BR/>    RouterA(config-if)# ip unnumbered serial 0 <BR/>    Point-to-point (non-multi-access) interfaces only <BR/>    RouterA(config-if)# ip unnumbered loopback 0 <BR/>    Point-to-point (non-multi-access) interfaces only IP and IP Unnumbered"<BR/><BR/>So...<BR/>I' ve tested the serial connections: <BR/>I've  set the ip address under the serial. The netmask is always present in the ospf hellos, but the adjancency is done.<BR/><BR/>Then I have configured the serial interface as unnumbered...finally as rfc say... the netmask in the ospf hellos is 0.0.0.0 and the adjacency came up.<BR/><BR/><BR/>Note: on gns3 you can sniff the serial interfaces. See gns3 documentation<BR/><BR/><BR/>Thanks<BR/><BR/>Alessandro</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Gabriel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7476636795015366049">13 May 2009 22:39</a>
+                <a rel="nofollow" id="c7476636795015366049" href="#7476636795015366049">13 May 2009 22:39</a>
               </span>
             </div>
-            <p class="comment-content">Did you intentionally put the same hostname on both routers or was it just a typo? :)<br /><br />I have to admit I had to look for the OSPF packet header as I got confused and thought that the hostname might influence OSPF adjacency.<br /><br />I remembered later that ppp chap is where hostname is important.</p>
+            <div class="comment-content">Did you intentionally put the same hostname on both routers or was it just a typo? :)<br /><br />I have to admit I had to look for the OSPF packet header as I got confused and thought that the hostname might influence OSPF adjacency.<br /><br />I remembered later that ppp chap is where hostname is important.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8186106205486223074">18 May 2009 10:44</a>
+                <a rel="nofollow" id="c8186106205486223074" href="#8186106205486223074">18 May 2009 10:44</a>
               </span>
             </div>
-            <p class="comment-content">@Gabriel: oops :( That was a typo.</p>
+            <div class="comment-content">@Gabriel: oops :( That was a typo.</div>
           </div>
         </li>
       </div>

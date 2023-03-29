@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Reggle</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4101243257862358269">15 March 2012 10:14</a>
+                <a rel="nofollow" id="c4101243257862358269" href="#4101243257862358269">15 March 2012 10:14</a>
               </span>
             </div>
-            <p class="comment-content">You&#39;ve answered a question I couldn&#39;t find an answer for: connection over VXLAN to a gateway. Using a VM with two vNICs for bridging to traditional VLAN access, or using it as the gateway itself also implies that you have to design with an extra layer of complexity in mind: ineffective briding is easily introduced on existing infrastructure, because data flows from one VM to the next, and most likely back into a layer 2 fabric towards destinations. That may cause increased bandwidth too.<br /><br />All in all it doesn&#39;t seem to be a stable and working concept for me right now, except in the niche cases you&#39;ve mentioned (virtual firewalls).</p>
+            <div class="comment-content">You&#39;ve answered a question I couldn&#39;t find an answer for: connection over VXLAN to a gateway. Using a VM with two vNICs for bridging to traditional VLAN access, or using it as the gateway itself also implies that you have to design with an extra layer of complexity in mind: ineffective briding is easily introduced on existing infrastructure, because data flows from one VM to the next, and most likely back into a layer 2 fabric towards destinations. That may cause increased bandwidth too.<br /><br />All in all it doesn&#39;t seem to be a stable and working concept for me right now, except in the niche cases you&#39;ve mentioned (virtual firewalls).</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Suhas</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#517196140421424232">15 March 2012 18:52</a>
+                <a rel="nofollow" id="c517196140421424232" href="#517196140421424232">15 March 2012 18:52</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />There seem to be more problems than just TCP offload -<br /><br />1.  # of multicast groups in the physical network.   The # of vxlans you support increases the scale requirement of # of multicast groups your networking gear needs to support.<br /><br />2.  When you are using multicast the convergence of vm movement is still a function of your physical <br />    network convergance.<br /><br />3.  Secure group joins and PimBidir support in majority of the networking gear today<br /><br />     This I think the security part will be swept under the carpet till it becomes a real issue.  PimBiDir<br />     support will become common only if vxlan catches up.<br /><br />4.  TCP offload details<br /><br />     Each of these features which save the CPU cycles are gone or you need a new NIC -<br /><br />     a.  LSO, LRO<br />     b.  IP Checksum, UDP Checksum, TCP Checksum - both generation and testing<br />          Again this will be swept under the carpet is my guess.<br />     c.  Path MTU<br />          This probably will be dealt with pre-configuring the MTU in guest VMs and will be swept under<br />          the carpet.<br /><br />5.   VxLAN still aspires to provide multiple VLAN like constructs to the guest VMs running on multiple<br />      servers.<br />      The details of how network is simulated, what networking protocols required to be supported<br />      is left open to interpretation.<br /><br />6.   This one has been addressed now by Embrane but there was a lack of load balancers, firewalls<br />      which need to go along with the vxlan solution.  IPSec gateway is another example.  However I <br />      think these are opportunities if market really catches this trend.<br /><br />The VDP based solution avoids most of these issues.   So I am not sure why someone wants to use<br />vxLAN on their already deployed data center which will result in a low performance and throughput.<br /><br />I see that STT avoids some of the TCP offload issues, but it seems like a clever hack.   NVGRE avoids<br />reliance on multicast in the network but still has the same problems of TCP offload.<br /><br />I think without a NIC which supports VxLAN (Cisco sure will do this to differentiate their servers and<br />disrupt the market) moving to VxLAN will be a disaster for customers.<br /><br />Again opinionated, but would like to know your thoughts on each of these...<br /><br />Thanks,<br /><br />Suhas</p>
+            <div class="comment-content">Ivan,<br /><br />There seem to be more problems than just TCP offload -<br /><br />1.  # of multicast groups in the physical network.   The # of vxlans you support increases the scale requirement of # of multicast groups your networking gear needs to support.<br /><br />2.  When you are using multicast the convergence of vm movement is still a function of your physical <br />    network convergance.<br /><br />3.  Secure group joins and PimBidir support in majority of the networking gear today<br /><br />     This I think the security part will be swept under the carpet till it becomes a real issue.  PimBiDir<br />     support will become common only if vxlan catches up.<br /><br />4.  TCP offload details<br /><br />     Each of these features which save the CPU cycles are gone or you need a new NIC -<br /><br />     a.  LSO, LRO<br />     b.  IP Checksum, UDP Checksum, TCP Checksum - both generation and testing<br />          Again this will be swept under the carpet is my guess.<br />     c.  Path MTU<br />          This probably will be dealt with pre-configuring the MTU in guest VMs and will be swept under<br />          the carpet.<br /><br />5.   VxLAN still aspires to provide multiple VLAN like constructs to the guest VMs running on multiple<br />      servers.<br />      The details of how network is simulated, what networking protocols required to be supported<br />      is left open to interpretation.<br /><br />6.   This one has been addressed now by Embrane but there was a lack of load balancers, firewalls<br />      which need to go along with the vxlan solution.  IPSec gateway is another example.  However I <br />      think these are opportunities if market really catches this trend.<br /><br />The VDP based solution avoids most of these issues.   So I am not sure why someone wants to use<br />vxLAN on their already deployed data center which will result in a low performance and throughput.<br /><br />I see that STT avoids some of the TCP offload issues, but it seems like a clever hack.   NVGRE avoids<br />reliance on multicast in the network but still has the same problems of TCP offload.<br /><br />I think without a NIC which supports VxLAN (Cisco sure will do this to differentiate their servers and<br />disrupt the market) moving to VxLAN will be a disaster for customers.<br /><br />Again opinionated, but would like to know your thoughts on each of these...<br /><br />Thanks,<br /><br />Suhas</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Andrew</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4123435645277060316">16 March 2012 11:33</a>
+                <a rel="nofollow" id="c4123435645277060316" href="#4123435645277060316">16 March 2012 11:33</a>
               </span>
             </div>
-            <p class="comment-content">Great post Ivan helped me clear up some questions I had in my head and great questions Wim. If you could do some more posts like this where you contrast the different technologies and standards that would be great.</p>
+            <div class="comment-content">Great post Ivan helped me clear up some questions I had in my head and great questions Wim. If you could do some more posts like this where you contrast the different technologies and standards that would be great.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Kenneth Duda</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4365706491231140615">19 March 2012 06:15</a>
+                <a rel="nofollow" id="c4365706491231140615" href="#4365706491231140615">19 March 2012 06:15</a>
               </span>
             </div>
-            <p class="comment-content">Nice article.  Thanks, Ivan.<br /><br />Keep in mind that VXLAN can be implemented in physical switches.  This way, you can continue to use your paravirtualized TCP-offload NIC, and still get the scalability benefits of VXLAN.<br /><br />VXLAN improves scalability in several ways.  It gets you past the 4k vlan limit, and also avoids scaling limits in core MAC tables, provides a multi-path fabric, avoids spanning tree, and reduces the scope of broadcasts.<br /><br />Finally, to route out of a VXLAN segment, you can either go through a multi-VNIC guest (as identified in the article), or, your friendly neighborhood top-of-rack switch can serve as the default gateway for a VXLAN and route unencapsulated traffic up and out, for extremely high performance.  Of course, if you need FW/LB/NAT, then your friendly neighborhood top-of-rack switch might need an L4-7 education.<br /><br />    -Ken<br /><br />Kenneth Duda<br />CTO and SVP Software Engineering<br />Arista Networks, Inc.</p>
+            <div class="comment-content">Nice article.  Thanks, Ivan.<br /><br />Keep in mind that VXLAN can be implemented in physical switches.  This way, you can continue to use your paravirtualized TCP-offload NIC, and still get the scalability benefits of VXLAN.<br /><br />VXLAN improves scalability in several ways.  It gets you past the 4k vlan limit, and also avoids scaling limits in core MAC tables, provides a multi-path fabric, avoids spanning tree, and reduces the scope of broadcasts.<br /><br />Finally, to route out of a VXLAN segment, you can either go through a multi-VNIC guest (as identified in the article), or, your friendly neighborhood top-of-rack switch can serve as the default gateway for a VXLAN and route unencapsulated traffic up and out, for extremely high performance.  Of course, if you need FW/LB/NAT, then your friendly neighborhood top-of-rack switch might need an L4-7 education.<br /><br />    -Ken<br /><br />Kenneth Duda<br />CTO and SVP Software Engineering<br />Arista Networks, Inc.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3508388295021193616">19 March 2012 07:44</a>
+                <a rel="nofollow" id="c3508388295021193616" href="#3508388295021193616">19 March 2012 07:44</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for the feedback, Ken!<br /><br />Am I right in understanding that your &quot;VXLAN in physical switches helps you retain TCP offload&quot; statement refers to a design where the hypervisor hosts would use VLANs and the VXLAN encapsulation would be done in the switches? That&#39;s definitely an interesting proposal, but faces the same &quot;lack of control plane&quot; problems as any other non-EVB proposal.<br /><br />And I&#39;m anxiously waiting for a public announcement of VXLAN support in physical switches  8-)<br /><br />Ivan</p>
+            <div class="comment-content">Thanks for the feedback, Ken!<br /><br />Am I right in understanding that your &quot;VXLAN in physical switches helps you retain TCP offload&quot; statement refers to a design where the hypervisor hosts would use VLANs and the VXLAN encapsulation would be done in the switches? That&#39;s definitely an interesting proposal, but faces the same &quot;lack of control plane&quot; problems as any other non-EVB proposal.<br /><br />And I&#39;m anxiously waiting for a public announcement of VXLAN support in physical switches  8-)<br /><br />Ivan</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">old timer</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1245692556701816130">04 April 2012 06:54</a>
+                <a rel="nofollow" id="c1245692556701816130" href="#1245692556701816130">04 April 2012 06:54</a>
               </span>
             </div>
-            <p class="comment-content">It seems a lot of these so called &quot;new&quot; schemes are invented by people who don&#39;t really have in depth knoweldge of networking, see some problems and immediately come up with  solutions and call them revolutionary, when in fact they are not well thought out, convoluted and complex. The sad thing is that the rest of the crowd worship them. VXLAN RFC did a good job on describing the problem space, but the solution proposed so short of expectation, a total let down. It is along the line of continue to extend the VLANs even though it recognized that the underneath infrastructure has to be IP. VLAN was not a good technology to begin with, it was a simple minded layer 2 folks&#39; solution to solve broadcast storms. Now they are still twisting arms and legs to continue that path.</p>
+            <div class="comment-content">It seems a lot of these so called &quot;new&quot; schemes are invented by people who don&#39;t really have in depth knoweldge of networking, see some problems and immediately come up with  solutions and call them revolutionary, when in fact they are not well thought out, convoluted and complex. The sad thing is that the rest of the crowd worship them. VXLAN RFC did a good job on describing the problem space, but the solution proposed so short of expectation, a total let down. It is along the line of continue to extend the VLANs even though it recognized that the underneath infrastructure has to be IP. VLAN was not a good technology to begin with, it was a simple minded layer 2 folks&#39; solution to solve broadcast storms. Now they are still twisting arms and legs to continue that path.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Fracske</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2568712753712959955">21 May 2012 09:42</a>
+                <a rel="nofollow" id="c2568712753712959955" href="#2568712753712959955">21 May 2012 09:42</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />Just to let you know that EVB (with VEPA and VDP support) has been implemented in Junos 12.1 of Juniper Networks.<br /><br />Greetz,<br />Frac</p>
+            <div class="comment-content">Hi Ivan,<br /><br />Just to let you know that EVB (with VEPA and VDP support) has been implemented in Junos 12.1 of Juniper Networks.<br /><br />Greetz,<br />Frac</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -146,10 +141,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2056387464029931635">21 May 2012 10:08</a>
+                <a rel="nofollow" id="c2056387464029931635" href="#2056387464029931635">21 May 2012 10:08</a>
               </span>
             </div>
-            <p class="comment-content">Thank you. I know - I was so pleasantly surprised when doing research for the Data Center Fabrics Update webinar. Time to write a blog post ...</p>
+            <div class="comment-content">Thank you. I know - I was so pleasantly surprised when doing research for the Data Center Fabrics Update webinar. Time to write a blog post ...</div>
           </div>
         </li>
       </div>

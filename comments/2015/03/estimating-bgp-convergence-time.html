@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>15 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05348201047870981278" rel="nofollow">Daniel Dib</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2937223628025450954">09 March 2015 10:35</a>
+                <a rel="nofollow" id="c2937223628025450954" href="#2937223628025450954">09 March 2015 10:35</a>
               </span>
             </div>
-            <p class="comment-content">Definitely it depends on this one... Also, I assume we are discussing outbound traffic as inbound traffic would be very difficult to measure, depending on how far from our AS we could consider the network as converged.<br /><br />The first step is to detect the failure. Design for Loss of Signal (LoS), so don&#39;t use any converters, MUXes that do stupid things etc. Ask the provider to run BFD.<br /><br />I&#39;m assuming that under normal circumstances, the secondary router would have the iBGP routes with a higher local pref but the eBGP routes already in the BGP table. So when Upstream A fails, the primary router would only have to send Withdraw message and the secondary router would start to use the external routes. The secondary router would then have to send those routes to the primary router through iBGP.<br /><br />So some time could be shaved off the convergence if the secondary router attracts all the traffic instead of traffic going to the primary router and then across the iBGP peering. Not knowing what the network looks like, this could be achieved by modifying HSRP priority based on some tracking of an interface or route, conditionally advertising a default route and so on.<br /><br />BGP PIC and Best external would definitely be helpful though if supported on the platform.</p>
+            <div class="comment-content">Definitely it depends on this one... Also, I assume we are discussing outbound traffic as inbound traffic would be very difficult to measure, depending on how far from our AS we could consider the network as converged.<br /><br />The first step is to detect the failure. Design for Loss of Signal (LoS), so don&#39;t use any converters, MUXes that do stupid things etc. Ask the provider to run BFD.<br /><br />I&#39;m assuming that under normal circumstances, the secondary router would have the iBGP routes with a higher local pref but the eBGP routes already in the BGP table. So when Upstream A fails, the primary router would only have to send Withdraw message and the secondary router would start to use the external routes. The secondary router would then have to send those routes to the primary router through iBGP.<br /><br />So some time could be shaved off the convergence if the secondary router attracts all the traffic instead of traffic going to the primary router and then across the iBGP peering. Not knowing what the network looks like, this could be achieved by modifying HSRP priority based on some tracking of an interface or route, conditionally advertising a default route and so on.<br /><br />BGP PIC and Best external would definitely be helpful though if supported on the platform.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">moods</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8559249922287001660">09 March 2015 13:37</a>
+                <a rel="nofollow" id="c8559249922287001660" href="#8559249922287001660">09 March 2015 13:37</a>
               </span>
             </div>
-            <p class="comment-content">Hi,<br /><br />What Daniel describe in the third paragraph takes us 15 sec (in our network) to re-converge to the second router. We are considering of using BGP PIC and best external. Anyone using this in production environment on the edge routers (Full bgp table) ?</p>
+            <div class="comment-content">Hi,<br /><br />What Daniel describe in the third paragraph takes us 15 sec (in our network) to re-converge to the second router. We are considering of using BGP PIC and best external. Anyone using this in production environment on the edge routers (Full bgp table) ?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2610973676909079878">09 March 2015 14:59</a>
+                <a rel="nofollow" id="c2610973676909079878" href="#2610973676909079878">09 March 2015 14:59</a>
               </span>
             </div>
-            <p class="comment-content">How many routes do you get from the ISPs? Full routing table?</p>
+            <div class="comment-content">How many routes do you get from the ISPs? Full routing table?</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00097751192210829089" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1635787256005417842">09 March 2015 16:34</a>
+                <a rel="nofollow" id="c1635787256005417842" href="#1635787256005417842">09 March 2015 16:34</a>
               </span>
             </div>
-            <p class="comment-content">On top of previous advices, do you really need the full BGP updates from your ISPs? Asking for partial BGP updates should significantly improve your convergence time.</p>
+            <div class="comment-content">On top of previous advices, do you really need the full BGP updates from your ISPs? Asking for partial BGP updates should significantly improve your convergence time.</div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">moods</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4469046879556030421">09 March 2015 18:26</a>
+                <a rel="nofollow" id="c4469046879556030421" href="#4469046879556030421">09 March 2015 18:26</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan. Yes,the full routing table.</p>
+            <div class="comment-content">Hi Ivan. Yes,the full routing table.</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00999352568102477737" rel="nofollow">Phil Bedard</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5709654543418657416">09 March 2015 21:47</a>
+                <a rel="nofollow" id="c5709654543418657416" href="#5709654543418657416">09 March 2015 21:47</a>
               </span>
             </div>
-            <p class="comment-content">You can use a tool like Exabgp to simulate this fairly well.  I usually put a real router in the middle, and then the real client router after that.  Exabgp can handle advertising a full table fairly easily, whether you get it directly from a live network or build a config with 500K paths in it.    We still use a full mesh, with 57 routers, and each router sees approximately 3M unicast paths, with 500K+ best paths after it&#39;s all said and done.  I simulate all 57 routers in exabgp and use linux TC to simulate the latency between the peers.  <br /><br />You can imagine on cold boot there is a lot of churn going on as best paths are replaced with better paths, forwarding tables have to be updated, etc.  However with modern CPUs convergence is still under 2 minutes once everything comes up  <br /><br />With a RR in the middle and having just a single neighbor advertising the best 520K odd paths, the convergence is 10-15 seconds.  </p>
+            <div class="comment-content">You can use a tool like Exabgp to simulate this fairly well.  I usually put a real router in the middle, and then the real client router after that.  Exabgp can handle advertising a full table fairly easily, whether you get it directly from a live network or build a config with 500K paths in it.    We still use a full mesh, with 57 routers, and each router sees approximately 3M unicast paths, with 500K+ best paths after it&#39;s all said and done.  I simulate all 57 routers in exabgp and use linux TC to simulate the latency between the peers.  <br /><br />You can imagine on cold boot there is a lot of churn going on as best paths are replaced with better paths, forwarding tables have to be updated, etc.  However with modern CPUs convergence is still under 2 minutes once everything comes up  <br /><br />With a RR in the middle and having just a single neighbor advertising the best 520K odd paths, the convergence is 10-15 seconds.  </div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05348201047870981278" rel="nofollow">Daniel Dib</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6293177345770017262">09 March 2015 22:19</a>
+                <a rel="nofollow" id="c6293177345770017262" href="#6293177345770017262">09 March 2015 22:19</a>
               </span>
             </div>
-            <p class="comment-content">Phil:<br /><br />Why are you using a full mesh? Not here to flame you, just sincerely interested. The only reason I could think of is to have more paths advertised and optimize routing to the IGP nexthops. At least the first one should be solveable by advertisinge best path + N paths.</p>
+            <div class="comment-content">Phil:<br /><br />Why are you using a full mesh? Not here to flame you, just sincerely interested. The only reason I could think of is to have more paths advertised and optimize routing to the IGP nexthops. At least the first one should be solveable by advertisinge best path + N paths.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00999352568102477737" rel="nofollow">Phil Bedard</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3961230379052223137">11 March 2015 00:41</a>
+                <a rel="nofollow" id="c3961230379052223137" href="#3961230379052223137">11 March 2015 00:41</a>
               </span>
             </div>
-            <p class="comment-content">Simplicity more than anything else.  In the case of a modern routing engine 57 peers is nothing and neither is 3M routes in the RIB.   Everything is redundant so it&#39;s not like traffic is down for 2 minutes or even 15 seconds.  There are layers of route reflection in the network of course, just not at that layer.  </p>
+            <div class="comment-content">Simplicity more than anything else.  In the case of a modern routing engine 57 peers is nothing and neither is 3M routes in the RIB.   Everything is redundant so it&#39;s not like traffic is down for 2 minutes or even 15 seconds.  There are layers of route reflection in the network of course, just not at that layer.  </div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#267456220430544005">10 March 2015 11:07</a>
+                <a rel="nofollow" id="c267456220430544005" href="#267456220430544005">10 March 2015 11:07</a>
               </span>
             </div>
-            <p class="comment-content">You forget about differences in software.<br /><br />My measurements show that when I get a full table from eBGP peers, Juniper MX (with a recent routing engine) is the fastest, 76xx is twice as slow (due to an older CPU I guess), then ASR9k is twice as slow compared to 76xx. <br /><br />You&#39;d probably think that ASR9k should be faster than C76xx but Cisco broke something in their BGP implementation and now it no longer groups prefixes with the same BGP attributes in a single update message. <br /><br />Juniper MX960: 83k updates per 533k prefixes.<br />Cisco 7600: 91k updates per 527k prefixes<br />Cisco ASR9k: 506k updates per 531k prefixes<br />(Just tested)<br /><br />And yes, it was reported, and Cisco after several months said that it&#39;s a software-hardware limitation (how obvious) and the only workaround is to do ebgp multihop with clients through another route-server. Well...no. Just no.<br /><br />Also I believe you downplay the FIB programming time. </p>
+            <div class="comment-content">You forget about differences in software.<br /><br />My measurements show that when I get a full table from eBGP peers, Juniper MX (with a recent routing engine) is the fastest, 76xx is twice as slow (due to an older CPU I guess), then ASR9k is twice as slow compared to 76xx. <br /><br />You&#39;d probably think that ASR9k should be faster than C76xx but Cisco broke something in their BGP implementation and now it no longer groups prefixes with the same BGP attributes in a single update message. <br /><br />Juniper MX960: 83k updates per 533k prefixes.<br />Cisco 7600: 91k updates per 527k prefixes<br />Cisco ASR9k: 506k updates per 531k prefixes<br />(Just tested)<br /><br />And yes, it was reported, and Cisco after several months said that it&#39;s a software-hardware limitation (how obvious) and the only workaround is to do ebgp multihop with clients through another route-server. Well...no. Just no.<br /><br />Also I believe you downplay the FIB programming time. </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -198,10 +193,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00999352568102477737" rel="nofollow">Phil Bedard</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2099493336849724969">11 March 2015 00:44</a>
+                <a rel="nofollow" id="c2099493336849724969" href="#2099493336849724969">11 March 2015 00:44</a>
               </span>
             </div>
-            <p class="comment-content">What revision of XR is that?  Take a busy 7600 and add another full table peer to it and you can probably run to Starbucks and get some coffee before it&#39;s done.  Same goes with a MX80.   Juniper of course had the famous KRT stuck queue issue where it could take quite some time to program the FIB regardless of the RIB being up to date.  </p>
+            <div class="comment-content">What revision of XR is that?  Take a busy 7600 and add another full table peer to it and you can probably run to Starbucks and get some coffee before it&#39;s done.  Same goes with a MX80.   Juniper of course had the famous KRT stuck queue issue where it could take quite some time to program the FIB regardless of the RIB being up to date.  </div>
           </div>
         </li>
       </div>
@@ -223,10 +218,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">José Jara</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5270885369827177860">12 March 2015 16:29</a>
+                <a rel="nofollow" id="c5270885369827177860" href="#5270885369827177860">12 March 2015 16:29</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />It´s my understanding that BGP Best External &amp; BGP PIC features are for MPLS/VPN environments and also to be implemented in the ISP Network. I do not see how it would be used here. </p>
+            <div class="comment-content">Ivan,<br /><br />It´s my understanding that BGP Best External &amp; BGP PIC features are for MPLS/VPN environments and also to be implemented in the ISP Network. I do not see how it would be used here. </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -242,10 +237,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7118330808844458953">13 March 2015 07:38</a>
+                <a rel="nofollow" id="c7118330808844458953" href="#7118330808844458953">13 March 2015 07:38</a>
               </span>
             </div>
-            <p class="comment-content">That&#39;s true - they were designed for MPLS/VPN networks. However, you could (with plenty of smarts ;) use them in the above setup, and I think I&#39;ve seen someone supporting Best External for plain IPv4 sessions.</p>
+            <div class="comment-content">That&#39;s true - they were designed for MPLS/VPN networks. However, you could (with plenty of smarts ;) use them in the above setup, and I think I&#39;ve seen someone supporting Best External for plain IPv4 sessions.</div>
           </div>
         </li>
       </div>
@@ -267,10 +262,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3238654290685831698">07 May 2015 21:18</a>
+                <a rel="nofollow" id="c3238654290685831698" href="#3238654290685831698">07 May 2015 21:18</a>
               </span>
             </div>
-            <p class="comment-content">I have a question that might be weird, I have 2 upstream carriers with BGP, one of them currently is giving me zero routes by BGP (they&#39;re fixing that) and the other gives me the default route. So basically the only route in the routing table is the one from carrier #2. As carrier #1 is fixing things they tear down the session, and then i got and outage of a few minutes when the default route (the only one) is still in the routing table because it&#39;s from #2, is this normal? To lose all connectivity when a default route is still in the table?</p>
+            <div class="comment-content">I have a question that might be weird, I have 2 upstream carriers with BGP, one of them currently is giving me zero routes by BGP (they&#39;re fixing that) and the other gives me the default route. So basically the only route in the routing table is the one from carrier #2. As carrier #1 is fixing things they tear down the session, and then i got and outage of a few minutes when the default route (the only one) is still in the routing table because it&#39;s from #2, is this normal? To lose all connectivity when a default route is still in the table?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -286,10 +281,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9019306859386348131">08 May 2015 07:59</a>
+                <a rel="nofollow" id="c9019306859386348131" href="#9019306859386348131">08 May 2015 07:59</a>
               </span>
             </div>
-            <p class="comment-content">No, that is definitely not normal.</p>
+            <div class="comment-content">No, that is definitely not normal.</div>
           </div>
         </li>
       </div>
@@ -304,10 +299,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9031420015909729698">08 May 2015 19:42</a>
+                <a rel="nofollow" id="c9031420015909729698" href="#9031420015909729698">08 May 2015 19:42</a>
               </span>
             </div>
-            <p class="comment-content">Any idea what it could be, config or bug?</p>
+            <div class="comment-content">Any idea what it could be, config or bug?</div>
           </div>
         </li>
       </div>

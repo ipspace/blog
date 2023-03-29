@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>19 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tiziano</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7091115990242640052">22 October 2011 08:26</a>
+                <a rel="nofollow" id="c7091115990242640052" href="#7091115990242640052">22 October 2011 08:26</a>
               </span>
             </div>
-            <p class="comment-content">I think that mistakes as the one described in this blog post happen since in IOS what  is misleading is that you can use a route-map to change some (not all !) BGP attributes when you “create” a new entry in the BGP table. For instance you can change MED, ORIGIN, LOCAL_PREF, (even weight, which is not a BGP attribute), but not AS_PATH.  Curiuosly, when you use the “network… mask …”  command with a route-map setting “as-path prepend …” you do not get any error message, but if you do the same with “aggregate-address …” and “redistribute …” you get the following error message “ % &quot;ROUTE-MAP-name&quot; used as BGP attribute route-map, set as-path prepend not supported” .  I think  that guys from Cisco should fix it up, for otherwise people make mistakes such the one you reported in your post.</p>
+            <div class="comment-content">I think that mistakes as the one described in this blog post happen since in IOS what  is misleading is that you can use a route-map to change some (not all !) BGP attributes when you “create” a new entry in the BGP table. For instance you can change MED, ORIGIN, LOCAL_PREF, (even weight, which is not a BGP attribute), but not AS_PATH.  Curiuosly, when you use the “network… mask …”  command with a route-map setting “as-path prepend …” you do not get any error message, but if you do the same with “aggregate-address …” and “redistribute …” you get the following error message “ % &quot;ROUTE-MAP-name&quot; used as BGP attribute route-map, set as-path prepend not supported” .  I think  that guys from Cisco should fix it up, for otherwise people make mistakes such the one you reported in your post.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tiziano</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2450848050278654312">22 October 2011 08:27</a>
+                <a rel="nofollow" id="c2450848050278654312" href="#2450848050278654312">22 October 2011 08:27</a>
               </span>
             </div>
-            <p class="comment-content">(FOLLOW-UP FROM MY PREVIOUS COMMENT)<br />Moreover, as a general  personal consideration about IOS style to inject prefixes in a BGP process, I think IOS has a clumsy way to do it.  Summarizing, in IOS you may use three different methods:<br />- Manual, through the &quot;network ... mask ...&quot; command. You may associate to this command a route-map to change some attributes (es. MED) of the route inserted in the BGP table.<br />- Through aggregation through the &quot;aggregate-address ...&quot; command.<br />- Through redistribution.<br />This generates different methods to inject the same prefix in a BGP process, leading some time to different  BGP attributes. Let me make an example. Suppose you have a directly connected network that you want to inject in a BGP process. You may do it using the &quot;network ... mask ...&quot; command or the “redistribute connected” command (with a route-map if you want to inject only the directly connected network we are examining). Both ways produce the same result with a small difference: if you use the &quot;network ... mask ...&quot; command the ORIGIN attribute is set to IGP, using “redistribute connected” command the ORIGIN attribute is set to INCOMPLETE. Does this make any sense ? In my opinion surely no ! To tell the truth, I do not even understand why IOS sets the ORIGIN to different values when you use the &quot;network ... mask ...&quot; and the &quot;aggregate-address ...&quot; commands (ORIGIN = IGP) and redistribution (ORIGIN = INCOMPLETE). Probably there are historical reasons behind that, but I do not think today this makes any sense, and this can lead you to errors since ORIGIN is part of the BGP selection process (to be sincere, I have the crazy idea that ORIGIN attribute is useless and should be taken out from BGP selection process !!!)<br />If you compare IOS to JUNOS, JUNOS has only one (unified) way to inject prefixes into a BGP process, which is essentially similar to the redistribution process used by IOS.  You put in some way the prefix you want to inject in the BGP process in the routing table (be it a directly connected route, an aggregate route or route advertised by a dynamic routing protocol), create an “export routing policy” and then apply it to a BGP session (or a group of BGP sessions).  Going back to AS_PATH prepending, you cannot make any mistake, you have only one way to do it, just use the “as-path prepend …” command as one of the possible actions in the “export routing policy”. At last, JUNOS always sets the ORIGIN attribute to IGP (giving you a knob if you want to change it).</p>
+            <div class="comment-content">(FOLLOW-UP FROM MY PREVIOUS COMMENT)<br />Moreover, as a general  personal consideration about IOS style to inject prefixes in a BGP process, I think IOS has a clumsy way to do it.  Summarizing, in IOS you may use three different methods:<br />- Manual, through the &quot;network ... mask ...&quot; command. You may associate to this command a route-map to change some attributes (es. MED) of the route inserted in the BGP table.<br />- Through aggregation through the &quot;aggregate-address ...&quot; command.<br />- Through redistribution.<br />This generates different methods to inject the same prefix in a BGP process, leading some time to different  BGP attributes. Let me make an example. Suppose you have a directly connected network that you want to inject in a BGP process. You may do it using the &quot;network ... mask ...&quot; command or the “redistribute connected” command (with a route-map if you want to inject only the directly connected network we are examining). Both ways produce the same result with a small difference: if you use the &quot;network ... mask ...&quot; command the ORIGIN attribute is set to IGP, using “redistribute connected” command the ORIGIN attribute is set to INCOMPLETE. Does this make any sense ? In my opinion surely no ! To tell the truth, I do not even understand why IOS sets the ORIGIN to different values when you use the &quot;network ... mask ...&quot; and the &quot;aggregate-address ...&quot; commands (ORIGIN = IGP) and redistribution (ORIGIN = INCOMPLETE). Probably there are historical reasons behind that, but I do not think today this makes any sense, and this can lead you to errors since ORIGIN is part of the BGP selection process (to be sincere, I have the crazy idea that ORIGIN attribute is useless and should be taken out from BGP selection process !!!)<br />If you compare IOS to JUNOS, JUNOS has only one (unified) way to inject prefixes into a BGP process, which is essentially similar to the redistribution process used by IOS.  You put in some way the prefix you want to inject in the BGP process in the routing table (be it a directly connected route, an aggregate route or route advertised by a dynamic routing protocol), create an “export routing policy” and then apply it to a BGP session (or a group of BGP sessions).  Going back to AS_PATH prepending, you cannot make any mistake, you have only one way to do it, just use the “as-path prepend …” command as one of the possible actions in the “export routing policy”. At last, JUNOS always sets the ORIGIN attribute to IGP (giving you a knob if you want to change it).</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1750368433629367178">22 October 2011 09:38</a>
+                <a rel="nofollow" id="c1750368433629367178" href="#1750368433629367178">22 October 2011 09:38</a>
               </span>
             </div>
-            <p class="comment-content">If I would have to guess, I would say that one of these mechanisms was implemented way before the others (and before they realized error checking is not a bad idea). Should they fix it? Of course. Will they? I doubt ...</p>
+            <div class="comment-content">If I would have to guess, I would say that one of these mechanisms was implemented way before the others (and before they realized error checking is not a bad idea). Should they fix it? Of course. Will they? I doubt ...</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1625838680499214695">22 October 2011 09:45</a>
+                <a rel="nofollow" id="c1625838680499214695" href="#1625838680499214695">22 October 2011 09:45</a>
               </span>
             </div>
-            <p class="comment-content">There&#39;s a simple reason for so many methods - history ;)<br /><br />You have to remember that BGP existed in Cisco IOS long before there were route maps (and probably before there were redistribution filters). Also, BGP was used in an environment where they cared about control and stability (so listing the networks manually made perfect sense).<br /><br />Aggregation was an add-on feature (as BGP moved from classful BGP-3 to classless BGP-4) and was initially designed as a proxy functionality - a router would aggregate prefixes from other routers running BGP-3 and thus being unable to aggregate. The BGP-3 to BGP-4 migration is also where the &quot;summary-only&quot; keyword came from. Nobody was willing to just aggregate and hope that it would work - the classful prefixes were left in the BGP table as a safety measure.<br /><br />And we all know that once you implement a feature, it&#39;s impossible to get rid of it, because there&#39;s always at least one huge network out there that relies on that feature and would break if you change the way the feature behaves.<br /><br />Comparing that to Junos is unfair. It&#39;s like comparing OS/370 to Linux  :-P</p>
+            <div class="comment-content">There&#39;s a simple reason for so many methods - history ;)<br /><br />You have to remember that BGP existed in Cisco IOS long before there were route maps (and probably before there were redistribution filters). Also, BGP was used in an environment where they cared about control and stability (so listing the networks manually made perfect sense).<br /><br />Aggregation was an add-on feature (as BGP moved from classful BGP-3 to classless BGP-4) and was initially designed as a proxy functionality - a router would aggregate prefixes from other routers running BGP-3 and thus being unable to aggregate. The BGP-3 to BGP-4 migration is also where the &quot;summary-only&quot; keyword came from. Nobody was willing to just aggregate and hope that it would work - the classful prefixes were left in the BGP table as a safety measure.<br /><br />And we all know that once you implement a feature, it&#39;s impossible to get rid of it, because there&#39;s always at least one huge network out there that relies on that feature and would break if you change the way the feature behaves.<br /><br />Comparing that to Junos is unfair. It&#39;s like comparing OS/370 to Linux  :-P</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#218386979069698480">22 October 2011 09:58</a>
+                <a rel="nofollow" id="c218386979069698480" href="#218386979069698480">22 October 2011 09:58</a>
               </span>
             </div>
-            <p class="comment-content">And finally, the ORIGIN attribute. It&#39;s a leftover from the days when the Internet had to migrate from EGP to BGP and it was important to know whether a route is a native BGP route (originated in BGP and transported to the current router only through BGP) or an EGP route redistributed into BGP. Native BGP routes would obviously be preferred over EGP routes. See http://tools.ietf.org/html/rfc1268#section-5<br /><br />BTW, the &quot;Incomplete&quot; ORIGIN is a misnomer. It should be &quot;Unknown&quot;.<br /><br />Also, might actually make sense to set ORIGIN to &quot;Incomplete&quot; on route redistribution (unless you use a route-map to set it to IGP). If one router advertises a prefix with a NETWORK statement and another one through blind redistribution, it&#39;s better to listen to the one that (supposedly) knows what it&#39;s doing.<br /><br />Do we still need the ORIGIN attribute? Probably not, but as I said before, there&#39;s probably a huge network out there that relies on ORIGIN for proper route selection  :-P</p>
+            <div class="comment-content">And finally, the ORIGIN attribute. It&#39;s a leftover from the days when the Internet had to migrate from EGP to BGP and it was important to know whether a route is a native BGP route (originated in BGP and transported to the current router only through BGP) or an EGP route redistributed into BGP. Native BGP routes would obviously be preferred over EGP routes. See http://tools.ietf.org/html/rfc1268#section-5<br /><br />BTW, the &quot;Incomplete&quot; ORIGIN is a misnomer. It should be &quot;Unknown&quot;.<br /><br />Also, might actually make sense to set ORIGIN to &quot;Incomplete&quot; on route redistribution (unless you use a route-map to set it to IGP). If one router advertises a prefix with a NETWORK statement and another one through blind redistribution, it&#39;s better to listen to the one that (supposedly) knows what it&#39;s doing.<br /><br />Do we still need the ORIGIN attribute? Probably not, but as I said before, there&#39;s probably a huge network out there that relies on ORIGIN for proper route selection  :-P</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Steve B</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4704612227611120630">16 November 2011 00:28</a>
+                <a rel="nofollow" id="c4704612227611120630" href="#4704612227611120630">16 November 2011 00:28</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Also, might actually make sense to set ORIGIN to &quot;Incomplete&quot; on route redistribution&quot; <br /><br />I fear I may be missing something really obvious here but isn&#39;t this set by the very act of redistribution into BGP without any manual route-map action on top? *DONT_KNOW*</p>
+            <div class="comment-content">&quot;Also, might actually make sense to set ORIGIN to &quot;Incomplete&quot; on route redistribution&quot; <br /><br />I fear I may be missing something really obvious here but isn&#39;t this set by the very act of redistribution into BGP without any manual route-map action on top? *DONT_KNOW*</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1154532011291409419">16 November 2011 14:02</a>
+                <a rel="nofollow" id="c1154532011291409419" href="#1154532011291409419">16 November 2011 14:02</a>
               </span>
             </div>
-            <p class="comment-content">You&#39;re right - I was just explaining to Tiziano that setting origin to &quot;Incomplete&quot; (which should really be &quot;unknown&quot;) when doing redistribution isn&#39;t necessarily a bad idea.</p>
+            <div class="comment-content">You&#39;re right - I was just explaining to Tiziano that setting origin to &quot;Incomplete&quot; (which should really be &quot;unknown&quot;) when doing redistribution isn&#39;t necessarily a bad idea.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Raj</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7263099353550302690">19 January 2012 19:17</a>
+                <a rel="nofollow" id="c7263099353550302690" href="#7263099353550302690">19 January 2012 19:17</a>
               </span>
             </div>
-            <p class="comment-content">If eBGP is used as PE-CE protocol  (CE is a multi-VRF CE) and  a customer vrf in PE is configured to send both BGP communities towards CE neighbor, <br />will PE send RT values associated with  its BGP routes entries in the BGP route update sent towards CE?<br />Will these BGP update be accepted by PE VRF?<br />If accepted will those RT values be retained with the routing entries in PE BGP tabl?<br /><br /><br />what happens if BGP process in CE VRF is configured to send both communities to PE VRF? <br />Will BGP route update will be sent with RT values ?<br />Will these BGP update be accepted by PE VRF?<br />If accepted will those RT values be retained with the routing entries in PE BGP table?</p>
+            <div class="comment-content">If eBGP is used as PE-CE protocol  (CE is a multi-VRF CE) and  a customer vrf in PE is configured to send both BGP communities towards CE neighbor, <br />will PE send RT values associated with  its BGP routes entries in the BGP route update sent towards CE?<br />Will these BGP update be accepted by PE VRF?<br />If accepted will those RT values be retained with the routing entries in PE BGP tabl?<br /><br /><br />what happens if BGP process in CE VRF is configured to send both communities to PE VRF? <br />Will BGP route update will be sent with RT values ?<br />Will these BGP update be accepted by PE VRF?<br />If accepted will those RT values be retained with the routing entries in PE BGP table?</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6105188663300184226">19 January 2012 19:51</a>
+                <a rel="nofollow" id="c6105188663300184226" href="#6105188663300184226">19 January 2012 19:51</a>
               </span>
             </div>
-            <p class="comment-content">Have you considered setting up a two router lab to test all these questions?</p>
+            <div class="comment-content">Have you considered setting up a two router lab to test all these questions?</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Raj</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7335127516137006162">20 January 2012 01:48</a>
+                <a rel="nofollow" id="c7335127516137006162" href="#7335127516137006162">20 January 2012 01:48</a>
               </span>
             </div>
-            <p class="comment-content">This kind of configuration is implemented in our production network. The route advertised by PE is learnt by CE router, however no RT value is associated with those routing entries in the CE routing table.<br /><br />However I found the routes learnt by PE from CE are having the rt values associated with it.<br /><br />I am not sure what actually happen at the background. I just wanted to know what is the default IOS behaviour when BGP is configured to send community / extended  community attribute from within the VRF context.<br /><br />Thank you.</p>
+            <div class="comment-content">This kind of configuration is implemented in our production network. The route advertised by PE is learnt by CE router, however no RT value is associated with those routing entries in the CE routing table.<br /><br />However I found the routes learnt by PE from CE are having the rt values associated with it.<br /><br />I am not sure what actually happen at the background. I just wanted to know what is the default IOS behaviour when BGP is configured to send community / extended  community attribute from within the VRF context.<br /><br />Thank you.</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2840746556571289253">29 October 2012 15:01</a>
+                <a rel="nofollow" id="c2840746556571289253" href="#2840746556571289253">29 October 2012 15:01</a>
               </span>
             </div>
-            <p class="comment-content">Very interesting. I have been banging my head against the wall last week wiht the rotue-map applied to network or neighbor command. The task was simple, apply the no-export community to a prefix. For whatever reason my first instinct was to apply the route-map using the network command, well the prefix just did not get sent to the neighbor. Ran few tests, repeated the command this time just settin a test community nn:nn and the prefix gets passed along with the correct community, tried again with the no-export, nothing, no prefixes on neighbor. Apply the route-map to the neighbor command and the prefix gets passed on with the correct community of no-export.<br />I found this even more confusing, you can pass some community but no others, there must be a fundamental programming/desing reason for this, it woudl be very good to know it so it can be understood and retained by my poor brain. Fulvio<br />fallegretti@hotmail.com</p>
+            <div class="comment-content">Very interesting. I have been banging my head against the wall last week wiht the rotue-map applied to network or neighbor command. The task was simple, apply the no-export community to a prefix. For whatever reason my first instinct was to apply the route-map using the network command, well the prefix just did not get sent to the neighbor. Ran few tests, repeated the command this time just settin a test community nn:nn and the prefix gets passed along with the correct community, tried again with the no-export, nothing, no prefixes on neighbor. Apply the route-map to the neighbor command and the prefix gets passed on with the correct community of no-export.<br />I found this even more confusing, you can pass some community but no others, there must be a fundamental programming/desing reason for this, it woudl be very good to know it so it can be understood and retained by my poor brain. Fulvio<br />fallegretti@hotmail.com</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -218,10 +213,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4681534192776753412">29 October 2012 15:20</a>
+                <a rel="nofollow" id="c4681534192776753412" href="#4681534192776753412">29 October 2012 15:20</a>
               </span>
             </div>
-            <p class="comment-content">Maybe you need &quot;neighbor send-community&quot; as well?</p>
+            <div class="comment-content">Maybe you need &quot;neighbor send-community&quot; as well?</div>
           </div>
         </li>
       </div>
@@ -236,10 +231,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#788853430294631427">29 October 2012 17:54</a>
+                <a rel="nofollow" id="c788853430294631427" href="#788853430294631427">29 October 2012 17:54</a>
               </span>
             </div>
-            <p class="comment-content">I have it, maybe I have not explained the issue correctly:<br /><br />network x.y.z.t mask a.b.c.d route-map TEST<br />if TEST set community to no-export, the prefix does not get send to the neighbor, never mind the community.<br />if TEST set community 11:11, the neighbor gets the prefix with the community set in TEST (this implies I am sending community to neighbors)<br /><br />if I use the same route-map TEST with set community no-export, but I apply it via the neighbor command, the neighbor gets the prefix with the correct community (no-expoert) in this case.<br />In other words, it seems I can&#39;t pass the no-export community with the network command. <br />Hope my issue is better explained now.<br />I think your opening statement <br />The network route-map command uses a route map to change the attributes of an IP prefix as it’s inserted in the BGP table<br />has something to do with it, I am confused by the inconsistency of the network route-map command, it looks like it passes some but not all communities.<br />Fulvio</p>
+            <div class="comment-content">I have it, maybe I have not explained the issue correctly:<br /><br />network x.y.z.t mask a.b.c.d route-map TEST<br />if TEST set community to no-export, the prefix does not get send to the neighbor, never mind the community.<br />if TEST set community 11:11, the neighbor gets the prefix with the community set in TEST (this implies I am sending community to neighbors)<br /><br />if I use the same route-map TEST with set community no-export, but I apply it via the neighbor command, the neighbor gets the prefix with the correct community (no-expoert) in this case.<br />In other words, it seems I can&#39;t pass the no-export community with the network command. <br />Hope my issue is better explained now.<br />I think your opening statement <br />The network route-map command uses a route map to change the attributes of an IP prefix as it’s inserted in the BGP table<br />has something to do with it, I am confused by the inconsistency of the network route-map command, it looks like it passes some but not all communities.<br />Fulvio</div>
           </div>
         </li>
       </div>
@@ -254,10 +249,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2271015339192731792">29 October 2012 17:56</a>
+                <a rel="nofollow" id="c2271015339192731792" href="#2271015339192731792">29 October 2012 17:56</a>
               </span>
             </div>
-            <p class="comment-content">Let me guess - the neighbor is in a different AS?</p>
+            <div class="comment-content">Let me guess - the neighbor is in a different AS?</div>
           </div>
         </li>
       </div>
@@ -272,10 +267,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7890974693349807205">29 October 2012 17:58</a>
+                <a rel="nofollow" id="c7890974693349807205" href="#7890974693349807205">29 October 2012 17:58</a>
               </span>
             </div>
-            <p class="comment-content">yes (something tells me this is more than an educated guess)<br />Fulvio<br /></p>
+            <div class="comment-content">yes (something tells me this is more than an educated guess)<br />Fulvio<br /></div>
           </div>
         </li>
       </div>
@@ -290,10 +285,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8310769571561876839">29 October 2012 18:01</a>
+                <a rel="nofollow" id="c8310769571561876839" href="#8310769571561876839">29 October 2012 18:01</a>
               </span>
             </div>
-            <p class="comment-content">&quot;No-Export&quot; community means &quot;do not send this prefix over EBGP&quot;. What should happen if you set it with network command?</p>
+            <div class="comment-content">&quot;No-Export&quot; community means &quot;do not send this prefix over EBGP&quot;. What should happen if you set it with network command?</div>
           </div>
         </li>
       </div>
@@ -315,10 +310,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7914184908856033717">29 October 2012 18:07</a>
+                <a rel="nofollow" id="c7914184908856033717" href="#7914184908856033717">29 October 2012 18:07</a>
               </span>
             </div>
-            <p class="comment-content">Well, the reason I am setting the no-export community is to tell my neighbor in the other AS, do not send this prefix over EBGP, but I suppose if I apply it via the network command, bearing in mind <br />&quot;The network route-map command uses a route map to change the attributes of an IP prefix as it’s inserted in the BGP table&quot;<br />I am actually telling the local router not to send this prefix over EBGP....is that right?<br /></p>
+            <div class="comment-content">Well, the reason I am setting the no-export community is to tell my neighbor in the other AS, do not send this prefix over EBGP, but I suppose if I apply it via the network command, bearing in mind <br />&quot;The network route-map command uses a route map to change the attributes of an IP prefix as it’s inserted in the BGP table&quot;<br />I am actually telling the local router not to send this prefix over EBGP....is that right?<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -334,10 +329,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6876909152478827800">01 November 2012 09:51</a>
+                <a rel="nofollow" id="c6876909152478827800" href="#6876909152478827800">01 November 2012 09:51</a>
               </span>
             </div>
-            <p class="comment-content">More details here: http://blog.ioshints.info/2012/10/setting-no-export-bgp-community.html</p>
+            <div class="comment-content">More details here: http://blog.ioshints.info/2012/10/setting-no-export-bgp-community.html</div>
           </div>
         </li>
       </div>
@@ -359,10 +354,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4187756963922060323">19 December 2012 17:47</a>
+                <a rel="nofollow" id="c4187756963922060323" href="#4187756963922060323">19 December 2012 17:47</a>
               </span>
             </div>
-            <p class="comment-content">I always confuse when to use IN or OUT in BGP route-map. I already do some searching using google but I cant find a clear explanation. Anyone here who wants to share their ideas regarding this? TIA</p>
+            <div class="comment-content">I always confuse when to use IN or OUT in BGP route-map. I already do some searching using google but I cant find a clear explanation. Anyone here who wants to share their ideas regarding this? TIA</div>
           </div>
         </li>
       </div>

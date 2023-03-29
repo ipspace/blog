@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04214157294261143773" rel="nofollow">shadeland</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#288384959336239384">17 November 2016 10:19</a>
+                <a rel="nofollow" id="c288384959336239384" href="#288384959336239384">17 November 2016 10:19</a>
               </span>
             </div>
-            <p class="comment-content">There&#39;s really two types of VXLAN used by ACI: One is the internal VXLAN (iVXLAN or eVXLAN, I&#39;m not sure what it&#39;s called today). That&#39;s the proprietary VXLAN that uses extra bits in the headers for things like source group (which saves a ton of TCAM space). <br /><br />Just like HiGig2 or other internal switching encaps, it doesn&#39;t leave the ACI fabric. Whether it&#39;s VXLAN or VLAN (or untagged), the packets get decapsulated and re-encapulsated into that iVXLAN header as it bounces around inside ACI. That header is removed by the time it leaves the ACI fabric. Each bridge domain is its own iVXLAN segment. Cisco refers to this as normalization, so that different encaps can be used on the same network. <br /><br />MP-BGP (e)VPN is used for the new multi-pod topologies, and as far as I know right now it&#39;s only ACI-specific.  <br /><br />Then there&#39;s IETF standard VXLAN encap, which ACI can also do. There&#39;s some integration with vShield and OVS (as well as AVS) with either IEEE VLAN tagged frames or IETF standard VXLAN tagged packets, but I don&#39;t think there&#39;s currently any specific integration going on with NSX. In terms of ACI and NSX, I believe ACI would be an IP underlay. <br /></p>
+            <div class="comment-content">There&#39;s really two types of VXLAN used by ACI: One is the internal VXLAN (iVXLAN or eVXLAN, I&#39;m not sure what it&#39;s called today). That&#39;s the proprietary VXLAN that uses extra bits in the headers for things like source group (which saves a ton of TCAM space). <br /><br />Just like HiGig2 or other internal switching encaps, it doesn&#39;t leave the ACI fabric. Whether it&#39;s VXLAN or VLAN (or untagged), the packets get decapsulated and re-encapulsated into that iVXLAN header as it bounces around inside ACI. That header is removed by the time it leaves the ACI fabric. Each bridge domain is its own iVXLAN segment. Cisco refers to this as normalization, so that different encaps can be used on the same network. <br /><br />MP-BGP (e)VPN is used for the new multi-pod topologies, and as far as I know right now it&#39;s only ACI-specific.  <br /><br />Then there&#39;s IETF standard VXLAN encap, which ACI can also do. There&#39;s some integration with vShield and OVS (as well as AVS) with either IEEE VLAN tagged frames or IETF standard VXLAN tagged packets, but I don&#39;t think there&#39;s currently any specific integration going on with NSX. In terms of ACI and NSX, I believe ACI would be an IP underlay. <br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Piotr Jablonski</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5378617739929450398">17 November 2016 20:23</a>
+                <a rel="nofollow" id="c5378617739929450398" href="#5378617739929450398">17 November 2016 20:23</a>
               </span>
             </div>
-            <p class="comment-content">VXLAN (NSX) over eVXLAN (ACI) seems to be a uneccessary complication but on the other hand both can play a different roles. ACI can provide a secured/automated fabric and NSX end-to-end network services available in multiple locations including a public cloud. So there are examples where EVPN or TRILL is a transport and on top of that NSX is running. It is similar to CsC services with MPLS-TE FRR or Segment Routing in the core. Of course VXLANoVXLAN imposes a bigger overhead but this is just a number of bytes. From the ASIC perspective incoming VXLAN is an IP/UDP packet so no performance impact apart from processing and serialization of additional 50 bytes per packet.<br /><br />A different story is with VXLAN in NX-OS standalone mode. Here VXLAN on Cisco can interoperate with NSX directly composing a single overlay network.<br /><br />I thought also about a use case of running ACI over NSX. It could an encryption which is not a part of ACI and is included as L2VPN encrypted service in NSX. ;)</p>
+            <div class="comment-content">VXLAN (NSX) over eVXLAN (ACI) seems to be a uneccessary complication but on the other hand both can play a different roles. ACI can provide a secured/automated fabric and NSX end-to-end network services available in multiple locations including a public cloud. So there are examples where EVPN or TRILL is a transport and on top of that NSX is running. It is similar to CsC services with MPLS-TE FRR or Segment Routing in the core. Of course VXLANoVXLAN imposes a bigger overhead but this is just a number of bytes. From the ASIC perspective incoming VXLAN is an IP/UDP packet so no performance impact apart from processing and serialization of additional 50 bytes per packet.<br /><br />A different story is with VXLAN in NX-OS standalone mode. Here VXLAN on Cisco can interoperate with NSX directly composing a single overlay network.<br /><br />I thought also about a use case of running ACI over NSX. It could an encryption which is not a part of ACI and is included as L2VPN encrypted service in NSX. ;)</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01335898315678692950" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5276441555234918223">18 November 2016 18:48</a>
+                <a rel="nofollow" id="c5276441555234918223" href="#5276441555234918223">18 November 2016 18:48</a>
               </span>
             </div>
-            <p class="comment-content">Why would you do this? I cannot think of a fiscal or technical driver for this. Plain vanilla VCenter, sure, integrate with ACI. I believe you can automatically sync with DVS so that you don&#39;t have to manually configure VLAN/port/EPG info every time you add a server. But if you&#39;ve already spent the substantial money to implement NSX, why are you also doing ACI? The whole point of going with NSX is to virtualize the network layer and abstract it from the hardware. You can use whitebox switches... they are literally just moving encapsulated packets, there&#39;s no need for advanced switching feature sets of cadillac vendors. And from what I&#39;ve seen, the VXLAN configuration is pretty light... some information provided during the set up and build phase, not much interaction once it&#39;s rolled out.<br /><br />From the ACI side, you can do the network layer with plain VMWare covering the server side of things. I think you can even do bare metal deployments and layer-2 integration with Cisco&#39;s AVS... not 100% certain yet. But I don&#39;t think you need the advanced features of NSX on top of this. And like NSX, the VXLAN/EVPN stuff happens in the background. You do some early configuration and provide some info, then it all runs in the background like magic. <br /><br />I don&#39;t know if you can (or should) be trying to merge the VXLAN fabric of either vendor with anything else, even something that uses RFC-standard VXLAN. I think that would be opening a can of worms. I suspect either platform would not gracefully accept VXLAN move/add/change coming from any external platforms, but I could be wrong.<br /><br />Again, I really can&#39;t see what technical driver would ever lead to spending the money for both ACI and NSX. Even if you had two separate existing environments and suddenly had a business driver force you down the path of merging them, I think you would want to select which vendor is going to handle what part then strip out any overlapping features (if possible) so that your recurring maintenance and license renewals wouldn&#39;t be obscene.</p>
+            <div class="comment-content">Why would you do this? I cannot think of a fiscal or technical driver for this. Plain vanilla VCenter, sure, integrate with ACI. I believe you can automatically sync with DVS so that you don&#39;t have to manually configure VLAN/port/EPG info every time you add a server. But if you&#39;ve already spent the substantial money to implement NSX, why are you also doing ACI? The whole point of going with NSX is to virtualize the network layer and abstract it from the hardware. You can use whitebox switches... they are literally just moving encapsulated packets, there&#39;s no need for advanced switching feature sets of cadillac vendors. And from what I&#39;ve seen, the VXLAN configuration is pretty light... some information provided during the set up and build phase, not much interaction once it&#39;s rolled out.<br /><br />From the ACI side, you can do the network layer with plain VMWare covering the server side of things. I think you can even do bare metal deployments and layer-2 integration with Cisco&#39;s AVS... not 100% certain yet. But I don&#39;t think you need the advanced features of NSX on top of this. And like NSX, the VXLAN/EVPN stuff happens in the background. You do some early configuration and provide some info, then it all runs in the background like magic. <br /><br />I don&#39;t know if you can (or should) be trying to merge the VXLAN fabric of either vendor with anything else, even something that uses RFC-standard VXLAN. I think that would be opening a can of worms. I suspect either platform would not gracefully accept VXLAN move/add/change coming from any external platforms, but I could be wrong.<br /><br />Again, I really can&#39;t see what technical driver would ever lead to spending the money for both ACI and NSX. Even if you had two separate existing environments and suddenly had a business driver force you down the path of merging them, I think you would want to select which vendor is going to handle what part then strip out any overlapping features (if possible) so that your recurring maintenance and license renewals wouldn&#39;t be obscene.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10562240567667879482" rel="nofollow">lcw</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6041442767612084212">07 December 2016 19:17</a>
+                <a rel="nofollow" id="c6041442767612084212" href="#6041442767612084212">07 December 2016 19:17</a>
               </span>
             </div>
-            <p class="comment-content">Google <a href="https://www.google.com/#q=nsx+aci+bacon" rel="nofollow">&quot;ACI NSX Bacon&quot;</a><br /><br />In terms of cost, ACI is just 5-10% more than the equivalent Nexus 9K EVPN fabric, and only 20-30% more than the equivalent VPC/STP design. That&#39;s a wash, easily justified by ACI&#39;s single point-of-management alone! Plenty of ACI customers buy it expecting nothing more than a really good L2/L3 fabric.<br /><br />When you run NSX on ACI, ACI is purely an underlay. But it&#39;s a damn good one -- (a) discrete fabric-wide security, QoS, and health stats for NSX VXLAN, ESXi vMotion, ESXi storage, and VMware management traffic; (b) BGP/OSPF peering with the NSX DLR for fully distributed/anycast L3 ACI-to-NSX routing (no VPC/dynamic routing goofiness); (c) MAC/IP routing with sub-millisecond (!) fault recovery across hundreds of leaves;  and so on...<br /><br />In contrast to ACI&#39;s chump change, <b>NSX doubles your per-VM cost</b> (based on several real-world scenarios I&#39;ve done with and without ELA&#39;s). As a result, many NSX customers are limiting their deployments to narrow high-security areas, such as PCI, HIPAA, or IP.</p>
+            <div class="comment-content">Google <a href="https://www.google.com/#q=nsx+aci+bacon" rel="nofollow">&quot;ACI NSX Bacon&quot;</a><br /><br />In terms of cost, ACI is just 5-10% more than the equivalent Nexus 9K EVPN fabric, and only 20-30% more than the equivalent VPC/STP design. That&#39;s a wash, easily justified by ACI&#39;s single point-of-management alone! Plenty of ACI customers buy it expecting nothing more than a really good L2/L3 fabric.<br /><br />When you run NSX on ACI, ACI is purely an underlay. But it&#39;s a damn good one -- (a) discrete fabric-wide security, QoS, and health stats for NSX VXLAN, ESXi vMotion, ESXi storage, and VMware management traffic; (b) BGP/OSPF peering with the NSX DLR for fully distributed/anycast L3 ACI-to-NSX routing (no VPC/dynamic routing goofiness); (c) MAC/IP routing with sub-millisecond (!) fault recovery across hundreds of leaves;  and so on...<br /><br />In contrast to ACI&#39;s chump change, <b>NSX doubles your per-VM cost</b> (based on several real-world scenarios I&#39;ve done with and without ELA&#39;s). As a result, many NSX customers are limiting their deployments to narrow high-security areas, such as PCI, HIPAA, or IP.</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04540820319538497395" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6703159747717718330">19 November 2016 18:34</a>
+                <a rel="nofollow" id="c6703159747717718330" href="#6703159747717718330">19 November 2016 18:34</a>
               </span>
             </div>
-            <p class="comment-content">The problem is still that NSX does not support EVPN - EVPN support would make this easy</p>
+            <div class="comment-content">The problem is still that NSX does not support EVPN - EVPN support would make this easy</div>
           </div>
         </li>
       </div>

@@ -1,0 +1,208 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1494">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> AW</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1494" href="#1494">09 November 2022 02:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks! This answer some questions I&#39;ve had for a long time.</p>
+
+<p>The other question I have had is how does failover speed compare when a link is lost in EVPN ESI MLAG versus LACP? And is there a control mechanism to detect a bad link that still has link status but is not forwarding like the LACP heartbeats?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1495">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1495" href="#1495">09 November 2022 05:35</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>... and you gave me a topic for another blog post ;) Thank you!</p>
+
+<p>Long story short:</p>
+
+<ul>
+<li>You still need LACP, EVPN is a PE-PE control-plane protocol, there&#39;s no change on the PE-CE side.</li>
+<li>I found an article (and lost a link to it) saying EVPN is much slower than traditional MLAG, but I see no reason why that would be the case unless you&#39;re dealing with a broken implementation.</li>
+</ul>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1496">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> TA</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1496" href="#1496">09 November 2022 05:58</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;However, the forwarding hardware limitations require anycast VTEP IP addresses&quot;</p>
+
+<p>I can&#39;t comment on how other implementations work, but FRR/Cumulus implementation of MAC-ECMP does not fallback on anycast.
+What you said about forwarding hardware requiring a single destination for a MAC is accurate, but their implementation achieves MAC-ECMP by pointing the fdb entry (mac) at single destination that is an ECMP container holding the VTEP address of each member of the remote ESI rather than pointing to a single VTEP address.</p>
+
+<p>In Linux, the ECMP container is implemented using &quot;nexthop&quot; objects (one nexthop &quot;group&quot; pointing to several nexthop entries).
+FRR populates an ES cache based on &quot;per ES&quot; Type-1 routes, which maintains a list of active VTEP addresses per ESI. One NHG is allocated in the kernel per known ESI and one NHE is allocated per active VTEP. When a MAC is learned via the remote ESI, the VXLAN driver&#39;s fdb entry points to the ID of the nexthop group (&quot;nhid&quot;) for a hash lookup to select which underlay DIP will be used.</p>
+
+<p>In Mellanox ASICs the same principle applies - an ECMP container is allocated based on the kernel NHG and it contains underlay VTEP addresses. So the hardware fdb points to the ECMP container to select a remote underlay DIP for the VXLAN tunnel (not anycast) and then the encapsulated packet goes through the route lookup based on the DIP returned by the ECMP hash lookup.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1497">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> DM</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1497" href="#1497">10 November 2022 01:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>JunOS also implements ECMP with underlay/overlay networks. I think all vendors have some working implementation of this. Not sure why Ivan isn&#39;t aware of that.</p>
+
+<p>JunOS adds multiple entries to a unilist, then an indirect next hop list, then finally a chained composite next hop list (when using EVPN-VXLAN).</p>
+
+<p>Most of the complaints in this blog are a non-issue.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1502">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daniel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1502" href="#1502">10 November 2022 10:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@DM: I believe that&#39;s true for MX/QFK10K/vMX/vQFX, but not for the older Trident2/2+/Tomahawk-based boxes (i.e. QFX5100/5110/5200). Afaik, those can only loadbalance in the underlay, not the overlay.</p>
+
+<p>See for example this (albeit older) whitepaper: https://www.juniper.net/documentation/en_US/release-independent/solutions/information-products/pathway-pages/lb-evpn-vxlan-tn.pdf</p>
+
+<p>Or this blog: https://danhearty.wordpress.com/2020/04/25/evpn-vxlan-virtual-gateway-qfx5k-forwarding/</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1504">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> DM</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1504" href="#1504">10 November 2022 04:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Daniel/Ivan I believe those assumptions are outdated.</p>
+
+<p>See release notes at bottom of this page:
+https://www.juniper.net/documentation/us/en/software/junos/evpn-vxlan/topics/concept/evpn-vxlan-dynamic-load-balancing.html</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1501">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1501" href="#1501">10 November 2022 09:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you both. Rewrote the blog post based on your comments.</p>
+
+<p>@DM: I&#39;m positive MX works as described. I remain skeptical about the older Broadcom ASICs, but whatever.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1498">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeff Behrns</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1498" href="#1498">10 November 2022 03:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Significant cost uplift to license switches to build EVPN DC fabric as compared to MLAG which is base feature on any DC class switch.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

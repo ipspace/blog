@@ -1,0 +1,62 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "24 February 2022 02:12",
+               "html": "<p>I&#39;m about to write a blog post saying &quot;ICMP redirects are no longer needed&quot;, so I would love to see a scenario that still needs ICMP redirects to make the network work, regardless of how broken it is.</p>\n\n<p>But I agree with you, that design is definitely suboptimal, and stumbling upon ICMP redirects is a huge red flag if you care about good design.</p>\n",
+               "id": "1043",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-02-24T14:12:11",
+               "ref": "1041",
+               "type": "comment"
+            },
+            {
+               "date": "25 February 2022 09:44",
+               "html": "<p>I also wonder about a scenario where ICMP redirects are <em>required</em> and would like to learn about one.</p>\n\n<p>An ICMP redirect is intended to instruct the sending system to <em>directly</em> send the IP packets to the next-hop gateway of the gateway sending the ICMP redirect.  This allows to use a path that is shorter by one router hop.  Thus it is an optimization that <em>should</em> not be needed for correct packet transport.  Thus if this <em>optimization</em> results in <em>worse</em> performance, it seems prudent to disable it.</p>\n\n<p>I have seen many networks that function fine with disabled ICMP redirects.  Those include both networks with manually disabled ICMP redirects and those where vendor defaults regarding disabled ICMP redirects were kept.</p>\n\n<p>I can think of situations where an extra hop leads to problems due to TTL (think of <em>hop count</em>), but in such a situation the root cause is using a too low TTL value or lack of (or misconfigured) dynamic routing to ensure use of the intended path.</p>\n\n<p>Another possibility I can think of could be overloaded links due to using a suboptimal gateway.  But this can only be mitigated by ICMP redirects if ICMP redirect processing does not significantly impact forwarding performance by itself.</p>\n\n<p>I am well aware that I cannot know all possible scenarios and thus would like to learn of an example where ICMP redirects make the network work.</p>\n\n<p>[BTW in the scenario described in the blog post, changing the active gateway according to uplink state (e.g., via interface or object tracking and preemption) would have avoided ICMP redirect generation, too.]</p>\n",
+               "id": "1047",
+               "name": " Erik Auerswald",
+               "pub": "2022-02-25T09:44:56",
+               "ref": "1043",
+               "type": "comment"
+            }
+         ],
+         "date": "24 February 2022 12:36",
+         "html": "<p>You&#39;re not wrong, per se.  <em>But</em> there are still lots of places where ICMP redirects are all that makes the network work, so blanket-disabling can just cause new problems.  (Granted, those problems are usually of the &quot;why would you design a network like this???&quot; variety, and are better served by a redesign than by disabling or enabling ICMP Redirects.)</p>\n\n<p>A &quot;more correct&quot; solution than to disable redirects, since the client using Nexus hardware, might be to deploy vPC and use vPC Peer Gateway instead of HSRP in the first place.</p>\n\n<p>Put another way, the presence <em>or</em> absence of ICMP Redirects is a red herring, usually pointing to architectural/design issues instead.  In this example, using vPC Peer Gateway or, better yet, running a minimal IGP instead of relying on static routes, eliminates ICMP Redirects from both the problem and solution spaces simultaneously.</p>\n",
+         "id": "1041",
+         "name": " Adam Thompson",
+         "pub": "2022-02-24T00:36:40",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "29 April 2022 04:17",
+               "html": "<p>I tried to do something similar on a Cisco router. It didn&#39;t end well...</p>\n\n<p>https://blog.ipspace.net/2009/10/my-stupid-moments-interface-default.html</p>\n",
+               "id": "1194",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-04-29T16:17:28",
+               "ref": "1074",
+               "type": "comment"
+            }
+         ],
+         "date": "03 March 2022 07:39",
+         "html": "<p>To add to the point of using real hardware for testing, don&rsquo;t overlook any redundancy/fail-over states and protocols in your design that may rely on ICMP redirect usage in some manner.</p>\n\n<p>Funny, this topic reminded me on early use cases for ICMP redirect. Back in the old days(late 80s early 90s) where you had a segment with two routers connected to it some used ICMP redirect as a poor man&rsquo;s fail over solution. \nYou would set your workstation&#39;s default GW to your own address and ARP on everything but if an upstream prefix was not available on R1, R1 would send ICMP redirect to your workstation to go to R2 for that prefix, you ARP, then go through R2. If you lost R1 completely you would ARP anyway and get R2. \nI believe this was before you can have two default GWs set or before DHCP to set GW.</p>\n\n<p>A bit chatty on the wire but it worked.</p>\n",
+         "id": "1074",
+         "name": " Jeff",
+         "pub": "2022-03-03T19:39:49",
+         "type": "comment"
+      },
+      {
+         "date": "19 April 2022 04:31",
+         "html": "<p>FWIW, Nexus can learn redirects, but its TCAM table size is zero by default.</p>\n\n<p>Second, I would never build this as shown but, if I had to, HSRP with object tracking (https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/unicast/configuration/guide/l3_cli_nxos/l3_hsrp.html#87823)</p>\n\n<p>Third, redirects are just a symptom. The root cause are STATIC ROUTES.</p>\n\n<p>E.g, what&#39;s not said is how the reader had E1 and E2 routing configured. We assume that E1 has &quot;ip route 0.0.0.0/0 &lt;WAN next-hop&gt;&quot; and floating static &quot;ip route 0.0.0.0/0 &lt;E2 next-hop&gt; 201&quot;, but that&#39;s not the only way to do it.</p>\n\n<p>If the routing table has other, less-specific routes that overlap the WAN next-hop, then the switch would recursively route the default route, rather than withdraw it. Novice engineers can be flummoxed by recursive routing. To get things working, some turn to interface next-hops (&quot;ip route 0.0.0.0/0 &lt;WAN interface&gt;&quot;) which appear to work well as long as the upstream does proxy ARP (an IOS/IOS-XE default). Unfortunately with interface next-hop, each destination becomes a host route and E1&#39;s host eventually table blows up.</p>\n\n<p>With static routes, there are hundreds of such ways to shoot yourself in the foot because of their interaction with ICMP redirects, ARP , ICMP TTL exceeded loops, interface state, recursive routing, .... Add in VPC/MLAG and HSRP behavior is turned on its head. Sprinkle in storage arrays or load-balancers that do non-RFC compliant forwarding (eg, F5 &quot;auto last hop&quot;), and all forwarding assumptions are out the window.  That L3 switch might as well be a blender without a lid.</p>\n\n<p>An all-too-common result is that the network evolves with enough duct tape static routes and google-fu to get hosts talking, but the actual forwarding mechanisms at work are beyond the operator&#39;s comprehension. They now operate a brittle network where any little change might have big side effects.</p>\n",
+         "id": "1176",
+         "name": " CraigW",
+         "pub": "2022-04-19T16:31:54",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2022/02/nexus-icmp-redirects.html"
+}

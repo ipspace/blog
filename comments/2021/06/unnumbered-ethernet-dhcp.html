@@ -1,0 +1,201 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="653">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Hoang Tran</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c653" href="#653">12 June 2021 04:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Just read your blog post about Azure Networking 101. I guess their Azure router and DHCP setup may look very similar to this, right?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="657">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c657" href="#657">13 June 2021 10:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Hoang: The data plane is similar to what I described, the control plane is different:</p>
+
+<ul>
+<li>DHCP server is probably implemented in every Azure server (and thus distributed)</li>
+<li>The forwarding entries are not installed based on DHCP replies but straight from the orchestration system data.</li>
+</ul>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="661">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Hoang Tran</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c661" href="#661">13 June 2021 12:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks Ivan. FYI, Juniper has this feature (installing access route) enabled by default. I used to be surprised by a bunch of these /32 routes on my router, and had to turn it off.</p>
+
+<p>https://www.juniper.net/documentation/us/en/software/junos/dhcp/topics/topic-map/dhcp-access-supressing.html</p>
+
+<p>This kind of setup also eliminates many Layer-2 attacks like ARP spoofing, DHCP spoofing, right? Have you seen any enterprises using this in production?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="662">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c662" href="#662">13 June 2021 03:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The setup we&#39;re discussing here would be most useful in access networks (example: campus). In data centers you&#39;re usually faced with a dumb L2 switch in the hypervisor, and it makes little sense trying to fix the damage at the next hop (ToR switch).</p>
+
+<p>Unfortunately I haven&#39;t been working with campus networks for ages, so I can&#39;t tell you what&#39;s happening out there.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="655">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c655" href="#655">12 June 2021 08:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>So for the pings from c1 to c2 to work, rtr is performing proxy ARP, correct? Could you share ARP tables from router and clients?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="659">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c659" href="#659">13 June 2021 10:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Anonymous: Yes, <em>rtr</em> is performing proxy ARP.</p>
+
+<p>Based on that you should be able to figure out the details of the ARP tables, or you could set up a lab using my configs (or even just my lab setup instructions) and see the details for yourself.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="656">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Florian</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c656" href="#656">13 June 2021 06:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Is it a typo or why is the &quot;network&quot; statement in the DHCP pool config set to 10.42.42.1 255.255.255.0 instead of 10.42.42.0 255.255.255.0 ?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="658">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c658" href="#658">13 June 2021 10:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Florian: Call it a &quot;<em>somewhat suboptimal configuration template</em>&quot; ;)</p>
+
+<p>IOS ignores the host portion of the IP prefix specified in the <strong>network</strong> statement, so it all works as configured.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

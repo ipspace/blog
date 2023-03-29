@@ -1,210 +1,221 @@
 {
-  "comments": [
-    {
-      "date": "01 September 2011 07:04",
-      "html": "Shouldn&#39;t it be titled &quot;The good, the bad and the ugly&quot;? Oh wait, there is no good ;)",
-      "id": "7021938952748299569",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "plapukhov",
-      "profile": null,
-      "pub": "2011-09-01T07:04:02.451+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "01 September 2011 15:27",
-      "html": "VXLAN really seems to be a bottom-up design, bringing networking up in to virtualization, rather than a top-down (starting from config and operational perspectives) that extends better control in to network operation.  You&#39;ve pointed out the key issue that there&#39;s just &quot;handwaving&quot; around managment. OF and its ilk at least seem to start from a premise that there has to be management, no matter how poorly defined it is today.",
-      "id": "5400077052023435749",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "ehanselman",
-      "profile": null,
-      "pub": "2011-09-01T15:27:25.046+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "01 September 2011 19:01",
-      "html": "Add to the fun that there&#39;s a &#39;L2 in LISP&#39; draft out there.",
-      "id": "7183843985607549117",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Asbjorn Hojmark",
-      "profile": null,
-      "pub": "2011-09-01T19:01:44.041+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "01 September 2011 22:26",
-      "html": "According to the Nexus 1000v product manager, we should &quot;stay tuned&quot; for the ability to terminate VXLANs on other devices. That is, if I interpreted his comment correctly. At the moment, VXLANs are appropriate for L2-only VLAN needs. For example, a VLAN behind a virtual firewall or load balancer.",
-      "id": "352498533030520715",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Jeremy Filliben",
-      "profile": null,
-      "pub": "2011-09-01T22:26:58.102+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "03 September 2011 06:17",
-      "html": "Ivan, thanks for the insightful perspective on how all these interrelate. Agree that IaaS is supposed to be the main target/beneficiary of this. But just how many of them want to be running Cisco and VMware??? <br /><br />Another point that&#39;s not widely appreciated is that getting in and out of these VxLANs starts to look a whole lot like routing, very likely creating islands of VxLANs within the provider routed out to the rest of the world.<br /><br />And while I agree that &#39;introduction of VXLAN, the networking world hasn\u2019t changed a bit: the vendors are still serving us all isolated incompatible technologies&#39;, I&#39;ll also argue it also makes the remaining gaps more apparent and important.",
-      "id": "7879786338837828694",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Chris Marino",
-      "profile": null,
-      "pub": "2011-09-03T06:17:34.134+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "08 September 2011 13:53",
-      "html": "I&#39;m not holding my breath.  Even if you can terminate it into another device, it will be a Nexus.  I don&#39;t need 16 million VLAN domains. Would be nice if they made a passing attempt at supporting an existing technology like Q-in-Q or MPLS.  Its not like they don&#39;t have the code to do it...",
-      "id": "2410884547406457985",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "ccie15672",
-      "profile": null,
-      "pub": "2011-09-08T13:53:36.699+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "01 July 2012 08:12",
-          "html": "VNI is assigned to a virtual network by the management plane. For example, you could do it in Nexus 1000V configuration or it could be assigned to a port group automatically by vCloud Director. In both cases, all hypervisors would know which VNI to use for which port group via the VDS configuration.",
-          "id": "8794163507197895832",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-07-01T08:12:19.955+02:00",
-          "ref": "6634991414944307937",
-          "type": "comment"
-        },
-        {
-          "date": "02 July 2012 01:01",
-          "html": "Got it. Thanks!",
-          "id": "4155359160099447175",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Dushyant Arora",
-          "profile": "https://www.blogger.com/profile/00426416843723105819",
-          "pub": "2012-07-02T01:01:02.534+02:00",
-          "ref": "6634991414944307937",
-          "type": "comment"
-        }
-      ],
-      "date": "01 July 2012 01:20",
-      "html": "Great post Ivan! Like you said in the post, one big question I had after reading the VXLAN draft was how does VTEP allocate VNI to VMs directly attached to it? This would create issues when a VM migrates to a physical server connected to a different VTEP. Since VMs belonging to different tenants can have same MAC and IP addresses, how does the new VTEP know the VNI of the migrated VM?",
-      "id": "6634991414944307937",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Dushyant Arora",
-      "profile": "https://www.blogger.com/profile/00426416843723105819",
-      "pub": "2012-07-01T01:20:29.388+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "17 June 2013 18:41",
-          "html": "No. PBB-EVPN might be an interesting SP technology (to replace VPLS), but not a DC one (regardless of what Contrail tells you).",
-          "id": "2253854569490552504",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-06-17T18:41:41.667+02:00",
-          "ref": "479681044754540583",
-          "type": "comment"
-        },
-        {
-          "date": "06 February 2014 16:37",
-          "html": "Hi Ivan,<br /><br />Why do you consider that PBB-EVPN is not a good technology for interconnecting DC? Do you know if there is an existing comparison between PBB-EVPN and OTV to see which technology is the best one in this case?",
-          "id": "7406172364915591347",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/07394859428399357350",
-          "pub": "2014-02-06T16:37:25.283+01:00",
-          "ref": "479681044754540583",
-          "type": "comment"
-        }
-      ],
-      "date": "17 June 2013 17:41",
-      "html": "Just as an update / question - I think PBB-EVPN has replaced the BGP MAC VPN ... yes?<br /><br />(That is to say, I believe http://tools.ietf.org/html/draft-ietf-l2vpn-pbb-evpn-04  replaces http://tools.ietf.org/html/draft-raggarwa-mac-vpn-01 ...)<br /><br />Sound about right?<br />Any updated thoughts on OTV/VxLAN(/FabricPath)/etc. when factoring PBB-EVPN into the conversation?",
-      "id": "479681044754540583",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/18433992102893508928",
-      "pub": "2013-06-17T17:41:18.925+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "25 June 2013 16:48",
-      "html": "Hi,<br /><br />In a secure DC with multiple security zones who will allow traffic to tunnel through firewalls? <br />Which is what is proposed by LISP upto now from what I can see.<br /><br />So at some point outside the DC. The correct entrance point to the DC based on the VM location is chosen by consulting the Mapping Server. The traffic is then tunneled into the DC in LISP encapsulation which can&#39;t be properly inspected by the firewall.. Unless this point has been changed.",
-      "id": "7856361065216879994",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Chris",
-      "profile": null,
-      "pub": "2013-06-25T16:48:29.569+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "26 June 2013 07:34",
-      "html": "You have to shift your perspective - the internal DC network (IP transport) becomes a single security zone (like a VLAN today), with firewalling done in VXLAN-capable firewalls (or virtual appliances or NIC-level firewalls)",
-      "id": "7279908815187891756",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Ivan Pepelnjak",
-      "profile": "https://www.blogger.com/profile/13457151406311272386",
-      "pub": "2013-06-26T07:34:05.280+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "26 June 2013 10:31",
-      "html": "Ok Thanks, I&#39;m sure you are right, I have been stuck on this point with LISP, I;m wondering if as it grows in use firewall vendors will inspect the internal IP packet of LISP encapsulated data. Maybe it won&#39;t happen, and like you said the future of DC security is all about VM hypervisor level firewalls.",
-      "id": "8568018311031099285",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Chris",
-      "profile": null,
-      "pub": "2013-06-26T10:31:07.243+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "10 July 2013 22:39",
-      "html": "One of the purpose of LISP is to reduce the size of the Internet routing table. For me, before the whole Internet is LISP enabled. LISP enabled sites still needs to setup PITR (Proxy ITR) and advertise the EID subnets to attract traffic initialized from non LISP clients. During the transition period, there is no reduce of the size of Internet routing table.<br /><br />Since the traffic are proxied (tunneled) between PITR to ETR, the route path for non LISP enabled sites is: Client-PITR-ETR-EID. This might not be the optimal path and may have performance impact that hindering the adoption of this technology.<br />!<br />Make it as one statement: Enable LISP will only benefit customers that having LISP enabled which is a minority of the Internet community. The majority of the customers may get a worse performance until switching to LISP. This makes me thinking adopting LISP might not be a wise decision.<br />!<br />If none LISP enabled customers having the same performance, that might be a easier decision. <br />!<br />If LISP is where Internet goes, a shared (or free) PITR infrastructure may excellerate the implementation.",
-      "id": "7910691090549135606",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/09395059677675568374",
-      "pub": "2013-07-10T22:39:06.604+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "24 July 2013 22:40",
-      "html": "A more significant potential show-stopper for LISP adoption is its security vulnerabilities: http://datatracker.ietf.org/doc/draft-ietf-lisp-threats/",
-      "id": "6754162059443636998",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2013-07-24T22:40:27.523+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    },
-    {
-      "date": "20 August 2015 02:12",
-      "html": "Suddenly the BGP EVPN kicks in instead of LISP on the control plane of VxLAN.<br /><br />I am still not convinced why not just improve the MPLS encapsulation rather than introduce a whole new system to solve some old issues.",
-      "id": "7412257686916387280",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2015-08-20T02:12:44.131+02:00",
-      "ref": "1520273244352073609",
-      "type": "comment"
-    }
-  ],
-  "count": 18,
-  "id": "1520273244352073609",
-  "type": "post",
-  "url": "2011/09/vxlan-otv-and-lisp.html"
+   "comments": [
+      {
+         "date": "01 September 2011 07:04",
+         "html": "Shouldn&#39;t it be titled &quot;The good, the bad and the ugly&quot;? Oh wait, there is no good ;)",
+         "id": "7021938952748299569",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "plapukhov",
+         "profile": null,
+         "pub": "2011-09-01T07:04:02.451+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "01 September 2011 15:27",
+         "html": "VXLAN really seems to be a bottom-up design, bringing networking up in to virtualization, rather than a top-down (starting from config and operational perspectives) that extends better control in to network operation.  You&#39;ve pointed out the key issue that there&#39;s just &quot;handwaving&quot; around managment. OF and its ilk at least seem to start from a premise that there has to be management, no matter how poorly defined it is today.",
+         "id": "5400077052023435749",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "ehanselman",
+         "profile": null,
+         "pub": "2011-09-01T15:27:25.046+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "01 September 2011 19:01",
+         "html": "Add to the fun that there&#39;s a &#39;L2 in LISP&#39; draft out there.",
+         "id": "7183843985607549117",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Asbjorn Hojmark",
+         "profile": null,
+         "pub": "2011-09-01T19:01:44.041+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "01 September 2011 22:26",
+         "html": "According to the Nexus 1000v product manager, we should &quot;stay tuned&quot; for the ability to terminate VXLANs on other devices. That is, if I interpreted his comment correctly. At the moment, VXLANs are appropriate for L2-only VLAN needs. For example, a VLAN behind a virtual firewall or load balancer.",
+         "id": "352498533030520715",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Jeremy Filliben",
+         "profile": null,
+         "pub": "2011-09-01T22:26:58.102+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "03 September 2011 06:17",
+         "html": "Ivan, thanks for the insightful perspective on how all these interrelate. Agree that IaaS is supposed to be the main target/beneficiary of this. But just how many of them want to be running Cisco and VMware??? <br /><br />Another point that&#39;s not widely appreciated is that getting in and out of these VxLANs starts to look a whole lot like routing, very likely creating islands of VxLANs within the provider routed out to the rest of the world.<br /><br />And while I agree that &#39;introduction of VXLAN, the networking world hasn’t changed a bit: the vendors are still serving us all isolated incompatible technologies&#39;, I&#39;ll also argue it also makes the remaining gaps more apparent and important.",
+         "id": "7879786338837828694",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Chris Marino",
+         "profile": null,
+         "pub": "2011-09-03T06:17:34.134+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "08 September 2011 13:53",
+         "html": "I&#39;m not holding my breath.  Even if you can terminate it into another device, it will be a Nexus.  I don&#39;t need 16 million VLAN domains. Would be nice if they made a passing attempt at supporting an existing technology like Q-in-Q or MPLS.  Its not like they don&#39;t have the code to do it...",
+         "id": "2410884547406457985",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "ccie15672",
+         "profile": null,
+         "pub": "2011-09-08T13:53:36.699+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "01 July 2012 08:12",
+               "html": "VNI is assigned to a virtual network by the management plane. For example, you could do it in Nexus 1000V configuration or it could be assigned to a port group automatically by vCloud Director. In both cases, all hypervisors would know which VNI to use for which port group via the VDS configuration.",
+               "id": "8794163507197895832",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-07-01T08:12:19.955+02:00",
+               "ref": "6634991414944307937",
+               "type": "comment"
+            },
+            {
+               "date": "02 July 2012 01:01",
+               "html": "Got it. Thanks!",
+               "id": "4155359160099447175",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Dushyant Arora",
+               "profile": "https://www.blogger.com/profile/00426416843723105819",
+               "pub": "2012-07-02T01:01:02.534+02:00",
+               "ref": "6634991414944307937",
+               "type": "comment"
+            }
+         ],
+         "date": "01 July 2012 01:20",
+         "html": "Great post Ivan! Like you said in the post, one big question I had after reading the VXLAN draft was how does VTEP allocate VNI to VMs directly attached to it? This would create issues when a VM migrates to a physical server connected to a different VTEP. Since VMs belonging to different tenants can have same MAC and IP addresses, how does the new VTEP know the VNI of the migrated VM?",
+         "id": "6634991414944307937",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Dushyant Arora",
+         "profile": "https://www.blogger.com/profile/00426416843723105819",
+         "pub": "2012-07-01T01:20:29.388+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "17 June 2013 18:41",
+               "html": "No. PBB-EVPN might be an interesting SP technology (to replace VPLS), but not a DC one (regardless of what Contrail tells you).",
+               "id": "2253854569490552504",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-06-17T18:41:41.667+02:00",
+               "ref": "479681044754540583",
+               "type": "comment"
+            },
+            {
+               "date": "06 February 2014 16:37",
+               "html": "Hi Ivan,<br /><br />Why do you consider that PBB-EVPN is not a good technology for interconnecting DC? Do you know if there is an existing comparison between PBB-EVPN and OTV to see which technology is the best one in this case?",
+               "id": "7406172364915591347",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/07394859428399357350",
+               "pub": "2014-02-06T16:37:25.283+01:00",
+               "ref": "479681044754540583",
+               "type": "comment"
+            }
+         ],
+         "date": "17 June 2013 17:41",
+         "html": "Just as an update / question - I think PBB-EVPN has replaced the BGP MAC VPN ... yes?<br /><br />(That is to say, I believe http://tools.ietf.org/html/draft-ietf-l2vpn-pbb-evpn-04  replaces http://tools.ietf.org/html/draft-raggarwa-mac-vpn-01 ...)<br /><br />Sound about right?<br />Any updated thoughts on OTV/VxLAN(/FabricPath)/etc. when factoring PBB-EVPN into the conversation?",
+         "id": "479681044754540583",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/18433992102893508928",
+         "pub": "2013-06-17T17:41:18.925+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "25 June 2013 16:48",
+         "html": "Hi,<br /><br />In a secure DC with multiple security zones who will allow traffic to tunnel through firewalls? <br />Which is what is proposed by LISP upto now from what I can see.<br /><br />So at some point outside the DC. The correct entrance point to the DC based on the VM location is chosen by consulting the Mapping Server. The traffic is then tunneled into the DC in LISP encapsulation which can&#39;t be properly inspected by the firewall.. Unless this point has been changed.",
+         "id": "7856361065216879994",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Chris",
+         "profile": null,
+         "pub": "2013-06-25T16:48:29.569+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "26 June 2013 07:34",
+         "html": "You have to shift your perspective - the internal DC network (IP transport) becomes a single security zone (like a VLAN today), with firewalling done in VXLAN-capable firewalls (or virtual appliances or NIC-level firewalls)",
+         "id": "7279908815187891756",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Ivan Pepelnjak",
+         "profile": "https://www.blogger.com/profile/13457151406311272386",
+         "pub": "2013-06-26T07:34:05.280+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "26 June 2013 10:31",
+         "html": "Ok Thanks, I&#39;m sure you are right, I have been stuck on this point with LISP, I;m wondering if as it grows in use firewall vendors will inspect the internal IP packet of LISP encapsulated data. Maybe it won&#39;t happen, and like you said the future of DC security is all about VM hypervisor level firewalls.",
+         "id": "8568018311031099285",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Chris",
+         "profile": null,
+         "pub": "2013-06-26T10:31:07.243+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "10 July 2013 22:39",
+         "html": "One of the purpose of LISP is to reduce the size of the Internet routing table. For me, before the whole Internet is LISP enabled. LISP enabled sites still needs to setup PITR (Proxy ITR) and advertise the EID subnets to attract traffic initialized from non LISP clients. During the transition period, there is no reduce of the size of Internet routing table.<br /><br />Since the traffic are proxied (tunneled) between PITR to ETR, the route path for non LISP enabled sites is: Client-PITR-ETR-EID. This might not be the optimal path and may have performance impact that hindering the adoption of this technology.<br />!<br />Make it as one statement: Enable LISP will only benefit customers that having LISP enabled which is a minority of the Internet community. The majority of the customers may get a worse performance until switching to LISP. This makes me thinking adopting LISP might not be a wise decision.<br />!<br />If none LISP enabled customers having the same performance, that might be a easier decision. <br />!<br />If LISP is where Internet goes, a shared (or free) PITR infrastructure may excellerate the implementation.",
+         "id": "7910691090549135606",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/09395059677675568374",
+         "pub": "2013-07-10T22:39:06.604+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "date": "24 July 2013 22:40",
+         "html": "A more significant potential show-stopper for LISP adoption is its security vulnerabilities: http://datatracker.ietf.org/doc/draft-ietf-lisp-threats/",
+         "id": "6754162059443636998",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2013-07-24T22:40:27.523+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "25 February 2022 06:22",
+               "html": "<p>Things have been changed a lot after a decade. The operation on control/data plane makes every wanted capabilities available.</p>\n\n<p>Now we have BGP/EVPN can use Vxlan purely as encapsulation, the Cisco&#39;s sturborn way to do EVPN with LISP/Vxlan (SDA).</p>\n\n<p>I yet to understand Cisco&#39;s consideration on LISP over BGP, also LISP can be used as encapsulation but why it is not there even now?</p>\n",
+               "id": "1045",
+               "name": " Anonymous",
+               "pub": "2022-02-25T06:22:46",
+               "ref": "7412257686916387280",
+               "type": "comment"
+            }
+         ],
+         "date": "20 August 2015 02:12",
+         "html": "Suddenly the BGP EVPN kicks in instead of LISP on the control plane of VxLAN.<br /><br />I am still not convinced why not just improve the MPLS encapsulation rather than introduce a whole new system to solve some old issues.",
+         "id": "7412257686916387280",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2015-08-20T02:12:44.131+02:00",
+         "ref": "1520273244352073609",
+         "type": "comment"
+      }
+   ],
+   "count": 14,
+   "id": "1520273244352073609",
+   "type": "post",
+   "url": "2011/09/vxlan-otv-and-lisp.html"
 }

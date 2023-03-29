@@ -1,0 +1,124 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1570">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Wes Felter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1570" href="#1570">13 December 2022 10:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>People should follow your example and read the docs. If the docs don&#39;t say you can do it, you can&#39;t do it. And if the docs say you can do it, you still need to do a POC to flush out any bugs.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1576">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Johannes Spanier</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1576" href="#1576">18 December 2022 04:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I utterly fail to understand on a deeper level the &quot;how&quot; and &quot;what&quot; a DPU actually offloads and accelerates. If I read the VMware KB articles, they only ever mention mysterious &quot;infrastructure&quot; and &quot;networking&quot; functions that are accelerated.</p>
+
+<p>Lets follow a frame from the wire to the application socket in a VM</p>
+
+<p>slow and low, traditional:
+HW RX_RING -&gt; NIC MEM -&gt; DMA to Kernel RX_RING -&gt; via CPU to VM RX_RING -&gt; via CPU to VM Userspace. (shorter and DMA if NIC has HW queues)</p>
+
+<p>PMD approach:
+HW RX_RING -&gt; NIC MEM -&gt; via CPU poll to Userspace (if NIC supports HW queues)</p>
+
+<p>SRIOV Passthrough:
+HW RX_RING -&gt; NIC MEM (queues per VF) -&gt; DMA to VM Kernel RX_RING -&gt; via CPU to VM RX_RING -&gt; via CPU to VM Userspace. (PMD also possible)</p>
+
+<p>DPU?
+HW RX_RING -&gt; NIC_MEM -&gt; &#123;mysterious DPU things&#125; -&gt; via DMA to VM RX_RING (???) </p>
+
+<p>Especially that last bit (copy via CPU from VM Kernelspace to VM Userspace or PMD&#39;ing it ) can obviously not be avoided in any scenario, even with DPUs. And that is the most CPU intensive task in all the processing of a frame. So, how do DPUs accelerate frame processing or even offload it significantly?</p>
+
+<p>And another thing: dVS offloaded to DPU? So Inter-VM traffic on same host has to pass though DPU??? I recon that is a significant overhead.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1578">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1578" href="#1578">18 December 2022 06:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; I utterly fail to understand on a deeper level the &quot;how&quot; and &quot;what&quot; a DPU actually offloads and accelerates</p>
+
+<p>There was a pretty good article describing how it works that I can&#39;t find anymore, but it said pretty much what this blog is saying: https://cormachogan.com/2022/09/27/vsphere-distributed-services-engine-networking-offload-and-acceleration-preview/</p>
+
+<p>You could either use SR-IOV or some mechanism that looks like software (kernel) patch cables between VMs and DPU. The &quot;heavy lifting&quot; (VXLAN, DFW) would be done on the DPU.</p>
+
+<p>&gt; So, how do DPUs accelerate VM frame processing or even offload it significantly?</p>
+
+<p>Of course they do not. There&#39;s no magic.</p>
+
+<p>&gt; So Inter-VM traffic on same host has to pass though DPU</p>
+
+<p>Correct.</p>
+
+<p>&gt; I recon that is a significant overhead.</p>
+
+<p>Of course there&#39;s overhead. I have no idea how significant it is.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1580">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Johannes Spanier</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1580" href="#1580">19 December 2022 03:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks. That link led me to two comprehensible videos that actually explain DPUs at a deeper technical level without the usual marketing kerfuffle. Many mysteries remain, but I am getting closer to understand DPUs.</p>
+
+<p>https://www.youtube.com/watch?v=Qjbll68I2tk
+which is basically the TL;DR version of
+https://www.vmware.com/explore/video-library/video-landing.html?sessionid=1652202889974001lYkd&amp;videoId=6311751939112</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>9 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09571175342652550804" rel="nofollow">DuaneO</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3863867260079724482">25 November 2014 03:40</a>
+                <a rel="nofollow" id="c3863867260079724482" href="#3863867260079724482">25 November 2014 03:40</a>
               </span>
             </div>
-            <p class="comment-content">HI Ivan,<br /><br />I suspect that the forwarding and control plane separation is similar to what they&#39;ve been doing on the branch SRX line where they take a multicore processor and spin up a virtual asic on some of the cores and leave 1 or more for the control plane.  This way they can share the same code as their boxes with real asics.<br /><br />Here is an example from an SRX550 which has a 6 core processor in it.  flow_octeon_hm is the virtual asic and has 5 cores ( and 466% CPU) running for packet forwarding.  All the rest of the processes share the 6th core, things like rpd, vrrpd, bfdd, snmp etc.  I trimmed the output a bit to get the more obvious processes near the top but you get the idea.  That output probably looks familiar because it&#39;s from &quot;top&quot;<br /><br />The control plane on SRX is much more isolated than in a classic IOS box.  I could easily flap bfd+bgp on a 2951 but it was it was much harder to get the SRX to that breaking point when flogging it with an ixia.  The flow_octeon_hm always shows because they have the process in a tight look looking for packets to forward.<br /><br />last pid: 15007;  load averages:  0.12,  0.11,  0.08                          up 166+05:58:52 02:27:55<br />72 processes:  7 running, 64 sleeping, 1 zombie<br />CPU states: 85.0% user,  0.0% nice,  0.0% system,  0.0% interrupt, 15.0% idle<br />Mem: 180M Active, 136M Inact, 992M Wired, 156M Cache, 112M Buf, 509M Free<br />Swap:<br /><br />  PID USERNAME  THR PRI NICE   SIZE    RES STATE  C   TIME   WCPU COMMAND<br /> 1260 root        9  76    0   992M 56596K select 0    ??? 466.11% flowd_octeon_hm<br /> 1310 root        1  76    0 21072K 13528K select 0 999:08  0.00% snmpd<br /> 1255 root        1  76    0 10132K  4604K select 0 907:39  0.00% ppmd<br /> 1286 root        1  76    0 19128K  8512K select 0 366:29  0.00% cosd<br /> 1309 root        1  76    0 27640K 10876K select 0 317:44  0.00% mib2d<br /> 1271 root        1  76    0 12336K  5652K select 0 241:54  0.00% license-check<br /> 1304 root        1   4    0 22948K 12504K kqread 0 156:34  0.00% eswd<br /> 1247 root        1  76    0   115M 17992K select 0 137:12  0.00% chassisd<br /> 1282 root        1  76    0 20372K  8764K select 0 136:24  0.00% l2ald<br /> 1280 root        1   4    0 54828K 28532K kqread 0 117:35  0.00% rpd<br /> 1263 root        1  76    0 15632K  3588K select 0  95:05  0.00% shm-rtsdbd<br /> 1313 root        2  76    0 24384K  9084K select 0  76:17  0.00% pfed<br /> 1270 root        1  76    0 24252K 15688K select 0  54:39  0.00% utmd<br /> 1269 root        1  76    0 13460K  5952K select 0  50:16  0.00% rtlogd<br /> 1283 root        1  76    0 14904K  6664K select 0  48:17  0.00% vrrpd<br /> 1305 root        1   4    0 17056K  7296K kqread 0  22:26  0.00% lldpd<br /> 1297 root        1  76    0 14460K  5992K select 0  12:35  0.00% pkid<br /> 1287 root        1  76    0 23084K  7836K select 0  12:32  0.00% kmd<br /> 1268 root        1  76    0 30016K  8896K select 0   6:12  0.00% idpd<br /> 1259 root        1  76    0 13036K  6332K select 0   5:14  0.00% bfdd<br /></p>
+            <div class="comment-content">HI Ivan,<br /><br />I suspect that the forwarding and control plane separation is similar to what they&#39;ve been doing on the branch SRX line where they take a multicore processor and spin up a virtual asic on some of the cores and leave 1 or more for the control plane.  This way they can share the same code as their boxes with real asics.<br /><br />Here is an example from an SRX550 which has a 6 core processor in it.  flow_octeon_hm is the virtual asic and has 5 cores ( and 466% CPU) running for packet forwarding.  All the rest of the processes share the 6th core, things like rpd, vrrpd, bfdd, snmp etc.  I trimmed the output a bit to get the more obvious processes near the top but you get the idea.  That output probably looks familiar because it&#39;s from &quot;top&quot;<br /><br />The control plane on SRX is much more isolated than in a classic IOS box.  I could easily flap bfd+bgp on a 2951 but it was it was much harder to get the SRX to that breaking point when flogging it with an ixia.  The flow_octeon_hm always shows because they have the process in a tight look looking for packets to forward.<br /><br />last pid: 15007;  load averages:  0.12,  0.11,  0.08                          up 166+05:58:52 02:27:55<br />72 processes:  7 running, 64 sleeping, 1 zombie<br />CPU states: 85.0% user,  0.0% nice,  0.0% system,  0.0% interrupt, 15.0% idle<br />Mem: 180M Active, 136M Inact, 992M Wired, 156M Cache, 112M Buf, 509M Free<br />Swap:<br /><br />  PID USERNAME  THR PRI NICE   SIZE    RES STATE  C   TIME   WCPU COMMAND<br /> 1260 root        9  76    0   992M 56596K select 0    ??? 466.11% flowd_octeon_hm<br /> 1310 root        1  76    0 21072K 13528K select 0 999:08  0.00% snmpd<br /> 1255 root        1  76    0 10132K  4604K select 0 907:39  0.00% ppmd<br /> 1286 root        1  76    0 19128K  8512K select 0 366:29  0.00% cosd<br /> 1309 root        1  76    0 27640K 10876K select 0 317:44  0.00% mib2d<br /> 1271 root        1  76    0 12336K  5652K select 0 241:54  0.00% license-check<br /> 1304 root        1   4    0 22948K 12504K kqread 0 156:34  0.00% eswd<br /> 1247 root        1  76    0   115M 17992K select 0 137:12  0.00% chassisd<br /> 1282 root        1  76    0 20372K  8764K select 0 136:24  0.00% l2ald<br /> 1280 root        1   4    0 54828K 28532K kqread 0 117:35  0.00% rpd<br /> 1263 root        1  76    0 15632K  3588K select 0  95:05  0.00% shm-rtsdbd<br /> 1313 root        2  76    0 24384K  9084K select 0  76:17  0.00% pfed<br /> 1270 root        1  76    0 24252K 15688K select 0  54:39  0.00% utmd<br /> 1269 root        1  76    0 13460K  5952K select 0  50:16  0.00% rtlogd<br /> 1283 root        1  76    0 14904K  6664K select 0  48:17  0.00% vrrpd<br /> 1305 root        1   4    0 17056K  7296K kqread 0  22:26  0.00% lldpd<br /> 1297 root        1  76    0 14460K  5992K select 0  12:35  0.00% pkid<br /> 1287 root        1  76    0 23084K  7836K select 0  12:32  0.00% kmd<br /> 1268 root        1  76    0 30016K  8896K select 0   6:12  0.00% idpd<br /> 1259 root        1  76    0 13036K  6332K select 0   5:14  0.00% bfdd<br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09571175342652550804" rel="nofollow">DuaneO</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3798023253934418341">25 November 2014 03:43</a>
+                <a rel="nofollow" id="c3798023253934418341" href="#3798023253934418341">25 November 2014 03:43</a>
               </span>
             </div>
-            <p class="comment-content">This &quot;The flow_octeon_hm always shows because they have the process in a tight look looking for packets to forward.&quot; was supposed to say, <br /><br />&quot;The flow_octeon_hm always shows high cpu utilization because they have the process in a tight loop looking for packets to forward.&quot;<br /><br />Really enjoy the blog!<br /></p>
+            <div class="comment-content">This &quot;The flow_octeon_hm always shows because they have the process in a tight look looking for packets to forward.&quot; was supposed to say, <br /><br />&quot;The flow_octeon_hm always shows high cpu utilization because they have the process in a tight loop looking for packets to forward.&quot;<br /><br />Really enjoy the blog!<br /></div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://anastarsha.com" rel="nofollow">Anas</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5896767822141993449">25 November 2014 04:33</a>
+                <a rel="nofollow" id="c5896767822141993449" href="#5896767822141993449">25 November 2014 04:33</a>
               </span>
             </div>
-            <p class="comment-content">That is really cool. But i think vMX will probably appeal to service providers more than enterprise customers or cloud providers. For cloud 10G seems to be enough for each tenant. When a customer needs more than 10G they can scale out by spinning up another vMV.<br /><br />Ivan, I heard recently that AWS is also beginning to expand using SR-IOV in their cloud. I&#39;m just curious how cloud providers support vMotion and other advanced features with SR-IOV? It&#39;s usually a tradeoff, you get either SR-IOV or VM mobility but not both</p>
+            <div class="comment-content">That is really cool. But i think vMX will probably appeal to service providers more than enterprise customers or cloud providers. For cloud 10G seems to be enough for each tenant. When a customer needs more than 10G they can scale out by spinning up another vMV.<br /><br />Ivan, I heard recently that AWS is also beginning to expand using SR-IOV in their cloud. I&#39;m just curious how cloud providers support vMotion and other advanced features with SR-IOV? It&#39;s usually a tradeoff, you get either SR-IOV or VM mobility but not both</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6302028473580240987">25 November 2014 07:19</a>
+                <a rel="nofollow" id="c6302028473580240987" href="#6302028473580240987">25 November 2014 07:19</a>
               </span>
             </div>
-            <p class="comment-content">AWS doesn&#39;t support VM mobility - you have to design your application correctly assuming any VM can fail at any time.<br /><br />Cisco+VMware have an interesting solution with VM-FEX:<br /><br />http://blog.ipspace.net/2012/03/cisco-vmware-merging-virtual-and.html</p>
+            <div class="comment-content">AWS doesn&#39;t support VM mobility - you have to design your application correctly assuming any VM can fail at any time.<br /><br />Cisco+VMware have an interesting solution with VM-FEX:<br /><br />http://blog.ipspace.net/2012/03/cisco-vmware-merging-virtual-and.html</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2264708678505031166">25 November 2014 19:42</a>
+                <a rel="nofollow" id="c2264708678505031166" href="#2264708678505031166">25 November 2014 19:42</a>
               </span>
             </div>
-            <p class="comment-content">Yes there are a couple versions of the vMX, I call this the high performance version.  The other version is still a single integrated RE/vPFE in one VM meant more for testing and vRR use.   This one has a separate VM, one for the RE and one for the vPFE.   Definitely have been pushed to this by carriers like ATT who want a virtualized service edge.  <br /><br />Future state architecture it probably doesn&#39;t need to run on the same machine, both Cisco and Juniper are looking to virtualize the control plane and control the hardware whether it be an x86 server or a HW chassis.   Juniper has had this for years in the TX-Matrix, guess it&#39;s finally caught on again.   One issue I saw was there wasn&#39;t a way to tie the physical interface state to the underlying VM, it required running a 3rd party tool in the host itself to synchronize state, but I&#39;m sure they&#39;ve figured it out by now.    I believe starting with 14.2 you can upgrade a vMX the same way you upgrade any other Juniper router with a jinstall package.  <br /><br /><br />It does require having Intel 10GB NICs in the box to make use of the DPDK, but most people use those anyways.   Even with a modest amount of higher touch things provisioned like firewall filters, etc. in the 512K+ byte packet ranges the throughput is pretty good but nowhere what you would get out of even a MX80.   Don&#39;t plan on running more than one of these on a server either.  <br /><br />I&#39;m actually interested to see how well it could work on newer &quot;network appliance&quot; servers from people like Advantech or Lanner.  <br /><br />I&#39;m also interested to see the ALU VSR which claims even higher throughput using the same DPDK.   They are already down the road of being able to cluster multiple servers into a single router.  They are supposed to do a demo soon with 2Tbps worth of x86 bandwidth managed as a single router.  </p>
+            <div class="comment-content">Yes there are a couple versions of the vMX, I call this the high performance version.  The other version is still a single integrated RE/vPFE in one VM meant more for testing and vRR use.   This one has a separate VM, one for the RE and one for the vPFE.   Definitely have been pushed to this by carriers like ATT who want a virtualized service edge.  <br /><br />Future state architecture it probably doesn&#39;t need to run on the same machine, both Cisco and Juniper are looking to virtualize the control plane and control the hardware whether it be an x86 server or a HW chassis.   Juniper has had this for years in the TX-Matrix, guess it&#39;s finally caught on again.   One issue I saw was there wasn&#39;t a way to tie the physical interface state to the underlying VM, it required running a 3rd party tool in the host itself to synchronize state, but I&#39;m sure they&#39;ve figured it out by now.    I believe starting with 14.2 you can upgrade a vMX the same way you upgrade any other Juniper router with a jinstall package.  <br /><br /><br />It does require having Intel 10GB NICs in the box to make use of the DPDK, but most people use those anyways.   Even with a modest amount of higher touch things provisioned like firewall filters, etc. in the 512K+ byte packet ranges the throughput is pretty good but nowhere what you would get out of even a MX80.   Don&#39;t plan on running more than one of these on a server either.  <br /><br />I&#39;m actually interested to see how well it could work on newer &quot;network appliance&quot; servers from people like Advantech or Lanner.  <br /><br />I&#39;m also interested to see the ALU VSR which claims even higher throughput using the same DPDK.   They are already down the road of being able to cluster multiple servers into a single router.  They are supposed to do a demo soon with 2Tbps worth of x86 bandwidth managed as a single router.  </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5546816463052793652">25 November 2014 19:43</a>
+                <a rel="nofollow" id="c5546816463052793652" href="#5546816463052793652">25 November 2014 19:43</a>
               </span>
             </div>
-            <p class="comment-content">Shouldn&#39;t have said 3rd party tool, wasn&#39;t 3rd party but a Juniper script monitoring physical interface state on the host and then communicating it to the VMs.  </p>
+            <div class="comment-content">Shouldn&#39;t have said 3rd party tool, wasn&#39;t 3rd party but a Juniper script monitoring physical interface state on the host and then communicating it to the VMs.  </div>
           </div>
         </li>
       </div>
@@ -143,10 +138,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09571175342652550804" rel="nofollow">DuaneO</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4863086383622482956">27 November 2014 14:59</a>
+                <a rel="nofollow" id="c4863086383622482956" href="#4863086383622482956">27 November 2014 14:59</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for the clarification. I&#39;m surprised that for a small 100m VMX that you would want to run 2 separate VMs, partly because I&#39;m guessing that you would be over provisioned with a single core for forwarding and 1 more core for control plane is likely overkill as well. I guess you can limit access to cpu cycles in the hyper visors but that almost seems like going too far.  I suspect that you can use a single control vm to program several vpfe vms so maybe it makes sense in that context. <br /><br />I&#39;ve heard that IPSec might be included soon.  I could use nat with minimal algs (DNS and ftp) for a vCPE. </p>
+            <div class="comment-content">Thanks for the clarification. I&#39;m surprised that for a small 100m VMX that you would want to run 2 separate VMs, partly because I&#39;m guessing that you would be over provisioned with a single core for forwarding and 1 more core for control plane is likely overkill as well. I guess you can limit access to cpu cycles in the hyper visors but that almost seems like going too far.  I suspect that you can use a single control vm to program several vpfe vms so maybe it makes sense in that context. <br /><br />I&#39;ve heard that IPSec might be included soon.  I could use nat with minimal algs (DNS and ftp) for a vCPE. </div>
           </div>
         </li>
       </div>
@@ -161,10 +156,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07494430933231767535" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9194884287924282634">20 December 2014 12:43</a>
+                <a rel="nofollow" id="c9194884287924282634" href="#9194884287924282634">20 December 2014 12:43</a>
               </span>
             </div>
-            <p class="comment-content">I also think that VMX will kill all the physical routers because the speed of it can be easily controlled …</p>
+            <div class="comment-content">I also think that VMX will kill all the physical routers because the speed of it can be easily controlled …</div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05486337487878976356" rel="nofollow">Weibin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6787614744051709920">04 March 2015 17:11</a>
+                <a rel="nofollow" id="c6787614744051709920" href="#6787614744051709920">04 March 2015 17:11</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br />Vyatta 5600 should be able to support 80Gbps throuthput.<br /><br />https://www.sdxcentral.com/articles/news/brocade-telefonica-push-vyattas-virtual-router-80g/2014/08/<br /><br />https://www.sdxcentral.com/wp-content/uploads/2014/10/Vyatta-5600-Performance-Test-Executive-Summary.pdf</p>
+            <div class="comment-content">Hi Ivan,<br />Vyatta 5600 should be able to support 80Gbps throuthput.<br /><br />https://www.sdxcentral.com/articles/news/brocade-telefonica-push-vyattas-virtual-router-80g/2014/08/<br /><br />https://www.sdxcentral.com/wp-content/uploads/2014/10/Vyatta-5600-Performance-Test-Executive-Summary.pdf</div>
           </div>
         </li>
       </div>

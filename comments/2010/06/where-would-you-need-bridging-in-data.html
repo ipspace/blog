@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Jeremy Filliben</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3427635405296105050">24 June 2010 15:35</a>
+                <a rel="nofollow" id="c3427635405296105050" href="#3427635405296105050">24 June 2010 15:35</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />I&#39;ve held my ground on DC to DC L2 interconnect for a few years at my primary employer.  VMotion is perhaps the only application requirement that is compelling enough to convince me to be flexible.  I went with a flat &quot;No&quot; on Microsoft NLB.<br /><br />My employer is toying with the idea of relocating a data center to a new location about 100 miles from the existing one.  I&#39;m planning to investigate DCB as a potential migration strategy.  Depending on what I learn, we could go this route or take a more traditional dedicated L1 circuit pair.  Either way, it&#39;s an 18 month effort and I fully intend to get back to Layer 3 as soon as possible.<br /><br />It&#39;s VMotion and the benefits it can provide for DR (and secondarily, load-balancing) that I feel will drive DCB.<br /><br />Jeremy</p>
+            <div class="comment-content">Ivan,<br /><br />I&#39;ve held my ground on DC to DC L2 interconnect for a few years at my primary employer.  VMotion is perhaps the only application requirement that is compelling enough to convince me to be flexible.  I went with a flat &quot;No&quot; on Microsoft NLB.<br /><br />My employer is toying with the idea of relocating a data center to a new location about 100 miles from the existing one.  I&#39;m planning to investigate DCB as a potential migration strategy.  Depending on what I learn, we could go this route or take a more traditional dedicated L1 circuit pair.  Either way, it&#39;s an 18 month effort and I fully intend to get back to Layer 3 as soon as possible.<br /><br />It&#39;s VMotion and the benefits it can provide for DR (and secondarily, load-balancing) that I feel will drive DCB.<br /><br />Jeremy</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">stretch</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1729837639347980330">24 June 2010 18:26</a>
+                <a rel="nofollow" id="c1729837639347980330" href="#1729837639347980330">24 June 2010 18:26</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;ll start off by saying I have virtually (no pun intended) no datacenter experience, but I don&#39;t understand from where this need arose. Back before the virtualization era, everything was a physical server and admins didn&#39;t arbitrarily relocate them to different datacenters (servers are heavy).<br /><br />Now we have VMotion, which gives us the ability to do so, provided we can figure out how to connect two datacenters at layer two. But to me, this seems like a solution without a problem. I can understand moving VMs around within a datacenter, but what is the motivation for moving them to different datacenters entirely? Why allow such a huge gap between the application and its storage?<br /><br />Again, I&#39;m not challenging this strategy, just hoping someone could explain it for us non-DC folks. Ivan? :-D</p>
+            <div class="comment-content">I&#39;ll start off by saying I have virtually (no pun intended) no datacenter experience, but I don&#39;t understand from where this need arose. Back before the virtualization era, everything was a physical server and admins didn&#39;t arbitrarily relocate them to different datacenters (servers are heavy).<br /><br />Now we have VMotion, which gives us the ability to do so, provided we can figure out how to connect two datacenters at layer two. But to me, this seems like a solution without a problem. I can understand moving VMs around within a datacenter, but what is the motivation for moving them to different datacenters entirely? Why allow such a huge gap between the application and its storage?<br /><br />Again, I&#39;m not challenging this strategy, just hoping someone could explain it for us non-DC folks. Ivan? :-D</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dirk Versavel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7795802182537331819">24 June 2010 18:36</a>
+                <a rel="nofollow" id="c7795802182537331819" href="#7795802182537331819">24 June 2010 18:36</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />I&#39;ve been working on quite some projects in various enterprises last 10 years and these were some things for which we were pushed by the business to provide in L2 bridging:<br /><br />- a middleware application used throughout the company that could only work in &quot;same subnet&quot; mode or in multicast mode. It turnded out that not a single specialist for that  middleware application could be found who knew how to convert it to multicast. There was some cisco feature developped for it but it got abandonded years ago. And multicast reconverge time was also an issue. (2004)<br />- A huge billing application based on X25 over ethernet LLC2 that nobody knew about. (2005)<br />- a non-routable PLC-protocol (proprietry CLNP-derivate) for PLCS that performed production-process tasks on a huge PLANT. No L3  header was provided in the packet structure  (2005)<br />- older windows clusters are non-geocluster. Same applies for some older unix clusters.<br />- 1 datacenter is hosting a huge backup robot. The  SAN environment spans 3 datacenters and relies on ip backups. Same subnet was needed.<br /><br />Before 2004 we just bridged and used RPVST.We  had DC&#39;s down several times due to STP-loops, that was before the arrival of loopguard. Later  stackwise switches where used using MEC. Now there&#39;s VSS and nexus also offers MEC. I&#39;ve also worked with redundant VPLS solutions not using STP.<br /><br />Like always we were always pushed by the business (OSI layer 8 :-)) <br />My experience:<br />- once you start bridging it&#39;s extremely difficult  to go back to a routed environment. In big companies you wil sometimes never get rid of it anymore.<br />- because bridging is so easy you will see that behind your back other departments have put all kinds of other applicatins/infrastructure and after a few years you come to the conclusion that 70% of your applications reside on the &quot;bridged infrastructure&quot;.<br /><br />Nowadays every vendor is fighting for it&#39;s market share. As a result firewalls offer more&amp;more router functionality, routers offer more&amp;more firewall features and SAN vendors are probably looking into other markets as well.<br /><br />Dirk</p>
+            <div class="comment-content">Hi Ivan,<br /><br />I&#39;ve been working on quite some projects in various enterprises last 10 years and these were some things for which we were pushed by the business to provide in L2 bridging:<br /><br />- a middleware application used throughout the company that could only work in &quot;same subnet&quot; mode or in multicast mode. It turnded out that not a single specialist for that  middleware application could be found who knew how to convert it to multicast. There was some cisco feature developped for it but it got abandonded years ago. And multicast reconverge time was also an issue. (2004)<br />- A huge billing application based on X25 over ethernet LLC2 that nobody knew about. (2005)<br />- a non-routable PLC-protocol (proprietry CLNP-derivate) for PLCS that performed production-process tasks on a huge PLANT. No L3  header was provided in the packet structure  (2005)<br />- older windows clusters are non-geocluster. Same applies for some older unix clusters.<br />- 1 datacenter is hosting a huge backup robot. The  SAN environment spans 3 datacenters and relies on ip backups. Same subnet was needed.<br /><br />Before 2004 we just bridged and used RPVST.We  had DC&#39;s down several times due to STP-loops, that was before the arrival of loopguard. Later  stackwise switches where used using MEC. Now there&#39;s VSS and nexus also offers MEC. I&#39;ve also worked with redundant VPLS solutions not using STP.<br /><br />Like always we were always pushed by the business (OSI layer 8 :-)) <br />My experience:<br />- once you start bridging it&#39;s extremely difficult  to go back to a routed environment. In big companies you wil sometimes never get rid of it anymore.<br />- because bridging is so easy you will see that behind your back other departments have put all kinds of other applicatins/infrastructure and after a few years you come to the conclusion that 70% of your applications reside on the &quot;bridged infrastructure&quot;.<br /><br />Nowadays every vendor is fighting for it&#39;s market share. As a result firewalls offer more&amp;more router functionality, routers offer more&amp;more firewall features and SAN vendors are probably looking into other markets as well.<br /><br />Dirk</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dirk Versavel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7207602277192404990">24 June 2010 19:36</a>
+                <a rel="nofollow" id="c7207602277192404990" href="#7207602277192404990">24 June 2010 19:36</a>
               </span>
             </div>
-            <p class="comment-content">Corrections, I was in a hurry:<br /><br />RPVST =&gt; PVST+<br />proprietary<br />developed<br /><br />PS: Even in 2010 i still get almost every year  involved in the effects of a L2 loop in a big company.<br />L2 is vulnerable as most of us know: storms,flooding,ddos.....this is one of nature&#39;s laws.<br />I would only bridge if I was placed with my back against the wall or if there was a VERY GOOD reason to do so.</p>
+            <div class="comment-content">Corrections, I was in a hurry:<br /><br />RPVST =&gt; PVST+<br />proprietary<br />developed<br /><br />PS: Even in 2010 i still get almost every year  involved in the effects of a L2 loop in a big company.<br />L2 is vulnerable as most of us know: storms,flooding,ddos.....this is one of nature&#39;s laws.<br />I would only bridge if I was placed with my back against the wall or if there was a VERY GOOD reason to do so.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Jon Barry</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6002691783902248857">25 June 2010 19:36</a>
+                <a rel="nofollow" id="c6002691783902248857" href="#6002691783902248857">25 June 2010 19:36</a>
               </span>
             </div>
-            <p class="comment-content">Stretch,<br /><br />Sometimes its DR related or in one recent case it was they idea that a master scheduler would migrate tasks between DC&#39;s (move the task related VM via Vmotion) based on some criteria (load, yadda yadda yadda)</p>
+            <div class="comment-content">Stretch,<br /><br />Sometimes its DR related or in one recent case it was they idea that a master scheduler would migrate tasks between DC&#39;s (move the task related VM via Vmotion) based on some criteria (load, yadda yadda yadda)</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2909117654771114718">26 June 2010 12:21</a>
+                <a rel="nofollow" id="c2909117654771114718" href="#2909117654771114718">26 June 2010 12:21</a>
               </span>
             </div>
-            <p class="comment-content">Unless you have way too much bandwidth, moving VMs between data centers doesn&#39;t make much sense as they stay connected to the &quot;old&quot; storage and probably (depending on the design) the old exit points from the DC.</p>
+            <div class="comment-content">Unless you have way too much bandwidth, moving VMs between data centers doesn&#39;t make much sense as they stay connected to the &quot;old&quot; storage and probably (depending on the design) the old exit points from the DC.</div>
           </div>
         </li>
       </div>

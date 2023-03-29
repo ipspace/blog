@@ -1,0 +1,35 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "28 November 2021 10:07",
+               "html": "<p>Of course you&#39;re right. Lower end-to-end cost should get more hash entries... but then there&#39;s BGP DMZ BW where higher bandwidth gets you more hash entries. Same with port channels.</p>\n\n<p>Will try to contact the author of the blog post ;)</p>\n",
+               "id": "887",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-28T10:07:35",
+               "ref": "885",
+               "type": "comment"
+            },
+            {
+               "date": "28 November 2021 11:22",
+               "html": "<p>Thanks for engaging here.\nIt makes sense that paths with higher bandwidth are more preferred (more hashes attached).\nDo you mean one could configure bandwidth command on individual interfaces belonging to a port channel?\nI thought that interfaces belonging to a port channel must be of the same speed and duplex (at least on Cisco devices). I&#39;m aware that speed is unlike bandwidth. I&#39;m not aware of unequal load balancing on port channels.</p>\n",
+               "id": "888",
+               "name": "Anonymous",
+               "pub": "2021-11-28T11:22:35",
+               "ref": "887",
+               "type": "comment"
+            }
+         ],
+         "date": "27 November 2021 01:12",
+         "html": "I think some of the following statements from the referenced blog post are wrong:<br />\n\n<p>&gt; In the case of unequal-cost multipathing (also called &ldquo;unequal-cost load balancing&rdquo; by some technologies, such as EIGRP), you will have two paths.\n&gt; Path 1 might have a lower metric, so internally it&rsquo;ll be given hashes 0 and 1.\n&gt; Path 2 might have a higher metric, so internally it&rsquo;ll be given hashes 2, 3, 4, 5, 6, and 7.</p>\n\n<p>Paths with lower metric are usually more preferred. So really it should be the opposite, shouldn&#39;t it?</p>\n\n<p>Assuming a metric (cost) ratio of 1:3, path 1 will be associated with hashes 0, 1, 2, 3, 4, 5 whereas path 2 will be linked to hashes 6 and 7.</p>\n",
+         "id": "885",
+         "name": "Anonymous",
+         "pub": "2021-11-27T13:12:31",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/11/worth-reading-understanding-load-balancing.html"
+}

@@ -1,0 +1,117 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="540">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Network Ninja</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c540" href="#540">20 April 2021 05:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I use UCMP not for failure scenarios like this but part of normal design.</p>
+
+<p>It works particularly well when using anycast with servers. You have to think down to the server layer and maybe even higher than the spine layer for the most dramatic affect.</p>
+
+<p>Within the fabric, maybe there are cases where different amounts of servers using the same ip address on each top of rack switch. The ECMP only method the spines would send equal traffic per top of rack switch. The UCMP would use its metric to balance it based on how many servers have the IP.</p>
+
+<p>If you look up to the router layer. The router could be connected to multiple fabrics. What if fabric A has 5 anycast servers sharing an IP and fabric B has 20. With ecmp the router would normally split this 50/50 leaving the 20 servers in fabric b under utilized and the 5 in A over utilized. UCMP enabled up to this layer can track how many servers are at each fabric and balance based on server count. That way no matter how unbalanced the anycast deployment is in a datacenter, this feature enabled will help to keep the load even n every server.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="541">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">JeffT  </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c541" href="#541">21 April 2021 02:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>At this point in time, RIFT solution to UCMP looks absolutely superior to any other approach (but I&rsquo;m biased as you know ;-))</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="543">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c543" href="#543">21 April 2021 01:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, wrt to asymmetry of load and congestion when link failure happens, I brought up Conga previously in another post of yours re load-balancing. Conga helps with this situation because it holds global congestion information and therefore can alleviate this. It&#39;s a point-solution for two-level leaf-spine fabric that scale to 27.6k 10Ge ports. Pretty nice invention from Cisco and is available in their ACI, but Conga can be implemented independent of ACI:</p>
+
+<p>https://people.csail.mit.edu/alizadeh/papers/conga-sigcomm14.pdf</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="544">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c544" href="#544">21 April 2021 06:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Network Ninja: Thank you -- I&#39;m aware of that use case (Pete Lumbis mentioned it in a comment to the first article in this series), just haven&#39;t found the time to write about it yet.</p>
+
+<p>@Minh Ha: I know you mentioned Conga. The solution from Erico Vanini&#39;s article is much more elegant and they claim it&#39;s comparable (performance-wise) to Conga. Will write a blog post about it (eventually...).</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="550">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bruno Rijsman</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c550" href="#550">22 April 2021 10:18</a>
+              </span>
+            </div>
+            <div class="comment-content">https: //github.com/brunorijsman/rift-python/blob/master/ietf-108/ietf-108---rift-wg---open-source-update.pdf slides 30+ for an example of NECMP in RIFT<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

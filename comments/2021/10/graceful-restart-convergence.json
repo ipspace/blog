@@ -1,0 +1,23 @@
+{
+   "comments": [
+      {
+         "date": "12 October 2021 09:49",
+         "html": "<p>The comment about links losing signal reminded me of the &bdquo;dying gasp&ldquo; DSL and Metro-Ethernet equipment can send from their capacitors if they lose power. For a carrier the difference between &bdquo;CPE lost power&ldquo; and &bdquo;someone cut the line at an undetermined place&ldquo; can make a huge difference in Troubleshooting and assignment of responsibility. \nAlso, this helps declaring links unusable much quicker. </p>\n",
+         "id": "793",
+         "name": " Arne",
+         "pub": "2021-10-12T21:49:13",
+         "type": "comment"
+      },
+      {
+         "date": "13 October 2021 11:04",
+         "html": "Two comments on BGP GR:<br />\n\n<ol>\n<li><p>In the implementations that I&#39;ve seen so far, Hold Timer expiration IS NOT a valid reason to start Graceful Restart process. If it is really just a control plane restart, the remote peer must send BGP Open message, with Restarting bit set. And this must happen before Hold Timer expiration. Hence, Hold Timer must be higher than the time required for your remote peer to restart its BGP process. Since GR is heavily used today in proprietary clustering solutions (especially in stateful devices, because why would you really want clustering in a non-stateful device...), typically that proprietary clustering mechanism will detect a real failure in a matter of seconds, and the new master will (relatively) quickly send BGP Open. Hence, you can hope for some Hold Timer of 15 seconds to work fine. Point being - you are not really bound by those 120 seconds of Restart Time, because GR process will not kick in in case of real failure.</p></li>\n<li><p>Combining BGP with BFD might be useful here, providing that your BFD is implemented on the forwarding plane and hence does not share fate with control plane (C-bit is set in your BFD packets). Then you can distinguish between Graceful Restart and a &quot;real&quot; failure:</p>\n\n<ul>\n<li>If BFD goes down, this means a real failure, hence flush the routes immediately and converge.</li>\n<li>If BFD stays up, it looks like &quot;just&quot; control plane restart, so let GR kick in.\nSo this allows you to have fast convergence and still support GR.\nHOWEVER, if you try using BGP + GR + BFD with C=0, then.....it is not very smart :)</li>\n</ul></li>\n</ol>\n",
+         "id": "794",
+         "name": "Dmitry Perets",
+         "pub": "2021-10-13T11:04:20",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2021/10/graceful-restart-convergence.html"
+}

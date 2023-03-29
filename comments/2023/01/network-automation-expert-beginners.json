@@ -1,0 +1,63 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "18 January 2023 08:53",
+               "html": "<p>&gt; I think a lot of us who have done that are just trying to get people going using Python/Ansible/whatever, so that they understand what they can actually do with these tools.</p>\n\n<p>... and the problem is that nobody tells them how far away they would still be from doing things right.</p>\n\n<p>The whole thing reminds me of a very smart pilot who claimed he can solve crew scheduling for his airline on a ZX Spectrum -- he figured out how to do a bit of programming, but had no idea how hard doing things reliably and at scale really is.</p>\n\n<p>&gt; I think the hope is that our audiences will realize the possibilities and then spend the time to develop the needed discipline.</p>\n\n<p>In the ideal world, that would be the case. Meanwhile on planet Earth... &#x1F937;&zwj;&#x2642;&#xFE0F;</p>\n",
+               "id": "1602",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-01-18T08:53:19",
+               "ref": "1601",
+               "type": "comment"
+            },
+            {
+               "date": "20 January 2023 01:38",
+               "html": "<p>&#39;Configure the BGP peer, then see if it came up. Oh, it didn&#39;t, add the update-source. Now it&#39;s up, let&#39;s add a network statement. Now let&#39;s go back and verify the network made it into the BGP table. Now did it show up in the peer? It didn&#39;t? Etc., etc., &#39;</p>\n\n<p>The first thought I had was why can&#39;t this workflow be done by automation?</p>\n\n<p>The second thought I had was a software engineer who I greatly respect telling me that if we were serious about automation, then the next generation of routing protocols etc would be designed with automation in mind.</p>\n\n<p>Put another way, how easy would it be to replicate the workflow above without more programmatic changes to the network?</p>\n",
+               "id": "1612",
+               "name": " Mark Seery",
+               "pub": "2023-01-20T01:38:58",
+               "ref": "1601",
+               "type": "comment"
+            }
+         ],
+         "date": "17 January 2023 08:05",
+         "html": "<p>&quot;I&rsquo;ve...seen too many outages caused by either human error or faulty automation.&quot;  I.e., I&#39;ve seen outages caused when stuff gets changed, regardless of whether it&#39;s by humans or machines.</p>\n\n<p>OK, but his point about automation is a good one.  The problem is often (as in the Amazon case) runaway automation, i.e., the provisioning system starts doing things other than expected, to devices other than expected, and operators cannot figure out how to stop it.  This is a serious problem--runaway automation is what brought down the 737-MAX, twice.</p>\n\n<p>&quot;...conference talks explaining how easy it is to automate your network...&quot;  Errr, guilty as charged.  I work in technical marketing, though :)  I think a lot of us who have done that are just trying to get people going using Python/Ansible/whatever, so that they understand what they can actually do with these tools.  I often end my talks telling people to start writing code, even if it&#39;s bad code.  Well, this isn&#39;t going to create software engineers with rigorous coding and testing processes.  I think the hope is that our audiences will realize the possibilities and then spend the time to develop the needed discipline.  And you&#39;re absolutely right, operational data is the best way to start because it is harmless.  Part of the problem is just the limitation of time--in a 90 minute Cisco Live session, I spend most of it explaining YANG/NETCONF to people who don&#39;t understand it.  If I spent a lot of time discussing coding practices I wouldn&#39;t be delivering the platform/OS-specific information I&#39;m expected to deliver.</p>\n\n<p>The other major problem with automation systems is that network engineers are used to working in a configuration-verify cycle.  Configure the BGP peer, then see if it came up.  Oh, it didn&#39;t, add the update-source.  Now it&#39;s up, let&#39;s add a network statement.  Now let&#39;s go back and verify the network made it into the BGP table.  Now did it show up in the peer?  It didn&#39;t?  Etc., etc.,  Pushing bulk config with automation tools breaks this and makes network engineers nervous.  Theoretically if the config is tested and validated in advance (on your digital twin, right? :)) then it should be proven and tested, but things often work differently when pushed to a real network.</p>\n\n<p>There&#39;s a lot to be done here--I do believe we need automation for networks given the challenges of scale, etc., these days.  But &quot;ad experimentum&quot; Python scripting of critical network components is not something to be taken lightly.</p>\n",
+         "id": "1601",
+         "name": " Jeff McLaughlin",
+         "pub": "2023-01-17T20:05:07",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 January 2023 04:31",
+               "html": "<p>I wouldn&#39;t say that. Some vendors (Ubiquity?) have decent solutions for small networks.</p>\n\n<p>If you want to use traditional networking gear with traditional device configurations and configure it the way you like, then you&#39;re right, nobody cares about that. After all, we all have to pay the bills at the end of the month.</p>\n\n<p>Still, there are tons of tools (free or commercial) that one can use to automate the smallest networks, but you&#39;ll be in the IKEA land (aka &quot;some assembly required&quot;). Once I got so sick-and-tired of Cisco IOS static DHCP mappings that I created an Ansible playbook that managed them <em>on a single router</em>, but you have to be in a very special state of mind to automate something that&#39;s done once every other blue moon... although I did do that a few times just so I wouldn&#39;t have to rediscover how it was done ever again.</p>\n",
+               "id": "1624",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-01-26T16:31:04",
+               "ref": "1618",
+               "type": "comment"
+            },
+            {
+               "date": "10 February 2023 11:26",
+               "html": "<p>That&#39;s sort of how I feel at my current job at times. about 40 sites, but we don&#39;t do total refresh cycles in bulk, just as needed. Everything we do is sporadic, and I&#39;m trying to see the ROI on learning automation for things that are done once in a while, and don&#39;t take much time to do manually anyway. </p>\n\n<p>I can spend 40 hours trying to figure out how to automate something that will only take me 30 minutes, and that I will only do 10 times a year. Only for nobody to use that same automation method, or for it to become obsolete, or simply need to spend more hours to maintain and update it. </p>\n\n<p>I feel like I&#39;ll end up spending way more time updating an automation tool than actually working on the network lol</p>\n\n<p>I&#39;m totally clueless so I donno.</p>\n",
+               "id": "1661",
+               "name": "Ish",
+               "pub": "2023-02-10T23:26:13",
+               "ref": "1624",
+               "type": "comment"
+            }
+         ],
+         "date": "26 January 2023 01:55",
+         "html": "<p>No one thinks of the little places with a handful of gear and a handful of sites.  All these discussions only follow the money.  </p>\n\n<p>Cattools made a bunch of automation possible but it was still faster to change a vlan on a port by hand.  And still is.  </p>\n",
+         "id": "1618",
+         "name": " Paulie ",
+         "pub": "2023-01-26T01:55:10",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2023/01/network-automation-expert-beginners.html"
+}

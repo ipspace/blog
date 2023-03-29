@@ -1,0 +1,173 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1104">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dmytro Shypovalov</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1104" href="#1104">23 March 2022 10:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Having one RIB for labeled and unlabeled unicast on IOS has caused weird interop problem in the field. Especially since most other implementations (even Cisco IOS-XR) have different RIB and negotiate labeled and unlabeled SAFI separately.</p>
+
+<p>Take for example 6PE - remote PE expects an update with :FFFF: nexthop + MPLS label. Unlabeled IPv6 SAFI is not used between PE so it will probably not be negotiated. IOS code has some checks which tell whether to attach label or not, depending on nexthop format, whether nexthop was changed etc. Sometimes it might decide to send an unlabeled update over a labeled unicast session.</p>
+
+<p>It can get even worse if the peer is pre-RFC7606, so it might just drop the BGP session with all AF because of this.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1105">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Fred Cuiller</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1105" href="#1105">23 March 2022 01:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Been there, done that.
+Indeed interop can be tricky: IOS, IOS-XE, IOS-XR, add other vendors in the mix. It can also change between software versions! Thus, lab validation required. I remember outages caused by prefixes stuck on PE, which were not withdrawn correctly.</p>
+
+<p>In the past, XR did not allow having both AF configured on the same neighbor. While it worked, you had a syslog telling you this was not supported (and this could be fine if you 100% knew what you were doing, i.e controlled prefix filtering and label allocation). The best practice was to have 2 BGP sessions: 1 for U, 1 for LU. But for major SP with thousands of PEs, it means new loopbacks to provision (and advertise).</p>
+
+<p>This behavior was changed in XR 6.2.3 I believe: https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-4/routing/configuration/guide/b-routing-cg-asr9000-74x/implementing-BGP.html</p>
+
+<p>&quot;For default VRF, starting from Cisco IOS XR Software Release 6.2.x, both IPv4 Unicast and IPv4 Labeled-unicast address families are supported under the same neighbor&quot;</p>
+
+<p>And this triggered additional problems which were mitigated with... BGP knobs!
+I know Ivan is a fan of weird BGP knobs, so here you are:</p>
+
+<p>update in merge safi unicast labeled-unicast: I think this one was used to withdraw both entries, independently which SAFI we received the BGP withdraw. Introduced in 6.6.x I believe. It was hidden. It was later renamed to &quot;update in labeled-unicast equivalent&quot; in 7.1.1</p>
+
+<p>advertise local-labeled-route safi-unicast disable: disable the advertisement of a route with a local label to peers on the unicast SAFI</p>
+
+<p>Both of them are now documented: https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-4/routing/command/reference/b-routing-cr-asr9000-74x/bgp-commands.html</p>
+
+<p>Voila. This is what I remember from a 2018 escalation. And you now have material to write another post ;-)
+Fred</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1133">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Donatas Abraitis</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1133" href="#1133">02 April 2022 10:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>FRR uses the same approach. BGP-LU routes live in BGP rib. No duplication.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1468">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Son Nguyen</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1468" href="#1468">01 November 2022 06:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I don&#39;t get it.
+ce1 --- pe1 (normal BGP session)
+pe1 --- rr (BGP-LU)
+rr --- pe2 (BGP-LU)
+pe2 --- ce2 (BGP-LU)</p>
+
+<p>since pe1 has a BGP-LU session with rr, the prefixes (10.0.0.4, 10.0.0.2, 10.0.0.6) which pe1 received from rr should have labels. Could you help explain that?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1469">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1469" href="#1469">01 November 2022 09:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It&#39;s all in the blog post (although admittedly I had to read that paragraph twice before it kicked in ;)</p>
+
+<p>&gt; No label is assigned to 10.0.0.2/32, 10.0.0.4/32 and 10.0.0.6/32 because THESE PREFIXES AREN&#39;T ADVERTISED over any BGP-LU sessions</p>
+
+<p>Note that labels have local significance, and if no upstream neighbor is using them it makes no sense to assign them.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1472">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Son Nguyen</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1472" href="#1472">02 November 2022 05:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I did my own lab, and already understood. So, for BGP-LU, a router will only create a label for a prefix when it is going to advertise that prefix. This is different to LDP. LDP creates labels for all prefixes in the RIB (except BGP prefixes).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

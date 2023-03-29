@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1351218904609664470">24 March 2009 10:41</a>
+                <a rel="nofollow" id="c1351218904609664470" href="#1351218904609664470">24 March 2009 10:41</a>
               </span>
             </div>
-            <p class="comment-content">Hi ivan<BR/><BR/>Thanks a lot for answering my query. after reading ur post i checked by simulating a lab. <BR/><BR/>So can i consider the following as a best practise for computing bandwidth for the classes. <BR/><BR/>first take 75% of the available bandwidth let;s say the bandwidth of the interface is 512 Kbps. 75% of it would be 384 Kbps.<BR/><BR/>now take this bandwidth as the available bandwidth for user traffic . <BR/><BR/>so if i want to set 50% of the bandwidth for a particular class. i would take 50% of 384 Kbps. <BR/>and similarly allocate traffic to other classes taking 384 as the available bandiwdth. making sure the allocated bandwidth to classes doesn;t overrun the remaining 25% for control protocols. <BR/><BR/>can I consider this as a recommended method for computing bandiwdth for traffic classes using CBWFQ. <BR/><BR/>ur guidance on the same would be great. <BR/><BR/>thanks for the post<BR/><BR/>Regards<BR/><BR/>Sebastan</p>
+            <div class="comment-content">Hi ivan<BR/><BR/>Thanks a lot for answering my query. after reading ur post i checked by simulating a lab. <BR/><BR/>So can i consider the following as a best practise for computing bandwidth for the classes. <BR/><BR/>first take 75% of the available bandwidth let;s say the bandwidth of the interface is 512 Kbps. 75% of it would be 384 Kbps.<BR/><BR/>now take this bandwidth as the available bandwidth for user traffic . <BR/><BR/>so if i want to set 50% of the bandwidth for a particular class. i would take 50% of 384 Kbps. <BR/>and similarly allocate traffic to other classes taking 384 as the available bandiwdth. making sure the allocated bandwidth to classes doesn;t overrun the remaining 25% for control protocols. <BR/><BR/>can I consider this as a recommended method for computing bandiwdth for traffic classes using CBWFQ. <BR/><BR/>ur guidance on the same would be great. <BR/><BR/>thanks for the post<BR/><BR/>Regards<BR/><BR/>Sebastan</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4853837042860231194">24 March 2009 19:12</a>
+                <a rel="nofollow" id="c4853837042860231194" href="#4853837042860231194">24 March 2009 19:12</a>
               </span>
             </div>
-            <p class="comment-content">Hi,<BR/>I'm wondering what bandwidth the 25% rule was made for. 25% of 256kbps is much less than 4mbps and I would expect there to be the same amount of control traffic over both links if each were configured similarly.  I would assume that there is a particular bandwidth where the 25% rule of thumb no longer applies and would not negatively impact routing or other control traffic. Do you know what that number is?<BR/><BR/>Thanks in advance,<BR/>Mark</p>
+            <div class="comment-content">Hi,<BR/>I'm wondering what bandwidth the 25% rule was made for. 25% of 256kbps is much less than 4mbps and I would expect there to be the same amount of control traffic over both links if each were configured similarly.  I would assume that there is a particular bandwidth where the 25% rule of thumb no longer applies and would not negatively impact routing or other control traffic. Do you know what that number is?<BR/><BR/>Thanks in advance,<BR/>Mark</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#755481331092037739">24 March 2009 19:58</a>
+                <a rel="nofollow" id="c755481331092037739" href="#755481331092037739">24 March 2009 19:58</a>
               </span>
             </div>
-            <p class="comment-content">It was a rule-of-thumb that was never changed. The assumption was (probably) also that not all traffic would be classified and it makes sense to leave some bandwidth available for low-priority (unclassified) traffic.</p>
+            <div class="comment-content">It was a rule-of-thumb that was never changed. The assumption was (probably) also that not all traffic would be classified and it makes sense to leave some bandwidth available for low-priority (unclassified) traffic.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Swap</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3601914921172044408">04 November 2009 17:29</a>
+                <a rel="nofollow" id="c3601914921172044408" href="#3601914921172044408">04 November 2009 17:29</a>
               </span>
             </div>
-            <p class="comment-content">This can be dangerous on older IOS than 12.4(22)T  if a heavy traffic class is configured with “bandwidth” and class-default is left as it is.<br /><br />E.g. Consider 4 flows; each of 20Mbps; Total Link is 10Mbps; one flow is reserved for 6Mbps. Rest all flows default. (default flows will use fair-queuing with lower weight)<br /><br />Working: heavy traffic will be guaranteed 6Mbps + it’ll eat more based on its higher weight. Practically this went to 9.2 Mbps, other got only in Kbps.<br />So make sure class-default is also allocated some remaining bandwidth e.g. 3990kbps in this example.<br /><br />Or the same LLQ type behavior can be achieved using shaping on the 6Mbps reserved class so that it doesn’t cross a certain limit.  E.g.<br />policy-map PM_QOS<br /> class CM_UDP1000<br />  bandwidth 6000<br />  shape average 6000000<br />!<br />interface FastEthernet0/1<br /> bandwidth 10000<br /> ip address 192.168.58.1 255.255.255.0<br /> load-interval 30<br /> duplex auto<br /> speed 10<br /> no keepalive<br /> max-reserved-bandwidth 100<br /> service-policy output PM_QOS<br /><br />Let&#39;s take an example -<br /><br />E.g1:. <br /><br />UDP1000 with BW=6000kbps sending at the rate of 8MBps<br />UDP1001 sending at 20Mbps<br /><br /><br />In 12.4(22)T, CBWFQ behaves as if it has an inbuilt policer for the reserved BW. <br />WAN#sh policy-map int fa0/1<br /> FastEthernet0/1 <br /><br />  Service-policy input: PM_QOS_STATS<br /><br />    Class-map: CM_UDP1000 (match-all)<br />      226396 packets, 281183832 bytes<br />      30 second offered rate 5945000 bps ----&gt; CBWFQ gets 6Mbps even when sending at 8Mbps<br />      Match: access-group 100<br /><br />    Class-map: CM_UDP1001 (match-all)<br />      146264 packets, 181659888 bytes<br />      30 second offered rate 3864000 bps -&gt; other flow gets remaining 4MBps<br />      Match: access-group 101<br /><br />In 12.4 Mainline (and all IOS prior to 12.4(22)T, <br />WAN#sh policy-map int fa0/1<br /> FastEthernet0/1 <br /><br />  Service-policy input: PM_QOS_STATS<br /><br />    Class-map: CM_UDP1000 (match-all)<br />      1185545 packets, 1472446890 bytes<br />      30 second offered rate 8161000 bps ----&gt; CBWFQ gets 8.0Mbps when sending at 8Mbps based of the higher weight<br /><br />      Match: access-group 100<br /><br />    Class-map: CM_UDP1001 (match-all)<br />      373738 packets, 464182596 bytes<br />      30 second offered rate 1649000 bps-&gt; other flow get only around 2 Mbps<br />      Match: access-group 101<br /> <br />cheers<br />Swap<br />#19804</p>
+            <div class="comment-content">This can be dangerous on older IOS than 12.4(22)T  if a heavy traffic class is configured with “bandwidth” and class-default is left as it is.<br /><br />E.g. Consider 4 flows; each of 20Mbps; Total Link is 10Mbps; one flow is reserved for 6Mbps. Rest all flows default. (default flows will use fair-queuing with lower weight)<br /><br />Working: heavy traffic will be guaranteed 6Mbps + it’ll eat more based on its higher weight. Practically this went to 9.2 Mbps, other got only in Kbps.<br />So make sure class-default is also allocated some remaining bandwidth e.g. 3990kbps in this example.<br /><br />Or the same LLQ type behavior can be achieved using shaping on the 6Mbps reserved class so that it doesn’t cross a certain limit.  E.g.<br />policy-map PM_QOS<br /> class CM_UDP1000<br />  bandwidth 6000<br />  shape average 6000000<br />!<br />interface FastEthernet0/1<br /> bandwidth 10000<br /> ip address 192.168.58.1 255.255.255.0<br /> load-interval 30<br /> duplex auto<br /> speed 10<br /> no keepalive<br /> max-reserved-bandwidth 100<br /> service-policy output PM_QOS<br /><br />Let&#39;s take an example -<br /><br />E.g1:. <br /><br />UDP1000 with BW=6000kbps sending at the rate of 8MBps<br />UDP1001 sending at 20Mbps<br /><br /><br />In 12.4(22)T, CBWFQ behaves as if it has an inbuilt policer for the reserved BW. <br />WAN#sh policy-map int fa0/1<br /> FastEthernet0/1 <br /><br />  Service-policy input: PM_QOS_STATS<br /><br />    Class-map: CM_UDP1000 (match-all)<br />      226396 packets, 281183832 bytes<br />      30 second offered rate 5945000 bps ----&gt; CBWFQ gets 6Mbps even when sending at 8Mbps<br />      Match: access-group 100<br /><br />    Class-map: CM_UDP1001 (match-all)<br />      146264 packets, 181659888 bytes<br />      30 second offered rate 3864000 bps -&gt; other flow gets remaining 4MBps<br />      Match: access-group 101<br /><br />In 12.4 Mainline (and all IOS prior to 12.4(22)T, <br />WAN#sh policy-map int fa0/1<br /> FastEthernet0/1 <br /><br />  Service-policy input: PM_QOS_STATS<br /><br />    Class-map: CM_UDP1000 (match-all)<br />      1185545 packets, 1472446890 bytes<br />      30 second offered rate 8161000 bps ----&gt; CBWFQ gets 8.0Mbps when sending at 8Mbps based of the higher weight<br /><br />      Match: access-group 100<br /><br />    Class-map: CM_UDP1001 (match-all)<br />      373738 packets, 464182596 bytes<br />      30 second offered rate 1649000 bps-&gt; other flow get only around 2 Mbps<br />      Match: access-group 101<br /> <br />cheers<br />Swap<br />#19804</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2560612327427994418">31 May 2010 16:49</a>
+                <a rel="nofollow" id="c2560612327427994418" href="#2560612327427994418">31 May 2010 16:49</a>
               </span>
             </div>
-            <p class="comment-content">:)</p>
+            <div class="comment-content">:)</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07017889476128158844" rel="nofollow">Hoang Tran</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7383498318704924323">12 June 2014 22:01</a>
+                <a rel="nofollow" id="c7383498318704924323" href="#7383498318704924323">12 June 2014 22:01</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />I&#39;m wondering what&#39;s the exact percent the bandwidth remaining percent command will get? Does it equal 100% - %priority (LLQ), or just 100% - 25% (class-default) - %priority ?<br /><br />Thanks in advance,<br />Hoang</p>
+            <div class="comment-content">Hi Ivan,<br /><br />I&#39;m wondering what&#39;s the exact percent the bandwidth remaining percent command will get? Does it equal 100% - %priority (LLQ), or just 100% - 25% (class-default) - %priority ?<br /><br />Thanks in advance,<br />Hoang</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -128,10 +123,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5508680184829895271">13 June 2014 08:10</a>
+                <a rel="nofollow" id="c5508680184829895271" href="#5508680184829895271">13 June 2014 08:10</a>
               </span>
             </div>
-            <p class="comment-content">Good one. Don&#39;t know, and the documentation isn&#39;t exactly clear. Do a test in a lab.</p>
+            <div class="comment-content">Good one. Don&#39;t know, and the documentation isn&#39;t exactly clear. Do a test in a lab.</div>
           </div>
         </li>
       </div>

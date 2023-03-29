@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12912675838512027475" rel="nofollow">m0bilitee</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#907053609065276438">22 May 2008 22:49</a>
+                <a rel="nofollow" id="c907053609065276438" href="#907053609065276438">22 May 2008 22:49</a>
               </span>
             </div>
-            <p class="comment-content">In other words then, doing it with PIX in the middle instead of a router should work fine without the TTL issues?</p>
+            <div class="comment-content">In other words then, doing it with PIX in the middle instead of a router should work fine without the TTL issues?</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#704686666932112681">22 May 2008 23:16</a>
+                <a rel="nofollow" id="c704686666932112681" href="#704686666932112681">22 May 2008 23:16</a>
               </span>
             </div>
-            <p class="comment-content">Here is another example where it only works with the PIX/ASA but not with a router.<BR/><BR/>Please refer to this URL from Cisco.<BR/><BR/>http://www.cisco.com/en/US/products/hw/vpndevc/ps2030/products_configuration_example09186a00804acfea.shtml<BR/><BR/>If you replace one end of the PIX/ASA with a Cisco router and doing the same IPSec tunnel with the OSPF neighbor statement, your adjancy still won't come up because you will get an error on the router saying the remote peer was not on a common subnet. <BR/><BR/>Cisco has done something in the ASA code to (I believe) waive the check on common subnet.</p>
+            <div class="comment-content">Here is another example where it only works with the PIX/ASA but not with a router.<BR/><BR/>Please refer to this URL from Cisco.<BR/><BR/>http://www.cisco.com/en/US/products/hw/vpndevc/ps2030/products_configuration_example09186a00804acfea.shtml<BR/><BR/>If you replace one end of the PIX/ASA with a Cisco router and doing the same IPSec tunnel with the OSPF neighbor statement, your adjancy still won't come up because you will get an error on the router saying the remote peer was not on a common subnet. <BR/><BR/>Cisco has done something in the ASA code to (I believe) waive the check on common subnet.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5745933710109335300">23 May 2008 15:12</a>
+                <a rel="nofollow" id="c5745933710109335300" href="#5745933710109335300">23 May 2008 15:12</a>
               </span>
             </div>
-            <p class="comment-content">@vo: Yes, see the link in the quoted text within the post.</p>
+            <div class="comment-content">@vo: Yes, see the link in the quoted text within the post.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6314339004859366174">24 May 2008 12:44</a>
+                <a rel="nofollow" id="c6314339004859366174" href="#6314339004859366174">24 May 2008 12:44</a>
               </span>
             </div>
-            <p class="comment-content">ASA5505 is (with the very basic feature set) very cheap device to play with. It's handy platform to test sophisticated setup like this OSPF one.</p>
+            <div class="comment-content">ASA5505 is (with the very basic feature set) very cheap device to play with. It's handy platform to test sophisticated setup like this OSPF one.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6495940830139897574">24 May 2008 12:46</a>
+                <a rel="nofollow" id="c6495940830139897574" href="#6495940830139897574">24 May 2008 12:46</a>
               </span>
             </div>
-            <p class="comment-content">Ivan: ASA doesn't decrement TTL with default config. If you need this you may use a map in service policy where you can order it to do it.</p>
+            <div class="comment-content">Ivan: ASA doesn't decrement TTL with default config. If you need this you may use a map in service policy where you can order it to do it.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9206486500203854938">13 August 2008 20:54</a>
+                <a rel="nofollow" id="c9206486500203854938" href="#9206486500203854938">13 August 2008 20:54</a>
               </span>
             </div>
-            <p class="comment-content">I tried running OSPF between 2 routers across a firewall, by establshing a GRE tunnel and running OSPF through it. This takes care of the Hello packets (they have a TTL of 1) also.<BR/><BR/>The only hitch is that the firewall must support the pass-through of GRE.<BR/><BR/>I was also looking for a solution to run the OSPF across a fiewwall without using a GRE tunnel. One can configure the connected interfaces (with the firewall in between behaving like a router) not to broadcast (in our case multicast) OSPF. But then this stops the Hello packets also.<BR/><BR/>Is there any way to sort of unicast the Hello packets across the Firewall? And to increase the TTL of Hello packets to more than 1? For me either might solve the issue to some extent.</p>
+            <div class="comment-content">I tried running OSPF between 2 routers across a firewall, by establshing a GRE tunnel and running OSPF through it. This takes care of the Hello packets (they have a TTL of 1) also.<BR/><BR/>The only hitch is that the firewall must support the pass-through of GRE.<BR/><BR/>I was also looking for a solution to run the OSPF across a fiewwall without using a GRE tunnel. One can configure the connected interfaces (with the firewall in between behaving like a router) not to broadcast (in our case multicast) OSPF. But then this stops the Hello packets also.<BR/><BR/>Is there any way to sort of unicast the Hello packets across the Firewall? And to increase the TTL of Hello packets to more than 1? For me either might solve the issue to some extent.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6587737038744651580">29 August 2008 07:27</a>
+                <a rel="nofollow" id="c6587737038744651580" href="#6587737038744651580">29 August 2008 07:27</a>
               </span>
             </div>
-            <p class="comment-content">As I wrote in the post - the trick works because PIX/ASA does not decrease TTL, so OSPF packets with TTL=1 pass through it.</p>
+            <div class="comment-content">As I wrote in the post - the trick works because PIX/ASA does not decrease TTL, so OSPF packets with TTL=1 pass through it.</div>
           </div>
         </li>
       </div>

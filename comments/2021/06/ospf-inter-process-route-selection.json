@@ -1,0 +1,42 @@
+{
+   "comments": [
+      {
+         "date": "15 June 2021 11:01",
+         "html": "<p>Talking to the person who coded this is the most helpful approach ;-)\nYou still don&rsquo;t know what the tiebreaker is (perhaps phase of the moon)</p>\n",
+         "id": "666",
+         "name": " JeffT ",
+         "pub": "2021-06-15T23:01:51",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "18 June 2021 10:38",
+               "html": "<p>Yes, something related to the OSPF process seems to be a tie breaker. Is it the OSPF process ID, or the routing process ID (the thing you get with <strong>show ip protocol summary</strong>)? Who knows. </p>\n\n<p>Until someone provides a pointer to a bit of well-written documentation (not a blog post or a forum reply), I&#39;d wouldn&#39;t even try to use this &quot;feature&quot; in a network design.</p>\n",
+               "id": "675",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-06-18T10:38:59",
+               "ref": "674",
+               "type": "comment"
+            }
+         ],
+         "date": "18 June 2021 09:45",
+         "html": "<p>Hi Ivan, I notice at last the route from OSPF process 1 always overwrites the one from process 3 when costs are equal. This behaviour is in line with Andrea&#39;s finding, Cisco OSPF implementation uses process ID to break ties. Routes with a lower process number win. </p>\n\n<p>So the part where you wrote &quot;This is definitely weird. The new entry replaced the old one&quot;, and, &quot;The debugging printout claims the second route has closer admin distance, but the admin distances are definitely the same. So maybe it&rsquo;s the process number, or the sequence of route insertion that matters.&quot; In this part, route from process 3 takes over route from process 1, so looks like behaviour contradicts the previous part. </p>\n\n<p>But the debug msg in this part also prints the same msg &quot;closer admin distance&quot;, so I suspect that&#39;s because the commands</p>\n\n<p>rtr(config)#int gig 2\nrtr(config-if)#ip ospf cost 1000</p>\n\n<p>is still active in gig 2 at that time, making route from process 1 more expensive (metric 1000 vs 2), hence get overwritten by route from process 3 despite the higher process no of the latter. So when you later change cost of gig 3 to 2000, gig 2 route from process 1 wins again. And that&#39;d explain in the end, when the routes from the 2 processes have the same default costs, route from process 1 always wins. </p>\n\n<p>So the metric at gig 2 being left at 1000 must be the reason for the seemingly inconsistent behaviour, I think.</p>\n",
+         "id": "674",
+         "name": "Minh Ha",
+         "pub": "2021-06-18T09:45:45",
+         "type": "comment"
+      },
+      {
+         "date": "07 July 2021 08:51",
+         "html": "Funny to see a thread from 2013 coming back from the dead : D<br />\n\n\n",
+         "id": "694",
+         "name": "Nicolas MICHEL",
+         "pub": "2021-07-07T20:51:48",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2021/06/ospf-inter-process-route-selection.html"
+}

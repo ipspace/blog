@@ -1,0 +1,71 @@
+{
+   "comments": [
+      {
+         "date": "25 February 2021 04:32",
+         "html": "<p>One valid use case for UCMP is anycast services. If I have 4 anycast nodes behind leaf1 and 1 behind leaf2 I want the spines to UCMP that traffic to the leafs. </p>\n",
+         "id": "421",
+         "name": " Pete Lumbis",
+         "pub": "2021-02-25T16:32:00",
+         "type": "comment"
+      },
+      {
+         "date": "25 February 2021 06:26",
+         "html": "<p>@Pete: and all of a sudden the weird DMZ Bandwidth features in Arista EOS make perfect sense. Thanks a million!</p>\n",
+         "id": "422",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-02-25T18:26:21",
+         "type": "comment"
+      },
+      {
+         "date": "26 February 2021 04:40",
+         "html": "<p>How about even Large CLOS networks with the same interface capacity, but accounting for things to fail; fabric cards, links or nodes in disaggregated units. You can either UCMP or drain large parts of your network to get the most out of ECMP.</p>\n",
+         "id": "424",
+         "name": "Scott O'Brien",
+         "pub": "2021-02-26T16:40:27",
+         "type": "comment"
+      },
+      {
+         "date": "01 March 2021 08:30",
+         "html": "<p>Use-cases aside, I think the bigger question is: is it technically viable to implement UCMP in Link State Protocols? LFA, in its simplest form, is the LS&#39; version of UCMP, and it&#39;s computationally intensive when you do it for 1 leaf destination. When you generalize it to calculate UCMP paths to every destination in the network, and the number of nodes gets really huge, into the thousands, this can be computationally intractable. That&#39;s why vendors have to take shortcuts, for ex, not implementing TI-LFA for the case of node failure, only link-failure. </p>\n\n<p>The architects of SPB also faced this computational problem earlier on during their design phase. SPB&#39;s SPF calculation is way more painful than that of OSPF/ISIS, because instead of doing it once from the perspective of the computing router, a SPB switch has to do all-pair SPF calculations, once for each pair of source-destination in the whole topology. Even though they claim that the all-pair SPFs can be trivially parallelized on multi-core CPUs using B-VIDs as the tree identifiers, I don&#39;t believe SPB has ever been tested on real topology of 1000s of nodes. And there&#39;s a limit to multi-core, as the inter-core bus contention and the LLC become the dominating bottleneck factor. Finally, SPB is fundamentally incapable of doing UCMP because the requirement of LFA conflicts with SPB&#39;s path congruency requirement and RPFC will make sure LFA won&#39;t work. </p>\n\n<p>So even if there are situations that require the use of UCMP, one of which brought up by Pete, I don&#39;t think it&#39;s worth the pain for vendors to come up with a UCMP solution for LS protocols Ivan. This is because Link-state protocols essentially work on a common LSDB of global info, and this centralized model won&#39;t scale to very large DB sizes, just like Openflow has tried and failed. Advanced distance vector protocols handle this way more elegantly. </p>\n\n<p>Come to think of it, from the very beginning, in order to scale LS, their inventors had to resort to areas, basically turning LS protocols into distance-vector ones, inter-area-wise. And RIFT, in order to scale better than existing LS protocols in flood-heavy environments, also has to resort to distance-vector principles :)). BGP, the most scalable routing protocol, is a distance-vector protocol after all. </p>\n\n<p>And yet, protocols like EIGRP often got put down over the years in favor of OSPF:</p>\n\n<p>https://www.networkworld.com/article/2347622/eigrp-vs-ospf.html</p>\n\n<p>https://www.networkworld.com/article/2347735/two-more-perspectives-on-eigrp.html</p>\n\n<p>I feel at some point, you might want to write a detailed post on EIGRP to clarify these points raised by Jeff in the 2 articles, as you&#39;re the EIRGP guy Ivan ;) . I find the last sentence in the 2nd article kind of a hidden admission that deep down, Jeff knows EIRGP happens to be the better one among the two though. </p>\n",
+         "id": "427",
+         "name": " Minh Ha",
+         "pub": "2021-03-01T08:30:28",
+         "type": "comment"
+      },
+      {
+         "date": "01 March 2021 09:03",
+         "html": "<p>Re MPTCP, I think it (somewhat) provides an answer to your long-time quest for a session protocol for TCP Ivan :p.  And while MPCTP indeed has its use, in mobile networks where the RTT can vary big time between Wifi and 4G, MPTCP can suffer from HOL blocking on both sender and receiver side, when one sub-flow has to wait for another carrying earlier packets to arrive, basically out-of-order problem. Also, when the flow size is small and bandwidth is high, MPTCP might not have time to utilize the sub-flows or use them effectively, resulting in similar or even worse latency than vanilla TCP. </p>\n\n<p>In DC scenarios, again results vary. For workloads that make use of long-lived elephant flows, MPTCP can provide throughput benefits. For mice flows, which also account for a lot of traffic in DCs, MPTCP&#39;s setup and scheduling overhead outweighs its benefit, so latency performance can be lower than that of single-flow TCP. Also, for disk-bound workloads, since the network is much faster than the disk access time, using MPTCP again provides no benefit, as the bottleneck lies with the disk system.</p>\n\n<p>OTOH, MPTCP can cause starvation/fairness issues in partition/aggregate workload, like MapReduce, or any kind of many-to-one traffic. This kind of traffic can result in Incast scenarios, and TCP Incast can result in TCP Outcast problem for small flows destined to the same host as big flows.  MPTCP makes Outcast worse because of its multi-flow nature, adding to the total number of competing flows. </p>\n\n<p>I think wrt to DCs, DC-TCP provides a much better solution than MPTCP. It works well; it mitigates Incast and Outcast problems, and it does away with big buffer, improving latency. Practically speaking, DCs already have much smaller RTT latencies than WAN/Internet, so solutions that are not viable on the later can be applied here. I&#39;m referring specifically to per-packet ECMP. Per-packet ECMP provides close to ideal network capacity utilization, at the expense of potential reordering. But since DC links have plenty of capacity, DC networks also have much lower latencies, reordering is less likely (due to lots of bandwidth) and can be tolerable (due to much lower RTTs). Coupling that with DC-TCP which deals efficiently with congestion, and we can have a network that makes the best use of traffic load balancing, all without the need for MPTCP, which can be complex to implement.    </p>\n",
+         "id": "428",
+         "name": " Minh Ha",
+         "pub": "2021-03-01T09:03:28",
+         "type": "comment"
+      },
+      {
+         "date": "01 March 2021 01:39",
+         "html": "Minh ha wrote: &quot;this can be computationally intractable&quot;<br />\n\n<p>It&#39;s not that bad. In LS-protocols, doing UCMP scales with the number of direct neighbors a router has. If a router wants to do UCMP, it has to do one SPF-computation for itself, and one SPF-computation for each neighbor. Note, once you know all the feasible (unequal-cost) paths to all routers (nodes) in the network, computing the ip-prefixes (leafs) needs to be done only once.</p>\n\n<p>I remember discussing this in 1996. The first time I read about a vendor implementing UCMP in IS-IS was in 2015. I think IOS-XR can do it (please correct me if I&#39;m wrong). The fact that it took 20 years to implement UCMP makes me suspect that no customer has ever asked for this feature.</p>\n",
+         "id": "429",
+         "name": "Henk",
+         "pub": "2021-03-01T13:39:51",
+         "type": "comment"
+      },
+      {
+         "date": "03 March 2021 05:47",
+         "html": "<p>Henk, thx a lot for your insight :))! Indeed, your approach is exactly what vanilla LFA uses to calculate backup paths. LFA uses that to calculate the alternate path(s) for one node, by removing the link from the calculating router to the protected node from the LSDB, then perform x number of SPF, x = no of immediate neighbour, so I was initially having trouble visualizing how this approach generalizes to all nodes in a topology. At first, I was thinking of the simplistic way of doing this: do a reverse SPF, once for each and every node (rooted at them), back to the computing router, with the shortest path link toward that node removed, so the result will be the 2nd best path. That&#39;s very computationally intense and won&#39;t scale when the number of nodes get too high. Do you still remember the detailed algorithm Cisco used to generalize this UCMP calculation to every node in the topology? It&#39;d be really great to know.</p>\n\n<p>I also did a quick search, and found out that indeed IOS-XR supports UCMP for both IS-IS and OSPF. So looks like it&#39;s found its use in a niche somewhere :)</p>\n\n<p>https://www.cisco.com/c/en/us/support/docs/ios-nx-os-software/ios-xr-software/213936-understanding-cef-weight-distributions-i.html</p>\n",
+         "id": "433",
+         "name": " Minh Ha",
+         "pub": "2021-03-03T05:47:31",
+         "type": "comment"
+      },
+      {
+         "date": "08 March 2021 03:26",
+         "html": "<p>Sorry for the delayed answer. I don&#39;t know how cisco has implemented UCMP.</p>\n\n<p>Your algorithm (remove one link, redo SPF, find backup-paths) will certainly give alternate paths. However, I don&#39;t think it guarantees those will be loop-free.</p>\n\n<p>You need to understand EIGRP first. And how it guarantees loop-free UCMP. This is used in IPFRR. It is even described in the RFC (rfc5286): https://tools.ietf.org/html/rfc5286#section-3.2</p>\n\n<p>&quot;Distance_opt(N, D) &lt; Distance_opt(N, E) + Distance_opt(E, D)&quot;</p>\n\n<p>In words: if a router N computes routes to D, and it wants to know if E is a loop-free alternate next-hop, it needs to know the distance between E and D.</p>\n\n<p>How does N know the distance beteen E and D? Well, the only way is that N does an SPF-computation with E as the origin and find the shortest path from E to D. Every neighbor of N can have loop-free alternate paths to destinations, so to compute loop-free alternates for all its routes, N needs to do a SPF for every neighbor it has. That&#39;s why UCMP scales with the number of neighbors. I hope this clears it up. Remember, it starts with understanding how EIGRP does UCMP (and why it is so easy and cheap for EIGRP).</p>\n",
+         "id": "449",
+         "name": " Henk",
+         "pub": "2021-03-08T15:26:17",
+         "type": "comment"
+      }
+   ],
+   "count": 8,
+   "type": "post",
+   "url": "2021/02/does-ucmp-make-sense.html"
+}

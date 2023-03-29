@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ron</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6232456948715000206">10 May 2010 18:40</a>
+                <a rel="nofollow" id="c6232456948715000206" href="#6232456948715000206">10 May 2010 18:40</a>
               </span>
             </div>
-            <p class="comment-content">I have a 871w router on 15.0 code. I have a site-to-site VPN using VTI, a site-to-site using a tranditional crypto-map on the WAN interface, and have many zones, including the self zone. <br /><br />Cisco&#39;s documentation explains the self-zone can only inspect TCP, UDP, ICMP traffic. Given this limitation, you need to explicitly permit (not inspect) all other protocols such as OSPF, ESP, etc. Furthermore, you can not inspect some common traffic such as DHCP. I believe the reason for this is because the source or destination in DHCP traffic is 0.0.0.0 majority of the time, and causes problem for inspection.<br /><br />I find it a shame that the IOS Zone Based Firewall can not inspect self-zone traffic much as the PIX and ASA products do. There has been many improvements recently... but the ZBF is still very poor compared to the PIX/ASA line.<br /><br />The zone-based-firewall is a great feature, but for the best approach, I would still recommend both IOS router... AND... a ASA firewall, as each have their own purpose. I can&#39;t wait for the zone-based firewall to be just as good as the ASA is.</p>
+            <div class="comment-content">I have a 871w router on 15.0 code. I have a site-to-site VPN using VTI, a site-to-site using a tranditional crypto-map on the WAN interface, and have many zones, including the self zone. <br /><br />Cisco&#39;s documentation explains the self-zone can only inspect TCP, UDP, ICMP traffic. Given this limitation, you need to explicitly permit (not inspect) all other protocols such as OSPF, ESP, etc. Furthermore, you can not inspect some common traffic such as DHCP. I believe the reason for this is because the source or destination in DHCP traffic is 0.0.0.0 majority of the time, and causes problem for inspection.<br /><br />I find it a shame that the IOS Zone Based Firewall can not inspect self-zone traffic much as the PIX and ASA products do. There has been many improvements recently... but the ZBF is still very poor compared to the PIX/ASA line.<br /><br />The zone-based-firewall is a great feature, but for the best approach, I would still recommend both IOS router... AND... a ASA firewall, as each have their own purpose. I can&#39;t wait for the zone-based firewall to be just as good as the ASA is.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ron</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8794007004344867318">10 May 2010 18:43</a>
+                <a rel="nofollow" id="c8794007004344867318" href="#8794007004344867318">10 May 2010 18:43</a>
               </span>
             </div>
-            <p class="comment-content">One last comment... I found most of my configuration assistance on NIL&#39;s IP Corner and IOS blog.  8-)</p>
+            <div class="comment-content">One last comment... I found most of my configuration assistance on NIL&#39;s IP Corner and IOS blog.  8-)</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Arnold</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6817705672595714854">11 May 2010 16:34</a>
+                <a rel="nofollow" id="c6817705672595714854" href="#6817705672595714854">11 May 2010 16:34</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />Hiope you&#39;re doing well!<br /><br />I&#39;m still facing the same issue &quot;as stated on my email&quot;, when I apply &quot; zone-member security Out&quot; on my Tunnel200 interface, the peer &quot;beuighbor&quot; tunnel  interface switch to down, but the Tunnel interface where in I apply the zone is still up and pingable.<br /><br />Question:<br /><br />1. Should I apply the &quot;IPSec.Out.and.In&quot; ACL on the following interface<br /><br />    interface GigabitEthernet0/0.2362 - this is the interface facing to PE Router<br /><br />Note:<br />1. IPSec / GRE setup is up and running (no issues), error only arise when I apply zone on the Tunnel Interface<br /><br />Below&#39;s the running config on Router<br /><br />interface Tunnel200<br /> description TO.DRC.SITE<br /> bandwidth 2000<br /> ip address a.b.12.21 255.255.255.252<br /> no ip redirects<br /> no ip unreachables<br /> no ip proxy-arp<br /> zone-member security Out<br /> ip tcp adjust-mss 1360<br /> load-interval 30<br /> delay 2000<br /> keepalive 10 3<br /> tunnel source a.b.125.210<br /> tunnel destination a.b.54.86<br />end<br />!<br />interface GigabitEthernet0/0.2362<br /> description &quot;TO.STC.MPLS.VPN&quot;<br /> encapsulation dot1Q 2362<br /> ip address a.b.125.210 255.255.255.252<br /> crypto map cm<br />end<br />!<br /><br />ZONE BASE FIREWALL CONFIGURATION&quot;<br />ip access-list extended IPSec.Out.and.In ==I used this for both IPSec.Out &amp; IPSec.In, still not working <br />   permit esp any any<br />   permit udp any any eq isakmp<br />   permit udp any any eq non500-isakmp<br />   permit icmp any any<br />!<br />ip access-list extended crypt-in-list  == this is the current setup<br /> permit icmp any any<br /> permit esp host a.b.54.86 host a.b.125.210<br /> permit udp host a.b.54.86 host a.b.125.210 eq isakmp<br /> permit udp host a.b.54.86 host a.b.125.210 eq non500-isakmp<br />!<br />ip access-list extended crypt-out-list == == this is the current setup<br /> permit icmp any any<br /> permit esp host a.b.125.210 host a.b.54.86<br /> permit udp host a.b.125.210 host a.b.54.86 eq isakmp<br /> permit udp host a.b.125.210 host a.b.54.86 eq non500-isakmp<br />!<br />class-map type inspect match-any IPSec.Out<br /> match access-group name crypt-out-list<br />!<br />class-map type inspect match-any IPSec.In<br /> match access-group name crypt-in-list<br />!<br />policy-map type inspect PM_IPSec.In<br /> class type inspect IPSec.In<br />  inspect - I changed this to pass, Tunnel Peer still down  <br /> class class-default<br />  pass    <br />!<br />policy-map type inspect PM_IPSec.Out<br /> class type inspect IPSec.Out<br />  inspect -  I changed this to pass, Tunnel Peer still down   <br /> class class-default<br />  pass   <br />!<br />zone security Out<br />zone securiry In<br />!<br />zone-pair security IPSec.Out source self destination Out<br /> service-policy type inspect PM_IPSec.Out<br />zone-pair security IPSec.In source Out destination self<br /> service-policy type inspect PM_IPSec.In<br />!<br /><br />Hope you can help me on this issue.<br /><br />Thank you,<br /><br />Arnold</p>
+            <div class="comment-content">Hi Ivan,<br /><br />Hiope you&#39;re doing well!<br /><br />I&#39;m still facing the same issue &quot;as stated on my email&quot;, when I apply &quot; zone-member security Out&quot; on my Tunnel200 interface, the peer &quot;beuighbor&quot; tunnel  interface switch to down, but the Tunnel interface where in I apply the zone is still up and pingable.<br /><br />Question:<br /><br />1. Should I apply the &quot;IPSec.Out.and.In&quot; ACL on the following interface<br /><br />    interface GigabitEthernet0/0.2362 - this is the interface facing to PE Router<br /><br />Note:<br />1. IPSec / GRE setup is up and running (no issues), error only arise when I apply zone on the Tunnel Interface<br /><br />Below&#39;s the running config on Router<br /><br />interface Tunnel200<br /> description TO.DRC.SITE<br /> bandwidth 2000<br /> ip address a.b.12.21 255.255.255.252<br /> no ip redirects<br /> no ip unreachables<br /> no ip proxy-arp<br /> zone-member security Out<br /> ip tcp adjust-mss 1360<br /> load-interval 30<br /> delay 2000<br /> keepalive 10 3<br /> tunnel source a.b.125.210<br /> tunnel destination a.b.54.86<br />end<br />!<br />interface GigabitEthernet0/0.2362<br /> description &quot;TO.STC.MPLS.VPN&quot;<br /> encapsulation dot1Q 2362<br /> ip address a.b.125.210 255.255.255.252<br /> crypto map cm<br />end<br />!<br /><br />ZONE BASE FIREWALL CONFIGURATION&quot;<br />ip access-list extended IPSec.Out.and.In ==I used this for both IPSec.Out &amp; IPSec.In, still not working <br />   permit esp any any<br />   permit udp any any eq isakmp<br />   permit udp any any eq non500-isakmp<br />   permit icmp any any<br />!<br />ip access-list extended crypt-in-list  == this is the current setup<br /> permit icmp any any<br /> permit esp host a.b.54.86 host a.b.125.210<br /> permit udp host a.b.54.86 host a.b.125.210 eq isakmp<br /> permit udp host a.b.54.86 host a.b.125.210 eq non500-isakmp<br />!<br />ip access-list extended crypt-out-list == == this is the current setup<br /> permit icmp any any<br /> permit esp host a.b.125.210 host a.b.54.86<br /> permit udp host a.b.125.210 host a.b.54.86 eq isakmp<br /> permit udp host a.b.125.210 host a.b.54.86 eq non500-isakmp<br />!<br />class-map type inspect match-any IPSec.Out<br /> match access-group name crypt-out-list<br />!<br />class-map type inspect match-any IPSec.In<br /> match access-group name crypt-in-list<br />!<br />policy-map type inspect PM_IPSec.In<br /> class type inspect IPSec.In<br />  inspect - I changed this to pass, Tunnel Peer still down  <br /> class class-default<br />  pass    <br />!<br />policy-map type inspect PM_IPSec.Out<br /> class type inspect IPSec.Out<br />  inspect -  I changed this to pass, Tunnel Peer still down   <br /> class class-default<br />  pass   <br />!<br />zone security Out<br />zone securiry In<br />!<br />zone-pair security IPSec.Out source self destination Out<br /> service-policy type inspect PM_IPSec.Out<br />zone-pair security IPSec.In source Out destination self<br /> service-policy type inspect PM_IPSec.In<br />!<br /><br />Hope you can help me on this issue.<br /><br />Thank you,<br /><br />Arnold</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5839413436586635510">11 May 2010 20:30</a>
+                <a rel="nofollow" id="c5839413436586635510" href="#5839413436586635510">11 May 2010 20:30</a>
               </span>
             </div>
-            <p class="comment-content">GRE keepalive problems. Read my post on GRE keepalives; very probably you have to allow GRE from Out to Self (possibly also from Self to Out).</p>
+            <div class="comment-content">GRE keepalive problems. Read my post on GRE keepalives; very probably you have to allow GRE from Out to Self (possibly also from Self to Out).</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">patryk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1723910555133613318">04 September 2012 17:02</a>
+                <a rel="nofollow" id="c1723910555133613318" href="#1723910555133613318">04 September 2012 17:02</a>
               </span>
             </div>
-            <p class="comment-content">to me ZFW only  improve security in terms of transit zones [non self]<br />but as soon as you try to secure the self zone especially when terminating vpn connection lets say to cisco VPN clients which are mainly on a dynamic ip, u have no choice but to allow all udp traffic to your router by using access list in pass mode both ways :<br /><br />permit esp any any<br />permit udp any any eq isakmp<br />permit udp any any eq non500-isakmp<br />permit icmp any any <br /><br />its like taking 2 steps forward and 3 steps back, as its does not matter how secure your rooms are if you leave your main door wide open </p>
+            <div class="comment-content">to me ZFW only  improve security in terms of transit zones [non self]<br />but as soon as you try to secure the self zone especially when terminating vpn connection lets say to cisco VPN clients which are mainly on a dynamic ip, u have no choice but to allow all udp traffic to your router by using access list in pass mode both ways :<br /><br />permit esp any any<br />permit udp any any eq isakmp<br />permit udp any any eq non500-isakmp<br />permit icmp any any <br /><br />its like taking 2 steps forward and 3 steps back, as its does not matter how secure your rooms are if you leave your main door wide open </div>
           </div>
         </li>
       </div>

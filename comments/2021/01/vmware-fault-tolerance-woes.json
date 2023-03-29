@@ -1,0 +1,23 @@
+{
+   "comments": [
+      {
+         "date": "19 January 2021 05:39",
+         "html": "<p>Ivan,</p>\n\n<p>all said is true. Where it make sense is SWs that have a strict licensing policy. When you pay per installed server. Not so common today but still are use cases.</p>\n",
+         "id": "349",
+         "name": " ALP",
+         "pub": "2021-01-19T17:39:51",
+         "type": "comment"
+      },
+      {
+         "date": "20 January 2021 08:06",
+         "html": "<p>Hi Ivan, </p>\n\n<p>Thx a lot for the repost! While Vmware FT indeed has its use for cases where hardware failure is a concern, we need to make clear what kind of hardware protection it can provide. FT is meant to provide protection for fail-stop CPU, that is, when the CPU failure hasn&#39;t managed to cause externally visible damage. If the failing CPU has managed to spread its damage to output events, causing say session corruption, FT provides no protection against it.</p>\n\n<p>So yes, even wrt to hardware, it&#39;s always good to know the boundary. This is not nit-picking on the tool, as after all, no man-made product is flawless, -- if someone else claims otherwise, they&#39;re SELLING -- it&#39;s simply to provide a clear view on its capability. </p>\n\n<p>Re Vmotion, the final pause period of freezing the machine and transferring control over to the migrated machine, is strived to be under 1s. Let&#39;s say it&#39;s 300ms, which is quite good. If the server is having a 10GE interface and hosting I/O bound workload, that would potentially translate to more than 300MB of data lost. So yes, the process is inherently lossy. </p>\n\n<p>Speaking of data center technologies like FT and Vmotion, also reminds me of this other issue -- I&#39;m digressing as always :p. Some people have suggested using RDMA to implement checkpoint-based FT alternatives to Vmware FT, to overcome the multi-core obstacle of deterministic-replay approaching, taking advantage of RDMA high performance transfer capability. </p>\n\n<p>Even without this use case, RDMA/RoCE is already being widely used in many DCs these days, esp. big ones like those of hyperscalers, and the use of this technology requires PFC to provide lossless network similar to that of Infiniband. But PFC is well-known for HOL blocking and can also cause cyclic buffer dependency in the fabric, resulting in deadlock. It&#39;s not even a theoretical debate as it&#39;s already happened in MS DCs. </p>\n\n<p>One easy and scalable way to guard against deadlock in PFC-enabled network is to ensure strict adherence to valley-free routing. Violation of VFR can cause CBD resulting in potential deadlock. So for people who think VFR is just for show, they might want to reconsider their position :)). </p>\n",
+         "id": "350",
+         "name": " Minh Ha",
+         "pub": "2021-01-20T08:06:16",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2021/01/vmware-fault-tolerance-woes.html"
+}

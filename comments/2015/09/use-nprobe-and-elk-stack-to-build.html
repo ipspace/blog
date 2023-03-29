@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02571029118821999072" rel="nofollow">Jay Swan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1898786651248796235">06 September 2015 23:53</a>
+                <a rel="nofollow" id="c1898786651248796235" href="#1898786651248796235">06 September 2015 23:53</a>
               </span>
             </div>
-            <p class="comment-content">A few comments:<br /><br />1) Ivan mentioned an in-memory copy for 500GB of data. Due issues with JVM heap size, individual Elasticsearch nodes don&#39;t scale well beyond 64GB of RAM. After reaching 64GB of RAM (with 31GB allocated to the Java heap), you should scale horizontally rather than vertically. It&#39;s possible to run multiple Elasticsearch nodes on one OS instance (e.g., 2 nodes with 64GB each running on one instance of Linux or Windows), but this adds complexity. You can also run multiple 64GB nodes in separate VMs on one hypervisor. In my experience this works fine, but it depends on the use-case. Very large Elasticsearch clusters typically run on bare metal with 64GB RAM per node and a mixture of SSD and spinning disk.<br /><br />2) Elasticsearch has a lot of optimizations built around fast retrieval from disk, and a lot of knobs you can tweak to ensure that the most frequently searched indices live on SSD.<br /><br />3) With respect to the concern about high-volume indexing causing search performance problems: if this is a problem you can use index routing to help by ensuring that data is indexed on nodes with the fastest disk (say SSD in RAID 0), then moved to nodes with spinning disk. If your cluster is search-heavy you could also increase the number of replica shards, which requires more storage but decreases search time.<br /><br />4) With respect to the question about aggregating flow data over time: Ivan is right that you would need to write custom code to do this; you could either do this as a batch job that reads a time slice of data from an index, aggregates it, and writes it to a new index, or you could use so-called &quot;entity-centric indexing&quot; to create indices with different data models at approximately the same time:<br /><br />https://www.elastic.co/videos/entity-centric-indexing-mark-harwood<br /></p>
+            <div class="comment-content">A few comments:<br /><br />1) Ivan mentioned an in-memory copy for 500GB of data. Due issues with JVM heap size, individual Elasticsearch nodes don&#39;t scale well beyond 64GB of RAM. After reaching 64GB of RAM (with 31GB allocated to the Java heap), you should scale horizontally rather than vertically. It&#39;s possible to run multiple Elasticsearch nodes on one OS instance (e.g., 2 nodes with 64GB each running on one instance of Linux or Windows), but this adds complexity. You can also run multiple 64GB nodes in separate VMs on one hypervisor. In my experience this works fine, but it depends on the use-case. Very large Elasticsearch clusters typically run on bare metal with 64GB RAM per node and a mixture of SSD and spinning disk.<br /><br />2) Elasticsearch has a lot of optimizations built around fast retrieval from disk, and a lot of knobs you can tweak to ensure that the most frequently searched indices live on SSD.<br /><br />3) With respect to the concern about high-volume indexing causing search performance problems: if this is a problem you can use index routing to help by ensuring that data is indexed on nodes with the fastest disk (say SSD in RAID 0), then moved to nodes with spinning disk. If your cluster is search-heavy you could also increase the number of replica shards, which requires more storage but decreases search time.<br /><br />4) With respect to the question about aggregating flow data over time: Ivan is right that you would need to write custom code to do this; you could either do this as a batch job that reads a time slice of data from an index, aggregates it, and writes it to a new index, or you could use so-called &quot;entity-centric indexing&quot; to create indices with different data models at approximately the same time:<br /><br />https://www.elastic.co/videos/entity-centric-indexing-mark-harwood<br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02571029118821999072" rel="nofollow">Jay Swan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7855336413014283389">07 September 2015 00:02</a>
+                <a rel="nofollow" id="c7855336413014283389" href="#7855336413014283389">07 September 2015 00:02</a>
               </span>
             </div>
-            <p class="comment-content">One more comment: obviously, if you put multiple ES nodes on the same hypervisor or OS instance, you need to be really careful to make sure that you have anti-affinity rules or some other mechanism to ensure that a hypervisor failure doesn&#39;t destroy ES&#39;s cluster-resiliency model.</p>
+            <div class="comment-content">One more comment: obviously, if you put multiple ES nodes on the same hypervisor or OS instance, you need to be really careful to make sure that you have anti-affinity rules or some other mechanism to ensure that a hypervisor failure doesn&#39;t destroy ES&#39;s cluster-resiliency model.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02571029118821999072" rel="nofollow">Jay Swan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1745430994733704156">08 September 2015 00:54</a>
+                <a rel="nofollow" id="c1745430994733704156" href="#1745430994733704156">08 September 2015 00:54</a>
               </span>
             </div>
-            <p class="comment-content">Finally, I forgot to mention that Logstash has native NetFlow v5 and v9 codecs. It can&#39;t handle high volume (I&#39;m guessing no more than a few hundred flows per second), but it might be worth trying for smaller use cases.</p>
+            <div class="comment-content">Finally, I forgot to mention that Logstash has native NetFlow v5 and v9 codecs. It can&#39;t handle high volume (I&#39;m guessing no more than a few hundred flows per second), but it might be worth trying for smaller use cases.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08003818242962248430" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1648766000131383383">03 November 2015 02:11</a>
+                <a rel="nofollow" id="c1648766000131383383" href="#1648766000131383383">03 November 2015 02:11</a>
               </span>
             </div>
-            <p class="comment-content">There&#39;s a SaaS solution for this problem that is way easier than setting up your own ELK stack--http://www.kentik.com.</p>
+            <div class="comment-content">There&#39;s a SaaS solution for this problem that is way easier than setting up your own ELK stack--http://www.kentik.com.</div>
           </div>
         </li>
       </div>

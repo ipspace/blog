@@ -1,0 +1,125 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="967">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c967" href="#967">14 January 2022 06:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This topic is of crucial engineering importance, and advanced as it is, it&#39;s so fundamental to router architecture I don&#39;t think we should label it the network equivalent of Angel on a pin, or nerdy-fun variety Ivan ;) . IMO, anyone who calls themselves network engineer, needs a at least a passing familiar with these kinds of topic in general, and THIS ONE in particular. And since you belong in the top-tier of Networking experts, it&#39;s only natural you&#39;d get interested in this area. </p>
+
+<p>The feature described in the Juniper doc pointed to by Blake isn&#39;t a nerd knob. It&#39;s a fundamental part of Hierarchical FIB. What they describe in the doc is a simple case. It can get more complex when we involve MPLS VPN or EVPN, which in that case is called Chained Composite Next Hop in Junos, and it can have between 5 and 6 levels of nested lookups before you get to the outgoing direct interface, depending on whether you have port channel enabled or not. </p>
+
+<p>IOS-XR also has similar FIB structure, starting from VRF prefix -&gt; label -&gt; BGP protocol next hop -&gt; IGP next hop -&gt; Port channel -&gt; OIF, give or take one for two levels depending on the feature(s) one&#39;s using.</p>
+
+<p>That&#39;s why the more features you turn on, the more hardware is needed, the more heat is produced, the bigger the power bill gets etc etc. In a word, complexity explosion. And that&#39;s why engineering a high-end router is very, very difficult, as mentioned by Tony P last year. The notion that throwing money at a problem is enough to solve it, and so deep-pocket Big Tech like MS, Google, Amazon, will hold great advantage if they decide to create a carrier-class router, is one big misconception. Take MS: they can&#39;t even make a perfect OS or any software product for that matter, with their endless resources, and their research on topological material has been a total failure. </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="969">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c969" href="#969">14 January 2022 09:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>As always, thanks for an insightful comment!</p>
+
+<p>&gt; It can get more complex when we involve MPLS VPN or EVPN, which in that case is called Chained Composite Next Hop in Junos, and it can have between 5 and 6 levels of nested lookups before you get to the outgoing direct interface</p>
+
+<p>Well, we had something like that &quot;forever&quot;. The only question is how many levels of indirection can be copied into the hierarchical FIB, which obviously depends on the underlying hardware (MX would be different than QFX10K or QFX5K). Links to relevant documents would be highly appreciated.</p>
+
+<p>FWIW, this draft includes an interesting discussion of flattening the FIB hierarchy: https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-bgp-pic-17</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="971">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c971" href="#971">18 January 2022 09:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Re the ietf doc, in section 2.1.1 they mentioned:</p>
+
+<p>&quot;An alternative method consists in &quot;flattening&quot; the dependencies when
+   programming the BGP destinations into HW FIB resulting in
+   potentially eliminating both the BGP Path-List and IGP Path-List
+   consultation. Such an approach decreases the number of memory
+   lookups per forwarding operation at the expense of HW FIB memory
+   increase (flattening means less sharing thereby less duplication),
+   loss of ECMP properties (flattening means less pathlist entropy) and
+   loss of BGP-PIC properties.&quot;</p>
+
+<p>Yes, that&#39;s classic engineering trade-off, similar to what I put in the 2020 comment, as increasing the number of lookup per packet will increase fowarding delay, pps performance, and increase heat. This is an example of the ugliness of low-level complexity invisible to the software guys. They can&#39;t just keep inventing kludges and be na&iuml;ve that the hardware will just cope. That&#39;s why it&#39;s best to keep the features to a minimum, just like Bruce Lee&#39;s motto: the height of cultivation always runs through simplicity ;). </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="970">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c970" href="#970">18 January 2022 09:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Sorry for the late reply Ivan, only saw your reply just now. Yes, we went thru this discussion back in late 2020, and I linked to one of the Cisco docs describing hFIB in my comment here:</p>
+
+<p>https://blog.ipspace.net/2020/11/fast-failover-without-lfa-frr.html#224</p>
+
+<p>Keep in mind that in a hFIB, TCAM only appears in the first level of of memory. The rest is SRAM as they all seem to involve pointers to data structures. </p>
+
+<p>As for how many levels of indirection, I&#39;d say this much (as mentioned in the Cisco doc) is about as far as one can go. Manufacturability is a big issue, because as you include more hardware, you have to increase the wriring, which increases the layers of the PCB, making it much more time-consuming to design and test, and delay time to to market. </p>
+
+<p>Heat dissipation also becomes a big problem then, as anyone who has ever entered a DC and listened to rumbling and screeching of these devices can attest. More complicated hardware jammed into that limited space which is a router&#39;s enclosure, and the air flow may no longer be smooth, it can get turbulent. At that stage, laminar flow of Fluid Dynamics can no longer model the whole situation of heat flow, and turbulence will have to be used. But despite way more than a hundred years of intensive study, turbulence is not well understood because it&#39;s nonlinear and chaotic. So while it&#39;s all fun game to design a router on paper and talk about blue-sky features in a router OS, at the end of the day it means nothing if it can&#39;t be realized in hardware. And that&#39;s why engineering a high-end router is a very difficult task.    </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

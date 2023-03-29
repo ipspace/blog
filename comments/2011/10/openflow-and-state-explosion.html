@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Matthew Stone</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1869745297974766453">24 October 2011 15:32</a>
+                <a rel="nofollow" id="c1869745297974766453" href="#1869745297974766453">24 October 2011 15:32</a>
               </span>
             </div>
-            <p class="comment-content">Your level of insight is always impressive. I&#39;m curious to what you think OpenFlow&#39;s (Or SDN in general) role will be in the future of networking.</p>
+            <div class="comment-content">Your level of insight is always impressive. I&#39;m curious to what you think OpenFlow&#39;s (Or SDN in general) role will be in the future of networking.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ryan Malayter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4424185137847322356">24 October 2011 15:41</a>
+                <a rel="nofollow" id="c4424185137847322356" href="#4424185137847322356">24 October 2011 15:41</a>
               </span>
             </div>
-            <p class="comment-content">You don&#39;t need to keep any state at all in the load balancing tier. The simplest way to do this is to use a consistent hashing scheme (or even outright identifiers) instead of recording per-flow state. This is of course easiest at layer 7 with HTTP cookies, but can also be done at layers 3-4. We&#39;ve been running our SaaS application like this for years, with identically-configure load balancers using the session cookies to send users to the same back-ends. Nginx is an awesome bit of code.<br /><br />Using anycast with layer-3 ECMP and source IP addresses as the hash key would probably be adequate for most services (although you have to watch out for clients that change addresses and make sure your backend application can handle them properly). Again, keeping as much state as possible (or at least a session identifier) on the client at Layer 7 can make this scale. No OpenFlow needed. But using anycast seems unnecessarily complicated - multiple stateless scale-out load balancers with DNS round-robin is a simpler and time-proven architecture.</p>
+            <div class="comment-content">You don&#39;t need to keep any state at all in the load balancing tier. The simplest way to do this is to use a consistent hashing scheme (or even outright identifiers) instead of recording per-flow state. This is of course easiest at layer 7 with HTTP cookies, but can also be done at layers 3-4. We&#39;ve been running our SaaS application like this for years, with identically-configure load balancers using the session cookies to send users to the same back-ends. Nginx is an awesome bit of code.<br /><br />Using anycast with layer-3 ECMP and source IP addresses as the hash key would probably be adequate for most services (although you have to watch out for clients that change addresses and make sure your backend application can handle them properly). Again, keeping as much state as possible (or at least a session identifier) on the client at Layer 7 can make this scale. No OpenFlow needed. But using anycast seems unnecessarily complicated - multiple stateless scale-out load balancers with DNS round-robin is a simpler and time-proven architecture.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#860246143204944334">24 October 2011 16:18</a>
+                <a rel="nofollow" id="c860246143204944334" href="#860246143204944334">24 October 2011 16:18</a>
               </span>
             </div>
-            <p class="comment-content">Ryan, there&#39;s the stickiness state (which you can push to the client if you can insert cookies in the HTTP session and the client accepts them) and the session state (for active TCP sessions). <br /><br />Cookies can&#39;t help you with the session state; the only way to get away from the session state is to load balance based on source IP address hash, but that does seem a bit risky. Are you aware of any load balancers that are truly stateless (i.e. no active TCP session state)?<br /><br />As for anycast, it&#39;s one of those &quot;you love them or you hate them&quot; architectures. Some people have got it working, love it and deride any other (DNS-based) solution.</p>
+            <div class="comment-content">Ryan, there&#39;s the stickiness state (which you can push to the client if you can insert cookies in the HTTP session and the client accepts them) and the session state (for active TCP sessions). <br /><br />Cookies can&#39;t help you with the session state; the only way to get away from the session state is to load balance based on source IP address hash, but that does seem a bit risky. Are you aware of any load balancers that are truly stateless (i.e. no active TCP session state)?<br /><br />As for anycast, it&#39;s one of those &quot;you love them or you hate them&quot; architectures. Some people have got it working, love it and deride any other (DNS-based) solution.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5315667639130292296">24 October 2011 16:20</a>
+                <a rel="nofollow" id="c5315667639130292296" href="#5315667639130292296">24 October 2011 16:20</a>
               </span>
             </div>
-            <p class="comment-content">I see perfect use cases at the network edge (virtualized networking, access points), not sure about the network core ... that&#39;s one of the reasons Im so excited to be part of the OpenFlow symposium on Wednesday.</p>
+            <div class="comment-content">I see perfect use cases at the network edge (virtualized networking, access points), not sure about the network core ... that&#39;s one of the reasons Im so excited to be part of the OpenFlow symposium on Wednesday.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">jsicuran</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2284307596543989138">25 October 2011 04:31</a>
+                <a rel="nofollow" id="c2284307596543989138" href="#2284307596543989138">25 October 2011 04:31</a>
               </span>
             </div>
-            <p class="comment-content">Ivan I agree with the insights and peeling some of the onion layers on OF I just don&#39;t see it as this great panacea. It has it uses and the &quot;wireless controller/split mac&quot; type of analogy of it fits at times. The goal of it to provide the intel. to &quot;commodity&quot; hardware and then just control it all from one virtual place is and slice and dice your network according to needs is ambitious. The protocols and their relevant states involved to centralize everything is daunting enough, not to mention the FSMs at the asic level etc. Bringing all that up to be manipulated in a NOC is SNA like.<br />Beside I am still of the &quot;intelligence in the packet/PHB&quot; camp.  <br /><br />You may be getting the folks at Big Switch Networks nervous ;)<br /><br />Regards..</p>
+            <div class="comment-content">Ivan I agree with the insights and peeling some of the onion layers on OF I just don&#39;t see it as this great panacea. It has it uses and the &quot;wireless controller/split mac&quot; type of analogy of it fits at times. The goal of it to provide the intel. to &quot;commodity&quot; hardware and then just control it all from one virtual place is and slice and dice your network according to needs is ambitious. The protocols and their relevant states involved to centralize everything is daunting enough, not to mention the FSMs at the asic level etc. Bringing all that up to be manipulated in a NOC is SNA like.<br />Beside I am still of the &quot;intelligence in the packet/PHB&quot; camp.  <br /><br />You may be getting the folks at Big Switch Networks nervous ;)<br /><br />Regards..</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Glen Turner</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1415552950863269248">25 October 2011 04:41</a>
+                <a rel="nofollow" id="c1415552950863269248" href="#1415552950863269248">25 October 2011 04:41</a>
               </span>
             </div>
-            <p class="comment-content">Just as you can design bad applications, OpenFlow opens the door to bad control plane designs too. In the past control plane applications have been reviewed by IETF or IEEE before substantial deployment. I imagine we&#39;ll see an enterprise network burned by a poor OpenFlow application in much the same way as we see enterprises burned today by poor IT applications.<br /><br />You can see it now: &quot;FooApp 2.24 requires FooFlow 1.0 to be installed on the enterprise&#39;s routers&quot;. FooFlow will do something trivial, like compensate for FooApps poor content caching, and just like the rest of FooApp the OpenFlow component will be so badly written it runs wild every now and again.<br /><br />I do look forward to good OpenFlow applications. For example, integrating a SIP Session Border Controller into an ISP network is a bit of a nightmare at the moment. An architecture with a SBC making the policy choices and tweaking flow admission control at the network edge seems obvious.</p>
+            <div class="comment-content">Just as you can design bad applications, OpenFlow opens the door to bad control plane designs too. In the past control plane applications have been reviewed by IETF or IEEE before substantial deployment. I imagine we&#39;ll see an enterprise network burned by a poor OpenFlow application in much the same way as we see enterprises burned today by poor IT applications.<br /><br />You can see it now: &quot;FooApp 2.24 requires FooFlow 1.0 to be installed on the enterprise&#39;s routers&quot;. FooFlow will do something trivial, like compensate for FooApps poor content caching, and just like the rest of FooApp the OpenFlow component will be so badly written it runs wild every now and again.<br /><br />I do look forward to good OpenFlow applications. For example, integrating a SIP Session Border Controller into an ISP network is a bit of a nightmare at the moment. An architecture with a SBC making the policy choices and tweaking flow admission control at the network edge seems obvious.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#698373993403203511">25 October 2011 18:55</a>
+                <a rel="nofollow" id="c698373993403203511" href="#698373993403203511">25 October 2011 18:55</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, its important to understand that for the big cloud guys like James Hamilton, its all about commoditizing the hardware infrastructure to lower costs and increase flexibility.  The load balancer is just another expensive, proprietary &quot;vertically integrated stack&quot; to dismantle.<br />Insightful, thought provoking post, as always.<br /><br />Cheers,<br />Brad</p>
+            <div class="comment-content">Ivan, its important to understand that for the big cloud guys like James Hamilton, its all about commoditizing the hardware infrastructure to lower costs and increase flexibility.  The load balancer is just another expensive, proprietary &quot;vertically integrated stack&quot; to dismantle.<br />Insightful, thought provoking post, as always.<br /><br />Cheers,<br />Brad</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Sarwar Raza</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8181237474950814477">25 October 2011 19:29</a>
+                <a rel="nofollow" id="c8181237474950814477" href="#8181237474950814477">25 October 2011 19:29</a>
               </span>
             </div>
-            <p class="comment-content">Great post, as always.<br /><br />One of my observations from attending the Open Networking Summit last week was along similar lines: a lot of the use cases, and even academic studies around SDN/Openflow are less &#39;killer app&#39; (or even headed that way) than simply re-implementing in most cases, and hopefully improving existing ways of solving/configuring network problems. There are several companies that are claiming that they have managed to get their hands around the state &#39;explosion&#39; problem, but I suspect their focus on narrow use-cases makes this a much simpler problem to solve than for the general case. Hoping I&#39;m wrong.<br /><br />I do see the promise of SDN, especially in the movement that goes from &#39;configuring&#39; your network to &#39;programming&#39; your network. One of the most oft repeated questions I hear is whether we are ready for or need a Dev-Ops movement in networking. Potentially exciting and simultaneously scary thought - we can count on some # of lazy/inept Openflow apps. to make it into production.</p>
+            <div class="comment-content">Great post, as always.<br /><br />One of my observations from attending the Open Networking Summit last week was along similar lines: a lot of the use cases, and even academic studies around SDN/Openflow are less &#39;killer app&#39; (or even headed that way) than simply re-implementing in most cases, and hopefully improving existing ways of solving/configuring network problems. There are several companies that are claiming that they have managed to get their hands around the state &#39;explosion&#39; problem, but I suspect their focus on narrow use-cases makes this a much simpler problem to solve than for the general case. Hoping I&#39;m wrong.<br /><br />I do see the promise of SDN, especially in the movement that goes from &#39;configuring&#39; your network to &#39;programming&#39; your network. One of the most oft repeated questions I hear is whether we are ready for or need a Dev-Ops movement in networking. Potentially exciting and simultaneously scary thought - we can count on some # of lazy/inept Openflow apps. to make it into production.</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Sarwar Raza</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3529140852858462162">25 October 2011 19:30</a>
+                <a rel="nofollow" id="c3529140852858462162" href="#3529140852858462162">25 October 2011 19:30</a>
               </span>
             </div>
-            <p class="comment-content">Oops - Caveat - I work for an equipment vendor (HP Networking), but the views expressed are solely mine, blah blah</p>
+            <div class="comment-content">Oops - Caveat - I work for an equipment vendor (HP Networking), but the views expressed are solely mine, blah blah</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ryan Malayter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#641665864659409103">25 October 2011 19:56</a>
+                <a rel="nofollow" id="c641665864659409103" href="#641665864659409103">25 October 2011 19:56</a>
               </span>
             </div>
-            <p class="comment-content">Yeah, well, TCP state isn&#39;t exactly what I was talking about; it&#39;s the application state that truly matters (and should be decoupled from the transport-layer session in a good application design).<br /><br />Anyway, I do believe there are some truly &quot;stateless&quot; load balancers, that is, they maintain no per-flow map of source-to-destination. The widely used and open-source HAproxy has a stateless layer-3 source hashing mode. I believe there are multiple commercial load balancing appliances that have HAproxy at their core. There are also I believe other commercial solutions with &quot;direct server return&quot; that operate at layer 3 in a hash-based mode.<br /><br />I agree that load balancers operating at layer 4 or higher must maintain TCP session state for at least the sessions they are currently handling. But that is fine in a scale-out scenario, as the state isn&#39;t shared (and likely remains in CPU cache).<br /><br />Replicating TCP session state to another HA peer device so you can &quot;heal&quot; TCP sessions on failure simply will never scale as you mentioned. That&#39;s why sane application layer protocols and user-agents have a sensible disconnect/retry/backoff behavior available. HTTP and browsers make this easy with round-robin DNS, but even Microsoft SQL Server&#39;s TDS protocol has automatic disconnect/retry available against a pool of IPs. <br /><br />If you just can&#39;t deal with failover at the application layer, F5 is glad to sell you a pair of $3k servers for $100k so you can do layer-4 load balancing with HA. Just make sure you test all the failure modes thoroughly in concert with with your applications and hardware first.</p>
+            <div class="comment-content">Yeah, well, TCP state isn&#39;t exactly what I was talking about; it&#39;s the application state that truly matters (and should be decoupled from the transport-layer session in a good application design).<br /><br />Anyway, I do believe there are some truly &quot;stateless&quot; load balancers, that is, they maintain no per-flow map of source-to-destination. The widely used and open-source HAproxy has a stateless layer-3 source hashing mode. I believe there are multiple commercial load balancing appliances that have HAproxy at their core. There are also I believe other commercial solutions with &quot;direct server return&quot; that operate at layer 3 in a hash-based mode.<br /><br />I agree that load balancers operating at layer 4 or higher must maintain TCP session state for at least the sessions they are currently handling. But that is fine in a scale-out scenario, as the state isn&#39;t shared (and likely remains in CPU cache).<br /><br />Replicating TCP session state to another HA peer device so you can &quot;heal&quot; TCP sessions on failure simply will never scale as you mentioned. That&#39;s why sane application layer protocols and user-agents have a sensible disconnect/retry/backoff behavior available. HTTP and browsers make this easy with round-robin DNS, but even Microsoft SQL Server&#39;s TDS protocol has automatic disconnect/retry available against a pool of IPs. <br /><br />If you just can&#39;t deal with failover at the application layer, F5 is glad to sell you a pair of $3k servers for $100k so you can do layer-4 load balancing with HA. Just make sure you test all the failure modes thoroughly in concert with with your applications and hardware first.</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Michal Zawirski</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2709422049660486702">25 October 2011 23:52</a>
+                <a rel="nofollow" id="c2709422049660486702" href="#2709422049660486702">25 October 2011 23:52</a>
               </span>
             </div>
-            <p class="comment-content">+1 on your conclusions on scalability and resilience: these are my main concerns about SDN in general, although it looks like there are some smart guys out there working on this class of problems (eg. http://www.usenix.org/event/osdi10/tech/full_papers/Koponen.pdf - Onix, unrelated to loadbalancing).<br /><br />I’m having a hard time believing in the OpenFlow deployment model with the controller programming the network per-flow.  it must introduce pretty bad setup latencies, not suitable for multi gigabit datacenter networks (controller-to-switch RTT, switching ASIC update time, controller performance, etc).  I’ve yet to be convinced that it can be done in real time.<br /><br />the demo itself is rather unconvincing to anyone serious about loadbalancing:  not only they ran a test with a very low flow setup rate (~1 flow/s compared to thousands), but also reduced the problem to layer 4 load balancing, while in reality you often need L7 with session tracking, SSL offload, etc.  non-naive implementation of that with OF (whatever future revision) is close to impossible, although could be an interesting (&amp; theoretical) brain exercise.</p>
+            <div class="comment-content">+1 on your conclusions on scalability and resilience: these are my main concerns about SDN in general, although it looks like there are some smart guys out there working on this class of problems (eg. http://www.usenix.org/event/osdi10/tech/full_papers/Koponen.pdf - Onix, unrelated to loadbalancing).<br /><br />I’m having a hard time believing in the OpenFlow deployment model with the controller programming the network per-flow.  it must introduce pretty bad setup latencies, not suitable for multi gigabit datacenter networks (controller-to-switch RTT, switching ASIC update time, controller performance, etc).  I’ve yet to be convinced that it can be done in real time.<br /><br />the demo itself is rather unconvincing to anyone serious about loadbalancing:  not only they ran a test with a very low flow setup rate (~1 flow/s compared to thousands), but also reduced the problem to layer 4 load balancing, while in reality you often need L7 with session tracking, SSL offload, etc.  non-naive implementation of that with OF (whatever future revision) is close to impossible, although could be an interesting (&amp; theoretical) brain exercise.</div>
           </div>
         </li>
       </div>

@@ -1,394 +1,402 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "31 October 2017 13:52",
-          "html": "Is anyone else uncomfortable with making ISE the core of their wired campus LANs (trustsec)?  I&#39;ve seen ISE DB meltdowns and it isn&#39;t pretty.",
-          "id": "2959797864034189397",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Iain",
-          "profile": "https://www.blogger.com/profile/15633928581737520447",
-          "pub": "2017-10-31T13:52:25.087+01:00",
-          "ref": "3011416291581010114",
-          "type": "comment"
-        },
-        {
-          "date": "19 September 2018 20:46",
-          "html": "What kind of backup/restore functionality is available in ISE?",
-          "id": "334361390841716594",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/04793261029401954829",
-          "pub": "2018-09-19T20:46:11.606+02:00",
-          "ref": "3011416291581010114",
-          "type": "comment"
-        }
-      ],
-      "date": "11 September 2017 10:31",
-      "html": "Actually for security separation Cisco has trustsec. <br />And for wireless there is a capwap tunnel between the AP and the WLC. <br />The main issues (at least from what I see at my customers) is 1 they are used to work in L2 environment and are afraid from L3 and routing protocols.<br />The other issue is FW clusters, if you have a FW cluster most of them demand L2",
-      "id": "3011416291581010114",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Omer Shtivi",
-      "profile": null,
-      "pub": "2017-09-11T10:31:01.072+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "11 September 2017 15:55",
-          "html": "I agree, that maybe LISP is more &quot;small access&quot; edge device friendly.<br />Let&#39;s assume a Catalyst 3850 switch, which is a potential Campus Fabric edge device. This device supports 24,000 IPv4 routes according to the data sheet. The &quot;SD-Access&quot; scale is 8k IPv4 routes and 16k IPv4 host entries. So maybe this is the reason to use LISP to maintain a conversional routing table at the border nodes.",
-          "id": "4063866768002338795",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/14579645045631302258",
-          "pub": "2017-09-11T15:55:01.925+02:00",
-          "ref": "1077546115447415490",
-          "type": "comment"
-        },
-        {
-          "date": "12 September 2017 01:11",
-          "html": "I was thinking about this issue, but it&#39;s just a question of RIB-to-FIB filtering (aka conversational learning) that&#39;s been done with various L2 technologies (and now with EVPN as well IIRC). No need to use LISP for this.",
-          "id": "6156299490343851038",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2017-09-12T01:11:10.279+02:00",
-          "ref": "1077546115447415490",
-          "type": "comment"
-        }
-      ],
-      "date": "11 September 2017 12:26",
-      "html": "Maybe there are some use-cases, that are more organizationally driven than technically driven. And I think it&#39;s not only about large L2 domains.<br />One example would be a user, which moves from &quot;A&quot; to &quot;B&quot; within the campus. &quot;B&quot; is assigned to another distribution layer as &quot;A&quot; -&gt; user gets a new IP address.<br /><br />Assuming this user or device has unique firewall rules, pointing to the old address, a few applications won&#39;t work after the move.<br />The reactive action is to create a new DHCP reservation for &quot;B&quot; and alter the firewall object. Depending on the IT agility this could take hours or days :)<br /><br />Proactive solutions could be:<br />- Change your firewall and/or rule/object design<br />- Use some identity based FW feature &gt; use names instead of IPs<br />- Keep the IP through the campus.<br />- Enhance the moving organizational process to somehow alter the FW object before the actual move<br /><br />That&#39;s just my thoughts about a potential, not completely useless use-case. <br /><br />Why they use LISP instead of EVPN for the control plane ... no clue...",
-      "id": "1077546115447415490",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/14579645045631302258",
-      "pub": "2017-09-11T12:26:50.061+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "19 September 2017 04:58",
-          "html": "I agree with you but one of the key use cases emerging in campus environment is network segmentation based on the device posture to support IoT, BYOD, Lab systems etc. how do you achieve it without NAC/and of any fabric technology",
-          "id": "7943630729665252869",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2017-09-19T04:58:12.711+02:00",
-          "ref": "6195173564172435489",
-          "type": "comment"
-        }
-      ],
-      "date": "11 September 2017 15:24",
-      "html": "I have a blog post percolating about this topic, but this may be a better forum.<br /><br />We have long passed the point of diminishing returns in the campus LAN. Speeds and feeds stopped being a reason to upgrade campus LAN switches when we reached gigabit to the desktop and N x 1gb (or N x 10gb) to the aggregation/core. This is terrible for Cisco&#39;s (and other networkers) business, since the lifespan of campus gear went from 3 years in the early 2000s to 10-15 years now. Even wireless has hit a point of &#39;good enough&#39;; if we never got a faster wireless standard than 802.11ac we could make things work indefinitely by creating smaller, lower-powered cells. Sure, we can find corner use cases that require more speed, but for 95+% of users, we have enough.<br /><br />So how do networking vendors rectify this? It invents &#39;compelling&#39; reasons to upgrade that are not based on speeds/feeds. Many of these are dubious, and several are downright harmful to business success. I leave it to the reader to name your favorite unneeded campus technology (mine is/was NAC). These solutions are required by a limited audience, but that will not stop networking vendors from attempting to force them on all customers. It is our job as network architects/managers/engineers to continually ask the question &quot;Why does my business need this technology?&quot;.<br /><br />Jeremy<br />",
-      "id": "6195173564172435489",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Jeremy Filliben",
-      "profile": "https://www.blogger.com/profile/07558728700926286196",
-      "pub": "2017-09-11T15:24:51.445+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "11 September 2017 16:35",
-      "html": "Do remember that Cisco is made up of several business unit and each want to show that they are innovative. It could be for this reason that the enterprise networking BU decided to go a different route to VXLAN with EVPN. As some have mentioned, LISP uses a pull mechanism(DNS method requesting a resolution) and hence is more economical for TCAM space. LISP also work as inter subnet or Intra subnet. Hence flexibility to cater for different use cases. Unfortunately there are poorly designed apps which seems to only work in a broadcast domain this can be resolved using broadcast over unicast but no one bothers. Also too many IT orgs are too bugged down/lazy to re IP entire campus and cause down times.",
-      "id": "1522007008696117956",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/11711343779548639913",
-      "pub": "2017-09-11T16:35:08.384+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "11 September 2017 19:15",
-      "html": "LISP excels in availability and mobility at the same time. It is not a L2 solution. You would normally use it as a L3 connectivity service. Our company has compared a lot of technologies for the requirements of the Air Traffic Management industry and only LISP satisfies all the requirements. We promote it for ICAO as the preferred technology for the Future Communications Infrastructure.<br />The reliance on a DNS like resolution is not bad. It is a proven solution for the telecommunications industry. Just look at ENUM/DNS used all over the place in SIP based voice routing. With the advent of VoLTE, it will be THE solution. LISP is just applying something similar for packet routing. <br />However, not everyone likes the dependence on a centralized resolution service. <br />We will see if it will succeed or not.<br />Please, be aware that it is not a pure Cisco technology. HPE fully supports it. Huawei also invests a lot into LISP. For example, Huawei is developing the missing LISP pieces into the ONOS network. So probably, they would like to use in telecommunications networks, not just in the enterprise... :-) ",
-      "id": "3262072065962317143",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Bela",
-      "profile": "https://www.blogger.com/profile/07985346761439657130",
-      "pub": "2017-09-11T19:15:46.039+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "11 September 2017 19:18",
-      "html": "By the way, LISP is now on the track to become a Porposed Standard at IETF.<br />https://datatracker.ietf.org/wg/lisp/about/<br />",
-      "id": "1233297020587652648",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Bela",
-      "profile": "https://www.blogger.com/profile/07985346761439657130",
-      "pub": "2017-09-11T19:18:23.127+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "11 September 2017 19:22",
-      "html": "The locator and ID seperation problem is also nothing new. The telephony networks have suffered by this problem, too. The big difference is that the call setup is only done once in a session, so you may have seconds to do all the resolution lookups including number portability and intelligent networks. <br />NFV is nothing else then the re-discovery of the SS7 IN or the SIP/IMS/iFC mechanism. Just for packkets instead of SIP sessions. LISP will be used together with NFV in the future, further extending this long established idea... There is nothing really new under the sun, just new clothes for the same old thing... :-) <br />",
-      "id": "6494252439536038509",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Bela",
-      "profile": "https://www.blogger.com/profile/07985346761439657130",
-      "pub": "2017-09-11T19:22:54.828+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "11 September 2017 19:32",
-      "html": "Nothing is wrong with L2 Ethernet framing, if you remove spanning tree and use IS-IS as the underlying routing protocol. Then we are back to a next-generation DECnet. :-)<br />However, Cisco for some reason rejected both TRILL and the IEEE IS-IS router Ethernet,<br />Ethernet addresses do not have a locator component, but the IS-IS layer could add this.<br />The real problem with Ethernet is the cut-through switching, since it will result in a free frame error propagation. <br />There are lot of technologies, and you could not decide which one will stay with us based on technical merits. The business case will decide. There is nothing wrong with SDH, actually it is much better for a lot of applications, and it had SDN for a long time already. But if there are very low production volumes, it is becoming so expensive, that it will die out... <br />Remember VHS winning againts the others? But now we have H.26x videos, or real-time streaming... :-) <br />",
-      "id": "4174926935529027052",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Bela",
-      "profile": "https://www.blogger.com/profile/07985346761439657130",
-      "pub": "2017-09-11T19:32:01.209+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "11 September 2017 20:01",
-      "html": "Why is Cisco Pushing LISP in Enterprise Campus? From the business perspective because it is sticky to Cisco. From the technical standpoint, as Bela wrote, a purpose of LISP is not to extend L2 altough it can be used as a control plane for a VXLAN based overlay. LISP offers a higher scalability and traffic optimization than BGP. Both can be complex but today the management and orchestration hides the complexity. From the user&#39;s perspective it is less and less important what is behind the curtain. So SDA can bring LISP a second life. :)",
-      "id": "8046227938342131934",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Piotr Jablonski",
-      "profile": null,
-      "pub": "2017-09-11T20:01:34.523+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "12 September 2017 00:26",
-          "html": "Can you share more details?",
-          "id": "222927445282316415",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Dan Shechter Gelles",
-          "profile": "https://www.blogger.com/profile/18175247280485392482",
-          "pub": "2017-09-12T00:26:18.599+02:00",
-          "ref": "3882841029873060812",
-          "type": "comment"
-        },
-        {
-          "date": "13 October 2017 14:06",
-          "html": "I&#39;m curious about this as well.  We&#39;ve had LISP in production on our WAN for almost six years now and have been very happy with it. ",
-          "id": "2935642985274034093",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2017-10-13T14:06:39.939+02:00",
-          "ref": "3882841029873060812",
-          "type": "comment"
-        }
-      ],
-      "date": "11 September 2017 20:33",
-      "html": "On this subject, I can offer a good feedback of 2 years of LISP in production (for VRF transport over WAN). Let&#39;s just say that MPLSoDMPVN is back on the table.",
-      "id": "3882841029873060812",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "jmanteau",
-      "profile": "https://www.blogger.com/profile/15082676715838447297",
-      "pub": "2017-09-11T20:33:36.303+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "12 September 2017 04:47",
-      "html": "&quot;I can\u2019t possibly grasp why they\u2019d do that apart from having a solution that has been searching for a problem to solve for years.&quot;<br /><br />I think it comes down to the engineering team that takes on the product development. The issues with &quot;go with what you know&quot; is a big problem in all engineering companies. Architects and Engineering leaders don&#39;t put themselves at risk by looking at what is best, they use what the know will work regardless of if it&#39;s fit for purpose or passes any sort of Commercial, Strategic or Architectural governance.<br /><br />A better question to ask is why Cisco&#39;s CTO office does not enforce standards or governance in their RnD projects where there&#39;s no competitive advantage to be gained.<br /><br />They continue to pay lip service to open source engagement, why is that?<br />",
-      "id": "4915470667589140610",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/04966717029583402871",
-      "pub": "2017-09-12T04:47:23.639+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "12 September 2017 15:26",
-      "html": "Cisco has invested heavily in LISP and is looking for a ROI, which is to be expected.  Having just gone through the whole SD Access bootcamp I am just confused!!  Abstraction is mean&#39;t to introduce simplicity, however, under the hood, the whole SD access piece is a minefield of technologies that a really good CCIE would struggle to debug if things went south.  There are way too many moving parts being masked by a fancy looking GUI.  Good luck with whoever is an early adopter with that solution.",
-      "id": "7359284112108811353",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/12568448441755008432",
-      "pub": "2017-09-12T15:26:17.401+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "13 September 2017 12:27",
-          "html": "Hi Victor,<br /><br />I would also be interested in this document if it&#39;s possible for you to share. Do you have any document that discusses reactive control plane vs proactive control plane? <br /><br />Interested to hear your thoughts on complexity of LISP, cache size, and failure modes etc.",
-          "id": "1734622917945521427",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Daniel Dib",
-          "profile": "https://www.blogger.com/profile/05348201047870981278",
-          "pub": "2017-09-13T12:27:22.540+02:00",
-          "ref": "5200837098827991481",
-          "type": "comment"
-        },
-        {
-          "date": "13 September 2017 20:42",
-          "html": "Here is the document I referenced above. The document discusses the main points on why we chose to use LISP over traditional routing. There are more areas, but you&#39;ll find the main ones in the document: https://www.cisco.com/c/dam/en/us/solutions/collateral/enterprise-networks/software-defined-access/white-paper-c11-739593.pdf<br />",
-          "id": "7876729580271383282",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Victor Moreno",
-          "profile": "https://www.blogger.com/profile/02665450770257068729",
-          "pub": "2017-09-13T20:42:52.522+02:00",
-          "ref": "5200837098827991481",
-          "type": "comment"
-        },
-        {
-          "date": "13 September 2017 20:51",
-          "html": "Hi Daniel,<br /><br />Regarding complexity. It is a different way of looking at things, very similar to DNS from a flow perspective. The configuration and operations are significantly simpler than BGP, but they are perceived as complex because they don&#39;t follow the same principles as a routing protocol. So it&#39;s a matter of coming to terms with the fact that this isn&#39;t a routing problem/task. As for cache size, memory and CPU requirements, we have done benchmarking that shows a footprint that is about 10% of what is required by BGP. The Control Plane is capacity planed following similar guidelines for capacity planning a DNS server. As for failure modes, this is a broad topic, but there is a recursive reliance on the underlay control plane which does use traditional routing protocols with all their functionality, at the borders of the fabric there are mechanisms to maintain visibility into remote network health and circumvent indirect failures (something that most/all overlay mechanisms have failed to address to date).",
-          "id": "4080337163297247656",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Victor Moreno",
-          "profile": "https://www.blogger.com/profile/02665450770257068729",
-          "pub": "2017-09-13T20:51:45.751+02:00",
-          "ref": "5200837098827991481",
-          "type": "comment"
-        },
-        {
-          "date": "13 September 2017 23:48",
-          "html": "And if you want to have a discussion about LISP, I suggest asking questions (which I can answer) on Facebook group &quot;lisp-routing&quot;. ",
-          "id": "1196300334885657144",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Dino Farinacci",
-          "profile": "http://www.lispers.net",
-          "pub": "2017-09-13T23:48:27.514+02:00",
-          "ref": "5200837098827991481",
-          "type": "comment"
-        }
-      ],
-      "date": "13 September 2017 08:32",
-      "html": " Ivan, It\u2019s always interesting to follow your views on what the industry is doing. In this particular instance, the LISP based solution for Access Networks is not focused on stretching Layer 2 or creating large L2 domains (although it can where required/desired) for mobility or otherwise. The solution is however focused on (1) providing very large scale host level connectivity in Campus and Branches and (2) address the churn WiFi mobility creates on the network.<br /> <br />The impact of mobility events in a LISP network (as you know from past reviews published in your blog) is limited to signaling amongst the network elements involved in active connections between the devices. However, the impact of mobility events in a BGP network is unbound. Even if you have conditional FIB programming, all changes are pushed to all participants. You can try to mitigate this with summarization, but that will have little effect in the case of access networks. This is just one of the many lessons the industry has learnt after years of building overlays with traditional push mechanisms.<br /> <br />I happened to be in the process of posting a document (give me a few hours as it propagates through the system so I can give you a URL) that describes  a wealth of other functionality that is possible by the simple principle of the demand based control plane and a discussion on why this is best realized with a demand protocol. One thing to remember is that the overlay problem is one of maintaining a directory of locations. This is not necessarily a routing problem. The use of a directory of locations (and other interesting information) allows us to evolve the services that are provided in these networks. This goes well beyond traditional routing services to include policy driven services. That said, even traditional routing services such as multicast and route leaking are improved. For instance, if you have ever set up (and you probably have) multicast across multiple VRFs in an extranet route-leaking arrangement, you would appreciate a solution that can simplify the machinery involved. There is also the fact that LISP can do this without creating any additional state (vs. copying all routes across all VRFs in the traditional solutions). <br /><br />Hopefully my comments and the pointer provided are good evidence that this is the product of much thought and indeed an evolution in networking. LISP has come a very long way in the last few years as a product of lessons learnt on numerous successful deployments. I am confident that, upon further review, you will find that the SD-Access implementation of LISP is a much richer solution than what you may have explored before and you\u2019d appreciate how LISP is enabling much needed innovation in this space.",
-      "id": "5200837098827991481",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Victor Moreno",
-      "profile": "https://www.blogger.com/profile/02665450770257068729",
-      "pub": "2017-09-13T08:32:59.635+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "13 September 2017 19:37",
-          "html": "This is the point I was trying to get at... Who is asking for the sort of deep security that SGTs provide? I&#39;m sure some customers (think they) need this, but it&#39;s not 100% of the campus customer base. I suspect it is more like 15%. It&#39;s still a larger market, but not as big as many expect. If I&#39;m wrong about the size of the market, it will be Cisco&#39;s marketing muscle to thank. Not actual business requirements.",
-          "id": "7263012697083838781",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Jeremy Filliben",
-          "profile": "https://www.blogger.com/profile/07558728700926286196",
-          "pub": "2017-09-13T19:37:57.825+02:00",
-          "ref": "5482045104787759486",
-          "type": "comment"
-        },
-        {
-          "date": "13 September 2017 20:58",
-          "html": "Hi Jeremy, SD-Access can be deployed at any level of functionality a customer may desire. One customer may use a multitude of VNs and SGTs, while another customer may not need to use any. There is a wealth of automation and assurance functionality in the solution that is compelling and useful at either end of the spectrum. Additionally, the SD-Access solution provides an intuitive abstraction based on the grouping of end-points to express the relationships between end-point groups, this may or may not drive segmentation based on VNs and/or SGTs, but it does provide a standard way of expressing what we would like the network to do in an abstraction that is closer to human language.",
-          "id": "59416729575373362",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Victor Moreno",
-          "profile": "https://www.blogger.com/profile/02665450770257068729",
-          "pub": "2017-09-13T20:58:18.944+02:00",
-          "ref": "5482045104787759486",
-          "type": "comment"
-        },
-        {
-          "date": "13 September 2017 21:01",
-          "html": "Hi Daren, Great summary of what is in store. I would add that LISP gives us a simplification of the underlying connectivity machinery and streamlines mobility which remains very relevant for integrated wireless. Regarding the need for a CCIE to troubleshoot, I think we have made their life easier and will continue to do so as the assurance functionality is delivered and as the associated AI engines adapt to the particular customer operations to not only troubleshoot, but also predict possible future failures. ",
-          "id": "4934398855890444100",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Victor Moreno",
-          "profile": "https://www.blogger.com/profile/02665450770257068729",
-          "pub": "2017-09-13T21:01:08.600+02:00",
-          "ref": "5482045104787759486",
-          "type": "comment"
-        },
-        {
-          "date": "13 September 2017 21:50",
-          "html": "Thanks Victor - will be interesting to see when we get our hands on it properly!<br /><br />Hi Jeremy - understood, but SGTs are not just about security at the edge.  While we can make it very cool (who wouldn&#39;t want to quarantine unpatched machines or remove a PC&#39;s access if it starts misbehaving?) the SGTs can also just be used to deploy traditional firewall policy without resorting to IP addressing.  They are also about other policy such as QoS and PBR if you want them to be (indeed they are now called Scalable Group Tags for that reason) And as SGTs can be named, you&#39;re now expressing policy by its intent (bingo!)",
-          "id": "2137424473277999796",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Daren Fulwell",
-          "profile": "https://www.linkedin.com/in/daren-fulwell-114a0b1",
-          "pub": "2017-09-13T21:50:26.616+02:00",
-          "ref": "5482045104787759486",
-          "type": "comment"
-        },
-        {
-          "date": "13 September 2017 22:21",
-          "html": "And do customers want it? I think so. We are implementing Trustsec, endpoint profiling and Stealthwatch right now for healthcare, commercial and finance customers. Everyone loves a bit of security these days ...!",
-          "id": "8335137554892951876",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Daren Fulwell",
-          "profile": "http://linkedin.com/in/daren-fulwell-114a0b1",
-          "pub": "2017-09-13T22:21:48.527+02:00",
-          "ref": "5482045104787759486",
-          "type": "comment"
-        }
-      ],
-      "date": "13 September 2017 19:00",
-      "html": "Interesting discussion here ...<br /><br />My slightly wider (and shallower) take is that - as Victor mentions above - the inclusion of LISP is a mobility play not a L2 stretching thing (though Cisco have put that into some of their early education material I notice)  The most important part of the SD-Access solution for me is actually not the LISP control plane but the SGT policy stuff.  This is the point where you create a separation between host ID (ie IP address) and the security, QoS etc that gets applied to traffic.  Based on who you are (or the type of device you are using) you can get access to different stuff, right?  Now this isn&#39;t new, but have you seen how easy it is to deploy in the DNA Center GUI?  That&#39;s the big play.  Because DNA Center will create the VRFs, the VNIs and all the config under the hood to stitch this stuff together and make it feasible.  (Yes a CCIE will still be needed to troubleshoot it when it all goes wrong but hey, we all need jobs right?)<br /><br />The mobility piece is a nod to legacy as much as anything I think - with SGTs you shouldn&#39;t need to care what your IP address is in the access network as you are granted access based on who/what you are.  As we know though, sometimes keeping the same IP address is important (especially in legacy apps or legacy networks that don&#39;t talk SGT) and so being able to move an address around a network without having to reauthenticate becomes important.  And LISP gives you a (nearly) standardised and (relatively) well-worn approach to that without resorting to trying to maintain a distributed database of /32s across an arbitrary topology of switches.  We all know a campus network is not like a DC.  Traffic flows are very different, volumes are different, connectivity requirements too, and so topologies, control planes and policy enforcement are totally different.  I like my DCs being separate from my campus, so am I worried about a different control plane?  Not so long as I can translate between them or orchestrate.  Centralised identity has been progressively more important in an enterprise, so why not centralised forwarding control plane?  Back in the day we were always taught they could be a good thing (off-router route/path calculation etc) and if it&#39;s good enough for the DC, why not the campus?<br /><br />OK, yes, I&#39;ve drunk the Kool-Aid and I&#39;m sold on the Cisco solution - but I work for a Cisco partner so I would be.  I have been waiting for the first viable campus access network overlay solution and it looks like it&#39;s arrived from an unexpected source!  There will doubtless be others.  But Cisco&#39;s usual approach of taking a few previously unrelated features and bundling them together to create an &quot;architecture&quot; looks like it might just work this time.  Now we can stitch overlays (campus, SD-WAN and DC) together to give a proper end-to-end solution and we can concentrate on giving customers a slicker, easy-to-consume, automated network experience while we continue to do battle with CLI under the hood!!",
-      "id": "5482045104787759486",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Daren Fulwell",
-      "profile": "https://www.linkedin.com/in/daren-fulwell-114a0b1",
-      "pub": "2017-09-13T19:00:55.271+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "13 September 2017 23:44",
-      "html": "If you would take a closer look at LISP, you&#39;d find that it solves more than the one use-case EVPN solves. Have a look at https://datatracker.ietf.org/wg/lisp/documents/.",
-      "id": "6122908529292323565",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Dino Farinacci",
-      "profile": "http://www.lispers.net",
-      "pub": "2017-09-13T23:44:36.239+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "31 October 2017 13:57",
-      "html": "&quot;It looks like Cisco (and a few other vendors, each one in its own way) still believes in the dire need for large layer-2 domains. I keep wondering why it seems everyone\u2019s so obsessed with large VLANs stretching all across campus. If you have a good use case, please let me know.&quot;<br /><br />My experience is that many organizations &quot;require&quot; large stretched VLANs simply because they have not adopted DHCP/DDNS in place of statically assigned addresses for printers and other devices.  This design oversight introduces a significant amount of operational overhead and the volume of adds/moves/changes become unsustainable without stretched VLANs.",
-      "id": "5290487059931704041",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Iain",
-      "profile": "https://www.blogger.com/profile/15633928581737520447",
-      "pub": "2017-10-31T13:57:44.755+01:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "29 March 2018 16:54",
-      "html": "Sound like Cisco still miss something like SPB.<br />There are good reasons to have that type of tech in the campus...<br />",
-      "id": "9125168097094807444",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2018-03-29T16:54:25.055+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    },
-    {
-      "date": "14 October 2019 11:52",
-      "html": "The answer to the question is simple: to lock You to their solution; to milk Your money. Additionally being enchanted lately by the &quot;quality&quot; of &quot;cisco software company&quot; software, I&#39;ve the rights to claim that this dna is bug free, rock solid, state of the art, super duper stable, amazing like hell, fast as light, proud like a god, f...g awesome piece of code.",
-      "id": "609475407323594129",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Darek",
-      "profile": "https://www.blogger.com/profile/09603922236567733204",
-      "pub": "2019-10-14T11:52:30.275+02:00",
-      "ref": "8119992865929651876",
-      "type": "comment"
-    }
-  ],
-  "count": 34,
-  "id": "8119992865929651876",
-  "type": "post",
-  "url": "2017/09/why-is-cisco-pushing-lisp-in-enterprise.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "31 October 2017 13:52",
+               "html": "Is anyone else uncomfortable with making ISE the core of their wired campus LANs (trustsec)?  I&#39;ve seen ISE DB meltdowns and it isn&#39;t pretty.",
+               "id": "2959797864034189397",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Iain",
+               "profile": "https://www.blogger.com/profile/15633928581737520447",
+               "pub": "2017-10-31T13:52:25.087+01:00",
+               "ref": "3011416291581010114",
+               "type": "comment"
+            },
+            {
+               "date": "19 September 2018 20:46",
+               "html": "What kind of backup/restore functionality is available in ISE?",
+               "id": "334361390841716594",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/04793261029401954829",
+               "pub": "2018-09-19T20:46:11.606+02:00",
+               "ref": "3011416291581010114",
+               "type": "comment"
+            }
+         ],
+         "date": "11 September 2017 10:31",
+         "html": "Actually for security separation Cisco has trustsec. <br />And for wireless there is a capwap tunnel between the AP and the WLC. <br />The main issues (at least from what I see at my customers) is 1 they are used to work in L2 environment and are afraid from L3 and routing protocols.<br />The other issue is FW clusters, if you have a FW cluster most of them demand L2",
+         "id": "3011416291581010114",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Omer Shtivi",
+         "profile": null,
+         "pub": "2017-09-11T10:31:01.072+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "11 September 2017 15:55",
+               "html": "I agree, that maybe LISP is more &quot;small access&quot; edge device friendly.<br />Let&#39;s assume a Catalyst 3850 switch, which is a potential Campus Fabric edge device. This device supports 24,000 IPv4 routes according to the data sheet. The &quot;SD-Access&quot; scale is 8k IPv4 routes and 16k IPv4 host entries. So maybe this is the reason to use LISP to maintain a conversional routing table at the border nodes.",
+               "id": "4063866768002338795",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/14579645045631302258",
+               "pub": "2017-09-11T15:55:01.925+02:00",
+               "ref": "1077546115447415490",
+               "type": "comment"
+            },
+            {
+               "date": "12 September 2017 01:11",
+               "html": "I was thinking about this issue, but it&#39;s just a question of RIB-to-FIB filtering (aka conversational learning) that&#39;s been done with various L2 technologies (and now with EVPN as well IIRC). No need to use LISP for this.",
+               "id": "6156299490343851038",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2017-09-12T01:11:10.279+02:00",
+               "ref": "1077546115447415490",
+               "type": "comment"
+            }
+         ],
+         "date": "11 September 2017 12:26",
+         "html": "Maybe there are some use-cases, that are more organizationally driven than technically driven. And I think it&#39;s not only about large L2 domains.<br />One example would be a user, which moves from &quot;A&quot; to &quot;B&quot; within the campus. &quot;B&quot; is assigned to another distribution layer as &quot;A&quot; -&gt; user gets a new IP address.<br /><br />Assuming this user or device has unique firewall rules, pointing to the old address, a few applications won&#39;t work after the move.<br />The reactive action is to create a new DHCP reservation for &quot;B&quot; and alter the firewall object. Depending on the IT agility this could take hours or days :)<br /><br />Proactive solutions could be:<br />- Change your firewall and/or rule/object design<br />- Use some identity based FW feature &gt; use names instead of IPs<br />- Keep the IP through the campus.<br />- Enhance the moving organizational process to somehow alter the FW object before the actual move<br /><br />That&#39;s just my thoughts about a potential, not completely useless use-case. <br /><br />Why they use LISP instead of EVPN for the control plane ... no clue...",
+         "id": "1077546115447415490",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/14579645045631302258",
+         "pub": "2017-09-11T12:26:50.061+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "19 September 2017 04:58",
+               "html": "I agree with you but one of the key use cases emerging in campus environment is network segmentation based on the device posture to support IoT, BYOD, Lab systems etc. how do you achieve it without NAC/and of any fabric technology",
+               "id": "7943630729665252869",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2017-09-19T04:58:12.711+02:00",
+               "ref": "6195173564172435489",
+               "type": "comment"
+            }
+         ],
+         "date": "11 September 2017 15:24",
+         "html": "I have a blog post percolating about this topic, but this may be a better forum.<br /><br />We have long passed the point of diminishing returns in the campus LAN. Speeds and feeds stopped being a reason to upgrade campus LAN switches when we reached gigabit to the desktop and N x 1gb (or N x 10gb) to the aggregation/core. This is terrible for Cisco&#39;s (and other networkers) business, since the lifespan of campus gear went from 3 years in the early 2000s to 10-15 years now. Even wireless has hit a point of &#39;good enough&#39;; if we never got a faster wireless standard than 802.11ac we could make things work indefinitely by creating smaller, lower-powered cells. Sure, we can find corner use cases that require more speed, but for 95+% of users, we have enough.<br /><br />So how do networking vendors rectify this? It invents &#39;compelling&#39; reasons to upgrade that are not based on speeds/feeds. Many of these are dubious, and several are downright harmful to business success. I leave it to the reader to name your favorite unneeded campus technology (mine is/was NAC). These solutions are required by a limited audience, but that will not stop networking vendors from attempting to force them on all customers. It is our job as network architects/managers/engineers to continually ask the question &quot;Why does my business need this technology?&quot;.<br /><br />Jeremy<br />",
+         "id": "6195173564172435489",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Jeremy Filliben",
+         "profile": "https://www.blogger.com/profile/07558728700926286196",
+         "pub": "2017-09-11T15:24:51.445+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "11 September 2017 16:35",
+         "html": "Do remember that Cisco is made up of several business unit and each want to show that they are innovative. It could be for this reason that the enterprise networking BU decided to go a different route to VXLAN with EVPN. As some have mentioned, LISP uses a pull mechanism(DNS method requesting a resolution) and hence is more economical for TCAM space. LISP also work as inter subnet or Intra subnet. Hence flexibility to cater for different use cases. Unfortunately there are poorly designed apps which seems to only work in a broadcast domain this can be resolved using broadcast over unicast but no one bothers. Also too many IT orgs are too bugged down/lazy to re IP entire campus and cause down times.",
+         "id": "1522007008696117956",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/11711343779548639913",
+         "pub": "2017-09-11T16:35:08.384+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "11 September 2017 19:15",
+         "html": "LISP excels in availability and mobility at the same time. It is not a L2 solution. You would normally use it as a L3 connectivity service. Our company has compared a lot of technologies for the requirements of the Air Traffic Management industry and only LISP satisfies all the requirements. We promote it for ICAO as the preferred technology for the Future Communications Infrastructure.<br />The reliance on a DNS like resolution is not bad. It is a proven solution for the telecommunications industry. Just look at ENUM/DNS used all over the place in SIP based voice routing. With the advent of VoLTE, it will be THE solution. LISP is just applying something similar for packet routing. <br />However, not everyone likes the dependence on a centralized resolution service. <br />We will see if it will succeed or not.<br />Please, be aware that it is not a pure Cisco technology. HPE fully supports it. Huawei also invests a lot into LISP. For example, Huawei is developing the missing LISP pieces into the ONOS network. So probably, they would like to use in telecommunications networks, not just in the enterprise... :-) ",
+         "id": "3262072065962317143",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Bela",
+         "profile": "https://www.blogger.com/profile/07985346761439657130",
+         "pub": "2017-09-11T19:15:46.039+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "11 September 2017 19:18",
+         "html": "By the way, LISP is now on the track to become a Porposed Standard at IETF.<br />https://datatracker.ietf.org/wg/lisp/about/<br />",
+         "id": "1233297020587652648",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Bela",
+         "profile": "https://www.blogger.com/profile/07985346761439657130",
+         "pub": "2017-09-11T19:18:23.127+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "11 September 2017 19:22",
+         "html": "The locator and ID seperation problem is also nothing new. The telephony networks have suffered by this problem, too. The big difference is that the call setup is only done once in a session, so you may have seconds to do all the resolution lookups including number portability and intelligent networks. <br />NFV is nothing else then the re-discovery of the SS7 IN or the SIP/IMS/iFC mechanism. Just for packkets instead of SIP sessions. LISP will be used together with NFV in the future, further extending this long established idea... There is nothing really new under the sun, just new clothes for the same old thing... :-) <br />",
+         "id": "6494252439536038509",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Bela",
+         "profile": "https://www.blogger.com/profile/07985346761439657130",
+         "pub": "2017-09-11T19:22:54.828+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "11 September 2017 19:32",
+         "html": "Nothing is wrong with L2 Ethernet framing, if you remove spanning tree and use IS-IS as the underlying routing protocol. Then we are back to a next-generation DECnet. :-)<br />However, Cisco for some reason rejected both TRILL and the IEEE IS-IS router Ethernet,<br />Ethernet addresses do not have a locator component, but the IS-IS layer could add this.<br />The real problem with Ethernet is the cut-through switching, since it will result in a free frame error propagation. <br />There are lot of technologies, and you could not decide which one will stay with us based on technical merits. The business case will decide. There is nothing wrong with SDH, actually it is much better for a lot of applications, and it had SDN for a long time already. But if there are very low production volumes, it is becoming so expensive, that it will die out... <br />Remember VHS winning againts the others? But now we have H.26x videos, or real-time streaming... :-) <br />",
+         "id": "4174926935529027052",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Bela",
+         "profile": "https://www.blogger.com/profile/07985346761439657130",
+         "pub": "2017-09-11T19:32:01.209+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "11 September 2017 20:01",
+         "html": "Why is Cisco Pushing LISP in Enterprise Campus? From the business perspective because it is sticky to Cisco. From the technical standpoint, as Bela wrote, a purpose of LISP is not to extend L2 altough it can be used as a control plane for a VXLAN based overlay. LISP offers a higher scalability and traffic optimization than BGP. Both can be complex but today the management and orchestration hides the complexity. From the user&#39;s perspective it is less and less important what is behind the curtain. So SDA can bring LISP a second life. :)",
+         "id": "8046227938342131934",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Piotr Jablonski",
+         "profile": null,
+         "pub": "2017-09-11T20:01:34.523+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "12 September 2017 00:26",
+               "html": "Can you share more details?",
+               "id": "222927445282316415",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Dan Shechter Gelles",
+               "profile": "https://www.blogger.com/profile/18175247280485392482",
+               "pub": "2017-09-12T00:26:18.599+02:00",
+               "ref": "3882841029873060812",
+               "type": "comment"
+            },
+            {
+               "date": "13 October 2017 14:06",
+               "html": "I&#39;m curious about this as well.  We&#39;ve had LISP in production on our WAN for almost six years now and have been very happy with it. ",
+               "id": "2935642985274034093",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2017-10-13T14:06:39.939+02:00",
+               "ref": "3882841029873060812",
+               "type": "comment"
+            }
+         ],
+         "date": "11 September 2017 20:33",
+         "html": "On this subject, I can offer a good feedback of 2 years of LISP in production (for VRF transport over WAN). Let&#39;s just say that MPLSoDMPVN is back on the table.",
+         "id": "3882841029873060812",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "jmanteau",
+         "profile": "https://www.blogger.com/profile/15082676715838447297",
+         "pub": "2017-09-11T20:33:36.303+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "12 September 2017 04:47",
+         "html": "&quot;I can’t possibly grasp why they’d do that apart from having a solution that has been searching for a problem to solve for years.&quot;<br /><br />I think it comes down to the engineering team that takes on the product development. The issues with &quot;go with what you know&quot; is a big problem in all engineering companies. Architects and Engineering leaders don&#39;t put themselves at risk by looking at what is best, they use what the know will work regardless of if it&#39;s fit for purpose or passes any sort of Commercial, Strategic or Architectural governance.<br /><br />A better question to ask is why Cisco&#39;s CTO office does not enforce standards or governance in their RnD projects where there&#39;s no competitive advantage to be gained.<br /><br />They continue to pay lip service to open source engagement, why is that?<br />",
+         "id": "4915470667589140610",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/04966717029583402871",
+         "pub": "2017-09-12T04:47:23.639+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "12 September 2017 15:26",
+         "html": "Cisco has invested heavily in LISP and is looking for a ROI, which is to be expected.  Having just gone through the whole SD Access bootcamp I am just confused!!  Abstraction is mean&#39;t to introduce simplicity, however, under the hood, the whole SD access piece is a minefield of technologies that a really good CCIE would struggle to debug if things went south.  There are way too many moving parts being masked by a fancy looking GUI.  Good luck with whoever is an early adopter with that solution.",
+         "id": "7359284112108811353",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/12568448441755008432",
+         "pub": "2017-09-12T15:26:17.401+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "13 September 2017 12:27",
+               "html": "Hi Victor,<br /><br />I would also be interested in this document if it&#39;s possible for you to share. Do you have any document that discusses reactive control plane vs proactive control plane? <br /><br />Interested to hear your thoughts on complexity of LISP, cache size, and failure modes etc.",
+               "id": "1734622917945521427",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Daniel Dib",
+               "profile": "https://www.blogger.com/profile/05348201047870981278",
+               "pub": "2017-09-13T12:27:22.540+02:00",
+               "ref": "5200837098827991481",
+               "type": "comment"
+            },
+            {
+               "date": "13 September 2017 20:42",
+               "html": "Here is the document I referenced above. The document discusses the main points on why we chose to use LISP over traditional routing. There are more areas, but you&#39;ll find the main ones in the document: https://www.cisco.com/c/dam/en/us/solutions/collateral/enterprise-networks/software-defined-access/white-paper-c11-739593.pdf<br />",
+               "id": "7876729580271383282",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Victor Moreno",
+               "profile": "https://www.blogger.com/profile/02665450770257068729",
+               "pub": "2017-09-13T20:42:52.522+02:00",
+               "ref": "5200837098827991481",
+               "type": "comment"
+            },
+            {
+               "date": "13 September 2017 20:51",
+               "html": "Hi Daniel,<br /><br />Regarding complexity. It is a different way of looking at things, very similar to DNS from a flow perspective. The configuration and operations are significantly simpler than BGP, but they are perceived as complex because they don&#39;t follow the same principles as a routing protocol. So it&#39;s a matter of coming to terms with the fact that this isn&#39;t a routing problem/task. As for cache size, memory and CPU requirements, we have done benchmarking that shows a footprint that is about 10% of what is required by BGP. The Control Plane is capacity planed following similar guidelines for capacity planning a DNS server. As for failure modes, this is a broad topic, but there is a recursive reliance on the underlay control plane which does use traditional routing protocols with all their functionality, at the borders of the fabric there are mechanisms to maintain visibility into remote network health and circumvent indirect failures (something that most/all overlay mechanisms have failed to address to date).",
+               "id": "4080337163297247656",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Victor Moreno",
+               "profile": "https://www.blogger.com/profile/02665450770257068729",
+               "pub": "2017-09-13T20:51:45.751+02:00",
+               "ref": "5200837098827991481",
+               "type": "comment"
+            },
+            {
+               "date": "13 September 2017 23:48",
+               "html": "And if you want to have a discussion about LISP, I suggest asking questions (which I can answer) on Facebook group &quot;lisp-routing&quot;. ",
+               "id": "1196300334885657144",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Dino Farinacci",
+               "profile": "http://www.lispers.net",
+               "pub": "2017-09-13T23:48:27.514+02:00",
+               "ref": "5200837098827991481",
+               "type": "comment"
+            }
+         ],
+         "date": "13 September 2017 08:32",
+         "html": " Ivan, It’s always interesting to follow your views on what the industry is doing. In this particular instance, the LISP based solution for Access Networks is not focused on stretching Layer 2 or creating large L2 domains (although it can where required/desired) for mobility or otherwise. The solution is however focused on (1) providing very large scale host level connectivity in Campus and Branches and (2) address the churn WiFi mobility creates on the network.<br /> <br />The impact of mobility events in a LISP network (as you know from past reviews published in your blog) is limited to signaling amongst the network elements involved in active connections between the devices. However, the impact of mobility events in a BGP network is unbound. Even if you have conditional FIB programming, all changes are pushed to all participants. You can try to mitigate this with summarization, but that will have little effect in the case of access networks. This is just one of the many lessons the industry has learnt after years of building overlays with traditional push mechanisms.<br /> <br />I happened to be in the process of posting a document (give me a few hours as it propagates through the system so I can give you a URL) that describes  a wealth of other functionality that is possible by the simple principle of the demand based control plane and a discussion on why this is best realized with a demand protocol. One thing to remember is that the overlay problem is one of maintaining a directory of locations. This is not necessarily a routing problem. The use of a directory of locations (and other interesting information) allows us to evolve the services that are provided in these networks. This goes well beyond traditional routing services to include policy driven services. That said, even traditional routing services such as multicast and route leaking are improved. For instance, if you have ever set up (and you probably have) multicast across multiple VRFs in an extranet route-leaking arrangement, you would appreciate a solution that can simplify the machinery involved. There is also the fact that LISP can do this without creating any additional state (vs. copying all routes across all VRFs in the traditional solutions). <br /><br />Hopefully my comments and the pointer provided are good evidence that this is the product of much thought and indeed an evolution in networking. LISP has come a very long way in the last few years as a product of lessons learnt on numerous successful deployments. I am confident that, upon further review, you will find that the SD-Access implementation of LISP is a much richer solution than what you may have explored before and you’d appreciate how LISP is enabling much needed innovation in this space.",
+         "id": "5200837098827991481",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Victor Moreno",
+         "profile": "https://www.blogger.com/profile/02665450770257068729",
+         "pub": "2017-09-13T08:32:59.635+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "13 September 2017 19:37",
+               "html": "This is the point I was trying to get at... Who is asking for the sort of deep security that SGTs provide? I&#39;m sure some customers (think they) need this, but it&#39;s not 100% of the campus customer base. I suspect it is more like 15%. It&#39;s still a larger market, but not as big as many expect. If I&#39;m wrong about the size of the market, it will be Cisco&#39;s marketing muscle to thank. Not actual business requirements.",
+               "id": "7263012697083838781",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Jeremy Filliben",
+               "profile": "https://www.blogger.com/profile/07558728700926286196",
+               "pub": "2017-09-13T19:37:57.825+02:00",
+               "ref": "5482045104787759486",
+               "type": "comment"
+            },
+            {
+               "date": "13 September 2017 20:58",
+               "html": "Hi Jeremy, SD-Access can be deployed at any level of functionality a customer may desire. One customer may use a multitude of VNs and SGTs, while another customer may not need to use any. There is a wealth of automation and assurance functionality in the solution that is compelling and useful at either end of the spectrum. Additionally, the SD-Access solution provides an intuitive abstraction based on the grouping of end-points to express the relationships between end-point groups, this may or may not drive segmentation based on VNs and/or SGTs, but it does provide a standard way of expressing what we would like the network to do in an abstraction that is closer to human language.",
+               "id": "59416729575373362",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Victor Moreno",
+               "profile": "https://www.blogger.com/profile/02665450770257068729",
+               "pub": "2017-09-13T20:58:18.944+02:00",
+               "ref": "5482045104787759486",
+               "type": "comment"
+            },
+            {
+               "date": "13 September 2017 21:01",
+               "html": "Hi Daren, Great summary of what is in store. I would add that LISP gives us a simplification of the underlying connectivity machinery and streamlines mobility which remains very relevant for integrated wireless. Regarding the need for a CCIE to troubleshoot, I think we have made their life easier and will continue to do so as the assurance functionality is delivered and as the associated AI engines adapt to the particular customer operations to not only troubleshoot, but also predict possible future failures. ",
+               "id": "4934398855890444100",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Victor Moreno",
+               "profile": "https://www.blogger.com/profile/02665450770257068729",
+               "pub": "2017-09-13T21:01:08.600+02:00",
+               "ref": "5482045104787759486",
+               "type": "comment"
+            },
+            {
+               "date": "13 September 2017 21:50",
+               "html": "Thanks Victor - will be interesting to see when we get our hands on it properly!<br /><br />Hi Jeremy - understood, but SGTs are not just about security at the edge.  While we can make it very cool (who wouldn&#39;t want to quarantine unpatched machines or remove a PC&#39;s access if it starts misbehaving?) the SGTs can also just be used to deploy traditional firewall policy without resorting to IP addressing.  They are also about other policy such as QoS and PBR if you want them to be (indeed they are now called Scalable Group Tags for that reason) And as SGTs can be named, you&#39;re now expressing policy by its intent (bingo!)",
+               "id": "2137424473277999796",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Daren Fulwell",
+               "profile": "https://www.linkedin.com/in/daren-fulwell-114a0b1",
+               "pub": "2017-09-13T21:50:26.616+02:00",
+               "ref": "5482045104787759486",
+               "type": "comment"
+            },
+            {
+               "date": "13 September 2017 22:21",
+               "html": "And do customers want it? I think so. We are implementing Trustsec, endpoint profiling and Stealthwatch right now for healthcare, commercial and finance customers. Everyone loves a bit of security these days ...!",
+               "id": "8335137554892951876",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Daren Fulwell",
+               "profile": "http://linkedin.com/in/daren-fulwell-114a0b1",
+               "pub": "2017-09-13T22:21:48.527+02:00",
+               "ref": "5482045104787759486",
+               "type": "comment"
+            }
+         ],
+         "date": "13 September 2017 19:00",
+         "html": "Interesting discussion here ...<br /><br />My slightly wider (and shallower) take is that - as Victor mentions above - the inclusion of LISP is a mobility play not a L2 stretching thing (though Cisco have put that into some of their early education material I notice)  The most important part of the SD-Access solution for me is actually not the LISP control plane but the SGT policy stuff.  This is the point where you create a separation between host ID (ie IP address) and the security, QoS etc that gets applied to traffic.  Based on who you are (or the type of device you are using) you can get access to different stuff, right?  Now this isn&#39;t new, but have you seen how easy it is to deploy in the DNA Center GUI?  That&#39;s the big play.  Because DNA Center will create the VRFs, the VNIs and all the config under the hood to stitch this stuff together and make it feasible.  (Yes a CCIE will still be needed to troubleshoot it when it all goes wrong but hey, we all need jobs right?)<br /><br />The mobility piece is a nod to legacy as much as anything I think - with SGTs you shouldn&#39;t need to care what your IP address is in the access network as you are granted access based on who/what you are.  As we know though, sometimes keeping the same IP address is important (especially in legacy apps or legacy networks that don&#39;t talk SGT) and so being able to move an address around a network without having to reauthenticate becomes important.  And LISP gives you a (nearly) standardised and (relatively) well-worn approach to that without resorting to trying to maintain a distributed database of /32s across an arbitrary topology of switches.  We all know a campus network is not like a DC.  Traffic flows are very different, volumes are different, connectivity requirements too, and so topologies, control planes and policy enforcement are totally different.  I like my DCs being separate from my campus, so am I worried about a different control plane?  Not so long as I can translate between them or orchestrate.  Centralised identity has been progressively more important in an enterprise, so why not centralised forwarding control plane?  Back in the day we were always taught they could be a good thing (off-router route/path calculation etc) and if it&#39;s good enough for the DC, why not the campus?<br /><br />OK, yes, I&#39;ve drunk the Kool-Aid and I&#39;m sold on the Cisco solution - but I work for a Cisco partner so I would be.  I have been waiting for the first viable campus access network overlay solution and it looks like it&#39;s arrived from an unexpected source!  There will doubtless be others.  But Cisco&#39;s usual approach of taking a few previously unrelated features and bundling them together to create an &quot;architecture&quot; looks like it might just work this time.  Now we can stitch overlays (campus, SD-WAN and DC) together to give a proper end-to-end solution and we can concentrate on giving customers a slicker, easy-to-consume, automated network experience while we continue to do battle with CLI under the hood!!",
+         "id": "5482045104787759486",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Daren Fulwell",
+         "profile": "https://www.linkedin.com/in/daren-fulwell-114a0b1",
+         "pub": "2017-09-13T19:00:55.271+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "13 September 2017 23:44",
+         "html": "If you would take a closer look at LISP, you&#39;d find that it solves more than the one use-case EVPN solves. Have a look at https://datatracker.ietf.org/wg/lisp/documents/.",
+         "id": "6122908529292323565",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Dino Farinacci",
+         "profile": "http://www.lispers.net",
+         "pub": "2017-09-13T23:44:36.239+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "31 October 2017 13:57",
+         "html": "&quot;It looks like Cisco (and a few other vendors, each one in its own way) still believes in the dire need for large layer-2 domains. I keep wondering why it seems everyone’s so obsessed with large VLANs stretching all across campus. If you have a good use case, please let me know.&quot;<br /><br />My experience is that many organizations &quot;require&quot; large stretched VLANs simply because they have not adopted DHCP/DDNS in place of statically assigned addresses for printers and other devices.  This design oversight introduces a significant amount of operational overhead and the volume of adds/moves/changes become unsustainable without stretched VLANs.",
+         "id": "5290487059931704041",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Iain",
+         "profile": "https://www.blogger.com/profile/15633928581737520447",
+         "pub": "2017-10-31T13:57:44.755+01:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "29 March 2018 16:54",
+         "html": "Sound like Cisco still miss something like SPB.<br />There are good reasons to have that type of tech in the campus...<br />",
+         "id": "9125168097094807444",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2018-03-29T16:54:25.055+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "14 October 2019 11:52",
+         "html": "The answer to the question is simple: to lock You to their solution; to milk Your money. Additionally being enchanted lately by the &quot;quality&quot; of &quot;cisco software company&quot; software, I&#39;ve the rights to claim that this dna is bug free, rock solid, state of the art, super duper stable, amazing like hell, fast as light, proud like a god, f...g awesome piece of code.",
+         "id": "609475407323594129",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Darek",
+         "profile": "https://www.blogger.com/profile/09603922236567733204",
+         "pub": "2019-10-14T11:52:30.275+02:00",
+         "ref": "8119992865929651876",
+         "type": "comment"
+      },
+      {
+         "date": "16 April 2021 11:09",
+         "html": "<p>Thank you for this. I am a bit of a novice Engineer. Only having my CCNA but as I began my CCNP studies as soon as I noticed LISP I thought...too complex. The new adage of work smarter not harder popped into my head. Imo that should only apply to network devices whether they be virtual or physical. Human should work smarter and harder. Put our networks thru such monotony would make sense if it bettered th3 endgame with a result of greater speed decreased latency but it just seems to be a project Cisco worked on and now they decide to force it on us. </p>\n",
+         "id": "528",
+         "name": " Wally",
+         "pub": "2021-04-16T11:09:11",
+         "type": "comment"
+      }
+   ],
+   "count": 35,
+   "id": "8119992865929651876",
+   "type": "post",
+   "url": "2017/09/why-is-cisco-pushing-lisp-in-enterprise.html"
 }

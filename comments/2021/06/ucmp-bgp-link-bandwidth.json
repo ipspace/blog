@@ -1,0 +1,70 @@
+{
+   "comments": [
+      {
+         "date": "08 June 2021 09:51",
+         "html": "<p>It seems X1 and X2 routers have wrong loopback IP addresses in your network diagram. Any idea why the hash buckets are evenly distributed accross the interfaces and not according to the share ratio on PE1? Is this a bug?</p>\n",
+         "id": "643",
+         "name": "Anonymous",
+         "pub": "2021-06-08T21:51:59",
+         "type": "comment"
+      },
+      {
+         "date": "09 June 2021 08:06",
+         "html": "<p>@Anonymous: Fixed the diagram. Thank you. Also added lab setup instructions to the GitHub repository.</p>\n\n<p>As for the CEF table: It could be a bug, or it could be irrelevant. I have no idea whether CSR 1000v uses CEF table for packet forwarding. If it uses the underlying Linux routing table, it doesn&#39;t matter what&#39;s in the CEF table.</p>\n",
+         "id": "644",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-06-09T08:06:12",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "13 June 2021 12:03",
+               "html": "<p>Thank you, fixed. Hope this is the last error in that diagram &#x1F615;</p>\n",
+               "id": "660",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-06-13T12:03:35",
+               "ref": "654",
+               "type": "comment"
+            }
+         ],
+         "date": "12 June 2021 06:38",
+         "html": "<p>X1 and X2 looks like are in AS65100 based on cli output. In the diagram X1,X2 are in AS65001.</p>\n",
+         "id": "654",
+         "name": "Radu Pavaloiu",
+         "pub": "2021-06-12T18:38:50",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 December 2021 07:26",
+               "html": "<p>I apologize for such a mess of a comment, without proper markdown, I don&#39;t see the option to delete though :( </p>\n",
+               "id": "900",
+               "name": " Sohan Rai",
+               "pub": "2021-12-04T07:26:56",
+               "ref": "899",
+               "type": "comment"
+            },
+            {
+               "date": "05 December 2021 08:37",
+               "html": "<p>You&#39;ll find the answer in one of the old CEF-related blog posts (https://blog.ipspace.net/tag/cef.html). Hint: 5-tuple load balancing.</p>\n\n<p>I used it here https://blog.ipspace.net/2021/11/anycast-mpls.html to get the desired results in a scenario pretty similar to this one.</p>\n",
+               "id": "902",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-12-05T08:37:24",
+               "ref": "899",
+               "type": "comment"
+            }
+         ],
+         "date": "04 December 2021 07:24",
+         "html": "<p>Thank you for the post!</p>\n\n<p>I tried something similar in my LAB and having difficulties understanding few things.</p>\n\n<p>When I have equal BW on interfaces, from CEF I can see each destination using different interface.</p>\n\n<p>R1#show ip bgp 4.4.4.4\nBGP routing table entry for 4.4.4.4/32, version 8\nPaths: (2 available, best #2, table default)\nMultipath: eBGP\n  Advertised to update-groups:\n     1          2\n  Refresh Epoch 1\n  12641\n    12.12.12.2 from 12.12.12.2 (2.2.2.2)\n      Origin IGP, localpref 100, valid, external, multipath(oldest)\n      DMZ-Link Bw 1250 kbytes\n  Refresh Epoch 1\n  12641\n    13.13.13.2 from 13.13.13.2 (3.3.3.3)\n      Origin IGP, localpref 100, valid, external, multipath, best\n      DMZ-Link Bw 1250 kbytes</p>\n\n<hr />\n\n<p>R1#show ip bgp 44.44.44.44\nBGP routing table entry for 44.44.44.44/32, version 9\nPaths: (2 available, best #2, table default)\nMultipath: eBGP\n  Advertised to update-groups:\n     1          2\n  Refresh Epoch 1\n  12641\n    12.12.12.2 from 12.12.12.2 (2.2.2.2)\n      Origin IGP, localpref 100, valid, external, multipath(oldest)\n      DMZ-Link Bw 1250 kbytes\n  Refresh Epoch 1\n  12641\n    13.13.13.2 from 13.13.13.2 (3.3.3.3)\n      Origin IGP, localpref 100, valid, external, multipath, best\n      DMZ-Link Bw 1250 kbytes</p>\n\n<hr />\n\n<p>R1#show ip cef exact-route 1.1.1.1 4.4.4.4\n1.1.1.1 -&gt; 4.4.4.4 =&gt; IP adj out of Ethernet1/1, addr 13.13.13.2\nR1#\nR1#show ip cef exact-route 1.1.1.1 44.44.44.44\n1.1.1.1 -&gt; 44.44.44.44 =&gt; IP adj out of Ethernet1/0, addr 12.12.12.2\nR1#</p>\n\n<hr />\n\n<p>But when I configure unequal BW on E1/0 &amp; E1/1, CEF always seems to prefer the one with higher BW.</p>\n\n<p>R1#show ip bgp 4.4.4.4\nBGP routing table entry for 4.4.4.4/32, version 11\nPaths: (2 available, best #2, table default)\nMultipath: eBGP\n  Advertised to update-groups:\n     1          2\n  Refresh Epoch 1\n  12641\n    12.12.12.2 from 12.12.12.2 (2.2.2.2)\n      Origin IGP, localpref 100, valid, external, multipath(oldest)\n      DMZ-Link Bw 12500 kbytes\n  Refresh Epoch 1\n  12641\n    13.13.13.2 from 13.13.13.2 (3.3.3.3)\n      Origin IGP, localpref 100, valid, external, multipath, best\n      DMZ-Link Bw 1250 kbytes\nR1#\nR1#\nR1#show ip bgp 44.44.44.44\nBGP routing table entry for 44.44.44.44/32, version 12\nPaths: (2 available, best #2, table default)\nMultipath: eBGP\n  Advertised to update-groups:\n     1          2\n  Refresh Epoch 1\n  12641\n    12.12.12.2 from 12.12.12.2 (2.2.2.2)\n      Origin IGP, localpref 100, valid, external, multipath(oldest)\n      DMZ-Link Bw 12500 kbytes\n  Refresh Epoch 1\n  12641\n    13.13.13.2 from 13.13.13.2 (3.3.3.3)\n      Origin IGP, localpref 100, valid, external, multipath, best\n      DMZ-Link Bw 1250 kbytes\nR1#</p>\n\n<hr />\n\n<p>R1#show ip cef exact-route 1.1.1.1 4.4.4.4\n1.1.1.1 -&gt; 4.4.4.4 =&gt; IP adj out of Ethernet1/0, addr 12.12.12.2\nR1#\nR1#show ip cef exact-route 1.1.1.1 44.44.44.44\n1.1.1.1 -&gt; 44.44.44.44 =&gt; IP adj out of Ethernet1/0, addr 12.12.12.2\nR1#</p>\n\n<hr />\n\n<p>Does this mean ECMP works but not UCMP? Or am I doing something wrong? Apologies for the lengthy comment, really looking forward to read your thoughts on this :) Also, to confirm the traffic is in fact taking the interfaces mentioned in CEF, I applied ACLs to see the traffic matches, so it&#39;s definitely taking the interfaces as seen in CEF.</p>\n",
+         "id": "899",
+         "name": " Sohan Rai",
+         "pub": "2021-12-04T07:24:22",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2021/06/ucmp-bgp-link-bandwidth.html"
+}

@@ -1,0 +1,111 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="680">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c680" href="#680">21 June 2021 09:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>As a small addition, traditional <em>proxy ARP</em> does not stop propagation of ARP broadcast in the layer 2 domain.  Thus many vendors use the term <em>ARP suppression</em> when ARP broadcasts are not only <em>answered</em> by an edge switch (the first hop router, usually the ToR), but the request is <em>suppressed</em> instead of flooded.</p>
+
+<p>[Yes, this does interfere with devices expecting to glean information from ARP packets which usually go everywhere in the layer 2 domain.]</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="681">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c681" href="#681">21 June 2021 02:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Traditional <em>proxy ARP</em> replies to the ARP request (without propagating it any further), admittedly with the MAC address of the router, not the remote endpoint&#39;s MAC address, so I&#39;m guessing <em>ARP suppression</em> truly is a better term to use.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="683">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c683" href="#683">22 June 2021 09:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yes, providing the <em>correct</em> end-system MAC address instead of the gateway MAC address is a difference to traditional <em>proxy ARP</em>.</p>
+
+<p>Because the device implementing <em>ARP suppression</em> knows the answer to the question, the question is not needed to be sent to anyone else.  The <em>integrated routing and bridging</em> (IRB) in VXLAN/EVPN fabrics allows to <em>suppress</em> the ARP request flooding of transparent bridging, so this is often done.</p>
+
+<p>Traditionally, <em>proxy ARP</em> was used on a router connected to a yellow cable (or an emulation thereof).  The ARP request reached every system connected to the (emulated) cable.  The router sent an answer, using its MAC address.  Of course the router did not propagate the ARP request any further, but the transparent bridging did.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="682">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Florio</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c682" href="#682">21 June 2021 11:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>One thing worth nothing would be evpn multi homing Vs mclag with virtual vtep implementations.
+I can see here how this would use asic differently. </p>
+
+<p>Evpn multi homing is an overlay multi path, since a Mac address with 2 or more &quot;uplinks&quot; it&#39;s basically layer 2 loop, you need to use multiple tables and additional ASICS resources.</p>
+
+<p>In the case of multi homing, you have :</p>
+
+<p>Mac Address - - &gt; ESI - - &gt;  multiple vteps - - &gt; multiple underlay next hops/paths</p>
+
+<p>In the case of mclag with virtual vtep you have:</p>
+
+<p>Mac address - - &gt; single vtep - - &gt; underlay ecmp </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

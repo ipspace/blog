@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3497981333240017939">04 July 2010 08:10</a>
+                <a rel="nofollow" id="c3497981333240017939" href="#3497981333240017939">04 July 2010 08:10</a>
               </span>
             </div>
-            <p class="comment-content">Duh, BGP has been troubled from the very beginning :) Just recall BGP Wedgies, MED oscillations and RR/Confederation routing loops due to topology incongruency. However, the problem you described here has been known in BGP design from the very beginning - you should use a single IGP for entire AS, OR implement BGP confederation to scale your IGP. Taking a look into the original (old) RFC 1771 you will notice that AS definition clearly states <br /><br />&quot;Autonomous System is a set of routers under a single technical administration, using an interior gateway protocol and common metrics to route packets within the AS&quot;<br /><br />However, I doubt everyone pays attention to this defintion until he sees the effect of incomparable metrics in practice :)</p>
+            <div class="comment-content">Duh, BGP has been troubled from the very beginning :) Just recall BGP Wedgies, MED oscillations and RR/Confederation routing loops due to topology incongruency. However, the problem you described here has been known in BGP design from the very beginning - you should use a single IGP for entire AS, OR implement BGP confederation to scale your IGP. Taking a look into the original (old) RFC 1771 you will notice that AS definition clearly states <br /><br />&quot;Autonomous System is a set of routers under a single technical administration, using an interior gateway protocol and common metrics to route packets within the AS&quot;<br /><br />However, I doubt everyone pays attention to this defintion until he sees the effect of incomparable metrics in practice :)</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6801517707310518793">04 July 2010 08:22</a>
+                <a rel="nofollow" id="c6801517707310518793" href="#6801517707310518793">04 July 2010 08:22</a>
               </span>
             </div>
-            <p class="comment-content">RFC? Is that the thing someone reads to you after everything else fails?  :-P</p>
+            <div class="comment-content">RFC? Is that the thing someone reads to you after everything else fails?  :-P</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2837151315265392988">04 July 2010 21:51</a>
+                <a rel="nofollow" id="c2837151315265392988" href="#2837151315265392988">04 July 2010 21:51</a>
               </span>
             </div>
-            <p class="comment-content">I usually go even a bit further - access IGP (if you have one) and core IGP should not be linked. Flaps in access network have no business disrupting your core; they should end up in BGP.</p>
+            <div class="comment-content">I usually go even a bit further - access IGP (if you have one) and core IGP should not be linked. Flaps in access network have no business disrupting your core; they should end up in BGP.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Benson Schliesser</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5962389458372676485">04 July 2010 21:59</a>
+                <a rel="nofollow" id="c5962389458372676485" href="#5962389458372676485">04 July 2010 21:59</a>
               </span>
             </div>
-            <p class="comment-content">The phrase &quot;at least in its BGP core&quot; is a good way to end the post.  Multiple IGPs aren&#39;t bad, in and of themselves.  In fact, one can use different protocols to do creative traffic engineering, create interesting regional topologies, etc.  As you know, the key is the &quot;administrative&quot; weight of each protocol, which defines their relative priority.  Under most circumstances this is all it takes.  That said, in a typical network it&#39;s almost certainly desirable to have a uniform IGP topology covering the core. Additional IGP protocols should probably be limited to internal networks with well defined borders, data center networks, or specific regional / aggregation networks.</p>
+            <div class="comment-content">The phrase &quot;at least in its BGP core&quot; is a good way to end the post.  Multiple IGPs aren&#39;t bad, in and of themselves.  In fact, one can use different protocols to do creative traffic engineering, create interesting regional topologies, etc.  As you know, the key is the &quot;administrative&quot; weight of each protocol, which defines their relative priority.  Under most circumstances this is all it takes.  That said, in a typical network it&#39;s almost certainly desirable to have a uniform IGP topology covering the core. Additional IGP protocols should probably be limited to internal networks with well defined borders, data center networks, or specific regional / aggregation networks.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Lulavinyl</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3393340742759463046">14 July 2010 12:25</a>
+                <a rel="nofollow" id="c3393340742759463046" href="#3393340742759463046">14 July 2010 12:25</a>
               </span>
             </div>
-            <p class="comment-content">Sometimes you need to use 2 IGP and BGP on the same router. Think about a router which is facing the internet. That router uses BGP to speak with the ISP´s routers. Also uses EIGRP instead of static routes to create a peer neighboring with them. And eventually, it uses OSPF into the private network. <br />This router has 1 interface into OSPF routing protocol, another one into BGP mixed up with EIGRP. It would be a RIB-Failure because of the double-use of 2 IGP + BGP. But it is necesary.<br />I set up this lab on my GNS3 and it works though It shows a rib failure.</p>
+            <div class="comment-content">Sometimes you need to use 2 IGP and BGP on the same router. Think about a router which is facing the internet. That router uses BGP to speak with the ISP´s routers. Also uses EIGRP instead of static routes to create a peer neighboring with them. And eventually, it uses OSPF into the private network. <br />This router has 1 interface into OSPF routing protocol, another one into BGP mixed up with EIGRP. It would be a RIB-Failure because of the double-use of 2 IGP + BGP. But it is necesary.<br />I set up this lab on my GNS3 and it works though It shows a rib failure.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">jsicuran</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5282490994344841927">22 September 2010 19:32</a>
+                <a rel="nofollow" id="c5282490994344841927" href="#5282490994344841927">22 September 2010 19:32</a>
               </span>
             </div>
-            <p class="comment-content">And yet according to the Cisco approved design practice and covered in the Interconnecting Data Centers Using VPLS using two IGPs is acceptable. 1 for the IP/BGP to MPLS/LDP process and the other for all internal core non MPLS related traffic. Fun times</p>
+            <div class="comment-content">And yet according to the Cisco approved design practice and covered in the Interconnecting Data Centers Using VPLS using two IGPs is acceptable. 1 for the IP/BGP to MPLS/LDP process and the other for all internal core non MPLS related traffic. Fun times</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Vandana</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#826734774709547717">16 January 2011 19:45</a>
+                <a rel="nofollow" id="c826734774709547717" href="#826734774709547717">16 January 2011 19:45</a>
               </span>
             </div>
-            <p class="comment-content">Hi,<br /><br />         Was just reading the scenerio that u described above ....Have a little confusion ...You said &quot;E&quot; would learn that route from &quot;A&quot; via OSPF and &quot;D&quot; via EIGRP and to choose the best path it would use the METRIC ....Would it not user AD value prior to that ???? *DONT_KNOW*</p>
+            <div class="comment-content">Hi,<br /><br />         Was just reading the scenerio that u described above ....Have a little confusion ...You said &quot;E&quot; would learn that route from &quot;A&quot; via OSPF and &quot;D&quot; via EIGRP and to choose the best path it would use the METRIC ....Would it not user AD value prior to that ???? *DONT_KNOW*</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2913639133279406900">17 January 2014 06:38</a>
+                <a rel="nofollow" id="c2913639133279406900" href="#2913639133279406900">17 January 2014 06:38</a>
               </span>
             </div>
-            <p class="comment-content">hi,<br />i second Vandana&#39;s comments. Can someone clear on this one since EIGRP Route summary/Internal EIGRP AD is superior than OSPF. </p>
+            <div class="comment-content">hi,<br />i second Vandana&#39;s comments. Can someone clear on this one since EIGRP Route summary/Internal EIGRP AD is superior than OSPF. </div>
           </div>
         </li>
       </div>

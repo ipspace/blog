@@ -1,0 +1,95 @@
+{
+   "comments": [
+      {
+         "date": "27 May 2021 10:49",
+         "html": "<p>Hi Ivan,\nas this is one of my fav topis, I couldn&#39;t <em>not</em> leave a comment.\nAFAIK, what networking vendors use is normally called &quot;resilient hashing&quot;. I&#39;ve no PhD in this area but it looks like consistent hashing is much more advanced and is still an active area of research (see https://medium.com/@dgryski/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8). My very simplified understanding is that resilient hashing is a similar idea but due to a small number of buckets and limited TCAM space cannot satisfy all of the properties of a consistent hashing algorithm. </p>\n\n<p>&gt; Is there an easy-to-deploy software solution out there that would allow you to build large-scale anycast TCP services\nIf we assume that &quot;large-scale&quot; and &quot;easy&quot; are not mutually exclusive, I believe there is. Due to how networking is implemented inside Kubernetes, you always get two layers of load-balancers (similar to cloud-scalers) with the first layer doing some form of consistent hashing and second layer doing the standard L7 LB (ingress). One prime example is Cilium https://cilium.io/blog/2020/11/10/cilium-19#maglev and although I don&#39;t have the exact numbers, I believe they test their releases against some pretty large number of nodes.</p>\n",
+         "id": "595",
+         "name": " Michael Kashin",
+         "pub": "2021-05-27T10:49:46",
+         "type": "comment"
+      },
+      {
+         "date": "27 May 2021 03:20",
+         "html": "<p>To add to my first comment, I have once tried to implement maglev-style load-balancing on an Arista switch. I used ECMP to spread the flows over multiple buckets and openflow agent to catch the first packet and install openflow (directflow) entries with timeouts (implementing the connection tracking part of maglev). This worked perfectly fine, I was able to add and remove anycast destinations without disrupting the existing traffic flows and it even survived the leaf switch outage (the second leaf in a pair would hash the flows in the same way). </p>\n\n<p>My dreams got shattered when I realised that the maximum number of directflow entries supported was limited to 1-2k and, since I was installing exact match entries, this would not usable in real life.</p>\n",
+         "id": "596",
+         "name": " Michael Kashin",
+         "pub": "2021-05-27T15:20:01",
+         "type": "comment"
+      },
+      {
+         "date": "27 May 2021 04:03",
+         "html": "<p>Similar to Michael&#39;s comment and re: the Cilium bits, we also drop an L4 IPVS layer in front of our k8s services that need access from outside a cluster. \nhttps://github.com/Demonware/balanced</p>\n\n<p>A BGP speaker on the IPVS nodes anycast the VIP to the network. IPVS has a consistent hashing algo (HRW / rendezvous hash). That way you don&#39;t depend on the network fabric to do any type of resilient hashing; you have a thin L4 software LB handle you resilience. This is done without coordination between the IPVS nodes (no flow state sync).</p>\n\n<p>With a consistent hash like that, you can still be susceptible to a partial rehash on backend add/drop, e.g. if you have 9 existing backends and add a tenth, then 1/10 of the connections from the existing backends will now hash to the new backend. However, IPVS does carry a tiny little bit of state in each node to also effectively implement resilient hashing to tolerate backend change. If you have a backend add/drop, if your flow is still traversing the same IPVS node then it will continue to forward your traffic to the same backend.</p>\n\n<p>If you hit a backend scale up/down or failure, <em>and</em> you have an ECMP rehash to land on a different IPVS node, and you&#39;ve maintained a long-lived TCP connection through both of those events, then you <em>might</em> have impact to your connection if you are one of the subset of flows that got rehashed on the backend change (e.g. that 1/10 bit noted above).</p>\n\n<p>In practice, meeting all of those conditions is rare enough, and the efforts needed to mitigate for that as well (e.g. adding another indirection layer to punt to the previous host like Fastly implemented), that for our use case this type of setup is sufficient. </p>\n",
+         "id": "597",
+         "name": " Hugo Slabbert",
+         "pub": "2021-05-27T16:03:14",
+         "type": "comment"
+      },
+      {
+         "date": "27 May 2021 07:20",
+         "html": "<p>@Michael: The <em>OMG, there are so few flow entries</em> realization is why I made so much fun of <em>solving global load balancing with OpenFlow</em> stupidity that was propagated as the highest achievement of mankind when OpenFlow was still young.</p>\n\n<p>On a more serious note, there are cases where you have few long-lived sessions, and hardware per-flow load balancing makes perfect sense. IIRC there was a startup using an Arista switch with DirectFlow to implement scale-out iSCSI cluster. Every host would connect to the same target, and the TCP session would be redirected to one of the (anycast) cluster members.</p>\n\n<p>@Hugo: Thanks a million for the pointer and the background info... and I agree, the edge cases are probably not worth worrying about in the HTTP world.</p>\n",
+         "id": "598",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-05-27T19:20:03",
+         "type": "comment"
+      },
+      {
+         "date": "27 May 2021 11:13",
+         "html": "<p>Re the IPVS convo. Might also be worth checking out Katran:  https://engineering.fb.com/2018/05/22/open-source/open-sourcing-katran-a-scalable-network-load-balancer/</p>\n",
+         "id": "600",
+         "name": "Scott O'Brien",
+         "pub": "2021-05-27T23:13:35",
+         "type": "comment"
+      },
+      {
+         "date": "27 May 2021 08:53",
+         "html": "<p>Some time ago I came up with the idea of LS-TCP - Label-switched TCP, see https://patents.justia.com/patent/20170149935. It basically inserts the ID of the selected server into every TCP packet.</p>\n\n<p>At the time I created a Linux kernel patch for the server side (3.3.8 in 2013), but nowadays one could probably use EBPF to get similar results.</p>\n\n<p>See https://youtu.be/rHavko3qXHs for a video demo - at 1:57 I stop the load balancer program, and restart it - that works because it is stateless</p>\n",
+         "id": "599",
+         "name": "Jeroen van Bemmel",
+         "pub": "2021-05-27T20:53:24",
+         "type": "comment"
+      },
+      {
+         "date": "28 May 2021 08:11",
+         "html": "<p>Hi Ivan, there&#39;s also this software load balancer called Cheetah, available in both stateless and stateful forms, that guarantees per-connection resiliency without using consistent hashing:</p>\n\n<p>https://www.usenix.org/system/files/nsdi20-paper-barbette.pdf</p>\n\n<p>Source code is available on GitHub (ref 4) for people who want to look into the details of the implementation. The short version: it encodes a piece of info and puts it into the header of packets and use mapping tables similar to (but not the same as) those of Fastly design, to achieve consistency and speed. Cheetah can be used on both software and hardware LB implementations.</p>\n",
+         "id": "601",
+         "name": "Minh Ha",
+         "pub": "2021-05-28T08:11:20",
+         "type": "comment"
+      },
+      {
+         "date": "28 May 2021 11:57",
+         "html": "<p>Multipath TCP version 1 includes support for this use case. All servers have two addresses :\n- the anycast one used to send the initial SYN\n- a unique unicast one</p>\n\n<p>The client connects to the server using the anycast address, the server advertises its unique address and then the client can create additional subflows to the server using this additional address. Multipath TCP version 1 includes one bit in the MP_CAPABLE option to indicate that the client cannot create subflows towards the anycast address.</p>\n\n<p>This idea was evaluated in https://inl.info.ucl.ac.be/publications/making-multipath-tcp-friendlier-load-balancers-and-anycast.html</p>\n\n<p>Multipath TCP version 1 is defined in https://datatracker.ietf.org/doc/rfc8684/</p>\n\n<p>The support for this feature in the Linux kernel is still work in progress but could appear in the coming months, check https://github.com/multipath-tcp/mptcp_net-next/wiki</p>\n",
+         "id": "602",
+         "name": "Olivier Bonaventure",
+         "pub": "2021-05-28T11:57:08",
+         "type": "comment"
+      },
+      {
+         "date": "29 May 2021 03:04",
+         "html": "<p>The Katran, Cilium / eBPF, and MTCP options are all intriguing ones for sure. Lots more options becoming available. I need to dig into the multipath TCP options a bit more, but I&#39;m still stuck at the moment on thinking that for public VIPs with lots of backends it&#39;s feasible for IPv6 but starts to become untenable in terms of public address requirements for IPv4. But perhaps there you&#39;d shove a 4to6 translation or just straight TCP reverse proxy layer in there somewhere.</p>\n",
+         "id": "603",
+         "name": "Hugo Slabbert",
+         "pub": "2021-05-29T03:04:52",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2021 11:04",
+         "html": "<p>&gt; It&rsquo;s almost impossible to get into the situation where you&rsquo;d have equal-cost paths to two different sites anywhere in the Internet.</p>\n\n<p>I have to disagree with that statement. ECMP is heavily used within ISP networks. And if the ISPs network is built in a symmetric way with two peering points to another ISP having the same IGP distance (from the user location) it would do ECMP to two different sites. Any that is perfectly fine from a network design perspective.</p>\n\n<p>Anycast TCP is even less controllable on the public internet than it is in a datacenter. In the end, anycast is not load balancing. ECMP can of course be used for TCP traffic. But only to get the traffic into a set of load balancers (like Maglev, Katran, etc).</p>\n",
+         "id": "615",
+         "name": " takt",
+         "pub": "2021-05-31T11:04:43",
+         "type": "comment"
+      },
+      {
+         "date": "31 May 2021 03:05",
+         "html": "<p>@takt: I know that ISPs use ECMP internally. That was not the point.</p>\n\n<p>If I&#39;m a content provider using anycast, I&#39;d advertise the same prefix from multiple sites (probably not close together for resiliency reasons), commonly over multiple ISPs or at multiple IXPs. Unless you&#39;re heavily tweaking BGP path selection rules, it would be hard to get ECMP under those assumptions.</p>\n\n<p>In practice, anycast TCP works well in the global Internet... at least for minor players like CloudFlare, LinkedIn, or AWS ;)</p>\n",
+         "id": "616",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-05-31T15:05:09",
+         "type": "comment"
+      }
+   ],
+   "count": 11,
+   "type": "post",
+   "url": "2021/05/tcp-anycast-hard.html"
+}

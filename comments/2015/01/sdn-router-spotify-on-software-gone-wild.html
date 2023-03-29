@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06036116499201821433" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4801647051604510490">17 January 2015 02:32</a>
+                <a rel="nofollow" id="c4801647051604510490" href="#4801647051604510490">17 January 2015 02:32</a>
               </span>
             </div>
-            <p class="comment-content">It&#39;s funny I built something similar some time ago but it used an intermediate netflow probe since I was using an openflow &quot;transit&quot; device.   The transit &quot;device&quot; was really just OVS on a server with ExaBGP receiving transit/peering routes.   What I was really trying to test was realtime route aggregation to reduce ultimate RIB/FIB size.  <br /><br />The real crux is how the BGP controller programs the upstream forwarding plane devices.  <br /><br />You may be able to do some fancy stuff on things like Cumulus Linux or even the Cisco Nexus 3K around running something like ExaBGP in a container so the routes do not even hit the RIB of the device.  Your BGP controller then has another session  to the transit devices where it populates the device only with routes it needs with specific NH addresses.   I2RS may be another option in the future.  <br /><br /></p>
+            <div class="comment-content">It&#39;s funny I built something similar some time ago but it used an intermediate netflow probe since I was using an openflow &quot;transit&quot; device.   The transit &quot;device&quot; was really just OVS on a server with ExaBGP receiving transit/peering routes.   What I was really trying to test was realtime route aggregation to reduce ultimate RIB/FIB size.  <br /><br />The real crux is how the BGP controller programs the upstream forwarding plane devices.  <br /><br />You may be able to do some fancy stuff on things like Cumulus Linux or even the Cisco Nexus 3K around running something like ExaBGP in a container so the routes do not even hit the RIB of the device.  Your BGP controller then has another session  to the transit devices where it populates the device only with routes it needs with specific NH addresses.   I2RS may be another option in the future.  <br /><br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4327562514183931644">17 January 2015 10:00</a>
+                <a rel="nofollow" id="c4327562514183931644" href="#4327562514183931644">17 January 2015 10:00</a>
               </span>
             </div>
-            <p class="comment-content">Somewhere in the podcast I asked David why he didn&#39;t use OpenFlow. His answer was along the lines: &quot;I wanted to use something that I could make to work with minimum effort&quot; ;)</p>
+            <div class="comment-content">Somewhere in the podcast I asked David why he didn&#39;t use OpenFlow. His answer was along the lines: &quot;I wanted to use something that I could make to work with minimum effort&quot; ;)</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06036116499201821433" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7288720350023971419">17 January 2015 22:26</a>
+                <a rel="nofollow" id="c7288720350023971419" href="#7288720350023971419">17 January 2015 22:26</a>
               </span>
             </div>
-            <p class="comment-content">Sorry I didn&#39;t listen to the podcast. :)   I&#39;m definitely not a big OF proponent, I don&#39;t think it has a real future, but it&#39;s not really very difficult to get working these days.   <br /><br />http://www.metaswitch.com/sites/default/files/lean-switch-white-paper-final-1.pdf<br /><br />Metaswitch had the same basic premise by proxying the BGP sessions from the transit/peer connected device through to the controller, so the transit device doesn&#39;t even have a RIB and runs no control plane protocols except the OF agent.  Definitely a purist solution. :) <br /><br />To me installing specific routes on the borders doesn&#39;t seem to be too advantageous.  What would be more interesting is say putting a switch on each transit connection, with a default route, then manipulating BGP routes sent downstream to TOR or servers to send traffic out a specific switch using some constraint.  </p>
+            <div class="comment-content">Sorry I didn&#39;t listen to the podcast. :)   I&#39;m definitely not a big OF proponent, I don&#39;t think it has a real future, but it&#39;s not really very difficult to get working these days.   <br /><br />http://www.metaswitch.com/sites/default/files/lean-switch-white-paper-final-1.pdf<br /><br />Metaswitch had the same basic premise by proxying the BGP sessions from the transit/peer connected device through to the controller, so the transit device doesn&#39;t even have a RIB and runs no control plane protocols except the OF agent.  Definitely a purist solution. :) <br /><br />To me installing specific routes on the borders doesn&#39;t seem to be too advantageous.  What would be more interesting is say putting a switch on each transit connection, with a default route, then manipulating BGP routes sent downstream to TOR or servers to send traffic out a specific switch using some constraint.  </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01480163748691636347" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8507047647813059851">18 January 2015 10:19</a>
+                <a rel="nofollow" id="c8507047647813059851" href="#8507047647813059851">18 January 2015 10:19</a>
               </span>
             </div>
-            <p class="comment-content">The main problem with OF is that you can install a couple of thousands of OF entries while if you use your FIB you can install easily more than 60.000 routes.<br /><br />Regarding &quot;manipulating BGP routes sent downstream to TOR or servers to send traffic out a specific switch&quot;, that should be doable with this software and some overlay like MPLS or GRE tunnels. Potentially you could use pmacct to gather flow statistics and some other tool to test your peers/transit networks, then use this tool to correlate information from both tools, choose routes based on your policies and the metrics gathered and install them on the FIB or send them to ToR/hosts.<br /><br />The real question is, do you really need that? 60k routes seems enough for most networks and if you want to steer certain flows via a specific peer you could easily extend this tool to install PBR/OF entries for those specific flows. That would allow you to use the routes in the FIB as default and to steer traffic for certain applications using PBR/OF.<br /><br />The tool in fact is just a framework that potentially could allow you to do any sort of traffic engineering based on flow statistics, metrics, company policies, etc... You could even run this tool peering with an ASR/MX and use it to choose your egress peer instead of limiting the amount of routes you want. All the functionality is built in the form of plugins.<br /><br />In summary, when building a solution you have to think on your use case and build a solution that is as simple as possible and iterate over it. And always keep in mind hardware, whitebox switches might look attractive because they are cheap but their form factor might not suit your needs for certain use cases so I would rather prefer to stick with a generic solution I can run everywhere than a solution that forces me to use a specific platform.</p>
+            <div class="comment-content">The main problem with OF is that you can install a couple of thousands of OF entries while if you use your FIB you can install easily more than 60.000 routes.<br /><br />Regarding &quot;manipulating BGP routes sent downstream to TOR or servers to send traffic out a specific switch&quot;, that should be doable with this software and some overlay like MPLS or GRE tunnels. Potentially you could use pmacct to gather flow statistics and some other tool to test your peers/transit networks, then use this tool to correlate information from both tools, choose routes based on your policies and the metrics gathered and install them on the FIB or send them to ToR/hosts.<br /><br />The real question is, do you really need that? 60k routes seems enough for most networks and if you want to steer certain flows via a specific peer you could easily extend this tool to install PBR/OF entries for those specific flows. That would allow you to use the routes in the FIB as default and to steer traffic for certain applications using PBR/OF.<br /><br />The tool in fact is just a framework that potentially could allow you to do any sort of traffic engineering based on flow statistics, metrics, company policies, etc... You could even run this tool peering with an ASR/MX and use it to choose your egress peer instead of limiting the amount of routes you want. All the functionality is built in the form of plugins.<br /><br />In summary, when building a solution you have to think on your use case and build a solution that is as simple as possible and iterate over it. And always keep in mind hardware, whitebox switches might look attractive because they are cheap but their form factor might not suit your needs for certain use cases so I would rather prefer to stick with a generic solution I can run everywhere than a solution that forces me to use a specific platform.</div>
           </div>
         </li>
       </div>
@@ -107,10 +102,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06036116499201821433" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2950305525349049119">18 January 2015 17:32</a>
+                <a rel="nofollow" id="c2950305525349049119" href="#2950305525349049119">18 January 2015 17:32</a>
               </span>
             </div>
-            <p class="comment-content">Well OF entries is really all about hardware just like anything else.  There are some tricks you can play with the Trident II to get &gt;100K flow entries just like you can get 128K LPM v4 entries vs. the default 32K.  You can also get some PCI cards for COTS (like Flownic) which accelerate OVS and support millions of entries.  I digress though since I&#39;m not really a fan of OF, it was just a means of programming the device. :)  <br /><br />The key is definitely open and extensible.  There are many use cases out there and of course not all solutions work for everyone.   My python skills aren&#39;t great but I will take a look at the software and see if there is anything I could add plugin wise.  If you see Nic@Spotify tell him Phil says hi.  :) </p>
+            <div class="comment-content">Well OF entries is really all about hardware just like anything else.  There are some tricks you can play with the Trident II to get &gt;100K flow entries just like you can get 128K LPM v4 entries vs. the default 32K.  You can also get some PCI cards for COTS (like Flownic) which accelerate OVS and support millions of entries.  I digress though since I&#39;m not really a fan of OF, it was just a means of programming the device. :)  <br /><br />The key is definitely open and extensible.  There are many use cases out there and of course not all solutions work for everyone.   My python skills aren&#39;t great but I will take a look at the software and see if there is anything I could add plugin wise.  If you see Nic@Spotify tell him Phil says hi.  :) </div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5916601563972336395">20 January 2015 21:17</a>
+                <a rel="nofollow" id="c5916601563972336395" href="#5916601563972336395">20 January 2015 21:17</a>
               </span>
             </div>
-            <p class="comment-content">You may want to check: http://www.corsa.com/<br />Their solution is using FPGAs...which provides programmable HW, feature enhancements to HW will become much easier than fork lift upgrade.</p>
+            <div class="comment-content">You may want to check: http://www.corsa.com/<br />Their solution is using FPGAs...which provides programmable HW, feature enhancements to HW will become much easier than fork lift upgrade.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -144,10 +139,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06036116499201821433" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1575291888337818995">20 January 2015 21:55</a>
+                <a rel="nofollow" id="c1575291888337818995" href="#1575291888337818995">20 January 2015 21:55</a>
               </span>
             </div>
-            <p class="comment-content">Yes Corsa and Noviflow are two hardware vendors making actual OpenFlow switches which carry 1M+ entries.  The cost is going to be higher than a white label Trident 2 box though.  The Corsa boxes have a lot of buffer memory versus what you&#39;ll find on a Trident which drives the price up.   Buffering is an issue if you are aggregating lots of 10G ToR connections in a datacenter to a transit switch with a 10G transit uplink.   These cheap white label boxes do not have the buffers to deal with it.  <br /><br />They also have relatively poor CPU in them to keep costs down.   It&#39;s the main hardware differentiator between Juniper&#39;s QFX5100 and their ONIE-compatible white label switch.  </p>
+            <div class="comment-content">Yes Corsa and Noviflow are two hardware vendors making actual OpenFlow switches which carry 1M+ entries.  The cost is going to be higher than a white label Trident 2 box though.  The Corsa boxes have a lot of buffer memory versus what you&#39;ll find on a Trident which drives the price up.   Buffering is an issue if you are aggregating lots of 10G ToR connections in a datacenter to a transit switch with a 10G transit uplink.   These cheap white label boxes do not have the buffers to deal with it.  <br /><br />They also have relatively poor CPU in them to keep costs down.   It&#39;s the main hardware differentiator between Juniper&#39;s QFX5100 and their ONIE-compatible white label switch.  </div>
           </div>
         </li>
       </div>
@@ -169,10 +164,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2760882033631449546">14 February 2015 02:21</a>
+                <a rel="nofollow" id="c2760882033631449546" href="#2760882033631449546">14 February 2015 02:21</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;ve just watched your presentation in YouTube and listened to the podcast and I&#39;d like to raise some points for further clarification.<br />Well, if you are peering with someone, the normal behavior is for them to announce you longer prefixes through their peer connections compared to their transit. <br />That alone would already select the traffic back from you AS to go through the peer connection and &#39;offload&#39; the data off transit connections.<br />Your destinations would be reachable via either, transit or peers.<br />In that case - assuming that your peers are not masochists SoBs that prefer to use their transit connections instead of their peers connections - wouldn&#39;t be simpler to just accept default routes from your upstream  providers and naturally steer the traffic using BGP announcement policies from your peers?<br />Sorry for the dumb question.</p>
+            <div class="comment-content">I&#39;ve just watched your presentation in YouTube and listened to the podcast and I&#39;d like to raise some points for further clarification.<br />Well, if you are peering with someone, the normal behavior is for them to announce you longer prefixes through their peer connections compared to their transit. <br />That alone would already select the traffic back from you AS to go through the peer connection and &#39;offload&#39; the data off transit connections.<br />Your destinations would be reachable via either, transit or peers.<br />In that case - assuming that your peers are not masochists SoBs that prefer to use their transit connections instead of their peers connections - wouldn&#39;t be simpler to just accept default routes from your upstream  providers and naturally steer the traffic using BGP announcement policies from your peers?<br />Sorry for the dumb question.</div>
           </div>
         </li>
       </div>

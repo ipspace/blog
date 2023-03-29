@@ -1,0 +1,644 @@
+<div class="comments post" id="comments">
+  <h4>7 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1517">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">BOGDAN GOLAB</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1517" href="#1517">17 November 2022 04:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1516">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Octavio</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1516" href="#1516">17 November 2022 02:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I am interested to see if HIP fixes all of this in the future. It looks like it has the potential to be a well-designed solution. It doesn&#39;t meet your &quot;widely-deployed&quot; criteria yet but it looks promising and it doesn&#39;t feel hackish.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1518">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1518" href="#1518">18 November 2022 08:58</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;(according to RINA) build an overlay network with global host addresses on top of that?&quot;</p>
+
+<p>I&#39;m not an expert on RINA, but nowhere have I read that&#39;s what RINA proposes: definitely not host address in the routing table. Can you show me where it&#39;s written? </p>
+
+<p>&quot;Under that scenario, host would be known only by its node address (H). Everyone between the bifurcation point (IXP) and the host needs to know that there are two paths toward the host, and what their state is. That includes ISP-A, ISP-B, and all upstream ISPs including upstream ISPs directly connected to IXP2.&quot;</p>
+
+<p>Why? What&#39;s the point of summarization then? The point of addressing that&#39;s pushed forward by John Day, father of RINA, which I agree with, is an address should be route-independent. Summarization done with hierarchical addressing can even bound the number of routes in the Internet RIB. With current interface addressing BS, the global RIB is about a million routes and counting. Why does it keep rising? Because it has no boundary condition imposed. Why are network engineers called engineers when they have no understanding of boundary conditions, a fundamental aspect in engineering? </p>
+
+<p>Akamai uses 2-level DNS to implement their infrastructure; it&#39;s the same concept as hierarchical addressing, and it works for them. Now coming back to the example, ISP A and B just needs the summary routes of whatever blocks C and D possess, and on and on it goes. How should this fail to work?</p>
+
+<p>Also, in our discussion of the same topic way earlier, you pointed out that money is an incentive, no ISP can make money if hierarchical addressing is used. Fair enough. But the next question is, since money ruins a lot of things in life (IT is no exception), is money the right question to ask? When something is considered national security or national asset too valuable to fall into private hands with dubious interests, like the main grid or the oil-gas pipelines, govts will be responsible for building and managing it. Why is communication infrastructure any different? Isn&#39;t it part of national critical infrastructure these days? Why give it to private hands when they can potentially sell out to your enemies? </p>
+
+<p>Back to the global RIB, we have tight-coupling and complexity-collapse problem. Just because it hasn&#39;t happened yet (or it might have) doesn&#39;t mean it won&#39;t. The same way the financial idiots keep claiming that derivatives are all well and good, until they blew up in their faces and were so close to bringing down the whole financial system in 97-98 and 2008; even now the global financial system is fucked up in more ways than one; just a looming failure of Credit Suisse risks bringing down the whole shebang. Global tight-coupling complexity surely is a good thing. </p>
+
+<p>IPv6 helps make things worse, and way worse for those who know hardware. So while &#39;worst decision ever&#39; is debatable, it&#39;s pretty up there among the very bad ones. CLNP recognizes the need for hierarchy in addressing, that&#39;s what we can learn from. Should we go back to it? Hell no. IPv4 is simple, and everything simple is good. Start with this simplicity, and improve it. Funny the MPLS guys got it right by accident; they unconsciously implemented hierarchical addressing with MPLS VPN; it worked.  </p>
+
+<p>Another point that you mention somewhere is: depending on the scenarios, at worst you might end up with millions of routes in the local network, in exchange for a clean, short global RIB. I don&#39;t think that&#39;s the case if you implement the hierarchical addressing the right way, but let&#39;s just assume this is the case, is it that terrible? The blast radius is contained within the network. OTOH, a global RIB with millions of routes has the potential to result in massive errors that can bring down the whole or a large part of the Internet. Containment vs contagion: a clear win to me. </p>
+
+<p>Looks like John Day is demonized as an anti-IP guy. He&#39;s not. Just because he invented RINA, doesn&#39;t mean he&#39;s gone nuts about it; that&#39;s what I like about him: common sense and simplicity. His views on addressing and multihoming are here for anyone with an open mind:</p>
+
+<p>https://pouzinsociety.org/sites/default/files/LocIDSplit090309.pdf</p>
+
+<p>https://psoc.i2cat.net/sites/default/files/PSOC-tutorials-naming-addressing.pdf?_ga=2.82479954.572590943.1668752621-682182543.1668752621</p>
+
+<p>https://psoc.i2cat.net/sites/default/files/PSOC-tutorial-Mobility-made-simple.pdf?_ga=2.219319261.572590943.1668752621-682182543.1668752621</p>
+
+<p>As for complaint on why his book wasn&#39;t written from an engineering perspective, well, he already stated that in the book and made clear in the title of the book for those with subtlety. He tried to propose an alternative model of networking based on his decades of experience (no, he&#39;s not just an armchair expert in academia), and that hierarchical model works well when applied to IP. </p>
+
+<p>MP-TCP and SCMP are just lipstick on a pig. A typical result of adding more complexity to solve complexity, and still failing to solve it, when the fundamentals are wrong. </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1522">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1522" href="#1522">18 November 2022 11:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Welcome back! I expected a comment from you ;)</p>
+
+<p>Your comment prompted me to summarize the point of the blog post into a simple TL&amp;DR which is then followed by the analysis of all potential solution architectures I can see and what their applications are. I can&#39;t see how your comment addresses any of those, if I missed anything please point it out.</p>
+
+<p>As for...</p>
+
+<p>&gt; &quot;(according to RINA) build an overlay network with global host addresses on top of that?&quot;
+&gt;
+&gt; I&#39;m not an expert on RINA, but nowhere have I read that&#39;s what RINA proposes: definitely not host address in the routing table. Can you show me where it&#39;s written?</p>
+
+<p>I did not claim that. I said RINA proposes to solve every challenge by adding another layer, finishing with host addresses on the top layer. I might be wrong about that, but that was the only high-level summary I could get from all the materials you sent me. I just pointed out the implications of that approach.</p>
+
+<p>As for...</p>
+
+<p>&gt; Why? What&#39;s the point of summarization then? The point of addressing that&#39;s pushed forward by John Day, father of RINA, which I agree with, is an address should be route-independent.</p>
+
+<p>... I pointed the implications of various approaches. If you feel my conclusions are wrong please point out where I went wrong.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1527">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1527" href="#1527">19 November 2022 05:03</a>
+              </span>
+            </div>
+            <div class="comment-content">Thx for the warm welcome Ivan : ) ! First, let me say that we greatly agree on LISP&#39;s and MP-TCP&#39;s (and SCTP for that matter) shortcomings.<br />
+
+<p>Re RINA, it essentially is a network model, like the OSI. Because of that, it can make use of IP as its addressing scheme no problem. So RINA and IP are not mutually exclusive.</p>
+
+<p>RINA proposes a self-similar network model, making use of one layer, and repeating it as many times as the network engineer needs, so there&#39;s no fixed number of layers. For simple networks, 3 should suffice most of the time, but as you need more, you can span more. So it&#39;s dynamic and recursive.</p>
+
+<p>Russ White is a proponent of RINA himself, and he too recognizes that OSI is missing a layer, here (in the We are missing a layer section):</p>
+
+<p>http://rule11.tech/reaction-really-need-new-internet/</p>
+
+<p>Russ misunderstood that RINA implies a fixed number of layers, and an even number, which were corrected in the comment section. </p>
+
+<p>So no, RINA doesn&#39;t propose to solve the problem by adding another layer, I hope that much is clear by now.</p>
+
+<p>Back to the example in the blog, if PI addresses are used, then multihoming is solved quite easily. A and B (the host) just do DNS to get the node address of Server, and forward their packets to ISP A or B, which then have the Server IP Block (summary) entry with interface pointing to either ISP C and D, which then end up at Server. And because TCP now uses node address, not interface address, an interface going down won&#39;t trigger session reset. That&#39;s light weight.</p>
+
+<p>Now if Provider-based address are used, then Server would have 2 node addresses. Say A makes a DNS query for Server. That would return one of the 2 node addresses, and A will pick one and pick an interface to send it to Server, either via ISP A or B -- Akamai uses this 2-level approach, hence my mentioning of them. So if the interface to either ISP A or B goes down midsession, as long as A or B knows the route to the existing node address of Server, session won&#39;t reset. Providers can negotiate that. Worst case scenarios, if they don&#39;t want to negotiate anything, session resets. But the point is, it then becomes a non-technical issue, not a fundamental one. And nowhere do I see state explosion.</p>
+
+<p>So as I see it, multihoming can be solved using the network with a 2 level addressing structure, much like the IP-MAC pair in existing network, with DNS name mapped to IP, not to MAC, so MAC change doesn&#39;t cause IP session reset. </p>
+
+<p>Plus, it has the added bonus of simplifying things, reduces the size of global RIB, and removes the tight-coupling which can lead to global synchronized collapse. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1529">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1529" href="#1529">19 November 2022 10:43</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You keep repeating the same thing. Please go and figure out what addresses each box (or ISP) in that diagram uses and what forwarding tables it needs to have, and stop the handwaving tricks like &quot;we use PI addresses... but because TCP uses node addresses, we won&#39;t get session resets&quot;. Do you have one TCP session or two? Are they tied to link addresses or node addresses? What happens with the TCP session tied to ISP-A address when the link to ISP-A goes down?</p>
+
+<p>I&#39;m pretty sure you&#39;ll arrive at one of the choices I mentioned in the blog post. Also, please stop throwing DNS (and Akamai&#39;s particular implementation) into the mix. DNS is like portable phone numbers, it&#39;s irrelevant to this discussion, unless you want to say &quot;we can&#39;t solve the problem in the network layer.&quot;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1531">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1531" href="#1531">20 November 2022 02:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan, the multihoming problem is a problem of delivery (2 interface addresses appear as 2 hosts to the sender, confusing the heck out of them), so it&#39;s by nature a network problem. </p>
+
+<p>&quot;Do you have one TCP session or two?&quot;</p>
+
+<p>One. Like I said, there&#39;s nothing different from the way things work now except TCP session now uses node address instead of interface address.</p>
+
+<p>&quot;Are they tied to link addresses or node addresses?&quot;</p>
+
+<p>They&#39;re tied to node address, so if link addresses go down, sessions won&#39;t reset as long as there&#39;s a route to the node address present somewhere in the path. </p>
+
+<p>&quot;What happens with the TCP session tied to ISP-A address when the link to ISP-A goes down?&quot;</p>
+
+<p>Then the host connects to Server via ISP B, using link address to ISP B to forward packets to Server. The TCP session remains unchanged (not reset), because the node addresses remain the same. As long as ISP B has an entry to route to Server&#39;s network, packets get delivered, session won&#39;t reset. Node address is route-independent in that sense. It cares nothing about the failure or non-failure of the underlying link addresses, as long as there&#39;s still at least 1 link up that it can use to reach the destination, the session will remain on. Apart from that small detail, it&#39;s the same standard datagram delivery throughout the network. </p>
+
+<p>That&#39;s where the missing 1 layer comes from. So in current IP communication, we have interface IP address in the IP layer. In the 2 layer addressing, we have TCP&#39;s IP (the node address) and interface IP (link address). Only the node networks (the network entry, not individual host entries) go into the global RIB. The interface IP networks can remain private. Hope I make myself clear. </p>
+
+<p>And from that, we can see that the MAC layer is redundant because it performs the same function as the interface IP (both name/identify the interface), so it can be removed, and we retain the same number of layers for simplicity (whether it can be removed due to vested interest of vendors putting so much money into it, is another issue). </p>
+
+<p>Btw, Bela wrote in one of his comments below:</p>
+
+<p>&quot;As soon as you have multiple transmission layers, you have more than just one ID and location separation. Actually, you have a number of addresses to be mapped together, more than two. Like in an MPLS stack those multiple labels on top of each other. This is daily business for telcos for ages and they know how to do it.&quot;</p>
+
+<p>Bela just repeated the hierarchical addressing model that John Day mentions in his work, in slightly different wording. Looks like Bela, through his vast experience and knowledge, has also come to see the need for hierarchical addressing for scalability. Needless to say, I agree with him 100% on that.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1532">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1532" href="#1532">20 November 2022 09:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>So in your proposal the host has interface addresses and a node address, and the TCP session is terminated at the node address. Cool.</p>
+
+<p>Next question: which devices and networks know where the node address is, and which ones know the mapping between node address and interface addresses?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1533">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1533" href="#1533">21 November 2022 08:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;which devices and networks know where the node address is&quot;</p>
+
+<p>Since Host&#39;s network blocks (2 in this case) are given to it by ISP A and ISP B from their respective blocks, ISP A and B know their own given blocks, but by default, not the other one&#39;s block.</p>
+
+<p>This poses the question: when Server communicates back to Host using ISP B link (because A has failed), because the session is still up (this session uses an IP given by ISP A to establish the initial channel) the node address therefore hasn&#39;t changed and when ISP B receives the packet, it wouldn&#39;t know where to forward. </p>
+
+<p>This should not be a problem if ISP A and B negotiate to carry routes for their dual-home customers. Then they can place each other&#39;s block entries into their RIBs. These will be network entries, not host entries, so no RIB explosion. And resource accounting can be turned on at the entry point to each ISP to keep track of the amount of data that one ISP carries for the other, so they can bill each other accordingly -- or whatever policy they&#39;d agree to.</p>
+
+<p>ISP D and C don&#39;t have to keep track of ISP A and B&#39;s specific routes. This is where we can use the dynamic layer of nature as proposed by John Day. By having packets getting out of B to D (or A to C) encapsulated with another address from B or A (the total number of layers now is 3, no more), C and D simply forward msg coming back from Server to Host via the same path from which they come, and we have path stickiness with mininum effort. The border routers at B or A are the only ones keeping track of this -- border routers are supposed to be powerful, so they have the hardware needed.</p>
+
+<p>Note that this is what RINA means in a nutshell: do away with a fixed number of layers, and add the capability to spawn another layer if need be (dynamic layering). Will this lead to layer explosion? Not at all. You need max 3 layers if you implement this situation. Most of the time you need only 2 if multi-ISP dual home is not used.  This is OS&#39; virtual memory scheme applied to network.</p>
+
+<p>Of course, if C and D are willing to carry A and B&#39;s routes as well, then we only need 2 layers. Their RIBs will be bigger, but given that 1) by routing on node address, we considerably reduce the number of global RIB entries and cut back severely on the number of updates due to routing change (node addresses don&#39;t change a lot like interface) 2)not every customer needs this level of HA (dual home to 2 ISPs) that should not be an issue.</p>
+
+<p>Also note that in reality, if a company considers itself important enough to have dual-ISP multihoming, very likely they are either trunked or dually connected to each ISP, so total ISP failure is rare. Our network is one of those that need HA -- we serve roughly 60k users, many of them demanding due to the nature of their collaborative work, on a regular basis -- so we have 2 links to our ISP. That&#39;s 2 links dual-homed to 1 ISP. In the past 13 years, we never had, not once, a case of total cut-off. That&#39;s how rare total failure is when things are simple. </p>
+
+<p>So given that low frequency of total failure, most of the time, if we use node level addressing for TCP sessions, we wouldn&#39;t have session reset and our traffic will just traverse one ISP from start to end. So the case of total ISP failure is really an outlier/corner case, can be treated as such if money is a concern: that is, customer can opt to have session reset in those cases instead of paying extra for the 2 ISPs to cooperate with each other on the customer&#39;s traffic. Of course, as explained above, if they want even that final bit squeezed out, we can still do it for them using 2-level addressing scheme. We can even reference how the mobile guys implement roaming to learn a few implementational tricks from them. The point is: this becomes a non-tech and non-structural issue. </p>
+
+<p>&quot;which ones know the mapping between node address and interface addresses?&quot;</p>
+
+<p>This should be mostly answered above already. Each ISP knows their own node-level blocks that they give out to customers, and some of each others&#39;  block if they want to cooperate -- this is the kind of address that goes into their global BGP RIB. As to interface addresses, they&#39;re internal to each router in the network so each router keeps track of their own interface addresses individually; they&#39;re local, not shared. The mapping between node and ifc addresses are therefore, maintained individually on the routers, the same way they currently maintain the mapping between IP and MAC, or IP and outgoing ifc, no change at all.</p>
+
+<p>We use Hierarchical FIB to store this mapping (you&#39;ve had several blog posts discussing H-FIB in the past). So yeah, the hardware forwarding process stays the same as they are now, no change whatsoever.</p>
+
+<p>In fact, I don&#39;t see any change at all to all the RIB/FIB structures, or the way routing and forwarding, both intra- and inter-node, are done, compared to now. NONE. The only thing that changes is we add a true Internetwork layer, with true Internetwork Address (the node address) to the mix, and this kind of address goes into the global BGP RIB. The interface addresses are relegated to the local router&#39;s internal tables. </p>
+
+<p>So essentially we only make 1 small change to the addressing structure to complete what&#39;s missing, and that&#39;s it. This is exactly the OS&#39; virtual memory structure, in order to scale the system to very large memory. Everything else, remains the same as now.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1534">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1534" href="#1534">21 November 2022 08:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I almost stopped at...</p>
+
+<p>&gt; Since Host&#39;s network blocks (2 in this case) are given to it by ISP A and ISP B from their respective blocks, ISP A and B know their own given blocks, but by default, not the other one&#39;s block.</p>
+
+<p>... and definitely stopped at ...</p>
+
+<p>&gt; This should not be a problem if ISP A and B negotiate to carry routes for their dual-home customers. Then they can place each other&#39;s block entries into their RIBs.</p>
+
+<p>You&#39;re solving a problem you like talking about, not the problem described in the blog post.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1537">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1537" href="#1537">22 November 2022 07:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I simply try to solve the problem of 2-way communication between Host and Server, both multihomed, in the situation(s) that you asked. I&#39;m pretty sure that&#39;s the problem of the blog, as written in the TLDR section and as shown in the diagram. </p>
+
+<p>According to TLDR &quot;You cannot solve host multihoming within the network layer while having summarizable network addresses. &quot; I pointed out above that summarizable network addresses (network entries, not host entries) are the ones installed in the RIBs of all ISPs in the path. Even when A and B agree to install some of each other&#39;s routes, those routes all network routes, not host entries, so I can&#39;t see how I contradicted your problem statement. </p>
+
+<p>And nowhere have I seen how Host fails to communicate with Server and vice versa, and so, I can see that multihoming is readily solved in the network. If you notice somewhere along the path where the packets would fail to get delivered to the next node, pls point out. </p>
+
+<p>Of course, if you really meant: You cannot solve host multihoming within the network layer, as in the current OSI IP layer, which is missing half the addressing structure and not a true Internetwork layer, then yes, I agree, we can&#39;t solve it in the network layer the way it is now. We need a complete addressing scheme to solve it. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1519">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1519" href="#1519">18 November 2022 10:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Real life commercially implemented LISP is different. It is using reliable transport and PubSub. Then it has no cache problem. The convergence is usually much faster than with other routing protocols.
+The size of the EID table is a matter of capacity planning and memory profiles. Here there is something to do. Aggregation could help.
+A hybridization of the push vs. pull model would be available by selective PubSub subscription. This is not implemented commercially yet, but we are pushing for this. :-)
+We have just finished a large validation exercise successfully in a consortia of 10 big companies for using a specially profiled version of LISP called Ground Based LISP (GB-LISP) for multilink mobility in aviation networks. It uses a special protocol on the air-ground link. GB-LISP is limited to integrate radio access networks and ground users in the ground networks. This will be further improved to fulfill all the strict requirements for a safety critical application. Now it is under codification as one of the recommended implementations for upcoming ICAO and EUROCA/RTCA standards.
+The major IETF LISP RFCs have been recently updated from Experimental to Standards Track. This is driven by finding new use cases that are better than the original ideas. Another two rounds of IETF LISP standardizations are foreseen...</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1523">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1523" href="#1523">18 November 2022 11:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you! Maybe I should use &quot;O-LISP&quot; for &quot;Original LISP&quot; ;)</p>
+
+<p>I totally agree that properly fine-tuned LISP is useful, and I&#39;m glad to hear you&#39;re pushing it forwarding. I guess we can also agree that LISP is not a solution to global host multihoming the way it was claimed to be.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1520">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1520" href="#1520">18 November 2022 10:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Actually, the telephony network, including mobiles, is already upgraded for a ID vs. location separation. This is called number portability and enforced by laws and regulation, so you have no freedom to ignore it or go any other ways.
+It works with large portability databases for millions or even hundred millions of users. Of course, this is specially designed for this challenge and costly. But it still has a positive business case at the end.
+So if those old telcos can solve similar problems, then why do you think it is not possible to solve it for IP networks with a similar scheme? I know the devil is the details, but not all services have the same continuity requirements. Most of the services can tolerate some drops and some delays to make an address resolution. 
+For highly demanding services, of course, you need other methods. But this is a small minority only. That is where we promote a selective simulcast solution.
+I agree that the best to do such simulcast at the application layer. Our company was a driver behind the radio voice linked session EUROCAE standards. This is a double simulcast between the voice application components. It is also needed for having a maximum independence of the two alternate network paths. 
+Our company has also pushed forward the simulcast scheme for surveillance information. This is now used all over the air traffic control domain for radar sensor data with up 4-times redundancy. 
+Since simulcast is costly, especially in the narrowband safety critical networks, simulcast should be selective by application or traffic class on limited radio links. You would apply it only when it is absolutely needed. Otherwise, you would just do failover at certain speed as required.
+By the way, the latest UAS standards promote that the link failover decision is at the hand of the remote pilot. We are now fighting with this. since uncoordinated path selection could make congestion even worse...</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1524">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1524" href="#1524">18 November 2022 11:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You&#39;re comparing apples and cheeseburgers. Phone number portability is really a DNS function (and we both know how convoluted call setups can be).</p>
+
+<p>It&#39;s easier to solve some things (like number portability) if you have multiple name spaces, and you don&#39;t have to involve all of them in fast path.</p>
+
+<p>Anyway, I should have been more precise: you cannot solve host multihoming <em>within the network layer</em>.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1526">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1526" href="#1526">18 November 2022 07:11</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I had a vague feeling we&#39;d had this discussion before :) Here&#39;s the blog post I wrote at that time:</p>
+
+<p>https://blog.ipspace.net/2022/04/telephone-system-hierarchical-addresses.html</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1521">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1521" href="#1521">18 November 2022 11:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I am just using MP-TCP for my Internet connection. As millions and millions of users. But not at the application layers, rather as an underlay transmission solution. What IP guys tend to forget, that a real network is a hierarchy of a large number of transport layers. Not the OSI model. That has nothing to do with real wide area networks. People should study the ITU-T G.800 series. That is where real networks are properly modeled. We have a cultural problem here, denial of telco know-how...</p>
+
+<p>As soon as you have multiple transmission layers, you have more than just one ID and location separation. Actually, you have a number of addresses to be mapped together, more than two. Like in an MPLS stack those multiple labels on top of each other. This is daily business for telcos for ages and they know how to do it.</p>
+
+<p>On the other hand telcos are using SCTP for ages inside their infrastructure. Because they could use software specifically designed for SCTP, they do not need backward compatibility to socket APIs. And it works well for high-availability and &quot;multi-homing&quot;.</p>
+
+<p>This multi-homing is a problem only if you are limited to old enterprise feature sets on your devices. It is also not taught in most courses how to design high-availability networks... :-)</p>
+
+<p>In many cases, you cannot change your end systems, they are not able to support multi-homing directly, and then you shift the problem to the network if feasible. If you put a multiple attached proxy in front of such a legacy device, then you can achieve a very good availability, since the local link, that is a single point of failure, might be good enough in reliability. Virtual IP addresses are also used quite successfully in such scenarios. </p>
+
+<p>Another simple solution used in safety critical networks is to use multiple end user devices with the same functionality. Then if you have an operational issues, you just move to the next workstation. This is the ultimate high-availability, but of course with some cost.</p>
+
+<p>I am a big fan of the &quot;design to cost&quot; and a risk management approach in engineering. For each cost level you might need different architectures. There is no single solution for everything. We need diversity as well. This also fundamental for safety. It is needed from the business perspective for leveraging you negotiation opportunities...</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1525">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1525" href="#1525">18 November 2022 11:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for pointing this out -- I got a pointer from someone about a deployed BT solution a long while ago, and still haven&#39;t found time to blog about it.</p>
+
+<p>If you&#39;re using something similar to what BT is doing, then you have a pair of MP-TCP proxies, effectively reinventing ML-PPP (or SD-WAN).</p>
+
+<p>Am I missing something? Do you have a more interesting setup?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1528">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1528" href="#1528">19 November 2022 05:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Bela, I hold great respect for the telco guys who worked hard to organically built their networks over the years to meet the difficult challenges. And you&#39;re 100% right with &quot;a real network is a hierarchy of a large number of transport layers. &quot; Very true for mobile networks. </p>
+
+<p>That being said, I have to take side with Ivan when it comes to simplicity and simplification. The reason mobile networks have a large number of transport layers is because they have to keep propping up their network to support different name space, one on top of another, over the years. Now that we have decades of experience, we can look at that model and see if we can simplify here and there, to clean it up and optimize the good bits. Let&#39;s face it: having more parts (more complex) is never a good things, and it&#39;s a nightmare if something goes wrong; anyone who operates complex systems can attest to that.</p>
+
+<p>I have no doubt LISP can work on smaller scale with optimization and things like path liveless problems is not such a big deal in those networks. Scale matters (a corollary of boundary condition), so things that can&#39;t work on a large scale, like OpenFlow for example, can be terrrific solutions at smaller ones. There&#39;s no one-size-fit-all (again, you&#39;re spot on with that). I think what Ivan pointed out in this case, is how LISP fares at the global Internet scale, and last time you already commented that you never intended for LISP to be a solution for Internet routing, IIRC.</p>
+
+<p>The same can be said for MP-TCP and SCTP. They have flaws, but it doesn&#39;t mean they can&#39;t be of great use in certain situations. Pointing out their fundamental problems is not the same as saying &quot;let&#39;s trash those into the dustbin&quot;. Far from it ;) . It&#39;s more so that we can all benefit from the findings and hopefully address the situation. 
+. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1530">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1530" href="#1530">19 November 2022 12:40</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; having more parts (more complex) is never a good thing</p>
+
+<p>Rule 12. My favorite rule!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1546">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Mark Seery</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1546" href="#1546">01 December 2022 08:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>At an abstract level I tend to approach issues like this with the questions 1) What information is needed to complete the function and 2) where is the information (knowing that where information is can often be a choice).</p>
+
+<p>That said, it seems that the above conversation has resolved that the issue is a name space one, and there are various ways of achieving that end result.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1547">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1547" href="#1547">01 December 2022 04:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, we were discussing one of the two hard things: https://twitter.com/secretGeek/status/7269997868</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

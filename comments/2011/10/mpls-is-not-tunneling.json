@@ -1,153 +1,169 @@
 {
-  "comments": [
-    {
-      "date": "12 October 2011 07:46",
-      "html": "Can the packet &quot;escape&quot; anywhere in between the endpoints and decide to take better or more efficient path? No. So it&#39;s not a switched network anymore, but circuit. Call it a tunnel or not, the fact stays the same :)<br /><br />Cheers, Jan",
-      "id": "2556578590985504808",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Jan Zorz",
-      "profile": null,
-      "pub": "2011-10-12T07:46:39.217+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "12 October 2011 09:44",
-      "html": "There are scalability issues either way :<br /><br />IP tunneling (which can also be used as virtual circuits, nobody&#39;s implemented it though) &quot;doesn&#39;t require per-VC state tables&quot;.<br /><br />Scalability on a per-device basis: good, for this should be very summarized (for comparison, &quot;good&quot; means &quot;potentially optimal&quot;, but this is fucked up in the current internet due to lack of hierarchical addressing)<br />Scalability for the whole network: bad, as the bandwidth between any 2 points is strictly limited by the maximum bandwidth of the shortest path<br /><br />MPLS tunneling (or ATM): requires per-device state tables, allows per-circuit path based routing<br /><br />Scalability on a per-device basis: bad, those tables have to get there, have to be maintained (for comparison, &quot;bad&quot; means &quot;heaps better than current internet, but not optimal&quot;)<br />Scalability on the whole network : VERY good, allows TE<br /><br />Concrete example network is A-[10G]-&gt;B-[10G]-&gt;C-[10G]-&gt;A, and you transmit data between A and B<br /><br />IP tunnels give you max 10G (and this potentially has to be shared with other flows)<br />MPLS-TE gives you 20G<br /><br />This may seem trivial, and for small networks you can simply make sure any core link&#39;s bandwidth exceeds maximum total bandwidth (e.g. 20G port-channels in core, 100 mbit uplinks to &lt; 200 devices), but this is not possible for any reasonably sized network. <br /><br />If you have a network that does multiple terabits per second traffic, IP tunnels are right out.",
-      "id": "3151140895155479953",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "oelewapperke@gmail.com",
-      "profile": null,
-      "pub": "2011-10-12T09:44:47.447+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "12 October 2011 11:02",
-      "html": "In softwire for IPv4 over IPv6 mechanisms, we make the distinction between &quot;encapsulation&quot; and &quot;tunnelling&quot;. MPLS is encapsulation.",
-      "id": "2947493367499104897",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ole Troan",
-      "profile": null,
-      "pub": "2011-10-12T11:02:22.512+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "13 October 2011 06:10",
-      "html": "Nice, back to fundamentals! :) It is probably worth noting the difference between circuits (deterministic multiplexing), packet switching (stochastic multiplexing) and virtual-circuits. With circuits being the simplest of them all, we may presume they would be most scalable too ;) Indeed, scalability has to do with the *growth rate of the shared state in the network*. The reason that makes virtual circuits attractive is traffic engineering, which requires a lot of shared state in the network for explicit path selection (p2p). Hence the scalability problems. <br /><br />Interestingly enough, it is possible to implement similar granular traffic engineering with packet switching only, and get same blow up in shared network state. This could be left as an exercise to the readers :) Packet switching does keep network state in the core, just less granular as compared to virtual circuits (and there are serious problems in scale-free topologies). Now coming back to circuit switching, where the amount of network state is fixed in hardware - how comes we are stuck with expensive, poorly scalable packet switches in the network cores ;)",
-      "id": "5834521532334329697",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "plapukhov",
-      "profile": null,
-      "pub": "2011-10-13T06:10:15.410+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "13 October 2011 07:18",
-      "html": "Maybe MPLS should be called Multi Protocol Label Swapping :)",
-      "id": "642046187052124754",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "PG",
-      "profile": null,
-      "pub": "2011-10-13T07:18:47.648+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "13 October 2011 22:33",
-      "html": "I am with Ivan on the hair splitting here but good discussion <br />vlan &quot;tags&quot; tunneling?<br />QinQ<br />mac in mac etc<br />is a dlci mapping a tunnel?<br /><br />that little L2.5 wedge does apply itself to a virtual &quot;SVC&quot; for the underling FEC can be changed and the dynamic process of the L3 routing protocol to LDP also plays a role in determining its state path due to outside conditions. I would believe that the term  tunnel would be used loosely here. <br /><br />The classical defacto term of tunnel in the IP world was GRE type or IP packet in IP(regardless if encrypted or not) packet meaning the inner packet had no clue or was ever exposed to the outside and the de encapsulated packets at endpoints had no idea of the amount of &quot;hops&quot; traversed. So to an endpoint the trace route is 2 hops yet it really traversed 2+. But in that little wedge L2.5 world that IP packet is fully exposed and even though the upper label is processed there is still a chance for a &quot;punt&quot; and the packet is still exposed. Yet we are using labels as &quot;virtual tunnels&quot; etc. The trace route is still 2 hops to the endpoints through the &quot;cloud&quot; due to MBGP/VRF/VPN mechanics etc)  Just Semantics. We can split the nomenclature hairs on protocol function to whatever we want these days with the types of &quot;tunneling&quot; or &quot;encapsulation&quot; features we have available today(as Ivan mentioned).  Great post by Ivan always a great read.. <br /><br />So instead of splitting hairs why not split tunneling(oh that was bad) ;)",
-      "id": "182614237905424430",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "jsicuran",
-      "profile": null,
-      "pub": "2011-10-13T22:33:04.542+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "18 October 2011 14:59",
-      "html": "Best counter example against tunneling would be MPLS-TP.",
-      "id": "574157350798491006",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2011-10-18T14:59:24.784+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "25 May 2012 22:00",
-      "html": "&quot;Can the packet &quot;escape&quot; anywhere in between the endpoints and decide to take better or more efficient path?&quot;<br /><br />Yes. LFIB is built based on the routing table.",
-      "id": "6554935893491051520",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2012-05-25T22:00:02.587+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "07 March 2013 05:15",
-          "html": "L2VPN is (probably ;) tunneling. L3VPN? As you say, depends on how you view the label stack. BTW, we had a great ontological discussion on one of the Packet Pushers podcasts:<br /><br />http://packetpushers.net/show-102-a-layer-of-indirection-is-mpls-tunneling/",
-          "id": "2784067800238862759",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-03-07T05:15:17.192+01:00",
-          "ref": "1674333713803891371",
-          "type": "comment"
-        },
-        {
-          "date": "07 March 2013 16:44",
-          "html": "Interesting listen, thanks for pointing me towards it.  Another potential definition of tunneling which was kind of hinted at during the discussion was if the core devices (P routers) are unable to understand/forward the tunneled/encapsulated protocol information when it is decapsulated then it is tunneling.  E.g. L3 VPN is tunneling because if the P routers removed the MPLS labels they would not know where to forward the IP packet contained within as they do not have the correct routing information.<br /><br />I&#39;m currently trying to come up with a definition for VPN, hence the interest in the subject area.  So far I&#39;ve managed to deduce that almost everything is VPN!",
-          "id": "3075843744753876683",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/12239512740267298658",
-          "pub": "2013-03-07T16:44:12.452+01:00",
-          "ref": "1674333713803891371",
-          "type": "comment"
-        }
-      ],
-      "date": "06 March 2013 17:12",
-      "html": "Would you consider MPLS L2VPN as tunnelling as the layer 2 frame is encapsulated in another layer 2 frame with the layer 2.5 (MPLS label stack)?<br /><br />How about MPLS L3VPN?  There is still only a single L3 &amp; L2 header, however it uses an MPLS label stack, MPLS over MPLS as it were.<br /><br />If an MPLS label stack is a virtual circuit then L2VPN would be tunneling but L3VPN would be a VC.",
-      "id": "1674333713803891371",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/12239512740267298658",
-      "pub": "2013-03-06T17:12:08.523+01:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "20 June 2016 19:04",
-      "html": "Agree with the title. MPLS should be circuitry. Problem is that too many instructors try to talk it like tunneling. And even the boss told the programmer to make it &quot;interface Tunnel1&quot; even when the coder wanted to make it &quot;interface Circuit1&quot;. ",
-      "id": "707560233660056146",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "jcg1541",
-      "profile": "https://www.blogger.com/profile/07999495349338068039",
-      "pub": "2016-06-20T19:04:10.387+02:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    },
-    {
-      "date": "21 November 2016 20:44",
-      "html": "This comment has been removed by the author.",
-      "id": "8520677801665398134",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Humberto Fioravante Ferro",
-      "profile": "https://www.blogger.com/profile/12497327928590842369",
-      "pub": "2016-11-21T20:44:03.655+01:00",
-      "ref": "1546790474902329785",
-      "type": "comment"
-    }
-  ],
-  "count": 13,
-  "id": "1546790474902329785",
-  "type": "post",
-  "url": "2011/10/mpls-is-not-tunneling.html"
+   "comments": [
+      {
+         "date": "12 October 2011 07:46",
+         "html": "Can the packet &quot;escape&quot; anywhere in between the endpoints and decide to take better or more efficient path? No. So it&#39;s not a switched network anymore, but circuit. Call it a tunnel or not, the fact stays the same :)<br /><br />Cheers, Jan",
+         "id": "2556578590985504808",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Jan Zorz",
+         "profile": null,
+         "pub": "2011-10-12T07:46:39.217+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "12 October 2011 09:44",
+         "html": "There are scalability issues either way :<br /><br />IP tunneling (which can also be used as virtual circuits, nobody&#39;s implemented it though) &quot;doesn&#39;t require per-VC state tables&quot;.<br /><br />Scalability on a per-device basis: good, for this should be very summarized (for comparison, &quot;good&quot; means &quot;potentially optimal&quot;, but this is fucked up in the current internet due to lack of hierarchical addressing)<br />Scalability for the whole network: bad, as the bandwidth between any 2 points is strictly limited by the maximum bandwidth of the shortest path<br /><br />MPLS tunneling (or ATM): requires per-device state tables, allows per-circuit path based routing<br /><br />Scalability on a per-device basis: bad, those tables have to get there, have to be maintained (for comparison, &quot;bad&quot; means &quot;heaps better than current internet, but not optimal&quot;)<br />Scalability on the whole network : VERY good, allows TE<br /><br />Concrete example network is A-[10G]-&gt;B-[10G]-&gt;C-[10G]-&gt;A, and you transmit data between A and B<br /><br />IP tunnels give you max 10G (and this potentially has to be shared with other flows)<br />MPLS-TE gives you 20G<br /><br />This may seem trivial, and for small networks you can simply make sure any core link&#39;s bandwidth exceeds maximum total bandwidth (e.g. 20G port-channels in core, 100 mbit uplinks to &lt; 200 devices), but this is not possible for any reasonably sized network. <br /><br />If you have a network that does multiple terabits per second traffic, IP tunnels are right out.",
+         "id": "3151140895155479953",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "oelewapperke@gmail.com",
+         "profile": null,
+         "pub": "2011-10-12T09:44:47.447+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "12 October 2011 11:02",
+         "html": "In softwire for IPv4 over IPv6 mechanisms, we make the distinction between &quot;encapsulation&quot; and &quot;tunnelling&quot;. MPLS is encapsulation.",
+         "id": "2947493367499104897",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ole Troan",
+         "profile": null,
+         "pub": "2011-10-12T11:02:22.512+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "13 October 2011 06:10",
+         "html": "Nice, back to fundamentals! :) It is probably worth noting the difference between circuits (deterministic multiplexing), packet switching (stochastic multiplexing) and virtual-circuits. With circuits being the simplest of them all, we may presume they would be most scalable too ;) Indeed, scalability has to do with the *growth rate of the shared state in the network*. The reason that makes virtual circuits attractive is traffic engineering, which requires a lot of shared state in the network for explicit path selection (p2p). Hence the scalability problems. <br /><br />Interestingly enough, it is possible to implement similar granular traffic engineering with packet switching only, and get same blow up in shared network state. This could be left as an exercise to the readers :) Packet switching does keep network state in the core, just less granular as compared to virtual circuits (and there are serious problems in scale-free topologies). Now coming back to circuit switching, where the amount of network state is fixed in hardware - how comes we are stuck with expensive, poorly scalable packet switches in the network cores ;)",
+         "id": "5834521532334329697",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "plapukhov",
+         "profile": null,
+         "pub": "2011-10-13T06:10:15.410+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "13 October 2011 07:18",
+         "html": "Maybe MPLS should be called Multi Protocol Label Swapping :)",
+         "id": "642046187052124754",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "PG",
+         "profile": null,
+         "pub": "2011-10-13T07:18:47.648+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "13 October 2011 22:33",
+         "html": "I am with Ivan on the hair splitting here but good discussion <br />vlan &quot;tags&quot; tunneling?<br />QinQ<br />mac in mac etc<br />is a dlci mapping a tunnel?<br /><br />that little L2.5 wedge does apply itself to a virtual &quot;SVC&quot; for the underling FEC can be changed and the dynamic process of the L3 routing protocol to LDP also plays a role in determining its state path due to outside conditions. I would believe that the term  tunnel would be used loosely here. <br /><br />The classical defacto term of tunnel in the IP world was GRE type or IP packet in IP(regardless if encrypted or not) packet meaning the inner packet had no clue or was ever exposed to the outside and the de encapsulated packets at endpoints had no idea of the amount of &quot;hops&quot; traversed. So to an endpoint the trace route is 2 hops yet it really traversed 2+. But in that little wedge L2.5 world that IP packet is fully exposed and even though the upper label is processed there is still a chance for a &quot;punt&quot; and the packet is still exposed. Yet we are using labels as &quot;virtual tunnels&quot; etc. The trace route is still 2 hops to the endpoints through the &quot;cloud&quot; due to MBGP/VRF/VPN mechanics etc)  Just Semantics. We can split the nomenclature hairs on protocol function to whatever we want these days with the types of &quot;tunneling&quot; or &quot;encapsulation&quot; features we have available today(as Ivan mentioned).  Great post by Ivan always a great read.. <br /><br />So instead of splitting hairs why not split tunneling(oh that was bad) ;)",
+         "id": "182614237905424430",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "jsicuran",
+         "profile": null,
+         "pub": "2011-10-13T22:33:04.542+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "18 October 2011 14:59",
+         "html": "Best counter example against tunneling would be MPLS-TP.",
+         "id": "574157350798491006",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2011-10-18T14:59:24.784+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "25 May 2012 22:00",
+         "html": "&quot;Can the packet &quot;escape&quot; anywhere in between the endpoints and decide to take better or more efficient path?&quot;<br /><br />Yes. LFIB is built based on the routing table.",
+         "id": "6554935893491051520",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2012-05-25T22:00:02.587+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "07 March 2013 05:15",
+               "html": "L2VPN is (probably ;) tunneling. L3VPN? As you say, depends on how you view the label stack. BTW, we had a great ontological discussion on one of the Packet Pushers podcasts:<br /><br />http://packetpushers.net/show-102-a-layer-of-indirection-is-mpls-tunneling/",
+               "id": "2784067800238862759",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-03-07T05:15:17.192+01:00",
+               "ref": "1674333713803891371",
+               "type": "comment"
+            },
+            {
+               "date": "07 March 2013 16:44",
+               "html": "Interesting listen, thanks for pointing me towards it.  Another potential definition of tunneling which was kind of hinted at during the discussion was if the core devices (P routers) are unable to understand/forward the tunneled/encapsulated protocol information when it is decapsulated then it is tunneling.  E.g. L3 VPN is tunneling because if the P routers removed the MPLS labels they would not know where to forward the IP packet contained within as they do not have the correct routing information.<br /><br />I&#39;m currently trying to come up with a definition for VPN, hence the interest in the subject area.  So far I&#39;ve managed to deduce that almost everything is VPN!",
+               "id": "3075843744753876683",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/12239512740267298658",
+               "pub": "2013-03-07T16:44:12.452+01:00",
+               "ref": "1674333713803891371",
+               "type": "comment"
+            }
+         ],
+         "date": "06 March 2013 17:12",
+         "html": "Would you consider MPLS L2VPN as tunnelling as the layer 2 frame is encapsulated in another layer 2 frame with the layer 2.5 (MPLS label stack)?<br /><br />How about MPLS L3VPN?  There is still only a single L3 &amp; L2 header, however it uses an MPLS label stack, MPLS over MPLS as it were.<br /><br />If an MPLS label stack is a virtual circuit then L2VPN would be tunneling but L3VPN would be a VC.",
+         "id": "1674333713803891371",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/12239512740267298658",
+         "pub": "2013-03-06T17:12:08.523+01:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "20 June 2016 19:04",
+         "html": "Agree with the title. MPLS should be circuitry. Problem is that too many instructors try to talk it like tunneling. And even the boss told the programmer to make it &quot;interface Tunnel1&quot; even when the coder wanted to make it &quot;interface Circuit1&quot;. ",
+         "id": "707560233660056146",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "jcg1541",
+         "profile": "https://www.blogger.com/profile/07999495349338068039",
+         "pub": "2016-06-20T19:04:10.387+02:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "21 November 2016 20:44",
+         "html": "This comment has been removed by the author.",
+         "id": "8520677801665398134",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Humberto Fioravante Ferro",
+         "profile": "https://www.blogger.com/profile/12497327928590842369",
+         "pub": "2016-11-21T20:44:03.655+01:00",
+         "ref": "1546790474902329785",
+         "type": "comment"
+      },
+      {
+         "date": "12 February 2021 12:02",
+         "html": "<p>The original post by Greg on Google + is dead.  Is there an archive somewhere?</p>\n",
+         "id": "408",
+         "name": "Ronald Bartels",
+         "pub": "2021-02-12T12:02:40",
+         "type": "comment"
+      },
+      {
+         "date": "12 February 2021 05:16",
+         "html": "<p>@Ronald: Nope. Google <a href=\"https://killedbygoogle.com/\">service killing machinery</a> is way more thorough than what they give us to control our data they&#39;re collecting...</p>\n",
+         "id": "409",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-02-12T17:16:43",
+         "type": "comment"
+      }
+   ],
+   "count": 15,
+   "id": "1546790474902329785",
+   "type": "post",
+   "url": "2011/10/mpls-is-not-tunneling.html"
 }

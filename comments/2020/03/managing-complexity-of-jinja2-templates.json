@@ -1,0 +1,31 @@
+{
+   "comments": [
+      {
+         "date": "16 April 2020 02:57",
+         "html": "<p>Hi Ivan,\nI&#39;m going through your Ansible lectures. One thing I&#39;m not sure about and wanted to ask you:\n  tasks:\n  - template: src=/home/ht/NetOpsworkshop/Ansible/Includes/ios/common.j2 dest=/etc/ansible/configs/&#123;&#123; inventory_hostname &#125;&#125;.txt</p>\n\n<p>Why can I not have the src &amp; dest as a list of dictionaries?\n- src: /src_path/\n- dest: /dest_path/</p>\n\n<p>What logic am I missing? Overall, I think your training sessions are beyond anything I have ever come across. So, a big thank you!</p>\n",
+         "id": "9",
+         "name": "harry",
+         "pub": "2020-04-16T02:57:33",
+         "type": "comment"
+      },
+      {
+         "date": "16 April 2020 03:12",
+         "html": "<p>When posting the comment above, the format was butchered...technically, the - src &amp; - dest are properly formatted and the syntax passes yamllint. Where to use dict of dicts vs list of dicts. Or am I even asking the right question? I will stop obsessing and wait. Thanks.</p>\n",
+         "id": "10",
+         "name": "Harpreet Taluja",
+         "pub": "2020-04-16T03:12:29",
+         "type": "comment"
+      },
+      {
+         "date": "16 April 2020 08:06",
+         "html": "<p>The <strong>template</strong> module takes a single template and creates a single output file. Why? Because it was designed that way ;) </p>\n\n<p>If you want to render a bunch of templates in a directory then you have to attach a <strong>loop</strong> to the <strong>template</strong> module, either looping through a predefined <em>list</em> of templates or using a file pattern iterator.</p>\n\n<p>As to &quot;where to use lists or dictionaries&quot;, it&#39;s one of those &quot;it depends&quot; questions... in this case on what you want to have in your data model, and what&#39;s the best way to structure it. You might find this article useful: https://www.ipspace.net/kb/DataModels/</p>\n",
+         "id": "11",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-04-16T08:06:50",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2020/03/managing-complexity-of-jinja2-templates.html"
+}

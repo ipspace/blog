@@ -1,0 +1,44 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "06 December 2021 03:02",
+               "html": "<p>FRR has a &#39;frr defaults datacenter&#39; command which reduces BGP timer intervals from their (conservative) Internet-based BGP defaults. https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/17612-bgp.html suggests that the default peer retry time on Cisco is 30s, try reducing that to the minimum (10s) (for example)</p>\n",
+               "id": "911",
+               "name": "Jeroen van Bemmel",
+               "pub": "2021-12-06T15:02:44",
+               "ref": "910",
+               "type": "comment"
+            },
+            {
+               "date": "06 December 2021 04:12",
+               "html": "<p>@Anonymous: Thank you, fixed.</p>\n\n<p>The logic for implicit next hop self is probably going along this line: &quot;<em>if I have two paths, but I can only advertise one, let&#39;s make myself the next hop because I know how to use both of them, but others won&#39;t</em>&quot;</p>\n\n<p>It seems the long delay is caused by <code>bgp nopeerup-delay</code>, maybe in combination with Graceful Restart code, as the BGP RIB is evaluated as soon as the updates from the last BGP neighbor are received. More testing needed.</p>\n",
+               "id": "914",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-12-06T16:12:12",
+               "ref": "910",
+               "type": "comment"
+            },
+            {
+               "date": "06 December 2021 08:32",
+               "html": "<p>But command &quot;bgp nopeerup-delay&quot; is not configured by default on Cisco IOS whereas &quot;bgp update-delay&quot; is set to 120 seconds by default. See: https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/command/irg-cr-book/bgp-a1.html</p>\n\n<p>Daniel also got a good explanation: https://lostintransit.se/2016/02/25/ccde-bgp-convergence/</p>\n\n<p>It seems that someone has had success with &quot;bgp update-delay&quot; in the past: https://community.cisco.com/t5/routing/slow-bgp-convergence/td-p/2008294</p>\n",
+               "id": "916",
+               "name": "Anonymous",
+               "pub": "2021-12-06T20:32:05",
+               "ref": "914",
+               "type": "comment"
+            }
+         ],
+         "date": "06 December 2021 01:59",
+         "html": "<p>&quot;Spine switches are also BGP route reflectors&quot; &lt;&lt;&lt; There&#39;s only one spine switch in your example.</p>\n\n<p>&quot;Ideal end result: three equal-cost paths toward the anycast prefix on L1 and S*<em>2</em>*.&quot; &lt;&lt;&lt; should be S1</p>\n\n<p>In the output &quot;Routing table for the anycast prefix on the spine node (S1)&quot; I think the next-hop &quot;10.1.0.21&quot; is wrong as you haven&#39;t disabled next-hop-self on leaf switches at that stage. It should be &quot;10.0.0.3&quot;.</p>\n\n<p>Maybe implicit next-hop-self and BGP Add-Path is an optimization mechanism because there&#39;s only one exit point (L2 in that example) anyway. Kinda like a summarization.</p>\n\n<p>For the one minute/60 seconds delay after bootup maybe &quot;bgp update-delay&quot; will solve it. Found something from Petr: https://blog.ine.com/2010/11/22/understanding-bgp-convergence\nOtherwise I suggest to debug BGP.</p>\n",
+         "id": "910",
+         "name": "Anonymous",
+         "pub": "2021-12-06T13:59:19",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2021/12/bgp-anycast-lab.html"
+}

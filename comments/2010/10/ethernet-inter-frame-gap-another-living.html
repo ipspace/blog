@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4447330063242380389">08 October 2010 09:12</a>
+                <a rel="nofollow" id="c4447330063242380389" href="#4447330063242380389">08 October 2010 09:12</a>
               </span>
             </div>
-            <p class="comment-content">As far as I understand, the IFG is there to provide headroom to compensate for clocking errors.</p>
+            <div class="comment-content">As far as I understand, the IFG is there to provide headroom to compensate for clocking errors.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrismarget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3149846794072863303">08 October 2010 16:33</a>
+                <a rel="nofollow" id="c3149846794072863303" href="#3149846794072863303">08 October 2010 16:33</a>
               </span>
             </div>
-            <p class="comment-content">The interfame gap isn&#39;t there for benefit of the sending station, nor is it there to reduce collisions.<br /><br />Quoting Rich Seifert (who wrote that part of the specification):<br /><br />&quot;the purpose of the IFG is to allow receivers time to &quot;recover&quot; after reception of a frame (e.g., finish DMA operations, post status, adjust buffer pointers, etc.). This time is needed in both half- and full-duplex mode equally&quot;<br /><br />IFG doesn&#39;t help with collisions because IFG != random backoff timer.  IFG is /always/ 96 bit times, so two shared-media stations who both have a frame queued will /always/ collide on the first try, after both having waiting the /same/ 96 bit times.  Collisions are not reduced.  It&#39;s CSMA/CD &lt;- Collision Detection, not Collision Avoidance.<br /><br />Note that the &quot;gap to avoid collision&quot; strategy does exist in 801.11-based networks with CSMA/CA (avoidance), where the IFG before a new sender comes on the air consists of both a fixed time AND a QoS-enabling/collision-avoiding roll of the dice.<br /><br />I mention the 802.11 scheme because it&#39;s clever:  high priority packets roll a die with (say) 4 sides, resulting in a delay of 0-3 units.  Low priority packets roll a die with (say) 16 sides, resulting in a delay of 0-15 units.  The probability is that your voice frame will hit the air before your ftp frame, even though they are being broadcast onto a shared media (air) by different and uncoordinated radios.<br /><br />IPG has been eliminated in 802.11n with frame aggregation.  A sending station is now allowed to stream a number frames back-to-back-to-back.  This strategy is a huge improvement to both latency and throughput in a shared media environment.  On a full-duplex link the effect would be less dramatic.<br /><br />FA can be a problem for voice, however.  If the voice frame loses the dice roll, then he has to wait for a whole stack of FTP frames before he gets to roll for airtime again.</p>
+            <div class="comment-content">The interfame gap isn&#39;t there for benefit of the sending station, nor is it there to reduce collisions.<br /><br />Quoting Rich Seifert (who wrote that part of the specification):<br /><br />&quot;the purpose of the IFG is to allow receivers time to &quot;recover&quot; after reception of a frame (e.g., finish DMA operations, post status, adjust buffer pointers, etc.). This time is needed in both half- and full-duplex mode equally&quot;<br /><br />IFG doesn&#39;t help with collisions because IFG != random backoff timer.  IFG is /always/ 96 bit times, so two shared-media stations who both have a frame queued will /always/ collide on the first try, after both having waiting the /same/ 96 bit times.  Collisions are not reduced.  It&#39;s CSMA/CD &lt;- Collision Detection, not Collision Avoidance.<br /><br />Note that the &quot;gap to avoid collision&quot; strategy does exist in 801.11-based networks with CSMA/CA (avoidance), where the IFG before a new sender comes on the air consists of both a fixed time AND a QoS-enabling/collision-avoiding roll of the dice.<br /><br />I mention the 802.11 scheme because it&#39;s clever:  high priority packets roll a die with (say) 4 sides, resulting in a delay of 0-3 units.  Low priority packets roll a die with (say) 16 sides, resulting in a delay of 0-15 units.  The probability is that your voice frame will hit the air before your ftp frame, even though they are being broadcast onto a shared media (air) by different and uncoordinated radios.<br /><br />IPG has been eliminated in 802.11n with frame aggregation.  A sending station is now allowed to stream a number frames back-to-back-to-back.  This strategy is a huge improvement to both latency and throughput in a shared media environment.  On a full-duplex link the effect would be less dramatic.<br /><br />FA can be a problem for voice, however.  If the voice frame loses the dice roll, then he has to wait for a whole stack of FTP frames before he gets to roll for airtime again.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7356563568981190496">13 October 2010 10:08</a>
+                <a rel="nofollow" id="c7356563568981190496" href="#7356563568981190496">13 October 2010 10:08</a>
               </span>
             </div>
-            <p class="comment-content">Thank you for the explanation. Looks like we&#39;ve traded bandwidth for simpler/cheaper silicon. Makes perfect sense.<br /><br />On the collision debate: in a coaxial cable, one bit @ 10 Mbps ~= 20 meters. 96 bit times is thus almost 2 km. The IFG thus (probably) ensures that a workstation that has just finished transmitting a frame will not compete with others for the next frame slot as there&#39;s almost no chance of collision if someone else starts transmitting as soon as the carrier is gone from the cable.</p>
+            <div class="comment-content">Thank you for the explanation. Looks like we&#39;ve traded bandwidth for simpler/cheaper silicon. Makes perfect sense.<br /><br />On the collision debate: in a coaxial cable, one bit @ 10 Mbps ~= 20 meters. 96 bit times is thus almost 2 km. The IFG thus (probably) ensures that a workstation that has just finished transmitting a frame will not compete with others for the next frame slot as there&#39;s almost no chance of collision if someone else starts transmitting as soon as the carrier is gone from the cable.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrismarget</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3118708247009244304">13 October 2010 17:42</a>
+                <a rel="nofollow" id="c3118708247009244304" href="#3118708247009244304">13 October 2010 17:42</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, thank you for the effort you put into your blog.  I&#39;m happy to be able to give a little something back.<br /><br />Actually, any time that two stations have a frame queued, they&#39;re /guaranteed/ to collide.<br /><br />One station might start to transmit &quot;early&quot; (perspective matters here) because:<br />- he&#39;s cheating<br />- his clock is slightly broken<br />- his position on the cable makes the transmission &quot;just appear&quot; early relative to somebody else<br />- ?<br /><br />No matter the reason, if another station has a frame queued (there&#39;s a race for wire time), that 2nd station /will/ transmit.  Even after somebody else has started, the 2nd guy will force a collision.  There&#39;s no &quot;collision avoidance&quot; here.<br /><br />The rationale is to force stations into the (extended) random backoff interval, rather than allow a station with a slightly too-fast clock to dominate the link.</p>
+            <div class="comment-content">Ivan, thank you for the effort you put into your blog.  I&#39;m happy to be able to give a little something back.<br /><br />Actually, any time that two stations have a frame queued, they&#39;re /guaranteed/ to collide.<br /><br />One station might start to transmit &quot;early&quot; (perspective matters here) because:<br />- he&#39;s cheating<br />- his clock is slightly broken<br />- his position on the cable makes the transmission &quot;just appear&quot; early relative to somebody else<br />- ?<br /><br />No matter the reason, if another station has a frame queued (there&#39;s a race for wire time), that 2nd station /will/ transmit.  Even after somebody else has started, the 2nd guy will force a collision.  There&#39;s no &quot;collision avoidance&quot; here.<br /><br />The rationale is to force stations into the (extended) random backoff interval, rather than allow a station with a slightly too-fast clock to dominate the link.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9102655451274938911">13 October 2010 20:08</a>
+                <a rel="nofollow" id="c9102655451274938911" href="#9102655451274938911">13 October 2010 20:08</a>
               </span>
             </div>
-            <p class="comment-content">Interesting new perspective ... Now I&#39;m starting to understand why (coax/shared) Ethernet rocked with two stations (FTP could get 1.2 MBps throughput) and slowed down significantly with multiple traffic flows ... 15 years too late, but nonetheless quite intriguing.<br /><br />Thank you!</p>
+            <div class="comment-content">Interesting new perspective ... Now I&#39;m starting to understand why (coax/shared) Ethernet rocked with two stations (FTP could get 1.2 MBps throughput) and slowed down significantly with multiple traffic flows ... 15 years too late, but nonetheless quite intriguing.<br /><br />Thank you!</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Diego</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8135244442753176546">08 June 2011 23:52</a>
+                <a rel="nofollow" id="c8135244442753176546" href="#8135244442753176546">08 June 2011 23:52</a>
               </span>
             </div>
-            <p class="comment-content">If another station has a framed queue, won&#39;t it first &#39;sense&#39; whether a packet is already being transmitted by another station before starting its own transmission (CSMA)?</p>
+            <div class="comment-content">If another station has a framed queue, won&#39;t it first &#39;sense&#39; whether a packet is already being transmitted by another station before starting its own transmission (CSMA)?</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Wan T</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2539931534299713775">21 February 2012 11:43</a>
+                <a rel="nofollow" id="c2539931534299713775" href="#2539931534299713775">21 February 2012 11:43</a>
               </span>
             </div>
-            <p class="comment-content">In wiki, for 1 Gigabit connection minimum interface gap is 8 byte = 64 bit times. Do you know of any vendor implement IFG less than 96 bit times?<br /><br />How does the two system tell each other on what bit times ( IFG )to use?<br /><br />Thanks</p>
+            <div class="comment-content">In wiki, for 1 Gigabit connection minimum interface gap is 8 byte = 64 bit times. Do you know of any vendor implement IFG less than 96 bit times?<br /><br />How does the two system tell each other on what bit times ( IFG )to use?<br /><br />Thanks</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/10092004207548215743" rel="nofollow">yu-hsiang</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7144726828343656807">24 July 2014 09:21</a>
+                <a rel="nofollow" id="c7144726828343656807" href="#7144726828343656807">24 July 2014 09:21</a>
               </span>
             </div>
-            <p class="comment-content">Hi, IPG (or IFG) is 96 bit time for all kinds of speed in IEEE802.3. But I don&#39;t know why the number &quot;96&quot; is. Could any one tell me how to calculate the number &quot;96&quot; ? Thanks a lot.</p>
+            <div class="comment-content">Hi, IPG (or IFG) is 96 bit time for all kinds of speed in IEEE802.3. But I don&#39;t know why the number &quot;96&quot; is. Could any one tell me how to calculate the number &quot;96&quot; ? Thanks a lot.</div>
           </div>
         </li>
       </div>

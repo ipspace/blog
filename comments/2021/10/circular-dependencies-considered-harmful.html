@@ -1,0 +1,122 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="807">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c807" href="#807">21 October 2021 10:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>There is a nice story in the O&#39;Reilly book <a href="https://sre.google/sre-book/table-of-contents/">Site Reliability Engineering</a> providing an example for &quot;[...]when an infrastructure is stable enough, its users take it as a given&quot;:</p>
+
+<p>&quot;<em>In any given quarter, if a true failure has not dropped availability below the target, a controlled outage will be synthesized by intentionally taking down the system. In this way, we are able to flush out unreasonable dependencies on Chubby shortly after they are added.</em>&quot;</p>
+
+<p>Source: <a href="https://sre.google/sre-book/service-level-objectives/#xref_risk-management_global-chubby-planned-outage">The Global Chubby Planned Outage</a></p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="808">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c808" href="#808">21 October 2021 12:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Fantastic solution. Thanks a million for the pointer!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="810">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c810" href="#810">22 October 2021 11:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I refrained from commenting on the BGP ORR post because it reeks of shit from the way you described it, sounding like another BS LFA nonsense. The Cisco doco that goes about it in detail makes it all clear ORR is just a solution looking for (imaginary) problems, problems already solved by other existing methods. And even as a solution, ORR is a terrible one with circular dependency -- look how many other features you need to enable just for it to work, and if that&#39;s on the surface, then what kind of hellscape would it be code-wise -- and a poor attempt to turn BGP into a LS protocol. why BGP LS, why? What&#39;s next, path vector OSPF? </p>
+
+<p>And indeed ORR resort to the LFA/SPB trick, and due to the intensity of running SPF multiple times, they have to limit it with designated roots. On top of that, ORR is the wrong way to solve the problem, a stupid nerdknob resulting from a poor understanding of Addressing. MPLS is the right way to solve the problem, because it solves the real one, by creating multiple logical address spaces out of one underlying physical IP space. A good design of the network with appropriate placement of RRs is also another right way to do things. Inventing rubbish band-aids like ORR for lame excuses mentioned in the Cisco doc is just dumb. Optimal RR my ass. </p>
+
+<p>Re the FB outage, I incidentally commented on your NSF post some 3 weeks before this happened, on the unpredictable nature of nonlinear effects resulting from optimization-induced complexity. Their outage just drives home the point that optimization is a dumb process and leads to combinations of circular dependency that no one can account for and test. The combinations can be infinite given the parameter space in a large network with lots of features turned on; who has the capability to enumerate all of the twists and turns, let alone test them? Let&#39;s face it: tail risks in a complex system aka Black Swan events, by their non-linear nature, cannot be predicted -- think Fukushima -- so instead of trying to rationalize them after the fact, it&#39;s much better to go simple in the first place. </p>
+
+<p>Reading the many papers that FB IT Teams published over the years, and one can&#39;t help but get the notion that a lot of what these guys do is change for the sake of change. Have to wonder if that&#39;s part of their job security? If so, the very same reason is the cause behind the downfall of Big Science, where profit incentive drives people away from doing real science and into shitty career-building and grant-winning parlor tricks. FB IT, incl.their network Teams, always seem to be on the run for one sort of optimization or another -- I suppose the same thing can be said about other HyperScalers as well, and the AGILE movement in general, so this is not directed just toward FB -- but are most of their optimizations optimal or even necessary? I tend to seek out heretic discoveries due to my big distrust of the mainstream, and in one example, looks like a lot of advanced routing tricks fare no better than plain-old BGP:</p>
+
+<p>https://homepages.dcc.ufmg.br/~cunha/papers/arnold19hotnets-bgp.pdf</p>
+
+<p>So much for optimization. The upside is questionable, while the downside blatantly obvious, exemplified by this outage and the likes. When you cramp too much crap in, at some stage a bifurcation point will be reached, when even a small tiny change will propagate throughout the entire system, causing phase transition and potential collapse, depending on the nature of the change. That, is the true Butterfly effect, and not the popular, jaded Butterfly effect people like to brag about in the mainstream. But IT people, being ignorant of this, don&#39;t seem to care much about adding complexity on top of complexity, because it makes them look smart.</p>
+
+<p>This, IMO, is one consequence of fucking around too much with software and computer, of the BS software-eating-the-world mentality. People who spend all days in front of the PC screen lose touch with physical reality, and become stupid nerds thinking all the stuff they read in science fiction can be realized. Over-reliance on technology, attributing non-existent power to it, is a manifestation of this WOKE mentality -- I said over-reliance because looks how they couldn&#39;t even get into the office without the outage. Maybe making RFC 1925 mandatory reading for all IT workers can be a step in the right direction to help reverse this trend.</p>
+
+<p>&quot;Every large-enough system is full of circular dependencies (someone should make a law out of that).&quot;</p>
+
+<p>Yes they do. Here is one Ivan :))</p>
+
+<p>https://how.complexsystems.fail/</p>
+
+<p>and RFC 3439 as well. RFC 3439 is essentially RFC 1925 BY EXAMPLES. RFC 1925 raises the thesis, 3439 gives it detailed treatment. It is, therefore, a crucial reading that everyone serious about Networking must read. Read and re-read, time and time again, to appreciate the lessons in it, and see what a mess the current stage of networking really is. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="809">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c809" href="#809">21 October 2021 02:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>When WAP Gateway was a very critical component of our services, then after designing proper redundancy and failover, we initiated a failure testing every month. We also tested restoration of failed components. Sometimes you get suprises at the point... :-)
+It should have proved that our assumptions about having configured everything correctly could be still valid. Service availability improved significantly.</p>
+
+<p>People also should not forget failures because of single events. This is rarely taken into account...
+With circular dependencies such failures could be amplified and would look extremely misterious, because you cannot repeat or recreate them...</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

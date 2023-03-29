@@ -1,0 +1,60 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="956">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Robert Raszuk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c956" href="#956">05 January 2022 08:16</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The text in section 5.1.3 was not really targeting to prohibit load balancing. Keep in mind that it is FIB layer which constructs actual forwarding paths.</p>
+
+<p>The text has been suggested by Tom Petch in discussion about BGP advertising valid paths or even paths it actually installs in the RIB/FIB. The entire section 5.1.3 is about rules when advertising paths by BGP.</p>
+
+<p>Please see the archive email I found to prove the above:
+https://mailarchive.ietf.org/arch/msg/idr/OHlGLdQOF5lSa_NR7oOaDjse8y8/</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="960">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c960" href="#960">10 January 2022 01:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In my opinion section 5.1.3 has nothing to do with load balancing. It is just expressing the natural fact that one address can be resolved only to one address and not to a list of addresses.</p>
+
+<p>If load balancing is still possible depends on the implementation. If you make a single lookup for a specific next hop address for all occurencies and cache this even for later use, then of course this would disable load balancing since you would get the same answer for all occurences. 
+But it is not prescribed. You can do an independent recursive lookup for each next hop occurence when it is needed. Then you can pickup a different single lookup result for each individual query from multiple possible choices. This is still load balancing that is not violating section 5.1.3.</p>
+
+<p>The behavior all depends on how do you generate FIB entries from the RIB. You should not store and cache next hop lookups, but rather do the lookup every time independently when you need it. However, you would need some logic that returns a different value for the lookup on the same next hop at each query. </p>
+
+<p>Older implementations might prefer saving CPU cycles by caching the lookup results, but new implementations do not need to do that. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

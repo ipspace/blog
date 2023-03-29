@@ -1,0 +1,86 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1018">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1018" href="#1018">16 February 2022 08:31</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>What about some load balancer instances (e.g. MetalLB) in front of Kubernetes cluster doing EBGP (host routes + ECMP) with ToR switches? Combined with global load balancing (DNS).
+Let Kubernetes cluster handle movement of Pods (containers). No need for moving around Nodes in the data center.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1019">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1019" href="#1019">16 February 2022 10:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Glad to see someone agrees with me ;) Thank you!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1024">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Nitzan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1024" href="#1024">16 February 2022 11:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Few points
+In Junos the solution is not VMTO but to advertise type-2 routes as /32 type-5 (It simulate symmetrical IRB on Junos ) and add the following command to allow the next-hop resolution.
+<code>set routing-options resolution preserve-nexthop-hierarchy</code> (Use recent Junos for it ) </p>
+
+<p>The same solution works also in Arista without special knobs.</p>
+
+<p>If you want to do anycast for some services you should add add-path to the mix.</p>
+
+<p>There is more elegant solution for the issue by establishing the BGP to centralized leaf (two for redundancy) in the network regardless of its location. that leaf will advertise the route as type-5 to all of the other leafs but it will set the GW IP attribute to the K8S worker IP (It is 0 by default). 
+This way the ingress leaf will not forward the traffic via the centralized leaf that advertise the type-5 but it will use the optimal path do the K8S worker.
+AFAIK only cisco support it today via <code>set evpn gateway-ip use-nexthop</code> under route-map as you can read here https://www.cisco.com/c/en/us/td/docs/dcn/whitepapers/cisco-nx-os-calico-network-design.html. More details are in rfc9135 and rfc9136</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

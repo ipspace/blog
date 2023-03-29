@@ -1,78 +1,97 @@
 {
-  "comments": [
-    {
-      "date": "06 February 2018 18:29",
-      "html": "I apologize in advance for the lengthy comment.<br />It seems that the post is not complete. But since I know you both (I mean Nicola and you, two of the best networkers I ever met in my life), and you both know my ideas about VXLAN and EVPN that we discussed recently in private e-mails, I want repeat my toughts here.<br />I think that EVPN is an excellent standard for those who love Layer 2 (L2) services, we may say that it is an evolution of the implementation of the VPLS service, which addresses some limits in the original standard (RFCs 4761 and 4762). But as you both know I have a mental problem, I cannot understand the usefulness of L2 services (I am aware that this is a my personal obsession). I think that the preference for L2 services has its origin in the enterprise world (pushed by well known $vendors) while ISPs tend to work at Layer 3 (L3) only, even if they are urged to offer L2 services by their customers.<br />And anyway, if someone loves them (I mean L2 services), the VXLAN solution with EVPN control plane is probably the best, even in small Data Center. However, let&#39;s try to analyze the problem a little bit deeper. Multi-tenancy can be implemented in various ways:<br />- Traditional L2: using VLAN tags (global).<br />- Advanced L2: using VXLAN VNI (global). VXLAN has the problem of the control plane. Leaving aside the multicast routing (apparently not much loved in Data Center environment and with serious scalability problems in large Data Center), and Ingress replication (also with serious scalability problems), someone has thought (correctly), we use EVPN, using BGP for the MAC remote learning (plus other excellent features such as multi-homed access management, MAC mass withdraw, aliasing, etc.).<br />- L3: L3VPN based on the BGP/MPLS model. Here too, multi-tenancy occurs through a tag (MPLS service label, local) and IP prefixes exchanged via BGP.<br />The last two approaches are conceptually very similar, so much that this reminds me of the famous RFC 1925, sect. 11.<br />At last, a personal thought of mine that goes beyond the arguments discussed in your post. But do we really need VXLAN to implement multi-tenancy ? Would not it be enough to use a classic L3VPN model (perhaps without LDP if DC switches do not support it) ? And if 20 bits for multi-tenancy are considered too few against the 24 bits of the VNI VXLAN, you can use the new RFC 8277, which gives you the possibility to add more than one MPLS labels to BGP-LU advertisements. So, using for example two labels,  40 bits would be available for multi-tenancy, and using MPLSoUDP, you would have an identical encapsulation (in length) to VXLAN ! But networkers, as you know, really like RFC 1925, sect. 11 ...<br />",
-      "id": "2365643145425267669",
-      "image": "https://1.bp.blogspot.com/-CrF2hgzSoTQ/WoyqrG4y49I/AAAAAAAAH8M/KLGgfrBE1R0H8T0kc5SxwuThLaoxr6mlACK4BGAYYCw/s32/Pizzo%2BCamarda.JPG",
-      "name": "Ammiraglio Tofonoto",
-      "profile": "https://www.blogger.com/profile/04524005885569437211",
-      "pub": "2018-02-06T18:29:26.560+01:00",
-      "ref": "3923019477950974096",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "07 February 2018 18:22",
-          "html": "Well, several vendors allow you to configure anycast IP gateways without EVPN ;) and they work just fine (wrote a series of blog posts on that a long while ago).<br /><br />Not sure what exactly would or would not work on what ASIC though - as you know the vendor everyone uses isn&#39;t exactly forthcoming with limitations of their chipsets.",
-          "id": "715613819352499983",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-02-07T18:22:58.445+01:00",
-          "ref": "3222864935293116449",
-          "type": "comment"
-        }
-      ],
-      "date": "07 February 2018 14:39",
-      "html": "in this 4 Switch scenario with Ethernet or VXLAN F&amp;L back-2-back, how do we solve the all-active First-Hop Gateway requirement? Adding filters, different passwords, groups or similar left and right with disabling \u201cduplicate detection\u201d or even break VM mobility (if reallity) in such traditional networks (Ethernet and VXLAN use both F&amp;L)?<br />I\u2019m interested in the proposal as with VXLAN EVPN and the Distributed IP Anycast Gateway (IRB) I have a integrated solution that allows me to do so. Maybe this could be one reason to use EVPN in this tiny setup case. <br />You see, I don\u2019t say it is a simple solution using EVPN but a potential advantage you can gain here.<br />Looking forward to your opinion :-)<br />-Lukas",
-      "id": "3222864935293116449",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/07774968935660590770",
-      "pub": "2018-02-07T14:39:05.355+01:00",
-      "ref": "3923019477950974096",
-      "type": "comment"
-    },
-    {
-      "date": "18 February 2018 20:46",
-      "html": "Quick question <br />Is it possible to run EVPN over L2  PBB without MPLS?<br />I don\u2019t see any good reason why not..",
-      "id": "5220497223012350578",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2018-02-18T20:46:07.479+01:00",
-      "ref": "3923019477950974096",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "19 February 2018 19:36",
-          "html": "The customer where I recommended this design is a large multinational. Contrary to what some vendors would love you to believe, many large enterprises don&#39;t need more than two switches per data center. I&#39;ve been telling this for years, but of course nobody ever listens.<br /><br />And yes, they used a small consulting company for the implementation phase. They are smart enough to know when it makes sense to do things on their own and when to bring in professional help. Wish more people would be this realistic and mature.",
-          "id": "4303713546712185360",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-02-19T19:36:30.102+01:00",
-          "ref": "2224378818544213461",
-          "type": "comment"
-        }
-      ],
-      "date": "19 February 2018 17:07",
-      "html": "Theoretically this is an elegant solution. Operationally, how do I support this implementation without consulting services? A small datacenter implementation is usually attached to a small business operation which usually cannot afford salaries of network engineers supporting the latest and greatest whiz-bang methodology. So, give me a business case for implementing complexity I can&#39;t support with entry to mid-level network engineers.",
-      "id": "2224378818544213461",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2018-02-19T17:07:25.563+01:00",
-      "ref": "3923019477950974096",
-      "type": "comment"
-    }
-  ],
-  "count": 6,
-  "id": "3923019477950974096",
-  "type": "post",
-  "url": "2018/02/using-evpn-in-very-small-data-center.html"
+   "comments": [
+      {
+         "date": "06 February 2018 18:29",
+         "html": "I apologize in advance for the lengthy comment.<br />It seems that the post is not complete. But since I know you both (I mean Nicola and you, two of the best networkers I ever met in my life), and you both know my ideas about VXLAN and EVPN that we discussed recently in private e-mails, I want repeat my toughts here.<br />I think that EVPN is an excellent standard for those who love Layer 2 (L2) services, we may say that it is an evolution of the implementation of the VPLS service, which addresses some limits in the original standard (RFCs 4761 and 4762). But as you both know I have a mental problem, I cannot understand the usefulness of L2 services (I am aware that this is a my personal obsession). I think that the preference for L2 services has its origin in the enterprise world (pushed by well known $vendors) while ISPs tend to work at Layer 3 (L3) only, even if they are urged to offer L2 services by their customers.<br />And anyway, if someone loves them (I mean L2 services), the VXLAN solution with EVPN control plane is probably the best, even in small Data Center. However, let&#39;s try to analyze the problem a little bit deeper. Multi-tenancy can be implemented in various ways:<br />- Traditional L2: using VLAN tags (global).<br />- Advanced L2: using VXLAN VNI (global). VXLAN has the problem of the control plane. Leaving aside the multicast routing (apparently not much loved in Data Center environment and with serious scalability problems in large Data Center), and Ingress replication (also with serious scalability problems), someone has thought (correctly), we use EVPN, using BGP for the MAC remote learning (plus other excellent features such as multi-homed access management, MAC mass withdraw, aliasing, etc.).<br />- L3: L3VPN based on the BGP/MPLS model. Here too, multi-tenancy occurs through a tag (MPLS service label, local) and IP prefixes exchanged via BGP.<br />The last two approaches are conceptually very similar, so much that this reminds me of the famous RFC 1925, sect. 11.<br />At last, a personal thought of mine that goes beyond the arguments discussed in your post. But do we really need VXLAN to implement multi-tenancy ? Would not it be enough to use a classic L3VPN model (perhaps without LDP if DC switches do not support it) ? And if 20 bits for multi-tenancy are considered too few against the 24 bits of the VNI VXLAN, you can use the new RFC 8277, which gives you the possibility to add more than one MPLS labels to BGP-LU advertisements. So, using for example two labels,  40 bits would be available for multi-tenancy, and using MPLSoUDP, you would have an identical encapsulation (in length) to VXLAN ! But networkers, as you know, really like RFC 1925, sect. 11 ...<br />",
+         "id": "2365643145425267669",
+         "image": "https://1.bp.blogspot.com/-CrF2hgzSoTQ/WoyqrG4y49I/AAAAAAAAH8M/KLGgfrBE1R0H8T0kc5SxwuThLaoxr6mlACK4BGAYYCw/s32/Pizzo%2BCamarda.JPG",
+         "name": "Ammiraglio Tofonoto",
+         "profile": "https://www.blogger.com/profile/04524005885569437211",
+         "pub": "2018-02-06T18:29:26.560+01:00",
+         "ref": "3923019477950974096",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "07 February 2018 18:22",
+               "html": "Well, several vendors allow you to configure anycast IP gateways without EVPN ;) and they work just fine (wrote a series of blog posts on that a long while ago).<br /><br />Not sure what exactly would or would not work on what ASIC though - as you know the vendor everyone uses isn&#39;t exactly forthcoming with limitations of their chipsets.",
+               "id": "715613819352499983",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-02-07T18:22:58.445+01:00",
+               "ref": "3222864935293116449",
+               "type": "comment"
+            }
+         ],
+         "date": "07 February 2018 14:39",
+         "html": "in this 4 Switch scenario with Ethernet or VXLAN F&amp;L back-2-back, how do we solve the all-active First-Hop Gateway requirement? Adding filters, different passwords, groups or similar left and right with disabling “duplicate detection” or even break VM mobility (if reallity) in such traditional networks (Ethernet and VXLAN use both F&amp;L)?<br />I’m interested in the proposal as with VXLAN EVPN and the Distributed IP Anycast Gateway (IRB) I have a integrated solution that allows me to do so. Maybe this could be one reason to use EVPN in this tiny setup case. <br />You see, I don’t say it is a simple solution using EVPN but a potential advantage you can gain here.<br />Looking forward to your opinion :-)<br />-Lukas",
+         "id": "3222864935293116449",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/07774968935660590770",
+         "pub": "2018-02-07T14:39:05.355+01:00",
+         "ref": "3923019477950974096",
+         "type": "comment"
+      },
+      {
+         "date": "18 February 2018 20:46",
+         "html": "Quick question <br />Is it possible to run EVPN over L2  PBB without MPLS?<br />I don’t see any good reason why not..",
+         "id": "5220497223012350578",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2018-02-18T20:46:07.479+01:00",
+         "ref": "3923019477950974096",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "19 February 2018 19:36",
+               "html": "The customer where I recommended this design is a large multinational. Contrary to what some vendors would love you to believe, many large enterprises don&#39;t need more than two switches per data center. I&#39;ve been telling this for years, but of course nobody ever listens.<br /><br />And yes, they used a small consulting company for the implementation phase. They are smart enough to know when it makes sense to do things on their own and when to bring in professional help. Wish more people would be this realistic and mature.",
+               "id": "4303713546712185360",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-02-19T19:36:30.102+01:00",
+               "ref": "2224378818544213461",
+               "type": "comment"
+            }
+         ],
+         "date": "19 February 2018 17:07",
+         "html": "Theoretically this is an elegant solution. Operationally, how do I support this implementation without consulting services? A small datacenter implementation is usually attached to a small business operation which usually cannot afford salaries of network engineers supporting the latest and greatest whiz-bang methodology. So, give me a business case for implementing complexity I can&#39;t support with entry to mid-level network engineers.",
+         "id": "2224378818544213461",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2018-02-19T17:07:25.563+01:00",
+         "ref": "3923019477950974096",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "02 January 2023 10:57",
+               "html": "<p>&gt; Could you made a update for this 4 switch EVPN+VXLAN configuration as any change on ASIC and NOS today would require change in this config?</p>\n\n<p>I don&#39;t get this part of your comment. ASIC changes often do not require configuration changes (unless you&#39;re using ASIC-specific features), while switching NOS almost always results in an interesting migration process.</p>\n\n<p>&gt; And how we can insert FW services in this design?</p>\n\n<p>There&#39;s no magic in service insertion. You could use PBR or VLAN stitching. See https://my.ipspace.net/bin/list?id=SDNUseCases#SERVICES for more details.</p>\n\n<p>VLAN stitching can be implemented with statically-configured VXLAN or with EVPN -- EVPN details in https://my.ipspace.net/bin/list?id=EVPN#L47SVC</p>\n",
+               "id": "1588",
+               "name": " Ivan Pepelnjak",
+               "pub": "2023-01-02T10:57:23",
+               "ref": "1587",
+               "type": "comment"
+            }
+         ],
+         "date": "30 December 2022 04:15",
+         "html": "<p>Hello Ivan,</p>\n\n<p>Could you made a update for this 4 switch EVPN+VXLAN configuration ?\nAs any change on ASIC and NOS today would require change in this config ?\nAnd how we can insert FW services in this design ?</p>\n\n<p>Which you a Happy new year,</p>\n\n<p>Francois</p>\n",
+         "id": "1587",
+         "name": " Francois D.",
+         "pub": "2022-12-30T16:15:35",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "id": "3923019477950974096",
+   "type": "post",
+   "url": "2018/02/using-evpn-in-very-small-data-center.html"
 }

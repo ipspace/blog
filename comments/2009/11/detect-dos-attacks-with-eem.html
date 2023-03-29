@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">T</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3700351085730748736">15 November 2009 18:09</a>
+                <a rel="nofollow" id="c3700351085730748736" href="#3700351085730748736">15 November 2009 18:09</a>
               </span>
             </div>
-            <p class="comment-content">I am a bit confused. This is a DOS attack detector or a high utilization notifier?   The latter is not the same as the former, other than maybe sharing that symptom.<br /><br />The DOS attacks that I&#39;ve seen that kill routers and switches have been a high rate of minimally sized packets.   They won&#39;t necessarily reach the bandwidth limit of an interface  (especially on switch ports).<br /><br />Also, in my view, direct DOS attacks are like a serial killer  (no purpose except to kill and exceedingly rare).  If your router/site gets hit with a direct bandwidth attack you probably have a P.O.&#39;d former employee more than likely.  Just sayin.<br /><br />Much more common are poorly conceived virus/worms whose goal is to create an army of zombie PC&#39;s.The poorly written ones are written to send packets so fast they kill the networking equipment in the middle, which of course suddenly shines a spotlight on them by the network managers.   The effective ones remain undetected at layer 3 as they don&#39;t stress the network enough to be detected by network tools.  <br /><br />Cisco routers and switches can easily handle high utilization streams if they are single flows and if you have 100% utilization it doesn&#39;t mean anything is wrong.<br /><br />That said, EEM is one of those technologies waiting for enough features to finally be a killer app.  <br /><br />My question on this article, I&#39;ll give the benefit of the doubt on detection efficacy, but what I want to see is auto-mitigation.   Then you have something useful!   <br /><br />I don&#39;t know EEM *that* well, so could it be done?   If so, I&#39;ll dive into EEM and write the script.</p>
+            <div class="comment-content">I am a bit confused. This is a DOS attack detector or a high utilization notifier?   The latter is not the same as the former, other than maybe sharing that symptom.<br /><br />The DOS attacks that I&#39;ve seen that kill routers and switches have been a high rate of minimally sized packets.   They won&#39;t necessarily reach the bandwidth limit of an interface  (especially on switch ports).<br /><br />Also, in my view, direct DOS attacks are like a serial killer  (no purpose except to kill and exceedingly rare).  If your router/site gets hit with a direct bandwidth attack you probably have a P.O.&#39;d former employee more than likely.  Just sayin.<br /><br />Much more common are poorly conceived virus/worms whose goal is to create an army of zombie PC&#39;s.The poorly written ones are written to send packets so fast they kill the networking equipment in the middle, which of course suddenly shines a spotlight on them by the network managers.   The effective ones remain undetected at layer 3 as they don&#39;t stress the network enough to be detected by network tools.  <br /><br />Cisco routers and switches can easily handle high utilization streams if they are single flows and if you have 100% utilization it doesn&#39;t mean anything is wrong.<br /><br />That said, EEM is one of those technologies waiting for enough features to finally be a killer app.  <br /><br />My question on this article, I&#39;ll give the benefit of the doubt on detection efficacy, but what I want to see is auto-mitigation.   Then you have something useful!   <br /><br />I don&#39;t know EEM *that* well, so could it be done?   If so, I&#39;ll dive into EEM and write the script.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4670897570881445038">15 November 2009 19:49</a>
+                <a rel="nofollow" id="c4670897570881445038" href="#4670897570881445038">15 November 2009 19:49</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;ll just focus on the last two paragraphs: if you can define what you want to do as &quot;auto-mitigation&quot;, it can almost always be done.</p>
+            <div class="comment-content">I&#39;ll just focus on the last two paragraphs: if you can define what you want to do as &quot;auto-mitigation&quot;, it can almost always be done.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">T</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3352947507893510692">16 November 2009 17:39</a>
+                <a rel="nofollow" id="c3352947507893510692" href="#3352947507893510692">16 November 2009 17:39</a>
               </span>
             </div>
-            <p class="comment-content">Auto-mitigation for a typical old-school &quot;blaster&quot; worm, for example.  It is easily identifiable in show ip accounting and show ip cache flow.  Infected PC&#39;s, during their probing phase, rapidly send out single packets to a wide range of IP addresses.<br /><br />Each packet is handled as a separate flow, and at enough speed this will spike the CPU to 100% and you officially have a DoS.    (One PC can easily take down an access layer switch, and sadly I&#39;ve seen 6500&#39;s also fall to this kind of infection.)<br /><br />A basic and effective mitigation is to apply a deny input ACL on the closest interface to the infected PC for that PC.<br /><br />PS: I don&#39;t see this type of infection very often anymore.  It was much more common earlier this decade (mainly due to lax anti-virus),  but if EEM could do this kind of classification and mitigation, you should be able to make an Anti-DoS for IOS EEM suite.   A concept like your original post but with more sophisticated detection.   <br /><br />The basic idea might be, analyze live netflow data (or ip accounting), count # of flows per source-ip, if # &gt; &quot;too many&quot;, apply ACL or policing for that source-ip to the correct interface.    The variable values can be debated, but the question is, does EEM have this capability?</p>
+            <div class="comment-content">Auto-mitigation for a typical old-school &quot;blaster&quot; worm, for example.  It is easily identifiable in show ip accounting and show ip cache flow.  Infected PC&#39;s, during their probing phase, rapidly send out single packets to a wide range of IP addresses.<br /><br />Each packet is handled as a separate flow, and at enough speed this will spike the CPU to 100% and you officially have a DoS.    (One PC can easily take down an access layer switch, and sadly I&#39;ve seen 6500&#39;s also fall to this kind of infection.)<br /><br />A basic and effective mitigation is to apply a deny input ACL on the closest interface to the infected PC for that PC.<br /><br />PS: I don&#39;t see this type of infection very often anymore.  It was much more common earlier this decade (mainly due to lax anti-virus),  but if EEM could do this kind of classification and mitigation, you should be able to make an Anti-DoS for IOS EEM suite.   A concept like your original post but with more sophisticated detection.   <br /><br />The basic idea might be, analyze live netflow data (or ip accounting), count # of flows per source-ip, if # &gt; &quot;too many&quot;, apply ACL or policing for that source-ip to the correct interface.    The variable values can be debated, but the question is, does EEM have this capability?</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1890214944934431660">16 November 2009 18:20</a>
+                <a rel="nofollow" id="c1890214944934431660" href="#1890214944934431660">16 November 2009 18:20</a>
               </span>
             </div>
-            <p class="comment-content">Yes, it does, but not with EEM applets. With periodically triggered Tcl scripts (or you could use CPU utilization as the trigger) you can dump the Netflow table, process it (Tcl is a decent language when it comes to data structures) and then change the router/switch configuration.<br /><br />While this is doable, it&#39;s miles beyond what I&#39;m considering writing about (for free)  ;)</p>
+            <div class="comment-content">Yes, it does, but not with EEM applets. With periodically triggered Tcl scripts (or you could use CPU utilization as the trigger) you can dump the Netflow table, process it (Tcl is a decent language when it comes to data structures) and then change the router/switch configuration.<br /><br />While this is doable, it&#39;s miles beyond what I&#39;m considering writing about (for free)  ;)</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Arie Vayner</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#583043862297901522">21 November 2009 17:59</a>
+                <a rel="nofollow" id="c583043862297901522" href="#583043862297901522">21 November 2009 17:59</a>
               </span>
             </div>
-            <p class="comment-content">I would recommend also monitoring the PPS rate. Many DDOS attacks are actually detected when the PPS rate is high, while BPS rate stays relatively normal.</p>
+            <div class="comment-content">I would recommend also monitoring the PPS rate. Many DDOS attacks are actually detected when the PPS rate is high, while BPS rate stays relatively normal.</div>
           </div>
         </li>
       </div>

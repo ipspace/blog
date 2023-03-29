@@ -1,0 +1,82 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="167">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Attilla</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c167" href="#167">06 October 2020 12:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>While I agree on your explanation of how webscale / megascale environments are using an overlay between their hypervisors, I think that EVPN could have been used as a solution in their environments as well. The main reason is that their infrastructures don&#39;t use it is that EVPN didn&#39;t exist at that time or wasn&#39;t mature enough when they needed a solution.</p>
+
+<p>Network vendors have started to support EVPN from 2017. All implementations had their usual bugs and missing features as with every new technology implementation. Added to that there were multiple hardware dependencies that were solved over time.</p>
+
+<p>If I&#39;m looking at the two mechanisms you describe, setting up EVPN on hosts with multicast replication, eBGP route servers (for filtering and perhaps flowspec) and combine this with an RFC 4684 implementation would essentially get you the same type of solution.</p>
+
+<p>Obviously I don&#39;t see these environments moving away from their well tested and proven implementation, but I don&#39;t see EVPN inherently being the wrong tool for the job.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="174">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Damien</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c174" href="#174">09 October 2020 10:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>If anybody is interested this prensentation from reinvent 2017 explain a bit on how they do it.
+https://youtu.be/8gc2DgBqo9U</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="175">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c175" href="#175">10 October 2020 05:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Great write-up Ivan, full of technical details! Looks to me like the bigger point of your post is that, big cloud providers like AWS use the as-simple-as-possible design approach, minimizing the number of protocols and the amount of state to be kept in the core, which is the right way to scale a network to that size.  That aligns perfectly with what Justin Pietsch said in his multicast post, that the only things he wants to deal with in his ideal network are IPV4, OSPF, and BGP. A close-to-stateless core, with all complexity pushed to the edge. So naturally they need not all the nuts and bolts of EVPN, which tries very hard to be a lot of things to a lot of people. </p>
+
+<p>Re their another day, another billion flows/packets presentations, I&#39;ve watched several of them and IMO, they keep spewing the same nonsense year in, year out, all in a very shallow manner. Take the one posted by Damien above. At 15:17, the presenter said AWS looked at MPLS among others, and found that even MPLS couldn&#39;t scale to their need. And then they go on about their gigantic mapping service from around 21:30 onward. What rubbish! MPLS is, in essence, tag switching; EVPN too, falls under the umbrella of BGP MPLS VPN technologies and so is essentially MPLS in all but name, but that&#39;s another story. Anyone who makes use of tag switching these days, is effectively using MPLS one way or another. And I&#39;m pretty damn sure tagging is what they use in their &#39;gigantic mapping service&#39; table. Call it what they like, doesn&#39;t change the nature of the beast itself.  </p>
+
+<p>IMHO, MPLS, using hierarchical methods like CsC or Inter-AS option C, can be as scalable as you want it to be, and at the same time not complicated. Look at cellular networks in excess of 150k DCE equipments running MPLS. MPLS within a routing domain, is only limited by the underlying routing protocol. And if AWS can run their networks using a second-best OSPF implementation on old hardware, there&#39;s no reason for a network running the more scalable IS-IS, with a good implementation and a good design of course, not to be able to scale into the tens of thousand of nodes in one area, and hundreds of thousands in a multiple-level domain, using current hardware. </p>
+
+<p>I don&#39;t know how they claim their AWS mapping service is very fast. From their presentation, it kinda reminds me of good old LANE, with some twists. Basically a central controller/routing system composes all of the forwarding entries, then distributes it to hypervisors&#39; caches for fast lookup. Sounds a lot like OpenFlow too, minus its crappy aspects of course ;). Unless the mapping lookup is done in hardware, it can&#39;t be as fast as they claim it to be. Maybe they do use TCAM in their Smart-NIC router :p. If so, they likely use some form of tagging to minimize the state used to represent each TCAM entry in order to scale, so tag-switching again.</p>
+
+<p>We do have services running off ASW EC2, and the overall speed over long period is far from exceptional. One of the services, where students would use Citrix to RDP into EC2 instances and run their Engineering packages like Ansys, Matlab, Arcgis..., is slow. In one instance recently, an Arcgis operation took 18 hours to complete, to the point of unworkable for our customer. Running the same operation on the local laptop, took 10 mins. I was there, so it was not made up at all. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

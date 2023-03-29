@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15493370358037866116" rel="nofollow">Aldrin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7539653050755270647">18 December 2019 05:45</a>
+                <a rel="nofollow" id="c7539653050755270647" href="#7539653050755270647">18 December 2019 05:45</a>
               </span>
             </div>
-            <p class="comment-content">If I&#39;m not mistaken, some existing merchant ASICs support only a single VXLAN VNI per bridge table and require/enforce these on both ingress and egress tunnels for L2.  At a minimum it&#39;s a limitation of the SDK for these chips.  The reason, as I understand it, is that these chips were developed for multicast-based flood-and-learn VXLAN which mandates global VXLAN VNI.  EVPN implementations have had this to contend with on these chips even though EVPN doesn&#39;t really care what the VNIs for a VPN are are so long as they represent the correct bridge table contexts that make up the VPN (as we see with EVPN MPLS).  With newer merchant ASICs I think locally significant VXLAN VNI for bridge tables are possible.</p>
+            <div class="comment-content">If I&#39;m not mistaken, some existing merchant ASICs support only a single VXLAN VNI per bridge table and require/enforce these on both ingress and egress tunnels for L2.  At a minimum it&#39;s a limitation of the SDK for these chips.  The reason, as I understand it, is that these chips were developed for multicast-based flood-and-learn VXLAN which mandates global VXLAN VNI.  EVPN implementations have had this to contend with on these chips even though EVPN doesn&#39;t really care what the VNIs for a VPN are are so long as they represent the correct bridge table contexts that make up the VPN (as we see with EVPN MPLS).  With newer merchant ASICs I think locally significant VXLAN VNI for bridge tables are possible.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6944061927317996078">15 January 2020 13:04</a>
+                <a rel="nofollow" id="c6944061927317996078" href="#6944061927317996078">15 January 2020 13:04</a>
               </span>
             </div>
-            <p class="comment-content">Hi there, <br /><br />It looks like there is an exception to the EVPN import rule based on the RT only if I understood well the (juniper&#39;s at least) implementation of &quot;VLAN-Aware Bundle Service Interface&quot; (see RFC 7432 par 6.3 @ https://tools.ietf.org/html/rfc7432#section-6.3). In that case in fact it looks like the route is imported within the right Bridge/Bcast Domain (i.e. within the right vlan if we assume a scenario where there is a vlan per Bridge domain and there are N Bridge Domanins within the same EVI) within the EVI by the import combination of the RT identifying the whole EVI/MAC-VRF and the ETHERNET TAG ID field (in the EVPN NLRI of the RT-2 in particular) whose value must carry that of the L2VNI (identifying the right bridge/vlan import) which in turn must be the same on all PEs for a particular VN in this case I guess. <br /><br />Hope it makes sense. It&#39;d be important if anyone could actually confirm this as it&#39;s pretty convoluted/complex. As far as I have seen there is not even that much public literature around on the implementation of the EVPN &quot;VLAN-Aware Bundle Service Interface&quot;.<br /><br />Cheers<br />Andrea</p>
+            <div class="comment-content">Hi there, <br /><br />It looks like there is an exception to the EVPN import rule based on the RT only if I understood well the (juniper&#39;s at least) implementation of &quot;VLAN-Aware Bundle Service Interface&quot; (see RFC 7432 par 6.3 @ https://tools.ietf.org/html/rfc7432#section-6.3). In that case in fact it looks like the route is imported within the right Bridge/Bcast Domain (i.e. within the right vlan if we assume a scenario where there is a vlan per Bridge domain and there are N Bridge Domanins within the same EVI) within the EVI by the import combination of the RT identifying the whole EVI/MAC-VRF and the ETHERNET TAG ID field (in the EVPN NLRI of the RT-2 in particular) whose value must carry that of the L2VNI (identifying the right bridge/vlan import) which in turn must be the same on all PEs for a particular VN in this case I guess. <br /><br />Hope it makes sense. It&#39;d be important if anyone could actually confirm this as it&#39;s pretty convoluted/complex. As far as I have seen there is not even that much public literature around on the implementation of the EVPN &quot;VLAN-Aware Bundle Service Interface&quot;.<br /><br />Cheers<br />Andrea</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17193851449183304827" rel="nofollow">Jeff Tantsura</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5405611133698341267">16 January 2020 01:29</a>
+                <a rel="nofollow" id="c5405611133698341267" href="#5405611133698341267">16 January 2020 01:29</a>
               </span>
             </div>
-            <p class="comment-content">@Aldrin in the current incarnation of EVPN implementations it is widely agreed that VNI&#39;s are domain unique. While it should indeed be possible to make them locally significant, the power of legacy (aka ossification) will not let that happen for quite some time ;-)<br />@Andrea - no, the import is still performed based on RT, note that every ET-ID within is advertised with its unique VNI and has a forwarding entry in the data plane, so when the receiving PE looks up the packet, VNI value yields right MAC-VRF+VLAN </p>
+            <div class="comment-content">@Aldrin in the current incarnation of EVPN implementations it is widely agreed that VNI&#39;s are domain unique. While it should indeed be possible to make them locally significant, the power of legacy (aka ossification) will not let that happen for quite some time ;-)<br />@Andrea - no, the import is still performed based on RT, note that every ET-ID within is advertised with its unique VNI and has a forwarding entry in the data plane, so when the receiving PE looks up the packet, VNI value yields right MAC-VRF+VLAN </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3231277311937033898">16 January 2020 17:29</a>
+                <a rel="nofollow" id="c3231277311937033898" href="#3231277311937033898">16 January 2020 17:29</a>
               </span>
             </div>
-            <p class="comment-content">Thank you Jeff !! I actually remember following your work/discussions @ Redback when I joined Ericsson in the UK back in 2007-  always great  stuff !  <br /><br />Going back to your answer, while it makes absolute sense on the forwarding plane, I still have no clear how it can work on the control plane at the receiving PE. <br />What I mean is that in an EVPN VLAN-Aware Bundle Service Interface scenario with VxLAN control plane, the receiving PE has, say, 1 x EVI/MAC-VRF containing N x BDs with one VLAN per BD. If the RT-match only identifies the landing EVI/MAC-VRF, how does the receiving PE import the received EVPN route in the right BRIDGE/VLAN within the identified EVI/MAC-VRF ? does by any chance the RT identify not just the EVI/MAC-VRF but actually the BRIDGE/VLAN within the EVI/MAC-VRF ? <br />  <br />On Table A1 @ p.237 at the following link [https://www.juniper.net/documentation/en_US/day-one-books/TW_DCDeployment.v2.pdf] Juniper seems to have implemented, as I said in the previous reply, a match on the RT and on the L2VNI (not on the Ethernet-tag carrying the L2VNI value as I said before sorry, my bad) to identify the right BRIDGE/VLAN where to import the EVPN route….<br /></p>
+            <div class="comment-content">Thank you Jeff !! I actually remember following your work/discussions @ Redback when I joined Ericsson in the UK back in 2007-  always great  stuff !  <br /><br />Going back to your answer, while it makes absolute sense on the forwarding plane, I still have no clear how it can work on the control plane at the receiving PE. <br />What I mean is that in an EVPN VLAN-Aware Bundle Service Interface scenario with VxLAN control plane, the receiving PE has, say, 1 x EVI/MAC-VRF containing N x BDs with one VLAN per BD. If the RT-match only identifies the landing EVI/MAC-VRF, how does the receiving PE import the received EVPN route in the right BRIDGE/VLAN within the identified EVI/MAC-VRF ? does by any chance the RT identify not just the EVI/MAC-VRF but actually the BRIDGE/VLAN within the EVI/MAC-VRF ? <br />  <br />On Table A1 @ p.237 at the following link [https://www.juniper.net/documentation/en_US/day-one-books/TW_DCDeployment.v2.pdf] Juniper seems to have implemented, as I said in the previous reply, a match on the RT and on the L2VNI (not on the Ethernet-tag carrying the L2VNI value as I said before sorry, my bad) to identify the right BRIDGE/VLAN where to import the EVPN route….<br /></div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6421171565272868843">22 January 2020 17:18</a>
+                <a rel="nofollow" id="c6421171565272868843" href="#6421171565272868843">22 January 2020 17:18</a>
               </span>
             </div>
-            <p class="comment-content">Hi there,<br /><br />I think I have just understood how it can always work with just RT-based import as Jeff was pointing out. Just realised in fact that the Route-Target format for the EVPNoVxLAN (RFC 8365) includes a 3B Service ID carrying the VNI value in case of VxLAN encapsulation. This means that RT-IMPORT allows to import EVPN routes in the right bridge even in a scenario of EVPN &quot;VLAN-Aware Bundle Service Interface&quot;. Hope you guys can confirm it.<br /><br />This poses now though a further question as this requires the VNI value to be globally rather than locally significant I guess ?  <br /><br />Cheers<br />Andrea</p>
+            <div class="comment-content">Hi there,<br /><br />I think I have just understood how it can always work with just RT-based import as Jeff was pointing out. Just realised in fact that the Route-Target format for the EVPNoVxLAN (RFC 8365) includes a 3B Service ID carrying the VNI value in case of VxLAN encapsulation. This means that RT-IMPORT allows to import EVPN routes in the right bridge even in a scenario of EVPN &quot;VLAN-Aware Bundle Service Interface&quot;. Hope you guys can confirm it.<br /><br />This poses now though a further question as this requires the VNI value to be globally rather than locally significant I guess ?  <br /><br />Cheers<br />Andrea</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17193851449183304827" rel="nofollow">Jeff Tantsura</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5759478908929737248">22 January 2020 17:51</a>
+                <a rel="nofollow" id="c5759478908929737248" href="#5759478908929737248">22 January 2020 17:51</a>
               </span>
             </div>
-            <p class="comment-content">@Andrea - basically, with VLAN-Aware Bundle Service Interface you&#39;d use a single RD/RT per bundle but different VNI&#39;s as per VLAN within the bundle. What Juniper is doing is an optimization (RT per VNI), so you could import as per VNI.  </p>
+            <div class="comment-content">@Andrea - basically, with VLAN-Aware Bundle Service Interface you&#39;d use a single RD/RT per bundle but different VNI&#39;s as per VLAN within the bundle. What Juniper is doing is an optimization (RT per VNI), so you could import as per VNI.  </div>
           </div>
         </li>
       </div>

@@ -1,0 +1,53 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "06 November 2022 04:31",
+               "html": "<p>I&#39;m happy to hear routing is not a solved problem. :) <br />\nBut for the rest, I&#39;m not sure I agree with Mark.  </p>\n\n<p>&gt; There will never be perfect information</p>\n\n<p>This touches a core principle of routing. <br />\nWe gain scalability because of 2 things: hierarchy and summarization. <br />\nBut as soon as you summarize something, you lose some information. <br />\nThis is indeed a choice that the operator must make (to summarize or not). <br />\nBut you can&#39;t have both: reduction of information and perfect information.  </p>\n\n<p>&gt; There will always be an area of futzing to find optimization points <br />\n&gt; across multiple competing objectives  </p>\n\n<p>When this is configurable, each customer can tweak his network. <br />\nI don&#39;t see this as a reason why networking is not a solved problem.  </p>\n\n<p>&gt; just beginning .... much discovery yet to happen  </p>\n\n<p>What problems are you thinking about?  </p>\n\n<p>All the problems that I see as reasons why routing is not a solved <br />\nproblem, were already known problems 25-30 years ago. <br />\nWe aren&#39;t done yet, not because of new incoming problems. <br />\nWe are not done yet, because so little real progress has been made.  </p>\n\n<p>Physics, timing, ordering, I don&#39;t see those as limitations. <br />\nWe know how to deal with those things. <br />\nDifferent requirements for different networks: <br />\njust implement everything, and then make stuff configurable.  </p>\n\n<p>The problems I see with routing are: <br />\n*) site multi-homing <br />\n*) host multi-homing <br />\n*) easy renumbering (with persistent connections during the renumbering) <br />\n*) mobility  </p>\n\n<p>To solve some of those, we should have true identifier/locator separation. <br />\nNot an after-thought like LISP. <br />\nBut something built into the layer-3 addressing architecture. <br />\nIPv6 was a chance, but we messed that chance up.  </p>\n\n<p>You could add a few more practical issue: <br />\nLike trustworthiness of BGP global routes.</p>\n\n<p>As I said earlier, how can we do hierarchy (in IGPs, with areas), <br />\nand still have all our features work across ABRs? In a scalable way. <br />\nFrom my perspective we don&#39;t really have that yet.  </p>\n\n<p>Another issue is configuration and troubleshooting. <br />\nI think we can make improvements there (and make running a network easier).  </p>\n",
+               "id": "1487",
+               "name": " Henk",
+               "pub": "2022-11-06T16:31:34",
+               "ref": "1485",
+               "type": "comment"
+            },
+            {
+               "date": "07 November 2022 06:40",
+               "html": "<p>Thank you for the feedback Henk. </p>\n\n<p>While I feel the observation that the laws of physics are invariant may lead to different sense of what a &quot;solved problem is&quot;, one specific clarification I would ask is whether the following is an agreement or a disagreement:</p>\n\n<p>&quot;But you can&#39;t have both: reduction of information and perfect information&quot;</p>\n\n<p>It reads a little like an agreement.</p>\n",
+               "id": "1490",
+               "name": " Mark Seery",
+               "pub": "2022-11-07T18:40:20",
+               "ref": "1487",
+               "type": "comment"
+            },
+            {
+               "date": "07 November 2022 11:07",
+               "html": "<p>&gt; &quot;But you can&#39;t have both: reduction of information and perfect information&quot;</p>\n\n<p>Yes, we agree there. <br />\nI&#39;m not sure we&#39;re thinking about the same details. :) But your statement was certainly correct. But not because of physics or timing or ordering. For me the main reason is: you want to summarize for scaling, but you do not want to summarize if you want to find optimal routes.</p>\n\n<p>Many networks don&#39;t need summarization. Because scalability is not a real issue for them. But for the biggest networks (e.g. 10k+ routers in one IGP domain), we do need summarization. So those networks lose optimal routes. This is a fundamental issue that I don&#39;t see an easy solution for.</p>\n\n<p>One aspect of a solution would if operators would design their networks with a few more constraints. But it seems the stubborn bastards don&#39;t like that. :)</p>\n",
+               "id": "1491",
+               "name": "Henk  ",
+               "pub": "2022-11-07T23:07:48",
+               "ref": "1490",
+               "type": "comment"
+            },
+            {
+               "date": "08 November 2022 08:39",
+               "html": "<p>Well resources are not infinite, but that is another issue. Some people claim route processor scaling etc is a solved problem, others disagree.</p>\n\n<p>I&#39;ll right a little more to see if I can strike some different language. Some things can be mitigated, but that does not mean they are remediated. It is in this sense I am saying somethings will never be solved.</p>\n\n<p>Best\nMark</p>\n",
+               "id": "1492",
+               "name": " Mark Seery",
+               "pub": "2022-11-08T08:39:30",
+               "ref": "1491",
+               "type": "comment"
+            }
+         ],
+         "date": "06 November 2022 01:36",
+         "html": "<p>Thank you!!!</p>\n",
+         "id": "1485",
+         "name": " Mark Seery",
+         "pub": "2022-11-06T01:36:54",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2022/11/worth-reading-routing-never-solved-problem.html"
+}

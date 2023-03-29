@@ -1,0 +1,45 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "04 May 2022 09:38",
+               "html": "<p>TL;DR: your proposal solves the problem only for the default-route, my design for all the traffic.</p>\n\n<p>In the first part of the presentation I use the default-route to explain the advantages of ADD-PATH and ORR, while the subsequent integration of external routing on the route-reflector (slide 18) extends these advantages to all internal or external prefixes that can take advantage of multipath.\nIn my opinion, the &quot;old fashioned&quot; Load Balancing trough Anycast/IGP it&#39;s surpassed by bgp multipath that can be enriched with features such as edge-selection, unequal cost LB via bandwidth community or customized as desired with more or less standardized communities.\nFinally anycast LB is not suitable for any topology, introduces complexity for troubleshooting and is not very friendly with mpls.\nThanks for your comment, I hope I have convinced you</p>\n",
+               "id": "1212",
+               "name": " Nicola Modena",
+               "pub": "2022-05-04T21:38:27",
+               "ref": "1211",
+               "type": "comment"
+            }
+         ],
+         "date": "04 May 2022 05:07",
+         "html": "<p>Seems like a lot of effort to get the local default border router. \nWhy not advertise the same anycast loopback IP from all the POP/DC border routers via the IGP for that access area. Then either add static default route towards the border routers&rsquo; anycast IP on all the LAN routers or advertise the same default BGP route via the anycast next hop to all clients. The recursive lookup to the anycast gateway will ensure load balancing by the IGP whether there are 2,3 or 4 border routers at a POP.     </p>\n",
+         "id": "1211",
+         "name": " Petrus",
+         "pub": "2022-05-04T17:07:34",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 May 2022 08:57",
+               "html": "<p>It seems that I have not been able to convince you. The purpose of my presentation is to show a (simple) solution exclusively based on bgp, and as you pointed out there are many solutions to solve these problems. You are free to use the solution that best suits your requirements.</p>\n",
+               "id": "1216",
+               "name": "nicola modena",
+               "pub": "2022-05-06T08:57:45",
+               "ref": "1214",
+               "type": "comment"
+            }
+         ],
+         "date": "05 May 2022 05:04",
+         "html": "<p>It was not immediately clear to me how the routers inside the DC/POP would be able to reach the central RR before they have the default route, which they must still get from that RR. I assume that the border routers would distribute the RR&rsquo;s loopback IP from the core IGP area/level into the access IGP area.  Why not just also originate the default route via IGP into the access areas?\nNormally a router with full internet table, core/border in this design, would not have a default route. It can&rsquo;t distribute something it does not have but can originate it.</p>\n\n<p>The core/border routers would perform IP lookups for external destinations anyway, it can also IP lookup internal/customer destinations for remote DC/POP areas. The routers inside DC/POP only requires specific customer &amp; infrastructure routes local to that POP. Maybe full mesh between the co-located routers or on-path RR is ok?</p>\n\n<p>It seems the design it targeted at pure ISP operator where all the routes are in one global or default table, both infrastructure and service routes. The core routers also contain full internet table, they are not pure MPLS LSRs. </p>\n\n<p>When designing for a mixed ISP + VPN service provider then a further separation between control planes become possible; IP transport (IPv4 + SR-MPLS) and services (VPNv4, VPNv6, EVPN).\nIt&rsquo;s not ideal to have all VPN instances configured on the area border and core routers to do IP lookups, better if they just lookup transport MPLS labels. Still makes sense to do &ldquo;two stage lookup&rdquo; for the public internet VPN. For other VPNs the routers inside DC/POP area need to push the full transport label stack and may need assistance from a PCE via an ODN request if they don&rsquo;t have the full topology. </p>\n\n<p>In this case using anycast SID on the area border routers can work well together with SR-MPLS.\nMaybe have a look at this modern BGP design for VPN service providers. Lots of traffic engineering and egress peer engineering possibilities.\nhttps://xrdocs.io/design/blogs/latest-converged-sdn-transport-hld</p>\n",
+         "id": "1214",
+         "name": "Petrus",
+         "pub": "2022-05-05T17:04:00",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/05/modern-bgp-design-addpath-orr.html"
+}

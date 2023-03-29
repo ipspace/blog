@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">JS</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2305865554384249590">04 September 2009 00:10</a>
+                <a rel="nofollow" id="c2305865554384249590" href="#2305865554384249590">04 September 2009 00:10</a>
               </span>
             </div>
-            <p class="comment-content">One way to get the command output to a convenient place for diffing might be to use the redirect filter:<br /><br />show ip bgp neighbor a.b.c.d received-routes | redirect tftp://x.x.x.x/received.txt<br />show ip bgp neighbor a.b.c.d routes | redirect tftp://x.x.x.x/routes.txt<br /><br />If you had enough flash you could actually do the diff on the router, but probably not many people are running enough flash for a whole BGP table:<br /><br />show ip bgp neighbor a.b.c.d received-routes | redirect flash://x.x.x.x/received.txt<br />show ip bgp neighbor a.b.c.d routes | redirect flash://x.x.x.x/routes.txt<br /><br />show archive config diff flash:received.txt flash:routes.txt<br /><br />I haven&#39;t tried this with BGP but it works in a quick lab test with some IGPs.</p>
+            <div class="comment-content">One way to get the command output to a convenient place for diffing might be to use the redirect filter:<br /><br />show ip bgp neighbor a.b.c.d received-routes | redirect tftp://x.x.x.x/received.txt<br />show ip bgp neighbor a.b.c.d routes | redirect tftp://x.x.x.x/routes.txt<br /><br />If you had enough flash you could actually do the diff on the router, but probably not many people are running enough flash for a whole BGP table:<br /><br />show ip bgp neighbor a.b.c.d received-routes | redirect flash://x.x.x.x/received.txt<br />show ip bgp neighbor a.b.c.d routes | redirect flash://x.x.x.x/routes.txt<br /><br />show archive config diff flash:received.txt flash:routes.txt<br /><br />I haven&#39;t tried this with BGP but it works in a quick lab test with some IGPs.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">NWG</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6523643064565189762">09 September 2009 06:52</a>
+                <a rel="nofollow" id="c6523643064565189762" href="#6523643064565189762">09 September 2009 06:52</a>
               </span>
             </div>
-            <p class="comment-content">Here&#39;s TCL code:<br />puts -nonewline &quot;\n\nBGP Neighbor IP? &quot;<br />flush stdout<br />set neighbor [ gets stdin ]<br />set recv_routes [ split [ exec &quot;show ip bgp neighbor $neighbor received-routes&quot; ] &quot;\n&quot; ]<br />set routes [ split [ exec &quot;show ip bgp neighbor $neighbor routes&quot; ] &quot;\n&quot; ]<br /><br />set matched 0<br /><br />puts &quot;\nThe following prefixes were received from neighbor $neighbor but not installed.\n&quot;<br /><br />foreach recvd $recv_routes {<br />  set matched 0<br />  foreach route $routes {<br />    set test [ string compare $recvd $route ]<br />    if { $test == 0 } { set matched 1 }<br />  }<br />  if { !$matched &amp;&amp; [ regexp &quot;(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})&quot; $recvd ] } {<br />    puts $recvd<br />  }<br />}<br /><br />Beware line wrapping.  Here&#39;s what the output looks like:<br />R3#tclsh disk0:bgpdenied.tcl <br /><br />BGP Neighbor IP? 23.23.23.2<br /><br />The following prefixes were received from neighbor 23.23.23.2 but not installed.<br /><br />* i1.0.0.0          12.12.12.1               0    100      0 i<br />* i10.0.0.0         12.12.12.1               0    100      0 i<br /><br />R3#<br /><br />The following script can be pasted directly into tclsh from the CLI but you need to replace &lt;neighborip&gt; with the correct IP.<br />log_user 0<br />set neighbor &lt;neighborip&gt;<br />set recv_routes [ split [ exec &quot;show ip bgp neighbor $neighbor received-routes&quot; ] &quot;\n&quot; ]<br />set routes [ split [ exec &quot;show ip bgp neighbor $neighbor routes&quot; ] &quot;\n&quot; ]<br />set matched 0<br />foreach recvd $recv_routes {<br />  set matched 0<br />  foreach route $routes {<br />    set test [ string compare $recvd $route ]<br />    if { $test == 0 } { set matched 1 }<br />  }<br />  if { !$matched &amp;&amp; [ regexp &quot;(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})&quot; $recvd ] } {<br />    puts $recvd<br />  }<br />}</p>
+            <div class="comment-content">Here&#39;s TCL code:<br />puts -nonewline &quot;\n\nBGP Neighbor IP? &quot;<br />flush stdout<br />set neighbor [ gets stdin ]<br />set recv_routes [ split [ exec &quot;show ip bgp neighbor $neighbor received-routes&quot; ] &quot;\n&quot; ]<br />set routes [ split [ exec &quot;show ip bgp neighbor $neighbor routes&quot; ] &quot;\n&quot; ]<br /><br />set matched 0<br /><br />puts &quot;\nThe following prefixes were received from neighbor $neighbor but not installed.\n&quot;<br /><br />foreach recvd $recv_routes {<br />  set matched 0<br />  foreach route $routes {<br />    set test [ string compare $recvd $route ]<br />    if { $test == 0 } { set matched 1 }<br />  }<br />  if { !$matched &amp;&amp; [ regexp &quot;(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})&quot; $recvd ] } {<br />    puts $recvd<br />  }<br />}<br /><br />Beware line wrapping.  Here&#39;s what the output looks like:<br />R3#tclsh disk0:bgpdenied.tcl <br /><br />BGP Neighbor IP? 23.23.23.2<br /><br />The following prefixes were received from neighbor 23.23.23.2 but not installed.<br /><br />* i1.0.0.0          12.12.12.1               0    100      0 i<br />* i10.0.0.0         12.12.12.1               0    100      0 i<br /><br />R3#<br /><br />The following script can be pasted directly into tclsh from the CLI but you need to replace &lt;neighborip&gt; with the correct IP.<br />log_user 0<br />set neighbor &lt;neighborip&gt;<br />set recv_routes [ split [ exec &quot;show ip bgp neighbor $neighbor received-routes&quot; ] &quot;\n&quot; ]<br />set routes [ split [ exec &quot;show ip bgp neighbor $neighbor routes&quot; ] &quot;\n&quot; ]<br />set matched 0<br />foreach recvd $recv_routes {<br />  set matched 0<br />  foreach route $routes {<br />    set test [ string compare $recvd $route ]<br />    if { $test == 0 } { set matched 1 }<br />  }<br />  if { !$matched &amp;&amp; [ regexp &quot;(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})\.(\[0-9]{1,3})&quot; $recvd ] } {<br />    puts $recvd<br />  }<br />}</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">NWG</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3123937716085923593">09 September 2009 07:00</a>
+                <a rel="nofollow" id="c3123937716085923593" href="#3123937716085923593">09 September 2009 07:00</a>
               </span>
             </div>
-            <p class="comment-content">Here&#39;s the same from pastebin for help with formatting:<br />http://pastebin.com/f60cc87d1</p>
+            <div class="comment-content">Here&#39;s the same from pastebin for help with formatting:<br />http://pastebin.com/f60cc87d1</div>
           </div>
         </li>
       </div>

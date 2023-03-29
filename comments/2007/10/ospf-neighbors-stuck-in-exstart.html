@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>16 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1903254003363106478">24 October 2007 18:39</a>
+                <a rel="nofollow" id="c1903254003363106478" href="#1903254003363106478">24 October 2007 18:39</a>
               </span>
             </div>
-            <p class="comment-content">I have got an interesting one.<BR/><BR/>A few years ago I got called to troubleshoot an OSPF Exstart problem, Both routers were connected together over an international frame relay PVC. Both side had MTU 1500 bytes set on their interfaces initially but OSPF got stuck in Exstart. I knew about the OSPF MTU Mismatch issue back then but this one didn't seem to be it because the MTU size match on both ends. However, I was told it was an international Frame Relay PVC so I asked how the PVC was built. It actually went through three providers, and the provider in the middle had the PVC mtu set at 1100 bytes for some reasons and that was the culprit. The fix, as it turned out, was to lower the interface IP MTU on the customer routers (IP MTU = 1024)because the ospf mtu-ignore bit didn't solve it (this was because the middle Frame Relay provider dropped the over-sized frames at layer 2). It was a very unique problem so I would like to pass along. Nowadays frame relay is going away so we may never encounter a problem like this one.</p>
+            <div class="comment-content">I have got an interesting one.<BR/><BR/>A few years ago I got called to troubleshoot an OSPF Exstart problem, Both routers were connected together over an international frame relay PVC. Both side had MTU 1500 bytes set on their interfaces initially but OSPF got stuck in Exstart. I knew about the OSPF MTU Mismatch issue back then but this one didn't seem to be it because the MTU size match on both ends. However, I was told it was an international Frame Relay PVC so I asked how the PVC was built. It actually went through three providers, and the provider in the middle had the PVC mtu set at 1100 bytes for some reasons and that was the culprit. The fix, as it turned out, was to lower the interface IP MTU on the customer routers (IP MTU = 1024)because the ospf mtu-ignore bit didn't solve it (this was because the middle Frame Relay provider dropped the over-sized frames at layer 2). It was a very unique problem so I would like to pass along. Nowadays frame relay is going away so we may never encounter a problem like this one.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3797746790536267965">11 August 2013 07:56</a>
+                <a rel="nofollow" id="c3797746790536267965" href="#3797746790536267965">11 August 2013 07:56</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for sharing this.</p>
+            <div class="comment-content">Thanks for sharing this.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02571029118821999072" rel="nofollow">Jay Swan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8233936950769436365">24 October 2007 19:10</a>
+                <a rel="nofollow" id="c8233936950769436365" href="#8233936950769436365">24 October 2007 19:10</a>
               </span>
             </div>
-            <p class="comment-content">The place I've seen this several times is when running OSPF between a SVI on a 3550 switch and a router, which have different default MTUs.</p>
+            <div class="comment-content">The place I've seen this several times is when running OSPF between a SVI on a 3550 switch and a router, which have different default MTUs.</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6144936215403484292">17 November 2007 01:11</a>
+                <a rel="nofollow" id="c6144936215403484292" href="#6144936215403484292">17 November 2007 01:11</a>
               </span>
             </div>
-            <p class="comment-content">What is the best way (not "ip ospf mtu-ignore") to resolve MTU mismatch between 3550 SVI and router's physical or BVI interface?<BR/><BR/>Without affecting other switch ports?<BR/><BR/>I know about "system mtu routing ..." on 3550, but it is system-wide.<BR/><BR/>Consider that router has BVI interface (which also produces different mtu) and switch has a SVI int.<BR/><BR/>Router:<BR/><BR/>bridge 1 protocol ieee<BR/>bridge 1 route ip<BR/>bridge irb<BR/><BR/>interface GigabitEthernet0/0<BR/> description trunk to 3750<BR/> no ip address<BR/>!         <BR/>interface GigabitEthernet0/0.1<BR/> encapsulation dot1Q 100<BR/> bridge-group 1  <BR/><BR/>interface BVI1<BR/> ip address 10.1.1.2 255.255.255.0<BR/><BR/>router ospf 1<BR/> network 10.1.1.0 0.0.0.255 area 0<BR/><BR/>BVI1 is up, line protocol is up<BR/>    MTU is 1514 bytes</p>
+            <div class="comment-content">What is the best way (not "ip ospf mtu-ignore") to resolve MTU mismatch between 3550 SVI and router's physical or BVI interface?<BR/><BR/>Without affecting other switch ports?<BR/><BR/>I know about "system mtu routing ..." on 3550, but it is system-wide.<BR/><BR/>Consider that router has BVI interface (which also produces different mtu) and switch has a SVI int.<BR/><BR/>Router:<BR/><BR/>bridge 1 protocol ieee<BR/>bridge 1 route ip<BR/>bridge irb<BR/><BR/>interface GigabitEthernet0/0<BR/> description trunk to 3750<BR/> no ip address<BR/>!         <BR/>interface GigabitEthernet0/0.1<BR/> encapsulation dot1Q 100<BR/> bridge-group 1  <BR/><BR/>interface BVI1<BR/> ip address 10.1.1.2 255.255.255.0<BR/><BR/>router ospf 1<BR/> network 10.1.1.0 0.0.0.255 area 0<BR/><BR/>BVI1 is up, line protocol is up<BR/>    MTU is 1514 bytes</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7126775034156023596">18 November 2007 13:00</a>
+                <a rel="nofollow" id="c7126775034156023596" href="#7126775034156023596">18 November 2007 13:00</a>
               </span>
             </div>
-            <p class="comment-content"><A HREF="http://www.gossamer-threads.com/lists/cisco/nsp/43854" REL="nofollow">According to this discussion</A>, you can only set system-wide MTU on 3550, not per interface.<BR/><BR/>Once I get my hands on a Catalyst switch (and have time to spare), I'll run a few tests.</p>
+            <div class="comment-content"><A HREF="http://www.gossamer-threads.com/lists/cisco/nsp/43854" REL="nofollow">According to this discussion</A>, you can only set system-wide MTU on 3550, not per interface.<BR/><BR/>Once I get my hands on a Catalyst switch (and have time to spare), I'll run a few tests.</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9116958470410752562">04 December 2007 22:26</a>
+                <a rel="nofollow" id="c9116958470410752562" href="#9116958470410752562">04 December 2007 22:26</a>
               </span>
             </div>
-            <p class="comment-content">Thank you.<BR/>So should I set "system mtu routing 1514" on the 3750 to match the bvi's mtu and forget about it?<BR/><BR/>Any negative consequences?<BR/><BR/>What about other routers on the same L2 segment with regular routed intefaces? they currently have "ip ospf mtu-ignore" :)<BR/><BR/>The bvi interface would not take mtu settings.<BR/> <BR/>Thanks,<BR/>Vladimir</p>
+            <div class="comment-content">Thank you.<BR/>So should I set "system mtu routing 1514" on the 3750 to match the bvi's mtu and forget about it?<BR/><BR/>Any negative consequences?<BR/><BR/>What about other routers on the same L2 segment with regular routed intefaces? they currently have "ip ospf mtu-ignore" :)<BR/><BR/>The bvi interface would not take mtu settings.<BR/> <BR/>Thanks,<BR/>Vladimir</div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6145198859307104915">05 December 2007 08:36</a>
+                <a rel="nofollow" id="c6145198859307104915" href="#6145198859307104915">05 December 2007 08:36</a>
               </span>
             </div>
-            <p class="comment-content">You should set the system MTU to 1500, not 1514 (unless I'm gravely mistaken, the MTU specifies the payload size, not the layer-2 frame size).<BR/><BR/>There SHOULD be no negative impact, unless the workstations in your LAN use jumbo frames (and let's assume that the switches are not MPLS PE routers :).<BR/><BR/>As for the BVI interface; I can set the MTU and IP MTU on a BVI interface on a router (using 12.4(15)T1), but as I said in a previous comment, you cannot set per-interface MTU on a Cat3550 at all.</p>
+            <div class="comment-content">You should set the system MTU to 1500, not 1514 (unless I'm gravely mistaken, the MTU specifies the payload size, not the layer-2 frame size).<BR/><BR/>There SHOULD be no negative impact, unless the workstations in your LAN use jumbo frames (and let's assume that the switches are not MPLS PE routers :).<BR/><BR/>As for the BVI interface; I can set the MTU and IP MTU on a BVI interface on a router (using 12.4(15)T1), but as I said in a previous comment, you cannot set per-interface MTU on a Cat3550 at all.</div>
           </div>
         </li>
       </div>
@@ -153,10 +148,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#360392337677694207">07 December 2007 19:29</a>
+                <a rel="nofollow" id="c360392337677694207" href="#360392337677694207">07 December 2007 19:29</a>
               </span>
             </div>
-            <p class="comment-content">Thanks</p>
+            <div class="comment-content">Thanks</div>
           </div>
         </li>
       </div>
@@ -171,10 +166,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11054543505626333741" rel="nofollow">Nicolas</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7614194499591683657">15 May 2009 18:36</a>
+                <a rel="nofollow" id="c7614194499591683657" href="#7614194499591683657">15 May 2009 18:36</a>
               </span>
             </div>
-            <p class="comment-content">Google got me here with the magic words mtu + ospf while looking for some info regarding this topic for a post in my new blog. I basically wrote the same (in spanish), but added something that I found pretty interesting; lowering back the mtu or removing the ip ospf mtu-ignore and see what would happen. Just the latter would bring us back to the issue. MTU would just be an issue again whenever the adjacency is rebuilt...just my two cents.</p>
+            <div class="comment-content">Google got me here with the magic words mtu + ospf while looking for some info regarding this topic for a post in my new blog. I basically wrote the same (in spanish), but added something that I found pretty interesting; lowering back the mtu or removing the ip ospf mtu-ignore and see what would happen. Just the latter would bring us back to the issue. MTU would just be an issue again whenever the adjacency is rebuilt...just my two cents.</div>
           </div>
         </li>
       </div>
@@ -189,10 +184,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Clive</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6782757351194145368">17 December 2009 11:41</a>
+                <a rel="nofollow" id="c6782757351194145368" href="#6782757351194145368">17 December 2009 11:41</a>
               </span>
             </div>
-            <p class="comment-content">Yeh, got a strange issue.<br /><br />If the MTU is set to 1500 or lower then full adjacency is achieved, anything higher and it stays in 2 way - Anyone got any ideas on that.<br /><br />Set up is - Juniper -&gt; Foundry -&gt; SmartEdge<br /><br />Set ups on Juniper and Smartedge as follows:-<br /><br />Juniper<br />metric 65535;<br />        retransmit-interval 5;<br />        transit-delay 1;<br />        hello-interval 10;<br />        dead-interval 40;<br /><br />SmartEdge:<br /><br />transmit-delay 1<br />    router-priority 0<br />    hello-interval 10<br />    router-dead-interval 40<br />    cost 65534<br /><br />The only difference I can see is the metric cost, but then why would it work with 1500 but not anything larger?</p>
+            <div class="comment-content">Yeh, got a strange issue.<br /><br />If the MTU is set to 1500 or lower then full adjacency is achieved, anything higher and it stays in 2 way - Anyone got any ideas on that.<br /><br />Set up is - Juniper -&gt; Foundry -&gt; SmartEdge<br /><br />Set ups on Juniper and Smartedge as follows:-<br /><br />Juniper<br />metric 65535;<br />        retransmit-interval 5;<br />        transit-delay 1;<br />        hello-interval 10;<br />        dead-interval 40;<br /><br />SmartEdge:<br /><br />transmit-delay 1<br />    router-priority 0<br />    hello-interval 10<br />    router-dead-interval 40<br />    cost 65534<br /><br />The only difference I can see is the metric cost, but then why would it work with 1500 but not anything larger?</div>
           </div>
         </li>
       </div>
@@ -207,10 +202,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2917501957649417031">17 December 2009 11:59</a>
+                <a rel="nofollow" id="c2917501957649417031" href="#2917501957649417031">17 December 2009 11:59</a>
               </span>
             </div>
-            <p class="comment-content">I would suspect the box in the middle is dropping jumbo frames. See also<br /><br />http://blog.ioshints.info/2009/11/ip-ospf-mtu-ignore-is-dangerous-command.html</p>
+            <div class="comment-content">I would suspect the box in the middle is dropping jumbo frames. See also<br /><br />http://blog.ioshints.info/2009/11/ip-ospf-mtu-ignore-is-dangerous-command.html</div>
           </div>
         </li>
       </div>
@@ -225,10 +220,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Robin M.</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3326763510407052655">07 September 2011 18:58</a>
+                <a rel="nofollow" id="c3326763510407052655" href="#3326763510407052655">07 September 2011 18:58</a>
               </span>
             </div>
-            <p class="comment-content">Funny enough I&#39;m experiencing this issue right now on a Gigabit Ethernet link between two 7609s. Looks like the MTU on the transport network is wrong and the carrier is looking at it now.<br /><br />New technology, same old problems.  :)</p>
+            <div class="comment-content">Funny enough I&#39;m experiencing this issue right now on a Gigabit Ethernet link between two 7609s. Looks like the MTU on the transport network is wrong and the carrier is looking at it now.<br /><br />New technology, same old problems.  :)</div>
           </div>
         </li>
       </div>
@@ -243,10 +238,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">jeff</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3993058709239142834">08 February 2012 15:16</a>
+                <a rel="nofollow" id="c3993058709239142834" href="#3993058709239142834">08 February 2012 15:16</a>
               </span>
             </div>
-            <p class="comment-content">hi Robin, im experiencing it right now. i have two routers between two 7609 and sometimes the ospf is going down. how did you resolve the issue?</p>
+            <div class="comment-content">hi Robin, im experiencing it right now. i have two routers between two 7609 and sometimes the ospf is going down. how did you resolve the issue?</div>
           </div>
         </li>
       </div>
@@ -261,10 +256,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6689630142481715678">14 November 2013 17:33</a>
+                <a rel="nofollow" id="c6689630142481715678" href="#6689630142481715678">14 November 2013 17:33</a>
               </span>
             </div>
-            <p class="comment-content">I am having an issue with OSPF, we have HP, Cisco, and H3C in our Area 0. Router priorities are set, remote sites are priority 0 and the main sites are 250 and lower (to specify DR). However, intermittently we are still getting some strange adjacency losses. <br />This started with an existing network that I am trying to fix. Originally no priorities were set anywhere and all Area 0 routers were set to priority 1 (default). I fixed that and the problem became MORE common - it had been happening once or twice every 3 months. <br /> I discovered then that the NTP server config on all the network equipment was inconsistent. So I fixed that, pointed all devices to the appropriate NTP servers (One of which was the loopback on our core router which had and IP that already existed on the BDR as the router ID). Finally yesterday for the first time in 10 days there were no OSPF messages of adj change in the logs. <br />All devices have identical MTU,Hello, Dead, and Carrier delay timers. <br /><br /> My questions are:<br />What affect did NTP have on OSPF? Could all the issues have been resolved by finding that duplicate IP in Area 0? Has anyone else seen issues with this type of mixed environment (HP, Cisco, H3C)? </p>
+            <div class="comment-content">I am having an issue with OSPF, we have HP, Cisco, and H3C in our Area 0. Router priorities are set, remote sites are priority 0 and the main sites are 250 and lower (to specify DR). However, intermittently we are still getting some strange adjacency losses. <br />This started with an existing network that I am trying to fix. Originally no priorities were set anywhere and all Area 0 routers were set to priority 1 (default). I fixed that and the problem became MORE common - it had been happening once or twice every 3 months. <br /> I discovered then that the NTP server config on all the network equipment was inconsistent. So I fixed that, pointed all devices to the appropriate NTP servers (One of which was the loopback on our core router which had and IP that already existed on the BDR as the router ID). Finally yesterday for the first time in 10 days there were no OSPF messages of adj change in the logs. <br />All devices have identical MTU,Hello, Dead, and Carrier delay timers. <br /><br /> My questions are:<br />What affect did NTP have on OSPF? Could all the issues have been resolved by finding that duplicate IP in Area 0? Has anyone else seen issues with this type of mixed environment (HP, Cisco, H3C)? </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -280,10 +275,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4914325586153666273">15 November 2013 07:21</a>
+                <a rel="nofollow" id="c4914325586153666273" href="#4914325586153666273">15 November 2013 07:21</a>
               </span>
             </div>
-            <p class="comment-content">Duplicate IPs (particularly if they&#39;re used for Router ID) could be the root cause of your problems.</p>
+            <div class="comment-content">Duplicate IPs (particularly if they&#39;re used for Router ID) could be the root cause of your problems.</div>
           </div>
         </li>
       </div>
@@ -298,10 +293,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7078173587642197777">15 November 2013 15:57</a>
+                <a rel="nofollow" id="c7078173587642197777" href="#7078173587642197777">15 November 2013 15:57</a>
               </span>
             </div>
-            <p class="comment-content">I agree, that is why I am going through the configs of all the devices on the network very carefully. I didn&#39;t build or design this network, but I can sure make it work better and redesign what I can to even improve the original design</p>
+            <div class="comment-content">I agree, that is why I am going through the configs of all the devices on the network very carefully. I didn&#39;t build or design this network, but I can sure make it work better and redesign what I can to even improve the original design</div>
           </div>
         </li>
       </div>

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00999352568102477737" rel="nofollow">Phil Bedard</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5658987304798482028">25 April 2015 02:37</a>
+                <a rel="nofollow" id="c5658987304798482028" href="#5658987304798482028">25 April 2015 02:37</a>
               </span>
             </div>
-            <p class="comment-content">Tom Herbert from Google has been adamant about overlay protocols having some way to support authentication/encryption of VNI traffic while preserving entropy for load balancing.   He (and by extension I would guess Google) don&#39;t want to just blindly accept traffic at a VNI endpoint because the VNID matches.  This is where things like additional metadata in the header come into play, where you can add additional data for the actual endpoints to use to either accept or reject the packet.  <br /><br />The GUE draft has an example of supporting an IPSec header and maintaining entropy by using the original packet&#39;s information.   The issue with that is it requires the source do all of the encryption/encapsulation at one time, which is a lot of processing.   GUE also has a metadata portion which can be used as someone sees fit and may also be used for security/authentication.  <br /><br />With VXLAN-GPE (next version of VXLAN) there was some discussion around adding metadata fields, but I believe the agreed upon solution was to use the &quot;NSH&quot; protocol field and use a NSH header to carry any additional metadata.   This would ensure backward compatibility with existing VXLAN.  </p>
+            <div class="comment-content">Tom Herbert from Google has been adamant about overlay protocols having some way to support authentication/encryption of VNI traffic while preserving entropy for load balancing.   He (and by extension I would guess Google) don&#39;t want to just blindly accept traffic at a VNI endpoint because the VNID matches.  This is where things like additional metadata in the header come into play, where you can add additional data for the actual endpoints to use to either accept or reject the packet.  <br /><br />The GUE draft has an example of supporting an IPSec header and maintaining entropy by using the original packet&#39;s information.   The issue with that is it requires the source do all of the encryption/encapsulation at one time, which is a lot of processing.   GUE also has a metadata portion which can be used as someone sees fit and may also be used for security/authentication.  <br /><br />With VXLAN-GPE (next version of VXLAN) there was some discussion around adding metadata fields, but I believe the agreed upon solution was to use the &quot;NSH&quot; protocol field and use a NSH header to carry any additional metadata.   This would ensure backward compatibility with existing VXLAN.  </div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://twitter.com/CCIE21921" rel="nofollow">Lukas Krattiger</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1234922883847391970">26 April 2015 01:42</a>
+                <a rel="nofollow" id="c1234922883847391970" href="#1234922883847391970">26 April 2015 01:42</a>
               </span>
             </div>
-            <p class="comment-content">We at Cisco share the concern that VXLAN encapsulation does not provide any security by itself. To address this in a simple and efficient way, we invested in incorporating additional capabilities for confidentiality, integrity and availability for VXLAN networks, specifically with the usage of the BGP based EVPN control-plane.<br />By using the existing BGP authentication, we introduced additional measures to not only ensure the integrity of the control-plane information but also added a &quot;whitelist&quot; methodology. Via the control-plane, we receive the list of neighbor VTEPs and add these IP addresses to a Whitelist. <br />While receiving VXLAN encapsulated data packets, we only accept packets from VTEPs which were previously distributed and stored in the Whitelist. VXLAN encapsulated packets from an unknown VTEP (not in Whitelist) are considered invalid and will be discarded.<br />Cisco is shipping this functionality today with VXLAN/EVPN for Nexus 9000 and will make it available to other Platforms once supporting VXLAN/EVPN</p>
+            <div class="comment-content">We at Cisco share the concern that VXLAN encapsulation does not provide any security by itself. To address this in a simple and efficient way, we invested in incorporating additional capabilities for confidentiality, integrity and availability for VXLAN networks, specifically with the usage of the BGP based EVPN control-plane.<br />By using the existing BGP authentication, we introduced additional measures to not only ensure the integrity of the control-plane information but also added a &quot;whitelist&quot; methodology. Via the control-plane, we receive the list of neighbor VTEPs and add these IP addresses to a Whitelist. <br />While receiving VXLAN encapsulated data packets, we only accept packets from VTEPs which were previously distributed and stored in the Whitelist. VXLAN encapsulated packets from an unknown VTEP (not in Whitelist) are considered invalid and will be discarded.<br />Cisco is shipping this functionality today with VXLAN/EVPN for Nexus 9000 and will make it available to other Platforms once supporting VXLAN/EVPN</div>
           </div>
         </li>
       </div>

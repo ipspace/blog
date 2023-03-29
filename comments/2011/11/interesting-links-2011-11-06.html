@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8028725155157906041">06 November 2011 19:12</a>
+                <a rel="nofollow" id="c8028725155157906041" href="#8028725155157906041">06 November 2011 19:12</a>
               </span>
             </div>
-            <p class="comment-content">For bufferbloat, I wish there was a better explanation to the behavior. TCP looks to fill the &quot;pipe&quot;, not to maximize the bandwidth, and by adding more buffers we just increase the pipe depth. <br /><br />TCP is a &quot;clocked&quot; protocol, so in general the sender window opens upon reception of incoming ACK&#39;s. If the data segments that have been sent out are delayed due to buffering, so will be the returning ACKS&#39;s, effectively slowing down the CWND expansion and pipe filling.  The only place you can go wrong is maybe slow start synchronization where multiple senders overfill the pipe due to exponential growth.<br /><br />Anyways I&#39;ll look around as so far I haven&#39;t found clear model of this behavior. Hey, we just tuned buffers up to reduce the impact of TCP incasting and now they tell us to shrink them back!</p>
+            <div class="comment-content">For bufferbloat, I wish there was a better explanation to the behavior. TCP looks to fill the &quot;pipe&quot;, not to maximize the bandwidth, and by adding more buffers we just increase the pipe depth. <br /><br />TCP is a &quot;clocked&quot; protocol, so in general the sender window opens upon reception of incoming ACK&#39;s. If the data segments that have been sent out are delayed due to buffering, so will be the returning ACKS&#39;s, effectively slowing down the CWND expansion and pipe filling.  The only place you can go wrong is maybe slow start synchronization where multiple senders overfill the pipe due to exponential growth.<br /><br />Anyways I&#39;ll look around as so far I haven&#39;t found clear model of this behavior. Hey, we just tuned buffers up to reduce the impact of TCP incasting and now they tell us to shrink them back!</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Daniel Ginsburg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1575866941652079726">07 November 2011 10:51</a>
+                <a rel="nofollow" id="c1575866941652079726" href="#1575866941652079726">07 November 2011 10:51</a>
               </span>
             </div>
-            <p class="comment-content">Hi Petr,<br /><br />I&#39;m sure you&#39;ve seen the graph I posted in my blog few years ago (http://net-geek.org/dbg/upload/collapse.png) which demonstrates the issue quite ... ugh ... graphically.<br /><br />I made sure it was the single TCP stream over this pipe, so what you see wasn&#39;t due to SS sync.<br /><br />As you can see from the graph, the TCP stream experienced extremely wild variations of RTT and sending rate. What was happening is that insane overbuffering prevented TCP from discovering an equilibrium sending rate - it allowed CWND to grow too high, get the huge buffer filled, and then go back to retransmission and shrinking CWND almost to zero. Basically it&#39;s a classic TCP sawtooth with extremely large tooth, making avg rate very poor.<br /><br />As to Terry Slattery&#39;s explanation regarding unnecessary retransmissions, I&#39;m sure there were some (had to be with RTT well up into 10s of seconds!). But I&#39;m not sure if there was enough of them to clog the pipe and exacerbate the issue.<br /><br />I still have the packet captures lying around and can share them if you&#39;re interested.</p>
+            <div class="comment-content">Hi Petr,<br /><br />I&#39;m sure you&#39;ve seen the graph I posted in my blog few years ago (http://net-geek.org/dbg/upload/collapse.png) which demonstrates the issue quite ... ugh ... graphically.<br /><br />I made sure it was the single TCP stream over this pipe, so what you see wasn&#39;t due to SS sync.<br /><br />As you can see from the graph, the TCP stream experienced extremely wild variations of RTT and sending rate. What was happening is that insane overbuffering prevented TCP from discovering an equilibrium sending rate - it allowed CWND to grow too high, get the huge buffer filled, and then go back to retransmission and shrinking CWND almost to zero. Basically it&#39;s a classic TCP sawtooth with extremely large tooth, making avg rate very poor.<br /><br />As to Terry Slattery&#39;s explanation regarding unnecessary retransmissions, I&#39;m sure there were some (had to be with RTT well up into 10s of seconds!). But I&#39;m not sure if there was enough of them to clog the pipe and exacerbate the issue.<br /><br />I still have the packet captures lying around and can share them if you&#39;re interested.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Daniel Ginsburg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8083400232701549745">07 November 2011 11:19</a>
+                <a rel="nofollow" id="c8083400232701549745" href="#8083400232701549745">07 November 2011 11:19</a>
               </span>
             </div>
-            <p class="comment-content">The correct url for the graph is http://net-geek.org/dbg/upload/collapse.png</p>
+            <div class="comment-content">The correct url for the graph is http://net-geek.org/dbg/upload/collapse.png</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1024474341254046387">07 November 2011 17:05</a>
+                <a rel="nofollow" id="c1024474341254046387" href="#1024474341254046387">07 November 2011 17:05</a>
               </span>
             </div>
-            <p class="comment-content">Oh man, it was silly of me to forget that TCPoDOCSIS blog post of yours :) Anyways, I feel I kind of get it :) TCP expands CWDM way too much, hugely overestimating the pipe &quot;width&quot; (=bandwidth) and then collapses dramatically when it hits the ceiling of buffer depths. <br /><br />Thanks, and please send me the packet caps once you get a moment to petrlapu at microsoft dot com!</p>
+            <div class="comment-content">Oh man, it was silly of me to forget that TCPoDOCSIS blog post of yours :) Anyways, I feel I kind of get it :) TCP expands CWDM way too much, hugely overestimating the pipe &quot;width&quot; (=bandwidth) and then collapses dramatically when it hits the ceiling of buffer depths. <br /><br />Thanks, and please send me the packet caps once you get a moment to petrlapu at microsoft dot com!</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Gernot Nusshall</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2757291792200982211">08 November 2011 00:17</a>
+                <a rel="nofollow" id="c2757291792200982211" href="#2757291792200982211">08 November 2011 00:17</a>
               </span>
             </div>
-            <p class="comment-content">Fujitsu can´t be serious:<br /><br />The Ethernet-based connection-oriented Ethernet technologies—VLAN switching and PBB-TE—uniquely allow service providers to enjoy the deterministic performance, efficient aggregation and 50 ms protection<br /><br /><br />What are those guy´s smoking?</p>
+            <div class="comment-content">Fujitsu can´t be serious:<br /><br />The Ethernet-based connection-oriented Ethernet technologies—VLAN switching and PBB-TE—uniquely allow service providers to enjoy the deterministic performance, efficient aggregation and 50 ms protection<br /><br /><br />What are those guy´s smoking?</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#380185522564458290">08 November 2011 00:18</a>
+                <a rel="nofollow" id="c380185522564458290" href="#380185522564458290">08 November 2011 00:18</a>
               </span>
             </div>
-            <p class="comment-content">...and some of my 2c on the bufferbloating: imagine that you have a VPLS service, where RTT between the sites is quite different, and one major (say, DC) site has to communicate with all the others. The problem with this situation, of course, is that there will be no &quot;correct&quot; output buffer size. And if I understand it correctly, the worst punished will be the closest sites (smallest RTT).<br /><br />Hmm.... Sure smells like an opportunity! :)</p>
+            <div class="comment-content">...and some of my 2c on the bufferbloating: imagine that you have a VPLS service, where RTT between the sites is quite different, and one major (say, DC) site has to communicate with all the others. The problem with this situation, of course, is that there will be no &quot;correct&quot; output buffer size. And if I understand it correctly, the worst punished will be the closest sites (smallest RTT).<br /><br />Hmm.... Sure smells like an opportunity! :)</div>
           </div>
         </li>
       </div>

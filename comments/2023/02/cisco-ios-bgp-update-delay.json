@@ -1,0 +1,70 @@
+{
+   "comments": [
+      {
+         "date": "07 February 2023 05:50",
+         "html": "<p>What about BIRD on Linux? I started using it for my &quot;vendor-neutral&quot; posts, and I have been very positively surprised about its versatility.</p>\n",
+         "id": "1649",
+         "name": " Jose",
+         "pub": "2023-02-07T17:50:47",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "15 February 2023 08:55",
+               "html": "<p>yes - I have just experienced this with IOSXR and it is very annoying as we wanted to track EoR to measure the BGP convergence time throughout major faults and build some stats/data to then analyse. <br />\nIn a major router vendor, EoR is only available for GR and Enhanced Route Refresh (clear bgp soft). <br />\nHaving said that, RFC 4742 says: <br />\n&quot;\nAlthough the End-of-RIB marker is specified for the purpose of BGP graceful restart, it is noted that the generation of such a marker upon completion of the initial update would be useful for routing convergence in general, and thus the practice is recommended.\n&quot; </p>\n\n<p>Cheers/Ciao <br />\nAndrea </p>\n",
+               "id": "1665",
+               "name": "Andrea Di Donato",
+               "pub": "2023-02-15T08:55:51",
+               "ref": "1650",
+               "type": "comment"
+            }
+         ],
+         "date": "07 February 2023 06:59",
+         "html": "<p>Please note - (somewhat vendor dependent) when GR is not negotiated - EoR is not sent; most BGP implementations will use 1st (well, technically 2nd) keepalive as an indicator that the sender is done and best path can be run</p>\n",
+         "id": "1650",
+         "name": " JeffT ",
+         "pub": "2023-02-07T18:59:47",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "08 February 2023 08:05",
+               "html": "<p>FRR has two modes for this <code>datacenter</code> mode where the update delay is set to 0( just start doing the work ) and <code>traditional</code> where the update delay is 120 seconds as you have experienced.  </p>\n",
+               "id": "1653",
+               "name": "Donald Sharp",
+               "pub": "2023-02-08T20:05:26",
+               "ref": "1652",
+               "type": "comment"
+            },
+            {
+               "date": "22 February 2023 11:47",
+               "html": "<p>update-delay is 0 In FRR regardless of which mode is selected.</p>\n",
+               "id": "1676",
+               "name": " Oleg",
+               "pub": "2023-02-22T11:47:04",
+               "ref": "1653",
+               "type": "comment"
+            }
+         ],
+         "date": "08 February 2023 07:45",
+         "html": "<p>Hi Ivan,</p>\n\n<p>As you correctly mentioned, it&#39;s crucial to be cautious when modifying this timer as doing so may result in unexpected consequences.</p>\n\n<p>For example, in a multihomed design where the CE receives the default route from both PEs, if the primary PE restarts and establishes the CE-PE peering, it may start sending the Default route before VPNv4 convergence is complete, potentially causing traffic to be blackholed for some time.</p>\n\n<p>Therefore, depending on the number of peerings and routes involved, maintaining or even increasing the update-delay timer may be necessary in certain use cases.</p>\n\n<p>BTW, a quick point regarding the update-delay timer: The update-delay timer waits after the FIRST neighbor is established before starting its calculation.</p>\n\n<p>I just wanted to share this use case with the readers.</p>\n",
+         "id": "1652",
+         "name": "Mehdi SFAR",
+         "pub": "2023-02-08T19:45:22",
+         "type": "comment"
+      },
+      {
+         "date": "15 February 2023 09:07",
+         "html": "<p>Another production use-case for which this timer is useful is to avoid sending aggregates before sending all of their contributors too, this way avoiding blackholing. </p>\n\n<p>Cheers/Ciao</p>\n\n<p>Andrea</p>\n",
+         "id": "1666",
+         "name": "Andrea Di Donato",
+         "pub": "2023-02-15T09:07:14",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2023/02/cisco-ios-bgp-update-delay.html"
+}

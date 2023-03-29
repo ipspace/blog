@@ -1,0 +1,219 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1550">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1550" href="#1550">06 December 2022 09:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Regarding &quot;<em>In that case, S2 forwards the packet toward S1 over the peer link (due to the destination MAC address), but S1 cannot forward it to A (because it arrived over the peer link).</em>&quot;</p>
+
+<p>While that is basically true(*) for bridged traffic, I see no problem to IP forward (route) an IP packet that arrived via peer link out of a local MLAG port. So while this is not optimal, it should work in general.</p>
+
+<p>To make this more explicit: An Ethernet frame addressed to S1 arrives on an MLAG port of S2. S2 bridges the frame to S1. S1 conceptually receives the frame and performs an IP lookup. It then does IP forwarding (a.k.a. routing) and in principle creates a new Ethernet frame (actually re-writes the existing frame) to send towards the directly connected host A.</p>
+
+<p>Technically, an ACL installed to drop bridged frames on egress on a local MLAG port needs to allow routed traffic.  That could be implemented by allowing the local switch&#39;s source MAC, or via a flag set in the packet processing pipeline.  I would expect that there are further implementation possibilities.</p>
+
+<p>(This would affect peer link sizing, because in that situation one would expect about half the routed traffic from the router needing to traverse the peer link. Thus using a shared router MAC and so on could be used as an optimization.)</p>
+
+<p>(*) In this case, i.e., when an Ethernet frame from an MLAG with an active port on the peer arrives via peer link, it must not be bridged to any local MLAG port where the peer also has an active MLAG port in the same MLAG, because then the peer has already sent the frame to those MLAGs. With individual link failures frames arriving via peer link may need to be bridged to local MLAG ports.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1551">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1551" href="#1551">06 December 2022 03:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, I was thinking along the same lines when trying to figure out the limitations of L3 forwarding (that&#39;s why I included the link to that blog post). </p>
+
+<p>Turns out that the easiest way to implement peer link filters (for bridging) is to have an egress ACL that matches on ingress interface (peer link), and the ingress interface doesn&#39;t change if the packet is routed.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1554">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1554" href="#1554">06 December 2022 04:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Well, I know of one MLAG implementation that at first did not &quot;support&quot; attaching one router via MLAG to the MLAG switches and using routing protocols and L3 forwarding between router and MLAG switches. But at least one customer did that, and it worked just fine. Later this was brought to the vendor&#39;s attention, and they did not find a reason why it should not work. A bit later the vendor&#39;s documentation changed to show this as supported.</p>
+
+<p>Thus I suspect that their MLAG implementation did not need any special additions.</p>
+
+<p>It is sad that the vendors treat many of the MLAG implementation details as <em>secret sauce</em> ingredients. :-(</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1555">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1555" href="#1555">06 December 2022 05:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, you&#39;re right about the <em>secret sauce</em> part.</p>
+
+<p>In the example you mentioned, it could be that the vendor already had to implement unicast MAC address sharing between MLAG members to support storage arrays that couldn&#39;t spell ARP -- some of them supposedly used source IP+MAC address gleaning to build fake ARP entries (that&#39;s why Nexus OS has <strong>peer-gateway</strong> command).</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1557">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1557" href="#1557">07 December 2022 10:33</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I just tested this in the lab (with hardware, thus ASIC based forwarding with ACLs and everything):</p>
+
+<ul>
+<li>S1, S2, R, and A according to the diagram in the blog post</li>
+<li>S1 and S2 are MLAG peers</li>
+<li>OSPF as routing protocol</li>
+<li>a &quot;host&quot; VLAN for A with VRRP in active/active mode on S1 and S2</li>
+<li>a &quot;transfer&quot; VLAN between S1, S2, and R</li>
+<li>all links and protocols active and functional</li>
+</ul>
+
+<p>I then pinged A from R and checked which outgoing link was used by R (using port counters). It was the port leading directly to the next-hop, in this case S1. Thus I increased the OSPF cost for the &quot;host&quot; VLAN on S1, such that R changed its next-hop to S2. R still used the same local port to send the Ethernet frame to S1. The port counters indicated that the ping now went via the peer link from S1 to S2 (bridging). S2 then used IP forwarding (routing) to send the packet to the host, using the local MLAG port. The host answered via the link to S1, and S1 routed the answer via the local port to R.</p>
+
+<p>I then verified via port mirror and Wireshark that the peer link indeed carried ping packets inside Ethernet frames sent from R&#39;s MAC address to S2&#39;s MAC address transported (bridged) from S1 to S2.</p>
+
+<p>The little documentation there is on details of this MLAG implementation clearly states that egress ACLs are used on MLAG ports to stop frames ingressing via peer link from being flooded to local MLAG ports (unless the peer&#39;s respective ports are down).</p>
+
+<p>Thus I&#39;d say that MLAG implementations differ, and at least one works the way one might expect based on bridging and routing fundamentals.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1558">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1558" href="#1558">07 December 2022 10:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; Thus I&#39;d say that MLAG implementations differ, and at least one works the way one might expect based on bridging and routing fundamentals.</p>
+
+<p>I can&#39;t decide whether I&#39;m surprised or not ;)</p>
+
+<p>Thanks a million for testing this!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1569">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1569" href="#1569">11 December 2022 12:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I had only tested unicast forwarding, since that corresponds to the description in the blog post (2022-12-06 until at least now).  But the problem of egress ACLs incorrectly dropping traffic might arise with IP multicast.</p>
+
+<p>I do not intend to examine this case, because I have always used anycast RPs on MLAG pairs for IP multicast forwarding.  This results in local forwarding in the normal case, and adjusted ACLs on link failures allow flooding in the respective failure cases.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1556">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeff T</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1556" href="#1556">07 December 2022 02:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Just don&rsquo;t&hellip;</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

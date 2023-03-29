@@ -1,0 +1,39 @@
+{
+   "comments": [
+      {
+         "date": "08 December 2020 11:57",
+         "html": "<p>Have you looked at Suzieq since you had us on your show? https://github.com/netenglabs/suzieq. I think it&#39;s a better platform for gathering that kind of data than Ansible. I looked quickly at your examples and I think Suzieq already collects that data. It then stores it in a vendor neutral format, and allows you to easily ask questions, rather than having to write your own code. I think it&#39;s great for integrating into automation as pre/post check, but we need to do a better job of documenting how that would work and the advantages.</p>\n\n<p>cheers,\nJustin</p>\n",
+         "id": "298",
+         "name": " Justin Pietsch",
+         "pub": "2020-12-08T23:57:08",
+         "type": "comment"
+      },
+      {
+         "date": "10 December 2020 07:10",
+         "html": "<p>Hi Justin! You know I love Suzieq, and if anyone ever asks me about a generic data gathering framework, Ansible would be pretty far down the list.</p>\n\n<p>However, sometimes you need information from the device to validate your data model, or you want to do post-deployment validation using the same tool, or you want to grab some data and create a report without investing into yet-another platform, or...</p>\n\n<p>In those cases, the hammer lying nearby is just what you need, even when you&#39;re dealing with squeaky disc brakes ;)</p>\n",
+         "id": "302",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-12-10T19:10:31",
+         "type": "comment"
+      },
+      {
+         "date": "12 December 2020 11:21",
+         "html": "It feels like you are trying to be practical : ) I appreciate your point of view and agree its good to let people know how to do these things. In general, I think this kind of data gathering is more general and people shouldn&#39;t think of it as one-off, they should figure out how to get this kind of data all the time.<br />\n\n\n",
+         "id": "310",
+         "name": "Justin Pietsch",
+         "pub": "2020-12-12T23:21:07",
+         "type": "comment"
+      },
+      {
+         "date": "02 January 2021 12:08",
+         "html": "<p>Hi there, <br />\nThis updated part is just another gem from Ivan. Thanks ever so much - much appreciated especially as pretty painful I guess.   </p>\n\n<p>There is one thing I wanted to highlight from my part: <br />\nIvan showed that Nexus OS can render XML printouts into JSON but that, at least for some Nexus OS versions, single-row tables are rendered as JSON dictionaries while multi-row tables are rendered as JSON Lists. <br />\nWell, I found the same issue (albeit not on the router but back on the Ansible host) on Junos (with the juniper_junos_command module and Ansible 2.5.0) on some &#39;deeper&#39; junos commands such as\n&#39;show route forwarding-table destination DST table default extensive&#39; or &#39;show route PFX table inet.0 active-path&#39;. In that case in fact the &quot;nh&quot; info is either a JSON Dict or a List depending on whether the &#39;nh&#39; is just one or more than one respectively.  I guess the culprit must be the Ansible&#39;s juniper&#39;s module automatic translation of the returned XML printout into JSON performed with the help of the jmslease library ?  </p>\n\n<p>Cheers/Ciao <br />\nAndrea  </p>\n",
+         "id": "332",
+         "name": "Andrea Di Donato",
+         "pub": "2021-01-02T12:08:15",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2020/12/updated-ansible-parsing-content.html"
+}

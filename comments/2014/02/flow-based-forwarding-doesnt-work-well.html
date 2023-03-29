@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00500564572365546734" rel="nofollow">Chris Lauwers</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8848067801871313473">19 February 2014 02:55</a>
+                <a rel="nofollow" id="c8848067801871313473" href="#8848067801871313473">19 February 2014 02:55</a>
               </span>
             </div>
-            <p class="comment-content">Does this mean we shouldn&#39;t use Open vSwitch in any real production deployments? Are there better free/open source alternatives?</p>
+            <div class="comment-content">Does this mean we shouldn&#39;t use Open vSwitch in any real production deployments? Are there better free/open source alternatives?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7207959470075536560">19 February 2014 10:08</a>
+                <a rel="nofollow" id="c7207959470075536560" href="#7207959470075536560">19 February 2014 10:08</a>
               </span>
             </div>
-            <p class="comment-content">Absolutely not. Like any other product, OVS has its benefits and drawbacks that you have to understand and deal with. Also, make sure you use a recent version with megaflow support. <br /><br />Beyond that, I hope you do pilots and performance testing before using any untested product in real production deployment, and deploying OVS should be no different.</p>
+            <div class="comment-content">Absolutely not. Like any other product, OVS has its benefits and drawbacks that you have to understand and deal with. Also, make sure you use a recent version with megaflow support. <br /><br />Beyond that, I hope you do pilots and performance testing before using any untested product in real production deployment, and deploying OVS should be no different.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Draco</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1892334398212210780">19 February 2014 03:48</a>
+                <a rel="nofollow" id="c1892334398212210780" href="#1892334398212210780">19 February 2014 03:48</a>
               </span>
             </div>
-            <p class="comment-content">Unknown packet punting is a problem...  we should discard instead of punting...   and have another protocol for discovering  destination addresses, that doesn&#39;t rely on punting :)</p>
+            <div class="comment-content">Unknown packet punting is a problem...  we should discard instead of punting...   and have another protocol for discovering  destination addresses, that doesn&#39;t rely on punting :)</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5433110843045549361">19 February 2014 10:09</a>
+                <a rel="nofollow" id="c5433110843045549361" href="#5433110843045549361">19 February 2014 10:09</a>
               </span>
             </div>
-            <p class="comment-content">Totally agree with you … but it won&#39;t happen as long as people are trying to emulate thick coax cable with ever-increasing number of abstraction/indirection layers.</p>
+            <div class="comment-content">Totally agree with you … but it won&#39;t happen as long as people are trying to emulate thick coax cable with ever-increasing number of abstraction/indirection layers.</div>
           </div>
         </li>
       </div>
@@ -107,10 +102,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05249178144690765593" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1837422990431117907">25 March 2014 05:56</a>
+                <a rel="nofollow" id="c1837422990431117907" href="#1837422990431117907">25 March 2014 05:56</a>
               </span>
             </div>
-            <p class="comment-content">Great article, I agree with the overall gist with a couple of minor comments (I&#39;m a major OVS contributor full disclosure).<br /><br />That 2500 &quot;flow-eviction-threshold&quot; isn&#39;t actually a hard limit. It&#39;s the number of datapath flows required before the flow eviction process starts at all. The actual number of datapath flows can grow significantly beyond this depending on your traffic patterns. That said, in older versions of OVS, about 10k is about has high as it can scale. The larger point you&#39;re making is correct.<br /><br />You mention that the flow eviction handling moved from the kernel to the userspace ovs-vswitchd daemon. This isn&#39;t actually true, the flow eviction handling has always been handled by the userspace daemon.<br /><br />I&#39;d highly recommend checking out OVS 2.1, we&#39;ve made some major changes in how all this works. That 2500 limit is long gone, with a more realistic limit being in the 100k range (depending on traffic patterns). All in all, the OVS dev community recognizes that this is a major issue and is therefore spending a great deal of time on it. 2.1 is just the beginning, stay tuned =)<br /><br />Ethan</p>
+            <div class="comment-content">Great article, I agree with the overall gist with a couple of minor comments (I&#39;m a major OVS contributor full disclosure).<br /><br />That 2500 &quot;flow-eviction-threshold&quot; isn&#39;t actually a hard limit. It&#39;s the number of datapath flows required before the flow eviction process starts at all. The actual number of datapath flows can grow significantly beyond this depending on your traffic patterns. That said, in older versions of OVS, about 10k is about has high as it can scale. The larger point you&#39;re making is correct.<br /><br />You mention that the flow eviction handling moved from the kernel to the userspace ovs-vswitchd daemon. This isn&#39;t actually true, the flow eviction handling has always been handled by the userspace daemon.<br /><br />I&#39;d highly recommend checking out OVS 2.1, we&#39;ve made some major changes in how all this works. That 2500 limit is long gone, with a more realistic limit being in the 100k range (depending on traffic patterns). All in all, the OVS dev community recognizes that this is a major issue and is therefore spending a great deal of time on it. 2.1 is just the beginning, stay tuned =)<br /><br />Ethan</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -126,10 +121,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2264695151612615456">25 March 2014 09:57</a>
+                <a rel="nofollow" id="c2264695151612615456" href="#2264695151612615456">25 March 2014 09:57</a>
               </span>
             </div>
-            <p class="comment-content">Thank you for setting me straight! Much appreciated.</p>
+            <div class="comment-content">Thank you for setting me straight! Much appreciated.</div>
           </div>
         </li>
       </div>

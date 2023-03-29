@@ -1,0 +1,54 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ciprian Chira</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1" href="#1">12 April 2020 02:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Addressing the problem of BGP Next Hop reachability, I&#39;m not familiar in the particular case of EVPN, but the Cisco implementation of BGP has 2 features enabled by default which are meant to address this issue specifically, the BGP Scanner process and (the even faster) Next Hop Tracking.</p>
+
+<p>And that&#39;s just for indirect / 3rd party next hop. If your BGP peering (regardless of whether it is iBGP or eBGP, even though the latter is the recommended best practice), then  fast externall fallover will immediately kill the neighbor and flush all routes which it learned from that neighbor.</p>
+
+<p>Of course, none of these features will protect you against gray SW/HW failures, such as faulty line card which still appears as UP but is not actually forwarding any traffic. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2" href="#2">13 April 2020 11:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Ciprian: You&#39;re absolutely right, but those are control-plane optimizations that either detect BGP session failure faster than you&#39;d be able to do it with BGP timers (in case BFD is not available), or flush invalid routes from BGP table faster than what we had in the past with periodic BGP scanner.</p>
+
+<p>Neither of these optimizations address the challenge described in this blog post: can we trust that a next hop advertised by BGP is usable for traffic forwarding.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

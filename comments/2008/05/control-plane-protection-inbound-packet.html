@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2178357522248481371">15 May 2008 16:35</a>
+                <a rel="nofollow" id="c2178357522248481371" href="#2178357522248481371">15 May 2008 16:35</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for the excellent post Ivan. I was surprised to read that if a policy is attached to the aggregate policy it would disable any control-plane subinterface policies. I didn't recall I read that caveat in the actual IOS CPPr config doc so this is an excellent piece of information.</p>
+            <div class="comment-content">Thanks for the excellent post Ivan. I was surprised to read that if a policy is attached to the aggregate policy it would disable any control-plane subinterface policies. I didn't recall I read that caveat in the actual IOS CPPr config doc so this is an excellent piece of information.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2797695655355060730">15 May 2008 18:01</a>
+                <a rel="nofollow" id="c2797695655355060730" href="#2797695655355060730">15 May 2008 18:01</a>
               </span>
             </div>
-            <p class="comment-content">Ivan:<BR/><BR/>I just finished reading the Understanding CPPr Doc and found the following statement about CoPP interesting:<BR/><BR/>"Control Plane Policing: Control Plane Policing is a Cisco IOS feature that allows policing of traffic destined to the route processor. A packet will not be checked against the CPPr policy until it has been permitted by all configured forms of CoPP."<BR/><BR/>So if I interpret it right...it appears that you can have a CPPr policy on specific control-plane subinterface(s) provided that the policy attached to the control plane aggregate interface has allowed it to go through. <BR/><BR/>Also when I look at the flow diagram in that document the subinterfaces will be checked "after" the CoPP aggregate interface.<BR/><BR/>I found this confusing and wonder if you have read it as well.</p>
+            <div class="comment-content">Ivan:<BR/><BR/>I just finished reading the Understanding CPPr Doc and found the following statement about CoPP interesting:<BR/><BR/>"Control Plane Policing: Control Plane Policing is a Cisco IOS feature that allows policing of traffic destined to the route processor. A packet will not be checked against the CPPr policy until it has been permitted by all configured forms of CoPP."<BR/><BR/>So if I interpret it right...it appears that you can have a CPPr policy on specific control-plane subinterface(s) provided that the policy attached to the control plane aggregate interface has allowed it to go through. <BR/><BR/>Also when I look at the flow diagram in that document the subinterfaces will be checked "after" the CoPP aggregate interface.<BR/><BR/>I found this confusing and wonder if you have read it as well.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4873029032609223875">15 May 2008 21:06</a>
+                <a rel="nofollow" id="c4873029032609223875" href="#4873029032609223875">15 May 2008 21:06</a>
               </span>
             </div>
-            <p class="comment-content">As soon as I've applied the aggregate policy (CoPP), the counters on the subinterface policies (CPPr) stopped increasing (or stayed at zero after being cleared). <BR/><BR/>I did not have the explicit 'class-default' in the aggregate policy, so I might do a few more tests. However, using 12.4(15)T5 the subinterface policies did not work at least for the traffic in the implicit default class of the aggregate policy.</p>
+            <div class="comment-content">As soon as I've applied the aggregate policy (CoPP), the counters on the subinterface policies (CPPr) stopped increasing (or stayed at zero after being cleared). <BR/><BR/>I did not have the explicit 'class-default' in the aggregate policy, so I might do a few more tests. However, using 12.4(15)T5 the subinterface policies did not work at least for the traffic in the implicit default class of the aggregate policy.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3098244119935454624">15 May 2008 22:17</a>
+                <a rel="nofollow" id="c3098244119935454624" href="#3098244119935454624">15 May 2008 22:17</a>
               </span>
             </div>
-            <p class="comment-content">I also ran similar tests...have a permit all policy attached to the aggregate interface and as soon as I did that the counter stopped incrementing. Next I tried a single permit say eigrp any any so I intentionally excluded OSPF under aggregate and that didn't help. The only time where it worked was that I had to remove the policy from the aggregate. <BR/><BR/>I will see if I can use the CPPr doc as a reference and ask my local SE to confirm. Stay tuned...</p>
+            <div class="comment-content">I also ran similar tests...have a permit all policy attached to the aggregate interface and as soon as I did that the counter stopped incrementing. Next I tried a single permit say eigrp any any so I intentionally excluded OSPF under aggregate and that didn't help. The only time where it worked was that I had to remove the policy from the aggregate. <BR/><BR/>I will see if I can use the CPPr doc as a reference and ask my local SE to confirm. Stay tuned...</div>
           </div>
         </li>
       </div>

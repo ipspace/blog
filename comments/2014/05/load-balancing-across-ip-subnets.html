@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04441771667073544925" rel="nofollow">Anders</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7466054426331288506">16 May 2014 13:37</a>
+                <a rel="nofollow" id="c7466054426331288506" href="#7466054426331288506">16 May 2014 13:37</a>
               </span>
             </div>
-            <p class="comment-content">Ouch, it&#39;s not that simple. Well it is, but this does have implications.<br /><br />Using source NAT will obviously remove the client IP address. If the loadbalancer doesn&#39;t add e.g. X-Forwarded-For-headers (for http), the client IP is obviously lost. This also requires the client application to know how to properly parse such headers are to be parsed: X-Forward-For is a chained list of IP addresses, and the &quot;seen&quot; client IP (the loadbalancer) needs to be evaluated as well. Only do trust X-Forwarded-For, if the &quot;seen&quot; client IP is a trusted loadbalancer. This becomes an issue if a client is behind a proxy: the proxy will add an &quot;X-Forwarded-For&quot;-header to the outgoing request, and the loadbalancer will add the proxy&#39;s IP address to this header. The application needs to know such details, otherwise there&#39;s a potential for error.<br /><br />Using IP-over-IP-tunneling is a different story: if you networks&#39; MTU is 1500, an IPv4-over-IPv4-header will reduce the available MTU by 20 octets down to 1480 octets. If the client&#39;s request is larger than this (e.g. a typical 1500-sized packet during file upload), the tcp packet does have the DF bit set and the client is sitting behind some (broken) firewall silently dropping icmp packets, the client will experience issues of &quot;something doesn&#39;t work&quot;.<br /><br />There are also potential security issues with IP-over-IP. As a good network engineer, you do enforce egress filtering, reverse path filtering and the like to protect the internet from spoofed outgoing traffic. If one is combining IP-over-IP-tunneling to traverse different L2/L3 domains and wants to use direct server return for the replies, they essentially need to remove some of those security measures. You also need to be aware that you&#39;ll be introducing asymetric traffic into your network, which may complicate debugging, may break more easily - and as we&#39;re talking about loadbalancers, we&#39;re also talking about high-volume or highly available services, who don&#39;t want to be faced with a risk of &quot;complicated debugging&quot;.<br /><br />So if you need to do IP-over-IP-tunneling, one may also want to re-route any replies back via the load balancer&#39;s network, e.g. via another tunneled connection. This will make it easier for the network, but this may introduce another layer of complexity for the server.</p>
+            <div class="comment-content">Ouch, it&#39;s not that simple. Well it is, but this does have implications.<br /><br />Using source NAT will obviously remove the client IP address. If the loadbalancer doesn&#39;t add e.g. X-Forwarded-For-headers (for http), the client IP is obviously lost. This also requires the client application to know how to properly parse such headers are to be parsed: X-Forward-For is a chained list of IP addresses, and the &quot;seen&quot; client IP (the loadbalancer) needs to be evaluated as well. Only do trust X-Forwarded-For, if the &quot;seen&quot; client IP is a trusted loadbalancer. This becomes an issue if a client is behind a proxy: the proxy will add an &quot;X-Forwarded-For&quot;-header to the outgoing request, and the loadbalancer will add the proxy&#39;s IP address to this header. The application needs to know such details, otherwise there&#39;s a potential for error.<br /><br />Using IP-over-IP-tunneling is a different story: if you networks&#39; MTU is 1500, an IPv4-over-IPv4-header will reduce the available MTU by 20 octets down to 1480 octets. If the client&#39;s request is larger than this (e.g. a typical 1500-sized packet during file upload), the tcp packet does have the DF bit set and the client is sitting behind some (broken) firewall silently dropping icmp packets, the client will experience issues of &quot;something doesn&#39;t work&quot;.<br /><br />There are also potential security issues with IP-over-IP. As a good network engineer, you do enforce egress filtering, reverse path filtering and the like to protect the internet from spoofed outgoing traffic. If one is combining IP-over-IP-tunneling to traverse different L2/L3 domains and wants to use direct server return for the replies, they essentially need to remove some of those security measures. You also need to be aware that you&#39;ll be introducing asymetric traffic into your network, which may complicate debugging, may break more easily - and as we&#39;re talking about loadbalancers, we&#39;re also talking about high-volume or highly available services, who don&#39;t want to be faced with a risk of &quot;complicated debugging&quot;.<br /><br />So if you need to do IP-over-IP-tunneling, one may also want to re-route any replies back via the load balancer&#39;s network, e.g. via another tunneled connection. This will make it easier for the network, but this may introduce another layer of complexity for the server.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8547927281557047970">16 May 2014 13:39</a>
+                <a rel="nofollow" id="c8547927281557047970" href="#8547927281557047970">16 May 2014 13:39</a>
               </span>
             </div>
-            <p class="comment-content">All true ... and then there&#39;s the problem of SSL and X-Forwarded-For headers (you need to decrypt and potentially re-encrypt), the loss of performance if you have to modify TCP sessions (at least on high-end load balancers) ...</p>
+            <div class="comment-content">All true ... and then there&#39;s the problem of SSL and X-Forwarded-For headers (you need to decrypt and potentially re-encrypt), the loss of performance if you have to modify TCP sessions (at least on high-end load balancers) ...</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04441771667073544925" rel="nofollow">Anders</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3085587959948165653">16 May 2014 16:31</a>
+                <a rel="nofollow" id="c3085587959948165653" href="#3085587959948165653">16 May 2014 16:31</a>
               </span>
             </div>
-            <p class="comment-content">By design, SSL/TLS-offloading or re-encrypting at the loadbalancer is a willingly accepted man-in-the-middle-attack. So usually, it&#39;s not an option for exactly those reasons where one wants to make use of SSL/TLS.<br /><br />Surprisingly a lot of &quot;offloading/re-encrypting&quot; solutions don&#39;t check if the server&#39;s certificate is barely valid, and by using them, you&#39;re accepting any further MITM-attacks downstream between loadbalancer and server. Ultimately, it&#39;s tricking your clients into assuming some security (see, the lock is closed and certified...) which is actually missing.<br /></p>
+            <div class="comment-content">By design, SSL/TLS-offloading or re-encrypting at the loadbalancer is a willingly accepted man-in-the-middle-attack. So usually, it&#39;s not an option for exactly those reasons where one wants to make use of SSL/TLS.<br /><br />Surprisingly a lot of &quot;offloading/re-encrypting&quot; solutions don&#39;t check if the server&#39;s certificate is barely valid, and by using them, you&#39;re accepting any further MITM-attacks downstream between loadbalancer and server. Ultimately, it&#39;s tricking your clients into assuming some security (see, the lock is closed and certified...) which is actually missing.<br /></div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8609791458462735709">16 May 2014 17:13</a>
+                <a rel="nofollow" id="c8609791458462735709" href="#8609791458462735709">16 May 2014 17:13</a>
               </span>
             </div>
-            <p class="comment-content">;)) Can&#39;t tell you how much I agree with you ;)</p>
+            <div class="comment-content">;)) Can&#39;t tell you how much I agree with you ;)</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.nuagenetworks.net/" rel="nofollow">Jeroen van Bemmel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7135616084783314097">28 May 2014 16:19</a>
+                <a rel="nofollow" id="c7135616084783314097" href="#7135616084783314097">28 May 2014 16:19</a>
               </span>
             </div>
-            <p class="comment-content">An overlay network could be used to provide the tunnelling, with ACLs at the virtual network level to restore security.<br /><br />Regards,<br />Jeroen van Bemmel ( Customer support engineer @ Nuage Networks )</p>
+            <div class="comment-content">An overlay network could be used to provide the tunnelling, with ACLs at the virtual network level to restore security.<br /><br />Regards,<br />Jeroen van Bemmel ( Customer support engineer @ Nuage Networks )</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3257545709623064643">29 May 2014 09:16</a>
+                <a rel="nofollow" id="c3257545709623064643" href="#3257545709623064643">29 May 2014 09:16</a>
               </span>
             </div>
-            <p class="comment-content">Agreed - effectively you&#39;re saying &quot;keep VLAN-like construct in place, but emulate it over IP to make the underlying transport fabric more stable.&quot;<br /><br />That would work well if the load balancer and servers are virtualized, but not so much if they happen to be appliances or bare-metal servers (where you&#39;ll have to use on-ramp/off-ramp L2 gateways, increasing the complexity of the solution).</p>
+            <div class="comment-content">Agreed - effectively you&#39;re saying &quot;keep VLAN-like construct in place, but emulate it over IP to make the underlying transport fabric more stable.&quot;<br /><br />That would work well if the load balancer and servers are virtualized, but not so much if they happen to be appliances or bare-metal servers (where you&#39;ll have to use on-ramp/off-ramp L2 gateways, increasing the complexity of the solution).</div>
           </div>
         </li>
       </div>

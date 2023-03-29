@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "19 May 2020 11:06",
+         "html": "<p>To even achieve more flexibility like working with 2FA/manual authentication uri module comes into rescue as it allows to reuse session cookie for any subsequent calls i.e. loop statements (ones ending up with subsequent authentication sessions). An example would be:</p>\n\n<p>Role:</p>\n\n<hr />\n\n<ul>\n<li><p>name: Login\nuri:\nurl: https://&#123;&#123; inventory_hostname &#125;&#125;/api/aaaLogin.json\nmethod: POST\nbody: &#39;&quot;&#123; &quot;aaaUser&quot; : &#123; &quot;attributes&quot; : &#123; &quot;name&quot; : &quot;&#123;&#123; username &#125;&#125;&quot; , &quot;pwd&quot; : &quot;&#123;&#123; password &#125;&#125;&quot; &#125; &#125; &#125;&quot;&#39;\nstatus_code: 200\nvalidate_certs: False\nheaders:\n  Content-Type: &quot;application/json&quot;\nno_log: True\nregister: login</p></li>\n<li><p>name: Add Bridge Domain\nuri:\nurl: https://&#123;&#123; inventory_hostname &#125;&#125;/api/node/mo/uni/tn-&#123;&#123; item.tenant &#125;&#125;/BD-&#123;&#123; item.name &#125;&#125;.json\nbody: &#123;&quot;fvBD&quot;:&#123;&quot;attributes&quot;:&#123;&quot;dn&quot;:&quot;uni/tn-&#123;&#123; item.tenant &#125;&#125;/BD-&#123;&#123; item.name &#125;&#125;&quot;,&quot;name&quot;:&quot;&#123;&#123; item.name &#125;&#125;&quot;,&quot;descr&quot;:&quot;&#123;&#123; item.description &#125;&#125;&quot;,&quot;unicastRoute&quot;:&quot;&#123;&#123; item.unicast &#125;&#125;&quot;,&quot;rn&quot;:&quot;BD-&#123;&#123; item.name &#125;&#125;&quot;,&quot;status&quot;:&quot;created&quot;&#125;,&quot;children&quot;:[&#123;&quot;fvRsCtx&quot;:&#123;&quot;attributes&quot;:&#123;&quot;tnFvCtxName&quot;:&quot;&#123;&#123; item.vrf &#125;&#125;&quot;,&quot;status&quot;:&quot;created,modified&quot;&#125;,&quot;children&quot;:[]&#125;&#125;]&#125;&#125;\nmethod: POST\nbody_format: json\nreturn_content: yes\nvalidate_certs: False\nheaders:\n  Cookie: &quot;&#123;&#123; login.set_cookie &#125;&#125;&quot;\nloop: &quot;&#123;&#123; bd &#125;&#125;&quot;</p></li>\n</ul>\n\n<p>Vars file for loop:</p>\n\n<hr />\n\n<p>bd:\n - &#123;tenant: &quot;common&quot;, name: &quot;bd_192.168.1.0/24&quot;, description: &quot;default&quot;, unicast: &quot;false&quot;, vrf: &quot;default&quot;&#125; \n - &#123;tenant: &quot;common&quot;, name: &quot;bd_192.168.2.0/24&quot;, description: &quot;default&quot;, unicast: &quot;true&quot;, vrf: &quot;default&quot;&#125; \n - &#123;tenant: &quot;common&quot;, name: &quot;bd_192.168.3.0/24&quot;, description: &quot;default&quot;, unicast: &quot;false&quot;, vrf: &quot;default&quot;&#125; </p>\n",
+         "id": "42",
+         "name": "Kamil",
+         "pub": "2020-05-19T23:06:07",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2018/10/automation-win-configure-cisco-aci-with.html"
+}

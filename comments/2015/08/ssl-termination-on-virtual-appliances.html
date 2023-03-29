@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02004215342995023858" rel="nofollow">Frank Bulk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6045381512076393425">25 August 2015 14:54</a>
+                <a rel="nofollow" id="c6045381512076393425" href="#6045381512076393425">25 August 2015 14:54</a>
               </span>
             </div>
-            <p class="comment-content">Netflix did some analysis of this (https://people.freebsd.org/~rrs/asiabsd_2015_tls.pdf) and while there continue to be improvements with SSL, with a 53% capacity hit it can require twice as many resources as unencrypted service.  That&#39;s probably not an issue for small sites, but a measureable (and cost) issue for larger sites.</p>
+            <div class="comment-content">Netflix did some analysis of this (https://people.freebsd.org/~rrs/asiabsd_2015_tls.pdf) and while there continue to be improvements with SSL, with a 53% capacity hit it can require twice as many resources as unencrypted service.  That&#39;s probably not an issue for small sites, but a measureable (and cost) issue for larger sites.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5513814868424760086">25 August 2015 19:55</a>
+                <a rel="nofollow" id="c5513814868424760086" href="#5513814868424760086">25 August 2015 19:55</a>
               </span>
             </div>
-            <p class="comment-content">Don&#39;t forget that Netflix runs some pretty unusual load - all they do is transfer data from memory (or disk) to network. <br /><br />Most web sites spend orders of magnitude more time on processing data, so the SSL overhead becomes negligible.</p>
+            <div class="comment-content">Don&#39;t forget that Netflix runs some pretty unusual load - all they do is transfer data from memory (or disk) to network. <br /><br />Most web sites spend orders of magnitude more time on processing data, so the SSL overhead becomes negligible.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12675510409950425811" rel="nofollow">RPM</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8809055179648961274">25 August 2015 21:22</a>
+                <a rel="nofollow" id="c8809055179648961274" href="#8809055179648961274">25 August 2015 21:22</a>
               </span>
             </div>
-            <p class="comment-content">I am in violent agreement. TCP_sendfile optimizations only help when you serve tons of large-fle static content; most sites do not.<br /><br />Engineers should always test and measure rather than blindly follow the lore of the Interwebs. <br /><br />We used sample testing in production to roll out TLS for our streaming video, increasing the percentage every day. We never noticed any detectable increase in server CPU or end-user response time metrics. We&#39;re clearly not Netflix, but video is about 70% of traffic by volume.<br /><br />Most data centers have CPU capacity to burn anyway.</p>
+            <div class="comment-content">I am in violent agreement. TCP_sendfile optimizations only help when you serve tons of large-fle static content; most sites do not.<br /><br />Engineers should always test and measure rather than blindly follow the lore of the Interwebs. <br /><br />We used sample testing in production to roll out TLS for our streaming video, increasing the percentage every day. We never noticed any detectable increase in server CPU or end-user response time metrics. We&#39;re clearly not Netflix, but video is about 70% of traffic by volume.<br /><br />Most data centers have CPU capacity to burn anyway.</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12675510409950425811" rel="nofollow">RPM</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7607273961162120533">26 August 2015 18:15</a>
+                <a rel="nofollow" id="c7607273961162120533" href="#7607273961162120533">26 August 2015 18:15</a>
               </span>
             </div>
-            <p class="comment-content">The netflix argument is a boogeyman edge case. The hit from TLS is nowhere near 50% for anyone but Netflix.<br /><br />Googke observed a 1% CPU hit and a 2% bandwidth hit rolling out TLS for everything. They needed no new server hardware, much less custom ASICs.<br /><br />Source: http://www.imperialviolet.org/2010/06/25/overclocking-ssl.html<br /><br />For the SaaS company I work for, we also could not measure the impact of enabling TLS for everything on our existing VM-based infrastructure.</p>
+            <div class="comment-content">The netflix argument is a boogeyman edge case. The hit from TLS is nowhere near 50% for anyone but Netflix.<br /><br />Googke observed a 1% CPU hit and a 2% bandwidth hit rolling out TLS for everything. They needed no new server hardware, much less custom ASICs.<br /><br />Source: http://www.imperialviolet.org/2010/06/25/overclocking-ssl.html<br /><br />For the SaaS company I work for, we also could not measure the impact of enabling TLS for everything on our existing VM-based infrastructure.</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/18392998104066477963" rel="nofollow">Nathan Paul</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5615029414123856579">25 August 2015 19:37</a>
+                <a rel="nofollow" id="c5615029414123856579" href="#5615029414123856579">25 August 2015 19:37</a>
               </span>
             </div>
-            <p class="comment-content">All the arguments are driven by price performance metrics. With 50% overhead for SSL in https/http  there, Firecloud SSL termination for masses also will be  dependent on price/performance metric of the service. </p>
+            <div class="comment-content">All the arguments are driven by price performance metrics. With 50% overhead for SSL in https/http  there, Firecloud SSL termination for masses also will be  dependent on price/performance metric of the service. </div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12675510409950425811" rel="nofollow">RPM</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4887638069549556821">20 November 2015 22:56</a>
+                <a rel="nofollow" id="c4887638069549556821" href="#4887638069549556821">20 November 2015 22:56</a>
               </span>
             </div>
-            <p class="comment-content">I ran across another article supporting this notion: hardware HSMs are not much faster than OpenSSL for most practical use cases, and drastically increase cost and complexity. <br />https://jimshaver.net/2015/04/24/openssl-vs-hsm-performance/<br />So unless you&#39;re willing/forced to go down the &quot;private keys are only ever in the HSM&quot; route, and pipe all of your traffic through the system that has the HSM, just use OpenSSL (or a modern version of IIS, as the Windows CryptoAPI seem to be almost as fast as OpenSSL).</p>
+            <div class="comment-content">I ran across another article supporting this notion: hardware HSMs are not much faster than OpenSSL for most practical use cases, and drastically increase cost and complexity. <br />https://jimshaver.net/2015/04/24/openssl-vs-hsm-performance/<br />So unless you&#39;re willing/forced to go down the &quot;private keys are only ever in the HSM&quot; route, and pipe all of your traffic through the system that has the HSM, just use OpenSSL (or a modern version of IIS, as the Windows CryptoAPI seem to be almost as fast as OpenSSL).</div>
           </div>
         </li>
       </div>

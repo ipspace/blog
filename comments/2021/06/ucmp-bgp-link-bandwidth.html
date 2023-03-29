@@ -1,0 +1,265 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="643">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c643" href="#643">08 June 2021 09:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It seems X1 and X2 routers have wrong loopback IP addresses in your network diagram. Any idea why the hash buckets are evenly distributed accross the interfaces and not according to the share ratio on PE1? Is this a bug?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="644">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c644" href="#644">09 June 2021 08:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Anonymous: Fixed the diagram. Thank you. Also added lab setup instructions to the GitHub repository.</p>
+
+<p>As for the CEF table: It could be a bug, or it could be irrelevant. I have no idea whether CSR 1000v uses CEF table for packet forwarding. If it uses the underlying Linux routing table, it doesn&#39;t matter what&#39;s in the CEF table.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="654">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Radu Pavaloiu</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c654" href="#654">12 June 2021 06:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>X1 and X2 looks like are in AS65100 based on cli output. In the diagram X1,X2 are in AS65001.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="660">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c660" href="#660">13 June 2021 12:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you, fixed. Hope this is the last error in that diagram &#x1F615;</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="899">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Sohan Rai</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c899" href="#899">04 December 2021 07:24</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you for the post!</p>
+
+<p>I tried something similar in my LAB and having difficulties understanding few things.</p>
+
+<p>When I have equal BW on interfaces, from CEF I can see each destination using different interface.</p>
+
+<p>R1#show ip bgp 4.4.4.4
+BGP routing table entry for 4.4.4.4/32, version 8
+Paths: (2 available, best #2, table default)
+Multipath: eBGP
+  Advertised to update-groups:
+     1          2
+  Refresh Epoch 1
+  12641
+    12.12.12.2 from 12.12.12.2 (2.2.2.2)
+      Origin IGP, localpref 100, valid, external, multipath(oldest)
+      DMZ-Link Bw 1250 kbytes
+  Refresh Epoch 1
+  12641
+    13.13.13.2 from 13.13.13.2 (3.3.3.3)
+      Origin IGP, localpref 100, valid, external, multipath, best
+      DMZ-Link Bw 1250 kbytes</p>
+
+<hr />
+
+<p>R1#show ip bgp 44.44.44.44
+BGP routing table entry for 44.44.44.44/32, version 9
+Paths: (2 available, best #2, table default)
+Multipath: eBGP
+  Advertised to update-groups:
+     1          2
+  Refresh Epoch 1
+  12641
+    12.12.12.2 from 12.12.12.2 (2.2.2.2)
+      Origin IGP, localpref 100, valid, external, multipath(oldest)
+      DMZ-Link Bw 1250 kbytes
+  Refresh Epoch 1
+  12641
+    13.13.13.2 from 13.13.13.2 (3.3.3.3)
+      Origin IGP, localpref 100, valid, external, multipath, best
+      DMZ-Link Bw 1250 kbytes</p>
+
+<hr />
+
+<p>R1#show ip cef exact-route 1.1.1.1 4.4.4.4
+1.1.1.1 -&gt; 4.4.4.4 =&gt; IP adj out of Ethernet1/1, addr 13.13.13.2
+R1#
+R1#show ip cef exact-route 1.1.1.1 44.44.44.44
+1.1.1.1 -&gt; 44.44.44.44 =&gt; IP adj out of Ethernet1/0, addr 12.12.12.2
+R1#</p>
+
+<hr />
+
+<p>But when I configure unequal BW on E1/0 &amp; E1/1, CEF always seems to prefer the one with higher BW.</p>
+
+<p>R1#show ip bgp 4.4.4.4
+BGP routing table entry for 4.4.4.4/32, version 11
+Paths: (2 available, best #2, table default)
+Multipath: eBGP
+  Advertised to update-groups:
+     1          2
+  Refresh Epoch 1
+  12641
+    12.12.12.2 from 12.12.12.2 (2.2.2.2)
+      Origin IGP, localpref 100, valid, external, multipath(oldest)
+      DMZ-Link Bw 12500 kbytes
+  Refresh Epoch 1
+  12641
+    13.13.13.2 from 13.13.13.2 (3.3.3.3)
+      Origin IGP, localpref 100, valid, external, multipath, best
+      DMZ-Link Bw 1250 kbytes
+R1#
+R1#
+R1#show ip bgp 44.44.44.44
+BGP routing table entry for 44.44.44.44/32, version 12
+Paths: (2 available, best #2, table default)
+Multipath: eBGP
+  Advertised to update-groups:
+     1          2
+  Refresh Epoch 1
+  12641
+    12.12.12.2 from 12.12.12.2 (2.2.2.2)
+      Origin IGP, localpref 100, valid, external, multipath(oldest)
+      DMZ-Link Bw 12500 kbytes
+  Refresh Epoch 1
+  12641
+    13.13.13.2 from 13.13.13.2 (3.3.3.3)
+      Origin IGP, localpref 100, valid, external, multipath, best
+      DMZ-Link Bw 1250 kbytes
+R1#</p>
+
+<hr />
+
+<p>R1#show ip cef exact-route 1.1.1.1 4.4.4.4
+1.1.1.1 -&gt; 4.4.4.4 =&gt; IP adj out of Ethernet1/0, addr 12.12.12.2
+R1#
+R1#show ip cef exact-route 1.1.1.1 44.44.44.44
+1.1.1.1 -&gt; 44.44.44.44 =&gt; IP adj out of Ethernet1/0, addr 12.12.12.2
+R1#</p>
+
+<hr />
+
+<p>Does this mean ECMP works but not UCMP? Or am I doing something wrong? Apologies for the lengthy comment, really looking forward to read your thoughts on this :) Also, to confirm the traffic is in fact taking the interfaces mentioned in CEF, I applied ACLs to see the traffic matches, so it&#39;s definitely taking the interfaces as seen in CEF.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="900">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Sohan Rai</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c900" href="#900">04 December 2021 07:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I apologize for such a mess of a comment, without proper markdown, I don&#39;t see the option to delete though :( </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="902">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c902" href="#902">05 December 2021 08:37</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You&#39;ll find the answer in one of the old CEF-related blog posts (https://blog.ipspace.net/tag/cef.html). Hint: 5-tuple load balancing.</p>
+
+<p>I used it here https://blog.ipspace.net/2021/11/anycast-mpls.html to get the desired results in a scenario pretty similar to this one.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

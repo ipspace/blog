@@ -1,0 +1,73 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "17 February 2022 04:23",
+               "html": "<p>&quot;between forwarding engineers&quot; &lt;&lt; damn autocorrect &#x1F923;</p>\n\n<p>And yes, while ATM died, we still have cell-based transport where latency matters. Did you notice that the cells have sane size this time?</p>\n",
+               "id": "1029",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-02-17T16:23:25",
+               "ref": "1028",
+               "type": "comment"
+            }
+         ],
+         "date": "17 February 2022 11:53",
+         "html": "<p>&quot;fixed-size cells (64 bytes) to move the packets between forwarding engineers.&quot;</p>\n\n<p>so, if we allow for an evil oversimplification, ATM actually never died but retreated into the brains?</p>\n",
+         "id": "1028",
+         "name": " darkfader",
+         "pub": "2022-02-17T11:53:15",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "18 February 2022 02:29",
+               "html": "<p>When I use an IP MTU higher than 1500B, I usually set it to 9000B, since this is widely supported on different networking devices from various vendors, and is the maximum supported by VMware ESXi. This avoids silently losing frames sent from a system with larger MTU to one with lower (Ethernet) MTU, which can easily happen when using the maximum value of a given device and then introducing a different model into the network.</p>\n",
+               "id": "1033",
+               "name": " Erik Auerswald",
+               "pub": "2022-02-18T14:29:18",
+               "ref": "1032",
+               "type": "comment"
+            }
+         ],
+         "date": "17 February 2022 07:08",
+         "html": "<p>I usually set all my switches to their maximum, but ran into an issues with a Cisco 4500-X which has a maximum MTU of only 9170.  OSPF routing with a 3850 wouldn&#39;t work with the MTU set to 9198, so I had to move it down to 9170 to match.</p>\n",
+         "id": "1032",
+         "name": " mobartz",
+         "pub": "2022-02-17T19:08:05",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "19 February 2022 08:36",
+               "html": "<p>As always, thanks for an extensive comment...</p>\n\n<p>&gt; The MQ&#39;s off-chip buffer used to store the packets can follow any buffering paradigm: contiguous or particle-based/scatter-gather.</p>\n\n<p>Would you happen to have a pointer to something explaining that (or is it in that book but I missed it?)</p>\n\n<p>&gt; NCS platform has documented their memory architecture, and it&#39;s pretty similar. </p>\n\n<p>All I found was an excellent document describing how the use on-chip/off-chip buffers</p>\n\n<p>https://xrdocs.io/ncs5500/blogs/2020-09-04-ncs-5500-buffering-architecture/</p>\n\n<p>It contained nothing about the buffer structure, and described Jericho which is a totally different beast than Trident or Tomahawk.</p>\n\n<p>It&#39;s also interesting that while there were several replies along the lines of &quot;everyone is using jumbo frames&quot; (which is good to hear, so things are working in production), nobody sent me anything along the lines of &quot;hey, that&#39;s a solved problem, stop worrying&quot;, so I still remain skeptical about the behind-the-scenes implementation details.</p>\n",
+               "id": "1035",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-02-19T08:36:59",
+               "ref": "1034",
+               "type": "comment"
+            },
+            {
+               "date": "21 February 2022 03:44",
+               "html": "<p>Hi Ivan,</p>\n\n<p>No, there&#39;s no mentioning of how the packets get stored on off-chip memory in MX chipset so I speculate. After all, there are only 2 forms of memory storage anyway: contiguous or scatter/gather :p.</p>\n\n<p>The xrdoc is the same on I referred to. That&#39;s what I meant by NCS ASIC&#39;s physical memory structure (sorry if I sounded ambiguous), not the off-chip packet storage buffering scheme. I meant the NCS&#39;s Jericho&#39;s ASIC physical memory structure and the MX&#39;s are rather similar. </p>\n\n<p>On pg 42 of the MX doc, it says &quot;the default maximum data buffer value is 100ms.&quot; So looks like if the interfaces are of 10Gbps, MX chipset (Trio I think) stores up to GBs of packets. </p>\n\n<p>Also, while it&#39;s true the hardware buffer can deal with any frame size because of its large size, Jumbo frames have other impacts when one think about it more closely. For ex, Jumbo frame can cause unpredictable delay for smaller packets when there&#39;re mix and match of Jumbo and tiny frames in the same queue, potentially delaying certain kinds of traffic more than they can tolerate. So when Jumbo frame is enabled, it&#39;s best to use CoS to separate elephant and mice traffic, depending on the levels of criticality. </p>\n\n<p>Another corner case: with buffered crossbar, where cells arriving at egress out of order is inherent to the architecture, as observed in practice by Andrea:</p>\n\n<p>https://blog.ipspace.net/2020/05/ip-packet-reordering.html#64</p>\n\n<p>When this happens with many Jumbo frames in the mix, the total cell waiting time at the egress interface can be exceeded due to cells arriving out of order, causing cell drop and consequently, frame drop, necessitating retransmission. So that&#39;s a potential side effect. In bufferless crossbar, this is not an issue. </p>\n\n<p>Minh</p>\n",
+               "id": "1037",
+               "name": " Minh",
+               "pub": "2022-02-21T03:44:44",
+               "ref": "1035",
+               "type": "comment"
+            }
+         ],
+         "date": "19 February 2022 06:36",
+         "html": "<p>Hi Ivan, according to the MX Walkthrough doco, the parcel is generated by the WI block of the MQ/XM chip to send the first 256 bytes of a packet to the Lookup Unit, if the packet size &gt; 320 bytes, or the entire packet to the LU otherwise (pg 22). Hence the name parcel. The packet itself is stored in the MQ memories. This kind of arrangement seems to be pretty common for VOQ-based (3rd generation) devices. What seems rather inefficient is transporting the parcel back to MQ after the lookup is done. From an engineering POV, since we&#39;re talking ns here, duplication and interchip communication should be avoided whenever possible. And since MX is VOQ-based router, the MQ chip is also responsible for cellification of packets to transmit across the crossbar to the egress, in ATM-like cells. The cell headers get stored in VOQs (pg 35). This memory, being on-chip, is much faster accessed than the bulk memory used to store the packets themselves. </p>\n\n<p>With this kind of buffering, GBs worth of packets can be stored, so whatever the frame size, it&#39;s not a problem. Remember, only the headers are in the VOQ, and that&#39;s fixed. The problem is the packet memory, being off-chip and having much slower RTT than TCAM, presents a latency problem if lots of packets come in at the same time. </p>\n\n<p>The MQ&#39;s off-chip buffer used to store the packets can follow any buffering paradigm: contiguous or particle-based/scatter-gather. NCS platform has documented their memory architecture, and it&#39;s pretty similar. They don&#39;t reveal it all because they use Broadcom chipsets, but I doubt Broadcom has much better idea. </p>\n\n<p>The 7200 and 7500 series were 2nd-generation devices; they still used CPU, not ASIC, to forward packets, so they essentially operate just like computer: CPU for look-up, RAM to store packets, no TCAM. That&#39;s why particle buffering is the only form they have, vs the much more sophisticated (and power-hungry) 3rd-gen VOQ devices with different kinds of memory. Again, 7200 and 7500 routers don&#39;t have any problem with different frame size.</p>\n\n<p>In a word, the hardware can deal with any frame size. So the impact of Jumbo frame is mostly potential MTU mismatch and packet loss. </p>\n",
+         "id": "1034",
+         "name": " Minh",
+         "pub": "2022-02-19T06:36:27",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2022/02/jumbo-mtu-everywhere.html"
+}

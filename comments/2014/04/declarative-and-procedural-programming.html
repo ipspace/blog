@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15351737094337113646" rel="nofollow">crzdriver</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#197245613591794090">01 May 2014 02:27</a>
+                <a rel="nofollow" id="c197245613591794090" href="#197245613591794090">01 May 2014 02:27</a>
               </span>
             </div>
-            <p class="comment-content">http://stilldrinking.org/programming-sucks<br /></p>
+            <div class="comment-content">http://stilldrinking.org/programming-sucks<br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.brocade.com" rel="nofollow">Brook Reams</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8523924621390694347">01 May 2014 19:24</a>
+                <a rel="nofollow" id="c8523924621390694347" href="#8523924621390694347">01 May 2014 19:24</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />I wonder if this makes sense to you as the way to decide what is procedural and what is declarative.  <br /><br />Consider the early history of programming languages for the first three generations: machine code, assembler, 3rd generation languages (COBOL, FORTRAN, C, Basic, etc.).  In each of these generations, the earlier generation is hidden by the abstractions of the next higher layer. The higher layer is the &quot;declarative&quot; language for the earlier &quot;procedural&quot; one.  So the terms are relative to where you are standing in the hierarchy.<br /><br />Or, said differently, &quot;What&quot; is handled at the current layer and its &quot;How&quot; is handled by the layer underneath it and so on. <br /><br />I offer this model since it underscores what the value of higher levels of abstraction are, why higher levels don&#39;t obsolete lower levels and to clarify that procedural and declarative are meaningless until you state what level of the abstraction stack you are standing on.  It also suggests that additional abstraction layers can be added, and are more valuable the less changes to the underlying levels of abstraction they require.<br /><br />Consider a router CLI; it&#39;s declarative when you use it to configure a device.  But it&#39;s procedural if you have a GUI on top in which a single mouse click &quot;Add VLAN to Fabric&quot; causes a series of CLI commands to be executed on all the switches and ports involved in order to accomplish the &quot;How&quot;.<br /><br />Perhaps the above is nonsense, but it&#39;s how I explain the difference.</p>
+            <div class="comment-content">Ivan,<br /><br />I wonder if this makes sense to you as the way to decide what is procedural and what is declarative.  <br /><br />Consider the early history of programming languages for the first three generations: machine code, assembler, 3rd generation languages (COBOL, FORTRAN, C, Basic, etc.).  In each of these generations, the earlier generation is hidden by the abstractions of the next higher layer. The higher layer is the &quot;declarative&quot; language for the earlier &quot;procedural&quot; one.  So the terms are relative to where you are standing in the hierarchy.<br /><br />Or, said differently, &quot;What&quot; is handled at the current layer and its &quot;How&quot; is handled by the layer underneath it and so on. <br /><br />I offer this model since it underscores what the value of higher levels of abstraction are, why higher levels don&#39;t obsolete lower levels and to clarify that procedural and declarative are meaningless until you state what level of the abstraction stack you are standing on.  It also suggests that additional abstraction layers can be added, and are more valuable the less changes to the underlying levels of abstraction they require.<br /><br />Consider a router CLI; it&#39;s declarative when you use it to configure a device.  But it&#39;s procedural if you have a GUI on top in which a single mouse click &quot;Add VLAN to Fabric&quot; causes a series of CLI commands to be executed on all the switches and ports involved in order to accomplish the &quot;How&quot;.<br /><br />Perhaps the above is nonsense, but it&#39;s how I explain the difference.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03852194681637032116" rel="nofollow">Bruno Rijsman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1906925794680695903">02 May 2014 14:52</a>
+                <a rel="nofollow" id="c1906925794680695903" href="#1906925794680695903">02 May 2014 14:52</a>
               </span>
             </div>
-            <p class="comment-content">Another difference is that imperative programming involves commands that &quot;do something&quot; and declarative programming involves statements that &quot;describe a desired state&quot;.<br /><br />Let me illustrate this by contrasting configuration in Linux (which is imperative) with configuration in the CLI of one of the major router vendors (which is imperative).<br /><br />I will use a simple example - configuring an IP address on an interface.<br /><br />In Linux you configure the IP address as follows:<br /><br />$ sudo ifconfig eth0 10.10.10.1 netmask 255.255.255.0 up<br /><br />Then you can see that the interface has the desired IP address as follows:<br /><br />$ ifconfig eth0<br />eth0   Link encap:Ethernet  HWaddr 08:00:27:21:b6:ee  <br />       inet addr:10.10.10.1  Bcast:10.10.10.255  Mask:255.255.255.0<br />       ...<br /><br />In the router CLI you configure the IP address as follows:<br /><br />interfaces {<br />    ge-0/0/0 {<br />        unit 0 {<br />            family inet {<br />                address 10.10.10.1/24;<br />            }<br />        }<br />    }<br />}<br /><br />And you can see the that the interface actually has the desired IP address by looking at the operational state:<br /><br />&gt; show interfaces ge-0/0/0<br />Physical interface: ge-0/0/0, Enabled, Physical link is Up<br />  Logical interface ge-0/0/0.0 (Index 65541) (SNMP ifIndex 635)<br />    Protocol inet, MTU: 1500<br />        Destination: 10.10.10/24, Local: 10.10.10.1, Broadcast: 10.10.10.255<br />        ...<br /><br />The router CLI syntax is clearly different from the Linux syntax, but other than that, there doesn&#39;t appear to be a significant difference.<br /><br />Now let&#39;s make the example a little bit more interesting.  Let&#39;s attempt to configure an IP address for an interface which is not yet present on the device, i.e. an interface on an interface card which has not yet been inserted in the router or server.<br /><br />In Linux, if you attempt to do this, the command will fail.  This is because the command is imperative.  You tell Linux to do something right how.  Since it cannot be done right now, the command fails.<br /><br />$ sudo ifconfig eth1 20.20.20.1 netmask 255.255.255.0 up<br />SIOCSIFADDR: No such device<br />eth1: ERROR while getting interface flags: No such device<br />...<br /><br />In the router CLI, if you attempt to commit the configuration it will succeed.  This is because the configuration statement is imperative.  You are telling the router that the desired state is for a particular interface to have a particular IP address.  Even though there is no interface card in slot 1, the configuration for an interface in slot 1 is allowed to exist:<br /><br />interfaces {<br />    ge-1/0/0 {<br />        unit 0 {<br />            family inet {<br />                address 20.20.20.1/24;<br />            }<br />        }<br />    }<br />}<br /><br />But if you use a different show command to look at the operational state, you will see that the interface is not there.<br /><br />&gt; show interfaces ge-1/0/0<br />error: device ge-1/0/0 not found<br /><br />The router operating system is constantly trying to make the actual state (the operational state) equal to the desired state (the administrative state).  All those attempts fail until you actually insert the interface card into the router.  Then, suddenly and automatically without any manual intervention, the interface will appear in the operational state with the desired IP address.<br /><br />(continued in next response)<br /></p>
+            <div class="comment-content">Another difference is that imperative programming involves commands that &quot;do something&quot; and declarative programming involves statements that &quot;describe a desired state&quot;.<br /><br />Let me illustrate this by contrasting configuration in Linux (which is imperative) with configuration in the CLI of one of the major router vendors (which is imperative).<br /><br />I will use a simple example - configuring an IP address on an interface.<br /><br />In Linux you configure the IP address as follows:<br /><br />$ sudo ifconfig eth0 10.10.10.1 netmask 255.255.255.0 up<br /><br />Then you can see that the interface has the desired IP address as follows:<br /><br />$ ifconfig eth0<br />eth0   Link encap:Ethernet  HWaddr 08:00:27:21:b6:ee  <br />       inet addr:10.10.10.1  Bcast:10.10.10.255  Mask:255.255.255.0<br />       ...<br /><br />In the router CLI you configure the IP address as follows:<br /><br />interfaces {<br />    ge-0/0/0 {<br />        unit 0 {<br />            family inet {<br />                address 10.10.10.1/24;<br />            }<br />        }<br />    }<br />}<br /><br />And you can see the that the interface actually has the desired IP address by looking at the operational state:<br /><br />&gt; show interfaces ge-0/0/0<br />Physical interface: ge-0/0/0, Enabled, Physical link is Up<br />  Logical interface ge-0/0/0.0 (Index 65541) (SNMP ifIndex 635)<br />    Protocol inet, MTU: 1500<br />        Destination: 10.10.10/24, Local: 10.10.10.1, Broadcast: 10.10.10.255<br />        ...<br /><br />The router CLI syntax is clearly different from the Linux syntax, but other than that, there doesn&#39;t appear to be a significant difference.<br /><br />Now let&#39;s make the example a little bit more interesting.  Let&#39;s attempt to configure an IP address for an interface which is not yet present on the device, i.e. an interface on an interface card which has not yet been inserted in the router or server.<br /><br />In Linux, if you attempt to do this, the command will fail.  This is because the command is imperative.  You tell Linux to do something right how.  Since it cannot be done right now, the command fails.<br /><br />$ sudo ifconfig eth1 20.20.20.1 netmask 255.255.255.0 up<br />SIOCSIFADDR: No such device<br />eth1: ERROR while getting interface flags: No such device<br />...<br /><br />In the router CLI, if you attempt to commit the configuration it will succeed.  This is because the configuration statement is imperative.  You are telling the router that the desired state is for a particular interface to have a particular IP address.  Even though there is no interface card in slot 1, the configuration for an interface in slot 1 is allowed to exist:<br /><br />interfaces {<br />    ge-1/0/0 {<br />        unit 0 {<br />            family inet {<br />                address 20.20.20.1/24;<br />            }<br />        }<br />    }<br />}<br /><br />But if you use a different show command to look at the operational state, you will see that the interface is not there.<br /><br />&gt; show interfaces ge-1/0/0<br />error: device ge-1/0/0 not found<br /><br />The router operating system is constantly trying to make the actual state (the operational state) equal to the desired state (the administrative state).  All those attempts fail until you actually insert the interface card into the router.  Then, suddenly and automatically without any manual intervention, the interface will appear in the operational state with the desired IP address.<br /><br />(continued in next response)<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03852194681637032116" rel="nofollow">Bruno Rijsman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3235818298137536161">02 May 2014 14:54</a>
+                <a rel="nofollow" id="c3235818298137536161" href="#3235818298137536161">02 May 2014 14:54</a>
               </span>
             </div>
-            <p class="comment-content">Typo: In the router CLI, if you attempt to commit the configuration it will succeed. This is because the configuration statement is DECLARATIVE</p>
+            <div class="comment-content">Typo: In the router CLI, if you attempt to commit the configuration it will succeed. This is because the configuration statement is DECLARATIVE</div>
           </div>
         </li>
       </div>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03852194681637032116" rel="nofollow">Bruno Rijsman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5140732784466179061">02 May 2014 15:01</a>
+                <a rel="nofollow" id="c5140732784466179061" href="#5140732784466179061">02 May 2014 15:01</a>
               </span>
             </div>
-            <p class="comment-content">Typo: Let me illustrate this by contrasting configuration in Linux (which is imperative) with configuration in the CLI of one of the major router vendors (which is DECLARATIVE).</p>
+            <div class="comment-content">Typo: Let me illustrate this by contrasting configuration in Linux (which is imperative) with configuration in the CLI of one of the major router vendors (which is DECLARATIVE).</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03852194681637032116" rel="nofollow">Bruno Rijsman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6485544891745954719">02 May 2014 14:53</a>
+                <a rel="nofollow" id="c6485544891745954719" href="#6485544891745954719">02 May 2014 14:53</a>
               </span>
             </div>
-            <p class="comment-content">(continued from previous response)<br /><br />This router CLI implementation also supports some interesting features allowing you to implement the higher level of abstraction which you mentioned in your post.  It supports the concept of &quot;apply macros&quot; (link) which allows the end-user to introduce configuration macros at a higher level of abstraction in the router configuration which get mapped to the more detailed configuration statements using a mapping script.<br /><br />It also support scripts which can enforce consistency rules designed by the end-user.  For example, it could enforce that OSPF must be enabled on every interface and fail the commit if OSPF is missing on an interface.<br /><br />Finally, the implementation of this particular CLI uses Yang data models to describe the structure of the configuration tree.  As a result of that implementation decission, everything that can be configured by a human using human-readable CLI can also be configured programmatically using Netconf as a machine-to-machine protocol.  There is a Python library available to make this easy to use (look for ezpy on Github).<br /><br />The point of this response is to point out that you can actually do a lot more with the CLI of existing routers than most people realize, and that at least some implementation are already imperative, already support higher levels of abstraction, and already provide machine-to-machine interfaces and Pythin scripts for automation.<br /></p>
+            <div class="comment-content">(continued from previous response)<br /><br />This router CLI implementation also supports some interesting features allowing you to implement the higher level of abstraction which you mentioned in your post.  It supports the concept of &quot;apply macros&quot; (link) which allows the end-user to introduce configuration macros at a higher level of abstraction in the router configuration which get mapped to the more detailed configuration statements using a mapping script.<br /><br />It also support scripts which can enforce consistency rules designed by the end-user.  For example, it could enforce that OSPF must be enabled on every interface and fail the commit if OSPF is missing on an interface.<br /><br />Finally, the implementation of this particular CLI uses Yang data models to describe the structure of the configuration tree.  As a result of that implementation decission, everything that can be configured by a human using human-readable CLI can also be configured programmatically using Netconf as a machine-to-machine protocol.  There is a Python library available to make this easy to use (look for ezpy on Github).<br /><br />The point of this response is to point out that you can actually do a lot more with the CLI of existing routers than most people realize, and that at least some implementation are already imperative, already support higher levels of abstraction, and already provide machine-to-machine interfaces and Pythin scripts for automation.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -136,10 +131,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03852194681637032116" rel="nofollow">Bruno Rijsman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2637348605055233779">02 May 2014 14:56</a>
+                <a rel="nofollow" id="c2637348605055233779" href="#2637348605055233779">02 May 2014 14:56</a>
               </span>
             </div>
-            <p class="comment-content">Typo: and that at least some implementation are already DECLARATIVE</p>
+            <div class="comment-content">Typo: and that at least some implementation are already DECLARATIVE</div>
           </div>
         </li>
       </div>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.brocade.com" rel="nofollow">Brook Reams</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1314074420078450692">02 May 2014 18:29</a>
+                <a rel="nofollow" id="c1314074420078450692" href="#1314074420078450692">02 May 2014 18:29</a>
               </span>
             </div>
-            <p class="comment-content">Bruno,<br /><br />Thank you for these examples. It strikes me that one reason for netconf being developed was in reaction to the complexity in configuring network devices to achieve a &quot;correct&quot; configuration state. Or, said differently, proven software engineering tools (data models, configuration management tools, reusable and tested modules) reduce complexity and increase odds of achieving&quot;correctness&quot;.<br /><br />I think another byproduct of netconf is the ability encode the knowledge of skilled network designers (a growingly scarce resouce) so it can be resued by less skilled administrators.  This is a common by-product of an abstraction hierarchy that we find everywhere, such as consumer products to cite one example.</p>
+            <div class="comment-content">Bruno,<br /><br />Thank you for these examples. It strikes me that one reason for netconf being developed was in reaction to the complexity in configuring network devices to achieve a &quot;correct&quot; configuration state. Or, said differently, proven software engineering tools (data models, configuration management tools, reusable and tested modules) reduce complexity and increase odds of achieving&quot;correctness&quot;.<br /><br />I think another byproduct of netconf is the ability encode the knowledge of skilled network designers (a growingly scarce resouce) so it can be resued by less skilled administrators.  This is a common by-product of an abstraction hierarchy that we find everywhere, such as consumer products to cite one example.</div>
           </div>
         </li>
       </div>

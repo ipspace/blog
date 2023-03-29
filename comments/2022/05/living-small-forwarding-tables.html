@@ -1,0 +1,237 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1219">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1219" href="#1219">09 May 2022 11:05</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Another mechanism used in some routers (&quot;switches&quot;) is to use CAM table space for one prefix length, e.g., /24, in addition to TCAM. The route lookup then uses both a longest prefix match via TCAM and a CAM lookup for the designated prefix length to determine the next hop.</p>
+
+<p>Of course this requires CAM in addition to TCAM in the ASIC. I would expect that the ASIC&#39;s forwarding pipeline needs support for this scheme, too (e.g., CAM lookup results usually do not include the next hop rewrite information required for IP forwarding). So this is probably not applicable to the ASIC in question.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1220">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1220" href="#1220">09 May 2022 04:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, Arista managed to use ARP or MAC table to do that on some merchant silicon ASIC. At the very least, that requires the ability of the lookup table to match a field at unusual offset.</p>
+
+<p>As for next hop rewrite, the result of that lookup could point to a dummy per-next-hop VRF with a default route pointing to the next hop.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1222">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1222" href="#1222">09 May 2022 05:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The same trick, perhaps using the same merchant silicon ASIC, was used by Brocade (now Extreme). Others using said merchant silicon ASIC may have used this as well.</p>
+
+<p>AFAIR the actual prefix length stored in CAM was configurable. As such this would probably need the ability to apply a mask while addressing CAM.</p>
+
+<p>Using IP forwarding entries (&quot;ARP table&quot;) would probably suffice to save next hop information. I did not think of that, thanks! But different to an ARP or multicast group entry, the longest prefix match via TCAM might return a better match when, e.g., /24 prefixes are added to the fixed table, but, e.g., a /28 is found via TCAM.</p>
+
+<p>So a piece that may be missing in other ASICs could be the ability to use two different lookup operations and use the longest match from those for the forwarding decision.</p>
+
+<p>I had some indirection as described by you in mind when writing my comment. I have no idea if usual ASICs allow to add something like this to the processing pipeline if it was not envisioned when designing the ASIC. This is probably highly implementation specific.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1221">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Peter Phaal</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1221" href="#1221">09 May 2022 04:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>An alternative to SRD is to use BGP to manage the FIB. BGP allows the active routes to be quickly updated and when coupled with real-time top prefix measurements can significantly increase the effectiveness of a small hardware forwarding table, see <a href="https://blog.sflow.com/2016/07/internet-router-using-merchant-silicon.html">Internet router using merchant silicon</a></p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1223">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Krasimir Avramski</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1223" href="#1223">09 May 2022 05:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Combination of selective router download and mpls tunnels
+1. Advertise peers next-hops(/32) through bgp-lu
+2. Do not change bgp nexthop from peers
+3. Use bgp add-path for multi paths to the same prefix.
+Local IP lookup is bypassed by label operation pop and forward and is effectively delegated to remote intra-AS bgp routers. The idea is borrowed from EPE concepts.  </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1224">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1224" href="#1224">09 May 2022 05:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This might very creatively solve the problem for a core or egress router (assuming the ASIC in question supports MPLS). What about the ingress router?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1225">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Krasimir Avramski</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1225" href="#1225">09 May 2022 05:57</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>As I mentioned the IP lookup is effectively offloaded to the ingress routers.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1226">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Stefan de Kooter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1226" href="#1226">09 May 2022 07:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Lets move that ingress labeling function to the server generating the content! Wait what, we now rebuild Fastly CDN with a small change in packet format &#x1F643;
+https://www.fastly.com/blog/building-and-scaling-fastly-network-part-1-fighting-fib</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1227">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> David Bass</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1227" href="#1227">09 May 2022 10:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>What I&rsquo;ve done most frequently is to engineer as intelligently of selective route download as possible.  This assumes 2 routers and iBGP between them (the 2 customer edge routers), and then at least 1 tier 1 upstream connected to each.  This is a fairly common scenario for small/medium entities who need that sort of redundancy, but can&rsquo;t (or won&rsquo;t) buy a box large enough to handle the full table. </p>
+
+<p>On each router I accept and filter out any prefix not originating from the tier 1, or it&rsquo;s customers. Depending on size you may have to filter on length as well. Then using LP you prefer those prefix on each router (depending on the customer side you may have to vary this some in the event that you prefer 1 carrier over the other because of bandwidth or other various reasons).  </p>
+
+<p>Then on each router you have a default that you&rsquo;re checking reachability to for everything not in the table. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1228">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">John Coke</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1228" href="#1228">10 May 2022 05:35</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The virtual aggregation option reminded me of the <a href="https://www.cs.cornell.edu/~tuancao/2008-HotNets-ViAggre.pdf">ViAggre Paper</a>.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

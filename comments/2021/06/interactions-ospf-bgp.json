@@ -1,0 +1,58 @@
+{
+   "comments": [
+      {
+         "date": "22 June 2021 01:18",
+         "html": "<p>I was actually looking at just this situation with static routes and BGP a few weeks back.  In my opinion this is a bug plain and simple.  Any situation where an order of operations causes different results is something that needs to be fixed.  There is no need for speculation.  BGP already knows the admin distance of the route that won and can easily do a comparison to see if it would win and if so send it&#39;s route down to the RIB.  This would solve the problem.</p>\n",
+         "id": "684",
+         "name": " Donald Sharp",
+         "pub": "2021-06-22T13:18:34",
+         "type": "comment"
+      },
+      {
+         "date": "22 June 2021 08:02",
+         "html": "The question is: Does the affected subnet belong to the company or not? It&#39;s either one or the other (or you would have a problem). Then based on whether it&#39;s internal or external to the company you would choose the right routing protocol. The numbers of administrative distance for the various routing protocols are there for a reason. They are based on reliability and trustworthiness of the routing protocol. I see no need for complicated redistribution on multiple points. So definitely rethink your design.<br />\n\n\n",
+         "id": "686",
+         "name": "Anonymous",
+         "pub": "2021-06-22T20:02:20",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "20 July 2022 10:07",
+               "html": "<p>Yes, we use this same approach with EIGRP and BGP on nx-os, unsetting the weight and updating LP. I also didn&#39;t find much discussion online at the time, but it&#39;s been operating successfully for about 5 years now and put through it&#39;s paces.</p>\n",
+               "id": "1335",
+               "name": " James ",
+               "pub": "2022-07-20T10:07:19",
+               "ref": "688",
+               "type": "comment"
+            }
+         ],
+         "date": "23 June 2021 10:55",
+         "html": "<p>There may be an aspect I&#39;m missing here but this looks like the same issue we would run into frequently at an MSP I worked at using &quot;floating&quot; backup static routes for customers. The AD of the static route may be set higher (ie: 250) but due to the behavior of BGP redistributed routes you&#39;ll have an issue. If you add the static route after your BGP route was already loaded it&#39;s especially insidious because all looks fine until BGP bounces, then the redistributed static route gets loaded into BGP with default weight of 32768 and now when BGP comes back up the BGP learned route loses over the redistributed route and the static stays the active route.</p>\n\n<p>The solution we used was to just use route-map / policy to strip the weight of those redistributed floating static routes \n setting them to 0. That way when BGP compared the redistributed route you don&#39;t run into that issue. I believe we also set LP lower on the redistributed route as well to make that predictive since solving the weight issue and having equal LPs simply would move you to the locally originated and then AS-PATH length checks where both would fail to prefer the eBGP over the OSPF redistributed route.</p>\n\n<p>I thought at the time this was a well known problem but to be fair I haven&#39;t run into much discussion on it on the internet so glad to see it talked about here! Looking forward to seeing more comments!</p>\n",
+         "id": "688",
+         "name": " AW",
+         "pub": "2021-06-23T22:55:39",
+         "type": "comment"
+      },
+      {
+         "date": "24 June 2021 07:32",
+         "html": "<p>EOS in single-agent (gated) mode doesn&#39;t check whether the route is local (redistributed/aggregate) or received from a BGP peer. But multi-agent prefers local over received, much like Cisco.</p>\n",
+         "id": "690",
+         "name": " Dmytro Shypovalov",
+         "pub": "2021-06-24T19:32:29",
+         "type": "comment"
+      },
+      {
+         "date": "30 June 2021 03:34",
+         "html": "<p>I used to see this a lot with MPLS WAN, where the BGP at a site redistributed OSPF or EIGRP site routes promiscuously, and there was no filter so that remote prefixes would also be learned. When a remote link goes down, one of two site BGP peers loses the prefix and learns the local copy, which stays stuck then, even when the remote link comes back up. My conclusion (consistent with this blog) is to filter ALWAYS ALWAYS and don&#39;t redistribute into BGP remote routes from a local routing protocol. And use IBGP for lateral handoffs. </p>\n",
+         "id": "693",
+         "name": " ",
+         "pub": "2021-06-30T15:34:15",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2021/06/interactions-ospf-bgp.html"
+}

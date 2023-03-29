@@ -1,0 +1,79 @@
+{
+   "comments": [
+      {
+         "date": "16 March 2021 09:38",
+         "html": "Two cents: when discussing stuff that change infrequently, we&#39;ve found that YAML is good enough. Nevertheless, when it&#39;s about things with daily changes (also see firewall rules), it&#39;s a pain to manage it using text files directly.<br />\n\n<p>To that end, our approach has been to implement a 2-step process: first step is DB/Excel-to-YAML/JSON, second step is YAML/JSON-to-devices. This way, we&#39;re able to enjoy advantages from both approaches albeit the pain of writing the &quot;glue&quot; between states.</p>\n\n<p>That said, it seems that Dolt (especially as a backend for ~~NetBox~~ Nautobot) is a very interesting approach to &quot;marry&quot; the two in a more structured way...</p>\n",
+         "id": "473",
+         "name": " Nikos Kallergis",
+         "pub": "2021-03-16T09:38:49",
+         "type": "comment"
+      },
+      {
+         "date": "16 March 2021 12:37",
+         "html": "<p>@Nikos: Thanks for the comment - looks like you went down this path: https://www.ipspace.net/kb/DataModels/65-Data-Transformation.html</p>\n\n<p>&quot;This way, we&#39;re able to enjoy advantages from both approaches albeit the pain of writing the &quot;glue&quot; between states.&quot; &lt;&lt; This is sometimes called &quot;squashed sausage effect&quot;. You can&#39;t escape the complexity, you can only try to contain it, and sometimes you can decide where you want to push it to.</p>\n\n<p>As for Dolt: it&#39;s a great idea, but to use it with an IPAM/CMDB system you&#39;d have to make that system Dolt/branch aware. Maybe N2C will get there with Nautobot.</p>\n",
+         "id": "474",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-03-16T12:37:14",
+         "type": "comment"
+      },
+      {
+         "date": "16 March 2021 08:27",
+         "html": "<p>Our plan is very much to integrate Dolt as an option for the backend for Nautobot to cover the use case described by @Nikos. We have been talking to our customers for a few years to this problem, and over the past 6 months, several have come to us looking for solutions, so it looks like many more are running into these issues.</p>\n\n<p>https://twitter.com/networktocode/status/1370034277782609920</p>\n",
+         "id": "475",
+         "name": " Ken",
+         "pub": "2021-03-16T20:27:58",
+         "type": "comment"
+      },
+      {
+         "date": "16 March 2021 11:55",
+         "html": "<p>I am more or less covered by the other comments but I want to add one thing.\nExcel adds one more layer between the information and the data that is stored, with auto-formating. <strong>Example</strong>: You want to store an ip address so you type it and press enter. Excel thinks it&#39;s a number that you erroneously typed as text, since it&#39;s <em>digits.3digits.3digits.3digits</em> . So it removes the dots from the actual data and stores the info without them. This is done in order to help you but Excel doesn&#39;t tell you because it doesn&#39;t want to hurt your feelings.. \nNext thing you know, you write a script to automate data handling and in particular those ip addresses but the script crashes because, what do you know, <strong>this isn&#39;t an ip address!</strong> \nTrue story.\n<strong>Stay away from Excel. Yaml is fine.</strong></p>\n",
+         "id": "476",
+         "name": "Ioannis Theodoridis",
+         "pub": "2021-03-16T23:55:58",
+         "type": "comment"
+      },
+      {
+         "date": "17 March 2021 12:20",
+         "html": "<p>We managed to implement git-like version control for our network/infra data set using a custom Django/PostgreSQL SoT that we are building in house (migrating from multiple XLSX data sources). Our data set is large enough that it would be unmanageable in YAML files.</p>\n\n<p>When we started to look at doing this, we didn&#39;t see anything available that could fit our use case so we went down the custom route. I&#39;m not necessarily recommending this :) It has caused us some pain but it is possible to implement. Luckily we had budget and management patience to be able to take this route.</p>\n\n<p>I&#39;ll be following Nautobot/Dolt with interest as integrating Dolt with Django would potentially solve some of our issues and give us a cleaner solution.</p>\n",
+         "id": "478",
+         "name": " Dan Peachey",
+         "pub": "2021-03-17T12:20:06",
+         "type": "comment"
+      },
+      {
+         "date": "17 March 2021 03:36",
+         "html": "<p>@Ioannis: even though I can totally understand what you&#39;re saying about Excel in general, keep in mind that the specific issue with dots in IP addresses is mostly a Greek problem. In other locales where dots are used for decimals (and commas for separating powers of 1000), this issue does not exist :-)</p>\n\n<p>And in any case, since you&#39;re already in Excel, why not employ a bit of VBA to fix everything? :-P</p>\n",
+         "id": "479",
+         "name": "Nikos Kallergis",
+         "pub": "2021-03-17T15:36:45",
+         "type": "comment"
+      },
+      {
+         "date": "17 March 2021 04:53",
+         "html": "<p>@nikos: good point about the dots being a greek issue. But it&#39;s a trust thing for me. I don&#39;t trust it anymore because it cheated on me.\nJokes aside, I do get that people are more attracted to excel than yaml. But that&#39;s the main issue, if I have to automate something I prefer stability. So maybe I would go with the sausage too, if I didn&#39;t have a choice on it.</p>\n",
+         "id": "480",
+         "name": "Ioannis Theodoridis",
+         "pub": "2021-03-17T16:53:34",
+         "type": "comment"
+      },
+      {
+         "date": "18 March 2021 06:29",
+         "html": "<p>@Dan: You don&#39;t have to wait for Nautobot/Dolt integration to simplify your challenges. All you need is to validate whether Dolt meets your requirements (including maturity and stability) and go from there -- in your case it would be a Postgres replacement.</p>\n\n<p>@Ioannis: I can confirm that it must be a Greek issue. Nothing similar happens when using Slovenian (decimal comma) or English/US (decimal dot) locale.</p>\n",
+         "id": "481",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-03-18T18:29:58",
+         "type": "comment"
+      },
+      {
+         "date": "19 March 2021 10:38",
+         "html": "<p>@Ivan: True, but it&#39;s more due to priorities for us. We have the high level part working in terms of modelling and version control, so now we&#39;re switching development focus more towards deployment and low level/device config part. We only have a small team. Hopefully by the time we come back to look at improving the version control part, Dolt will have matured and NTC will have done some of the integration leg work already ;)</p>\n",
+         "id": "487",
+         "name": " Dan Peachey",
+         "pub": "2021-03-19T10:38:22",
+         "type": "comment"
+      }
+   ],
+   "count": 9,
+   "type": "post",
+   "url": "2021/03/using-yaml-not-excel.html"
+}

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5188407358379711990">21 May 2013 16:18</a>
+                <a rel="nofollow" id="c5188407358379711990" href="#5188407358379711990">21 May 2013 16:18</a>
               </span>
             </div>
-            <p class="comment-content">Take an ASA5510.<br /><br />Toss 2x10GBE, Mgmt, Monitor, Console and AUX.<br /><br />Put it on a PCI 3.0 X16.<br /><br />The cryptokey for the management server it phones home via the out-of-band mgmt network (configured via dhcp option code) is the license key.<br /><br />Mgmt server configs the device via script which can be populated via an API.  All interfaces are phy interfaces on the host os mapped into the VM.  All MAC&#39;s are 802.1x authenticated. Intra-VM-Instance traffic goes over 16gbps PCI-E internal network through the card; if a vendor truely and really needs to move network traffic over memory between two VM&#39;s on the same machine, the hypervisor company is free to do as it wishes (virtual switch, and hey that traffic is separated from the rest of the network too!).  All the hypervisor and host OS knows is the interface is a standard network interface (which keeps em&#39; honest).<br /><br />This card runs a firewall that can block, allow, (perform rudimentary but customizable) inspect, and\or tag all outbound traffic.  If you want cutting edge network speed you can&#39;t offload routing onto the device without a lot of cost.  So layer 2 switching with large cam tables to enable scaling, plus tagging to enable traffic flow customization for layer 3 routing (All the tag does is remap the destination MAC then place the packet on a trunk port, you can do that at 100gbps cheaply right?).  With this setup you can even reliably transport SAN Traffic; to scale throughput to a server or SAN you add cards and use etherchannel.  No &quot;Overlay network&quot; insanity.<br /><br />Imagine seamlessly offering per-instance firewall, load balancer, IPS, and per-instance app services; all you do to turn it on is tag the traffic.<br /><br />Hypervisor management software can seamlessly move VM&#39;s from A to B but their ability to do so is controlled by resource partitions you define on the cards (which really, when you get into the accounting end of things, is kind of a big deal).<br /><br />You COULD install your Host OS then install a Control Stack (OS that controls the Hyper visor but is protected) network stack (VM that runs the above) and application instances (Hyper visors), and that&#39;s the way you&#39;ve got to go to do true SDN.  IMO there are security problems (Firewalls can be DOS&#39;d by sending computationally expensive packets to them, and if you lock an IP after a certain number, then it becomes trivial to DOS via Spoofing) that this model solves.  <br /><br />That to me is the future of SDN.  You put the router IN the computer on a separate card.<br /></p>
+            <div class="comment-content">Take an ASA5510.<br /><br />Toss 2x10GBE, Mgmt, Monitor, Console and AUX.<br /><br />Put it on a PCI 3.0 X16.<br /><br />The cryptokey for the management server it phones home via the out-of-band mgmt network (configured via dhcp option code) is the license key.<br /><br />Mgmt server configs the device via script which can be populated via an API.  All interfaces are phy interfaces on the host os mapped into the VM.  All MAC&#39;s are 802.1x authenticated. Intra-VM-Instance traffic goes over 16gbps PCI-E internal network through the card; if a vendor truely and really needs to move network traffic over memory between two VM&#39;s on the same machine, the hypervisor company is free to do as it wishes (virtual switch, and hey that traffic is separated from the rest of the network too!).  All the hypervisor and host OS knows is the interface is a standard network interface (which keeps em&#39; honest).<br /><br />This card runs a firewall that can block, allow, (perform rudimentary but customizable) inspect, and\or tag all outbound traffic.  If you want cutting edge network speed you can&#39;t offload routing onto the device without a lot of cost.  So layer 2 switching with large cam tables to enable scaling, plus tagging to enable traffic flow customization for layer 3 routing (All the tag does is remap the destination MAC then place the packet on a trunk port, you can do that at 100gbps cheaply right?).  With this setup you can even reliably transport SAN Traffic; to scale throughput to a server or SAN you add cards and use etherchannel.  No &quot;Overlay network&quot; insanity.<br /><br />Imagine seamlessly offering per-instance firewall, load balancer, IPS, and per-instance app services; all you do to turn it on is tag the traffic.<br /><br />Hypervisor management software can seamlessly move VM&#39;s from A to B but their ability to do so is controlled by resource partitions you define on the cards (which really, when you get into the accounting end of things, is kind of a big deal).<br /><br />You COULD install your Host OS then install a Control Stack (OS that controls the Hyper visor but is protected) network stack (VM that runs the above) and application instances (Hyper visors), and that&#39;s the way you&#39;ve got to go to do true SDN.  IMO there are security problems (Firewalls can be DOS&#39;d by sending computationally expensive packets to them, and if you lock an IP after a certain number, then it becomes trivial to DOS via Spoofing) that this model solves.  <br /><br />That to me is the future of SDN.  You put the router IN the computer on a separate card.<br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3845567865687278340">21 May 2013 19:38</a>
+                <a rel="nofollow" id="c3845567865687278340" href="#3845567865687278340">21 May 2013 19:38</a>
               </span>
             </div>
-            <p class="comment-content">Interesting: Intel does have ist own openflow Switches? And that other Enterprise &quot;Centec&quot; - I haven´t heard anything about them till today.</p>
+            <div class="comment-content">Interesting: Intel does have ist own openflow Switches? And that other Enterprise &quot;Centec&quot; - I haven´t heard anything about them till today.</div>
           </div>
         </li>
       </div>

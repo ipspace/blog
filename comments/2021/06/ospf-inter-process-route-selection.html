@@ -1,0 +1,110 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="666">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> JeffT </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c666" href="#666">15 June 2021 11:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Talking to the person who coded this is the most helpful approach ;-)
+You still don&rsquo;t know what the tiebreaker is (perhaps phase of the moon)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="674">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c674" href="#674">18 June 2021 09:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan, I notice at last the route from OSPF process 1 always overwrites the one from process 3 when costs are equal. This behaviour is in line with Andrea&#39;s finding, Cisco OSPF implementation uses process ID to break ties. Routes with a lower process number win. </p>
+
+<p>So the part where you wrote &quot;This is definitely weird. The new entry replaced the old one&quot;, and, &quot;The debugging printout claims the second route has closer admin distance, but the admin distances are definitely the same. So maybe it&rsquo;s the process number, or the sequence of route insertion that matters.&quot; In this part, route from process 3 takes over route from process 1, so looks like behaviour contradicts the previous part. </p>
+
+<p>But the debug msg in this part also prints the same msg &quot;closer admin distance&quot;, so I suspect that&#39;s because the commands</p>
+
+<p>rtr(config)#int gig 2
+rtr(config-if)#ip ospf cost 1000</p>
+
+<p>is still active in gig 2 at that time, making route from process 1 more expensive (metric 1000 vs 2), hence get overwritten by route from process 3 despite the higher process no of the latter. So when you later change cost of gig 3 to 2000, gig 2 route from process 1 wins again. And that&#39;d explain in the end, when the routes from the 2 processes have the same default costs, route from process 1 always wins. </p>
+
+<p>So the metric at gig 2 being left at 1000 must be the reason for the seemingly inconsistent behaviour, I think.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="675">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c675" href="#675">18 June 2021 10:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yes, something related to the OSPF process seems to be a tie breaker. Is it the OSPF process ID, or the routing process ID (the thing you get with <strong>show ip protocol summary</strong>)? Who knows. </p>
+
+<p>Until someone provides a pointer to a bit of well-written documentation (not a blog post or a forum reply), I&#39;d wouldn&#39;t even try to use this &quot;feature&quot; in a network design.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="694">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Nicolas MICHEL</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c694" href="#694">07 July 2021 08:51</a>
+              </span>
+            </div>
+            <div class="comment-content">Funny to see a thread from 2013 coming back from the dead : D<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

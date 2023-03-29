@@ -1,0 +1,61 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="793">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Arne</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c793" href="#793">12 October 2021 09:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The comment about links losing signal reminded me of the &bdquo;dying gasp&ldquo; DSL and Metro-Ethernet equipment can send from their capacitors if they lose power. For a carrier the difference between &bdquo;CPE lost power&ldquo; and &bdquo;someone cut the line at an undetermined place&ldquo; can make a huge difference in Troubleshooting and assignment of responsibility. 
+Also, this helps declaring links unusable much quicker. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="794">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dmitry Perets</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c794" href="#794">13 October 2021 11:04</a>
+              </span>
+            </div>
+            <div class="comment-content">Two comments on BGP GR:<br />
+
+<ol>
+<li><p>In the implementations that I&#39;ve seen so far, Hold Timer expiration IS NOT a valid reason to start Graceful Restart process. If it is really just a control plane restart, the remote peer must send BGP Open message, with Restarting bit set. And this must happen before Hold Timer expiration. Hence, Hold Timer must be higher than the time required for your remote peer to restart its BGP process. Since GR is heavily used today in proprietary clustering solutions (especially in stateful devices, because why would you really want clustering in a non-stateful device...), typically that proprietary clustering mechanism will detect a real failure in a matter of seconds, and the new master will (relatively) quickly send BGP Open. Hence, you can hope for some Hold Timer of 15 seconds to work fine. Point being - you are not really bound by those 120 seconds of Restart Time, because GR process will not kick in in case of real failure.</p></li>
+<li><p>Combining BGP with BFD might be useful here, providing that your BFD is implemented on the forwarding plane and hence does not share fate with control plane (C-bit is set in your BFD packets). Then you can distinguish between Graceful Restart and a &quot;real&quot; failure:</p>
+
+<ul>
+<li>If BFD goes down, this means a real failure, hence flush the routes immediately and converge.</li>
+<li>If BFD stays up, it looks like &quot;just&quot; control plane restart, so let GR kick in.
+So this allows you to have fast convergence and still support GR.
+HOWEVER, if you try using BGP + GR + BFD with C=0, then.....it is not very smart :)</li>
+</ul></li>
+</ol>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

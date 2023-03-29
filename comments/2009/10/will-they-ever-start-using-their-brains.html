@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#470893042852610516">06 October 2009 19:22</a>
+                <a rel="nofollow" id="c470893042852610516" href="#470893042852610516">06 October 2009 19:22</a>
               </span>
             </div>
-            <p class="comment-content">They do not need to fetch each packet on it own.<br /><br />Modern NIC will interrupt once for a bunch of packets.<br /><br />So, on average, it is possible to read packets in 6ns. But even with that your doubts are still relevant.</p>
+            <div class="comment-content">They do not need to fetch each packet on it own.<br /><br />Modern NIC will interrupt once for a bunch of packets.<br /><br />So, on average, it is possible to read packets in 6ns. But even with that your doubts are still relevant.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4354543754411411397">07 October 2009 09:06</a>
+                <a rel="nofollow" id="c4354543754411411397" href="#4354543754411411397">07 October 2009 09:06</a>
               </span>
             </div>
-            <p class="comment-content">It&#39;s still not possible ;) You have to do at least three memory fetches for each packet:<br /><br />* read the buffer descriptor (it&#39;s invalidated from the CPU cache when the NIC flips the &quot;available&quot; bit).<br />* read the IP address fields (to perform lookup in the whatever-ID table on source IP address).<br />* read the checksum (they call it HMAC) in the packet.<br /><br />You cannot read the IP address field until you know where the buffer is, so you have at least two CAS latencies (reading the checksum could be, in theory, overlapped with reading the IP address). 6ns is still science fiction ... unless, of course, you have a fantastic architecture, wildly fast CPU with lots of cache, multiple SDRAMs and multi-threaded  hand-optimized packet rejector.</p>
+            <div class="comment-content">It&#39;s still not possible ;) You have to do at least three memory fetches for each packet:<br /><br />* read the buffer descriptor (it&#39;s invalidated from the CPU cache when the NIC flips the &quot;available&quot; bit).<br />* read the IP address fields (to perform lookup in the whatever-ID table on source IP address).<br />* read the checksum (they call it HMAC) in the packet.<br /><br />You cannot read the IP address field until you know where the buffer is, so you have at least two CAS latencies (reading the checksum could be, in theory, overlapped with reading the IP address). 6ns is still science fiction ... unless, of course, you have a fantastic architecture, wildly fast CPU with lots of cache, multiple SDRAMs and multi-threaded  hand-optimized packet rejector.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6197512972516041322">07 October 2009 21:54</a>
+                <a rel="nofollow" id="c6197512972516041322" href="#6197512972516041322">07 October 2009 21:54</a>
               </span>
             </div>
-            <p class="comment-content">It have enough time to drop ALL packets :)</p>
+            <div class="comment-content">It have enough time to drop ALL packets :)</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Guest</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8818469973528258857">07 October 2009 22:09</a>
+                <a rel="nofollow" id="c8818469973528258857" href="#8818469973528258857">07 October 2009 22:09</a>
               </span>
             </div>
-            <p class="comment-content">&quot;He says during lab tests, when a 10Gbps link to a server was filled with legitimate traffic and then with attack packets, network latency increased by 30 nanosec. &quot;For humans, there is no difference,&quot; he says. Users don&#39;t sense the attack is underway, he says, and it remains possible for network security teams to trace the command and control center behind attacks. &quot;<br /><br />Might be interesting to understand the exact traffic profile and how this 30 nanosec was derived... I think you will &quot;understand&quot; where this 6ns figure came from.<br /><br />Generally, people won&#39;t give any details to make sure no correlation is possible to find the hole in the theory</p>
+            <div class="comment-content">&quot;He says during lab tests, when a 10Gbps link to a server was filled with legitimate traffic and then with attack packets, network latency increased by 30 nanosec. &quot;For humans, there is no difference,&quot; he says. Users don&#39;t sense the attack is underway, he says, and it remains possible for network security teams to trace the command and control center behind attacks. &quot;<br /><br />Might be interesting to understand the exact traffic profile and how this 30 nanosec was derived... I think you will &quot;understand&quot; where this 6ns figure came from.<br /><br />Generally, people won&#39;t give any details to make sure no correlation is possible to find the hole in the theory</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Sepiraph</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3466780691318176972">08 October 2009 07:59</a>
+                <a rel="nofollow" id="c3466780691318176972" href="#3466780691318176972">08 October 2009 07:59</a>
               </span>
             </div>
-            <p class="comment-content">Why don&#39;t you try emailing him (Chun-Ching Andy Huang)?   Actually I am curious about this myself since his actual thesis didn&#39;t include the calculation on how he arrived on that ~5ns time quoted.  I can&#39;t find his email so I&#39;ll email his thesis directo, his home page is here (http://www.eng.auburn.edu/~wu/).</p>
+            <div class="comment-content">Why don&#39;t you try emailing him (Chun-Ching Andy Huang)?   Actually I am curious about this myself since his actual thesis didn&#39;t include the calculation on how he arrived on that ~5ns time quoted.  I can&#39;t find his email so I&#39;ll email his thesis directo, his home page is here (http://www.eng.auburn.edu/~wu/).</div>
           </div>
         </li>
       </div>

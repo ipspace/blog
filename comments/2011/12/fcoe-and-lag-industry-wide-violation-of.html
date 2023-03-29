@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>24 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Loren Gordon</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1505812363445759208">14 December 2011 12:24</a>
+                <a rel="nofollow" id="c1505812363445759208" href="#1505812363445759208">14 December 2011 12:24</a>
               </span>
             </div>
-            <p class="comment-content">How would FC multipathing work over a bonded interface in an FCoE scenario? As I understand it, each FC interface logs into the fabric and is zoned to one or more storage ports. Then the multipathing driver on the host manages which path is used from the host to the storage port. In most cases, this results in near instant failover if a path fails.<br /><br />If I understand what you&#39;re suggesting properly, multipathing would be handed over to the LACP bond. Wouldn&#39;t that require significant changes to the FC stacks? And in my experience, LACP bonds don&#39;t failover nearly as fast as FC drivers. That could very well have implications for the &#39;lossless&#39; requirement of FCoE...<br /><br />-Loren</p>
+            <div class="comment-content">How would FC multipathing work over a bonded interface in an FCoE scenario? As I understand it, each FC interface logs into the fabric and is zoned to one or more storage ports. Then the multipathing driver on the host manages which path is used from the host to the storage port. In most cases, this results in near instant failover if a path fails.<br /><br />If I understand what you&#39;re suggesting properly, multipathing would be handed over to the LACP bond. Wouldn&#39;t that require significant changes to the FC stacks? And in my experience, LACP bonds don&#39;t failover nearly as fast as FC drivers. That could very well have implications for the &#39;lossless&#39; requirement of FCoE...<br /><br />-Loren</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Juan Tarrio Brocade</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2769441477939587167">14 December 2011 12:40</a>
+                <a rel="nofollow" id="c2769441477939587167" href="#2769441477939587167">14 December 2011 12:40</a>
               </span>
             </div>
-            <p class="comment-content">Loren is absolutely correct. For multipathing and failover to work at the FC layer (and to work exactly the same as it works today with native FC, which is one of the promises--and premises--of FCoE), there have to be two independent FC initiators logging into the fabric (actually separate fabrics, so the last diagram hardly represents fabric A/B separation) independently, zoned independently to two independent FC target ports that present the same LUN through two independent controllers. Without multipathing software the host should actually see two identical devices. The multipathing software at the SCSI device driver layer will mask that into a single SCSI device for the OS and will handle load balancing (active/active or active/passive depending on the capabilities of the storage controller) and failover/failback transparently, and much faster than can be achieved with LACP.</p>
+            <div class="comment-content">Loren is absolutely correct. For multipathing and failover to work at the FC layer (and to work exactly the same as it works today with native FC, which is one of the promises--and premises--of FCoE), there have to be two independent FC initiators logging into the fabric (actually separate fabrics, so the last diagram hardly represents fabric A/B separation) independently, zoned independently to two independent FC target ports that present the same LUN through two independent controllers. Without multipathing software the host should actually see two identical devices. The multipathing software at the SCSI device driver layer will mask that into a single SCSI device for the OS and will handle load balancing (active/active or active/passive depending on the capabilities of the storage controller) and failover/failback transparently, and much faster than can be achieved with LACP.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2488364516514239368">14 December 2011 13:01</a>
+                <a rel="nofollow" id="c2488364516514239368" href="#2488364516514239368">14 December 2011 13:01</a>
               </span>
             </div>
-            <p class="comment-content">Of course you&#39;re both absolutely correct - the current _implementations_ make perfect sense from the server/storage/HA requirements perspective ... but that&#39;s not how they&#39;re supposed to be working according to FC-BB-5.<br /><br />Also, the current (non-standard) behavior forces the first switch to be FCF (or not to use LAG). Just imagine what would happen if the first switch is a regular DCB switch and you use LAG to connect to it.</p>
+            <div class="comment-content">Of course you&#39;re both absolutely correct - the current _implementations_ make perfect sense from the server/storage/HA requirements perspective ... but that&#39;s not how they&#39;re supposed to be working according to FC-BB-5.<br /><br />Also, the current (non-standard) behavior forces the first switch to be FCF (or not to use LAG). Just imagine what would happen if the first switch is a regular DCB switch and you use LAG to connect to it.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">J Metz</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8590984348039774603">15 December 2011 02:20</a>
+                <a rel="nofollow" id="c8590984348039774603" href="#8590984348039774603">15 December 2011 02:20</a>
               </span>
             </div>
-            <p class="comment-content">Hey Ivan,<br /><br />I think there&#39;s a piece missing from your conversation (or *I* am missing something, which is entirely probable :) ). The FC-BB-5 standard does not specify anything about the underlying MAC address, whether it&#39;s bonded or not. This is by design. <br /><br />When FCoE gets its address it does not simply use the MAC address of the host. Instead, FCoE uses its own addresses that can be mapped wherever you like. In this case, the only difference is that the interface MAC address is not the LAG MAC address. <br /><br />Each VN_Port gets its own FPMA address, that is uniquely identified by a triplet:<br /><br />MAC address of FCoE Device A (bonded or not); MAC address of device B (bonded or not); FCoE VLAN ID<br /><br />This has nothing to do with the physical addresses of the LAG nor of the interface. <br /><br />Or, am I missing something in your explanation?<br /><br />J</p>
+            <div class="comment-content">Hey Ivan,<br /><br />I think there&#39;s a piece missing from your conversation (or *I* am missing something, which is entirely probable :) ). The FC-BB-5 standard does not specify anything about the underlying MAC address, whether it&#39;s bonded or not. This is by design. <br /><br />When FCoE gets its address it does not simply use the MAC address of the host. Instead, FCoE uses its own addresses that can be mapped wherever you like. In this case, the only difference is that the interface MAC address is not the LAG MAC address. <br /><br />Each VN_Port gets its own FPMA address, that is uniquely identified by a triplet:<br /><br />MAC address of FCoE Device A (bonded or not); MAC address of device B (bonded or not); FCoE VLAN ID<br /><br />This has nothing to do with the physical addresses of the LAG nor of the interface. <br /><br />Or, am I missing something in your explanation?<br /><br />J</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">J Metz</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7857616615484494626">15 December 2011 02:21</a>
+                <a rel="nofollow" id="c7857616615484494626" href="#7857616615484494626">15 December 2011 02:21</a>
               </span>
             </div>
-            <p class="comment-content">In short, FC-BB-5 is above LAG, and therefore it doesn&#39;t care.</p>
+            <div class="comment-content">In short, FC-BB-5 is above LAG, and therefore it doesn&#39;t care.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Loren Gordon</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6611303599119945262">15 December 2011 03:38</a>
+                <a rel="nofollow" id="c6611303599119945262" href="#6611303599119945262">15 December 2011 03:38</a>
               </span>
             </div>
-            <p class="comment-content">Ultimately, I think our point is that LACP is not really sufficient for FC failover requirements...</p>
+            <div class="comment-content">Ultimately, I think our point is that LACP is not really sufficient for FC failover requirements...</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">tbourke</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6189403673031192120">15 December 2011 04:47</a>
+                <a rel="nofollow" id="c6189403673031192120" href="#6189403673031192120">15 December 2011 04:47</a>
               </span>
             </div>
-            <p class="comment-content">Interesting, hadn&#39;t thought of this. With Cisco UCS as well as many hypervisor deployments the issue is somewhat sidestepped. LAG isn&#39;t supported, and traffic distribution between two active Ethernet uplinks is handled usually by the hypervisor or UCS doing (VM pinning) or active/standby failover without the OS being involved (such as Windows baremetal). In either case, the FC traffic is still separated A/B.</p>
+            <div class="comment-content">Interesting, hadn&#39;t thought of this. With Cisco UCS as well as many hypervisor deployments the issue is somewhat sidestepped. LAG isn&#39;t supported, and traffic distribution between two active Ethernet uplinks is handled usually by the hypervisor or UCS doing (VM pinning) or active/standby failover without the OS being involved (such as Windows baremetal). In either case, the FC traffic is still separated A/B.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">6VPE</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1021341602679444885">15 December 2011 08:54</a>
+                <a rel="nofollow" id="c1021341602679444885" href="#1021341602679444885">15 December 2011 08:54</a>
               </span>
             </div>
-            <p class="comment-content">In summer I had some (very hard) discussions with Cisco fellow-staff in order to get<br />information about etherchannel load balancing; amazingly, TMEs were not able to <br />explain (reveal) schema(s) to combine IP and FCoE across the same channel.<br />Do you have more details for channels between switches / Nexus:<br />&quot;A port based load balancing&quot; =&gt; L1&amp;L2&amp;L3&amp;L4 hashing =&gt; asymmetric side utilization...??</p>
+            <div class="comment-content">In summer I had some (very hard) discussions with Cisco fellow-staff in order to get<br />information about etherchannel load balancing; amazingly, TMEs were not able to <br />explain (reveal) schema(s) to combine IP and FCoE across the same channel.<br />Do you have more details for channels between switches / Nexus:<br />&quot;A port based load balancing&quot; =&gt; L1&amp;L2&amp;L3&amp;L4 hashing =&gt; asymmetric side utilization...??</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">J Metz</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7925030169578889402">15 December 2011 20:18</a>
+                <a rel="nofollow" id="c7925030169578889402" href="#7925030169578889402">15 December 2011 20:18</a>
               </span>
             </div>
-            <p class="comment-content">I hope I don&#39;t come off sounding pedantic; I&#39;m really trying to understand where the issue lies.<br /><br />FCoE traffic - at a high level - is just another VLAN. Each switch in a VPC (where you have a link going to the two switches) must allow the VLAN in order to be able to provide the appropriate connectivity for both SAN A and B.<br /><br />So, suppose you have VLAN 101 for SAN A (on Switch A) and VLAN 102 for SAN B (on Switch B). Each FCF sees the MAC address behind the VLAN for the instantiation of the FCoE_LEP. FPMA provides the address based on the triplet I indicated before - in this case the MAC address is the bonded MAC address.<br /><br />In this scenario, SAN A traffic does not get forwarded to Switch B because the VLAN 101 is not in Switch B&#39;s database; the inverse is true for SAN B traffic.<br /><br />So, while my non-FCoE traffic (say, e.g., VLAN 1 and 100 for iSCSI traffic) gets hashed across both switches, the FCoE VLAN is forwarded and configured to a particular switch only, thus maintaining the separation. <br /><br />Because of this, I don&#39;t see how the standard for FC-BB-5 is broken between the document and implementation (addressing is still based upon the presented MAC address), and LAG bonding is still maintained for the port.<br /><br />Again, it&#39;s entirely possible that I&#39;m missing your point here, so I apologize if it&#39;s right in front of me and I just can&#39;t see it.</p>
+            <div class="comment-content">I hope I don&#39;t come off sounding pedantic; I&#39;m really trying to understand where the issue lies.<br /><br />FCoE traffic - at a high level - is just another VLAN. Each switch in a VPC (where you have a link going to the two switches) must allow the VLAN in order to be able to provide the appropriate connectivity for both SAN A and B.<br /><br />So, suppose you have VLAN 101 for SAN A (on Switch A) and VLAN 102 for SAN B (on Switch B). Each FCF sees the MAC address behind the VLAN for the instantiation of the FCoE_LEP. FPMA provides the address based on the triplet I indicated before - in this case the MAC address is the bonded MAC address.<br /><br />In this scenario, SAN A traffic does not get forwarded to Switch B because the VLAN 101 is not in Switch B&#39;s database; the inverse is true for SAN B traffic.<br /><br />So, while my non-FCoE traffic (say, e.g., VLAN 1 and 100 for iSCSI traffic) gets hashed across both switches, the FCoE VLAN is forwarded and configured to a particular switch only, thus maintaining the separation. <br /><br />Because of this, I don&#39;t see how the standard for FC-BB-5 is broken between the document and implementation (addressing is still based upon the presented MAC address), and LAG bonding is still maintained for the port.<br /><br />Again, it&#39;s entirely possible that I&#39;m missing your point here, so I apologize if it&#39;s right in front of me and I just can&#39;t see it.</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Stephen Foskett</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4094356239331239903">15 December 2011 20:30</a>
+                <a rel="nofollow" id="c4094356239331239903" href="#4094356239331239903">15 December 2011 20:30</a>
               </span>
             </div>
-            <p class="comment-content">What they said. FCoE multipathing (HA and perf) exists above anything you&#39;re doing with Ethernet including LAg and that&#39;s a good thing. I think you&#39;re reading too much into the FC-BB-5 standard to assume they intend to recommend (or not) LAg.</p>
+            <div class="comment-content">What they said. FCoE multipathing (HA and perf) exists above anything you&#39;re doing with Ethernet including LAg and that&#39;s a good thing. I think you&#39;re reading too much into the FC-BB-5 standard to assume they intend to recommend (or not) LAg.</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9029803648781537226">15 December 2011 20:36</a>
+                <a rel="nofollow" id="c9029803648781537226" href="#9029803648781537226">15 December 2011 20:36</a>
               </span>
             </div>
-            <p class="comment-content">Now you nailed it. FCoE _should_ exist above the petty Ethernet things, but it doesn&#39;t. The current implementation exists _by the side of_ petty Ethernet things.</p>
+            <div class="comment-content">Now you nailed it. FCoE _should_ exist above the petty Ethernet things, but it doesn&#39;t. The current implementation exists _by the side of_ petty Ethernet things.</div>
           </div>
         </li>
       </div>
@@ -217,10 +212,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5397526462292374502">15 December 2011 20:39</a>
+                <a rel="nofollow" id="c5397526462292374502" href="#5397526462292374502">15 December 2011 20:39</a>
               </span>
             </div>
-            <p class="comment-content">Your paragraph #3 is a great description of (one of) the problem(s). VLAN list should match on all port-channel ports, but doesn&#39;t because Switch A uses VLAN 101 and Switch B uses VLAN 102.<br /><br />LAG should be one logical link from Ethernet perspective, with one MAC address, and all the link parameters (including speed, VLAN list ...) should match between LAG members. In FCoE case, that&#39;s not true because of NIC/HBA separation in CNA.</p>
+            <div class="comment-content">Your paragraph #3 is a great description of (one of) the problem(s). VLAN list should match on all port-channel ports, but doesn&#39;t because Switch A uses VLAN 101 and Switch B uses VLAN 102.<br /><br />LAG should be one logical link from Ethernet perspective, with one MAC address, and all the link parameters (including speed, VLAN list ...) should match between LAG members. In FCoE case, that&#39;s not true because of NIC/HBA separation in CNA.</div>
           </div>
         </li>
       </div>
@@ -235,10 +230,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8038527106494099726">15 December 2011 20:39</a>
+                <a rel="nofollow" id="c8038527106494099726" href="#8038527106494099726">15 December 2011 20:39</a>
               </span>
             </div>
-            <p class="comment-content">Ahmmm ... can&#39;t count anymore. Seems to be Para#4  :-E</p>
+            <div class="comment-content">Ahmmm ... can&#39;t count anymore. Seems to be Para#4  :-E</div>
           </div>
         </li>
       </div>
@@ -253,10 +248,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1245131702964333325">15 December 2011 21:32</a>
+                <a rel="nofollow" id="c1245131702964333325" href="#1245131702964333325">15 December 2011 21:32</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br />I&#39;m scratching my head here because I still don&#39;t understand the problem.  LAG from server to switch has nothing to do with how the FC topology is viewed by the FC stack on the server.  When the CNA is connected via LAG to the FCoE switch, the LAG is only visible to the Ethernet/IP topology, not the FC topology.  What am I missing?<br /><br />Cheers,<br />Brad</p>
+            <div class="comment-content">Ivan,<br />I&#39;m scratching my head here because I still don&#39;t understand the problem.  LAG from server to switch has nothing to do with how the FC topology is viewed by the FC stack on the server.  When the CNA is connected via LAG to the FCoE switch, the LAG is only visible to the Ethernet/IP topology, not the FC topology.  What am I missing?<br /><br />Cheers,<br />Brad</div>
           </div>
         </li>
       </div>
@@ -271,10 +266,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3863870320843452411">15 December 2011 21:44</a>
+                <a rel="nofollow" id="c3863870320843452411" href="#3863870320843452411">15 December 2011 21:44</a>
               </span>
             </div>
-            <p class="comment-content">You just said it - LAG is not visible to FCoE, just to IP ... But IP and FCoE should both be above the same Ethernet link, be it a simple 10GE link or a LAG. As Stephen wrote, FCoE shpuld be _above_ petty Ethernet things.<br /><br />Do I make more sense now? If not, I&#39;m giving up ;) If I can&#39;t explain myself in a way that you&#39;d understand, I have no chance whatsoever to explain it to anyone else.</p>
+            <div class="comment-content">You just said it - LAG is not visible to FCoE, just to IP ... But IP and FCoE should both be above the same Ethernet link, be it a simple 10GE link or a LAG. As Stephen wrote, FCoE shpuld be _above_ petty Ethernet things.<br /><br />Do I make more sense now? If not, I&#39;m giving up ;) If I can&#39;t explain myself in a way that you&#39;d understand, I have no chance whatsoever to explain it to anyone else.</div>
           </div>
         </li>
       </div>
@@ -289,10 +284,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">dj spry</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9030533831761570022">15 December 2011 21:53</a>
+                <a rel="nofollow" id="c9030533831761570022" href="#9030533831761570022">15 December 2011 21:53</a>
               </span>
             </div>
-            <p class="comment-content">Thank you for this article and drawings!  It really helps to visualize why and how things are the way they are.  <br /><br />This was a bit of a confusing topic a few months ago.  Even more so when you through VMware into the mix.  <br /><br />As @tbourke mentioned, and Ivan you have blogged about - http://goo.gl/Ky7iP - LAG isn&#39;t supported the vSwitch and distribution between two active uplinks is handled usually by the hypervisor.  Configuration on both the VMware side and the switch side wasn&#39;t as simple as anyone expected.</p>
+            <div class="comment-content">Thank you for this article and drawings!  It really helps to visualize why and how things are the way they are.  <br /><br />This was a bit of a confusing topic a few months ago.  Even more so when you through VMware into the mix.  <br /><br />As @tbourke mentioned, and Ivan you have blogged about - http://goo.gl/Ky7iP - LAG isn&#39;t supported the vSwitch and distribution between two active uplinks is handled usually by the hypervisor.  Configuration on both the VMware side and the switch side wasn&#39;t as simple as anyone expected.</div>
           </div>
         </li>
       </div>
@@ -307,10 +302,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6643706341297618962">15 December 2011 22:01</a>
+                <a rel="nofollow" id="c6643706341297618962" href="#6643706341297618962">15 December 2011 22:01</a>
               </span>
             </div>
-            <p class="comment-content">OK, I see your point, but I completely disagree that you would want the FC stack on the server to use the LAG.  You don&#39;t want that at all for the reasons others have pointed out already.  The upstream vFC ports on the FCoE switch are not configured as LAG, therefore its not a LAG in the context of FC-BB-5.<br />It&#39;s when you make switch-to-switch FCoE LAG connections when the FC-BB-5 language about LAG is applicable.</p>
+            <div class="comment-content">OK, I see your point, but I completely disagree that you would want the FC stack on the server to use the LAG.  You don&#39;t want that at all for the reasons others have pointed out already.  The upstream vFC ports on the FCoE switch are not configured as LAG, therefore its not a LAG in the context of FC-BB-5.<br />It&#39;s when you make switch-to-switch FCoE LAG connections when the FC-BB-5 language about LAG is applicable.</div>
           </div>
         </li>
       </div>
@@ -325,10 +320,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4869553595479006164">15 December 2011 22:10</a>
+                <a rel="nofollow" id="c4869553595479006164" href="#4869553595479006164">15 December 2011 22:10</a>
               </span>
             </div>
-            <p class="comment-content">We&#39;re in perfect agreement that you wouldn&#39;t want to see FCoE over LAG ... But then you should not be allowed to use LAG with FCoE on the same link.<br /><br />Also - don&#39;t you think it&#39;s weird that we run one L3 protocol (FCoE) over physical interfaces and another one (IP) over port-channel interfaces? Does it sound right to be able to configure inconsistent parameters on port channel members?<br /><br />As for &quot;FC-BB-5 language is applicable to inter-switch links&quot;, I thought FC-BB-5 was _the_ standard defining all of FCoE ;))</p>
+            <div class="comment-content">We&#39;re in perfect agreement that you wouldn&#39;t want to see FCoE over LAG ... But then you should not be allowed to use LAG with FCoE on the same link.<br /><br />Also - don&#39;t you think it&#39;s weird that we run one L3 protocol (FCoE) over physical interfaces and another one (IP) over port-channel interfaces? Does it sound right to be able to configure inconsistent parameters on port channel members?<br /><br />As for &quot;FC-BB-5 language is applicable to inter-switch links&quot;, I thought FC-BB-5 was _the_ standard defining all of FCoE ;))</div>
           </div>
         </li>
       </div>
@@ -343,10 +338,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7434592487053067055">15 December 2011 22:12</a>
+                <a rel="nofollow" id="c7434592487053067055" href="#7434592487053067055">15 December 2011 22:12</a>
               </span>
             </div>
-            <p class="comment-content">BTW, I was that &quot;Guest&quot;. Stupid iPad can&#39;t share Safari cookies across in-app instances.</p>
+            <div class="comment-content">BTW, I was that &quot;Guest&quot;. Stupid iPad can&#39;t share Safari cookies across in-app instances.</div>
           </div>
         </li>
       </div>
@@ -361,10 +356,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7174673510400841377">15 December 2011 22:34</a>
+                <a rel="nofollow" id="c7174673510400841377" href="#7174673510400841377">15 December 2011 22:34</a>
               </span>
             </div>
-            <p class="comment-content">I guess I don&#39;t see that as &quot;weird&quot;.  LAG helps one (IP), and breaks the other (FC), so why dumb down the whole network to the lowest common denominator when you don&#39;t need to do that? *That* to me, is &quot;weird&quot; :-)</p>
+            <div class="comment-content">I guess I don&#39;t see that as &quot;weird&quot;.  LAG helps one (IP), and breaks the other (FC), so why dumb down the whole network to the lowest common denominator when you don&#39;t need to do that? *That* to me, is &quot;weird&quot; :-)</div>
           </div>
         </li>
       </div>
@@ -379,10 +374,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">J Metz</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8998051540238305028">15 December 2011 22:38</a>
+                <a rel="nofollow" id="c8998051540238305028" href="#8998051540238305028">15 December 2011 22:38</a>
               </span>
             </div>
-            <p class="comment-content">Remember that standards are a way of how to solve a particular problem. If you have a problem that a standard doesn&#39;t solve, you don&#39;t need to use it.<br /><br />Conversely, if the standard doesn&#39;t solve the problem you have, then you are free to determine your own solution.<br /><br />This is just a generic message and in no way contradicts my earlier statements. :P</p>
+            <div class="comment-content">Remember that standards are a way of how to solve a particular problem. If you have a problem that a standard doesn&#39;t solve, you don&#39;t need to use it.<br /><br />Conversely, if the standard doesn&#39;t solve the problem you have, then you are free to determine your own solution.<br /><br />This is just a generic message and in no way contradicts my earlier statements. :P</div>
           </div>
         </li>
       </div>
@@ -397,10 +392,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Erik Smith</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1275910098067434011">16 December 2011 14:34</a>
+                <a rel="nofollow" id="c1275910098067434011" href="#1275910098067434011">16 December 2011 14:34</a>
               </span>
             </div>
-            <p class="comment-content">I agree with most of what Loren, Brad, Juan and J have already said.  FCoE was designed to work within the framework of FC.  As a result multipathing is handled by MPIO (e.g., PowerPath) and not via physical link aggregation.   <br /><br />In addition, I&#39;d also like to point out that due to the formatting of the &quot;FC-BB-5 nitpicking&quot; paragraph in your original post, a reader may incorrectly conclude that FC-BB-5 mentions &quot;Link Aggregation&quot; and it does not, FC-BB-5 (the standard that defines FCoE) only mentions &quot;Ethernet MAC&quot; and &quot;Lossless Ethernet MAC&quot;. FC-BB-5 says no more on the topic because it would have been inappropriate for FC-BB-5 (a T11 working group) to say anything more about a topic (Ethernet MACs) that are defined by IEEE.  With this in mind, one should conclude that the &quot;MAC Client&quot; referenced in section 5 of 802.1AX and an &quot;FCoE ENode&quot; are different ways of describing the same thing.  <br /><br />That having been said, I don&#39;t see any relevant text in 802.1AX that indicates all MAC Clients using the same MAC need to be aggregated in the same manner.  Additionally, you specifically referenced the following text: <br /><br />&quot;A MAC Client communicates with a set of ports through an Aggregator, which presents a standard IEEE 802.3 service interface to the MAC Client.&quot;<br /><br />I would like to point out that later on in this same section the following text is included:<br /><br />&quot;This standard does not impose any particular distribution algorithm on the Distributor. Whatever<br />algorithm is used should be appropriate for the MAC Client being supported.&quot;<br /><br />Therefore, since distributing FCoE frames across multiple physical links would not be appropriate for the MAC Client (FCoE ENode), it is not done by the Distributor.<br /><br />BTW, if you want to see an example of Teaming/Bonding and FCoE coexisting quite happily, take a look at the &quot;FCoE Tech Book&quot; and the &quot;Nexus 7000, Nexus 5000, and MDS 9500 series topology&quot; case study.</p>
+            <div class="comment-content">I agree with most of what Loren, Brad, Juan and J have already said.  FCoE was designed to work within the framework of FC.  As a result multipathing is handled by MPIO (e.g., PowerPath) and not via physical link aggregation.   <br /><br />In addition, I&#39;d also like to point out that due to the formatting of the &quot;FC-BB-5 nitpicking&quot; paragraph in your original post, a reader may incorrectly conclude that FC-BB-5 mentions &quot;Link Aggregation&quot; and it does not, FC-BB-5 (the standard that defines FCoE) only mentions &quot;Ethernet MAC&quot; and &quot;Lossless Ethernet MAC&quot;. FC-BB-5 says no more on the topic because it would have been inappropriate for FC-BB-5 (a T11 working group) to say anything more about a topic (Ethernet MACs) that are defined by IEEE.  With this in mind, one should conclude that the &quot;MAC Client&quot; referenced in section 5 of 802.1AX and an &quot;FCoE ENode&quot; are different ways of describing the same thing.  <br /><br />That having been said, I don&#39;t see any relevant text in 802.1AX that indicates all MAC Clients using the same MAC need to be aggregated in the same manner.  Additionally, you specifically referenced the following text: <br /><br />&quot;A MAC Client communicates with a set of ports through an Aggregator, which presents a standard IEEE 802.3 service interface to the MAC Client.&quot;<br /><br />I would like to point out that later on in this same section the following text is included:<br /><br />&quot;This standard does not impose any particular distribution algorithm on the Distributor. Whatever<br />algorithm is used should be appropriate for the MAC Client being supported.&quot;<br /><br />Therefore, since distributing FCoE frames across multiple physical links would not be appropriate for the MAC Client (FCoE ENode), it is not done by the Distributor.<br /><br />BTW, if you want to see an example of Teaming/Bonding and FCoE coexisting quite happily, take a look at the &quot;FCoE Tech Book&quot; and the &quot;Nexus 7000, Nexus 5000, and MDS 9500 series topology&quot; case study.</div>
           </div>
         </li>
       </div>
@@ -415,10 +410,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3546390796173331461">16 December 2011 15:28</a>
+                <a rel="nofollow" id="c3546390796173331461" href="#3546390796173331461">16 December 2011 15:28</a>
               </span>
             </div>
-            <p class="comment-content">Hi Erik,<br /><br />Thanks for your comment. This is the first comment that really addresses my concerns. I agree that one could read the 802.1AX standard in the way you interpret it. <br /><br />You might still face an interesting problem if the first-hop switch is a DCB-capable switch w/o FC stack (and potentially even without FIP snooping), distributing FCoE frames across LAG at will ... but hopefully we&#39;ll eventually come to a point where everyone agrees that doesn&#39;t make too much sense.<br /><br />Ivan</p>
+            <div class="comment-content">Hi Erik,<br /><br />Thanks for your comment. This is the first comment that really addresses my concerns. I agree that one could read the 802.1AX standard in the way you interpret it. <br /><br />You might still face an interesting problem if the first-hop switch is a DCB-capable switch w/o FC stack (and potentially even without FIP snooping), distributing FCoE frames across LAG at will ... but hopefully we&#39;ll eventually come to a point where everyone agrees that doesn&#39;t make too much sense.<br /><br />Ivan</div>
           </div>
         </li>
       </div>
@@ -433,10 +428,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">J Metz</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1069808377162690001">16 December 2011 17:12</a>
+                <a rel="nofollow" id="c1069808377162690001" href="#1069808377162690001">16 December 2011 17:12</a>
               </span>
             </div>
-            <p class="comment-content">Believe it or not, Ivan, I completely agree with you about the dangers of placing a DCB switch inbetween a host and FCF. I&#39;m going to make sure that I keep LAG as one of those reasons.<br /><br />Ultimately, your bonded interface only brings up half the issue. We need to tie the process to the SCSI process at the OS level. SCSI requires *one* single path. <br /><br />Multiple paths for SCSI operation have been a thorn in the side for ages. I&#39;m told that it has to do with nanosecond (or tighter) timing, so that there has to be some referee to ensure that bits are to/from the SCSI stack in guaranteed order or risk corruption. <br /><br />Array vendors have developed multipathing software to sit in-between the HBAs and the OS. If the OS/SCSI can&#39;t deal with 2 paths natively, how would FC-BB-5 solve this without some form of middleware?<br /><br />Erik, of course, sitting on the T11 committee has a much greater understanding of the text than I do (I&#39;m just a on-again, off-again observer in the meetings). But FWIW Claudio DeSanti mentioned last night that:<br /><br />&quot;A standard is violated when an *explicit* requirement (i.e., a &quot;shall&quot; statement) is not observed. To state that a standard is violated he has to point out a specific &quot;shall&quot; statement that is not observed. Everything else is not a violation of a standard.&quot;<br /><br />I know it&#39;s semantics and nitpicks, but then again, that&#39;s precisely what standards *are* - semantics and nitpicks.  8-)</p>
+            <div class="comment-content">Believe it or not, Ivan, I completely agree with you about the dangers of placing a DCB switch inbetween a host and FCF. I&#39;m going to make sure that I keep LAG as one of those reasons.<br /><br />Ultimately, your bonded interface only brings up half the issue. We need to tie the process to the SCSI process at the OS level. SCSI requires *one* single path. <br /><br />Multiple paths for SCSI operation have been a thorn in the side for ages. I&#39;m told that it has to do with nanosecond (or tighter) timing, so that there has to be some referee to ensure that bits are to/from the SCSI stack in guaranteed order or risk corruption. <br /><br />Array vendors have developed multipathing software to sit in-between the HBAs and the OS. If the OS/SCSI can&#39;t deal with 2 paths natively, how would FC-BB-5 solve this without some form of middleware?<br /><br />Erik, of course, sitting on the T11 committee has a much greater understanding of the text than I do (I&#39;m just a on-again, off-again observer in the meetings). But FWIW Claudio DeSanti mentioned last night that:<br /><br />&quot;A standard is violated when an *explicit* requirement (i.e., a &quot;shall&quot; statement) is not observed. To state that a standard is violated he has to point out a specific &quot;shall&quot; statement that is not observed. Everything else is not a violation of a standard.&quot;<br /><br />I know it&#39;s semantics and nitpicks, but then again, that&#39;s precisely what standards *are* - semantics and nitpicks.  8-)</div>
           </div>
         </li>
       </div>

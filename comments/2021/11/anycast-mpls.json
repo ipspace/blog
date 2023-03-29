@@ -1,0 +1,31 @@
+{
+   "comments": [
+      {
+         "date": "17 November 2021 10:06",
+         "html": "<p>Wondering if traceroute on &quot;s1&quot; would also reach &quot;a1&quot; (on third hop) as it&#39;s not shown in the output. Maybe by increasing probe count for traceroute?</p>\n\n<p>Minor typo: title &quot;Anycast MPLS entry on S1&quot; should be &quot;Anycast MPLS entry on L2&quot;</p>\n",
+         "id": "856",
+         "name": "Anonymous",
+         "pub": "2021-11-17T22:06:38",
+         "type": "comment"
+      },
+      {
+         "date": "19 November 2021 07:58",
+         "html": "Very interesting topic Ivan : )). While those who study transport mechanics in internetwork quickly realize the claim is incorrect based on first principles, it&#39;s always nice to see a conclusive proof laid out with step-by-step instructions and empirical data.<br />\n\n<p>MPLS is Transport, and Transport is more concerned about addressing, routing, synchronization etc, while Anycast, taken to its root, is a naming issue, so one can quickly realize there&#39;s no fundamental reason that prevents MPLS from supporting anycast. Any limitation, is strictly implementational, not technological. So it&#39;s not too surprising how even old LDP code can take on Anycast. </p>\n\n<p>&quot;MPLS is not a pure packet switching technology, but has a control plane based on virtual circuit switching.&quot; while I can see why Dmytro might have come to this conclusion, it&#39;s not really true either. It&#39;s true that MPLS is an evolution of ATM, and therefore, is not tunnel, but VC -- never understand the pointless debates about whether MPLS is tunnel or VC as the people who claim it&#39;s tunnel obviously don&#39;t understand its history --  but MPLS is more like loose VC. MPLS relies on a functional routing protocol to discover the paths, and LDP -- if it can be called MPLS control plane as MPLS control plane can consist of way more than LDP -- assigns the labels for the prefixes, so MPLS in an IP network is essentially packet-switching, not VC. If a core DCE breaks down in a VC network, the VC breaks, but in MPLS IP network, the LSP adjusts itself based on the underlying routing topology.  LDP itself is a simplistic label assignment protocol, AFAIK it doesn&#39;t perform any function central to a VC control plane, so all in all MPLS deviates a fair bit from traditional VC network.</p>\n\n<p>But the most important part is: MPLS is more general than both VC and packet-switch, because it&#39;s Transport, and this point is crucial. MPLS can therefore be generalized to support non-packet-switch network, in VC style or what not. So all of these points make it obvious that nothing would stop MPLS from supporting Anycast routing, or any form of routing, for that matter. And the reason this needs to be clearly identified is so vendors can&#39;t use that as an excuse to sell SR for the wrong reason.</p>\n\n<p>And I never understand what the excitement is with SR, given that it&#39;s a product of SDN, itself a misconception(or a flight of fantasy) from the start. SR is more like a point solution for a few special cases, and it tries to overcome the state problems by introducing more constructs into the network, like SRGB and global segments, that can lead to tight binding and confusion, esp. at large scale. </p>\n\n<p>In fact Dmytro&#39;s post already mentioned 3 deficiencies of SRGB mismatch. Introducing more moving parts, esp. global ones, into big distributed systems, always leads to complexity and unintended consequences. SR will run into problem with MPLS network where label is no longer just an abstract concept with no physical reality, but has to match the underlying resources. This &#39;fitting the data&#39; requirement and SRGB can contradict each other, leading to much headache. And if one has to add a controller to SR to do TE, then one will run into all the scaling problems of centralized routing that SDN proponents have learnt the hard way. So personally I agree 100% with Greg Ferro&#39;s remark here:</p>\n\n<p>https://packetpushers.net/srx6-snake-oil-or-salvation</p>\n",
+         "id": "857",
+         "name": "Minh",
+         "pub": "2021-11-19T07:58:20",
+         "type": "comment"
+      },
+      {
+         "date": "22 November 2021 11:29",
+         "html": "Brilliant topic Ivan and the usual gem from Minh : )<br />\n\n<p>Just a couple of comments:  </p>\n\n<p>Some years ago I attended a vendor&#39;s course on Segment Routing tailored for my company and the SR advocate made his debut saying that LDP didn&#39;t support ECMP ..... :(..... some of us nearly fell off our chairs but it was such a macroscopic idiocy that we didn&#39;t want to embarrass him and so we said nothing... the worrying bit though is that most of the audience didn&#39;t fall off any chair as it went through pretty unnoticed... this is just to say that there&#39;s always a lot of fertile ground around for any new technology... </p>\n\n<p>Regarding the operational fragility SRGB offers us ... I&#39;d recommend the following reading: \nhttps://datatracker.ietf.org/doc/html/draft-ietf-spring-conflict-resolution   </p>\n\n<p>Cheers/Ciao  </p>\n\n<p>Andrea   </p>\n",
+         "id": "861",
+         "name": "Andrea Di Donato",
+         "pub": "2021-11-22T11:29:41",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2021/11/anycast-mpls.html"
+}

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03014282355010119539" rel="nofollow">Michael67</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1215102374002719282">05 April 2016 21:33</a>
+                <a rel="nofollow" id="c1215102374002719282" href="#1215102374002719282">05 April 2016 21:33</a>
               </span>
             </div>
-            <p class="comment-content">Is it only my that doesn´t want to listen any longer to what vendors say about &quot;their&quot; SDN solutions?<br />It was once said that you can do what you want with your low cost white box switches. But you have to pay an arm and a leg to get all licenses together. <br />Of course you can do everything yourself.<br />In both cases you need power, may it be the power of money or men. In the latter case you gain at least know-how instead of the first one, where you inherit dependency.</p>
+            <div class="comment-content">Is it only my that doesn´t want to listen any longer to what vendors say about &quot;their&quot; SDN solutions?<br />It was once said that you can do what you want with your low cost white box switches. But you have to pay an arm and a leg to get all licenses together. <br />Of course you can do everything yourself.<br />In both cases you need power, may it be the power of money or men. In the latter case you gain at least know-how instead of the first one, where you inherit dependency.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Mario</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5840052654415976818">06 April 2016 00:24</a>
+                <a rel="nofollow" id="c5840052654415976818" href="#5840052654415976818">06 April 2016 00:24</a>
               </span>
             </div>
-            <p class="comment-content">I totally agree with you, it all starts and sounds &quot;open&quot; at the beginning or on the marketing front.. but every vendor has to include their own reincarnation or special sauce of SDN. One vendor&#39;s Openflow implementation may not be compatible with another.. one vendor requires their hardware to be purchased (ACI/Cisco), another may work as an overlay and not care about the underlying infrastructure/gear (Vmware/NSX, Microsoft HNV). However, we still need to pay for licenses whether it is a NFV or hardware appliance. I really love the idea that networking is (finally) becoming more abstracted away from the hardware, accessible via an API.. I will admit that there are a number of solid VM &quot;appliances&quot; which are free and may fit the task at hand (Vyos, Quagga, SecurityOnion, Endian UTM, NGINX, etc) even better would be if/when these appliances took advantage of DPDK, offering much better performance.</p>
+            <div class="comment-content">I totally agree with you, it all starts and sounds &quot;open&quot; at the beginning or on the marketing front.. but every vendor has to include their own reincarnation or special sauce of SDN. One vendor&#39;s Openflow implementation may not be compatible with another.. one vendor requires their hardware to be purchased (ACI/Cisco), another may work as an overlay and not care about the underlying infrastructure/gear (Vmware/NSX, Microsoft HNV). However, we still need to pay for licenses whether it is a NFV or hardware appliance. I really love the idea that networking is (finally) becoming more abstracted away from the hardware, accessible via an API.. I will admit that there are a number of solid VM &quot;appliances&quot; which are free and may fit the task at hand (Vyos, Quagga, SecurityOnion, Endian UTM, NGINX, etc) even better would be if/when these appliances took advantage of DPDK, offering much better performance.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11529916018516958539" rel="nofollow">Salman Naqvi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#235305677950427694">08 April 2016 16:36</a>
+                <a rel="nofollow" id="c235305677950427694" href="#235305677950427694">08 April 2016 16:36</a>
               </span>
             </div>
-            <p class="comment-content">Hello Ivan,<br /><br />I have studied ACI and NSX in pretty good detail and have worked on PoC/LAB implementation of both platforms. I used to think that NSX having VTEPS that could do routing on locally on the host for VMs in different subnets was a pretty awesome feature. Later, as you also mentioned in this presentation, Cisco added the VTEP feature through AVS to the ACI platform which allowed the same function.<br /><br />Then, one of my very intelligent colleagues pointed out to me that being able to route in between subnets on the same host does not achieve much at all. An example will illustrate this idea well: Assuming an application uses six VMs, 3 DB, 2 APP and 1 Web server. Also assume DRS is used (which it is in most production environments I&#39;ve seen) and there are 20, 30 or 50 ESXi hosts. Statistically, especially if this application&#39;s VMs are resource intensive, they will all end up on different hosts. Then, being able to route within the hosts becomes a moot point. This results in no architectural difference between ACI and NSX assuming AVS/VTEP with ACI is not utilized for 90 or 95%+ of the east-west traffic.<br /><br />My immediate takeaway is that to avoid the complexity added by VTEPs on every ESXi host (and yes, it does add a little bit of complexity), I&#39;d rather forgo the slight performance gain that I might get on ESXi hosts routing locally for a very small portion of the traffic and have all the routing be handled by the physical fabric.<br /><br />Even with NSX, in the same scenario, with 6 VMs spread across 20, 30 or 50 ESXi hosts, most of the east-west traffic will end travelling encapsulated over the physical network anyways - and I&#39;d rather have the flexibility, visibility and troubleshooting capability that I&#39;d be achieve through the ACI physical fabric than the logical NSX overlay. With ACI normalization of traffic between VLANs and VXLAN, virtual and physical, I can troubleshoot traffic in between virtual-virtual, virtual-physical and physical-physical all in the same manner. With NSX, the troubleshooting has improved significantly since version 6.2, but, there is probably still a long way to go to get the type of visibility you get in ACI.<br /><br />What is your take on this situation? <br /><br />Thanks.</p>
+            <div class="comment-content">Hello Ivan,<br /><br />I have studied ACI and NSX in pretty good detail and have worked on PoC/LAB implementation of both platforms. I used to think that NSX having VTEPS that could do routing on locally on the host for VMs in different subnets was a pretty awesome feature. Later, as you also mentioned in this presentation, Cisco added the VTEP feature through AVS to the ACI platform which allowed the same function.<br /><br />Then, one of my very intelligent colleagues pointed out to me that being able to route in between subnets on the same host does not achieve much at all. An example will illustrate this idea well: Assuming an application uses six VMs, 3 DB, 2 APP and 1 Web server. Also assume DRS is used (which it is in most production environments I&#39;ve seen) and there are 20, 30 or 50 ESXi hosts. Statistically, especially if this application&#39;s VMs are resource intensive, they will all end up on different hosts. Then, being able to route within the hosts becomes a moot point. This results in no architectural difference between ACI and NSX assuming AVS/VTEP with ACI is not utilized for 90 or 95%+ of the east-west traffic.<br /><br />My immediate takeaway is that to avoid the complexity added by VTEPs on every ESXi host (and yes, it does add a little bit of complexity), I&#39;d rather forgo the slight performance gain that I might get on ESXi hosts routing locally for a very small portion of the traffic and have all the routing be handled by the physical fabric.<br /><br />Even with NSX, in the same scenario, with 6 VMs spread across 20, 30 or 50 ESXi hosts, most of the east-west traffic will end travelling encapsulated over the physical network anyways - and I&#39;d rather have the flexibility, visibility and troubleshooting capability that I&#39;d be achieve through the ACI physical fabric than the logical NSX overlay. With ACI normalization of traffic between VLANs and VXLAN, virtual and physical, I can troubleshoot traffic in between virtual-virtual, virtual-physical and physical-physical all in the same manner. With NSX, the troubleshooting has improved significantly since version 6.2, but, there is probably still a long way to go to get the type of visibility you get in ACI.<br /><br />What is your take on this situation? <br /><br />Thanks.</div>
           </div>
         </li>
       </div>

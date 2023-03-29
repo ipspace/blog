@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3607482220443005874">18 October 2007 06:45</a>
+                <a rel="nofollow" id="c3607482220443005874" href="#3607482220443005874">18 October 2007 06:45</a>
               </span>
             </div>
-            <p class="comment-content">Deployed in every OSPF router in the domain, would prevent insertion of extraneous routing table entries into the FIB.<BR/><BR/>Imagine someone running OSPF and BGP, and a network engineer doing a "redistribute bgp" into OSPF - and image how those poor OSPF speakers would feel :)<BR/><BR/>Add a distribute-list in only allowing networks you know to be in your domain - filter everything else.</p>
+            <div class="comment-content">Deployed in every OSPF router in the domain, would prevent insertion of extraneous routing table entries into the FIB.<BR/><BR/>Imagine someone running OSPF and BGP, and a network engineer doing a "redistribute bgp" into OSPF - and image how those poor OSPF speakers would feel :)<BR/><BR/>Add a distribute-list in only allowing networks you know to be in your domain - filter everything else.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#357178822113530951">18 October 2007 10:49</a>
+                <a rel="nofollow" id="c357178822113530951" href="#357178822113530951">18 October 2007 10:49</a>
               </span>
             </div>
-            <p class="comment-content">If you're deploying the same filter on every OSPF router in the domain, it's much easier (and more resource-effective) to filter the incoming prefixes in the redistribution points. Obviously I have to reiterate: the <B>distribute-list in</B> used in OSPF <I>does NOT</I> reduce the number of LSAs, memory consumption or CPU usage, just the prefixes that are transferred into the IP routing table.<BR/><BR/>Furthermore &hellip; I've been teaching, writing and saying this for 15 year, but obviously the myth persists: you should NOT (repeat NOT) redistribute BGP into IGP. You might have to in the CCIE scenarios to get points, but should never do it in real life. And the <B>distribute-list in</B> will not help you; the routers will still drown under the type-5 LSAs, the CPU utilization will still go through the roof, only you won't see the routes in the <B>show ip route</B> printout.</p>
+            <div class="comment-content">If you're deploying the same filter on every OSPF router in the domain, it's much easier (and more resource-effective) to filter the incoming prefixes in the redistribution points. Obviously I have to reiterate: the <B>distribute-list in</B> used in OSPF <I>does NOT</I> reduce the number of LSAs, memory consumption or CPU usage, just the prefixes that are transferred into the IP routing table.<BR/><BR/>Furthermore &hellip; I've been teaching, writing and saying this for 15 year, but obviously the myth persists: you should NOT (repeat NOT) redistribute BGP into IGP. You might have to in the CCIE scenarios to get points, but should never do it in real life. And the <B>distribute-list in</B> will not help you; the routers will still drown under the type-5 LSAs, the CPU utilization will still go through the roof, only you won't see the routes in the <B>show ip route</B> printout.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#113548383279538441">18 October 2007 16:35</a>
+                <a rel="nofollow" id="c113548383279538441" href="#113548383279538441">18 October 2007 16:35</a>
               </span>
             </div>
-            <p class="comment-content">I was trying to say "this would be a measure to prevent ERRORS"<BR/><BR/>Kind of "last time someone SNAFU'ed and did a redistribute of BGP into OSPF by mistake, we crashed 80% of the routers"<BR/><BR/>So, this is the cure :)</p>
+            <div class="comment-content">I was trying to say "this would be a measure to prevent ERRORS"<BR/><BR/>Kind of "last time someone SNAFU'ed and did a redistribute of BGP into OSPF by mistake, we crashed 80% of the routers"<BR/><BR/>So, this is the cure :)</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5075239015693308729">18 October 2007 16:52</a>
+                <a rel="nofollow" id="c5075239015693308729" href="#5075239015693308729">18 October 2007 16:52</a>
               </span>
             </div>
-            <p class="comment-content">Whether your OSPF routers survive messed-up redistribution of BGP routes depends on a number of factors. The LSAs are still there (on all routers) and the partial SPF is still run, so the memory, bandwidth and CPU consumptions are high. <BR/><BR/>You do, however, reduce the IP routing table and CEF table sizes (assuming the OSPF routers are not running BGP as well), which might be enough to save you.</p>
+            <div class="comment-content">Whether your OSPF routers survive messed-up redistribution of BGP routes depends on a number of factors. The LSAs are still there (on all routers) and the partial SPF is still run, so the memory, bandwidth and CPU consumptions are high. <BR/><BR/>You do, however, reduce the IP routing table and CEF table sizes (assuming the OSPF routers are not running BGP as well), which might be enough to save you.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02571029118821999072" rel="nofollow">Jay Swan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4072466961770938520">18 October 2007 17:49</a>
+                <a rel="nofollow" id="c4072466961770938520" href="#4072466961770938520">18 October 2007 17:49</a>
               </span>
             </div>
-            <p class="comment-content">You should clarify that you should never redistribute *Internet* BGP prefixes into an IGP.<BR/><BR/>If you are running enterprise MPLS VPNs with a service provider that requires BGP, BGP<->IGP redistribution is going to be the rule rather than the exception.<BR/><BR/>On the topic at hand, I would say that the maximum-prefix feature, along with careful use of TACACS authorization, are better ways to prevent redistribution mistakes than maintaining a lot of route filters.</p>
+            <div class="comment-content">You should clarify that you should never redistribute *Internet* BGP prefixes into an IGP.<BR/><BR/>If you are running enterprise MPLS VPNs with a service provider that requires BGP, BGP<->IGP redistribution is going to be the rule rather than the exception.<BR/><BR/>On the topic at hand, I would say that the maximum-prefix feature, along with careful use of TACACS authorization, are better ways to prevent redistribution mistakes than maintaining a lot of route filters.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3976216102162635114">18 October 2007 22:09</a>
+                <a rel="nofollow" id="c3976216102162635114" href="#3976216102162635114">18 October 2007 22:09</a>
               </span>
             </div>
-            <p class="comment-content">@js: You're absolutely right, it applies primarily to the Internet scenarios ... although even MPLS VPNs are simpler if you can use default route into VPN IGP ;)<BR/><BR/>I have to test the maximum-prefix feature to figure out what it drops and under what circumstances.</p>
+            <div class="comment-content">@js: You're absolutely right, it applies primarily to the Internet scenarios ... although even MPLS VPNs are simpler if you can use default route into VPN IGP ;)<BR/><BR/>I have to test the maximum-prefix feature to figure out what it drops and under what circumstances.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9085636878738487396">26 October 2007 03:12</a>
+                <a rel="nofollow" id="c9085636878738487396" href="#9085636878738487396">26 October 2007 03:12</a>
               </span>
             </div>
-            <p class="comment-content">I had to filter OSPF routes from a PIX that was sending host routes for all of it's NATed addresses out of two interfaces with the same cost.</p>
+            <div class="comment-content">I had to filter OSPF routes from a PIX that was sending host routes for all of it's NATed addresses out of two interfaces with the same cost.</div>
           </div>
         </li>
       </div>

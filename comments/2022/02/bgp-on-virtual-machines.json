@@ -1,0 +1,34 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "16 February 2022 10:00",
+               "html": "<p>Glad to see someone agrees with me ;) Thank you!</p>\n",
+               "id": "1019",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-02-16T22:00:38",
+               "ref": "1018",
+               "type": "comment"
+            }
+         ],
+         "date": "16 February 2022 08:31",
+         "html": "<p>What about some load balancer instances (e.g. MetalLB) in front of Kubernetes cluster doing EBGP (host routes + ECMP) with ToR switches? Combined with global load balancing (DNS).\nLet Kubernetes cluster handle movement of Pods (containers). No need for moving around Nodes in the data center.</p>\n",
+         "id": "1018",
+         "name": "Anonymous",
+         "pub": "2022-02-16T20:31:42",
+         "type": "comment"
+      },
+      {
+         "date": "16 February 2022 11:23",
+         "html": "<p>Few points\nIn Junos the solution is not VMTO but to advertise type-2 routes as /32 type-5 (It simulate symmetrical IRB on Junos ) and add the following command to allow the next-hop resolution.\n<code>set routing-options resolution preserve-nexthop-hierarchy</code> (Use recent Junos for it ) </p>\n\n<p>The same solution works also in Arista without special knobs.</p>\n\n<p>If you want to do anycast for some services you should add add-path to the mix.</p>\n\n<p>There is more elegant solution for the issue by establishing the BGP to centralized leaf (two for redundancy) in the network regardless of its location. that leaf will advertise the route as type-5 to all of the other leafs but it will set the GW IP attribute to the K8S worker IP (It is 0 by default). \nThis way the ingress leaf will not forward the traffic via the centralized leaf that advertise the type-5 but it will use the optimal path do the K8S worker.\nAFAIK only cisco support it today via <code>set evpn gateway-ip use-nexthop</code> under route-map as you can read here https://www.cisco.com/c/en/us/td/docs/dcn/whitepapers/cisco-nx-os-calico-network-design.html. More details are in rfc9135 and rfc9136</p>\n",
+         "id": "1024",
+         "name": " Nitzan",
+         "pub": "2022-02-16T23:23:06",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/02/bgp-on-virtual-machines.html"
+}

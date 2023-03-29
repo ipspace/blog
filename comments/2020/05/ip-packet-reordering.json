@@ -1,0 +1,47 @@
+{
+   "comments": [
+      {
+         "date": "02 June 2020 08:42",
+         "html": "A couple of thoughts from a network transport perspective:<br />\n\n<p>1) Apart from a bad implementation or configuration or a bug of the hashing algorithm governing the load-balancing, can these days packet reordering still be introduced within an high-end router while traversing it&#39;s fabric layers from the input to the output port/card ? I remember witnessing it happening on some juniper boxes during the early 2000s after some very deep testing for an R&amp;D European project.</p>\n\n<p>2) there&#39;s no such an alarm/counter on a (stateless by definition) router as &#39;number of out of sequence packets&#39; .... since you&#39;d need to sequence every flow&#39;s packet (according to the forwarding chipset&#39;s configured flow hashing algorithm granularity...) coming in and then work out on a per-flow basis if there&#39;s some reordering been introduced while sending it out on a port....</p>\n\n<p>3) To my knowledge, very few providers stress-test their routers themselves in their labs the way you should to be able to spot such issues. And this should be tested every time you change code or card too...</p>\n\n<p>4) could therefore packet reordering be an Internet&#39;s\nphysiological issue (sort of background noise) that is fixable but at a cost so high that no one really cares unless it becomes a real problem for a complaining customers of yours (such as when you configure a brand new lag towards a customer and forget to change the load-balancing default algorithm from packet based to flow based as witnessed recently @ an IX) ?  </p>\n",
+         "id": "64",
+         "name": "Andrea Di Donato",
+         "pub": "2020-06-02T08:42:38",
+         "type": "comment"
+      },
+      {
+         "date": "03 June 2020 10:04",
+         "html": "<p>Packet reordering could be introduced anywhere, it&#39;s just the question of whether it&#39;s a rare event or a continuous behavior. The simplest way (I&#39;m aware of) would be remarking out-of-contract packets and then using a different queue for them.</p>\n\n<p>I would strongly suggest to go with #4 in your list, and whenever a customer complains do a thorough evaluation whether it&#39;s worth the effort to fix it balancing immediate costs + technical debt against potential profit (NOT revenue) made on that customer.</p>\n\n<p>Finally, having a recent product using per-packet load balancing as a default LAG algorithm deserves a Triple Facepalm. If you feel like sharing who the offending vendor is, you know how to reach me.</p>\n",
+         "id": "67",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-06-03T10:04:12",
+         "type": "comment"
+      },
+      {
+         "date": "03 June 2020 10:26",
+         "html": "<p>I was involved in many issue investigations caused by the reordering during last 10 years.\nMost of them were caused by networking equipment coming from major vendors - stateful devices  usually are the culprit.</p>\n\n<p>Parallel processing not handled correctly especially during the phase of FW session establishment (packets are buffered during this period and the process of retrieving them from the buffer is challenging from the reorder handling perspective) is one of the common root cause example.</p>\n\n<p>I spent some time investigating these issues because of the performance degradation reported in the network (udp protocol failures, not-so-decent tcp implementation perf degradation, multicast audio streams affected, etc).</p>\n\n<p>We may think about these issues as a niche cases but they are real and we can simple change the legacy protocol.</p>\n\n<p>If it comes to vendors. They do some testing for typical protocols and scenarios (80% of use cases). For example multicast is poorly tested particularly on cheaper boxes. I would assume that cheap boxes are usually affected by reordering to certain degree.</p>\n\n<p>Every vendor when you report re-ordering issues denies it because this problem is generally solved (they mark packets incoming to the box and they transmit them preserving order). But as always we have corner cases e.g. what happens when we have not created the firewall state on the devices and we dot want to drop packet?</p>\n\n<p>It&#39;s rather complex topic.</p>\n",
+         "id": "68",
+         "name": "BOGDAN GOLAB",
+         "pub": "2020-06-03T10:26:43",
+         "type": "comment"
+      },
+      {
+         "date": "03 June 2020 07:01",
+         "html": "<p>@BOGDAN GOLAB\nBogdan, could you provide more details on the following quoted statement of yours? \n&quot;Every vendor when you report re-ordering issues denies it because this problem is generally solved (they mark packets incoming to the box and they transmit them preserving order)&quot;\nI am pretty sure high-end router vendors only just reorder cells belonging to the same packet after having traversed the fabric planes as in that case there&#39;s state to preserve where the state is an ordered packet. I can&#39;t see how they can do what you just described to be honest.  </p>\n",
+         "id": "69",
+         "name": "Andrea Di Donato",
+         "pub": "2020-06-03T19:01:44",
+         "type": "comment"
+      },
+      {
+         "date": "04 June 2020 08:36",
+         "html": "<p>Not sure if I want to discus this in public. </p>\n\n<ol>\n<li><p>I think about two top vendors at least (both denied at the beginning and provided some internal architecture details to prove this - unfortunately it did not cover some corner cases, both delivered fixes - but it took time ).</p></li>\n<li><p>Talking mostly about Firewalls as mentioned earlier</p></li>\n<li><p>This is not high end equipment - rather high end branch. I do not know high end architectures so I cannot compare the solutions</p></li>\n</ol>\n\n<p>Please review some patents related to ensuring packet order by NPE.</p>\n",
+         "id": "70",
+         "name": "BOGDAN GOLAB",
+         "pub": "2020-06-04T08:36:41",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2020/05/ip-packet-reordering.html"
+}

@@ -1,0 +1,81 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1286">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Wes Felter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1286" href="#1286">02 June 2022 05:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Tomahawk has multiple pipelines (maybe four), each with a duplicate copy of the tables. Thus each pipeline &quot;only&quot; has to handle 2B PPS which is (barely) possible without breaking the laws of physics.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1290">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Matthew Walster </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1290" href="#1290">06 June 2022 02:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Processing 8 packets per nanosecond is impossible if you&#39;re sending one packet at a time. However, with a pipeline split out with multiple concurrent lookups, you can average 8 packets per nanosecond... While still only processing one packet per few tens of nanoseconds.</p>
+
+<p>If you think about it, let&#39;s say it takes 3 days to produce a car on a factory line, that means a little over 100 cars per year. To reach 10,000 cars per year, you can either have 100 lines, or take the most lengthy part of the process are parallelize just that component.</p>
+
+<p>You maintain the one-in, one-out, but you&#39;re now increasing the average rate. That&#39;s why the total delay is still in the hundreds of nanoseconds, it&#39;s parallelized.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1291">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1291" href="#1291">06 June 2022 03:11</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Pipelining is the obvious way to go (similar to modern CPUs), but if you want to process 8 packets per nanosecond, you still have to do one lookup of a particular type (let&#39;s say VLAN tag lookup in the first step of the pipeline) eight times per nanosecond. There&#39;s no way around that requirement.</p>
+
+<p>As Wes mentioned, Tomahawk has multiple parallel pipelines and lookup tables to get there making lookup times more realistic. Even so, if you assume that every lookup in the pipeline takes 1 ns (and it can&#39;t take much more or you&#39;d need massively parallel architecture), there&#39;s a huge gap between reasonable number of pipeline stages and 700 ns.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

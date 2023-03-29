@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lochii</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6083627860412115771">22 April 2010 17:08</a>
+                <a rel="nofollow" id="c6083627860412115771" href="#6083627860412115771">22 April 2010 17:08</a>
               </span>
             </div>
-            <p class="comment-content">Usually edit offline and upload, but try to avoid AS-Path ACLs in favour of std-community based route policies (co-operating peers and upstreams are always far better :)</p>
+            <div class="comment-content">Usually edit offline and upload, but try to avoid AS-Path ACLs in favour of std-community based route policies (co-operating peers and upstreams are always far better :)</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">ODIN</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7625752840893378693">23 April 2010 07:37</a>
+                <a rel="nofollow" id="c7625752840893378693" href="#7625752840893378693">23 April 2010 07:37</a>
               </span>
             </div>
-            <p class="comment-content">I think such mechanism doesn&#39;t exist in Cisco IOS. But it is not necessary. In case of ACL on interface traffic flow continuously. If we remove ACL - it will be a disaster. As-path access-list works only when there is a change somewhere in BGP table. So it is not terrible to remove it and then to paste new one with the same number. At least it works pretty well with small as-path ACLs.  ;) As concerns long as-pasth ACLs and huge BGP tables... What is the real task? In most cases, I think, you have to avoid as-path ACLs (see previous comment) and use communities (if it is possible :) ) or a script that will query whois databases and bogon route-servers to compile incredible long ip prefix-lists.</p>
+            <div class="comment-content">I think such mechanism doesn&#39;t exist in Cisco IOS. But it is not necessary. In case of ACL on interface traffic flow continuously. If we remove ACL - it will be a disaster. As-path access-list works only when there is a change somewhere in BGP table. So it is not terrible to remove it and then to paste new one with the same number. At least it works pretty well with small as-path ACLs.  ;) As concerns long as-pasth ACLs and huge BGP tables... What is the real task? In most cases, I think, you have to avoid as-path ACLs (see previous comment) and use communities (if it is possible :) ) or a script that will query whois databases and bogon route-servers to compile incredible long ip prefix-lists.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Halloween</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#317015232206405324">18 October 2010 22:11</a>
+                <a rel="nofollow" id="c317015232206405324" href="#317015232206405324">18 October 2010 22:11</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;m generating and uploading BGP filters automatically from a NMS. The best way to construct BGP filters (as-path based or prefix-list based) is to query RADB, since RADB mirrors all other routing registry databases. RADB also provides a nice mechanism to expand customer as-sets recursively:<br /><br />whois -h whois.radb.net \!iAS-SET,1<br /><br />From that one constructing the as-path acl is easy - you can use even an one-liner like this:<br /><br />whois -h whois.radb.net \!iAS-SET,1 | head -2 | tail -1 | fmt - 70 | tr &#39;[as]&#39; &#39;[AS]&#39; | fmt -50 | \<br />sed -e &#39;s/AS/|/g&#39; -e &#39;s/\ //g&#39; -e &#39;s/$/\)\$/g&#39; -e &#39;s/^|/ip\ as-path\ access-list NNN\ permit\ \_\(/g&#39;</p>
+            <div class="comment-content">I&#39;m generating and uploading BGP filters automatically from a NMS. The best way to construct BGP filters (as-path based or prefix-list based) is to query RADB, since RADB mirrors all other routing registry databases. RADB also provides a nice mechanism to expand customer as-sets recursively:<br /><br />whois -h whois.radb.net \!iAS-SET,1<br /><br />From that one constructing the as-path acl is easy - you can use even an one-liner like this:<br /><br />whois -h whois.radb.net \!iAS-SET,1 | head -2 | tail -1 | fmt - 70 | tr &#39;[as]&#39; &#39;[AS]&#39; | fmt -50 | \<br />sed -e &#39;s/AS/|/g&#39; -e &#39;s/\ //g&#39; -e &#39;s/$/\)\$/g&#39; -e &#39;s/^|/ip\ as-path\ access-list NNN\ permit\ \_\(/g&#39;</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Jim</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2449522882962846030">01 December 2010 14:34</a>
+                <a rel="nofollow" id="c2449522882962846030" href="#2449522882962846030">01 December 2010 14:34</a>
               </span>
             </div>
-            <p class="comment-content">So - when will Cisco fix this limitation?  It makes no sense that you cannot delete one line of config without inadvertently removing the whole ip as-path access-list.<br /><br />Example:<br />ip as-path access-list 90 permit ^5400_7018<br />ip as-path access-list 90 permit ^5400_1239<br /><br />Action:<br />no ip as-path access-list 90 permit ^5400_7018<br /><br />Result:<br />[ip as-path access-list 90 is GONE]</p>
+            <div class="comment-content">So - when will Cisco fix this limitation?  It makes no sense that you cannot delete one line of config without inadvertently removing the whole ip as-path access-list.<br /><br />Example:<br />ip as-path access-list 90 permit ^5400_7018<br />ip as-path access-list 90 permit ^5400_1239<br /><br />Action:<br />no ip as-path access-list 90 permit ^5400_7018<br /><br />Result:<br />[ip as-path access-list 90 is GONE]</div>
           </div>
         </li>
       </div>

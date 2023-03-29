@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15412047994121954944" rel="nofollow">Derick Winkworth</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7422172392825613370">04 September 2012 15:04</a>
+                <a rel="nofollow" id="c7422172392825613370" href="#7422172392825613370">04 September 2012 15:04</a>
               </span>
             </div>
-            <p class="comment-content">It&#39;s almost like.. they don&#39;t have a clue about about basic L2 networking.  But, hey, what do we know about networking in the 21st century... we&#39;re dinosaurs.</p>
+            <div class="comment-content">It&#39;s almost like.. they don&#39;t have a clue about about basic L2 networking.  But, hey, what do we know about networking in the 21st century... we&#39;re dinosaurs.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5304358497389377505">06 September 2012 05:42</a>
+                <a rel="nofollow" id="c5304358497389377505" href="#5304358497389377505">06 September 2012 05:42</a>
               </span>
             </div>
-            <p class="comment-content">Just looking to clarify something here....<br /><br />would have to say a rather artificial situation, GRE tunnel between 2 VMs and enable bridging, really? Would hazard one is far more likely to get run over in a car park, charged by a rhino or suffer an outage due to a bug or hardware failure. <br /><br />But still engineering resources should be allocated to this? Thereby allowing customers (or attackers) to turn on a feature which could be used to great effect against an organisation. <br /><br />Just imagine - Cloud provider x gets a demand for millions otherwise I take down your DC. A single feature could be used to great effect. Just like RRs.<br /><br /></p>
+            <div class="comment-content">Just looking to clarify something here....<br /><br />would have to say a rather artificial situation, GRE tunnel between 2 VMs and enable bridging, really? Would hazard one is far more likely to get run over in a car park, charged by a rhino or suffer an outage due to a bug or hardware failure. <br /><br />But still engineering resources should be allocated to this? Thereby allowing customers (or attackers) to turn on a feature which could be used to great effect against an organisation. <br /><br />Just imagine - Cloud provider x gets a demand for millions otherwise I take down your DC. A single feature could be used to great effect. Just like RRs.<br /><br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2477379930853112718">06 September 2012 08:49</a>
+                <a rel="nofollow" id="c2477379930853112718" href="#2477379930853112718">06 September 2012 08:49</a>
               </span>
             </div>
-            <p class="comment-content">Dear Anonymous!<br /><br />Hope you&#39;ve vented your frustration with my blog post. Your valuable thoughts just might have more credence should you have decided to share your name and professional background with us. <br /><br />The situation is not as artificial as it might seem to you; I&#39;ve seen bridging enabled between two server interfaces at least three times in real life (at least one of them involving a VPN tunnel), twice with catastrophic meltdowns, third time BPDU guard kicked in and hosed the whole ESXi server. As for car parks, fortunately I haven&#39;t seen anyone getting run over in a car park, so my small insignificant sample differs from yours.<br /><br />As for engineering resources - obviously VMware considered this a big enough problem to devote some resources on the programming and technical documentation side (btw, the technical marketing documents explaining this feature are great), unfortunately they decided to implement the suboptimal feature.</p>
+            <div class="comment-content">Dear Anonymous!<br /><br />Hope you&#39;ve vented your frustration with my blog post. Your valuable thoughts just might have more credence should you have decided to share your name and professional background with us. <br /><br />The situation is not as artificial as it might seem to you; I&#39;ve seen bridging enabled between two server interfaces at least three times in real life (at least one of them involving a VPN tunnel), twice with catastrophic meltdowns, third time BPDU guard kicked in and hosed the whole ESXi server. As for car parks, fortunately I haven&#39;t seen anyone getting run over in a car park, so my small insignificant sample differs from yours.<br /><br />As for engineering resources - obviously VMware considered this a big enough problem to devote some resources on the programming and technical documentation side (btw, the technical marketing documents explaining this feature are great), unfortunately they decided to implement the suboptimal feature.</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05163218597315357680" rel="nofollow">Jimmy Hess</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3473619967545702401">08 September 2012 17:04</a>
+                <a rel="nofollow" id="c3473619967545702401" href="#3473619967545702401">08 September 2012 17:04</a>
               </span>
             </div>
-            <p class="comment-content">Anonymous,  Human errors are more common than intentional attacks against Layer 2 networks in an Enterprise. And many times,  with networks, the mistakes will occur in creating accidental physical loops. Accidentally configuring a server for bridging instead of teaming.<br /><br />Or having a server that is /known/ to be bridging, and then, a later change elsewhere in the physical network topology has  an execution error or unforseen consequence that results in a loop.<br /><br />If VMware wants to play around with blocking or manipulating BPDUs in any manner that a dumb switch would not, then they need to take some responsibility for how this impacts the reliability of the whole network, and provide responsible knobs --  such as &quot;Per VM&quot; configurability, and enforcement options of &quot;Disable VM Virtual NIC and Send E-mail&quot; instead of just &quot;block packet&quot;.<br /><br />It would also be nice if they could provide more advanced security policies and extend that to forged VTP, CDP, DHCP, DHCP snooping, and ARP traffic / dynamic ARP inspect as well.<br /><br /><br />Without the Net.BlockGuestBPDU feature, an ESXi vSwitch was not a greater risk to the network, than any other &quot;dumb&quot; switch that does not support STP.<br /><br />With the BlockGuestBPDU feature enabled, the ESXi vSwitch is a much greater risk of being involved in a loop than any &#39;dumb&#39; switch that does not support STP,  because dumb switches that don&#39;t support STP don&#39;t  block BPDUs.<br /><br />This minor feature add does not change the vSwitch from being a &quot;dumb&quot; switch to a managed switch,  and filtering STPs on a dumb unmanageable switch is absolutely something you don&#39;t want.<br /><br />Switches that support STP implement the loop avoidance protocol.<br /><br />Blocking BPDUs from being forwarded as the new filtering procedure does, breaks 802.1D bridging compliance  of any software bridge in a VM.<br /><br />Meaning a loop would be catastrophic, instead of properly handled by the rest of the switching infrastructure with STP support.<br /><br />If a VM software bridge is intentional, it reasons that &#39;Reject forged transmits&#39; will be off by design, but a loop can still occur.<br /><br /><br /><br /></p>
+            <div class="comment-content">Anonymous,  Human errors are more common than intentional attacks against Layer 2 networks in an Enterprise. And many times,  with networks, the mistakes will occur in creating accidental physical loops. Accidentally configuring a server for bridging instead of teaming.<br /><br />Or having a server that is /known/ to be bridging, and then, a later change elsewhere in the physical network topology has  an execution error or unforseen consequence that results in a loop.<br /><br />If VMware wants to play around with blocking or manipulating BPDUs in any manner that a dumb switch would not, then they need to take some responsibility for how this impacts the reliability of the whole network, and provide responsible knobs --  such as &quot;Per VM&quot; configurability, and enforcement options of &quot;Disable VM Virtual NIC and Send E-mail&quot; instead of just &quot;block packet&quot;.<br /><br />It would also be nice if they could provide more advanced security policies and extend that to forged VTP, CDP, DHCP, DHCP snooping, and ARP traffic / dynamic ARP inspect as well.<br /><br /><br />Without the Net.BlockGuestBPDU feature, an ESXi vSwitch was not a greater risk to the network, than any other &quot;dumb&quot; switch that does not support STP.<br /><br />With the BlockGuestBPDU feature enabled, the ESXi vSwitch is a much greater risk of being involved in a loop than any &#39;dumb&#39; switch that does not support STP,  because dumb switches that don&#39;t support STP don&#39;t  block BPDUs.<br /><br />This minor feature add does not change the vSwitch from being a &quot;dumb&quot; switch to a managed switch,  and filtering STPs on a dumb unmanageable switch is absolutely something you don&#39;t want.<br /><br />Switches that support STP implement the loop avoidance protocol.<br /><br />Blocking BPDUs from being forwarded as the new filtering procedure does, breaks 802.1D bridging compliance  of any software bridge in a VM.<br /><br />Meaning a loop would be catastrophic, instead of properly handled by the rest of the switching infrastructure with STP support.<br /><br />If a VM software bridge is intentional, it reasons that &#39;Reject forged transmits&#39; will be off by design, but a loop can still occur.<br /><br /><br /><br /></div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4751887540355857234">06 September 2012 09:19</a>
+                <a rel="nofollow" id="c4751887540355857234" href="#4751887540355857234">06 September 2012 09:19</a>
               </span>
             </div>
-            <p class="comment-content">Background is a couple certifications in disparate technologies (no point in having 6 CCIEs in overlapping technologies in my book), a few years as an embedded coder and around 20 years industry experience across many industry sectors and technologies. <br /><br />I read, some years back, the various books you were involved with and was impressed by their content.<br /><br />Recently decided to start looking round your blog site as I had a little time on my hands, anticipating a similar type of quality and depth of thought, which I am sure you pride yourself in. What I see is some good stuff mixed in with what can only be described as a lot of noise, scare mongering and sensationalizing.<br /><br />Your blog is not doing your intellect and experience justice, in my humble opinion.<br /></p>
+            <div class="comment-content">Background is a couple certifications in disparate technologies (no point in having 6 CCIEs in overlapping technologies in my book), a few years as an embedded coder and around 20 years industry experience across many industry sectors and technologies. <br /><br />I read, some years back, the various books you were involved with and was impressed by their content.<br /><br />Recently decided to start looking round your blog site as I had a little time on my hands, anticipating a similar type of quality and depth of thought, which I am sure you pride yourself in. What I see is some good stuff mixed in with what can only be described as a lot of noise, scare mongering and sensationalizing.<br /><br />Your blog is not doing your intellect and experience justice, in my humble opinion.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7387478023016935244">06 September 2012 09:25</a>
+                <a rel="nofollow" id="c7387478023016935244" href="#7387478023016935244">06 September 2012 09:25</a>
               </span>
             </div>
-            <p class="comment-content">Fair enough, thank you. Let&#39;s just say that there&#39;s a bit of history behind quite a few blog posts (contact me offline if you&#39;d like to get more information). Also, I try not to make noise based on random academic fantasies - I wrote the &quot;We need BPDU Guard&quot; blog post after I experienced the consequences of not having one.</p>
+            <div class="comment-content">Fair enough, thank you. Let&#39;s just say that there&#39;s a bit of history behind quite a few blog posts (contact me offline if you&#39;d like to get more information). Also, I try not to make noise based on random academic fantasies - I wrote the &quot;We need BPDU Guard&quot; blog post after I experienced the consequences of not having one.</div>
           </div>
         </li>
       </div>
@@ -143,10 +138,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01219977456521627076" rel="nofollow">Sam Crooks</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4957650048900362250">08 September 2012 22:28</a>
+                <a rel="nofollow" id="c4957650048900362250" href="#4957650048900362250">08 September 2012 22:28</a>
               </span>
             </div>
-            <p class="comment-content">Anonymous.. Please read rfc 1925... <br />#4...  Read it 5 times..<br /><br />I&#39;m still shocked every time I read it how much wisdom here is in this old RFC.</p>
+            <div class="comment-content">Anonymous.. Please read rfc 1925... <br />#4...  Read it 5 times..<br /><br />I&#39;m still shocked every time I read it how much wisdom here is in this old RFC.</div>
           </div>
         </li>
       </div>

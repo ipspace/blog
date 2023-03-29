@@ -1,0 +1,80 @@
+{
+   "comments": [
+      {
+         "date": "16 October 2021 10:55",
+         "html": "<p>That is a really good thing to keep in mind.</p>\n\n<p>We ran into this a year ago in a VXLAN network and it took us a good week to troubleshoot why some connections were failing the way they were.</p>\n\n<p>Though we chose to simple increase the mac timeout timer, to potentially keep load lower, instead of decreasing the arp timeout timer.</p>\n",
+         "id": "796",
+         "name": "Philipp Rintz",
+         "pub": "2021-10-16T10:55:06",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "16 October 2021 05:06",
+               "html": "<p>Here&#39;s a nice summary of the original ARP/MAC timer issues:</p>\n\n<p>https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html</p>\n\n<p>As for &quot;ARP refresh&quot;, Cisco IOS does something similar when you use CEF switching:</p>\n\n<p>https://blog.ipspace.net/2007/06/ar.html</p>\n\n<p>No idea what NX-OS or IOS XE is doing.</p>\n",
+               "id": "798",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-10-16T17:06:09",
+               "ref": "797",
+               "type": "comment"
+            },
+            {
+               "date": "17 October 2021 03:12",
+               "html": "<p>One difference between Cisco IOS and ExtremeXOS is that the latter allows disabling this functionality (<code>disable iparp refresh</code>, it is enabled by default).</p>\n",
+               "id": "800",
+               "name": " Erik Auerswald",
+               "pub": "2021-10-17T15:12:31",
+               "ref": "798",
+               "type": "comment"
+            }
+         ],
+         "date": "16 October 2021 04:54",
+         "html": "The linked to blog post seems to make two main points:<br />\n\n<ol>\n<li>ARP suppression can break ARP-based liveliness probes (i.e., when they need to be forwarded via VXLAN, but this is suppressed).</li>\n<li>Withdrawal of EVPN type 2 MAC/IP routes when the MAC table entry of a leaf times out results in missing ARP table entries on different leaf switches, which can affect asymmetric routing EVPN/VXLAN setups.</li>\n</ol>\n\n<p>Synchronizing ARP and MAC timeouts can help with point 2, but not point 1.</p>\n\n<p>The classic reason to synchronize ARP and MAC timeouts is to avoid unknown unicast flooding caused by ECMP to a pair of first hop routers when all traffic out of the subnet goes via one router (e.g., the VRRP master) and return traffic (also) arrives at another (e.g., VRRP backup) router.</p>\n\n<p>It does not matter much if the MAC timeout is increased to match the ARP timeout, or the ARP timeout decreased to that of the MAC timeout, or both set to matching non-default values.</p>\n\n<p><em>Matching</em> here means that the ARP timeout should be slightly below the MAC timeout in order to refresh MAC tables entries with the ARP exchange.</p>\n\n<p>ExtremeXOS has a nice feature called &quot;ARP refresh&quot; that automatically generates ARP requests from the router before an ARP entry times out. If used in combination with appropriate MAC and ARP timeouts, this reliably avoids problems with not synchronized MAC and ARP tables, and avoids problems with the combination of so called silent devices, MAC authentication, and dynamic VLAN assignment.</p>\n\n<p>P.S. I&#39;m no CCIE, so I don&#39;t know about CCIE trick questions. ;-)</p>\n",
+         "id": "797",
+         "name": " Erik Auerswald",
+         "pub": "2021-10-16T16:54:29",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "22 October 2021 11:57",
+               "html": "<p>&quot;Is there a command you know of, to adjust this ARP setting for Cisco devices?&quot;</p>\n\n<p>Cisco IOS drops the packet(s) if there&#39;s no corresponding ARP entry without even sending back an ICMP reply. See https://blog.ipspace.net/2007/04/why-is-first-ping-lost.html for details.</p>\n\n<p>I would expect most other networking operating system behave the same way. It makes no sense to buffer a packet while waiting for an ARP reply when  implementing an unreliable delivery mechanism (an IP network).</p>\n",
+               "id": "811",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-10-22T11:57:41",
+               "ref": "801",
+               "type": "comment"
+            },
+            {
+               "date": "22 October 2021 03:00",
+               "html": "<p>There are networking operating systems that buffer some packets during ARP resolution, e.g., those using the Linux TCP/IP stack for packet forwarding, but also others. In my experience, the Cisco (at least IOS, IOS XE, and IOS XR) behavior of dropping packets unless an ARP cache entry exists is the exception (IMHO this Cisco behavior is sensible and usually preferable, but some buffering during ARP resolution works, too).</p>\n\n<p><a href=\"https://datatracker.ietf.org/doc/html/rfc1812#section-3.3.2\">Section 3.3.2 of RFC 1812</a> recommends this buffering behavior:</p>\n\n<p>&quot;<em>[The link layer] SHOULD queue up to a small number of datagrams breifly while performing the ARP request/reply sequence</em>&quot;</p>\n\n<p>It also specifies that &quot;<em>[t]he link layer MUST NOT report a Destination Unreachable error to IP solely because there is no ARP cache entry for a destination</em>.&quot;</p>\n",
+               "id": "812",
+               "name": " Erik Auerswald",
+               "pub": "2021-10-22T15:00:47",
+               "ref": "811",
+               "type": "comment"
+            },
+            {
+               "date": "23 October 2021 06:19",
+               "html": "<p>And I was wrong... again. With CEF switching, the incoming packet is buffered until the ARP entry is complete. Here&#39;s the debugging printout of a single CEF-switched packet:</p>\n\n<ul>\n<li>CEF input detailed debug message</li>\n<li>ARP debug messages</li>\n<li>CEF output detailed debug message</li>\n</ul>\n\n<pre>\r\n*Oct 23 16:16:02.849: CEF-Debug: Packet from 10.1.0.1 (Gi0/1) to 10.1.0.5\r\n*Oct 23 16:16:02.849:   ihl=20, length=84, tos=0, ttl=63, checksum=58291, offset=0 DF\r\n*Oct 23 16:16:02.849:     ICMP type=8, code=0, checksum=42374\r\n*Oct 23 16:16:02.849:          ECHO\r\n*Oct 23 16:16:02.850: IP ARP: creating incomplete entry for IP address: 10.1.0.5 interface GigabitEthernet0/2\r\n*Oct 23 16:16:02.850: IP ARP: sent req src 10.1.0.6 5254.00d4.e045,\r\n                 dst 10.1.0.5 0000.0000.0000 GigabitEthernet0/2\r\n*Oct 23 16:16:02.850: IP ARP: rcvd rep src 10.1.0.5 5254.0040.38b4, dst 10.1.0.6 GigabitEthernet0/2\r\n*Oct 23 16:16:02.851: CEF-Debug: Packet from 10.1.0.1 (Gi0/1) to 10.1.0.5 (Gi0/2)\r\n*Oct 23 16:16:02.851:   ihl=20, length=84, tos=0, ttl=63, checksum=58291, offset=0 DF\r\n*Oct 23 16:16:02.851:     ICMP type=8, code=0, checksum=42374\r\n*Oct 23 16:16:02.851:          ECHO\r\n</pre>\n",
+               "id": "813",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-10-23T18:19:35",
+               "ref": "812",
+               "type": "comment"
+            }
+         ],
+         "date": "19 October 2021 05:10",
+         "html": "<p>Dmytro Shypovalov is a master networker who has a sophisticated grasp of some of the most advanced topics in networking. He doesn&#39;t write often, but when he does, he writes exceptional content, both deep and broad. Have to say I agree with him 300% on &quot;If an L2 network doesn&rsquo;t scale, design a proper L3 network. But if people want to step on rakes, why discourage them.&quot; Hierarchical networking -- L3 routed network being an example &ndash; is the right way to scale. That L2 addressing was flat, created as a workaround from the start, and never meant to be a long-term solution, means all attempts to scale L2-based networks are attempts to make pigs fly, and therefore, by necessity, have to add a lot of moving parts, which increase complexity quickly. </p>\n\n<p>Over-optimization is a dumb process, and overclocking a L2-based network is a prime example of that. Due to the unscalable nature of L2 networking, kludges like VXLAN multihoming&rsquo;s BUM flooding trick, have to be implemented, significantly complicating the network. If one adds another kludge, MLAG (mentioned in his linked post On Duplicates), on top of that, the whole thing quickly spirals out of control. With this kind of state explosion, how can anyone intuitively visualize the network and the data flow? Worse, how many combinations of error can show up, some already mentioned in his posts? Even without MLAG, the VXLAN BUM trick can get nasty proportional to the size and the degree of multi-homing in a network. And L2 network being unscalable is again clearly on display when one looks at asymmetric Inter-VXLAN routing, the way it works. Once again state explosion. So they have to come up with the symmetric IRB trick &ndash; essentially back to routing and hierarchy -- to reduce state and scale. Now how is all this complexity realized in the hardware FIB, and what kind of additional resources and latency it imposes? Is that why VXLAN in theory can scale to 2^24 segments, but not in actual hardware? I&rsquo;d like to see the forwarding pipeline on a VTEP.</p>\n\n<p>The sheer complexity of EVPN and particularly of EVPN over VXLAN, creates a lot of subtlety. How many people have any hope of understanding  all this, let alone applying the knowledge to efficiently design and build a big network? What happens if you have to troubleshoot this complex matrix of feature interaction, in a large network? The thing is, networking and networking devices are already very complex to begin with -- the ARP problem in async-routed network is complicated enough on its own -- so the goal should be more simplicity, less complexity. With EVPN over VXLAN, it&#39;s the other way around because there&#39;re more moving parts being added. And look at the nested encapsulation of VXLAN. Layering is harmful due to possible inter-layer dependency and added processing, and VXLAN just takes it to a class of its own. </p>\n\n<p>All of these dirty tricks, trying to make pigs fly, trying to scale the unscalable L2, come from people lacking a understanding of how addressing works, and how inadequate our current addressing model is (missing half of the structure), hence the creation of abominations like VXLAN and IPv6. Done correctly, and all of these become unnecessary. </p>\n\n<p>Btw Ivan, Dmytro mentioned this &ldquo;if the whole process of re-discovering host B MAC and advertising it via BGP will take longer than 1 second, it will cause SW1/SW2 to send ICMP unreachables back to host A&rdquo;. Not that I don&rsquo;t trust him, but I tried to look for this sort of Arp response timeout on Cisco website, and couldn&rsquo;t locate it. On the host side, looks like it&rsquo;s gonna try for 3 seconds before giving up:</p>\n\n<p>https://unixpedia.blogspot.com/2017/06/no-route-to-host-errors-is-situation.html</p>\n\n<p>Is there a command you know of, to adjust this ARP setting for Cisco devices?</p>\n",
+         "id": "801",
+         "name": " Minh",
+         "pub": "2021-10-19T05:10:50",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2021/10/worth-reading-arp-problems-evpn.html"
+}

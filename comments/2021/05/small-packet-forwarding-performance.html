@@ -1,0 +1,293 @@
+<div class="comments post" id="comments">
+  <h4>7 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="569">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c569" href="#569">13 May 2021 12:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In their datasheet it&#39;s stated &quot;system throughput (bidirectional)&quot;. That&#39;s because of full duplex. All vendors are calculating switching capacity like this. So for the calculation of the frame size, you have to divide it by two. The calculated ~281 bytes frame size is already pretty small from my point of view. What&#39;s the average frame size in an average environment? Around 500 bytes? With those specs they maybe could cover 99 % of the market. Would love to see an example in real life of exhausting 12.8 Tbps line rate with real life traffic over a reasonable amount of time.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="570">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c570" href="#570">14 May 2021 05:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>Very detailed analysis as usual, and I agree with most of what you said above :)) . The thing is, in my comment as you quoted above, I said 100-400GE links are mostly aggregate uplinks. So a 12.8Tbps switch would normally be a backbone switch. In that case, each uplink port will be the accumulator of packets from many different sources, and these packets come in unsync manner, meaning they can come one right after another, or many at the same time. Add to that many-to-one, incast-prone traffic patterns, and the number of small packets, i.e 64-300 byte packets, can overwhelm a backbone port&#39;s pps capacity, in a busy DC. </p>
+
+<p>Also, for some HPC scenarios, they remove the 64-byte packet size and have packets as small as 40-32 bytes:</p>
+
+<p>https://www.nextplatform.com/2019/08/16/how-cray-makes-ethernet-suited-for-hpc-and-ai-with-slingshot/</p>
+
+<p>So switches made for those environment (say high-energy physics apps which have very high data rate requirements) might be required to process a lot of small packets. </p>
+
+<p>You&#39;re very much on point about Broadcom not implementing high-end packet processing due to cost reasons. Economics come first. But I actually don&#39;t believe they, or anyone ATM, can do it at all. Processing 64-byte packets at 100GE requires per-packet processing budget of 6.7ns if your LC has only 1 port, and 6.7ns/n for n-port LCs. For 400Ge, the time budget is 4 times lower. I doubt that will ever be possible given technical constraints with TCAM speed, power budget and signal integrity problems at high speed. If I recall correctly, even at 10GE, the line-rate starts at 150 or 160-byte packet or something similar. Those numbers seem to have stuck throughout the decades. That&#39;s why at very high speed, label switching is preferable to IP, esp. to IPv6, due to its greater speed and lesser power requirement.</p>
+
+<p>I bring this up so we can all think about it and discuss the nuances/implications, not as a vendor-bickering exercise :)) .</p>
+
+<p>Cheers
+Minh</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="663">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">colin whittaker</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c663" href="#663">14 June 2021 04:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Most ASICs I have encountered including the broadcom ones have mechanisms in place to handle bursts of small packets arriving one after the other without overwhelming the forwarding engine.</p>
+
+<p>In 11 years of operating networks with datacenter merchant silicon across many hundreds of thousands of deployed switches I have never seen a switch come anywhere need hitting a PPS limit outside of lab test scenarios designed to find them.</p>
+
+<p>Once you include Jumbo packets and TCP behaviors such delayed ack into the traffic profile the average packet size is measured in KB.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="571">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c571" href="#571">14 May 2021 10:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Btw Ivan, just a minor detail, related to vendor&#39;s math, using the above example of 25.6 Tbps and 5.68Gpps. Since they normally count both bandwidth and pps twice, I think the effective line rate would still be for packets 560 bytes -- 12.8/2.84.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="572">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c572" href="#572">14 May 2021 04:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Minh Ha:</p>
+
+<p>&gt; Add to that many-to-one, incast-prone traffic patterns, and the number of small packets, i.e 64-300 byte packets, can overwhelm a backbone port&#39;s pps capacity, in a busy DC.</p>
+
+<p>Keep in mind that the spine switches are not over-subscribed. To get into the scenario you propose, you&#39;d have to have at least 10 Tbps (per spine) worth of small packets. Yet again, I would love to see something generating that.</p>
+
+<p>&gt; That&#39;s why at very high speed, label switching is preferable to IP, esp. to IPv6, due to its greater speed and lesser power requirement.</p>
+
+<p>It&#39;s just the question of looking up 24 bits (label) versus 64 bits (IPv6 prefix). There might be power issues (I know nothing about those), but assuming they use TCAM for lookups, I don&#39;t expect longer lookup to be significantly slower. Table sizes are obviously a different story.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="573">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Vuk Gojnic</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c573" href="#573">14 May 2021 07:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>If you have fabric shared amount many different apps with mixed traffic profile and apps that scale horizontally, than 2-4 x25Gbps shall be more than enough for any particular server connected to that fabric and than the volumes of n x 1TBps are just efficiently spread across the DC fabric covered with multiple servers. Is that reasonable thinking?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="575">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c575" href="#575">15 May 2021 07:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Vuk: As always, the correct answer is &quot;it depends&quot;. If you want to do your design right, there&#39;s no way around understanding the traffic requirements. Once you have those, everything else becomes a piece of cake.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1499">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Javier</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1499" href="#1499">10 November 2022 09:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Please, in the sentence  &quot;They claim 25.6 Tbps and 5.68 Gpps forwarding performance. Dividing these two results in line-rate forwarding performance for packets longer than 560 bytes&hellip;&quot;, what is the math to obtain 560 bytes?
+Thank you very much</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1500">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1500" href="#1500">10 November 2022 09:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It&#39;s really complicated &#x1F61C;:</p>
+
+<ul>
+<li>Divide bit forwarding performance by packet forwarding performance</li>
+<li>Further divide by 8 (because there are 8 bits in a byte)</li>
+<li>Be careful you don&#39;t mess up the units</li>
+</ul>
+
+<p>In this particular case:</p>
+
+<p>25600 (Gbps) / 5.68 (Gpps) / 8 = 563.38</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1535">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Javier</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1535" href="#1535">21 November 2022 09:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>And what happen if the switching capacity is greater than the sum of ports capacity. For example: Aruba CX 8325, 6.4 Tbs and 2000 Mpps</p>
+
+<p>This switch is available in different port configurations:</p>
+
+<ul>
+<li>8325-48Y8C: 48 ports at 25G and 8 ports at 100G, it just needs 4 Tbps</li>
+<li>8325-32C: 32 ports at 100G, it needs all the 6.4 Tbps</li>
+</ul>
+
+<p>Is the minium packet size for line rate the same for both switches because they use the same backplane? 6.4/2000?, or in the 8325-48Y8C do i need to consider just the 4 Tbps that it can reach?
+If I use 6.4 Tbps, I have a minium packet size for line rate of 200 bytes
+While if I use 4 Tbps, it is 125
+Thanks</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1536">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1536" href="#1536">21 November 2022 03:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You can choose between &quot;it depends&quot; and &quot;we don&#39;t know&quot; ;) because the ASIC vendors love to hide their &quot;secret sauce&quot;.</p>
+
+<p>There are two major bottlenecks in every ASIC -- how much data can it push from input to output ports (bandwidth/bps) and how many header lookups it can do (pps).</p>
+
+<p>If you have a switch that uses only half the ports, then bandwidth is not an issue, but the header lookups still are. However, the total packet forwarding capacity should not change, so you should get &quot;linerate&quot; performance at lower packet sizes... assuming our assumptions are correct.</p>
+
+<p>Now for the &quot;we don&#39;t know&quot; part: as we discussed somewhere, ASIC vendors must use multiple parallel forwarding pipelines to get anywhere close to what they have to deliver these days, and we have no idea how input ports map into those pipelines.</p>
+
+<p>Anyway, one should always ask &quot;does it really matter?&quot; How many billions of voice packets (the notorious &quot;small packets&quot; use case) per second do you need?</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

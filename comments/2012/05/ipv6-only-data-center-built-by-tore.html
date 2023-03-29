@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Will</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3318527136945556693">23 May 2012 11:47</a>
+                <a rel="nofollow" id="c3318527136945556693" href="#3318527136945556693">23 May 2012 11:47</a>
               </span>
             </div>
-            <p class="comment-content">So &#39;No symmetric routing requirements&#39;?<br /><br />How is that possible with:?<br /><br />&quot;even when they’re sitting behind a firewall or load balancer&quot;<br /><br />What firewalls and (non dns) load balancers do not care about symmetry?</p>
+            <div class="comment-content">So &#39;No symmetric routing requirements&#39;?<br /><br />How is that possible with:?<br /><br />&quot;even when they’re sitting behind a firewall or load balancer&quot;<br /><br />What firewalls and (non dns) load balancers do not care about symmetry?</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06190251385478958186" rel="nofollow">Tore Anderson</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7205936114859853873">23 May 2012 12:58</a>
+                <a rel="nofollow" id="c7205936114859853873" href="#7205936114859853873">23 May 2012 12:58</a>
               </span>
             </div>
-            <p class="comment-content">Will, stateless firewalls doesn&#39;t care about symmetric routing. Load balancers typically do, but they&#39;re close to the servers (which has state anyway).<br /><br />What I want to avoid is centralised state in the network itself - the data center network is shared between multiple customers, and I don&#39;t want any stateful devices in the shared infrastructure for reliability and performance reasons. That there&#39;s state kept inside a single customer&#39;s infrastructure is unavoidable, but if a DoS attack fills the state tables in a single customer&#39;s load balancer, other customers are unaffected. If the attack fills the state tables for a centralised NAT44 solution, *every* customer is affected.<br /><br />Tore</p>
+            <div class="comment-content">Will, stateless firewalls doesn&#39;t care about symmetric routing. Load balancers typically do, but they&#39;re close to the servers (which has state anyway).<br /><br />What I want to avoid is centralised state in the network itself - the data center network is shared between multiple customers, and I don&#39;t want any stateful devices in the shared infrastructure for reliability and performance reasons. That there&#39;s state kept inside a single customer&#39;s infrastructure is unavoidable, but if a DoS attack fills the state tables in a single customer&#39;s load balancer, other customers are unaffected. If the attack fills the state tables for a centralised NAT44 solution, *every* customer is affected.<br /><br />Tore</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Martin B.</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8685968482080348259">23 May 2012 17:07</a>
+                <a rel="nofollow" id="c8685968482080348259" href="#8685968482080348259">23 May 2012 17:07</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;m not sure to understand why ASR1K is not able to do 1:1 static translation (NAT46)...  This IOS XE command:<br /><br />nat64 v6v4 static 2001:ABCD:100::2 199.1.1.3<br /><br />should translate a destination 199.1.1.3 to 2001:ABCD:100::1 isn&#39;t ?  I&#39;m, for sure, missing something...<br /><br />Regards,</p>
+            <div class="comment-content">I&#39;m not sure to understand why ASR1K is not able to do 1:1 static translation (NAT46)...  This IOS XE command:<br /><br />nat64 v6v4 static 2001:ABCD:100::2 199.1.1.3<br /><br />should translate a destination 199.1.1.3 to 2001:ABCD:100::1 isn&#39;t ?  I&#39;m, for sure, missing something...<br /><br />Regards,</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/06190251385478958186" rel="nofollow">Tore Anderson</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5155275661272947522">24 May 2012 06:57</a>
+                <a rel="nofollow" id="c5155275661272947522" href="#5155275661272947522">24 May 2012 06:57</a>
               </span>
             </div>
-            <p class="comment-content">Martin B, in my testing i found that this command would do the static mapping I wanted. However, it invokes stateful mode - the source address will be mapped into the prefix defined by &quot;nat64 prefix stateful&quot;, and all flows show up in the output of &quot;show nat64 translations&quot;.<br /><br />I would very much like to see a feature that did the exact same thing for stateless mode. Adding the IPv4-translatable addresses to the servers, and static routes to them on the server&#39;s default gateways, importing them into the IGP ... I don&#39;t *like* this solution - it just works for a proof of concept test. For a production deployment, it would be much better (less hassle and complexity) to have a list of static mappings pushed to all the translators, and do nothing special with the servers or their access routers.<br /><br />Tore</p>
+            <div class="comment-content">Martin B, in my testing i found that this command would do the static mapping I wanted. However, it invokes stateful mode - the source address will be mapped into the prefix defined by &quot;nat64 prefix stateful&quot;, and all flows show up in the output of &quot;show nat64 translations&quot;.<br /><br />I would very much like to see a feature that did the exact same thing for stateless mode. Adding the IPv4-translatable addresses to the servers, and static routes to them on the server&#39;s default gateways, importing them into the IGP ... I don&#39;t *like* this solution - it just works for a proof of concept test. For a production deployment, it would be much better (less hassle and complexity) to have a list of static mappings pushed to all the translators, and do nothing special with the servers or their access routers.<br /><br />Tore</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Martin B.</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5469037356423785865">24 May 2012 23:05</a>
+                <a rel="nofollow" id="c5469037356423785865" href="#5469037356423785865">24 May 2012 23:05</a>
               </span>
             </div>
-            <p class="comment-content">Thank you Tore.  I didn&#39;t realize that stateful was involved with a static nat64 statement that should be &quot;stateless only&quot; from my point of view...  I totally agree with you.<br /><br />Best regards,</p>
+            <div class="comment-content">Thank you Tore.  I didn&#39;t realize that stateful was involved with a static nat64 statement that should be &quot;stateless only&quot; from my point of view...  I totally agree with you.<br /><br />Best regards,</div>
           </div>
         </li>
       </div>

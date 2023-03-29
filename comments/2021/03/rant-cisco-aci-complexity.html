@@ -1,0 +1,122 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="431">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> A Network Artist</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c431" href="#431">02 March 2021 07:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This is what you will end up by teaching networking to coders.</p>
+
+<p>Unless they get this basic point that they need to create some abstraction layer for interaction to simplify the consumption and breaking everything down to smallest of objects for programmability, flexibility and extensibility in automation/coding terms doesn&#39;t mean everyone should go down to that level when putting this to life.</p>
+
+<p>Though network engineers learning automation are no different either unless they are doing it for full time to taste the real flavors of it</p>
+
+<p>and at some point I just hope that people will stop believing in those both sets of unicorns and rather invest into simple Operational model which would bring them together and make it work while keeping it simple.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="432">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Chris Paggen</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c432" href="#432">02 March 2021 10:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>ACI took a departure from the classic CLI-driven loosely-coupled network of boxes that&#39;s been predominant in most networks for the past 20 years. 
+Instead, ACI is architected as a declarative controller front-ending a number of switches. You tell the controller what you want, and it ensures your desired configuration is rendered on the appropriate switches. </p>
+
+<p>If the complexity of configuring and operating a classic loosely-coupled network of boxes is expressed as O(n*m) where n represents the number of features and m the number of boxes, then I would say ACI is expressed as O(n). It removes the number of boxes variables from the equation. </p>
+
+<p>To do that, ACI does model everything (VRFs, subnets, interfaces, etc.) as an object and creates relations between objects. Why does this matter? With this model, you can configure 1000 interfaces across 50 switches with just two objects. Imagine you want all interfaces to have LLDP enabled tx/rx, CDP disabled, and accept endpoints in VLANs 100-200: you bind the VLAN pool to the interface selector, and you bind the interface selector to a switch selector. Done. OK - there are a few intermediate objects in the picture (physical domain, interface policy group and AAEP) but at the end of the day the philosophy is to build reusable building blocks you can apply to an arbitrary large number of objects. This lends itself quite well to pattern-based data center network architectures. One of ACI&#39;s strength is that everything (all CRUD operations) uses a well-documented REST API. The CLI on APIC (ACI&#39;s controller) is nothing but a client of that REST API. The API allowed us to build modules for popular configuration management and infrastructure provisioning tools such as Ansible and Terraform in record times. We can also easily document objects that have been modified or deprecated between releases.
+We published a Python SDK that auto-generates code based on JSON payloads exchanged between the web client and APIC itself. </p>
+
+<p>The concept of tenants coupled with the REST API tremendously simplifies A/B testing, versioning (it&#39;s very simple to roll back to a functioning version of the configuration) and role-based access-control (RBAC).</p>
+
+<p>But I feel this isn&#39;t immediately germane to the actual topic. The OP appears a bit torn between not being able to do things like he&#39;s always done them. 
+For instance he writs &quot;Do things right for the first time or do it several times by trial and error. Logical structure and consistency is hard&quot;. I don&#39;t know if I agree that logical structure and consistency are &quot;hard&quot;. 
+I would say they are critical in building systems that scale while remaining simple. Certainly not something that is unique to ACI. 
+On the same topic, we read &quot;You need huge amount of config structure and feature understanding and planning&quot;. Isn&#39;t that applicable to most fields in engineering, at least if you expect a positive or predictible outcome to a project?</p>
+
+<p>Another comment &quot;Most options are best to just ignore in the first round&quot; caught my attention ==&gt; precisely. Particularly in recent versions, the intention is for the GUI to present default values that work for most people.
+I think the OP actually gets the philosophy of ACI. At the end of his article, he writes &quot;you may want to standardize and simplify your connectivity and services before putting it all in ACI. Which is only a good thing.&quot;</p>
+
+<p>ACI can come across as kick in the anthill that is traditional CLI-driven loosely-couple networking of boxes. However, ACI&#39;s intent is not to alienate classic networkers. The GUI is constantly improved and simplified. There is a NxOS-like CLI if you really want to use the CLI. More day-2 capabilities are built either directly in APIC or in adjacent platforms.</p>
+
+<p>This being written, you will probably reap the most benefits through automation. And that requires proper planning, and the adoption of a new skillset. I have seen CLI-ninjas converted to Ansible and Terraform that are now handling infrastructure as code. And they&#39;re not going back.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="502">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c502" href="#502">31 March 2021 07:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Steve Mullaney (Aviatrix, formerly Nicira and even at Cisco) recently gave an interview titled &quot;There&rsquo;s No Going Back To &lsquo;Cisco Model Of The 90s&rsquo;&quot;: https://www.crn.com/slide-shows/networking/aviatrix-s-steve-mullaney-there-s-no-going-back-to-cisco-model-of-the-90s-</p>
+
+<p>From page 4: &quot;No one&rsquo;s going to go back to the Cisco, horribly complex operational model of the 90s. In the old days, if you were a business unit or a developer and you went to your IT team, the answer before you could even ask what you wanted was &ldquo;no.&rdquo; Or maybe the next question from the IT staff would be: &ldquo;What year would you like that?&rdquo; That forced Shadow IT [and] people went to the cloud. That&rsquo;s all now being brought back in [and] enterprises don&rsquo;t want to go back to that model. Now, we have to have that DevOps mentality where we have to be able to say yes -- we have to adopt the cloud model of simplicity and automation.&quot;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="716">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Traveler</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c716" href="#716">23 August 2021 09:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It&#39;s all glittery when people talk about how simple it is to configure 1000 port with aci as opposed to the old way, but what we forget to answer is how quick would someone will be able to troubleshoot a simple issue in the two worlds?</p>
+
+<p>Imagine someone calling you and asking we need to check if port A is learning the MAC on Vlan X and it has an ARP learnt and can you confirm that this IP has route within ACI to the outer L3 domain, these questions don&#39;t have a straight forward answer, at most people try a mix of CLI and GUI when troubleshooting in ACI</p>
+
+<p>What Cisco forgot (or dumped) was that it had built a technical work force to support its produts when they were installed on customer premises, and to an extent cisco TAC support was only opted for breakdowns, but with ACI cisco ignoring the well established skill sets and pushing in favor of programmability (imagine you been asked to run mo queries to get Vlan id&#39;s or other stuff to get simple things when you are troubleshooting a live issue) means that cisco wants its customers to sign contracts with them and I am pretty sure cisco will be seeing increased support tickets for simple things now where everything is ACI.</p>
+
+<p>Is software defined networking a new thing? Improvements in hardware Capabilities paved the way to move away from hardware specific for packet switching, </p>
+
+<p>Cisco orchestrator a failed attempt to implement GUI based implementation? It&#39;s not bad to learn something new, but at the same time trying to re invent the wheels may not be the best solution, or at least give both options for the user </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

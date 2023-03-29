@@ -1,0 +1,47 @@
+{
+   "comments": [
+      {
+         "date": "21 April 2020 01:07",
+         "html": "<p>Why would you run eBGP? I thought we should keep the things simple. What&#39;s the problem running IGP with iBGP?</p>\n",
+         "id": "15",
+         "name": "Alex",
+         "pub": "2020-04-21T13:07:28",
+         "type": "comment"
+      },
+      {
+         "date": "21 April 2020 03:14",
+         "html": "<p>&quot;Why would you run eBGP [as the underlay data center fabric routing protocol]&quot; &lt;&lt; I keep wondering that myself, but some vendors insist on doing that even though they never designed and/or adapted their software to that use case.</p>\n",
+         "id": "16",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-04-21T15:14:05",
+         "type": "comment"
+      },
+      {
+         "date": "22 April 2020 08:23",
+         "html": "<p>This problem arises from the fashion of centralized Route Reflectors.</p>\n\n<p>The course books were not updated in the last few decades from the state when enabling a Route Reflector could overload and break your router. So you need a centralized solution. Always, no exceptions in most people&#39;s mind...</p>\n\n<p>However, an IP network routing protocol by original design should share the fate of the links. So your iBGP sessions should follow exactly the physical topology. Then if a link goes down, then the corresponding single iBGP session goes down. There is no cascade of multiple iBGP sessions going down. There is no problem with a different virtual topology. </p>\n\n<p>The fully distributed RR setup is the safest and closest to the original intentions. However, it is not so easy to automate, since every transit router will become an RR and each of them will have a slightly different BGP configuration.</p>\n\n<p>Once you share the fate of the iBGP session with the fate of the link, then you do not even need to use loopbacks. Indeed you should use the real interfaces addresses. If you use loopbacks, then BGP is really just telling the overall reachability of your loopbacks, no information about the actual physical topology.</p>\n\n<p>By the way, centralized RRs are typically logical single point of failures by design. You can have RR hardware redundancy, you can do vendor diversity, but still you can misconfigure and a big chunk of your network has gone. I have seen it multiple times...</p>\n\n<p>With a distributed, fate sharing RR design, when BGP on one node is misconfigured then you just lose that single node and its links. No other impact on the rest of the network. If you had a redundant topology, then all services are still happy after convergence. </p>\n\n<p>Of course, in transit AS you have to take care about full Internet routing tables. But in most enterprise networks you are not a transit AS. So you do not have such scalability issues. You have the freedom to use a fully distributed RR design... If you prefer a robust network...</p>\n",
+         "id": "19",
+         "name": "Bela Varkonyi",
+         "pub": "2020-04-22T08:23:00",
+         "type": "comment"
+      },
+      {
+         "date": "22 April 2020 01:45",
+         "html": "<p>Ivan, I went back to some of your old, connected to this blog posts and I think I understood now why I started seeing DC protocol wars in linkedin and around other blog spaces.</p>\n\n<p>In my opinion, 95 to 98% (accounting for all the nerds and enthusiast who wants to make their lives miserable) of the time you don&#39;t need bgp only fabric. The last 2% might fit into rfc7938 that all vendors cite in defence of the bgp only dc, but let&#39;s be honest, with a properly configured igp you can easily go to 1k+ devices in the underlay. Choose the right device with the right port count for your 1k switches, and this could be the only thing you will ever need as scalability. </p>\n\n<p>Cheers.</p>\n",
+         "id": "20",
+         "name": "Alexander Mitev",
+         "pub": "2020-04-22T13:45:30",
+         "type": "comment"
+      },
+      {
+         "date": "22 April 2020 03:15",
+         "html": "<p>@Bela: While I agree with everything you wrote, there&#39;s a theoretical difference between running pure IP versus BGP-with-MPLS-core, or MPLS/VPN, or EVPN with VXLAN or MPLS. You probably still don&#39;t want to have full tables for all address families on all devices in your network.</p>\n\n<p>However, those data center fabric vendors that believe in IBGP for EVPN published designs with route reflectors on all spine switches, so why bother ;)</p>\n\n<p>@Alexander: We&#39;re in perfect sync. With a bit of network design you can probably increase the 1k+ to 10k+ (for example, using stub OSPF areas in access layer), which should be more than enough for most everyone.</p>\n\n<p>I would also be surprised if many data centers with more than 10K switches run layer-2 networks with VXLAN and EVPN on ToR switches, making the whole brouhaha a bit of an academic exercise.</p>\n",
+         "id": "21",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-04-22T15:15:57",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "type": "post",
+   "url": "2020/04/can-we-trust-bgp-next-hops-part-2.html"
+}

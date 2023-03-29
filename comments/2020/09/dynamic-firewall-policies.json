@@ -1,0 +1,39 @@
+{
+   "comments": [
+      {
+         "date": "16 September 2020 10:11",
+         "html": "There is one more important drawback to this dynamic solution:<br />\nThe infected PC would probably ask the firewall to allow all IPs on all ports. No, I don&#39;t want that.<br />\n\n\n",
+         "id": "132",
+         "name": " KarstenI",
+         "pub": "2020-09-16T10:11:08",
+         "type": "comment"
+      },
+      {
+         "date": "16 September 2020 05:01",
+         "html": "<p>If you trust the host to be able to decide its own security policy, then the only firewall policy you need is &quot;if dst.ip == X then allow&quot;. The only thing a more granular firewall policy would give you is to drop rejected packets one or two hops sooner :)</p>\n",
+         "id": "133",
+         "name": " Sander Steffann",
+         "pub": "2020-09-16T17:01:30",
+         "type": "comment"
+      },
+      {
+         "date": "17 September 2020 09:09",
+         "html": "<p>Service mesh can be an interesting option here - where each application announces its service(s) to the service registry, with corresponding ACLs. That removes the gap between applications &amp; firewall owners, and it simplifies the cleanup process (which rarely happens in many enterprises).</p>\n",
+         "id": "134",
+         "name": "Frederic",
+         "pub": "2020-09-17T09:09:55",
+         "type": "comment"
+      },
+      {
+         "date": "17 September 2020 07:02",
+         "html": "<p>The idea for the host to control its own security is bad as mentioned by Steffann</p>\n\n<p>What have been done in the past are distributed host agents firewalls. Here are the benefits:\n - Host has visibility on user connected and program launched. You can define your rules based on programm name rather than classical UDP/TCP/IP tuple.\n - Distributed Load. Its easier to distribute the load when you apply the filtering policies on the hosts directly\n - Traffic filtering on the same subnet is possible. </p>\n\n<p>As always, there are drawbacks. \n - Manage another software agent can be problematic (think different OS versions like RHEL 6,  RHEL 8 and what to do with that business critical FreeBSD who has no agent available?)\n - Policies are harder to define and manage \n - IP filtering at the subnet level does not immune you to L2 attacks.</p>\n",
+         "id": "138",
+         "name": " Claer",
+         "pub": "2020-09-17T19:02:06",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2020/09/dynamic-firewall-policies.html"
+}

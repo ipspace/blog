@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>12 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">dandu</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2622999385508825344">17 September 2009 21:27</a>
+                <a rel="nofollow" id="c2622999385508825344" href="#2622999385508825344">17 September 2009 21:27</a>
               </span>
             </div>
-            <p class="comment-content">I have a 7204 with IOS 12.2 and &#39;show ip cef A.B.C.D internal&#39; is not available. Do you know any equivalent for it? I&#39;m interested in the &#39;Load distribution&#39; info, or something equivalent to it.</p>
+            <div class="comment-content">I have a 7204 with IOS 12.2 and &#39;show ip cef A.B.C.D internal&#39; is not available. Do you know any equivalent for it? I&#39;m interested in the &#39;Load distribution&#39; info, or something equivalent to it.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7198102360662576519">18 September 2009 08:10</a>
+                <a rel="nofollow" id="c7198102360662576519" href="#7198102360662576519">18 September 2009 08:10</a>
               </span>
             </div>
-            <p class="comment-content">Upgrade to 12.2SRC ;)</p>
+            <div class="comment-content">Upgrade to 12.2SRC ;)</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Danail Petrov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4836159093581070609">19 October 2009 14:22</a>
+                <a rel="nofollow" id="c4836159093581070609" href="#4836159093581070609">19 October 2009 14:22</a>
               </span>
             </div>
-            <p class="comment-content">Hello, Ivan! <br /><br />I just wanted to share with you what I&#39;ve found today, which is strange behavior of IOS in my opinion. <br /><br />Today I was analyzing a traffic flow for one of our customers, when I had to check the information in CEF table regarding 0.0.0.0/32 prefix. I was curious to get that information from CEF table because there is multipath BGP load balance:<br /><br />tbirouter#show ip bgp 0.0.0.0/0<br />BGP routing table entry for 0.0.0.0/0, version 1774830<br />Paths: (2 available, best #1, table Default-IP-Routing-Table)<br />Multipath: eBGP<br />  Not advertised to any peer<br />  1234<br />       Origin IGP, localpref 100, valid, external, multipath, best<br />  5678<br />       Origin IGP, localpref 100, valid, external, multipath<br /><br />I decided to check what does CEF table says when I tried with these commands:<br /><br />tbirouter#show ip cef 0.0.0.0 det<br />0.0.0.0/32, version 1, epoch 0, receive<br />tbirouter#show ip cef 0.0.0.0 int<br />0.0.0.0/32, version 1, epoch 0, receive<br />tbirouter#show ip cef 0.0.0.0/32 int<br />                             ^<br />% Invalid input detected at &#39;^&#39; marker.<br /><br />And here it comes the most interesting part of the story - my typo command which get me exactly what I needed. <br /><br />show ip cef 0.0.0.032 internal &lt;------------------ 0.0.0.032<br />0.0.0.0/0, version 1303100, epoch 0, per-destination sharing<br />0 packets, 0 bytes<br />  via 2.2.2.20 0 dependencies, recursive<br />    traffic share 1<br />    next hop 2.2.2.2, GigabitEthernet0/0.3467 via 2.2.2.2/32<br />    valid adjacency<br />  via 1.1.1.1, 0 dependencies, recursive<br />    traffic share 1<br />    next hop 1.1.1.10, GigabitEthernet0/0.3197 via 1.1.1.1/32<br />    valid adjacency<br /><br />  0 packets, 0 bytes switched through the prefix<br />  tmstats: external 0 packets, 0 bytes<br />           internal 0 packets, 0 bytes<br />  Load distribution: 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 (refcount 1)<br /><br />  Hash  OK  Interface                 Address         Packets<br />  1     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  2     Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  3     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  4     Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  5     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  6     Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  7     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  8     Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  9     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  10    Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  11    Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  12    Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  13    Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  14    Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  15    Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  16    Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  refcount 718612, covered prefixes:<br /><br />Have you noticed this?<br /><br />Kind regards,<br />Dani Petrov</p>
+            <div class="comment-content">Hello, Ivan! <br /><br />I just wanted to share with you what I&#39;ve found today, which is strange behavior of IOS in my opinion. <br /><br />Today I was analyzing a traffic flow for one of our customers, when I had to check the information in CEF table regarding 0.0.0.0/32 prefix. I was curious to get that information from CEF table because there is multipath BGP load balance:<br /><br />tbirouter#show ip bgp 0.0.0.0/0<br />BGP routing table entry for 0.0.0.0/0, version 1774830<br />Paths: (2 available, best #1, table Default-IP-Routing-Table)<br />Multipath: eBGP<br />  Not advertised to any peer<br />  1234<br />       Origin IGP, localpref 100, valid, external, multipath, best<br />  5678<br />       Origin IGP, localpref 100, valid, external, multipath<br /><br />I decided to check what does CEF table says when I tried with these commands:<br /><br />tbirouter#show ip cef 0.0.0.0 det<br />0.0.0.0/32, version 1, epoch 0, receive<br />tbirouter#show ip cef 0.0.0.0 int<br />0.0.0.0/32, version 1, epoch 0, receive<br />tbirouter#show ip cef 0.0.0.0/32 int<br />                             ^<br />% Invalid input detected at &#39;^&#39; marker.<br /><br />And here it comes the most interesting part of the story - my typo command which get me exactly what I needed. <br /><br />show ip cef 0.0.0.032 internal &lt;------------------ 0.0.0.032<br />0.0.0.0/0, version 1303100, epoch 0, per-destination sharing<br />0 packets, 0 bytes<br />  via 2.2.2.20 0 dependencies, recursive<br />    traffic share 1<br />    next hop 2.2.2.2, GigabitEthernet0/0.3467 via 2.2.2.2/32<br />    valid adjacency<br />  via 1.1.1.1, 0 dependencies, recursive<br />    traffic share 1<br />    next hop 1.1.1.10, GigabitEthernet0/0.3197 via 1.1.1.1/32<br />    valid adjacency<br /><br />  0 packets, 0 bytes switched through the prefix<br />  tmstats: external 0 packets, 0 bytes<br />           internal 0 packets, 0 bytes<br />  Load distribution: 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 (refcount 1)<br /><br />  Hash  OK  Interface                 Address         Packets<br />  1     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  2     Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  3     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  4     Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  5     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  6     Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  7     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  8     Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  9     Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  10    Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  11    Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  12    Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  13    Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  14    Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  15    Y   GigabitEthernet0/0.3467   2.2.2.2         0<br />  16    Y   GigabitEthernet0/0.3197   1.1.1.1           0<br />  refcount 718612, covered prefixes:<br /><br />Have you noticed this?<br /><br />Kind regards,<br />Dani Petrov</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5084383972845704395">25 October 2009 18:11</a>
+                <a rel="nofollow" id="c5084383972845704395" href="#5084383972845704395">25 October 2009 18:11</a>
               </span>
             </div>
-            <p class="comment-content">Well, your problem is (very probably) the discrepancy between what the router prints out (0.0.0.0/32) and what it wants to get (0.0.0.0/0). When you&#39;ve typed in 0.0.0.032, the router understood that to be 0.0.0.0/0 (due to the subnet mask on 0.0.0.0). <br /><br />I agree, it&#39;s confusing  :-E</p>
+            <div class="comment-content">Well, your problem is (very probably) the discrepancy between what the router prints out (0.0.0.0/32) and what it wants to get (0.0.0.0/0). When you&#39;ve typed in 0.0.0.032, the router understood that to be 0.0.0.0/0 (due to the subnet mask on 0.0.0.0). <br /><br />I agree, it&#39;s confusing  :-E</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2119435872129646561">03 March 2010 12:32</a>
+                <a rel="nofollow" id="c2119435872129646561" href="#2119435872129646561">03 March 2010 12:32</a>
               </span>
             </div>
-            <p class="comment-content">Any idea how the load balacing is done in mpls network at 1) ingress and 2) transit?</p>
+            <div class="comment-content">Any idea how the load balacing is done in mpls network at 1) ingress and 2) transit?</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Vandana</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8273426733116150557">16 January 2011 17:41</a>
+                <a rel="nofollow" id="c8273426733116150557" href="#8273426733116150557">16 January 2011 17:41</a>
               </span>
             </div>
-            <p class="comment-content">Greetings,<br /><br />             I am studying MPLS these days and there is a very basic thing which I am confused with ..I tried to find the details on Google but didnt get any good link ...Can somone plz explain me whats the difference between a ROUTING TABLE AND FIB ?<br /><br />I would really be very obligied if somone can help  :-[</p>
+            <div class="comment-content">Greetings,<br /><br />             I am studying MPLS these days and there is a very basic thing which I am confused with ..I tried to find the details on Google but didnt get any good link ...Can somone plz explain me whats the difference between a ROUTING TABLE AND FIB ?<br /><br />I would really be very obligied if somone can help  :-[</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7103320334785239325">16 January 2011 17:46</a>
+                <a rel="nofollow" id="c7103320334785239325" href="#7103320334785239325">16 January 2011 17:46</a>
               </span>
             </div>
-            <p class="comment-content">Google found me this link (from my blog):<br /><br />http://blog.ioshints.info/2010/09/ribs-and-fibs.html<br /><br />The same topic is also described in my MPLS/VPN Architectures book.</p>
+            <div class="comment-content">Google found me this link (from my blog):<br /><br />http://blog.ioshints.info/2010/09/ribs-and-fibs.html<br /><br />The same topic is also described in my MPLS/VPN Architectures book.</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Vandana</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5631436886522412926">17 January 2011 14:01</a>
+                <a rel="nofollow" id="c5631436886522412926" href="#5631436886522412926">17 January 2011 14:01</a>
               </span>
             </div>
-            <p class="comment-content">Thanks a lot Ivan..That link is really great .....So that means FIB contains the actual next-hop IP and the exit interface to reach any network whereas RIB just have the next hop IP [ which can be some ip which is not directly connected to the router] ....FIB is faster than RIB becoz it doesnt do the recursive lookup........Plz correct me if I am wrong anywhere !!</p>
+            <div class="comment-content">Thanks a lot Ivan..That link is really great .....So that means FIB contains the actual next-hop IP and the exit interface to reach any network whereas RIB just have the next hop IP [ which can be some ip which is not directly connected to the router] ....FIB is faster than RIB becoz it doesnt do the recursive lookup........Plz correct me if I am wrong anywhere !!</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">william</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6201916907468688797">02 January 2012 18:17</a>
+                <a rel="nofollow" id="c6201916907468688797" href="#6201916907468688797">02 January 2012 18:17</a>
               </span>
             </div>
-            <p class="comment-content">Very informative.  I wonder why true load balancing (non fixed hash position in a path table) isn&#39;t implemented for both L2, e.g. etherchannels, and CEF.  The way it&#39;s implemented is more deterministic, but can be perceived as a bottle neck for high throughput flows.<br /><br />Though, thinking about in-order-delivery, I suppose fixing a flow to a specific path is a good thing.  But what are the real risks, and incidence probability, if per packet load balancing is used.</p>
+            <div class="comment-content">Very informative.  I wonder why true load balancing (non fixed hash position in a path table) isn&#39;t implemented for both L2, e.g. etherchannels, and CEF.  The way it&#39;s implemented is more deterministic, but can be perceived as a bottle neck for high throughput flows.<br /><br />Though, thinking about in-order-delivery, I suppose fixing a flow to a specific path is a good thing.  But what are the real risks, and incidence probability, if per packet load balancing is used.</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5007610064667590052">04 January 2012 12:43</a>
+                <a rel="nofollow" id="c5007610064667590052" href="#5007610064667590052">04 January 2012 12:43</a>
               </span>
             </div>
-            <p class="comment-content">Some non-TCP applications cannot handle out-of order packets. Typical examples: VoIP and FCoE (or SNA if you&#39;re really old :D )</p>
+            <div class="comment-content">Some non-TCP applications cannot handle out-of order packets. Typical examples: VoIP and FCoE (or SNA if you&#39;re really old :D )</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6737218947301525121">21 September 2012 13:36</a>
+                <a rel="nofollow" id="c6737218947301525121" href="#6737218947301525121">21 September 2012 13:36</a>
               </span>
             </div>
-            <p class="comment-content">Can you give some idea on a particular bucket assigned for the interface will remain to that interface upto what time? if 6 Bucket assgined to 1 link and that link goes down will that bucket imediatelly asigned to another parallel link or 2nd second link not be able to use that buckets <br /><br />say buckets 0 2 4 6 8 10 12 14 are for interface 1 <br />and buckets 1 3 5 7 9 11 13 15 are for interface 2 <br /><br />if interface 2 goes down, then buckets will be freed and assigned to interface 1 or that buckets will not be utilized. if buckets are freed after how much time will it allocate to interface 2 .... or what is the bucket refresh time ! <br /><br />can u led me to source/rfc for the same ! <br /></p>
+            <div class="comment-content">Can you give some idea on a particular bucket assigned for the interface will remain to that interface upto what time? if 6 Bucket assgined to 1 link and that link goes down will that bucket imediatelly asigned to another parallel link or 2nd second link not be able to use that buckets <br /><br />say buckets 0 2 4 6 8 10 12 14 are for interface 1 <br />and buckets 1 3 5 7 9 11 13 15 are for interface 2 <br /><br />if interface 2 goes down, then buckets will be freed and assigned to interface 1 or that buckets will not be utilized. if buckets are freed after how much time will it allocate to interface 2 .... or what is the bucket refresh time ! <br /><br />can u led me to source/rfc for the same ! <br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -218,10 +213,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3794845829452713038">21 September 2012 17:41</a>
+                <a rel="nofollow" id="c3794845829452713038" href="#3794845829452713038">21 September 2012 17:41</a>
               </span>
             </div>
-            <p class="comment-content">How about starting a router and testing it? There&#39;s no RFC on CEF, it&#39;s Cisco&#39;s proprietary forwarding implementation.</p>
+            <div class="comment-content">How about starting a router and testing it? There&#39;s no RFC on CEF, it&#39;s Cisco&#39;s proprietary forwarding implementation.</div>
           </div>
         </li>
       </div>

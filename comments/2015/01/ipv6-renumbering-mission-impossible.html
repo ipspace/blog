@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16010323799492079420" rel="nofollow">Olivier Bonaventure</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4918089890988331080">26 January 2015 14:33</a>
+                <a rel="nofollow" id="c4918089890988331080" href="#4918089890988331080">26 January 2015 14:33</a>
               </span>
             </div>
-            <p class="comment-content">A set of tools to prepare configuration to ease renumebering has been proposed in http://inl.info.ucl.ac.be/publications/preparing-network-configurations-ipv6-renumbering<br />Unfortunately, I&#39;m not aware of any vendor/operator who has adopted this kind of solutions</p>
+            <div class="comment-content">A set of tools to prepare configuration to ease renumebering has been proposed in http://inl.info.ucl.ac.be/publications/preparing-network-configurations-ipv6-renumbering<br />Unfortunately, I&#39;m not aware of any vendor/operator who has adopted this kind of solutions</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04441771667073544925" rel="nofollow">Anders</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5369877800521326206">26 January 2015 15:39</a>
+                <a rel="nofollow" id="c5369877800521326206" href="#5369877800521326206">26 January 2015 15:39</a>
               </span>
             </div>
-            <p class="comment-content">I do second the view &quot;DNS is the way to go&quot;, though there are a few obstacles, which do require careful software engineering.<br /><br />For client applications, software infrastructure often gives poor defaults to developers. E.g. when using a security manager, Java defaults to an infinite DNS-cache-timeout: changed DNS-records won&#39;t be recognized by a running application. One answer: reconfigure Java&#39;s cache-timeout to a few seconds, add a  DNS resolver on loopback and let this resolver implement handling of DNS-TTLs correctly. If your DNS server can handle up to a thousandfold of requests (when moving from 24h-TTLs to sub-minute-TTLs), you may also avoid the loopback resolver.<br /><br />For server applications, the situation isn&#39;t that shiny as well; if a software is asked to listen on the IP address of some FQDN, it will most likely resolve this record on startup only, bind to ip/port and drop (root) privileges. If the DNS-record changes, it may sound reasonable to temporarily listen on both old and new IP - but doing so requires the application to listen to multiple IPs at the same time (not everybody can do this) or requires just those dropped privileges, and depending on the actual implementation and reason for the DNS change, this could result in inconsistent behaviour to clients or similar issues. It is still doable (proxies, port forwarders, specific application code, ...), though this is a lot harder than &quot;just change DNS&quot;.</p>
+            <div class="comment-content">I do second the view &quot;DNS is the way to go&quot;, though there are a few obstacles, which do require careful software engineering.<br /><br />For client applications, software infrastructure often gives poor defaults to developers. E.g. when using a security manager, Java defaults to an infinite DNS-cache-timeout: changed DNS-records won&#39;t be recognized by a running application. One answer: reconfigure Java&#39;s cache-timeout to a few seconds, add a  DNS resolver on loopback and let this resolver implement handling of DNS-TTLs correctly. If your DNS server can handle up to a thousandfold of requests (when moving from 24h-TTLs to sub-minute-TTLs), you may also avoid the loopback resolver.<br /><br />For server applications, the situation isn&#39;t that shiny as well; if a software is asked to listen on the IP address of some FQDN, it will most likely resolve this record on startup only, bind to ip/port and drop (root) privileges. If the DNS-record changes, it may sound reasonable to temporarily listen on both old and new IP - but doing so requires the application to listen to multiple IPs at the same time (not everybody can do this) or requires just those dropped privileges, and depending on the actual implementation and reason for the DNS change, this could result in inconsistent behaviour to clients or similar issues. It is still doable (proxies, port forwarders, specific application code, ...), though this is a lot harder than &quot;just change DNS&quot;.</div>
           </div>
         </li>
       </div>

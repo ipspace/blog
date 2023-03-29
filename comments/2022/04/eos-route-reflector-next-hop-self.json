@@ -1,0 +1,43 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "08 April 2022 12:32",
+               "html": "<p>To be fair, &#39;nexthop-self&#39; isn&#39;t the default behavior when advertising towards the RR client, if you notice the config:\n     neighbor 10.0.0.2 next-hop-self\nfor the RR client 10.0.0.2. If you don&#39;t configure that, it will be nexthop-unchanged, which would be compliant to the &#39;SHOULD&#39; behavior. </p>\n\n<p>So in a way, the default behavior difference here is really whether a config would take its face value, or a strict higher layer would always forbid it, by default. </p>\n",
+               "id": "1145",
+               "name": " Qing Yang",
+               "pub": "2022-04-08T00:32:10",
+               "ref": "1142",
+               "type": "comment"
+            },
+            {
+               "date": "08 April 2022 08:32",
+               "html": "<p>Yeah, you could say that I asked for it ;)</p>\n\n<p>I definitely found the behavior unexpected, more so as other platforms with very similar syntax behave in a different way. Will reword it a bit (give me a few days).</p>\n",
+               "id": "1150",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-04-08T20:32:27",
+               "ref": "1145",
+               "type": "comment"
+            }
+         ],
+         "date": "07 April 2022 10:43",
+         "html": "<p>Different vendor defaults can be surprising, indeed.</p>\n\n<p>Many vendors use a default different from the Arista EOS default described above. Some allow to configure similar behavior:</p>\n\n<ul>\n<li><p>On Cisco IOS-XR there is the command <code>ibgp policy out enforce-modifications</code> to get the behavior you described for Arista EOS above.</p></li>\n<li><p>On Cisco IOS the <code>neighbor &amp;lt;IP&amp;gt; internal-vpn-client</code> command enables this for iBGP PE&lt;---&gt;CE connections.</p></li>\n<li><p>Huawei VRP has the configuration command <code>reflect change-path-attribute</code> to enable changing path attribute of reflected routes via policy.</p></li>\n</ul>\n",
+         "id": "1142",
+         "name": " Erik Auerswald",
+         "pub": "2022-04-07T10:43:51",
+         "type": "comment"
+      },
+      {
+         "date": "07 April 2022 04:52",
+         "html": "<p>I&#39;ve also found that when doing an eBGP Route Server setup across a shared subnet (Third Party Next Hop), Arista changes the next hop to self while Cisco doesn&#39;t. To make it worse, adding next-hop-unchanged didn&#39;t work (though the command took), you needed to set it via a route-map. Even worse, routes not learned over the shared interconnect were swept up in this, and dropped because:</p>\n\n<p>RFC-4271 section-5.1.3 Clause 2 of section 5.1.3: \n      2) When sending a message to an external peer, X, and the peer is\n         one IP hop away from the speaker:</p>\n\n<pre><code>     - Otherwise, if the route being announced was learned from an\n       external peer, the speaker can use an IP address of any\n       adjacent router (known from the received NEXT_HOP attribute)\n       that the speaker itself uses for local route calculation in\n       the NEXT_HOP attribute, provided that peer X shares a common\n       subnet with this address.  This is a second form of &amp;quot;third\n       party&amp;quot; NEXT_HOP attribute.\n\n     - Otherwise, if the external peer to which the route is being\n       advertised shares a common subnet with one of the interfaces\n       of the announcing BGP speaker, the speaker MAY use the IP\n       address associated with such an interface in the NEXT_HOP\n       attribute.  This is known as a &amp;quot;first party&amp;quot; NEXT_HOP\n       attribute.\n</code></pre>\n\n<p><em>*</em>         - By default (if none of the above conditions apply), the BGP\n           speaker SHOULD use the IP address of the interface that the\n           speaker uses to establish the BGP connection to peer X in the\n           NEXT_HOP attribute.</p>\n\n<p>sh ip bgp nei x.x.x.x showed:\n    Nexthop invalid for single hop eBGP: 1</p>\n\n<p>Making the peering eBGP multihop, even though its 1 hop away, allowed the route in, per another part of the same RFC:\n      3) When sending a message to an external peer X, and the peer is\n         multiple IP hops away from the speaker (aka &quot;multihop EBGP&quot;):</p>\n\n<pre><code>     - The speaker MAY be configured to propagate the NEXT_HOP\n       attribute.  In this case, when advertising a route that the\n       speaker learned from one of its peers, the NEXT_HOP attribute\n       of the advertised route is exactly the same as the NEXT_HOP\n       attribute of the learned route (the speaker does not modify\n       the NEXT_HOP attribute).\n</code></pre>\n\n<p>Or , change matching criteria in the NH unchanged prefix list.</p>\n",
+         "id": "1143",
+         "name": "Jim",
+         "pub": "2022-04-07T16:52:07",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/04/eos-route-reflector-next-hop-self.html"
+}

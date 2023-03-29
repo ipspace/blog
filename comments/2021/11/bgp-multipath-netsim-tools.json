@@ -1,0 +1,92 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "09 November 2021 04:12",
+               "html": "<p>You got it... but you REALLY SHOULD HAVE started your comment with &quot;spoiler alert&quot; &#x1F606;</p>\n\n<p>And yes, this is where ORR would save the day, but so would a more symmetrical network design.</p>\n",
+               "id": "829",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-09T16:12:10",
+               "ref": "826",
+               "type": "comment"
+            },
+            {
+               "date": "09 November 2021 05:00",
+               "html": "<p>You could warn your readers of your blog post (assuming they read it top down) to think first and then look for the answer in the comments ;)</p>\n\n<p>Yes, &quot;RR&quot; should have been placed more symmetrical (from a IGP cost perspective) within the network. Or implement multiple RRs (in a symmetrical way) and having BGP Multipath configured on &quot;A&quot;. With that you would also benefit from redundancy.</p>\n\n<p>I read that you&#39;ll bring BGP ADD-PATH (RFC 7911) into the mix. So you could have something along BGP PIC Edge with subsecond convergence :D Looking forward to...</p>\n",
+               "id": "832",
+               "name": "Anonymous",
+               "pub": "2021-11-09T17:00:32",
+               "ref": "829",
+               "type": "comment"
+            }
+         ],
+         "date": "09 November 2021 12:53",
+         "html": "<p>&quot;A&quot; has two routes (ECMP probably due to equal IGP cost) to &quot;D&quot; next-hop (from IBGP advertisement from &quot;RR&quot;) . As &quot;C&quot; is peering with &quot;Y&quot; directly via EBGP, it&#39;s prefering the path via EBGP. Hence if a packet from &quot;A&quot; is hitting &quot;C&quot;, it&#39;s going directly to &quot;Y&quot;. This would be a use case for BGP ORR, isn&#39;t it? :D</p>\n",
+         "id": "826",
+         "name": "Anonymous",
+         "pub": "2021-11-09T12:53:04",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "09 November 2021 04:12",
+               "html": "<p>Thank you. Fixed.</p>\n",
+               "id": "830",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-09T16:12:39",
+               "ref": "827",
+               "type": "comment"
+            }
+         ],
+         "date": "09 November 2021 01:18",
+         "html": "<p>Found a typo in your &quot;links&quot; list: &quot;c-x, d-x&quot; should be &quot;c-y, d-y&quot;</p>\n",
+         "id": "827",
+         "name": "Anonymous",
+         "pub": "2021-11-09T13:18:24",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "09 November 2021 04:14",
+               "html": "<p>You are a never-ending source of unexpected wisdom. Thanks a million, it does look better when using</p>\n\n<pre>\r\ndot -Grankdir=LR -T png -o graph.bgp.png graph.dot\r\n</pre>\n\n<p>Will add that to the blog post.</p>\n",
+               "id": "831",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-09T16:14:03",
+               "ref": "828",
+               "type": "comment"
+            }
+         ],
+         "date": "09 November 2021 01:53",
+         "html": "See https: //graphviz.gitlab.io/docs/attrs/rankdir/ - rankdir=&quot;LR&quot; would be closer to your manual drawing<br />\n\n\n",
+         "id": "828",
+         "name": " Jeroen van Bemmel",
+         "pub": "2021-11-09T13:53:26",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "10 November 2021 09:48",
+               "html": "<p>&quot;RRs are commonly becoming a host (vs router) based technology (and they should)&quot; &lt;&lt; that&#39;s a technologist perspective that quickly leads to circular dependencies</p>\n\n<p>https://blog.ipspace.net/2021/10/circular-dependencies-considered-harmful.html</p>\n\n<p>I&#39;m not saying you can&#39;t get it right, but I&#39;m positive a lot of people will implement this concept in the worst possible way.</p>\n\n<p>And yes, once you believe in pulling RR far away from the forwarding path, ORR becomes increasingly useful.</p>\n",
+               "id": "836",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-10T09:48:43",
+               "ref": "834",
+               "type": "comment"
+            }
+         ],
+         "date": "09 November 2021 08:27",
+         "html": "<p>RRs are commonly becoming a host (vs router) based technology (and they should) and are per definition placed suboptimal wrt its clients, and this is the main use of ORR</p>\n",
+         "id": "834",
+         "name": "Jeff Tantsura",
+         "pub": "2021-11-09T20:27:37",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2021/11/bgp-multipath-netsim-tools.html"
+}

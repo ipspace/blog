@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ole Trøan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1108109103858774085">07 March 2012 10:35</a>
+                <a rel="nofollow" id="c1108109103858774085" href="#1108109103858774085">07 March 2012 10:35</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />in the title you suggest a solution, but it might not be the only one.<br />Markus and I wrote a draft on state maintenance for PD a while back.<br />http://tools.ietf.org/id/draft-stenberg-v6ops-pd-route-maintenance-00.txt<br /><br />my favourite approach would be a simple BFD echo mechanism done by the CPE.</p>
+            <div class="comment-content">Ivan,<br /><br />in the title you suggest a solution, but it might not be the only one.<br />Markus and I wrote a draft on state maintenance for PD a while back.<br />http://tools.ietf.org/id/draft-stenberg-v6ops-pd-route-maintenance-00.txt<br /><br />my favourite approach would be a simple BFD echo mechanism done by the CPE.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7309094108917828121">08 March 2012 15:35</a>
+                <a rel="nofollow" id="c7309094108917828121" href="#7309094108917828121">08 March 2012 15:35</a>
               </span>
             </div>
-            <p class="comment-content">Of course, BFD. What was I thinking  :-E</p>
+            <div class="comment-content">Of course, BFD. What was I thinking  :-E</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tomek Mrugalski</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2135789243892900141">09 March 2012 18:53</a>
+                <a rel="nofollow" id="c2135789243892900141" href="#2135789243892900141">09 March 2012 18:53</a>
               </span>
             </div>
-            <p class="comment-content">After giving it more thought, there&#39;s a bit of a problem with this problem. <br /><br />There&#39;s part of the description that is wrong: &quot;The CPE router subsequently sends a DHCPv6 request message to the selected PE-router (acting as a relay), eventually gets back the delegated prefix, and the PE-router has a static route … but the other PE-router is not aware of what’s going on.&quot;. What actually happens is: CPE chooses one response, but that is still usually multicast message (with a DUID that represents chosen server). Both relays (both PE routers) gets it and both forward them to a server. Server will get two copies of the same message and will generate two answers. All reasonable servers will generate the same answer twice, but each answer will be relayed back via appropriate relay (the one that transmitted this particular copy of the message). So it turns out that both relays will get the information.<br /><br />You may possible get into described problems (sort of) if you use unicast option that allows CPEs to contact server directly, bypassing relays. However, my understanding is that no sane network operator would do that and expect his relays to operate properly.<br /><br />I still think that the original solution I proposed will work. Each relay knows relay-ids of itself and the other relay. If it crashes, it can use bulk leasequery to retrieve lost routes, using query by relay-id.<br /><br />Other minor corrections: <br /><br />1. It is bulk leasequery mechanism, not bulk lease.<br />2. There was beer involved during some PLNOG discussions, *including* this one :)</p>
+            <div class="comment-content">After giving it more thought, there&#39;s a bit of a problem with this problem. <br /><br />There&#39;s part of the description that is wrong: &quot;The CPE router subsequently sends a DHCPv6 request message to the selected PE-router (acting as a relay), eventually gets back the delegated prefix, and the PE-router has a static route … but the other PE-router is not aware of what’s going on.&quot;. What actually happens is: CPE chooses one response, but that is still usually multicast message (with a DUID that represents chosen server). Both relays (both PE routers) gets it and both forward them to a server. Server will get two copies of the same message and will generate two answers. All reasonable servers will generate the same answer twice, but each answer will be relayed back via appropriate relay (the one that transmitted this particular copy of the message). So it turns out that both relays will get the information.<br /><br />You may possible get into described problems (sort of) if you use unicast option that allows CPEs to contact server directly, bypassing relays. However, my understanding is that no sane network operator would do that and expect his relays to operate properly.<br /><br />I still think that the original solution I proposed will work. Each relay knows relay-ids of itself and the other relay. If it crashes, it can use bulk leasequery to retrieve lost routes, using query by relay-id.<br /><br />Other minor corrections: <br /><br />1. It is bulk leasequery mechanism, not bulk lease.<br />2. There was beer involved during some PLNOG discussions, *including* this one :)</div>
           </div>
         </li>
       </div>

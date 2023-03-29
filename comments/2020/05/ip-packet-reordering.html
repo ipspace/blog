@@ -1,0 +1,142 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="64">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c64" href="#64">02 June 2020 08:42</a>
+              </span>
+            </div>
+            <div class="comment-content">A couple of thoughts from a network transport perspective:<br />
+
+<p>1) Apart from a bad implementation or configuration or a bug of the hashing algorithm governing the load-balancing, can these days packet reordering still be introduced within an high-end router while traversing it&#39;s fabric layers from the input to the output port/card ? I remember witnessing it happening on some juniper boxes during the early 2000s after some very deep testing for an R&amp;D European project.</p>
+
+<p>2) there&#39;s no such an alarm/counter on a (stateless by definition) router as &#39;number of out of sequence packets&#39; .... since you&#39;d need to sequence every flow&#39;s packet (according to the forwarding chipset&#39;s configured flow hashing algorithm granularity...) coming in and then work out on a per-flow basis if there&#39;s some reordering been introduced while sending it out on a port....</p>
+
+<p>3) To my knowledge, very few providers stress-test their routers themselves in their labs the way you should to be able to spot such issues. And this should be tested every time you change code or card too...</p>
+
+<p>4) could therefore packet reordering be an Internet&#39;s
+physiological issue (sort of background noise) that is fixable but at a cost so high that no one really cares unless it becomes a real problem for a complaining customers of yours (such as when you configure a brand new lag towards a customer and forget to change the load-balancing default algorithm from packet based to flow based as witnessed recently @ an IX) ?  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="67">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c67" href="#67">03 June 2020 10:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Packet reordering could be introduced anywhere, it&#39;s just the question of whether it&#39;s a rare event or a continuous behavior. The simplest way (I&#39;m aware of) would be remarking out-of-contract packets and then using a different queue for them.</p>
+
+<p>I would strongly suggest to go with #4 in your list, and whenever a customer complains do a thorough evaluation whether it&#39;s worth the effort to fix it balancing immediate costs + technical debt against potential profit (NOT revenue) made on that customer.</p>
+
+<p>Finally, having a recent product using per-packet load balancing as a default LAG algorithm deserves a Triple Facepalm. If you feel like sharing who the offending vendor is, you know how to reach me.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="68">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">BOGDAN GOLAB</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c68" href="#68">03 June 2020 10:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I was involved in many issue investigations caused by the reordering during last 10 years.
+Most of them were caused by networking equipment coming from major vendors - stateful devices  usually are the culprit.</p>
+
+<p>Parallel processing not handled correctly especially during the phase of FW session establishment (packets are buffered during this period and the process of retrieving them from the buffer is challenging from the reorder handling perspective) is one of the common root cause example.</p>
+
+<p>I spent some time investigating these issues because of the performance degradation reported in the network (udp protocol failures, not-so-decent tcp implementation perf degradation, multicast audio streams affected, etc).</p>
+
+<p>We may think about these issues as a niche cases but they are real and we can simple change the legacy protocol.</p>
+
+<p>If it comes to vendors. They do some testing for typical protocols and scenarios (80% of use cases). For example multicast is poorly tested particularly on cheaper boxes. I would assume that cheap boxes are usually affected by reordering to certain degree.</p>
+
+<p>Every vendor when you report re-ordering issues denies it because this problem is generally solved (they mark packets incoming to the box and they transmit them preserving order). But as always we have corner cases e.g. what happens when we have not created the firewall state on the devices and we dot want to drop packet?</p>
+
+<p>It&#39;s rather complex topic.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="69">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Andrea Di Donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c69" href="#69">03 June 2020 07:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@BOGDAN GOLAB
+Bogdan, could you provide more details on the following quoted statement of yours? 
+&quot;Every vendor when you report re-ordering issues denies it because this problem is generally solved (they mark packets incoming to the box and they transmit them preserving order)&quot;
+I am pretty sure high-end router vendors only just reorder cells belonging to the same packet after having traversed the fabric planes as in that case there&#39;s state to preserve where the state is an ordered packet. I can&#39;t see how they can do what you just described to be honest.  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="70">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">BOGDAN GOLAB</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c70" href="#70">04 June 2020 08:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Not sure if I want to discus this in public. </p>
+
+<ol>
+<li><p>I think about two top vendors at least (both denied at the beginning and provided some internal architecture details to prove this - unfortunately it did not cover some corner cases, both delivered fixes - but it took time ).</p></li>
+<li><p>Talking mostly about Firewalls as mentioned earlier</p></li>
+<li><p>This is not high end equipment - rather high end branch. I do not know high end architectures so I cannot compare the solutions</p></li>
+</ol>
+
+<p>Please review some patents related to ensuring packet order by NPE.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

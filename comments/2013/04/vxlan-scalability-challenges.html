@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1960494173117879327">18 April 2013 14:29</a>
+                <a rel="nofollow" id="c1960494173117879327" href="#1960494173117879327">18 April 2013 14:29</a>
               </span>
             </div>
-            <p class="comment-content">Will be intersting to see the scalability numbers of the multicast-less/control-planed VXLAN (http://blogs.cisco.com/datacenter/cisco-vxlan-innovations-overcoming-ip-multicast-challenges/).<br /></p>
+            <div class="comment-content">Will be intersting to see the scalability numbers of the multicast-less/control-planed VXLAN (http://blogs.cisco.com/datacenter/cisco-vxlan-innovations-overcoming-ip-multicast-challenges/).<br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://jedelman.com" rel="nofollow">Jason Edelman (@jedelman8)</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8184372840172372167">18 April 2013 14:30</a>
+                <a rel="nofollow" id="c8184372840172372167" href="#8184372840172372167">18 April 2013 14:30</a>
               </span>
             </div>
-            <p class="comment-content">I look forward to v2 of this post in a few months when multicast isn&#39;t being used and packet replication is being performed somewhere else - vswitch or node in control cluster, etc.<br /><br />Many customers limit vMotion to 32 physical hosts since that is the largest size of a cluster.  It has been validated you can vMotion between clusters under a given set of conditions, but do [large] customers do this?   I wonder myself about the holy grail.  What&#39;s your take?  What are you seeing?<br /><br />As Cisco continues to increase scale for the 1000V to catch up to VMware, is it needed for *most* customers?  Rather if vMotion is contained to cluster size, would it not be advantageous to maintain 2, 3, or even 4 VSMs on the 1000V to reduce single points of failure for the virtual network?  Once could argue either way, but what is your take?<br /><br />Thanks,<br />Jason (@jedelman8)<br /><br /></p>
+            <div class="comment-content">I look forward to v2 of this post in a few months when multicast isn&#39;t being used and packet replication is being performed somewhere else - vswitch or node in control cluster, etc.<br /><br />Many customers limit vMotion to 32 physical hosts since that is the largest size of a cluster.  It has been validated you can vMotion between clusters under a given set of conditions, but do [large] customers do this?   I wonder myself about the holy grail.  What&#39;s your take?  What are you seeing?<br /><br />As Cisco continues to increase scale for the 1000V to catch up to VMware, is it needed for *most* customers?  Rather if vMotion is contained to cluster size, would it not be advantageous to maintain 2, 3, or even 4 VSMs on the 1000V to reduce single points of failure for the virtual network?  Once could argue either way, but what is your take?<br /><br />Thanks,<br />Jason (@jedelman8)<br /><br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4541038643683295148">18 April 2013 17:51</a>
+                <a rel="nofollow" id="c4541038643683295148" href="#4541038643683295148">18 April 2013 17:51</a>
               </span>
             </div>
-            <p class="comment-content">Hi!<br /><br />v2 of this post - I&#39;m anxiously waiting to see what Cisco did for non-multicast VXLAN ;)<br /><br />Larger-scale vMotion - while vMotion outside of a DRS cluster is not automatic (you have to trigger it manually), people use it for coarse-grained resource allocation (if a cluster becomes overloaded, it&#39;s pretty easy to move a whole app stack somewhere else) or prior to large-scale maintenance activities ... and then there&#39;s the long-distance unicorn-riding variant ;)<br /><br />As for &quot;what most customers need&quot; - 80+% of them are probably fine with a single cluster or two. That&#39;s 60 servers; if you buy high-end gear, you could pack few thousand VMs onto them. More than enough in many cases, unless you&#39;re going down the full-VDI route.<br /><br />Multiple NX1KV instances per DC is obviously a good idea, but keep in mind that<br /><br />A) you cannot vMotion a running VM across them;<br />B) Configuration changes made in one vDS are not propagated to another one, so you need an automation layer on top (could be of the cut-and-paste variant :D ).<br /><br />Ivan</p>
+            <div class="comment-content">Hi!<br /><br />v2 of this post - I&#39;m anxiously waiting to see what Cisco did for non-multicast VXLAN ;)<br /><br />Larger-scale vMotion - while vMotion outside of a DRS cluster is not automatic (you have to trigger it manually), people use it for coarse-grained resource allocation (if a cluster becomes overloaded, it&#39;s pretty easy to move a whole app stack somewhere else) or prior to large-scale maintenance activities ... and then there&#39;s the long-distance unicorn-riding variant ;)<br /><br />As for &quot;what most customers need&quot; - 80+% of them are probably fine with a single cluster or two. That&#39;s 60 servers; if you buy high-end gear, you could pack few thousand VMs onto them. More than enough in many cases, unless you&#39;re going down the full-VDI route.<br /><br />Multiple NX1KV instances per DC is obviously a good idea, but keep in mind that<br /><br />A) you cannot vMotion a running VM across them;<br />B) Configuration changes made in one vDS are not propagated to another one, so you need an automation layer on top (could be of the cut-and-paste variant :D ).<br /><br />Ivan</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://jedelman.com" rel="nofollow">Jason Edelman (@jedelman8)</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4850796922078959672">19 April 2013 15:36</a>
+                <a rel="nofollow" id="c4850796922078959672" href="#4850796922078959672">19 April 2013 15:36</a>
               </span>
             </div>
-            <p class="comment-content">What did you say about manual? :)  Is that the holy grail?  For a customer of that size, I&#39;d imagine they can write some scripts using the vSphere SDK/APIs.<br /><br />With talking to Cisco a few weeks back, they were recommending to use DCNM actually and a Master VSM interestingly enough.  Per them, &quot;Create Master VSM with all the needed profiles and network configuration. Use the running config to create exact config across all other Nexus 1000V VSMs. Changes made to master VSM can be replicated to all other VSMs.&quot;  <br /><br />Replicated might mean manual scripting as you call the cut-and-paste variant without DCNM.<br /><br />-Jason (@jedelman8)</p>
+            <div class="comment-content">What did you say about manual? :)  Is that the holy grail?  For a customer of that size, I&#39;d imagine they can write some scripts using the vSphere SDK/APIs.<br /><br />With talking to Cisco a few weeks back, they were recommending to use DCNM actually and a Master VSM interestingly enough.  Per them, &quot;Create Master VSM with all the needed profiles and network configuration. Use the running config to create exact config across all other Nexus 1000V VSMs. Changes made to master VSM can be replicated to all other VSMs.&quot;  <br /><br />Replicated might mean manual scripting as you call the cut-and-paste variant without DCNM.<br /><br />-Jason (@jedelman8)</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5126239924939449749">20 April 2013 21:59</a>
+                <a rel="nofollow" id="c5126239924939449749" href="#5126239924939449749">20 April 2013 21:59</a>
               </span>
             </div>
-            <p class="comment-content">vShield (vCloud Network and Security) Manager can configure VXLAN not only on vSphere Distributed Switch but also on Nexus 1000V thanks to Network Segmentation Manager API.<br />Besides 60 host Nexus 1000V limitation, the other painful limit is 2048 ports per switch which means less than 34 VMs per host - hardly cloud scale.<br />vMotion across distributed virtual switches is (currently) not possible but you also need shared storage which you most likely will not have across many clusters. That means you can deploy VM (but not migrate) anywhere in the datacenter.</p>
+            <div class="comment-content">vShield (vCloud Network and Security) Manager can configure VXLAN not only on vSphere Distributed Switch but also on Nexus 1000V thanks to Network Segmentation Manager API.<br />Besides 60 host Nexus 1000V limitation, the other painful limit is 2048 ports per switch which means less than 34 VMs per host - hardly cloud scale.<br />vMotion across distributed virtual switches is (currently) not possible but you also need shared storage which you most likely will not have across many clusters. That means you can deploy VM (but not migrate) anywhere in the datacenter.</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://it20.info" rel="nofollow">Massimo Re Ferre'</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#509932930510072435">18 May 2013 01:57</a>
+                <a rel="nofollow" id="c509932930510072435" href="#509932930510072435">18 May 2013 01:57</a>
               </span>
             </div>
-            <p class="comment-content">&gt;That means you can deploy VM (but not migrate) anywhere in the datacenter.<br /><br />Which I believe is an even more interesting use case for large customer with scattered free resources here and there but very unflexible vlan assignments to those islands (&quot;oh that cluster is pretty idle why don&#39;t you deploy your new VM there?&quot;, &quot;yeah but the VLAN that I need is only available in this overloaded cluster&quot;)-ish. <br /><br />Massimo. <br /><br /></p>
+            <div class="comment-content">&gt;That means you can deploy VM (but not migrate) anywhere in the datacenter.<br /><br />Which I believe is an even more interesting use case for large customer with scattered free resources here and there but very unflexible vlan assignments to those islands (&quot;oh that cluster is pretty idle why don&#39;t you deploy your new VM there?&quot;, &quot;yeah but the VLAN that I need is only available in this overloaded cluster&quot;)-ish. <br /><br />Massimo. <br /><br /></div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7289786236071110217">09 July 2013 15:12</a>
+                <a rel="nofollow" id="c7289786236071110217" href="#7289786236071110217">09 July 2013 15:12</a>
               </span>
             </div>
-            <p class="comment-content">If they do not have the vlans located &quot;everywhere&quot; - how are end users going to get to them ?<br /></p>
+            <div class="comment-content">If they do not have the vlans located &quot;everywhere&quot; - how are end users going to get to them ?<br /></div>
           </div>
         </li>
       </div>

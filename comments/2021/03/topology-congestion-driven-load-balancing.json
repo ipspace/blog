@@ -1,0 +1,71 @@
+{
+   "comments": [
+      {
+         "date": "11 March 2021 02:37",
+         "html": "<p>&gt;&gt;the only exception I&rsquo;m aware of is Cisco ACI (at least they claim so)\nJuniper VCF also supports that (at least they claim so):\nhttps://www.juniper.net/documentation/en_US/junos/topics/concept/virtual-chassis-fabric-traffic-flow-understanding.html</p>\n",
+         "id": "462",
+         "name": "Alexander Grigorenko",
+         "pub": "2021-03-11T14:37:37",
+         "type": "comment"
+      },
+      {
+         "date": "11 March 2021 04:40",
+         "html": "<p>Nokia has such an dynamic SDN solution, but I have not heard too much how successful it is in real life...</p>\n\n<p>https://www.nokia.com/blog/path-computation-ip-network-optimization/</p>\n",
+         "id": "463",
+         "name": "Bela Varkonyi",
+         "pub": "2021-03-11T16:40:58",
+         "type": "comment"
+      },
+      {
+         "date": "11 March 2021 05:42",
+         "html": "<p>@Bela: That seems to be something similar to Juniper&#39;s NorthStar (and Cariden MATE).</p>\n\n<p>There&#39;s no reason it wouldn&#39;t work well, but we both know centralized traffic management as done with PCE controllers works well only if you strictly enforce ingress traffic flows (so you never get into congestion-driven load balancing).</p>\n",
+         "id": "464",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-03-11T17:42:45",
+         "type": "comment"
+      },
+      {
+         "date": "11 March 2021 05:45",
+         "html": "<p>Left my comments on Li (under this post), copy, if of value</p>\n",
+         "id": "465",
+         "name": " JeffT",
+         "pub": "2021-03-11T17:45:01",
+         "type": "comment"
+      },
+      {
+         "date": "11 March 2021 07:41",
+         "html": "<p>Most data center switches these days support sFlow. Enabling sFlow telemetry across the fabric provides centralized real-time visibility into large flows that can be used to detect link congestion, identify the flow(s) causing the congestion, and the paths they take across the fabric. </p>\n\n<p>Creating a stable feedback loop (avoiding oscillations) to load balance the flows is challenging! A proof of concept using segment routing was shown at ONS/ONF 2015.</p>\n\n<p>https://www.youtube.com/watch?v=CBcPLm-ujPI</p>\n\n<p>I don&#39;t know of any production controllers using this approach, but even without a controller, the visibility provides useful insight into fabric performance.</p>\n",
+         "id": "466",
+         "name": " Peter Phaal",
+         "pub": "2021-03-11T19:41:35",
+         "type": "comment"
+      },
+      {
+         "date": "13 March 2021 01:53",
+         "html": "<p>Ivan, a few thoughts after reading your post and the comments:</p>\n\n<p>Dynamic LB, is something available in Broadcom ASIC, so switches that make use of them like those of Arista for ex, have that feature. Juniper Adaptive LB, from Alex&#39;s link above, which was first made available with the Trio chipset AFAIK, works on the same principle. Basically in DLB and ALB, the sender monitors the ECMP bunble and dynamically adjust the loads to provide better balancing of traffic across member links. The sender has no visibility into what&#39;s going on at the downstream neighbors&#39; status, it makes traffic reshuffling decision based on its own local info of the loads on individual ECMP links.</p>\n\n<p>At first glance, that seems to be what ACI is doing too:</p>\n\n<p>https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/1-x/aci-fundamentals/b_ACI-Fundamentals/b_ACI-Fundamentals_chapter_010010.html#concept_F280C079790A451ABA76BC5C6427D746</p>\n\n<p>But in fact, ACI takes this concept one step further. Cisco was able to come up with a new scheme that enables the sender to see into the traffic condition at the downstream neighbors and adjust its sending rate accordingly. So yes, when the path L1-S1-L2 becomes congested (on the S1-L2 leg), L1 will get enough feedback from S1-L2 status to reduce its traffic rate. They dub this technology CONGA, or Congestion Aware LB, as confirmed by Cisco people here:</p>\n\n<p>https://community.cisco.com/t5/jive-developer-archive/nso-aci-scope/td-p/3572137</p>\n\n<p>CONGA acknowledges that SDN/centralized approaches are simply too slow to deal with low-latency DC environment, so distributed methods are needed. It also realizes that schemes like MPTCP, albeit providing some improvement, are essentially still reactive to congestion, and so, to provide better LB beyond what MPTCP can offer, a proactive scheme will have to be used. That&#39;s why it goes in that direction, which, coincidentally, is the same reasoning that underpins the concept of DC-TCP. </p>\n\n<p>Wrt to MPTCP, the flowbender paper also points out the very same weaknesses, i.e. it makes Incast worse (by causing starvation/Oucast problem) and it does nothing for short flows (due to its overhead),which can account for a big majority of flows in DC environment as well, and finally it may require a lot of sub-flows to work its magic. </p>\n\n<p>CONGA basically uses flowlet switching to deflect traffic on sensing congestion. Flowlet is alright, it&#39;s one step beyond ECMP when it comes to sophistication and effectiveness, but it&#39;s undoubtedly complex, as it involves figuring out the optimum inter-burst time, which has to be larger than the max latency among the ECMP paths, to avoid reordering. In practice, for ACI, this is set to a specific value, which, if too low (100us) can lead to lots of reordering, or if too high (500us) can lead to increased RTT. </p>\n\n<p>I personally feel the best way to go, utilization-wise, is to move beyond flowlet, to combine a proactive scheme like Conga or DCTCP or both (DCTCP doesn&#39;t require special hardware like CONGA) with packet-spraying ECMP, essentially amounting to how a high-end router operates internally within its crossbar or multi-stage fabric. </p>\n\n<p>The reason a router fabric can deal with reordering of cell is twofold. First, with internal speedup and close to zero (or zero) buffer crossbar, re-ordering is totally eliminated. Second, in case of multi-stage crossbar inside high-density routers like CRS, where the middle stage has buffer and re-ordering is inevitable, a small re-ordering buffer can be placed at the destination/egress port, for SAR purpose. </p>\n\n<p>A 2nd method of dealing with reordering in Multi-stage xbar router, as utilized by CRS, is to force switch-flow order by eliminating cell spray, effectively turning the inside of a CRS into a network of virtual circuits. With DCs having lots of bandwith these days, there are talks of bringing back to TDMA VC back into the DC to deal with latency as well. Everything old will be new again :)). </p>\n\n<p>DC networks usually are bandwidth-plenty (speedup condition), with low RTT making a bit of reordering tolerable to most apps. Add to that shallow-buffer switches, and we have all conditions necessary for packet spraying to be viable. That way you don&#39;t need multiple IPs for a host either. The reordering stage can be implemented on a SmartNIC, or by modifying the logic of GRO inside the hypervisor itself. </p>\n\n<p>This is the link to CONGA, if you want to take a deeper look:</p>\n\n<p>https://people.csail.mit.edu/alizadeh/papers/conga-sigcomm14.pdf</p>\n",
+         "id": "469",
+         "name": " Minh Ha",
+         "pub": "2021-03-13T01:53:21",
+         "type": "comment"
+      },
+      {
+         "date": "13 March 2021 02:18",
+         "html": "<p>Re UCMP and QoS-aware routing, I think the latter is totally unneeded given better solutions can be readily made available. QoS routing is just a solution looking for problem IMO. Some people probably push that in order to create a competitive advantage in their products, and I don&#39;t think it works or will work for that matter. Networking products these days are essentially a race to the bottom, a sign of a very mature, saturating industry. </p>\n\n<p>Not to mention, I don&#39;t know how one can propose a scalable scheme of QoS routing for Link State Protocol that involves constant recalculation of SPT. For networks with thousands of nodes or higher in a leaf-spine or fat-tree fabric, it will be very expensive, in terms of computation and flooding. For protocols like EIGRP, as long as a route satisfies the feasibility condition so no loop is possible, it can be used as an UCMP alternate. Calculation is distributed among the nodes, so it&#39;s relatively painless. That&#39;s why traditionally in hub and spoke environments -- which is what leaf-spine and fat-tree amount to -- distance vector protocols are recommended over LSP. </p>\n\n<p>For me, the use of BGP in DC fabric is an implicit acknowledgement of the preference for DV routing protocols in that kind of topology. The choice of BGP is unfortunate however, as from the very beginning, BGP was designed as a reachability-exchanging protocol, not a pathfinder, so it&#39;s not optimized for finding paths, and so is slower to converge. If one tries so hard by tweaking it left, right and center, to improve its convergence status, can we call it BGP anymore? And why not give that effort to improve an IGP, which was from the very beginning, made and optimized with that intention in mind?</p>\n\n<p>EIRGP was looked down upon because it&#39;s from Cisco, and it doesn&#39;t have traffic engineering feature. But that&#39;s not an intrinsic problem of the protocol. ERO can be implemented distributedly with EIGRP, and it would be more scalable than calculating it from a single HER. Since OpenEIGRP is available for experimentation, if people really want, they can try tweaking it. But even without all those trappings, EIGRP as-is is perfectly viable for people who want to build a fabric out of Cisco gadgets. </p>\n",
+         "id": "470",
+         "name": " Minh Ha",
+         "pub": "2021-03-13T02:18:37",
+         "type": "comment"
+      },
+      {
+         "date": "14 March 2021 06:39",
+         "html": "<p>@JeffT: Sorry Jeff - wanted to read your comments but can&#39;t find them. <br />\ncheers/ciao <br />\nAndrea </p>\n",
+         "id": "472",
+         "name": " Andrea Di Donato",
+         "pub": "2021-03-14T06:39:18",
+         "type": "comment"
+      }
+   ],
+   "count": 8,
+   "type": "post",
+   "url": "2021/03/topology-congestion-driven-load-balancing.html"
+}

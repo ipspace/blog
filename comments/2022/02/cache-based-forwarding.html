@@ -1,0 +1,291 @@
+<div class="comments post" id="comments">
+  <h4>8 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1044">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1044" href="#1044">24 February 2022 03:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This is how OpenVSwitch (https://blog.ipspace.net/2013/04/open-vswitch-under-hood.html) works, too: A first packet triggers a lookup and evaluation of ACLs, then the flow entry is cached for X seconds. ECMP forwarding is preserved because there is a &#39;multipath&#39; action that is evaluated for each packet; I know because I personally fixed the hashing (https://mail.openvswitch.org/pipermail/ovs-dev/2019-June/359489.html)</p>
+
+<p>This implementation is not quite so &quot;obsolete&quot; as one might think; for example, 1000s of Nuage VRS/NSGs use it as we speak</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1048">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1048" href="#1048">25 February 2022 12:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>LISP is a more complex animal nowadays. Your knowledge of LISP seems to be quite outdated.</p>
+
+<p>Nowadays it is used with reliable transport and full PubSub.
+There is no caching behavior at all. Each xTR has a full routing table.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1049">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1049" href="#1049">25 February 2022 03:58</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for the comment. Updated the blog post accordingly.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1050">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1050" href="#1050">26 February 2022 02:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In general, I support the main point of the blog post: cache based forwarding is a problematic scalability mechanism, i.e., scalability is limited and performance collapses beyond the limit.</p>
+
+<p>Topology based forwarding has scalability limits, too. Once there are more routes than can fit the (hardware) forwarding tables, networking devices crash, fall back to CPU based forwarding (i.e., performance collapses), or deliver some packets to the wrong destination (I&#39;ve seen all of those&hellip;).</p>
+
+<p>Firewalls, i.e., devices where network topology is just a small part of the forwarding decision, often employ flow caches (for individual data flows) for performance optimization. In some &quot;high-end&quot; firewalls this flow cache is offloaded to hardware. Since per flow offload is often the best such a device can use, it is done in practice, and usually works well enough. [A stateless packet filter in front of a stateful firewall can help staying inside the performance envelope of said firewall.]</p>
+
+<p>Regarding networking devices primarily used for routing and bridging, the Enterasys Networks N-Series and their successors, K-Series and S-Series, based on CoreFlow resp. CoreFlow2 ASICs, used caching of individual flows in hardware forwarding tables as their only forwarding architecture. In practice, those switches worked well in the &quot;enterprise&quot; networks they were designed for. Of course it was possible to create overload with specific tests to demonstrate the potential for problems.</p>
+
+<p>Since per flow hardware offload allowed implementing complex, but still high performance, traffic filtering policies, replacing CoreFlow(2) based devices with networking devices using topology based forwarding often provided challenges regarding traffic filtering policies (i.e., either keep complex line-rate traffic filters, or use a different networking device with faster interfaces and topology based forwarding, but not both).</p>
+
+<p>I provide the above examples to illustrate the complexities involved. In theory, cache based forwarding does not scale. In practice, it may scale sufficiently, at least for a while (e.g., a decade inside an &quot;enterprise&quot; network before deploying the next device generation). It definitely breaks down when overloaded.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1051">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1051" href="#1051">27 February 2022 05:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; we had to use router CPU to walk</p>
+
+<p>I think you are mixing up two things. The forwarding entries had a simple combination of: (destination, outgoing interface, mac-address (actually encaps header)). So during packet-forwarding, no walk needed to be done. Just a simple lookup. The &quot;walking you are referring to happened during &quot;routing table maintenance&quot;. E.g. BGP walking its NLRI entries, to check if the nexthop still had the best IGP-metric, and whether nexthops were still valid. This was not done during route-lookup.</p>
+
+<p>Two-stage lookups during forwarding were introduce later. Because of PIC. This allows the RIB to send 1 message to the FIB, and the FIB makes 1 adjustment, impacting many (possibly tens or hunderds of thousands of routes). The trade-off here is: slightly more complex lookup (2 stages) versus much quicker updating the FIB. Note, FIBs in hardware can do in the order of 10K+ changes per second. Not very fast.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1057">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1057" href="#1057">28 February 2022 05:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Bad wording. Should have said &quot;multiple lookups in the IP routing table&quot;. Fixed.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1052">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk Smit</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1052" href="#1052">27 February 2022 05:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; IP prefix (using a calculated subnet mask based on an &ldquo;interesting&rdquo; algorithm.</p>
+
+<p>Are you sure it was a prefix? That is not what I remember. (Note, I have never worked on forwarding, I probably don&#39;t know what I am talking about. And I am not speaking in behalf of previous, current or future employers).</p>
+
+<p>1) I remember doing &quot;show ip fast-switching&quot; or some sort command. Seeing destination ip-addresses. Not prefixes. It&#39;s been almost 30 years, so maybe I remember it wrong.</p>
+
+<p>2) When I heard about OpenFlow doing on-demand caching, I was already wondering how they would scale that. Because with on-demand caching, you can&#39;t do summarization. Well, I wouldn&#39;t know how to do that. Let&#39;s take an example:</p>
+
+<p>A router has 3 routes: 0/0 -&gt; eth0, 10.1/16 -&gt; eth1 and 10.1.1/24 -&gt; eth2. Suppose a packet arrives for 10.1.9.9. A cache lookup happens -&gt; no entry. So packet is sent to the controller (aka process-switched). 10.1/16 -&gt; eth1 matches. So an entry for 10.1/16-&gt;eth1 is created in the forwarding cache. Next a packet for 10.1.1.1 arrives. Box does a lookup in the cache, 10.1/16-&gt;eth1 matches. The packet is forwarded out eth1. That is wrong. I have no idea how to fix this, unless you a) do caching per ip-address in stead of prefix, or 2) prepopulate the cache (aka FIB-switching). If someone can solve this problem, please let us know.</p>
+
+<p>&gt; packets had to wait for things like OSPF SPF run or BGP table scan to complete before they could be processed</p>
+
+<p>Utter non-sense. Sorry. The IOS scheduler would indeed not interrupt processes. But that didn&#39;t mean processes would keep running forever. On the contrary. One of the arts of writing router-software was to cut you task up in smaller steps, and do so called &quot;process_yield()&quot;s between every step. The idea was that a process could run for a few milliseconds, and then voluntarily release the CPU. Next time that process was scheduled (e.g. after packets were forwarded or someone did a show-command), the process would continue with the SPF or table-walk were it left off last time. If a process didn&#39;t give up the CPU, a CPUHOG warning was displayed. And the IOS-programmer couild introduce more sched_yield()s in her/his code.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1054">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk Smit</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1054" href="#1054">27 February 2022 06:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; ECMP scenario, only a single path would be cached</p>
+
+<p>Not true. A single path for a particular IP-address would be cached. Very similar to today&#39;s hashing-function. The only difference is that in fast-switching, the port-number was not used in the hashing. What happened is that when a destination-address was encountered that was not in the cache yet, the packet was process-switched. And in the RIB, when a destination had multiple next-hops, the entry had a pointer to the last next-hop used. So process-switching used the next next-hop to install the fast-switch cache-entry. That is why it was said: process-switching load-balances per packet, fast-switching load-balances per ip-address. I remember giving advice to TAC-customers to disable fast-switching when they wanted per-packet load-balancing over 2 slow lines (e.g. 2 ISDN channels).</p>
+
+<p>&gt; Figuring out what entries one needs to invalidate must have been an interesting challenge</p>
+
+<p>I think this problem was never solved. Cisco tried a few approaches. And then realized it wasn&#39;t possible. I think this process lasted about a year (or less) (somewhere in 1995). In the end, the only valid solution was to invalidate the whole cache on any change to the routing table.</p>
+
+<p>Cisco then started with FIB-switching (which later was called CEF).</p>
+
+<p>&gt; they simply flushed the whole cache when they couldn&rsquo;t decide what to do</p>
+
+<p>That is what I remember too.</p>
+
+<p>&gt; ARP/ND table</p>
+
+<p>I think fast-switching was dead before IPv6 took off. I think all cisco platforms had switched to FIB-switching very quickly. The CEF project started spring 1996. I think all platforms, including low-end, had switched to CEF in 2, maybe 3 years. (Someone else might remember better than me). Nobody was seriously using IPv6 in 1998. I doubt fast-switching every supported IPv6.</p>
+
+<p>&gt; Internet core experienced numerous regional brownouts in those days until Cisco managed to get its act together</p>
+
+<p>This makes it look like cisco was clueless. May I remind you that in those years (1994-1997) there was the biggest explosion of growth of the Internet. And that besides cisco there were zero companies that could build routing software that came even close to working properly. It was until 1998-1999 that another company started selling routers that were deployable (and that software was mostly written by ex-cisco programmers).</p>
+
+<p>&gt; exception .... cache might be large enough to hold all potential destinations</p>
+
+<p>No, even then caching doesn&#39;t work. Not if the cache-entries change once in a while. The problem is not as much the size of the cache, it is the maintaining of the cache.</p>
+
+<p>An old joke about programming: &quot;There are only two hard things in Computer Science: cache invalidation and naming things&quot;. (Quote by Phil Karlton, according to the Internet). Fast-switching is another proof of this.</p>
+
+<p>&gt; Limited memory was only reason Cisco went down the cache-based forwarding</p>
+
+<p>I don&#39;t think so. I think the reason was fast-forwarding was done during an interrupt-handler. And thus had to be quick. A simple hash-table was used as cache. If fast-switching had been using the RIB, the locking (or actually disabling interrupts) when changing the RIB would have been a nightmare. And as look-entries were a combination of recursive-lookup, arp-lookup and pre-computed encaps-header, why not put that in a separate table?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1055">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk Smit</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1055" href="#1055">27 February 2022 06:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; This implementation is not quite so &quot;obsolete&quot; as one might think; for example, 1000s of Nuage VRS/NSGs use it as we speak</p>
+
+<p>That is because you are talking about forwarding on a host. Not on a router. With current CPU and RAM, almost solution works to solve a toy problem on a toy device in a toy network.</p>
+
+<p>&gt; Firewalls, i.e., devices where network topology is just a small part of the forwarding decision, often employ flow caches (for individual data flows) for performance optimization.</p>
+
+<p>As you (Erik) note, firewalls are different from routers. Because 1) a firewall typically has fewer flows through it than a (core) router. 2) A typical firewalls has only 2 interface, &quot;inside&quot; and &quot;outside&quot;. And those interfaces don&#39;t change often. The challenges of a firewall are totally different than the challenges of a (core) router.</p>
+
+<p>&gt; In practice, it may scale sufficiently</p>
+
+<p>Again, when solving toy problems on toy devices in toy networks, almost anything will work. :)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1062">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1062" href="#1062">01 March 2022 09:37</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The future opportunity is to use selective subscription in LISP. Then you can have a full control of  destinations that are interesting for you. So you can still reduce the memory needs, you do not need to have a full routing table everywhere, but you will not suffer by the generic caching algorithm issues. Your LISP map-cache will be under your full control. </p>
+
+<p>A combination of PubSub with selective subscription might be an interesting solution for large scale mobility support. Especially, with active multi-link moving networks. We are currently studying these options...</p>
+
+<p>Unfortunately, selective subscription implementation is lagging behind. But it might come soon...</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

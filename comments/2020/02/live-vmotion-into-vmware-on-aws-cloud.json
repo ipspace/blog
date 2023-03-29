@@ -1,153 +1,169 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "20 February 2020 15:37",
-          "html": "Thanks for the comments. Much appreciated (as always). The one thing I&#39;d love to hear your take on is &quot;active-active NSX multihoming&quot;. <br /><br />I probably missed something, but I can&#39;t see how to make local egress work in NSX-T 2.5",
-          "id": "368855938795091982",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2020-02-20T15:37:00.361+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 15:58",
-          "html": "There is no local egress as of now in NSX-T 2.5. You can do an active-active (A/A) scenario (per DC, not per VLAN) with two sets of VLANs and active-standby + standby-active way. You can then say that in OTV we have a local egress. That&#39;s true. But I don&#39;t perceive this feature as a critical one. Why? Because local egress requires also local ingress which is much more difficult to do. If we don&#39;t have a local ingress by using NAT/DNS/LISP/host route injection then we end up with a requirement for a stretched FW cluster at the edge which is usually part of a DC architecture. Then we will have a complex fate sharing solution. <br /><br />So in terms of A/A I would say that NSX-T and OTV are equal. In OTV the traffic don&#39;t have to travel across DCI (which may be an advantage) but local egress requires local ingress (which may be a disadvantage). In any case, in OTV L2 must be stretched anyway even in the A/A scenario and fate sharing still exists in the context of BUM traffic.<br /><br />In terms of NSX-T, I would advise to have workloads active per VLAN in one site as much as possible. In the case of a disaster of maintenance move all related VLAN workloads to the other site.",
-          "id": "9191651770399445799",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Piotr Jablonski",
-          "profile": "https://www.blogger.com/profile/06074343110093815035",
-          "pub": "2020-02-20T15:58:48.686+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 16:01",
-          "html": "*disaster or maintenance",
-          "id": "1370036276771247626",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Piotr Jablonski",
-          "profile": "https://www.blogger.com/profile/06074343110093815035",
-          "pub": "2020-02-20T16:01:35.159+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 16:04",
-          "html": "Nice to see we agree on the technical details. Now imagine a VM moved into VMware-Cloud-on-AWS. How will the traffic from that VM reach the clients?",
-          "id": "7085249032991511785",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2020-02-20T16:04:17.116+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 16:46",
-          "html": "Every solution has its purpose. For example, VMC may be useful as a cold/warm DR site or in reverse VMC can be a primary site and a DC as a DR site. VMC can be used as on-demand and scalable resources for dev/stage environments.<br /><br />If there is a layered app where some components must be on-prem and in VMC then workloads from a specific subnet or layer should be contained either on-prem or in VMC. For example, a front-end in VMC, backend on-prem, DB master on-prem with replication to VMC or AWS native service. Stretching workload belonging to the same traffic group and a subnet should be avoided as much as possible. That&#39;s the architectural advice which can be taken regardless of NSX-T in any hybrid-cloud scenario with Istio, Google Anthos, etc.<br /><br />Going to your question, how clients reach this VM in VMC? <br />If this is a front-end VM then through DNS and the Internet as other front-end workloads.  <br />If this is a backend VM then through a routing between VMC and DC as other backend-end workloads. <br />If this is a front-end VM which is moved out from the rest front-end workloads, then &quot;Huston, we have a problem&quot;. We can resolve it in a less or more complex way. IMHO, this is not an issue with NSX-T but with the architecture and some admin habits. :)",
-          "id": "4352178688940637845",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Piotr Jablonski",
-          "profile": "https://www.blogger.com/profile/06074343110093815035",
-          "pub": "2020-02-20T16:46:22.305+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 16:49",
-          "html": "Yet again we&#39;re in agreement, but the &quot;Houston, we have a problem&quot; scenario is exactly what happens when you stretch a VLAN and vMotion a VM from on-premises vSphere cluster into VMC... and as you wrote it&#39;s an architectural problem. QED ;)",
-          "id": "5072850062064228320",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2020-02-20T16:49:24.626+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 16:50",
-          "html": "The question was for egress, not ingress, so similarly here. With contained workloads, the traffic is going outside to the clients via the local exit. Like we discussed this hygiene option for A/A data centers. If one workload is moved out of the group to the other site, then again we have a L2 DCI dependency.",
-          "id": "2802491159796797123",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Piotr Jablonski",
-          "profile": "https://www.blogger.com/profile/06074343110093815035",
-          "pub": "2020-02-20T16:50:48.415+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 16:53",
-          "html": "... and if we don&#39;t &quot;move one workload out of the group&quot; then why do we need live vMotion in the first place? Wouldn&#39;t it be simpler to shut down VMs and restart them on the other end?",
-          "id": "9041460934192375563",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2020-02-20T16:53:35.924+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 16:56",
-          "html": "Yes the architectural problem of managing the whole stack, not the NSX-T architecture. Agree, the fact that a car can float in the sea for a while doesn&#39;t mean we should use it as a boat.<br /><br />I perceive this L2 stretch option useful for temporary, migration, maintenance, fast scale out option. Maybe for some tests, maybe staging, risky for production.",
-          "id": "5452724436474929534",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Piotr Jablonski",
-          "profile": "https://www.blogger.com/profile/06074343110093815035",
-          "pub": "2020-02-20T16:56:24.163+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 16:58",
-          "html": "&quot;I perceive this L2 stretch option useful for temporary, migration, maintenance&quot; &lt;&lt; I could agree to that. Scale-out into the cloud is a myth.<br /><br />&quot;Maybe for some tests, maybe staging, risky for production.&quot; &lt;&lt; and how do you think it will be marketed, sold and used?",
-          "id": "8522869704826631739",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2020-02-20T16:58:18.741+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        },
-        {
-          "date": "20 February 2020 17:05",
-          "html": "&quot;why do we need live vMotion in the first place? Wouldn&#39;t it be simpler to shut down VMs and restart them on the other end?&quot;<br /><br />If it takes time to move all workloads, the client doesn&#39;t know what are the layers, what are the dependencies, then - WITH A CARE - he can use live vMotion. Then in a maintenance window he need to reconfigure routing/DNS instead of spending time for copying data. Eventually, what I would do, is to copy disks or do incremental snapshots and then cold start VM instances on the other side as you suggest. But there is also a risk that my disk data is not so accurate with the latest on-prem data. We need more time to stop workloads and copy the latest version. So the focus may be required in this part -&gt; storage replication. With live vMotion all data from disk and memory is transferred. ",
-          "id": "1884083303326114262",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Piotr Jablonski",
-          "profile": "https://www.blogger.com/profile/06074343110093815035",
-          "pub": "2020-02-20T17:05:29.042+01:00",
-          "ref": "7911389818209296845",
-          "type": "comment"
-        }
-      ],
-      "date": "20 February 2020 15:32",
-      "html": "Ivan,<br /><br />Just a few comments:<br />1. &quot;VMware-on-AWS has little to do with AWS or public cloud&quot;. What about the native AWS dedicated host/instance or EC2/IaaS offering? VMC on AWS can be treated like these services. You can say that native services do not involve typical L2 mechanisms like in NSX. Yes, but this is not the primary public cloud factor. There is an AWS orchestrator integration with VMC. In the case of a failure, you can have a spare physical host in 10 minutes. You can connect from VMC to a growing list of AWS services natively without L2 or the Internet access.<br /><br />2. \u201chow do you do a vMotion between two NSX-T instances or between a traditional vSphere cluster and an NSX-T instance?\u201d You can use HCX not only between NSX-v and NSX-T, but also from vSphere, KVM, Hyper-V sites. More info:<br />https://cloud.vmware.com/vmware-hcx/faq#technical-information<br /><br />3. &quot;If anything, the L2 DCI features they\u2019re offering in NSX-T release 2.5 are worse than what Cisco had in OTV a decade ago&quot;. I deployed both NSX and OTV, and let me disagree. OTV was a real step forward in Data Center Architectures, but the control-plane and data-plane capabilities of NSX-T regarding L2 features even L2 DCI are prevailing. First of all, NSX can better protect against L2 loops as VXLAN tunnels are hosted on servers. This minimizes the risk or unexpected bridging of backend VLAN which can cause a total failure in OTV. BUM is better contained in NSX. With NSX your underlay xSTP instance can be limited more than in OTV. Tunnels are better distributed/load balanced in NSX because in OTV tunnels are aggregated on a pair of edge platforms. It is a way easier to do multihoming in NSX. In A/A scenario, no need to manually filter HSRP VMAC addresses. <br /><br />Don&#39;t treat my comments as a person who have to defend VMware. I can also see gaps and threats related to NSX-T. There is a space for improvement as everywhere but don&#39;t you think that what you said is an exaggeration? ;)<br /><br />All the best!",
-      "id": "7911389818209296845",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Piotr Jablonski",
-      "profile": "https://www.blogger.com/profile/06074343110093815035",
-      "pub": "2020-02-20T15:32:54.205+01:00",
-      "ref": "3004834405794211547",
-      "type": "comment"
-    },
-    {
-      "date": "20 February 2020 17:18",
-      "html": "&quot;Scale-out into the cloud is a myth.&quot;<br /><br />What about a use case for development/staging where the company want to test a new app on 10 servers and they have 2 on-prem and they don&#39;t need to wait for new hardware? They can run 8 servers or more in the cloud. For a production use case, if workloads are contained, then scaling-out a particular app layer is a viable option. Do you think a VPN/interconnect/DCI kills benefits of the scale-out?<br /><br />&quot;and how do you think it will be marketed, sold and used?&quot;<br /><br />It is a duty of a pre-sales, consultant, vendor representative to inform about a risk. So this can be sold as an added customer value. :)",
-      "id": "6431086606253857338",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Piotr Jablonski",
-      "profile": "https://www.blogger.com/profile/06074343110093815035",
-      "pub": "2020-02-20T17:18:46.577+01:00",
-      "ref": "3004834405794211547",
-      "type": "comment"
-    }
-  ],
-  "count": 13,
-  "id": "3004834405794211547",
-  "type": "post",
-  "url": "2020/02/live-vmotion-into-vmware-on-aws-cloud.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "20 February 2020 15:37",
+               "html": "Thanks for the comments. Much appreciated (as always). The one thing I&#39;d love to hear your take on is &quot;active-active NSX multihoming&quot;. <br /><br />I probably missed something, but I can&#39;t see how to make local egress work in NSX-T 2.5",
+               "id": "368855938795091982",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2020-02-20T15:37:00.361+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 15:58",
+               "html": "There is no local egress as of now in NSX-T 2.5. You can do an active-active (A/A) scenario (per DC, not per VLAN) with two sets of VLANs and active-standby + standby-active way. You can then say that in OTV we have a local egress. That&#39;s true. But I don&#39;t perceive this feature as a critical one. Why? Because local egress requires also local ingress which is much more difficult to do. If we don&#39;t have a local ingress by using NAT/DNS/LISP/host route injection then we end up with a requirement for a stretched FW cluster at the edge which is usually part of a DC architecture. Then we will have a complex fate sharing solution. <br /><br />So in terms of A/A I would say that NSX-T and OTV are equal. In OTV the traffic don&#39;t have to travel across DCI (which may be an advantage) but local egress requires local ingress (which may be a disadvantage). In any case, in OTV L2 must be stretched anyway even in the A/A scenario and fate sharing still exists in the context of BUM traffic.<br /><br />In terms of NSX-T, I would advise to have workloads active per VLAN in one site as much as possible. In the case of a disaster of maintenance move all related VLAN workloads to the other site.",
+               "id": "9191651770399445799",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Piotr Jablonski",
+               "profile": "https://www.blogger.com/profile/06074343110093815035",
+               "pub": "2020-02-20T15:58:48.686+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 16:01",
+               "html": "*disaster or maintenance",
+               "id": "1370036276771247626",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Piotr Jablonski",
+               "profile": "https://www.blogger.com/profile/06074343110093815035",
+               "pub": "2020-02-20T16:01:35.159+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 16:04",
+               "html": "Nice to see we agree on the technical details. Now imagine a VM moved into VMware-Cloud-on-AWS. How will the traffic from that VM reach the clients?",
+               "id": "7085249032991511785",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2020-02-20T16:04:17.116+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 16:46",
+               "html": "Every solution has its purpose. For example, VMC may be useful as a cold/warm DR site or in reverse VMC can be a primary site and a DC as a DR site. VMC can be used as on-demand and scalable resources for dev/stage environments.<br /><br />If there is a layered app where some components must be on-prem and in VMC then workloads from a specific subnet or layer should be contained either on-prem or in VMC. For example, a front-end in VMC, backend on-prem, DB master on-prem with replication to VMC or AWS native service. Stretching workload belonging to the same traffic group and a subnet should be avoided as much as possible. That&#39;s the architectural advice which can be taken regardless of NSX-T in any hybrid-cloud scenario with Istio, Google Anthos, etc.<br /><br />Going to your question, how clients reach this VM in VMC? <br />If this is a front-end VM then through DNS and the Internet as other front-end workloads.  <br />If this is a backend VM then through a routing between VMC and DC as other backend-end workloads. <br />If this is a front-end VM which is moved out from the rest front-end workloads, then &quot;Huston, we have a problem&quot;. We can resolve it in a less or more complex way. IMHO, this is not an issue with NSX-T but with the architecture and some admin habits. :)",
+               "id": "4352178688940637845",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Piotr Jablonski",
+               "profile": "https://www.blogger.com/profile/06074343110093815035",
+               "pub": "2020-02-20T16:46:22.305+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 16:49",
+               "html": "Yet again we&#39;re in agreement, but the &quot;Houston, we have a problem&quot; scenario is exactly what happens when you stretch a VLAN and vMotion a VM from on-premises vSphere cluster into VMC... and as you wrote it&#39;s an architectural problem. QED ;)",
+               "id": "5072850062064228320",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2020-02-20T16:49:24.626+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 16:50",
+               "html": "The question was for egress, not ingress, so similarly here. With contained workloads, the traffic is going outside to the clients via the local exit. Like we discussed this hygiene option for A/A data centers. If one workload is moved out of the group to the other site, then again we have a L2 DCI dependency.",
+               "id": "2802491159796797123",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Piotr Jablonski",
+               "profile": "https://www.blogger.com/profile/06074343110093815035",
+               "pub": "2020-02-20T16:50:48.415+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 16:53",
+               "html": "... and if we don&#39;t &quot;move one workload out of the group&quot; then why do we need live vMotion in the first place? Wouldn&#39;t it be simpler to shut down VMs and restart them on the other end?",
+               "id": "9041460934192375563",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2020-02-20T16:53:35.924+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 16:56",
+               "html": "Yes the architectural problem of managing the whole stack, not the NSX-T architecture. Agree, the fact that a car can float in the sea for a while doesn&#39;t mean we should use it as a boat.<br /><br />I perceive this L2 stretch option useful for temporary, migration, maintenance, fast scale out option. Maybe for some tests, maybe staging, risky for production.",
+               "id": "5452724436474929534",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Piotr Jablonski",
+               "profile": "https://www.blogger.com/profile/06074343110093815035",
+               "pub": "2020-02-20T16:56:24.163+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 16:58",
+               "html": "&quot;I perceive this L2 stretch option useful for temporary, migration, maintenance&quot; &lt;&lt; I could agree to that. Scale-out into the cloud is a myth.<br /><br />&quot;Maybe for some tests, maybe staging, risky for production.&quot; &lt;&lt; and how do you think it will be marketed, sold and used?",
+               "id": "8522869704826631739",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2020-02-20T16:58:18.741+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            },
+            {
+               "date": "20 February 2020 17:05",
+               "html": "&quot;why do we need live vMotion in the first place? Wouldn&#39;t it be simpler to shut down VMs and restart them on the other end?&quot;<br /><br />If it takes time to move all workloads, the client doesn&#39;t know what are the layers, what are the dependencies, then - WITH A CARE - he can use live vMotion. Then in a maintenance window he need to reconfigure routing/DNS instead of spending time for copying data. Eventually, what I would do, is to copy disks or do incremental snapshots and then cold start VM instances on the other side as you suggest. But there is also a risk that my disk data is not so accurate with the latest on-prem data. We need more time to stop workloads and copy the latest version. So the focus may be required in this part -&gt; storage replication. With live vMotion all data from disk and memory is transferred. ",
+               "id": "1884083303326114262",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Piotr Jablonski",
+               "profile": "https://www.blogger.com/profile/06074343110093815035",
+               "pub": "2020-02-20T17:05:29.042+01:00",
+               "ref": "7911389818209296845",
+               "type": "comment"
+            }
+         ],
+         "date": "20 February 2020 15:32",
+         "html": "Ivan,<br /><br />Just a few comments:<br />1. &quot;VMware-on-AWS has little to do with AWS or public cloud&quot;. What about the native AWS dedicated host/instance or EC2/IaaS offering? VMC on AWS can be treated like these services. You can say that native services do not involve typical L2 mechanisms like in NSX. Yes, but this is not the primary public cloud factor. There is an AWS orchestrator integration with VMC. In the case of a failure, you can have a spare physical host in 10 minutes. You can connect from VMC to a growing list of AWS services natively without L2 or the Internet access.<br /><br />2. “how do you do a vMotion between two NSX-T instances or between a traditional vSphere cluster and an NSX-T instance?” You can use HCX not only between NSX-v and NSX-T, but also from vSphere, KVM, Hyper-V sites. More info:<br />https://cloud.vmware.com/vmware-hcx/faq#technical-information<br /><br />3. &quot;If anything, the L2 DCI features they’re offering in NSX-T release 2.5 are worse than what Cisco had in OTV a decade ago&quot;. I deployed both NSX and OTV, and let me disagree. OTV was a real step forward in Data Center Architectures, but the control-plane and data-plane capabilities of NSX-T regarding L2 features even L2 DCI are prevailing. First of all, NSX can better protect against L2 loops as VXLAN tunnels are hosted on servers. This minimizes the risk or unexpected bridging of backend VLAN which can cause a total failure in OTV. BUM is better contained in NSX. With NSX your underlay xSTP instance can be limited more than in OTV. Tunnels are better distributed/load balanced in NSX because in OTV tunnels are aggregated on a pair of edge platforms. It is a way easier to do multihoming in NSX. In A/A scenario, no need to manually filter HSRP VMAC addresses. <br /><br />Don&#39;t treat my comments as a person who have to defend VMware. I can also see gaps and threats related to NSX-T. There is a space for improvement as everywhere but don&#39;t you think that what you said is an exaggeration? ;)<br /><br />All the best!",
+         "id": "7911389818209296845",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Piotr Jablonski",
+         "profile": "https://www.blogger.com/profile/06074343110093815035",
+         "pub": "2020-02-20T15:32:54.205+01:00",
+         "ref": "3004834405794211547",
+         "type": "comment"
+      },
+      {
+         "date": "20 February 2020 17:18",
+         "html": "&quot;Scale-out into the cloud is a myth.&quot;<br /><br />What about a use case for development/staging where the company want to test a new app on 10 servers and they have 2 on-prem and they don&#39;t need to wait for new hardware? They can run 8 servers or more in the cloud. For a production use case, if workloads are contained, then scaling-out a particular app layer is a viable option. Do you think a VPN/interconnect/DCI kills benefits of the scale-out?<br /><br />&quot;and how do you think it will be marketed, sold and used?&quot;<br /><br />It is a duty of a pre-sales, consultant, vendor representative to inform about a risk. So this can be sold as an added customer value. :)",
+         "id": "6431086606253857338",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Piotr Jablonski",
+         "profile": "https://www.blogger.com/profile/06074343110093815035",
+         "pub": "2020-02-20T17:18:46.577+01:00",
+         "ref": "3004834405794211547",
+         "type": "comment"
+      },
+      {
+         "date": "25 January 2021 09:14",
+         "html": "<p>Hi Guys ,\nHas this issue been solved in NSX 3.0 ? I mean is it possible to do a true Active / Active setup in version 3.0 and if so can i have a link or url which explains this setup ? </p>\n",
+         "id": "361",
+         "name": "chandrasekaran",
+         "pub": "2021-01-25T09:14:30",
+         "type": "comment"
+      },
+      {
+         "date": "25 January 2021 12:43",
+         "html": "<p>@chandrasekaran: It&#39;s always possible to have true active/active setup with good application architecture and decent network design. Will you get there with silver bullets? Probably not... but studying this https://my.ipspace.net/bin/list?id=AADesign (including <em>Additional Resources</em>) might bring you a bit closer to that goal.</p>\n\n<p>On a more serious note, NSX-T 3.0 adds NSX Federation, but that&#39;s currently not supported on vSphere-on-AWS.</p>\n",
+         "id": "363",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-01-25T12:43:49",
+         "type": "comment"
+      }
+   ],
+   "count": 15,
+   "id": "3004834405794211547",
+   "type": "post",
+   "url": "2020/02/live-vmotion-into-vmware-on-aws-cloud.html"
 }

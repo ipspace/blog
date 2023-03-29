@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>10 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03931084622577033624" rel="nofollow">Yosef</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7173002418183309000">23 November 2012 09:58</a>
+                <a rel="nofollow" id="c7173002418183309000" href="#7173002418183309000">23 November 2012 09:58</a>
               </span>
             </div>
-            <p class="comment-content">So this is usually relevant when Spit-Horizon is disabled? I always have a difficult time coming up with a situation where Split-Horizon is enabled but a loop might still occur if not for the Feasibility Condition.</p>
+            <div class="comment-content">So this is usually relevant when Spit-Horizon is disabled? I always have a difficult time coming up with a situation where Split-Horizon is enabled but a loop might still occur if not for the Feasibility Condition.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Naveen</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2550985240160180106">23 November 2012 11:34</a>
+                <a rel="nofollow" id="c2550985240160180106" href="#2550985240160180106">23 November 2012 11:34</a>
               </span>
             </div>
-            <p class="comment-content">The simple rule is once a new route passes through a router with a particular metric, the looped route via the same router can NEVER have a metric lower than the intial metric...this is the crux of FC.</p>
+            <div class="comment-content">The simple rule is once a new route passes through a router with a particular metric, the looped route via the same router can NEVER have a metric lower than the intial metric...this is the crux of FC.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3367304390021558415">27 November 2012 22:01</a>
+                <a rel="nofollow" id="c3367304390021558415" href="#3367304390021558415">27 November 2012 22:01</a>
               </span>
             </div>
-            <p class="comment-content">To Yosef&#39;s point - The situation in the final picture can only happen with split-horizon disabled.  If not, B will not advertise the route to the segment back to A since it learned it on that interface.  I&#39;ve always wondered as well if there is a situation where you could end up with looped routes based purely on metrics with traditional prevention mechanisms like split-horizon enabled or of the FC was designed to deal specifically with situations like shown above...</p>
+            <div class="comment-content">To Yosef&#39;s point - The situation in the final picture can only happen with split-horizon disabled.  If not, B will not advertise the route to the segment back to A since it learned it on that interface.  I&#39;ve always wondered as well if there is a situation where you could end up with looped routes based purely on metrics with traditional prevention mechanisms like split-horizon enabled or of the FC was designed to deal specifically with situations like shown above...</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tom K</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7837317931852284641">12 December 2012 21:52</a>
+                <a rel="nofollow" id="c7837317931852284641" href="#7837317931852284641">12 December 2012 21:52</a>
               </span>
             </div>
-            <p class="comment-content">The FC check prevents the feasible successor from being immediately installed in the routing table, and forces the query/response game (using the last known good metric as the measuring stick). If you increase the diameter just a bit (like adding D between A and B), it&#39;s easier to see a race condition of advertisements, that IF they were installed in the routing table immediately, temporary loops would occur (until re-reconvergence). Even if split horizon is enabled, when all links are healthy, A and B do exchange their best path (directly to C), and if both links to C go down (silly, I know, since C owns the subnet), and A and B ignored the feasibily check, they would temporarily route traffic to C&#39;s LAN IP until they poison-reversed, etc. If we add a few routers in the mix, it gets messier during convergence, which is why there is a feasibility check. My question has always been (and this article reminded me), why FD must be less than RD, and not less than OR equal to. If RD is higher, we know loops can occur, but I cannot come up with a situation where if AD=RD, there is a loop.</p>
+            <div class="comment-content">The FC check prevents the feasible successor from being immediately installed in the routing table, and forces the query/response game (using the last known good metric as the measuring stick). If you increase the diameter just a bit (like adding D between A and B), it&#39;s easier to see a race condition of advertisements, that IF they were installed in the routing table immediately, temporary loops would occur (until re-reconvergence). Even if split horizon is enabled, when all links are healthy, A and B do exchange their best path (directly to C), and if both links to C go down (silly, I know, since C owns the subnet), and A and B ignored the feasibily check, they would temporarily route traffic to C&#39;s LAN IP until they poison-reversed, etc. If we add a few routers in the mix, it gets messier during convergence, which is why there is a feasibility check. My question has always been (and this article reminded me), why FD must be less than RD, and not less than OR equal to. If RD is higher, we know loops can occur, but I cannot come up with a situation where if AD=RD, there is a loop.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8122030508456564821">16 November 2015 17:47</a>
+                <a rel="nofollow" id="c8122030508456564821" href="#8122030508456564821">16 November 2015 17:47</a>
               </span>
             </div>
-            <p class="comment-content">but if we use variance there may loop isn&#39;t it?</p>
+            <div class="comment-content">but if we use variance there may loop isn&#39;t it?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -110,10 +105,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1399796162946787508">16 November 2015 19:15</a>
+                <a rel="nofollow" id="c1399796162946787508" href="#1399796162946787508">16 November 2015 19:15</a>
               </span>
             </div>
-            <p class="comment-content">No. EIGRP would never use a path if the next hop is not a feasible successor.</p>
+            <div class="comment-content">No. EIGRP would never use a path if the next hop is not a feasible successor.</div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7061784788411315879">14 November 2016 10:56</a>
+                <a rel="nofollow" id="c7061784788411315879" href="#7061784788411315879">14 November 2016 10:56</a>
               </span>
             </div>
-            <p class="comment-content">Guys. Can anyone help me to understand why MTU is not used to calculate metric by EIGRP although it is avilable to switch on. I have realised in one of my practise that MTU didnt play any role on metric calculation regardless to k1=1,k2=1, k3=1, k4=1, k5=1. If it is not used for what purpose does it exist? I dont mention default k values. Thanks beforehand….</p>
+            <div class="comment-content">Guys. Can anyone help me to understand why MTU is not used to calculate metric by EIGRP although it is avilable to switch on. I have realised in one of my practise that MTU didnt play any role on metric calculation regardless to k1=1,k2=1, k3=1, k4=1, k5=1. If it is not used for what purpose does it exist? I dont mention default k values. Thanks beforehand….</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7950443158767122882">14 November 2016 11:58</a>
+                <a rel="nofollow" id="c7950443158767122882" href="#7950443158767122882">14 November 2016 11:58</a>
               </span>
             </div>
-            <p class="comment-content">MTU is a tie-breaker: if more than &quot;maximum-paths&quot; EIGRP paths have the same metric then MTU is used to select the best N (at least that was how it worked the last time I checked). <br /><br />There might be a post explaining that behavior somewhere on this web site (don&#39;t remember whether I wrote it or not).</p>
+            <div class="comment-content">MTU is a tie-breaker: if more than &quot;maximum-paths&quot; EIGRP paths have the same metric then MTU is used to select the best N (at least that was how it worked the last time I checked). <br /><br />There might be a post explaining that behavior somewhere on this web site (don&#39;t remember whether I wrote it or not).</div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">SaidB</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7539538026613053893">04 July 2017 21:13</a>
+                <a rel="nofollow" id="c7539538026613053893" href="#7539538026613053893">04 July 2017 21:13</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Based on the link costs (I’m using scalar metrics for simplicity), C advertises the LAN IP prefix with cost=5. B adds its own incoming link cost (12), reporting the total cost of 17 to A (RD = 17).&quot;<br /><br />Shouldn&#39;t it be (FD=17) ?</p>
+            <div class="comment-content">&quot;Based on the link costs (I’m using scalar metrics for simplicity), C advertises the LAN IP prefix with cost=5. B adds its own incoming link cost (12), reporting the total cost of 17 to A (RD = 17).&quot;<br /><br />Shouldn&#39;t it be (FD=17) ?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -198,10 +193,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">SaidB</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5159024939881801450">05 July 2017 00:30</a>
+                <a rel="nofollow" id="c5159024939881801450" href="#5159024939881801450">05 July 2017 00:30</a>
               </span>
             </div>
-            <p class="comment-content">My bad. Misread the entire sentence...</p>
+            <div class="comment-content">My bad. Misread the entire sentence...</div>
           </div>
         </li>
       </div>

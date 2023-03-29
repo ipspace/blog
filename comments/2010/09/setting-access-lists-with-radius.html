@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brian Raaen</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5544717784142373162">22 September 2010 14:14</a>
+                <a rel="nofollow" id="c5544717784142373162" href="#5544717784142373162">22 September 2010 14:14</a>
               </span>
             </div>
-            <p class="comment-content">Thanks, I&#39;m glad to see an article on RADIUS.  I was wondering what was wrong with me since there seemed to be a dearth of information on RADIUS for Cisco routers.</p>
+            <div class="comment-content">Thanks, I&#39;m glad to see an article on RADIUS.  I was wondering what was wrong with me since there seemed to be a dearth of information on RADIUS for Cisco routers.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Christopher Hunt</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8183794593563860279">22 September 2010 20:07</a>
+                <a rel="nofollow" id="c8183794593563860279" href="#8183794593563860279">22 September 2010 20:07</a>
               </span>
             </div>
-            <p class="comment-content">Incidentally, if you apply an ACL to a virtual-template, it will _immediately_ trump the one(s) passed down by radius during PPP negotiation.  I assume it simply applies them sequentially, as you said.  <br /><br />So what I did was define an empty ACL, apply it to my radius accounts then wait two weeks to ensure all PPP sessions had that ACL installed.  Then I simply added lines to the middle of my ACL.<br /><br />Now we can hand down ACLs (and hopefully soon vrf configs) from our CMS (Platypus).  Thanks also to rancid for making the addition and maintenance of those ACLs much easier.</p>
+            <div class="comment-content">Incidentally, if you apply an ACL to a virtual-template, it will _immediately_ trump the one(s) passed down by radius during PPP negotiation.  I assume it simply applies them sequentially, as you said.  <br /><br />So what I did was define an empty ACL, apply it to my radius accounts then wait two weeks to ensure all PPP sessions had that ACL installed.  Then I simply added lines to the middle of my ACL.<br /><br />Now we can hand down ACLs (and hopefully soon vrf configs) from our CMS (Platypus).  Thanks also to rancid for making the addition and maintenance of those ACLs much easier.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">vit</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8697346190999329621">23 September 2010 08:20</a>
+                <a rel="nofollow" id="c8697346190999329621" href="#8697346190999329621">23 September 2010 08:20</a>
               </span>
             </div>
-            <p class="comment-content">you can use this command<br />&quot;radius-server attribute 11 default direction in&quot;<br />and radius Filter-id attribute<br />&quot;showme           Cleartext-Password := &quot;1234&quot;<br />                 Service-Type = Framed-User,<br />                 Filter-Id = &quot;100&quot;,<br />                 Framed-Protocol = PPP&quot;</p>
+            <div class="comment-content">you can use this command<br />&quot;radius-server attribute 11 default direction in&quot;<br />and radius Filter-id attribute<br />&quot;showme           Cleartext-Password := &quot;1234&quot;<br />                 Service-Type = Framed-User,<br />                 Filter-Id = &quot;100&quot;,<br />                 Framed-Protocol = PPP&quot;</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">vit</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4166077542655559204">23 September 2010 09:32</a>
+                <a rel="nofollow" id="c4166077542655559204" href="#4166077542655559204">23 September 2010 09:32</a>
               </span>
             </div>
-            <p class="comment-content">&quot;and hopefully soon vrf configs&quot; You can configure like this:<br />1. AAA radius group has ip radius soure-interface loopback1 vrf VRF_NAME<br />2. loopback1 in vrf VRF_NAME<br />3. Virtual template has a string ip vrf forwarding VRF_NAME and ip unnumbered lo1<br />4. radius sent framed-ip or other attr.<br />You can&#39;t configure like that: <br />1. AAA radius group <br />2. Virtual template without ip unnumbered and  ip vrf forwarding VRF_NAME<br />3. radius sent ip-unnumbered lo1<br />4. radius sent ip-vrf , which removes ip-unnumbered<br />As you know, command &quot;ip vrf forwarding VRF_NAME&quot; on interface removes current ip-address. Make sure that the radius server sends the attributes in the correct order.</p>
+            <div class="comment-content">&quot;and hopefully soon vrf configs&quot; You can configure like this:<br />1. AAA radius group has ip radius soure-interface loopback1 vrf VRF_NAME<br />2. loopback1 in vrf VRF_NAME<br />3. Virtual template has a string ip vrf forwarding VRF_NAME and ip unnumbered lo1<br />4. radius sent framed-ip or other attr.<br />You can&#39;t configure like that: <br />1. AAA radius group <br />2. Virtual template without ip unnumbered and  ip vrf forwarding VRF_NAME<br />3. radius sent ip-unnumbered lo1<br />4. radius sent ip-vrf , which removes ip-unnumbered<br />As you know, command &quot;ip vrf forwarding VRF_NAME&quot; on interface removes current ip-address. Make sure that the radius server sends the attributes in the correct order.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Tassos</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6433052210504443439">26 September 2010 19:56</a>
+                <a rel="nofollow" id="c6433052210504443439" href="#6433052210504443439">26 September 2010 19:56</a>
               </span>
             </div>
-            <p class="comment-content">We use something like the following in our radius for per-user acls.<br /><br />test                     User-Password = &quot;test&quot;<br />                                Service-Type = Framed-User,<br />                                Framed-Protocol = PPP,<br />                                Framed-IP-Address = x.x.x.x,<br />                                cisco-avpair=&quot;ip:inacl#1=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#2=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#3=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#4=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#5=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#6=permit ip host x any&quot;,<br />                                cisco-avpair=&quot;ip:inacl#7=deny   ip any any&quot;</p>
+            <div class="comment-content">We use something like the following in our radius for per-user acls.<br /><br />test                     User-Password = &quot;test&quot;<br />                                Service-Type = Framed-User,<br />                                Framed-Protocol = PPP,<br />                                Framed-IP-Address = x.x.x.x,<br />                                cisco-avpair=&quot;ip:inacl#1=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#2=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#3=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#4=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#5=deny   ip any x&quot;,<br />                                cisco-avpair=&quot;ip:inacl#6=permit ip host x any&quot;,<br />                                cisco-avpair=&quot;ip:inacl#7=deny   ip any any&quot;</div>
           </div>
         </li>
       </div>

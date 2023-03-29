@@ -1,0 +1,205 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="837">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> sjdkluytsiyklr</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c837" href="#837">10 November 2021 11:58</a>
+              </span>
+            </div>
+            <div class="comment-content">Here is a recent VLAN hopping exploit for you: Alcatel-Lucent Enterprise AP-Mode on AOS6<br />
+
+<p>This feature is related to authentication (802.1X or MAC) and VLAN assignment on a port where an wireless AP is discovered.
+AP is discovered using &quot;lldp.tlv.enable_system_cap.wlan_access_pt == 1&quot;.</p>
+
+<p>The switch assume the AP is in a NON-tunnel mode and that he will proceed authentication and tag traffic into the proper VLAN himself.
+The idea is to avoid several authentication at AP and switch and speedup the process.</p>
+
+<p>So the switch is not authenticating devices seen on the AP port. =&gt; authentication bypass
+Switch is also trusting all the VLAN tags coming from this port. =&gt; VLAN hopping</p>
+
+<p>This features is enabled by default. You can still disable it.
+When upgrading from a previous version that doesn&#39;t support it, the configuration is converted to enable it.</p>
+
+<p>I discovered it at a customer&#39;s place because they connected an AP to a unmanaged switch with an uplink to the ALE AOS6 switch.
+PC connected to the unmanaged switch were not getting DHCP or network access.</p>
+
+<p>I connected my PC, did a wireshark and saw 802.1q trafic.
+I configured an 802.1q interface and got access to all VLAN on the switch.</p>
+
+<p>I was able to exploit it at several customers by forging LLDP to look like an AP.</p>
+
+<p>I was not able to exploit it on AOS8.
+While AP-mode is also enabled by default, it doesn&#39;t work the same way as in AOS6.</p>
+
+<p>ALE doesn&#39;t consider it a security issue and won&#39;t change the default behavior of AOS6 as it&#39;s becoming end of life. Unfortunately, it&#39;s still used on a lot of switches.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="838">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c838" href="#838">10 November 2021 05:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks a million for this gem. When I think I&#39;ve seen everything, someone sends me another vendor stupidity that makes my day (in some sense).</p>
+
+<p>However, this is not VLAN hopping, at least not the &quot;original&quot; data-plane SNAFU. This is unprotected control plane due to vendor stupidity. Cisco has (had?) a similar problem with VTP:</p>
+
+<p>https://designclinic.ipspace.net/topic/network-device-hardening/</p>
+
+<p>Finally, if I understood it correctly, this particular stupidity requires access to a physical switch port, not guest VLAN access. If someone can access a &quot;core&quot; (intra-network) port you have bigger problems than VLAN hopping ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="840">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> sjdkluytsiyklr</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c840" href="#840">11 November 2021 01:57</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Yeah, not exactly &quot;dataplane VLAN hopping&quot;.
+Refering to your Wikipedia link, it&#39;s more &quot;Switch/AP spoofing&quot;.</p>
+
+<p>About Cisco, it&#39;s more DTP wich is vulnerable to &quot;Switch/AP spoofing&quot; to exploit &quot;VLAN hopping&quot; instead of VTP.</p>
+
+<p>About AP-mode exploit condition, you just need to be connected to a port that require authentication like 802.1x or MAB with AP-mode enabled (default configuration).
+Most of the time, it&#39;s the kind of access port facing employees or guests.
+If authentication succeed, employee can access the LAN.
+If not, guest will access a guest VLAN with very restricted access or will not access anything.</p>
+
+<p>I actually discovered the vulnerability because of a guest reporting network access issue to customer while he should had access to internet.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="867">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> PST</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c867" href="#867">23 November 2021 11:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have actually already reported this stupid vulnerability more than two years ago and Ialso sent the reproduction steps to ALE PSIRT. They then only implemented a fix so that you could disable the ap-mode.
+AOS 6.7 if i remember it correctly. Tough luck for the ones using the AP functionality though.
+ALE is working on making code changes to solve this and from what I have heard it will be made available even in the AOS6. But I haven&#39;t seen the code yet so it&#39;s still vapor ware.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="859">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Andy Oliinyk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c859" href="#859">21 November 2021 01:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This year i met incident on the customer wireless infra (only Cisco HW/SW AIR-OS; APs in flexconnect mode with guest WLAN locally switched).
+Due to bug in SW, under certain conditions APs have been losing configured guest VLAN totally &amp; somehow assigned office VLAN to the guest WLAN bridge. Effectively guests obtained full connectivity in the internal office VLAN still being connected to the Guest SSID. It shouldnt happen ever but it did.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="908">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Toivo Voll</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c908" href="#908">06 December 2021 10:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Often it&#39;s not the security team you need to convince, but auditors. Having a guest network -- or an outsourced OT network for building controls, or surveillance cameras etc. -- be physically completely separate makes that aspect of the job a lot easier. In short, it&#39;s easier to make fit the checkboxes for audits, and it&#39;s simple to explain to even non-technical people. From an engineering standpoint a waste of money, but from a sanity perspective sometimes worth it.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="913">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c913" href="#913">06 December 2021 03:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;Often it&#39;s not the security team you need to convince, but auditors&quot; &lt;&lt; in which case you&#39;re absolutely right, it&#39;s often more efficient to retain your sanity and waste some money on extra boxes. Fortunately I was always working with auditors who knew what they were doing.</p>
+
+<p>Also, I&#39;ve heard it&#39;s easier to get budget to fix the audit findings than to improve the network ;))</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

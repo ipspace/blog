@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">chrisinnh</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4983815278120091393">19 October 2009 18:49</a>
+                <a rel="nofollow" id="c4983815278120091393" href="#4983815278120091393">19 October 2009 18:49</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;d always thought that session establishment failed at 75 seconds.  RFC 5461 mentions this value, but it&#39;s a reference to Stevens Vol II -- Something I don&#39;t have on my desk right now.<br /><br />The value was burned into my memory by a transparent proxy server that couldn&#39;t serve its client.  75 seconds after intercepting the server-bound GET request and sending the first SYN packets toward an unreachable server, it abruptly closed the client&#39;s connection.  Story here: http://tinyurl.com/ylxr6ej<br /><br />But the 3 minute value certainly checks out:<br />$ uname -a<br />Linux gslse 2.6.27-7-server #1 SMP Tue Nov 4 20:16:57 UTC 2008 x86_64 GNU/Linux<br />$ time telnet 1.1.1.1<br />Trying 1.1.1.1...<br />telnet: Unable to connect to remote host: Connection timed out<br /><br />real    3m8.994s<br />user    0m0.010s<br />sys     0m0.000s<br /><br />The retransmissions come at 3, 6, 12, 24, 48 seconds, then it aborts after an additional 96 seconds.  3+6+12+24+48+98 = 3m9s<br /><br />...and...<br /><br />$ uname -a<br />SunOS 5.11 snv_101b i86pc i386 i86xpv<br />$ time telnet 1.1.1.1<br />Trying 1.1.1.1...<br />telnet: Unable to connect to remote host: Connection timed out<br /><br />real    3m44.690s<br />user    0m0.002s<br />sys     0m0.008s<br /><br />On Solaris, the retransmissions come at 3.375, 6.75, 13.5, 27, 54, 60, then failure after an additional 60 seconds.  3.375+6.75+13.5+27+54+60+60 = 3m44.625s<br /><br /><br />My WinXP desktop only retransmits twice, at 3 and 6 seconds, the fails after an additional 8 seconds.<br />3+6+8 = 17s<br /><br />Anybody have Sevens Vol II handy?  What does the section cited by RFC 5461 (pp828-289) say?</p>
+            <div class="comment-content">I&#39;d always thought that session establishment failed at 75 seconds.  RFC 5461 mentions this value, but it&#39;s a reference to Stevens Vol II -- Something I don&#39;t have on my desk right now.<br /><br />The value was burned into my memory by a transparent proxy server that couldn&#39;t serve its client.  75 seconds after intercepting the server-bound GET request and sending the first SYN packets toward an unreachable server, it abruptly closed the client&#39;s connection.  Story here: http://tinyurl.com/ylxr6ej<br /><br />But the 3 minute value certainly checks out:<br />$ uname -a<br />Linux gslse 2.6.27-7-server #1 SMP Tue Nov 4 20:16:57 UTC 2008 x86_64 GNU/Linux<br />$ time telnet 1.1.1.1<br />Trying 1.1.1.1...<br />telnet: Unable to connect to remote host: Connection timed out<br /><br />real    3m8.994s<br />user    0m0.010s<br />sys     0m0.000s<br /><br />The retransmissions come at 3, 6, 12, 24, 48 seconds, then it aborts after an additional 96 seconds.  3+6+12+24+48+98 = 3m9s<br /><br />...and...<br /><br />$ uname -a<br />SunOS 5.11 snv_101b i86pc i386 i86xpv<br />$ time telnet 1.1.1.1<br />Trying 1.1.1.1...<br />telnet: Unable to connect to remote host: Connection timed out<br /><br />real    3m44.690s<br />user    0m0.002s<br />sys     0m0.008s<br /><br />On Solaris, the retransmissions come at 3.375, 6.75, 13.5, 27, 54, 60, then failure after an additional 60 seconds.  3.375+6.75+13.5+27+54+60+60 = 3m44.625s<br /><br /><br />My WinXP desktop only retransmits twice, at 3 and 6 seconds, the fails after an additional 8 seconds.<br />3+6+8 = 17s<br /><br />Anybody have Sevens Vol II handy?  What does the section cited by RFC 5461 (pp828-289) say?</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Patryk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7617938358697828070">20 October 2009 17:05</a>
+                <a rel="nofollow" id="c7617938358697828070" href="#7617938358697828070">20 October 2009 17:05</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan I can see now what was your on your mind. I still think that your statememnt about  socket API is controversial one. As contrast using socket API is so much easier  than talking directly do DNS via raw sockets and it was major step in terms of new functionality but where it should stop ?  Taking your thoughts further network should be presistent,secure available everywhere with infinite bandwidth for all but this is not a perfect world ... 8-)<br />On the other hand who  should tweak tcp/ip stack in all this linux distros ? What if it would break some old applications ? That&#39;s why I&#39;m not suprised with Solaris it might be bit better in commercial distros like Redhat or Suse.</p>
+            <div class="comment-content">Hi Ivan I can see now what was your on your mind. I still think that your statememnt about  socket API is controversial one. As contrast using socket API is so much easier  than talking directly do DNS via raw sockets and it was major step in terms of new functionality but where it should stop ?  Taking your thoughts further network should be presistent,secure available everywhere with infinite bandwidth for all but this is not a perfect world ... 8-)<br />On the other hand who  should tweak tcp/ip stack in all this linux distros ? What if it would break some old applications ? That&#39;s why I&#39;m not suprised with Solaris it might be bit better in commercial distros like Redhat or Suse.</div>
           </div>
         </li>
       </div>

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04512662084752743003" rel="nofollow">Tassos</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7388782097655963321">02 June 2008 08:25</a>
+                <a rel="nofollow" id="c7388782097655963321" href="#7388782097655963321">02 June 2008 08:25</a>
               </span>
             </div>
-            <p class="comment-content">The following (if supported by your IOS) should accomplish the same thing, without using EEM:<BR/><BR/>process cpu threshold type total rising 30 interval 10 falling 20 interval 10<BR/>snmp-server enable traps cpu threshold</p>
+            <div class="comment-content">The following (if supported by your IOS) should accomplish the same thing, without using EEM:<BR/><BR/>process cpu threshold type total rising 30 interval 10 falling 20 interval 10<BR/>snmp-server enable traps cpu threshold</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5384761019033585056">11 June 2008 05:52</a>
+                <a rel="nofollow" id="c5384761019033585056" href="#5384761019033585056">11 June 2008 05:52</a>
               </span>
             </div>
-            <p class="comment-content">For granularity you can use cisco SNMP mibs for cpu utilization. Below is a sample I used to disable wccp when it caused a CPU surge:<BR/><BR/>event manager applet disable_wccp <BR/>! --- 1.3.6.1.4.1.9.9.109.1.1.1.1.4.1 gives the cpu utilization using 1 min interval <BR/>! --- trigger event when cpu utilization hits 75% and starts monitoring (re-arms) again when it drops below 40% <BR/>! --- SNMP polling interval is set to 60 secs <BR/>event snmp oid 1.3.6.1.4.1.9.9.109.1.1.1.1.4.1 get-type exact entry-op ge entry-val 75 exit-op le exit-val 40 poll-interval 60 <BR/>! --- logs a message <BR/>action 101 syslog priority notifications msg "Disabling WCCP due to prolonged CPU spikes." <BR/>! --- disable wccp globally, this is static - you have to know the wccp svc id <BR/>action 102 cli command "enable" <BR/>action 103 cli command "config t" <BR/>action 104 cli command "no ip wccp 91" <BR/>action 105 cli command "end" <BR/><BR/>In case you want to wrap things up with an event notification, append the following to the above disable_wccp applet: <BR/><BR/>action 106 cli command "enable" <BR/>action 107 cli command "terminal length 0" <BR/>action 108 cli command "show process cpu sorted" <BR/>action 109 mail server "192.168.1.254" to "engineer@xyz.com" from "devtest@cust_a.com" subject "Prolonged CPU Spikes" body "$_cli_result" <BR/><BR/><BR/>And here's the reverse applet to re-enable wccp when the cpu utilization is back to normal:<BR/><BR/><BR/>event manager applet enable_wccp <BR/>! --- 1.3.6.1.4.1.9.9.109.1.1.1.1.4.1 gives the cpu utilization using 1 min interval <BR/>! --- trigger event when cpu utilization is 40% and starts monitoring (re-arms) again when it rises to 75% <BR/>! --- SNMP polling interval is set to 60 secs <BR/>event snmp oid 1.3.6.1.4.1.9.9.109.1.1.1.1.4.1 get-type exact entry-op le entry-val 40 exit-op ge exit-val 75 poll-interval 60 <BR/>! --- logs a message <BR/>action 101 syslog priority notifications msg "Enabling back WCCP as CPU surges no longer exist." <BR/>! --- re-enable wccp globally, this is static - you have to know the wccp svc id and redirect-list <BR/>action 102 cli command "enable" <BR/>action 103 cli command "config t" <BR/>action 104 cli command "ip wccp 91 redirect-list 101" <BR/>action 105 cli command "end"</p>
+            <div class="comment-content">For granularity you can use cisco SNMP mibs for cpu utilization. Below is a sample I used to disable wccp when it caused a CPU surge:<BR/><BR/>event manager applet disable_wccp <BR/>! --- 1.3.6.1.4.1.9.9.109.1.1.1.1.4.1 gives the cpu utilization using 1 min interval <BR/>! --- trigger event when cpu utilization hits 75% and starts monitoring (re-arms) again when it drops below 40% <BR/>! --- SNMP polling interval is set to 60 secs <BR/>event snmp oid 1.3.6.1.4.1.9.9.109.1.1.1.1.4.1 get-type exact entry-op ge entry-val 75 exit-op le exit-val 40 poll-interval 60 <BR/>! --- logs a message <BR/>action 101 syslog priority notifications msg "Disabling WCCP due to prolonged CPU spikes." <BR/>! --- disable wccp globally, this is static - you have to know the wccp svc id <BR/>action 102 cli command "enable" <BR/>action 103 cli command "config t" <BR/>action 104 cli command "no ip wccp 91" <BR/>action 105 cli command "end" <BR/><BR/>In case you want to wrap things up with an event notification, append the following to the above disable_wccp applet: <BR/><BR/>action 106 cli command "enable" <BR/>action 107 cli command "terminal length 0" <BR/>action 108 cli command "show process cpu sorted" <BR/>action 109 mail server "192.168.1.254" to "engineer@xyz.com" from "devtest@cust_a.com" subject "Prolonged CPU Spikes" body "$_cli_result" <BR/><BR/><BR/>And here's the reverse applet to re-enable wccp when the cpu utilization is back to normal:<BR/><BR/><BR/>event manager applet enable_wccp <BR/>! --- 1.3.6.1.4.1.9.9.109.1.1.1.1.4.1 gives the cpu utilization using 1 min interval <BR/>! --- trigger event when cpu utilization is 40% and starts monitoring (re-arms) again when it rises to 75% <BR/>! --- SNMP polling interval is set to 60 secs <BR/>event snmp oid 1.3.6.1.4.1.9.9.109.1.1.1.1.4.1 get-type exact entry-op le entry-val 40 exit-op ge exit-val 75 poll-interval 60 <BR/>! --- logs a message <BR/>action 101 syslog priority notifications msg "Enabling back WCCP as CPU surges no longer exist." <BR/>! --- re-enable wccp globally, this is static - you have to know the wccp svc id and redirect-list <BR/>action 102 cli command "enable" <BR/>action 103 cli command "config t" <BR/>action 104 cli command "ip wccp 91 redirect-list 101" <BR/>action 105 cli command "end"</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3601137423842282534">22 June 2008 20:02</a>
+                <a rel="nofollow" id="c3601137423842282534" href="#3601137423842282534">22 June 2008 20:02</a>
               </span>
             </div>
-            <p class="comment-content">Is it possible to see the output on the console for the cli command mentioned in the like in  "action 1.0 cli command ping...". Is it possible to see the response of the ping retun ont he console?</p>
+            <div class="comment-content">Is it possible to see the output on the console for the cli command mentioned in the like in  "action 1.0 cli command ping...". Is it possible to see the response of the ping retun ont he console?</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">sachi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#53445568327824138">11 January 2010 06:30</a>
+                <a rel="nofollow" id="c53445568327824138" href="#53445568327824138">11 January 2010 06:30</a>
               </span>
             </div>
-            <p class="comment-content">Hi,<br /><br />Is it possible to send the first 10 lines  of show process cpu with regexp.when  using EEM.</p>
+            <div class="comment-content">Hi,<br /><br />Is it possible to send the first 10 lines  of show process cpu with regexp.when  using EEM.</div>
           </div>
         </li>
       </div>

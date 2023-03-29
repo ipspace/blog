@@ -1,0 +1,23 @@
+{
+   "comments": [
+      {
+         "date": "27 May 2020 10:05",
+         "html": "<p>Hi Ivan, </p>\n\n<p>First, thanks a lot for all the quality content you produce and for this post.</p>\n\n<p>Two things i&#39;d like to discuss:</p>\n\n<ol>\n<li><p>The eBGP session between the MLAG pair is an &#39;underlay&#39; peering right ? (evpn af activated). I don&#39;t see any value in running overlay peering in each customer VRF there... but I may be wrong ? Can you confirm or precise what peering type your were thinking of ? </p></li>\n<li><p>Imagine the case we have a ToR pair but without MLAG, running eBGP with downstream servers (i don&#39;t say it&#39;s good, but...). Would you run the same setup ? </p></li>\n</ol>\n\n<p>eBGP seems fine overall as you don&#39;t deal with iBGP loop prevention rules and knobs, which is translated in a more straightforward configuration, but it does not change the fact that you have to clearly &quot;lock&quot; what the pair of switches advertise.</p>\n\n<p>Thank you, </p>\n",
+         "id": "51",
+         "name": "perz",
+         "pub": "2020-05-27T22:05:27",
+         "type": "comment"
+      },
+      {
+         "date": "28 May 2020 09:59",
+         "html": "<p>Hi,</p>\n\n<p>You REALLY SHOULD watch the two webinars I mentioned at the end of the blog post, here are a few short answers:</p>\n\n<ul>\n<li>&quot;<em>The eBGP session between the MLAG pair is an &#39;underlay&#39; peering right?</em>&quot; - absolutely</li>\n<li>&quot;<em>Imagine the case we have a ToR pair but without MLAG, running eBGP with downstream servers. Would you run the same setup?</em>&quot; - yes. In fact, if your servers support running services off loopback interfaces, that would be the ideal way to implement a L3-only fabric, more so if you run BGP implementations that can deal with unnumbered interfaces.</li>\n<li>&quot;<em>eBGP seems fine overall as you don&#39;t deal with iBGP loop prevention rules and knobs, which is translated in a more straightforward configuration, but it does not change the fact that you have to clearly lock what the pair of switches advertise</em>&quot; - if you use the same AS number on all spine switches, then the basic BGP sanity checks take care of most count-to-infinity loops and ensure valley-free routing. Obviously you&#39;d also implement some standard BGP security mechanisms on the EBGP sessions with the servers (like maximum AS-path length to stop transit advertisements).</li>\n</ul>\n\n<p>Hope this helps, Ivan</p>\n",
+         "id": "54",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-05-28T09:59:26",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2020/05/bgp-as-numbers-mlag-members.html"
+}

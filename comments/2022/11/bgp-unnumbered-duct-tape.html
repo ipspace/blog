@@ -1,0 +1,98 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1510">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Sander Steffann</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1510" href="#1510">15 November 2022 11:37</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&#x2764;&#xFE0F;</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1511">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> donald sharp</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1511" href="#1511">15 November 2022 03:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The 169.254.0.1 neighbor table entries are an artifact from pre-nexthop group implementations in FRR.  Prior to nexthop groups the linux kernel would not accept a v6 nexthop for a v4 prefix.  So the routes were entered with a 169.254.0.1 &lt;iif&gt; as the actual nexthop.  The code to add this entry just has not gotten removed yet, since they have not done any current harm.  Additionally they are there for when the operator enters the command to turn off nexthop groups for installation into the linux kernel.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1512">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1512" href="#1512">15 November 2022 04:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you, now it all makes sense.</p>
+
+<p>I remembered the 169.254.0.1 entries and was surprised when they weren&#39;t in the Linux routing table, then found various messages explaining the v6 next hops and nexthop group commits. Great work!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1513">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> TA</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1513" href="#1513">15 November 2022 08:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>On Mellanox ASICs, routes will index into a host table using (next-hop IP, egress router interface) as the key, and the address-family of the next-hop does not need to match the address-family of the route. The host entry determines the DMAC that will be used after the Ethernet header is re-written post-routing.</p>
+
+<p>On Broadcom ASICs, routes don&#39;t directly point to a next-hop or host table; instead they index into an &quot;egress&quot; table by ID. So Broadcom natively has a decoupling of a route and the L2 rewrite information returned by the LPM lookup, this allowing the control plane to choose what rules it wishes to enforce with regards to address-families of routes vs next-hops. Another fun tidbit, the ARP/NDP tables are actually collapsed into the LPM lookup as if they were host routes, and these entries also index into the same egress table.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

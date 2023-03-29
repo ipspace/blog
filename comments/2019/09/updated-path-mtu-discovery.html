@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17892204563666956100" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1979011899197978869">04 September 2019 10:56</a>
+                <a rel="nofollow" id="c1979011899197978869" href="#1979011899197978869">04 September 2019 10:56</a>
               </span>
             </div>
-            <p class="comment-content">I thought that TCP MSS is not negotiated between receiver and sender (see RFC 879). So it can be independent in each direction.<br />What about RFC 4821 as a possible solution if firewalls in between are dropping ICMP unreachable messages (PTB)?<br />The socket option IP_DONTFRAGMENT on Windows just indicates that data should not be fragmented. What you&#39;re maybe interested in is the option IP_MTU_DISCOVER on a per socket basis. You could also set it system-widely with the registry entry HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters\EnablePMTUDiscovery to 1. If I remember correctly this registry entry is not available or is set to off.<br />What are the implications if one side of a connection has IP MTU set to 9000 bytes and the other end has set it to 1500 bytes (both end hosts are not using PMTU discovery)?</p>
+            <div class="comment-content">I thought that TCP MSS is not negotiated between receiver and sender (see RFC 879). So it can be independent in each direction.<br />What about RFC 4821 as a possible solution if firewalls in between are dropping ICMP unreachable messages (PTB)?<br />The socket option IP_DONTFRAGMENT on Windows just indicates that data should not be fragmented. What you&#39;re maybe interested in is the option IP_MTU_DISCOVER on a per socket basis. You could also set it system-widely with the registry entry HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Tcpip\Parameters\EnablePMTUDiscovery to 1. If I remember correctly this registry entry is not available or is set to off.<br />What are the implications if one side of a connection has IP MTU set to 9000 bytes and the other end has set it to 1500 bytes (both end hosts are not using PMTU discovery)?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2175968473116006071">04 September 2019 13:29</a>
+                <a rel="nofollow" id="c2175968473116006071" href="#2175968473116006071">04 September 2019 13:29</a>
               </span>
             </div>
-            <p class="comment-content">TCP MSS values: you&#39;re absolutely correct. Fixed.<br /><br />RFC 4821: Will mention it in Summary (next week).<br /><br />Windows: I found this: https://docs.microsoft.com/en-us/windows/win32/winsock/ipproto-ip-socket-options - the way I read it, PMTUD is enabled by default.<br /><br />Example: added to the text...</p>
+            <div class="comment-content">TCP MSS values: you&#39;re absolutely correct. Fixed.<br /><br />RFC 4821: Will mention it in Summary (next week).<br /><br />Windows: I found this: https://docs.microsoft.com/en-us/windows/win32/winsock/ipproto-ip-socket-options - the way I read it, PMTUD is enabled by default.<br /><br />Example: added to the text...</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17892204563666956100" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6481937950121743796">04 September 2019 18:34</a>
+                <a rel="nofollow" id="c6481937950121743796" href="#6481937950121743796">04 September 2019 18:34</a>
               </span>
             </div>
-            <p class="comment-content">What a reaction time! Thank you for your fast response.<br /><br />I think on Windows PMTUD is disabled (0) by default. It may depend on the version of Windows. I&#39;m not sure.<br /><br />In this context it may be worth mentioning TCP/(UDP) segmentation offload. Sometimes we can see huge TCP segments (beyond 60000 bytes) in a capture and wonder how it works.<br />Google and others try to achieve a performance (throughput) increase by using QUIC (UDP). So it&#39;s a fight between TCP and UDP which ends in TCP starvation and UDP dominance.<br /><br />An other point maybe worth mentioning is the performance impact by using jumbo frames (beyond 9000 bytes).</p>
+            <div class="comment-content">What a reaction time! Thank you for your fast response.<br /><br />I think on Windows PMTUD is disabled (0) by default. It may depend on the version of Windows. I&#39;m not sure.<br /><br />In this context it may be worth mentioning TCP/(UDP) segmentation offload. Sometimes we can see huge TCP segments (beyond 60000 bytes) in a capture and wonder how it works.<br />Google and others try to achieve a performance (throughput) increase by using QUIC (UDP). So it&#39;s a fight between TCP and UDP which ends in TCP starvation and UDP dominance.<br /><br />An other point maybe worth mentioning is the performance impact by using jumbo frames (beyond 9000 bytes).</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17892204563666956100" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1101311979651130607">04 September 2019 12:31</a>
+                <a rel="nofollow" id="c1101311979651130607" href="#1101311979651130607">04 September 2019 12:31</a>
               </span>
             </div>
-            <p class="comment-content">Regarding my last question I should have defined it more precisely: the highest MTU <br />along the network path supported is 1500 bytes.</p>
+            <div class="comment-content">Regarding my last question I should have defined it more precisely: the highest MTU <br />along the network path supported is 1500 bytes.</div>
           </div>
         </li>
       </div>

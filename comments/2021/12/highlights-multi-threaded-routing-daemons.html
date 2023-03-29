@@ -1,0 +1,123 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="920">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> JeffT </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c920" href="#920">07 December 2021 06:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Ivan,</p>
+
+<p>To my view - Arrcus has the most advanced multi-threaded BGP implementation, let&rsquo;s get Keyur to talk about it (if he agrees ;-))</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="921">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Wes Felter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c921" href="#921">08 December 2021 01:52</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Linux doesn&#39;t have a centralized scheduler (SGI scaled it to 1024(?) cores IIRC) and it isn&#39;t the compiler&#39;s job to parallelize code (vectorize yes, parallelize no) so one of your sources is... off.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="922">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c922" href="#922">08 December 2021 08:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>... and this is yet another benefit of collecting and republishing comments and responses. Thank you!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="923">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c923" href="#923">08 December 2021 08:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Wes, you probably referred to my comment. Tbh, I&#39;m not aware of SGI scheduler. Just wondering what approach SGI scheduler uses, if it&#39;s not centralized/time-sharing, is it space-sharing/partitioning the resources and running multiple copies of the OS kernel?  Can you elaborate on that one :)? How does it deal with the performance problem of synchronization?</p>
+
+<p>As for compiler vs CPU parallelizing code, finding parallelism in program is an important topic in modern compiler design, even when we don&#39;t talk about SIMD/vectorization. Superscalar architecture tasks the CPU to find ILP at run-time, and it turned out to be inefficient and resource-intensive; that&#39;s part of the reason why Intel introduced VLIW/EPIC and SMT, to push compile-time parallelism. So either the compiler or the programmer will do the hard work.  </p>
+
+<p>But finding parallelism and taking advantage of different cache speeds in hierarchical memory seem to be very hard topics, so I&#39;m not aware of any compiler excelling at those, and the VLIW/EPIC architecture was scraped in the end. SMT itself has problem with data-intensive workloads because of cache thrashing, and large routing databases can exceed cache size. Cray MTA-2 architecture does away with hierarchical memory by using hundreds of hardware contexts to compensate for memory access delay, but their architecture is vertical, not general. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="939">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c939" href="#939">13 December 2021 08:41</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I dug around a bit for more info on SGI. Turned out it was some sort of medium-scale super computer, SGI Altix 4700 the one having 1024-2048 cores. It&#39;s not a general architecture but designed for scientific workloads, like LS-DYNA, though. PHDs and Postdocs at our Mechanical Eng School, do a lot of finite-element analysis simulation with Ansys &amp; Dyna; they also write a lot Matlab and multithreaded Python codes to run big scientific calculations involving matrix, vector, differential equation, TensorFlow... so I know that these workloads are trivially/embarrasingly parallel, and therefore scale almost linearly with the number of cores. They&#39;re essentially vector/SIMD, and that&#39;s what the SGI Altix is used for. </p>
+
+<p>Also, it&#39;s hard to call the OS running on these kinds of box Linux, because vendors just take Linux source code and modify it to fit their needs. Standard Linux distros like Ubuntu, have central schedulers just like other OSes. </p>
+
+<p>In any case, I don&#39;t think embarrassingly parallel processing can be applied to multithread all parts of BGP because BGP codes are a lot more complicated and have different nature than scientific simulation codes. The database sharding part can possibly lend itself to SIMD kind of processing, but it probably makes little difference in performance compared to multicore multithreading because of the small size of the RIB -- small vs the size of the scientific workloads.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

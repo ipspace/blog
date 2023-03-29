@@ -1,0 +1,204 @@
+<div class="comments post" id="comments">
+  <h4>9 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="473">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Nikos Kallergis</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c473" href="#473">16 March 2021 09:38</a>
+              </span>
+            </div>
+            <div class="comment-content">Two cents: when discussing stuff that change infrequently, we&#39;ve found that YAML is good enough. Nevertheless, when it&#39;s about things with daily changes (also see firewall rules), it&#39;s a pain to manage it using text files directly.<br />
+
+<p>To that end, our approach has been to implement a 2-step process: first step is DB/Excel-to-YAML/JSON, second step is YAML/JSON-to-devices. This way, we&#39;re able to enjoy advantages from both approaches albeit the pain of writing the &quot;glue&quot; between states.</p>
+
+<p>That said, it seems that Dolt (especially as a backend for ~~NetBox~~ Nautobot) is a very interesting approach to &quot;marry&quot; the two in a more structured way...</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="474">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c474" href="#474">16 March 2021 12:37</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Nikos: Thanks for the comment - looks like you went down this path: https://www.ipspace.net/kb/DataModels/65-Data-Transformation.html</p>
+
+<p>&quot;This way, we&#39;re able to enjoy advantages from both approaches albeit the pain of writing the &quot;glue&quot; between states.&quot; &lt;&lt; This is sometimes called &quot;squashed sausage effect&quot;. You can&#39;t escape the complexity, you can only try to contain it, and sometimes you can decide where you want to push it to.</p>
+
+<p>As for Dolt: it&#39;s a great idea, but to use it with an IPAM/CMDB system you&#39;d have to make that system Dolt/branch aware. Maybe N2C will get there with Nautobot.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="475">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ken</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c475" href="#475">16 March 2021 08:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Our plan is very much to integrate Dolt as an option for the backend for Nautobot to cover the use case described by @Nikos. We have been talking to our customers for a few years to this problem, and over the past 6 months, several have come to us looking for solutions, so it looks like many more are running into these issues.</p>
+
+<p>https://twitter.com/networktocode/status/1370034277782609920</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="476">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ioannis Theodoridis</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c476" href="#476">16 March 2021 11:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I am more or less covered by the other comments but I want to add one thing.
+Excel adds one more layer between the information and the data that is stored, with auto-formating. <strong>Example</strong>: You want to store an ip address so you type it and press enter. Excel thinks it&#39;s a number that you erroneously typed as text, since it&#39;s <em>digits.3digits.3digits.3digits</em> . So it removes the dots from the actual data and stores the info without them. This is done in order to help you but Excel doesn&#39;t tell you because it doesn&#39;t want to hurt your feelings.. 
+Next thing you know, you write a script to automate data handling and in particular those ip addresses but the script crashes because, what do you know, <strong>this isn&#39;t an ip address!</strong> 
+True story.
+<strong>Stay away from Excel. Yaml is fine.</strong></p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="478">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Dan Peachey</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c478" href="#478">17 March 2021 12:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>We managed to implement git-like version control for our network/infra data set using a custom Django/PostgreSQL SoT that we are building in house (migrating from multiple XLSX data sources). Our data set is large enough that it would be unmanageable in YAML files.</p>
+
+<p>When we started to look at doing this, we didn&#39;t see anything available that could fit our use case so we went down the custom route. I&#39;m not necessarily recommending this :) It has caused us some pain but it is possible to implement. Luckily we had budget and management patience to be able to take this route.</p>
+
+<p>I&#39;ll be following Nautobot/Dolt with interest as integrating Dolt with Django would potentially solve some of our issues and give us a cleaner solution.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="479">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Nikos Kallergis</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c479" href="#479">17 March 2021 03:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Ioannis: even though I can totally understand what you&#39;re saying about Excel in general, keep in mind that the specific issue with dots in IP addresses is mostly a Greek problem. In other locales where dots are used for decimals (and commas for separating powers of 1000), this issue does not exist :-)</p>
+
+<p>And in any case, since you&#39;re already in Excel, why not employ a bit of VBA to fix everything? :-P</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="480">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ioannis Theodoridis</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c480" href="#480">17 March 2021 04:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@nikos: good point about the dots being a greek issue. But it&#39;s a trust thing for me. I don&#39;t trust it anymore because it cheated on me.
+Jokes aside, I do get that people are more attracted to excel than yaml. But that&#39;s the main issue, if I have to automate something I prefer stability. So maybe I would go with the sausage too, if I didn&#39;t have a choice on it.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="481">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c481" href="#481">18 March 2021 06:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Dan: You don&#39;t have to wait for Nautobot/Dolt integration to simplify your challenges. All you need is to validate whether Dolt meets your requirements (including maturity and stability) and go from there -- in your case it would be a Postgres replacement.</p>
+
+<p>@Ioannis: I can confirm that it must be a Greek issue. Nothing similar happens when using Slovenian (decimal comma) or English/US (decimal dot) locale.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="487">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Dan Peachey</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c487" href="#487">19 March 2021 10:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Ivan: True, but it&#39;s more due to priorities for us. We have the high level part working in terms of modelling and version control, so now we&#39;re switching development focus more towards deployment and low level/device config part. We only have a small team. Hopefully by the time we come back to look at improving the version control part, Dolt will have matured and NTC will have done some of the integration leg work already ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

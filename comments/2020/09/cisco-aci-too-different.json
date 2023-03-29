@@ -1,0 +1,39 @@
+{
+   "comments": [
+      {
+         "date": "14 September 2020 01:17",
+         "html": "<p>I like Application Centric Infrastructure, for this &quot;application centric&quot; approach... and you have to go along this path to find it very useful.\nI consider EPGs and contracts, just like security groups and rules inside AWS, there are very loosely tied to network construct (IP address, subnetting/routing, ...).\nWhen designing an ACI Fabric, we try to go along this philopsophy and make decision along this path.</p>\n\n<p>Yes, we took several hours to find naming convention for every type of objects in ACI because it is object-oriented.</p>\n\n<p>And, to be really transparent, when starting with ACI, you have to think about automation at the beginning (even if you don&#39;t automate at first), it has to come quickly, in order to leverage the abstract ACI offers. That&#39;s where API First is a real thing and ACI gives you all the tool (API inspector) to go API.</p>\n\n<p>We have now architects and developpers that can define their architectures logically without any IP-related information, and provision all EPGs and contracts (and ...) with API calls, from a JSON/YAML/CSV/xls description file.</p>\n\n<p>And so, I would&#39;nt recommand ACI if you want to stay in a &quot;network-centric&quot; mode, I agree.</p>\n",
+         "id": "128",
+         "name": " Mathieu Millet",
+         "pub": "2020-09-14T13:17:59",
+         "type": "comment"
+      },
+      {
+         "date": "14 September 2020 06:08",
+         "html": "Good thoughts which I mostly agree but few buts:<br />\n\n<p>1) &quot;One needs to impose some structure, naming conventions&hellip;, and most people don&rsquo;t seem to get that done&quot; Well that&#39;s for me a great example why the client and VARs should start automate to give their deployments and DCs some structure and standardize it. You can make a mess out of any technology in the world if you can&#39;t design it properly that&#39;s a fact.</p>\n\n<p>2) &quot;but it turns out that the moment you start automating your deployments, you might not need Cisco ACI anymore&quot; - that is very subjective. Yes you can automate your 3 DCs with 6 spines and 12 leafs start extending your VXLANs without ACI but that&#39;s something you can do if you have team of at least 2-3 developers who has skills for it. Not typical enterprise which has team of 2 engineers who are sitting most of the time on P1 cases and at the same time helping their boss with fixing his Outlook.</p>\n\n<p>3) Great benefit which you didn&#39;t mention of APIC is that this is your single source of truth in your DC. Yes you can start automating your DC without APIC and using just a standard NXOS APIs but that&#39;s not the only point why to run ACI. APIC gives you much more than just API for configuring your DC but also provide you realtime metrics from your infrastructure and provides APIs for your telemetry etc. Yes APIC APIs look like they have been built in 2000 (which it maybe actually truth) and they have many gaps but that would be another talk....NXOS APIs are in my opinion even worst but that&#39;s just a thing of taste....</p>\n",
+         "id": "129",
+         "name": "Matyas",
+         "pub": "2020-09-14T18:08:03",
+         "type": "comment"
+      },
+      {
+         "date": "14 September 2020 10:11",
+         "html": "<p>I like ACI and I have been working on it for years so far. We get used to the constructs and different concepts like BD, EPG, ANP and contracts. We have seen the potential of automation and it&rsquo;s very obvious ( especially when u want to allow 173 vlans on certain VPC)</p>\n\n<p>Yet we never been really able to transform into pure application centric architecture. Actually we never been there and we had discussion about that  with Security guys and nothing moved forward. It&rsquo;s clear it depends on the environment and despite what cisco claims but I cannot imagine replacing firewall rules with contracts only. </p>\n\n<p>Regarding troubleshooting , it&rsquo;s very difficult to do native command line troubleshooting without TAC support. Amount of hidden commands are huge and the internals are so taboo on practical level. </p>\n\n<p>There is a lot of myths regarding ACI and a lot of people are adding to it especially those with bias to other vendors. However when I e plotrd different vendors i find them facing same challenges and might be offering same results like ACI. </p>\n\n<p>In my opinion i think SDN is just in the early phases and it&rsquo;s still open for development</p>\n",
+         "id": "130",
+         "name": " Karim Tarek",
+         "pub": "2020-09-14T22:11:04",
+         "type": "comment"
+      },
+      {
+         "date": "15 September 2020 09:51",
+         "html": "<p>I have been involved in both setting up an ACI multi-pod fabric, and running an Arista EVPN based network, and either way you&#39;re gonna need to do your own automation, and have your own team of automation staff.</p>\n\n<p>To my mind ACI is simply overly complicated, and although it does automate certain things for you out of the box, such as building the underlay and adding new leafs, the learning curve to get there is simply way too steep. </p>\n\n<p>Yes, naming conventions is key, but if you&#39;ve never deployed an ACI fabric before, how on earth are you gonna know which conventions to use? And once you&#39;ve typed in a name in ACI, you can&#39;t change it! Already at this point you need to automate stuff, to roll back your initial naming mistakes, and fix them.</p>\n\n<p>Yes, linking routing and contracts is a big mistake by the designers. \nRouting is control-plane, and should work the second you enable it, irrespective of contracts.\nContracts is security policy, and just like firewalls, Azure NSGs etc., they should have no effect on routing.</p>\n\n<p>I haven&#39;t met anyone yet, who has done an application-centric implementation of ACI. They have all been network-centric, and the amount of steps you need to perform in the ACI GUI to perform even the simple operation of emulating a simple VLAN with Bridge Domain, EPG, Contracts, and linking it to a VRF is such, that you cannot perform it manually without making mistakes, and you simply NEED to automate that, to get it right.</p>\n\n<p>I recognize the fact, that if you wanna deploy an EVPN fabric such as Arista&#39;s using CloudVision, you also need to perform a fair amount of programming, and create your on &quot;source of truth&quot;. To be efficient you need to automate that too, but you could start out with simple well known CLI based templates and automate as you grow. It&#39;s so much easier to troubleshoot, CloudVision provides magnificent telemetrics, and you can apply the same technology both in the datacenter and in the campus, rather than having to struggle with the incompatible plugs of ACI and SDA.</p>\n",
+         "id": "131",
+         "name": "Erik Lawaetz",
+         "pub": "2020-09-15T09:51:15",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2020/09/cisco-aci-too-different.html"
+}

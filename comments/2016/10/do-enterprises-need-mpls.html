@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14579645045631302258" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2679574237571018500">26 October 2016 10:06</a>
+                <a rel="nofollow" id="c2679574237571018500" href="#2679574237571018500">26 October 2016 10:06</a>
               </span>
             </div>
-            <p class="comment-content">Great post - thank you for that.<br />However, the initial question bugs me a little. MPLS is not a solution to a problem - it&#39;s a packet encapsulation and forwarding method.<br /><br />From my opinion the question is, do enterprises need layer-3 virtualization technologies. If yes, MPLS (along with some additional protocols and features) could be the right choice.<br /><br />But this is only a helping tool for a problem (e.g. separation of security zones). Maybe there are other technologies like VRF lite (as you said), LISP, proprietary stuff like SGT.</p>
+            <div class="comment-content">Great post - thank you for that.<br />However, the initial question bugs me a little. MPLS is not a solution to a problem - it&#39;s a packet encapsulation and forwarding method.<br /><br />From my opinion the question is, do enterprises need layer-3 virtualization technologies. If yes, MPLS (along with some additional protocols and features) could be the right choice.<br /><br />But this is only a helping tool for a problem (e.g. separation of security zones). Maybe there are other technologies like VRF lite (as you said), LISP, proprietary stuff like SGT.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3152261998118777177">26 October 2016 10:17</a>
+                <a rel="nofollow" id="c3152261998118777177" href="#3152261998118777177">26 October 2016 10:17</a>
               </span>
             </div>
-            <p class="comment-content">&quot;From my opinion the question is, do enterprises need layer-3 virtualization technologies.&quot; &lt;&lt; Link to that one in the first paragraph of this post ;)</p>
+            <div class="comment-content">&quot;From my opinion the question is, do enterprises need layer-3 virtualization technologies.&quot; &lt;&lt; Link to that one in the first paragraph of this post ;)</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14579645045631302258" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7917082896046551766">26 October 2016 11:14</a>
+                <a rel="nofollow" id="c7917082896046551766" href="#7917082896046551766">26 October 2016 11:14</a>
               </span>
             </div>
-            <p class="comment-content">If VRF = L3 virtualization technologies, than I saw that link. (however VRFs are again just a tiny piece of the whole story).<br />Nevermind my jabbering ... great post, thanks for sharing!</p>
+            <div class="comment-content">If VRF = L3 virtualization technologies, than I saw that link. (however VRFs are again just a tiny piece of the whole story).<br />Nevermind my jabbering ... great post, thanks for sharing!</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2089716361703533354">26 October 2016 16:50</a>
+                <a rel="nofollow" id="c2089716361703533354" href="#2089716361703533354">26 October 2016 16:50</a>
               </span>
             </div>
-            <p class="comment-content">If you want to have a L3 virtualization technology, you need a separate forwarding table for each virtual L3 domain (like you need a separate MAC table for each virtual L2 domain).<br /><br />You also need some way of populating that table, usually a routing protocol. VRF (regardless of how you call it) is thus a fundamental building block of every L3 virtualization technology.</p>
+            <div class="comment-content">If you want to have a L3 virtualization technology, you need a separate forwarding table for each virtual L3 domain (like you need a separate MAC table for each virtual L2 domain).<br /><br />You also need some way of populating that table, usually a routing protocol. VRF (regardless of how you call it) is thus a fundamental building block of every L3 virtualization technology.</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01335898315678692950" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2926002917685946766">27 October 2016 19:17</a>
+                <a rel="nofollow" id="c2926002917685946766" href="#2926002917685946766">27 October 2016 19:17</a>
               </span>
             </div>
-            <p class="comment-content">Like DWDM, MPLS is a fantastic solution if you need to keep traffic flows separate, but like DWDM it typically requires some initial capital investment and re-architecture. (Not all vendor hardware supports true CE/PE/P MPLS infrastructure in their code, many just do VRF lite). You need to spend some time pondering the TCO/ROI.<br /><br />For instance, if your current $employer has multiple campuses or data centers and someone asks to deploy a &quot;test&quot; environment comprised of multiple isolated VLANs at each location, that&#39;s easy. If they then ask you to have them all talk to each other (and ONLY to each other due to security concerns) then you are doing ACLs (ugh), firewalls, L2 tunnels or L3 tunnels. The firewall solution is fine but it doesn&#39;t scale... every site you add will require one. Also firewalls don&#39;t give you the flexibility of Layer-1, 2 and 3 tunnels. <br /><br />If you invest in an MPLS infrastructure then you can spin up that VRF everywhere you need it. I think a good example of this is a lot of educational institutions run separate VRFs across a common infrastructure to keep the faculty traffic 100% separated from all the young blackhats on the student networks. Most educational IT staff don&#39;t have the budget to purchase and refresh large firewall populations, so VRF&#39;ing it all to a centralized pair is cost effective. It should definitely be considered anytime you have a &quot;keep this from talking to that, but let it talk to other things&quot; challenge. Yes, there are other alternatives such as DMVPN but these again become problematic as they scale up, and they don&#39;t give you the Layer 1-3 options.<br /><br />The documentation, adoption and operational handoff isn&#39;t any worse than other solutions. I recommend at least considering it even for small/medium efforts.</p>
+            <div class="comment-content">Like DWDM, MPLS is a fantastic solution if you need to keep traffic flows separate, but like DWDM it typically requires some initial capital investment and re-architecture. (Not all vendor hardware supports true CE/PE/P MPLS infrastructure in their code, many just do VRF lite). You need to spend some time pondering the TCO/ROI.<br /><br />For instance, if your current $employer has multiple campuses or data centers and someone asks to deploy a &quot;test&quot; environment comprised of multiple isolated VLANs at each location, that&#39;s easy. If they then ask you to have them all talk to each other (and ONLY to each other due to security concerns) then you are doing ACLs (ugh), firewalls, L2 tunnels or L3 tunnels. The firewall solution is fine but it doesn&#39;t scale... every site you add will require one. Also firewalls don&#39;t give you the flexibility of Layer-1, 2 and 3 tunnels. <br /><br />If you invest in an MPLS infrastructure then you can spin up that VRF everywhere you need it. I think a good example of this is a lot of educational institutions run separate VRFs across a common infrastructure to keep the faculty traffic 100% separated from all the young blackhats on the student networks. Most educational IT staff don&#39;t have the budget to purchase and refresh large firewall populations, so VRF&#39;ing it all to a centralized pair is cost effective. It should definitely be considered anytime you have a &quot;keep this from talking to that, but let it talk to other things&quot; challenge. Yes, there are other alternatives such as DMVPN but these again become problematic as they scale up, and they don&#39;t give you the Layer 1-3 options.<br /><br />The documentation, adoption and operational handoff isn&#39;t any worse than other solutions. I recommend at least considering it even for small/medium efforts.</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12901224627748822525" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7607471835839830181">28 October 2016 23:26</a>
+                <a rel="nofollow" id="c7607471835839830181" href="#7607471835839830181">28 October 2016 23:26</a>
               </span>
             </div>
-            <p class="comment-content">Also worth noting:<br /><br />MPLS can help in designing a simple and stable core that isn&#39;t subject to the volatility of routing / topology changes at the edge.  I agree these objectives can be satisfied with other solutions, but as autarch01 says, implementing MPLS doesn&#39;t have to be worse than other options. I would argue that MPLS is in a similar place to where BGP was in many enterprises a few years ago ... perceived as prohibitively complex and scary, when it doesn&#39;t have to be.<br /><br />There are some significant advantages to MPLS when it comes to upgrading or expanding the core (P) routers as you don&#39;t have to consider &#39;customer&#39; routes.<br /><br />Using 6VPE you can implement IPv6 without having to re-engineer the core (P) routers.<br /><br />If running multicast, some nice options for minimising the amount of multicast state information the core has to maintain.<br /><br />Some security advantages as well, in terms of options for protecting the core control plane if the design maintains separacy of &#39;customer&#39; and global routing tables.<br /></p>
+            <div class="comment-content">Also worth noting:<br /><br />MPLS can help in designing a simple and stable core that isn&#39;t subject to the volatility of routing / topology changes at the edge.  I agree these objectives can be satisfied with other solutions, but as autarch01 says, implementing MPLS doesn&#39;t have to be worse than other options. I would argue that MPLS is in a similar place to where BGP was in many enterprises a few years ago ... perceived as prohibitively complex and scary, when it doesn&#39;t have to be.<br /><br />There are some significant advantages to MPLS when it comes to upgrading or expanding the core (P) routers as you don&#39;t have to consider &#39;customer&#39; routes.<br /><br />Using 6VPE you can implement IPv6 without having to re-engineer the core (P) routers.<br /><br />If running multicast, some nice options for minimising the amount of multicast state information the core has to maintain.<br /><br />Some security advantages as well, in terms of options for protecting the core control plane if the design maintains separacy of &#39;customer&#39; and global routing tables.<br /></div>
           </div>
         </li>
       </div>

@@ -1,0 +1,116 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1724">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1724" href="#1724">26 March 2023 10:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>IMO PBR or policy-based routing is only a valid solution if it could be done in hardware. You might overload little switch&#39;s or router&#39;s CPU with PBR.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1725">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1725" href="#1725">26 March 2023 11:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Absolutely agree. PBR is usually implemented with the same lookup hardware as ACLs, so there&#39;s pretty high chance that a platform that can do packet filters in hardware could also do simple PBR in hardware.</p>
+
+<p>Even better, as the IP address of the backup server is usually well-known, you could easily turn this into a pure routing challenge. See https://www.ipspace.net/kb/Internet/ScalablePolicyRouting/ for details.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1726">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jaap de Vos</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1726" href="#1726">26 March 2023 07:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Cool, thanks for sharing. This is one of the most relevant subjects for me at the moment. Check out this series of excellent and detailed posts about using BGP communities to decide to firewall or not to firewall. My favourite bit is detailed in part 2, where they create an optimal path so you only have to traverse a single firewall instead of two firewalls.
+https://stubarea51.net/2021/11/08/utilizing-bgp-communities-for-traffic-steering-part-1-firewalls/
+https://stubarea51.net/2022/03/20/bgp-communities-for-traffic-steering-part-2-state-management-across-data-centers/
+https://stubarea51.net/2022/06/12/bgp-communities-part-3-customer-bgp-traffic-engineering-communities/
+https://stubarea51.net/2022/07/24/bgp-communities-part-4-active-active-datacenter/</p>
+
+<p>Ideally I&#39;d do something like this for all services, but if you have a considerable amount of firewalled subnets you&#39;ll end up with a considerable amount of VRF&#39;s (and BGP sessions between L3 switches and firewalls for all of those VRF&#39;s).</p>
+
+<p>Some more idea&#39;s I have are related to integrating firewalls with VXLAN or MPLS, but I haven&#39;t grokked this direction yet.</p>
+
+<p>Does the ipSpace Data Center course help with answering questions in this problem space?</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1727">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1727" href="#1727">26 March 2023 07:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; Does the ipSpace Data Center course help with answering questions in this problem space?</p>
+
+<p>I don&#39;t think so. You&#39;re trying to solve a tough routing problem, and that&#39;s not what we focused on in the data center course. We discussed something similar in the last Design Clinic and I could expand on that in one of the future sessions.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

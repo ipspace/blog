@@ -1,0 +1,199 @@
+<div class="comments post" id="comments">
+  <h4>4 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1061">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1061" href="#1061">01 March 2022 09:23</a>
+              </span>
+            </div>
+            <div class="comment-content">Let me be perfectly clear: LISP got half the picture right, as in it sees the need to ID the router by a node address, but it fails to go ball to the wall and identifies the endpoint by a node address as well. Routing on the node will remove the DFZ, cuts down the routing table size, slows down its growth, and makes multi homing and mobility quite a bit easier.<br />
+
+<p>Right now LISP is only done half-way, so I&#39;m not in its camp, but if one day LISP can go all the way to routing on the node, then I&#39;m all for it. I actually agree with some of the points in Victor Moreno&#39;s comment, esp this part: &quot;the impact of mobility events in a BGP network is unbound.&quot; Yes, because the scope of BGP is the whole Internet. By routing on the interface address and having a flat address space whose length scale extends across the globe, this leads to complexity, tight coupling and RIB + Update explosion. Having one global address space whose visibility is the whole Internet, is essentially a form of centralization. LISP has the potential to change all this, but unfortunately, by far, it&#39;s still missing half the structure. </p>
+
+<p>Also, let&#39;s say our Internet addressing structure is now too deep-rooted to ask for renumbering into a topologically-protected addressing scheme, so it will stay like this forever. Even then, if we adopt routing on the node instead of interface, all of what I said above will still apply. Its effects will be to a lesser degree, but they&#39;re positive effects all the same: reduction in the global RIB, slow-down in the increase of RIB entries, massive reduction in routing update, much lighter-weight multihoming and mobility, and much less TCP session breakage due to interface IP change on either end. Adding anycast entries won&#39;t lead to nonlinear increase in the number of RIB entries anymore, AFAIK. </p>
+
+<p>Henk is right: the hard part in Computer Science is caching and naming things. If we can name the right things, we&#39;ve gone a long way toward scalability. The OS guys got it right with Virtual Memory and High-Level Language. Imagine how badly current OSes scale if all they have is physical memory, or how tough it is to do programming when all you have is machine language. </p>
+
+<p>So yeah, all in all, LISP has the first part right, but it&#39;s missing the 2nd half of the picture. It has potential, but so far is not fully developed. If that can be improved, LISP can become the new routing architecture. BGP doesn&#39;t have to be thrown out then, it can still be incorporated as the routing protocol, but it&#39;ll be much simplified. AS for one, is no longer needed in it AFAIK. </p>
+
+<p>ALso, a lot of the techniques we&#39;ve developed over the decades, are also as good for the new routing architecture as they are for the old ones, so they won&#39;t be obsolete either. But complexities like NAT are no longer needed. NAT after all, is just flattening of hierarchy, kinda like putting all VM to physical memory mappings in one flat table instead of using hierarchical page directory. When we have layered addressing, NAT can disappear. </p>
+
+<p>Also, TCP and IP should not have been split back in the 80s, as they&#39;re tightly coupled. Merge them back, and problems like fragmentation can be dealt with more easily. As for CC, think about why DCTCP reasonably succeeds in its environment. That&#39;s what I meant by length scale renormalization. Also, a network problem like CC is best resolved in the network layer, esp. when it&#39;s now well known that Internet traffic, or all traffic for that matter, experiences some form of fractal self-similarity. </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1063">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1063" href="#1063">01 March 2022 02:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Talking about naming and locating things, could you kindly provide your contact details such that we may connect?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1070">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1070" href="#1070">02 March 2022 05:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Jeroen, Ivan has my contact, so you can grab that off him. Feel free to email me anytime :)) .  </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1064">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1064" href="#1064">01 March 2022 03:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>My view of LISP is not a solution for the global public Internet. In this aspect I agree, that it has a a lot of issues.
+I see a potential in LISP as a private overlay replacing MPLS VPN solutions with something that is better in performance and has a built-in support for multi-link mobility.
+In that environment LISP has a much better performance and scalability then BGP. Just ask Victor Moreno about his experiements and the results. It was measured in a large scale test, it is not just a paper tiger. He has published the results and publicly available.
+I agree that in some aspect LISP is a kind of a next generation BGP when PubSub is used with reliable transport. It is best used in a flat logical topology like a private overlay. There it is a big advantage that there is no best path selection. So it is very fast for mobility.
+Actually, you can make a lot analogy between the current LISP usage and BGP.
+The LISP MS/MR is a kind of analogy to the BGP RR. It has similar design considerations for availability and scalability. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1065">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Tony P</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1065" href="#1065">01 March 2022 04:52</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Lovely comment ;-) In wider sense, basically no&#39;one should be allowed to touch networking at scale until they read and internalized the Xerox Park Schoch&#39;s &#39;78 seminal paper &quot;Inter-Network Naming, Addressing and Routing&quot; AFAIS ;-)  But we are in the day and age where addresses being used as routes or sub-service access points is sold as the next &quot;architecture&quot;. AFAIS we could just as well suggest to make the whole planet a flat cross-connect of wires with the whole ball of yarn being maintained by an infinitely wise, bonevolent and fast controller ;-) With the exception that it seems anybody with some smarts can inject traffic into the endpoint of any wire in such technology unless we have perfect filtering on every network edge in terms of cross-matrix of networks being able to talk to such address-route-service endpoints. This seems to pass as &quot;security architecture&quot; in that world ... </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1067">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1067" href="#1067">01 March 2022 06:32</a>
+              </span>
+            </div>
+            <div class="comment-content">There is a solution for that too: In fully decentralized web3 style, require every packet to be added to a global blockchain (a &quot;DLT network&quot;)<br />
+
+<p>Eliminates plausible deniability and creates a global networked economy based on personal reputation.</p>
+
+<p>Until someone figures out that this scheme doesn&#39;t scale - and so we apply it to every flow (TCP SYN packet) instead of every packet.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1068">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">sjdkluytsiyklr</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1068" href="#1068">01 March 2022 10:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for letting me know about &quot;Inter-Network Naming, Addressing and Routing&quot; (@ http://www.postel.org/ien/txt/ien19.txt for those who are looking for it)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1066">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1066" href="#1066">01 March 2022 06:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Radia Perlman&#39;s recent keynote &quot;Do the wrong thing!&quot; at NANOG84 is relevant in this context: https://www.youtube.com/watch?v=5D1v42nw25E</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

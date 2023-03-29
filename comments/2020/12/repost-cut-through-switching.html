@@ -1,0 +1,76 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="314">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c314" href="#314">15 December 2020 06:36</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>I&#39;m glad you find my comment useful, very much so :))! And as always, a big thank you to you for bringing up important topics so different people can chip in and share their often knowledgeable and very helpful perspectives on them.</p>
+
+<p>Re cut-thru switching, I think Arista is one of the prominent vendors that provide several good products that claim big numbers on cut-through performance. No doubt they are great products, but still I&#39;d stand by the bigger viewpoint in my comment that cut-thru switching is mainly useful in niche segments. Just the other day I luckily ran across Arista&#39;s published whitepaper on the validity of Cisco&#39;s benchmark test of the Nexus 5k vs Arista 7100S. It&#39;s a good read if you&#39;re interested:</p>
+
+<p>https://people.ucsc.edu/~warner/Bufs/7148sx-ixnetwork-microburst.pdf</p>
+
+<p>There&#39;re some important conclusions from there which I agree with, given what&#39;s made available about the architecture of Arista cut-through line of products:</p>
+
+<p>https://www.arista.com/assets/data/pdf/Whitepapers/7050X3_Architecture_WP.pdf</p>
+
+<p>https://www.arista.com/assets/data/pdf/Whitepapers/Arista_7050X_Switch_Architecture.pdf</p>
+
+<p>It seems Arista is a bit reserved when it comes to sharing the architecture of their switches with the world, compared to say, Cisco and Juniper. But thru the 2 links, I can work out that basically they use shared-memory architecture for their cut-thru portfolio, which is the best router/switch architecture when the bandwith scale permits its use. Looks like Arista knows this well and uses this to their great advantage. </p>
+
+<p>Going back to the points I agree with in their rebuttal paper, the first point I agree with straightaway is the 4th paragraph: Nexus performs better under higher load, while Arista 7100 outperforms under light load. Obviously, shared memory outperforms VOQ crossbar architecture when both architectures are viable. So if 2 switches, both having the same fabric rate, the shared-memory one will outperform because it&#39;s the ideal architecture, independent of switching method, cut-through or SAF in lighter traffic condition.</p>
+
+<p>But shared-memory has limitations that makes it unable to scale to very large size. The memory speed can&#39;t keep up with line rate, plus bank collision and timing issues will slow it down, and shared buffer will suffer more in case of high load and tree saturation, while VOQ will limit this congestion spread to certain ports and can still function under higher congestion. </p>
+
+<p>So the conclusion in the paper basically sums it up: for lighter traffic patterns that demand very low latency, cut-through can help (with a shared memory architecture of course). For high-end switching in the Tbs and Multi-Tbs with aggressive traffic patterns that involve heavy hitters, high fan-out multicast, or both running through the same chassis, cut-through degrades to SAF due to output contention, and shared memory architecture dies. VOQ and crossbar will have to be used, despite their significant complexity and generally higher latency compared to its simple and ideal shared-memory counterpart. The higher latency (regardless of switchig methods) can be alleviated by higher speedup (very hard at 25 or 50Tbps) or better arbitration (equally hard at the same scale, much more so when multicast and unicast traffic are mixed together). </p>
+
+<p>Also, the longer the paths between 2 endpoints, the less effective cut-through switching, due to other components of delay dominating total E-t-E delay. And at higher rate, say 100Gbe and more, pipeline processing delay dominates serialization delay, so the effect of cut-through is also diminished. One other thing is in case of jumbo-frame traffic, which gets a latency boost with cut-through, all else being equal, the reduced-latency of one flow may come at the expense of another. Say 2 packets destined for one egress port, one is a 9k jumbo packet, another 64 byte TCP ACK. If the 9k one gets scheduled ahead of the ACK, and assuming shared-memory architecture as it&#39;s often used for fast cut-thru, the ACK will have to wait in line until the whole 9K packet gets across, increasing its delay considerably, causing high jitter. So low latency for one flow comes at the cost of heavy toll for another. With VOQ crossbar, due to the way packets are cellified, and cells get interleaved between cell-times thanks to the crossbar scheduler, this jitter problem is mitigated, increasing fairness.</p>
+
+<p>So these are some subtle issues one should factor in when considering whether cut-through is the right thing. It would really help if vendors are open about their switching architecture, their pipeline latency, like how much VXLAN increase the total processing delay, with recirculation or no recirculation. Generally they keep those details hush-hush but one can always ask if they intend to do a big purchase :)) . </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="318">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c318" href="#318">15 December 2020 08:48</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Here&#39;s one of the primary reasons you&#39;ll see detailed packet walk and architecture presentations from Cisco but not from smaller vendors:</p>
+
+<p>https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html</p>
+
+<p>Cisco can afford to say **** B******* ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>23 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14047803952264243329" rel="nofollow">John Jackson</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#799257858706812197">21 April 2015 14:44</a>
+                <a rel="nofollow" id="c799257858706812197" href="#799257858706812197">21 April 2015 14:44</a>
               </span>
             </div>
-            <p class="comment-content">Help me think through this. What the host has configured for it&#39;s default gateway doesn&#39;t really matter, correct? Because the default gateway in traditional L2 access networks really isn&#39;t about the gateway&#39;s IP address, but the gateway&#39;s MAC address. The destination IP address in the packet header is always the end destination IP address, never the default gateway. The L3 access switch could just always route on the destination IP address ignoring the MAC destination in the Ethernet frame.  Am I thinking correctly?   </p>
+            <div class="comment-content">Help me think through this. What the host has configured for it&#39;s default gateway doesn&#39;t really matter, correct? Because the default gateway in traditional L2 access networks really isn&#39;t about the gateway&#39;s IP address, but the gateway&#39;s MAC address. The destination IP address in the packet header is always the end destination IP address, never the default gateway. The L3 access switch could just always route on the destination IP address ignoring the MAC destination in the Ethernet frame.  Am I thinking correctly?   </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5952270462176904093">21 April 2015 17:35</a>
+                <a rel="nofollow" id="c5952270462176904093" href="#5952270462176904093">21 April 2015 17:35</a>
               </span>
             </div>
-            <p class="comment-content">You&#39;re absolutely right, although most solutions still use an anycast default gateway (same IP and MAC address present on all edge routers) just to make the host gets ARP replies when querying for default gateway MAC address.<br /><br />Things get a bit tricky regarding ARP - Windows Server (at least) uses unicast ARP to check remote host reachability, so Hyper-V and Amazon VPC reply to ARP requests with MAC address of remote host. Juniper Contrail uses the same MAC address for all IP addresses.</p>
+            <div class="comment-content">You&#39;re absolutely right, although most solutions still use an anycast default gateway (same IP and MAC address present on all edge routers) just to make the host gets ARP replies when querying for default gateway MAC address.<br /><br />Things get a bit tricky regarding ARP - Windows Server (at least) uses unicast ARP to check remote host reachability, so Hyper-V and Amazon VPC reply to ARP requests with MAC address of remote host. Juniper Contrail uses the same MAC address for all IP addresses.</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2720379844456285362">22 April 2015 15:37</a>
+                <a rel="nofollow" id="c2720379844456285362" href="#2720379844456285362">22 April 2015 15:37</a>
               </span>
             </div>
-            <p class="comment-content">Do you mean that an access switch will create arp/nd cache and redistribute these entries as routes into a routing protocol?</p>
+            <div class="comment-content">Do you mean that an access switch will create arp/nd cache and redistribute these entries as routes into a routing protocol?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -82,10 +77,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7215101662903262601">22 April 2015 16:24</a>
+                <a rel="nofollow" id="c7215101662903262601" href="#7215101662903262601">22 April 2015 16:24</a>
               </span>
             </div>
-            <p class="comment-content">Yep, that&#39;s another way of looking at it - and exactly what Cumulus Linux is doing with their Redistribute Neighbor feature.</p>
+            <div class="comment-content">Yep, that&#39;s another way of looking at it - and exactly what Cumulus Linux is doing with their Redistribute Neighbor feature.</div>
           </div>
         </li>
       </div>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9008315016772712933">22 April 2015 17:52</a>
+                <a rel="nofollow" id="c9008315016772712933" href="#9008315016772712933">22 April 2015 17:52</a>
               </span>
             </div>
-            <p class="comment-content">What will then prevent an attacker to create a lot of IPv6 addressses and overload the routing protocol in the network?<br /><br />I did some measurement and in our campus network, there are more then 3 unique IPv6 addresses per a computer in 24 hour period due to privacy extension. Considering campus with 5000 users, there will be more or less 15 000 of constantly changing routes. Which routing protocol is scalable enough to handle such large amount of prefixes and converges quickly? You are proposing BGP (iBGP?), but it means full mesh or route-reflector, convergence time could also be better etc. etc. :/</p>
+            <div class="comment-content">What will then prevent an attacker to create a lot of IPv6 addressses and overload the routing protocol in the network?<br /><br />I did some measurement and in our campus network, there are more then 3 unique IPv6 addresses per a computer in 24 hour period due to privacy extension. Considering campus with 5000 users, there will be more or less 15 000 of constantly changing routes. Which routing protocol is scalable enough to handle such large amount of prefixes and converges quickly? You are proposing BGP (iBGP?), but it means full mesh or route-reflector, convergence time could also be better etc. etc. :/</div>
           </div>
         </li>
       </div>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2253043746843976424">22 April 2015 18:08</a>
+                <a rel="nofollow" id="c2253043746843976424" href="#2253043746843976424">22 April 2015 18:08</a>
               </span>
             </div>
-            <p class="comment-content">#1 - You only need host routes within a mobility domain.<br />#2 - Existing L3 switches already have to handle that churn<br />#3 - Every routing protocol can carry 15K prefixes (OK, maybe not OSPF ;).<br />#4 - Update rates of 100/second are the norm on global Internet (see http://bgpupdates.potaroo.net/instability/bgpupd.html). Your iThingy users won&#39;t come anywhere close to that.<br />#5 - IBGP convergence times are not an issue these days. FIB update is the problem.</p>
+            <div class="comment-content">#1 - You only need host routes within a mobility domain.<br />#2 - Existing L3 switches already have to handle that churn<br />#3 - Every routing protocol can carry 15K prefixes (OK, maybe not OSPF ;).<br />#4 - Update rates of 100/second are the norm on global Internet (see http://bgpupdates.potaroo.net/instability/bgpupd.html). Your iThingy users won&#39;t come anywhere close to that.<br />#5 - IBGP convergence times are not an issue these days. FIB update is the problem.</div>
           </div>
         </li>
       </div>
@@ -136,10 +131,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5875901059516993114">22 April 2015 18:09</a>
+                <a rel="nofollow" id="c5875901059516993114" href="#5875901059516993114">22 April 2015 18:09</a>
               </span>
             </div>
-            <p class="comment-content">... oh, and on &quot;What will then prevent an attacker to create a lot of IPv6 addressses and overload the routing protocol in the network&quot; - what prevents an attacker to create a lot of MAC addresses causing network-wide unknown unicast flooding, or a lot of IPv6 addresses, causing ND cache overflows? Proper policing in first-hop switches.</p>
+            <div class="comment-content">... oh, and on &quot;What will then prevent an attacker to create a lot of IPv6 addressses and overload the routing protocol in the network&quot; - what prevents an attacker to create a lot of MAC addresses causing network-wide unknown unicast flooding, or a lot of IPv6 addresses, causing ND cache overflows? Proper policing in first-hop switches.</div>
           </div>
         </li>
       </div>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1179232430123052591">22 April 2015 18:45</a>
+                <a rel="nofollow" id="c1179232430123052591" href="#1179232430123052591">22 April 2015 18:45</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for the answers. I have doubts that the necessary functionality will be available anytime soon in switches for the access layer, but who knows. <br /><br />&quot;what prevents an attacker to create a lot of MAC addresses/nd cache overflow&quot; - in IPv4 world dhcp snooping, in IPv6 world unfortunately nothing as nd-snooping and other security features are missing or are not mature enough or are badly designed. Sigh.</p>
+            <div class="comment-content">Thanks for the answers. I have doubts that the necessary functionality will be available anytime soon in switches for the access layer, but who knows. <br /><br />&quot;what prevents an attacker to create a lot of MAC addresses/nd cache overflow&quot; - in IPv4 world dhcp snooping, in IPv6 world unfortunately nothing as nd-snooping and other security features are missing or are not mature enough or are badly designed. Sigh.</div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4487263291596831058">22 April 2015 21:54</a>
+                <a rel="nofollow" id="c4487263291596831058" href="#4487263291596831058">22 April 2015 21:54</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br />If we take the use case of virtualized Data center with all servers running Hypervisor of some sort then the number of End-VMs you can support seems to be limited by TCAM /Route table size of ToRs which it looks like 128000. <br />I have a question - If  number of VMs are less than 128K and it is what most of the large enterprises today have in their DC then why use Network Overlay technologies? I can think of only overlapping IP address as use case for using Network overlays. Any thoughts/comments on this??  I really don&#39;t see why one would use all these complicated Overlays since routing protocols are time tested and overly simple in terms of operations!!</p>
+            <div class="comment-content">Ivan,<br />If we take the use case of virtualized Data center with all servers running Hypervisor of some sort then the number of End-VMs you can support seems to be limited by TCAM /Route table size of ToRs which it looks like 128000. <br />I have a question - If  number of VMs are less than 128K and it is what most of the large enterprises today have in their DC then why use Network Overlay technologies? I can think of only overlapping IP address as use case for using Network overlays. Any thoughts/comments on this??  I really don&#39;t see why one would use all these complicated Overlays since routing protocols are time tested and overly simple in terms of operations!!</div>
           </div>
         </li>
       </div>
@@ -197,10 +192,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Henk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5265638209351606128">23 April 2015 00:33</a>
+                <a rel="nofollow" id="c5265638209351606128" href="#5265638209351606128">23 April 2015 00:33</a>
               </span>
             </div>
-            <p class="comment-content">What you describe is literally intra-area routing in CLNS.<br /><br />You need a protocol between routers. Some people seem to prefer BGP as the solution to any problem. But the most natural solution here, for IGP routing, would be to use an actual IGP. IS-IS would do a fine job. Not much worse than BGP. And less prone to configuration/network-design problems than BGP. You could advertise /32s. Or you could introduce a new TLV to make a proper destinction.<br /><br />It would be *minimal* work to actually implement this functionality into a proper IS-IS implementation. Just a small matter of programming.<br /><br />You need a protocol for the routers to find out which EndStations are directly connected. In CLNS, that would be ESIS. In IPv4 you could indeed use ARP. In IPv6 you could use NDP. Or you could build a new proper host-router protocol (and use ARP until it catches on). With proper security/authentication, VRRP-like and DHCP-like functionality.<br /><br />Of course all this will be impossible, because it reeks of CLNS. And therefor it must never ever be implemented in TCP/IP. Too bad, CLNS did it right.<br /><br /></p>
+            <div class="comment-content">What you describe is literally intra-area routing in CLNS.<br /><br />You need a protocol between routers. Some people seem to prefer BGP as the solution to any problem. But the most natural solution here, for IGP routing, would be to use an actual IGP. IS-IS would do a fine job. Not much worse than BGP. And less prone to configuration/network-design problems than BGP. You could advertise /32s. Or you could introduce a new TLV to make a proper destinction.<br /><br />It would be *minimal* work to actually implement this functionality into a proper IS-IS implementation. Just a small matter of programming.<br /><br />You need a protocol for the routers to find out which EndStations are directly connected. In CLNS, that would be ESIS. In IPv4 you could indeed use ARP. In IPv6 you could use NDP. Or you could build a new proper host-router protocol (and use ARP until it catches on). With proper security/authentication, VRRP-like and DHCP-like functionality.<br /><br />Of course all this will be impossible, because it reeks of CLNS. And therefor it must never ever be implemented in TCP/IP. Too bad, CLNS did it right.<br /><br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -216,10 +211,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5411471234840152540">23 April 2015 06:35</a>
+                <a rel="nofollow" id="c5411471234840152540" href="#5411471234840152540">23 April 2015 06:35</a>
               </span>
             </div>
-            <p class="comment-content">I know and I think I said something along these lines during my Troopers IPv6 Microsegmentation talk. To add to irony, we had working TUBA code (running on Solaris and Cisco IOS) before they even agreed on IPv6 packet format. See http://tools.ietf.org/pdf/rfc1347.pdf<br /><br /></p>
+            <div class="comment-content">I know and I think I said something along these lines during my Troopers IPv6 Microsegmentation talk. To add to irony, we had working TUBA code (running on Solaris and Cisco IOS) before they even agreed on IPv6 packet format. See http://tools.ietf.org/pdf/rfc1347.pdf<br /><br /></div>
           </div>
         </li>
       </div>
@@ -241,10 +236,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02305236928990443506" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2571833114755251107">23 April 2015 19:27</a>
+                <a rel="nofollow" id="c2571833114755251107" href="#2571833114755251107">23 April 2015 19:27</a>
               </span>
             </div>
-            <p class="comment-content">What would you configure as subnet mask on clients? I am thinking /31 on the hardware that supports it and something bigger with proxy arp on the hardware that doesn&#39;t support /31</p>
+            <div class="comment-content">What would you configure as subnet mask on clients? I am thinking /31 on the hardware that supports it and something bigger with proxy arp on the hardware that doesn&#39;t support /31</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -260,10 +255,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5116592992687430292">23 April 2015 19:41</a>
+                <a rel="nofollow" id="c5116592992687430292" href="#5116592992687430292">23 April 2015 19:41</a>
               </span>
             </div>
-            <p class="comment-content">I would configure /24 on the clients (or anything along those lines) and let the switches handle the details.</p>
+            <div class="comment-content">I would configure /24 on the clients (or anything along those lines) and let the switches handle the details.</div>
           </div>
         </li>
       </div>
@@ -285,10 +280,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7353042378700757777">14 May 2015 16:56</a>
+                <a rel="nofollow" id="c7353042378700757777" href="#7353042378700757777">14 May 2015 16:56</a>
               </span>
             </div>
-            <p class="comment-content">I really like the idea of L3-Only network (fabric) but I wonder what would be the best way to push L3 down to hosts in leaf-and-spine arhitecture where you would have hosts connected to pair of ToR (leaf) switches for redundancy (instead of forming one L2 domain with MLAG for all hosts within a rack in combination with some kind of first hop redundancy protocol).<br /><br />Does this even make sense? <br />Any suggestions? <br />Would it make sense to limit host routes (&quot;mobility&quot; domain) to pair of ToR and advertise only /64 (in IPv6 world) with routing protocol to spine switches?<br /><br />I would image that hosts would have to run a routing protocol (or maybe not?) and the actual host adress would be assinged to loopback interface with default routes to both ToR switches or am I thinking in a totaly wrong direction? :)</p>
+            <div class="comment-content">I really like the idea of L3-Only network (fabric) but I wonder what would be the best way to push L3 down to hosts in leaf-and-spine arhitecture where you would have hosts connected to pair of ToR (leaf) switches for redundancy (instead of forming one L2 domain with MLAG for all hosts within a rack in combination with some kind of first hop redundancy protocol).<br /><br />Does this even make sense? <br />Any suggestions? <br />Would it make sense to limit host routes (&quot;mobility&quot; domain) to pair of ToR and advertise only /64 (in IPv6 world) with routing protocol to spine switches?<br /><br />I would image that hosts would have to run a routing protocol (or maybe not?) and the actual host adress would be assinged to loopback interface with default routes to both ToR switches or am I thinking in a totaly wrong direction? :)</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -304,10 +299,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2611085034383709410">24 August 2015 18:44</a>
+                <a rel="nofollow" id="c2611085034383709410" href="#2611085034383709410">24 August 2015 18:44</a>
               </span>
             </div>
-            <p class="comment-content">Cumulus Linux has this functionality in experimental stage:<br /><br />http://blog.ipspace.net/2015/08/layer-3-only-data-center-networks-with.html<br /><br />Cisco has something similar in its DFA architecture (and probably in ACI as well). See also the links I published with the Cumulus podcast (link above) for even more details.</p>
+            <div class="comment-content">Cumulus Linux has this functionality in experimental stage:<br /><br />http://blog.ipspace.net/2015/08/layer-3-only-data-center-networks-with.html<br /><br />Cisco has something similar in its DFA architecture (and probably in ACI as well). See also the links I published with the Cumulus podcast (link above) for even more details.</div>
           </div>
         </li>
       </div>
@@ -329,10 +324,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Sudarsan Duraiswamy</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#659575226194015141">15 March 2016 07:35</a>
+                <a rel="nofollow" id="c659575226194015141" href="#659575226194015141">15 March 2016 07:35</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />I had a query. let us assume there are two leaf&#39;s L1 and L2 and two spines S1 and S2. Now assume that there are independent switches (no fabric) and we are trying to have only l3 inside these connections.<br /><br />A host connected to leaf L1 sends out an IP Packet. L1 routes the packet. Now let us assume that it reaches via the link to C2. Now C2 has to again route it and send it to L2 and L2 routes it to the end host H2 which was connected to it.<br />However, if we assume that the path from L1 to L2 is switched then we will have the same problem of L2 domains within the leaf-spine.<br />Is this understanding Correct?<br /><br />Sincerely,<br />Sudarsan.D</p>
+            <div class="comment-content">Hi Ivan,<br /><br />I had a query. let us assume there are two leaf&#39;s L1 and L2 and two spines S1 and S2. Now assume that there are independent switches (no fabric) and we are trying to have only l3 inside these connections.<br /><br />A host connected to leaf L1 sends out an IP Packet. L1 routes the packet. Now let us assume that it reaches via the link to C2. Now C2 has to again route it and send it to L2 and L2 routes it to the end host H2 which was connected to it.<br />However, if we assume that the path from L1 to L2 is switched then we will have the same problem of L2 domains within the leaf-spine.<br />Is this understanding Correct?<br /><br />Sincerely,<br />Sudarsan.D</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -348,10 +343,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6201046997552869339">15 March 2016 10:47</a>
+                <a rel="nofollow" id="c6201046997552869339" href="#6201046997552869339">15 March 2016 10:47</a>
               </span>
             </div>
-            <p class="comment-content">Please be precise. What does &quot;path is switched&quot; means? The marketing teams of major vendors made that totally ambiguous.<br /><br />In any case, in a pure L3 network, all switches have to do full L3 lookup. No multi-hop L2 anywhere. Problem solved.</p>
+            <div class="comment-content">Please be precise. What does &quot;path is switched&quot; means? The marketing teams of major vendors made that totally ambiguous.<br /><br />In any case, in a pure L3 network, all switches have to do full L3 lookup. No multi-hop L2 anywhere. Problem solved.</div>
           </div>
         </li>
       </div>
@@ -373,10 +368,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16594624559681706818" rel="nofollow">Andrew</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8420911626344337588">25 August 2016 22:27</a>
+                <a rel="nofollow" id="c8420911626344337588" href="#8420911626344337588">25 August 2016 22:27</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />When dealing with guests on each host, if each host injects a /32 for each guest, by the time the routes are on the spine, you&#39;re potentially well past the 128k route limit. I&#39;ve read about overlays like vxlan but I still don&#39;t see how that would avoid the problem on the spines, as each spine would have to know about every /32, which could be on any one of the leaves below. Can you elaborate on how this can scale beyond 128k routes?</p>
+            <div class="comment-content">Ivan,<br /><br />When dealing with guests on each host, if each host injects a /32 for each guest, by the time the routes are on the spine, you&#39;re potentially well past the 128k route limit. I&#39;ve read about overlays like vxlan but I still don&#39;t see how that would avoid the problem on the spines, as each spine would have to know about every /32, which could be on any one of the leaves below. Can you elaborate on how this can scale beyond 128k routes?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -392,10 +387,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8036892339630061866">26 August 2016 08:30</a>
+                <a rel="nofollow" id="c8036892339630061866" href="#8036892339630061866">26 August 2016 08:30</a>
               </span>
             </div>
-            <p class="comment-content">It wouldn&#39;t. One of the obsessions of our industry is to try to find a one-size-fits-everything solutions. It&#39;s like trying to design something that could be a mountain bike today and an Abrams tomorrow. Reality doesn&#39;t work that way.<br /><br />Most data centers don&#39;t have 128K guest VMs, and if you need more than that, you shouldn&#39;t be looking for solutions on public blog sites ;)</p>
+            <div class="comment-content">It wouldn&#39;t. One of the obsessions of our industry is to try to find a one-size-fits-everything solutions. It&#39;s like trying to design something that could be a mountain bike today and an Abrams tomorrow. Reality doesn&#39;t work that way.<br /><br />Most data centers don&#39;t have 128K guest VMs, and if you need more than that, you shouldn&#39;t be looking for solutions on public blog sites ;)</div>
           </div>
         </li>
       </div>
@@ -417,10 +412,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13569391474860461806" rel="nofollow">Sudarsan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8555769434905684577">11 February 2017 18:50</a>
+                <a rel="nofollow" id="c8555769434905684577" href="#8555769434905684577">11 February 2017 18:50</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />In a pure L3 only network where ever ToR/Spine switch does L3 forwarding, how is the routing to the end host done when the end host (VM) moves to another ToR and becomes silent as well.<br /><br />To be clear, let us assume there are two ToR T1 and T2.<br />Host H1 is connected to T1 and H2 to T2. H1 and H2 are in different subnets.<br />IP connectivity happens between H1 and H2 by the fact that the ToRs and the spines do IP forwarding.<br />Now let us assume that the host H2 moves to ToR1 and is also silent as well.<br />Now how does ToR1 detect this condition? Without the dection ToR1 would route the packet to one of thespines, which would again route it to ToR2 and ToR2 would probably blackhole the traffic.<br />Please let me know<br />Sincerely,<br />Sudarsan.D</p>
+            <div class="comment-content">Hi Ivan,<br /><br />In a pure L3 only network where ever ToR/Spine switch does L3 forwarding, how is the routing to the end host done when the end host (VM) moves to another ToR and becomes silent as well.<br /><br />To be clear, let us assume there are two ToR T1 and T2.<br />Host H1 is connected to T1 and H2 to T2. H1 and H2 are in different subnets.<br />IP connectivity happens between H1 and H2 by the fact that the ToRs and the spines do IP forwarding.<br />Now let us assume that the host H2 moves to ToR1 and is also silent as well.<br />Now how does ToR1 detect this condition? Without the dection ToR1 would route the packet to one of thespines, which would again route it to ToR2 and ToR2 would probably blackhole the traffic.<br />Please let me know<br />Sincerely,<br />Sudarsan.D</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -436,10 +431,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#799359363308764649">11 February 2017 21:23</a>
+                <a rel="nofollow" id="c799359363308764649" href="#799359363308764649">11 February 2017 21:23</a>
               </span>
             </div>
-            <p class="comment-content">Unless you configure it otherwise, the hypervisor sends gratuitous ARP or RARP packet when the VM is moved on behalf of the VM.<br /><br />Here&#39;s a pretty good packet walk describing the nastier case (RARP instead of GARP): https://yves-louis.com/DCI/?p=1502</p>
+            <div class="comment-content">Unless you configure it otherwise, the hypervisor sends gratuitous ARP or RARP packet when the VM is moved on behalf of the VM.<br /><br />Here&#39;s a pretty good packet walk describing the nastier case (RARP instead of GARP): https://yves-louis.com/DCI/?p=1502</div>
           </div>
         </li>
       </div>
@@ -454,10 +449,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13569391474860461806" rel="nofollow">Sudarsan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8385704215996191645">13 February 2017 19:11</a>
+                <a rel="nofollow" id="c8385704215996191645" href="#8385704215996191645">13 February 2017 19:11</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br />The link you mention assumes that the DCI interconnect is L2. My query is specifically when the DCI is only L3.(L3DCI).<br /><br />Sincerely,<br />Sudarsan.D</p>
+            <div class="comment-content">Hi Ivan,<br />The link you mention assumes that the DCI interconnect is L2. My query is specifically when the DCI is only L3.(L3DCI).<br /><br />Sincerely,<br />Sudarsan.D</div>
           </div>
         </li>
       </div>
@@ -472,10 +467,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8926099863625683671">13 February 2017 19:12</a>
+                <a rel="nofollow" id="c8926099863625683671" href="#8926099863625683671">13 February 2017 19:12</a>
               </span>
             </div>
-            <p class="comment-content">Similar, but wouldn&#39;t work with RARPs (but would work with ARPs)</p>
+            <div class="comment-content">Similar, but wouldn&#39;t work with RARPs (but would work with ARPs)</div>
           </div>
         </li>
       </div>

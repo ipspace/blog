@@ -1,102 +1,130 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "13 August 2013 16:47",
-          "html": "If you believe there&#39;s a back door being buried deep in network device OS, it&#39;s always possible to trigger it with an innocuous-looking packet - something as simple as ping with a carefully crafted payload.<br /><br />Also, if I would be a device vendor, I wouldn&#39;t allow you to filter out my backdoor triggers with control plane protection, would I? ;)<br /><br />(* For everyone else: this is PURE UNFOUNDED SPECULATION *)",
-          "id": "7095826663020490913",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-08-13T16:47:15.183+02:00",
-          "ref": "7440927484613213811",
-          "type": "comment"
-        }
-      ],
-      "date": "13 August 2013 09:06",
-      "html": "From security perspective, when we look at a core router, if the control plane is well protected, will it really be possible to trigger some specific back-door (let&#39;s assume the extreme situation that router has government|vendor placed back-door) through data plane (transit traffic, things like some craft packets shutting the router down or starting to record some specific traffic and send them over to some receiver)? would like to know your take on that.",
-      "id": "7440927484613213811",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "John C",
-      "profile": null,
-      "pub": "2013-08-13T09:06:41.817+02:00",
-      "ref": "8671470597993930632",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "10 September 2013 02:50",
-          "html": "No, it&#39;s an inband response to a data-plane activity.",
-          "id": "3248321338099264592",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-09-10T02:50:37.301+02:00",
-          "ref": "568301941276652542",
-          "type": "comment"
-        }
-      ],
-      "date": "09 September 2013 23:42",
-      "html": "Shouldn&#39;t ICMP be more on the control-plane area?<br />",
-      "id": "568301941276652542",
-      "image": "https://3.bp.blogspot.com/-XL9IcVKzR6E/UuUX-OALKXI/AAAAAAAAAi8/4Z5ls7BEnVs/s32/*",
-      "name": "Tassos",
-      "profile": "https://www.blogger.com/profile/04512662084752743003",
-      "pub": "2013-09-09T23:42:10.370+02:00",
-      "ref": "8671470597993930632",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "10 September 2013 19:19",
-          "html": "I think you&#39;re confusing the ASIC/CPU split with data/control plane split.<br /><br />Even though punted traffic gets limited by what some vendors call CoPP, it doesn&#39;t transform punted traffic into control-plane protocols.",
-          "id": "6135460907561284815",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-09-10T19:19:50.265+02:00",
-          "ref": "7048418437537583482",
-          "type": "comment"
-        }
-      ],
-      "date": "10 September 2013 19:05",
-      "html": "Ok, but it&#39;s still a control-plane generated response.<br />Also, what about ICMPv6?<br />",
-      "id": "7048418437537583482",
-      "image": "https://3.bp.blogspot.com/-XL9IcVKzR6E/UuUX-OALKXI/AAAAAAAAAi8/4Z5ls7BEnVs/s32/*",
-      "name": "Tassos",
-      "profile": "https://www.blogger.com/profile/04512662084752743003",
-      "pub": "2013-09-10T19:05:53.048+02:00",
-      "ref": "8671470597993930632",
-      "type": "comment"
-    },
-    {
-      "date": "15 September 2013 00:05",
-      "html": "I&#39;m actually talking about router responses to punted traffic, not the punted traffic itself.<br /><br />In my mind i visualize the idea of control-plane as a layer in the network device, where various processes run and these processes handle everything destined to the router itself. Maybe routing protocols have the control-plane functionality built-in, but still there are cases where for intermediate devices they are simple data-plane traffic.<br /><br />After all C=Control in ICMP.<br /><br />Quoting from yourself (http://wiki.nil.com/Control_and_Data_plane):<br /><br />In most router implementations, the data plane receives and processes all inbound packets and selective forwards packets destined for the router (for example, routing protocol updates) or packets that need special processing (for example, IP datagrams with IP options or IP datagrams that have exceeded their TTL) to the control plane. ",
-      "id": "5910194385860896119",
-      "image": "https://3.bp.blogspot.com/-XL9IcVKzR6E/UuUX-OALKXI/AAAAAAAAAi8/4Z5ls7BEnVs/s32/*",
-      "name": "Tassos",
-      "profile": "https://www.blogger.com/profile/04512662084752743003",
-      "pub": "2013-09-15T00:05:00.050+02:00",
-      "ref": "8671470597993930632",
-      "type": "comment"
-    },
-    {
-      "date": "21 March 2014 13:33",
-      "html": "Nice blog - I was asked to explain &quot;SDN&quot; to a DevOps meetup and ran them through this material as a reference so they could have context.  The PPT for that is located here: http://www.slideshare.net/JeremySchulman/2014-0219-dev-ops-sdn-v1  <br />(disclaimer: I am by no means any expert on SDN)",
-      "id": "3538645047411399203",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/17970010131320482831",
-      "pub": "2014-03-21T13:33:50.237+01:00",
-      "ref": "8671470597993930632",
-      "type": "comment"
-    }
-  ],
-  "count": 8,
-  "id": "8671470597993930632",
-  "type": "post",
-  "url": "2013/08/management-control-and-data-planes-in.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "13 August 2013 16:47",
+               "html": "If you believe there&#39;s a back door being buried deep in network device OS, it&#39;s always possible to trigger it with an innocuous-looking packet - something as simple as ping with a carefully crafted payload.<br /><br />Also, if I would be a device vendor, I wouldn&#39;t allow you to filter out my backdoor triggers with control plane protection, would I? ;)<br /><br />(* For everyone else: this is PURE UNFOUNDED SPECULATION *)",
+               "id": "7095826663020490913",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-08-13T16:47:15.183+02:00",
+               "ref": "7440927484613213811",
+               "type": "comment"
+            }
+         ],
+         "date": "13 August 2013 09:06",
+         "html": "From security perspective, when we look at a core router, if the control plane is well protected, will it really be possible to trigger some specific back-door (let&#39;s assume the extreme situation that router has government|vendor placed back-door) through data plane (transit traffic, things like some craft packets shutting the router down or starting to record some specific traffic and send them over to some receiver)? would like to know your take on that.",
+         "id": "7440927484613213811",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "John C",
+         "profile": null,
+         "pub": "2013-08-13T09:06:41.817+02:00",
+         "ref": "8671470597993930632",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "10 September 2013 02:50",
+               "html": "No, it&#39;s an inband response to a data-plane activity.",
+               "id": "3248321338099264592",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-09-10T02:50:37.301+02:00",
+               "ref": "568301941276652542",
+               "type": "comment"
+            }
+         ],
+         "date": "09 September 2013 23:42",
+         "html": "Shouldn&#39;t ICMP be more on the control-plane area?<br />",
+         "id": "568301941276652542",
+         "image": "https://3.bp.blogspot.com/-XL9IcVKzR6E/UuUX-OALKXI/AAAAAAAAAi8/4Z5ls7BEnVs/s32/*",
+         "name": "Tassos",
+         "profile": "https://www.blogger.com/profile/04512662084752743003",
+         "pub": "2013-09-09T23:42:10.370+02:00",
+         "ref": "8671470597993930632",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "10 September 2013 19:19",
+               "html": "I think you&#39;re confusing the ASIC/CPU split with data/control plane split.<br /><br />Even though punted traffic gets limited by what some vendors call CoPP, it doesn&#39;t transform punted traffic into control-plane protocols.",
+               "id": "6135460907561284815",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-09-10T19:19:50.265+02:00",
+               "ref": "7048418437537583482",
+               "type": "comment"
+            }
+         ],
+         "date": "10 September 2013 19:05",
+         "html": "Ok, but it&#39;s still a control-plane generated response.<br />Also, what about ICMPv6?<br />",
+         "id": "7048418437537583482",
+         "image": "https://3.bp.blogspot.com/-XL9IcVKzR6E/UuUX-OALKXI/AAAAAAAAAi8/4Z5ls7BEnVs/s32/*",
+         "name": "Tassos",
+         "profile": "https://www.blogger.com/profile/04512662084752743003",
+         "pub": "2013-09-10T19:05:53.048+02:00",
+         "ref": "8671470597993930632",
+         "type": "comment"
+      },
+      {
+         "date": "15 September 2013 00:05",
+         "html": "I&#39;m actually talking about router responses to punted traffic, not the punted traffic itself.<br /><br />In my mind i visualize the idea of control-plane as a layer in the network device, where various processes run and these processes handle everything destined to the router itself. Maybe routing protocols have the control-plane functionality built-in, but still there are cases where for intermediate devices they are simple data-plane traffic.<br /><br />After all C=Control in ICMP.<br /><br />Quoting from yourself (http://wiki.nil.com/Control_and_Data_plane):<br /><br />In most router implementations, the data plane receives and processes all inbound packets and selective forwards packets destined for the router (for example, routing protocol updates) or packets that need special processing (for example, IP datagrams with IP options or IP datagrams that have exceeded their TTL) to the control plane. ",
+         "id": "5910194385860896119",
+         "image": "https://3.bp.blogspot.com/-XL9IcVKzR6E/UuUX-OALKXI/AAAAAAAAAi8/4Z5ls7BEnVs/s32/*",
+         "name": "Tassos",
+         "profile": "https://www.blogger.com/profile/04512662084752743003",
+         "pub": "2013-09-15T00:05:00.050+02:00",
+         "ref": "8671470597993930632",
+         "type": "comment"
+      },
+      {
+         "date": "21 March 2014 13:33",
+         "html": "Nice blog - I was asked to explain &quot;SDN&quot; to a DevOps meetup and ran them through this material as a reference so they could have context.  The PPT for that is located here: http://www.slideshare.net/JeremySchulman/2014-0219-dev-ops-sdn-v1  <br />(disclaimer: I am by no means any expert on SDN)",
+         "id": "3538645047411399203",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/17970010131320482831",
+         "pub": "2014-03-21T13:33:50.237+01:00",
+         "ref": "8671470597993930632",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "18 May 2022 07:31",
+               "html": "<p>Most recently-developed solutions I&#39;ve seen use one of the Linux distributions for the control plane.</p>\n\n<p>Never heard of IX (thanks for the links), so I cannot say whether it ever progressed beyond an interesting academic concept.</p>\n",
+               "id": "1258",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-05-18T07:31:01",
+               "ref": "1256",
+               "type": "comment"
+            },
+            {
+               "date": "01 August 2022 10:25",
+               "html": "<p>Actually, Arrakis is based on Barrelfish and IX is based on Linux. They are counterparts.</p>\n",
+               "id": "1340",
+               "name": " WorldQuestioneer",
+               "pub": "2022-08-01T22:25:18",
+               "ref": "1258",
+               "type": "comment"
+            }
+         ],
+         "date": "17 May 2022 09:16",
+         "html": "<p>If separating the control plane and the data plane, what&#39;s the best OS for the control plane and what for data plane: Microsoft Windows, Ubuntu, Red Hat Enterprise Linux or variant, FreeBSD or variant, or NetBSD or variant?\nEver heard of IX? That would make a great data plane OS while a Linux distribution be for the control plane. See https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-belay.pdf and https://courses.cs.washington.edu/courses/cse551/15sp/papers/ix-osdi14.pdf.\nShould Windows be for the management plane?</p>\n",
+         "id": "1256",
+         "name": " WorldQuestioneer",
+         "pub": "2022-05-17T21:16:18",
+         "type": "comment"
+      }
+   ],
+   "count": 6,
+   "id": "8671470597993930632",
+   "type": "post",
+   "url": "2013/08/management-control-and-data-planes-in.html"
 }

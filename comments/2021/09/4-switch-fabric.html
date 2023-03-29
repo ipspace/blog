@@ -1,0 +1,216 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="744">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c744" href="#744">23 September 2021 03:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The traffic would flow over the optimal paths if the two switch pairs were connected via MLAG, and all servers were connected to one switch pair via MLAG. But this would be a boring legacy setup that may allow for interesting, but rare, <a href="https://www.unix-ag.uni-kl.de/~auerswal/mlag_split_brain/">failure scenarios</a>. Additionally, VMware still prefers MAC based redundancy and load sharing instead of using LACP based LAGs. ;-)</p>
+
+<p>In a more fashionable layer 3 setup with VXLAN overlay (or an SPB-M based fabric &agrave; la Extreme), the link between switches of the same pair could be omitted unless an MLAG construct requires it (some vendors support <em>virtual</em> MLAG peer links), or it could be configured with a higher metric value such that it is not used for IP (resp. MAC-in-MAC) forwarding unless the two links to the other switch pair both fail. This again would result in optimal forwarding.</p>
+
+<p>If later there is a need to add more switches, a spine layer could be added &quot;in the middle.&quot;</p>
+
+<p>Thus with care for the details the physical full mesh is either not needed or not detrimental, depending on circumstances (which include the selected switch models and network operating systems, among other things).</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="745">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jeff Tantsura</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c745" href="#745">23 September 2021 11:11</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Simple routed fabric (with EVPN if L2/overlay is needed) would do just fine</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="747">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c747" href="#747">24 September 2021 07:21</a>
+              </span>
+            </div>
+            <div class="comment-content">I would go for an even simpler design: routed fabric with VXLAN on top using static source replication list instead of EVPN.<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="749">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c749" href="#749">24 September 2021 11:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>IMHO the question is what to do with the worrisome extra links between switches of a pair that turns the topology into a full mesh instead of just collapsing the spines into the leafs.</p>
+
+<p>I think good answers are to remove them, or to not use them for IP forwarding and/or underlay transport, <em>unless required</em> (because of failed links), but be able to make use of those links if necessary (i.e., do not omit them from IP and/or underlay forwarding).</p>
+
+<p>This would remove the doubts about traffic requirements noted in the blog post.</p>
+
+<p>(YMMV depending on make and model of your switches and NOS.)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="751">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c751" href="#751">25 September 2021 08:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I don&#39;t understand why you find those links worrisome. There is no central switching fabric in this design, and the full mesh is probably the best you can do assuming you have no prior information on traffic flows. The proof is left as an exercise for the reader &#x1F61C;</p>
+
+<p>Also, it&#39;s a small fabric, so it&#39;s worth keeping complexity to a minimum, thus no MLAG.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="752">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c752" href="#752">25 September 2021 02:41</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>According to the diagram, servers are connected to one of two switch pairs. This is supported by using two different connection types, 10G copper vs. 10G/25G fiber, which is seldomly combined on a single server.</p>
+
+<p>Server to server (resp. VM to VM) ingress traffic of a given switch falls into three cases (without any link or device failures in the network):</p>
+
+<ol>
+<li>Egress to a directly connected host.</li>
+<li>Egress to a host connected to the other switch of the pair.</li>
+<li>Egress to a host connected to a switch of the other switch pair.</li>
+</ol>
+
+<p>Case 1 is trivially optimal regardless of inter switch links.</p>
+
+<p>With a full mesh and active/passive VM or server redundancy (&quot;no MLAG&quot;), both case 2 (intra switch pair) and case 3 (inter switch pair) traffic uses a single egress link.</p>
+
+<p>Without intra switch pair links (or high IP/underlay metric for those links) and active/passive VM or server redundancy (&quot;no MLAG&quot;), case 2 would use two egress links, while case 3 would still use a single egress link.</p>
+
+<p>Without intra switch pair links (or high IP/underlay metric for those links) and active/active VM or server redundancy (e.g., MLAG, EVPN multi-homing, or IP with routing protocol on the servers), case 2 is eliminated and case 3 uses two egress links.</p>
+
+<p>Adding two more switches as a &quot;spine&quot; and removing the intra switch pair links enables use of two egress links for cases 2 &amp; 3 of the &quot;no MLAG&quot; variant, but adds both capex and opex.</p>
+
+<p>Implicit requirements (e.g., servers don&#39;t use LAGs, MLAG is too complicated) can result in unnecessarily sub-optimal design decisions. The assumption that every host (VM or server) is effectively single attached (active/passive redundancy) leads to the conclusion that a full mesh is optimal for the &quot;two switch pairs&quot; design.</p>
+
+<p>If these details were made explicit (e.g., &quot;we use virtualization solution X and switch family Y, thus server LAGs and MLAG on switches are complicated and brittle&quot;), the full mesh were a good solution, because optimizing just case 2, but not case 3, would be an unneeded complication without additional knowledge about traffic flows.</p>
+
+<p>Both not blocking any inter switch links and using more than one egress link is another implicit requirement that leads to using a suitable technology. Both can be fulfilled for layer 2 and layer 3 traffic using different widely available solutions (details depend on the used switches).</p>
+
+<p>This shows that even a small fabric warrants a closer look.</p>
+
+<p>(LACP based LAGs for server redundancy to an MLAG pair can be both simple and reliable, depending on vendor choices, of course.)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="790">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c790" href="#790">12 October 2021 06:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Erik, I am probably not knowing enough about the nuances here and missing something deep, but I don&#39;t understand several points in your comment, which is very interesting and thought-provoking. </p>
+
+<p>Let&#39;s say we use a simple routed fabric here with standard ECMP routing protocol, and very high metric intra-pair link. You said:</p>
+
+<p>&quot;Without intra switch pair links (or high IP/underlay metric for those links) and active/passive VM or server redundancy (&quot;no MLAG&quot;), case 2 would use two egress links, while case 3 would still use a single egress link.&quot;</p>
+
+<p>How? With ECMP, traffic reaching the first switch from a server, will be load-balanced among the 2 uplinks, so case 3 would use both egress as well. </p>
+
+<p>&quot;Without intra switch pair links (or high IP/underlay metric for those links) and active/active VM or server redundancy (e.g., MLAG, EVPN multi-homing, or IP with routing protocol on the servers), case 2 is eliminated and case 3 uses two egress links.&quot;</p>
+
+<p>By eliminated, you probably mean case 2 is now generalized into case 1? 
+In this case, case 3 can use at most 4 uplinks via the 2 switches it connects directly to, not 2.</p>
+
+<p>So adding 2 more spine switches doesn&#39;t improve anything, unless I miss something major.</p>
+
+<p>&quot;Implicit requirements (e.g., servers don&#39;t use LAGs, MLAG is too complicated) can result in unnecessarily sub-optimal design decisions. The assumption that every host (VM or server) is effectively single attached (active/passive redundancy) leads to the conclusion that a full mesh is optimal for the &quot;two switch pairs&quot; design.&quot;</p>
+
+<p>I don&#39;t think Ivan made this assumption, since he&#39;s a routing guy at heart. In this case, since the fabric is small, I can&#39;t see much leeway/need for optimization here, regardless of traffic profile. A good design heuristic: group the servers/devices that perform similar functions, e.g. storage, into one rack, to avoid &quot;strange attractors&quot; infesting uplinks and drawing traffic toward them, causing congestion -- yes, congestion happens way below the 100% utilization threshold, for the Internet it starts happening at 35-40%. Apart from that, a rack of this size needs little optimization. We should avoid overoptimization, as it&#39;s a inherently dumb process and leads to unnecessary complexity.</p>
+
+<p>Also, MLAG and SPB are not simple. The commands to configure them are simple, the implementations are complex and potentially buggy. The SD-WAN snafu is one such example. </p>
+
+<p>Perhaps Ivan should make a blog post dissecting the cases you&#39;ve mentioned in detail, as they potentially contain tidbits that one overlooks at first glance. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

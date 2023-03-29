@@ -1,0 +1,62 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "01 February 2023 08:34",
+               "html": "<p>I couldn&#39;t agree more with you. Unfortunately, the &quot;end-to-end principle&quot; seems to be the holy grail for true IPv6 believers so the cognitive dissonance prevents them to admit that NPT66 is the only solution that works (somewhat) reliably at the moment.</p>\n\n<p>People reading IPv6 blogs and listening to IPv6 podcasts are thus left confused and clueless.</p>\n",
+               "id": "1633",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-02-01T08:34:35",
+               "ref": "1632",
+               "type": "comment"
+            },
+            {
+               "date": "02 February 2023 07:13",
+               "html": "<p>I agree NPTv66 seems like the best practical answer here but what IPv6 should be used on the &quot;inside&quot; of the network then? ULA is pretty useless, as Burgalio helped point out. Using 2001:db8::/32 seems like a bad idea as well. </p>\n",
+               "id": "1640",
+               "name": "Gary Ossewaarde",
+               "pub": "2023-02-02T19:13:29",
+               "ref": "1633",
+               "type": "comment"
+            },
+            {
+               "date": "03 February 2023 12:03",
+               "html": "<p>@Gary\nIMHO you have 2 options:</p>\n\n<p>1) Use something else instead of ULA as a &quot;workaround&quot;, just like Ivan pointed out.\n2) Use ULA and modify the IPv6 source address selection policy of the end-hosts.</p>\n\n<p>For my home network, I went option #2 several years ago and cannot complain about it (yet).\nAt Windows I&#39;ve simply deleted policy entry for ULA which makes it equal to GUA (= &quot;netsh interface ipv6 delete prefixpolicy fc00::/7 store=active&quot;). For Linux, you can modify the policy in the file /etc/gai.conf.</p>\n",
+               "id": "1647",
+               "name": " Christoph",
+               "pub": "2023-02-03T12:03:41",
+               "ref": "1640",
+               "type": "comment"
+            },
+            {
+               "date": "02 February 2023 07:18",
+               "html": "<p>@Gary: We finished this discussion literally moments ago ;)</p>\n\n<p>If you have your own PI space, and have no NPT/NAT limitations like &quot;one translation with NPT-66 only&quot;, then use your own PI space on the inside.</p>\n\n<p>Failing that, decide which ISP is your primary ISP and use that delegated prefix as the &quot;native&quot; address space doing NPT/NAT toward the backup ISP.</p>\n\n<p>There&#39;s also 0200::/7 (see https://codepoints.org/registry/ipv6/internet-protocol-version-6-address-space/)</p>\n",
+               "id": "1641",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-02-02T19:18:50",
+               "ref": "1640",
+               "type": "comment"
+            },
+            {
+               "date": "02 February 2023 04:16",
+               "html": "<p>Yeah, but the implementation varies, unfortunately:\nF.e. in IOS-XE 16.x, NPTv6 is there but you can only configure a translation of you internal ULA prefix to a <em>single</em> external GUA prefix globally. Because of that, it&#39;s totally unusable for small-site IPv6 multihoming unless you &quot;solve&quot; it by throwing additional hardware onto the problem (f.e. one dedicated router per IPv6-NPTv6-enabled circuit), IMHO.\nI would have hoped for a more flexible approach, interface-centric, policy-based or whatever...\nAnyway, besides that, the Cisco implementation might also to break IPv6 traceroute (only asterisks...), at least in my case - but I&#39;m not sure if that&#39;s NPTv6, ZBF or combination of the two (you&#39;re doomed to use ZBF because simple reflexive ACLs are not supported in IOS-XE).</p>\n\n<p>I don&#39;t know about the track record of other vendors in that regard (and if they made similar bad implementation choices), but at least the implementation of f.e. Vyatta / VyOS looks more promising / flexible in that regards.</p>\n",
+               "id": "1638",
+               "name": " Christoph",
+               "pub": "2023-02-02T16:16:12",
+               "ref": "1633",
+               "type": "comment"
+            }
+         ],
+         "date": "31 January 2023 09:59",
+         "html": "<p>If you really must solve this particular problem just use NAT and stop complaining. AFAIK all the vendors have implemented it by now.</p>\n",
+         "id": "1632",
+         "name": "Wes Felter",
+         "pub": "2023-01-31T21:59:18",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2023/01/dc-ipv6-small-site-multihoming.html"
+}

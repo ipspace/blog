@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4746264453737791040">23 August 2011 06:10</a>
+                <a rel="nofollow" id="c4746264453737791040" href="#4746264453737791040">23 August 2011 06:10</a>
               </span>
             </div>
-            <p class="comment-content">Re: Soft Switching Fails at Scale<br /><br />The biggest IaaS clouds in existence all use soft switching (AWS, Rackspace, etc.)<br /><br />Just Say&#39;n</p>
+            <div class="comment-content">Re: Soft Switching Fails at Scale<br /><br />The biggest IaaS clouds in existence all use soft switching (AWS, Rackspace, etc.)<br /><br />Just Say&#39;n</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Zee</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2975328102259132640">23 August 2011 21:03</a>
+                <a rel="nofollow" id="c2975328102259132640" href="#2975328102259132640">23 August 2011 21:03</a>
               </span>
             </div>
-            <p class="comment-content">Not Really</p>
+            <div class="comment-content">Not Really</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2952223731088202271">24 August 2011 18:40</a>
+                <a rel="nofollow" id="c2952223731088202271" href="#2952223731088202271">24 August 2011 18:40</a>
               </span>
             </div>
-            <p class="comment-content">OK. Name one IaaS public cloud that is using 802.1Qbh, Qbg, based technology for VM networking.</p>
+            <div class="comment-content">OK. Name one IaaS public cloud that is using 802.1Qbh, Qbg, based technology for VM networking.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Derick Winkworth</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4000708221011680692">24 August 2011 21:24</a>
+                <a rel="nofollow" id="c4000708221011680692" href="#4000708221011680692">24 August 2011 21:24</a>
               </span>
             </div>
-            <p class="comment-content">How does soft-switching solve these problems?</p>
+            <div class="comment-content">How does soft-switching solve these problems?</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3921854468931039696">25 August 2011 08:55</a>
+                <a rel="nofollow" id="c3921854468931039696" href="#3921854468931039696">25 August 2011 08:55</a>
               </span>
             </div>
-            <p class="comment-content">You need hardware abstraction if you want to implement portable/movable VMs. All the new architectures proposed by networking vendors (802.1Qbg/Qbh/VM-FEX) conveniently ignore that fact.<br /><br />Having implemented hardware abstraction, it doesn’t cost much to add minimal L2 forwarding functionality (which is the part usually called “soft switching”). More complex soft switching methods (like MAC-over-IP) will be more CPU-expensive, but it’s still the hardware abstraction that consumes most of the CPU resources.</p>
+            <div class="comment-content">You need hardware abstraction if you want to implement portable/movable VMs. All the new architectures proposed by networking vendors (802.1Qbg/Qbh/VM-FEX) conveniently ignore that fact.<br /><br />Having implemented hardware abstraction, it doesn’t cost much to add minimal L2 forwarding functionality (which is the part usually called “soft switching”). More complex soft switching methods (like MAC-over-IP) will be more CPU-expensive, but it’s still the hardware abstraction that consumes most of the CPU resources.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Florian Otel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2657377775817890142">27 August 2011 22:27</a>
+                <a rel="nofollow" id="c2657377775817890142" href="#2657377775817890142">27 August 2011 22:27</a>
               </span>
             </div>
-            <p class="comment-content">One thing that I&#39;d agree with that the status quo btw. hypervisor vendors (OK let&#39;s put it plainly -- VMware) and networking vendors seems to get worse (from the being &quot;shaky&quot; to begin with).<br /><br /> Vendor bias aside  (I do belong to one) the reluctance of accepting one/several standards  -- e.g SR-IOV VEPA/802.1Qbg or VN-tag/E-tag/802.1Qbh/802.1BR etc (lost track of that...)  depending which house colors one currently wears / what cooks ones noodle -- seems to push us back into the vSwitch &amp; dvSwitch nightmares.  So, the choice I see is btw letting a hypvervisor dictates a de-facto modus operandi or continue working on interop standards.<br /><br />I do agree on the need of HW abstraction, but AFAICT current SR-IOV approach does adress that in the adapter (at least in part i.e. the logical division of a physical device into several logical). <br /><br />So, my question is: What part of current approaches do you consider &quot;square peg / round hole&quot;  and what would be the disadvantages of continuing the SR-IOV path ? Or the thought of having e.g. Brocade Trident+ (or similar capable ASICs) as powering (future) &quot;physical interface&quot; adaptors ?</p>
+            <div class="comment-content">One thing that I&#39;d agree with that the status quo btw. hypervisor vendors (OK let&#39;s put it plainly -- VMware) and networking vendors seems to get worse (from the being &quot;shaky&quot; to begin with).<br /><br /> Vendor bias aside  (I do belong to one) the reluctance of accepting one/several standards  -- e.g SR-IOV VEPA/802.1Qbg or VN-tag/E-tag/802.1Qbh/802.1BR etc (lost track of that...)  depending which house colors one currently wears / what cooks ones noodle -- seems to push us back into the vSwitch &amp; dvSwitch nightmares.  So, the choice I see is btw letting a hypvervisor dictates a de-facto modus operandi or continue working on interop standards.<br /><br />I do agree on the need of HW abstraction, but AFAICT current SR-IOV approach does adress that in the adapter (at least in part i.e. the logical division of a physical device into several logical). <br /><br />So, my question is: What part of current approaches do you consider &quot;square peg / round hole&quot;  and what would be the disadvantages of continuing the SR-IOV path ? Or the thought of having e.g. Brocade Trident+ (or similar capable ASICs) as powering (future) &quot;physical interface&quot; adaptors ?</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9001810424424431301">28 August 2011 20:44</a>
+                <a rel="nofollow" id="c9001810424424431301" href="#9001810424424431301">28 August 2011 20:44</a>
               </span>
             </div>
-            <p class="comment-content">You are correct, SR-IOV solves a different problem (logical division of physical device), not HW abstraction.<br /><br />If all vendors could agree on using the same HW interface (for example, AMD LANCE or Intel&#39;s 82545), then we would have a fighting change. Not likely though.<br /><br />And finally there&#39;s the cleanup/initialization phase before/after vMotion event. Somewhat hard to do with a generic NIC driver.<br /><br />Of course you could develop new drivers and try to push them into production environments, but I don&#39;t think anyone (but the NIC/switch vendors) is interested.</p>
+            <div class="comment-content">You are correct, SR-IOV solves a different problem (logical division of physical device), not HW abstraction.<br /><br />If all vendors could agree on using the same HW interface (for example, AMD LANCE or Intel&#39;s 82545), then we would have a fighting change. Not likely though.<br /><br />And finally there&#39;s the cleanup/initialization phase before/after vMotion event. Somewhat hard to do with a generic NIC driver.<br /><br />Of course you could develop new drivers and try to push them into production environments, but I don&#39;t think anyone (but the NIC/switch vendors) is interested.</div>
           </div>
         </li>
       </div>

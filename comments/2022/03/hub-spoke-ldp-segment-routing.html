@@ -1,0 +1,298 @@
+<div class="comments post" id="comments">
+  <h4>7 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1077">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Hannes Gredler</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1077" href="#1077">09 March 2022 11:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In 2014 when I did the first prototype implementation of MPLS-SR node labels, I was stunned that just with an incremental add of 500 Lines of code to the vanilla ipv4/ipv6 IS-IS codebase I got full any-to-any connectivity, no sync issues, no targeted sessions for R-LFA .... essentially labeled transport comes for free. Later I did ask George Swallow and Yakov Rekhter (The original MPLS design team) &quot;Why did you not do this right from the start ?&quot; and the answer was not pretty: &quot;IGPs have been done in San Jose and the MPLS design team was mostly located in the Boxborough office. At the time there was lots of stability issues with IGPs and management has asked us not to touch any IGP code&quot;</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1083">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1083" href="#1083">09 March 2022 10:14</a>
+              </span>
+            </div>
+            <div class="comment-content">So you are telling us: &quot;The 2 main people from cisco east-coast told me that the cisco west-coast people messed it up&quot;? Yeah, right.<br />
+
+<p>(Besides, there was only one good programmer in Boston: Dan Tappan. Everybody else there was an &quot;architect&quot;. I don&#39;t believe east-coast would have done better.</p>
+
+<p>The issue is much simpler. UUnet and iMCI were designing their new backbones with routers at the edge, and all Fore ATM switches in the middle. That was a $100M market that cisco was losing out on. At the same time, Ipsilon came with their proprietary technology with some flow-based, connection-oriented, doing IP-packet switching over ATM  circuits. Lots of people at ISPs (and even at the IETF) loved the idea of having circuits. Old telephone people never change.</p>
+
+<p>So Yakhov came with MPLS (first called tag-switching). It was basically the idea of using connections (LSPs) to compete with Fore and Ipsilon. And nobody thought of doing &quot;connectionless labels&quot;. That is how we ended up with LDP and TE-RSVP. Because the people who made the purchasing decisions, and the VCs that invested in new technology, all wanted connection-oriented technology. And then BGP-MPLS-VPNs came. Another crappy idea. But it allowed ISPs to &quot;sell a managed service&quot;. Another reason why ISPs wanted MPLS.</p>
+
+<p>Yakhov once told me that they seriously thought about using the existing source-routing IP-header option. They decided to not use it, because IP-options had a bad rep. If have often thought: &quot;I wish they had done TE via IP-source-routing&quot;. I guess we got it after all, we just call it SRv6 now. :)</p>
+
+<p>The simple fact is, when MPLS came about, nobody thought of doing &quot;connectionless labels&quot;. I guess the connection-oriented mind-set was still active in many people.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1086">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1086" href="#1086">10 March 2022 09:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Henk, great piece of history info there :)) ! Can you also tell me why you consider BGP-MPLS-VPN a crap idea? I always value your thoughts, so would like to hear your reasons very much. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1078">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1078" href="#1078">09 March 2022 11:43</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>For such a simple network you could also use LISP or VRF-light or something else. One implementation example is SDA.</p>
+
+<p>MPLS is designed for large WAN networks, where you have a lot of P (core routers) in a complex topology. Then you can spare resources by having BGP free LSRs. 
+If you have only two P routers, MPLS is a total overkill and not needed.
+MPLS is not the optimum solution for DC or LAN network. </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1096">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1096" href="#1096">13 March 2022 10:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; If you have only two P routers, MPLS is a total overkill and not needed.</p>
+
+<p>Unless you need MPLS-based services like VPLS (which was the original use case in this scenario) or need many VPNs. VRF Lite works well only for a very limited set number of VPNs.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1079">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1079" href="#1079">09 March 2022 12:35</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Would there be any scale/complexity based argument for/against SRv6 in this context?</p>
+
+<p>(i.e. besides local preference)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1082">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Andy Smith</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1082" href="#1082">09 March 2022 09:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>MPLS-SR as an LDP replacement makes perfect sense, and as Hannes notes, IGP distribution of labels is probably how it should have been done in the first place.   MPLS-SR for traffic engineering though is debatable, there are many tradeoffs in the goal to reduce &#39;network state&#39;, if one thinks control plane state is a problem and label stack depth si constraints is not a problem.    Turns out that state information is pretty helpful in simulating scenarios for network resiliency, or troubleshooting when the s*it hits the fan.   </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1084">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ashen Chanaka</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1084" href="#1084">09 March 2022 11:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Good point regarding state information being helpful in troubleshooting. But what about the scale limitations in the MID points? With SR-TE MID points doesn&#39;t need scale like RSVP. To address the label stack depth issues knobs are there to limit the depth of stack like anycast SID.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1102">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> steve ulrich</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1102" href="#1102">22 March 2022 02:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>there&#39;s no free lunch here. use of anycast SIDs means that you&#39;re going to lose some degree of explicit path control and you&#39;re going to lose visibility into the nature of the flows from a diagnostic perspective if you need to figure out how you want to rebalance traffic.</p>
+
+<p>it turns out that control-plane state that can be correlated to interfaces (and their load) is actually really useful.  it&#39;s really important to know the tradeoffs you&#39;re working with.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1085">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1085" href="#1085">10 March 2022 09:03</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Carrying label inside LGP is natural and therefore, makes perfect sense and is much better than using LDP; it also simplifies the network and reduces the number of moving parts. For that reason, I think it should be implemented independent of SR. </p>
+
+<p>If we have that feature, and implement valley-free routing policy -- which is easier done in DV than LS protocols due to the nature of DV -- than we can limit the number of entries at the hubs without using SR, IMO.   </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1087">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Mike Dancheck</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1087" href="#1087">10 March 2022 07:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Or you could configure per-vrf label mode?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1095">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk  </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1095" href="#1095">12 March 2022 12:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Minh,</p>
+
+<p>&gt; I always value your thoughts</p>
+
+<p>Thanks. But maybe you shouldn&#39;t. :) I am just another idiot with an opinion. I have been out of the industry for a long time (over a decade). And my practical knowledge about today&#39;s real networks is limited. (Hopefully that&#39;ll change in the next 2 years).</p>
+
+<p>&gt; why</p>
+
+<p>Because I think BGP-MPLS-VPNs are over-complicated. And you don&#39;t get enough return for that extra complexity. Note, I think that about a lot of technologies. I like simple, I like elegant. And I think vendors should focus on optimizing their implementations. In stead of throwing in new features and new protocol extensions. Same thing about providers: imho they should focus on simplifying their designs, and getting rid of obscure features, in stead of asking for more.</p>
+
+<p>(Ivan likes to complain about vendors introducing more technological complexity. But imho the providers are worse. They ask for these knobs and stuff. And once it is in, you can never take it out. And once one vendors does it, all vendors need to implement it. You wouldn&#39;t believe the nonsense I&#39;ve heard some ISPs ask for).</p>
+
+<p>If I ever get to do job-interviews again (not as an applicant, I&#39;m staying put), one of my questions will be: &quot;what is your favorite rule from rfc1925&quot;. FYI, mine is rule 12.</p>
+
+<p>Another factor related to BGP-MPLS-VPNs is that I don&#39;t like the basic design. The Internet became a success because of a number of design principles. One is: &quot;dumb network, smart hosts&quot;. We, as an industry, sometimes forget about those basic principles. BGP-MPLS-VPNs are the opposite of this. I understand why, because if gives an opportunity for ISPs to sell a service. But imho, large VPNs should be done by the customers themselves, on their equipment. Like DMVPNs and other SD-WAN technologies.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

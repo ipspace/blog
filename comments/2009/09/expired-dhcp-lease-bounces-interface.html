@@ -1,10 +1,5 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
-  <h4>2 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Danail Petrov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5033318289635115594">16 September 2009 09:07</a>
+                <a rel="nofollow" id="c5033318289635115594" href="#5033318289635115594">16 September 2009 09:07</a>
               </span>
             </div>
-            <p class="comment-content">Glad to see you again!</p>
+            <div class="comment-content">Glad to see you again!</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,81 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">shivlu jain</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4515295785763974469">16 September 2009 15:40</a>
+                <a rel="nofollow" id="c4515295785763974469" href="#4515295785763974469">16 September 2009 15:40</a>
               </span>
             </div>
-            <p class="comment-content">It will breach SLA.</p>
+            <div class="comment-content">It will breach SLA.</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="321">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> gexain narvaez</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c321" href="#321">19 December 2020 09:34</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>About problem of dropping connections with DHCP &ndash; its our (users) bug not IOS
+I found in your config line:</p>
+
+<p>All traffic is forwarded to your local server xxx.xxx.xxx.xxx including answers from DHCP server of your internet provider.
+DHCP server accept queries on udp port 67 and send answers to client on udp port 68.
+You could insert one line:</p>
+
+<p>ip nat inside source static udp xxx.xxx.xxx.xxx(your dhcp gateway) 68 interface (your Interface dhcp) 68</p>
+
+<p>example: ip nat inside source static udp 192.168.1.1 68 interface GigabitEthernet0/0 68</p>
+
+<p>and dhcp answers will go to your router.
+Best regards.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="322">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c322" href="#322">20 December 2020 11:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@gexain: An end-user router connected to an ISP access network usually uses DHCP on the outside interface to get its IP address. That&#39;s the scenario I tested.</p>
+
+<p>You&#39;re probably thinking about DHCP proxying or something else along these lines. That&#39;s a different story.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="863">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Michael Kelland</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c863" href="#863">22 November 2021 12:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I recently experienced the same on 15.2(1)T4, I found if I also enabled ipv6 on the same interface ipv4 dhcp stopped restarting the interface.</p>
+</div>
           </div>
         </li>
       </div>

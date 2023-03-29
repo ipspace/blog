@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Daniel Holme</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6212773219841802392">01 December 2010 11:49</a>
+                <a rel="nofollow" id="c6212773219841802392" href="#6212773219841802392">01 December 2010 11:49</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan<br /><br />This sounds like the same technology they use in UCS integral nexus &#39;interconnect&#39;. They use mac-pinning on the uplinks and you can selectively choose which VLANs actively traverse each link if you so wish. Any particular reason you didn&#39;t use the term mac-pinning?</p>
+            <div class="comment-content">Hi Ivan<br /><br />This sounds like the same technology they use in UCS integral nexus &#39;interconnect&#39;. They use mac-pinning on the uplinks and you can selectively choose which VLANs actively traverse each link if you so wish. Any particular reason you didn&#39;t use the term mac-pinning?</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6549256737839893819">01 December 2010 11:58</a>
+                <a rel="nofollow" id="c6549256737839893819" href="#6549256737839893819">01 December 2010 11:58</a>
               </span>
             </div>
-            <p class="comment-content">Are you talking about UCS interconnect (6100) or UCS fabric extender (2100)? UCS interconnect can work in &quot;End host mode&quot;, which I&#39;ve mentioned at the beginning.<br /><br />The &quot;Mac pinning&quot; is just one of the possible load balancing methods vSwitch can use. VMware uses the descriptive term &quot;Route based on source MAC hash&quot;.</p>
+            <div class="comment-content">Are you talking about UCS interconnect (6100) or UCS fabric extender (2100)? UCS interconnect can work in &quot;End host mode&quot;, which I&#39;ve mentioned at the beginning.<br /><br />The &quot;Mac pinning&quot; is just one of the possible load balancing methods vSwitch can use. VMware uses the descriptive term &quot;Route based on source MAC hash&quot;.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Daniel Holme</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#779308444415070234">01 December 2010 12:05</a>
+                <a rel="nofollow" id="c779308444415070234" href="#779308444415070234">01 December 2010 12:05</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;m talking about the 6100 yeah. I&#39;m not sure if they have different configurable load balancing methods too, I thought mac pinning was the only option to be honest.</p>
+            <div class="comment-content">I&#39;m talking about the 6100 yeah. I&#39;m not sure if they have different configurable load balancing methods too, I thought mac pinning was the only option to be honest.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9080021474873369340">01 December 2010 13:04</a>
+                <a rel="nofollow" id="c9080021474873369340" href="#9080021474873369340">01 December 2010 13:04</a>
               </span>
             </div>
-            <p class="comment-content">This might help: http://bradhedlund.com/2010/06/22/cisco-ucs-networking-best-practices/</p>
+            <div class="comment-content">This might help: http://bradhedlund.com/2010/06/22/cisco-ucs-networking-best-practices/</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Daniel Holme</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7412341635866056747">01 December 2010 14:40</a>
+                <a rel="nofollow" id="c7412341635866056747" href="#7412341635866056747">01 December 2010 14:40</a>
               </span>
             </div>
-            <p class="comment-content">Ah, Brad looks like a useful man to know!</p>
+            <div class="comment-content">Ah, Brad looks like a useful man to know!</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lcg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7902281178604178468">23 December 2010 14:06</a>
+                <a rel="nofollow" id="c7902281178604178468" href="#7902281178604178468">23 December 2010 14:06</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;ve seen some recommendations about enabling bpduguard with ESX before, but could never get an answer to my concern...What happens with spoofed bdpu frames from a VM? Assuming ESX forwards the bpdu frame, the switch will err-disable the interface due to bpduguard, then ESX will move the VM to the next interface, which err-disables as soon as it sees a bpdu, and so on until all interfaces are err-disabled.  If the ESX host is in an HA cluster, when it becomes isolated because all interfaces are disabled, VMware HA will kick in, shutdown the VMs, and start the VMs on another host.  At that point, the VM sending bpdus would isolate that that host as well and trigger another HA event.  Soon, all the interfaces connected to the entire cluster would be err-disabled and none of the VMs would be powered up (due to the final HA event).<br /><br />Of course, if ESX doesn&#39;t forward the bpdus from a VM, then none of that happens and enabling bpduguard is safe. Definitely not worth the risk until I&#39;m sure, though! :)</p>
+            <div class="comment-content">I&#39;ve seen some recommendations about enabling bpduguard with ESX before, but could never get an answer to my concern...What happens with spoofed bdpu frames from a VM? Assuming ESX forwards the bpdu frame, the switch will err-disable the interface due to bpduguard, then ESX will move the VM to the next interface, which err-disables as soon as it sees a bpdu, and so on until all interfaces are err-disabled.  If the ESX host is in an HA cluster, when it becomes isolated because all interfaces are disabled, VMware HA will kick in, shutdown the VMs, and start the VMs on another host.  At that point, the VM sending bpdus would isolate that that host as well and trigger another HA event.  Soon, all the interfaces connected to the entire cluster would be err-disabled and none of the VMs would be powered up (due to the final HA event).<br /><br />Of course, if ESX doesn&#39;t forward the bpdus from a VM, then none of that happens and enabling bpduguard is safe. Definitely not worth the risk until I&#39;m sure, though! :)</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1302800788760464928">21 January 2014 08:32</a>
+                <a rel="nofollow" id="c1302800788760464928" href="#1302800788760464928">21 January 2014 08:32</a>
               </span>
             </div>
-            <p class="comment-content">A VM may send traffic with a different source MAC than its MAC known to vSphere (e. g. Microsoft NLB). In such a case, I&#39;ve experienced that Nexus 1000V learns it and places dynamic entries in the MAC address table.</p>
+            <div class="comment-content">A VM may send traffic with a different source MAC than its MAC known to vSphere (e. g. Microsoft NLB). In such a case, I&#39;ve experienced that Nexus 1000V learns it and places dynamic entries in the MAC address table.</div>
           </div>
         </li>
       </div>

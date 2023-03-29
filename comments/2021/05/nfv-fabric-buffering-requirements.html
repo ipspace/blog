@@ -1,0 +1,101 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="589">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Steve Chalmers</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c589" href="#589">25 May 2021 11:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;Network Function&quot;: the telcos used to use a lot of dedicated network boxes: small routers, firewalls, load balancers, and the like.  They realized some years ago that scaling those designs to next gen wired or wireless bandwidths would lead to a stupid level of CapEx.  So the intent was to run those appliances as software in regular arrays of commodity servers, the same as had been done for applications in VMs and containers.</p>
+
+<p>There isn&#39;t a good name for the set of things which used to run in dedicated boxes sold for 10x the cost of parts.  So I&#39;ll allow &quot;Network Function&quot;, which is not intuitive to me either, as that name.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="611">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> andrea di donato</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c611" href="#611">30 May 2021 02:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan and all,   </p>
+
+<p>The major difference with a traditional DC (i.e. a modern Fabric-based DC with no NFV deployment) are the following to me:  </p>
+
+<ul>
+<li><p>There&#39;s a much higher and vary RTT in a Telco Cloud environment   </p></li>
+<li><p>There&#39;s a much higher-volume north-South component compared to a traditional Telco DC as, within the former, the mobile PEs and business PEs and especially your fixed NAS/BRAS are all virtualised and thus all of your customers&#39; traffic ends up traversing the fabric several times   </p></li>
+<li><p>The BW*RTT product of the average TCP flow is higher in a Telco Cloud</p></li>
+<li><p>In a Telco Cloud, the NFV service-chaining design, for both mobile and fixed services, often induces a lot of unavoidable east-west tromboning on top of the east-west induced traffic. It&#39;s not easy to coordinate over a common fabric the design requirements from different Carrier/Telco&#39;s teams (e.g. mobile backhauling, fixed backhauling, mobile packet core, IMS, CDN, security, ... and so forth) and sometimes you also need to factor in Leaf and/or controller routing/chipset limitations forcing you to do tromboning or detouring in order to circumvent them   </p></li>
+<li><p>In a Telco Cloud there is no control over the TCP stacks involved and powerful network-level solutions such as ECN are normally not present either as chipsets are quite cheap  </p></li>
+</ul>
+
+<p>In any Fabric, Telco cloud&#39;s included, Leaf nodes tend to have small/shallow buffers as they must be cheap - that&#39;s one of the major advantages of having a fabric at the end of the day.  Leaf nodes with deeper (not huge) buffer resulting in much higher costs would defeat the purpose of deploying a Fabric I guess ...   </p>
+
+<p>So, in the above-mentioned context, buffers too small tend to overflow in some scenarios and in a high and vary RTT scenario with a higher BW*RTT product it means lower performance. Huge buffers do not help for sure but buffers too small are truly detrimental.  </p>
+
+<p>I witnessed an implementation exercise that resulted, amongst other things, in the pretty regular congestion of the Leaf-to-server buffer which ended up being one of the major showstoppers.  </p>
+
+<p>Cheers/Ciao <br />
+Andrea  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="632">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Giuseppe Scaglione</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c632" href="#632">02 June 2021 10:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi (Ciao!) Andrea,</p>
+
+<p>related to your comment 
+&quot;Huge buffers do not help for sure but buffers too small are truly detrimental&quot;</p>
+
+<p>Is there a general guideline on minimum buffering in KB per port speed that a spine or leaf switch should support for deployments with less than 1ms RTT, typical of small DCs where the switch is used as a fabric? </p>
+
+<p>I am doing a lot of TCP flow testing on Ethernet switches via iperf3, and at a given RTT, buffer size can impact a great deal the performance of a given TCP stack, cubic, reno, or DCTCP. 
+I am trying to find a general formula.. or guideline. Yes-- large buffers become very costly in ASICs, and it seems like there is a sweet spot in buffer memory that the switch should support, actually a given port/queue, to enable great TCP performance even under light oversubscription.</p>
+
+<p>Any pointers to relevant literature would be greatly appreciated as well!</p>
+
+<p>Best Regards
+Giuseppe Scaglione</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

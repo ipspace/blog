@@ -1,363 +1,371 @@
 {
-  "comments": [
-    {
-      "date": "14 August 2012 09:24",
-      "html": "HTTP/REST is certainly easier in some respects, but SNMP does have quite a few advantages. It supports types, MIBs are an excellent source of documentation for an API and those APIs tend to be considerably more stable than their RESTful cousins (the RabbitMQ management plugin API has changed in every single version I&#39;ve deployed and broken nagios checks every time). Many of these APIs are even standardised (and some vendors even stick to them sometimes). There are some missing things, like properly standardised floats and doubles.<br /><br />  Not to mention traps, a decent (if loathed) security model in v3, no TCP 3 way handshake (unless you want it). Stuff like EVENT-MIB and EXPRESSION-MIB give you standard server-side functionality. net-snmp does a pretty good job of doing most of the really hard stuff for you.<br /><br />  The real problem for SNMP is that it is something else to learn and doesn&#39;t work well if you stick to the bare minimum. Doing tables properly is hard (that&#39;s trivial in a XML or JSON based REST API). People don&#39;t even think about using things like contexts. MIBs are also scarily close to actually writing documentation, which is never going to go down well with the majority of developers. It hasn&#39;t helped that most examples of SNMP usage try and bypass MIBs completely and use numeric oids for everything which makes examples practically impossible to read and gives SNMP a scary, super complicated air about it. You can do without MIBs, but that doesn&#39;t mean you should, you can always replace the textual values with the OIDs once you&#39;ve worked everything out.<br /><br />  I think SNMP&#39;s time may have come, but it has merits that we are losing with HTTP REST APIs, just not ones that people care about that much. How much they should care is open for debate.<br /><br />",
-      "id": "1316081984603796647",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Tristan Colgate-McFarlane",
-      "profile": "https://www.blogger.com/profile/18013961612317968207",
-      "pub": "2012-08-14T09:24:33.995+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "28 June 2016 11:53",
-          "html": "So does that mean, SNMP GET requires more bandwidth ?<br />both SNMP and HTTP are application layer protocols, <br />can you please tell me which one takes more bandwidth and how ?",
-          "id": "3456698835343365771",
-          "image": "https://4.bp.blogspot.com/-UVcH2o2PP4I/Tl_A0jjAGAI/AAAAAAAAATM/VHB26u_Q4KY/s32/captured.PNG",
-          "name": "bharathp",
-          "profile": "https://www.blogger.com/profile/14613332092502751772",
-          "pub": "2016-06-28T11:53:36.877+02:00",
-          "ref": "3511534811622701385",
-          "type": "comment"
-        },
-        {
-          "date": "19 June 2017 12:31",
-          "html": "Er no. At its simplest a single SNMP get will only require 2 packets as it&#39;s UDP. HTTP is a TCP protocol and has a far greater overhead",
-          "id": "8981415704705543942",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/17963806405437797918",
-          "pub": "2017-06-19T12:31:21.985+02:00",
-          "ref": "3511534811622701385",
-          "type": "comment"
-        },
-        {
-          "date": "23 March 2019 03:12",
-          "html": "The company I work for is trying to move away from SNMP and toward a RESTful API (web GUI) for our embedded systems that we make.  When they looked into it, the thinking was that SNMP can be a bitter a pill for people to swallow in the embedded Linux market.  However, they also noted that tying our C++ code into the backend of a RESTful API would also be a pain.<br />The bottom line is that we wanted a tool to allow us to run either efficient like SNMP or a bit more convenient like REST, so we developed a pretty neat control protocol and released it on GitHub.  I don&#39;t know if it would replace SNMP in anyone&#39;s system, but it might be worth a look see.<br />https://github.com/democosm/hc-cpp<br />Some extra detail is here:<br />http://www.democosm.com",
-          "id": "2898764111984694695",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Democosm",
-          "profile": "https://www.blogger.com/profile/05480625231690980822",
-          "pub": "2019-03-23T03:12:02.694+01:00",
-          "ref": "3511534811622701385",
-          "type": "comment"
-        }
-      ],
-      "date": "14 August 2012 10:31",
-      "html": "Don&#39;t forget about bandwidth....<br />SNMP GET and HTTP GET doesn&#39;t consume the same amount <br /><br />On slow links that remain in the wild, it would be a shame that supervision traffic consumes all bandwidth, especially when doing &quot;GET BULK&quot;.",
-      "id": "3511534811622701385",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "htam",
-      "profile": "http://www.htam.net/",
-      "pub": "2012-08-14T10:31:17.720+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "14 August 2012 13:14",
-          "html": "Well, I wouldn&#39;t say that ASN.1 bugs were caused by it being an OSI technology ;) Judged by the &quot;quality&quot; of XML parser in Cisco IOS, being a W3C or IETF technology doesn&#39;t help much.",
-          "id": "6331769342714272396",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-08-14T13:14:33.301+02:00",
-          "ref": "9097521866804420520",
-          "type": "comment"
-        }
-      ],
-      "date": "14 August 2012 13:08",
-      "html": "Python has excellent SNMP support. I&#39;ve implemented custom agents in a couple of pages of code, and most of the effort lay in MIB design to implement GETNEXT <br /><br />As Tristan points out, SNMP tables are utterly brain-dead, just think of all the hassles with mutable ifIndexes. A text-based protocol is inherently more flexible than something relying on ASN.1 OIDs The original sin of SNMP is its use of OSI technology. Just think of how many security advisories have been caused by ASN.1 bugs over the years.",
-      "id": "9097521866804420520",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Fazal Majid",
-      "profile": "http://www.majid.info/",
-      "pub": "2012-08-14T13:08:57.708+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "date": "14 August 2012 14:40",
-      "html": "While I think SNMP will still be with us for some time to come, especially for graphing trends and alerting with traps, I see a lot of vendors moving to the newer http based methods.  The bigger problem with snmp was how vendors implemented convoluted MIBs that were not documented well and were difficult to understand.  Also every vendor (as well as internal group) had their own way of doing things that was different.  I really don&#39;t see that same fundamental problem changing with the xml based technologies since everyone will have their own schema that works differently.<br /><br />SNMP was suppose to create a unified cross-platform device interaction framework, however it did not.  The same thing is being attempted and proposed with these new solutions.  I really don&#39;t see them fixing it, since it is not the technology that is the limiting factor but rather the way people implement it.  I think imaging a grand unified cross platform/vendor interaction framework is really a pipe dream.<br /><br />Thanks for the discussion Ivan, I&#39;m really enjoying it.  I really enjoy getting people to think about things so we can improve ourselves and each other.",
-      "id": "6566372327846224199",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Brian Christopher Raaen",
-      "profile": "http://www.brianraaen.com",
-      "pub": "2012-08-14T14:40:52.996+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "14 August 2012 19:48",
-          "html": "Not sure why google changed my name to &quot;Unknown&quot; but I think I fixed it :-)",
-          "id": "5209767675167198688",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Justin A",
-          "profile": "https://www.blogger.com/profile/07567730572096907480",
-          "pub": "2012-08-14T19:48:00.125+02:00",
-          "ref": "684463234310289121",
-          "type": "comment"
-        },
-        {
-          "date": "19 June 2017 12:36",
-          "html": "I think you&#39;re missing the point of SNMP. You might need a few steps to reproduce the &quot;show mac ...&quot; with SNMP, but once you&#39;ve done that it will work for every device in the world that supports that mib. <br /><br />Your way means you need to learn the command for every type of system, work out how to access the box, write a parser for the command output, deal with changes from CLI revisions etc.<br /><br />SNMP works for big system management because it works the same way every time.",
-          "id": "5589513365572051832",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/17963806405437797918",
-          "pub": "2017-06-19T12:36:25.157+02:00",
-          "ref": "684463234310289121",
-          "type": "comment"
-        },
-        {
-          "date": "19 June 2017 18:58",
-          "html": "@Dave: I think you&#39;re missing the difference between &quot;SNMP as transport&quot; and &quot;standard data models - i.e. MIBs&quot;. <br /><br />IETF has been dragging its feet for a decade, but finally we&#39;re getting standard data models for NETCONF/RESTCONF and they&#39;re slowly getting implemented. It will take another few years to get anywhere close to where MIBs are today... assuming you can get the information you need from the standard MIBs. Yes, you can get MAC table. No, you can&#39;t get optical interface signal levels.",
-          "id": "3138431252599846783",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2017-06-19T18:58:14.281+02:00",
-          "ref": "684463234310289121",
-          "type": "comment"
-        },
-        {
-          "date": "21 June 2017 13:15",
-          "html": "@Ivan - not getting a particular value for some system property is only because there is no MIB - not because of any inherent limitation in SNMP.<br /><br />And SNMP isn&#39;t a Transport: that&#39;s UDP or TCP.  SNMP describes a number of Protocol Data Units (PDU&#39;s) or put more simply - message formats. <br /><br />SNMP has verbs such as GET, GETNEXT, SET - in the same way that HTTP has POST, GET, PUT, DELETE etc.<br /><br />And whilst using HTTP GET to find out the IP address of an interface such as: <br /><br />http://some_device/restconf/api/config/native/interface/GigabitEthernet/2/ip/address<br /><br />certainly looks more friendly that the SNMP equivalent there is still a huge amount of codification effort to make it work reliably across the industry. Which is why it has been 10 years - and not looking &quot;standard&quot; anytime soon.<br /><br />I&#39;m not banging the drum for SNMP here; it is not easy to understand or use - partly because of the simplicity of the protocol. All I&#39;m saying is that whether you use REST, WBEM, WMI, or SNMP there is no magic bullet to getting an agreed standard &quot;language&quot; to allow you to gather the data you want reliably across the 1000&#39;s of different hardware and software platforms across the IT industry.<br />",
-          "id": "6628769130725758308",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/17963806405437797918",
-          "pub": "2017-06-21T13:15:45.393+02:00",
-          "ref": "684463234310289121",
-          "type": "comment"
-        },
-        {
-          "date": "21 June 2017 14:08",
-          "html": "And now we&#39;re in perfect sync ;)",
-          "id": "249207698289047133",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2017-06-21T14:08:34.261+02:00",
-          "ref": "684463234310289121",
-          "type": "comment"
-        }
-      ],
-      "date": "14 August 2012 19:30",
-      "html": "SNMP needs to die.<br /><br />Reading and writing awkward two column tables that are never indexed by the value you need is not an API. <br /><br />It is fine for counters, but everything else is needlessly complicated.<br /><br />This is probably the simplest example of how broken SNMP is as an API: http://www.cisco.com/en/US/tech/tk648/tk362/technologies_tech_note09186a00801c9199.shtml<br /><br />You need a 6 step process to reproduce &quot;show mac-address-table address 0000.0c07.ac08&quot;<br /><br />I have a python module that is few hundred lines of code that parses telnet/ssh output for switches.  It lets me do things like write a program that enables dhcp snooping automatically based on the current vlan configuration and network topology.<br /><br />I have another program that you can run on a group of switches and give it 1 or more old vlans and 1 or more new vlans.  It will automatically add the new vlans to any trunk ports that have the old vlans.<br /><br />These are the kinds of things a real API would help with.",
-      "id": "684463234310289121",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Justin A",
-      "profile": "https://www.blogger.com/profile/07567730572096907480",
-      "pub": "2012-08-14T19:30:14.865+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "15 August 2012 08:52",
-          "html": "Totally agree with you. Java-specific API is useless (at least for me and a few others).",
-          "id": "8728721827941187941",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-08-15T08:52:48.724+02:00",
-          "ref": "783582711001849762",
-          "type": "comment"
-        },
-        {
-          "date": "24 July 2013 23:13",
-          "html": "Eh-late to the game on this one, but it is an interesting topic.  <br /><br />I&#39;m not sure how useless a Java-specific API is, since Java does have a dis-proportioned amount of the enterprise stack.  On the whole I agree with you that they could&#39;ve done better by maybe releasing a binary format like Avro, Thrift, Protocol Buffers, or maybe even Etch, since they did create it and it is supposed to be serialization for &quot;consuming network services&quot;",
-          "id": "27047112052943280",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "M15K",
-          "profile": null,
-          "pub": "2013-07-24T23:13:15.506+02:00",
-          "ref": "783582711001849762",
-          "type": "comment"
-        }
-      ],
-      "date": "15 August 2012 08:40",
-      "html": "Hi Ivan - <br />I had just started putting together an article for Packet Pushers concerning a similar topic. Below is the gist of post:<br /><br />From what I understand, Cisco will be releasing their OnePK SDN offering as a language-specific API, starting with JAVA, with no clear roadmap afterwards. Instead, Cisco should initially release OnePK as a RESTful API. A Cross-Platform RESTful API would allow programmers and systems-scripters alike to adopt OnePK as their SDN platform from Day One.<br /><br />Examples:<br />(1) Ethan could write Perl scripts to manage TCAM or routing tables (GET, PUT, POST, DELETE, etc)<br />(2) You could write scalable webapps for, say, network monitoring, in Ruby, PHP, etc.<br />(3) Enterprises with an internal development team would be able to write .NET applications for integrated inventory and network provisioning.<br /><br />Providing OnePK as a cross-platform RESTful API would allow immediate adoption by a considerably broader audience, many of whom influence the decision of which SDN strategy to adopt in their environment.<br /><br />-Mike<br />",
-      "id": "783582711001849762",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "tewner",
-      "profile": "https://www.blogger.com/profile/11537820230823678052",
-      "pub": "2012-08-15T08:40:03.189+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "date": "16 August 2012 08:26",
-      "html": "Another benefit of restful could be integrated monitoring client. Since you&#39;re already doing HTTP, it shouldn&#39;t be hard to serve a set of static (server-wise) webpages with javascript that fetch data and show it in real time. All that just by browsing to (mgmt) ip of device.<br /><br />Also regarding a comment about bandwidth requirements vs. snmp; if you&#39;re doing a lot of data fetching, you may be able to leverage http&#39;s support of compressed content-encoding, making this much less of an issue.",
-      "id": "9187150377914914947",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2012-08-16T08:26:53.795+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "date": "16 August 2012 10:09",
-      "html": "There&#39;s a cute descritpion of REST at:<br /><br />&quot;How I Explained REST to My Wife&quot;<br />http://tomayko.com/writings/rest-to-my-wife<br /><br />-Mike",
-      "id": "8597205983474581481",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "tewner",
-      "profile": "https://www.blogger.com/profile/11537820230823678052",
-      "pub": "2012-08-16T10:09:25.977+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "date": "16 August 2012 22:38",
-      "html": "&gt;Short answer: nothing, apart from familiarity and convenient programming libraries.<br /><br />Short answer: Do you understand FCAPS<br />I find application/host programmers do not share the same experience in fielded products<br />that as networking/embedded programmers.<br />So if all you have is a hammer clearly its the right tool to use.<br />",
-      "id": "5768556081109843141",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "macfaden",
-      "profile": "https://www.blogger.com/profile/16972174460033692189",
-      "pub": "2012-08-16T22:38:39.895+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "19 June 2017 12:51",
-          "html": "What on earth would be the point of that? So you can do SNMP (a UDP lightweight procotol) with HTTP, a heavyweight TCP protocol?<br /><br />What do you gain?",
-          "id": "3652622577778799227",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/17963806405437797918",
-          "pub": "2017-06-19T12:51:20.664+02:00",
-          "ref": "6129607859385487307",
-          "type": "comment"
-        },
-        {
-          "date": "19 June 2017 18:59",
-          "html": "@Dave: you should do some research on FCoTR ;))",
-          "id": "4425071908885942775",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2017-06-19T18:59:37.713+02:00",
-          "ref": "6129607859385487307",
-          "type": "comment"
-        },
-        {
-          "date": "21 June 2017 12:43",
-          "html": "Ah - ok leaving aside that you were joking it raises a serious point. The reason that MiBs work is that there is a large core set that are implemented on almost all systems - which means that the same data gathering mechanism, and same request works everywhere. <br /><br />So sure, using REST to gather data would work just fine - relatively inefficient, but fine. But you&#39;d need the entire industry to agree on just how to request the optical signal levels, or mac table from any given device. <br /><br />I&#39;m not holding my breath on that one.",
-          "id": "1651362968529034463",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Unknown",
-          "profile": "https://www.blogger.com/profile/17963806405437797918",
-          "pub": "2017-06-21T12:43:22.314+02:00",
-          "ref": "6129607859385487307",
-          "type": "comment"
-        }
-      ],
-      "date": "24 August 2012 12:22",
-      "html": "Ignoring implementation differences such as programmer familiarity and ease of use (which are of course important!), from a protocol perspective IMO the major difference between SNMP and HTTP is that SNMP specifies not only the transport layer but also the structure of the data in the PDUs - when you request an OID the client already knows what the type of the data is from the MIB.<br /><br />HTTP does not enforce this coupling of the transport and the message content. Whilst it is possible to request a particular MIME type encoding (i.e. text/html), the format of the response is not defined by the HTTP protocol specification. Of course, the client and server can use a MIME-type which has the ability to use schema to describe the messages (such as XML) - but then you&#39;re starting to look more SOAPy and less RESTy.<br /><br />I don&#39;t know if there are existing standards that provide schemas for defining the messages content - if there aren&#39;t any then the future will be painful for anyone who wants to interact with multiple vendors each of whom is using their own schema.<br /><br />To avoid this, I would like to propose the intriguing possibility of adding a new MIME type of text/snmp - allowing the HTTP REST&#39;ful approach to be used with the schema and data types of SNMP!<br /><br />For example a HTTP GET with the to the URL:<br />http://switch1/get_status/oid/1.3.6.1.2.1.1.3<br /><br />would return the ASN1.1 representation of the switches system uptime (or perhaps a JSON representation of the same).<br /><br />Perhaps this could be made part of the FCoTR alliance?<br /><br />PS. After I had this novel idea (to me anyhow), I searched and found this RFC draft: http://tools.ietf.org/id/draft-mellquist-web-sys-00.txt - which is similar in scope, although they just POST the SNMP PDU in the HTTP body don&#39;t use the OID in the path of the URL.",
-      "id": "6129607859385487307",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Jonathan Barber",
-      "profile": "https://www.blogger.com/profile/09702900838358357999",
-      "pub": "2012-08-24T12:22:27.255+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "date": "29 August 2012 10:59",
-      "html": "Back in my server admin days, I did a lot of work with SNMP, specifically to get server stats and trend them with MRTG and its offspring (like Cactus). <br /><br />I can say with all seriousness: SNMP is a terrible protocol, and should die a horrible death. <br /><br />SNMP 1 and 2 are very similar, although SNMP 2 has three distinct versions: 2a, 2b, 2c. Only 2c is really used. The biggest difference is that it enabled 64-bit counters. Both 1 and 2x are unencrypted. <br /><br />SNMP 3 changed a lot, including adding very crappy encryption (a simple pre-shared key). It was almost a decade before vendors started to implement SNMP v3 in any significant way. <br /><br />MIB files are a huge pain in the ass to parse, especially with your eyeball. The tools available are equally as crappy. <br /><br />RESTful APIs allow a much easier way to get access to data and do configuration. XML is a shitload easier to parse than a MIB file. And REST allows PKI (SSL/TLS and certificates and such) which offer much better (potential) security. <br /><br />Like modem init strings, OIDs haunt my dreams at night. Both are things I hope I never run into again. <br /><br />SNMP: Simple Network Management Protocol. The biggest lying acronym in IT :) <br /><br />",
-      "id": "6547503680002201600",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Tony Bourke",
-      "profile": "http://datacenteroverlords.com",
-      "pub": "2012-08-29T10:59:01.532+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "17 May 2013 11:03",
-          "html": "HTTP callbacks. The REST server (in our case the network device) executes a GET or POST request on an URL provided in an API call.",
-          "id": "114092470823308483",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-05-17T11:03:11.672+02:00",
-          "ref": "581937611062678856",
-          "type": "comment"
-        }
-      ],
-      "date": "17 May 2013 04:23",
-      "html": "How does the REST/HTTP provide similar mechanism to SNMP notifications (traps)?",
-      "id": "581937611062678856",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Lukas",
-      "profile": "https://twitter.com/#!/LukasRypl",
-      "pub": "2013-05-17T04:23:56.644+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "date": "11 February 2014 01:01",
-      "html": "The short answer suggesting that there is no difference between the two because one can do the same thing as the other is a classic logical fallacy. One can,  as well, compare FTP file transfer protocol and SNMP, i.e. one can use SNMP to transfer a file, but this would not be the most efficient way to do it, and transferring a files  is not what SNMP is good at.  This article would serve better purpose if it only explains what  SNMP is good for and what it is not good for and what REST is good for and what it is not good for without comparing the two. In a modern equipment, such as a servers, a network controllers, etc.,  typically you can find both, in ancient equipment SNMP is typically the one and only interface.",
-      "id": "8376037725688881109",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2014-02-11T01:01:52.749+01:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "date": "06 March 2018 12:20",
-      "html": "All that said, in gNMI (uses gRPC) you can get differential telemetry, that is, get only what has changed. Considering systems with lots of management parameters to take care off (e.g., optical WDM systems), that is very relevant.",
-      "id": "6025305499753925979",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/18419652709378551396",
-      "pub": "2018-03-06T12:20:35.086+01:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "05 June 2019 18:46",
-          "html": "... and you\u2019re conflating transport protocols (SNMP or REST) with standardized data models (MIBs versus OpenConfig for example). Give OpenConfig/YANG another 20 years...",
-          "id": "6655974772676813121",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2019-06-05T18:46:22.780+02:00",
-          "ref": "5604063366551657714",
-          "type": "comment"
-        }
-      ],
-      "date": "05 June 2019 18:38",
-      "html": "You are comparing apples and oranges.  Its like saying REST is better than SSH.  An argument can be made, but its pointless.<br /><br />REST is certainly a hell of a lot more powerful than SNMP.  But for the purpose of extracting stats out of boxes, SNMP is amazing because it is cross vendor compatible.  I can pull stats from Juniper and Cisco and you name it routers with the same command / set of commands.  I don&#39;t have to write a separate adapter for every little gizmo in the world.",
-      "id": "5604063366551657714",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/08753405102760624651",
-      "pub": "2019-06-05T18:38:28.222+02:00",
-      "ref": "3746013655223288023",
-      "type": "comment"
-    }
-  ],
-  "count": 31,
-  "id": "3746013655223288023",
-  "type": "post",
-  "url": "2012/08/why-is-restful-api-better-than-snmp.html"
+   "comments": [
+      {
+         "date": "14 August 2012 09:24",
+         "html": "HTTP/REST is certainly easier in some respects, but SNMP does have quite a few advantages. It supports types, MIBs are an excellent source of documentation for an API and those APIs tend to be considerably more stable than their RESTful cousins (the RabbitMQ management plugin API has changed in every single version I&#39;ve deployed and broken nagios checks every time). Many of these APIs are even standardised (and some vendors even stick to them sometimes). There are some missing things, like properly standardised floats and doubles.<br /><br />  Not to mention traps, a decent (if loathed) security model in v3, no TCP 3 way handshake (unless you want it). Stuff like EVENT-MIB and EXPRESSION-MIB give you standard server-side functionality. net-snmp does a pretty good job of doing most of the really hard stuff for you.<br /><br />  The real problem for SNMP is that it is something else to learn and doesn&#39;t work well if you stick to the bare minimum. Doing tables properly is hard (that&#39;s trivial in a XML or JSON based REST API). People don&#39;t even think about using things like contexts. MIBs are also scarily close to actually writing documentation, which is never going to go down well with the majority of developers. It hasn&#39;t helped that most examples of SNMP usage try and bypass MIBs completely and use numeric oids for everything which makes examples practically impossible to read and gives SNMP a scary, super complicated air about it. You can do without MIBs, but that doesn&#39;t mean you should, you can always replace the textual values with the OIDs once you&#39;ve worked everything out.<br /><br />  I think SNMP&#39;s time may have come, but it has merits that we are losing with HTTP REST APIs, just not ones that people care about that much. How much they should care is open for debate.<br /><br />",
+         "id": "1316081984603796647",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Tristan Colgate-McFarlane",
+         "profile": "https://www.blogger.com/profile/18013961612317968207",
+         "pub": "2012-08-14T09:24:33.995+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "28 June 2016 11:53",
+               "html": "So does that mean, SNMP GET requires more bandwidth ?<br />both SNMP and HTTP are application layer protocols, <br />can you please tell me which one takes more bandwidth and how ?",
+               "id": "3456698835343365771",
+               "image": "https://4.bp.blogspot.com/-UVcH2o2PP4I/Tl_A0jjAGAI/AAAAAAAAATM/VHB26u_Q4KY/s32/captured.PNG",
+               "name": "bharathp",
+               "profile": "https://www.blogger.com/profile/14613332092502751772",
+               "pub": "2016-06-28T11:53:36.877+02:00",
+               "ref": "3511534811622701385",
+               "type": "comment"
+            },
+            {
+               "date": "19 June 2017 12:31",
+               "html": "Er no. At its simplest a single SNMP get will only require 2 packets as it&#39;s UDP. HTTP is a TCP protocol and has a far greater overhead",
+               "id": "8981415704705543942",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/17963806405437797918",
+               "pub": "2017-06-19T12:31:21.985+02:00",
+               "ref": "3511534811622701385",
+               "type": "comment"
+            },
+            {
+               "date": "23 March 2019 03:12",
+               "html": "The company I work for is trying to move away from SNMP and toward a RESTful API (web GUI) for our embedded systems that we make.  When they looked into it, the thinking was that SNMP can be a bitter a pill for people to swallow in the embedded Linux market.  However, they also noted that tying our C++ code into the backend of a RESTful API would also be a pain.<br />The bottom line is that we wanted a tool to allow us to run either efficient like SNMP or a bit more convenient like REST, so we developed a pretty neat control protocol and released it on GitHub.  I don&#39;t know if it would replace SNMP in anyone&#39;s system, but it might be worth a look see.<br />https://github.com/democosm/hc-cpp<br />Some extra detail is here:<br />http://www.democosm.com",
+               "id": "2898764111984694695",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Democosm",
+               "profile": "https://www.blogger.com/profile/05480625231690980822",
+               "pub": "2019-03-23T03:12:02.694+01:00",
+               "ref": "3511534811622701385",
+               "type": "comment"
+            }
+         ],
+         "date": "14 August 2012 10:31",
+         "html": "Don&#39;t forget about bandwidth....<br />SNMP GET and HTTP GET doesn&#39;t consume the same amount <br /><br />On slow links that remain in the wild, it would be a shame that supervision traffic consumes all bandwidth, especially when doing &quot;GET BULK&quot;.",
+         "id": "3511534811622701385",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "htam",
+         "profile": "http://www.htam.net/",
+         "pub": "2012-08-14T10:31:17.720+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "14 August 2012 13:14",
+               "html": "Well, I wouldn&#39;t say that ASN.1 bugs were caused by it being an OSI technology ;) Judged by the &quot;quality&quot; of XML parser in Cisco IOS, being a W3C or IETF technology doesn&#39;t help much.",
+               "id": "6331769342714272396",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-08-14T13:14:33.301+02:00",
+               "ref": "9097521866804420520",
+               "type": "comment"
+            }
+         ],
+         "date": "14 August 2012 13:08",
+         "html": "Python has excellent SNMP support. I&#39;ve implemented custom agents in a couple of pages of code, and most of the effort lay in MIB design to implement GETNEXT <br /><br />As Tristan points out, SNMP tables are utterly brain-dead, just think of all the hassles with mutable ifIndexes. A text-based protocol is inherently more flexible than something relying on ASN.1 OIDs The original sin of SNMP is its use of OSI technology. Just think of how many security advisories have been caused by ASN.1 bugs over the years.",
+         "id": "9097521866804420520",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Fazal Majid",
+         "profile": "http://www.majid.info/",
+         "pub": "2012-08-14T13:08:57.708+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "date": "14 August 2012 14:40",
+         "html": "While I think SNMP will still be with us for some time to come, especially for graphing trends and alerting with traps, I see a lot of vendors moving to the newer http based methods.  The bigger problem with snmp was how vendors implemented convoluted MIBs that were not documented well and were difficult to understand.  Also every vendor (as well as internal group) had their own way of doing things that was different.  I really don&#39;t see that same fundamental problem changing with the xml based technologies since everyone will have their own schema that works differently.<br /><br />SNMP was suppose to create a unified cross-platform device interaction framework, however it did not.  The same thing is being attempted and proposed with these new solutions.  I really don&#39;t see them fixing it, since it is not the technology that is the limiting factor but rather the way people implement it.  I think imaging a grand unified cross platform/vendor interaction framework is really a pipe dream.<br /><br />Thanks for the discussion Ivan, I&#39;m really enjoying it.  I really enjoy getting people to think about things so we can improve ourselves and each other.",
+         "id": "6566372327846224199",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Brian Christopher Raaen",
+         "profile": "http://www.brianraaen.com",
+         "pub": "2012-08-14T14:40:52.996+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "14 August 2012 19:48",
+               "html": "Not sure why google changed my name to &quot;Unknown&quot; but I think I fixed it :-)",
+               "id": "5209767675167198688",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Justin A",
+               "profile": "https://www.blogger.com/profile/07567730572096907480",
+               "pub": "2012-08-14T19:48:00.125+02:00",
+               "ref": "684463234310289121",
+               "type": "comment"
+            },
+            {
+               "date": "19 June 2017 12:36",
+               "html": "I think you&#39;re missing the point of SNMP. You might need a few steps to reproduce the &quot;show mac ...&quot; with SNMP, but once you&#39;ve done that it will work for every device in the world that supports that mib. <br /><br />Your way means you need to learn the command for every type of system, work out how to access the box, write a parser for the command output, deal with changes from CLI revisions etc.<br /><br />SNMP works for big system management because it works the same way every time.",
+               "id": "5589513365572051832",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/17963806405437797918",
+               "pub": "2017-06-19T12:36:25.157+02:00",
+               "ref": "684463234310289121",
+               "type": "comment"
+            },
+            {
+               "date": "19 June 2017 18:58",
+               "html": "@Dave: I think you&#39;re missing the difference between &quot;SNMP as transport&quot; and &quot;standard data models - i.e. MIBs&quot;. <br /><br />IETF has been dragging its feet for a decade, but finally we&#39;re getting standard data models for NETCONF/RESTCONF and they&#39;re slowly getting implemented. It will take another few years to get anywhere close to where MIBs are today... assuming you can get the information you need from the standard MIBs. Yes, you can get MAC table. No, you can&#39;t get optical interface signal levels.",
+               "id": "3138431252599846783",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2017-06-19T18:58:14.281+02:00",
+               "ref": "684463234310289121",
+               "type": "comment"
+            },
+            {
+               "date": "21 June 2017 13:15",
+               "html": "@Ivan - not getting a particular value for some system property is only because there is no MIB - not because of any inherent limitation in SNMP.<br /><br />And SNMP isn&#39;t a Transport: that&#39;s UDP or TCP.  SNMP describes a number of Protocol Data Units (PDU&#39;s) or put more simply - message formats. <br /><br />SNMP has verbs such as GET, GETNEXT, SET - in the same way that HTTP has POST, GET, PUT, DELETE etc.<br /><br />And whilst using HTTP GET to find out the IP address of an interface such as: <br /><br />http://some_device/restconf/api/config/native/interface/GigabitEthernet/2/ip/address<br /><br />certainly looks more friendly that the SNMP equivalent there is still a huge amount of codification effort to make it work reliably across the industry. Which is why it has been 10 years - and not looking &quot;standard&quot; anytime soon.<br /><br />I&#39;m not banging the drum for SNMP here; it is not easy to understand or use - partly because of the simplicity of the protocol. All I&#39;m saying is that whether you use REST, WBEM, WMI, or SNMP there is no magic bullet to getting an agreed standard &quot;language&quot; to allow you to gather the data you want reliably across the 1000&#39;s of different hardware and software platforms across the IT industry.<br />",
+               "id": "6628769130725758308",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/17963806405437797918",
+               "pub": "2017-06-21T13:15:45.393+02:00",
+               "ref": "684463234310289121",
+               "type": "comment"
+            },
+            {
+               "date": "21 June 2017 14:08",
+               "html": "And now we&#39;re in perfect sync ;)",
+               "id": "249207698289047133",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2017-06-21T14:08:34.261+02:00",
+               "ref": "684463234310289121",
+               "type": "comment"
+            }
+         ],
+         "date": "14 August 2012 19:30",
+         "html": "SNMP needs to die.<br /><br />Reading and writing awkward two column tables that are never indexed by the value you need is not an API. <br /><br />It is fine for counters, but everything else is needlessly complicated.<br /><br />This is probably the simplest example of how broken SNMP is as an API: http://www.cisco.com/en/US/tech/tk648/tk362/technologies_tech_note09186a00801c9199.shtml<br /><br />You need a 6 step process to reproduce &quot;show mac-address-table address 0000.0c07.ac08&quot;<br /><br />I have a python module that is few hundred lines of code that parses telnet/ssh output for switches.  It lets me do things like write a program that enables dhcp snooping automatically based on the current vlan configuration and network topology.<br /><br />I have another program that you can run on a group of switches and give it 1 or more old vlans and 1 or more new vlans.  It will automatically add the new vlans to any trunk ports that have the old vlans.<br /><br />These are the kinds of things a real API would help with.",
+         "id": "684463234310289121",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Justin A",
+         "profile": "https://www.blogger.com/profile/07567730572096907480",
+         "pub": "2012-08-14T19:30:14.865+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "15 August 2012 08:52",
+               "html": "Totally agree with you. Java-specific API is useless (at least for me and a few others).",
+               "id": "8728721827941187941",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-08-15T08:52:48.724+02:00",
+               "ref": "783582711001849762",
+               "type": "comment"
+            },
+            {
+               "date": "24 July 2013 23:13",
+               "html": "Eh-late to the game on this one, but it is an interesting topic.  <br /><br />I&#39;m not sure how useless a Java-specific API is, since Java does have a dis-proportioned amount of the enterprise stack.  On the whole I agree with you that they could&#39;ve done better by maybe releasing a binary format like Avro, Thrift, Protocol Buffers, or maybe even Etch, since they did create it and it is supposed to be serialization for &quot;consuming network services&quot;",
+               "id": "27047112052943280",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "M15K",
+               "profile": null,
+               "pub": "2013-07-24T23:13:15.506+02:00",
+               "ref": "783582711001849762",
+               "type": "comment"
+            }
+         ],
+         "date": "15 August 2012 08:40",
+         "html": "Hi Ivan - <br />I had just started putting together an article for Packet Pushers concerning a similar topic. Below is the gist of post:<br /><br />From what I understand, Cisco will be releasing their OnePK SDN offering as a language-specific API, starting with JAVA, with no clear roadmap afterwards. Instead, Cisco should initially release OnePK as a RESTful API. A Cross-Platform RESTful API would allow programmers and systems-scripters alike to adopt OnePK as their SDN platform from Day One.<br /><br />Examples:<br />(1) Ethan could write Perl scripts to manage TCAM or routing tables (GET, PUT, POST, DELETE, etc)<br />(2) You could write scalable webapps for, say, network monitoring, in Ruby, PHP, etc.<br />(3) Enterprises with an internal development team would be able to write .NET applications for integrated inventory and network provisioning.<br /><br />Providing OnePK as a cross-platform RESTful API would allow immediate adoption by a considerably broader audience, many of whom influence the decision of which SDN strategy to adopt in their environment.<br /><br />-Mike<br />",
+         "id": "783582711001849762",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "tewner",
+         "profile": "https://www.blogger.com/profile/11537820230823678052",
+         "pub": "2012-08-15T08:40:03.189+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "date": "16 August 2012 08:26",
+         "html": "Another benefit of restful could be integrated monitoring client. Since you&#39;re already doing HTTP, it shouldn&#39;t be hard to serve a set of static (server-wise) webpages with javascript that fetch data and show it in real time. All that just by browsing to (mgmt) ip of device.<br /><br />Also regarding a comment about bandwidth requirements vs. snmp; if you&#39;re doing a lot of data fetching, you may be able to leverage http&#39;s support of compressed content-encoding, making this much less of an issue.",
+         "id": "9187150377914914947",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2012-08-16T08:26:53.795+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "date": "16 August 2012 10:09",
+         "html": "There&#39;s a cute descritpion of REST at:<br /><br />&quot;How I Explained REST to My Wife&quot;<br />http://tomayko.com/writings/rest-to-my-wife<br /><br />-Mike",
+         "id": "8597205983474581481",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "tewner",
+         "profile": "https://www.blogger.com/profile/11537820230823678052",
+         "pub": "2012-08-16T10:09:25.977+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "date": "16 August 2012 22:38",
+         "html": "&gt;Short answer: nothing, apart from familiarity and convenient programming libraries.<br /><br />Short answer: Do you understand FCAPS<br />I find application/host programmers do not share the same experience in fielded products<br />that as networking/embedded programmers.<br />So if all you have is a hammer clearly its the right tool to use.<br />",
+         "id": "5768556081109843141",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "macfaden",
+         "profile": "https://www.blogger.com/profile/16972174460033692189",
+         "pub": "2012-08-16T22:38:39.895+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "19 June 2017 12:51",
+               "html": "What on earth would be the point of that? So you can do SNMP (a UDP lightweight procotol) with HTTP, a heavyweight TCP protocol?<br /><br />What do you gain?",
+               "id": "3652622577778799227",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/17963806405437797918",
+               "pub": "2017-06-19T12:51:20.664+02:00",
+               "ref": "6129607859385487307",
+               "type": "comment"
+            },
+            {
+               "date": "19 June 2017 18:59",
+               "html": "@Dave: you should do some research on FCoTR ;))",
+               "id": "4425071908885942775",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2017-06-19T18:59:37.713+02:00",
+               "ref": "6129607859385487307",
+               "type": "comment"
+            },
+            {
+               "date": "21 June 2017 12:43",
+               "html": "Ah - ok leaving aside that you were joking it raises a serious point. The reason that MiBs work is that there is a large core set that are implemented on almost all systems - which means that the same data gathering mechanism, and same request works everywhere. <br /><br />So sure, using REST to gather data would work just fine - relatively inefficient, but fine. But you&#39;d need the entire industry to agree on just how to request the optical signal levels, or mac table from any given device. <br /><br />I&#39;m not holding my breath on that one.",
+               "id": "1651362968529034463",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Unknown",
+               "profile": "https://www.blogger.com/profile/17963806405437797918",
+               "pub": "2017-06-21T12:43:22.314+02:00",
+               "ref": "6129607859385487307",
+               "type": "comment"
+            }
+         ],
+         "date": "24 August 2012 12:22",
+         "html": "Ignoring implementation differences such as programmer familiarity and ease of use (which are of course important!), from a protocol perspective IMO the major difference between SNMP and HTTP is that SNMP specifies not only the transport layer but also the structure of the data in the PDUs - when you request an OID the client already knows what the type of the data is from the MIB.<br /><br />HTTP does not enforce this coupling of the transport and the message content. Whilst it is possible to request a particular MIME type encoding (i.e. text/html), the format of the response is not defined by the HTTP protocol specification. Of course, the client and server can use a MIME-type which has the ability to use schema to describe the messages (such as XML) - but then you&#39;re starting to look more SOAPy and less RESTy.<br /><br />I don&#39;t know if there are existing standards that provide schemas for defining the messages content - if there aren&#39;t any then the future will be painful for anyone who wants to interact with multiple vendors each of whom is using their own schema.<br /><br />To avoid this, I would like to propose the intriguing possibility of adding a new MIME type of text/snmp - allowing the HTTP REST&#39;ful approach to be used with the schema and data types of SNMP!<br /><br />For example a HTTP GET with the to the URL:<br />http://switch1/get_status/oid/1.3.6.1.2.1.1.3<br /><br />would return the ASN1.1 representation of the switches system uptime (or perhaps a JSON representation of the same).<br /><br />Perhaps this could be made part of the FCoTR alliance?<br /><br />PS. After I had this novel idea (to me anyhow), I searched and found this RFC draft: http://tools.ietf.org/id/draft-mellquist-web-sys-00.txt - which is similar in scope, although they just POST the SNMP PDU in the HTTP body don&#39;t use the OID in the path of the URL.",
+         "id": "6129607859385487307",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Jonathan Barber",
+         "profile": "https://www.blogger.com/profile/09702900838358357999",
+         "pub": "2012-08-24T12:22:27.255+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "date": "29 August 2012 10:59",
+         "html": "Back in my server admin days, I did a lot of work with SNMP, specifically to get server stats and trend them with MRTG and its offspring (like Cactus). <br /><br />I can say with all seriousness: SNMP is a terrible protocol, and should die a horrible death. <br /><br />SNMP 1 and 2 are very similar, although SNMP 2 has three distinct versions: 2a, 2b, 2c. Only 2c is really used. The biggest difference is that it enabled 64-bit counters. Both 1 and 2x are unencrypted. <br /><br />SNMP 3 changed a lot, including adding very crappy encryption (a simple pre-shared key). It was almost a decade before vendors started to implement SNMP v3 in any significant way. <br /><br />MIB files are a huge pain in the ass to parse, especially with your eyeball. The tools available are equally as crappy. <br /><br />RESTful APIs allow a much easier way to get access to data and do configuration. XML is a shitload easier to parse than a MIB file. And REST allows PKI (SSL/TLS and certificates and such) which offer much better (potential) security. <br /><br />Like modem init strings, OIDs haunt my dreams at night. Both are things I hope I never run into again. <br /><br />SNMP: Simple Network Management Protocol. The biggest lying acronym in IT :) <br /><br />",
+         "id": "6547503680002201600",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Tony Bourke",
+         "profile": "http://datacenteroverlords.com",
+         "pub": "2012-08-29T10:59:01.532+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "17 May 2013 11:03",
+               "html": "HTTP callbacks. The REST server (in our case the network device) executes a GET or POST request on an URL provided in an API call.",
+               "id": "114092470823308483",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-05-17T11:03:11.672+02:00",
+               "ref": "581937611062678856",
+               "type": "comment"
+            }
+         ],
+         "date": "17 May 2013 04:23",
+         "html": "How does the REST/HTTP provide similar mechanism to SNMP notifications (traps)?",
+         "id": "581937611062678856",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Lukas",
+         "profile": "https://twitter.com/#!/LukasRypl",
+         "pub": "2013-05-17T04:23:56.644+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "date": "11 February 2014 01:01",
+         "html": "The short answer suggesting that there is no difference between the two because one can do the same thing as the other is a classic logical fallacy. One can,  as well, compare FTP file transfer protocol and SNMP, i.e. one can use SNMP to transfer a file, but this would not be the most efficient way to do it, and transferring a files  is not what SNMP is good at.  This article would serve better purpose if it only explains what  SNMP is good for and what it is not good for and what REST is good for and what it is not good for without comparing the two. In a modern equipment, such as a servers, a network controllers, etc.,  typically you can find both, in ancient equipment SNMP is typically the one and only interface.",
+         "id": "8376037725688881109",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2014-02-11T01:01:52.749+01:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "date": "06 March 2018 12:20",
+         "html": "All that said, in gNMI (uses gRPC) you can get differential telemetry, that is, get only what has changed. Considering systems with lots of management parameters to take care off (e.g., optical WDM systems), that is very relevant.",
+         "id": "6025305499753925979",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/18419652709378551396",
+         "pub": "2018-03-06T12:20:35.086+01:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "05 June 2019 18:46",
+               "html": "... and you’re conflating transport protocols (SNMP or REST) with standardized data models (MIBs versus OpenConfig for example). Give OpenConfig/YANG another 20 years...",
+               "id": "6655974772676813121",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2019-06-05T18:46:22.780+02:00",
+               "ref": "5604063366551657714",
+               "type": "comment"
+            }
+         ],
+         "date": "05 June 2019 18:38",
+         "html": "You are comparing apples and oranges.  Its like saying REST is better than SSH.  An argument can be made, but its pointless.<br /><br />REST is certainly a hell of a lot more powerful than SNMP.  But for the purpose of extracting stats out of boxes, SNMP is amazing because it is cross vendor compatible.  I can pull stats from Juniper and Cisco and you name it routers with the same command / set of commands.  I don&#39;t have to write a separate adapter for every little gizmo in the world.",
+         "id": "5604063366551657714",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/08753405102760624651",
+         "pub": "2019-06-05T18:38:28.222+02:00",
+         "ref": "3746013655223288023",
+         "type": "comment"
+      },
+      {
+         "date": "01 October 2020 10:09",
+         "html": "<p>I know this article is very old by now, but as someone who spent many years working with SNMP, I strongly disagree with the conclusion. SNMP has one (possible) advantage over REST, which is that it is connectionless. After that, it is a horror show. </p>\n\n<p>The biggest issue is probably the amount of space that OIDs consume in limited-size packets. GetBulk did not end up implementing any OID compression, and so when walking a table of counters, gauges, or states, for example, almost the entire, precious 1500 byte packet capacity is consumed transporting OIDs. In the real world, packet fragmentation and reassembly does not work well, and so you have to carefully craft your request packets to avoid size overruns in responses. </p>\n\n<p>The only traversal semantic is SNMP is GetNext/GetBulk. There is no filtering, that I am aware of, and scoping is only available by specifying more of the OID prefix, which is limiting. </p>\n\n<p>Table walk semantics are difficult to implement correctly for sparse tables. Even if you implement that correctly, you have to be careful which other columns your GetBulk runs over into at the end of the table. We had a case where the last row of a table could never be fetched due to running over into an unrelated table with a too-large OCTET STRING. We had to create a custom table-walk algorithm for that specific table. </p>\n\n<p>Because many agents are single-threaded, you have to implement throttling on the management side to avoid spurious timeouts and retries. (Without throttling, requests queue up in the agent, including retries, and everything times out.)</p>\n\n<p>CRUD semantics for tables are difficult to implement correctly. At my last job, we almost got sued by a customer because one out of a sequence of SetRequest packets failed, and left a wide-open WLAN on their network. Since SetRequest is not idempotent, you cannot even retry those. </p>\n\n<p>There are other parts of the protocol I could pick on, such as community strings for authentication, or OID index parsing, or the difficult-to-use InetAddress/InetAddressType data types. There is a lot that did not age well. </p>\n\n<p>Another commenter stated that SNMP is a terrible protocol that needs to die. I don&#39;t know if I&#39;d go that far, but for managing a device of any complexity, it is so much better to implement a REST API. You have reliability and the ability to stream large amounts of data, if needed. Scoping and filtering are available via URLs and query parameters. JSON encoding is not even much more verbose than all of the SNMP OIDs that come back in GetBulk. When you ask for a table of data, you don&#39;t get unrelated tables. You don&#39;t have to implement &quot;sparse walk&quot;. </p>\n\n<p>REST APIs also allow for various authentication schemes that HTTP supports. TLS is supported simply. </p>\n\n<p>There are dozens of open source libraries and frameworks for HTTPS, REST, and JSON. </p>\n\n<p>REST is just superior. Anyone who says &quot;SNMP can do anything that REST does&quot; has, I would wager, never spent much time maintaining a sophisticated SNMP-based management application. I have done that, and I guarantee that the statement that the two protocols are equivalent is naive. </p>\n",
+         "id": "165",
+         "name": " Rich Smith",
+         "pub": "2020-10-01T22:09:04",
+         "type": "comment"
+      }
+   ],
+   "count": 32,
+   "id": "3746013655223288023",
+   "type": "post",
+   "url": "2012/08/why-is-restful-api-better-than-snmp.html"
 }

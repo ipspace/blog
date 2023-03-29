@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15278026886554337341" rel="nofollow">Nischal</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4995008879744190230">11 August 2014 21:08</a>
+                <a rel="nofollow" id="c4995008879744190230" href="#4995008879744190230">11 August 2014 21:08</a>
               </span>
             </div>
-            <p class="comment-content">Current version of Contrail uses VXLAN encapsulation to carry non-IP traffic between VMs across hypervisors. The VXLAN payload is the original Ethernet frame. An upcoming release will support use of VXLAN to carry IP and non-IP traffic between VMs and non-virtualized hosts connected to merchant silicon based TORs. The VXLAN payload will still be the original Ethernet frame.<br /><br />The EVPN + VXLAN implementation is based on the following:<br /><br />https://datatracker.ietf.org/doc/draft-ietf-l2vpn-evpn/<br />https://datatracker.ietf.org/doc/draft-sd-l2vpn-evpn-overlay/<br /><br />IOW, the VNI field in the VXLAN header is not used to store an MPLS label.<br /><br />On a related note, draft-sd-l2vpn-evpn-overlay does use the MPLS label field in BGP EVPN Routes to signal the VNI in the control plane. The data plane remains vanilla VXLAN.<br /><br />Disclosure: I work in the Contrail team at Juniper<br /></p>
+            <div class="comment-content">Current version of Contrail uses VXLAN encapsulation to carry non-IP traffic between VMs across hypervisors. The VXLAN payload is the original Ethernet frame. An upcoming release will support use of VXLAN to carry IP and non-IP traffic between VMs and non-virtualized hosts connected to merchant silicon based TORs. The VXLAN payload will still be the original Ethernet frame.<br /><br />The EVPN + VXLAN implementation is based on the following:<br /><br />https://datatracker.ietf.org/doc/draft-ietf-l2vpn-evpn/<br />https://datatracker.ietf.org/doc/draft-sd-l2vpn-evpn-overlay/<br /><br />IOW, the VNI field in the VXLAN header is not used to store an MPLS label.<br /><br />On a related note, draft-sd-l2vpn-evpn-overlay does use the MPLS label field in BGP EVPN Routes to signal the VNI in the control plane. The data plane remains vanilla VXLAN.<br /><br />Disclosure: I work in the Contrail team at Juniper<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5222667966403623616">12 August 2014 12:11</a>
+                <a rel="nofollow" id="c5222667966403623616" href="#5222667966403623616">12 August 2014 12:11</a>
               </span>
             </div>
-            <p class="comment-content">Straight from http://opencontrail.org/opencontrail-architecture-documentation/ (section 2.2.1.2):<br /><br />&quot;Second, The Virtual Network Identifier (VNI) in the VXLAN header is locally unique to the egress vRouter instead of being globally unique.&quot;<br /><br />Sounds like MPLS label to me. What you want to call that field is pure semantics ,)<br /><br />Or maybe your architecture document is out-of-date, in which case someone might want to fix it.</p>
+            <div class="comment-content">Straight from http://opencontrail.org/opencontrail-architecture-documentation/ (section 2.2.1.2):<br /><br />&quot;Second, The Virtual Network Identifier (VNI) in the VXLAN header is locally unique to the egress vRouter instead of being globally unique.&quot;<br /><br />Sounds like MPLS label to me. What you want to call that field is pure semantics ,)<br /><br />Or maybe your architecture document is out-of-date, in which case someone might want to fix it.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15278026886554337341" rel="nofollow">Nischal</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3475120098248886583">13 August 2014 08:31</a>
+                <a rel="nofollow" id="c3475120098248886583" href="#3475120098248886583">13 August 2014 08:31</a>
               </span>
             </div>
-            <p class="comment-content">The document refers to the implementation of locally significant VNIs as described in draft-sd-l2vpn-evpn-overlay. I agree that they are conceptually similar to MPLS labels.<br /><br />The point I would like to clarify is that per the above draft, VXLAN encap is used only when the destination prefix has a VNI associated with it e.g. a MAC address learnt via BGP EVPN route with Encapsulation Extended Community value VXLAN. It&#39;s not used if the destination prefix has an MPLS label associated with it e.g. IP prefix learnt via BGP L3VPN route.<br /><br />We&#39;ve since discovered that merchant silicon TORs tend to only support globally unique VNIs. Hence newer releases of Contrail software will switch over to using globally unique VNIs.  The section you referred to above will need to be updated at that point.<br /></p>
+            <div class="comment-content">The document refers to the implementation of locally significant VNIs as described in draft-sd-l2vpn-evpn-overlay. I agree that they are conceptually similar to MPLS labels.<br /><br />The point I would like to clarify is that per the above draft, VXLAN encap is used only when the destination prefix has a VNI associated with it e.g. a MAC address learnt via BGP EVPN route with Encapsulation Extended Community value VXLAN. It&#39;s not used if the destination prefix has an MPLS label associated with it e.g. IP prefix learnt via BGP L3VPN route.<br /><br />We&#39;ve since discovered that merchant silicon TORs tend to only support globally unique VNIs. Hence newer releases of Contrail software will switch over to using globally unique VNIs.  The section you referred to above will need to be updated at that point.<br /></div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2108081823480643087">19 June 2015 23:59</a>
+                <a rel="nofollow" id="c2108081823480643087" href="#2108081823480643087">19 June 2015 23:59</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, you sounds like network industry hipster sometimes. Keep it up! I like this ironic sense of humor.</p>
+            <div class="comment-content">Ivan, you sounds like network industry hipster sometimes. Keep it up! I like this ironic sense of humor.</div>
           </div>
         </li>
       </div>

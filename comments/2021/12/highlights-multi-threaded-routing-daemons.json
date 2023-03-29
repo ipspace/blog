@@ -1,0 +1,52 @@
+{
+   "comments": [
+      {
+         "date": "07 December 2021 06:09",
+         "html": "<p>Ivan,</p>\n\n<p>To my view - Arrcus has the most advanced multi-threaded BGP implementation, let&rsquo;s get Keyur to talk about it (if he agrees ;-))</p>\n",
+         "id": "920",
+         "name": " JeffT ",
+         "pub": "2021-12-07T18:09:02",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "08 December 2021 08:20",
+               "html": "<p>... and this is yet another benefit of collecting and republishing comments and responses. Thank you!</p>\n",
+               "id": "922",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-12-08T08:20:04",
+               "ref": "921",
+               "type": "comment"
+            },
+            {
+               "date": "08 December 2021 08:56",
+               "html": "<p>Hi Wes, you probably referred to my comment. Tbh, I&#39;m not aware of SGI scheduler. Just wondering what approach SGI scheduler uses, if it&#39;s not centralized/time-sharing, is it space-sharing/partitioning the resources and running multiple copies of the OS kernel?  Can you elaborate on that one :)? How does it deal with the performance problem of synchronization?</p>\n\n<p>As for compiler vs CPU parallelizing code, finding parallelism in program is an important topic in modern compiler design, even when we don&#39;t talk about SIMD/vectorization. Superscalar architecture tasks the CPU to find ILP at run-time, and it turned out to be inefficient and resource-intensive; that&#39;s part of the reason why Intel introduced VLIW/EPIC and SMT, to push compile-time parallelism. So either the compiler or the programmer will do the hard work.  </p>\n\n<p>But finding parallelism and taking advantage of different cache speeds in hierarchical memory seem to be very hard topics, so I&#39;m not aware of any compiler excelling at those, and the VLIW/EPIC architecture was scraped in the end. SMT itself has problem with data-intensive workloads because of cache thrashing, and large routing databases can exceed cache size. Cray MTA-2 architecture does away with hierarchical memory by using hundreds of hardware contexts to compensate for memory access delay, but their architecture is vertical, not general. </p>\n",
+               "id": "923",
+               "name": "Minh",
+               "pub": "2021-12-08T08:56:23",
+               "ref": "921",
+               "type": "comment"
+            },
+            {
+               "date": "13 December 2021 08:41",
+               "html": "<p>I dug around a bit for more info on SGI. Turned out it was some sort of medium-scale super computer, SGI Altix 4700 the one having 1024-2048 cores. It&#39;s not a general architecture but designed for scientific workloads, like LS-DYNA, though. PHDs and Postdocs at our Mechanical Eng School, do a lot of finite-element analysis simulation with Ansys &amp; Dyna; they also write a lot Matlab and multithreaded Python codes to run big scientific calculations involving matrix, vector, differential equation, TensorFlow... so I know that these workloads are trivially/embarrasingly parallel, and therefore scale almost linearly with the number of cores. They&#39;re essentially vector/SIMD, and that&#39;s what the SGI Altix is used for. </p>\n\n<p>Also, it&#39;s hard to call the OS running on these kinds of box Linux, because vendors just take Linux source code and modify it to fit their needs. Standard Linux distros like Ubuntu, have central schedulers just like other OSes. </p>\n\n<p>In any case, I don&#39;t think embarrassingly parallel processing can be applied to multithread all parts of BGP because BGP codes are a lot more complicated and have different nature than scientific simulation codes. The database sharding part can possibly lend itself to SIMD kind of processing, but it probably makes little difference in performance compared to multicore multithreading because of the small size of the RIB -- small vs the size of the scientific workloads.</p>\n",
+               "id": "939",
+               "name": " Minh",
+               "pub": "2021-12-13T08:41:03",
+               "ref": "923",
+               "type": "comment"
+            }
+         ],
+         "date": "08 December 2021 01:52",
+         "html": "<p>Linux doesn&#39;t have a centralized scheduler (SGI scaled it to 1024(?) cores IIRC) and it isn&#39;t the compiler&#39;s job to parallelize code (vectorize yes, parallelize no) so one of your sources is... off.</p>\n",
+         "id": "921",
+         "name": "Wes Felter",
+         "pub": "2021-12-08T01:52:07",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2021/12/highlights-multi-threaded-routing-daemons.html"
+}

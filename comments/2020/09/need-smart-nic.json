@@ -1,0 +1,55 @@
+{
+   "comments": [
+      {
+         "date": "09 September 2020 02:13",
+         "html": "<p>Ivan, as always the answer for &quot;SmartNIC or CPU?&quot; is &quot;it depends&quot;, and the devil is in the details when talking about high throughput achieved in CPU. If you have many independent flows then of course the packets can be distributed to cores (either using the NIC or a load balancing core). However there are real deployments that have traffic coming on a single IPSec tunnel, so there is no easy way to take advantage of parallelism. If packets are fragmented that causes problems too for distributing the packets. Many protocols are also stateful, and if this shared state is accessed by many cores the throughput reduces significantly.</p>\n\n<p>Yet another aspect is that many cloud providers treat a lot of the packet processing as &quot;infrastructure overhead&quot;, and would rather not do it on cores since the cores can be rented out to customers to make money. So even if SmartNICs have higher power/price they may prefer to offload this work and free up all cores to be rented to customers - this is the approach taken by AWS with Nitro.</p>\n",
+         "id": "119",
+         "name": " Sanjay Padubidri",
+         "pub": "2020-09-09T14:13:49",
+         "type": "comment"
+      },
+      {
+         "date": "09 September 2020 04:12",
+         "html": "<p>Relying on the CPU means an undeterministic behavior as more and more features are activated. Even by dedicating some CPU cores to specific tasks such as in the ISR4k family, the performance is not the same as features are added after a certain saturation point. \nWith a hardware based packet processing pipeline you could get a more deterministic behavior even at close to wire speeds. Of course, only if the architecture is designed properly.\nBetter determinism might be important for safety critical networks. </p>\n\n<p>In most applications this is not a real issue, but there are some real-time needs that would be better fulfilled with SmartNICs. A generic example is high accuracy and precision time synchronization. Another example is one-way delay and delay variation measurements with sub-millisecond precision. \nCritical voice and video streams might be also a use case. </p>\n",
+         "id": "120",
+         "name": "Bela Varkonyi",
+         "pub": "2020-09-09T16:12:39",
+         "type": "comment"
+      },
+      {
+         "date": "10 September 2020 03:50",
+         "html": "<p>While it is possible to do 100 Gbps with CPU alone, there are other things to consider like form-factor, power footprint and latency. Maybe this article will shed more light on why and when smartNICs are needed :</p>\n\n<p>https://www.eweek.com/networking/how-f5-networks-uses-smartnics-to-ease-transition-to-software</p>\n",
+         "id": "121",
+         "name": "Dipjyoti Saikia",
+         "pub": "2020-09-10T03:50:50",
+         "type": "comment"
+      },
+      {
+         "date": "10 September 2020 03:58",
+         "html": "<p>For me as a network/security engineer it was a pain using Software-based packet forwarding as there are too many moving part to make high speed packet forwarding really work but just in blogs and forums .last month i tasked to put a simple L2-Bridge (Ubuntu kernel 5.4 with VLAN tagging/Filtering) on top of  Vmware DVS with Private VLAN enabled to limit some VM-to-VM talk within same host/port-group/VLAN (we couldn&#39;t use NSX for reasons).after trying with many fancy offloading methods (using VMXNET3 , SR-IOV , LRO/TSO , OVS+DPDK) the performance was unpredictable and some solutions were hard or impossible to implement and it didn&#39;t worth  that much effort to build an unstable solutions.i spent 1 Mount of my working time to make it work.Ivan say that we need doing more research and effort.you are right.but as my main job (and others guys like me) is work as network/security engineer , how  can i spent my entire life doing research on thing that are mostly experimental and there is no real solution in Enterprise production network.i am not talking about big Cloud SP or Telecom SP.i am talking about enterprise org with limited resources like mine.i think the packet processing and NFV solutions need to be simplified for guys like me.i spent 20 year to learn networking and security technology and i am not going to spend my remaining career to learn how DPDK is working with some NIC/Library and T-shooting those things and every code in new release break some other thing.i think vanilla Linux kernel data-path should be more and more optimized for packet forwarding as doing things in User-Space is hard and break many thing.if in kernel data-path improved no one  need to compile those excremental codes .i know that i am complaining too much.but if NFV is going to have a broad deployment (not just for Cloud SP and Teleco) is need to be simplified .if people like me are not the right guys to mess with NFV pls stop telling others that the FUTURE is NFV .if the performance of NFV is not going to improved (OVS+DPDK is 7 years old, VPP is out but no real and ready to use solutions) it is better to doing things in the old way.\nA.A</p>\n",
+         "id": "122",
+         "name": " A.A",
+         "pub": "2020-09-10T15:58:26",
+         "type": "comment"
+      },
+      {
+         "date": "11 September 2020 12:53",
+         "html": "<p>CPU is not designed for the purpose of packet forwarding. One example is packet order retaining. It is impossible for a multicore CPU to retain the packet order as is received after parallel processing by multiple cores. Another example is scheduling. Yes CPU can do scheduling, but at a very high tax of CPU cycles.</p>\n",
+         "id": "124",
+         "name": "junhui liu",
+         "pub": "2020-09-11T12:53:48",
+         "type": "comment"
+      },
+      {
+         "date": "19 September 2020 01:42",
+         "html": "<p>There is not much technical discussion on SmartNICs, I welcome Ivan&rsquo;s post, and I want to provide my perspective in this blog post:</p>\n\n<p>https://silvanogai.github.io/posts/smartnic/</p>\n\n<p>Thanks Ivan</p>\n\n<p>-- Silvano Gai</p>\n",
+         "id": "141",
+         "name": "Silvano Gai",
+         "pub": "2020-09-19T01:42:35",
+         "type": "comment"
+      }
+   ],
+   "count": 6,
+   "type": "post",
+   "url": "2020/09/need-smart-nic.html"
+}

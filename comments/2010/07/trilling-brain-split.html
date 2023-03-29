@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">JS</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#823551986458200268">08 July 2010 17:16</a>
+                <a rel="nofollow" id="c823551986458200268" href="#823551986458200268">08 July 2010 17:16</a>
               </span>
             </div>
-            <p class="comment-content">I&#39;d be interested to hear your thoughts on the proposal that LISP be used to help enable virtual machine mobility across traditional layer-3 boundaries.</p>
+            <div class="comment-content">I&#39;d be interested to hear your thoughts on the proposal that LISP be used to help enable virtual machine mobility across traditional layer-3 boundaries.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter John Hill</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8322382261996342209">08 July 2010 17:34</a>
+                <a rel="nofollow" id="c8322382261996342209" href="#8322382261996342209">08 July 2010 17:34</a>
               </span>
             </div>
-            <p class="comment-content">TRILL really is routing at layer 2. Using a well established routing protocol, ISIS. If switches had the horse power to run TRILL 20 years ago, people (like me) might not despise network designs that require layer 2 loops.<br /><br />That being said, it is way too new to interest me. I&#39;ll let other people find the bugs. I&#39;ll stick with routing as my go-to way to go :)</p>
+            <div class="comment-content">TRILL really is routing at layer 2. Using a well established routing protocol, ISIS. If switches had the horse power to run TRILL 20 years ago, people (like me) might not despise network designs that require layer 2 loops.<br /><br />That being said, it is way too new to interest me. I&#39;ll let other people find the bugs. I&#39;ll stick with routing as my go-to way to go :)</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8355183105791060966">08 July 2010 17:45</a>
+                <a rel="nofollow" id="c8355183105791060966" href="#8355183105791060966">08 July 2010 17:45</a>
               </span>
             </div>
-            <p class="comment-content">TRILL is bridging across a routed infrastructure. It&#39;s not (conceptually) much different from VPLS or OTV. In the end, IS-IS is used only to build the inter-rbridges infrastructure and flooding-like mechanism is used to discover MAC addresses.<br /><br />Now, if they would advertise MAC addresses as TLVs in IS-IS, and stop flooding the unknowns, that would be routing. Today, it&#39;s not. ESADI is a step in the right direction, but they couldn&#39;t make it authoritative, because the whole thing is still ... guess what, bridging.</p>
+            <div class="comment-content">TRILL is bridging across a routed infrastructure. It&#39;s not (conceptually) much different from VPLS or OTV. In the end, IS-IS is used only to build the inter-rbridges infrastructure and flooding-like mechanism is used to discover MAC addresses.<br /><br />Now, if they would advertise MAC addresses as TLVs in IS-IS, and stop flooding the unknowns, that would be routing. Today, it&#39;s not. ESADI is a step in the right direction, but they couldn&#39;t make it authoritative, because the whole thing is still ... guess what, bridging.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7558638901115595872">08 July 2010 17:48</a>
+                <a rel="nofollow" id="c7558638901115595872" href="#7558638901115595872">08 July 2010 17:48</a>
               </span>
             </div>
-            <p class="comment-content">You don&#39;t need LISP for VM mobility across L3 infrastructure. You can easily do that with LAM, probably also with DHCP forwarding ... assuming the # of VMs does not exceed your TCAM limits.<br /><br />LISP is useful when you need to shift the DC ingress point for a particular IP address to a different site when the VM is moved.</p>
+            <div class="comment-content">You don&#39;t need LISP for VM mobility across L3 infrastructure. You can easily do that with LAM, probably also with DHCP forwarding ... assuming the # of VMs does not exceed your TCAM limits.<br /><br />LISP is useful when you need to shift the DC ingress point for a particular IP address to a different site when the VM is moved.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7727311889713615653">11 July 2010 01:33</a>
+                <a rel="nofollow" id="c7727311889713615653" href="#7727311889713615653">11 July 2010 01:33</a>
               </span>
             </div>
-            <p class="comment-content">Speaking of bridging and routing here, how is briding different from routing? Take SRB for example: is it more routing or bridging? Of course, calling bridging a &quot;transparent&quot; bridging makes things more clear, but it would be nice to have a better characteristic.<br /><br />To me, the essential property is that bridged domain being treated as a single link with all nodes directly attached (physically, or virtually like in TRILL/OTV). Essentially all endpoints are unaware of the undelying domain structure and assume they can reach any other endpoint directly by referring to its ID.<br /><br />Next problem is that traditional routing protocols base their scalability on routing information aggregation, which requires hierarchical structures. Bridging assumes flat structure with no aggregation and hence is you leak endpoint identifiers into IGP/BGP you end up with unscalable/unstable system. Of course you may handle thousands of MAC addresses more or less reliable with ISIS, but asymptotically this &quot;edge&quot; design simply wont work. <br /><br />This problem could be alleviated by changing the IGP/BGP-based endpoint information distribution to a technology that can deal with mobile and flat endpoint labels. There is a number of approaches here, similar to some protocols found in MANETs. I&#39;m saying &quot;some&quot; since the area of MANET routing is huge and easily encompasses a few tens of protocols and their variations.</p>
+            <div class="comment-content">Speaking of bridging and routing here, how is briding different from routing? Take SRB for example: is it more routing or bridging? Of course, calling bridging a &quot;transparent&quot; bridging makes things more clear, but it would be nice to have a better characteristic.<br /><br />To me, the essential property is that bridged domain being treated as a single link with all nodes directly attached (physically, or virtually like in TRILL/OTV). Essentially all endpoints are unaware of the undelying domain structure and assume they can reach any other endpoint directly by referring to its ID.<br /><br />Next problem is that traditional routing protocols base their scalability on routing information aggregation, which requires hierarchical structures. Bridging assumes flat structure with no aggregation and hence is you leak endpoint identifiers into IGP/BGP you end up with unscalable/unstable system. Of course you may handle thousands of MAC addresses more or less reliable with ISIS, but asymptotically this &quot;edge&quot; design simply wont work. <br /><br />This problem could be alleviated by changing the IGP/BGP-based endpoint information distribution to a technology that can deal with mobile and flat endpoint labels. There is a number of approaches here, similar to some protocols found in MANETs. I&#39;m saying &quot;some&quot; since the area of MANET routing is huge and easily encompasses a few tens of protocols and their variations.</div>
           </div>
         </li>
       </div>

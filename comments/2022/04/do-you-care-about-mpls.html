@@ -1,0 +1,238 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1137">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Enrique Vallejo</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1137" href="#1137">06 April 2022 11:28</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you very much for this post. </p>
+
+<p>For those not directly involved in the market, it is difficult to determine when a given technology is not &quot;sexy&quot; anymore. Some technologies are mature and still alive, some of them are legacy technologies that only persist in niche domains, and some others never flourished or have been completely superseded by another technology. However, most of them are thoroughly described in the textbooks and/or the Internet (The <em>Internet</em> is dark and full of terrors), to the very last header bit, but without any actual information about their fate or demise.</p>
+
+<p>There are many other technologies (which, in many cases, are still taught at Universities, <em>because books</em>) in which similar posts would be very appreciated. For example, a quick brainstorming going back many years:</p>
+
+<ul>
+<li><p>When was X.25 official declared dead? Note that the wikipedia claims that it is <em>still</em> in use in parts of the world. What about FR? ATM? ...</p></li>
+<li><p>You mention MPLS/VPN and SDWAN, what about other technologies? Is people still using IPSec/TLS tunnels? DMVPN? FlexVPN? ...</p></li>
+<li><p>Are FabricPath, TRILL or SPB still alive, or has everyone moved to VXLAN? Are they worth studying?</p></li>
+<li><p>Regarding storage, is Fibre Channel still a thing in 2022, or most people employ SATA over Ethernet and NVMe over fabrics? What about SAS drives, do they still make sense other than in legacy arrays, or has their segment been completely hogged by NVMe SSDs? What about FCoE? Note that FCoE is still part of Cisco&#39;s certifications, but I have seen many posts declaring it dead 7-8 years ago. </p></li>
+<li><p>...</p></li>
+</ul>
+
+<p>I know that some information can be obtained from market analysis firms (such as IDC) and that you have posts about some of the mentioned technologies. My point is not so much to ask specifically about each of them, but rather to highlight the lack of available up-to-date reliable information about the status of many technologies.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1139">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> James Harr</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1139" href="#1139">06 April 2022 03:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>TRILL more or less died a while ago. The notion of TRILL interop died really early on with each vendor doing their own control plane or data plane shenanigans.</p>
+
+<p>SPB more or less is gone too. From my perspective, when I was working with it, it was a beautiful story for campus networks. Stretch bridging domains strategically where you needed, keep backbone MAC tables clean and stable, and get simple L3VPNs.</p>
+
+<p>Avaya and Alcatel-Lucent were the only ones truly investing in it (SPB-M) from what I could tell. A few others like Enterasys were along for the ride (doing SPB-V). Avaya had the best story with very simple configuration, L3VPN support, and they even transparently implemented the loopbacks needed to deal with packet recirculation -- same problem most vxlan implementations had when implementing symmetric IRB in EVPN. You didn&#39;t even see that was happening in the config -- the loopbacks were hard wired, though you could never get them to actually tell you how much bandwidth was dedicated to it. Alcatel-Lucent-Enterprise made you install a loopback cable and a small pile of config to patch things together yourself.</p>
+
+<p>At any rate, the whole routing-in-and-out-of-tunnels thing I think really hampered SPBs its momentum. In the meantime, VXLAN (even with flood-and-learn forwarding semantics) gained popularity.</p>
+
+<p>Fast forward to today and I don&#39;t think much is being done with SPB. I&#39;ve implemented SPB (ALE&#39;s version) and it was OK. VXLAN-EVPN has a lot of promise but I can&#39;t see a campus network using it very often. There are too many knobs and too much config for limited gains. And hardware that has RIB/FIB space for a large campus gets pricy to run EVPN down to the access switch.</p>
+
+<p>That&#39;s the part I think we might have lost as an industry -- getting PE-like functionality down to the smallish scale, like access switches. It has its flaws and limitations but so does anything else.</p>
+
+<p>I might also just be romanticizing about what could have been ;-P     Markets rarely pick what&#39;s best and rarely is the definition of &quot;best&quot; consistent across businesses anyway. Still - I wouldn&#39;t consider SPB today any more than I&#39;d consider using ATM or flow based forwarding (sorry LISP)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1141">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1141" href="#1141">06 April 2022 06:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;PE-like functionality at smallish scale&quot; is a decent description of what we&#39;re trying to do with SR Linux. </p>
+
+<p>We are definitely not there yet, and would welcome any feedback. </p>
+
+<p>Regards,
+Jeroen van Bemmel (Nokia)</p>
+
+<p>&quot;I am biased therefore I am&quot;</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1138">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jaap de Vos</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1138" href="#1138">06 April 2022 03:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>An interesting read like always, thanks you for continuing to publish quality material. Coincidentally, Chris Parker published an extensive post about the same subject just yesterday. It&#39;s aimed at a bit more junior readers than your visitors probably, but still interesting as another take on the subject: https://www.networkfuntimes.com/youre-probably-using-the-term-mpls-wrong/</p>
+
+<p>Kind regards,
+Jaap de Vos</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1140">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1140" href="#1140">06 April 2022 05:27</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for the link, added a footnote. </p>
+
+<p>On a &quot;there really are no coincidences in this world&quot; note, I&#39;ve seen his blog post this morning, emailed myself a link so I won&#39;t forget to add it, and went climbing. When I got back home, I had three pointers to Chris&#39; blog post in various places ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1146">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Mark</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1146" href="#1146">08 April 2022 03:09</a>
+              </span>
+            </div>
+            <div class="comment-content">Great article as always : -)<br />
+
+<p>My take. Different technologies for different times. MPLS had its time and is still relevant in the core but it has no relevance at the Enterprise Edge.</p>
+
+<p>MPLS was dressed up as an L3VPN (2547 anyone?) and successfully sold to enterprises for 20+ years. SD-WAN (at least 1), supersedes anything that L3VPN has to offer. I&#39;ll start with first-mile protection i.e. SD-WAN from the branch, vs MPLS from the PE/POP!</p>
+
+<p>Sorry to say but if MPLS, as an enterprise offering, were a dinosaur then MPLS is Chicxulub T+ several years. The Enterprise version of the MPLS sun has well and truly set.</p>
+
+<p>P.s. I believe Ed Sheeran as did the judge this week ;-)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1144">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">4g1vn</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1144" href="#1144">07 April 2022 05:01</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&#39;m torn on this subject and still have much love for MPLS. I see modern day use cases (SP, large enterprise, etc), but also see MPLS as evolving into something like EVPN in the future. That said, the DP side of MPLS is still a very elegant and ubiquitous solution. The CP side of MPLS is moving towards SR which is very positive trend. I predict that MPLS will still be a major part of transport networks for the next 5-8 years.</p>
+
+<p>Great article! </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1149">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Kristoffer  Björk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1149" href="#1149">08 April 2022 06:41</a>
+              </span>
+            </div>
+            <div class="comment-content">I think Joe Nevilles tweet was related to Aruba cx MPLS support: https://twitter.com/joeneville_/status/1509521528563642372?t=t7F_tM8OT8v1Xsfrxha1iw&amp;s=19<br />
+
+
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

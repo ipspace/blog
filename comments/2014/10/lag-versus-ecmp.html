@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>17 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ofer</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#852160569330890707">06 October 2014 10:09</a>
+                <a rel="nofollow" id="c852160569330890707" href="#852160569330890707">06 October 2014 10:09</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />- LAG has means to utilise BFD. draft-mmm-bfd-on-lags is one of them...<br />- LAG has some finer control over its members with things like setting a threshold of active members before failing the whole bundle (AKA minimum-links)<br />- LAG work across same-speed members (1g/10g/etc) whereas ECMP doesn&#39;t have this requirement<br />- in more general note. LAG w/ LACP is stateful (from the LAG POV, not the the member POV). ECMP is stateless in this sense. hence, adding/removing links from a LAG is communicated to the other end.<br /> </p>
+            <div class="comment-content">Hi Ivan,<br /><br />- LAG has means to utilise BFD. draft-mmm-bfd-on-lags is one of them...<br />- LAG has some finer control over its members with things like setting a threshold of active members before failing the whole bundle (AKA minimum-links)<br />- LAG work across same-speed members (1g/10g/etc) whereas ECMP doesn&#39;t have this requirement<br />- in more general note. LAG w/ LACP is stateful (from the LAG POV, not the the member POV). ECMP is stateless in this sense. hence, adding/removing links from a LAG is communicated to the other end.<br /> </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1904889729590579844">06 October 2014 12:47</a>
+                <a rel="nofollow" id="c1904889729590579844" href="#1904889729590579844">06 October 2014 12:47</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ofer,<br /><br />* BFD-over-LAG: any implementations you&#39;re aware of out there?<br /><br />* ECMP over non equal-speed members - don&#39;t do it unless you&#39;re absolutely sure about what you&#39;re doing and why (not to mention that you&#39;d need to tweak routing protocol metrics to get it to work).<br /><br />* You could also claim that ECMP is stateful - after all, the addition/removal of links is signaled through routing protocols ;)</p>
+            <div class="comment-content">Hi Ofer,<br /><br />* BFD-over-LAG: any implementations you&#39;re aware of out there?<br /><br />* ECMP over non equal-speed members - don&#39;t do it unless you&#39;re absolutely sure about what you&#39;re doing and why (not to mention that you&#39;d need to tweak routing protocol metrics to get it to work).<br /><br />* You could also claim that ECMP is stateful - after all, the addition/removal of links is signaled through routing protocols ;)</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07476284863322852668" rel="nofollow">WildSubnet</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3282183806669505638">06 October 2014 17:14</a>
+                <a rel="nofollow" id="c3282183806669505638" href="#3282183806669505638">06 October 2014 17:14</a>
               </span>
             </div>
-            <p class="comment-content">Juniper calls it micro-bfd and it is supported starting with Junos 13.3.<br /><br />http://www.juniper.net/documentation/en_US/junos13.3/topics/concept/bfd-for-lag-overview.html</p>
+            <div class="comment-content">Juniper calls it micro-bfd and it is supported starting with Junos 13.3.<br /><br />http://www.juniper.net/documentation/en_US/junos13.3/topics/concept/bfd-for-lag-overview.html</div>
           </div>
         </li>
       </div>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/14639238377837022940" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4889789222134078996">14 October 2014 19:42</a>
+                <a rel="nofollow" id="c4889789222134078996" href="#4889789222134078996">14 October 2014 19:42</a>
               </span>
             </div>
-            <p class="comment-content">- Alcatel-Lucent&#39;s 7x50 routers have BFD for LAG since last year (11.0R5)<br />- multi-speed LAG is also supported since this year, mixing 10/100GE in a single lag, there is no need for tweaking routing protocols. the 100GE links just get a &#39;weight&#39; x10 in the hashing algorithm. Useful if you want to grow expensive BW granularly<br />- LAG vs. ECMP: next to the obvious IGP scaling issue with // IP links,LAG supports fate-sharing between member-links using port-thresholds (LAG fails if min nr of member-links fail) - useful to avoid congestion. Not trivial with ECMP over IP links</p>
+            <div class="comment-content">- Alcatel-Lucent&#39;s 7x50 routers have BFD for LAG since last year (11.0R5)<br />- multi-speed LAG is also supported since this year, mixing 10/100GE in a single lag, there is no need for tweaking routing protocols. the 100GE links just get a &#39;weight&#39; x10 in the hashing algorithm. Useful if you want to grow expensive BW granularly<br />- LAG vs. ECMP: next to the obvious IGP scaling issue with // IP links,LAG supports fate-sharing between member-links using port-thresholds (LAG fails if min nr of member-links fail) - useful to avoid congestion. Not trivial with ECMP over IP links</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5626639926828890522">06 October 2014 13:26</a>
+                <a rel="nofollow" id="c5626639926828890522" href="#5626639926828890522">06 October 2014 13:26</a>
               </span>
             </div>
-            <p class="comment-content">LAG failure detection:<br />1. There is a RFC http://tools.ietf.org/html/rfc7130 BFD for LAG.<br />2. As i understand, Cisco Nexus can implement BFD for LAG. IOS will create BFD session for each link. http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5500/sw/interfaces/6x/b_5500_Interfaces_Config_Guide_Release_6x/b_5500_Interfaces_Config_Guide_Release_6x_chapter_0110.html#concept_0B1573CB2DE248338D6EF32C62FC904D<br />3. Also, you can configure Single-hop BFD session and associate it with interface status.<br /><br />Load balance:<br />The main problem is to load balance fat L2VPN in service provider network.<br />1. There is a &quot;Flow-Aware Transport of Pseudowires over an MPLS Packet Switched Network&quot; rfc6391 for ECMP<br />2. And for LAG &quot;The Use of Entropy Labels in MPLS Forwarding&quot; rfc6790 can be used. <br />3. Also, some high-end devices can &quot;look&quot; inside L2VPN and load-balance traffic using customer SMAC/DMAC/SIP/DIP for LAG load-balancing.<br /><br />P.S. Price for 100GE interfaces getting lower each year :)</p>
+            <div class="comment-content">LAG failure detection:<br />1. There is a RFC http://tools.ietf.org/html/rfc7130 BFD for LAG.<br />2. As i understand, Cisco Nexus can implement BFD for LAG. IOS will create BFD session for each link. http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5500/sw/interfaces/6x/b_5500_Interfaces_Config_Guide_Release_6x/b_5500_Interfaces_Config_Guide_Release_6x_chapter_0110.html#concept_0B1573CB2DE248338D6EF32C62FC904D<br />3. Also, you can configure Single-hop BFD session and associate it with interface status.<br /><br />Load balance:<br />The main problem is to load balance fat L2VPN in service provider network.<br />1. There is a &quot;Flow-Aware Transport of Pseudowires over an MPLS Packet Switched Network&quot; rfc6391 for ECMP<br />2. And for LAG &quot;The Use of Entropy Labels in MPLS Forwarding&quot; rfc6790 can be used. <br />3. Also, some high-end devices can &quot;look&quot; inside L2VPN and load-balance traffic using customer SMAC/DMAC/SIP/DIP for LAG load-balancing.<br /><br />P.S. Price for 100GE interfaces getting lower each year :)</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Bhargav</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4189921395916175609">06 October 2014 16:06</a>
+                <a rel="nofollow" id="c4189921395916175609" href="#4189921395916175609">06 October 2014 16:06</a>
               </span>
             </div>
-            <p class="comment-content">ECMP provides better control of traffic than LAG. For example, it is easy to implement TE using say PBR with ECMP than with LAG.</p>
+            <div class="comment-content">ECMP provides better control of traffic than LAG. For example, it is easy to implement TE using say PBR with ECMP than with LAG.</div>
           </div>
         </li>
       </div>
@@ -135,10 +130,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://packetpushers.net" rel="nofollow">Steven iveson</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8262464935604078019">06 October 2014 22:22</a>
+                <a rel="nofollow" id="c8262464935604078019" href="#8262464935604078019">06 October 2014 22:22</a>
               </span>
             </div>
-            <p class="comment-content">I wonder, using either, does the hashing/balancing adjust if one link becomes 100% utilised and the other has spare capacity?</p>
+            <div class="comment-content">I wonder, using either, does the hashing/balancing adjust if one link becomes 100% utilised and the other has spare capacity?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6975998635203989729">07 October 2014 07:58</a>
+                <a rel="nofollow" id="c6975998635203989729" href="#6975998635203989729">07 October 2014 07:58</a>
               </span>
             </div>
-            <p class="comment-content">That would be ideal, but I don&#39;t think many switches do that.</p>
+            <div class="comment-content">That would be ideal, but I don&#39;t think many switches do that.</div>
           </div>
         </li>
       </div>
@@ -172,10 +167,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6163944577310656012">07 October 2014 07:59</a>
+                <a rel="nofollow" id="c6163944577310656012" href="#6163944577310656012">07 October 2014 07:59</a>
               </span>
             </div>
-            <p class="comment-content">I haven&#39;t encountered any product that will. Hashing is done in hardware so software doesn&#39;t actively look at it.</p>
+            <div class="comment-content">I haven&#39;t encountered any product that will. Hashing is done in hardware so software doesn&#39;t actively look at it.</div>
           </div>
         </li>
       </div>
@@ -190,10 +185,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8995581990252914097">07 October 2014 14:45</a>
+                <a rel="nofollow" id="c8995581990252914097" href="#8995581990252914097">07 October 2014 14:45</a>
               </span>
             </div>
-            <p class="comment-content">Will not this move a flow from one link to another and hence packet re-order ?</p>
+            <div class="comment-content">Will not this move a flow from one link to another and hence packet re-order ?</div>
           </div>
         </li>
       </div>
@@ -208,10 +203,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5515184934980641298">07 October 2014 15:37</a>
+                <a rel="nofollow" id="c5515184934980641298" href="#5515184934980641298">07 October 2014 15:37</a>
               </span>
             </div>
-            <p class="comment-content">You have to be careful - move the flow bucket when it&#39;s idle (search for &quot;flowlets&quot; for more details).</p>
+            <div class="comment-content">You have to be careful - move the flow bucket when it&#39;s idle (search for &quot;flowlets&quot; for more details).</div>
           </div>
         </li>
       </div>
@@ -226,10 +221,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1627626585104515725">08 October 2014 11:40</a>
+                <a rel="nofollow" id="c1627626585104515725" href="#1627626585104515725">08 October 2014 11:40</a>
               </span>
             </div>
-            <p class="comment-content">Juniper&#39;s MX routers implement adaptive load balancing for LAGs based on periodic monitoring of load on LAG members:<br />http://www.juniper.net/documentation/en_US/junos13.3/topics/concept/load-balance-technique-overview.html<br /><br />Packet re-ordering is an issue only if it is persistent. Protocols and applications are typically resilient to an occasional reordered packet. </p>
+            <div class="comment-content">Juniper&#39;s MX routers implement adaptive load balancing for LAGs based on periodic monitoring of load on LAG members:<br />http://www.juniper.net/documentation/en_US/junos13.3/topics/concept/load-balance-technique-overview.html<br /><br />Packet re-ordering is an issue only if it is persistent. Protocols and applications are typically resilient to an occasional reordered packet. </div>
           </div>
         </li>
       </div>
@@ -251,10 +246,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Johannes</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9201392198479217662">07 October 2014 09:00</a>
+                <a rel="nofollow" id="c9201392198479217662" href="#9201392198479217662">07 October 2014 09:00</a>
               </span>
             </div>
-            <p class="comment-content">Under failure detection I would also mention, that there are direct link failures as well (and I guess these are more common). Then BFD routing protocol timers or (fast) LACP are not relevant any more.</p>
+            <div class="comment-content">Under failure detection I would also mention, that there are direct link failures as well (and I guess these are more common). Then BFD routing protocol timers or (fast) LACP are not relevant any more.</div>
           </div>
         </li>
       </div>
@@ -269,10 +264,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8687166196911824318">07 October 2014 09:51</a>
+                <a rel="nofollow" id="c8687166196911824318" href="#8687166196911824318">07 October 2014 09:51</a>
               </span>
             </div>
-            <p class="comment-content">Hi - <br /><br />How about ECMP using layer-3 LAGs ? Does that provide the most options for failure detection?<br /><br />Thanks, </p>
+            <div class="comment-content">Hi - <br /><br />How about ECMP using layer-3 LAGs ? Does that provide the most options for failure detection?<br /><br />Thanks, </div>
           </div>
         </li>
       </div>
@@ -287,10 +282,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16624364305631732952" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#675636436838388814">14 October 2014 08:20</a>
+                <a rel="nofollow" id="c675636436838388814" href="#675636436838388814">14 October 2014 08:20</a>
               </span>
             </div>
-            <p class="comment-content">I prefer ECMP over lag.  So much easier to configure a lag than 1000 ecmp links.</p>
+            <div class="comment-content">I prefer ECMP over lag.  So much easier to configure a lag than 1000 ecmp links.</div>
           </div>
         </li>
       </div>
@@ -305,10 +300,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09571175342652550804" rel="nofollow">DuaneO</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1439807272092868744">17 October 2014 17:17</a>
+                <a rel="nofollow" id="c1439807272092868744" href="#1439807272092868744">17 October 2014 17:17</a>
               </span>
             </div>
-            <p class="comment-content">We needed to include SRLG to get ECMP to the same ~feature set as LAG (w XR fast LACP hellos or per member bfd).</p>
+            <div class="comment-content">We needed to include SRLG to get ECMP to the same ~feature set as LAG (w XR fast LACP hellos or per member bfd).</div>
           </div>
         </li>
       </div>
@@ -323,10 +318,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09195847685567850005" rel="nofollow">Nedsky</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9094718573548541752">30 September 2015 18:10</a>
+                <a rel="nofollow" id="c9094718573548541752" href="#9094718573548541752">30 September 2015 18:10</a>
               </span>
             </div>
-            <p class="comment-content">considering qos (llq, cbwfq, wred) - is it easier on LAG or ECMP?</p>
+            <div class="comment-content">considering qos (llq, cbwfq, wred) - is it easier on LAG or ECMP?</div>
           </div>
         </li>
       </div>

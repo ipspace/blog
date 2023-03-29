@@ -1,0 +1,80 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "09 November 2022 05:35",
+               "html": "<p>... and you gave me a topic for another blog post ;) Thank you!</p>\n\n<p>Long story short:</p>\n\n<ul>\n<li>You still need LACP, EVPN is a PE-PE control-plane protocol, there&#39;s no change on the PE-CE side.</li>\n<li>I found an article (and lost a link to it) saying EVPN is much slower than traditional MLAG, but I see no reason why that would be the case unless you&#39;re dealing with a broken implementation.</li>\n</ul>\n",
+               "id": "1495",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-11-09T17:35:35",
+               "ref": "1494",
+               "type": "comment"
+            }
+         ],
+         "date": "09 November 2022 02:16",
+         "html": "<p>Thanks! This answer some questions I&#39;ve had for a long time.</p>\n\n<p>The other question I have had is how does failover speed compare when a link is lost in EVPN ESI MLAG versus LACP? And is there a control mechanism to detect a bad link that still has link status but is not forwarding like the LACP heartbeats?</p>\n",
+         "id": "1494",
+         "name": " AW",
+         "pub": "2022-11-09T14:16:57",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "10 November 2022 01:10",
+               "html": "<p>JunOS also implements ECMP with underlay/overlay networks. I think all vendors have some working implementation of this. Not sure why Ivan isn&#39;t aware of that.</p>\n\n<p>JunOS adds multiple entries to a unilist, then an indirect next hop list, then finally a chained composite next hop list (when using EVPN-VXLAN).</p>\n\n<p>Most of the complaints in this blog are a non-issue.</p>\n",
+               "id": "1497",
+               "name": " DM",
+               "pub": "2022-11-10T01:10:12",
+               "ref": "1496",
+               "type": "comment"
+            },
+            {
+               "date": "10 November 2022 10:59",
+               "html": "<p>@DM: I believe that&#39;s true for MX/QFK10K/vMX/vQFX, but not for the older Trident2/2+/Tomahawk-based boxes (i.e. QFX5100/5110/5200). Afaik, those can only loadbalance in the underlay, not the overlay.</p>\n\n<p>See for example this (albeit older) whitepaper: https://www.juniper.net/documentation/en_US/release-independent/solutions/information-products/pathway-pages/lb-evpn-vxlan-tn.pdf</p>\n\n<p>Or this blog: https://danhearty.wordpress.com/2020/04/25/evpn-vxlan-virtual-gateway-qfx5k-forwarding/</p>\n",
+               "id": "1502",
+               "name": " Daniel",
+               "pub": "2022-11-10T10:59:41",
+               "ref": "1497",
+               "type": "comment"
+            },
+            {
+               "date": "10 November 2022 04:53",
+               "html": "<p>@Daniel/Ivan I believe those assumptions are outdated.</p>\n\n<p>See release notes at bottom of this page:\nhttps://www.juniper.net/documentation/us/en/software/junos/evpn-vxlan/topics/concept/evpn-vxlan-dynamic-load-balancing.html</p>\n",
+               "id": "1504",
+               "name": " DM",
+               "pub": "2022-11-10T16:53:01",
+               "ref": "1502",
+               "type": "comment"
+            },
+            {
+               "date": "10 November 2022 09:16",
+               "html": "<p>Thank you both. Rewrote the blog post based on your comments.</p>\n\n<p>@DM: I&#39;m positive MX works as described. I remain skeptical about the older Broadcom ASICs, but whatever.</p>\n",
+               "id": "1501",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-11-10T09:16:43",
+               "ref": "1497",
+               "type": "comment"
+            }
+         ],
+         "date": "09 November 2022 05:58",
+         "html": "<p>&quot;However, the forwarding hardware limitations require anycast VTEP IP addresses&quot;</p>\n\n<p>I can&#39;t comment on how other implementations work, but FRR/Cumulus implementation of MAC-ECMP does not fallback on anycast.\nWhat you said about forwarding hardware requiring a single destination for a MAC is accurate, but their implementation achieves MAC-ECMP by pointing the fdb entry (mac) at single destination that is an ECMP container holding the VTEP address of each member of the remote ESI rather than pointing to a single VTEP address.</p>\n\n<p>In Linux, the ECMP container is implemented using &quot;nexthop&quot; objects (one nexthop &quot;group&quot; pointing to several nexthop entries).\nFRR populates an ES cache based on &quot;per ES&quot; Type-1 routes, which maintains a list of active VTEP addresses per ESI. One NHG is allocated in the kernel per known ESI and one NHE is allocated per active VTEP. When a MAC is learned via the remote ESI, the VXLAN driver&#39;s fdb entry points to the ID of the nexthop group (&quot;nhid&quot;) for a hash lookup to select which underlay DIP will be used.</p>\n\n<p>In Mellanox ASICs the same principle applies - an ECMP container is allocated based on the kernel NHG and it contains underlay VTEP addresses. So the hardware fdb points to the ECMP container to select a remote underlay DIP for the VXLAN tunnel (not anycast) and then the encapsulated packet goes through the route lookup based on the DIP returned by the ECMP hash lookup.</p>\n",
+         "id": "1496",
+         "name": " TA",
+         "pub": "2022-11-09T17:58:42",
+         "type": "comment"
+      },
+      {
+         "date": "10 November 2022 03:13",
+         "html": "<p>Significant cost uplift to license switches to build EVPN DC fabric as compared to MLAG which is base feature on any DC class switch.</p>\n",
+         "id": "1498",
+         "name": " Jeff Behrns",
+         "pub": "2022-11-10T03:13:23",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2022/11/mlag-vxlan-evpn.html"
+}

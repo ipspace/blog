@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5584002837560844766">14 November 2018 12:07</a>
+                <a rel="nofollow" id="c5584002837560844766" href="#5584002837560844766">14 November 2018 12:07</a>
               </span>
             </div>
-            <p class="comment-content">Thought that containers were originally developed for specific functions (micro services, distributed systems comes to mind) not server virtualization. So it&#39;s the &quot;right tool for the right job&quot; problem.</p>
+            <div class="comment-content">Thought that containers were originally developed for specific functions (micro services, distributed systems comes to mind) not server virtualization. So it&#39;s the &quot;right tool for the right job&quot; problem.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9019411257786245573">14 November 2018 12:22</a>
+                <a rel="nofollow" id="c9019411257786245573" href="#9019411257786245573">14 November 2018 12:22</a>
               </span>
             </div>
-            <p class="comment-content">When everyone is talking about shiny new hammers, all your problems start to resemble nails... ;)</p>
+            <div class="comment-content">When everyone is talking about shiny new hammers, all your problems start to resemble nails... ;)</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6509837212119550903">14 November 2018 12:51</a>
+                <a rel="nofollow" id="c6509837212119550903" href="#6509837212119550903">14 November 2018 12:51</a>
               </span>
             </div>
-            <p class="comment-content">... which you could all knock in at a single blow :D gorgeous!</p>
+            <div class="comment-content">... which you could all knock in at a single blow :D gorgeous!</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5809141278194785882">14 November 2018 15:25</a>
+                <a rel="nofollow" id="c5809141278194785882" href="#5809141278194785882">14 November 2018 15:25</a>
               </span>
             </div>
-            <p class="comment-content">Well, to be honest, the (A) problem is not that difficult to solve. Just connect your containers to IPVLAN/MACVLAN interfaces and all of a sudden you factored out all possible virtual NATs and bridges. The (B) problem is also easy. The current generation of VNFs are simply BNFs (physical servers) wrapped as VMs, so they will use the same service discovery mechanism they used before, which usually is statically assigned IPs with maybe something like DNS SRV on top, but again nothing new and definitely not container-native service discovery. The (C) problem is solvable with a combination of SR-IOV, MACVLAN and DPDK inside the container or various smart NICs with hardware offloads.<br />In my experience, the biggest issue with the whole VNF story is that they still use the same (legacy) assumptions and HA mechanisms they did in the baremetal world. So things like VRRP between container/VMs is a common thing. One of the worst things you can see though is some dataplane VNFs requiring dynamic routing peering with the network underlay. Think OSPF+BFD with BGP on top that need to peer with your TOR switch. In the end, after you&#39;ve satisfied all their requirements, the VNF gets pinned to a single server, which effectively turns it back into a baremetal NF, with a few intermediate container and VM layers in between. Let&#39;s call this 5G.</p>
+            <div class="comment-content">Well, to be honest, the (A) problem is not that difficult to solve. Just connect your containers to IPVLAN/MACVLAN interfaces and all of a sudden you factored out all possible virtual NATs and bridges. The (B) problem is also easy. The current generation of VNFs are simply BNFs (physical servers) wrapped as VMs, so they will use the same service discovery mechanism they used before, which usually is statically assigned IPs with maybe something like DNS SRV on top, but again nothing new and definitely not container-native service discovery. The (C) problem is solvable with a combination of SR-IOV, MACVLAN and DPDK inside the container or various smart NICs with hardware offloads.<br />In my experience, the biggest issue with the whole VNF story is that they still use the same (legacy) assumptions and HA mechanisms they did in the baremetal world. So things like VRRP between container/VMs is a common thing. One of the worst things you can see though is some dataplane VNFs requiring dynamic routing peering with the network underlay. Think OSPF+BFD with BGP on top that need to peer with your TOR switch. In the end, after you&#39;ve satisfied all their requirements, the VNF gets pinned to a single server, which effectively turns it back into a baremetal NF, with a few intermediate container and VM layers in between. Let&#39;s call this 5G.</div>
           </div>
         </li>
       </div>
@@ -99,10 +94,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03852194681637032116" rel="nofollow">Bruno Rijsman</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7571795544980944737">14 November 2018 15:29</a>
+                <a rel="nofollow" id="c7571795544980944737" href="#7571795544980944737">14 November 2018 15:29</a>
               </span>
             </div>
-            <p class="comment-content">Sure, it makes sense that doing things on commodity hardware is cheaper than doing things on bespoke hardware. But in practice, NFV purists in general (and Telcos in particular) often (incorrectly) translate this into &quot;everything should be done in software on general purpose CPUs&quot;. There are many things that can be done orders of magnitude more efficiently and cheaply in hardware specificically designed for that task rather than in general purpose hardware. Forwarding packets is an obvious example. Machine learning is a more recent one. That said, the non-general-purpose hardware designed specifically for the task can still be commodity. &quot;Commodity hardware&quot; does not necessarily imply &quot;general purpose CPUs&quot;.</p>
+            <div class="comment-content">Sure, it makes sense that doing things on commodity hardware is cheaper than doing things on bespoke hardware. But in practice, NFV purists in general (and Telcos in particular) often (incorrectly) translate this into &quot;everything should be done in software on general purpose CPUs&quot;. There are many things that can be done orders of magnitude more efficiently and cheaply in hardware specificically designed for that task rather than in general purpose hardware. Forwarding packets is an obvious example. Machine learning is a more recent one. That said, the non-general-purpose hardware designed specifically for the task can still be commodity. &quot;Commodity hardware&quot; does not necessarily imply &quot;general purpose CPUs&quot;.</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01395217775195260835" rel="nofollow">Wes Felter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7525108891426345766">14 November 2018 23:32</a>
+                <a rel="nofollow" id="c7525108891426345766" href="#7525108891426345766">14 November 2018 23:32</a>
               </span>
             </div>
-            <p class="comment-content">Just use carrier-grade k8s with a /24 of public IPs on each host!</p>
+            <div class="comment-content">Just use carrier-grade k8s with a /24 of public IPs on each host!</div>
           </div>
         </li>
       </div>

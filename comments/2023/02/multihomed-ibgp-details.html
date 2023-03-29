@@ -1,0 +1,129 @@
+<div class="comments post" id="comments">
+  <h4>3 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1685">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1685" href="#1685">28 February 2023 08:13</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It depends if your southbound devices (often firewalls) support routing protocols (preferably BGP). Most enterprises use static routing on WAN edge. So you&#39;ll have to use FHRP on your CE routers. <br />
+Also you can&#39;t assume that the default route from your service providers is somewhat reliable. There&#39;s no default route in the internet (hence the name default-free zone). You&#39;ll have to do your own tracking e. g. pinging multiple external destinations. <br />
+Normally you don&#39;t need full BGP table. Just filter AS numbers &quot;directly&quot; connected to your service provider (one AS away) and run IBGP session (direct links or BFD) between CE routers to get some more &quot;direct&quot; external routing. All other traffic you catch with your tracked default route. This has also the benefit of comparing peerings between your service providers. Also your routing convergence is much faster.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1687">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1687" href="#1687">01 March 2023 06:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you, you&#39;re absolutely right. Added a note.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1686">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> E</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1686" href="#1686">28 February 2023 10:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I have isps that act as bgp peer with transit, but the default route they feed me is static... Had to setup path monitoring for fail over (python cron) after a CE blackholed my traffic on a beautiful Tuesday morning... </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1689">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> A random guy</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1689" href="#1689">02 March 2023 10:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It doesn&#39;t sound correct:</p>
+
+<p>&quot;You need a static default route pointing towards the second CE with a metric inferior to the route installed by EBGP for failover purpose.&quot;</p>
+
+<p>Wouldn&#39;t it be more like this? :</p>
+
+<p>&quot;You need a static default route pointing towards the second CE with A LESS PRIVILEGED ADMINISTRATIVE DISTANCE AND a LESS PRIVILEGED metric THAN the route installed by EBGP for failover purpose.&quot;</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1690">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1690" href="#1690">04 March 2023 10:17</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You&#39;re obviously correct. Added a note. Thank you!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

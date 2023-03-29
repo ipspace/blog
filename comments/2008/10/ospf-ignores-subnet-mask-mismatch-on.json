@@ -1,107 +1,123 @@
 {
-  "comments": [
-    {
-      "date": "16 October 2008 18:22",
-      "html": "Of course, if you're really interested in punishing yourself with exotic OSPF behavior, setting the OSPF network type to point-to-point will allow you to form mismatched adjacencies across multiaccess interfaces.",
-      "id": "6001002744912815359",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Jay Swan",
-      "profile": "https://www.blogger.com/profile/02571029118821999072",
-      "pub": "2008-10-16T18:22:00.000+02:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    },
-    {
-      "date": "16 October 2008 18:50",
-      "html": "What can I say ... your mind is even more devious than mine :D",
-      "id": "926406823501050718",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Ivan Pepelnjak",
-      "profile": "https://www.blogger.com/profile/13457151406311272386",
-      "pub": "2008-10-16T18:50:00.000+02:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    },
-    {
-      "date": "17 October 2008 04:17",
-      "html": "@je: It has been done already -- http://blog.internetworkexpert.com/2008/01/08/understanding-ospf-network-types/  :)<BR/><BR/>@ivan: Btw, netmask ignorance in case of adj formation over ptp-ifaces is clearly documented in ... (God forbid! :) big-J-vendor courseware.<BR/><BR/>Btw, the next step would be to mix numbered/unnumbered ifaces but.. *UNFORTUNATELY* it's prohibited. :)",
-      "id": "948517940233695248",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "uri",
-      "profile": "https://www.blogger.com/profile/13608771699731629666",
-      "pub": "2008-10-17T04:17:00.000+02:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    },
-    {
-      "date": "22 July 2009 17:10",
-      "html": "Hi Ivan, I&#39;ve got this situation, we have E1 with pvdm2-36dm to terminate branch dial connection. This pvdm works as async interfaces... while we have over than 50 branches we only have 31 lines available on E1, thus the point to point addressing will be assigned by dialing branch. Up to this point it&#39;s okay but the mask is /32, while HQ needs to understand branch&#39; lan segment through routing protocol. The adjacency just won&#39;t come up due to the mismatched mask. Please help... what can I do in this situation.",
-      "id": "2558333612456332008",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Guest",
-      "profile": null,
-      "pub": "2009-07-22T17:10:51.000+02:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    },
-    {
-      "date": "25 July 2009 19:11",
-      "html": "It might be easiest to use unnumbered dialup interfaces.",
-      "id": "6048993275435539521",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ivan Pepelnjak",
-      "profile": null,
-      "pub": "2009-07-25T19:11:57.000+02:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    },
-    {
-      "date": "31 January 2013 08:56",
-      "html": "hello Ivan, <br /><br />I have some inconsistent behavior with ospf adjacencies which are established over links with mismatches masks. I have issues with ospf installing routes which are learned over an adjacency as described above, any ideas?<br /><br />thanks<br />max",
-      "id": "5892185399067969984",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Max",
-      "profile": null,
-      "pub": "2013-01-31T08:56:26.398+01:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    },
-    {
-      "date": "04 May 2013 00:05",
-      "html": "Watch out for the JunOS interpretation of the standard. <br /><br />http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB23533<br /><br />Section 1.2 of RFC 2328 defines point-to-points as.... &quot;Point-to-point networks:  A network that joins a single pair of routers.  A 56Kb serial line is an example of a point-to-point network.&quot;<br /><br />However Juniper seems to enforce mask checks for &#39;ethernet&#39; point-to-point network types.   That&#39;s a bummer because Quagga likes to set the Mask to 0.0.0.0 on point-to-pont adjacencies. http://forums.juniper.net/t5/Junos-and-Junosphere/ospf-point-to-point-interface-type-on-ethernet/td-p/39375",
-      "id": "669543257904280291",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "John Harrington",
-      "profile": "https://www.blogger.com/profile/06899780831211846055",
-      "pub": "2013-05-04T00:05:11.798+02:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    },
-    {
-      "date": "25 June 2013 03:41",
-      "html": "I test this on GNS3 and it&#39;s correct HOWEVER, you will still get a network mismatch if both devices do not believe the remote side is in the same network. Try this:<br />R1:<br />interface Serial0/0<br /> ip address 192.168.1.5 255.255.255.252<br /> ip ospf network point-to-point<br />!<br />router ospf 1<br /> log-adjacency-changes<br /> network 192.168.1.0 0.0.0.255 area 0<br /> neighbor 192.168.1.2<br />!<br />ip route 192.168.1.2 255.255.255.255 Serial0/0<br /><br />R2:<br />interface Serial0/0<br /> ip address 192.168.1.2 255.255.255.252<br /> ip ospf network point-to-point<br />!<br />router ospf 1<br /> log-adjacency-changes<br /> network 192.168.1.0 0.0.0.255 area 0<br /> neighbor 192.168.1.5<br />!<br />ip route 192.168.1.5 255.255.255.255 Serial0/0<br /><br />You will still see:<br />*Mar  1 00:34:24.471: OSPF: Rcv pkt from 192.168.1.5, Serial0/0, area 0.0.0.0 : src not on the same network",
-      "id": "929809516431304775",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/15082471006972767928",
-      "pub": "2013-06-25T03:41:50.975+02:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    },
-    {
-      "date": "26 November 2013 16:44",
-      "html": "<br />Thanks Ivan- do you know the reason for this exception...",
-      "id": "8081213075919296341",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/14834263802415925861",
-      "pub": "2013-11-26T16:44:59.884+01:00",
-      "ref": "4064180282664775012",
-      "type": "comment"
-    }
-  ],
-  "count": 9,
-  "id": "4064180282664775012",
-  "type": "post",
-  "url": "2008/10/ospf-ignores-subnet-mask-mismatch-on.html"
+   "comments": [
+      {
+         "date": "16 October 2008 18:22",
+         "html": "Of course, if you're really interested in punishing yourself with exotic OSPF behavior, setting the OSPF network type to point-to-point will allow you to form mismatched adjacencies across multiaccess interfaces.",
+         "id": "6001002744912815359",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Jay Swan",
+         "profile": "https://www.blogger.com/profile/02571029118821999072",
+         "pub": "2008-10-16T18:22:00.000+02:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "16 October 2008 18:50",
+         "html": "What can I say ... your mind is even more devious than mine :D",
+         "id": "926406823501050718",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Ivan Pepelnjak",
+         "profile": "https://www.blogger.com/profile/13457151406311272386",
+         "pub": "2008-10-16T18:50:00.000+02:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "17 October 2008 04:17",
+         "html": "@je: It has been done already -- http://blog.internetworkexpert.com/2008/01/08/understanding-ospf-network-types/  :)<BR/><BR/>@ivan: Btw, netmask ignorance in case of adj formation over ptp-ifaces is clearly documented in ... (God forbid! :) big-J-vendor courseware.<BR/><BR/>Btw, the next step would be to mix numbered/unnumbered ifaces but.. *UNFORTUNATELY* it's prohibited. :)",
+         "id": "948517940233695248",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "uri",
+         "profile": "https://www.blogger.com/profile/13608771699731629666",
+         "pub": "2008-10-17T04:17:00.000+02:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "22 July 2009 17:10",
+         "html": "Hi Ivan, I&#39;ve got this situation, we have E1 with pvdm2-36dm to terminate branch dial connection. This pvdm works as async interfaces... while we have over than 50 branches we only have 31 lines available on E1, thus the point to point addressing will be assigned by dialing branch. Up to this point it&#39;s okay but the mask is /32, while HQ needs to understand branch&#39; lan segment through routing protocol. The adjacency just won&#39;t come up due to the mismatched mask. Please help... what can I do in this situation.",
+         "id": "2558333612456332008",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Guest",
+         "profile": null,
+         "pub": "2009-07-22T17:10:51.000+02:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "25 July 2009 19:11",
+         "html": "It might be easiest to use unnumbered dialup interfaces.",
+         "id": "6048993275435539521",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ivan Pepelnjak",
+         "profile": null,
+         "pub": "2009-07-25T19:11:57.000+02:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "31 January 2013 08:56",
+         "html": "hello Ivan, <br /><br />I have some inconsistent behavior with ospf adjacencies which are established over links with mismatches masks. I have issues with ospf installing routes which are learned over an adjacency as described above, any ideas?<br /><br />thanks<br />max",
+         "id": "5892185399067969984",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Max",
+         "profile": null,
+         "pub": "2013-01-31T08:56:26.398+01:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "04 May 2013 00:05",
+         "html": "Watch out for the JunOS interpretation of the standard. <br /><br />http://kb.juniper.net/InfoCenter/index?page=content&amp;id=KB23533<br /><br />Section 1.2 of RFC 2328 defines point-to-points as.... &quot;Point-to-point networks:  A network that joins a single pair of routers.  A 56Kb serial line is an example of a point-to-point network.&quot;<br /><br />However Juniper seems to enforce mask checks for &#39;ethernet&#39; point-to-point network types.   That&#39;s a bummer because Quagga likes to set the Mask to 0.0.0.0 on point-to-pont adjacencies. http://forums.juniper.net/t5/Junos-and-Junosphere/ospf-point-to-point-interface-type-on-ethernet/td-p/39375",
+         "id": "669543257904280291",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "John Harrington",
+         "profile": "https://www.blogger.com/profile/06899780831211846055",
+         "pub": "2013-05-04T00:05:11.798+02:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "25 June 2013 03:41",
+         "html": "I test this on GNS3 and it&#39;s correct HOWEVER, you will still get a network mismatch if both devices do not believe the remote side is in the same network. Try this:<br />R1:<br />interface Serial0/0<br /> ip address 192.168.1.5 255.255.255.252<br /> ip ospf network point-to-point<br />!<br />router ospf 1<br /> log-adjacency-changes<br /> network 192.168.1.0 0.0.0.255 area 0<br /> neighbor 192.168.1.2<br />!<br />ip route 192.168.1.2 255.255.255.255 Serial0/0<br /><br />R2:<br />interface Serial0/0<br /> ip address 192.168.1.2 255.255.255.252<br /> ip ospf network point-to-point<br />!<br />router ospf 1<br /> log-adjacency-changes<br /> network 192.168.1.0 0.0.0.255 area 0<br /> neighbor 192.168.1.5<br />!<br />ip route 192.168.1.5 255.255.255.255 Serial0/0<br /><br />You will still see:<br />*Mar  1 00:34:24.471: OSPF: Rcv pkt from 192.168.1.5, Serial0/0, area 0.0.0.0 : src not on the same network",
+         "id": "929809516431304775",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/15082471006972767928",
+         "pub": "2013-06-25T03:41:50.975+02:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "26 November 2013 16:44",
+         "html": "<br />Thanks Ivan- do you know the reason for this exception...",
+         "id": "8081213075919296341",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/14834263802415925861",
+         "pub": "2013-11-26T16:44:59.884+01:00",
+         "ref": "4064180282664775012",
+         "type": "comment"
+      },
+      {
+         "date": "14 December 2020 10:12",
+         "html": "<p>Hi there,   </p>\n\n<p>I am currently working on reverse-engineering an OSPF DB and think the reason for not been able to be on the same network for both ends of a numbered p2p link is the fact that otherwise any area&#39;s router cannot work out the plumbing if these two routers have parallel links. Let&#39;s in fact remember though that these interface ip addresses are just IDs for the interfaces (that are in fact always considered transit interfaces and thus never source or destination of the traffic) and are NOT routed since it is their equivalent stub link (i.e. network/mask) that is routed instead. <br />\nSo, say for example that router 1 has link id (i.e. numbered interface ip addresse) A and B, and Router 2 has links C and D, then how one can identify by looking at Type-1 LSA, that the connections are (A-C and B-D) or (A-D and B-C) ? <br />\nThis holds though for numbered p2p links ...but what about unnumbered p2p links ? Unnumbered p2p interfaces are not identified by their interfaces ip address but by their MIB ifindex. How can any router in the area work out the plumbing of parallel unnumbered P2P links between any two routers ? <br />\nThis very same doubt was expressed by Jitendra Sharma @ the very end of this blog https://packetpushers.net/ospf-graphs-lsas-and-the-lsdb/     </p>\n\n<p>Ciao <br />\nAndrea      </p>\n",
+         "id": "312",
+         "name": " andrea di donato",
+         "pub": "2020-12-14T10:12:51",
+         "type": "comment"
+      },
+      {
+         "date": "24 December 2020 12:11",
+         "html": "<p>Hi all, <br />\nForget my previous post - the question was ill-defined.   </p>\n\n<p>RFC 2328 says the following @ 16.1.2.b: <br />\n&quot; <br />\nLook up the vertex W&#39;s LSA (router-LSA or network-LSA) in Area A&#39;s link state database.  If the LSA does not exist, or its LS age is equal to MaxAge, or it does not have a link back to vertex V, examine the next link in V&#39;s LSA.[23] <br />\n&quot; <br />\nWith [23] being the following: <br />\n&quot; <br />\nNote that the presence of any link back to V is sufficient; it need not be the matching half of the link under consideration from V to W. This is enough to ensure that, before data traffic flows between a pair of neighboring routers, their link state databases will be synchronized. <br />\n&quot;  </p>\n\n<p>Well, this means that OSPF/SPF doesn&#39;t really care if between two routers, being router 1 (with p2p numbered interface A and B towards 2) and router 2 (with p2p numbered interfaces B and C towards 1) with the actual connectivity/plumbing being A-C and B-D, there is a situation where R1 advertises (as transit p2p) only A in its LSA1 while R2 advertises only D or both B and D in its LSA1 for some reason as long as there is some &lsquo;loose&rsquo; form of bi-directionality (i.e. not matching halves) which in this scenario it is indeed guaranteed since there are at least two working halves as such.  </p>\n\n<p>Regarding the mask/network mismatch check though and thus the actual subject of this blog post, I think the following holds true: <br />\nthis excerpt from RFC 2328 @ 2.1  that says the following: <br />\n&quot;\nInterfaces to point-to-point networks need not be assigned IP addresses.  When interface addresses are assigned, they are modeled as stub links, with each router advertising a stub connection to the other router&#39;s interface address. Optionally, an IP subnet can be assigned to the point-to-point network. In this case, both routers advertise a stub link to the IP subnet, instead of advertising each others&#39; IP interface addresses. <br />\n&quot;  </p>\n\n<p>So, it looks like that you can have the following possible scenarios:    </p>\n\n<ol>\n<li>/32 P2P numbered: <br />\n Each router advertising: <br />\n<ul>\n<li>A P2P connection to the other router ID (seen within the incoming helloes and advertised as Link ID) with their local \nIP as Link Data      </li>\n<li>A stub link to the other router&#39;s interface address (seen as the SRC IP of incoming Helloes)    </li>\n</ul></li>\n<li>P2P unnumbered: <br />\n<ul>\n<li>Each router advertising a P2P connection to the other router ID (seen within the incoming helloes and advertised \nas Link ID) with their local MIB Ifindex as Link Data       </li>\n</ul></li>\n<li>/N P2P numbered: <br />\nEach router advertising: <br />\n<ul>\n<li>A P2P connection to the other router ID (seen within the incoming helloes and advertised as Link ID) with their \nlocal IP as Link Data       </li>\n<li>A stub link to the IP subnet      </li>\n</ul></li>\n</ol>\n\n<p>In this latter and third case it looks like that at least IOS doesn&rsquo;t complain if there&rsquo;s a mask mismatch but it does complain if there&rsquo;s a network mismatch while JUNOS complains for both mismatches. The first gut feeling is that both of these matches are unnecessary since:  </p>\n\n<ul>\n<li>IP addresses in this case (i.e. P2P numbered) are just IDs and are not routed as such      </li>\n<li>We have just proved that there is no need for OSPF/SPF to work out the exact plumbing between \ntwo routers with parallel links as just any two halves would do. [note 23 @ RFC 2328]      </li>\n<li>There is no requirement for a next hop to have an ip address if the destination is a router which \nconnects to the calculating router via a p2p interface (RFC 2328 @ 16.1.1 )        </li>\n</ul>\n\n<p>Well, then, past the gut feeling, the only reasonable answer at this stage and after all these evidences to me is that there is an operational/practical requirement from the vendors whereby if you do decide (as it&rsquo;s optional) to assign a subnet to a transit link then that means you want that subnet to be consistent across the link and if it is not then it is considered broken and should be fixed (you could have misconfigured a mask and therefore that could trigger/expose an address overlap/clash to the routing for instance) and that means that the adjacency over that link is not gonna form and thus that transit link and its associated mismatched mask and/or networks are not gonna be available to Dijkstra for computing transit/topology routing and stub-networks routing.   </p>\n\n<p>Plus, to further validate the above-mentioned statement:    </p>\n\n<p>On a P2P numbered link the reason for a network mismatch check cannot be to guarantee a working environment to ARP (ARP works with a mask mismatch but not on a network mismatch) since on a p2p interface the reading of the src ip/mac of the incoming helloes does/replaces the ARP job.   </p>\n\n<p>On a P2P numbered link the reason for a network mismatch check cannot be the building of L3 NHs since there is no need for a L3 NH on a transit p2p link. The only NH needed is the L2/MAC NH and that is worked out by looking at the SRC MAC of the incoming helloes. This would be different if it was a transit network (LSA2 and thus broadcast network-type) rather than a transit link (LSA1 and thus p2p network-type). In the former case in fact any DROTHER would only see helloes coming in from the DR/BDR @ regime. So, in that case the interface ip address will have to be functional to discover the L2/MAC NH and therefore in that case a working ARP environment is mandatory in order to discover the L2/MAC NHs. I reckon in fact that the MAC/IP associations are guaranteed to be all discovered by just looking at the any-to-any helloes coming in during the DR election process as that has a dependency on a lucky timing.   </p>\n\n<p>Cheers/Ciao <br />\nAndrea  </p>\n",
+         "id": "331",
+         "name": "Andrea Di Donato",
+         "pub": "2020-12-24T12:11:31",
+         "type": "comment"
+      }
+   ],
+   "count": 11,
+   "id": "4064180282664775012",
+   "type": "post",
+   "url": "2008/10/ospf-ignores-subnet-mask-mismatch-on.html"
 }

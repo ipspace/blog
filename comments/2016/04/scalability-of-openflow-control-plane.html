@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03163134315872629405" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7672780517850296596">01 May 2016 01:03</a>
+                <a rel="nofollow" id="c7672780517850296596" href="#7672780517850296596">01 May 2016 01:03</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />Happy to sit down with you (are you at Interop?) and chat about this in person but I think there&#39;s a few things worth clarifying here:<br /><br />1) Dataplane to control plane policing is something that all switches and routers (not just OpenFlow switches and controllers) have to deal with.  This is one of the reasons why all well-implemented switches rate limit all data plane traffic that can cause load on the control plane (e.g., ICMP, IP options, routing protocol traffic, STP control traffic, etc.).  Most folks have war stories of &quot;they sent a lot of X traffic and then the supervisor CPU went to 100% and everything stopped responding&quot;.  Mine was with packets with the IP Record Route option set :-)  Fortunately, modern hardware is quite good at this and has lots and lots of knobs to tune to exactly which traffic classes should have which priorities and rate limits.<br /><br />2) The bottleneck is in practice actually between ASIC and local switch CPU, not between switch CPU and OpenFlow controller.  In theory one could try to optimize this system for higher performance, but as you correctly call out, with the appropriate control plane policing, high data rates from data to control plane actually not needed.<br /><br />3) Given the above two points, I&#39;m fairly sure that all vendors of networking gear have some level of data &lt;--&gt; control plane policing.  Big Switch definitely implements this and certainly spends a lot of time thinking about correct policing behavior and testing to verify robustness here -- I can only imagine other vendors do the same.<br /><br />Hope this helps clear things up a bit -- happy to talk more in person.<br /><br />- Rob<br />.</p>
+            <div class="comment-content">Hi Ivan,<br /><br />Happy to sit down with you (are you at Interop?) and chat about this in person but I think there&#39;s a few things worth clarifying here:<br /><br />1) Dataplane to control plane policing is something that all switches and routers (not just OpenFlow switches and controllers) have to deal with.  This is one of the reasons why all well-implemented switches rate limit all data plane traffic that can cause load on the control plane (e.g., ICMP, IP options, routing protocol traffic, STP control traffic, etc.).  Most folks have war stories of &quot;they sent a lot of X traffic and then the supervisor CPU went to 100% and everything stopped responding&quot;.  Mine was with packets with the IP Record Route option set :-)  Fortunately, modern hardware is quite good at this and has lots and lots of knobs to tune to exactly which traffic classes should have which priorities and rate limits.<br /><br />2) The bottleneck is in practice actually between ASIC and local switch CPU, not between switch CPU and OpenFlow controller.  In theory one could try to optimize this system for higher performance, but as you correctly call out, with the appropriate control plane policing, high data rates from data to control plane actually not needed.<br /><br />3) Given the above two points, I&#39;m fairly sure that all vendors of networking gear have some level of data &lt;--&gt; control plane policing.  Big Switch definitely implements this and certainly spends a lot of time thinking about correct policing behavior and testing to verify robustness here -- I can only imagine other vendors do the same.<br /><br />Hope this helps clear things up a bit -- happy to talk more in person.<br /><br />- Rob<br />.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1688569035810319975">01 May 2016 08:31</a>
+                <a rel="nofollow" id="c1688569035810319975" href="#1688569035810319975">01 May 2016 08:31</a>
               </span>
             </div>
-            <p class="comment-content">Hi Rob,<br /><br />Thanks for an extensive comment. We&#39;re in perfect agreement apart from &quot;other vendors doing the same&quot; part. <br /><br />I&#39;ve only seen control-plane policing of OpenFlow traffic documented in Cisco IOS and NEC ProgrammableFlow (of course I might have missed something).<br /><br />Best,<br />Ivan</p>
+            <div class="comment-content">Hi Rob,<br /><br />Thanks for an extensive comment. We&#39;re in perfect agreement apart from &quot;other vendors doing the same&quot; part. <br /><br />I&#39;ve only seen control-plane policing of OpenFlow traffic documented in Cisco IOS and NEC ProgrammableFlow (of course I might have missed something).<br /><br />Best,<br />Ivan</div>
           </div>
         </li>
       </div>
@@ -63,10 +58,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/07985346761439657130" rel="nofollow">Bela</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8702371702618323638">04 May 2016 18:26</a>
+                <a rel="nofollow" id="c8702371702618323638" href="#8702371702618323638">04 May 2016 18:26</a>
               </span>
             </div>
-            <p class="comment-content">Please, look at ONOS. It can distribute the load between multiple instances of the same controller cluster. It can also provide full consistency for certain information subsets, nut just eventual consistency since it uses a modified CopyCat implentation of the RAFT algorithm.<br />However, this means that you should have minimum 3 cluster members.<br />This architecture is extremely similar to the Cisco Grapevine platform used in APIC-EM. I have the suspicion that Grapevine also uses the RAFT algorithm (or PAXOS) for full consistency.<br /><br /></p>
+            <div class="comment-content">Please, look at ONOS. It can distribute the load between multiple instances of the same controller cluster. It can also provide full consistency for certain information subsets, nut just eventual consistency since it uses a modified CopyCat implentation of the RAFT algorithm.<br />However, this means that you should have minimum 3 cluster members.<br />This architecture is extremely similar to the Cisco Grapevine platform used in APIC-EM. I have the suspicion that Grapevine also uses the RAFT algorithm (or PAXOS) for full consistency.<br /><br /></div>
           </div>
         </li>
       </div>

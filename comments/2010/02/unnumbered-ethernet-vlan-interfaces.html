@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">troyand</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6212055835362072528">22 February 2010 09:29</a>
+                <a rel="nofollow" id="c6212055835362072528" href="#6212055835362072528">22 February 2010 09:29</a>
               </span>
             </div>
-            <p class="comment-content">The described usage case resembles me of nailing something with a microscope.<br />IP unnumbered has a much wiser application in FTTB deployments, that is covered only in Russian-speaking communities, as far as I see. It is related to the vlan-per-user network design that makes access cheap requiring only dot1q (and if necessary MVR) on switches. Each client is assigned to a separate vlan, each vlan is terminated at the SVI on the distribution switch (e.g. Cat3550). If clients are provided with public IP it is wasteful to assign a /30 subnet between the PC or CPE and SVI, so here IP unnumbered comes to rescue.<br />In result, sample distribution switch config looks like this:<br />!<br />interface Loopback 0<br /> ip address 10.0.0.1 255.255.252.0<br />!<br />interface GigabitEthernet 0/1<br /> description ===To access switch at building #1===<br /> switchport mode trunk<br /> switchport trunk allowed vlan 500-550<br />!<br />interface Vlan 500<br /> description ===Client #500 @ building #1===<br /> ip unnumbered Loopback 0<br /> ip proxy-arp<br />!<br />interface Vlan 501<br /> description ===Client #501 @ building #1===<br /> ip unnumbered Loopback 0<br /> ip proxy-arp<br />!...so on<br />ip route 10.0.0.2 255.255.255.255 Vlan 500<br />ip route 10.0.0.3 255.255.255.255 Vlan 501<br /><br />Last routes may be unnecessary if DHCP relay is deployed.</p>
+            <div class="comment-content">The described usage case resembles me of nailing something with a microscope.<br />IP unnumbered has a much wiser application in FTTB deployments, that is covered only in Russian-speaking communities, as far as I see. It is related to the vlan-per-user network design that makes access cheap requiring only dot1q (and if necessary MVR) on switches. Each client is assigned to a separate vlan, each vlan is terminated at the SVI on the distribution switch (e.g. Cat3550). If clients are provided with public IP it is wasteful to assign a /30 subnet between the PC or CPE and SVI, so here IP unnumbered comes to rescue.<br />In result, sample distribution switch config looks like this:<br />!<br />interface Loopback 0<br /> ip address 10.0.0.1 255.255.252.0<br />!<br />interface GigabitEthernet 0/1<br /> description ===To access switch at building #1===<br /> switchport mode trunk<br /> switchport trunk allowed vlan 500-550<br />!<br />interface Vlan 500<br /> description ===Client #500 @ building #1===<br /> ip unnumbered Loopback 0<br /> ip proxy-arp<br />!<br />interface Vlan 501<br /> description ===Client #501 @ building #1===<br /> ip unnumbered Loopback 0<br /> ip proxy-arp<br />!...so on<br />ip route 10.0.0.2 255.255.255.255 Vlan 500<br />ip route 10.0.0.3 255.255.255.255 Vlan 501<br /><br />Last routes may be unnecessary if DHCP relay is deployed.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2751055472490315238">23 February 2010 09:49</a>
+                <a rel="nofollow" id="c2751055472490315238" href="#2751055472490315238">23 February 2010 09:49</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for the feedback. I have also found another application (large-scale server farms) and will definitely write about both of them.</p>
+            <div class="comment-content">Thanks for the feedback. I have also found another application (large-scale server farms) and will definitely write about both of them.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5155622111889514320">24 February 2010 07:47</a>
+                <a rel="nofollow" id="c5155622111889514320" href="#5155622111889514320">24 February 2010 07:47</a>
               </span>
             </div>
-            <p class="comment-content">Huh, just though of that, would be interesting to see how CEF adjacencies are created over those unnumbered links. Proxy ARP?  I&#39;ll try to lab this one ASAP. <br /><br />There are &quot;point-to-point&quot; VLANs, i.e. VLANs with no MAC address learning enabled, which works pretty much like P2P logical circuits (or hubs :). Thos are not the EVCs, but simple VLANs with no MAC address learning. <br /><br />Wonder if one can instruct CEF layer to simply push the VLAN header instead of &quot;gleaning&quot; for the destination MAC when switching packets over the unnumbered P2P subinterface.</p>
+            <div class="comment-content">Huh, just though of that, would be interesting to see how CEF adjacencies are created over those unnumbered links. Proxy ARP?  I&#39;ll try to lab this one ASAP. <br /><br />There are &quot;point-to-point&quot; VLANs, i.e. VLANs with no MAC address learning enabled, which works pretty much like P2P logical circuits (or hubs :). Thos are not the EVCs, but simple VLANs with no MAC address learning. <br /><br />Wonder if one can instruct CEF layer to simply push the VLAN header instead of &quot;gleaning&quot; for the destination MAC when switching packets over the unnumbered P2P subinterface.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2978480995809028347">24 February 2010 08:09</a>
+                <a rel="nofollow" id="c2978480995809028347" href="#2978480995809028347">24 February 2010 08:09</a>
               </span>
             </div>
-            <p class="comment-content">You still need destination MAC address (because the receiving Ethernet controller expects it) and there are exactly two ways of getting it: using ARP or static ARP entries.<br /><br />CEF adjacencies are created as expected: next-hop in the IP routing table is tied to the interface and the router believes ARP will succeed (like with interface static route).</p>
+            <div class="comment-content">You still need destination MAC address (because the receiving Ethernet controller expects it) and there are exactly two ways of getting it: using ARP or static ARP entries.<br /><br />CEF adjacencies are created as expected: next-hop in the IP routing table is tied to the interface and the router believes ARP will succeed (like with interface static route).</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8532005439336284747">24 February 2010 15:01</a>
+                <a rel="nofollow" id="c8532005439336284747" href="#8532005439336284747">24 February 2010 15:01</a>
               </span>
             </div>
-            <p class="comment-content">Yeah, but theoretically you may use broadcast destination as it should not matter on the P2P link (provided that the Ethernet transport is configured properly). Would actually save time on ARPing and resolving the &quot;glean&quot; adjacencies.</p>
+            <div class="comment-content">Yeah, but theoretically you may use broadcast destination as it should not matter on the P2P link (provided that the Ethernet transport is configured properly). Would actually save time on ARPing and resolving the &quot;glean&quot; adjacencies.</div>
           </div>
         </li>
       </div>

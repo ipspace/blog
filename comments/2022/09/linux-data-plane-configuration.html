@@ -1,0 +1,219 @@
+<div class="comments post" id="comments">
+  <h4>5 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1377">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Stefano Sasso</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1377" href="#1377">21 September 2022 01:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Dell OS10 &quot;config plane&quot; is based on Linux, but it&#39;s more like Arista... i.e., you can run bash &amp; co, but it does not really use the standard Linux forwarding capabilities.</p>
+
+<p>On the other hand, VyOS it&#39;s really using the Linux standard forwarding plane, it&#39;s &quot;only&quot; a config layer for multiple backends (i.e., networking, FRR, Strongswan, ...).</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1378">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jarad O</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1378" href="#1378">21 September 2022 04:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I use systemd&rsquo;s networkctl for my configs and I think it&rsquo;s okay. I managed to put together some unit templates that puts FRR and a set of interfaces into their own network namespace. I like it this way because no other services run in the same namespace unless I configure them to explicitly do so (with a other template). I put it up on GH so others can benefit: https://github.com/brotherdust/systemd-netns-frr</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1379">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1379" href="#1379">21 September 2022 05:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Stefano: And this is how I learn something new every day. Thank you!</p>
+
+<p>@Jarad: Thanks a million!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1380">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Stefano Sasso</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1380" href="#1380">21 September 2022 06:28</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Ivan on the &quot;real world&quot; devices, Dell OS10 works with Broadcom chipsets</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1383">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> James Harr</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1383" href="#1383">22 September 2022 12:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Just a reminder that NetPlan exists.</p>
+
+<p>https://netplan.io/</p>
+
+<p>It doesn&#39;t fix everything, but it will fix small issues like &quot;I edited the static address in /etc/network/interfaces, restarted networking, and now I have an old and new address on that interface&quot;</p>
+
+<p>I&#39;ve used it in a few places, but not widely. And yes this does fall into the trap of &quot;there are too many standards, I&#39;m going to create one more to unify them all, except now it&#39;s just a +1&quot;</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1389">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Avery Abbott</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1389" href="#1389">22 September 2022 07:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;The inability to enable IPv6 LLA4 on an interface without configuring a static IPv6 address is one of them.&quot;</p>
+
+<p>That&#39;s surprising to hear when you can configure BGP unnumbered using IPv6 LLA on Cumulus without specifying unicast IPv6 addressing on an interface.</p>
+
+<p>https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-44/Layer-3/Border-Gateway-Protocol-BGP/Basic-BGP-Configuration/</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1395">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1395" href="#1395">23 September 2022 04:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>So the long rant did confuse someone. Straight from the blog post ;)</p>
+
+<p>&gt; Cumulus Linux ships with IPv6 enabled (but not configured) on all interfaces, so you always get IPv6 link-local addresses, and unnumbered EBGP sessions work.</p>
+
+<p>In other words, you cannot <em>enable</em> or <em>disable</em> IPv6 packet processing on an interface with NCLU or NVUE (or at least I haven&#39;t found a way of doing that).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1390">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Andrea Florio </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1390" href="#1390">23 September 2022 09:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Have you tried SONiC? Specific the Dell/Broadcom distribution?</p>
+
+<p>It comes with &quot;sonic-cli&quot; that make all of this a breeze </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1396">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Blake</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1396" href="#1396">25 September 2022 11:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Fortunately, on OpenBSD we have NSH that specifically addresses this problem: 
+https://github.com/yellowman/nsh
+almost all system networking config handled from one CLI &amp; stored in one file :-)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

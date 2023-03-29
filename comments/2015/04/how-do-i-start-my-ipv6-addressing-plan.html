@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://majornetwork.net/" rel="nofollow">Markku Leiniö</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#270004773292850339">28 April 2015 20:44</a>
+                <a rel="nofollow" id="c270004773292850339" href="#270004773292850339">28 April 2015 20:44</a>
               </span>
             </div>
-            <p class="comment-content">My rules of thumb:<br /><br />If the routing and firewalling between the VRFs (the different subnets in the WAN sites) is happening centralized in the data centers (since most of the traffic is northbound anyway), then I&#39;d use Type First addressing = one big subnet/supernet for each VRF, summarized in the WAN edge. This is how my customer implementations usually work (currently in IPv4-only world).<br /><br />If the routing and firewalling between the VRFs is happening locally in each site, then I would consider using Location First addressing.<br /><br />Wildcard-style masking with IPv6 addresses would be great, yes!<br /></p>
+            <div class="comment-content">My rules of thumb:<br /><br />If the routing and firewalling between the VRFs (the different subnets in the WAN sites) is happening centralized in the data centers (since most of the traffic is northbound anyway), then I&#39;d use Type First addressing = one big subnet/supernet for each VRF, summarized in the WAN edge. This is how my customer implementations usually work (currently in IPv4-only world).<br /><br />If the routing and firewalling between the VRFs is happening locally in each site, then I would consider using Location First addressing.<br /><br />Wildcard-style masking with IPv6 addresses would be great, yes!<br /></div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11890997522662363216" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2692642996488166075">29 April 2015 15:34</a>
+                <a rel="nofollow" id="c2692642996488166075" href="#2692642996488166075">29 April 2015 15:34</a>
               </span>
             </div>
-            <p class="comment-content">We actually use type-first addressing, for the reason you mentioned: simplified security enforcement. Our firewall up until very recently couldn&#39;t do discontiguous wildcards for IPv4 or IPv6, so using location-first would&#39;ve been way more complexity than needed. Not sure about our shiny new ASA, but it&#39;s not really relevant anymore cause we&#39;ve got this now and it works just fine. We have maybe 20 different subnet types (&quot;security zones&quot;) and 30 sites, so routing table size was never really a concern (especially since most sites are stubs).<br /><br />When I implemented IPv6 two years ago (I think, time flies...) I applied the same structure directly to IPv6 (with hex instead of base 10) and to me it&#39;s just pretty =)<br /><br />For example, zone 10 (administrative clients):<br />IPv4 10.10.site.0/24<br />IPv6 2001:db8:123:0a[site-in-hex]::/64<br /><br />Zone 110 (VoIP):<br />IPv4 10.110.site.0/24<br />IPv6 2001:db8:123:6e[site-in-hex]::/64</p>
+            <div class="comment-content">We actually use type-first addressing, for the reason you mentioned: simplified security enforcement. Our firewall up until very recently couldn&#39;t do discontiguous wildcards for IPv4 or IPv6, so using location-first would&#39;ve been way more complexity than needed. Not sure about our shiny new ASA, but it&#39;s not really relevant anymore cause we&#39;ve got this now and it works just fine. We have maybe 20 different subnet types (&quot;security zones&quot;) and 30 sites, so routing table size was never really a concern (especially since most sites are stubs).<br /><br />When I implemented IPv6 two years ago (I think, time flies...) I applied the same structure directly to IPv6 (with hex instead of base 10) and to me it&#39;s just pretty =)<br /><br />For example, zone 10 (administrative clients):<br />IPv4 10.10.site.0/24<br />IPv6 2001:db8:123:0a[site-in-hex]::/64<br /><br />Zone 110 (VoIP):<br />IPv4 10.110.site.0/24<br />IPv6 2001:db8:123:6e[site-in-hex]::/64</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15109420257736572336" rel="nofollow">ipv6tom</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1038855184315414347">29 April 2015 17:54</a>
+                <a rel="nofollow" id="c1038855184315414347" href="#1038855184315414347">29 April 2015 17:54</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />Very excited to see you cover my favorite IPv6 topic (shameless book plug: <a href="http://www.amazon.com/IPv6-Address-Planning-Designing-Future/dp/1491902760/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1430322720&amp;sr=1-1&amp;keywords=ipv6+address+planning" rel="nofollow">IPv6 Address Planning, O&#39;Reilly</a>) with your usual high level of expertise and practical guidance!<br /><br />A couple of considerations perhaps of value to your enterprise readers:<br /><br />I’ve run into many enterprise administrators who will default to considering the use of ULA space internally, i.e., the private/RFC 1918 equivalent, in IPv6 along with NAT66 at the enterprise perimeter. The reason typically given for this is a combination of “that’s how we do it in IPv4” along with some variation on the “security through obscurity” argument stemming from a general discomfort for using “public” (GUA) addresses internally. But there’s really no valid security reason for this configuration.<br /><br />Also, most enterprises should consider getting a Provider Independent (PI) allocation from their RIR (the requirements vary from region to region). Having a portable allocation can help avoid unnecessary renumbering.<br /><br />Cheers,<br /><br />Tom</p>
+            <div class="comment-content">Ivan,<br /><br />Very excited to see you cover my favorite IPv6 topic (shameless book plug: <a href="http://www.amazon.com/IPv6-Address-Planning-Designing-Future/dp/1491902760/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1430322720&amp;sr=1-1&amp;keywords=ipv6+address+planning" rel="nofollow">IPv6 Address Planning, O&#39;Reilly</a>) with your usual high level of expertise and practical guidance!<br /><br />A couple of considerations perhaps of value to your enterprise readers:<br /><br />I’ve run into many enterprise administrators who will default to considering the use of ULA space internally, i.e., the private/RFC 1918 equivalent, in IPv6 along with NAT66 at the enterprise perimeter. The reason typically given for this is a combination of “that’s how we do it in IPv4” along with some variation on the “security through obscurity” argument stemming from a general discomfort for using “public” (GUA) addresses internally. But there’s really no valid security reason for this configuration.<br /><br />Also, most enterprises should consider getting a Provider Independent (PI) allocation from their RIR (the requirements vary from region to region). Having a portable allocation can help avoid unnecessary renumbering.<br /><br />Cheers,<br /><br />Tom</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -74,10 +69,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7520972348219914580">29 April 2015 20:14</a>
+                <a rel="nofollow" id="c7520972348219914580" href="#7520972348219914580">29 April 2015 20:14</a>
               </span>
             </div>
-            <p class="comment-content">A few more blog posts on that topic (now that you mention it ;)<br /><br />http://blog.ipspace.net/2014/01/pa-pi-or-ula-ipv6-address-space-it.html<br />http://blog.ipspace.net/2013/09/to-ula-or-not-to-ula-thats-question.html</p>
+            <div class="comment-content">A few more blog posts on that topic (now that you mention it ;)<br /><br />http://blog.ipspace.net/2014/01/pa-pi-or-ula-ipv6-address-space-it.html<br />http://blog.ipspace.net/2013/09/to-ula-or-not-to-ula-thats-question.html</div>
           </div>
         </li>
       </div>

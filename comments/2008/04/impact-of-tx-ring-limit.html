@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>9 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5431795407760197091">01 May 2008 21:22</a>
+                <a rel="nofollow" id="c5431795407760197091" href="#5431795407760197091">01 May 2008 21:22</a>
               </span>
             </div>
-            <p class="comment-content">Great article!  Greatly increased by knowledge of IOS QoS.<BR/><BR/>However, of course, I have a few questions.<BR/><BR/>The diagrams are confusing.  Is the circular yellow 'Transmit ring' the same device as the square blue 'Hardware Queue'?<BR/><BR/>The transmit ring use a FIFO queue.  Is your article saying there is a software FIFO queue controlled by the hold-queue out command?  That there is a software FIFO queue (used when no fancy queueing), and the tx-ring FIFO queue?<BR/><BR/>The Cisco Command Lookup tool has the following warning for 'hold-queue' command : "This [small hold queue] is generally better than having duplicate copies of the same packet within the network (which can happen with large hold queues)."  Why would large hold queue cause duplicate packets?<BR/><BR/>Why would lengthening the transmit ring increase jitter or delay?</p>
+            <div class="comment-content">Great article!  Greatly increased by knowledge of IOS QoS.<BR/><BR/>However, of course, I have a few questions.<BR/><BR/>The diagrams are confusing.  Is the circular yellow 'Transmit ring' the same device as the square blue 'Hardware Queue'?<BR/><BR/>The transmit ring use a FIFO queue.  Is your article saying there is a software FIFO queue controlled by the hold-queue out command?  That there is a software FIFO queue (used when no fancy queueing), and the tx-ring FIFO queue?<BR/><BR/>The Cisco Command Lookup tool has the following warning for 'hold-queue' command : "This [small hold queue] is generally better than having duplicate copies of the same packet within the network (which can happen with large hold queues)."  Why would large hold queue cause duplicate packets?<BR/><BR/>Why would lengthening the transmit ring increase jitter or delay?</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08442813178020212331" rel="nofollow">Rob</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1950186344662615460">05 May 2008 07:00</a>
+                <a rel="nofollow" id="c1950186344662615460" href="#1950186344662615460">05 May 2008 07:00</a>
               </span>
             </div>
-            <p class="comment-content"><I>Is the circular yellow 'Transmit ring' the same device as the square blue 'Hardware Queue'?</I><BR/><BR/>No, the hardware queue is not adjustable, and is (from my understanding) part of the PHY hardware.  The tx-ring is part of the router memory (as allocated by IOS)<BR/><BR/><I>Why would lengthening the transmit ring increase jitter or delay?</I><BR/>I always thought that the tx-ring is processed at a certain frequency ie: <I>n</I> packets-per-second.  As the tx-ring gets larger, a packet takes longer to be processed.</p>
+            <div class="comment-content"><I>Is the circular yellow 'Transmit ring' the same device as the square blue 'Hardware Queue'?</I><BR/><BR/>No, the hardware queue is not adjustable, and is (from my understanding) part of the PHY hardware.  The tx-ring is part of the router memory (as allocated by IOS)<BR/><BR/><I>Why would lengthening the transmit ring increase jitter or delay?</I><BR/>I always thought that the tx-ring is processed at a certain frequency ie: <I>n</I> packets-per-second.  As the tx-ring gets larger, a packet takes longer to be processed.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6718702762981992666">05 May 2008 21:54</a>
+                <a rel="nofollow" id="c6718702762981992666" href="#6718702762981992666">05 May 2008 21:54</a>
               </span>
             </div>
-            <p class="comment-content">In my opinion, the circular yellow tx-ring and the blue FIFO queue are the same thing.<BR/><BR/>If you use FIFO queuing, the FIFO queue (configured with the hold-queue command) is the same as the tx-ring.<BR/><BR/>I would assume that the tx-ring is filled when the HW interface decides to interrupt the CPU. However, to avoid speculations, I'll study a few chipset specs before saying anything more on this topic.<BR/><BR/>The warning for the 'hold-queue' command is probably a leftover from 9.1 SW (or something similar) when the time a packet could spend in transit (waiting in various queues) was comparable to the retransmission timeout (which could result in two identical packets being in transit).<BR/><BR/>As for the impact of transmit ring on jitter/delay, I'll write a more in-depth explanation (just give me some time, I'm juggling too many things at the moment)</p>
+            <div class="comment-content">In my opinion, the circular yellow tx-ring and the blue FIFO queue are the same thing.<BR/><BR/>If you use FIFO queuing, the FIFO queue (configured with the hold-queue command) is the same as the tx-ring.<BR/><BR/>I would assume that the tx-ring is filled when the HW interface decides to interrupt the CPU. However, to avoid speculations, I'll study a few chipset specs before saying anything more on this topic.<BR/><BR/>The warning for the 'hold-queue' command is probably a leftover from 9.1 SW (or something similar) when the time a packet could spend in transit (waiting in various queues) was comparable to the retransmission timeout (which could result in two identical packets being in transit).<BR/><BR/>As for the impact of transmit ring on jitter/delay, I'll write a more in-depth explanation (just give me some time, I'm juggling too many things at the moment)</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5565547268804894303">06 May 2008 14:51</a>
+                <a rel="nofollow" id="c5565547268804894303" href="#5565547268804894303">06 May 2008 14:51</a>
               </span>
             </div>
-            <p class="comment-content">After reading tons of documents from AMD and Freescale semiconductors, I have a pretty good understanding of how things are actually working :) I've rewritten <A HREF="http://wiki.ioshints.info/Queuing_Principles_in_Cisco_IOS" REL="nofollow">the document in the Wiki</A>, please let me know if it makes more sense now.</p>
+            <div class="comment-content">After reading tons of documents from AMD and Freescale semiconductors, I have a pretty good understanding of how things are actually working :) I've rewritten <A HREF="http://wiki.ioshints.info/Queuing_Principles_in_Cisco_IOS" REL="nofollow">the document in the Wiki</A>, please let me know if it makes more sense now.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.linkedin.com/pub/michal-sewera/0/583/358" rel="nofollow">Michal Sewera</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4730171871106007712">15 June 2009 13:14</a>
+                <a rel="nofollow" id="c4730171871106007712" href="#4730171871106007712">15 June 2009 13:14</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />one comment here regarding periodic pools of TX descriptors: in fact from what You&#39;ve stated here for low-utilized interfaces we will have some extra delay related with polling interval.<br /><br />Are You sure about this ? From what I know the indication of pooling the next TX descriptor is based on other counters in the system, which are based on feeding the queue with incoming packets (from system perspective we know extactly what is the status/number of packets to be processed with sending sub-process.<br /><br />I was also involved in some network-based OS development for systems based on Freescale uP and we&#39;ve solved this issue in the same way, as I&#39;ve described. <br /><br />Do You have any other sources/links to verify this ?<br /><br />Thanks a lot for any support,<br /><br />regards<br />msewera</p>
+            <div class="comment-content">Hi Ivan,<br /><br />one comment here regarding periodic pools of TX descriptors: in fact from what You&#39;ve stated here for low-utilized interfaces we will have some extra delay related with polling interval.<br /><br />Are You sure about this ? From what I know the indication of pooling the next TX descriptor is based on other counters in the system, which are based on feeding the queue with incoming packets (from system perspective we know extactly what is the status/number of packets to be processed with sending sub-process.<br /><br />I was also involved in some network-based OS development for systems based on Freescale uP and we&#39;ve solved this issue in the same way, as I&#39;ve described. <br /><br />Do You have any other sources/links to verify this ?<br /><br />Thanks a lot for any support,<br /><br />regards<br />msewera</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2484204914524464910">16 June 2009 13:41</a>
+                <a rel="nofollow" id="c2484204914524464910" href="#2484204914524464910">16 June 2009 13:41</a>
               </span>
             </div>
-            <p class="comment-content">Hi Michal!<br /><br />I cannot be completely sure what exactly individual releases of Cisco IOS do on various platforms. <a href="http://blog.ioshints.info/2008/04/ios-queuing-101.html?showComment=1208867220000#c5518216379275892138" rel="nofollow">A reader comment</a> prompted me to study the hardware specs of various controllers and the results are as described in the Wiki article.<br /><br />By default, the AMD PCnet controller will poll the first transmit descriptor every 2 msecs until it finds a packet ready in which case it will transmit all the queued packets and revert to polling mode after it encounters an empty description (see Page 66 of the <a href="http://support.amd.com/us/Embedded_TechDocs/22929E_AM79C976_datasheet.pdf" rel="nofollow">Am79C976 technical documentation</a>.</p>
+            <div class="comment-content">Hi Michal!<br /><br />I cannot be completely sure what exactly individual releases of Cisco IOS do on various platforms. <a href="http://blog.ioshints.info/2008/04/ios-queuing-101.html?showComment=1208867220000#c5518216379275892138" rel="nofollow">A reader comment</a> prompted me to study the hardware specs of various controllers and the results are as described in the Wiki article.<br /><br />By default, the AMD PCnet controller will poll the first transmit descriptor every 2 msecs until it finds a packet ready in which case it will transmit all the queued packets and revert to polling mode after it encounters an empty description (see Page 66 of the <a href="http://support.amd.com/us/Embedded_TechDocs/22929E_AM79C976_datasheet.pdf" rel="nofollow">Am79C976 technical documentation</a>.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://www.linkedin.com/pub/michal-sewera/0/583/358" rel="nofollow">Michal Sewera</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9153967277693510807">22 June 2009 19:55</a>
+                <a rel="nofollow" id="c9153967277693510807" href="#9153967277693510807">22 June 2009 19:55</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br /><br />thanks for the reply! <br /><br />Regarding this polling mode, as it is stated in the documentation, it works only if enabled (&quot;If the TXDPOLL bit in CSR4 is set, then the transmit polling function is disabled.&quot;) and also it works only if &quot;there is no network channel activity and there is no pre- or post-receive or pre- or post-transmit activity being performed by the Am79C976 controller&quot;.<br /><br />As I wrote before, in most routing/switching implementations transmission of the packet is done by enabling transmission circuits /by writing to control register/ in case of we have a packet in the system to be transmitted or disabling tranmission circuits in case of system is empty (no packets to be handled). In this way we are bypassing the polling interval issue.<br /><br />We had this approach in our OS kernel implementation, so I was just curious how the Cisco guys implemented this for low-end platforms;-)<br /><br />thanks for any support,<br /><br />best regards<br />michal</p>
+            <div class="comment-content">Hi Ivan,<br /><br />thanks for the reply! <br /><br />Regarding this polling mode, as it is stated in the documentation, it works only if enabled (&quot;If the TXDPOLL bit in CSR4 is set, then the transmit polling function is disabled.&quot;) and also it works only if &quot;there is no network channel activity and there is no pre- or post-receive or pre- or post-transmit activity being performed by the Am79C976 controller&quot;.<br /><br />As I wrote before, in most routing/switching implementations transmission of the packet is done by enabling transmission circuits /by writing to control register/ in case of we have a packet in the system to be transmitted or disabling tranmission circuits in case of system is empty (no packets to be handled). In this way we are bypassing the polling interval issue.<br /><br />We had this approach in our OS kernel implementation, so I was just curious how the Cisco guys implemented this for low-end platforms;-)<br /><br />thanks for any support,<br /><br />best regards<br />michal</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Andrew</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2905163846831388657">05 November 2009 02:00</a>
+                <a rel="nofollow" id="c2905163846831388657" href="#2905163846831388657">05 November 2009 02:00</a>
               </span>
             </div>
-            <p class="comment-content">Just a quick comment to say excellent article. It&#39;s quite rare to see something so cleanly written!!<br /><br />Andrew</p>
+            <div class="comment-content">Just a quick comment to say excellent article. It&#39;s quite rare to see something so cleanly written!!<br /><br />Andrew</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Mark C.</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2001217993915147524">07 February 2011 14:20</a>
+                <a rel="nofollow" id="c2001217993915147524" href="#2001217993915147524">07 February 2011 14:20</a>
               </span>
             </div>
-            <p class="comment-content">Great article Ivan. thumbs up ;)</p>
+            <div class="comment-content">Great article Ivan. thumbs up ;)</div>
           </div>
         </li>
       </div>

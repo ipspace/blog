@@ -1,0 +1,23 @@
+{
+   "comments": [
+      {
+         "date": "05 March 2021 12:29",
+         "html": "<p>Actually, you should have a hierarchy of failure detections since each method has its advantages and disadvantages.\n--- cross-layer alarms are the fastest but limited to a single link\n--- BFD is fast, can be multiple hops, but only detects usually 20% packet loss, maybe down to 10%, but not more and cannot detect other QoS issues\n--- complex active probes with controllers could detect such QoS threshold as 0.5 % packet loss, 15 ms jitter, 100 ms delay.\n--- integration with end-point measurement and feedback to the lower network layers for path selection</p>\n\n<p>The final solution is simulcast with diversity paths. Then you do not need any failure detection, but it has a price. In some networks, it is cheap, just people are not used it. For radar sensors, or safety critical voice, you normally use simulcast end-to-end. And then you have no convergence problem, no microloop problem. </p>\n\n<p>It still a problem with complex probing, how much overhead you have, what is the precision and accuracy, how many samples you need, if you really share the fate with controlled traffic, if you really measure or just estimate, can you use passive observations, etc.</p>\n\n<p>Failure can mean a totally different thing for each application class and traffic class. Already the ITU-T standards acknowledge this and define failures differently for each class.</p>\n\n<p>So BFD is very useful, but only a small part of the overall story...</p>\n",
+         "id": "439",
+         "name": "Bela Varkonyi",
+         "pub": "2021-03-05T12:29:43",
+         "type": "comment"
+      },
+      {
+         "date": "05 March 2021 05:24",
+         "html": "<p>@Bela: Thanks a million - insightful as always ;)</p>\n",
+         "id": "442",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-03-05T17:24:58",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2021/03/video-path-discovery-bridging-routing.html"
+}

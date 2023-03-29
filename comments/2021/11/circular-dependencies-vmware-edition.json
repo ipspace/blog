@@ -1,0 +1,43 @@
+{
+   "comments": [
+      {
+         "date": "25 November 2021 10:08",
+         "html": "<p>There is no circular dependency on storage services in Nutanix, because the CVM providing storage services to the hypervisor is not using those virtual storage services.</p>\n\n<p>The CVM runs from additional dedicated local storage on each hypervisor host, and then provides access to the other storage resources (SSDs and/or HDDs available on each host) to use for other VMs. Each hypervisor host has <em>both</em> the local and the virtual storage mounted.</p>\n",
+         "id": "878",
+         "name": "Erik Auerswald ",
+         "pub": "2021-11-25T10:08:23",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "28 November 2021 10:05",
+               "html": "<p>That is absolutely true, which makes it even more ridiculous to include such a convoluted and now-unnecessary procedure in the official NSX-T 3.1 installation documentation instead of saying &quot;<em>For this setup you need NSX-T 3.1 running on vDS which is available in vSphere release 7. Contact VMware Professional Services if you want to run this on N-VDS.</em>&quot;</p>\n",
+               "id": "886",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-11-28T10:05:31",
+               "ref": "884",
+               "type": "comment"
+            },
+            {
+               "date": "01 December 2021 11:03",
+               "html": "<p>It&#39;s a legacy doc for sure, I remember having to do this procedure with NSX-T 2.x and it was painful.   </p>\n\n<p>The docs now have a &quot;Note&quot; at the top that say &quot;Alternatively, you can deploy the configuration described in this topic by using vSphere Distributed Switches. With vSphere Distributed Switches configured on hosts, the procedure is simple...&quot;.</p>\n\n<p>I suppose the reason this whole thing still needs documenting is the sheer amount of ESXi 6.7 still out there.</p>\n",
+               "id": "895",
+               "name": "Stuart Charlton",
+               "pub": "2021-12-01T23:03:02",
+               "ref": "886",
+               "type": "comment"
+            }
+         ],
+         "date": "27 November 2021 01:04",
+         "html": "<p>I think with vsphere 7.0 and NSX-T 3.1 ist changed quite a bit. Now you can run NSX-T on a VDS in parallel with legacy DVS port groups and make use of the same uplinks.</p>\n",
+         "id": "884",
+         "name": " David Lehner",
+         "pub": "2021-11-27T13:04:52",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2021/11/circular-dependencies-vmware-edition.html"
+}

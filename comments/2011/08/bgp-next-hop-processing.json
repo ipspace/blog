@@ -1,214 +1,289 @@
 {
-  "comments": [
-    {
-      "date": "30 August 2011 03:00",
-      "html": "Hi, <br /><br />Isn&#39;t MED actually propagated on EBGP routes?",
-      "id": "159095993942192741",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "The Other Guy",
-      "profile": null,
-      "pub": "2011-08-30T03:00:08.254+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "date": "30 August 2011 03:28",
-      "html": "MED that is received on a prefix from a(n EBGP) neighbor is not propagated to an EBGP neigbor. I.e. if PE-A receives a prefix from X1 with a MED set, and then advertises that same prefix to X2, the MED attributed will not be set (by default).",
-      "id": "4179127801875226932",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "M Kh",
-      "profile": null,
-      "pub": "2011-08-30T03:28:19.677+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "09 December 2012 00:33",
-          "html": "Ivan got owned...",
-          "id": "235180027434563832",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2012-12-09T00:33:45.281+01:00",
-          "ref": "7817639673849333301",
-          "type": "comment"
-        }
-      ],
-      "date": "30 August 2011 16:56",
-      "html": "Hi Ivan, excellent summary, but there are few statements that may require a little bit of clarification.<br /><br />Firstly, for leaking the edge link IP prefixes into IGP. A while ago, it made total sense to either change the next-hop to self or leak edge prefixes into BGP, to maintain reachability to provider managed devices at customer premises. This ensured network stability, to some extent. Nowadays, the requirements for fast convergence based on BGP NHT/PIC may dictate that edge link prefixes are leaked into IGP, for the purpose of fast event propagation. Furthermore, preserving the eBGP next-hop has some useful accounting implications, e.g. when exporting BGP next-hop in Netflow and looking to construct &quot;external&quot; traffic matrix. And network stability could be still controlled by using exponential event dampening (low-pass filtering).<br /><br />Secondly, using redistribution no longer has advantage of &quot;faster SPF&quot; over type-1 LSA injection with the introduction of iSPF (invented in ARPANet!) to both OSPF/ISIS. Even without iSPF, SPF takes insignificant time of overall convergence process on modern CPU&#39;s - the majority of time is spent updating distributed forwarding tables after a change. Furthermore, redistribution might be even considered dangerous due to type-5 LSA&#39;s having larger flooding scope (there have been well-known precedents with that), not to mention that type-5 LSAs consume more memory and create more flooding overhead (less of concern, though). <br /><br />Thirdly, changing next-hop to self on a route-reflector *may* be required even in production network if you need to ensure that RR is in the forwarding path to avoid route deflection (not the best design, though). This operation is also a key component for building hierarchical LSPs using BGP-based label propagation for overlay LSPs.<br /><br />Regards,<br /><br />Petr",
-      "id": "7817639673849333301",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "plapukhov",
-      "profile": null,
-      "pub": "2011-08-30T16:56:59.626+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "date": "31 August 2011 03:21",
-      "html": "Ivan,<br /><br />Excellent post.  Loved it!  Really brought closure to the previous post.  Thanks so much.<br /><br />Will",
-      "id": "284540523533427860",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Will",
-      "profile": null,
-      "pub": "2011-08-31T03:21:52.527+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "date": "11 October 2011 12:15",
-      "html": "Thanks for this post, I eventually sit down and read through it.<br />Just to add a minor point for other readers, the &quot;Next hop optimization on EBGP sessions&quot; is also known as the &quot;third-party next-hop&quot; feature. :)",
-      "id": "9123849822157428687",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Yap Chin Hoong",
-      "profile": null,
-      "pub": "2011-10-11T12:15:28.873+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "date": "11 October 2011 12:33",
-      "html": "The observation of SPF run for advertising the DMZ link into IGPs (IS-IS and OSPF) is really SUPERB! :-)<br /><br />also found 2 nice linkz about SPF...<br />http://routingfreak.wordpress.com/2008/03/04/shortest-path-first-calculation-in-ospf-and-is-is/<br />http://routingfreak.wordpress.com/2008/03/06/the-complete-and-partial-spf-in-is-is/",
-      "id": "8147315720551904040",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Yap Chin Hoong",
-      "profile": null,
-      "pub": "2011-10-11T12:33:42.786+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "date": "07 November 2011 19:31",
-      "html": "All of your posts are top notch - thank you and keep up the great blog! 8-)",
-      "id": "956611440417665252",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Terry Boedeker",
-      "profile": null,
-      "pub": "2011-11-07T19:31:07.153+01:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "08 July 2012 20:40",
-          "html": "Effectively what you&#39;ve discovered is that an IBGP next hop must be an IGP route, which makes perfect sense, otherwise you could get into all sorts of recursive routing.<br /><br />No, I&#39;ve never run into such an issue, I never tried to do something like that.",
-          "id": "3923982101781763934",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-07-08T20:40:52.776+02:00",
-          "ref": "1027764927242628181",
-          "type": "comment"
-        }
-      ],
-      "date": "07 July 2012 08:19",
-      "html": "Hi Ivan,<br /><br />I just ran into an issue I was not expecting that made me search on google about BGP routes with next-hop resolved through another BGP routes.<br />In my case an iBGP route&#39;s next-hop was resolved through another iBGP route. Both routes were installed in the routing table. The next-hop itself was reachable (ping/traceroute). However the destination was not: when debugging with &#39;debug ip packet&#39;, the router picked a loopback as the source (instead of the outgoing interface) and then declared the packet unroutable. Making the next-hop known through IGP fixed the problem. <br />Did you ever run into such an issue ? I could not find any explanation for it. My release is 12.4(15)T10.<br /><br /><br />Thanks for all the great information you share on your site.<br />Cheers,<br />Mat",
-      "id": "1027764927242628181",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Mat",
-      "profile": null,
-      "pub": "2012-07-07T08:19:26.466+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "date": "11 July 2012 09:12",
-      "html": "Yes, nobody ever want to do that, it just happens that in some infamous lab environment they make you run into that kind of issue ! :)<br />I am still surprised that the routes were installed in the routing table though ! It&#39;s a strange logic to install a route in the RIB and then decide that it is not valid.<br /><br />Thanks,<br />Mat",
-      "id": "3976925022199881942",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Mat",
-      "profile": null,
-      "pub": "2012-07-11T09:12:58.901+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "31 July 2012 14:13",
-          "html": "You&#39;re almost correct. <br /><br />Next hop will be changed on EBGP session __unless_ the neighbor&#39;s IP address is in the same subnet as the current next hop.<br /><br />Next hop will NOT be changed on IBGP session __unless__ you specify next-hop-self, which you&#39;d do only on the AS boundary (usually you want to use IGP to control intra-AS routing toward BGP next hops).<br /><br />Then there are the weird cases including &#39;next-hop-unchanged&#39; for inter-AS MPLS/VPN or setting the next hop to a bogus value for remote-triggered black holes ;)<br /><br />As for pulling your hair - we all went through that phase when faced with BGP.",
-          "id": "2481431269885316168",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-07-31T14:13:58.725+02:00",
-          "ref": "3245294065255439639",
-          "type": "comment"
-        },
-        {
-          "date": "31 July 2012 17:03",
-          "html": "Thanks a lot Sir...<br /><br />The BGP feature &quot;EBGP session __unless_ the neighbor&#39;s IP address is in the same subnet as the current next hop&quot; may be enabled because in Multi-access environments the BGP routers may need to pass the packets one or two extra hops.<br /><br />What I meant was in EBGP Multiaccess environments all the other routers in a subnet are reachable from any router, but may not be BGP neighbors. This may cause additional hops? <br /><br />Am I right Sir?",
-          "id": "7448631824438260295",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "J Thomas",
-          "profile": "http://www.joera.in",
-          "pub": "2012-07-31T17:03:51.048+02:00",
-          "ref": "3245294065255439639",
-          "type": "comment"
-        },
-        {
-          "date": "31 July 2012 17:18",
-          "html": "EBGP next hop processing tries to avoid unnecessary packet forwarding across a single subnet. It works (recursively) even when there&#39;s only a partial mesh of EBGP sessions across the subnet _as long as_ nobody changes the next-hop manually.",
-          "id": "2609149383645572324",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2012-07-31T17:18:39.167+02:00",
-          "ref": "3245294065255439639",
-          "type": "comment"
-        },
-        {
-          "date": "31 July 2012 17:26",
-          "html": "Got it Sir..<br /><br />Thank you very much...",
-          "id": "9035932469580059401",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "J Thomas",
-          "profile": "http://www.joera.in",
-          "pub": "2012-07-31T17:26:40.531+02:00",
-          "ref": "3245294065255439639",
-          "type": "comment"
-        }
-      ],
-      "date": "31 July 2012 14:05",
-      "html": "Confusing... I am pulling my hair... <br /><br />Can we say it like this? <br /><br />In EBGP, the next hop address is changed as the routes are passed to the neighbor routers. At last when the routes reach an IBGP, the next hop address is kept as the last EBGP routers address? <br /><br />Simply, EBGP will update the next-hop address as the routes are passed to the neighbor routers but IBGP will NOT update the next-hop address as the routes are passed to the neighbor routers?<br /><br />We have to go to the each router inside IBGP network and run the command &quot;next-hop-self&quot; to inform the next downstream router that &quot;handover the packet to me&quot; to reach the destination network ???",
-      "id": "3245294065255439639",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "J Thomas",
-      "profile": "http://www.joera.in",
-      "pub": "2012-07-31T14:05:58.610+02:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "25 February 2018 10:27",
-          "html": "The rest of that section is (IMHO) a pretty good summary. Think about all possible scenarios of using BGP between multiple AS connected to the same LAN (I specifically mentioned Internet Exchange Points), and figure out how to ensure optimal traffic flow regardless of how the BGP sessions are set up.<br /><br />Sometimes you need to think about a problem, draw a bit, and get your hands dirty in a lab instead of looking around... or as someone said &quot;you can observe a lot by just watching&quot; ;)",
-          "id": "7305808911106344833",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-02-25T10:27:51.615+01:00",
-          "ref": "5725309263581042688",
-          "type": "comment"
-        }
-      ],
-      "date": "25 February 2018 09:02",
-      "html": "Hi Ivan,<br /><br />Great post!<br />However can you please summarize what does it exactly mean by &quot;Next-Hop Optimization on eBGP sessions&quot;. Spent my past 3 hours looking for an explanation but could not find anything satisfactory.<br /><br />Thanks!",
-      "id": "5725309263581042688",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ishan",
-      "profile": null,
-      "pub": "2018-02-25T09:02:23.346+01:00",
-      "ref": "8931848624155749119",
-      "type": "comment"
-    }
-  ],
-  "count": 18,
-  "id": "8931848624155749119",
-  "type": "post",
-  "url": "2011/08/bgp-next-hop-processing.html"
+   "comments": [
+      {
+         "date": "30 August 2011 03:00",
+         "html": "Hi, <br /><br />Isn&#39;t MED actually propagated on EBGP routes?",
+         "id": "159095993942192741",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "The Other Guy",
+         "profile": null,
+         "pub": "2011-08-30T03:00:08.254+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "date": "30 August 2011 03:28",
+         "html": "MED that is received on a prefix from a(n EBGP) neighbor is not propagated to an EBGP neigbor. I.e. if PE-A receives a prefix from X1 with a MED set, and then advertises that same prefix to X2, the MED attributed will not be set (by default).",
+         "id": "4179127801875226932",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "M Kh",
+         "profile": null,
+         "pub": "2011-08-30T03:28:19.677+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "09 December 2012 00:33",
+               "html": "Ivan got owned...",
+               "id": "235180027434563832",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2012-12-09T00:33:45.281+01:00",
+               "ref": "7817639673849333301",
+               "type": "comment"
+            }
+         ],
+         "date": "30 August 2011 16:56",
+         "html": "Hi Ivan, excellent summary, but there are few statements that may require a little bit of clarification.<br /><br />Firstly, for leaking the edge link IP prefixes into IGP. A while ago, it made total sense to either change the next-hop to self or leak edge prefixes into BGP, to maintain reachability to provider managed devices at customer premises. This ensured network stability, to some extent. Nowadays, the requirements for fast convergence based on BGP NHT/PIC may dictate that edge link prefixes are leaked into IGP, for the purpose of fast event propagation. Furthermore, preserving the eBGP next-hop has some useful accounting implications, e.g. when exporting BGP next-hop in Netflow and looking to construct &quot;external&quot; traffic matrix. And network stability could be still controlled by using exponential event dampening (low-pass filtering).<br /><br />Secondly, using redistribution no longer has advantage of &quot;faster SPF&quot; over type-1 LSA injection with the introduction of iSPF (invented in ARPANet!) to both OSPF/ISIS. Even without iSPF, SPF takes insignificant time of overall convergence process on modern CPU&#39;s - the majority of time is spent updating distributed forwarding tables after a change. Furthermore, redistribution might be even considered dangerous due to type-5 LSA&#39;s having larger flooding scope (there have been well-known precedents with that), not to mention that type-5 LSAs consume more memory and create more flooding overhead (less of concern, though). <br /><br />Thirdly, changing next-hop to self on a route-reflector *may* be required even in production network if you need to ensure that RR is in the forwarding path to avoid route deflection (not the best design, though). This operation is also a key component for building hierarchical LSPs using BGP-based label propagation for overlay LSPs.<br /><br />Regards,<br /><br />Petr",
+         "id": "7817639673849333301",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "plapukhov",
+         "profile": null,
+         "pub": "2011-08-30T16:56:59.626+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "date": "31 August 2011 03:21",
+         "html": "Ivan,<br /><br />Excellent post.  Loved it!  Really brought closure to the previous post.  Thanks so much.<br /><br />Will",
+         "id": "284540523533427860",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Will",
+         "profile": null,
+         "pub": "2011-08-31T03:21:52.527+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "date": "11 October 2011 12:15",
+         "html": "Thanks for this post, I eventually sit down and read through it.<br />Just to add a minor point for other readers, the &quot;Next hop optimization on EBGP sessions&quot; is also known as the &quot;third-party next-hop&quot; feature. :)",
+         "id": "9123849822157428687",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Yap Chin Hoong",
+         "profile": null,
+         "pub": "2011-10-11T12:15:28.873+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "date": "11 October 2011 12:33",
+         "html": "The observation of SPF run for advertising the DMZ link into IGPs (IS-IS and OSPF) is really SUPERB! :-)<br /><br />also found 2 nice linkz about SPF...<br />http://routingfreak.wordpress.com/2008/03/04/shortest-path-first-calculation-in-ospf-and-is-is/<br />http://routingfreak.wordpress.com/2008/03/06/the-complete-and-partial-spf-in-is-is/",
+         "id": "8147315720551904040",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Yap Chin Hoong",
+         "profile": null,
+         "pub": "2011-10-11T12:33:42.786+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "date": "07 November 2011 19:31",
+         "html": "All of your posts are top notch - thank you and keep up the great blog! 8-)",
+         "id": "956611440417665252",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Terry Boedeker",
+         "profile": null,
+         "pub": "2011-11-07T19:31:07.153+01:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "08 July 2012 20:40",
+               "html": "Effectively what you&#39;ve discovered is that an IBGP next hop must be an IGP route, which makes perfect sense, otherwise you could get into all sorts of recursive routing.<br /><br />No, I&#39;ve never run into such an issue, I never tried to do something like that.",
+               "id": "3923982101781763934",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-07-08T20:40:52.776+02:00",
+               "ref": "1027764927242628181",
+               "type": "comment"
+            }
+         ],
+         "date": "07 July 2012 08:19",
+         "html": "Hi Ivan,<br /><br />I just ran into an issue I was not expecting that made me search on google about BGP routes with next-hop resolved through another BGP routes.<br />In my case an iBGP route&#39;s next-hop was resolved through another iBGP route. Both routes were installed in the routing table. The next-hop itself was reachable (ping/traceroute). However the destination was not: when debugging with &#39;debug ip packet&#39;, the router picked a loopback as the source (instead of the outgoing interface) and then declared the packet unroutable. Making the next-hop known through IGP fixed the problem. <br />Did you ever run into such an issue ? I could not find any explanation for it. My release is 12.4(15)T10.<br /><br /><br />Thanks for all the great information you share on your site.<br />Cheers,<br />Mat",
+         "id": "1027764927242628181",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Mat",
+         "profile": null,
+         "pub": "2012-07-07T08:19:26.466+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "date": "11 July 2012 09:12",
+         "html": "Yes, nobody ever want to do that, it just happens that in some infamous lab environment they make you run into that kind of issue ! :)<br />I am still surprised that the routes were installed in the routing table though ! It&#39;s a strange logic to install a route in the RIB and then decide that it is not valid.<br /><br />Thanks,<br />Mat",
+         "id": "3976925022199881942",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Mat",
+         "profile": null,
+         "pub": "2012-07-11T09:12:58.901+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "31 July 2012 14:13",
+               "html": "You&#39;re almost correct. <br /><br />Next hop will be changed on EBGP session __unless_ the neighbor&#39;s IP address is in the same subnet as the current next hop.<br /><br />Next hop will NOT be changed on IBGP session __unless__ you specify next-hop-self, which you&#39;d do only on the AS boundary (usually you want to use IGP to control intra-AS routing toward BGP next hops).<br /><br />Then there are the weird cases including &#39;next-hop-unchanged&#39; for inter-AS MPLS/VPN or setting the next hop to a bogus value for remote-triggered black holes ;)<br /><br />As for pulling your hair - we all went through that phase when faced with BGP.",
+               "id": "2481431269885316168",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-07-31T14:13:58.725+02:00",
+               "ref": "3245294065255439639",
+               "type": "comment"
+            },
+            {
+               "date": "31 July 2012 17:03",
+               "html": "Thanks a lot Sir...<br /><br />The BGP feature &quot;EBGP session __unless_ the neighbor&#39;s IP address is in the same subnet as the current next hop&quot; may be enabled because in Multi-access environments the BGP routers may need to pass the packets one or two extra hops.<br /><br />What I meant was in EBGP Multiaccess environments all the other routers in a subnet are reachable from any router, but may not be BGP neighbors. This may cause additional hops? <br /><br />Am I right Sir?",
+               "id": "7448631824438260295",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "J Thomas",
+               "profile": "http://www.joera.in",
+               "pub": "2012-07-31T17:03:51.048+02:00",
+               "ref": "3245294065255439639",
+               "type": "comment"
+            },
+            {
+               "date": "31 July 2012 17:18",
+               "html": "EBGP next hop processing tries to avoid unnecessary packet forwarding across a single subnet. It works (recursively) even when there&#39;s only a partial mesh of EBGP sessions across the subnet _as long as_ nobody changes the next-hop manually.",
+               "id": "2609149383645572324",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2012-07-31T17:18:39.167+02:00",
+               "ref": "3245294065255439639",
+               "type": "comment"
+            },
+            {
+               "date": "31 July 2012 17:26",
+               "html": "Got it Sir..<br /><br />Thank you very much...",
+               "id": "9035932469580059401",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "J Thomas",
+               "profile": "http://www.joera.in",
+               "pub": "2012-07-31T17:26:40.531+02:00",
+               "ref": "3245294065255439639",
+               "type": "comment"
+            }
+         ],
+         "date": "31 July 2012 14:05",
+         "html": "Confusing... I am pulling my hair... <br /><br />Can we say it like this? <br /><br />In EBGP, the next hop address is changed as the routes are passed to the neighbor routers. At last when the routes reach an IBGP, the next hop address is kept as the last EBGP routers address? <br /><br />Simply, EBGP will update the next-hop address as the routes are passed to the neighbor routers but IBGP will NOT update the next-hop address as the routes are passed to the neighbor routers?<br /><br />We have to go to the each router inside IBGP network and run the command &quot;next-hop-self&quot; to inform the next downstream router that &quot;handover the packet to me&quot; to reach the destination network ???",
+         "id": "3245294065255439639",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "J Thomas",
+         "profile": "http://www.joera.in",
+         "pub": "2012-07-31T14:05:58.610+02:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "25 February 2018 10:27",
+               "html": "The rest of that section is (IMHO) a pretty good summary. Think about all possible scenarios of using BGP between multiple AS connected to the same LAN (I specifically mentioned Internet Exchange Points), and figure out how to ensure optimal traffic flow regardless of how the BGP sessions are set up.<br /><br />Sometimes you need to think about a problem, draw a bit, and get your hands dirty in a lab instead of looking around... or as someone said &quot;you can observe a lot by just watching&quot; ;)",
+               "id": "7305808911106344833",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-02-25T10:27:51.615+01:00",
+               "ref": "5725309263581042688",
+               "type": "comment"
+            }
+         ],
+         "date": "25 February 2018 09:02",
+         "html": "Hi Ivan,<br /><br />Great post!<br />However can you please summarize what does it exactly mean by &quot;Next-Hop Optimization on eBGP sessions&quot;. Spent my past 3 hours looking for an explanation but could not find anything satisfactory.<br /><br />Thanks!",
+         "id": "5725309263581042688",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ishan",
+         "profile": null,
+         "pub": "2018-02-25T09:02:23.346+01:00",
+         "ref": "8931848624155749119",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "05 May 2022 09:57",
+               "html": "<p>Managed to recover your excellent summary table and made it part of the blog post. Thanks a million!</p>\n",
+               "id": "1213",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-05-05T09:57:34",
+               "ref": "1196",
+               "type": "comment"
+            },
+            {
+               "date": "18 May 2022 09:20",
+               "html": "<p>Thanks Ivan.  There is one typo in the scenario column of last-but-one row - &quot;EBGP peer IP address is not in the same subnet as the BGP next hop&quot;; should have been &quot;same subnet&quot; instead of &quot;not&quot;.</p>\n",
+               "id": "1261",
+               "name": " Saravanan",
+               "pub": "2022-05-18T21:20:10",
+               "ref": "1213",
+               "type": "comment"
+            },
+            {
+               "date": "19 May 2022 04:10",
+               "html": "<p>Thank you, fixed.</p>\n",
+               "id": "1267",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-05-19T16:10:57",
+               "ref": "1261",
+               "type": "comment"
+            }
+         ],
+         "date": "02 May 2022 06:56",
+         "html": "<p>tried to summarise with a table in html format, but it is not reflected as a table, so deleted the original content.</p>\n",
+         "id": "1196",
+         "name": "Saravanan ",
+         "pub": "2022-05-02T18:56:15",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "19 May 2022 04:07",
+               "html": "<p>Yeah, one of those autonomous systems should have a different AS number... but everything works as explained even if they have the same AS number assuming PE-A does not do AS path checks on outbound updates (Cisco IOS doesn&#39;t IIRC)</p>\n",
+               "id": "1266",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-05-19T16:07:29",
+               "ref": "1262",
+               "type": "comment"
+            }
+         ],
+         "date": "19 May 2022 04:25",
+         "html": "<p>IS the AS in top left corner, AS 65001 (it may have a typo as it is shown to have AS 65000)?</p>\n",
+         "id": "1262",
+         "name": "Kirit Dawda",
+         "pub": "2022-05-19T04:25:58",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "11 November 2022 04:23",
+               "html": "<p>The correct answer depends on the platform you&#39;re using, but assuming you&#39;re working with Cisco products, keep in mind that &quot;next-hop-self&quot; changes the next hop of EBGP routes (which is probably what you have to have in your design), but not of reflected routes.</p>\n\n<p>Searching for &quot;route reflector next hop site:blog.ipspace.net&quot; will probably produce a few additional useful hits.</p>\n",
+               "id": "1506",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-11-11T16:23:03",
+               "ref": "1505",
+               "type": "comment"
+            }
+         ],
+         "date": "11 November 2022 10:20",
+         "html": "<p>I have a one question. If we have a scenario:  AS with 2 Route reflectors, which have iBGP peering between those RRs. Should there be a next-hop-self command on the iBGP peering between Route reflectors? Or what is the design recommendation and why ?\nI&#39;ve run into an issue if the next-hop-self command is not used. </p>\n",
+         "id": "1505",
+         "name": " Vladimir",
+         "pub": "2022-11-11T10:20:43",
+         "type": "comment"
+      }
+   ],
+   "count": 14,
+   "id": "8931848624155749119",
+   "type": "post",
+   "url": "2011/08/bgp-next-hop-processing.html"
 }

@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>14 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17446363221396052047" rel="nofollow">Sander Steffann</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7954181035843491988">05 February 2020 12:42</a>
+                <a rel="nofollow" id="c7954181035843491988" href="#7954181035843491988">05 February 2020 12:42</a>
               </span>
             </div>
-            <p class="comment-content">I fully agree. The classic IGP+iBGP combination is well tested and works fine in many scenarios. Inventing new solutions when encountering new problems is fine, but inventing stuff to be &quot;hip&quot; is just asking for trouble.</p>
+            <div class="comment-content">I fully agree. The classic IGP+iBGP combination is well tested and works fine in many scenarios. Inventing new solutions when encountering new problems is fine, but inventing stuff to be &quot;hip&quot; is just asking for trouble.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/05889212960761838838" rel="nofollow">xk</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#923364120211974291">05 February 2020 17:43</a>
+                <a rel="nofollow" id="c923364120211974291" href="#923364120211974291">05 February 2020 17:43</a>
               </span>
             </div>
-            <p class="comment-content">Just my personal opinion, but I fail to understand why we need to build the underlay with BGP. I get that manufacturers have gone to great lengths to improve BGP failover times, but everyone acts like OSPF and IS-IS are boring dead protocols that confuse people.<br /><br />I actually prefer IS-IS because it’s existence before IP pervasiveness meant it doesn’t rely on IP to function. If VXLAN is the new layer2, why burn a bunch of time addressing interfaces in your underlay. OSPFv3 a la IPv6 Link Local SLAAC or the simplicity of a loopback and ip unnumbered on IS-IS makes Zero Touch way simpler. Less state for the fabric to maintain, and Link state protocols provide a explicit border because when you touch another fabric or the border of your lab you use EBGP anyhow... but maybe I’m just old school.</p>
+            <div class="comment-content">Just my personal opinion, but I fail to understand why we need to build the underlay with BGP. I get that manufacturers have gone to great lengths to improve BGP failover times, but everyone acts like OSPF and IS-IS are boring dead protocols that confuse people.<br /><br />I actually prefer IS-IS because it’s existence before IP pervasiveness meant it doesn’t rely on IP to function. If VXLAN is the new layer2, why burn a bunch of time addressing interfaces in your underlay. OSPFv3 a la IPv6 Link Local SLAAC or the simplicity of a loopback and ip unnumbered on IS-IS makes Zero Touch way simpler. Less state for the fabric to maintain, and Link state protocols provide a explicit border because when you touch another fabric or the border of your lab you use EBGP anyhow... but maybe I’m just old school.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17553600013770162988" rel="nofollow">AlexM</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8996284532329668021">05 February 2020 21:00</a>
+                <a rel="nofollow" id="c8996284532329668021" href="#8996284532329668021">05 February 2020 21:00</a>
               </span>
             </div>
-            <p class="comment-content">This is just because you happen to have apps that need to be routed in the underlay and you do not want to deal with IGP/BGP redistribution because it adds no value to the network infrastructure.  Just to name a few (NSX, multicast apps ). And it will be overkill to run geneve upon vxlan for the first or not been able to make the apps working for the last (while waiting to get a working EVPN RT-6 to 8 implementation).</p>
+            <div class="comment-content">This is just because you happen to have apps that need to be routed in the underlay and you do not want to deal with IGP/BGP redistribution because it adds no value to the network infrastructure.  Just to name a few (NSX, multicast apps ). And it will be overkill to run geneve upon vxlan for the first or not been able to make the apps working for the last (while waiting to get a working EVPN RT-6 to 8 implementation).</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17193851449183304827" rel="nofollow">Jeff Tantsura</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8746084227020820136">06 February 2020 08:18</a>
+                <a rel="nofollow" id="c8746084227020820136" href="#8746084227020820136">06 February 2020 08:18</a>
               </span>
             </div>
-            <p class="comment-content">eBGP in underlay (and overlay) makes a lot of sense, we could go into great depth into fast convergence/route resolution and recursiveness.<br />May you want to run an IGP for the underlay - you don’t have to stick to vanilla LS protocols.<br />There’s RIFT (I’m biased - but this is really great work), there are extensions to LS protocols that reduce flooding (and this is the real issue of using IGP’s at scale) - draft-ietf-lsr-dynamic-flooding, implemented in NX-OS and EOS</p>
+            <div class="comment-content">eBGP in underlay (and overlay) makes a lot of sense, we could go into great depth into fast convergence/route resolution and recursiveness.<br />May you want to run an IGP for the underlay - you don’t have to stick to vanilla LS protocols.<br />There’s RIFT (I’m biased - but this is really great work), there are extensions to LS protocols that reduce flooding (and this is the real issue of using IGP’s at scale) - draft-ietf-lsr-dynamic-flooding, implemented in NX-OS and EOS</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2419721811071791981">08 February 2020 15:40</a>
+                <a rel="nofollow" id="c2419721811071791981" href="#2419721811071791981">08 February 2020 15:40</a>
               </span>
             </div>
-            <p class="comment-content">Would love to hear why eBGP in the underlay would converge faster and/or better than IS-IS or OSPF (assuming similar quality of implementation)... and thanks for the dynamic flooding pointer!</p>
+            <div class="comment-content">Would love to hear why eBGP in the underlay would converge faster and/or better than IS-IS or OSPF (assuming similar quality of implementation)... and thanks for the dynamic flooding pointer!</div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7057661159722856702">06 February 2020 16:36</a>
+                <a rel="nofollow" id="c7057661159722856702" href="#7057661159722856702">06 February 2020 16:36</a>
               </span>
             </div>
-            <p class="comment-content">Hi there, <br />I reckon Juniper has just applied its native SP knowledge and way of architecting L2/L3 transport services to the DC but within the boundaries of possibly some of the boxes&#39; limitation. Some others such as Cumulus had the ability and the chance/will to go beyond an SP-to-DC configuration adaptation and managed if am not mistaken to ultra-simplify the fabric overlay and underlay configuration/complexity with just inter-IPv6_Link-Local address unnumbered eBGP sessions carrying multiple BGP families (tipically IPv4 for the underlay and VPNv4/EVPN for the overlay) which I find marvellously elegant and simple/compact and therefore less expensive to manage and operate. <br /> <br />Regarding the eBGP building the underlay, it is just the WRONG protocol for that purpose but it is the only viable option currently in big DC (Medium/small DCs I reckon are not excused !!!). The underlay IS THE job for an IGP but the industry needs an IGP thought/designed for dense topologies such those present in big fabrics. Furthermore, with the IGP in the DC/Fabric, Segment Routing would follow naturally/natively too and it would also be possible to think of deploying Fabric topologies other than CLOS that can provide even densier topologies for, say, even lower-latencies requirements. <br /><br />Cheers and keep smiling<br />Andrea<br /></p>
+            <div class="comment-content">Hi there, <br />I reckon Juniper has just applied its native SP knowledge and way of architecting L2/L3 transport services to the DC but within the boundaries of possibly some of the boxes&#39; limitation. Some others such as Cumulus had the ability and the chance/will to go beyond an SP-to-DC configuration adaptation and managed if am not mistaken to ultra-simplify the fabric overlay and underlay configuration/complexity with just inter-IPv6_Link-Local address unnumbered eBGP sessions carrying multiple BGP families (tipically IPv4 for the underlay and VPNv4/EVPN for the overlay) which I find marvellously elegant and simple/compact and therefore less expensive to manage and operate. <br /> <br />Regarding the eBGP building the underlay, it is just the WRONG protocol for that purpose but it is the only viable option currently in big DC (Medium/small DCs I reckon are not excused !!!). The underlay IS THE job for an IGP but the industry needs an IGP thought/designed for dense topologies such those present in big fabrics. Furthermore, with the IGP in the DC/Fabric, Segment Routing would follow naturally/natively too and it would also be possible to think of deploying Fabric topologies other than CLOS that can provide even densier topologies for, say, even lower-latencies requirements. <br /><br />Cheers and keep smiling<br />Andrea<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -144,10 +139,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2456003683449952675">08 February 2020 15:44</a>
+                <a rel="nofollow" id="c2456003683449952675" href="#2456003683449952675">08 February 2020 15:44</a>
               </span>
             </div>
-            <p class="comment-content">Hi Andrea,<br /><br />I wonder where &quot;only viable option in big DCs&quot; comes from? Well-designed OSPF was good enough for networks with tens of thousands of nodes, and as Dinesh Dutt explained in Software Gone Wild episode 92, there are very large environments happily running OSPF or IS-IS.<br /><br />Kind regards,<br />Ivan</p>
+            <div class="comment-content">Hi Andrea,<br /><br />I wonder where &quot;only viable option in big DCs&quot; comes from? Well-designed OSPF was good enough for networks with tens of thousands of nodes, and as Dinesh Dutt explained in Software Gone Wild episode 92, there are very large environments happily running OSPF or IS-IS.<br /><br />Kind regards,<br />Ivan</div>
           </div>
         </li>
       </div>
@@ -162,10 +157,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08479860629623524293" rel="nofollow">Andrea Di Donato</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2516705587581133832">08 February 2020 18:54</a>
+                <a rel="nofollow" id="c2516705587581133832" href="#2516705587581133832">08 February 2020 18:54</a>
               </span>
             </div>
-            <p class="comment-content">Hello Ivan,<br />To be honest with you, when I saw all that effort in defining new routing protocols for ultra-dense topologies, I assumed there must had been a clear and strong requirement within the industry/academia fuelling all that effort. My assumption got even stronger with the evidence of seeing so many deployments with eBGP as the CLOS underlay protocol. What I did not know (I have just listened Dinesh on the Software Gone Wild episode 92 as you pointed out) is that well engineered multi-level/multi-area ISIS and OSPF implementations build the underlay of pretty big/dense multi-pod/IGP_Area CLOS production networks today. Well, this makes me even happier then as I am a big fan of the IGP+BGP approach to the underlay/overlay L2/L3 transport layout !!<br /><br />Having said that though Ivan and thinking of OSPF here, I am guessing that a better IGP for dense topologies would have allowed those very same implementations that Dinesh mentioned in the podcast to actually be built as single area IGP Fabric which is way easier than multi-area design – not to mention how happy traditional TE and SR-TE would be too. I also wonder if the OSPF implementation on some of the newer vendors in this space (i.e. not the usual suspect 4/5 vendors) is mature enough for a production network especially acting as the OSPF ABRs for instance. So, a ‘dense-topology’ IGP would therefore I guess make life easier (and thus cheaper) for the code as well in this regard as it would allow a single-area design ?? <br />The other aspect I am not sure about regarding the eBGP as the underlay is that it has always seemed to me as if it was yet a further chance for the vendor X to sell you an automation engine (culture and products) too in order to deal with the additional proliferation of BGP policies and config….<br />Having said that, a better IGP might not be currently needed (we should see what the guys working on it think...Jeff ??) but I guess we should still take this as an opportunity to start working now on an a better IGP for future use ?  <br /><br />Cheers and keep smiling<br />Andrea<br /></p>
+            <div class="comment-content">Hello Ivan,<br />To be honest with you, when I saw all that effort in defining new routing protocols for ultra-dense topologies, I assumed there must had been a clear and strong requirement within the industry/academia fuelling all that effort. My assumption got even stronger with the evidence of seeing so many deployments with eBGP as the CLOS underlay protocol. What I did not know (I have just listened Dinesh on the Software Gone Wild episode 92 as you pointed out) is that well engineered multi-level/multi-area ISIS and OSPF implementations build the underlay of pretty big/dense multi-pod/IGP_Area CLOS production networks today. Well, this makes me even happier then as I am a big fan of the IGP+BGP approach to the underlay/overlay L2/L3 transport layout !!<br /><br />Having said that though Ivan and thinking of OSPF here, I am guessing that a better IGP for dense topologies would have allowed those very same implementations that Dinesh mentioned in the podcast to actually be built as single area IGP Fabric which is way easier than multi-area design – not to mention how happy traditional TE and SR-TE would be too. I also wonder if the OSPF implementation on some of the newer vendors in this space (i.e. not the usual suspect 4/5 vendors) is mature enough for a production network especially acting as the OSPF ABRs for instance. So, a ‘dense-topology’ IGP would therefore I guess make life easier (and thus cheaper) for the code as well in this regard as it would allow a single-area design ?? <br />The other aspect I am not sure about regarding the eBGP as the underlay is that it has always seemed to me as if it was yet a further chance for the vendor X to sell you an automation engine (culture and products) too in order to deal with the additional proliferation of BGP policies and config….<br />Having said that, a better IGP might not be currently needed (we should see what the guys working on it think...Jeff ??) but I guess we should still take this as an opportunity to start working now on an a better IGP for future use ?  <br /><br />Cheers and keep smiling<br />Andrea<br /></div>
           </div>
         </li>
       </div>
@@ -187,10 +182,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15493370358037866116" rel="nofollow">Aldrin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4088489476781321651">08 February 2020 06:22</a>
+                <a rel="nofollow" id="c4088489476781321651" href="#4088489476781321651">08 February 2020 06:22</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, It’s your blog and your narrative.  I clearly didn’t think that part through.  Wasn’t expecting this kind of vitriol.</p>
+            <div class="comment-content">Ivan, It’s your blog and your narrative.  I clearly didn’t think that part through.  Wasn’t expecting this kind of vitriol.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -206,10 +201,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2206529241619509147">08 February 2020 15:38</a>
+                <a rel="nofollow" id="c2206529241619509147" href="#2206529241619509147">08 February 2020 15:38</a>
               </span>
             </div>
-            <p class="comment-content">Dear Aldrin,<br /><br />Rereading what I wrote, I have to admit that even though I waited a long while before writing the blog post (and then toned it down), I used more colorful language than usual... but it makes me immensely sad and bitter when I see excellent engineers making spurious technical arguments to justify (what seems to me to be) product marketing decisions that I simply can&#39;t agree with.<br /><br />I apologize if I offended anyone with a direct and somewhat harsh opinion (I was never known for my diplomatic skills), and hope we&#39;ll find a technical topic in the future where our opinions won&#39;t be so opposite, as I always enjoyed the technical discussions we had.<br /><br />Kind regards,<br />Ivan</p>
+            <div class="comment-content">Dear Aldrin,<br /><br />Rereading what I wrote, I have to admit that even though I waited a long while before writing the blog post (and then toned it down), I used more colorful language than usual... but it makes me immensely sad and bitter when I see excellent engineers making spurious technical arguments to justify (what seems to me to be) product marketing decisions that I simply can&#39;t agree with.<br /><br />I apologize if I offended anyone with a direct and somewhat harsh opinion (I was never known for my diplomatic skills), and hope we&#39;ll find a technical topic in the future where our opinions won&#39;t be so opposite, as I always enjoyed the technical discussions we had.<br /><br />Kind regards,<br />Ivan</div>
           </div>
         </li>
       </div>
@@ -224,10 +219,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15493370358037866116" rel="nofollow">Aldrin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8826115009351281342">08 February 2020 19:54</a>
+                <a rel="nofollow" id="c8826115009351281342" href="#8826115009351281342">08 February 2020 19:54</a>
               </span>
             </div>
-            <p class="comment-content">There’s only so much of the picture that can fit in the comments section.  The grander EVPN story starts with its background and continued evolution across multiple domains and use cases.  What is being called out here is a very specific data center reference design doc — there’s a story behind that too, and it’s not marketing.  <br /><br />For example, a key goal of that doc is to expose what our fabric controller is driving under the covers.  It starts with the basic use case of a simple IP fabric.   Some folks don’t need overlays.  OSPF/ISIS is not ideal for very large fabrics so EBGP was chosen to avoid deploying different solutions for different size IP fabrics in the same company (think large enterprise or SP with many fabrics of different sizes geographically dispersed).  Not perfect either, so meanwhile Tony P (Juniper) invented RIFT, which sparked other fabric optimized IGP efforts in the IETF (Juniper was behind EVPN too — https://tools.ietf.org/html/draft-raggarwa-mac-vpn-01).  When one of these land we would swap out EBGP in the solution.  However operators are free to replace EBGP with OSPF or ISIS if they see fit (and understand the flooding inefficiencies in large dense topologies).  I started my comment in the original blog with this statement, which you ignored in this blog.<br /><br />Then we added the overlay use case on top of the IP fabric use case solution.  Many of our larger customers don’t want ANY overlay/tenant state in P routers (control or data plane).  So instead of the controller pushing different solutions for different customer types and fabric sizes (this too is complexity) we chose to keep it consistent given the outcome is the same in every case.  In fact some customers have hosts in overlays and hosts in the underlay simultaneously, since only a subset of their endpoints need to be segmented away from the larger set, and/or they are migrating to host-based overlays or cloud-native application models. <br /><br />The controller hides the verbosity (explicit config), but when operator has to troubleshoot, detail is there under the covers.  No magic that leads to incorrect assumptions at a time of sheer panic.  I ran a very large production network for 20 years and rejected special sauce for this reason.  We provided a doc that exposes what we do under the controller.  That’s all.  It’s not marketing.  You too have blogged many times about knowing your network. How can you know it if you can’t see it?<br /><br />There’s more to the story that I hope we can talk about first.  It’s not all black and white. </p>
+            <div class="comment-content">There’s only so much of the picture that can fit in the comments section.  The grander EVPN story starts with its background and continued evolution across multiple domains and use cases.  What is being called out here is a very specific data center reference design doc — there’s a story behind that too, and it’s not marketing.  <br /><br />For example, a key goal of that doc is to expose what our fabric controller is driving under the covers.  It starts with the basic use case of a simple IP fabric.   Some folks don’t need overlays.  OSPF/ISIS is not ideal for very large fabrics so EBGP was chosen to avoid deploying different solutions for different size IP fabrics in the same company (think large enterprise or SP with many fabrics of different sizes geographically dispersed).  Not perfect either, so meanwhile Tony P (Juniper) invented RIFT, which sparked other fabric optimized IGP efforts in the IETF (Juniper was behind EVPN too — https://tools.ietf.org/html/draft-raggarwa-mac-vpn-01).  When one of these land we would swap out EBGP in the solution.  However operators are free to replace EBGP with OSPF or ISIS if they see fit (and understand the flooding inefficiencies in large dense topologies).  I started my comment in the original blog with this statement, which you ignored in this blog.<br /><br />Then we added the overlay use case on top of the IP fabric use case solution.  Many of our larger customers don’t want ANY overlay/tenant state in P routers (control or data plane).  So instead of the controller pushing different solutions for different customer types and fabric sizes (this too is complexity) we chose to keep it consistent given the outcome is the same in every case.  In fact some customers have hosts in overlays and hosts in the underlay simultaneously, since only a subset of their endpoints need to be segmented away from the larger set, and/or they are migrating to host-based overlays or cloud-native application models. <br /><br />The controller hides the verbosity (explicit config), but when operator has to troubleshoot, detail is there under the covers.  No magic that leads to incorrect assumptions at a time of sheer panic.  I ran a very large production network for 20 years and rejected special sauce for this reason.  We provided a doc that exposes what we do under the controller.  That’s all.  It’s not marketing.  You too have blogged many times about knowing your network. How can you know it if you can’t see it?<br /><br />There’s more to the story that I hope we can talk about first.  It’s not all black and white. </div>
           </div>
         </li>
       </div>
@@ -249,10 +244,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15493370358037866116" rel="nofollow">Aldrin</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3256817850847857930">08 February 2020 21:10</a>
+                <a rel="nofollow" id="c3256817850847857930" href="#3256817850847857930">08 February 2020 21:10</a>
               </span>
             </div>
-            <p class="comment-content">Let me pose a problem for you.  This time I hope to know your own recommendations.<br /><br />How does the network know that a VTEP is actually alive?  (1) from the point of view of the control plane and (2) from the point of view of the data plane?  And how do you ensure the that control and data plane liveness monitoring has the same view?   BFD for BGP is a possible solution for (1) but it’s not meant for 3rd party next hops, i.e. it doesn’t address (2).  For (2) there is BFD for VXLAN which doesn’t address (1), i.e. the control plane doesn’t know of the failure and so hasn’t offered an alternative.  Moreover, solutions for (2) tend to break down without ASIC assist when the number of tunnels are huge, so solutions can’t assume that the HW support exists.  </p>
+            <div class="comment-content">Let me pose a problem for you.  This time I hope to know your own recommendations.<br /><br />How does the network know that a VTEP is actually alive?  (1) from the point of view of the control plane and (2) from the point of view of the data plane?  And how do you ensure the that control and data plane liveness monitoring has the same view?   BFD for BGP is a possible solution for (1) but it’s not meant for 3rd party next hops, i.e. it doesn’t address (2).  For (2) there is BFD for VXLAN which doesn’t address (1), i.e. the control plane doesn’t know of the failure and so hasn’t offered an alternative.  Moreover, solutions for (2) tend to break down without ASIC assist when the number of tunnels are huge, so solutions can’t assume that the HW support exists.  </div>
           </div>
         </li>
       </div>
@@ -267,10 +262,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00644778105219383913" rel="nofollow">Alex</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8569922722791947932">26 February 2020 20:41</a>
+                <a rel="nofollow" id="c8569922722791947932" href="#8569922722791947932">26 February 2020 20:41</a>
               </span>
             </div>
-            <p class="comment-content">Ah, another series of never-ending saga. And again some mythical Junos limitations... But wait, what am I doing wrong here? http://jncie.tech/2020/02/26/juniper-evpn-bgp-options-ebgp-only-design/ </p>
+            <div class="comment-content">Ah, another series of never-ending saga. And again some mythical Junos limitations... But wait, what am I doing wrong here? http://jncie.tech/2020/02/26/juniper-evpn-bgp-options-ebgp-only-design/ </div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -286,10 +281,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5299061566606688838">26 February 2020 20:44</a>
+                <a rel="nofollow" id="c5299061566606688838" href="#5299061566606688838">26 February 2020 20:44</a>
               </span>
             </div>
-            <p class="comment-content">It wasn’t me making those arguments... what do I know what’s really going on...</p>
+            <div class="comment-content">It wasn’t me making those arguments... what do I know what’s really going on...</div>
           </div>
         </li>
       </div>

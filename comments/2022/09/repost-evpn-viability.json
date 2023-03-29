@@ -1,0 +1,97 @@
+{
+   "comments": [
+      {
+         "date": "27 September 2022 07:08",
+         "html": "<p>At my last job we managed to achieve EVPN interop between Cumulus and Arista (due to different functionality not lead time) but we had to turn off Cumulus automagic and make the config more explicit. And yes, we &quot;solved&quot; the problem of generating voluminous configs using Ansible but that still leaves you open to typos. I guess that&#39;s why vendors are pushing &quot;digital twin&quot; simulations or config verification tools. Ultimately I think we need to move beyond text config files and templating but that&#39;s probably 10-20 years away for most people.</p>\n\n<p>In retrospect I wish we had just built an L2 network.</p>\n",
+         "id": "1398",
+         "name": "Wes Felter",
+         "pub": "2022-09-27T19:08:50",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "28 September 2022 09:18",
+               "html": "<p>Wonderful. Add another abstraction layer to abstract away the mess we created in the first place &#x1F923;&#x1F923;</p>\n\n<p>That&#39;s why everyone loves the networking industry and IETF &#x1F61C;</p>\n",
+               "id": "1400",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-09-28T09:18:27",
+               "ref": "1399",
+               "type": "comment"
+            },
+            {
+               "date": "28 September 2022 12:19",
+               "html": "<p>I&#39;d look at it as an alternative to the in-house automation tools. While the outcome may appear similar, you do get the benefit of someone else building, testing, and supporting it.</p>\n\n<p>One could argue that this lets your ops folks to focus on more interesting things, such as helping your in-house app developers / SRE with proper network and security designs and implementations.</p>\n",
+               "id": "1401",
+               "name": "Dmitri Kalintsev",
+               "pub": "2022-09-28T12:19:35",
+               "ref": "1400",
+               "type": "comment"
+            },
+            {
+               "date": "28 September 2022 09:23",
+               "html": "<p>I&#39;ve done both and Apstra is 10x better than Ansible as long as you use it properly (you have to give up a lot of ego and nerd knobs). I agree with Dmitri that you should choose one management plane and stick with it so there aren&#39;t multiple management layers.</p>\n",
+               "id": "1405",
+               "name": "Wes Felter",
+               "pub": "2022-09-28T21:23:49",
+               "ref": "1399",
+               "type": "comment"
+            },
+            {
+               "date": "29 September 2022 11:11",
+               "html": "<p>You can&#39;t compare Apstra and Ansible -- that&#39;s like comparing a car with its left front wheel ;)</p>\n\n<p>IIRC Apstra did use Ansible to push the configurations to the devices a long while ago. No idea what they&#39;re doing now.</p>\n",
+               "id": "1407",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-09-29T11:11:45",
+               "ref": "1405",
+               "type": "comment"
+            }
+         ],
+         "date": "28 September 2022 03:17",
+         "html": "<p>The described situation is something that Apstra was designed to address as one of its key use cases. The interop matrix is of course not any-to-any, but is hopefully comprehensive enough to be useful.</p>\n\n<p>To the best of my knowledge, all &quot;Yes&quot; intersection scenarios are tested for each of supported versions of the respective vendors&#39; NOS.</p>\n\n<p>https://www.juniper.net/documentation/us/en/software/apstra4.1/apstra-user-guide/topics/ref/feature-matrix-411.html</p>\n",
+         "id": "1399",
+         "name": " Dmitri Kalintsev",
+         "pub": "2022-09-28T03:17:39",
+         "type": "comment"
+      },
+      {
+         "date": "28 September 2022 10:12",
+         "html": "<p>Regarding iBGP over eBGP &quot;saga&quot; let me repost a snippet from a comment I made in &quot;The EVPN/BGP Saga Continues&quot;.</p>\n\n<p>&quot;...  The grander EVPN story starts with its background and continued evolution across multiple domains and use cases. What is being called out here is a very specific data center reference design doc &mdash; there&rsquo;s a story behind that too, and it&rsquo;s not marketing.</p>\n\n<p>... a key goal of that doc is to expose what our fabric controller is driving under the covers. It starts with the basic use case of a simple IP fabric. Some folks don&rsquo;t need overlays. OSPF/ISIS is not ideal for very large fabrics so EBGP was chosen to avoid deploying different solutions for different size IP fabrics in the same company (think large enterprise or SP with many fabrics of different sizes geographically dispersed). ... However operators are free to replace EBGP with OSPF or ISIS if they see fit (and understand the flooding inefficiencies in large dense topologies). &gt;&gt; I started my comment in the original blog with this statement, which you ignored in this blog. &lt;&lt;</p>\n\n<p>Then we added the overlay use case on top of the IP fabric use case solution. Many of our larger customers don&rsquo;t want ANY overlay/tenant state in P routers (control or data plane) [i.e. rules out use of hop-by-hop EVPN route distribution]. So instead of the controller pushing different solutions for different customer types and fabric sizes (this too is complexity) we chose to keep it consistent given the outcome is the same in every case. In fact &gt;&gt;some customers have hosts in overlays and hosts in the underlay simultaneously&lt;&lt;, since only a subset of their endpoints need to be segmented away from the larger set, and/or they are migrating to host-based overlays or cloud-native application models.</p>\n\n<p>The controller hides the verbosity (explicit config), but when operator has to troubleshoot, detail is there under the covers. ... We provided a doc that exposes what we do under the controller. That&rsquo;s all. It&rsquo;s not marketing. ...&quot;</p>\n",
+         "id": "1406",
+         "name": " Aldrin",
+         "pub": "2022-09-28T22:12:16",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "29 September 2022 06:46",
+               "html": "<p>Oh shoot, I meant &ldquo;does <em>not</em> include Arista&rdquo;. Sorry!</p>\n",
+               "id": "1411",
+               "name": "Christian Hitchcock",
+               "pub": "2022-09-29T18:46:28",
+               "ref": "1410",
+               "type": "comment"
+            },
+            {
+               "date": "29 September 2022 06:53",
+               "html": "<p>I&#39;m positive Arista has great lab guides and super-helpful SEs, but their official EVPN-with-VXLAN configuration documentation focuses on the crazy stuff -- the only example of IGP+IBGP I could find in &quot;sample configurations&quot; (https://www.arista.com/en/um-eos/eos-sample-configurations) is EVPN-with-MLPS stuff.</p>\n\n<p>Not that it would be hard to figure it out, but one should always start with the easy stuff and work from there.</p>\n",
+               "id": "1412",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-09-29T18:53:38",
+               "ref": "1410",
+               "type": "comment"
+            }
+         ],
+         "date": "29 September 2022 06:44",
+         "html": "<p>I assume the &ldquo;the design promoted by almost no vendor&rdquo; does include Arista, correct? We&rsquo;ve pretty much only been recommended that for an upcoming SR-TE deployment by Arista and they even have super simple lab guides for that exact use case. </p>\n",
+         "id": "1410",
+         "name": "Christian Hitchcock",
+         "pub": "2022-09-29T18:44:21",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2022/09/repost-evpn-viability.html"
+}

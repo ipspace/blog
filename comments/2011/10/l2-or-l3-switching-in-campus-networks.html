@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>42 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Guest</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6843592057422232785">31 October 2011 15:50</a>
+                <a rel="nofollow" id="c6843592057422232785" href="#6843592057422232785">31 October 2011 15:50</a>
               </span>
             </div>
-            <p class="comment-content">I would go for &quot;Layer-3 switching (also known as routing) in the access layer.&quot;<br /><br />Why? No bullshitting around with the STP, and security concerns with root/bpdu -guard etc and storm-control.<br /><br />Just OSPF and use passive interfaces by default.<br /><br />Although the other option &quot;Layer-2 switching (also known as bridging) in the access layer&quot; might be interesting if he has a large number of clients (laptops mostly) who do roaming across the building.<br /><br />My 2 cents.</p>
+            <div class="comment-content">I would go for &quot;Layer-3 switching (also known as routing) in the access layer.&quot;<br /><br />Why? No bullshitting around with the STP, and security concerns with root/bpdu -guard etc and storm-control.<br /><br />Just OSPF and use passive interfaces by default.<br /><br />Although the other option &quot;Layer-2 switching (also known as bridging) in the access layer&quot; might be interesting if he has a large number of clients (laptops mostly) who do roaming across the building.<br /><br />My 2 cents.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">markg</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7342605959764107749">31 October 2011 16:28</a>
+                <a rel="nofollow" id="c7342605959764107749" href="#7342605959764107749">31 October 2011 16:28</a>
               </span>
             </div>
-            <p class="comment-content">We actually just finished implementing the &#39;VRF Lite Kludge&#39; in our environment to provide path separation between PCI and non-PCI systems.<br /><br />I can&#39;t say that this is the best issue and we are looking forward to transitioning to VSS later but we had&#39;t considered using MPLS/VPN.  Not sure what the advantage would be.</p>
+            <div class="comment-content">We actually just finished implementing the &#39;VRF Lite Kludge&#39; in our environment to provide path separation between PCI and non-PCI systems.<br /><br />I can&#39;t say that this is the best issue and we are looking forward to transitioning to VSS later but we had&#39;t considered using MPLS/VPN.  Not sure what the advantage would be.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Phil</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1947557195207469976">31 October 2011 17:03</a>
+                <a rel="nofollow" id="c1947557195207469976" href="#1947557195207469976">31 October 2011 17:03</a>
               </span>
             </div>
-            <p class="comment-content">We do exactly as per your final diagram is (well, no VSS - STP for blocking links) - layer2 access, layer3 core, MPLS VPNs to separate security zones, routing between security zones via firewalls. Core is 6500/sup720<br /><br />We rejected layer3 access for several reasons. The main one is that &quot;edge&quot; layer3 switches have very poor feature sets in comparison with bigger boxes - at the time, our concerns included &quot;no multicast in VRF lite on 3750&quot;, &quot;no netflow&quot;, &quot;no ipv6 in hardware (later introduced on 3750)&quot; as well as &quot;a hell of a lot more routers to configure&quot;<br /><br />We&#39;ve actually made edge subnets a lot larger as time has gone by; this helps avoid IP wastage. For example - a not uncommon requirement at our place is 10 floors with maybe 160 regular hosts but requirement for &quot;bursting&quot; to 50 extra dynamic IPs (e.g. during infrequent meetings) in each location. This needs a /24 each i.e. the best part of a /19, or I can provision a single big /21. This is also less lines in the router config. Fault domain size was a concern so we grew slowly - but we&#39;re just not seeing problems, only benefits.<br /><br />The original iteration was VRF lite. It was a pain in the backside, and I&#39;m glad we went with MPLS. Much less typing to bring up a new VRF, many fewer routing adjacencies.</p>
+            <div class="comment-content">We do exactly as per your final diagram is (well, no VSS - STP for blocking links) - layer2 access, layer3 core, MPLS VPNs to separate security zones, routing between security zones via firewalls. Core is 6500/sup720<br /><br />We rejected layer3 access for several reasons. The main one is that &quot;edge&quot; layer3 switches have very poor feature sets in comparison with bigger boxes - at the time, our concerns included &quot;no multicast in VRF lite on 3750&quot;, &quot;no netflow&quot;, &quot;no ipv6 in hardware (later introduced on 3750)&quot; as well as &quot;a hell of a lot more routers to configure&quot;<br /><br />We&#39;ve actually made edge subnets a lot larger as time has gone by; this helps avoid IP wastage. For example - a not uncommon requirement at our place is 10 floors with maybe 160 regular hosts but requirement for &quot;bursting&quot; to 50 extra dynamic IPs (e.g. during infrequent meetings) in each location. This needs a /24 each i.e. the best part of a /19, or I can provision a single big /21. This is also less lines in the router config. Fault domain size was a concern so we grew slowly - but we&#39;re just not seeing problems, only benefits.<br /><br />The original iteration was VRF lite. It was a pain in the backside, and I&#39;m glad we went with MPLS. Much less typing to bring up a new VRF, many fewer routing adjacencies.</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Phil</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7718355735857935395">31 October 2011 17:05</a>
+                <a rel="nofollow" id="c7718355735857935395" href="#7718355735857935395">31 October 2011 17:05</a>
               </span>
             </div>
-            <p class="comment-content">Advantages to MPLS over VRF-lite having moved from the latter - less typing per-VRF on each new router, fewer routing adjacencies, don&#39;t have to burn sub-ints or VLANs for per-VRF p2p interfaces and so on.<br /><br />There are apparently some Cisco IOS features coming which make VRF lite &quot;a bit like MPLS&quot; in terms of typing and config - IIRC it is basically auto-creation of the per-VRF p2p VLANs and maintenance of the routing adjacencies - but we&#39;re on MPLS and using it for other things (TE to load-balance unequal cost paths) now.</p>
+            <div class="comment-content">Advantages to MPLS over VRF-lite having moved from the latter - less typing per-VRF on each new router, fewer routing adjacencies, don&#39;t have to burn sub-ints or VLANs for per-VRF p2p interfaces and so on.<br /><br />There are apparently some Cisco IOS features coming which make VRF lite &quot;a bit like MPLS&quot; in terms of typing and config - IIRC it is basically auto-creation of the per-VRF p2p VLANs and maintenance of the routing adjacencies - but we&#39;re on MPLS and using it for other things (TE to load-balance unequal cost paths) now.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">tonhe</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4496799595833304580">31 October 2011 17:47</a>
+                <a rel="nofollow" id="c4496799595833304580" href="#4496799595833304580">31 October 2011 17:47</a>
               </span>
             </div>
-            <p class="comment-content">Loving the drawings Ivan!</p>
+            <div class="comment-content">Loving the drawings Ivan!</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">DanielG</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6012713880971464497">31 October 2011 17:59</a>
+                <a rel="nofollow" id="c6012713880971464497" href="#6012713880971464497">31 October 2011 17:59</a>
               </span>
             </div>
-            <p class="comment-content">Currently sitting in a huge all L2 campus, VLANs span everywhere, L3 routing at the core.<br /><br />Submitted designs for the latter option mentioned here. L3 at the distribution and p2p L3 links up the chain. Currently no need for pci compliance/security zones in the access layer. Planning to do identity based security into the DC(s).</p>
+            <div class="comment-content">Currently sitting in a huge all L2 campus, VLANs span everywhere, L3 routing at the core.<br /><br />Submitted designs for the latter option mentioned here. L3 at the distribution and p2p L3 links up the chain. Currently no need for pci compliance/security zones in the access layer. Planning to do identity based security into the DC(s).</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">rovinguser</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#796176853403583489">31 October 2011 18:50</a>
+                <a rel="nofollow" id="c796176853403583489" href="#796176853403583489">31 October 2011 18:50</a>
               </span>
             </div>
-            <p class="comment-content">One more remark (also made by guest): our campus vlans for wifi are getting bigger and bigger. There can be issues with L3 roaming using wifi as opposed to campus wide L2 vlans.<br />Remark : as a campus network admin, i really like this kind of blog posts, with (for me) real-life arhitecture issues.... Keep up the good work!</p>
+            <div class="comment-content">One more remark (also made by guest): our campus vlans for wifi are getting bigger and bigger. There can be issues with L3 roaming using wifi as opposed to campus wide L2 vlans.<br />Remark : as a campus network admin, i really like this kind of blog posts, with (for me) real-life arhitecture issues.... Keep up the good work!</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter John Hill</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1716757260647086818">31 October 2011 19:34</a>
+                <a rel="nofollow" id="c1716757260647086818" href="#1716757260647086818">31 October 2011 19:34</a>
               </span>
             </div>
-            <p class="comment-content">Route as much as possible. Proprietary protocols that do behind the scenes magic (VSS) bother me. I&#39;ve seen crazy bugs where a packet enters one chassis and gets to the egress asic on the other chassis, yet completely fails to leave the box (Confirmed by Cisco).<br /><br />Wireless reminds me of a campus version of vMotion. A technology that may be easy to deploy in a small network, but as things get larger, make designing for scale more difficult. Back in the day (1994), Carnegie Mellon had a dedicated wireless network wired network for all the APs. It peered with the rest of the campus network. It let us optimize the wireless network backbone separately from the wired network backbone. This was in the stone age of wireless networks.<br /><br />http://www.cmu.edu/computing/about/history/wireless/index.html has some interesting history.<br /><br />When going for scale, I think it best the the network engineers, software developers, system engineers, all have the same goals. We can&#39;t dumb down one of the legs of this three legged stool to make it easier for one of the other legs to function. Too much dependence on &quot;fancy&quot; / proprietary protocols makes one a slave to a vendors software development teams and update cycles.<br /><br />IMHO</p>
+            <div class="comment-content">Route as much as possible. Proprietary protocols that do behind the scenes magic (VSS) bother me. I&#39;ve seen crazy bugs where a packet enters one chassis and gets to the egress asic on the other chassis, yet completely fails to leave the box (Confirmed by Cisco).<br /><br />Wireless reminds me of a campus version of vMotion. A technology that may be easy to deploy in a small network, but as things get larger, make designing for scale more difficult. Back in the day (1994), Carnegie Mellon had a dedicated wireless network wired network for all the APs. It peered with the rest of the campus network. It let us optimize the wireless network backbone separately from the wired network backbone. This was in the stone age of wireless networks.<br /><br />http://www.cmu.edu/computing/about/history/wireless/index.html has some interesting history.<br /><br />When going for scale, I think it best the the network engineers, software developers, system engineers, all have the same goals. We can&#39;t dumb down one of the legs of this three legged stool to make it easier for one of the other legs to function. Too much dependence on &quot;fancy&quot; / proprietary protocols makes one a slave to a vendors software development teams and update cycles.<br /><br />IMHO</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ben J</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1259031664240232562">31 October 2011 21:28</a>
+                <a rel="nofollow" id="c1259031664240232562" href="#1259031664240232562">31 October 2011 21:28</a>
               </span>
             </div>
-            <p class="comment-content">Crazy idea here... fully L3 design, subnets based entirely on physical layout, no security beyond basic DoS/MitM protection, and provide all access to secured resources over VPNs to the data center. Security decisions are based on VPN credentials at the DC firewall. No need to separate guest users; they&#39;re only provided internet access without a VPN connection.<br /><br />Probably not appropriate for the typical corporate environment, but if your company culture has lots of people working remotely then you have to have the VPN set up for all your workers anyway, and why duplicate the security decisions from the VPN setup to the access network?</p>
+            <div class="comment-content">Crazy idea here... fully L3 design, subnets based entirely on physical layout, no security beyond basic DoS/MitM protection, and provide all access to secured resources over VPNs to the data center. Security decisions are based on VPN credentials at the DC firewall. No need to separate guest users; they&#39;re only provided internet access without a VPN connection.<br /><br />Probably not appropriate for the typical corporate environment, but if your company culture has lots of people working remotely then you have to have the VPN set up for all your workers anyway, and why duplicate the security decisions from the VPN setup to the access network?</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9004187480637123983">31 October 2011 22:51</a>
+                <a rel="nofollow" id="c9004187480637123983" href="#9004187480637123983">31 October 2011 22:51</a>
               </span>
             </div>
-            <p class="comment-content">What about a L3 design with statics routes per VRF in the access layer and BFD for failure detection?</p>
+            <div class="comment-content">What about a L3 design with statics routes per VRF in the access layer and BFD for failure detection?</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Rodrigo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2114017602225478360">31 October 2011 23:14</a>
+                <a rel="nofollow" id="c2114017602225478360" href="#2114017602225478360">31 October 2011 23:14</a>
               </span>
             </div>
-            <p class="comment-content">L2 + L3 but without VSS and similar protocols. They are all great until something goes wrong and you have to debug not so clear internal mechanisms and/or proprietary protocols to basically ending up reloading the boxes because your customers can&#39;t afford to wait for you to find what went wrong (assuming you would find it).<br /><br />If you go with the L2+L3 distribute your VLANs among your access-distribution uplinks to reduce the wasted bandwidth and rely on QoS for deal with congestion when all VLANs bounce to only one side. Btw you should already have a QoS policy in place to deal with other things beside congestion due to failure (e.g. congestion due to problematic hosts that are doing something unusual).<br /><br />Also make sure 4096 VLANs are not a problem to you. You might be able to use Q-in-Q to overcome this limitation, but last time I played with it some vendors had issues supporting Q-in-Q and additional features due to the way the packets would flow from asic-to-asic in the dataplane.<br /><br />But I believe we can make something a little clever with L3 only. So here&#39;s a couple of ideas:<br /><br />1) provisioning L3 only solution requires more typing but shouldn&#39;t really be a problem. If it is, then is time for you to put some scripting/automation in your provisioning process. Provisioning customer for a worldwide Provider also requires a lot of typing... guess what they usually do.<br /><br />2) If your L3 access switch supports BGP, please don&#39;t use OSPF, avoid it like the plague unless we are talking about your backbone.<br /><br />3) BGP works pretty well with CE-PE in a MPLS-VPN context so why shouldn&#39;t it work great between your L3 access and your L3 distribution (speaking of which... do you really need a distribution layer there?). Maybe BGP is not as reactive as OSPF but you can tweak a couple of things (timers and others) to make it react faster to changing events. Most probably you don&#39;t need sub-second convergence anyway (VOIP and Interactive Video can be a challenge).<br /><br />4) Unless you have roaming users with /32&#39;s floating around between different switches you probably are only going to need a dynamic routing protocol to &quot;test&quot; your access-distribution links and make sure you don&#39;t blackhole packets. See if there are other ways to validate these links, I believe that there are some vendors that implement alternative ways to signal routing protocols and/or interface status based on connectivity checks.<br /><br />5) If you have roaming users, and you per user VLANs, maybe you have to use something like 802.11X with dynamic VLAN assignment. Maybe you don&#39;t need your users to maintain a static IP to track his/her privileges, in which case your address pools would be static so one less reason to depend on a dynamic routing protocol.</p>
+            <div class="comment-content">L2 + L3 but without VSS and similar protocols. They are all great until something goes wrong and you have to debug not so clear internal mechanisms and/or proprietary protocols to basically ending up reloading the boxes because your customers can&#39;t afford to wait for you to find what went wrong (assuming you would find it).<br /><br />If you go with the L2+L3 distribute your VLANs among your access-distribution uplinks to reduce the wasted bandwidth and rely on QoS for deal with congestion when all VLANs bounce to only one side. Btw you should already have a QoS policy in place to deal with other things beside congestion due to failure (e.g. congestion due to problematic hosts that are doing something unusual).<br /><br />Also make sure 4096 VLANs are not a problem to you. You might be able to use Q-in-Q to overcome this limitation, but last time I played with it some vendors had issues supporting Q-in-Q and additional features due to the way the packets would flow from asic-to-asic in the dataplane.<br /><br />But I believe we can make something a little clever with L3 only. So here&#39;s a couple of ideas:<br /><br />1) provisioning L3 only solution requires more typing but shouldn&#39;t really be a problem. If it is, then is time for you to put some scripting/automation in your provisioning process. Provisioning customer for a worldwide Provider also requires a lot of typing... guess what they usually do.<br /><br />2) If your L3 access switch supports BGP, please don&#39;t use OSPF, avoid it like the plague unless we are talking about your backbone.<br /><br />3) BGP works pretty well with CE-PE in a MPLS-VPN context so why shouldn&#39;t it work great between your L3 access and your L3 distribution (speaking of which... do you really need a distribution layer there?). Maybe BGP is not as reactive as OSPF but you can tweak a couple of things (timers and others) to make it react faster to changing events. Most probably you don&#39;t need sub-second convergence anyway (VOIP and Interactive Video can be a challenge).<br /><br />4) Unless you have roaming users with /32&#39;s floating around between different switches you probably are only going to need a dynamic routing protocol to &quot;test&quot; your access-distribution links and make sure you don&#39;t blackhole packets. See if there are other ways to validate these links, I believe that there are some vendors that implement alternative ways to signal routing protocols and/or interface status based on connectivity checks.<br /><br />5) If you have roaming users, and you per user VLANs, maybe you have to use something like 802.11X with dynamic VLAN assignment. Maybe you don&#39;t need your users to maintain a static IP to track his/her privileges, in which case your address pools would be static so one less reason to depend on a dynamic routing protocol.</div>
           </div>
         </li>
       </div>
@@ -217,10 +212,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4115659700788453817">01 November 2011 00:58</a>
+                <a rel="nofollow" id="c4115659700788453817" href="#4115659700788453817">01 November 2011 00:58</a>
               </span>
             </div>
-            <p class="comment-content">L2 campus access switching is (1) cheaper, and (2) easier.<br /><br />(1) no L3 licenses<br />(2) simple configuration</p>
+            <div class="comment-content">L2 campus access switching is (1) cheaper, and (2) easier.<br /><br />(1) no L3 licenses<br />(2) simple configuration</div>
           </div>
         </li>
       </div>
@@ -235,10 +230,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Jon</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4124500204181602008">01 November 2011 01:10</a>
+                <a rel="nofollow" id="c4124500204181602008" href="#4124500204181602008">01 November 2011 01:10</a>
               </span>
             </div>
-            <p class="comment-content">Of course there&#39;s nothing to stop you doing L3 and L2 at the same time: http://packetlife.net/blog/2011/feb/9/hybrid-access-layer-design-revisited/</p>
+            <div class="comment-content">Of course there&#39;s nothing to stop you doing L3 and L2 at the same time: http://packetlife.net/blog/2011/feb/9/hybrid-access-layer-design-revisited/</div>
           </div>
         </li>
       </div>
@@ -253,10 +248,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8024258629386368626">01 November 2011 03:13</a>
+                <a rel="nofollow" id="c8024258629386368626" href="#8024258629386368626">01 November 2011 03:13</a>
               </span>
             </div>
-            <p class="comment-content">Once we determined the cost couldn&#39;t be beat, we went with the pure L3 design (on Juniper EX) and it has been great.  Besides the occasional requirement to span a subnet across multiple closets (NO!) of course.  The argument has always been &quot;L3 costs more&quot; but that&#39;s not always the case if you negotiate with the right vendors.<br /><br />When we looked at the VSS design, my Cisco SE gave us a rare solid piece of advice.  He said with VSS if you want to upgrade one, you have to take the whole VSS down.  This was 10 months ago and I&#39;m not sure if it&#39;s true anymore but that was a headache I didn&#39;t want to deal with.  <br /><br />For what it&#39;s worth, we&#39;re doing an OSPF totally stub area into area 0 at the dist/core layer and letting EIGRP summary routes take care of the campus reachability to/from DC&#39;s.  2x10GbE links per access closet, i have more BW in my campus than my DC&#39;s!</p>
+            <div class="comment-content">Once we determined the cost couldn&#39;t be beat, we went with the pure L3 design (on Juniper EX) and it has been great.  Besides the occasional requirement to span a subnet across multiple closets (NO!) of course.  The argument has always been &quot;L3 costs more&quot; but that&#39;s not always the case if you negotiate with the right vendors.<br /><br />When we looked at the VSS design, my Cisco SE gave us a rare solid piece of advice.  He said with VSS if you want to upgrade one, you have to take the whole VSS down.  This was 10 months ago and I&#39;m not sure if it&#39;s true anymore but that was a headache I didn&#39;t want to deal with.  <br /><br />For what it&#39;s worth, we&#39;re doing an OSPF totally stub area into area 0 at the dist/core layer and letting EIGRP summary routes take care of the campus reachability to/from DC&#39;s.  2x10GbE links per access closet, i have more BW in my campus than my DC&#39;s!</div>
           </div>
         </li>
       </div>
@@ -271,10 +266,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Kris</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3442146257524276638">01 November 2011 09:15</a>
+                <a rel="nofollow" id="c3442146257524276638" href="#3442146257524276638">01 November 2011 09:15</a>
               </span>
             </div>
-            <p class="comment-content">Without additional information I&#39;s say &quot;route where you must, bridge where you can&quot; and make sure to use DHCP Option 82. <br />Dot1x is an additional helper in wired enviroments... but once You can assign the IP without end-user interaction, You can use &#39;dummer&#39; access switches and route and secure at your own gusto.</p>
+            <div class="comment-content">Without additional information I&#39;s say &quot;route where you must, bridge where you can&quot; and make sure to use DHCP Option 82. <br />Dot1x is an additional helper in wired enviroments... but once You can assign the IP without end-user interaction, You can use &#39;dummer&#39; access switches and route and secure at your own gusto.</div>
           </div>
         </li>
       </div>
@@ -289,10 +284,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">mnantel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1520601485158687222">01 November 2011 10:51</a>
+                <a rel="nofollow" id="c1520601485158687222" href="#1520601485158687222">01 November 2011 10:51</a>
               </span>
             </div>
-            <p class="comment-content">If you are into network virtualization, the clean strategy as Ivan points out it to go MPLS VPN.<br /><br />We are moving into the deployment phase of a large school board MAN rework, where we are using HP Comware-based equipment (7500s) to virtualize their entire campus. This gear supports MPLS VPN, the various L2 MPLS technologies and even includes VPLS. The one thing you find out when working with Comware is that most of the gear seems to have a great deal of service provider catering functionality put in (likely has to do with China Telecom being a major customer). We&#39;ve now built this really cool setup and the customer hadn&#39;t even asked for MPLS originally - it just came with the gear so we designed using it. The subinterface/multi-slash-30 alternative really isn&#39;t fun to deploy and add onto when you have a new VPN required.<br /><br />HP does also have the 5800 which supports all of the above. A 5k$ switch with VPLS support is not something you can usually find.<br /><br />As another poster highlighted, the issue with VSS (or HP IRF) is that ISSU really only is for minor, compatible upgrades. The manufacturers are usually quick to point out the advantages of stacking but hesitant to point out the caveats. Of course if you have maintenance windows allowing you to bring down your whole core, this really isn&#39;t that big a deal. Your availability vs performance requirements will dictate whether the pros and cons are really worth it.</p>
+            <div class="comment-content">If you are into network virtualization, the clean strategy as Ivan points out it to go MPLS VPN.<br /><br />We are moving into the deployment phase of a large school board MAN rework, where we are using HP Comware-based equipment (7500s) to virtualize their entire campus. This gear supports MPLS VPN, the various L2 MPLS technologies and even includes VPLS. The one thing you find out when working with Comware is that most of the gear seems to have a great deal of service provider catering functionality put in (likely has to do with China Telecom being a major customer). We&#39;ve now built this really cool setup and the customer hadn&#39;t even asked for MPLS originally - it just came with the gear so we designed using it. The subinterface/multi-slash-30 alternative really isn&#39;t fun to deploy and add onto when you have a new VPN required.<br /><br />HP does also have the 5800 which supports all of the above. A 5k$ switch with VPLS support is not something you can usually find.<br /><br />As another poster highlighted, the issue with VSS (or HP IRF) is that ISSU really only is for minor, compatible upgrades. The manufacturers are usually quick to point out the advantages of stacking but hesitant to point out the caveats. Of course if you have maintenance windows allowing you to bring down your whole core, this really isn&#39;t that big a deal. Your availability vs performance requirements will dictate whether the pros and cons are really worth it.</div>
           </div>
         </li>
       </div>
@@ -307,10 +302,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3146031324059160920">01 November 2011 11:02</a>
+                <a rel="nofollow" id="c3146031324059160920" href="#3146031324059160920">01 November 2011 11:02</a>
               </span>
             </div>
-            <p class="comment-content">we have those decent 5800s here. I like them a lot and even decided to blog about em a bit :)</p>
+            <div class="comment-content">we have those decent 5800s here. I like them a lot and even decided to blog about em a bit :)</div>
           </div>
         </li>
       </div>
@@ -325,10 +320,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Youssef El Fathi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9174025168813318591">01 November 2011 13:17</a>
+                <a rel="nofollow" id="c9174025168813318591" href="#9174025168813318591">01 November 2011 13:17</a>
               </span>
             </div>
-            <p class="comment-content">For the routed access you have quicker convergence (OSPF/EIGRP well tuned compared to RSTP) but like Brad said you have to put IP Services Licenses on the access switches !!!</p>
+            <div class="comment-content">For the routed access you have quicker convergence (OSPF/EIGRP well tuned compared to RSTP) but like Brad said you have to put IP Services Licenses on the access switches !!!</div>
           </div>
         </li>
       </div>
@@ -343,10 +338,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dietmar</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3773985312645601216">01 November 2011 19:56</a>
+                <a rel="nofollow" id="c3773985312645601216" href="#3773985312645601216">01 November 2011 19:56</a>
               </span>
             </div>
-            <p class="comment-content">What about the  Easy Virtual Networking Feature? This should allow routing in Access-Layer without extra dot1q uplinks for each VRF... So getting best of both worlds. Stability of Routing and simple config like L2...<br /><br />http://www.cisco.com/en/US/prod/collateral/iosswrel/ps6537/ps6557/ps6604/whitepaper_c11-638769.html<br /><br />Dietmar</p>
+            <div class="comment-content">What about the  Easy Virtual Networking Feature? This should allow routing in Access-Layer without extra dot1q uplinks for each VRF... So getting best of both worlds. Stability of Routing and simple config like L2...<br /><br />http://www.cisco.com/en/US/prod/collateral/iosswrel/ps6537/ps6557/ps6604/whitepaper_c11-638769.html<br /><br />Dietmar</div>
           </div>
         </li>
       </div>
@@ -361,10 +356,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8411899617955509015">01 November 2011 20:10</a>
+                <a rel="nofollow" id="c8411899617955509015" href="#8411899617955509015">01 November 2011 20:10</a>
               </span>
             </div>
-            <p class="comment-content">EVN is just a configuration sugarcoat on top of the Multi-VRF kludge. You still have to run a separate VLAN and a separate routing protocol for each VRF.</p>
+            <div class="comment-content">EVN is just a configuration sugarcoat on top of the Multi-VRF kludge. You still have to run a separate VLAN and a separate routing protocol for each VRF.</div>
           </div>
         </li>
       </div>
@@ -379,10 +374,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter John Hill</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6608845467689747719">01 November 2011 20:22</a>
+                <a rel="nofollow" id="c6608845467689747719" href="#6608845467689747719">01 November 2011 20:22</a>
               </span>
             </div>
-            <p class="comment-content">Static routes = manual config != scalable design</p>
+            <div class="comment-content">Static routes = manual config != scalable design</div>
           </div>
         </li>
       </div>
@@ -397,10 +392,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9222241408514228129">01 November 2011 20:25</a>
+                <a rel="nofollow" id="c9222241408514228129" href="#9222241408514228129">01 November 2011 20:25</a>
               </span>
             </div>
-            <p class="comment-content">Use OpenFlow for static route configuration  8-) Maybe in 3-5 years ...</p>
+            <div class="comment-content">Use OpenFlow for static route configuration  8-) Maybe in 3-5 years ...</div>
           </div>
         </li>
       </div>
@@ -415,10 +410,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter John Hill</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5240515556873256157">01 November 2011 20:26</a>
+                <a rel="nofollow" id="c5240515556873256157" href="#5240515556873256157">01 November 2011 20:26</a>
               </span>
             </div>
-            <p class="comment-content">Cisco now includes a stub only ospf implementation in newer versions of IOS for their 3750s.<br /><br />Honestly, I don&#39;t see the configuration being simpler. You either have the complexity at layer 2 or layer 3. No matter what you need to create loop free topologies. I&#39;d much rather look in the routing table then have to hop through multiple bridges to find out where a mac address lives on the network.</p>
+            <div class="comment-content">Cisco now includes a stub only ospf implementation in newer versions of IOS for their 3750s.<br /><br />Honestly, I don&#39;t see the configuration being simpler. You either have the complexity at layer 2 or layer 3. No matter what you need to create loop free topologies. I&#39;d much rather look in the routing table then have to hop through multiple bridges to find out where a mac address lives on the network.</div>
           </div>
         </li>
       </div>
@@ -433,10 +428,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Colby</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3022329996715628025">02 November 2011 01:36</a>
+                <a rel="nofollow" id="c3022329996715628025" href="#3022329996715628025">02 November 2011 01:36</a>
               </span>
             </div>
-            <p class="comment-content">L2 and _NO_ VSS. <br /><br />I&#39;ve yet to support a network where some VLAN didn&#39;t have to be randomly spanned across closets. You can design it without spanning a VLAN, but that doesn&#39;t mean it will never be a &quot;business need&quot;. And without a hack or redesign, you&#39;re essentially screwed with a routed access layer. It&#39;s pretty, it&#39;s clean, I love it... but it&#39;s less realistic than L2.<br /><br />VSS just scares me. Shared control plane in core/distro... ack.</p>
+            <div class="comment-content">L2 and _NO_ VSS. <br /><br />I&#39;ve yet to support a network where some VLAN didn&#39;t have to be randomly spanned across closets. You can design it without spanning a VLAN, but that doesn&#39;t mean it will never be a &quot;business need&quot;. And without a hack or redesign, you&#39;re essentially screwed with a routed access layer. It&#39;s pretty, it&#39;s clean, I love it... but it&#39;s less realistic than L2.<br /><br />VSS just scares me. Shared control plane in core/distro... ack.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -452,10 +447,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2590508858213462881">06 April 2013 01:30</a>
+                <a rel="nofollow" id="c2590508858213462881" href="#2590508858213462881">06 April 2013 01:30</a>
               </span>
             </div>
-            <p class="comment-content">If you need to SPAN a VLAN in a L3 network, use EoMPLS</p>
+            <div class="comment-content">If you need to SPAN a VLAN in a L3 network, use EoMPLS</div>
           </div>
         </li>
       </div>
@@ -470,10 +465,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3587537642211094335">31 May 2017 05:46</a>
+                <a rel="nofollow" id="c3587537642211094335" href="#3587537642211094335">31 May 2017 05:46</a>
               </span>
             </div>
-            <p class="comment-content">Exactly! But be careful, you don&#39;t want to end up with a bowl of spaghetti with too much EoMPLS</p>
+            <div class="comment-content">Exactly! But be careful, you don&#39;t want to end up with a bowl of spaghetti with too much EoMPLS</div>
           </div>
         </li>
       </div>
@@ -495,10 +490,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">mnantel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7494775591602726020">02 November 2011 12:03</a>
+                <a rel="nofollow" id="c7494775591602726020" href="#7494775591602726020">02 November 2011 12:03</a>
               </span>
             </div>
-            <p class="comment-content">Actually, you dont necessarily need to buy a license: OSPF for routed access is a recently released feature which allows up to 200 routes within a &quot;free&quot; OSPF implementation on IP Base.<br /><br />Or you can simply consider a vendor that does not promote vendor lock-in and not settle for a gimped version of an important protocol like this. Cisco still manages to not have an LLDP implementation on anything else than switches. And lets be truthful, its on the switches so they can win competing phone vendor switching business.</p>
+            <div class="comment-content">Actually, you dont necessarily need to buy a license: OSPF for routed access is a recently released feature which allows up to 200 routes within a &quot;free&quot; OSPF implementation on IP Base.<br /><br />Or you can simply consider a vendor that does not promote vendor lock-in and not settle for a gimped version of an important protocol like this. Cisco still manages to not have an LLDP implementation on anything else than switches. And lets be truthful, its on the switches so they can win competing phone vendor switching business.</div>
           </div>
         </li>
       </div>
@@ -513,10 +508,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Adrian</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7182559117169054217">02 November 2011 12:21</a>
+                <a rel="nofollow" id="c7182559117169054217" href="#7182559117169054217">02 November 2011 12:21</a>
               </span>
             </div>
-            <p class="comment-content">We use VSS in 3 different locations and never had a &quot;problem&quot; as your SE described it for any upgrades. We started with 12.2.33 SXH and progressed through SXI-nn . The upgrade process (eFSU) did not disrupt the network. We use a similar topology as Ivan described in his last example above (L3 NSF and SSO in Cat6k with VRFs and L2 with MEC/MLAG towards access layer - Cat3650 and Cat3750, all SMI). It all depends on what final arrangement one has around the VSS. We use it in both collapsed Aggregation&amp;Core and Aggregation only connected at L3 to the Core upstream.<br />More details on eFSU here: http://www.cisco.com/en/US/docs/switches/lan/catalyst6500/ios/12.2SX/configuration/guide/issu_efsu.html</p>
+            <div class="comment-content">We use VSS in 3 different locations and never had a &quot;problem&quot; as your SE described it for any upgrades. We started with 12.2.33 SXH and progressed through SXI-nn . The upgrade process (eFSU) did not disrupt the network. We use a similar topology as Ivan described in his last example above (L3 NSF and SSO in Cat6k with VRFs and L2 with MEC/MLAG towards access layer - Cat3650 and Cat3750, all SMI). It all depends on what final arrangement one has around the VSS. We use it in both collapsed Aggregation&amp;Core and Aggregation only connected at L3 to the Core upstream.<br />More details on eFSU here: http://www.cisco.com/en/US/docs/switches/lan/catalyst6500/ios/12.2SX/configuration/guide/issu_efsu.html</div>
           </div>
         </li>
       </div>
@@ -531,10 +526,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Avnp</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6908837758796228195">02 November 2011 14:19</a>
+                <a rel="nofollow" id="c6908837758796228195" href="#6908837758796228195">02 November 2011 14:19</a>
               </span>
             </div>
-            <p class="comment-content">Why not BGP with BFD if you have it? The problem is not many low end switches like 4500 support BFD.</p>
+            <div class="comment-content">Why not BGP with BFD if you have it? The problem is not many low end switches like 4500 support BFD.</div>
           </div>
         </li>
       </div>
@@ -549,10 +544,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Avnp</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3724932150676991540">02 November 2011 14:21</a>
+                <a rel="nofollow" id="c3724932150676991540" href="#3724932150676991540">02 November 2011 14:21</a>
               </span>
             </div>
-            <p class="comment-content">Why not BGP with BFD if you have it? The problem is not many low end switches like 4500 support BFD.</p>
+            <div class="comment-content">Why not BGP with BFD if you have it? The problem is not many low end switches like 4500 support BFD.</div>
           </div>
         </li>
       </div>
@@ -567,10 +562,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Gernot Nusshall</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#793984579740874456">02 November 2011 18:08</a>
+                <a rel="nofollow" id="c793984579740874456" href="#793984579740874456">02 November 2011 18:08</a>
               </span>
             </div>
-            <p class="comment-content">(3) you got some sort of mobility because you can plug your cable in and work in a different apartment, as an example the operations manager wants to bring his notebook to the finance department to share some nice calculations etc...sad but true, those scenarios and needs are driving designs...</p>
+            <div class="comment-content">(3) you got some sort of mobility because you can plug your cable in and work in a different apartment, as an example the operations manager wants to bring his notebook to the finance department to share some nice calculations etc...sad but true, those scenarios and needs are driving designs...</div>
           </div>
         </li>
       </div>
@@ -585,10 +580,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter John Hill</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4137458669702224688">02 November 2011 18:49</a>
+                <a rel="nofollow" id="c4137458669702224688" href="#4137458669702224688">02 November 2011 18:49</a>
               </span>
             </div>
-            <p class="comment-content">Why does routing break this? Can the manager not get a dhcp lease on the network in the finance department? Hopefully one would be doing more to protect finance data than put it in a vlan with ACLs. IP address based security is weak at best.</p>
+            <div class="comment-content">Why does routing break this? Can the manager not get a dhcp lease on the network in the finance department? Hopefully one would be doing more to protect finance data than put it in a vlan with ACLs. IP address based security is weak at best.</div>
           </div>
         </li>
       </div>
@@ -603,10 +598,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter John Hill</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3179214323556726883">02 November 2011 18:51</a>
+                <a rel="nofollow" id="c3179214323556726883" href="#3179214323556726883">02 November 2011 18:51</a>
               </span>
             </div>
-            <p class="comment-content">Darn 4900 (part of 4500 family) doesn&#39;t even support fast LACP. grr</p>
+            <div class="comment-content">Darn 4900 (part of 4500 family) doesn&#39;t even support fast LACP. grr</div>
           </div>
         </li>
       </div>
@@ -621,10 +616,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Gernot Nusshall</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1018041145676259043">03 November 2011 12:43</a>
+                <a rel="nofollow" id="c1018041145676259043" href="#1018041145676259043">03 November 2011 12:43</a>
               </span>
             </div>
-            <p class="comment-content">you are basically right but i dealt with larger companies where no dhcp leases are allowed(just fixed reservations). our solution was a path isolated guest network and the connect via vpn.</p>
+            <div class="comment-content">you are basically right but i dealt with larger companies where no dhcp leases are allowed(just fixed reservations). our solution was a path isolated guest network and the connect via vpn.</div>
           </div>
         </li>
       </div>
@@ -639,10 +634,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3833171208130499425">03 November 2011 20:48</a>
+                <a rel="nofollow" id="c3833171208130499425" href="#3833171208130499425">03 November 2011 20:48</a>
               </span>
             </div>
-            <p class="comment-content">Two default routes per VRF it&#39;s not a big deal.</p>
+            <div class="comment-content">Two default routes per VRF it&#39;s not a big deal.</div>
           </div>
         </li>
       </div>
@@ -657,10 +652,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">@jedelman8</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1703148818349492015">08 November 2011 02:36</a>
+                <a rel="nofollow" id="c1703148818349492015" href="#1703148818349492015">08 November 2011 02:36</a>
               </span>
             </div>
-            <p class="comment-content">Someone said it earlier, but convergence could be better with L3 in the access for certain applications, namely multicast.  I&#39;m working on some designs now with the N7K with heavy multicast apps and the app providers def prefer L3 to the access with a reliance on PIM. Too bad we didn&#39;t have the right license on the access switches :)  Anyway, running VPC in the Core limits certain mcast functionality on the 7K (see config guide for details)...also I&#39;ve heard VPC w/ certain FHRPs (namely GLBP) could be a nightmare...again, for mcast apps.  Generally speaking though, preference here is loop free L2 to allow for a place for common policy mgmt/deployment...as well as an increased ability to &quot;sniff&quot; in a centralized location.</p>
+            <div class="comment-content">Someone said it earlier, but convergence could be better with L3 in the access for certain applications, namely multicast.  I&#39;m working on some designs now with the N7K with heavy multicast apps and the app providers def prefer L3 to the access with a reliance on PIM. Too bad we didn&#39;t have the right license on the access switches :)  Anyway, running VPC in the Core limits certain mcast functionality on the 7K (see config guide for details)...also I&#39;ve heard VPC w/ certain FHRPs (namely GLBP) could be a nightmare...again, for mcast apps.  Generally speaking though, preference here is loop free L2 to allow for a place for common policy mgmt/deployment...as well as an increased ability to &quot;sniff&quot; in a centralized location.</div>
           </div>
         </li>
       </div>
@@ -675,10 +670,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Sivakumar</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6952637420724069483">08 November 2011 08:43</a>
+                <a rel="nofollow" id="c6952637420724069483" href="#6952637420724069483">08 November 2011 08:43</a>
               </span>
             </div>
-            <p class="comment-content">Hi All,<br /><br />I like Layer3 campus setup to avoid the Layer 2 loops and broadcast. I implemented the VSS with layer 3 campus setup with Converged network. It is sable more than a year. <br />One time we faced the issues due to IOS bugs. Now the setup is stable more than  years 9,500 users in the campus network…</p>
+            <div class="comment-content">Hi All,<br /><br />I like Layer3 campus setup to avoid the Layer 2 loops and broadcast. I implemented the VSS with layer 3 campus setup with Converged network. It is sable more than a year. <br />One time we faced the issues due to IOS bugs. Now the setup is stable more than  years 9,500 users in the campus network…</div>
           </div>
         </li>
       </div>
@@ -693,10 +688,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Sivakumar</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2990422457837278672">08 November 2011 08:45</a>
+                <a rel="nofollow" id="c2990422457837278672" href="#2990422457837278672">08 November 2011 08:45</a>
               </span>
             </div>
-            <p class="comment-content">Hi All,<br /><br />I like Layer3 campus setup to avoid the Layer 2 loops and broadcast. I implemented the VSS with layer 3 campus setup with Converged network. It is sable more than a year. <br />One time we faced the issues due to IOS bugs. Now the setup is stable more than  years 9,500 users in the campus network…</p>
+            <div class="comment-content">Hi All,<br /><br />I like Layer3 campus setup to avoid the Layer 2 loops and broadcast. I implemented the VSS with layer 3 campus setup with Converged network. It is sable more than a year. <br />One time we faced the issues due to IOS bugs. Now the setup is stable more than  years 9,500 users in the campus network…</div>
           </div>
         </li>
       </div>
@@ -711,10 +706,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Dmitriy</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4596309702849651998">18 November 2011 11:51</a>
+                <a rel="nofollow" id="c4596309702849651998" href="#4596309702849651998">18 November 2011 11:51</a>
               </span>
             </div>
-            <p class="comment-content">&quot;with VSS if you want to upgrade one, you have to take the whole VSS down&quot;<br />Nope. ISSU is supported, and if all downlinks are etherchannels - there would be no traffic disruption upon upgrade (well, Cisco claims 200ms, but I could live with that). Though each of the chassis&#39; would be reloaded, the control plane stays solid.<br />But... Once I actually tried that with SXI4a, the whole VSS went down. TAC said it&#39;s a bug. So in theory VSS is brilliant, but in practice it&#39;s too risky.</p>
+            <div class="comment-content">&quot;with VSS if you want to upgrade one, you have to take the whole VSS down&quot;<br />Nope. ISSU is supported, and if all downlinks are etherchannels - there would be no traffic disruption upon upgrade (well, Cisco claims 200ms, but I could live with that). Though each of the chassis&#39; would be reloaded, the control plane stays solid.<br />But... Once I actually tried that with SXI4a, the whole VSS went down. TAC said it&#39;s a bug. So in theory VSS is brilliant, but in practice it&#39;s too risky.</div>
           </div>
         </li>
       </div>
@@ -729,10 +724,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ryan Malayter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7337163664661251420">05 December 2011 05:09</a>
+                <a rel="nofollow" id="c7337163664661251420" href="#7337163664661251420">05 December 2011 05:09</a>
               </span>
             </div>
-            <p class="comment-content">Layer 2 is simple. Complexity is the enemy of uptime.<br /><br />For the same reasons, complex VLAN setups should be avoided as much as possible, with security and segregation implemented on the hosts via managed firewall and IPsec policies. Software solutions are always more flexible.</p>
+            <div class="comment-content">Layer 2 is simple. Complexity is the enemy of uptime.<br /><br />For the same reasons, complex VLAN setups should be avoided as much as possible, with security and segregation implemented on the hosts via managed firewall and IPsec policies. Software solutions are always more flexible.</div>
           </div>
         </li>
       </div>
@@ -747,10 +742,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03255240263915557168" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3221702883858312521">15 March 2013 04:17</a>
+                <a rel="nofollow" id="c3221702883858312521" href="#3221702883858312521">15 March 2013 04:17</a>
               </span>
             </div>
-            <p class="comment-content">It very much depends on how large a site we are looking at.<br />For a smaller site, I would use the layer2 with VSS solution.<br /><br />For a larger site I would run MPLS - but I would collapse the CE into the PE as running VRF lite CEs doesn&#39;t scale in a campus environment.<br /><br />When you have 20+ VRFs, needed to set up BGP sessions between each vrf between the PE and CE becomes very messy.<br /><br />Therefore my recommendation for larger sites:<br />Pair of 6500(VSS) as [PE/CE]<br />Access switches connected via port channels to the collapsed PE/CE.<br /><br />I have had a look at the smaller HP MPLS switches, but they only support relatively small routing tables so they would probably be too small for most MPLS enabled sites.<br /></p>
+            <div class="comment-content">It very much depends on how large a site we are looking at.<br />For a smaller site, I would use the layer2 with VSS solution.<br /><br />For a larger site I would run MPLS - but I would collapse the CE into the PE as running VRF lite CEs doesn&#39;t scale in a campus environment.<br /><br />When you have 20+ VRFs, needed to set up BGP sessions between each vrf between the PE and CE becomes very messy.<br /><br />Therefore my recommendation for larger sites:<br />Pair of 6500(VSS) as [PE/CE]<br />Access switches connected via port channels to the collapsed PE/CE.<br /><br />I have had a look at the smaller HP MPLS switches, but they only support relatively small routing tables so they would probably be too small for most MPLS enabled sites.<br /></div>
           </div>
         </li>
       </div>
@@ -765,10 +760,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/11529916018516958539" rel="nofollow">Salman Naqvi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1677996480515845355">27 March 2013 19:34</a>
+                <a rel="nofollow" id="c1677996480515845355" href="#1677996480515845355">27 March 2013 19:34</a>
               </span>
             </div>
-            <p class="comment-content">I don&#39;t understand what people have against VSS.  It&#39;s absolutely rock solid.  It&#39;s not cheap however.  If it was cheaper, I would use it in many more situations.<br /><br />I have worked in environments where it&#39;s deployed at a major international airport, a top law firm and multiple in data centers.  It&#39;s really versatile.  It&#39;s also dead-easy to manage - just barely different than managing one chassis.  There are just some very minor differences to keep in mind with VSS deployments.</p>
+            <div class="comment-content">I don&#39;t understand what people have against VSS.  It&#39;s absolutely rock solid.  It&#39;s not cheap however.  If it was cheaper, I would use it in many more situations.<br /><br />I have worked in environments where it&#39;s deployed at a major international airport, a top law firm and multiple in data centers.  It&#39;s really versatile.  It&#39;s also dead-easy to manage - just barely different than managing one chassis.  There are just some very minor differences to keep in mind with VSS deployments.</div>
           </div>
         </li>
       </div>

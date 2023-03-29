@@ -1,0 +1,165 @@
+<div class="comments post" id="comments">
+  <h4>6 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="271">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Bela Varkonyi</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c271" href="#271">01 December 2020 09:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>End-to-end high-availability is always the best, I fully agree. That is why in safety critical networks we have ED-137 linked session, or the 4-times-simulcasted ARTAS radar streams. </p>
+
+<p>What is funny that even in-chassis redundancy in network devices still does not work well after three decades of development. We have daily problems that this feature or that feature is broken when there is an automated failover from one processor to the other. The background synchronization is difficult and they did no want to create a full transaction journalling, since that is expensive.</p>
+
+<p>If you have to implement high-availability in the infrastructure, then it is a sign that the applications are not designed very well for this purpose. Keep in mind that your infrastructure HA solution is just a compensation control for the weaknesses of the application.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="273">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c273" href="#273">01 December 2020 01:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>How to solve then the TCP session state problem on load balancer or server if they go down so that the end-user doesn&#39;t have to press the reload button? (Ignoring the question for a moment if it&#39;s worth solving this problem or not.)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="274">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c274" href="#274">01 December 2020 03:50</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Anonymous: Nobody has managed to migrate an existing TCP session to another server (at least I&#39;m not aware of that). It&#39;s not just the state of various TCP counters and windows, the second server would have to know what the first server already did with the request(s).</p>
+
+<p>The only solution is to have an application-level library that understands that TCP is <strong>not</strong> a 100% reliable transport protocol and acts accordingly.</p>
+
+<p>@Bela: I love the &quot;infrastructure HA is just a compensation control for application weaknesses&quot;. Thanks a million!</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="277">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c277" href="#277">03 December 2020 09:43</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In one of the linked posts you mentioned VMware FT Ivan.  FT is a high-end feature of VMware&#39;s HA portfolios, and it also happens to be a resource hog. Due to the way it needs to log all input and non-deterministic events on the primary VM, send it over to and replay it on the backup VM, things that normally bypass the hypervisor like Rx/Tx now have to go through it for logging purpose and, get delayed until acknowledgement is received, so I/O-bound workloads will incur big performance hit. And multicore VM rubs salt to the wound, because the order of CPUs accessing shared memory needs to be tracked and retained for semantics preservation/correctness purpose. Basically the slowdown is superlinear with the increase in CPU cores. And that&#39;s why even though they claim here -- at question 18 -- that FT doesn&#39;t cause degradation, looking at their corresponding white paper, the slowdown is indeed superlinear:</p>
+
+<p>https://kb.vmware.com/s/article/1013428</p>
+
+<p>And that&#39;s just with synthetic workloads. And yes, I/O-bound workloads -- Rx more so than Tx due to the different ways FT deals with each of them -- suffer non-trivial downgrade. Some of their customers also reported similar issues with I/O:</p>
+
+<p>https://communities.vmware.com/t5/ESXi-Discussions/Fault-Tolerance-slow-network-performance/m-p/1770123</p>
+
+<p>Essentially, looks like HA solutions normally come with performance trade-offs, sometimes considerable ones, and they always cost a hell lot more. </p>
+
+<p>Also, I remember earlier this year, you were blogging about some guy demonstrating a lossless Vmotion failover. Frankly, what does it prove anything? The Vmotion process is inherently lossy, due to the repeated iterations of memory copy and the freezing of the VM, esp. for memory-intensive workload, and that you can successfully execute a lossless migration, just means you&#39;re lucky, thanks to probabilities, or have a workload that doesn&#39;t stress Vmotion capability to its limit, or both. Or put it in a semi-formal way, just because you manage to achieve result-level correctness, doesn&#39;t mean you have process-level correctness :p. Think gambling. That&#39;s one classic example of (sometimes) great result, horrible process.</p>
+
+<p>As to end-to-end HA, I agree 100% with you that the right way to do it is via the applications, as it goes along the same line of complexity belonging at the edge and simplicity at the core, smart edge dumb core :)) . DNS exemplifies that application-level-HA paradigm. It&#39;s simple and rock solid.</p>
+
+<p>Another great example worth mentioning, is good ol Active Directory. MS did get it right with their DS. AD is a distributed DB application, and a multi-master replication one at that. Given it was designed with this specific model in mind from day one and it came to be more than 20 yrs ago, before this scale-out movement was even a thing, 
+one has to give it to MS on this one. </p>
+
+<p>AD is among the most mission-critical part of just about any company&#39;s infrastructure, and it&#39;s whole by itself, doesn&#39;t need any overpriced and overrated HA device to look after its heartbeat. AD&#39;s HA is completely built into its mechanics, with its eventually-consistent DB. Within a site, replication is super quick, and inter-site replication is done using distance-vector paradigm to ensure high scalability. On a side note, MS started Intersite replication in AD with their proprietary algorithm, most likely a link-state one because MS Exchange at that time used LS to route emails between its servers. That one made AD fall apart at 250 sites or so in windows 2000, so MS gave up on it and went with a simpler BGP-like replication model between sites. </p>
+
+<p>in AD, if any server goes down, the client just locates another one using DNS SRV record, first within site and then globally if all servers within a site fail. It&#39;s scaled-out, simple, and effective, and it works so well people don&#39;t bothers talking about AD these days anymore, and actually haven&#39;t done so in a long time. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="278">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Minh Ha</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c278" href="#278">03 December 2020 10:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Also, pls keep these jam-packed, heavyweight posts coming Ivan!! They&#39;re deep and heavy, yet highly enjoyable at the same time :)).  </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="297">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Alexey Vorobyev</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c297" href="#297">07 December 2020 09:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan.
+At least in Azure VM can subscribe for about upcoming maintenance events: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/scheduled-events</p>
+
+<p>Then it can let Load Balancer know (by turning to unhealty state) that it will no longer accept new connections. Existing connections will still be kept on this VM until one of the sides (VM or remote endpoint) close it.
+https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview#tcp-connections</p>
+
+<p>If application really cares, it has at least 10 minutes to gracefully drain all the connections, let client application reconnect smoothly.</p>
+
+<p>Yes, AZFW works exactly this way:
+https://docs.microsoft.com/en-us/azure/firewall/firewall-faq#how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures</p>
+
+<p>It&#39;s a little harder for Active/Standby apps like databases.
+Many Azure Native services do care about that and utilize these features.</p>
+
+<p>Of course in case of BSOD on VM or node failure all your statements are completely reasonable, but for planned maintenances it&#39;s completely manageable almost without even customer&#39;s notice.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

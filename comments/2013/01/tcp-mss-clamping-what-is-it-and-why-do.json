@@ -1,148 +1,172 @@
 {
-  "comments": [
-    {
-      "comments": [
-        {
-          "date": "22 January 2013 10:45",
-          "html": "How did you guess the topic of the follow-up post ;)",
-          "id": "1231993287559534131",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-01-22T10:45:39.598+01:00",
-          "ref": "5732916345619227881",
-          "type": "comment"
-        }
-      ],
-      "date": "22 January 2013 10:26",
-      "html": "And don&#39;t forget about clamping IPv6 as well...<br /><br />(like my $ISP does)",
-      "id": "5732916345619227881",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2013-01-22T10:26:27.597+01:00",
-      "ref": "4056871920553594800",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "22 January 2013 15:49",
-          "html": "&#39;Fast path&#39; might not be equivalent to hardware-based forwarding (depends on the platform). Also, did I really say adjust-mss is done in hardware?",
-          "id": "8016162277859112934",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-01-22T15:49:59.863+01:00",
-          "ref": "320774151582007244",
-          "type": "comment"
-        },
-        {
-          "date": "22 January 2013 19:13",
-          "html": "Sorry, typo- I meant &#39;not&#39; done in hardware",
-          "id": "5822147266569877496",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "will",
-          "profile": null,
-          "pub": "2013-01-22T19:13:05.569+01:00",
-          "ref": "320774151582007244",
-          "type": "comment"
-        }
-      ],
-      "date": "22 January 2013 13:30",
-      "html": "Great video, thanks a lot. I&#39;m glad to know now that adjust-mss is now done in hardware - and it&#39;s called MSS Clamping.  <br /><br />I&#39;ve never used &#39;in fast path&#39; as alternative to hardware based forwarding but I like it (cant wait to use it in a team meeting).",
-      "id": "320774151582007244",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Will",
-      "profile": null,
-      "pub": "2013-01-22T13:30:26.103+01:00",
-      "ref": "4056871920553594800",
-      "type": "comment"
-    },
-    {
-      "date": "15 February 2013 08:21",
-      "html": "Mss = mtu - 40 bytes assuming no IP options are used afair?",
-      "id": "9049706796286999443",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2013-02-15T08:21:31.927+01:00",
-      "ref": "4056871920553594800",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "21 February 2013 12:58",
-          "html": "Have you tried &quot;mtu 1500&quot; and &quot;ip mtu 1500&quot; on Dialer/VirtualAccess interface? Of course it has to match on both ends. You might also need &quot;ppp mtu adaptive&quot;.",
-          "id": "6615486526697992323",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2013-02-21T12:58:45.585+01:00",
-          "ref": "2958034438514009884",
-          "type": "comment"
-        }
-      ],
-      "date": "21 February 2013 12:52",
-      "html": "For PPPoe the common setting is ip tcp adjust-mss 1452.<br /><br />Can someone give me a hint to negotiate a PPPoE MTU of &gt;1492 on Cisco IOS. Looks kind of hard to make a Cisco Router  ignore the RFC standard MTU...<br /><br />I heard some Telco&#39;s use PPPoE MTU of 1500 (on a Ethernet link of &gt;1510) in stead of 1492 to workaround the MSS clamping...",
-      "id": "2958034438514009884",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Rinse Kloek",
-      "profile": null,
-      "pub": "2013-02-21T12:52:23.079+01:00",
-      "ref": "4056871920553594800",
-      "type": "comment"
-    },
-    {
-      "date": "15 October 2013 09:54",
-      "html": "Yes, I tried all these things, but still nu success. The Cisco ASR1000 still keeps saying MRU 1492:<br /><br />Oct 15 09:53:10.164: ppp424 PPP LCP: Enter passive mode, state[Stopped]<br />Oct 15 09:53:10.185: ppp424 LCP: I CONFREQ [Stopped] id 1 len 14<br />Oct 15 09:53:10.185: ppp424 LCP:    MRU 1500 (0x010405DC)<br />Oct 15 09:53:10.185: ppp424 LCP:    MagicNumber 0x2CC6AA92 (0x05062CC6AA92)<br />Oct 15 09:53:10.185: ppp424 LCP: O CONFREQ [Stopped] id 1 len 18<br />Oct 15 09:53:10.185: ppp424 LCP:    MRU 1492 (0x010405D4)<br />Oct 15 09:53:10.185: ppp424 LCP:    MagicNumber 0x7A4ECDDA (0x05067A4ECDDA)<br />Oct 15 09:53:10.186: ppp424 LCP: O CONFACK [Stopped] id 1 len 14<br />Oct 15 09:53:10.186: ppp424 LCP:    MRU 1500 (0x010405DC)<br />Oct 15 09:53:10.186: ppp424 LCP:    MagicNumber 0x2CC6AA92 (0x05062CC6AA92)<br />Oct 15 09:53:10.186: ppp424 LCP: Event[Receive ConfReq+] State[Stopped to ACKsent]<br />Oct 15 09:53:10.206: ppp424 LCP: I CONFACK [ACKsent] id 1 len 18<br />Oct 15 09:53:10.206: ppp424 LCP:    MRU 1492 (0x010405D4)<br />Oct 15 09:53:10.206: ppp424 LCP:    MagicNumber 0x7A4ECDDA (0x05067A4ECDDA)<br />Oct 15 09:53:10.206: ppp424 LCP: Event[Receive ConfAck] State[ACKsent to Open]<br />",
-      "id": "8413630938210547118",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/01171802900126655467",
-      "pub": "2013-10-15T09:54:57.571+02:00",
-      "ref": "4056871920553594800",
-      "type": "comment"
-    },
-    {
-      "date": "26 February 2014 17:42",
-      "html": "Hi,<br /><br />thanks for the great explanation.<br /><br />1 question: I usually would prefer setting the &quot;ip tcp adjust-mss&quot; on the LAN Interface of a CE router. Would it also work on the WAN interface when using crypto maps?<br />To explain: the CE router has a LAN Interface and 2 WAN Interfaces, one pointing to MPLS, one to Internet (for IPSec). I need to set the adjust-mss for only the IPSec Traffic without reducing the value for MPLS traffic. Will it work, if I only set it on the WAN interface pointing to the internet? (IPSec is done with crypto map).",
-      "id": "8918736299707251271",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2014-02-26T17:42:36.179+01:00",
-      "ref": "4056871920553594800",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "26 May 2015 21:51",
-          "html": "Absolutely no idea. Sorry, I&#39;m really not a Junos person.",
-          "id": "9113406119608185561",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2015-05-26T21:51:31.218+02:00",
-          "ref": "926182205738597341",
-          "type": "comment"
-        }
-      ],
-      "date": "26 May 2015 20:42",
-      "html": "Hello Ivan,<br /><br />Is it possible to do mss clamping on Juniper MX80?<br /><br />Thanks,<br /><br />-Konstantin",
-      "id": "926182205738597341",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/08369651730602067488",
-      "pub": "2015-05-26T20:42:35.695+02:00",
-      "ref": "4056871920553594800",
-      "type": "comment"
-    }
-  ],
-  "count": 12,
-  "id": "4056871920553594800",
-  "type": "post",
-  "url": "2013/01/tcp-mss-clamping-what-is-it-and-why-do.html"
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "22 January 2013 10:45",
+               "html": "How did you guess the topic of the follow-up post ;)",
+               "id": "1231993287559534131",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-01-22T10:45:39.598+01:00",
+               "ref": "5732916345619227881",
+               "type": "comment"
+            }
+         ],
+         "date": "22 January 2013 10:26",
+         "html": "And don&#39;t forget about clamping IPv6 as well...<br /><br />(like my $ISP does)",
+         "id": "5732916345619227881",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2013-01-22T10:26:27.597+01:00",
+         "ref": "4056871920553594800",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "22 January 2013 15:49",
+               "html": "&#39;Fast path&#39; might not be equivalent to hardware-based forwarding (depends on the platform). Also, did I really say adjust-mss is done in hardware?",
+               "id": "8016162277859112934",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-01-22T15:49:59.863+01:00",
+               "ref": "320774151582007244",
+               "type": "comment"
+            },
+            {
+               "date": "22 January 2013 19:13",
+               "html": "Sorry, typo- I meant &#39;not&#39; done in hardware",
+               "id": "5822147266569877496",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "will",
+               "profile": null,
+               "pub": "2013-01-22T19:13:05.569+01:00",
+               "ref": "320774151582007244",
+               "type": "comment"
+            }
+         ],
+         "date": "22 January 2013 13:30",
+         "html": "Great video, thanks a lot. I&#39;m glad to know now that adjust-mss is now done in hardware - and it&#39;s called MSS Clamping.  <br /><br />I&#39;ve never used &#39;in fast path&#39; as alternative to hardware based forwarding but I like it (cant wait to use it in a team meeting).",
+         "id": "320774151582007244",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Will",
+         "profile": null,
+         "pub": "2013-01-22T13:30:26.103+01:00",
+         "ref": "4056871920553594800",
+         "type": "comment"
+      },
+      {
+         "date": "15 February 2013 08:21",
+         "html": "Mss = mtu - 40 bytes assuming no IP options are used afair?",
+         "id": "9049706796286999443",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2013-02-15T08:21:31.927+01:00",
+         "ref": "4056871920553594800",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "21 February 2013 12:58",
+               "html": "Have you tried &quot;mtu 1500&quot; and &quot;ip mtu 1500&quot; on Dialer/VirtualAccess interface? Of course it has to match on both ends. You might also need &quot;ppp mtu adaptive&quot;.",
+               "id": "6615486526697992323",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2013-02-21T12:58:45.585+01:00",
+               "ref": "2958034438514009884",
+               "type": "comment"
+            }
+         ],
+         "date": "21 February 2013 12:52",
+         "html": "For PPPoe the common setting is ip tcp adjust-mss 1452.<br /><br />Can someone give me a hint to negotiate a PPPoE MTU of &gt;1492 on Cisco IOS. Looks kind of hard to make a Cisco Router  ignore the RFC standard MTU...<br /><br />I heard some Telco&#39;s use PPPoE MTU of 1500 (on a Ethernet link of &gt;1510) in stead of 1492 to workaround the MSS clamping...",
+         "id": "2958034438514009884",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Rinse Kloek",
+         "profile": null,
+         "pub": "2013-02-21T12:52:23.079+01:00",
+         "ref": "4056871920553594800",
+         "type": "comment"
+      },
+      {
+         "date": "15 October 2013 09:54",
+         "html": "Yes, I tried all these things, but still nu success. The Cisco ASR1000 still keeps saying MRU 1492:<br /><br />Oct 15 09:53:10.164: ppp424 PPP LCP: Enter passive mode, state[Stopped]<br />Oct 15 09:53:10.185: ppp424 LCP: I CONFREQ [Stopped] id 1 len 14<br />Oct 15 09:53:10.185: ppp424 LCP:    MRU 1500 (0x010405DC)<br />Oct 15 09:53:10.185: ppp424 LCP:    MagicNumber 0x2CC6AA92 (0x05062CC6AA92)<br />Oct 15 09:53:10.185: ppp424 LCP: O CONFREQ [Stopped] id 1 len 18<br />Oct 15 09:53:10.185: ppp424 LCP:    MRU 1492 (0x010405D4)<br />Oct 15 09:53:10.185: ppp424 LCP:    MagicNumber 0x7A4ECDDA (0x05067A4ECDDA)<br />Oct 15 09:53:10.186: ppp424 LCP: O CONFACK [Stopped] id 1 len 14<br />Oct 15 09:53:10.186: ppp424 LCP:    MRU 1500 (0x010405DC)<br />Oct 15 09:53:10.186: ppp424 LCP:    MagicNumber 0x2CC6AA92 (0x05062CC6AA92)<br />Oct 15 09:53:10.186: ppp424 LCP: Event[Receive ConfReq+] State[Stopped to ACKsent]<br />Oct 15 09:53:10.206: ppp424 LCP: I CONFACK [ACKsent] id 1 len 18<br />Oct 15 09:53:10.206: ppp424 LCP:    MRU 1492 (0x010405D4)<br />Oct 15 09:53:10.206: ppp424 LCP:    MagicNumber 0x7A4ECDDA (0x05067A4ECDDA)<br />Oct 15 09:53:10.206: ppp424 LCP: Event[Receive ConfAck] State[ACKsent to Open]<br />",
+         "id": "8413630938210547118",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/01171802900126655467",
+         "pub": "2013-10-15T09:54:57.571+02:00",
+         "ref": "4056871920553594800",
+         "type": "comment"
+      },
+      {
+         "date": "26 February 2014 17:42",
+         "html": "Hi,<br /><br />thanks for the great explanation.<br /><br />1 question: I usually would prefer setting the &quot;ip tcp adjust-mss&quot; on the LAN Interface of a CE router. Would it also work on the WAN interface when using crypto maps?<br />To explain: the CE router has a LAN Interface and 2 WAN Interfaces, one pointing to MPLS, one to Internet (for IPSec). I need to set the adjust-mss for only the IPSec Traffic without reducing the value for MPLS traffic. Will it work, if I only set it on the WAN interface pointing to the internet? (IPSec is done with crypto map).",
+         "id": "8918736299707251271",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2014-02-26T17:42:36.179+01:00",
+         "ref": "4056871920553594800",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "26 May 2015 21:51",
+               "html": "Absolutely no idea. Sorry, I&#39;m really not a Junos person.",
+               "id": "9113406119608185561",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2015-05-26T21:51:31.218+02:00",
+               "ref": "926182205738597341",
+               "type": "comment"
+            }
+         ],
+         "date": "26 May 2015 20:42",
+         "html": "Hello Ivan,<br /><br />Is it possible to do mss clamping on Juniper MX80?<br /><br />Thanks,<br /><br />-Konstantin",
+         "id": "926182205738597341",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/08369651730602067488",
+         "pub": "2015-05-26T20:42:35.695+02:00",
+         "ref": "4056871920553594800",
+         "type": "comment"
+      },
+      {
+         "date": "15 July 2020 10:25",
+         "html": "<p>where will you need to add the mss clamping on if your client is connecting over a layer 2 vpn tunnel over ipsec?</p>\n",
+         "id": "92",
+         "name": " amir",
+         "pub": "2020-07-15T22:25:01",
+         "type": "comment"
+      },
+      {
+         "date": "16 July 2020 01:52",
+         "html": "<p><a href=\"https://blog.ipspace.net/2018/10/worth-watching-machine-learning-in.html\">As James Mickens said</a>: &quot;In a word: Don&#39;t&quot;.</p>\n\n<p>If you really really think you need L2VPN then make sure the underlying MTU is big enough to support all the extra headers.</p>\n",
+         "id": "93",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-07-16T13:52:43",
+         "type": "comment"
+      },
+      {
+         "date": "25 September 2021 03:27",
+         "html": "<p>1.1.1.1 does DNSSEC if you don&#39;t want to trust Google with even more of your data...</p>\n",
+         "id": "750",
+         "name": "G",
+         "pub": "2021-09-25T03:27:39",
+         "type": "comment"
+      }
+   ],
+   "count": 10,
+   "id": "4056871920553594800",
+   "type": "post",
+   "url": "2013/01/tcp-mss-clamping-what-is-it-and-why-do.html"
 }

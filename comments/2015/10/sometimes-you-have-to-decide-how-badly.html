@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/00515499915979264058" rel="nofollow">Ronald Bartels</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7736858259286787656">13 October 2015 08:17</a>
+                <a rel="nofollow" id="c7736858259286787656" href="#7736858259286787656">13 October 2015 08:17</a>
               </span>
             </div>
-            <p class="comment-content">I would recommend the path protection protocols of Carrier Ethernet!<br /><br />But the FW clusters is a solution to the wrong problem.  It is time the firewall dies - 100k lines of configuration in an enterprise worsens security and does not improve it.</p>
+            <div class="comment-content">I would recommend the path protection protocols of Carrier Ethernet!<br /><br />But the FW clusters is a solution to the wrong problem.  It is time the firewall dies - 100k lines of configuration in an enterprise worsens security and does not improve it.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03365178952937983707" rel="nofollow">Georgi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3913979959302428031">13 October 2015 13:08</a>
+                <a rel="nofollow" id="c3913979959302428031" href="#3913979959302428031">13 October 2015 13:08</a>
               </span>
             </div>
-            <p class="comment-content">We are evaluating the exact same solution with active/active firewall cluster stretched across two data centres. The challenge is our DCI is layer 3, the vendor recommends OTV for this particular type of clustering (ASA 9.x). It does not make sense to convert our DCI to layer 2 to accommodate for the stretched firewall cluster, although there is no other way around that.</p>
+            <div class="comment-content">We are evaluating the exact same solution with active/active firewall cluster stretched across two data centres. The challenge is our DCI is layer 3, the vendor recommends OTV for this particular type of clustering (ASA 9.x). It does not make sense to convert our DCI to layer 2 to accommodate for the stretched firewall cluster, although there is no other way around that.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16364104069783107658" rel="nofollow">michaelc0n</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8608817164192632330">14 October 2015 16:42</a>
+                <a rel="nofollow" id="c8608817164192632330" href="#8608817164192632330">14 October 2015 16:42</a>
               </span>
             </div>
-            <p class="comment-content">Of course vendor recommends OTV as this would require licensing  ($) and potentially hardware (more $)...what about vxlan like a hardware vtep to do vlan to vxlan bridging for things like the sync/fo/cluster link.  Not sure if this will work but something to think about...wow I just did a quick check and it looks like ASA 9.4 actually can be a VTEP. Might work? 😁</p>
+            <div class="comment-content">Of course vendor recommends OTV as this would require licensing  ($) and potentially hardware (more $)...what about vxlan like a hardware vtep to do vlan to vxlan bridging for things like the sync/fo/cluster link.  Not sure if this will work but something to think about...wow I just did a quick check and it looks like ASA 9.4 actually can be a VTEP. Might work? 😁</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/03365178952937983707" rel="nofollow">Georgi</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5929573515191476333">15 October 2015 02:22</a>
+                <a rel="nofollow" id="c5929573515191476333" href="#5929573515191476333">15 October 2015 02:22</a>
               </span>
             </div>
-            <p class="comment-content">Possibly but we aren&#39;t there yet. Yes they also offer trustsec capabilities in the new ASA code. The thing is we cannot justify dedicated dark fiber for the stretched cluster. So will run local clusters at each data center. Yes OTV means dedicated hardware and more $$. Our environment is a gre tunnel spider web so it will be challenging.</p>
+            <div class="comment-content">Possibly but we aren&#39;t there yet. Yes they also offer trustsec capabilities in the new ASA code. The thing is we cannot justify dedicated dark fiber for the stretched cluster. So will run local clusters at each data center. Yes OTV means dedicated hardware and more $$. Our environment is a gre tunnel spider web so it will be challenging.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Marco</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5851501003264187256">16 October 2015 14:13</a>
+                <a rel="nofollow" id="c5851501003264187256" href="#5851501003264187256">16 October 2015 14:13</a>
               </span>
             </div>
-            <p class="comment-content">We are currently evaluating new firewalls. One of our biggest issues is the problem that two clusters are too expensive (like mentioned in the Text). So we have to place one box in each DC.<br /><br />PaloAlto comes with a solution which doesn&#39;t need L2 between the Data Interfaces. Described in there Design Guide - Paragraph 2.3 ( https://live.paloaltonetworks.com/t5/Integration-Articles/Designing-Networks-with-Palo-Alto-Networks-Firewalls/ta-p/60868 ).<br /><br />The design guide is describing an active/active scenario which is not what I want. But with proper routing you can run this in an active/passive way (based on traffic flow).<br /><br />Maybe the Cluster Links have to be L2. But this could be solved with non Switched Point-2-Point Links like L2TP/MPLS-XConnect.<br /><br />Of course, this doesn&#39;t solve issues with too slow DCI links or DCI delay issues. Furthermore, just the data path is somewhat separate, the management doesn&#39;t (wrong configuration = whole cluster is down).<br /><br />It seems Paloalto is the only vendor supporting (=described in the documentation) this. Somewhat surprising. Do I overlook something?<br /></p>
+            <div class="comment-content">We are currently evaluating new firewalls. One of our biggest issues is the problem that two clusters are too expensive (like mentioned in the Text). So we have to place one box in each DC.<br /><br />PaloAlto comes with a solution which doesn&#39;t need L2 between the Data Interfaces. Described in there Design Guide - Paragraph 2.3 ( https://live.paloaltonetworks.com/t5/Integration-Articles/Designing-Networks-with-Palo-Alto-Networks-Firewalls/ta-p/60868 ).<br /><br />The design guide is describing an active/active scenario which is not what I want. But with proper routing you can run this in an active/passive way (based on traffic flow).<br /><br />Maybe the Cluster Links have to be L2. But this could be solved with non Switched Point-2-Point Links like L2TP/MPLS-XConnect.<br /><br />Of course, this doesn&#39;t solve issues with too slow DCI links or DCI delay issues. Furthermore, just the data path is somewhat separate, the management doesn&#39;t (wrong configuration = whole cluster is down).<br /><br />It seems Paloalto is the only vendor supporting (=described in the documentation) this. Somewhat surprising. Do I overlook something?<br /></div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5105568595140560440">16 October 2015 16:37</a>
+                <a rel="nofollow" id="c5105568595140560440" href="#5105568595140560440">16 October 2015 16:37</a>
               </span>
             </div>
-            <p class="comment-content">&quot;Maybe the Cluster Links have to be L2. But this could be solved with non Switched Point-2-Point Links like L2TP/MPLS-XConnect.&quot;<br /><br />In the end, it doesn&#39;t matter how both sides will be connected and over which protocol. The real matter is how do you implement the awareness of DCs from each other. <br /><br />It&#39;s so unpredictable to me that a Human based switch will be more reliable in 99% of the cases. <br /><br />You can invent a very complicated system with a lot of switches/tests to be made before processing the failover. But you might be missing a step (humans do miss steps, quite often actually), missing a bug: -&gt; not needed failover/or splitbrain happen and you created the disaster by trying to avoid it. (I personally think that if my VMs are suddenly working on two separate DCs, with network flapping around or any other happy event between, it will be more desastrous than a main site failure at all, remember you lost the state of the data which is actually one of the most important points).<br /><br />Or simply, your system that is doing the failover is failing too, so It&#39;s not going to work out too.<br /><br />Or, you implement a Human switch, deal with that fact that you cannot be faster as 1 hour. Customers know that because they signed the SLA. Accordingly, you documentate a procedure to be followed in case of DC failure, step by step: <br /><br />-Making sure your DC really failed<br />-Switch the network (simple scripts or just portions of configuration that have to be activated, like ospf or bgp)<br />-Go to the DR tool, switch the DC (hosts and Storage), bring up  a test VM and test connectivity, ifok bring up all VMs, etc<br /><br />That being said, I just want to point out that before you even think about designing a backup site with DR, just make sure you have a well-designed main site, that would prevent half of the DRs you might issue later.<br /><br />DR is really in case of disaster, that means your DC fails entirely. It costs less to opt for a good main DC than having 2 DR sites with all the hardware/license costs it&#39;s generating.<br /><br />So now, I don&#39;t even understand why you would ever stretch or span something.<br /></p>
+            <div class="comment-content">&quot;Maybe the Cluster Links have to be L2. But this could be solved with non Switched Point-2-Point Links like L2TP/MPLS-XConnect.&quot;<br /><br />In the end, it doesn&#39;t matter how both sides will be connected and over which protocol. The real matter is how do you implement the awareness of DCs from each other. <br /><br />It&#39;s so unpredictable to me that a Human based switch will be more reliable in 99% of the cases. <br /><br />You can invent a very complicated system with a lot of switches/tests to be made before processing the failover. But you might be missing a step (humans do miss steps, quite often actually), missing a bug: -&gt; not needed failover/or splitbrain happen and you created the disaster by trying to avoid it. (I personally think that if my VMs are suddenly working on two separate DCs, with network flapping around or any other happy event between, it will be more desastrous than a main site failure at all, remember you lost the state of the data which is actually one of the most important points).<br /><br />Or simply, your system that is doing the failover is failing too, so It&#39;s not going to work out too.<br /><br />Or, you implement a Human switch, deal with that fact that you cannot be faster as 1 hour. Customers know that because they signed the SLA. Accordingly, you documentate a procedure to be followed in case of DC failure, step by step: <br /><br />-Making sure your DC really failed<br />-Switch the network (simple scripts or just portions of configuration that have to be activated, like ospf or bgp)<br />-Go to the DR tool, switch the DC (hosts and Storage), bring up  a test VM and test connectivity, ifok bring up all VMs, etc<br /><br />That being said, I just want to point out that before you even think about designing a backup site with DR, just make sure you have a well-designed main site, that would prevent half of the DRs you might issue later.<br /><br />DR is really in case of disaster, that means your DC fails entirely. It costs less to opt for a good main DC than having 2 DR sites with all the hardware/license costs it&#39;s generating.<br /><br />So now, I don&#39;t even understand why you would ever stretch or span something.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -128,10 +123,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4573273087568855906">16 October 2015 18:33</a>
+                <a rel="nofollow" id="c4573273087568855906" href="#4573273087568855906">16 October 2015 18:33</a>
               </span>
             </div>
-            <p class="comment-content">AWESOME. So glad someone else makes the same arguments and is even more passionate about them than I am ;))</p>
+            <div class="comment-content">AWESOME. So glad someone else makes the same arguments and is even more passionate about them than I am ;))</div>
           </div>
         </li>
       </div>
@@ -146,10 +141,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Marco</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1265706030154086147">16 October 2015 22:51</a>
+                <a rel="nofollow" id="c1265706030154086147" href="#1265706030154086147">16 October 2015 22:51</a>
               </span>
             </div>
-            <p class="comment-content">Of course, independent DC&#39;s are always best. And an automatic super complex DR will always fail.<br /><br />In my live, people who decide listen more to vMware people than me (seems to be the same in Ivan&#39;s ExpertExpress sessions). So, L2 DCI is just a requirement.<br /><br />Now I have two possibilities:<br />- Looking for another employee which doesn&#39;t use L2-DCI<br />- Try to convince the people further about &quot;logically connected DC will fail&quot; and try to separate my part of the DC (Network/Firewall) as best as possible with the L2-DCI requirement and the available budget.<br /><br />In Ivan&#39;s blog post above, it seems they already run a stretched VLAN design and I assume there is a L2-DCI requirement because of vMotion. So the question is, can we improve the mentioned firewall design and still support the required L2-DCI.<br /><br />His advice is &quot;... or at least minimize the number of VLANs that span both data centers...&quot;. But to get any benefit of local VLAN&#39;s, you have to make sure the firewall cluster doesn&#39;t rely on stretched VLANs. Together with the mentioned &quot;there isn&#39;t enough money to buy two clusters&quot; you have to look for a stretched firewall cluster which doesn&#39;t need streched VLAN&#39;s.<br /><br />With my mentioned design above, you don&#39;t (from the Firewalls point of view) care about a split brain or bridging loop. They just doesn&#39;t hurt the firewall. If you have a mix of local and stretched VLAN&#39;s, the local VLAN&#39;s will always work if the remote DC fails (even if just a part of one DC fails) if your routing for local VLANs still works.<br /><br />And maybe, in x years if you can prove your local VLANs are far more stable then the stretched ones, people who decides listen a little bit more to you.<br /><br /><br />But it is never as simple as it seems:<br /><br />With the mentioned design above, you have to run your own MPLS network with L3-VPN (or any other L3 virtualisation). If you don&#39;t already have a running network like this, this design is likely to bee too complex (adding another layer of complexity just to remove a few stretched VLAN&#39;s isn&#39;t a good tradeoff). But if you already have L3 virtualisation in your network, this design could be a first step to further separate your DC.<br /><br />Of course, it also doesn&#39;t make sense if all of your VLAN&#39;s have to be streched. <br /><br />So, to sum up... The mentioned design isn&#39;t the perfect solution but it could be better than a stretched VLAN firewall cluster.<br /><br /><br />But since my knowledge about this is just theory and there is just one vendor mentioning this, I am still looking for the big issue of this design...compared to the stretched VLAN design all vendors mention.</p>
+            <div class="comment-content">Of course, independent DC&#39;s are always best. And an automatic super complex DR will always fail.<br /><br />In my live, people who decide listen more to vMware people than me (seems to be the same in Ivan&#39;s ExpertExpress sessions). So, L2 DCI is just a requirement.<br /><br />Now I have two possibilities:<br />- Looking for another employee which doesn&#39;t use L2-DCI<br />- Try to convince the people further about &quot;logically connected DC will fail&quot; and try to separate my part of the DC (Network/Firewall) as best as possible with the L2-DCI requirement and the available budget.<br /><br />In Ivan&#39;s blog post above, it seems they already run a stretched VLAN design and I assume there is a L2-DCI requirement because of vMotion. So the question is, can we improve the mentioned firewall design and still support the required L2-DCI.<br /><br />His advice is &quot;... or at least minimize the number of VLANs that span both data centers...&quot;. But to get any benefit of local VLAN&#39;s, you have to make sure the firewall cluster doesn&#39;t rely on stretched VLANs. Together with the mentioned &quot;there isn&#39;t enough money to buy two clusters&quot; you have to look for a stretched firewall cluster which doesn&#39;t need streched VLAN&#39;s.<br /><br />With my mentioned design above, you don&#39;t (from the Firewalls point of view) care about a split brain or bridging loop. They just doesn&#39;t hurt the firewall. If you have a mix of local and stretched VLAN&#39;s, the local VLAN&#39;s will always work if the remote DC fails (even if just a part of one DC fails) if your routing for local VLANs still works.<br /><br />And maybe, in x years if you can prove your local VLANs are far more stable then the stretched ones, people who decides listen a little bit more to you.<br /><br /><br />But it is never as simple as it seems:<br /><br />With the mentioned design above, you have to run your own MPLS network with L3-VPN (or any other L3 virtualisation). If you don&#39;t already have a running network like this, this design is likely to bee too complex (adding another layer of complexity just to remove a few stretched VLAN&#39;s isn&#39;t a good tradeoff). But if you already have L3 virtualisation in your network, this design could be a first step to further separate your DC.<br /><br />Of course, it also doesn&#39;t make sense if all of your VLAN&#39;s have to be streched. <br /><br />So, to sum up... The mentioned design isn&#39;t the perfect solution but it could be better than a stretched VLAN firewall cluster.<br /><br /><br />But since my knowledge about this is just theory and there is just one vendor mentioning this, I am still looking for the big issue of this design...compared to the stretched VLAN design all vendors mention.</div>
           </div>
         </li>
       </div>

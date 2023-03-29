@@ -1,0 +1,120 @@
+<div class="comments post" id="comments">
+  <h4>2 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1211">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Petrus</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1211" href="#1211">04 May 2022 05:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Seems like a lot of effort to get the local default border router. 
+Why not advertise the same anycast loopback IP from all the POP/DC border routers via the IGP for that access area. Then either add static default route towards the border routers&rsquo; anycast IP on all the LAN routers or advertise the same default BGP route via the anycast next hop to all clients. The recursive lookup to the anycast gateway will ensure load balancing by the IGP whether there are 2,3 or 4 border routers at a POP.     </p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1212">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Nicola Modena</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1212" href="#1212">04 May 2022 09:38</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>TL;DR: your proposal solves the problem only for the default-route, my design for all the traffic.</p>
+
+<p>In the first part of the presentation I use the default-route to explain the advantages of ADD-PATH and ORR, while the subsequent integration of external routing on the route-reflector (slide 18) extends these advantages to all internal or external prefixes that can take advantage of multipath.
+In my opinion, the &quot;old fashioned&quot; Load Balancing trough Anycast/IGP it&#39;s surpassed by bgp multipath that can be enriched with features such as edge-selection, unequal cost LB via bandwidth community or customized as desired with more or less standardized communities.
+Finally anycast LB is not suitable for any topology, introduces complexity for troubleshooting and is not very friendly with mpls.
+Thanks for your comment, I hope I have convinced you</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1214">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Petrus</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1214" href="#1214">05 May 2022 05:04</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It was not immediately clear to me how the routers inside the DC/POP would be able to reach the central RR before they have the default route, which they must still get from that RR. I assume that the border routers would distribute the RR&rsquo;s loopback IP from the core IGP area/level into the access IGP area.  Why not just also originate the default route via IGP into the access areas?
+Normally a router with full internet table, core/border in this design, would not have a default route. It can&rsquo;t distribute something it does not have but can originate it.</p>
+
+<p>The core/border routers would perform IP lookups for external destinations anyway, it can also IP lookup internal/customer destinations for remote DC/POP areas. The routers inside DC/POP only requires specific customer &amp; infrastructure routes local to that POP. Maybe full mesh between the co-located routers or on-path RR is ok?</p>
+
+<p>It seems the design it targeted at pure ISP operator where all the routes are in one global or default table, both infrastructure and service routes. The core routers also contain full internet table, they are not pure MPLS LSRs. </p>
+
+<p>When designing for a mixed ISP + VPN service provider then a further separation between control planes become possible; IP transport (IPv4 + SR-MPLS) and services (VPNv4, VPNv6, EVPN).
+It&rsquo;s not ideal to have all VPN instances configured on the area border and core routers to do IP lookups, better if they just lookup transport MPLS labels. Still makes sense to do &ldquo;two stage lookup&rdquo; for the public internet VPN. For other VPNs the routers inside DC/POP area need to push the full transport label stack and may need assistance from a PCE via an ODN request if they don&rsquo;t have the full topology. </p>
+
+<p>In this case using anycast SID on the area border routers can work well together with SR-MPLS.
+Maybe have a look at this modern BGP design for VPN service providers. Lots of traffic engineering and egress peer engineering possibilities.
+https://xrdocs.io/design/blogs/latest-converged-sdn-transport-hld</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1216">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">nicola modena</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1216" href="#1216">06 May 2022 08:57</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>It seems that I have not been able to convince you. The purpose of my presentation is to show a (simple) solution exclusively based on bgp, and as you pointed out there are many solutions to solve these problems. You are free to use the solution that best suits your requirements.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

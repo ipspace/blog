@@ -1,0 +1,97 @@
+{
+   "comments": [
+      {
+         "date": "15 June 2022 06:48",
+         "html": "<p>Any chance the DC landscape of 2014 could have influenced their recommendations?</p>\n\n<p>I think they still had two competing L2 fabric solutions (QFabric and VCF), and VXLAN was either CRB or mcast flood and learn.</p>\n\n<p>Unsure if these would justify their position at the time, that and the fact that they didn&#39;t have a Jericho platform until 2021?</p>\n",
+         "id": "1299",
+         "name": " Time traveler",
+         "pub": "2022-06-15T18:48:13",
+         "type": "comment"
+      },
+      {
+         "date": "15 June 2022 07:13",
+         "html": "IIRC: Juniper was late to market with newer-generation Trident leaf switches that had VXLAN RIOT support, so they were trying to push centralized VXLAN-to-VXLAN routing on spine switches, and that could only be done (in those days) on QFX10K.<br />\n\n<p>I would be acceptable if they would have written &quot;use QFX10K as spine switches to get VXLAN routing, because Broadcom didn&#39;t implement it in Tomahawk ASIC&quot;. Still bending the truth by omission (because VXLAN routing did work in newer Trident ASICs), but it wouldn&#39;t be plain wrong like their buffering argument.</p>\n",
+         "id": "1301",
+         "name": " Ivan Pepelnjak",
+         "pub": "2022-06-15T19:13:19",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "15 June 2022 09:00",
+               "html": "<p>Wow, that was amazingly fast. Thank you! Will update the blog post tomorrow (it&#39;s getting late over here)</p>\n\n<p>And yes, I totally agree - Apstra kicks ass ;))</p>\n",
+               "id": "1303",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-06-15T21:00:58",
+               "ref": "1302",
+               "type": "comment"
+            }
+         ],
+         "date": "15 June 2022 08:57",
+         "html": "<p>Ivan - Thanks for bringing that ancient white paper to our attention. The strange thing is the link goes to the pre-staging area for stuff before we take it live to our site. The WP definitely was not on our public website. But surprised that you were able to get through the link. Anyway, we just took it down. Sorry for any confusion. BTW, our DC portfolio kinda kicks ass now with Apstra running DF fabric automation &amp; mgmt. We&#39;re getting a ton of great customer feedback.</p>\n",
+         "id": "1302",
+         "name": "Ben Baker",
+         "pub": "2022-06-15T20:57:13",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "16 June 2022 08:12",
+               "html": "<p>It&#39;s my understanding that 40GE or 100GE uses lanes for bit striping, sending a single frame across all four lanes -- that&#39;s why it&#39;s better to use the four 25GE lanes as a 100GE link instead of a LAG bundle of four 25GE links.</p>\n\n<p>A 40GE/100GE interface thus appears as a single higher-speed interface for the purposes of buffering discussions.</p>\n",
+               "id": "1305",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-06-16T08:12:54",
+               "ref": "1304",
+               "type": "comment"
+            },
+            {
+               "date": "16 June 2022 03:37",
+               "html": "<p>Makes sense! Thanks for responding with your thoughts!</p>\n",
+               "id": "1306",
+               "name": "AW ",
+               "pub": "2022-06-16T15:37:29",
+               "ref": "1305",
+               "type": "comment"
+            }
+         ],
+         "date": "16 June 2022 04:36",
+         "html": "<p>Does mixing and matching upstream / downstream ports with different data lane / speed configurations contribute to the need for buffering? For example: 100-Gig uses 4x 25 Gig lanes while a 40-Gig port uses 10-Gig lanes, etc... Do you think this matters at all or is it just a factor of total port-speed regardless of number or speed of lanes?</p>\n\n<p>I&#39;m inclined to think where we&#39;re buffering doesn&#39;t really know or care what lane configuration is used as at that point it&#39;s abstracted and only knows raw total speed but I&#39;m not totally sure honestly. Any thoughts?</p>\n",
+         "id": "1304",
+         "name": " AW",
+         "pub": "2022-06-16T04:36:15",
+         "type": "comment"
+      },
+      {
+         "date": "20 June 2022 06:02",
+         "html": "<p>You might want to add another consideration. If you have a lot of traffic aggregation even when the ingress and egress port are roughly at the same speed or when the egress port has more capacity, you could still have congestion. Then you have two strategies, buffer and suffer jitter and delay, or drop and hope that the upper layers will detect it and reduce the sending by shaping. \nBut you are right, deep buffers mean high jitter that might be converted into high delay at some point by dejitter buffers. \nIf you have a traffic pattern that is a kind of distribution into multiple directions, then you do not need to concern about congestion and deep buffers. Even if the distributing interfaces might have less speed but they still fit to the disaggregation patterns. For example, fast ethernet access ports and gigabit uplinks. There are many situations like that.\nAs usual, an optimum network design requires the knowledge of your traffic patterns. Otherwise, you can just overdesign as much as allowed by your budgets. \nIt is also important to take into account the policer/shaper chaining rules. If you want to reduce congestion, than there must be a shaper at the sender for complying with the policer at the receiver. The physical capacity of the link is a natural policer, even if you have not configured a policer explicitly. Inside the router/switch you have a similar pairing, you just have to count with the aggregation factor, too. </p>\n\n<p>Such a chain of shapers is very difficult to manage, so a backpressure mechanism edge-to-edge or end-to-end would be needed for the rescue. Unfortunately, some traffic does not have backpressure, such as certain UDP streams. Then you have a bad luck and either configure all the shapers based on a traffic patterns, or make a compromise by tolerating packet loss and jitter. </p>\n\n<p>I have seen a lot of problems in networks when shapers were forgotten... You cannot make wonders, so you have to consider them...</p>\n",
+         "id": "1309",
+         "name": "Bela Varkonyi",
+         "pub": "2022-06-20T18:02:42",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "23 June 2022 08:25",
+               "html": "<p>Someone should collect them from the hundreds of blog posts I wrote ;)</p>\n\n<p>Anyway, #1 should be &quot;figure out what (business) problem you&#39;re trying to solve&quot;. Then there&#39;s the Russ White rule &quot;if you haven&#39;t found the tradeoffs, you haven&#39;t looked hard enough&quot;</p>\n",
+               "id": "1314",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-06-23T08:25:43",
+               "ref": "1313",
+               "type": "comment"
+            }
+         ],
+         "date": "22 June 2022 10:41",
+         "html": "<p>&quot;Never forget Rule#2 of good network design&quot;</p>\n\n<p>Where do we find the rest of the rules?</p>\n",
+         "id": "1313",
+         "name": " Jaap de Vos",
+         "pub": "2022-06-22T22:41:28",
+         "type": "comment"
+      }
+   ],
+   "count": 6,
+   "type": "post",
+   "url": "2022/06/beware-vendors-bringing-whitepapers.html"
+}

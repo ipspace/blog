@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>8 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8008234122590847646">23 January 2007 01:23</a>
+                <a rel="nofollow" id="c8008234122590847646" href="#8008234122590847646">23 January 2007 01:23</a>
               </span>
             </div>
-            <p class="comment-content">I would love to know what the tunnel algorithm does.  We want to load share between just a few hosts and destinations and this seems like it would work better than the others based on the cisco description, but I  can't find any detail on the tunnel algorithm.</p>
+            <div class="comment-content">I would love to know what the tunnel algorithm does.  We want to load share between just a few hosts and destinations and this seems like it would work better than the others based on the cisco description, but I  can't find any detail on the tunnel algorithm.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4283113457872832223">23 January 2007 19:27</a>
+                <a rel="nofollow" id="c4283113457872832223" href="#4283113457872832223">23 January 2007 19:27</a>
               </span>
             </div>
-            <p class="comment-content">Regardless of what any load-sharing algorithm actually does, if it spreads the load based on source/destination IP addresses only, it will (statistically) not behave too well in an environment with a small number of hosts. For such an environment, you need <a href="http://ioshints.blogspot.com/2006/12/per-port-cef-load-sharing.html">per-flow load sharing</a>.<br /><br />I did a few tests with the <b>tunnel</b> algorithm and it definitely <b>does NOT</b> consider source/destination address of the encapsulated IP packet within the GRE payload. The only other available information is from the Cisco web site saying that it would perform better than the universal algorithm in tunnel-heavy (where the interim routers only see tunnel endpoints).</p>
+            <div class="comment-content">Regardless of what any load-sharing algorithm actually does, if it spreads the load based on source/destination IP addresses only, it will (statistically) not behave too well in an environment with a small number of hosts. For such an environment, you need <a href="http://ioshints.blogspot.com/2006/12/per-port-cef-load-sharing.html">per-flow load sharing</a>.<br /><br />I did a few tests with the <b>tunnel</b> algorithm and it definitely <b>does NOT</b> consider source/destination address of the encapsulated IP packet within the GRE payload. The only other available information is from the Cisco web site saying that it would perform better than the universal algorithm in tunnel-heavy (where the interim routers only see tunnel endpoints).</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2019510153625829977">30 January 2007 01:07</a>
+                <a rel="nofollow" id="c2019510153625829977" href="#2019510153625829977">30 January 2007 01:07</a>
               </span>
             </div>
-            <p class="comment-content">I'd love to implement per-flow, but I have a 6509 with a sup2 and it does not seem to support 12.4(11)T.  It was the second half of cisco load-sharing algorithm tunnel command description that was giving me hope: "or in environments where there are only a few IP source and destination address pairs."  Are there any additional thoughts on this?</p>
+            <div class="comment-content">I'd love to implement per-flow, but I have a 6509 with a sup2 and it does not seem to support 12.4(11)T.  It was the second half of cisco load-sharing algorithm tunnel command description that was giving me hope: "or in environments where there are only a few IP source and destination address pairs."  Are there any additional thoughts on this?</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Shawn</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3081588705283906881">01 July 2011 05:03</a>
+                <a rel="nofollow" id="c3081588705283906881" href="#3081588705283906881">01 July 2011 05:03</a>
               </span>
             </div>
-            <p class="comment-content">I have a c7600/sup720/12.2(33)SRE box that I am trying to improve the 3x1GigE BGP multihop distribution... we have only a few soruce/dest pairs, and one link has only a few pps(40 right now) outbound, the other two are 200M each...  we have other BGP mh sessions that are similar, so I figured it was CEF related hashing....  I just added &quot;ip cef load-sharing algorithm include-ports source destination&quot; with no luck -- no change in traffic distribution.  Whatever our eBGP neigh is doing, they spread the load pretty well... we don&#39;t.  Sh ip cef X still shows &quot;per-destination sharing&quot; in the output.  I tried a clear of the cef table as well.  Do I need to refresh the RIB (flap BGP, etc)?  I can&#39;t do that now.</p>
+            <div class="comment-content">I have a c7600/sup720/12.2(33)SRE box that I am trying to improve the 3x1GigE BGP multihop distribution... we have only a few soruce/dest pairs, and one link has only a few pps(40 right now) outbound, the other two are 200M each...  we have other BGP mh sessions that are similar, so I figured it was CEF related hashing....  I just added &quot;ip cef load-sharing algorithm include-ports source destination&quot; with no luck -- no change in traffic distribution.  Whatever our eBGP neigh is doing, they spread the load pretty well... we don&#39;t.  Sh ip cef X still shows &quot;per-destination sharing&quot; in the output.  I tried a clear of the cef table as well.  Do I need to refresh the RIB (flap BGP, etc)?  I can&#39;t do that now.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Shawn</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5445487678629078901">01 July 2011 09:10</a>
+                <a rel="nofollow" id="c5445487678629078901" href="#5445487678629078901">01 July 2011 09:10</a>
               </span>
             </div>
-            <p class="comment-content">I just added &quot;mls ip cef load-sharing full&quot; to acompish the proper effect... but I don&#39;t yet understand why this is under the mls function??<br /><br />3x static routes to BGP multihop neighbor loopback</p>
+            <div class="comment-content">I just added &quot;mls ip cef load-sharing full&quot; to acompish the proper effect... but I don&#39;t yet understand why this is under the mls function??<br /><br />3x static routes to BGP multihop neighbor loopback</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3116182957551381027">01 July 2011 17:47</a>
+                <a rel="nofollow" id="c3116182957551381027" href="#3116182957551381027">01 July 2011 17:47</a>
               </span>
             </div>
-            <p class="comment-content">6500 is a &quot;very special&quot; device and it&#39;s multi-layer switching (MLS) is full of caveats and murkiness that needs to be hand-tweaked with &quot;mls ...&quot; commands, most of them hidden and/or undocumented.</p>
+            <div class="comment-content">6500 is a &quot;very special&quot; device and it&#39;s multi-layer switching (MLS) is full of caveats and murkiness that needs to be hand-tweaked with &quot;mls ...&quot; commands, most of them hidden and/or undocumented.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2610110163855328687">19 September 2011 17:42</a>
+                <a rel="nofollow" id="c2610110163855328687" href="#2610110163855328687">19 September 2011 17:42</a>
               </span>
             </div>
-            <p class="comment-content">Hi, I just had adiscussion about the algorthm of loadsharing and found these hints. Given a table with 5 entries does it mean that 3 go line 1 and 2 line 2 and the next entry would go line 2 as well or there a different algorthm used?</p>
+            <div class="comment-content">Hi, I just had adiscussion about the algorthm of loadsharing and found these hints. Given a table with 5 entries does it mean that 3 go line 1 and 2 line 2 and the next entry would go line 2 as well or there a different algorthm used?</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Rajmohan</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6885224302673638365">24 July 2012 19:58</a>
+                <a rel="nofollow" id="c6885224302673638365" href="#6885224302673638365">24 July 2012 19:58</a>
               </span>
             </div>
-            <p class="comment-content">i have 3560-24PS through which a GRE tunnel is passing through. Though the routing table and CEF shows two equal cost path for next hop, the packets are always sent via one path.CEF load sharing algorithm was changed from universal to tunnel, even then also both the paths are not being used. This product does not support per packet load sharing. Please Advice me a work around with which i can utilise both the available path.</p>
+            <div class="comment-content">i have 3560-24PS through which a GRE tunnel is passing through. Though the routing table and CEF shows two equal cost path for next hop, the packets are always sent via one path.CEF load sharing algorithm was changed from universal to tunnel, even then also both the paths are not being used. This product does not support per packet load sharing. Please Advice me a work around with which i can utilise both the available path.</div>
           </div>
         </li>
       </div>

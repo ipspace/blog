@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>17 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Lukas Tribus</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3871384987072799817">22 March 2017 11:44</a>
+                <a rel="nofollow" id="c3871384987072799817" href="#3871384987072799817">22 March 2017 11:44</a>
               </span>
             </div>
-            <p class="comment-content">I disagree stickiness implies maintaining state at the load-balancer. You can hash the src-ip to pick your backend, or, if you are layer 7 reverse proxying, you can set a cookie to a specific, static, backend server.<br /><br />That way, the load-balancer does not maintain state, and if you need to scale horizontally, you can ECMP in front of it.<br /><br /><br />As per passing the source IP to backends when HTTP doesn&#39;t allow it (for example when using end-to-end encryption), you can use the proxy protocol [1], supported by haproxy, nginx, varnish, apache, et all.<br /><br /><br />[1] http://git.haproxy.org/?p=haproxy.git;a=blob_plain;f=doc/proxy-protocol.txt;hb=HEAD<br /></p>
+            <div class="comment-content">I disagree stickiness implies maintaining state at the load-balancer. You can hash the src-ip to pick your backend, or, if you are layer 7 reverse proxying, you can set a cookie to a specific, static, backend server.<br /><br />That way, the load-balancer does not maintain state, and if you need to scale horizontally, you can ECMP in front of it.<br /><br /><br />As per passing the source IP to backends when HTTP doesn&#39;t allow it (for example when using end-to-end encryption), you can use the proxy protocol [1], supported by haproxy, nginx, varnish, apache, et all.<br /><br /><br />[1] http://git.haproxy.org/?p=haproxy.git;a=blob_plain;f=doc/proxy-protocol.txt;hb=HEAD<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1035164332284219684">22 March 2017 14:01</a>
+                <a rel="nofollow" id="c1035164332284219684" href="#1035164332284219684">22 March 2017 14:01</a>
               </span>
             </div>
-            <p class="comment-content">Hi Lukas,<br /><br />It depends on what your acceptable failure (= losing session state) rate is, how often the topology changes, and whether you want to have load balancing beyond simple round-robin (or in your case hash-based).<br /><br />Based on my limited experience people who can&#39;t implement Memcached for PHP cookies are usually also thinking about overly-complex load balancing schemes.<br /><br />And thanks a lot for the link to the PROXY protocol. I love to be proven wrong and pointed toward interesting new solutions.</p>
+            <div class="comment-content">Hi Lukas,<br /><br />It depends on what your acceptable failure (= losing session state) rate is, how often the topology changes, and whether you want to have load balancing beyond simple round-robin (or in your case hash-based).<br /><br />Based on my limited experience people who can&#39;t implement Memcached for PHP cookies are usually also thinking about overly-complex load balancing schemes.<br /><br />And thanks a lot for the link to the PROXY protocol. I love to be proven wrong and pointed toward interesting new solutions.</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16631488980875183082" rel="nofollow">Malcolm Turnbull</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6268266843936069694">29 March 2017 10:21</a>
+                <a rel="nofollow" id="c6268266843936069694" href="#6268266843936069694">29 March 2017 10:21</a>
               </span>
             </div>
-            <p class="comment-content">Ivan, You could do a consistent hash (even) when a server fails, but I agree - you should always handle persistence in the application.<br /><br />I noticed Amazon ELB now supports the HAProxy proxy protocol which is great news..<br /><br />But I still think layer 7 load balancing sucks [1].<br /><br />[1] https://www.loadbalancer.org/blog/why-layer-7-sucks<br /></p>
+            <div class="comment-content">Ivan, You could do a consistent hash (even) when a server fails, but I agree - you should always handle persistence in the application.<br /><br />I noticed Amazon ELB now supports the HAProxy proxy protocol which is great news..<br /><br />But I still think layer 7 load balancing sucks [1].<br /><br />[1] https://www.loadbalancer.org/blog/why-layer-7-sucks<br /></div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://itsthe.network/" rel="nofollow">Steven Iveson</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3409797160446962018">22 March 2017 14:44</a>
+                <a rel="nofollow" id="c3409797160446962018" href="#3409797160446962018">22 March 2017 14:44</a>
               </span>
             </div>
-            <p class="comment-content">Some interesting and challenging points you raise in this. Some fresh thinking is well in order. A few initial thoughts;<br /><br />1) As most browsers open multiple &#39;parallel&#39; connections to a single (V)IP/site, I wonder if the complexity introduced from a troubleshooting, tracing and monitoring POV are worthwhile. This might inform your thoughts around TCP and HTTP session equality btw.<br />2) Ditto for the overhead of multiple servers being required to perform lookups against the shared state &#39;database&#39;. Presumably they would have to do so for every request in case the state had changed (via a connection on another server). This obviously won&#39;t be an issue with HTTP/2.0 use.<br />3) The load balancer is required (for just the load balancing) anyway (although  there are other ways) so why not avoid issues 1), 2) and 4) above and below. Perhaps the ability to not lose state when a server fails is enough of a benefit?<br />4) The availability of the shared state &#39;database&#39; itself needs to be addressed. So more HA considerations, more complexity, etc. especially considering 3).<br />5) The ridiculous and expensive load balancer option is taken because that&#39;s what the CIO/org demand and allow themselves to be sold, not because it&#39;s what&#39;s needed. That&#39;s a whole different subject and problem. As per 3) it would be there anyway and of course, all vendors will take full advantage.<br /><br />In summary, yes I agree, it&#39;s not required but I also think moving the solution elsewhere isn&#39;t necessarily worthwhile, at least if you have a LB anyway. &quot;Most of the time, it depends&quot; and all that. <br /><br />A genuinely thought provoking and informative piece, many thanks.</p>
+            <div class="comment-content">Some interesting and challenging points you raise in this. Some fresh thinking is well in order. A few initial thoughts;<br /><br />1) As most browsers open multiple &#39;parallel&#39; connections to a single (V)IP/site, I wonder if the complexity introduced from a troubleshooting, tracing and monitoring POV are worthwhile. This might inform your thoughts around TCP and HTTP session equality btw.<br />2) Ditto for the overhead of multiple servers being required to perform lookups against the shared state &#39;database&#39;. Presumably they would have to do so for every request in case the state had changed (via a connection on another server). This obviously won&#39;t be an issue with HTTP/2.0 use.<br />3) The load balancer is required (for just the load balancing) anyway (although  there are other ways) so why not avoid issues 1), 2) and 4) above and below. Perhaps the ability to not lose state when a server fails is enough of a benefit?<br />4) The availability of the shared state &#39;database&#39; itself needs to be addressed. So more HA considerations, more complexity, etc. especially considering 3).<br />5) The ridiculous and expensive load balancer option is taken because that&#39;s what the CIO/org demand and allow themselves to be sold, not because it&#39;s what&#39;s needed. That&#39;s a whole different subject and problem. As per 3) it would be there anyway and of course, all vendors will take full advantage.<br /><br />In summary, yes I agree, it&#39;s not required but I also think moving the solution elsewhere isn&#39;t necessarily worthwhile, at least if you have a LB anyway. &quot;Most of the time, it depends&quot; and all that. <br /><br />A genuinely thought provoking and informative piece, many thanks.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1047743827230042855">22 March 2017 17:10</a>
+                <a rel="nofollow" id="c1047743827230042855" href="#1047743827230042855">22 March 2017 17:10</a>
               </span>
             </div>
-            <p class="comment-content">Nice set of questions ;) Thank you!<br /><br />#1 - Out of the 100+ requests needed to build a web page (yeah, sad statistics), often only one is handled by a script that touches session state. Most others are static resources. See http://httparchive.org/interesting.php for details (and keep in mind that &quot;scripts&quot; is JavaScript and &quot;HTML&quot; is what is produced by a PHP/Python/whatever script)<br /><br />#2 - A single Memcached instance can handle 200K requests/second. https://github.com/memcached/memcached/wiki/Performance<br /><br />#3 - There&#39;s a slight (cost) difference between running HAproxy or nginx and F5 LTM.<br /><br />#4 - I would hope that a well-written web application caches all sorts of things anyway, so you have the caching tier up and running anyway. I know that&#39;s often not the case though...<br /><br />#5 - In some cases you&#39;re forced to buy the ridiculously expensive load balancer because that&#39;s the only way to make ****lications work. OTOH, I know organizations who bought expensive load balancer instead of using open source software so they&#39;d have someone to sue when it fails. At least some of those same organizations use open source software to run the applications. Go figure...</p>
+            <div class="comment-content">Nice set of questions ;) Thank you!<br /><br />#1 - Out of the 100+ requests needed to build a web page (yeah, sad statistics), often only one is handled by a script that touches session state. Most others are static resources. See http://httparchive.org/interesting.php for details (and keep in mind that &quot;scripts&quot; is JavaScript and &quot;HTML&quot; is what is produced by a PHP/Python/whatever script)<br /><br />#2 - A single Memcached instance can handle 200K requests/second. https://github.com/memcached/memcached/wiki/Performance<br /><br />#3 - There&#39;s a slight (cost) difference between running HAproxy or nginx and F5 LTM.<br /><br />#4 - I would hope that a well-written web application caches all sorts of things anyway, so you have the caching tier up and running anyway. I know that&#39;s often not the case though...<br /><br />#5 - In some cases you&#39;re forced to buy the ridiculously expensive load balancer because that&#39;s the only way to make ****lications work. OTOH, I know organizations who bought expensive load balancer instead of using open source software so they&#39;d have someone to sue when it fails. At least some of those same organizations use open source software to run the applications. Go figure...</div>
           </div>
         </li>
       </div>
@@ -125,10 +120,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15452464039180688994" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2657892529405485932">22 March 2017 16:58</a>
+                <a rel="nofollow" id="c2657892529405485932" href="#2657892529405485932">22 March 2017 16:58</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan,<br />Just one remark regarding X-Forwarded-For with SSL/TLS all the way to the servers: it&#39;s actually possible with SSL-Bridging on the load-balancer; whether it&#39;s good or not remains to the trade-offs...</p>
+            <div class="comment-content">Hi Ivan,<br />Just one remark regarding X-Forwarded-For with SSL/TLS all the way to the servers: it&#39;s actually possible with SSL-Bridging on the load-balancer; whether it&#39;s good or not remains to the trade-offs...</div>
           </div>
         </li>
       </div>
@@ -143,10 +138,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16576726865924052243" rel="nofollow">Dmitri Kalintsev</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7068356930698462289">22 March 2017 23:49</a>
+                <a rel="nofollow" id="c7068356930698462289" href="#7068356930698462289">22 March 2017 23:49</a>
               </span>
             </div>
-            <p class="comment-content">(full disclosure - currently working for one of the commercial LB vendors, so feel free to ignore my opinion)<br /><br />Deviating somewhat from the topic of session stickiness and swinging to the question &quot;why would you buy an expensive LB&quot;. I&#39;d say there are reasons beyond just distributing traffic to backend nodes that prompt people to spill $$$.<br /><br />LB, or rather &quot;ADC&quot; can, and often does, provide a bunch of additional functionality that either doesn&#39;t belong in the app, or is shared. For example, generating server response performance metrics feed for your ops, URI request routing, WAF/DLP, SSO, etc.<br /><br />[shameless plug]I wrote a blog not too long ago that gives an example of using in-line request and response processing to &quot;integrate&quot; single page app with static object store and a 3rd party web app (wordpress blog): https://telecomoccasionally.wordpress.com/2016/12/06/running-a-single-page-app-and-cant-wait-for-lambdaedge-heres-an-alternative/ [/shameless plug]<br /><br />On apps using opensource: you&#39;re supposedly setting up an LB to protect your app users from backend failures, which is what your LB is there for. In my book this means that LB&#39;s availability is more important than that of an individual scale-out backend server. Which means that you may see risk profiles differently, and be more willing to pay for one and not the other.<br /><br />Just my 2c.</p>
+            <div class="comment-content">(full disclosure - currently working for one of the commercial LB vendors, so feel free to ignore my opinion)<br /><br />Deviating somewhat from the topic of session stickiness and swinging to the question &quot;why would you buy an expensive LB&quot;. I&#39;d say there are reasons beyond just distributing traffic to backend nodes that prompt people to spill $$$.<br /><br />LB, or rather &quot;ADC&quot; can, and often does, provide a bunch of additional functionality that either doesn&#39;t belong in the app, or is shared. For example, generating server response performance metrics feed for your ops, URI request routing, WAF/DLP, SSO, etc.<br /><br />[shameless plug]I wrote a blog not too long ago that gives an example of using in-line request and response processing to &quot;integrate&quot; single page app with static object store and a 3rd party web app (wordpress blog): https://telecomoccasionally.wordpress.com/2016/12/06/running-a-single-page-app-and-cant-wait-for-lambdaedge-heres-an-alternative/ [/shameless plug]<br /><br />On apps using opensource: you&#39;re supposedly setting up an LB to protect your app users from backend failures, which is what your LB is there for. In my book this means that LB&#39;s availability is more important than that of an individual scale-out backend server. Which means that you may see risk profiles differently, and be more willing to pay for one and not the other.<br /><br />Just my 2c.</div>
           </div>
         </li>
       </div>
@@ -161,10 +156,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Gabriel</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4842090977216750597">23 March 2017 01:56</a>
+                <a rel="nofollow" id="c4842090977216750597" href="#4842090977216750597">23 March 2017 01:56</a>
               </span>
             </div>
-            <p class="comment-content">Very clear Ivan,<br /><br />Thanks.</p>
+            <div class="comment-content">Very clear Ivan,<br /><br />Thanks.</div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/08333059712411851393" rel="nofollow">David Barroso</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6882111752447975795">23 March 2017 15:21</a>
+                <a rel="nofollow" id="c6882111752447975795" href="#6882111752447975795">23 March 2017 15:21</a>
               </span>
             </div>
-            <p class="comment-content">Or you can build a multiterabit distributed load balancer without holding any state on a whitebox switch: https://www.fastly.com/blog/building-and-scaling-fastly-network-part-2-balancing-requests</p>
+            <div class="comment-content">Or you can build a multiterabit distributed load balancer without holding any state on a whitebox switch: https://www.fastly.com/blog/building-and-scaling-fastly-network-part-2-balancing-requests</div>
           </div>
         </li>
       </div>
@@ -197,10 +192,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/02012177197401865639" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4179130844047716975">27 March 2017 22:09</a>
+                <a rel="nofollow" id="c4179130844047716975" href="#4179130844047716975">27 March 2017 22:09</a>
               </span>
             </div>
-            <p class="comment-content">This is good reading for me :) as I work for a load balancing company! </p>
+            <div class="comment-content">This is good reading for me :) as I work for a load balancing company! </div>
           </div>
         </li>
       </div>
@@ -215,10 +210,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/04847257511165693348" rel="nofollow">Albert Siersema</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6349490756917448195">28 March 2017 22:58</a>
+                <a rel="nofollow" id="c6349490756917448195" href="#6349490756917448195">28 March 2017 22:58</a>
               </span>
             </div>
-            <p class="comment-content">I participated in a little discussion about commercial LB appliances versus loads of LB instances in a cloud environment. Hardware SSL offloading was mentioned and on the issue of sticky sessions one developer claimed a performance boost could be gained from hitting the same backend where certain (dynamic) data would already be cached in the application. I guess the latter really depends on most of the requested data to be a result of the same queries.<br />With regard to the SSL offloading, there is probably a balance point where the hardware solution can be cheaper. On the other hand, the extra scalability and availability of a cloud/container setup with (loads of) open source software load balancers somehow appeals to me.<br /></p>
+            <div class="comment-content">I participated in a little discussion about commercial LB appliances versus loads of LB instances in a cloud environment. Hardware SSL offloading was mentioned and on the issue of sticky sessions one developer claimed a performance boost could be gained from hitting the same backend where certain (dynamic) data would already be cached in the application. I guess the latter really depends on most of the requested data to be a result of the same queries.<br />With regard to the SSL offloading, there is probably a balance point where the hardware solution can be cheaper. On the other hand, the extra scalability and availability of a cloud/container setup with (loads of) open source software load balancers somehow appeals to me.<br /></div>
           </div>
         </li>
       </div>
@@ -233,10 +228,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15614246402556298176" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4775262799630292434">14 April 2017 09:16</a>
+                <a rel="nofollow" id="c4775262799630292434" href="#4775262799630292434">14 April 2017 09:16</a>
               </span>
             </div>
-            <p class="comment-content">I am an application developer and I can not agree with assertion that  &quot;session stickiness totally unnessesary&quot;.<br /><br />Yes, memcached/Redis/[other Out-Of-Process storage] can be fast, but sometimes you need faster. <br /><br />The next configuration is absolutely viable: <br />1. Nginx (or haproxy) with sticky sessions<br />2. A lot of lightweight appservers working mostly with their local in-process cache <br />3. Shared session storage as failback for cases of local cache miss<br /><br />Without sticky sessions appservers will allmost ever use shared storage.<br /><br />Although I must admit:<br /><br />a) Such configuration is obviously more complex and can not be recommended for all cases<br />b) I know nothing about &quot;expensive load balancers&quot; - I&#39;m talking about nginx, haproxy and .. IIS (wow! I&#39;ve remembered about IIS just now)  <br /><br />So .. sticky sessions have their uses.</p>
+            <div class="comment-content">I am an application developer and I can not agree with assertion that  &quot;session stickiness totally unnessesary&quot;.<br /><br />Yes, memcached/Redis/[other Out-Of-Process storage] can be fast, but sometimes you need faster. <br /><br />The next configuration is absolutely viable: <br />1. Nginx (or haproxy) with sticky sessions<br />2. A lot of lightweight appservers working mostly with their local in-process cache <br />3. Shared session storage as failback for cases of local cache miss<br /><br />Without sticky sessions appservers will allmost ever use shared storage.<br /><br />Although I must admit:<br /><br />a) Such configuration is obviously more complex and can not be recommended for all cases<br />b) I know nothing about &quot;expensive load balancers&quot; - I&#39;m talking about nginx, haproxy and .. IIS (wow! I&#39;ve remembered about IIS just now)  <br /><br />So .. sticky sessions have their uses.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -252,10 +247,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6424517125863378950">14 April 2017 09:24</a>
+                <a rel="nofollow" id="c6424517125863378950" href="#6424517125863378950">14 April 2017 09:24</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for the feedback. I know there&#39;s a perfectly valid exception for every rule-of-thumb. <br /><br />However, if you care enough about performance to consider impact of memcached lookup versus in-process memory cache, I&#39;m sure you don&#39;t need rules-of-thumb ;)</p>
+            <div class="comment-content">Thanks for the feedback. I know there&#39;s a perfectly valid exception for every rule-of-thumb. <br /><br />However, if you care enough about performance to consider impact of memcached lookup versus in-process memory cache, I&#39;m sure you don&#39;t need rules-of-thumb ;)</div>
           </div>
         </li>
       </div>
@@ -277,10 +272,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/15966716907431213800" rel="nofollow">nminwalla</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#158583238402815313">28 March 2018 06:39</a>
+                <a rel="nofollow" id="c158583238402815313" href="#158583238402815313">28 March 2018 06:39</a>
               </span>
             </div>
-            <p class="comment-content">Hi Ivan, what&#39;s your view on load balancers for two use cases:<br /><br />1. A software implemented VPN (IPSec or GRE) in a scale out architecture (vs dedicated hardware/appliance VPN) <br />2. As a front end to a perimeter reverse proxy/LB like Envoy (e.g. Lyft fronts Envoy with a Amazon ELB)<br /><br />I&#39;m assuming that you need sticky sessions for 1 but not for 2 (assuming policy is replicated across all Envoy proxies)?</p>
+            <div class="comment-content">Hi Ivan, what&#39;s your view on load balancers for two use cases:<br /><br />1. A software implemented VPN (IPSec or GRE) in a scale out architecture (vs dedicated hardware/appliance VPN) <br />2. As a front end to a perimeter reverse proxy/LB like Envoy (e.g. Lyft fronts Envoy with a Amazon ELB)<br /><br />I&#39;m assuming that you need sticky sessions for 1 but not for 2 (assuming policy is replicated across all Envoy proxies)?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -296,10 +291,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1149002678592293168">28 March 2018 10:22</a>
+                <a rel="nofollow" id="c1149002678592293168" href="#1149002678592293168">28 March 2018 10:22</a>
               </span>
             </div>
-            <p class="comment-content">#1 - Yes. <br />#2 - It depends on how well-designed the rest of your application stack is. If you need session stickiness from reverse proxy to application server, then you also need session stickiness from front-end LB to reverse proxy.</p>
+            <div class="comment-content">#1 - Yes. <br />#2 - It depends on how well-designed the rest of your application stack is. If you need session stickiness from reverse proxy to application server, then you also need session stickiness from front-end LB to reverse proxy.</div>
           </div>
         </li>
       </div>
@@ -321,10 +316,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/12974607004567544814" rel="nofollow">Ahmmad Ismail</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8094414383422557646">14 February 2019 18:54</a>
+                <a rel="nofollow" id="c8094414383422557646" href="#8094414383422557646">14 February 2019 18:54</a>
               </span>
             </div>
-            <p class="comment-content">&quot;mechanism to store client session data in data store shared among all servers&quot;. &quot;it takes one or two lines of web server configuration to enable the shared data store&quot;. Can you please write a blog post on it, or direct me to some resources. Apache and Nginx both will be much appreciated.</p>
+            <div class="comment-content">&quot;mechanism to store client session data in data store shared among all servers&quot;. &quot;it takes one or two lines of web server configuration to enable the shared data store&quot;. Can you please write a blog post on it, or direct me to some resources. Apache and Nginx both will be much appreciated.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -340,10 +335,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5540522425272571500">14 February 2019 20:07</a>
+                <a rel="nofollow" id="c5540522425272571500" href="#5540522425272571500">14 February 2019 20:07</a>
               </span>
             </div>
-            <p class="comment-content">I’m sure you’ll get tons of hits with a few focused Google searches.</p>
+            <div class="comment-content">I’m sure you’ll get tons of hits with a few focused Google searches.</div>
           </div>
         </li>
       </div>

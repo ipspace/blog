@@ -1,0 +1,50 @@
+{
+   "comments": [
+      {
+         "date": "28 May 2020 02:19",
+         "html": "<p>Ivan,</p>\n\n<p>Insightful article.\nI do have a question though: why this statement:\nThere is no L2 forwarding in Azure (<strong>major difference with AWS</strong>).</p>\n\n<p>Is there also no L2 forwarding in AWS?\nCan you elaborate?</p>\n",
+         "id": "55",
+         "name": "Stephen Ombre",
+         "pub": "2020-05-28T14:19:20",
+         "type": "comment"
+      },
+      {
+         "date": "30 May 2020 04:41",
+         "html": "<p>Forwarding within an AWS VPC subnet is based on destination MAC address (unicast only, no flooding), forwarding across subnets is based on destination IP address. You&#39;ll find an overview here...</p>\n\n<p>https://blog.ipspace.net/2020/05/aws-networking-101.html</p>\n\n<p>... and the expected deep dive in the <a href=\"https://www.ipspace.net/Amazon_Web_Services_Networking\">AWS Networking</a> webinar.</p>\n",
+         "id": "58",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-05-30T16:41:38",
+         "type": "comment"
+      },
+      {
+         "date": "20 August 2020 12:51",
+         "html": "<p>Another gotcha with Azure is &quot;IP forwarding&quot;. If you expect an Azure NIC to emit any packets that have a non-default source IP (e.g. the case of virtual router appliance), you have to enable this feature, otherwise, the packets will get dropped on the egress. \nhttps://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#enable-or-disable-ip-forwarding</p>\n",
+         "id": "103",
+         "name": "Michael Kashin",
+         "pub": "2020-08-20T12:51:32",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "25 January 2022 08:20",
+               "html": "<p>I would say the second diagram answers your question. Imagine an eBGP session between A and C and follow a packet between A and C every step of the way.</p>\n",
+               "id": "977",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-01-25T08:20:08",
+               "ref": "976",
+               "type": "comment"
+            }
+         ],
+         "date": "24 January 2022 11:54",
+         "html": "<p>Hi, Can you comment on using eBGP multihop between NVA&#39;s in different subnets of an Azure vNet, or between peered vNet?s In theory this should work but I&#39;ve had no success. I can get the peering up and routes are exchanged, appearing as &quot;next hop (eBGP peer IP&gt; recursive via &lt;snet GW IP&gt;&quot; but without explicitly adding the destination network in the RT via the eBGP peer, traffic is not forwarded.</p>\n",
+         "id": "976",
+         "name": " Bruce Ronning",
+         "pub": "2022-01-24T23:54:43",
+         "type": "comment"
+      }
+   ],
+   "count": 4,
+   "type": "post",
+   "url": "2020/05/azure-networking-101.html"
+}

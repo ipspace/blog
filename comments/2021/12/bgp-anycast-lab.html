@@ -1,0 +1,111 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="910">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c910" href="#910">06 December 2021 01:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;Spine switches are also BGP route reflectors&quot; &lt;&lt;&lt; There&#39;s only one spine switch in your example.</p>
+
+<p>&quot;Ideal end result: three equal-cost paths toward the anycast prefix on L1 and S*<em>2</em>*.&quot; &lt;&lt;&lt; should be S1</p>
+
+<p>In the output &quot;Routing table for the anycast prefix on the spine node (S1)&quot; I think the next-hop &quot;10.1.0.21&quot; is wrong as you haven&#39;t disabled next-hop-self on leaf switches at that stage. It should be &quot;10.0.0.3&quot;.</p>
+
+<p>Maybe implicit next-hop-self and BGP Add-Path is an optimization mechanism because there&#39;s only one exit point (L2 in that example) anyway. Kinda like a summarization.</p>
+
+<p>For the one minute/60 seconds delay after bootup maybe &quot;bgp update-delay&quot; will solve it. Found something from Petr: https://blog.ine.com/2010/11/22/understanding-bgp-convergence
+Otherwise I suggest to debug BGP.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="911">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Jeroen van Bemmel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c911" href="#911">06 December 2021 03:02</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>FRR has a &#39;frr defaults datacenter&#39; command which reduces BGP timer intervals from their (conservative) Internet-based BGP defaults. https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/17612-bgp.html suggests that the default peer retry time on Cisco is 30s, try reducing that to the minimum (10s) (for example)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="914">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c914" href="#914">06 December 2021 04:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@Anonymous: Thank you, fixed.</p>
+
+<p>The logic for implicit next hop self is probably going along this line: &quot;<em>if I have two paths, but I can only advertise one, let&#39;s make myself the next hop because I know how to use both of them, but others won&#39;t</em>&quot;</p>
+
+<p>It seems the long delay is caused by <code>bgp nopeerup-delay</code>, maybe in combination with Graceful Restart code, as the BGP RIB is evaluated as soon as the updates from the last BGP neighbor are received. More testing needed.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="916">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c916" href="#916">06 December 2021 08:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>But command &quot;bgp nopeerup-delay&quot; is not configured by default on Cisco IOS whereas &quot;bgp update-delay&quot; is set to 120 seconds by default. See: https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/command/irg-cr-book/bgp-a1.html</p>
+
+<p>Daniel also got a good explanation: https://lostintransit.se/2016/02/25/ccde-bgp-convergence/</p>
+
+<p>It seems that someone has had success with &quot;bgp update-delay&quot; in the past: https://community.cisco.com/t5/routing/slow-bgp-convergence/td-p/2008294</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

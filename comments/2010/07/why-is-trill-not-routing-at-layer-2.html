@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>11 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">PJG</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8887896233160708844">21 July 2010 12:01</a>
+                <a rel="nofollow" id="c8887896233160708844" href="#8887896233160708844">21 July 2010 12:01</a>
               </span>
             </div>
-            <p class="comment-content">It&#39;s a bit like MPLS, where the edge RBridges would be equivalent to a PE.</p>
+            <div class="comment-content">It&#39;s a bit like MPLS, where the edge RBridges would be equivalent to a PE.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">caskings</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7905744295369467271">21 July 2010 13:22</a>
+                <a rel="nofollow" id="c7905744295369467271" href="#7905744295369467271">21 July 2010 13:22</a>
               </span>
             </div>
-            <p class="comment-content">Indeed, the more I read about it the more is sounds like VPLS. But with IS-IS and outer MAC switching, instead of LDP/OSPF-TE/etc and label switch paths.</p>
+            <div class="comment-content">Indeed, the more I read about it the more is sounds like VPLS. But with IS-IS and outer MAC switching, instead of LDP/OSPF-TE/etc and label switch paths.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Peter John Hill</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5221345290288374296">21 July 2010 22:40</a>
+                <a rel="nofollow" id="c5221345290288374296" href="#5221345290288374296">21 July 2010 22:40</a>
               </span>
             </div>
-            <p class="comment-content">Wow, thanks for the excellent feedback. You are absolutely right that there are layer 2 issues that still exist with TRILL. The &quot;unknown mac address&quot; problem can be pretty serious. Nothing like sending lots of packets to an ip address with no mac address to start consuming some sort of router resource, whether it is CPU or some rate-limit for the gleans.<br /><br />Great blog, btw!</p>
+            <div class="comment-content">Wow, thanks for the excellent feedback. You are absolutely right that there are layer 2 issues that still exist with TRILL. The &quot;unknown mac address&quot; problem can be pretty serious. Nothing like sending lots of packets to an ip address with no mac address to start consuming some sort of router resource, whether it is CPU or some rate-limit for the gleans.<br /><br />Great blog, btw!</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Petr Lapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7912424385499672007">22 July 2010 05:17</a>
+                <a rel="nofollow" id="c7912424385499672007" href="#7912424385499672007">22 July 2010 05:17</a>
               </span>
             </div>
-            <p class="comment-content">well since TRILL is about tunneling, it does truly route tunnel traffic based on encapsulation headers, but transparently bridges native ethernet frames at tunnel egress to maintain backward compatibility with classic ethernet bridging. Alas, nothing new and exciting - it&#39;s all been around forever :(</p>
+            <div class="comment-content">well since TRILL is about tunneling, it does truly route tunnel traffic based on encapsulation headers, but transparently bridges native ethernet frames at tunnel egress to maintain backward compatibility with classic ethernet bridging. Alas, nothing new and exciting - it&#39;s all been around forever :(</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">polecat</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7228777092768619255">22 July 2010 08:26</a>
+                <a rel="nofollow" id="c7228777092768619255" href="#7228777092768619255">22 July 2010 08:26</a>
               </span>
             </div>
-            <p class="comment-content">but look how excited all these marketing/sales people (Brad Hedlund post is a nice example). Now they can sell this old idea one more time.</p>
+            <div class="comment-content">but look how excited all these marketing/sales people (Brad Hedlund post is a nice example). Now they can sell this old idea one more time.</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#446868346667463719">26 July 2010 23:47</a>
+                <a rel="nofollow" id="c446868346667463719" href="#446868346667463719">26 July 2010 23:47</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br />In this article you say the outer MAC changes as it traverses RBridges. In Cisco&#39;s &quot;proprietary&quot; implementation of TRILL (called FabricPath), that is not true.  With Cisco FabricPath, the outer MAC is that of the far end Edge bridge and does not change as it traverses RBridges in the core.  From a &quot;standards&quot; perspective, in reading the spec for 802.1aq (SPBM, the newer variant that uses mac-in-mac) there is no language I can see that says the outer MAC should change when passing through RBridges (correct me if you see otherwise).  This very different from L3 &quot;Routing&quot; behavior where the L2 destination address changes link by link.<br /><br />This further re-enforces your point that saying &quot;TRILL really is routing at Layer 2&quot;, while a cute and semi-accurate sound-bite, is not completely true when you begin to peel back the onion.<br /><br />Thanks for the link, Ivan.  I really appreciate that. <br /><br />Cheers,<br />Brad<br />  :)</p>
+            <div class="comment-content">Ivan,<br />In this article you say the outer MAC changes as it traverses RBridges. In Cisco&#39;s &quot;proprietary&quot; implementation of TRILL (called FabricPath), that is not true.  With Cisco FabricPath, the outer MAC is that of the far end Edge bridge and does not change as it traverses RBridges in the core.  From a &quot;standards&quot; perspective, in reading the spec for 802.1aq (SPBM, the newer variant that uses mac-in-mac) there is no language I can see that says the outer MAC should change when passing through RBridges (correct me if you see otherwise).  This very different from L3 &quot;Routing&quot; behavior where the L2 destination address changes link by link.<br /><br />This further re-enforces your point that saying &quot;TRILL really is routing at Layer 2&quot;, while a cute and semi-accurate sound-bite, is not completely true when you begin to peel back the onion.<br /><br />Thanks for the link, Ivan.  I really appreciate that. <br /><br />Cheers,<br />Brad<br />  :)</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8483275009151045001">27 July 2010 08:43</a>
+                <a rel="nofollow" id="c8483275009151045001" href="#8483275009151045001">27 July 2010 08:43</a>
               </span>
             </div>
-            <p class="comment-content">Highly interesting, thanks for the info. Now I have to figure out how they&#39;ve solved the ECMP problem without hop-by-hop L2 addresses (it&#39;s trivial if you change L2 addresses with every hop).</p>
+            <div class="comment-content">Highly interesting, thanks for the info. Now I have to figure out how they&#39;ve solved the ECMP problem without hop-by-hop L2 addresses (it&#39;s trivial if you change L2 addresses with every hop).</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3058756071349626228">27 July 2010 19:31</a>
+                <a rel="nofollow" id="c3058756071349626228" href="#3058756071349626228">27 July 2010 19:31</a>
               </span>
             </div>
-            <p class="comment-content">Brad,<br /><br />another question (if you can share the answer): is FabricPath similar to SPBM or SPBV?<br /><br />Thanks,<br />Ivan</p>
+            <div class="comment-content">Brad,<br /><br />another question (if you can share the answer): is FabricPath similar to SPBM or SPBV?<br /><br />Thanks,<br />Ivan</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4257965992589513199">27 July 2010 22:09</a>
+                <a rel="nofollow" id="c4257965992589513199" href="#4257965992589513199">27 July 2010 22:09</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br />Cisco FabricPath is similar to 802.1aq SPBM, with a couple of additional enhancements:<br />1) a more optimized Conversation based MAC learning<br />2) identifying multiple multicast topologies, not just one, and load balancing multicast traffic across each topology on a per group basis.<br /><br />Cheers,<br />Brad</p>
+            <div class="comment-content">Ivan,<br />Cisco FabricPath is similar to 802.1aq SPBM, with a couple of additional enhancements:<br />1) a more optimized Conversation based MAC learning<br />2) identifying multiple multicast topologies, not just one, and load balancing multicast traffic across each topology on a per group basis.<br /><br />Cheers,<br />Brad</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4230964552476197064">27 July 2010 22:17</a>
+                <a rel="nofollow" id="c4230964552476197064" href="#4230964552476197064">27 July 2010 22:17</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br />The Rbridges exchange their topology (links) and identity (MAC address) through IS-IS.  Therefore if a &quot;core&quot; RBridge has equal cost paths to an &quot;edge&quot; RBridge, it will be known ahead of time which of its links are included in those paths.  When a &quot;core&quot; RBridge receives a frame with a MAC of an edge bridge (the outer MAC) it will apply the ECMP logic and send traffic out each link on a per flow basis.<br /><br />Cheers,<br />Brad</p>
+            <div class="comment-content">Ivan,<br />The Rbridges exchange their topology (links) and identity (MAC address) through IS-IS.  Therefore if a &quot;core&quot; RBridge has equal cost paths to an &quot;edge&quot; RBridge, it will be known ahead of time which of its links are included in those paths.  When a &quot;core&quot; RBridge receives a frame with a MAC of an edge bridge (the outer MAC) it will apply the ECMP logic and send traffic out each link on a per flow basis.<br /><br />Cheers,<br />Brad</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Brad Hedlund</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#668835227158932048">27 July 2010 22:17</a>
+                <a rel="nofollow" id="c668835227158932048" href="#668835227158932048">27 July 2010 22:17</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br />The Rbridges exchange their topology (links) and identity (MAC address) through IS-IS.  Therefore if a &quot;core&quot; RBridge has equal cost paths to an &quot;edge&quot; RBridge, it will be known ahead of time which of its links are included in those paths.  When a &quot;core&quot; RBridge receives a frame with a MAC of an edge bridge (the outer MAC) it will apply the ECMP logic and send traffic out each link on a per flow basis.<br /><br />Cheers,<br />Brad</p>
+            <div class="comment-content">Ivan,<br />The Rbridges exchange their topology (links) and identity (MAC address) through IS-IS.  Therefore if a &quot;core&quot; RBridge has equal cost paths to an &quot;edge&quot; RBridge, it will be known ahead of time which of its links are included in those paths.  When a &quot;core&quot; RBridge receives a frame with a MAC of an edge bridge (the outer MAC) it will apply the ECMP logic and send traffic out each link on a per flow basis.<br /><br />Cheers,<br />Brad</div>
           </div>
         </li>
       </div>

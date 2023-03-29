@@ -1,30 +1,54 @@
 {
-  "comments": [
-    {
-      "date": "16 September 2009 09:07",
-      "html": "Glad to see you again!",
-      "id": "5033318289635115594",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Danail Petrov",
-      "profile": null,
-      "pub": "2009-09-16T09:07:07.000+02:00",
-      "ref": "7905490258743230247",
-      "type": "comment"
-    },
-    {
-      "date": "16 September 2009 15:40",
-      "html": "It will breach SLA.",
-      "id": "4515295785763974469",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "shivlu jain",
-      "profile": null,
-      "pub": "2009-09-16T15:40:34.000+02:00",
-      "ref": "7905490258743230247",
-      "type": "comment"
-    }
-  ],
-  "count": 2,
-  "id": "7905490258743230247",
-  "type": "post",
-  "url": "2009/09/expired-dhcp-lease-bounces-interface.html"
+   "comments": [
+      {
+         "date": "16 September 2009 09:07",
+         "html": "Glad to see you again!",
+         "id": "5033318289635115594",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Danail Petrov",
+         "profile": null,
+         "pub": "2009-09-16T09:07:07.000+02:00",
+         "ref": "7905490258743230247",
+         "type": "comment"
+      },
+      {
+         "date": "16 September 2009 15:40",
+         "html": "It will breach SLA.",
+         "id": "4515295785763974469",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "shivlu jain",
+         "profile": null,
+         "pub": "2009-09-16T15:40:34.000+02:00",
+         "ref": "7905490258743230247",
+         "type": "comment"
+      },
+      {
+         "date": "19 December 2020 09:34",
+         "html": "<p>About problem of dropping connections with DHCP &ndash; its our (users) bug not IOS\nI found in your config line:</p>\n\n<p>All traffic is forwarded to your local server xxx.xxx.xxx.xxx including answers from DHCP server of your internet provider.\nDHCP server accept queries on udp port 67 and send answers to client on udp port 68.\nYou could insert one line:</p>\n\n<p>ip nat inside source static udp xxx.xxx.xxx.xxx(your dhcp gateway) 68 interface (your Interface dhcp) 68</p>\n\n<p>example: ip nat inside source static udp 192.168.1.1 68 interface GigabitEthernet0/0 68</p>\n\n<p>and dhcp answers will go to your router.\nBest regards.</p>\n",
+         "id": "321",
+         "name": " gexain narvaez",
+         "pub": "2020-12-19T21:34:59",
+         "type": "comment"
+      },
+      {
+         "date": "20 December 2020 11:25",
+         "html": "<p>@gexain: An end-user router connected to an ISP access network usually uses DHCP on the outside interface to get its IP address. That&#39;s the scenario I tested.</p>\n\n<p>You&#39;re probably thinking about DHCP proxying or something else along these lines. That&#39;s a different story.</p>\n",
+         "id": "322",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-12-20T11:25:51",
+         "type": "comment"
+      },
+      {
+         "date": "22 November 2021 12:38",
+         "html": "<p>I recently experienced the same on 15.2(1)T4, I found if I also enabled ipv6 on the same interface ipv4 dhcp stopped restarting the interface.</p>\n",
+         "id": "863",
+         "name": " Michael Kelland",
+         "pub": "2021-11-22T12:38:50",
+         "type": "comment"
+      }
+   ],
+   "count": 5,
+   "id": "7905490258743230247",
+   "type": "post",
+   "url": "2009/09/expired-dhcp-lease-bounces-interface.html"
 }

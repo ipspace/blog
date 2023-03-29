@@ -1,0 +1,90 @@
+{
+   "comments": [
+      {
+         "date": "02 June 2021 11:35",
+         "html": "<p>How would it behave if you would use the IOS command &quot;medium p2p&quot; on the ethernet interfaces? How would the ARP table look like? What MAC addresses would be used to send packets?</p>\n",
+         "id": "621",
+         "name": "Anonymous",
+         "pub": "2021-06-02T11:35:29",
+         "type": "comment"
+      },
+      {
+         "date": "02 June 2021 12:48",
+         "html": "<p>Dear Anonymous,</p>\n\n<p>The &quot;medium p2p&quot; interface configuration command is used on NX-OS. I didn&#39;t have to use it on Cisco IOS XE... as you would have discovered by looking at the device configurations (there&#39;s a reason I added a link to them at the end of the blog post).</p>\n\n<p>As for &quot;how would the printouts look like&quot; - I don&#39;t have them handy, and I don&#39;t have time to collect them, but here&#39;s what you can do: set up a lab, and do the tests yourself. Nexus 9300v is downloadable as a Vagrant box, and you can use my topology file with <strong>netsim-tools</strong>, changing the default device type from <strong>csr</strong> to <strong>nxos</strong>.</p>\n\n<p>Here&#39;s the documentation to get you started https://netsim-tools.readthedocs.io/en/latest/</p>\n\n<p>Once you get those printouts, do get in touch and I&#39;ll add them to the blog post.</p>\n\n<p>Thank you! Ivan</p>\n",
+         "id": "622",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-06-02T12:48:46",
+         "type": "comment"
+      },
+      {
+         "date": "02 June 2021 01:03",
+         "html": "<p>Cisco , Juniper etc have support for unnumbered ethernet style services for a long time. It was just wrapped up in the Broadband Subscriber services functions where they could charge extra for it and dynamic in nature. </p>\n\n<p>It was long enough ago I was doing it on Cisco 7200s. </p>\n",
+         "id": "623",
+         "name": " Craig Askings",
+         "pub": "2021-06-02T13:03:24",
+         "type": "comment"
+      },
+      {
+         "date": "02 June 2021 01:19",
+         "html": "<p>When I was testing it on a Cisco 7200 long long time ago, it only worked on VLAN subinterfaces (not on the main interface), and not with routing protocols... but yeah, that was exactly what we needed for Broadband Subscriber services.</p>\n",
+         "id": "624",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-06-02T13:19:09",
+         "type": "comment"
+      },
+      {
+         "date": "02 June 2021 08:34",
+         "html": "<p>Hi, </p>\n\n<p>Really good to see your article on this. We have been using this in production for about 2 years now on the Cisco 4500x platform in vss.</p>\n\n<p>The upside to all this is that migrating clients from a shared vlan to dedicated vlans and nothing from the client end routing or subletting had to change. </p>\n\n<p>Of course we only use static routing here. The clients can not accidentally start arping for another client ip or take over the default gateway arp accidentally or intentionally and affect other clients.</p>\n\n<p>The other plus is that we can apply per vlan policers in and out per client by vlan and not by IP. </p>\n",
+         "id": "631",
+         "name": " Vanish",
+         "pub": "2021-06-02T20:34:15",
+         "type": "comment"
+      },
+      {
+         "date": "03 June 2021 07:01",
+         "html": "<p>We started to use this setup in our out-of-band network where production devices have their fxp0, em0 and what not interfaces connected (it&#39;s all Juniper based). Initially, OoB network was just a flat switched network, but then one day due to human error we had forwarding loop there and ... let&#39;s just say control plane of almost all devices stopped running the actual network as it was too busy to process lovely flood of ARP packets. It wasn&#39;t pretty.\nBut back to unnumbered interfaces. We use EX3400 with QFX5100 for some aggregation in this out-of-band network. As it was mentioned, the best part is that from connected device&#39;s perspective, nothing has changed. We&#39;ve enabled also proxy-arp on these unnumbered interfaces. For downstream routing it&#39;s just static routes pointing to each downstream interface through qualified-next-hop and for upstream routing (each access EX3400 is dual uplinked for redundancy) we use venerable RIP protocol. Uplink interfaces are actually configured as aggregated ethernet interfaces with fast LACP and just single member. That is in order to make not so obvious link failures fast for RIP. Of course, one can be a license and use something else than RIP and maybe even VRFs if the same network serves multiple tenants, but for us this is good enough.\nIt&#39;s somewhat less elegant when we are connecting dual control plane devices, where each routing engine has its own IP address, but they also share third one. In this case, that third IP address must be able to move between two physical ports. And IRB interface can&#39;t be configured as unnumbered interface. Until we find better solution, we create local vlan dedicated for a given two switched downstream ports and loop it over two front ports (one is configured as vlan trunk and another as L3 interface with sub-interfaces). Three static routes then point to the L3 sub-interface.\nAlso to make it less painful to configure, we have commit script which transforms macro applied at interface level to all necessary statements in various places (the actual interface configuration, static route(s) and for dual RE case also vlan, new sub-interface, etc.).</p>\n",
+         "id": "633",
+         "name": " Martin Rusko",
+         "pub": "2021-06-03T07:01:52",
+         "type": "comment"
+      },
+      {
+         "date": "03 June 2021 09:45",
+         "html": "<p>Arista Networks EOS 4.23.0F introduced support for IPv4 unnumbered interfaces. EOS 4.26.0.1F is the latest version as of this comment.</p>\n\n<p>https://eos.arista.com/eos-4-23-0f/ipv4-unnumbered-interfaces/</p>\n",
+         "id": "638",
+         "name": "Corey A Hines",
+         "pub": "2021-06-03T21:45:04",
+         "type": "comment"
+      },
+      {
+         "date": "10 June 2021 05:34",
+         "html": "<p>Hello Ivan,</p>\n\n<p>I tried a similar configuration in order to use three devices in a /30 segment.\n.1 and .2 devices where already running, my goal was to use the .0 (i am completly aware that using the .3 address was not a good idea). I used your configuration :\n<pre>\r\ninterface Loopback2412\r\n  ip address 10.10.10.0 255.255.255.255\r\ninterface GigabitEthernet0/1.2412\r\n  encapsulation dot1Q 2412\r\n  ip unnumbered Loopback2412\r\nip route 10.10.10.0 255.255.255.252 GigabitEthernet0/1.2412\r\n</pre>\n\n<p>whereas the two other devices on the subnet have a regular configuration:\n<pre>\r\nlyo-maq-2901-08#sh run int gi 0/1.2412\r\ninterface GigabitEthernet0/1.2412\r\n  encapsulation dot1Q 2412\r\n  ip address 10.10.10.1 255.255.255.252\r\n</pre>\n\n<p>I was able to arp the neighbours, but unfortunately not to ping them, since the neighbours do not answer even if they correctly learn the arp entry :\n<pre>\r\nlyo-maq-2901-08#sh arp\r\nProtocol  Address          Age (min)  Hardware Addr   Type   Interface\r\nInternet  10.10.10.0              8   70ca.9bae.f8b1  ARPA   GigabitEthernet0/1.2412\r\n</pre>\n\n<p>I think the reason is to find inside the RFC 1812:\n&gt; a router [...]\n   (2) SHOULD silently discard on receipt (i.e., do not even deliver to\n        applications in the router) any packet addressed to 0.0.0.0 or &#123;\n        &lt;Network-prefix&gt;, 0 &#125;.  If these packets are not silently\n        discarded, they MUST be treated as IP broadcasts (see Section\n        [5.3.5]).  There MAY be a configuration option to allow receipt\n        of these packets.  This option SHOULD default to discarding\n        them.</p>\n\n<p>which matchs somehow the cef status on the neighbour :\n<pre>\r\nlyo-maq-2901-08#sh cef\r\n10.10.10.0/30        attached             GigabitEthernet0/1.2412\r\n10.10.10.0/32        receive              GigabitEthernet0/1.2412\r\n10.10.10.1/32        receive              GigabitEthernet0/1.2412\r\n10.10.10.3/32        receive              GigabitEthernet0/1.2412\r\n</pre>\n\n<p>Eventually, this can be bypassed by configuring the neighbours with the unnumbered trick :\n<pre>\r\nlyo-maq-2901-08#conf t\r\nEnter configuration commands, one per line.  End with CNTL/Z.\r\nlyo-maq-2901-08(config)#int lo 2412\r\nlyo-maq-2901-08(config-if)#ip add 10.10.10.1 255.255.255.255\r\nlyo-maq-2901-08(config-if)#int gi 0/1.2412\r\nlyo-maq-2901-08(config-subif)#no ip addr\r\nlyo-maq-2901-08(config-subif)#ip unnumbered loopback 2412\r\nlyo-maq-2901-08(config-subif)#ip route 10.10.10.0 255.255.255.252 gi 0/1.2412\r\nlyo-maq-2901-08(config)#end\r\nlyo-maq-2901-08#sh ip cef\r\nPrefix               Next Hop             Interface\r\n10.10.10.0/30        attached             GigabitEthernet0/1.2412\r\n10.10.10.0/32        attached             GigabitEthernet0/1.2412\r\n10.10.10.1/32        receive              Loopback2412\r\n</pre>\n\n<p>Lab done, but not sure i want to deploy it :)\n<pre>\r\nlyo-maq-2901-09#ping 10.10.10.1\r\nType escape sequence to abort.\r\nSending 5, 100-byte ICMP Echos to 10.10.10.1, timeout is 2 seconds:\r\n!!!!!\r\nSuccess rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms\r\nlyo-maq-2901-09#\r\n</pre>\n",
+         "id": "649",
+         "name": " Ph. Jounin",
+         "pub": "2021-06-10T17:34:02",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "12 July 2022 05:17",
+               "html": "<p>Thanks, bjonn, life saver! :D</p>\n",
+               "id": "1332",
+               "name": " Michael",
+               "pub": "2022-07-12T17:17:37",
+               "ref": "665",
+               "type": "comment"
+            }
+         ],
+         "date": "15 June 2021 10:51",
+         "html": "<p>Note that on IOS &amp; IOS-XE you can&#39;t use static routes pointing to interface without next-hop inside a VRF :</p>\n\n<p>ip route vrf TEST 10.2.1.2 255.255.255.255 GigabitEthernet2</p>\n\n<p>will raise an error : \n% For VPN or topology routes, must specify a next hop IP address if not a point-to-point interface</p>\n\n<p>You can overcome this, either by configuring the interfaces with &quot;medium p2p&quot; (not available on classic IOS) or by using your route destination as next-hop :</p>\n\n<p>ip route vrf TEST 10.2.1.2 255.255.255.255 GigabitEthernet2 10.2.1.2</p>\n\n<p>which is accepted and seems to work perfectly... but it&#39;s weird and recursive :)</p>\n",
+         "id": "665",
+         "name": " bjonn",
+         "pub": "2021-06-15T22:51:18",
+         "type": "comment"
+      }
+   ],
+   "count": 9,
+   "type": "post",
+   "url": "2021/06/unnumbered-ethernet-interfaces.html"
+}

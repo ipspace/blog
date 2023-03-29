@@ -1,0 +1,194 @@
+<div class="comments post" id="comments">
+  <h4>8 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="110">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Boris </a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c110" href="#110">03 September 2020 11:19</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In my opinion one can start protecting critical network infrastructure from the very beginning. </p>
+
+<p>We know what are DNS servers for protected host, don&rsquo;t we? We know as well that usually local DNS server are forwarders. </p>
+
+<p>So it is possible to filter in host security policy outgoing DNS to permitted servers only. The same applies to NTP servers. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="111">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Pete Welcher</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c111" href="#111">03 September 2020 02:41</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Good blog!</p>
+
+<p>I have a cynical comment to make: I have NEVER found a customer application team that can tell me all the servers they are using, their IP addresses, let alone the ports they use. The <em>few</em> times I&#39;ve gotten actual documentation produced by the vendor who installed the app or the in-house team who wrote the app, the alleged documentation covers things like DB schemes, but not network flows. </p>
+
+<p>It&#39;s worse than that. My coworkers tell me that actually tracking down app owners is all too often excruciatingly painful, in part because their is no list of owners and contact info. And often they don&#39;t know much other than their next support or license renewal date. </p>
+
+<p>This not only hinders making FW rules, but it really hinders troubleshooting app problems. Yet no site I&#39;ve seen is pro-active about it. </p>
+
+<p>This has made me a big believer in products like Tetration and <strong>getting the actual flows documented to secure the servers and be ready in advance of application troubleshooting</strong>.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="112">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Piotr</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c112" href="#112">03 September 2020 06:14</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>My company have customer. They had external audit and auditors reported lack of OS based firewall (multiple types of OSes). Nowadays customer have security rules at OS level but almost any application issue during new implementations etc leads in first step to blame network team for communication problems. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="113">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> A.A</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c113" href="#113">03 September 2020 10:46</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I personally don&#39;t think that built-in or AV/Host-based firewall solution is reliable.i saw that how the System admin/Application developer turn off the OS/Host-based firewall because he/she think that it is the reason that some App-Stack is not working and think that any error in their APP is because of host firewall.also any breach to the OS can lead to turning of the built-in firewall by the intruder (i saw how intruder cripple the AV/HIPS agent on the OS that even re-installing the agent didn&#39;t work and we re-install the whole OS from the backup).for me the firewall should be always implemented in the network and out-of-the-box.again for me the micro-segmentation is better to be implemented  out-of the hypervisor as threat like VM-Escape is possible and common (many of them are zero-day and unknown) .if technology like VEPA (Ivan wrote about it years ago) supported on hypervisor we can put back security in Network-switch hardware (I know the TCAM limitation but the performance is much much better than OVS+DPDK and other fancy/impossible to implement Kernel-Bypass/Offload methods) .i think the vendor like Vmware don&#39;t like the technology like VEPA because they want to sell NSX.i tired 2 months to find a decent micro-segmentation solution for Vpshere without any success.everything is VMware world end with NSX.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="114">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">A.A</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c114" href="#114">03 September 2020 11:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>In my experience using the Flow Data like NETFLOW can help to find how those App-Stack are communicating whit each other and then place the ACL for enforcement. last week i was tasked to put some VACL in Web-APP DMZ VLAN.i asked the App-Developers and those who support Applications that is there any connectivity between those Web-Servers ? they told me there is not any connection between those Web-server for sure and they only need to talk with their back-end DB that is on another VLAN/Segment protected by a classical Multi-Context-Firewall.i checked my Netflow logs for the last 3 months and i find too many API calls between those Web-servers on DMZ.if i trust those guys ,  i cloud create full disaster that could make the whole business down.after telling them that there are too many API calls , they said really ?</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="115">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> A.W.</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c115" href="#115">04 September 2020 04:51</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Perhaps a paradigm shift is due for firewalls in general? I&#39;m thinking quickly here but wondering if we perhaps just had a protocol by which a host could request upstream firewall(s) to open access inbound on their behalf dynamically, the hosts themselves would then automatically inform the security device what ports they need / want opened upstream. The firewall would have the ability to permit or deny the traffic based on its larger policy definition. This would resolve both the issue of admins not knowing what ports are needed for an application and could help resolve the issue of &quot;stale&quot; policies left on the firewalls.</p>
+
+<p>This higher level firewall policies could be more of a grouped concept similar to how web filtering and IPS is managed by site, application, or signature category. OR alternatively it could be more granular by specific app / port... </p>
+
+<p>Permission time limits could also be requested by the hosts and negotiated etc..  timeouts would still apply unless the permission is renewed thus these timeouts not only close the &quot;session&quot; but also closes the permission for that application and thus the policy rule itself.</p>
+
+<p>Host firewalls capable of negotiating via this protocol could be set to mirror allowed ports inbound once approval is granted OR could just be set to wide open trusting upstream for all security. Of course identity verification is important between host and firewall in this model as you wouldn&#39;t want false requests made from false hosts on another&#39;s behalf, but if the host only opens its own firewall ports after it has requested and received approval for the policy by the external firewall you would have an added layer of protection.</p>
+
+<p>Perhaps some OS level simple application-to-port verification could be done too...</p>
+
+<p>I&#39;m sure there are many drawbacks to this idea not the least of which is scale but I wonder if we&#39;re just getting to the point where we need to get away from having to think in terms of lists of ports / apps and statically creating rules in general.</p>
+
+<p>Too crazy? :)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="116">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> A.W.</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c116" href="#116">04 September 2020 05:23</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I kept saying &quot;ports&quot; but really it could additionally and optionally include a standards-based application identifier in the request that can be matched by a firewall to their own app signatures.... perhaps a bit of an expandable model like YANG where it could exchange capability information to allow that. </p>
+
+<p>Application developers would be motivated to properly document and register application network requirements with this model as not all organizations may allow ports only in their upstream higher level policy frameworks. Falsified requests would be caught by vendor signature matching if the application does not look like what they claimed they wanted to allow.</p>
+
+<p>Firewall logs would then also show not only traffic itself but the policy permission requests and thus give you an idea of what applications have been actually running on machines and how those policy needs change as services spin up and down and as they request renewals of their policies.... DHCP options / multicast groups could help connect host to firewall, etc... as long as the requests are supported by the higher level policy a host can be reasonably assured their policies will be permitted and traffic flows....</p>
+
+<p>This may actually just be Rule 11 proving itself true because this isn&#39;t all too different than 802.1X with Radius accounting.... maybe we just call it FAC :)</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="143">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Jonas Hallqvist</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c143" href="#143">21 September 2020 01:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I think Illumios approch is an interesting way to tackle micro-segmentation. Previously they did Datacenter segmentation but it appears they are dipping their toes in the host pool as well according to their website.</p>
+
+<p>What I found was so great with their DC solution is that if a admin decided to turn off the local firewall the agent software turned it right back on and if the admin turned off the agent the other hosts immediately blocked you until you are compliant again. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>

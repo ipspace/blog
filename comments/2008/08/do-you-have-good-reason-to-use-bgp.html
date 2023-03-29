@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2643558107055116687">25 August 2008 09:27</a>
+                <a rel="nofollow" id="c2643558107055116687" href="#2643558107055116687">25 August 2008 09:27</a>
               </span>
             </div>
-            <p class="comment-content">I have a few...<BR/><BR/>1) BGP will advertise the aggregate only when it has component routes. this means that it will advertise the aggregate until his last component route is lost. the component routes can also be specificaly defined with the "advertise-map" keyword. All of these make it a really helpful feature in many cases - i can mention a few if you would like...<BR/><BR/>2) It provides an easy way of suppressing prefixes <BR/><BR/>3)Its inheritance capabilites (aggregate from its commponents) can also be quite helpful. mainly, the way you can control this inheritance.</p>
+            <div class="comment-content">I have a few...<BR/><BR/>1) BGP will advertise the aggregate only when it has component routes. this means that it will advertise the aggregate until his last component route is lost. the component routes can also be specificaly defined with the "advertise-map" keyword. All of these make it a really helpful feature in many cases - i can mention a few if you would like...<BR/><BR/>2) It provides an easy way of suppressing prefixes <BR/><BR/>3)Its inheritance capabilites (aggregate from its commponents) can also be quite helpful. mainly, the way you can control this inheritance.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6693179808065273610">25 August 2008 09:32</a>
+                <a rel="nofollow" id="c6693179808065273610" href="#6693179808065273610">25 August 2008 09:32</a>
               </span>
             </div>
-            <p class="comment-content">aggregate is a bad idea as you answer in the previous post but you can use only static route with a tag that go into BGP with redistribute static that match the tag and add a community.<BR/>another idea is to set the next hop of the route to an address that route to Null in all the network so address that is not in use will be discard in the edge of the network and will not get to the route originator.<BR/><BR/>Nitzan</p>
+            <div class="comment-content">aggregate is a bad idea as you answer in the previous post but you can use only static route with a tag that go into BGP with redistribute static that match the tag and add a community.<BR/>another idea is to set the next hop of the route to an address that route to Null in all the network so address that is not in use will be discard in the edge of the network and will not get to the route originator.<BR/><BR/>Nitzan</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16396426798189772519" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7360076547047517832">25 August 2008 11:34</a>
+                <a rel="nofollow" id="c7360076547047517832" href="#7360076547047517832">25 August 2008 11:34</a>
               </span>
             </div>
-            <p class="comment-content">Ofer,<BR/><BR/>the guy is asking to share our opinion with him. The quotes that you show - You can be sure that he knows that (Or even possible is that you quote his publications :))<BR/><BR/>Anyway, in my opinion I've never used this feature for my humble experience period (~7 years). I'm working in a service provider and most of our customers have PI addresses. Other just using network command because they've never heard about aggregation feature. Anyway I found it as a good feature which nobody use (because everyone use network statement instead) Just like ORF (Outbound Route Filtering) - nobody use it everyone is prefer to use Prefix-list in conjunction with route-maps.<BR/><BR/>Kind Regards,<BR/>Danail Petrov</p>
+            <div class="comment-content">Ofer,<BR/><BR/>the guy is asking to share our opinion with him. The quotes that you show - You can be sure that he knows that (Or even possible is that you quote his publications :))<BR/><BR/>Anyway, in my opinion I've never used this feature for my humble experience period (~7 years). I'm working in a service provider and most of our customers have PI addresses. Other just using network command because they've never heard about aggregation feature. Anyway I found it as a good feature which nobody use (because everyone use network statement instead) Just like ORF (Outbound Route Filtering) - nobody use it everyone is prefer to use Prefix-list in conjunction with route-maps.<BR/><BR/>Kind Regards,<BR/>Danail Petrov</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8451355141434763521">25 August 2008 14:50</a>
+                <a rel="nofollow" id="c8451355141434763521" href="#8451355141434763521">25 August 2008 14:50</a>
               </span>
             </div>
-            <p class="comment-content">Danail,<BR/><BR/>I am not quoting anyone but myself (if i would, i would give reference).I just pointed out aspects of BGP aggregate that i think are providing an added value.<BR/><BR/><BR/>as for a simple example:<BR/> <BR/>Let's say we have 2 routers. one (R1) located at the HQ , and the other (R2) located in a DRP site  a couple of miles away.<BR/>The two sites (Main and DRP) are connected directly (not through the internet!), and are running IBGP.<BR/><BR/>normally,  traffic should flow only over the Main site's link to the ISP (i am refering only to inbound traffic), so we will advertise the more specidic routes there.<BR/>We got 4 C Classes from the ISP (PI).<BR/><BR/>configuring 4 "nework" statements (for each C Class network)  at the main site , and  "aggregate-address X.X.X.X 255.255.252.0" at the DRP site would be an easy way of implementing this requierment.<BR/><BR/><BR/>of course, you could configure a static route to null0 and advertise it using a "network" statement, but then you will have to filter the more specific routes. anyway, (as far as i can think of) BGP aggregate will be much more elegant.</p>
+            <div class="comment-content">Danail,<BR/><BR/>I am not quoting anyone but myself (if i would, i would give reference).I just pointed out aspects of BGP aggregate that i think are providing an added value.<BR/><BR/><BR/>as for a simple example:<BR/> <BR/>Let's say we have 2 routers. one (R1) located at the HQ , and the other (R2) located in a DRP site  a couple of miles away.<BR/>The two sites (Main and DRP) are connected directly (not through the internet!), and are running IBGP.<BR/><BR/>normally,  traffic should flow only over the Main site's link to the ISP (i am refering only to inbound traffic), so we will advertise the more specidic routes there.<BR/>We got 4 C Classes from the ISP (PI).<BR/><BR/>configuring 4 "nework" statements (for each C Class network)  at the main site , and  "aggregate-address X.X.X.X 255.255.252.0" at the DRP site would be an easy way of implementing this requierment.<BR/><BR/><BR/>of course, you could configure a static route to null0 and advertise it using a "network" statement, but then you will have to filter the more specific routes. anyway, (as far as i can think of) BGP aggregate will be much more elegant.</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2976100334424185585">26 August 2008 19:34</a>
+                <a rel="nofollow" id="c2976100334424185585" href="#2976100334424185585">26 August 2008 19:34</a>
               </span>
             </div>
-            <p class="comment-content">More specifically, the aggregate statement will advertise the aggregate when "component" (aka contributing) routes are present in BGP.  "Network," on the other hand, will take contributing routes from any protocol.  Suppressing more specifics with the use of summary-only, is also desirable for many.  The  scenario can be when you provide transit for acquisitions (that could be private or public AS'es) which occupy a fraction of your aggregate space and you wish to suppress them.  There is no one size fits all here.  The point is the knob is there for a reason and plenty of folks have use for it.</p>
+            <div class="comment-content">More specifically, the aggregate statement will advertise the aggregate when "component" (aka contributing) routes are present in BGP.  "Network," on the other hand, will take contributing routes from any protocol.  Suppressing more specifics with the use of summary-only, is also desirable for many.  The  scenario can be when you provide transit for acquisitions (that could be private or public AS'es) which occupy a fraction of your aggregate space and you wish to suppress them.  There is no one size fits all here.  The point is the knob is there for a reason and plenty of folks have use for it.</div>
           </div>
         </li>
       </div>

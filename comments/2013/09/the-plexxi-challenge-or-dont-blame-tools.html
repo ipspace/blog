@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>10 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01607373488536972094" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3853458589157516086">03 September 2013 17:56</a>
+                <a rel="nofollow" id="c3853458589157516086" href="#3853458589157516086">03 September 2013 17:56</a>
               </span>
             </div>
-            <p class="comment-content">Ivan,<br /><br />As always, thanks for the great write-up (and most excellent pictures!)<br /><br />Just wanted to clarify one point that may be misunderstood by your readers. While it is true that SPF would have been a very poor choice for our topology, it is not the case that we built the physical topology and then were forced into choosing an appropriate routing algo design. In fact, when we started this project, the designers were given clear design goals from Dave Husak our founder. Those goals were - design a system that can compute deterministic topologies based on application affinity inputs, layered on a physical topology that can actually be manipulated dynamically. Everything else flowed from that. In fact, if we had chosen a leaf-spine physical architecture, we still would not have used SPF, which I will explain below.<br /><br />Our issue with SPF/ECMP isn&#39;t that it isn&#39;t an appropriate tool for certain topologies and design philosophies - it certainly is, and I believe Marten stated as such in his own blog post. &quot;Like ECMP and based on the fact that SPF algorithms have been in use in networks for probably 40 years, there is most certainly value in their ability to determine paths through a network. But also like ECMP, we have made them the center piece of connectivity, rather than one of many tools that can be used.&quot;<br /><br />The reason Marten wrote the post you referenced is that we do feel that it is being stated that the most optimal design choice for every network is the most random, and we do not agree with that. We think that for certain data centers with high workload diversity and a propensity of east-west traffic, that we can do better (much better) than random distribution. I understand that &quot;better&quot; is vague and unqualified here, but what I mean is - at a lower overall cost (capex, power, space, operations), where more capacity is allocated to the edges of the network, and where network resources (such as low latency paths and capacity) can be directly applied to application intentions deterministically. Ultimately this all has to be measured in better application user experience at an equivalent or lower cost per bit. <br /><br />We also believe that as the number of endpoints scales (physical hosts, virtual hosts, vSwitches) that an edge-to-edge oriented model where the edge patterns can be computationally fitted based on affinity knowledge can be designed to be much more efficient, scalable, and cost-effective than an aggregation model such as ECMP/Leaf-Spine. If the network is moving to the edge (hosts) then why duplicate costly and power hungry electrical silicon again in the agg/core?  ECMP may be a great tool for Leaf-Spine, but Leaf-spine (or more generally aggregation oriented networks) may not be the best tool for networks that are trending to large number of host-to-host pairings. Instead if we can leverage edge-directed photonic switching, we can dramatically reduce the amount of costly electrical switching in the aggregation (and maybe someday even at the access layer) in networks. We&#39;ll discuss all of these topics and our fuller vision at NFD6 next week!</p>
+            <div class="comment-content">Ivan,<br /><br />As always, thanks for the great write-up (and most excellent pictures!)<br /><br />Just wanted to clarify one point that may be misunderstood by your readers. While it is true that SPF would have been a very poor choice for our topology, it is not the case that we built the physical topology and then were forced into choosing an appropriate routing algo design. In fact, when we started this project, the designers were given clear design goals from Dave Husak our founder. Those goals were - design a system that can compute deterministic topologies based on application affinity inputs, layered on a physical topology that can actually be manipulated dynamically. Everything else flowed from that. In fact, if we had chosen a leaf-spine physical architecture, we still would not have used SPF, which I will explain below.<br /><br />Our issue with SPF/ECMP isn&#39;t that it isn&#39;t an appropriate tool for certain topologies and design philosophies - it certainly is, and I believe Marten stated as such in his own blog post. &quot;Like ECMP and based on the fact that SPF algorithms have been in use in networks for probably 40 years, there is most certainly value in their ability to determine paths through a network. But also like ECMP, we have made them the center piece of connectivity, rather than one of many tools that can be used.&quot;<br /><br />The reason Marten wrote the post you referenced is that we do feel that it is being stated that the most optimal design choice for every network is the most random, and we do not agree with that. We think that for certain data centers with high workload diversity and a propensity of east-west traffic, that we can do better (much better) than random distribution. I understand that &quot;better&quot; is vague and unqualified here, but what I mean is - at a lower overall cost (capex, power, space, operations), where more capacity is allocated to the edges of the network, and where network resources (such as low latency paths and capacity) can be directly applied to application intentions deterministically. Ultimately this all has to be measured in better application user experience at an equivalent or lower cost per bit. <br /><br />We also believe that as the number of endpoints scales (physical hosts, virtual hosts, vSwitches) that an edge-to-edge oriented model where the edge patterns can be computationally fitted based on affinity knowledge can be designed to be much more efficient, scalable, and cost-effective than an aggregation model such as ECMP/Leaf-Spine. If the network is moving to the edge (hosts) then why duplicate costly and power hungry electrical silicon again in the agg/core?  ECMP may be a great tool for Leaf-Spine, but Leaf-spine (or more generally aggregation oriented networks) may not be the best tool for networks that are trending to large number of host-to-host pairings. Instead if we can leverage edge-directed photonic switching, we can dramatically reduce the amount of costly electrical switching in the aggregation (and maybe someday even at the access layer) in networks. We&#39;ll discuss all of these topics and our fuller vision at NFD6 next week!</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01395217775195260835" rel="nofollow">Wes Felter</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7557762522617229385">03 September 2013 20:12</a>
+                <a rel="nofollow" id="c7557762522617229385" href="#7557762522617229385">03 September 2013 20:12</a>
               </span>
             </div>
-            <p class="comment-content">So the optical switches are not reconfigured based on affinities?</p>
+            <div class="comment-content">So the optical switches are not reconfigured based on affinities?</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/01607373488536972094" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#596366219082564050">03 September 2013 21:00</a>
+                <a rel="nofollow" id="c596366219082564050" href="#596366219082564050">03 September 2013 21:00</a>
               </span>
             </div>
-            <p class="comment-content">They absolutely are reconfigurable. The default chordal ring topology is just that - a default - before any traffic matrices or application affinity knowledge is built. </p>
+            <div class="comment-content">They absolutely are reconfigurable. The default chordal ring topology is just that - a default - before any traffic matrices or application affinity knowledge is built. </div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/16115281578739979183" rel="nofollow">Dave Taht</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#983987995381587975">03 September 2013 21:33</a>
+                <a rel="nofollow" id="c983987995381587975" href="#983987995381587975">03 September 2013 21:33</a>
               </span>
             </div>
-            <p class="comment-content">I have long pointed at an obscure branch of graph theory called &quot;snarks&quot; to try and break minds free of the SPF paradigm... an example (cerowrt&#39;s logo)<br /><br />http://en.wikipedia.org/wiki/Blanu%C5%A1a_snarks<br /><br />What you are calling &quot;chordal&quot; looks rather snark-like... but that&#39;s not why I&#39;m posting....<br /><br />I&#39;m kind of curious as to whether or not these switches are fast enough to do fair queuing of any sort?</p>
+            <div class="comment-content">I have long pointed at an obscure branch of graph theory called &quot;snarks&quot; to try and break minds free of the SPF paradigm... an example (cerowrt&#39;s logo)<br /><br />http://en.wikipedia.org/wiki/Blanu%C5%A1a_snarks<br /><br />What you are calling &quot;chordal&quot; looks rather snark-like... but that&#39;s not why I&#39;m posting....<br /><br />I&#39;m kind of curious as to whether or not these switches are fast enough to do fair queuing of any sort?</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -92,10 +87,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17332987438325943763" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8896912449904463829">04 September 2013 00:10</a>
+                <a rel="nofollow" id="c8896912449904463829" href="#8896912449904463829">04 September 2013 00:10</a>
               </span>
             </div>
-            <p class="comment-content">Dave,<br /><br />The Plexxi switches use commercial silicon (Broadcom, no secret) as their forwarding engines. It essentially supports Strict, Weighted Round Robin and Deficit Weighted Round Robin, the latter being the closest to fair queueing you can get given the speeds at which these switches need to operate (1.28Tbit/sec)...</p>
+            <div class="comment-content">Dave,<br /><br />The Plexxi switches use commercial silicon (Broadcom, no secret) as their forwarding engines. It essentially supports Strict, Weighted Round Robin and Deficit Weighted Round Robin, the latter being the closest to fair queueing you can get given the speeds at which these switches need to operate (1.28Tbit/sec)...</div>
           </div>
         </li>
       </div>
@@ -117,10 +112,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://personales.unican.es/vallejoe/" rel="nofollow">Enrique Vallejo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#548001653249781620">09 September 2013 11:52</a>
+                <a rel="nofollow" id="c548001653249781620" href="#548001653249781620">09 September 2013 11:52</a>
               </span>
             </div>
-            <p class="comment-content">The use of non-minimal paths is very interesting. I wonder if Plexxi is really using UCMP forwarding entries in the switch (I had to google it, I admit :) ). <br /><br />If I had to design this system, using Openflow, I would rather balance traffic on a per-flow basis, using minimal or non-minimal routing depending on the current state of the network. If I understand it correctly, Openflow switches implement flow rules counters which would &quot;easily&quot; provide information about the current traffic load per flow. This would allow to better balance the traffic than using statistical hash buckets, which would generate unbalances depending on the specific fields used (MAC, IP, port) and the specific values of the endpoints. <br /><br />Is there any document which details this implementation? I think that the Plexxi talk in the Datacenter Fabrics update did not go into the detail, and I didn&#39;t find the detailed information in their web. Thanks!!</p>
+            <div class="comment-content">The use of non-minimal paths is very interesting. I wonder if Plexxi is really using UCMP forwarding entries in the switch (I had to google it, I admit :) ). <br /><br />If I had to design this system, using Openflow, I would rather balance traffic on a per-flow basis, using minimal or non-minimal routing depending on the current state of the network. If I understand it correctly, Openflow switches implement flow rules counters which would &quot;easily&quot; provide information about the current traffic load per flow. This would allow to better balance the traffic than using statistical hash buckets, which would generate unbalances depending on the specific fields used (MAC, IP, port) and the specific values of the endpoints. <br /><br />Is there any document which details this implementation? I think that the Plexxi talk in the Datacenter Fabrics update did not go into the detail, and I didn&#39;t find the detailed information in their web. Thanks!!</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -136,10 +131,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2084386744956422620">09 September 2013 13:42</a>
+                <a rel="nofollow" id="c2084386744956422620" href="#2084386744956422620">09 September 2013 13:42</a>
               </span>
             </div>
-            <p class="comment-content">Regardless of what hype generators are trying to tell you, no switch based on merchant silicon supports the number of flow entires you&#39;d need in a reasonably-sized data center to run flow-based switching, not to mention the scalability issues of such approach.</p>
+            <div class="comment-content">Regardless of what hype generators are trying to tell you, no switch based on merchant silicon supports the number of flow entires you&#39;d need in a reasonably-sized data center to run flow-based switching, not to mention the scalability issues of such approach.</div>
           </div>
         </li>
       </div>
@@ -154,10 +149,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://personales.unican.es/vallejoe/" rel="nofollow">Enrique Vallejo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#9081795288280187395">09 September 2013 18:15</a>
+                <a rel="nofollow" id="c9081795288280187395" href="#9081795288280187395">09 September 2013 18:15</a>
               </span>
             </div>
-            <p class="comment-content">Didn&#39;t think about it, thanks! <br /><br /></p>
+            <div class="comment-content">Didn&#39;t think about it, thanks! <br /><br /></div>
           </div>
         </li>
       </div>
@@ -179,10 +174,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/17332987438325943763" rel="nofollow">Unknown</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2476667283283783747">09 September 2013 14:54</a>
+                <a rel="nofollow" id="c2476667283283783747" href="#2476667283283783747">09 September 2013 14:54</a>
               </span>
             </div>
-            <p class="comment-content">Enrique,<br /><br />as Ivan correctly states, the amount of explicit flow entries merchant silicon (and similarly for vendor ASIC) for 10GE ToR like form factor switches is limited to several 1000s per switch, unlikely enough to explicitly direct each and every flow in a DC environment.<br /><br />In the Plexxi solution, we have no switch hierarchy but rather a mesh network between switches, which removes the need for the aggregation switches to have to support supersets of flow entries. In addition, not every flow in a Plexxi network is explicitly directed, a large portion of the traffic is directed using network wide topologies calculated by Plexxi Control and provided to the switches. And these topologies contain many weighted non equal cost paths used to populate regular forwarding tables (and thereby avoiding the flow tables limits).<br /><br />We do not have anything written up explicitly about the internals of forwarding, I will put this on my list of whitepapers to complete.<br /></p>
+            <div class="comment-content">Enrique,<br /><br />as Ivan correctly states, the amount of explicit flow entries merchant silicon (and similarly for vendor ASIC) for 10GE ToR like form factor switches is limited to several 1000s per switch, unlikely enough to explicitly direct each and every flow in a DC environment.<br /><br />In the Plexxi solution, we have no switch hierarchy but rather a mesh network between switches, which removes the need for the aggregation switches to have to support supersets of flow entries. In addition, not every flow in a Plexxi network is explicitly directed, a large portion of the traffic is directed using network wide topologies calculated by Plexxi Control and provided to the switches. And these topologies contain many weighted non equal cost paths used to populate regular forwarding tables (and thereby avoiding the flow tables limits).<br /><br />We do not have anything written up explicitly about the internals of forwarding, I will put this on my list of whitepapers to complete.<br /></div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -198,10 +193,10 @@
             <div class="comment-header">
               <cite class="user"><a href="http://personales.unican.es/vallejoe/" rel="nofollow">Enrique Vallejo</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7581570884663583866">09 September 2013 18:36</a>
+                <a rel="nofollow" id="c7581570884663583866" href="#7581570884663583866">09 September 2013 18:36</a>
               </span>
             </div>
-            <p class="comment-content">Thanks for your detailed reply!<br /><br />If you plan to write about the internals of forwarding, it might also be very interesting to discuss the possible deadlock issues that might arise. I understand that in your system, when link-level flow control is configured (using PAUSE or PFC), circular dependencies could arise since you use multihop paths in a circulant topology, is that correct?. <br /><br />AFAIK, deadlock management is a significant issue in HPC interconnection networks, where the traffic could even be part of a global coherence mechanism (see Cray XC30 &#39;Cascade&#39;, for example) so any traffic blocking (and loss) is prevented by design. By contrast, it is generally ignored in Datacenter networks, typically for two reasons: <br /><br />i) Ethernet networks have traditionally relied on (multi-)STP, which prevents forwarding loops by design, but this is no longer the case with TRILL, FabricPath, SPB, or your solution, <br /><br />ii) Transport protocols above Ethernet (TCP or UDP) consider and tolerate packet loss, so switch buffers can be flushed (after a timeout without forwarding traffic) if the network blocks. However, with a converged fabric with storage &amp; communications, where some loss in the transfer of a block in the storage network might imply a significant retransmission penalty, it seems that using a deadlock free network is much more important.<br /><br />Then, my concern is: do you consider deadlock-freedom in your design? (for example, forbidding certain paths in the forwarding entries of the switch). Or is it just an academic concern which has never been seen in your real deployments? (Note: I am an academic :) )<br /><br />Thanks in advance!</p>
+            <div class="comment-content">Thanks for your detailed reply!<br /><br />If you plan to write about the internals of forwarding, it might also be very interesting to discuss the possible deadlock issues that might arise. I understand that in your system, when link-level flow control is configured (using PAUSE or PFC), circular dependencies could arise since you use multihop paths in a circulant topology, is that correct?. <br /><br />AFAIK, deadlock management is a significant issue in HPC interconnection networks, where the traffic could even be part of a global coherence mechanism (see Cray XC30 &#39;Cascade&#39;, for example) so any traffic blocking (and loss) is prevented by design. By contrast, it is generally ignored in Datacenter networks, typically for two reasons: <br /><br />i) Ethernet networks have traditionally relied on (multi-)STP, which prevents forwarding loops by design, but this is no longer the case with TRILL, FabricPath, SPB, or your solution, <br /><br />ii) Transport protocols above Ethernet (TCP or UDP) consider and tolerate packet loss, so switch buffers can be flushed (after a timeout without forwarding traffic) if the network blocks. However, with a converged fabric with storage &amp; communications, where some loss in the transfer of a block in the storage network might imply a significant retransmission penalty, it seems that using a deadlock free network is much more important.<br /><br />Then, my concern is: do you consider deadlock-freedom in your design? (for example, forbidding certain paths in the forwarding entries of the switch). Or is it just an academic concern which has never been seen in your real deployments? (Note: I am an academic :) )<br /><br />Thanks in advance!</div>
           </div>
         </li>
       </div>

@@ -1,0 +1,31 @@
+{
+   "comments": [
+      {
+         "date": "25 February 2021 10:09",
+         "html": "<p>Wow, I wasn&#39;t expecting a blog post for my use case...\nI&#39;m not offended, I was expecting a kick in the ass :-D</p>\n\n<p>I knew the choice was bad, but didn&#39;t knew how to make it work better.\nI&#39;ll lab it and see if we can still enhance the production network.</p>\n\n<p>Thanks for your knowledge.</p>\n",
+         "id": "423",
+         "name": "GME",
+         "pub": "2021-02-25T22:09:58",
+         "type": "comment"
+      },
+      {
+         "date": "28 February 2021 02:31",
+         "html": "<p>Dear Ivan, can you please elaborate on:\n&quot;faked with dirty tricks like HSRP filtering&quot;\nThanks, m</p>\n",
+         "id": "425",
+         "name": "mrh",
+         "pub": "2021-02-28T14:31:39",
+         "type": "comment"
+      },
+      {
+         "date": "28 February 2021 04:58",
+         "html": "<p>@mrh: Imagine you have four core switches acting as routers. They run HSRP/VRRP/whatever, and only one of the becomes active forwarder. Not good, but not a big deal.</p>\n\n<p>Now imagine you spread them across two data centers. &quot;Not good&quot; becomes &quot;WTF&quot; as all inter-VLAN traffic goes to the other side to be routed.</p>\n\n<p>Enter the magic world of HSRP filtering: if you filter HSRP hello packets on the DCI link, the routers don&#39;t know someone else is using the same IP/MAC address on the other side.</p>\n\n<p>Is this sane? Definitely not. Does it work? Sort-of. Is it promoted by a large networking vendor? You bet.</p>\n\n<p>For more details just google for &quot;HSRP filtering&quot; &#x1F60A;</p>\n",
+         "id": "426",
+         "name": "Ivan Pepelnjak",
+         "pub": "2021-02-28T16:58:40",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2021/02/routing-stretched-vlan.html"
+}

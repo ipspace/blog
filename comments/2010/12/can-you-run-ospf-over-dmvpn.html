@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">plapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4047883716510397762">22 December 2010 18:42</a>
+                <a rel="nofollow" id="c4047883716510397762" href="#4047883716510397762">22 December 2010 18:42</a>
               </span>
             </div>
-            <p class="comment-content">But it does look like there should be no big scaling issues when using LSDB filtering with NHRP Phase 3: spoke routers are no longer a problem (they only need one/two default route(s)), it&#39;s the hub router that becomes control-plane scalability bottleneck due to the number of OSPF adjacencies it has to maintain. One may also mention the impact of SPF runs in the hub due to topology events at the spokes.<br /><br />However, the mesh of adjacencies at the hub could be scaled adding more tiers to the tree structure (after all, this is why they recommend phase 3). Additionally, use of iSPF will make the impact of full SPF runs in the hub almost negligible, due to clean tree-like structure of hub-and-spoke topology.</p>
+            <div class="comment-content">But it does look like there should be no big scaling issues when using LSDB filtering with NHRP Phase 3: spoke routers are no longer a problem (they only need one/two default route(s)), it&#39;s the hub router that becomes control-plane scalability bottleneck due to the number of OSPF adjacencies it has to maintain. One may also mention the impact of SPF runs in the hub due to topology events at the spokes.<br /><br />However, the mesh of adjacencies at the hub could be scaled adding more tiers to the tree structure (after all, this is why they recommend phase 3). Additionally, use of iSPF will make the impact of full SPF runs in the hub almost negligible, due to clean tree-like structure of hub-and-spoke topology.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4057910711931958096">22 December 2010 18:48</a>
+                <a rel="nofollow" id="c4057910711931958096" href="#4057910711931958096">22 December 2010 18:48</a>
               </span>
             </div>
-            <p class="comment-content">Even with LSDB filtering you still have to send hellos from the hub and the multicast replication is the next roadblock (that passive RIP just whizzes past).<br /><br />Also, if you have redundant DMVPN links, your OSPF topology database becomes way more complex.</p>
+            <div class="comment-content">Even with LSDB filtering you still have to send hellos from the hub and the multicast replication is the next roadblock (that passive RIP just whizzes past).<br /><br />Also, if you have redundant DMVPN links, your OSPF topology database becomes way more complex.</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">plapukhov</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5445608211943837236">22 December 2010 22:11</a>
+                <a rel="nofollow" id="c5445608211943837236" href="#5445608211943837236">22 December 2010 22:11</a>
               </span>
             </div>
-            <p class="comment-content">That&#39;s exactly the neighbor maintenance problem at the hub - one of the classic problem for scaling any protocol that maintains active adjacencies. As I mentioned, this could be alleviate by splitting the topology into tree, as opposed to plain &quot;fat&quot; star. <br /><br />Theoretically, if you would use P2MP+P2P network types over the DMVPN cloud, DC-extension could be enabled to suppress Hello packet exchange. The only problem here is that Cisco OSPF implementation does not support RFC 3883 for inactive peer detection, AFAIK :) Therefore, as an alternative, Hello timers could be tuned to properly pace the packet flow and match the hub capabilities.<br /><br />Furthermore, DMVPN redundancy is normally realized in form of multi-homed tree topologies that are perfectly OK for iSPF optimization, due to their clear hierarchical structure. Using OSPF flood reduction (DNA bit) would further allow eradicating periodic flooding completely and make LSA flooding more lightweight.<br /><br />Speaking generally, scaling almost any routing protocol in purely hierarchical structure is much easier compared to a more complex graph following say power-law structure. OSPF may seem a bit more resource consuming, but could be scaled just fine with the addition of extra bolts and knots. I just with they support all extension designed for OSPF out there :)</p>
+            <div class="comment-content">That&#39;s exactly the neighbor maintenance problem at the hub - one of the classic problem for scaling any protocol that maintains active adjacencies. As I mentioned, this could be alleviate by splitting the topology into tree, as opposed to plain &quot;fat&quot; star. <br /><br />Theoretically, if you would use P2MP+P2P network types over the DMVPN cloud, DC-extension could be enabled to suppress Hello packet exchange. The only problem here is that Cisco OSPF implementation does not support RFC 3883 for inactive peer detection, AFAIK :) Therefore, as an alternative, Hello timers could be tuned to properly pace the packet flow and match the hub capabilities.<br /><br />Furthermore, DMVPN redundancy is normally realized in form of multi-homed tree topologies that are perfectly OK for iSPF optimization, due to their clear hierarchical structure. Using OSPF flood reduction (DNA bit) would further allow eradicating periodic flooding completely and make LSA flooding more lightweight.<br /><br />Speaking generally, scaling almost any routing protocol in purely hierarchical structure is much easier compared to a more complex graph following say power-law structure. OSPF may seem a bit more resource consuming, but could be scaled just fine with the addition of extra bolts and knots. I just with they support all extension designed for OSPF out there :)</div>
           </div>
         </li>
       </div>

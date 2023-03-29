@@ -1,0 +1,43 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "21 June 2021 02:25",
+               "html": "<p>Traditional <em>proxy ARP</em> replies to the ARP request (without propagating it any further), admittedly with the MAC address of the router, not the remote endpoint&#39;s MAC address, so I&#39;m guessing <em>ARP suppression</em> truly is a better term to use.</p>\n",
+               "id": "681",
+               "name": "Ivan Pepelnjak",
+               "pub": "2021-06-21T14:25:42",
+               "ref": "680",
+               "type": "comment"
+            },
+            {
+               "date": "22 June 2021 09:47",
+               "html": "<p>Yes, providing the <em>correct</em> end-system MAC address instead of the gateway MAC address is a difference to traditional <em>proxy ARP</em>.</p>\n\n<p>Because the device implementing <em>ARP suppression</em> knows the answer to the question, the question is not needed to be sent to anyone else.  The <em>integrated routing and bridging</em> (IRB) in VXLAN/EVPN fabrics allows to <em>suppress</em> the ARP request flooding of transparent bridging, so this is often done.</p>\n\n<p>Traditionally, <em>proxy ARP</em> was used on a router connected to a yellow cable (or an emulation thereof).  The ARP request reached every system connected to the (emulated) cable.  The router sent an answer, using its MAC address.  Of course the router did not propagate the ARP request any further, but the transparent bridging did.</p>\n",
+               "id": "683",
+               "name": "Erik Auerswald ",
+               "pub": "2021-06-22T09:47:46",
+               "ref": "681",
+               "type": "comment"
+            }
+         ],
+         "date": "21 June 2021 09:18",
+         "html": "<p>As a small addition, traditional <em>proxy ARP</em> does not stop propagation of ARP broadcast in the layer 2 domain.  Thus many vendors use the term <em>ARP suppression</em> when ARP broadcasts are not only <em>answered</em> by an edge switch (the first hop router, usually the ToR), but the request is <em>suppressed</em> instead of flooded.</p>\n\n<p>[Yes, this does interfere with devices expecting to glean information from ARP packets which usually go everywhere in the layer 2 domain.]</p>\n",
+         "id": "680",
+         "name": " Erik Auerswald",
+         "pub": "2021-06-21T09:18:19",
+         "type": "comment"
+      },
+      {
+         "date": "21 June 2021 11:34",
+         "html": "<p>One thing worth nothing would be evpn multi homing Vs mclag with virtual vtep implementations.\nI can see here how this would use asic differently. </p>\n\n<p>Evpn multi homing is an overlay multi path, since a Mac address with 2 or more &quot;uplinks&quot; it&#39;s basically layer 2 loop, you need to use multiple tables and additional ASICS resources.</p>\n\n<p>In the case of multi homing, you have :</p>\n\n<p>Mac Address - - &gt; ESI - - &gt;  multiple vteps - - &gt; multiple underlay next hops/paths</p>\n\n<p>In the case of mclag with virtual vtep you have:</p>\n\n<p>Mac address - - &gt; single vtep - - &gt; underlay ecmp </p>\n",
+         "id": "682",
+         "name": "Andrea Florio",
+         "pub": "2021-06-21T23:34:04",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2021/06/comparing-evpn-with-flood-learn.html"
+}

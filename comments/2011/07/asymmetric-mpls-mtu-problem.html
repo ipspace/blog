@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>12 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Russell Heilling</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2476072148463576038">25 July 2011 10:53</a>
+                <a rel="nofollow" id="c2476072148463576038" href="#2476072148463576038">25 July 2011 10:53</a>
               </span>
             </div>
-            <p class="comment-content">I totally agree this shouldn&#39;t be a problem if well managed, but I&#39;d like to share an &quot;issue&quot; I had to troubleshoot a couple of years ago. <br /><br />Consider the network above.<br /><br />The system administrator logs on to C, and tries to ping S.  With the DF bit set, 1496 byte pings are successful.  1497+ pings result in a &quot;Fragmentation needed&quot; ICMP response.  Groovy.<br /><br />Now he logs on to S and tries the same thing towards C.  He finds that 1496 bytes is fine as before.  1500+ generates the &quot;Fragmentation needed&quot; as before.  However there is a 4 byte &quot;black hole&quot; where there are no responses seen.<br /><br />The reason for this is that the echo request packet actually makes it all the way from S to C, but the echo response packet is too big to get back.  This leads to an ICMP message getting sent to C, but this never gets shown to the originator of the packet at S.  Leading to the apparent problem (this issue is specific to ping though - real application traffic gets through just fine).<br /><br />This caused a fair amount of head scratching before we got to the bottom of it.</p>
+            <div class="comment-content">I totally agree this shouldn&#39;t be a problem if well managed, but I&#39;d like to share an &quot;issue&quot; I had to troubleshoot a couple of years ago. <br /><br />Consider the network above.<br /><br />The system administrator logs on to C, and tries to ping S.  With the DF bit set, 1496 byte pings are successful.  1497+ pings result in a &quot;Fragmentation needed&quot; ICMP response.  Groovy.<br /><br />Now he logs on to S and tries the same thing towards C.  He finds that 1496 bytes is fine as before.  1500+ generates the &quot;Fragmentation needed&quot; as before.  However there is a 4 byte &quot;black hole&quot; where there are no responses seen.<br /><br />The reason for this is that the echo request packet actually makes it all the way from S to C, but the echo response packet is too big to get back.  This leads to an ICMP message getting sent to C, but this never gets shown to the originator of the packet at S.  Leading to the apparent problem (this issue is specific to ping though - real application traffic gets through just fine).<br /><br />This caused a fair amount of head scratching before we got to the bottom of it.</div>
           </div>
         </li>
       </div>
@@ -37,10 +32,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8120305055466205981">25 July 2011 11:09</a>
+                <a rel="nofollow" id="c8120305055466205981" href="#8120305055466205981">25 July 2011 11:09</a>
               </span>
             </div>
-            <p class="comment-content">I had to read it twice to understand it, so let me add a few more details:  <br /> <br />#1 - You don&#39;t need the FW (or NAT or anything else) to generate the behavior Russell is describing. Simple IP/MPLS network with asymmetric MTUs (which you always get) is enough.  <br /> <br />#2 - The apparent black hole occurs because the &quot;Fragmentation needed&quot; message is sent to the host sending ICMP reply (not request). That host cannot do anything; there&#39;s no &quot;I have a problem&quot; ICMP message it could send to the pinging host.  <br /> <br />#3 - TCP traffic works just fine because the &quot;Fragmentation needed&quot; message is always sent to the host sending oversized TCP segment (which then gets split into smaller segments)</p>
+            <div class="comment-content">I had to read it twice to understand it, so let me add a few more details:  <br /> <br />#1 - You don&#39;t need the FW (or NAT or anything else) to generate the behavior Russell is describing. Simple IP/MPLS network with asymmetric MTUs (which you always get) is enough.  <br /> <br />#2 - The apparent black hole occurs because the &quot;Fragmentation needed&quot; message is sent to the host sending ICMP reply (not request). That host cannot do anything; there&#39;s no &quot;I have a problem&quot; ICMP message it could send to the pinging host.  <br /> <br />#3 - TCP traffic works just fine because the &quot;Fragmentation needed&quot; message is always sent to the host sending oversized TCP segment (which then gets split into smaller segments)</div>
           </div>
         </li>
       </div>
@@ -55,10 +50,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Russell Heilling</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7477196781177980163">25 July 2011 11:31</a>
+                <a rel="nofollow" id="c7477196781177980163" href="#7477196781177980163">25 July 2011 11:31</a>
               </span>
             </div>
-            <p class="comment-content">Yeah, it is difficult to describe this stuff without a diagram.  I did a presentation with animations for internal consumption at $employer.  I really should get around to a more generic explanation I could shove on my blog...<br /><br />ICMP within MPLS VPNs adds a whole new layer of interesting here too.  When the router generating the error doesn&#39;t have a route to the source, so they send the error forwards to the destination...</p>
+            <div class="comment-content">Yeah, it is difficult to describe this stuff without a diagram.  I did a presentation with animations for internal consumption at $employer.  I really should get around to a more generic explanation I could shove on my blog...<br /><br />ICMP within MPLS VPNs adds a whole new layer of interesting here too.  When the router generating the error doesn&#39;t have a route to the source, so they send the error forwards to the destination...</div>
           </div>
         </li>
       </div>
@@ -73,10 +68,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">PG</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1068284170059322868">25 July 2011 12:39</a>
+                <a rel="nofollow" id="c1068284170059322868" href="#1068284170059322868">25 July 2011 12:39</a>
               </span>
             </div>
-            <p class="comment-content">Why aren&#39;t SPs enabling larger MTUs on their backbones?</p>
+            <div class="comment-content">Why aren&#39;t SPs enabling larger MTUs on their backbones?</div>
           </div>
         </li>
       </div>
@@ -91,10 +86,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5036718306424235045">25 July 2011 13:16</a>
+                <a rel="nofollow" id="c5036718306424235045" href="#5036718306424235045">25 July 2011 13:16</a>
               </span>
             </div>
-            <p class="comment-content">Well-designed MPLS networks have larger MTUs, but sometimes MPLS is turned on later (and the MTU issue is missed).</p>
+            <div class="comment-content">Well-designed MPLS networks have larger MTUs, but sometimes MPLS is turned on later (and the MTU issue is missed).</div>
           </div>
         </li>
       </div>
@@ -109,10 +104,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">bee</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4177268715465814712">25 July 2011 14:12</a>
+                <a rel="nofollow" id="c4177268715465814712" href="#4177268715465814712">25 July 2011 14:12</a>
               </span>
             </div>
-            <p class="comment-content">Considering LSP ends on R1, would it not be better to advertise route to S with implicit null label (to avoid double lookup)?<br /><br />If you did this, the only drawback I see is, if you enable LDP on CE (or have problems with LDP), that change would propagate beyond R1 to its neighbours. Am I missing something else?<br /><br />If this is a trivial question answered elsewhere, I&#39;d appreciate a pointer in the right direction.</p>
+            <div class="comment-content">Considering LSP ends on R1, would it not be better to advertise route to S with implicit null label (to avoid double lookup)?<br /><br />If you did this, the only drawback I see is, if you enable LDP on CE (or have problems with LDP), that change would propagate beyond R1 to its neighbours. Am I missing something else?<br /><br />If this is a trivial question answered elsewhere, I&#39;d appreciate a pointer in the right direction.</div>
           </div>
         </li>
       </div>
@@ -127,10 +122,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Russell Heilling</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#5172883097437572600">25 July 2011 15:35</a>
+                <a rel="nofollow" id="c5172883097437572600" href="#5172883097437572600">25 July 2011 15:35</a>
               </span>
             </div>
-            <p class="comment-content">Most service provider networks I have worked on do enable larger MTUs on the core.  Sometimes edge technologies will limit the available MTU at the edge.  In the specific example I saw in the past, the &quot;C&quot; site was on the end of an ADSL line with an MTU of 1480 *before* the MPLS was added.<br /><br />Yes, we run MPLS over DSL here.  It even works as long as you are aware of the caveats ;)</p>
+            <div class="comment-content">Most service provider networks I have worked on do enable larger MTUs on the core.  Sometimes edge technologies will limit the available MTU at the edge.  In the specific example I saw in the past, the &quot;C&quot; site was on the end of an ADSL line with an MTU of 1480 *before* the MPLS was added.<br /><br />Yes, we run MPLS over DSL here.  It even works as long as you are aware of the caveats ;)</div>
           </div>
         </li>
       </div>
@@ -145,10 +140,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Russell Heilling</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6482176566601365275">25 July 2011 15:42</a>
+                <a rel="nofollow" id="c6482176566601365275" href="#6482176566601365275">25 July 2011 15:42</a>
               </span>
             </div>
-            <p class="comment-content">The example in the article is perhaps a little over simplified, and you probably *would* see PHP in both direction in this example.  This behaviour does exist in real world examples though.<br /><br />S---CE1---P1===P2===P3---CE2---C<br /><br />If P1===P2 has an MTU of 2000, but P2===P3 has an MTU of 1500, with PHP/Implicit Null you will be able to get 1500 bytes from S to C, but only 1496 from C to S.<br /><br />Asymmetric MTU is not a problem to be solved.  It is an issue to be understood.  If it is considered in the design there is no reason things will not behave in a predictable manner.</p>
+            <div class="comment-content">The example in the article is perhaps a little over simplified, and you probably *would* see PHP in both direction in this example.  This behaviour does exist in real world examples though.<br /><br />S---CE1---P1===P2===P3---CE2---C<br /><br />If P1===P2 has an MTU of 2000, but P2===P3 has an MTU of 1500, with PHP/Implicit Null you will be able to get 1500 bytes from S to C, but only 1496 from C to S.<br /><br />Asymmetric MTU is not a problem to be solved.  It is an issue to be understood.  If it is considered in the design there is no reason things will not behave in a predictable manner.</div>
           </div>
         </li>
       </div>
@@ -163,10 +158,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lochii</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2330583273399766311">25 July 2011 16:03</a>
+                <a rel="nofollow" id="c2330583273399766311" href="#2330583273399766311">25 July 2011 16:03</a>
               </span>
             </div>
-            <p class="comment-content">RFC3988 does give you the freedom to signal the imp-null MTU how you want (i.e you can signal the real link MTU or you can signal as if exp-null was present), wonder why cisco doesn&#39;t have a knob to do this?</p>
+            <div class="comment-content">RFC3988 does give you the freedom to signal the imp-null MTU how you want (i.e you can signal the real link MTU or you can signal as if exp-null was present), wonder why cisco doesn&#39;t have a knob to do this?</div>
           </div>
         </li>
       </div>
@@ -181,10 +176,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3246461641614452735">25 July 2011 18:03</a>
+                <a rel="nofollow" id="c3246461641614452735" href="#3246461641614452735">25 July 2011 18:03</a>
               </span>
             </div>
-            <p class="comment-content">Well, that RFC is (A) experimental and (B) written by Juniper. That might explain lack of support in Cisco IOS.<br /><br />Also, the end-to-end LSP MTU signaling is largely irrelevant in most cases; interim LSRs send ICMP error messages with the original label stack, so they eventually arrive to the intended recipient. <br /><br />Knowing end-to-end MTU would be quite important, though, if the interim LSRs would have no data-plane IP capability (plus it would allow you to push error processing to the network edges, which is always a good idea).</p>
+            <div class="comment-content">Well, that RFC is (A) experimental and (B) written by Juniper. That might explain lack of support in Cisco IOS.<br /><br />Also, the end-to-end LSP MTU signaling is largely irrelevant in most cases; interim LSRs send ICMP error messages with the original label stack, so they eventually arrive to the intended recipient. <br /><br />Knowing end-to-end MTU would be quite important, though, if the interim LSRs would have no data-plane IP capability (plus it would allow you to push error processing to the network edges, which is always a good idea).</div>
           </div>
         </li>
       </div>
@@ -199,10 +194,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">lochii</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#4517827546389451339">25 July 2011 19:47</a>
+                <a rel="nofollow" id="c4517827546389451339" href="#4517827546389451339">25 July 2011 19:47</a>
               </span>
             </div>
-            <p class="comment-content">&gt;RFC is (A) experimental (B) written by Juniper<br /><br />Well, there is a Huawei authored standards track draft at the moment for end-to-end RFC3107 signalled  LSPs - http://tools.ietf.org/html/draft-zeng-idr-bgp-mtu-extension-00</p>
+            <div class="comment-content">&gt;RFC is (A) experimental (B) written by Juniper<br /><br />Well, there is a Huawei authored standards track draft at the moment for end-to-end RFC3107 signalled  LSPs - http://tools.ietf.org/html/draft-zeng-idr-bgp-mtu-extension-00</div>
           </div>
         </li>
       </div>
@@ -217,10 +212,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">bee</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#6342312566496744609">26 July 2011 08:29</a>
+                <a rel="nofollow" id="c6342312566496744609" href="#6342312566496744609">26 July 2011 08:29</a>
               </span>
             </div>
-            <p class="comment-content">That clarifies it. Thanks.</p>
+            <div class="comment-content">That clarifies it. Thanks.</div>
           </div>
         </li>
       </div>

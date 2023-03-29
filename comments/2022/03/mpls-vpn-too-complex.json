@@ -1,0 +1,82 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "01 April 2022 07:23",
+               "html": "<p>Carrier Ethernet is L2VPN and might utilize MPLS as the transport layer. See https://en.wikipedia.org/wiki/Carrier_Ethernet</p>\n\n<p>As for the <em>ease of consuming</em> L2VPN versus L3VPN services (from the end-user perspective): I covered that in details in the <em>Choose the Optimal VPN Service</em> webinar and in the January 2022 Design Clinic. There might be a blog post or two covering that topic as well. </p>\n",
+               "id": "1126",
+               "name": "Ivan Pepelnjak",
+               "pub": "2022-04-01T07:23:58",
+               "ref": "1122",
+               "type": "comment"
+            },
+            {
+               "date": "01 April 2022 09:17",
+               "html": "<p>It is not just about consuming. The provisioning by the service provider becomes much simpler with Carrier Ethernet. It can be also fully automated, even over a long chain of multiple service providers. \nWhile the prices in a competitive situation cannot cover the cost of complex provisioning schemes. So Carrier Ethernet wins by the simple cost effectiveness reasons. </p>\n",
+               "id": "1127",
+               "name": " Bela Varkonyi",
+               "pub": "2022-04-01T09:17:43",
+               "ref": "1126",
+               "type": "comment"
+            },
+            {
+               "date": "02 April 2022 03:22",
+               "html": "<p>Carrier Ethernet reduces complexity for the customer, reliance on a specific carrier and cost. </p>\n\n<p>In terms of security, it comes with less overhead and complexity, if the primary objective is to encrypt the entire IP packet and to have full integrity protection and line-rate DoS resistance (in case you don&#39;t use MACsec). If you want to have high assurance security, there are products that also offer the tunneling of the Ethernet-header and advanced traffic flow security. Some of the solutions are also quantum-safe right out of the box (including multipoint support) and a number of solutions offer group key systems for meshed-configurations. There are also solutions, that support multi-tenant scenarios over single and multiple ports. Not with MACsec, though, not even with NSA Type 1 devices.</p>\n",
+               "id": "1131",
+               "name": " Christoph Jaggi",
+               "pub": "2022-04-02T15:22:28",
+               "ref": "1122",
+               "type": "comment"
+            }
+         ],
+         "date": "31 March 2022 10:01",
+         "html": "<p>&gt; Carrier Ethernet became a viable alternative, and as much as it hurts me, I&rsquo;m usually recommending customer-managed routers attached to Carrier Ethernet as a better (and safer) alternative to MPLS/VPN</p>\n\n<p>If I may ask, how did Carrier Ethernet become a viable alternative that obsoleted L(2|3)VPNs? To my understanding it doesn&#39;t really bring much to the table except maybe a somewhat templated design on how to sell certain types of edge handoffs between the SP and customer.</p>\n\n<p>I take it by offloading the MPLS L(2|3)VPNs to the provider, and the provider handing off using Carrier Ethernet that it&#39;s easier to have a standardized set of interface configurations?</p>\n",
+         "id": "1122",
+         "name": "Kristijan Taskovski",
+         "pub": "2022-03-31T22:01:19",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "02 April 2022 12:58",
+               "html": "<p>&gt; people complaining</p>\n\n<p>Is this directed to me? This is not a complaint, this is just my opinion. As I wrote in my original reply, &quot;I am just another idiot with an opinion&quot;.</p>\n\n<p>&gt; Manufacturers didn&rsquo;t dream up this complexity for fun.</p>\n\n<p>FYI, I&#39;ve spent half of my career working for vendors. So I am not complaining about manufacturers. (The other half was a very long sabbatical). The last network that I had to maintain had 4 transparent bridges, and 1 AGS. That was more than 3 decades ago.</p>\n\n<p>The rise and deployment of MPLS was during my long sabbatical. When I came back, MPLS had just been declared dead, and SR was on the rise. I have perfect timing. :)</p>\n\n<p>About complexity. I like simple. I really like simple. I happen to be an author of RFC3784 (ISIS extensions for TE). At the time (1998-1999) I thought to myself: &quot;I hardly understand how this stuff is supposed to work myself. And I am a co-author of this draft. How are operators going to design, deploy and troubleshoot this?&quot;</p>\n\n<p>During the next years (during my sabbatical) I saw that people were writing books about MPLS, MPLS-RSPV-TE and BGP-MPLS-VPNs. There were blog-post. New features and extensions in the IETF. Clearly I was wrong. MPLS-RSVP-TE was being deployed and was a success.</p>\n\n<p>However, last year I watched a presentation by Clarence Filsfils about SR and TE. Clarence said: &quot;2.5% of ISPs use(d) MPLS-RSVP-TE. 0% of enterprises use MPLS-RSVP-TE&quot;. So maybe my original thought wasn&#39;t so wrong after all. :)</p>\n",
+               "id": "1130",
+               "name": "Henk",
+               "pub": "2022-04-02T12:58:24",
+               "ref": "1124",
+               "type": "comment"
+            }
+         ],
+         "date": "01 April 2022 01:35",
+         "html": "<p>This is akin to people complaining at the IRS about how the US tax code is too darn complex (features). Manufacturers (IRS) didn&rsquo;t dream up this complexity for fun. If I may borrow the newest meme fad: My brothers in Christ, We wanted these features. And now it&rsquo;s too complex? Maybe it&rsquo;s too complex because We lacked the agency and fortitude to reject unreasonable business demands. We still do, stretched L2 anyone? </p>\n",
+         "id": "1124",
+         "name": "John Coke",
+         "pub": "2022-04-01T01:35:43",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "08 April 2022 01:49",
+               "html": "In the age of such brilliancy on Enterprises network solutions such as :<br />\n\n<ul>\n<li>using nat to route traffic because dynamic routing is to hard to grasp and static routing too cumbersome\n-Firewalls on about any network segment because of reasons</li>\n</ul>\n\n<p>simple concepts like a vrf light are already very difficult to grasp to some IT teams so a basic MPLS design witch is a great concept is viewed as very complex/expensive solution.</p>\n\n<p>Some providers in Europe still find success selling mpls to end customers as a vpn solution and it beats the currently popular automated ipsec tunneling solutions aka sd-something in most customer requirements, the cost is where it is usually lacking, however even in this domain it can be cost effective at scale if well design/managed.</p>\n",
+               "id": "1147",
+               "name": " Nuno",
+               "pub": "2022-04-08T13:49:16",
+               "ref": "1128",
+               "type": "comment"
+            }
+         ],
+         "date": "01 April 2022 02:11",
+         "html": "<p>Well if its Enterprise size application.\nExtreme SPB-M is easy and can run L2 L3 &amp; MC.\nNormally that run on single IS-IS but now it can multi area.</p>\n\n<p>On service provider arena</p>\n\n<p>MPLS SR MPLS with ISIS ?</p>\n",
+         "id": "1128",
+         "name": "Krembo",
+         "pub": "2022-04-01T14:11:29",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2022/03/mpls-vpn-too-complex.html"
+}

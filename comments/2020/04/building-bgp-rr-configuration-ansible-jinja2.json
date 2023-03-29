@@ -1,0 +1,31 @@
+{
+   "comments": [
+      {
+         "date": "14 April 2020 10:03",
+         "html": "<p>Wow, I feel like I was on this same journey this week, glad I popped in :) I was trying to do the same thing this week and trying to do it without having any specific attribute called route reflector or rr-client (not sure why, just my feeling at the time). I used spine and leaf groups and spine and leaf roles.</p>\n\n<p>Since the spines treat all the leafs as RRCs, I figured I could just use roles and when the spine role is run, I take advantage of hostvars and the fact the leafs are grouped already. So I loop through each device and as long as its in the leafs group its the route-reflector-client option. It works but I am not even sure how to gauge the &quot;IAC-ness&quot; of this solution. Thoughts?</p>\n\n<pre>\r\n$ cat roles/bgp-spine/tasks/main.yaml \r\n- name: Configure BGP Neighbors with EVPN AF\r\n  nxos_bgp_neighbor_af:\r\n    asn: &quot;65000&quot;\r\n    neighbor: &quot;&#123;&#123; item.value.routerid &#125;&#125;&quot;\r\n    afi: l2vpn\r\n    safi: evpn\r\n    send_community: both\r\n    route_reflector_client: yes\r\n    state: present\r\n  loop: &quot;&#123;&#123; hostvars|dict2items &#125;&#125;&quot;\r\n  when: item.key in item.value.groups.leafs\r\n</pre>\n",
+         "id": "5",
+         "name": "Bryan Bartik",
+         "pub": "2020-04-14T22:03:48",
+         "type": "comment"
+      },
+      {
+         "date": "15 April 2020 12:01",
+         "html": "<p>Nothing wrong with your solution. Instead of modeling the BGP sessions with a data model (like I did), you decided to make them part of the business logic (<em>every leaf is a route reflector of every spine</em>), and of course that&#39;s as IaC-y as it gets... it&#39;s just that your data model is at a higher layer of abstraction than mine.</p>\n\n<p>As for the implementation: unless they radically improved Ansible network modules (fat chance) calling <strong>nxos_bgp_neighbor_af</strong> might get slow for a large number of leaf switches, as it executes <strong>show running</strong> every time you&#39;re calling the module.</p>\n",
+         "id": "7",
+         "name": "Ivan Pepelnjak",
+         "pub": "2020-04-15T12:01:29",
+         "type": "comment"
+      },
+      {
+         "date": "16 April 2020 12:59",
+         "html": "<p>Ah, good point on the &quot;show run&quot; every time. That is slow. Thanks Ivan!</p>\n",
+         "id": "8",
+         "name": "Bryan",
+         "pub": "2020-04-16T00:59:52",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2020/04/building-bgp-rr-configuration-ansible-jinja2.html"
+}

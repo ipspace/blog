@@ -1,0 +1,43 @@
+{
+   "comments": [
+      {
+         "comments": [
+            {
+               "date": "05 November 2022 06:22",
+               "html": "<p>Thanks a million. I love the first one -- we&#39;re worried about IGP and routing table scalability and thus we summarize IP prefixes, but there&#39;s no problem with LDP and we have infinite LFIB size ;)</p>\n\n<p>As for the second one, it seems to be one of those &quot;let&#39;s push all the complexity into the network core (or at least aggregation)&quot; things.</p>\n\n<p>Oh well, there&#39;s nothing new under the sun...</p>\n",
+               "id": "1483",
+               "name": " Ivan Pepelnjak",
+               "pub": "2022-11-05T18:22:55",
+               "ref": "1473",
+               "type": "comment"
+            },
+            {
+               "date": "06 November 2022 04:15",
+               "html": "<p>RFC 5283 allows LDP to use a label for an IP FEC even though the RIB does not contain an exact match for this IP FEC.  This is still MPLS, and each FEC in use requires a distinct label.  This allows to reduce the routing table and thus FIB size via aggregation, but does not by itself reduce the LFIB size.</p>\n\n<p>This addresses the &quot;<em>we can&rsquo;t summarize loopbacks if we need to build a label-switched path with [LDP] challenge</em>.&quot;</p>\n\n<p>The use of Downstream-on-Demand label allocation allows to reduce the LFIB size by requesting labels only for required FECs, e.g., only for those PEs participating in locally configured L3VPNs (i.e., for the learned BGP next hops).</p>\n\n<p>In the context of &quot;Seamless MPLS&quot; this is intended to allow the use of smaller access network devices and still extend MPLS transport to the network edge.</p>\n\n<p>This does not change MPLS transport.  MPLS forwarding is still based on exact match, not longest prefix match.  An LSR does not split one LSP into two.</p>\n",
+               "id": "1486",
+               "name": " Erik Auerswald",
+               "pub": "2022-11-06T16:15:27",
+               "ref": "1483",
+               "type": "comment"
+            }
+         ],
+         "date": "02 November 2022 11:42",
+         "html": "<p>For good old LDP there are (at least) two RFCs regarding scalability of transport LSPs:</p>\n\n<ol>\n<li><p>RFC 5283 &quot;LDP Extension for Inter-Area Label Switched Paths (LSPs)&quot;\n&lt;https://datatracker.ietf.org/doc/html/rfc5283&gt;</p></li>\n<li><p>RFC 7032 &quot;LDP Downstream-on-Demand in Seamless MPLS&quot;\n&lt;https://datatracker.ietf.org/doc/html/rfc7032&gt;</p></li>\n</ol>\n\n<p>The (expired) I-D &quot;Seamless MPLS Architecture&quot; &lt;https://datatracker.ietf.org/doc/html/draft-ietf-mpls-seamless-mpls-07&gt; describes an idea how to use the above.</p>\n\n<p>Of course this does not mean that your existing routers provide those features. ;-)</p>\n",
+         "id": "1473",
+         "name": " Erik Auerswald",
+         "pub": "2022-11-02T11:42:07",
+         "type": "comment"
+      },
+      {
+         "date": "02 November 2022 06:01",
+         "html": "<p>&gt; Routing is maybe a solved problem for networks with &lt;= 1000 routers</p>\n\n<p>And as this is by far the most common case, I&#39;m perfectly happy with the simple, predictable solutions we have!</p>\n\n<p>But:</p>\n\n<p>&gt; Unfortunately, vendors always focus on creating solutions for their largest customers</p>\n\n<p>and that makes everything so much worse for all of us who are not that large :(</p>\n",
+         "id": "1474",
+         "name": " Sander Steffann",
+         "pub": "2022-11-02T18:01:31",
+         "type": "comment"
+      }
+   ],
+   "count": 2,
+   "type": "post",
+   "url": "2022/11/sr-mpls-scalability.html"
+}

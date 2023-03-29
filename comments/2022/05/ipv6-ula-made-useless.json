@@ -1,0 +1,42 @@
+{
+   "comments": [
+      {
+         "date": "13 May 2022 06:26",
+         "html": "<p>I tried it a few months ago in a home/lab environment - and yes, it doesn&#39;t work.</p>\n\n<p>In my setup I generated a new ULA /48 range and assigned a /64 to an internal WiFi-enabled subnet. I had 2 upstream Internet links:\n - a primary fast link dual-stacked to the ISP\n - a slow ADSL IPv4 only backup link with an he.net IPv6 tunnel</p>\n\n<p>A single router did NAT66 for the /64 blocks when traffic was routing over each uplink.</p>\n\n<p>I found devices always preferred IPv4 over IPv6-ULA. After hacking around on a Linux host I found where preferences were set, but they&#39;re horribly complex and you just can&#39;t fix other devices like Windows, Android, iOS, etc.</p>\n\n<p>So yes, a lot of docs say it should work but in real life it doesn&#39;t because the network stacks on almost all OS&#39;s are hard coded to prefer IPv4 over IPv6 ULA addresses.</p>\n\n<p>I reverted to using my he.net assigned public /64 on the LAN, and NAT66 when going over the other uplink. Real public IPv6 is preferred over IPv4, so it works as expected. But not ULA.</p>\n",
+         "id": "1232",
+         "name": " Kerry Thompson",
+         "pub": "2022-05-13T06:26:10",
+         "type": "comment"
+      },
+      {
+         "date": "13 May 2022 01:34",
+         "html": "<p>Some years ago, before some parts of RFC 6724 were implemented in common operating systems, the situation was different. Using ULA did not work.</p>\n\n<p>ULA was treated identically to GUA. If one added ULA addressing for local only IPv6 tests to an existing IPv4 network with Internet connectivity, Internet connectivity would break (no <a href=\"https://www.rfc-editor.org/info/rfc6555\">Happy Eyeballs</a> or <a href=\"https://www.rfc-editor.org/info/rfc8305\">Happy Eyeballs v2</a>), or it would be slower due to trying IPv4 later than IPv6.</p>\n\n<p>Unique Local Addresses were worse than useless, they were harmful, because local use of Unique Local Addresses negatively affected global connectivity.</p>\n\n<p>(This problem was documented in <a href=\"https://datatracker.ietf.org/doc/html/rfc5220#section-2.2.2\">RFC 5220 section 2.2.2</a> from 2008, referenced in RFC 6724.)</p>\n\n<p>Useless, but no longer harmful, ULA could be seen as an improvement. :-)</p>\n",
+         "id": "1233",
+         "name": "Erik Auerswald",
+         "pub": "2022-05-13T13:34:31",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "03 August 2022 06:10",
+               "html": "<p>I haven&#39;t seen this behavior on (modern) Ubuntu 20.04/22.04 and Win10.</p>\n\n<p>I have a switch with ULA address (I don&#39;t have PIA space at home) and an ipv4(RFC1918) address.  A dns lookup returns the ULA address &amp; ipv4 address.  Using ping or ssh to the dns name always has me connecting to the ULA address.</p>\n\n<p>https://twitter.com/5SpeedFun/status/1518047636166746114</p>\n",
+               "id": "1342",
+               "name": " Rob",
+               "pub": "2022-08-03T06:10:15",
+               "ref": "1234",
+               "type": "comment"
+            }
+         ],
+         "date": "14 May 2022 09:21",
+         "html": "<p>We use ULA as WAN address for our GPON ONUs as additional security measurement to prevent most of the internet to brute force passwords and to have little bit more safety from exploiting know vulnerabilities of ONU vendors. They love to left backdoors and write unsecure code. Then customers get delegated prefix of global IPv6 addresses.</p>\n",
+         "id": "1234",
+         "name": "Misak Khachatryan ",
+         "pub": "2022-05-14T21:21:15",
+         "type": "comment"
+      }
+   ],
+   "count": 3,
+   "type": "post",
+   "url": "2022/05/ipv6-ula-made-useless.html"
+}

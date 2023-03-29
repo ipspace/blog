@@ -1,78 +1,86 @@
 {
-  "comments": [
-    {
-      "date": "30 May 2014 20:07",
-      "html": "&quot;You might have an environment in which thousands of servers have nothing better to do than saturate 10GE uplinks sending 64-byte VoIP packets or test each other\u2019s readiness&quot;<br /><br />Actually....  I&#39;m more concerned about how the switches and routers stand up to DDoS attacks consisting of large numbers of intentionally small UDP and TCP packets (High volume &quot;UDP Storm&quot; and &quot;SYN flood&quot;); and make sure  that the LAN itself isn&#39;t what falls over  (at least until bandwidth usage reaches the bandwidth capacity of the links),  especially 10GE switches shared with SAN infrastructure.<br /><br />I don&#39;t believe I have any complaint against the Arista 7300  specifically;  I don&#39;t have access to any to test.",
-      "id": "1398617684248187922",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Draco",
-      "profile": null,
-      "pub": "2014-05-30T20:07:27.038+02:00",
-      "ref": "6397176725609090914",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "02 June 2014 09:12",
-          "html": "Thank you!",
-          "id": "8093563102694501427",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2014-06-02T09:12:52.682+02:00",
-          "ref": "5505789641590054204",
-          "type": "comment"
-        }
-      ],
-      "date": "02 June 2014 08:12",
-      "html": "From &quot;Principles and Practices of Interconnection Networks&quot; by: William James Dally and Brian Patrick Towles pg. 112 (please read all the way through):<br /><br />&quot;..We will call a packet-switched network that meets these criteria non-interfering.<br />Such a network is able to handle arbitrary packet traf\ufb01c with a guaranteed bound<br />on packet delay. The traf\ufb01c neither exceeds the bandwidth capacity of any network<br />channel, nor does it result in coupled resource allocation between \ufb02ows.<br /><br />For almost all applications today, when people say they want a non-blocking<br />network, what they really require is a non-interfering network, which can usually<br />be realized with considerably less expense. For the sake of history, however, and for<br />those cases in which true non-blocking is needed to support circuit switching, we<br />give a brief survey of non-blocking networks in the remainder of this chapter.&quot;",
-      "id": "5505789641590054204",
-      "image": "https://3.bp.blogspot.com/-1fS21eLQ6eY/U3tjVmz3mtI/AAAAAAAABsE/euZXY4HaGQo/s31/animal.jpg",
-      "name": "dreamer",
-      "profile": "https://www.blogger.com/profile/08768566067706348989",
-      "pub": "2014-06-02T08:12:35.706+02:00",
-      "ref": "6397176725609090914",
-      "type": "comment"
-    },
-    {
-      "date": "05 June 2014 19:12",
-      "html": "Hi Ivan,<br /><br />Here&#39;s the official Arista response from Douglas Gourlay - Vice President Systems Engineering:<br /><br />&quot;The 7300 Series was designed to provide wirespeed bandwidth for the most common workloads in the data center, the cloud, and on the Internet - where according to Cisco Systems research the average packet size is between 500-bytes and 600-bytes nowadays, confirmed by a recent post from Greg Ferro here. While there is always some amount of 64-byte frames based on ACKs and SYNs and such during session setup they do not appear as 100% of the traffic in any real world operating environment.<br /><br />&quot;If a customer does need 64-byte frame forwarding at wirespeed, on all interfaces, perfectly meshed, 100% of the time we do offer our 7500 Series which also has larger buffer pools to handle the periods of incast based congestion that are highly likely in that type of contrived test workload.<br /><br />&quot;As Ivan and Brad have both identified - the scenario where 64-byte wirespeed frame forwarding on all interfaces concurrently comes up is in test labs and benchmarking suites. Arista felt that because we already offer a switching family (Arista 7500) that can support this lab benchmark we needed to optimize on supporting our customers requirements for lower power, increased efficiency, and increased port density rather than chasing a benchmark that is useless in the real world.&quot;<br /><br />Sincerely,<br /><br />Brad Reese<br /><br />",
-      "id": "605778076306380094",
-      "image": "https://4.bp.blogspot.com/-Zbq4XwT1D_Y/U6eRU6iz31I/AAAAAAAAAGA/nY4N5A6VpTM/s32/*",
-      "name": "BradReeseCom",
-      "profile": "https://www.blogger.com/profile/17649256508425226144",
-      "pub": "2014-06-05T19:12:37.097+02:00",
-      "ref": "6397176725609090914",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "23 June 2014 06:34",
-          "html": "At least it&#39;s documented and configurable ;) Thanks for pointing it out!",
-          "id": "5922889137304215892",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2014-06-23T06:34:04.461+02:00",
-          "ref": "7485765684805440720",
-          "type": "comment"
-        }
-      ],
-      "date": "23 June 2014 04:29",
-      "html": "Hi Ivan,<br /><br />Update 6/18/2014 - Cisco Nexus 9000 Series NX-OS Release Notes:<br /><br />&quot;In OSM, the NFE cannot run at line rate for packet sizes of less than 200 bytes.&quot;<br /><br />Sincerely,<br /><br />Brad Reese",
-      "id": "7485765684805440720",
-      "image": "https://4.bp.blogspot.com/-Zbq4XwT1D_Y/U6eRU6iz31I/AAAAAAAAAGA/nY4N5A6VpTM/s32/*",
-      "name": "BradReeseCom",
-      "profile": "https://www.blogger.com/profile/17649256508425226144",
-      "pub": "2014-06-23T04:29:43.071+02:00",
-      "ref": "6397176725609090914",
-      "type": "comment"
-    }
-  ],
-  "count": 6,
-  "id": "6397176725609090914",
-  "type": "post",
-  "url": "2014/05/how-line-rate-is-line-rate.html"
+   "comments": [
+      {
+         "date": "30 May 2014 20:07",
+         "html": "&quot;You might have an environment in which thousands of servers have nothing better to do than saturate 10GE uplinks sending 64-byte VoIP packets or test each other’s readiness&quot;<br /><br />Actually....  I&#39;m more concerned about how the switches and routers stand up to DDoS attacks consisting of large numbers of intentionally small UDP and TCP packets (High volume &quot;UDP Storm&quot; and &quot;SYN flood&quot;); and make sure  that the LAN itself isn&#39;t what falls over  (at least until bandwidth usage reaches the bandwidth capacity of the links),  especially 10GE switches shared with SAN infrastructure.<br /><br />I don&#39;t believe I have any complaint against the Arista 7300  specifically;  I don&#39;t have access to any to test.",
+         "id": "1398617684248187922",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Draco",
+         "profile": null,
+         "pub": "2014-05-30T20:07:27.038+02:00",
+         "ref": "6397176725609090914",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "02 June 2014 09:12",
+               "html": "Thank you!",
+               "id": "8093563102694501427",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2014-06-02T09:12:52.682+02:00",
+               "ref": "5505789641590054204",
+               "type": "comment"
+            }
+         ],
+         "date": "02 June 2014 08:12",
+         "html": "From &quot;Principles and Practices of Interconnection Networks&quot; by: William James Dally and Brian Patrick Towles pg. 112 (please read all the way through):<br /><br />&quot;..We will call a packet-switched network that meets these criteria non-interfering.<br />Such a network is able to handle arbitrary packet trafﬁc with a guaranteed bound<br />on packet delay. The trafﬁc neither exceeds the bandwidth capacity of any network<br />channel, nor does it result in coupled resource allocation between ﬂows.<br /><br />For almost all applications today, when people say they want a non-blocking<br />network, what they really require is a non-interfering network, which can usually<br />be realized with considerably less expense. For the sake of history, however, and for<br />those cases in which true non-blocking is needed to support circuit switching, we<br />give a brief survey of non-blocking networks in the remainder of this chapter.&quot;",
+         "id": "5505789641590054204",
+         "image": "https://3.bp.blogspot.com/-1fS21eLQ6eY/U3tjVmz3mtI/AAAAAAAABsE/euZXY4HaGQo/s31/animal.jpg",
+         "name": "dreamer",
+         "profile": "https://www.blogger.com/profile/08768566067706348989",
+         "pub": "2014-06-02T08:12:35.706+02:00",
+         "ref": "6397176725609090914",
+         "type": "comment"
+      },
+      {
+         "date": "05 June 2014 19:12",
+         "html": "Hi Ivan,<br /><br />Here&#39;s the official Arista response from Douglas Gourlay - Vice President Systems Engineering:<br /><br />&quot;The 7300 Series was designed to provide wirespeed bandwidth for the most common workloads in the data center, the cloud, and on the Internet - where according to Cisco Systems research the average packet size is between 500-bytes and 600-bytes nowadays, confirmed by a recent post from Greg Ferro here. While there is always some amount of 64-byte frames based on ACKs and SYNs and such during session setup they do not appear as 100% of the traffic in any real world operating environment.<br /><br />&quot;If a customer does need 64-byte frame forwarding at wirespeed, on all interfaces, perfectly meshed, 100% of the time we do offer our 7500 Series which also has larger buffer pools to handle the periods of incast based congestion that are highly likely in that type of contrived test workload.<br /><br />&quot;As Ivan and Brad have both identified - the scenario where 64-byte wirespeed frame forwarding on all interfaces concurrently comes up is in test labs and benchmarking suites. Arista felt that because we already offer a switching family (Arista 7500) that can support this lab benchmark we needed to optimize on supporting our customers requirements for lower power, increased efficiency, and increased port density rather than chasing a benchmark that is useless in the real world.&quot;<br /><br />Sincerely,<br /><br />Brad Reese<br /><br />",
+         "id": "605778076306380094",
+         "image": "https://4.bp.blogspot.com/-Zbq4XwT1D_Y/U6eRU6iz31I/AAAAAAAAAGA/nY4N5A6VpTM/s32/*",
+         "name": "BradReeseCom",
+         "profile": "https://www.blogger.com/profile/17649256508425226144",
+         "pub": "2014-06-05T19:12:37.097+02:00",
+         "ref": "6397176725609090914",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "23 June 2014 06:34",
+               "html": "At least it&#39;s documented and configurable ;) Thanks for pointing it out!",
+               "id": "5922889137304215892",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2014-06-23T06:34:04.461+02:00",
+               "ref": "7485765684805440720",
+               "type": "comment"
+            }
+         ],
+         "date": "23 June 2014 04:29",
+         "html": "Hi Ivan,<br /><br />Update 6/18/2014 - Cisco Nexus 9000 Series NX-OS Release Notes:<br /><br />&quot;In OSM, the NFE cannot run at line rate for packet sizes of less than 200 bytes.&quot;<br /><br />Sincerely,<br /><br />Brad Reese",
+         "id": "7485765684805440720",
+         "image": "https://4.bp.blogspot.com/-Zbq4XwT1D_Y/U6eRU6iz31I/AAAAAAAAAGA/nY4N5A6VpTM/s32/*",
+         "name": "BradReeseCom",
+         "profile": "https://www.blogger.com/profile/17649256508425226144",
+         "pub": "2014-06-23T04:29:43.071+02:00",
+         "ref": "6397176725609090914",
+         "type": "comment"
+      },
+      {
+         "date": "11 February 2021 09:19",
+         "html": "<p>Hi Ivan\ni guess this 7years age thread must be updated in the part relevant to &quot;Is this relevant?&quot;\nimagine that how much small IoT devices will contribute on aggregated links with their just TC SYN/ACK/RST packets &amp; doubts in reality can drastically change :0)</p>\n",
+         "id": "402",
+         "name": " Andy",
+         "pub": "2021-02-11T21:19:14",
+         "type": "comment"
+      }
+   ],
+   "count": 7,
+   "id": "6397176725609090914",
+   "type": "post",
+   "url": "2014/05/how-line-rate-is-line-rate.html"
 }

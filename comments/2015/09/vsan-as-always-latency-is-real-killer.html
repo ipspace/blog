@@ -1,9 +1,4 @@
-
 <div class="comments post" id="comments">
-  <p class="info">
-    We migrated our blog a few days ago, and the commenting functionality is not there yet.
-    In the meantime enjoy the older comments, or find our content on LinkedIn and comment there.
-  </p>
   <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
@@ -19,10 +14,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09333432630691386455" rel="nofollow">Duncan Epping (VMware)</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#8373288419440927708">23 September 2015 09:40</a>
+                <a rel="nofollow" id="c8373288419440927708" href="#8373288419440927708">23 September 2015 09:40</a>
               </span>
             </div>
-            <p class="comment-content">I think what you guys forgot is that Virtual SAN always writes to SSD. That is how the architecture has been designed from the start. We take advantage of the SSD, buffer the writes and then destage them when needed. The write is acknowledged to the Guest OS / Application as soon as it hits the SSD buffer. So the latency for a write to a device like this will not be 2ms but much lower than that.<br /><br />I understand what he is trying to say, but we are forgetting that we are trying to solve a business problem here. Any stretched storage platform has the same challenge when it comes to latency, yet NetApp Metro, EMC VPLEX, 3Par etc etc are still relatively popular solutions. Why? Well simply because in many cases it is 10x easier to provide this level of resiliency through an infrastructure level solution rather than to rely on 3rd party application providers to change their full architecture to provide you the resiliency you need. As you know getting large vendors to change their application architecture isn&#39;t easy, and can take years... if at all.<br /><br />These types of solutions are developed for relatively short distances, and still relatively low latency. Sure it has been validated to be able to incur a hit of 5ms, that doesn&#39;t mean that from a customer point of view this would be acceptable. That decision is up to the customer. Same applies to bandwidth, what can your afford, what is available in your region / between sites etc.<br /><br />Stretched infrastructures are not easy to architect, or deploy for that matter, but I truly believe with Virtual SAN we made the storage aspects 10x easier to manage and deploy than they have ever been before.</p>
+            <div class="comment-content">I think what you guys forgot is that Virtual SAN always writes to SSD. That is how the architecture has been designed from the start. We take advantage of the SSD, buffer the writes and then destage them when needed. The write is acknowledged to the Guest OS / Application as soon as it hits the SSD buffer. So the latency for a write to a device like this will not be 2ms but much lower than that.<br /><br />I understand what he is trying to say, but we are forgetting that we are trying to solve a business problem here. Any stretched storage platform has the same challenge when it comes to latency, yet NetApp Metro, EMC VPLEX, 3Par etc etc are still relatively popular solutions. Why? Well simply because in many cases it is 10x easier to provide this level of resiliency through an infrastructure level solution rather than to rely on 3rd party application providers to change their full architecture to provide you the resiliency you need. As you know getting large vendors to change their application architecture isn&#39;t easy, and can take years... if at all.<br /><br />These types of solutions are developed for relatively short distances, and still relatively low latency. Sure it has been validated to be able to incur a hit of 5ms, that doesn&#39;t mean that from a customer point of view this would be acceptable. That decision is up to the customer. Same applies to bandwidth, what can your afford, what is available in your region / between sites etc.<br /><br />Stretched infrastructures are not easy to architect, or deploy for that matter, but I truly believe with Virtual SAN we made the storage aspects 10x easier to manage and deploy than they have ever been before.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -38,10 +33,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#770117036915235109">23 September 2015 10:42</a>
+                <a rel="nofollow" id="c770117036915235109" href="#770117036915235109">23 September 2015 10:42</a>
               </span>
             </div>
-            <p class="comment-content">Hi Duncan. How is it possible to buffer/later destage writes if the replication is synchronous? To my understanding synchronous implies buffering is not possible? Unless you mean buffering on both sides of the stretched VSAN, in which case the issue of latency still stands...</p>
+            <div class="comment-content">Hi Duncan. How is it possible to buffer/later destage writes if the replication is synchronous? To my understanding synchronous implies buffering is not possible? Unless you mean buffering on both sides of the stretched VSAN, in which case the issue of latency still stands...</div>
           </div>
         </li>
       </div>
@@ -56,10 +51,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09333432630691386455" rel="nofollow">Duncan Epping (VMware)</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#3979771773187894596">23 September 2015 12:03</a>
+                <a rel="nofollow" id="c3979771773187894596" href="#3979771773187894596">23 September 2015 12:03</a>
               </span>
             </div>
-            <p class="comment-content">It is buffered on the SSD which is persistent on both sides. And yes the network latency stands, but you remove the drive latency.<br /><br />That was not the point I was trying to get across. I do think that customers are concerned about latency, at the same time they are concerned about availability. It is for them to figure out what is more important.</p>
+            <div class="comment-content">It is buffered on the SSD which is persistent on both sides. And yes the network latency stands, but you remove the drive latency.<br /><br />That was not the point I was trying to get across. I do think that customers are concerned about latency, at the same time they are concerned about availability. It is for them to figure out what is more important.</div>
           </div>
         </li>
       </div>
@@ -81,10 +76,10 @@
             <div class="comment-header">
               <cite class="user"><a href="None" rel="nofollow">Anonymous</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#2004260933279794977">25 September 2015 06:26</a>
+                <a rel="nofollow" id="c2004260933279794977" href="#2004260933279794977">25 September 2015 06:26</a>
               </span>
             </div>
-            <p class="comment-content">And the latency of an SSD is *not* 0.1 ms under non-trivial workload. Think more like 1 ms for a 4K write. So, add the network latency between the two sites (vmware&#39;s recommendation is &lt; 5 ms RTT) to 1 ms. That&#39;s the price to pay if you want rpo=0 and protection from a site failure.  There is no free lunch with the physics of this universe.</p>
+            <div class="comment-content">And the latency of an SSD is *not* 0.1 ms under non-trivial workload. Think more like 1 ms for a 4K write. So, add the network latency between the two sites (vmware&#39;s recommendation is &lt; 5 ms RTT) to 1 ms. That&#39;s the price to pay if you want rpo=0 and protection from a site failure.  There is no free lunch with the physics of this universe.</div>
               <div class="comment-replies">
                 <div class="comment-thread inline-thread">
                   <span class="thread-count"><a>Replies</a></span>
@@ -100,10 +95,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/09333432630691386455" rel="nofollow">Duncan Epping (VMware)</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7304618469178437607">25 September 2015 09:19</a>
+                <a rel="nofollow" id="c7304618469178437607" href="#7304618469178437607">25 September 2015 09:19</a>
               </span>
             </div>
-            <p class="comment-content">Of course there isn&#39;t a free lunch... (latency will vary depending on the type of drive you have. NVMe and Diable for instance can provide low latency even under load) <br /><br />What is the alternative you have? I am not sure what the point is people are trying to make with discussions like these. It is not like it is easy to get a whole application architecture changed. </p>
+            <div class="comment-content">Of course there isn&#39;t a free lunch... (latency will vary depending on the type of drive you have. NVMe and Diable for instance can provide low latency even under load) <br /><br />What is the alternative you have? I am not sure what the point is people are trying to make with discussions like these. It is not like it is easy to get a whole application architecture changed. </div>
           </div>
         </li>
       </div>
@@ -118,10 +113,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#7691698051073128062">25 September 2015 09:29</a>
+                <a rel="nofollow" id="c7691698051073128062" href="#7691698051073128062">25 September 2015 09:29</a>
               </span>
             </div>
-            <p class="comment-content">I can&#39;t say what points other people are trying to make, mine was very simple: know how things work, and carefully consider the consequences. <br /><br />I&#39;m positive most people reading about stretched VSAN never considered the impact of additional latency (even I thought it didn&#39;t matter).</p>
+            <div class="comment-content">I can&#39;t say what points other people are trying to make, mine was very simple: know how things work, and carefully consider the consequences. <br /><br />I&#39;m positive most people reading about stretched VSAN never considered the impact of additional latency (even I thought it didn&#39;t matter).</div>
           </div>
         </li>
       </div>
@@ -143,10 +138,10 @@
             <div class="comment-header">
               <cite class="user"><a href="https://www.blogger.com/profile/13457151406311272386" rel="nofollow">Ivan Pepelnjak</a></cite>
               <span class="datetime secondary-text">
-                <a rel="nofollow" href="#1457533900290823383">27 November 2015 11:18</a>
+                <a rel="nofollow" id="c1457533900290823383" href="#1457533900290823383">27 November 2015 11:18</a>
               </span>
             </div>
-            <p class="comment-content">Just FYI: VMware documented the stretched VSAN bandwidth requirements:<br /><br />http://www.vmware.com/files/pdf/products/vsan/vmware-virtual-san-6.1-stretched-cluster-bandwidth-sizing.pdf</p>
+            <div class="comment-content">Just FYI: VMware documented the stretched VSAN bandwidth requirements:<br /><br />http://www.vmware.com/files/pdf/products/vsan/vmware-virtual-san-6.1-stretched-cluster-bandwidth-sizing.pdf</div>
           </div>
         </li>
       </div>
