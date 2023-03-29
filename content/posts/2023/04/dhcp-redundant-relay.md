@@ -12,7 +12,7 @@ Previous posts in this series ([DHCP relaying principles](/2023/03/dhcp-relay-pr
 
 We'll use a lab topology similar to the [VXLAN DHCP relaying](/2023/03/netlab-vxlan-dhcp-relay.html) lab, add a second DHCP server, and a third switch connecting the two DHCP servers to the rest of the network.
 <!--more-->
-{{<figure src="/2023/04/vxlan-redundant-dhcp-relay.png" caption="Lab topology diagram">}}
+{{<figure src="/2023/04/vxlan-redundant-dhcp-server.png" caption="Lab topology diagram">}}
 
 {{<cc>}}Lab IPv4 addressing{{</cc>}}
 ```
