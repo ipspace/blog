@@ -29,3 +29,8 @@ SDN controllers are no exception:
 One of the worst examples of the services clusters are firewall clusters. They are almost always implemented with two nodes without a witness, and often stretched across multiple data centers.
 
 {{<series-listing tag="firewall">}}
+
+For even more information, watch:
+
+* [Designing Active-Active and Disaster Recovery Data Centers](https://www.ipspace.net/Designing_Active-Active_and_Disaster_Recovery_Data_Centers) webinar
+* [BGP Routing with an Edge Firewall](https://my.ipspace.net/bin/list?id=Design#2023_03) from the March 2023 [ipSpace.net Design Clinic](https://www.ipspace.net/IpSpace.net_Design_Clinic)
