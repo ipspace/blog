@@ -180,7 +180,7 @@ case "$1" in
         ;;
       link)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
-        echo "[$TITLE]($FIXURL)"|pbcopy
+        echo -n "[$TITLE]($FIXURL)"|pbcopy
         ;;
       md)
         TITLE=$($SCRIPT_DIR/url-to-title.sh $URL)
