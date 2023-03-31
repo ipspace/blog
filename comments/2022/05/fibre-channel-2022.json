@@ -18,9 +18,17 @@
          "name": " Jakub ",
          "pub": "2022-05-12T17:02:28",
          "type": "comment"
+      },
+      {
+         "date": "31 March 2023 06:26",
+         "html": "<p>As everything -  It depends.</p>\n\n<ol>\n<li><p>Company size matters:\nMost large corps have a storage team and a networking team. and these two teams do not overlap.  Network team handles the communication between servers and the storage team handles the data transport layers. They would never use iSCSI in that methodology.</p></li>\n<li><p>iSCSI in my opinion is for smaller groups where you have a network engineer who likely has no SAN switch experience.  It is easy for them to add a VLAN access port to use iSCSI but would be a big effort for them to do a SAN Zone config.</p></li>\n</ol>\n\n<p>This is really what is comes down to.   Most Arrays can use eith 25Gb iscsi ports or 32Gb FC ports.  If I was building out a new hardware and had the expertise I would NEVER use iSCSI for storage.  I do not recall ever seeing an iSCSI array outside an SMB configuration as the Storage Engineers would have dedicated access to their own switches in Enterprise land.  Given that why would a storage engineer want a network switch over a FC switch to run their storage on?  </p>\n\n<p>The VMWare folks like iSCSI because they understand it but the FC SAN is simplier to use IF you have a SAN engineer that knows how to do switch Zoning - which to be honest should only take a few hours to train a network engineer to understand as it pretty simple to understand how it works.  </p>\n\n<p>In closing -  I have tested iSCSI 25Gb vs 32Gb FC for VMWare storage and hands down the FC I/O at 32Gb is faster with Lower latency than the iSCSI.</p>\n\n<p>VSAN - I would never use outside a Lab environment.  Yes it works but if you have only 3-4 nodes in the cluster you waste a ton of space.  If you lose  a Node it effects you if you lose 2 nodes then you are down.  Using a real SAN you will not have to worry about loosing a Node as it has no effect on your storage as it is where is belongs on the Storage Array.  You also will have to eat a lot of CPU cycles that should be focused on computational functions but now also have the handle the I/O layers as well and that folks translates into less performance.</p>\n\n<p>Doing things cheaper rarely equates to better.  And in the iSCSI vs FC this is very true indeed.</p>\n",
+         "id": "1742",
+         "name": " Charles",
+         "pub": "2023-03-31T18:26:20",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2022/05/fibre-channel-2022.html"
 }
