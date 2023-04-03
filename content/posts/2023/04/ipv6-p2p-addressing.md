@@ -1,6 +1,6 @@
 ---
 title: "IPv6 Addressing on Point-to-Point Links"
-date: 2023-04-04 06:15:00
+date: 2023-04-12 06:15:00
 tags: [ IPv6 ]
 ---
 One of my readers sent me this question:
