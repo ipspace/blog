@@ -2,8 +2,9 @@
 date: 2007-02-08 13:47:00+01:00
 tags:
 - CEF
-- MPLS TE
 - load balancing
+- MPLS
+- traffic engineering
 title: Unequal Cost Load-Sharing with MPLS TE
 url: /2007/02/unequal-cost-load-sharing.html
 ---
