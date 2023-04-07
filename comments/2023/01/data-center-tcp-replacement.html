@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -308,6 +308,31 @@ again, the argument is not really that flow-consistent routing is actually the r
 <p>The consequences of flawed scientific papers can be severe, ranging from wasted resources to public health risks. In some cases, flawed research can lead to false conclusions that can have a real-world impact on policy decisions, medical treatments, and public health interventions. This highlights the urgent need for more rigorous standards and oversight of scientific research, as well as greater transparency and accountability in the publishing process.</p>
 
 <p>In summary, the prevalence of flawed scientific papers is a serious issue that undermines the credibility of scientific inquiry and can have real-world consequences. To address this issue, it&#39;s important to promote rigorous standards, greater transparency, and increased oversight of the publishing process.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1747">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dmitry Afanasiev</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1747" href="#1747">07 April 2023 06:42</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Late to the party, but I&#39;d like to comment on Homa insistence on spraying. I think it is just dead end optimization in data centers going forward. Spraying basically relies on two things:
+- network is very symmetrical and all we&#39;ll ever need is ECMP or WCMP at most (think Clos)
+- everybody else is doing spraying - otherwise we&#39;ll have transient hotspots</p>
+
+<p>But what we see now is some ideas from HPC world slowly percolating into IP/Ethernet data center world, including new topologies. And all interesting (as in smaller diameter, larger network with the same number of switches and links) topologies are less symmetrical than Clos and utilize non-minimal paths. In fact, most of their capacity is via non-minimal paths. Topologies with non minimal paths require some forwarding and routing tricks, but they also require global adaptive routing for efficient utilization. ECMP just can&#39;t describe desired behavior like utilizing shortest paths first and then non-minimal ones and trying alternative paths instead of reducing rate as a possible reaction to congestion. Global adaptive routing in turn needs some identifiable long-lived traffic artefacts, otherwise there is nothing to move to an alternative path and no way to adapt.</p>
+
+<p>PS. Google had a series of papers at SIGCOMM 2022 about their Dragonfly+ - like data center topology and adaptive routing.</p>
 </div>
           </div>
         </li>
