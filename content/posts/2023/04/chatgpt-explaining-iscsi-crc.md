@@ -71,8 +71,15 @@ Overall, the CRC-32 algorithm provides a simple and effective means of error det
 
 ---
 
-And this, my friends, is how you write a long blog post in 10 minutes instead of wasting hours researching it. I don't want to know how much bullshit there will be on the Internet in a few months.
+And this, my friends, is how you write a long blog post in 10 minutes instead of wasting hours researching it -- skip the prompts and claim it's your masterpiece. I don't want to know how much bullshit there will be on the Internet in a few months.
 
-Anyway, in case you care about the real answer: Ethernet CRC is protecting a single layer-2 segment, and data corruption could happen in intermediate nodes where it's protected by 8-bit IP checksum. I do admit the "protecting the whole PDU" argument is a good one though.
+Anyway, in case you care about the real answer: Ethernet CRC is protecting a single layer-2 segment, and data corruption could happen in intermediate nodes where it's protected by weak (but fast) [16-bit sum of the content](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Checksum_computation).
 
-As for advantages of iSCSI CRC over Ethernet CRC: [RFC 3385](https://www.rfc-editor.org/rfc/rfc3385) contains all the details you never wanted to know.
+In favor of ChatGPT:
+ 
+* "iSCSI checksum protecting the whole PDU" argument is a good one.
+* It mentioned "errors that are introduced by a malfunctioning network device" (the crucial point) and then kept going.
+
+On the other hand, the description of how CRC32 works seems a bit off.
+
+As for real-life advantages of iSCSI CRC32C over IEEE-802 CRC32: [RFC 3385](https://www.rfc-editor.org/rfc/rfc3385) contains all the details you never wanted to know.
