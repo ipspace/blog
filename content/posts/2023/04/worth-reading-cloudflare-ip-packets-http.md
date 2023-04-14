@@ -1,6 +1,6 @@
 ---
 title: "CloudFlare: From IP packets to HTTP"
-date: 2023-04-16 09:02:00
+date: 2023-04-29 09:02:00
 tags: [ worth reading ]
 ---
 Want to know some details behind the CloudFlare SD-WAN implementation? You might find them in _[From IP packets to HTTP: the many faces of our Oxy framework](https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework/)_.
