@@ -9,7 +9,7 @@ Daniel left an interesting comment on my _[Studying EVPN to Prepare for a Job In
 
 TL&DR: Yes, but just because you could doesn't mean that you should.
 <!--more-->
-EVPN is a complex technology full of optional nerd knobs, and early implementations quickly turned it into _SIP of Networking_[^SN]. Fortunately (for the rest of us), EVPN vendors quickly came to their senses and started participating in EVPN interoperability testing, usually done during the MPLS & SDN World Congress ([2022 test report](https://eantc.de/fileadmin/eantc/downloads/events/2022/EANTC-InteropTest2022-TestReport.pdf)).
+EVPN is a complex technology full of optional nerd knobs, and early implementations quickly turned it into _SIP of Networking_[^SN]. Fortunately (for the rest of us), EVPN vendors eventually came to their senses and started participating in EVPN interoperability testing, usually done during the MPLS & SDN World Congress ([2022 test report](https://eantc.de/fileadmin/eantc/downloads/events/2022/EANTC-InteropTest2022-TestReport.pdf)).
 
 However, just because boxes from different vendors work together doesn't mean we're in a carefree plug-and-play world[^PP]. If you're forced to build a multi-vendor EVPN fabric it makes sense to stay as far away as possible from the vendor shenanigans ([like IBGP EVPN over EBGP underlay](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics)) and simplify your design:
 

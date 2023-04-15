@@ -9,7 +9,7 @@ title: 'Using VLAN and VRF Links in netlab Topologies'
 I already mentioned the introduction of [VRF-](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html#module-vrf-links) and [VLAN access](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html#module-vlan-creating-access-links) links in
 _netlab_ [release 1.5.1](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-1). Let's see how they can simplify your lab topologies.
 
-I always tried to make lab topologies as concise as I could make them (sometimes cheating using JSON-in-YAML syntax). For example, the topology describing three routers running OSPF could be as simple as this:
+I always tried to make lab topologies as concise as I could,  sometimes cheating using JSON-in-YAML syntax. For example, the topology describing three routers running OSPF could be as simple as this:
 
 ```
 module: [ ospf ]
