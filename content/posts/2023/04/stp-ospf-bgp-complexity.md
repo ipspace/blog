@@ -2,6 +2,8 @@
 title: "Why Is OSPF (and BGP) More Complex than STP?"
 date: 2023-04-27 06:26:00
 tags: [ bridging, OSPF, BGP ]
+tldr:
+  STP is simpler than OSPF and BGP because it only shuts down interfaces to prevent loops. On the other hand, OSPF must find the optimal forwarding topology, propagate edge information, and build forwarding tables, while BGP can carry millions of routes advertised by tens of thousands of autonomous systems, which requires a well-understood transport protocol and a distance-vector approach.
 ---
 I got this question from one of my readers:
 
@@ -9,6 +11,8 @@ I got this question from one of my readers:
 
 There are numerous reasons why a protocol, a technology or a solution might be more complex than another seemingly similar one (or as Russ White would have said, "_if you haven't found the tradeoffs, you haven't looked hard enough_"):
 <!--more-->
+{{<tldr model="ChatGPT GPT-4">}}OSPF and BGP are more complex than STP because they solve different problems and have different performance goals. STP focuses on preventing loops in forwarding topology, while OSPF and BGP find optimal forwarding topologies and propagate edge information. OSPF's complexity arises from various optimizations, while BGP complexity comes from implementing routing policies in large-scale environments.{{</tldr>}} 
+
 **Someone failed to find a simpler solution**. Every now and then, someone finds an amazingly simple solution to what seemed to be a hard problem. Considering the long history of all three protocols[^NS], the time spent on theoretical foundations of routing (example: graph theory), and numerous routing protocols developed in the past, we can probably conclude this one doesn't apply.
 
 [^NS]: And assuming networking engineers working in IETF aren't stupid or blindsided ;)
