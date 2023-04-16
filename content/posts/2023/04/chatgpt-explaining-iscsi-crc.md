@@ -1,6 +1,7 @@
 ---
 title: "ChatGPT Explaining the Need for iSCSI CRC"
 date: 2023-04-16 07:19:00
+lastmod: 2023-04-16 13:26:00
 tags: [ switching, SAN ]
 ---
 People keep telling me how well large language models like ChatGPT work for them, so now and then, I give it another try, most often resulting in another disappointment[^NR]. It might be that I suck at writing prompts[^PE], or it could be that I have a knack for looking in the wrong places[^ID].
@@ -83,3 +84,27 @@ In favor of ChatGPT:
 On the other hand, the description of how CRC32 works seems a bit off.
 
 As for real-life advantages of iSCSI CRC32C over IEEE-802 CRC32: [RFC 3385](https://www.rfc-editor.org/rfc/rfc3385) contains all the details you never wanted to know.
+
+### Update: Everything Is Better with GPT-4
+
+Following a [nudge by Andrew Yourtchenko](https://blog.ipspace.net/2023/04/chatgpt-explaining-iscsi-crc.html#1755), I decided to waste $20 and go for GPT+ to get access to GPT-4 model. It does a much better job, misses the _weak TCP checksum_, claims TCP checksum provides integrity only on specific segments, but does mention _silent data corruption_. Overall: B+/A-
+
+---
+
+> Why is there an application-level checksum in iSCSI?
+
+There are a few reasons why an application-level checksum is used in iSCSI:
+
+* End-to-end data integrity: While lower-level protocols, such as Ethernet and TCP/IP, have their own error detection mechanisms, they only provide integrity checks on specific segments of data in transit. An application-level checksum in iSCSI provides end-to-end data integrity, ensuring that the entire data payload is accurate and reliable from the source to the destination.
+
+* Detection of silent data corruption: Silent data corruption refers to errors that go unnoticed by the underlying hardware and software layers. An application-level checksum in iSCSI can help detect such errors and ensure data integrity.
+
+* Redundancy: Incorporating an application-level checksum provides an additional layer of error detection that complements the existing mechanisms in the network and transport layers. This redundancy increases the likelihood of detecting and correcting errors in data transmission.
+
+* Compatibility with diverse storage systems: iSCSI is designed to work with various types of storage systems and environments. An application-level checksum allows for a uniform and standardized method to ensure data integrity across different storage systems, regardless of their individual error-detection capabilities.
+
+In summary, the use of an application-level checksum in iSCSI is primarily for maintaining end-to-end data integrity and providing an extra layer of error detection. This ensures that the data transmitted between the initiator and target is accurate and consistent, and helps in detecting silent data corruption.
+
+---
+
+However, most everyone who hasn't been dazzled by the AI-glitz agrees that (A) every large language model will eventually start hallucinating and that (B) you have to fact-check everything you get from them. GPT and friends are thus potentially useful tools   (if you use them in full awareness of their limitations), not solutions in themselves. More about that in another blog post.
