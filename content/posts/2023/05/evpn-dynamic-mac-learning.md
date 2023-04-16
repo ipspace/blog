@@ -45,19 +45,3 @@ As always, you'll find hours of relevant content in these ipSpace.net webinars:
 * [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) 
 
 [^RARP]: Because VMware never bothered to figure out how to find the IP address of the VM, and RARP was the only broadcast packet they could find that did not need an IP address in the payload. Everyone else uses gratuitous ARPs.
-
-### It Depends -- the AI Way
-
-Want to know what ChatGPT thinks about this? How about a 4-paragraph *It Depends*[^WC]:
-
-[^WC]: ChatGPT would be an excellent consultant.
-
-> Is dynamic MAC learning better than EVPN control-plane MAC learning?
-
-It's difficult to make a blanket statement about whether dynamic MAC learning or EVPN control-plane MAC learning is "better," as the choice between the two depends on various factors and use cases.
-
-Dynamic MAC learning is a technique in which a switch learns the MAC addresses of devices connected to its ports dynamically, as traffic is sent to and from those devices. This information is then used to forward traffic more efficiently. Dynamic MAC learning is generally simpler and more lightweight than EVPN control-plane MAC learning.
-
-EVPN (Ethernet Virtual Private Network) is a technology that uses a control plane to distribute MAC addresses and other network information across a network. With EVPN control-plane MAC learning, the MAC addresses of devices are learned centrally and then distributed to all the switches in the network. This approach can be more scalable and offer greater flexibility and control over network traffic.
-
-So, which approach is "better" depends on factors such as the size and complexity of the network, the need for scalability and flexibility, the performance requirements, and the level of control desired by the network administrators. In some cases, a combination of both techniques may be used to optimize network performance and management.

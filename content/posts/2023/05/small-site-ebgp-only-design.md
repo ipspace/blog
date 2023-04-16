@@ -12,6 +12,8 @@ One of my subscribers found an unusual BGP specimen in the wild:
 
 So far so good, and kudos to whoever realized BGP is [the only sane protocol to run between virtual machines and network core](https://blog.ipspace.net/2016/03/dont-run-ospf-with-your-customers.html). However, the routing in the network core was implemented with EBGP sessions between the three core devices, and my subscriber thought the correct way to do it would be to use IBGP and OSPF.
 <!--more-->
+{{<tldr intent="Summary" model="excited ChatGPT using GPT-4 model" comment="Had to tell ChatGPT to create an exciting summary, the regular one was too boring 🤷‍♂️">}}Discover the ideal BGP design for a small site with unusual routing configurations! Dive into the pros and cons of four design options, and learn why the traditional IBGP design stands out as the top choice. Unravel the mysteries of BGP's original intent and adaptability in a growing network!{{</tldr>}}
+
 Before going into the "_it depends on what exactly_" part of the blog post, let's list the viable design options:
 
 * **EBGP-only design**: EBGP sessions between adjacent devices using directly-connected IP addresses.

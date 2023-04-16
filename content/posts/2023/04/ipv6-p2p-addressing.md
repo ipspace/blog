@@ -9,6 +9,8 @@ One of my readers sent me this question:
 
 (Checks the calendar) It's 2023, [IPv6 RFC](https://www.rfc-editor.org/rfc/rfc2460) has been published almost 25 years ago, and there are still people debating this stuff and confusing those who want to deploy IPv6? No wonder we're not getting it deployed in enterprise networks ;)
 <!--more-->
+{{<tldr model="ChatGPT GPT-4">}}IPv6 prefix length debates persist, but key recommendations are to use /64 for consistent prefix sizes or /127 for point-to-point links. Utilize infrastructure ACLs to block external access to infrastructure IPv6 subnets for security. Be mindful of potential hardware limitations when using prefixes longer than /64.{{</tldr>}}
+
 For people who would love to get a job done (as opposed to appear smart), several organizations published "_this is how you do IPv6 addressing_" documents:
 
 * RIPE _[Create an Addressing Plan](https://www.ripe.net/publications/ipv6-info-centre/deployment-planning/create-an-addressing-plan)_ document contains recommendations for service providers requesting IPv6 address allocation plus links to several other documents.
