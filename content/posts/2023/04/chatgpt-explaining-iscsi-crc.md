@@ -1,8 +1,9 @@
 ---
 title: "ChatGPT Explaining the Need for iSCSI CRC"
 date: 2023-04-16 07:19:00
-lastmod: 2023-04-16 13:26:00
+lastmod: 2023-04-16 15:50:00
 tags: [ switching, SAN ]
+pre_scroll: True
 ---
 People keep telling me how well large language models like ChatGPT work for them, so now and then, I give it another try, most often resulting in another disappointment[^NR]. It might be that I suck at writing prompts[^PE], or it could be that I have a knack for looking in the wrong places[^ID].
 
@@ -12,13 +13,20 @@ People keep telling me how well large language models like ChatGPT work for them
 
 [^ID]: I do, at least according to my wife and my coworkers.
 
-This time[^TT] I tried to "figure out[^BP]" why we need iSCSI checksums if we have iSCSI running over Ethernet which already has checksums. Enjoy the circular arguments and hallucinations with plenty of platitudes and no clear answer.
+This time[^TT] I tried to "figure out[^BP]" why we need iSCSI checksums if we have iSCSI running over Ethernet which already has checksums. Enjoy the (ChatGPT) circular arguments and hallucinations with plenty of platitudes and no clear answer.
 
 [^TT]: April 14th 2023, using free version of ChatGPT
 
 [^BP]: After updating [this blog post](/2013/03/does-dedicated-iscsi-infrastructure.html)
 <!--more-->
----
+
+Based on the readers' feedback, I tried the same query using three AI tools:
+
+* [ChatGPT using GPT-3.5](#35) (the original blog post)
+* [ChatGPT using GPT-4](#G4)
+* [Phind search engine](#phind)
+
+### ChatGPT using GPT-3.5{#35}
 
 > Why is there an application-level checksum in iSCSI?
 
@@ -85,7 +93,7 @@ On the other hand, the description of how CRC32 works seems a bit off.
 
 As for real-life advantages of iSCSI CRC32C over IEEE-802 CRC32: [RFC 3385](https://www.rfc-editor.org/rfc/rfc3385) contains all the details you never wanted to know.
 
-### Update: Everything Is Better with GPT-4
+### Everything Is Better with GPT-4{#G4}
 
 Following a [nudge by Andrew Yourtchenko](https://blog.ipspace.net/2023/04/chatgpt-explaining-iscsi-crc.html#1755), I decided to waste $20 and go for GPT+ to get access to GPT-4 model. It does a much better job, misses the _weak TCP checksum_, claims TCP checksum provides integrity only on specific segments, but does mention _silent data corruption_. Overall: B+/A-
 
@@ -108,3 +116,43 @@ In summary, the use of an application-level checksum in iSCSI is primarily for m
 ---
 
 However, most everyone who hasn't been dazzled by the AI-glitz agrees that (A) every large language model will eventually start hallucinating and that (B) you have to fact-check everything you get from them. GPT and friends are thus potentially useful tools   (if you use them in full awareness of their limitations), not solutions in themselves. More about that in another blog post.
+
+### Phind Wins the Day{#phind}
+
+[JC suggested](/2023/04/chatgpt-explaining-iscsi-crc.html#1757) using [phind search engine](https://www.phind.com/). Here's what it gave me (note how different the answer is from what JC got):
+
+---
+
+**Why is there an application-level checksum in iSCSI?**
+
+The iSCSI protocol is a storage area network (SAN) protocol that enables block-level access to storage devices. It is used to send SCSI commands over IP networks, making it a cost-effective alternative to Fibre Channel. According to storage expert Dennis Martin [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin), there is an application-level checksum in iSCSI to perform data integrity checks on the storage data carried by iSCSI. This is because the TCP checksum is not considered adequate for critical storage data. The iSCSI checksum is calculated by the initiator and target and is used to verify that the data received is the same as the data sent.
+
+Ethernet checksums are not reliable enough for data integrity, and TCP/IP checksums are weak. They might be good enough for some traffic, but not for critical storage data [\[4\]](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html). Ethernet CRC is supposed to detect transmission errors, and TCP/IP checksums should detect rare intra-device data corruption errors. However, layer-3 switches recalculate the CRC, which no longer protects the integrity of Ethernet frames between end hosts [\[4\]](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html). Therefore, it is recommended to implement an application-level checksum, preferably using CRC32C, which is implemented in hardware on recent CPUs [\[4\]](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html).
+
+There are two main iSCSI security measures: Challenge-Handshake Authentication Protocol (CHAP) and Internet Protocol Security (IPsec) [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin). CHAP is used to authenticate the initiator and target, while IPsec is used to encrypt the iSCSI traffic. CHAP and IPsec can handle a lot of things within iSCSI itself, but it is also possible to do other forms of encryption with the Ethernet connection, and there are other things that can be done with data at rest and the storage side [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin).
+
+There are several ways to manage iSCSI multipathing. Most operating systems can handle multipath I/O (MPIO) [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin). Microsoft is MPIO, and there's MPxIO, but in either case, there's sort of generic multipathing that uses a single iSCSI session, and you can have multiple addresses on the initiator, the target, or both. Some iSCSI targets support what's called multiple connections, so you can use a different sort of method to log in and then accomplish the multipathing using this multiple connection option. Typically, multiple connections and things like MPIO are mutually exclusive -- you have to pick one or the other [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin).
+
+It is best practice to run iSCSI traffic on a separate network or at least a separate virtual LAN, as iSCSI puts a different kind of traffic load on the network [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin). It is recommended to use server-class network adapters for iSCSI and not to use desktop NICs just because they're cheaper, as they can't handle all the extra features iSCSI would like to use, including Receive-Side Scaling (RSS), partial offload functions like TCP and UDP checksum offload, Large Send Offload (LSO), and Large Receive Offload [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin).
+
+Applications don't know the difference between iSCSI and Fibre Channel, so the best thing to do is figure out what you need [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin). If you need very little latency and lots of scalability and nodes in the network, you might go with Fibre Channel. If you don't need the low latency and need something a little simpler, then you could go with iSCSI [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin). Jumbo frames give you more payload per transmission, and they can provide a performance bump, especially when running on 1 GbE [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin). However, it is recommended to use them in situations where you want to get less congestion on the network [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin).
+
+In summary, the iSCSI protocol uses an application-level checksum to perform data integrity checks on the storage data carried by iSCSI, as the TCP checksum is not considered adequate for critical storage data. CHAP and IPsec are the only iSCSI security measures, but other forms of encryption can be used with the Ethernet connection. There are several ways to manage iSCSI multipathing, including MPIO and multiple connections, but they are mutually exclusive. It is best practice to run iSCSI traffic on a separate network or at least a separate virtual LAN, and to use server-class network adapters for iSCSI. Applications don't know the difference between iSCSI and Fibre Channel, so it is best to figure out what you need. Jumbo frames give you more payload per transmission and can provide a performance bump, especially when running on 1 GbE, but they should be used in situations where you want to get less congestion on the network.
+
+---
+
+**Notes:**
+
+* The answer is correct (as far as I understand iSCSI)
+* Way too verbose, including stuff I never asked about.
+* Bonus points for [quoting my blog post](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html) several times ;)
+
+Obviously this approach suffers the everyday GIGO problem: can you trust the stuff written on the Internet?
+
+### Revision History
+
+2023-04-16 15:50Z
+: Added phind answer
+
+2023-04-16 13:26Z
+: Added ChatGPT GPT-4 answer
