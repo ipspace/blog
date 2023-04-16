@@ -24,7 +24,7 @@ Based on the readers' feedback, I tried the same query using three AI tools:
 
 * [ChatGPT using GPT-3.5](#35) (the original blog post)
 * [ChatGPT using GPT-4](#G4)
-* [Phind search engine](#phind)
+* [Phind search engine](#phind) including the [benefits of FCoTR](#fcotr)
 
 ### ChatGPT using GPT-3.5{#35}
 
@@ -147,7 +147,35 @@ In summary, the iSCSI protocol uses an application-level checksum to perform dat
 * Way too verbose, including stuff I never asked about.
 * Bonus points for [quoting my blog post](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html) several times ;)
 
-Obviously this approach suffers the everyday GIGO problem: can you trust the stuff written on the Internet?
+#### phind on the Benefits of FCoTR{#fcotr}
+
+Obviously the _AI-augmented search engine_ approach suffers the everyday GIGO problem: can you trust the stuff written on the Internet? For example, it gladly explained the benefits and drawbacks of FCoTR (also note that the link it provided is broken):
+
+---
+
+**What are the benefits of FCoTR storage technology?**
+
+FCoTR (Fibre Channel over Token Ring) is a storage technology that enables Fibre Channel traffic to be transmitted over Token Ring networks. [treehugger.com](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/mds9000/sw/4_1/configuration/guides/cli_4_1/clibook/fcotr.html) It has several benefits, which include:
+
+-   Cost savings: FCoTR allows organizations to use existing Token Ring networks for Fibre Channel traffic. This eliminates the need for new Fibre Channel infrastructure, which can be costly to implement.
+
+-   Improved performance: FCoTR provides high-speed connectivity for Fibre Channel traffic over Token Ring networks, which can improve performance compared to traditional Token Ring networks.
+
+-   Flexibility: FCoTR allows organizations to use a variety of storage devices, including SANs and NAS, with Token Ring networks.
+
+-   Scalability: FCoTR can support large-scale storage environments, making it suitable for organizations with growing storage needs.
+
+-   Compatibility: FCoTR is compatible with existing Fibre Channel storage systems, which means that organizations can continue to use their existing storage infrastructure while taking advantage of the benefits of FCoTR.
+
+However, there are also some drawbacks to FCoTR technology, which include:
+
+-   Limited availability: FCoTR is not widely used, which means that it may be difficult to find support or expertise in implementing and managing FCoTR-based storage systems.
+
+-   Complexity: FCoTR requires specialized knowledge and expertise to implement and manage, which can increase the complexity of storage environments.
+
+-   Compatibility issues: FCoTR may not be compatible with all storage devices, which can limit its usefulness in certain environments.
+
+In conclusion, FCoTR technology offers several benefits for organizations looking to use Fibre Channel traffic over Token Ring networks, including cost savings, improved performance, and flexibility. However, it also has some drawbacks, including limited availability, complexity, and compatibility issues. Organizations should carefully consider these factors before implementing FCoTR-based storage systems.
 
 ### Revision History
 
