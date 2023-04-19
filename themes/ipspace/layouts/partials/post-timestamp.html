@@ -1,3 +1,4 @@
+{{ if .Params.date }}
 {{ $hasCdate := isset .Params "cdate" }}
 {{ $dateFormat := cond $hasCdate "January 2, 2006" "Monday, January 2, 2006 15:04 MST" }}
 <p class='post__date'>
@@ -8,3 +9,4 @@
     on {{ .Lastmod.Format "Monday, January 2, 2006 15:04 MST" }}{{ end }}{{ if $hasCdate}}, commented
     on {{ time.Format $dateFormat .Params.cdate }}{{ end }}
 </p>
+{{ end }}
