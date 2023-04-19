@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>5 comments:</h4>
+  <h4>6 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -245,6 +245,48 @@ I&#39;m not sure if it&#39;s possible make it work with in IPv6 somehow (never t
 <li>Reasoning for using /116 instead of /64: It limits the possibility of NCE (Neighbor cache exhaustion) in the routers-to-firewalls link networks. It is unclear if NCE is still practical in 2023 but a smaller subnet was nevertheless selected as a precaution. SLAAC is never used in these subnets so there is no technical reason to stick with /64.</li>
 <li>Reasoning for using /116 instead of /120: RFC 2526 (Reserved IPv6 Subnet Anycast Addresses): &quot;Within each subnet, the highest 128 interface identifier values are reserved for assignment as subnet anycast addresses.&quot; If using /120 for routers-to-firewalls subnets it is not possible to use the ::a1, ::a2, ::b1 and ::b2 addresses that are illustrative when using ::a and ::b for the VIPs. Using /116 enables using them for &quot;a-side and b-side&quot; consistency with point-to-point subnets. /116 is the next-shorter netmask from /120 when sticking with nibble-boundaries.</li>
 </ul>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1774">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Henk</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1774" href="#1774">19 April 2023 10:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I like IS-IS. I like the original CLNS addressing-scheme. One address per box. All interfaces are unnumbered. Routing is done based on L1 host-routes. Even for directly connected routers. If I ran an IPv6-network, I&#39;d want to do the same thing. Link-local IPv6 addresses work fine for this.</p>
+
+<p>So why would people want to manually assign a non-link-local address to their interfaces? The only thing I can think of is so they will be able to ping for troubleshooting. Correct? Are there more reasons?</p>
+
+<p>Pinging a link-local address is a pain, I&#39;d guess. Because you have to look up the remote router&#39;s link-local address first. Not fun. So how can we improve this?</p>
+
+<p>I would guess we need a new flavor of &quot;ping&quot;. <br />
+A ping that only works on p2p interfaces. <br />
+A ping that takes only an outgoing interface-name as argument. <br />
+The new ping will send out a packet over the p2p interface. <br />
+The destination-address in the ping-address doesn&#39;t matter. <br />
+The router on the other end replies anyway.</p>
+
+<p>Ideally the new ping-reply holds a bit more information about the remote router. Like maybe its interface-address, its interface-name, and maybe the hostname of the router. I would assume such a tool would be rather handy, if you often use unnumbered interfaces or link-local addresses.</p>
+
+<p>Can we do this with existing protocols? <br />
+For IPv4 we could send a ping to the IPv4-broadcast address, or directed-broadcast address. Long time ago, routers would respond to that. Maybe today you can&#39;t ping 255.255.255.255 anymore. And directed-broadcasts are probably not accepted. IPv6 doesn&#39;t have broadcast-addresses. So we&#39;d have to define a new well-known IPv6 multicast-address.</p>
+
+<p>Ping packets can be padded to any size. Can we use the padding to carry TLVs? If so, we could put the if-address, if-name and hostname in a TLV in the ping reply. That should be backwards compatible.</p>
+
+<p>Or else we could use another existing protocol? E.g. extend LLDP to have some sort of ping? One that replies with the if-name, if-address and hostname? Unfortunately LLDP seems to be under the control of IEEE, not IETF. I have no experience working with the IEEE, so I have no idea if this is feasible.</p>
+
+<p>Just an idea. <br />
+Operators, do you think such a new ping would be useful?</p>
 </div>
           </div>
         </li>
