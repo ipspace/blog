@@ -84,9 +84,17 @@
          "name": " Arne",
          "pub": "2023-04-18T20:16:55",
          "type": "comment"
+      },
+      {
+         "date": "19 April 2023 10:07",
+         "html": "<p>Not actually point-to-point case but very close to it, and I know here are skillful people to shoot me down, so here we go, my thoughts:</p>\n\n<p>Routers-to-firewalls link networks that need space for HSRP/VRRP/clustering addresses are configured as /116:</p>\n\n<ul>\n<li>Our-side devices are addressed:\n    ::a = virtual IP\n    ::a1 = first device in the group/cluster\n    ::a2 = second device in the group/cluster</li>\n<li>The other side devices are addressed:\n    ::b = virtual IP\n    ::b1 = first device in the group/cluster\n    ::b2 = second device in the group/cluster</li>\n<li>Reasoning for using /116 instead of /64: It limits the possibility of NCE (Neighbor cache exhaustion) in the routers-to-firewalls link networks. It is unclear if NCE is still practical in 2023 but a smaller subnet was nevertheless selected as a precaution. SLAAC is never used in these subnets so there is no technical reason to stick with /64.</li>\n<li>Reasoning for using /116 instead of /120: RFC 2526 (Reserved IPv6 Subnet Anycast Addresses): &quot;Within each subnet, the highest 128 interface identifier values are reserved for assignment as subnet anycast addresses.&quot; If using /120 for routers-to-firewalls subnets it is not possible to use the ::a1, ::a2, ::b1 and ::b2 addresses that are illustrative when using ::a and ::b for the VIPs. Using /116 enables using them for &quot;a-side and b-side&quot; consistency with point-to-point subnets. /116 is the next-shorter netmask from /120 when sticking with nibble-boundaries.</li>\n</ul>\n",
+         "id": "1769",
+         "name": " Markku Leiniö",
+         "pub": "2023-04-19T10:07:43",
+         "type": "comment"
       }
    ],
-   "count": 4,
+   "count": 5,
    "type": "post",
    "url": "2023/04/ipv6-p2p-addressing.html"
 }

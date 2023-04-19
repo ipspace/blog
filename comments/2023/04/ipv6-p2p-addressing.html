@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>4 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -212,6 +212,40 @@ I&#39;m not sure if it&#39;s possible make it work with in IPv6 somehow (never t
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1769">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Markku Leiniö</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1769" href="#1769">19 April 2023 10:07</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Not actually point-to-point case but very close to it, and I know here are skillful people to shoot me down, so here we go, my thoughts:</p>
+
+<p>Routers-to-firewalls link networks that need space for HSRP/VRRP/clustering addresses are configured as /116:</p>
+
+<ul>
+<li>Our-side devices are addressed:
+    ::a = virtual IP
+    ::a1 = first device in the group/cluster
+    ::a2 = second device in the group/cluster</li>
+<li>The other side devices are addressed:
+    ::b = virtual IP
+    ::b1 = first device in the group/cluster
+    ::b2 = second device in the group/cluster</li>
+<li>Reasoning for using /116 instead of /64: It limits the possibility of NCE (Neighbor cache exhaustion) in the routers-to-firewalls link networks. It is unclear if NCE is still practical in 2023 but a smaller subnet was nevertheless selected as a precaution. SLAAC is never used in these subnets so there is no technical reason to stick with /64.</li>
+<li>Reasoning for using /116 instead of /120: RFC 2526 (Reserved IPv6 Subnet Anycast Addresses): &quot;Within each subnet, the highest 128 interface identifier values are reserved for assignment as subnet anycast addresses.&quot; If using /120 for routers-to-firewalls subnets it is not possible to use the ::a1, ::a2, ::b1 and ::b2 addresses that are illustrative when using ::a and ::b for the VIPs. Using /116 enables using them for &quot;a-side and b-side&quot; consistency with point-to-point subnets. /116 is the next-shorter netmask from /120 when sticking with nibble-boundaries.</li>
+</ul>
+</div>
           </div>
         </li>
       </div>
