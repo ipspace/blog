@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "20 April 2023 07:45",
+               "html": "<p>OSPF unnumbered is perfectly fine if it&#39;s implemented correctly on all boxes. I got it working on Arista (required a tweak), IOS, IOS-XE, NXOS, Junos, Cumulus... Details in https://blog.ipspace.net/2022/01/ospf-unnumbered.html</p>\n\n<p>Unnumbered BGP is a totally different beast. It makes sense only with EBGP when the BGP configuration supports <strong>neighbor interface</strong> command (mostly FRR-based implementations), but that quickly results in all sorts of weirdness unless the vendor is willing to run EVPN AF over those same EBGP sessions. Run away from crazy stuff like EBGP-over-EBGP or IBGP-over-EBGP, or grab a bag of popcorn and read https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html and all the links (or https://blog.ipspace.net/series/dcbgp.html)</p>\n",
+               "id": "1784",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-20T19:45:50",
+               "ref": "1783",
+               "type": "comment"
+            }
+         ],
          "date": "20 April 2023 02:02",
          "html": "<p>Great Blog as usual, Ivan.\nI agree your OSPF Area0 P2P recommendation as Underlay, however what&#39;s your take on OSPF Unnumbered for building underlay? I am not talking of course in Multi-vendor OSPF-Unnumbered. Just in general? and how about BGP-unnumbered underlays with RFC-5549 ? just for building underlays?</p>\n",
          "id": "1783",

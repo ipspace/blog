@@ -20,6 +20,35 @@
             <div class="comment-content"><p>Great Blog as usual, Ivan.
 I agree your OSPF Area0 P2P recommendation as Underlay, however what&#39;s your take on OSPF Unnumbered for building underlay? I am not talking of course in Multi-vendor OSPF-Unnumbered. Just in general? and how about BGP-unnumbered underlays with RFC-5549 ? just for building underlays?</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1784">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1784" href="#1784">20 April 2023 07:45</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>OSPF unnumbered is perfectly fine if it&#39;s implemented correctly on all boxes. I got it working on Arista (required a tweak), IOS, IOS-XE, NXOS, Junos, Cumulus... Details in https://blog.ipspace.net/2022/01/ospf-unnumbered.html</p>
+
+<p>Unnumbered BGP is a totally different beast. It makes sense only with EBGP when the BGP configuration supports <strong>neighbor interface</strong> command (mostly FRR-based implementations), but that quickly results in all sorts of weirdness unless the vendor is willing to run EVPN AF over those same EBGP sessions. Run away from crazy stuff like EBGP-over-EBGP or IBGP-over-EBGP, or grab a bag of popcorn and read https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html and all the links (or https://blog.ipspace.net/series/dcbgp.html)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
