@@ -1,6 +1,6 @@
 ---
 title: "MUST READ: End-to-End Arguments in System Design"
-date: 2023-04-23 07:46:00
+date: 2023-05-07 07:46:00
 tags: [ worth reading ]
 ---
 In case you ever wondered how old the "_keep network simple and do complex stuff at the endpoints_" approach is, read the 
