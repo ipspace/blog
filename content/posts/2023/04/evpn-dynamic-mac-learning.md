@@ -1,6 +1,6 @@
 ---
 title: "Is Dynamic MAC Learning Better Than EVPN?"
-date: 2023-05-04 06:51:00
+date: 2023-04-26 06:51:00
 tags: [ bridging, EVPN ]
 ---
 One of my readers worried about the control-plane-induced MAC learning lag in EVPN-based networks:
