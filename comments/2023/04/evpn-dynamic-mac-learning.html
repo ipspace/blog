@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -68,6 +68,27 @@ Not sure if this is really a relevant point - we know that BGP scales nicely, an
 <p>The problem was, that sometimes the COOP database entry (ACI&#39;s separate control plane for MACs and host addresses) was not updated correctly to point to the new leaf pair. After the bounce entry on the old leaf pair expired (630 seconds by default), traffic to the VM was mostly blackholed, since remote endpoint learning is disabled on border leafs and always forwarded to the spines underlay IP address for proxying.</p>
 
 <p>In the end we gave up and limited the VM migration domain to a single VPC leaf pair. VMware recommends a maximum number of 64 hosts per cluster anyway.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1792">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Nitzan</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1792" href="#1792">26 April 2023 06:52</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Few years ago in EVPN network, I saw drops on the multicast queue (ingress replication goes to that queue).
+After analyzing it we found that the root cause is vmotion (The hosts in that vlan are silent ) which starts at a very high rate before the source leaf learns the destination MAC. 
+The quick and ugly solution was to scan the vmotion vlan with NMAP every few minutes so the leafs would have all of the MAC address in their EVPN database.</p>
 </div>
           </div>
         </li>
