@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -24,6 +24,27 @@ FabricPath doesn&#39;t learn the MAC address of a sender with the first paket, w
 That extra paket takes some time, in our troubleshooting it was less then 50ms but still more then it would usually be. During that time, the Arista fabric also received the broadcast (ARP) and looped it back to the Cisco FabricPath fabric, because the Arista EVPN fabric wasn&#39;t fast enough to propagade the learned MAC to the ESI peer. Therefore the L2 split horizion of the ESI didn&#39;t work. 
 I can&#39;t remember anymore why the next part happend, but the Cisco fabric learned now the MAC coming form the Aristas and began sending the traffic towards that empty new fabric. That only lasted as long as it took that other host to send another paket and FabricPath to learn that this MAC is on a Cisco Switch and not behind the Arista fabric. But it was enough to break some vMotion actions. 
 The solution was easy, we only use one switch of the EVPN fabric during the migration. Therefor there was no ESI anymore. But other than that? No issues. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1789">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Johannes Resch</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1789" href="#1789">26 April 2023 10:08</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Interesting subject! 
+I&#39;ve also recently noticed some vendors claiming that dataplane MAC learning is so much better because it reduces the number of BGP updates in large scale SP EVPN deployments. Apparently, some of them are working on IETF drafts to bring dataplane MAC learning &quot;back&quot; to EVPN.
+Not sure if this is really a relevant point - we know that BGP scales nicely, and its relatively easy to deploy virtualized RR with sufficient VPU resources.</p>
 </div>
           </div>
         </li>
