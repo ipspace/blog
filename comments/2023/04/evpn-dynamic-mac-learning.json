@@ -15,9 +15,17 @@
          "name": " Johannes Resch",
          "pub": "2023-04-26T10:08:53",
          "type": "comment"
+      },
+      {
+         "date": "26 April 2023 10:50",
+         "html": "<p>Since you&#39;ve mentioned ACI specifically and stated &raquo;nobody ever complained about the connectivity problems following VM moves&laquo;: We&#39;ve encountered VM connectivity issues after VM movements from one vPC leaf pair to a different vPC leaf pair with ACI. The issue did not occur immediately (due to ACI&#39;s bounce entries) and only sometimes, which made it very difficult to reproduce synthetically, but due to DRS and a large number of VMs it occurred frequently enough, that it was a serious problem for us.</p>\n\n<p>The problem was, that sometimes the COOP database entry (ACI&#39;s separate control plane for MACs and host addresses) was not updated correctly to point to the new leaf pair. After the bounce entry on the old leaf pair expired (630 seconds by default), traffic to the VM was mostly blackholed, since remote endpoint learning is disabled on border leafs and always forwarded to the spines underlay IP address for proxying.</p>\n\n<p>In the end we gave up and limited the VM migration domain to a single VPC leaf pair. VMware recommends a maximum number of 64 hosts per cluster anyway.</p>\n",
+         "id": "1790",
+         "name": "Sebastian Schrader",
+         "pub": "2023-04-26T10:50:12",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2023/04/evpn-dynamic-mac-learning.html"
 }
