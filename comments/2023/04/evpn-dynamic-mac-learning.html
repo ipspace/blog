@@ -1,0 +1,35 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="1788">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daniel S</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1788" href="#1788">26 April 2023 09:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I had an issue with Control Plane learning in an EVPN Fabric. But its a bit special. 
+The old fabric was FabricPath, the new one an Arista VXLAN EVPN fabric using ESIs instead of MLAGs. After all was setup and tested, we connected the two fabric together using a vPC/ESI and everything was fine for a while. 
+Then vMotion happend, most VMs where fine but there were always some VMs that got stuck or had errors during vMotion and they needed to run vMotion for them again. It took us some time to get the issue, because its two issues resulting in this behaviour. 
+FabricPath doesn&#39;t learn the MAC address of a sender with the first paket, which is usually a broadcast (ARP). It only learns the MAC if the paket thats sent is NOT a broadcast. That means: Host A doest ARP for Host B, nothing learned; Host B answers to Host A, Host B MAC learned; Host A sends a paket to Host B, Host A MAC learned.
+That extra paket takes some time, in our troubleshooting it was less then 50ms but still more then it would usually be. During that time, the Arista fabric also received the broadcast (ARP) and looped it back to the Cisco FabricPath fabric, because the Arista EVPN fabric wasn&#39;t fast enough to propagade the learned MAC to the ESI peer. Therefore the L2 split horizion of the ESI didn&#39;t work. 
+I can&#39;t remember anymore why the next part happend, but the Cisco fabric learned now the MAC coming form the Aristas and began sending the traffic towards that empty new fabric. That only lasted as long as it took that other host to send another paket and FabricPath to learn that this MAC is on a Cisco Switch and not behind the Arista fabric. But it was enough to break some vMotion actions. 
+The solution was easy, we only use one switch of the EVPN fabric during the migration. Therefor there was no ESI anymore. But other than that? No issues. </p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
