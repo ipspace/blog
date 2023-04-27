@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>4 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -89,6 +89,29 @@ Not sure if this is really a relevant point - we know that BGP scales nicely, an
             <div class="comment-content"><p>Few years ago in EVPN network, I saw drops on the multicast queue (ingress replication goes to that queue).
 After analyzing it we found that the root cause is vmotion (The hosts in that vlan are silent ) which starts at a very high rate before the source leaf learns the destination MAC. 
 The quick and ugly solution was to scan the vmotion vlan with NMAP every few minutes so the leafs would have all of the MAC address in their EVPN database.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1793">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Tony Bourke</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1793" href="#1793">27 April 2023 01:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>While there have been detection issues with vMotion, I&#39;ve never heard any server admins complain about any network hickups with vMotion when it&#39;s working correctly (and they&#39;re not shy about letting you know when the network isn&#39;t doing its job, even when it is). Sure, lots more packets that we think may get dropped, but if they&#39;re not perceptible so it&#39;s effectively flawless (for most workloads).  </p>
+
+<p>It&#39;s kind of like a switch with 20 &micro;s of latency versus one with 1 ns of latency port-to-port.  It&#39;s a 20x higher latency, but for the vast majority of workloads, especially virtual workloads, the difference is imperceptible.</p>
+
+<p>There are some applications that are less drop sensitive, and they generally will have a vMotion prohibition. But those are rare.  </p>
 </div>
           </div>
         </li>
