@@ -38,9 +38,14 @@ nodes:
   ...
 ```
 
-{{<note info>}}An even better solution would be to have _netlab_ try to [find configuration templates](https://netsim-tools.readthedocs.io/en/latest/dev/config/deploy.html#finding-custom-configuration-templates) based on node names. That's coming in release 1.5.2 ([development documentation](https://netsim-tools.readthedocs.io/en/dev/dev/config/deploy.html#finding-custom-configuration-templates)).{{</note>}}
+{{<note info>}}An even better solution would be to have _netlab_ [find configuration templates](https://netsim-tools.readthedocs.io/en/latest/dev/config/deploy.html#finding-custom-configuration-templates) based on node names -- a [feature introduced in release 1.5.2](https://netsim-tools.readthedocs.io/en/latest/dev/config/deploy.html#finding-custom-configuration-templates).{{</note>}}
 
 Finally, a few gotchas:
 
 * Obviously one wouldn't have the configuration files when starting the lab for the first time, which would crash the final step in the device configuration process. That's not a big deal (the lab would be running and configured), but if it bothers you, skip the _custom configuration_ part of the lab initialization by running `netlab up --no-config` (start the lab but don't configure it) followed by `netlab initial -i -m` (perform initial configuration and configure modules, but don't use the custom configuration templates).
 * Changing lab topology might change interface names, link IP prefixes, and interface IP addresses. It might be a good idea to clean up the collected device configurations after running **netlab collect**.
+
+### Revision History
+
+2023-04-27
+: Changed a link to _netlab_ 1.5.2 documentation
