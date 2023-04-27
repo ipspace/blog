@@ -1,6 +1,6 @@
 ---
 title: "Small Site EBGP-Only Design"
-date: 2023-05-02 07:03:00
+date: 2023-05-03 07:03:00
 tags: [ BGP, design ]
 ---
 One of my subscribers found an unusual BGP specimen in the wild:
