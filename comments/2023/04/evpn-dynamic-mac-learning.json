@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "27 April 2023 07:53",
+               "html": "<p>Lovely. Thanks a million for sharing this one!</p>\n",
+               "id": "1795",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T07:53:51",
+               "ref": "1788",
+               "type": "comment"
+            }
+         ],
          "date": "26 April 2023 09:59",
          "html": "<p>I had an issue with Control Plane learning in an EVPN Fabric. But its a bit special. \nThe old fabric was FabricPath, the new one an Arista VXLAN EVPN fabric using ESIs instead of MLAGs. After all was setup and tested, we connected the two fabric together using a vPC/ESI and everything was fine for a while. \nThen vMotion happend, most VMs where fine but there were always some VMs that got stuck or had errors during vMotion and they needed to run vMotion for them again. It took us some time to get the issue, because its two issues resulting in this behaviour. \nFabricPath doesn&#39;t learn the MAC address of a sender with the first paket, which is usually a broadcast (ARP). It only learns the MAC if the paket thats sent is NOT a broadcast. That means: Host A doest ARP for Host B, nothing learned; Host B answers to Host A, Host B MAC learned; Host A sends a paket to Host B, Host A MAC learned.\nThat extra paket takes some time, in our troubleshooting it was less then 50ms but still more then it would usually be. During that time, the Arista fabric also received the broadcast (ARP) and looped it back to the Cisco FabricPath fabric, because the Arista EVPN fabric wasn&#39;t fast enough to propagade the learned MAC to the ESI peer. Therefore the L2 split horizion of the ESI didn&#39;t work. \nI can&#39;t remember anymore why the next part happend, but the Cisco fabric learned now the MAC coming form the Aristas and began sending the traffic towards that empty new fabric. That only lasted as long as it took that other host to send another paket and FabricPath to learn that this MAC is on a Cisco Switch and not behind the Arista fabric. But it was enough to break some vMotion actions. \nThe solution was easy, we only use one switch of the EVPN fabric during the migration. Therefor there was no ESI anymore. But other than that? No issues. </p>\n",
          "id": "1788",
@@ -9,6 +20,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "27 April 2023 07:53",
+               "html": "<p>Control-plane MAC learning in service provider environment never made sense to me. After all, you&#39;re selling bandwidth, and don&#39;t care (too much) how that bandwidth is used. Tracking customer MAC addresses is just asking for trouble and support calls when things go sideways.</p>\n\n<p>However, when BGP is the answer no matter what the question is, or when you try to boil the ocean (hint: replace MLAG with ESI) you get the current state of affairs ;)</p>\n\n<p>I know some service providers and IXPs use VXLAN encapsulation (to provide layer-2 transport over IP network) without EVPN. There might be a reason for that ;)</p>\n",
+               "id": "1794",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T07:53:16",
+               "ref": "1789",
+               "type": "comment"
+            }
+         ],
          "date": "26 April 2023 10:08",
          "html": "<p>Interesting subject! \nI&#39;ve also recently noticed some vendors claiming that dataplane MAC learning is so much better because it reduces the number of BGP updates in large scale SP EVPN deployments. Apparently, some of them are working on IETF drafts to bring dataplane MAC learning &quot;back&quot; to EVPN.\nNot sure if this is really a relevant point - we know that BGP scales nicely, and its relatively easy to deploy virtualized RR with sufficient VPU resources.</p>\n",
          "id": "1789",

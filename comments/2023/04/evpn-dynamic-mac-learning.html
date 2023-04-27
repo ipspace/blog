@@ -25,6 +25,33 @@ That extra paket takes some time, in our troubleshooting it was less then 50ms b
 I can&#39;t remember anymore why the next part happend, but the Cisco fabric learned now the MAC coming form the Aristas and began sending the traffic towards that empty new fabric. That only lasted as long as it took that other host to send another paket and FabricPath to learn that this MAC is on a Cisco Switch and not behind the Arista fabric. But it was enough to break some vMotion actions. 
 The solution was easy, we only use one switch of the EVPN fabric during the migration. Therefor there was no ESI anymore. But other than that? No issues. </p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1795">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1795" href="#1795">27 April 2023 07:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Lovely. Thanks a million for sharing this one!</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
@@ -46,6 +73,37 @@ The solution was easy, we only use one switch of the EVPN fabric during the migr
 I&#39;ve also recently noticed some vendors claiming that dataplane MAC learning is so much better because it reduces the number of BGP updates in large scale SP EVPN deployments. Apparently, some of them are working on IETF drafts to bring dataplane MAC learning &quot;back&quot; to EVPN.
 Not sure if this is really a relevant point - we know that BGP scales nicely, and its relatively easy to deploy virtualized RR with sufficient VPU resources.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1794">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1794" href="#1794">27 April 2023 07:53</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Control-plane MAC learning in service provider environment never made sense to me. After all, you&#39;re selling bandwidth, and don&#39;t care (too much) how that bandwidth is used. Tracking customer MAC addresses is just asking for trouble and support calls when things go sideways.</p>
+
+<p>However, when BGP is the answer no matter what the question is, or when you try to boil the ocean (hint: replace MLAG with ESI) you get the current state of affairs ;)</p>
+
+<p>I know some service providers and IXPs use VXLAN encapsulation (to provide layer-2 transport over IP network) without EVPN. There might be a reason for that ;)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
