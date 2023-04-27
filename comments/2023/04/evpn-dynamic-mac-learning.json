@@ -39,6 +39,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "27 April 2023 07:56",
+               "html": "<p>This definitely looks like a bug in ACI to me, but it&#39;s ghastly. It&#39;s even worse than what we encountered in early NSX versions (NSX controller losing track of MAC addresses after vCenter SOAP API broke down).</p>\n\n<p>However, limiting DRS to a single VPC leaf pair might not be the right answer (unless you used VM affinity within a subset of HA cluster) -- you want the VMs to be restarted automatically even if both leaves blow up (for example, due to a VPC bug).</p>\n",
+               "id": "1796",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T07:56:49",
+               "ref": "1790",
+               "type": "comment"
+            }
+         ],
          "date": "26 April 2023 10:50",
          "html": "<p>Since you&#39;ve mentioned ACI specifically and stated &raquo;nobody ever complained about the connectivity problems following VM moves&laquo;: We&#39;ve encountered VM connectivity issues after VM movements from one vPC leaf pair to a different vPC leaf pair with ACI. The issue did not occur immediately (due to ACI&#39;s bounce entries) and only sometimes, which made it very difficult to reproduce synthetically, but due to DRS and a large number of VMs it occurred frequently enough, that it was a serious problem for us.</p>\n\n<p>The problem was, that sometimes the COOP database entry (ACI&#39;s separate control plane for MACs and host addresses) was not updated correctly to point to the new leaf pair. After the bounce entry on the old leaf pair expired (630 seconds by default), traffic to the VM was mostly blackholed, since remote endpoint learning is disabled on border leafs and always forwarded to the spines underlay IP address for proxying.</p>\n\n<p>In the end we gave up and limited the VM migration domain to a single VPC leaf pair. VMware recommends a maximum number of 64 hosts per cluster anyway.</p>\n",
          "id": "1790",
@@ -47,6 +58,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "27 April 2023 07:59",
+               "html": "<p>Would love to know more about this one. So far, it looks more like a mismatch between ARP and MAC timeouts to me, potentially combined with weird behavior like &quot;don&#39;t learn MAC addresses from broadcasts, because ESXi should announce the moved MAC address immediately after vMotion. Solving the problem with NMAP also points in that direction.</p>\n",
+               "id": "1797",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-04-27T07:59:41",
+               "ref": "1792",
+               "type": "comment"
+            }
+         ],
          "date": "26 April 2023 06:52",
          "html": "<p>Few years ago in EVPN network, I saw drops on the multicast queue (ingress replication goes to that queue).\nAfter analyzing it we found that the root cause is vmotion (The hosts in that vlan are silent ) which starts at a very high rate before the source leaf learns the destination MAC. \nThe quick and ugly solution was to scan the vmotion vlan with NMAP every few minutes so the leafs would have all of the MAC address in their EVPN database.</p>\n",
          "id": "1792",

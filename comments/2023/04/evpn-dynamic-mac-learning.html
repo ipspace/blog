@@ -127,6 +127,35 @@ Not sure if this is really a relevant point - we know that BGP scales nicely, an
 
 <p>In the end we gave up and limited the VM migration domain to a single VPC leaf pair. VMware recommends a maximum number of 64 hosts per cluster anyway.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1796">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1796" href="#1796">27 April 2023 07:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This definitely looks like a bug in ACI to me, but it&#39;s ghastly. It&#39;s even worse than what we encountered in early NSX versions (NSX controller losing track of MAC addresses after vCenter SOAP API broke down).</p>
+
+<p>However, limiting DRS to a single VPC leaf pair might not be the right answer (unless you used VM affinity within a subset of HA cluster) -- you want the VMs to be restarted automatically even if both leaves blow up (for example, due to a VPC bug).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
@@ -148,6 +177,33 @@ Not sure if this is really a relevant point - we know that BGP scales nicely, an
 After analyzing it we found that the root cause is vmotion (The hosts in that vlan are silent ) which starts at a very high rate before the source leaf learns the destination MAC. 
 The quick and ugly solution was to scan the vmotion vlan with NMAP every few minutes so the leafs would have all of the MAC address in their EVPN database.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1797">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1797" href="#1797">27 April 2023 07:59</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Would love to know more about this one. So far, it looks more like a mismatch between ARP and MAC timeouts to me, potentially combined with weird behavior like &quot;don&#39;t learn MAC addresses from broadcasts, because ESXi should announce the moved MAC address immediately after vMotion. Solving the problem with NMAP also points in that direction.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
