@@ -2,8 +2,6 @@
 title: "Why Is OSPF (and BGP) More Complex than STP?"
 date: 2023-04-27 06:26:00
 tags: [ bridging, OSPF, BGP ]
-tldr:
-  STP is simpler than OSPF and BGP because it only shuts down interfaces to prevent loops. On the other hand, OSPF must find the optimal forwarding topology, propagate edge information, and build forwarding tables, while BGP can carry millions of routes advertised by tens of thousands of autonomous systems, which requires a well-understood transport protocol and a distance-vector approach.
 ---
 I got this question from one of my readers:
 
@@ -21,7 +19,9 @@ There are numerous reasons why a protocol, a technology or a solution might be m
 
 **They are solving a different problem**. This is obviously the case for STP, OSPF, and BGP.
 
-The only job **STP** has is to shut down interfaces to prevent loops in a forwarding topology, and it does that in the simplest possible way: if a bridge hears about a more prominent bridge[^RST] through multiple interfaces, it shuts down one of them. STP does not advertise edge prefixes[^DML], has [no concept of neighbors](https://blog.ipspace.net/2014/07/is-stp-really-evil.html) and [no reliability](https://blog.ipspace.net/2016/03/spanning-tree-protocol-stp-and-bridging.html)[^FL], and the only way to make such a simplistic protocol work is to wait a while after each change to make sure things settle down.
+The only job **STP** has is to ~~shut down~~ block[^BIF] interfaces to prevent loops in a forwarding topology, and it does that in the simplest possible way: if a bridge hears about a more prominent bridge[^RST] through multiple interfaces, it ~~shuts~~ blocks down one of them. STP does not advertise edge prefixes[^DML], has [no concept of neighbors](https://blog.ipspace.net/2014/07/is-stp-really-evil.html) and [no reliability](https://blog.ipspace.net/2016/03/spanning-tree-protocol-stp-and-bridging.html)[^FL], and the only way to make such a simplistic protocol work is to wait a while after each change to make sure things settle down.
+
+[^BIF]: As an anonymous commenter pointed out, STP does not shut down the interfaces (or it wouldn't be able to listen to BPDUs) but puts them into a BLOCKING state in which they don't receive or send anything that is not a layer-2 control-plane traffic.
 
 [^RST]: Sometimes called 'the root of the spanning tree'
 
@@ -54,3 +54,8 @@ As for _ChatGPT gave a circular answer_: there's still no substitute for hard wo
 [^PV]: OK, path vector for the pedants.
 
 [^HG]: Plus nobody wants their competitors to see the innards of their networks or their external connectivity.
+
+### Revision History
+
+2023-04-28
+: Correction: STP does not _shut down_ interfaces but puts them into _blocking_ state.
