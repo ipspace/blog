@@ -19,7 +19,7 @@ There are numerous reasons why a protocol, a technology or a solution might be m
 
 **They are solving a different problem**. This is obviously the case for STP, OSPF, and BGP.
 
-The only job **STP** has is to ~~shut down~~ block[^BIF] interfaces to prevent loops in a forwarding topology, and it does that in the simplest possible way: if a bridge hears about a more prominent bridge[^RST] through multiple interfaces, it ~~shuts~~ blocks down one of them. STP does not advertise edge prefixes[^DML], has [no concept of neighbors](https://blog.ipspace.net/2014/07/is-stp-really-evil.html) and [no reliability](https://blog.ipspace.net/2016/03/spanning-tree-protocol-stp-and-bridging.html)[^FL], and the only way to make such a simplistic protocol work is to wait a while after each change to make sure things settle down.
+The only job **STP** has is to ~~shut down~~ block[^BIF] interfaces to prevent loops in a forwarding topology, and it does that in the simplest possible way: if a bridge hears about a more prominent bridge[^RST] through multiple interfaces, it ~~shuts down~~ blocks all but one of them. STP does not advertise edge prefixes[^DML], has [no concept of neighbors](https://blog.ipspace.net/2014/07/is-stp-really-evil.html) and [no reliability](https://blog.ipspace.net/2016/03/spanning-tree-protocol-stp-and-bridging.html)[^FL], and the only way to make such a simplistic protocol work is to wait a while after each change to make sure things settle down.
 
 [^BIF]: As an anonymous commenter pointed out, STP does not shut down the interfaces (or it wouldn't be able to listen to BPDUs) but puts them into a BLOCKING state in which they don't receive or send anything that is not a layer-2 control-plane traffic.
 
