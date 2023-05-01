@@ -27,7 +27,9 @@ You can probably guess how the rest of this blog post will look like ([hint](htt
 * Windows and major Linux distributions have IPv6 enabled by default.
 * Because nobody cares about IPv6, it's sometimes left enabled.
 * Likewise, there's a non-zero chance that whoever configured the layer-2 firewall decided IPv6 didn't matter.
-* Linux servers filter IPv4 traffic with **iptables** and IPv6 traffic with **ip6tables**. If your server administrators don't care about IPv6 they probably haven't configured **ip6tables** with a DENY ALL rule.
+* Unless you're using more modern components like **nftables**[^HTNF] (or eBPF 😉), Linux servers filter IPv4 traffic with **iptables** and IPv6 traffic with **ip6tables**. If your server administrators don't care about IPv6 they probably haven't configured **ip6tables** with a DENY ALL rule.
+
+[^HTNF]: Mentioned by [Alexey Popov in a comment](https://blog.ipspace.net/2023/04/palo-alto-ipv6-firewalling.html#1810). I'm way too rusty when it comes to Linux. Also: one has to [love many ways of getting the same job done](https://xkcd.com/1987/) ;)
 
 What could possibly go wrong? How about:
 
@@ -45,3 +47,8 @@ But wait, it gets better:
 As always, it must be the DNS' fault 😜, and the optimum solution must be to use `/etc/hosts` files 🤣.
 
 Want even more details? You'll find them in the [IPv6 Security](https://www.ipspace.net/IPv6_security) webinar and in the [Network Security Fallacies](https://my.ipspace.net/bin/list?id=Net101#NETSEC) part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work).
+
+### Revision History
+
+2023-05-01
+: Added **nftables** as a replacement for **iptables**/**ip6tables**.
