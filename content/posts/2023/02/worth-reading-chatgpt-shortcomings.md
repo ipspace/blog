@@ -1,7 +1,9 @@
 ---
+ai_tag: read
 title: "Worth Reading: On ChatGPT"
+series_title: "Collections: On ChatGPT (a Historian Perspective)"
 date: 2023-02-18 08:03:00
-tags: [ worth reading ]
+tags: [ worth reading, AI ]
 ---
 One of the best [descriptions of what ChatGPT does and what it cannot do](https://acoup.blog/2023/02/17/collections-on-chatgpt/) I found so far comes from an [ancient and military historian](https://acoup.blog/about-the-pedant/). The _what is ChatGPT_ and _what is an essay_ parts are a must-read, the _preparing to be disrupted_ conclusion is pure gold:
 

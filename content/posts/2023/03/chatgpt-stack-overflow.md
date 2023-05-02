@@ -1,7 +1,9 @@
 ---
-title: "Will ChatGPT Replace Stack Overflow?"
-date: 2023-03-23 07:03:00
-tags: [ AI ]
+ai_tag: opinion
+date: 2023-03-23 07:03:00+00:00
+tags:
+- AI
+title: Will ChatGPT Replace Stack Overflow?
 ---
 **TL&DR:** No. You can move on.
 

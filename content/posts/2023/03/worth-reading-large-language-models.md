@@ -1,7 +1,11 @@
 ---
-title: "Worth Reading: Putting Large Language Models in Context"
-date: 2023-03-12 07:48:00
-tags: [ worth reading, AI ]
+ai_tag: read
+date: 2023-03-12 07:48:00+00:00
+tags:
+- worth reading
+- AI
+title: 'Worth Reading: Putting Large Language Models in Context'
+series_title: 'Putting Large Language Models in Context'
 ---
 Another take on "what are large language models and what can we expect from them," this time by Bruce Davie: [Putting Large Language Models in Context](https://systemsapproach.substack.com/p/putting-large-language-models-in):
 

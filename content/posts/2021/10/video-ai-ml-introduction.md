@@ -1,7 +1,11 @@
 ---
-title: "Video: Introduction to AI/ML Hype"
-date: 2021-10-22 10:10:00
-tags: [ AI, video ]
+ai_tag: video
+date: 2021-10-22 10:10:00+00:00
+tags:
+- AI
+- video
+title: 'Video: Introduction to AI/ML Hype'
+series_title: 'Introduction to AI/ML Hype'
 ---
 In May 2021, [Javier Antich](https://www.ipspace.net/Author:Javier_Antich) ran a great webinar explaining the [principles of Artificial Intelligence and Machine learning and how they apply (or not) to networking](https://www.ipspace.net/AI_and_ML_in_Networking).
 

@@ -1,7 +1,9 @@
 ---
-title: "Kicking the Tires of GitHub Copilot"
-date: 2023-04-06 07:39:00
-tags: [ AI ]
+ai_tag: kick
+date: 2023-04-06 07:39:00+00:00
+tags:
+- AI
+title: Kicking the Tires of GitHub Copilot
 ---
 A friend sent me a video demo of his *AI-driven network device configuration* proof-of-concept. Before commenting on that idea, I wanted to see how well AI works as an assistant. Once [Kristian Larsson mentioned](https://twitter.com/plajjan/status/1640088978228408326) he was using [GitHub Copilot](https://github.com/features/copilot), it was obvious what to do next: try it out while working on the next *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* release.
 

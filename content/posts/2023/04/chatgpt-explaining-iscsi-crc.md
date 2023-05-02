@@ -1,8 +1,9 @@
 ---
+ai_tag: kick
 title: "ChatGPT Explaining the Need for iSCSI CRC"
 date: 2023-04-16 07:19:00
 lastmod: 2023-04-16 15:50:00
-tags: [ switching, SAN ]
+tags: [ switching, SAN, AI ]
 pre_scroll: True
 ---
 People keep telling me how well large language models like ChatGPT work for them, so now and then, I give it another try, most often resulting in another disappointment[^NR]. It might be that I suck at writing prompts[^PE], or it could be that I have a knack for looking in the wrong places[^ID].
