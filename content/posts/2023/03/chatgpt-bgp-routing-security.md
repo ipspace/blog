@@ -1,7 +1,8 @@
 ---
+ai_tag: kick
 title: "ChatGPT on BGP Routing Security"
 date: 2023-03-30 06:27:00
-tags: [ BGP, security ]
+tags: [ BGP, security, AI ]
 ---
 I wanted to include a few examples of BGP bugs causing widespread disruption in the [Network Security Fallacies](https://my.ipspace.net/bin/list?id=Net101#NETSEC) presentation. I tried to find what happened when [someone announced beacon prefixes with unknown optional transitive attributes](https://labs.ripe.net/author/erik/ripe-ncc-and-duke-university-bgp-experiment/) (which should have been passed without complaints but weren't) without knowing *when* it happened or *who* did it.
 

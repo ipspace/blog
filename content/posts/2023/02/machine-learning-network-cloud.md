@@ -1,7 +1,11 @@
 ---
-title: "MUST READ: Machine Learning for Network and Cloud Engineers"
-date: 2023-02-14 07:15:00
-tags: [ AI, worth reading ]
+ai_tag: book
+date: 2023-02-14 07:15:00+00:00
+tags:
+- AI
+- worth reading
+title: 'MUST READ: Machine Learning for Network and Cloud Engineers'
+series_title: 'Machine Learning for Network and Cloud Engineers'
 ---
 [Javier Antich](https://www.ipspace.net/Author:Javier_Antich), the author of the fantastic [AI/ML in Networking](https://www.ipspace.net/AI_and_ML_in_Networking) webinar, spent years writing the [Machine Learning for Network and Cloud Engineers](https://www.amazon.com/Machine-Learning-Network-Cloud-Engineers-ebook/dp/B0BT6YZC33) book that is now available in paperback and Kindle format. 
 

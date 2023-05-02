@@ -1,7 +1,8 @@
 ---
+ai_tag: kick
 title: "Real-Life Not-Exactly-Networking AI Use Case"
 date: 2023-02-09 06:35:00
-tags: [ worth reading ]
+tags: [ worth reading, AI ]
 ---
 I get several emails every week[^LEM] from people I never heard of telling me what a wonderful job they could do writing guest blog posts on a range of topics of interest to my audience.
 

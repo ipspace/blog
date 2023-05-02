@@ -1,7 +1,11 @@
 ---
-title: "Worth Reading: AI Makes Animists of Us All"
-date: 2022-03-05 08:23:00
-tags: [ AI, worth reading ]
+ai_tag: read
+date: 2022-03-05 08:23:00+00:00
+tags:
+- AI
+- worth reading
+title: 'Worth Reading: AI Makes Animists of Us All'
+series_title: 'AI Makes Animists of Us All'
 ---
 Erik Hoel published a [wonderful article](https://erikhoel.substack.com/p/ai-makes-animists-of-us-all) describing how he's fighting the algorithm that is deciding whether to approve a charge on his credit card.
 

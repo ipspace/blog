@@ -1,7 +1,11 @@
 ---
-title: "Building a Small Network with ChatGPT"
-date: 2023-04-13 07:25:00
-tags: [ AI, design, OSPF ]
+ai_tag: kick
+date: 2023-04-13 07:25:00+00:00
+tags:
+- AI
+- design
+- OSPF
+title: Building a Small Network with ChatGPT
 ---
 I must be a good *prompt engineer* -- every time I ask ChatGPT something really simple it spews out nonsense. This time I asked it to build a small network with four routers:
 

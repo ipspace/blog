@@ -1,7 +1,9 @@
 ---
+ai_tag: read
 title: "Worth Reading: The Dangers of Knowing Everything"
+series_title: "The Dangers of Knowing Everything"
 date: 2023-03-25 07:08:00
-tags: [ worth reading ]
+tags: [ worth reading, AI ]
 ---
 Another interesting take on ChatGPT in networking, this time by Tom Hollingsworth in [The Dangers of Knowing Everything](http://networkingnerd.net/2023/03/10/the-dangers-of-knowing-everything/):
 
