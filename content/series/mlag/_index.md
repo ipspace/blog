@@ -6,7 +6,6 @@ sidebar_box: sw
 soon_evpn:
 - title: Replacing Peer Link with VXLAN Fabric
   page: /posts/2023/05/mlag-without-peer-link.html
-- title: Virtual MLAG Peer Link with EVPN Control Plane
 # soon_deep:
 # BFD challenge: micro-BFD or BFD across VLANs?
 # https://blog.ipspace.net/2022/06/mlag-active-active-layer3.html#1316
