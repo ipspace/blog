@@ -3,6 +3,7 @@ date: 2022-12-06 07:06:00+00:00
 mlag_tag: deepdive
 series:
 - mlag
+series_weight: 500
 tags:
 - IP routing
 - switching

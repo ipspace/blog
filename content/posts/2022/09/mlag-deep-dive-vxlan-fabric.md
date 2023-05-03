@@ -1,11 +1,15 @@
 ---
-title: "Combining MLAG Clusters with VXLAN Fabric"
-date: 2022-09-28 09:27:00
-lastmod: 2022-09-28 17:22:00
-tags: [ switching,vxlan ]
-series: [ mlag, anycast ]
-mlag_tag: deepdive
 anycast_tag: fabric
+date: 2022-09-28 09:27:00+00:00
+lastmod: 2022-09-28 17:22:00
+mlag_tag: evpn
+series:
+- mlag
+- anycast
+tags:
+- switching
+- vxlan
+title: Combining MLAG Clusters with VXLAN Fabric
 ---
 In the previous MLAG Deep Dive blog posts we discussed the innards of a standalone MLAG cluster. Now let's see what happens when we connect such a cluster to a VXLAN fabric -- we'll use our standard MLAG topology and add a VXLAN transport underlay to it with another switch connected to the other end of the underlay network.
 

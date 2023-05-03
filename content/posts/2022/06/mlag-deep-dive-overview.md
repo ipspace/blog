@@ -4,6 +4,7 @@ mlag_tag: deepdive
 series:
 - mlag
 series_title: System Overview
+series_weight: 1000
 tags:
 - switching
 title: 'MLAG Deep Dive: System Overview'

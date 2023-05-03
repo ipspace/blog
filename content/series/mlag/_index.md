@@ -3,20 +3,11 @@ title: Multi-Chassis Link Aggregation
 layout: custom
 minimal_sidebar: true
 sidebar_box: sw
-deep_dive:
-- page: /posts/2022/06/mlag-deep-dive-mac-learning.md
-  title: Dynamic MAC Learning
-- page: /posts/2022/06/mlag-deep-dive-flooding.md
-  title: Layer-2 Flooding
-- page: /posts/2022/06/mlag-active-active-layer3.md
-  title: Active-Active Layer-3 Forwarding
-- page: /posts/2022/09/mlag-deep-dive-vxlan-fabric.md
-  title: Connecting MLAG Cluster to VXLAN Fabric
-- title: Using EVPN/VXLAN with MLAG Clusters
-  page: /posts/2022/11/mlag-vxlan-evpn.md
-- title: Replacing Peer-Link with VXLAN Fabric
-- title: Running Routing Protocols over MLAG Links
-  page: /posts/2022/12/mlag-routing.md
+soon_evpn:
+- title: Replacing Peer Link with VXLAN Fabric
+  page: /posts/2023/05/mlag-without-peer-link.html
+- title: Virtual MLAG Peer Link with EVPN Control Plane
+# soon_deep:
 # BFD challenge: micro-BFD or BFD across VLANs?
 # https://blog.ipspace.net/2022/06/mlag-active-active-layer3.html#1316
 # - title: Combining MLAG with BFD
@@ -25,17 +16,19 @@ Multi-Chassis Link Aggregation (MLAG) is a solution that allows you to terminate
 
 It's often used to implement redundant server connections; it was also popular in the days of layer-2 fabrics built with Spanning Tree Protocol (STP). The latter use case is mostly obsolete in the VXLAN/EVPN world.
 
-### What Is Multi-Chassis Ling Aggregation?
+### {{<plushy confused>}}What Is Multi-Chassis Link Aggregation?
 
 {{<series-listing tag="overview" weight="1">}}
 
-{{<series-listing tag="deepdive" title="Technology Deep Dive" soon="deep_dive">}}
+{{<series-listing tag="deepdive" title="Technology Deep Dive" soon="soon_deep" weight="1">}}
 
-### Design Guidelines
+{{<series-listing tag="evpn" title="Using MLAG Clusters with VXLAN and EVPN" soon="soon_evpn">}}
+
+### {{<plushy master>}}Design Guidelines
 
 {{<series-listing tag="design">}}
 
-### MLAG Implementations
+### {{<plushy magic>}}MLAG Implementations
 
 {{<series-listing tag="implement">}}
 
