@@ -4,6 +4,7 @@ mlag_tag: deepdive
 series:
 - mlag
 series_title: Layer-3 Forwarding
+series_weight: 700
 tags:
 - switching
 title: 'MLAG Deep Dive: Layer-3 Forwarding'

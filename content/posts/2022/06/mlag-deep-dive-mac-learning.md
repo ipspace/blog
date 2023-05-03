@@ -4,6 +4,7 @@ mlag_tag: deepdive
 series:
 - mlag
 series_title: Dynamic MAC Learning
+series_weight: 900
 tags:
 - switching
 title: 'MLAG Deep Dive: Dynamic MAC Learning'

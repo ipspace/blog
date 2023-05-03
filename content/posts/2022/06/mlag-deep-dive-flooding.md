@@ -5,6 +5,7 @@ mlag_tag: deepdive
 series:
 - mlag
 series_title: Layer-2 Flooding
+series_weight: 800
 tags:
 - switching
 title: 'MLAG Deep Dive: Layer-2 Flooding'

@@ -1,6 +1,6 @@
 ---
 title: "Dealing with Cisco ACI Quirks"
-date: 2023-05-11 06:36:00
+date: 2023-05-16 06:36:00
 tags: [ fabric, ACI ]
 ---
 Sebastian described an [interesting Cisco ACI quirk](https://blog.ipspace.net/2023/04/evpn-dynamic-mac-learning.html#1790) they had the privilege of chasing around:
