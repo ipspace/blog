@@ -16,8 +16,6 @@ Removing a physical peer link allows you to build a perfectly symmetrical physic
 
 {{<figure src="/2023/05/MLAG-virtual-peer-link.png" caption="MLAG cluster with a virtual peer link over VXLAN fabric">}}
 
-{{<note info>}}This blog post assumes the VXLAN (or PBB) fabric uses dynamic MAC learning. We'll discuss the implications of the EVPN control plane in the next blog post. Please note that some vendors support virtual peer-link only with the EVPN control plane.{{</note>}}
-
 {{<tldr model="somewhat excited ChatGPT GPT-4" comment="The regular summary sounded like an abstract of a research paper written by a team of terminally-bored people. Had to tell ChatGPT to spice it up a notch (you don't want to know how cheerleading the 'excited' summary was 😆).">}}Embracing virtual peer links transforms MLAG clusters by achieving symmetrical physical fabric. While these innovations present enticing possibilities, they also introduce challenges in neighbor loss detection, traffic filtering, and redirection. To navigate these complexities, some vendors smartly leverage the EVPN control plane for smoother implementation.{{</tldr>}}
 
 ## Neighbor Loss Detection
@@ -37,7 +35,7 @@ Regardless of how the vendors implement MLAG neighbor loss detection, it's inevi
 
 Traditional MLAG implementations [use access control lists on links belonging to multi-chassis link aggregation groups](https://blog.ipspace.net/2022/06/mlag-deep-dive-flooding.html) to ensure an MLAG cluster member never sends traffic received over a peer link to a dual-attached node. For example, when X in the above diagram sends a broadcast ARP request, the packet received by S2 over the peer link should be forwarded to Y but not B (because S1 already sent the packet to B).
 
-Vendors usually implement those access control lists by checking the incoming interface (peer link), which is harder to do when dealing with a virtual peer link. A VXLAN-encapsulated packet S2 receives from S1 is almost identical to a VXLAN-encapsulated packet Sx sends when forwarding an ARP request from Z.
+Vendors usually control flooding to dual-homed hosts with egress ACLs on links toward multi-homed hosts. Those ACLs check incoming interface and drop packets arriving through the peer link. It's harder to implement the same functionality when dealing with a virtual peer link -- a VXLAN-encapsulated packet S2 (in the above diagram) receives from S1 is almost identical to a VXLAN-encapsulated packet in the same VXLAN VNI Sx sends when forwarding an ARP request from Z.
 
 There are three obvious ways to emulate the traditional peer link behavior:
 
@@ -54,6 +52,10 @@ The mechanism a vendor can use is limited by the hardware capabilities. Unfortun
 As discussed in the [MLAG-with-VXLAN](https://blog.ipspace.net/2022/09/mlag-deep-dive-vxlan-fabric.html) part of this series, we must use anycast VTEP addresses if we want to rely on dynamic learning of source MAC addresses of encapsulated MAC frames. That approach inevitably results in some traffic arriving at the wrong member of the MLAG cluster.
 
 Traditional MLAG solutions forward the misdirected traffic onto the peer link. When using a virtual peer link, the switch receiving the traffic has to redirect it back into the overlay network, requiring packet recirculation or hardware support for [VXLAN-to-VXLAN (or PBB-to-PBB) bridging](https://blog.ipspace.net/2022/06/vxlan-bridging-dci.html).
+
+Overlay fabrics using [EVPN control plane](/2022/11/mlag-vxlan-evpn.html) don't have to use anycast VTEP addresses, and thus don't have to implement traffic redirection between MLAG peers. Some implementations use per-switch VTEPs, more complex ones (like Cisco Nexus OS) advertise orphan hosts with switch-specific VTEP and dual-homed hosts with anycast VTEP[^ATR].
+
+[^ATR]: Using anycast VTEP for dual-homed hosts without traffic redirection can result in temporary connectivity loss when a dual-homed host becomes an orphan host after a link failure. The details are left as an exercise for the reader.
 
 ## In a Nutshell
 
