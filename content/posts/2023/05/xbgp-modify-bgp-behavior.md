@@ -5,9 +5,9 @@ tags: [ BGP ]
 ---
 When I reposted a link to *[xBGP: Faster Innovation in Routing Protocols](https://nsg.ee.ethz.ch/fileadmin/user_upload/publications/xbgp_nsdi23spring-final.pdf)* paper, someone immediately replied
 
-> Quite interesting, but it feels like this could become the proverbial 15th standard ([more details](https://xkcd.com/927/)). 
+> Quite interesting, but it feels like this could become the proverbial 15th standard. 
 
-xBGP is an API that allows BGP users to implement routing policies (route selection, filtering, or propagation) that use attributes or mechanisms defined in newer IETF RFCs or drafts, so the proverbial 15th standard is not that far off the mark. However, we must remember that what we call BGP is more than just a set of competing standards.
+xBGP is an API that allows BGP users to implement routing policies (route selection, filtering, or propagation) that use attributes or mechanisms defined in newer IETF RFCs or drafts, so the [proverbial 15th standard](https://xkcd.com/927/) is not that far off the mark. However, we must remember that what we call BGP is more than just a set of competing standards.
 <!--more-->
 We have the session management and transport protocol at the lowest layer of the BGP application stack. We could compare them to a relational database synchronization protocol[^BD] (more precisely, log shipping, as the changes made to the local data structures get propagated after the local BGP speaker has evaluated them). That part of the BGP protocol stack is pretty mature[^PMT] and rarely changes.
 

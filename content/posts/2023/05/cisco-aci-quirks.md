@@ -8,7 +8,7 @@ Sebastian described an [interesting Cisco ACI quirk](https://blog.ipspace.net/20
 > We've encountered VM connectivity issues after VM movements from one vPC leaf pair to a different vPC leaf pair with ACI. The issue did not occur immediately (due to ACI's bounce entries) and only sometimes, which made it very difficult to reproduce synthetically, but due to DRS and a large number of VMs it occurred frequently enough, that it was a serious problem for us.
 
 Here's what they figured out:
-
+<!--more-->
 > The problem was, that sometimes the COOP database entry (ACI's separate control plane for MACs and host addresses) was not updated correctly to point to the new leaf pair.
 
 That definitely sounds like a bug, and Erik [mentioned in a later comment that it was probably fixed in the meantime](https://blog.ipspace.net/2023/04/evpn-dynamic-mac-learning.html#1799). However, the fun part was that things worked for almost 10 minutes after the VM migration:

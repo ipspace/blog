@@ -7,9 +7,9 @@ tags: [ switching, VXLAN ]
 title: MLAG Clusters without a Physical Peer Link
 ---
 With the widespread deployment of Ethernet-over-something technologies, it became possible to build MLAG clusters without a physical peer link, replacing it with a virtual link across the core fabric. Avaya was one of the first vendors to implement virtual peer links with Provider Backbone Bridging (PBB) transport, and some data center switching vendors (example: Cisco) offer similar functionality with VXLAN transport.
-
-Removing a physical peer link allows you to build a perfectly symmetrical physical fabric in which the leaf roles are determined exclusively by the device configuration. As always, the devil is in the details -- a vendor implementing a virtual peer link must address these challenges:
 <!--more-->
+Removing a physical peer link allows you to build a perfectly symmetrical physical fabric in which the leaf roles are determined exclusively by the device configuration. As always, the devil is in the details -- a vendor implementing a virtual peer link must address these challenges:
+
 -   Neighbor loss detection
 -   Peer link traffic filters
 -   Redirection of traffic sent to the wrong member of the MLAG cluster
