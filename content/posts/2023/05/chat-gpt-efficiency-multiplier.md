@@ -8,9 +8,9 @@ I got this comment on one of my ChatGPT-related posts:
 
 > It does save time for things like converting output to YAML (I do not feed it proprietary information), or have it write scripts in various languages, converting configs from one vendor to another, although often they are not complete or correct they save time so regardless of what we think of it, it is an efficiency multiplier.
 
-I received similar feedback several times, but as is too often the case, the real answer is *It Depends*.
+I received similar feedback several times, but found that the real answer (as is too often the case) is *It Depends*.
 <!--more-->
-ChatGPT and other large language models are great tools if you have to produce large amounts of bland boilerplate text that could fit into a few bullets[^BYBF]. It's also not too awful when used to summarize that text[^GPU]. If that sounds like your job description, then ChatGPT is indeed an efficiency multiplier, and some people found it useful when generating reports or even blog posts.
+ChatGPT and other large language models are great tools if you have to produce large amounts of bland boilerplate text that could fit into a few bullets[^BYBF]. It's also not too awful when used to summarize that text[^GPU]. If that sounds like your job description, then ChatGPT is indeed an efficiency multiplier, and some people found it useful when generating reports or even [blog posts](https://martinfowler.com/articles/2023-chatgpt-tech-writing.html).
 
 [^BYBF]: ... but you'd be fired if you failed to expand those bullets into a 50-page document.
 
@@ -36,6 +36,6 @@ Also, sometimes _maybe not too wrong_ might be good enough, or as my friend put 
 
 **Back to the basics:** it's unrealistic to expect a language model trained on an unknown dataset covering everything from social sciences to quantum physics to give precise answers like what you'd get from Excel[^CB].
 
-We should stop drinking the Kool-Aid (or ignoring progress) and use tools in a way that brings the best out of them, regardless of what the vendors promised. For example, we should use language models for language processing -- including relevant documentation (context) with the query often [produces much better results](https://www.buildon.aws/posts/well-arch-chatbot), as do external plugins like the [Wolfram plugin](https://www.wolfram.com/wolfram-plugin-chatgpt/). 
+As with any other tool, we should stop drinking the Kool-Aid (or ignoring progress) and use AI tools in a way that brings the best out of them, regardless of what the vendors promised. For example, we should use language models for language processing -- including relevant documentation (context) with the query often [produces much better results](https://www.buildon.aws/posts/well-arch-chatbot), as do external plugins like the [Wolfram plugin](https://www.wolfram.com/wolfram-plugin-chatgpt/). 
 
 [^CB]: ... unless you're [hitting a CPU bug](https://en.wikipedia.org/wiki/Pentium_FDIV_bug) or [sorting human genes](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates).  
