@@ -1,83 +1,58 @@
 #!/usr/bin/env python3
 
-from apiclient.discovery import build
-from oauth2client.service_account import ServiceAccountCredentials
+import gapandas4 as gp
 import os
 import json
 import argparse
 import sys
 
-SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
-KEY_FILE_LOCATION = ""
-VIEW_ID = '175841614'
-URL_LIMIT = ''
+KEY_FILE_LOCATION = os.path.expanduser('~/.ssh/blog-ga-secrets.json')
+PROPERTY_ID = '363350028'
 FORMAT ='json'
 HOST = 'blog.ipspace.net'
 
-def initialize_analyticsreporting(keyfile):
-  """Initializes an Analytics Reporting API V4 service object.
+def get_report():
+  report_request = gp.RunReportRequest(
+    property=f"properties/{PROPERTY_ID}",
+    dimensions=[
+        gp.Dimension(name="hostName"),
+        gp.Dimension(name="pagePath"),
+        gp.Dimension(name="pageTitle")
+    ],
+    metrics=[
+        gp.Metric(name="activeUsers")
+    ],
+    limit=50,
+    date_ranges=[gp.DateRange(start_date="30daysAgo", end_date="today")],
+    dimension_filter=gp.FilterExpression(
+      and_group=gp.FilterExpressionList(
+        expressions=[
+          gp.FilterExpression(
+            filter=gp.Filter(
+              field_name="hostName",
+              string_filter=gp.Filter.StringFilter(value="blog.ipspace.net"))),
+        ]
+      )
+    )
+  )
 
-  Returns:
-    An authorized Analytics Reporting API V4 service object.
-  """
-  credentials = ServiceAccountCredentials.from_json_keyfile_name(keyfile, SCOPES)
-
-  # Build the service object.
-  analytics = build('analyticsreporting', 'v4', credentials=credentials)
-
-  return analytics
-
-
-def get_report(analytics):
-  """Queries the Analytics Reporting API V4.
-
-  Args:
-    analytics: An authorized Analytics Reporting API V4 service object.
-  Returns:
-    The Analytics Reporting API V4 response.
-  """
-  return analytics.reports().batchGet(
-      body={
-        'reportRequests': [
-        {
-          'viewId': VIEW_ID,
-          'dateRanges': [{'startDate': '30daysAgo', 'endDate': 'today'}],
-          'metrics': [{'expression': 'ga:pageviews'}],
-          'dimensions': [{'name': 'ga:hostname'},{'name': 'ga:pagePath'},{'name':'ga:pageTitle'}],
-          'metricFilterClauses': [{
-            'filters': [{
-              "metricName": "ga:pageviews",
-              "operator": "GREATER_THAN",
-              "comparisonValue": "100"
-            }]
-          }]
-        }]
-      }
-  ).execute()
+  return gp.query(KEY_FILE_LOCATION, report_request, report_type="report")
 
 def blog_metrics(results,limit):
-  data = results['reports'][0]['data']['rows']
   blog_posts = []
-  for row in data:
-    (host,path,title) = row['dimensions']
-    if host != HOST:
-      continue
+  for (idx,row) in results.iterrows():
+    path = row['pagePath']
     if limit and not limit in path:
       continue
     if len(path.split('/')) < 3:
       continue
 
     blog_posts.append({
-      'url':   path,
-      'title': title.split(" « ")[0],
-      'count': row['metrics'][0]['values'][0]
+      'url':   row['pagePath'],
+      'title': row['pageTitle'].split(" « ")[0],
     })
 
-  popular = sorted(blog_posts, key=lambda x: int(x['count']), reverse=True)
-  for post in popular:
-    del post['count']
-
-  return popular
+  return blog_posts
 
 def print_html_list(blog_list):
   if len(blog_list) == 0:
@@ -108,8 +83,7 @@ def main():
   fmt = 'html' if args.limit else 'json'
   fmt = args.format or fmt
 
-  analytics = initialize_analyticsreporting(os.path.expanduser(args.config))
-  response = get_report(analytics)
+  response = get_report()
   metrics = blog_metrics(response,args.limit)
 
   if fmt == 'json':
