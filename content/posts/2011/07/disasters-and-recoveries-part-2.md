@@ -6,7 +6,7 @@ series:
 - dr
 tags:
 - high availability
-title: Disasters and Recoveries ... part 2
+title: "Disaster Recovery: Lessons Learned"
 url: /2011/07/disasters-and-recoveries-part-2.html
 ---
 After the [bumpy start of our holidays](https://blog.ipspace.net/2011/07/disasters-happen-its-recovery-that.html), we thoroughly enjoyed the crystal-clear waters, hot sunny weather and the hospitality of inhabitants of [Croatian island Brač](http://en.wikipedia.org/wiki/Bra%C4%8D) \... until my daughter came to me quietly asking "hey, I don't want to raise panic, but my friend saw a weird cloud \... would you mind checking if it's a forest fire" A short walk to a vantage point confirmed the initial observation -- we were facing what turned out to be the worst forest fire in more than a decade. Obviously I was bound to receive another hefty dose of disaster recovery lessons.
