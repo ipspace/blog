@@ -231,7 +231,7 @@ Want to run this lab on your own, or try it out with different devices? No probl
 * Execute **netlab up**
 * Enjoy! 😊
 
-{{<next-in-series page="/posts/2023/04/dhcp-vrf-relay-redundancy.md">}}
+{{<next-in-series page="/posts/2023/05/dhcp-redundant-vrf-relay.md">}}
 ### Coming Up Next
 
 DHCP relaying to a set of redundant DHCP servers works well (more so if the DHCP servers follow the RFC 2131 recommendations) because the client can always identify the final DHCP server, but what if we're using inter-VRF DHCP relaying where the first-hop switch pretends to be the DHCP server? Stay tuned...{{</next-in-series>}}
