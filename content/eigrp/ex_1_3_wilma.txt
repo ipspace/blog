@@ -1,0 +1,41 @@
+version 11.3
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname Wilma
+!
+no ip domain-lookup
+ip host Barney 1.0.0.2
+ip host Wilma 1.0.0.1
+ip host Betty 1.0.0.3
+ip host Fred 1.0.0.4
+!
+interface Loopback0
+ ip address 1.0.0.1 255.255.255.255
+!
+interface Serial0
+ ip address 1.1.0.1 255.255.255.0
+ encapsulation frame-relay
+ no ip mroute-cache
+ bandwidth 128
+ no fair-queue
+ no shutdown
+!
+interface Serial0.1 point-to-point
+ ip unnumbered Loopback0
+ bandwidth 64
+ frame-relay interface-dlci 100   
+!
+router eigrp 1
+ network 1.0.0.0
+!
+ip classless
+!
+line con 0
+line aux 0
+line vty 0 4
+ privilege level 15
+ no login
+!
+end

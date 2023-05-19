@@ -1,0 +1,78 @@
+version 11.3
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname Barney
+!
+no ip domain-lookup
+ip host Barney 1.0.0.2
+ip host Wilma 1.0.0.1
+ip host Betty 1.0.0.3
+ip host Fred 1.0.0.4
+!
+frame-relay switching
+!
+interface Loopback0
+ ip address 1.0.0.2 255.255.255.255
+!
+interface Loopback1
+ ip address 1.0.0.5 255.255.255.255
+ bandwidth 128
+!
+interface Serial0
+ no ip address
+ encapsulation frame-relay
+ no ip mroute-cache
+ bandwidth 64
+ no fair-queue
+ no shutdown
+ frame-relay intf-type dce
+ frame-relay route 201 interface Serial1 200
+ frame-relay route 202 interface Serial2 200
+!
+interface Serial0.1 point-to-point
+ ip unnumbered Loopback0
+ bandwidth 48
+ frame-relay interface-dlci 100   
+!
+interface Serial1
+ no ip address
+ encapsulation frame-relay
+ bandwidth 64
+ no fair-queue
+ no shutdown
+ frame-relay intf-type dce
+ frame-relay route 200 interface Serial0 201
+!
+interface Serial1.1 point-to-point
+ ip unnumbered Loopback0
+ bandwidth 56
+ frame-relay interface-dlci 100   
+!
+interface Serial2
+ no ip address
+ encapsulation frame-relay
+ clockrate 64000
+ no shutdown
+ frame-relay intf-type dce
+ frame-relay route 200 interface Serial0 202
+!
+interface Serial2.1 point-to-point
+ ip unnumbered Loopback0
+ bandwidth 64
+ frame-relay interface-dlci 100   
+!
+router eigrp 1
+ passive-interface Loopback0
+ network 1.0.0.0
+!
+ip classless
+!
+line con 0
+line aux 0
+line vty 0 4
+ privilege level 15
+ no login
+!
+end

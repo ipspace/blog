@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+{{ range .Pages }}
+  {{ if isset .Params "hidden" }}
+  {{ else }}
+<div class='post__item'>
+  <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
+    {{ partial "post-header.html" . }}
+    <div class='post__content' itemprop='articleBody'>
+      {{ .Content }}
+    </div>
+  </article>
+</div>
+  {{ end }}
+{{ end }}
+{{ partial "post-pagination.html" . }}
+{{ partial "footer.html" . }}

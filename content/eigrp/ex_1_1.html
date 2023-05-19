@@ -1,0 +1,83 @@
+---
+title: Exercise 1-1
+hidden: True
+minimal_sidebar: True
+---
+      <p>Find out which route in Fred's routing table
+      comes from Wilma, Betty and Barney. Which router is the successor? Which
+      router is the feasible successor? How many feasible successor does Fred
+      have and why?</p>
+      <h3>Additional
+      data</h3>
+      <p>Exercise
+      is based on Figure 1-20, which is reproduced below</p>
+      <pre>Fred#show ip eigrp topology 1.0.0.5 255.255.255.255
+IP-EIGRP topology entry for 1.0.0.5/32
+  State is Passive, Query origin flag is 1, 1 Successor(s), FD is <font color="#FF00FF">41152000</font>
+  Routing Descriptor Blocks:
+  1.1.0.1 (Serial0), <font color="#0000FF">from 1.1.0.1</font>, Send flag is 0x0
+      Composite metric is (<font color="#800000">41152000</font>/<font color="#800080">40640000</font>), Route is Internal
+      Vector metric:
+        Minimum bandwidth is 64 Kbit
+        Total delay is 45000 microseconds
+        Reliability is 255/255
+        Load is 1/255
+        Minimum MTU is 1500
+        Hop count is 2
+  1.1.0.3 (Serial0), <font color="#0000FF">from 1.1.0.3</font>, Send flag is 0x0
+      Composite metric is (<font color="#800000">46866176</font>/<font color="#800080">46354176</font>), Route is Internal
+      Vector metric:
+        Minimum bandwidth is 56 Kbit
+        Total delay is 45000 microseconds
+        Reliability is 255/255
+        Load is 1/255
+        Minimum MTU is 1500
+        Hop count is 2
+  1.0.0.2 (Serial0.1), <font color="#0000FF">from 1.0.0.2</font>, Send flag is 0x0
+      Composite metric is (<font color="#800000">53973248</font>/<font color="#800080">128256</font>), Route is Internal
+      Vector metric:
+        Minimum bandwidth is 48 Kbit
+        Total delay is 25000 microseconds
+        Reliability is 255/255
+        Load is 1/255
+        Minimum MTU is 1500
+        Hop count is 1</pre>
+
+<h3>Solution</h3>
+
+<p>To find out which router sent a specific entry in EIGRP topology table to
+Fred, refer to the &quot;from&quot; field in each entry (colored <font color="#0000FF">blue</font>).
+The IP address in the &quot;from&quot; field is the adjacent router's interface
+address. To find out which IP address belongs to which router, examine Example
+1-8, Example 1-10 and Example 1-13. The IP address of the adjacent router is
+shown in the debugging printout and the Example header tells you which router
+sent specific packets to Fred. Based on these examples, the interface IP
+addresses of Wilma, Betty and Barney are:<br>
+      <table class='fmtTable'>
+        <tr>
+          <td width="50%" bgcolor="#C0C0C0">Router name</td>
+          <td width="50%" bgcolor="#C0C0C0">IP address</td>
+        </tr>
+        <tr>
+          <td width="50%">Barney</td>
+          <td width="50%">1.0.0.2</td>
+        </tr>
+        <tr>
+          <td width="50%">Betty</td>
+          <td width="50%">1.1.0.3</td>
+        </tr>
+        <tr>
+          <td width="50%">Wilma</td>
+          <td width="50%">1.1.0.1</td>
+        </tr>
+      </table>
+
+<p>The first entry in the topology database thus comes from Wilma, the second
+from Betty and the last one from Barney.<p>The topology database printout is
+      always sorted by the router's own distance (colored <font color="#800000">brown</font>
+      in the printout). The first entry in the topology database always points
+      toward the successor, in this case Wilma.<p>Feasible successors are all
+      routers with reported distance (colored <font color="#800080">purple</font>
+      in the printout) smaller than the router's own distance (colored <font color="#FF00FF">pink</font>).
+      Barney is therefore a feasible successor, but Betty is not. Fred has only
+      one feasible successor.

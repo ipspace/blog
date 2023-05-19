@@ -1,0 +1,77 @@
+---
+title: Exercise 10-3
+hidden: True
+minimal_sidebar: True
+---
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Introduction
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">The
+      exercise is part of case study describing IPX routing in Great Coals network shown below:
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip"><img border="0" src="ex_8_2.gif" width="486" height="352">
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip">To improve the EIGRP
+      convergence and stability in the network, the network design uses
+      hierarchical default routing. Please refer to &quot;Case Study -
+      GreatCoals network&quot; in Chapter 10 for more details. Solving <a href="ex_10_2.htm">Exercise
+      10-2</a> is a prerequisite for this exercise.
+      </p>
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Exercise
+      </h3>
+      <p style="mso-pagination:widow-orphan;mso-list:skip">How could you improve
+      the GreatCoals design to solve the low-speed international link
+      bottleneck?<o:p>
+      </o:p>
+      </p>
+
+<h3>Solution</h3>
+
+      <p>There are two possible solutions for this exercise:
+      <ul>
+        <li>
+          Deploy another IPX EIGRP process between <i>Austin</i> router and
+          international sales offices. <font color="#800000">This solution is
+          not optimal as a failure of one low-speed international link will
+          involve all international sales offices in diffusing computation.</font>
+        </li>
+        <li>Use IPX EIGRP between <i>Austin</i> router and international sales
+          offices only to propagate SAP information and use IPX RIP for routing
+          updates. With this setup, the <i>Austin </i>router will never query
+          international sales offices when running diffusing computation.
+        </li>
+      </ul>
+      <p>The router configuration command needed to implement the second
+      solution are as follows:</p>
+      <pre>hostname Core-7576
+!
+ipx routing
+ipx internal-network FFFFFF01
+!
+interface serial 1/2/3
+ description Link toward China
+ ipx network 12345
+<b> ipx sap-incremental eigrp 131 rsup-only
+ ipx advertise-default-route-only 12345
+</b>! 
+ipx router eigrp 131
+ network all
+ distribute-list DefaultOnly out
+!
+<b>ipx router rip
+ network 12345</b></pre>
+      <p>corresponding commands on the <i>China</i> router are</p>
+      <pre>hostname China
+!
+ipx routing
+!
+interface serial 0
+ description Link toward Austin
+ ipx network 12345
+<b> ipx sap-incremental eigrp 131 rsup-only
+</b>! 
+ipx router eigrp 131
+ network all
+!
+<b>ipx router rip
+ network 12345</b></pre>
+    

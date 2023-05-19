@@ -1,0 +1,56 @@
+---
+title: Exercise 2-2
+hidden: True
+minimal_sidebar: True
+---
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Introduction
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">Using
+      default EIGRP setup, it's impossible to achieve desired load-sharing
+      between locations Chicago and San Francisco in the network shown below:
+      </p>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip"><img border="0" src="ex_2_2.gif" width="458" height="378">
+      </p>
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Explanation of the
+      problem
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">Chicago
+      router has two equal-cost routes toward San Francisco LAN, as the cost of
+      these routes is dictated by the lowest bandwidth on the path - 64 kbps
+      between San Francisco and San Jose. The traffic going from Chicago toward
+      San Francisco will be equally distributed on both links between Chicago
+      and San Jose, whereas the desired ratio would be 2:1 based on the link
+      speeds.
+      </p>
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Exercise
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">How could you modify the EIGRP design in network
+      shown above to ensure proportional load balancing from Chicago toward all
+      destinations in the San Jose area?&nbsp;
+      </p>
+
+<h3>Solution</h3>
+
+<p>There are three solutions to this exercise:
+<ul>
+  <li>modify the bandwidth on the San Francisco - San Jose link to be
+          higher than 2 Mbps. The cost of the routes between Chicago and San
+          Francisco will be dictated by the new minimum bandwidth on the links
+          between Chicago and San Jose. <font color="#FF0000">This solution is
+          not recommended as it may lead to WAN-related problems due to
+          misconfigured interface bandwidth.</font></li>
+  <li>Run another routing protocol (for example, RIP) between San Jose and
+          remote sites in Bay area and redistribute routes toward the remote
+          sites into the EIGRP process with a high bandwidth, for example using
+          command</li>
+      <pre>router eigrp 100
+ redistribute rip 5000000 10000 100 100 1500</pre>
+  <li>Run another routing protocol (for example, RIP) between San Jose and
+          remote sites in Bay area. Deploy BGP in the network and redistribute
+          RIP routes into BGP. The routes of remote sites in Bay area (for
+          example, San Francisco) are no longer in EIGRP topology table, so the
+          routing from Chicago toward sites in Bay area is influenced only by
+          the EIGRP cost of BGP next hop (San Jose router), resulting in desired
+          load sharing. Please refer to Case Study #4 in Chapter 9, &quot;Integrating EIGRP with other enterprise routing
+          protocols&quot; for more details.</li>
+</ul>
