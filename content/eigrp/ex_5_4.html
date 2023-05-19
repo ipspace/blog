@@ -1,0 +1,156 @@
+---
+title: Exercise 5-4
+hidden: True
+minimal_sidebar: True
+---
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Introduction
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">The
+      exercise is part of convergence scenario in a large hierarchical network
+      shown below:
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip"><img src="ex_5_4.gif">
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip">Network has almost
+      converged and <i>Core-A</i> has already selected <i>Core-B </i>as its
+      successor, resulting in update packets sent to DR routers and poison
+      update sent to <i>Core-B</i>.
+      </p>
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Exercise
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">Compute the EIGRP metric that <i>Core-A</i>
+      reports to DR routers for <i>RO-11</i> and <i>DR-1</i> LAN. Compute the
+      EIGRP metric for these destinations on <i>DR-2</i> and <i>DR-3</i> and
+      verify that they select the paths over primary PVCs.
+      </p>
+
+<h3>Additional data</h3>
+
+<p>To compute the metrics, you need delay and bandwidth parameters of all (sub)interface
+in the network. These parameters are specified at the beginning of Case Study #2
+in Chapter 5 and are summarized in the table below for your convenience.</p>
+
+      <table border="1" cellpadding="2" bordercolordark="#666666" bordercolorlight="#FFFFFF">
+        <tr>
+          <th>Link</th>
+          <th>Bandwidth</th>
+          <th>Delay</th>
+        </tr>
+        <tr>
+          <td>RO to DR</td>
+          <td align="right">64 kbps</td>
+          <td align="right">20000 msec</td>
+        </tr>
+        <tr>
+          <td>Primary PVC DR to Core</td>
+          <td align="right">512 kbps</td>
+          <td align="right">10000 msec</td>
+        </tr>
+        <tr>
+          <td>Shadow PVC DR to Core</td>
+          <td align="right">256 kbps</td>
+          <td align="right">40000 msec</td>
+        </tr>
+        <tr>
+          <td>Server LAN (Token Ring)</td>
+          <td align="right">16 Mbps&nbsp;</td>
+          <td align="right">630 msec</td>
+        </tr>
+        <tr>
+          <td>all LAN interfaces</td>
+          <td align="right">10 Mbps</td>
+          <td align="right">1000 msec</td>
+        </tr>
+      </table>
+
+<h3>Solution</h3>
+
+      <p><i>Core-A</i> has already selected <i>Core-B</i> as its successor. The
+      distance of <i>RO-11 </i>LAN and <i>DR-1</i> LAN on <i>Core-A </i>is thus
+      <table border="1" cellpadding="2" bordercolordark="#666666" bordercolorlight="#FFFFFF">
+        <tr>
+          <th>Destination</th>
+          <th>Minimum Bandwidth</th>
+          <th>Total Delay</th>
+        </tr>
+        <tr>
+          <td><i>RO-11</i> LAN</td>
+          <td align="right">64 kbps</td>
+          <td align="right">61630</td>
+        </tr>
+        <tr>
+          <td><i>DR-1</i> LAN</td>
+          <td align="right">256 kbps</td>
+          <td align="right">41630</td>
+        </tr>
+      </table>
+
+<p><i>Core-B</i> has already reported its distance to the same destinations in
+Step #6 of the convergence scenario. The distance reported by <i>Core-B </i>is:
+      <table border="1" cellpadding="2" bordercolordark="#666666" bordercolorlight="#FFFFFF">
+        <tr>
+          <th>Destination</th>
+          <th>Minimum Bandwidth</th>
+          <th>Total Delay</th>
+        </tr>
+        <tr>
+          <td><i>RO-11</i> LAN</td>
+          <td align="right">64 kbps</td>
+          <td align="right">61000</td>
+        </tr>
+        <tr>
+          <td><i>DR-1</i> LAN</td>
+          <td align="right">256 kbps</td>
+          <td align="right">41000</td>
+        </tr>
+      </table>
+      <p>DR-2 receives update from <i>Core-A </i>over shadow PVC and keeps its
+      current successor (<i>Core-B</i>) which is reachable over primary PVC. <i>DR-3</i>
+      receives updates from <i>Core-A</i> over primary PVC resulting in the
+      following EIGRP topology table on <i>DR-3</i>:
+      <table border="1" cellpadding="2" bordercolordark="#666666" bordercolorlight="#FFFFFF">
+        <tr>
+          <th rowspan="2">Destination</th>
+          <th colspan="2">Reported by Core</th>
+          <th colspan="2">Distance on <i>DR-3</i></th>
+        </tr>
+        <tr>
+          <th>Bandwidth</th>
+          <th>Delay</th>
+          <th>Bandwidth</th>
+          <th>Delay</th>
+        </tr>
+        <tr>
+          <td><i>RO-11</i> LAN over <i>Core-A</i></td>
+          <td align="right">64 kbps</td>
+          <td align="right">61000</td>
+          <td align="right">64 kbps</td>
+          <td align="right">101000</td>
+        </tr>
+        <tr>
+          <td><i>DR-1</i> LAN over <i>Core-A</i></td>
+          <td align="right">256 kbps</td>
+          <td align="right">41000</td>
+          <td align="right">256 kbps</td>
+          <td align="right">81000</td>
+        </tr>
+        <tr>
+          <td><i>RO-11</i> LAN over <i>Core-B</i></td>
+          <td align="right">64 kbps</td>
+          <td align="right">61630</td>
+          <td align="right">64 kbps</td>
+          <td align="right">81630</td>
+        </tr>
+        <tr>
+          <td><i>DR-1</i> LAN over <i>Core-B</i></td>
+          <td align="right">256 kbps</td>
+          <td align="right">41630</td>
+          <td align="right">256 kbps</td>
+          <td align="right">61630</td>
+        </tr>
+      </table>
+      <p>Based on the contents of its EIGRP topology table, <i>DR-3</i> selects <i>Core-B</i>
+      (reachable over primary PVC) as its successor for all destinations under
+      discussion.<p>LAN subnets on <i>DR-1 </i>and <i>RO-11</i> are thus
+      reachable over primary PVC from <i>DR-2</i> and <i>DR-3.</i>
+    

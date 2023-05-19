@@ -1,0 +1,36 @@
+---
+title: Exercise 10-2
+hidden: True
+minimal_sidebar: True
+---
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Introduction
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">The
+      exercise is part of case study describing IPX routing in Great Coals network shown below:
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip"><img border="0" src="ex_8_2.gif" width="486" height="352">
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip">To improve the EIGRP
+      convergence and stability in the network, the network design uses
+      hierarchical default routing. Please refer to &quot;Case Study -
+      GreatCoals network&quot; in Chapter 10 for more details.
+      </p>
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Exercise
+      </h3>
+      <p style="mso-pagination:widow-orphan;mso-list:skip">When
+      the new network design was implemented, the number of routes in all
+      routers drastically decreased, and the number of SIA events was reduced.
+      SIA events still occurred occasionally, though, and the network was still
+      converging slowly. Why? Simulate what happens when a regional WAN
+      connection in Germany fails.
+      </p>
+
+<h3>Solution</h3>
+
+      <p>When a regional WAN connection in Germany fails, the <i>Frankfurt </i>router
+      will start diffusing computation and query the <i>Austin </i>router, which
+      will in turn query all of its neighbors, including the routers reachable
+      through low-speed international links. These links slow down convergence
+      as every international sales office router has to respond to the query
+      before the network convergence is complete. They could also become a
+      bottleneck and cause SIA event somewhere else in the network.

@@ -1,0 +1,39 @@
+---
+title: Exercise 7-2
+hidden: True
+minimal_sidebar: True
+---
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Introduction
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">Case study
+      in Chapter 7 discusses partial connectivity in ISDN dial backup scenario
+      in the network shown below:
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip"><img border="0" src="ex_7_2.gif" width="582" height="397">
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip">The case study
+      documents various connectivity tests run in the network and their results.
+      Please refer to the case study itself for more details.
+      </p>
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Exercise
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">Why did the ping from remote office router to the
+      regional server work while the ping from remote office PC to the same
+      router failed?
+      </p>
+
+<h3>Solution</h3>
+
+      <p>This exercise describes a very common problem encountered in
+      connectivity troubleshooting. When you ping a remote destination reachable
+      through a WAN or ISDN connection from a router using the standard form of <b>ping</b>
+      command, the source IP address in the ICMP packet is the IP address of
+      router's WAN or ISDN interface. In the case study, the IP address of the
+      ISDN interface of the <i>RO-xy </i>router was reachable by all the routers
+      in the network through the <i>RAS </i>router, but the Ethernet interface
+      of the same router was not.<h3 style="mso-pagination:widow-orphan;mso-list:skip">Recommendation
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">When troubleshooting connectivity in your
+      network, always use extended <b>ping</b><i> </i>command and specify the
+      source IP address that you want to use.
+      </p>

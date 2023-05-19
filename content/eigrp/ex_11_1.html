@@ -1,0 +1,37 @@
+---
+title: Exercise 11-1
+hidden: True
+minimal_sidebar: True
+---
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Introduction
+      </h3>
+      <p class="SB" style="mso-pagination:widow-orphan;mso-list:skip">The
+      exercise is part of case study describing AppleTalk routing in Frisco
+      Systems network shown below:
+      </p>
+      <p style="mso-pagination:widow-orphan;mso-list:skip"><img border="0" src="ex_11_1.gif" width="582" height="277">
+      </p>
+      <h3 style="mso-pagination:widow-orphan;mso-list:skip">Exercise
+      </h3>
+      <p style="mso-pagination:widow-orphan;mso-list:skip">Propose a new
+      AppleTalk routing design that will reduce the EIGRP diameter without
+      increasing the load on low-speed access-layer links.<o:p>
+      </o:p>
+      </p>
+
+<h3>Solution</h3>
+
+      <p>The only way to reduce EIGRP diameter in AppleTalk network is to
+      introduce another routing protocol in the network. As the load on
+      low-speed links shall not increase, the new routing protocol has to be
+      introduced in the ATM backbone. Since AppleTalk implementation of EIGRP
+      does not support several EIGRP processes, only RTMP or AURP are a viable
+      alternative. The new routing design would therefore be:
+      <ul>
+        <li>Run AppleTalk EIGRP in each Frame Relay cloud;</li>
+        <li>Run RTMP or AURP in the ATM backbone;</li>
+        <li>Redistribute AppleTalk EIGRP into RTMP/AURP (and vice versa) at each
+          core router.</li>
+      </ul>
+      <p>Please refer also to the section &quot;Case study solution&quot; in
+      Chapter 11 for additional design details and router configurations.
