@@ -1,7 +1,9 @@
 ---
-title: "RFC 7868: The Definitive EIGRP Guide"
-date: 2021-05-01 07:18:00
-tags: [ EIGRP ]
+date: 2021-05-01 07:18:00+00:00
+eigrp_tag: basic
+tags:
+- EIGRP
+title: 'RFC 7868: The Definitive EIGRP Guide'
 ---
 Seventeen years after I started working on my [EIGRP book](https://www.amazon.com/EIGRP-Network-Design-Solutions-Definitive/dp/1578701651), the reverse engineering days were over: [RFC 7868](https://tools.ietf.org/html/rfc7868) is _the_ definitive guide to modern EIGRP (I'm not familiar with at least half of the concepts mentioned in it).
 

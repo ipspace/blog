@@ -1,11 +1,13 @@
 ---
 date: 2021-02-25 07:22:00+00:00
 sd-wan_tag: details
+eigrp_tag: deploy
 series:
 - UCMP
 tags:
 - IP routing
 - SD-WAN
+- EIGRP
 title: Does Unequal-Cost Multipathing Make Sense?
 ---
 Every now and then I'm getting questions along the lines "*why doesn't X support unequal-cost multipathing (UCMP)?*" for X in [ OSPF, BGP, IS-IS ]. 

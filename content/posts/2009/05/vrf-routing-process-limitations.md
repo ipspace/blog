@@ -1,14 +1,15 @@
 ---
 date: 2009-05-29 06:33:00+02:00
+eigrp_tag: deploy
+lastmod: 2020-12-29 09:34:00
 tags:
 - OSPF
 - EIGRP
 - RIP
 - BGP
 - MPLS VPN
-title: VRF Routing Process Limitations
+title: Limitations of VRF Routing Protocols on Cisco IOS
 url: /2009/05/vrf-routing-process-limitations.html
-lastmod: 2020-12-29 09:34:00
 ---
 Cisco IOS allows up to 32 routing protocols contributing routes into a routing table (two of them are always *connected* and *static*). The limitation applies to the global routing table as well as to each individual VRF; the architectural reason for the limit is a 32-bit mask that's used in Cisco IOS to mark individual routing protocols. The routing protocol ID (as displayed by the **show ip protocol summary** command) is thus limited to values 0 to 31. With value 0 being reserved for connected routes and value 1 for static routes, 30 values are left to number the routing protocols.
 
