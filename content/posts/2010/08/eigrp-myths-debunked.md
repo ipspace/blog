@@ -1,5 +1,6 @@
 ---
 date: 2010-08-03 07:10:00.003000+02:00
+eigrp_tag: basic
 tags:
 - EIGRP
 title: EIGRP Myths Debunked

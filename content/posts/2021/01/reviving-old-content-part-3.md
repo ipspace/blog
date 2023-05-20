@@ -1,7 +1,7 @@
 ---
 title: "Reviving Old Content, Part 3"
 date: 2021-01-04 08:13:00
-tags: [ BGP, OSPF, IS-IS, MPLS VPN, IP routing, EIGRP ]
+tags: [ BGP, OSPF, IS-IS, MPLS VPN, IP routing ]
 ---
 We had the usual gloomy December weather during the end-of-year holidays, and together with the partial lockdown (with confusing ever-changing rules only someone in Balkans could dream up) it managed to put me in OCD mood... and so I decided to remove broken links from the old blog posts. 
 

@@ -1,5 +1,6 @@
 ---
 date: 2010-10-04 06:50:00+02:00
+eigrp_tag: deploy
 tags:
 - EIGRP
 - MPLS VPN
@@ -16,7 +17,7 @@ In the end, I had to admit that the only viable solution is creation of two VRFs
 
 Just in case you'd need to do something similar, here's the relevant part of the PE-router configuration (note that we're using **eigrp 11** everywhere even though the AS numbers in the VRFs are 1 and 2).
 
-``` {.code}
+```
 ip vrf Cust_AS_1
  rd 65000:1
  route-target export 65001:1

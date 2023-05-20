@@ -1,12 +1,13 @@
 ---
 date: 2008-06-26 11:42:00+02:00
+eigrp_tag: deploy
+lastmod: 2020-12-28 10:32:00
 tags:
 - EIGRP
 - BGP
 - MPLS VPN
 title: Using EIGRP in MPLS VPN Networks
 url: /2008/06/simple-eigrp-in-mpls-vpn-networks.html
-lastmod: 2020-12-28 10:32:00
 ---
 We described EIGRP-in-VRF in [MPLS and VPN Architectures, Volume II](http://www.amazon.com/gp/product/1587051125?ie=UTF8&tag=cisioshinandt-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1587051125). A few details have changed in the meantime; you have to configure the following features to get EIGRP running within MPLS/VPN environment:
 
