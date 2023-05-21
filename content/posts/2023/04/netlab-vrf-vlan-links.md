@@ -6,8 +6,8 @@ tags:
 - netlab
 title: 'Using VLAN and VRF Links in netlab Topologies'
 ---
-I already mentioned the introduction of [VRF-](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html#module-vrf-links) and [VLAN access](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html#module-vlan-creating-access-links) links in
-_netlab_ [release 1.5.1](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-1). Let's see how they can simplify your lab topologies.
+I already mentioned the introduction of [VRF-](https://netlab.tools/module/vrf/#module-vrf-links) and [VLAN access](https://netlab.tools/module/vlan/#module-vlan-creating-access-links) links in
+_netlab_ [release 1.5.1](https://netlab.tools/release/1.5/#release-1-5-1). Let's see how they can simplify your lab topologies.
 
 I always tried to make lab topologies as concise as I could,  sometimes cheating using JSON-in-YAML syntax. For example, the topology describing three routers running OSPF could be as simple as this:
 
@@ -179,6 +179,6 @@ You can find the above topology file in the [VXLAN bridging](https://github.com/
 
 ### Get Started
 
-Both features were introduced in [netlab release 1.5.1](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-1). To upgrade, execute `pip3 install --upgrade networklab`.
+Both features were introduced in [netlab release 1.5.1](https://netlab.tools/release/1.5/#release-1-5-1). To upgrade, execute `pip3 install --upgrade networklab`.
 
-New to *netlab*? Start with the [Getting Started document](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) and the [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html).
+New to *netlab*? Start with the [Getting Started document](https://netlab.tools/tutorials/) and the [installation guide](https://netlab.tools/install/).

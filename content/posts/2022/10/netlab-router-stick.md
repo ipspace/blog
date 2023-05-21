@@ -74,7 +74,7 @@ links:
 
 And that's all you have to do. Execute **netlab up**[^HW] and start exploring. Want to use some other device instead of Arista cEOS? Add **-d _device_** to **netlab up** command, for example `netlab up -d cumulus`.
 
-[^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html), [installing the software](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html), and [downloading Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
+[^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netlab.tools/install/ubuntu-vm/), [installing the software](https://netlab.tools/labs/clab/), and [downloading Arista cEOS container](https://netlab.tools/labs/ceos/).
 
 Here are the relevant parts of Arista cEOS configuration (for the few readers who still don't have a working *netlab* environment):
 
@@ -104,8 +104,8 @@ interface Ethernet1.2
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VLAN/vlan-router-on-a-stick#changing-device-types)? No problem:
 
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-router-on-a-stick/topology.yml) into an empty directory
 * Execute **netlab up**
 * Enjoy! 😊

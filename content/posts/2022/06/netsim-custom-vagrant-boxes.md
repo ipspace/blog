@@ -50,7 +50,7 @@ You probably hate using a ruler to figure out proper YAML indentation as much as
 defaults.devices.eos.clab.image: ceos:4.27.0F
 ```
 
-Each dotted name is expanded into a dictionary, and that dictionary is [merged](https://netsim-tools.readthedocs.io/en/latest/defaults.html#defaults-deep-merging) with the lab topology ([Box package](https://github.com/cdgriffith/Box) does a wonderful job doing that), allowing you do use the same path in multiple settings:
+Each dotted name is expanded into a dictionary, and that dictionary is [merged](https://netlab.tools/defaults/#defaults-deep-merging) with the lab topology ([Box package](https://github.com/cdgriffith/Box) does a wonderful job doing that), allowing you do use the same path in multiple settings:
 
 {{<cc>}}Changing multiple Arista images{{</cc>}}
 ```

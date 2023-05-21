@@ -87,10 +87,10 @@ You'll find the [lab topology and configuration files on GitHub](https://github.
 
 [^SAS]: Some Assembly Required: you'll have to install Docker, *containerlab* and Arista EOS container on a Linux host.
 
-Alternatively, you can use *[netlab](https://netsim-tools.readthedocs.io/en/latest/index.html)* to set up the lab:
+Alternatively, you can use *[netlab](https://netlab.tools/)* to set up the lab:
 
-* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html) and your preferred lab environment
+* [Install *netlab*](https://netlab.tools/install/) and your preferred lab environment
 * Copy *topology.yml* file into an empty directory
 * Execute **netlab up**
 
-You can [specify virtualization provider or default device type](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html) with **netlab up**, making it easy to test the route reflector behavior on a [dozen devices supported by *netlab*](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-configuration-modules).
+You can [specify virtualization provider or default device type](https://netlab.tools/netlab/up/) with **netlab up**, making it easy to test the route reflector behavior on a [dozen devices supported by *netlab*](https://netlab.tools/platforms/#supported-configuration-modules).

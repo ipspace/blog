@@ -8,7 +8,7 @@ title: Introducing netlab Plugins
 ---
 Remember the [BGP anycast lab](/2021/12/bgp-anycast-lab.html) I described in December 2021? In that blog post I briefly mentioned a problem of extraneous IBGP sessions and promised to address it at a later date. Let's see how we can fix that with a *netlab* plugin.
 
-We always knew that it's impossible to implement every nerd knob someone would like to have when building their labs, and extending the tool with Python plugins seemed like the only sane way to go. We added [custom plugins](https://netsim-tools.readthedocs.io/en/latest/plugins.html) to *netlab* in late 2021, but I didn't want to write about them because we had to optimize the internal data structures first.
+We always knew that it's impossible to implement every nerd knob someone would like to have when building their labs, and extending the tool with Python plugins seemed like the only sane way to go. We added [custom plugins](https://netlab.tools/plugins/) to *netlab* in late 2021, but I didn't want to write about them because we had to optimize the internal data structures first.
 <!--more-->
 {{<note>}}Even though you don't need to know anything about the internal *netlab* functions to write plugins, your code has to modify the lab topology data model, and we had to get that stabilized, which we hopefully managed to do over the [New Year break](/2022/01/netsim-tools-1.1.html).{{</note>}}
 
@@ -61,7 +61,7 @@ def init(topo: Box) -> None:
 * BGP anycast attribute is explained in the [Building a BGP Anycast Lab](https://blog.ipspace.net/2021/12/bgp-anycast-lab.html) blog post.
 {{</note>}}
 
-Finally, I wanted to modify the lists of BGP neighbors once the [topology transformation](https://netsim-tools.readthedocs.io/en/latest/dev/transform.html) has been complete. **post_transform** seemed the perfect [hook to use](https://netsim-tools.readthedocs.io/en/latest/plugins.html), and all I had to do was to:
+Finally, I wanted to modify the lists of BGP neighbors once the [topology transformation](https://netlab.tools/dev/transform/) has been complete. **post_transform** seemed the perfect [hook to use](https://netlab.tools/plugins/), and all I had to do was to:
 
 * Find the nodes with **bgp.anycast** attribute
 * Set **bgp.advertise_loopback** to *False* (so I can further simplify the topology file)
@@ -79,16 +79,16 @@ def post_transform(topo: Box) -> None:
 Let's unpack that code:
 
 * All plugin hooks are called with a single parameter -- current lab topology. When the **init** hook is called, you'll be working with the original topology definition, at the **post_transform** stage the data model has been extensively modified.
-* Lab devices are described in the [**nodes** dictionary](https://netsim-tools.readthedocs.io/en/latest/nodes.html) with the lab topology.
-* Each node is a dictionary that contains numerous parameters, including [configuration module](https://netsim-tools.readthedocs.io/en/latest/modules.html) settings (another dictionary).
+* Lab devices are described in the [**nodes** dictionary](https://netlab.tools/nodes/) with the lab topology.
+* Each node is a dictionary that contains numerous parameters, including [configuration module](https://netlab.tools/modules/) settings (another dictionary).
 * Python Box module is a wonderful tool when you need to traverse deep hierarchies, but it does have a few side effects. With the default *netlab* settings, Python Box automatically creates empty dictionaries when needed. That's awesome in 90% of the cases, but sometimes I don't want to get extra dictionaries, so I have to be a bit careful -- instead of `if node.bgp.anycast:` (which would work even if the node had no BGP parameters), I decided to do a check that would never auto-create empty data structures.
 * If the **node.bgp.anycast** attribute is set, it's safe to work with BGP parameters, so we can assume that we can set **advertise_loopback** and that the node has a list of BGP neighbors in **node.bgp.neighbors** (even if that list happens to be empty).
 * Every BGP session described in **node.bgp.neighbors** includes session type in **type** attribute, and the value of that parameter could be `ibgp` or `ebgp`. The list comprehension I used selects all list elements that are not IBGP sessions.
 
 Want to do something similar? It's not too hard once understand the *netlab* data structures. Here's how you can get there:
 
-* Build a [lab topology](https://netsim-tools.readthedocs.io/en/latest/topology-reference.html)
-* Run `netlab create -o yaml` to get the final data model. You can also [limit the output to individual components of the data model](https://netsim-tools.readthedocs.io/en/latest/outputs/yaml-or-json.html).
+* Build a [lab topology](https://netlab.tools/topology-reference/)
+* Run `netlab create -o yaml` to get the final data model. You can also [limit the output to individual components of the data model](https://netlab.tools/outputs/yaml-or-json/).
 * Explore the data structures and figure out what needs to be modified.
 
 You can also open a discussion in [*netlab* GitHub repository](https://github.com/ipspace/netlab/) or ask a question in [*netlab* channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [networktocode Slack team](https://networktocode.slack.com) and we'll do our best to help you.

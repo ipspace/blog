@@ -144,8 +144,8 @@ Apart from the minor details listed above, it all looks like a walk in the park,
 Want to run this lab on your own, or try it out with different devices? No problem:
 
 * Make sure your preferred device supports inter-VRF DHCP relaying, VXLANs and EVPN.
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [EVPN VRF DHCP relaying example](https://github.com/ipspace/netlab-examples/tree/master/DHCP/evpn-relay) into an empty directory
 * If you want to use a relaying device that's not Arista EOS, add a configuration template to `dhcp-relay` subdirectory.
 * Execute **netlab up**

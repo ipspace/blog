@@ -224,8 +224,8 @@ Regardless of how it comes to its conclusions, the second DHCP server SHOULD fig
 Want to run this lab on your own, or try it out with different devices? No problem:
 
 * Make sure your preferred device supports DHCP relaying and VLANs. VXLAN support is optional, but you'll have to modify the lab configuration file if your device doesn't support VXLAN.
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [DHCP relaying with redundant servers](https://github.com/ipspace/netlab-examples/tree/master/DHCP/vxlan-redundant-server) example into an empty directory
 * If you want to use a relaying device that's not Arista EOS, add a configuration template to `dhcp-relay` subdirectory.
 * Execute **netlab up**

@@ -7,7 +7,7 @@ tags:
 - netlab
 title: Creating MPLS/VPN Labs With netlab
 ---
-Two week ago I described how to create a simple VRF Lite lab with *netlab* [VRF configuration module](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html). Adding MPLS/VPN to the mix and creating a full-blown MPLS/VPN lab is a piece of cake. In this blog post we'll build a simple topology with two VRFs (*red* and *blue*) and two PE-routers:
+Two week ago I described how to create a simple VRF Lite lab with *netlab* [VRF configuration module](https://netlab.tools/module/vrf/). Adding MPLS/VPN to the mix and creating a full-blown MPLS/VPN lab is a piece of cake. In this blog post we'll build a simple topology with two VRFs (*red* and *blue*) and two PE-routers:
 
 {{<figure src="/2022/04/mpls-vpn-simple.png" caption="Lab topology">}}
 <!--more-->
@@ -234,6 +234,6 @@ router ospf 101 vrf blue
 
 You'll find the [lab topology file on GitHub](https://github.com/ipspace/netlab-examples/tree/master/MPLS/vpn-simple). To use it:
 
-* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html) and your preferred lab environment. These days I find it easiest to use Arista cEOS with containerlab, but the [data plane (pings) probably won't work](https://blog.ipspace.net/2022/03/dataplane-quirks-virtual-devices.html).
+* [Install *netlab*](https://netlab.tools/install/) and your preferred lab environment. These days I find it easiest to use Arista cEOS with containerlab, but the [data plane (pings) probably won't work](https://blog.ipspace.net/2022/03/dataplane-quirks-virtual-devices.html).
 * Copy [topology files](https://github.com/ipspace/netlab-examples/tree/master/VRF/vrf-lite-hosts) into an empty directory
 * Execute **netlab up** with the parameters described above.

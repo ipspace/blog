@@ -3,7 +3,7 @@ title: "Worth Reading: Official Ansible Collection for SR Linux"
 date: 2023-05-14 07:22:00
 tags: [ automation ]
 ---
-Roman Dodin wrote an article [describing Nokia's Ansible collection for SR Linux](https://learn.srlinux.dev/blog/2023/official-ansible-collection-for-sr-linux/). Although I don't use SR Linux (even though it was the first container supported by [netlab](https://netsim-tools.readthedocs.io/en/latest/) ;), it was still very interesting to read about the design tradeoffs they had to make:
+Roman Dodin wrote an article [describing Nokia's Ansible collection for SR Linux](https://learn.srlinux.dev/blog/2023/official-ansible-collection-for-sr-linux/). Although I don't use SR Linux (even though it was the first container supported by [netlab](https://netlab.tools/) ;), it was still very interesting to read about the design tradeoffs they had to make:
 <!--more-->
 * Even though SR Linux uses REST API, they decided to implement a dedicated Ansible module because using the URI module results in playbooks that are too verbose (plus you might get into interesting fights if your REST API expects you to login and use session cookies).
 * Using a dedicated module also simplifies error handling -- the module can return a cleaned-up error message, not a raw HTTP error.

@@ -9,11 +9,11 @@ tags:
 - netlab
 title: netlab EVPN/VXLAN Bridging Example
 ---
-[netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netsim-tools.readthedocs.io/en/latest/module/vxlan.html) and [EVPN control plane](https://netsim-tools.readthedocs.io/en/latest/module/evpn.html). Last week we [replaced a VLAN trunk with VXLAN transport](/2022/09/netlab-vxlan-bridging.html), now we'll [replace static ingress replication with EVPN control plane](https://github.com/ipspace/netlab-examples/tree/master/EVPN/vxlan-bridging).
+[netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netlab.tools/module/vxlan/) and [EVPN control plane](https://netlab.tools/module/evpn/). Last week we [replaced a VLAN trunk with VXLAN transport](/2022/09/netlab-vxlan-bridging.html), now we'll [replace static ingress replication with EVPN control plane](https://github.com/ipspace/netlab-examples/tree/master/EVPN/vxlan-bridging).
 
 {{<figure src="/2022/10/evpn-vxlan-bridging-topology.png" caption="Lab topology">}}
 <!--more-->
-We'll start with the [VXLAN bridging topology](https://github.com/ipspace/netlab-examples/blob/master/VXLAN/vxlan-bridging/topology.yml) and add [EVPN configuration module](https://netsim-tools.readthedocs.io/en/latest/module/evpn.html) to the switches. We'll also have to add [BGP configuration module](https://netsim-tools.readthedocs.io/en/latest/module/bgp.html) (EVPN needs BGP) and define BGP AS with **bgp.as** global parameter... and that's it -- now we have a working EVPN/VXLAN lab.
+We'll start with the [VXLAN bridging topology](https://github.com/ipspace/netlab-examples/blob/master/VXLAN/vxlan-bridging/topology.yml) and add [EVPN configuration module](https://netlab.tools/module/evpn/) to the switches. We'll also have to add [BGP configuration module](https://netlab.tools/module/bgp/) (EVPN needs BGP) and define BGP AS with **bgp.as** global parameter... and that's it -- now we have a working EVPN/VXLAN lab.
 
 {{<cc>}}Adding EVPN and BGP configuration modules{{</cc>}}
 ```
@@ -34,7 +34,7 @@ Behind the scenes *netlab*:
 
 Now for an interesting plot twist. Everything *netlab* does works on multiple network operating systems[^HD]. All you have to do to build a multi-vendor lab using Arista EOS and Cumulus Linux is to add device types to the switches.
 
-[^HD]: *netlab* supports [15 different platforms](https://netsim-tools.readthedocs.io/en/latest/platforms.html), and [most configuration modules support at least a half-dozen platforms](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-configuration-modules).
+[^HD]: *netlab* supports [15 different platforms](https://netlab.tools/platforms/), and [most configuration modules support at least a half-dozen platforms](https://netlab.tools/platforms/#supported-configuration-modules).
 
 {{<cc>}}Building a multi-vendor EVPN/VXLAN lab{{</cc>}}
 ```
@@ -228,9 +228,9 @@ router ospf
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/EVPN/vxlan-bridging#changing-device-types)? No problem:
 
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/EVPN/vxlan-bridging/topology.yml) into an empty directory
-* Change device types (and the provider if needed) in the topology file and execute **netlab up**. You can also change the topology parameters with **netlab up** [CLI arguments](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html#usage).
+* Change device types (and the provider if needed) in the topology file and execute **netlab up**. You can also change the topology parameters with **netlab up** [CLI arguments](https://netlab.tools/netlab/up/#usage).
 * Enjoy! 😊
 

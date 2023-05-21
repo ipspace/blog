@@ -83,7 +83,7 @@ groups:
 
 The "only" problem with this solution is duplicate data (and you know [I hate that](https://www.ipspace.net/kb/DataModels/)): I'm defining the same groups twice. Wouldn't it be great if the BGP configuration module created groups based on AS membership (as65000 and as65101 in our case).
 
-Sure thing -- *netlab* includes [auto-generated BGP groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#automatic-bgp-groups) that can also be used to set any other group attribute, simplifying my group definition. I have to define the custom deployment template, and the group members are added by the BGP topology transformation module based on **bgp.as_list** definition.
+Sure thing -- *netlab* includes [auto-generated BGP groups](https://netlab.tools/groups/#automatic-bgp-groups) that can also be used to set any other group attribute, simplifying my group definition. I have to define the custom deployment template, and the group members are added by the BGP topology transformation module based on **bgp.as_list** definition.
 
 {{<cc>}}Setting custom deployment templates on auto-generated BGP groups{{</cc>}}
 ```
@@ -111,7 +111,7 @@ nodes:
     bgp.anycast: 10.42.42.42/32
 ```
 
-Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? As it happens, [_netlab_ allows you to add node data to groups](https://netsim-tools.readthedocs.io/en/latest/groups.html#setting-node-data-in-groups), significantly simplifying my lab topology ([final topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-bgp-addpath/topology.yml)):
+Wouldn't it be nice if I could use an existing group to set an attribute for every node in the group? As it happens, [_netlab_ allows you to add node data to groups](https://netlab.tools/groups/#setting-node-data-in-groups), significantly simplifying my lab topology ([final topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-bgp-addpath/topology.yml)):
 
 {{<cc>}}**bgp.anycast** attribute is set on all nodes in AS 65101{{</cc>}}
 ```
@@ -127,7 +127,7 @@ nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 
 Final touch: *netlab* release 1.1 added stricter checks of module- and node data, so I had to tell the tool that I want to use **bgp.anycast** node attribute:
 
-{{<cc>}}Defining a [custom BGP attribute](https://netsim-tools.readthedocs.io/en/latest/extend-attributes.html){{</cc>}}
+{{<cc>}}Defining a [custom BGP attribute](https://netlab.tools/extend-attributes/){{</cc>}}
 ```
 defaults.bgp.extra_attributes.node: [ anycast ]
 ```
@@ -226,7 +226,7 @@ The correct solution to this challenge is to use the [DMZ Link Bandwidth BGP com
 
 ### Tweaking the BGP Next Hops
 
-Turning off *next-hop-self* (the default setting) requires quite a bit of [attribute haggling](https://netsim-tools.readthedocs.io/en/latest/module/bgp.html#advanced-global-configuration-parameters) within *netlab* topology file:
+Turning off *next-hop-self* (the default setting) requires quite a bit of [attribute haggling](https://netlab.tools/module/bgp/#advanced-global-configuration-parameters) within *netlab* topology file:
 
 * Set **bgp.next_hop_self** to *false*;
 * Set **bgp.ebgp_role** to *stub* (default: *external*) to make sure the external subnets are included in the OSPF process;

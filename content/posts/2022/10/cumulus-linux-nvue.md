@@ -98,7 +98,7 @@ Well, as always there's an ugly workaround -- you can use [NVUE snippets](https:
 
 [^NXOS]: The whole thing reminds me of early NETCONF on Cisco Nexus OS that produced **show** printout in text format... but nicely wrapped in XML envelope.
 
-I'm positive that NVUE developers implemented what Cumulus customers were asking for, which tells you much about who and how uses Cumulus Linux. I also don't care why they didn't implement the most fundamental parameter you need to have  in an IBGP-based network. I simply [documented the shortcomings](https://netsim-tools.readthedocs.io/en/latest/caveats.html#cumulus-5-0-with-nvue) in *Platform Caveats* and moved on, but the whole thing did leave a pretty sour aftertaste.
+I'm positive that NVUE developers implemented what Cumulus customers were asking for, which tells you much about who and how uses Cumulus Linux. I also don't care why they didn't implement the most fundamental parameter you need to have  in an IBGP-based network. I simply [documented the shortcomings](https://netlab.tools/caveats/#cumulus-5-0-with-nvue) in *Platform Caveats* and moved on, but the whole thing did leave a pretty sour aftertaste.
 
 ### Revision History
 

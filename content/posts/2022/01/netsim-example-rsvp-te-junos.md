@@ -14,7 +14,7 @@ It's amazing how creative networking engineers become once they have the basic t
 <!--more-->
 I particularly like the simplicity of building and configuring this lab: 
 
-* The [topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/rsvp-mpls-vsrx/vsrx_rsvp.yml) is as simple as it can get. *netlab* takes care of IP addressing, Vagrant configuration file and Ansible inventory.
-* *netlab* configures interfaces, IP addresses, IS-IS, and BGP on [over a dozen platforms](https://netsim-tools.readthedocs.io/en/latest/platforms.html) (including Junos). All Pete had to create was a [simple configuration template](https://github.com/ipspace/netlab-examples/blob/master/routing/rsvp-mpls-vsrx/junos_mpls_rsvp.j2) containing just a few lines (increase MTU, enable MPLS, enable MPLS TE).
+* The [topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/rsvp-mpls-vsrx/topology.yml) is as simple as it can get. *netlab* takes care of IP addressing, Vagrant configuration file and Ansible inventory.
+* *netlab* configures interfaces, IP addresses, IS-IS, and BGP on [over a dozen platforms](https://netlab.tools/platforms/) (including Junos). All Pete had to create was a [simple configuration template](https://github.com/ipspace/netlab-examples/blob/master/routing/rsvp-mpls-vsrx/junos_mpls_rsvp.j2) containing just a few lines (increase MTU, enable MPLS, enable MPLS TE).
 
-Interested? Read [Pete's instructions](https://github.com/ipspace/netlab-examples/blob/master/routing/rsvp-mpls-vsrx/README.md) or start with *netlab* [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html) and [tutorials](https://netsim-tools.readthedocs.io/en/latest/tutorials.html).
+Interested? Read [Pete's instructions](https://github.com/ipspace/netlab-examples/blob/master/routing/rsvp-mpls-vsrx/README.md) or start with *netlab* [installation guide](https://netlab.tools/install/) and [tutorials](https://netlab.tools/tutorials/).

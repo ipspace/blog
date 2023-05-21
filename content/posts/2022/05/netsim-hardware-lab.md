@@ -5,16 +5,16 @@ tags:
 - netlab
 title: Configure Hardware Labs with netlab
 ---
-*[netlab](https://netsim-tools.readthedocs.io/en/latest/)* started as a [simple tool to create virtual lab topologies](https://blog.ipspace.net/2020/12/build-labs-netsim-tools.html) (I hated creating *Vagrantfiles* describing complex topologies), but when it morphed into an ever-growing "_configure all the boring stuff in your lab from a high-level description_"  thingie, it gave creative networking engineers an interesting idea: could we use this tool to do all the stuff we always hated doing in our physical labs?
+*[netlab](https://netlab.tools/)* started as a [simple tool to create virtual lab topologies](https://blog.ipspace.net/2020/12/build-labs-netsim-tools.html) (I hated creating *Vagrantfiles* describing complex topologies), but when it morphed into an ever-growing "_configure all the boring stuff in your lab from a high-level description_"  thingie, it gave creative networking engineers an interesting idea: could we use this tool to do all the stuff we always hated doing in our physical labs?
 
-My answer was always "_of course, please feel free to submit a PR_", and [Stefano Sasso](http://stefano.dscnet.org/) did just that: he implemented [_external_  orchestration provider](https://netsim-tools.readthedocs.io/en/latest/providers.html) that allows you to use *netlab* to configure IPv4, IPv6, VLANs, VRFs, VXLAN, LLDP, BFD, OSPFv2, OSPFv3, EIGRP, IS-IS, BGP, MPLS, BGP-LU, L3VPN (VPNv4 + VPNv6), EVPN, SR-MPLS, or SRv6 on [supported hardware devices](https://netsim-tools.readthedocs.io/en/latest/platforms.html).
+My answer was always "_of course, please feel free to submit a PR_", and [Stefano Sasso](http://stefano.dscnet.org/) did just that: he implemented [_external_  orchestration provider](https://netlab.tools/providers/) that allows you to use *netlab* to configure IPv4, IPv6, VLANs, VRFs, VXLAN, LLDP, BFD, OSPFv2, OSPFv3, EIGRP, IS-IS, BGP, MPLS, BGP-LU, L3VPN (VPNv4 + VPNv6), EVPN, SR-MPLS, or SRv6 on [supported hardware devices](https://netlab.tools/platforms/).
 <!--more-->
-All you need to do to get that giant bag of goodies is to [install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html#installing-netsim-tools-package) and Ansible, and describe the topology (devices and links) of your hardware lab.
+All you need to do to get that giant bag of goodies is to [install netlab](https://netlab.tools/install/) and Ansible, and describe the topology (devices and links) of your hardware lab.
 
 Start with the devices:
 
-* For every device in your lab, add a [node](https://netsim-tools.readthedocs.io/en/latest/nodes.html) to the **nodes** dictionary in your [lab topology file](https://netsim-tools.readthedocs.io/en/latest/topology-overview.html).
-* Use **device** attribute to set the [device type](https://netsim-tools.readthedocs.io/en/latest/platforms.html).
+* For every device in your lab, add a [node](https://netlab.tools/nodes/) to the **nodes** dictionary in your [lab topology file](https://netlab.tools/topology-overview/).
+* Use **device** attribute to set the [device type](https://netlab.tools/platforms/).
 * Set **mgmt.ipv4** or **mgmt.ipv6** to the management IP address. *netlab* assumes you're using out-of-band management interfaces, preferably in a separate VRF.
 * To make your life easier, use the *netlab* default login credentials[^CRED] on your hardware devices. If you can't do that, set corresponding Ansible inventory variables (**ansible_user**, **ansible_ssh_pass** and **ansible_become_password**) in the node definition.
 
@@ -48,7 +48,7 @@ provider: external
 
 And that's it. Execute **netlab up** and you'll get default IP addressing configured in your hardware lab.
 
-Next step(s): explore a dozen [configuration modules](https://netsim-tools.readthedocs.io/en/latest/module-reference.html) to prepare your lab for whatever tests you'd like to perform.
+Next step(s): explore a dozen [configuration modules](https://netlab.tools/module-reference/) to prepare your lab for whatever tests you'd like to perform.
 
 Experiencing problems? We have a [channel](https://networktocode.slack.com/archives/C022DQHK8BH) in [NetworkToCode Slack team](https://networktocode.herokuapp.com/), and if you're pretty sure you're dealing with a bug, please [open a GitHub issue](https://github.com/ipspace/netlab/issues).
 

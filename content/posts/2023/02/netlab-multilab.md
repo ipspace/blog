@@ -10,7 +10,7 @@ A heavy _netlab_ user sent me an email along these lines:
 
 > We're running multiple labs in parallel on the same server, and we're experiencing all sorts of clashes like overlapping management IP addresses. We "solved" that by using static device identifiers in our labs, but I'm wondering if there's a better way of doing it?
 
-That's exactly the sort of real-life challenges I love working on, so it wasn't hard to get me excited, and the results are [bundled in _netlab_ release 1.5](https://netsim-tools.readthedocs.io/en/latest/plugins/multilab.html).
+That's exactly the sort of real-life challenges I love working on, so it wasn't hard to get me excited, and the results are [bundled in _netlab_ release 1.5](https://netlab.tools/plugins/multilab/).
 <!--more-->
 ## The Problem
 
@@ -40,7 +40,7 @@ The solution has to be flexible enough to support all three use cases, and simpl
 
 Here's what we decided to implement:
 
-* The _multiple labs_ functionality is implemented with a new [_multilab_ plugin](https://netsim-tools.readthedocs.io/en/latest/plugins/multilab.html), making the changed behavior completely optional. If you don't use that plugin, you get the traditional _netlab_ setup.
+* The _multiple labs_ functionality is implemented with a new [_multilab_ plugin](https://netlab.tools/plugins/multilab/), making the changed behavior completely optional. If you don't use that plugin, you get the traditional _netlab_ setup.
 * Every lab instance using _multilab_ plugin must have a unique lab ID. Assigning the lab ID, and making sure it's unique[^NC], is the users' responsibility.
 * _multilab_ plugin uses the lab ID to make _netlab_ parameters like the management subnet, the management network name, the VM/container prefix, VIF interface names and libvirt tunnel endpoints unique.
 * Modified parameters are used when creating `Vagrantfile`, *containerlab* topology or Ansible inventory, ensuring that each lab instance gets a unique set of resources.
@@ -55,10 +55,10 @@ Here's how you can use this functionality to support the three use cases:
 
 If you have a better idea, please open a [GitHub](https://github.com/ipspace/netlab) issue or discussion.
 
-Finally, it would be an interesting exercise in futility to try to enforce the use of *multilab* plugin with every lab topology, so I added the capability to specify the default list of plugins used by all lab topologies as **plugin** parameter in a [defaults file](https://netsim-tools.readthedocs.io/en/latest/defaults.html) -- add `plugin: [ multilab ]` to `~/.netlab.yml` file and you're good to go.
+Finally, it would be an interesting exercise in futility to try to enforce the use of *multilab* plugin with every lab topology, so I added the capability to specify the default list of plugins used by all lab topologies as **plugin** parameter in a [defaults file](https://netlab.tools/defaults/) -- add `plugin: [ multilab ]` to `~/.netlab.yml` file and you're good to go.
 
 ### Getting Started
 
-To get more details and learn about additional features included in release 1.5.0, [read the release notes](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-0). To upgrade, execute `pip3 install --upgrade networklab`.
+To get more details and learn about additional features included in release 1.5.0, [read the release notes](https://netlab.tools/release/1.5/#release-1-5-0). To upgrade, execute `pip3 install --upgrade networklab`.
 
-New to *netlab*? Start with the [Getting Started document](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) and the [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html).
+New to *netlab*? Start with the [Getting Started document](https://netlab.tools/tutorials/) and the [installation guide](https://netlab.tools/install/).

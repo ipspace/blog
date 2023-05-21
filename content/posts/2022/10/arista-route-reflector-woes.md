@@ -92,7 +92,7 @@ route-map next-hop-self-ipv4 permit 20
 
 ### More Information
 
-* Want to reproduce my tests? [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html) and [use Arista cEOS containers](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
+* Want to reproduce my tests? [Install netlab](https://netlab.tools/install/) and [use Arista cEOS containers](https://netlab.tools/labs/ceos/).
 * Want to learn more about EVPN? There's probably no better source than [EVPN Deep Dive webinar](https://www.ipspace.net/EVPN_Technical_Deep_Dive) with Dinesh Dutt (the author of *BGP in the Data Center*), Lukas Krattiger (the author of *Building Data Centers with VXLAN BGP EVPN*), and Krzysztof Grzegorz Szarkowicz (the author of *MPLS in the SDN Era*)
 
 ### Revision History

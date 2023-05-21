@@ -26,7 +26,7 @@ To make matters even more interesting, you can choose among a plethora of intent
 
 As [expected from a Linux system utility](/2020/09/grasping-linux-networking.html), the documentation sucks. While the _ifupdown_ documentation does a great job explaining the basics, once you try to configure bridges, VXLAN interfaces, or VRFs, you get into a maze of underdocumented commands, some mentioned only in the source code on GitHub. Fortunately, the Cumulus Linux documentation always describes multiple ways of configuring Linux networking objects, giving me at least some hints of what I should be searching for.
 
-Next problem: _netlab_ [cannot build an aggregate configuration file](/2020/12/ansible-config-sections.html). It uses a system of [configurable modules](https://netsim-tools.readthedocs.io/en/latest/module-reference.html) (each implementing a technology or a protocol) and plugins, and every one of those could modify any part of the device configuration. For example:
+Next problem: _netlab_ [cannot build an aggregate configuration file](/2020/12/ansible-config-sections.html). It uses a system of [configurable modules](https://netlab.tools/module-reference/) (each implementing a technology or a protocol) and plugins, and every one of those could modify any part of the device configuration. For example:
 
 * The initial setup creates interfaces and assigns IP addresses to them
 * The VLAN module creates bridges and adds access and trunk VLANs to interfaces

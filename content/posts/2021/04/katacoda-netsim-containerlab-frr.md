@@ -5,7 +5,7 @@ tags:
 - netlab
 title: 'Katacoda Scenario: netlab with Containerlab and FRRouting'
 ---
-**TL&DR**: If you'd like to see how easy it is to deploy a full-blown OSPF+BGP network with [netlab](https://netsim-tools.readthedocs.io/) together with [Containerlab](https://blog.ipspace.net/2021/04/netsim-containerlab.html) and FRRouting, check out [this Katacoda scenario](https://katacoda.com/ipspace/scenarios/netsim-containerlab-101).
+**TL&DR**: If you'd like to see how easy it is to deploy a full-blown OSPF+BGP network with [netlab](https://netlab.tools/) together with [Containerlab](https://blog.ipspace.net/2021/04/netsim-containerlab.html) and FRRouting, check out [this Katacoda scenario](https://katacoda.com/ipspace/scenarios/netsim-containerlab-101).
 
 **What is Katacoda?** An [awesome environment](https://katacoda.com/) that allows content authors to create scenarios running on Linux VMs accessible through a web browser. I can only hope they'll fix the quirks and keep going -- I have so many ideas what could be done with it.
 
@@ -24,8 +24,8 @@ With FRR being integrated into **netlab**, I had all the components I needed to 
 ### Useful netlab Links
 
 * [Github repository](https://github.com/ipspace/netlab)
-* [Documentation](https://netsim-tools.readthedocs.io/)
-* [Installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Platform support](https://netsim-tools.readthedocs.io/en/latest/platforms.html)
-* [Release notes](https://netsim-tools.readthedocs.io/en/latest/release.html)
+* [Documentation](https://netlab.tools/)
+* [Installation guide](https://netlab.tools/install/)
+* [Platform support](https://netlab.tools/platforms/)
+* [Release notes](https://netlab.tools/release/)
 

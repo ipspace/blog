@@ -29,4 +29,4 @@ So how did we get Cumulus VX and SR Linux to work together? We had to implement 
 * To learn how containers work behind the scenes, watch _[Introduction to Docker](https://www.ipspace.net/Introduction_to_Docker)_ and _[Docker Networking Deep Dive](https://www.ipspace.net/Docker_Networking_Deep_Dive)_ webinars. They do focus on Docker, but they also explain the namespace concepts and virtual Ethernet links used by almost any container orchestration system.
 * Ready for a large glob of complexity? Enjoy the _[Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive)_.
 
-[^1]: I struggled with an old version of an Ansible collection; Jeroen has published [detailed installation instructions](https://netsim-tools.readthedocs.io/en/dev/caveats.html#nokia-sr-linux) in the meantime.
+[^1]: I struggled with an old version of an Ansible collection; Jeroen has published [detailed installation instructions](https://netlab.tools/caveats/#nokia-sr-linux) in the meantime.

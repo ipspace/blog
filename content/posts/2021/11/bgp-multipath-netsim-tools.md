@@ -20,9 +20,9 @@ Fifteen minutes later[^1d] I had the lab up and running and could verify that BG
 
 I decided to run my tests with container version of Arista EOS (cEOS) on a Ubuntu server. To replicate the labs you'll have to:
 
-* [Set up a Linux server or virtual machine](https://netsim-tools.readthedocs.io/en/latest/install.html#creating-the-lab-environment). If you don't have a preferred distribution, use Ubuntu.
-* [Install Docker and containerlab](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) (**[netlab install containerlab](https://netsim-tools.readthedocs.io/en/latest/netlab/install.html)** is the easiest way to do it on Ubuntu).
-* [Download and install Arista cEOS image](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html#container-images).
+* [Set up a Linux server or virtual machine](https://netlab.tools/install/#creating-the-lab-environment). If you don't have a preferred distribution, use Ubuntu.
+* [Install Docker and containerlab](https://netlab.tools/labs/clab/) (**[netlab install containerlab](https://netlab.tools/netlab/install/)** is the easiest way to do it on Ubuntu).
+* [Download and install Arista cEOS image](https://netlab.tools/labs/clab/#container-images).
 
 ## Create Topology File
 
@@ -173,7 +173,7 @@ Another beauty of *netlab* is the ease of changing network devices or virtualiza
 netlab up baseline.yml --device iosv --provider libvirt
 ```
 
-A few minutes later, I had an identically configured lab, this time running Cisco IOS. I could have repeated the same tests on [over a dozen devices supported by *netlab*](https://netsim-tools.readthedocs.io/en/latest/platforms.html) (if only I had all the necessary Vagrant boxes installed)
+A few minutes later, I had an identically configured lab, this time running Cisco IOS. I could have repeated the same tests on [over a dozen devices supported by *netlab*](https://netlab.tools/platforms/) (if only I had all the necessary Vagrant boxes installed)
 
 **Coming up next**: fixing suboptimal BGP routing with *additional paths* functionality.
 

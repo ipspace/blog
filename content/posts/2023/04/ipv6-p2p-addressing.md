@@ -26,7 +26,7 @@ The above documents should answer any questions you might have on IPv6 addressin
 
 {{<note warn>}}As Sean [pointed out in the comments](https://blog.ipspace.net/2023/04/ipv6-p2p-addressing.html#1763), sometimes you're forced to use /126 because some devices still don't support /127 prefixes more than a decade after RFC 6164 was published.{{</note>}}
 
-* As recommended by [RFC 7404](https://www.rfc-editor.org/rfc/rfc7404.html), link-local-only IPv6 interfaces might be a perfect solution for intra-AS P2P links, and if you bought your data center gear from a vendor interested in operational simplicity you could run EBGP over those interfaces with absolutely no hassle. OSPFv3 and IS-IS work just fine with IPv6 LLA on [every device I tested in _netlab_](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-configuration-modules).
+* As recommended by [RFC 7404](https://www.rfc-editor.org/rfc/rfc7404.html), link-local-only IPv6 interfaces might be a perfect solution for intra-AS P2P links, and if you bought your data center gear from a vendor interested in operational simplicity you could run EBGP over those interfaces with absolutely no hassle. OSPFv3 and IS-IS work just fine with IPv6 LLA on [every device I tested in _netlab_](https://netlab.tools/platforms/#supported-configuration-modules).
 
 [^HIP]: On a more serious note, using /126 prefixes is as valid as using /127 prefixes, it's just not cool enough ;)
 

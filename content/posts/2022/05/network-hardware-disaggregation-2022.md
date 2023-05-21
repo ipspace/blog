@@ -101,7 +101,7 @@ Networking vendors started offering VM versions of their operating systems years
 * Mikrotik RouterOS
 * Nokia SR OS and SR Linux
 
-For more details, see also [*netlab* supported platforms](https://netsim-tools.readthedocs.io/en/latest/platforms.html).
+For more details, see also [*netlab* supported platforms](https://netlab.tools/platforms/).
 
 Some vendors went a step further and offered their control plane in a container. Arista cEOS and Juniper cRPD are the best-known examples.
 

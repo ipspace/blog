@@ -7,13 +7,13 @@ pre_scroll: True
 ---
 One of the tiny details Open Networking preachers conveniently forget to mention is the tendency of open-source software to use a [gazillion small packages from numerous independent sources](https://xkcd.com/2347/) to get the job done. Vendors selling commercial products (for example, Cumulus Linux) try their best to select the correct version of every package involved in their product; open-source projects could [quickly end in dependency hell](https://xkcd.com/1579/).
 
-*netlab* tries to solve the dependency conundrum with [well-defined installation scripts](https://netsim-tools.readthedocs.io/en/latest/netlab/install.html). We recommend you start with a brand new Ubuntu server (or VM) and **[follow the four lines of instructions](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html#manual-virtual-machine-provisioning)**[^FI]. In that case, you usually get a working system unless something unexpected breaks behind the scenes, like what we experienced a few days ago.
+*netlab* tries to solve the dependency conundrum with [well-defined installation scripts](https://netlab.tools/netlab/install/). We recommend you start with a brand new Ubuntu server (or VM) and **[follow the four lines of instructions](https://netlab.tools/install/ubuntu-vm/#manual-virtual-machine-provisioning)**[^FI]. In that case, you usually get a working system unless something unexpected breaks behind the scenes, like what we experienced a few days ago.
 
 [^FI]: It's amazing how hard that is for some people ;)
 <!--more-->
 {{<note>}}Before moving on: I'm not blaming anyone for the SNAFU, and [Darragh Bailey](https://github.com/electrofelix)'s response time has been amazing. These things happen; it's important to be aware of the hidden tax of using open-source software.{{</note>}}
 
-A user strictly following the instructions got a working lab but couldn't bring it down. **[netlab down](https://netsim-tools.readthedocs.io/en/latest/netlab/down.html)** command consistently crashed somewhere deep in the *vagrant-libvirt* plugin. It was pretty easy to reproduce the behavior[^CS], but ridiculously hard to find a workaround.
+A user strictly following the instructions got a working lab but couldn't bring it down. **[netlab down](https://netlab.tools/netlab/down/)** command consistently crashed somewhere deep in the *vagrant-libvirt* plugin. It was pretty easy to reproduce the behavior[^CS], but ridiculously hard to find a workaround.
 
 [^CS]: That's the beauty of starting with a clean slate and following the instructions
 

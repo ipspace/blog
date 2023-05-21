@@ -115,9 +115,9 @@ Want to check my lab results? The final router configurations are on GitHub.
 
 Want to build a lab in a few minutes and have it configured in seconds? You'll have to invest a bit of time first:
 
-* Install [Vagrant and libvirt](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html). If you're running your lab on Windows or MacOS host, [use a Ubuntu virtual machine](https://blog.kirchne.red/netsim-tools-quickstart.html).
+* Install [Vagrant and libvirt](https://netlab.tools/labs/libvirt/). If you're running your lab on Windows or MacOS host, [use a Ubuntu virtual machine](https://blog.kirchne.red/netsim-tools-quickstart.html).
 * [Build CSR 1000v box](https://codingpackets.com/blog/cisco-iosv-vagrant-libvirt-box-install/)
-* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html)
+* [Install *netlab*](https://netlab.tools/install/)
 
 After you got everything up and running:
 

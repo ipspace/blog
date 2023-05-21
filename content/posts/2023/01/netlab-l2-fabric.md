@@ -11,7 +11,7 @@ A friend of mine decided to use _netlab_ to build a simple traditional data cent
 
 > How do I make all the ports be L2 by default i.e. not have IP address assigned to them?
 
-Trying to answer his question way too late in the evening (I know, I shouldn't be doing that), I focused on the "_no IP addresses_" part. To get there, you [have to use the **l2only** pool](https://netsim-tools.readthedocs.io/en/latest/example/addressing-tutorial.html#layer-2-only-links-using-l2only-address-pool) or disable IPv4 prefixes in the [built-in address pools](https://netsim-tools.readthedocs.io/en/latest/example/addressing-tutorial.html#using-built-in-address-pools), for example:
+Trying to answer his question way too late in the evening (I know, I shouldn't be doing that), I focused on the "_no IP addresses_" part. To get there, you [have to use the **l2only** pool](https://netlab.tools/example/addressing-tutorial/#layer-2-only-links-using-l2only-address-pool) or disable IPv4 prefixes in the [built-in address pools](https://netlab.tools/example/addressing-tutorial/#using-built-in-address-pools), for example:
 <!--more-->
 ```
 addressing:
@@ -96,7 +96,7 @@ Notes:
 
 Now we're ready to roll. Execute **netlab up**[^HW], wait for STP to do its job, and check connectivity between **h1** and **h2**.
 
-[^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html), [installing the software](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html), and [downloading Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
+[^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netlab.tools/install/ubuntu-vm/), [installing the software](https://netlab.tools/labs/clab/), and [downloading Arista cEOS container](https://netlab.tools/labs/ceos/).
 
 For the two readers who haven't installed *netlab* yet: here's the Arista cEOS configuration for **l1**:
 
@@ -130,9 +130,9 @@ interface Vlan100
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VLAN/l2-fabric)? No problem:
 
-* Make sure [_netlab_ implementation of your preferred device supports VLANs](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html#platform-support).
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* Make sure [_netlab_ implementation of your preferred device supports VLANs](https://netlab.tools/module/vlan/#platform-support).
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/l2-fabric/topology.yml) into an empty directory
 * Execute **netlab up**
 * Enjoy! 😊

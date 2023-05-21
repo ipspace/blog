@@ -9,14 +9,14 @@ tags:
 - netlab
 title: Building Unnumbered Ethernet Lab with netlab
 ---
-Last week I described the new features [added to netsim-tools release 0.4](https://netsim-tools.readthedocs.io/en/latest/release/0.4.html), including support for [unnumbered interfaces](https://netsim-tools.readthedocs.io/en/latest/addressing.html#unnumbered-interface-support) and [OSPF routing](https://netsim-tools.readthedocs.io/en/latest/module/ospf.html). Now let's see how I used them to build a multi-vendor lab to test which platforms could be made to interoperate when running OSPF over unnumbered Ethernet interfaces.
+Last week I described the new features [added to netsim-tools release 0.4](https://netlab.tools/release/0.4/), including support for [unnumbered interfaces](https://netlab.tools/addressing/#unnumbered-interface-support) and [OSPF routing](https://netlab.tools/module/ospf/). Now let's see how I used them to build a multi-vendor lab to test which platforms could be made to interoperate when running OSPF over unnumbered Ethernet interfaces.
 
 {{<note info>}}
 * This blog post has been updated to use the new **netlab** CLI introduced in *netsim-tools* release 0.8 and new IPAM features introduced in release 1.0
 * *netsim-tools* project [has been renamed to *netlab*](/2022/08/netsim-netlab.html).
 {{</note>}}
 <!--more-->
-First I needed to make P2P links within the lab unnumbered. Setting **unnumbered** attribute on the built-in **p2p** pool is good enough (for more details read the [addressing tutorial](https://netsim-tools.readthedocs.io/en/latest/example/addressing-tutorial.html)):
+First I needed to make P2P links within the lab unnumbered. Setting **unnumbered** attribute on the built-in **p2p** pool is good enough (for more details read the [addressing tutorial](https://netlab.tools/example/addressing-tutorial/)):
 
 ```
 addressing:
@@ -61,7 +61,7 @@ links:
 
 ## Next Steps
 
-* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html) and a lab virtualization provider of your choice.
+* [Install *netlab*](https://netlab.tools/install/) and a lab virtualization provider of your choice.
 * Create Vagrant and Ansible configuration files, start the lab, and configure it with a single command: **netlab up**. [Here's the log file](https://github.com/ipspace/netlab-examples/blob/master/routing/unnumbered/config.log) in case you'd like to see how it worked.
 * Wait for the network devices to boot. Write this blog post while waiting for Nexus 9300v and vSRX to boot. At least the *libvirt* provider starts them in parallel (as opposed to *virtualbox* provider that starts them in sequence).
 * Use **netlab connect** to connect to lab devices and inspect the results.

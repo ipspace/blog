@@ -6,9 +6,9 @@ tags:
 - netlab
 title: netlab Simple VLAN Example
 ---
-I had no idea how convoluted VLANs could get until I tried to [implement them in *netlab*](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html).
+I had no idea how convoluted VLANs could get until I tried to [implement them in *netlab*](https://netlab.tools/module/vlan/).
 
-We'll start with the simplest option: [a single VLAN](https://github.com/ipspace/netlab-examples/tree/master/VLAN/vlan-access-stretch) stretched across two ~~bridges~~ switches with two Linux hosts connected to it. *netlab* can [configure VLANs](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html#platform-support) on Arista EOS, Cisco IOSv, Cisco Nexus OS, VyOS, Dell OS10, and Nokia SR Linux. We'll use the quickest (deployment-wise) option: Arista EOS on *containerlab*.
+We'll start with the simplest option: [a single VLAN](https://github.com/ipspace/netlab-examples/tree/master/VLAN/vlan-access-stretch) stretched across two ~~bridges~~ switches with two Linux hosts connected to it. *netlab* can [configure VLANs](https://netlab.tools/module/vlan/#platform-support) on Arista EOS, Cisco IOSv, Cisco Nexus OS, VyOS, Dell OS10, and Nokia SR Linux. We'll use the quickest (deployment-wise) option: Arista EOS on *containerlab*.
 
 {{<figure src="/2022/05/vlan-simple.png" caption="Simple VLAN topology">}}
 <!--more-->
@@ -98,7 +98,7 @@ bridge 1 route ip
 
 ### VLAN IP Addressing
 
-A *netlab* VLAN segment is a single subnet; the IPv4 and IPv6 prefixes are allocated from the `lan` [address pool](https://netsim-tools.readthedocs.io/en/latest/example/addressing-tutorial.html). All physical links and VLAN interfaces belonging to the same access VLAN use the same IP subnet. The IPv4 addresses in our lab are thus set up as follows:
+A *netlab* VLAN segment is a single subnet; the IPv4 and IPv6 prefixes are allocated from the `lan` [address pool](https://netlab.tools/example/addressing-tutorial/). All physical links and VLAN interfaces belonging to the same access VLAN use the same IP subnet. The IPv4 addresses in our lab are thus set up as follows:
 
 | Node   | IP address in red VLAN |
 |--------|-----------------------:|
@@ -137,7 +137,7 @@ round-trip min/avg/max = 3.040/3.232/3.363 ms
 
 Next time, we'll fix IP routing and add OSPF routing process to the switches. You could also do it on your own:
 
-* [Set up a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html) or a bare-metal server with netlab, Docker and containerlab
-* [Install Arista cEOS container image](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html)
+* [Set up a Ubuntu VM](https://netlab.tools/install/ubuntu-vm/) or a bare-metal server with netlab, Docker and containerlab
+* [Install Arista cEOS container image](https://netlab.tools/labs/clab/)
 * Copy the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-access-stretch/topology.yml) into an empty directory
 * Start the lab with **netlab up** and start exploring
