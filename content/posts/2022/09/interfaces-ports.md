@@ -8,7 +8,7 @@ tags:
 - networking fundamentals
 title: Router Interfaces and Switch Ports
 ---
-When I started implementing the [netlab VLAN module](https://netsim-tools.readthedocs.io/en/latest/module/vlan.html), I encountered (at least) three different ways of configuring physical interfaces and bridging domains even though the underlying packet forwarding operations (and sometimes even the forwarding hardware) are the same. That [confusopoly](https://en.wikipedia.org/wiki/Confusopoly) is guaranteed to make your head spin for years, and the only way to figure out what's going on behind the scenes is to go back to the fundamentals.
+When I started implementing the [netlab VLAN module](https://netlab.tools/module/vlan/), I encountered (at least) three different ways of configuring physical interfaces and bridging domains even though the underlying packet forwarding operations (and sometimes even the forwarding hardware) are the same. That [confusopoly](https://en.wikipedia.org/wiki/Confusopoly) is guaranteed to make your head spin for years, and the only way to figure out what's going on behind the scenes is to go back to the fundamentals.
 <!--more-->
 As is often the case in networking, we got to this morass because vendors believe in "_doing more with less_"[^ML]. As they added bridging functionality to routers or routing functionality to bridges (devices often [called switches by product marketing](https://blog.ipspace.net/2011/02/how-did-we-ever-get-into-this-switching.html)), they rarely changed the terminology or configuration syntax, starting with the way we call those thingies into which we plug cables.
 

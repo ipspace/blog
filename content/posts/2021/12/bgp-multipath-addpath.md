@@ -180,6 +180,6 @@ groups:
 ...
 ```
 
-Want do to your own tests? [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html), build your own [virtual lab environment](https://netsim-tools.readthedocs.io/en/latest/install.html#building-the-lab-environment), and use [this set of configuration files](https://github.com/ipspace/netlab-examples/tree/master/BGP/Multipath).
+Want do to your own tests? [Install netlab](https://netlab.tools/install/), build your own [virtual lab environment](https://netlab.tools/install/#creating-the-lab-environment), and use [this set of configuration files](https://github.com/ipspace/netlab-examples/tree/master/BGP/Multipath).
 
 Want to learn more? Explore [BGP-related blog posts](https://blog.ipspace.net/tag/bgp.html) and _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar.

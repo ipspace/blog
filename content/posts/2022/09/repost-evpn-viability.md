@@ -27,7 +27,7 @@ There's so much to unpack here, and I'd love to hear your feedback on some of th
 
 [^VLB]: Attaching the same RD/RT to numerous VNIs -- an approach that's a perfect fit for the common *every VLAN everywhere* data center design. Unfortunately, some vendors don't support VLAN bundles.
 
-{{<note info>}}If you're interested in templating EVPN configuration, check out the [templates](https://github.com/ipspace/netlab/tree/dev/netsim/ansible/templates/evpn) we use in *[netlab](https://netsim-tools.readthedocs.io/en/latest/)*. They will also give you an indication of how much extra configuration every VLAN or VRF brings.{{</note>}}
+{{<note info>}}If you're interested in templating EVPN configuration, check out the [templates](https://github.com/ipspace/netlab/tree/dev/netsim/ansible/templates/evpn) we use in *[netlab](https://netlab.tools/)*. They will also give you an indication of how much extra configuration every VLAN or VRF brings.{{</note>}}
 
 **Vendor bugs** have been a huge nuisance in the early days of EVPN -- I knew a customer that needed an extra year to roll out a data center hardware upgrade because they insisted on using VXLAN with EVPN multihoming instead of head-end replication with MLAG cluster -- but that was years ago. Are the bugs still haunting you?
 

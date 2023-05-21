@@ -102,9 +102,9 @@ However, by far the best solution (if it fits into your design) is to use VRFs f
 
 Want to repeat the experiment?
 
-* Install *netlab* on a [Ubuntu host](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html) or [VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html)
-* Install [Ansible](https://netsim-tools.readthedocs.io/en/latest/netlab/install.html), [Docker and *containerlab*](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) on that host
-* [Download Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html)
+* Install *netlab* on a [Ubuntu host](https://netlab.tools/install/ubuntu/) or [VM](https://netlab.tools/install/ubuntu-vm/)
+* Install [Ansible](https://netlab.tools/netlab/install/), [Docker and *containerlab*](https://netlab.tools/labs/clab/) on that host
+* [Download Arista cEOS container](https://netlab.tools/labs/ceos/)
 * Download the *netlab* topology file into an empty directory and execute **netlab up**
 * Enjoy the show
 

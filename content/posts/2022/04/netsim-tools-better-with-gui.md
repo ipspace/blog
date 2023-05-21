@@ -12,13 +12,13 @@ Now imagine adding network topology visualizer and GUI-based device access with 
 <!--more-->
 [^A1]: This would have been an awesome April 1st post; unfortunately Stefano created this functionality a few weeks too late.
 
-On a more serious note, [Stefano Sasso](http://stefano.dscnet.org/about/) figured out the configuration file format of [Graphite](https://github.com/netreplica/graphite) (Web UI/graphing tool used with *containerlab*) and created an output module that [generates a Graphite configuration file from *netlab* lab topology](https://netsim-tools.readthedocs.io/en/latest/extool/graphite.html).
+On a more serious note, [Stefano Sasso](http://stefano.dscnet.org/about/) figured out the configuration file format of [Graphite](https://github.com/netreplica/graphite) (Web UI/graphing tool used with *containerlab*) and created an output module that [generates a Graphite configuration file from *netlab* lab topology](https://netlab.tools/extool/graphite/).
 
 {{<figure src="/2022/04/Graphite-anycast-lab.png" caption="BGP anycast lab displayed by Graphite">}}
 
 Adding a GUI to a *netlab* lab is as easy as 1-2-3:
 
-* Install Docker on your Linux host (Graphite works with *libvirt* or *containerlab* [virtualization providers](https://netsim-tools.readthedocs.io/en/latest/providers.html)).
+* Install Docker on your Linux host (Graphite works with *libvirt* or *containerlab* [virtualization providers](https://netlab.tools/providers/)).
 * Add the *graphite* external tool to your lab topology -- it's just two extra lines:
 
 ```
@@ -26,7 +26,7 @@ tools:
   graphite:
 ```
 
-* Start the lab with **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)**
+* Start the lab with **[netlab up](https://netlab.tools/netlab/up/)**
 
 As the last step in the lab startup process, **netlab up** command will:
 
@@ -36,10 +36,10 @@ As the last step in the lab startup process, **netlab up** command will:
 
 **Notes:**
 
-* The functionality described in this blog post works with [*netlab* release 1.5.2 or higher](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-2).
+* The functionality described in this blog post works with [*netlab* release 1.5.2 or higher](https://netlab.tools/release/1.5/#release-1-5-2).
 * If you want to access the GUI from another host, replace the loopback IP address in the URL with the physical IP address of your lab host.
 
 ### Revision History
 
 2023-04-27
-: Rewrote the blog post to describe the new *[external tools](https://netsim-tools.readthedocs.io/en/latest/extools.html)* functionality.
+: Rewrote the blog post to describe the new *[external tools](https://netlab.tools/extools/)* functionality.

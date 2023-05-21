@@ -17,7 +17,7 @@ That makes perfect sense. It would be ridiculous to waste CPU cycles selecting t
 
 [^2KA]: Or wait for two keepalives, see the [comment by Jeff Tantsura](https://blog.ipspace.net/2023/02/cisco-ios-bgp-update-delay.html#1650).
 
-However, that procedure works well when a single router is restarted. As _[netlab](https://netsim-tools.readthedocs.io/en/latest/)_ starts lab devices in parallel and configures BGP on them at the same time, all BGP routers wait for everyone else to send them the updates. Obviously nothing happens until the **bgp update-delay** timer expires, everyone gives up, selects the current best routes (which happen to be locally originated routes), and forwards them to the neighbors... and we have fully synchronized BGP tables in a second.
+However, that procedure works well when a single router is restarted. As _[netlab](https://netlab.tools/)_ starts lab devices in parallel and configures BGP on them at the same time, all BGP routers wait for everyone else to send them the updates. Obviously nothing happens until the **bgp update-delay** timer expires, everyone gives up, selects the current best routes (which happen to be locally originated routes), and forwards them to the neighbors... and we have fully synchronized BGP tables in a second.
 
 The default value of **bgp update-delay** is 120 seconds -- not unreasonable if you expect to receive full Internet routing table from a few BGP neighbors, but definitely way too long for a virtual lab. Adding **bgp update-delay 5** to _netlab_ [Cisco IOS BGP configuration template](https://github.com/ipspace/netlab/commit/e6cf2976446aa0e8bee75fb27ad1f570802f0975) turned a major annoyance back into a lovely experience.
 

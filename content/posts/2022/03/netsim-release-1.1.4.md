@@ -5,17 +5,17 @@ tags:
 - netlab
 title: netsim-tools Release 1.1.4
 ---
-[*netsim-tools* release 1.1.4](https://netsim-tools.readthedocs.io/en/latest/release/1.1.html) includes a number of seemingly unrelated goodies; here's the the reasoning (or story) behind some of them:
+[*netsim-tools* release 1.1.4](https://netlab.tools/release/1.1/) includes a number of seemingly unrelated goodies; here's the the reasoning (or story) behind some of them:
 
-> [netlab clab tarball](https://netsim-tools.readthedocs.io/en/latest/netlab/clab.html) creates a tar package that can be deployed with *containerlab* without *netsim-tools*
+> [netlab clab tarball](https://netlab.tools/netlab/clab/) creates a tar package that can be deployed with *containerlab* without *netsim-tools*
 
 {{<note info>}}Starting with release 1.3, we [renamed *netsim-tools* to *netlab*](/2022/08/netsim-netlab.html).{{</note>}}
 <!--more-->
 Julio Perez wanted to [create ready-to-use labs running Arista cEOS on *containerlab*](https://juliopdx.com/2022/02/13/network-simulation-tools-and-containerlab/). Requiring the users of his labs to deploy *netsim-tools* and Ansible just to configure the lab devices is a clear overkill considering the *startup-config* support in *containerlab*. What he needed was:
 
-* An easy mechanism to set up IP addressing plan and configure interfaces and routing protocols in a virtual lab (**[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** does all of that)
-* A mechanism to collect final device configurations (**[netlab collect](https://netsim-tools.readthedocs.io/en/latest/netlab/collect.html)**)
-* Something that would add pointers to startup device configurations to *containerlab* configuration file and package everything in a tarball -- **[netlab clab tarball](https://netsim-tools.readthedocs.io/en/latest/netlab/clab.html)**
+* An easy mechanism to set up IP addressing plan and configure interfaces and routing protocols in a virtual lab (**[netlab up](https://netlab.tools/netlab/up/)** does all of that)
+* A mechanism to collect final device configurations (**[netlab collect](https://netlab.tools/netlab/collect/)**)
+* Something that would add pointers to startup device configurations to *containerlab* configuration file and package everything in a tarball -- **[netlab clab tarball](https://netlab.tools/netlab/clab/)**
 
 > Add fetch_config action for SR Linux and SR OS. You can use netlab collect to get current configuration from these devices
 
@@ -27,7 +27,7 @@ As I was starting to work on **netlab clab tarball** implementation, someone ask
 
 > Added `--cleanup` option to **netlab down**
 
-Thinking about beginners trying to find their way around, Julio asked for an option that would delete all files created by **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** command on **[netlab down](https://netsim-tools.readthedocs.io/en/latest/netlab/down.html)**, leaving them with a clean directory.
+Thinking about beginners trying to find their way around, Julio asked for an option that would delete all files created by **[netlab up](https://netlab.tools/netlab/up/)** command on **[netlab down](https://netlab.tools/netlab/down/)**, leaving them with a clean directory.
 
 > Build recipes for Arista vEOS and Juniper vSRX use management VRF
 

@@ -12,9 +12,9 @@ However, it's still ridiculously boring to set up a new lab. Vagrantfiles descri
 <!--more-->
 So instead of spending 15 minutes editing a Vagrantfile to get the P2P links I needed and another five minutes furiously typing in Cisco IOS CLI, I [spent a few days](https://xkcd.com/1319/) writing tools to get the job done... but now I'll be able to build the next three labs [so much faster](https://xkcd.com/974/) ;)
 
-Anyway, you might find the tools interesting, so I pushed them into a [public Github repository](https://github.com/ipspace/netlab) and wrote what I hope is [decent documentation](https://netsim-tools.readthedocs.io/en/latest/index.html).
+Anyway, you might find the tools interesting, so I pushed them into a [public Github repository](https://github.com/ipspace/netlab) and wrote what I hope is [decent documentation](https://netlab.tools/).
 
-The crown jewel of the collection is a tool that takes network topology description in a YAML file that I made as simple as possible, [creates addressing plan, Vagrantfile, Ansible inventory, and a data model describing all the network devices in details](https://netsim-tools.readthedocs.io/en/latest/netlab/create.html). For example, all I needed to get my lab up and running was this:
+The crown jewel of the collection is a tool that takes network topology description in a YAML file that I made as simple as possible, [creates addressing plan, Vagrantfile, Ansible inventory, and a data model describing all the network devices in details](https://netlab.tools/netlab/create/). For example, all I needed to get my lab up and running was this:
 
 ```
 defaults:

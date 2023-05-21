@@ -28,15 +28,15 @@ module: [ ospf ]
 links: [ r1, r2, r1-r2 ]
 ```
 
-I started the lab with **netlab up**, which configured the management bridge and [executed **vagrant up** to start the lab followed by an Ansible playbook to configure the devices](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html).
+I started the lab with **netlab up**, which configured the management bridge and [executed **vagrant up** to start the lab followed by an Ansible playbook to configure the devices](https://netlab.tools/netlab/up/).
 
 Next, I executed **vagrant suspend**. No errors, the VMs were suspended. I checked the list of virtual networks with **virsh net-list** and they were still there. So far, so good.
 
 Finally, I tried to resurrect the VMs with **vagrant resume**. One of them came up immediately, the other one got totally bricked -- SSH didn't work and I wasn't able to access it with **virsh console** which connects to the virtual console serial port.
 
-The same procedure might work with other network devices, but I'm not sure whether saving a minute or two is worth the hassle. I prefer to start my labs from scratch with freshly-minted configuration (hint: you can use **[netlab restart](https://netsim-tools.readthedocs.io/en/latest/netlab/restart.html)** to do it).
+The same procedure might work with other network devices, but I'm not sure whether saving a minute or two is worth the hassle. I prefer to start my labs from scratch with freshly-minted configuration (hint: you can use **[netlab restart](https://netlab.tools/netlab/restart/)** to do it).
 
 ### Getting Started
 
-Want to know more about *netlab*? Start with the [Getting Started document](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) and the [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html). You might also want to watch the _[Using netlab to Build Networking Labs](https://my.ipspace.net/bin/list?id=NetTools#NETLAB)_ section of  _[Network Automation Tools](https://www.ipspace.net/Network_Automation_Tools)_ webinar.
+Want to know more about *netlab*? Start with the [Getting Started document](https://netlab.tools/tutorials/) and the [installation guide](https://netlab.tools/install/). You might also want to watch the _[Using netlab to Build Networking Labs](https://my.ipspace.net/bin/list?id=NetTools#NETLAB)_ section of  _[Network Automation Tools](https://www.ipspace.net/Network_Automation_Tools)_ webinar.
 

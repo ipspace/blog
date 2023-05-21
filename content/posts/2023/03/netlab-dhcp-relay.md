@@ -32,7 +32,7 @@ user (10.0.0.3/32)
   GigabitEthernet0/1        172.16.0.3/24  user -> relay
 ```
 
-* I used interface attribute **dhcp.client** (boolean) on the client and **dhcp.server** (node name, string) on the relay node. This is how I [defined those attributes](https://netsim-tools.readthedocs.io/en/docs/extend-attributes.html):
+* I used interface attribute **dhcp.client** (boolean) on the client and **dhcp.server** (node name, string) on the relay node. This is how I [defined those attributes](https://netlab.tools/extend-attributes/):
 
 {{<cc>}}Extra DHCP attributes{{</cc>}}
 ```
@@ -42,7 +42,7 @@ defaults.attributes:
     server: str
 ```
 
-* I could have defined [custom configuration templates](https://netsim-tools.readthedocs.io/en/latest/groups.html#custom-configuration-templates) on individual nodes but decided to [use groups](https://netsim-tools.readthedocs.io/en/latest/groups.html) to make the lab topology easy to extend:
+* I could have defined [custom configuration templates](https://netlab.tools/groups/#custom-configuration-templates) on individual nodes but decided to [use groups](https://netlab.tools/groups/) to make the lab topology easy to extend:
 
 {{<cc>}}DHCP client, relay, and server groups{{</cc>}}
 ```
@@ -203,8 +203,8 @@ It's nice to see things working exactly the way they should ;)
 Want to run this lab on your own, or try it out with different devices? No problem:
 
 * Make sure your preferred device supports DHCP relaying
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [DHCP relaying example](https://github.com/ipspace/netlab-examples/tree/master/DHCP/relay) into an empty directory
 * If you want to use a relaying device that's not Cisco IOS or Arista EOS, add a configuration template to `dhcp-relay` subdirectory.
 * Execute **netlab up**

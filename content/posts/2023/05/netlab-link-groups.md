@@ -6,7 +6,7 @@ tags:
 - netlab
 title: 'Simplify netlab Topologies with Link Groups'
 ---
-Last month I described how you can simplify your VLAN- or VRF lab topologies with [VRF- and VLAN links](/2023/04/netlab-vrf-vlan-links.html), automatically setting **vlan.access** or **vrf** attribute on a set of links. [Link groups](https://netsim-tools.readthedocs.io/en/latest/links.html#link-groups) allow you to do the same for any set of link attributes.
+Last month I described how you can simplify your VLAN- or VRF lab topologies with [VRF- and VLAN links](/2023/04/netlab-vrf-vlan-links.html), automatically setting **vlan.access** or **vrf** attribute on a set of links. [Link groups](https://netlab.tools/links/#link-groups) allow you to do the same for any set of link attributes.
 
 ### Sample Topology
 
@@ -51,7 +51,7 @@ links:
 
 ### Link Groups to the Rescue
 
-[*netlab* release 1.5.1](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-1) introduced [link groups](https://netsim-tools.readthedocs.io/en/latest/links.html#link-groups) -- a simple way to set the same set of attributes on numerous links.
+[*netlab* release 1.5.1](https://netlab.tools/release/1.5/#release-1-5-1) introduced [link groups](https://netlab.tools/links/#link-groups) -- a simple way to set the same set of attributes on numerous links.
 
 Link groups are defined within the **links** list; all you have to do is to set the **group** attribute to tell *netlab* it's dealing with a group of links, and define member links in the **members** attribute.
 
@@ -71,9 +71,9 @@ links:
 
 ### Behind the Scenes
 
-Before starting the [topology data transformation process](https://netsim-tools.readthedocs.io/en/latest/dev/transform.html), *netlab* expands link groups into individual links:
+Before starting the [topology data transformation process](https://netlab.tools/dev/transform/), *netlab* expands link groups into individual links:
 
-* A new link data structure is created for every member link, expanding various [simplified link definition formats](https://netsim-tools.readthedocs.io/en/latest/example/link-definition.html#simple-links-with-no-link-attributes) into dictionaries.
+* A new link data structure is created for every member link, expanding various [simplified link definition formats](https://netlab.tools/example/link-definition/#simple-links-with-no-link-attributes) into dictionaries.
 * Group attributes[^AGM] are added to the link attribute. Link attributes (if specified) take precedence over group attributes.
 
 [^AGM]: Apart from **group** and **members** attributes
@@ -135,6 +135,6 @@ $ netlab create -o yaml:links
 
 ### Get Started
 
-Link groups were introduced in [netlab release 1.5.1](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-1). To upgrade, execute `pip3 install --upgrade networklab`.
+Link groups were introduced in [netlab release 1.5.1](https://netlab.tools/release/1.5/#release-1-5-1). To upgrade, execute `pip3 install --upgrade networklab`.
 
-New to *netlab*? Start with the [Getting Started document](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) and the [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html).
+New to *netlab*? Start with the [Getting Started document](https://netlab.tools/tutorials/) and the [installation guide](https://netlab.tools/install/).

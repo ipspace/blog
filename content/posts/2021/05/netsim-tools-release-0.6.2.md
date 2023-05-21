@@ -9,7 +9,7 @@ Last week we pushed out netsim-tools release 0.6.2. It's a maintenance release, 
 * Made vSRX 3.0 work on AMD CPU (warning: totally unsupported).
 * Figured out how to use **vagrant mutate** to use *virtualbox* version of Cisco Nexus 9300v Vagrant box with *libvirt* 
 
-[Other bug fixes](https://netsim-tools.readthedocs.io/en/latest/release/0.6.html#bug-fixes) include:
+[Other bug fixes](https://netlab.tools/release/0.6/#bug-fixes) include:
 
 * Numerous fixes in Ansible installation playbook
 * LLDP on all vSRX interfaces as part of initial configuration
@@ -17,4 +17,4 @@ Last week we pushed out netsim-tools release 0.6.2. It's a maintenance release, 
 * **connect.sh** executing inline commands with **docker exec**
 
 {{<jump>}}[Download the new release](https://github.com/ipspace/netlab)\
-[Read the docs](https://netsim-tools.readthedocs.io/){{</jump>}}
+[Read the docs](https://netlab.tools/){{</jump>}}

@@ -6,7 +6,7 @@ tags:
 - netlab
 title: netlab Network Topology Graphs
 ---
-A [*netlab*](https://netsim-tools.readthedocs.io) user sent me an intriguing question: "*Would it be possible to get network topology graphs out of the tool?*"
+A [*netlab*](https://netlab.tools) user sent me an intriguing question: "*Would it be possible to get network topology graphs out of the tool?*"
 
 {{<note info>}}Please note that we're talking about *creating graphs out of network topology described as a YAML data structure*, not a generic GUI or *draw my network* tool. If you're a GUI person, this is not what you're looking for.{{</note>}}
 
@@ -24,7 +24,7 @@ So far, *netlab* can create two types of graphs:
 To create the graphs you have to:
 
 * Install *graphviz*
-* Run *[netlab create](https://netsim-tools.readthedocs.io/en/latest/netlab/create.html)* to create a graph description (.dot file)
+* Run *[netlab create](https://netlab.tools/netlab/create/)* to create a graph description (.dot file)
 * Run one of the *graphviz* commands to create a graph in desired output format (they support over a dozen formats)
 * Enjoy the end results.
 
@@ -51,5 +51,5 @@ dot graph.dot -T png -o netsim-graph-bgp.png
 
 {{<figure src="netsim-graph-bgp.png" caption="BGP sessions">}}
 
-For more details, please read the [netlab documentation](https://netsim-tools.readthedocs.io/en/latest/index.html), in particular the [graph output module](https://netsim-tools.readthedocs.io/en/latest/outputs/graph.html) page.
+For more details, please read the [netlab documentation](https://netlab.tools/), in particular the [graph output module](https://netlab.tools/outputs/graph/) page.
 

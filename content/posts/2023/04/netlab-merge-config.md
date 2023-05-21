@@ -3,7 +3,7 @@ title: "Use Existing Device Configurations in netlab"
 date: 2023-04-24 07:39:00
 tags: [ netlab, DMVPN ]
 ---
-[Anne Baretta](https://www.ipspace.net/kb/NetAutJourney/index.html) decided to use _[netlab](https://netsim-tools.readthedocs.io/en/latest/)_ to test a proposed DMVPN topology. As _netlab_ doesn't support DMVPN (and probably never will), he decided to use _netlab_ capabilities to start the lab topology and perform initial configuration, adding DMVPN configuration commands as _custom configurations_. Here's how he described the process:
+[Anne Baretta](https://www.ipspace.net/kb/NetAutJourney/index.html) decided to use _[netlab](https://netlab.tools/)_ to test a proposed DMVPN topology. As _netlab_ doesn't support DMVPN (and probably never will), he decided to use _netlab_ capabilities to start the lab topology and perform initial configuration, adding DMVPN configuration commands as _custom configurations_. Here's how he described the process:
 
 ---
 
@@ -13,7 +13,7 @@ I built a '3rd party' underlay network in the lab, including the IPsec tunnel to
 
 {{<figure src="/2023/04/dmvpn-netlab.png">}}
 
-I (mis)used the **[netlab config](https://netsim-tools.readthedocs.io/en/latest/netlab/config.html)** command to merge complete configuration files collected with **[netlab collect](https://netsim-tools.readthedocs.io/en/latest/netlab/collect.html)** to limit the copying and pasting (for instance after changing the topology). For every device I'd execute a command like `netlab config config/hub1.cfg -l hub1`, which I could also optimize with a Bash `for` loop:
+I (mis)used the **[netlab config](https://netlab.tools/netlab/config/)** command to merge complete configuration files collected with **[netlab collect](https://netlab.tools/netlab/collect/)** to limit the copying and pasting (for instance after changing the topology). For every device I'd execute a command like `netlab config config/hub1.cfg -l hub1`, which I could also optimize with a Bash `for` loop:
 
 ``` 
 for i in spoke1 spoke2 hub1 hub2 firewall iotprovider; do
@@ -25,7 +25,7 @@ It's a bit hacky, but it works (obviously within limits...). I am looking at a p
 
 ---
 
-An alternate solution would be to use per-node **[config](https://netsim-tools.readthedocs.io/en/latest/groups.html#custom-config)** parameter, for example:
+An alternate solution would be to use per-node **[config](https://netlab.tools/groups/#custom-config)** parameter, for example:
 
 ```
 nodes:
@@ -38,7 +38,7 @@ nodes:
   ...
 ```
 
-{{<note info>}}An even better solution would be to have _netlab_ [find configuration templates](https://netsim-tools.readthedocs.io/en/latest/dev/config/deploy.html#finding-custom-configuration-templates) based on node names -- a [feature introduced in release 1.5.2](https://netsim-tools.readthedocs.io/en/latest/dev/config/deploy.html#finding-custom-configuration-templates).{{</note>}}
+{{<note info>}}An even better solution would be to have _netlab_ [find configuration templates](https://netlab.tools/dev/config/deploy/#finding-custom-configuration-templates) based on node names -- a [feature introduced in release 1.5.2](https://netlab.tools/dev/config/deploy/#finding-custom-configuration-templates).{{</note>}}
 
 Finally, a few gotchas:
 

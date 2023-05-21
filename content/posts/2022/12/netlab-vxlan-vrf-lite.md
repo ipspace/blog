@@ -103,7 +103,7 @@ links:
 
 Now we're ready to roll. Execute **netlab up**[^HW], wait for OSPF sessions to be established, and explore the OSPF neighbors and routing tables on S1:
 
-[^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html), [installing the software](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html), and [downloading Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
+[^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netlab.tools/install/ubuntu-vm/), [installing the software](https://netlab.tools/labs/clab/), and [downloading Arista cEOS container](https://netlab.tools/labs/ceos/).
 
 ```
 s1#sh ip ospf neighbor
@@ -226,8 +226,8 @@ router ospf 101 vrf blue
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VXLAN/vxlan-vrf-lite)? No problem:
 
 * Make sure your preferred device supports OSPF-over-VXLAN (some vendors can't grasp why that would be useful)
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VXLAN/vxlan-vrf-lite/topology.yml) into an empty directory
 * Execute **netlab up**
 * Enjoy! 😊

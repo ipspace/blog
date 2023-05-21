@@ -30,7 +30,7 @@ A few examples I could easily think of:
 
 [Adam Chappell](https://twitter.com/packetsource/status/1465641402918969353) pointed out that (as is often the case) good design helps. For example, you could deploy a separate set of route reflectors per address family -- adding an address family on a PE router would never tear down an existing BGP session. 
 
-If your network is not big enough to justify a pair of devices per address family, you might want to cheat with per-address-family loopback interfaces. Doing that is a bit tricky[^DS] as you have to establish BGP sessions between distinct *pairs of IP addresses*[^EVPN]. More about that in another blog post;[here's the lab setup](https://github.com/ipspace/netlab-examples/tree/master/BGP/Multi-Loopback) in case you want to try it out yourself -- you'll need *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* to set it up.
+If your network is not big enough to justify a pair of devices per address family, you might want to cheat with per-address-family loopback interfaces. Doing that is a bit tricky[^DS] as you have to establish BGP sessions between distinct *pairs of IP addresses*[^EVPN]. More about that in another blog post;[here's the lab setup](https://github.com/ipspace/netlab-examples/tree/master/BGP/Multi-Loopback) in case you want to try it out yourself -- you'll need *[netlab](https://netlab.tools/)* to set it up.
 
 [^DS]: Thanks a million to [Dmytro Shypovalov](https://routingcraft.net/contact/) for setting me straight -- I claimed it cannot be done.
 

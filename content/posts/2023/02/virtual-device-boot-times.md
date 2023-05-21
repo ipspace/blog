@@ -29,7 +29,7 @@ Back to the facts. The following table contains the boot time as measured with `
 
 **Notes:**
 
-* All network devices apart from Cisco IOSv got [two vCPU cores plus the recommended minimum amount of memory](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-virtualization-providers)[^NR].
+* All network devices apart from Cisco IOSv got [two vCPU cores plus the recommended minimum amount of memory](https://netlab.tools/platforms/#supported-virtualization-providers)[^NR].
 * The lab server I was using has 8 cores and 32GB of memory. Nothing else was running on it during the measurement process.
 * `vagrant up` exits once it can log into a device with SSH. The boot time is thus the time from the moment the VM is started to the moment SSH server accepts an incoming session. 
 
@@ -79,8 +79,8 @@ Somehow I doubt that cRPD (if I ever manage to download it) would _beat the pant
 
 It's trivial to reproduce the results if you disagree with my measurements:
 
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Build Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html) for the networking devices you want to test
+* [Install netlab](https://netlab.tools/install/)
+* [Build Vagrant boxes](https://netlab.tools/labs/libvirt/) for the networking devices you want to test
 * Download the [measuring script](https://github.com/ipspace/netlab-examples/tree/master/timing) into an empty directory and execute `./timing.sh <list-of-devices>`
 
 If you just want to check the initial device configurations:

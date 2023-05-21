@@ -28,7 +28,7 @@ Downloading device images from most other vendors requires registration followed
 
 Want even more platform options? Here's [another topology](https://github.com/ipspace/netlab-examples/tree/master/routing/sr-mpls-bgp) using Cisco CSR and Arista vEOS.
 
-The beauty of all these solutions: SR-MPLS is one of the [standard netsim-tools modules](https://netsim-tools.readthedocs.io/en/latest/module-reference.html), and getting it configured in your lab is as easy as adding **sr** to the **module** list.
+The beauty of all these solutions: SR-MPLS is one of the [standard netsim-tools modules](https://netlab.tools/module-reference/), and getting it configured in your lab is as easy as adding **sr** to the **module** list.
 
 ### Release History
 

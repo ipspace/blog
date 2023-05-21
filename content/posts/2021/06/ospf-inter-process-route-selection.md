@@ -41,7 +41,7 @@ links:
   role: stub
 ```
 
-With *[netlab](https://netsim-tools.readthedocs.io/en/latest/)*, I had a lab up, running, and configured in three minutes. All it took was a single command:
+With *[netlab](https://netlab.tools/)*, I had a lab up, running, and configured in three minutes. All it took was a single command:
 
 ```
 $ netlab up

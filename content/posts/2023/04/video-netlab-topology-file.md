@@ -9,7 +9,7 @@ title: 'Video: netlab Topology File'
 ---
 After [introducing netlab](https://my.ipspace.net/bin/list?id=NetTools#NETLAB) in the [Network Automation Tools](https://www.ipspace.net/Network_Automation_Tools) webinar, I spent a few minutes [describing the structure of the _netlab_ lab topology file](https://my.ipspace.net/bin/get/NetTools/N4%20-%20netlab%20Topology%20File.mp4?doccode=NetTools).
 
-As always, use the video only as a starting point. For more details, read the [_netlab_ documentation](https://netsim-tools.readthedocs.io/en/latest/) ([overview](https://netsim-tools.readthedocs.io/en/latest/topology-overview.html), [reference guide](https://netsim-tools.readthedocs.io/en/latest/topology-reference.html)). 
+As always, use the video only as a starting point. For more details, read the [_netlab_ documentation](https://netlab.tools/) ([overview](https://netlab.tools/topology-overview/), [reference guide](https://netlab.tools/topology-reference/)). 
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetTools/N4%20-%20netlab%20Topology%20File.mp4?doccode=NetTools){{</jump>}}
 

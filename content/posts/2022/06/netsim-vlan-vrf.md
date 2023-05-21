@@ -6,7 +6,7 @@ tags:
 - netlab
 title: 'netlab: Combining VLANs with VRFs'
 ---
-Last two weeks we focused on [access VLANs](/2022/05/netsim-vlan-simple.html) and [VLAN trunk](/2022/06/netsim-vlan-trunk.html) *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* implementation. Can we combine them with [VRFs](/2022/04/netsim-vrf-lite.html)? Of course.
+Last two weeks we focused on [access VLANs](/2022/05/netsim-vlan-simple.html) and [VLAN trunk](/2022/06/netsim-vlan-trunk.html) *[netlab](https://netlab.tools/)* implementation. Can we combine them with [VRFs](/2022/04/netsim-vrf-lite.html)? Of course.
 
 The trick is very simple: attributes within a VLAN definition become attributes of VLAN interfaces. Add `vrf` attribute to a VLAN and you get all VLAN interfaces created for that VLAN in the corresponding VRF. Can't get any easier, can it?
 
@@ -49,7 +49,7 @@ vlans:
 
 That's it. Execute **netlab up**[^HW] (after downloading the [final topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk-vrf/topology.yml)) and you'll have a multi-VRF lab using a VLAN trunk.
 
-[^HW]: Assuming you completed your homework and [created a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html), [installed the software](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html), and [downloaded Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
+[^HW]: Assuming you completed your homework and [created a Ubuntu VM](https://netlab.tools/install/ubuntu-vm/), [installed the software](https://netlab.tools/labs/clab/), and [downloaded Arista cEOS container](https://netlab.tools/labs/ceos/).
 
 Here are the relevant parts of Arista cEOS configuration in case you're wondering what we achieved with the few extra lines in lab topology file:
 
@@ -100,8 +100,8 @@ ip routing vrf red
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VLAN/vlan-trunk-vrf#changing-device-types)? No problem:
 
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk-vrf/topology.yml) into an empty directory
 * Execute **netlab up**
 * Enjoy! 😊

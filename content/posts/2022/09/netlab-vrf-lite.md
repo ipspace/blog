@@ -16,7 +16,7 @@ Let's start with the nodes. We won't need any extra attributes on individual nod
 nodes: [r1, r2, r3, h1, h2, h3, h4 ]
 ```
 
-Next, we'll define two groups: Linux *hosts* and *routers*. We won't define the device type in the *routers* group so you can use [whatever devices you want](https://netsim-tools.readthedocs.io/en/latest/platforms.html) as long as they [support VLANs, VRFs and OSPF](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-configuration-modules) -- the [configuration modules](https://netsim-tools.readthedocs.io/en/latest/module-reference.html) we need to get the virtual interfaces and routing protocols up and running.
+Next, we'll define two groups: Linux *hosts* and *routers*. We won't define the device type in the *routers* group so you can use [whatever devices you want](https://netlab.tools/platforms/) as long as they [support VLANs, VRFs and OSPF](https://netlab.tools/platforms/#supported-configuration-modules) -- the [configuration modules](https://netlab.tools/module-reference/) we need to get the virtual interfaces and routing protocols up and running.
 
 ```
 groups:
@@ -70,7 +70,7 @@ links:
 
 That's it. Execute **netlab up -d _your-device_**[^HW] (after downloading the [final topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk-vrf/topology.yml)) and you'll have a multi-VRF lab using VLAN trunks.
 
-[^HW]: Assuming you completed your homework, [installed the software](https://netsim-tools.readthedocs.io/en/latest/install.html), and created a Vagrant box for your network devices.
+[^HW]: Assuming you completed your homework, [installed the software](https://netlab.tools/install/), and created a Vagrant box for your network devices.
 
 Here are the relevant parts of Arista EOS configuration in case you're wondering what we achieved with this simple lab topology file:
 
@@ -210,8 +210,8 @@ router ospf 101 vrf blue
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VRF/multihop-vrf-lite#changing-device-types)? No problem:
 
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VRF/multihop-vrf-lite/topology.yml) into an empty directory
 * Execute **netlab up -d _your-device_**
 * Enjoy! 😊

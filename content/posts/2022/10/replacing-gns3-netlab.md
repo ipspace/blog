@@ -6,7 +6,7 @@ tags:
 - netlab
 title: Could I Use netlab instead of GNS3?
 ---
-I'm often getting questions along the lines of _"I'm using GNS3. Could I replace it with [netlab](https://netsim-tools.readthedocs.io/en/latest/)?"_
+I'm often getting questions along the lines of _"I'm using GNS3. Could I replace it with [netlab](https://netlab.tools/)?"_
 
 **TL&DR**: No.
 

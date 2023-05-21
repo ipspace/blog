@@ -7,7 +7,7 @@ tags:
 - netlab
 title: netlab VXLAN Bridging Example
 ---
-[netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netsim-tools.readthedocs.io/en/latest/module/vxlan.html). Time to check how easy it is to replace a VLAN trunk with VXLAN transport. We'll use the lab topology from the [VLAN trunking example](/2022/06/netsim-vlan-trunk.html), replace the VLAN trunk between S1 and S2 with an IP underlay network, and [transport Ethernet frames across that network with VXLAN](https://github.com/ipspace/netlab-examples/tree/master/VXLAN/vxlan-bridging).
+[netlab release 1.3](/2022/09/netlab-1-3.html) introduced support for [VXLAN transport with static ingress replication](https://netlab.tools/module/vxlan/). Time to check how easy it is to replace a VLAN trunk with VXLAN transport. We'll use the lab topology from the [VLAN trunking example](/2022/06/netsim-vlan-trunk.html), replace the VLAN trunk between S1 and S2 with an IP underlay network, and [transport Ethernet frames across that network with VXLAN](https://github.com/ipspace/netlab-examples/tree/master/VXLAN/vxlan-bridging).
 
 {{<figure src="/2022/09/vxlan-bridging.png" caption="Lab topology">}}
 <!--more-->
@@ -62,7 +62,7 @@ Behind the scenes:
 
 * OSPF configuration module starts OSPF routing process on both switches, enabling IP connectivity between their loopback interfaces (which are then used as VXLAN VTEPs).
 * VLAN configuration module creates VLAN data structures and figures out that S1 and S2 need *red* and *blue* VLANs based on the VLAN access interfaces.
-* By default, the [VXLAN configuration module](https://netsim-tools.readthedocs.io/en/latest/module/vxlan.html) transports all local VLANs across the underlay network. You can change that behavior with **vxlan.vlans** list, and extend only some of the VLANs across the underlay network.
+* By default, the [VXLAN configuration module](https://netlab.tools/module/vxlan/) transports all local VLANs across the underlay network. You can change that behavior with **vxlan.vlans** list, and extend only some of the VLANs across the underlay network.
 * VXLAN configuration module automatically builds per-VLAN ingress replication lists for every node using **vxlan** module based on which other nodes use the same VLAN. You can even define multiple VXLAN bridging domains.
 
 Here's a sample Arista EOS configuration generated during the **netlab initial** process:
@@ -121,8 +121,8 @@ end
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VXLAN/vxlan-bridging#changing-device-types)? No problem:
 
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VXLAN/vxlan-bridging/topology.yml) into an empty directory
 * Execute **netlab up -d eos -p clab** if you want to run the lab with Arista cEOS in *containerlab*, or use whichever other device type in the `-d` parameter (you can skip the `-p` parameter if you're using *libvirt*).
 * Enjoy! 😊

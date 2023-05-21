@@ -26,15 +26,15 @@ links:
 - s1-s2
 ```
 
-Next steps after installing Docker, [containerlab](https://containerlab.srlinux.dev/install/) and [netsim-tools](https://netsim-tools.readthedocs.io/en/latest/install.html):
+Next steps after installing Docker, [containerlab](https://containerlab.srlinux.dev/install/) and [netsim-tools](https://netlab.tools/install/):
 
-* [Create the containerlab topology file](https://netsim-tools.readthedocs.io/en/latest/netlab/create.html) (*clab.yml*), Ansible inventory (*hosts.yml*), *host_vars*, *group_vars*, and *ansible.cfg* with **netlab create** 
+* [Create the containerlab topology file](https://netlab.tools/netlab/create/) (*clab.yml*), Ansible inventory (*hosts.yml*), *host_vars*, *group_vars*, and *ansible.cfg* with **netlab create** 
 * Start the lab with **sudo containerlab deploy -t clab.yml**
-* [Deploy initial configurations](https://netsim-tools.readthedocs.io/en/latest/configs.html) with **netlab initial**
+* [Deploy initial configurations](https://netlab.tools/configs/) with **netlab initial**
 
 Change the **provider** from *clab* to *libvirt* or *virtualbox* and you'll get a Vagrantfile that will set up two VMs with a point-to-point link between them[^1]. Add `module: [ ospf ]` and you'll get OSPF routing configured together with IP addresses. How cool is that? ;)
 
-For more details, [read the netsim-tools documentation](https://netsim-tools.readthedocs.io/en/latest/index.html), [download the code](https://github.com/ipspace/netlab) or [install it as a Python3 package](https://netsim-tools.readthedocs.io/en/latest/install.html), and enjoy.
+For more details, [read the netsim-tools documentation](https://netlab.tools/), [download the code](https://github.com/ipspace/netlab) or [install it as a Python3 package](https://netlab.tools/install/), and enjoy.
 
 [^1]: The latest EOS version downloadable as Vagrant box is 4.21.14M.
 

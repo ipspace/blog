@@ -8,7 +8,7 @@ title: Creating VRF Lite Labs With netlab
 ---
 I always found VRF lab setups a chore. On top of the usual IPAM tasks you have to create VRFs, assign route targets and route distinguishers, do that on every PE-router in your lab... before you can start working on interesting things.
 
-I tried to remove as much friction as I could with the *netlab* [VRF configuration module](https://netsim-tools.readthedocs.io/en/latest/module/vrf.html) -- let me walk you through a few simple examples[^FANBOY] which will also serve to [illustrate the VRF configuration differences between Cisco IOS and Arista EOS](/2022/04/netsim-vrf-lite.html#differences).
+I tried to remove as much friction as I could with the *netlab* [VRF configuration module](https://netlab.tools/module/vrf/) -- let me walk you through a few simple examples[^FANBOY] which will also serve to [illustrate the VRF configuration differences between Cisco IOS and Arista EOS](/2022/04/netsim-vrf-lite.html#differences).
 <!--more-->
 [^FANBOY]: Yes, I'm a fanboy, but it's a great tool ;)
 
@@ -63,9 +63,9 @@ links:
 
 And that's it. If you have a Ubuntu host handy:
 
-* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html)
+* [Install *netlab*](https://netlab.tools/install/ubuntu/)
 * Use `netlab install ubuntu ansible containerlab` to install all software packages
-* [Install Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html)
+* [Install Arista cEOS container](https://netlab.tools/install/ubuntu/)
 * Copy [topology file](https://github.com/ipspace/netlab-examples/blob/master/VRF/vrf-lite-hosts/multi-vrf.yml) into an empty directory
 * Execute `netlab up -p clab multi-vrf.yml` to start the lab ([more details](https://github.com/ipspace/netlab-examples/tree/master/VRF/vrf-lite-hosts))
 
@@ -364,6 +364,6 @@ Told you -- labbing VRFs has never been easier ;)
 
 You'll find the [lab topology files on GitHub](https://github.com/ipspace/netlab-examples/tree/master/VRF/vrf-lite-hosts). To use them:
 
-* [Install *netlab*](https://netsim-tools.readthedocs.io/en/latest/install.html) and your preferred lab environment. These days I find it easiest to use Arista cEOS with containerlab.
+* [Install *netlab*](https://netlab.tools/install/) and your preferred lab environment. These days I find it easiest to use Arista cEOS with containerlab.
 * Copy [topology files](https://github.com/ipspace/netlab-examples/tree/master/VRF/vrf-lite-hosts) into an empty directory
 * Execute **netlab up** with the parameters described above.

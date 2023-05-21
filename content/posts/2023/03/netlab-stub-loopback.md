@@ -74,9 +74,9 @@ links:
 
 ### Getting Started
 
-To get more details and learn about additional features included in release 1.5.0, [read the release notes](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-0). To upgrade, execute `pip3 install --upgrade networklab`.
+To get more details and learn about additional features included in release 1.5.0, [read the release notes](https://netlab.tools/release/1.5/#release-1-5-0). To upgrade, execute `pip3 install --upgrade networklab`.
 
-New to *netlab*? Start with the [Getting Started document](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) and the [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html).
+New to *netlab*? Start with the [Getting Started document](https://netlab.tools/tutorials/) and the [installation guide](https://netlab.tools/install/).
 
 ### Revision History
 

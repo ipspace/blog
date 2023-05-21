@@ -26,7 +26,7 @@ I created a tree network to test the *anycast with MPLS* idea:
 
 The lab is built from Arista cEOS virtual machines. The whole network is running OSPF, and MPLS/LDP will be enabled on all links. A1, A2 and A3 will advertise the same prefix (10.0.0.42/32) into OSPF. According to the "*no anycast with MPLS*" claim, L1 should not be able to reach all three anycast nodes.
 
-You probably know I prefer typing CLI commands over chasing rodents[^RD], so I used *[netlab](https://netsim-tools.readthedocs.io/en/latest/)* to build the lab. Here's the [topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) (I don't think it can get any simpler than that)
+You probably know I prefer typing CLI commands over chasing rodents[^RD], so I used *[netlab](https://netlab.tools/)* to build the lab. Here's the [topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) (I don't think it can get any simpler than that)
 
 [^RD]: To be precise, _Mus computatorum_ species
 
@@ -41,9 +41,9 @@ nodes: [ l1, l2, l3, s1, a1, a2, a3 ]
 links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 ```
 
-{{<note info>}}I [created the network diagram](https://netsim-tools.readthedocs.io/en/latest/outputs/graph.html) with **netlab create -o graph** command followed by **‌dot -Grankdir=RL -T png -o graph.ospf.png graph.dot** (using the [*rankdir* trick Jeroen van Bemmel taught me](https://blog.ipspace.net/2021/11/bgp-multipath-netsim-tools.html#off-topic-nicer-looking-graphs)).{{</note>}}
+{{<note info>}}I [created the network diagram](https://netlab.tools/outputs/graph/) with **netlab create -o graph** command followed by **‌dot -Grankdir=RL -T png -o graph.ospf.png graph.dot** (using the [*rankdir* trick Jeroen van Bemmel taught me](https://blog.ipspace.net/2021/11/bgp-multipath-netsim-tools.html#off-topic-nicer-looking-graphs)).{{</note>}}
 
-**Next step**: starting the lab with **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** and waiting a minute or so.
+**Next step**: starting the lab with **[netlab up](https://netlab.tools/netlab/up/)** and waiting a minute or so.
 
 I needed [a custom template](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/ospf-anycast-loopback.j2) to create the loopback interface on the anycast nodes and advertise it into OSPF. I also had to enable LDP on the new loopback interface due to the way _netlab_ configures LDP on Arista EOS.
 
@@ -55,7 +55,7 @@ interface Loopback42
  mpls ldp interface
 ```
 
-I could use **[netlab config](https://netsim-tools.readthedocs.io/en/latest/netlab/config.html)** command to configure lab devices with a custom Jinja2 template, but decided to make the custom configuration part of the lab topology -- anycast loopbacks will be configured every time the lab is started with **netlab up**. I used *[groups](https://netsim-tools.readthedocs.io/en/latest/groups.html)* to apply the configuration templates to groups of lab devices:
+I could use **[netlab config](https://netlab.tools/netlab/config/)** command to configure lab devices with a custom Jinja2 template, but decided to make the custom configuration part of the lab topology -- anycast loopbacks will be configured every time the lab is started with **netlab up**. I used *[groups](https://netlab.tools/groups/)* to apply the configuration templates to groups of lab devices:
 
 {{<cc>}}Lab topology with custom configuration templates{{</cc>}}
 ```
@@ -76,7 +76,7 @@ links: [ s1-l1, s1-l2, s1-l3, l2-a1, l2-a2, l3-a3 ]
 
 ### Smoke Test
 
-Let's inspect the routing tables first (hint: **[netlab connect](https://netsim-tools.readthedocs.io/en/latest/netlab/connect.html)** is an easy way to connect to lab devices without bothering with their IP addresses or /etc/hosts file). 
+Let's inspect the routing tables first (hint: **[netlab connect](https://netlab.tools/netlab/connect/)** is an easy way to connect to lab devices without bothering with their IP addresses or /etc/hosts file). 
 
 Here's the routing table entry for 10.0.0.42 on L2:
 
@@ -188,12 +188,12 @@ Yeah, I know I have to set up another lab to prove that ;) Mañana...
 
 To replicate this experiment:
 
-* [Set up a Linux server or virtual machine](https://netsim-tools.readthedocs.io/en/latest/install.html#creating-the-lab-environment). If you don't have a preferred distribution, use Ubuntu.
-* [Install netlab and the other prerequisite software](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html)
+* [Set up a Linux server or virtual machine](https://netlab.tools/install/#creating-the-lab-environment). If you don't have a preferred distribution, use Ubuntu.
+* [Install netlab and the other prerequisite software](https://netlab.tools/install/ubuntu/)
 
 Next:
  
-* [Download Arista vEOS image and build a Vagrant box](https://netsim-tools.readthedocs.io/en/latest/labs/eos.html)
+* [Download Arista vEOS image and build a Vagrant box](https://netlab.tools/labs/eos/)
 * Download the [lab topology file](https://github.com/ipspace/netlab-examples/blob/master/routing/anycast-mpls-ospf/topology.yml) into an empty directory
 * Execute **netlab up**
 

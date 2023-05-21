@@ -5,9 +5,9 @@ tags: [ netlab, DMVPN ]
 netlab_tag: [ use ]
 pre_scroll: True
 ---
-I always love to hear about real-life [netlab](https://netsim-tools.readthedocs.io/en/latest/) use cases, and try to make them even easier to implement with new netlab features -- that's how netlab got [custom Vagrant configuration templates](https://blog.ipspace.net/2022/06/netsim-custom-vagrant-boxes.html) and [per-node configuration templates](https://blog.ipspace.net/2023/04/netlab-merge-config.html). 
+I always love to hear about real-life [netlab](https://netlab.tools/) use cases, and try to make them even easier to implement with new netlab features -- that's how netlab got [custom Vagrant configuration templates](https://blog.ipspace.net/2022/06/netsim-custom-vagrant-boxes.html) and [per-node configuration templates](https://blog.ipspace.net/2023/04/netlab-merge-config.html). 
 
-When [Anne Baretta](https://www.ipspace.net/kb/NetAutJourney/index.html) sent me his initial DMVPN solution, we quickly figured out we could make it even cleaner if netlab supported [tunnel interfaces](https://netsim-tools.readthedocs.io/en/latest/links.html#links-tunnel); you can enjoy the results in [release 1.5.2](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-2), and [explore Anne's solution on GitHub](https://github.com/ipspace/netlab-examples/tree/master/DMVPN).
+When [Anne Baretta](https://www.ipspace.net/kb/NetAutJourney/index.html) sent me his initial DMVPN solution, we quickly figured out we could make it even cleaner if netlab supported [tunnel interfaces](https://netlab.tools/links/#links-tunnel); you can enjoy the results in [release 1.5.2](https://netlab.tools/release/1.5/#release-1-5-2), and [explore Anne's solution on GitHub](https://github.com/ipspace/netlab-examples/tree/master/DMVPN).
 <!--more-->
 Let me just point out a few minor details of that solution, starting with [lab topology](https://github.com/ipspace/netlab-examples/blob/master/DMVPN/topology.yml):
 
@@ -105,4 +105,4 @@ Translated into English:
 
 * Configure NHRP map and tunnel destination using the IP address of the hub's WAN interface.
 
-For more details, explore the [netlab examples GitHub repository](https://github.com/ipspace/netlab-examples/tree/master/DMVPN), and once you decide to give _netlab_ a try, start with the [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html) and [getting started](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) tutorial.
+For more details, explore the [netlab examples GitHub repository](https://github.com/ipspace/netlab-examples/tree/master/DMVPN), and once you decide to give _netlab_ a try, start with the [installation guide](https://netlab.tools/install/) and [getting started](https://netlab.tools/tutorials/) tutorial.

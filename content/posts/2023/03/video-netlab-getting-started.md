@@ -11,9 +11,9 @@ After explaining [how _netlab_ fits into the _virtual lab orchestration_ picture
 
 The [next video](https://my.ipspace.net/bin/get/NetTools/N3%20-%20Getting%20Started%20with%20netlab.mp4?doccode=NetTools) in the _[Using netlab to Build Networking Labs](https://my.ipspace.net/bin/list?id=NetTools#NETLAB)_ series describes:
 
-* Typical deployment scenarios: [VirtualBox](https://netsim-tools.readthedocs.io/en/latest/labs/virtualbox.html) on Windows or MacOS, or libvirt/KVM on a [Linux server](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu.html) or a [virtual machine](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html) (running on Windows or MacOS).
-* [Hardware](https://netsim-tools.readthedocs.io/en/latest/platforms.html) and [software](https://netsim-tools.readthedocs.io/en/latest/install.html) requirements
-* Behind-the-scene operations performed by **[netlab create](https://netsim-tools.readthedocs.io/en/latest/netlab/create.html)**, **[netlab initial](https://netsim-tools.readthedocs.io/en/latest/netlab/initial.html)** and **[netlab up](https://netsim-tools.readthedocs.io/en/latest/netlab/up.html)** commands.
+* Typical deployment scenarios: [VirtualBox](https://netlab.tools/labs/virtualbox/) on Windows or MacOS, or libvirt/KVM on a [Linux server](https://netlab.tools/install/ubuntu/) or a [virtual machine](https://netlab.tools/install/ubuntu-vm/) (running on Windows or MacOS).
+* [Hardware](https://netlab.tools/platforms/) and [software](https://netlab.tools/install/) requirements
+* Behind-the-scene operations performed by **[netlab create](https://netlab.tools/netlab/create/)**, **[netlab initial](https://netlab.tools/netlab/initial/)** and **[netlab up](https://netlab.tools/netlab/up/)** commands.
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetTools/N3%20-%20Getting%20Started%20with%20netlab.mp4?doccode=NetTools){{</jump>}}
 

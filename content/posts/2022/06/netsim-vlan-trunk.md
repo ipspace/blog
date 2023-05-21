@@ -63,7 +63,7 @@ links:
 
 And that's all you have to do. Execute **netlab up**[^HW] and enjoy your first multi-VLAN lab.
 
-[^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netsim-tools.readthedocs.io/en/latest/install/ubuntu-vm.html), [installing the software](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html), and [downloading Arista cEOS container](https://netsim-tools.readthedocs.io/en/latest/labs/ceos.html).
+[^HW]: After doing the mandatory homework like [creating a Ubuntu VM](https://netlab.tools/install/ubuntu-vm/), [installing the software](https://netlab.tools/labs/clab/), and [downloading Arista cEOS container](https://netlab.tools/labs/ceos/).
 
 Here are the relevant parts of Arista cEOS configuration (for the two readers who still don't have a working *netlab* environment):
 
@@ -102,8 +102,8 @@ interface Vlan1001
 
 Want to run this lab on your own, or [try it out with different devices](https://github.com/ipspace/netlab-examples/tree/master/VLAN/vlan-trunk#changing-device-types)? No problem:
 
-* [Install netlab](https://netsim-tools.readthedocs.io/en/latest/install.html)
-* [Download the relevant containers](https://netsim-tools.readthedocs.io/en/latest/labs/clab.html) or [create Vagrant boxes](https://netsim-tools.readthedocs.io/en/latest/labs/libvirt.html)
+* [Install netlab](https://netlab.tools/install/)
+* [Download the relevant containers](https://netlab.tools/labs/clab/) or [create Vagrant boxes](https://netlab.tools/labs/libvirt/)
 * Download the [topology file](https://github.com/ipspace/netlab-examples/blob/master/VLAN/vlan-trunk/topology.yml) into an empty directory
 * Execute **netlab up**
 * Enjoy! 😊

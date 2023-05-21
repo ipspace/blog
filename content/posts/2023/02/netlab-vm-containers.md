@@ -8,7 +8,7 @@ title: Mix Containers and VMs with netlab Release 1.5.0
 ---
 Maybe it's just me, but I always need a few extra devices in my virtual labs to have endpoints I could ping to/from or to have external routing information sources. We used VRF- and VLAN tricks in the days when we had to use physical devices to carve out a dozen hosts out of a single Cisco 2501, and life became much easier when you could spin up a few additional virtual machines in a virtual lab instead.
 
-Unfortunately, those virtual machines eat precious resources. For example, *netlab* allocates [1GB to every Linux virtual machine](https://netsim-tools.readthedocs.io/en/latest/platforms.html#supported-virtualization-providers) when you only need `bash` and `ping`. Wouldn't it be great if you could start that `ping` in a *busybox* container instead?
+Unfortunately, those virtual machines eat precious resources. For example, *netlab* allocates [1GB to every Linux virtual machine](https://netlab.tools/platforms/#supported-virtualization-providers) when you only need `bash` and `ping`. Wouldn't it be great if you could start that `ping` in a *busybox* container instead?
 <!--more-->
 Combining virtual machines running under KVM with Docker-controlled containers was always tricky, particularly when you wanted to have them organized in a complex virtual network. *containerlab* solved the container connectivity bit, and the *vrnetlab* project gave us the tools to package network OS virtual machines into containers (running VM instances inside containers), but wouldn't it be better to have native VMs and containers working together? That's what *netlab* release 1.5.0 can do.
 
@@ -46,7 +46,7 @@ links:
     vlan.access: red
 ```
 
-Unfortunately, it would be too hard to provide a true mix-and-match experience. In release 1.5.0, the primary provider has to be *libvirt*; you can use *containerlab* as the secondary provider. The up-to-date list of compatible providers is always available in the [online documentation](https://netsim-tools.readthedocs.io/en/latest/providers.html#combining-virtualization-providers).
+Unfortunately, it would be too hard to provide a true mix-and-match experience. In release 1.5.0, the primary provider has to be *libvirt*; you can use *containerlab* as the secondary provider. The up-to-date list of compatible providers is always available in the [online documentation](https://netlab.tools/providers/#combining-virtualization-providers).
 
 ### Behind the Scenes
 
@@ -60,6 +60,6 @@ Long story short: you MUST use **netlab up** to start the lab, or you'll get a
 
 ### Getting Started
 
-To get more details and learn about additional features included in release 1.5.0, [read the release notes](https://netsim-tools.readthedocs.io/en/latest/release/1.5.html#release-1-5-0). To upgrade, execute `pip3 install --upgrade networklab`.
+To get more details and learn about additional features included in release 1.5.0, [read the release notes](https://netlab.tools/release/1.5/#release-1-5-0). To upgrade, execute `pip3 install --upgrade networklab`.
 
-New to *netlab*? Start with the [Getting Started document](https://netsim-tools.readthedocs.io/en/latest/tutorials.html) and the [installation guide](https://netsim-tools.readthedocs.io/en/latest/install.html).
+New to *netlab*? Start with the [Getting Started document](https://netlab.tools/tutorials/) and the [installation guide](https://netlab.tools/install/).
