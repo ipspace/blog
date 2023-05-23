@@ -1,5 +1,8 @@
 {{ partial "header.html" . }}
-{{ $pag := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+{{ $pages := $pages | union (where .Site.RegularPages "Params.alt_section" "in" .Site.Params.mainSections) }}
+{{ $pages := $pages.ByDate.Reverse }}
+{{ $pag := .Paginate $pages }}
 {{ $full := .Scratch.Get "ArticleContext" }}
 <style>a.footnote-ref { display: none; }</style>
 {{ range $index,$page := $pag.Pages }}

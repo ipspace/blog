@@ -1,6 +1,6 @@
 ---
 title: "Path Failure Detection on Multi-Homed Servers"
-date: 2023-05-25 06:32:00
+date: 2023-05-30 06:32:00
 tags: [ data center, switching ]
 ---
 **TL&DR:** Installing an Ethernet NIC with two uplinks in a server is easy[^2NIC]. Connecting those uplinks to two edge switches is common sense [^VMW]. Detecting physical link failure is trivial in Gigabit Ethernet world. Deciding between two independent uplinks or a link aggregation group is interesting. Detecting path failure and disabling the useless uplink that causes traffic blackholing is a living hell (more details in this [Design Clinic question](https://designclinic.ipspace.net/topic/dual-homing-hosts/)).
