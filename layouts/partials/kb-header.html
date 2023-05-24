@@ -1,0 +1,15 @@
+{{ $full := .Scratch.Get "ArticleContext" }}
+{{ if $full }}
+{{   if .Params.comment }}
+<div class='post__content' itemprop='articleComment' style='font-style: italic;'>
+  {{ .Params.comment | markdownify }}
+</div>
+{{   end }}
+{{ end }}
+<header class='post__header'>
+{{ partial "post-timestamp.html" . }}
+  <h1 class='firstHeading' itemprop='name headline'>{{ .Title }}</h1>
+  {{ with .Params.subtitle }}
+    <p class='subtitle'>{{ . }}</p>
+  {{ end }}
+</header>

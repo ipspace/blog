@@ -1,0 +1,12 @@
+{{ $pages := .Parent.Pages }}
+{{ $pages := where $pages "Params.kb_section" .Params.kb_section }}
+{{ $pages := sort $pages "File.Filename" }}
+<div class="regbox decorated">
+  <h3 class="sidebar__title">Table of Contents</h3>
+  <ul>
+{{   range $pages }}
+    <li><a href="{{ .Permalink }}">{{ or .Params.toc_title .Title }}</a></li>
+{{   end }}
+  </ul>
+</div>
+  

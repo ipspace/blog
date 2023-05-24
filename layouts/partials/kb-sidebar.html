@@ -1,0 +1,25 @@
+<a class='open-sidebar' href='#'>Sidebar</a>
+<aside class='sidebar'>
+  <nav class='sidebar__mobile-nav'>
+    <a class='close-sidebar' href=''>
+      <svg class='close-icon'>
+        <use xlink:href='#icon-close'></use>
+      </svg>
+    </a>
+  </nav>
+  <div class="highlight sidebar-more regbox">
+    <p>Get unlimited access to:</p>
+    <ul>
+    <li>Over 390 hours of content</li>
+    <li>Books and case studies</li>
+    <li>Live webinar sessions</li>
+    </ul>
+    <p>For just $299.00/year</p>
+    <p><a href="https://www.ipspace.net/Subscription"><span class="buyButton">Start now</span></a></p>
+  </div>
+  {{ if .Params.kb_section }}
+  {{ partialCached "kb-sidebar-toc.html" . .Params.kb_section }}
+  {{ end }}
+  {{ partialCached "sidebar-social.html" . }}
+  {{ partialCached "sidebar-featured.html" . }}
+</aside>

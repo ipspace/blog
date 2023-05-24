@@ -1,0 +1,29 @@
+{{ $full := .Scratch.Get "ArticleContext" }}
+<div class='post__item'>
+  <article class='post' itemscope='' itemtype='http://schema.org/BlogPosting'>
+    {{ partial "kb-header.html" . }}
+    <div class='post__content' itemprop='articleBody'>
+      {{ partial "kb-section-intro.html" . }}
+      {{ .Content }}
+      {{ partial "kb-section-bottom.html" . }}
+{{ $pages := .Parent.Pages }}
+{{ $pages := where $pages "Params.kb_section" .Params.kb_section }}
+{{ $pages := where $pages "File.Filename" ">" .File.Filename }}
+{{ if $pages|len }}
+{{   range first 1 (sort $pages "File.Filename") }}
+      <div class="nextPage">
+        <p class="jump-link"><a href="{{ .Permalink }}" title="{{ .Title }}">Continue</a></p>
+        <p>Next: <a href="{{ .Permalink }}">{{ .Title }}</a></p>
+      </div>
+{{   end }}
+{{ end }}
+    </div>
+    <div class='post__meta'>
+      {{ partial "post-share.html" . }}
+      {{ with .Params.media }}
+        <audio src="{{ . }}" controls="controls" preload="none"></audio>
+      {{ end }}
+      {{ partial "post-tags.html" . }}
+    </div>
+  </article>
+</div>
