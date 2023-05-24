@@ -1,5 +1,9 @@
+---
+kb_section: AutomationLab
+minimal_sidebar: true
 title: Accessing Network Devices from Your Automation Environment
-
+url: /kb/AutomationLab/30-Connectivity.html
+---
 The network automation environment you build [in the first step](10-Ansible_Environment.html) has to be able to access your networking lab.
 
 If you’re running a physical lab or a virtual lab on another server, make sure your workstation can access the devices (how to get there is out of scope of this document - but hey, you're a networking engineer). If you can access the lab from your workstation, you’ll be able to access it from the Ansible VM, as all desktop hypervisor products use either bridging between VM Ethernet interface and workstation Ethernet interface or NAT on the workstation to access the outside world.

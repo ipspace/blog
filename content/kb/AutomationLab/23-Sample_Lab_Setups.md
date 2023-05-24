@@ -1,5 +1,9 @@
+---
+kb_section: AutomationLab
+minimal_sidebar: true
 title: Sample Lab Setups
-
+url: /kb/AutomationLab/23-Sample_Lab_Setups.html
+---
 Explore what some of your fellow course attendees did in the past. I included links to their Git repositories or blog posts in the following list, and you might still find them in our Slack team and ask questions about their setup. 
 
 Most of them used VIRL, EVE-NG, or GNS3 (details below); here are a few outliers:

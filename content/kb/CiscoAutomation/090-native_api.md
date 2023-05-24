@@ -1,5 +1,9 @@
-# Native Web API
-
+---
+kb_section: CiscoAutomation
+minimal_sidebar: true
+title: Native Web API
+url: /kb/CiscoAutomation/090-native_api.html
+---
 In 2020 every system (including network devices, web applications, ...) should be programmable via API. Actually many vendors say that their product are programmable via API, but that's not always 100% true. In fact many products do not support what I call "complete API".
 
 Legacy products are usually managed via web interface and/or a proprietary CLI interface. Converting a monolithic product into an API-based ones is pretty impossible. Vendors usually add an additional layer, to expose internal functions via web API. This approach requires to map every function and every output to a web format, like JSON or XML for example.

@@ -1,5 +1,9 @@
-# NETCONF and RESTCONF
-
+---
+kb_section: CiscoAutomation
+minimal_sidebar: true
+title: NETCONF and RESTCONF
+url: /kb/CiscoAutomation/070-netconf.html
+---
 Network Configuration Protocol (NETCONF - all uppercase according to IETF docs, although it's not an acronym) is an IETF standard (RFC 6241) developed to manage network devices. SNMP was also developed by IETF for the same purpose. In fact, NETCONF and SNMP have many similarities, and there are people referring to NETCONF as SNMPv4. Explaining NETCONF details is beyond the scope of this short blog post, but let's introduce a couple of essential characterstics:
 
 INFO: If you're looking for a deep dive into NETCONF and YANG, please check out the *[NETCONF and YANG](https://www.ipspace.net/NETCONF_and_YANG)* webinar

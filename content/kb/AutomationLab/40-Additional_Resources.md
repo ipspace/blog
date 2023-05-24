@@ -1,5 +1,9 @@
+---
+kb_section: AutomationLab
+minimal_sidebar: true
 title: Useful Resources
-
+url: /kb/AutomationLab/40-Additional_Resources.html
+---
 Finally, you might also find these resources useful:
 
 - Hank Preston wrote simple guide to [Network Programmability with Vagrant](https://github.com/hpreston/vagrant_net_prog)

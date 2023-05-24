@@ -1,5 +1,9 @@
+---
+kb_section: AutomationLab
+minimal_sidebar: true
 title: Networking Lab
-
+url: /kb/AutomationLab/20-Networking_Lab.html
+---
 You could build a physical or a virtual networking lab, or use a third-part virtual lab like [Network To Code labs](https://labs.networktocode.com/).
 
 The only requirement when building non-local lab (be it using physical gear or hosted virtual lab) is to have SSH access from your host (and VMs running within it) to the networking devices. When working with physical devices you might want to use out-of-band management network for SSH access in case you badly mess up device configurations.

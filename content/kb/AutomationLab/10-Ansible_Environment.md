@@ -1,5 +1,9 @@
+---
+kb_section: AutomationLab
+minimal_sidebar: true
 title: Creating Ansible Development Environment
-
+url: /kb/AutomationLab/10-Ansible_Environment.html
+---
 Looking for a quick recipe? [Read this document](https://my.ipspace.net/bin/get/Ansible/Create%20a%20Simple%20Ansible%20Test%20Environment.pdf). Still here? Let's go
 
 ## Where will you run Ansible playbooks?
