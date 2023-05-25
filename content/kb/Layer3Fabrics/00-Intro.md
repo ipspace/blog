@@ -1,15 +1,16 @@
+---
+index: true
+kb_section: Layer3Fabrics
+minimal_sidebar: true
 title: Redundant Layer-3-Only Data Center Fabrics
-index: yes
 toc_title: Overview
-
+url: /kb/Layer3Fabrics/index.html
+---
 I’m often getting the same question when delivering online courses or webinars focused on data center fabrics or cloud infrastructure:
 
-<blockquote class='cite' markdown='1'>Is it possible to build a **redundant** layer-3-only fabric with no VLANs stretched across multi switches, and use X (for example, VMware NSX) on such a fabric?</blockquote>
+> Is it possible to build a **redundant** layer-3-only fabric with no VLANs stretched across multi switches, and use X (for example, VMware NSX) on such a fabric?
 
-<figure markdown='1'>
-  <img src="Nonredundant-L3-Fabric.png">
-  <figcaption>Layer-3-only fabric... without redundant server connections<br />Source: [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures)</figcaption>
-</figure>
+{{<figure src="Nonredundant-L3-Fabric.png" caption="Layer-3-only fabric... without redundant server connections<br />Source: [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures)">}}
 
 In this document, we’ll explore the problem of using multiple IP addresses from same or different subnets on clients or servers. Using loopback addresses and routing on servers (the usual solution) is outside of the scope of this document, explore [Routing on Servers](https://my.ipspace.net/bin/list?id=Clos#ROUTING_SERVERS) part of [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar for more details.
 

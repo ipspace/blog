@@ -1,5 +1,9 @@
+---
+kb_section: Layer3Fabrics
+minimal_sidebar: true
 title: Conclusions
-
+url: /kb/Layer3Fabrics/50-conclusions.html
+---
 Implementing resilient applications on top of redundant layer-3-only fabrics (without resorting to tricks like loopback interfaces on servers) is a hard problem that has been successfully solved only in niche domains like SS7 signaling or iSCSI fabrics.
 
 Most application developers are unaware of the complexities involved in designing resilient applications[^1], resulting in applications that expect to connect to a single IP address per service[^7], pushing the problems down to the network layer where they are usually solved in one of these ways:
