@@ -1,7 +1,11 @@
+---
+index: true
+kb_section: BGPHighAvailability
+minimal_sidebar: true
 title: BGP as High-Availability Protocol
-index: yes
 toc_title: Overview
-
+url: /kb/BGPHighAvailability/
+---
 It seems incredible how often networking engineers still discuss Border Gateway Protocol (BGP), and how often it's still the best tool for the job. In this article I'll describe a solution I designed and developed for enterprise data centers: using BGP in data centers to manage high availability (HA) with firewalls, hosts and even Network Function Virtualization (NFV) chains.
 
 ## Why BGP?
@@ -10,7 +14,7 @@ BGP is used here as a solution simply because it is the protocol to which the de
 
 I started by using BGP to monitor and manage high availability of firewall clusters. Here is a high-level network diagram to help you understand the focus of this scenario:
 
-![Network diagram](bgp-for-HA-00.png)
+{{<figure src="bgp-for-HA-00.png" caption="Network diagram">}}
 
 Let's briefly analyze the solution.
 
@@ -31,6 +35,6 @@ What are the advantages introduced by BGP in this this solution? In addition to 
 
 But be careful, BGP must be used exclusively for HA. This means that it must not allow modifications to the topology, but only verification of the reachability through the firewall. For the sceptics, conservatives or extremely cautious, it is also possible to use only static routing on firewalls and configure a multi-hop BGP sessions between external routers and leafs, passing through the firewall, as illustrated below:
 
-![Running BGP Across a Firewall](bgp-for-HA-01.png)
+{{<figure src="bgp-for-HA-01.png" caption="Running BGP Across a Firewall">}}
 
 In the next part of this article we'll discuss BGP configuration and the associated routing policies.
