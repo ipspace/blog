@@ -109,7 +109,10 @@ def migrate_post(path: str,args: argparse.Namespace) -> None:
   text = '\n\n'.join(chunks[1:])
 
   try:
-    doc = yaml.safe_load(frontmatter)
+    if frontmatter.find('#') == 0:
+      doc = { 'title': frontmatter[1:].strip() }
+    else:
+      doc = yaml.safe_load(frontmatter)
   except Exception as exc:
     print(f"Error parsing YAML header {path}: {exc}")
     return
