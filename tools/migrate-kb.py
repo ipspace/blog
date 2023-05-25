@@ -35,7 +35,11 @@ def replace_markup_tag(line: str, tag: str = '') -> str:
   else:
     chunks = re.split(r'\A([A-Z]+):\s+',line,1)
     tag = chunks[1].lower()
-    return "{{<note "+tag+">}}"+chunks[2]+"{{</note>}}"
+    if tag == 'caption':
+      print(f"WARNING: leftover caption tag: {line}")
+      return "{{<cc>}}"+chunks[2]+"{{</cc>}}"
+    else:
+      return "{{<note "+tag+">}}"+chunks[2]+"{{</note>}}"
 
 def fix_blockquote(m):
   text = m.group(1)
@@ -135,7 +139,7 @@ def migrate_post(path: str,args: argparse.Namespace) -> None:
 
   path_chunks = os.path.abspath(path).split('content')
   if 'index' in doc:
-    doc['url'] = os.path.dirname(path_chunks[1])+'/index.html'
+    doc['url'] = os.path.dirname(path_chunks[1])+"/"
   else:
     doc['url'] = path_chunks[1].replace('.md','.html')
 
@@ -148,6 +152,9 @@ def migrate_post(path: str,args: argparse.Namespace) -> None:
       pass
 
   text = process_markup(text,path)
+  if 'cc>' in text or 'caption>' in text or '```' in text:
+    doc['pre_scroll'] = True
+  
   with open(path, 'w') as stream:
     stream.write('---\n')
     yaml.dump(doc,stream)
