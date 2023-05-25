@@ -3,7 +3,7 @@ index: true
 kb_section: CiscoAutomation
 minimal_sidebar: true
 toc_title: Overview
-url: /kb/CiscoAutomation/index.html
+url: /kb/CiscoAutomation/
 title: Automation for Cisco NetDevOps
 ---
 Approaching IT automation can be confusing even for seasoned tech guys. There are few reasons:

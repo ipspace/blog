@@ -5,7 +5,7 @@ kb_section: DockerSvc
 minimal_sidebar: true
 title: Docker Container Services
 toc_title: Overview
-url: /kb/DockerSvc/index.html
+url: /kb/DockerSvc/
 ---
 One of the most common container use cases is providing services to other parts of application stack (probably running in other containers) or to external users. While it's extremely easy to set up container-based servers (and most open-source products now include a container-based version), the networking aspects of container services can get intriguingly tricky, as you'll find out in this article.
 

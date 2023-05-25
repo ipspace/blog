@@ -4,7 +4,7 @@ kb_section: ConfigRegex
 minimal_sidebar: true
 toc_title: Overview
 title: Brownfield Network Automation with Ansible
-url: /kb/ConfigRegex/index.html
+url: /kb/ConfigRegex/
 ---
 One of the problems that I ran into when starting with network automation was the decision on how to migrate network device configurations from manually-configured ones to fully managed configurations.
 
