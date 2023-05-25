@@ -37,6 +37,31 @@ def replace_markup_tag(line: str, tag: str = '') -> str:
     tag = chunks[1].lower()
     return "{{<note "+tag+">}}"+chunks[2]+"{{</note>}}"
 
+def fix_blockquote(m):
+  text = m.group(1)
+  lines = text.split('\n')
+  for i in range(len(lines)):
+    lines[i] = "> " + lines[i]
+
+  return '\n'.join(lines)
+
+def fix_figure(m):
+  text = m.group(1)
+  img_match = re.search(r'<img src=.([^\'"]+)',text)
+  src = img_match.group(1) if img_match else ''
+  if not src:
+    print(f"WARNING: cannot find image in figure: {m.group(0)}")
+    return m.group(0)
+  
+  cap_match = re.search(r'<figcaption>(.*?)</figcaption>',text)
+  markup = '{{<figure src="'+src+'"'
+  if cap_match:
+    caption = cap_match.group(1)
+    caption = re.sub('<br\s*/>','. ',caption)
+    markup = markup + ' caption="'+caption+'"'
+  markup = markup + '>}}'
+  return markup
+
 def process_markup(text: str,fname: str) -> str:
   lines = text.split('\n')
   for i in range(len(lines)):
@@ -59,7 +84,13 @@ def process_markup(text: str,fname: str) -> str:
       continue
     lines[i] = replace_markup_tag(lines[i])
 
-  return '\n'.join(lines)
+  text = '\n'.join(lines)
+  text = re.sub(r'<blockquote class=.cite..*?>(.*?)</blockquote>',fix_blockquote,text)
+  text = re.sub(
+            r'<figure markdown.*?>(.*?)</figure>',fix_figure,text,
+            count=0,
+            flags=re.DOTALL+re.MULTILINE+re.IGNORECASE)
+  return text
 
 def migrate_post(path: str,args: argparse.Namespace) -> None:
   if VERBOSE:
