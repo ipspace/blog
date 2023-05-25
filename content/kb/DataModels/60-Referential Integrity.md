@@ -1,19 +1,23 @@
+---
+kb_section: DataModels
+minimal_sidebar: true
+pre_scroll: true
 title: Object Identifiers and Referential Integrity
-publish: 2019-06-15
-
+url: /kb/DataModels/60-Referential Integrity.html
+---
 Even our latest data model contains duplicate data - device names appear in device descriptions and links. For example:
+
+{{<cc>}}Attributes of switch S1{{</cc>}}
 
     ---
     hostname: S1
     bgp_as: 65001
 
-CAPTION: Attributes of switch S1
+{{<cc>}}Link between S1 and S2{{</cc>}}
 
     - prefix: 172.16.0.0/30
       S1: GigabitEthernet0/1
       S2: GigabitEthernet0/1
-
-CAPTION: Link between S1 and S2
 
 Unfortunately it's impossible to remove the last bit of data duplication as we need a mechanism to:
 

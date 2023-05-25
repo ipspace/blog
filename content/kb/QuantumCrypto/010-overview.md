@@ -1,9 +1,14 @@
-index: yes
+---
+index: true
+kb_section: QuantumCrypto
+minimal_sidebar: true
+title: 'Quantum-Safe Cryptography: Hype versus Reality'
 toc_title: Overview
-
+url: /kb/QuantumCrypto/
+---
 Theoretically, quantum computers can break common key establishment methods such as RSA, Diffie-Hellman and ECC (Elliptic Curve Cryptography) in no time at all. How real and how big is the risk really? Let’s have a look at the threat and the countermeasures.
 
-### Quantum computers as threat
+## Quantum Computers as a Threat
 
 François Weissbaum, cryptographer at the Swiss Federal Department of Defense, provided an excellent introduction of this topic at an event organized by the [Security Interest Group Switzerland](https://www.sig-switzerland.ch/) in February 2017. Here is a short summary of his talk.
 
@@ -17,6 +22,6 @@ The only known algorithm to break hash functions is also Grover's algorithm. Len
 
 The situation is different for asymmetric crypto systems. Shor's algorithm can solve problems like factorization and discrete logarithm quickly and efficiently. If a universal quantum computer existed, all of today's traditional asymmetric procedures would be unsafe.
 
-INFO: Public Key Infrastructure needs two algorithms: one for hash functions and one for the digital signature. Only the digital signature algorithms use an asymmetric crypto system and are vulnerable.
+{{<note info>}}Public Key Infrastructure needs two algorithms: one for hash functions and one for the digital signature. Only the digital signature algorithms use an asymmetric crypto system and are vulnerable.{{</note>}}
 
 For more information, please read a [study on quantum computing](https://www.bsi.bund.de/EN/Topics/Crypto/Cryptography/QuantumComputing/quantum_computing_node.html) released by the German Federal Office for Information Security (BSI).

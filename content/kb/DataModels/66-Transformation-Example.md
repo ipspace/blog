@@ -1,7 +1,13 @@
+---
+kb_section: DataModels
+minimal_sidebar: true
+pre_scroll: true
 title: Data Transformation Example
-
+url: /kb/DataModels/66-Transformation-Example.html
+---
 Let's illustrate the data transformation concepts with a simple example: we'll transform our [highly optimized data model with automatic IP address allocation](40-Link%20Prefixes.html) into a set of device-level data models [identical to what we started with](index.html). Our transformation should take data describing nodes and links...
 
+{{<cc>}}Data structure describing routers, links, and stub VLAN interfaces{{</cc>}}
 ```
 nodes:
   S1:
@@ -23,10 +29,10 @@ links:
 - S2:
     Vlan101: 192.168.2.1/24
 ```
-CAPTION: Data structure describing routers, links, and stub VLAN interfaces
 
 ...and generate device-level data describing device attributes (BGP AS number), interfaces, and IP addresses:
 
+{{<cc>}}Data structure describing an individual device{{</cc>}}
 ```
 ---
 hostname: S1
@@ -41,7 +47,6 @@ neighbors:
 - ip: 172.16.0.2
   bgp_as: 65002
 ```
-CAPTION: Data structure describing an individual device
 
 The transformation rules are pretty simple (after all, we're working with a proof-of-concept-level example):
 
@@ -74,6 +79,7 @@ Not surprisingly, the logic is almost exactly the same as [what we used to creat
 
 Creating a [Jinja2 transformation template](https://github.com/ipspace/ansible-examples/blob/master/Data-Models/Transformation/device-data.j2) was surprisingly easy &ndash; I started with the template used to create device configurations from the [final data model](40-Link%20Prefixes.html) as it already contained the necessary business logic, and changed its output from device configuration statements to YAML elements:
 
+{{<cc>}}Data Transformation Template{{</cc>}}
 ```
 {#
   Jinja2 macros to create interface- and BGP neighbor data structure.
@@ -118,10 +124,10 @@ neighbors:
 {%   endfor %}
 {% endfor %}
 ```
-CAPTION: Data Transformation Template
 
 I also created a [simple template](https://github.com/ipspace/ansible-examples/blob/master/Data-Models/Transformation/inventory.j2) that would generate a skeleton Ansible inventory in YAML format:
 
+{{<cc>}}Creating skeleton Ansible inventory from **nodes** element in the network data model{{</cc>}}
 ```
 # Ansible inventory generated from network data model
 #
@@ -132,10 +138,10 @@ all:
     {{ hostname }}:
 {% endfor %}
 ```
-CAPTION: Creating skeleton Ansible inventory from **nodes** element in the network data model
 
 Finally, we need a [playbook](https://github.com/ipspace/ansible-examples/blob/master/Data-Models/Transformation/transform-data.yml) that would read the network data model and create device data as individual YAML files in **host_vars** directory:
 
+{{<cc>}}Ansible playbook that generates Ansible inventory and device data{{</cc>}}
 ```
 #!/usr/bin/env ansible-playbook
 #
@@ -157,10 +163,10 @@ Finally, we need a [playbook](https://github.com/ipspace/ansible-examples/blob/m
       src: inventory.j2
       dest: hosts.yml
 ```
-CAPTION: Ansible playbook that generates Ansible inventory and device data
 
 You could run that playbook every time you want to create device configurations, whenever new commit is merged into the master branch (as part of CI or CD pipeline), or as part of a *makefile* that would generate device configurations. Here's a sample **Makefile** that gets the job done (probably not in an optimal way):
 
+{{<cc>}}This Makefile generates device configurations whenever the high-level data model changes{{</cc>}}
 ```
 configs/%.cfg: host_vars/%.yml hosts.yml
 	ansible-playbook -i hosts.yml create-configs.yml
@@ -170,7 +176,6 @@ hosts.yml: network.yml
 	ansible-playbook transform-data.yml
 	touch $@
 ```
-CAPTION: This Makefile generates device configurations whenever the high-level data model changes
 
 **Notes:**
 
@@ -182,6 +187,7 @@ CAPTION: This Makefile generates device configurations whenever the high-level d
 
 The end result is exactly what we need: Ansible inventory in YAML format...
 
+{{<cc>}}Skeleton Ansible inventory generated from network data model{{</cc>}}
 ```
 # Ansible inventory generated from network data model
 #
@@ -191,10 +197,10 @@ all:
     S1:
     S2:
 ```
-CAPTION: Skeleton Ansible inventory generated from network data model
 
 ...and device-level data for individual BGP speakers stored in **host_vars** directory:
 
+{{<cc>}}Device-level data for S1{{</cc>}}
 ```
 #
 # host_vars data for S1 generated from network device data model
@@ -211,7 +217,6 @@ neighbors:
 - bgp_as: 65002
   ip: 172.16.0.2
 ```
-CAPTION: Device-level data for S1
 
 Once we have the device-level data, we can use the templates from the [initial solution](index.html) to create device configurations.
 

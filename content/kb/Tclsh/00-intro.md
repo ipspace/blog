@@ -1,9 +1,14 @@
+---
+index: true
+kb_section: Tclsh
+minimal_sidebar: true
 title: Running tclsh Scripts
-index: yes
-
+url: /kb/Tclsh/
+index_title: Tclsh on Cisco IOS Tutorial
+---
 Tcl shell (started with the **tclsh** Cisco IOS CLI command) was introduced in Cisco IOS release 12.3(2)T. The Tcl shell can be used to execute interactive Tcl commands interspersed with regular Cisco IOS CLI commands. It can also be used to run Tcl scripts that can substantially enhance the Cisco IOS CLI experience. 
 
-WARN: Due to security considerations, primarily the ability to write IOS-based password grabbers, the **tclsh** command is available only in CLI privilege level 15.
+{{<note warn>}}Due to security considerations, primarily the ability to write IOS-based password grabbers, the **tclsh** command is available only in CLI privilege level 15.{{</note>}}
 
 ## Running tclsh Scripts
 
@@ -15,10 +20,10 @@ The first parameter of the Cisco IOS **tclsh** command is an Integrated File S
 
 Store a simple *helloWorld.tcl* file on an external TFTP server with the IP address 10.0.0.10.
 
+{{<cc>}}helloWorld.tcl{{</cc>}}
 ```
 puts "hello world" 
 ```
-CAPTION: helloWorld.tcl
 
 Executing the command **tclsh tftp://10.0.0.10/helloWorld.tcl** on a router that can reach the TFTP server will result in the "famous" _hello world_ printout:
 

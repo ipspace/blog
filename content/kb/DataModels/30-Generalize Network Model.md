@@ -1,11 +1,17 @@
+---
+kb_section: DataModels
+minimal_sidebar: true
 title: Generalize the Network Data Model
-publish: 2019-06-01
-
+url: /kb/DataModels/30-Generalize Network Model.html
+pre_scroll: true
+---
 After starting with [simplistic data model full of duplicate data](index.html), [removing duplicate data](10-Removing%20Duplicate%20Data.html), and [restructuring the data model into a network-focused one](20-Restructure.html) we're pretty close to an ideal solution. The only thing that still annoys me is the *left* and *right* part of an edge (link). In an undirected graph, we shouldn’t differentiate between the two ends of a connection. Furthermore, our data model can’t cope with rare multi-access links we might still find in real-life networks (examples: Carrier Ethernet E-LAN, DMVPN tunnels, wireless...).
 
-NOTE: At this point, we’re slightly diverging from “*network is a graph*” paradigm. Modeling multi-access network as a graph requires an extra node representing the network... in case you ever wondered why OSPF needs type-2 LSAs ;)
+{{<note note>}}At this point, we’re slightly diverging from “*network is a graph*” paradigm. Modeling multi-access network as a graph requires an extra node representing the network... in case you ever wondered why OSPF needs type-2 LSAs ;){{</note>}}
 
 We can solve both challenges by replacing the left/right attributes of a link with a dictionary of nodes. Our revised data model would look like this:
+
+{{<cc>}}Data structure describing all links in our fabric{{</cc>}}
 
     links:
     #
@@ -24,8 +30,6 @@ We can solve both challenges by replacing the left/right attributes of a link wi
     - S2:
         Vlan101: 192.168.2.1/24
 
-CAPTION: Data structure describing all links in our fabric
-
 Not only have we made our data model cleaner, but it also allows us to express corner cases like:
 
 * **multi-access interfaces**: a dictionary of nodes has more than two elements;
@@ -33,11 +37,11 @@ Not only have we made our data model cleaner, but it also allows us to express c
 
 The only parameters left in the per-node **host_vars** files would be the node name and the AS number.
 
+{{<cc>}}Host variables for S1{{</cc>}}
+
     ---
     hostname: S1
     bgp_as: 65001
-
-CAPTION: Host variables for S1
 
 ## Generating Configuration from Revised Data Model
 

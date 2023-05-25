@@ -1,5 +1,9 @@
+---
+kb_section: Tclsh
+minimal_sidebar: true
 title: Executing Cisco IOS Commands from Tcl Shell
-
+url: /kb/Tclsh/10-commands.html
+---
 Cisco IOS provides three mechanisms to execute CLI and configuration commands from Tcl:
 
 -   *cli\_open*, *cli\_write* and *cli\_close* commands are used in Embedded Event Manager (EEM) Tcl policies.
@@ -14,6 +18,7 @@ When you execute a CLI command in a **tclsh** script, the command is executed 
 
 The following script executes the **show users** command to verify which line is used to execute the IOS commands embedded in the Tcl code. An invalid command (**show ipx route**) is then executed, first within a **catch** block, then without an error handling mechanism.
 
+{{<cc>}}nativeExec.tcl{{</cc>}}
 ```
 puts "\nexecuting show users"
 show users
@@ -27,7 +32,6 @@ puts "\nexecution error, not caught"
 show ipx route
 puts "script ends" 
 ```
-CAPTION: nativeExec.tcl
 
 When you execute this script on a router, you get the following printout:
 
@@ -61,6 +65,7 @@ Tcl accepts multiple parameters in the **exec** command to implement command p
 
 The following script executes the **show users** IOS CLI command with the Tcl **exec** command. The results of the **show users** command are stored in a variable and displayed with the **puts** command. A valid (**show ip route**) and an invalid (**show ipx route**) command are then executed to illustrate the error handling mechanism implemented with a **catch** block.
 
+{{<cc>}}execCommand.tcl{{</cc>}}
 ```
 puts "\nexecuting show users"
 set result [exec {show users}]
@@ -80,7 +85,6 @@ if {[catch {set result [exec {show ipx route}]} e]} {
   puts [format "result string length %d" [string length $result]]
 } 
 ```
-CAPTION: execCommand.tcl
 
 The *execCommand.tcl* script executed on a router generates the following printout:
 
@@ -107,7 +111,7 @@ The printout illustrates two important points:
 
 -   The IOS CLI command started with the **exec** Tcl command is executed on another VTY with special host name.
 
-NOTE: The **exec** command does not execute properly if no VTY line is available when it’s executed. You should have configured **transport input none** on one or more VTY lines to ensure the Tcl scripts will always find a free VTY.
+{{<note note>}}The **exec** command does not execute properly if no VTY line is available when it’s executed. You should have configured **transport input none** on one or more VTY lines to ensure the Tcl scripts will always find a free VTY.{{</note>}}
 
 -   When the IOS CLI command executed with the **exec** command fails, the **exec** command fails (as expected), but the IOS error message is not returned to the **catch** command.
 

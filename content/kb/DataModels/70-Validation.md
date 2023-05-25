@@ -1,6 +1,10 @@
+---
+kb_section: DataModels
+minimal_sidebar: true
+pre_scroll: true
 title: Data Validation
-publish: 2020-10-19
-
+url: /kb/DataModels/70-Validation.html
+---
 Optimizing a data model and removing duplicate data is great... but how do we know that we're working with a _valid_ data model? 
 
 That question is easy to answer in a traditional IPAM/CMDB implementation using a back-end database and a custom data handling logic offering a REST API, a GUI, or both. The custom data handling logic validates data before it's entered in the database, and the database thus contains syntactically and semantically valid data.
@@ -21,7 +25,7 @@ Using our [latest data model with per-link prefixes](40-Link%20Prefixes.html) th
 
 You could write a simple program in any programming language to perform those tests, or use data modeling languages (also called _schemas_) like YANG, JSON Schema, or XML Schema to check most of the constraints. As it's easy to transform YAML files into JSON, we'll use **jsonschema**.
 
-NOTE: It's often hard to check referential integrity using a data modeling language. You might have to write your own program to do that, but at least you can offload the boring task of checking data structures and data format to a third-party solution.
+{{<note note>}}It's often hard to check referential integrity using a data modeling language. You might have to write your own program to do that, but at least you can offload the boring task of checking data structures and data format to a third-party solution.{{</note>}}
 
 ## Validating Host Data
 

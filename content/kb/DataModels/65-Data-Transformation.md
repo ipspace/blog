@@ -1,5 +1,9 @@
+---
+kb_section: DataModels
+minimal_sidebar: true
 title: Data Model Transformation Concepts
-
+url: /kb/DataModels/65-Data-Transformation.html
+---
 Our journey took us from the [initial simplistic data model full of duplicate data](index.html) to [highly optimized data model with automatic IP address allocation](40-Link%20Prefixes.html). However, as we kept simplifying the data model and squeezing out redundancies, the complexity of our templates increased dramatically &ndash; we replaced explicit (data) complexity with hidden (template) complexity.
 
 While it's hard to reduce overall system complexity, sometimes we can at least control where we want to have it. It doesn't make sense to push the complexity onto system operators; after all, we use network automation to make changes to the network more reliable, and burdening operators with a complex data model will not get us there. 
@@ -19,12 +23,12 @@ Your network automation solution could transform data from abstract (high-level)
 
 For example, it's extremely easy to detect changed data if your high-level model is a set of YAML text files controlled with Git &ndash; the data transformation is performed every time a commit is merged into the master branch. On the other hand, it's hard to detect changes in relational databases unless the application making the changes implements some logging logic.
 
-NOTE: You could use UPDATE triggers to detect changes to database tables, but you probably don't want to go down that path.
+{{<note note>}}You could use UPDATE triggers to detect changes to database tables, but you probably don't want to go down that path.{{</note>}}
 
 Complex data transformation or transformation involving numerous lookups into external data sources is best performed in a dedicated transformation program... but if all you need is something simple you might be able to get it done with a Jinja2 template transforming internal data structures into YAML-formatted text.
 
 If you're using Ansible to generate and deploy device configurations, you could store the resulting YAML document as **host_vars** file, and Ansible would automatically use it the next time you'd run an Ansible playbook. You could also do the transformation on-the-fly within an Ansible playbook using **template** lookup to perform the transformation, and **from_yaml** filter to parse the results back into an internal data structure.
 
-WARN: Using a Jinja2 template to perform data transformation might result in [write-only code](https://blog.ipspace.net/2018/04/avoid-write-only-code.html). Even [Ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/complex_data_manipulation.html) agrees that *Ansible is not recommended as a data processing/manipulation tool*.
+{{<note warn>}}Using a Jinja2 template to perform data transformation might result in [write-only code](https://blog.ipspace.net/2018/04/avoid-write-only-code.html). Even [Ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/complex_data_manipulation.html) agrees that *Ansible is not recommended as a data processing/manipulation tool*.{{</note>}}
 
 <!-- need a comment -->

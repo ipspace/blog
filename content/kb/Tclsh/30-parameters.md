@@ -1,5 +1,9 @@
+---
+kb_section: Tclsh
+minimal_sidebar: true
 title: Tclsh Command Line Parameters
-
+url: /kb/Tclsh/30-parameters.html
+---
 A Tcl script executed with the **tclsh** command can receive command line parameters: all words entered after the file name in the **tclsh** command line are passed to the Tcl script in the *$argv* list.
 
 The [Tcl list commands](http://www.tcl.tk/man/tcl8.5/tutorial/Tcl14.html) can be used to examine each individual parameter. When used in a scalar context, *$argv* returns the rest of the command line after the script name.
@@ -8,10 +12,10 @@ The [Tcl list commands](http://www.tcl.tk/man/tcl8.5/tutorial/Tcl14.html) can 
 
 The following script executes the **show ip interface** command and filters the outputs to include only the relevant lines (the lines with the *address* or *protocol* keywords):
 
+{{<cc>}}ipconfig.tcl{{</cc>}}
 ```
 puts [exec "show ip interface $argv ¦ include address¦protocol"] 
 ```
-CAPTION: ipconfig.tcl
 
 You can execute the script with the **tclsh flash:ipconfig.tcl** ***interface*** command. To simplify the user interface, configure an alias.
 
@@ -34,6 +38,7 @@ Vlan1 is up, line protocol is up
 
 The following script shuts down the specified interface:
 
+{{<cc>}}shutdown.tcl{{</cc>}}
 ```
 #
 # ifname is set to first CLI parameter (interface name)
@@ -50,7 +55,6 @@ if { [ catch { exec "show ip interface $ifname" } errmsg ] } {
 
 ios_config "interface $ifname" "shutdown" 
 ```
-CAPTION: shutdown.tcl
 
 The script performs the following steps:
 

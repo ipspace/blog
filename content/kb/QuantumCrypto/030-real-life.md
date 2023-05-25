@@ -1,11 +1,15 @@
-# Real-Life Solutions Explained
-
+---
+kb_section: QuantumCrypto
+minimal_sidebar: true
+title: Real-Life Solutions Explained
+url: /kb/QuantumCrypto/030-real-life.html
+---
 The two approaches to post-quantum cryptography that are the most practical and efficient for packet networks are:
 
 * Symmetric encryption of the asymmetric key exchange
 * Post-quantum cryptography (using cryptographic methods that are not affected by Grover's or Shor's algorithms).
 
-### Symmetric Encryption of Asymmetric Key Exchange
+## Symmetric Encryption of Asymmetric Key Exchange
 
 This is the approach selected by a leading developer of high-assurance network encryption devices, the German company Atmedia. Co-founder and co-CEO Jörg Friedrich explains why and how they do it:
 
@@ -17,7 +21,7 @@ The resulting system is a hybrid approach, where the customer can select if ECDH
 
 We are currently evaluating post quantum cryptography (PQC) candidates from the BSI and NIST. At least one of these algorithms will be included as an additional component in the key derivation function for the SA keys in upcoming firmware releases of our encryption products supporting the existing hybrid model together with PQC.
 
-### Post-Quantum Cryptography
+## Post-Quantum Cryptography
 
 The second approach is to use post-quantum cryptography (PQC), explained by Denis Kolegov, associate professor of computer security at Tomsk State University and former research engineer at VDOM Research (Denis participated in two different projects that used PQC)
 
