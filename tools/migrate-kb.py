@@ -88,6 +88,11 @@ def process_markup(text: str,fname: str) -> str:
       continue
     lines[i] = replace_markup_tag(lines[i])
 
+  for i in range(len(lines)):
+    m = re.search(r"\A!\[(.*?)\]\((.*?)\)",lines[i])
+    if m:
+      lines[i] = "{{<figure src=\""+m.group(2)+"\" caption=\""+m.group(1)+"\">}}"
+
   text = '\n'.join(lines)
   text = re.sub(r'<blockquote class=.cite..*?>(.*?)</blockquote>',fix_blockquote,text)
   text = re.sub(
