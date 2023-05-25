@@ -3,7 +3,7 @@ index: true
 index_title: Docker Networking for Container-Based Services
 kb_section: DockerSvc
 minimal_sidebar: true
-title: Starting Container-Based Services
+title: Docker Container Services
 toc_title: Overview
 url: /kb/DockerSvc/index.html
 ---
