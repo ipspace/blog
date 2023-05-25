@@ -1,0 +1,12 @@
+{{ $section := .Get 0 }}
+{{ $data := index .Page.Params $section }}
+{{ $site := .Page.Site }}
+{{ if $data }}
+<ul>
+{{   range $data }}
+{{     with $site.GetPage . }}
+  <li><a href="{{ .Permalink }}">{{ or .Params.index_title .Params.title }}</a></li>
+{{     end }}
+{{   end }}
+</ul>
+{{ end }}

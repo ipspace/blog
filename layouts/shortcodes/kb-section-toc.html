@@ -1,0 +1,9 @@
+{{ $pages := .Page.Parent.Pages }}
+{{ $pages := where $pages "Params.kb_section" "==" .Page.Params.kb_section }}
+{{ $pages := where $pages "Params.index" "==" nil }}
+<ul>
+{{ range $pages }}
+{{    $title := .Title }}
+  <li><a href="{{ .Permalink }}">{{ or .Params.index_title .Params.title }}</a></li>
+{{ end }}
+</ul>
