@@ -1,5 +1,10 @@
+---
+kb_section: Ansible
+minimal_sidebar: true
+pre_scroll: true
 title: Transforming XML Data in Ansible
-
+url: /kb/Ansible/Transform-XML-Data.html
+---
 A netwoking engineer attending the Building Network Automation Solutions online course wanted to transform Junos interface configuration (in XML format) into a concise data structure that could be used in an Ansible playbook.
 
 ## Example
@@ -78,7 +83,7 @@ To transform XML document into target data structure using Ansible Jinja2 filter
 
 Traditionally you could use **junos_command** module to get XML data straight into Ansible data structure as I explained in the [_Executing Commands on Network Devices_](https://my.ipspace.net/bin/get/Ansible/N2.1%20-%20Executing%20Commands%20on%20Network%20Devices.mp4?doccode=Ansible) video in the [_Ansible Networking Modules_](https://my.ipspace.net/bin/list?id=Ansible#NET_CMD) part of [Ansible for Networking Engineers](https://www.ipspace.net/Ansible_for_Networking_Engineers) webinar. Recent versions of Junos could also return JSON-formatted data which would be immediately usable in Ansible (but see caveats below).
 
-NOTE: In earlier Ansible versions the **junos_command** module returned parsed XML data no matter how it was invoked... but it seems that in Ansible 2.8 it started returning XML data as a text string when you decided to use **network_cli** connection plugin.
+{{<note note>}}In earlier Ansible versions the **junos_command** module returned parsed XML data no matter how it was invoked... but it seems that in Ansible 2.8 it started returning XML data as a text string when you decided to use **network_cli** connection plugin.{{</note>}}
 
 When the data returned by a network device is parsed and resides in an Ansible variable (fact), you could use **json_query** filter to extract the bits you need. You could also use one of the tricks I described in [_Transforming Data Models with Ansible_](https://my.ipspace.net/bin/list?id=NetAutSol&module=3#M3S4B), for example using a Jinja2 template with **lookup** filter. Finally, you could write a small Python data manipulation filter yourself.
 

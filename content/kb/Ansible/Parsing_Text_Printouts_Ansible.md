@@ -1,5 +1,10 @@
+---
+kb_section: Ansible
+minimal_sidebar: true
+pre_scroll: true
 title: Parsing Text Printouts within Ansible Playbooks
-
+url: /kb/Ansible/Parsing_Text_Printouts_Ansible.html
+---
 Ansible can take data produced by an external script (or **show** command executed on a network device) and use it in subsequent tasks in an Ansible playbook – an ideal solution if you need to collect device data to generate a report, verify device state (example: *are BGP neighbors up*) or check device state before configuring it (example: *is another customer configured on this interface?*)
 
 Ansible can use *structured data* in JSON or YAML format directly. There are Ansible plug-ins that can process data returned in XML format. But what if the networking device cannot do anything else but return text printout in tabular or free-form format (I’m looking at you, Cisco IOS)?
@@ -35,7 +40,7 @@ Ansible 2.5 added an [XML parsing filter](https://docs.ansible.com/ansible/devel
 
 If you can’t get the structured data from your device, can’t use NAPALM or NTC-Ansible and don’t have any programming skills (or can’t find someone who would write a short Python or Perl program for you), try to use the hack described in the rest of this article.
 
-### Generate a printout on the network device
+### Generate a Printout on the Network Device
 
 You have to generate a printout on your network device that has one line for every object you’re interested in, and no extra headers/footers.
 
@@ -59,7 +64,7 @@ Vlan1            10.0.0.1        YES NVRAM  up              up
 Dialer2          10.1.2.3        YES IPCP   up              up
 ```
 
-INFO: Matching on a combination of digits and dots (IP address) is not good enough – that would also match subinterface names like FastEthernet0.1
+{{<note info>}}Matching on a combination of digits and dots (IP address) is not good enough – that would also match subinterface names like FastEthernet0.1{{</note>}}
 
 After figuring out what **show** command and filter you need to use to get the desired printout execute the show command from an Ansible playbook and store the printouts in an Ansible variable with the **register** parameter.
 
@@ -81,7 +86,7 @@ If you’re not familiar with Ansible playbook format or Ansible networking modu
 
 Finally, we need to parse the one-line-per-object printout to extract the information we’re looking for (interface names). We’ll use the Ansible regular expression Jinja2 filters to remove extraneous text or to extract the bits you need.
 
-### Using Regular Expression Filters (New in Ansible 2.2)
+### Using Regular Expression Filters
 
 Ansible 2.2 added **regex\_findall** and **regex\_search** Jinja2 filters. The **regex\_findall** returns a list of all matched regular expressions whereas **regex\_search** takes additional arguments that allow you to specify which match groups you want to get (see [Python Regular Expression Syntax](https://docs.python.org/2/library/re.html) for more details).
 
@@ -120,7 +125,7 @@ Here’s another example using **regex\_search** to extract DHCP pool names from
 
 The only difference between **regex\_findall** and **regex\_search** are the extra arguments that you can specify in **regex\_search** after the regular expression. These arguments specify which parts of the matched regular expression you want to get in the output list (in our example, we wanted to get *named group* **id**).
 
-MORE: For a complete example, explore the [DHCP-Pools directory](https://github.com/ipspace/ansible-examples/tree/master/DHCP-Pools) in my [Ansible examples repository](https://github.com/ipspace/ansible-examples).
+{{<note more>}}For a complete example, explore the [DHCP-Pools directory](https://github.com/ipspace/ansible-examples/tree/master/DHCP-Pools) in my [Ansible examples repository](https://github.com/ipspace/ansible-examples).{{</note>}}
 
 ### Get Rid of Useless Parts of the Printout
 

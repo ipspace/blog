@@ -1,5 +1,10 @@
+---
+kb_section: Ansible
+minimal_sidebar: true
+pre_scroll: true
 title: Creating Ansible Inventory from Vagrant SSH Configuration
-
+url: /kb/Ansible/Ansible_Inventory_Vagrant.html
+---
 Vagrant-based labs running on top of VirtualBox use port mapping from host TCP ports in range 2000 – 2500 to SSH ports on managed virtual machines.
 
 It’s relatively easy to create Ansible inventory that works in that environment: all you have to do is to specify **ansible\_host** and **ansible\_port** for every managed device, for example:

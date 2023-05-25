@@ -1,5 +1,10 @@
+---
+kb_section: Ansible
+minimal_sidebar: true
+pre_scroll: true
 title: Running Ansible in a Vagrant-Controlled Virtual Machine
-
+url: /kb/Ansible/Running_Ansible_Vagrant_VM.html
+---
 Most network automation tutorials using Ansible with Vagrant assume that you’re running Ansible on your host machine. I prefer running Ansible in another virtual machine for these reasons:
 
 -   While Mac OSX is *almost* Unix, but there might be slight discrepancies between Linux and OSX behavior that would result in hard-to-troubleshoot failures.
@@ -100,7 +105,7 @@ eth0      Link encap:Ethernet  HWaddr 08:00:27:7e:84:45
           RX bytes:160029 (160.0 KB)  TX bytes:107337 (107.3 KB)
 ```
 
-INFO: It looks like **10.0.2.2** and **10.0.2.15** are fixed IP addresses used by Vagrant in VirtualBox environment. I couldn’t find this behavior described in Vagrant documentation, but there are plenty of hits on the Internet discussing it.
+{{<note info>}}It looks like **10.0.2.2** and **10.0.2.15** are fixed IP addresses used by Vagrant in VirtualBox environment. I couldn’t find this behavior described in Vagrant documentation, but there are plenty of hits on the Internet discussing it.{{</note>}}
 
 Using the IP address of the host TCP/IP stack (10.0.2.2) and TCP port number mapped to SSH port on another VM it’s possible to open a SSH session from Ansible VM to a virtual networking device. For example, to reach *leaf-1* vEOS node, I’d run **ssh -p 2201 10.0.2.2**.
 

@@ -1,5 +1,10 @@
+---
+kb_section: Ansible
+minimal_sidebar: true
+pre_scroll: true
 title: Collect SSH Keys with an Ansible Playbook
-
+url: /kb/Ansible/Collect_SSH_Keys_Ansible.html
+---
 One of the annoyances of running ephemeral virtual labs where you recreate the devices every time you start the lab (I'm looking at you VIRL) are the ever-changing SSH keys. Vagrant neatly solves that problem; here are a few tricks if you're using some other staging infrastructure.
 
 ### Create SSH Keys on Reload

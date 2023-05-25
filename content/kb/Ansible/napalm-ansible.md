@@ -1,5 +1,9 @@
+---
+kb_section: Ansible
+minimal_sidebar: true
 title: Using NAPALM with Ansible
-
+url: /kb/Ansible/napalm-ansible.html
+---
 Ansible 2.8 includes NAPALM connection plugin, making engineers trying to use NAPALM with Ansible wonder how to do it correctly. This article should provide an overview of your options.
 
 There seem to be two ways of using NAPALM with Ansible:
@@ -14,7 +18,7 @@ NAPALM modules like **napalm_get_facts** are not (as of today) part of Ansible c
 
 If you decide to use NAPALM modules (as supplied by the NAPALM team), then you have to read their documentation to figure out which Ansible connection type you should be using. The current examples indicate you have to use **connection: local**.
 
-NOTE: My [installation script](https://github.com/ipspace/NetOpsWorkshop/tree/master/install) installs NAPALM in the default location, and all my Ansible examples using NAPALM have ansible.cfg file with _plugins_ path that includes the NAPALM modules (example: [LLDP-to-Graph](https://github.com/ipspace/ansible-examples/tree/master/LLDP-to-Graph)).
+{{<note note>}}My [installation script](https://github.com/ipspace/NetOpsWorkshop/tree/master/install) installs NAPALM in the default location, and all my Ansible examples using NAPALM have ansible.cfg file with _plugins_ path that includes the NAPALM modules (example: [LLDP-to-Graph](https://github.com/ipspace/ansible-examples/tree/master/LLDP-to-Graph)).{{</note>}}
 
 The alternative is to use NAPALM connection plugin added to Ansible 2.8. In that case, we should start our journey by [reading the plugin documentation](https://docs.ansible.com/ansible/latest/plugins/connection/napalm.html). As of Ansible 2.8, it’s cryptic and pretty useless but indicates that you have to install NAPALM as a prerequisite. I tried to find a usable example, but the only thing I found was a [discussion on whether to use it](https://github.com/napalm-automation/napalm-ansible/issues/148 ), which concluded with “_it doesn’t make sense_”, and that made me even more confused.
 

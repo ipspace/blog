@@ -1,5 +1,9 @@
-# Useful Network Automation Tools
-
+---
+kb_section: Ansible
+minimal_sidebar: true
+title: Useful Network Automation Tools
+url: /kb/Ansible/Useful_Network_Automation_Tools.html
+---
 List of useful network automation tools found on the 'net:
 
 - [Network configuration auditing](https://networklore.com/network-config-audit/) by Patrick Ogenstad

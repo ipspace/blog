@@ -1,5 +1,9 @@
+---
+kb_section: Ansible
+minimal_sidebar: true
 title: Optimizing Environment Setup in Ansible Playbooks
-
+url: /kb/Ansible/Optimizing_Environment_Setup.html
+---
 One of the simplest network automation tasks is generating device configurations from data models, service descriptions, and configuration templates. You can use almost any tool to do that - from Excel to Ansible, Python or Nornir. However, it makes sense if the tool is easy to use and can handle device inventory and data models out-of-the box, making Ansible a common choice.
 
 After the first few failed attempts, most engineers quickly discover the need for structured templates, and might start liking Ansible roles and **assemble** task to merge configuration snippets into final configuration... requiring numerous work directories (usually one per managed device).
@@ -49,7 +53,7 @@ Here's the final snippet:
         check_mode: no
         delegate_to: localhost
 
-INFO: Of course you could optimize the above play a bit, but you get the idea...
+{{<note info>}}Of course you could optimize the above play a bit, but you get the idea...{{</note>}}
 
 I've seen numerous examples where setting up the environment took more space in a playbook than the actual tasks that had to be executed.
 

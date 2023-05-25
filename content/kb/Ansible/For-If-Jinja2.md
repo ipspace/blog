@@ -1,5 +1,9 @@
+---
+kb_section: Ansible
+minimal_sidebar: true
 title: Use FOR-IF Construct in Jinja2 Loops
-
+url: /kb/Ansible/For-If-Jinja2.html
+---
 A networking engineer attending the [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course sent me a solution that included a pretty common (but somewhat suboptimal) way of iterating through a data structure that contains some elements you're not interested in.
 
 Let's assume we have collected ARP entries from a router having a few LAN and WAN interfaces (I removed the MAC addresses for readability reasons):
