@@ -1,7 +1,25 @@
-{{ $data := index .Site.Data "kb" }}
-{{ if and $data .Params.kb_section }}
+{{ if .Params.kb_section }}
+{{   $data := index .Site.Data "kb" }}
 {{   $data := index $data .Params.kb_section }}
-{{   with index $data "bottom" }}
-{{ . | markdownify }}
+{{   if $data }}
+{{     with index $data "bottom" }}
+{{       . | markdownify }}
+{{     end }}
+{{   end }}
+{{   $pages := .Parent.Pages }}
+{{   $pages := where $pages "Params.kb_section" .Params.kb_section }}
+{{   $pages := where $pages "File.Filename" ">" .File.Filename }}
+{{   if $pages|len }}
+{{     range first 1 (sort $pages "File.Filename") }}
+      <div class="nextPage">
+        <p class="jump-link"><a href="{{ .Permalink }}" title="{{ .Title }}">Continue</a></p>
+        <p>Next: <a href="{{ .Permalink }}">{{ .Title }}</a></p>
+      </div>
+{{     end }}
+{{   end }}
+{{   if $data }}
+{{     with index $data "more_bottom" }}
+{{       . | markdownify }}
+{{     end }}
 {{   end }}
 {{ end }}

@@ -6,17 +6,6 @@
       {{ partial "kb-section-intro.html" . }}
       {{ .Content }}
       {{ partial "kb-section-bottom.html" . }}
-{{ $pages := .Parent.Pages }}
-{{ $pages := where $pages "Params.kb_section" .Params.kb_section }}
-{{ $pages := where $pages "File.Filename" ">" .File.Filename }}
-{{ if $pages|len }}
-{{   range first 1 (sort $pages "File.Filename") }}
-      <div class="nextPage">
-        <p class="jump-link"><a href="{{ .Permalink }}" title="{{ .Title }}">Continue</a></p>
-        <p>Next: <a href="{{ .Permalink }}">{{ .Title }}</a></p>
-      </div>
-{{   end }}
-{{ end }}
     </div>
     <div class='post__meta'>
       {{ partial "post-share.html" . }}
