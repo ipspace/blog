@@ -23,6 +23,44 @@ def parseCLI():
 
   return parser.parse_args()
 
+def find_pre_start(lines: list, cnt: int) -> int:
+  for i in range(cnt-1,0,-1):
+    if lines[i].find('```') == 0:
+      return i
+  return -1
+
+def replace_markup_tag(line: str, tag: str = '') -> str:
+  if tag:
+    return re.sub(r'[A-Z]+:\s+(.*)',"{{<"+tag+">}}\\1{{</"+tag+">}}" ,line)
+  else:
+    chunks = re.split(r'\A([A-Z]+):\s+',line,1)
+    tag = chunks[1].lower()
+    return "{{<note "+tag+">}}"+chunks[2]+"{{</note>}}"
+
+def process_markup(text: str,fname: str) -> str:
+  lines = text.split('\n')
+  for i in range(len(lines)):
+    if lines[i].find('CAPTION:') != 0 or i == 0:
+      continue
+
+    if lines[i-1] != '```':
+      print(f"WARNING: {fname}:{i} - CAPTION: must be preceded by a code block")
+      continue
+
+    j = find_pre_start(lines,i-1)
+    if j < 0:
+      print(f"WARNING: {fname}:{i} - cannot find start of code block preceding CAPTION")
+      continue
+
+    lines = lines[:j] + [replace_markup_tag(lines[i],'cc')] + lines[j:i] + lines[i+1:]
+
+  for i in range(len(lines)):
+    if not re.search(r"\A[A-Z]+:\s+",lines[i]):
+      continue
+    lines[i] = replace_markup_tag(lines[i])
+
+  return '\n'.join(lines)
+
 def migrate_post(path: str,args: argparse.Namespace) -> None:
   if VERBOSE:
     print("Reading file %s" % path)
@@ -59,6 +97,8 @@ def migrate_post(path: str,args: argparse.Namespace) -> None:
       stream.close()
 
   doc['minimal_sidebar'] = True
+  doc.pop('publish',None)
+
   path_chunks = os.path.abspath(path).split('content')
   if 'index' in doc:
     doc['url'] = os.path.dirname(path_chunks[1])+'/index.html'
@@ -73,6 +113,7 @@ def migrate_post(path: str,args: argparse.Namespace) -> None:
     except:
       pass
 
+  text = process_markup(text,path)
   with open(path, 'w') as stream:
     stream.write('---\n')
     yaml.dump(doc,stream)
