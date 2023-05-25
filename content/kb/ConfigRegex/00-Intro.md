@@ -1,8 +1,11 @@
-index: yes
+---
+index: true
+kb_section: ConfigRegex
+minimal_sidebar: true
 toc_title: Overview
-
-# Brownfield Network Automation with Ansible
-
+title: Brownfield Network Automation with Ansible
+url: /kb/ConfigRegex/index.html
+---
 One of the problems that I ran into when starting with network automation was the decision on how to migrate network device configurations from manually-configured ones to fully managed configurations.
 
 In a first step I’ve tried to use Ansible standard modules to manage device configurations on Cisco IOS devices. For some parts of the configuration this works fine but when it comes to access lists, device-vlan configurations etc. the complexity of Ansible playbooks starts growing rapidly. Most of the complexity is introduced by the need to figure out the sequence of add- and delete configuration commands needed to transform the current running configuration into desired managed configuration.

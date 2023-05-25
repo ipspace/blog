@@ -1,5 +1,9 @@
-# Requirements and References
-
+---
+kb_section: ConfigRegex
+minimal_sidebar: true
+title: Requirements and References
+url: /kb/ConfigRegex/30-References.html
+---
 The solution was tested in this environment:
 
 * ansible &nbsp; 2.7.5

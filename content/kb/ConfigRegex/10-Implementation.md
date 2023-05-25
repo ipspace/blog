@@ -1,5 +1,9 @@
-# Simple Implementation in Ansible and Jinja2
-
+---
+kb_section: ConfigRegex
+minimal_sidebar: true
+title: Simple Implementation in Ansible and Jinja2
+url: /kb/ConfigRegex/10-Implementation.html
+---
 The Cisco IOS configuration is a structured text file that uses indentation to group configuration sections.
 
 For example, the definition of a client switchport starts with the header-line **interface GigabitEthernet1/0/2** and all configuration lines for this interface are indented by one blank.
@@ -22,7 +26,7 @@ The rest of this page describes YAML configuration, Ansible playbook, and Jinja2
 
 The playbook uses the following variables to describe the configuration sections that have to be removed. You could place the variables at the top of the play (under **vars**), or include them with **include_vars**.
 
-<div class='note'>Long lines have been wrapped to fit the page width. Editor</div>
+{{<note>}}Long lines have been wrapped to fit the page width. Editor{{</note>}}
 
     ...
     vars:
