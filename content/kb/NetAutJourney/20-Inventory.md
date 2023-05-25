@@ -1,7 +1,11 @@
-title: "Next Step: Network Inventory Database"
+---
+kb_section: NetAutJourney
+minimal_sidebar: true
+pre_scroll: true
+title: 'Next Step: Network Inventory Database'
 toc_title: Network Inventory Database
-publish: 2020-02-10
-
+url: /kb/NetAutJourney/20-Inventory.html
+---
 It's easy to collect live inventory data with Ansible and NAPALM, and it's just as
 easy to store the collected data in a database. Initially, I used sqlite3, which
 is great for ad-hoc use as you can create databases on the fly. You can then use
@@ -71,9 +75,5 @@ in a single transaction:
     run_once: true
     no_log: true
 ```
-INFO: The `strategy: free` statement prevents Ansible from waiting for all devices
-to complete a task within a batch. This results in a huge speed increase compared
-to the default _linear_ strategy - the inventory playbook ran 50% faster
-on a batch of ~1200 hosts.
-
-<!-- end -->
+{{<note info>}}The `strategy: free` statement prevents Ansible from waiting for all devices to complete a task within a batch. This results in a huge speed increase compared to the default _linear_ strategy -- the inventory playbook ran 50% faster
+on a batch of ~1200 hosts.{{</note>}}

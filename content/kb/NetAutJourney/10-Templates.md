@@ -1,6 +1,11 @@
-title: "First Step: Configuration Templates"
+---
+kb_section: NetAutJourney
+minimal_sidebar: true
+pre_scroll: true
+title: 'First Step: Configuration Templates'
 toc_title: Configuration Templates
-
+url: /kb/NetAutJourney/10-Templates.html
+---
 Creating configuration templates with Jinja2 is an excellent initial use-case for Ansible.
 One very beneficial aspect of any network automation journey is that it encourages
 a systematic and progressively organized approach to network engineering. Before long,
@@ -14,8 +19,8 @@ policies..., and get rid manually hacked together configs with omissions and dev
 standard. At the very least, you can start by ensuring no new devices will be deployed with
 configuration deviating from the defined standard.
 
-INFO: Tip for Cisco IOS templates: include an EEM applet in the template to have the device generate
-a key and enable ssh upon booting, see the appendix.
+{{<note info>}}Tip for Cisco IOS templates: include an EEM applet in the template to have the device generate
+a key and enable ssh upon booting, see the appendix.{{</note>}}
 
 With the inventory set up, the next step is to use Ansible to interact with devices directly.
 A useful example is preparing network devices for firmware upgrades. I wrote a playbook that

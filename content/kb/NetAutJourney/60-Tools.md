@@ -1,7 +1,10 @@
-title: "Tools Used in My Automation Projects"
+---
+kb_section: NetAutJourney
+minimal_sidebar: true
+title: Tools Used in My Automation Projects
 toc_title: Tool Overview
-publish: 2020-03-16
-
+url: /kb/NetAutJourney/60-Tools.html
+---
 I used numerous tools in my network automation projects. Here are some
 of those I think are worth investing your time in.
 
@@ -33,7 +36,7 @@ that come with whatever OS you are running it on, sooner or later something brea
 Pyenv can help with this - you can use it to run Ansible in a dedicated Python
 environment, and stay in control of the libraries used.
 
-INFO: You can also decide to [run Ansible in a Docker container](https://packetpushers.net/building-a-docker-network-automation-container/).
+{{<note info>}}You can also decide to [run Ansible in a Docker container](https://packetpushers.net/building-a-docker-network-automation-container/).{{</note>}}
 
 ## NAPALM
 

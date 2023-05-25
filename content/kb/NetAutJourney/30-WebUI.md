@@ -1,7 +1,10 @@
-title: "Power to the People: Creating the Web Frontend"
+---
+kb_section: NetAutJourney
+minimal_sidebar: true
+title: 'Power to the People: Creating the Web Frontend'
 toc_title: Creating the Web Frontend
-publish: 2020-02-20
-
+url: /kb/NetAutJourney/30-WebUI.html
+---
 Playbooks and database queries run from CLI are very functional, and can be run from a cronjob
 without any human interaction at all (which is, after all, the ultimate goal 😉), but they have
 limited appeal to the part of the organization that is less inclined to use Linux command line.
@@ -15,14 +18,14 @@ So when my colleague cooked up a PHP based frontend for the inventory database, 
 ran with it. I would have preferred a Python-based frontend like flask as I had no prior PHP
 experience and would prefer investing my time into Python.
 
-![Homepage](Homepage.png)
+{{<figure src="Homepage.png" caption="Homepage">}}
 <div class='caption figure'>Figure 1: The homepage shows device/model counts and totals</div>
 
 However, PHP turns out to be
 straightforward as there’s plenty of online documentation, and it performs well.
 With 40.000 interfaces in a table, search-as-you-type still works.
 
-![Search menu](Search-Menu.png)
+{{<figure src="Search-Menu.png" caption="Search menu">}}
 <div class='caption figure'>Figure 2: From the search menu, the inventory can be searched on IP,
 MAC, switch name, VLAN ID, VLAN name, interface description, device ID and manufacturer ID</div>
 
@@ -37,7 +40,7 @@ to common tools, such as WebSSH, through which an SSH session to the devices can
 Oxidized to view device configurations plus some hardware details, PRTG to monitor device details,
 and the Splunk syslog server:
 
-![Device page](Device-Page.png)
+{{<figure src="Device-Page.png" caption="Device page">}}
 <div class='caption figure'>Figure 3: Whenever a device is listed in a table, it links to a page with all
 the data related to that switch (or stack). This page can be used to launch actions for that
 particular device and serves as a launchpad for network management.</div>
@@ -45,6 +48,6 @@ particular device and serves as a launchpad for network management.</div>
 As mentioned, when you have all the information in a database, it is trivial to present it on a
 page - for instance, the target IOS versions used for the IOS upgrades and compliance reports:
 
-![List of OS versions](IOS-Version.png)
+{{<figure src="IOS-Version.png" caption="List of OS versions">}}
 <div class='caption figure'>Figure 4: List of target OS versions per device used for the
 compliance field/report</div>

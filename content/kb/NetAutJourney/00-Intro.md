@@ -1,7 +1,12 @@
-title: Getting Started with Ansible and Network Automation
-index: yes
+---
+index: true
+kb_section: NetAutJourney
+minimal_sidebar: true
+#title: Getting Started with Ansible and Network Automation
 toc_title: Overview
-
+title: Yet Another Network Automation Journey
+url: /kb/NetAutJourney/
+---
 After dabbling with Ansible for the generation of device configurations based on templates,
 and some simple playbooks a while ago, I was fortunate enough to have a brief period in
 which I had some time to spend on the
@@ -17,7 +22,3 @@ And indeed, while the projects discussed in this article are a never-ending work
 far resulted in several useful applications which are finding their way into daily routines. More importantly,
 they have opened up endless possibilities for future projects and initiatives. So if you haven’t started
 your automation journey yet, get started now 😉.
-
-## Table of Contents
-
-{{ text_toc }}

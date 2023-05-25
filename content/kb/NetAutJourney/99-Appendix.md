@@ -1,5 +1,10 @@
+---
+kb_section: NetAutJourney
+minimal_sidebar: true
+pre_scroll: true
 title: Appendix
-
+url: /kb/NetAutJourney/99-Appendix.html
+---
 ## EEM Scripts
 
 Cisco IOS EEM script that creates missing SSH keys on router reboot
@@ -21,7 +26,7 @@ event manager applet EEM_SSH_Keygen
 
 Source: https://community.cisco.com/t5/network-management/create-rsa-keys-if-they-do-not-exist/td-p/2614667.
 
-## Archive download-sw options
+## Archive download-sw Options
 
 ```
 # archive download-sw ?
@@ -62,5 +67,4 @@ formatting of output messages, greatly enhancing the readability of the Ansible 
 a web browser. I am now playing with outputting HTML text where each output category
 (‘changed’, ‘failed’, ‘skipped’, etc.) is mapped to its own CSS **div** class.
 
-![Ansible playbook output](Playbook-Output.png)
-<div class='caption figure'>The output of an Ansible playbook displayed in a web browser</div>
+{{<figure src="Playbook-Output.png" caption="Ansible playbook output">}}
