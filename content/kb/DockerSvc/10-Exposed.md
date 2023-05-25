@@ -1,6 +1,9 @@
+---
+kb_section: DockerSvc
+minimal_sidebar: true
 title: Exposed Ports
-publish: 2020-08-28
-
+url: /kb/DockerSvc/10-Exposed.html
+---
 Any Docker container (assuming default Docker settings) can start a TCP or UDP service on any port. After all, the top process in every container runs as root, and every container gets its own IP address and TCP/IP stack (network namespace).
 
 It's good form to document the ports a container listens on using the **EXPOSE** command in Dockerfile (the file used to build a Docker container image), but the container-based services work even without that.

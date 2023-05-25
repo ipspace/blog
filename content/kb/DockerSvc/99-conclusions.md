@@ -1,6 +1,9 @@
+---
+kb_section: DockerSvc
+minimal_sidebar: true
 title: Conclusions
-publish: 2020-09-18
-
+url: /kb/DockerSvc/99-conclusions.html
+---
 A brief recap of what we discovered in this article:
 
 * Every Docker container can start a TCP or UDP service on any port (the exception being containers using **host** network or no networking);
