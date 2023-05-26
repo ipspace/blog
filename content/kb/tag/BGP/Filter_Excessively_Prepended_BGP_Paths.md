@@ -1,5 +1,10 @@
+---
+kb_section: BGP
+minimal_sidebar: true
+pre_scroll: true
 title: Filter Excessively Prepended BGP Paths
-
+url: /kb/tag/BGP/Filter_Excessively_Prepended_BGP_Paths.html
+---
 **Short description**: BGP AS-path prepending is commonly used to influence BGP path selection in upstream autonomous systems, forcing the upstream networks to use one of the advertised paths as a primary path and another one as a backup path based on the AS path length.
 
 Excessive AS-path prepending (more than five or six copies of the same AS in the AS-path) very rarely solves the path selection issues, pollutes the BGP routing tables and adversely impacts routers throughout the Internet. As an ISP cannot rely on its customers’ ability to advertise acceptable BGP prefixes, AS path access lists should be used to filter inbound BGP updates and drop excessively prepended prefixes.
@@ -64,6 +69,7 @@ ip as-path access-list 100 permit .*
 
 After a soft reset of the BGP session, the printout of the resulting BGP table verified that the router has filtered all inbound BGP updates with excessively prepended AS paths.
 
+{{<cc>}}Final BGP table on the router{{</cc>}}
 ```
 R2#show ip bgp ¦ begin Network
    Network      Next Hop    Metric Loc Weight Path
@@ -72,10 +78,10 @@ R2#show ip bgp ¦ begin Network
 *> 10.2.3.0/24  10.17.0.2        0          0 65000 1 2 3 3 3 4 i
 *> 10.2.4.0/24  10.17.0.2        0          0 65000 1 2 3 4 4 4 4 i 
 ```
-CAPTION: Final BGP table on the router
 
 ## Device Configurations
 
+{{<cc>}}Initial router configuration{{</cc>}}
 ```
 hostname Rtr
 !
@@ -103,8 +109,8 @@ line con 0
 ntp logging
 end 
 ```
-CAPTION: Initial router configuration
 
+{{<cc>}}BGP daemon configuration{{</cc>}}
 ```
 hostname BGP_prepend
 !
@@ -139,8 +145,8 @@ route-map P6 permit 10
 line vty
  no login 
 ```
-CAPTION: BGP daemon configuration
 
+{{<cc>}}Final router configuration{{</cc>}}
 ```
 hostname R2
 !
@@ -177,6 +183,5 @@ line con 0
 ntp logging
 end
 ```
-CAPTION: Final router configuration
 
 <!-- end -->

@@ -1,6 +1,9 @@
+---
+kb_section: PMTUD
+minimal_sidebar: true
 title: Summary
-publish: 2019-09-09
-
+url: /kb/Internet/PMTUD/50-summary.html
+---
 After decades years of struggles, the IP fragmentation remains one of the persistent challenges in IP networks, particularly if you have to implement extra layers in the protocol stack (like MPLS or PPP over Ethernet) without changing the layer-2 MTU size, or if you use tunneling or IP encryption techniques. The generic solution to the IP fragmentation issues should be the *Path MTU Discovery* that was issued as an RFC in November 1990 and remained a draft standard ever since. However, misconfigured firewalls still prevent us from using this solution reliably.
 
 Fortunately, TCP implementations don't have to rely exclusively on Path MTU Discovery - [RFC 4821](https://tools.ietf.org/html/rfc4821) describes an alternate probe-based mechanism.

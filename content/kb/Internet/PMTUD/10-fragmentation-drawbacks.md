@@ -1,12 +1,16 @@
+---
+kb_section: PMTUD
+minimal_sidebar: true
 title: The Drawbacks of IP Fragmentation
-
+url: /kb/Internet/PMTUD/10-fragmentation-drawbacks.html
+---
 The IP protocol stack never had a reliable mechanism by which the end hosts could figure out the maximum payload size to use when communicating with a remote IPv4 host (and it’s not present in IPv6 either). The absence of the network-wide MTU mechanism is somewhat understandable, as the IP packets are routed independently of each other and different packets between the same end hosts could take different routes with varying MTU sizes. However, the lack of end-to-end information can quickly result in oversized packets being received by the intermediate routers that cannot send them onwards.
 
 IPv4 and IPv6 protocols provide a convenient solution: the IP fragmentation, a mechanism where a single inbound IP datagram is split into two or more outbound IP datagrams. The IP header is copied from the original IP datagram into the fragments, special bits are set in the fragments’ IPv4 headers to indicate that they are not complete IP packets (IPv6 uses extension headers), and the payload is spread across the fragments (see the following diagram). IPv4 routers can fragment IP packets in transit; that capability was removed from IPv6 for performance reasons - the sending host has to perform IPv6 fragmentation if needed.
 
 <img src="Fragments.jpg" />
 
-NOTE: The IP fragmentation was particularly bad in the earlier Cisco IOS releases, as the routers had to make copies of the original IP packets to generate the fragments, thus forcing the IP fragmentation into the process switching path (which is significantly slower than any other switching mechanism). Later IOS releases introduced particle-based fragmentation, which allows IP fragmentation to be performed within Cisco Express Forwarding (CEF).
+{{<note note>}}The IP fragmentation was particularly bad in the earlier Cisco IOS releases, as the routers had to make copies of the original IP packets to generate the fragments, thus forcing the IP fragmentation into the process switching path (which is significantly slower than any other switching mechanism). Later IOS releases introduced particle-based fragmentation, which allows IP fragmentation to be performed within Cisco Express Forwarding (CEF).{{</note>}}
 
 The IP fragmentation always increases the layer-3 overhead (and thus reduces the actual bandwidth available to user traffic). For example, if the end-host thinks it can use 1500-byte IP packets, but there is a hop in the path with MTU size 1472, each oversized IP packet will be split in two packets, resulting in an additional 20-byte IPv4 header or 40-byte IPv6 header.
 

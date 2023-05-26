@@ -1,5 +1,10 @@
+---
+kb_section: OSPF
+minimal_sidebar: true
+pre_scroll: true
 title: OSPF Flooding Filters in Hub-and-Spoke Environments
-
+url: /kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke.html
+---
 The OSPF flood reduction functionality configured with the **ip ospf database-filter all out** interface configuration command can be used to reduce OSPF traffic and minimize the OSPF database size on small remote routers in hub-and-spoke environments.
 
 The command stops all OSPF flooding over the selected interface and shall be used on a hub router in a hub-and-spoke network to stop the LSA flooding over the hub-to-spoke links. The flooding in the spoke-to-hub direction is not affected. The hub router and any other regular OSPF router in the network retain full visibility of the OSPF topology database, while the spoke router’s OSPF database contains only locally originated LSAs.
@@ -10,13 +15,11 @@ Since no LSAs are propagated from the hub router to the spoke routers, the spoke
 
 The OSPF flood reduction is best illustrated with a sample hub-and-spoke network. A network with three spoke sites and a hub site (see the following figure) was used to generate the printouts.
 
-<figure markdown='1'>
-  <img src="OSPF_Flood_Reduction.png">
-  <figcaption>The topology and IP addressing of the sample network</figcaption>
-</figure>
+{{<figure src="OSPF_Flood_Reduction.png" caption="The topology and IP addressing of the sample network">}}
 
 Before the **ip ospf database-filter all out** command has been configured on the hub router, the OSPF database on the spoke routers contained all LSAs originated within the area (no out-of-area LSAs were originated by the hub router as the area 1 was configured with the **area 1 nssa no-summary** router configuration command on the hub router).
 
+{{<cc>}}Original OSPF database on the spoke router{{</cc>}}
 ```
 S1#show ip ospf database
 
@@ -41,10 +44,10 @@ Link ID         ADV Router      Age         Seq#       Checksum Tag
 0.0.0.0         10.0.0.1        1742        0x80000001 0x00ACF9 0
 10.3.1.0        10.0.0.12       1566        0x80000002 0x001447 0 
 ```
-CAPTION: Original OSPF database on the spoke router
 
 Similarly, the IP routing table on the spoke routers contained all the routes within the area:
 
+{{<cc>}}Initial IP routing table on the spoke router{{</cc>}}
 ```
 S1#sh ip route | begin Gateway
 Gateway of last resort is 10.1.0.1 to network 0.0.0.0
@@ -63,12 +66,12 @@ O       10.1.0.1/32 [110/64] via 10.1.0.1, 00:00:08, Serial1/0
 C       10.1.0.0/24 is directly connected, Serial1/0
 O*IA 0.0.0.0/0 [110/65] via 10.1.0.1, 00:00:08, Serial1/0 
 ```
-CAPTION: Initial IP routing table on the spoke router
 
 ## Configuring OSPF Flood Reduction
 
 After the OSPF flood reduction is configured on the hub router, the OSPF database size on the spoke routers is reduced and they lose all OSPF routes:
 
+{{<cc>}}OSPF flooding reduction is configured on the hub router{{</cc>}}
 ```
 Hub#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -88,10 +91,10 @@ Loading Done
 %OSPF-5-ADJCHG: Process 1, Nbr 10.0.0.13 on Serial1/0 from LOADING to FULL, →
 Loading Done 
 ```
-CAPTION: OSPF flooding reduction is configured on the hub router
 
-WARN: All OSPF adjacencies established over the selected interface are dropped when the OSPF flood reduction is configured or disabled. The LSAs in the spoke routers are flushed after they are aged out (up to one hour); you could accelerate this process with the **clear ip ospf process** command.
+{{<note warn>}}All OSPF adjacencies established over the selected interface are dropped when the OSPF flood reduction is configured or disabled. The LSAs in the spoke routers are flushed after they are aged out (up to one hour); you could accelerate this process with the **clear ip ospf process** command.{{</note>}}
 
+{{<cc>}}OSPF database on the spoke router contains the locally-originated LSA{{</cc>}}
 ```
 S1#show ip ospf database
 
@@ -102,8 +105,8 @@ S1#show ip ospf database
 Link ID         ADV Router      Age         Seq#       Checksum Link count
 10.0.0.11       10.0.0.11       5           0x80000001 0x00C46A 4 
 ```
-CAPTION: OSPF database on the spoke router contains the locally-originated LSA
 
+{{<cc>}}IP routing table on the spoke router contains no OSPF routes{{</cc>}}
 ```
 S1#show ip route | begin Gateway
 Gateway of last resort is not set
@@ -113,12 +116,12 @@ C       10.0.0.11/32 is directly connected, Loopback0
 C       10.2.11.0/24 is directly connected, FastEthernet0/0
 C       10.1.0.0/24 is directly connected, Serial1/0 
 ```
-CAPTION: IP routing table on the spoke router contains no OSPF routes
 
 ## Configuring Static Default Route on the Spoke Routers
 
 Following the OSPF flood reduction configuration, the spoke routers no longer have connectivity beyond the directly-connected interface of the hub router. You have to configure a static default route pointing to the hub router on the spoke routers:
 
+{{<cc>}}Static default route configuration on the spoke router{{</cc>}}
 ```
 S1#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -127,8 +130,8 @@ S1(config)#^Z
 S1#
 %SYS-5-CONFIG_I: Configured from console by console 
 ```
-CAPTION: Static default route configuration on the spoke router
 
+{{<cc>}}Final IP routing table on the spoke router{{</cc>}}
 ```
 S1#show ip route | begin Gateway
 Gateway of last resort is 10.1.0.1 to network 0.0.0.0
@@ -139,12 +142,12 @@ C       10.2.11.0/24 is directly connected, FastEthernet0/0
 C       10.1.0.0/24 is directly connected, Serial1/0
 S*   0.0.0.0/0 [1/0] via 10.1.0.1 
 ```
-CAPTION: Final IP routing table on the spoke router
 
 You can use **ping** on the spoke routers after you have configured static default routes to verify spoke-to-hub and spoke-to-spoke connectivity.
 
-INFO: You should always use extended **ping** to check connectivity between the LAN interfaces of the selected routers.
+{{<note info>}}You should always use extended **ping** to check connectivity between the LAN interfaces of the selected routers.{{</note>}}
 
+{{<cc>}}Connectivity checks performed on the spoke router{{</cc>}}
 ```
 S1#ping 10.2.1.1 source FastEthernet 0/0
 
@@ -161,10 +164,10 @@ Packet sent with a source address of 10.2.11.1
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 128/208/304 ms 
 ```
-CAPTION: Connectivity checks performed on the spoke router
 
 ## Router Configurations
 
+{{<cc>}}Hub router configuration{{</cc>}}
 ```
 upgrade fpd auto
 version 12.4
@@ -234,8 +237,8 @@ line vty 0 4
 !
 end 
 ```
-CAPTION: Hub router configuration
 
+{{<cc>}}Sample spoke router configuration{{</cc>}}
 ```
 upgrade fpd auto
 version 12.4
@@ -298,6 +301,5 @@ line vty 0 4
 !
 end 
 ```
-CAPTION: Sample spoke router configuration
 
 <!-- end -->

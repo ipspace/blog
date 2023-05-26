@@ -1,5 +1,10 @@
+---
+kb_section: QoS
+minimal_sidebar: true
+pre_scroll: true
 title: QoS Policing
-
+url: /kb/tag/QoS/QoS_Policing.html
+---
 The activity called *policing* or *rate limiting* in various QoS implementations is a *traffic contract conformance measurement* that can result in *marking* (changing QoS attributes of individual packets in the traffic flow) or *policing* (dropping of packets violating the traffic contract).
 
 This document describes various algorithms used to implement traffic measurement and rate limiting on non-distributed platforms using software packet switching (including most routers running Cisco IOS). While the document focuses primarily on Cisco IOS implementations, the same concepts apply to most other implementations. Platforms using hardware-based packet switching might use different algorithms depending on the hardware QoS implementations.
@@ -13,13 +18,13 @@ Cisco IOS implements policing/marking functionality with two unrelated mechanism
 
 **Rate-limit** commands and QoS **policy-maps** containing the **police** command can measure inbound or outbound packets on physical or logical interfaces (tunnels, subinterfaces). They introduce no delay (apart from slightly increased CPU load on the router) in the packet forwarding mechanism.
 
-### Rate-limit command
+### Rate-limit Command
 
 The **rate-limit** interface configuration command can match packets based on IP access lists, IP precedence settings, DSCP settings, QoS groups or source MAC addresses. It can set the IP precedence, DSCP or MPLS QoS bits in the measured packets, or group the packets into QoS groups.
 
 The **rate-limit** command uses dual token bucket mechanism and drops all packets that exceed the excess burst size.
 
-### Police action
+### Police Action
 
 The **police** action specified within a **class** in a **policy-map** can use three different measurement mechanisms:
 
@@ -61,20 +66,17 @@ The single token bucket algorithm is used for simple traffic contracts that diff
 
 -   Average traffic bit rate with the **rate _speed_ bps** parameter or **rate _percentage_ percent** parameter.
 
-NOTE: The rate specified with the **percent** parameter is calculated based on the **bandwidth** settings of the interface to which the **policy-map** is applied.
+{{<note note>}}The rate specified with the **percent** parameter is calculated based on the **bandwidth** settings of the interface to which the **policy-map** is applied.{{</note>}}
 
 -   Average packet rate with the **rate _number_ pps** parameter.
 -   Burst size with the **burst _size_** parameter.
 -   Conform and exceed actions with the **conform-action** and **exceed-action** keywords.
 
-NOTE: Recent Cisco IOS releases support multiple **conform-action** and **exceed-action** commands.
+{{<note note>}}Recent Cisco IOS releases support multiple **conform-action** and **exceed-action** commands.{{</note>}}
 
 The single token bucket algorithm is illustrated in the following figure:
 
-<figure markdown='1'>
-  <img src="QoS_Policing_Single_Bucket.png">
-  <figcaption>Single token bucket measurements</figcaption>
-</figure>
+{{<figure src="QoS_Policing_Single_Bucket.png" caption="Single token bucket measurements">}}
 
 To optimize the token bucket algorithm, the tokens are added to the bucket at the packet arrival time using the following formula: Bucket<sub>new</sub> = Min(BurstSize,Bucket<sub>Old</sub> + Interpacket-Time \* MeasurementRate)
 
@@ -99,10 +101,7 @@ interface Serial1/0
 
 Slightly more flexible traffic contracts might allow extra (best-effort) packets beyond the average rate/burst size specification. These packets are usually marked differently from the in-contract packets and transported across the network only if it's not congested. In most scenarios, the extra packets are allowed only in the initial burst (long-term traffic rate cannot exceed the average rate) and are measured with an extra token bucket (exceed bucket) as shown in the following diagram:
 
-<figure markdown='1'>
-  <img src="QoS_Policing_Double_Bucket.png">
-  <figcaption>Dual token bucket measurements</figcaption>
-</figure>
+{{<figure src="QoS_Policing_Double_Bucket.png" caption="Dual token bucket measurements">}}
 
 Dual token bucket contracts are common in ATM environments (where the excess cells are marked with CLP bits) and Frame Relay environments (where the excess frames are marked with the DE bit).
 
@@ -130,10 +129,7 @@ The EIR mechanism is different from the excess burst size; the excess burst prol
 
 The CIR/EIR or CIR/PIR policing requires two independent token buckets as shown in the following diagram. Each bucket independently measures the traffic conformance to the average or peak/excess rate; there is no overflow from the *conforming* bucket to the *excess* bucket.
 
-<figure markdown='1'>
-  <img src="QoS_Policing_Dual_Rate.png">
-  <figcaption>Dual-rate token bucket measurements</figcaption>
-</figure>
+{{<figure src="QoS_Policing_Dual_Rate.png" caption="Dual-rate token bucket measurements">}}
 
 The dual rate policing is configured with the **police** command specifying **cir** and **pir** rates or **rate** and **peak-rate** parameters. In both cases, you can specify the **burst** size and the **peak-burst** size (they could be different). You also have to specify **conform-action**, **exceed-action** and **violate-action**; without the **violate-action**, the single token bucket measurement will be used.
 

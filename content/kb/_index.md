@@ -10,6 +10,6 @@ sidebar:
 url: /kb/
 ---
 Some of the long-form articles we published are listed here... but don't forget to
-[explore other featured articles](https://www.ipSpace.net/Articles).
+[explore other featured articles](https://www.ipSpace.net/Articles) and [technology resources](tag)
 
 {{<kb-toc>}}

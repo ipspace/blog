@@ -1,9 +1,15 @@
+---
+kb_section: QoS
+minimal_sidebar: true
+pre_scroll: true
 title: FIFO Queuing
-
+url: /kb/tag/QoS/FIFO_Queuing.html
+---
 Without any QoS-related interface configuration, Cisco IOS uses [fair queuing](Fair_Queuing.html) on low-speed interface (up to a few megabits) and FIFO queuing on higher-speed interfaces. Fair queuing is also used whenever a **service-policy** using a queuing action (**bandwidth**, **priority** or **fair-queue**) is applied to an interface. The actual queuing mechanism can be inspected with the **show queueing interface *name*** command.
 
 With no QoS configuration, serial interfaces on ISR routers (2811 was used to generate the printouts) use fair queuing and the Fast Ethernet interfaces use FIFO queuing. Expect defaults to vary across router platforms.
 
+{{<cc>}}Default queuing policy on LAN and WAN interfaces{{</cc>}}
 ```
 a1#show queueing interface serial 0/1/0
 Interface Serial0/1/0 queueing strategy: fair
@@ -18,18 +24,18 @@ Interface Serial0/1/0 queueing strategy: fair
 a1#show queueing interface fast 0/0
 Interface FastEthernet0/0 queueing strategy: none
 ```
-CAPTION: Default queuing policy on LAN and WAN interfaces
 
 The default value of the **tx-ring-limit** on the serial interfaces of a 2811 router is 2 packets:
 
+{{<cc>}}Inspecting the transmit ring size of an output interface{{</cc>}}
 ```
 a1#show controller serial 0/1/0 | include tx_limit
 tx_limited = 1(2), errata19 count1 - 0, count2 - 0
 ```
-CAPTION: Inspecting the transmit ring size of an output interface
 
 However, if the fair queuing is disabled on the serial interface with the **no fair-queue** interface configuration command, the tx-ring-limit is set to 128 (indicating that the packets forwarded to the interface are enqueued directly into the hardware output queue):
 
+{{<cc>}}FIFO queuing sets tx-ring size to maximum size supported by hardware{{</cc>}}
 ```
 a1#configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -41,10 +47,10 @@ Interface Serial0/1/0 queueing strategy: none
 a1#show controller serial 0/1/0 | include tx_limit
 tx_limited = 0(128), errata19 count1 - 0, count2 - 0
 ```
-CAPTION: FIFO queuing sets tx-ring size to maximum size supported by hardware
 
 The actual size of the output queue is set by the **hold-queue out** interface configuration parameter. In the following printout, the output FIFO queue was set to 20 packets and a UDP packet flood was started to saturate the output queue:
 
+{{<cc>}}Packets are dropped when the output queue size reaches 20 packets{{</cc>}}
 ```
 a1#show running interface serial 0/1/0
 Building configuration...
@@ -83,6 +89,5 @@ Serial0/1/0 is up, line protocol is up
      0 output buffer failures, 0 output buffers swapped out
      6 carrier transitions
 ```
-CAPTION: Packets are dropped when the output queue size reaches 20 packets
 
 <!-- no diagrams -->

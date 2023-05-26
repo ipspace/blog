@@ -1,5 +1,10 @@
+---
+kb_section: OSPF
+minimal_sidebar: true
+pre_scroll: true
 title: Type-1 (Router) LSA in OSPF Topology Database
-
+url: /kb/tag/OSPF/Type-1-LSA.html
+---
 The OSPF type-1 (router) LSA describes an OSPF router, its stub interfaces and links to adjacent OSPF routers and transit networks in the same area. Every type-1 LSA describes numerous connections the router has:
 
 * Point-to-point links to adjacent routers (type-1 link)
@@ -15,7 +20,7 @@ A type-3 (stub) link is added to the router LSA for each stub interface belongin
 
 **Example \#1:** A router with a single loopback interface generates a type-1 LSA (even though it has no OSPF neighbors) with a single stub link.
 
-CODE-CAPTION: Loopback interface in an OSPF process
+{{<cc>}}Loopback interface in an OSPF process{{</cc>}}
 
 ```
 interface Loopback0
@@ -26,7 +31,7 @@ router ospf 1
  log-adjacency-changes 
 ```
 
-CODE-CAPTION: OSPF-enabled interfaces
+{{<cc>}}OSPF-enabled interfaces{{</cc>}}
 
 ```
 A1#show ip ospf interface brief
@@ -34,7 +39,7 @@ Interface    PID   Area            IP Address/Mask    Cost  State Nbrs F/C
 Lo0          1     1               10.0.1.1/32        1     LOOP  0/0 
 ```
 
-CODE-CAPTION: Contents of the router LSA
+{{<cc>}}Contents of the router LSA{{</cc>}}
 
 ```
 A1#show ip ospf database router self-originate
@@ -62,7 +67,7 @@ A1#show ip ospf database router self-originate
 
 **Example \#2:** A router with a loopback interface and a multi-access (LAN) interface with no OSPF neighbors generates a type-1 LSA with two stub links, one describing the loopback interface, the other the LAN interface.
 
-CODE-CAPTION: Two interfaces belonging to an OSPF process
+{{<cc>}}Two interfaces belonging to an OSPF process{{</cc>}}
 
 ```
 interface Loopback0
@@ -79,7 +84,7 @@ router ospf 1
  passive-interface FastEthernet0/1 
 ```
 
-CODE-CAPTION: State of the OSPF interfaces
+{{<cc>}}State of the OSPF interfaces{{</cc>}}
 
 ```
 A1#show ip ospf interface brief
@@ -88,7 +93,7 @@ Fa0/1        1     1               10.2.1.1/24        1     DR    0/0
 Lo0          1     1               10.0.1.1/32        1     LOOP  0/0 
 ```
 
-CODE-CAPTION: Router LSA with two stub links
+{{<cc>}}Router LSA with two stub links{{</cc>}}
 
 ```
 A1#show ip ospf database router self-originate
@@ -133,7 +138,7 @@ The *router interface address* field in the *router link* is the local IP ad
 
 **Example \#3:** A router with a loopback interface and a point-to-point WAN link generates a type-1 LSA with two stub links (one describing the loopback interface, the other the point-to-point WAN subnet) and a router link (describing the connection to the OSPF neighbor).
 
-CODE-CAPTION: OSPF is configured on a WAN interface
+{{<cc>}}OSPF is configured on a WAN interface{{</cc>}}
 
 ```
 interface Loopback0
@@ -150,7 +155,7 @@ router ospf 1
  log-adjacency-changes 
 ```
 
-CODE-CAPTION: State of the OSPF interfaces
+{{<cc>}}State of the OSPF interfaces{{</cc>}}
 
 ```
 A1#show ip ospf interface brief
@@ -159,7 +164,7 @@ Se1/0        1     1               10.0.7.5/30        100   P2P   1/1
 Lo0          1     1               10.0.1.1/32        1     LOOP  0/0 
 ```
 
-CODE-CAPTION: Router LSA describing a point-to-point link and a loopback interface
+{{<cc>}}Router LSA describing a point-to-point link and a loopback interface{{</cc>}}
 
 ```
 A1#show ip ospf database router self-originate
@@ -206,7 +211,7 @@ The *router interface address* field in the *router link* is an internal int
 
 **Example \#4:** A router with a loopback interface and an unnumbered point-to-point WAN link generates a type-1 LSA with a stub link (describing the loopback interface) and a router link (describing the connection to the OSPF neighbor).
 
-CODE-CAPTION: OSPF running over an unnumbered interface
+{{<cc>}}OSPF running over an unnumbered interface{{</cc>}}
 
 ```
 interface Loopback0
@@ -223,7 +228,7 @@ router ospf 1
  log-adjacency-changes 
 ```
 
-CODE-CAPTION: OSPF interface state
+{{<cc>}}OSPF interface state{{</cc>}}
 
 ```
 A1#show ip ospf interface brief
@@ -232,7 +237,7 @@ Se1/0        1     1               0.0.0.0/30         100   P2P   1/1
 Lo0          1     1               10.0.1.1/32        1     LOOP  0/0 
 ```
 
-CODE-CAPTION: Router LSA has a single router link and a single stub link
+{{<cc>}}Router LSA has a single router link and a single stub link{{</cc>}}
 
 ```
 A1#show ip ospf database router self-originate
@@ -266,7 +271,7 @@ A1#show ip ospf database router self-originate
 
 The contents of the *Router Interface address* field in the *router link* in the router LSA do not necessarily match the SNMP interface index (displayed below).
 
-CODE-CAPTION: SNMP interface index of the WAN interface
+{{<cc>}}SNMP interface index of the WAN interface{{</cc>}}
 
 ```
 A1#show snmp mib ifmib ifindex Serial1/0
@@ -277,13 +282,13 @@ Interface = Serial1/0, Ifindex = 3
 
 Router LSA contains a *link to transit network* (type-2 link) for each transit broadcast or NBMA interface. The *transit network* referred to in the router LSA is the type-2 LSA originated by the designated router selected on the interface.
 
-NOTE: A *transit* interface is a multi-access interface with at least one OSPF neighbor.
+{{<note note>}}A *transit* interface is a multi-access interface with at least one OSPF neighbor.{{</note>}}
 
 The router advertises a multi-access interface as a stub link as long as it has no OSPF neighbors reachable through the interface. When the adjacency to the first OSPF neighbor reaches the FULL state, the router LSA is changed: one of the routers originates the network (type-2) LSA and the *stub link* is replaced by a *transit link*.
 
 **Example \#5:** A router with a loopback interface and a transit Ethernet interface generates a type-1 LSA with a stub link (describing the loopback interface) and link to a transit network (the type-2 LSA originated by the DR).
 
-CODE-CAPTION: Relevant parts of the router configuration
+{{<cc>}}Relevant parts of the router configuration{{</cc>}}
 
 ```
 interface Loopback0
@@ -300,7 +305,7 @@ router ospf 1
 
 The **show ip ospf interface** command shows a single OSPF neighbor on the Fast Ethernet interface. A1 is the backup DR (the *State* column in the printout), therefore the other router must be the DR.
 
-CODE-CAPTION: OSPF interface state
+{{<cc>}}OSPF interface state{{</cc>}}
 
 ```
 A1#show ip ospf interface brief
@@ -311,7 +316,7 @@ Lo0          1     1               10.0.1.1/32        1     LOOP  0/0
 
 The router LSA has two links: a stub link and a link to the type-2 LSA originated by the DR.
 
-CODE-CAPTION: Router LSA describing a connection to a transit network
+{{<cc>}}Router LSA describing a connection to a transit network{{</cc>}}
 
 ```
 A1#show ip ospf database router self-originate

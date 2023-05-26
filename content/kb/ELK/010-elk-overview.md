@@ -1,6 +1,11 @@
-index: yes
+---
+index: true
+kb_section: ELK
+minimal_sidebar: true
+title: Elastic Stack for Network and Security Engineers
 toc_title: Overview
-
+url: /kb/ELK/
+---
 In recent years network engineers turned from CLI jockeys into a hybrid between an application developer and a networking expert... what acronym-loving people call NetDevOps. In practice, a NetDevOps engineer should be able to:
 
 - manage and troubleshoot networks;

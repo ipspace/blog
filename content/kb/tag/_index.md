@@ -1,3 +1,10 @@
+---
+kb_section: tag
+minimal_sidebar: true
+url: /kb/tag/
+title: Technology Resources
+index_title: Technology Resources
+---
 We organized hundreds of blog posts published on ipSpace.net in the last decades into technology-focused resource pages:
 
 ### Network Automation Resources
@@ -31,4 +38,4 @@ We organized hundreds of blog posts published on ipSpace.net in the last decades
 
 Even more free technology resources are available as short articles on this web site:
 
-{{ toc }}
+{{<kb-toc>}}

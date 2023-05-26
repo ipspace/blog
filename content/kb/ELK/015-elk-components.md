@@ -1,5 +1,9 @@
-# What Is Elastic Stack?
-
+---
+kb_section: ELK
+minimal_sidebar: true
+title: What Is Elastic Stack?
+url: /kb/ELK/015-elk-components.html
+---
 Elastic Stack, formerly known as ELK stack, includes:
 
 - Elasticsearch: the search engine where all your data is stored.

@@ -1,19 +1,24 @@
+---
+kb_section: ScalablePolicyRouting
+minimal_sidebar: true
+pre_scroll: true
 title: Basic Routing Design
-
+url: /kb/Internet/ScalablePolicyRouting/20-routing-design.html
+---
 The whole network uses BGP as its core routing protocol, giving us a highly-scalable solution with the inherent capability to implement policy-based routing (most of the BGP’s complexity is a direct result of its abilities to perform policy-based routing decisions). Each site is a separate autonomous system (AS); remote sites have one or two routers in their AS and the central site can have as many routers as needed, using the two core routers as BGP route reflectors. OSPF is also deployed in the core site to ensure fast convergence and solve the BGP next-hop problems. The overall routing design is displayed in the next diagram:
 
-![Basic Routing Design](routing-design.jpg)
+{{<figure src="routing-design.jpg" caption="Basic Routing Design">}}
 
 You could decide to simplify the router configuration by redistributing directly connected routes into the BGP on each router, but this would just pollute the BGP tables with the point-to-point WAN subnets that are usually not needed for proper network operation. It’s thus better to manually list the networks you want to announce in the BGP routing process. The sample configuration from one of the remote sites is included in the next listing:
 
+{{<cc>}}BGP configuration on Site-A{{</cc>}}
 ```
 router bgp 65100
  network 10.0.1.1 mask 255.255.255.255
  network 192.168.1.0
 ```
-CAPTION: BGP configuration on Site-A
 
-NOTE: Only the most relevant parts of the router configurations are included in the article.
+{{<note note>}}Only the most relevant parts of the router configurations are included in the article.{{</note>}}
 
 To make the core router configurations as scalable as possible, we’re using BGP peer policy and peer session templates. These template mechanisms might look verbose if you have only a few neighbors, but the ease-of-management they give you quickly pays off – if you have to make a change in your BGP configuration, you change the settings in one place and they get propagated to all BGP neighbors automatically. For example, the core BGP routers use several templates:
 
@@ -24,6 +29,7 @@ To make the core router configurations as scalable as possible, we’re using BG
 
 Here are the BGP templates used on the *CoreInet* router:
 
+{{<cc>}}BGP templates on the *CoreInet* router{{</cc>}}
 ```
 router bgp 65000
  template peer-policy Global
@@ -43,10 +49,10 @@ router bgp 65000
   remote-as 65000
   update-source Loopback0
 ```
-CAPTION: BGP templates on the *CoreInet* router
 
 And this is how those templates are used to configure BGP neighbors:
 
+{{<cc>}}BGP neighbors of the *CoreInet* router{{</cc>}}
 ```
 router bgp 65000
  neighbor 10.0.1.3 description CoreFR
@@ -73,10 +79,10 @@ router bgp 65000
  neighbor 10.0.11.10 remote-as 65102
  neighbor 10.0.11.10 inherit peer-policy RemoteSite
 ```
-CAPTION: BGP neighbors of the *CoreInet* router
 
 On the other hand, the routers on the remote sites have just two BGP neighbors. Implementing peer templates is thus overkill, the traditional BGP configuration is used on remote sites:
 
+{{<cc>}}BGP configuration on a remote site{{</cc>}}
 ```
 router bgp 65100
  neighbor 10.0.8.1 remote-as 65000
@@ -85,6 +91,5 @@ router bgp 65100
  neighbor 10.0.11.1 description CoreFR
  neighbor 10.0.11.1 remote-as 65000
 ```
-CAPTION: BGP configuration on a remote site
 
 <!-- end -->

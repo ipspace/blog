@@ -1,5 +1,11 @@
-# Using Elastic Stack in Networking and Security
-
+---
+kb_section: ELK
+minimal_sidebar: true
+pre_scroll: true
+title: Using Elastic Stack in Networking and Security
+toc_title: Using Elastic Stack
+url: /kb/ELK/020-elk-for-network-engineers.html
+---
 Any information system gets through many incidents every year. Most of them are light, but (hopefully) very few can be very serious. The key to resolve incidents fast enough, additionally resulting in a valuable "lesson learned," is visibility.
 
 I would define visibility as the ability to have a clear view of what's going in information systems. I also would point out that using a _single pane of glass_ helps more than having multiple dashboards; specialized dashboards help to drill down into details during an investigation, but a _single pane of glass_ is usually the best starting point for initial analysis.
@@ -16,14 +22,11 @@ To give you a few examples - you can do all these things (and many more) with El
 * Application anomalies and performance: ELK can also help to troubleshoot application problems in terms of availability, anomalies, and performance.
 
 
-## A simple ELK(B) architecture
+## A Simple ELK(B) Architecture
 
 Enterprise-level scalable and resilient ELK architectures will be discussed in the future. We'll start with a simple ELK configuration useful as a learning lab:
 
-<figure>
-  <img src="elk-1.png">
-  <figcaption>A simple ELK(B) architecture</figcaption>
-</figure>
+{{<figure src="elk-1.png" caption="A simple ELK(B) architecture">}}
 
 - Logstash is the first log receiver you'll focus on to ingest Syslog and NetFlow logs. Logstash parses and enriches logs before storing them to Elasticsearch.
 - Beats are agents installed into Linux or Windows systems to collect logs. Beats can write directly to Elasticsearch, but I usually prefer to pass them trough Logstash for enrichment.
@@ -41,7 +44,3 @@ I suggest you start your Elastic Stack journey with these steps:
 - learn how to parse logs into a structured format (Logstash)
 - learn how to create some visualizations (Kibana)
 - acquire Netflow logs. You can use Logstash to collect them, even if the performance is not very good.
-
-## More to come...
-
-In this article, I described how Elastic Stack could help network and security engineers, and how you should start exploring Elasticstack capabilities. Expect a deep dive into building a minimal ELK environment in the future.

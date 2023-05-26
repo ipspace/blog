@@ -1,6 +1,9 @@
+---
+kb_section: PMTUD
+minimal_sidebar: true
 title: Network Implications of PMTUD
-publish: 2019-09-02
-
+url: /kb/Internet/PMTUD/30-network-implications.html
+---
 The Path MTU Discovery (PMTUD) is enabled by default in almost all modern TCP/IP implementations; it’s thus mandatory that your packet filters and firewalls don’t block the PMTUD-related ICMP messages. For example, you should include the following two lines into your IP access lists (the second line blocks ICMP fragments that could be used to change the meaning of the ICMP response):
 
     permit icmp any any packet-too-big

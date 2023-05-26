@@ -1,5 +1,10 @@
+---
+kb_section: Internet
+minimal_sidebar: true
 title: Internetworking Articles
-
+url: /kb/Internet/
+index: true
+---
 In early 2000s I wrote a number of articles describing interesting TCP/IP features. They were migrated to a different platform several times, and most of the old URLs are broken. Here's the list of working links as of December 2020.
 
 I also decided to clean up, update and repost some of them on ipSpace.net.
@@ -48,6 +53,6 @@ I also decided to clean up, update and repost some of them on ipSpace.net.
 * [Secure Time Management](https://learning.nil.com/tips-and-tricks/technical-articles/show/secure-time-management/)
 * [It's Good to be on Time](https://learning.nil.com/tips-and-tricks/technical-articles/show/its-good-to-be-on-time/)
 
-INFO: You might also want to check out our [Networking Fundamentals](https://www.ipspace.net/Fundamentals) and [Internetworking](https://www.ipspace.net/Inet) webinars, in particular the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar.
+{{<note info>}}You might also want to check out our [Networking Fundamentals](https://www.ipspace.net/Fundamentals) and [Internetworking](https://www.ipspace.net/Inet) webinars, in particular the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar.{{</note>}}
 
 <!--end-->
