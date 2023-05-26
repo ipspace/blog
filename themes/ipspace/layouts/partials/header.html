@@ -10,6 +10,9 @@
 
     <title>{{ with .Params.page_title }}{{ . }}{{ else }}{{ .Title }}{{ end }} &#171; ipSpace.net blog</title>
     {{ partial "opengraph.html" . }}
+{{ with .Params.redirect }}
+    <meta http-equiv="refresh" content="0; url={{ . }}" />
+{{ end }}
     <meta charset='utf-8' />
     <meta content='IE=edge' http-equiv='X-UA-Compatible' />
     <meta content='width=device-width, initial-scale=1' name='viewport' />

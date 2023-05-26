@@ -21,6 +21,4 @@ I kept digging and turned out a few MPLS, BGP and ADSL nuggets worth saving:
 * [ADSL Reference Diagram](https://blog.ipspace.net/2009/06/adsl-reference-diagram.html)
 * [ADSL QoS Basics](https://blog.ipspace.net/2009/06/adsl-qos-basics.html)
 
-Most of these articles are published in [Technology Resources](/kb/tag/) part of our web site; the list of all blog posts updated within the last 30 days is in the Recently Updated box in the right-hand sidebar.
-
 I promise I'll keep going... ;)
