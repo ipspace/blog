@@ -1,7 +1,7 @@
 {{ if .Params.kb_section }}
 {{   $data := index .Site.Data "kb" }}
 {{   $data := index $data .Params.kb_section }}
-{{   if $data }}
+{{   if and (not .Params.no_bottom) $data }}
 {{     with index $data "bottom" }}
 {{       . | markdownify }}
 {{     end }}
