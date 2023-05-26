@@ -45,4 +45,4 @@ You can use the same trick on the RR client side to create a list of IBGP sessio
 ## More examples
 
 * I did something very similar in [MPLS Infrastructure](https://github.com/ipspace/mpls-infrastructure) example, but using a slightly different data structure and a data model transformation.
-* Explore another [data model transformation example](https://www.ipspace.net/kb/DataModels/)
+* Explore another [data model transformation example](/kb/DataModels/)

@@ -19,7 +19,7 @@ In the upstream direction, the congestion occurs on the DSL modem -- the path be
 
 {{<figure src="ADSL_Upstream_Congestion.png" caption="xDSL upstream congestion">}}
 
-Based on the congestion analysis, it's obvious [you cannot use queuing](https://www.ipspace.net/kb/tag/QoS/Queuing_Principles.html) on the CPE (marked "2" in the diagrams) to influence the ADSL QoS as you don't control the single congestion point. You have to use [traffic shaping](https://www.ipspace.net/kb/tag/QoS/Traffic_Shaping.html) on the CPE to introduce artificial congestion points in which the queues will form. You can then use the usual queuing mechanisms to prioritize the application traffic.
+Based on the congestion analysis, it's obvious [you cannot use queuing](/kb/tag/QoS/Queuing_Principles.html) on the CPE (marked "2" in the diagrams) to influence the ADSL QoS as you don't control the single congestion point. You have to use [traffic shaping](/kb/tag/QoS/Traffic_Shaping.html) on the CPE to introduce artificial congestion points in which the queues will form. You can then use the usual queuing mechanisms to prioritize the application traffic.
 
 {{<figure src="ADSL_CPE_QoS.png" caption="Traffic shaping configured on xDSL CPE">}}
 

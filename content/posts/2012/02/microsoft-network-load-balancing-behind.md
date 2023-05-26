@@ -13,12 +13,12 @@ I figured out I [wrote a lot about Microsoft Network Load Balancing (NLB)](http:
 <!--more-->
 **Notes and links**
 
--   [Microsoft NLB can use IGMP](http://support.microsoft.com/kb/283028), which can be used with IGMP snooping configured on the switches to limit the inbound traffic flooding to the servers that are actually interested in the traffic.
+-   Microsoft NLB can use IGMP, which can be used with IGMP snooping configured on the switches to limit the inbound traffic flooding to the servers that are actually interested in the traffic.
 -   [Network Load Balancing Technical Overview](http://technet.microsoft.com/en-us/library/bb742455.aspx), which includes this gem: "Experience has shown that Cisco routers currently do not accept an ARP response from the cluster that resolves unicast IP addresses to multicast MAC addresses." (because Cisco's engineers actually read RFCs before writing the code).
 -   [Catalyst Switches for Microsoft NLB Configuration Example](http://www.cisco.com/en/US/products/hw/switches/ps708/products_configuration_example09186a0080a07203.shtml) (including the famous static ARP hack).
 -   If you want to use NLB unicast mode within vSphere, you have to [disable RARP packets that are automatically sent after the vMotion events](http://www.vmware.com/files/pdf/implmenting_ms_network_load_balancing.pdf) \... because even vSwitch hates being a hub.
 
-#### More information
+### More Information
 
 Several webinars available on ipSpace.net cover [data center-specific topics](http://www.ipspace.net/Roadmap/Data_center_webinars):
 

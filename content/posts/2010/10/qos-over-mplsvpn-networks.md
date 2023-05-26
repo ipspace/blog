@@ -28,7 +28,7 @@ When the traffic arrives at PE-B it's sent as native IP traffic toward Site-B. I
 
 Finally, if at least one of the access links uses DSL, you have an [entirely different can of worms to deal with](https://blog.ipspace.net/2009/06/adsl-qos-basics.html).
 
-And what can you do to influence the whole process? Not much -- you can remark your traffic on the CE-router to map your QoS schema into DSCP values that the service provider recognizes. You can also shape (and [queue within the shaping queue](https://www.ipspace.net/kb/tag/QoS/Traffic_Shaping.html)) your traffic to ensure it's not randomly policed on SW-A or PE-A. Apart from that, you're solely at mercy of the service provider.
+And what can you do to influence the whole process? Not much -- you can remark your traffic on the CE-router to map your QoS schema into DSCP values that the service provider recognizes. You can also shape (and [queue within the shaping queue](/kb/tag/QoS/Traffic_Shaping.html)) your traffic to ensure it's not randomly policed on SW-A or PE-A. Apart from that, you're solely at mercy of the service provider.
 
 ## Lessons learned
 

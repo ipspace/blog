@@ -75,6 +75,6 @@ Even though the *multiple logical hosts* design (a host with two interfaces in
 ### More Details
 
 * [Redundant Server-to-Network Connectivity](https://www.ipspace.net/Redundant_Server-to-Network_Connectivity)
-* [Redundant Layer-3-Only Data Center Fabrics](https://www.ipspace.net/kb/Layer3Fabrics/)
+* [Redundant Layer-3-Only Data Center Fabrics](/kb/Layer3Fabrics/)
 * *[Network Addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR)* part of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar
 * *[Advanced Docker Networking Options](https://my.ipspace.net/bin/list?id=DockerNet#ADV2016)* describing ipvlan and macvlan interfaces 

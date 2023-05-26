@@ -17,7 +17,7 @@ We spent hours describing potential solutions in _[Validation, Error Handling an
 
 Most network engineers start their automation journey with easy wins: [simple scripts that collect information](https://www.ipspace.net/NetAutSol/Solutions#Simple_Reports) from a large set of network devices, or [make sure that all routers use the same set of NTP- or syslog servers](https://www.ipspace.net/NetAutSol/Solutions#Configuration_Consistency).
 
-Once the initial excitement of having your first automation solution in production fades, the next logical step becomes [network- and services deployment](https://www.ipspace.net/NetAutSol/Solutions#Configuration_Consistency), and after a few failed attempts it becomes painfully obvious that you need a [_data model_ describing the whole network](https://www.ipspace.net/kb/DataModels/) (or a service) instead of individual boxes. At that point you could usually describe your automation system with this simple diagram[^SOT]:
+Once the initial excitement of having your first automation solution in production fades, the next logical step becomes [network- and services deployment](https://www.ipspace.net/NetAutSol/Solutions#Configuration_Consistency), and after a few failed attempts it becomes painfully obvious that you need a [_data model_ describing the whole network](/kb/DataModels/) (or a service) instead of individual boxes. At that point you could usually describe your automation system with this simple diagram[^SOT]:
 
 {{<figure src="/2020/10/Network-Deployment-Diagram.jpg" caption="Typical Network Deployment Automation System">}}
 

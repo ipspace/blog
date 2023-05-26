@@ -38,7 +38,7 @@ Looks like we got to a bit of an absurd situation, and the only way to resolve i
 
 ### Summary
 
-* Using *declarative* and *imperative* to describe API calls makes as little sense as [intent-based networking](https://www.ipspace.net/kb/tag/intent-based-networking.html) (TL&DR: every configuration is an expression of our intent).
+* Using *declarative* and *imperative* to describe API calls makes as little sense as [intent-based networking](/tag/intent-based-networking.html) (TL&DR: every configuration is an expression of our intent).
 * What really matters is the *level of abstraction* an API call provides, and the [atomicity of the requested operation](https://blog.ipspace.net/2019/04/rest-api-is-not-transactional.html).
 
 Obviously that won't stop the vendor marketers from proudly creating slides claiming their product uses *declarative API*. Make sure to make fun of them whenever you see one -- it probably won't do any more harm than mr. Quixote did to the windmills, but it might feel good (he wasn't so lucky).

@@ -12,6 +12,6 @@ Those that assumed the IP addresses would have to be configured on the interface
 -   Some assumed a type-2 LSA would be generated for the LAN interface. Wrong: type-2 LSA is generated only if needed (there is more than one router attached to the LAN interface).
 -   Others thought the router would generate a type-1 LSA per interface. Wrong: an OSPF router generates only a single type-1 LSA per area.
 
-To clarify these issues, I wrote an article [documenting how the type-1 (router) LSA describes various interface types and inter-router links](https://www.ipspace.net/kb/tag/OSPF/Type-1-LSA.html).
+To clarify these issues, I wrote an article [documenting how the type-1 (router) LSA describes various interface types and inter-router links](/kb/tag/OSPF/Type-1-LSA.html).
 
-{{<jump>}}[Keep reading](https://www.ipspace.net/kb/tag/OSPF/Type-1-LSA.html){{</jump>}}
+{{<jump>}}[Keep reading](/kb/tag/OSPF/Type-1-LSA.html){{</jump>}}

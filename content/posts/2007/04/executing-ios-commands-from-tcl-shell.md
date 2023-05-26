@@ -1,6 +1,6 @@
 ---
 url: /2007/04/executing-ios-commands-from-tcl-shell.html
-title: "Executing IOS commands from Tcl shell"
+title: "Executing IOS Commands from Tcl Shell"
 date: "2007-04-02T19:43:00.001+02:00"
 tags: [ Tcl ]
 ---
@@ -12,4 +12,4 @@ The Tcl procedures used to execute IOS commands in Embedded Event Manager (cli\_
 
 If the first parameter of the ios\_config command is a global configuration command, you shall omit the second parameter (for example, **ios\_config "hostname router"**). To configure a parameter in one of the sub-configuration modes (for example, interface state), use the first parameter to specify the configuration mode and the second parameter as the actual configuration command (for example, **ios\_config "interface loop 0" "no shutdown"**).
 
-{{<jump>}}[Keep reading](https://www.ipspace.net/kb/Tclsh/){{</jump>}}
+{{<jump>}}[Keep reading](https://blog.ipspace.net/kb/Tclsh/){{</jump>}}

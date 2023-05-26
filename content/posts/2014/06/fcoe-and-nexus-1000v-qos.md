@@ -27,7 +27,7 @@ The bandwidth allocation and queuing on the physical 10GE uplink is hidden from 
 
 ### Output queuing on Nexus 1000v
 
-Output queuing on Nexus 1000v works the same way as any other output queuing implementation: the interface driver enqueues the output packets into the [hardware TX-ring](https://www.ipspace.net/kb/tag/QoS/Queuing_Principles.html) until the TX-ring reaches a preset length, at which point the software queuing (CBWFQ) starts.
+Output queuing on Nexus 1000v works the same way as any other output queuing implementation: the interface driver enqueues the output packets into the [hardware TX-ring](/kb/tag/QoS/Queuing_Principles.html) until the TX-ring reaches a preset length, at which point the software queuing (CBWFQ) starts.
 
 The interface driver doesn't need to know the exact interface bandwidth, all it needs to know is when the TX ring is below the low watermark (at which point packets are dequeued from the CBWFQ queues and moved to the TX ring). The bandwidth percentages specified in the CBWFQ affect the *relative* amount of data transferred from each individual class queue; they work equally well regardless of the physical interface speed or its actual throughput.
 

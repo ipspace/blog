@@ -41,7 +41,7 @@ Now let's assume you got burned by MLAG[^DCMD], want to follow the vendor design
 
 [^VDG]: For example, VMware recommends independent uplinks in NSX-T deployments.
 
-[^VMLG]: Multi-interface vMotion or iSCSI MPIO [needs multiple IP addresses per host](https://www.ipspace.net/kb/Layer3Fabrics/20-apps.html) with traffic for an individual IP address tied to a particular uplink. You cannot implement that with a link aggregation group.
+[^VMLG]: Multi-interface vMotion or iSCSI MPIO [needs multiple IP addresses per host](/kb/Layer3Fabrics/20-apps.html) with traffic for an individual IP address tied to a particular uplink. You cannot implement that with a link aggregation group.
 
 Some switches have uplink tracking -- the switch shuts down all server-facing interfaces when it loses all uplinks -- but I'm not sure this functionality is widely available in data center switches. I already mentioned Cisco's lack of details, and Arista seems no better. All I found was a brief mention of the **uplink-failure-detection** keyword without further explanation.
 
@@ -74,7 +74,7 @@ No worries, I'm pretty sure one or the other SmartNIC[^DPU] vendor will eventual
 ### More Details
 
 * Server-to-network multihoming is one of many topics covered in  _[Site and Host Multihoming](https://blog.ipspace.net/series/multihoming.html)_ resources.
-* You might want to explore _[Redundant Layer-3-Only Data Center Fabrics](https://www.ipspace.net/kb/Layer3Fabrics/)_
+* You might want to explore _[Redundant Layer-3-Only Data Center Fabrics](/kb/Layer3Fabrics/)_
 
 [ipSpace.net subscribers](https://www.ipspace.net/Subscription/) can also:
 

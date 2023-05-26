@@ -7,7 +7,7 @@ tags:
 title: Almost-Dynamic Routing over ADSL Interfaces
 url: /2008/04/almost-dynamic-routing-over-adsl.html
 ---
-Recently I had to implement Internet access using ADSL as the primary link and ISDN as the backup link. Obviously the most versatile solution would use the techniques described in my [Small Site Multi-homing articles](https://www.ipspace.net/kb/Internet/), but the peculiarities of Cisco IOS implementation of the ADSL technology resulted in a much simpler solution.
+Recently I had to implement Internet access using ADSL as the primary link and ISDN as the backup link. Obviously the most versatile solution would use the techniques described in my [Small Site Multi-homing articles](/kb/Internet/), but the peculiarities of Cisco IOS implementation of the ADSL technology resulted in a much simpler solution.
 
 IOS implementation of PPPoE links uses dialer interfaces. However, the "dialing" on these interfaces is activated as soon as the underlying PPPoE session is active (before the first *interesting* packet is routed to the interface). When the simulated dial-out occurs, the router starts PPP negotiations including the IPCP handshake, which usually results in an IP address assigned to the dialer interface. Net result: if the dialer interface has an IP address, the PPPoE session is obviously active (and vice versa).
 <!--more-->

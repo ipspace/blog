@@ -9,7 +9,7 @@ url: /2010/06/bfd-has-reached-rfc-status.html
 ---
 Bidirectional Forwarding Detection (BFD) protocol has finally been published as a series of RFCs. BFD gives you [quick failure detection between L3 hops](https://blog.ipspace.net/2008/11/bidirectional-forwarding-detection.html) (routers) regardless of the underlying technology and equipment (modems, media converters, bridges). It's been gradually introduced in Cisco IOS during the last few years; release 15.0M and 12.2SRE contain almost everything you'll ever need (missing: multihop BGP support and MPLS LSP support).
 
-I wrote about BFD in *Improve the Convergence of Mission-Critical Networks with Bidirectional Forwarding Detection (BFD)* article (you'll find it somewhere in [this list](https://www.ipspace.net/kb/Internet/)). To learn more, read the RFCs in this order:
+I wrote about BFD in *Improve the Convergence of Mission-Critical Networks with Bidirectional Forwarding Detection (BFD)* article (you'll find it somewhere in [this list](/kb/Internet/)). To learn more, read the RFCs in this order:
 <!--more-->
 -   [When, where and how should BFD be used (RFC 5882)](http://tools.ietf.org/html/rfc5882). This one is mandatory; it gives you a good overview of what BFD can and cannot do as well as where and how to use it.
 -   [BFD: the protocol (RFC 5880)](http://tools.ietf.org/html/rfc5880). The protocol description. Not as boring as some other protocol descriptions are. If you want to understand how the *Echo* function works, make sure you read this one.

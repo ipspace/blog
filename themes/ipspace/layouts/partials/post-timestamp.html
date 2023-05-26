@@ -2,7 +2,9 @@
 {{ $hasCdate := isset .Params "cdate" }}
 {{ $dateFormat := cond $hasCdate "January 2, 2006" "Monday, January 2, 2006 15:04 MST" }}
 <p class='post__date'>
+{{ if (not (.Scratch.Get "ArticleContext")) }}
   <a class='timestamp-link' href="{{ .Permalink }}" title='permanent link'>
+{{ end }}
     {{ if $hasCdate }}Published on{{ end }}
     <time datetime='{{ .Date.Format "Monday, January 2, 2006 15:04 MST" }}' itemprop='datePublished'>
       {{ .Date.Format $dateFormat }}</time></a>{{ if ne .Date .Lastmod }}{{ cond $hasCdate "," "…" }} updated

@@ -26,16 +26,16 @@ ip route 0.0.0.0 0.0.0.0 10.0.1.2
 ip route 0.0.0.0 0.0.0.0 10.0.1.6 250
 ```
 
-I'm sure the long-time readers of my blog immediately figured out where the catch is: if the upstream router dies, but the interface stays up, the outbound traffic is blackholed. [Reliable static routing](https://blog.ipspace.net/2007/02/reliable-static-routing.html) might be a solution, but his router is running an old IOS version. Obviously it's time for yet another rarely known BGP feature: the BGP default route.
+I'm sure the long-time readers of my blog immediately figured out where the catch is: if the upstream router dies, but the interface stays up, the outbound traffic is blackholed. [Reliable static routing](/2007/02/reliable-static-routing.html) might be a solution, but his router is running an old IOS version. Obviously it's time for yet another rarely known BGP feature: the BGP default route.
 
-If you've [mastered default routes in other routing protocols](https://blog.ipspace.net/2007/06/inserting-default-route-into-ospf.html), forget about what you know … BGP is different:
+If you've [mastered default routes in other routing protocols](/2007/06/inserting-default-route-into-ospf.html), forget about what you know … BGP is different:
 
 -   Default route already in the BGP table is advertised to BGP neighbors like any other route.
 -   To announce a default route to a BGP neighbor without having a default route yourself, configure **neighbor default-originate**.
 -   Once you've configured default route advertising with the **neighbor default-originate**, it's announced to the neighbor even if the router doesn't have the default route itself.
 -   The default route advertised to a BGP neighbor with the **neighbor default-originate** does not pass through BGP output filters, so you cannot filter it.
 
-For even more details, read [_Default Routes in BGP_](https://www.ipspace.net/kb/tag/BGP/Default_Route.html).
+For even more details, read [_Default Routes in BGP_](/kb/tag/BGP/Default_Route.html).
 
 To solve Martin's problem, you'd have to reconfigure BGP on E1 and E2 as follows (the **ip as-path** access list just ensures nothing else is sent to the customer router; obviously you could use a **route-map** instead):
 
@@ -50,7 +50,7 @@ ip as-path access-list 1 deny .*
 
 Now that the default route is advertised via BGP, there is no need for a static default, and the default route will be removed (and replaced with the backup one) if the BGP neighbor disappears.
 
-### More details
+### More Details
 
-* [Default Routes in BGP](https://www.ipspace.net/kb/tag/BGP/Default_Route.html)
-* [Responsible generation of BGP default route](https://blog.ipspace.net/2011/09/responsible-generation-of-bgp-default.html)
+* [Default Routes in BGP](/kb/tag/BGP/Default_Route.html)
+* [Responsible generation of BGP default route](/2011/09/responsible-generation-of-bgp-default.html)

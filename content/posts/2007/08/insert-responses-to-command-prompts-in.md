@@ -2,8 +2,7 @@
 date: 2007-08-27T07:27:00.001+02:00
 tags:
 - Tcl
-- you've asked for it
-title: Insert responses to command prompts in Tclsh
+title: Insert Responses to Command Prompts in Tclsh
 url: /2007/08/insert-responses-to-command-prompts-in.html
 ---
 
@@ -18,4 +17,4 @@ exec "clear counter dialer 0";
 
 **Warning:** if the input is not consumed by the executed commands, it stays in the typeahead buffer; quite dangerous if you have a sequence of commands, as the wrong command could be acknowledged.
 
-{{<jump>}}[Keep reading](https://www.ipspace.net/kb/Tclsh/){{</jump>}}
+{{<jump>}}[Keep reading](https://blog.ipspace.net/kb/Tclsh/){{</jump>}}

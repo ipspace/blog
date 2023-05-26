@@ -45,5 +45,5 @@ To understand the impacts of a topology change (interface state change, router r
 4.  Stub prefixes are advertised like any other IP prefix in IS-IS, resulting in partial route calculation.
 3.  Under certain circumstances, even changing an IP address on a transit interface does not trigger SPF event in IS-IS.
 4.  When an OSPF area border router (ABR) experiences an interface state change, it floods new router LSA (and triggers SPF event) in all adjacent areas, regardless of the area in which the actual change has occurred.
-5.  I wrote about the distance vector aspects of OSPF in 2008. You'll find the article somewhere in [this list](https://www.ipspace.net/kb/Internet/).
+5.  I wrote about the distance vector aspects of OSPF in 2008. You'll find the article somewhere in [this list](/kb/Internet/).
 

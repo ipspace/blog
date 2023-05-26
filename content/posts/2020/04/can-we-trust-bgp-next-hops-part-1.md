@@ -66,6 +66,6 @@ IBGP session between L1 and L2 is up and running, or at least you got the last p
 
 So far we covered the two simplest scenarios. The [next installment of this saga](/2020/04/can-we-trust-bgp-next-hops-part-2.html) describes networks with more than two routers.
 - - -
-You might also want to watch [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar (parts of it are available with [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)) or explore [other BGP resources](https://www.ipspace.net/kb/tag/BGP) we've created in the last decade and a half.
+You might also want to watch [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar (parts of it are available with [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)) or explore [other BGP resources](/kb/tag/BGP) we've created in the last decade and a half.
 
 {{<next-in-series page="/posts/2020/04/next-hop-vtep-reachability-evpn.html" />}}

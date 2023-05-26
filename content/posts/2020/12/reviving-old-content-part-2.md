@@ -5,12 +5,12 @@ tags: [ OSPF, QoS, MPLS ]
 ---
 Continuing my [archeological explorations](/2020/11/reviving-old-content-part-1.html), I found a dusty bag of old QoS content:
 
-* [Queuing Principles](https://www.ipspace.net/kb/tag/QoS/Queuing_Principles.html)
-* [QoS Policing](https://www.ipspace.net/kb/tag/QoS/QoS_Policing.html)
-* [Traffic Shaping](https://www.ipspace.net/kb/tag/QoS/Traffic_Shaping.html)
-* [Impact of Transmit Ring Size (tx-ring-limit)](https://www.ipspace.net/kb/tag/QoS/TX-Ring-Limit.html)
-* [FIFO Queuing](https://www.ipspace.net/kb/tag/QoS/FIFO_Queuing.html)
-* [Fair Queuing in Cisco IOS](https://www.ipspace.net/kb/tag/QoS/Fair_Queuing.html)
+* [Queuing Principles](/kb/tag/QoS/Queuing_Principles.html)
+* [QoS Policing](/kb/tag/QoS/QoS_Policing.html)
+* [Traffic Shaping](/kb/tag/QoS/Traffic_Shaping.html)
+* [Impact of Transmit Ring Size (tx-ring-limit)](/kb/tag/QoS/TX-Ring-Limit.html)
+* [FIFO Queuing](/kb/tag/QoS/FIFO_Queuing.html)
+* [Fair Queuing in Cisco IOS](/kb/tag/QoS/Fair_Queuing.html)
 
 I kept digging and turned out a few MPLS, BGP and ADSL nuggets worth saving:
 <!--more-->
@@ -21,6 +21,6 @@ I kept digging and turned out a few MPLS, BGP and ADSL nuggets worth saving:
 * [ADSL Reference Diagram](https://blog.ipspace.net/2009/06/adsl-reference-diagram.html)
 * [ADSL QoS Basics](https://blog.ipspace.net/2009/06/adsl-qos-basics.html)
 
-Most of these articles are published in [Technology Resources](https://www.ipspace.net/kb/tag/) part of our web site; the list of all blog posts updated within the last 30 days is in the Recently Updated box in the right-hand sidebar.
+Most of these articles are published in [Technology Resources](/kb/tag/) part of our web site; the list of all blog posts updated within the last 30 days is in the Recently Updated box in the right-hand sidebar.
 
 I promise I'll keep going... ;)

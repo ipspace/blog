@@ -43,7 +43,7 @@ def read_file(path: str,url_list: Box) -> None:
     text = markdown.markdown(text)
 
   soup = BeautifulSoup(text, features="html.parser")
-  urls = [a['href'] for a in soup.findAll('a')]
+  urls = [a['href'] for a in soup.findAll('a') if 'href' in a.attrs]
   for url in urls:
     if ('#' in url):
       (url,anchor) = url.split('#')

@@ -11,7 +11,7 @@ I got an interesting question after writing the [*Asymmetric MPLS MTU Problem*](
 
 > Why does PHP happen only on directly-connected interfaces but not on other non-MPLS routes?
 
-Obviously it’s time for a deep dive into [Penultimate Hop Popping](https://www.ipspace.net/kb/tag/MPLS/Implicit_Explicit_NULL.html) (PHP) mysteries (warning label: [read the MPLS books](https://blog.ipspace.net/2007/07/update-preparing-for-mpls-ccip-exam.html) if you plan to get seriously involved with MPLS).
+Obviously it’s time for a deep dive into [Penultimate Hop Popping](/kb/tag/MPLS/Implicit_Explicit_NULL.html) (PHP) mysteries (warning label: [read the MPLS books](https://blog.ipspace.net/2007/07/update-preparing-for-mpls-ccip-exam.html) if you plan to get seriously involved with MPLS).
 <!--more-->
 When developing the MPLS architecture, its designers had to consider two fundamental facts:
 

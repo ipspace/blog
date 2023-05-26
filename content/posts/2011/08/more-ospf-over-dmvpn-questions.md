@@ -13,7 +13,7 @@ After weeks of waiting, perfect summer weather finally arrived ... and it’s aw
 
 If you want to have a scalable DMVPN environment, you have to put numerous spokes connected to the same hub in a single IP subnet (otherwise you’ll end with point-to-point tunnels), which also means they have to be in a single OSPF area and would thus see each other’s LSAs.
 <!--more-->
-The only mechanism to stop the LSA propagation through the hub router is [OSPF database filter configured on the hub router](https://www.ipspace.net/kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke.html), but then the spokes would receive no routes from the hub at all – you would have to configure static routes on them.
+The only mechanism to stop the LSA propagation through the hub router is [OSPF database filter configured on the hub router](/kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke.html), but then the spokes would receive no routes from the hub at all – you would have to configure static routes on them.
 
 Static default routes on spokes are easy to implement if you have a single hub. In a dual-hub environment you can use either *reliable static routing* (static routes based on IP SLA results, see my [Small Site Multihoming](/2009/05/small-site-multihoming-tutorial.html) articles for more details) or tunnel health monitoring feature introduced in IOS release 15.0M. This feature would bring down a DMVPN tunnel (and make all the static routes using that tunnel disappear from the IP routing table) if the spoke cannot reach the hub through NHRP, so it’s safe to use simple static default routes pointing to both hubs.
 

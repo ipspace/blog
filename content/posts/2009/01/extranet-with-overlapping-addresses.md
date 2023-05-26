@@ -11,4 +11,4 @@ The idea to write an article describing how you can use MPLS VPN-enabled NAT to 
 
 After I've finally written it (without even hinting what I've been working on), I got several e-mails from my readers asking the questions this article answers, so it looks like the topic has suddenly become very hot. Do you have any ideas why that would be the case?
 
-You'll find the original article somewhere in [this list](https://www.ipspace.net/kb/Internet/).
+You'll find the original article somewhere in [this list](/kb/Internet/).

@@ -35,6 +35,6 @@ MTU path discovery usually works well in enterprise network, unless an overzealo
 
 #### More information
 
-To learn more about MTU path discovery and related problems, read the [Never-Ending Story of IP Fragmentation](https://www.ipspace.net/kb/Internet/PMTUD/).
+To learn more about MTU path discovery and related problems, read the [Never-Ending Story of IP Fragmentation](/kb/Internet/PMTUD/).
 
 You'll find in-depth description of MPLS/VPN technology and enterprise network deployment hints in my [Enterprise MPLS/VPN Deployment](http://www.ipspace.net) webinar. For more VPN webinars, check my [VPN webinar roadmap](http://www.ipspace.net/Roadmap/VPN_webinars). You get access to all those webinars when you buy the [yearly subscription](http://www.ipspace.net/Subscription).

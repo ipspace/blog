@@ -8,7 +8,7 @@ comment: 'Some SDN proponents claim that the way we configure networking devices
 
 
   Since I wrote this blog post, the debate shifted to _API is better than CLI_, and
-  I had a [few choice things to say about that fake dilemma](https://www.ipspace.net/kb/tag/cli-or-api.html).
+  I had a [few choice things to say about that fake dilemma](/kb/tag/cli-or-api.html).
 
   '
 date: 2014-02-18 07:05:00+01:00
