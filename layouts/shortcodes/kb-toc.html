@@ -1,0 +1,8 @@
+<ul>
+{{ $pages := .Page.Pages }}
+{{ $pages := where $pages "Params.index" "!=" nil }}
+{{ range $pages }}
+{{    $title := .Title }}
+  <li><a href="{{ .Permalink }}">{{ or .Params.index_title .Params.title }}</a></li>
+{{ end }}
+</ul>

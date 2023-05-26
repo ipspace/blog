@@ -1,0 +1,30 @@
+{{ $full := .Scratch.Get "ArticleContext" }}
+{{ if $full }}
+{{   if .Params.comment }}
+<div class='post__content' itemprop='articleComment' style='font-style: italic;'>
+  {{ .Params.comment | markdownify }}
+</div>
+{{   end }}
+{{ end }}
+<header class='post__header'>
+{{ partial "post-timestamp.html" . }}
+  <h1 class='firstHeading' itemprop='name headline'>{{ .Title }}</h1>
+  {{ with .Params.subtitle }}
+    <p class='subtitle'>{{ . }}</p>
+  {{ end }}
+</header>
+<p class="crumbs firstHeading">
+  {{ with .Parent }}
+    <a href="{{ .Permalink }}">{{ .Params.index_title }}</a> »
+  {{ end }}
+  {{ if (not .Params.index) }}
+    {{ $pages := .Parent.Pages }}
+    {{ $pages := where $pages "Params.kb_section" .Params.kb_section }}
+    {{ $pages := where $pages "Params.index" "!=" nil }}
+    {{ range first 1 $pages }}
+      <a href="{{ .Permalink }}">{{ or .Params.index_title .Params.title }}</a> »
+    {{ end }}
+  {{ end }}
+  {{ or .Params.toc_title .Title }}
+</p>
+{{ partial "kb-section-intro.html" . }}
