@@ -5,6 +5,7 @@ minimal_sidebar: true
 title: Redundant Layer-3-Only Data Center Fabrics
 toc_title: Overview
 url: /kb/Layer3Fabrics/
+kb_tag: dc
 ---
 I’m often getting the same question when delivering online courses or webinars focused on data center fabrics or cloud infrastructure:
 

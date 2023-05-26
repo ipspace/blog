@@ -1,4 +1,4 @@
-{{ $term := .Page.Data.Term }}
+{{ $term := or (.Get "series") .Page.Data.Term }}
 {{ $show_weight := .Get "showweight" }}
 {{ $show_tag    := .Get "showtag" }}
 {{ $title := .Page.Title }}
@@ -13,6 +13,9 @@
 {{   if (.Get "notag") }}
 {{     .Page.Scratch.Set "pages" (where (.Page.Scratch.Get "pages") (printf "Params.%s_tag" $term) "eq" nil) }}
 {{   end }}
+{{ end }}
+{{ if (.Get "bytitle") }}
+{{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").ByTitle) }}
 {{ end }}
 {{ if not (.Get "reverse") }}
 {{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}
@@ -39,7 +42,15 @@
       {{ if $show_year }}({{ .Date.Format "2006" }}){{ end }}
       {{ if $show_tag  }}T:{{ index .Params (printf "%s_tag" $term) }}{{ end }}
       {{ if $show_weight }}{{ with .Params.series_weight }}W:{{ .}}{{ end }}{{ end }}
+      {{ with .Params.author }}
+      by {{ with .link }}<a href="{{ . }}">{{ end }}{{ .name }}{{ with .link }}</a>{{ end }}
+      {{ end }}
     </li>
+  {{ end }}
+  {{ if (.Get "links") }}
+    {{ range (index .Page.Params (.Get "links")) }}
+      <li><a href="{{ .link }}">{{ .title }}</a></li>
+    {{ end }}
   {{ end }}
 </ul>
 {{ if (.Get "soon") }}

@@ -1,6 +1,7 @@
 {{ $pages := .Parent.Pages }}
 {{ $pages := where $pages "Params.kb_section" .Params.kb_section }}
 {{ $pages := sort $pages "File.Filename" }}
+{{ if gt (len $pages) 1 }}
 <div class="regbox decorated">
   <h3 class="sidebar__title">Table of Contents</h3>
   <ul>
@@ -9,3 +10,4 @@
 {{   end }}
   </ul>
 </div>
+{{ end }}

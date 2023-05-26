@@ -6,6 +6,7 @@ title: Network Automation Data Model Optimization
 toc_title: Introduction
 url: /kb/DataModels/
 pre_scroll: true
+kb_tag: automation
 ---
 One of the toughest challenges in the hands-on part of [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course is the [create a data model describing your service](https://my.ipspace.net/bin/list?id=NetAutSol&module=3#M3S6) exercise. Networking engineers never had to think about data models describing their networks or services, data deduplication, or normalized data structures, and the first attempt often results in something that looks like simplified device configuration in YAML or JSON format.
 
