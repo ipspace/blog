@@ -27,7 +27,7 @@ The need to emulate the whole network in a virtual environment arises from two b
 
 How could you get out of this morass? How about a (simplified) three-step process:
 
--   Get rid of snowflakes and exceptions. Define services the network is supposed to offer, standardize them and describe them with a [data model that is as simple and as abstract](https://www.ipspace.net/kb/DataModels/) as you can make it (the fewer parameters a service has, the easier it will be to implement and test it);
+-   Get rid of snowflakes and exceptions. Define services the network is supposed to offer, standardize them and describe them with a [data model that is as simple and as abstract](/kb/DataModels/) as you can make it (the fewer parameters a service has, the easier it will be to implement and test it);
 -   Unify your network design so that it's possible to predict the behavior of the whole network regardless of its size by wiring together a small set of components (example: a few access nodes, a few aggregation nodes, and a few core nodes);
 -   Abstract the transactions the operators are allowed to make in the network, and use configuration templates to make device configurations consistent. It's much easier to test the impact of well-defined transactions with well-known outputs than it is to test any random change someone could make to a device configuration.
 

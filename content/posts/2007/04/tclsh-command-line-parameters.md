@@ -1,6 +1,6 @@
 ---
 url: /2007/04/tclsh-command-line-parameters.html
-title: "Tclsh command line parameters"
+title: "Tclsh Command Line Parameters"
 date: "2007-04-09T11:27:00.001+02:00"
 tags: [ Tcl,command line interface ]
 ---
@@ -22,4 +22,4 @@ return -code error "Syntax: loop.tcl ifnum ifstate"
 ... rest of procedure ...
 ```
 
-{{<jump>}}[More details](https://www.ipspace.net/kb/Tclsh/30-parameters.html){{</jump>}}
+{{<jump>}}[More details](https://blog.ipspace.net/kb/Tclsh/30-parameters.html){{</jump>}}

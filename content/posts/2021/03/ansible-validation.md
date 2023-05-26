@@ -7,7 +7,7 @@ tags:
 - automation
 title: New Ansible Data Validation Module(s)
 ---
-A few months ago I described how you could [use JSON Schema to validate your automation data models](https://www.ipspace.net/kb/DataModels/70-Validation.html), host/group variable files, or even Ansible inventory file. 
+A few months ago I described how you could [use JSON Schema to validate your automation data models](/kb/DataModels/70-Validation.html), host/group variable files, or even Ansible inventory file. 
 
 I had to use a weird toolchain to get it done -- either **ansible-inventory** to build a complete data model from various inventory sources, or **yq** to convert YAML to JSON... and just for the giggles **jsonschema** CLI command requires the JSON input to reside in a file, so you have to use a temporary file to get the job done.
 <!--more-->

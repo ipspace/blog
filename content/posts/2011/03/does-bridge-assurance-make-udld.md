@@ -28,4 +28,4 @@ In complex designs, you'll probably end up using both.
 
 ### More information
 
-To learn more about BFD, read the article I wrote about it in early 2000s. You'll find it somewhere in [this list](https://www.ipspace.net/kb/Internet/).
+To learn more about BFD, read the article I wrote about it in early 2000s. You'll find it somewhere in [this list](/kb/Internet/).

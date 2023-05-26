@@ -40,7 +40,7 @@ The really fun part starts when you try to *add a server*. To do that, the last-
 
 [^4]: And even harder if you want to solve it in hardware at terabit speeds
 
-Oh, and finally there's ICMP: ICMP replies include the original TCP/UDP port numbers, but no hardware switch is able to dig that far into the packet, so the ICMP reply is usually sent to some random server that has no idea what to do with it. Welcome to [PMTUD](https://www.ipspace.net/kb/Internet/PMTUD/20-mtu-discovery.html) hell.
+Oh, and finally there's ICMP: ICMP replies include the original TCP/UDP port numbers, but no hardware switch is able to dig that far into the packet, so the ICMP reply is usually sent to some random server that has no idea what to do with it. Welcome to [PMTUD](/kb/Internet/PMTUD/20-mtu-discovery.html) hell.
 
 ### Making Local TCP Anycast Work
 

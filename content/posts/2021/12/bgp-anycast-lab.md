@@ -81,7 +81,7 @@ groups:
     config: [ bgp-anycast-loopback.j2 ]
 ```
 
-The "only" problem with this solution is duplicate data (and you know [I hate that](https://www.ipspace.net/kb/DataModels/)): I'm defining the same groups twice. Wouldn't it be great if the BGP configuration module created groups based on AS membership (as65000 and as65101 in our case).
+The "only" problem with this solution is duplicate data (and you know [I hate that](/kb/DataModels/)): I'm defining the same groups twice. Wouldn't it be great if the BGP configuration module created groups based on AS membership (as65000 and as65101 in our case).
 
 Sure thing -- *netlab* includes [auto-generated BGP groups](https://netlab.tools/groups/#automatic-bgp-groups) that can also be used to set any other group attribute, simplifying my group definition. I have to define the custom deployment template, and the group members are added by the BGP topology transformation module based on **bgp.as_list** definition.
 

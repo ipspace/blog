@@ -22,4 +22,4 @@ Loading helloWorld.tcl from 10.0.0.10 (via FastEthernet0/0): !
 hello, world
 ```
 
-{{<jump>}}[Keep reading](https://www.ipspace.net/kb/Tclsh/){{</jump>}}
+{{<jump>}}[Keep reading](https://blog.ipspace.net/kb/Tclsh/){{</jump>}}

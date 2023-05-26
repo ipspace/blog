@@ -13,6 +13,7 @@
     <p class='subtitle'>{{ . }}</p>
   {{ end }}
 </header>
+{{ if .Parent.Params.index_title }}
 <p class="crumbs firstHeading">
   {{ with .Parent }}
     <a href="{{ .Permalink }}">{{ .Params.index_title }}</a> »
@@ -27,4 +28,5 @@
   {{ end }}
   {{ or .Params.toc_title .Title }}
 </p>
+{{ end }}
 {{ partial "kb-section-intro.html" . }}

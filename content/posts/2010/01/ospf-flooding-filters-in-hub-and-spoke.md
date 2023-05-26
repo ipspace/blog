@@ -10,4 +10,4 @@ NOTE: The same trick can be used in any hub-and-spoke network, including P2MP Ca
 
 What these articles usually fail to tell you is the true impact of this command: it stops all OSPF flooding from hub router. The spoke routers receive no OSPF information whatsoever; to establish connectivity to the network core, you have to use static default routes on the spoke routers.
 
-{{<jump>}}[More details](https://www.ipspace.net/kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke.html){{</jump>}}
+{{<jump>}}[More details](/kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke.html){{</jump>}}

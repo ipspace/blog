@@ -9,6 +9,5 @@ My [*IP QoS: Two generations of class-of-service tools*](http://searchtelecom.te
 
 **More to explore:**
 
-* [Articles I wrote for SearchTelecom](https://www.ipspace.net/Ivan_Pepelnjak_on_SearchTelecom)
-* [More QoS articles](https://www.ipspace.net/kb/tag/QoS/)
+* [More QoS articles](/kb/tag/QoS/)
 * [QoS Fundamentals webinar](https://www.ipspace.net/QoS_Fundamentals)

@@ -70,4 +70,4 @@ Considering everything I wrote above, _reachability != functionality_, and the m
 
 I'll slowly get to the routing protocols in the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar (parts of it are available with [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)), and we have tons of content on [leaf-and-spine fabric designs](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) (including routing protocol selection) and [EVPN](https://www.ipspace.net/EVPN_Technical_Deep_Dive). 
 
-You might also want to explore [other BGP resources](https://www.ipspace.net/kb/tag/BGP) we've created in the last decade and a half.
+You might also want to explore [other BGP resources](/kb/tag/BGP) we've created in the last decade and a half.
