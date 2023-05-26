@@ -33,9 +33,9 @@ def replace_markup_tag(line: str, tag: str = '') -> str:
   if tag:
     return re.sub(r'[A-Z]+:\s+(.*)',"{{<"+tag+">}}\\1{{</"+tag+">}}" ,line)
   else:
-    chunks = re.split(r'\A([A-Z]+):\s+',line,1)
+    chunks = re.split(r'\A([A-Z-]+):\s+',line,1)
     tag = chunks[1].lower()
-    if tag == 'caption':
+    if 'caption' in tag:
       print(f"WARNING: leftover caption tag: {line}")
       return "{{<cc>}}"+chunks[2]+"{{</cc>}}"
     else:
@@ -84,7 +84,7 @@ def process_markup(text: str,fname: str) -> str:
     lines = lines[:j] + [replace_markup_tag(lines[i],'cc')] + lines[j:i] + lines[i+1:]
 
   for i in range(len(lines)):
-    if not re.search(r"\A[A-Z]+:\s+",lines[i]):
+    if not re.search(r"\A[A-Z-]+:\s+",lines[i]):
       continue
     lines[i] = replace_markup_tag(lines[i])
 
