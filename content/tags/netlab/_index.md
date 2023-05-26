@@ -5,7 +5,7 @@ layout: custom
 minimal_sidebar: true
 sidebar_box: NetOps
 ---
-The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help you be more proficient once you decide to drop GUI-based network simulators and build your labs using CLI and [infrastructure-as-code](https://www.ipspace.net/kb/tag/network-infrastructure-as-code.html) principles.
+The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help you be more proficient once you decide to drop GUI-based network simulators and build your labs using CLI and [infrastructure-as-code](/series/niac.html) principles.
 <!--more-->
 ### {{<plushy confused>}}Getting Started
 

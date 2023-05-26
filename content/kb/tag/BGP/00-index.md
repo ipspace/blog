@@ -1,10 +1,12 @@
 ---
 kb_section: BGP
 minimal_sidebar: true
-title: BGP Resources
+title: BGP Articles
 url: /kb/tag/BGP/
 index: true
 no_bottom: true
+layout: custom
+sidebar_box: rb
 blog:
   - /posts/2021/05/routing-unnumbered-interfaces.md
   - /posts/2021/05/segment-routing-mpls-bgp-free-core.md

@@ -3,6 +3,7 @@ kb_section: MPLS
 minimal_sidebar: true
 title: Implicit and Explicit Null Label in MPLS networks
 url: /kb/tag/MPLS/Implicit_Explicit_NULL.html
+tags: [ MPLS ]
 ---
 The [MPLS Label Stack Encoding](http://tools.ietf.org/html/rfc3032) (RFC 3032) specifies two reserved values (among others) that are useful in the last hop of a Label Switched Path (LSP):
 

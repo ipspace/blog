@@ -1,10 +1,12 @@
 ---
 kb_section: MPLS
 minimal_sidebar: true
-title: MPLS and MPLS/VPN Resources
+title: MPLS and MPLS/VPN Details
 url: /kb/tag/MPLS/
 index: true
 no_bottom: true
+sidebar_box: sw
+layout: custom
 ---
 Ivan Pepelnjak wrote a series of articles describing various MPLS and MPLS/VPN features in early 2000s. Some of those articles have been rescued from Internet Archive, updated, and migrated to ipSpace.net web site:
 
