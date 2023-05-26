@@ -1,7 +1,11 @@
 <ul>
 {{ $pages := .Page.Pages }}
 {{ $pages := where $pages "Params.index" "!=" nil }}
-{{ range $pages }}
+{{ .Page.Scratch.Set "kb_pages" $pages }}
+{{ if (.Get "notag") }}
+{{   .Page.Scratch.Set "kb_pages" (where $pages (printf "Params.%s_tag" (.Get "series")) "==" nil) }}
+{{ end }}
+{{ range .Page.Scratch.Get "kb_pages" }}
 {{    $title := .Title }}
   <li><a href="{{ .Permalink }}">{{ or .Params.index_title .Params.title }}</a></li>
 {{ end }}

@@ -5,6 +5,10 @@ minimal_sidebar: true
 toc_title: Overview
 url: /kb/CiscoAutomation/
 title: Automation for Cisco NetDevOps
+kb_tag: automation
+author:
+  name: Andrea Dainese
+  link: https://www.linkedin.com/in/adainese/
 ---
 Approaching IT automation can be confusing even for seasoned tech guys. There are few reasons:
 

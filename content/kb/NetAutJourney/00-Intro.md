@@ -6,6 +6,10 @@ minimal_sidebar: true
 toc_title: Overview
 title: Yet Another Network Automation Journey
 url: /kb/NetAutJourney/
+kb_tag: automation
+author:
+  name: Anne Baretta
+  link: https://www.linkedin.com/in/abaretta/
 ---
 After dabbling with Ansible for the generation of device configurations based on templates,
 and some simple playbooks a while ago, I was fortunate enough to have a brief period in

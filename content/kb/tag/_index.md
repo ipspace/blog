@@ -4,6 +4,8 @@ minimal_sidebar: true
 url: /kb/tag/
 title: Technology Resources
 index_title: Technology Resources
+index: true
+kb_tag: more
 ---
 We organized hundreds of blog posts published on ipSpace.net in the last decades into technology-focused resource pages:
 
@@ -36,6 +38,6 @@ We organized hundreds of blog posts published on ipSpace.net in the last decades
 
 ### More Resources
 
-Even more free technology resources are available as short articles on this web site:
+Even more free technology resources are available as short articles:
 
 {{<kb-toc>}}

@@ -4,6 +4,7 @@ minimal_sidebar: true
 title: Internetworking Articles
 url: /kb/Internet/
 index: true
+kb_tag: more
 ---
 In early 2000s I wrote a number of articles describing interesting TCP/IP features. They were migrated to a different platform several times, and most of the old URLs are broken. Here's the list of working links as of December 2020.
 

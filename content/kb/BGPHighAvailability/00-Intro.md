@@ -5,6 +5,10 @@ minimal_sidebar: true
 title: BGP as High-Availability Protocol
 toc_title: Overview
 url: /kb/BGPHighAvailability/
+kb_tag: dc
+author:
+  name: Nicola Modena
+  link: https://www.ipspace.net/Expert:Nicola_Modena
 ---
 It seems incredible how often networking engineers still discuss Border Gateway Protocol (BGP), and how often it's still the best tool for the job. In this article I'll describe a solution I designed and developed for enterprise data centers: using BGP in data centers to manage high availability (HA) with firewalls, hosts and even Network Function Virtualization (NFV) chains.
 

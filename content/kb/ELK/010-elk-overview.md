@@ -5,6 +5,10 @@ minimal_sidebar: true
 title: Elastic Stack for Network and Security Engineers
 toc_title: Overview
 url: /kb/ELK/
+kb_tag: automation
+author:
+  name: Andrea Dainese
+  link: https://www.linkedin.com/in/adainese/
 ---
 In recent years network engineers turned from CLI jockeys into a hybrid between an application developer and a networking expert... what acronym-loving people call NetDevOps. In practice, a NetDevOps engineer should be able to:
 
