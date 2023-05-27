@@ -15,6 +15,7 @@ Usage:
 
   blog fix    - fix a blog post
   blog new    - new blog post
+  blog kb     - KB article management
   blog migrate- migrate an old HTML blog post into Markdown
   blog sertag - applies series tag to a Markdown blog post
   blog draft  - new draft
@@ -153,6 +154,10 @@ case "$1" in
     blog_edit_post "$BLOG_FILE"
     blog_start_hugo
     open "http://localhost:1313/`blog_md_to_html $BLOG_FILE`"
+    ;;
+  kb)
+    shift
+    $BLOG_HOME/tools/kb-actions.py $@
     ;;
   search)
     if [ -z "$3" ]; then
