@@ -52,7 +52,7 @@ I also decided to clean up, update and repost some of them on ipSpace.net.
 * [Enhance the IOS User Interface](https://learning.nil.com/tips-and-tricks/technical-articles/show/enhance-the-ios-user-interface/)
 * [Cisco Router: the Swiss Army Knife of Network Services](https://learning.nil.com/tips-and-tricks/technical-articles/show/cisco-router-the-swiss-army-knife-of-network-services/)
 * [Secure Time Management](https://learning.nil.com/tips-and-tricks/technical-articles/show/secure-time-management/)
-* [It's Good to be on Time](https://learning.nil.com/tips-and-tricks/technical-articles/show/its-good-to-be-on-time/)
+* [Network Time Protocol (NTP) In a Nutshell](NTP/)
 
 {{<note info>}}You might also want to check out our [Networking Fundamentals](https://www.ipspace.net/Fundamentals) and [Internetworking](https://www.ipspace.net/Inet) webinars, in particular the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar.{{</note>}}
 

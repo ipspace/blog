@@ -1,9 +1,0 @@
----
-url: /2007/10/log-ntp-events.html
-title: "Log the NTP events"
-date: "2007-10-03T06:51:00.000+02:00"
-tags: [ NTP ]
----
-
-I almost started writing an EEM applet that would detect and log the changes in router's system time caused by NTP synchronizations, but then I've decided to check the IOS documentation first ... and found the <strong><a href="http://www.cisco.com/en/US/products/sw/iosswrel/ps5187/products_command_reference_chapter09186a008017d034.html#wp1059331">ntp logging</a></strong> command available from IOS release 12.3(7)T.<!--more-->For example, if you configure ...<pre class="code">rtr(config)#<strong>ntp logging</strong><br/>rtr(config)#<strong>ntp server 172.16.0.12</strong></pre>... the router will generate the following syslog messages when it synchronizes its time with the NTP server:<blockquote class="code">%NTP-6-RESTART: NTP process starts<br/>%SYS-6-CLOCKUPDATE: System clock has been updated from 17:06:03 UTC Fri Mar 30 2007 to 17:04:07 UTC Fri Mar 30 2007, configured from NTP by 172.16.0.12.<br/>%NTP-5-PEERSYNC: NTP synced to peer 172.16.0.12</blockquote>
-
