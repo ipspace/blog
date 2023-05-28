@@ -43,14 +43,38 @@ def build_fm(fname: str) -> dict:
   fm['url'] = path_chunks[1] + '/' + fname
   return fm
 
-def kb_next(args: argparse.Namespace) -> None:
-  fname = input('Page name without extension: ')
-  fm = build_fm(fname+'.html')
+def kb_page_settings(fm: dict) -> None:
   fm['title'] = input('Page title: ')
   if 'y' in input('Any printouts in the page? [y/n]').lower():
     fm['pre_scroll'] = True
 
+def kb_next(args: argparse.Namespace) -> None:
+  fname = input('Page name without extension: ')
+  fm = build_fm(fname+'.html')
+  kb_page_settings(fm)
   create_doc(fname+'.md',fm,'')
+
+def kb_first(args: argparse.Namespace) -> None:
+  fname = input('Page name without extension [00-intro]: ') or '00-intro'
+  fm = build_fm('')
+  kb_page_settings(fm)
+  toc_title = input('TOC title (default: none): ')
+  if toc_title:
+    fm['toc_title'] = toc_title
+  idx_title = input('Index title (displayed on top page, default: none): ')
+  if idx_title:
+    fm['index_title'] = idx_title
+  create_doc(fname+'.md',fm,'')
+
+def kb_new(args: argparse.Namespace) -> None:
+  fname = input('Directory name: ')
+  if os.path.exists(fname):
+    print(f'{fname} already exists, you might want to use "kb first" within the directory. Aborting...')
+    return
+  
+  os.makedirs(fname)
+  os.chdir(fname)
+  kb_first(args)
 
 def main():
   args = parseCLI()
@@ -58,6 +82,10 @@ def main():
   VERBOSE = args.verbose
   if args.action == 'next':
     kb_next(args)
+    return
+  
+  if args.action == 'new':
+    kb_new(args)
     return
   
   error(f'Action {args.action} not implemented yet')

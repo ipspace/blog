@@ -10,7 +10,7 @@ tags: [ NTP ]
 ---
 The importance of having accurate time on distributed servers (and even personal workstations) has been recognized long time ago by the IT managers, but it hasn’t been applied consistently to the networking devices. In this article, I’ll describe the importance of time synchronization for networking devices, the basics of Network Time Protocol (NTP) that is commonly used to synchronize IP hosts and routers, how to use it on Cisco routers and IOS-based switches and how to implement it in a highly scalable way.
 <!--more-->
-{{<note info>}}This article was written in 2008, and has been cleaned up and republished on ipSpace.net in 2023.{{</note>}}
+{{<note migrated>}}This article was written in 2008, and has been cleaned up and republished on ipSpace.net in 2023.{{</note>}}
 
 ## The Need for Accurate Time
 
