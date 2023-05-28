@@ -3,7 +3,7 @@ title: "Path Failure Detection on Multi-Homed Servers"
 date: 2023-05-30 06:32:00
 tags: [ data center, switching ]
 ---
-**TL&DR:** Installing an Ethernet NIC with two uplinks in a server is easy[^2NIC]. Connecting those uplinks to two edge switches is common sense [^VMW]. Detecting physical link failure is trivial in Gigabit Ethernet world. Deciding between two independent uplinks or a link aggregation group is interesting. Detecting path failure and disabling the useless uplink that causes traffic blackholing is a living hell (more details in this [Design Clinic question](https://designclinic.ipspace.net/topic/dual-homing-hosts/)).
+**TL&DR:** Installing an Ethernet NIC with two uplinks in a server is easy[^2NIC]. Connecting those uplinks to two edge switches is common sense[^VMW]. Detecting physical link failure is trivial in Gigabit Ethernet world. Deciding between two independent uplinks or a link aggregation group is interesting. Detecting path failure and disabling the useless uplink that causes traffic blackholing is a living hell (more details in this [Design Clinic question](https://designclinic.ipspace.net/topic/dual-homing-hosts/)).
 
 [^2NIC]: Bonus points if you realized a NIC could fail and installed two NICs.
 
@@ -17,9 +17,9 @@ Imagine you have a server with two uplinks connected to two edge switches. You w
 
 [^SLB]: Skipping the load balancing can-of-worms for the moment.
 
-The most trivial scenario is a link failure. NIC detects the failure, reports it to the operating system kernel, the link is disabled, and all the outgoing traffic takes the other link.
+The most trivial scenario is a link failure. Ethernet Network Interface Card (NIC) detects the failure, reports it to the operating system kernel, the link is disabled, and all the outgoing traffic takes the other link.
 
-Next is a transceiver (or NIC or ASIC port) failure. The link is up, but the traffic sent over it is lost. Years ago, we used protocols like UDLD to detect unidirectional links. Gigabit Ethernet (and faster technologies) [include Link Fault Signalling ](https://blog.ipspace.net/2020/11/detecting-network-failure.html)that can detect failures between the transceivers. You need a control-plane protocol to detect failures beyond a cable and directly-attached components.
+Next is a transceiver (or NIC or switch ASIC port) failure. The link is up, but the traffic sent over it is lost. Years ago, we used protocols like [UDLD](https://blog.ipspace.net/2012/09/do-we-need-lacp-and-udld.html) to detect unidirectional links. Gigabit Ethernet (and faster technologies) [include Link Fault Signalling ](https://blog.ipspace.net/2020/11/detecting-network-failure.html)that can detect failures between the transceivers. You need a control-plane protocol to detect failures beyond a cable and directly-attached components.
 
 ### Detecting Failures with a Control-Plane Protocol
 
@@ -45,16 +45,18 @@ Now let's assume you got burned by MLAG[^DCMD], want to follow the vendor design
 
 Some switches have uplink tracking -- the switch shuts down all server-facing interfaces when it loses all uplinks -- but I'm not sure this functionality is widely available in data center switches. I already mentioned Cisco's lack of details, and Arista seems no better. All I found was a brief mention of the **uplink-failure-detection** keyword without further explanation.
 
-Maybe we could solve the problem on the server? VMware has beacon probing on ESX servers, but they don't believe in miracles in this case. You need at least three uplinks for beacon probing.
+Maybe we could solve the problem on the server? VMware has beacon probing on ESX servers, but they don't believe in miracles in this case. You need at least three uplinks for beacon probing. Not exactly useful if you have servers with two uplinks (and few people need more than two 100GE uplinks per server).
 
 Could we use the first-hop gateway as a witness node? Linux bonding driver supports ARP monitoring and sends periodic ARP requests to a specified destination IP address through all uplinks. Still, according to the engineer asking the Design Clinic question, that code isn't exactly bug-free.
 
+Finally, you could accept the risk -- if your leaf switches have  [four](https://blog.ipspace.net/2023/03/leaf-spine-theory-reality.html) ([or six](/2023/03/leaf-switches-four-uplinks.html)) uplinks, the chance of a leaf switch becoming isolated from the rest of the fabric is pretty low, so you might just give up and stop worrying about [byzantine failures](https://en.wikipedia.org/wiki/Byzantine_fault).
+
 ### BGP Is the Answer. What Was the Question?
 
-What's left? BGP, of course. You could install FRR on your Linux servers, run BGP with the adjacent switches and advertise the server's loopback IP address. To be honest, properly implemented RIP would also work, and I can't fathom why we couldn't get a decent host-to-network protocol in the last 40 years[^ESIS]. All we need is a protocol that:
+What's left? BGP, of course. You could install FRR on your Linux servers, run [BGP with the adjacent switches](https://blog.ipspace.net/2016/02/running-bgp-on-servers.html) and advertise the server's loopback IP address. To be honest, properly implemented RIP would also work, and I can't fathom why we couldn't get a decent host-to-network protocol in the last 40 years[^ESIS]. All we need is a protocol that:
 
 -   Allows a multi-homed host to advertise its addresses
--   Prevents route leaks that could cause servers to become routers[^IBM]. BGP does that automatically; we'd have to use hop count to filter RIP updates sent by the servers[^NHC].
+-   Prevents route leaks that could [cause servers to become routers](https://blog.ipspace.net/2016/09/why-would-i-use-bgp-and-not-ospf.html)[^IBM]. BGP does that automatically; we'd have to use hop count to filter RIP updates sent by the servers[^NHC].
 -   Bonus point: run that protocol over an unnumbered switch-to-server link.
 
 [^ESIS]: OSI had ES-IS protocol from day one. Did the IETF community [feel the urge to be different](https://blog.ipspace.net/2016/11/could-you-use-is-is-instead-of-bgp-for.html), or was everything OSI touched considered cooties?
