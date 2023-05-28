@@ -18,9 +18,17 @@
          "name": "Yauhen Viadzishchau",
          "pub": "2023-05-26T10:03:06",
          "type": "comment"
+      },
+      {
+         "date": "28 May 2023 05:43",
+         "html": "<p>Hi Ivan,</p>\n\n<p>Curious, \nIn actual production environments, if DHCP Server is outside your Fabric, then on Border/Service Leafs, then the DHCP Server route will be learned via an Edge Firewall (most typically).\nif DHCP Server is learned on Border Leaf,\nthis will be the Traffic flow :</p>\n\n<p>DHCP Server IP X.X.X.X------&gt;Outside-VRF-Red(VRF-lite of Border Leaf)-------F/W Outside Zone-------&gt;Firewall (Does Inter-VRF routing)---------&gt;Inside-VRF-Green (EVPN-IP-VRF of Border Leaf now)-----Border Leaf--------&gt;Type-5-L3-EVPN Route within IP-VRF Green-------&gt;Access Leaf VTEP VRF Green------DHCP Client Y.Y.Y.Y (DHCP client is part of  VRF Green)</p>\n\n<ol>\n<li>Curious in this entire DORA process and DHCP relaying, should the DHCP DORA messages ever be passing through a Firewall?</li>\n<li>If a Firewall has to definitely be in the path, will everything work hunky-dory the same way in the Inter-VRF DHCP Relaying, especially in EVPN DAG &amp; Option 82 case?</li>\n<li>What&#39;s Ivan&#39;s recommendation?</li>\n</ol>\n\n<p>thnx\nChinar</p>\n",
+         "id": "1833",
+         "name": "Chinar Trivedi",
+         "pub": "2023-05-28T17:43:15",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2023/05/dhcp-redundant-vrf-relay.html"
 }
