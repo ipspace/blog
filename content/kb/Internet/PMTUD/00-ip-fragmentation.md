@@ -8,7 +8,7 @@ url: /kb/Internet/PMTUD/
 ---
 I first encountered IP fragmentation issues in mid-1990s when people started deploying carelessly designed firewalls that blocked all Internet Control Messages Protocol (ICMP) traffic. One would hope that the situation would get better as network designers and operations engineers gained experience, but it’s constantly getting worse with the introduction of encapsulation techniques like PPP-over-Ethernet (PPPoE) used in DSL connections, IPSec-based encryption, IP-over-IP tunnels used to fix IP routing problems or implement topologies that some “service providers” cannot support, or a dozen IPv6-over-IPv4 or IPv4-over-IPv6 tunneling schemes. In this article, you’ll find the reasons behind IP fragmentation, the detailed description of how *Path MTU discovery* works and the various mechanisms you can use on Cisco routers to alleviate the IP fragmentation-related problems.
 
-{{<note info>}}This article was written in 2007, and has been updated and republished on ipSpace.net in 2019. IPv4 and IPv6-specific behavior is pointed out; whenever the article uses IP it means "IPv4 or IPv6".{{</note>}}
+{{<note migrated>}}This article was written in 2007, and has been updated and republished on ipSpace.net in 2019. IPv4 and IPv6-specific behavior is pointed out; whenever the article uses IP it means "IPv4 or IPv6".{{</note>}}
 
 ## MTU Basics
 
