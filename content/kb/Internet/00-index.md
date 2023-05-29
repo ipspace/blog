@@ -30,7 +30,7 @@ I also decided to clean up, update and repost some of them on ipSpace.net.
 ### Routing Protocol Details
 
 * [Changing the Routing Protocol in Your Network](https://learning.nil.com/tips-and-tricks/technical-articles/show/changing-the-routing-protocol-in-your-network/)
-* [Scaling EIGRP Networks with Stub Routers](https://learning.nil.com/tips-and-tricks/technical-articles/show/scaling-eigrp-networks-with-stub-routers/)
+* [Scaling EIGRP Networks with Stub Routers](EIGRP_stub/)
 * [The OSPF Default Mysteries](https://learning.nil.com/tips-and-tricks/technical-articles/show/the-ospf-default-mysteries/)
 * [When OSPF Becomes a Distance Vector Protocol](https://learning.nil.com/tips-and-tricks/technical-articles/show/when-ospf-becomes-a-distance-vector-protocol/)
 
