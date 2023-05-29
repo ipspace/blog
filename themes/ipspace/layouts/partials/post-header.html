@@ -9,7 +9,7 @@
 <header class='post__header'>
 {{ partial "post-timestamp.html" . }}
   <h2 class='post__title' itemprop='name headline'>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    <a href="{{ or .Params.redirect .Permalink }}">{{ .Title }}</a>
   </h2>
   {{ with .Params.subtitle }}
     <p class='subtitle'>{{ . }}</p>

@@ -13,9 +13,9 @@
         {{ .Content }}
       {{ end }}
     </div>
-    {{ if $truncated }}
-      <a class="post__read-more" href="{{ .RelPermalink }}">
-        read more
+    {{ if or $truncated .Params.redirect }}
+      <a class="post__read-more" href="{{ or .Params.redirect .RelPermalink }}">
+        {{ with .Params.redirect }}keep reading{{ else }}read more{{ end }}
         <svg class="post__arrow-icon">
           <use xlink:href="#arrow-right-orange" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
         </svg>
@@ -32,12 +32,14 @@
             see {{ . }} comments
         </a>
       {{ else }}
+        {{ if (not .Params.redirect) }}
         <a class="post__comment-link" href="{{ $plink }}#comments">
           <svg class="post__comments-icon">
             <use xlink:href="#icon-comments"></use>
           </svg>
             add comment
         </a>
+        {{ end }}
       {{ end }}
     {{ else }}
     {{ end }}
