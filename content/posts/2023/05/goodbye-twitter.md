@@ -3,9 +3,9 @@ title: "Goodbye Twitter. It Was Fun While It Lasted"
 date: 2023-05-29 06:34:00
 tags: [ worth reading ]
 ---
-I joined Twitter in October 2008 (after noticing everyone else was using it during a Networking Field Day event), and eventually figured out how to automate posting the links to my blog posts in case someone uses Twitter as their primary source of news.
+I joined Twitter in October 2008 (after noticing everyone else was using it during a Networking Field Day event), and eventually figured out how to automate posting the links to my blog posts in case someone uses Twitter as their primary source of news -- an IFTTT applet that read my RSS feed and posted links to new entries to Twitter.
 
-This week, I got a nice email from IFTTT (the solution I used) telling me they had to disable the post-to-Twitter applet. Twitter started charging for the API, and I was using their free service -- obviously the math didn't work out.
+This week, I got a nice email from IFTTT telling me they had to disable the post-to-Twitter applet. Twitter started charging for the API, and I was using their free service -- obviously the math didn't work out.
 
 That left me with three options:
 <!--more-->
