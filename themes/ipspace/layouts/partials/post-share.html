@@ -1,5 +1,5 @@
 <div class='post__share-links'>
-  {{ $url :=  (or (.Params.redirect|absURL) .Permalink)|safeURL }}
+  {{ $url :=  (or .Params.redirect .Permalink)|absURL }}
   {{ $title := (printf "%s by @ioshints" .Title)|safeURL }}
   {{ $tweet := printf "https://twitter.com/intent/tweet?text=%s&url=%s" $title $url }}
   <a class='post__share-link' href='{{ $tweet }}' target='_blank' title='Share to Twitter'>
