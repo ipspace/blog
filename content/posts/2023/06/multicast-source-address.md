@@ -42,12 +42,23 @@ For regular communication, using 0.0.0.0 as the source IP address is not appropr
 
 ---
 
-The only thing it missed is the unicast Reverse Path Forwarding check (uRPF) -- when deciding where to forward a multicast packet, an IP router will never send it onto the interfaces that can be used to reach the sender, thus breaking forwarding loops more effectively than blocking the links[^MU]. I never thought about that, but it looks like using an invalid source IP address could result in a forwarding storm (until the TTL expires).
+The only thing it missed is the Reverse Path Forwarding (RPF) check -- when deciding where to forward a multicast packet, an IP router will never send it onto the interfaces that can be used to reach the sender, thus breaking forwarding loops more effectively than blocking the links[^MU]. An IP router will also drop incoming multicast packets if the source IP address of the incoming packet cannot be reached through the incoming interface.
+
+The RPF check effectively blocks the propagation of IP multicast packets with the source IP address set to 0.0.0.0 beyond the first router[^DR], which might explain why an overly smart developer might have decided to use them when trying to solve the "_how do we make sure this stuff never escapes into the wild_" challenge instead of figuring out how to use MAC-level multicasts[^DN].
 
 [^MU]: At least that's my vague understanding of how IP multicast forwarding works based on the few times I had to cram just enough multicast information into my overloaded brains to pass the CCIE recertification exam.
+
+[^DR]: Unless (A) the default route points to the incoming interface and (B) the packet forwarding code in the router does not come to the conclusion that the sender is intoxicated and should be ignored.
+
+[^DN]: The correct way sane people solved this challenge since early 1980s.
 
 Anyway, one has to wonder what makes people ask such weird questions. In this case, my reader noticed a network device sending multicast packets with all-zeroes source IP address as a heartbeat between cluster members. With that information, it wasn't hard to find a potential culprit, for example the [Checkpoint firewalls](https://community.checkpoint.com/t5/Security-Gateways/CCP-packets-sent-to-network-address-instead-of-broadcast-address/td-p/65793).
 
 I used the following image in a blog post in 2015. Unfortunately it's equally appropriate almost a decade later. Some stupidities never change.
 
 {{<figure src="/2015/11/s500-Enough+of+this+shit.jpg">}}
+
+### Revision History
+
+2023-06-01
+: Rewrote the _impact of RPF check_ part of the blog post based on the [feedback from Erik Auerswald](https://blog.ipspace.net/2023/06/multicast-source-address.html#1851).
