@@ -12,10 +12,10 @@ Excessive AS-path prepending (more than five or six copies of the same AS in the
 **Solution**: Use the following statement in an AS-path access list to block all AS-paths where the same AS number appears more than five times consecutively (change the number of *\1* expressions to tailor the filter to your needs).
 
 ```
-ip as-path access-list 100 deny *([0-9]+)*\1_\1_\1_\1_<
+ip as-path access-list 100 deny _([0-9]+)_\1_\1_\1_\1_
 ```
 
-**Short explanation**: **\\1** Cisco IOS regular expression pattern allows you to match a previously matched string. This pattern can be used to match prepended AS-paths.
+**Short explanation**: **\\1** is a Cisco IOS regular expression pattern that allows you to match a previously matched string. This pattern can be used to match prepended AS-paths.
 
 ## Detailed Description
 
@@ -27,7 +27,7 @@ The following features of Cisco IOS regular expressions were used in this soluti
 -   The **\_(\[0-9\]+)\_** pattern matches a complete number and saves it for further reference.
 -   The **\\1** pattern matches a previously saved match.
 
-The regular expression **\_(\[0-9\]+)\_\\1\_\\1\_\\1\_\\1\_ **therefore matches any AS path where a single AS number appears five or more times in a sequence.
+The regular expression **\_(\[0-9\]+)\_\\1\_\\1\_\\1\_\\1\_** therefore matches any AS path where a single AS number appears five or more times in a sequence.
 
 ## Test Bed
 
