@@ -24,7 +24,7 @@ The results of such a simplistic configuration are too well-known[^OPS]: the cus
 
 [^OPS]: To people running BGP in production networks
 
-I replicated that setup in a netlab lab using the following topology:
+I replicated that setup in a [netlab](https://netlab.tools/) lab using the following topology:
 
 {{<figure src="/2023/06/ebgp-policy.png" caption="Lab topology">}}  
 
@@ -72,7 +72,7 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
  * >      10.0.0.3/32            10.1.0.1              0       -          100     0       65100 65002 i
 ```
 
-Next, I changed the customer router to FRR using *[traditional defaults](https://docs.frrouting.org/en/latest/basic.html#configuration-versioning-profiles-and-upgrade-behavior)*. I used a custom configuration template because the *netlab* FRR BGP configuration template configures too many parameters to make default behavior consistent across a [wide range of supported devices](https://netlab.tools/platforms.html).
+Next, I changed the customer router to FRR using *[traditional defaults](https://docs.frrouting.org/en/latest/basic.html#configuration-versioning-profiles-and-upgrade-behavior)*. I had to use a custom configuration template because the newer FRR versions ship with *datacenter* defaults.
 
 The custom configuration template configured the traditional defaults, removed the BGP routing process (things get weird if you change the defaults after you've already configured BGP), and recreated the BGP configuration:
 
@@ -186,13 +186,13 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
  * >      10.0.0.2/32            -                     -       -          -       0       i
 ```
 
-Obviously, you could use similar configuration commands on Arista EOS and get the same results. Still, you're *not forced to do so*, which brings us to the obvious question: which vendors support RFC8212?
+Obviously, you could use similar configuration commands on Arista EOS and get the same results. Still, you're *not forced to do so* (but then FRR changed its default behavior away from RFC8212 in recent release as well), which brings us to the obvious question: which vendors support RFC8212 with the default settings?
 
 The easiest way to find the answer is to look up Job Snijders' [RFC 8212 compliance tracking GitHub repository](https://github.com/bgp/RFC8212): the only commercial implementations compliant with RFC 8212 out-of-the-box are Cisco IOS XR and Nokia SR OS/SR Linux. You can configure Arista EOS, Cisco IOS XE, and Junos to be RFC8212-compliant, but that's not their default behavior, An end-customer deploying BGP on Cisco IOS XE or Junos router for the first time would still be able to unknowingly leak routes between upstream ISPs.
 
 There are at least three reasons I can see for the vendor reluctance to implement RFC 8212:
 
--   RFC8212 compliance totally destroys the "*using EBGP as a better IGP is simple"* myth. That's why FRR uses *traditional* and *datacenter* profiles.
+-   RFC8212 compliance totally destroys the "*using EBGP as a better IGP is simple"* myth. That's why FRR uses *traditional* and *datacenter* profiles with *datacenter* profile being the default.
 -   Support costs. Changing the default behavior results in customers opening support cases when the 20-year-old cheatsheet they got as the first Google hit doesn't work.
 -   Backward compatibility. Upgrading the software would break some networks. Vendors were dealing with the same problem in the past (for example: migrating to BGP address families on Cisco IOS), so it's not like the solution is a great unknown. Of course, it takes some effort to implement and document it.
 
