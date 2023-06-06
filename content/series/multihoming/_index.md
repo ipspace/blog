@@ -21,7 +21,7 @@ Unfortunately, those tricks don't work very well with IPv6:
 
 {{<series-listing tag="ipv6">}}
 
-Site multihoming is just part of the whole story. In some scenarios we all need multiple connections between servers and the network (see also: [Redundant Server-to-Network Connectivity](https://www.ipspace.net/Redundant_Server-to-Network_Connectivity)).
+Site multihoming is just part of the whole story. In some scenarios we need multiple connections between servers and the network (see also: [Redundant Server-to-Network Connectivity](https://www.ipspace.net/Redundant_Server-to-Network_Connectivity)).
 
 {{<series-listing tag="server">}}
 
