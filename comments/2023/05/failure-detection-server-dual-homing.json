@@ -33,6 +33,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "06 June 2023 08:25",
+               "html": "<p>A few other tricks (I guess I&#39;ll have to write a follow-up blog post one of these days):</p>\n\n<ul>\n<li>Assign the same IP address to the loopback and all uplinks. Obviously that makes running BGP sessions a bit harder, so you have to run them over IPv6 LLA</li>\n<li>Don&#39;t care about the outbound sessions (too much)</li>\n<li>Use MP-TCP for outbound sessions</li>\n<li>Use MPIO for iSCSI</li>\n</ul>\n",
+               "id": "1856",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-06-06T20:25:04",
+               "ref": "1855",
+               "type": "comment"
+            }
+         ],
          "date": "06 June 2023 07:19",
          "html": "<p>The routed way is definitely good, at the cost perhaps of some complexity you <em>see</em>.</p>\n\n<p>One annoyance is what IP address gets used by default by the system for outbound traffic.  It would be nice to have a generic OS-level way to say &quot;this IP on lo0 should be default for outbound IP traffic unless to the connected link subnet itself&quot;.</p>\n\n<p>Obviously some software allows you to specify the source IP to use, but again more complexity in config.  And some doesn&#39;t.  I&#39;ve solved it before with an iptables/nft SNAT rule for everything not on the connected subnet, but again it&#39;s messier than one would like.  </p>\n",
          "id": "1855",

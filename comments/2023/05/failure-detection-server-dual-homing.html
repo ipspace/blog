@@ -102,6 +102,40 @@ Obviously, now we&#39;re not in enterprise IT virtualisation territory anymore (
 
 <p>Obviously some software allows you to specify the source IP to use, but again more complexity in config.  And some doesn&#39;t.  I&#39;ve solved it before with an iptables/nft SNAT rule for everything not on the connected subnet, but again it&#39;s messier than one would like.  </p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1856">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1856" href="#1856">06 June 2023 08:25</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>A few other tricks (I guess I&#39;ll have to write a follow-up blog post one of these days):</p>
+
+<ul>
+<li>Assign the same IP address to the loopback and all uplinks. Obviously that makes running BGP sessions a bit harder, so you have to run them over IPv6 LLA</li>
+<li>Don&#39;t care about the outbound sessions (too much)</li>
+<li>Use MP-TCP for outbound sessions</li>
+<li>Use MPIO for iSCSI</li>
+</ul>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
