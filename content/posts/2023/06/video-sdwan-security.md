@@ -1,0 +1,16 @@
+---
+date: 2023-06-09 06:32:00
+tags:
+- SD-WAN
+- video
+title: 'Video: SD-WAN Security'
+series_title: Security Aspects of SD-WAN
+sd-wan_tag: "101"
+---
+After discussing the [backend](/2023/03/video-sdwan-backend-architecture.html) and [CPE](https://blog.ipspace.net/2023/04/video-sdwan-cpe-architecture.html) architecture in a typical SD-WAN solution in the [SD-WAN Overview](https://www.ipspace.net/SD-WAN_Overview) webinar, [Pradosh Mohapatra](https://www.ipspace.net/Author:Pradosh_Mohapatra) [mentioned a few SD-WAN security aspects](https://my.ipspace.net/bin/get/SDWAN/5%20-%20Security.mp4?doccode=SDWAN), focusing on typical attack vectors and the usual mitigations.
+
+{{<jump>}}
+[Watch the video](https://my.ipspace.net/bin/get/SDWAN/5%20-%20Security.mp4?doccode=SDWAN)
+{{</jump>}}
+
+{{<note info>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch videos in this webinar.{{</note>}}
