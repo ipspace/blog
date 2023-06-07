@@ -1,6 +1,7 @@
 ---
 title: "Default EBGP Policy (RFC 8212)"
 date: 2023-06-05 07:09:00
+lastmod: 2023-06-07 05:04:00
 tags: [ BGP, netlab ]
 netlab_tag: use
 pre_scroll: True
@@ -135,7 +136,7 @@ Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down Sta
 Total number of neighbors 2
 ```  
 
-FRR documentation isn't as extensive as what I'm used to. For example, the [description of **show bgp summary** printout](https://docs.frrouting.org/en/latest/bgp.html#displaying-bgp-information) contains no mention of the **(Policy)** value. I have no idea how someone unfamiliar with FRR would figure out what's going on; I already knew that FRR implements [RFC 8212](https://www.rfc-editor.org/rfc/rfc8212), a wonderful RFC that would stop most fat-finger leaks once implemented by major vendors.
+FRR documentation describing the [**show bgp summary** printout](https://docs.frrouting.org/en/latest/bgp.html#clicmd-show-ip-bgp-all-summary-wide-json) clears any potential doubts and includes a link to the [**bgp ebgp-requires-policy** configuration command](https://docs.frrouting.org/en/latest/bgp.html#bgp-requires-policy) that describes FRR implementation of [RFC 8212](https://www.rfc-editor.org/rfc/rfc8212), a wonderful RFC that would stop most fat-finger leaks once implemented by major vendors.
 
 RFC 8212 makes two small changes to the BGP route selection process:
 
@@ -199,3 +200,10 @@ There are at least three reasons I can see for the vendor reluctance to implemen
 And that's why we still see tons of customer route leaks more than half a decade after RFC 8212 was published. 
 
 You'll find more BGP route leak horror stories in the Internet Routing Security part of the [Network Security Fallacies](https://my.ipspace.net/bin/list?id=Net101#NETSEC) section of the [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar. For a deep dive, watch the [Internet Routing Security](https://www.ipspace.net/Internet_Routing_Security) webinar.
+
+### Revision History
+
+2023-06-07
+: In the initial version of this blog post, I complained how hard it might be for a newcomer to figure out why FRR doesn't want to exchange routes with EBGP neighbors. A day later, [Donatas Abraitis](https://www.linkedin.com/in/ton31337/) fixed the documentation (THANK YOU!!!), and the fix appeared in the official online FRR documentation less than 48 hours after I published the blog post. One has to love the agility of open-source development ;)
+
+
