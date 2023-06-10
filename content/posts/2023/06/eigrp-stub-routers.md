@@ -1,6 +1,6 @@
 ---
 title: "EIGRP Stub Routers"
-date: 2023-06-13 06:05:00
+date: 2023-06-14 06:05:00
 tags: [ ]
 redirect: /kb/Internet/EIGRP_stub
 ---
