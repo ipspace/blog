@@ -1,6 +1,6 @@
 ---
 title: "Using VXLAN and EVPN to Build a WAN Network"
-date: 2023-06-15 13:21:00
+date: 2023-06-30 13:21:00
 tags: [ EVPN, VXLAN, WAN, design ]
 draft: True
 ---

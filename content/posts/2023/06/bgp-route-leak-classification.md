@@ -1,6 +1,6 @@
 ---
 title: "Classification of BGP Route Leaks (RFC 7908)"
-date: 2023-06-12 06:13:00
+date: 2023-06-13 06:13:00
 tags: [ BGP, security ]
 ---
 While preparing the *[Internet Routing Security](https://www.ipspace.net/Internet_Routing_Security)* webinar, I stumbled upon [RFC 7908](https://www.rfc-editor.org/rfc/rfc7908.html), containing an excellent taxonomy of BGP route leaks. I never checked whether it covers every possible scenario[^EPS], but I found it a handy resource when organizing my thoughts.
