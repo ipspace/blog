@@ -1,6 +1,7 @@
 ---
 title: "State of LDPv6 and 6PE"
 date: 2023-01-12 07:11:00
+lastmod: 2023-06-13 16:00:00
 tags: [ IPv6, MPLS, segment routing ]
 ---
 One of my readers successfully deployed LDPv6 in their production network:
@@ -29,3 +30,18 @@ Finally, if you need an excuse to [burn way too much money replacing still-worki
 [^SRA]: Or however we should write that combo of acronyms
 
 [^SRS]: According to _netlab_ SR-MPLS implementations, Arista EOS, Junos, Nokia SR Linux and Nokia SR OS support IPv6 SID while Cisco IOS XE does not.
+
+### Update: June 2023
+
+Mark Tinka, the author of the [LDPv6 in the Real World](https://2021.internetsummit.africa/images/ais20-slides/14-sept/9-ais20-ldpv6-realworld.pdf) presentation sent me a brief update on the state of LDPv6 in Cisco gear:
+
+> We have been running LDPv6 since 2019, and while we had initial issues with varying levels of interoperability between Junos and IOS XR back then, everything has been smoothed out and it's all working nicely and stably.
+>
+> Sadly, IOS XE still has no support, while IOS XR does. Cisco have no interest in adding support to IOS XE, for obvious reasons. In fact, they aren't even suggesting SR-MPLS or 6PE as an option, but rather SRv6. What's worse, on IOS XE platforms where Cisco support SR-MPLS, they don't support it for IPv6 signaling in the IGP.
+
+For whatever unfathomable reason, the product mix in their network shifted heavily toward Juniper. Who would have thought...
+
+### Revision History
+
+2023-06-13
+: Added an update on the lack of LDPv6 in Cisco IOS XE
