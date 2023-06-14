@@ -1,6 +1,6 @@
 ---
 title: "Exercise: Fix BGP Route Leaks"
-date: 2023-06-15 06:33:00
+date: 2023-06-19 06:33:00
 tags: [ netlab, BGP ]
 netlab_tag: use
 ---

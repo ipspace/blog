@@ -1,6 +1,6 @@
 ---
 title: "Use FRR to Learn Routing Protocol Fundamentals"
-date: 2023-06-19 06:42:00
+date: 2023-06-29 06:42:00
 tags: [ BGP, netlab ]
 netlab_tag: use
 draft: True

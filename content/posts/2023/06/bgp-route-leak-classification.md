@@ -1,6 +1,7 @@
 ---
 title: "Classification of BGP Route Leaks (RFC 7908)"
 date: 2023-06-13 06:13:00
+lastmod: 2023-06-14 17:08:00
 tags: [ BGP, security ]
 ---
 While preparing the *[Internet Routing Security](https://www.ipspace.net/Internet_Routing_Security)* webinar, I stumbled upon [RFC 7908](https://www.rfc-editor.org/rfc/rfc7908.html), containing an excellent taxonomy of BGP route leaks. I never checked whether it covers every possible scenario[^EPS], but I found it a handy resource when organizing my thoughts.
@@ -30,12 +31,19 @@ Lack of routing policies (= filters) on EBGP sessions usually cause the abovemen
 **Prefix re-origination**: an autonomous system advertises third-party prefixes as belonging to itself:
 
 -   When someone leaks hundreds of thousands of prefixes, we're probably dealing with a [two-way redistribution gone wrong](https://blog.ipspace.net/2020/10/redistributing-bgp-into-ospf.html).
--   Dozens or hundreds of more-specific prefixes from different autonomous systems? Probably a gift from a [friendly BGP optimizer running with insecure default settings](https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/).
+-   Dozens or hundreds of more-specific prefixes from different autonomous systems? Probably a gift from someone carelessly playing with prefix deaggregation.
 -   Just a few prefixes? "Temporary" static routes redistributed into BGP or a malicious hijack.
+
+Please note that since the RFC 7908 was published we encountered another type of **prefix deaggregation leak** in the wild: [a BGP optimizer running with insecure default settings](https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/) advertises more-specific prefixes with unmodified AS-path.
 
 Finally, there's the **accidental leak of internal-** or **more-specific prefixes**, usually resulting from a missing route map in an IGP-to-BGP redistribution point. We're probably dealing with this type of leak when someone[^AM] [announces an additional 20.000 routes and revokes them a few minutes later](https://www.bgpmon.net/what-caused-todays-internet-hiccup/). Bonus points for style[^OBS] if those routes bring the [size of the global BGP table over a hardware limit of core Internet routers](https://labs.apnic.net/index.php/2014/09/30/whats-so-special-about-512/).
 
 In the next blog posts in this series we'll discuss individual leak types and tools you can use to avoid them. In the meantime, read [RFC 7908](https://www.rfc-editor.org/rfc/rfc7908.html) and watch the *[Internet Routing Security](https://www.ipspace.net/Internet_Routing_Security)* webinar.
+
+### Revision History
+
+2023-06-14
+: As pointed out by [Doug Madory](https://www.linkedin.com/in/dougmadory/) in a [LinkedIn comment](https://www.linkedin.com/feed/update/urn:li:activity:7074447878680653824/): The _Allegheny Technologies_ leak was not *prefix re-origination* as the BGP optimizer causing the leak created more-specific prefixes with unmodified AS-path. Added another paragraph specifically pointing out this type of leak.
 
 [^AM]: hint: a service provider already mentioned in this blog post.
 
