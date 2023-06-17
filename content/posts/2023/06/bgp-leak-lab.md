@@ -31,9 +31,13 @@ While you can use the lab with any [supported device](https://netlab.tools/platf
 I did not configure any BGP route filters, so you'll get tons of "simple" route leaks from customers and peers, giving you plenty of opportunity to figure out how to stop them. On top of that:
 
 * One of the customers announces way too many prefixes (a customer shall not advertise more than two prefixes)
+* Another customer is advertising an internal prefix from the 10.0.0.0/8 block
+* The third customers is advertising a prefix that belongs to an ISP (you'll notice the same prefix is advertised as belonging to two different autonomous systems).
 * An ISP is advertising a /25 prefix that should not be propagated in the global Internet
-* Another ISP is advertising an internal prefix from the 10.0.0.0/8 block
-* One of the customers is advertising a prefix that belongs to an ISP (you'll notice the same prefix is advertised as belonging to two different autonomous systems).
+
+Fix the lab routing with BGP filters, do not change the route advertisements.
+
+### Running the Lab
 
 The optimal way to run the lab is with Linux containers:
 
