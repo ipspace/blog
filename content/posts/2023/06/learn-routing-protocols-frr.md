@@ -12,7 +12,7 @@ An anonymous commenter [asked this highly relevant question](https://blog.ipspac
 
 Now for the more precise answer (aka "*it depends*").
 <!--more-->
-The lab has nine routers. Each device needs between 256KB (Mikrotik) and 8GB (Cisco IOS XR) if you run them as virtual machines[^MD]. Add 2 GB for the host operating system and the virtualization environment[^LT], and we're quickly getting into the 8GB -- 16 GB ballpark. Also, you should expect every network device to use at least half a CPU core[^ST].
+The lab has nine routers. Each device needs between 256MB (Mikrotik) and 8GB (Cisco IOS XR) if you run them as virtual machines[^MD]. Add 2 GB for the host operating system and the virtualization environment[^LT], and we're quickly getting into the 8GB -- 16 GB ballpark. Also, you should expect every network device to use at least half a CPU core[^ST].
 
 [^MD]: For more details, check out the *netlab* [Supported Platforms](https://netlab.tools/platforms/) page.
 
