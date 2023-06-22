@@ -3,7 +3,7 @@ title: "Routing Protocols: Use the Best Tool for the Job"
 date: 2021-06-03 07:00:00
 tags: [ IP routing, networking fundamentals ]
 ---
-When I wrote about my [sample katacoda hands-on lab on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:6793903667410964480/) (mentioning how easy it is to set up an OSPF+BGP network), someone couldn't resist asking:
+When I wrote about my sample OSPF+BGP hands-on lab on LinkedIn, someone couldn't resist asking:
 
 > I’m still wondering why people use two routing protocols and do not have clean redistribution points or tunnels.
 
