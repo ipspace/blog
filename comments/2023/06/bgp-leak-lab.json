@@ -18,9 +18,17 @@
          "name": "Anonymous",
          "pub": "2023-06-19T19:23:54",
          "type": "comment"
+      },
+      {
+         "date": "25 June 2023 07:16",
+         "html": "<p>looks easy.\nJust do what is done in real world and everything will be fine:</p>\n\n<ol>\n<li>on links from ISP to customers (and from trans to ISPs) - put bgp ingress filters, accepts only asset/prefixes related to particular customer.</li>\n<li>on ISP side - put higher pref to customers and lower pref to upstreams like this:\ncustomer pref &gt; peering pref &gt; upstream pref\nisp - isp link is peering link\ntransit - transit link is peering link\ncust - isp is upstream/downstream\nisp - transit is upstream/downstream</li>\n</ol>\n\n<p>So a few filter policies and correct local-preference will &quot;simulate&quot; real life ISP behavior.\nOf course, you didn&#39;t provide any RIPE-like database to determine peering or upstream/downstream relationships.</p>\n",
+         "id": "1866",
+         "name": " anonymous",
+         "pub": "2023-06-25T19:16:57",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2023/06/bgp-leak-lab.html"
 }
