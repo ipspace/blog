@@ -14,8 +14,6 @@ BGP route reflectors have been supported in Cisco IOS well before I started to d
 Route reflector is an IBGP feature that allows you to build scalable IBGP networks. The original BGP protocol (RFC 1771) contained no intra-AS loop prevention mechanism; routers were therefore prohibited from sending routes received from an IBGP peer to another IBGP peer, requiring a full-mesh of IBGP sessions between all BGP routers within an AS.
 
 <!--more-->
-{{<ct3_rescue>}}
-
 The next revision of the BGP standard ([RFC 4271](https://tools.ietf.org/html/rfc4271)) already included references to the BGP Route Reflector functionality defined in [RFC4456](https://tools.ietf.org/html/rfc4271) and augmented in [RFC7606](https://tools.ietf.org/html/rfc7606). RFC 4271 defines a new attribute (*cluster list*) which can detect route propagation loops within an AS, allowing us to build any IBGP topology we wish as long as we follow a few simple rules.
 
 ### Route Reflector Rules
@@ -134,7 +132,7 @@ With the improved IBGP loop avoidance, you could use more relaxed designs, rangi
 
 ### Cluster-ID is Obsolete
 
-Cisco IOS implementation of route reflector functionality supports the **bgp** **cluster-id** parameter, which is used in the *Cluster list* attribute instead of the *Router ID*. The **cluster-id** parameter is useful in redundant route reflector scenarios where multiple route reflectors serve the same set of clients, but can lead to partial connectivity when multiple IBGP sessions are disrupted.
+Cisco IOS implementation of route reflector functionality supports the **bgp** **cluster-id** parameter, which is used in the *Cluster list* attribute instead of the *Router ID*. The **cluster-id** parameter is useful in redundant route reflector scenarios where multiple route reflectors serve the same set of clients, but can lead to partial connectivity when multiple IBGP sessions are disrupted ([more details](https://blog.ipspace.net/2022/02/bgp-rr-cluster-myths.html)).
 
 {{<figure src="BGP_RR_Cluster.png" caption="Cluster of redundant BGP route reflectors">}}
 
@@ -143,6 +141,7 @@ The revised BGP route selection rules ensure that a route reflector in a cluster
 ### Further Reading
 
 * [Can BGP Route Reflectors Really Generate Forwarding Loops?](https://blog.ipspace.net/2013/10/can-bgp-route-reflectors-really.html)
+* [Mixed Feelings about BGP Route Reflector Cluster ID](https://blog.ipspace.net/2022/02/bgp-rr-cluster-myths.html)
 * [BGP Route Reflector update groups (technical details)](https://blog.ipspace.net/2009/04/bgp-route-reflector-update-groups.html)
 * [BGP next hop processing](https://blog.ipspace.net/2011/08/bgp-next-hop-processing.html)
 * [Can We Trust BGP Next Hops (Part 2)?](https://blog.ipspace.net/2020/04/can-we-trust-bgp-next-hops-part-2.html)
