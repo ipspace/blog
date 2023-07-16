@@ -54,6 +54,8 @@ Finally, a few real-life uses of large language models:
 * [An Exploration of Embeddings and Vector Databases](http://toonk.io/diving-into-ai-an-exploration-of-embeddings-and-vector-databases/)
 * [How GPT and LLMs will affect documentation](https://built.fm/p/how-gpt-and-llms-will-affect-documentation)
 * [I Built an AWS Well-Architected Chatbot with ChatGPT](https://www.buildon.aws/posts/well-arch-chatbot)
+* [Building Boba AI](https://martinfowler.com/articles/building-boba.html) -- how to build a custom user interface in front of a large language model.
+* [Using Langchain](http://networkstatic.net/chatgpt-project-docs/) to interact with ChatGPT
 
 <!--
 Expert Beginners: https://twitter.com/ioshints/status/1639897544485400576
@@ -62,8 +64,6 @@ Better than mediocrities: https://twitter.com/ayourtch/status/164008743357527654
 -->
 <!--
 Finally, a few tools:
-
-Langchain: http://networkstatic.net/chatgpt-project-docs/
 
 https://stability.ai/blog/stability-ai-launches-the-first-of-its-stablelm-suite-of-language-models
 -->
