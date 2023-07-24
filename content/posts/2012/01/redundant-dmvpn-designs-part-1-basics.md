@@ -1,12 +1,13 @@
 ---
 date: 2012-01-17 07:03:00+01:00
+dmvpn_tag: design
 tags:
 - DMVPN
 - OSPF
 title: Redundant DMVPN designs, Part 1 (The Basics)
 url: /2012/01/redundant-dmvpn-designs-part-1-basics.html
 ---
-Most of the DMVPN-related questions I get are a variant of the "*how many tunnels/hubs/interfaces/areas do I need for a redundant DMVPN design?*" As always, the right answer is "it depends" (and I can always [help you with your design](http://www.ipspace.net/ExpertExpress) if you'd like to get a second opinion), but here's what I've learned so far.
+Most of the DMVPN-related questions I get are a variant of the "*how many tunnels/hubs/interfaces/areas do I need for a redundant DMVPN design?*" As always, the right answer is "_it depends_", but here's what I've learned so far.
 
 ### Single router/single uplink on spoke site
 
@@ -14,7 +15,7 @@ This blog post focuses on the simplest possible design -- each spoke site has a 
 
 You'd probably want to have two hub routers (preferably with independent uplinks), which brings us to the fundamental question: "*do we need one or two DMVPN clouds?*"
 <!--more-->
-#### Design\#1 -- one hub per DMVPN tunnel
+### Design\#1 -- One Hub per DMVPN Tunnel
 
 In this design, each hub router controls its own DMVPN subnet, and spoke routers have multiple tunnel interfaces (one per hub). Each hub router is the NHRP server for the subnet it controls, and propagates routing information between spokes.
 
@@ -33,7 +34,7 @@ And now for the drawbacks:
 -   GRE keys are mandatory in Phase 2 deployments (otherwise the spokes cannot decipher which tunnel the other spoke router was using), causing performance degradation if the hub routers don't support GRE keys in hardware (Catalyst 6500 doesn't)
 -   This design does not work with large-scale Phase 3 DMVPNs where you want each spoke to connect to a subset of hubs (you cannot establish Phase 2/3 shortcuts across DMVPN tunnels, only within a tunnel).
 
-#### Design\#2 -- multiple hubs in a single DMVPN tunnel
+### Design\#2 -- Multiple Hubs in a Single DMVPN Tunnel
 
 In this design, you connect all hub routers to the same DMVPN tunnel. All hub routers act as NHRP servers, and propagate routing information between the spokes (if you [use OSPF, one of the hub routers would become a DR, another one a BDR](https://blog.ipspace.net/2011/01/configuring-ospf-in-phase-2-dmvpn.html)).
 

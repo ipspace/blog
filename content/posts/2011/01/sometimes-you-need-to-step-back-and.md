@@ -1,5 +1,6 @@
 ---
 date: 2011-01-13 10:04:00+01:00
+dmvpn_tag: design
 tags:
 - DMVPN
 - OSPF
@@ -22,7 +23,7 @@ All that seemed totally weird; finally we managed to step back and focus on the 
 
 Do the same for the backup spoke tunnel, this time using the DMVPN parameters for *backup* tunnel on the *far away* hub router.
 
-### Lessons learned
+### Lessons Learned
 
 The first problem I'm often encountering with very smart network engineers is the *CCIE mentality* (having nothing to do with actual engineers having that title, but with the way the lab exams are structured): they try to make the implementation work with existing broken design, no matter the complexity. CCIE lab exams (and lab preparation guides) have been pushing us in that direction for years.
 

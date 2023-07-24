@@ -1,9 +1,10 @@
 ---
 date: 2011-05-02 06:33:00.002000+02:00
+dmvpn_tag: quirk
 tags:
 - DMVPN
 - workshop
-title: NHRP convergence issues in multi-hub DMVPN networks
+title: NHRP Convergence Issues in Multi-Hub DMVPN Networks
 url: /2011/05/nhrp-convergence-issues-in-multi-hub.html
 ---
 **Summary for differently attentive**: A hub router failure in multi-hub DMVPN networks can cause spoke-to-spoke traffic disruptions that last up to three minutes.
@@ -18,7 +19,7 @@ The one-hub-per-tunnel rule works well in small and medium-sized DMVPN deploymen
 
 While developing the material for the [DMVPN New Features](http://www.ipSpace.net/DMVPN150) webinar, I tested the convergence of both designs and found out significant differences in a hub failure scenario (convergence after a spoke failure depends purely on the routing protocol settings).
 
-### Why does it matter?
+### Why Does It Matter?
 
 A hub router has three important roles in a Phase 2/3 DMVPN network:
 
@@ -28,7 +29,7 @@ A hub router has three important roles in a Phase 2/3 DMVPN network:
 
 A hub failure can thus directly impact spoke-to-spoke connectivity in those DMVPN networks where spokes can't establish direct IPsec sessions (due to NAT or other limitations).
 
-### Convergence of one-hub-per-tunnel DMVPN designs
+### Convergence of One-Hub-per-Tunnel DMVPN Designs
 
 When you lose a hub router in one-hub-per-tunnel DMVPN design, NHRP registrations on the tunnel fail completely and the routing across the affected tunnel stops after the spoke routers figure out their routing protocol neighbor is gone.
 
@@ -36,7 +37,7 @@ If you use short NHRP registration timer (configured with **ip nhrp registration
 
 If you combine 10 second NHRP timers with interface state tracking (configured with **if-state nhrp**), the spokes stop using the failed tunnel in less than 20 seconds.
 
-#### Convergence of multi-hub DMVPN designs
+### Convergence of Multi-Hub DMVPN Designs
 
 Losing a hub in multi-hub DMVPN design will not affect the routing across the DMVPN tunnel. Spokes will eventually detect one of their routing protocol neighbors is gone, but the change will not affect their routing tables.
 

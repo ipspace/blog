@@ -1,7 +1,9 @@
 ---
-title: "Feedback: DMVPN Webinars"
-date: 2022-02-21 07:18:00
-tags: [ DMVPN ]
+date: 2022-02-21 07:18:00+00:00
+dmvpn_tag: training
+tags:
+- DMVPN
+title: 'Feedback: DMVPN Webinars'
 ---
 Some webinars on ipSpace.net are ancient (= more than a decade old). I'm refreshing some of them (the overhaul of _[Introduction to Virtualized Networking](https://www.ipspace.net/Introduction_to_Virtualized_Networking)_ was completed earlier this month); others will stay as they are because the technology hasn't changed in a long while, and it's always nice to hear someone still finds them useful. This is a recent feedback I got on the [DMVPN webinars](https://www.ipspace.net/Roadmap/VPN_webinars):
 

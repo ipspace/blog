@@ -1,5 +1,6 @@
 ---
 date: 2011-01-19 06:43:00+01:00
+dmvpn_tag: routing
 tags:
 - DMVPN
 - OSPF

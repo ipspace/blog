@@ -1,10 +1,11 @@
 ---
-date: 2011-01-17T06:56:00.003+01:00
+date: 2011-01-17 06:56:00.003000+01:00
+dmvpn_tag: routing
 tags:
 - DMVPN
 - OSPF
 - workshop
-title: OSPF configuration in Phase 1 DMVPN network
+title: OSPF Configuration in Phase 1 DMVPN Network
 url: /2011/01/ospf-configuration-in-phase-1-dmvpn.html
 ---
 [This is how you configure OSPF in a Phase 1 DMVPN network](https://my.ipspace.net/bin/get/DMVPN/D3%20-%20OSPF%20routing%20in%20Phase%201%20DMVPN.mp4?doccode=DMVPN) (read the [introductory post](https://blog.ipspace.net/2011/01/sometimes-you-need-to-step-back-and.html) and [Phase 1 DMVPN fundamentals](https://blog.ipspace.net/2011/01/dmvpn-phase-1-fundamentals.html) first):

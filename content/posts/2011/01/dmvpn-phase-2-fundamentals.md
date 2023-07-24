@@ -1,5 +1,7 @@
 ---
 date: 2011-01-18 06:35:00+01:00
+dmvpn_tag: basics
+series_weight: 300
 tags:
 - DMVPN
 title: DMVPN Phase 2 Fundamentals
