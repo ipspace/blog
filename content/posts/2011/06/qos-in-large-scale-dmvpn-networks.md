@@ -1,5 +1,6 @@
 ---
 date: 2011-06-14 07:10:00+02:00
+dmvpn_tag: integrate
 tags:
 - DMVPN
 - workshop

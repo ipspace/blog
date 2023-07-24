@@ -1,15 +1,15 @@
 ---
 date: 2012-01-24 07:23:00+01:00
+dmvpn_tag: design
 tags:
 - design
 - DMVPN
-- workshop
 title: Redundant DMVPN Designs, Part 2 (Multiple Uplinks)
 url: /2012/01/redundant-dmvpn-designs-part-2-multiple.html
 ---
 In the [*Redundant DMVPN Design, Part 1*](https://blog.ipspace.net/2012/01/redundant-dmvpn-designs-part-1-basics.html) I described the options you have when you want to connect non-redundant spokes to more than one hub. In this article, we'll go a step further and design hub and spoke sites with multiple uplinks.
 
-### Public IP addressing
+### Public IP Addressing
 
 **Fact:** DMVPN tunnel endpoints have to use public IP addresses or the hub/spoke routers wouldn't be able to send GRE/IPsec packets across the public backbone.
 <!--more-->
@@ -23,7 +23,7 @@ SMB customers not having their own IP address space would most often deploy hub 
 
 {{<figure src="s1600-DMVPN_1H2U.png" caption="IP address on the hub router often belongs the customer public IP prefix">}}
 
-### DMVPN tunnels on spoke sites
+### DMVPN Tunnels on Spoke Sites
 
 **Fact:** DMVPN tunnel endpoints are tied to public IP address and thus to individual uplinks. Uplink failure causes IP address loss and subsequently tunnel interface failure.
 
@@ -39,7 +39,7 @@ SMB customers not having their own IP address space would most often deploy hub 
 
 {{<figure src="s1600-DMVPN_1S2I2H.png" caption="Simple redundant design with each hub router belonging to one DMVPN tunnel">}}
 
-### Outbound routing on spoke routers
+### Outbound Routing on Spoke Routers
 
 You can never be sure whether the upstream ISPs use RPF filters or other filtering mechanisms. It's thus mandatory to ensure proper outbound packet forwarding over the spoke uplinks: tunnel interface associated with IP address belonging to ISP-A can send packets only over the uplink connecting the spoke router to ISP-A.
 
@@ -51,7 +51,7 @@ You can use [**tunnel route-via** feature](https://blog.ipspace.net/2010/09/tunn
 
 {{<note info>}}If you're not familiar with VRFs, use the tested router configurations you get with the [*DMVPN -- from basics to scalable networks*](http://www.ipspace.net/DMVPN) webinar.{{</note>}}
 
-### DMVPN tunnels on hub sites
+### DMVPN Tunnels on Hub Sites
 
 The number of DMVPN tunnels on the hub sites depends on the DMVPN model you're using (Phase 1/2/3) and the redundancy requirements.
 
@@ -67,7 +67,7 @@ If your network has to be more failure-resilient, connect all hubs to all DMVPN 
 
 Finally, if you're using DMVPN Phase 2, you might need to deploy even more tunnels to avoid the [NHRP convergence problems](https://blog.ipspace.net/2011/05/nhrp-convergence-issues-in-multi-hub.html). In our sample network you would need two DMVPN tunnels on each hub router (one for ISP-A spoke uplinks, the other one for ISP-B spoke uplinks) and four tunnels on the spoke routers (one for each uplink/hub combination).
 
-### Alternate solution: VRF fiesta
+### Alternate Solution: VRF Fiesta
 
 *KAV* proposed an alternate solution in a comment to the [*Redundant DMVPN Design, Part 1*](https://blog.ipspace.net/2012/01/redundant-dmvpn-designs-part-1-basics.html) post: put each DMVPN tunnel interface in a separate VRF and use redistribution through BGP in a VRF-lite environment to collect routes from both DMVPN VRFs in the LAN-side VRF.
 
@@ -75,6 +75,6 @@ Finally, if you're using DMVPN Phase 2, you might need to deploy even more tunne
 
 **Drawback:** you need between three and five VRFs (three to support this design, two more for split default routing in Phase 2/3 DMVPN) on the spoke routers and route redistribution through BGP. Guess whose phone will ring when a spoke router experiences "mission-critical" problems at 2AM.
 
-### Need help?
+### Need Help?
 
 Start with the [*DMVPN Technology and Configuration*](http://www.ipspace.net/DMVPN) webinar; it probably contains 95% of what you need to know about DMVPN (the [*DMVPN New Features*](http://www.ipspace.net/DMVPN_New_Features) one describes DMVPN features introduced in IOS releases 15.x). The [*Enterprise MPLS/VPN Deployment*](http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment) webinar describes everything you ever wanted to know about VRFs, VRF-Lite and tunnel interfaces running inside and over VRFs. You get access to all three webinars with the [yearly subscription](http://www.ipspace.net/Subscription).

@@ -1,5 +1,7 @@
 ---
 date: 2010-10-28 09:17:00+02:00
+dmvpn_tag: basics
+series_weight: 100
 tags:
 - DMVPN
 title: DMVPN Scalability

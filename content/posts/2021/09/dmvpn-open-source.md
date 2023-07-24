@@ -1,8 +1,10 @@
 ---
-title: "Open-Source DMVPN Alternatives"
-date: 2021-09-08 07:22:00
+date: 2021-09-08 07:22:00+00:00
+dmvpn_tag: alternative
 lastmod: 2021-09-26 14:48:00
-tags: [ DMVPN ]
+tags:
+- DMVPN
+title: Open-Source DMVPN Alternatives
 ---
 When I started collecting topics for the September 2021 ipSpace.net Design Clinic one of the subscribers sent me an interesting challenge: are there any open-source alternatives to Cisco's DMVPN?
 

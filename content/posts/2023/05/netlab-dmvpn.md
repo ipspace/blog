@@ -1,9 +1,13 @@
 ---
-title: "Building a DMVPN Test Lab with netlab"
-date: 2023-05-08 06:40:00
-tags: [ netlab, DMVPN ]
-netlab_tag: [ use ]
-pre_scroll: True
+date: 2023-05-08 06:40:00+00:00
+dmvpn_tag: deploy
+netlab_tag:
+- use
+pre_scroll: true
+tags:
+- netlab
+- DMVPN
+title: Building a DMVPN Test Lab with netlab
 ---
 I always love to hear about real-life [netlab](https://netlab.tools/) use cases, and try to make them even easier to implement with new netlab features -- that's how netlab got [custom Vagrant configuration templates](https://blog.ipspace.net/2022/06/netsim-custom-vagrant-boxes.html) and [per-node configuration templates](https://blog.ipspace.net/2023/04/netlab-merge-config.html). 
 

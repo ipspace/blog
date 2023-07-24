@@ -1,9 +1,9 @@
 ---
-date: 2011-08-12T07:48:00.001+02:00
+date: 2011-08-12 07:48:00.001000+02:00
+dmvpn_tag: routing
 tags:
 - DMVPN
 - OSPF
-- workshop
 title: More OSPF-over-DMVPN Questions
 url: /2011/08/more-ospf-over-dmvpn-questions.html
 ---

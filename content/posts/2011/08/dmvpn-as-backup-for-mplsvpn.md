@@ -1,5 +1,6 @@
 ---
 date: 2011-08-25 05:30:00+02:00
+dmvpn_tag: design
 tags:
 - DMVPN
 - OSPF
@@ -19,11 +20,12 @@ If you're familiar with the way MPLS/VPN handles OSPF-in-VRF, you're probably al
 <!--more-->
 The reason is quite simple: some service providers deploy their own CE-routers (see the diagram below, this time drawn with an [improved version of the diagramming tool](http://notepad-plus-plus.org/)):
 
-``` {.code style="font-size: 120%"}
+{{<ascii>}}
 Hub-------DMVPN--------------Spoke
  !                             !
+ !                             !
 HCE--SPCE--PE--MPLS--PE-SPCE—SCE
-```
+{{</ascii>}}
 
 The MPLS/VPN SP deploying its own CE-routers commonly runs EBGP between PE- and CE-routers and deploys OSPF only between its CE-routers (SPCE) and customer's CE-routers (HCE and SCE). In this setup, the OSPF-specific MPLS/VPN attributes carried in MP-BGP are lost on the PE-CE router boundary and cannot be used to recreate the original OSPF route when the IP prefix is redistributed from BGP into OSPF on the provider's CE-router. All inter-site routes thus appear as E1 or E2 routes in OSPF.
 

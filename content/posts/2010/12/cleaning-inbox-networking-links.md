@@ -1,5 +1,5 @@
 ---
-date: 2010-12-22 23:05:00.001000+01:00
+date: 2010-12-20 07:05:00.001000+01:00
 title: 'Cleaning the Inbox: Networking Links'
 url: /2010/12/cleaning-inbox-networking-links.html
 tags: [ worth reading ]
