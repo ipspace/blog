@@ -13,5 +13,5 @@ After [describing the SD-WAN reference design](/2018/11/video-sdwan-reference-de
 [Watch the video](https://my.ipspace.net/bin/get/SDWAN/3%20-%20Backend%20Architecture.mp4?doccode=SDWAN)
 {{</jump>}}
 
-{{<note info>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch this video and other videos in the [SD-WAN Overview](https://www.ipspace.net/SD-WAN_Overview) webinar.
+{{<note free>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch this video and other videos in the [SD-WAN Overview](https://www.ipspace.net/SD-WAN_Overview) webinar.
 {{</note>}}

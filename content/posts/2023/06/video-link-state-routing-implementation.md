@@ -11,4 +11,4 @@ After [introducing the routing protocols](https://blog.ipspace.net/2022/11/video
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/RP2.2%20-%20Link%20State%20Routing%20Protocol%20Implementation%20Considerations.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

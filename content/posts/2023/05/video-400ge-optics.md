@@ -7,4 +7,4 @@ When 400GbE was still an emerging technology, [Mark Nowell](https://www.linkedin
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/DCFabric/GE1%20-%20400%20GbE%20Optics.mp4?doccode=DCFabric){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}

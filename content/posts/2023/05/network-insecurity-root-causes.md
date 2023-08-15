@@ -9,4 +9,4 @@ Each webinar section started with a short "This is why we have to deal with thes
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/NS1%20-%20Root%20Causes.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

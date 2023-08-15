@@ -15,4 +15,4 @@ Not surprisingly, most implementations of virtual MLAG peer link remain propriet
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/EVPN/M4%20-%20Cisco%20vPC%20Fabric%20Peering%20Details.mp4?doccode=EVPN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}
