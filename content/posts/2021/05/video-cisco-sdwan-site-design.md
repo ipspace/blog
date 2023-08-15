@@ -9,4 +9,4 @@ In the [Site Design](https://my.ipspace.net/bin/get/CiscoSDWAN/8.2%20-%20Site%20
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/8.2%20-%20Site%20Design.mp4?doccode=CiscoSDWAN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

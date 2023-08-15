@@ -9,4 +9,4 @@ Once I started valuing my free time, I tried to design things to be as simple as
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/L3%20-%20Complexity%20Will%20Kill%20You.mp4?doccode=NetBiz){{</jump>}}
 
-{{<note info>}}You'll need a [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You'll need a [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

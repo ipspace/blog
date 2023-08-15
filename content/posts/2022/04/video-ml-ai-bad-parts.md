@@ -11,4 +11,4 @@ It's time for the _bad_ part of _[AI/ML in Networking: Good, Bad, and Ugly](http
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/AI/3.2%20-%20The%20Long%20Tail%20of%20Problems%20%28The%20Bad%29.mp4?doccode=AI){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}

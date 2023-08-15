@@ -7,4 +7,4 @@ In the last part of his [Cumulus Linux 4.0 Update](https://my.ipspace.net/bin/li
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/DCFabric/M84A%20-%20Streaming%20Telemetry%20with%20Cumulus%20Net.mp4?doccode=DCFabric){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

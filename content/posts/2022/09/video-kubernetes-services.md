@@ -7,4 +7,4 @@ After completing the discussion of basic Kubernetes networking with a [typical i
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Kubernetes/1.7%20-%20Kubernetes%20Services%20Overview.mp4?doccode=Kubernetes){{</jump>}}
 
-{{<note info>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

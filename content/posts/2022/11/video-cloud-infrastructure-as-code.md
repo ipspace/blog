@@ -7,4 +7,4 @@ With AWS re:Invent 2022 being just a few days away, it's time for another cloudy
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/6.1%20-%20Case%20Study%20-%20Infrastructure-as-Code.mp4?doccode=Cloud101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch this video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch this video.{{</note>}}

@@ -7,4 +7,4 @@ Have you ever wondered what the Kubernetes fuss is all about? Why would you ever
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Kubernetes/1.1%20-%20Why%20Do%20We%20Need%20Kubernetes.mp4?doccode=Kubernetes){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

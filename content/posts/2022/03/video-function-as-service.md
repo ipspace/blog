@@ -9,4 +9,4 @@ tags: [ cloud, video ]
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/3%20-%20Functions-as-a-Service%20Demo.mp4?doccode=Cloud101){{</jump>}}
 
-{{<note info>}}You need [Free](https://www.ipspace.net/Subscription/Free) or [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to watch the video.{{</note>}}
+{{<note free>}}You need [Free](https://www.ipspace.net/Subscription/Free) or [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to watch the video.{{</note>}}

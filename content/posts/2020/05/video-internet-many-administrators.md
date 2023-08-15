@@ -9,4 +9,4 @@ I described a few consequences of this sad reality in the _[Internet Has More th
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/F2.5%20-%20Internet%20Has%20More%20than%20One%20Administrator.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to watch the _Surviving in the Internet Default-Free Zone_ webinar.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to watch the _Surviving in the Internet Default-Free Zone_ webinar.{{</note>}}

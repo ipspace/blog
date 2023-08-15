@@ -7,4 +7,4 @@ If you're a regular reader of this blog, you've probably realized there's still 
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/8.3%20-%20Adapting%20to%20the%20World%20of%20Cloud%20Networking.mp4?doccode=Cloud101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

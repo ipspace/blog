@@ -8,4 +8,4 @@ Remember the *[Cloud Models, Layers and Responsibilities](/2019/12/video-cloud-m
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/2%20-%20Cloud%20Services%20Hierarchy.mp4?doccode=Cloud101)
 {{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this video.{{</note>}}

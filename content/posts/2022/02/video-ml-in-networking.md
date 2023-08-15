@@ -13,4 +13,4 @@ In the second part of the webinar, he described "The Good, The Bad and The Ugly"
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/AI/3.1%20-%20Networking-Related%20Use%20Cases%20%28The%20Good%29.mp4?doccode=AI){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}

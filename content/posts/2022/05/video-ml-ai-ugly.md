@@ -11,4 +11,4 @@ series_title: 'Ugly Challenges of Using AI/ML in Networking'
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/AI/3.3%20-%20The%20Ugly%20Challenges.mp4?doccode=AI){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}

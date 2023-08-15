@@ -7,4 +7,4 @@ After discussing [network addressing](https://my.ipspace.net/bin/list?id=Net101#
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/RP1%20-%20Routing%20Protocols%20Overview.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}

@@ -7,4 +7,4 @@ After answering the "_[why should I care about Kubernetes?](https://my.ipspace.n
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Kubernetes/1.2%20-%20Kubernetes%20Principles.mp4?doccode=Kubernetes){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

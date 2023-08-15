@@ -7,4 +7,4 @@ A few weeks ago we covered [transparent bridging fundamentals](https://blog.ipsp
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/BR1.2%20-%20IP%20Routing%20Fundamentals.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

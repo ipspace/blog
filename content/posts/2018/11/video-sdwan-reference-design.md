@@ -15,5 +15,5 @@ After [explaining the basics of SD-WAN](https://blog.ipspace.net/2018/09/video-w
 [Watch the video](https://my.ipspace.net/bin/get/SDWAN/2%20-%20Reference%20Network%20Design.mp4)
 {{</jump>}}
 
-{{<note info>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch the video.
+{{<note free>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch the video.
 {{</note>}}

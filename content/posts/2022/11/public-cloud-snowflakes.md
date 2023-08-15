@@ -9,7 +9,7 @@ I could spend days writing riffs on some of the more creative (in whatever dimen
 
 Yeah, I've seen such environments. I had discussions with a wide plethora of people building private and public (telco) clouds, and summarized the few things I learned (not many of them good) in *[Address the Business Challenges First](https://my.ipspace.net/bin/list?id=NetBiz#BF)* part of the _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar.
 <!--more-->
-{{<note info>}}Want to [watch that talk](https://my.ipspace.net/bin/list?id=NetBiz#BF)? All you need is a [Free Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}Want to [watch that talk](https://my.ipspace.net/bin/list?id=NetBiz#BF)? All you need is a [Free Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
 
 I usually received interesting feedback from that presentation, ranging from "_I wish my CIO was in the audience_" to "_I wish we heard all this before we burned a few millions_". Anyway, one of the slides in that presentation (also repeated in at least two other [cloud-related webinars](https://www.ipspace.net/Cloud)) says:
 

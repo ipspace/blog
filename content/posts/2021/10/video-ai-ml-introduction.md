@@ -13,4 +13,4 @@ He started with a [brief overview of AI/ML hype](https://my.ipspace.net/bin/get/
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/AI/1%20-%20Introduction.mp4?doccode=AI){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}

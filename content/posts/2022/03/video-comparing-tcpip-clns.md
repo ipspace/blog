@@ -11,5 +11,5 @@ You might think that it makes no sense to talk about protocols that were rarely 
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/NA3.2%20-%20Comparing%20IP%20and%20CLNP%20Addressing.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}
 

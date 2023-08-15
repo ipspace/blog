@@ -11,5 +11,5 @@ In the _[Local Area Network Addressing](https://my.ipspace.net/bin/get/Net101/NA
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/NA2.2%20-%20Local%20Area%20Network%20Addressing.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}
 

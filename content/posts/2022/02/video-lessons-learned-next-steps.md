@@ -14,4 +14,4 @@ I tried to wrap up my [Lessons Learned](https://my.ipspace.net/bin/list?id=NetBi
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/L5%20-%20The%20Way%20Forward.mp4?doccode=NetBiz){{</jump>}}
 
-{{<note info>}}You'll need a [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You'll need a [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

@@ -7,4 +7,4 @@ Years ago I wrote a series of blog posts comparing transparent bridging and IP r
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/BR1.1%20-%20Transparent%20Bridging%20Fundamentals.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}The video is available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
