@@ -15,4 +15,4 @@ Next step: CPE architecture, the topic of [today's video](https://my.ipspace.net
 [Watch the video](https://my.ipspace.net/bin/get/SDWAN/4%20-%20CPE%20Architecture.mp4?doccode=SDWAN)
 {{</jump>}}
 
-{{<note info>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch videos in this webinar.{{</note>}}
+{{<note free>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch videos in this webinar.{{</note>}}

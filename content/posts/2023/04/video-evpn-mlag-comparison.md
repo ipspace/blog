@@ -16,4 +16,4 @@ tags:
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/EVPN/M5%20-%20Compare%20and%20Contrast.mp4?doccode=EVPN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}

@@ -13,4 +13,4 @@ In November 2022 I described [some of the intricacies of using EVPN to implement
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/EVPN/M3%20-%20Using%20MLAG%20in%20EVPN%20Environments.mp4?doccode=EVPN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}

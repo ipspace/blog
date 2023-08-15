@@ -39,4 +39,4 @@ Another possibility is the DNS hijacking: intercept DNS responses to victim's DN
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/NS2.1%20-%20Address%20and%20Session%20Hijacking.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}The Address and Session Hijacking video and parts of the IPv6 Security webinar are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The Address and Session Hijacking video and parts of the IPv6 Security webinar are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

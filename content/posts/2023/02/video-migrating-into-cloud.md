@@ -7,4 +7,4 @@ tags: [ video, cloud ]
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/6.2%20-%20Case%20Study%20-%20Migrating%20into%20Cloud.mp4?doccode=Cloud101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch this video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch this video.{{</note>}}

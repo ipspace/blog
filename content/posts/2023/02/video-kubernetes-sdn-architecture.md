@@ -7,4 +7,4 @@ tags: [ containers, video ]
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Kubernetes/2.1%20-%20Understanding%20Kubernetes%20SDN%20Architecture.mp4?doccode=Kubernetes){{</jump>}}
 
-{{<note info>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

@@ -13,4 +13,4 @@ After discussing the [backend](/2023/03/video-sdwan-backend-architecture.html) a
 [Watch the video](https://my.ipspace.net/bin/get/SDWAN/5%20-%20Security.mp4?doccode=SDWAN)
 {{</jump>}}
 
-{{<note info>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch videos in this webinar.{{</note>}}
+{{<note free>}}You need at least [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free) to watch videos in this webinar.{{</note>}}
