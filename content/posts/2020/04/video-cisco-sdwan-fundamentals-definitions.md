@@ -9,5 +9,5 @@ After setting the stage clarifying the [current Cisco SD-WAN deployment scenario
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/2%20-%20Fundamentals%20and%20Definitions.mp4?doccode=CiscoSDWAN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
 

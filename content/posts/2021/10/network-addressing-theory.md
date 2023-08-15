@@ -9,4 +9,4 @@ The video ends with a simple (and unappreciated) truth: if you have a point-to-p
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/NA1.2%20-%20Theoretical%20View%20of%20Network%20Addressing.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}

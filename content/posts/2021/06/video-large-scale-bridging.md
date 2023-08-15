@@ -9,4 +9,4 @@ In [today's video](https://my.ipspace.net/bin/get/Net101/BR3%20-%20Typical%20Lar
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/BR3%20-%20Typical%20Large-Scale%20Bridging%20Use%20Cases.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}The video is available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

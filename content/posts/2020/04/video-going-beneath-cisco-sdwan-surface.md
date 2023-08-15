@@ -11,5 +11,5 @@ He started the first part of his [Cisco SD-WAN Foundations and Design Aspects](h
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/1%20-%20Going%20Beneath%20the%20Surface.mp4?doccode=CiscoSDWAN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
 

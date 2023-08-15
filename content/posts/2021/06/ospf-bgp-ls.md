@@ -28,7 +28,7 @@ For more details:
 * For a bigger picture, watch the 
 _[Switching, Routing and Bridging](https://my.ipspace.net/bin/list?id=Net101#SWITCH)_ part of _[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)_ webinar.
 
-{{<note info>}}Both webinars mentioned above are available with _[Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free)_{{</note>}}
+{{<note free>}}Both webinars mentioned above are available with _[Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free)_{{</note>}}
 
 [^1]: That's also the reason I'm [highly recommending running BGP between your data center fabric and virtual appliances](https://blog.ipspace.net/2013/08/virtual-appliance-routing-network.html). It looked like the VMware NSBU grasped the concept when they made BGP the only routing protocol supported in NSX-T, but of course the sane days didn't last long... NSX-T 3.1.1 [added OSPF support to NSX Edge](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/rn/VMware-NSX-T-Data-Center-311-Release-Notes.html).
 

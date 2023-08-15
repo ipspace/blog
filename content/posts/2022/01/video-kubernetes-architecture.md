@@ -7,4 +7,4 @@ Yesterday I [mentioned](https://blog.ipspace.net/2022/01/mtu-virtual-devices.htm
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Kubernetes/1.3%20-%20Kubernetes%20Architecture.mp4?doccode=Kubernetes){{</jump>}}
 
-{{<note info>}}Parts of _[Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive)_ webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}Parts of _[Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive)_ webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

@@ -18,4 +18,4 @@ After starting the [EVPN multihoming versus MLAG](https://my.ipspace.net/bin/lis
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/EVPN/M2%20-%20EVPN%20Multihoming%20Deep%20Dive.mp4?doccode=EVPN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}

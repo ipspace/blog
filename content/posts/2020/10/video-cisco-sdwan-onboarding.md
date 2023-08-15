@@ -9,4 +9,4 @@ After describing [Cisco SD-WAN architecture](/2020/05/video-cisco-sdwan-architec
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/5%20-%20Onboarding%20Process.mp4?doccode=CiscoSDWAN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

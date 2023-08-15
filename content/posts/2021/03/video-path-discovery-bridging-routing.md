@@ -7,4 +7,4 @@ In the previous video in this series, I [described how path discovery works](/20
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/SW5%20-%20Transparent%20Bridging%20and%20Routing.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

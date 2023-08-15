@@ -9,4 +9,4 @@ For an overview of the differences watch the *[Public Cloud Networking Is Differ
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/8.2%20-%20Public%20Cloud%20Networking%20Is%20Different.mp4?doccode=Cloud101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video{{</note>}}

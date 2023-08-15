@@ -11,4 +11,4 @@ After [explaining why you should focus on defining the problem before searching 
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/BF2%20-%20Know%20Your%20Users%20Needs.mp4?doccode=NetBiz){{</jump>}}
 
-{{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

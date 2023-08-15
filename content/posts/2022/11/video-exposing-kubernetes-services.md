@@ -7,4 +7,4 @@ After a brief [introduction of Kubernetes service](https://my.ipspace.net/bin/ge
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Kubernetes/1.9%20-%20Exposing%20Services%20to%20External%20Clients.mp4?doccode=Kubernetes){{</jump>}}
 
-{{<note info>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

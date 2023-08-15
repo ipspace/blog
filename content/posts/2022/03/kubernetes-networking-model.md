@@ -7,4 +7,4 @@ After [describing the Kubernetes architecture](https://blog.ipspace.net/2022/01/
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Kubernetes/1.4%20-%20Kubernetes%20Networking%20Model.mp4?doccode=Kubernetes){{</jump>}}
 
-{{<note info>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

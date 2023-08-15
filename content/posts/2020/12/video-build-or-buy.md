@@ -9,4 +9,4 @@ Not surprisingly, the same dilemma [applies to network automation solutions](htt
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/BF3%20-%20Should%20You%20Build%20or%20Buy%20a%20Solution.mp4){{</jump>}}
 
-{{<note info>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is part of _[Business Aspects of Networking Technologies](https://www.ipspace.net/Business_Aspects_of_Networking_Technologies)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

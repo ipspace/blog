@@ -7,4 +7,4 @@ Pods are a basic building block of any Kubernetes-based deployment... but what e
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Kubernetes/1.5%20-%20Understanding%20Pods.mp4?doccode=Kubernetes){{</jump>}}
 
-{{<note info>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}Parts of [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar (including this video) are available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

@@ -13,4 +13,4 @@ For more details, watch *[Finding Paths Across the Network](https://my.ipspace.n
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/SW4%20-%20Finding%20Paths%20Across%20the%20Network.mp4?doccode=Net101&start=10){{</jump>}}
 
-{{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

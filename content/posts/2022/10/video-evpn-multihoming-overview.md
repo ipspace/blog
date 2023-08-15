@@ -13,4 +13,4 @@ I promised you a blog post explaining the intricacies of implementing MLAG with 
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/EVPN/M1%20-%20Taxonomy%20and%20Overview.mp4?doccode=EVPN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video. To watch the whole webinar, buy [Standard or Expert ipSpace.net Subscription](https://www.ipspace.net/Subscription/).{{</note>}}

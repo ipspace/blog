@@ -12,4 +12,4 @@ You'll find more details (including other hybrids like Loose Source Routing) in 
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/SW3%20-%20Multi-Layer%20Switching%20and%20Tunneling.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

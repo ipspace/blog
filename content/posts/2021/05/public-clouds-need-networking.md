@@ -11,4 +11,4 @@ For more details, watch the *[We Still Need Networking in Public Clouds](https:/
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/8.1%20-%20We%20Still%20Need%20Networking%20in%20Public%20Clouds.mp4?doccode=Cloud101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video{{</note>}}

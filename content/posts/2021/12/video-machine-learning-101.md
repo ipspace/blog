@@ -11,4 +11,4 @@ After a [brief overview of the AI/ML hype](/2021/10/video-ai-ml-introduction.htm
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/AI/2.1%20-%20Machine%20Learning%20101.mp4?doccode=AI){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}

@@ -11,4 +11,4 @@ In December 2019 I finally turned my _[focus on business challenges first](https
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/BF1%20-%20Define%20the%20Problem%20Before%20Searching%20for%20a%20Solution.mp4?doccode=NetBiz){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

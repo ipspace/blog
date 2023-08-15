@@ -7,4 +7,4 @@ One of the overused buzzwords of the cloudy days is the *Cloud-Native Environmen
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Cloud101/5%20-%20Cloud-Native%20Environments.mp4?doccode=Cloud101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

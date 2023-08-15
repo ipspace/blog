@@ -14,4 +14,4 @@ After [Javier Antich](https://www.ipspace.net/Author:Javier_Antich) walked us th
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/AI/2.2%20-%20Machine%20Learning%20Techniques.mp4?doccode=AI){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to access this webinar.{{</note>}}

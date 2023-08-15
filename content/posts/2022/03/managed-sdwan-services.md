@@ -11,4 +11,4 @@ Turns out there's not much to explain; even with my usual verbosity I was done i
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/MS1%20-%20Should%20Service%20Providers%20Offer%20Managed%20SD-WAN%20Services.mp4?doccode=NetBiz){{</jump>}}
 
-{{<note info>}}Both videos are accessible with the [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free){{</note>}}
+{{<note free>}}Both videos are accessible with the [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free){{</note>}}

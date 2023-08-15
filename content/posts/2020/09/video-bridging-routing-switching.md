@@ -9,4 +9,4 @@ What exactly is the difference between the two, and what is bridging? I'm answer
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/SW1%20-%20Terminology.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}
+{{<note free>}}The video is part of _[How Networks Really Work](https://www.ipspace.net/Net101)_ webinar and available with [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free).{{</note>}}

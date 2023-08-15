@@ -11,4 +11,4 @@ A carefully planned site scheme and ordered list of policy entries will save you
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/CiscoSDWAN/8.3%20-%20Policy%20Design.mp4?doccode=CiscoSDWAN){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

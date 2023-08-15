@@ -9,4 +9,4 @@ You can watch his presentation, as well as the more in-depth overview of Cumulus
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/DCFabric/M80%20-%20What%20Is%20Cumulus%20Linux%20All%20About.mp4?doccode=DCFabric){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video.{{</note>}}

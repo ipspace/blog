@@ -9,5 +9,5 @@ In the _[Networks Are Not Secure](https://my.ipspace.net/bin/get/Net101/F2.4%20-
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/Net101/F2.4%20-%20Networks%20Are%20%28Not%29%20Secure.mp4?doccode=Net101){{</jump>}}
 
-{{<note info>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}
+{{<note free>}}You need [Free ipSpace.net Subscription](https://www.ipspace.net/Subscription/Free) to watch the video, and the [Standard ipSpace.net Subscription](https://www.ipspace.net/Subscription/) to register for upcoming live sessions.{{</note>}}
 
