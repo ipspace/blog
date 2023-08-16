@@ -1,6 +1,6 @@
 ---
 title: "Engagement Farming"
-date: 2023-08-16 07:17:00
+date: 2023-08-21 07:17:00
 tags: [ worth reading ]
 ---
 One of my readers asked for my opinion about the following masterpiece posted on (where else) LinkedIn[^RI]:
@@ -11,4 +11,4 @@ I would usually call it "a Bullshit Bingo Winner" but fortunately Tom Hollingswo
 
 Fortunately all is not lost. It's still possible to find an occasional interesting tidbit on LinkedIn like [this discussion of sources of network complexity](https://www.linkedin.com/posts/miancu_is-computer-networking-too-complex-activity-7095747933735702528-YXQ2) -- not that I would fully agree with the author or comments/counterarguments, but they had something to say, and there was some obvious mental effort going into it.
 
-[^RI]: I have (hopefully) good reasons to post it as an image and omit the author's name.
+[^RI]: There's a reason behind posting it as an image and omitting the author's name.
