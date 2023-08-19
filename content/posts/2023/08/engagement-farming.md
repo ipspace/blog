@@ -1,6 +1,6 @@
 ---
 title: "Engagement Farming"
-date: 2023-08-21 07:17:00
+date: 2023-08-22 07:17:00
 tags: [ worth reading ]
 ---
 One of my readers asked for my opinion about the following masterpiece posted on (where else) LinkedIn[^RI]:
