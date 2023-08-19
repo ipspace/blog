@@ -85,6 +85,7 @@ def print_dir(dir_list):
   for entry in dir_list:
     date = entry['date']
     wday = date.weekday() if date else -1
+    wdiff = (date - last_date).days if (date and last_date) else 0
     if not date:
       if last_date:
         print("-----")
@@ -95,7 +96,7 @@ def print_dir(dir_list):
         color = "magenta"
       if last_date != None and date.date() == last_date.date():
         color = "red"
-      elif wday <= last_day:
+      elif wday <= last_day or wdiff >= 7:
         print("-----")
       elif wday > last_day + 1 and wday <= 5:
         print(".....")
