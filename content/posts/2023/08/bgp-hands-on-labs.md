@@ -11,7 +11,12 @@ The project will be based on _netlab_[^HT] and use Cumulus Linux (or FRR if NVID
 
 [^XP]: Including physical hardware if you happen to have a few extra Cumulus switches or are willing to do some crazy stuff to set things up.
 
-I already set up a [GitHub repository](https://github.com/ipspace/bgplab) and created the [target list of labs](https://github.com/ipspace/bgplab/blob/main/README.md). I will eventually expand it with labs focusing on newer BGP features and BGP security, but it's already long enough that it will take me months[^AL] to create all the planned labs. I probably missed something important, or you might have better ideas how to structure them -- leave a comment or (even better) become a contributor and submit a PR.
+I set up a [GitHub repository](https://github.com/ipspace/bgplab) and created the [first labs](https://ipspace.github.io/bgplab/). I also put together a long list of [labs that would be nice to have](https://ipspace.github.io/bgplab/3-upcoming/). I might add newer BGP features and BGP security to the list, but it's already long enough that it will take me months[^AL] to create all the planned labs. I probably missed something important, or you might have better ideas how to structure them -- leave a comment or (even better) become a contributor and submit a PR.
+
+### Revision History
+
+2023-08-21
+: The list of lab ideas has been heavily restructured based on your feedback (thank you!). I also added links to the first labs.
 
 [^EC]: The echoes of those ideas are still visible (if you know where to look) in the Configuring BGP on Cisco Routers course --  ABCT eventually morphed into CBCR and became part of the original CCIP curriculum in early 2000s, but that's another story.
 
