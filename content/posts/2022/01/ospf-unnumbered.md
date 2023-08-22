@@ -1,5 +1,6 @@
 ---
 date: 2022-01-10 07:04:00+00:00
+lastmod: 2023-08-22 15:17:00
 series:
 - unnumbered-interfaces
 tags:
@@ -41,6 +42,12 @@ Next, there's the check of the network mask advertised in the OSPF Hello packet.
 > However, there is one exception to the above rule: on point-to-point networks and on virtual links, the Network Mask in the received Hello Packet should be ignored.
 
 To recap: while the OSPF adjacency works perfectly fine on unnumbered point-to-point links, it would be an exercise in futility to try to make it work on point-to-multipoint unnumbered interfaces. Cisco IOS XE neatly solves the conundrum by not sending Hello packets out of unnumbered interfaces that are not configured as point-to-point OSPF networks.
+
+**Exchanging information**: trivial. OSPF routers use AllSPFRouters (224.0.0.5) as the destination IP address on point-to-point links, and multicast packets get delivered to whoever is listening to that multicast IP address.
+
+That also explains why OSPF runs flawlessly over unnumbered P2P links but fails to work on unnumbered multi-access links[^MAIS]
+
+[^MAIS]: Another niche advantage of IS-IS: it works over unnumbered multi-access links because it [does not use IP to transport routing protocol messages](/2009/06/is-is-is-not-running-over-clnp.html).
 
 **Encoding local topology**: trivial. Add a *router link* to type-1 LSA without a corresponding *stub* link you'd get on a numbered link. Here's a type-1 LSA from a router with an unnumbered interface:
 
@@ -113,6 +120,16 @@ Internet  10.0.0.2               91   5254.00e1.4213  ARPA   GigabitEthernet2
 
 OK, so the theory sounds great. Does any vendor support that? Hint: how do you think I got the printouts?
 
-On a more serious note: I got OSPF running over unnumbered Ethernet interfaces on EOS ([requires a nerd knob](https://blog.ipspace.net/2021/04/build-unnumbered-lab-netsim-tools.html)), IOS, IOS XE, NX-OS, and Junos. I know it [works on Cumulus Linux](https://blog.ipspace.net/2014/06/unnumbered-ospf-interfaces-in-quagga.html) (and Quagga and FRR), but nobody implemented Cumulus/Linux unnumbered interface configuration in *netlab* yet -- a PR fixing fixing that omission would be most welcome.
+On a more serious note: I got OSPF running over unnumbered Ethernet interfaces on EOS ([requires a nerd knob](https://blog.ipspace.net/2021/04/build-unnumbered-lab-netsim-tools.html)), IOS, IOS XE, IOS XR, NX-OS, Junos, Cumulus Linux and FRR. It also works on Nokia SR OS and VyOS (check [_netlab_ OSPF support tables](https://netlab.tools/module/ospf/#platform-support) for more details).
+
+Finally, you REALLY SHOULD read the [Unnumbered Links In OSPF](https://lostintransit.se/2023/08/22/unnumbered-links-in-ospf/) blog post by Daniel Dib.
 
 [^TLDF]: Too Lazy, Didn't Follow
+
+### Revision History
+
+2023-08-22
+: * Added the _exchanging information_ section after a stimulating discussion with Daniel Dib (thank you!).
+: * Updated the list of platforms known to support OSPF over unnumbered IPv4 interfaces
+
+
