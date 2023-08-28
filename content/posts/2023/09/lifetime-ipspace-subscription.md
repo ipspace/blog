@@ -30,3 +30,37 @@ No worries. You can still buy the [Standard subscription](https://www.ipspace.ne
 ### Hey, What's Going On?
 
 Glad you asked (or at least got this far). I'm going through creative burnout, and making new stuff (even as simple as turning email replies into blog posts) is becoming harder and harder. Slowing down and hoping for an eventual recharge of the creative batteries is the only way forward I could find.
+
+### More Questions and Answers
+
+I explained the changes I'm making to ipSpace.net subscribers a few days ago[^WBS] and got a few questions you might also be interested in:
+
+> Am I right in assuming I'll be having access to the material "forever" then? 
+
+Yes, for a very small value of “forever” compared to the expected time of the heat death of the universe ;) However, it might not be a bad idea to download the interesting stuff -- [Cloudflare promised that won't cost me a dime](https://blog.ipspace.net/2023/08/videos-free-subscription.html).
+
+> Also, how will it work for those just subscribing after the news? Will it be like a one-time payment?
+
+Exactly.
+
+> Do you plan on having options to download the material?
+
+It was always possible to download everything. There’s even a download button in the UI (the down-pointing arrow next to the video/file name)
+
+> If I want to upgrade my subscription to the expert one and to be able to watch webinars that are exclusively included in the expert subscription, would I be able still to do it with new changes?
+
+No. The expert subscription disappeared today, but I will make some of those materials gradually available as part of standard subscription.
+
+> It sounds like you are ready to retire. Is this the case?
+
+Probably not. I tried it out once, and you see how well that turned out -- I got bored and started blogging. I do have to disconnect and recharge though.
+
+> What comes next for you?
+
+No clear idea yet. However, I had an interesting chat about Kubernetes and eBPF a few days ago, so who knows...
+
+> What is the OSS you are working on?
+
+https://netlab.tools/
+
+[^WBS]: You wouldn't want to learn about changes in a service you bought via a blog post, would you?
