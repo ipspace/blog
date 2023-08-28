@@ -33,20 +33,28 @@ ARP might be a bit underspecified[^GOD], but the rules listed in RFC 826 are pre
 A few other things are pretty obvious (even though they might not be mentioned in the RFC):
 
 -   The receiver should reply with its own MAC address. I'm positive some vendors are doing crazy stuff, the least of it being the way first-hop gateway resolution protocols share a MAC address across multiple nodes.
--   Receiver does not check for "nodes being on the same subnet" -- if someone manages to send me an ARP request, it's polite to reply to them.
+-   Receiver does not check for "nodes being on the same subnet" -- if someone manages to send me an ARP request, it's polite to reply to them. This behavior is configurable in some devices (at least on Linux with `arp_ignore` *sysctl* parameter).
 -   Finally, note that ARP is a non-routable protocol. The sender and the receiver must be in the same data-link-layer (usually Ethernet or WiFi) segment.
 
 [^DV]: Source IPv4 address, source MAC address, and destination IPv4 address
 
 Now for the gray areas:
 
--   RFC 826 does not specify whether the "*Am I the target protocol address?*" condition checks the IP address of the incoming interface or whether it could match any IP address on the node. I'm guessing this bit might be implementation-dependent; it could explain why some devices reply to ARP queries for their other IP addresses even when there's no proxy ARP configured on the incoming interface.
--   As already mentioned[^ST], RFC 826 also does not specify that the source and destination IP addresses have to be in the same subnet. An ARP implementation will send out any query the higher layers of the IP stack want to have answered and will report the answer if it ever comes back.
+-   RFC 826 does not specify whether the "*Am I the target protocol address?*" condition checks the IP address of the incoming interface or whether it could match any IP address on the node. I'm guessing this bit might be implementation-dependent; it could explain why some devices reply to ARP queries for their other IP addresses even when there's no proxy ARP configured on the incoming interface. The behavior is configurable on Linux with `arp_filter` and `arp_ignore` *sysctl* parameters; I don't remember seeing similar configuration options on any other network device, but maybe I just didn't look hard enough.
+-   As already mentioned[^ST], RFC 826 also does not specify that the source and destination IP addresses have to be in the same subnet. An ARP implementation will send out any query the higher layers of the IP stack want to have answered and will report the answer if it ever comes back (unless the behavior is configurable -- see `arp_ignore` on Linux).
 
 [^ST]: Several times
 
-That brings us to another interesting case. Imagine that for whatever reason, the sender thinks an IP address is directly connected, but the receiver of an ARP request does not have the target IP address but knows how to reach it.
+That brings us to another interesting case. Imagine that for whatever reason the sender thinks an IP address is directly connected, but the receiver of an ARP request does not have the target IP address but knows how to reach it.
 
 In that case, the receiver might reply with its MAC address, effectively saying, "*Sure, send me the packets; I know how to get there.*" We usually call that functionality *proxy ARP*. Proxy ARP is a great but also pretty dangerous tool (but that's a story for another blog post).
 
-{{<next-in-series page="/2023/09/arp-static-routes.html">}}**Coming up next**: ARP and static routes{{</next-in-series>}}
+Finally, it's worth noting that while we usually think proxy ARP can be used to reach hosts beyond a router, it's heavily used *within a subnet* in WiFi and PVLAN environments. You might want to read [RFC 3069](https://www.rfc-editor.org/rfc/rfc3069.html) for the PVLAN details. Brave souls are also [using proxy ARP to stretch local subnets into the cloud](https://blog.ipspace.net/2019/11/stretched-layer-2-subnets-in-azure.html), forgetting that *because you can does not mean that you should*.
+
+### Revision History
+
+2023-08-28
+: * Added Linux sysctl parameters based on a comment by Erik Auerswald
+: * Added proxy ARP use cases
+
+{{<next-in-series page="/posts/2023/08/arp-static-routes.html">}}**Coming up next**: ARP and static routes{{</next-in-series>}}
