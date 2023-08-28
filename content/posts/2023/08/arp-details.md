@@ -57,4 +57,4 @@ Finally, it's worth noting that while we usually think proxy ARP can be used to 
 : * Added Linux sysctl parameters based on a comment by Erik Auerswald
 : * Added proxy ARP use cases
 
-{{<next-in-series page="/2023/09/arp-static-routes.html">}}**Coming up next**: ARP and static routes{{</next-in-series>}}
+{{<next-in-series page="/posts/2023/08/arp-static-routes.html">}}**Coming up next**: ARP and static routes{{</next-in-series>}}
