@@ -1,6 +1,6 @@
 ---
 title: "Does EVPN/VXLAN over SD-WAN Make Sense?"
-date: 2023-09-05 11:43:00
+date: 2023-09-17 11:43:00
 tags: [ VXLAN, EVPN, SD-WAN ]
 draft: True
 ---
