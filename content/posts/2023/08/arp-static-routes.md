@@ -1,10 +1,10 @@
 ---
 title: "ARP and Static Routes"
-date: 2023-08-31 06:30:00
+date: 2023-08-30 06:30:00
 tags: [ ARP ]
 pre_scroll: True
 ---
-A few days ago, I [described how ARP behaves when the source- and destination IP addresses are not on the same subnet](/2023/08/arp-details.html) (TL&DR: it doesn't care). Now, let's see how that works with static routes.
+A few days ago, I [described how ARP behaves when the source- and destination IP addresses are not on the same subnet](/2023/08/arp-details.html) (TL&DR: it doesn't care). Now, let's see how routers use ARP to get the destination MAC address for various entries in the IP routing table. To keep things simple, we'll use static routes to insert entries in the IP routing table.
 
 We'll run our tests in a small virtual lab with two Linux hosts and an Arista vEOS switch. The link between H1 and RTR is a regular subnet. H2 has an IP address on the Ethernet interface, but RTR uses an unnumbered interface.
 <!--more-->
@@ -218,3 +218,5 @@ blackhole 127.0.0.0/8 proto gated scope nowhere
 ```
 
 And now you know another trick that will make your router configurations harder to understand and increase your job security ;) Have fun.
+
+{{<next-in-series page="/posts/2023/08/unnumbered-ospf-arp.html">}}**Coming up next**: How does OSPF use ARP on unnumbered interfaces?{{</next-in-series>}}
