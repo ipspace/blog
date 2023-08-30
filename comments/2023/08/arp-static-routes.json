@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "30 August 2023 03:32",
+               "html": "<p>&gt; The Linux kernel implementation for static routes is different from both Arista EOS and usual router implementations in that a static route stays active when the outgoing interface goes down, creating a blackhole.</p>\n\n<p>That&#39;s good to know. Thank you!</p>\n\n<p>You can get the exact same behavior with <strong>permanent</strong> option of <strong>ip route</strong> command on Cisco IOS.</p>\n\n<p>Also, at least some IGP routes stay in the routing table after the interface failure, see https://blog.ipspace.net/2020/12/what-happens-after-link-failure.html for details.</p>\n",
+               "id": "1902",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-08-30T15:32:12",
+               "ref": "1901",
+               "type": "comment"
+            }
+         ],
          "date": "30 August 2023 10:00",
          "html": "<p>The behavior of Arista EOS to use recursive next-hop resolution for static routes can be surprising, since most other router implementations do not do that.  One common expectation, satisfied by many router implementations, is that a static route with only an IP as next-hop specification is only active in the routing table (and installed in the forwarding database) when the next hop lies in a directly connected subnet of an active interface.</p>\n\n<p>The Linux <em>kernel</em> implementation for static routes is different from both Arista EOS and usual router implementations in that a static route stays active when the outgoing interface goes down, creating a blackhole. (Current userspace, e.g., NetworkManager, removes static routes pointing to inactive interfaces.)</p>\n\n<p>(BTW, the <em>Baron M&uuml;nchhausen</em> static route <code>ip route 10.1.0.5/32 ethernet 2 10.1.0.5</code> is technically identical to <code>ip route 10.1.0.5/32 ethernet 2</code>, thus there is no reason to expect it to work differently. ;-) )</p>\n",
          "id": "1901",
