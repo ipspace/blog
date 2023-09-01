@@ -1,40 +1,24 @@
 ---
 title: "Reliable ECMP with Static Routing"
-date: 2023-09-10 11:00:00
+date: 2023-09-08 07:00:00
 tags: [ IP routing ]
-draft: True
 ---
-I'm trying to find information about "eibgp". I found something in your website but the video link is broken (https://blog.ipspace.net/2013/06/eibgp-load-balancing.html).
+One of my readers wanted to use EIBGP (hint: wrong tool for this particular job[^WTFTJ]) to load balance outgoing traffic from a pair of WAN edge routers. He's using a design very similar to [this one](https://blog.ipspace.net/2022/02/nexus-icmp-redirects.html) with VRRP running between WAN edge routers, and the adjacent firewall cluster using a default route to the VRRP IP address.
+
+The problem: all output traffic goes to the VRRP IP address which is active on one of the switches, and only a single uplink is used for the outgoing traffic.
 <!--more-->
-I'm interested about that because still in my DC, I would like to load balance outgoing trafic to my both wan routers.
-Remember you my design :
-- I have few pub subnets with community/local pref configured on nexus to prioritize some on one nexus and some on other so in input
-- 2x nexus9k as wan router connected between us with a Po
-- these 2x nexus9k are connected in ebgp to the same provider
-- these 2x nexus9k have an ibgp link between them
-- there is a VRRP on inside
-- no VPC
+{{<note info>}}Fun fact: you might get better load balancing if you accept many prefixes from the upstream providers and do some smart route selection, maybe combined with NetFlow analysis. Careful readers might find the relevant details somewhere on this blog.{{</note>}}
 
-under these nexus (so internal side), I have a firewall cluster (forcepoint) with static routing : gateway points to the VRRP VIP Nexus
+This is how my reader wanted to use EIBGP:
 
-My issue is : 
-- ingest trafic is Ok as it is dispatched between both nexus
-BUT
-- for output trafic, as trafic goes to VIP, it outputs from the nexus primary VRRP only.. so we use only one link to go out our DC instead of using all the bandwidth available
+> I considered changing settings in the firewall to do ECMP to the physical interfaces (IP) of the switches. We checked it and it seems easy but need to be tested. Or maybe I could use EIBGP, but I'm not sure about this solution and where to put it and how plus I read some comments about possible forwarding loops.
 
-I thought to a solution in changing settings in firewall => ECMP to physical interfaces (IP) of nexus (so no VIP at all as gateway). We checked it and it seems easy but need to be tested.
-Or maybe with eiBGP, but I'm not sure about this solution and where to put it and how + I read some comments about possible loop issue...
+Unless you're using BFD with static routes (or some similar vendor-specific functionality like [reliable static routes](/2007/02/reliable-static-routing.html)), it's not a good idea to use  static routes pointing to physical IP addresses from the resiliency perspective. An interface might go down, and the static route would keep sending traffic into a black hole.
 
-Do you have any advice for me about this ?
+However, that's easy to solve with an ancient trick: use two VRRP (or HSRP or GLBP) groups, each one “owned” by one of the switches, and have two static routes pointing to the two VRRP addresses.
 
----
+Ideally one would run a routing protocol between the WAN edge routers and the firewall cluster, and advertise the default route from both switches (that's why the routing protocols were invented). 
 
-Using static routes pointing to physical IP addresses is not so good from the resiliency perspective.
+Finally, if you're faced with a security professional who considers OSPF insecure, go for EBGP.
 
-I would use two VRRP groups (each one “owned” by one of the switches) and have to static routes pointing to the two VRRP addresses.
-
-Ideally one would run OSPF with the firewall (even better: EBGP) and advertise the default route from both switches.
-
----
-
-The primary EIBGP use case is in MPLS/VPN WAN networks, and Cisco would like to use segment routing and Egress Peer Engineering anyway.
+[^WTFTJ]: The primary EIBGP use case is in MPLS/VPN WAN networks, and it usually requires MPLS transport and works in VRFs. Also, EIGBP is no longer the cool kid on the block (if it ever was). Cisco engineers would probably tell you to use segment routing (bonus points if you're persuaded to use SRv6) and Egress Peer Engineering.
