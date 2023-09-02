@@ -93,5 +93,3 @@ Meh, no. My life is [too short for that](https://blog.ipspace.net/2023/02/virtua
 ### Takeaway
 
 You're missing out if you haven't invested into an [Infrastructure-as-Code virtual lab infrastructure](https://netlab.tools/). It costs you nothing apart from the underlying hardware (or you could [run it in the cloud](https://netlab.tools/install/cloud/)) and a non-trivial chunk of your time.
-
-Alternatively, you could keep asking questions on various blogs and forums ;)
