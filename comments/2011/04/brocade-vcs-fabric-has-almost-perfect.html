@@ -397,6 +397,35 @@
             </div>
             <div class="comment-content"><p>I&#39;m curious how this plays out today? We&#39;re an R&amp;E w/ needs for better LB algorithms and Cisco themselves are telling us the higher throughput links simply use polynomials. Our testing of those polynomials has shown upwards of 15% loss at line rate across 4 x 10 Gigs, and higher at 3 x 100 Gigs.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1910">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1910" href="#1910">02 September 2023 08:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>The Brocade hardware is long gone. Most vendors use hash-based load balancing these days, and most of them have a nerd knob to turn on dynamic reshuffling. Obviously that works only on directly-connected egress links. Beyond that, Cisco ACI might be doing something, but most everyone else cannot as they don&#39;t have visibility into congestion beyond the egress interface.</p>
+
+<p>The right way to solve this challenge is to implement uncongested path finding at the source host. Something as simple as FlowBender or MP-TCP could do the trick.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
