@@ -2,6 +2,7 @@
 title: "Layer-3 WAN Handoff (L3Out) in VXLAN/EVPN Fabrics"
 date: 2023-09-06 09:05:00
 tags: [ EVPN, VXLAN, WAN ]
+draft: True
 ---
 I got a question from a few of my students regarding the best way to implement end-to-end EVPN across multiple locations. Obviously there’s the multi-pod and multi-site architecture for people believing in the magic powers of stretching VLANs across the globe, but I’m looking for something that I could recommend to people who understand that you have to have a L3 boundary if you want to have multiple independent failure domains (or availability zones).
 <!--more-->
