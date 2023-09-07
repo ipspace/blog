@@ -132,3 +132,25 @@ Also, based on the *[A Linux Kernel Implementation of the Homa Transport Protoco
 Anyway, is this a problem worth solving? In many cases, the answer is a resounding **no**. Application stacks often include components that generate much higher latency than what TCP could cause. From that perspective, Homa looks a lot like another entry in the long list of solutions in desperate search of a problem.
 
 Finally, the _It's Time to Replace TCP in the Datacenter_ article focuses solely on application-to-application messaging, which might be relevant for the "niche" applications like large microservices-based web properties, high-performance computing, or map-reduce clusters that use in-memory data structures or local storage. At the same time, it completely ignores long-lived high-volume connections that represent the majority of traffic in most data centers: storage traffic, be it access to remote disk volumes or data synchronization between nodes participating in a distributed file system or distributed database.
+
+### LinkedIn Feedback
+
+The blog post triggered [numerous interesting comments on LinkedIn](https://www.linkedin.com/posts/ivanpepelnjak_is-it-time-to-replace-tcp-in-data-centers-activity-7018586453815271425-IhGQ); this section contains an edited summary.
+
+Jeff Tantsura and Jitendra Padhye on TCP in the data center:
+
+{{<long-quote>}}
+Networking in ML/AI clusters (in a some form of DC) are rarely using TCP today, they are most definitely won’t be using TCP going forward.
+
+RoCEv2 (RDMA over IP/UDP) is often used, DCQCN is the most common CC implementation (with PFC as last resort). There’s quite some work on better CC and drop avoidance technologies, spray (with all the implications to be addressed) is an almost MUST.
+
+You might take a look at work we have been doing in IETF: https://datatracker.ietf.org/doc/draft-miao-tsv-hpcc/ - looks very promising, with wide ecosystem and already significant deployment at Alibaba.
+
+Over 65% of Azure traffic (bytes and packets) uses RoCEv2, not TCP. TCP is a distant second.
+{{</long-quote>}}
+
+Jeff Tantsura on congestion mechanisms:
+
+{{<long-quote>}}
+RFC3168 (published in early 2000) -- The Addition of Explicit Congestion Notification (ECN) to IP -- takes care of anything that runs over IP (more details in RFC8087). DCQCN (and many other technologies) make use of ECN marking to signal queue occupancy growth and allows sender to react accordingly (not necessary stop).
+{{</long-quote>}}
