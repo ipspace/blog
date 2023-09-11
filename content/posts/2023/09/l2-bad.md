@@ -1,6 +1,6 @@
 ---
 title: "Repost: L2 Is Bad"
-date: 2023-09-13 06:19:00
+date: 2023-09-21 06:19:00
 tags: [ switching, data center, design ]
 ---
 Roman Pomazanov documented his thoughts on the beauties of large layer-2 domains in a LinkedIn article and allowed me to repost it on ipSpace.net blog to ensure it doesn't disappear
