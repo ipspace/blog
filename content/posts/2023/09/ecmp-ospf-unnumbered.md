@@ -7,7 +7,7 @@ netlab_tag: use
 pre_scroll: true
 series: unnumbered-interfaces
 ---
-The [OSPF and ARP on Unnumbered IPv4 Interfaces](https://blog.ipspace.net/2023/08/unnumbered-ospf-arp.html) triggered an [interesting consideration](https://blog.ipspace.net/2023/08/unnumbered-ospf-arp.html#1903): does ECMP with across parallel unnumbered links?
+The [OSPF and ARP on Unnumbered IPv4 Interfaces](https://blog.ipspace.net/2023/08/unnumbered-ospf-arp.html) triggered an [interesting consideration](https://blog.ipspace.net/2023/08/unnumbered-ospf-arp.html#1903): does ECMP work across parallel unnumbered links?
 
 **TL&DR**: Yes, it works flawlessly on Arista EOS and Cisco IOS/XE. Feel free to test it out on any other device on which _netlab_ supports [unnumbered interfaces with OSPF](https://netlab.tools/module/ospf/#platform-support).
 <!--more-->
