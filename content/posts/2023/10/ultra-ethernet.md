@@ -1,6 +1,6 @@
 ---
 title: "What Is Ultra Ethernet All About?"
-date: 2023-09-27 05:47:00
+date: 2023-10-03 05:47:00
 tags: [ switching ]
 ---
 If you're monitoring the industry press (or other usual hype factories), you might have heard about Ultra Ethernet, a dazzling new technology that will be developed by the Ultra Ethernet Consortium[^ITS]. What is it and does it matter to you (TL&DR: probably not[^WHS])?
