@@ -41,6 +41,28 @@ The BGP session was in CONNECT state which means that:
 * FRR completed the TCP session establishment process
 * BGP OPEN message with incorrect TTL was obviously dropped (the session was stuck in the CONNECT phase), but the TCP session was not torn down.
 
+On the other side, FRR reported the BGP session being stuck in the OPENSENT state:
+
+```
+x1# sh ip bgp sum
+
+IPv4 Unicast Summary:
+BGP router identifier 10.0.0.10, local AS number 65100 vrf-id 0
+BGP table version 2
+RIB entries 3, using 600 bytes of memory
+Peers 1, using 23 KiB of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+10.1.0.1        4      65000         3        11        0    0    0 00:00:40     OpenSent        0
+
+Total number of neighbors 1
+```
+
+FRR obviously:
+
+* Completed TCP session setup even though the incoming TCP SYN packet had incorrect (too low) TTL
+* Sent the BGP OPEN message but never processed the answer (thus the OpenSent state)
+
 [^CFR]: Cumulus Linux uses FRR as its BGP routing daemon
 
 I'm using Cumulus Linux 4.x for the external BGP speakers in the [BGP labs](https://ipspace.github.io/bgplab/), and it could be that the FRR team improved GTSM behavior in the recent versions of FRR, so I restarted the labs using FRR 9.0.1. I got the exact same behavior.
