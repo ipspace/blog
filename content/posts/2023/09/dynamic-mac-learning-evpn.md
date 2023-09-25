@@ -9,11 +9,15 @@ Johannes Resch submitted the following comment to the _[Is Dynamic MAC Learning
 
 While he's absolutely correct that BGP scales nicely, the questions to ask is "_what is the optimal way to deliver a Carrier Ethernet service?_"
 <!--more-->
-_Carrier Ethernet_ service should (by definition) emulate Ethernet, which means it's just a glorified bit transport with a bit of MAC filtering and BUM flooding thrown in. Carrier Ethernet services have been (successfully) implemented with dynamic MAC learning for ages, so it's fair to ask "_what exactly is EVPN bringing to the table?_"
+_Carrier Ethernet_ service should (by definition) emulate Ethernet, which means it's just a glorified bit transport[^DT] with a bit of MAC filtering and BUM flooding thrown in. Carrier Ethernet services have been (successfully) implemented with dynamic MAC learning for ages, so it's fair to ask "_what exactly is EVPN bringing to the table?_"
+
+[^DT]: As pointed out by Bela Varkonyi: Carrier Ethernet devices receive and forward [Ethernet frames](https://blog.ipspace.net/2022/10/ethernet-encapsulations.html) and perform error checking on those frames, so they provide more than just a bitstream service.
 
 EVPN is definitely a major step forward when [compared to the mess called VPLS](https://blog.ipspace.net/2018/02/evpn-is-more-than-vpls-on-steroids.html). It can run on top of multiple transport technologies ([MPLS](https://blog.ipspace.net/2022/04/do-you-care-about-mpls.html), [VXLAN](https://blog.ipspace.net/2020/05/need-vxlan-transport.html), SR-MPLS, SRv6), carries enough information to build deterministic flooding trees, and has built-in mechanisms to deal with [Multi-Chassis Link Aggregation](https://blog.ipspace.net/series/mlag.html) (MLAG) and primary/backup attachments to multi-homed customer sites. However, does it really need to do control-plane MAC learning? After all, Cisco successfully implemented an early version of EVPN with dynamic MAC learning on Nexus 1000v.
 
-There are two scenarios I could find where control-plane MAC learning works better than dynamic MAC learning: ARP proxy, where you want to have deterministic IP-to-MAC mapping information, and MLAG. I don't want a service provider to do ARP proxying as part of a Carrier Ethernet service; I want them to [stay as far away from complex (and potentially buggy) stuff](https://blog.ipspace.net/2014/03/whose-failure-domain-is-it.html) as possible and [deliver the bitstream I'm paying for](https://blog.ipspace.net/2018/03/whos-pushing-layer-2-vpn-services.html).
+There are two scenarios I could find where control-plane MAC learning works better than dynamic MAC learning: ARP proxy, where you want to have deterministic IP-to-MAC mapping information, and MLAG. I don't want a service provider to do ARP proxying as part of a Carrier Ethernet service; I want them to [stay as far away from complex (and potentially buggy) stuff](https://blog.ipspace.net/2014/03/whose-failure-domain-is-it.html) as possible and efficiently [deliver the bits](https://blog.ipspace.net/2018/03/whos-pushing-layer-2-vpn-services.html)[^DGA] I'm paying for.
+
+[^DGA]: OK, frames ;)
 
 How about MLAG? We've been doing MLAG for ages before EVPN appeared, and while it's been a mess in the traditional MPLS world, it's well known how to make it [work reasonably well in VXLAN environments with anycast VTEPs](https://blog.ipspace.net/2022/09/mlag-deep-dive-vxlan-fabric.html). The same trick could be used with MPLS transport, but you'd have to replace LDP with SR-MPLS to get anycast SID. Also, you don't need MLAG if you [use Carrier Ethernet service as a bit transport between sites](https://blog.ipspace.net/2012/07/the-difference-between-metro-ethernet.html) not as the enabler of stretched VLANs.
 
@@ -24,3 +28,8 @@ Want to know more? Check out:
 * [EVPN Technical Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive)
 * [VXLAN Technical Deep Dive](https://www.ipspace.net/VXLAN_Technical_Deep_Dive)
 * [Carrier Ethernet discussions](https://my.ipspace.net/bin/list?id=Design#2022_04) in [ipSpace.net Design Clinic](https://www.ipspace.net/IpSpace.net_Design_Clinic)
+
+### Revision History
+
+2023-09-25
+: Carrier Ethernet is a frame-based not a bitstream service.
