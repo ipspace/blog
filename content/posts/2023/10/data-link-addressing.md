@@ -1,6 +1,6 @@
 ---
 title: "Early Data-Link Layer Addressing"
-date: 2023-10-01 06:37:00
+date: 2023-10-29 06:37:00
 tags: [ networking fundamentals ]
 draft: True
 comment: |
