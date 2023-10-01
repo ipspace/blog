@@ -29,6 +29,9 @@ Weird, as I had the `.git` subdirectory in the right place. A frantic consultati
 I told you to use remote repositories, right? Here's how they came in handy:
 
 -   I hope you have documentation listing the URLs of the remote repositories for every Git repository you work with. I know where mine is -- somewhere in the bowels of my infrastructure-as-code files. Not exactly the best place to look at when you're in near-panic. Fortunately, after I fixed the `.git/HEAD` file **git remote** command produced useful output.
+
+{{<note info>}}As Erik Auerswald pointed out in a comment, I could just look at the `.git/config` file to find the remote repositories. That file is a text file that is not modified by **git** so it's more likely to stay intact.{{</note>}}
+
 -   I used the results of the **git remote** command to clone a sane copy of each repository into a new directory adjacent to the original one.
 -   Two renames later, I was back in business.
 
@@ -54,3 +57,8 @@ origin	git@github.com:ipspace/ai-email-assistant.git (push)
 github	git@github.com:ipspace/sloveniahiking.git (fetch)
 github	git@github.com:ipspace/sloveniahiking.git (push)
 ```
+
+### Revision History
+
+2023-10-01
+: You could find remote repositories in local Git configuration file.
