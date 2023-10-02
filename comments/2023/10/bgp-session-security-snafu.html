@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -20,6 +20,27 @@
             <div class="comment-content"><p>It may interest readers that the GTSM RFC5082 specifies a sending TTL of 255, where one might have expected a TTL equal to the maximum number of hops acceptable</p>
 
 <p>This implies a TTL of 253 is considered &quot;too low&quot; for a standard directly connected EBGP peering session</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="1949">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1949" href="#1949">02 October 2023 11:00</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>One might be able to combine an inbound interface ACL with the GTSM idea. If the system allows to match on TTL in combination with IP, protocol (TCP), and port, this could be used to drop packets with too low TTL value. GTSM still needs to be enabled so that the BGP speakers use high instead of low TTL values.</p>
+
+<p>This is not perfect, e.g., it only works on one of the two BGP speakers of a session (the one that answers a SYN sent to TCP port 179), but it could help against some random attacker from across the Internet intending to send a crafted OPEN message for remote code execution.</p>
 </div>
           </div>
         </li>

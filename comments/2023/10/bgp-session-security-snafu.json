@@ -7,9 +7,17 @@
          "name": "Jeroen van Bemmel",
          "pub": "2023-10-02T20:37:16",
          "type": "comment"
+      },
+      {
+         "date": "02 October 2023 11:00",
+         "html": "<p>One might be able to combine an inbound interface ACL with the GTSM idea. If the system allows to match on TTL in combination with IP, protocol (TCP), and port, this could be used to drop packets with too low TTL value. GTSM still needs to be enabled so that the BGP speakers use high instead of low TTL values.</p>\n\n<p>This is not perfect, e.g., it only works on one of the two BGP speakers of a session (the one that answers a SYN sent to TCP port 179), but it could help against some random attacker from across the Internet intending to send a crafted OPEN message for remote code execution.</p>\n",
+         "id": "1949",
+         "name": "Erik Auerswald",
+         "pub": "2023-10-02T23:00:56",
+         "type": "comment"
       }
    ],
-   "count": 1,
+   "count": 2,
    "type": "post",
    "url": "2023/10/bgp-session-security-snafu.html"
 }
