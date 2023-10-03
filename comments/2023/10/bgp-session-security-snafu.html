@@ -42,6 +42,35 @@
 
 <p>This is not perfect, e.g., it only works on one of the two BGP speakers of a session (the one that answers a SYN sent to TCP port 179), but it could help against some random attacker from across the Internet intending to send a crafted OPEN message for remote code execution.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1950">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1950" href="#1950">03 October 2023 08:22</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I hoped that GTSM would be implemented in CoPP ACL (the only place where it would make sense) or failing that in <strong>iptables</strong> in Linux-based devices. Looks like I was way too optimistic (again).</p>
+
+<p>As for &quot;it works on one of the two BGP speakers&quot;, you can drop packets when the source or destination port is 179 and TTL is too low, and allow all other packets with source or destination port 179 (or just let them through)</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
