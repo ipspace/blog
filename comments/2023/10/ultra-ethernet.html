@@ -120,6 +120,39 @@ at that scale though, it might be worth looking into optical circuit switching.<
 
 <p>Also, the solution for this particular kind of problem already exists, in the form of Dragonfly HPC fabrics with Adaptive routing. No need for crappy PFC. Deadlock is avoided with the use of Virtual Channel and some form of valley-free routing.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1960">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1960" href="#1960">04 October 2023 11:44</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&gt; How do Broadcom deal with reordering? I don&#39;t see that mentioned</p>
+
+<p>Of course not, that&#39;s their secret sauce.</p>
+
+<p>&gt; Reordering at the destination switch? Damn. That&#39;s a lot of work.</p>
+
+<p>Not if you use a trick similar to RDMA -- use fixed-length cells, and copy incoming cells into the right place in the buffer memory (in reality: probably use some scatter/gather trick to avoid copying overhead). The only thing left is to deal with packet losses and retransmissions (or you ignore them like ATM did).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
