@@ -117,6 +117,37 @@
 
 <p>I&#39;d think it&#39;d be obvious for BGP routers to only accept incoming sessions from configured BGP neighbors, right? Because BGP is the most critical infrastructure, the backbone of the Internet, why would you want your router to accept incoming session from anyone but KNOWN sources? What&#39;s the rationale?  </p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="1959">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1959" href="#1959">04 October 2023 09:39</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Most network devices these days run on Linux (or xBSD). The xNIX TCP stack cannot filter incoming sessions based on source IP addresses, you&#39;d have to deploy iptables (or equivalent) filters to get that done.</p>
+
+<p>It looks like no networking vendor cares enough to get that done (or even better: deploy BGP protection ACLs in hardware), and the end-users are not screaming loud enough to force them to do so.</p>
+
+<p>Cisco IOS is different because it uses home-grown TCP stack.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
