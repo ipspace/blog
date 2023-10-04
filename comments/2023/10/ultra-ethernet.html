@@ -149,6 +149,29 @@ at that scale though, it might be worth looking into optical circuit switching.<
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="1961">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Wes Felter</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c1961" href="#1961">04 October 2023 06:35</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I can answer some of this since I worked on a Broadcom Jericho DDC in 2015-2017. Cells are indeed put back into order at the egress ASIC (otherwise packets would be corrupted). I think packets are also kept in order although I&#39;m not sure how. Forwarding logic isn&#39;t duplicated for each port so you don&#39;t need 64x32,000 VOQs, just 32,000 in each ASIC which can be stored in on-chip SRAM. All the ASICs are now 500W monsters and all the PCBs are thicc af (as the kids say) so IMO you might as well use the best ASIC. At the time we found that Jericho+Ramon was actually slightly cheaper and noticeably faster than Tomahawk.</p>
+
+<p>Note that Ultra Ethernet works differently from DNX/Jericho so today&#39;s DNX networks aren&#39;t a preview of how Ultra Ethernet will look (although one&#39;s available today and the other is not). It sounds like Ultra Ethernet will have NIC-to-NIC congestion management and reordering while DNX does everything inside the switch. Mellanox is already selling some flavor of NIC/DPU-based congestion management.</p>
+
+<p>It&#39;s easy to say something like adaptive routing with virtual channels and valley-free routing like all the academic papers but Ethernet ASICs either don&#39;t support those features or they&#39;ve never been turned on (maybe they don&#39;t work). It&#39;s possible that Ultra Ethernet will get those features in a more reliable and standardized way.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>

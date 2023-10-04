@@ -38,6 +38,15 @@
                "pub": "2023-10-04T11:44:17",
                "ref": "1957",
                "type": "comment"
+            },
+            {
+               "date": "04 October 2023 06:35",
+               "html": "<p>I can answer some of this since I worked on a Broadcom Jericho DDC in 2015-2017. Cells are indeed put back into order at the egress ASIC (otherwise packets would be corrupted). I think packets are also kept in order although I&#39;m not sure how. Forwarding logic isn&#39;t duplicated for each port so you don&#39;t need 64x32,000 VOQs, just 32,000 in each ASIC which can be stored in on-chip SRAM. All the ASICs are now 500W monsters and all the PCBs are thicc af (as the kids say) so IMO you might as well use the best ASIC. At the time we found that Jericho+Ramon was actually slightly cheaper and noticeably faster than Tomahawk.</p>\n\n<p>Note that Ultra Ethernet works differently from DNX/Jericho so today&#39;s DNX networks aren&#39;t a preview of how Ultra Ethernet will look (although one&#39;s available today and the other is not). It sounds like Ultra Ethernet will have NIC-to-NIC congestion management and reordering while DNX does everything inside the switch. Mellanox is already selling some flavor of NIC/DPU-based congestion management.</p>\n\n<p>It&#39;s easy to say something like adaptive routing with virtual channels and valley-free routing like all the academic papers but Ethernet ASICs either don&#39;t support those features or they&#39;ve never been turned on (maybe they don&#39;t work). It&#39;s possible that Ultra Ethernet will get those features in a more reliable and standardized way.</p>\n",
+               "id": "1961",
+               "name": "Wes Felter",
+               "pub": "2023-10-04T18:35:51",
+               "ref": "1957",
+               "type": "comment"
             }
          ],
          "date": "04 October 2023 09:23",
