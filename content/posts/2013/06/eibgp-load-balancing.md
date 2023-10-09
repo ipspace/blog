@@ -11,5 +11,5 @@ The next small step in my [MPLS/VPN update project](https://blog.ipspace.net/201
 [![](/2013/06/s400-EIBGP+Load+Balancing+Sample+Frame.png)](https://my.ipspace.net/bin/get/MPLS101/EIBGP%20Load%20Balancing.mp4?doccode=MPLS101)
 
 {{<jump>}}
-[Watch the video](http://demo.ipspace.net/get/EIBGP%20Load%20Balancing.mp4)
+[Watch the video](https://my.ipspace.net/bin/get/MPLS101/EIBGP%20Load%20Balancing.mp4?doccode=MPLS101)
 {{</jump>}}
