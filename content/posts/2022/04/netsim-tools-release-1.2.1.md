@@ -1,6 +1,6 @@
 ---
 date: 2022-04-21 07:41:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: More MPLS and VRFs, Dell OS10, Cumulus 5.0 on Containerlab (Release
   1.2.1)
 tags:

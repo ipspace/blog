@@ -1,6 +1,6 @@
 ---
 date: 2022-06-23 06:12:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: VLAN Module Is Complete (Release 1.2.4)
 tags:
 - netlab
