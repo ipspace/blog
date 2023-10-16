@@ -1,6 +1,6 @@
 ---
 date: 2022-04-04 06:52:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: MPLS Support (Release 1.2.0)
 tags:
 - MPLS

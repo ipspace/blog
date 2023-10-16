@@ -1,6 +1,6 @@
 ---
 date: 2022-02-23 08:44:00+00:00
-netlab_tag: release
+netlab_tag: archive
 tags:
 - netlab
 title: New netlab Installation Instructions

@@ -1,6 +1,6 @@
 ---
 date: 2022-05-11 06:36:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series_title: VLANs, Hardware Labs, VRF Loopbacks (Release 1.2.2)
 tags:
 - netlab

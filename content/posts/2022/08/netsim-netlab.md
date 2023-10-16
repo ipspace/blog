@@ -1,6 +1,6 @@
 ---
 date: 2022-08-27 11:35:00+00:00
-netlab_tag: release
+netlab_tag: archive
 series:
 - netsim
 - netlab
