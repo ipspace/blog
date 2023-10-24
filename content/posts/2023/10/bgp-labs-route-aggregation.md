@@ -5,13 +5,13 @@ tags: [ BGP, netlab ]
 series: [ bgp_labs ]
 netlab_tag: edu
 ---
-In the [BGP Route Aggregation lab](https://ipspace.github.io/bgplab/basic/8-aggregate/) you can practice:
+In the [BGP Route Aggregation lab](https://bgplab.github.io/bgplab/basic/8-aggregate/) you can practice:
 
 * OSPF-to-BGP route redistribution
 * BGP route aggregation
 * Suppression of more-specific prefixes in the BGP table
 * Prefix-based filtering of outbound BGP updates
 
-{{<figure src="https://ipspace.github.io/bgplab/basic/topology-aggregate.png">}}
+{{<figure src="https://bgplab.github.io/bgplab/basic/topology-aggregate.png">}}
 
-Note: if you want to keep things simple, [run BGP labs with _netlab_](https://ipspace.github.io/bgplab/1-setup/) ([other options](https://ipspace.github.io/bgplab/external/)).
+Note: if you want to keep things simple, [run BGP labs with _netlab_](https://bgplab.github.io/bgplab/1-setup/) ([other options](https://bgplab.github.io/bgplab/external/)).

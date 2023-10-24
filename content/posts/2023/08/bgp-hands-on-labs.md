@@ -11,7 +11,7 @@ The project will be based on _netlab_[^HT] and use Cumulus Linux (or FRR if NVID
 
 [^XP]: Including physical hardware if you happen to have a few extra Cumulus switches or are willing to do some crazy stuff to set things up.
 
-I set up a [GitHub repository](https://github.com/ipspace/bgplab) and created the [first labs](https://ipspace.github.io/bgplab/). I also put together a long list of [labs that would be nice to have](https://ipspace.github.io/bgplab/3-upcoming/). I might add newer BGP features and BGP security to the list, but it's already long enough that it will take me months[^AL] to create all the planned labs. I probably missed something important, or you might have better ideas how to structure them -- leave a comment or (even better) become a contributor and submit a PR.
+I set up a [GitHub repository](https://github.com/ipspace/bgplab) and created the [first labs](https://bgplab.github.io/bgplab/). I also put together a long list of [labs that would be nice to have](https://bgplab.github.io/bgplab/3-upcoming/). I might add newer BGP features and BGP security to the list, but it's already long enough that it will take me months[^AL] to create all the planned labs. I probably missed something important, or you might have better ideas how to structure them -- leave a comment or (even better) become a contributor and submit a PR.
 
 ### Revision History
 
