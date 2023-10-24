@@ -8,7 +8,7 @@ netlab_tag: release
 Features in *netlab* [release 1.6.4](https://netlab.tools/release/1.6/#release-1-6-4) were driven primarily by the needs of my [BGP labs](https://ipspace.github.io/bgplab/) project:
 
 - [**bgp.session** plugin](https://netlab.tools/plugins/bgp.session/) (formerly known as **ebgp.utils** plugin) got support for BFD, passive BGP peers and **remove-private-as** option.
-- [**bgp.policy** plugin](https://netlab.tools/plugins/bgp.session/) implements basic BGP routing policy tools, including per-neighbor weights, local preference and MED.
+- [**bgp.policy** plugin](https://netlab.tools/plugins/bgp.policy/) implements basic BGP routing policy tools, including per-neighbor weights, local preference and MED.
 - You can [enable external tools](https://netlab.tools/extools/#tools-enable-default) in user defaults and use [default groups](https://netlab.tools/groups/#default-groups) to create  user- or project-wide groups in the defaults files.
 - [Version-specific lab topology files](https://netlab.tools/dev/versioning/) allow _netlab_ to select a lab topology that is a best fit for the _netlab_ release you're running.
 
