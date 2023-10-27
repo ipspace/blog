@@ -1,6 +1,6 @@
 ---
 title: "DHCP Relaying on a Linux Host"
-date: 2023-10-29 11:02:00
+date: 2023-11-29 11:02:00
 tags: [ DHCP ]
 draft: True
 ---
