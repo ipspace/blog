@@ -7,14 +7,14 @@ pre_scroll: True
 It's time for a Halloween story: imagine the scary scenario in which a DHCP client asks for an address, gets it, and then immediately declines it. That's what I've been experiencing with vJunos Evolved release 23.2R1.15.
 
 {{<long-quote>}}
-Before moving on: I'm not criticizing Juniper or vJunos.
+Before someone gets the wrong message: I'm not criticizing Juniper or vJunos.
 
 * Juniper did a great job releasing a no-hassles-to-download virtual appliance.
 * DHCP assignment of management IPv4 address worked with vJunos Evolved release 23.1R1.8
-* There were reports that the DHCP assignment process was not reliable, but it worked for me so far, so I'm good to go as long as I can run the older release.
+* There were reports that the DHCP assignment process in vJunos Evolved 23.1R1.8 was not reliable, but it worked for me so far, so I'm good to go as long as I can run the older release.
 * I might get to love vJunos Evolved. Boot- and configuration times are very reasonable.
 
-However, it looks like something broke in vJunos release 23.2.
+However, it looks like something broke in vJunos release 23.2, and it would be nice to figure out what the workaround might be.
 {{</long-quote>}}
 <!--more-->
 It started innocently enough: someone complained that they cannot [build vPTX Vagrant box](https://netlab.tools/labs/vptx/) with **[netlab](https://netlab.tools/)**. It quickly turned out to be a case of *thou shalt be root*, and the fix was trivial: add a `sudo` command in the right place. Obviously I wanted to check whether the fix worked, so I:
@@ -117,7 +117,7 @@ Useful hints I could use to unravel this mystery and hopefully get the latest re
 
 * the initial device configuration is [here](https://github.com/ipspace/netlab/blob/e0691dcbb75a5cd890707bff4d8893094a35caad/netsim/install/libvirt/vptx/juniper.conf)
 * the DHCP packet trace is [here](/2023/10/vptx-dhcp.pcap)
-* the following printout is the Vagrantfile **netlab** generates[^DGS] -- it's out best attempt to translate the KVM XML domain definition Juniper provides into a Vagrant VM definition.
+* the following printout is the Vagrantfile **netlab** generates[^DGS] -- it's out best attempt to translate the KVM XML domain definition Juniper provides into a Vagrant VM definition, and it works with vJunos Evolved 23.1R1.8.
 
 [^DGS]: Don't get me started on the need to have four VM interfaces just so the VM could talk to itself, or the need to have very specific hardware manufacturer hardcoded in VM BIOS.
 
