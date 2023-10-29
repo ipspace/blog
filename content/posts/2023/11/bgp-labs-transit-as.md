@@ -1,0 +1,13 @@
+---
+title: "BGP Labs: Build a Transit Network with IBGP"
+date: 2023-11-02 07:06:00
+tags: [ BGP, netlab ]
+series: [ bgp_labs ]
+netlab_tag: edu
+---
+Last time we [built a network with two adjacent BGP routers](https://bgplab.github.io/bgplab/ibgp/1-edge/). Now let's see what happens when we add a core router between them:
+{{<figure src="https://bgplab.github.io/bgplab/ibgp/topology-ibgp-transit.png">}}
+<!--more-->
+There are at least four ways to get connectivity between PE2 and EXT routers. The [lab exercise](https://bgplab.github.io/bgplab/ibgp/2-transit/) doesn't allow you to use route redistribution or aggregation/default route. You could use MPLS (or SRv6) if you wish, or give up and do what's usually done in large networks running BGP.
+
+{{<jump>}}[Explore the lab exercise](https://bgplab.github.io/bgplab/ibgp/2-transit/){{</jump>}}
