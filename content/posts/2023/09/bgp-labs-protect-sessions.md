@@ -3,7 +3,7 @@ title: "BGP Labs: Protect EBGP Sessions"
 date: 2023-09-21 06:32:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
-netlab_tag: edu
+netlab_tag: bgplab
 ---
 I published another [BGP labs](https://bgplabs.net/) exercise a few days ago. You can use it to [practice EBGP session protection](https://bgplabs.net/basic/6-protect/), including [Generalized TTL Security Mechanism (GTSM)](https://blog.ipspace.net/2023/03/advantages-bgp-gtsm.html) and TCP MD5 checksums[^AO].
 

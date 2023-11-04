@@ -3,7 +3,7 @@ title: "BGP Labs: Simple Routing Policy Tools"
 date: 2023-09-04 06:26:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
-netlab_tag: edu
+netlab_tag: bgplab
 ---
 The first set of [BGP labs](https://bgplabs.net/) covered [the basics](/2023/08/bgp-labs-basic-setup.html), the next four will help you master simple routing policy tools (BGP weights, AS-path filters, prefix filters) using real-life examples:
 

@@ -31,11 +31,11 @@ The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help yo
 
 {{<series-listing tag="use">}}
 
-### Using *netlab* to Build Hands-On Training Labs
+### {{<plushy magic>}}Hands-On BGP Training Labs Built with *netlab*
 
-{{<series-listing tag="edu">}}
+{{<series-listing tag="bgplab">}}
 
-### {{<plushy magic>}}Customizing and Extending *netlab*
+### {{<plushy master>}}Customizing and Extending *netlab*
 
 {{<series-listing tag="extend">}}
 

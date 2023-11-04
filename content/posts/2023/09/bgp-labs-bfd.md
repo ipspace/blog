@@ -3,7 +3,7 @@ title: "BGP Labs: Use BFD to Speed Up Convergence"
 date: 2023-09-27 06:32:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
-netlab_tag: edu
+netlab_tag: bgplab
 ---
 In the next [BGP labs](https://bgplabs.net/) exercise you can practice [tweaking BGP timers and using BFD to speed up BGP convergence](https://bgplabs.net/basic/7-bfd/).
 
