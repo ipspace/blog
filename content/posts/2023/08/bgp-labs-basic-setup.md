@@ -3,7 +3,7 @@ title: "BGP Labs: The Basics"
 date: 2023-08-24 06:40:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
-netlab_tag: edu
+netlab_tag: bgplab
 ---
 The first [BGP labs](/2023/08/bgp-hands-on-labs.html) are online. They cover the basic stuff (one has to [start with the basics](https://blog.ipspace.net/2015/03/you-must-understand-fundamentals-to-be.html), right?):
 

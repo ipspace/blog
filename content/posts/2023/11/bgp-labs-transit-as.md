@@ -3,7 +3,7 @@ title: "BGP Labs: Build a Transit Network with IBGP"
 date: 2023-11-02 07:06:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
-netlab_tag: edu
+netlab_tag: bgplab
 ---
 Last time we [built a network with two adjacent BGP routers](https://bgplabs.net/ibgp/1-edge/). Now let's see what happens when we add a core router between them:
 {{<figure src="https://bgplabs.net/ibgp/topology-ibgp-transit.png">}}

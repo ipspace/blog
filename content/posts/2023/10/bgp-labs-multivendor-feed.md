@@ -3,7 +3,7 @@ title: "BGP Labs: Multivendor External Routers"
 date: 2023-10-25 05:50:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
-netlab_tag: edu
+netlab_tag: bgplab
 expiryDate: 2023-11-15 00:00:00
 ---
 A quick update [BGP Labs project](https://bgplabs.net/) status update: now that [netlab release 1.6.4](/2023/10/netlab-1-6-4-more-bgp-nerd-knobs.html) is out I could remove the dependency on using Cumulus Linux as the external BGP router.

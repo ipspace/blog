@@ -3,7 +3,7 @@ title: "BGP Labs: Bidirectional Route Redistribution"
 date: 2023-09-13 06:32:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
-netlab_tag: edu
+netlab_tag: bgplab
 ---
 In the next [BGP labs](https://bgplabs.net/) exercise you'll build the [customer part of an MPLS/VPN solution](https://bgplabs.net/basic/5-redistribute/). You'll use bidirectional OSPF-to-BGP route redistribution to connect two sites running OSPF over a Service Provider MPLS backbone.
 
