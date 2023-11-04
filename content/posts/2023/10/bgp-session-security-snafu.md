@@ -23,7 +23,7 @@ Fortunately, it's pretty easy to check GTSM-related behavior of a particular BGP
 * Reset the BGP session to make sure GTSM applies to the session setup process (or not)
 * The session should be stuck in ACTIVE state. Being able to proceed beyond ACTIVE state indicates that the GTSM implementation is ~~broken~~ suboptimal.
 
-I started the _[Protect EBGP Sessions](https://bgplab.github.io/bgplab/basic/6-protect/)_ lab exercise for a quick check of FRR behavior. The lab exercise pre-configures GTSM on Cumulus Linux[^CFR] and a standard EBGP neighbor on the user device (Arista cEOS in my case). This is what I got on Arista cEOS:
+I started the _[Protect EBGP Sessions](https://bgplabs.net/basic/6-protect/)_ lab exercise for a quick check of FRR behavior. The lab exercise pre-configures GTSM on Cumulus Linux[^CFR] and a standard EBGP neighbor on the user device (Arista cEOS in my case). This is what I got on Arista cEOS:
 
 ```
 rtr#sh ip bgp sum
@@ -65,7 +65,7 @@ FRR obviously:
 
 [^CFR]: Cumulus Linux uses FRR as its BGP routing daemon
 
-I'm using Cumulus Linux 4.x for the external BGP speakers in the [BGP labs](https://bgplab.github.io/bgplab/), and it could be that the FRR team improved GTSM behavior in the recent versions of FRR, so I restarted the labs using FRR 9.0.1. I got the exact same behavior.
+I'm using Cumulus Linux 4.x for the external BGP speakers in the [BGP labs](https://bgplabs.net/), and it could be that the FRR team improved GTSM behavior in the recent versions of FRR, so I restarted the labs using FRR 9.0.1. I got the exact same behavior.
 
 ### Other Platforms
 
@@ -76,4 +76,4 @@ This blog post describes a proof-of-concept procedure you can use to test GTSM b
 * I got the link to the DEFCON 31 presentation from the lovely SINOG 7.0 *The beautiful mess that is BGP presentation* by [Emile Aben](https://labs.ripe.net/author/emileaben/)
 * Check out the [Internet Routing Security](https://www.ipspace.net/Internet_Routing_Security) webinar if you want to know more about BGP security.
 * For an overview of *what can go wrong with BGP* watch the *Internet Routing Security* part of *[Network Security Fallacies](https://my.ipspace.net/bin/list?id=Net101#NETSEC)* section of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)*.
-* Want to get your hands dirty? Do the _[Protect EBGP Sessions](https://bgplab.github.io/bgplab/basic/6-protect/)_ lab exercise (part of [ipSpace.net BGP Configuration Labs](https://bgplab.github.io/bgplab/)).
+* Want to get your hands dirty? Do the _[Protect EBGP Sessions](https://bgplabs.net/basic/6-protect/)_ lab exercise (part of [ipSpace.net BGP Configuration Labs](https://bgplabs.net/)).

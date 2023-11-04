@@ -7,4 +7,4 @@ My good friend [Tiziano Tofoni](https://www.linkedin.com/in/tiziano-tofoni-13617
 
 I had the Italian version of the book since the days I was running SDN workshops with Tiziano in Rome, and it's really nice to see they finally decided to address a wider market.
 
-Also, you know what would go well with that book? [Free open-source BGP configuration labs](https://bgplab.github.io/bgplab/) of course 😉
+Also, you know what would go well with that book? [Free open-source BGP configuration labs](https://bgplabs.net/) of course 😉
