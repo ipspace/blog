@@ -241,7 +241,7 @@ Here's another opportunity for a _you have no clue_ comment -- after all, most h
 
 In the end, you'll probably have to protect the services daemons on the PE-devices with infrastructure ACLs deployed on all external interfaces, but even then someone could send you BGP traffic with spoofed source IP address that will pass that ACL. 
 
-GTSM (TTL protection) was designed to deal with that scenario, but is it good enough? We'll cover that in another blog post.
+{{<next-in-series page="/posts/2023/11/bgp-ttl-security-shortcomings.html">}}GTSM (TTL protection) was designed to deal with that scenario, but is it good enough? We'll cover that in another blog post.{{</next-in-series>}}
 
 ### Revision History
 
