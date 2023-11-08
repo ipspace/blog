@@ -154,7 +154,7 @@ It turns out Arista EOS configures **iptables** to drop unexpected BGP packets e
 -A BGPSACL -j ACCEPT
 ```
 
-### The Ugly: Let's Chat with the Stranger
+### The Ugly: Let's Chat with the Stranger{#ugly}
 
 Believe it or not, there's a BGP implementation from a major router vendor[^NMSF] that's willing to accept a TCP session on port 179 from an unknown source IP address, exchange BGP OPEN messages with a total stranger, and then politely tell the stranger to go away.
 
