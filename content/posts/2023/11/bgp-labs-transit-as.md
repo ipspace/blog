@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: Build a Transit Network with IBGP"
+series_title: "Build a Transit Network with IBGP"
 date: 2023-11-02 07:06:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]

@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: Build Larger Networks with IBGP"
+series_title: "Build Larger Networks with IBGP"
 date: 2023-10-18 06:14:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]

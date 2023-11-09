@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: Bidirectional Route Redistribution"
+series_title: "Bidirectional Route Redistribution"
 date: 2023-09-13 06:32:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]

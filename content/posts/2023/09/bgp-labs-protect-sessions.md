@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: Protect EBGP Sessions"
+series_title: "Protect EBGP Sessions"
 date: 2023-09-21 06:32:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]

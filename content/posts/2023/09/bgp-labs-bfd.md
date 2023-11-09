@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: Use BFD to Speed Up Convergence"
+series_title: "Use BFD to Speed Up Convergence"
 date: 2023-09-27 06:32:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]

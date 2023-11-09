@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: TCP-AO Protection of BGP Sessions"
+series_title: "TCP-AO Protection of BGP Sessions"
 date: 2023-10-12 06:05:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
