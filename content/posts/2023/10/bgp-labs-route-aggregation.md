@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: Route Aggregation"
+series_title: "Route Aggregation"
 date: 2023-10-04 09:32:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]

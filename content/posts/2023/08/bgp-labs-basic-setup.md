@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: The Basics"
+series_title: "The Basics"
 date: 2023-08-24 06:40:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]

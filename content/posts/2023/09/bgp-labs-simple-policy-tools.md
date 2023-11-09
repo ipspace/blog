@@ -1,5 +1,6 @@
 ---
 title: "BGP Labs: Simple Routing Policy Tools"
+series_title: "Simple Routing Policy Tools"
 date: 2023-09-04 06:26:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
