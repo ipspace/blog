@@ -9,4 +9,4 @@ A while ago we [used BGP weights to select the best link out of an autonomous sy
 
 {{<figure src="https://bgplabs.net/policy/topology-locpref.png">}}
 
-{{<jump>}}[Explore the lab exercise](https://bgplabs.net/ibgp/2-transit/){{</jump>}}
+{{<jump>}}[Explore the lab exercise](https://bgplabs.net/policy/5-local-preference/){{</jump>}}
