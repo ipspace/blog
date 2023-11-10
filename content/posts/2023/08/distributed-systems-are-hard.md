@@ -2,6 +2,7 @@
 title: "How GitHub Learned How Hard Distributed Systems Are"
 date: 2023-08-23 05:55:00
 tags: [ high availability, worth reading ]
+high-availability_tag: outage
 ---
 [Anne Baretta](https://www.linkedin.com/in/abaretta/) found a [great video describing the October 2018 GitHub failure](https://www.youtube.com/watch?v=dsHyUgGMht0). Here's the TL&DW:
 
