@@ -10,7 +10,7 @@ Before going into the details, let's warm up with a few introductory blog posts:
 
 {{<series-listing tag="intro">}}
 
-### Vendors Love Clueless Customers
+### Vendors Love Clueless Customers {#vendors}
 
 Even GPT got the gist of disaster recovery right:
 
