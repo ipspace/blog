@@ -1,7 +1,12 @@
 ---
-title: "Video: Link State Routing Protocol Basics"
-date: 2023-06-02 06:19:00
-tags: [ networking fundamentals, IP routing, video ]
+date: 2023-06-02 06:19:00+00:00
+series_title: Link State Routing Protocol Basics
+tags:
+- networking fundamentals
+- IP routing
+- video
+title: 'Video: Link State Routing Protocol Basics'
+video_tag: net101
 ---
 After [introducing the routing protocols](https://blog.ipspace.net/2022/11/video-routing-protocols-overview.html) and explaining the [basics of link-state routing](https://blog.ipspace.net/2023/02/video-link-state-routing-basics.html) it was time for [implementation considerations](https://my.ipspace.net/bin/get/Net101/RP2.2%20-%20Link%20State%20Routing%20Protocol%20Implementation%20Considerations.mp4?doccode=Net101) including:
 

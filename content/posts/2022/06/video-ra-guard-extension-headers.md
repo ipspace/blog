@@ -1,7 +1,12 @@
 ---
-title: "Video: IPv6 RA Guard and Extension Headers"
-date: 2022-06-17 06:42:00
-tags: [ IPv6, security, video ]
+date: 2022-06-17 06:42:00+00:00
+series_title: IPv6 RA Guard and Extension Headers
+tags:
+- IPv6
+- security
+- video
+title: 'Video: IPv6 RA Guard and Extension Headers'
+video_tag: ipv6sec
 ---
 Last week's IPv6 security video [introduced the rogue IPv6 RA challenges](/2022/06/video-rogue-ra-challenges.html) and the usual countermeasure -- RA guard. Unfortunately, IPv6 tends to be a wonderfully extensible protocol, creating all sorts of opportunities for nefarious actors and security researchers.
 

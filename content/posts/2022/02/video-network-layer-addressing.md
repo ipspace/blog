@@ -1,7 +1,11 @@
 ---
-title: "Video: Network Layer Addressing"
-date: 2022-02-11 08:07:00
-tags: [ networking fundamentals, video ]
+date: 2022-02-11 08:07:00+00:00
+series_title: Network Layer Addressing
+tags:
+- networking fundamentals
+- video
+title: 'Video: Network Layer Addressing'
+video_tag: net101
 ---
 After a brief excursion into the [ancient data link layer addressing ideas](https://blog.ipspace.net/2021/11/video-data-link-addressing.html) (that you can still find in numerous systems today) and [LAN addressing](https://blog.ipspace.net/2022/01/video-local-area-network-addressing.html) it's time to focus on network-layer addressing, starting with "_can we design protocols without network-layer addresses_" (unfortunately, YES) and "_should a network-layer address be tied to a node or to an interface_" (as always, _it depends_).
 

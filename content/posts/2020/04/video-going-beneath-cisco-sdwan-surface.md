@@ -1,9 +1,12 @@
 ---
-title: "Video: Going Beneath the Cisco SD-WAN Surface"
-series_title: "Going Beneath the Cisco SD-WAN Surface"
-date: 2020-04-17 06:50:00
-tags: [ SD-WAN, video ]
+date: 2020-04-17 06:50:00+00:00
 sd-wan_tag: cisco
+series_title: Going Beneath the Cisco SD-WAN Surface
+tags:
+- SD-WAN
+- video
+title: 'Video: Going Beneath the Cisco SD-WAN Surface'
+video_tag: sd-wan
 ---
 [David Penaloza](https://www.ipspace.net/Author:David_Pe%C3%B1aloza_Seijas) decided to demystify Cisco's SD-WAN, provide real world experience beyond marketing hype, and clear confusing and foggy messages around what can or cannot be done with Cisco SD-WAN.
 

@@ -1,7 +1,11 @@
 ---
-title: "The Basics of Network Address Translation (NAT)"
-date: 2022-09-16 06:27:00
-tags: [ networking fundamentals, NAT, video ]
+date: 2022-09-16 06:27:00+00:00
+tags:
+- networking fundamentals
+- NAT
+- video
+title: The Basics of Network Address Translation (NAT)
+video_tag: net101
 ---
 The last video in the 2-hour-long *[Network Addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR)* part of *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* discusses [Network Address Translation](https://my.ipspace.net/bin/get/Net101/NA6%20-%20Network%20Address%20Translation.mp4?doccode=Net101).
 

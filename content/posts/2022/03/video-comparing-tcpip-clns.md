@@ -1,7 +1,11 @@
 ---
-title: "Video: Comparing TCP/IP and CLNP"
-date: 2022-03-04 08:44:00
-tags: [ video, networking fundamentals ]
+date: 2022-03-04 08:44:00+00:00
+series_title: Comparing TCP/IP and CLNP
+tags:
+- video
+- networking fundamentals
+title: 'Video: Comparing TCP/IP and CLNP'
+video_tag: net101
 ---
 If you were building networks in early 1990s you probably remember at least a half-dozen different network protocols. Only one of them survived (IPv6 came later), with another one (CLNP) providing an interesting view into a totally different parallel universe that evolved using a different set of fundamental principles.
 

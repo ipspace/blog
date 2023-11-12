@@ -5,20 +5,21 @@ tags:
 - video
 - netlab
 title: Could I Use netlab instead of GNS3?
+video_tag: netlab
 ---
-I'm often getting questions along the lines of _"I'm using GNS3. Could I replace it with [netlab](https://netlab.tools/)?"_
+I'm often getting questions like _"I'm using GNS3. Could I replace it with [netlab](https://netlab.tools/)?"_
 
 **TL&DR**: No.
 
 You need a set of functions to build a network lab:
 
-* Virtualization environment (netlab supports VirtualBox, libvirt, Docker, Podman)
+* Virtualization environment (netlab supports VirtualBox, libvirt, Docker, and Podman)
 * An orchestration tool/system that will deploy network device images in such an environment (netlab supports Vagrant and containerlab)
 * A tool that will build orchestration system configuration (netlab core functionality)
 <!--more-->
 The above list is the absolute minimum you need to get a running lab. You could either build such an environment from individual components (*netlab* approach) or use an integrated solution often available as a deployable virtual machine (GNS3 and Cisco CML/VIRL approach).
 
-*netlab* thus cannot replace GNS3 or VIRL, it's one of the tools in a flexible composable toolchain. It also offers tons of other features that you cannot get in GNS3 or VIRL (more about that in another blog post), and enables you to build intent-based labs[^MBS] instead of drawing them in a GUI.
+*netlab* thus cannot replace GNS3 or VIRL; it's one of the tools in a flexible, composable toolchain. It also offers many other features you cannot get in GNS3 or VIRL (more about that in another blog post), enabling you to build intent-based labs[^MBS] instead of drawing them in a GUI.
 
 [^MBS]: Marketing bullshit for "_it uses a text file to define what you want to build_."
 
