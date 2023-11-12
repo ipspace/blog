@@ -1,7 +1,11 @@
 ---
-title: "Video: Why Do We Need Kubernetes?"
-date: 2021-04-02 06:35:00
-tags: [ video, containers ]
+date: 2021-04-02 06:35:00+00:00
+tags:
+- video
+- containers
+title: 'Video: Why Do We Need Kubernetes?'
+series_title: 'Why Do We Need Kubernetes?'
+video_tag: kubernetes
 ---
 Have you ever wondered what the Kubernetes fuss is all about? Why would you ever want to use it? [Stuart Charlton](https://www.ipspace.net/Author:Stuart_Charlton) tried to answer that question in the [introduction part](https://my.ipspace.net/bin/list?id=Kubernetes#INTRO) of his fantastic [Kubernetes Networking Deep Dive](https://www.ipspace.net/Kubernetes_Networking_Deep_Dive) webinar.
 

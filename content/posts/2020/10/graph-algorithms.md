@@ -1,9 +1,12 @@
 ---
-title: "New on ipSpace.net: Graph Algorithms"
-date: 2020-10-26 05:49:00
-tags: [ networking fundamentals, video ]
+date: 2020-10-26 05:49:00+00:00
+series_title: Graph Algorithms
+tags:
+- networking fundamentals
+title: 'New on ipSpace.net: Graph Algorithms'
+video_tag: net101
 ---
-After a bit more than a year we ran another math-focused webinar last week: [Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor) came back to [talk about graph algorithms](https://www.ipspace.net/Graph_Algorithms_in_Networks), focusing on tree-, path- and center problems.
+After a bit more than a year, we ran another math-focused webinar last week: [Rachel Traylor](https://www.ipspace.net/Author:Rachel_Traylor) came back to [talk about graph algorithms](https://www.ipspace.net/Graph_Algorithms_in_Networks), focusing on tree-, path- and center problems.
 
 In her lecture you'll find:
 

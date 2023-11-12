@@ -1,7 +1,11 @@
 ---
-title: "Video: Network Address Scopes"
-date: 2022-06-03 06:25:00
-tags: [ networking fundamentals, video ]
+date: 2022-06-03 06:25:00+00:00
+series_title: Network Address Scopes
+tags:
+- networking fundamentals
+- video
+title: 'Video: Network Address Scopes'
+video_tag: net101
 ---
 When defining network addresses in [IEN 19](https://www.rfc-editor.org/ien/ien19.txt) John Shoch said:
 

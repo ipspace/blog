@@ -1,7 +1,11 @@
 ---
-title: "Video: Know Your Users' Needs"
-date: 2020-11-20 07:59:00
-tags: [ networking fundamentals, video ]
+date: 2020-11-20 07:59:00+00:00
+series_title: Know Your Users' Needs
+tags:
+- networking fundamentals
+- video
+title: 'Video: Know Your Users'' Needs'
+video_tag: netbiz
 ---
 After [explaining why you should focus on defining the problem before searching for a magic technology that will solve it](https://blog.ipspace.net/2020/09/video-define-the-problem-first.html), I continued the _[Focus on Business Challenges First](https://my.ipspace.net/bin/list?id=NetBiz#BF)_ presentation with [another set of seemingly simple questions](https://my.ipspace.net/bin/get/NetBiz/BF2%20-%20Know%20Your%20Users%20Needs.mp4?doccode=NetBiz):
 

@@ -1,7 +1,11 @@
 ---
-title: "Lessons Learned: Fundamentals Haven't Changed"
-date: 2021-09-10 07:10:00
-tags: [ networking fundamentals, video ]
+date: 2021-09-10 07:10:00+00:00
+series_title: 'Lessons Learned: Fundamentals Haven''t Changed'
+tags:
+- networking fundamentals
+- video
+title: 'Lessons Learned: Fundamentals Haven''t Changed'
+video_tag: netbiz
 ---
 Here's another bitter pill to swallow if you desperately want to [believe in the magic powers of unicorn dust](https://blog.ipspace.net/2016/01/the-sad-state-of-enterprise-networking.html): [laws of physics](https://blog.ipspace.net/2019/11/stretched-vlans-and-failing-firewall.html) and [networking fundamentals](https://www.ipspace.net/How_Networks_Really_Work) haven't changed (see also: RFC 1925 Rule 11). 
 
@@ -9,4 +13,4 @@ Whenever someone is promising a [miracle solution](https://blog.ipspace.net/2020
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/L2%20-%20Fundamentals%20Have%20Not%20Changed.mp4?doccode=NetBiz){{</jump>}}
 
-{{<note info>}}You'll need a Free ipSpace.net Subscription to watch the video.{{</note>}}
+{{<note free>}}You'll need a Free ipSpace.net Subscription to watch the video.{{</note>}}

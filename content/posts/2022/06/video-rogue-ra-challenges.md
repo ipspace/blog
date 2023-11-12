@@ -1,7 +1,12 @@
 ---
-title: "Video: Rogue IPv6 RA Challenges"
-date: 2022-06-10 06:33:00
-tags: [ IPv6, security, video ]
+date: 2022-06-10 06:33:00+00:00
+series_title: Rogue IPv6 RA Challenges
+tags:
+- IPv6
+- security
+- video
+title: 'Video: Rogue IPv6 RA Challenges'
+video_tag: ipv6sec
 ---
 IPv6 security-focused presentations were usually an awesome opportunity to lean back and enjoy another round of whack-a-mole, often starting with an attacker using IPv6 Router Advertisements to divert traffic (see also: [getting bored at Brussels airport](https://blog.ipspace.net/2011/11/ipv6-security-getting-bored-bru-airport.html)) .
 
