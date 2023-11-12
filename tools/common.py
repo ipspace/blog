@@ -63,21 +63,29 @@ def set_series_tag(post,series=None,s_tag=None):
     print("Cannot tag a post without series/category value")
     return
 
+  modified = False
+
   if series and not series in post.get('tags',[]):
     c_value = post.get('series',None)
     if c_value and isinstance(c_value,str):
       post['series'] = [ c_value ]
+      modified = True
     elif c_value is None:
       post['series'] = []
 
     if not series in post['series']:
       post['series'].append(series)
+      modified = True
 
   if not s_tag:
     s_tag = os.environ.get('BLOG_SERIES_TAG')
   if s_tag and series:
     series = series.lower().replace(' ','-')
     post[series+"_tag"] = s_tag
+    modified = True
     if os.environ.get('BLOG_SERIES_WEIGHT'):
       if not post.get("series_weight"):
         post["series_weight"] = int(os.environ.get('BLOG_SERIES_WEIGHT'))
+
+  if modified and not 'series_title' in post and ': ' in post.get('title',''):
+    post['series_title'] = post.get('title').split(': ')[-1]
