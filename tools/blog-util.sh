@@ -113,6 +113,8 @@ case "$1" in
     HUGO_CHANGE=
     shift
     for name in "$@"; do
+      name=$(blog_skip_url $name)
+      name=$(blog_find_file $name)
       blog_view_post $name
     done
     ;;
