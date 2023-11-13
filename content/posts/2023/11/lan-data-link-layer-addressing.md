@@ -33,6 +33,8 @@ Interesting side story: some manufacturers were too lazy for that. They didn't w
 
 [^BIA]: Sometimes called Burnt-In Address (BIA) because, in the ancient days, they used [write-once memory modules](https://en.wikipedia.org/wiki/Programmable_ROM) in which you programmed the contents of the memory by burning the connections.
 
+{{<figure src="/2023/11/dll-802-mac.png">}}
+
 ### Multicast- and Locally-Administered MAC Addresses
 
 An interesting tidbit: we have multicast and unicast addresses in Ethernet, which differ in the first bit on the wire. If the first bit transmitted by the sending NIC is zero, the frame is unicast. The receiving NIC has to figure out whether the remaining 47 bits match its MAC address[^BIA] and keep receiving the frame if they do[^PMODE]. If the first bit on the wire is one, the frame is a multicast or a broadcast frame, so everyone should listen and at least figure out whether they should be interested in the frame.
