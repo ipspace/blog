@@ -1,7 +1,11 @@
 ---
-title: "Video: Migrating into a Cloud"
-date: 2023-02-03 07:28:00
-tags: [ video, cloud ]
+date: 2023-02-03 07:28:00+00:00
+series_title: Migrating into a Cloud
+tags:
+- video
+- cloud
+title: 'Video: Migrating into a Cloud'
+video_tag: cloud
 ---
 [Matthias Luft](https://www.ipspace.net/Author:Matthias_Luft) concluded his part of [Introduction to Cloud Computing](https://www.ipspace.net/Introduction_to_Cloud_Computing) webinar with a case study: [how can you migrate an existing workload into a cloud environment](https://my.ipspace.net/bin/get/Cloud101/6.2%20-%20Case%20Study%20-%20Migrating%20into%20Cloud.mp4?doccode=Cloud101)?
 

@@ -1,6 +1,6 @@
 ---
 title: "Is BGP TTL Security Any Good?"
-date: 2023-11-14 07:38:00
+date: 2023-11-21 07:38:00
 tags: [ BGP, security, netlab ]
 pre_scroll: True
 netlab_tag: use
@@ -22,14 +22,14 @@ I want to make a few things crystal clear before someone writes a _you have no c
 
 * I wanted to show how easy it is to run some basic tests to expose potential flaws in security features. It's the methodology that matters, not the specific test results.
 * Things change. You will probably test a different software version than I did and get different results. That's OK.
-* I was running tests with virtual machines to ensure every network device uses its own TCP stack. Don't use containers as they use the host TCP stack.
+* I was running tests with virtual machines to ensure every network device uses its own TCP stack. Don't use containers, as they use the host TCP stack.
 * Hardware boxes might implement hardware-based protection. Run your own tests.
 
 ### Test Setup{#setup}
 
 I created a simple _netlab_ topology with two routers:
 
-* Device under test (`dut`) that has a *passive* BGP peer (to make sure it won't try to establish a TCP session) configured with GTSM.
+* Device under test (`dut`) with a *passive* BGP peer (to ensure it won't try to establish a TCP session) configured with GTSM.
 * A BGP peer (`peer`) implemented with a FRR container
 
 ```
@@ -75,7 +75,7 @@ This is the EBGP session configured between them:
 
 ## Test Results{#results}
 
-This time I got two clusters:
+This time I got three clusters:
 
 * [Arista EOS](#arista), [Cisco IOSv](#iosv), and [Cisco Nexus 9300v](#nxos) ignore incoming TCP SYN packets with too-low TTL
 * [Cumulus Linux](#cl) (and FRR in general) accept the TCP session, get stuck, and eventually drop it.
@@ -115,7 +115,7 @@ Cisco IOS is also ignoring incoming TCP SYN packets if the TTL is too low:
     172.16.0.2.47504 > 172.16.0.1.bgp: Flags [S], cksum 0xe2a1 (correct), seq 2871753705, win 64240, options [mss 1460,sackOK,TS val 3231805519 ecr 0,nop,wscale 7], length 0
 ```
 
-According to Cisco IOSv BGP debugging, the TCP SYN packets don't make it to the BGP daemon. You can see them with **debug ip tcp transactions** -- it looks like Cisco IOS is doing the right thing and dropping them in the TCP stack.
+According to Cisco IOSv BGP debugging, the TCP SYN packets don't reach the BGP daemon. You can see them with **debug ip tcp transactions** -- it looks like Cisco IOS is doing the right thing and dropping them in the TCP stack.
 
 ```
 *Nov  8 09:04:24.208: TCP0: bad seg from 172.16.0.2 -- Discard the invalid TTL packets, packet ttl 1: port 179 seq 4283340001 ack 0 rcvnxt 0 rcvwnd 16384 len 0
@@ -186,11 +186,11 @@ Unfortunately I don't have the VM images for other network operating systems usi
 
 There are two scenarios you might want to prevent with GTSM:
 
-* Establishing BGP session with an intruder after it manages to inject a more-specific route toward a valid EBGP peer. All devices I tested would pass this (pretty much hypothetical) scenario with flying colors[^DCI] 
-* Preventing denial-of-service TCP SYN attacks. Arista EOS and Cisco Nexus OS would do a much better job than Cumulus Linux because they drop packets with too-low TTL before they reach the TCP code in the Linux kernel. Obviously, once the volume of the DoS traffic exceeded the CPU capacity your box quickly starts resembling a brick.
+* Establishing a BGP session with an intruder after it manages to inject a more specific route toward a valid EBGP peer. All devices I tested would pass this (pretty much hypothetical) scenario with flying colors[^DCI] 
+* Preventing denial-of-service TCP SYN attacks. Arista EOS and Cisco Nexus OS would do a much better job than Cumulus Linux because they drop packets with too-low TTL before they reach the TCP code in the Linux kernel. Obviously, once the volume of the DoS traffic exceeds the CPU capacity, your box quickly starts resembling a brick.
 
 Hardware ACLs are the only way to go if you want to have a robust high-speed solution. [Control-plane protection](https://blog.ipspace.net/2008/11/control-plane-protection-overview.html) might be a decent first step, but it might drop good traffic together with the volumetric DoS attack. It's much better to deploy ACLs checking TCP port numbers and IP TTL on external interfaces, assuming your box has enough hardware resources to do that.
 
-Finally, keep in mind that you cannot apply GTSM to IBGP sessions in most BGP implementations. The only way to protect IBGP routers from external intruders is to deploy ACLs at the network edge, or to establish IBGP sessions between IP addresses that are not announced to the outside world. That might be the reason we sometimes see RFC 1918 address space used for router loopbacks (and BGP router IDs).
+Finally, remember that you cannot apply GTSM to IBGP sessions in most BGP implementations. The only way to protect IBGP routers from external intruders is to deploy ACLs at the network edge or to establish IBGP sessions between IP addresses that are not announced to the outside world. That might be why we sometimes see RFC 1918 address space used for router loopbacks (and BGP router IDs).
 
-[^DCI]: Unless the intruder is directly connected to the router in which case all bets are off. After all, we're all friends on link-local, right?
+[^DCI]: All bets are off if the intruder is directly connected to your router. After all, we're all friends on link-local, right?

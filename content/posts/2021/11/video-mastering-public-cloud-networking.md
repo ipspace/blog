@@ -1,7 +1,11 @@
 ---
-title: "Video: How Can You Master Public Cloud Networking?"
-date: 2021-11-05 07:22:00
-tags: [ cloud, video ]
+date: 2021-11-05 07:22:00+00:00
+series_title: How Can You Master Public Cloud Networking?
+tags:
+- cloud
+- video
+title: 'Video: How Can You Master Public Cloud Networking?'
+video_tag: cloud
 ---
 If you're a regular reader of this blog, you've probably realized there's still need for networking in public clouds, and mastering it requires slightly different set of skills. What could you as a networking engineer to get fluent in this different world? I collected a few hints in the last video in _[Introduction to Cloud Computing](https://www.ipspace.net/Introduction_to_Cloud_Computing)_ webinar.
 

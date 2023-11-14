@@ -1,7 +1,13 @@
 ---
-title: "Video: Public Cloud Networking Overview"
-date: 2020-06-05 06:12:00
-tags: [ cloud, AWS, Azure, video ]
+date: 2020-06-05 06:12:00+00:00
+series_title: Public Cloud Networking Overview
+tags:
+- cloud
+- AWS
+- Azure
+- video
+title: 'Video: Public Cloud Networking Overview'
+video_tag: cloud
 ---
 [Donal O Duibhir](https://www.linkedin.com/in/podomere/) was trying to get me to present at [INOG](https://inog.net/) for ages, and as much as I'd love to get to Ireland we always had a scheduling conflict.
 

@@ -1,7 +1,13 @@
 ---
-title: "Video: Simplify Device Configurations with Cumulus Linux"
-date: 2020-10-16 06:49:00
-tags: [ data center, design, Cumulus Linux, video ]
+date: 2020-10-16 06:49:00+00:00
+series_title: Simplify Device Configurations with Cumulus Linux
+tags:
+- data center
+- design
+- Cumulus Linux
+- video
+title: 'Video: Simplify Device Configurations with Cumulus Linux'
+video_tag: cumulus
 ---
 The designers of Cumulus Linux CLI were always focused on simplifying network device configurations. One of the first features along these lines was [BGP across unnumbered interfaces](https://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html), then they introduced simplified EVPN configurations, and recently [auto-MLAG and auto-BGP](https://blog.ipspace.net/2019/10/auto-mlag-and-auto-bgp-in-cumulus-linux.html).
 
