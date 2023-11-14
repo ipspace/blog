@@ -1,7 +1,12 @@
 ---
-title: "Video: Hacking BGP for Fun and Profit"
-date: 2023-11-03 07:16:00
-tags: [ BGP, security, video ]
+date: 2023-11-03 07:16:00+00:00
+series_title: Hacking BGP for Fun and Profit
+tags:
+- BGP
+- security
+- video
+title: 'Video: Hacking BGP for Fun and Profit'
+video_tag: bgp
 ---
 At least some people learn from others' mistakes: using the concepts proven by some [well-publicized BGP leaks](https://blog.ipspace.net/2023/10/video-history-bgp-route-leaks.html), malicious actors quickly figured out how to [hijack BGP prefixes for fun and profit](https://my.ipspace.net/bin/get/Net101/NS5.2%20-%20Hacking%20BGP%20for%20Fun%20and%20Profit.mp4?doccode=Net101).
 

@@ -8,6 +8,7 @@ tags:
 - video
 - EVPN
 title: 'Video: vPC Fabric Peering with EVPN Multihoming'
+video_tag: evpn
 ---
 After [implementing MLAG functionality with EVPN](https://my.ipspace.net/bin/get/EVPN/M3%20-%20Using%20MLAG%20in%20EVPN%20Environments.mp4?doccode=EVPN) and having a VXLAN-like fabric transport path between MLAG members, it becomes possible to get rid of the [MLAG peer link](https://blog.ipspace.net/2022/06/mlag-deep-dive-overview.html). 
 

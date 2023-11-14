@@ -1,7 +1,12 @@
 ---
-title: "Video: Public Cloud Networking Is Different"
-date: 2021-10-01 06:20:00
-tags: [ cloud, IP routing, video ]
+date: 2021-10-01 06:20:00+00:00
+series_title: Public Cloud Networking Is Different
+tags:
+- cloud
+- IP routing
+- video
+title: 'Video: Public Cloud Networking Is Different'
+video_tag: cloud
 ---
 Even though you need plenty of traditional networking constructs to deploy a complex application stack in a public cloud (packet filters, firewalls, load balancers, VPN, BGP...), once you start digging deep into the bowels of public cloud virtual networking, you'll find out it's significantly different from the traditional Ethernet+IP implementations common in enterprise data centers.
 

@@ -1,7 +1,11 @@
 ---
-title: "Video: Functions-as-a-Service Demo"
-date: 2022-03-11 08:15:00
-tags: [ cloud, video ]
+date: 2022-03-11 08:15:00+00:00
+series_title: Functions-as-a-Service Demo
+tags:
+-  cloud
+- video
+title: 'Video: Functions-as-a-Service Demo'
+video_tag: cloud
 ---
 *Serverless computing* (marketing term for code running on servers managed by other people) is one of the must-have terms if you're playing a Buzzword Bingo, but what does it really mean and how does the whole thing work?
 

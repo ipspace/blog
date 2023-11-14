@@ -1,7 +1,12 @@
 ---
-title: "Video: History of BGP Route Leaks"
-date: 2023-10-23 09:38:00
-tags: [ BGP, security, video ]
+date: 2023-10-23 09:38:00+00:00
+series_title: History of BGP Route Leaks
+tags:
+- BGP
+- security
+- video
+title: 'Video: History of BGP Route Leaks'
+video_tag: bgp
 ---
 I'll be talking about Internet routing security at the [Deep conference](https://deep-conference.com/) in a few days, and just in case you won't be able to make it[^BOAS] ;) here's the first bit of my talk: [a very brief history of BGP route leaks](https://my.ipspace.net/bin/get/Net101/NS5.1%20-%20History%20of%20BGP%20Route%20Leaks.mp4?doccode=Net101)[^NIND].
 

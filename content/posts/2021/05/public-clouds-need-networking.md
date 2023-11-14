@@ -1,7 +1,11 @@
 ---
-title: "Video: We Still Need Networking in Public Clouds"
-date: 2021-05-21 06:09:00
-tags: [ cloud, video ]
+date: 2021-05-21 06:09:00+00:00
+series_title: We Still Need Networking in Public Clouds
+tags:
+- cloud
+- video
+title: 'Video: We Still Need Networking in Public Clouds'
+video_tag: cloud
 ---
 Whenever someone starts mansplaining that we need no networking when we move the workloads into a public cloud, please walk away -- he has just proved how clueless he is. 
 
