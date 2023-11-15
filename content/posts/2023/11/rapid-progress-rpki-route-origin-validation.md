@@ -1,6 +1,7 @@
 ---
 title: "Rapid Progress in BGP Route Origin Validation"
 date: 2023-11-07 06:27:00
+lastmod: 2023-11-15 19:38:00
 tags: [ BGP, security ]
 ---
 In 2022, I was invited to speak about Internet routing security at the [DEEP conference](https://deep-conference.com/) in Zadar, Croatia. One of the main messages of the presentation was how slow the progress had been even though we had had all the tools available for at least a decade ([RFC 7454](https://datatracker.ietf.org/doc/html/rfc7454) was [finally published in 2015](https://blog.ipspace.net/2015/02/rfc-7454-bgp-operations-and-security.html), and we [started writing it in early 2012](https://blog.ipspace.net/2012/03/my-first-internet-draft-has-just-been.html)).
@@ -29,10 +30,14 @@ A [recent MANRS blog post](https://www.manrs.org/2023/10/rovista-measuring-curre
 
 Even better: ROV adoption at the tier-1 level shields the autonomous systems using those tier-1 providers from distant shenanigans. However, it obviously cannot protect customers of a regional ISP from bogus announcements created in the same region.
 
-Now for some bad news: the future is not evenly distributed. As I was preparing yet another BGP security presentation for an Italian conference, I used the results of the same [measurement tool](https://rovista.netsecurelab.org/) to see whether Italian ISPs perform Route Origin Validation[^NPI], and the results were dismal:
+If you want to know how well ROV protects end users, check out the work done by [Geoff Huston and his team](https://www.potaroo.net/ispcol/2023-11/measure-roas.html). They are using Cloudflare RPKI beacons (meaning the destination is always close to the end-user) and doing measurements from the web browsers. Here's their view of the worldwide ROV adoption:
+
+{{<figure src="https://www.potaroo.net/ispcol/2023-11/roas-f3.png" caption="Worldwide ROV adoption (from potaroo.net)">}}
+
+Now for some bad news: as is evident from the above map, the future is not evenly distributed. As I was preparing yet another BGP security presentation for an Italian conference, I used the results of the [RoVista measurement tool](https://rovista.netsecurelab.org/) to see whether Italian ISPs perform Route Origin Validation[^NPI], and the results were dismal:
 
 {{<figure src="/2023/11/rov-adoption-italy.png" link="/2023/11/rov-adoption-italy.png">}}
 
-There's still plenty of work to do before we have secure and resilient Internet routing.
+Plenty of work still needs to be completed before we have secure and resilient Internet routing.
 
-[^NPI]: Please note I'm not picking on Italian ISPs; I just wanted to show locally relevant data. We'd probably get the same results for almost any country worldwide.
+[^NPI]: Please note I'm not picking on Italian ISPs; I just wanted to show locally relevant data. We'd probably get similar results for most countries.
