@@ -11,7 +11,7 @@ The first local area networks (LANs) ran on a physical multi-access medium. The 
 
 Later versions of Ethernet used thinner cables with connectors that you put together to build whole network segments out of pieces of cable. However, even in that case, we were dealing with a single multi-access physical network -- disconnecting a cable would bring down the whole network.
 <!--more-->
-[^HTBY]: The coaxial cable had to be bright yellow.
+[^HTBY]: The coaxial cable had to be bright yellow, and it [seems to be indestructible](https://subnetzero.info/2023/11/13/frozen-yellow-garden-hose/). Someone even managed to [revive and use 10BASE5 transceivers in 2012](https://www.mattmillman.com/projects/10base5/).
 
 There was a significant difference between these networks and earlier multi-access technologies: LANs had no master station. Their designers wanted to build a peer-to-peer network where any node could send data to any other node, meaning they needed an in-network addressing mechanism[^NNP2P]. While one could use addresses from a higher-level protocol (like Fibre Channel does), local area networks had to support over a dozen network layer protocols in those days, each with a different addressing scheme. To be independent of the higher-layer protocols, Ethernet designers decided to add addresses to the data-link layer frames, and that's how we got destination- and source MAC[^MAC] addresses in the Ethernet frames.
 
