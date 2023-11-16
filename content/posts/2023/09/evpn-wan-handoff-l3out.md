@@ -29,6 +29,7 @@ The third option is pretty much the same as the second one with the difference t
 
 EVPN to EVPN or EVPN to L3VPN re-origination allows the filtering of routes as you would do with BGP anyway -- on the sessions or at the redistribution point. Also, there are table-maps for intra-VRF filtering.
 
+{{<next-in-series page="/posts/2023/11/arista-evpn-l3out-handoff.html">}}**Coming up next:** L3 WAN handoff on Arista EOS{{</next-in-series>}}
 ### Revision History
 
 2023-09-06
