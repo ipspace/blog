@@ -1,6 +1,6 @@
 ---
 title: "Using Default Route to Reach BGP Next Hops"
-date: 2023-11-25 08:22:00
+date: 2023-11-30 08:22:00
 tags: [ BGP ]
 draft: True
 ---
