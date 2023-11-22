@@ -1,6 +1,6 @@
 ---
 title: "Can a Router Use the Default Route to Reach BGP Next Hops?"
-date: 2023-11-23 07:22:00
+date: 2023-11-27 07:22:00
 tags: [ BGP ]
 pre_scroll: True
 ---
