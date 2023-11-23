@@ -1,6 +1,6 @@
 ---
 title: "Worth Reading: DNS over IPv6"
-date: 2023-11-26 07:44:00
+date: 2023-12-03 07:44:00
 tags: [ worth reading, IPv6 ]
 ---
 What happens when you let a bunch of people work on different aspects of a solution without them ever talking to each other? You get DNS over IPv6. As [nicely explained by Geoff Huston](https://www.potaroo.net/ispcol/2023-11/dns-ipv6.html), this is just one of the bad things that could happen:
