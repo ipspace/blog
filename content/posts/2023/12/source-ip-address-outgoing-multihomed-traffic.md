@@ -1,6 +1,6 @@
 ---
 title: "Setting Source IP Address on Traffic Started by a Multihomed Host"
-date: 2023-11-30 11:20:00
+date: 2023-12-30 11:20:00
 tags: [ IP routing, TCP ]
 draft: True
 ---
