@@ -19,7 +19,7 @@ In EOS, we implemented the solution depicted in RFC9104 (L2 GW) and the one from
 
 You can configure the two domains (remote and local) at the EVPN AF level under BGP, and a couple of other commands, and most of the work is done. Then, you can have dedicated remote and local domain RDs and RTs (today, for L2, L3 will come in a later release). We can do MLAG (on DCI gateway) and anycast-ip for gateway redundancy today. We will also support the EVPN all-active GW redundancy mode in a few releases.
 
-We have chosen to implement RFC9104 for the L2GW and IP VPN  interworking instead of the competing draft (draft-sharma-bess-multi-site-evpn) because of these advantages:
+We have chosen to implement RFC9014 for the L2GW and IP VPN  interworking instead of the competing draft (draft-sharma-bess-multi-site-evpn) because of these advantages:
 
 1. Interoperability: we can interoperate with a larger number of vendors
 2. Multiple data plane encapsulations: the second draft only supports the VXLAN data plane;
@@ -27,3 +27,10 @@ We have chosen to implement RFC9104 for the L2GW and IP VPN  interworking instea
 4. MAC mobility: with our approach (RFC9104), local MAC moves don’t trigger type-2 updates towards remote gateways;
 
 Last but not least, we are actively looking at implementing the “Unknown MAC route” (UMR) in the future. That will significantly improve scaling and overall stability as only the gateways may keep on maintaining all the MAC Type-2 advertisements and only originate a type-2 UMR NLRI to the local leaf devices so that, in case of remote MAC churns, they will be able to “shield” the local domain from the remote faults.
+
+---
+
+### Revision History
+
+2023-12-02
+: Fixed the EVPN RFC number (9104 → 9014)
