@@ -30,11 +30,11 @@ There's an even more important fallacy in this line of thinking. You're making y
 
 You need a running network to get to most of these components, resulting in a nightmare circular dependency -- once you lose that VM, it will be very hard to get it back.
 
-Seasoned networking architects have been aware of the dangers of circular dependencies way before the *centralized controller* SDN hype started (see *[SDN Controller in VM](https://my.ipspace.net/bin/get/SDNMonitor/D1%20-%20SDN%20Controller%20in%20a%20VM.mp4?doccode=SDNMonitor)* video by [Terry Slattery](https://www.ipspace.net/Author:Terry_Slattery)), and virtualization vendors like VMware were always very careful to have at least some semblance of independent control plane on hypervisor hosts to be able to restart the management system from the outside[^CD-1000v]. Networking vendors have no such reservations -- looking at some slide decks, it seems perfectly fine to run network control plane on infrastructure that has heavy circular dependencies on the network itself (not to mention DNS or NTP)[^CD-Rule4].
+Seasoned networking architects have been aware of the dangers of circular dependencies way before the *centralized controller* SDN hype started, and virtualization vendors like VMware were always very careful to have at least some semblance of an independent control plane on hypervisor hosts to be able to restart the management system from the outside[^CD-1000v]. Networking vendors have no such reservations -- looking at some slide decks, it seems perfectly fine to run a network control plane on infrastructure with heavy circular dependencies on the network itself (not to mention DNS or NTP)[^CD-Rule4].
 
 [^CD-1000v]: Cisco Nexus 1000v architects learned that lesson the hard way -- after the 1000v control plane VM failure, the ESXi hosts would get (permanently) disconnected from the network because they ran LACP from the control plane.
 
-[^CD-Rule4]: Proving (yet again) RFC 1925 rule 4 and 5
+[^CD-Rule4]: Proving (yet again) RFC 1925 rules 4 and 5
  
 Think something like that can never happen, or that you could build enough resiliency into your design to survive any possible failure? Look no further than the October 2021 Facebook outage that [disconnected Facebook from the Internet](https://blog.cloudflare.com/october-2021-facebook-outage/).
 
