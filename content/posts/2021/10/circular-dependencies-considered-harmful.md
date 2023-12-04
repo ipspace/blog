@@ -11,7 +11,7 @@ tags:
 - virtualization
 title: Circular Dependencies Considered Harmful
 ---
-A while ago my friend Nicola Modena sent me another intriguing curveball:
+A while ago, my friend Nicola Modena sent me another intriguing curveball:
 
 > Imagine a CTO who has invested millions in a super-secure data center and wants to consolidate all compute workloads. If you were asked to run a BGP Route Reflector as a VM in that environment, and would like to bring OSPF or ISIS to that box to enable BGP ORR, would you use a GRE tunnel to avoid a dedicated VLAN or boring other hosts with routing protocol hello messages?
 
@@ -46,15 +46,15 @@ It seems (from the outside) like they had a circular dependency between DNS and 
 
 In the meantime, there were [reports on Twitter](https://arstechnica.com/information-technology/2021/10/facebook-instagram-whatsapp-and-oculus-are-down-heres-what-we-know/) that Facebook employees couldn't enter buildings (doors not being able to reach authentication servers), and [couldn't use third-party services](https://www.theverge.com/2021/10/4/22709575/facebook-outage-instagram-whatsapp) like Google Docs or Zoom because those required Facebook authentication.
 
-Based on how long it took them to get to the affected routers, it looks like their out-of-band network was of no use (OOB access servers relying on RADIUS servers?). After the outage was over, [there were claims](https://twitter.com/cullend/status/1445156376934862848) the final tool needed to get to the bricked router(s) was an angle grinder  ([same source](https://twitter.com/cullend/status/1445157085591871489): *none of the doors have keyholes so what happens if that system goes down?*)
+Based on how long it took them to get to the affected routers, it looks like their out-of-band network was useless (OOB access servers relying on RADIUS servers?). After the outage was over, [there were claims](https://twitter.com/cullend/status/1445156376934862848) the final tool needed to get to the bricked router(s) was an angle grinder  ([same source](https://twitter.com/cullend/status/1445157085591871489): *none of the doors have keyholes so what happens if that system goes down?*)
 
-Every large-enough system is full of circular dependencies (someone should make a law out of that). Kripa Krishnan (Google) mentioned a few they discovered during Disaster Recovery Testing in a (must read) [ACM Queue Article](https://queue.acm.org/detail.cfm?id=2371516):
+Every large enough system is full of circular dependencies (someone should make a law out of that). Kripa Krishnan (Google) mentioned a few they discovered during Disaster Recovery Testing in a (must read) [ACM Queue Article](https://queue.acm.org/detail.cfm?id=2371516):
 
 * Failovers failed because the alternate location was unavailable;
 * Lack of authentication servers locked out the workstations;
 * The configuration server for the alerting and paging system went offline, making it impossible to redirect alerts to other locations.
 
-Couldn't we avoid the dependencies? Of course we could if someone would be able to visualize the whole picture[^1], but that tends to be impossible in large-enough systems. Another root cause might be the stability of the infrastructure[^2] -- when an infrastructure is stable enough, its users take it as a given (see also: [first fallacy of distributed computing](https://my.ipspace.net/bin/get/Net101/F2.1%20-%20Network%20Is%20%28Not%29%20Reliable.mp4?doccode=Net101)).
+Couldn't we avoid the dependencies? Of course, we could if someone could visualize the whole picture[^1], but that tends to be impossible in large enough systems. Another root cause might be the stability of the infrastructure[^2] -- when infrastructure is stable enough, its users take it as a given (see also: [first fallacy of distributed computing](https://my.ipspace.net/bin/get/Net101/F2.1%20-%20Network%20Is%20%28Not%29%20Reliable.mp4?doccode=Net101)).
 
 What else could we do? Test, test, test. Trigger real failures ([don't fake them](https://blog.ipspace.net/2019/09/disaster-recovery-test-faking-another.html)), learn from them, and fix stuff. [All the big players do that](https://queue.acm.org/detail.cfm?id=2371297); maybe it's time for you to start as well.
 
