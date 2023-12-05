@@ -1,7 +1,7 @@
 ---
 title: "BGP Labs: Use BGP Route Reflectors"
 series_title: "Use BGP Route Reflectors"
-date: 2023-12-05 07:36:00
+date: 2023-12-06 07:36:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
 netlab_tag: bgplab

@@ -1,7 +1,7 @@
 ---
 title: "netlab 1.7.0: Lab Validation, Fabrics, BGP Nerd Knobs"
 series_title: "Lab Validation, Fabrics, BGP Nerd Knobs (Release 1.7.0)"
-date: 2023-12-07 05:50:00
+date: 2023-12-05 05:50:00
 tags: [ netlab ]
 netlab_tag: release
 ---

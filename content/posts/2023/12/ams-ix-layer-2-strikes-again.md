@@ -1,6 +1,6 @@
 ---
 title: "AMS-IX Outage: Layer-2 Strikes Again"
-date: 2023-12-06 08:18:00
+date: 2023-12-07 08:18:00
 tags: [ switching ]
 ---
 On November 22nd, 2023, AMS-IX, one of the largest Internet exchanges in Europe, experienced a significant performance drop lasting more than four hours. While its peak performance is around 10 Tbps, it dropped to about 2.1 Tbps during the outage.
