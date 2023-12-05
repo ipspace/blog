@@ -7,7 +7,7 @@ netlab_tag: release
 ---
 It's been a while since the [last netlab release](https://blog.ipspace.net/2023/10/netlab-1-6-4-more-bgp-nerd-knobs.html). Most of that time was spent refactoring stuff that you don't care about, but you might like these features:
 
-- You can run automated [lab validation tests](https://netlab.tools/release/#../topology/validate.md) with the  **[netlab validate](https://netlab.tools/release/#../netlab/validate.md)** command. I will explain how I use that in BGP labs in a few days.
+- You can run automated [lab validation tests](https://netlab.tools/topology/validate/) with the  **[netlab validate](https://netlab.tools/netlab/validate/)** command. I will explain how I use that in [BGP labs](https://bgplabs.net/) in a few days.
 - If you want to build large leaf-and-spine topologies, you'll love the [**fabric** plugin](https://netlab.tools/plugins/fabric/).
 - The [**bgp.domain** plugin](https://netlab.tools/plugins/bgp.domain/) allows you to create topologies with multiple sites using the same BGP AS number.
 - The [**bgp.policy** plugin](https://netlab.tools/plugins/bgp.policy/) got AS-path prepending.
