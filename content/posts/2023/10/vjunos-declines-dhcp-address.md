@@ -17,6 +17,14 @@ Before someone gets the wrong message: I'm not criticizing Juniper or vJunos.
 However, it looks like something broke in vJunos release 23.2, and it would be nice to figure out what the workaround might be.
 {{</long-quote>}}
 <!--more-->
+{{<note update>}}
+### Updates (2023-12-05)
+
+* The behavior was caused by a DHCP client bug in vJunos release 23.2R1.5
+* That bug is fixed in release 23.2R1-S1. It took 3.5 months to get a fixed version, but that's a different story.
+* Release 23.2R1-S1 totally changed VM connectivity requirements (the VM no longer needs external PFE and RPIO links), making the new VM connectivity settings incompatible with the old ones.
+* [_netlab_ release 1.7](https://netlab.tools/release/1.7/) supports [vJunos release 23.2R1-S1](https://netlab.tools/release/1.7/#release-1-7-0-breaking). If you want to use older vJunos releases, use _netlab_ release 1.6.4.
+{{</note>}}
 It started innocently enough: someone complained that they cannot [build vPTX Vagrant box](https://netlab.tools/labs/vptx/) with **[netlab](https://netlab.tools/)**. It quickly turned out to be a case of *thou shalt be root*, and the fix was trivial: add a `sudo` command in the right place. Obviously I wanted to check whether the fix worked, so I:
 
 * Downloaded the latest [vJunos Evolved QCOW image](https://support.juniper.net/support/downloads/?p=vjunos-evolved). Major kudos to Juniper -- downloading a virtual appliance has never been easier. They even provide a direct URL I could use to download the QCOW image straight to my remote server.
