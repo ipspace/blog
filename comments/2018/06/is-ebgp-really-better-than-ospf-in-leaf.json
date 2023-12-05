@@ -1,179 +1,187 @@
 {
-  "comments": [
-    {
-      "date": "04 June 2018 12:21",
-      "html": "To answer your question: yes",
-      "id": "1350177347400989786",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Anonymous",
-      "profile": null,
-      "pub": "2018-06-04T12:21:38.785+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "date": "04 June 2018 18:08",
-      "html": "I don&#39;t know if one is absolutely better than the other but we chose eBGP because we leverage the underlay not only for announcing VTEPs /32 but also for many other things (multicast, avoid doubling vxlan encaps., filtering some prefixes, providing local subnets per leafs for services that don&#39;t require stretched L2 =&gt; multicast for instance :)  etc...). Our MAN is based on IGP/iBGP, it was simpler to interconnect with eBGP our underlay than playing with OSPF/BGP redistribution and keeping an end to end bgp-based network. Our fabrics scaling haven&#39;t been a requirement when it came to choose the underlay protocol.",
-      "id": "8465459926065250146",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "AlexM",
-      "profile": null,
-      "pub": "2018-06-04T18:08:27.227+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "04 June 2018 21:14",
-          "html": "No, it&#39;s not an option. We want multi vendor interoperability. So only OSPF and IS-IS left.",
-          "id": "700440294143359448",
-          "image": "https://resources.blogblog.com/img/blank.gif",
-          "name": "Anonymous",
-          "profile": null,
-          "pub": "2018-06-04T21:14:05.151+02:00",
-          "ref": "606833728088894703",
-          "type": "comment"
-        }
-      ],
-      "date": "04 June 2018 21:02",
-      "html": "Maybe for small/ mid and semi large fabrics Open EIGRP can have an opportunity. Topology table has all the successors ready to go. Limit your DUAL boundaries or use different ASs. There are always options and nerd nobs. ",
-      "id": "606833728088894703",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "jsicuran",
-      "profile": "https://www.blogger.com/profile/07267516785767923381",
-      "pub": "2018-06-04T21:02:22.124+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "date": "05 June 2018 05:41",
-      "html": "BGP gives you some pacing for free as flow-control is receiver driven (you close your TCP Window, Sender stops) - IS-IS and OSPF have no flow-control, so if you assume a naive implementation then you could say that BGP gives you some edge. However if you know what you&#39;re doing (read: get the I/O module right) then you can make it work - regardless of the protocol.",
-      "id": "7552093623890822765",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Hannes Gredler",
-      "profile": null,
-      "pub": "2018-06-05T05:41:53.370+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "06 June 2018 12:06",
-          "html": "&quot;BGP avoids flooding&quot; &lt;&lt; You did read the blog post, right? It does almost exactly the same thing as OSPF with the additional drawback of recomputing BGP tables every now and then during the convergence process.<br /><br />&quot;Its all unicast based update policy mechanism&quot; &lt;&lt; Which is relevant how exactly?<br /><br />&quot;and its withdrawn routes can be softly send to neighbors for unnecessary control plane B.W. wastages.&quot; &lt;&lt; Please explain in more details. Thinking about how OSPF or BGP would revoke a route, I can&#39;t figure out what you&#39;re trying to tell me.<br /><br />&quot;It is policy based&quot; &lt;&lt; hopefully not relevant in data center fabric underlay.<br /><br />&quot;and it can scale well for more than 100k routes&quot; &lt;&lt; if that&#39;s relevant in underlay fabric you shouldn&#39;t be reading my blog posts but hire an architect who knows what he&#39;s doing ;))<br /><br />&quot;Convergence can be improved with BFD with some non-aggressive timers.&quot; &lt;&lt; Ever heard of BFD for OSPF?<br /><br />&quot;Reliability and flow control is taken care by TCP&quot; &lt;&lt; Now that&#39;s the only relevant one. However, as Hannes wrote, it&#39;s all the question of whether you get the I/O module right. You can&#39;t miss much if you&#39;re forced to use TCP, but there&#39;s an LSA acknowledgement mechanism in OSPF that you could use for pacing (not saying anyone does that).",
-          "id": "1613970899333884799",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-06-06T12:06:41.379+02:00",
-          "ref": "1582360071582420463",
-          "type": "comment"
-        },
-        {
-          "date": "06 June 2018 12:07",
-          "html": "Missed one: &quot;BGP avoids flooding&quot; &lt;&lt; it does avoid _periodic_ flooding caused by database refreshes. Not configurable in OSPF (because RFC authors know better than you do what you need in your network), configurable in IS-IS.",
-          "id": "8587648253030099123",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-06-06T12:07:52.440+02:00",
-          "ref": "1582360071582420463",
-          "type": "comment"
-        }
-      ],
-      "date": "05 June 2018 08:03",
-      "html": "BGP avoids flooding . Its all unicast based update policy mechanism and its withdrawn routes can be softly send to neighbors for unnecessary control plane B.W. wastages. <br />It is policy based and it can scale well for more than 100k routes. <br />Convergence can be improved with BFD with some non-aggressive timers. <br />Reliability and flow control is taken care by TCP .",
-      "id": "1582360071582420463",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Hemanth Raj",
-      "profile": null,
-      "pub": "2018-06-05T08:03:04.476+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "date": "08 June 2018 10:56",
-      "html": "Hi Ivan<br /><br />Regarding the dirty details, by default Cisco IOS-XR will also prevent sending BGP updates containing the AS configured on the remote peer. The feature is called as-path-loopcheck and is enabled by default. One important detail is if several BGP neighbors belong to the same BGP update-group, this will be disabled.<br /><br />Here is the command reference:<br /><br />https://www.cisco.com/c/en/us/td/docs/routers/crs/software/crs_r4-2/routing/command/reference/b_routing_cr42crs/b_routing_cr42crs_chapter_01.html#wp3145726977<br /><br />If for some reasons customers want to disable this optimization (I know some McGyvers), they can use &quot;as-path-loopcheck out disable&quot; command.<br /><br />Best<br />Fred",
-      "id": "7795240967739080764",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Fred Cuiller",
-      "profile": "https://twitter.com/fcuiller",
-      "pub": "2018-06-08T10:56:46.292+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "date": "10 June 2018 19:17",
-      "html": "it should be interesting to see what comes of the dynamic flooding (https://tools.ietf.org/html/draft-li-dynamic-flooding-04) work that&#39;s currently underway in LSR.  imho, this is the most interesting work in this space in recent memory.  dense graphs are no longer constrained to DC clos environments and these problems will likely start to manifest themselves in some WAN environments. <br /><br />this has the added perk of not relying on specific topological behaviors as some of the aforementioned approaches do.",
-      "id": "3175208888963911299",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/13046728001822941225",
-      "pub": "2018-06-10T19:17:32.862+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "date": "27 June 2018 16:17",
-      "html": "I &lt;3 EBGP leaf/spine. As Ivan mentioned, the key is same ASN on the spine switches. The goal is KISS.<br /><br />At this point in my career, I&#39;m done with IGPs. Too many nerd nobs, too many contingencies, too many &quot;too many&quot;s. EBGP Leaf/Spine works great in my Data Center and in my Campus Networks. IGPs can go to hell.  BGP ALL THE THINGS!!",
-      "id": "4123816987906417701",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "DixieWrecked",
-      "profile": "https://www.blogger.com/profile/07558338594755954015",
-      "pub": "2018-06-27T16:17:02.331+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "date": "28 June 2018 11:12",
-      "html": "Let&#39;s be honest.Let&#39;s face it.  The only true reason why we really need BGP (internal or external) is not scalability but the mess that the humans do. With a proper design and almost ideal implementation (clever use of sumarization) BGP would not be needed at all. Don&#39;t get me wrong, I love BGP and use it everyday but in one ideal world writing a few extensions for IS-IS or OSPF would have been the way to go to avoid using BGP everywhere. It is a little provocation of course but please have alook to what Jeff Doyle also says in regard to his masterpiece books TCP&amp;IP I v1",
-      "id": "2288094757991609187",
-      "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-      "name": "Unknown",
-      "profile": "https://www.blogger.com/profile/16652193864670731778",
-      "pub": "2018-06-28T11:12:16.530+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "date": "18 July 2018 10:50",
-      "html": "Hi Ivan, Seems like I missed the party due to busy schedule. :)<br /><br />I don&#39;t know how many Network Engineers have to build a Network like this in real life outside Webscales and Cloud providers. But let&#39;s keep that discussion for later. It&#39;s always interesting to hear all kind of reasons from people to deploy CLOS fabrics in DC in Enterprise segment typically that I deal with while they mostly don&#39;t have clue about why they should be doing it in first place. Forget about their understanding of CLOS Fabrics, Overlays etc. Usually a good justification is DC to support high amount of East-West Traffic....but really ? If you ask them if they even have any benchmarks or tools to measure that in first place :)<br /><br />Now coming back to Original question of BGP vs OSPF in DC <br /><br />Interestingly I had a conversation with Arxxxa guys few months back during any interview and I was bashed for proposing OSPF for all wrong reasons. Just because they use BGP in their fabric doesn&#39;t mean everyone has to follow. They even didn&#39;t seem to have any clue about RIFT, Open Fabric, Fibbing etc.<br /><br />As you mentioned &#39; BGP Path Hunting &quot; is an important problem to be solved to reduce the Churn. But of course it comes at it&#39;s own price and downsides.<br /><br />I also saw a comment rejecting EIGRP in favor of multi vendor networking. Well from overlay Networking perspective does EVPN work just fine today ?<br /><br />- How about Fabric Automation and Orchestration in that case ?<br /><br />On a closing note I would like to summarize couple of misconceptions around CLOS Fabric :) ... Please feel free to correct me and add as needed<br /><br />- CLOS AKA Leaf And Spine is Non-Blocking fabric ( Really ? It&#39;s Non Contending but not non blocking)<br />- BGP is the best choice for CLOS (Just because Petr thought ? , but wait Petr was doing this for a WebScale which is far different from Enterprise DC)<br />- BGP is a good choice as it allows granular policy control <br />- BGP has less Churn<br />- BGP Scales far better (In History at least many large ISPs were running OSPF Area 0 for entire network) ... Scale is also a function of HW too and subjective to optimization techniques and so forth<br />- Layer 2 Fabrics can&#39;t be extended beyond 2 Spine switches ( A long argument I had with Arxxxa guys on this. They don&#39;t even count SPB as Layer 2 fabric and so forth)<br /><br />Maybe you would like to cover these mis-conceptions in Spine and Leaf Webinar as updates.<br /><br />TC !!!<br />",
-      "id": "4430946733793890437",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Evil CCIE",
-      "profile": "http://deepakarora1984.blogspot.com",
-      "pub": "2018-07-18T10:50:54.342+02:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    },
-    {
-      "comments": [
-        {
-          "date": "07 December 2018 07:42",
-          "html": "See https://www.ipspace.net/Data_Center_BGP",
-          "id": "5494502901652171138",
-          "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
-          "name": "Ivan Pepelnjak",
-          "profile": "https://www.blogger.com/profile/13457151406311272386",
-          "pub": "2018-12-07T07:42:33.548+01:00",
-          "ref": "4640290537637711718",
-          "type": "comment"
-        }
-      ],
-      "date": "07 December 2018 00:59",
-      "html": "Hi, what about using a single AS for the whole Spine and Leaf config?",
-      "id": "4640290537637711718",
-      "image": "https://resources.blogblog.com/img/blank.gif",
-      "name": "Ze To",
-      "profile": null,
-      "pub": "2018-12-07T00:59:27.896+01:00",
-      "ref": "8137289796210340333",
-      "type": "comment"
-    }
-  ],
-  "count": 15,
-  "id": "8137289796210340333",
-  "type": "post",
-  "url": "2018/06/is-ebgp-really-better-than-ospf-in-leaf.html"
+   "comments": [
+      {
+         "date": "04 June 2018 12:21",
+         "html": "To answer your question: yes",
+         "id": "1350177347400989786",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Anonymous",
+         "profile": null,
+         "pub": "2018-06-04T12:21:38.785+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "date": "04 June 2018 18:08",
+         "html": "I don&#39;t know if one is absolutely better than the other but we chose eBGP because we leverage the underlay not only for announcing VTEPs /32 but also for many other things (multicast, avoid doubling vxlan encaps., filtering some prefixes, providing local subnets per leafs for services that don&#39;t require stretched L2 =&gt; multicast for instance :)  etc...). Our MAN is based on IGP/iBGP, it was simpler to interconnect with eBGP our underlay than playing with OSPF/BGP redistribution and keeping an end to end bgp-based network. Our fabrics scaling haven&#39;t been a requirement when it came to choose the underlay protocol.",
+         "id": "8465459926065250146",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "AlexM",
+         "profile": null,
+         "pub": "2018-06-04T18:08:27.227+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "04 June 2018 21:14",
+               "html": "No, it&#39;s not an option. We want multi vendor interoperability. So only OSPF and IS-IS left.",
+               "id": "700440294143359448",
+               "image": "https://resources.blogblog.com/img/blank.gif",
+               "name": "Anonymous",
+               "profile": null,
+               "pub": "2018-06-04T21:14:05.151+02:00",
+               "ref": "606833728088894703",
+               "type": "comment"
+            }
+         ],
+         "date": "04 June 2018 21:02",
+         "html": "Maybe for small/ mid and semi large fabrics Open EIGRP can have an opportunity. Topology table has all the successors ready to go. Limit your DUAL boundaries or use different ASs. There are always options and nerd nobs. ",
+         "id": "606833728088894703",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "jsicuran",
+         "profile": "https://www.blogger.com/profile/07267516785767923381",
+         "pub": "2018-06-04T21:02:22.124+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "date": "05 June 2018 05:41",
+         "html": "BGP gives you some pacing for free as flow-control is receiver driven (you close your TCP Window, Sender stops) - IS-IS and OSPF have no flow-control, so if you assume a naive implementation then you could say that BGP gives you some edge. However if you know what you&#39;re doing (read: get the I/O module right) then you can make it work - regardless of the protocol.",
+         "id": "7552093623890822765",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Hannes Gredler",
+         "profile": null,
+         "pub": "2018-06-05T05:41:53.370+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "06 June 2018 12:06",
+               "html": "&quot;BGP avoids flooding&quot; &lt;&lt; You did read the blog post, right? It does almost exactly the same thing as OSPF with the additional drawback of recomputing BGP tables every now and then during the convergence process.<br /><br />&quot;Its all unicast based update policy mechanism&quot; &lt;&lt; Which is relevant how exactly?<br /><br />&quot;and its withdrawn routes can be softly send to neighbors for unnecessary control plane B.W. wastages.&quot; &lt;&lt; Please explain in more details. Thinking about how OSPF or BGP would revoke a route, I can&#39;t figure out what you&#39;re trying to tell me.<br /><br />&quot;It is policy based&quot; &lt;&lt; hopefully not relevant in data center fabric underlay.<br /><br />&quot;and it can scale well for more than 100k routes&quot; &lt;&lt; if that&#39;s relevant in underlay fabric you shouldn&#39;t be reading my blog posts but hire an architect who knows what he&#39;s doing ;))<br /><br />&quot;Convergence can be improved with BFD with some non-aggressive timers.&quot; &lt;&lt; Ever heard of BFD for OSPF?<br /><br />&quot;Reliability and flow control is taken care by TCP&quot; &lt;&lt; Now that&#39;s the only relevant one. However, as Hannes wrote, it&#39;s all the question of whether you get the I/O module right. You can&#39;t miss much if you&#39;re forced to use TCP, but there&#39;s an LSA acknowledgement mechanism in OSPF that you could use for pacing (not saying anyone does that).",
+               "id": "1613970899333884799",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-06-06T12:06:41.379+02:00",
+               "ref": "1582360071582420463",
+               "type": "comment"
+            },
+            {
+               "date": "06 June 2018 12:07",
+               "html": "Missed one: &quot;BGP avoids flooding&quot; &lt;&lt; it does avoid _periodic_ flooding caused by database refreshes. Not configurable in OSPF (because RFC authors know better than you do what you need in your network), configurable in IS-IS.",
+               "id": "8587648253030099123",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-06-06T12:07:52.440+02:00",
+               "ref": "1582360071582420463",
+               "type": "comment"
+            }
+         ],
+         "date": "05 June 2018 08:03",
+         "html": "BGP avoids flooding . Its all unicast based update policy mechanism and its withdrawn routes can be softly send to neighbors for unnecessary control plane B.W. wastages. <br />It is policy based and it can scale well for more than 100k routes. <br />Convergence can be improved with BFD with some non-aggressive timers. <br />Reliability and flow control is taken care by TCP .",
+         "id": "1582360071582420463",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Hemanth Raj",
+         "profile": null,
+         "pub": "2018-06-05T08:03:04.476+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "date": "08 June 2018 10:56",
+         "html": "Hi Ivan<br /><br />Regarding the dirty details, by default Cisco IOS-XR will also prevent sending BGP updates containing the AS configured on the remote peer. The feature is called as-path-loopcheck and is enabled by default. One important detail is if several BGP neighbors belong to the same BGP update-group, this will be disabled.<br /><br />Here is the command reference:<br /><br />https://www.cisco.com/c/en/us/td/docs/routers/crs/software/crs_r4-2/routing/command/reference/b_routing_cr42crs/b_routing_cr42crs_chapter_01.html#wp3145726977<br /><br />If for some reasons customers want to disable this optimization (I know some McGyvers), they can use &quot;as-path-loopcheck out disable&quot; command.<br /><br />Best<br />Fred",
+         "id": "7795240967739080764",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Fred Cuiller",
+         "profile": "https://twitter.com/fcuiller",
+         "pub": "2018-06-08T10:56:46.292+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "date": "10 June 2018 19:17",
+         "html": "it should be interesting to see what comes of the dynamic flooding (https://tools.ietf.org/html/draft-li-dynamic-flooding-04) work that&#39;s currently underway in LSR.  imho, this is the most interesting work in this space in recent memory.  dense graphs are no longer constrained to DC clos environments and these problems will likely start to manifest themselves in some WAN environments. <br /><br />this has the added perk of not relying on specific topological behaviors as some of the aforementioned approaches do.",
+         "id": "3175208888963911299",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/13046728001822941225",
+         "pub": "2018-06-10T19:17:32.862+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "date": "27 June 2018 16:17",
+         "html": "I &lt;3 EBGP leaf/spine. As Ivan mentioned, the key is same ASN on the spine switches. The goal is KISS.<br /><br />At this point in my career, I&#39;m done with IGPs. Too many nerd nobs, too many contingencies, too many &quot;too many&quot;s. EBGP Leaf/Spine works great in my Data Center and in my Campus Networks. IGPs can go to hell.  BGP ALL THE THINGS!!",
+         "id": "4123816987906417701",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "DixieWrecked",
+         "profile": "https://www.blogger.com/profile/07558338594755954015",
+         "pub": "2018-06-27T16:17:02.331+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "date": "28 June 2018 11:12",
+         "html": "Let&#39;s be honest.Let&#39;s face it.  The only true reason why we really need BGP (internal or external) is not scalability but the mess that the humans do. With a proper design and almost ideal implementation (clever use of sumarization) BGP would not be needed at all. Don&#39;t get me wrong, I love BGP and use it everyday but in one ideal world writing a few extensions for IS-IS or OSPF would have been the way to go to avoid using BGP everywhere. It is a little provocation of course but please have alook to what Jeff Doyle also says in regard to his masterpiece books TCP&amp;IP I v1",
+         "id": "2288094757991609187",
+         "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+         "name": "Unknown",
+         "profile": "https://www.blogger.com/profile/16652193864670731778",
+         "pub": "2018-06-28T11:12:16.530+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "date": "18 July 2018 10:50",
+         "html": "Hi Ivan, Seems like I missed the party due to busy schedule. :)<br /><br />I don&#39;t know how many Network Engineers have to build a Network like this in real life outside Webscales and Cloud providers. But let&#39;s keep that discussion for later. It&#39;s always interesting to hear all kind of reasons from people to deploy CLOS fabrics in DC in Enterprise segment typically that I deal with while they mostly don&#39;t have clue about why they should be doing it in first place. Forget about their understanding of CLOS Fabrics, Overlays etc. Usually a good justification is DC to support high amount of East-West Traffic....but really ? If you ask them if they even have any benchmarks or tools to measure that in first place :)<br /><br />Now coming back to Original question of BGP vs OSPF in DC <br /><br />Interestingly I had a conversation with Arxxxa guys few months back during any interview and I was bashed for proposing OSPF for all wrong reasons. Just because they use BGP in their fabric doesn&#39;t mean everyone has to follow. They even didn&#39;t seem to have any clue about RIFT, Open Fabric, Fibbing etc.<br /><br />As you mentioned &#39; BGP Path Hunting &quot; is an important problem to be solved to reduce the Churn. But of course it comes at it&#39;s own price and downsides.<br /><br />I also saw a comment rejecting EIGRP in favor of multi vendor networking. Well from overlay Networking perspective does EVPN work just fine today ?<br /><br />- How about Fabric Automation and Orchestration in that case ?<br /><br />On a closing note I would like to summarize couple of misconceptions around CLOS Fabric :) ... Please feel free to correct me and add as needed<br /><br />- CLOS AKA Leaf And Spine is Non-Blocking fabric ( Really ? It&#39;s Non Contending but not non blocking)<br />- BGP is the best choice for CLOS (Just because Petr thought ? , but wait Petr was doing this for a WebScale which is far different from Enterprise DC)<br />- BGP is a good choice as it allows granular policy control <br />- BGP has less Churn<br />- BGP Scales far better (In History at least many large ISPs were running OSPF Area 0 for entire network) ... Scale is also a function of HW too and subjective to optimization techniques and so forth<br />- Layer 2 Fabrics can&#39;t be extended beyond 2 Spine switches ( A long argument I had with Arxxxa guys on this. They don&#39;t even count SPB as Layer 2 fabric and so forth)<br /><br />Maybe you would like to cover these mis-conceptions in Spine and Leaf Webinar as updates.<br /><br />TC !!!<br />",
+         "id": "4430946733793890437",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Evil CCIE",
+         "profile": "http://deepakarora1984.blogspot.com",
+         "pub": "2018-07-18T10:50:54.342+02:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "comments": [
+            {
+               "date": "07 December 2018 07:42",
+               "html": "See https://www.ipspace.net/Data_Center_BGP",
+               "id": "5494502901652171138",
+               "image": "https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s35",
+               "name": "Ivan Pepelnjak",
+               "profile": "https://www.blogger.com/profile/13457151406311272386",
+               "pub": "2018-12-07T07:42:33.548+01:00",
+               "ref": "4640290537637711718",
+               "type": "comment"
+            }
+         ],
+         "date": "07 December 2018 00:59",
+         "html": "Hi, what about using a single AS for the whole Spine and Leaf config?",
+         "id": "4640290537637711718",
+         "image": "https://resources.blogblog.com/img/blank.gif",
+         "name": "Ze To",
+         "profile": null,
+         "pub": "2018-12-07T00:59:27.896+01:00",
+         "ref": "8137289796210340333",
+         "type": "comment"
+      },
+      {
+         "date": "05 December 2023 07:17",
+         "html": "<p>Hello,</p>\n\n<p>What if L1 wants to send to a prefix on L2 and L1-C1 and L2-C2 are down?</p>\n\n<p>Possible paths are L1 -&gt; C2 -&gt; L3/L4 -&gt; C1 -&gt; L2.</p>\n\n<p>But C1 would see its own AS and reject the traffic... right?</p>\n",
+         "id": "2015",
+         "name": "João Neves",
+         "pub": "2023-12-05T19:17:06",
+         "type": "comment"
+      }
+   ],
+   "count": 12,
+   "id": "8137289796210340333",
+   "type": "post",
+   "url": "2018/06/is-ebgp-really-better-than-ospf-in-leaf.html"
 }
