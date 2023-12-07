@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -19,6 +19,29 @@
             </div>
             <div class="comment-content"><p>For anyone who&#39;s interested, there was an in-depth presentation at RIPE 87 on the topic:
 https://ripe87.ripe.net/archives/video/1263/</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2020">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2020" href="#2020">07 December 2023 04:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>After watching the video (thanks dreamer!) and looking at the <a href="https://ripe87.ripe.net/presentations/119-AMS-IX_outage_2023_v2.pdf">slides</a>, I am not sure which of the three mentioned device families (Brocade&sup1; MLXe-16/32, Extreme SLX9850, and Juniper MX10k8) introduced LACP frames into the VPLS network.</p>
+
+<p>MPLS packets should be forwarded based on the label, not on the octets after the label stack, i.e., MPLS encapsulated LACP frames should be forwarded identically to all other MPLS packets inside the MPLS network. I would not expect LACP to ingress a VPLS network <em>by default</em> (many vendors, e.g., <a href="https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/layer-2-protocol-tunneling.html">Juniper</a>, use Layer 2 Protocol Tunneling (L2PT) to allow transport of such protocols after specific configuration; Cisco called this <em>Generic Bridge PDU Tunneling (GBPT)</em>).</p>
+
+<p>&sup1; The Brocade MLX routers are part of what Extreme Networks purchased from the Brocade parts Broadcom did not want to keep, as are the SLX routers.</p>
 </div>
           </div>
         </li>
