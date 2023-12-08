@@ -9,6 +9,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "07 December 2023 06:30",
+               "html": "<p>I&#39;m just wondering if it is sane to build such a vital piece of infrastructure with three completely different vendors. Why even consider it, given all the interop hassle.</p>\n",
+               "id": "2021",
+               "name": " Erik H",
+               "pub": "2023-12-07T18:30:32",
+               "ref": "2020",
+               "type": "comment"
+            }
+         ],
          "date": "07 December 2023 04:32",
          "html": "<p>After watching the video (thanks dreamer!) and looking at the <a href=\"https://ripe87.ripe.net/presentations/119-AMS-IX_outage_2023_v2.pdf\">slides</a>, I am not sure which of the three mentioned device families (Brocade&sup1; MLXe-16/32, Extreme SLX9850, and Juniper MX10k8) introduced LACP frames into the VPLS network.</p>\n\n<p>MPLS packets should be forwarded based on the label, not on the octets after the label stack, i.e., MPLS encapsulated LACP frames should be forwarded identically to all other MPLS packets inside the MPLS network. I would not expect LACP to ingress a VPLS network <em>by default</em> (many vendors, e.g., <a href=\"https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/layer-2-protocol-tunneling.html\">Juniper</a>, use Layer 2 Protocol Tunneling (L2PT) to allow transport of such protocols after specific configuration; Cisco called this <em>Generic Bridge PDU Tunneling (GBPT)</em>).</p>\n\n<p>&sup1; The Brocade MLX routers are part of what Extreme Networks purchased from the Brocade parts Broadcom did not want to keep, as are the SLX routers.</p>\n",
          "id": "2020",
