@@ -251,7 +251,7 @@ YAML
     open http://localhost:1313
     ;;
   worth)
-    $BLOG_HOME/tools/blog-worth-reading.sh
+    $BLOG_HOME/tools/blog-worth-reading.sh "$2"
     ;;
   commit)
     pushd $BLOG_HOME >/dev/null

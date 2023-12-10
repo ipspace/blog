@@ -15,7 +15,12 @@ Generate "Worth Reading" blog posts. Starting within the content directory.
 
 TEXT
 cd $BLOG_HOME/content/posts
-read -e -p "URL: " URL
+if [ -z "$1" ]; then
+  read -e -p "URL: " URL
+else
+  URL="$1"
+  echo "URL set to $URL"
+fi
 TITLE=$(wget -qO- "$URL"|\
   hxnormalize -x|\
   hxselect -c head title|\
@@ -41,7 +46,7 @@ FNAME="worth-reading-$FNAME.md"
 if [ -e "$DIR/$FNAME" ]; then
   echo "File already exists, fixing..."
 else
-  blog_new_file "$DIR/$FNAME" title "Worth Reading: $TITLE" text "[$TITLE]($URL)"
+  blog_new_file "$DIR/$FNAME" title "Worth Reading: $TITLE" text "[$TITLE]($URL)" tags "worth reading"
 fi
 blog_edit_post "$DIR/$FNAME"
 blog_view_post "$DIR/$FNAME" &
