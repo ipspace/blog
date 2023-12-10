@@ -40,9 +40,10 @@ blog_new_file() {
   fi
   FILE=$1
   TITLE=X
-  DATE="date: `date +"%Y-%m-%d %H:%M:00"`"
+  DATE="date: `date +"%Y-%m-%d %H:%M:00%z"`"
   DRAFT=
   TEXT=
+  TAGS=
   shift
   while [ $1 ]; do
     case "$1" in
@@ -52,6 +53,10 @@ blog_new_file() {
         ;;
       title)
         TITLE=$2
+        shift
+        ;;
+      tags)
+        TAGS=$2
         shift
         ;;
       text)
@@ -66,7 +71,7 @@ blog_new_file() {
 ---
 title: "$TITLE"
 $DATE
-tags:
+tags: [ $TAGS ]
 TEXT
   if [ "$DRAFT" ]; then
     echo "$DRAFT" >>$FILE
