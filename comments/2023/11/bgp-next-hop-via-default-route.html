@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>2 comments:</h4>
+  <h4>3 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -104,6 +104,78 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2037">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Vinay</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2037" href="#2037">12 December 2023 10:06</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hi Ivan,</p>
+
+<p>Tried this experiment with juniper mx routers. I have used 17.16* IPs in local lab instead of 172.16*. Observed that junOS uses the default route to resolve the BGP next hops and correctly displays the routing entry it used:</p>
+
+<p>root@mx1# run show route 10.0.0.1 extensive</p>
+
+<p>inet.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
+10.0.0.1/32 (1 entry, 1 announced)
+TSI:
+KRT in-kernel 10.0.0.1/32 -&gt; &#123;indirect(1048574)&#125;
+        *BGP    Preference: 170/-101
+                Next hop type: Indirect, Next hop index: 0 =------ next hop type is indirect</p>
+
+<pre><code>            Address: 0x7b3fef4
+            Next-hop reference count: 6, key opaque handle: 0x0, non-key opaque handle: 0x0
+            Source: 10.0.0.2
+            Next hop type: Router, Next hop index: 572
+            Next hop: 17.16.1.2 via ge-0/0/1.0, selected =--- physical next-hop
+            Session Id: 150
+            Protocol next hop: 17.16.0.1 =--- logical next-hop
+            Indirect next hop: 0x758b6cc 1048574 INH Session ID: 337
+            State: &amp;lt;Active Int Ext&amp;gt;
+            Local AS: 65002 Peer AS: 65002
+            Age: 3:56   Metric2: 0
+            Validation State: unverified
+            Task: BGP_65002.10.0.0.2
+            Announcement bits (2): 0-KRT 5-Resolve tree 1
+            AS path: 65001 I
+            Accepted
+            Localpref: 100
+            Router ID: 128.52.34.21
+            Thread: junos-main
+            Indirect next hops: 1
+                    Protocol next hop: 17.16.0.1 Metric: 0 ResolvState: Resolved
+                    Indirect next hop: 0x758b6cc 1048574 INH Session ID: 337
+                    Indirect path forwarding next hops: 1
+                            Next hop type: Router
+                            Next hop: 17.16.1.2 via ge-0/0/1.0
+                            Session Id: 150
+                            0.0.0.0/0 Originating RIB: inet.0   =---- the source of the indirect next-hop
+                              Metric: 0 Node path count: 1
+                              Forwarding nexthops: 1
+                                    Next hop type: Router
+                                    Next hop: 17.16.1.2 via ge-0/0/1.0
+                                    Session Id: 150
+</code></pre>
+
+<p>root@mx1# run show route 17.16.0.1</p>
+
+<p>inet.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both</p>
+
+<p>0.0.0.0/0          *[OSPF/150] 00:06:44, metric 0, tag 0
+                    &gt;  to 17.16.1.2 via ge-0/0/1.0</p>
+</div>
           </div>
         </li>
       </div>
