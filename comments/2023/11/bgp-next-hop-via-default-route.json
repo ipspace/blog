@@ -39,6 +39,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "12 December 2023 10:13",
+               "html": "<p>Thank you! Much appreciated!</p>\n",
+               "id": "2038",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-12-12T10:13:36",
+               "ref": "2037",
+               "type": "comment"
+            }
+         ],
          "date": "12 December 2023 10:06",
          "html": "<p>Hi Ivan,</p>\n\n<p>Tried this experiment with juniper mx routers. I have used 17.16* IPs in local lab instead of 172.16*. Observed that junOS uses the default route to resolve the BGP next hops and correctly displays the routing entry it used:</p>\n\n<p>root@mx1# run show route 10.0.0.1 extensive</p>\n\n<p>inet.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)\n10.0.0.1/32 (1 entry, 1 announced)\nTSI:\nKRT in-kernel 10.0.0.1/32 -&gt; &#123;indirect(1048574)&#125;\n        *BGP    Preference: 170/-101\n                Next hop type: Indirect, Next hop index: 0 =------ next hop type is indirect</p>\n\n<pre><code>            Address: 0x7b3fef4\n            Next-hop reference count: 6, key opaque handle: 0x0, non-key opaque handle: 0x0\n            Source: 10.0.0.2\n            Next hop type: Router, Next hop index: 572\n            Next hop: 17.16.1.2 via ge-0/0/1.0, selected =--- physical next-hop\n            Session Id: 150\n            Protocol next hop: 17.16.0.1 =--- logical next-hop\n            Indirect next hop: 0x758b6cc 1048574 INH Session ID: 337\n            State: &amp;lt;Active Int Ext&amp;gt;\n            Local AS: 65002 Peer AS: 65002\n            Age: 3:56   Metric2: 0\n            Validation State: unverified\n            Task: BGP_65002.10.0.0.2\n            Announcement bits (2): 0-KRT 5-Resolve tree 1\n            AS path: 65001 I\n            Accepted\n            Localpref: 100\n            Router ID: 128.52.34.21\n            Thread: junos-main\n            Indirect next hops: 1\n                    Protocol next hop: 17.16.0.1 Metric: 0 ResolvState: Resolved\n                    Indirect next hop: 0x758b6cc 1048574 INH Session ID: 337\n                    Indirect path forwarding next hops: 1\n                            Next hop type: Router\n                            Next hop: 17.16.1.2 via ge-0/0/1.0\n                            Session Id: 150\n                            0.0.0.0/0 Originating RIB: inet.0   =---- the source of the indirect next-hop\n                              Metric: 0 Node path count: 1\n                              Forwarding nexthops: 1\n                                    Next hop type: Router\n                                    Next hop: 17.16.1.2 via ge-0/0/1.0\n                                    Session Id: 150\n</code></pre>\n\n<p>root@mx1# run show route 17.16.0.1</p>\n\n<p>inet.0: 15 destinations, 15 routes (15 active, 0 holddown, 0 hidden)\n+ = Active Route, - = Last Active, * = Both</p>\n\n<p>0.0.0.0/0          *[OSPF/150] 00:06:44, metric 0, tag 0\n                    &gt;  to 17.16.1.2 via ge-0/0/1.0</p>\n",
          "id": "2037",
