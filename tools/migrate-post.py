@@ -7,6 +7,7 @@ import argparse
 import yaml
 import common
 import subprocess
+import titlecase
 
 def parseCLI():
   parser = argparse.ArgumentParser(description='Migrate blog posts from HTML to Markdown')
@@ -70,6 +71,9 @@ def migrateToMarkdown(fname):
   md = convertToMarkdown(html)
 
   common.set_series_tag(post)
+  if 'title' in post:
+    post['title'] = titlecase.titlecase(post['title'])
+
   ofile = "%s.md" % file
   with open(ofile,"wt") as output:
     output.write('---\n')
