@@ -1,6 +1,7 @@
 ---
 ai_tag: kick
 date: 2023-04-13 07:25:00+00:00
+ospf_tag: rant
 tags:
 - AI
 - design

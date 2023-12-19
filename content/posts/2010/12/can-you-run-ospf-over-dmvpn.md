@@ -1,6 +1,7 @@
 ---
 date: 2010-12-22 07:21:00+01:00
 dmvpn_tag: routing
+ospf_tag: dmvpn
 tags:
 - DMVPN
 - OSPF
@@ -23,4 +24,4 @@ According to now-gone Cisco's presentations, the number of spoke sites in an OSP
 
 ### Summary
 
-OSPF over DMVPN works just fine as long as the number of spoke sites is low (I would keep it below 100, but it obviously depends on the CPU capabilities of the platform you're using for the spoke sites), you keep the DMVPN subnet in a separate area and make that area a stub or totally stubby area. If you have a larger number of spoke sites, it makes more sense to go with a distance vector protocol and redistribution.
+OSPF over DMVPN works just fine as long as the number of spoke sites is low (I would keep it below 100, but it obviously depends on the CPU capabilities of the platform you're using for the spoke sites). Keep the DMVPN subnet in a separate area and make that area a stub or totally stubby area. If you have more spoke sites, it makes more sense to go with a distance vector protocol and redistribution.

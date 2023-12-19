@@ -1,5 +1,6 @@
 ---
 date: 2021-02-17 06:38:00+00:00
+ospf_tag: rant
 series:
 - consistent-state
 tags:

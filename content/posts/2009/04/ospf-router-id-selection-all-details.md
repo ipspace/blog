@@ -1,15 +1,16 @@
 ---
-url: /2009/04/ospf-router-id-selection-all-details.html
-title: "OSPF Router ID Selection: the Gory Details"
-date: "2009-04-28T06:36:00.001+02:00"
-tags: [ OSPF ]
+date: 2009-04-28 06:36:00.001000+02:00
 lastmod: 2020-11-18 13:37:00
+ospf_tag: details
+tags:
+- OSPF
+title: 'OSPF Router ID Selection: the Gory Details'
+url: /2009/04/ospf-router-id-selection-all-details.html
 ---
 After I wrote the [OSPF router ID selection trivia](https://blog.ipspace.net/2009/04/ospf-router-id-selection-trivia.html) post, I wanted to figure out all the details of the OSPF router ID selection algorithm. As I’ve expected, the [common wisdoms are mostly correct](https://blog.ipspace.net/2007/10/ospf-router-id-does-not-change-when.html), but they fail to cover the [interesting border cases](https://blog.ipspace.net/2008/08/ospf-in-vrf-requires-box-unique-router.html). 
 
-Here's the complete algorithm (as seen from the outside):
+Here's the complete algorithm (as observed on Cisco IOS in 2009):
 <!--more-->
-{{<note warn>}}The following text describes OSPF router ID selection algorithm observed in Cisco IOS release 15.x in 2009. Comments on changed behavior are most welcome!{{</note>}}
 
 ---
 

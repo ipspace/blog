@@ -1,9 +1,0 @@
----
-url: /2007/06/inserting-default-route-into-ospf.html
-title: "Inserting default route into OSPF"
-date: "2007-06-27T06:37:00.000+02:00"
-tags: [ OSPF ]
----
-
-This should be a well-known fact (and it's <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios124/124cg/hirp_c/ch15/1chospf.htm#wp1001335">obliquely described in IOS documentation</a>) - if you're redistributing a default route into OSPF (for example, you have a static default route configured with <strong>ip route 0.0.0.0 0.0.0.0 ...</strong> and you use <strong>redistribute static subnets</strong> within the OSPF process), the default route will not be entered into the OSPF database unless you configure <strong>default-information originate</strong> within the router ospf configuration.<br/><br/>Similarly, if you configure <strong>default-information originate always</strong>, the router will inject the type 5 LSA for the default route into the OSPF topology database even if the router itself does not have a default route (or gateway of last resort).
-

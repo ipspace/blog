@@ -1,7 +1,11 @@
 ---
-title: "Why Is OSPF (and BGP) More Complex than STP?"
-date: 2023-04-27 06:26:00
-tags: [ bridging, OSPF, BGP ]
+date: 2023-04-27 06:26:00+00:00
+ospf_tag: rant
+tags:
+- bridging
+- OSPF
+- BGP
+title: Why Is OSPF (and BGP) More Complex than STP?
 ---
 I got this question from one of my readers:
 

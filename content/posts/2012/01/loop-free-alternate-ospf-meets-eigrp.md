@@ -1,6 +1,8 @@
 ---
 date: 2012-01-26 06:18:00+01:00
 eigrp_tag: deploy
+ospf_tag: mp
+series_title: OSPF Meets EIGRP
 tags:
 - IS-IS
 - OSPF
@@ -14,7 +16,7 @@ Assume we have a simple triangular network:
 
 Now imagine the A-to-C link fails. How will OSPF react to the link failure as compared to EIGRP? Which one will converge faster? Try to answer the questions before pressing the *Read more* link ;)
 <!--more-->
-### EIGRP: Feasible successors
+### EIGRP: Feasible Successors
 
 EIGRP tries to use *feasible successors* to speed up the convergence process. Whenever B reports its distance to X to A, A compares B's *reported distance* to its current *feasibility distance*. Lower *reported distance* means that B doesn't use A to get to X (A is not B\'s successor). B is also not A\'s successor for X (that's C as long as the A-to-C link is operational), but it's a *feasible successor*. Using B to get traffic to X will not result in a routing loop.
 
@@ -24,11 +26,11 @@ Faced with A-to-C link loss, A can switch immediately to the *feasible successor
 
 {{<figure src="/2012/01/s400-LFA_Failure.png" caption="EIGRP convergence after a link failure">}}
 
-### OSPF: Let's make sure we're in sync
+### OSPF: Let's Make Sure We're in Sync
 
 OSPF is way more lackadaisical:
 
--   It changes the LSAs affected by the updates and floods them \... unless there's been a recent topology change, in which case it goes and sits quietly in a corner until the **timers throttle lsa** *hold-interval* expires.
+-   It changes the LSAs affected by the updates and floods them unless there's been a recent topology change, in which case it goes and sits quietly in a corner until the **timers throttle lsa** *hold-interval* expires.
 -   It waits a bit more, silently lamenting its misery, until the **timers throttle spf** *spf-start* timer expires.
 -   It runs SPF algorithm, computes the new OSPF shortest-path tree, and copies the results in the IP routing table.
 
@@ -44,9 +46,8 @@ There's no reason OSPF couldn't have reacted faster -- every single router knows
 
 ### Can I use it?
 
-Loop Free Alternate Fast Reroute is available for [OSPF](http://www.cisco.com/en/US/docs/ios-xml/ios/iproute_ospf/configuration/xe-3s/iro-lfa-frr-xe.html) and [IS-IS](http://www.cisco.com/en/US/docs/ios/iproute_isis/configuration/guide/irs_ipv4_lfafrr.pdf) in Cisco IOS 15.1(3)S and XE 3.4S. The IS-IS implementation is pretty rudimentary; the OSPF implementation allows you to specify numerous alternate path selection criteria. For example, you might prefer alternate paths that don't go over a *shared risk link group*, through the same LAN interface, or through the next-hop router.
+Loop Free Alternate Fast Reroute is available in Cisco IOS ([OSPF](http://www.cisco.com/en/US/docs/ios-xml/ios/iproute_ospf/configuration/xe-3s/iro-lfa-frr-xe.html), [IS-IS](http://www.cisco.com/en/US/docs/ios/iproute_isis/configuration/guide/irs_ipv4_lfafrr.pdf)), Junos ([OSPF](http://www.juniper.net/techpubs/en_US/junos10.0/information-products/topic-collections/config-guide-routing/ospf-loop-free-alternate-routes-overview.html), [IS-IS](https://www.juniper.net/techpubs/software/junos/junos95/swconfig-routing/jd0e44501.html)), IOS XR  ([OSPF](http://www.cisco.com/en/US/docs/routers/crs/software/crs_r4.2/routing/configuration/guide/b_routing_cg42crs_chapter_0100.html), [IS-IS](http://www.cisco.com/en/US/docs/routers/crs/software/crs_r4.2/routing/configuration/guide/b_routing_cg42crs_chapter_011.html)) and other network operating systems.
 
-You'll also find [LFA for IS-IS in (at least) Junos 9.5](https://www.juniper.net/techpubs/software/junos/junos95/swconfig-routing/jd0e44501.html) and [LFA for OSPF in Junos 10.0](http://www.juniper.net/techpubs/en_US/junos10.0/information-products/topic-collections/config-guide-routing/ospf-loop-free-alternate-routes-overview.html), and in IOS XR 3.5 ([IS-IS](http://www.cisco.com/en/US/docs/routers/crs/software/crs_r4.2/routing/configuration/guide/b_routing_cg42crs_chapter_011.html)) and 3.9 ([OSPF](http://www.cisco.com/en/US/docs/routers/crs/software/crs_r4.2/routing/configuration/guide/b_routing_cg42crs_chapter_0100.html)).
 
 ### More information
 

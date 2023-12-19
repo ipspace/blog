@@ -1,9 +1,17 @@
 ---
-title: "Packet Forwarding and Routing over Unnumbered Interfaces"
-date: 2021-05-26 07:06:00
-tags: [ IP routing, bridging, networking fundamentals, OSPF, BGP ]
-series: [ unnumbered-interfaces, dcbgp ]
+date: 2021-05-26 07:06:00+00:00
 dcbgp_tag: relevant
+ospf_tag: unnumbered
+series:
+- unnumbered-interfaces
+- dcbgp
+tags:
+- IP routing
+- bridging
+- networking fundamentals
+- OSPF
+- BGP
+title: Packet Forwarding and Routing over Unnumbered Interfaces
 ---
 In the previous blog posts in [this series](/series/unnumbered-interfaces.html), we explored whether we [need addresses on point-to-point links](/2021/05/fundamentals-need-interface-addresses.html) (TL&DR: no), whether it's better to have [interface or node addresses](/2021/05/fundamentals-interface-node-addresses.html) (TL&DR: it depends), and why we got [unnumbered IPv4 interfaces](/2021/05/fundamentals-unnumbered-ip-interfaces.html). Now let's see how IP routing works over unnumbered interfaces.
 

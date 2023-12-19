@@ -1,7 +1,9 @@
 ---
 title: "OSPF External Routes (Type-5 LSA) Mysteries"
 date: 2022-10-12 07:04:00
-tags: [ OSPF ]
+tags:
+- OSPF
+ospf_tag: details
 ---
 Daniel Dib [posted a number of excellent questions on Twitter](https://twitter.com/danieldibswe/status/1579674196833366017), including:
 

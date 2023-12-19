@@ -1,6 +1,7 @@
 ---
 date: 2012-01-17 07:03:00+01:00
 dmvpn_tag: design
+ospf_tag: dmvpn
 tags:
 - DMVPN
 - OSPF
@@ -9,7 +10,7 @@ url: /2012/01/redundant-dmvpn-designs-part-1-basics.html
 ---
 Most of the DMVPN-related questions I get are a variant of the "*how many tunnels/hubs/interfaces/areas do I need for a redundant DMVPN design?*" As always, the right answer is "_it depends_", but here's what I've learned so far.
 
-### Single router/single uplink on spoke site
+### Single Router/Single Uplink on Spoke Site
 
 This blog post focuses on the simplest possible design -- each spoke site has a single router and a single uplink. There's no redundancy at the spokes, which might be an acceptable tradeoff (or you could use 3G connection as a backup for DMVPN).
 
@@ -52,7 +53,3 @@ You cannot use [Phase 1 DMVPN](https://blog.ipspace.net/2011/01/dmvpn-phase-1-fu
 -   One DMVPN subnet is probably the best design for Phase 3 DMVPN and it's mandatory if you have partial spoke-to-hub NHRP connectivity.
 
 Coming next: [spoke routers with multiple uplinks and spoke sites with redundant routers](redundant-dmvpn-designs-part-2-multiple.html).
-
-## Need help?
-
-Start with the [*DMVPN Technology and Configuration*](http://www.ipspace.net/DMVPN) webinar; it probably contains 95% of what you need to know about DMVPN. The [*DMVPN New Features*](http://www.ipspace.net/DMVPN_New_Features) webinar describes DMVPN features introduced in IOS releases 15.x.

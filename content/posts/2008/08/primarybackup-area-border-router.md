@@ -1,5 +1,6 @@
 ---
 date: 2008-08-13 07:25:00+02:00
+ospf_tag: areas
 tags:
 - OSPF
 title: Primary/Backup Area Border Router Designs

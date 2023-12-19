@@ -1,8 +1,10 @@
 ---
-title: "OSPF Inter-Process Route Selection"
-date: 2021-06-15 08:22:00
+date: 2021-06-15 08:22:00+00:00
 lastmod: 2021-07-12 17:46:00
-tags: [ OSPF ]
+ospf_tag: details
+tags:
+- OSPF
+title: OSPF Inter-Process Route Selection
 ---
 The traditional wisdom claimed that a Cisco IOS router cannot compare routes between different OSPF routing processes. The only parameter to consider when comparing routes coming from different routing processes is the admin distance, and unless you change the default admin distance for one of the processes, the results will be random.
 

@@ -4,6 +4,8 @@ minimal_sidebar: true
 pre_scroll: true
 title: Type-1 (Router) LSA in OSPF Topology Database
 url: /kb/tag/OSPF/Type-1-LSA.html
+tags: [ OSPF ]
+ospf_tag: details
 ---
 The OSPF type-1 (router) LSA describes an OSPF router, its stub interfaces and links to adjacent OSPF routers and transit networks in the same area. Every type-1 LSA describes numerous connections the router has:
 

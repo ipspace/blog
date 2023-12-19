@@ -1,6 +1,7 @@
 ---
 date: 2011-01-13 10:04:00+01:00
 dmvpn_tag: design
+ospf_tag: dmvpn
 tags:
 - DMVPN
 - OSPF
