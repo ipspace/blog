@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "19 December 2023 11:27",
+               "html": "<p>Not sure it would work, it seems that you cannot use local-as with the same value as the AS of the peer:</p>\n\n<p>https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/13761-39.html</p>\n\n<p>&quot;Local-AS cannot have the local BGP protocol AS number or the AS number of the remote peer.&quot;</p>\n",
+               "id": "2046",
+               "name": " chris",
+               "pub": "2023-12-19T23:27:45",
+               "ref": "2045",
+               "type": "comment"
+            }
+         ],
          "date": "19 December 2023 08:22",
          "html": "<p>There&#39;s a hint in your topology file.  </p>\n\n<p>&gt; Each one has a public AS number.  </p>\n\n<p>None of them has a public AS number. They all have a private AS number.</p>\n\n<p>&gt; The only change you can make is a new BGP session between PE2 and PE2.  </p>\n\n<p>It should be PE3 there.  </p>\n\n<p>To meet your requirements I would configure BGP with something along &quot;neighbor 172.29.42.x local-as 65003 no-prepend&quot; on PE2 respectively &quot;neighbor 172.29.42.x local-as 65000 no-prepend&quot; on PE3 and &quot;neighbor 172.29.42.x next-hop-self&quot; on both PE2 and PE3.  </p>\n\n<p>I haven&#39;t tested it with your lab tool.</p>\n",
          "id": "2045",
