@@ -1,9 +1,0 @@
----
-url: /2008/02/configure-ospf-on-unnumbered-interfaces.html
-title: "Configure OSPF on unnumbered interfaces"
-date: "2008-02-12T07:42:00.000+01:00"
-tags: [ OSPF ]
----
-
-When we've been assigning router interfaces in OSPF areas with the network router configuration command, it was impossible to start OSPF only on some unnumbered interfaces and not on others (or place the unnumbered interfaces in different areas). These restrictions are removed if you use the <a href="https://blog.ipspace.net/2007/07/network-statements-are-no-longer-needed.html"><strong>ip ospf area</strong> interface configuration command</a>. For example, to put the loopback interface into another area than the WAN links using its IP address, use the following configuration commands:<pre class="code">router ospf 1<br/>!<br/>interface Loopback0<br/> ip address 10.0.0.3 255.255.255.255<br/><span class="high"> ip ospf 1 area 0</span><br/>!<br/>interface Serial1/0<br/> ip unnumbered Loopback0<br/><span class="high"> ip ospf 1 area 1</span><br/>!<br/>interface Serial1/1<br/> ip unnumbered Loopback0<br/><span class="high"> ip ospf 1 area 2</span></pre>
-

@@ -1,7 +1,11 @@
 ---
-title: "Why Is OSPF not Using TCP?"
-date: 2020-11-18 07:53:00
-tags: [ OSPF, IP routing, networking fundamentals ]
+date: 2020-11-18 07:53:00+00:00
+ospf_tag: details
+tags:
+- OSPF
+- IP routing
+- networking fundamentals
+title: Why Is OSPF not Using TCP?
 ---
 [A Network Artist](https://duckduckgo.com/?q=a+network+artist&sites=ipspace.net) sent me a long list of OSPF-related questions after watching the *[Routing Protocols](https://my.ipspace.net/bin/list?id=Net101#ROUTING)* section of our *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar. Starting with an easy one:
 

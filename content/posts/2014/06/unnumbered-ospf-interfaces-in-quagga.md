@@ -1,5 +1,6 @@
 ---
 date: 2014-06-24 07:09:00+02:00
+ospf_tag: config
 tags:
 - OSPF
 - fabric
@@ -12,7 +13,7 @@ url: /2014/06/unnumbered-ospf-interfaces-in-quagga.html
 **TL&DR**: Finally someone got it! Kudos for realizing how to use an ancient trick to make data center fabrics easier to deploy (and, BTW, the claims are exaggerated).
 <!--more-->
 {{<note update>}}Since I wrote this blog post, Quagga went extinct ([again](https://en.wikipedia.org/wiki/Quagga)), and was replaced by [Free Range Routing](https://en.wikipedia.org/wiki/FRRouting) (FRR) -- the control plane daemons used in recent Cumulus Linux distributions{{</note>}}
-### Why am I excited about unnumbered interfaces?
+### Why Am I Excited about Unnumbered Interfaces?
 
 Every data center fabrics vendor claims how easy it is to configure their fabrics. Plug in the cables and the devices almost self-configure the fabric (or you might have to [add a single configuration command](http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus5000/sw/fabricpath/513_n1_1/N5K_FabricPath_Configuration_Guide/fp_n5k_interfaces.html) like **switchport mode fabric**). Messing up the wiring? No problem, It All Just Works™.
 
@@ -30,7 +31,7 @@ To be fair, some vendors did implement unnumbered Ethernet interfaces. For examp
 Did you notice I emphasized IPv4? IPv6 has unnumbered interfaces built in (they are called *Link Local Addresses*), and intra-AS routing protocols like OSPF have to use them (so it's impossible to mangle your implementation in a way that would make numbered IPv6 point-to-point links mandatory).
 {{</note>}}
 
-### And now for the claims
+### And Now for the Claims
 
 The [Cumulus documentation](http://cumulusnetworks.com/docs/2.0/user-guide/layer_3/ospf.html#configuration-tip-unnumbered-interfaces) claims:
 
@@ -58,4 +59,4 @@ Memory footprint is reduced. SPF speedup is probably measured in per mils -- aft
 
 ### Summary
 
-I love the way Quagga handles point-to-point Ethernet links -- it does make the task of building a layer-3-only leaf-and-spine fabric much easier and error-resistant, but do you really have to call it *dramatic*?
+I love the way FRR handles point-to-point Ethernet links -- it does make the task of building a layer-3-only leaf-and-spine fabric much easier and error-resistant, but do you really have to call it *dramatic*?

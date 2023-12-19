@@ -1,5 +1,6 @@
 ---
 date: 2017-12-05 08:16:00+01:00
+ospf_tag: rant
 tags:
 - OSPF
 - MPLS VPN
@@ -12,12 +13,12 @@ Here's a question I got on one of my ancient blog posts:
 
 Seriously? You have to ask that? OK, maybe the question isn't as simple as it looks. It could be understood as:
 <!--more-->
--   Can I have more than one OSPF process in a single VRF instance?
+-   Can I have multiple OSPF processes in a single VRF instance?
 -   Can I have many OSPF processes in a single VRF instance?
--   What is the maximum number of OSPF processes one could have in a VRF instance?
+-   What is the maximum number of OSPF processes in a VRF instance?
 -   What is the maximum number of processes in an instance, and is it a fixed number, or does it depend on the platform?
 
-Before even trying to answer the question, you should ask yourself "*what am I doing, and how did I get painted into this particularly scary corner*" -- most questions like this are a result of a broken design. Even if you get the answer you like, you might be one of the very few people worldwide deploying this particularly crazy idea, so you might hit bugs that nobody ever encountered before. Good luck getting them fixed unless you're buying millions worth of equipment per quarter ;) Or as Andrius Adamavicius wrote in the comments:
+Before even trying to answer the question, you should ask yourself, "*what am I doing, and how did I get painted into this terrifying corner*" -- most questions like this result from a broken design. Even if you get the answer you like, you might be one of the very few people worldwide deploying this particularly crazy idea, so you might hit bugs that nobody has ever encountered before. Good luck getting them fixed unless you're buying millions worth of equipment per quarter ;) Or, as Andrius Adamavicius wrote in the comments:
 
 > If you tested and it worked this is no way an indication that it is supported.
 >
@@ -25,16 +26,16 @@ Before even trying to answer the question, you should ask yourself "*what am I d
 >
 > The prime abusement is \'ip nat enable\' where folks use it as a replacement for \'ip nat inside/outside\'. If both are working in the global routing table does not mean that both are supported. So, when something fails in production, after \'about 15 seconds\' of testing in the lab, then network redesign might be the only option.
 
-Sometimes when you start considering unusual ideas it's worth stepping back and figuring out what the original problem was and whether you can solve it in some other way. You can always use [ExpertExpress](http://www.ipspace.net/ExpertExpress) if you need a fresh set of eyes.
+Sometimes, when you start considering unusual ideas, it's worth stepping back and figuring out the original problem and whether you can solve it in some other way.
 
-**Now back to the question itself.**
+**Now, back to the question itself.**
 
-It's obviously very easy to answer the first question yourself -- you spin up a virtual router. If you work with Cisco IOS, and don't have one on your laptop yet, it's time to fix that anyway. It took me about 15 seconds to get the answer from my decade-old Cisco 1812: yes, you can have more than one OSPF process per VRF (however, that does NOT mean that it\'s a good idea and/or supported, see also above).
+Answering the first question yourself is straightforward -- you spin up a virtual router. If you work with Cisco IOS and don't have one on your laptop yet, it's time to fix that anyway. It took me about 15 seconds to get the answer from my decade-old Cisco 1812: yes, you can have more than one OSPF process per VRF (however, that does NOT mean that it's a good idea or supported; see also above).
 
-The second question is also pretty easy to answer -- create a very large configuration, download it to the router, and see what happens. You could use something as simple as Notepad, or stop wasting your time with cut-and-paste and use Excel, Perl, Python, Ansible, whatever... Oh, you don't know how to do it in Ansible? [This might help](http://www.ipspace.net/Ansible_for_Networking_Engineers).
+The second question is also pretty easy to answer -- create a very large configuration, download it to the router, and see what happens. You could use something as simple as Notepad, or stop wasting your time with cut-and-paste and use Excel, Perl, Python, Ansible, or whatever else.
 
 The answer to the third question might be \~30 (see [this article](https://blog.ipspace.net/2009/05/vrf-routing-process-limitations.html) I wrote in 2009) due to internal IOS architecture, or more. Yet again, it's easy to test.
 
-If the answer to the third question is way above 30, I don't think many people know what it depends on, but if you desperately want to know the answer, you should ask your Cisco SE and not a random blogger anyway.
+If the answer to the third question is way above 30, I don't think many people know what it depends on, but if you desperately want an authoritative answer, you should ask your Cisco SE and not a random blogger anyway.
 
-Anyway, what really disappointed me was that whoever asked that question obviously knew what Cisco IOS is, what OSPF is, and what VRF is... and yet he found it more appealing to waste time googling around and asking random people than to check things out (or asking the people who should know -- the vendor -- if he wanted a definitive answer), and maybe even sharing the results after figuring out what the answer is.
+Anyway, what disappointed me most was that whoever asked that question knew what Cisco IOS is, what OSPF is, and what VRF is... and yet he found it more appealing to waste time googling around and asking random people than to check things out (or asking the people who should know -- the vendor -- if he wanted a definitive answer), and maybe even sharing the results after figuring out what the answer is.

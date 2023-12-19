@@ -1,11 +1,12 @@
 ---
 date: 2009-04-27 06:43:00+02:00
+lastmod: 2020-12-29 09:23:00
+ospf_tag: details
 tags:
 - IS-IS
 - OSPF
 title: SPF Events in OSPF and IS-IS
 url: /2009/04/spf-events-in-ospf-and-is-is.html
-lastmod: 2020-12-29 09:23:00
 ---
 Link-state algorithms select the best routes through a two-step process:
 

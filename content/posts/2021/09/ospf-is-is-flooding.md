@@ -1,7 +1,10 @@
 ---
-title: "LSA/LSP Flooding in OSPF and IS-IS"
-date: 2021-09-16 07:17:00
-tags: [ OSPF, IS-IS ]
+date: 2021-09-16 07:17:00+00:00
+ospf_tag: details
+tags:
+- OSPF
+- IS-IS
+title: LSA/LSP Flooding in OSPF and IS-IS
 ---
 [Peter Paluch](https://twitter.com/Peter_Paluch) loves blogging in microchunks on Twitter ;) This time, he [described the differences between OSPF and IS-IS](https://twitter.com/Peter_Paluch/status/1426926700294819845), and gracefully allowed me to repost the explanation in a more traditional format.
 

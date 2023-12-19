@@ -1,10 +1,10 @@
 ---
 date: 2011-01-17 06:56:00.003000+01:00
 dmvpn_tag: routing
+ospf_tag: dmvpn
 tags:
 - DMVPN
 - OSPF
-- workshop
 title: OSPF Configuration in Phase 1 DMVPN Network
 url: /2011/01/ospf-configuration-in-phase-1-dmvpn.html
 ---

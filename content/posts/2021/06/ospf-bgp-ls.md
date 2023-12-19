@@ -1,7 +1,11 @@
 ---
-title: "Why Do We Need BGP-LS?"
-date: 2021-06-23 06:56:00
-tags: [ SDN, OSPF, BGP ]
+date: 2021-06-23 06:56:00+00:00
+ospf_tag: mp
+tags:
+- SDN
+- OSPF
+- BGP
+title: Why Do We Need BGP-LS?
 ---
 One of my readers sent me this interesting question:
 

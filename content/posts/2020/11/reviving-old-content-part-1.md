@@ -1,7 +1,7 @@
 ---
 title: "Reviving Old Content, Part 1"
 date: 2020-11-27 07:42:00
-tags: [ BGP, OSPF, MPLS ]
+tags: [ BGP, MPLS ]
 ---
 More than a decade ago I published tons of materials on a web site that eventually disappeared into digital nirvana, leaving heaps of broken links on my blog. I decided to clean up those links, and managed to save some of the vanished content from the Internet Archive:
 

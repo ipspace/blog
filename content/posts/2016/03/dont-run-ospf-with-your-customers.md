@@ -1,6 +1,7 @@
 ---
 date: 2016-03-14 10:05:00+01:00
 dcbgp_tag: server
+ospf_tag: trust
 series:
 - dcbgp
 series_weight: 750
@@ -18,9 +19,9 @@ Salman left an interesting comment on my [*Running BGP on Servers*](https://blog
 
 Well, there's a reason OSPF is called *Interior Routing Protocol*.
 <!--more-->
-{{<note>}}Honestly, mainframe administrators have no other options: IBM in their infinite wisdom implemented only RIP and OSPF, and OSPF seems to be the lesser evil.{{</note>}}
+{{<note>}}Honestly, mainframe administrators have no other options: IBM, in their infinite wisdom, implemented only RIP and OSPF, and OSPF seems to be the lesser evil.{{</note>}}
 
-However, even some networking engineers didn't get the memo. Long time ago I encountered a service provider who ran OSPF with their customers, and all customers happily shared area 0 with the provider... until a customer accidentally managed to create an intra-area default route (don't ask me how), which was preferred over provider's external default route. And so an early attempt at plug-and-pray networking (because it's oh-so-much-easier to run OSPF with your customers than to configure static routes) failed miserably.
+However, even some networking engineers didn't get the memo. A long time ago, I encountered a service provider who [ran OSPF with their customers](/2009/08/do-not-ever-run-ospf-or-is-is-with-your.html), and all customers happily shared area 0 with the provider... until a customer accidentally managed to create an intra-area default route (don't ask me how), which was preferred over provider's external default route. And so, an early attempt at plug-and-pray networking (because it's oh-so-much-easier to run OSPF with your customers than to configure static routes) failed miserably.
 
 ### 30K Foot View
 
@@ -33,16 +34,16 @@ You might claim that the mainframe Salman mentioned belongs to the same autonomo
 
 > The classic definition of an Autonomous System is a set of routers under a single technical administration...
 
-Obviously the mainframe team and the networking team weren't a *single technical administration*.
+Obviously, the mainframe team and the networking team weren't a *single technical administration*.
 
 ### Technical Differences
 
 The intended use cases heavily influenced the design and behavior of OSPF (or IS-IS) and BGP:
 
--   BGP uses a pretty conservative approach to information propagation: receive -\> filter -\> evaluate -\> filter -\> propagate best information.
--   OSPF is focused on speed-of-convergence and uses a radically different approach: receive -\> flood everything -\> evaluate.
+-   BGP uses a pretty conservative approach to information propagation: receive → filter → evaluate → filter → propagate best information.
+-   OSPF is focused on speed-of-convergence and uses a radically different approach: receive → flood everything → evaluate.
 
-In other words, anyone who's part of an OSPF domain can insert any stupidity they wish into the domain and **there's nothing anyone else can do to stop the propagation of that stupidity** within an area, **and it stays in the area for at least half an hour**. There are (as expected) vendor-specific kludges one can use between areas, but within area flooding rules (and external routes get flooded across area boundaries unless you use NSSA areas).
+In other words, anyone who's part of an OSPF domain can insert any stupidity they wish into the domain, and **there's nothing anyone else can do to stop the propagation of that stupidity** within an area, **and it stays in the area for at least half an hour**. There are (as expected) vendor-specific kludges one can use between areas, but within area flooding rules (and external routes get flooded across area boundaries unless you use NSSA areas).
 
 ### To Summarize
 

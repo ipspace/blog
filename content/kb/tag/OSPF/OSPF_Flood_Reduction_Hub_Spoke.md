@@ -3,6 +3,8 @@ kb_section: OSPF
 minimal_sidebar: true
 pre_scroll: true
 title: OSPF Flooding Filters in Hub-and-Spoke Environments
+tags: [ OSPF ]
+ospf_tag: dmvpn
 url: /kb/tag/OSPF/OSPF_Flood_Reduction_Hub_Spoke.html
 ---
 The OSPF flood reduction functionality configured with the **ip ospf database-filter all out** interface configuration command can be used to reduce OSPF traffic and minimize the OSPF database size on small remote routers in hub-and-spoke environments.

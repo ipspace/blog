@@ -1,16 +1,16 @@
 ---
 date: 2011-09-14 06:36:00+02:00
 dmvpn_tag: routing
+ospf_tag: dmvpn
 tags:
 - DMVPN
 - OSPF
-- workshop
 title: OSPF-over-DMVPN Using Two Hub Routers
 url: /2011/09/ospf-over-dmvpn-using-two-hub-routers.html
 ---
 One of my readers sent me the following question a few days ago:
 
-> Do you have a webinar that covers Dual DMVPN HUB deployment using OSPF? If so which webinar covers it?
+> Do you have a webinar that covers Dual DMVPN HUB deployment using OSPF? If so, which webinar covers it?
 
 I told him that the [*DMVPN: From Basics to Scalable Networks*](https://www.ipspace.net/DMVPN) webinar covers exactly that scenario (and numerous others), describing both Phase 1 DMVPN and Phase 2 DMVPN design and implementation guidelines. Interestingly, he replied that the information on this topic seems to be very scant:
 <!--more-->

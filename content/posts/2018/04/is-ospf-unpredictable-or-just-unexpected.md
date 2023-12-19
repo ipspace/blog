@@ -1,14 +1,15 @@
 ---
 date: 2018-04-26 07:52:00+02:00
+intent-based-networking_tag: related
+ospf_tag: rant
 tags:
 - OSPF
 - SDN
 - intent-based networking
 title: Is OSPF Unpredictable or Just Unexpected?
 url: /2018/04/is-ospf-unpredictable-or-just-unexpected.html
-intent-based-networking_tag: related
 ---
-I was listening to very interesting [Future of Networking with Fred Baker](http://packetpushers.net/podcast/podcasts/show-354-future-networking-fred-baker/) a long while ago and enjoyed Fred's perspectives and historical insight, until Greg Ferro couldn't possibly resist the usual bashing of traditional routing protocols and praising of intent-based (or [flow-based](https://blog.ipspace.net/2015/11/packet-and-flow-based-forwarding.html) or SDN or...) whatever.
+I was listening to a very interesting [Future of Networking with Fred Baker](http://packetpushers.net/podcast/podcasts/show-354-future-networking-fred-baker/) a long while ago and enjoyed Fred's perspectives and historical insight until Greg Ferro couldn't possibly resist the usual bashing of traditional routing protocols and praising of intent-based (or [flow-based](https://blog.ipspace.net/2015/11/packet-and-flow-based-forwarding.html) or SDN or...) whatever.
 
 Here's what I understood he said around 35:17
 <!--more-->
@@ -38,6 +39,6 @@ Nobody in his right mind would do something like that, but once the steps to a s
 
 However, because it's easier to not spend money on something that would prevent an event with uncertain probability (network going down due to misconfigured OSPF, or losing customer data due to an intrusion), vendors like Cariden have relatively few customers, resulting in expensive tools.
 
-Of course there's another way of dealing with the "unexpectedness" of OSPF: [stop being a MacGyver](https://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html), forget the [nerd knobs](http://blog.ipspace.net/2015/08/musing-on-nerd-knobs.html), keep your network design [as simple as possible](http://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html), and use the absolute minimum subset of features you need to get the job done.
+Of course, there's another way of dealing with the "unexpectedness" of OSPF: [stop being a MacGyver](https://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html), forget the [nerd knobs](http://blog.ipspace.net/2015/08/musing-on-nerd-knobs.html), keep your network design [as simple as possible](http://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html), and use the absolute minimum subset of features you need to get the job done.
 
 Unfortunately, it seems like only a small minority of engineers or architects want to follow this particular advice. It's so much easier to [believe](https://blog.ipspace.net/2016/01/the-sad-state-of-enterprise-networking.html) in [yet another technology wonder](http://blog.ipspace.net/2017/09/intent-based-hype.html).

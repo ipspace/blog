@@ -1,5 +1,6 @@
 ---
 date: 2020-12-23 06:15:00+00:00
+ospf_tag: details
 series:
 - fast-failover
 tags:

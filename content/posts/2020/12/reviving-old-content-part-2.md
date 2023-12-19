@@ -1,7 +1,7 @@
 ---
 title: "Reviving Old Content, Part 2"
 date: 2020-12-11 07:21:00
-tags: [ OSPF, QoS, MPLS ]
+tags: [ BGP, QoS, MPLS ]
 ---
 Continuing my [archeological explorations](/2020/11/reviving-old-content-part-1.html), I found a dusty bag of old QoS content:
 
@@ -12,7 +12,7 @@ Continuing my [archeological explorations](/2020/11/reviving-old-content-part-1.
 * [FIFO Queuing](/kb/tag/QoS/FIFO_Queuing.html)
 * [Fair Queuing in Cisco IOS](/kb/tag/QoS/Fair_Queuing.html)
 
-I kept digging and turned out a few MPLS, BGP and ADSL nuggets worth saving:
+I kept digging and turned out a few MPLS, BGP, and ADSL nuggets worth saving:
 <!--more-->
 * [MPLS TE Autoroute Fundamentals](https://blog.ipspace.net/2010/03/mpls-te-autoroute-basics.html)
 * [Protect Your Network with BGP maxas-limit](https://blog.ipspace.net/2009/02/protect-your-network-with-bgp-maxas.html)

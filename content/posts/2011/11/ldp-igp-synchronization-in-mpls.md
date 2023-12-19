@@ -1,5 +1,7 @@
 ---
 date: 2011-11-14 06:28:00+01:00
+lastmod: 2020-12-26 08:49:00
+ospf_tag: mp
 tags:
 - MPLS
 - IS-IS
@@ -8,7 +10,6 @@ tags:
 - segment routing
 title: LDP-IGP Synchronization in MPLS Networks
 url: /2011/11/ldp-igp-synchronization-in-mpls.html
-lastmod: 2020-12-26 08:49:00
 ---
 A reader of my blog planning to migrate his network from a traditional BGP-everywhere design to a BGP-over-MPLS one wondered about potential unexpected consequences. The [MTU implications of introducing MPLS in a running network](https://blog.ipspace.net/2011/07/mpls-mtu-challenges.html) are usually well understood (even though you [could get some very interesting behavior](https://blog.ipspace.net/2011/07/asymmetric-mpls-mtu-problem.html)); if you can, increase the MTU size by at least 16 bytes (4 labels) and [check whether MTU includes L2 header](https://blog.ipspace.net/2011/07/all-mtus-are-not-same.html). Another somewhat more mysterious beast is the interaction between IGP and LDP that can cause traffic disruptions *after the physical connectivity has been reestablished*.
 <!--more-->

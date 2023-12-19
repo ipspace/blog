@@ -1,11 +1,15 @@
 ---
-title: "OSPF ECMP with Unnumbered IPv4 Interfaces"
-subtitle: "or how netlab made labbing fun again"
-date: 2023-09-11 06:13:00
-tags: [ OSPF, load balancing, netlab ]
+date: 2023-09-11 06:13:00+00:00
 netlab_tag: use
+ospf_tag: unnumbered
 pre_scroll: true
 series: unnumbered-interfaces
+subtitle: or how netlab made labbing fun again
+tags:
+- OSPF
+- load balancing
+- netlab
+title: OSPF ECMP with Unnumbered IPv4 Interfaces
 ---
 The [OSPF and ARP on Unnumbered IPv4 Interfaces](https://blog.ipspace.net/2023/08/unnumbered-ospf-arp.html) triggered an [interesting consideration](https://blog.ipspace.net/2023/08/unnumbered-ospf-arp.html#1903): does ECMP work across parallel unnumbered links?
 

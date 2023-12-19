@@ -1,12 +1,12 @@
 ---
 date: 2008-10-29 07:29:00.003000+01:00
+ospf_tag: adj
+series_title: "Challenge: Mixing Numbered and Unnumbered Interfaces"
 tags:
 - OSPF
-title: 'OSPF Challenge #2: Mixing Numbered and Unnumbered Interfaces'
+title: 'OSPF Challenge: Mixing Numbered and Unnumbered Interfaces'
 url: /2008/10/ospf-challenge-2-mixing-numbered-and.html
 ---
-{{<note update>}}This challenge is closed, see the [final results](https://blog.ipspace.net/2008/11/ospf-challenge-2-final-results.html) (November 4th 2008).{{</note>}}
-
 Assuming you have the following configurations on R1 and R2:
 
 {{<cc>}}R1 configuration{{</cc>}}
@@ -37,3 +37,5 @@ router ospf 1
 ```
 
 What IP address can you use on the loopback interface of R1 to establish adjacency between R1 and R2? Can you use more than one IP address?
+
+You can find the solution [here](https://blog.ipspace.net/2008/11/ospf-challenge-2-final-results.html).

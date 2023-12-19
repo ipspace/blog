@@ -1,7 +1,11 @@
 ---
-title: "Unexpected Interactions Between OSPF and BGP"
-date: 2021-06-22 07:16:00
-tags: [ IP routing, OSPF, BGP ]
+date: 2021-06-22 07:16:00+00:00
+ospf_tag: mp
+tags:
+- IP routing
+- OSPF
+- BGP
+title: Unexpected Interactions Between OSPF and BGP
 ---
 It started with an interesting question [tweeted by @pilgrimdave81](https://twitter.com/pilgrimdave81/status/1400718236409380864)
 
