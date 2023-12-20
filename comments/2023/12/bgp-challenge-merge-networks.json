@@ -19,6 +19,15 @@
                "pub": "2023-12-20T08:00:46",
                "ref": "2045",
                "type": "comment"
+            },
+            {
+               "date": "20 December 2023 06:10",
+               "html": "<p>@chris: You were right (at least for Cisco IOS).  </p>\n\n<p>I found a convoluted solution (not sure if it still meets all requirements):  </p>\n\n<pre>\r\nPE2#\r\nrouter bgp 65000\r\n neighbor 10.0.0.2 remote-as 65000\r\n neighbor 10.0.0.2 update-source 10.0.0.3\r\n neighbor 10.0.0.2 next-hop-self all\r\n neighbor 172.29.24.1 remote-as 65003\r\n neighbor 172.29.24.1 local-as 65003\r\n neighbor 172.29.24.1 route-reflector-client\r\n neighbor 172.29.24.1 route-map NEXT_HOP in\r\n!\r\nroute-map NEXT_HOP permit 10 \r\n set ip next-hop 172.29.24.1\r\n</pre>  </p>\n\n<pre>\r\nPE3#\r\nrouter bgp 65003\r\n neighbor 10.0.0.5 remote-as 65003\r\n neighbor 10.0.0.5 update-source 10.0.0.4\r\n neighbor 10.0.0.5 next-hop-self all\r\n neighbor 172.29.24.2 remote-as 65003\r\n neighbor 172.29.24.2 route-reflector-client\r\n neighbor 172.29.24.2 route-map NEXT_HOP in\r\n!\r\nroute-map NEXT_HOP permit 10 \r\n set ip next-hop 172.29.24.2\r\n</pre>  </p>\n\n<p>I tested it in my own lab.</p>\n",
+               "id": "2053",
+               "name": "Anonymous",
+               "pub": "2023-12-20T18:10:59",
+               "ref": "2045",
+               "type": "comment"
             }
          ],
          "date": "19 December 2023 08:22",

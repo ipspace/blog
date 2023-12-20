@@ -79,6 +79,58 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2053">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2053" href="#2053">20 December 2023 06:10</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>@chris: You were right (at least for Cisco IOS).  </p>
+
+<p>I found a convoluted solution (not sure if it still meets all requirements):  </p>
+
+<pre>
+PE2#
+router bgp 65000
+ neighbor 10.0.0.2 remote-as 65000
+ neighbor 10.0.0.2 update-source 10.0.0.3
+ neighbor 10.0.0.2 next-hop-self all
+ neighbor 172.29.24.1 remote-as 65003
+ neighbor 172.29.24.1 local-as 65003
+ neighbor 172.29.24.1 route-reflector-client
+ neighbor 172.29.24.1 route-map NEXT_HOP in
+!
+route-map NEXT_HOP permit 10 
+ set ip next-hop 172.29.24.1
+</pre>  </p>
+
+<pre>
+PE3#
+router bgp 65003
+ neighbor 10.0.0.5 remote-as 65003
+ neighbor 10.0.0.5 update-source 10.0.0.4
+ neighbor 10.0.0.5 next-hop-self all
+ neighbor 172.29.24.2 remote-as 65003
+ neighbor 172.29.24.2 route-reflector-client
+ neighbor 172.29.24.2 route-map NEXT_HOP in
+!
+route-map NEXT_HOP permit 10 
+ set ip next-hop 172.29.24.2
+</pre>  </p>
+
+<p>I tested it in my own lab.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
