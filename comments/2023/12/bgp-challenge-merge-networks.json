@@ -29,6 +29,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "20 December 2023 02:50",
+               "html": "<p>Looks like you lost the customer prefixes (192.168.1.0/24 and 192.168.3.0/24). Have no idea what could cause that as the transit prefixes got across.</p>\n\n<p>Also, did you preserve the next hops of the BGP prefixes across both autonomous systems (the last &quot;at the end of the migration project&quot; bullet)?</p>\n",
+               "id": "2052",
+               "name": "Ivan Pepelnjak",
+               "pub": "2023-12-20T14:50:59",
+               "ref": "2051",
+               "type": "comment"
+            }
+         ],
          "date": "20 December 2023 01:39",
          "html": "<p>I think i got it right !\nMy only assumption is that the PE/RR peers use next-hop-self knobs, which makes sense at least for PE1 and PE4. An alternative is to advertise the network 172.29.42.0/24 into BGP, which is not forbidden :)</p>\n\n<p>For my lab, i replaced backbone AS by 5000 and 5003 in order to use public AS and it is still OK !</p>\n\n<p>Thanks Ivan for the fun !</p>\n\n<pre>\r\nx2#sh ip bgp | b Netw\r\n     Network          Next Hop            Metric LocPrf Weight Path\r\n *&gt;  192.168.100.0    10.1.0.17                              0 5003 65100 i\r\n *&gt;  192.168.107.0    0.0.0.0                  0         32768 i\r\nx2#\r\n</pre>\n",
          "id": "2051",
