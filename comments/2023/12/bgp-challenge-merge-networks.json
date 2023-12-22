@@ -65,6 +65,15 @@
                "pub": "2023-12-21T15:18:16",
                "ref": "2054",
                "type": "comment"
+            },
+            {
+               "date": "22 December 2023 04:58",
+               "html": "<p>OK, this time, the lab pass the verifications, and, yes, no static routes and no IGP changes !</p>\n\n<p>next-hop is not modified by the bgp session between PE4 and PE3 :\n<pre>\r\nPE1#sh ip bgp 192.168.3.0\r\nBGP routing table entry for 192.168.3.0/24, version 25\r\nPaths: (1 available, best #1, table default)\r\n  Advertised to update-groups:\r\n     5         \r\n  Refresh Epoch 1\r\n  (5003)\r\n    10.0.0.6 (metric 11) from 10.0.0.2 (10.0.0.2)\r\n      Origin IGP, metric 0, localpref 100, valid, internal, best\r\n      Community: internet\r\n      Originator: 10.0.0.3, Cluster list: 10.0.0.2\r\nPE1#\r\n</pre>\n\n<p>and x1/x2 receive exactly 3 prefixes with the correct AS-path :\n<pre>\r\nx1#sh ip bgp | b Netw\r\n     Network          Next Hop            Metric LocPrf Weight Path\r\n *&gt;  192.168.1.0      10.1.0.1                 0             0 5000 i\r\n *&gt;  192.168.3.0      10.1.0.1                               0 5000 i\r\n *&gt;  192.168.100.0    0.0.0.0                  0         32768 i\r\n *&gt;  192.168.107.0    10.1.0.1                               0 5000 65107 i\r\nx1#\r\n</pre>\n\n<p>Thanks again Ivan !</p>\n",
+               "id": "2060",
+               "name": " PJO",
+               "pub": "2023-12-22T16:58:15",
+               "ref": "2058",
+               "type": "comment"
             }
          ],
          "date": "20 December 2023 01:39",
