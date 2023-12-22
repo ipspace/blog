@@ -74,6 +74,15 @@
                "pub": "2023-12-22T16:58:15",
                "ref": "2058",
                "type": "comment"
+            },
+            {
+               "date": "22 December 2023 05:47",
+               "html": "<p>I built it with netlab and FRR containers. Here is my solution for configuration:  </p>\n\n<pre>\r\nhostname pe2\r\n!\r\nrouter bgp 65000\r\n neighbor 172.29.42.2 remote-as 65003\r\n neighbor 172.29.42.2 local-as 65003 no-prepend replace-as\r\n !\r\n address-family ipv4 unicast\r\n  network 10.0.0.1/32 route-map NO_EXPORT\r\n  network 172.29.42.0/24 route-map NO_EXPORT\r\n  neighbor 172.29.42.2 activate\r\n  neighbor 172.29.42.2 route-reflector-client\r\n exit-address-family\r\nexit\r\n!\r\nroute-map NO_EXPORT permit 10\r\n set community no-export\r\n</pre>  </p>\n\n<pre>\r\nhostname pe3\r\n!\r\nrouter bgp 65003\r\n neighbor 172.29.42.1 remote-as 65003\r\n !\r\n address-family ipv4 unicast\r\n  network 10.0.0.6/32 route-map NO_EXPORT\r\n  network 172.29.42.0/24 route-map NO_EXPORT\r\n  neighbor 172.29.42.1 activate\r\n  neighbor 172.29.42.1 route-reflector-client\r\n exit-address-family\r\nexit\r\n!\r\nroute-map NO_EXPORT permit 10\r\n set community no-export\r\n</pre>\n",
+               "id": "2061",
+               "name": "Anonymous",
+               "pub": "2023-12-22T17:47:47",
+               "ref": "2060",
+               "type": "comment"
             }
          ],
          "date": "20 December 2023 01:39",

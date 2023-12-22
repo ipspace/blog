@@ -288,6 +288,62 @@ x1#
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2061">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2061" href="#2061">22 December 2023 05:47</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I built it with netlab and FRR containers. Here is my solution for configuration:  </p>
+
+<pre>
+hostname pe2
+!
+router bgp 65000
+ neighbor 172.29.42.2 remote-as 65003
+ neighbor 172.29.42.2 local-as 65003 no-prepend replace-as
+ !
+ address-family ipv4 unicast
+  network 10.0.0.1/32 route-map NO_EXPORT
+  network 172.29.42.0/24 route-map NO_EXPORT
+  neighbor 172.29.42.2 activate
+  neighbor 172.29.42.2 route-reflector-client
+ exit-address-family
+exit
+!
+route-map NO_EXPORT permit 10
+ set community no-export
+</pre>  </p>
+
+<pre>
+hostname pe3
+!
+router bgp 65003
+ neighbor 172.29.42.1 remote-as 65003
+ !
+ address-family ipv4 unicast
+  network 10.0.0.6/32 route-map NO_EXPORT
+  network 172.29.42.0/24 route-map NO_EXPORT
+  neighbor 172.29.42.1 activate
+  neighbor 172.29.42.1 route-reflector-client
+ exit-address-family
+exit
+!
+route-map NO_EXPORT permit 10
+ set community no-export
+</pre>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
