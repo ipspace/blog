@@ -12,7 +12,7 @@
     {{ range $.Site.Data.sidebar_lookup.display }}
     {{   $pg := where $pages ".Params.sidebar_box" "==" . }}
     {{   if len $pg }}
-    <h3>{{ with index $.Site.Data.sidebar_lookup . }}{{ . }}{{ else }}{{ . }}{{ end }}</a></h3>
+    <h3 id="{{ . }}">{{ with index $.Site.Data.sidebar_lookup . }}{{ . }}{{ else }}{{ . }}{{ end }}</h3>
     <ul>
     {{     range $pg.ByTitle }}
       {{ $title := or .Params.page_title .Title }}
