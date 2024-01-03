@@ -5,5 +5,3 @@ tags: [ ]
 redirect: https://bgplabs.net/99-about/
 ---
 Long story short: I decided to create open-source BGP configuration labs, and (so far) created a superset of labs we used in an ancient Advanced BGP Configuration and Troubleshooting (ABCT) course
-
-{{<jump>}}[More details](https://bgplabs.net/99-about/){{</jump>}}
