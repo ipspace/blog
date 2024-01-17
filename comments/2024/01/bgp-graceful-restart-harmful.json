@@ -26,9 +26,17 @@
          "name": "Dmitry Perets",
          "pub": "2024-01-17T15:26:14",
          "type": "comment"
+      },
+      {
+         "date": "17 January 2024 04:29",
+         "html": "<p>&gt; The termination of TCP session is detected when the TCP Hold Timer expires, and that&#39;s when the routes go into STALE state but are retained. </p>\n\n<p>That&#39;s not how I read it. The Hold Timer expiration indicates the termination of the BGP session, not of the TCP session. I don&#39;t think they mean this kind of termination in this passage. </p>\n\n<p>Proof: section 5 of that RFC where they propose the changes to the finite-state machine. Specifically:</p>\n\n<p>Replace this text:</p>\n\n<pre><code>  If the local system receives a NOTIFICATION message (Event 24 or\n  Event 25), or a TcpConnectionFails (Event 18) from the underlying\n  TCP, the local system:\n  ..blah-blah..\n</code></pre>\n\n<p>with</p>\n\n<pre><code>  ..blah-blah..\n\n  However, if the local system receives a TcpConnectionFails (Event\n  18) from the underlying TCP, and the Graceful Restart Capability\n  with one or more AFIs/SAFIs has been received for the session, the\n  local system:\n\n     - sets the ConnectRetryTimer to zero,\n\n     - retains all routes associated with this connection according\n       to section &amp;quot;Procedures for the Receiving Speaker&amp;quot; of this\n       (Graceful Restart) specification,\n\n    ..blah-blah..\n</code></pre>\n\n<p>In other words, they refer here to the termination of the underlying TCP connection. Not a BGP event, but a TCP event! </p>\n\n<p>Not BGP that kills the underlying TCP (as in Hold Timer expiration), but the other way around.</p>\n\n<p>Example: imagine that your HA cluster fails over, but still doesn&#39;t send the new OPEN message (forgot ;)). The peer still doesn&#39;t know anything about this, so from its perspective the old TCP socket is still established, and so is the old BGP session. So it will send its next BGP Keepalive as usual, using that TCP connection, right?  Except that on the other side we now have a new fresh primary node, which knows nothing about this TCP connection. Therefore, upon receiving a TCP segment which is not a SYN, it will react with TCP RST (or silently drop it, but that will not demonstrate my case, so let&#39;s assume it replies with TCP RST ;)). Upon receivng this TCP RST, the peer understands that something is wrong with that TCP connection. So it&#39;s a TCP event, not a BGP event! And I believe it&#39;s this kind of events that will result in TcpConnectionFail (Event 18) they refer above. </p>\n",
+         "id": "2075",
+         "name": "Dmitry Perets",
+         "pub": "2024-01-17T16:29:42",
+         "type": "comment"
       }
    ],
-   "count": 2,
+   "count": 3,
    "type": "post",
    "url": "2024/01/bgp-graceful-restart-harmful.html"
 }
