@@ -1,0 +1,15 @@
+{
+   "comments": [
+      {
+         "date": "17 January 2024 03:05",
+         "html": "<p>Most of the HA clustering solutions for stateful firewalls that I know implement a single-brain model, where the entire cluster is seen by the outside network as a single node. On the node which is currently primary runs the control plane (hence I call it single-brain). Sessions are syncronized between the nodes, as well as the forwarding plane. Therefore, in the event of HA failover, all the existing sessions are preserved, and user traffic can just keep flowing. You can get a subsecond failover, delayed only by the failure detection (which is based on HA keepalives sent back-to-back between the nodes, as well as link failure detection and things like that). \nBut since it is a single-brain solution, the BGP daemon runs only on the primary node. Upon HA failover, it starts from scratch on the ex-secondary (new primary). This is where Graceful Restart comes into play, because it allows your peers to keep their forwarding state, believeing that your HA clustering solution successfully did the same on your side. Hence, you get your Non-Stop Forwarding and you don&#39;t bother the rest of your network with BGP convergence, while the new HA primary re-establishes its BGP control plane. </p>\n\n<p>This is the most common use case for BGP GR that I saw in my career at least... There are also dual-brain HA solutions, where every node runs its own independent BGP/OSPF/whatever. But like I said, most of the stateful firewall vendors I encountered offer this single-brain solution, based on NSF + BGP GR.</p>\n",
+         "id": "2069",
+         "name": " Dmitry Perets",
+         "pub": "2024-01-17T15:05:11",
+         "type": "comment"
+      }
+   ],
+   "count": 1,
+   "type": "post",
+   "url": "2024/01/bgp-graceful-restart-harmful.html"
+}
