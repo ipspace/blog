@@ -43,6 +43,41 @@ But since it is a single-brain solution, the BGP daemon runs only on the primary
 
 <p>One last point - regarding BFD... It makes a huge difference whether BFD is sharing fate with control plane or not (that is, whether the C-bit is set - as per section 4.3 in RFC 5882). If BFD is sharing fate with control plane, then upon losing BFD, the remote peer cannot understand whether you are dead or just restarting. The previous expectation to receive an OPEN message is no longer enough, because you obviously cannot send this message faster than BFD loss. Hence, this combination of BGP GR + control-dependent BFD is totally harmful and makes no sense. BUT the combination of BGP GR + control-independent BFD is good, because it helps you distinguish between a forwarding-plane failure (in which case the routes must be flushed asap) and GR (in which case the routes must be preserved). </p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2071">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2071" href="#2071">17 January 2024 04:09</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Since we are a bit nerdy ;) Quoting RFC 4724:</p>
+
+<p>&gt; When the Receiving Speaker detects termination of the TCP session for a BGP session with a peer that has advertised the Graceful Restart Capability, it MUST retain the routes received from the peer for all the address families that were previously received in the Graceful Restart Capability and MUST mark them as stale routing information.</p>
+
+<p>The termination of TCP session is detected when the TCP Hold Timer expires, and that&#39;s when the routes go into STALE state but are retained. After that...</p>
+
+<p>&gt; If the session does not get re-established within the &quot;Restart Time&quot; that the peer advertised previously, the Receiving Speaker MUST delete all the stale routes from the peer that it is retaining.</p>
+
+<p>And because Cisco IOS advertises the 2-minute restart time, the peer waits for five minutes before triggering the convergence process.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>

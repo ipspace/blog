@@ -9,6 +9,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "17 January 2024 04:09",
+               "html": "<p>Since we are a bit nerdy ;) Quoting RFC 4724:</p>\n\n<p>&gt; When the Receiving Speaker detects termination of the TCP session for a BGP session with a peer that has advertised the Graceful Restart Capability, it MUST retain the routes received from the peer for all the address families that were previously received in the Graceful Restart Capability and MUST mark them as stale routing information.</p>\n\n<p>The termination of TCP session is detected when the TCP Hold Timer expires, and that&#39;s when the routes go into STALE state but are retained. After that...</p>\n\n<p>&gt; If the session does not get re-established within the &quot;Restart Time&quot; that the peer advertised previously, the Receiving Speaker MUST delete all the stale routes from the peer that it is retaining.</p>\n\n<p>And because Cisco IOS advertises the 2-minute restart time, the peer waits for five minutes before triggering the convergence process.</p>\n",
+               "id": "2071",
+               "name": " Ivan Pepelnjak",
+               "pub": "2024-01-17T16:09:53",
+               "ref": "2070",
+               "type": "comment"
+            }
+         ],
          "date": "17 January 2024 03:26",
          "html": "<p>By the way, since we are a bit nerdy here, I&#39;d claim that the router X1 did not behave nicely, according to your description =) You say that the primary uplink failed. Then, three minutes later, the BGP Hold Timer expired. At this point, as per your conclusion, the router X1 assumed that C1 was restarting and entered the GR Helper mode, adding two more minutes to your misery. Well... it shouldn&#39;t have! The Hold Timer expiration is not a valid reason to assume GR. BGP GR process is initiated by a new OPEN message sent by the restarting peer. We could claim (as it is useful) that detecting TCP session death could also be considered as the start of GR. But not the Hold Timer expiration! If the Hold Timer expires, and the peer didn&#39;t send a new OPEN by that time, then the peer is just dead. No GR. So e.g. see RFC 4724 and the changes to the BGP FSM. It doesn&#39;t change the standard BGP behavior expected upon Hold Timer expiration. And neither should it.</p>\n\n<p>One last point - regarding BFD... It makes a huge difference whether BFD is sharing fate with control plane or not (that is, whether the C-bit is set - as per section 4.3 in RFC 5882). If BFD is sharing fate with control plane, then upon losing BFD, the remote peer cannot understand whether you are dead or just restarting. The previous expectation to receive an OPEN message is no longer enough, because you obviously cannot send this message faster than BFD loss. Hence, this combination of BGP GR + control-dependent BFD is totally harmful and makes no sense. BUT the combination of BGP GR + control-independent BFD is good, because it helps you distinguish between a forwarding-plane failure (in which case the routes must be flushed asap) and GR (in which case the routes must be preserved). </p>\n",
          "id": "2070",
