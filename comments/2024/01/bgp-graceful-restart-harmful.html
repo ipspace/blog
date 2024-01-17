@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -21,6 +21,27 @@
 But since it is a single-brain solution, the BGP daemon runs only on the primary node. Upon HA failover, it starts from scratch on the ex-secondary (new primary). This is where Graceful Restart comes into play, because it allows your peers to keep their forwarding state, believeing that your HA clustering solution successfully did the same on your side. Hence, you get your Non-Stop Forwarding and you don&#39;t bother the rest of your network with BGP convergence, while the new HA primary re-establishes its BGP control plane. </p>
 
 <p>This is the most common use case for BGP GR that I saw in my career at least... There are also dual-brain HA solutions, where every node runs its own independent BGP/OSPF/whatever. But like I said, most of the stateful firewall vendors I encountered offer this single-brain solution, based on NSF + BGP GR.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2070">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Dmitry Perets</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2070" href="#2070">17 January 2024 03:26</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>By the way, since we are a bit nerdy here, I&#39;d claim that the router X1 did not behave nicely, according to your description =) You say that the primary uplink failed. Then, three minutes later, the BGP Hold Timer expired. At this point, as per your conclusion, the router X1 assumed that C1 was restarting and entered the GR Helper mode, adding two more minutes to your misery. Well... it shouldn&#39;t have! The Hold Timer expiration is not a valid reason to assume GR. BGP GR process is initiated by a new OPEN message sent by the restarting peer. We could claim (as it is useful) that detecting TCP session death could also be considered as the start of GR. But not the Hold Timer expiration! If the Hold Timer expires, and the peer didn&#39;t send a new OPEN by that time, then the peer is just dead. No GR. So e.g. see RFC 4724 and the changes to the BGP FSM. It doesn&#39;t change the standard BGP behavior expected upon Hold Timer expiration. And neither should it.</p>
+
+<p>One last point - regarding BFD... It makes a huge difference whether BFD is sharing fate with control plane or not (that is, whether the C-bit is set - as per section 4.3 in RFC 5882). If BFD is sharing fate with control plane, then upon losing BFD, the remote peer cannot understand whether you are dead or just restarting. The previous expectation to receive an OPEN message is no longer enough, because you obviously cannot send this message faster than BFD loss. Hence, this combination of BGP GR + control-dependent BFD is totally harmful and makes no sense. BUT the combination of BGP GR + control-independent BFD is good, because it helps you distinguish between a forwarding-plane failure (in which case the routes must be flushed asap) and GR (in which case the routes must be preserved). </p>
 </div>
           </div>
         </li>
