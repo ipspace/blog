@@ -45,6 +45,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "23 January 2024 04:00",
+               "html": "<p>Thanks for the feedback. While you&#39;re right that the routes marked with LLGR_STALE are de-preferenced, (if I&#39;m reading the RFC correctly) the depreferencing kicks in only if the neighbor already marked the routes with LLGR_STALE (in which case they&#39;re pretty useless anyway unless they&#39;re the only route to the destination) or if the GR helper marks them, which only happens after the GR timeout expires.</p>\n\n<p>So, yet again assuming I&#39;m reading the RFC correctly, the LLGR procedures kick in after the GR timeout expires. Until then, it&#39;s the same as GR. Obviously, one could lower the GR timer now that we have LLGR, but that just opens another can of worms.</p>\n",
+               "id": "2082",
+               "name": " Ivan Pepelnjak",
+               "pub": "2024-01-23T16:00:41",
+               "ref": "2081",
+               "type": "comment"
+            }
+         ],
          "date": "22 January 2024 10:50",
          "html": "<p>RFC 9494 (Long-Lived Graceful Restart for BGP) de-preferences the routes under GR. This (immediately)  triggers BGP convergence toward the backup routes. So I don&#39;t think this is quite the same as GR and that your last sentence is fair.</p>\n",
          "id": "2081",
