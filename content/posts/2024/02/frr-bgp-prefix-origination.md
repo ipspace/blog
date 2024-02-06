@@ -89,7 +89,7 @@ interface eth2
 
 {{<note info>}}Another FRRouting quirk: you can configure multiple IP addresses on an interface without using the **secondary** keyword.{{</note>}}
 
-This is what happens the second time you try to remove configuration:
+This is what happens the second time you try to remove the configuration:
 
 ```
 customer(bash)#vtysh -f /tmp/nonet.cfg
