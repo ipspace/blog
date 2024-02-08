@@ -26,3 +26,5 @@ There are only FC2 addresses in the FC. There is no need for FC1 addressing beca
 I had [heated discussions with FC gurus](https://blog.ipspace.net/2011/07/is-fibre-channel-switching-bridging-or.html) who claimed that FC switches were bridges. I read the FC standards, which used "*routing*" to describe FC packet forwarding. So, I don't think you should blame me for the terminology straight out of the FC standards. However, what tripped the FC gurus was the lack of two pairs of source and destination addresses. Their conclusion: "_Obviously, the first address in the payload must be the MAC address._" "_FC must be bridging,_" they said because they've never seen a data link layer with no addresses.   
 
 However, all FC switches are layer-3 (FC2) switches, and because there are only point-to-point links between a fiber channel node and a fiber channel switch, there is absolutely no need for data link layer (FC1) addressing.
+
+{{<next-in-series page="/posts/2023/11/lan-data-link-layer-addressing.md">}}**Coming up next:** LAN Data Link Layer Addressing{{</next-in-series>}}

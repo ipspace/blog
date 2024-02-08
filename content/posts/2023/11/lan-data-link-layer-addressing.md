@@ -50,3 +50,5 @@ Now for the fun question: which bit in the first byte is the first or the second
 [^BEIP]: Another fun fact: Ethernet is *little endian* while IP is *big endian*.
 
 So, on Ethernet, the least significant bit is transmitted first, and multicast addresses always have one in the first byte -- they're always odd numbers. On Token Ring (which was created by IBM) and on FDDI, the most significant bit is transmitted first, which is why you would see multicast addresses in Token Ring or FDDI (if you ever managed to see one of those), starting with 0x80. Likewise, the *locally administered* bit would have a value of 0x02 in Ethernet and 0x40 in Token Ring or FDDI. And now you know why most Token Ring addresses for IBM mainframes started with 0x4000 -- probably one of the most useless bits of information to learn in 2023.
+
+{{<next-in-series page="/posts/2024/02/skip-network-layer.md">}}**Coming up next:** Can We Skip the Network Layer?{{</next-in-series>}}
