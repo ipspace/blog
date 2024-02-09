@@ -40,3 +40,5 @@ Interestingly, there is no connection identifier in the TCP/IP world. We use a h
 Going down to the network layer, we have to identify the network elements. In TCP/IP world, we do that by using IP addresses, which identify interfaces, not nodes[^OSI]. And finally, on the data link layer, we have to identify the interface card in the machine -- that would be Ethernet MAC address or Wi-Fi MAC address.
 
 [^OSI]: We'll get into that distinction when we start comparing TCP/IP and OSI protocol stacks.
+
+{{<next-in-series page="/posts/2023/10/data-link-addressing.md">}}**Coming up next:** Addressing in early data-link layers{{</next-in-series>}}

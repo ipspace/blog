@@ -49,3 +49,5 @@ The SLIP approach worked because on a point-to-point serial line  you don't need
 Finally, SLIP designers had to solve another interesting problem: what happens if you have 192 value in the IP header or anywhere in the IP datagram, because the receiving node would interpret that as the end of the datagram. They used a well-known trick called *escaping*:  they would send the escape character and then the original character. Instead of 192, they would send two characters: 219 and 192, or 219 and 220. The next challenge should be obvious: what if there is 219 in the data stream? In that case, they would send 219 and 221.
 
 Long story short: with very simple tricks, SLIP could send IP datagrams over point-to-point links without any data link layer or data link layer addresses.
+
+{{<next-in-series page="/posts/2023/11/fibre-channel-addressing.md">}}**Coming up next:** Fibre Channel Addressing{{</next-in-series>}}
