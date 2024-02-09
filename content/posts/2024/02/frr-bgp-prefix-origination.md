@@ -2,6 +2,7 @@
 title: "Removing FRRouting Configuration Is Not Idempotent"
 date: 2024-02-07 08:22:00+0100
 tags: [ BGP ]
+lastmod: 2024-02-09 19:07:00+0100
 ---
 One of the few beauties of most "industry standard CLI" implementations[^ISC] is that they're idempotent: nothing changes (apart from ACLs) if you configure the same stuff a dozen times. Most of these implementations allow you to deconfigure the same stuff multiple times; FRRouting is one of the unfortunate exceptions.
 
@@ -146,6 +147,17 @@ While the FRRouting configuration process is idempotent, removing configurations
 
 One could make that approach wonderfully modular if only FRRouting supported *include* files like *ifupdown2* does. Alas, that doesn't seem to be the case.
 
+### Why Do I Care?
+
+Getting an error message while configuring a device is always a cause for concern. Even Ansible network device modules catch those errors and report them back to the Ansible playbook.
+
+Moreover, FRR runs on Linux, and `vtysh -f` (or `vtysh -c`) returns an error code if it encounters an error. You can use those error codes to determine if your configuration change failed... assuming you can trust them. And that's why I hate getting spurious error messages from an otherwise excellent routing suite.
+
 ### What Am I Missing?
 
 I hope I missed something. Are you using FRRouting? How do you handle configuration generation/automation? Please leave a comment!
+
+### Revision History
+
+2024-02-09
+: Added the _why do I care_ section
