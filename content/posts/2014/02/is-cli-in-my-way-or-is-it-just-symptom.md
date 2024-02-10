@@ -22,7 +22,7 @@ tags:
 title: Is CLI In My Way … or Is It Just a Symptom of a Bigger Problem?
 url: /2014/02/is-cli-in-my-way-or-is-it-just-symptom.html
 ---
-My good friend Ethan recently published a blog post [rightfully complaining how various vendor CLIs hamper our productivity](https://ethancbanks.com/abstract-all-the-things-or-why-clis-are-in-my-way/). He's absolutely correct from the productivity standpoint, and I agree with his conclusions (we need a layer of abstraction), but there's more behind the scenes.
+My good friend Ethan recently published a blog post [rightfully complaining how various vendor CLIs hamper our productivity](https://packetpushers.net/blog/clis-are-in-my-way-abstract-all-the-things/). He's absolutely correct from the productivity standpoint, and I agree with his conclusions (we need a layer of abstraction), but there's more behind the scenes.
 <!--more-->
 **We're all sick of CLI**. I don't think anyone would disagree. However, CLI is not our biggest problem. We happen to be exposed to the CLI on a daily basis due to lack of automation tools and [lack of abstraction layer](https://blog.ipspace.net/2012/09/sdn-controller-northbound-api-is.html); occasional fights with the [usual brown substance flowing down the application stack](http://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html) don't help either.
 
@@ -32,7 +32,7 @@ My good friend Ethan recently published a blog post [rightfully complaining how 
 
 **CLI generates vendor lock-in**. Another pile of startup hype -- in this case coming from startups that want to replace the network device lock-in with controller lock-in ([here's a similar story](http://it20.info/2012/02/the-abc-of-lock-in/)).
 
-#### We're Not Unique
+### We're Not Unique
 
 Startups and pundits would like to persuade you how broken "traditional" networking is, but every other field in IT has to deal with the same problems -- just try to manage Windows server with Linux commands, or create tables on Microsoft SQL server with MySQL or Oracle syntax ... even Linux distributions don't have the same command set.
 

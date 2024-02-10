@@ -10,7 +10,7 @@ title: 'Routing Protocols and SD-WAN: Apples and Furbies'
 url: /2015/07/routing-protocols-and-sd-wan-apples-and.html
 sd-wan_tag: myth
 ---
-Ethan Banks recently wrote a [nice blog post](http://ethancbanks.com/2015/06/15/sd-wan-gives-us-the-best-path-we-always-wanted/) detailing the benefits and drawbacks of traditional routing protocols and comparing them with their SD-WAN counterparts.
+Ethan Banks recently wrote a [nice blog post](https://packetpushers.net/blog/sd-wan-gives-us-the-best-path-we-always-wanted/) detailing the benefits and drawbacks of traditional routing protocols and comparing them with their SD-WAN counterparts.
 
 While I agree with everything he wrote, the comparison between the two isn't exactly fair -- it's a bit like trying to cut the cheese with a chainsaw and complaining about the resulting waste.
 <!--more-->
