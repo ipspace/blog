@@ -310,6 +310,37 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2106">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Scott</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2106" href="#2106">22 February 2024 12:57</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thanks for the reply Ivan.</p>
+
+<p>When I said &quot;that&#39;s not great though as hosts in the same community would still talk via a router&quot; - this is not the behaviour you want on a community vlan (otherwise why would you create the community vlan in the first place?).  It&#39;s isolated vlans where you want layer 2 segmentation.</p>
+
+<p>Private vlans with inter-host controls performed at the router are made possible for IPv4 by a combination of local routing, no ip redirects, and local proxy-arp.  However for IPv6, while the first two functions are possible (at least on a Cisco router), the third is not.  It makes sense that IPv6 local proxy-arp is unavailable/impossible since ND is done with multicasts, not broadcasts.  Therefore to get private vlans working with IPv6 you must be able to force the hosts to consider the prefix derived by their address and prefix length to be considered &quot;off-link&quot;, and therefore they should forward all traffic to the default router. (Mimicking the local proxy-arp behaviour).</p>
+
+<p>As I said both Windows and FreeBSD (I&#39;m yet to test Linux) both add the derived prefix to the prefix table when you statically configure an address - despite what they may learn from an RA - and in violation of RFC 5942.  On the other hand if they use SLAAC by learning the prefix from an RA, then if that RA says the prefix is not on-link (L=0) then neither OS adds the prefix to the prefix table.</p>
+
+<p>So I have successfully implemented isolated private vlans with IPv6 with SLAAC/DHCPv6, but not static addressing.  Well, static with /128 prefix lengths work.</p>
+
+<p>Have you ever come across private vlans and IPv6?</p>
+
+<p>Thanks.</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
