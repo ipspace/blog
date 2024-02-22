@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>6 comments:</h4>
+  <h4>7 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -256,6 +256,33 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2104">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Scott</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2104" href="#2104">22 February 2024 06:20</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>&quot;A prefix information option with both A and L flags unset is meaningless and might as well be removed.&quot;</p>
+
+<p>I&#39;m not sure this is true.  You can statically address a host, prevent it from also using SLAAC (A=0) and want to force everything to a default router (L=0).</p>
+
+<p>I assume you could so some creative routing A=0,L=0 too.  ie. one router is the default but another might be a better first hop for a specific prefix.</p>
+
+<p>I&#39;ve been trying to get private vlans working with FreeBSD hosts but when you statically assign an IPv6 address it adds the derived prefix to the prefix table as on-link, even with a router advertising the prefix with L=0.  Same for Windows.  One workaround is to use /128 as the prefixlen for the static address.  If you&#39;re not using community vlans that&#39;s not great though as hosts in the same community would still talk via a router.</p>
+
+<p>This behaviour of both OSes seems contrary to RFC 5942: &quot;The assignment of an IPv6 address ... MUST NOT implicitly cause a prefix derived from that address to be treated as on-link and added to the Prefix List.&quot;</p>
+</div>
           </div>
         </li>
       </div>
