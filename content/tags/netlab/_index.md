@@ -15,6 +15,10 @@ The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help yo
 
 {{<series-listing tag="video" weight="1">}}
 
+### Podcasts
+
+{{<series-listing tag="podcast">}}
+
 ### {{<plushy master>}}Usage Guidelines
 
 {{<series-listing tag="guidelines" weight="1">}}
