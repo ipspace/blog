@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -38,6 +38,60 @@
               </span>
             </div>
             <div class="comment-content"><p>Wow, thanks a million! I&#39;m already using DNSMASQ as a DHCP server but not a relay. Will test how well that works.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2115">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Erik Auerswald</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2115" href="#2115">28 February 2024 09:49</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I would have described the <em>root cause</em> as the ISC DHCP Relay (<code>dhcrelay</code>) relaying packets the relay function should never see, i.e., unicast packets sent directly to the DHCP server, not the relay.</p>
+
+<p>RFC 2131 contains the following under the heading <em>DHCPREQUEST generated during RENEWING state</em>:</p>
+
+<p>&gt; <em>This message will be unicast, so no relay agents will be involved in its transmission.</em></p>
+
+<p>Disabling IP forwarding on the relay (which is also the gateway) results in dropping this unicast packet, breaking the connectivity required for normal DHCP operation. Now this non-standard behavior you have observed with the ISC DHCP relay (<code>dhcrelay</code>) works around the connectivity problem.</p>
+
+<p>The ISC DHCP Relay <a href="https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcrelay">man page</a> seems to suggest that the software is intended as a normal DHCP relay, but its behavior seems to diverge from that of normal DHCP relays.</p>
+</div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2116">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2116" href="#2116">28 February 2024 09:52</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>You nailed it (as always ;)</p>
 </div>
           </div>
         </li>
