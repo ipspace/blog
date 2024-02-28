@@ -58,6 +58,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "28 February 2024 07:54",
+               "html": "<p>Thank you, now it makes perfect sense, and once you know what to look for, it&#39;s obvious from the source IP addresses and the Gateway-IP in the packet traces. Will add it to the blog post.</p>\n",
+               "id": "2120",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-02-28T19:54:11",
+               "ref": "2119",
+               "type": "comment"
+            }
+         ],
          "date": "28 February 2024 06:45",
          "html": "<p>I would assume that the observed difference between the upstream and downstream direction is due to the fact, that ISC DHCP Relay needs to open a <em>raw socket</em> toward the downstream interface, whereas a regular UDP socket is used in the upstream direction. <code>dhcrelay</code> seems to capture all DHCP traffic destined toward port 67 on the downstream side, instead of checking the destination IP address.</p>\n\n<p>When a client that has no IP address a raw socket is needed (on the client as well as the server side), in order to send and receive raw IP packets (i.e. IP packets crafted in user space).</p>\n",
          "id": "2119",
