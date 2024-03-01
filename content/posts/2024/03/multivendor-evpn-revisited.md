@@ -27,6 +27,14 @@ You see, there's a fundamental difference in perspective if you consider multi-v
 
 [^QT]: Let's be realistic and admit it's impossible to test every single deployment scenario of a complex distributed system. It's also impossible to predict the crazy ways in which MacGyvers of the networking world will use your boxes. On the other hand, it's inexcusable to [ship a virtual appliance with a broken DHCP client](https://blog.ipspace.net/2023/10/vjunos-declines-dhcp-address.html) and then take over three months to release a fixed image. Nonetheless, I want to avoid being unpaid vendors' QA department as much as possible.
 
+{{<long-quote>}}
+A recent LinkedIn comment is a perfect illustration of what I'm talking about:
+
+> One thing that is really hard to simulate in a lab, which gives me serious heartburn with VXLAN implementation, is what happens when you get a bad- or stale state in the table. So far, I've been unable to find a better solution than **clear bgp all**, which is somewhat acceptable when services are partition tolerant and a complete nightmare when they are not.
+
+Vendors have been "shipping" EVPN/VXLAN for years, and we're still dealing with *BGP tables or forwarding tables are messed up* scenarios. Do I need to say more?
+{{</long-quote>}}
+
 Now for a slightly more nuanced perspective. Roman also argued that there's a difference between *EVPN services* and *MC-LAG* and he's absolutely correct.
 
 {{<figure src="/2024/03/tweet-ntdvps-mclag.jpg">}}
@@ -45,7 +53,7 @@ I don't care if some vendors believe they should implement MC-LAG with EVPN ESI 
 
 Last but not least, this saga proves vendors learned nothing from the OSPF debacle of the mid-1990s:
 
-* The development of the EVPN RFCs was mostly vendor-driven (because nobody else would pay top-notch engineers to ~~waste~~ invest their time into arguing about the number of angels dancing on virtual pins).
+* The development of the EVPN RFCs was mostly vendor-driven (because nobody else would pay top-notch engineers to ~~waste~~ dedicate their time to arguing about the number of angels dancing on virtual pins).
 * As usual, most parts of the EVPN standards were made optional because nobody in their right mind would agree to have something they haven't implemented yet be MANDATORY.
 * Vendors decided to implement different subsets of the EVPN standards and used standards in different creative ways, creating the whole interoperability mess in the first place.
 * Don't get me started on the crazy ideas of running IBGP over EBGP because (A) EVPN was [designed to be used with IBGP and IGP](https://blog.ipspace.net/2019/04/dont-sugarcoat-challenges-you-have.html), and (B) [EBGP-as-IGP craze took over](https://blog.ipspace.net/2019/11/the-evpn-dilemma.html) in the meantime.
