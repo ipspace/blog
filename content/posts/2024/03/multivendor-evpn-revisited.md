@@ -27,13 +27,13 @@ You see, there's a fundamental difference in perspective if you consider multi-v
 
 [^QT]: Let's be realistic and admit it's impossible to test every single deployment scenario of a complex distributed system. It's also impossible to predict the crazy ways in which MacGyvers of the networking world will use your boxes. On the other hand, it's inexcusable to [ship a virtual appliance with a broken DHCP client](https://blog.ipspace.net/2023/10/vjunos-declines-dhcp-address.html) and then take over three months to release a fixed image. Nonetheless, I want to avoid being unpaid vendors' QA department as much as possible.
 
-{{<longquote>}}
+{{<long-quote>}}
 A recent LinkedIn comment is a perfect illustration of what I'm talking about:
 
 > One thing that is really hard to simulate in a lab, which gives me serious heartburn with VXLAN implementation, is what happens when you get a bad- or stale state in the table. So far, I've been unable to find a better solution than **clear bgp all**, which is somewhat acceptable when services are partition tolerant and a complete nightmare when they are not.
 
-Vendors have been "shipping" EVPN/VXLAN for years, and we're still dealing with *forwarding tables are messed up* scenarios. Do I need to say more?
-{{</longquote}}
+Vendors have been "shipping" EVPN/VXLAN for years, and we're still dealing with *BGP tables or forwarding tables are messed up* scenarios. Do I need to say more?
+{{</long-quote>}}
 
 Now for a slightly more nuanced perspective. Roman also argued that there's a difference between *EVPN services* and *MC-LAG* and he's absolutely correct.
 
