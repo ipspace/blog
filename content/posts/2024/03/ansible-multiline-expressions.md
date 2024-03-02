@@ -1,6 +1,6 @@
 ---
 title: "Multiline Expressions in Ansible Playbooks"
-date: 2024-03-04 07:33:00+0100
+date: 2024-03-06 07:33:00+0100
 tags: [ Ansible ]
 pre_scroll: True
 ---
