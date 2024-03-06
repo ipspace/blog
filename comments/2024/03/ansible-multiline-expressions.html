@@ -1,0 +1,66 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2129">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> MIguel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2129" href="#2129">06 March 2024 03:12</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Hello,</p>
+
+<p>First of all, thank you for all the information you share here. It is really useful.</p>
+
+<p>For several reason we have been dealing with ansible 2.10 for a while and the solution we found to this problem was to remove the endline by using YAML multiline block definition options. We always use &quot;&gt;-&quot; instead of &quot;&gt;&quot; when we want to define a variable using set_fact, so it removes that final endline.</p>
+
+<p>Here it is an example based on yours for this behaviour in ansible 2.10.17.</p>
+
+<p>Variable a is set using &#39;&gt;&#39; and variable b using &#39;&gt;-&#39;. First one is set to a string while the second one is set as intended to false.</p>
+
+<pre>
+&gt; cat playbook.yml
+---
+- name: Test playbook
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - set_fact:
+      a: &gt;
+        &#123;&#123; 123 == 345 or
+           123 &gt; 345 &#125;&#125;
+      b: &gt;-
+        &#123;&#123; 123 == 345 or
+           123 &gt; 345 &#125;&#125;
+
+&gt; ansible-playbook -v playbook.yml
+...
+PLAY [Test playbook] ***********************************************************************************
+
+TASK [set_fact] ****************************************************************************************
+ok: [localhost] =&gt; &#123;&quot;ansible_facts&quot;: &#123;&quot;a&quot;: &quot;False\n&quot;, &quot;b&quot;: false&#125;, &quot;changed&quot;: false&#125;
+
+PLAY RECAP *********************************************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+</pre>
+
+<p>Hope it helps.
+Best regards</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
