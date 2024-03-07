@@ -3,6 +3,7 @@ title: "Multiline Expressions in Ansible Playbooks"
 date: 2024-03-06 07:33:00+0100
 tags: [ Ansible ]
 pre_scroll: True
+lastmod: 2024-03-07 16:05:00+0100
 ---
 Another week, another Ansible quirk 🤷‍♂️ Imagine you have a long Jinja2 expression, and you want to wrap it into multiple lines to improve readability. Using multiline YAML format seems to be the ideal choice:
 
@@ -41,7 +42,9 @@ ok: [localhost] => {"ansible_facts": {"a": "False\n"}, "changed": false}
 
 Notice how the extra newline throws off Ansible? It evaluates the expression as a string; a non-empty string is **true**, not **false**.
 
-**Lesson learned**: you MUST NOT use multiline YAML format in Ansible expressions; you MUST enclose expressions in quotes like this:
+**Lesson learned**: you MUST NOT use multiline YAML format in Ansible expressions.
+
+You could enclose expressions in quotes like this:
 
 ```
 ---
@@ -53,3 +56,23 @@ Notice how the extra newline throws off Ansible? It evaluates the expression as 
         "{{ 123 == 345 or
             123 > 345 }}"
 ```
+
+You could also use the [YAML Block Chomping Indicator](https://yaml.org/spec/1.2.2/#8112-block-chomping-indicator) to remove the trailing newline:
+
+```
+---
+- name: Test playbook
+  hosts: localhost
+  tasks:
+  - set_fact:
+      a: >-
+        {{ 123 == 345 or
+           123 > 345 }}
+```
+
+You'll find more details on a website dedicated to [multiline YAML strings](https://yaml-multiline.info/).
+
+### Revision History
+
+2024-03-07
+: Added Block Chomping as an alternate solution based on [Miguel's comment](https://blog.ipspace.net/2024/03/ansible-multiline-expressions.html#2129).
