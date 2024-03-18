@@ -1,0 +1,52 @@
+<pre class="printout">
+{{- $range := split (trim .Inner "\n\r") "\n" -}}
+{{- range $range -}}
+<code>{{ printf "%s\n" . }}</code>
+{{- end -}}
+</pre>
+<style>
+pre.printout {
+  position: relative;
+  counter-reset: line; /* Create a counter named "line" */
+  padding: 0 1em;
+}
+
+pre.printout code {
+  margin-left: 3em;
+  padding-left: 0.5em;
+  display: block;
+}
+
+pre.printout code:before {
+  position: absolute;
+  width: 3em;
+  text-align: right;
+  padding-right: 0.5em;
+  left: 0;
+  display: inline-block;
+  line-height: 1.6;
+  counter-increment: line; /* Increment the "line" counter */
+  content: counter(line); /* Display the current counter value */
+  background-color: rgba(209,191,171,0.2);
+}
+
+pre.printout code:first-child {
+  padding-top: 0.5em;
+}
+
+pre.printout code:first-child:before {
+  padding-top: 0.5em;
+  top: 0;
+}
+
+pre.printout code:last-child {
+  padding-bottom: 0.5em;
+}
+
+pre.printout code:last-child:before {
+  padding-bottom: 0.5em;
+  bottom: 0;
+}
+
+
+</style>
