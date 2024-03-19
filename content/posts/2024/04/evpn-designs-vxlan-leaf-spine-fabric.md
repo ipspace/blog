@@ -23,7 +23,21 @@ Yes, that's right: [you don't have to run EVPN](/2022/09/mlag-bridging-evpn.html
 
 {{<figure src="/2024/04/evpn-design-vxlan.png" caption="Leaf-and-Spine Fabric Using VXLAN without EVPN">}}
 
-Don't believe me that this could work? Let's set up a lab and try it out.
+**Benefits:**
+
+* The design is as simple as it gets. It's simpler than the traditional L2 fabric (no spanning tree or MLAG in the fabric core) or EVPN.
+* You don't need to run BGP in your fabric; everyone in your team probably knows how to configure OSPF in area 0.
+* You won't experience any interoperability problems even if you believe in the fairy tale of multi-vendor fabrics. The only interaction between leaf switches is the data-plane VXLAN encapsulation.
+
+**Drawbacks:**
+
+* You must manage the ingress replication lists[^NOMC] on the leaf switches. Not a big deal if your fabric never grows or if you use a configuration generation tool (including Excel ;)
+* You cannot use the fancy stuff like ARP suppression or EVPN-based MLAG (but maybe you're better off not using them anyway).
+* Some vendors support [anycast first-hop gateway](https://blog.ipspace.net/2013/05/optimal-l3-forwarding-with-varp-and.html) (which is a good thing) only with EVPN.
+
+[^NOMC]: Please don't tell me you can use IP multicast. I would prefer EVPN over IP multicast and PIM any day of the week, including a troubleshooting exercise at 2 AM on a Sunday.
+
+Don't believe me that this design could work? Let's set up a lab and try it out.
 
 ### Leaf-and-Spine Lab Topology
 
@@ -66,10 +80,10 @@ Let's go through it line-by-line:
 * Line 9: We want _netlab_ to [creates nodes](https://netlab.tools/groups/#create-nodes-from-group-members) based on the group's **members** list so we won't have to specify them manually.
 * Line 10-11: The **fabric** plugin puts all leaf switches in the **leafs** group. The leaf switches will use VLANs and VXLAN, and run OSPF.
 * Line 12-13: The **fabric** plugin puts all spine switches in the **spines** group. The spine switches will run OSPF.
-* Line 14-16: We must also define a few Linux hosts.
+* Line 14-16: We must define a few Linux hosts to test end-to-end connectivity.
 * Line 18: The VLANs will be layer-2-only; the leaf switches won't have IP addresses on VLAN interfaces.
 * Lines 19-23: We must create **orange** and **blue** VLANs and add links between hosts and leaf switches (the **fabric** plugin generates intra-fabric links). We don't have to define VXLAN VNIs or ingress replication lists. By default, _netlab_ creates VNIs for every VLAN and builds ingress replication lists from loopback addresses of other VXLAN switches.
-* Lines 25-26: Just for fun, let's add the *graphite* GUI to the lab topology so you can point and click your way around it. Please note you won't be able to connect to the Linux hosts with Graphite as they don't run SSH servers.
+* Lines 25-26: For fun, add the *graphite* GUI to the lab topology so you can point and click around it. Please note you won't be able to connect to the Linux hosts with Graphite as they don't run SSH servers.
 
 Now, we're ready to start the lab and kick the tires.
 
@@ -77,8 +91,8 @@ Now, we're ready to start the lab and kick the tires.
 
 I prefer using Arista cEOS containers on Ubuntu to run EVPN labs:
 
-* Arista EOS has a familiar user interface
-* The cEOS containers consume approximately 1G of RAM per container. You might be able to run a fabric with six switches on a 16GB laptop.
+* Arista EOS has a familiar user interface and uses the same configuration mechanism for data- and control planes.
+* The cEOS containers consume approximately 1G of RAM per container. You can run a fabric with six switches on a 16GB laptop.
 * You don't need nested virtualization when using containers inside a VM.
 
 Using cEOS containers, you can run your tests on any x86 VM running on your laptop, your virtualization cluster[^VMW], or in a public cloud. Alternatively, if you want to [run EVPN labs on recent Apple laptops](/2024/03/netlab-bgp-apple-silicon.html), use the FRR containers.
@@ -96,7 +110,7 @@ export NETLAB_PROVIDER=libvirt
 
 [^VMW]: I wanted to write *your VMware cluster*, but I'm guessing that's not a popular option these days. I've heard good things about ProxMox, though.
 
-If you're brand new to _netlab_, use these simple steps to set up your lab in a Ubuntu VM running on your laptop. If you want something more complex, read the [netlab installation instructions](https://netlab.tools/install/).
+If you're new to _netlab_, use these simple steps to set up your lab in a Ubuntu VM running on your laptop. If you want something more complex, read the [netlab installation instructions](https://netlab.tools/install/).
 
 * Download and install [multipass](https://multipass.run/)
 * [Install netlab, Ansible, Docker, and Containerlab](/2024/03/netlab-bgp-apple-silicon.html).
@@ -131,3 +145,116 @@ round-trip min/avg/max = 1.547/2.020/2.494 ms
 ```
 
 Mission Accomplished!
+
+### Behind the Scenes
+
+This is the relevant part of the configuration of L1 running Arista EOS (you can view complete configurations for all switches on GitHub).
+
+{{<printout>}}
+vlan 1000
+   name orange
+!
+interface Ethernet1
+   description L1 -> S1
+   ip address 10.1.0.1/30
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet2
+   description L1 -> S2
+   ip address 10.1.0.5/30
+   ip ospf network point-to-point
+   ip ospf area 0.0.0.0
+!
+interface Ethernet3
+   mac-address 52:dc:ca:fe:01:03
+   switchport access vlan 1000
+!
+interface Loopback0
+   ip address 10.0.0.1/32
+   ip ospf area 0.0.0.0
+!
+interface Vxlan1
+   vxlan source-interface Loopback0
+   vxlan udp-port 4789
+   vxlan vlan 1000 vni 101000
+   vxlan vlan 1000 flood vtep 10.0.0.3
+!
+router ospf 1
+   router-id 10.0.0.1
+{{</printout>}}
+
+Let's walk through the VXLAN-related parts. You have to:
+
+* Define a VLAN (line 1) and use it on some Ethernet ports (line 18).
+* Create a VXLAN interface (line 24) and specify the VTEP interface (line 25).
+* Map VLAN ID into VXLAN VNI (line 27)
+* Create a VXLAN ingress replication list for all VLANs or an individual VLAN (line 28).
+
+I told you, it's as easy as it can get ;)
+
+Let's throw a few **show** commands in for good measure. VLAN 1000 is active on Ethernet3 and Vxlan1 interfaces:
+
+```
+L1#show vlan
+VLAN  Name                             Status    Ports
+----- -------------------------------- --------- -------------------------------
+1     default                          active
+1000  orange                           active    Et3, Vx1
+```
+
+VLAN 1000 is mapped to VNI 101000:
+
+```
+L1#show vxlan vni
+VNI to VLAN Mapping for Vxlan1
+VNI          VLAN       Source       Interface       802.1Q Tag
+------------ ---------- ------------ --------------- ----------
+101000       1000       static       Ethernet3       untagged
+                                     Vxlan1          1000
+```
+
+The ingress replication list has one remote VTEP:
+
+```
+L1#show vxlan vtep detail
+Remote VTEPS for Vxlan1:
+
+VTEP           Learned Via         MAC Address Learning       Tunnel Type(s)
+-------------- ------------------- -------------------------- --------------
+10.0.0.3       control plane       datapath                   flood
+
+Total number of remote VTEPS:  1
+```
+
+MAC address table for VLAN 1000 has two entries (one of them reachable over VXLAN):
+
+```
+L1#show mac address-table
+          Mac Address Table
+------------------------------------------------------------------
+
+Vlan    Mac Address       Type        Ports      Moves   Last Move
+----    -----------       ----        -----      -----   ---------
+1000    aac1.ab49.a48a    DYNAMIC     Vx1        1       0:00:09 ago
+1000    aac1.ab4f.d1fb    DYNAMIC     Et3        1       0:01:15 ago
+```
+
+The MAC address reachable over VXLAN sits behind VTEP 10.0.0.3:
+
+```
+L1#show vxlan address-table
+          Vxlan Mac Address Table
+----------------------------------------------------------------------
+
+VLAN  Mac Address     Type      Prt  VTEP             Moves   Last Move
+----  -----------     ----      ---  ----             -----   ---------
+1000  aac1.ab49.a48a  DYNAMIC   Vx1  10.0.0.3         1       0:00:47 ago
+Total Remote Mac Addresses for this criterion: 1
+```
+
+Could you teach your entry-level engineers to use this when troubleshooting connectivity problems? I bet you could.
+
+Unfortunately, I'm only too aware that some networking engineers hate simple solutions[^VKA]. Next time, we'll throw EVPN into the mix, yet again starting with a straightforward design: running a full mesh of IBGP sessions between leaf switches.
+
+[^VKA]: Or drank too much vendor Kool-Aid, or need to pad their resume, or (in a few cases) have a network extensive enough that they need more complex technologies to cope with its scale.
