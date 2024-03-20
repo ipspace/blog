@@ -1,8 +1,11 @@
 ---
-title: "EVPN/MPLS Bridging Forwarding Model"
-date: 2022-10-05 06:29:00
-tags: [ EVPN, MPLS ]
-pre_scroll: True
+date: 2022-10-05 06:29:00+00:00
+evpn_tag: mpls
+pre_scroll: true
+tags:
+- EVPN
+- MPLS
+title: EVPN/MPLS Bridging Forwarding Model
 ---
 Most networking engineers immediately think about VXLAN and data center switches when they hear about EVPN. While that's the most hyped use case, EVPN standardization started in 2012 as a layer-2 VPN solution on top of MPLS transport trying to merge the best of VPLS and MPLS/VPN worlds.
 

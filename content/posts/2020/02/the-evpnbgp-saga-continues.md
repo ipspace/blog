@@ -1,13 +1,14 @@
 ---
 date: 2020-02-05 08:37:00+01:00
 dcbgp_tag: rant
+evpn_tag: rant
 series:
 - dcbgp
 tags:
 - design
 - BGP
 - EVPN
-title: The EVPN/BGP Saga Continues
+title: The EVPN/EBGP Saga Continues
 url: /2020/02/the-evpnbgp-saga-continues.html
 ---
 [Aldrin](http://aldrinisaac.blogspot.com/) wrote a well-thought-out comment to my *[EVPN Dilemma](https://blog.ipspace.net/2019/11/the-evpn-dilemma.html)* blog post explaining why he thinks it makes sense to use [Juniper's IBGP (EVPN) over EBGP (underlay) design](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics#IBGP-Based_EVPN_on_Top_of_EBGP-Based_Fabric_Routing). The only problem I have is that I forcefully disagree with many of his assumptions.

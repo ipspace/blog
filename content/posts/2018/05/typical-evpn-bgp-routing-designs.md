@@ -1,6 +1,7 @@
 ---
 date: 2018-05-30 09:06:00+02:00
 dcbgp_tag: design
+evpn_tag: design
 series:
 - dcbgp
 series_weight: 800

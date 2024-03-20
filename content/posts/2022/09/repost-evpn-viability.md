@@ -1,7 +1,11 @@
 ---
-title: "Repost: On the Viability of EVPN"
-date: 2022-09-27 06:53:00
-tags: [ EVPN, VXLAN ]
+date: 2022-09-27 06:53:00+00:00
+evpn_tag: rant
+series_title: On the Viability of EVPN
+tags:
+- EVPN
+- VXLAN
+title: 'Repost: On the Viability of EVPN'
 ---
 Jordi left an [interesting comment](https://blog.ipspace.net/2022/09/mlag-bridging-evpn.html#1375) to my *[EVPN/VXLAN or Bridged Data Center Fabrics](/2022/09/mlag-bridging-evpn.html)* blog post discussing the viability of using VXLAN and EVPN in times when the equipment lead times can exceed 12 months. Here it is:
 

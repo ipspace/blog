@@ -1,9 +1,11 @@
 ---
 date: 2020-04-14 07:02:00+00:00
 dcbgp_tag: abstract
+evpn_tag: details
 series:
 - bgp_nh
 - dcbgp
+series_title: Next-Hop and VTEP Reachability in EVPN Networks
 tags:
 - EVPN
 - BGP

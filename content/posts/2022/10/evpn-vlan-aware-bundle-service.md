@@ -1,8 +1,11 @@
 ---
-title: "EVPN VLAN-Aware Bundle Service"
-date: 2022-10-13 06:06:00
-tags: [ EVPN, bridging ]
-pre_scroll: True
+date: 2022-10-13 06:06:00+00:00
+evpn_tag: mpls
+pre_scroll: true
+tags:
+- EVPN
+- bridging
+title: EVPN VLAN-Aware Bundle Service
 ---
 In the _[EVPN/MPLS Bridging Forwarding Model](/2022/10/evpn-mpls-bridging-forwarding-model.html)_ blog post I mentioned numerous services defined in [RFC 7432](https://datatracker.ietf.org/doc/html/rfc7432). That blog post focused on [VLAN-Based Service Interface](https://datatracker.ietf.org/doc/html/rfc7432#section-6.1) that mirrors the [Carrier Ethernet VLAN mode](https://datatracker.ietf.org/doc/html/rfc7209#section-7).
 

@@ -1,7 +1,10 @@
 ---
-title: "Rant: Multi-Vendor EVPN Fabrics"
-date: 2024-03-05 08:36:00+0100
-tags: [ EVPN ]
+date: 2024-03-05 08:36:00+01:00
+evpn_tag: rant
+series_title: Multi-Vendor EVPN Fabrics
+tags:
+- EVPN
+title: 'Rant: Multi-Vendor EVPN Fabrics'
 ---
 [Daniel Dib](https://twitter.com/danieldibswe) tweeted about an [old comment of mine](https://blog.ipspace.net/2022/09/mlag-bridging-evpn.html#1420) a few days ago, adding[^TIC]:
 

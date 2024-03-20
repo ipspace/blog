@@ -1,7 +1,11 @@
 ---
-title: "Worth Reading: Introduction of EVPN at DE-CIX"
-date: 2023-10-07 06:18:00
-tags: [ EVPN, VXLAN ]
+date: 2023-10-07 06:18:00+00:00
+evpn_tag: read
+series_title: Introduction of EVPN at DE-CIX
+tags:
+- EVPN
+- VXLAN
+title: 'Worth Reading: Introduction of EVPN at DE-CIX'
 ---
 Numerous Internet Exchange Points (IXP) started using VXLAN years ago to replace tradition layer-2 fabrics with routed networks. Many of them tried to avoid the complexities of EVPN and used VXLAN with statically-configured (and hopefully automated) ingress replication.
 

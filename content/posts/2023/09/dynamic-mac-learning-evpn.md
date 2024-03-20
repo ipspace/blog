@@ -1,7 +1,10 @@
 ---
-title: "Dataplane MAC Learning with EVPN"
-date: 2023-09-18 06:34:00
-tags: [ EVPN, bridging ]
+date: 2023-09-18 06:34:00+00:00
+evpn_tag: intro
+tags:
+- EVPN
+- bridging
+title: Dataplane MAC Learning with EVPN
 ---
 Johannes Resch submitted the following comment to the _[Is Dynamic MAC Learning Better Than EVPN?](https://blog.ipspace.net/2023/04/evpn-dynamic-mac-learning.html)_ blog post:
 

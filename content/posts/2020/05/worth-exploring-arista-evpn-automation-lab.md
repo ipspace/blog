@@ -1,7 +1,12 @@
 ---
-title: "Worth Exploring: Arista EVPN-Based Automation Virtual Lab"
-date: 2020-05-23 06:52:00
-tags: [ automation, fabric, EVPN ]
+date: 2020-05-23 06:52:00+00:00
+evpn_tag: read
+series_title: Arista EVPN-Based Automation Virtual Lab
+tags:
+- automation
+- fabric
+- EVPN
+title: 'Worth Exploring: Arista EVPN-Based Automation Virtual Lab'
 ---
 David Varnum created a [fantastic leaf-and-spine fabric of vEOS switches running with GNS3 and automated with Ansible playbooks](https://overlaid.net/2019/02/19/arista-bgp-evpn-ansible-lab/).
 

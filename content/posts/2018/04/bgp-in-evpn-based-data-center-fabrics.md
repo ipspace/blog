@@ -1,6 +1,7 @@
 ---
 date: 2018-04-04 10:38:00+02:00
 dcbgp_tag: design
+evpn_tag: design
 series:
 - dcbgp
 series_weight: 800
