@@ -102,7 +102,17 @@ case "$1" in
       echo "Applying ${BLOG_SERIES:-$BLOG_CATEGORY} tag $BLOG_SERIES_TAG to $name"
       name=$(blog_skip_url $name)
       name=$(blog_find_file $name)
-      $SCRIPT_DIR/series-tag-post.py $name
+      echo "... final file name $name"
+      if [[ "$name" == *".html" ]]; then
+        open "https://blog.ipspace.net/$name"
+        MDFILE=$(blog_html_to_md $name)
+        echo "Migrating $name to $MDFILE"
+        $SCRIPT_DIR/migrate-post.py $name
+        SERTAG_EDIT=True
+        name="$MDFILE"
+      else
+        $SCRIPT_DIR/series-tag-post.py $name
+      fi
       if [[ $SERTAG_EDIT ]]; then
         blog_edit_post $name
         blog_view_post $name
