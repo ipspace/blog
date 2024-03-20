@@ -1,10 +1,16 @@
 ---
 date: 2023-04-03 06:40:00+00:00
+evpn_tag: details
 netlab_tag: use
+pre_scroll: true
+series:
+- dhcp-relay
+tags:
+- netlab
+- DHCP
+- EVPN
+- IP routing
 title: DHCP Relaying in EVPN VRFs
-tags: [ netlab, DHCP, EVPN, IP routing ]
-pre_scroll: True
-series: [ dhcp-relay ]
 ---
 After [figuring out how DHCP relaying works](/2023/03/dhcp-relay-process.html) and testing it with[ VRFs](/2023/03/netlab-vrf-dhcp-relay.html) and in [VXLAN segments](/2023/03/netlab-vxlan-dhcp-relay.html), it seems like a no-brainer to make it work with EVPN.
 

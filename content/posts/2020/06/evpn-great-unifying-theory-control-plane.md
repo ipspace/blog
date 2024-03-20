@@ -1,11 +1,15 @@
 ---
-title: "EVPN: The Great Unifying Theory of VPN Control Planes?"
-date: 2020-06-16 06:23:00
-tags: [ EVPN, VPN, MPLS ]
+date: 2020-06-16 06:23:00+00:00
 dcbgp_tag: design
+evpn_tag: intro
 series:
 - dcbgp
 series_weight: 500
+tags:
+- EVPN
+- VPN
+- MPLS
+title: 'EVPN: The Great Unifying Theory of VPN Control Planes?'
 ---
 I claimed that “*EVPN is the control plane for layer-2 and layer-3 VPNs*” in the *[Using VXLAN and EVPN to Build Active-Active Data Centers](https://blog.ipspace.net/2018/11/interview-active-active-data-centers.html)* interview a long long while ago and got this response from one of the readers:
 

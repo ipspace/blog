@@ -1,7 +1,10 @@
 ---
-title: "EVPN/VXLAN Complexity"
-date: 2021-10-27 07:15:00
-tags: [ VXLAN, EVPN ]
+date: 2021-10-27 07:15:00+00:00
+evpn_tag: rant
+tags:
+- VXLAN
+- EVPN
+title: EVPN/VXLAN Complexity
 ---
 _We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Minh Ha on [complexity of emulating layer-2 networks with VXLAN and EVPN](https://blog.ipspace.net/2021/10/worth-reading-arp-problems-evpn.html#801)_.
 

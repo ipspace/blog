@@ -1,11 +1,16 @@
 ---
-title: EVPN Control Plane in Infrastructure Cloud Networking
-date: 2020-10-06 06:36:00
-tags: [ cloud, EVPN, AWS, Azure ]
+date: 2020-10-06 06:36:00+00:00
 dcbgp_tag: design
+evpn_tag: rant
 series:
 - dcbgp
 series_weight: 450
+tags:
+- cloud
+- EVPN
+- AWS
+- Azure
+title: EVPN Control Plane in Infrastructure Cloud Networking
 ---
 One of my readers sent me this question (probably after stumbling upon a remark I made in the [AWS Networking](https://www.ipspace.net/Amazon_Web_Services_Networking) webinar):
 

@@ -1,8 +1,11 @@
 ---
-title: "Silent Hosts in EVPN Fabrics"
-date: 2023-05-04 06:46:00
+date: 2023-05-04 06:46:00+00:00
+evpn_tag: details
 lastmod: 2023-05-05 05:18:00
-tags: [ EVPN, bridging ]
+tags:
+- EVPN
+- bridging
+title: Silent Hosts in EVPN Fabrics
 ---
 The [Dynamic MAC Learning versus EVPN](https://blog.ipspace.net/2023/04/evpn-dynamic-mac-learning.html) blog post triggered tons of interesting responses describing edge cases and vendor ~~bugs~~ implementation details, including an age-old case of silent hosts [described by Nitzan](https://blog.ipspace.net/2023/04/evpn-dynamic-mac-learning.html#1792):
 

@@ -1,6 +1,7 @@
 ---
 anycast_tag: fabric
 date: 2022-03-30 07:11:00+00:00
+evpn_tag: details
 series:
 - anycast
 tags:

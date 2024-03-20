@@ -1,6 +1,7 @@
 ---
 date: 2019-04-03 08:18:00+02:00
 dcbgp_tag: rant
+evpn_tag: rant
 series:
 - dcbgp
 tags:
@@ -11,7 +12,7 @@ url: /2019/04/dont-sugarcoat-challenges-you-have.html
 ---
 Last year I got into somewhat-heated discussion with a few engineers who followed the advice to [run IBGP EVPN address family on top of an EBGP underlay](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics).
 
-My main argument was simple: this is not how BGP was designed and how it's commonly used, and twisting it this way requires schizophrenic BGP routing process which introduces unnecessary complexity (even though it [looks simple in Junos configuration](https://blog.ipspace.net/2018/05/dissecting-ibgpebgp-junos-configuration.html)) and might confuse people who have to run the network after the brilliant designer is gone.
+My main argument was simple: this is not how BGP was designed and how it's commonly used, and twisting it this way requires a schizophrenic BGP routing process, which introduces unnecessary complexity (even though it [looks simple in Junos configuration](https://blog.ipspace.net/2018/05/dissecting-ibgpebgp-junos-configuration.html)) and might confuse people who have to run the network after the brilliant designer is gone.
 <!--more-->
 What I got in return were personal attacks, an anonymous troll that was delighting everyone with a daily dose of irrelevance, but also a series of reasoned technical justifications that I still have a hard time buying.
 

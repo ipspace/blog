@@ -1,7 +1,11 @@
 ---
-title: "Does EVPN/VXLAN over SD-WAN Make Sense?"
-date: 2023-09-25 11:43:00
-tags: [ VXLAN, EVPN, SD-WAN ]
+date: 2023-09-25 11:43:00+00:00
+evpn_tag: mpls
+tags:
+- VXLAN
+- EVPN
+- SD-WAN
+title: Does EVPN/VXLAN over SD-WAN Make Sense?
 ---
 It looks like we might be seeing VXLAN-over-SDWAN deployments in the wild. Here's the "why that makes sense" argument I received from a participant of the [ipSpace.net Design Clinic](https://designclinic.ipspace.net/posts/2022/06/) in which I wasn't exactly enthusiastic about the idea.
 

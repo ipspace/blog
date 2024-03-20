@@ -1,6 +1,7 @@
 ---
 date: 2018-09-27 09:05:00+02:00
 dcbgp_tag: abstract
+evpn_tag: design
 series:
 - valley-free
 - dcbgp

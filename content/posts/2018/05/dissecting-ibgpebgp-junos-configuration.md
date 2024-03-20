@@ -1,6 +1,7 @@
 ---
 date: 2018-05-22 08:31:00+02:00
 dcbgp_tag: rant
+evpn_tag: details
 series:
 - dcbgp
 tags:

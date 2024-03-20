@@ -1,7 +1,9 @@
 ---
-title: "Studying EVPN to Prepare for a Job Interview"
-date: 2023-03-29 06:31:00
-tags: [ EVPN ]
+date: 2023-03-29 06:31:00+00:00
+evpn_tag: intro
+tags:
+- EVPN
+title: Studying EVPN to Prepare for a Job Interview
 ---
 An ipSpace.net subscriber sent me this question:
 

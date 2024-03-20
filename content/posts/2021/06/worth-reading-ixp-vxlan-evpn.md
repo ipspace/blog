@@ -1,7 +1,14 @@
 ---
-title: "Worth Reading: Switching to IP fabrics"
-date: 2021-06-05 07:20:00
-tags: [ data center, fabric, design, VXLAN, EVPN ]
+date: 2021-06-05 07:20:00+00:00
+evpn_tag: read
+series_title: Switching to IP fabrics
+tags:
+- data center
+- fabric
+- design
+- VXLAN
+- EVPN
+title: 'Worth Reading: Switching to IP fabrics'
 ---
 Namex, an Italian IXP, decided to replace their existing peering fabric with a fully automated leaf-and-spine fabric using VXLAN and EVPN running on Cumulus Linux.
 

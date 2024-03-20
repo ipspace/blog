@@ -1,5 +1,6 @@
 ---
 date: 2022-10-03 07:21:00+00:00
+evpn_tag: intro
 netlab_tag: vxlan_evpn
 pre_scroll: true
 series_title: Simple EVPN/VXLAN Bridging

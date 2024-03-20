@@ -1,11 +1,15 @@
 ---
-title: When EVPN EBGP Session between Loopbacks Makes Sense
-date: 2020-04-29 07:12:00
-tags: [ EVPN, BGP, design ]
+date: 2020-04-29 07:12:00+00:00
 dcbgp_tag: design
+evpn_tag: design
 series:
 - dcbgp
 series_weight: 550
+tags:
+- EVPN
+- BGP
+- design
+title: When EVPN EBGP Session between Loopbacks Makes Sense
 ---
 One of the attendees of our [Building Next-Generation Data Center](https://www.ipspace.net/Building_Next-Generation_Data_Center) online course submitted a picture-perfect solution to scalable layer-2 fabric design challenge:
 

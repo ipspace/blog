@@ -1,7 +1,9 @@
 ---
-title: "Multi-Vendor EVPN Fabrics"
-date: 2023-04-20 06:11:00
-tags: [ EVPN ]
+date: 2023-04-20 06:11:00+00:00
+evpn_tag: design
+tags:
+- EVPN
+title: Multi-Vendor EVPN Fabrics
 ---
 Daniel left an interesting comment on my _[Studying EVPN to Prepare for a Job Interview](https://blog.ipspace.net/2023/03/evpn-job-interview.html)_ blog post:
 

@@ -1,7 +1,10 @@
 ---
-title: "Worth Reading: Troubleshooting EVPN Control Plane"
-date: 2022-11-26 08:47:00
-tags: [ EVPN ]
+date: 2022-11-26 08:47:00+00:00
+evpn_tag: read
+series_title: Troubleshooting EVPN Control Plane
+tags:
+- EVPN
+title: 'Worth Reading: Troubleshooting EVPN Control Plane'
 ---
 When trying to decide [whether to use EVPN for your next data center fabric](https://blog.ipspace.net/2022/09/mlag-bridging-evpn.html), you might want to consider how easy it is to configure and troubleshoot.
 

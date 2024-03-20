@@ -1,7 +1,11 @@
 ---
-title: "Comparing EVPN with Flood-and-Learn Fabrics"
-date: 2021-06-21 06:06:00
-tags: [ data center, bridging, EVPN ]
+date: 2021-06-21 06:06:00+00:00
+evpn_tag: intro
+tags:
+- data center
+- bridging
+- EVPN
+title: Comparing EVPN with Flood-and-Learn Fabrics
 ---
 One of ipSpace.net subscribers sent me this question after watching the _[EVPN Technical Deep Dive](https://www.ipspace.net/EVPN_Technical_Deep_Dive)_ webinar:
 
