@@ -41,7 +41,7 @@ ipv6 unicast-routing
 
 [^RA]: It could be that enabling IPv6 routing starts IPv6 router advertisements.
 
-* You can find several related examples using the **‌ip routing ipv6 interfaces** global configuration. I have no idea what it does. The latest Arista EOS documentation fares no better. Throw it in for good measure if things fail to work 🤷‍♂️
+* You can find several related examples using the **‌ip routing ipv6 interfaces** global configuration. I have no idea what it does. The latest Arista EOS documentation fares no better, but I got feedback along the lines of "*Use that when you don't have an IPv4 address on the interface.*" Throw it in for good measure if things fail to work 🤷‍♂️
 * Create a BGP peer group. You cannot configure an interface peer without specifying a peer group.
 
 ```
@@ -95,3 +95,8 @@ AS Path Attributes: Or-ID - Originator ID, C-LST - Cluster List, LL Nexthop - Li
 ```
 
 You can practice the above recipe in the [EBGP Sessions over IPv6 LLA Interfaces](https://bgplabs.net/basic/d-interface/) BGP lab.
+
+### Revision History
+
+2024-03-21
+: Added a hint that you might need **‌ip routing ipv6 interfaces** configuration command for *addressless forwarding* over IPv6 LLA interfaces.
