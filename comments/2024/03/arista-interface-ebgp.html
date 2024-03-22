@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -20,6 +20,35 @@
             <div class="comment-content"><p>Hi Ivan, 
 we did a few projects using this method and it works absolutly great and you can use mostly the same configlets in CVP for all switches, that makes it really handy. 
 For the command &quot;&zwnj;ip routing ipv6 interfaces&quot;; I learned it during testing for the first project where we used this and its basically a switch to allow routing through your box with IPv4 over IPv6 interfaces. Without that command, we could send data from a leaf to the spine. But the spine did just nothing, it was a blackhole. Only with that command the forwarding would work and then everything was fine. </p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2153">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Dan Massameno</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2153" href="#2153">22 March 2024 01:54</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>This is some neat config.  Not needing to configure explicit IP addresses on links is a simplification.  KISS.</p>
+
+<p>But it strikes me that the entire industry lost out when we didn&#39;t do SPB or TRILL.  Specifically, I like how Avaya did SPB.</p>
+
+<ol>
+<li><p>IS-IS as an interior routing protocol can handle 1,000s of routers.  We don&#39;t need anything more scalable like BGP unless you&#39;re AWS/Microsoft/Google/Facebook.</p></li>
+<li><p>IS-IS doesn&rsquo;t need addressing because it&rsquo;s an ISO protocol.  As long as the interface can run Ethernet, an adjacency can form.  No IPv4 or IPv6 addresses needed, link-local or otherwise.</p></li>
+<li><p>Keep in mind, all this &ldquo;Interface EBGP Session&rdquo; stuff is needed to bootstrap all the other stuff we will need: multi-protocol BGP, adjusting the NLRI in BGP, VXLAN-GPO, loopbacks for the VTEPs, routing protocols to coordinate with the devices in the overlay (e.g., firewalls), etc. </p></li>
+</ol>
+
+<p>Agghh!   Why are we making this so complex?  I&rsquo;m probably preaching to the choir on this forum.  </p>
 </div>
           </div>
         </li>
