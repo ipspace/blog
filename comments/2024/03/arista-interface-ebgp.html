@@ -79,6 +79,51 @@ For the command &quot;&zwnj;ip routing ipv6 interfaces&quot;; I learned it durin
 
 <p>Agghh!   Why are we making this so complex?  I&rsquo;m probably preaching to the choir on this forum.  </p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2157">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Daryll Swer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2157" href="#2157">23 March 2024 05:33</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I&#39;m all up for 100% (okay, more like 99.99%) layer-3 eBGP driven networks. SP, DC, Enterprise, Home Lab? Everything 100% (meaning 99%) eBGP Driven networks. Easy to configure, easy to manipulate/traffic engineer with granular route filters with various attributes such as BGP communities, no full-mesh nonsense (or route reflectors) as was/is the case with iBGP. eBGP all the way to the host on DC networks, BGP multipathing included for your network-level load balancing for K8s (or possibly Docker Swarm) clusters etc, augmented with BGP communities to influence paths from host upto the DFZ even. With BGP, you can build unconventional topologies in any shape or form as you see fit. IGPs make the network flat and hence have some limitations.</p>
+
+<p>Here&#39;s an example of why IGPs simply don&#39;t scale for TE properly:
+https://anuragbhatia.com/2022/04/networking/isp-column/inefficient-igp-can-make-ebgp-go-wild/</p>
+
+<p>When I say eBGP driven layer 3-only networks, it does not imply that MPLS isn&#39;t in use, it doesn&#39;t imply that VXLAN/EVPN isn&#39;t in use (for DC networking), these &ldquo;transport&rdquo; protocols are very much in use, but they are BGP driven, such as BGP signalled VPLS. It also does <em>not</em> imply IGPs aren&#39;t in use - they are, but they are limited in functionality to the purpose of only establishing loopback learning/adjacency for adjacent peers in a network segment (like say an MPLS cloud) or path.</p>
+
+<p>BGP, at most basic operational use, is very easy to work with and scales if you need it to.</p>
+
+<p>However, currently, there&#39;s not much documentation or blog posts or tutorials on how to design eBGP driven SP networks (which is something I do in production), there is some documentation for DCs, but even that largely assumes a typical Spine/Leaf/Clos topology. I&#39;ve worked in a DC environment where we took some inspiration from the hypercube network topology concept (and therefore it really wasn&#39;t a clos topology) and everything was 100% eBGP, up-to the host, almost everything was interconnected on layer 1 for adjacent devices Spine&lt;&gt;Spine, Leaf&lt;&gt;Leaf etc &mdash; It was more like a mix of SP and DC networking.</p>
+
+<p>The basic visual representation of this eBGP approach:
+Vertical paths = eBGP up/down with private ASN numbering and default routes for egress back up. remove-private-as on the edge routers that talks DFZ.
+Horizontal paths = IGP + iBGP or IGP/LDPv6 etc as and when required for loopback learning.</p>
+
+<p>So coming to &ldquo;numbering&rdquo;, I would probably be okay with &ldquo;unnumbered&rdquo; (link-local IPv6) interfaces for establishing adjacency for the horizontal paths. However, for the vertical paths, I&#39;d still use route-able IPv6 GUA addressing to help make my life easier when running a traceroute or troubleshooting etc.</p>
+
+<p>But at the same time, life&#39;s easy for numbered IPv6 GUA interfaces if you use something similar to my geographical denomination model for IP(v6) addressing architecture:
+https://www.daryllswer.com/ipv6-architecture-and-subnetting-guide-for-network-engineers-and-operators/</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
