@@ -1,0 +1,10 @@
+<div class='quote'>
+{{ .Inner | markdownify }}
+</div>
+<p style='text-align: right;'>
+{{ if (.Get "link") }}
+  Source: <a href='{{ .Get "link" }}'>{{ .Get "source" }}</a>
+{{ else }}
+  {{ .Get "source" }}
+{{ end }}
+</p>
