@@ -1,0 +1,73 @@
+{{ $term := or (.Get "series") .Page.Data.Term }}
+{{ $show_weight := .Get "showweight" }}
+{{ $show_tag    := .Get "showtag" }}
+{{ $title := .Page.Title }}
+{{ if (.Get "site_tag") }}
+{{   .Page.Scratch.Set "pages" (where .Site.Pages ".Params.tags" "intersect" (slice $title)) }}
+{{ else }}
+{{   .Page.Scratch.Set "pages" .Page.Pages }}
+{{ end }}
+{{ if (.Get "tag") }}
+{{   .Page.Scratch.Set "pages" (where (.Page.Scratch.Get "pages") (printf "Params.%s_tag" $term) (.Get "tag")) }}
+{{ else }}
+{{   if (.Get "notag") }}
+{{     .Page.Scratch.Set "pages" (where (.Page.Scratch.Get "pages") (printf "Params.%s_tag" $term) "eq" nil) }}
+{{   end }}
+{{ end }}
+{{ if (.Get "bytitle") }}
+{{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").ByTitle) }}
+{{ end }}
+{{ if not (.Get "reverse") }}
+{{   .Page.Scratch.Set "pages" ((.Page.Scratch.Get "pages").Reverse) }}
+{{ end }}
+{{ if (.Get "weight") }}
+{{   .Page.Scratch.Set "pages" (sort (.Page.Scratch.Get "pages") "Params.series_weight" "desc") }}
+{{ end }}
+{{ if (.Get "title") }}
+{{   if (len (.Page.Scratch.Get "pages")) }}
+{{     if (.Get "tag") }}
+<h3 id='{{ .Get "tag" }}'>
+{{     else }}
+<h3>
+{{     end }}
+{{ .Get "title" }}
+</h3>
+{{   end }}
+{{ end }}
+{{ $show_year := .Get "year" }}
+<ul>
+  {{ range (.Page.Scratch.Get "pages") }}
+    <li>
+      <a href="{{ .Permalink }}">{{ with .Params.series_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</a>
+      {{ if $show_year }}({{ .Date.Format "2006" }}){{ end }}
+      {{ if $show_tag  }}T:{{ index .Params (printf "%s_tag" $term) }}{{ end }}
+      {{ if $show_weight }}{{ with .Params.series_weight }}W:{{ .}}{{ end }}{{ end }}
+      {{ with .Params.author }}
+      by {{ with .link }}<a href="{{ . }}">{{ end }}{{ .name }}{{ with .link }}</a>{{ end }}
+      {{ end }}
+    </li>
+  {{ end }}
+  {{ if (.Get "links") }}
+    {{ range (index .Page.Params (.Get "links")) }}
+      <li><a href="{{ .link }}">{{ .title }}</a></li>
+    {{ end }}
+  {{ end }}
+</ul>
+{{ if (.Get "soon") }}
+{{   $page := .Page }}
+{{   $page.Scratch.Set "first_soon" 1 }}
+{{   range (index .Page.Params (.Get "soon")) }}
+{{     $url := default "noSuchPage" (index . "page") }}
+{{     if not ($.Site.GetPage $url) }}
+{{       if ($page.Scratch.Get "first_soon") }}
+<p>Coming soon</p>
+<ul>
+{{         $page.Scratch.Set "first_soon" 0 }}
+{{       end }}
+  <li>{{ index . "title" }}</li>
+{{     end }}
+{{   end }}
+{{   if not ($page.Scratch.Get "first_soon") }}
+</ul>
+{{   end }}
+{{ end }}

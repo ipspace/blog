@@ -1,0 +1,7 @@
+{{ $count := .Page.Pages|len }}
+{{ $round := .Get "round"|int }}
+{{ if $round }}
+  over {{ mul $round (div $count $round) }}
+{{ else }}
+  {{ $count }}
+{{ end }}
