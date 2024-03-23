@@ -12,7 +12,7 @@ _netlab_ [release 1.7.0](https://netlab.tools/release/1.7/#release-1-7-0) added 
 * Specify the number of leaves and spines in the fabric.
 
 For example, the following lab topology builds a fabric with Arista cEOS containers having two spines and four leaves:
-
+<!--more-->
 ```
 defaults.device: eos
 provider: clab
