@@ -42,6 +42,67 @@
           </div>
         </li>
       </div>
+      <div>
+        <li class="comment" id="2156">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Anonymous</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2156" href="#2156">23 March 2024 03:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Maybe something along these lines (done with FRR):  </p>
+
+<pre>
+hostname rtr
+!
+router bgp 65000
+ neighbor 10.1.0.1 peer-group CUSTOMER
+ neighbor 10.1.0.5 peer-group CUSTOMER
+ !
+ address-family ipv4 unicast
+  neighbor CUSTOMER maximum-prefix 5
+  neighbor CUSTOMER route-map CUSTOMER_IN in
+ exit-address-family
+!
+ip prefix-list MORE_SPECIFIC_PREFIXES seq 5 permit 0.0.0.0/0 ge 25 le 32
+ip prefix-list LESS_SPECIFIC_PREFIXES seq 5 permit 0.0.0.0/0 ge 0 le 15
+ip prefix-list RFC_1918 seq 5 permit 10.0.0.0/8 ge 8 le 32
+ip prefix-list RFC_1918 seq 10 permit 169.254.0.0/16 ge 16 le 32
+ip prefix-list RFC_1918 seq 15 permit 172.16.0.0/12 ge 12 le 32
+ip prefix-list RFC_1918 seq 20 permit 192.168.0.0/16 ge 16 le 32
+!
+bgp as-path access-list MORE_THAN_FIVE_AS_PREPEND permit ([0-9]+)_\1_\1_\1_\1_\1_
+bgp as-path access-list MORE_THAN_ONE_AS permit [0-9]+_[0-9]+
+!
+route-map CUSTOMER_IN deny 10
+ match ip address prefix-list RFC_1918
+!
+route-map CUSTOMER_IN deny 20
+ match ip address prefix-list MORE_SPECIFIC_PREFIXES
+!
+route-map CUSTOMER_IN deny 30
+ match ip address prefix-list LESS_SPECIFIC_PREFIXES
+!
+route-map CUSTOMER_IN deny 40
+ match as-path MORE_THAN_ONE_AS
+!
+route-map CUSTOMER_IN deny 50
+ match as-path MORE_THAN_FIVE_AS_PREPEND
+!
+route-map CUSTOMER_IN permit 100
+</pre>  </p>
+
+<p>I couldn&#39;t get the AS prepend regex working with FRR &#x1F937;&zwj;&#x2642;&#xFE0F;</p>
+</div>
+          </div>
+        </li>
+      </div>
   </ol>
 
                 </div>
