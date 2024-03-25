@@ -1,7 +1,7 @@
 ---
 title: "Grasp the Fundamentals before Spreading Opinions"
 date: 2020-10-27 06:18:00
-tags: [ networking fundamentals, ip routing ]
+tags: [ networking fundamentals, ip routing, LISP ]
 ---
 I should have known better, but I got pulled into another _stretched VLANs for disaster recovery_ tweetfest. Surprisingly, most of the tweets were along the lines of _you really shouldn't be doing that_ and _that would never work well_, but then I guess I was only exposed to a small curated bubble of common sense... until this gem appeared in my timeline:
 

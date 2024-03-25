@@ -5,6 +5,7 @@ series:
 tags:
 - networking fundamentals
 - switching
+- LISP
 title: 'Packet Forwarding 101: Header Lookups'
 ---
 Whenever someone asks me about LISP, I answer, "_it's a nice idea, but cache-based forwarding never worked well._" Oldtimers familiar with the spectacular failures of fast switching and various incarnations of flow switching usually need no further explanation. Unfortunately, that lore is quickly dying out, so let's start with the fundamentals: how does packet forwarding work?

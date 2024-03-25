@@ -1,7 +1,7 @@
 ---
 title: "So-Called Modern VPNs: Marketing and Reality"
 date: 2022-03-17 07:59:00
-tags: [ VPN ]
+tags: [ VPN, LISP ]
 ---
 Someone left a "killer" comment[^BB] after reading the _[Should We Use LISP](https://blog.ipspace.net/2022/03/should-we-use-lisp.html)_ blog post. It start with...
 
