@@ -4,7 +4,8 @@ multihoming_tag: session
 series:
 - multihoming
 tags:
--  networking fundamentals
+- networking fundamentals
+- LISP
 title: Multihoming Cannot Be Solved within a Network
 ---
 Henk made an [interesting comment](https://blog.ipspace.net/2022/11/worth-reading-routing-never-solved-problem.html#1487) that finally triggered me to organize my thoughts about network-level host multihoming[^SM]:

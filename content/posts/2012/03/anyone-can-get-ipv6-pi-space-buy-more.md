@@ -6,9 +6,10 @@ date: 2012-03-01 11:57:00+01:00
 multihoming_tag: ipv6
 series:
 - multihoming
+- LISP
 tags:
 - IPv6
-title: Anyone Can Get IPv6 PI space – Buy More RAM and TCAM?
+title: Anyone Can Get IPv6 PI Space – Buy More RAM and TCAM?
 url: /2012/03/anyone-can-get-ipv6-pi-space-buy-more.html
 ---
 Till a few weeks ago, you could get provider-independent (PI) IPv6 address space in RIPE region only if you "demonstrated that you'll be multihomed", which usually required having nothing more than an AS number. With the recent policy change, [anyone can get PI address space](http://www.ripe.net/ripe/policies/proposals/2011-02) (and this is [why you should get it](http://etherealmind.com/importance-provider-independent-ipv6-addresses/)) as long as they [have a sponsoring LIR](http://www.ripe.net/ripe/docs/ripe-452), and the [yearly fee for an independent resource (RIPE-to-LIR) is €50](http://www.ripe.net/ripe/docs/ripe-499).

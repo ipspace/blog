@@ -10,7 +10,7 @@ tags:
 - workshop
 - WAN
 - high availability
-title: Sooner or Later Someone Will Pay for the Complexity of the Kludges You Use
+title: Sooner or Later, Someone Will Pay for the Complexity of the Kludges You Use
 url: /2013/09/sooner-or-later-someone-will-pay-for.html
 ---
 I loved listening to [OTV/FabricPath/LISP](http://packetpushers.net/show-155-integrating-otv-fabricpath-lisp-sponsored/) Packet Pushers podcast. Ron Fuller and Russ White did a great job explaining the role of OTV, FabricPath and LISP in a stretched (inter-DC) subnet deployment scenario and how the three pieces fit together ... but I couldn\'t stop wondering whether there is a better method to solve the underlying business need than throwing three new pretty complex technologies and associated equipment (or VDC contexts or line cards) into the mix.

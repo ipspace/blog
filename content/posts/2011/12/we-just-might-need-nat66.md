@@ -6,7 +6,8 @@ series:
 tags:
 - IPv6
 - NAT
-title: We Just Might Need NAT66/NPT66
+- LISP
+title: We Just Might Need NAT66/NPT66 (and Not LISP)
 url: /2011/12/we-just-might-need-nat66.html
 ---
 My friend Tom Hollingsworth has written another [NAT66-is-evil](http://networkingnerd.net/2011/12/01/whats-the-point-of-nat66/) blog post. While I agree with him in principle, and most everyone agrees NAT as we know it from IPv4 world is plain stupid in IPv6 world (NAPT more so than NAT), we just might need NPT66 ([Network Prefix Translation; RFC 6296](http://www.rfc-editor.org/rfc/rfc6296.txt)) to support [small-site multihoming](/2009/05/small-site-multihoming-tutorial.html) \... and yet again, it seems that many leading IPv6 experts grudgingly agree with me.

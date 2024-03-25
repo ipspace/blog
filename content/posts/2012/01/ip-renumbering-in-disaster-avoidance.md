@@ -7,7 +7,6 @@ series:
 - dr
 tags:
 - data center
-- workshop
 - load balancing
 - virtualization
 - high availability
@@ -18,8 +17,6 @@ It’s hard for me to admit, but there just might be a [corner use case for spli
 
 Disaster recovery is a different beast: if you’ve lost the primary DC, it doesn’t hurt if you instantiate the same subnet in the backup DC.
 <!--more-->
-{{<note update>}}2020-17-11: Cleaned up the blog post, removed references to LISP VM mobility, and inserted pointers to routing based on host IP addresses, and running BGP on servers.{{</note>}}
-
 However, before jumping headfirst into a misty pool filled with unicorn tears (actually, a [brittle solution](https://blog.ipspace.net/2011/12/large-scale-l2-dci-true-story.html) with too many moving parts that [usually makes no sense](https://blog.ipspace.net/2011/11/busting-layer-2-data-center.html)), let’s see if there are alternatives. Here are some ideas in exponentially decreasing order of preference:
 
 **Ever heard of DNS?** If the application uses hardcoded addresses in its clients or between servers, there’s not much you can do, but one would expect truly hardcoded addresses only in home-brewed craplications ... and masterpieces created by those “programming gurus” that never realized *hostnames* should be used in configuration files instead of *IP addresses*.
@@ -59,3 +56,7 @@ While that idea didn't sound so great when I wrote the original blog post, that'
 
 **Anything else?** I’m positive I’ve missed an elegant idea or two. Your comments are most welcome ... including those telling me why the ideas mentioned above would never be implementable.
 
+### Revision History
+
+2020-17-11
+: Cleaned up the blog post, removed references to LISP VM mobility, and inserted pointers to routing based on host IP addresses, and running BGP on servers.

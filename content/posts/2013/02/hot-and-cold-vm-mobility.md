@@ -5,6 +5,7 @@ tags:
 - workshop
 - vMotion
 - virtualization
+- LISP
 title: Hot and Cold VM Mobility
 url: /2013/02/hot-and-cold-vm-mobility.html
 ---
