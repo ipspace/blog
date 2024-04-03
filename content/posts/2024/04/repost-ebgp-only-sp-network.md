@@ -1,11 +1,11 @@
 ---
-title: "Repost: EBGP-Only Service Provider Network"
+title: "Repost: EBGP-Mostly Service Provider Network"
 date: 2024-04-01 08:08:00+0200
 tags: [ BGP, design ]
 ---
-Daryll Swer [left a long comment](https://blog.ipspace.net/2024/03/arista-interface-ebgp.html#2157) describing how his EBGP-only Service Provider network works. While I might not agree with everything he wrote, it's definitely an interesting idea and conceptually pretty similar to what we did 25 years ago (IBGP without IGP, running across physical interfaces, with every router being a route-reflector client of every other router).
+Daryll Swer [left a long comment](https://blog.ipspace.net/2024/03/arista-interface-ebgp.html#2157) describing how he designed a Service Provider network running in numerous private autonomous systems. While I might not agree with everything he wrote, it's an interesting idea and conceptually pretty similar to what we did 25 years ago (IBGP without IGP, running across physical interfaces, with every router being a route-reflector client of every other router), or how some very large networks were using BGP confederations.
 
-Just keep in mind (as someone from Cisco TAC told me in those days) that "_you might be the only one in the world doing it and might hit bugs no one has seen before_."
+Just remember (as someone from Cisco TAC told me in those days) that "_you might be the only one in the world doing it and might hit bugs no one has seen before_."
 <!--more-->
 ---
 
@@ -23,4 +23,9 @@ The basic visual representation of this eBGP approach: Vertical paths = eBGP up/
 
 So, coming to “numbering”, I would probably be okay with “unnumbered” (link-local IPv6) interfaces for establishing adjacency for the horizontal paths. However, for the vertical paths, I'd still use route-able IPv6 GUA addressing to help make my life easier when running a traceroute or troubleshooting.
 
-But at the same time, life's easy for numbered IPv6 GUA interfaces if you use something similar to my [geographical denomination model for IP(v6) addressing architecture](https://www.daryllswer.com/ipv6-architecture-and-subnetting-guide-for-network-engineers-and-operators/). 
+But at the same time, life's easy for numbered IPv6 GUA interfaces if you use something similar to my [geographical denomination model for IP(v6) addressing architecture](https://www.daryllswer.com/ipv6-architecture-and-subnetting-guide-for-network-engineers-and-operators/).
+
+---
+
+2024-04-03
+: I slightly changed the title as it gave the impression that Daryll's network is not using IGP or IBGP. I also added a remark that some people used confederations to achieve similar results.
