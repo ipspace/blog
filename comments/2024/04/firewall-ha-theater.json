@@ -1,6 +1,17 @@
 {
    "comments": [
       {
+         "comments": [
+            {
+               "date": "11 April 2024 07:51",
+               "html": "<p>You run BGP. You can configure your routing policies that half your traffic is on one firewall and the rest on the other. Hence you can get your symmetric traffic with a bit of work in BGP and still don&#39;t need to rely on the SPOC in a HA-Cluster. But yes, you need to establish the sessions new if something fails. </p>\n\n<p>But I get you and I think that this approach is only viable when you need really high availbability. Not your standard enterprise where they whine a bit when something doesn&#39;t work. Stuff that really needs to stay up all the time, depends on this kind of designs. They don&#39;t stack, they don&#39;t cluster some stuff together. They design around that and make it always work. Which costs quite a bit more, but they know why they pay the premium. </p>\n\n<p>For most enterprises its just a cluster and everything is fine. </p>\n",
+               "id": "2193",
+               "name": " Daniel S",
+               "pub": "2024-04-11T07:51:49",
+               "ref": "2191",
+               "type": "comment"
+            }
+         ],
          "date": "10 April 2024 11:15",
          "html": "<p>World&#39;s by far not taht simple especially if sessions can be asymmetric ;-) HA in such scenario is extremely hard to build, especially since it&#39;s not a 2 controller through backplane scenario but &quot;arbitrary distrance, arbitrary delay, may be just a piece of wet string&quot; ;-) For two boxes working solutions from reputable vendors are available since long time, more than two leads into weird stuff like Paxos quickly.  There are other, clever ways to deal with HA and asymmetry as well you may want to dig in as well ;-) </p>\n",
          "id": "2191",
