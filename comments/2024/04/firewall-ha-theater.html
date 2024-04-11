@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>1 comments:</h4>
+  <h4>2 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -50,6 +50,36 @@
 
                 </div>
               </div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2195">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Martin Rusko</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2195" href="#2195">11 April 2024 07:56</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Dear Ivan,</p>
+
+<p>you are of course allowed to mention in your blog post that a single VLAN is also a single failure domain. See, how very gracious we, your readers, are. :-)</p>
+
+<p>And because you are correct, the best is to avoid shared L2 even for single control plane HA clusters. I know it can be done with Juniper firewalls, where the trick is to have local bridging on each upstream or downstream router, but not between the routers. In that case, node0:if0+node1:if0=reth0 is connected to the bridge at R1 router and node0:if1+node1:if1=reth1 is connected to the bridge at R2 router. So no matter which node is active, reth0 and reth1 points to both R1 and R2 routers. Each node needs to be connected to both routers, true, but if in your picture X1+C1 and X2+C2 are collapsed to R1 and R2, then you can have the equivalent setup without any more ports in use.</p>
+
+<p>Similarly, on the management side, OoB interfaces (fxp0 for Juniper) don&#39;t have to share the same L2. The so called master-only IP address can be made available with BFD, because the standby node does not run the BFD.</p>
+
+<p>So you truly don&#39;t need to tie your routers with any shared L2 just because of the firewall clusters. And then there is also Multinode HA, which I think Dmitry also mentioned in his post, where nodes are running their own control plane protocols.</p>
+
+<p>Cheers,
+Martin</p>
+</div>
           </div>
         </li>
       </div>
