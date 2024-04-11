@@ -3,7 +3,7 @@ title: "LISP vs EVPN: Mobility in Campus Networks"
 date: 2024-04-11 08:29:00+0200
 tags: [ EVPN, LISP ]
 ---
-I decided not to get involved in the EVPN-versus-LISP debates anymore; I'd [written everything I had to say about LISP](/tags/lisp.html). However, I still get annoyed when experienced networking engineers fall for marketing gimmicks disguised as technical arguments. Here's a recent one:
+I decided not to get involved in the EVPN-versus-LISP debates anymore; I'd [written everything I had to say about LISP](/tag/lisp.html). However, I still get annoyed when experienced networking engineers fall for marketing gimmicks disguised as technical arguments. Here's a recent one:
 
 {{<figure src="/2024/04/juniper-campus-lisp-tweet.png">}}
 <!--more-->
