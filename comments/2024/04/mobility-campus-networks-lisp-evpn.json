@@ -31,9 +31,17 @@
          "name": "Andy",
          "pub": "2024-04-11T13:24:39",
          "type": "comment"
+      },
+      {
+         "date": "11 April 2024 03:13",
+         "html": "<p>There is one critical point. You assume anchored mobility for option one. This is unacceptable for safety critical networks. You should have mobility without an anchor point. Exactly that is what LISP provides for you. A fully distributed data plane without any single point of failure. The control plane is centralized logically, but could be fully distributed, even geo-redundant physically. \nYou might say that single point of failures are not an issue in most networks. But in other networks this might be not acceptable. </p>\n\n<p>For option two, with BGP you cannot reach the same speed of mobility and scale, because of the complex BGP path selection algorithm. On the same CPU LISP will be always much faster. Cisco once did an in-house race on this issue. LISP was the clear winner against the best BGP experts available inside Cisco. \nBTW, Boeing Connexion failed miserably many years ago with BGP based mobility. </p>\n\n<p>If mobility is not an issue, you might be happy with option one, then EVPN might be good enough. If you need distributed anchorless mobility, than LISP will be always better by architecture. </p>\n\n<p>LISP is especially a good fit for parallel active multilink mobility using Priority and Weight. PMIPv6 cannot do the same. BGP also does not have anything standardized for such scenarios. \nFew networks would need that today, but probably in the future all moving vehicles will have higher safety and security requirements. Then LISP is an easy natural solution. While all other protocols has to be redefined and implemented new. Even 3GPP does not have a comparable mobility solution yet.</p>\n",
+         "id": "2203",
+         "name": "Bela Varkonyi",
+         "pub": "2024-04-11T15:13:05",
+         "type": "comment"
       }
    ],
-   "count": 4,
+   "count": 5,
    "type": "post",
    "url": "2024/04/mobility-campus-networks-lisp-evpn.html"
 }
