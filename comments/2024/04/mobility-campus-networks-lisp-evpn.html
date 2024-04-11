@@ -100,6 +100,39 @@ BTW, Boeing Connexion failed miserably many years ago with BGP based mobility. <
 <p>LISP is especially a good fit for parallel active multilink mobility using Priority and Weight. PMIPv6 cannot do the same. BGP also does not have anything standardized for such scenarios. 
 Few networks would need that today, but probably in the future all moving vehicles will have higher safety and security requirements. Then LISP is an easy natural solution. While all other protocols has to be redefined and implemented new. Even 3GPP does not have a comparable mobility solution yet.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2205">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2205" href="#2205">11 April 2024 03:55</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I know you work in environments that are very far away (requirements-wise) from &quot;typical&quot; networks, so it&#39;s always great to have your perspective. Thanks a million!</p>
+
+<p>As for the &quot;complex BGP path selection algorithm,&quot; that&#39;s definitely true, but in a typical (sane) EVPN scenario, all path attributes should match, and thus, the actual code path should be relatively simple.</p>
+
+<p>I am positive nobody ever optimized BGP for the speed of simple path selection, but then we also didn&#39;t have JavaScript JIT compilers until people started running JS on the servers. This discussion somewhat reminds me of the famous IS-IS versus OSPF wars, where it turned out that one of the main reasons for sub-par OSPF performance on Cisco IOS (so the rumors go) was that the team writing the IS-IS code was better (because they had to deal with larger customers).</p>
+
+<p>Anyway, it turns out that we usually &quot;solve&quot; problems with brute-force application of more resources, and as long as the ASIC FIB programming remains the bottleneck, it doesn&#39;t matter (in the data center/campus switching space) too much how much faster LISP is... or am I missing something?</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
