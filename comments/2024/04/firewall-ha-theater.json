@@ -34,9 +34,17 @@
          "name": " Jeff Behrns",
          "pub": "2024-04-11T08:27:36",
          "type": "comment"
+      },
+      {
+         "date": "11 April 2024 11:29",
+         "html": "<p>Integrating stateful devices in a network design is always painful.\nIdeally these devices are avoided by integrating network security in the OS/application, something that is likely feasible with a hyperscaler but unlikely to happen in a typical enterprise, due to the variety of workloads in the enterprise.</p>\n\n<p>Using dynamic routing with individual firewalls works well for north-south flows, or in a VRF sandwich design. I&#39;m most familiar with PANW firewalls, which have a feature where you can synchronize the stateful sessions between independent firewalls, ensuring the second firewall is ready to take over. Another challenge is to keep the configuration in sync, this should be trivial nowadays with firewall management platforms or various automation capabilities.</p>\n\n<p>Something what is harder to address is deeper datacenter segmentation. Hypervisor integrated firewalls or host based solutions are the ideal solution, but often cannot address 100% of the workloads. When trying to address this with traditional stateful firewalls in a independent (non-HA cluster) design, things can get complicated quiet fast. Things such as PBR or ePBR can be leveraged, but require a thoughtful design around probing and keeping redirect ACL&#39;s sane. Opting for a HA-cluster where the stateful firewall is your default gateway is less complex from a operational perspective.</p>\n",
+         "id": "2197",
+         "name": " Bram",
+         "pub": "2024-04-11T11:29:46",
+         "type": "comment"
       }
    ],
-   "count": 3,
+   "count": 4,
    "type": "post",
    "url": "2024/04/firewall-ha-theater.html"
 }

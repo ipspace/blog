@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>3 comments:</h4>
+  <h4>4 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -98,6 +98,30 @@ Martin</p>
               </span>
             </div>
             <div class="comment-content"><p>Pick your poison. Firewall vendors suck at implementing BGP even more than HA. And if we&#39;re having an honest discussion, network layer firewalls are in general nothing but theater, providing an illusion of &quot;security&quot;.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2197">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Bram</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2197" href="#2197">11 April 2024 11:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Integrating stateful devices in a network design is always painful.
+Ideally these devices are avoided by integrating network security in the OS/application, something that is likely feasible with a hyperscaler but unlikely to happen in a typical enterprise, due to the variety of workloads in the enterprise.</p>
+
+<p>Using dynamic routing with individual firewalls works well for north-south flows, or in a VRF sandwich design. I&#39;m most familiar with PANW firewalls, which have a feature where you can synchronize the stateful sessions between independent firewalls, ensuring the second firewall is ready to take over. Another challenge is to keep the configuration in sync, this should be trivial nowadays with firewall management platforms or various automation capabilities.</p>
+
+<p>Something what is harder to address is deeper datacenter segmentation. Hypervisor integrated firewalls or host based solutions are the ideal solution, but often cannot address 100% of the workloads. When trying to address this with traditional stateful firewalls in a independent (non-HA cluster) design, things can get complicated quiet fast. Things such as PBR or ePBR can be leveraged, but require a thoughtful design around probing and keeping redirect ACL&#39;s sane. Opting for a HA-cluster where the stateful firewall is your default gateway is less complex from a operational perspective.</p>
 </div>
           </div>
         </li>
