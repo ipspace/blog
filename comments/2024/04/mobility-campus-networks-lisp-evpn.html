@@ -1,5 +1,5 @@
 <div class="comments post" id="comments">
-  <h4>4 comments:</h4>
+  <h4>5 comments:</h4>
   <div class="comments-content">
     <div class="comment-thread">
         <ol>
@@ -279,6 +279,47 @@ Depends on a lot of internal parameters how to share computing resources.</p>
 <p>However, I see no good alternative. PMIPv6 is a candidate, but it has no support for full multilink with policies yet. For me LISP is the best mobility protocol, a replacement for PMIPv6, not a replacement for BGP. Actually, in the RLOC space underlay you would typically have a telco network with a lot of BGP.</p>
 
 <p>LISP is also useful for replacing private WAN overlay MPLS networks. It is much simpler to learn and maintain. It could be easily secured by GETVPN with group keys.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
+        <li class="comment" id="2220">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Route Abel</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2220" href="#2220">16 April 2024 06:29</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Great Post! I did indeed use &quot;Latency&quot; as twitter shorthand/laziness instead of your more elegant description above.</p>
+
+<p>At the time of the tweet I was arguing for VxLAN EVPN with some of my peers but I had no direct hands on knowledge of how it would actually perform and very limited ability to lab it on hardware. My client was considering deploying Campus VxLAN and they have one of the largest campuses in North America.</p>
+
+<p>Since the tweet I have learned an additional data point. Arista helped them test roaming on Campus EVPN. Here is the description from my contact at Arista.</p>
+
+<p>Roaming and MAC moves across an EVPN/VxLAN environment was a concern to XXXX and we had our PM &amp; SysTest teams help address their concerns back in Oct 2022. </p>
+
+<p>They simulated 60k clients across 2500 APs and MAC moves at various frequencies; XXXX&#39;s client scale is closer to 30k for the Home Office. </p>
+
+<p>Here are the highlights of our PM team&#39;s recommendations.</p>
+
+<p>WiFi Data Path
+&bull;  The recommendation is Vxlan tunnel mode back to a pair of dedicated aggregation switches so the MAC moves are not updating across the fabric.
+WiFi VLAN
+&bull;  Single or Multiple VLAN does not matter, as all the client traffic is tunneled to the aggregation switch pair.
+Wired Design
+&bull;  Choice of L2 or L3 at access leaf does not matter for WiFi clients as the MAC visibility is on the aggregation switch pair.
+Roaming
+&bull;  Seamless roaming across the entire campus with no impact to any apps.</p>
+
+<p>DHCP Broadcast/ mDNS
+&bull;  DHCP broadcast will be flooded on the wired side from the aggregation switch pair. Need DHCP broadcast to unicast conversion.</p>
 </div>
           </div>
         </li>

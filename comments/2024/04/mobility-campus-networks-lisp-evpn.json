@@ -100,9 +100,17 @@
          "name": "Bela Varkonyi",
          "pub": "2024-04-15T11:38:26",
          "type": "comment"
+      },
+      {
+         "date": "16 April 2024 06:29",
+         "html": "<p>Great Post! I did indeed use &quot;Latency&quot; as twitter shorthand/laziness instead of your more elegant description above.</p>\n\n<p>At the time of the tweet I was arguing for VxLAN EVPN with some of my peers but I had no direct hands on knowledge of how it would actually perform and very limited ability to lab it on hardware. My client was considering deploying Campus VxLAN and they have one of the largest campuses in North America.</p>\n\n<p>Since the tweet I have learned an additional data point. Arista helped them test roaming on Campus EVPN. Here is the description from my contact at Arista.</p>\n\n<p>Roaming and MAC moves across an EVPN/VxLAN environment was a concern to XXXX and we had our PM &amp; SysTest teams help address their concerns back in Oct 2022. </p>\n\n<p>They simulated 60k clients across 2500 APs and MAC moves at various frequencies; XXXX&#39;s client scale is closer to 30k for the Home Office. </p>\n\n<p>Here are the highlights of our PM team&#39;s recommendations.</p>\n\n<p>WiFi Data Path\n&bull;  The recommendation is Vxlan tunnel mode back to a pair of dedicated aggregation switches so the MAC moves are not updating across the fabric.\nWiFi VLAN\n&bull;  Single or Multiple VLAN does not matter, as all the client traffic is tunneled to the aggregation switch pair.\nWired Design\n&bull;  Choice of L2 or L3 at access leaf does not matter for WiFi clients as the MAC visibility is on the aggregation switch pair.\nRoaming\n&bull;  Seamless roaming across the entire campus with no impact to any apps.</p>\n\n<p>DHCP Broadcast/ mDNS\n&bull;  DHCP broadcast will be flooded on the wired side from the aggregation switch pair. Need DHCP broadcast to unicast conversion.</p>\n",
+         "id": "2220",
+         "name": "Route Abel",
+         "pub": "2024-04-16T06:29:15",
+         "type": "comment"
       }
    ],
-   "count": 4,
+   "count": 5,
    "type": "post",
    "url": "2024/04/mobility-campus-networks-lisp-evpn.html"
 }
