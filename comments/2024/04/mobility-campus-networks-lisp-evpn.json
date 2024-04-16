@@ -94,6 +94,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "16 April 2024 06:50",
+               "html": "<p>i dont clearly get your references to &quot;policies with LISP&quot;. VXLAN is able to carry on group policy tags (along with VNIDs) w/o LISP. \nAnother one (&amp; not last) concern with LISP PUBSUB is it requires RLOCs /32 to populate underlay routing proto&#39;s RIBs. I wonder how is it going to scale beyond the campus?  </p>\n",
+               "id": "2222",
+               "name": "Andy",
+               "pub": "2024-04-16T18:50:26",
+               "ref": "2218",
+               "type": "comment"
+            }
+         ],
          "date": "15 April 2024 11:38",
          "html": "As you always mention: &quot;It depends on...&quot;<br />\n\n<p>FIB update speed is very much different on the specific router architecture. How does it compare to running BGP path selection for a large number of mobility events? Difficult to say in general. \nDepends on a lot of internal parameters how to share computing resources.</p>\n\n<p>In some newer routers BGP would not be such a big bottleneck, but you need a lot of knob turning in BGP to get it right, while in LISP it is quite simple. </p>\n\n<p>If you have many thousands concurrent airplanes with multi-link and max. 16 subnets with different routing policies on each, and the radio links are going up and down, then you have a large number of mobility events.</p>\n\n<p>This is where LISP with PUBSUB is excellent. BGP is not designed for mobility and in such an extreme environment would be a serious bottleneck, potentially making impossible to fulfill the safety performance requirements. </p>\n\n<p>Victor Moreno published once an exercise with moving robots in factory environment where similar mobility performance was required. LISP was the right fit for that.</p>\n\n<p>It is a totally different use case of LISP than most people would think about. Valid only with PUBSUB. Still some points are missing to make this solution complete. Reliable transport shall be standardized. We need subnetwork mobility support in MS/MR. Some LCAF extension and implementation would be handy.</p>\n\n<p>However, I see no good alternative. PMIPv6 is a candidate, but it has no support for full multilink with policies yet. For me LISP is the best mobility protocol, a replacement for PMIPv6, not a replacement for BGP. Actually, in the RLOC space underlay you would typically have a telco network with a lot of BGP.</p>\n\n<p>LISP is also useful for replacing private WAN overlay MPLS networks. It is much simpler to learn and maintain. It could be easily secured by GETVPN with group keys.</p>\n",
          "id": "2218",
