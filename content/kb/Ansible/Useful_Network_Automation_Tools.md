@@ -46,6 +46,7 @@ Regular expression and parsing tools:
 - [NTC templates](https://github.com/networktocode/ntc-templates) - a wide collection of TextFSM templates
 - [Online regular expressions tool](https://regexr.com/)
 - [Online regex tester and debugger](https://regex101.com/)
+- [Online visual regex tester](https://pythonium.net/regex)
 - [TextFSM Code Lab](https://github.com/google/textfsm/wiki/Code-Lab)
 - [Test your TextFSM templates like Chuck Norris](http://textfsm.nornir.tech/) - online TextFSM testing tool
 
