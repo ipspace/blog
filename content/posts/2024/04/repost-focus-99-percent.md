@@ -1,6 +1,6 @@
 ---
 title: "Repost: Think About the 99% of the Users"
-date: 2024-04-23 08:37:00+0100
+date: 2024-04-25 08:37:00+0100
 tags: [ design ]
 ---
 Daniel left a [very relevant comment](https://blog.ipspace.net/2024/03/fabric-designs-size-matters.html#2132) on my [Data Center Fabric Designs: Size Matters](https://blog.ipspace.net/2024/03/fabric-designs-size-matters.html) blog post, describing how everyone rushes to sell the newest gizmos and technologies to the unsuspecting (and sometimes too-awed) users[^ABC]:
