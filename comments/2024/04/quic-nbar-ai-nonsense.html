@@ -19,6 +19,46 @@
             </div>
             <div class="comment-content"><p>There is a Free Software project called <a href="https://libreqos.io/">LibreQoS</a> that embraces the &quot;fair share per user&quot; idea. It is intended for use by Internet service providers.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2232">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Daryll Swer</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2232" href="#2232">25 April 2024 02:28</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I was about to comment on bufferbloat. I&#39;ve interacted with Dave T&auml;ht plenty of times on this topic, and he&#39;s IMO the go-to expert on queuing discipline and packet buffering.</p>
+
+<p>LibreQoS is a good middle-box solution for poorly designed networks and/or poor network equipment vendor (aka all the current vendors, none of them support FQ_Codel on hardware). We&#39;ve even joked about this a few times:
+https://x.com/DaryllSwer/status/1753146680659308708</p>
+
+<p>In the case of the latter, if every network vendor listened to Dave T&auml;ht and implemented FQ_Codel on the ASICs directly and from there, allow the operator to configure bandwidth caps (queues/policer) using FQ_Codel, most of the bufferbloat bs goes away.</p>
+
+<p>It&#39;s even worse for Wi-Fi, LTE/5G equipment, the vendors refuse to adopt something like cake-autorate or just plain fq_codel with BQL. Starlink a few months ago did share their &ldquo;new&rdquo; router is FQ_Codel enabled and offloaded straight, they did publish some data I believe that showed excessively LOW latency with FQ_Codel enabled.</p>
+
+<p>Dave introduced me to FQ_Codel a few years ago, since then I&#39;ve deployed FQ_Codel for many ISPs that use MikroTik (which has FQ_Codel, but no BQL support) and bufferbloat/latency at peak has significantly dropped.</p>
+
+<p>I agree with this blog post&#39;s general opinion as well. I don&#39;t understand this bs about &ldquo;app based&rdquo; anything. No, it should be port-based or customer VLAN based at most.</p>
+
+<p>100% in favour of keeping SP networks as clean transit paths instead of packet molestation and mangling along the way - We&#39;re already doing that due to governmental pressures for internet censorship/blocking etc.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
