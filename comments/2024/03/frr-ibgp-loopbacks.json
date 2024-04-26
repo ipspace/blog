@@ -9,6 +9,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "26 April 2024 06:12",
+               "html": "<p>Well, that&#39;s a no-brainer, but the real question is, &quot;Should the route in the routing table be a BGP route, or is any route to the destination good enough?&quot;</p>\n",
+               "id": "2235",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-04-26T18:12:42",
+               "ref": "2234",
+               "type": "comment"
+            }
+         ],
          "date": "26 April 2024 11:51",
          "html": "<p>&gt;&gt;First, there&rsquo;s the ancient question, &ldquo;Should a router advertise a BGP route if it&rsquo;s not using it?&rdquo; I never understood what the big deal was</p>\n\n<p>BGP RFC 4271 quote:</p>\n\n<p>&quot;A route SHALL NOT be installed in the Adj-Rib-Out unless the destination, and NEXT_HOP   described by this route, may be forwarded appropriately by the Routing Table&quot;</p>\n\n<p>I think, if we will look at the network as distributed database which is used to forward packets this rule looks valid. In order to preserve forwarding consistency within the network routers should not advertise the routes that cannot be used locally for forwarding (by default).</p>\n",
          "id": "2234",
