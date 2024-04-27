@@ -1,6 +1,6 @@
 ---
 title: "Repost: The Real LISP Mobility Use Case"
-date: 2024-05-02 07:59:00+0200
+date: 2024-04-30 07:59:00+0200
 tags: [ LISP ]
 ---
 [Béla Várkonyi](https://www.linkedin.com/in/belavarkonyi/) is working on an interesting challenge: building ground-to-airplane(s) networks providing multilink mobility. Due to its relative simplicity, he claims [LISP works much better than BGP in that environment](https://blog.ipspace.net/2024/04/mobility-campus-networks-lisp-evpn.html#2218).
