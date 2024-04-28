@@ -265,7 +265,7 @@ YAML
     ;;
   commit)
     pushd $BLOG_HOME >/dev/null
-    git add static content
+    git add static content/posts
     if [ -n "$2" ]; then
       git commit -m "$2"
     else
