@@ -68,6 +68,39 @@
         </li>
       </div>
       <div>
+        <li class="comment" id="2237">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Igor M</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2237" href="#2237">29 April 2024 11:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Any route is good enough because the RFC does not specify the explicit type or types. Even a BGP one, yes. The quote says &quot;forwarding&quot;, which means it must be installed in the forwarding table. FIB is absent a route type. But vendors are free to implement any resolution schemes/filters, the Standard does not restrict them here either. And we can see it in the wild.</p>
+
+<p>Having a BGP route NH resolved over another BGP route is not something &quot;bizarre&quot; when we consider that there are actually different address families. There is nothing wrong with resolving a BGP IPv4 unicast (1/1) route over a BGP IPv4 labeled unicast (1/4) one, for example.</p>
+
+<p>If we speak about IPv4 unicast over IPv4 unicast, yes, this is a less popular choice. For example, SR-OS requires you to explicitly enable this feature (use-bgp-routes knob. By default, a BGP route is not resolvable by another BGP route). In other words, you can still do it, if you know why.</p>
+
+<p>&gt; &gt; First, there&rsquo;s the ancient question, &ldquo;Should a router advertise a BGP route if it&rsquo;s not using it?&rdquo; I never understood what the big deal was</p>
+
+<p>My point here is RFC 4271 does not allow this explicitly. The only notion of &quot;inactive&quot; I could find is RFC 4277, Section 11. Despite this memo being informal, it highlights the common experience. Section 11 starts with:</p>
+
+<p>&quot;[RFC4271] states &quot;Any local policy which results in routes being
+   added to an Adj-RIB-Out without also being added to the local BGP
+   speaker&#39;s forwarding table, is outside the scope of this document&quot;.&quot;</p>
+
+<p>Here we can see a forwarding table mentioned, not routing. So, it does not matter which route (BGP, IGP, static, etc.). A tricky point is whether a current record in FIB has a next-hop to an interface that is not the same as an interface of the original BGP route. It could lead to a potential loop, but there is no good reference, every vendor is free to implement &quot;advertise-inactive&quot; in their own way.</p>
+</div>
+          </div>
+        </li>
+      </div>
+      <div>
         <li class="comment" id="2236">
           <!--
           <div class="avatar-image-container">

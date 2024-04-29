@@ -20,6 +20,15 @@
                "type": "comment"
             },
             {
+               "date": "29 April 2024 11:18",
+               "html": "<p>Any route is good enough because the RFC does not specify the explicit type or types. Even a BGP one, yes. The quote says &quot;forwarding&quot;, which means it must be installed in the forwarding table. FIB is absent a route type. But vendors are free to implement any resolution schemes/filters, the Standard does not restrict them here either. And we can see it in the wild.</p>\n\n<p>Having a BGP route NH resolved over another BGP route is not something &quot;bizarre&quot; when we consider that there are actually different address families. There is nothing wrong with resolving a BGP IPv4 unicast (1/1) route over a BGP IPv4 labeled unicast (1/4) one, for example.</p>\n\n<p>If we speak about IPv4 unicast over IPv4 unicast, yes, this is a less popular choice. For example, SR-OS requires you to explicitly enable this feature (use-bgp-routes knob. By default, a BGP route is not resolvable by another BGP route). In other words, you can still do it, if you know why.</p>\n\n<p>&gt; &gt; First, there&rsquo;s the ancient question, &ldquo;Should a router advertise a BGP route if it&rsquo;s not using it?&rdquo; I never understood what the big deal was</p>\n\n<p>My point here is RFC 4271 does not allow this explicitly. The only notion of &quot;inactive&quot; I could find is RFC 4277, Section 11. Despite this memo being informal, it highlights the common experience. Section 11 starts with:</p>\n\n<p>&quot;[RFC4271] states &quot;Any local policy which results in routes being\n   added to an Adj-RIB-Out without also being added to the local BGP\n   speaker&#39;s forwarding table, is outside the scope of this document&quot;.&quot;</p>\n\n<p>Here we can see a forwarding table mentioned, not routing. So, it does not matter which route (BGP, IGP, static, etc.). A tricky point is whether a current record in FIB has a next-hop to an interface that is not the same as an interface of the original BGP route. It could lead to a potential loop, but there is no good reference, every vendor is free to implement &quot;advertise-inactive&quot; in their own way.</p>\n",
+               "id": "2237",
+               "name": " Igor M",
+               "pub": "2024-04-29T11:18:28",
+               "ref": "2235",
+               "type": "comment"
+            },
+            {
                "date": "29 April 2024 10:36",
                "html": "<p>&gt;&gt;Should the route in the routing table be a BGP route, or is any route to the destination good enough?</p>\n\n<p>Routes to be installed in particular Adj-RIB-Out table are BGP Routes, it may be received from other BGP speakers or generated locally or redistributed from the other protocols, but they have to be in Loc-RIB first.</p>\n\n<p>So, yes, it should be a &quot;BGP route&quot;, that&#39;s no-brainer for me. </p>\n",
                "id": "2236",
