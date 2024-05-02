@@ -1,6 +1,6 @@
 ---
-title: "I'm Too Stupid for That"
-date: 2024-05-05 08:25:00+0200
+title: "Famous Last Words: I'm Too Stupid for That"
+date: 2024-05-06 08:25:00+0200
 tags: [ virtualization ]
 ---
 Some networking vendors realized that one way to gain mindshare is to make their network operating systems available as free-to-download containers or virtual machines. That's the right way to go; I love their efforts and point out who went down that path whenever possible[^AOT] (as well as others like Cisco who try to make our lives miserable).
