@@ -58,7 +58,7 @@ Properly implemented remote nodes would renegotiate LACP session with the standa
 
 [^ER]: Anything else could result in weird forwarding behavior; the proof is left as an exercise for the reader. Keep in mind that the end-hosts with a single uplink (LAG is a single uplink) are often not running STP.
 
-{{<note info>}}[Cumulus Linux documentation](https://blog.ipspace.net/2022/06/mlag-deep-dive-overview.html#1284) has an extensive discussion of potential failure scenarios and resulting behavior of secondary MLAG switch{{</note>}}.
+{{<note info>}}[Cumulus Linux documentation](https://blog.ipspace.net/2022/06/mlag-deep-dive-overview.html#1284) has an extensive discussion of potential failure scenarios and resulting behavior of secondary MLAG switch{{</note>}}
 
 Finally, how do you decide which part of a two-node cluster is in the minority? Welcome to the _[Never Take Two Chronometers to the Sea](/2017/01/never-take-two-chronometers-to-sea.html)_ land. MLAG implementations go to [great lengths](/2010/10/multi-chassis-link-aggregation-stacking.html#read-the-smallprint) trying to figure out whether the other cluster member failed (in which case the LAG members should remain active) or whether the other node is still active, but not reachable over the failed peer link.
 

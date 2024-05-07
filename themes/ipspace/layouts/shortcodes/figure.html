@@ -7,8 +7,9 @@
    {{- if or (.Get "alt") (.Get "caption") }}
    alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
    {{- end -}}
-   {{- with .Get "width" }} width="{{ . }}"{{ end -}}
-   {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+   {{- if or (.Get "width") (.Get "height") }}
+   style="{{- with .Get "width" }}max-width:{{ . }}px;{{ end -}}{{- with .Get "height" }}max-height:{{ . }}px;{{ end -}}"
+   {{- end -}}
   /><!-- Closing img tag -->
   {{- if .Get "link" }}</a>{{ end -}}
   {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
