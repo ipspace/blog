@@ -6,7 +6,7 @@ tags:
 - IP routing
 title: 'Fast Failover: Techniques and Technologies'
 ---
-Continuing our [Fast Failover saga](https://blog.ipspace.net/series/fast-failover.html), let's focus on techniques and technologies available to implement it (assuming you [still think it's worth the effort](https://blog.ipspace.net/2020/11/fast-failover-challenge.html)).
+Continuing our [Fast Failover saga](/series/fast-failover.html), let's focus on techniques and technologies available to implement it (assuming you [still think it's worth the effort](/2020/11/fast-failover-challenge.html)).
 
 {{<note info>}}The following text is heavily based on comments [Jeff Tantsura](https://www.linkedin.com/in/jeff-tantsura/) wrote on one of my LinkedIn posts as well as the original blog post. Thank you!{{</note>}}
 

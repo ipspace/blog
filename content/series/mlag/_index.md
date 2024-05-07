@@ -3,9 +3,9 @@ title: Multi-Chassis Link Aggregation
 layout: custom
 minimal_sidebar: true
 sidebar_box: sw
-soon_evpn:
-- title: Replacing Peer Link with VXLAN Fabric
-  page: /posts/2023/05/mlag-without-peer-link.html
+soon_failure:
+- title: LAG Member Failures in EVPN/VXLAN Environment
+  page: /posts/2024/05/mlag-evpn-lag-failure-rerouting.html
 # soon_deep:
 # BFD challenge: micro-BFD or BFD across VLANs?
 # https://blog.ipspace.net/2022/06/mlag-active-active-layer3.html#1316
@@ -30,6 +30,10 @@ It's often used to implement redundant server connections; it was also popular i
 ### {{<plushy magic>}}MLAG Implementations
 
 {{<series-listing tag="implement">}}
+
+### Failure Scenarios
+
+{{<series-listing tag="failure" soon="soon_failure">}}
 
 ### Using MLAG on Server-to-Network Links
 
