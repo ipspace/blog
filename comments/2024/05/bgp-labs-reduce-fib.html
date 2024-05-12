@@ -1,0 +1,37 @@
+<div class="comments post" id="comments">
+  <h4>1 comments:</h4>
+  <div class="comments-content">
+    <div class="comment-thread">
+        <ol>
+      <div>
+        <li class="comment" id="2245">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow"> Dan Massameno</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2245" href="#2245">12 May 2024 02:18</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>I used this technique on a Sup720 on the Cat 6500 platform.  The FIB could only hold 239k prefixes.  After that it would process switch, which was death on that platform.</p>
+
+<p>We had a full Internet table in the BGP database.  The RAM was not the problem, it held the entire Internet.  But the FIB was the limit.</p>
+
+<p>With the table-map command we could selectively load only certain routes into the RIB, which would then load into the FIB.</p>
+
+<p>The syntax was non-intuitive.  Table-map was designed to adjust the prefixes before loading them into the RIB, not eliminate them entirely!  I tried to set the admin distance of the undesired routes to 255 (unreachable) but the CLI didn&#39;t take it.  I got it to work by setting the metric to 4294967295.  I only knew that was the largest number by using the &quot;?&quot; in the CLI.</p>
+
+<p>That did it!  Something with metric 4294967295 was unreachable, so it didn&#39;t load into the RIB/FIB.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+    </div>
+  </div>
+</div>
