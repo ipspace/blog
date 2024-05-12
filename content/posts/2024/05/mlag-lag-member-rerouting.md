@@ -38,4 +38,4 @@ A more optimal implementation (*forward unicast traffic but do not flood traffic
 
 Finally, it's worth noting that the MLAG member link failure remains a localized event. LAG is implemented pretty low in the data link layer, and a member link failure does not propagate to higher layers. STP or routing protocols are, therefore, not involved. Unicast traffic should recover almost instantaneously (in the millisecond range, but see [Fast Failover Techniques and Technologies](/2020/12/fast-failover-techniques.html) for details), and the flooding resumes after the switches participating in the MLAG cluster synchronize their control planes (hopefully in the tens or hundreds of milliseconds range).
 
-{{<next-in-series page="/posts/2024/05/mlag-evpn-lag-failure-rerouting.html" />}}
+{{<next-in-series page="/posts/2024/05/mlag-vxlan-rerouting.html" />}}
