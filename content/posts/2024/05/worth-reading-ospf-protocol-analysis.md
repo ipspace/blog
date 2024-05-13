@@ -1,6 +1,6 @@
 ---
 title: "Must Read: OSPF Protocol Analysis (RFC 1245)"
-date: 2024-05-14 08:40:00+0200
+date: 2024-05-16 08:40:00+0200
 tags: [ OSPF ]
 ---
 Daniel Dib [found](https://twitter.com/danieldibswe/status/1789894892769931265) the ancient [OSPF Protocol Analysis (RFC 1245)](https://www.rfc-editor.org/rfc/rfc1245) that includes the *Router CPU* section. Please keep in mind the RFC was published in 1991 (35 years ago):
