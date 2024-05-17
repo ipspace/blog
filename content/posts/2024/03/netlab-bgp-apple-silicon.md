@@ -38,8 +38,9 @@ $ netlab install ubuntu containerlab ansible
 * Increase the instance disk size and restart it.
 
 ```
+% multipass stop primary
 % multipass set local.primary.disk=10G
-% multipass restart primary
+% multipass shell
 ```
 
 * The multipass instance [does not have the Linux kernel drivers](https://netlab.tools/caveats/#frr) we need for FRR management VRF and MPLS forwarding. Log into the Ubuntu instance and install the missing generic Linux drivers:
