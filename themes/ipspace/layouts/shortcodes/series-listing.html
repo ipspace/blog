@@ -38,7 +38,14 @@
 <ul>
   {{ range (.Page.Scratch.Get "pages") }}
     <li>
-      <a href="{{ .Permalink }}">{{ with .Params.series_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</a>
+      <a href="{{ .Permalink }}">
+        {{ with (index .Params (printf "%s_title" $term)) }}{{ . }}
+        {{ else }}
+          {{ with .Params.series_title }}{{ . }}
+          {{ else }}{{ .Title }}
+          {{ end }}
+        {{ end }}
+      </a>
       {{ if $show_year }}({{ .Date.Format "2006" }}){{ end }}
       {{ if $show_tag  }}T:{{ index .Params (printf "%s_tag" $term) }}{{ end }}
       {{ if $show_weight }}{{ with .Params.series_weight }}W:{{ .}}{{ end }}{{ end }}
