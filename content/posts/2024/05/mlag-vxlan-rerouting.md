@@ -1,6 +1,6 @@
 ---
 title: "MLAG Deep Dive: LAG Member Failures in VXLAN Fabrics"
-date: 2024-05-15 08:51:00+0200
+date: 2024-05-22 08:51:00+0200
 mlag_tag: failure
 series:
 - mlag

@@ -5,7 +5,7 @@ minimal_sidebar: true
 sidebar_box: sw
 soon_failure:
 - title: LAG Member Failures in EVPN/VXLAN Environment
-  page: /posts/2024/05/mlag-evpn-lag-failure-rerouting.html
+  page: /posts/2024/05/mlag-evpn-rerouting.html
 # soon_deep:
 # BFD challenge: micro-BFD or BFD across VLANs?
 # https://blog.ipspace.net/2022/06/mlag-active-active-layer3.html#1316
