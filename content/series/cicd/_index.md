@@ -16,7 +16,7 @@ You might also want to explore [network-infrastructure-as-code](/series/niac.htm
 
 ### {{<plushy master>}}Testing, Validation, and Tools
 
-If you want to automate source code integration and deployment you have to ensure that the changes you're making to your existing codebase won't break it. Testing and validation are thus the crucial elements of CI/CD pipelines:
+If you want to automate source code integration and deployment, you have to ensure that the changes you're making to your existing codebase won't break it. Testing and validation are thus the crucial elements of CI/CD pipelines:
 
 {{<series-listing tag="testing">}}
 
