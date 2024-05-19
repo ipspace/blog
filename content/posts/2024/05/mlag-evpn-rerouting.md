@@ -1,6 +1,6 @@
 ---
 title: "EVPN Rerouting After LAG Member Failures"
-date: 2024-05-15 08:51:00+0200
+date: 2024-05-22 08:51:00+0200
 mlag_tag: failure
 series:
 - mlag
