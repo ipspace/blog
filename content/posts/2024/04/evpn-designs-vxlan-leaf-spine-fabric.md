@@ -2,7 +2,7 @@
 title: "EVPN Designs: VXLAN Leaf-and-Spine Fabric"
 series_title: "VXLAN Leaf-and-Spine Fabric"
 date: 2024-04-03 07:45:00+0100
-tags: [ EVPN, design, netlab ]
+tags: [ EVPN, design, netlab, vxlan ]
 netlab_tag: evpn_dg
 evpn_tag: designs
 pre_scroll: True
@@ -39,7 +39,7 @@ Yes, that's right: [you don't have to run EVPN](/2022/09/mlag-bridging-evpn.html
 
 Don't believe me that this design could work? Let's set up a lab and try it out.
 
-### Leaf-and-Spine Lab Topology
+### Leaf-and-Spine Lab Topology {#topo}
 
 This is the _netlab_ lab topology description we'll use to set up our leaf-and-spine fabric:
 
@@ -146,7 +146,7 @@ round-trip min/avg/max = 1.547/2.020/2.494 ms
 
 Mission Accomplished!
 
-### Behind the Scenes
+### Behind the Scenes {#config}
 
 This is the relevant part of the configuration of L1 running Arista EOS (you can view complete configurations for all switches on GitHub).
 
@@ -258,3 +258,5 @@ Could you teach your entry-level engineers to use this when troubleshooting conn
 Unfortunately, I'm only too aware that some networking engineers hate simple solutions[^VKA]. Next time, we'll throw EVPN into the mix, yet again starting with a straightforward design: running a full mesh of IBGP sessions between leaf switches.
 
 [^VKA]: Or drank too much vendor Kool-Aid, or need to pad their resume, or (in a few cases) have a network extensive enough that they need more complex technologies to cope with its scale.
+
+{{<next-in-series page="/posts//2024/05/evpn-designs-ibgp-full-mesh.html"/>}}
