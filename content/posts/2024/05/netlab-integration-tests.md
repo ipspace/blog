@@ -1,7 +1,7 @@
 ---
 title: "Testing Network Automation Device Configuration Templates"
 netlab_tag: "netlab Integration Tests"
-date: 2024-05-24 08:08:00+0200
+date: 2024-05-27 08:08:00+0200
 tags: [ automation, netlab ]
 series: [ cicd ]
 cicd_tag: testing
