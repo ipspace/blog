@@ -9,7 +9,7 @@ pre_scroll: True
 ---
 In the [previous blog post](/2024/04/evpn-designs-vxlan-leaf-spine-fabric.html) in the EVPN Designs series, we explored the simplest possible VXLAN-based fabric design: static ingress replication without any L2VPN control plane. This time, we'll add the simplest possible EVPN control plane: a full mesh of IBGP sessions between the leaf switches.
 
-{{<note warn>}}This blog post describes an initial BGP design that we'll refine in subsequent blog posts. Having a full mesh of IBGP sessions between leaf switches is a bad idea unless you have a tiny fabric or you're deploying a small-scale EVPN pilot.{{</note>}}
+{{<note smallprint>}}This blog post describes an initial BGP design that we'll refine in subsequent blog posts. Having a full mesh of IBGP sessions between leaf switches might be a bad idea unless you have a tiny fabric or you're deploying a small-scale EVPN pilot.{{</note>}}
 <!--more-->
 This is the fabric we're working with:
 
@@ -228,3 +228,5 @@ Should you choose EVPN when building a small data center that provides VLAN conn
 [^NT]: Unless you want to play with a new toy or boost your resume.
 
 [^AAMH]: The server team might [not want the link aggregation anyway](https://blog.ipspace.net/2014/01/vsphere-does-not-need-lag-bandaids.html). Most virtualization solutions are happier with multiple independent uplinks.
+
+{{<next-in-series page="/posts/2024/05/bgp-rr-considered-harmful.html" />}}
