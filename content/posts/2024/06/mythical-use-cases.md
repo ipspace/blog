@@ -1,6 +1,7 @@
 ---
 title: "The Mythical Use Cases: Traffic Engineering for Data Center Backups"
 date: 2024-06-11 12:41:00+0200
+lastmod: 2024-06-13 11:02:00+0200
 tags: [ data center, fabric, traffic engineering ]
 ---
 Vendor product managers love discussing mythical use cases to warrant complex functionality in their gear. [Long-distance VM mobility](https://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html) was one of those (using it for disaster avoidance was [Mission Impossible under any real-world assumptions](https://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html)), and *high-volume network-based backups* seems to be another. Here's what someone had to say about that particular unicorn in a LinkedIn comment when discussing whether we need traffic engineering in a data center fabric.
@@ -21,3 +22,21 @@ It is true that (A) in-band backups can be bandwidth intensive and that (B) well
 * Even if you were experiencing congestion issues when using a large cluster of backup servers connected to the same set of switches, you could use traditional routing tricks to spread the load across the uplinks.
 
 **Long story short**: while I'm positive there must be data center fabrics that experience network-wide congestion due to backup traffic, the "*we need traffic engineering in data center fabrics to deal with backups*" is a myth for most well-designed mainstream environments. That does not mean you don't have to take backup traffic into account when designing your network, though ;)
+
+### Keep It Simple and Separate (KISS)
+
+Bela Varkonyi described an old-style solution in [his comment](https://blog.ipspace.net/2024/06/mythical-use-cases.html#2288):
+
+{{<longquote>}}
+I have an old-style, robust solution if you have a central backup server.
+
+It is based on my experience that many of such servers to be backed up have unused ethernet ports.
+
+Just connect the backup server to a simple front-end switch (maybe some leftover) and connect to the unused port of each server to be backed up using a direct optical cable from this front-end switch to the target server.
+
+No complexity, no race conditions with the primary traffic. Keep it simple...
+{{</longquote>}}
+
+This approach has just one drawback: the separate network has to be a layer-2 network or at least look like a single subnet to the servers[^PA]. Most servers don't use VRFs and don't have the means of making generic applications VRF-aware, so you can't have two default routes, one for backup and another one for the rest of the traffic. That's why VMware mandated a layer-2 vMotion network until they figured out how to spell VRF.
+
+[^PA]: Hint: Proxy ARP is your friend
