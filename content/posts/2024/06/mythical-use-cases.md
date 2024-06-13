@@ -27,7 +27,7 @@ It is true that (A) in-band backups can be bandwidth intensive and that (B) well
 
 Bela Varkonyi described an old-style solution in [his comment](https://blog.ipspace.net/2024/06/mythical-use-cases.html#2288):
 
-{{<longquote>}}
+{{<long-quote>}}
 I have an old-style, robust solution if you have a central backup server.
 
 It is based on my experience that many of such servers to be backed up have unused ethernet ports.
@@ -35,8 +35,12 @@ It is based on my experience that many of such servers to be backed up have unus
 Just connect the backup server to a simple front-end switch (maybe some leftover) and connect to the unused port of each server to be backed up using a direct optical cable from this front-end switch to the target server.
 
 No complexity, no race conditions with the primary traffic. Keep it simple...
-{{</longquote>}}
+{{</long-quote>}}
 
-This approach has just one drawback: the separate network has to be a layer-2 network or at least look like a single subnet to the servers[^PA]. Most servers don't use VRFs and don't have the means of making generic applications VRF-aware, so you can't have two default routes, one for backup and another one for the rest of the traffic. That's why VMware mandated a layer-2 vMotion network until they figured out how to spell VRF.
+This approach has just one drawback: the separate network has to be a layer-2 network or at least look like a single subnet to the servers[^PA].
+
+Most servers don't use VRFs or don't have the means of making generic applications VRF-aware, so you can't have two default routes, one for backup and another for the rest of the traffic. That's why VMware mandated a layer-2 vMotion network[^CU] until they figured out how to spell VRF.
 
 [^PA]: Hint: Proxy ARP is your friend
+
+[^CU]: Their claim that a layer-3 network with proxy-ARP was unsupported was a pure _reduce my support costs by ignoring valid customer needs_ decision.
