@@ -27,6 +27,19 @@ Numerous rounds of yak-shaving later, I merged a humongous commit that adds auto
 
 The automated validation can be used on Arista EOS, Cumulus Linux, and FRR[^OP] and requires validation plugins included in [_netlab_ release 1.8.3](https://blog.ipspace.net/2024/06/netlab-1-8-3-rip-bgp.html).
 
+Some other lab exercises already supported automated validation:
+
+* [Configure a Single EBGP Session](https://bgplabs.net/basic/1-session/)
+* [Configure Multiple EBGP Sessions](https://bgplabs.net/basic/2-multihomed/)
+* [Advertise IPv4 Prefixes to BGP Neighbors](https://bgplabs.net/basic/3-originate/)
+* [Configure BGP for IPv6](https://bgplabs.net/basic/4-ipv6/)
+* [Advertise Default Route in BGP](https://bgplabs.net/basic/c-default-route/)
+* [EBGP Sessions over IPv6 LLA Interfaces](https://bgplabs.net/basic/d-interface/)
+* [Reuse a BGP AS Number Across Multiple Sites](https://bgplabs.net/session/1-allowas_in/)
+* [Fix AS-Path in Environments Reusing BGP AS Numbers](https://bgplabs.net/session/2-asoverride/)
+* [Use Multiple AS Numbers on the Same Router](https://bgplabs.net/session/3-localas/)
+* [BGP Session Templates](https://bgplabs.net/session/6-templates/)
+
 [^OP]: Want to run validation on other platforms? Please implement the BGP and OSPF validation plugins (they have to pass all the [validation plugin integration tests](https://github.com/ipspace/netlab/tree/dev/tests/integration/validate)) and submit a PR. Being a realist, I'm not holding my breath ;)
 
 {{<jump>}}[Explore the BGP labs](https://bgplabs.net/){{</jump>}}
