@@ -20,9 +20,8 @@ Anyway, after a lengthy [yak-shaving exercise](https://www.hanselman.com/blog/ya
 
 The results were well worth the effort. Running BGP labs in a GitHub codespaces container is as easy as it gets:
 
-* Open the [BGP labs documentation](https://bgplabs.net/) in your browser
-* Click the "create a new codespace" link and create a codespace.
-* The codespace opens as a new web page (you could also open it in VScode) with three panes: a directory of the BGP labs repository, a README file, and a terminal window.
-* Find the directory for the exercise you're interested in, right-click it in the directory pane, open that directory in the terminal window, and execute **netlab up**.
+* Open the [Run BGP with GitHub Codespaces](https://bgplabs.net/4-codespaces/) document in your browser
+* Click the "*create a new codespace*" link and create a codespace.
+* Follow the rest of the instructions and enjoy the free labs ;)
 
-{{<jump>}}[Explore the BGP labs](https://bgplabs.net/){{</jump>}}
+{{<jump>}}[Start with GitHub Codespaces](https://bgplabs.net/4-codespaces/){{</jump>}}
