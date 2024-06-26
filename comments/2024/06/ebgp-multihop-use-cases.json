@@ -38,6 +38,15 @@
                "pub": "2024-06-26T15:33:16",
                "ref": "2299",
                "type": "comment"
+            },
+            {
+               "date": "26 June 2024 04:21",
+               "html": "<p>Thank you. Peering across a firewall is a clear winner ;)</p>\n",
+               "id": "2306",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:21:53",
+               "ref": "2304",
+               "type": "comment"
             }
          ],
          "date": "26 June 2024 09:25",
@@ -48,6 +57,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "26 June 2024 04:23",
+               "html": "<p>Thank you. That would definitely be a use case, but way too complex for an intro-to-BGP lab exercise. Will add it as a challenge lab if I ever decide to create MPLS/VPN labs though.</p>\n",
+               "id": "2307",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:23:03",
+               "ref": "2300",
+               "type": "comment"
+            }
+         ],
          "date": "26 June 2024 09:38",
          "html": "<p>Inter-AS Option-C? Although this might align with your point #1</p>\n\n<p>https://learningnetwork.cisco.com/s/question/0D53i00000Ksqy9CAB/interas-option-c</p>\n\n<p>mh eBGP between RR inter-AS, carrying AFI/SAFIs typical of the service-layer, like VPNv4/6 or L2</p>\n",
          "id": "2300",
@@ -56,6 +76,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "26 June 2024 04:24",
+               "html": "<p>Thanks a million. Peering across a firewall is a clear winner (simple, easy-to-explain use case), but I will definitely add at least the basic redundancy if not the full-blown multi-site setup as challenge labs.</p>\n",
+               "id": "2308",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:24:22",
+               "ref": "2301",
+               "type": "comment"
+            }
+         ],
          "date": "26 June 2024 09:57",
          "html": "<p>You have to connect two administrative domains with a firewall (or even with double chained diverse firewalls) separation. You want to keep the firewalls BGP free, not impacted by the configuration of the two domains. You use only static routing between the border routers through the firewalls. So the interconnect is very robust and stable.\nYou are not allowed to use tunnels, since you want to see the traffic in the firewalls in their natural form for filtering and analysis. Multicast shall be also supported.\nUse multi-hop eBGP to dynamically advertise routes from the two administrative domains.</p>\n\n<p>Start with a single path and then go to the next level of complexity:\nYou have two geographically separated sites for the firewalls. Each site has a double redundancy in border routers and firewalls. So you have 4 possible paths between the two administrative domains. \nNow you have to configure a quick failover between those 4 paths using multi-hop BFD to detect path failures. \nAll physical connections are 1 Gbps, so overhead is not an issue.</p>\n\n<p>Next step:\nConfigure active-active usage of the 4 paths. Load balance the traffic so that a path failure would temporarily impact only a portion of the traffic (even that we have a quick failover).</p>\n\n<p>This is a real life example. I have seen it in mission critical or safety critical networks or even in service provider networks.</p>\n",
          "id": "2301",
