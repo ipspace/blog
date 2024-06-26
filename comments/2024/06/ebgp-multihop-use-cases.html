@@ -260,6 +260,37 @@ Configure active-active usage of the 4 paths. Load balance the traffic so that a
             <div class="comment-content"><p>Within Azure vWAN you need eBGP multihop, otherwise there is no connection to your neighbour within Azure. And to reach the neighbour, you will need to add a static route towards Microsofts default gateway since there is no other underlay.
 Not sure if its the same contruct on other public clouds.</p>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2309">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2309" href="#2309">26 June 2024 04:30</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you! I should remember the details (as I was doing Azure webinars not so long ago), but I guess I&#39;ll have to go over the slide deck again.</p>
+
+<p>IIRC, it&#39;s effectively a riff on the &quot;low-end router in the middle,&quot; this time the Azure virtual router with no externally visible control plane.</p>
+
+<p>Might add this as an advanced scenario (if I figure out how to emulate the Azure environment).</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>
@@ -287,6 +318,35 @@ As sites use sd-wan with no DIA, whenever we need one we use a similar use-case.
 Switch uplinks to cores and 2 connections to firewall (one inside one outside in different VRFs), outside just advertises the default route towards the campus, while sd-wan advertises more specific routes + default route with worse metrics.</li>
 </ol>
 </div>
+              <div class="comment-replies">
+                <div class="comment-thread inline-thread">
+                  <span class="thread-count"><a>Replies</a></span>
+                    <ol>
+      <div>
+        <li class="comment" id="2310">
+          <!--
+          <div class="avatar-image-container">
+            <img src="">
+          </div>
+          -->
+          <div class="comment-block">
+            <div class="comment-header">
+              <cite class="user"><a href="" rel="nofollow">Ivan Pepelnjak</a></cite>
+              <span class="datetime secondary-text">
+                <a rel="nofollow" id="c2310" href="#2310">26 June 2024 04:32</a>
+              </span>
+            </div>
+            <div class="comment-content"><p>Thank you! Effectively this is a firewall-on-a-fat-stick scenario with two VRFs on the same router.</p>
+
+<p>Will add it as an advanced scenario as it requires twiddling router IDs as well.</p>
+</div>
+          </div>
+        </li>
+      </div>
+  </ol>
+
+                </div>
+              </div>
           </div>
         </li>
       </div>

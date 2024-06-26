@@ -95,6 +95,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "26 June 2024 04:30",
+               "html": "<p>Thank you! I should remember the details (as I was doing Azure webinars not so long ago), but I guess I&#39;ll have to go over the slide deck again.</p>\n\n<p>IIRC, it&#39;s effectively a riff on the &quot;low-end router in the middle,&quot; this time the Azure virtual router with no externally visible control plane.</p>\n\n<p>Might add this as an advanced scenario (if I figure out how to emulate the Azure environment).</p>\n",
+               "id": "2309",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:30:22",
+               "ref": "2302",
+               "type": "comment"
+            }
+         ],
          "date": "26 June 2024 12:26",
          "html": "<p>Within Azure vWAN you need eBGP multihop, otherwise there is no connection to your neighbour within Azure. And to reach the neighbour, you will need to add a static route towards Microsofts default gateway since there is no other underlay.\nNot sure if its the same contruct on other public clouds.</p>\n",
          "id": "2302",
@@ -103,6 +114,17 @@
          "type": "comment"
       },
       {
+         "comments": [
+            {
+               "date": "26 June 2024 04:32",
+               "html": "<p>Thank you! Effectively this is a firewall-on-a-fat-stick scenario with two VRFs on the same router.</p>\n\n<p>Will add it as an advanced scenario as it requires twiddling router IDs as well.</p>\n",
+               "id": "2310",
+               "name": "Ivan Pepelnjak",
+               "pub": "2024-06-26T16:32:36",
+               "ref": "2303",
+               "type": "comment"
+            }
+         ],
          "date": "26 June 2024 12:35",
          "html": "<p>We use eBGP multi-hop in 2 main use-cases, but both are similar.\n1. for lab environment.\nWe use a single switch that uplinks to the cores and has 2 connections towards a firewall (one inside in VRF A, one outside for LAB environment in VRF B). It keeps the firewall outside BGP, with only static routes and its easier for a local person with less experience to configure.</p>\n\n<ol>\n<li>For local internet egress.\nAs sites use sd-wan with no DIA, whenever we need one we use a similar use-case.\nSwitch uplinks to cores and 2 connections to firewall (one inside one outside in different VRFs), outside just advertises the default route towards the campus, while sd-wan advertises more specific routes + default route with worse metrics.</li>\n</ol>\n",
          "id": "2303",
