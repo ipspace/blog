@@ -3,6 +3,7 @@ title: "VXLAN Virtual Labs Have Never Been Easier"
 date: 2024-02-27 13:00:00+0100
 tags: [ netlab, VXLAN ]
 netlab_tag: use
+lastmod: 2024-06-30 10:43:00
 ---
 I stumbled upon an "*I want to dive deep into VXLAN and plan to build a virtual lab*" discussion on LinkedIn[^TL]. Of course, I suggested using *netlab*. After all, you have to build an IP core and VLAN access networks and connect a few clients to those access networks before you can start playing with VXLAN, and those things tend to be excruciatingly dull.
 
@@ -14,7 +15,7 @@ Now imagine you decide to use _[netlab](https://netlab.tools/)_. Out of the box,
 OK, I ignored the royal pain of preparing the vendor-specific virtual machine images, but even there, things are continuously getting better:
 
 * With zero hassle, you can download Cumulus Linux, FRR, Juniper vPTX, Nokia SR Linux, and VyOS. You must build a Vagrant box from the vPTX disk image, but it's a breeze. All others are available as download-and-deploy containers.
-* Downloading Cisco Nexus 9300v and Arista EOS requires registration, but there are no further obstacles. Installing the Arista cEOS container is easy, and the box-building instructions for Arista vEOS and Nexus 9300v are included with _netlab_ (some assembly required).
+* Downloading Aruba CX, Arista EOS, Cisco Nexus 9300v, and Dell OS10 requires registration, but there are no further obstacles. Installing the Arista cEOS container is easy, and the box-building instructions for all other platforms are included with _netlab_ (some assembly required).
 
 That already gives you a half-dozen platforms to play with, and _netlab_ will [configure OSPF, BGP, and VLANs](https://netlab.tools/platforms/#platform-routing-support) on all of them for you. Even better, if you want to explore VXLAN before learning to configure it, _netlab_ does it for you on all those platforms apart from Juniper vPTX[^PRA].
 
@@ -23,3 +24,8 @@ Let's go further: you want to add EVPN to VXLAN. No biggie, _netlab_ will config
 [^PRA]: If anyone feels like creating a configuration template needed to deploy VXLAN on Junos, please submit a pull request.
 
 So, what's stopping you from [downloading *netlab*](https://netlab.tools/install/) and discovering VXLAN and EVPN? If you're willing to deal with Linux networking inside FRR or Cumulus Linux containers, you could run a decent lab on an AWS **t3a.small** instance; you could also try to squeeze it into the [Always Free Oracle Cloud](https://www.oracle.com/cloud/free/#free-cloud-trial) instance. You'd need a bit more memory to run Arista cEOS containers, but even there, a **t3a.medium** should be good enough.
+
+### Revision History
+
+2024-06-30
+: Downloading Aruba CX or Dell OS10 requires nothing more than registration on the vendors' website.
