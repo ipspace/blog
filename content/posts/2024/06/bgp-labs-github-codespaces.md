@@ -3,7 +3,7 @@ title: "Running BGP Labs in GitHub Codespaces"
 date: 2024-06-25 07:45:00+02:00
 tags: [ BGP, netlab ]
 series: [ bgp_labs ]
-netlab_tag: bgplab
+netlab_tag: codespace
 ---
 I love open-source tools (and their GitHub repositories). Someone launches a cool idea, and you can dig through their source code to figure out how it works. It beats reading documentation or fixing AI hallucinations every day of the week ;)
 

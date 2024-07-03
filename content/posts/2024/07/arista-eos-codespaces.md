@@ -2,7 +2,7 @@
 title: "Running Arista cEOS in GitHub Codespaces"
 date: 2024-07-02 07:30:00+0200
 tags: [ netlab ]
-netlab_tag: overview
+netlab_tag: codespace
 ---
 [![](/2024/07/container-download.jpg)](/2024/07/container-download.jpg)
 { .sideicon }

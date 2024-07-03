@@ -2,7 +2,7 @@
 title: "Netlab Examples in GitHub Codespaces"
 date: 2024-07-01 07:59:00+0200
 tags: [ netlab ]
-netlab_tag: overview
+netlab_tag: codespace
 ---
 A few days ago, someone asked me about the IPv4 next-hop details of running interface EBGP sessions. I pointed him to a [blog post explaining them](https://blog.ipspace.net/2022/11/bgp-unnumbered-duct-tape.html), adding, "And of course, you can test that in _[netlab](https://netlab.tools/)_." A few minutes later, it hit me: instead of asking him to set up _netlab_ locally, I could enable him to do that in a minute with GitHub codespaces.
 

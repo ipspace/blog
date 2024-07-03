@@ -19,6 +19,10 @@ The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help yo
 
 {{<series-listing tag="podcast">}}
 
+### Running netlab in GitHub Codespaces
+
+{{<series-listing tag="codespace">}}
+
 ### {{<plushy master>}}Usage Guidelines
 
 {{<series-listing tag="guidelines" weight="1">}}

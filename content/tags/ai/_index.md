@@ -34,7 +34,7 @@ In 2023, Javier [published a book covering the same set of topics in way more de
 
 I keep collecting interesting articles talking about AI in general and (lately) ChatGPT. I found these interesting enough to mention them in _worth reading_ blog posts:
 
-{{<series-listing tag="read" year="yeah">}}
+{{<series-listing tag="read" weight="1" year="yeah">}}
 
 These are not bad either:
 
