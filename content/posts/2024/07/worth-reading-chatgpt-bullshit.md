@@ -1,6 +1,6 @@
 ---
 title: "MUST READ: ChatGPT Is Bullshit"
-date: 2024-07-03 13:56:00+0200
+date: 2024-07-04 09:56:00+0200
 tags: [ worth reading, AI ]
 ai_tag: read
 series_weight: 2000
