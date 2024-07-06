@@ -3,8 +3,9 @@ title: "BGP Challenge: Build BGP-Free MPLS Core Network"
 series_title: "Build BGP-Free MPLS Core Network"
 date: 2024-04-04 08:22:00+02:00
 tags: [ BGP, netlab ]
-series: [ bgp_labs ]
-netlab_tag: bgplab
+netlab_tag: ignore
+BGP_tag: lab
+redirect: https://bgplabs.net/challenge/40-mpls-core/
 ---
 Here's another challenge for BGP aficionados: [build an MPLS-based transit network without BGP running on core routers](https://bgplabs.net/challenge/40-mpls-core/).
 

@@ -3,7 +3,6 @@ title: "Automated Validation of BGP Labs"
 series_title: "Automated Lab Validation"
 date: 2024-06-18 08:22:00+02:00
 tags: [ BGP, netlab ]
-series: [ bgp_labs ]
 netlab_tag: bgplab
 ---
 In late 2023, I started playing with the idea of having automated validation in _netlab_. The early implementation was used in BGP labs, and a user liked it so much that he opened an issue saying:

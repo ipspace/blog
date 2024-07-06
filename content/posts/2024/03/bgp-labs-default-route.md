@@ -3,8 +3,9 @@ title: "BGP Labs: Advertise the Default Route"
 series_title: "Advertise BGP Default Route"
 date: 2024-03-28 08:44:00+01:00
 tags: [ BGP, netlab ]
-series: [ bgp_labs ]
-netlab_tag: bgplab
+netlab_tag: ignore
+BGP_tag: lab
+redirect: https://bgplabs.net/basic/c-default-route/
 ---
 If you're an Internet Service Provider running BGP with your customers, you might not want to send them the whole Internet routing table. Sending the regional prefixes *and the default route* is usually good enough.
 

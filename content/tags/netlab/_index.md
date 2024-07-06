@@ -6,6 +6,8 @@ minimal_sidebar: true
 sidebar_box: NetOps
 ---
 The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help you be more proficient once you decide to drop GUI-based network simulators and build your labs using CLI and [infrastructure-as-code](/series/niac.html) principles.
+
+You can also use _netlab_ (potentially together with GitHub Codespaces) to build online, easy-to-consume, hands-on training solutions. I used that approach to build the [BGP labs](../series/bgp_labs.html).
 <!--more-->
 ### {{<plushy confused>}}Getting Started
 
@@ -36,6 +38,9 @@ The [_netlab_ tool](https://netsim-tools.readthedocs.io/en/latest/) will help yo
 ### {{<plushy magic>}}Hands-On BGP Training Labs Built with *netlab*
 
 {{<series-listing tag="bgplab">}}
+
+For more information, explore the [Open-Source BGP Configuration Labs](https://bgplabs.net/) project.
+
 {{<series-listing tag="evpn_dg" title="Exploring EVPN Fabric Designs">}}
 
 ### {{<plushy master>}}Customizing and Extending *netlab*
