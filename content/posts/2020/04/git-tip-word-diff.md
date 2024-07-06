@@ -3,7 +3,7 @@ title: "Git Tip: Use Word Diff"
 date: 2020-04-19 06:20:00
 tags:
 ---
-Git is great (once you get beyond the [basic recipes](https://xkcd.com/1597/)), and I love my [new blog setup](https://blog.ipspace.net/2020/03/ipspace-blog-runs-on-hugo.html) that allows me to keep track of all the changes I make with Git.
+Git is great (once you get beyond the [basic recipes](https://xkcd.com/1597/)), and I love my [new blog setup](/2020/03/ipspace-blog-runs-on-hugo.html) that allows me to keep track of all the changes I make with Git.
 
 However, there's a slight gotcha if you use Git with Markdown: whenever you change something, the whole line (and using tools like IA Writer a whole paragraph is a single line) is marked as changed, for example:
 <!--more-->

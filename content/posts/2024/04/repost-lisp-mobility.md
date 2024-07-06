@@ -3,7 +3,7 @@ title: "Repost: The Real LISP Mobility Use Case"
 date: 2024-04-30 07:59:00+0200
 tags: [ LISP ]
 ---
-[Béla Várkonyi](https://www.linkedin.com/in/belavarkonyi/) is working on an interesting challenge: building ground-to-airplane(s) networks providing multilink mobility. Due to its relative simplicity, he claims [LISP works much better than BGP in that environment](https://blog.ipspace.net/2024/04/mobility-campus-networks-lisp-evpn.html#2218).
+[Béla Várkonyi](https://www.linkedin.com/in/belavarkonyi/) is working on an interesting challenge: building ground-to-airplane(s) networks providing multilink mobility. Due to its relative simplicity, he claims [LISP works much better than BGP in that environment](/2024/04/mobility-campus-networks-lisp-evpn.html#2218).
 
 ---
 
@@ -21,7 +21,7 @@ However, I see no good alternative. PMIPv6 is a candidate, but it has no support
 
 ---
 
-He also provided some [interesting details about anchorless mobility](https://blog.ipspace.net/2024/04/mobility-campus-networks-lisp-evpn.html#2203) (mobile IP solution without a home gateway):
+He also provided some [interesting details about anchorless mobility](/2024/04/mobility-campus-networks-lisp-evpn.html#2203) (mobile IP solution without a home gateway):
 
 ---
 

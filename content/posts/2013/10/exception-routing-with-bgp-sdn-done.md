@@ -13,11 +13,11 @@ url: /2013/10/exception-routing-with-bgp-sdn-done.html
 ---
 One of the holy grails of data center SDN evangelists is controller-driven traffic engineering (throwing more leaf-and-spine bandwidth at the problem might be cheaper, but definitely not sexier). Obviously they don't call it traffic engineering as they don't want to scare their audience with MPLS TE nightmares, but the idea is the same.
 
-Interestingly, you [don't need new technologies](https://blog.ipspace.net/2013/04/the-many-paths-to-sdn.html) to get as close to that holy grail as you wish; Petr Lapukhov got there with a 20 year old technology -- BGP.
+Interestingly, you [don't need new technologies](/2013/04/the-many-paths-to-sdn.html) to get as close to that holy grail as you wish; Petr Lapukhov got there with a 20 year old technology -- BGP.
 <!--more-->
 ### The Problem
 
-I'll use a well-known suboptimal network to illustrate the problem: a ring of four nodes (it could be anything, from a [monkey-designed fabric](https://blog.ipspace.net/2012/04/monkey-design-still-doesnt-work-well.html), to a [stack of switches](http://blog.ipspace.net/2012/11/stackable-data-center-switches-do-math.html)) with heavy traffic between nodes A and D.
+I'll use a well-known suboptimal network to illustrate the problem: a ring of four nodes (it could be anything, from a [monkey-designed fabric](/2012/04/monkey-design-still-doesnt-work-well.html), to a [stack of switches](/2012/11/stackable-data-center-switches-do-math.html)) with heavy traffic between nodes A and D.
 
 {{<figure src="/2013/10/s400-BGP_SDN_Topology.png" caption="A suboptimal data center fabric">}}
 
@@ -27,13 +27,13 @@ Can we do any better with a controller-based forwarding? We definitely should. L
 
 ### Infrastructure: Using BGP as IGP
 
-If you want to use BGP as the information delivery vehicle for your SDN needs, you MUST ensure it's the highest priority routing protocol in your network. The easiest design you can use is a BGP-only network using BGP as a more scalable (albeit a bit slower) IGP. [EBGP is better than IBGP](https://blog.ipspace.net/2011/08/ibgp-or-ebgp-in-enterprise-network.html) as it doesn\'t need an underlying IGP to get reachability to BGP next hops.
+If you want to use BGP as the information delivery vehicle for your SDN needs, you MUST ensure it's the highest priority routing protocol in your network. The easiest design you can use is a BGP-only network using BGP as a more scalable (albeit a bit slower) IGP. [EBGP is better than IBGP](/2011/08/ibgp-or-ebgp-in-enterprise-network.html) as it doesn\'t need an underlying IGP to get reachability to BGP next hops.
 
 {{<figure src="/2013/10/s400-BGP_SDN_EBGP.png" caption="Build EBGP sessions between data center switches">}}
 
 ### BGP-Based SDN Controller
 
-After building a BGP-only data center, you can start to insert controller-generated routes into it: establish an IBGP session from the controller (cluster) to every BGP router and use higher local preference to override the EBGP-learned routes. You might also want to [set **no-export** community on those routes](https://blog.ipspace.net/2012/10/setting-no-export-bgp-community.html) to ensure they aren't leaked across multiple routers.
+After building a BGP-only data center, you can start to insert controller-generated routes into it: establish an IBGP session from the controller (cluster) to every BGP router and use higher local preference to override the EBGP-learned routes. You might also want to [set **no-export** community on those routes](/2012/10/setting-no-export-bgp-community.html) to ensure they aren't leaked across multiple routers.
 
 {{<figure src="/2013/10/s520-BGP_SDN_Controller.png" caption="Add a BGP controller to the mix">}}
 

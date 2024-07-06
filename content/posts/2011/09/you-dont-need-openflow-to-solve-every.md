@@ -23,7 +23,7 @@ OK, here's the quote that ties them together. While describing *rack awareness* 
 
 The "only" problem with Brad's reasoning is that we already have the tools to do exactly what he's looking for. The magic acronym is [LLDP (802.1AB)](http://standards.ieee.org/getieee802/download/802.1AB-2005.pdf).
 
-**LLDP has been standardized years ago** and is available on numerous platforms, including Catalyst and Nexus switches, and Linux operating system (for example, [lldpad](http://www.open-lldp.org/open-lldp) is part of the standard Fedora distribution). Not to mention that every [DCB](https://blog.ipspace.net/tag/dcb.html)-compliant switch must support LLDP as the DCBX protocol uses LLDP to advertise DCB settings between adjacent nodes.
+**LLDP has been standardized years ago** and is available on numerous platforms, including Catalyst and Nexus switches, and Linux operating system (for example, [lldpad](http://www.open-lldp.org/open-lldp) is part of the standard Fedora distribution). Not to mention that every [DCB](/tag/dcb.html)-compliant switch must support LLDP as the DCBX protocol uses LLDP to advertise DCB settings between adjacent nodes.
 
 **The LLDP MIB is standard** and allows anyone with SNMP read access to discover the exact local LAN topology -- the connected port names, adjacent nodes (and their names), and their management addresses (IPv4 or IPv6). The management addresses that should be present in LLDP advertisements can then be used to expand the topology discovery beyond the initial set of nodes (assuming your switches do include it in LLDP advertisement; for example, NX-OS does but Force10 doesn\'t).
 

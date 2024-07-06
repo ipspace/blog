@@ -44,10 +44,10 @@ We had a similar problem in traditional MPLS/VPN networks, where we used BGP PIC
 
 VTEP PIC Edge has just two tiny little problems[^TAC]:
 
-* It needs VXLAN-to-VXLAN bridging to work (see [MLAG Clusters without a Physical Peer Link](/2023/05/mlag-without-peer-link.html) for more details), and [not all ASICs support that](https://blog.ipspace.net/2022/06/vxlan-bridging-dci.html).
+* It needs VXLAN-to-VXLAN bridging to work (see [MLAG Clusters without a Physical Peer Link](/2023/05/mlag-without-peer-link.html) for more details), and [not all ASICs support that](/2022/06/vxlan-bridging-dci.html).
 * VXLAN header has a single "label" (Virtual Network Identifier -- VNI). Forwarding a misdirected packet to a peer node's *outgoing interface* is impossible. We can only send the packet *to the peer node* -- an excellent source of potential bridging microloops[^ML].
 
-[^ML]: Micro loops are a fact of life. However, we're dealing with Ethernet packets that *have no TTL* and *could be flooded to multiple ports*. I know of several data centers that were brought down by flooding loops caused by bugs in MLAG software (in some cases, they lost two data centers because they [listened to VMware consultants](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html)). Why should EVPN-based multihoming be any different?
+[^ML]: Micro loops are a fact of life. However, we're dealing with Ethernet packets that *have no TTL* and *could be flooded to multiple ports*. I know of several data centers that were brought down by flooding loops caused by bugs in MLAG software (in some cases, they lost two data centers because they [listened to VMware consultants](/2013/01/long-distance-vmotion-stretched-ha.html)). Why should EVPN-based multihoming be any different?
 
 You might not care about convergence speed after a LAG member failure. Feel free to use whatever solution you want if you're OK with a blackhole that might (worst case) persist for a few seconds[^FW]. However, if your applications depend on millisecond-speed failover, you might be better off using more traditional MLAG solutions.
 

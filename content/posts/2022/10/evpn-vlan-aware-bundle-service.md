@@ -126,4 +126,4 @@ Does that mean that the flow of traffic would be suboptimal, or that (for exampl
 
 OK, so VLAN-aware bundle service has no drawbacks. Does it have any benefits? I can't see them, unless you're worried about the number of MPLS labels, route targets, or configuration lines (BGP configuration of VLAN-aware bundle service on Arista EOS takes fewer lines than configuring individual VLANs in the BGP process). Am I missing something? Please write a comment.
 
-**Recap**: Should you use VLAN-aware Bundle Service? [Paraphrasing James Mickens](https://blog.ipspace.net/2018/10/worth-watching-machine-learning-in.html): "In a word: don't!"
+**Recap**: Should you use VLAN-aware Bundle Service? [Paraphrasing James Mickens](/2018/10/worth-watching-machine-learning-in.html): "In a word: don't!"

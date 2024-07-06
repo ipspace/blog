@@ -18,7 +18,7 @@ Without going into too many details, the core dilemma is: will the ARP request g
 <!--more-->
 ### MLAG with Active-Active FHRP
 
-Let's start with a pair of leaf switches in an MLAG pair. You might configure anycast gateway on them (using, for example, [Arista's Virtual ARP](https://blog.ipspace.net/2013/06/arista-eos-virtual-arp-varp-behind.html)) or use an active/active implementation of first-hop redundancy protocol like HSRP or VRRP.
+Let's start with a pair of leaf switches in an MLAG pair. You might configure anycast gateway on them (using, for example, [Arista's Virtual ARP](/2013/06/arista-eos-virtual-arp-varp-behind.html)) or use an active/active implementation of first-hop redundancy protocol like HSRP or VRRP.
 
 {{<figure src="/2022/03/MLAG-architecture.jpg">}}
 

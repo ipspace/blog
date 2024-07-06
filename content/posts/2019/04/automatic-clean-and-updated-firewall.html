@@ -9,7 +9,7 @@ url: /2019/04/automatic-clean-and-updated-firewall.html
 ---
 
 <p><em>This is a guest blog post by <a href="https://www.linkedin.com/in/adainese/">Andrea Dainese</a>, senior network and security architect, and author of UNetLab (now <a href="http://www.eve-ng.net/">EVE-NG</a>) and  <a href="http://www.routereflector.com/">Route Reflector Labs</a>. These days you’ll find him busy automating Cisco ACI deployments.</em></p>
-<hr/><p>Following the <a href="https://blog.ipspace.net/2019/01/firewall-ruleset-automation-with-ci.html" title="Firewall Ruleset Automation with CI Pipeline">Ivan’s post about Firewall Ruleset Automation</a>, I decided to take a step forward: can we always have up-to-date and clean firewall policies without stale rules?</p>
+<hr/><p>Following the <a href="/2019/01/firewall-ruleset-automation-with-ci.html" title="Firewall Ruleset Automation with CI Pipeline">Ivan’s post about Firewall Ruleset Automation</a>, I decided to take a step forward: can we always have up-to-date and clean firewall policies without stale rules?</p>
 <h4 id="the-problem">The problem</h4><p>We usually configure and manage firewalls using a process like this:<!--more--></p>
 <ul><li>A developer asks for a new rule;</li>
 <li>A security specialist evaluates the request asking questions like: is it secure? Does it comply with the internal standards? Does it comply with public standards like ISO27001, PCI/DSS…?</li>
@@ -21,7 +21,7 @@ url: /2019/04/automatic-clean-and-updated-firewall.html
 <h4 id="the-solution">The solution</h4><p>If we want to have an up-to-date and clean firewall policy we have to tie firewall rules to applications that need them:</p>
 <ul><li>A CMDB must describe all connectivity requirements of all running applications (which host is connecting to which other hosts);</li>
 <li>Each firewall rule describes a relationship between two hosts. Rule aggregation (particularly across multiple applications) is forbidden;</li>
-<li>Each rule must be approved by security engineers (you can also <a href="https://blog.ipspace.net/2013/12/omg-who-will-manage-all-those-virtual.html">try to automate this part of the process</a>);</li>
+<li>Each rule must be approved by security engineers (you can also <a href="/2013/12/omg-who-will-manage-all-those-virtual.html">try to automate this part of the process</a>);</li>
 <li>The firewall ruleset is generated daily and overwrites the previous one;</li>
 <li>To reduce the ruleset sprawl, we should charge each application/organizational unit by the number of rules installed in the firewall or limit the number of rules per application.</li>
 </ul>

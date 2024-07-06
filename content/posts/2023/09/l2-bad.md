@@ -42,4 +42,4 @@ The ideal scheme is generally L3 up to the server where the services are located
 
 ---
 
-Unfortunately it's (still) [impossible to implement such a simple design with network virtualization software from a major enterprise vendor](https://blog.ipspace.net/2020/02/do-we-need-complex-data-center-switches.html).
+Unfortunately it's (still) [impossible to implement such a simple design with network virtualization software from a major enterprise vendor](/2020/02/do-we-need-complex-data-center-switches.html).

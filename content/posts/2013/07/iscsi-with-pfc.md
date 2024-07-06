@@ -17,7 +17,7 @@ Let's rephrase the question using the terminology Fred Baker used in his [Buffer
 
 It's definitely not bad to randomly drop an occasional TCP packet of a mouse session -- if you have thousands of TCP sessions on the same link and drop a single packet of one or two sessions to slow them down, the overall throughput won't be affected too much \... and if you randomly hit different sessions at different times, you're pretty close to effective management of a mice aggregate.
 
-Elephants are different because they are rare and important (see also [Storage Networking is Different](https://blog.ipspace.net/2010/08/storage-networking-is-different.html) and [Does Dedicated iSCSI Infrastructure Make Sense?](https://blog.ipspace.net/2013/03/does-dedicated-iscsi-infrastructure.html)) -- dropping a single packet of an elephant iSCSI session could affect thousands of end-user sessions (because the overall disk throughput would go down), more so if you're using iSCSI to access VMware VMFS volumes (where a single iSCSI session carries the data of all VMs running on the vSphere host). 
+Elephants are different because they are rare and important (see also [Storage Networking is Different](/2010/08/storage-networking-is-different.html) and [Does Dedicated iSCSI Infrastructure Make Sense?](/2013/03/does-dedicated-iscsi-infrastructure.html)) -- dropping a single packet of an elephant iSCSI session could affect thousands of end-user sessions (because the overall disk throughput would go down), more so if you're using iSCSI to access VMware VMFS volumes (where a single iSCSI session carries the data of all VMs running on the vSphere host). 
 
 Classifying iSCSI as lossless traffic class thus seems to make a lot of sense (but see below), and comparing the results of QoS policing (= dropping) versus shaping (= delaying) on a small number of TCP sessions supports the same conclusions.
 
@@ -28,7 +28,7 @@ Classifying iSCSI as lossless traffic class thus seems to make a lot of sense (b
 I never found an authoritative answer to this question, and if you ask a dozen experts you'll get two dozen answers, in particular if you add the _does that mean we need large buffers in data center switches_ question to the mix. In any case, you might find these resources helpful:
 
 * J Metz published fantastic [napkin dialogues](https://blogs.cisco.com/datacenter/the-napkin-dialogues-lossless-iscsi) diving deep into iSCSI details;
-* I discussed the "_should we delay or drop_" question with [Thomas Graf](https://blog.ipspace.net/2017/03/tcp-in-data-center-and-beyond-on.html) and [Juho Snellman](https://blog.ipspace.net/2017/01/to-drop-or-to-delay-thats-question-on.html), and the conclusions were that drops are not bad assuming you have a decent TCP stack implementation;
+* I discussed the "_should we delay or drop_" question with [Thomas Graf](/2017/03/tcp-in-data-center-and-beyond-on.html) and [Juho Snellman](/2017/01/to-drop-or-to-delay-thats-question-on.html), and the conclusions were that drops are not bad assuming you have a decent TCP stack implementation;
 * Google introduced a [totally new TCP congestion control (BBR)](https://blog.acolyer.org/2017/03/31/bbr-congestion-based-congestion-control/) in 2016
 * JR Rivers addressed the question of data center buffering in an excellent (and free) *[Networks, Buffers and Drops](https://www.ipspace.net/Networks,_Buffers,_and_Drops)* webinar.
 

@@ -47,7 +47,7 @@ O  172.16.0.22 255.255.255.255 [110/52] via 0.0.0.0, 00:11:06, Tunnel0
                                [110/52] via 0.0.0.0, 00:11:06, Tunnel1
 ```
 
-When transferring the IP routing table into the CEF table, the router takes MPLS TE bandwidth in consideration, [resulting in unequal traffic split](https://blog.ipspace.net/2006/10/cef-load-sharing-details.html) proportional to the MPLS TE bandwidth:
+When transferring the IP routing table into the CEF table, the router takes MPLS TE bandwidth in consideration, [resulting in unequal traffic split](/2006/10/cef-load-sharing-details.html) proportional to the MPLS TE bandwidth:
 
 ``` {.code}
 a1#show ip cef 172.16.0.21 internal

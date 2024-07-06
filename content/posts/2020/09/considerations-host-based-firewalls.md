@@ -37,7 +37,7 @@ Those truths apply to host-based and central firewalls with only slightly differ
 Based on those truths, I find these guiding principles for firewall ruleset design very helpful:
 
 - Start with little filtering granularity.
-- Design the rule change process with a high degree of automation in mind. Modern approaches to automated firewall management can bring network engineering and application engineering closer together while improving documentation and traceability of rules (examples [here](https://blog.ipspace.net/2019/01/firewall-ruleset-automation-with-ci.html) and [here](https://www.ipspace.net/PubCloud/))
+- Design the rule change process with a high degree of automation in mind. Modern approaches to automated firewall management can bring network engineering and application engineering closer together while improving documentation and traceability of rules (examples [here](/2019/01/firewall-ruleset-automation-with-ci.html) and [here](https://www.ipspace.net/PubCloud/))
 - Automation can drive self-service, expiration, and automated approval processes for rule changes.
 - Automation and increasing granularity require a high degree of overall IT engineering maturity. Often firewalls are thought of as a way to bring structure and order to an environment. That will not work when the existing business processes are not in order and require unknown communication relationships. 
 

@@ -13,7 +13,7 @@ I've [tried to get to the source](http://www.itu.int/md/T09-SG03-090921/sum/en),
 
 OK, let's try to figure out what we can:
 
-**(A) What does ITU have to do with Internet billing?** Nothing at all, but (as I've [pointed out in my previous ITU-related post](https://blog.ipspace.net/2009/11/itu-grabbing-piece-of-ipv6-pie.html)), with their precious crown jewels (ISDN, ATM) losing importance, they're trying to get their fingers into another juicy pie that will justify having more standardization meetings.
+**(A) What does ITU have to do with Internet billing?** Nothing at all, but (as I've [pointed out in my previous ITU-related post](/2009/11/itu-grabbing-piece-of-ipv6-pie.html)), with their precious crown jewels (ISDN, ATM) losing importance, they're trying to get their fingers into another juicy pie that will justify having more standardization meetings.
 
 **(B) What could be the technical background?** None. As [Roland Dobbins was quick to point out](http://seclists.org/nanog/2009/Dec/624), anyone with a basic understanding of how BGP and Netflow work would realize immediately that the Chinese could get whatever traffic/billing data they want with the existing technology. Anyone familiar with the basics of BGP attributes (and extended BGP communities) would also realize that you can easily add new communities to BGP routes without upsetting anyone else. The whole shenanigan (from the Chinese as well as the EU security expert) is a smokescreen for something else.
 

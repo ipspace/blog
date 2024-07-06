@@ -5,7 +5,7 @@ tags:
 - EVPN
 title: Multi-Vendor EVPN Fabrics
 ---
-Daniel left an interesting comment on my _[Studying EVPN to Prepare for a Job Interview](https://blog.ipspace.net/2023/03/evpn-job-interview.html)_ blog post:
+Daniel left an interesting comment on my _[Studying EVPN to Prepare for a Job Interview](/2023/03/evpn-job-interview.html)_ blog post:
 
 > I also never build a VXLAN fabric with two vendors. So, is it possible now to build one large fabric consisting of multiple vendors?
 
@@ -19,8 +19,8 @@ However, just because boxes from different vendors work together doesn't mean we
 
 * **Use a single vendor for a layer** (leaf or spine). You might claim that's cheating as all the hard work is done on the leafs, and the spines serve only as route reflectors (or not even that). It is possible to have mixed-vendor leafs, but it will make your life more interesting.
 * **Use IBGP for EVPN address family**. Most EVPN implementations use BGP AS number as part of the EVPN route target and while it's [possible to make multi-AS EVPN work](https://www.ipspace.net/Data_Center_BGP/EVPN_Route_Target_Considerations) it's a needless hassle.
-* **Use an IGP for the underlay routing**. You're not a hyperscaler[^HS] and [don't need EBGP to scale your underlay routing](https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html). It doesn't matter whether you use OSPF or IS-IS (most vendors have decent implementations of both), but you might want to stick with OSPF to be extra safe[^EI].
-* **Stay away from complex stuff** like EVPN multihoming. It's safer to use [traditional MLAG with anycast VTEP](https://blog.ipspace.net/2022/09/mlag-deep-dive-vxlan-fabric.html).
+* **Use an IGP for the underlay routing**. You're not a hyperscaler[^HS] and [don't need EBGP to scale your underlay routing](/2020/02/the-evpnbgp-saga-continues.html). It doesn't matter whether you use OSPF or IS-IS (most vendors have decent implementations of both), but you might want to stick with OSPF to be extra safe[^EI].
+* **Stay away from complex stuff** like EVPN multihoming. It's safer to use [traditional MLAG with anycast VTEP](/2022/09/mlag-deep-dive-vxlan-fabric.html).
 * **Multicast BUM replication** is not supported by all vendors. Stay with EVPN-driven ingress replication.
 * **Use symmetric integrated routing and bridging**. It's supported by most vendors these days, although you might encounter a few anycast gateway quirks.
 
@@ -30,8 +30,8 @@ Don't even think about:
 
 * **Complex nerd knobs** unless you need eternal job security.
 * **Using stuff that is not explicitly supported**. Don't try to be overly smart. Your coworkers, your users, and vendor TAC engineers will appreciate that.
-* **VXLAN-to-VXLAN bridging**. [Multiple vendors can do it](https://blog.ipspace.net/2022/06/vxlan-bridging-dci.html), but you probably don't want to be the one to figure out how to make them work together[^FTW].
-* **Multivendor MLAG clusters**. MLAG is more than just a few hacks in the EVPN route types; not all of its [mandatory components](https://blog.ipspace.net/2022/06/mlag-deep-dive-overview.html) are standardized.
+* **VXLAN-to-VXLAN bridging**. [Multiple vendors can do it](/2022/06/vxlan-bridging-dci.html), but you probably don't want to be the one to figure out how to make them work together[^FTW].
+* **Multivendor MLAG clusters**. MLAG is more than just a few hacks in the EVPN route types; not all of its [mandatory components](/2022/06/mlag-deep-dive-overview.html) are standardized.
 
 For more details, watch the excellent *[Multivendor Data Center EVPN](https://my.ipspace.net/bin/list?id=EVPN#MULTIVENDOR)* presentation by [Dinesh Dutt](https://www.ipspace.net/Author:Dinesh_Dutt).
 

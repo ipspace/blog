@@ -40,12 +40,12 @@ Eventually, the IP networks got extended to Ethernet segments. The gateways betw
 
 {{<figure src="/2021/05/Addr-Per-Link-Prefix.png" caption="Let's use per-link prefixes to make our lives simpler">}}
 
-IPv6 was another missed opportunity. The difference between node-level addresses and interface-level network addresses was well understood at that time. DEC's experience with building large-scale WAN and LAN networks influenced the OSI CLNP protocol design; CLNP was consequently using node-level addresses. There were even ideas to [use CLNP as the basis for next-generation IP](https://blog.ipspace.net/2010/09/ipv6-experts-strike-again.html). Still, following a grassroots revolt[^5], IAB decided to start from scratch. The "*we always did things this way*" mentality quickly kicked in together with a copious amount of [Second System Effect](https://en.wikipedia.org/wiki/Second-system_effect).
+IPv6 was another missed opportunity. The difference between node-level addresses and interface-level network addresses was well understood at that time. DEC's experience with building large-scale WAN and LAN networks influenced the OSI CLNP protocol design; CLNP was consequently using node-level addresses. There were even ideas to [use CLNP as the basis for next-generation IP](/2010/09/ipv6-experts-strike-again.html). Still, following a grassroots revolt[^5], IAB decided to start from scratch. The "*we always did things this way*" mentality quickly kicked in together with a copious amount of [Second System Effect](https://en.wikipedia.org/wiki/Second-system_effect).
 
 Does that mean that it would be better to use a CLNP-like design with node-level network addresses? Not necessarily:
 
-* [Node-level network addresses are harder to summarize](https://blog.ipspace.net/2015/10/was-clnp-really-broken.html). In IP networks, routers have to know about subnets and directly connected nodes. In CLNP networks, routers have to know about all nodes in an area.
-* Regardless of what some academics claim, [node-level addresses wouldn't solve the multihoming problem](https://blog.ipspace.net/2010/12/clnp-and-multihoming-myths.html). They would get rid of the loopback interface hack and resolve the [local multihoming issue](https://blog.ipspace.net/2019/10/saved-tcp-is-most-expensive-part-of.html) (node connected to the network with two or more interfaces) for good... but it's impossible to solve the challenge of nodes connected to multiple networks (example: WiFi and LTE, or two upstream ISPs) without a [proper session-layer protocol](https://blog.ipspace.net/2009/08/what-went-wrong-tcpip-lacks-session.html).
+* [Node-level network addresses are harder to summarize](/2015/10/was-clnp-really-broken.html). In IP networks, routers have to know about subnets and directly connected nodes. In CLNP networks, routers have to know about all nodes in an area.
+* Regardless of what some academics claim, [node-level addresses wouldn't solve the multihoming problem](/2010/12/clnp-and-multihoming-myths.html). They would get rid of the loopback interface hack and resolve the [local multihoming issue](/2019/10/saved-tcp-is-most-expensive-part-of.html) (node connected to the network with two or more interfaces) for good... but it's impossible to solve the challenge of nodes connected to multiple networks (example: WiFi and LTE, or two upstream ISPs) without a [proper session-layer protocol](/2009/08/what-went-wrong-tcpip-lacks-session.html).
 
 However, it still doesn't make sense to be forced to use an IP subnet for every point-to-point router-to-router[^4] link. Welcome to the mysterious world of unnumbered IP interfaces -- the topic of the next blog post in this series.
 
@@ -53,6 +53,6 @@ However, it still doesn't make sense to be forced to use an IP subnet for every 
 
 Why don't you watch the [Network Addressing](https://my.ipspace.net/bin/list?id=Net101#ADDR) part of [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work) webinar to get even more details?
 
-[^4]: People believing in [vague marketese](https://blog.ipspace.net/2011/02/how-did-we-ever-get-into-this-switching.html) are free to replace that with a switch-to-switch link.
+[^4]: People believing in [vague marketese](/2011/02/how-did-we-ever-get-into-this-switching.html) are free to replace that with a switch-to-switch link.
 
 [^5]: You might find a few hints about that event in the hilarious [Elements of Networking Style](https://www.amazon.com/Elements-Networking-Style-Animadversions-Intercomputer/dp/0595088791) book.

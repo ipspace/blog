@@ -1,5 +1,5 @@
 ---
-comment: 'My [Open Networking Foundation rant](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html)
+comment: 'My [Open Networking Foundation rant](/2011/03/open-networking-foundation-fabric.html)
   got several thoughtful responses focusing on “*what is OpenFlow and what can we
   do with it?*” Let’s start with the easy part first: What exactly is OpenFlow?
 
@@ -23,7 +23,7 @@ In distributed architectures, the control plane has to use a communications prot
 
 The OpenFlow zealots would like you to believe that we’re just one small step away from implementing [Skynet](http://en.wikipedia.org/wiki/Skynet_(Terminator)); the reality is a bit more sobering. You need a protocol between control and data plane elements in all distributed architectures, starting with modular high-end routers and switches. Almost every modular high-end switch that you can buy today has one or more supervisor modules and numerous linecards performing distributed switching (preferably over a crossbar matrix, not over a shared bus). In such a switch, OpenFlow-like protocol runs between supervisor module(s) and the linecards.
 
-Moving into more distributed space, the [Borg fabric architectures](https://blog.ipspace.net/2011/03/data-center-fabric-architectures.html) use an OpenFlow-like protocol between the central control plane and forwarding instances. You might have noticed that all vendors link at most two high-end switches into Borg architecture at the moment; this decision has nothing to do with vendor lock-in and lack of open protocols but rather reflects the practical challenges of implementing a high-speed distributed architecture (alternatively, you might decide to believe the whole networking industry is a confusopoly of morons who are unable to implement what every post-graduate student can simulate with open source tools).
+Moving into more distributed space, the [Borg fabric architectures](/2011/03/data-center-fabric-architectures.html) use an OpenFlow-like protocol between the central control plane and forwarding instances. You might have noticed that all vendors link at most two high-end switches into Borg architecture at the moment; this decision has nothing to do with vendor lock-in and lack of open protocols but rather reflects the practical challenges of implementing a high-speed distributed architecture (alternatively, you might decide to believe the whole networking industry is a confusopoly of morons who are unable to implement what every post-graduate student can simulate with open source tools).
 
 Moving deeper into the technical details, the [*Technical Specifications*](https://opennetworking.org/software-defined-standards/specifications/) page on the [Open Networking Foundation web site](https://opennetworking.org/) contains a links to numerous versions of OpenFlow Switch Specification, which defines:
 

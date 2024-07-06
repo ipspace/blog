@@ -11,7 +11,7 @@ Cristiano sent me an interesting question:
 
 > I saw that to configure BGP as the routing protocol running over DMVPN I have to configure BGP neighbors on the hub site router. Do I really have to configure all the neighbors on the hub site? How many neighbors could I configure? How can I scale that?
 
-According to Cisco Live presentations, [BGP-over-DMVPN](https://blog.ipspace.net/2011/01/using-bgp-in-phase-1-dmvpn-network.html) scales to several thousand spoke sites (per hub router), so you shouldn't be too worried about the protocol scalability. Configuring all those neighbors is a different issue.
+According to Cisco Live presentations, [BGP-over-DMVPN](/2011/01/using-bgp-in-phase-1-dmvpn-network.html) scales to several thousand spoke sites (per hub router), so you shouldn't be too worried about the protocol scalability. Configuring all those neighbors is a different issue.
 <!--more-->
 Fortunately, anonymous BGP neighbors (which were banned from Cisco IOS years ago) reappeared in a different disguise ([dynamic BGP neighbors](http://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_bgp/configuration/15-mt/irg-15-mt-book/irg-dynamic-neighbor.html)) in IOS release 15.1T -- you can configure an access list which defines whether the remote IP address is a valid BGP neighbor, and accept all incoming TCP requests on port 179 matched by the ACL. The "only" drawback: dynamic neighbors matched by a single **bgp listen peer-group** command must share the same neighbor parameters, including an AS number.
 
@@ -19,7 +19,7 @@ Fortunately, anonymous BGP neighbors (which were banned from Cisco IOS years ago
 
 Faced with the requirement to have the same AS number on all remote sites you could use one of these two designs:
 
-**Running IBGP across DMVPN**. While you *could* make it work (even easier now that Cisco [tweaked its BGP route reflector behavior](/2014/04/changes-in-ibgp-next-hop-processing.html)), I wouldn't recommend doing that unless you're a BGP guru. [IBGP was not designed to be used without IGP](https://blog.ipspace.net/2011/08/ibgp-or-ebgp-in-enterprise-network.html), and there are simply too many things that can bite you if you're trying to run IBGP without an underlying IGP. You probably don't want to run an IGP across a large DMVPN network or you wouldn't be reading this blog post.
+**Running IBGP across DMVPN**. While you *could* make it work (even easier now that Cisco [tweaked its BGP route reflector behavior](/2014/04/changes-in-ibgp-next-hop-processing.html)), I wouldn't recommend doing that unless you're a BGP guru. [IBGP was not designed to be used without IGP](/2011/08/ibgp-or-ebgp-in-enterprise-network.html), and there are simply too many things that can bite you if you're trying to run IBGP without an underlying IGP. You probably don't want to run an IGP across a large DMVPN network or you wouldn't be reading this blog post.
 
 **Running EBGP across DMVPN** with all spoke sites being in the same autonomous system. This design works great for Phase 1 or Phase 3 DMVPN: spoke sites will ignore routes advertised by other spoke sites (due to BGP loop prevention logic), and a default route advertised by the hub router will take care of the inter-site traffic flow.
 

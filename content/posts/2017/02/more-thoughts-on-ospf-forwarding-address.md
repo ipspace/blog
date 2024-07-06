@@ -6,7 +6,7 @@ tags:
 title: More Thoughts on OSPF Forwarding Address
 url: /2017/02/more-thoughts-on-ospf-forwarding-address.html
 ---
-[Angelos Vassiliou](https://leanpub.com/unofficialcciev51sg) sent me an interesting lengthy email after I published my OSPF Forwarding Address series ([part 1](https://blog.ipspace.net/2017/01/ospf-forwarding-address-yet-another.html), [part 2](http://blog.ipspace.net/2017/01/ospf-forwarding-address-yak-take-2.html), [part 3](http://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html), [part 4](http://blog.ipspace.net/2017/02/the-unintended-consequences-of-nssa.html)). I asked him whether it's OK to publish his email together with my responses as a blog post and he gracefully agreed, so here it is.
+[Angelos Vassiliou](https://leanpub.com/unofficialcciev51sg) sent me an interesting lengthy email after I published my OSPF Forwarding Address series ([part 1](/2017/01/ospf-forwarding-address-yet-another.html), [part 2](/2017/01/ospf-forwarding-address-yak-take-2.html), [part 3](/2017/02/why-ospf-needs-forwarding-address-with.html), [part 4](/2017/02/the-unintended-consequences-of-nssa.html)). I asked him whether it's OK to publish his email together with my responses as a blog post and he gracefully agreed, so here it is.
 <!--more-->
 He started with:
 

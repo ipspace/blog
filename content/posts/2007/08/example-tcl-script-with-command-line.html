@@ -7,7 +7,7 @@ title: 'Example: Tcl script with command-line parameters'
 url: /2007/08/example-tcl-script-with-command-line.html
 ---
 
-<p>In a comment to the “<a href="https://blog.ipspace.net/2007/04/execute-multiple-commands-at-once.html"><em>Execute multiple commands at once</em></a>” post, Michal has asked for a complete Tcl-shell-with-parameter example. Here's a short script that shuts down the interface and displays its status:</p>
+<p>In a comment to the “<a href="/2007/04/execute-multiple-commands-at-once.html"><em>Execute multiple commands at once</em></a>” post, Michal has asked for a complete Tcl-shell-with-parameter example. Here's a short script that shuts down the interface and displays its status:</p>
 <ul><li>Variable <em>ifname</em> is set to the value of the first command-line parameter (in many other programming languages, this would be written as  <em>argv[0]</em>);</li>
 <li>If the <em>ifname </em>is empty, the script aborts and prints the usage guidelines (again, in a more human-oriented programming language, this would be <em>if (ifname == “”) ...</em>);</li>
 <li>The <strong>show ip interface <em>ifname</em> </strong>command is executed. If it fails, the interface name is not correct and the script aborts.</li>
@@ -17,8 +17,8 @@ url: /2007/08/example-tcl-script-with-command-line.html
 <pre class="code">#<br/># ifname is set to first CLI parameter (interface name)<br/>#<br/>set ifname [lindex $argv 0]<br/>if {[string equal $ifname ""]} { puts "Usage: shutdown ifname"; return; }<br/>if { [ catch { exec "show ip interface $ifname" } errmsg ] } {<br/>  puts "Invalid interface $ifname, show ip interface failed"; return}<br/><br/>ios_config "interface $ifname" "shutdown"<br/>puts [ exec "show ip interface brief ¦ include $ifname" ]</pre><div class="note"><p>If you store this Tcl script into your flash as <em>shutdown.tcl</em> and configure <strong>alias exec shutdown tclsh flash:shutdown.tcl</strong>, you can execute the command <strong>shutdown Serial0</strong> to shut down the serial interface.</p>
 <p>Notes:</p>
 <ul><li>The last <strong>show</strong> command will display the interface status only if the specified interface name exactly matches the actual IOS interface name (whereas the rest of the script accepts shortcut names). The more generic matching algorithm is left as an exercise for the reader</li>
-<li>For more in-depth information on Tclsh implementation on Cisco IOS, read the <a href="https://blog.ipspace.net/2007/05/ios-tclsh-resources.html">IOS Tclsh resources</a>.</li>
-<li>This article is part of <a href="https://blog.ipspace.net/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="https://blog.ipspace.net/tag/youve-asked-for-it.html">series</a>.</li>
+<li>For more in-depth information on Tclsh implementation on Cisco IOS, read the <a href="/2007/05/ios-tclsh-resources.html">IOS Tclsh resources</a>.</li>
+<li>This article is part of <a href="/2007/01/youve-asked-for-it-series.html">You've asked for it</a> <a href="/tag/youve-asked-for-it.html">series</a>.</li>
 </ul>
 </div>
 

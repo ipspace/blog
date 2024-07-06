@@ -7,7 +7,7 @@ tags:
 title: 'OSPF Forwarding Address YAK: Take 2'
 url: /2017/01/ospf-forwarding-address-yak-take-2.html
 ---
-In my initial [OSPF Forwarding Address blog post](https://blog.ipspace.net/2017/01/ospf-forwarding-address-yet-another.html), I described a common Forwarding Address (FA) use case (at least as preached on the Internet): two ASBRs connected to a single external subnet with route redistributing configured only on one of them.
+In my initial [OSPF Forwarding Address blog post](/2017/01/ospf-forwarding-address-yet-another.html), I described a common Forwarding Address (FA) use case (at least as preached on the Internet): two ASBRs connected to a single external subnet with route redistributing configured only on one of them.
 
 That design is clearly broken from the reliability perspective, but are there other designs where OSPF FA might make sense?
 <!--more-->
@@ -75,7 +75,7 @@ Routing entry for 192.168.0.2/32
       Route tag 65001
 ```
 
-Time for [another MacGyver stunt](https://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html):
+Time for [another MacGyver stunt](/2013/08/temper-your-macgyver-streak.html):
 
 -   Enable OSPF on the (external) Metro Ethernet LAN that connects our OSPF network with a third-party router (yes, it's a Really Bad Idea from the security perspective);
 -   Set OSPF costs (or bandwidth) correctly;

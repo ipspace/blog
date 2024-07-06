@@ -20,7 +20,7 @@ tags:
 title: Management, Control, and Data Planes in Network Devices and Systems
 url: /2013/08/management-control-and-data-planes-in.html
 ---
-Every single network device (or a distributed system like [QFabric](https://blog.ipspace.net/2011/09/qfabric-part-1-hardware-architecture.html)) has to perform at least three distinct activities:
+Every single network device (or a distributed system like [QFabric](/2011/09/qfabric-part-1-hardware-architecture.html)) has to perform at least three distinct activities:
 
 -   Process the transit traffic (that’s why we buy them) in the **data plane**;
 -   Figure out what’s going on around it with the **control plane** protocols;
@@ -28,9 +28,9 @@ Every single network device (or a distributed system like [QFabric](https://blog
 
 Routers are used as a typical example in every text describing the three planes of operation, so let’s stick to this time-honored tradition:
 <!--more-->
--   Interfaces, IP subnets and routing protocols are configured through **management plane protocols**, ranging from CLI to [NETCONF](https://blog.ipspace.net/2012/06/netconf-expect-on-steroids.html) and the latest buzzword – northbound [RESTful API](http://blog.ipspace.net/2012/08/why-is-restful-api-better-than-snmp.html);
+-   Interfaces, IP subnets and routing protocols are configured through **management plane protocols**, ranging from CLI to [NETCONF](/2012/06/netconf-expect-on-steroids.html) and the latest buzzword – northbound [RESTful API](/2012/08/why-is-restful-api-better-than-snmp.html);
 -   Router runs **control plane** routing protocols (OSPF, EIGRP, BGP …) to discover adjacent devices and the overall network topology (or reachability information in case of distance/path vector protocols);
--   Router inserts the results of the control-plane protocols into [Routing Information Base (RIB) and Forwarding Information Base (FIB)](https://blog.ipspace.net/2010/09/ribs-and-fibs.html). **Data plane** software or ASICs uses FIB structures to forward the transit traffic.
+-   Router inserts the results of the control-plane protocols into [Routing Information Base (RIB) and Forwarding Information Base (FIB)](/2010/09/ribs-and-fibs.html). **Data plane** software or ASICs uses FIB structures to forward the transit traffic.
 -   **Management plane** protocols like SNMP can be used to monitor the device operation, its performance, interface counters …
 
 {{<figure src="DevicePlanes.png" caption="Management, Control, and Data Planes in a Router">}}
@@ -48,14 +48,14 @@ We usually have routing protocols in mind when talking about **Control plane pro
 Data plane should be focused on forwarding packets but is commonly burdened by other activities:
 
 -   NAT session creation and NAT table maintenance;
--   Neighbor address gleaning (example: [dynamic MAC address learning in bridging](https://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html), [IPv6 SAVI](http://blog.ipspace.net/2013/03/ipv6-source-address-validation.html));
+-   Neighbor address gleaning (example: [dynamic MAC address learning in bridging](/2010/07/bridging-and-routing-is-there.html), [IPv6 SAVI](/2013/03/ipv6-source-address-validation.html));
 -   Netflow Accounting (sFlow is cheap compared to Netflow);
 -   ACL logging;
 -   Error signaling (ICMP).
 
-Data plane forwarding is hopefully performed in dedicated hardware or in high-speed code (within the interrupt handler on low-end Cisco IOS routers), while the overhead activities usually happen on the device CPU, often in userspace processes – -[the switch from high-speed forwarding to user-mode processing is commonly called punting](https://blog.ipspace.net/2013/02/process-fast-and-cef-switching-and.html).
+Data plane forwarding is hopefully performed in dedicated hardware or in high-speed code (within the interrupt handler on low-end Cisco IOS routers), while the overhead activities usually happen on the device CPU, often in userspace processes – -[the switch from high-speed forwarding to user-mode processing is commonly called punting](/2013/02/process-fast-and-cef-switching-and.html).
 
-{{<note warn>}}In [reactive](http://networkstatic.net/openflow-proactive-vs-reactive-flows/) OpenFlow architectures [a punting decision sends a packet all the way to the OpenFlow controller](https://blog.ipspace.net/2013/03/controller-based-packet-forwarding-in.html).{{</note>}}
+{{<note warn>}}In [reactive](http://networkstatic.net/openflow-proactive-vs-reactive-flows/) OpenFlow architectures [a punting decision sends a packet all the way to the OpenFlow controller](/2013/03/controller-based-packet-forwarding-in.html).{{</note>}}
 
 ### Typical Architectures
 
@@ -74,7 +74,7 @@ Based on the capabilities of the switching hardware, a device might run some sim
 
 In most router implementations, the data plane receives and processes all inbound packets and selective forwards packets destined for the router (for example, SSH traffic or routing protocol updates) or packets that need special processing (for example, IP datagrams with IP options or IP datagrams that have exceeded their TTL) to the control plane.
 
-{{<note info>}}Management ports on some devices, including data center switches, are connected directly to the control-plane CPU and thus bypass the switching ASIC. For more details read *[Building Secure Layer-2 Fabrics](https://blog.ipspace.net/2020/10/building-secure-layer-2-fabric.html)*){{</note>}}
+{{<note info>}}Management ports on some devices, including data center switches, are connected directly to the control-plane CPU and thus bypass the switching ASIC. For more details read *[Building Secure Layer-2 Fabrics](/2020/10/building-secure-layer-2-fabric.html)*){{</note>}}
 
 The control plane might pass outbound packets to the data plane, or use its own forwarding mechanisms to determine the outgoing interface and the next-hop router (for example, when using the local policy routing).
 

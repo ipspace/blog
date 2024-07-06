@@ -8,7 +8,7 @@ tags:
 title: Rearchitecting L3-Only Networks
 url: /2015/04/rearchitecting-l3-only-networks.html
 ---
-One of the responses I got on my "[*What is Layer-2*](https://blog.ipspace.net/2015/04/what-is-layer-2-and-why-do-we-need-it.html)" post was
+One of the responses I got on my "[*What is Layer-2*](/2015/04/what-is-layer-2-and-why-do-we-need-it.html)" post was
 
 > Ivan, are you saying to use L3 switches everywhere with /31 on the switch ports and the servers/workstation?
 
@@ -18,9 +18,9 @@ While that solution would work (and I know a few people who are using it with re
 
 In case you stumbled upon this blog post by accident, I'd strongly recommend you read a few other blog posts first to get the context:
 
--   [What is layer-2 and why do we need it](https://blog.ipspace.net/2015/04/what-is-layer-2-and-why-do-we-need-it.html)?
--   [Why is IPv6 layer-2 security so complex](https://blog.ipspace.net/2014/06/why-is-ipv6-layer-2-security-so-complex.html)?
--   [Compromised security zone = game over](https://blog.ipspace.net/2013/04/compromised-security-zone-game-over-or.html)
+-   [What is layer-2 and why do we need it](/2015/04/what-is-layer-2-and-why-do-we-need-it.html)?
+-   [Why is IPv6 layer-2 security so complex](/2014/06/why-is-ipv6-layer-2-security-so-complex.html)?
+-   [Compromised security zone = game over](/2013/04/compromised-security-zone-game-over-or.html)
 
 Ready? Let's go.
 
@@ -28,7 +28,7 @@ Ready? Let's go.
 
 Obviously we only experience problems described in the above blog posts if we have hosts that should not trust each other (individual users, servers from different applications) in the same security domain (= VLAN).
 
-If you're operating a mobile or PPPoX network, or if your data center uses proper segmentation with [each application being an independent tenant](https://blog.ipspace.net/2013/11/make-every-application-independent.html), you should stop reading. If you're not so lucky, let's move forward.
+If you're operating a mobile or PPPoX network, or if your data center uses proper segmentation with [each application being an independent tenant](/2013/11/make-every-application-independent.html), you should stop reading. If you're not so lucky, let's move forward.
 
 {{<note info>}}In PPPoX and mobile networks every user (CPE device or phone) appears on a virtual dial-up interface and gets a /64 IPv6 prefix or an IPv4 host route. In any case, the point-to-point layer-2 link terminates on BRAS/GGSN.{{</note>}}
 
@@ -46,10 +46,10 @@ The situation is ridiculous in extreme in environments with anycast layer-3 gate
 
 For further information on layer-3 forwarding in data centers and anycast layer-3 gateways, read these blog posts:
 
--   [Does optimal L3 forwarding matter in data centers](https://blog.ipspace.net/2012/05/does-optimal-l3-forwarding-matter-in.html)?
--   [VRRP, anycast, fabrics and optimal forwarding](https://blog.ipspace.net/2013/06/vrrp-anycasts-fabrics-and-optimal.html)
--   [Optimal L3 forwarding with VARP and active/active VRRP](https://blog.ipspace.net/2013/05/optimal-l3-forwarding-with-varp-and.html)
--   [Arista EOS Virtual ARP (VARP) behind the scenes](https://blog.ipspace.net/2013/06/arista-eos-virtual-arp-varp-behind.html)
+-   [Does optimal L3 forwarding matter in data centers](/2012/05/does-optimal-l3-forwarding-matter-in.html)?
+-   [VRRP, anycast, fabrics and optimal forwarding](/2013/06/vrrp-anycasts-fabrics-and-optimal.html)
+-   [Optimal L3 forwarding with VARP and active/active VRRP](/2013/05/optimal-l3-forwarding-with-varp-and.html)
+-   [Arista EOS Virtual ARP (VARP) behind the scenes](/2013/06/arista-eos-virtual-arp-varp-behind.html)
 
 ### What If...
 
@@ -61,13 +61,13 @@ Now imagine a slight change in IP forwarding behavior:
 
 {{<figure src="/2015/04/s550-Screenshot+2015-04-16+13.55.54.png" caption="Intra-subnet layer-3 forwarding">}}
 
-Does this sound like [Mobile ARP](https://blog.ipspace.net/2011/02/local-area-mobility-lam-true-story.html) from 20 years ago? Sure it does -- see also RFC 1925 section 2.11.
+Does this sound like [Mobile ARP](/2011/02/local-area-mobility-lam-true-story.html) from 20 years ago? Sure it does -- see also RFC 1925 section 2.11.
 
-For more details, watch the [recording of the IPv6 Microsegmentation](https://blog.ipspace.net/2015/04/video-ipv6-microsegmentation.html) presentation I had at Troopers 15, or the [IPv6 Microsegmentation webinar](http://www.ipspace.net/IPv6_Microsegmentation) if you need sample Cisco IOS configurations.
+For more details, watch the [recording of the IPv6 Microsegmentation](/2015/04/video-ipv6-microsegmentation.html) presentation I had at Troopers 15, or the [IPv6 Microsegmentation webinar](http://www.ipspace.net/IPv6_Microsegmentation) if you need sample Cisco IOS configurations.
 
 ### Will It Work?
 
-It already does. [Microsoft Hyper-V Network Virtualization](https://blog.ipspace.net/2013/12/hyper-v-network-virtualization-packet.html), Juniper Contrail and Nuage VSP use this forwarding behavior in virtual networks. Cisco's Dynamic Fabric Automation (DFA) used the same forwarding behavior in physical data center fabric, and Cisco ACI might be doing something similar. That's also how some advanced EVPN deployments work. Not surprisingly, most of these solutions use BGP as the routing protocol.
+It already does. [Microsoft Hyper-V Network Virtualization](/2013/12/hyper-v-network-virtualization-packet.html), Juniper Contrail and Nuage VSP use this forwarding behavior in virtual networks. Cisco's Dynamic Fabric Automation (DFA) used the same forwarding behavior in physical data center fabric, and Cisco ACI might be doing something similar. That's also how some advanced EVPN deployments work. Not surprisingly, most of these solutions use BGP as the routing protocol.
 
 Finally, if you're using Cumulus Linux, try out the [Redistribute Neighbor](https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-53/Layer-3/Routing/Redistribute-Neighbor/), which redistributes ARP cache into a routing protocol.
 

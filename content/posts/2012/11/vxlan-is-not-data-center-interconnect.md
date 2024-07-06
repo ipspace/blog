@@ -8,11 +8,11 @@ tags:
 title: VXLAN Is Not a Data Center Interconnect Technology
 url: /2012/11/vxlan-is-not-data-center-interconnect.html
 ---
-In [a comment](https://blog.ipspace.net/2012/11/firewalls-in-small-private-cloud.html?showComment=1352295794357#c8873447579367124924) to the [*Firewalls in a Small Private Cloud*](https://blog.ipspace.net/2012/11/firewalls-in-small-private-cloud.html) blog post I wrote "VXLAN is **NOT** a viable inter-DC solution" and [Jason wasn't exactly happy with my blanket response](https://blog.ipspace.net/2012/11/firewalls-in-small-private-cloud.html?showComment=1352296230326#c8490616425466768709). I hope Jason got a detailed answer in the [VXLAN Technical Deep Dive](http://www.ipspace.net/VXLAN_Technical_Deep_Dive) webinar, here's a somewhat shorter explanation.
+In [a comment](/2012/11/firewalls-in-small-private-cloud.html?showComment=1352295794357#c8873447579367124924) to the [*Firewalls in a Small Private Cloud*](/2012/11/firewalls-in-small-private-cloud.html) blog post I wrote "VXLAN is **NOT** a viable inter-DC solution" and [Jason wasn't exactly happy with my blanket response](/2012/11/firewalls-in-small-private-cloud.html?showComment=1352296230326#c8490616425466768709). I hope Jason got a detailed answer in the [VXLAN Technical Deep Dive](http://www.ipspace.net/VXLAN_Technical_Deep_Dive) webinar, here's a somewhat shorter explanation.
 <!--more-->
 **VXLAN is a layer-2 technology**. If you plan to use VXLAN to implement a data center interconnect, you'll be stretching a single L2 segment across two data centers.
 
-You probably [know my opinion about the usability of L2 DCI](https://blog.ipspace.net/2011/11/busting-layer-2-data-center.html), but even [ignoring the obvious problems](https://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html), current VXLAN implementations don't have the features one would want to see in a L2 DCI solution.
+You probably [know my opinion about the usability of L2 DCI](/2011/11/busting-layer-2-data-center.html), but even [ignoring the obvious problems](/2011/06/stretched-clusters-almost-as-good-as.html), current VXLAN implementations don't have the features one would want to see in a L2 DCI solution.
 
 ### What Should a L2 DCI Solution Have?
 
@@ -22,7 +22,7 @@ Assuming someone forced you to implement a L2 DCI, the technology you plan to us
 - **Broadcast reduction at data center edge**. Devices linking DC fabric to WAN core should implement features like ARP proxy.
 - **Controlled unicast flooding**. It should be possible to disable flooding of unknown unicasts at DC-WAN boundary.
 
-It's also nice to have the following features to reduce the [traffic trombones](https://blog.ipspace.net/2011/02/traffic-trombone-what-it-is-and-how-you.html) going [across the DCI link](https://blog.ipspace.net/2010/09/long-distance-vmotion-and-traffic.html):
+It's also nice to have the following features to reduce the [traffic trombones](/2011/02/traffic-trombone-what-it-is-and-how-you.html) going [across the DCI link](/2010/09/long-distance-vmotion-and-traffic.html):
 
 - **First hop router localization**. Inter-subnet traffic should not traverse the DCI link to reach the first-hop router.
 - **Ingress traffic optimization.** Traffic sent to a server in one data center should not arrive to the other data center first.

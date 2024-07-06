@@ -15,4 +15,4 @@ tags:
 title: 'Using BGP for Firewall High Availability: Design and Software Upgrades'
 url: /2019/11/using-bgp-for-firewall-high.html
 ---
-Remember the "[BGP as High Availability Protocol](https://blog.ipspace.net/2019/01/bgp-as-high-availability-protocol.html)" article [Nicola Modena](https://www.ipspace.net/Expert:Nicola_Modena) wrote a few months ago? He finally found time to extend it with [BGP design considerations](/kb/BGPHighAvailability/10-BGP-Design.html) and a description of a [seamless-and-safe firewall software upgrade procedure](/kb/BGPHighAvailability/20-Firewall-Upgrade.html).
+Remember the "[BGP as High Availability Protocol](/2019/01/bgp-as-high-availability-protocol.html)" article [Nicola Modena](https://www.ipspace.net/Expert:Nicola_Modena) wrote a few months ago? He finally found time to extend it with [BGP design considerations](/kb/BGPHighAvailability/10-BGP-Design.html) and a description of a [seamless-and-safe firewall software upgrade procedure](/kb/BGPHighAvailability/20-Firewall-Upgrade.html).

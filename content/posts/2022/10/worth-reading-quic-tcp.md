@@ -7,5 +7,5 @@ Bruce Davie makes an excellent point in his [QUIC Is Not a TCP Replacement](http
 
 What Bruce forgot to mention is that we had a production-grade RPC transport protocol for years -- [SCTP (Stream Control Transmission Protocol)](https://en.wikipedia.org/wiki/Stream_Control_Transmission_Protocol) -- but it had two shortcomings:
 
-* [It wasn't invented by the right people](https://blog.ipspace.net/2009/08/what-went-wrong-sctp.html);
+* [It wasn't invented by the right people](/2009/08/what-went-wrong-sctp.html);
 * It used a different IP protocol number and thus upset every ossified middlebox in the Internet. QUIC hides on top of UDP (because adding extra headers makes at least as much sense as [junk DNA](https://en.wikipedia.org/wiki/Non-coding_DNA#Junk_DNA)).

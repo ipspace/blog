@@ -12,7 +12,7 @@ The SDN industry probably considers me an old and grumpy naysayer (and I'm posit
 <!--more-->
 [Internet Exchange Points (IXP)](http://packetpushers.net/show-24-internet-exchanges-peering/) seemed a perfect fit -- they are high-speed mission-critical environments usually implemented as geographically stretched layer-2 networks, and facing all sorts of security and scaling problems. [Deploying OpenFlow on IXP edge switches](http://demo.ipspace.net/get/Could%20IXPs%20Use%20OpenFlow%20To%20Scale.pdf) would results in standardized security posture that wouldn't rely on idiosyncrasies of particular vendor's implementation, and we could use OpenFlow to implement ARP sponge (or turn ARPs into unicasts sent to ARP server).
 
-I presented these ideas at [MENOG 12](https://blog.ipspace.net/2013/03/the-best-of-menog-12.html) in March 2013 and got a few somewhat interested responses ... and then I asked a really good friend with significant operational experience in IXP environments for feedback. Not surprisingly, the reply was a cold shower:
+I presented these ideas at [MENOG 12](/2013/03/the-best-of-menog-12.html) in March 2013 and got a few somewhat interested responses ... and then I asked a really good friend with significant operational experience in IXP environments for feedback. Not surprisingly, the reply was a cold shower:
 
 > I am not quite sure how this improves current situation. Except for the ARP sponge everything else seem to be implemented by vendors in one form or another. For the ARP sponge, AMS-IX uses great software developed in house that they've open-sourced.
 

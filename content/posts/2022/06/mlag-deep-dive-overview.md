@@ -11,11 +11,11 @@ title: 'MLAG Deep Dive: System Overview'
 ---
 [Multi-Chassis Link Aggregation](/series/mlag.html) (MLAG) -- the ability to terminate a Port Channel/Link Aggregation Group on multiple switches -- is one of the more convoluted[^EVPN] bridging technologies[^BR]. After all, it's not trivial to persuade two boxes to behave like one and handle the myriad corner cases correctly.
 
-In this series of deep dive blog posts, we'll explore the intricacies of MLAG, starting with the data plane considerations and the control plane requirements resulting from the data plane quirks. If you wonder why we need all that complexity, remember that Ethernet networks still try to emulate the [ancient thick yellow](https://blog.ipspace.net/2015/02/lets-get-rid-of-thick-yellow-cable.html) cable that could _lose_ some packets but could never _reorder_ packets or deliver _duplicate_ packets. 
+In this series of deep dive blog posts, we'll explore the intricacies of MLAG, starting with the data plane considerations and the control plane requirements resulting from the data plane quirks. If you wonder why we need all that complexity, remember that Ethernet networks still try to emulate the [ancient thick yellow](/2015/02/lets-get-rid-of-thick-yellow-cable.html) cable that could _lose_ some packets but could never _reorder_ packets or deliver _duplicate_ packets. 
 <!--more-->
 [^EVPN]: At least it was until we got EVPN ;)
 
-[^BR]: Packet forwarding process [lovingly called _switching_](https://blog.ipspace.net/2011/02/how-did-we-ever-get-into-this-switching.html) by vendor marketers
+[^BR]: Packet forwarding process [lovingly called _switching_](/2011/02/how-did-we-ever-get-into-this-switching.html) by vendor marketers
 
 To make matters worse, some applications running directly on top of Ethernet[^NNL] would abruptly drop their sessions when faced with a single reordered or duplicated packet[^SNA], making IEEE extremely cautious. In recent years, they relaxed a bit -- the 802.1AX-2020 standard claims to provide "_low risk of duplication or misordering_" -- but it's still bad form to mess things up. Who knows, even a UDP-based application without application-level sequence numbers [^NETREL] could get confused.
 
@@ -23,7 +23,7 @@ To make matters worse, some applications running directly on top of Ethernet[^NN
 
 [^SNA]: IBM SNA running on LAN media was notoriously prickly
 
-[^NETREL]: Because we all know that [the network is reliable](https://blog.ipspace.net/2020/02/video-network-is-not-reliable.html) and never messes things up, right?
+[^NETREL]: Because we all know that [the network is reliable](/2020/02/video-network-is-not-reliable.html) and never messes things up, right?
 
 Throughout the series, we'll use a simple topology with two switches in an MLAG cluster and three types of nodes attached to them:
 
@@ -58,7 +58,7 @@ Properly implemented remote nodes would renegotiate LACP session with the standa
 
 [^ER]: Anything else could result in weird forwarding behavior; the proof is left as an exercise for the reader. Keep in mind that the end-hosts with a single uplink (LAG is a single uplink) are often not running STP.
 
-{{<note info>}}[Cumulus Linux documentation](https://blog.ipspace.net/2022/06/mlag-deep-dive-overview.html#1284) has an extensive discussion of potential failure scenarios and resulting behavior of secondary MLAG switch{{</note>}}
+{{<note info>}}[Cumulus Linux documentation](/2022/06/mlag-deep-dive-overview.html#1284) has an extensive discussion of potential failure scenarios and resulting behavior of secondary MLAG switch{{</note>}}
 
 Finally, how do you decide which part of a two-node cluster is in the minority? Welcome to the _[Never Take Two Chronometers to the Sea](/2017/01/never-take-two-chronometers-to-sea.html)_ land. MLAG implementations go to [great lengths](/2010/10/multi-chassis-link-aggregation-stacking.html#read-the-smallprint) trying to figure out whether the other cluster member failed (in which case the LAG members should remain active) or whether the other node is still active, but not reachable over the failed peer link.
 

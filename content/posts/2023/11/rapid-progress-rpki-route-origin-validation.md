@@ -4,7 +4,7 @@ date: 2023-11-07 06:27:00
 lastmod: 2023-11-15 19:38:00
 tags: [ BGP, security ]
 ---
-In 2022, I was invited to speak about Internet routing security at the [DEEP conference](https://deep-conference.com/) in Zadar, Croatia. One of the main messages of the presentation was how slow the progress had been even though we had had all the tools available for at least a decade ([RFC 7454](https://datatracker.ietf.org/doc/html/rfc7454) was [finally published in 2015](https://blog.ipspace.net/2015/02/rfc-7454-bgp-operations-and-security.html), and we [started writing it in early 2012](https://blog.ipspace.net/2012/03/my-first-internet-draft-has-just-been.html)).
+In 2022, I was invited to speak about Internet routing security at the [DEEP conference](https://deep-conference.com/) in Zadar, Croatia. One of the main messages of the presentation was how slow the progress had been even though we had had all the tools available for at least a decade ([RFC 7454](https://datatracker.ietf.org/doc/html/rfc7454) was [finally published in 2015](/2015/02/rfc-7454-bgp-operations-and-security.html), and we [started writing it in early 2012](/2012/03/my-first-internet-draft-has-just-been.html)).
 
 At about that same time, a [small group of network operators started cooperating on improving the security and resilience of global routing](https://www.manrs.org/about/history/), eventually resulting in the [MANRS initiative](https://www.manrs.org/) -- a great place to get an overview of [how many Internet Service Providers care about adopting Internet routing security mechanisms](https://www.manrs.org/netops/participants/).
 <!--more-->

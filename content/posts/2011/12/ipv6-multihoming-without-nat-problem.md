@@ -19,7 +19,7 @@ tags:
 title: 'IPv6 Multihoming Without NAT: the Problem'
 url: /2011/12/ipv6-multihoming-without-nat-problem.html
 ---
-Every time I write about [IPv6 multihoming issues](https://blog.ipspace.net/2010/12/small-site-multihoming-in-ipv6-mission.html) and the [need for NPT66](https://blog.ipspace.net/2011/12/we-just-might-need-nat66.html), I get a comment or two saying:
+Every time I write about [IPv6 multihoming issues](/2010/12/small-site-multihoming-in-ipv6-mission.html) and the [need for NPT66](/2011/12/we-just-might-need-nat66.html), I get a comment or two saying:
 
 > But I thought this is already part of IPv6 stack -- can't you have two or more IPv6 addresses on the same interface?
 

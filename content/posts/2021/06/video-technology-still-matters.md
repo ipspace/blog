@@ -7,7 +7,7 @@ tags:
 title: 'Lessons Learned: Technology Still Matters'
 video_tag: netbiz
 ---
-In June 2020, a friend asked me to do a short presentation on lessons learned during my 35 years as a networking engineer. It went reasonably well, so I decided to [turn it into a webinar](https://my.ipspace.net/bin/list?id=NetBiz#LL), starting with _regardless of what the [disruptive marketers](https://blog.ipspace.net/2019/10/the-cost-of-disruptiveness-and.html) tell you, technology still matters._
+In June 2020, a friend asked me to do a short presentation on lessons learned during my 35 years as a networking engineer. It went reasonably well, so I decided to [turn it into a webinar](https://my.ipspace.net/bin/list?id=NetBiz#LL), starting with _regardless of what the [disruptive marketers](/2019/10/the-cost-of-disruptiveness-and.html) tell you, technology still matters._
 
 {{<jump>}}[Watch the video](https://my.ipspace.net/bin/get/NetBiz/L1%20-%20Technology%20Still%20Matters.mp4?doccode=NetBiz){{</jump>}}
 

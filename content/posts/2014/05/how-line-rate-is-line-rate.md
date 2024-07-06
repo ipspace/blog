@@ -49,7 +49,7 @@ The only environment I'm aware of that comes close to that are the test labs. If
 
 For example, I recently spoke with someone who told me their caching servers (a typical example of an environment with small packet sizes) cannot saturate 10GE uplinks due to bottlenecks in Linux TCP stack.
 
-{{<note update>}}Update 2021-02-15: It's perfectly possible to saturate 10GE or 40GE server uplinks in 2021, and some people got as far as using 100GE server uplinks. The question whether line-rate forwarding of small packets matters [remains a matter of opinion (and use case)](https://blog.ipspace.net/2021/02/importance-switching-small-packets.html).{{</note>}}
+{{<note update>}}Update 2021-02-15: It's perfectly possible to saturate 10GE or 40GE server uplinks in 2021, and some people got as far as using 100GE server uplinks. The question whether line-rate forwarding of small packets matters [remains a matter of opinion (and use case)](/2021/02/importance-switching-small-packets.html).{{</note>}}
 
 #### Summary
 

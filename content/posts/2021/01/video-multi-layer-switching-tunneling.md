@@ -3,7 +3,7 @@ title: "Video: Multi-Layer Switching and Tunneling"
 date: 2021-01-15 07:38:00
 tags: [ networking, networking fundamentals ]
 ---
-After [discussing the technology options one has when trying to get a packet across the network](https://blog.ipspace.net/2020/11/video-getting-packet-across-network.html), we dived deep into two interesting topics:
+After [discussing the technology options one has when trying to get a packet across the network](/2020/11/video-getting-packet-across-network.html), we dived deep into two interesting topics:
 
 * How do you combine packet forwarding at multiple layers of OSI stack (multi-layer switching)?
 * What happens when you do layer-N forwarding over layer-M transport core where N <= M (example: IPv6 packets over IPv4 packets) aka tunneling?

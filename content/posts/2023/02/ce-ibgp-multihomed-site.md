@@ -25,7 +25,7 @@ Let's start with a simple diagram and a refactoring of the question:
 
 Our multihomed site is small enough to have a single L2 switch, and both CE-routers act as a default gateway for the attached hosts[^FHRP]. Now imagine a scenario where:
 
-[^FHRP]: Ignoring for the moment the [intricacies of first-hop redundancy protocols](https://blog.ipspace.net/2023/02/irb-edge-routing.html) and [ICMP redirects](https://blog.ipspace.net/2022/11/what-causes-icmp-redirects.html).
+[^FHRP]: Ignoring for the moment the [intricacies of first-hop redundancy protocols](/2023/02/irb-edge-routing.html) and [ICMP redirects](/2022/11/what-causes-icmp-redirects.html).
 
 * CE-A receives a routing update for destination X from its upstream PE-router, but CE-B receives no corresponding update from its EBGP peer.
 * A host sends a packet for X toward CE-B.
@@ -37,7 +37,7 @@ It's obvious that CE-B should have the information that it can reach X via CE-A,
 
 As you might be running an IGP within the site and redistribute IGP information into EBGP anyway, you'll quickly land in a two-way redistribution morass if you choose option#2. Running IBGP between CE-routers is a much better approach, and gives you the ability to have site-wide consistent routing policy. For example, you could use BGP local preference to indicate which paths should be preferred[^IGPJS], causing the other CE-router to prefer IBGP paths over EBGP ones.
 
-Finally a word of caution: establishing an IBGP session between CE-routers that do not support [RFC 8212](https://www.rfc-editor.org/rfc/rfc8212) could turn your site into a transit site. Not fun if you happen to be a [steel manufacturer attracting Cloudflare traffic](https://blog.ipspace.net/2019/07/rant-some-internet-service-providers.html). Make sure you have deployed outbound AS-path filters dropping transit paths on all EBGP sessions.
+Finally a word of caution: establishing an IBGP session between CE-routers that do not support [RFC 8212](https://www.rfc-editor.org/rfc/rfc8212) could turn your site into a transit site. Not fun if you happen to be a [steel manufacturer attracting Cloudflare traffic](/2019/07/rant-some-internet-service-providers.html). Make sure you have deployed outbound AS-path filters dropping transit paths on all EBGP sessions.
 
 ### More Details
 

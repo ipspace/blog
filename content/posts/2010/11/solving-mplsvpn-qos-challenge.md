@@ -7,7 +7,7 @@ tags:
 title: Solving the MPLS/VPN QoS Challenge
 url: /2010/11/solving-mplsvpn-qos-challenge.html
 ---
-Two weeks ago I [wrote about the challenges](https://blog.ipspace.net/2010/10/qos-over-mplsvpn-networks.html) you'll encounter when trying to implement end-to-end QoS in an enterprise network that uses MPLS/VPN service as one of its transport components. Most of the issues you'll encounter are caused by the position of the user-SP demarcation point. The Service Providers smartly "assume" the demarcation point is the PE-router interface... and everything up to that point (including their access network) is your problem.
+Two weeks ago I [wrote about the challenges](/2010/10/qos-over-mplsvpn-networks.html) you'll encounter when trying to implement end-to-end QoS in an enterprise network that uses MPLS/VPN service as one of its transport components. Most of the issues you'll encounter are caused by the position of the user-SP demarcation point. The Service Providers smartly "assume" the demarcation point is the PE-router interface... and everything up to that point (including their access network) is your problem.
 
 {{<figure src="/2010/11/s1600-mplsqos_before.png" caption="Typical MPLS/VPN demarcation point">}}
 <!--more-->

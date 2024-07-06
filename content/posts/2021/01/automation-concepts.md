@@ -3,7 +3,7 @@ title: "New Webinar: Network Automation Concepts"
 date: 2021-01-25 06:46:00
 tags: [ automation ]
 ---
-There's one more thing I feel needs to be done before I go for that [coffee break](https://blog.ipspace.net/2021/01/planning-coffee-break.html): a webinar focusing on [network automation concepts](https://www.ipspace.net/Network_Automation_Concepts) (as opposed to *[replacing Excel with YAML and Ansible](https://blog.ipspace.net/2017/05/looking-for-tool-to-create-device.html)* or *[Becoming a Python Coder](https://blog.ipspace.net/2020/11/growing-beyond-networking-skills.html)*). Here's a rough list of concepts I think should be in there:
+There's one more thing I feel needs to be done before I go for that [coffee break](/2021/01/planning-coffee-break.html): a webinar focusing on [network automation concepts](https://www.ipspace.net/Network_Automation_Concepts) (as opposed to *[replacing Excel with YAML and Ansible](/2017/05/looking-for-tool-to-create-device.html)* or *[Becoming a Python Coder](/2020/11/growing-beyond-networking-skills.html)*). Here's a rough list of concepts I think should be in there:
 
 * Data models and data stores
 * Data model transformations

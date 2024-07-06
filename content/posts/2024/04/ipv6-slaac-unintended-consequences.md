@@ -20,7 +20,7 @@ Can we fix it? As is always the case in network design, you have to choose what 
 
 * **Limiting the number of ND entries** per interface will protect the scarce hardware resources but result in suboptimal performance for everyone using IPv6 on an affected segment.
 * **Using Semantically Opaque Interface Identifiers** ([RFC 7217](https://datatracker.ietf.org/doc/html/rfc7217)) would solve the problem but enable user tracking *within a segment* (but not across segments).
-* **DHCPv6 IA_NA address allocation** could limit the number of addresses assigned to a single IPv6 host. Contrary to popular lore spread by DHCPv6 haters, [a host can request multiple IPv6 addresses via DHCPv6](https://blog.ipspace.net/2021/10/ipv6-multiple-addresses-per-interface.html) (address rotation is thus not a big deal), and a DHCPv6 server can deny a request for a new address (forcing the host to choose between privacy and broken TCP sessions).
+* **DHCPv6 IA_NA address allocation** could limit the number of addresses assigned to a single IPv6 host. Contrary to popular lore spread by DHCPv6 haters, [a host can request multiple IPv6 addresses via DHCPv6](/2021/10/ipv6-multiple-addresses-per-interface.html) (address rotation is thus not a big deal), and a DHCPv6 server can deny a request for a new address (forcing the host to choose between privacy and broken TCP sessions).
 
 OK, it looks like environments facing hardware resource shortages could use DHCPv6 to fix that, right? Well, no. Look at the [overview of IPv6 support in various operating systems](https://en.wikipedia.org/wiki/Comparison_of_IPv6_support_in_operating_systems) and tell me if you can spot popular end-user operating systems that do not support DHCPv6.
 

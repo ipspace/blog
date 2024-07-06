@@ -26,7 +26,7 @@ During the workshop we identified numerous obstacles and missing orchestration c
 
 The *only* approach that would do what my customer wanted at that time was automated application deployment using tools like [Cloudify](http://getcloudify.org/), but that solution was further away from their grasp than Alpha Centauri -- they were a traditional enterprise IT shop with manual non-repeatable server creation and application deployment processes.
 
-After three days we had to conclude that there's nothing SDDC could do for them to solve their immediate workload migration problems, and that they should focus on [automating application development and deployment processes](https://blog.ipspace.net/2013/11/typical-enterprise-application.html) (yeah, I know I [sound like Captain Obvious](http://blog.ipspace.net/2014/09/youve-been-doing-same-thing-for-last-20.html)).
+After three days we had to conclude that there's nothing SDDC could do for them to solve their immediate workload migration problems, and that they should focus on [automating application development and deployment processes](/2013/11/typical-enterprise-application.html) (yeah, I know I [sound like Captain Obvious](/2014/09/youve-been-doing-same-thing-for-last-20.html)).
 
 {{<note>}}Combining NSX-T and SRM might be a step in the right direction, but I never read the documentation to find out the potential "minor" details.{{</note>}}
 

@@ -25,12 +25,12 @@ Also, there are occasional software upgrade challenges that you don't get with i
 
 An obvious alternative to VCF would be a traditional leaf-and-spine fabric with VXLAN using either EVPN control plane or [statically-configured ingress BUM replication with dynamic MAC learning](https://my.ipspace.net/bin/get/DCFabric/RQ0%20-%20Keep%20It%20Simple.mp4). More robust, less complex software, smaller blast radius... but harder to design and configure.
 
-As always, it's the question of [explicit versus hidden complexity](https://blog.ipspace.net/2018/02/how-self-sufficient-do-you-want-to-be.html), and you have to choose which one is better for you. I have no problem with that - it's just that the customers going for hidden complexity aren't always aware of the risks they're taking.
+As always, it's the question of [explicit versus hidden complexity](/2018/02/how-self-sufficient-do-you-want-to-be.html), and you have to choose which one is better for you. I have no problem with that - it's just that the customers going for hidden complexity aren't always aware of the risks they're taking.
 
 ### Further Reading
 
--   [Should we use redundant supervisors?](https://blog.ipspace.net/2014/04/should-we-use-redundant-supervisors.html)
--   [Do you need ISSU on your ToR switch?](https://blog.ipspace.net/2015/06/so-you-need-issu-on-your-tor-switch.html)
+-   [Should we use redundant supervisors?](/2014/04/should-we-use-redundant-supervisors.html)
+-   [Do you need ISSU on your ToR switch?](/2015/06/so-you-need-issu-on-your-tor-switch.html)
 
 ### To Learn More about These Topics
 

@@ -3,7 +3,7 @@ title: "Is X.25 Still Alive?"
 date: 2022-04-27 07:04:00
 tags: [ WAN ]
 ---
-Enrique Vallejo [asked an interesting question](https://blog.ipspace.net/2022/04/do-you-care-about-mpls.html#1137) a while ago:
+Enrique Vallejo [asked an interesting question](/2022/04/do-you-care-about-mpls.html#1137) a while ago:
 
 > When was X.25 official declared dead? Note that the wikipedia claims that it is still in use in parts of the world.
 

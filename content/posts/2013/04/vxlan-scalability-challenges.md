@@ -8,7 +8,7 @@ tags:
 title: VXLAN scalability challenges
 url: /2013/04/vxlan-scalability-challenges.html
 ---
-[VXLAN](https://blog.ipspace.net/2011/08/finally-mac-over-ip-based-vcloud.html), one of the first MAC-over-IP (overlay) virtual networking solutions is definitely a major improvement over traditional VLAN-based virtual networking technologies ... but not without its own [scalability limitations](https://blog.ipspace.net/2011/12/vxlan-ip-multicast-openflow-and-control.html).
+[VXLAN](/2011/08/finally-mac-over-ip-based-vcloud.html), one of the first MAC-over-IP (overlay) virtual networking solutions is definitely a major improvement over traditional VLAN-based virtual networking technologies ... but not without its own [scalability limitations](/2011/12/vxlan-ip-multicast-openflow-and-control.html).
 <!--more-->
 ### Implementation issues
 
@@ -34,7 +34,7 @@ The number of IP multicast groups (together with the size of the network) obviou
 
 **One or few multicast groups for a single Nexus 1000v instance**. Acceptable if you don't need more than 64 hosts. Flooding wouldn't be too bad (not many people would put more than a few thousand VMs on 64 hosts) and the core network would have a reasonably small number of (S/\*,G) entries (even with source-based trees the number of entries would be linearly proportional to the number of vSphere hosts).
 
-**Many virtual segments in large network with a few multicast groups**. This would make VXLAN as "scalable" as [vCDNI](https://blog.ipspace.net/2011/04/vcloud-director-networking.html). Numerous virtual segments (and consequently numerous virtual machines) would map into a single IP multicast address (vShield Manager uses a simple wrap-around IP multicast address allocation mechanism), and vSphere hosts would receive flooded packets for irrelevant segments.
+**Many virtual segments in large network with a few multicast groups**. This would make VXLAN as "scalable" as [vCDNI](/2011/04/vcloud-director-networking.html). Numerous virtual segments (and consequently numerous virtual machines) would map into a single IP multicast address (vShield Manager uses a simple wrap-around IP multicast address allocation mechanism), and vSphere hosts would receive flooded packets for irrelevant segments.
 
 **Use per-VNI multicast group**. This approach would result in minimal excessive flooding but generate large amounts of (S,G) entries in the network.
 

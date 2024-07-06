@@ -29,11 +29,11 @@ Implementations using a virtual peer link no longer have two independent paths t
 
 [^OU]: You could also be facing a partitioned core fabric, where you'd have to deal with a much larger problem than an MLAG cluster split brain.
 
-Regardless of how the vendors implement MLAG neighbor loss detection, it's inevitably less reliable than using a physical link bundle as a peer link -- we're dealing with a scenario similar to [stretching a firewall cluster across multiple data centers](https://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html).
+Regardless of how the vendors implement MLAG neighbor loss detection, it's inevitably less reliable than using a physical link bundle as a peer link -- we're dealing with a scenario similar to [stretching a firewall cluster across multiple data centers](/2011/04/distributed-firewalls-how-badly-do-you.html).
 
 ## Peer Link Traffic Filters
 
-Traditional MLAG implementations [use access control lists on links belonging to multi-chassis link aggregation groups](https://blog.ipspace.net/2022/06/mlag-deep-dive-flooding.html) to ensure an MLAG cluster member never sends traffic received over a peer link to a dual-attached node. For example, when X in the above diagram sends a broadcast ARP request, the packet received by S2 over the peer link should be forwarded to Y but not B (because S1 already sent the packet to B).
+Traditional MLAG implementations [use access control lists on links belonging to multi-chassis link aggregation groups](/2022/06/mlag-deep-dive-flooding.html) to ensure an MLAG cluster member never sends traffic received over a peer link to a dual-attached node. For example, when X in the above diagram sends a broadcast ARP request, the packet received by S2 over the peer link should be forwarded to Y but not B (because S1 already sent the packet to B).
 
 Vendors usually control flooding to dual-homed hosts with egress ACLs on links toward multi-homed hosts. Those ACLs check incoming interface and drop packets arriving through the peer link. It's harder to implement the same functionality when dealing with a virtual peer link -- a VXLAN-encapsulated packet S2 (in the above diagram) receives from S1 is almost identical to a VXLAN-encapsulated packet in the same VXLAN VNI Sx sends when forwarding an ARP request from Z.
 
@@ -49,9 +49,9 @@ The mechanism a vendor can use is limited by the hardware capabilities. Unfortun
 
 ## Traffic Redirection
 
-As discussed in the [MLAG-with-VXLAN](https://blog.ipspace.net/2022/09/mlag-deep-dive-vxlan-fabric.html) part of this series, we must use anycast VTEP addresses if we want to rely on dynamic learning of source MAC addresses of encapsulated MAC frames. That approach inevitably results in some traffic arriving at the wrong member of the MLAG cluster.
+As discussed in the [MLAG-with-VXLAN](/2022/09/mlag-deep-dive-vxlan-fabric.html) part of this series, we must use anycast VTEP addresses if we want to rely on dynamic learning of source MAC addresses of encapsulated MAC frames. That approach inevitably results in some traffic arriving at the wrong member of the MLAG cluster.
 
-Traditional MLAG solutions forward the misdirected traffic onto the peer link. When using a virtual peer link, the switch receiving the traffic has to redirect it back into the overlay network, requiring packet recirculation or hardware support for [VXLAN-to-VXLAN (or PBB-to-PBB) bridging](https://blog.ipspace.net/2022/06/vxlan-bridging-dci.html).
+Traditional MLAG solutions forward the misdirected traffic onto the peer link. When using a virtual peer link, the switch receiving the traffic has to redirect it back into the overlay network, requiring packet recirculation or hardware support for [VXLAN-to-VXLAN (or PBB-to-PBB) bridging](/2022/06/vxlan-bridging-dci.html).
 
 Overlay fabrics using [EVPN control plane](/2022/11/mlag-vxlan-evpn.html) don't have to use anycast VTEP addresses, and thus don't have to implement traffic redirection between MLAG peers. Some implementations use per-switch VTEPs, more complex ones (like Cisco Nexus OS) advertise orphan hosts with switch-specific VTEP and dual-homed hosts with anycast VTEP[^ATR].
 

@@ -47,7 +47,7 @@ Translated into engineering terms: the Type-1 (router) LSA no longer contains th
 
 > ... and thus dramatically simplifies network configuration and reconfiguration.
 
-Marketese for "[we don't check IP subnets in OSPF hello packets](https://blog.ipspace.net/2008/10/ospf-ignores-subnet-mask-mismatch-on.html)".
+Marketese for "[we don't check IP subnets in OSPF hello packets](/2008/10/ospf-ignores-subnet-mask-mismatch-on.html)".
 
 > In addition, routing database contains only the real networks,
 

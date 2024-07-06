@@ -10,7 +10,7 @@ tags:
 title: Is OSPF or IS-IS Good Enough for My Data Center?
 url: /2018/05/is-ospf-or-is-is-good-enough-for-my.html
 ---
-Our good friend mr. Anonymous has too many buzzwords and opinions in his repertoire, at least based on this comment he left on my [Using 4-byte AS Numbers with EVPN](https://blog.ipspace.net/2018/05/using-4-byte-bgp-as-numbers-with-evpn.html) blog post:
+Our good friend mr. Anonymous has too many buzzwords and opinions in his repertoire, at least based on this comment he left on my [Using 4-byte AS Numbers with EVPN](/2018/05/using-4-byte-bgp-as-numbers-with-evpn.html) blog post:
 
 > But IGPs don\'t scale well (as you might have heard) except for RIFT and Openfabric. The others are trying to do ECMP based on BGP.
 
@@ -25,7 +25,7 @@ Should you be worried about OSPF or IS-IS scalability when building your data ce
 Now that our Anonymous friend is (hopefully) busy, let's try to put the *IGPs don't scale well* claim in perspective:
 
 -   There are service providers having several thousand routers in a single IS-IS area. IS-IS traditionally scaled a bit better than OSPF because it was exposed to more abuse, but it shouldn't be hard to push OSPF (should you prefer it) to several hundred devices in a single area. I've heard of networks having 300+ routers in an OSPF area in times when CPUs were an order of magnitude slower than they are today;
--   We tried to scope the problem with [Dr. Tony Przygienda](https://www.linkedin.com/in/dr-tony-przygienda-018501) during our [Data Center Routing with RIFT](https://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html) discussion, and while he pointed out that the real challenge OSPF and IS-IS are facing in leaf-and-spine fabric is not topology database size but the amount of redundant flooding, he put a comfortable limit of what OSPF or IS-IS could handle today at \~100 switches.
+-   We tried to scope the problem with [Dr. Tony Przygienda](https://www.linkedin.com/in/dr-tony-przygienda-018501) during our [Data Center Routing with RIFT](/2018/03/data-center-routing-with-rift-on.html) discussion, and while he pointed out that the real challenge OSPF and IS-IS are facing in leaf-and-spine fabric is not topology database size but the amount of redundant flooding, he put a comfortable limit of what OSPF or IS-IS could handle today at \~100 switches.
 
 RIFT and OpenFabric were designed to perform better in larger environments where you might hit the scaling limitations of traditional OSPF and IS-IS flooding, but we don't know whether that's true yet -- as of mid-May 2018, you could get RIFT as experimental code running on Junos, and OpenFabric was still in very early stages the last time I chatted with Russ White
 
@@ -56,7 +56,7 @@ The largest data center fabric we could build without investing anything into un
 
 Assuming you want redundant server connectivity that's 1500 bare-metal servers. Assuming you didn't buy them in a junkyard sale, you could easily put 30-50 reasonably-sized VMs on each one of them, for a total of around 50.000 (application) servers.
 
-Is that good enough? It definitely is for [most enterprises](https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html) as well as for [smaller cloud providers](http://blog.ipspace.net/2014/07/how-big-will-your-cloud-be.html)... and if your data center network is larger than that, please don't listen to whatever is being said (overly generalized) on the Internet -- you need a proper design done by someone who understands *why* he's doing what he's doing. Buzzwords and opinions won't cut it.
+Is that good enough? It definitely is for [most enterprises](/2017/11/bgp-as-better-igp-when-and-where.html) as well as for [smaller cloud providers](/2014/07/how-big-will-your-cloud-be.html)... and if your data center network is larger than that, please don't listen to whatever is being said (overly generalized) on the Internet -- you need a proper design done by someone who understands *why* he's doing what he's doing. Buzzwords and opinions won't cut it.
 
 ### Why Is Everyone So Focused on BGP Then?
 

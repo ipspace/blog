@@ -34,6 +34,6 @@ However, there's a more fundamental decision you have to make: do you prefer *di
 
 If you decide to go for *direct* traffic flow, make sure the hub routers don't change the BGP next hop. NHRP redirects for spoke-to-spoke traffic will work (because both hub routers know the destination is reachable via another spoke due to BGP next hop), but you might get traffic black holes if a hub router cannot reach a spoke router (for example, due to IPsec session failure).
 
-If you decide to go for *reliable* traffic flow, change BGP next hops to *self* on every hop. The traffic will [flow over the same path as BGP path information data](https://blog.ipspace.net/2014/08/fate-sharing-in-ip-networks.html), but you might get suboptimal traffic flow that concerned my reader.
+If you decide to go for *reliable* traffic flow, change BGP next hops to *self* on every hop. The traffic will [flow over the same path as BGP path information data](/2014/08/fate-sharing-in-ip-networks.html), but you might get suboptimal traffic flow that concerned my reader.
 
 Want to discuss an interesting problem you're facing in your network? I'm usually available for [online consulting](http://www.ipspace.net/ExpertExpress).

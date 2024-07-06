@@ -12,7 +12,7 @@ This is a guest blog post by [Philippe Jounin](https://www.linkedin.com/in/phjou
 
 ---
 
-You could use **track** objects in Cisco IOS to track route reachability or metric, the status of an interface, or IP SLA compliance for a long time. Initially you could use them to implement [reliable static routing](https://blog.ipspace.net/2007/02/reliable-static-routing.html) (or even [shut down a BGP session](https://blog.ipspace.net/2011/09/shut-down-bgp-session-based-on-tracked.html)) or trigger EEM scripts. With a bit more work (and a few more EEM scripts) you could use object tracking to create [time-dependent static routes](https://blog.ipspace.net/2010/11/time-based-static-routes.html).
+You could use **track** objects in Cisco IOS to track route reachability or metric, the status of an interface, or IP SLA compliance for a long time. Initially you could use them to implement [reliable static routing](/2007/02/reliable-static-routing.html) (or even [shut down a BGP session](/2011/09/shut-down-bgp-session-based-on-tracked.html)) or trigger EEM scripts. With a bit more work (and a few more EEM scripts) you could use object tracking to create [time-dependent static routes](/2010/11/time-based-static-routes.html).
 
 Cisco IOS 15 has introduced [Enhanced Object Tracking](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipapp/configuration/xe-2/iap-xe-2-book/iap-eot.html) that allows first-hop router protocols like VRRP or HSRP to use tracking state to modify their behavior.
 <!--more-->

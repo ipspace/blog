@@ -3,7 +3,7 @@ title: "Advantages of Using Generalized TTL Security Mechanism (GTSM) with EBGP"
 date: 2023-03-16 07:56:00
 tags: [ BGP, security ]
 ---
-A few weeks ago I [described why EBGP TCP packets have TTL set to one](/2023/03/ebgp-ttl-history.html) (unless you configured EBGP multihop). Although some people claim that ([like NAT](https://blog.ipspace.net/2011/12/is-nat-security-feature.html)) it could be a security feature, it's not a good one. Generalized TTL Security Mechanism (GTSM, described in [RFC 5082](https://datatracker.ietf.org/doc/html/rfc5082)) is much better.
+A few weeks ago I [described why EBGP TCP packets have TTL set to one](/2023/03/ebgp-ttl-history.html) (unless you configured EBGP multihop). Although some people claim that ([like NAT](/2011/12/is-nat-security-feature.html)) it could be a security feature, it's not a good one. Generalized TTL Security Mechanism (GTSM, described in [RFC 5082](https://datatracker.ietf.org/doc/html/rfc5082)) is much better.
 
 Most BGP implementations **set TTL field in outgoing EBGP packets to one**. That prevents a remote intruder that manages to hijack a host route to an adjacent EBGP peer from forming a BGP session as the TCP replies get lost the moment they hit the first router in the path.
 <!--more-->
@@ -29,4 +29,4 @@ Unfortunately, most routers remain vulnerable to denial-of-service attacks from 
 
 [^ET]: At least not the BGP daemon. Unless you configure strict ACLs on every network edge interface, you're leaving doors wide open for denial-of-service attacks on most control-plane daemons.
 
-[^MTTL]: Bonus points if you don't propagate MPLS TTL back into IP TTL, or if you're [using VXLAN on unprotected VTEPs](https://blog.ipspace.net/2015/04/omg-vxlan-encapsulation-has-no-security.html).
+[^MTTL]: Bonus points if you don't propagate MPLS TTL back into IP TTL, or if you're [using VXLAN on unprotected VTEPs](/2015/04/omg-vxlan-encapsulation-has-no-security.html).

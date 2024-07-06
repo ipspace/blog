@@ -10,16 +10,16 @@ dcbgp_tag: cl
 title: Auto-MLAG and Auto-BGP in Cumulus Linux
 url: /2019/10/auto-mlag-and-auto-bgp-in-cumulus-linux.html
 ---
-When I first met Cumulus Networks engineers ([during NFD9](https://blog.ipspace.net/2015/02/networking-field-day-9-brief-recap.html)) their focus on simplifying switch configurations [totally delighted me](https://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html) ([video](https://blog.ipspace.net/2015/10/video-simplify-network-configurations.html)).
+When I first met Cumulus Networks engineers ([during NFD9](/2015/02/networking-field-day-9-brief-recap.html)) their focus on simplifying switch configurations [totally delighted me](/2015/02/bgp-configuration-made-simple-with.html) ([video](/2015/10/video-simplify-network-configurations.html)).
 
 {{<note>}}
-I was [ranting about the more traditional approach to data center fabric configuration](https://blog.ipspace.net/2015/05/stupidities-of-switch-programming.html) resulting in dozens if not hundreds of device configuration commands in 2013... and other vendors still haven\'t done much in this respect in the meantime.
+I was [ranting about the more traditional approach to data center fabric configuration](/2015/05/stupidities-of-switch-programming.html) resulting in dozens if not hundreds of device configuration commands in 2013... and other vendors still haven\'t done much in this respect in the meantime.
 {{</note>}}
 
 After solving the BGP configuration challenge (could you imagine configuring BGP in a leaf-and-spine fabric with just a few commands in 2015), they did the same thing with EVPN configuration, where they decided to implement the simplest possible design ([EBGP-only fabric running EBGP EVPN sessions on leaf-to-spine links](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics)), resulting in another round of configuration simplicity.
 <!--more-->
 {{<note>}}
-Of course you can always apply RFC 1925 Rule 6 and solve the same challenge by adding another layer of abstraction, this time using network automation with complex templates... but it turns out that the [state management needed to do that gets complex](https://blog.ipspace.net/2017/08/challenges-of-data-center-fabric.html), and your life becomes much easier if you don't have to keep that state.
+Of course you can always apply RFC 1925 Rule 6 and solve the same challenge by adding another layer of abstraction, this time using network automation with complex templates... but it turns out that the [state management needed to do that gets complex](/2017/08/challenges-of-data-center-fabric.html), and your life becomes much easier if you don't have to keep that state.
 {{</note>}}
 
 Fortunately Cumulus Networks didn't decide to rest on the laurels -- in the [Data Center Fabrics](https://www.ipspace.net/Data_Center_Fabrics) update session we ran in September 2019,[Pete Lumbis](https://www.ipspace.net/Author:Pete_Lumbis) talked about the new features they're adding to Cumulus Linux 4.0 ([videos and slide deck](https://my.ipspace.net/bin/list?id=DCFabric#CUMULUS)) - even more sane defaults, using auto-generated BGP AS numbers on leaf switches, and simplifying MLAG configuration (including peer link and server port channels) to a single command.

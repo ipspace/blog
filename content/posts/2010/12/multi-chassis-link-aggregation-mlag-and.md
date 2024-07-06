@@ -12,7 +12,7 @@ url: /2010/12/multi-chassis-link-aggregation-mlag-and.html
 ---
 There are two reasons one would bundle parallel Ethernet links into a port channel (official term is *Link Aggregation Group*):
 
-- Transforming parallel links into a single logical link bypasses Spanning Tree Protocol loop avoidance logic; all links belonging to the port channel can be active at the same time (see also: [Multi-Chassis Link Aggregation basics](https://blog.ipspace.net/2010/10/multi-chassis-link-aggregation-basics.html)).
+- Transforming parallel links into a single logical link bypasses Spanning Tree Protocol loop avoidance logic; all links belonging to the port channel can be active at the same time (see also: [Multi-Chassis Link Aggregation basics](/2010/10/multi-chassis-link-aggregation-basics.html)).
 - Load sharing across parallel links in a port channel increases the total bandwidth available between adjacent L2 switches or between routers/hosts and switches.
 
 Ethan Banks wrote an [excellent explanation of traditional port channel caveats](https://web.archive.org/web/20110112232009/https://packetattack.wordpress.com/2010/11/27/the-scaling-limitations-of-etherchannel-or-why-11-does-not-equal-2/) (proving that 1+1 sometimes does not equal 2); things get way worse when you start using Multi-Chassis Link Aggregation due to *hot potato* switching (the switch tries to forward packets toward destination MAC address as soon as possible) used by all MLAG implementations I'm familiar with.

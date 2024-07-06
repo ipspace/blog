@@ -7,7 +7,7 @@ title: DHCP Client Address Change Detector
 url: /2009/10/dhcp-client-address-change-detector.html
 lastmod: 2020-12-05 08:36:00
 ---
-In a previous post I've described [how useless DHCP logging is when you try to detect change in DHCP-assigned IP address](https://blog.ipspace.net/2009/09/dhcp-logging-in-cisco-ios-is-nightmare.html). Fortunately the removal of the old IP address (triggered by the DHCPNAK server response) and configuration of the new IP address (sent in the DHCPACK response) triggers a change in the IP routing table that can be detected with the IP routing table event detector introduced in EEM 3.0 (available from Cisco IOS release 12.4(22)T).
+In a previous post I've described [how useless DHCP logging is when you try to detect change in DHCP-assigned IP address](/2009/09/dhcp-logging-in-cisco-ios-is-nightmare.html). Fortunately the removal of the old IP address (triggered by the DHCPNAK server response) and configuration of the new IP address (sent in the DHCPACK response) triggers a change in the IP routing table that can be detected with the IP routing table event detector introduced in EEM 3.0 (available from Cisco IOS release 12.4(22)T).
 <!--more-->
 {{<ct3_rescue>}}
 

@@ -9,7 +9,7 @@ tags:
 title: 'Multi-chassis Link Aggregation: Stacking on Steroids'
 url: /2010/10/multi-chassis-link-aggregation-stacking.html
 ---
-In the [*Multi-chassis Link Aggregation* *(MLAG)* *Basics*](https://blog.ipspace.net/2010/10/multi-chassis-link-aggregation-basics.html) post I've described how you can use (usually vendor-proprietary) technologies to bundle links connected to two upstream switches into a single logical channel, bypassing the Spanning Tree Protocol (STP) port blocking. While every vendor takes a different approach to MLAG, there are only a few architectures that you'll see. Let's start with the most obvious one: *stacking on steroids*.
+In the [*Multi-chassis Link Aggregation* *(MLAG)* *Basics*](/2010/10/multi-chassis-link-aggregation-basics.html) post I've described how you can use (usually vendor-proprietary) technologies to bundle links connected to two upstream switches into a single logical channel, bypassing the Spanning Tree Protocol (STP) port blocking. While every vendor takes a different approach to MLAG, there are only a few architectures that you'll see. Let's start with the most obvious one: *stacking on steroids*.
 <!--more-->
 ### The Basics
 

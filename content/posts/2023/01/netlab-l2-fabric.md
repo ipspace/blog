@@ -41,7 +41,7 @@ links:
 
 {{<note info>}}You have to use the `ipv4: False` instead of simpler `p2p: {}` syntax that is used to define the **l2only** pool because _netlab_ merges lab topology settings with the default system settings, and the default settings already include **ipv4** prefixes in most addressing pools.{{</note>}}
 
-It turned out my friend wanted to build a layer-2-only leaf-and-spine fabric, and the above topology wouldn't do that. _netlab_ assumes you want to use [layer-3 interfaces](https://blog.ipspace.net/2022/09/interfaces-ports.html) unless you use VLANs on them and would configure something equivalent to **no switchport** on data center switches as part of initial configuration. To build a pure layer-2 fabric, you have to build it within a VLAN:
+It turned out my friend wanted to build a layer-2-only leaf-and-spine fabric, and the above topology wouldn't do that. _netlab_ assumes you want to use [layer-3 interfaces](/2022/09/interfaces-ports.html) unless you use VLANs on them and would configure something equivalent to **no switchport** on data center switches as part of initial configuration. To build a pure layer-2 fabric, you have to build it within a VLAN:
 
 * Use VLAN module in the lab topology[^AC]:
 
@@ -53,7 +53,7 @@ provider: clab
 module: [ vlan ]
 ```
 
-* Create a VLAN and optionally set its VLAN ID. Make sure the VLAN **mode** is set to **bridge** or you'll get IP addresses on all [VLAN interfaces](https://blog.ipspace.net/2022/09/vlan-interfaces.html).
+* Create a VLAN and optionally set its VLAN ID. Make sure the VLAN **mode** is set to **bridge** or you'll get IP addresses on all [VLAN interfaces](/2022/09/vlan-interfaces.html).
 
 ```
 vlans:

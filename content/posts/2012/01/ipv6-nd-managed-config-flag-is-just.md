@@ -5,10 +5,10 @@ tags:
 title: IPv6 ND Managed-Config-Flag Is Just a Hint
 url: /2012/01/ipv6-nd-managed-config-flag-is-just.html
 ---
-IPv6 hosts can use *stateless* or *stateful* autoconfiguration. [Stateless address autoconfiguration (SLAAC) uses IPv6 prefixes from Router Advertisement (RA) messages](https://blog.ipspace.net/2011/10/ipv6-stateless-autoconfiguration-101.html); stateful autoconfiguration uses DHCPv6. The routers can use two flags in RA messages to tell the attached end hosts which method to use:
+IPv6 hosts can use *stateless* or *stateful* autoconfiguration. [Stateless address autoconfiguration (SLAAC) uses IPv6 prefixes from Router Advertisement (RA) messages](/2011/10/ipv6-stateless-autoconfiguration-101.html); stateful autoconfiguration uses DHCPv6. The routers can use two flags in RA messages to tell the attached end hosts which method to use:
 
 -   Managed-Config-Flag tells the end-host to use DHCPv6 exclusively;
--   Other-Config-Flag tells the end-host to use [SLAAC to get IPv6 address and DHCPv6 to get other parameters](https://blog.ipspace.net/2011/02/dhcpv6slaacra-dhcpv4.html) (DNS server address, for example).
+-   Other-Config-Flag tells the end-host to use [SLAAC to get IPv6 address and DHCPv6 to get other parameters](/2011/02/dhcpv6slaacra-dhcpv4.html) (DNS server address, for example).
 -   Absence of both flags tells the end-host to use only SLAAC.
 
 One might assume that setting *managed-config-flag* in RA messages forces IPv6 hosts to use DHCPv6. Wrong, the two flags are just a polite suggestion.

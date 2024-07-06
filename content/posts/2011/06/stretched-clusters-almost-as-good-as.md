@@ -12,7 +12,7 @@ url: /2011/06/stretched-clusters-almost-as-good-as.html
 ---
 Some people are changing round wheels to heptagonal format because they will roll better. Some other people are building *stretched* [*high-availability clusters*](http://en.wikipedia.org/wiki/Computer_cluster) -- clusters of servers stretched over multiple data centers. Unfortunately only one of these claims is false.
 
-Similar to the [stretched firewalls](https://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html) design, stretched tightly coupled HA clusters are vulnerable -- you lose the inter-DC link for long enough time (depending on how the cluster heartbeat is configured, a few seconds could be enough) and you have a total disaster on your hands.
+Similar to the [stretched firewalls](/2011/04/distributed-firewalls-how-badly-do-you.html) design, stretched tightly coupled HA clusters are vulnerable -- you lose the inter-DC link for long enough time (depending on how the cluster heartbeat is configured, a few seconds could be enough) and you have a total disaster on your hands.
 <!--more-->
 **Best case -- partitioned cluster**. Most HA clustering solutions available today (including [Microsoft's WSFC](http://en.wikipedia.org/wiki/Microsoft_Cluster_Server)) handle cluster partitioning (some members get isolated from the rest) the same way: the isolated minority is shut down and the services they offered are restarted on the remaining nodes. The methods used to figure out which part constitutes the minority differ, but they all use variants of voting mechanisms and quorums (with disks or file systems thrown in sometimes to make the total number of votes odd).
 

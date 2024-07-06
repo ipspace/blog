@@ -14,7 +14,7 @@ One of my readers sent me a link to [CCO documentation](https://www.cisco.com/c/
 
 So far so good. We can probably tolerate some delay. However, the next sentence is a killer...
 
-{{<note update>}}2017-05-08: The behavior is caused by an old bug in Linux TTY driver. Fixed NX-OS versions are planned to be shipped in late May 2017. [More details here](https://blog.ipspace.net/2017/05/follow-up-nexus-os-dropping.html).\
+{{<note update>}}2017-05-08: The behavior is caused by an old bug in Linux TTY driver. Fixed NX-OS versions are planned to be shipped in late May 2017. [More details here](/2017/05/follow-up-nexus-os-dropping.html).\
 \
 2017-04-05: The wonderful information disappeared from Cisco\'s documentation within 24 hours with no explanation whatsoever. However, I expected that and took a [snapshot of that page](http://web.archive.org/web/20170403161751/http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/fundamentals/configuration/guide/b_Cisco_Nexus_9000_Series_NX-OS_Fundamentals_Configuration_Guide_7x/b_Cisco_Nexus_9000_Series_NX-OS_Fundamentals_Configuration_Guide_7x_chapter_0101.html) before publishing the blog post ;){{</note>}}
 <!--more-->
@@ -28,4 +28,4 @@ Not only does this make any CLI-based automation totally unreliable (not that it
 
 On a totally unrelated note, I had to switch from NX-API to CLI during my [Ansible for Networking Engineers](http://www.ipspace.net/Ansible_for_Networking_Engineers) webinar because the NX-API got less reliable with every software update, returning random 404 (page not found) errors. Admittedly I was running NX-OS image in VIRL, but I got similar reports from engineers running real-life networks.
 
-Even though my calendar claims it's 2017 it seems like I'll have to add another line to the [Network Automation RFP Requirement](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html): device should not drop random commands received over any management-plane communication channel. Being [big-time into Model Driven Manageability](http://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html?showComment=1477403406970#c1792883115184277297) doesn't help much if you can't get the fundamentals right.
+Even though my calendar claims it's 2017 it seems like I'll have to add another line to the [Network Automation RFP Requirement](/2016/10/network-automation-rfp-requirements.html): device should not drop random commands received over any management-plane communication channel. Being [big-time into Model Driven Manageability](/2016/10/network-automation-rfp-requirements.html?showComment=1477403406970#c1792883115184277297) doesn't help much if you can't get the fundamentals right.

@@ -21,8 +21,8 @@ When you have a layer-3 host attached to a multi-access layer-2 network, that ho
 Numerous solutions to these challenges have been developed in the past, including:
 
 {{<explain term="CLNS">}}
-* Nodes have a [single layer-3 address](https://blog.ipspace.net/2010/12/clnp-and-multihoming-myths.html) (NSAP).
-* There are no [interface layer-3 addresses](https://blog.ipspace.net/2015/10/was-clnp-really-broken.html) or subnets.
+* Nodes have a [single layer-3 address](/2010/12/clnp-and-multihoming-myths.html) (NSAP).
+* There are no [interface layer-3 addresses](/2015/10/was-clnp-really-broken.html) or subnets.
 * Directly connected nodes are discovered through end-system hellos (ESH) and intermediate-system hellos (ISH).
 * NSAP-to-layer-2 mappings are built from ESH/ISH information.
 * Routers advertise their presence with ISHs, hosts use one of the directly-attached routers to forward traffic to all nodes that are not directly connected (the host received no ESH from that node)
@@ -30,19 +30,19 @@ Numerous solutions to these challenges have been developed in the past, includin
 {{<explain term="IPv4">}}
 * Interfaces have IPv4 addresses and subnet masks.
 * Interface IPv4 address and subnet mask are used to figure out whether a destination IPv4 address is directly connected. Do a bitwise AND of subnet mask and source/destination IPv4 addresses. Destination is in the same subnet if the results are the same.
-* You can configure static routes pointing to an interface (without the next hop) to fake further directly-connected subnets. Some of us were stupid enough to [do that with a default route](https://blog.ipspace.net/2009/10/my-stupid-moments-interface-default.html), making the whole Internet directly connected. [What could possibly go wrong](https://blog.ipspace.net/2009/10/follow-up-interface-default-route.html)?
+* You can configure static routes pointing to an interface (without the next hop) to fake further directly-connected subnets. Some of us were stupid enough to [do that with a default route](/2009/10/my-stupid-moments-interface-default.html), making the whole Internet directly connected. [What could possibly go wrong](/2009/10/follow-up-interface-default-route.html)?
 * Once the host decides a destination IPv4 address is directly connected, it uses ARP to find its MAC address.
 * Static routes (manually configured or derived from DHCP) are used for off-subnet forwarding. There is no standard mechanism to find the first-hop router.
 {{</explain>}}
 {{<explain term="IPv6">}}
 * Interfaces have IPv6 addresses and prefix lengths. Prefix length is assumed to be /64; it can be changed via RA messages or static configuration.
 * Like in IPv4, IPv6 addresses and prefix lengths of statically configured interface addresses are used to figure out whether a destination IPv6 address is directly connected.
-* Prefixes included in IPv6 Router Advertisement messages are [considered to be directly connected](https://blog.ipspace.net/2012/11/ipv6-on-link-determination-what-is-it.html) only if they have the on-link flag set.
+* Prefixes included in IPv6 Router Advertisement messages are [considered to be directly connected](/2012/11/ipv6-on-link-determination-what-is-it.html) only if they have the on-link flag set.
 * IPv6 Neighbor Discovery is used to find the layer-2 address of directly-connected IPv6 nodes.
-* Router advertisement messages are [used to find the first-hop router](https://blog.ipspace.net/2011/02/dhcpv6slaacra-dhcpv4.html).
+* Router advertisement messages are [used to find the first-hop router](/2011/02/dhcpv6slaacra-dhcpv4.html).
 
 **Notes**
-* It's [perfectly possible to tell a host to create an auto-configured IPv6 address in an IPv6 subnet that has no other directly-connected nodes](https://blog.ipspace.net/2012/11/ipv6-router-advertisements-deep-dive.html) -- set the A flag to one and L flag to zero.
+* It's [perfectly possible to tell a host to create an auto-configured IPv6 address in an IPv6 subnet that has no other directly-connected nodes](/2012/11/ipv6-router-advertisements-deep-dive.html) -- set the A flag to one and L flag to zero.
 * I'm positive I missed at least one intricate mechanism hidden deep inside DHCPv6 options. Your comments would be highly appreciated.
 {{</explain>}}
 

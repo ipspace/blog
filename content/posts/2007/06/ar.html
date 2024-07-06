@@ -5,7 +5,7 @@ date: "2007-06-13T07:35:00.000+02:00"
 tags: [ ARP,CEF ]
 ---
 
-<p>In a previous post I've been writing about the <a href="https://blog.ipspace.net/2007/05/what-is-cached-cef-adjacency.html">inability to clean the ARP cache due to cached CEF adjacencies</a>. As it turns out, this behavior has another side effect: the router will automatically refresh all ARP entries (and CEF adjacencies) as they expire from the ARP cache. This might become a problem on high-end devices with a lot of directly connected hosts if you set the <strong>arp timeout</strong> to a low value.<!--more--></p>
+<p>In a previous post I've been writing about the <a href="/2007/05/what-is-cached-cef-adjacency.html">inability to clean the ARP cache due to cached CEF adjacencies</a>. As it turns out, this behavior has another side effect: the router will automatically refresh all ARP entries (and CEF adjacencies) as they expire from the ARP cache. This might become a problem on high-end devices with a lot of directly connected hosts if you set the <strong>arp timeout</strong> to a low value.<!--more--></p>
 <p>Here is a sample debugging printout verifying this behavior:</p>
 <blockquote class="code">Jun  7 16:34:49: IP ARP: sent req src 192.168.0.1 0016.c7fe.f150,dst 192.168.0.2 000c.293a.b455 FastEthernet0/0.100<br/>Jun  7 16:34:49: IP ARP: rcvd rep src 192.168.0.2 000c.293a.b455, dst 192.168.0.1 FastEthernet0/0.100<br/>Jun  7 16:34:49: IP ARP: creating entry for IP address: 192.168.0.2, hw: 000c.293a.b455</blockquote>
 

@@ -5,9 +5,9 @@ tags: [ data center, switching ]
 ---
 **TL&DR**: No.
 
-Here's another never-ending [vi-versus-emacs-type](https://en.wikipedia.org/wiki/Editor_war) discussion: merchant silicon like [Broadcom Trident cannot forward small (64-byte) packets at line rate](https://blog.ipspace.net/2014/05/how-line-rate-is-line-rate.html). Does that matter, or is it yet another stimulating academic talking point and/or red herring used by vendor marketing teams to justify their high prices?
+Here's another never-ending [vi-versus-emacs-type](https://en.wikipedia.org/wiki/Editor_war) discussion: merchant silicon like [Broadcom Trident cannot forward small (64-byte) packets at line rate](/2014/05/how-line-rate-is-line-rate.html). Does that matter, or is it yet another stimulating academic talking point and/or red herring used by vendor marketing teams to justify their high prices?
 
-Here's what I [wrote about that topic](https://blog.ipspace.net/2021/04/response-switching-latency.html) a few weeks ago:
+Here's what I [wrote about that topic](/2021/04/response-switching-latency.html) a few weeks ago:
 <!--more-->
 {{<long-quote>}}
 Not many people care about 64-byte packet forwarding performance at 100 Gbps speeds. The only mainstream application of 64-byte packet forwarding I found was VoIP.

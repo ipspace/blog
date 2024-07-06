@@ -7,11 +7,11 @@ tags: [ automation, netlab ]
 series: [ cicd ]
 cicd_tag: testing
 ---
-Every complex enough network automation solution has to introduce a high-level (user-manageable) data model that is [eventually transformed](https://blog.ipspace.net/kb/DataModels/65-Data-Transformation.html) into a low-level (device) data model. 
+Every complex enough network automation solution has to introduce a high-level (user-manageable) data model that is [eventually transformed](/kb/DataModels/65-Data-Transformation.html) into a low-level (device) data model. 
 
 {{<figure src="/2021/02/dm-magic.png" caption="High-level overview of the process" width="400">}}
 
-The [transformation code](https://blog.ipspace.net/2021/02/data-model-transformation.html) (business logic) is one of the most complex pieces of a network automation solution, and there's only one way to ensure it works properly: you test the heck out of it ;) Let me show you how we solved that challenge in _[netlab](https://netlab.tools/)_.
+The [transformation code](/2021/02/data-model-transformation.html) (business logic) is one of the most complex pieces of a network automation solution, and there's only one way to ensure it works properly: you test the heck out of it ;) Let me show you how we solved that challenge in _[netlab](https://netlab.tools/)_.
 <!--more-->
 {{<note info>}}The rest of this blog post will sound ridiculously obvious to any decent software engineer. If you happen to be one of them, you can stop reading ;){{</note>}}
 
@@ -44,7 +44,7 @@ Last but not least, we have over 150 integration tests (more about them in the n
 * Produce correct results for all transformation test scenarios.
 * Not to crash on any lab topology used for integration tests.
 
-Can you use the same approach to test your network automation solution? Of course; if you [feel like borrowing some of the source code](https://github.com/ipspace/netlab/blob/dev/LICENSE.md), please feel free to do so. There's just one gotcha if you use a [home-grown database or a third-party tool](https://blog.ipspace.net/2019/04/text-files-or-relational-database.html) (like *[Nautobot](https://networktocode.com/nautobot/)*) instead of YAML files as the [source of truth](https://blog.ipspace.net/series/ssot.html): how will you create the test scenarios?
+Can you use the same approach to test your network automation solution? Of course; if you [feel like borrowing some of the source code](https://github.com/ipspace/netlab/blob/dev/LICENSE.md), please feel free to do so. There's just one gotcha if you use a [home-grown database or a third-party tool](/2019/04/text-files-or-relational-database.html) (like *[Nautobot](https://networktocode.com/nautobot/)*) instead of YAML files as the [source of truth](/series/ssot.html): how will you create the test scenarios?
 
 [^MTO]: A giant test case derived from a sample database would work, but figuring out which part of the data transformation code is broken would be a nightmare. It's much better to have numerous test cases focusing on small subsets of functionality.
 

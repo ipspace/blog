@@ -8,12 +8,12 @@ title: Scaling L3-Only Data Center Networks
 url: /2016/08/scaling-l3-only-data-center-networks.html
 ---
 
-<p>Andrew wondered how one could scale the L3-only data center networking approach I <a href="https://blog.ipspace.net/2015/04/rearchitecting-l3-only-networks.html">outlined in this blog post</a> and asked:</p>
+<p>Andrew wondered how one could scale the L3-only data center networking approach I <a href="/2015/04/rearchitecting-l3-only-networks.html">outlined in this blog post</a> and asked:</p>
 <blockquote class="cite">When dealing with guests on each host, if each host injects a /32 for each guest, by the time the routes are on the spine, you're potentially well past the 128k route limit. Can you elaborate on how this can scale beyond 128k routes?</blockquote>
 <p>Short answer: it won’t.<!--more--></p>
 <p>One of the obsessions of our industry is to try to find a one-size-fits-everything solutions. It's like trying to design something that could be a mountain bike today and an <a href="https://en.wikipedia.org/wiki/M1_Abrams">M1 Abrams</a> tomorrow. Reality doesn't work that way, even the physicists are still searching for the <a href="https://en.wikipedia.org/wiki/Grand_Unified_Theory">Grand Unified Theory of Everything</a>, and if they ever find one, it’ll probably be so complex that you won’t have a chance of ever understanding it.</p>
 <p>Coming back to the data centers:</p>
-<ul class="ListParagraph"><li>Most data centers have a <a href="https://blog.ipspace.net/2013/08/how-big-is-big-private-cloud.html">few thousand VMs</a>, public cloud providers being the obvious exception. Few thousand routes would easily fit into the forwarding tables of modern data center switches. </li>
+<ul class="ListParagraph"><li>Most data centers have a <a href="/2013/08/how-big-is-big-private-cloud.html">few thousand VMs</a>, public cloud providers being the obvious exception. Few thousand routes would easily fit into the forwarding tables of modern data center switches. </li>
 <li>If you have more than a hundred thousand guest VMs, you have to decide what compromises you’re willing to make. There are plenty of solutions addressing various scaling aspects, including overlay virtual networking implemented on hypervisors or ToR switches.</li>
 <li>If you’re thinking about deploying hundreds of thousands of containers, you should get your addressing plan right and advertise a prefix (not host routes) from every container host. Oh, and IPv6 would make your life way easier.</li>
 <li>Finally, if you really insist on having random IP addresses spread all over your humongous data center, maybe <a href="https://tools.ietf.org/html/draft-herbert-nvo3-ila-00">ILA</a> is what you’re looking for.</li>

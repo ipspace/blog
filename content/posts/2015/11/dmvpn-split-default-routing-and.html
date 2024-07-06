@@ -4,9 +4,9 @@ title: "DMVPN Split Default Routing and Internet Access"
 date: "2015-11-19T10:15:00.000+01:00"
 ---
 
-<p>One of the engineers listening to my <a href="https://www.ipspace.net/DMVPN_trilogy">DMVPN webinars</a> sent me a follow-up question (yes, I always try to reply to them) asking how to implement direct Internet access from the spoke sites (aka <em>local exit</em>) in combination with <a href="https://blog.ipspace.net/2015/10/dmvpn-split-default-routing.html"><em>split default routing</em></a><em> </em>you have to use in DMVPN Phase 2 or Phase 3 networks.</p>
+<p>One of the engineers listening to my <a href="https://www.ipspace.net/DMVPN_trilogy">DMVPN webinars</a> sent me a follow-up question (yes, I always try to reply to them) asking how to implement direct Internet access from the spoke sites (aka <em>local exit</em>) in combination with <a href="/2015/10/dmvpn-split-default-routing.html"><em>split default routing</em></a><em> </em>you have to use in DMVPN Phase 2 or Phase 3 networks.</p>
 <p>It’s really simple: either you have a design requirement that requires split default routing, or you don’t.<!--more--></p>
-<p><strong>Centralized Internet exit</strong>: you have to use two different default routes on the spoke site, one for transport (to get to the Internet directly), another one for user traffic (<a href="https://blog.ipspace.net/2015/10/dmvpn-split-default-routing.html"><em>more details</em></a>).</p>
+<p><strong>Centralized Internet exit</strong>: you have to use two different default routes on the spoke site, one for transport (to get to the Internet directly), another one for user traffic (<a href="/2015/10/dmvpn-split-default-routing.html"><em>more details</em></a>).</p>
 <div class="separator"><a href="/2015/11/s1600-DMVPN_Split_Default_Solution.png" imageanchor="1"><img border="0" src="/2015/11/s520-DMVPN_Split_Default_Solution.png"/></a></div>
 <p><strong>Local Internet exit</strong>: the default packet forwarding for user traffic and DMVPN transport traffic is the same– in both cases the packets should be sent to the Internet uplink interface. </p>
 <p>Don’t over-complicate your design with VRFs and inter-VRF static routes or route leaking. All you need is a default route pointing to the Internet uplink, and NAT/firewall configured between the inside and outside.</p>
@@ -16,5 +16,5 @@ date: "2015-11-19T10:15:00.000+01:00"
 <div class="separator"><a href="/2015/11/s1600-DMVPN_Central_Internet_Exit.png" imageanchor="1"><img border="0" src="/2015/11/s520-DMVPN_Central_Internet_Exit.png"/></a></div>
 <p><strong>DMVPN traffic bypasses the firewall</strong>. User traffic sent toward the Internet takes a different path than the DMVPN traffic – use split default routing on the hub router.</p>
 <div class="separator"><a href="/2015/11/s1600-DMVPN_Central_Split_Internet_Exit.png" imageanchor="1"><img border="0" src="/2015/11/s520-DMVPN_Central_Split_Internet_Exit.png"/></a></div>
-<p class="more">Looking for more DMVPN information? Explore my <a href="https://blog.ipspace.net/tag/dmvpn.html">blog posts</a> and watch my DMVPN webinars (<a href="http://www.ipspace.net/DMVPN:_From_Basics_to_Scalable_Networks">basics</a>, <a href="http://www.ipspace.net/DMVPN_New_Features">newer features</a>, <a href="http://www.ipspace.net/DMVPN_Designs">design guidelines</a>).</p>
+<p class="more">Looking for more DMVPN information? Explore my <a href="/tag/dmvpn.html">blog posts</a> and watch my DMVPN webinars (<a href="http://www.ipspace.net/DMVPN:_From_Basics_to_Scalable_Networks">basics</a>, <a href="http://www.ipspace.net/DMVPN_New_Features">newer features</a>, <a href="http://www.ipspace.net/DMVPN_Designs">design guidelines</a>).</p>
 

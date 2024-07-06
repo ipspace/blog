@@ -5,9 +5,9 @@ date: "2012-01-16T07:32:00.000+01:00"
 tags: [ Internet,BGP ]
 lastmod: 2020-11-18 06:44:00
 ---
-I got plenty of responses to the [*How could we filter extraneous BGP prefixes*](https://blog.ipspace.net/2012/01/how-could-we-filter-extraneous-bgp.html) post, some of them referring to emerging technologies and clean-slate ideas, others describing down-to-earth approaches. Thank you all, you’re fantastic!
+I got plenty of responses to the [*How could we filter extraneous BGP prefixes*](/2012/01/how-could-we-filter-extraneous-bgp.html) post, some of them referring to emerging technologies and clean-slate ideas, others describing down-to-earth approaches. Thank you all, you’re fantastic!
 
-Almost everyone in the “down-to-earth” category suggested a more or less aggressive inbound filter combined with default routing toward upstream ISPs. Ideally the upstream ISPs would send you [responsibly generated default route](https://blog.ipspace.net/2011/09/responsible-generation-of-bgp-default.html), or you could use static default routes toward well-known critical infrastructure destinations (like root name servers).
+Almost everyone in the “down-to-earth” category suggested a more or less aggressive inbound filter combined with default routing toward upstream ISPs. Ideally the upstream ISPs would send you [responsibly generated default route](/2011/09/responsible-generation-of-bgp-default.html), or you could use static default routes toward well-known critical infrastructure destinations (like root name servers).
 <!--more-->
 {{<note update>}}2020-11-18: Removed links to Cisco-hosted prefix filter, added links to MANRS and Team Cymru.{{</note>}}
 

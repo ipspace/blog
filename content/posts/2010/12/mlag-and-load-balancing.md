@@ -9,7 +9,7 @@ tags:
 title: MLAG and Load Balancing
 url: /2010/12/mlag-and-load-balancing.html
 ---
-FullMesh added an excellent comment to my [Multi-Chassis Link Aggregation (MLAG) and hot potato switching](https://blog.ipspace.net/2010/12/multi-chassis-link-aggregation-mlag-and.html) post. He wrote:
+FullMesh added an excellent comment to my [Multi-Chassis Link Aggregation (MLAG) and hot potato switching](/2010/12/multi-chassis-link-aggregation-mlag-and.html) post. He wrote:
 
 > If there are two core routing switches and two access switches which are MLAGged together in both directions, and hosts that are dual-active LAGged to the pair of access switches, then the traffic would stay on whichever side the host places it.
 
@@ -27,7 +27,7 @@ Now let's make the architecture redundant, introducing a second switch and combi
 
 {{<figure src="/2010/12/s400-MLAG_LB.png" caption="Redundant architecture using an MLAG cluster">}}
 
-All of a sudden, the switches (using [hot potato switching](https://blog.ipspace.net/2010/12/multi-chassis-link-aggregation-mlag-and.html)) can no longer influence the traffic flow toward the router. If all the hosts decide to send their outgoing traffic toward S1, the link S1-R will be saturated even though the link S2-R will remain idle. The quality of the servers' load balancing algorithm becomes vital.
+All of a sudden, the switches (using [hot potato switching](/2010/12/multi-chassis-link-aggregation-mlag-and.html)) can no longer influence the traffic flow toward the router. If all the hosts decide to send their outgoing traffic toward S1, the link S1-R will be saturated even though the link S2-R will remain idle. The quality of the servers' load balancing algorithm becomes vital.
 
 Finally, let's add two more links between the switches and the router:
 
@@ -38,5 +38,5 @@ In this architecture, each switch can use its own load balancing algorithm on th
 #### More information
 
 -   Multi-chassis Link Aggregation (and numerous other LAN, SAN and virtualization technologies) is described in the [Data Center 3.0 for Networking Engineers](https://www.ipspace.net/DC30) webinar ([buy a recording](https://www.ipspace.net/SingleRecording?code=DC30) or [yearly subscription](https://www.ipspace.net/Subscription)).
--   Read my posts about [Multi-chassis Link Aggregation basics](https://blog.ipspace.net/2010/10/multi-chassis-link-aggregation-basics.html), [Stacking on Steroids](https://blog.ipspace.net/2010/10/multi-chassis-link-aggregation-stacking.html) and [External Brains](https://blog.ipspace.net/2010/11/multi-chassis-link-aggregation-mlag.html) architectures.
--   The load balancing issues described in this article are caused by the [hot potato switching](https://blog.ipspace.net/2010/12/multi-chassis-link-aggregation-mlag-and.html).
+-   Read my posts about [Multi-chassis Link Aggregation basics](/2010/10/multi-chassis-link-aggregation-basics.html), [Stacking on Steroids](/2010/10/multi-chassis-link-aggregation-stacking.html) and [External Brains](/2010/11/multi-chassis-link-aggregation-mlag.html) architectures.
+-   The load balancing issues described in this article are caused by the [hot potato switching](/2010/12/multi-chassis-link-aggregation-mlag-and.html).

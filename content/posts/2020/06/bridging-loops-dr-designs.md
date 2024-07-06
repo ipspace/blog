@@ -10,7 +10,7 @@ tags:
 - high availability
 title: Bridging Loops in Disaster Recovery Designs
 ---
-One of the readers commenting the ideas in my *[Disaster Recovery and Failure Domains](https://blog.ipspace.net/2019/12/disaster-recover-and-failure-domains.html)* blog post effectively said "*In an active/passive DR scenario, having L3 DCI separation doesn't protect you from STP loop/flood in your active DC, so why do you care?*"
+One of the readers commenting the ideas in my *[Disaster Recovery and Failure Domains](/2019/12/disaster-recover-and-failure-domains.html)* blog post effectively said "*In an active/passive DR scenario, having L3 DCI separation doesn't protect you from STP loop/flood in your active DC, so why do you care?*"
 
 He's absolutely right - if you have a cold disaster recovery site, it doesn't matter if it's bombarded by a gazillion flooded packets per second... but how often do you have a cold recovery site?
 <!--more-->

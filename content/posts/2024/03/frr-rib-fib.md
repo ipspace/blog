@@ -4,7 +4,7 @@ date: 2024-03-20 07:39:00+0100
 tags: [ BGP, OSPF ]
 pre_scroll: True
 ---
-This is how we [described the interactions](https://blog.ipspace.net/2010/09/ribs-and-fibs.html) between routing protocol tables, RIB, and FIB in the ancient times:
+This is how we [described the interactions](/2010/09/ribs-and-fibs.html) between routing protocol tables, RIB, and FIB in the ancient times:
 
 * Routing protocols compute the best paths to all known prefixes.
 * These paths compete for entry in the routing table. The path(s) with the lowest administrative distance win.

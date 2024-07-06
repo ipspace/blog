@@ -10,7 +10,7 @@ tags:
 - switching
 title: Azure Networking 101
 ---
-A few weeks ago I [described the basics of AWS networking](https://blog.ipspace.net/2020/05/aws-networking-101.html), now it's time to describe how different Azure is. 
+A few weeks ago I [described the basics of AWS networking](/2020/05/aws-networking-101.html), now it's time to describe how different Azure is. 
 
 As always, it would be best to watch my [Azure Networking webinar](https://www.ipspace.net/Microsoft_Azure_Networking) to get the details. This blog post is the abridged CliffsNotes version of the webinar (and [here](https://twitter.com/cloud_opinion/status/1261368141231173633?s=11)'s the reason I won't write a similar blog post for other public clouds ;).
 <!--more-->
@@ -49,7 +49,7 @@ Consequences:
 * First-hop routing protocols like HSRP or VRRP don't work. Changing a MAC address of a VM will just disconnect it.
 * The only way to pass an IP address from one VM to another is through an orchestration system call. The usual GARP tricks don't work.
 * Taking over an IP address of a failed instance probably changes packet forwarding behavior, but don't expect it to be fast. The only way to get decently-fast failover is to use an Azure load balancer.
-* You cannot run a routing protocol between your instance and Azure router. You could either use orchestration system to modify the subnet route table(s) based on VM instance route tables, or run BGP with a VPN gateway in another VNet (see the corresponding section of [AWS Networking 101](https://blog.ipspace.net/2020/05/aws-networking-101.html) blog post for details).
+* You cannot run a routing protocol between your instance and Azure router. You could either use orchestration system to modify the subnet route table(s) based on VM instance route tables, or run BGP with a VPN gateway in another VNet (see the corresponding section of [AWS Networking 101](/2020/05/aws-networking-101.html) blog post for details).
 * You could use a unicast-based routing protocol between VMs in the same subnet, but the routes derived from the routing protocol would be ignored by the Azure router, so packet forwarding wouldn't work anyway. The only way to enable routing between virtual appliances is to create a tunnel and run routing protocol and packet forwarding across that tunnel... but even there you'd hit a snag: Azure router forwards only TCP, UDP, and ICMP traffic, so you'd have to use a VXLAN tunnel.
 
 {{<note note>}}Many thanks to [Remi Locherer](https://ngworx.ag/en/about-us/team/remi-locherer/) for pointing out the need for VXLAN tunnel.{{</note>}}

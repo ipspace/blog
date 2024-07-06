@@ -6,7 +6,7 @@ tags:
 - IP routing
 title: 'Fast Failover: Hardware and Software Implementations'
 ---
-In previous blog posts in this series we discussed whether it [makes sense to invest into fast failover network designs](https://blog.ipspace.net/2020/11/fast-failover-challenge.html), the [topologies you can use in such designs](https://blog.ipspace.net/2020/11/fast-failover-topologies.html), and the [fault detection techniques](https://blog.ipspace.net/2020/11/detecting-network-failure.html). I also hinted at different fast failover implementations; this blog post focuses on some of them.
+In previous blog posts in this series we discussed whether it [makes sense to invest into fast failover network designs](/2020/11/fast-failover-challenge.html), the [topologies you can use in such designs](/2020/11/fast-failover-topologies.html), and the [fault detection techniques](/2020/11/detecting-network-failure.html). I also hinted at different fast failover implementations; this blog post focuses on some of them.
 
 **Hardware-based failover** changes the hardware forwarding tables after a hardware-detectable link failure, most likely loss-of-light or transceiver-reported link fault. Forwarding hardware cannot do extensive calculations; the alternate paths are thus usually pre-programmed (more details below).
 <!--more-->
@@ -16,7 +16,7 @@ In previous blog posts in this series we discussed whether it [makes sense to in
 
 However, keep in mind that on modern CPUs the reprogramming of forwarding tables might take longer than the time a routing protocol needs to do its job, so it might not make sense to make software-based failover too complex... unless of course your hardware supports _Prefix Independent Convergence_ (the ability to update next hops for a set of prefixes).
 
-Hardware details are extremely hard to come by. Most high-speed switching silicon is either designed in-house by networking vendors or covered by [impenetrable NDAs](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html) (an [astonishing state of affairs](https://packetpushers.net/industry-needs-open-source-framework-switching-silicon/) considering how everyone loves to praise the virtues of _open-everything_).
+Hardware details are extremely hard to come by. Most high-speed switching silicon is either designed in-house by networking vendors or covered by [impenetrable NDAs](/2016/05/what-are-problems-with-broadcom.html) (an [astonishing state of affairs](https://packetpushers.net/industry-needs-open-source-framework-switching-silicon/) considering how everyone loves to praise the virtues of _open-everything_).
 
 Sometimes a vendor using third-party merchant silicon decides to spill some of the beans like Cisco did [describing ASR 9000 behavior](https://community.cisco.com/t5/service-providers-documents/asr9000-xr-load-balancing-architecture-and-characteristics/ta-p/3124809). While those documents are fun to read, to understand the fundamentals we often don't need more than a high-level overview like what [Lukas Krattiger](https://www.ipspace.net/Author:Lukas_Krattiger) sent me. As always, all the good stuff is his, and all the errors are mine.
 
@@ -26,7 +26,7 @@ _Equal Cost Multi-Path_ (ECMP) is a function available in routing protocols that
 
 Routing protocol ECMP is driving the _Routing Information Base_ (RIB, routing table), generally based in control-plane/CPU. Forwarding Information Base (FIB), the data-plane/ASIC-based part, is a different part of the story. If you support ECMP in the control plane doesn't necessarily mean that you have ECMP programmed in the data plane.
 
-{{<note info>}}Explore *[Control and Data Plane](https://blog.ipspace.net/2013/08/management-control-and-data-planes-in.html)* and *[RIB and FIB](https://blog.ipspace.net/2010/09/ribs-and-fibs.html)* blog posts for more details, or watch *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar.{{</note>}}
+{{<note info>}}Explore *[Control and Data Plane](/2013/08/management-control-and-data-planes-in.html)* and *[RIB and FIB](/2010/09/ribs-and-fibs.html)* blog posts for more details, or watch *[How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar.{{</note>}}
 
 We need to understand that _Equal Cost Multipath_ (ECMP), _Unequal Cost Multipath_ (UCMP), _Loop Free Alternate_ (LFA) or _Fast Reroute_ (FRR) are ways to influence the RIB and, if supported, tell the FIB what to program for forwarding. In order to make this happen, FIB needs functionality to support this, most commonly ECMP groups, _Recursive Next Hops_ (RNH) used by protocols like BGP, and directly-connected next hops (CNH) aka adjacencies.
 

@@ -18,13 +18,13 @@ That part of my presentation is [on YouTube](https://youtu.be/7TfBvGo1mCg); for 
 <!--more-->
 For more details on individual myths, read the following blog posts:
 
--   [FCoE over TRILL -- this time from Juniper](https://blog.ipspace.net/2011/06/fcoe-over-trill-this-time-from-juniper.html)
--   [The beauties of dense-mode FCoE](https://blog.ipspace.net/2011/06/beauties-of-dense-mode-fcoe.html)
--   [FCoE between data centers -- forget it](https://blog.ipspace.net/2010/11/fcoe-between-data-centers-forget-it.html)
--   [Long distance vMotion for disaster avoidance? Do the math first!](https://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html)
--   [Traffic trombone -- what it is and how you get them](https://blog.ipspace.net/2011/02/traffic-trombone-what-it-is-and-how-you.html)
--   [Follow the sun workload mobility? Get lost!](https://blog.ipspace.net/2011/10/follow-sun-workload-mobility-get-lost.html)
--   [Stretched clusters -- almost as good as heptagonal wheels](https://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html)
--   [Distributed firewalls -- how badly do you want to fail?](https://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html)
+-   [FCoE over TRILL -- this time from Juniper](/2011/06/fcoe-over-trill-this-time-from-juniper.html)
+-   [The beauties of dense-mode FCoE](/2011/06/beauties-of-dense-mode-fcoe.html)
+-   [FCoE between data centers -- forget it](/2010/11/fcoe-between-data-centers-forget-it.html)
+-   [Long distance vMotion for disaster avoidance? Do the math first!](/2011/09/long-distance-vmotion-for-disaster.html)
+-   [Traffic trombone -- what it is and how you get them](/2011/02/traffic-trombone-what-it-is-and-how-you.html)
+-   [Follow the sun workload mobility? Get lost!](/2011/10/follow-sun-workload-mobility-get-lost.html)
+-   [Stretched clusters -- almost as good as heptagonal wheels](/2011/06/stretched-clusters-almost-as-good-as.html)
+-   [Distributed firewalls -- how badly do you want to fail?](/2011/04/distributed-firewalls-how-badly-do-you.html)
 
 Last but definitely not least (trying not to be totally negative), there is a good use case for L2 DCI -- [running SNA over OTV](http://twitter.com/ccie5851/status/127463992951181312), because DLSw cannot run @ 10Gb speeds available with the OSA-Express adapters 🤪.

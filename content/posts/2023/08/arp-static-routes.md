@@ -90,7 +90,7 @@ rtr#show ip route 10.1.0.5|begin ^ S
  S        10.1.0.5/32 is directly connected, Ethernet2
 ```
 
-[^CCS]: A static route pointing to an interface can cover any IP prefix you wish including the default route. You [DO NOT want to do that though](https://blog.ipspace.net/2009/10/follow-up-interface-default-route.html).
+[^CCS]: A static route pointing to an interface can cover any IP prefix you wish including the default route. You [DO NOT want to do that though](/2009/10/follow-up-interface-default-route.html).
 
 When trying to reach 10.1.0.5, the router attempts to reach a directly connected IP address and sends an ARP request for 10.1.0.5. The source IP address in the ARP request is the IP address of the loopback interface that is loaning the IP address to the outgoing interface (10.0.0.1). With the default `arp_ignore` *sysctl* settings, the Linux host has no problem replying to that ARP request.
 

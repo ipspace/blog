@@ -6,7 +6,7 @@ tags:
 title: Do You Need IPsec to Run IPv6?
 url: /2012/08/do-you-need-ipsec-to-run-ipv6.html
 ---
-The usual claim that "[IPv6 has better security because it includes mandatory IPsec support](https://blog.ipspace.net/2010/02/ipv6-myths.html)" is evidently creating some confusion, at least based on a set of questions I received from one of my readers.
+The usual claim that "[IPv6 has better security because it includes mandatory IPsec support](/2010/02/ipv6-myths.html)" is evidently creating some confusion, at least based on a set of questions I received from one of my readers.
 
 > Can IPv6 work without IPsec?
 

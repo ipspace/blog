@@ -11,6 +11,6 @@ A [previous BGP lab](https://bgplabs.net/policy/8-community-attach/) focused on 
 
 {{<figure src="https://bgplabs.net/policy/topology-community-use.png">}}
 <!--more-->
-With this lab exercise, I [completed the original BGP labs project](https://blog.ipspace.net/2023/08/bgp-hands-on-labs.html) -- all the labs I had in the BGP course I created in the mid-1990s are now [available online](https://bgplabs.net/) free of charge on [more than a dozen](https://netlab.tools/platforms/#platform-routing-support) different network operating systems. Now, you have absolutely no excuse not to become a BGP master ;))
+With this lab exercise, I [completed the original BGP labs project](/2023/08/bgp-hands-on-labs.html) -- all the labs I had in the BGP course I created in the mid-1990s are now [available online](https://bgplabs.net/) free of charge on [more than a dozen](https://netlab.tools/platforms/#platform-routing-support) different network operating systems. Now, you have absolutely no excuse not to become a BGP master ;))
 
 {{<jump>}}[Explore the lab exercise](https://bgplabs.net/policy/9-community-use/){{</jump>}}

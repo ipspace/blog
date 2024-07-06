@@ -13,9 +13,9 @@ url: /2014/05/openflow-support-in-data-center-switches.html
 <p class="note">All the information in this blog post comes from publicly available vendor documentation (configuration guides, command references, release notes). NEC is the only vendor mentioned in this blog post that does not have public documentation, so it’s impossible to figure out (from the outside) what functionality their switches support.</p>
 <p>Some other facts:</p>
 <ul class="ListParagraph"><li>Most vendors offer OpenFlow 1.0. Exceptions: HP and NEC;</li>
-<li>Most vendors have a single OpenFlow lookup table (<a href="https://blog.ipspace.net/2013/10/flow-table-explosion-with-openflow-10.html">one of the limitations of OpenFlow 1.0</a>), HP has a single table on 12500, two tables on 5900, and a totally convoluted schema on Procurve switches.</li>
+<li>Most vendors have a single OpenFlow lookup table (<a href="/2013/10/flow-table-explosion-with-openflow-10.html">one of the limitations of OpenFlow 1.0</a>), HP has a single table on 12500, two tables on 5900, and a totally convoluted schema on Procurve switches.</li>
 <li>Most vendors work with a single controller. Cisco’s Nexus switches can work with up to 8 concurrent controllers, HP switches with up to 64 concurrent controllers.</li>
-<li>Many vendors <a href="https://blog.ipspace.net/2014/05/optimizing-openflow-hardware-tables.html">optimize the OpenFlow lookup table</a> by installing L2-only or L3-only flow entries in dedicated hardware (which still looks like the same table to the OpenFlow controller);</li>
+<li>Many vendors <a href="/2014/05/optimizing-openflow-hardware-tables.html">optimize the OpenFlow lookup table</a> by installing L2-only or L3-only flow entries in dedicated hardware (which still looks like the same table to the OpenFlow controller);</li>
 <li>OpenFlow table sizes remain dismal. Most switches support low thousands of 12-tuple flows. Exception: NEC edge switches supports between 64K and 160K 12-tuple flows.</li>
 <li>While everyone supports full 12-tuple matching (additionally, HP supports IPv6, MPLS, and PBB), almost no one (apart from HP) offers significant packet rewrite functionality. Most vendors can set destination MAC address or push a VLAN tag; HP’s 5900 can set any field in the packets, copy/decrement IP or MPLS TTL, and push VLAN, PBB or MPLS tags.</li>
 </ul>

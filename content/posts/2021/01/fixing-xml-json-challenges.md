@@ -23,7 +23,7 @@ In any case, life would be much simpler if there would have been an attribute in
 
 ### The Idealistic Way
 
-Sander Steffann [proposed an idealistic solution](https://blog.ipspace.net/2021/01/beware-xml-json-information-loss.html#cv2-341) that's too good to ever get implemented (it does have a few side effects though): what if Ansible would use a modified *dict* object that would behave like a one-element list when used in Jinja2 list context.
+Sander Steffann [proposed an idealistic solution](/2021/01/beware-xml-json-information-loss.html#cv2-341) that's too good to ever get implemented (it does have a few side effects though): what if Ansible would use a modified *dict* object that would behave like a one-element list when used in Jinja2 list context.
 
 Unfortunately, I'm positive a lot of people use dictionaries like lists (either intentionally or by mistake/ignorance), figure out that's a way to get keys out of the dictionary (instead of using **dict.keys()**) and move on. Don't ever tell me how Python is better than Perl because there's only one way of doing things.
 

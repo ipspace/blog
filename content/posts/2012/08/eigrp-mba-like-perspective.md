@@ -14,7 +14,7 @@ Next, he started wondering why a router would behave that way:
 <!--more-->
 > Is that just a strict protocol design decision that may lead to cases where a good (non-loop) may not be considered as a feasible successor but the design choice had to be made to ensure we avoid loops?
 
-Actually, that was the best EIGRP designers could do with a distance vector routing protocol. The router, lacking the information on other routers\' link costs, has no way of figuring out what next hop the neighbor reporting higher distance is using (contrary to [Loop-Free Alternate feature in OSPF](https://blog.ipspace.net/2012/01/loop-free-alternate-ospf-meets-eigrp.html) where the router *knows* its neighbor has a third-party next hop because it has full visibility into neighbor's view of the area topology).
+Actually, that was the best EIGRP designers could do with a distance vector routing protocol. The router, lacking the information on other routers\' link costs, has no way of figuring out what next hop the neighbor reporting higher distance is using (contrary to [Loop-Free Alternate feature in OSPF](/2012/01/loop-free-alternate-ospf-meets-eigrp.html) where the router *knows* its neighbor has a third-party next hop because it has full visibility into neighbor's view of the area topology).
 
 However, it was the follow-up e-mail I got from Ahmed that made my day -- he explained EIGRP's operation in business terms:
 

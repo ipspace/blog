@@ -18,7 +18,7 @@ The simplest design that can be used for fast failover is a set of parallel equa
 
 {{<figure src="FRR_Parallel_Links.jpg" caption="Parallel links between adjacent nodes">}}
 
-You could [run independent routing adjacencies over the parallel links, or bundle them in a Link Aggregation Group](https://blog.ipspace.net/2014/10/lag-versus-ecmp.html). Link Aggregation Group [makes more sense when you're using a link-state routing protocol](https://routingcraft.net/equal-routes/).
+You could [run independent routing adjacencies over the parallel links, or bundle them in a Link Aggregation Group](/2014/10/lag-versus-ecmp.html). Link Aggregation Group [makes more sense when you're using a link-state routing protocol](https://routingcraft.net/equal-routes/).
 
 The failover process could happen in hardware or software (more about that in an upcoming blog post and in *Advanced Routing Protocol Topics* part of *[Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)* webinar).
 
@@ -34,7 +34,7 @@ In a routed network you SHOULD run independent routing adjacencies over links co
 
 ### Loop-Free Alternates
 
-In more complex network topologies a node might not have equal-cost paths to a destination that could be used for fast failover, but has an adjacent node that is using an independent path to get to that destination -- a *[Loop-Free Alternate](https://blog.ipspace.net/2012/01/loop-free-alternate-ospf-meets-eigrp.html)*.
+In more complex network topologies a node might not have equal-cost paths to a destination that could be used for fast failover, but has an adjacent node that is using an independent path to get to that destination -- a *[Loop-Free Alternate](/2012/01/loop-free-alternate-ospf-meets-eigrp.html)*.
 
 For example, in the following network A can use C to provide a loop-free alternate to get to Y.
 

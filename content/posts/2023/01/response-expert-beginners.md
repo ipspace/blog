@@ -3,7 +3,7 @@ title: "Response: Network Automation Expert Beginners"
 date: 2023-01-25 07:00:00
 tags: [ automation ]
 ---
-_I usually [post links to my blog posts to LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7021022696943579136/), and often get extraordinary comments. Unfortunately, those comments usually get lost in the mists of social media fog after a few weeks, so I'm trying to save them by reposting them as blog posts (always with original author's permission). Here's a comment [David Sun](https://www.linkedin.com/in/dysun/) left on my [Network Automation Expert Beginners](https://blog.ipspace.net/2023/01/network-automation-expert-beginners.html) blog post_
+_I usually [post links to my blog posts to LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7021022696943579136/), and often get extraordinary comments. Unfortunately, those comments usually get lost in the mists of social media fog after a few weeks, so I'm trying to save them by reposting them as blog posts (always with original author's permission). Here's a comment [David Sun](https://www.linkedin.com/in/dysun/) left on my [Network Automation Expert Beginners](/2023/01/network-automation-expert-beginners.html) blog post_
 
 ---
 

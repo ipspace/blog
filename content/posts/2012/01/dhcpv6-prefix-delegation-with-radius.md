@@ -7,7 +7,7 @@ tags:
 title: DHCPv6 Prefix Delegation with Radius Works in IOS Release 15.1
 url: /2012/01/dhcpv6-prefix-delegation-with-radius.html
 ---
-A while ago I described the [pre-standard way Cisco IOS used to get delegated IPv6 prefixes from a RADIUS server](https://blog.ipspace.net/2011/03/dhcpv6-radius-integration-cisco-way.html). Cisco's documentation [always claimed](http://www.cisco.com/en/US/prod/collateral/iosswrel/ps8802/ps6968/ps6350/prod_bulletin0900aecd802eaa4f.html) that Cisco IOS implements [RFC 4818](http://tools.ietf.org/html/rfc4818), but you simply couldn't get it to work in IOS releases 12.4T or 15.0M. In December I wrote about the [progress Cisco is making on the DHCPv6 front](https://blog.ipspace.net/2011/12/dhcpv6-server-on-cisco-ios-making.html) and *iord\@intracom.com* commented that IOS 15.1S does support RFC 4818. You know I absolutely had to test that claim \... and it's true!
+A while ago I described the [pre-standard way Cisco IOS used to get delegated IPv6 prefixes from a RADIUS server](/2011/03/dhcpv6-radius-integration-cisco-way.html). Cisco's documentation [always claimed](http://www.cisco.com/en/US/prod/collateral/iosswrel/ps8802/ps6968/ps6350/prod_bulletin0900aecd802eaa4f.html) that Cisco IOS implements [RFC 4818](http://tools.ietf.org/html/rfc4818), but you simply couldn't get it to work in IOS releases 12.4T or 15.0M. In December I wrote about the [progress Cisco is making on the DHCPv6 front](/2011/12/dhcpv6-server-on-cisco-ios-making.html) and *iord\@intracom.com* commented that IOS 15.1S does support RFC 4818. You know I absolutely had to test that claim \... and it's true!
 <!--more-->
 This is the configuration you can use on the PE-router:
 
@@ -42,7 +42,7 @@ Cisco IOS release 15.1(3)S that I used in the tests also supports a fallback mec
 
 -   The value of the *Delegated-IPv6-Prefix* from the RADIUS reply is saved in a per-interface DHCPv6 block;
 -   When the PPPoE client uses DHCPv6 to get a delegated prefix, PE-router checks the pre-populated DHCPv6 reply associated with the incoming interface. If the delegated prefix is already in there, it returns the reply without querying the RADIUS server;
--   If the delegated IPv6 prefix is not yet available, the PE-router uses the pre-standard method and sends [another RADIUS request for the *user-*dhcpv6 username](https://blog.ipspace.net/2011/03/dhcpv6-radius-integration-cisco-way.html).
+-   If the delegated IPv6 prefix is not yet available, the PE-router uses the pre-standard method and sends [another RADIUS request for the *user-*dhcpv6 username](/2011/03/dhcpv6-radius-integration-cisco-way.html).
 
 According to Cisco's documentation, you get the same functionality (RFC 4818 support) in IOS XE release 3S.
 

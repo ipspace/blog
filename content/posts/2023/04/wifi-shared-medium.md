@@ -23,7 +23,7 @@ Now that we know how to hijack someone else's frames, let's insert ourselves int
 
 * Send a unicast GARP[^UGARP] for the victim's IP address to the MAC address of the first-hop router. That will persuade the router to send victim's traffic to us. Please note we need unicast GARP to work otherwise the victim will try to defend its IP address (or we could overload the victim first).
 * Send a unicast GARP for the router's IP address to the victim. That will persuade the victim to send off-subnet traffic to us.
-* Even better, start sending IPv6 Router Advertisements (maybe obfuscated using the [latest Ethernet encapsulation scam](https://blog.ipspace.net/2023/01/hiding-packets-behind-llc-headers.html)) and [persuade the victim it's connected to a well-functioning IPv6 network](https://blog.ipspace.net/2011/11/ipv6-security-getting-bored-bru-airport.html).
+* Even better, start sending IPv6 Router Advertisements (maybe obfuscated using the [latest Ethernet encapsulation scam](/2023/01/hiding-packets-behind-llc-headers.html)) and [persuade the victim it's connected to a well-functioning IPv6 network](/2011/11/ipv6-security-getting-bored-bru-airport.html).
 
 [^UGARP]: Yes, unicast Gratuitous ARP is a thing, and it's perfectly legal according to ARP RFC. Even worse, it's used by some multi-link NICs. More about that abomination in another blog post (unless I get too disgusted to write about it).
 

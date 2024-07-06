@@ -20,4 +20,4 @@ Someone told you to minimize the EIGRP routing traffic, so you use EIGRP stub ro
 
 Would your Phase 2 DMVPN network perform as expected? If not, what's wrong with it? If you think it has a problem, what would you change?
 
-Don't cheat, answer the questions before [reading the solution](https://blog.ipspace.net/2010/10/solution-eigrp-summarization-breaks.html).
+Don't cheat, answer the questions before [reading the solution](/2010/10/solution-eigrp-summarization-breaks.html).

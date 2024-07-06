@@ -9,11 +9,11 @@ tags:
 - QoS
 title: 'Repost: Using MP-TCP to Utilize Unequal Links'
 ---
-In the *[Does Unequal-Cost Multipathing Make Sense](https://blog.ipspace.net/2021/02/does-ucmp-make-sense.html)* blog post I wrote (paraphrased):
+In the *[Does Unequal-Cost Multipathing Make Sense](/2021/02/does-ucmp-make-sense.html)* blog post I wrote (paraphrased):
 
 > The trick to successful utilization of unequal uplinks is to use them wisely [...] It's how multipath TCP (MP-TCP) could be used for latency-critical applications like Siri.
 
-Minh Ha quickly [pointed out (some) limitations of MP-TCP](https://blog.ipspace.net/2021/02/does-ucmp-make-sense.html#428) and as is usually the case, his comment was too valuable to be left as a small print at the bottom of a blog post.
+Minh Ha quickly [pointed out (some) limitations of MP-TCP](/2021/02/does-ucmp-make-sense.html#428) and as is usually the case, his comment was too valuable to be left as a small print at the bottom of a blog post.
 
 {{<note>}}Intuitively I don't necessarily agree with all of his conclusions, but don't know enough to have a qualified opinion.{{</note>}}
 <!--more-->

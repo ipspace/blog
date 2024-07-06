@@ -55,7 +55,7 @@ After long discussions with \$vendor sales engineers they tell us: \"*We underst
 
 ### I Couldn't Resist Adding...
 
-And this is what happens when you buy things based on glitzy PowerPoint without [ever considering what you should ask for to make your operations easier](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html).
+And this is what happens when you buy things based on glitzy PowerPoint without [ever considering what you should ask for to make your operations easier](/2016/10/network-automation-rfp-requirements.html).
 
 Next step: CxO (who made the purchasing decision in the first place) will complain how expensive his internal security and networking teams are.
 

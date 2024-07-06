@@ -25,7 +25,7 @@ RDMA was designed to run over Infiniband. As expected, someone inevitably said[^
 
 [^RH]: Around 2010, almost a decade and a half ago
 
--   Like FCoE, RoCE works best over lossless transport -- that's why it's running over *Converged Ethernet* that supports [Priority Flow Control](https://blog.ipspace.net/2010/09/introduction-to-8021qbb-priority-flow.html)[^PFC].
+-   Like FCoE, RoCE works best over lossless transport -- that's why it's running over *Converged Ethernet* that supports [Priority Flow Control](/2010/09/introduction-to-8021qbb-priority-flow.html)[^PFC].
 -   RoCE cannot deal gracefully with packet reordering.
 -   RoCE's performance catastrophically degrades when faced with packet drops or out-of-order packets.
 
@@ -44,7 +44,7 @@ Still here? I have a fun fact for you: some people need GPU clusters with tens o
 
 Want to know more? Read *[Datacenter Ethernet And RDMA: Issues At Hyperscale](https://arxiv.org/pdf/2302.03337.pdf)*[^NOTCP]. 
 
-[^NOTCP]: Another article that seems to hint it's [time to replace TCP in the data center](https://blog.ipspace.net/2023/01/data-center-tcp-replacement.html) ;)
+[^NOTCP]: Another article that seems to hint it's [time to replace TCP in the data center](/2023/01/data-center-tcp-replacement.html) ;)
 
 As always, you can fix the problem in three ways:
 
@@ -70,7 +70,7 @@ Now imagine you disaggregate[^DG] a chassis switch, repackage linecards and fabr
 
 There's just one tiny problem with Broadcom's approach: while it (probably) works, it's proprietary and will likely stay that way forever[^BCM]. That might upset other vendors (more so if they don't have a comparable ASIC), so they're trying hard to hammer the square peg (RoCE) into the round hole (Ethernet with minimal modifications). [Ultra Ethernet position paper](https://ultraethernet.org/wp-content/uploads/sites/20/2023/07/23.07.12-UEC-1.0-Overview-FINAL-WITH-LOGO.pdf) claims they plan to:
 
-[^BCM]: At least considering the [history of Broadcom's openness](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html).
+[^BCM]: At least considering the [history of Broadcom's openness](/2016/05/what-are-problems-with-broadcom.html).
 
 -   Add multipathing and packet spraying to Ethernet.
 -   Get rid of the "Ethernet is not IP and does not reorder packets" constraint.

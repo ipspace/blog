@@ -7,11 +7,11 @@ One of the ipSpace.net subscribers sent me this question:
 
 >  How could I use NSX to create a cloud-like software network layer enabling a VMware enterprise to create a public cloud-like availability zone concept within a data center (something like Oracle Cloud does)?
 
-That's easy: stop believing in [VMware marketing shenanigans](https://blog.ipspace.net/2020/09/disaster-recovery-vendor-marketing.html).
+That's easy: stop believing in [VMware marketing shenanigans](/2020/09/disaster-recovery-vendor-marketing.html).
 <!--more-->
-An [availability zone](https://blog.ipspace.net/2021/02/public-cloud-regions-availability-zones.html) should be an independent failure domain and as isolated as possible from other availability zones (but less so than regions). What that means depends on the [network virtualization implementation details](https://blog.ipspace.net/2021/02/vpc-subnets-aws-azure-gcp.html), but no sane public cloud supports bridging or stretched VLANs.
+An [availability zone](/2021/02/public-cloud-regions-availability-zones.html) should be an independent failure domain and as isolated as possible from other availability zones (but less so than regions). What that means depends on the [network virtualization implementation details](/2021/02/vpc-subnets-aws-azure-gcp.html), but no sane public cloud supports bridging or stretched VLANs.
 
-**Rule#1**: [A VLAN is a single failure domain](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html). Keep VLANs within a single availability zone. Stretching a VLAN will not create a disaster recovery solution; it will [create a single failure domain](https://blog.ipspace.net/2019/12/disaster-recover-and-failure-domains.html) and [potentially a disaster](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html).
+**Rule#1**: [A VLAN is a single failure domain](/2012/05/layer-2-network-is-single-failure.html). Keep VLANs within a single availability zone. Stretching a VLAN will not create a disaster recovery solution; it will [create a single failure domain](/2019/12/disaster-recover-and-failure-domains.html) and [potentially a disaster](/2013/01/long-distance-vmotion-stretched-ha.html).
 
 **Next question:** How will you connect subnets from different availability zones? We're entering a gray area full of "it depends" twisting rabbit trails, starting with "_do we want independent data-plane failure domains, or do we also want independent control-plane failure domains?_"
 

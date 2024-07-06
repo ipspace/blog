@@ -4,7 +4,7 @@ date: 2023-11-30 07:54:00
 tags: [ BGP ]
 ---
 
-[Martijn Van Overbeek](https://www.linkedin.com/in/martijnvanoverbeek-ccie38666/) left this comment on my [LinkedIn post](https://www.linkedin.com/posts/ivanpepelnjak_bgp-labs-using-multi-exit-discriminator-activity-7130543496884555776-uqIQ) announcing the [BGP MED lab](https://blog.ipspace.net/2023/11/bgp-labs-multi-exit-discriminator.html):
+[Martijn Van Overbeek](https://www.linkedin.com/in/martijnvanoverbeek-ccie38666/) left this comment on my [LinkedIn post](https://www.linkedin.com/posts/ivanpepelnjak_bgp-labs-using-multi-exit-discriminator-activity-7130543496884555776-uqIQ) announcing the [BGP MED lab](/2023/11/bgp-labs-multi-exit-discriminator.html):
 
 > It might be fixed, but I can recall in the past that there was a lot of quirkiness in multi-vendor environments, especially in how different vendors use it and deal with the setting when the attribute does exist or does not have to exist.
 

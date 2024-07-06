@@ -106,7 +106,7 @@ Routing entry for 10.0.0.2/32
       Route metric is 11, traffic share count is 1
 ```
 
-I explained the necessary glue in the [Unnumbered Ethernet Interfaces](https://blog.ipspace.net/2021/06/unnumbered-ethernet-interfaces.html) blog post; here's the TL&DF[^TLDF] summary:
+I explained the necessary glue in the [Unnumbered Ethernet Interfaces](/2021/06/unnumbered-ethernet-interfaces.html) blog post; here's the TL&DF[^TLDF] summary:
 
 * The OSPF next hops are supposed to be directly connected.
 * What we need is a glue ARP entry for 10.0.0.2 on outgoing internet (GigabitEthernet2)
@@ -121,7 +121,7 @@ Internet  10.0.0.2               91   5254.00e1.4213  ARPA   GigabitEthernet2
 
 OK, so the theory sounds great. Does any vendor support that? Hint: how do you think I got the printouts?
 
-On a more serious note: I got OSPF running over unnumbered Ethernet interfaces on EOS ([requires a nerd knob](https://blog.ipspace.net/2021/04/build-unnumbered-lab-netsim-tools.html)), IOS, IOS XE, IOS XR, NX-OS, Junos, Cumulus Linux, and FRR. It also works on Nokia SR OS and VyOS (check [_netlab_ OSPF support tables](https://netlab.tools/module/ospf/#platform-support) for more details).
+On a more serious note: I got OSPF running over unnumbered Ethernet interfaces on EOS ([requires a nerd knob](/2021/04/build-unnumbered-lab-netsim-tools.html)), IOS, IOS XE, IOS XR, NX-OS, Junos, Cumulus Linux, and FRR. It also works on Nokia SR OS and VyOS (check [_netlab_ OSPF support tables](https://netlab.tools/module/ospf/#platform-support) for more details).
 
 Finally, you REALLY SHOULD read the [Unnumbered Links In OSPF](https://lostintransit.se/2023/08/22/unnumbered-links-in-ospf/) blog post by Daniel Dib.
 

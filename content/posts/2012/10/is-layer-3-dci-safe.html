@@ -11,7 +11,7 @@ url: /2012/10/is-layer-3-dci-safe.html
 
 <p>One of my readers sent me a great question:</p>
 <blockquote class="cite">I agree with you that L2 DCI is like driving without a seat belt. But is L3 DCI safer in case of DCI link failure? Let's say you have your own AS and PI addresses in use. Your AS spans multiple sites and there are external BGP peers on each site. What happens if the L3 DCI breaks? How will that impact your services?</blockquote>
-<p>Simple answer: while L3 DCI is orders of magnitude safer than L2 DCI, it will <a href="https://blog.ipspace.net/2012/10/if-something-can-fail-it-will.html">eventually fail</a>, and you have to plan for that.<!--more--></p>
+<p>Simple answer: while L3 DCI is orders of magnitude safer than L2 DCI, it will <a href="/2012/10/if-something-can-fail-it-will.html">eventually fail</a>, and you have to plan for that.<!--more--></p>
 <h4>External IP Routing</h4><p>If you advertise a single provider-independent (PI) prefix into the Internet from both data centers, and the DCI link fails, you’re no better off than a L2 DCI design – some of your traffic will arrive at the wrong location and will be dropped.</p>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2012/10/s1600-L3DCI_Failure.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="335" src="/2012/10/s400-L3DCI_Failure.png" width="400"/></a></div>
 <p>You should always advertise:</p>
@@ -19,7 +19,7 @@ url: /2012/10/is-layer-3-dci-safe.html
 <li>An aggregate prefix from both data centers to ensure a data center isn’t totally isolated if its Internet uplink fails while the DCI link is still up.</li>
 </ul>
 <div class="separator" style="clear: both; text-align: center;"><a href="/2012/10/s1600-L3DCI_Specific.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="335" src="/2012/10/s400-L3DCI_Specific.png" width="400"/></a></div>
-<p class="info">If you can’t aggregate the data center prefixes, advertise the prefix belonging to the remote data center with higher MED, <a href="https://blog.ipspace.net/2008/02/bgp-essentials-as-path-prepending.html">longer AS-path</a>, or ISP-specific backup path <a href="https://blog.ipspace.net/2008/02/bgp-essentials-bgp-communities.html">BGP communities</a>.</p>
+<p class="info">If you can’t aggregate the data center prefixes, advertise the prefix belonging to the remote data center with higher MED, <a href="/2008/02/bgp-essentials-as-path-prepending.html">longer AS-path</a>, or ISP-specific backup path <a href="/2008/02/bgp-essentials-bgp-communities.html">BGP communities</a>.</p>
 <h4>Too-Specific Prefixes</h4><p>Sometimes you cannot advertise a more-specific prefix. You might have a single /24 IPv4 prefix or a single /48 IPv6 prefix. The IPv6 case is easily solved: go and ask for another prefix, it’s not like we’re running short on IPv6 prefixes. In the IPv4 case, you’re limited to kludges:</p>
 <p><strong>Advertise /25</strong><strong>s</strong><strong> to your ISP</strong>. Split the /24 prefix into two /25s. Advertise the /24 and one of the /25s from each data center. Your ISP has to be willing to accept the /25s (usually they are filtered), and you should advertise them with <strong>no-export </strong>BGP community so they’re not leaked into the wider Internet.</p>
 <p class="warn">This trick works well if you use the same ISPs in both data centers. You can have connections to multiple ISPs in each data center, but each ISP has to be present in all data centers.</p>

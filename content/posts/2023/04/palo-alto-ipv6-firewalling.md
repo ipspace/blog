@@ -21,7 +21,7 @@ Let me reiterate that (and I checked the [configuration instructions](https://do
 
 {{<note>}}I hope I'm wrong and someone will send me a link explaining why Palo Alto firewalls filter IPv6 on virtual wires by default.{{</note>}}
 
-You can probably guess how the rest of this blog post will look like ([hint](https://blog.ipspace.net/2011/11/ipv6-security-getting-bored-bru-airport.html)). Anyway, here we go:
+You can probably guess how the rest of this blog post will look like ([hint](/2011/11/ipv6-security-getting-bored-bru-airport.html)). Anyway, here we go:
 
 * Nobody wants to configure IPv6.
 * Windows and major Linux distributions have IPv6 enabled by default.
@@ -29,7 +29,7 @@ You can probably guess how the rest of this blog post will look like ([hint](htt
 * Likewise, there's a non-zero chance that whoever configured the layer-2 firewall decided IPv6 didn't matter.
 * Unless you're using more modern components like **nftables**[^HTNF] (or eBPF 😉), Linux servers filter IPv4 traffic with **iptables** and IPv6 traffic with **ip6tables**. If your server administrators don't care about IPv6 they probably haven't configured **ip6tables** with a DENY ALL rule.
 
-[^HTNF]: Mentioned by [Alexey Popov in a comment](https://blog.ipspace.net/2023/04/palo-alto-ipv6-firewalling.html#1810). I'm way too rusty when it comes to Linux. Also: one has to [love many ways of getting the same job done](https://xkcd.com/1987/) ;)
+[^HTNF]: Mentioned by [Alexey Popov in a comment](/2023/04/palo-alto-ipv6-firewalling.html#1810). I'm way too rusty when it comes to Linux. Also: one has to [love many ways of getting the same job done](https://xkcd.com/1987/) ;)
 
 What could possibly go wrong? How about:
 

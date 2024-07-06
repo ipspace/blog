@@ -23,7 +23,7 @@ Using labels instead of hard-coding IP addresses is also nothing new. We had tha
 
 **To recap**: The filtering mechanisms haven't changed, the granularity hasn't changed, the way to specify applications hasn't changed, the labeling concepts were there before... but in the old days you needed a networking expert, and now you don't have to know anything about networking to make it work because you can write the rules in YAML? Makes no sense to me.
 
-However, as my friend [Matthias Luft](https://www.ipspace.net/Author:Matthias_Luft) pointed out when I asked him about his view of this challenge, the tools you get with Kubernetes are much better than what you had with traditional firewalls. Instead of [GUI, no CLI, and broken API](https://blog.ipspace.net/2018/02/anti-automation-from-antimatter-universe.html), you get a stable API you could use in your CI/CD pipeline, GitOps, or whatever other automation approach you prefer.
+However, as my friend [Matthias Luft](https://www.ipspace.net/Author:Matthias_Luft) pointed out when I asked him about his view of this challenge, the tools you get with Kubernetes are much better than what you had with traditional firewalls. Instead of [GUI, no CLI, and broken API](/2018/02/anti-automation-from-antimatter-universe.html), you get a stable API you could use in your CI/CD pipeline, GitOps, or whatever other automation approach you prefer.
 
 Finally, there's a simple reason we had dedicated teams changing network security rules in traditional enterprise environments: whoever was responsible for security didn't trust the developers to do the right thing instead of inserting a **permit any any** rule to make their broken deploy work and walking away. How's that going to change with Kubernetes network policy?
 
@@ -34,5 +34,5 @@ Having a security team change firewall rules because we didn't trust the develop
 
 We invested heavily into engineering relationships and we do not have any process where we are the blocking factor. That led to engineers checking in with us on their own when they thought they performed remotely security-relevant changes. 
 
-Also, we have lots of detection automation in place (see my first point) to catch accidentally insecure changes -- I also touched that overall topic a bit in my [host-based firewall posts](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html). 
+Also, we have lots of detection automation in place (see my first point) to catch accidentally insecure changes -- I also touched that overall topic a bit in my [host-based firewall posts](/2020/09/considerations-host-based-firewalls.html). 
 {{</long-quote>}}

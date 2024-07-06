@@ -16,4 +16,4 @@ We keep a map of the model number to firmware in a pillar and just use the file.
 For more details explore:
 
 * [Zero-touch provisioning tutorial](https://networklore.com/ztp-tutorial/) by Patrick Ogenstad and his [ZTP presentation](https://my.ipspace.net/bin/list?id=NetAutSol&module=4#M4S3B) from our [Network Automation online course](https://www.ipspace.net/Building_Network_Automation_Solutions).
-* [Salt and SaltStack podcast](https://blog.ipspace.net/2017/04/salt-and-saltstack-on-software-gone-wild.html) we recorded with Mircea Ulinic, and his [Using Salt for Event-Driven Automation](https://my.ipspace.net/bin/list?id=NetAutSol&module=8#M8S2) presentation from our automation course.
+* [Salt and SaltStack podcast](/2017/04/salt-and-saltstack-on-software-gone-wild.html) we recorded with Mircea Ulinic, and his [Using Salt for Event-Driven Automation](https://my.ipspace.net/bin/list?id=NetAutSol&module=8#M8S2) presentation from our automation course.

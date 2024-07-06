@@ -15,7 +15,7 @@ Now that we know what [regions and availability zones are](/2021/02/public-cloud
 
 > As I understand it, subnets in Azure span availability zones. Do you see any drawback to this? Does subnet matter if your VMs are in different AZs?
 
-Wait, what? A subnet is stretched across multiple failure domains? Didn't Ivan claim that's [ridiculous](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html)?
+Wait, what? A subnet is stretched across multiple failure domains? Didn't Ivan claim that's [ridiculous](/2012/05/layer-2-network-is-single-failure.html)?
 
 **TL&DR**: What I claimed was that *a single layer-2 network is a single failure domain*. Things are a bit more complex in public clouds. Keep reading and you'll find out why.
 <!--more-->
@@ -29,7 +29,7 @@ AWS Virtual Private Cloud (VRF if you wish) is limited to a single region. It ca
 
 Traffic between subnets within a region flows without limitations (apart from security rules), but of course [AWS charges you for the privilege](https://www.lastweekinaws.com/blog/aws-cross-az-data-transfer-costs-more-than-aws-says). To build a network across multiple regions you have to use VPC peering or a Transit Gateway.
 
-AWS uses an [interesting mix of L2- and L3-forwarding within a subnet](https://blog.ipspace.net/2020/05/aws-networking-101.html), but it's deterministic and unicast, so no harm done, and it's all within a single failure domain anyway.
+AWS uses an [interesting mix of L2- and L3-forwarding within a subnet](/2020/05/aws-networking-101.html), but it's deterministic and unicast, so no harm done, and it's all within a single failure domain anyway.
 
 ### Azure
 
@@ -47,7 +47,7 @@ With end-to-end IP routing, Azure subnets became a configuration convenience; al
 
 ### Google Cloud Platform
 
-GCP went one step further. VPCs are *global resources* (spanning multiple regions), while subnets are *regional resources* (spanning availability zones). IIRC from the last time I studied GCP while preparing for a customer workshop they also do pure IP routing within a VPC, but this is approximately as far as I could be bothered with GCP today (their documentation is great, but I [have my reservations](https://blog.ipspace.net/2020/08/selecting-public-cloud.html), and [I'm not the only one](https://medium.com/@steve.yegge/dear-google-cloud-your-deprecation-policy-is-killing-you-ee7525dc05dc)).
+GCP went one step further. VPCs are *global resources* (spanning multiple regions), while subnets are *regional resources* (spanning availability zones). IIRC from the last time I studied GCP while preparing for a customer workshop they also do pure IP routing within a VPC, but this is approximately as far as I could be bothered with GCP today (their documentation is great, but I [have my reservations](/2020/08/selecting-public-cloud.html), and [I'm not the only one](https://medium.com/@steve.yegge/dear-google-cloud-your-deprecation-policy-is-killing-you-ee7525dc05dc)).
 
 {{<figure src="gcp-vpc-subnet.png" caption="GCP VPCs and subnets">}}
 

@@ -7,7 +7,7 @@ tags:
 title: RIP Rocks in Low-End Hub-and-Spoke Networks
 url: /2008/10/rip-rocks-in-low-end-hub-and-spoke.html
 ---
-Yesterday, I introduced a scenario where [RIP would (in my opinion) work much better than OSPF](https://blog.ipspace.net/2008/09/why-is-rip-still-kicking.html). If you were not persuaded by the "[management-level](http://en.wikipedia.org/wiki/Pointy-Haired_Boss)" arguments, let's focus on the technical details (but make sure you [read the scenario](https://blog.ipspace.net/2008/09/why-is-rip-still-kicking.html) first).
+Yesterday, I introduced a scenario where [RIP would (in my opinion) work much better than OSPF](/2008/09/why-is-rip-still-kicking.html). If you were not persuaded by the "[management-level](http://en.wikipedia.org/wiki/Pointy-Haired_Boss)" arguments, let's focus on the technical details (but make sure you [read the scenario](/2008/09/why-is-rip-still-kicking.html) first).
 
 All you ever want to advertise to the remote sites in this design is the default route (or a network-wide summary). Alternatively, you might want to advertise only a route to a central LAN or server. Both requirements are easily met with RIP per-interface output filters. Doing something similar with OSPF is close to impossible. Either you place every remote site into a separate OSPF area (don't even think about doing it; there could be hundreds of sites), or the routes within an area will leak between the remote sites.
 

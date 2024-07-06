@@ -4,7 +4,7 @@ date: 2023-06-21 06:42:00
 tags: [ BGP, netlab ]
 netlab_tag: use
 ---
-An anonymous commenter [asked this highly relevant question](https://blog.ipspace.net/2023/06/bgp-leak-lab.html#1859) about my [Internet routing security lab](/2023/06/bgp-leak-lab.html):
+An anonymous commenter [asked this highly relevant question](/2023/06/bgp-leak-lab.html#1859) about my [Internet routing security lab](/2023/06/bgp-leak-lab.html):
 
 > What are the smallest hardware requirements to run the lab.
 

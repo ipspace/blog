@@ -7,8 +7,8 @@ tags: [ network management,command line interface ]
 
 <p>Pete Vickers sent me a very interesting configuration sample:<p><blockquote class="cite"><p>To get an IOS device to upload it’s configuration periodically to an external FTP server:</p>
 <pre class="code">ip ftp source-interface loopback 0<br/>ip ftp username <em>ftp_username</em><br/>ip ftp password <em>ftp_password</em><br/>file prompt quiet<br/>!<br/>kron policy-list backup<br/> cli copy running-config ftp://10.20.30.40<br/>!<br/>kron occurrence daily-backup at 0:30 recurring<br/> policy-list backup</pre></blockquote>
-<p>The beauty of this example is that you can use it on platforms that don't support Embedded Event Manager (which has a very similar <a href="https://blog.ipspace.net/2006/10/periodic-router-reload.html">cron functionality</a>) as the <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios124/124cg/hnm_c/ch30/hg_kron.pdf">kron commands</a> were introduced in 12.2T and 12.3 IOS releases.</p>
-<p class="note"><span>Note:</span> You have to use the <a href="https://blog.ipspace.net/2006/11/reduce-noise-generated-by-cisco-ios.html">file prompt quiet</a> configuration command as the commands executed by <strong>kron</strong> cannot supply any user input</p>
+<p>The beauty of this example is that you can use it on platforms that don't support Embedded Event Manager (which has a very similar <a href="/2006/10/periodic-router-reload.html">cron functionality</a>) as the <a href="http://www.cisco.com/univercd/cc/td/doc/product/software/ios124/124cg/hnm_c/ch30/hg_kron.pdf">kron commands</a> were introduced in 12.2T and 12.3 IOS releases.</p>
+<p class="note"><span>Note:</span> You have to use the <a href="/2006/11/reduce-noise-generated-by-cisco-ios.html">file prompt quiet</a> configuration command as the commands executed by <strong>kron</strong> cannot supply any user input</p>
 </p>
 </p>
 

@@ -3,7 +3,7 @@ title: "Some Operations Are Not Worth Automating"
 date: 2023-02-21 08:06:00
 tags: [ automation ]
 ---
-Ish [wrote an interesting comment](https://blog.ipspace.net/2023/01/network-automation-expert-beginners.html#1661) on my [Network Automation Expert Beginners](https://blog.ipspace.net/2023/01/network-automation-expert-beginners.html) blog post. He started with:
+Ish [wrote an interesting comment](/2023/01/network-automation-expert-beginners.html#1661) on my [Network Automation Expert Beginners](/2023/01/network-automation-expert-beginners.html) blog post. He started with:
 
 > [Our network has] about 40 sites, but we don't do total refresh cycles in bulk, just as needed. Everything we do is sporadic, and I'm trying to see the ROI on learning automation for things that are done once in a while that don't take much time to do manually anyway.
 
@@ -29,4 +29,4 @@ Trying to evaluate the benefits of automating an operation based on time saved w
 
 Also, stop focusing on configuration deployment. Network automation is much more than that, even though the preachers of the "*take a pinch of YAML, add a sprinkle of Jinja2, and shake well in Ansible shaker*" gospel usually fail to mention it. There must be some repetitive operation that drives you crazy. Automate that! Nothing along those lines? You must be incredibly fortunate, but here's another idea: do you have a repository of device configurations? Is it under version control? Can you figure out who made any particular change on a device you're troubleshooting and why? Do you think that having that information would make your life easier? [Oxidized](https://github.com/ytti/oxidized) might be just what you're looking for. For more ideas, browse the [sample network automation solutions](https://www.ipspace.net/NetAutSol/Solutions) created by the attendees of ipSpace.net [network automation online course](https://www.ipspace.net/Building_Network_Automation_Solutions).
 
-Finally, it's perfectly fine if your network doesn't need automation. I just hope you came to that conclusion after realizing the full potential of network automation and making a well-informed decision. [400 automation-related blog posts](https://blog.ipspace.net/tag/automation.html), a [half-dozen webinars](https://www.ipspace.net/Roadmap/Network_Automation_webinars), and an [online course](https://www.ipspace.net/Building_Network_Automation_Solutions) might help you get the prerequisite knowledge.
+Finally, it's perfectly fine if your network doesn't need automation. I just hope you came to that conclusion after realizing the full potential of network automation and making a well-informed decision. [400 automation-related blog posts](/tag/automation.html), a [half-dozen webinars](https://www.ipspace.net/Roadmap/Network_Automation_webinars), and an [online course](https://www.ipspace.net/Building_Network_Automation_Solutions) might help you get the prerequisite knowledge.

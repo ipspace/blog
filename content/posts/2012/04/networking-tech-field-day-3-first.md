@@ -16,7 +16,7 @@ Infineta gave us a fantastic deep-dive into deduplication math, and Spirent blew
 <!--more-->
 > I really did not see anything new, just more of the same. Presenters should be banned if they reuse an old presentation. Innovation seems dormant and no amount of science projects and Crossing the Chasm buttering will take the place of bold innovation.
 
-To make matters worse, some vendors seem to promote ["monkey wiring" design](https://blog.ipspace.net/2012/04/monkey-design-still-doesnt-work-well.html) along the lines of "our fabrics are so versatile you can just wire switches together and everything will work". Not sure why I remain skeptical -- maybe I've seen too many such designs in the past explode in their owner's face (after the "architect" had been long paid and gone).
+To make matters worse, some vendors seem to promote ["monkey wiring" design](/2012/04/monkey-design-still-doesnt-work-well.html) along the lines of "our fabrics are so versatile you can just wire switches together and everything will work". Not sure why I remain skeptical -- maybe I've seen too many such designs in the past explode in their owner's face (after the "architect" had been long paid and gone).
 
 However, all is not bleak. Here are the (positive) highlights:
 

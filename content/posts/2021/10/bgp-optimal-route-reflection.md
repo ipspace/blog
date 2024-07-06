@@ -7,7 +7,7 @@ tags:
 - BGP
 title: BGP Optimal Route Reflection 101
 ---
-Almost a decade ago I described a scenario in which a [perfectly valid IBGP topology could result in a permanent routing loop](https://blog.ipspace.net/2013/10/can-bgp-route-reflectors-really.html). While one wouldn't expect to see such a scenario in a well designed network, it's been known for ages[^ORR-1] that using BGP route reflectors could result in suboptimal forwarding.
+Almost a decade ago I described a scenario in which a [perfectly valid IBGP topology could result in a permanent routing loop](/2013/10/can-bgp-route-reflectors-really.html). While one wouldn't expect to see such a scenario in a well designed network, it's been known for ages[^ORR-1] that using BGP route reflectors could result in suboptimal forwarding.
 
 [^ORR-1]: A [handwaving](https://wiki.c2.com/?HandWaving) catch-all phrase used when there's no data to support the claim, or when the writer is too lazy to go into the details.
 
@@ -23,7 +23,7 @@ Here's a simple description of how that could happen:
 
 We had a solution to that challenge for years: *[Advertisement of Multiple Paths in BGP](https://datatracker.ietf.org/doc/html/rfc7911)* (RFC 7911) aka *BGP AddPath*[^1], and it's available in most modern BGP implementations... but the remaining flies in the ointment still bother some people:
 
-[^1]: Or you could use [PE-specific route distinguishers in MPLS/VPN](https://blog.ipspace.net/2012/07/bgp-route-replication-in-mplsvpn-pe.html). EVPN is using the same approach.
+[^1]: Or you could use [PE-specific route distinguishers in MPLS/VPN](/2012/07/bgp-route-replication-in-mplsvpn-pe.html). EVPN is using the same approach.
 
 * BGP RR clients receive more information than needed, resulting in memory- and CPU overhead.
 * With most *BGP AddPath* implementations the operator can limit the number of alternate routes sent to the BGP RR clients... but what is the minimum number of alternate paths you need to get optimal end-to-end packet forwarding?
@@ -35,7 +35,7 @@ Here's the CliffsNotes version of that idea: the BGP route reflector imagines ho
 Hope you got two questions while reading the previous sentence:
 
 * **Are the best BGP paths calculated _for every client_** (and how much overhead would that generate)? Fortunately, the BGP ORR implementations are smarter than that, and allow you to configure *groups of clients*. Also, you need to run the client-specific calculations only for otherwise-identical paths where IGP cost is the tie breaker *unless you want to support client-specific route selection policies* -- a morass into which we won't look.
-* **How does the BGP RR know what it feels like to be a client?** BGP RR and its clients could be part of the same link-state IGP area, or the RR clients could sent their topology information to the reflector via [BGP-LS](https://blog.ipspace.net/2021/06/ospf-bgp-ls.html)[^ORR-LS]
+* **How does the BGP RR know what it feels like to be a client?** BGP RR and its clients could be part of the same link-state IGP area, or the RR clients could sent their topology information to the reflector via [BGP-LS](/2021/06/ospf-bgp-ls.html)[^ORR-LS]
 
 [^ORR-LS]: What else did you expect? IETF has a hammer for every nail.
 

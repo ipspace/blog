@@ -24,9 +24,9 @@ The currently-hip data center fabric design[^NF] starts with an IP network, adds
 
 {{<figure src="/2022/09/fabric-evpn.jpg" caption="EVPN/VXLAN-based data center fabric">}}
 
-[^NF]: Now that all vendors apart from a few SPBM stalwarts [abandoned routed layer-2 fabrics](https://blog.ipspace.net/2022/05/cisco-fabric-path-and-friends.html).
+[^NF]: Now that all vendors apart from a few SPBM stalwarts [abandoned routed layer-2 fabrics](/2022/05/cisco-fabric-path-and-friends.html).
 
-[^BGP]: For extra-hipness, replace OSPF with EBGP and run IBGP EVPN sessions on top of EBGP-only underlay because you REALLY SHOULD design [your 4-node network](https://blog.ipspace.net/2018/02/using-evpn-in-very-small-data-center.html) in the [same way hyperscalers build their data centers](https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html).
+[^BGP]: For extra-hipness, replace OSPF with EBGP and run IBGP EVPN sessions on top of EBGP-only underlay because you REALLY SHOULD design [your 4-node network](/2018/02/using-evpn-in-very-small-data-center.html) in the [same way hyperscalers build their data centers](/2018/05/is-ospf-or-is-is-good-enough-for-my.html).
 
 Before digging into the details, it's worth noting that it's perfectly possible to build VXLAN-based fabrics without EVPN and the associated complexity. All you have to do is to configure static ingress replication lists, trading protocol complexity for configuration complexity. 
 

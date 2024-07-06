@@ -5,7 +5,7 @@ tags:
 - netlab
 title: Suspending Devices in netlab Labs
 ---
-A networking engineer [tired of waiting for network devices to start](https://blog.ipspace.net/2023/02/virtual-device-boot-times.html) sent me this question:
+A networking engineer [tired of waiting for network devices to start](/2023/02/virtual-device-boot-times.html) sent me this question:
 
 > Can you suspend VMs in netlab? I use this trick in vSphere with CSR1Kv.
 

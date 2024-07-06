@@ -26,7 +26,7 @@ Once the MPLS/VPN traffic is labeled and marked, it enters the MPLS backbone. Th
 
 When the traffic arrives at PE-B it's sent as native IP traffic toward Site-B. If you're using sub-rate service the traffic might be policed (in which case all bets are off) or shaped (don't expect it, shaping is expensive). As the traffic is shaped or queued on the physical interface, PE-B might use your original DSCP values to classify the traffic and selectively drop excess packets.
 
-Finally, if at least one of the access links uses DSL, you have an [entirely different can of worms to deal with](https://blog.ipspace.net/2009/06/adsl-qos-basics.html).
+Finally, if at least one of the access links uses DSL, you have an [entirely different can of worms to deal with](/2009/06/adsl-qos-basics.html).
 
 And what can you do to influence the whole process? Not much -- you can remark your traffic on the CE-router to map your QoS schema into DSCP values that the service provider recognizes. You can also shape (and [queue within the shaping queue](/kb/tag/QoS/Traffic_Shaping.html)) your traffic to ensure it's not randomly policed on SW-A or PE-A. Apart from that, you're solely at mercy of the service provider.
 

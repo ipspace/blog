@@ -7,7 +7,7 @@ tags:
 title: OSPF Ignores Subnet Mask Mismatch on Point-to-Point Links
 url: /2008/10/ospf-ignores-subnet-mask-mismatch-on.html
 ---
-The common wisdom says that the [subnet mask mismatch will stop the OSPF adjacency from forming](https://blog.ipspace.net/2008/10/troubleshooting-ospf-adjacencies.html). In reality, the subnet mask is checked only on the multi-access interfaces and is ignored on point-to-point links. The source of this seemingly weird behavior is the Section 10.5 of [RFC 2328](http://tools.ietf.org/html/rfc2328), which says:
+The common wisdom says that the [subnet mask mismatch will stop the OSPF adjacency from forming](/2008/10/troubleshooting-ospf-adjacencies.html). In reality, the subnet mask is checked only on the multi-access interfaces and is ignored on point-to-point links. The source of this seemingly weird behavior is the Section 10.5 of [RFC 2328](http://tools.ietf.org/html/rfc2328), which says:
 
 > The generic input processing of OSPF packets will have checked the validity of the IP header and the OSPF packet header. **Next, the values of the Network Mask, HelloInterval, and RouterDeadInterval fields in the received Hello packet must be checked against the values configured for the receiving interface. Any mismatch causes processing to stop and the packet to be dropped.** In other words, the above fields are really describing the attached network\'s configuration. **However, there is one exception to the above rule: on point-to-point networks and on virtual links, the Network Mask in the received Hello Packet should be ignored.**
 <!--more-->

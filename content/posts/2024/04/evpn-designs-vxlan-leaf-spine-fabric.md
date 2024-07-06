@@ -33,7 +33,7 @@ Yes, that's right: [you don't have to run EVPN](/2022/09/mlag-bridging-evpn.html
 
 * You must manage the ingress replication lists[^NOMC] on the leaf switches. Not a big deal if your fabric never grows or if you use a configuration generation tool (including Excel ;)
 * You cannot use the fancy stuff like ARP suppression or EVPN-based MLAG (but maybe you're better off not using them anyway).
-* Some vendors support [anycast first-hop gateway](https://blog.ipspace.net/2013/05/optimal-l3-forwarding-with-varp-and.html) (which is a good thing) only with EVPN.
+* Some vendors support [anycast first-hop gateway](/2013/05/optimal-l3-forwarding-with-varp-and.html) (which is a good thing) only with EVPN.
 
 [^NOMC]: Please don't tell me you can use IP multicast. I would prefer EVPN over IP multicast and PIM any day of the week, including a troubleshooting exercise at 2 AM on a Sunday.
 

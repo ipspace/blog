@@ -24,4 +24,4 @@ HTML user interface (written in Perl) gave the operators easy access to user dat
 
 Next revision of the software included support for leased line users -- the script generated interface configurations and static routes for our core router (it was actually an MGS, but I found no good MGS images on the Internet) or one of the access server (for users using asynchronous modems).
 
-How is that different from all the shiny new stuff vendors are excitedly talking about? Beats me, I can't figure it out ;) ... and as I said before, you don't always [need new protocols](https://blog.ipspace.net/2013/04/the-many-paths-to-sdn.html) to [solve old problems](http://blog.ipspace.net/2011/09/you-dont-need-openflow-to-solve-every.html).
+How is that different from all the shiny new stuff vendors are excitedly talking about? Beats me, I can't figure it out ;) ... and as I said before, you don't always [need new protocols](/2013/04/the-many-paths-to-sdn.html) to [solve old problems](/2011/09/you-dont-need-openflow-to-solve-every.html).

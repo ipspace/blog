@@ -19,10 +19,10 @@ Do you care? Maybe.
 
 Someone asked a question along the lines "_does anyone know of a good ULA use case_" at the end of the Modem Podcast episode I mentioned above, and there happens to be one that might be relevant to a few mid-sized enterprise networks: site-to-site VPN with local Internet exit. I wrote about it in 2013 and as far as I know nothing changed in the meantime (apart from ULA addresses becoming useless). Here are the links to the (somewhat) relevant blog posts:
 
-* [To ULA or not to ULA, That’s the Question](https://blog.ipspace.net/2013/09/to-ula-or-not-to-ula-thats-question.html) (September 2013)
-* [PA, PI or ULA IPv6 Address Space? It depends](https://blog.ipspace.net/2014/01/pa-pi-or-ula-ipv6-address-space-it.html) (January 2014)
-* [IPv6 Legends and Myths: More Opinions than Data Points](https://blog.ipspace.net/2012/04/ipv6-legends-and-myths-more-opinions.html) (April 2012)
-* [Why Can’t We All Use Provider-Independent IPv6 Addresses?](https://blog.ipspace.net/2018/04/why-cant-we-all-use-provider.html) (April 2018)
+* [To ULA or not to ULA, That’s the Question](/2013/09/to-ula-or-not-to-ula-thats-question.html) (September 2013)
+* [PA, PI or ULA IPv6 Address Space? It depends](/2014/01/pa-pi-or-ula-ipv6-address-space-it.html) (January 2014)
+* [IPv6 Legends and Myths: More Opinions than Data Points](/2012/04/ipv6-legends-and-myths-more-opinions.html) (April 2012)
+* [Why Can’t We All Use Provider-Independent IPv6 Addresses?](/2018/04/why-cant-we-all-use-provider.html) (April 2018)
 
 Finally, let me conclude with an [awesome quote from Randy Bush](https://mailarchive.ietf.org/arch/msg/v6ops/7AUm63uxoa6opso7DTqnwgIB9b0/) (made in October 2012):
 

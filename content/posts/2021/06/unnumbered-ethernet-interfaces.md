@@ -7,7 +7,7 @@ tags:
 - networking fundamentals
 title: Unnumbered Ethernet Interfaces
 ---
-Imagine an Internet Service Provider offering Ethernet-based Internet access (aka everyone using fiber access, excluding people believing in [Russian dolls](https://blog.ipspace.net/2008/10/internet-access-russian-dolls.html)). If they know how to spell security, they might be nervous about connecting numerous customers to the same multi-access network, but it seems they have only two ways to solve this challenge:
+Imagine an Internet Service Provider offering Ethernet-based Internet access (aka everyone using fiber access, excluding people believing in [Russian dolls](/2008/10/internet-access-russian-dolls.html)). If they know how to spell security, they might be nervous about connecting numerous customers to the same multi-access network, but it seems they have only two ways to solve this challenge:
 
 * Use private VLANs with proxy ARP on the head-end router, forcing the customer-to-customer traffic to pass through layer-3 forwarding on the head-end router.
 * Use a separate routed interface with each customer, wasting three-quarters of their available IPv4 address space.

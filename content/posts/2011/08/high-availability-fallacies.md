@@ -10,7 +10,7 @@ tags:
 title: High Availability Fallacies
 url: /2011/08/high-availability-fallacies.html
 ---
-I've already written about the [stupidities of risking the stability of two data centers to enable live migration of "mission critical" VMs between them](https://blog.ipspace.net/2011/02/what-exactly-makes-something-mission.html). Now let's take the discussion a step further -- after hearing how critical the VM the server or application team wants to migrate is, you might be tempted to ask "and how do you ensure its high availability the rest of the time?" The response will likely be along the lines of "We're using VMware High Availability" or even prouder "We're using VMware Fault Tolerance to ensure even a hardware failure can't bring it down."
+I've already written about the [stupidities of risking the stability of two data centers to enable live migration of "mission critical" VMs between them](/2011/02/what-exactly-makes-something-mission.html). Now let's take the discussion a step further -- after hearing how critical the VM the server or application team wants to migrate is, you might be tempted to ask "and how do you ensure its high availability the rest of the time?" The response will likely be along the lines of "We're using VMware High Availability" or even prouder "We're using VMware Fault Tolerance to ensure even a hardware failure can't bring it down."
 <!--more-->
 I have some bad news for the true believers in virtualization-supported high availability -- quite a few of them probably don't understand how it works. Let’s see what HA products can do ... and keep in mind that hardware causes just a few percents of the failures; most of them are caused by software failures or operator errors.
 
@@ -22,7 +22,7 @@ I have some bad news for the true believers in virtualization-supported high ava
 
 **High-availability clusters** like [Windows Server Failover Clustering](http://www.microsoft.com/windowsserver2008/en/us/failover-clustering-multisite.aspx) restart a failed service (for example, the SQL server) on the same or on another server. The restart can take from a few seconds to a few minutes (or sometimes even longer if the database has to do extensive recovery). A nine lost.
 
-**Bridging between data centers** (the typical design recommended by VMware-focused consultants) might cause long-distance forwarding loops, or you might see the flood of traffic caused by a forwarding loop spilled over the WAN link into the other data center, killing all other inter-DC traffic (including cluster heartbeats if you’re brave enough to use [long-distance clusters](https://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html), and storage replication). 
+**Bridging between data centers** (the typical design recommended by VMware-focused consultants) might cause long-distance forwarding loops, or you might see the flood of traffic caused by a forwarding loop spilled over the WAN link into the other data center, killing all other inter-DC traffic (including cluster heartbeats if you’re brave enough to use [long-distance clusters](/2011/06/stretched-clusters-almost-as-good-as.html), and storage replication). 
 
 Want a data point: we experienced a forwarding loop caused by an intra-site STP failure. Recovery time: close to 30 minutes *with NMS noticing the problem immediately and operator being available on site*. Admittedly some of that time has been spent collecting evidence for post-mortem analysis.
 

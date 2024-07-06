@@ -9,13 +9,13 @@ tags:
 title: 'Video: Challenges of Managed SD-WAN Services'
 video_tag: sd-wan
 ---
-When I published a link to the _[Is MPLS/VPN Too Complex?](https://blog.ipspace.net/2022/03/mpls-vpn-too-complex.html)_ blog post to LinkedIn, someone asked whether I'm skeptical about service provider SD-WAN services due to lack of skills, and [Kristijan Taskovski](https://www.linkedin.com/in/kristijan-taskovski/) quickly identified the root cause in his reply:
+When I published a link to the _[Is MPLS/VPN Too Complex?](/2022/03/mpls-vpn-too-complex.html)_ blog post to LinkedIn, someone asked whether I'm skeptical about service provider SD-WAN services due to lack of skills, and [Kristijan Taskovski](https://www.linkedin.com/in/kristijan-taskovski/) quickly identified the root cause in his reply:
 
 > The argument of a lack of skill is only one that is perpetuated by businesses. It's not perpetuated by engineers. People that are trained, honed, and knowledgeable are expensive. Expense is the number one enemy for a business.
 
 That's exactly why I think most managed SD-WAN services will be a dismal failure.
 <!--more-->
-Many service providers fail to build the internal infrastructure [needed to support MPLS/VPN or SD-WAN complexity](https://blog.ipspace.net/2020/03/sdwan-service-provider-perspective.html) (and integration with customer networks), and so the service sucks. Building competent design and support teams is clearly a business problem, not a technical one, and if you're not willing to invest into building a competent design, deployment and support teams, you SHOULD NOT offer services based on complex technology (not that anyone ever cared).
+Many service providers fail to build the internal infrastructure [needed to support MPLS/VPN or SD-WAN complexity](/2020/03/sdwan-service-provider-perspective.html) (and integration with customer networks), and so the service sucks. Building competent design and support teams is clearly a business problem, not a technical one, and if you're not willing to invest into building a competent design, deployment and support teams, you SHOULD NOT offer services based on complex technology (not that anyone ever cared).
 
 Unfortunately, being faced with the results of that (failed) exercise often turns into a technical problem that a smart end-user should avoid, and that's why I'm pointing that out to the potential consumers of those services.
 

@@ -9,7 +9,7 @@ After [VMware launched DPU-based acceleration for VMware NSX](https://blogs.vmwa
 
 DPU (Data Processing Unit) is a fancier name for a network adapter formerly known as SmartNIC -- a server repackaged into an interface card form factor. We had them for decades (anyone remembers iSCSI offload adapters?)
 <!--more-->
-A DPU has a CPU (these days, usually based on ARM architecture), memory, storage, network interface, and a PCI interface that behaves like a network interface, making the host operating system think it's dealing with an interface card. Every DPU is running an operating system (often Linux) that cannot be configured from the attached host if you want to retain any [semblance of a security boundary](https://blog.ipspace.net/2020/09/need-smart-nic.html) -- another [wonderful upgrade nightmare and attack vector](https://blog.ipspace.net/2020/06/smart-nic-security.html) (FWIW, check out Broadpwn). Just ask anyone who had to deal with ILOBleed or other IPMI vulnerabilities.
+A DPU has a CPU (these days, usually based on ARM architecture), memory, storage, network interface, and a PCI interface that behaves like a network interface, making the host operating system think it's dealing with an interface card. Every DPU is running an operating system (often Linux) that cannot be configured from the attached host if you want to retain any [semblance of a security boundary](/2020/09/need-smart-nic.html) -- another [wonderful upgrade nightmare and attack vector](/2020/06/smart-nic-security.html) (FWIW, check out Broadpwn). Just ask anyone who had to deal with ILOBleed or other IPMI vulnerabilities.
 
 ### DPU and Bare-Metal Servers
 
@@ -29,7 +29,7 @@ What else is there? Improved performance and reduced power utilization are the u
 -   The ARM CPU used in the DPU can do the same amount of work while transforming less electricity into heat than the host x86 CPU. While that might be true, I wouldn't expect drastic savings assuming the comparable quality of software packet forwarding implementations.
 -   You're hitting the bandwidth limitations of the server PCI/memory bus, and reducing the number of times the main CPU has to look at a byte in transit (for example, offload encryption to DPU) helps you reach the 700 Gbps-per-server goal. Offloading encryption to DPU is thus a fantastic feature if you're Netflix ([talk](https://www.youtube.com/watch?v=36qZYL5RlgY), [slides](https://people.freebsd.org/~gallatin/talks/euro2022.pdf)); everyone else probably doesn't care.
 
-[^OVS]: One of the Linux virtual switch implementations managed to push [1 Gbps of traffic](https://blog.ipspace.net/2014/11/open-vswitch-performance-revisited.html) when a VMware virtual switch effortlessly saturated multiple 10 Gbps uplinks. No wonder one can use DPU offload to increase its performance.
+[^OVS]: One of the Linux virtual switch implementations managed to push [1 Gbps of traffic](/2014/11/open-vswitch-performance-revisited.html) when a VMware virtual switch effortlessly saturated multiple 10 Gbps uplinks. No wonder one can use DPU offload to increase its performance.
 
 Not surprisingly, [NVIDIA loves comparing its DPU performance with OVS](https://www.nextplatform.com/2022/11/03/economics-and-the-inevitability-of-the-dpu/). It's easy to excel when you start with a pretty low bar ;), and reading their reports it looks like the primary role of the DPUs is to add another layer of abstraction to hide how much the software packet forwarding of the virtual switch you believed in sucks[^1925].
 

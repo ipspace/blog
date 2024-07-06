@@ -36,7 +36,7 @@ Route reflector does not change or remove any other attributes of the reflected 
 
 Exceptions:
 
-* BGP next-hop can be changed **set ip next-hop** route map command or with **neighbor next-hop-self all** feature introduced to [support large-scale DMVPN networks using IBGP](https://blog.ipspace.net/2014/04/changes-in-ibgp-next-hop-processing.html).
+* BGP next-hop can be changed **set ip next-hop** route map command or with **neighbor next-hop-self all** feature introduced to [support large-scale DMVPN networks using IBGP](/2014/04/changes-in-ibgp-next-hop-processing.html).
 * Standard and extended BGP communities are removed from the reflected routes unless the **neighbor send-community \[both\]** is configured on the route reflector.
 * The *link bandwidth* community is removed from reflected route if the route-reflector performs IBGP multipath load-sharing for that route.
 
@@ -132,7 +132,7 @@ With the improved IBGP loop avoidance, you could use more relaxed designs, rangi
 
 ### Cluster-ID is Obsolete
 
-Cisco IOS implementation of route reflector functionality supports the **bgp** **cluster-id** parameter, which is used in the *Cluster list* attribute instead of the *Router ID*. The **cluster-id** parameter is useful in redundant route reflector scenarios where multiple route reflectors serve the same set of clients, but can lead to partial connectivity when multiple IBGP sessions are disrupted ([more details](https://blog.ipspace.net/2022/02/bgp-rr-cluster-myths.html)).
+Cisco IOS implementation of route reflector functionality supports the **bgp** **cluster-id** parameter, which is used in the *Cluster list* attribute instead of the *Router ID*. The **cluster-id** parameter is useful in redundant route reflector scenarios where multiple route reflectors serve the same set of clients, but can lead to partial connectivity when multiple IBGP sessions are disrupted ([more details](/2022/02/bgp-rr-cluster-myths.html)).
 
 {{<figure src="BGP_RR_Cluster.png" caption="Cluster of redundant BGP route reflectors">}}
 
@@ -140,11 +140,11 @@ The revised BGP route selection rules ensure that a route reflector in a cluster
 
 ### Further Reading
 
-* [Can BGP Route Reflectors Really Generate Forwarding Loops?](https://blog.ipspace.net/2013/10/can-bgp-route-reflectors-really.html)
-* [Mixed Feelings about BGP Route Reflector Cluster ID](https://blog.ipspace.net/2022/02/bgp-rr-cluster-myths.html)
-* [BGP Route Reflector update groups (technical details)](https://blog.ipspace.net/2009/04/bgp-route-reflector-update-groups.html)
-* [BGP next hop processing](https://blog.ipspace.net/2011/08/bgp-next-hop-processing.html)
-* [Can We Trust BGP Next Hops (Part 2)?](https://blog.ipspace.net/2020/04/can-we-trust-bgp-next-hops-part-2.html)
-* [Running BGP Route Reflector in a Virtual Machine](https://blog.ipspace.net/2016/05/running-bgp-route-reflector-in-virtual.html)
-* [Building BGP Route Reflector Configuration with Ansible/Jinja2](https://blog.ipspace.net/2020/04/building-bgp-rr-configuration-ansible-jinja2.html)
+* [Can BGP Route Reflectors Really Generate Forwarding Loops?](/2013/10/can-bgp-route-reflectors-really.html)
+* [Mixed Feelings about BGP Route Reflector Cluster ID](/2022/02/bgp-rr-cluster-myths.html)
+* [BGP Route Reflector update groups (technical details)](/2009/04/bgp-route-reflector-update-groups.html)
+* [BGP next hop processing](/2011/08/bgp-next-hop-processing.html)
+* [Can We Trust BGP Next Hops (Part 2)?](/2020/04/can-we-trust-bgp-next-hops-part-2.html)
+* [Running BGP Route Reflector in a Virtual Machine](/2016/05/running-bgp-route-reflector-in-virtual.html)
+* [Building BGP Route Reflector Configuration with Ansible/Jinja2](/2020/04/building-bgp-rr-configuration-ansible-jinja2.html)
 

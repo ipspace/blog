@@ -7,7 +7,7 @@ tags:
 title: Improving ECMP Load Balancing with Flowlets
 url: /2015/01/improving-ecmp-load-balancing-with.html
 ---
-Every time I write about [unequal traffic distribution across a link aggregation group](https://blog.ipspace.net/2015/01/load-balancing-elephant-storage-flows.html) (LAG, aka Etherchannel or Port Channel) or ECMP fabric, someone asks a simple question "*is there no way to reshuffle the traffic to make it more balanced?*"
+Every time I write about [unequal traffic distribution across a link aggregation group](/2015/01/load-balancing-elephant-storage-flows.html) (LAG, aka Etherchannel or Port Channel) or ECMP fabric, someone asks a simple question "*is there no way to reshuffle the traffic to make it more balanced?*"
 
 **TL&DR summary**: there are ways to do it, and some vendors already implemented them.
 <!--more-->
@@ -17,7 +17,7 @@ Every time I write about [unequal traffic distribution across a link aggregation
 The algorithm that spreads the traffic across a group of outbound links (LAG or set of ECMP next hops) has to satisfy a few requirements:
 
 -   It has to work reasonably well in typical environments;
--   It should not reorder packets of the same flow ([here's why](https://blog.ipspace.net/2014/03/per-packet-load-balancing-interferes.html));
+-   It should not reorder packets of the same flow ([here's why](/2014/03/per-packet-load-balancing-interferes.html));
 -   It has to be simple enough to be implementable in reasonably cheap ASICs;
 
 The second and third requirement result in what the chipset manufacturers (and subsequently the hardware vendors) are offering today: hash-based distribution of packets. In case you need a step-by-step overview of this process, here's how it works:
@@ -29,9 +29,9 @@ The second and third requirement result in what the chipset manufacturers (and s
 
 Have you noticed that the algorithm never checks the size of the output queue? If the hashing algorithm decides to send the packet through Interface\#1, the switch will send the packet through Interface\#1 even though that interface might be dropping packets like crazy due to continuous congestion, and all the other interfaces sit idle.
 
-The reason the load-balancing algorithm never checks the load on the outbound interface is simple: the **typical environment** mentioned above is usually assumed to be a healthy mix of [numerous independent mice flows](https://blog.ipspace.net/2014/06/mice-elephants-and-virtual-switches.html). Throw a few elephants in the mix and the [assumptions start breaking down](http://packetpushers.net/the-scaling-limitations-of-etherchannel-or-why-11-does-not-equal-2/).
+The reason the load-balancing algorithm never checks the load on the outbound interface is simple: the **typical environment** mentioned above is usually assumed to be a healthy mix of [numerous independent mice flows](/2014/06/mice-elephants-and-virtual-switches.html). Throw a few elephants in the mix and the [assumptions start breaking down](http://packetpushers.net/the-scaling-limitations-of-etherchannel-or-why-11-does-not-equal-2/).
 
-The only vendor that was [always able to cope with the elephants in the mix](https://blog.ipspace.net/2011/04/brocade-vcs-fabric-has-almost-perfect.html) is Brocade due to the fact that their traditional typical environment (storage networks) consists mainly of elephants.
+The only vendor that was [always able to cope with the elephants in the mix](/2011/04/brocade-vcs-fabric-has-almost-perfect.html) is Brocade due to the fact that their traditional typical environment (storage networks) consists mainly of elephants.
 
 ### Can We Solve the Problem?
 

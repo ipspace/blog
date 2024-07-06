@@ -10,7 +10,7 @@ title: L2 DCI with MLAG over VPLS transport?
 url: /2011/02/l2-dci-with-mlag-over-vpls-transport.html
 ---
 
-<p>One of the answers I got to my “<a href="https://blog.ipspace.net/2011/02/how-would-you-use-vpls-transport-in-l2.html">How would you use VPLS transport in L2 DCI</a>” question was also “Can’t you just order two VPLS services, use them as P2P links and bundle the two links into a multi-chassis link aggregation group (MLAG)?” like this:</p>
+<p>One of the answers I got to my “<a href="/2011/02/how-would-you-use-vpls-transport-in-l2.html">How would you use VPLS transport in L2 DCI</a>” question was also “Can’t you just order two VPLS services, use them as P2P links and bundle the two links into a multi-chassis link aggregation group (MLAG)?” like this:</p>
 <figure><img src="/2011/02/s1600-VPLS_MLAG.png"></figure>
 <!--more--><p>Unfortunately, the VPLS service is never totally transparent. While you might get STP running across VPLS (but probably only if you ask), I would be extremely surprised if the CE-switches could exchange LACP/PAgP packets; these packets would be usually intercepted by the first switch in the carrier’s network.</p>
 <p>Still, you can configure static port channel on the CE-switches and get MLAG across VPLS to work ... assuming, of course, that you’re willing to trust the Service Provider to bring down the PE-CE interface if something breaks anywhere within the VPLS cloud (otherwise your static port channel will turn into a nice partial black hole).</p>

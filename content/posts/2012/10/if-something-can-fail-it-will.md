@@ -22,7 +22,7 @@ What could possibly go wrong with a fully redundant design?
 
 Every component you\'re using has a non-zero failure rate; the probability of redundant components failing at the same time is thus non-zero. However, assuming each component is reasonably reliable (let's say it has 99.9% uptime), the probability of a total failure should be extremely low, right? Wrong. Interconnected things tend to fail at the same time.
 
-An obvious example first: if the software of the core router happens to be susceptible to a killer packet (that causes it to reload), the second core router will probably get the same packet (due to retransmissions) a moment after the first one crashes (see also: [BGP bugs](https://blog.ipspace.net/2009/02/root-cause-analysis-oversized-as-paths.html))
+An obvious example first: if the software of the core router happens to be susceptible to a killer packet (that causes it to reload), the second core router will probably get the same packet (due to retransmissions) a moment after the first one crashes (see also: [BGP bugs](/2009/02/root-cause-analysis-oversized-as-paths.html))
 
 A slightly less obvious example: almost everyone is using the same maintenance windows. A telco team could start working on one of your links while you're upgrading the router that uses the other link (Yes, we've experienced that. Yes, they forgot to tell us they'd do maintenance, because everything was supposed to be fully redundant anyway).
 

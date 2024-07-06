@@ -6,7 +6,7 @@ comment: 'SDN and the idea of centralized control plane were hotly debated in th
   misleading article written in November 2013.
 
 
-  Fun fact: while HP did have a few interesting [SDN/OpenFlow-based solutions](https://blog.ipspace.net/2015/05/openflow-in-hp-campus-solutions-on.html),
+  Fun fact: while HP did have a few interesting [SDN/OpenFlow-based solutions](/2015/05/openflow-in-hp-campus-solutions-on.html),
   they never managed to get any reasonable foothold beyond ~~cheap~~ optimally-priced
   campus networking, and finally resorted to acquisitions to stay in that business.
 

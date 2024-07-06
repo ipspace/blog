@@ -32,12 +32,12 @@ Exactly. SNA circuit between two IBM mainframes might be an exception.
 
 > VPN-Cubed does L3 only, doesn\'t touch or attempt to virtualize L2 at all - but then I see folks focusing on L2 and I don\'t get it. What\'s the point of focusing on an L2 segment spread over WAN (in general case) - what kind of an app needs that sort of setup?
 
-Apart from [stretched clusters](https://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html) and [other mythical beasts](https://blog.ipspace.net/2011/11/busting-layer-2-data-center.html) I have yet to find an application where stretched L2 segment would add value beyond being a design-failure-avoidance kludge.
+Apart from [stretched clusters](/2011/06/stretched-clusters-almost-as-good-as.html) and [other mythical beasts](/2011/11/busting-layer-2-data-center.html) I have yet to find an application where stretched L2 segment would add value beyond being a design-failure-avoidance kludge.
 
 > Is it Ethernet broadcasts for DHCP? Is it the fact that when geo-distributed hosts are under the same administrative domain (my hosts in dc and my hosts in cloud, vs my hosts in dc and my partner\'s hosts in the cloud) that\'s driving this?
 
-The only sensible explanation I got so far is the [inability to change IP addresses while moving cold virtual machines](https://blog.ipspace.net/2012/01/ip-renumbering-in-disaster-avoidance.html) from one data center to another (example: disaster recovery). While we might be able to solve that problem with routing protocols (and that's how [it's been done forever](http://www-03.ibm.com/support/techdocs/atsmastr.nsf/WebIndex/PRS1708) \... but those skills got lost in the mists of times), it's easier to request a stretched layer-2 segment and push the problem into another team's lap.
+The only sensible explanation I got so far is the [inability to change IP addresses while moving cold virtual machines](/2012/01/ip-renumbering-in-disaster-avoidance.html) from one data center to another (example: disaster recovery). While we might be able to solve that problem with routing protocols (and that's how [it's been done forever](http://www-03.ibm.com/support/techdocs/atsmastr.nsf/WebIndex/PRS1708) \... but those skills got lost in the mists of times), it's easier to request a stretched layer-2 segment and push the problem into another team's lap.
 
 > Also I am wondering why geo-distributed L2 segments are so important to network engineers, which is a conclusion I made from your posts.
 
-The only reason they're important to us is that we get asked to implement them, even though we know they will eventually fail \... [badly](https://blog.ipspace.net/2011/12/large-scale-l2-dci-true-story.html).
+The only reason they're important to us is that we get asked to implement them, even though we know they will eventually fail \... [badly](/2011/12/large-scale-l2-dci-true-story.html).

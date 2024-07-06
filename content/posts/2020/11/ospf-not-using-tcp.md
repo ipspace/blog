@@ -39,15 +39,15 @@ Straight from _OSPF: Anatomy of an Internet Routing Protocol_ by John T. Moy (qu
 
 **CPU cycles were precious in early routers**, as they used the same CPU for control-plane activities and packet forwarding. Networking vendors cutting costs and using the cheapest CPU they could get away with didn't help either. Keep in mind that running an [O(|E| + |V|.log(|V|)) algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) on a graph with hundred nodes was considered to be a big deal in those days.
 
-**Networking is special**. We couldn't simply reuse a protocol that works. We have to invent something _more optimal_ (leading to tons of protocols with unique binary encodings instead of everyone using the same markup language). [Lack of understanding of what _presentation layer_ should provide](https://blog.ipspace.net/2019/09/response-osi-model-is-lie.html) didn't help either (considering the alternative could be ASN.1 maybe I shouldn't complain too much).
+**Networking is special**. We couldn't simply reuse a protocol that works. We have to invent something _more optimal_ (leading to tons of protocols with unique binary encodings instead of everyone using the same markup language). [Lack of understanding of what _presentation layer_ should provide](/2019/09/response-osi-model-is-lie.html) didn't help either (considering the alternative could be ASN.1 maybe I shouldn't complain too much).
 
 ### Keep Reading
 
 You MUST read the extensive comments:
 
-* Henk Smit [explaining the efforts](https://blog.ipspace.net/2020/11/ospf-not-using-tcp.html#246) to use [TCP transport with IS-IS](https://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00)
-* [Tony Przygienda](https://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html) describing [tons of things that could go wrong](https://blog.ipspace.net/2020/11/ospf-not-using-tcp.html#250) in a transport protocol used by a routing protocol
-* Minh Ha [debunking the _TCP is a resource hog_ myth](https://blog.ipspace.net/2020/11/ospf-not-using-tcp.html#251)
+* Henk Smit [explaining the efforts](/2020/11/ospf-not-using-tcp.html#246) to use [TCP transport with IS-IS](https://tools.ietf.org/html/draft-hsmit-lsr-isis-flooding-over-tcp-00)
+* [Tony Przygienda](/2018/03/data-center-routing-with-rift-on.html) describing [tons of things that could go wrong](/2020/11/ospf-not-using-tcp.html#250) in a transport protocol used by a routing protocol
+* Minh Ha [debunking the _TCP is a resource hog_ myth](/2020/11/ospf-not-using-tcp.html#251)
 
 I also received pointers to:
 

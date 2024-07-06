@@ -7,7 +7,7 @@ title: ADSL QoS Basics
 url: /2009/06/adsl-qos-basics.html
 lastmod: 2020-12-07 17:17:00
 ---
-Based on the [ADSL reference model](https://blog.ipspace.net/2009/06/adsl-reference-diagram.html), let's try to figure out how you can influence the quality of service over your ADSL link (for example, you'd like to prioritize VoIP packets over web download). To understand the QoS issues, we need to analyze the congestion points; these are the points where a queue might form when the network is overloaded and where you can reorder the packets to give some applications a preferential treatment.
+Based on the [ADSL reference model](/2009/06/adsl-reference-diagram.html), let's try to figure out how you can influence the quality of service over your ADSL link (for example, you'd like to prioritize VoIP packets over web download). To understand the QoS issues, we need to analyze the congestion points; these are the points where a queue might form when the network is overloaded and where you can reorder the packets to give some applications a preferential treatment.
 
 **Remember**: QoS is always a zero-sum game. If you prioritize some applications, you're automatically penalizing all others.
 <!--more-->
@@ -23,7 +23,7 @@ Based on the congestion analysis, it's obvious [you cannot use queuing](/kb/tag/
 
 {{<figure src="ADSL_CPE_QoS.png" caption="Traffic shaping configured on xDSL CPE">}}
 
-The shaping configured on the PPPoE interface on the CPE router neatly removes the congestion on the DSL modem. The backhaul network is rarely congested in the upstream direction (unless your [friendly neighbors are devoted fans of P2P protocols](https://blog.ipspace.net/2009/06/internet-socialism-all-i-can-eat.html)).
+The shaping configured on the PPPoE interface on the CPE router neatly removes the congestion on the DSL modem. The backhaul network is rarely congested in the upstream direction (unless your [friendly neighbors are devoted fans of P2P protocols](/2009/06/internet-socialism-all-i-can-eat.html)).
 
 When configuring the upstream shaping rate, take in account the extra overhead introduced by the PPPoE framing, which is not yet present in packets shaped on the **Dialer** interface, and reduce the upstream shaping speed to a value slightly below your DSL upstream speed.
 

@@ -8,7 +8,7 @@ url: /2019/03/building-network-automation-source-of.html
 series: [ ssot ]
 ssot_tag: build
 ---
-In the first blog post of this series I described how you could [start building the prerequisite for any network automation solution: the device inventory](https://blog.ipspace.net/2019/02/building-network-automation-source-of.html).
+In the first blog post of this series I described how you could [start building the prerequisite for any network automation solution: the device inventory](/2019/02/building-network-automation-source-of.html).
 
 Having done that, you should know *what* is in your network, but you still don't know *how* your network is supposed to work and *what services* it is supposed to provide. Welcome to the morass known as *building your source-of-truth*.
 <!--more-->
@@ -32,12 +32,12 @@ Not surprisingly, this is how most well-designed orchestration, network automati
 
 ### Meanwhile on Planet Earth
 
-The best you can hope for in most environments that [don't run networks as their core business](https://blog.ipspace.net/2017/11/the-three-paths-of-enterprise-it.html) (some Service Providers got their act together and managed to move pretty close to the ideal world) is an Excel spreadsheet listing VLANs, another Excel spreadsheet with semi-accurate subnet assignments, and tribal knowledge. The only source-of-truth (description of how the network works and what services it provides) you'll find in these environments is the device configuration.
+The best you can hope for in most environments that [don't run networks as their core business](/2017/11/the-three-paths-of-enterprise-it.html) (some Service Providers got their act together and managed to move pretty close to the ideal world) is an Excel spreadsheet listing VLANs, another Excel spreadsheet with semi-accurate subnet assignments, and tribal knowledge. The only source-of-truth (description of how the network works and what services it provides) you'll find in these environments is the device configuration.
 
 There are few things you can do when faced with reality:
 
--   **Give up** and [invent a gazillion excuses](https://blog.ipspace.net/2016/11/finding-excuses-to-avoid-network.html) why you can't possibly automate your network. Based on some comments I'm regularly getting this seems to be a very popular choice;
--   **Hope you'll be able to automate new deployments**. This should work in theory, but you'll most likely fail miserably due to lack of automation mindset and discipline. It's hard to keep a deployment consistent if everyone thinks they can get custom-tailored network service to [support whatever mistakes they made in application design](https://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html), or if network technicians believe the right way to fix problems is to log into devices and start throwing random configuration commands at problems until the problems become scared enough to disappear (temporarily and for no good reason);
+-   **Give up** and [invent a gazillion excuses](/2016/11/finding-excuses-to-avoid-network.html) why you can't possibly automate your network. Based on some comments I'm regularly getting this seems to be a very popular choice;
+-   **Hope you'll be able to automate new deployments**. This should work in theory, but you'll most likely fail miserably due to lack of automation mindset and discipline. It's hard to keep a deployment consistent if everyone thinks they can get custom-tailored network service to [support whatever mistakes they made in application design](/2013/04/this-is-what-makes-networking-so-complex.html), or if network technicians believe the right way to fix problems is to log into devices and start throwing random configuration commands at problems until the problems become scared enough to disappear (temporarily and for no good reason);
 
 {{<note>}}
 A very large organization decided to automate the deployment of new data centers covering everything from initial software upgrades to connectivity and services testing and validation, and managed to deploy a brand new data center every month with a tiny team. Unfortunately, the moment the deployment team walked away, the local ops team immediately reverted to **configure terminal**, totally destroying the value created in the deployment process.
@@ -53,10 +53,10 @@ There's only one good advice you can give someone who's faced with an enormous t
 -   Create a process that integrates the configuration snippets with existing device configuration.
 
 {{<note info>}}
-Several attendees of our [network automation course](https://www.ipspace.net/Building_Network_Automation_Solutions) decided to do exactly this as one of the hands-on assignments, [usually across numerous platforms from a half-dozen vendors](https://blog.ipspace.net/2018/01/synchronize-network-management.html).
+Several attendees of our [network automation course](https://www.ipspace.net/Building_Network_Automation_Solutions) decided to do exactly this as one of the hands-on assignments, [usually across numerous platforms from a half-dozen vendors](/2018/01/synchronize-network-management.html).
 {{</note>}}
 
-You might be lucky enough to have equipment from a vendor that can spell *data models* or *candidate device configuration* (hint: [focus on these requirements](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html) instead of PowerPoint-based unicorn poop the next time you're buying networking gear) in which case the integration process is reasonably simple. If you're not so lucky, explore the [brownfield automation solution](/kb/ConfigRegex/) described by Josef Fuchs.
+You might be lucky enough to have equipment from a vendor that can spell *data models* or *candidate device configuration* (hint: [focus on these requirements](/2016/10/network-automation-rfp-requirements.html) instead of PowerPoint-based unicorn poop the next time you're buying networking gear) in which case the integration process is reasonably simple. If you're not so lucky, explore the [brownfield automation solution](/kb/ConfigRegex/) described by Josef Fuchs.
 
 Lather, Rinse, Repeat. Slowly expand the scope of services (or configuration snippets) described by your data models. Make sure all new services are born in the ideal world. You'll still have an enormous amount of legacy to deal with, but at least you'll be moving forward and demonstrating the value automation brings to the table (consistency, repeatability, better processes, change management...).
 

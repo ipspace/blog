@@ -8,7 +8,7 @@ All BGP implementations I've seen so far use *recursive next hop lookup*:
 * The next hop in the IP routing table is the BGP next hop advertised in the incoming update
 * That next hop is resolved into the actual next hop using one or more recursive lookups into the IP routing table.
 
-Furthermore, all BGP implementations I've seen used multiple recursive next hops (if available) to implement load balancing toward the BGP next hop -- that's how we made [EBGP load balancing work](https://blog.ipspace.net/2009/03/ebgp-load-balancing-with-multihop-ebgp.html) in Stone Age of networking. 
+Furthermore, all BGP implementations I've seen used multiple recursive next hops (if available) to implement load balancing toward the BGP next hop -- that's how we made [EBGP load balancing work](/2009/03/ebgp-load-balancing-with-multihop-ebgp.html) in Stone Age of networking. 
 <!--more-->
 Life was good... until [Dmitry Perets](https://www.linkedin.com/in/dmitryperets/) sent me an email with a disturbing question: unless both of us can't read standards anymore, all those implementations violate RFC 4271.
 

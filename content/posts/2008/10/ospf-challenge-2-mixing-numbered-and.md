@@ -38,4 +38,4 @@ router ospf 1
 
 What IP address can you use on the loopback interface of R1 to establish adjacency between R1 and R2? Can you use more than one IP address?
 
-You can find the solution [here](https://blog.ipspace.net/2008/11/ospf-challenge-2-final-results.html).
+You can find the solution [here](/2008/11/ospf-challenge-2-final-results.html).

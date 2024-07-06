@@ -9,9 +9,9 @@ tags:
 - high availability
 title: 'Repost: VMware Fault Tolerance Woes'
 ---
-I [always claimed](https://blog.ipspace.net/2011/08/high-availability-fallacies.html) that VMware Fault Tolerance makes no sense. After all, the only thing it does is protect a VM against a server hardware failure... in the world where software crashes are way more common, and fat fingers cause most of the outages. 
+I [always claimed](/2011/08/high-availability-fallacies.html) that VMware Fault Tolerance makes no sense. After all, the only thing it does is protect a VM against a server hardware failure... in the world where software crashes are way more common, and fat fingers cause most of the outages. 
 
-But wait, it gets worse, the whole thing is incredibly complex -- you might like this description Minh Ha [left as a comment](https://blog.ipspace.net/2020/12/50-shades-high-availability.html#277) to my [Fifty Shades of High Availability](https://blog.ipspace.net/2020/12/50-shades-high-availability.html) blog post.
+But wait, it gets worse, the whole thing is incredibly complex -- you might like this description Minh Ha [left as a comment](/2020/12/50-shades-high-availability.html#277) to my [Fifty Shades of High Availability](/2020/12/50-shades-high-availability.html) blog post.
 <!--more-->
 ---
 
@@ -21,7 +21,7 @@ And that's just with synthetic workloads. And yes, I/O-bound workloads -- Rx mor
 
 Essentially, looks like HA solutions normally come with performance trade-offs, sometimes considerable ones, and they always cost a hell lot more.
 
-Also, I remember earlier this year, you were blogging about some guy demonstrating a [lossless Vmotion failover](https://blog.ipspace.net/2020/03/the-myth-of-lossless-vmotion.html). Frankly, what does it prove anything? The Vmotion process is inherently lossy, due to the repeated iterations of memory copy and the freezing of the VM, esp. for memory-intensive workload, and that you can successfully execute a lossless migration, just means you're lucky, thanks to probabilities, or have a workload that doesn't stress Vmotion capability to its limit, or both. Or put it in a semi-formal way, just because you manage to achieve result-level correctness, doesn't mean you have process-level correctness :p. Think gambling. That's one classic example of (sometimes) great result, horrible process.
+Also, I remember earlier this year, you were blogging about some guy demonstrating a [lossless Vmotion failover](/2020/03/the-myth-of-lossless-vmotion.html). Frankly, what does it prove anything? The Vmotion process is inherently lossy, due to the repeated iterations of memory copy and the freezing of the VM, esp. for memory-intensive workload, and that you can successfully execute a lossless migration, just means you're lucky, thanks to probabilities, or have a workload that doesn't stress Vmotion capability to its limit, or both. Or put it in a semi-formal way, just because you manage to achieve result-level correctness, doesn't mean you have process-level correctness :p. Think gambling. That's one classic example of (sometimes) great result, horrible process.
 
 As to end-to-end HA, I agree 100% with you that the right way to do it is via the applications, as it goes along the same line of complexity belonging at the edge and simplicity at the core, smart edge dumb core :)) . DNS exemplifies that application-level-HA paradigm. It's simple and rock solid.
 

@@ -11,7 +11,7 @@ tags:
 title: Running BGP between Virtual Machine and ToR Switch
 url: /2016/09/running-bgp-between-virtual-machine-and.html
 ---
-One of my readers left this question on the blog post [resurfacing the idea of running BGP between servers and ToR switches](https://blog.ipspace.net/2016/03/sysadmins-shouldnt-be-involved-with.html):
+One of my readers left this question on the blog post [resurfacing the idea of running BGP between servers and ToR switches](/2016/03/sysadmins-shouldnt-be-involved-with.html):
 
 > When using BGP on a VM for mobility, what is the best way to establish a peer relationship with a new TOR switch after a live migration? The VM won\'t inherently know the peer address or the ASN.
 
@@ -19,9 +19,9 @@ As always, the correct answer is *[it depends](https://twitter.com/ThePracticalD
 <!--more-->
 ### Supporting Live VM Mobility
 
-If you want to support live ([hot](https://blog.ipspace.net/2013/02/hot-and-cold-vm-mobility.html)) VM mobility across ToR switches, don't run BGP with the ToR switch. Regardless of how well you fine-tune the setup, it will take at least a few seconds before the BGP session with the new ToR switch is established, making your service inaccessible in the meantime.
+If you want to support live ([hot](/2013/02/hot-and-cold-vm-mobility.html)) VM mobility across ToR switches, don't run BGP with the ToR switch. Regardless of how well you fine-tune the setup, it will take at least a few seconds before the BGP session with the new ToR switch is established, making your service inaccessible in the meantime.
 
-As I explained in [another blog post](https://blog.ipspace.net/2013/08/virtual-appliance-routing-network.html) (yes, it's almost exactly three years old), you SHOULD run a BGP session with a route server somewhere in your network, preferably using IBGP to make things simpler.
+As I explained in [another blog post](/2013/08/virtual-appliance-routing-network.html) (yes, it's almost exactly three years old), you SHOULD run a BGP session with a route server somewhere in your network, preferably using IBGP to make things simpler.
 
 To add redundancy to the design, peer the VM with two route servers.
 
@@ -36,7 +36,7 @@ Deploying FRR on the servers is obviously a better option. For more details, wat
 
 ### Supporting Disaster Recovery
 
-Running BGP between the virtual machines and the network [simplifies disaster recovery scenarios](https://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html) (and alleviates the need for crazy kludges like stretched VLANs). If this is your use case:
+Running BGP between the virtual machines and the network [simplifies disaster recovery scenarios](/2013/05/simplify-your-disaster-recovery-with.html) (and alleviates the need for crazy kludges like stretched VLANs). If this is your use case:
 
 -   Run a set of route servers in each data center to support live VM mobility within each data center;
 -   Use the same IP addresses and AS numbers across route servers in all data centers to enable VMs to connect to the route server in the local data center;

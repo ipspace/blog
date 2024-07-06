@@ -19,7 +19,7 @@ The split of responsibilities also allowed us to create significantly more conte
 
 Irena was pretty open when she joined ipSpace.net that she might move on in a few years... and decided it's time to move on by the end of June 2021, giving me a perfect excuse to take a break myself.
 
-**What will happen to ipSpace.net content?** Nothing bad. Everything that's out there will stay where it is, and we plan to [keep going at full speed until late June 2021](https://blog.ipspace.net/2021/01/planning-webinars-2021.html). 
+**What will happen to ipSpace.net content?** Nothing bad. Everything that's out there will stay where it is, and we plan to [keep going at full speed until late June 2021](/2021/01/planning-webinars-2021.html). 
 
 The rate of content delivery will slow down after that. Expect one or two live sessions per month (excluding July, August and December), mostly without guest speakers.
 

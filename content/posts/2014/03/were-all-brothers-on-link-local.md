@@ -15,9 +15,9 @@ In short: IPv6 has many shortcomings, but this might not be one of them.
 <!--more-->
 ### The Layer-2 Subnet Model Is Broken
 
-You probably know my opinion on the [current layer-2 networking model](https://blog.ipspace.net/2012/05/transparent-bridging-aka-l2-switching.html) -- apart from being a [single failure domain](http://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html), it's also a [single security domain](http://blog.ipspace.net/2013/04/compromised-security-zone-game-over-or.html).
+You probably know my opinion on the [current layer-2 networking model](/2012/05/transparent-bridging-aka-l2-switching.html) -- apart from being a [single failure domain](/2012/05/layer-2-network-is-single-failure.html), it's also a [single security domain](/2013/04/compromised-security-zone-game-over-or.html).
 
-We can either accept that fact (and work on hardening the end-systems), [split our oversized layer-2 domains into smaller ones](https://blog.ipspace.net/2013/11/make-every-application-independent.html) (where all hosts in a smaller domain become totally equivalent from the security perspective), or implement a properly hardened network that:
+We can either accept that fact (and work on hardening the end-systems), [split our oversized layer-2 domains into smaller ones](/2013/11/make-every-application-independent.html) (where all hosts in a smaller domain become totally equivalent from the security perspective), or implement a properly hardened network that:
 
 -   Authenticates users before allowing them to connect to the network;
 -   Assigns addresses to users in an auditable fashion;
@@ -35,7 +35,7 @@ Obviously, it's not just the vendors' problem. Plenty of customers are buying th
 
 ### Some Got It Right
 
-There's a single company (AFAIK -- I hope you'll prove me wrong in the comments) that handles the layer-2/layer-3 boundary correctly, restoring the original meaning of [data-link layer](http://en.wikipedia.org/wiki/OSI_model#Layer_2:_data_link_layer) (before [bridges were invented](https://blog.ipspace.net/2010/07/bridges-kludge-that-shouldnt-exist.html)): Microsoft's [Hyper-V Network Virtualization connects VMs straight to a layer-3 virtual switch](http://blog.ipspace.net/2013/12/hyper-v-network-virtualization-packet.html) that block all rogue RA messages and terminates all ND exchanges. Amazon VPC and Juniper Contrail do something very similar, but only for IPv4.
+There's a single company (AFAIK -- I hope you'll prove me wrong in the comments) that handles the layer-2/layer-3 boundary correctly, restoring the original meaning of [data-link layer](http://en.wikipedia.org/wiki/OSI_model#Layer_2:_data_link_layer) (before [bridges were invented](/2010/07/bridges-kludge-that-shouldnt-exist.html)): Microsoft's [Hyper-V Network Virtualization connects VMs straight to a layer-3 virtual switch](/2013/12/hyper-v-network-virtualization-packet.html) that block all rogue RA messages and terminates all ND exchanges. Amazon VPC and Juniper Contrail do something very similar, but only for IPv4.
 
 Finally, there's always the option of putting every single user in its own subnet. Good luck with that -- your ops people and the switch vendors (who will run out of TCAM) will love you.
 

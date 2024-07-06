@@ -9,7 +9,7 @@ tags:
 title: CLI or API? Wait … Do You Really Have to Ask?
 url: /2014/02/cli-or-api-wait-do-you-really-have-to.html
 ---
-The "*[Is CLI In My Way ... or a Symptom of a Bigger Problem](https://blog.ipspace.net/2014/02/is-cli-in-my-way-or-is-it-just-symptom.html)*" post generated some interesting discussions on Twitter, including this one:
+The "*[Is CLI In My Way ... or a Symptom of a Bigger Problem](/2014/02/is-cli-in-my-way-or-is-it-just-symptom.html)*" post generated some interesting discussions on Twitter, including this one:
 
 {{<figure src="/2014/02/s400-API_First.png">}}
 

@@ -6,7 +6,7 @@ tags:
 title: Multisite Clusters Done Right... by None Other than Microsoft
 url: /2011/06/multisite-clusters-done-right-by-none.html
 ---
-I had to check the Microsoft clustering terminology a few days ago, so I used Google to find the most relevant pages for "Windows cluster" and landed on the *Failover clustering* home page where the *Multisite Clustering* link immediately caught my attention. Dreading the [humongous amount of layer-2 DCI stupidities](https://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html) that could lurk hidden behind such a concept, I barely dared to click on the link... which unveiled one of the most pleasant surprises I've got from an IT vendor in a very long time.
+I had to check the Microsoft clustering terminology a few days ago, so I used Google to find the most relevant pages for "Windows cluster" and landed on the *Failover clustering* home page where the *Multisite Clustering* link immediately caught my attention. Dreading the [humongous amount of layer-2 DCI stupidities](/2011/06/stretched-clusters-almost-as-good-as.html) that could lurk hidden behind such a concept, I barely dared to click on the link... which unveiled one of the most pleasant surprises I've got from an IT vendor in a very long time.
 <!--more-->
 {{<note warn>}}The links to the Microsoft documentation used in the original version of this blog post are broken, so I removed them. You'll have to rely on your Google-Fu.{{</note>}}
 

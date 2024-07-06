@@ -6,7 +6,7 @@ tags:
 title: EVPN Auto-Rd and Duplicate MAC Addresses
 url: /2020/01/evpn-auto-rd-and-duplicate-mac-addresses.html
 ---
-Another [EVPN reader question](https://blog.ipspace.net/2019/12/evpn-route-targets-route-distinguishers.html), this time focusing on auto-RD functionality and how it works with duplicate MAC addresses:
+Another [EVPN reader question](/2019/12/evpn-route-targets-route-distinguishers.html), this time focusing on auto-RD functionality and how it works with duplicate MAC addresses:
 
 > If set to *Auto*, the RD generated for the same VNI across the EVPN switches will be different. If the same route (MAC/IP) is present under different leaves of the same L2VNI, there is no best path selection (since the RD is different), and both will be considered. This is a misconfiguration and shouldn't be allowed. How will the BGP deal with this?
 

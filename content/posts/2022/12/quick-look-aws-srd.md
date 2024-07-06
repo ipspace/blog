@@ -5,7 +5,7 @@ tags: [ AWS, switching ]
 ---
 One of the most exciting announcements from the last AWS re:Invent was the [Elastic Network Adapter (ENA) Express](https://aws.amazon.com/about-aws/whats-new/2022/11/elastic-network-adapter-ena-express-amazon-ec2-instances/) functionality that uses the [Scalable Reliable Datagram (SRD)](https://ieeexplore.ieee.org/document/9167399) protocol as the transport protocol for the overlay virtual networks. AWS claims ENA Express can push 25 Gbps over a single TCP flow and that SRD improves the tail latency (99.9 percentile) for high-throughput workloads by 85%.
 
-Ignoring the "_[DPUs could change the network forever](https://blog.ipspace.net/2023/01/dpu-change-network-forever.html)_" blogosphere reactions (hint: they won't), let's see what could be happening behind the scenes and why SRD improves TCP throughput and tail latency.
+Ignoring the "_[DPUs could change the network forever](/2023/01/dpu-change-network-forever.html)_" blogosphere reactions (hint: they won't), let's see what could be happening behind the scenes and why SRD improves TCP throughput and tail latency.
 <!--more-->
 AWS developed SRD as a transport protocol for Elastic Fabric Adapters (the networking part of their HPC implementation). There's no magic behind SRD; it's just another data point in the transport protocol solution space:
 
@@ -23,14 +23,14 @@ Next step: [ENA Express uses SRD instead of GRE](https://aws.amazon.com/about-aw
 
 It's obvious why SRD increases the throughput of a single TCP session -- packets from a single session can be sent over multiple links[^BRC] -- but why does it decrease the tail latency?
 
-[^BRC]: Brocade did [something similar ages ago in the VCS Fabric](https://blog.ipspace.net/2011/04/brocade-vcs-fabric-has-almost-perfect.html).
+[^BRC]: Brocade did [something similar ages ago in the VCS Fabric](/2011/04/brocade-vcs-fabric-has-almost-perfect.html).
 
-I know just enough about TCP to have incorrect opinions, but ([based on what people who should know better told me](https://blog.ipspace.net/2019/06/do-packet-drops-matter-for-tcp.html)) there are several reasons for variability in TCP throughput and latency:
+I know just enough about TCP to have incorrect opinions, but ([based on what people who should know better told me](/2019/06/do-packet-drops-matter-for-tcp.html)) there are several reasons for variability in TCP throughput and latency:
 
 * Packet drops could be a Really Bad Thing if your TCP stack uses [drop-sensitive congestion avoidance algorithm](https://en.wikipedia.org/wiki/TCP_congestion_control#Algorithms). Having reliable underlay transport solves this one.
 * Early TCP implementations could interpret reordered packets as a packet drop of the intermediate packets (see above). I was told this was a solved problem and should have disappeared in recent TCP implementations after the TCP Selective ACK was implemented.
 * Packet reordering also kills hardware-based Receive Side Coalescing, but it looks like AWS was more than willing to sacrifice the CPU cycles needed to sort the packets in software to get better performance.
-* [Losing the last packet of a packet burst is a killer](https://blog.ipspace.net/2019/06/do-packet-drops-matter-for-tcp.html#3111488803170449903), even if your TCP stack uses Selective ACK. The receiver can't acknowledge the lost packet or send Selective ACK because there's no subsequent packet, forcing the sender to wait for the timeout. The real SNAFU:  the minimum TCP timeout on most operating systems is a few milliseconds, while the fabric transit times are measured in microseconds. No wonder the tail latency is through the roof and can be fixed with reliable transport of IP datagrams.
+* [Losing the last packet of a packet burst is a killer](/2019/06/do-packet-drops-matter-for-tcp.html#3111488803170449903), even if your TCP stack uses Selective ACK. The receiver can't acknowledge the lost packet or send Selective ACK because there's no subsequent packet, forcing the sender to wait for the timeout. The real SNAFU:  the minimum TCP timeout on most operating systems is a few milliseconds, while the fabric transit times are measured in microseconds. No wonder the tail latency is through the roof and can be fixed with reliable transport of IP datagrams.
 
 Now that you understand some of the reasons why ENA Express improves performance and tail latency, let's quickly deal with the inevitable hype:
 

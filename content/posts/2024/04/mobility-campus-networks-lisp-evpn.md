@@ -7,7 +7,7 @@ I decided not to get involved in the EVPN-versus-LISP debates anymore; I'd [writ
 
 {{<figure src="/2024/04/juniper-campus-lisp-tweet.png">}}
 <!--more-->
-**TL&DR:** The discussion on whether "*LISP scales better than EVPN*" became irrelevant when the bus between the switch CPU and the adjacent ASIC became the bottleneck. Modern switches can process more prefixes than they can install in the ASIC forwarding tables (or we wouldn't be using [prefix-independent convergence](https://blog.ipspace.net/2012/01/prefix-independent-convergence-pic.html)).
+**TL&DR:** The discussion on whether "*LISP scales better than EVPN*" became irrelevant when the bus between the switch CPU and the adjacent ASIC became the bottleneck. Modern switches can process more prefixes than they can install in the ASIC forwarding tables (or we wouldn't be using [prefix-independent convergence](/2012/01/prefix-independent-convergence-pic.html)).
 
 Now, let's focus on the dynamics of campus mobility. There's almost no endpoint mobility if a campus network uses wired infrastructure. If a campus is primarily wireless, we have two options:
 
@@ -31,24 +31,24 @@ Where's latency in that? The only way to introduce latency in that process is to
 
 OK, maybe the engineer writing about latency misspoke and meant *the traffic is disrupted for 20 msec.* In other words, the MAC move event takes 20 msec. Could LISP be better than EVPN in handling that? Of course, but it all comes down to the *quality of implementation.* In both cases:
 
-* A switch control plane [has to notice](https://blog.ipspace.net/2023/04/evpn-dynamic-mac-learning.html) its hardware discovered a new MAC address (forty years after the STP was invented, we're still doing dynamic MAC learning at the fabric edge).
+* A switch control plane [has to notice](/2023/04/evpn-dynamic-mac-learning.html) its hardware discovered a new MAC address (forty years after the STP was invented, we're still doing dynamic MAC learning at the fabric edge).
 * The new MAC address is announced to some central entity (route reflector), which propagates the update to all other edge devices.
 * The edge devices install the new MAC-to-next-hop mapping into the forwarding tables.
 
 Barring implementation differences, there's no fundamental reason why one control-plane protocol would do the above process better than another one.
 
-But wait, there's another gotcha: at least in [some implementations](https://blog.ipspace.net/2023/05/silent-hosts-evpn.html#1814), the control plane takes "forever" to notice a new MAC address. However, that's a hardware-related quirk, and no control-plane protocol will fix that one. No wonder some people talk about [dynamic MAC learning with EVPN](https://blog.ipspace.net/2023/09/dynamic-mac-learning-evpn.html).
+But wait, there's another gotcha: at least in [some implementations](/2023/05/silent-hosts-evpn.html#1814), the control plane takes "forever" to notice a new MAC address. However, that's a hardware-related quirk, and no control-plane protocol will fix that one. No wonder some people talk about [dynamic MAC learning with EVPN](/2023/09/dynamic-mac-learning-evpn.html).
 
 **Aside:** If you care about fast MAC mobility, you might be better off doing dynamic MAC learning across the fabric. You don't need EVPN or LISP to do that; VXLAN fabric with ingress replication or SPB will work just fine.
 
 Before doing a summary, let me throw in a few more numbers:
 
-* We don't know how fast modern switches can update their ASIC tables (thank you, [ASIC vendors](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html)), but the rumors talk about 1000+ entries per second.
+* We don't know how fast modern switches can update their ASIC tables (thank you, [ASIC vendors](/2016/05/what-are-problems-with-broadcom.html)), but the rumors talk about 1000+ entries per second.
 * The behavior of [open-source routing daemons](https://elegantnetwork.github.io/posts/comparing-open-source-bgp-internet-routes/) and even [commercial BGP stacks](https://elegantnetwork.github.io/posts/BGP-commercial-stacks/) is well-documented thanks to the [excellent work by Justin Pietch](https://elegantnetwork.github.io/posts/comparing-open-source-bgp-internet-routes/). Unfortunately, he didn't publish the raw data, but looking at his graphs, it seems that good open-source daemons have no problems processing 10K prefixes in a second or two.
 
 It seems like we're at a point where (assuming optimal implementations) the BGP update processing rate on a decent CPU[^MT] exceeds the FIB installation rate.
 
-[^MT]: Bonus points for [using multiple threads](https://blog.ipspace.net/2021/11/multi-threaded-routing-daemons.html) on a multi-core CPU.
+[^MT]: Bonus points for [using multiple threads](/2021/11/multi-threaded-routing-daemons.html) on a multi-core CPU.
 
 Back to LISP versus EVPN. It should be evident by now that:
 

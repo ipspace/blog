@@ -13,7 +13,7 @@ One of my readers sent me this question:
 
 > One thing that I notice is you mentioned moving the complexity to the upper layer. I was wondering why browsers don\'t support multiple IP addresses for a single site -- when a browser receives more than one IP address in a DNS response, it could try to perform TCP SYN to the first address, and if it fails it will move to the other address. This way we don\'t need an anycast solution for DR site.
 
-Of course I pointed out an [old blog post](https://blog.ipspace.net/2009/08/what-went-wrong-socket-api.html) ;), and we all know that [Happy Eyeballs](http://blog.ipspace.net/2013/03/happy-eyeballs-happiness-defined-by.html) work this way.
+Of course I pointed out an [old blog post](/2009/08/what-went-wrong-socket-api.html) ;), and we all know that [Happy Eyeballs](/2013/03/happy-eyeballs-happiness-defined-by.html) work this way.
 <!--more-->
 You might wonder why this idea wasn't implemented from the very beginning. I can only guess (although I should know -- after all, I was running an ISP in those days) that the idea of sending a TCP SYN request to all addresses returned in the DNS query and using the first one never became popular because of the resource consumption it would place on the servers. Before server operating systems got decent implementation of [TCP SYN cookies](https://en.wikipedia.org/wiki/SYN_cookies), SYN floods were one of the easiest ways of bringing down a web site.
 
@@ -29,6 +29,6 @@ We continued our discussion with...
 
 Well, once the big players figured out how to use load balancing at scale, and how they can use it to simplify their operations (rolling upgrades, [canary releases](https://martinfowler.com/bliki/CanaryRelease.html), [mitigating thundering herd](https://www.nginx.com/blog/mitigating-thundering-herd-problem-pbs-nginx/)...), it became part of their toolset, and they all rely heavily on a layer of load balancers and application-layer proxies sitting in front of the web servers.
 
-Also, we got way beyond simple DNS-based load balancing with solutions like NS1 that can collect browser-side metrics to influence DNS responses to other users from the same autonomous system (listen to [Software Gone Wild Episode 29](https://blog.ipspace.net/2015/04/nsone-data-driven-dns-on-software-gone.html) for more details), while simplistic methods like Happy Eyeballs select the first server that responds to a SYN request, not the fastest server to deliver the desired response.
+Also, we got way beyond simple DNS-based load balancing with solutions like NS1 that can collect browser-side metrics to influence DNS responses to other users from the same autonomous system (listen to [Software Gone Wild Episode 29](/2015/04/nsone-data-driven-dns-on-software-gone.html) for more details), while simplistic methods like Happy Eyeballs select the first server that responds to a SYN request, not the fastest server to deliver the desired response.
 
 Long story short: I don't think anyone big enough to influence browser vendors is interested in reinventing this particular wheel.

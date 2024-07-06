@@ -37,7 +37,7 @@ There are a few things I simply have to update to feel good (last status update 
 * The [network automation curriculum](https://www.ipspace.net/Roadmap/Network_Automation_webinars) is pretty well rounded, what's missing is a [deep dive into network automation concepts](https://www.ipspace.net/Network_Automation_Concepts) (infrastructure-as-code, data models, data stores, single source of truth, intent-based networking...). We started with [data models](https://my.ipspace.net/bin/list?id=AutConcepts#DATAMODELS) and [covered data stores](https://my.ipspace.net/bin/list?id=AutConcepts#DATASTORE) in May 2021. More to come in autumn.
 * Gateway Load Balancer and Network Firewall were added to AWS webinar. Still missing: Transit Gateway Connect Peers.
 * Virtual WAN and Virtual Hubs were added to Azure webinar. Still missing: Azure Firewall.
-* [Miha Markočič](https://www.ipspace.net/Team:Miha_Markocic) has developed [tons of AWS new automation examples](https://blog.ipspace.net/2021/01/aws-networking-automation-examples.html) (already published).
+* [Miha Markočič](https://www.ipspace.net/Team:Miha_Markocic) has developed [tons of AWS new automation examples](/2021/01/aws-networking-automation-examples.html) (already published).
 
 ### Still on To-Do List
 

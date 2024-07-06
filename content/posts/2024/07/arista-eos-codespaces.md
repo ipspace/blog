@@ -7,7 +7,7 @@ netlab_tag: codespace
 [![](/2024/07/container-download.jpg)](/2024/07/container-download.jpg)
 { .sideicon }
 
-Yesterday, I explained how you can [run netlab examples in GitHub codespaces](/2024/07/netlab-examples-codespaces.html) and mentioned that they work best with vendors who understand the value of frictionless downloads. But what if you'd like to use a device from [one of the good guys](https://blog.ipspace.net/2024/02/netlab-vxlan-labs.html) who provide the container images but require a registration?
+Yesterday, I explained how you can [run netlab examples in GitHub codespaces](/2024/07/netlab-examples-codespaces.html) and mentioned that they work best with vendors who understand the value of frictionless downloads. But what if you'd like to use a device from [one of the good guys](/2024/02/netlab-vxlan-labs.html) who provide the container images but require a registration?
 
 It turns out the solution is trivial:
 <!--more-->

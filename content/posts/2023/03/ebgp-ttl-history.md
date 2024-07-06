@@ -9,7 +9,7 @@ tags: [ BGP ]
 <!--more-->
 I wasn't close to Cisco Engineering in the early 1990s, and the discussions I had with TAC engineers when teaching my BGP course at Cisco Europe never went in that direction, so the best I can offer is an educated guess based on how we used BGP in those days.
 
-As I explained in the [Why Do We Need IBGP Full Mesh](https://blog.ipspace.net/2022/10/ibgp-full-mesh.html) blog post, BGP creators assumed we'd use BGP like this:
+As I explained in the [Why Do We Need IBGP Full Mesh](/2022/10/ibgp-full-mesh.html) blog post, BGP creators assumed we'd use BGP like this:
 
 -   EBGP would propagate IP prefixes between autonomous systems (AS).
 -   Edge routers would redistribute EBGP routes into IGP. IGP would propagate *those same prefixes* within each AS.

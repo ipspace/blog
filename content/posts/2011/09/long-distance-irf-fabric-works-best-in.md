@@ -17,7 +17,7 @@ HP has commissioned an [IRF network test](https://web.archive.org/web/2017080612
 
 > For disaster recovery, switches within an IRF domain can be deployed across multiple data centers. According to HP, a single IRF domain can link switches up to 70 kilometers (43.5 miles) apart.
 
-You know my [opinions about stretched cluster](https://blog.ipspace.net/2011/06/stretched-clusters-almost-as-good-as.html)... and the more down-to-earth part of HP Networking (the people writing the documentation) agrees with me.
+You know my [opinions about stretched cluster](/2011/06/stretched-clusters-almost-as-good-as.html)... and the more down-to-earth part of HP Networking (the people writing the documentation) agrees with me.
 <!--more-->
 {{<note>}}Please note: this post is not a critique of IRF fabric technology or its implementation, just of a particularly \"creative\" use case.{{</note>}}
 

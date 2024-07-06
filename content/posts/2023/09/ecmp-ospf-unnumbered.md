@@ -11,11 +11,11 @@ tags:
 - netlab
 title: OSPF ECMP with Unnumbered IPv4 Interfaces
 ---
-The [OSPF and ARP on Unnumbered IPv4 Interfaces](https://blog.ipspace.net/2023/08/unnumbered-ospf-arp.html) triggered an [interesting consideration](https://blog.ipspace.net/2023/08/unnumbered-ospf-arp.html#1903): does ECMP work across parallel unnumbered links?
+The [OSPF and ARP on Unnumbered IPv4 Interfaces](/2023/08/unnumbered-ospf-arp.html) triggered an [interesting consideration](/2023/08/unnumbered-ospf-arp.html#1903): does ECMP work across parallel unnumbered links?
 
 **TL&DR**: Yes, it works flawlessly on Arista EOS and Cisco IOS/XE. Feel free to test it out on any other device on which _netlab_ supports [unnumbered interfaces with OSPF](https://netlab.tools/module/ospf/#platform-support).
 <!--more-->
-In the good old days, it would take me forever to find the right boxes to do the tests. A few years ago, I would have to [chase a mouse around a GUI](https://blog.ipspace.net/2013/10/cisco-modeling-lab-virl-behind-scenes.html). This time, it took me 30 seconds (plus the [VM boot time](https://blog.ipspace.net/2023/02/virtual-device-boot-times.html)) to get the answer.
+In the good old days, it would take me forever to find the right boxes to do the tests. A few years ago, I would have to [chase a mouse around a GUI](/2013/10/cisco-modeling-lab-virl-behind-scenes.html). This time, it took me 30 seconds (plus the [VM boot time](/2023/02/virtual-device-boot-times.html)) to get the answer.
 
 ### Step 1: netlab topology
 
@@ -92,7 +92,7 @@ O        172.16.1.0/24 [110/2] via 10.0.0.2, 00:07:09, GigabitEthernet3
 
 ### Step 6: Repeat the tests with Cisco IOS XR
 
-Meh, no. My life is [too short for that](https://blog.ipspace.net/2023/02/virtual-device-boot-times.html) ;)
+Meh, no. My life is [too short for that](/2023/02/virtual-device-boot-times.html) ;)
 
 ### Takeaway
 

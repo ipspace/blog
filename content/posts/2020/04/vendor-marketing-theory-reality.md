@@ -3,7 +3,7 @@ title: "Vendor Marketing: Theory and Reality"
 date: 2020-04-01 08:01:00
 tags: [ vMotion ]
 ---
-Every time I'm [complaining about the stupidities $vendors are trying to sell us](https://blog.ipspace.net/2020/02/live-vmotion-into-vmware-on-aws-cloud.html), someone from vendorland saddles a high horse and starts telling me how I got it all wrong, for example:
+Every time I'm [complaining about the stupidities $vendors are trying to sell us](/2020/02/live-vmotion-into-vmware-on-aws-cloud.html), someone from vendorland saddles a high horse and starts telling me how I got it all wrong, for example:
 
 > It is a duty of a pre-sales, consultant, vendor representative to inform the customer about the risk.
 

@@ -15,7 +15,7 @@ I'm positive very smart network operators (including major CDN and content provi
 
 All three technologies I mentioned above faced the same set of problems:
 
--   [Per-flow (or per-granular-FEC) state in the network core never scales](https://blog.ipspace.net/2011/10/openflow-and-state-explosion.html). This is what killed RSVP and ATM SVCs.
+-   [Per-flow (or per-granular-FEC) state in the network core never scales](/2011/10/openflow-and-state-explosion.html). This is what killed RSVP and ATM SVCs.
 -   It's pretty hard to traffic engineer just the elephant flows. Either you do it properly and traffic engineer all traffic, or you end with a suboptimal network.
 -   Reacting to short-term changes in bandwidth requirements can cause interesting oscillations in the network (I'm positive Petr Lapukhov could point you to a dozen sources analyzing this problem).
 -   Nobody above the network layer really cares -- it's way simpler to blame the network when the [bandwidth fairy fails to deliver](http://en.wikipedia.org/wiki/Fallacies_of_Distributed_Computing).
@@ -26,7 +26,7 @@ Similarly, it's not hard to implement bandwidth-on-demand for specific elephant 
 
 {{<figure src="/2012/02/s400-HolyGrail.jpg" caption="Looking for the Holy Grail?">}}
 
-So, although I'm the first one to admit OpenFlow is an elegant tool to integrate flow classification (previously done with PBR) with traffic engineering (using MPLS-TE or any of the novel technologies proposed by Juniper) using the [hybrid deployment model](https://blog.ipspace.net/2011/11/openflow-deployment-models.html), being a seasoned skeptic, I just don't believe we'll reach the holy grail of bandwidth-on-demand during this hype cycle. However, being an eternal optimist, I sincerely hope I'm wrong.
+So, although I'm the first one to admit OpenFlow is an elegant tool to integrate flow classification (previously done with PBR) with traffic engineering (using MPLS-TE or any of the novel technologies proposed by Juniper) using the [hybrid deployment model](/2011/11/openflow-deployment-models.html), being a seasoned skeptic, I just don't believe we'll reach the holy grail of bandwidth-on-demand during this hype cycle. However, being an eternal optimist, I sincerely hope I'm wrong.
 
 #### Need help?
 

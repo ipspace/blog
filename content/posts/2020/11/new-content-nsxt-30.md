@@ -3,7 +3,7 @@ title: "New Content: VMware NSX-T 3.0 Update"
 date: 2020-11-09 07:35:00
 tags: [ NSX ]
 ---
-When VMware NSX-T 3.0 came out, I planned to do an update session of the _[VMware NSX Technical Deep Dive](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive)_ webinar along the lines of what [I did for AWS Networking a few weeks ago](https://blog.ipspace.net/2020/10/aws-networking-update.html). However, it turned out that most of the new features didn't take more than a bullet or two on an existing slide, or at most a new slide. 
+When VMware NSX-T 3.0 came out, I planned to do an update session of the _[VMware NSX Technical Deep Dive](https://www.ipspace.net/VMware_NSX_Technical_Deep_Dive)_ webinar along the lines of what [I did for AWS Networking a few weeks ago](/2020/10/aws-networking-update.html). However, it turned out that most of the new features didn't take more than a bullet or two on an existing slide, or at most a new slide. 
 
 Covering them in a live session and then slicing-and-dicing the resulting recording simply didn't make sense, so I updated the videos in summer 2020 (the last batch was published in early August).
 <!--more-->

@@ -4,7 +4,7 @@ date: 2022-03-23 07:50:00
 tags: [ BGP, MPLS ]
 pre_scroll: True
 ---
-While researching the BGP RFCs for the *[Three Dimensions of BGP Address Family Nerd Knobs](https://blog.ipspace.net/2022/01/bgp-af-nerd-knobs.html)*, I figured out that the BGP Labeled Unicast (BGP-LU, advertising MPLS labels together with BGP prefixes) uses a different address family. So far so good.
+While researching the BGP RFCs for the *[Three Dimensions of BGP Address Family Nerd Knobs](/2022/01/bgp-af-nerd-knobs.html)*, I figured out that the BGP Labeled Unicast (BGP-LU, advertising MPLS labels together with BGP prefixes) uses a different address family. So far so good.
 
 Now for the intricate bit: a BGP router might negotiate IPv4 and IPv4-LU address families with a neighbor. Does that mean that it's advertising every IPv4 prefix twice, once without a label, and once with a label? Should that be the case, how are those prefixes originated and how are they stored in the BGP table?
 

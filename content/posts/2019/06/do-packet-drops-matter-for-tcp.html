@@ -5,8 +5,8 @@ date: "2019-06-05T07:31:00.000+02:00"
 tags: [ TCP,QoS,WAN ]
 ---
 
-<p>Approximately two years ago I tried to figure out whether aggressive marketing of deep buffer data center switches makes sense, recorded a <a href="https://blog.ipspace.net/2017/01/to-drop-or-to-delay-thats-question-on.html">few podcasts on the topic</a> and organized a <a href="https://www.ipspace.net/Networks,_Buffers,_and_Drops">webinar with JR Rivers</a>.</p>
-<p>Not surprisingly, the <a href="https://blog.ipspace.net/2019/05/dont-base-your-design-on-vendor.html?showComment=1558510864632#c2685038696414754363">question keeps popping up</a>, so it seems it’s time for another series of TL&amp;DR articles. Let’s start with the basics:<!--more--></p>
+<p>Approximately two years ago I tried to figure out whether aggressive marketing of deep buffer data center switches makes sense, recorded a <a href="/2017/01/to-drop-or-to-delay-thats-question-on.html">few podcasts on the topic</a> and organized a <a href="https://www.ipspace.net/Networks,_Buffers,_and_Drops">webinar with JR Rivers</a>.</p>
+<p>Not surprisingly, the <a href="/2019/05/dont-base-your-design-on-vendor.html?showComment=1558510864632#c2685038696414754363">question keeps popping up</a>, so it seems it’s time for another series of TL&amp;DR articles. Let’s start with the basics:<!--more--></p>
 <ul><li>Every network will eventually experience congestion. What matters is how the network deals with the congestion.</li>
 <li>Network congestion results in either packet drops or increased latency, and you can’t avoid both of them at the same time without alleviating congestion.</li>
 <li>Don’t believe in the magic powers of QoS - it’s a zero-sum game.</li>
@@ -30,7 +30,7 @@ tags: [ TCP,QoS,WAN ]
 <ul><li>Lacking explicit backpressure mechanism in IP networks (with ECN being somewhat of an exception) the only signals available to TCP are packet drops and increased latency.</li>
 <li>Algorithms responding to increased latency are always starved when competing with algorithms responding to packet loss as output queues in network devices cause increased latency way before network devices start dropping packets.</li>
 <li>Most TCP congestion avoidance algorithms therefore respond to packet drops not latency increase. The usual response to a packet drop is to halve the sending rate.</li>
-<li>Unless you know better (see also: <a href="https://blog.ipspace.net/2019/06/know-thy-environment-before-redesigning.html">Understanding Your Environment</a>) it’s better to have reasonable amount of packet drop instead of increased latency. Not surprisingly, not everyone got that memo (see also: <a href="https://en.wikipedia.org/wiki/Bufferbloat">Bufferbloat</a>).</li>
+<li>Unless you know better (see also: <a href="/2019/06/know-thy-environment-before-redesigning.html">Understanding Your Environment</a>) it’s better to have reasonable amount of packet drop instead of increased latency. Not surprisingly, not everyone got that memo (see also: <a href="https://en.wikipedia.org/wiki/Bufferbloat">Bufferbloat</a>).</li>
 </ul>
 <p>As always, there are tons of exceptions:</p>
 <ul><li>BBR congestion control uses more complex algorithm that includes estimated round-trip-time;</li>
@@ -54,12 +54,12 @@ tags: [ TCP,QoS,WAN ]
 </ul>
 <p>Have I missed anything? Please write a comment!</p>
 <h4 id="further-information">Further information</h4><p>Want to know more? Start with:</p>
-<ul><li><a href="https://blog.ipspace.net/2017/01/to-drop-or-to-delay-thats-question-on.html">To Drop or To Delay</a> with Juho Snellman;</li>
-<li><a href="https://blog.ipspace.net/2017/03/tcp-in-data-center-and-beyond-on.html">TCP in the Data Center</a> with Thomas Graf;</li>
-<li><a href="https://blog.ipspace.net/2016/06/on-lossiness-of-tcp.html">On Lossiness of TCP</a> blog post</li>
+<ul><li><a href="/2017/01/to-drop-or-to-delay-thats-question-on.html">To Drop or To Delay</a> with Juho Snellman;</li>
+<li><a href="/2017/03/tcp-in-data-center-and-beyond-on.html">TCP in the Data Center</a> with Thomas Graf;</li>
+<li><a href="/2016/06/on-lossiness-of-tcp.html">On Lossiness of TCP</a> blog post</li>
 <li><a href="https://www.ipspace.net/TCP,_HTTP_and_SPDY">TCP, HTTP and SPDY</a> free webinar;</li>
 <li><a href="https://www.ipspace.net/Networks,_Buffers,_and_Drops">Networks, Buffers and Drops</a> free webinar with JR Rivers;</li>
 <li><a href="https://www.ipspace.net/QoS_Fundamentals">QoS Fundamentals</a> webinar with Ethan Banks;</li>
 </ul>
-<p>Finally, check out the <a href="https://www.ipspace.net/How_Networks_Really_Work">How Networks Really Work</a> series starting on June 18th. You could join the live session for free if you <a href="https://blog.ipspace.net/2019/05/its-time-for-another-pet-project.html">send me a really good question</a>.</p>
+<p>Finally, check out the <a href="https://www.ipspace.net/How_Networks_Really_Work">How Networks Really Work</a> series starting on June 18th. You could join the live session for free if you <a href="/2019/05/its-time-for-another-pet-project.html">send me a really good question</a>.</p>
 

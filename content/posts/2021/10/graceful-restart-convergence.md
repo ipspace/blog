@@ -12,7 +12,7 @@ title: Graceful Restart and Routing Protocol Convergence
 ---
 I'm always amazed when I encounter networking engineers who want to have a fast-converging network using Non-Stop Forwarding (which implies Graceful Restart). It's even worse than asking for smooth-running heptagonal wheels.
 
-As we [discussed in the Fast Failover series](https://blog.ipspace.net/2020/11/detecting-network-failure.html), any decent router uses a variety of mechanisms to detect adjacent device failure:
+As we [discussed in the Fast Failover series](/2020/11/detecting-network-failure.html), any decent router uses a variety of mechanisms to detect adjacent device failure:
 
 * Physical link failure;
 * Routing protocol timeouts;

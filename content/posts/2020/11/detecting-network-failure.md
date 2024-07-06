@@ -8,7 +8,7 @@ tags:
 - networking fundamentals
 title: How Fast Can We Detect a Network Failure?
 ---
-In the [introductory fast failover blog post](https://blog.ipspace.net/2020/11/fast-failover-challenge.html) I mentioned the challenge of fast link- and node failure detection, and how it makes little sense to waste your efforts on fast failover tricks if the routing protocol convergence time has the same order of magnitude as failure detection time.
+In the [introductory fast failover blog post](/2020/11/fast-failover-challenge.html) I mentioned the challenge of fast link- and node failure detection, and how it makes little sense to waste your efforts on fast failover tricks if the routing protocol convergence time has the same order of magnitude as failure detection time.
 
 Now let's focus on realistic failure detection mechanisms and detection times. Imagine a system connecting a hardware switching platform (example: data center switch or a high-end router) with a software switching platform (midrange router):
 <!--more-->
@@ -24,13 +24,13 @@ Some physical layers -- including Gigabit Ethernet -- provide end-to-end fault d
 
 ### Data Link Layer Protocols
 
-Many data link layer (layer-2) technologies provide link fault detection mechanisms - LACP timers, [UDLD](https://blog.ipspace.net/2012/09/do-we-need-lacp-and-udld.html), Ethernet Connectivity and Fault Management (CFM)... These protocols are often run by the control plane, and are thus correspondingly slow. Example: LACP packets are sent once per second when using _fast LACP timers_, and it takes three seconds to detect LAG failure.
+Many data link layer (layer-2) technologies provide link fault detection mechanisms - LACP timers, [UDLD](/2012/09/do-we-need-lacp-and-udld.html), Ethernet Connectivity and Fault Management (CFM)... These protocols are often run by the control plane, and are thus correspondingly slow. Example: LACP packets are sent once per second when using _fast LACP timers_, and it takes three seconds to detect LAG failure.
 
 Some people argue that you don't need UDLD (on layer-2) or BFD (on layer-3) in a Gigabit Ethernet network due to built-in Link Fault Signaling (LFS). Looking at the above diagram, it becomes painfully obvious that LFS tests PHY-to-PHY path, whereas UDLD and BFD provide more comprehensive tests... but if you think the only failure that could ever happen is a cable cut, go ahead.
 
 ### Bidirectional Forwarding Detection
 
-[Bidirectional Forwarding Detection](https://blog.ipspace.net/2014/10/micro-bfd-bfd-over-lag-port-channel.html) (BFD) seems like an [ideal solution](https://blog.ipspace.net/2017/10/to-bfd-or-not-to-bfd.html), at least while looking at vendor PowerPoint decks. The reality is a bit different, although it's still [much better to use BFD than to tweak BGP or OSPF timers](https://blog.ipspace.net/2017/09/improving-bgp-convergence-without.html).
+[Bidirectional Forwarding Detection](/2014/10/micro-bfd-bfd-over-lag-port-channel.html) (BFD) seems like an [ideal solution](/2017/10/to-bfd-or-not-to-bfd.html), at least while looking at vendor PowerPoint decks. The reality is a bit different, although it's still [much better to use BFD than to tweak BGP or OSPF timers](/2017/09/improving-bgp-convergence-without.html).
 
 High-end platforms were able to run BFD in hardware years ago, and provided very short failure detection times. Modern data center switching ASICs have hardware dedicated to OAM functionality, including BFD and Ethernet CFM.
 

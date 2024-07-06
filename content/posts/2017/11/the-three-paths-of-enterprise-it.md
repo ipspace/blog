@@ -29,14 +29,14 @@ Even outside traditional service providers we can see major differences. Paraphr
 
 -   **Cloud-scale web properties** who try to keep things as simple as possible because they have plenty of other headaches to deal with. These days they'd use pure layer-3 data centers running BGP to achieve the scale they need.
 -   **Cloud providers** who also try to keep things as simple as possible but already have to deal with crazy requirements like stretched subnets and workload mobility. These days they'd typically use hypervisor-based overlay virtual networks on top of pure layer-3 data centers.
--   **Traditional enterprises** where all bets are off. As always, the bell curve applies to this category (some environments are crazier than others)... or maybe it's a [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution) with a very long tail of people who try to cram a zillion features into every box in their network to solve [yet another one-off request](https://blog.ipspace.net/2022/11/public-cloud-snowflakes.html).
+-   **Traditional enterprises** where all bets are off. As always, the bell curve applies to this category (some environments are crazier than others)... or maybe it's a [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution) with a very long tail of people who try to cram a zillion features into every box in their network to solve [yet another one-off request](/2022/11/public-cloud-snowflakes.html).
 
 I'm pretty sure we could identify further distinct environments at the edges of the many-dimensional bell curve:
 
 * **High-performance computing** clusters. Throughput and latency are so important that they use technologies you rarely see anywhere else like Infiniband and RDMA.
 * **High-frequency trading**. Reducing latency is their prime objective -- they are the customers prompting Cisco and Arista to develop switches with forwarding delay measured in nanoseconds. They often go as far as using FPGAs in data center switches or SmartNICs to reduce the amount of data processing done on the servers.
 * **Service provider clouds** that try to reinvent centralized packet forwarding using virtualized network devices running on generic cloud infrastructure. They must focus on packet forwarding performance but often use technologies like Linux networking stack that were never designed for fast packet forwarding, and hope that crazy tricks like SmartNIC offloads will save the day.
-* **Small data centers** that don't need [more than two switches](https://www.ipspace.net/Optimize_Data_Center_Infrastructure/) but often get duped into buying a leaf-and-spine fabric (for future expansion) using [complex technology](https://blog.ipspace.net/2018/02/using-evpn-in-very-small-data-center.html) and controlled with a black-box solution (example: Cisco ACI) or overpriced intent-based system.
+* **Small data centers** that don't need [more than two switches](https://www.ipspace.net/Optimize_Data_Center_Infrastructure/) but often get duped into buying a leaf-and-spine fabric (for future expansion) using [complex technology](/2018/02/using-evpn-in-very-small-data-center.html) and controlled with a black-box solution (example: Cisco ACI) or overpriced intent-based system.
 
 ### Back to Enterprise IT
 
@@ -48,7 +48,7 @@ During the [Open Networking](http://www.ipspace.net/Open_Networking_for_Large-Sc
 
 I had discussions with engineers who were heavily involved in cloudy infrastructures, and they claim your AWS bill has to be in the million-per-year range before it makes sense to think about internal infrastructure (due to costs of running that infrastructure).
 
-Russ put the low-end size for the third type of organization to ~10.000 server ports in the [Whitebox Switching @ LinkedIn podcast](https://blog.ipspace.net/2016/09/whitebox-switching-at-linkedin-with.html) and Giacomo Bernardi also mentioned thousands of boxes in [Build Your Own Service Provider Gear](http://blog.ipspace.net/2016/06/build-your-own-service-provider-gear-on.html) podcast.
+Russ put the low-end size for the third type of organization to ~10.000 server ports in the [Whitebox Switching @ LinkedIn podcast](/2016/09/whitebox-switching-at-linkedin-with.html) and Giacomo Bernardi also mentioned thousands of boxes in [Build Your Own Service Provider Gear](/2016/06/build-your-own-service-provider-gear-on.html) podcast.
 
 However, as Russ pointed out in our (private) conversation:
 

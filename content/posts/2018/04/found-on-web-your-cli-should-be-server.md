@@ -12,4 +12,4 @@ Guess what I found: a software developer [trying to persuade his peers](https://
 
 I'd guess this proves that the rest of the world is not so far ahead of us lowly network engineers as blabbering pundits and vendor marketers would have us believe.
 
-Needless to say, the [engineers architecting Junos](https://blog.ipspace.net/2017/12/how-did-netconf-start-on-software-gone.html) knew this almost 20 years ago.
+Needless to say, the [engineers architecting Junos](/2017/12/how-did-netconf-start-on-software-gone.html) knew this almost 20 years ago.

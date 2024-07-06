@@ -3,7 +3,7 @@ title: "Applying BGP Policy Templates"
 date: 2024-02-20 07:25:00+0100
 tags: [ BGP ]
 ---
-I got this question after publishing the [BGP Session Templates](https://blog.ipspace.net/2024/02/bgp-labs-session-templates.html) lab exercise:
+I got this question after publishing the [BGP Session Templates](/2024/02/bgp-labs-session-templates.html) lab exercise:
 
 > Would you apply BGP route maps with a peer/policy template or directly to a BGP neighbor? Of course, it depends; however, I believe in using a template for neighbors with the same general parameters and being more specific per neighbor when it comes to route manipulation.
 
@@ -30,4 +30,4 @@ Other implementations are more limited and force you to use a route map to imple
 
 Finally, you might be forced to use a platform that requires route maps to implement simple filters but cannot chain route maps. Welcome to BGP consistency hell, where automation might be your only chance to stay sane.
 
-[^DC]: We'll ignore the GIFEE scenarios in which vendor SEs promote using EBGP sessions between two spine and two leaf switches in a [leaf-and-spine fabric](https://blog.ipspace.net/series/dcbgp.html) *because all the hyperscalers build their networks this way*.
+[^DC]: We'll ignore the GIFEE scenarios in which vendor SEs promote using EBGP sessions between two spine and two leaf switches in a [leaf-and-spine fabric](/series/dcbgp.html) *because all the hyperscalers build their networks this way*.

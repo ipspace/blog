@@ -7,11 +7,11 @@ tags:
 title: The Unintended Consequences of NSSA Kludges
 url: /2017/02/the-unintended-consequences-of-nssa.html
 ---
-Remember the [kludges needed to make OSPF NSSA areas work correctly](https://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html)? We concluded that saga by showing how the rules of RFC 3101 force a poor ASBR to choose an IP address on one of its OSPF-enabled interfaces as a forwarding address to be used in Type-7 LSA.
+Remember the [kludges needed to make OSPF NSSA areas work correctly](/2017/02/why-ospf-needs-forwarding-address-with.html)? We concluded that saga by showing how the rules of RFC 3101 force a poor ASBR to choose an IP address on one of its OSPF-enabled interfaces as a forwarding address to be used in Type-7 LSA.
 
 What could possibly go wrong with such a "simple" concept?
 <!--more-->
-Let's start with the network we used in the [previous blog post](https://blog.ipspace.net/2017/02/why-ospf-needs-forwarding-address-with.html). At the end of that blog post, we shut down the loopback interface on E1 to force it to select something else as the Type-7 LSA forwarding address. While that resulted in suboptimal traffic flow, we could still ping 192.168.1.1 (IP address on a non-OSPF loopback interface on E1) from C1.
+Let's start with the network we used in the [previous blog post](/2017/02/why-ospf-needs-forwarding-address-with.html). At the end of that blog post, we shut down the loopback interface on E1 to force it to select something else as the Type-7 LSA forwarding address. While that resulted in suboptimal traffic flow, we could still ping 192.168.1.1 (IP address on a non-OSPF loopback interface on E1) from C1.
 
 {{<figure src="/2017/02/s550-OSPF_NSSA_2.png">}}
 

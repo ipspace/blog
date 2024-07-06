@@ -32,11 +32,11 @@ So much for reliability. It's a nice proof-of-concept, but environments that act
 
 > In future VMware Cloud on AWS releases, through the partnership of VMware and AWS, multi-AZ availability will be possible for the first time ever, by stretching the cluster across two AZs in the same region.
 
-Makes perfect sense. Let's link two availability zones (failure domains) with a layer-2 extension (what you need if you want to stretch a cluster) and [making them into one](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html). Hooray!
+Makes perfect sense. Let's link two availability zones (failure domains) with a layer-2 extension (what you need if you want to stretch a cluster) and [making them into one](/2012/05/layer-2-network-is-single-failure.html). Hooray!
 
 > With this groundbreaking offering, refactoring of traditional applications will no longer be required to obtain high availability on the AWS infrastructure. 
 
-Awesome! More unicorn dust and flat-earth magic. This is **not** how you get higher availability, but some vendors [never stop peddling their warez](https://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html). Time to reuse a picture from [another blog post](http://blog.ipspace.net/2015/11/stretched-firewalls-across-layer-3-dci.html).
+Awesome! More unicorn dust and flat-earth magic. This is **not** how you get higher availability, but some vendors [never stop peddling their warez](/2015/02/before-talking-about-vmotion-across.html). Time to reuse a picture from [another blog post](/2015/11/stretched-firewalls-across-layer-3-dci.html).
 
 ![](/2017/09/s500-Triple-facepalm.jpg)
 

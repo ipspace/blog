@@ -5,7 +5,7 @@ tags: [ AI, worth reading ]
 ai_tag: read
 series_title: "Cargo Cult AI"
 ---
-Before we managed to recover from the [automation cargo cults](https://blog.ipspace.net/2023/01/network-automation-expert-beginners.html), a tsunami wave of [cargo cult AI](https://queue.acm.org/detail.cfm?ref=rss&id=3595860) washed over us as Edlyn V. Levine explained in an ACM Queue article. Enjoy ;)
+Before we managed to recover from the [automation cargo cults](/2023/01/network-automation-expert-beginners.html), a tsunami wave of [cargo cult AI](https://queue.acm.org/detail.cfm?ref=rss&id=3595860) washed over us as Edlyn V. Levine explained in an ACM Queue article. Enjoy ;)
 
 Also, a bit of a historical perspective is never a bad thing:
 

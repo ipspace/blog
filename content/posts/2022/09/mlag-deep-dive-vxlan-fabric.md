@@ -18,8 +18,8 @@ In the previous MLAG Deep Dive blog posts we discussed the innards of a standalo
 A few notes before we get to the cumbersome details:
 
 * We still need the peer link between the MLAG cluster members. Replacing the peer link with a virtual link over the VXLAN fabric is another interesting topic that we'll deal with some other time.
-* Connecting MLAG clusters in a [traditional bridging fabric](https://blog.ipspace.net/2022/09/mlag-bridging-evpn.html) is boring. Every MLAG cluster looks like a dual-homed host to adjacent clusters.
-* Considerations similar to the ones described in this blog post apply to other transport technologies (TRILL, SPBM) or [proprietary fabric solutions](https://blog.ipspace.net/2022/05/cisco-fabric-path-and-friends.html), but we won't discuss them because those technologies aren't exactly mainstream anymore.
+* Connecting MLAG clusters in a [traditional bridging fabric](/2022/09/mlag-bridging-evpn.html) is boring. Every MLAG cluster looks like a dual-homed host to adjacent clusters.
+* Considerations similar to the ones described in this blog post apply to other transport technologies (TRILL, SPBM) or [proprietary fabric solutions](/2022/05/cisco-fabric-path-and-friends.html), but we won't discuss them because those technologies aren't exactly mainstream anymore.
 
 ### Dynamic MAC Learning Ruins the Day
 
@@ -56,7 +56,7 @@ There's a simple solution to this conundrum: use a different source VTEP IP addr
 
 [^CPIP]: It looks like the ASICs used in Cisco Nexus switches can do that -- this is exactly the functionality required for their EVPN vPC Multihoming implementation.
 
-Looking at various VXLAN implementations, it seems like the above requirements aren't exactly a walk in the park. Obviously we don't know what data center switch ASICs can do ([thanks a million](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html), Broadcom, NVIDIA and friends), and people who could answer that question are not allowed to, but if you could say something without violating an NDA signed in blood, or send me an anonymous hint, you'd be most welcome. 
+Looking at various VXLAN implementations, it seems like the above requirements aren't exactly a walk in the park. Obviously we don't know what data center switch ASICs can do ([thanks a million](/2016/05/what-are-problems-with-broadcom.html), Broadcom, NVIDIA and friends), and people who could answer that question are not allowed to, but if you could say something without violating an NDA signed in blood, or send me an anonymous hint, you'd be most welcome. 
 
 Finally, this is the perfect moment for EVPN pundits to tell me how all the problems I just described get solved with EVPN multihoming. That's not exactly true, and we'll discuss the nuances in the next blog post in this series.
 

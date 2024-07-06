@@ -8,7 +8,7 @@ series: [ cicd ]
 cicd_tag: principles
 series_weight: 400
 ---
-In the first part of his interview with [Christoph Jaggi](http://uebermeister.com/about.html) [Kristian Larsson](https://www.ipspace.net/Building_Network_Automation_Solutions#KL19) talked about the [basics of CI testing](https://blog.ipspace.net/2019/01/what-is-continuous-integration.html). Now let's see how you can use these concepts in network automation.
+In the first part of his interview with [Christoph Jaggi](http://uebermeister.com/about.html) [Kristian Larsson](https://www.ipspace.net/Building_Network_Automation_Solutions#KL19) talked about the [basics of CI testing](/2019/01/what-is-continuous-integration.html). Now let's see how you can use these concepts in network automation.
 
 > How does CI testing fit into an overall testing environment?
 
@@ -38,10 +38,10 @@ Get GitLab and GitLab CI to host your code and run tests for you. Then get vrnet
 
 Want to know more about using CI testing in network automation?
 
--   Start with [Network Testing](https://blog.ipspace.net/2017/05/network-testing-on-software-gone-wild.html) episode of [Software Gone Wild](https://www.ipspace.net/Podcast/Software_Gone_Wild);
+-   Start with [Network Testing](/2017/05/network-testing-on-software-gone-wild.html) episode of [Software Gone Wild](https://www.ipspace.net/Podcast/Software_Gone_Wild);
 -   Watch the [Continuous Integration, Delivery and Deployment](https://my.ipspace.net/bin/list?id=AutConcepts#CICD) part of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar;
 -   [Pete Lumbis](https://www.ipspace.net/Building_Network_Automation_Solutions#PL17) explained the [basics of CI/CD](https://my.ipspace.net/bin/list?id=xNetAut171#CICD) in Spring 2017 session of our [network automation course](https://www.ipspace.net/Building_Network_Automation_Solutions) and dived [deeper into Gitlab CI/CD](https://my.ipspace.net/bin/list?id=xNetAut173#GITLAB_CI) in autumn 2017;
 -   [Gabriele Gerbino](https://www.ipspace.net/Building_Network_Automation_Solutions#GG18) described how you can [build a test harness using virtual network devices](https://my.ipspace.net/bin/list?id=xNetAut183#PIPELINE) in autumn 2018 automation course;
--   A large enterprise [implemented CI/CD pipeline to deploy changes to firewall rules](https://blog.ipspace.net/2019/01/firewall-ruleset-automation-with-ci.html);
+-   A large enterprise [implemented CI/CD pipeline to deploy changes to firewall rules](/2019/01/firewall-ruleset-automation-with-ci.html);
 
 [Guest speaker presentations](https://my.ipspace.net/bin/list?id=NetAutSol) from the [network automation course](https://www.ipspace.net/Building_Network_Automation_Solutions) are accessible to course attendees and ipSpace.net subscribers with [Expert Subscription](https://www.ipspace.net/Subscription/Individual) who chose the automation course as part of their subscription package.

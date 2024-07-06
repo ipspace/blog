@@ -10,7 +10,7 @@ tags:
 - high availability
 title: 'Big Picture: BFD, Non-Stop Forwarding, and Graceful Restart'
 ---
-_We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Erik Auerswald's [excellent summary of BFD, NSF, and GR](https://blog.ipspace.net/2021/10/graceful-restart-bfd.html#803)_.
+_We have school holidays this week, so I'm reposting wonderful comments that would otherwise be lost somewhere in the page margins. Today: Erik Auerswald's [excellent summary of BFD, NSF, and GR](/2021/10/graceful-restart-bfd.html#803)_.
 
 ---
 

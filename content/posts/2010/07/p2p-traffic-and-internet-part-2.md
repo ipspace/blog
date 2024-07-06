@@ -7,7 +7,7 @@ tags:
 title: P2P Traffic and the Internet, Part 2
 url: /2010/07/p2p-traffic-and-internet-part-2.html
 ---
-As expected, my [*P2P traffic is bad for the network*](https://blog.ipspace.net/2010/07/p2p-traffic-is-bad-for-network.html) post generated lots of comments; from earning me another wonderful title (*shill for Internet monopolies)* that I'll proudly add to my previous awards to numerous technical comments and even a link to a [very creative use of BitTorrent to solve software distribution problems](http://torrentfreak.com/facebook-uses-bittorrent-and-they-love-it-100625/) (thanks again, @[packetlife](http://twitter.com/packetlife)).
+As expected, my [*P2P traffic is bad for the network*](/2010/07/p2p-traffic-is-bad-for-network.html) post generated lots of comments; from earning me another wonderful title (*shill for Internet monopolies)* that I'll proudly add to my previous awards to numerous technical comments and even a link to a [very creative use of BitTorrent to solve software distribution problems](http://torrentfreak.com/facebook-uses-bittorrent-and-they-love-it-100625/) (thanks again, @[packetlife](http://twitter.com/packetlife)).
 
 Most of the commentators missed the main point of my post and somehow assumed that since I don't wholeheartedly embrace P2P traffic I want to ban it from the Internet. Far from it, what I was trying to get across was a very simple message:
 <!--more-->
@@ -31,6 +31,6 @@ The third example: years ago, when Internet QoS became a hot topic, we had two c
 
 As we all know, *Diffserv* won because it scales \... but it comes with an implicit risk: the core routers have to trust the edge routers (or the users).
 
-Last example (this one very close to my heart): BGP. It was [designed to be used between cooperating entities](https://blog.ipspace.net/2010/03/secure-bgp.html) and thus has very few security mechanisms (inbound and outbound filters are primarily a policy tool) and no authentication-of-origin mechanisms. The simple design was an obvious success: [IDRP](http://www.javvin.com/protocolIDRP.html) never moved far beyond whiteboard (PowerPoint was not so popular in those days), but we're occasionally paying a high price: [a router you've never heard about can cause Internet-wide flaps](https://blog.ipspace.net/2009/02/root-cause-analysis-oversized-as-paths.html).
+Last example (this one very close to my heart): BGP. It was [designed to be used between cooperating entities](/2010/03/secure-bgp.html) and thus has very few security mechanisms (inbound and outbound filters are primarily a policy tool) and no authentication-of-origin mechanisms. The simple design was an obvious success: [IDRP](http://www.javvin.com/protocolIDRP.html) never moved far beyond whiteboard (PowerPoint was not so popular in those days), but we're occasionally paying a high price: [a router you've never heard about can cause Internet-wide flaps](/2009/02/root-cause-analysis-oversized-as-paths.html).
 
 To summarize: Internet is as successful as it is because it's simple and just-good-enough \... and it was designed that way because the designers assumed cooperative behavior of all parties. People that game the system might in the end force the industry to design and deploy more complex (and thus more expensive) solutions.

@@ -12,11 +12,11 @@ More than a decade ago I published tons of materials on a web site that eventual
 
 I also updated dozens of blog posts while pretending to be Indiana Jones, including:
 <!--more-->
-* [Management, Control, and Data Planes in Network Devices and Systems](https://blog.ipspace.net/2013/08/management-control-and-data-planes-in.html)
-* [Control Plane Protection Overview](https://blog.ipspace.net/2008/11/control-plane-protection-overview.html)
-* [BGP Route Reflector Details](https://blog.ipspace.net/2008/08/bgp-route-reflector-details.html)
-* [Control Plane Protection Overview](https://blog.ipspace.net/2008/11/control-plane-protection-overview.html)
-* [OSPF Router ID Selection: the Gory Details](https://blog.ipspace.net/2009/04/ospf-router-id-selection-all-details.html)
+* [Management, Control, and Data Planes in Network Devices and Systems](/2013/08/management-control-and-data-planes-in.html)
+* [Control Plane Protection Overview](/2008/11/control-plane-protection-overview.html)
+* [BGP Route Reflector Details](/2008/08/bgp-route-reflector-details.html)
+* [Control Plane Protection Overview](/2008/11/control-plane-protection-overview.html)
+* [OSPF Router ID Selection: the Gory Details](/2009/04/ospf-router-id-selection-all-details.html)
 
 You'll find the list of all blog posts updated within the last 30 days in the *Recently Updated* box in the right-hand sidebar.
 

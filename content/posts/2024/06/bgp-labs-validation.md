@@ -24,7 +24,7 @@ Numerous rounds of yak-shaving later, I merged a humongous commit that adds auto
 * [BGP Route Server in an Internet Exchange Point](https://bgplabs.net/session/5-routeserver/)
 * [Dynamic BGP Peers](https://bgplabs.net/session/9-dynamic/)
 
-The automated validation can be used on Arista EOS, Cumulus Linux, and FRR[^OP] and requires validation plugins included in [_netlab_ release 1.8.3](https://blog.ipspace.net/2024/06/netlab-1-8-3-rip-bgp.html).
+The automated validation can be used on Arista EOS, Cumulus Linux, and FRR[^OP] and requires validation plugins included in [_netlab_ release 1.8.3](/2024/06/netlab-1-8-3-rip-bgp.html).
 
 Some other lab exercises already supported automated validation:
 

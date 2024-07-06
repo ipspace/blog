@@ -30,4 +30,4 @@ interface FastEthernet 0/0
 router ospf 1
 ```
 
-You can find the solution [here](https://blog.ipspace.net/2008/10/ospf-challenge-1-final-results.html).
+You can find the solution [here](/2008/10/ospf-challenge-1-final-results.html).

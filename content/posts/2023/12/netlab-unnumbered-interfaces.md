@@ -5,7 +5,7 @@ series: unnumbered-interfaces
 tags: [ netlab ]
 netlab_tag: use
 ---
-A while ago, [Chris Parker](https://www.networkfuntimes.com/about/) published a nice blog post explaining how to [configure unnumbered interfaces with IS-IS in Junos](https://www.networkfuntimes.com/is-is-and-unnumbered-ethernet-interfaces-in-junos/). It's well worth reading, but like my [Unnumbered Ethernet Interfaces](https://blog.ipspace.net/2021/06/unnumbered-ethernet-interfaces.html) blog post, it only covers one network operating system. What if you want to do something similar on another platform?
+A while ago, [Chris Parker](https://www.networkfuntimes.com/about/) published a nice blog post explaining how to [configure unnumbered interfaces with IS-IS in Junos](https://www.networkfuntimes.com/is-is-and-unnumbered-ethernet-interfaces-in-junos/). It's well worth reading, but like my [Unnumbered Ethernet Interfaces](/2021/06/unnumbered-ethernet-interfaces.html) blog post, it only covers one network operating system. What if you want to do something similar on another platform?
 
 How about using the collective efforts of the team developing device configuration templates for _[netlab](https://github.com/ipspace/netlab)_? As of December 2023 _netlab_ supports:
 <!--more-->

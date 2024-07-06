@@ -18,9 +18,9 @@ I haven't received a single comment saying "_you're totally wrong and here's a g
 
 Would you expect vendor product marketers to agree with the above? Of course not. Years ago, Arista was enamored of deep-buffer switches... until Cisco launched a Jericho-based data center switch. At that point buffers stopped mattering... unless you were reading Cisco white papers.
 
-There were tons of rebuttal blog posts written at that time, so one would hope that the vendors got the message. That's too much to hope for, one of my readers [kindly pointed me to a Juniper white paper claiming just the opposite of the above TL&DR](https://blog.ipspace.net/2022/05/network-hardware-disaggregation-2022.html#1241):
+There were tons of rebuttal blog posts written at that time, so one would hope that the vendors got the message. That's too much to hope for, one of my readers [kindly pointed me to a Juniper white paper claiming just the opposite of the above TL&DR](/2022/05/network-hardware-disaggregation-2022.html#1241):
 
-{{<note info>}}The white paper discovered by my reader was removed from Juniper's web site less than 12 hours after this blog post has been published. I would like to thank [Ben Baker and his team](https://blog.ipspace.net/2022/06/beware-vendors-bringing-whitepapers.html#1302) for a swift and decisive reaction.{{</note>}}
+{{<note info>}}The white paper discovered by my reader was removed from Juniper's web site less than 12 hours after this blog post has been published. I would like to thank [Ben Baker and his team](/2022/06/beware-vendors-bringing-whitepapers.html#1302) for a swift and decisive reaction.{{</note>}}
 
 ---
 

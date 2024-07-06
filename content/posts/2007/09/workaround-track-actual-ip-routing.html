@@ -5,7 +5,7 @@ date: "2007-09-06T07:51:00.000+02:00"
 tags: [ IP routing ]
 ---
 
-In <a href="https://blog.ipspace.net/2007/08/track-interface-ip-routing-detects.html">a previous post</a>, I've described how the track interface ip routing command reports incorrect interface state if you use IP Event Dampening feature. To track the actual IP routing readiness of an interface, you could use the following workaround:<ul><li>Create a static IP route pointing to the interface you want to test. Make sure this route is not redistributed into any routing protocols.</li>
+In <a href="/2007/08/track-interface-ip-routing-detects.html">a previous post</a>, I've described how the track interface ip routing command reports incorrect interface state if you use IP Event Dampening feature. To track the actual IP routing readiness of an interface, you could use the following workaround:<ul><li>Create a static IP route pointing to the interface you want to test. Make sure this route is not redistributed into any routing protocols.</li>
 <li>Track the reachability of the static route</li>
 </ul>
 <!--more-->For example, to track the IP routing status of the Serial0/1/0 interface on which the <strong>dampening</strong> is configured, use the following configuration:<pre class="code">interface Serial0/1/0<br/> dampening 30<br/>!<br/>ip route 1.0.0.1 255.255.255.255 Serial0/1/0<br/>!<br/>track 1 ip route 1.0.0.1 255.255.255.255 reachability</pre>

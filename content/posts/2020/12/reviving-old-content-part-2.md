@@ -14,11 +14,11 @@ Continuing my [archeological explorations](/2020/11/reviving-old-content-part-1.
 
 I kept digging and turned out a few MPLS, BGP, and ADSL nuggets worth saving:
 <!--more-->
-* [MPLS TE Autoroute Fundamentals](https://blog.ipspace.net/2010/03/mpls-te-autoroute-basics.html)
-* [Protect Your Network with BGP maxas-limit](https://blog.ipspace.net/2009/02/protect-your-network-with-bgp-maxas.html)
-* [Multihoming to a Single ISP](https://blog.ipspace.net/2008/05/multihoming-to-single-isp.html)
-* [BGP AS-Path Prepending: Technical Details](https://blog.ipspace.net/2009/03/as-path-prepending-technical-details.html)
-* [ADSL Reference Diagram](https://blog.ipspace.net/2009/06/adsl-reference-diagram.html)
-* [ADSL QoS Basics](https://blog.ipspace.net/2009/06/adsl-qos-basics.html)
+* [MPLS TE Autoroute Fundamentals](/2010/03/mpls-te-autoroute-basics.html)
+* [Protect Your Network with BGP maxas-limit](/2009/02/protect-your-network-with-bgp-maxas.html)
+* [Multihoming to a Single ISP](/2008/05/multihoming-to-single-isp.html)
+* [BGP AS-Path Prepending: Technical Details](/2009/03/as-path-prepending-technical-details.html)
+* [ADSL Reference Diagram](/2009/06/adsl-reference-diagram.html)
+* [ADSL QoS Basics](/2009/06/adsl-qos-basics.html)
 
 I promise I'll keep going... ;)

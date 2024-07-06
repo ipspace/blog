@@ -7,7 +7,7 @@ title: Create IP Multicast Tree Graphs from Operational Data
 url: /2017/12/create-ip-multicast-tree-graphs-from.html
 ---
 
-<p>A while ago I created an Ansible playbook that <a href="https://blog.ipspace.net/2017/10/create-network-diagram-from-lldp.html">creates network diagrams from LLDP information</a>. <a href="https://www.linkedin.com/in/benrobertsuk/">Ben Roberts</a>, a student in my <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course used those ideas to create an awesome solution: he’s graphing multicast trees.</p>
+<p>A while ago I created an Ansible playbook that <a href="/2017/10/create-network-diagram-from-lldp.html">creates network diagrams from LLDP information</a>. <a href="https://www.linkedin.com/in/benrobertsuk/">Ben Roberts</a>, a student in my <a href="http://www.ipspace.net/Building_Network_Automation_Solutions">Building Network Automation Solutions</a> online course used those ideas to create an awesome solution: he’s graphing multicast trees.</p>
 <p>Here’s how he described <a href="https://github.com/optiz0r/ansible-multicast-graph">his solution</a>:<!--more--></p>
 <blockquote class="cite"><p>Wrote an Ansible playbook that creates a visual representation of the shared and source-specific PIM trees, and IGMP snooping for a single multicast group across a chunk of the network.</p>
 <p>Data is scraped from switches using ntc_show_command and some custom textfsm scripts. Ansible does the scraping of data and writes out intermediate yaml files per host, then compiles them all into a single document. Then it generates a dot file using a jinja2 template, in which I'm abusing filters to do all the business logic in python.</p>

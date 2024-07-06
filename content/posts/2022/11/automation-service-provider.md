@@ -3,7 +3,7 @@ title: "Network Automation: a Service Provider Perspective"
 date: 2022-11-22 07:59:00
 tags: [ automation ]
 ---
-_[Antti Ristimäki left an interesting comment](https://blog.ipspace.net/2022/10/network-automation-considered-harmful.html#1458) on [Network Automation Considered Harmful](https://blog.ipspace.net/2022/10/network-automation-considered-harmful.html) blog post detailing why it's suboptimal to run manually-configured modern service provider network._
+_[Antti Ristimäki left an interesting comment](/2022/10/network-automation-considered-harmful.html#1458) on [Network Automation Considered Harmful](/2022/10/network-automation-considered-harmful.html) blog post detailing why it's suboptimal to run manually-configured modern service provider network._
 
 ---
 

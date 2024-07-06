@@ -11,7 +11,7 @@ tags:
 - MPLS
 title: 'EVPN: The Great Unifying Theory of VPN Control Planes?'
 ---
-I claimed that “*EVPN is the control plane for layer-2 and layer-3 VPNs*” in the *[Using VXLAN and EVPN to Build Active-Active Data Centers](https://blog.ipspace.net/2018/11/interview-active-active-data-centers.html)* interview a long long while ago and got this response from one of the readers:
+I claimed that “*EVPN is the control plane for layer-2 and layer-3 VPNs*” in the *[Using VXLAN and EVPN to Build Active-Active Data Centers](/2018/11/interview-active-active-data-centers.html)* interview a long long while ago and got this response from one of the readers:
 
 > To me, that doesn’t compute. For layer-3 VPNs I couldn’t care less about EVPN, they have their own control planes.
 
@@ -29,15 +29,15 @@ Don’t conflate data plane encapsulation with VPN service or VPN control plane.
 
 Prior to VXLAN/Geneve you could use these standard-based implementations to build L2VPN service: QinQ, PBB (including SPBM), TRILL (rarely), or MPLS (which makes it possible to run L2VPN and L3VPN on shared MPLS backbone).
 
-If you wanted to build a VPN on top of IP infrastructure you could choose between IPsec-based solutions, running MPLS over GRE or UDP, or the granddaddy of layering: [Ethernet-over-MPLS-over-GRE-over-IPsec-over-UDP-over-IP](https://blog.ipspace.net/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html).
+If you wanted to build a VPN on top of IP infrastructure you could choose between IPsec-based solutions, running MPLS over GRE or UDP, or the granddaddy of layering: [Ethernet-over-MPLS-over-GRE-over-IPsec-over-UDP-over-IP](/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html).
 
 VXLAN added an interesting option: transporting Ethernet frames across IP backbones using a simpler encapsulation stack. Whether you use that encapsulation stack with EVPN, with controller-based data-plane programming, or static configuration is a totally different question.
 
 On the other hand, EVPN can work with a dozen data-plane encapsulations, including MPLS, VXLAN, MPLS-over-whatever, NVGRE, Geneve… It has a mechanism to signal what encapsulation to use for what next hop (not that I would want to use more than one encapsulation in my network).
 
-Do I expect VXLAN and/or EVPN to replace all other technologies I mentioned above? Probably not; COBOL programmers are still making a decent living. Traditional L3VPN (RFC 4364) will be around for a very long time and might be a bit more optimal than EVPN when used to implement a pure L3VPN. We’ll keep seeing MPLS in transport backbones for ages… but we might see modern backbones like [Packet Fabric](https://blog.ipspace.net/2017/06/packet-fabric-on-software-gone-wild.html) built with minimum complexity:
+Do I expect VXLAN and/or EVPN to replace all other technologies I mentioned above? Probably not; COBOL programmers are still making a decent living. Traditional L3VPN (RFC 4364) will be around for a very long time and might be a bit more optimal than EVPN when used to implement a pure L3VPN. We’ll keep seeing MPLS in transport backbones for ages… but we might see modern backbones like [Packet Fabric](/2017/06/packet-fabric-on-software-gone-wild.html) built with minimum complexity:
 
-* Simple IP routing protocol potentially augmented with traffic engineering when needed… but see also [Terastream ideas](https://blog.ipspace.net/2013/11/deutsche-telekom-terastream-designed.html).
+* Simple IP routing protocol potentially augmented with traffic engineering when needed… but see also [Terastream ideas](/2013/11/deutsche-telekom-terastream-designed.html).
 * Simplest possible encapsulation stack (VXLAN)
 * Single VPN control plane protocol (EVPN).
 

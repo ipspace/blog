@@ -6,7 +6,7 @@ tags:
 title: Use UDP flood to increase router's CPU load
 url: /2008/04/use-udp-flood-to-increase-router-cpu.html
 ---
-If you want to test the [ERM policies](https://blog.ipspace.net/2008/03/detect-routers-operating-in-process.html) in a controlled environment, it\'s almost mandatory to have tools that allow you to overload the router. One way to overload a router is to flood it with UDP packets. Flooding a router\'s IP address, you\'re guaranteed to raise the CPU to 100%, with majority of the *process* CPU being used by the *IP Input* process (the *interrupt* CPU load will also be significant).
+If you want to test the [ERM policies](/2008/03/detect-routers-operating-in-process.html) in a controlled environment, it\'s almost mandatory to have tools that allow you to overload the router. One way to overload a router is to flood it with UDP packets. Flooding a router\'s IP address, you\'re guaranteed to raise the CPU to 100%, with majority of the *process* CPU being used by the *IP Input* process (the *interrupt* CPU load will also be significant).
 
 This phenomenon illustrates very clearly why it\'s so important to have inbound access lists protecting the router\'s own IP addresses on all edge interfaces.
 <!--more-->

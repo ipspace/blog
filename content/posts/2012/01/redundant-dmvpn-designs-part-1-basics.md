@@ -22,13 +22,13 @@ In this design, each hub router controls its own DMVPN subnet, and spoke routers
 
 {{<figure src="s1600-DMVPN_1S2I2H.png" caption="Two DMVPN tunnels, single hub per tunnel">}}
 
-This design is by far the simplest, cleanest, and easiest to understand/troubleshoot -- it has no intricate dependencies between routing protocols and NHRP. You can also [easily deploy primary/backup hub router scenarios](https://blog.ipspace.net/2011/01/sometimes-you-need-to-step-back-and.html) by increasing the interface cost of one tunnel interface, or you could load-share the traffic between both hub routers.
+This design is by far the simplest, cleanest, and easiest to understand/troubleshoot -- it has no intricate dependencies between routing protocols and NHRP. You can also [easily deploy primary/backup hub router scenarios](/2011/01/sometimes-you-need-to-step-back-and.html) by increasing the interface cost of one tunnel interface, or you could load-share the traffic between both hub routers.
 
 {{<figure src="s1600-DMVPN_2TP1.png" caption="Load sharing across hub routers">}}
 
 And now for the drawbacks:
 
--   Multiple IPsec sessions could be established between a pair of spoke routers in [DMVPN Phase 2 deployments](https://blog.ipspace.net/2011/01/dmvpn-phase-2-fundamentals.html) (one over each tunnel interface);
+-   Multiple IPsec sessions could be established between a pair of spoke routers in [DMVPN Phase 2 deployments](/2011/01/dmvpn-phase-2-fundamentals.html) (one over each tunnel interface);
 
 {{<figure src="s1600-DMVPN_2TP2.png" caption="You might get two IPsec sessions between a pair of spoke routers (one per tunnel)">}}
 
@@ -37,13 +37,13 @@ And now for the drawbacks:
 
 ### Design\#2 -- Multiple Hubs in a Single DMVPN Tunnel
 
-In this design, you connect all hub routers to the same DMVPN tunnel. All hub routers act as NHRP servers, and propagate routing information between the spokes (if you [use OSPF, one of the hub routers would become a DR, another one a BDR](https://blog.ipspace.net/2011/01/configuring-ospf-in-phase-2-dmvpn.html)).
+In this design, you connect all hub routers to the same DMVPN tunnel. All hub routers act as NHRP servers, and propagate routing information between the spokes (if you [use OSPF, one of the hub routers would become a DR, another one a BDR](/2011/01/configuring-ospf-in-phase-2-dmvpn.html)).
 
 {{<figure src="s1600-DMVPN_1S2H1T.png" caption="Single DMVPN tunnel, two hubs per tunnel">}}
 
-You cannot use [Phase 1 DMVPN](https://blog.ipspace.net/2011/01/dmvpn-phase-1-fundamentals.html) with multiple hub routers -- Phase 1 DMVPN uses P2P GRE tunnels on the spoke routers with tunnel destination set to hub router's outside IP address.
+You cannot use [Phase 1 DMVPN](/2011/01/dmvpn-phase-1-fundamentals.html) with multiple hub routers -- Phase 1 DMVPN uses P2P GRE tunnels on the spoke routers with tunnel destination set to hub router's outside IP address.
 
-[Phase 2/3 DMVPN](https://blog.ipspace.net/2011/01/dmvpn-phase-2-fundamentals.html) designs with multiple hub routers per tunnel could experience severe convergence issues -- [detecting failure of a hub router could take as long as three minutes](https://blog.ipspace.net/2011/05/nhrp-convergence-issues-in-multi-hub.html). On the *benefits* side, this design does not require GRE keys (which is good news if your hub router is a Catalyst 6500) or multiple IPsec sessions between spoke routers.
+[Phase 2/3 DMVPN](/2011/01/dmvpn-phase-2-fundamentals.html) designs with multiple hub routers per tunnel could experience severe convergence issues -- [detecting failure of a hub router could take as long as three minutes](/2011/05/nhrp-convergence-issues-in-multi-hub.html). On the *benefits* side, this design does not require GRE keys (which is good news if your hub router is a Catalyst 6500) or multiple IPsec sessions between spoke routers.
 
 {{<figure src="s1600-DMVPN_1TP2.png" caption="Spoke-to-spoke session established across a Phase2/3 DMVPN tunnel">}}
 

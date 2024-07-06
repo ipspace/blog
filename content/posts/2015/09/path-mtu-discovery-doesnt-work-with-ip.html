@@ -13,7 +13,7 @@ tags: [ IP routing ]
 <p>The same document also describes why RFC 1112 prohibits sending ICMP error messages in response to multicast datagrams. The processing done on ICMP error replies by the *nix socket API might block the sender socket if an error comes back from a single receiver or if TTL expires when traversing a particularly long branch of the multicast tree – not exactly a good idea in multicast environment.</p>
 <p><strong>Lesson</strong><strong>s</strong><strong> learned</strong>: </p>
 <ul class="ListParagraph"><li>You should never get ICMP error messages in response to IP multicast packets;</li>
-<li><a href="https://blog.ipspace.net/2008/01/never-ending-story-of-ip-fragmentation.html">Path MTU discovery</a> doesn’t work with IP multicast;</li>
+<li><a href="/2008/01/never-ending-story-of-ip-fragmentation.html">Path MTU discovery</a> doesn’t work with IP multicast;</li>
 <li>Sending multicast packets with DF bit set is a bad idea unless you’re OK with some receivers never getting them;</li>
 <li>ICMP echo reply to a multicast echo request is perfectly legal (because it’s not an ICMP error message).</li>
 </ul>

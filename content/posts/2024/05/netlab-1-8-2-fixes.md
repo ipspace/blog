@@ -17,7 +17,7 @@ You might also enjoy:
 * [Inspecting the same variable(s) across multiple nodes](https://netlab.tools/netlab/inspect/#node-inspection-examples) (an ideal tool to find data model discrepancies)
 * [Improved Vagrant-box-building process](https://netlab.tools/release/1.8/#release-1-8-2-vagrant)
 
-Finally, someone asked for Sonic support, so I added a minimal implementation based on what I could squeeze from Azure VM images after [wasting too much time trying to get Dell Enterprise Sonic to work](https://blog.ipspace.net/2024/05/too-stupid-to-make-it-work.html).
+Finally, someone asked for Sonic support, so I added a minimal implementation based on what I could squeeze from Azure VM images after [wasting too much time trying to get Dell Enterprise Sonic to work](/2024/05/too-stupid-to-make-it-work.html).
 
 ### Upgrading or Starting from Scratch
 

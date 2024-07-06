@@ -8,7 +8,7 @@ tags:
 - netlab
 title: 'Sample Lab: SR-MPLS on Junos and SR Linux'
 ---
-Last week I [published](https://blog.ipspace.net/2022/01/netsim-example-rsvp-te-junos.html) a link to [Pete Crocker](https://blog.petecrocker.com/about/)'s [RSVP-TE lab](https://github.com/ipspace/netlab-examples/tree/master/routing/rsvp-mpls-vsrx), but there's more: he [created another lab](https://github.com/ipspace/netlab-examples/tree/master/routing/sr-isis-te-vsrx) using the same topology that uses SR-MPLS with IS-IS to get the job done.
+Last week I [published](/2022/01/netsim-example-rsvp-te-junos.html) a link to [Pete Crocker](https://blog.petecrocker.com/about/)'s [RSVP-TE lab](https://github.com/ipspace/netlab-examples/tree/master/routing/rsvp-mpls-vsrx), but there's more: he [created another lab](https://github.com/ipspace/netlab-examples/tree/master/routing/sr-isis-te-vsrx) using the same topology that uses SR-MPLS with IS-IS to get the job done.
 
 [Jeroen Van Bemmel](https://www.linkedin.com/in/jeroenvbemmel/) did something similar for SR Linux: [his lab topology](https://github.com/ipspace/netlab-examples/tree/master/routing/sr-mpls-bgp-srlinux) has fewer devices (plus SR Linux runs in containers), so it's easily deployable on machines without humongous amount of memory.
 <!--more-->

@@ -11,4 +11,4 @@ AI_tag: read
 * Eyes like saucers
 * Eyes that narrow
 
-He uses generative [AI](https://blog.ipspace.net/tag/ai.html) as an example to explain why it might be a bad idea that people in the first two categories make strategic decisions, but of course nothing ever stops people desperately believing in [vendor fairy tales](https://blog.ipspace.net/2020/09/business-needs-excuses.html), including [long-distance vMotion](https://blog.ipspace.net/2015/02/before-talking-about-vmotion-across.html), [SDN](https://blog.ipspace.net/tag/sdn.html) or [intent-based networking](https://blog.ipspace.net/tag/intent-based-networking.html).
+He uses generative [AI](/tag/ai.html) as an example to explain why it might be a bad idea that people in the first two categories make strategic decisions, but of course nothing ever stops people desperately believing in [vendor fairy tales](/2020/09/business-needs-excuses.html), including [long-distance vMotion](/2015/02/before-talking-about-vmotion-across.html), [SDN](/tag/sdn.html) or [intent-based networking](/tag/intent-based-networking.html).

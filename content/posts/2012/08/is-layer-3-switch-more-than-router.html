@@ -14,8 +14,8 @@ url: /2012/08/is-layer-3-switch-more-than-router.html
 <p>You might think that layer-3 switches perform bridging and routing, while routers do only routing. That hasn’t been the case at least since <a href="http://www.netcraftsmen.net/resources/archived-articles/428.html">Cisco introduced Integrated Routing and Bridging in IOS release 11.2</a> more than 15 years ago. However, Simon Gordon raised an interesting point in a <a href="https://twitter.com/simon_gordon/status/235489020967280640">tweet</a>: “<em>I thought IP L3 switching includes switching within subnet based on IP address, routing is between subnets only</em>.”</p>
 <p>Layer-3 switches and routers definitely have to perform some intra-subnet layer-3 functions, but they’re usually not performing any intra-subnet L3 forwarding.<!--more--></p>
 <p>Let’s start with the intra-subnet functions the layer-3 forwarding devices (whether you call them switches or routers) do:</p>
-<ul class="ListParagraph"><li>Dynamic neighbor discovery through ARP/ND for packets sent to hosts in directly attached subnets (<a href="https://blog.ipspace.net/2007/05/what-is-cached-cef-adjacency.html"><em>glean adjacencies</em></a><em> </em>in CEF terminology);</li>
-<li>Generation of host routes based on ARP/ND results (<a href="https://blog.ipspace.net/2007/05/what-is-cached-cef-adjacency.html"><em>cached adjacencies</em></a><em> </em>in CEF terminology);</li>
+<ul class="ListParagraph"><li>Dynamic neighbor discovery through ARP/ND for packets sent to hosts in directly attached subnets (<a href="/2007/05/what-is-cached-cef-adjacency.html"><em>glean adjacencies</em></a><em> </em>in CEF terminology);</li>
+<li>Generation of host routes based on ARP/ND results (<a href="/2007/05/what-is-cached-cef-adjacency.html"><em>cached adjacencies</em></a><em> </em>in CEF terminology);</li>
 <li>Forwarding of IP packet to directly attached IP hosts based on ARP/ND-generated host routes.</li>
 </ul>
 <p>However, if a layer-3 forwarding device performs MAC-based forwarding in combination with IP-based forwarding, it usually uses the destination MAC address to figure out which forwarding method to use:</p>

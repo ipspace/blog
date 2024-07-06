@@ -18,7 +18,7 @@ There's plenty of multihoming going on in the current Internet without anyone be
 
 {{<figure src="/2009/05/SOHO_Multihoming_Addressing.png" caption="Simple small site multihoming">}}
 
-Using currently available low-end routers and existing IPv6 host stacks (with [TCP stack without a session layer](https://blog.ipspace.net/2009/08/what-went-wrong-tcpip-lacks-session.html) and [broken socket API](https://blog.ipspace.net/2009/08/what-went-wrong-socket-api.html)) you can solve the same problem in one of two ways in the IPv6 world:
+Using currently available low-end routers and existing IPv6 host stacks (with [TCP stack without a session layer](/2009/08/what-went-wrong-tcpip-lacks-session.html) and [broken socket API](/2009/08/what-went-wrong-socket-api.html)) you can solve the same problem in one of two ways in the IPv6 world:
 
 **BGP-based multihoming**. Get a large chunk of provider-independent (PI) address space and an AS number, assign a /48 to every location, and run BGP with two upstream ISPs from every location.
 

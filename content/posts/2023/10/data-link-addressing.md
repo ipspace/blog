@@ -5,7 +5,7 @@ tags: [ networking fundamentals ]
 comment: |
   In early 2020 I created the _[Early Data Link Layer Addressing Mechanisms](https://my.ipspace.net/bin/get/Net101/NA2.1%20-%20Early%20Data%20Link%20Layer%20Addressing%20Mechanisms.mp4?doccode=Net101)_ video as part of the _[How Networks Really Work webinar](https://www.ipspace.net/How_Networks_Really_Work)_. This blog post is an edited transcript of that video.
 ---
-After covering the [theoretical part of network addressing](https://blog.ipspace.net/2023/09/names-addresses-routes.html) ([part 2](https://blog.ipspace.net/2023/09/addresses-in-network-stack.html), [part 3](https://blog.ipspace.net/2023/09/need-source-ip-address-in-packet-header.html)), let's go into some practical examples. I'll start with data link layer and then move on to networking and higher layers.
+After covering the [theoretical part of network addressing](/2023/09/names-addresses-routes.html) ([part 2](/2023/09/addresses-in-network-stack.html), [part 3](/2023/09/need-source-ip-address-in-packet-header.html)), let's go into some practical examples. I'll start with data link layer and then move on to networking and higher layers.
 
 The earliest data link implementations that were not point-to-point links were multi-drop links and I mentioned them in the [networking challenges](https://my.ipspace.net/bin/list?id=Net101#CHALLENGES) part of the webinar. Initially, we implemented multi-drop links with modems, but even today you can see multi-drop in satellite communications, Wi-Fi, or in cable modems.
 <!--more-->

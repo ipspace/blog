@@ -54,15 +54,15 @@ However, if you want to deploy local mail server within your LAN or you have a s
 
 ### From IPv4 to IPv6
 
-Implementing a similar architecture in IPv6 is still a Mission Impossible, and although there have been many promises how wonderful new architectures (like [Homenet](https://datatracker.ietf.org/wg/homenet/about/)) will solve the problem, [not much has been done in more than a decade](https://blog.ipspace.net/2015/11/theres-problem-with-ipv6-multihoming.html); the only viable solution is still Network Prefix Translation. For more details, read these blog posts:
+Implementing a similar architecture in IPv6 is still a Mission Impossible, and although there have been many promises how wonderful new architectures (like [Homenet](https://datatracker.ietf.org/wg/homenet/about/)) will solve the problem, [not much has been done in more than a decade](/2015/11/theres-problem-with-ipv6-multihoming.html); the only viable solution is still Network Prefix Translation. For more details, read these blog posts:
 
-* [Lack of IPv6 multihoming: the elephant in the room?](https://blog.ipspace.net/2009/05/lack-of-ipv6-multihoming-elephant-in.html)
-* [Small-site multihoming in IPv6: mission impossible?](https://blog.ipspace.net/2010/12/small-site-multihoming-in-ipv6-mission.html)
-* [IPv6 multihoming without NAT: the problem](https://blog.ipspace.net/2011/12/ipv6-multihoming-without-nat-problem.html)
-* [We just might need NAT66](https://blog.ipspace.net/2011/12/we-just-might-need-nat66.html)
-* [New in IPv6: The Next Chapter in IPv6 Multihoming Saga](https://blog.ipspace.net/2018/04/new-in-ipv6-next-chapter-in-ipv6.html)
-* [Are Provider-Independent IPv6 prefixes really global?](https://blog.ipspace.net/2012/01/are-provider-independent-ipv6-prefixes.html)
-* [IPv6 addressing: how wrong can you get it?](https://blog.ipspace.net/2010/11/ipv6-addressing-how-wrong-can-you-get.html)
+* [Lack of IPv6 multihoming: the elephant in the room?](/2009/05/lack-of-ipv6-multihoming-elephant-in.html)
+* [Small-site multihoming in IPv6: mission impossible?](/2010/12/small-site-multihoming-in-ipv6-mission.html)
+* [IPv6 multihoming without NAT: the problem](/2011/12/ipv6-multihoming-without-nat-problem.html)
+* [We just might need NAT66](/2011/12/we-just-might-need-nat66.html)
+* [New in IPv6: The Next Chapter in IPv6 Multihoming Saga](/2018/04/new-in-ipv6-next-chapter-in-ipv6.html)
+* [Are Provider-Independent IPv6 prefixes really global?](/2012/01/are-provider-independent-ipv6-prefixes.html)
+* [IPv6 addressing: how wrong can you get it?](/2010/11/ipv6-addressing-how-wrong-can-you-get.html)
 
 
 

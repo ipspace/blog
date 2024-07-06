@@ -25,15 +25,15 @@ Even worse, **MLAG-based design limits scalability**. Most data center switching
 
 Regardless of how you implement them, **large layer-2 fabrics** are a disaster waiting to happen. With VXLAN-over-IP fabric you have at least a stable L3-only transport fabric, and keep the crazy bits at the network edge - the way Internet worked for ages.
 
-Interestingly, most networking vendors have [seen the light](https://blog.ipspace.net/2016/12/q-building-layer-2-data-center-fabric.html), [dropped](https://blog.ipspace.net/2016/09/replacing-fabricpath-with-vxlan-evpn-or.html) their [proprietary or standard L2 fabrics](https://blog.ipspace.net/2010/08/trill-and-8021aq-are-like-apples-and.html) and replaced them with VXLAN+EVPN. Maybe it's time to start considering it.
+Interestingly, most networking vendors have [seen the light](/2016/12/q-building-layer-2-data-center-fabric.html), [dropped](/2016/09/replacing-fabricpath-with-vxlan-evpn-or.html) their [proprietary or standard L2 fabrics](/2010/08/trill-and-8021aq-are-like-apples-and.html) and replaced them with VXLAN+EVPN. Maybe it's time to start considering it.
 
 When interconnecting fabrics, you should **connect leaf switches** not spines. I described the challenge in details in [Multi-Pod and Multi-Site Fabrics](https://my.ipspace.net/bin/list?id=Clos#MULTISITE) part of [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar and might write a blog post on the topic; in the meantime the proof is left as an exercise for the reader.
 
-**Raw VXLAN is not the best DCI technology**. I [explained that in 2012](https://blog.ipspace.net/2012/11/vxlan-is-not-data-center-interconnect.html) and [again in October 2014](https://blog.ipspace.net/2014/10/vxlan-and-otv-saga-continues.html)... obviously with little impact.
+**Raw VXLAN is not the best DCI technology**. I [explained that in 2012](/2012/11/vxlan-is-not-data-center-interconnect.html) and [again in October 2014](/2014/10/vxlan-and-otv-saga-continues.html)... obviously with little impact.
 
 Yet again, you can find more details in [Lukas Krattiger's presentation](https://my.ipspace.net/bin/list?id=Clos#MULTISITE) in [Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures) webinar (this part of the webinar is available with [free ipSpace.net subscription](https://www.ipspace.net/Subscription/Free)).
 
-**Deep buffers are not a panacea**. When Arista started promoting deep buffer switches (because they were the first vendor deploying Jericho chipset - now you can buy them from Cisco as well) I asked a number of people familiar with real-life data center designs, [ASIC internals](https://www.ipspace.net/Networks,_Buffers,_and_Drops), and [TCP behavior](https://blog.ipspace.net/2017/03/tcp-in-data-center-and-beyond-on.html) whether you really need deep buffer switches in data centers.
+**Deep buffers are not a panacea**. When Arista started promoting deep buffer switches (because they were the first vendor deploying Jericho chipset - now you can buy them from Cisco as well) I asked a number of people familiar with real-life data center designs, [ASIC internals](https://www.ipspace.net/Networks,_Buffers,_and_Drops), and [TCP behavior](/2017/03/tcp-in-data-center-and-beyond-on.html) whether you really need deep buffer switches in data centers.
 
 While the absolutely correct answer is always "it depends", in this particular case we got to "mostly NO". You need deep buffers when going from low latency/high bandwidth environment to high latency/low bandwidth one (data center WAN edge); in the core of a data center fabric they do more harm than good. Another reason to connect DCI links to fabric edge.
 

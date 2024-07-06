@@ -3,7 +3,7 @@ title: "History of Ethernet Encapsulations"
 date: 2022-10-26 07:43:00
 tags: [ LAN ]
 ---
-Henk Smit [conscientiously pointed out a major omission](https://blog.ipspace.net/2022/09/from-bits-to-applications.html#1356) I made when summarizing [Peter Paluch's excellent description](https://blog.ipspace.net/2022/09/from-bits-to-applications.html) of how bits get parsed in network headers:
+Henk Smit [conscientiously pointed out a major omission](/2022/09/from-bits-to-applications.html#1356) I made when summarizing [Peter Paluch's excellent description](/2022/09/from-bits-to-applications.html) of how bits get parsed in network headers:
 
 > EtherType? What do you mean EtherType? There are/were 4 types of Ethernet encapsulation. Only one of them (ARPA encapsulation) has an EtherType. The other 3 encapsulations do not have an EtherType field.
 
@@ -36,7 +36,7 @@ That was obviously not good enough for IEEE purists[^TR], but it's hard to argue
 * IEEE version of the Ethernet will have a belt-and-braces *length* field after the MAC addresses to verify that the frame truly has the right length.
 * EtherTypes will use values above 1500, so it will be evident whether we're dealing with IEEE encapsulation or Ethernet II encapsulation[^JF].
 
-[^HL]: A 7-layer purist would say _oh, you mean a layer-3 protocol_. Unfortunately we've seen applications riding directly on top of Ethernet, many of them coming from Digital (DEC), the infamous inventor of transparent bridge -- the [kludge needed to support them](https://blog.ipspace.net/2010/07/bridges-kludge-that-shouldnt-exist.html).
+[^HL]: A 7-layer purist would say _oh, you mean a layer-3 protocol_. Unfortunately we've seen applications riding directly on top of Ethernet, many of them coming from Digital (DEC), the infamous inventor of transparent bridge -- the [kludge needed to support them](/2010/07/bridges-kludge-that-shouldnt-exist.html).
 
 [^DIX]: DIX = Digital, Intel, Xerox -- the initials of the three major companies pushing early Ethernet in alphabetical order. Even though Ethernet was invented within [Xerox PARC](https://en.wikipedia.org/wiki/PARC_(company)), they still got the last place in the acronym.
 

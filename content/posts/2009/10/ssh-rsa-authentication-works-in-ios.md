@@ -8,7 +8,7 @@ url: /2009/10/ssh-rsa-authentication-works-in-ios.html
 ---
 The feature we've begged, prayed, sobbed, yelled, screamed for has finally been implemented in Cisco IOS: public key SSH authentication works in IOS release 15.0M (and is surprisingly easy to use).
 
-After [configuring SSH server on IOS](https://blog.ipspace.net/2008/08/ssh-works-without-aaa.html) (see also [comments to this post](https://blog.ipspace.net/2008/08/identifying-tacacs-failure.html)), you have to configure the **ssh pubkey-chain**, where you can enter the key string (from your SSH public key file) or the key's hash (which is displayed by the **ssh-keygen** command).
+After [configuring SSH server on IOS](/2008/08/ssh-works-without-aaa.html) (see also [comments to this post](/2008/08/identifying-tacacs-failure.html)), you have to configure the **ssh pubkey-chain**, where you can enter the key string (from your SSH public key file) or the key's hash (which is displayed by the **ssh-keygen** command).
 <!--more-->
 It's probably easier to copy/paste the public key from your *id_rsa.pub* file into the terminal window ...
 

@@ -3,11 +3,11 @@ title: "Repost: On the Importance of Line-Rate Switching of Small Packets"
 date: 2021-02-11 07:41:00
 tags: [ switching ]
 ---
-I made a [flippant remark in a blog comment](https://blog.ipspace.net/2021/01/worth-reading-7050qx-table-sizes.html#374)...
+I made a [flippant remark in a blog comment](/2021/01/worth-reading-7050qx-table-sizes.html#374)...
 
 > While it's academically stimulating to think about forwarding small packets (and applicable to large-scale VoIP networks), most environments don't have to deal with those. Looks like it's such a non-issue that I couldn't find recent data; in the good old days ~50% of the packets were 1500 byte long.
 
-... and Minh Ha (by now a regular contributor to my blog) quickly set me straight with a [lengthy comment](https://blog.ipspace.net/2021/01/worth-reading-7050qx-table-sizes.html#376) that's too good to be hidden somewhere at the bottom of a page. Here it is (slightly edited). Also, you might want to read other comments to the original blog post for context.
+... and Minh Ha (by now a regular contributor to my blog) quickly set me straight with a [lengthy comment](/2021/01/worth-reading-7050qx-table-sizes.html#376) that's too good to be hidden somewhere at the bottom of a page. Here it is (slightly edited). Also, you might want to read other comments to the original blog post for context.
 <!--more-->
 ---
 

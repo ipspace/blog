@@ -5,13 +5,13 @@ tags: [ automation ]
 series: [ cicd ]
 cicd_tag: testing
 ---
-Here's a fun fact network automation pundits don't want to hear: if you're working with [replaceable device configurations](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html) (as we did for the past 20 years, at least those fortunate enough to buy Junos), you already meet the [Infrastructure-as-Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) requirements. [Storing device configurations in a version control system](https://blog.ipspace.net/2018/08/gitops-in-networking.html) and using reviews and merge requests to change them (aka GitOps) is just a cherry on the cake.
+Here's a fun fact network automation pundits don't want to hear: if you're working with [replaceable device configurations](/2016/10/network-automation-rfp-requirements.html) (as we did for the past 20 years, at least those fortunate enough to buy Junos), you already meet the [Infrastructure-as-Code](https://en.wikipedia.org/wiki/Infrastructure_as_code) requirements. [Storing device configurations in a version control system](/2018/08/gitops-in-networking.html) and using reviews and merge requests to change them (aka GitOps) is just a cherry on the cake.
 
 When I [made a claim along these same lines](https://my.ipspace.net/bin/list?id=AutConcepts#NIAC) a few weeks ago during the _[Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts)_ webinar, [Vladimir Troitskiy](https://www.linkedin.com/in/vldmtr/) sent me an interesting question:
 <!--more-->
 > I see some kind of a problem with the 'GitOps and config replace' approach. Let's assume you have a network device that is able to replace its configuration only all at once. Obviously, at the early automation stages, you don't have a full-blown data model to generate the full config of the device from scratch. So the best you can do in GitOps-style is to fork this text file, edit it with a text editor and merge it back. As you don't have a built-in CLI help and your input isn't validated, you can only hope the result is a valid config and the device won't choke with it during the replacement.
 
-There are a few tricks you can use in that case (for more details, follow the links in [this blog post](https://blog.ipspace.net/2018/08/gitops-in-networking.html), I created tons of materials on the topic a few years ago):
+There are a few tricks you can use in that case (for more details, follow the links in [this blog post](/2018/08/gitops-in-networking.html), I created tons of materials on the topic a few years ago):
 
 **Limit the changes an operator can make**. Compare the changes made in a commit to a valid list of commands this operator can use and reject anything that is not allowed. For example, a server administrator can only add **switchport trunk allowed vlan** commands to server-facing ports on data center switches.
 
