@@ -96,7 +96,7 @@ As for real-life advantages of iSCSI CRC32C over IEEE-802 CRC32: [RFC 3385](http
 
 ### Everything Is Better with GPT-4{#G4}
 
-Following a [nudge by Andrew Yourtchenko](https://blog.ipspace.net/2023/04/chatgpt-explaining-iscsi-crc.html#1755), I decided to waste $20 and go for GPT+ to get access to GPT-4 model. It does a much better job, misses the _weak TCP checksum_, claims TCP checksum provides integrity only on specific segments, but does mention _silent data corruption_. Overall: B+/A-
+Following a [nudge by Andrew Yourtchenko](/2023/04/chatgpt-explaining-iscsi-crc.html#1755), I decided to waste $20 and go for GPT+ to get access to GPT-4 model. It does a much better job, misses the _weak TCP checksum_, claims TCP checksum provides integrity only on specific segments, but does mention _silent data corruption_. Overall: B+/A-
 
 ---
 
@@ -128,7 +128,7 @@ However, most everyone who hasn't been dazzled by the AI-glitz agrees that (A) e
 
 The iSCSI protocol is a storage area network (SAN) protocol that enables block-level access to storage devices. It is used to send SCSI commands over IP networks, making it a cost-effective alternative to Fibre Channel. According to storage expert Dennis Martin [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin), there is an application-level checksum in iSCSI to perform data integrity checks on the storage data carried by iSCSI. This is because the TCP checksum is not considered adequate for critical storage data. The iSCSI checksum is calculated by the initiator and target and is used to verify that the data received is the same as the data sent.
 
-Ethernet checksums are not reliable enough for data integrity, and TCP/IP checksums are weak. They might be good enough for some traffic, but not for critical storage data [\[4\]](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html). Ethernet CRC is supposed to detect transmission errors, and TCP/IP checksums should detect rare intra-device data corruption errors. However, layer-3 switches recalculate the CRC, which no longer protects the integrity of Ethernet frames between end hosts [\[4\]](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html). Therefore, it is recommended to implement an application-level checksum, preferably using CRC32C, which is implemented in hardware on recent CPUs [\[4\]](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html).
+Ethernet checksums are not reliable enough for data integrity, and TCP/IP checksums are weak. They might be good enough for some traffic, but not for critical storage data [\[4\]](/2015/11/ethernet-checksums-are-not-good-enough.html). Ethernet CRC is supposed to detect transmission errors, and TCP/IP checksums should detect rare intra-device data corruption errors. However, layer-3 switches recalculate the CRC, which no longer protects the integrity of Ethernet frames between end hosts [\[4\]](/2015/11/ethernet-checksums-are-not-good-enough.html). Therefore, it is recommended to implement an application-level checksum, preferably using CRC32C, which is implemented in hardware on recent CPUs [\[4\]](/2015/11/ethernet-checksums-are-not-good-enough.html).
 
 There are two main iSCSI security measures: Challenge-Handshake Authentication Protocol (CHAP) and Internet Protocol Security (IPsec) [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin). CHAP is used to authenticate the initiator and target, while IPsec is used to encrypt the iSCSI traffic. CHAP and IPsec can handle a lot of things within iSCSI itself, but it is also possible to do other forms of encryption with the Ethernet connection, and there are other things that can be done with data at rest and the storage side [\[1\]](https://www.techtarget.com/searchstorage/podcast/iSCSI-performance-An-expert-discussion-with-Dennis-Martin).
 
@@ -146,7 +146,7 @@ In summary, the iSCSI protocol uses an application-level checksum to perform dat
 
 * The answer is correct (as far as I understand iSCSI)
 * Way too verbose, including stuff I never asked about.
-* Bonus points for [quoting my blog post](https://blog.ipspace.net/2015/11/ethernet-checksums-are-not-good-enough.html) several times ;)
+* Bonus points for [quoting my blog post](/2015/11/ethernet-checksums-are-not-good-enough.html) several times ;)
 
 #### phind on the Benefits of FCoTR{#fcotr}
 

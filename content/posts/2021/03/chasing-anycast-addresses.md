@@ -16,7 +16,7 @@ One of my readers sent me this question:
 
 TL&DR: Not with anything close to 100% reliability. An [academic research paper](https://www.eecis.udel.edu/~hnw/paper/sigcomm-ccr-2019.pdf) (HT: Andrea di Donato) documents a false-positive rate of around 10%.
 
-If you're not familiar with *[IP anycast](https://blog.ipspace.net/2008/07/anycast.html)*: it's a brilliant idea of advertising the same prefix from multiple independent locations, or the same IP address from multiple servers. Works [like a charm for UDP](https://blog.ipspace.net/2019/10/worth-reading-anycast-dns-in-enterprise.html) (that's how all root DNS servers are built) and supposedly pretty well across distant-enough locations for TCP (with a long list of caveats when used within a data center).
+If you're not familiar with *[IP anycast](/2008/07/anycast.html)*: it's a brilliant idea of advertising the same prefix from multiple independent locations, or the same IP address from multiple servers. Works [like a charm for UDP](/2019/10/worth-reading-anycast-dns-in-enterprise.html) (that's how all root DNS servers are built) and supposedly pretty well across distant-enough locations for TCP (with a long list of caveats when used within a data center).
 <!--more-->
 Forgetting the trivial intra-DC case (analyze next hops on edge switches and figure out if the same IP prefix points to multiple servers), the question "*is a prefix advertised from multiple locations (anycast), or is it just an AS advertising a single prefix from its global network (business-as-usual)*" is impossible to answer by looking at BGP updates.
 

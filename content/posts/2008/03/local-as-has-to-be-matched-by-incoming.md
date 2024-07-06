@@ -5,7 +5,7 @@ tags:
 title: Local-AS Has to Be Matched by Incoming Filter-List
 url: /2008/03/local-as-has-to-be-matched-by-incoming.html
 ---
-In a previous post I\'ve described how you can use **neighbor local-as** feature to [fix AS-number mismatch](https://blog.ipspace.net/2008/01/fix-bgp-as-number-mismatch.html) between adjacent autonomous systems. However, without additional options, the **local-as** is inserted in the AS-path of incoming BGP updates *before any inbound filters*. Your inbound filters thus have to match the **local-as** as well.
+In a previous post I\'ve described how you can use **neighbor local-as** feature to [fix AS-number mismatch](/2008/01/fix-bgp-as-number-mismatch.html) between adjacent autonomous systems. However, without additional options, the **local-as** is inserted in the AS-path of incoming BGP updates *before any inbound filters*. Your inbound filters thus have to match the **local-as** as well.
 <!--more-->
 Consider, for example, the following configuration:
 
@@ -27,4 +27,4 @@ R1#show ip bgp neighbor 10.1.0.2 received-routes | begin ^$
 *  172.16.0.0  10.1.0.2           0             0 20 10 i
 ```
 
-To fix this problem, you either have to include local AS in the AS-path access-list or [use the **no-prepend** option of the **neighbor local-as** command](https://blog.ipspace.net/2008/01/fix-bgp-as-number-mismatch.html).
+To fix this problem, you either have to include local AS in the AS-path access-list or [use the **no-prepend** option of the **neighbor local-as** command](/2008/01/fix-bgp-as-number-mismatch.html).

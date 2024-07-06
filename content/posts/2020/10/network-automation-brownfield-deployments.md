@@ -16,7 +16,7 @@ As every company creates invoices in a slightly different way (because they are 
 
 Being a grumpy skeptic who has seen too much, I see only three major ways forward for my reader:
 
-* Replace the existing infrastructure with an automated black-box solution (like Cisco ACI or Cisco SD-Access), and [enjoy the show once it breaks](https://blog.ipspace.net/2018/02/how-self-sufficient-do-you-want-to-be.html);
+* Replace the existing infrastructure with an automated black-box solution (like Cisco ACI or Cisco SD-Access), and [enjoy the show once it breaks](/2018/02/how-self-sufficient-do-you-want-to-be.html);
 * Buy a generic automation framework and have someone (internal or external) tweak it to meet your requirements. I’ve seen various vendors building and/or acquiring automation frameworks along these lines since mid 1990s, and they always remained a niche market due to heavy investment required to make it work.
 * Slowly build your own system, focusing on major pain points where the automation could result in maximum business/operations impact. Or, in the immortal words of Andrew Lerner, invest in premium people instead of in premium vendors.
 

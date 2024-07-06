@@ -5,8 +5,8 @@ date: "2015-09-23T09:00:00.000+02:00"
 tags: [ SAN,WAN,virtualization ]
 ---
 
-<p>When I wrote my <a href="https://blog.ipspace.net/2015/09/vmware-vsan-can-stretch-should-it.html">stretched VSAN post</a>, I thought VSAN uses asynchronous replication across WAN. Duncan Epping quickly pointed out that it uses synchronous replication, and I fixed the blog post.</p>
-<p>The “<a href="https://blog.ipspace.net/2015/01/latency-killer-of-spread-out.html"><em>What about latency?</em></a>” question immediately arose somewhere in my subconscious, but before I could add that thought to the blog post, <a href="https://plus.google.com/+AndersHenke/about">Anders Henke</a> wrote a lengthy comment that totally captured what I was thinking, so I’m including it in its entirety:<!--more--></p>
+<p>When I wrote my <a href="/2015/09/vmware-vsan-can-stretch-should-it.html">stretched VSAN post</a>, I thought VSAN uses asynchronous replication across WAN. Duncan Epping quickly pointed out that it uses synchronous replication, and I fixed the blog post.</p>
+<p>The “<a href="/2015/01/latency-killer-of-spread-out.html"><em>What about latency?</em></a>” question immediately arose somewhere in my subconscious, but before I could add that thought to the blog post, <a href="https://plus.google.com/+AndersHenke/about">Anders Henke</a> wrote a lengthy comment that totally captured what I was thinking, so I’m including it in its entirety:<!--more--></p>
 <style>.post blockquote.cite p { margin-bottom: 1em !important; }</style><blockquote class="cite"><p>Note that any kind of synchronous replication also suffers from the extra network latency. Having said this, VMware's VSAN must be designed for a local network only. </p>
 <p>They do have dedicated products for asynchronous remote replication, and one can probably combine VSAN with them. But please don't ignore the added latency and physics :-)</p>
 <p>As a worst-case example: your HDD has an average rotational latency of around 2-3ms - the time until a sector can be read or written. Assuming the sector is written instantly, it will still take 2ms on an average write operation.</p>

@@ -17,7 +17,7 @@ Kubernetes was [designed in a way that made worker nodes expendable](/2022/01/vi
 <!--more-->
 {{<figure src="/2022/02/bgp-vm-design.png" caption="A virtual switch in a Kubernetes node advertising a BGP prefix to the data center fabric">}}
 
-Meanwhile on Planet Enterprise: [all sort of **** is being deployed](https://blog.ipspace.net/2013/09/sooner-or-later-someone-will-pay-for.html) in containerized format. A lot of those things were never *designed*, let alone designed *properly*, and the application developers are still too often able to get away with murder and [blame the infrastructure teams](https://blog.ipspace.net/2013/11/typical-enterprise-application.html) when their [non-redundant application stack](https://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html) dies (for whatever reason, that approach [does not work in public clouds](https://blog.ipspace.net/2020/01/youre-responsible-for-resiliency-of.html)). 
+Meanwhile on Planet Enterprise: [all sort of **** is being deployed](/2013/09/sooner-or-later-someone-will-pay-for.html) in containerized format. A lot of those things were never *designed*, let alone designed *properly*, and the application developers are still too often able to get away with murder and [blame the infrastructure teams](/2013/11/typical-enterprise-application.html) when their [non-redundant application stack](/2013/04/this-is-what-makes-networking-so-complex.html) dies (for whatever reason, that approach [does not work in public clouds](/2020/01/youre-responsible-for-resiliency-of.html)). 
 
 Even though it hurts me to do so, let's walk through the realistic options, starting with the bad ones and ending with the abhorrent ones.
 

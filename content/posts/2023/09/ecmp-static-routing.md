@@ -3,7 +3,7 @@ title: "Reliable ECMP with Static Routing"
 date: 2023-09-08 07:00:00
 tags: [ IP routing ]
 ---
-One of my readers wanted to use [EIBGP](https://blog.ipspace.net/2013/06/eibgp-load-balancing.html) to load balance outgoing traffic from a pair of WAN edge routers (hint: wrong tool for this particular job[^WTFTJ]). He's using a design very similar to [this one](https://blog.ipspace.net/2022/02/nexus-icmp-redirects.html) with VRRP running between WAN edge routers, and the adjacent firewall cluster using a default route to the VRRP IP address.
+One of my readers wanted to use [EIBGP](/2013/06/eibgp-load-balancing.html) to load balance outgoing traffic from a pair of WAN edge routers (hint: wrong tool for this particular job[^WTFTJ]). He's using a design very similar to [this one](/2022/02/nexus-icmp-redirects.html) with VRRP running between WAN edge routers, and the adjacent firewall cluster using a default route to the VRRP IP address.
 
 The problem: all output traffic goes to the VRRP IP address which is active on one of the switches, and only a single uplink is used for the outgoing traffic.
 <!--more-->

@@ -9,7 +9,7 @@ url: /2018/11/omg-vxlan-is-still-insecure.html
 ---
 A friend of mine told me about a "[VXLAN is insecure, the sky is falling](https://ripe77.ripe.net/presentations/32-vxlan-ripe77.pdf)" presentation from RIPE-77 which claims that you can (under certain circumstances) inject packets into VXLAN virtual networks from the Internet.
 
-Welcome back, Captain Obvious. Anyone looking at the VXLAN packet could immediately figure out that **there's no security in VXLAN**. I pointed that out several times in my [blog posts](https://blog.ipspace.net/2015/04/omg-vxlan-encapsulation-has-no-security.html) and presentations, including [Cloud Computing Networking](https://my.ipspace.net/bin/get/CloudNet/Cloud%20Computing%20Networking%20(EuroNOG).pdf) (EuroNOG, September 2011) and [NSX Architecture](https://my.ipspace.net/bin/list?id=NSXArch) webinar (August 2013).
+Welcome back, Captain Obvious. Anyone looking at the VXLAN packet could immediately figure out that **there's no security in VXLAN**. I pointed that out several times in my [blog posts](/2015/04/omg-vxlan-encapsulation-has-no-security.html) and presentations, including [Cloud Computing Networking](https://my.ipspace.net/bin/get/CloudNet/Cloud%20Computing%20Networking%20(EuroNOG).pdf) (EuroNOG, September 2011) and [NSX Architecture](https://my.ipspace.net/bin/list?id=NSXArch) webinar (August 2013).
 <!--more-->
 Another conclusion I made in NSX Architecture webinar (slide 28, included below) was "**transport network MUST be secure**" (notice the RFC2119 use of MUST).
 
@@ -23,7 +23,7 @@ Does that mean VXLAN is broken? Not really, any technology can be dangerous in h
 
 > Traditionally, Layer 2 networks can only be attacked from 'within' by rogue end points -- either by having inappropriate access to a LAN and snooping on traffic, by injecting spoofed packets to 'take over' another MAC address, or by flooding and causing denial of service. A MAC-over-IP mechanism for delivering Layer 2 traffic significantly extends this attack surface. This can happen by rogues injecting themselves into the network by subscribing to one or more multicast groups that carry broadcast traffic for VXLAN segments and also by sourcing MAC-over-UDP frames into the transport network to inject spurious traffic, possibly to hijack MAC addresses.
 
-As always, whenever you want to start using a new tool, you should [understand how it works, and what its advantages and limitations are](https://my.ipspace.net/bin/list?id=NetAutSol&module=1#M1S4A)... after all, you want to [call yourself an engineer](https://blog.ipspace.net/2018/01/how-to-become-better-networking-engineer.html), right? Oh, and don't be surprised when the \$vendors don't tell you what the limitations and drawbacks are.
+As always, whenever you want to start using a new tool, you should [understand how it works, and what its advantages and limitations are](https://my.ipspace.net/bin/list?id=NetAutSol&module=1#M1S4A)... after all, you want to [call yourself an engineer](/2018/01/how-to-become-better-networking-engineer.html), right? Oh, and don't be surprised when the \$vendors don't tell you what the limitations and drawbacks are.
 
 Finally, I would love to see security researchers shift their focus from "*OMG, look how I managed to break it*" to "*there are some fundamental limitations of what can be done, and if you don't know what they are you might get hurt... like in this example."*
 

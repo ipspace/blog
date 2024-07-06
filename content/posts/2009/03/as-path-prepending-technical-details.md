@@ -7,7 +7,7 @@ series: bgp-essentials
 url: /2009/03/as-path-prepending-technical-details.html
 Lastmod: 2020-12-07 11:12:00
 ---
-I thought I knew all there is to know about the AS-path prepending before the [February 2009 incident](https://blog.ipspace.net/2009/02/root-cause-analysis-oversized-as-paths.html), which prompted me to focus on this particular Cisco IOS feature.
+I thought I knew all there is to know about the AS-path prepending before the [February 2009 incident](/2009/02/root-cause-analysis-oversized-as-paths.html), which prompted me to focus on this particular Cisco IOS feature.
 
 For example, did you know you could do *inbound* AS-path prepending? I didn't, until Rodney Dunn from Cisco mentioned it in an e-mail exchange. Did you ever wonder whether the AS-path prepending affects inbound or outbound AS-path filters? I had a hunch it doesn't, but was never sure. Time to figure out all the gory details...
 <!--more-->

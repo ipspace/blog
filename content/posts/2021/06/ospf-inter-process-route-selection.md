@@ -8,7 +8,7 @@ title: OSPF Inter-Process Route Selection
 ---
 The traditional wisdom claimed that a Cisco IOS router cannot compare routes between different OSPF routing processes. The only parameter to consider when comparing routes coming from different routing processes is the admin distance, and unless you change the default admin distance for one of the processes, the results will be random.
 
-Following [Vladislav's comment to a decade-old blog post](https://blog.ipspace.net/2008/01/e1-and-e2-routes-in-ospf.html#639), I decided to do a quick test, and found out that code changes tend to invalidate traditional wisdom. OSPF inter-process route selection is no exception. That's why it's so stupid to rely on undefined behavior in your network design, memorize such trivia, test the memorization capabilities in certification labs, or read decades-old blog posts describing arcane behavior.
+Following [Vladislav's comment to a decade-old blog post](/2008/01/e1-and-e2-routes-in-ospf.html#639), I decided to do a quick test, and found out that code changes tend to invalidate traditional wisdom. OSPF inter-process route selection is no exception. That's why it's so stupid to rely on undefined behavior in your network design, memorize such trivia, test the memorization capabilities in certification labs, or read decades-old blog posts describing arcane behavior.
 <!--more-->
 
 Before we move on:

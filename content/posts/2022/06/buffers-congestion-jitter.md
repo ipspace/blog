@@ -3,7 +3,7 @@ title: "Repost: Buffers, Congestion, Jitter, and Shapers"
 date: 2022-06-27 06:15:00
 tags: [ switching, QoS ]
 ---
-_[Béla Várkonyi](https://www.linkedin.com/in/belavarkonyi/) left a [great comment](https://blog.ipspace.net/2022/06/beware-vendors-bringing-whitepapers.html#1309) on a blog post discussing (among other things) whether we need large buffers on spine switches. I don't know how many people read the comments; this one is too valuable to be lost somewhere below the fold_
+_[Béla Várkonyi](https://www.linkedin.com/in/belavarkonyi/) left a [great comment](/2022/06/beware-vendors-bringing-whitepapers.html#1309) on a blog post discussing (among other things) whether we need large buffers on spine switches. I don't know how many people read the comments; this one is too valuable to be lost somewhere below the fold_
 
 ---
 

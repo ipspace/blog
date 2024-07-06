@@ -5,7 +5,7 @@ tags:
 title: 'BGP Essentials: Non-transit AS'
 url: /2008/04/bgp-essentials-non-transit-as.html
 ---
-One of the first things you have to do when configuring BGP with your ISP is to ensure you won't become a transit AS. Decent ISPs filter out things that don't belong to you from your updates, but not everyone cares ([including some really big names](https://blog.ipspace.net/2019/07/rant-some-internet-service-providers.html)), and so small organizations manage to bring down large parts of the Internet just with a few fat fingers.
+One of the first things you have to do when configuring BGP with your ISP is to ensure you won't become a transit AS. Decent ISPs filter out things that don't belong to you from your updates, but not everyone cares ([including some really big names](/2019/07/rant-some-internet-service-providers.html)), and so small organizations manage to bring down large parts of the Internet just with a few fat fingers.
 
 Here's the BGP configuration you should use on Cisco IOS: apply AS-path access-list to outbound updates with **neighbor filter-list** command:
 <!--more-->
@@ -16,7 +16,7 @@ router bgp 65000
 ip as-path access-list 1 permit ^$
 ```
 
-Of course you can make things really interesting by [introducing BGP communities](https://blog.ipspace.net/2008/02/bgp-essentials-bgp-communities.html): if you mark all routes received from the EBGP peers with the [NO_EXPORT community](https://blog.ipspace.net/2008/01/redistributing-customer-routes-into-bgp.html), they will be filtered out on other EBGP sessions automatically :) Here\'s a sample configuration:
+Of course you can make things really interesting by [introducing BGP communities](/2008/02/bgp-essentials-bgp-communities.html): if you mark all routes received from the EBGP peers with the [NO_EXPORT community](/2008/01/redistributing-customer-routes-into-bgp.html), they will be filtered out on other EBGP sessions automatically :) Here\'s a sample configuration:
 
 ``` {.code}
 router bgp 65001

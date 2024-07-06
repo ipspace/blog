@@ -13,7 +13,7 @@ When an IPv4/IPv6 host wants to send a packet to another host, it has to answer 
 
 In IPv4 world, the host can get all the information it needs through DHCP. In IPv6 world, things are way more complex (but also way more *correct* if you're a theoretician).
 <!--more-->
-{{<note>}}This post is a follow-up to the [IPv6 Router Advertisement Deep Dive](https://blog.ipspace.net/2012/11/ipv6-router-advertisements-deep-dive.html) post.{{</note>}}
+{{<note>}}This post is a follow-up to the [IPv6 Router Advertisement Deep Dive](/2012/11/ipv6-router-advertisements-deep-dive.html) post.{{</note>}}
 
 ### The Magic of the Subnet Mask
 

@@ -13,7 +13,7 @@ Not unexpectedly, I got a few (polite and diplomatic) replies from engineers who
 <!--more-->
 ### Background
 
-Managing parts of network device configuration with a network automation tool is a major PITA. Junos makes it relatively easy as it treats a device configuration as a data model, allows you to modify the candidate data model in any way you wish, and shows you the differences between candidate and actual configuration. Arista EOS is pretty close. Most everything else is a nightmare of carefully orchestrated steps trying to get from here to there without cutting yourself off or bricking the box. No news here, I [wrote about this in 2016](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html) (not that it helped).
+Managing parts of network device configuration with a network automation tool is a major PITA. Junos makes it relatively easy as it treats a device configuration as a data model, allows you to modify the candidate data model in any way you wish, and shows you the differences between candidate and actual configuration. Arista EOS is pretty close. Most everything else is a nightmare of carefully orchestrated steps trying to get from here to there without cutting yourself off or bricking the box. No news here, I [wrote about this in 2016](/2016/10/network-automation-rfp-requirements.html) (not that it helped).
 
 Anyway, there are two ways to deal with this crapscape. You could say "_it's a vendor problem, and we recommend you create the whole configuration from scratch and replace it_" (the NAPALM/Nornir way) or you could say "_look, I solved this problem for you_" (the Ansible way)... but if you decide to do the latter, it helps if you do it right.
 

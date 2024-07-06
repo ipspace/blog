@@ -6,7 +6,7 @@ tags:
 - netlab
 title: netlab VLAN Trunk Example
 ---
-Last week I described [how easy it is to use access VLANs](https://blog.ipspace.net/2022/05/netsim-vlan-simple.html) in *netlab*. Next step: VLAN trunks. 
+Last week I described [how easy it is to use access VLANs](/2022/05/netsim-vlan-simple.html) in *netlab*. Next step: VLAN trunks. 
 
 We'll add two Linux hosts to the lab topology used in the previous blog post, resulting in two switches, two Linux hosts in *red* VLAN and two Linux hosts in *blue* VLAN.
 

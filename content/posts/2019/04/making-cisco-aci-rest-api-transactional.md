@@ -13,7 +13,7 @@ url: /2019/04/making-cisco-aci-rest-api-transactional.html
 
 ---
 
-In a [recent blog post](https://blog.ipspace.net/2019/04/rest-api-is-not-transactional.html), Ivan postulated "*You'd execute a REST API call. Any one of those calls might fail. Now what? \... You'll have absolutely no help from the orchestration system because REST API is not transactional so there's no rollback.*" Well, that depends on the orchestration system in use.
+In a [recent blog post](/2019/04/rest-api-is-not-transactional.html), Ivan postulated "*You'd execute a REST API call. Any one of those calls might fail. Now what? \... You'll have absolutely no help from the orchestration system because REST API is not transactional so there's no rollback.*" Well, that depends on the orchestration system in use.
 
 The promise of controller-based solutions (ACI, NSX, etc.) is that your unicorn powered network controller should be an all seeing, all knowing platform managing your network. We all have hopefully learned about the importance of backups very early on our careers. Backup and, more importantly, restore should be table stakes; a fundamental feature of any network device, let alone a networking system managed by a controller imbued with magical powers (if the vendor is to be believed).
 <!--more-->

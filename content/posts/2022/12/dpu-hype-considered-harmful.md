@@ -13,7 +13,7 @@ First of all, congratulations to whichever vendor marketer managed to put that g
 
 **You cannot move the ESXi hypervisor to a DPU**. AWS [managed to do that with their Nitro cards](https://docs.aws.amazon.com/whitepapers/latest/security-design-of-aws-nitro-system/the-components-of-the-nitro-system.html), but they had to rewrite a hypervisor from scratch to get there. I would be extremely (pleasantly) surprised if VMware manages to get anywhere close to that in the future -- it's usually impossible to start a clean-slate project in a large company focused on quarterly results and singing the "doing more with less" jingles.
 
-In any case, most of the ESXi hypervisor still runs on the primary server; the only task you can [offload to a DPU in vSphere release 8 is vSphere Distributed Switch](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-esxi-installation/GUID-EC3CE886-63A9-4FF0-B79F-111BCB61038F.html)[^LS]. Whether that's a [significant improvement](https://blog.ipspace.net/2022/12/are-dpu-any-good.html) depends on how network-intensive your applications are.
+In any case, most of the ESXi hypervisor still runs on the primary server; the only task you can [offload to a DPU in vSphere release 8 is vSphere Distributed Switch](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-esxi-installation/GUID-EC3CE886-63A9-4FF0-B79F-111BCB61038F.html)[^LS]. Whether that's a [significant improvement](/2022/12/are-dpu-any-good.html) depends on how network-intensive your applications are.
 
 [^LS]: ... and [lose Network IO Control, traffic shaping policies, and security intercept at the NIC level](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-networking/GUID-41AB1101-D943-490A-BF1A-E53433855C07.html) (DV filter) while doing that.
 

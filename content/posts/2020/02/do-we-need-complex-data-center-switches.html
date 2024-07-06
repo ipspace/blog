@@ -36,7 +36,7 @@ url: /2020/02/do-we-need-complex-data-center-switches.html
 <li>The solution you’re using was created by someone who considered the overall complexity of the whole system.</li>
 </ul>
 <p>The first assumption might be true in some environments. If you decided to use VMware NSX, the second one unfortunately isn’t.</p>
-<h3 id="it-gets-worse-and-worse">It Gets Worse and Worse</h3><p>VMware decided to use the same old bag of tricks from the days of their <a href="https://blog.ipspace.net/2019/10/the-cost-of-disruptiveness-and.html">guerrilla marketing</a> to implement NSX underlay connectivity:</p>
+<h3 id="it-gets-worse-and-worse">It Gets Worse and Worse</h3><p>VMware decided to use the same old bag of tricks from the days of their <a href="/2019/10/the-cost-of-disruptiveness-and.html">guerrilla marketing</a> to implement NSX underlay connectivity:</p>
 <ul><li>VXLAN (or Geneve) traffic is sent from VMkernel interfaces;</li>
 <li>VMkernel interfaces are tied to port groups which can be associated with multiple physical uplinks to implement redundant connectivity;</li>
 <li>ESXi hosts can change the active port group uplink at any time, resulting in IP address move from one physical uplink to another. The best you could hope for (from the networking perspective) is to get a Gratuitous ARP message when the move is made.</li>

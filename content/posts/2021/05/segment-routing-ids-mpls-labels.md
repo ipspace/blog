@@ -166,7 +166,7 @@ e1#show ip cef 10.0.0.4 detail
 
 Want to try it out? You'll find the [lab setup](https://github.com/ipspace/netlab-examples/tree/master/routing/sr-mpls-sid) and [device configurations](https://github.com/ipspace/netlab-examples/tree/master/routing/sr-mpls-sid/config) on Github. I used *libvirt* Vagrant provider, if you happen to have VirtualBox boxes, or containerlab-compatible containers, [install netlab](https://netlab.tools/install/), change the provider in the topology file to **virtualbox** and rerun the [lab topology creation script](https://netlab.tools/netlab/create/).
 
-[^1]: You can assign a segment ID to an IPv6 prefix in Arista EOS, but not in Cisco IOS XE. Last time I looked at my calendar, it said 2021, and Cisco supposedly supported IPv6 everywhere [for at least a decade](https://blog.ipspace.net/2010/11/ipv6-in-data-center-after-year-cisco-is.html). Yeah, sure...
+[^1]: You can assign a segment ID to an IPv6 prefix in Arista EOS, but not in Cisco IOS XE. Last time I looked at my calendar, it said 2021, and Cisco supposedly supported IPv6 everywhere [for at least a decade](/2010/11/ipv6-in-data-center-after-year-cisco-is.html). Yeah, sure...
 
 ### Revision History
 

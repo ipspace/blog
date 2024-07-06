@@ -36,5 +36,5 @@ A protocol like this could have been good enough 30 years ago when TFTP was desi
 
 ### Related Blog Posts
 
-* [ATAoE: response from Coraid](https://blog.ipspace.net/2010/09/ataoe-response-from-coraid.html)
-* [ATAoE Is Alive and Well](https://blog.ipspace.net/2013/10/ataoe-is-alive-and-well.html)
+* [ATAoE: response from Coraid](/2010/09/ataoe-response-from-coraid.html)
+* [ATAoE Is Alive and Well](/2013/10/ataoe-is-alive-and-well.html)

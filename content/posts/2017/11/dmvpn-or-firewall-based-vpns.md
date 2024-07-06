@@ -37,7 +37,7 @@ On the other hand, you can make DMVPN configuration almost spoke-neutral -- addi
 
 **Dynamic load balancing**. It's reasonably easy to perform application-based policy-based routing (assuming your device supports it) if you terminate VPN tunnels and MPLS connections on the same devices (regardless of whether you call them routers or firewalls), and if you believe in IWAN you could get some sort of centralized policy with PfRv3 (or through an orchestration system like [Gluware](http://gluware.com/)). Getting the same results in a firewall(VPN)+router(MPLS) combo is interestingly complex.
 
-{{<note>}}This problem can also be solved with yet another layer of abstraction called [SD-WAN](https://blog.ipspace.net/2015/06/software-defined-wanwell-orchestrated.html).{{</note>}}
+{{<note>}}This problem can also be solved with yet another layer of abstraction called [SD-WAN](/2015/06/software-defined-wanwell-orchestrated.html).{{</note>}}
 
 ### The Relevant Webinars
 

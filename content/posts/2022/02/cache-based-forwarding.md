@@ -54,7 +54,7 @@ But wait, it gets worse. Every few years someone gets the awesome idea of cachin
 
 ### Another Data Point for RFC 1925 Rule 11
 
-When I was updating this blog post to ensure everyone understands I'm referring to the _original_ LISP ideas, I remembered an [extensive comment Victor Moreno wrote](https://blog.ipspace.net/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html#5200837098827991481) in 2017 on my _[Why Is Cisco Pushing LISP in Enterprise Campus?](https://blog.ipspace.net/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html)_ blog post.
+When I was updating this blog post to ensure everyone understands I'm referring to the _original_ LISP ideas, I remembered an [extensive comment Victor Moreno wrote](/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html#5200837098827991481) in 2017 on my _[Why Is Cisco Pushing LISP in Enterprise Campus?](/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html)_ blog post.
 
 > The impact of mobility events in a LISP network (as you know from past reviews published in your blog) is limited to signaling amongst the network elements involved in active connections between the devices. However, the impact of mobility events in a BGP network is unbound. Even if you have conditional FIB programming, all changes are pushed to all participants. 
 

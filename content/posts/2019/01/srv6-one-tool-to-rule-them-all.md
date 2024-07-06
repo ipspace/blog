@@ -14,8 +14,8 @@ Stupid me replied "*SRv6 is NOT an overlay solution but a source routing solutio
 <!--more-->
 {{<note info>}}Want to get a second (or third or fourth) opinion? Check out:
 
-* _[SR(x)6 - Snake Oil Or Salvation?](https://blog.ipspace.net/2020/08/worth-reading-srx6-snake-oil.html)_
-* _[Do We Need Segment Routing?](https://blog.ipspace.net/2021/10/worth-reading-need-segment-routing.html)_
+* _[SR(x)6 - Snake Oil Or Salvation?](/2020/08/worth-reading-srx6-snake-oil.html)_
+* _[Do We Need Segment Routing?](/2021/10/worth-reading-need-segment-routing.html)_
 {{</note>}}
 
 #### So where would I need source routing?

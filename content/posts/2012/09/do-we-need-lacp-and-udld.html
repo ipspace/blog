@@ -14,8 +14,8 @@ url: /2012/09/do-we-need-lacp-and-udld.html
 <ul class="ListParagraph"><li>UDLD detects physical link errors and byzantine failures (example: unidirectional fiber link);</li>
 <li>LACP manages the link aggregation groups (LAG, aka port channel) and detects LAG configuration and wiring errors.</li>
 </ul>
-<p>Example: LACP can detect a miswired port channel connected to multiple physical switches (that’s why we need <a href="https://blog.ipspace.net/2010/10/multi-chassis-link-aggregation-basics.html">MLAG</a>). UDLD can’t do that. </p>
-<p>LACP is thus <em>mandatory</em> in a robust network using link aggregation (and after years of <a href="https://blog.ipspace.net/2011/01/vmware-vswitch-does-not-support-lacp.html">yammering</a>, it finally <a href="http://rickardnobel.se/archives/1391">works in vSphere 5.1</a>).</p>
+<p>Example: LACP can detect a miswired port channel connected to multiple physical switches (that’s why we need <a href="/2010/10/multi-chassis-link-aggregation-basics.html">MLAG</a>). UDLD can’t do that. </p>
+<p>LACP is thus <em>mandatory</em> in a robust network using link aggregation (and after years of <a href="/2011/01/vmware-vswitch-does-not-support-lacp.html">yammering</a>, it finally <a href="http://rickardnobel.se/archives/1391">works in vSphere 5.1</a>).</p>
 <p>Unfortunately, you can’t tune the LACP timers or timeout values. The 802.1AX standard defines two timer values: short timer (1 second) or long timer (default, 30 seconds) with corresponding timeouts being 3 seconds or 90 seconds. </p>
 <p>You can tune UDLD timeouts, with the valid values (in Nexus OS) being between 7 and 90 seconds.</p>
 <p><strong>Summary:</strong> </p>

@@ -4,7 +4,7 @@ date: 2023-10-02 07:09:00
 tags: [ BGP, security ]
 pre_scroll: True
 ---
-A while ago I explained how [Generalized TTL Security Mechanism](https://blog.ipspace.net/2023/03/advantages-bgp-gtsm.html) could be used to prevent denial-of-service attacks on routers running EBGP. Considering the results published in *[Analyzing the Security of BGP Message Parsing](https://media.defcon.org/DEF%20CON%2031/DEF%20CON%2031%20presentations/Daniel%20dos%20Santos%20Simon%20Guiot%20-%20Route%20to%20bugs%20Analyzing%20the%20security%20of%20BGP%20message%20parsing.pdf)* presentation from DEFCON 31 I started wondering how well GTSM implementations work.
+A while ago I explained how [Generalized TTL Security Mechanism](/2023/03/advantages-bgp-gtsm.html) could be used to prevent denial-of-service attacks on routers running EBGP. Considering the results published in *[Analyzing the Security of BGP Message Parsing](https://media.defcon.org/DEF%20CON%2031/DEF%20CON%2031%20presentations/Daniel%20dos%20Santos%20Simon%20Guiot%20-%20Route%20to%20bugs%20Analyzing%20the%20security%20of%20BGP%20message%20parsing.pdf)* presentation from DEFCON 31 I started wondering how well GTSM implementations work.
 
 **TL&DR summary:**
 <!--more-->

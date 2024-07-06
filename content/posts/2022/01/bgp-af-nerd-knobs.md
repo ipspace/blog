@@ -26,7 +26,7 @@ Let's start with a few well-known AFI/SAFI combinations:
 * 2/128 is IPv6 MPLS VPN
 * 25/70 is EVPN (25 = L2VPN, 70 = EVPN)
 
-AFI/SAFI combinations are negotiated between adjacent BGP neighbors in BGP capabilities exchange, [bringing down the BGP transport session](https://blog.ipspace.net/2021/11/bgp-dynamic-capability.html) every time you change AFI/SAFI set on that session unless your vendor implemented [Multisession BGP](https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-multisession) which opens a new transport session for every AFI/SAFI combination.
+AFI/SAFI combinations are negotiated between adjacent BGP neighbors in BGP capabilities exchange, [bringing down the BGP transport session](/2021/11/bgp-dynamic-capability.html) every time you change AFI/SAFI set on that session unless your vendor implemented [Multisession BGP](https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-multisession) which opens a new transport session for every AFI/SAFI combination.
 
 In Ye Olde Days they made a sane[^SANE] assumption that the next hop for an address family would belong to the same address family (AFI):
 
@@ -56,7 +56,7 @@ Then there's EVPN. [EVPN with MPLS](https://datatracker.ietf.org/doc/html/rfc743
 
 The list goes on and on and on and on... and every time you open another RFC you realize how much you don't know.
 
-But wait, there's more. [RFC 5549](https://datatracker.ietf.org/doc/html/rfc5549) (used to implement [Cumulus unnumbered EBGP feature](https://blog.ipspace.net/2015/02/bgp-configuration-made-simple-with.html)) and its successor [RFC 8950](https://datatracker.ietf.org/doc/html/rfc8950) describe how to use IPv6 next hops for IPv4 prefixes. That obviously doesn't make much sense until you throw some serious ARP glue at the problem ([this RIPE presentation](https://ripe65.ripe.net/presentations/101-RIPE65.pdf) does a decent job of explaining the details)... unless you believe in the Power of SRv6.
+But wait, there's more. [RFC 5549](https://datatracker.ietf.org/doc/html/rfc5549) (used to implement [Cumulus unnumbered EBGP feature](/2015/02/bgp-configuration-made-simple-with.html)) and its successor [RFC 8950](https://datatracker.ietf.org/doc/html/rfc8950) describe how to use IPv6 next hops for IPv4 prefixes. That obviously doesn't make much sense until you throw some serious ARP glue at the problem ([this RIPE presentation](https://ripe65.ripe.net/presentations/101-RIPE65.pdf) does a decent job of explaining the details)... unless you believe in the Power of SRv6.
 
 SRv6 can be used to implement numerous [BGP-based overlay services](https://datatracker.ietf.org/doc/html/draft-ietf-bess-srv6-services-05), including global IPv4 and IPv6, and VPN IPv4 and IPv6 -- SRv6 proponents reinvented most everything we did in the MPLS world, the only difference being much higher overhead and more complex hardware required by SRv6[^CUST].
 

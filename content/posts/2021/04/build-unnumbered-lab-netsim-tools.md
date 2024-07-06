@@ -73,7 +73,7 @@ It works. The only glitch I encountered was the incorrect subnet mask in Arista 
 
 * OSPFv2 RFC (RFC 2328) specifies that the subnet mask in hello packets sent over unnumbered interfaces should be 0.0.0.0.
 * Arista EOS 4.25.0 sends the subnet mask used by the interface supplying the IP address -- 255.255.255.255.
-* Cisco IOS and Nexus OS [ignore the subnet mask](https://blog.ipspace.net/2008/10/ospf-ignores-subnet-mask-mismatch-on.html) and establish the adjacency.
+* Cisco IOS and Nexus OS [ignore the subnet mask](/2008/10/ospf-ignores-subnet-mask-mismatch-on.html) and establish the adjacency.
 * Junos rejects the incoming hello packets due to invalid subnet mask.
 
 A quick search found an Arista EOS support article describing the **interface unnumbered hello mask tx 0.0.0.0** configuration command that solved the problem. Mission accomplished. I also added that command to EOS OSPF configuration template, so you don't have to worry about that when deploying your labs with *netlab*.

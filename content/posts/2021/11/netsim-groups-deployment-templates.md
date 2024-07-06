@@ -6,7 +6,7 @@ tags:
 - netlab
 title: netlab Custom Groups and Deployment Templates
 ---
-Using custom templates to [test IP anycast with MPLS](https://blog.ipspace.net/2021/11/anycast-mpls.html) was fun, but as I got into interesting discussions focusing on convoluted details, I found myself going through the same set of steps too many times.
+Using custom templates to [test IP anycast with MPLS](/2021/11/anycast-mpls.html) was fun, but as I got into interesting discussions focusing on convoluted details, I found myself going through the same set of steps too many times.
 
 It started with the need to specify individual devices in `netlab config` command to create new loopback interfaces on anycast servers but not on any other device in the lab. Wouldn't it be nice to have a *group of devices* (similar to Ansible groups) that one could use in the **limit** parameter of `netlab config`?
 <!--more-->

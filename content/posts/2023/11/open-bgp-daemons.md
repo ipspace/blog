@@ -3,7 +3,7 @@ title: "Open BGP Daemons: There's So Many of Them"
 date: 2023-11-08 08:02:00
 tags: [ BGP, security ]
 ---
-A while ago, the *[Networking Notes](https://blog.computer-networking.info/)* blog published a link to my "*[Will Network Devices Reject BGP Sessions from Unknown Sources?](https://blog.ipspace.net/2023/10/reject-unknown-bgp-session.html)*" blog post with a [hint](https://blog.computer-networking.info/bgp-h3/): [use Shodan](https://www.shodan.io/search?query=port%3A179+product%3A%22BGP%22) to find how many BGP routers accept a TCP session from anyone on the Internet.
+A while ago, the *[Networking Notes](https://blog.computer-networking.info/)* blog published a link to my "*[Will Network Devices Reject BGP Sessions from Unknown Sources?](/2023/10/reject-unknown-bgp-session.html)*" blog post with a [hint](https://blog.computer-networking.info/bgp-h3/): [use Shodan](https://www.shodan.io/search?query=port%3A179+product%3A%22BGP%22) to find how many BGP routers accept a TCP session from anyone on the Internet.
 
 The results are appalling: you can open a TCP session on port 179 with over 3 million IP addresses.
 

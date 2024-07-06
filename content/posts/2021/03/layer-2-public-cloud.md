@@ -19,7 +19,7 @@ Before going into the technical details, please read the [pretty forthcoming blo
 
 I hope Oracle is not "brave" enough to let virtual network flooding ride on top of IP multicast (VMware tried and gave up), which means they have to use *source node replication*, which is a great amplification mechanism. Imagine you have 100 VMs in a virtual L2 network, and each one of them happens to be on a different hypervisor host (not unusual in environments having tens of thousands of physical servers). Every flooded packet sent by every VM is replicated 100 times. 
 
-Not a big deal if we're dealing with ARP (and they implemented ARP proxy anyway), but if someone happens to use [Microsoft NLB](https://blog.ipspace.net/2012/02/microsoft-network-load-balancing-behind.html) or something similarly stupid (remember: it's all about migrating existing \*\*\*\* into the cloud), it's going to get nasty... or maybe Oracle charges extra for replicated traffic, in which case the worst offenders might decide it's cheaper to get rid of Microsoft NLB?
+Not a big deal if we're dealing with ARP (and they implemented ARP proxy anyway), but if someone happens to use [Microsoft NLB](/2012/02/microsoft-network-load-balancing-behind.html) or something similarly stupid (remember: it's all about migrating existing \*\*\*\* into the cloud), it's going to get nasty... or maybe Oracle charges extra for replicated traffic, in which case the worst offenders might decide it's cheaper to get rid of Microsoft NLB?
 
 ### Dynamic Learning of MAC addresses
 
@@ -31,8 +31,8 @@ This top-down architecture has wonderful scaling properties:
 
 * Flow of information is mostly unidirectional and driven by API calls;
 * There's no communication between hypervisor hosts;
-* If you do it right, user API calls get translated directly into API calls toward hypervisor hosts, resulting in real-time implementation of changes (as opposed to Azure which seems to be [riding on top of eventually-available message bus](https://blog.ipspace.net/2019/06/how-microsoft-azure-orchestration.html)).
-* It's relatively easy to scale out the orchestration system using an [eventually-consistent scalable back-end database](https://blog.ipspace.net/2021/02/state-consistency-distributed-controllers.html), more so if you tie each user to a single orchestration system instance.
+* If you do it right, user API calls get translated directly into API calls toward hypervisor hosts, resulting in real-time implementation of changes (as opposed to Azure which seems to be [riding on top of eventually-available message bus](/2019/06/how-microsoft-azure-orchestration.html)).
+* It's relatively easy to scale out the orchestration system using an [eventually-consistent scalable back-end database](/2021/02/state-consistency-distributed-controllers.html), more so if you tie each user to a single orchestration system instance.
 
 Compare that to a typical Layer-2 emulation using dynamic MAC address learning with distributed control plane. EVPN might be a perfect example. 
 
@@ -40,7 +40,7 @@ Edge devices have to collect MAC addresses, report them to some central authorit
 
 You could argue that the edge devices could use API calls to register new MAC addresses, effectively turning what seems like a monstrosity into another layer of abstraction on top of the orchestration system... but that brings us straight to the next problem: how fast can you move a MAC or IP address?
 
-Alternatively, you could just forget the whole *orchestration system is king* architecture, give up and implement a layer-2 network that does nothing else but deliver frames to whoever is interested. I've heard that [worked really well for the last 50 years](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html), but it seems Oracle might have gone (at least partially) down this path with their Real Virtual Router, which is probably similar to (and as resource intensive as) AWS Transit Gateway. 
+Alternatively, you could just forget the whole *orchestration system is king* architecture, give up and implement a layer-2 network that does nothing else but deliver frames to whoever is interested. I've heard that [worked really well for the last 50 years](/2012/05/layer-2-network-is-single-failure.html), but it seems Oracle might have gone (at least partially) down this path with their Real Virtual Router, which is probably similar to (and as resource intensive as) AWS Transit Gateway. 
 
 You do know that AWS charges for transit gateway traffic, right? They do it for a reason: doing packet forwarding in a dedicated appliance sitting on top of a virtual network costs way more than doing it in the hypervisor. Just saying...
 

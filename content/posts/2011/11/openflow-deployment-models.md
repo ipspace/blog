@@ -7,7 +7,7 @@ comment: "The all-or-nothing approach to OpenFlow was quickly replaced with a mo
   \ 20 years. \n\nNot surprisingly, the traditional networking vendors quickly moved\
   \ from OpenFlow-only approach to a plethora of hybrid solutions, and even the startups\
   \ pushing OpenFlow-only model had to [distribute control plane functionality to\
-  \ make their solutions work](https://blog.ipspace.net/2015/02/big-cloud-fabric-scaling-openflow-fabric.html).\n\
+  \ make their solutions work](/2015/02/big-cloud-fabric-scaling-openflow-fabric.html).\n\
   \nPlease note that the blog post refers to OpenFlow implementations that might be\
   \ obsolete -- NEC stopped selling ProgrammableFlow, and Juniper implemented a more\
   \ traditional approach to OpenFlow than what Dave Ward was telling us in 2011.\n"
@@ -35,7 +35,7 @@ The switches are totally dumb; the controller performs all control-plane functio
 
 This model has at least two serious drawbacks even if we ignore the load placed on the controller by periodic control-plane protocols:
 
-**The switches need IP connectivity** to the controller for the OpenFlow control session. They can use out-of-band network (where OpenFlow switches appear as IP hosts), similar to the [QFabric architecture](https://blog.ipspace.net/2011/09/qfabric-part-1-hardware-architecture.html). They could also use in-band communication sufficiently isolated from the OpenFlow network to prevent misconfigurations (VLAN 1, for example), in which case they would probably have to run STP (at least in VLAN 1) to prevent bridging loops.
+**The switches need IP connectivity** to the controller for the OpenFlow control session. They can use out-of-band network (where OpenFlow switches appear as IP hosts), similar to the [QFabric architecture](/2011/09/qfabric-part-1-hardware-architecture.html). They could also use in-band communication sufficiently isolated from the OpenFlow network to prevent misconfigurations (VLAN 1, for example), in which case they would probably have to run STP (at least in VLAN 1) to prevent bridging loops.
 
 **Fast control loops** like BFD are hard to implement with a central controller, more so if you want to have very fast response time.
 

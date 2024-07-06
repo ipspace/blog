@@ -9,7 +9,7 @@ url: /2012/08/mobile-arp-in-enterprise-networks.html
 ---
 Keith sent me a set of Mobile ARP questions, starting with "*What's your view on using Mobile ARP in a large enterprise?*"
 
-**Short summary**: Mobile ARP is an [ancient technology that was designed to solve a problem that disappeared with the deployment of DHCP](https://blog.ipspace.net/2011/02/local-area-mobility-lam-true-story.html). Now, let's look at the bigger picture.
+**Short summary**: Mobile ARP is an [ancient technology that was designed to solve a problem that disappeared with the deployment of DHCP](/2011/02/local-area-mobility-lam-true-story.html). Now, let's look at the bigger picture.
 <!--more-->
 ### The Basics
 
@@ -29,7 +29,7 @@ Problems with host route scalability prompted IETF to design Mobile IP for IPv4 
 
 ### Data Centers
 
-The data center is a whole different story. Nobody can ever touch the virtualized holy cows (aka VMs) because something just might break if you install an additional bit of software on them, so the common assumption is Mobile IP is off-limits, and we're using [all sorts of kludges to allow VMs to be moved around and still retain their IP addresses](https://blog.ipspace.net/2010/09/vmotion-elephant-in-data-center-room.html).
+The data center is a whole different story. Nobody can ever touch the virtualized holy cows (aka VMs) because something just might break if you install an additional bit of software on them, so the common assumption is Mobile IP is off-limits, and we're using [all sorts of kludges to allow VMs to be moved around and still retain their IP addresses](/2010/09/vmotion-elephant-in-data-center-room.html).
 
 Hypervisors already use fake gratuitous ARP messages to indicate a VM has moved to a different location in the data center, so the Mobile ARP seems to be a perfect match. After all, the first-hop routers could use those gratuitous ARPs to discover the VM moves and change the IP forwarding tables accordingly (and there's the [Virtual Subnet IETF draft that proposes exactly that](http://tools.ietf.org/html/draft-xu-virtual-subnet-04)).
 
@@ -48,7 +48,7 @@ Cisco has yet another solution for your data center woes: [LISP for Virtual Mach
 
 LISP for VM Mobility won't pollute the core IP routing tables with VM host routes because LISP uses another layer of indirection (and IP-over-IP tunneling), but is still hasn't solved the fundamental problem: since there's no protocol between hypervisors and xTRs (LISP terminology for PE-router), LISP relies on traffic snooping to figure out a VM has moved.
 
-{{<note>}}[LISP on Nexus 1000V would be a great solution](https://blog.ipspace.net/2011/06/inter-dc-ip-based-vmotion-with-lisp.html) (because Nexus 1000V knows exactly what's going on with VMs, and could update LISP mapping database accordingly), but that code mysteriously disappeared almost two years ago.{{</note>}}
+{{<note>}}[LISP on Nexus 1000V would be a great solution](/2011/06/inter-dc-ip-based-vmotion-with-lisp.html) (because Nexus 1000V knows exactly what's going on with VMs, and could update LISP mapping database accordingly), but that code mysteriously disappeared almost two years ago.{{</note>}}
 
 ### Short summary
 

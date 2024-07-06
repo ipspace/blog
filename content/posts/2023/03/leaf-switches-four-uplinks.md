@@ -27,7 +27,7 @@ Before going into details, it's worth noting that there should be no significant
 
 The obvious exception were early Nexus 9300 switches that had Cisco-brewed magic between Broadcom ASIC and uplink ports (those switches are long gone), and you might find switches with extra MACsec hardware in that place.
 
-There might also be ASIC limitations like _you can only bundle so many lanes into uplink ports_ or _the total number of ports per ASIC is limited, so you cannot have as many ports as you have lanes_ but of course [we'll never know what they are](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html).
+There might also be ASIC limitations like _you can only bundle so many lanes into uplink ports_ or _the total number of ports per ASIC is limited, so you cannot have as many ports as you have lanes_ but of course [we'll never know what they are](/2016/05/what-are-problems-with-broadcom.html).
 
 With the modern ASICs being fast enough to get the job done, the most important factors when deciding how many ports to put on a switch (and how fast they should be) must be *physical packaging* and *what will the customers buy.*
 
@@ -35,7 +35,7 @@ For example, if your ASIC has 128 25GE lanes, and you can bundle all of them, yo
 
 Anyway, we still don't know why the old switches had four uplinks while the new ones have eight. The number of ASIC lanes hasn't changed. According to exceedingly-sparse public Broadcom documentation [Trident2](https://www.broadcom.com/products/ethernet-connectivity/switching/strataxgs/bcm56850-series) had 128 10GE lanes, and most switches used just 64 of them (48 x 10GE ports, 4 x 40GE ports). [Trident3](https://www.broadcom.com/products/ethernet-connectivity/switching/strataxgs/bcm56870-series) has 128 25GE lanes, and most switches use 80 of them (48 x 25GE ports, 8 x 100GE ports @ 4 lanes).
 
-It could be that it became cheaper to add high-speed ports (not transceivers), so it doesn't hurt to have switches with more uplinks addressing the needs of customers requiring lower oversubscription ratios. It could also be that the true limiting factor was the packet-per-second performance -- when using all lanes, the [forwarding performance of small packets](https://blog.ipspace.net/2021/02/importance-switching-small-packets.html) would be way below the advertised bandwidth figure. Or maybe Broadcom made different versions of Trident2 ASICs (like they do with Trident3) without ever telling us about them, and the switches with four uplinks used cheaper versions of Trident2 ASIC.
+It could be that it became cheaper to add high-speed ports (not transceivers), so it doesn't hurt to have switches with more uplinks addressing the needs of customers requiring lower oversubscription ratios. It could also be that the true limiting factor was the packet-per-second performance -- when using all lanes, the [forwarding performance of small packets](/2021/02/importance-switching-small-packets.html) would be way below the advertised bandwidth figure. Or maybe Broadcom made different versions of Trident2 ASICs (like they do with Trident3) without ever telling us about them, and the switches with four uplinks used cheaper versions of Trident2 ASIC.
 
 Your guess is as good as mine -- comments highly appreciated ;)
 

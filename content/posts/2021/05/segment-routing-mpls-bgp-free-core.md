@@ -9,7 +9,7 @@ tags:
 - MPLS
 title: BGP-Free MPLS Core with Segment Routing
 ---
-After I [created the Segment Routing lab](/2021/05/segment-routing-ids-mpls-labels.html) to test the relationship between Node Segment ID (SID) and MPLS labels, I was just a minor step away from testing [BGP-free core](https://blog.ipspace.net/2012/01/bgp-free-service-provider-core-in.html) with [SR-MPLS](https://blog.ipspace.net/2011/11/ldp-igp-synchronization-in-mpls.html).
+After I [created the Segment Routing lab](/2021/05/segment-routing-ids-mpls-labels.html) to test the relationship between Node Segment ID (SID) and MPLS labels, I was just a minor step away from testing [BGP-free core](/2012/01/bgp-free-service-provider-core-in.html) with [SR-MPLS](/2011/11/ldp-igp-synchronization-in-mpls.html).
 
 I added two nodes to my lab setup, this time [using IOSv](https://github.com/ipspace/netlab-examples/blob/master/routing/sr-mpls-bgp/sr%2Bbgp.yml) as those nodes need nothing more than EBGP support (and IOSv is tiny compared to IOS XE on CSR):
 <!--more-->
@@ -88,4 +88,4 @@ You might find these webinars useful:
 * [MPLS Essentials](https://www.ipspace.net/MPLS_Essentials)
 * [How Networks Really Work](https://www.ipspace.net/How_Networks_Really_Work)
 
-[^1]: See also: [RIBs and FIBs](https://blog.ipspace.net/2010/09/ribs-and-fibs.html) and [Management, Control, and Data Planes in Network Devices and Systems](https://blog.ipspace.net/2013/08/management-control-and-data-planes-in.html)
+[^1]: See also: [RIBs and FIBs](/2010/09/ribs-and-fibs.html) and [Management, Control, and Data Planes in Network Devices and Systems](/2013/08/management-control-and-data-planes-in.html)

@@ -16,7 +16,7 @@ Imagine an access router with multiple uplinks serving a bunch of non-redundantl
 
 {{<figure src="/2021/09/GR-access-router.png" caption="Non-redundant access network">}}
 <!--more-->
-Graceful Restart solves routing protocol issues on the router-to-router links. It does not address the lack of other control plane protocols during the device restart period. The situation is functionally identical to controller failure in an OpenFlow network, so you might want to read the *[Impact of Controller Failures in Software-Defined Networks](https://blog.ipspace.net/2019/06/impact-of-controller-failures-in.html)* blog post first and follow the links.
+Graceful Restart solves routing protocol issues on the router-to-router links. It does not address the lack of other control plane protocols during the device restart period. The situation is functionally identical to controller failure in an OpenFlow network, so you might want to read the *[Impact of Controller Failures in Software-Defined Networks](/2019/06/impact-of-controller-failures-in.html)* blog post first and follow the links.
  
 To make a long story short:
 

@@ -7,7 +7,7 @@ tags:
 title: Embrace the Change ... Resistance Is Futile ;)
 url: /2012/02/embrace-change-resistance-is-futile.html
 ---
-After all the [laws-of-physics-are-changing hype](https://blog.ipspace.net/2011/03/open-networking-foundation-fabric.html) it must have been anticlimactic for a lot of people to realize what Nicira is doing (although [I've been telling you that for months](https://blog.ipspace.net/2011/10/what-is-nicira-really-up-to.html)). Not surprisingly, there were the usual complaints and twitterbursts:
+After all the [laws-of-physics-are-changing hype](/2011/03/open-networking-foundation-fabric.html) it must have been anticlimactic for a lot of people to realize what Nicira is doing (although [I've been telling you that for months](/2011/10/what-is-nicira-really-up-to.html)). Not surprisingly, there were the usual complaints and twitterbursts:
 <!--more-->
 -   It's just an overlay solution;
 -   It's yet another tunneling protocol;
@@ -23,7 +23,7 @@ All of these complaints have merits \... and I've heard them at least three or f
 
 {{<note>}}Interestingly I don't remember a huge outcry when we started using IPsec to build private networks over the Internet \... maybe the immediate cost savings made everyone forget we were actually building tunnels with no QoS.{{</note>}}
 
-Anyhow, we've proven time and again in the last 20+ years that the only way to scale a networking solution is to [push the complexity to the edge](https://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html) and to decouple edge from the core (in case of virtual networks, [decouple them from the physical ones](https://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html)).
+Anyhow, we've proven time and again in the last 20+ years that the only way to scale a networking solution is to [push the complexity to the edge](/2011/05/complexity-belongs-to-network-edge.html) and to decouple edge from the core (in case of virtual networks, [decouple them from the physical ones](/2011/12/decouple-virtual-networking-from.html)).
 
 Assuming one could design the whole protocol stack from scratch, one could do a proper job of eliminating all the redundancies. Given the fact that the only ubiquitous transport we have today is IP, and that you can't expect the equipment vendors to invest into anything else but Ethernet+IP in the foreseeable future, the only logical conclusion is to use IP as the transport for your virtual networking data \... like any other application is doing these days. It obviously works well enough for Amazon.
 
@@ -36,6 +36,6 @@ However, I'm positive that the only way to build scalable virtual networks is to
 -   [Split hypervisor host addressing (which is visible in the core) from VM addressing](http://networkheresy.wordpress.com/2012/01/15/networking-needs-a-vmware-part-1-address-virtualization/) (which is only visible to hypervisors);
 -   Use simple routed core transport which allows the edge (hypervisor) addresses to be aggregated for scalability;
 -   Remove all VM-related state from the transport core;
--   Use [proper control plane](https://blog.ipspace.net/2011/12/vxlan-ip-multicast-openflow-and-control.html) that will minimize the impact of stupidities we have to deal with if we have to build L2 virtual networks.
+-   Use [proper control plane](/2011/12/vxlan-ip-multicast-openflow-and-control.html) that will minimize the impact of stupidities we have to deal with if we have to build L2 virtual networks.
 
-But, as always, this is just my personal opinion, and I\'m known to be biased toward things that [work in reality not in PowerPoint](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html).
+But, as always, this is just my personal opinion, and I\'m known to be biased toward things that [work in reality not in PowerPoint](/2011/09/long-distance-irf-fabric-works-best-in.html).

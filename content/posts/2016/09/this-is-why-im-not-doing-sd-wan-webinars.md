@@ -14,7 +14,7 @@ One of my long-time regular readers sent me this question:
 
 That would be a good idea. Unfortunately the SD-WAN vendors aren't exactly helping.
 <!--more-->
-One of rules I use in the Data Center Fabrics webinar is "*talk about features, not futures*" where *features* are defined as "*things described in* [*product documentation*](https://blog.ipspace.net/2015/10/we-need-product-documentation-not-just.html) *on public vendor web site*". This is the list of SD-WAN vendors that would meet the requirements:
+One of rules I use in the Data Center Fabrics webinar is "*talk about features, not futures*" where *features* are defined as "*things described in* [*product documentation*](/2015/10/we-need-product-documentation-not-just.html) *on public vendor web site*". This is the list of SD-WAN vendors that would meet the requirements:
 
 -   [Cisco IWAN](http://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/Feb2016/CVD-IWANDesignGuide-FEB16.pdf)
 -   [Silver Peak Unity](https://www.silver-peak.com/support/user-documentation)

@@ -19,7 +19,7 @@ If one would try to group data center fabrics based on their size, one might get
 
 * Hyperscalers. They're doing whatever it is they're doing. Some of them are silent (AWS), and others boast how smart they are (Google), even though whatever they're doing is irrelevant to almost everyone.
 * Large IP fabrics (including content providers and non-VMware public clouds). They're running some subset of OSPF/IS-IS/IBGP/EBGP. Of course, you can use that on any mix of vendor boxes; that's how we run the global Internet. 
-* Enterprise data centers. Most don't need more than [two switches](https://www.ipspace.net/Optimize_Data_Center_Infrastructure/) per site. Few organizations need more than a single leaf-and-spine fabric with four ([or six or eight](https://blog.ipspace.net/2023/03/leaf-switches-four-uplinks.html)) spines.
+* Enterprise data centers. Most don't need more than [two switches](https://www.ipspace.net/Optimize_Data_Center_Infrastructure/) per site. Few organizations need more than a single leaf-and-spine fabric with four ([or six or eight](/2023/03/leaf-switches-four-uplinks.html)) spines.
 
 Building a single enterprise data center fabric with switches from multiple vendors is thus primarily an exercise in futility – the operational costs of dealing with multiple operating systems, vendor support centers, and tooling quirks probably outweigh the acquisition savings.
 
@@ -30,7 +30,7 @@ As always, there are exceptions:
 * You must import the boxes and pay them with hard-to-get "hard currency." Unfortunately, I was there decades ago, and it makes you incredibly "creative."
 * You're boosting your resume.
 
-However, please keep in mind that most people searching for information on the public Internet belong to the "two switches" or "small fabric" crowds. As Jeff [wrote](https://blog.ipspace.net/2024/03/multivendor-evpn-revisited.html#2123) in a comment to my [Rant: Multi-Vendor EVPN Fabrics](https://blog.ipspace.net/2024/03/multivendor-evpn-revisited.html) blog post:
+However, please keep in mind that most people searching for information on the public Internet belong to the "two switches" or "small fabric" crowds. As Jeff [wrote](/2024/03/multivendor-evpn-revisited.html#2123) in a comment to my [Rant: Multi-Vendor EVPN Fabrics](/2024/03/multivendor-evpn-revisited.html) blog post:
 
 > Average company is blessed beyond their wildest dreams to find an engineer who understands what a BPDU is and that bridging loops are bad. L2oL3, MP-BGP AFIs, ESIs, VTEPs....not supportable by 99% of the wild. All just pushing the needle on sales. 4k VLAN limit isn't a valid argument in the 99% either.
 

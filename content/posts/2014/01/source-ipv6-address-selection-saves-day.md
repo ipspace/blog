@@ -5,14 +5,14 @@ tags:
 title: Source IPv6 Address Selection Saves the Day
 url: /2014/01/source-ipv6-address-selection-saves-day.html
 ---
-My recommendation to use [ULA addresses for internal communications](https://blog.ipspace.net/2014/01/i-say-ula-you-hear-nat.html) within [organizations that don't have their own provider-independent address space](http://blog.ipspace.net/2013/09/to-ula-or-not-to-ula-thats-question.html) resulted in the following comment:
+My recommendation to use [ULA addresses for internal communications](/2014/01/i-say-ula-you-hear-nat.html) within [organizations that don't have their own provider-independent address space](/2013/09/to-ula-or-not-to-ula-thats-question.html) resulted in the following comment:
 
 > \[...\] Having ULA for internal company communication and global IPv6 addresses for communication with the Internet will cause lots of issues with application guys since now application has to bind to specific IPv6 address for internal communications and another IPv6 address to go to the Internet.
 
-Numerous aspects of IPv6 [may still be broken](https://blog.ipspace.net/2011/12/ipv6-multihoming-without-nat-problem.html), but fortunately this is not one of them.
+Numerous aspects of IPv6 [may still be broken](/2011/12/ipv6-multihoming-without-nat-problem.html), but fortunately this is not one of them.
 
 {{<note warn>}}
-I missed a crucial detail: because RFC 6724 prefers IPv4 addresses over ULA addresses, [impossible to use ULA addresses](https://blog.ipspace.net/2022/05/ipv6-ula-made-useless.html) in dual-stack networks. Even this aspect of IPv6 is broken :(
+I missed a crucial detail: because RFC 6724 prefers IPv4 addresses over ULA addresses, [impossible to use ULA addresses](/2022/05/ipv6-ula-made-useless.html) in dual-stack networks. Even this aspect of IPv6 is broken :(
 {{</note>}}
 <!--more-->
 ### Client-Side Behavior

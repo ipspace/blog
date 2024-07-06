@@ -32,6 +32,6 @@ Even outside of that particular use case, using segment routing functionality to
 
 IPv6 Segment Routing is another story. It replaced the abhorred (and now [deprecated](https://tools.ietf.org/html/rfc5095)... because nothing ever dies in IETF) RH0 with something else, but it's still source routing using extension headers... and [very few hardware platforms](https://tools.ietf.org/id/draft-filsfils-spring-srv6-interop-00.html) support it (all of them with special engineering code).
 
-The whole IPv6 SR saga seems like another [LISP exercise](https://blog.ipspace.net/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html) to me - we have a technology we invested a lot of money in, let's find a problem it could solve. Look, here's another one...
+The whole IPv6 SR saga seems like another [LISP exercise](/2017/09/why-is-cisco-pushing-lisp-in-enterprise.html) to me - we have a technology we invested a lot of money in, let's find a problem it could solve. Look, here's another one...
 
 Am I wrong? Is someone using IPv6 SR in (anywhere close to) production?

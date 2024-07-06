@@ -14,7 +14,7 @@ tags:
 title: Implications of Valley-Free Routing in Data Center Fabrics
 url: /2018/09/implications-of-valley-free-routing-in.html
 ---
-As I explained in a [previous blog post](https://blog.ipspace.net/2018/09/valley-free-routing-in-data-center.html), most leaf-and-spine best-practices (as in: what to do if you have no clue) use [BGP as the IGP routing protocol](https://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol) ([regardless of whether it’s needed](https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html)) with the [same AS number shared across all spine switches](https://www.ipspace.net/Data_Center_BGP/Autonomous_Systems_and_AS_Numbers) to implement valley-free routing.
+As I explained in a [previous blog post](/2018/09/valley-free-routing-in-data-center.html), most leaf-and-spine best-practices (as in: what to do if you have no clue) use [BGP as the IGP routing protocol](https://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol) ([regardless of whether it’s needed](/2018/05/is-ospf-or-is-is-good-enough-for-my.html)) with the [same AS number shared across all spine switches](https://www.ipspace.net/Data_Center_BGP/Autonomous_Systems_and_AS_Numbers) to implement valley-free routing.
 
 This design has an interesting consequence: when a link between a leaf and a spine switch fails, they can no longer communicate.
 <!--more-->
@@ -34,7 +34,7 @@ Guess what happens after the L1-C1 link failure: the EVPN session between loopba
 
 {{<figure src="/2018/09/s550-VF_EVPN_Failure.png" caption="EVPN session failure following a link loss">}}
 
-**Inevitable conclusion**: all the [grand posturing](https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html) explaining how EVPN sessions between loopback interfaces running on top of underlay EBGP are so much better than EVPN running as an additional address family on the directly-connected EBGP session *in a typical data center leaf-and-spine fabric* is plain *merde* (pardon my French).
+**Inevitable conclusion**: all the [grand posturing](/2020/02/the-evpnbgp-saga-continues.html) explaining how EVPN sessions between loopback interfaces running on top of underlay EBGP are so much better than EVPN running as an additional address family on the directly-connected EBGP session *in a typical data center leaf-and-spine fabric* is plain *merde* (pardon my French).
 
 Even worse, I’ve seen a vendor-produced design that used:
 
@@ -42,7 +42,7 @@ Even worse, I’ve seen a vendor-produced design that used:
 -   IBGP EVPN sessions between loopback interfaces of leaf and spine switches;
 -   Different AS numbers on spine switches to make it all work, turning underlay EBGP into a TCP version of RIPv2 using AS path length as the hop count.
 
-As I said years ago: [the road to broken design is paved with great recipes](https://blog.ipspace.net/2011/08/road-to-complex-designs-is-paved-with.html).
+As I said years ago: [the road to broken design is paved with great recipes](/2011/08/road-to-complex-designs-is-paved-with.html).
 
 **Lesson learned**: whenever evaluating a design, consider all possible failure scenarios.
 

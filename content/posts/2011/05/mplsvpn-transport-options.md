@@ -7,7 +7,7 @@ tags:
 title: MPLS/VPN Transport Options
 url: /2011/05/mplsvpn-transport-options.html
 ---
-Jason sent me an interesting question a few days ago: "*assuming a* [*vSwitch \*did\* support MPLS/VPN PE router functionality*](https://blog.ipspace.net/2011/04/vcloud-architects-ever-heard-of-mpls.html)*, what type of protocol support would be needed on the access layer switches?*"
+Jason sent me an interesting question a few days ago: "*assuming a* [*vSwitch \*did\* support MPLS/VPN PE router functionality*](/2011/04/vcloud-architects-ever-heard-of-mpls.html)*, what type of protocol support would be needed on the access layer switches?*"
 
 While the MPLS/VPN support in hypervisor switches remains in the realm of science fiction, it's worth knowing that there are at least five different transport options you can use between PE-routers. Here they are, from the most decoupled to the most tightly coupled ones:
 <!--more-->

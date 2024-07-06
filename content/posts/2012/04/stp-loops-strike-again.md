@@ -32,7 +32,7 @@ Fortunately, the [Cisco documentation explaining the problem](http://www.cisco.c
 
 **The problem?** Looped ports won't shut down until a BPDU packet is sent through one of them, and a single broadcast (for example, ARP packet) sent in that interval can cause a network meltdown.
 
-**The solution?** Vasilis found a solution similar to those proposed in comments to my [*Preventing Bridging Loops Without STP*](https://blog.ipspace.net/2012/01/prevent-bridging-loops-without-bpdus.html) post: use **switchport port-security** and limit the number of MAC addresses accepted on the switch port.
+**The solution?** Vasilis found a solution similar to those proposed in comments to my [*Preventing Bridging Loops Without STP*](/2012/01/prevent-bridging-loops-without-bpdus.html) post: use **switchport port-security** and limit the number of MAC addresses accepted on the switch port.
 
 Unfortunately, this solution works primarily in campus environments; you cannot use it in virtualized data centers with moving VMs as you can never predict how many VMs (and MAC addresses) will reside within a physical server.
 

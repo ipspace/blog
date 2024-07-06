@@ -94,7 +94,7 @@ Well, as always there's an ugly workaround -- you can use [NVUE snippets](https:
 
 [^OTF]: ... or any other text file if you like editing files through REST API
 
-[^CNC]: [Other vendors aren't much better](https://blog.ipspace.net/2018/01/use-yang-data-models-to-configure.html)
+[^CNC]: [Other vendors aren't much better](/2018/01/use-yang-data-models-to-configure.html)
 
 [^NXOS]: The whole thing reminds me of early NETCONF on Cisco Nexus OS that produced **show** printout in text format... but nicely wrapped in XML envelope.
 

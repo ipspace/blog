@@ -16,7 +16,7 @@ url: /2016/09/why-would-i-use-bgp-and-not-ospf.html
 ---
 While we were preparing for the Cumulus Networks' [Routing on Hosts](https://vimeo.com/171631723) webinar [Dinesh Dutt](https://www.linkedin.com/in/ddutt) sent me a message along these lines:
 
-> You categorically reject the use of OSPF, but we have a couple of customers using it quite happily. I'm sure you have [good reasons](https://blog.ipspace.net/2013/08/virtual-appliance-routing-network.html), and the reasons you list [in the presentation] are ones I agree with. OTOH, why not use totally stubby areas with hosts in such an area?
+> You categorically reject the use of OSPF, but we have a couple of customers using it quite happily. I'm sure you have [good reasons](/2013/08/virtual-appliance-routing-network.html), and the reasons you list [in the presentation] are ones I agree with. OTOH, why not use totally stubby areas with hosts in such an area?
 
 How about:
 <!--more-->

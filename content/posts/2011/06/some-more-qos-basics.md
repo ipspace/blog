@@ -20,7 +20,7 @@ There's no way around *classifying* the packets into different groups if you wan
 
 *Shaping* combines three activities: metering the traffic (identical to policing), queuing the excess traffic and releasing the queued traffic based on token bucket algorithm. The queuing part of shaping obviously happens only if the amount of traffic exceeds the configured capacity as measured by the token bucket algorithm, which allows some short-term bursts.
 
-You might want to read my [traffic shaping](/kb/tag/QoS/Traffic_Shaping.html) article for more details. Also note that the [Hierarchical Queuing Framework](https://blog.ipspace.net/2009/11/first-hqf-impressions-excellent-job.html) dramatically improved the Cisco IOS shaping behavior -- packets are now released from the shaping queues at regular intervals, not in bucket-size bursts as before.
+You might want to read my [traffic shaping](/kb/tag/QoS/Traffic_Shaping.html) article for more details. Also note that the [Hierarchical Queuing Framework](/2009/11/first-hqf-impressions-excellent-job.html) dramatically improved the Cisco IOS shaping behavior -- packets are now released from the shaping queues at regular intervals, not in bucket-size bursts as before.
 
 *Dropping* could happen as part of policing (see above) or as part of congestion-avoidance mechanisms like Weighted Random Early Drop (WRED). WRED starts dropping random packets (in small quantities) only when the output queue gets long enough. The default dropping threshold depends on interface type and bandwidth; usually the interface has to experience significant bursts or sustained congestion for WRED to kick in.
 

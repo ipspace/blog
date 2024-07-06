@@ -6,7 +6,7 @@ tags:
 title: Reload a Router When Ping Fails
 url: /2007/04/reload-router-when-ping-fails.html
 ---
-One of my readers has [asked an interesting question](https://blog.ipspace.net/2007/01/youve-asked-for-it-series.html): can you reload a router when pinging a specific IP address from it fails? While there are other ways of dealing with stuck interfaces or routing processes, sometimes such a drastic measure is the only workaround, so here\'s how you do it:
+One of my readers has [asked an interesting question](/2007/01/youve-asked-for-it-series.html): can you reload a router when pinging a specific IP address from it fails? While there are other ways of dealing with stuck interfaces or routing processes, sometimes such a drastic measure is the only workaround, so here\'s how you do it:
 <!--more-->
 -   Configure an IP SLA measurement. You might want to use the **after** parameter in the **ip sla schedule** command to ensure the router does not get reloaded immediately after the startup due to IP routing table not being populated.
 -   Configure a tracked object based on the IP SLA measurement with the **track *object-id* rtr *sla-id* reachability** command

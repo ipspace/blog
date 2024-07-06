@@ -11,7 +11,7 @@ In my home office, I\'m using DSL access to the Internet with ISDN backup to ano
 
 {{<figure src="/2007/11/homeSetup.jpg">}}
 
-Obviously, I would like the ISDN backup to kick in whenever the primary connection goes down; two static default routes and [reliable static routing on the primary default](https://blog.ipspace.net/2007/02/reliable-static-routing.html) seem like a perfect solution.
+Obviously, I would like the ISDN backup to kick in whenever the primary connection goes down; two static default routes and [reliable static routing on the primary default](/2007/02/reliable-static-routing.html) seem like a perfect solution.
 <!--more-->
 However, as I\'m using PPP encapsulation on the primary connection, there\'s another option: PPP can insert a dynamic default route whenever IPCP negotiations succeed (and remove it when the line protocol goes down). To configure this feature (introduced in IOS releases 12.3(11)T and 12.4), use the **ppp ipcp route default** interface configuration command on the primary dialer interface.
 
@@ -27,4 +27,4 @@ C 192.168.0.0 is directly connected, FastEthernet0/0
 S* 0.0.0.0/0 [1/0] via 10.0.0.33
 ```
 
-Contrary to the [DHCP-installed default route](https://blog.ipspace.net/2007/06/dhcp-response-sets-default-route.html), the PPP-installed default route has administrative distance 1 (and is thus impossible to override)
+Contrary to the [DHCP-installed default route](/2007/06/dhcp-response-sets-default-route.html), the PPP-installed default route has administrative distance 1 (and is thus impossible to override)

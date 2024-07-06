@@ -102,13 +102,13 @@ We waited long enough to get them. I don't want to wait another decade for the v
 
 **Pass:** Junos, Arista EOS (OpenConfig), Nexus OS (OpenConfig), IOS XE (IETF), IOS XR (OpenConfig)
 
-**Warning:** While most vendors support some industry standard, always [check out](https://github.com/ctopher78/network-automation-course/tree/master/Homework3) what can be [configured through the standard models](https://blog.ipspace.net/2018/01/use-yang-data-models-to-configure.html).
+**Warning:** While most vendors support some industry standard, always [check out](https://github.com/ctopher78/network-automation-course/tree/master/Homework3) what can be [configured through the standard models](/2018/01/use-yang-data-models-to-configure.html).
 
 {{<note info>}}The benefits of industry-standard data models are described in [module 3 (Data Models)](http://automation.ipspace.net/Public:Description#Data_Models) of [Building Network Automation Solutions](http://www.ipspace.net/Building_Network_Automation_Solutions) online course.{{</note>}}
 
 ### Feature Parity
 
-Paraphrasing [Ron Broersma](https://blog.ipspace.net/2016/07/cutting-through-ipv6-requirements-red.html): *All functionality requested in the RFP must be fully supported by the device API and meet the above requirements*.
+Paraphrasing [Ron Broersma](/2016/07/cutting-through-ipv6-requirements-red.html): *All functionality requested in the RFP must be fully supported by the device API and meet the above requirements*.
 
 ### Anything Else?
 

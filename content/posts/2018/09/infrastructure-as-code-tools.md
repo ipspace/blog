@@ -8,9 +8,9 @@ url: /2018/09/infrastructure-as-code-tools.html
 series: [ niac ]
 niac_tag: implement
 ---
-*This is the fourth blog post in "thinking out loud while preparing Network Infrastructure as Code presentation for the [network automation course](https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog)" series. Previous posts: [Network-Infrastructure-as-Code Is Nothing New](https://blog.ipspace.net/2018/09/network-infrastructure-as-code-is.html), [Adjusting System State](https://blog.ipspace.net/2018/09/adjusting-system-state-with.html) and [NETCONF versus REST API](https://blog.ipspace.net/2018/09/infrastructure-as-code-netconf-and-rest.html).*
+*This is the fourth blog post in "thinking out loud while preparing Network Infrastructure as Code presentation for the [network automation course](https://www.ipspace.net/Building_Network_Automation_Solutions?utm_source=blog)" series. Previous posts: [Network-Infrastructure-as-Code Is Nothing New](/2018/09/network-infrastructure-as-code-is.html), [Adjusting System State](/2018/09/adjusting-system-state-with.html) and [NETCONF versus REST API](/2018/09/infrastructure-as-code-netconf-and-rest.html).*
 
-[Dmitri Kalintsev](https://telecomoccasionally.wordpress.com/about/) sent me a nice description on how some popular Infrastructure-as-Code (IaC) tools solve the challenges I described in *The CRUD Hell* section of [Infrastructure-as-Code, NETCONF and REST API](https://blog.ipspace.net/2018/09/infrastructure-as-code-netconf-and-rest.html) blog post:
+[Dmitri Kalintsev](https://telecomoccasionally.wordpress.com/about/) sent me a nice description on how some popular Infrastructure-as-Code (IaC) tools solve the challenges I described in *The CRUD Hell* section of [Infrastructure-as-Code, NETCONF and REST API](/2018/09/infrastructure-as-code-netconf-and-rest.html) blog post:
 <!--more-->
 > The CRUD hell you\'re describing only applies to the configuration management tools that were bent out of shape to pretend being an infrastructure-as-code tool.
 

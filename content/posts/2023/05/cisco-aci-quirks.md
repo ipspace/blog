@@ -3,7 +3,7 @@ title: "Dealing with Cisco ACI Quirks"
 date: 2023-05-23 06:36:00
 tags: [ fabric, ACI ]
 ---
-Sebastian described an [interesting Cisco ACI quirk](https://blog.ipspace.net/2023/04/evpn-dynamic-mac-learning.html#1790) they had the privilege of chasing around:
+Sebastian described an [interesting Cisco ACI quirk](/2023/04/evpn-dynamic-mac-learning.html#1790) they had the privilege of chasing around:
 
 > We've encountered VM connectivity issues after VM movements from one vPC leaf pair to a different vPC leaf pair with ACI. The issue did not occur immediately (due to ACI's bounce entries) and only sometimes, which made it very difficult to reproduce synthetically, but due to DRS and a large number of VMs it occurred frequently enough, that it was a serious problem for us.
 
@@ -11,7 +11,7 @@ Here's what they figured out:
 <!--more-->
 > The problem was, that sometimes the COOP database entry (ACI's separate control plane for MACs and host addresses) was not updated correctly to point to the new leaf pair.
 
-That definitely sounds like a bug, and Erik [mentioned in a later comment that it was probably fixed in the meantime](https://blog.ipspace.net/2023/04/evpn-dynamic-mac-learning.html#1799). However, the fun part was that things worked for almost 10 minutes after the VM migration:
+That definitely sounds like a bug, and Erik [mentioned in a later comment that it was probably fixed in the meantime](/2023/04/evpn-dynamic-mac-learning.html#1799). However, the fun part was that things worked for almost 10 minutes after the VM migration:
 
 > After the bounce entry on the old leaf pair expired (630 seconds by default), traffic to the VM was mostly blackholed, since remote endpoint learning is disabled on border leafs and always forwarded to the spines underlay IP address for proxying.
 
@@ -21,7 +21,7 @@ A *bounce entry* seems to be something like MPLS/VPN PIC Edge -- the original sw
 * Other fabric members haven't realized that yet.
 * The interim state persists long enough to be worth the extra effort.
 
-{{<note>}}On a tangential note, now I understand why Cisco had to build Network Assurance Engine -- a reassuringly expensive software solution that seemed to have one job when we [first heard about it during Cisco Live Europe 2018](https://blog.ipspace.net/2018/02/brief-recap-tech-field-day-at-cisco.html): making sure an ACI fabric works as expected.{{</note>}}
+{{<note>}}On a tangential note, now I understand why Cisco had to build Network Assurance Engine -- a reassuringly expensive software solution that seemed to have one job when we [first heard about it during Cisco Live Europe 2018](/2018/02/brief-recap-tech-field-day-at-cisco.html): making sure an ACI fabric works as expected.{{</note>}}
 
 Anyway, the organization facing that problem decided to "solve" it by limiting VM migration to a single vPC pair:
 

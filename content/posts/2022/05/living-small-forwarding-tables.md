@@ -47,7 +47,7 @@ Here's another idea from the MacGyver & Co:
 * Now assume that one of the ISPs is the transit ISP, and use a default route toward it. Bonus points if the default points to 1.1.1.1 or 8.8.8.8 to cope with ISP's bad hair day[^HIST]
 * Once you have a more-specific and a less-specific prefix *pointing to the same next hop* in your routing table, you don't have to install the more-specific prefix in the hardware FIB[^CAVEAT]
 
-Obviously you're trading FIB size for convergence time. For example, you cannot use [Prefix Independent Convergence](https://blog.ipspace.net/2012/01/prefix-independent-convergence-pic.html). You could also get into a situation where a particular failure scenario explodes the hardware FIB size beyond its capabilities. An example might be the primary ISP losing most of the DFZ BGP table while still announcing prefix toward the IP address you use as the next hop of the default route.
+Obviously you're trading FIB size for convergence time. For example, you cannot use [Prefix Independent Convergence](/2012/01/prefix-independent-convergence-pic.html). You could also get into a situation where a particular failure scenario explodes the hardware FIB size beyond its capabilities. An example might be the primary ISP losing most of the DFZ BGP table while still announcing prefix toward the IP address you use as the next hop of the default route.
 
 ### Selective Route Download
 
@@ -74,11 +74,11 @@ The *selective route download*[^SRD] functionality is available in (at least) Ar
 
 For more details: 
 
-* Listen to the [SDN Router @ Spotify](https://blog.ipspace.net/2015/01/sdn-router-spotify-on-software-gone-wild.html) chat with David Barroso, and follow the related links.
-* In a [follow-up episode](https://blog.ipspace.net/2015/10/sdn-internet-router-is-in-production-on.html), David described the operational experience (spoiler : it turned out in most cases they didn't have a problem at all).
+* Listen to the [SDN Router @ Spotify](/2015/01/sdn-router-spotify-on-software-gone-wild.html) chat with David Barroso, and follow the related links.
+* In a [follow-up episode](/2015/10/sdn-internet-router-is-in-production-on.html), David described the operational experience (spoiler : it turned out in most cases they didn't have a problem at all).
 * I also covered the idea in the _[SDN Use Cases](https://www.ipspace.net/SDN_Use_Cases)_ webinar.
 
-[^HIST]: I wrote a ton of blog posts [dealing with similar scenarios](https://blog.ipspace.net/2007/11/bgp-default-route.html) ages ago. Search for [BGP blog posts](https://blog.ipspace.net/tag/bgp.html) written between 2006 and 2010.
+[^HIST]: I wrote a ton of blog posts [dealing with similar scenarios](/2007/11/bgp-default-route.html) ages ago. Search for [BGP blog posts](/tag/bgp.html) written between 2006 and 2010.
 
 [^CAVEAT]: With a few caveats left for the reader to figure out. You could cheat and use [RFC 6769](https://www.rfc-editor.org/rfc/rfc6769.html) as an inspiration.
 

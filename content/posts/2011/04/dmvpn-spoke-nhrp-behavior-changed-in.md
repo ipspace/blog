@@ -59,4 +59,4 @@ As you can see, the expiration time of the fake NHRP entry is 3 minutes, while t
 
 ### Is This a Problem?
 
-Yes it is; it's a huge problem in some redundant network designs. [Read this blog post](https://blog.ipspace.net/2013/04/the-impact-of-changed-nhrp-behavior-in.html) for more details; they are also explained in my [DMVPN webinars](http://www.ipspace.net/DMVPN_trilogy).
+Yes it is; it's a huge problem in some redundant network designs. [Read this blog post](/2013/04/the-impact-of-changed-nhrp-behavior-in.html) for more details; they are also explained in my [DMVPN webinars](http://www.ipspace.net/DMVPN_trilogy).

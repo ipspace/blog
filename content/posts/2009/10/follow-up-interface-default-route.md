@@ -6,7 +6,7 @@ tags:
 title: 'Follow-up: Interface Default Route'
 url: /2009/10/follow-up-interface-default-route.html
 ---
-Judging by your comments, some of you have already faced a stupidity [similar to the one I've described on Friday](https://blog.ipspace.net/2009/10/my-stupid-moments-interface-default.html). The symptoms are well described in the comments: the CPU utilization of the ARP process increases, packet forwarding becomes sluggish and the router runs out of memory, potentially resulting in a router crash. Now let's analyze what's going on.
+Judging by your comments, some of you have already faced a stupidity [similar to the one I've described on Friday](/2009/10/my-stupid-moments-interface-default.html). The symptoms are well described in the comments: the CPU utilization of the ARP process increases, packet forwarding becomes sluggish and the router runs out of memory, potentially resulting in a router crash. Now let's analyze what's going on.
 <!--more-->
 **What's wrong:** A static default route (without an IP next hop) pointing to an interface indicates that the rest of the Internet is directly connected to that interface as a single flat network. Every destination address is reachable directly through that interface.
 
@@ -18,4 +18,4 @@ On a multi-access interface, the router has to match the destination IP address 
 
 **Why is the packet forwarding so sluggish:** If you're not using CEF switching, the router falls back to process switching for every next-hop address that is not yet available in the ARP cache. The first few packets toward any new destination address on the Internet are therefore process switched.
 
-**Why is the router running out of memory:** The ARP cache is not supposed to grow indefinitely. Cisco IOS has no mechanism that would limit its size, it's flushing the ARP cache only when its entries age out (and even that is [never going to happen if you use CEF](https://blog.ipspace.net/2007/06/ar.html)).
+**Why is the router running out of memory:** The ARP cache is not supposed to grow indefinitely. Cisco IOS has no mechanism that would limit its size, it's flushing the ARP cache only when its entries age out (and even that is [never going to happen if you use CEF](/2007/06/ar.html)).

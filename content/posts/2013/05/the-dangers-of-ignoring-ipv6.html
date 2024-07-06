@@ -5,12 +5,12 @@ date: "2013-05-22T06:45:00.000+02:00"
 tags: [ IPv6,security ]
 ---
 
-<p>I was sitting next to a really nice security engineer during the fantastic dinner-in-a-wine-cellar @ <a href="https://blog.ipspace.net/2013/05/troopers-13-must-visit-security.html">Troopers 13</a> and as we started talking about security implications of ignoring IPv6, I was quickly able to persuade him that it's dangerous to pretend IPv6 doesn't exist and that even though you might choose not to deploy it, you still have to acknowledge it exists and take protective measures.</p>
+<p>I was sitting next to a really nice security engineer during the fantastic dinner-in-a-wine-cellar @ <a href="/2013/05/troopers-13-must-visit-security.html">Troopers 13</a> and as we started talking about security implications of ignoring IPv6, I was quickly able to persuade him that it's dangerous to pretend IPv6 doesn't exist and that even though you might choose not to deploy it, you still have to acknowledge it exists and take protective measures.</p>
 <p class="note">It’s always great fun to explain the dangers of ignoring IPv6 to a networking or security audience, and see some people muttering “oh, ****”<!--more--></p>
 <p>I was writing about this topic numerous times so I won't repeat the details. Here are a few of the blog posts you absolutely should read:</p>
-<ul class="ListParagraph"><li>It's pretty easy to do <a href="https://blog.ipspace.net/2011/11/ipv6-security-getting-bored-bru-airport.html">traffic and DNS hijacking in IPv4-only world with no IPv6 RA Guard</a>;</li>
-<li>There are <a href="https://blog.ipspace.net/2013/04/compromised-security-zone-game-over-or.html">other interesting hijacks you can do within a single layer-2 (bridged) domain</a>;</li>
-<li>A few more examples of <a href="https://blog.ipspace.net/2012/10/you-must-take-control-of-ipv6-in-your.html">what can be done in IPv6-ignorant world</a>;</li>
+<ul class="ListParagraph"><li>It's pretty easy to do <a href="/2011/11/ipv6-security-getting-bored-bru-airport.html">traffic and DNS hijacking in IPv4-only world with no IPv6 RA Guard</a>;</li>
+<li>There are <a href="/2013/04/compromised-security-zone-game-over-or.html">other interesting hijacks you can do within a single layer-2 (bridged) domain</a>;</li>
+<li>A few more examples of <a href="/2012/10/you-must-take-control-of-ipv6-in-your.html">what can be done in IPv6-ignorant world</a>;</li>
 </ul>
 <p>On top of all that, there are two additional scenarios that an intruder can use to gain unfiltered access to client's workstation:</p>
 <ul class="ListParagraph"><li>When a Windows host with IPv4-only connectivity tries to connect to an IPv6-only server (a server with AAAA but no A records in its DNS entry), it creates an automatic Teredo tunnel (IPv6-over-UDP-over-IP). Making a malware-distributing server available only on IPv6 is thus a great way of bypassing HTTP filtering (assuming the client's network has permissive everything-going-out-is-allowed firewall policy). <strong>Conclusion:</strong> make sure you filter all IPv6 transition mechanisms at the borders of your network if you decide to stay an IPv4-only shop;</li>

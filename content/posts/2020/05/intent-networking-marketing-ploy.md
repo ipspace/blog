@@ -28,10 +28,10 @@ So what's the big deal with _intent-based networking_? After everyone realized S
 
 You can happily participate in that game and enjoy glitzy product pitches... or you can take the red pill and do your homework:
 
-* [Figure out what BUSINESS problem you're trying to solve](https://blog.ipspace.net/2019/12/figure-out-what-problem-youre-trying-to.html)
-* Is it a [technology problem or a people/processes problem](https://blog.ipspace.net/2017/10/are-you-solving-right-problem.html)? You can never [fix a broken process](https://blog.ipspace.net/2014/09/youve-been-doing-same-thing-for-last-20.html) by throwing unproven technology at it.
-* Can you [solve the problem with existing tools](https://blog.ipspace.net/2014/03/network-automation-just-do-it.html)?
-* If not, [what tools would you need](https://blog.ipspace.net/2019/01/network-automations-is-more-than-just.html) to solve the problem?
-* Even if you had those tools, would you be able to use them, or [would you be back to square one due to people/processes](https://blog.ipspace.net/2013/11/typical-enterprise-application.html)?
+* [Figure out what BUSINESS problem you're trying to solve](/2019/12/figure-out-what-problem-youre-trying-to.html)
+* Is it a [technology problem or a people/processes problem](/2017/10/are-you-solving-right-problem.html)? You can never [fix a broken process](/2014/09/youve-been-doing-same-thing-for-last-20.html) by throwing unproven technology at it.
+* Can you [solve the problem with existing tools](/2014/03/network-automation-just-do-it.html)?
+* If not, [what tools would you need](/2019/01/network-automations-is-more-than-just.html) to solve the problem?
+* Even if you had those tools, would you be able to use them, or [would you be back to square one due to people/processes](/2013/11/typical-enterprise-application.html)?
 
 Want to know more? Explore our [Intent-Based Networking Resources ](/tag/intent-based-networking.html) or watch [Intent-Based Networking](https://my.ipspace.net/bin/list?id=AutConcepts#INTENT) section of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar.

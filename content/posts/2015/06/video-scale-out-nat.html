@@ -10,7 +10,7 @@ url: /2015/06/video-scale-out-nat.html
 ---
 
 <p>Network Address Translation (NAT) is one of those stateful services that’s almost impossible to scale out, because you have to distribute the state of the service (NAT mappings) across all potential ingress and egress points.</p>
-<p class="more">Midokura implemented <a href="https://blog.ipspace.net/2012/08/midokuras-midonet-layer-2-4-virtual.html">distributed stateful services architecture</a> in their Midonet product, but faced severe scalability challenges, which they claim to have solved with more intelligent state distribution.<!--more--></p>
+<p class="more">Midokura implemented <a href="/2012/08/midokuras-midonet-layer-2-4-virtual.html">distributed stateful services architecture</a> in their Midonet product, but faced severe scalability challenges, which they claim to have solved with more intelligent state distribution.<!--more--></p>
 <p>Nuage Networks took a different approach in the Virtualized Services Platform: they figured out that in most cases you don’t need a generic (hard to solve) solution, but one of two manageable subsets:</p>
 <ul class="Bullet1"><li>Static 1:1 NAT between an external (service) IP address and an internal (VM) IP address. The mapping is static (no state to distribute) and can be moved to the hypervisor host on which the VM is running;</li>
 <li>Dynamic outbound PAT (port-and-address NAT) to give internal servers access to outside resources. The outside IP address is irrelevant, allowing each hypervisor host to keep independent state.</li>

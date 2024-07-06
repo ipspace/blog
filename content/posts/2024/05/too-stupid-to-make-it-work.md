@@ -7,11 +7,11 @@ Some networking vendors realized that one way to gain mindshare is to make their
 
 [^AOT]: As of today: Cumulus Linux, Dell OS10, Dell Sonic, FRR, Juniper vPTX, Mikrotik RouterOS7, Nokia SR Linux, and Vyos. Registration (but nothing more) is required for Arista vEOS/cEOS, Aruba CX, and Cisco Nexus OS. The virtual machines might not support all control- or data-plane features you're interested in. As always, YMMV.
 
-However, those virtual machines better work out of the box, or you'll get frustrated engineers who will give up and never touch your warez again, or as someone said in a LinkedIn comment to my blog post describing how [Junos vPTX consistently rejects its DHCP-assigned IP address](https://blog.ipspace.net/2023/10/vjunos-declines-dhcp-address.html): "_If I had encountered an issue like this before seeing Ivan’s post, I would have definitely concluded that I am doing it wrong._"[^CB]
+However, those virtual machines better work out of the box, or you'll get frustrated engineers who will give up and never touch your warez again, or as someone said in a LinkedIn comment to my blog post describing how [Junos vPTX consistently rejects its DHCP-assigned IP address](/2023/10/vjunos-declines-dhcp-address.html): "_If I had encountered an issue like this before seeing Ivan’s post, I would have definitely concluded that I am doing it wrong._"[^CB]
 <!--more-->
 [^CB]: Paraphrased as the *I'm too stupid for that* clickbait.
 
-The Junos vPTX DHCP FUBAR was a [simple mistake](https://blog.ipspace.net/2023/10/vjunos-declines-dhcp-address.html#1974), but it was impossible to diagnose or fix from the outside[^MT3M]. Also, it proved (to me) that the vPTX target audience is not people who run virtual machines in environments where the management IP address allocation is done via DHCP. I can't imagine a scenario where someone doing the most rudimentary tests with something like *vagrant-libvirt* (or any other cloud environment) would miss that problem.
+The Junos vPTX DHCP FUBAR was a [simple mistake](/2023/10/vjunos-declines-dhcp-address.html#1974), but it was impossible to diagnose or fix from the outside[^MT3M]. Also, it proved (to me) that the vPTX target audience is not people who run virtual machines in environments where the management IP address allocation is done via DHCP. I can't imagine a scenario where someone doing the most rudimentary tests with something like *vagrant-libvirt* (or any other cloud environment) would miss that problem.
 
 [^MT3M]: Taking more than three months to release a fix is a different story. Einstein was right; time really is relative.
 

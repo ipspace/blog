@@ -9,11 +9,11 @@ One of my subscribers sent me this question after watching the [networking part]
 
 **TL&DR**: Of course not... and I'm guessing it would be pretty expensive if I knew and told you.
 
-However, one can always guess based on what can be observed (see also: [AWS networking 101](https://blog.ipspace.net/2020/05/aws-networking-101.html), [Azure networking 101](https://blog.ipspace.net/2020/05/azure-networking-101.html)).
+However, one can always guess based on what can be observed (see also: [AWS networking 101](/2020/05/aws-networking-101.html), [Azure networking 101](/2020/05/azure-networking-101.html)).
 <!--more-->
 * They must be using overlay virtual networking to implement virtual networks. Nothing else would scale to what they need -- scalability numbers achieved by products like Cisco ACI are laughable from a hyperscaler perspective.
 * It must be either complex enough or large enough not to be implementable on ToR switches.
-* AWS is the only one of the big three to offer bare-metal servers, and we [know their magic runs in their smart NICs](https://blog.ipspace.net/2020/06/cloud-networking-architectures.html) (as Pensando so proudly points out like it [would validate their business model](https://blog.ipspace.net/2020/09/need-smart-nic.html)). Azure seems to be using FPGAs, and Google relied on a software solution.
+* AWS is the only one of the big three to offer bare-metal servers, and we [know their magic runs in their smart NICs](/2020/06/cloud-networking-architectures.html) (as Pensando so proudly points out like it [would validate their business model](/2020/09/need-smart-nic.html)). Azure seems to be using FPGAs, and Google relied on a software solution.
 
 For more details see:
 

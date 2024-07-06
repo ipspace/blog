@@ -7,7 +7,7 @@ tags:
 title: Redundant DMVPN Designs, Part 2 (Multiple Uplinks)
 url: /2012/01/redundant-dmvpn-designs-part-2-multiple.html
 ---
-In the [*Redundant DMVPN Design, Part 1*](https://blog.ipspace.net/2012/01/redundant-dmvpn-designs-part-1-basics.html) I described the options you have when you want to connect non-redundant spokes to more than one hub. In this article, we'll go a step further and design hub and spoke sites with multiple uplinks.
+In the [*Redundant DMVPN Design, Part 1*](/2012/01/redundant-dmvpn-designs-part-1-basics.html) I described the options you have when you want to connect non-redundant spokes to more than one hub. In this article, we'll go a step further and design hub and spoke sites with multiple uplinks.
 
 ### Public IP Addressing
 
@@ -43,7 +43,7 @@ SMB customers not having their own IP address space would most often deploy hub 
 
 You can never be sure whether the upstream ISPs use RPF filters or other filtering mechanisms. It's thus mandatory to ensure proper outbound packet forwarding over the spoke uplinks: tunnel interface associated with IP address belonging to ISP-A can send packets only over the uplink connecting the spoke router to ISP-A.
 
-You can use [**tunnel route-via** feature](https://blog.ipspace.net/2010/09/tunnel-route-selection-recording-from.html) to force the tunnel interfaces to use correct uplinks (but it [doesn't work if you use IPsec](https://blog.ipspace.net/2010/06/tunnel-route-selection-and-dmvpn-tunnel.html)), or you could use VRF-based tunnel interfaces:
+You can use [**tunnel route-via** feature](/2010/09/tunnel-route-selection-recording-from.html) to force the tunnel interfaces to use correct uplinks (but it [doesn't work if you use IPsec](/2010/06/tunnel-route-selection-and-dmvpn-tunnel.html)), or you could use VRF-based tunnel interfaces:
 
 -   Create multiple VRFs on the spoke router, one per uplink;
 -   Create a static default route in each VRF pointing to the associated uplink;
@@ -65,11 +65,11 @@ If your network has to be more failure-resilient, connect all hubs to all DMVPN 
 
 {{<figure src="s1600-DMVPN_2IF2T.png" caption="More redundant design: both hub routers participate in both tunnels">}}
 
-Finally, if you're using DMVPN Phase 2, you might need to deploy even more tunnels to avoid the [NHRP convergence problems](https://blog.ipspace.net/2011/05/nhrp-convergence-issues-in-multi-hub.html). In our sample network you would need two DMVPN tunnels on each hub router (one for ISP-A spoke uplinks, the other one for ISP-B spoke uplinks) and four tunnels on the spoke routers (one for each uplink/hub combination).
+Finally, if you're using DMVPN Phase 2, you might need to deploy even more tunnels to avoid the [NHRP convergence problems](/2011/05/nhrp-convergence-issues-in-multi-hub.html). In our sample network you would need two DMVPN tunnels on each hub router (one for ISP-A spoke uplinks, the other one for ISP-B spoke uplinks) and four tunnels on the spoke routers (one for each uplink/hub combination).
 
 ### Alternate Solution: VRF Fiesta
 
-*KAV* proposed an alternate solution in a comment to the [*Redundant DMVPN Design, Part 1*](https://blog.ipspace.net/2012/01/redundant-dmvpn-designs-part-1-basics.html) post: put each DMVPN tunnel interface in a separate VRF and use redistribution through BGP in a VRF-lite environment to collect routes from both DMVPN VRFs in the LAN-side VRF.
+*KAV* proposed an alternate solution in a comment to the [*Redundant DMVPN Design, Part 1*](/2012/01/redundant-dmvpn-designs-part-1-basics.html) post: put each DMVPN tunnel interface in a separate VRF and use redistribution through BGP in a VRF-lite environment to collect routes from both DMVPN VRFs in the LAN-side VRF.
 
 **Advantage:** since each DMVPN tunnel belongs to a different VRF, you can use the same IP subnet on all spoke-router tunnels, minimizing the overall number of DMVPN tunnels (you can use a single DMVPN subnet if you're running Phase 1 or Phase 3 DMVPN).
 

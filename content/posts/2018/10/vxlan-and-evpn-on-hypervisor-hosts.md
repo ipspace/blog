@@ -27,7 +27,7 @@ If they plan to use Juniper Contrail (or however it's called today), then the wh
 
 > I am a little worried about this as we network folks will have no visibility as to how they are going to implement it and with what ramifications.
 
-Maybe it's time you start [acting like a service provider](https://blog.ipspace.net/2016/08/networking-is-infrastructure-get-used.html), and provide them with end-to-end connectivity that they can use in any way they wish. You might still have to use VXLAN to implement VLANs stretched across multiple ToR switches unless you use either host routing or routing on host designs, but stop worrying about things you have no influence upon.
+Maybe it's time you start [acting like a service provider](/2016/08/networking-is-infrastructure-get-used.html), and provide them with end-to-end connectivity that they can use in any way they wish. You might still have to use VXLAN to implement VLANs stretched across multiple ToR switches unless you use either host routing or routing on host designs, but stop worrying about things you have no influence upon.
 
 Just make sure all the decisions made in the design phase and integration/service points are well documented and understood by the management level where the two teams meet. "*Sign on the dotted line that you accept the risk*" sometimes does wonders when there's lack of communication between teams.
 
@@ -35,17 +35,17 @@ Just make sure all the decisions made in the design phase and integration/servic
 
 As I wrote many times, it's the right architecture, and all scalable solutions (whether visible to the outside world, or hidden in the misty fog of the public clouds) use this approach. In case you missed those blog posts, start with:
 
--   [Complexity belongs to the network edge](https://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html);
--   [Decouple virtual networking from the physical world](https://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html);
--   [Network virtualization and spaghetti wall](https://blog.ipspace.net/2013/06/network-virtualization-and-spaghetti.html);
--   [Virtual networks: the Skype analogy](https://blog.ipspace.net/2012/05/virtual-networks-skype-analogy.html);
--   [Smart fabrics versus overlay virtual networks](https://blog.ipspace.net/2013/07/smart-fabrics-versus-overlay-virtual.html).
+-   [Complexity belongs to the network edge](/2011/05/complexity-belongs-to-network-edge.html);
+-   [Decouple virtual networking from the physical world](/2011/12/decouple-virtual-networking-from.html);
+-   [Network virtualization and spaghetti wall](/2013/06/network-virtualization-and-spaghetti.html);
+-   [Virtual networks: the Skype analogy](/2012/05/virtual-networks-skype-analogy.html);
+-   [Smart fabrics versus overlay virtual networks](/2013/07/smart-fabrics-versus-overlay-virtual.html).
 
 [ipSpace.net subscribers](https://www.ipspace.net/Subscription) can find more details in [*Networking in Private and Public Clouds*](https://www.ipspace.net/Networking_in_Private_and_Public_Clouds) and [*Overlay Virtual Networking*](https://www.ipspace.net/Overlay_Virtual_Networking) webinars.
 
 > Would this not affect the performance of the hardware Nics on those servers?
 
-Well-implemented VXLAN encapsulation/decapsulation never had significant performance problems. Unfortunately, the [open-source world is full of less-than-optimal solutions](https://blog.ipspace.net/2014/11/open-vswitch-performance-revisited.html).
+Well-implemented VXLAN encapsulation/decapsulation never had significant performance problems. Unfortunately, the [open-source world is full of less-than-optimal solutions](/2014/11/open-vswitch-performance-revisited.html).
 
 > What other arguments can we the network engineers present to challenge this approach if it helps the company in the right direction
 

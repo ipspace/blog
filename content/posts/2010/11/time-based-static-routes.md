@@ -39,6 +39,6 @@ You might wonder why you should use this slightly convoluted solution when you c
 
 Related solutions:
 
--   [Periodic router reload](https://blog.ipspace.net/2006/10/periodic-router-reload.html)
--   [Kron: poor-man\'s cron](https://blog.ipspace.net/2007/11/kron-poor-man-cron.html)
--   [Time-based BGP policy routing](https://blog.ipspace.net/2008/02/time-based-bgp-policy-routing.html)
+-   [Periodic router reload](/2006/10/periodic-router-reload.html)
+-   [Kron: poor-man\'s cron](/2007/11/kron-poor-man-cron.html)
+-   [Time-based BGP policy routing](/2008/02/time-based-bgp-policy-routing.html)

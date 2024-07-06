@@ -7,7 +7,7 @@ title: ADSL Reference Diagram
 url: /2009/06/adsl-reference-diagram.html
 lastmod: 2020-12-07 17:01:00
 ---
-I'm getting lots of ADSL QoS questions lately[^1], so it's obviously time to cover this topic. Before going into the QoS details, I want to make sure my understanding of the implications of the [baroque ADSL protocol stack](https://blog.ipspace.net/2009/03/adsl-overhead.html) is correct.
+I'm getting lots of ADSL QoS questions lately[^1], so it's obviously time to cover this topic. Before going into the QoS details, I want to make sure my understanding of the implications of the [baroque ADSL protocol stack](/2009/03/adsl-overhead.html) is correct.
 
 In the most complex case, a DSL service could have up to eight separate components (including the end-user's workstation):
 <!--more-->

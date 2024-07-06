@@ -30,7 +30,7 @@ Lack of routing policies (= filters) on EBGP sessions usually cause the abovemen
 
 **Prefix re-origination**: an autonomous system advertises third-party prefixes as belonging to itself:
 
--   When someone leaks hundreds of thousands of prefixes, we're probably dealing with a [two-way redistribution gone wrong](https://blog.ipspace.net/2020/10/redistributing-bgp-into-ospf.html).
+-   When someone leaks hundreds of thousands of prefixes, we're probably dealing with a [two-way redistribution gone wrong](/2020/10/redistributing-bgp-into-ospf.html).
 -   Dozens or hundreds of more-specific prefixes from different autonomous systems? Probably a gift from someone carelessly playing with prefix deaggregation.
 -   Just a few prefixes? "Temporary" static routes redistributed into BGP or a malicious hijack.
 

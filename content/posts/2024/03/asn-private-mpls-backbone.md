@@ -7,7 +7,7 @@ One of my readers was building a private MPLS/VPN backbone and wondered whether 
 
 > We also plan to peer with multiple external ISPs to advertise our public IP space not directly from our PE routers but from dedicated Internet Routers, adding a firewall between our PEs and external Internet routers.
 
-They could either run BGP between the PE routers, firewall, and WAN routers (see [BGP as High-Availability Protocol](https://blog.ipspace.net/kb/BGPHighAvailability/) for more details) or run BGP *across* a bump-in-the-wire firewall:
+They could either run BGP between the PE routers, firewall, and WAN routers (see [BGP as High-Availability Protocol](/kb/BGPHighAvailability/) for more details) or run BGP *across* a bump-in-the-wire firewall:
 <!--more-->
 {{<ascii>}}
 ┌─────────┐   ┌────────┐   ┌──────────┐

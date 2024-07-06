@@ -20,9 +20,9 @@ The design clinic participants were a bit more diplomatic ([watch the video](htt
 
 Let's step back and try to understand what's really going on:
 <!--more-->
-In the ideal world, **you'd just shut down a data center and see what happens**. Companies that realized you cannot fake it forever and pretend to solve application availability with infrastructure tricks have [no qualms doing exactly that](https://queue.acm.org/detail.cfm?id=2371297). They know [everything eventually fails](https://blog.ipspace.net/2012/10/if-something-can-fail-it-will.html) and focus on making their services as failure-resilient as possible. Once you embrace that mindset, killing parts of your infrastructure to see what happens becomes business-as-usual.
+In the ideal world, **you'd just shut down a data center and see what happens**. Companies that realized you cannot fake it forever and pretend to solve application availability with infrastructure tricks have [no qualms doing exactly that](https://queue.acm.org/detail.cfm?id=2371297). They know [everything eventually fails](/2012/10/if-something-can-fail-it-will.html) and focus on making their services as failure-resilient as possible. Once you embrace that mindset, killing parts of your infrastructure to see what happens becomes business-as-usual.
 
-**Meanwhile on Planet Enterprise**: operations teams have to deal with applications that were never [tested beyond loopback interface](https://my.ipspace.net/bin/list?id=Net101#FALLACIES), or [single-instance applications](https://blog.ipspace.net/2011/08/high-availability-fallacies.html) tested with a database residing in the same LAN segment, and try to increase the availability of these impending disasters by introducing infrastructure tricks.
+**Meanwhile on Planet Enterprise**: operations teams have to deal with applications that were never [tested beyond loopback interface](https://my.ipspace.net/bin/list?id=Net101#FALLACIES), or [single-instance applications](/2011/08/high-availability-fallacies.html) tested with a database residing in the same LAN segment, and try to increase the availability of these impending disasters by introducing infrastructure tricks.
 
 At the same time, management and auditors require disaster recovery functionality... and some server teams, knowing that they would never be allowed to do the right thing, try to fake disaster recovery tests with a charade that would make Potemkin proud:
 
@@ -33,7 +33,7 @@ At the same time, management and auditors require disaster recovery functionalit
 
 Mission accomplished. See you next year!
 
-Have they proven that the disaster recovery procedure works? Absolutely not, their carefully-planned choreography has nothing to do with what they'd have to face when the primary data center dies. In the meantime, they need stretched VLANs to make the fake test work, turning both data centers into a ticking bomb that will eventually explode (or as Terry Slattery pointed out in the Design Clinic discussion "*do you want to have [one failure domain or two](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html)?*").
+Have they proven that the disaster recovery procedure works? Absolutely not, their carefully-planned choreography has nothing to do with what they'd have to face when the primary data center dies. In the meantime, they need stretched VLANs to make the fake test work, turning both data centers into a ticking bomb that will eventually explode (or as Terry Slattery pointed out in the Design Clinic discussion "*do you want to have [one failure domain or two](/2012/05/layer-2-network-is-single-failure.html)?*").
 
 **Summary**: Disaster recovery is a tough challenge. Proper disaster recovery testing is hard, and as long as you're trying to fake it with careful VM moves, you're bound to have the well-known three-step process to disaster recovery planning:
 

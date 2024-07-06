@@ -11,10 +11,10 @@ Every so often I get a question about the MTU metric in EIGRP and whether it's u
 
 After an email exchange with [Carlos G Mendioroz](https://www.linkedin.com/in/carlos-g-mendioroz-7230851/), I retested the above behavior with Cisco IOSv release 15.6(1)T in 2023. EIGRP MTU-related behavior changed since I last looked (in 2010): it no longer considers MTU when selecting a subset of equal-cost paths; the most stable (oldest) paths stay in the IP routing table regardless of their MTU value in the EIGRP topology table.
 <!--more-->
-From the information propagation perspective, the MTU metric behaves [similarly to the *load* and *reliability* metrics](https://blog.ipspace.net/2009/06/eigrp-load-and-reliability-metrics.html):
+From the information propagation perspective, the MTU metric behaves [similarly to the *load* and *reliability* metrics](/2009/06/eigrp-load-and-reliability-metrics.html):
 
 -   A change in the MTU does not trigger a routing update.
--   Whenever a "real" change in topology triggers an EIGRP update, the MTU metric is updated to reflect the then-current [interface **ip mtu** value](https://blog.ipspace.net/2007/10/tale-of-three-mtus.html).
+-   Whenever a "real" change in topology triggers an EIGRP update, the MTU metric is updated to reflect the then-current [interface **ip mtu** value](/2007/10/tale-of-three-mtus.html).
 
 When processing inbound EIGRP updates, the minimum of the MTU value in the inbound UPDATE packet and the interface MTU is stored in the EIGRP topology database. No MTU processing is done on the outbound updates. The MTU metric thus represents the minimum unidirectional MTU between the current router and the originating router.
 

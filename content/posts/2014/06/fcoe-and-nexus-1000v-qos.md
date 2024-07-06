@@ -17,13 +17,13 @@ As always, things aren't as simple as they look.
 <!--more-->
 ### Background: adapter FEX and FCoE
 
-The UCS Ethernet adapters implement [FCoE](https://blog.ipspace.net/2011/08/fcoe-networking-elements-classification.html) in hardware -- the operating system doesn't know it deals with a single physical adapter with a single set of 10GE uplinks. Each physical 10GE adapter appears as (at least) two PCI adapters: a 10GE Ethernet NIC and a Fiber Channel Host Bus Adapter (HBA).
+The UCS Ethernet adapters implement [FCoE](/2011/08/fcoe-networking-elements-classification.html) in hardware -- the operating system doesn't know it deals with a single physical adapter with a single set of 10GE uplinks. Each physical 10GE adapter appears as (at least) two PCI adapters: a 10GE Ethernet NIC and a Fiber Channel Host Bus Adapter (HBA).
 
 {{<note>}}Every 10GE adapter implementing FCoE in hardware has NIC+HBA functionality. Cisco's adapter cards (P81E or VIC1225) or third-party adapters that support Cisco's proprietary VNTag technology (example: Broadcom BCM57810) allow you to go one step further and create numerous Ethernet adapters from the same physical NIC.{{</note>}}
 
 [![](/2014/06/s400-AdapterFEX.png)](/2014/06/s1600-AdapterFEX.png)
 
-The bandwidth allocation and queuing on the physical 10GE uplink is hidden from the NICs presented to the operating system. The operating system thinks it deals with multiple full-blown 10GE/FC interfaces, and it just happens that the interfaces transmit packets from the hardware TX-ring slower than one would expect... but then you could get the same results using PAUSE frames (or [PFC](https://blog.ipspace.net/2010/09/introduction-to-8021qbb-priority-flow.html)) on a dedicated 10GE interface.
+The bandwidth allocation and queuing on the physical 10GE uplink is hidden from the NICs presented to the operating system. The operating system thinks it deals with multiple full-blown 10GE/FC interfaces, and it just happens that the interfaces transmit packets from the hardware TX-ring slower than one would expect... but then you could get the same results using PAUSE frames (or [PFC](/2010/09/introduction-to-8021qbb-priority-flow.html)) on a dedicated 10GE interface.
 
 ### Output queuing on Nexus 1000v
 

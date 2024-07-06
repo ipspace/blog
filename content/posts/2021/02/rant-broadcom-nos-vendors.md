@@ -3,7 +3,7 @@ title: "Rant: Broadcom and Network Operating System Vendors"
 date: 2021-02-02 06:35:00
 tags: [ switching ]
 ---
-Minh Ha left the following rant as a comment on my 5-year-old _[What Are The Problems with Broadcom Tomahawk?](https://blog.ipspace.net/2016/05/what-are-problems-with-broadcom.html)_ blog post. It's too good to be left gathering dust there. Counterarguments and other perspectives are highly welcome.
+Minh Ha left the following rant as a comment on my 5-year-old _[What Are The Problems with Broadcom Tomahawk?](/2016/05/what-are-problems-with-broadcom.html)_ blog post. It's too good to be left gathering dust there. Counterarguments and other perspectives are highly welcome.
 
 ---
 

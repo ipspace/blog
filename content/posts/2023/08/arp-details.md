@@ -49,7 +49,7 @@ That brings us to another interesting case. Imagine that for whatever reason the
 
 In that case, the receiver might reply with its MAC address, effectively saying, "*Sure, send me the packets; I know how to get there.*" We usually call that functionality *proxy ARP*. Proxy ARP is a great but also pretty dangerous tool (but that's a story for another blog post).
 
-Finally, it's worth noting that while we usually think proxy ARP can be used to reach hosts beyond a router, it's heavily used *within a subnet* in WiFi and PVLAN environments. You might want to read [RFC 3069](https://www.rfc-editor.org/rfc/rfc3069.html) for the PVLAN details. Brave souls are also [using proxy ARP to stretch local subnets into the cloud](https://blog.ipspace.net/2019/11/stretched-layer-2-subnets-in-azure.html), forgetting that *because you can does not mean that you should*.
+Finally, it's worth noting that while we usually think proxy ARP can be used to reach hosts beyond a router, it's heavily used *within a subnet* in WiFi and PVLAN environments. You might want to read [RFC 3069](https://www.rfc-editor.org/rfc/rfc3069.html) for the PVLAN details. Brave souls are also [using proxy ARP to stretch local subnets into the cloud](/2019/11/stretched-layer-2-subnets-in-azure.html), forgetting that *because you can does not mean that you should*.
 
 ### Revision History
 

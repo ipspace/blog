@@ -3,7 +3,7 @@ title: "Docker Swarm Services behind the Scenes"
 date: 2020-08-26 06:54:00
 tags: [ Docker, overlay networks ]
 ---
-Remember the [claim that networking is becoming obsolete](https://blog.ipspace.net/2020/02/the-never-ending-my-overlay-is-better.html) and that everyone else will simply bypass the networking teams ([source](https://twitter.com/martin_casado/status/1227793721019600897))?
+Remember the [claim that networking is becoming obsolete](/2020/02/the-never-ending-my-overlay-is-better.html) and that everyone else will simply bypass the networking teams ([source](https://twitter.com/martin_casado/status/1227793721019600897))?
 
 > Good news for you – there are many fast growing overlay solutions that are adopted by apps and security teams and bypass the networking teams altogether.
 

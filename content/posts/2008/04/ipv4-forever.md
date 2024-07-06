@@ -7,7 +7,7 @@ tags:
 title: "OSPFv3 Router ID: the Long Shadow of IPv4"
 url: /2008/04/ipv4-forever.html
 ---
-One of the obscure facts about IPv6 OSPF (OSPFv3) is that it uses a 32-bit router ID like OSPFv2. It's a reasonable choice; I have yet to see an OSPF network with over a billion routers. However, could you guess how this requirement is implemented in Cisco IOS? [OSPFv3 searches for an IPv4 address](https://blog.ipspace.net/2007/10/ospf-router-id-does-not-change-when.html) (effectively the same algorithm used by OSPFv2) to get the router ID for the IPv6 routing process. Neat, isn't it?
+One of the obscure facts about IPv6 OSPF (OSPFv3) is that it uses a 32-bit router ID like OSPFv2. It's a reasonable choice; I have yet to see an OSPF network with over a billion routers. However, could you guess how this requirement is implemented in Cisco IOS? [OSPFv3 searches for an IPv4 address](/2007/10/ospf-router-id-does-not-change-when.html) (effectively the same algorithm used by OSPFv2) to get the router ID for the IPv6 routing process. Neat, isn't it?
 
 You might wonder what happens if you want to configure an IPv6-only router. OSPF won't start unless you configure the router ID manually. And, no, you cannot enter a number (which would be the expected format, as the router ID is just a number in the IPv6 world); you have to enter an IPv4 address. Long live IPv4 :))
 <!--more-->

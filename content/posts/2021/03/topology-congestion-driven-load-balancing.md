@@ -18,7 +18,7 @@ Now imagine the link S1-L2 is slower than the link S2-L2. A routing protocol cap
 
 In both cases, the decision to use multiple paths (and the traffic ratio) was made based on *network topology*.
 
-Going back to the first scenario: L1 has two equal-cost paths to L2, and can balance outgoing traffic across both of them. The usual implementation would use ECMP hash buckets ([high-level overview](https://blog.ipspace.net/2020/11/fast-failover-implementation.html), [more details](https://blog.ipspace.net/2015/01/improving-ecmp-load-balancing-with.html)). Assuming the forwarding hardware supports 128 hash buckets per next-hop group, 64 of those would point to L1-S1 and the other 64 would point to L1-S2.
+Going back to the first scenario: L1 has two equal-cost paths to L2, and can balance outgoing traffic across both of them. The usual implementation would use ECMP hash buckets ([high-level overview](/2020/11/fast-failover-implementation.html), [more details](/2015/01/improving-ecmp-load-balancing-with.html)). Assuming the forwarding hardware supports 128 hash buckets per next-hop group, 64 of those would point to L1-S1 and the other 64 would point to L1-S2.
 
 ### Congestion-Based Load Balancing
 
@@ -34,11 +34,11 @@ Now for a really interesting scenario: imagine someone runs a bunch of backup jo
 
 To change the forwarding behavior on L1 based on downstream congestion, there would have to be a mechanism telling L1 to reduce its utilization of one of the end-to-end paths. While that could be done with a routing protocol, no major vendor ever implemented anything along those lines for a good reason -- the positive feedback loop introduced by load-aware routing and resulting oscillations would be fun to troubleshoot. 
 
-Ignoring the early IGRP implementations from early 1980s, I heard of [one implementation of QoS-aware routing protocol](https://blog.ipspace.net/2015/09/dlsp-qos-aware-routing-protocol-on.html), and I've never seen it used in real life. Please also note that SD-WAN [uses a different mechanism to get the job done](https://blog.ipspace.net/2015/07/routing-protocols-and-sd-wan-apples-and.html): it's not using a routing protocol but end-to-end path measurement. That approach works because SD-WAN solutions ignore the complexities of the transport network; they assume the transport network is a single-hop cloud full of magic beans.
+Ignoring the early IGRP implementations from early 1980s, I heard of [one implementation of QoS-aware routing protocol](/2015/09/dlsp-qos-aware-routing-protocol-on.html), and I've never seen it used in real life. Please also note that SD-WAN [uses a different mechanism to get the job done](/2015/07/routing-protocols-and-sd-wan-apples-and.html): it's not using a routing protocol but end-to-end path measurement. That approach works because SD-WAN solutions ignore the complexities of the transport network; they assume the transport network is a single-hop cloud full of magic beans.
 
 ### Could We Fix It?
 
-Ignoring the crazy ideas of SDN controller dynamically reprogramming edge switches, the best way to solve the problem is ([yet again](https://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html)) an end-host implementation:
+Ignoring the crazy ideas of SDN controller dynamically reprogramming edge switches, the best way to solve the problem is ([yet again](/2011/05/complexity-belongs-to-network-edge.html)) an end-host implementation:
 
 * Connect hosts to the network with multiple IP interfaces, not MLAG kludges.
 * Use MP-TCP or similar to establish parallel TCP sessions across multiple paths using different pairs of source-destination IP addresses.

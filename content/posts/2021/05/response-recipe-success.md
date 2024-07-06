@@ -3,7 +3,7 @@ title: "Response: There's No Recipe for Success"
 date: 2021-05-10 06:05:00
 tags: [ certifications ]
 ---
-Minh Ha left a lengthy comment to my *[There's No Recipe for Success](https://blog.ipspace.net/2021/03/no-recipe-for-success.html)* blog post, adding an interesting perspective of someone who had to work really hard to overcome coming from a third-world country.
+Minh Ha left a lengthy comment to my *[There's No Recipe for Success](/2021/03/no-recipe-for-success.html)* blog post, adding an interesting perspective of someone who had to work really hard to overcome coming from a third-world country.
 
 ---
 

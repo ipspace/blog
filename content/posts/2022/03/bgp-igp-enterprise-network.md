@@ -4,7 +4,7 @@ date: 2022-03-28 08:42:00
 lastmod: 2024-05-31 13:51:00+02:00
 tags: [ BGP, IP routing, design ]
 ---
-Syed Khalid Ali left the following question on an old blog post [describing the use of IBGP and EBGP in an enterprise network](https://blog.ipspace.net/2011/08/ibgp-or-ebgp-in-enterprise-network.html):
+Syed Khalid Ali left the following question on an old blog post [describing the use of IBGP and EBGP in an enterprise network](/2011/08/ibgp-or-ebgp-in-enterprise-network.html):
 
 > From an enterprise customer perspective, should I run iBGP, iBGP+IGP (OSPF/ISIS/EIGRP), or IGP with mutual redistribution on the edge routers? I was hoping you could share some thoughtful insight on when to select one over the other.
 
@@ -24,12 +24,12 @@ Here are a few good reasons why you might want to use BGP in your network[^NV]:
 [^NV]: "Because my vendor told me to do so" is not one of them.
 
 * If you want to **advertise your address space to the public Internet**. BGP is the only sane way to go if you need redundant Internet connectivity.
-* If you plan to **run services that need BGP**, for example, EVPN. In that case, please use the [simplest possible design](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics) (IBGP with IGP -- [more details](/series/dcbgp.html)). [You're not Microsoft](https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html), and [don't have the scaling challenges](https://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol) that prompted them to use EBGP as an IGP.
-* If you have **too many prefixes and hit IGP scaling limits**. In this case, you might have to implement an edge IGP (to collect prefixes) and a different core IGP (to support IBGP). Does this sound too complex? It is; OSPF areas and route summarization might be a better fit unless you're dealing with a giant organically grown mess. Also, today's CPUs are a bit faster than the [last time I faced this particular design challenge](https://blog.ipspace.net/2024/05/worth-reading-ospf-protocol-analysis.html).
+* If you plan to **run services that need BGP**, for example, EVPN. In that case, please use the [simplest possible design](https://www.ipspace.net/Data_Center_BGP/BGP_in_EVPN-Based_Data_Center_Fabrics) (IBGP with IGP -- [more details](/series/dcbgp.html)). [You're not Microsoft](/2017/11/bgp-as-better-igp-when-and-where.html), and [don't have the scaling challenges](https://www.ipspace.net/Data_Center_BGP/BGP_Fabric_Routing_Protocol) that prompted them to use EBGP as an IGP.
+* If you have **too many prefixes and hit IGP scaling limits**. In this case, you might have to implement an edge IGP (to collect prefixes) and a different core IGP (to support IBGP). Does this sound too complex? It is; OSPF areas and route summarization might be a better fit unless you're dealing with a giant organically grown mess. Also, today's CPUs are a bit faster than the [last time I faced this particular design challenge](/2024/05/worth-reading-ospf-protocol-analysis.html).
 * If you insist on **having thousands of routers connected to the same subnet** (typically Carrier Ethernet or DMVPN). IGPs are delicate souls and were not designed to survive such abusive behavior.
 * If you want to **implement routing policies** that are more complex than "use LTE for backup," which can be solved with link cost. BGP is usually warranted in large multinational core networks with expensive core links. Use IBGP within regions (where you don't care about routing policy) and EBGP between the regions -- AS path is a nice mechanism to keep track of the regions the traffic would have to traverse.
 * If you're **using MPLS/VPN services** and want to retain your sanity, run EBGP with the service provider. I covered that scenario in the _[Choose the Optimal VPN Service](https://www.ipspace.net/Choose_the_Optimal_VPN_Service)_ webinar.
-* If you're running a **routing protocol with servers or VM instances** in your data center, use EBGP to [build a trust barrier](https://blog.ipspace.net/2013/08/virtual-appliance-routing-network.html) between network and hosts.[^MF] However, there's usually no need to propagate these more specific routes beyond the data center edge -- advertise a summary prefix (or a few of them) into the WAN network and move on.
+* If you're running a **routing protocol with servers or VM instances** in your data center, use EBGP to [build a trust barrier](/2013/08/virtual-appliance-routing-network.html) between network and hosts.[^MF] However, there's usually no need to propagate these more specific routes beyond the data center edge -- advertise a summary prefix (or a few of them) into the WAN network and move on.
 
 Have I missed something? Please write a comment!
 
@@ -60,7 +60,7 @@ However, every router *in any possible IP transit path* between two BGP routers 
 ### Revision History
 
 2024-05-31
-: Expanded the _default routing_ section based on a [user comment](https://blog.ipspace.net/2022/03/bgp-igp-enterprise-network.html#2279).
+: Expanded the _default routing_ section based on a [user comment](/2022/03/bgp-igp-enterprise-network.html#2279).
 
 2022-03-29
 : Added _routing on servers_ use case based on feedback from Sander Steffann.

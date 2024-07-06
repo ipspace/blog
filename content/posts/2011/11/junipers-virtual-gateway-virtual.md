@@ -12,7 +12,7 @@ I stumbled upon VMsafe Network API (the API formerly known as dvFilter) while de
 <!--more-->
 {{<note update>}}**Update 2014-02-09:** Virtual Gateway has been renamed to Firefly Host and stopped working with vSphere 5.5 which no longer contains the deprecated VMsafe API used by Virtual Gateway/Firefly Host.{{</note>}}
 
-Basics first: the VMsafe Network API is an API within the ESX hypervisor kernel that allows a third party to insert a filter (a loadable kernel module) in front of the virtual NICs (the filters are automatically configured in the VMX file). The filter can do anything it wants with the VM traffic; including modifying or encapsulating it ([vCDNI](https://blog.ipspace.net/2011/04/vcloud-director-networking.html) is implemented as a dvFilter kernel module).
+Basics first: the VMsafe Network API is an API within the ESX hypervisor kernel that allows a third party to insert a filter (a loadable kernel module) in front of the virtual NICs (the filters are automatically configured in the VMX file). The filter can do anything it wants with the VM traffic; including modifying or encapsulating it ([vCDNI](/2011/04/vcloud-director-networking.html) is implemented as a dvFilter kernel module).
 
 {{<figure src="/2011/11/s320-VGW_kernel.png" caption="dvFilter in an ESXi Host">}}
 

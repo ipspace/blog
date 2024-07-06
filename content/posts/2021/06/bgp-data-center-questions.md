@@ -9,7 +9,7 @@ tags:
 - design
 title: Questions about BGP in the Data Center (with a Whiff of SRv6)
 ---
-Henk Smit left numerous questions in a comment referring to the [Rethinking BGP in the Data Center](https://blog.ipspace.net/2021/05/worth-reading-rethinking-bgp-data-center.html) presentation by Russ White:
+Henk Smit left numerous questions in a comment referring to the [Rethinking BGP in the Data Center](/2021/05/worth-reading-rethinking-bgp-data-center.html) presentation by Russ White:
 
 > In Russ White's presentation, he listed a few requirements to compare BGP, IS-IS and OSPF. Prefix distribution, filtering, TE, tagging, vendor-support, autoconfig and topology visibility. The one thing I was missing was: scalability.
 
@@ -21,9 +21,9 @@ I noticed the same thing. We kept hearing how BGP scales better than link-state 
 
 I tried to get answers to very similar questions three years back and did a series of podcasts on the topic including:
 
-* [Data Center Routing with RIFT](https://blog.ipspace.net/2018/03/data-center-routing-with-rift-on.html) with Dr. Tony Przygienda
-* [OpenFabric](https://blog.ipspace.net/2018/04/openfabric-with-russ-white-on-software.html) with Russ White
-* [Is BGP Good Enough](https://blog.ipspace.net/2018/08/is-bgp-good-enough-with-dinesh-dutt-on.html) with Dinesh Dutt.
+* [Data Center Routing with RIFT](/2018/03/data-center-routing-with-rift-on.html) with Dr. Tony Przygienda
+* [OpenFabric](/2018/04/openfabric-with-russ-white-on-software.html) with Russ White
+* [Is BGP Good Enough](/2018/08/is-bgp-good-enough-with-dinesh-dutt-on.html) with Dinesh Dutt.
 
 What I got were vague statements from Tony and Russ effectively saying "_you shouldn't have a problem until you get to an area with hundreds of switches_" and Dinesh saying "_very large fabrics running OSPF work just fine if you do your homework_". 
 

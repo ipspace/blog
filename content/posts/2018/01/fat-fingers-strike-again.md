@@ -27,4 +27,4 @@ Also, it might be a good idea to start thinking about the costs of doing excepti
 
 That customer definitely costed them a lot...
 
-Meanwhile in the [network automation online class](http://www.ipspace.net/Building_Network_Automation_Solutions): some students are [working on building automation solutions](https://www.ipspace.net/NetAutSol/Solutions) that deploy IP routing protocols, MPLS fabric, L2VPN and L3VPN from service definition files, while others are [already deploying new WAN sites using automatically-generated configurations](https://blog.ipspace.net/2017/12/automate-remote-site-hardware-refresh.html).
+Meanwhile in the [network automation online class](http://www.ipspace.net/Building_Network_Automation_Solutions): some students are [working on building automation solutions](https://www.ipspace.net/NetAutSol/Solutions) that deploy IP routing protocols, MPLS fabric, L2VPN and L3VPN from service definition files, while others are [already deploying new WAN sites using automatically-generated configurations](/2017/12/automate-remote-site-hardware-refresh.html).

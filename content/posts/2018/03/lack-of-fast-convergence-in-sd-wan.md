@@ -45,7 +45,7 @@ However, if you do run routing protocol between SD-WAN appliances and other rout
 
 {{<figure src="/2018/03/s600-Large+Site+with+Routing.png" caption="Site using a routing protocol to implement internal layer-3 redundancy">}}
 
-Or maybe the SD-WAN vendors don't have to care because they're never asked about such mundane details. There must be plenty of customers believing in [magic powers of PowerPoint](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html) out there...
+Or maybe the SD-WAN vendors don't have to care because they're never asked about such mundane details. There must be plenty of customers believing in [magic powers of PowerPoint](/2011/09/long-distance-irf-fabric-works-best-in.html) out there...
 
 ### Want to know more?
 

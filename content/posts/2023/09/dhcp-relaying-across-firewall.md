@@ -4,7 +4,7 @@ date: 2023-09-12 06:36:00
 tags: [ DHCP, firewalls ]
 series: dhcp-relay
 ---
-Chinar Trivedi wanted to know what happens when you insert a firewall in the DHCP data path ([original question](https://blog.ipspace.net/2023/05/dhcp-redundant-vrf-relay.html#1833).
+Chinar Trivedi wanted to know what happens when you insert a firewall in the DHCP data path ([original question](/2023/05/dhcp-redundant-vrf-relay.html#1833).
 
 **TL&DR:** Nothing much, but that does not mean you should.
 

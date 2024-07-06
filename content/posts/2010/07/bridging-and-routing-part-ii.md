@@ -9,7 +9,7 @@ tags:
 title: Bridging and Routing, Part II
 url: /2010/07/bridging-and-routing-part-ii.html
 ---
-Based on the readers' comments on my "[*Bridging and Routing: is there a difference?*](https://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html)*"* post (thanks you!), here are a few more differences between bridging and routing:
+Based on the readers' comments on my "[*Bridging and Routing: is there a difference?*](/2010/07/bridging-and-routing-is-there.html)*"* post (thanks you!), here are a few more differences between bridging and routing:
 
 **Cost.** Layer-2 switches are almost always cheaper than layer-3 (usually combined layer-2/3) switches. There are numerous reasons for the cost difference, including:
 <!--more-->
@@ -17,7 +17,7 @@ Based on the readers' comments on my "[*Bridging and Routing: is there a differe
 -   MAC address lookup is simpler than IP table lookup and easier to implement in silicon. You need simple CAM ([Content Addressable Memory](http://en.wikipedia.org/wiki/Content-addressable_memory)) to perform MAC address lookup and [TCAM](#Ternary_CAMs) (Ternary CAM) with additional output logic to perform longest-IP-prefix matching.
 -   Layer-3 switches are expected to perform IP packet filtering. Implementing access lists in hardware (usually with even larger TCAM) is expensive.
 
-**Zero configuration.** In their simplest incarnation, the bridges are plug-and-play devices (magically [transforming themselves into plug-and-pray devices as the network grows](https://blog.ipspace.net/2009/12/ten-steps-of-small-lan-design.html)); it's quite easy to find a perfectly working switch named *Switch* with no non-default configuration in a badly managed network. Routers always require configuration (at the very minimum, you have to configure IP subnets and IP routing protocols).
+**Zero configuration.** In their simplest incarnation, the bridges are plug-and-play devices (magically [transforming themselves into plug-and-pray devices as the network grows](/2009/12/ten-steps-of-small-lan-design.html)); it's quite easy to find a perfectly working switch named *Switch* with no non-default configuration in a badly managed network. Routers always require configuration (at the very minimum, you have to configure IP subnets and IP routing protocols).
 
 However, as soon as VLANs are introduced into the network or you need to fine-tune STP, the zero-configuration benefits are gone.
 
@@ -53,7 +53,7 @@ Bridge assurance solves this issue, as does TRILL.
 
 **Size of fault domain.** Whole bridged network is a single fault domain (a fault anywhere in the network can impact the rest of it). A fault domain in a routed network is a single subnet.
 
-The *fault domain* issue is usually related to the behavior of STP, but extends to the forwarding plane as well. A [single misbehaving host attached to a bridged network can affect the whole network](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html).
+The *fault domain* issue is usually related to the behavior of STP, but extends to the forwarding plane as well. A [single misbehaving host attached to a bridged network can affect the whole network](/2012/05/layer-2-network-is-single-failure.html).
 
 **Anything else?** Have I still missed something? Leave a comment!
 

@@ -34,18 +34,18 @@ A separation of control plane (running their own software) and data plane (imple
 
 ### Meanwhile Deep Below the Cloudy Heights
 
-I have yet to meet a customer (academics might be an exception) that would consider writing their own control-plane software; most of my customers [aren't anywhere close to writing an SDN application](https://blog.ipspace.net/2013/09/do-you-really-want-to-program-your.html) on top of a controller framework (Open Daylight, Cisco XNC or HP VAN SDN controller).
+I have yet to meet a customer (academics might be an exception) that would consider writing their own control-plane software; most of my customers [aren't anywhere close to writing an SDN application](/2013/09/do-you-really-want-to-program-your.html) on top of a controller framework (Open Daylight, Cisco XNC or HP VAN SDN controller).
 
 {{<note>}}Buying a shrink-wrapped application bundled with commercial support might be a different story ... but then nobody really cares whether such a solution uses OpenFlow or [RFC 2549](http://tools.ietf.org/html/rfc2549); the protocols and encapsulation mechanisms used within a controller-based network solution are often proprietary and thus hard to troubleshoot anyway.{{</note>}}
 
 On the other hand, I keep hearing about common themes:
 
--   The need for [faster, more standardized, and automated provisioning](https://blog.ipspace.net/2013/03/what-did-you-do-to-get-rid-of-manual.html);
+-   The need for [faster, more standardized, and automated provisioning](/2013/03/what-did-you-do-to-get-rid-of-manual.html);
 -   The need for programmable network elements and vendor-neutral programming mechanisms (I'm looking at you, [netmod working group](http://datatracker.ietf.org/wg/netmod/));
 -   Centralized policies and decision making based on end-to-end visibility;
 -   Easier integration of network elements with orchestration and provisioning systems.
 
-Will physical separation of control and forward plane solve any of these? It might, but [there are numerous tools out there](https://blog.ipspace.net/2013/04/the-many-paths-to-sdn.html) that can do the same without overhauling everything we've been doing in the last 30 years.
+Will physical separation of control and forward plane solve any of these? It might, but [there are numerous tools out there](/2013/04/the-many-paths-to-sdn.html) that can do the same without overhauling everything we've been doing in the last 30 years.
 
 We don't need the physical separation of control plane to solve our problems (although the ability to control individual forwarding entries does help) ... and it will probably take a decade before we glimpse the promised savings of whitelabel switches and open-source software (even [Greg Ferro stopped believing that](https://www.networkcomputing.com/networking/sdn-doesnt-mean-cheaper-networking)).
 

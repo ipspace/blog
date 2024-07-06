@@ -7,11 +7,11 @@ tags:
 title: BGP Route Replication in MPLS/VPN PE-routers
 url: /2012/07/bgp-route-replication-in-mplsvpn-pe.html
 ---
-Whenever I'm explaining MPLS/VPN technology, I recommend using the same route targets (RT) and route distinguishers (RD) in all VRFs belonging to the same simple VPN. The *Single RD per VPN* recommendation [doesn't work well for multi-homed sites](https://blog.ipspace.net/2011/02/load-balancing-in-mplsvpn-networks-with.html), so one might wonder whether it would be better to use a different RD in every VRF. The RD-per-VRF design also works, but results in significantly increased memory usage on PE-routers.
+Whenever I'm explaining MPLS/VPN technology, I recommend using the same route targets (RT) and route distinguishers (RD) in all VRFs belonging to the same simple VPN. The *Single RD per VPN* recommendation [doesn't work well for multi-homed sites](/2011/02/load-balancing-in-mplsvpn-networks-with.html), so one might wonder whether it would be better to use a different RD in every VRF. The RD-per-VRF design also works, but results in significantly increased memory usage on PE-routers.
 <!--more-->
 ### Sample Network
 
-I'll illustrate the problem using the same network I used in [MPLS/VPN load balancing post](https://blog.ipspace.net/2011/02/load-balancing-in-mplsvpn-networks-with.html):
+I'll illustrate the problem using the same network I used in [MPLS/VPN load balancing post](/2011/02/load-balancing-in-mplsvpn-networks-with.html):
 
 {{<figure src="/2012/07/s1600-MPLSVPN_MH.png" caption="Sample network">}}
 
@@ -123,11 +123,11 @@ On top of the two routes received from PE-A and PE-B, there are two almost ident
 
 ### What's Going On?
 
-You probably know the basic principles of MPLS/VPN and BGP route selection ([read my MPLS/VPN books](https://blog.ipspace.net/2007/06/using-mpls-vpn-books-to-study-for-ccip.html) or watch my [Enterprise MPLS/VPN webinar](http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment) if you need more details). Best MPLS/VPN routes are selected using (approximately) this algorithm:
+You probably know the basic principles of MPLS/VPN and BGP route selection ([read my MPLS/VPN books](/2007/06/using-mpls-vpn-books-to-study-for-ccip.html) or watch my [Enterprise MPLS/VPN webinar](http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment) if you need more details). Best MPLS/VPN routes are selected using (approximately) this algorithm:
 
 1.  BGP routing process performs best path selection in the VPNv4 table using the [standard set of BGP path selection rules](http://www.cisco.com/en/US/tech/tk365/technologies_tech_note09186a0080094431.shtml).
 2.  The IPv4 parts of the best-path VPNv4 prefixes with the route targets matching local VRFs are inserted into the VRF routing tables (where they compete with routes learned through per-VRF routing protocols based on their administrative distance);
-3.  Per-VRF FIB is built from the VRF routing table (more details in [RIBs and FIBs](https://blog.ipspace.net/2010/09/ribs-and-fibs.html))
+3.  Per-VRF FIB is built from the VRF routing table (more details in [RIBs and FIBs](/2010/09/ribs-and-fibs.html))
 
 The first step in this process (BGP best path selection) cannot work correctly if the prefixes in VPNv4 table are not comparable. Remember: we have to compare the whole VPNv4 prefix as different customers might have overlapping address spaces.
 
@@ -173,7 +173,7 @@ Route Distinguisher: 65000:1101
 
 ### Summary
 
-If you offer a simple VPN service, the *use a single RD and RT value for a simple VPN* is still be best advice I can give you. If you plan to support [multipath load sharing](https://blog.ipspace.net/2011/02/load-balancing-in-mplsvpn-networks-with.html) or fast failover, the per-PE-per-VRF RD is one way to get it working, or you could use BGP Add Paths functionality if your platform supports it for VPNv4 prefixes.
+If you offer a simple VPN service, the *use a single RD and RT value for a simple VPN* is still be best advice I can give you. If you plan to support [multipath load sharing](/2011/02/load-balancing-in-mplsvpn-networks-with.html) or fast failover, the per-PE-per-VRF RD is one way to get it working, or you could use BGP Add Paths functionality if your platform supports it for VPNv4 prefixes.
 
 {{<note info>}}*nosx* made an excellent suggestion: use RDs in the *global.ipv4.loopback.address:vpnid* format. The RDs will definitely be unique, and you might find the presence of PE router identifier (its loopback address) useful during troubleshooting.{{</note>}}
 

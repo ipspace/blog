@@ -56,7 +56,7 @@ Every large enough system is full of circular dependencies (someone should make 
 
 Couldn't we avoid the dependencies? Of course, we could if someone could visualize the whole picture[^1], but that tends to be impossible in large enough systems. Another root cause might be the stability of the infrastructure[^2] -- when infrastructure is stable enough, its users take it as a given (see also: [first fallacy of distributed computing](https://my.ipspace.net/bin/get/Net101/F2.1%20-%20Network%20Is%20%28Not%29%20Reliable.mp4?doccode=Net101)).
 
-What else could we do? Test, test, test. Trigger real failures ([don't fake them](https://blog.ipspace.net/2019/09/disaster-recovery-test-faking-another.html)), learn from them, and fix stuff. [All the big players do that](https://queue.acm.org/detail.cfm?id=2371297); maybe it's time for you to start as well.
+What else could we do? Test, test, test. Trigger real failures ([don't fake them](/2019/09/disaster-recovery-test-faking-another.html)), learn from them, and fix stuff. [All the big players do that](https://queue.acm.org/detail.cfm?id=2371297); maybe it's time for you to start as well.
 
 [^1]: This is a perfect time to mention AI/ML as the fix to all problems.
 

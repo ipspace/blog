@@ -7,7 +7,7 @@ lastmod: 2020-11-20 15:27:00
 url: /2008/01/bgp-essentials-peer-session-templates.html
 series: bgp-essentials
 ---
-Configuring a large number of similar BGP peers on a router and ensuring that the changes in your routing policy or BGP design are applied to all of them can be a management nightmare. BGP peer groups were the only scalability tool available on Cisco IOS until the IOS release 12.3T and they had significant limitations as they were also used as a [performance improvement tool](https://blog.ipspace.net/2006/10/bgp-peer-groups-no-longer-performance.html).
+Configuring a large number of similar BGP peers on a router and ensuring that the changes in your routing policy or BGP design are applied to all of them can be a management nightmare. BGP peer groups were the only scalability tool available on Cisco IOS until the IOS release 12.3T and they had significant limitations as they were also used as a [performance improvement tool](/2006/10/bgp-peer-groups-no-longer-performance.html).
 
 IOS releases 12.0S and 12.3T introduced *peer templates*, a scalable hierarchical way of configuring BGP session parameters and inbound/outbound policies. For example, to configure the *session parameters* for all your IBGP sessions, use the following session template:
 

@@ -5,7 +5,7 @@ date: "2009-11-06T07:24:00.004+01:00"
 tags: [ QoS ]
 ---
 
-<p>I have to admit I was somewhat surprised by the lab test results I’ve <a href="https://blog.ipspace.net/2009/11/cb-wfq-misconceptions.html">published in my previous CB-WFQ post</a>. It looks like we’ve been fed misleading information about (classic) CB-WFQ behavior for years.</p>
+<p>I have to admit I was somewhat surprised by the lab test results I’ve <a href="/2009/11/cb-wfq-misconceptions.html">published in my previous CB-WFQ post</a>. It looks like we’ve been fed misleading information about (classic) CB-WFQ behavior for years.</p>
 <p class="note">Don’t tell me that things are completely different with HQF implemented in IOS releases 12.4(late)T and 15.0. I know that … but 95+% of the installed base do not use those releases.</p>
 <p>Let’s see whether you can figure out what my next lab test results showed. I’ve been running three parallel TTCP sessions on ports 5001, 5002 and 5003 across a 256 kbit point-to-point link. Here’s the relevant part of my router configuration:</p>
 <!--more--><pre class="code">policy-map WAN<br/> class P5001<br/>  bandwidth percent 50<br/> class P5002<br/>   police rate percent 50<br/>     violate-action drop<br/>!<br/>interface Serial0/1/0<br/> bandwidth 256<br/> clock rate 256000<br/> ip address 10.0.6.1 255.255.255.252<br/> encapsulation ppp<br/> ip ospf 1 area 0<br/> load-interval 30<br/> service-policy output WAN</pre><p class="info">TTCP is a program that sends meaningless data across a TCP session. It’s a nice load to use in a QoS test, as it uses TCP stack (ensuring it behaves like a real application) but still sends the data as fast as possible (as it spends no time generating it).</p>
@@ -14,5 +14,5 @@ tags: [ QoS ]
 <li>A single TTCP session is running on port 5002. How much bandwidth does it get?</li>
 <li>Three parallel TTCP sessions are running on ports 5001, 5002 and 5003. How much bandwidth does each session get?</li>
 </ul>
-<p class="note">Try to find the answer before <a href="https://blog.ipspace.net/2009/11/summary-bandwidthpolice-actions-in-cb.html">reading the solution</a>.</p>
+<p class="note">Try to find the answer before <a href="/2009/11/summary-bandwidthpolice-actions-in-cb.html">reading the solution</a>.</p>
 

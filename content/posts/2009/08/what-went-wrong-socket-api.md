@@ -6,7 +6,7 @@ tags:
 title: 'What Went Wrong: the Socket API'
 url: /2009/08/what-went-wrong-socket-api.html
 ---
-You might think that the [lack of a decent session layer in the TCP/IP protocol suite](https://blog.ipspace.net/2009/08/what-went-wrong-tcpip-lacks-session.html) is the main culprit for our reliance on IP multihoming and [related explosion of the IP routing tables](https://blog.ipspace.net/2009/06/internet-anarchy-ill-advertise-whatever.html). Unfortunately, we have an even bigger problem: the [Berkeley Socket API](http://en.wikipedia.org/wiki/Berkeley_sockets), which is around 40 years old and used in almost all TCP/IP software implementations  and clients (including high-level scripting languages like PERL or Python).
+You might think that the [lack of a decent session layer in the TCP/IP protocol suite](/2009/08/what-went-wrong-tcpip-lacks-session.html) is the main culprit for our reliance on IP multihoming and [related explosion of the IP routing tables](/2009/06/internet-anarchy-ill-advertise-whatever.html). Unfortunately, we have an even bigger problem: the [Berkeley Socket API](http://en.wikipedia.org/wiki/Berkeley_sockets), which is around 40 years old and used in almost all TCP/IP software implementations  and clients (including high-level scripting languages like PERL or Python).
 <!--more-->
 To establish a client-to-server connection using Socket API you have to perform these calls:
 
@@ -47,7 +47,7 @@ Address: 66.196.121.40
 The DNS entry for *scs.msg.yahoo.com* looks awesome, but doesn't help a bit unless the client application uses that information. In reality, most applications:
 
 * Perform the *getaddrinfo()* call which returns the list of addresses (regardless of whether they are reachable or not) 
-* Use the first address (or all of them in sequence) in the *connect()* call ([happy eyeballs](https://blog.ipspace.net/2013/03/happy-eyeballs-happiness-defined-by.html) implementations are an obvious exception).
+* Use the first address (or all of them in sequence) in the *connect()* call ([happy eyeballs](/2013/03/happy-eyeballs-happiness-defined-by.html) implementations are an obvious exception).
 
 If the DNS lookup returned a temporarily unreachable IP address you're doomed.
 

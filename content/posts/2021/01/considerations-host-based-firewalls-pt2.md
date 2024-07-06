@@ -9,7 +9,7 @@ title: Considerations for Host-based Firewalls (Part 2)
 ---
 *This is a guest blog post by [Matthias Luft](https://www.linkedin.com/in/matthias-luft-b50b7219/), Principal Platform Security Engineer @ Salesforce, and a regular [ipSpace.net guest speaker](https://www.ipspace.net/Author:Matthias_Luft).*
 
-A couple of months ago I had the pleasure to publish my [first guest post here](https://blog.ipspace.net/2020/09/considerations-host-based-firewalls.html) and, as to be expected from ipspace.net, it triggered some great discussion.
+A couple of months ago I had the pleasure to publish my [first guest post here](/2020/09/considerations-host-based-firewalls.html) and, as to be expected from ipspace.net, it triggered some great discussion.
 
 With this input and some open thoughts from the last post, I want to dive into a few more topics. 
 <!--more-->

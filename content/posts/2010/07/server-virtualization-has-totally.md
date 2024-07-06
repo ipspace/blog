@@ -9,7 +9,7 @@ url: /2010/07/server-virtualization-has-totally.html
 ---
 There's an extremely good reason Brad Hedlund mentioned server virtualization in his [career advice](http://twitter.com/bradhedlund/statuses/18541080479): it has fundamentally changed the Data Center networking.
 
-Years ago, we've treated servers as oversized IP hosts. From the networking perspective, they were no different from other IP hosts. Some of them had [weird clustering requirements](https://blog.ipspace.net/2009/08/turn-switch-into-hub-microsoft-way.html), some of them had [multiple uplinks that had to be managed somehow](https://blog.ipspace.net/2009/06/multihomed-ip-hosts.html), but those were just minor details. Server virtualization is a completely different beast.
+Years ago, we've treated servers as oversized IP hosts. From the networking perspective, they were no different from other IP hosts. Some of them had [weird clustering requirements](/2009/08/turn-switch-into-hub-microsoft-way.html), some of them had [multiple uplinks that had to be managed somehow](/2009/06/multihomed-ip-hosts.html), but those were just minor details. Server virtualization is a completely different beast.
 <!--more-->
 Let's take a look at the server virtualization from the networking perspective. This technology allows you to run multiple totally independent servers (virtual machines) inside the same physical server. Obviously each one of these virtual servers needs its own IP address, has to communicate with the outside world and (potentially) belongs to a different security zone than other servers running on the same hardware. Some VMs might also need to communicate with other VMs running on the same physical server (for example, a web server VM communicating with a database VM).
 

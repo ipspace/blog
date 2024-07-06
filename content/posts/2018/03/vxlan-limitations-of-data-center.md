@@ -17,9 +17,9 @@ Based on that document he became concerned whether merchant silicon switches mig
 
 Realistically, what that document is saying is \"*if you\'re careless enough to have all VLANs configured on all ports, you won\'t be able to have more than 300 VLANs on every port of a 48-port 10GE switch*\". Honestly, I would be scared of having 300 VLANs on every server-facing switch port no matter what the chipset limitations might be\... and why would you need 300 VLANs for 1000 VMs anyway?
 
-If you need more than a few dozen segments, you should either use a hypervisor-based virtual networking solution (example: NSX), an orchestration system that synchronizes the needs of physical and virtual switches, or a [single-image data center fabric](https://blog.ipspace.net/2018/02/single-image-systems-or-automated.html) that does that behind the scenes.
+If you need more than a few dozen segments, you should either use a hypervisor-based virtual networking solution (example: NSX), an orchestration system that synchronizes the needs of physical and virtual switches, or a [single-image data center fabric](/2018/02/single-image-systems-or-automated.html) that does that behind the scenes.
 
-{{<note info>}}One of them is [architecturally correct](https://blog.ipspace.net/2011/05/complexity-belongs-to-network-edge.html), the other one preferred by networking vendors telling you how you [should keep supporting legacy infrastructure for the next millennium](http://blog.ipspace.net/2013/06/network-virtualization-and-spaghetti.html).{{</note>}}
+{{<note info>}}One of them is [architecturally correct](/2011/05/complexity-belongs-to-network-edge.html), the other one preferred by networking vendors telling you how you [should keep supporting legacy infrastructure for the next millennium](/2013/06/network-virtualization-and-spaghetti.html).{{</note>}}
 
 Numerous vendors have edge VLAN pruning solutions that try to pull information out of vCenter (VM Tracer, VM Tracker\...); you'll find them described in [*Data Center Fabric Architectures*](http://www.ipspace.net/Data_Center_Fabrics) webinar. The same vendors usually integrate with other orchestration systems like OpenStack.
 

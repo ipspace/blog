@@ -11,7 +11,7 @@ tags:
 title: Disaster Recovery Faking, Take Two
 url: /2019/10/disaster-recovery-faking-take-two.html
 ---
-An anonymous (for reasons that will be obvious pretty soon) commenter left a gem on my [Disaster Recovery Test Faking](https://blog.ipspace.net/2019/09/disaster-recovery-test-faking-another.html) blog post that is way too valuable to be left hidden and unannotated.
+An anonymous (for reasons that will be obvious pretty soon) commenter left a gem on my [Disaster Recovery Test Faking](/2019/09/disaster-recovery-test-faking-another.html) blog post that is way too valuable to be left hidden and unannotated.
 
 Here's what he did:
 
@@ -21,11 +21,11 @@ That's the right first step: simulate the simplest scenario (total DC failure) i
 <!--more-->
 > A word and a blow. Spanning tree converged pretty fast. The stretched VLANs were all functional on the DR site.
 
-... but it also exposed all the shortcomings of [PowerPoint-based designs](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html) promoted by \$vendor engineers and copycat consultants:
+... but it also exposed all the shortcomings of [PowerPoint-based designs](/2011/09/long-distance-irf-fabric-works-best-in.html) promoted by \$vendor engineers and copycat consultants:
 
 > But there were split brain scenarios on firewalls all over the place.
 
-Also, [nobody ever thinks about storage when talking about automated disaster recovery](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html) using stretched VLANs because "*we do synchronous replication so what could possibly go wrong*". Well, as expected:
+Also, [nobody ever thinks about storage when talking about automated disaster recovery](/2013/01/long-distance-vmotion-stretched-ha.html) using stretched VLANs because "*we do synchronous replication so what could possibly go wrong*". Well, as expected:
 
 > Even worse the storage (iSCSI) didn't survive because it couldn't build the quorum and so the storage wasn't accessible on the DR site.
 
@@ -33,7 +33,7 @@ Final result: total failure.
 
 > After some minutes no machines (also virtual load balancers) were reachable. Also vCenter wasn't reachable any more and so they couldn't do anything. After bringing the core switches back online it took them hours to recover from the mess.
 
-Let me recap: someone proposed a disaster recovery architecture (stretched VLANs) that is not only [totally broken from resilience perspective](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html) and [is a potential ticking bomb](https://blog.ipspace.net/2019/05/real-life-data-center-meltdown.html), it doesn't even work when needed.
+Let me recap: someone proposed a disaster recovery architecture (stretched VLANs) that is not only [totally broken from resilience perspective](/2012/05/layer-2-network-is-single-failure.html) and [is a potential ticking bomb](/2019/05/real-life-data-center-meltdown.html), it doesn't even work when needed.
 
 Just in case you think that's an isolated incident: major networking and virtualization vendors are selling the same fairy tale to their customers every day without ever mentioning the drawbacks or caveats.
 

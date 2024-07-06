@@ -21,7 +21,7 @@ A bit of terminology first (which you'd be very familiar with if you ever had to
 RT and RD are control-plane constructs used to make BGP prefixes unique (RD) and to control route import from global BGP table into per-tenant forwarding table (RT).
 
 {{<note>}}
-Various implementations might have several intermediate steps where the tenant routes would be collected in BGP table before being copied into per-tenant routing table and finally into per-tenant forwarding table (see also: [RIB and FIB](https://blog.ipspace.net/2010/09/ribs-and-fibs.html)).
+Various implementations might have several intermediate steps where the tenant routes would be collected in BGP table before being copied into per-tenant routing table and finally into per-tenant forwarding table (see also: [RIB and FIB](/2010/09/ribs-and-fibs.html)).
 {{</note>}}
 
 VNI is data-plane construct used to select local MAC address table or IP forwarding table.

@@ -16,7 +16,7 @@ They measured the failover times caused by the primary uplink loss and figured o
 <!--more-->
 {{<figure src="https://bgplabs.net/policy/topology-policy-2isp.png" caption="Approximate network diagram">}}
 
-Such a long convergence time is unusual and often indicates a failure to [detect link- or neighbor loss in a timely manner](https://blog.ipspace.net/2020/11/detecting-network-failure.html). [BFD is the best alternative](https://blog.ipspace.net/2017/10/to-bfd-or-not-to-bfd.html) when the link loss is not signaled correctly to the higher-layer protocols. Unfortunately, one has to configure it on both ends of a connection, and some ISPs still haven't got the "*BFD is better than BGP timers*" memo.
+Such a long convergence time is unusual and often indicates a failure to [detect link- or neighbor loss in a timely manner](/2020/11/detecting-network-failure.html). [BFD is the best alternative](/2017/10/to-bfd-or-not-to-bfd.html) when the link loss is not signaled correctly to the higher-layer protocols. Unfortunately, one has to configure it on both ends of a connection, and some ISPs still haven't got the "*BFD is better than BGP timers*" memo.
 
 {{<long-quote>}}
 BFD Echo mode might seem to be a workaround; using it, a router sends packets to itself and uses layer-2 encapsulation to route them through the adjacent device. However:
@@ -44,7 +44,7 @@ Here's what's going on behind the scenes:
 **Takeaway:**
 
 * Don't configure BGP Graceful Restart until you know full well what you're doing and what the implications are[^AMOT]
-* Graceful Restart is a good idea *if and only if* you can [reliably detect forwarding path failures using a mechanism like BFD](https://blog.ipspace.net/2021/10/graceful-restart-bfd.html) ([more caveats](https://blog.ipspace.net/2021/10/repost-bfd-gr.html)).
+* Graceful Restart is a good idea *if and only if* you can [reliably detect forwarding path failures using a mechanism like BFD](/2021/10/graceful-restart-bfd.html) ([more caveats](/2021/10/repost-bfd-gr.html)).
 * Using Graceful Restart when relying on BGP timers to detect BGP neighbor loss is useless. All it does is prolong the inevitable pain unless you experience control-plane failures more often than link failures, in which case you're dealing with a more severe challenge than convergence speed.
 
 [^AMOT]: That same rule can be applied to many other things. It is consistently ignored in the blatant throwing-spaghetti-at-the-wall style by people indiscriminately using Google or AI to solve their challenges.

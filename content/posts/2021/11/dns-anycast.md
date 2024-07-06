@@ -64,7 +64,7 @@ Finally, consider the amount of DNS traffic any member of the FAANG club must be
 
 ### Lessons learned
 
-* Anycast DNS is used in most large-scale environments to provide resilience, scalability, improved reliability, and other features like geographic load balancing (for more details, listen to the [podcast I did with NS1 in 2015](https://blog.ipspace.net/2015/04/nsone-data-driven-dns-on-software-gone.html)).
+* Anycast DNS is used in most large-scale environments to provide resilience, scalability, improved reliability, and other features like geographic load balancing (for more details, listen to the [podcast I did with NS1 in 2015](/2015/04/nsone-data-driven-dns-on-software-gone.html)).
 * Your network or DNS traffic is not remotely similar to Facebook's (or root name servers).
 * Whatever lessons and experience you might have gained running your environment for ages might not be relevant in dissimilar-enough environments.
 * Sometimes people do stuff for good reasons. It might be worth figuring out what their reasoning is even if you disagree with them -- that's how we learn and become better engineers.

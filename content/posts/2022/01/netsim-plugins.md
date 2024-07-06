@@ -58,7 +58,7 @@ def init(topo: Box) -> None:
 
 {{<note>}}
 * Python Box module makes deeply nested dictionaries a pleasure to work with -- imagine having to do the same with traditional hodgepodge of square brackets and quotes.
-* BGP anycast attribute is explained in the [Building a BGP Anycast Lab](https://blog.ipspace.net/2021/12/bgp-anycast-lab.html) blog post.
+* BGP anycast attribute is explained in the [Building a BGP Anycast Lab](/2021/12/bgp-anycast-lab.html) blog post.
 {{</note>}}
 
 Finally, I wanted to modify the lists of BGP neighbors once the [topology transformation](https://netlab.tools/dev/transform/) has been complete. **post_transform** seemed the perfect [hook to use](https://netlab.tools/plugins/), and all I had to do was to:

@@ -5,7 +5,7 @@ date: "2016-06-14T08:30:00.000+02:00"
 tags: [ SDN,OpenFlow ]
 ---
 
-<p>A while ago I discussed <a href="https://blog.ipspace.net/2016/05/is-xmpp-control-or-management-plane.html">whether XMPP is a control- or management-plane protocol</a> (spoiler: it depends). How about OVSDB? Here’s another question from one of my readers:</p>
+<p>A while ago I discussed <a href="/2016/05/is-xmpp-control-or-management-plane.html">whether XMPP is a control- or management-plane protocol</a> (spoiler: it depends). How about OVSDB? Here’s another question from one of my readers:</p>
 <blockquote class="cite">Why is Openflow considered as control plane protocol and OVSDB management plane protocol if both are relying on SDN controller? Is it because Openflow can directly modify the dataplane?</blockquote>
 <p>SDN controllers can use control- or management-plane protocols to get the job done.<!--more--> If an SDN controller is <em>configuring a control plane </em>in an independent device, it’s clearly using a management-plane protocol, if it’s <em>exchanging information with peers </em>or <em>configuring forwarding entries</em> it’s using a control-plane protocol.</p>
 <p>The vanilla Open vSwitch implementation uses OpenFlow to configure forwarding entries, and OVSDB to configure interfaces and datapaths (virtual switches) in OVS, resulting in the idea that OVSDB is a management-plane protocol.</p>

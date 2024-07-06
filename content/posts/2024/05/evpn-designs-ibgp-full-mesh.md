@@ -213,7 +213,7 @@ Total Remote Mac Addresses for this criterion: 1
 Let's start with the **benefits**:
 
 * The ingress replication lists are built automatically.
-* Each VLAN (EVPN instance) has an independent ingress replication list, which means that the client traffic is flooded only to the VTEPs with a compatible (according to route targets) EVPN instance. That's a massive win in Carrier Ethernet networks where a customer port often has a single VLAN. It is somewhat irrelevant in data center environments where we [usually configure every VLAN on every server port](https://blog.ipspace.net/2011/12/vm-aware-networking-improves-iaas-cloud.html) so we don't have to talk with the server team.
+* Each VLAN (EVPN instance) has an independent ingress replication list, which means that the client traffic is flooded only to the VTEPs with a compatible (according to route targets) EVPN instance. That's a massive win in Carrier Ethernet networks where a customer port often has a single VLAN. It is somewhat irrelevant in data center environments where we [usually configure every VLAN on every server port](/2011/12/vm-aware-networking-improves-iaas-cloud.html) so we don't have to talk with the server team.
 
 What about the **drawbacks**?
 
@@ -227,6 +227,6 @@ Should you choose EVPN when building a small data center that provides VLAN conn
 
 [^NT]: Unless you want to play with a new toy or boost your resume.
 
-[^AAMH]: The server team might [not want the link aggregation anyway](https://blog.ipspace.net/2014/01/vsphere-does-not-need-lag-bandaids.html). Most virtualization solutions are happier with multiple independent uplinks.
+[^AAMH]: The server team might [not want the link aggregation anyway](/2014/01/vsphere-does-not-need-lag-bandaids.html). Most virtualization solutions are happier with multiple independent uplinks.
 
 {{<next-in-series page="/posts/2024/05/bgp-rr-considered-harmful.html" />}}

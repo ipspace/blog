@@ -27,4 +27,4 @@ You can use the tricks [described in the previous blog post](/2022/03/hub-spoke-
 2022-03-18
 : Added tLDP-over-SR implementation gotcha
 
-[^LABL]: By default, [Cisco IOS assigns a label to every prefix, while Junos assigns labels only to loopback interfaces](https://blog.ipspace.net/2011/11/junos-versus-cisco-ios-mpls-and-ldp.html).
+[^LABL]: By default, [Cisco IOS assigns a label to every prefix, while Junos assigns labels only to loopback interfaces](/2011/11/junos-versus-cisco-ios-mpls-and-ldp.html).

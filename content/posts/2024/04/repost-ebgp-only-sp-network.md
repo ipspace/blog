@@ -3,7 +3,7 @@ title: "Repost: EBGP-Mostly Service Provider Network"
 date: 2024-04-01 08:08:00+0200
 tags: [ BGP, design ]
 ---
-Daryll Swer [left a long comment](https://blog.ipspace.net/2024/03/arista-interface-ebgp.html#2157) describing how he designed a Service Provider network running in numerous private autonomous systems. While I might not agree with everything he wrote, it's an interesting idea and conceptually pretty similar to what we did 25 years ago (IBGP without IGP, running across physical interfaces, with every router being a route-reflector client of every other router), or how some very large networks were using BGP confederations.
+Daryll Swer [left a long comment](/2024/03/arista-interface-ebgp.html#2157) describing how he designed a Service Provider network running in numerous private autonomous systems. While I might not agree with everything he wrote, it's an interesting idea and conceptually pretty similar to what we did 25 years ago (IBGP without IGP, running across physical interfaces, with every router being a route-reflector client of every other router), or how some very large networks were using BGP confederations.
 
 Just remember (as someone from Cisco TAC told me in those days) that "_you might be the only one in the world doing it and might hit bugs no one has seen before_."
 <!--more-->

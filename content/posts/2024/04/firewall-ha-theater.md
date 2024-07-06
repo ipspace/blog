@@ -7,7 +7,7 @@ high-availability_tag: ignore
 series:
 - ha-cluster
 ---
-Dmitry Perets wrote an [excellent description of how typical firewall cluster solutions implement control-plane high availability](https://blog.ipspace.net/2024/01/bgp-graceful-restart-harmful.html#2069), in particular, the routing protocol Graceful Restart feature (slightly edited):
+Dmitry Perets wrote an [excellent description of how typical firewall cluster solutions implement control-plane high availability](/2024/01/bgp-graceful-restart-harmful.html#2069), in particular, the routing protocol Graceful Restart feature (slightly edited):
 
 ---
 
@@ -61,5 +61,5 @@ As always, software developers believe in the quality of their code, create solu
 
 Is there an alternative? Of course. Don't believe in the magic of firewall clusters. Instead, use two independent firewalls and run BGP with them. Even better, run BGP across them to determine which one has a working data plane.
 
-Want to know more? Read the [BGP as a High-Availability Protocol](https://blog.ipspace.net/kb/BGPHighAvailability/) article by Nicola Modena.
+Want to know more? Read the [BGP as a High-Availability Protocol](/kb/BGPHighAvailability/) article by Nicola Modena.
 

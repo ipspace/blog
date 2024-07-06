@@ -58,4 +58,4 @@ Lesson learned: having too many moving parts results in interesting and hard-to-
 
 > Junos doesn’t differentiate (AD wise) between eBGP and iBGP routes, both have AD of 170 (OSPF 10/150), so IGP always wins (predictably). EOS, while supporting weight, doesn’t set it to higher value for redistributed routes.
 
-In other words: a perfect scenario to troubleshoot when your network is down on a Sunday night. Don't try to fix it by [using BGP as the universal answer to life, the Universe and everything](https://blog.ipspace.net/2021/06/use-best-tool-for-job.html). Having a sane and simple design is a much better alternative.
+In other words: a perfect scenario to troubleshoot when your network is down on a Sunday night. Don't try to fix it by [using BGP as the universal answer to life, the Universe and everything](/2021/06/use-best-tool-for-job.html). Having a sane and simple design is a much better alternative.

@@ -12,7 +12,7 @@ Both switches are single-ASIC switches. They have the same total switching bandw
 
 > I don’t know if that means that the -FX variant can not give all the bandwidth to all ports at the same time, or if it is not a non-blocking switch.
 
-Whether a switch is non-blocking switch depends on internal architecture (whatever “non-blocking” means for a single-ASIC design). Can it saturate all links? Most probably it can assuming the forwarded packets are big enough. For more details, see _[Does Small Packet Forwarding Performance Matter in Data Center Switches?](https://blog.ipspace.net/2021/05/small-packet-forwarding-performance.html)_ and follow the links.
+Whether a switch is non-blocking switch depends on internal architecture (whatever “non-blocking” means for a single-ASIC design). Can it saturate all links? Most probably it can assuming the forwarded packets are big enough. For more details, see _[Does Small Packet Forwarding Performance Matter in Data Center Switches?](/2021/05/small-packet-forwarding-performance.html)_ and follow the links.
 
 [Lukas Krattiger](https://www.ipspace.net/Author:Lukas_Krattiger) confirmed the numbers and did the math for me:
 

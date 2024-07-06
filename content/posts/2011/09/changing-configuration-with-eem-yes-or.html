@@ -5,7 +5,7 @@ date: "2011-09-15T07:08:00.000+02:00"
 tags: [ configuration,BGP,EEM ]
 ---
 
-<p>Daniel left a very relevant comment to my <a href="https://blog.ipspace.net/2011/09/shut-down-bgp-session-based-on-tracked.html">convoluted BGP session shutdown solution</a>:</p>
+<p>Daniel left a very relevant comment to my <a href="/2011/09/shut-down-bgp-session-based-on-tracked.html">convoluted BGP session shutdown solution</a>:</p>
 <blockquote class="cite">What I am currently doing is using EEM to watch my tracked objects and then issuing a neighbor shutdown command. Is there a functional reason I would not want to do it that way, and use the method you prescribe?</blockquote>
 <p>As always, the answer is “<em>it depends.</em>” In this case, the question to ask yourself is: “<em>do I track configuration changes and react to them?</em>”<!--more--></p>
 <p>Changing the router configuration with an EEM applet is no different from changing it through a terminal session. Let’s solve the BGP session shutdown challenge with a simple EEM applet:</p>
@@ -19,6 +19,6 @@ tags: [ configuration,BGP,EEM ]
 </ul>
 <p>On top of that, the configuration-tracking network management tools (RANCID, SolarWinds ...) might generate <em>configuration changed </em>alerts and you’ll be prompted whether you want to save the changed running configuration the next time you’ll try to reload the router.</p>
 <p>Last but definitely not least, if you do save the changed configuration (when the BGP neighbor is disabled), the change made by the EEM applet will be stored in the startup configuration. Not a good idea.</p>
-<p class="info">To avoid the problems caused by saves of EEM-changed configurations, always create a third EEM applet that <a href="https://blog.ipspace.net/2007/04/fix-router-configuration-after-reload.html">applies the desired configuration after the router reload</a> (in our case, <strong>no neighbor shutdown</strong>).</p>
-<p><strong>Summary:</strong> As always, consider all side effects of your solution. On one hand, configuration changes done within an EEM applet trigger all sorts of alerts (if you track configuration changes); on the other hand, the <a href="https://blog.ipspace.net/2011/09/shut-down-bgp-session-based-on-tracked.html">static route-based solution</a> might be too convoluted for your support team (and impossible to troubleshoot at 1AM on Sunday, January 2<span style="vertical-align: super; font-size: 80%;">nd</span>). </p>
+<p class="info">To avoid the problems caused by saves of EEM-changed configurations, always create a third EEM applet that <a href="/2007/04/fix-router-configuration-after-reload.html">applies the desired configuration after the router reload</a> (in our case, <strong>no neighbor shutdown</strong>).</p>
+<p><strong>Summary:</strong> As always, consider all side effects of your solution. On one hand, configuration changes done within an EEM applet trigger all sorts of alerts (if you track configuration changes); on the other hand, the <a href="/2011/09/shut-down-bgp-session-based-on-tracked.html">static route-based solution</a> might be too convoluted for your support team (and impossible to troubleshoot at 1AM on Sunday, January 2<span style="vertical-align: super; font-size: 80%;">nd</span>). </p>
 

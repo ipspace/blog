@@ -21,6 +21,6 @@ Don't get the reference? Search for IETF drafts and RFCs Fernando wrote and watc
 
 I don't understand the obsession with universally extensible tools. There's a reason every craftsman has a toolbox of tools that are just right for the job instead of a giant Swiss Army Knife.
 
-However, don't worry -- IETF NVO3 working group has an answer: [Geneve](https://tools.ietf.org/pdf/draft-ietf-nvo3-geneve-08.pdf). It's hardware-friendly (so the lightning talk) and has extensible header that can be up to 260 bytes long. I've heard that before... and it didn't end well -- we got to a point where [software developers gave up on using smart NIC features](https://blog.ipspace.net/2018/09/smart-or-dumb-nics-on-software-gone-wild.html) because of all the underlying complexity.
+However, don't worry -- IETF NVO3 working group has an answer: [Geneve](https://tools.ietf.org/pdf/draft-ietf-nvo3-geneve-08.pdf). It's hardware-friendly (so the lightning talk) and has extensible header that can be up to 260 bytes long. I've heard that before... and it didn't end well -- we got to a point where [software developers gave up on using smart NIC features](/2018/09/smart-or-dumb-nics-on-software-gone-wild.html) because of all the underlying complexity.
 
 I can't help but being reminded of RFC1925 Rule 5... and even if I'm wrong (and I would love to be), do remember that every time someone designs a universal extensible protocol, you'll be paying for the increased complexity and associated security SNAFUs of every device using it.

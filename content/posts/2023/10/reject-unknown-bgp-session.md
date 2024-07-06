@@ -8,7 +8,7 @@ netlab_tag: use
 ---
 TL&DR: Violating the [Betteridge's Law of Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines), the answer is "_Yes, but the devil is in the details._"
 
-It all started with the following observation by Minh Ha left as a comment to my previous [BGP session security blog post](https://blog.ipspace.net/2023/10/bgp-session-security-snafu.html):
+It all started with the following observation by Minh Ha left as a comment to my previous [BGP session security blog post](/2023/10/bgp-session-security-snafu.html):
 
 > I'd think it'd be obvious for BGP routers to only accept incoming sessions from configured BGP neighbors, right? Because BGP is the most critical infrastructure, the backbone of the Internet, why would you want your router to accept incoming session from anyone but KNOWN sources?
 
@@ -234,7 +234,7 @@ Here's the shocking **tcpdump** printout. Note that while I was using FRR as the
 * Cisco IOSv is better, but we don't know how early in the packet processing path the TCP SYN packet is rejected.
 * Arista EOS (and any other device using a similar approach) will waste the fewest amount of CPU cycles fighting the TCP SYN flood, but might still be prone to denial-of-service attacks.
 
-Here's another opportunity for a _you have no clue_ comment -- after all, most high-speed network devices protect their CPU with [Control Plane Protection](https://blog.ipspace.net/2008/11/control-plane-protection-overview.html) (or Policing). That's cool, but yet again the details matter:
+Here's another opportunity for a _you have no clue_ comment -- after all, most high-speed network devices protect their CPU with [Control Plane Protection](/2008/11/control-plane-protection-overview.html) (or Policing). That's cool, but yet again the details matter:
 
 * Is there a hardware mechanism that drops TCP SYN packets for port 179 coming from unknown IP addresses? Lacking that, valid BGP sessions and TCP SYN floods end in the same category.
 * Is there a separate CoPP entry that limits TCP SYN packets or do all BGP packets pass the same rate-limiting hardware? If a device treats all BGP packets in the same way it's trivial to bring down all BGP sessions with a TCP SYN flood or a stream of fake packet that consume enough bandwidth.

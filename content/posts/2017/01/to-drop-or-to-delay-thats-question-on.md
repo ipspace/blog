@@ -8,7 +8,7 @@ tags:
 title: To Drop or To Delay, That’s the Question on Software Gone Wild
 url: /2017/01/to-drop-or-to-delay-thats-question-on.html
 ---
-A while ago I decided it\'s time to figure out [whether it\'s better to drop or to delay TCP packets](https://blog.ipspace.net/2016/09/policing-or-shaping-it-depends.html), and quickly figured out you get 12 opinions (usually with no real arguments supporting them) if you ask 10 people. Fortunately, I know someone who deals with TCP performance for living, and [Juho Snellman](https://www.snellman.net/blog/) was kind enough to agree to record another podcast.
+A while ago I decided it\'s time to figure out [whether it\'s better to drop or to delay TCP packets](/2016/09/policing-or-shaping-it-depends.html), and quickly figured out you get 12 opinions (usually with no real arguments supporting them) if you ask 10 people. Fortunately, I know someone who deals with TCP performance for living, and [Juho Snellman](https://www.snellman.net/blog/) was kind enough to agree to record another podcast.
 
 {{<note update>}}Update 2017-03-31: Added *More information* section{{</note>}}
 <!--more-->

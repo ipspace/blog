@@ -7,7 +7,7 @@ Ever since [draft-lapukhov](https://datatracker.ietf.org/doc/html/draft-lapukhov
 <!--more-->
 Russ White[^1] argued[^2] that's not the case, dived deep into what the true requirements are, and showed how link-state protocols do a better job if only we fix the flooding behavior[^3].
 
-In the meantime, while many hyperscalers moved beyond BGP-as-the-only-tool mantra, all major data center switching vendors keep promoting [EBGP-over-EBGP or IBGP-over-EBGP EVPN designs](https://blog.ipspace.net/2019/11/the-evpn-dilemma.html), proving yet again how the whole networking industry behaves like fashion designers on a lemming run chasing the latest fad.
+In the meantime, while many hyperscalers moved beyond BGP-as-the-only-tool mantra, all major data center switching vendors keep promoting [EBGP-over-EBGP or IBGP-over-EBGP EVPN designs](/2019/11/the-evpn-dilemma.html), proving yet again how the whole networking industry behaves like fashion designers on a lemming run chasing the latest fad.
 
 {{<jump>}}[Watch the video](https://www.youtube.com/watch?v=pwxuhh7UIrU){{</jump>}}
 

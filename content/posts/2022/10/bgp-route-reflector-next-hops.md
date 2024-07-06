@@ -3,7 +3,7 @@ title: "Leave BGP Next Hops Unchanged on Reflected Routes"
 date: 2022-10-27 06:38:00
 tags: [ BGP ]
 ---
-Here's the last question I'll answer from that [long list Daniel Dib posted weeks ago](https://twitter.com/danieldibswe/status/1579674196833366017) ([answer to Q1](https://blog.ipspace.net/2022/10/ospf-external-routes.html), [answer to Q2](https://blog.ipspace.net/2022/10/ibgp-full-mesh.html)).
+Here's the last question I'll answer from that [long list Daniel Dib posted weeks ago](https://twitter.com/danieldibswe/status/1579674196833366017) ([answer to Q1](/2022/10/ospf-external-routes.html), [answer to Q2](/2022/10/ibgp-full-mesh.html)).
 
 > I am trying to understand what made the BGP designers decide that RR should not change the BGP Next Hop for IBGP-learned routes.
 
@@ -40,4 +40,4 @@ The same reasoning applies to more mundane technologies like VXLAN.
 
 Totally off-topic: The above requirement trips all the cool kids who were so proud of their EBGP-only fabrics, because EBGP loves changing BGP next hops. There's a single vendor I'm aware of who realized the SNAFU and implemented EVPN in a way that violates the usual EBGP expectations. Everyone else has to deal with awkward configurations or crazy stuff like IBGP sessions between loopbacks advertised with EBGP... and every now and then a senior manager working for a large vendor gets extremely upset when I call that concoction stupid.
 
-Anyway, back to BGP route reflectors. By now you should be able to explain why it's a bad idea to change the BGP next hop on reflected routes, but there's a single scenario I'm aware of where doing that is a must: [hub-and-spoke DMVPN tunnels](https://blog.ipspace.net/2014/04/changes-in-ibgp-next-hop-processing.html). I'm guessing a similar reasoning applies if you bought hub-and-spoke (E-tree) Carrier Ethernet service. Anything else? Please leave a comment!
+Anyway, back to BGP route reflectors. By now you should be able to explain why it's a bad idea to change the BGP next hop on reflected routes, but there's a single scenario I'm aware of where doing that is a must: [hub-and-spoke DMVPN tunnels](/2014/04/changes-in-ibgp-next-hop-processing.html). I'm guessing a similar reasoning applies if you bought hub-and-spoke (E-tree) Carrier Ethernet service. Anything else? Please leave a comment!

@@ -4,7 +4,7 @@ date: 2021-11-23 07:46:00
 lastmod: 2021-11-26 15:35:00
 tags: [ IP routing ]
 ---
-When I wrote the _[Why Does Internet Keep Breaking?](https://blog.ipspace.net/2021/11/internet-keeps-breaking.html)_ blog post a few weeks ago, I claimed that FRR still uses single-threaded routing daemons (after a too-cursory read of their documentation).
+When I wrote the _[Why Does Internet Keep Breaking?](/2021/11/internet-keeps-breaking.html)_ blog post a few weeks ago, I claimed that FRR still uses single-threaded routing daemons (after a too-cursory read of their documentation).
 
 [Donald Sharp](https://www.linkedin.com/in/donaldsharp/) and [Quentin Young](https://github.com/qlyoung) politely told me ~~I was an idiot~~ I should get my facts straight, I removed the offending part of the blog post, promised to write another one going into the details, and Quentin improved the documentation in the meantime, so here we are...
 <!--more-->
@@ -17,7 +17,7 @@ In a word[^13]: sanity, performance and responsiveness.
 Networking engineers love to build artisanal wheels, and routing protocol designers are no better. Every routing protocol has a bespoke implementation of the same three major functionalities:
 
 * **Deal with neighbors**: discover them, keep them happy, and figure out when one of them keeps quiet for too long.
-* **Deal with updates**: receive them, acknowledge them (when the protocol designer thought he could [do better than TCP](https://blog.ipspace.net/2020/11/ospf-not-using-tcp.html)), send new information out, and retransmit it if needed (yet again, only for people who think TCP sucks)[^DV]
+* **Deal with updates**: receive them, acknowledge them (when the protocol designer thought he could [do better than TCP](/2020/11/ospf-not-using-tcp.html)), send new information out, and retransmit it if needed (yet again, only for people who think TCP sucks)[^DV]
 * **Deal with changes**: Update internal topology information based on received updates, calculate new routing tables, push new stuff into routing table to compete with other stuff.
 
 [^DV]: The second half of this functionality might be tightly coupled with the next bullet, in which case we're talking about a *distance vector* protocol.
@@ -90,7 +90,7 @@ Whenever you want to increase the performance of a software solution with a scal
 
 Interestingly, it looks like the scale-out BGP daemons were implemented primarily in high-end routers used to run the Internet core, but not in data center switches[^BGP].
 
-There might be no need for high BGP performance in data center switches considering the forwarding table sizes in merchant silicon ASICs... although I do wonder how long it takes to bring up a new BGP session in large-scale EVPN deployments considering how many vendors [insist on running BGP sessions with EVPN address family between loopback interfaces](https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html).
+There might be no need for high BGP performance in data center switches considering the forwarding table sizes in merchant silicon ASICs... although I do wonder how long it takes to bring up a new BGP session in large-scale EVPN deployments considering how many vendors [insist on running BGP sessions with EVPN address family between loopback interfaces](/2020/02/the-evpnbgp-saga-continues.html).
 
 Another reason could be the underlying hardware -- I have a feeling that the data center switches still get the cheapest reasonable CPU the vendor can buy, in which case it would make no sense to optimize a routing daemon for many-core performance.
 

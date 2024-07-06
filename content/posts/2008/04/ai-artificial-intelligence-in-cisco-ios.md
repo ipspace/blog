@@ -7,7 +7,7 @@ title: Subnet Masks in OSPF Network Statements
 url: /2008/04/ai-artificial-intelligence-in-cisco-ios.html
 pre_scroll: True
 ---
-In a comment to my recent [NTP-related post mentioning OSPF configuration](https://blog.ipspace.net/2008/04/technology-is-supposed-to-be-simple.html), Wan Tajuddin [correctly stated that the OSPF **network** statement should contain the wildcard bits](https://blog.ipspace.net/2008/04/technology-is-supposed-to-be-simple.html?showComment=1208142000000#c1375575532105655159), not the subnet mask. However, I was positive I had running networks with the **network 0.0.0.0 0.0.0.0 area 0** OSPF configuration, so it was time for one more lab test. As it turns out, Cisco IOS started accepting either the wildcard bits or the subnet mask in the **network** OSPF configuration command.
+In a comment to my recent [NTP-related post mentioning OSPF configuration](/2008/04/technology-is-supposed-to-be-simple.html), Wan Tajuddin [correctly stated that the OSPF **network** statement should contain the wildcard bits](/2008/04/technology-is-supposed-to-be-simple.html?showComment=1208142000000#c1375575532105655159), not the subnet mask. However, I was positive I had running networks with the **network 0.0.0.0 0.0.0.0 area 0** OSPF configuration, so it was time for one more lab test. As it turns out, Cisco IOS started accepting either the wildcard bits or the subnet mask in the **network** OSPF configuration command.
 <!--more-->
 Here is the printout from the test run. First, the traditional configuration:
 
@@ -81,6 +81,6 @@ Cool. The router automatically inverts the subnet mask into wildcard bits, so ev
 
 ### Further reading:
 
--   [Be smart when using the OSPF network statement](https://blog.ipspace.net/2007/07/be-smart-when-using-ospf-network.html)
--   [Network statements in the OSPF process are no longer order-dependent](https://blog.ipspace.net/2006/11/network-statements-in-ospf-process-are.html)
--   [Network statements are no longer needed in OSPF configuration](https://blog.ipspace.net/2007/07/network-statements-are-no-longer-needed.html)
+-   [Be smart when using the OSPF network statement](/2007/07/be-smart-when-using-ospf-network.html)
+-   [Network statements in the OSPF process are no longer order-dependent](/2006/11/network-statements-in-ospf-process-are.html)
+-   [Network statements are no longer needed in OSPF configuration](/2007/07/network-statements-are-no-longer-needed.html)

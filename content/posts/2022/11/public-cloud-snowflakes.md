@@ -49,7 +49,7 @@ The "write YAML templates and playbooks" derision is what you get when you have 
 
 That works great in a science project proof-of-concept; real automation projects require much more, starting with understanding of the problem you're trying to solve and creating an optimal architecture of the whole system. We tried to address that in the _[Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions)_ online course, and hundreds of attendees created successful automation projects based on the knowledge gained from that course -- at least we have a real-life proof that it's not impossible to automate significant parts of large enterprise networks.
 
-Finally, you know how much I adore people claiming [you should use the same approach as some FAANG](https://blog.ipspace.net/2016/03/you-want-your-network-to-be-like.html) ([a great take on why that's stupid](https://blog.ipspace.net/2020/03/the-stupidity-of-trying-to-be-like.html)), but they did solve problems you'll never experience and while [some of those solutions are clearly over-engineered](https://www.lastweekinaws.com/blog/a-brief-history-of-kubernetes-its-use-cases-and-its-problems/) it's always worth figuring out what made their networks work[^GT]. In the case of public clouds:
+Finally, you know how much I adore people claiming [you should use the same approach as some FAANG](/2016/03/you-want-your-network-to-be-like.html) ([a great take on why that's stupid](/2020/03/the-stupidity-of-trying-to-be-like.html)), but they did solve problems you'll never experience and while [some of those solutions are clearly over-engineered](https://www.lastweekinaws.com/blog/a-brief-history-of-kubernetes-its-use-cases-and-its-problems/) it's always worth figuring out what made their networks work[^GT]. In the case of public clouds:
 
 * They have a stable transport infrastructure that provides optimal end-to-end transport service
 * They implemented overlay networking on top of that and server- or VM-based interface between overlay networks and the physical world.
@@ -64,6 +64,6 @@ Too expensive? It's cheaper to let the infrastructure engineers suffer through V
 
 In other words, don't blame a concept if you have to work in a toxic environment where it's impossible to apply it.
 
-[^GT]: Keeping in mind most of the more popular talks from Google are nothing else but [thinly veiled recruitment drives](https://blog.ipspace.net/2018/03/before-commenting-on-someone-mentioning.html) ([here's another example](https://www.micahlerner.com/2022/10/08/sdn-in-the-stratosphere-loons-aerospace-mesh-network.html)).
+[^GT]: Keeping in mind most of the more popular talks from Google are nothing else but [thinly veiled recruitment drives](/2018/03/before-commenting-on-someone-mentioning.html) ([here's another example](https://www.micahlerner.com/2022/10/08/sdn-in-the-stratosphere-loons-aerospace-mesh-network.html)).
 
 [^BYO]: Or roll out your own version of OpenStack. I know people who needed a few years (and a few wasted millions) to realize that's hard.

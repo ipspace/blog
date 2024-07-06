@@ -24,14 +24,14 @@ Although you [REALLY SHOULD](https://tools.ietf.org/html/rfc6919) watch my [AWS 
 
 ## VPC Packet Forwarding Overview
 
-Even though AWS networking is just networking (as my [friend Nicola Arnoldi wrote a few days ago](https://toolr.io/2020/05/02/my-journey-into-cloud-networking/)), it's different enough from what you'd expect to make you feel like [Alice in Wonderland](https://blog.ipspace.net/2019/10/master-alternate-public-cloud.html).
+Even though AWS networking is just networking (as my [friend Nicola Arnoldi wrote a few days ago](https://toolr.io/2020/05/02/my-journey-into-cloud-networking/)), it's different enough from what you'd expect to make you feel like [Alice in Wonderland](/2019/10/master-alternate-public-cloud.html).
 
 A few speculations first:
 
 * AWS is using an overlay virtual networking. We don't know what encapsulation protocol (GRE, VXLAN, ...) or what control plane they use... but we can be pretty sure it's not a centralized control plane or EVPN because those wouldn't scale to AWS size.
 * We know they do VPC packet processing (checking, forwarding...) in ingress and egress hypervisors (source: [AWS re:Invent video](https://www.youtube.com/watch?v=8gc2DgBqo9U)).
 
-Now for a few hard facts (if you don't trust me [go and test them yourself](https://blog.ipspace.net/2018/10/figuring-out-aws-networking.html)):
+Now for a few hard facts (if you don't trust me [go and test them yourself](/2018/10/figuring-out-aws-networking.html)):
 
 * AWS VPC supports unicast IPv4 and IPv6 packet forwarding.
 * IPv4 multicast is supported on **Transit Gateway** (I'm guessing they're using transit gateway as a head-end replicator).
@@ -54,7 +54,7 @@ Consequences:
 * First-hop routing protocols like HSRP or VRRP don't work. Changing a MAC address of a VM will just disconnect it.
 * The only way to pass an IP address from one VM to another is through an orchestration system call. The usual GARP tricks don't work.
 * Taking over an IP address of a failed instance doesn't change packet forwarding behavior. To do a proper HA failover you have to either change the route table (through orchestration system) or move an elastic NIC (the next hop) to another VM instance.
-* You cannot run a routing protocol between your instance and AWS VPC router. You could either use orchestration system to modify the subnet route table(s) based on VM instance route tables, or run BGP with a VPN gateway. Cisco [used that approach with CSR1000v to implement hub-and-spoke VPC peering](https://blog.ipspace.net/2018/09/using-csr1000v-in-aws-instead-of.html) (and AWS took away that bonanza with Transit Gateway), and VMware [still has to do that to connect multiple VMware-on-AWS instances together](https://techfieldday.com/video/vmware-cloud-on-aws-network-connectivity-deep-dive/).
+* You cannot run a routing protocol between your instance and AWS VPC router. You could either use orchestration system to modify the subnet route table(s) based on VM instance route tables, or run BGP with a VPN gateway. Cisco [used that approach with CSR1000v to implement hub-and-spoke VPC peering](/2018/09/using-csr1000v-in-aws-instead-of.html) (and AWS took away that bonanza with Transit Gateway), and VMware [still has to do that to connect multiple VMware-on-AWS instances together](https://techfieldday.com/video/vmware-cloud-on-aws-network-connectivity-deep-dive/).
 
 ## It's Not That Simple
 

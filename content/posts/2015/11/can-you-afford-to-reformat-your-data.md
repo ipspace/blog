@@ -16,7 +16,7 @@ I love listening to the Datanauts podcast (Ethan and Chris are fantastic hosts),
 <!--more-->
 ### It Looks Easier and Easier
 
-The ever-simpler GUI and wizards that come with well-executed hyper-converged offerings allow typical data center administrator (one would expect a single person to work with compute, storage and network in a hyper-converged world) to set up and operate a reasonably-sized data center without knowing much about anything -- like in every other IT discipline the [knowledge-versus-complexity](https://blog.ipspace.net/2012/03/knowledge-and-complexity.html) curve looks more and more like the hockey stick.
+The ever-simpler GUI and wizards that come with well-executed hyper-converged offerings allow typical data center administrator (one would expect a single person to work with compute, storage and network in a hyper-converged world) to set up and operate a reasonably-sized data center without knowing much about anything -- like in every other IT discipline the [knowledge-versus-complexity](/2012/03/knowledge-and-complexity.html) curve looks more and more like the hockey stick.
 
 ![](/2015/11/s500-Knowledge-Complexity-Hockey-Stick.png)
 

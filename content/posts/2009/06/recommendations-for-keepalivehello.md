@@ -7,7 +7,7 @@ tags:
 title: Recommendations for Keepalive/Hello Timers
 url: /2009/06/recommendations-for-keepalivehello.html
 ---
-The "[GRE keepalives or EIGRP hellos](https://blog.ipspace.net/2009/06/gre-keepalives-or-eigrp-hellos.html)" discussion has triggered another interesting question:
+The "[GRE keepalives or EIGRP hellos](/2009/06/gre-keepalives-or-eigrp-hellos.html)" discussion has triggered another interesting question:
 
 > Is there a good rule-of-thumb for setting hold-down timers in respect to the bandwidth/delay of a given link? Perhaps something based off of the SRTT?
 

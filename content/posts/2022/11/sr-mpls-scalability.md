@@ -4,7 +4,7 @@ date: 2022-11-02 07:37:00
 lastmod: 2022-11-03 09:35:00
 tags: [ segment routing, MPLS ]
 ---
-Henk Smit left a [wonderful comment discussing various scalability aspects of SR-MPLS](https://blog.ipspace.net/2022/09/greenfield-sr-mpls-srv6.html#1397). Let's go through the points he made:
+Henk Smit left a [wonderful comment discussing various scalability aspects of SR-MPLS](/2022/09/greenfield-sr-mpls-srv6.html#1397). Let's go through the points he made:
 
 > When you have a thousand routers in your networks, you can put all of them in one (IS-IS) area. Maybe with 2k routers as well. But when you have several thousand routers, you want to use areas, if only to limit the blast-radius.
 
@@ -37,7 +37,7 @@ Anyway, back to the more interesting _we just need IP-to-SID mapping_ use case. 
 
 However, at least IS-IS has an interesting problem: the amount of information any router could generate (including inter-level information leakage) is limited[^SO]. Still not sure whether that's a good or a bad thing :)
 
-[^SO]: Score one for OSPF where a router can redistribute the whole BGP routing table as a million type-5 LSAs. Hint: [don't do that at home](https://blog.ipspace.net/2020/10/redistributing-bgp-into-ospf.html), it might [cause a short-term outage](https://twitter.com/stubarea51/status/1582931047796604928).
+[^SO]: Score one for OSPF where a router can redistribute the whole BGP routing table as a million type-5 LSAs. Hint: [don't do that at home](/2020/10/redistributing-bgp-into-ospf.html), it might [cause a short-term outage](https://twitter.com/stubarea51/status/1582931047796604928).
 
 > That starts to add up to a lot of info in your LSPDB. Your L1L2 routers might need to advertise several thousands of prefixes down. This is a practical concern. You can do things like increase lsp-mtu. Or implement RFC5311. I don't find that an elegant solution.
 
@@ -57,7 +57,7 @@ Back to Henk...
 
 > I've been told a few times that "routing is a solved problem". I don't agree. Routing is maybe a solved problem for networks with <= 1000 routers. For larger networks, you still need to use a bunch of trick and kludges to make it work. We could use a better solution.
 
-Anyone claiming that _routing is a solved problem_ has as much in-depth experience with routing as people claiming that _quantum physics is a solved problem_ have with calculating the expected results of Feynman diagrams, but ignorance has never stopped _thought leaders_ from having opinions. Then there are people like [SD-WAN marketers](https://blog.ipspace.net/2015/07/some-ridiculous-sd-wan-claims.html) who consider routing a solved problem because [they "solved" the problem by offloading it to someone else](https://blog.ipspace.net/2015/07/routing-protocols-and-sd-wan-apples-and.html).
+Anyone claiming that _routing is a solved problem_ has as much in-depth experience with routing as people claiming that _quantum physics is a solved problem_ have with calculating the expected results of Feynman diagrams, but ignorance has never stopped _thought leaders_ from having opinions. Then there are people like [SD-WAN marketers](/2015/07/some-ridiculous-sd-wan-claims.html) who consider routing a solved problem because [they "solved" the problem by offloading it to someone else](/2015/07/routing-protocols-and-sd-wan-apples-and.html).
 
 However, I don't think it's realistic to expect a single unified solution to a complex challenge[^UTE]. Solving a complex-enough task usually requires multiple tools and the knowledge and experience to select the best tool for the next step in the process. I do a bit of woodworking when I get tired of networking, and I have a garage full of tools. Obviously I could replace most of them with either a brutally expensive CNC machine, or with a Swiss Army knife. Neither of them would be optimal for my needs ;)
 

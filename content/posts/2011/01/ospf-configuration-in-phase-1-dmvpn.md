@@ -8,7 +8,7 @@ tags:
 title: OSPF Configuration in Phase 1 DMVPN Network
 url: /2011/01/ospf-configuration-in-phase-1-dmvpn.html
 ---
-[This is how you configure OSPF in a Phase 1 DMVPN network](https://my.ipspace.net/bin/get/DMVPN/2.2%20-%20Routing%20Protocols%20in%20DMVPN%20Phase%201.mp4?doccode=DMVPN) (read the [introductory post](https://blog.ipspace.net/2011/01/sometimes-you-need-to-step-back-and.html) and [Phase 1 DMVPN fundamentals](https://blog.ipspace.net/2011/01/dmvpn-phase-1-fundamentals.html) first):
+[This is how you configure OSPF in a Phase 1 DMVPN network](https://my.ipspace.net/bin/get/DMVPN/2.2%20-%20Routing%20Protocols%20in%20DMVPN%20Phase%201.mp4?doccode=DMVPN) (read the [introductory post](/2011/01/sometimes-you-need-to-step-back-and.html) and [Phase 1 DMVPN fundamentals](/2011/01/dmvpn-phase-1-fundamentals.html) first):
 
 Remember:
 

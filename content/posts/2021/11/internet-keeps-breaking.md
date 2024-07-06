@@ -15,9 +15,9 @@ Ignoring the click baits, the underlying root cause is in many cases the [race t
 <!--more-->
 {{<note info>}}The initial version of this blog post incorrectly claimed that FRR does not support multi-threaded routing daemons. Removed the offending part of the blog post; more details later.{{</note>}}
 
-The only way out of that morass is either simplified services (example: [Deutsche Telekom Terastream](https://blog.ipspace.net/2013/11/deutsche-telekom-terastream-designed.html)), increased automation (bringing its own perils, see also [Facebook October 2021 outage](https://blog.ipspace.net/2021/10/circular-dependencies-considered-harmful.html)) or ever-more-appalling quality of support and service.
+The only way out of that morass is either simplified services (example: [Deutsche Telekom Terastream](/2013/11/deutsche-telekom-terastream-designed.html)), increased automation (bringing its own perils, see also [Facebook October 2021 outage](/2021/10/circular-dependencies-considered-harmful.html)) or ever-more-appalling quality of support and service.
 
-For example, we knew for ages what needs to be done to stop fat-finger incidents, and yet many large ISPs like Verizon (not picking on them, it’s just that [their SNAFU went public](https://blog.ipspace.net/2019/07/rant-some-internet-service-providers.html)) did absolutely nothing to implement the most rudimentary safeguards like limiting the number of BGP prefixes a customer can advertise. 
+For example, we knew for ages what needs to be done to stop fat-finger incidents, and yet many large ISPs like Verizon (not picking on them, it’s just that [their SNAFU went public](/2019/07/rant-some-internet-service-providers.html)) did absolutely nothing to implement the most rudimentary safeguards like limiting the number of BGP prefixes a customer can advertise. 
 
 You don't have to take my word for it. There are [public services ](https://twitter.com/Qrator_Radar) tracking BGP leaks[^BL] and hijacks[^BH], and small-scale incidents happen every week. We're also [facing a few global leaks and hijacks every quarter](https://blog.qrator.net/en/q3-2021-ddos-attacks-and-bgp-incidents_146/)[^HT_AT].
 
@@ -31,7 +31,7 @@ A long while ago a group of engineers focused on Internet stability defined best
 
 > BGP & DNS are some of the oldest protocols in regular use, are the protocols creaking with modern approaches?
 
-I wouldn’t say so. Considering the limitations of hop-by-hop destination-only packet-by-packet forwarding, BGP works just fine (and is [good enough for many use cases](https://homepages.dcc.ufmg.br/~cunha/papers/arnold19hotnets-bgp.pdf)). It has too many knobs because vendors always tried to solve the next feature request with [one more intent-based knob](https://blog.ipspace.net/2018/01/bgp-route-selection-failure-of-intent.html) instead of a [plugin architecture](https://blog.ipspace.net/2020/11/pluginized-protocols.html), but that’s a different story.
+I wouldn’t say so. Considering the limitations of hop-by-hop destination-only packet-by-packet forwarding, BGP works just fine (and is [good enough for many use cases](https://homepages.dcc.ufmg.br/~cunha/papers/arnold19hotnets-bgp.pdf)). It has too many knobs because vendors always tried to solve the next feature request with [one more intent-based knob](/2018/01/bgp-route-selection-failure-of-intent.html) instead of a [plugin architecture](/2020/11/pluginized-protocols.html), but that’s a different story.
 
 The real problem of BGP seem to be the implementations. There are so many things running on decades-old code that was written to run well on single core 16- or 32-bit processors with 4MB of RAM. 
 
@@ -52,9 +52,9 @@ Both protocols (like everything else) are getting more and more complex as peopl
 
 BGP seems to be doing a bit better from the edge AS perspective — connecting your AS to two somewhat competent ISPs is as easy as it ever was. Beyond that, there's a steep learning curve.
 
-However, successfully implementing a science project doesn’t give you experience to run a large-scale system, and as the number of large-scale systems is limited, it’s [hard to migrate from one to the other](https://blog.ipspace.net/2018/12/bifurcation-of-knowledge.html). The situation is similar in any sufficiently-commoditized infrastructure discipline, from power transmission to gas pipelines or water supply. Being able to pull cables through the walls doesn’t make you an expert in high-voltage power lines.
+However, successfully implementing a science project doesn’t give you experience to run a large-scale system, and as the number of large-scale systems is limited, it’s [hard to migrate from one to the other](/2018/12/bifurcation-of-knowledge.html). The situation is similar in any sufficiently-commoditized infrastructure discipline, from power transmission to gas pipelines or water supply. Being able to pull cables through the walls doesn’t make you an expert in high-voltage power lines.
 
-Unfortunately, what we’re lacking in networking (and most of IT in general) is a solid foundation on which to build things, rigorous training that the traditional engineering disciplines have, an equivalent of Professional Engineer exams, and [professional liability](https://blog.ipspace.net/2021/10/worth-reading-professional-liability.html). We’re often [throwing spaghetti at the wall](https://archive.psg.com/051000.sigcomm-ivtf.pdf) and get ecstatic when some of them stick.
+Unfortunately, what we’re lacking in networking (and most of IT in general) is a solid foundation on which to build things, rigorous training that the traditional engineering disciplines have, an equivalent of Professional Engineer exams, and [professional liability](/2021/10/worth-reading-professional-liability.html). We’re often [throwing spaghetti at the wall](https://archive.psg.com/051000.sigcomm-ivtf.pdf) and get ecstatic when some of them stick.
 
 > Have we put too many extras and/or sticky plasters on the protocols and they are now destabilizing?
 

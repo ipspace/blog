@@ -12,7 +12,7 @@ John (not a real name for obvious reasons) sent me the following e-mail:
 >
 > In a few days I will deploy to Afghanistan to start work for a customer and I was hoping you might be able to give me some advice on the matter, perhaps some how-to documents or good books to purchase that will assist in the huge learning curve.
 <!--more-->
-As we know, DMVPN utilizes a [particular mix of technologies](https://blog.ipspace.net/2011/01/dmvpn-phase-1-fundamentals.html), from IP routing (both underneath DMVPN tunnels and across them) and IP routing protocols to IPsec, multipoint GRE and NHRP. Assuming John needs to start from scratch, I advised him to:
+As we know, DMVPN utilizes a [particular mix of technologies](/2011/01/dmvpn-phase-1-fundamentals.html), from IP routing (both underneath DMVPN tunnels and across them) and IP routing protocols to IPsec, multipoint GRE and NHRP. Assuming John needs to start from scratch, I advised him to:
 
 -   Start with introductory material (CCNA level) to get familiar with the router\'s CLI and basic functions;
 -   Move to CCNP-level material to get exposure to technologies underlying DMVPN;

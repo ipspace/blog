@@ -14,9 +14,9 @@ tags:
 title: 'Latency: the Killer of Spread-Out Application Stack Ideas'
 url: /2015/01/latency-killer-of-spread-out.html
 ---
-A few months ago I described how [bandwidth limitations shatter the dreams of spread-out application stacks](https://blog.ipspace.net/2014/10/workload-mobility-and-reality-bandwidth.html) with elements residing (or being [dynamically migrated](http://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html)) between data centers. Today let's focus on bandwidth's ugly cousin: latency.
+A few months ago I described how [bandwidth limitations shatter the dreams of spread-out application stacks](/2014/10/workload-mobility-and-reality-bandwidth.html) with elements residing (or being [dynamically migrated](/2011/09/long-distance-vmotion-for-disaster.html)) between data centers. Today let's focus on bandwidth's ugly cousin: latency.
 
-**TL&DR Summary**: Spreading the server components of an application across multiple locations (multiple data centers or hybrid cloud deployments) can [easily result in dismal performance](https://blog.ipspace.net/2014/08/the-impact-of-data-gravity-campfire.html) even when there's plenty of bandwidth available.
+**TL&DR Summary**: Spreading the server components of an application across multiple locations (multiple data centers or hybrid cloud deployments) can [easily result in dismal performance](/2014/08/the-impact-of-data-gravity-campfire.html) even when there's plenty of bandwidth available.
 <!--more-->
 ### Before We Start
 
@@ -24,11 +24,11 @@ It's always possible to throw more money at the problem and increase bandwidth a
 
 ### Back to the Basics
 
-Most applications stacks deployed today have components residing in more than two hosts (or VMs or container); see the [earlier blog post](https://blog.ipspace.net/2014/10/workload-mobility-and-reality-bandwidth.html) for details.
+Most applications stacks deployed today have components residing in more than two hosts (or VMs or container); see the [earlier blog post](/2014/10/workload-mobility-and-reality-bandwidth.html) for details.
 
 {{<figure src="/2015/01/s500-10+-+Generic+Stack.jpg">}}
 
-{{<note>}}Obvious exceptions: [Single-host web applications](https://blog.ipspace.net/2012/08/pvlan-vxlan-and-cloud-application.html) have a client (browser) and a server component, and unless you started using foggy version of Microsoft Office your word processor has a single component.{{</note>}}
+{{<note>}}Obvious exceptions: [Single-host web applications](/2012/08/pvlan-vxlan-and-cloud-application.html) have a client (browser) and a server component, and unless you started using foggy version of Microsoft Office your word processor has a single component.{{</note>}}
 
 The interactions between a browser and one or more web servers are usually very well understood -- this part of the application stack tends to have the lowest bandwidth and highest latency and is thus heavily optimized in well-performing web applications. For more details, watch excellent [video](https://www.youtube.com/watch?v=I4vX-twze9I) by [Ilya Grigorik](https://www.youtube.com/user/igrigorik), and [read his book](http://chimera.labs.oreilly.com/books/1230000000545).
 

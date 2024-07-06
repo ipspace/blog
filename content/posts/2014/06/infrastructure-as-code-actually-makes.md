@@ -44,9 +44,9 @@ Hopefully you already store the configurations and recipes in a source code cont
 
 Can we do the same thing with the networking infrastructure? Not if we use the traditional hardware approach -- it's hard to build local copy of the networking infrastructure for every networking engineer, or an automated test environment.
 
-On the other hand, if we manage to [virtualize everything](https://blog.ipspace.net/2013/04/virtual-appliance-performance-is.html), including networks and network services (load balancers, firewalls...), we can deploy them on-demand. Using cloud orchestration system automation it's pretty easy to create new subnets, and deploy firewalls and load balancers in VM format. Problem solved -- you can [recreate a whole application stack](http://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html), either for the use of individual networking engineer working on a particularly interesting challenge, or to build QA or UAT environments.
+On the other hand, if we manage to [virtualize everything](/2013/04/virtual-appliance-performance-is.html), including networks and network services (load balancers, firewalls...), we can deploy them on-demand. Using cloud orchestration system automation it's pretty easy to create new subnets, and deploy firewalls and load balancers in VM format. Problem solved -- you can [recreate a whole application stack](/2013/05/simplify-your-disaster-recovery-with.html), either for the use of individual networking engineer working on a particularly interesting challenge, or to build QA or UAT environments.
 
-Once the modified application stack passes all the tests, it's [easy to deploy the changes in production](https://blog.ipspace.net/2013/11/typical-enterprise-application.html): shut down the old VMs and start new ones, or (if you made more drastic changes) tear down the old application stack and build a new one using the already-tested build recipes.
+Once the modified application stack passes all the tests, it's [easy to deploy the changes in production](/2013/11/typical-enterprise-application.html): shut down the old VMs and start new ones, or (if you made more drastic changes) tear down the old application stack and build a new one using the already-tested build recipes.
 
 ### How Can I Get Started?
 
@@ -54,9 +54,9 @@ Virtualize everything. You won't be able to create new application environments 
 
 ### Stop Changing the Hardware Configurations
 
-Finally, it's time to get rid of cut-and-paste method of network configuration. Make sure you're not doing anything that is not repeatable and [cannot be fully cloned](https://blog.ipspace.net/2014/04/puppet-is-tool-devops-is-lifestyle.html) in a development or test environment.
+Finally, it's time to get rid of cut-and-paste method of network configuration. Make sure you're not doing anything that is not repeatable and [cannot be fully cloned](/2014/04/puppet-is-tool-devops-is-lifestyle.html) in a development or test environment.
 
-Ideally, you'd [totally decouple the virtual networks and services from the physical hardware](https://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html), and change the physical hardware configuration only when you need to build a new data center fabric or extend an existing one.
+Ideally, you'd [totally decouple the virtual networks and services from the physical hardware](/2011/12/decouple-virtual-networking-from.html), and change the physical hardware configuration only when you need to build a new data center fabric or extend an existing one.
 
 ### Like the Vision?
 

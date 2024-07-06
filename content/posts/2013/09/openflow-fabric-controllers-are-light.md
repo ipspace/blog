@@ -26,7 +26,7 @@ Data center fabrics are built from high-speed switches with tens of 10/40GE port
 
 In traditional wireless networks all traffic flows through the controller (there are [some exceptions](http://www.insearchoftech.com/2013/07/21/another-controller-less-wi-fi-solution/), but let's ignore them for the moment). The hub-and-spoke tunnels between the controller and the individual access points carry all the user traffic and the controller is doing all the smart forwarding decisions.
 
-In an OpenFlow-based fabric the controller should do a minimal amount of data-plane decisions (ideally: none) because every time you have to [punt packets to the controller](https://blog.ipspace.net/2013/03/controller-based-packet-forwarding-in.html), you reduce the overall network performance (not to mention the dismal capabilities of today's switches when they have to do CPU-based packet forwarding across an SSL session).
+In an OpenFlow-based fabric the controller should do a minimal amount of data-plane decisions (ideally: none) because every time you have to [punt packets to the controller](/2013/03/controller-based-packet-forwarding-in.html), you reduce the overall network performance (not to mention the dismal capabilities of today's switches when they have to do CPU-based packet forwarding across an SSL session).
 
 ### Amount of Traffic
 

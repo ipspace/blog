@@ -14,7 +14,7 @@ Here's another BGP Route Reflector myth:
 
 TL&DR: No.
 
-While BGP route reflectors [can cause permanent forwarding loops](https://blog.ipspace.net/2013/10/can-bgp-route-reflectors-really.html) in sufficiently broken topologies, the Cluster ID was never needed to stop a routing update propagation loop:
+While BGP route reflectors [can cause permanent forwarding loops](/2013/10/can-bgp-route-reflectors-really.html) in sufficiently broken topologies, the Cluster ID was never needed to stop a routing update propagation loop:
 <!--more-->
 * The only way to generate an update propagation loop is a cycle of route reflectors with every route reflector being a client of other route reflectors[^LOOP]
 * Even in that case, every RR adds its cluster ID (router ID is used as the default value) to the *cluster list* attribute on every reflected BGP prefix, and checks the *cluster list* on incoming updates.
@@ -45,7 +45,7 @@ Without BGP Route Reflector Cluster ID configured on RR1 and RR2, the following 
 * PE2 installs both updates in BGP RIB and selects one of them as the best route.
 * RR1 and RR2 install the reflected update from the other route reflector in BGP RIB and ignore it because it's not the best route (due to *cluster list* length).
 
-[^UG]: PE1 and PE2 are in the same BGP update group. PE1 thus receives a [reflected update of its own announcement](https://blog.ipspace.net/2009/04/bgp-route-reflector-update-groups.html).
+[^UG]: PE1 and PE2 are in the same BGP update group. PE1 thus receives a [reflected update of its own announcement](/2009/04/bgp-route-reflector-update-groups.html).
 
 {{<cc>}}BGP RIB entries for PE1 loopback (10.0.0.3) on RR1{{</cc>}}
 ```
@@ -131,7 +131,7 @@ BGP(0): (base) 10.0.0.4 send unreachable (format) 10.0.0.3/32
 
 ### To Cluster or Not To Cluster?
 
-Based on the above, it seems like we should be using *cluster ID* on route reflectors to reduce the amount of BGP updates. On the other hand, similar to [removing IBGP session between route reflectors](/2022/02/bgp-rr-myths.html), setting the *cluster ID* on route reflectors reduces the resilience of the design -- a misbehaving BGP session combined with a route reflector crash (or two lost BGP sessions) could result in connectivity loss similar to the [impact of valley-free routing](https://blog.ipspace.net/2018/09/valley-free-routing-in-data-center.html).
+Based on the above, it seems like we should be using *cluster ID* on route reflectors to reduce the amount of BGP updates. On the other hand, similar to [removing IBGP session between route reflectors](/2022/02/bgp-rr-myths.html), setting the *cluster ID* on route reflectors reduces the resilience of the design -- a misbehaving BGP session combined with a route reflector crash (or two lost BGP sessions) could result in connectivity loss similar to the [impact of valley-free routing](/2018/09/valley-free-routing-in-data-center.html).
 
 The decision becomes simpler if you use more than two route reflectors[^MRR]:
 

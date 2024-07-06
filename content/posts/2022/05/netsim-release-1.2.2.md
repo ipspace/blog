@@ -9,7 +9,7 @@ title: 'New in netlab: VLANs, Hardware Labs, VRF Loopbacks'
 Here's a short list of major goodies included in netsim-tools release 1.2.2:
 
 - [Access VLANs, VLAN trunks and native VLANs](https://netlab.tools/module/vlan/) implemented on Cisco IOS, Arista EOS, VyOS, and Dell OS10 (VyOS and OS10 support contributed by Stefano Sasso)
-- [Hardware labs](https://blog.ipspace.net/2022/05/netsim-hardware-lab.html) implemented with [_external_ topology provider](https://netlab.tools/providers/) (contributed by Stefano Sasso)
+- [Hardware labs](/2022/05/netsim-hardware-lab.html) implemented with [_external_ topology provider](https://netlab.tools/providers/) (contributed by Stefano Sasso)
 - [VRF loopback interfaces](https://netlab.tools/module/vrf/#vrf-loopback) (contributed by Stefano Sasso)
 
 More details in the [release notes](https://netlab.tools/release/1.2/).

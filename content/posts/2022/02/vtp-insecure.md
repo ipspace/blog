@@ -7,7 +7,7 @@ One of my readers sent me an interesting pointer:
 
 > I just watched a [YouTube video](https://youtu.be/u5cp_hcwq2c) by a security researcher showing how a five line python script can be used to unilaterally configure a Cisco switch port connected to a host computer into a trunk port. It does this by forging a single virtual trunk protocol (VTP) packet. The host can then eavesdrop on broadcast traffic on all VLANs on the network, as well as prosecute man-in-the-middle of attacks.
 
-I'd say that's a "startling revelation" along the lines of "[OMG, VXLAN is insecure](https://blog.ipspace.net/2018/11/omg-vxlan-is-still-insecure.html)" -- a wonderful way for a security researcher to gain instant visibility. From a more pragmatic perspective, if you enable an insecure protocol on a user-facing port, you get the results you deserve[^FW].
+I'd say that's a "startling revelation" along the lines of "[OMG, VXLAN is insecure](/2018/11/omg-vxlan-is-still-insecure.html)" -- a wonderful way for a security researcher to gain instant visibility. From a more pragmatic perspective, if you enable an insecure protocol on a user-facing port, you get the results you deserve[^FW].
 
 While I could end this blog post with the above flippant remark, it's more fun considering two fundamental questions.
 <!--more-->
@@ -25,11 +25,11 @@ Not really. In the words of my reader:
 
 > This was a Cisco switch, and apparently the default configuration permits this. I haven’t delved into the details yet, but I’m hoping that there are straightforward configuration settings that can prevent this kind of attack. I gather, though, that it isn’t as simple as just adding a line code to IOS. It looks like what’s needed is very specific pruning of VLANs to ports for devices that are not switches, and that sounds like a big, ongoing maintenance task prone to human error.
 
-In the VTP case, most everyone agrees [VTP should be disabled](https://blog.ipspace.net/2008/12/should-vtp-be-disabled-by-default.html), which raises the next obvious question: **Why are most networking devices insecure by default?**
+In the VTP case, most everyone agrees [VTP should be disabled](/2008/12/should-vtp-be-disabled-by-default.html), which raises the next obvious question: **Why are most networking devices insecure by default?**
 
-As hard as I try, the only answers I can come up with are the cynical ones along the lines of *because nobody cares* or *[to lower the vendor support costs](https://blog.ipspace.net/2018/01/revisited-need-for-stretched-vlans.html)*. To make matters worse, most devices ship with abhorrent (security-wise) defaults, and *device hardening guides* (when a vendor publishes them) quickly turn into a Bible-sized list of things to configure[^HARD]... and even then they don't cover everything they should. Back to my reader:
+As hard as I try, the only answers I can come up with are the cynical ones along the lines of *because nobody cares* or *[to lower the vendor support costs](/2018/01/revisited-need-for-stretched-vlans.html)*. To make matters worse, most devices ship with abhorrent (security-wise) defaults, and *device hardening guides* (when a vendor publishes them) quickly turn into a Bible-sized list of things to configure[^HARD]... and even then they don't cover everything they should. Back to my reader:
 
-[^HARD]: See for example the comments to [Should VTP be Disabled by Default](https://blog.ipspace.net/2008/12/should-vtp-be-disabled-by-default.html) published in 2008. More than a decade later we're still dealing with VTP SNAFUs.
+[^HARD]: See for example the comments to [Should VTP be Disabled by Default](/2008/12/should-vtp-be-disabled-by-default.html) published in 2008. More than a decade later we're still dealing with VTP SNAFUs.
 
 > It’s easy to overlook common pitfalls. Like most network engineers, I tended to just follow the vendor’s hardening checklist and thought that was more or less complete. That’s why I was surprised that Cisco never mentions this in their Hardening IOS book.
 

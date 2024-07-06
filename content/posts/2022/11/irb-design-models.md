@@ -20,7 +20,7 @@ This blog post is an overview of the design models; we'll cover each design in a
 <!--more-->
 ## Before We Start
 
-* All network devices in this blog post will be called _switches_ even though they're really _bridges_ or _routers_ (or a combination of both). [Marketese](https://blog.ipspace.net/2011/02/how-did-we-ever-get-into-this-switching.html) happens to be convenient at times.
+* All network devices in this blog post will be called _switches_ even though they're really _bridges_ or _routers_ (or a combination of both). [Marketese](/2011/02/how-did-we-ever-get-into-this-switching.html) happens to be convenient at times.
 * All the diagrams are from the _[Leaf-and-Spine Fabric Architectures](https://www.ipspace.net/Leaf-and-Spine_Fabric_Architectures)_ webinar. Watch it if you need more details.
 
 ## Edge Routing
@@ -29,7 +29,7 @@ You're doing edge routing if you use a router-on-a-stick to forward traffic betw
 
 {{<figure src="/2022/11/irb-edge-routing.png" caption="Routing outside of the fabric">}}
 
-You might want to use the same design in data center fabrics to have centralized control of per-tenant traffic. Some organizations would [use a next-generation firewall instead of an edge router](https://blog.ipspace.net/2015/05/replacing-central-router-with-next.html) and become major investors in their preferred networking vendor if they have too much inter-VLAN traffic.
+You might want to use the same design in data center fabrics to have centralized control of per-tenant traffic. Some organizations would [use a next-generation firewall instead of an edge router](/2015/05/replacing-central-router-with-next.html) and become major investors in their preferred networking vendor if they have too much inter-VLAN traffic.
 
 {{<note info>}}I've seen an organization that used a central firewall to inspect the daily backup traffic. The results were not encouraging.{{</note>}}
 

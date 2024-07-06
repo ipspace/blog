@@ -7,7 +7,7 @@ One of my readers sent me this age-old question:
 
 > Is there a real difference in the underlying hardware of switches and routers in terms of the traffic processing chips and their capabilities in terms of routing and switching (or should I say only switching)?
 
-Let's get the terminology straight. [Router](https://blog.ipspace.net/2010/07/bridging-and-routing-is-there.html) is a technical term for a device that forwards packets based on network layer information. [Switch is a marketing term](https://blog.ipspace.net/2011/02/how-did-we-ever-get-into-this-switching.html) for a device that does something with packets.
+Let's get the terminology straight. [Router](/2010/07/bridging-and-routing-is-there.html) is a technical term for a device that forwards packets based on network layer information. [Switch is a marketing term](/2011/02/how-did-we-ever-get-into-this-switching.html) for a device that does something with packets.
 
 Rephrasing the question: is there a hardware difference between a box *marketed as a router* and another box *marketed as a layer-3 switch*?
 
@@ -23,11 +23,11 @@ For example, the Broadcom Tomahawk ASIC (spine) has limited VXLAN support, while
 
 On the WAN edge, you’d want to have more buffers (due to speed mismatch), maybe more queues (in case you want to do QoS), tunneling mechanisms beyond VXLAN, encryption beyond MACsec, or functionality like NAT that’s hard to implement in hardware.
 
-While you can use a deep-buffer data center switching ASIC like Broadcom Jericho as a WAN edge router ([example](https://blog.ipspace.net/2015/10/sdn-internet-router-is-in-production-on.html)), you’d be pretty limited in what that router can do. It would be awesome in terms of forwarding performance and relatively cheap, but it wouldn’t have all the bells and whistles people usually want to see in a device called router for no particular reason.
+While you can use a deep-buffer data center switching ASIC like Broadcom Jericho as a WAN edge router ([example](/2015/10/sdn-internet-router-is-in-production-on.html)), you’d be pretty limited in what that router can do. It would be awesome in terms of forwarding performance and relatively cheap, but it wouldn’t have all the bells and whistles people usually want to see in a device called router for no particular reason.
 
 Is there a need for the difference? If you know what you’re doing, you buy the optimal box for your needs, and you don’t care how it’s called. If you have no idea because you were not able to get a reasonable set of requirements apart from "*as fast as possible, and make it future-proof*", then you buy an expensive insurance policy called *router* believing that if you ever need that stuff, you can just configure it.
 
-And that (plus a [gazillion similar stupidities](https://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html)) is [what makes enterprise networking so complex](https://blog.ipspace.net/2013/04/this-is-what-makes-networking-so-complex.html) and expensive.
+And that (plus a [gazillion similar stupidities](/2013/08/temper-your-macgyver-streak.html)) is [what makes enterprise networking so complex](/2013/04/this-is-what-makes-networking-so-complex.html) and expensive.
 
 ### Beyond Marketing
 

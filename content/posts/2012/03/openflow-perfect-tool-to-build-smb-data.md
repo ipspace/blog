@@ -10,15 +10,15 @@ tags:
 title: 'OpenFlow: A perfect tool to build SMB data center'
 url: /2012/03/openflow-perfect-tool-to-build-smb-data.html
 ---
-When I was [writing about the NEC+IBM OpenFlow trials](https://blog.ipspace.net/2012/02/necibm-enterprise-openflow-you-can.html), I figured out a perfect use case for OpenFlow-controlled network forwarding: SMB data centers that need less than a few hundred physical servers -- be it bare-metal servers or hypervisor hosts (hat tip to [Brad Hedlund](http://bradhedlund.com/) for nudging me in the right direction a while ago)
+When I was [writing about the NEC+IBM OpenFlow trials](/2012/02/necibm-enterprise-openflow-you-can.html), I figured out a perfect use case for OpenFlow-controlled network forwarding: SMB data centers that need less than a few hundred physical servers -- be it bare-metal servers or hypervisor hosts (hat tip to [Brad Hedlund](http://bradhedlund.com/) for nudging me in the right direction a while ago)
 
-{{<note>}}As I wrote before, [OpenFlow-controlled network forwarding](https://blog.ipspace.net/2011/11/big-switch-networks-might-actually-make.html) (example: NEC, BigSwitch) [experiences a totally different set of problems](https://blog.ipspace.net/2012/01/fib-update-challenges-in-openflow.html) than OpenFlow-controlled edge (example: Nicira or [XenServer vSwitch Controller](http://support.citrix.com/article/CTX130423)).{{</note>}}
+{{<note>}}As I wrote before, [OpenFlow-controlled network forwarding](/2011/11/big-switch-networks-might-actually-make.html) (example: NEC, BigSwitch) [experiences a totally different set of problems](/2012/01/fib-update-challenges-in-openflow.html) than OpenFlow-controlled edge (example: Nicira or [XenServer vSwitch Controller](http://support.citrix.com/article/CTX130423)).{{</note>}}
 <!--more-->
 ### The Dream
 
 As you can imagine, it's extremely simple to configure an OpenFlow-controlled switch: configure its own IP address, management VLAN, and controller's IP address, and let the controller do the rest.
 
-Once the networking vendors figure out "the fine details", they could use dedicated management ports for out-of-band [OpenFlow control plane](https://blog.ipspace.net/2011/04/what-is-openflow.html) (similar to what [QFabric is doing today](https://blog.ipspace.net/2011/09/qfabric-part-1-hardware-architecture.html)), DHCP to assign an IP address to the switch, and a new DHCP option to tell the switch where the controller is. The DHCP server would obviously run on the OpenFlow controller, and the whole control plane infrastructure would be completely isolated from the outside world, making it pretty secure.
+Once the networking vendors figure out "the fine details", they could use dedicated management ports for out-of-band [OpenFlow control plane](/2011/04/what-is-openflow.html) (similar to what [QFabric is doing today](/2011/09/qfabric-part-1-hardware-architecture.html)), DHCP to assign an IP address to the switch, and a new DHCP option to tell the switch where the controller is. The DHCP server would obviously run on the OpenFlow controller, and the whole control plane infrastructure would be completely isolated from the outside world, making it pretty secure.
 
 The extra hardware cost for significantly reduced complexity (no per-switch configuration and a single management/SNMP IP address): two dumb 1GE switches (to make the setup redundant), hopefully running MLAG (to get rid of STP).
 
@@ -54,7 +54,7 @@ Anyhow, assuming all the bumps eventually do get ironed out, you could have a ve
 
 ### Will it ever happen?
 
-I remain skeptical, mostly because every vendor seems obsessed with cloud computing and [zettascale](https://blog.ipspace.net/2011/04/new-data-center-switches-from-force10.html) data centers, ignoring [mid-scale market](http://telecomoccasionally.wordpress.com/2012/02/20/mid-market-innovators-dilemma/) ... but there might be silver lining. This idea would make most sense if you'd be able to buy a prepackaged data center (think VCE block) at a reasonably low price (to make it attractive to SMB customers).
+I remain skeptical, mostly because every vendor seems obsessed with cloud computing and [zettascale](/2011/04/new-data-center-switches-from-force10.html) data centers, ignoring [mid-scale market](http://telecomoccasionally.wordpress.com/2012/02/20/mid-market-innovators-dilemma/) ... but there might be silver lining. This idea would make most sense if you'd be able to buy a prepackaged data center (think VCE block) at a reasonably low price (to make it attractive to SMB customers).
 
 A few companies have all the components one would need in a SMB data center (Dell, HP, IBM), and Dell just might be able to pull it off (while HP is telling everyone how they'll [forever change the networking industry](http://searchnetworking.techtarget.com/news/2240037298/HP-Discover-Wheres-the-core-networking-evolution)). And now that I've mentioned Dell: how about configuring your data center through a user-friendly web interface, and have it shipped to your location in a few weeks.
 

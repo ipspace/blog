@@ -44,15 +44,15 @@ If the DMVPN hub router advertises a static route pointing to the VPN concentrat
 
 ### Virtual Lab to the Rescue
 
-Having access to cloud-based beta version of [Cisco Modeling Lab](https://blog.ipspace.net/2013/10/cisco-modeling-lab-virl-behind-scenes.html) turned out to be one of the best things I got from a vendor in the last few months.
+Having access to cloud-based beta version of [Cisco Modeling Lab](/2013/10/cisco-modeling-lab-virl-behind-scenes.html) turned out to be one of the best things I got from a vendor in the last few months.
 
 {{<note info>}}The blog post was written in 2014. A decade later I'd use Tailscale VPN to access the Intel NUC sitting in my office and build the test topology in _[netlab](https://netlab.tools/)_.{{</note>}}
 
-Even though I was presenting at a conference in Germany, I managed to create a simple lab during one of the breaks and verify my understand of how BGP route origination works (on second thought, it might have been faster to read what [I wrote in 2011](https://blog.ipspace.net/2011/08/bgp-next-hop-processing.html)):
+Even though I was presenting at a conference in Germany, I managed to create a simple lab during one of the breaks and verify my understand of how BGP route origination works (on second thought, it might have been faster to read what [I wrote in 2011](/2011/08/bgp-next-hop-processing.html)):
 
 -   Directly connected networks are inserted into the BGP table with BGP next hop set to all zeroes (= self);
--   When a BGP routing process inserts a route from IP routing table (static- or IGP-derived route) into BGP table, [it copies the IP next hop from the IP routing table into the *BGP next hop* attribute](https://blog.ipspace.net/2011/08/bgp-next-hop-processing.html#NHLocal).
--   When a BGP router advertises the BGP route it originated to its BGP neighbors, it uses the [standard BGP next hop processing rules](https://blog.ipspace.net/2011/08/bgp-next-hop-processing.html).
+-   When a BGP routing process inserts a route from IP routing table (static- or IGP-derived route) into BGP table, [it copies the IP next hop from the IP routing table into the *BGP next hop* attribute](/2011/08/bgp-next-hop-processing.html#NHLocal).
+-   When a BGP router advertises the BGP route it originated to its BGP neighbors, it uses the [standard BGP next hop processing rules](/2011/08/bgp-next-hop-processing.html).
 
 In our case, DMVPN hub router shouldn't change the BGP next hop of the static routes -- the BGP next hop should point to the VPN concentrator, resulting in optimal traffic flow.
 
@@ -105,6 +105,6 @@ Paths: (1 available, best #1, table default)
 
 Unfortunately, the reality quickly diverged from the optimistic theoretical results -- the BGP next hop on the MPLS/VPN CE router pointed to the DMVPN hub router.
 
-A few minutes of troubleshooting identified the culprit: **neighbor next-hop-self** that we had to configure on the IBGP session between DMVPN hub router and MPLS/VPN CE router to circumvent lack of IGP between the two BGP routers ([IBGP is supposed to be run in combination with an IGP that resolves BGP next hops](https://blog.ipspace.net/2011/08/ibgp-or-ebgp-in-enterprise-network.html)).
+A few minutes of troubleshooting identified the culprit: **neighbor next-hop-self** that we had to configure on the IBGP session between DMVPN hub router and MPLS/VPN CE router to circumvent lack of IGP between the two BGP routers ([IBGP is supposed to be run in combination with an IGP that resolves BGP next hops](/2011/08/ibgp-or-ebgp-in-enterprise-network.html)).
 
-We could have solved the problem with a **route-map** that would set BGP next hop for non-local routes and keep it unchanged for locally originated routes, but decided that the extra complexity simply isn't worth it (sometimes you [have to know when to give up](https://blog.ipspace.net/2013/08/temper-your-macgyver-streak.html)).
+We could have solved the problem with a **route-map** that would set BGP next hop for non-local routes and keep it unchanged for locally originated routes, but decided that the extra complexity simply isn't worth it (sometimes you [have to know when to give up](/2013/08/temper-your-macgyver-streak.html)).

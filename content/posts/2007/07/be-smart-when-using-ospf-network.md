@@ -8,7 +8,7 @@ url: /2007/07/be-smart-when-using-ospf-network.html
 ---
 For whatever reason, a lot of people have the impression that the wildcard bits in the OSPF network statement have to be the inverse of the interface subnet mask. For example, if you have configured **ip address 192.168.1.2 255.255.255.240** on an interface, they would enter **network 192.168.1.2 0.0.0.15** in the OSPF configuration (and use one network statement per interface).
 
-In reality, the **network** statements work like simple IP **access-list**: whenever an interface IP address matches the **network** statement, the interface is put into the selected area. The Cisco IOS CLI [got better over the years](https://blog.ipspace.net/2006/11/network-statements-in-ospf-process-are.html): the **network** statements are automatically sorted from most-specific to least-specific and (like with the access lists) the first match stops the search.
+In reality, the **network** statements work like simple IP **access-list**: whenever an interface IP address matches the **network** statement, the interface is put into the selected area. The Cisco IOS CLI [got better over the years](/2006/11/network-statements-in-ospf-process-are.html): the **network** statements are automatically sorted from most-specific to least-specific and (like with the access lists) the first match stops the search.
 <!--more-->
 In my network implementations, I use the network statements in three different ways:
 

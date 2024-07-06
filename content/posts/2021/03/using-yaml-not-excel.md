@@ -30,7 +30,7 @@ Considering just these five aspects (there are probably many more), what are the
 Assuming you want to keep things simple, I'd prefer YAML over Excel:
 
 * Excel has simple row/column data structure. In YAML you could have richer (structured) data types.
-* Excel tries to be too helpful, and will quietly change an IP address into a number assuming you made a mistake and used too many dots (source: Ioannis Theodoridis, [see below](https://blog.ipspace.net/2021/03/using-yaml-not-excel.html#476), another example in [LinkedIn comments](https://www.linkedin.com/feed/update/urn:li:activity:6777554072456192000?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A6777554072456192000%2C6777663473972248576%29))
+* Excel tries to be too helpful, and will quietly change an IP address into a number assuming you made a mistake and used too many dots (source: Ioannis Theodoridis, [see below](/2021/03/using-yaml-not-excel.html#476), another example in [LinkedIn comments](https://www.linkedin.com/feed/update/urn:li:activity:6777554072456192000?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A6777554072456192000%2C6777663473972248576%29))
 * You could track changes to YAML files with Git. Doing that in Excel is... interesting.
 * Don't get me started on the beauties of having a shared Excel spreadsheet in a Dropbox folder.
 
@@ -41,18 +41,18 @@ Finally:
 
 ### More details
 
-* For a hands-on perspective on this dilemma, listen to the [podcast we did with Carl Buchmann more than two years ago](https://blog.ipspace.net/2018/11/from-excel-to-network-infrastructure-as.html) (it's sad how I keep getting the same questions...).
-* I wrote about *transactional* and *eventual* consistency in [State Consistency in Distributed SDN Controller Clusters](https://blog.ipspace.net/2021/02/state-consistency-distributed-controllers.html)
+* For a hands-on perspective on this dilemma, listen to the [podcast we did with Carl Buchmann more than two years ago](/2018/11/from-excel-to-network-infrastructure-as.html) (it's sad how I keep getting the same questions...).
+* I wrote about *transactional* and *eventual* consistency in [State Consistency in Distributed SDN Controller Clusters](/2021/02/state-consistency-distributed-controllers.html)
 * We [discussed data stores](https://my.ipspace.net/bin/list?id=NetAutSol&module=3#M3S1) in [Data Models](https://my.ipspace.net/bin/list?id=NetAutSol&module=3) module of [Building Network Automation Solutions](https://www.ipspace.net/Building_Network_Automation_Solutions) online course.
 * We'll also talk about data stores in one of the future sessions of [Network Automation Concepts](https://www.ipspace.net/Network_Automation_Concepts) webinar.
 
 You might also want to read:
 
-* [Text Files or Relational Database?](https://blog.ipspace.net/2019/04/text-files-or-relational-database.html)
-* [Growing Beyond Ansible host_vars and group_vars](https://blog.ipspace.net/2020/04/growing-beyond-ansible-host-vars.html)
-* [Validating Data in GitOps-Based Automation](https://blog.ipspace.net/2020/10/validating-data-gitops-automation.html)
-* [Automation Solution: Testing Data Models](https://blog.ipspace.net/2020/01/automation-solution-testing-data-models.html)
-* [Validate Ansible YAML Data with JSON Schema](https://blog.ipspace.net/2020/10/validate-yaml-jsonschema.html)
+* [Text Files or Relational Database?](/2019/04/text-files-or-relational-database.html)
+* [Growing Beyond Ansible host_vars and group_vars](/2020/04/growing-beyond-ansible-host-vars.html)
+* [Validating Data in GitOps-Based Automation](/2020/10/validating-data-gitops-automation.html)
+* [Automation Solution: Testing Data Models](/2020/01/automation-solution-testing-data-models.html)
+* [Validate Ansible YAML Data with JSON Schema](/2020/10/validate-yaml-jsonschema.html)
 
 ### Revision History
 

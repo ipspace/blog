@@ -13,7 +13,7 @@ Multihop EBGP sessions are the traditional way to implement EBGP load balancing 
 <!--more-->
 {{<toc>}}
 
-EBGP session between loopback interfaces is most appropriate in scenarios where all the links between the EBGP neighbors have identical bandwidth. To achieve proportional load balancing across links with different bandwidths, use [parallel EBGP sessions](https://blog.ipspace.net/2008/08/load-balancing-with-parallel-ebgp.html) in the [unequal-bandwidth scenarios](https://blog.ipspace.net/2008/07/unequal-bandwidth-ebgp-load-balancing.html).
+EBGP session between loopback interfaces is most appropriate in scenarios where all the links between the EBGP neighbors have identical bandwidth. To achieve proportional load balancing across links with different bandwidths, use [parallel EBGP sessions](/2008/08/load-balancing-with-parallel-ebgp.html) in the [unequal-bandwidth scenarios](/2008/07/unequal-bandwidth-ebgp-load-balancing.html).
 
 We'll illustrate the concepts described in this article with a 2-router testbed shown in the following diagram:
 

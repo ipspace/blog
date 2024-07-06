@@ -32,7 +32,7 @@ Well done, Cisco! Seeing you guys supporting clean and straightforward network d
 
 ### Old Gear
 
-Finally, there's always a dinosaur hiding in a dusty closet. As an [anonymous commenter wrote](https://blog.ipspace.net/2016/09/do-we-still-need-ospf-areas-and.html?showComment=1473093047491#c2289999859109206256):
+Finally, there's always a dinosaur hiding in a dusty closet. As an [anonymous commenter wrote](/2016/09/do-we-still-need-ospf-areas-and.html?showComment=1473093047491#c2289999859109206256):
 
 > Got some customers still using very old routers managing critical services with 7+ yrs uptime that can't process a large DB and cannot be touched whatever is the issue/project.
 

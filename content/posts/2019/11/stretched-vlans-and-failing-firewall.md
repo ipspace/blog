@@ -14,7 +14,7 @@ tags:
 title: Stretched VLANs and Failing Firewall Clusters
 url: /2019/11/stretched-vlans-and-failing-firewall.html
 ---
-After publishing the *[Disaster Recovery Faking, Take Two](https://blog.ipspace.net/2019/10/disaster-recovery-faking-take-two.html)* blog post (you might want to read that one before proceeding) I was severely reprimanded by several people with ties to virtualization vendors for blaming virtualization consultants when it was obvious the firewall clusters stretched across two data centers caused the total data center meltdown.
+After publishing the *[Disaster Recovery Faking, Take Two](/2019/10/disaster-recovery-faking-take-two.html)* blog post (you might want to read that one before proceeding) I was severely reprimanded by several people with ties to virtualization vendors for blaming virtualization consultants when it was obvious the firewall clusters stretched across two data centers caused the total data center meltdown.
 
 Let's chase that elephant out of the room first. When you drive too fast on an icy road and crash into a tree who do you blame?
 
@@ -25,7 +25,7 @@ Let's chase that elephant out of the room first. When you drive too fast on an i
 
 For whatever reason some people love to blame the tires ;)
 <!--more-->
-Now for [stretched firewall clusters](https://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html). Building a reliable clustering solution is hard - according to some people it's so hard that non-clustered solutions have higher uptime than clustered ones, because everything else in the system has a lower failure rate than the clustering software.
+Now for [stretched firewall clusters](/2011/04/distributed-firewalls-how-badly-do-you.html). Building a reliable clustering solution is hard - according to some people it's so hard that non-clustered solutions have higher uptime than clustered ones, because everything else in the system has a lower failure rate than the clustering software.
 
 Ignoring that bit of wisdom, building a 2-node cluster is the worst thing you can do. Getting a majority in a 2-vote system is a bit hard, and most clustering solutions get around that limitation by adding a *witness node* - a fake node that does nothing else but helps the voting algorithm.
 
@@ -43,10 +43,10 @@ Could we make it better? Sure, change your design. Oh, without that? Sure, make 
 
 Then there's the "minor" detail of failure probability. In a cluster made from adjacent devices connected with point-to-point links the links themselves are least likely to fail, and if they fail, they usually fail in a predictable way, so you can assume they are reliable and move on. When stretching the cluster nodes across multiple sites the links between them become the least reliable component and might exhibit all sorts of gray failures. Do you seriously think the firewall vendors can simulate all those failure scenarios?
 
-{{<note>}}Somewhat-related: data center fabric vendors faced the same problems (example: Juniper VCS, HP IRF) but made a sane choice: one node in the cluster has two votes, and the [minority nodes shut down in split-brain scenario](https://blog.ipspace.net/2011/09/long-distance-irf-fabric-works-best-in.html). For whatever reason that was not found acceptable by the firewall vendors.{{</note>}}
+{{<note>}}Somewhat-related: data center fabric vendors faced the same problems (example: Juniper VCS, HP IRF) but made a sane choice: one node in the cluster has two votes, and the [minority nodes shut down in split-brain scenario](/2011/09/long-distance-irf-fabric-works-best-in.html). For whatever reason that was not found acceptable by the firewall vendors.{{</note>}}
 
 That brings me to the final part of this sad story. Any reliability engineer analyzing the whole thing should come to the same conclusion: **Don't ever do it**... but why are the firewall vendors still promoting such solutions? I guess it's always a 737MAX-like story (minus the loss of life): while at least some development engineers know it's not safe to do things the way they are advertised, the product managers and the sales team are doing whatever it takes to sell the gear, and nobody listens to the engineers anyway.
 
-So what can you do? You claim to be an engineer, right? So learn the fundamentals, figure out how things (probably) work and go from there. Some "solutions" are inherently unsafe - it's your job to identify them (don't ever rely on vendors doing that job for you - FAA learned that the hard way), and work with your peers to build a solution that [satisfies the true business needs of your company](https://blog.ipspace.net/2013/01/long-distance-vmotion-stretched-ha.html).
+So what can you do? You claim to be an engineer, right? So learn the fundamentals, figure out how things (probably) work and go from there. Some "solutions" are inherently unsafe - it's your job to identify them (don't ever rely on vendors doing that job for you - FAA learned that the hard way), and work with your peers to build a solution that [satisfies the true business needs of your company](/2013/01/long-distance-vmotion-stretched-ha.html).
 
-Failing that, [decide how badly you want to fail](https://blog.ipspace.net/2011/04/distributed-firewalls-how-badly-do-you.html), for example when you [don't have the budget for a proper solution](https://blog.ipspace.net/2015/10/sometimes-you-have-to-decide-how-badly.html).
+Failing that, [decide how badly you want to fail](/2011/04/distributed-firewalls-how-badly-do-you.html), for example when you [don't have the budget for a proper solution](/2015/10/sometimes-you-have-to-decide-how-badly.html).

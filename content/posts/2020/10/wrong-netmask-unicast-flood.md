@@ -9,7 +9,7 @@ tags:
 - IP routing
 title: 'Weird: Wrong Subnet Mask Causing Unicast Flooding'
 ---
-When I still [cared about CCIE certification](https://blog.ipspace.net/2008/07/why-im-no-longer-active-ccie.html), I was always tripped up by the [weird scenario](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html#broadcast) with (A) mismatched ARP and MAC timeouts and (B) default gateway outside of the forwarding path. When done just right you could get persistent unicast flooding, and I've met someone who reported average unicast flooding reaching ~1 Gbps in his data center fabric.
+When I still [cared about CCIE certification](/2008/07/why-im-no-longer-active-ccie.html), I was always tripped up by the [weird scenario](https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/71079-arp-cam-tableissues.html#broadcast) with (A) mismatched ARP and MAC timeouts and (B) default gateway outside of the forwarding path. When done just right you could get persistent unicast flooding, and I've met someone who reported average unicast flooding reaching ~1 Gbps in his data center fabric.
 
 One would hope that we wouldn't experience similar problems in modern leaf-and-spine fabrics, but one of my readers managed to reproduce the problem _within a single subnet_ in FabricPath with anycast gateway on spine switches when someone misconfigured a subnet mask in one of the servers.
 <!--more-->
@@ -41,7 +41,7 @@ You might find these webinars useful when trying to answer the above questions:
 
 You might also want to read these blog posts to understand how anycast gateway on leaf switches works (the blog posts talk about Arista's VARP, but that's just terminology):
 
-* [Optimal L3 Forwarding with VARP and Active/Active VRRP](https://blog.ipspace.net/2013/05/optimal-l3-forwarding-with-varp-and.html)
-* [VRRP, Anycasts, Fabrics and Optimal Forwarding](https://blog.ipspace.net/2013/06/vrrp-anycasts-fabrics-and-optimal.html)
-* [Arista EOS Virtual ARP (VARP) Behind the Scenes](https://blog.ipspace.net/2013/06/arista-eos-virtual-arp-varp-behind.html)
+* [Optimal L3 Forwarding with VARP and Active/Active VRRP](/2013/05/optimal-l3-forwarding-with-varp-and.html)
+* [VRRP, Anycasts, Fabrics and Optimal Forwarding](/2013/06/vrrp-anycasts-fabrics-and-optimal.html)
+* [Arista EOS Virtual ARP (VARP) Behind the Scenes](/2013/06/arista-eos-virtual-arp-varp-behind.html)
 

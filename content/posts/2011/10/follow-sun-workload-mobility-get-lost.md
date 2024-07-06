@@ -11,13 +11,13 @@ tags:
 title: Follow-the-Sun Workload Mobility? Get Lost!
 url: /2011/10/follow-sun-workload-mobility-get-lost.html
 ---
-Based on what I wrote about the [latency and bandwidth challenges of long-distance vMotion](https://blog.ipspace.net/2011/09/long-distance-vmotion-for-disaster.html) and why it rarely makes sense to use it in disaster avoidance scenarios, I was asked to write an article to tackle the idea that is an order of magnitude more ridiculous: using vMotion to migrate virtual machines around the world to bring them close to the users.
+Based on what I wrote about the [latency and bandwidth challenges of long-distance vMotion](/2011/09/long-distance-vmotion-for-disaster.html) and why it rarely makes sense to use it in disaster avoidance scenarios, I was asked to write an article to tackle the idea that is an order of magnitude more ridiculous: using vMotion to migrate virtual machines around the world to bring them close to the users.
 
 That article has disappeared a long time ago in the haze of mergers, acquisitions and SEO optimizations, so I'm reposting it here:
 <!--more-->
 ---
 
-After I made a particularly snarky comment about an article that touted inter-data center (DC) virtual machine (VM) mobility as the ultimate tool to reach the 100% availability heavens ([this is why that argument is totally invalid](https://blog.ipspace.net/2011/08/high-availability-fallacies.html)), someone asked me whether I don’t believe in workload mobility, disaster avoidance and follow-the-sun data centers. I am positive that some businesses have needs for all three above-mentioned functionalities, but I also know that live VM migration is not the right tool for the job.
+After I made a particularly snarky comment about an article that touted inter-data center (DC) virtual machine (VM) mobility as the ultimate tool to reach the 100% availability heavens ([this is why that argument is totally invalid](/2011/08/high-availability-fallacies.html)), someone asked me whether I don’t believe in workload mobility, disaster avoidance and follow-the-sun data centers. I am positive that some businesses have needs for all three above-mentioned functionalities, but I also know that live VM migration is not the right tool for the job.
 
 Let’s focus on the most bizarre of the three ideas: using VM mobility to implement *follow-the-sun datacenters*. The underlying business requirements are sound and simple – moving the servers closer to the end-users reduces latency and long-distance bandwidth requirements. Reduced latency also improves response times and throughput (see also [bandwidth-delay product](http://en.wikipedia.org/wiki/Bandwidth-delay_product)). However, you cannot reach this goal by moving the virtual machines around the data centers; you simply can’t move a running virtual machine over long-enough distances.
 

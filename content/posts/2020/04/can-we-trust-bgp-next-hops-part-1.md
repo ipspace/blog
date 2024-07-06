@@ -9,7 +9,7 @@ tags:
 - IP routing
 title: Can We Trust BGP Next Hops (Part 1)?
 ---
-[Aldrin](https://www.linkedin.com/in/aldrin-isaac-387864/) sent me an interesting question as a comment to one of my [EVPN blog posts](https://blog.ipspace.net/2020/02/the-evpnbgp-saga-continues.html):
+[Aldrin](https://www.linkedin.com/in/aldrin-isaac-387864/) sent me an interesting question as a comment to one of my [EVPN blog posts](/2020/02/the-evpnbgp-saga-continues.html):
 
 > How does the network know that a VTEP is actually alive? (1) from the point of view of the control plane and (2) from the point of view of the data plane? And how do you ensure that control and data plane liveness monitoring has the same view? BFD for BGP is a possible solution for (1) but it’s not meant for 3rd party next hops, i.e. it doesn’t address (2).
 

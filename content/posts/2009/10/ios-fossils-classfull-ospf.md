@@ -15,7 +15,7 @@ Either the OSPF **redistribute** command is really old (before the **distribute-
 
 By the time Cisco implemented EIGRP and BGPv4 (IOS release 9.21, 15+ years ago), the absurdity of the classful redistribution was already obvious. These routing protocols accept whatever routes you want to redistribute, and their variants of the **redistribute** command don't have the **subnets** keyword. However, nobody ever took steps to remove this fossil from the IOS code.
 <!--more-->
-I wouldn't care if we were talking about an obscure option like the [OSPF-to-BGP redistribution tags](https://blog.ipspace.net/2009/05/ios-fossils-ospf-to-bgp-redistribution.html), but the OSPF **redistribute** command is one of the most confusingly harmful IOS routing protocol commands (the only one getting close in my opinion is the **auto-summary** in EIGRP). One of the IOS releases introduced a warning that would be printed whenever you're configuring redistribution into OSPF without the **subnets** keyword (great job: wouldn't it be better to fix the problem?).
+I wouldn't care if we were talking about an obscure option like the [OSPF-to-BGP redistribution tags](/2009/05/ios-fossils-ospf-to-bgp-redistribution.html), but the OSPF **redistribute** command is one of the most confusingly harmful IOS routing protocol commands (the only one getting close in my opinion is the **auto-summary** in EIGRP). One of the IOS releases introduced a warning that would be printed whenever you're configuring redistribution into OSPF without the **subnets** keyword (great job: wouldn't it be better to fix the problem?).
 
 ``` code
 rtr(config)#router ospf 999

@@ -34,7 +34,7 @@ Answering the first question yourself is straightforward -- you spin up a virtua
 
 The second question is also pretty easy to answer -- create a very large configuration, download it to the router, and see what happens. You could use something as simple as Notepad, or stop wasting your time with cut-and-paste and use Excel, Perl, Python, Ansible, or whatever else.
 
-The answer to the third question might be \~30 (see [this article](https://blog.ipspace.net/2009/05/vrf-routing-process-limitations.html) I wrote in 2009) due to internal IOS architecture, or more. Yet again, it's easy to test.
+The answer to the third question might be \~30 (see [this article](/2009/05/vrf-routing-process-limitations.html) I wrote in 2009) due to internal IOS architecture, or more. Yet again, it's easy to test.
 
 If the answer to the third question is way above 30, I don't think many people know what it depends on, but if you desperately want an authoritative answer, you should ask your Cisco SE and not a random blogger anyway.
 

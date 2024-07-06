@@ -10,7 +10,7 @@ In environments with a low number of IP hosts you have to fine-tune the CEF load
 
 {{<figure src="/2006/12/LoadSharing_1.jpg">}}
 
-In these cases, you have to try different values of *seed* parameter of the [CEF universal algorithm.](https://blog.ipspace.net/2006/10/cef-per-destination-load-sharing.html)
+In these cases, you have to try different values of *seed* parameter of the [CEF universal algorithm.](/2006/10/cef-per-destination-load-sharing.html)
 <!--more-->
 For example, if you have two equal-cost paths between networks 10.0.0.0/24 and 192.168.0.0/24...
 
@@ -37,7 +37,7 @@ a1#show ip cef exact-route 10.0.0.2 192.168.0.2
 10.0.0.2 -> 192.168.0.2 : Serial0/0/0.100 (next hop 172.16.1.2)
 ```
 
-However, by changing the *seed* parameter of the **ip cef load-sharing algorithm universal** command, you can influence the [CEF hashing function](https://blog.ipspace.net/2006/10/cef-load-sharing-details.html), eventually reaching a state where the traffic flows are spread between both WAN links:
+However, by changing the *seed* parameter of the **ip cef load-sharing algorithm universal** command, you can influence the [CEF hashing function](/2006/10/cef-load-sharing-details.html), eventually reaching a state where the traffic flows are spread between both WAN links:
 
 ```
 a1(config)#ip cef load-sharing algorithm universal 1

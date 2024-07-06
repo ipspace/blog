@@ -6,7 +6,7 @@ tags:
 title: Ethernet Checksums Are Not Good Enough for Storage 
 url: /2015/11/ethernet-checksums-are-not-good-enough.html
 ---
-A while ago I described why [some storage vendors require end-to-end layer-2 connectivity for iSCSI replication](https://blog.ipspace.net/2013/03/does-dedicated-iscsi-infrastructure.html).
+A while ago I described why [some storage vendors require end-to-end layer-2 connectivity for iSCSI replication](/2013/03/does-dedicated-iscsi-infrastructure.html).
 
 **TL&DR version**: among other things, they might have been too lazy to implement iSCSI checksums and rely on Ethernet checksums because TCP/IP checksums are not good enough.
 
@@ -19,7 +19,7 @@ Ethernet CRC is supposed to save the day. After all, a switch receiving a packet
 In practice:
 
 * Store-and-forward switches drop packet with invalid CRC. Harm avoided.
-* Cut-through switches (becoming yet again ever more popular due to reduced latency) [stomp the CRC](https://blog.ipspace.net/2020/12/chasing-crc-errors-data-center-fabric.html) if the incoming CRC is invalid (see also [the excellent blog post by John Harrington](http://thenetworksherpa.com/cut-through-corruption-and-crc-stomping/))
+* Cut-through switches (becoming yet again ever more popular due to reduced latency) [stomp the CRC](/2020/12/chasing-crc-errors-data-center-fabric.html) if the incoming CRC is invalid (see also [the excellent blog post by John Harrington](http://thenetworksherpa.com/cut-through-corruption-and-crc-stomping/))
 * However, **layer-3 switches recalculate the CRC**[^RC], which thus no longer protects the integrity of Ethernet frame between end hosts.
 
 [^RC]: They have to as they decrement TTL and change MAC address.

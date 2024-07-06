@@ -33,13 +33,13 @@ We'll see about that.
 
 > Another significant benefit is the ability to provide Internet access without the use of Network Address Translation (NAT). Providing only one IPv6 address per host negates these benefits.
 
-That might be true in mobile phone tethering (where nobody uses DHCPv6 anyway -- [details here](/2021/10/dhcpv6-matters.html#fnref:1)). Everywhere else it's pure and utter bullshit. There are [other reasons](https://blog.ipspace.net/2011/12/ipv6-multihoming-without-nat-problem.html) we need IPv6 NAT or [Network Prefix Translation (NPT)](https://blog.ipspace.net/2011/12/we-just-might-need-nat66.html) ([more NAT-related blog posts](https://blog.ipspace.net/tag/nat.html)), but number of IPv6 addresses per hosts, or address allocation mechanism (SLAAC vs DHCPv6), has nothing to do with them.
+That might be true in mobile phone tethering (where nobody uses DHCPv6 anyway -- [details here](/2021/10/dhcpv6-matters.html#fnref:1)). Everywhere else it's pure and utter bullshit. There are [other reasons](/2011/12/ipv6-multihoming-without-nat-problem.html) we need IPv6 NAT or [Network Prefix Translation (NPT)](/2011/12/we-just-might-need-nat66.html) ([more NAT-related blog posts](/tag/nat.html)), but number of IPv6 addresses per hosts, or address allocation mechanism (SLAAC vs DHCPv6), has nothing to do with them.
 
 ## Supposed Benefits
 
 Moving on to *[Benefits of Providing Multiple Addresses](https://datatracker.ietf.org/doc/html/rfc7934#section-3)*[^4]:
 
-[^4]: Keep in mind that the RFC is over half a decade old, and we've moved on in the meantime. On a tangential thought, it took less than a year from the first draft to the Best Practices RFC, so maybe the usual careful considerations and pondering of all angles so typical in [creation of a Best Practices RFC](https://blog.ipspace.net/2015/02/rfc-7454-bgp-operations-and-security.html) weren't applied to this one.
+[^4]: Keep in mind that the RFC is over half a decade old, and we've moved on in the meantime. On a tangential thought, it took less than a year from the first draft to the Best Practices RFC, so maybe the usual careful considerations and pondering of all angles so typical in [creation of a Best Practices RFC](/2015/02/rfc-7454-bgp-operations-and-security.html) weren't applied to this one.
 
 > Privacy addressing to prevent tracking by off-network hosts
 

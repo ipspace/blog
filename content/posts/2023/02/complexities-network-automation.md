@@ -3,7 +3,7 @@ title: "Response: Complexities of Network Automation"
 date: 2023-02-01 07:00:00
 tags: [ automation ]
 ---
-_David Gee couldn't resist making a few choice comments after I asked for his opinion of an early draft of the [Network Automation Expert Beginners](https://blog.ipspace.net/2023/01/network-automation-expert-beginners.html) blog post, and allowed me to share them with you. Enjoy_&nbsp;😉
+_David Gee couldn't resist making a few choice comments after I asked for his opinion of an early draft of the [Network Automation Expert Beginners](/2023/01/network-automation-expert-beginners.html) blog post, and allowed me to share them with you. Enjoy_&nbsp;😉
 
 ---
 

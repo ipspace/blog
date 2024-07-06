@@ -11,7 +11,7 @@ tags:
 title: LDP-IGP Synchronization in MPLS Networks
 url: /2011/11/ldp-igp-synchronization-in-mpls.html
 ---
-A reader of my blog planning to migrate his network from a traditional BGP-everywhere design to a BGP-over-MPLS one wondered about potential unexpected consequences. The [MTU implications of introducing MPLS in a running network](https://blog.ipspace.net/2011/07/mpls-mtu-challenges.html) are usually well understood (even though you [could get some very interesting behavior](https://blog.ipspace.net/2011/07/asymmetric-mpls-mtu-problem.html)); if you can, increase the MTU size by at least 16 bytes (4 labels) and [check whether MTU includes L2 header](https://blog.ipspace.net/2011/07/all-mtus-are-not-same.html). Another somewhat more mysterious beast is the interaction between IGP and LDP that can cause traffic disruptions *after the physical connectivity has been reestablished*.
+A reader of my blog planning to migrate his network from a traditional BGP-everywhere design to a BGP-over-MPLS one wondered about potential unexpected consequences. The [MTU implications of introducing MPLS in a running network](/2011/07/mpls-mtu-challenges.html) are usually well understood (even though you [could get some very interesting behavior](/2011/07/asymmetric-mpls-mtu-problem.html)); if you can, increase the MTU size by at least 16 bytes (4 labels) and [check whether MTU includes L2 header](/2011/07/all-mtus-are-not-same.html). Another somewhat more mysterious beast is the interaction between IGP and LDP that can cause traffic disruptions *after the physical connectivity has been reestablished*.
 <!--more-->
 Here's a typical BGP-over-MPLS design (applies equally well to MPLS/VPN, 6PE, 6VPE, VPLS or pseudowires):
 
@@ -21,7 +21,7 @@ Here's a typical BGP-over-MPLS design (applies equally well to MPLS/VPN, 6PE, 6V
 
 {{<figure src="s1600-LDPIGP_BasicSetup.png" caption="Typical IGP+LDP setup">}}
 
-IP packets can be forwarded across BGP-free core even though the core routers don't know how to forward them. Ingress PE-router labels incoming IP packets with MPLS labels for BGP next hops, labeled packets are sent across the core (core routers don't perform IP lookup), last P-router pops the top label ([penultimate hop popping](https://blog.ipspace.net/2011/07/penultimate-hop-popping-php-demystified.html)) and the egress PE-router performs IP lookup and sends the datagram toward an external destination (the process is slightly different when you use technologies like MPLS/VPN that need a two-label stack).
+IP packets can be forwarded across BGP-free core even though the core routers don't know how to forward them. Ingress PE-router labels incoming IP packets with MPLS labels for BGP next hops, labeled packets are sent across the core (core routers don't perform IP lookup), last P-router pops the top label ([penultimate hop popping](/2011/07/penultimate-hop-popping-php-demystified.html)) and the egress PE-router performs IP lookup and sends the datagram toward an external destination (the process is slightly different when you use technologies like MPLS/VPN that need a two-label stack).
 
 {{<figure src="s1600-LDPIGP_FWD.png" caption="Packet forwarding in MPLS networks">}}
 
@@ -57,7 +57,7 @@ To configure this feature, use the **mpls ldp session protection** global config
 
 [Enterprise MPLS/VPN Deployment](http://www.ipspace.net/Enterprise_MPLS_VPN_Deployment) webinar describes the basics of LDP, LSP establishment and packet forwarding across MPLS networks (including label stack used by MPLS/VPN and penultimate hop popping).
 
-If you need a bit more in-depth details, [buy one of the MPLS books](https://blog.ipspace.net/2007/06/using-mpls-vpn-books-to-study-for-ccip.html) (unfortunately none of my books covers the new features like LDP session protection).
+If you need a bit more in-depth details, [buy one of the MPLS books](/2007/06/using-mpls-vpn-books-to-study-for-ccip.html) (unfortunately none of my books covers the new features like LDP session protection).
 
 ## Revision history
 

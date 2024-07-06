@@ -17,13 +17,13 @@ First let's rephrase the provocative headline from the discussion. The real ques
 
 Stateless firewalling is implemented quite easily with access lists on routers, switches, and virtual switches. It usually works at line speed. Stateful firewalls implemented in routers are usually suitable for low-speed remote offices; you should use dedicated firewall devices in data centers.
 
-For more details read also *[The Spectrum of Firewall Statefulness](https://blog.ipspace.net/2013/03/the-spectrum-of-firewall-statefulness.html)*.
+For more details read also *[The Spectrum of Firewall Statefulness](/2013/03/the-spectrum-of-firewall-statefulness.html)*.
 
 ### Technology issues
 
 Stateful firewall is the only option if you're trying to tightly protect applications that use dynamic port numbers, including everything from peer-to-peer applications (including SIP) to RPC-based applications (let's try not to call them *broken* \... how about *unpredictable applications*).
 
-{{<note>}}You can [limit the dynamic port range for some of these applications](https://blog.ipspace.net/2010/05/update-make-ftp-server-slightly-more.html) and allow all ports in that range through the firewall... while hoping that some other service on your server won't grab one of those ports and expose itself unnecessarily.{{</note>}}
+{{<note>}}You can [limit the dynamic port range for some of these applications](/2010/05/update-make-ftp-server-slightly-more.html) and allow all ports in that range through the firewall... while hoping that some other service on your server won't grab one of those ports and expose itself unnecessarily.{{</note>}}
 
 If your applications use only well-known fixed port numbers (let's call them *fixed-port applications*), you don't have to inspect the application data stream and can match the applications with access lists; stateless solutions seem appropriate.
 

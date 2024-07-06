@@ -12,11 +12,11 @@ tags:
 title: Dynamic Routing with Virtual Appliances
 url: /2013/06/dynamic-routing-with-virtual-appliances.html
 ---
-Meeting Brad Hedlund in person was definitely one of the highlights of my Interop 2013 week. We had an awesome conversation and quickly realized how closely aligned our views of [VLANs](https://blog.ipspace.net/2013/04/vlans-are-wrong-abstraction-for-virtual.html), [overlay networks](https://blog.ipspace.net/2011/12/decouple-virtual-networking-from.html) and [virtual appliances](https://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html) are.
+Meeting Brad Hedlund in person was definitely one of the highlights of my Interop 2013 week. We had an awesome conversation and quickly realized how closely aligned our views of [VLANs](/2013/04/vlans-are-wrong-abstraction-for-virtual.html), [overlay networks](/2011/12/decouple-virtual-networking-from.html) and [virtual appliances](/2013/05/simplify-your-disaster-recovery-with.html) are.
 
 Not surprisingly, Brad quickly improved my ideas with a radical proposal: running BGP between the virtual and the physical world.
 <!--more-->
-Let's revisit the application stack I used in the [disaster recovery with virtual appliances](https://blog.ipspace.net/2013/05/simplify-your-disaster-recovery-with.html) post. One of the points connecting the virtual application stack with the physical world was the outside IP address of the firewall (or load balancer if you're using bump-in-the-wire firewall).
+Let's revisit the application stack I used in the [disaster recovery with virtual appliances](/2013/05/simplify-your-disaster-recovery-with.html) post. One of the points connecting the virtual application stack with the physical world was the outside IP address of the firewall (or load balancer if you're using bump-in-the-wire firewall).
 
 {{<figure src="/2013/06/s1600-VA_Interaction_Points.png" caption="Virtual appliance interaction points">}}
 

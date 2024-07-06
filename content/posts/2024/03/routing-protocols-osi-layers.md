@@ -3,7 +3,7 @@ title: "OSI Layers in Routing Protocols"
 date: 2024-03-26 06:53:00+0100
 tags: [ networking fundamentals ]
 ---
-Now and then, someone [rediscovers that IS-IS does not run on top of CLNP or IP](https://blog.ipspace.net/2009/06/is-is-is-not-running-over-clnp.html) and claims that, therefore, it must be a layer-2 protocol. Even [vendors' documentation](https://www.juniper.net/documentation/us/en/software/junos/is-is/topics/concept/isis-layer2-mapping.html) is not immune.
+Now and then, someone [rediscovers that IS-IS does not run on top of CLNP or IP](/2009/06/is-is-is-not-running-over-clnp.html) and claims that, therefore, it must be a layer-2 protocol. Even [vendors' documentation](https://www.juniper.net/documentation/us/en/software/junos/is-is/topics/concept/isis-layer2-mapping.html) is not immune.
 
 Interestingly, most routing protocols span the whole seven layers of the OSI stack, with some layers implemented internally and others offloaded to other standardized protocols.
 <!--more-->

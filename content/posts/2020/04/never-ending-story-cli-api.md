@@ -9,33 +9,33 @@ Just for the giggles I collected a few old blog posts on the topic (not that any
 <!--more-->
 The basics:
 
-* [CLI and API Myths](https://blog.ipspace.net/2013/06/cli-and-api-myths.html) (2013)
-* [What Is This API Thingy?](https://blog.ipspace.net/2014/07/what-is-this-api-thingy.html) (2014)
-* [To API or Not To API](https://blog.ipspace.net/2016/10/to-api-or-not-to-api.html) (2016)
+* [CLI and API Myths](/2013/06/cli-and-api-myths.html) (2013)
+* [What Is This API Thingy?](/2014/07/what-is-this-api-thingy.html) (2014)
+* [To API or Not To API](/2016/10/to-api-or-not-to-api.html) (2016)
 
 CLI-or-API dilemma:
 
-* [Is CLI In My Way … or Is It Just a Symptom of a Bigger Problem?](https://blog.ipspace.net/2014/02/is-cli-in-my-way-or-is-it-just-symptom.html) (2014)
-* [CLI or API? Wait … Do You Really Have to Ask?](https://blog.ipspace.net/2014/02/cli-or-api-wait-do-you-really-have-to.html) (2014)
-* [We Have to Get Away from the Box-Focused Mentality](https://blog.ipspace.net/2015/03/we-have-to-get-away-from-box-focused.html) (2015)
-* [CLI or API… Again (and Again and Again…)](https://blog.ipspace.net/2017/10/cli-or-api-again-and-again-and-again.html) (2017)
-* [It’s Bash Scripts All the Way Down (more on CLI versus API)](https://blog.ipspace.net/2017/11/its-bash-scripts-all-way-down-more-on.html) (2017)
-* [Don't Get Obsessed with REST API](https://blog.ipspace.net/2018/04/dont-get-obsessed-with-rest-api.html) (2018)
+* [Is CLI In My Way … or Is It Just a Symptom of a Bigger Problem?](/2014/02/is-cli-in-my-way-or-is-it-just-symptom.html) (2014)
+* [CLI or API? Wait … Do You Really Have to Ask?](/2014/02/cli-or-api-wait-do-you-really-have-to.html) (2014)
+* [We Have to Get Away from the Box-Focused Mentality](/2015/03/we-have-to-get-away-from-box-focused.html) (2015)
+* [CLI or API… Again (and Again and Again…)](/2017/10/cli-or-api-again-and-again-and-again.html) (2017)
+* [It’s Bash Scripts All the Way Down (more on CLI versus API)](/2017/11/its-bash-scripts-all-way-down-more-on.html) (2017)
+* [Don't Get Obsessed with REST API](/2018/04/dont-get-obsessed-with-rest-api.html) (2018)
 
 Real-life considerations:
 
-* [Stop the Low-Level Configuration Manipulation](https://blog.ipspace.net/2019/05/stop-low-level-configuration.html) (2019)
-* [Is Controller-Based Networking More Reliable than Traditional Networking?](https://blog.ipspace.net/2015/01/is-controller-based-networking-more.html) (2015)
-* [Big Red Button for Network Automation](https://blog.ipspace.net/2018/02/big-red-button-for-network-automation.html) (2018)
+* [Stop the Low-Level Configuration Manipulation](/2019/05/stop-low-level-configuration.html) (2019)
+* [Is Controller-Based Networking More Reliable than Traditional Networking?](/2015/01/is-controller-based-networking-more.html) (2015)
+* [Big Red Button for Network Automation](/2018/02/big-red-button-for-network-automation.html) (2018)
 
 Meanwhile on planet Earth:
 
-* [Anti-Automation from the Antimatter Universe](https://blog.ipspace.net/2018/02/anti-automation-from-antimatter-universe.html)
-* [Fat Fingers Strike Again…](https://blog.ipspace.net/2018/01/fat-fingers-strike-again.html)
+* [Anti-Automation from the Antimatter Universe](/2018/02/anti-automation-from-antimatter-universe.html)
+* [Fat Fingers Strike Again…](/2018/01/fat-fingers-strike-again.html)
 
 Finally:
 
-* You MUST listen to [Terry Slattery remembering the history of Cisco IOS CLI](https://blog.ipspace.net/2019/04/must-watch-history-of-cisco-ios-cli.html)
+* You MUST listen to [Terry Slattery remembering the history of Cisco IOS CLI](/2019/04/must-watch-history-of-cisco-ios-cli.html)
 * You might also love what [David Barroso had to say on the topic](https://twitter.com/dbarrosop/status/1246551526581157889).
 
 ### For those of you still loving Bash CLI
@@ -44,7 +44,7 @@ Fun fact: It took me less than 10 minutes to put together the above list using B
 
 Here's what I did:
 
-A) Get a list of blog posts mentioning CLI (a piece of cake after [migrating the blog into a Git-backed directory tree](https://blog.ipspace.net/2020/03/ipspace-blog-runs-on-hugo.html)):
+A) Get a list of blog posts mentioning CLI (a piece of cake after [migrating the blog into a Git-backed directory tree](/2020/03/ipspace-blog-runs-on-hugo.html)):
 
 ```
 cd $DIRECTORY/content/posts 
@@ -62,7 +62,7 @@ C) Open all those blog posts in a web browser to see what I wrote in each one:
 ```
 ack -l CLI|ack '201[5-9]'| \
   sort| \
-  xargs -n 1 -I % open https://blog.ipspace.net/%
+  xargs -n 1 -I % open /%
 ```
 
 Of course I also wanted to automate generation of Markdown text pointing to each blog post.

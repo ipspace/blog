@@ -10,17 +10,17 @@ tags:
 title: vSphere Does Not Need LAG Bandaids – the Network Might
 url: /2014/01/vsphere-does-not-need-lag-bandaids.html
 ---
-Chris Wahl [claimed in one of his recent blog posts](http://wahlnetwork.com/2014/01/13/vsphere-need-lag-bandaids/) that *vSphere doesn\'t need LAG band-aids*. He\'s absolutely right -- [vSphere's loop prevention logic alleviates the need for STP-blocked links](https://blog.ipspace.net/2010/11/vmware-virtual-switch-no-need-for-stp.html), allowing you to use full server uplink bandwidth without the complexity of link aggregation. Now let's consider the networking perspective.
+Chris Wahl [claimed in one of his recent blog posts](http://wahlnetwork.com/2014/01/13/vsphere-need-lag-bandaids/) that *vSphere doesn\'t need LAG band-aids*. He\'s absolutely right -- [vSphere's loop prevention logic alleviates the need for STP-blocked links](/2010/11/vmware-virtual-switch-no-need-for-stp.html), allowing you to use full server uplink bandwidth without the complexity of link aggregation. Now let's consider the networking perspective.
 <!--more-->
 The conclusions Chris reached are perfectly valid in a classic data center or VDI environment with majority of the VM-generated traffic leaving the data center; the situation is drastically different in data centers with predominantly east-west traffic (be it inter-server or IP-based storage traffic).
 
 Let's start with a simple scenario:
 
-- Data center is small enough to have [only two switches](https://blog.ipspace.net/2014/10/all-you-need-are-two-top-of-rack.html).
+- Data center is small enough to have [only two switches](/2014/10/all-you-need-are-two-top-of-rack.html).
 - Two vSphere servers are connected to the two data center switches in a fully redundant setup (each server has one uplink to each ToR switch).
 - Load-Based Teaming (LBT) is used within vSphere instead of IP-based hash (vSphere terminology for a Link Aggregation Group).
 
-The two ToR switches are not aware of the exact VM placement, [resulting in traffic flowing across inter-switch link even when it could be exchanged locally](https://blog.ipspace.net/2011/01/vswitch-in-multi-chassis-link.html).
+The two ToR switches are not aware of the exact VM placement, [resulting in traffic flowing across inter-switch link even when it could be exchanged locally](/2011/01/vswitch-in-multi-chassis-link.html).
 
 {{<figure src="/2014/01/s320-vSwitch_MLAG_Phy.png" caption="Physical connectivity">}}
 

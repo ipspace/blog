@@ -40,7 +40,7 @@ The [*Data Center Interconnects*](https://www.ipspace.net/DCI) webinar describes
 
 ### Related Blog Posts
 
-* [Sometimes You Have to Decide How Badly You Want to Fail](https://blog.ipspace.net/2015/10/sometimes-you-have-to-decide-how-badly.html)
-* [Do I Need Redundant Firewalls?](https://blog.ipspace.net/2016/10/do-i-need-redundant-firewalls.html)
-* [Stretched Firewalls across Layer-3 DCI? Will the Madness Ever Stop?](https://blog.ipspace.net/2015/11/stretched-firewalls-across-layer-3-dci.html)
-* [Stretched VLANs and Failing Firewall Clusters](https://blog.ipspace.net/2019/11/stretched-vlans-and-failing-firewall.html)
+* [Sometimes You Have to Decide How Badly You Want to Fail](/2015/10/sometimes-you-have-to-decide-how-badly.html)
+* [Do I Need Redundant Firewalls?](/2016/10/do-i-need-redundant-firewalls.html)
+* [Stretched Firewalls across Layer-3 DCI? Will the Madness Ever Stop?](/2015/11/stretched-firewalls-across-layer-3-dci.html)
+* [Stretched VLANs and Failing Firewall Clusters](/2019/11/stretched-vlans-and-failing-firewall.html)

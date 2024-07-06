@@ -4,7 +4,7 @@ title: 'Breaking News: I’m a Vendor Shill'
 url: /2016/11/breaking-news-im-vendor-shill.html
 tags: [ automation ]
 ---
-Got this comment on my [Network Automation RFP Requirements](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html) blog post:
+Got this comment on my [Network Automation RFP Requirements](/2016/10/network-automation-rfp-requirements.html) blog post:
 
 > Looks like you are paid shill for Brocade based on the quote earlier in your blog \"The Pass/Fail information included below was collected to the best of my knowledge with extensive help from Jason Edelman, Nick Buraglio, David Barroso and several Brocade engineers (THANK YOU!).\"
 
@@ -25,11 +25,11 @@ I also contacted few friends who happen to work at Brocade because:
 
 The real reason I contacted friends @ Brocade and not at \$SomeOtherVendor is because I lost contact with many engineers I knew at \$SomeOtherVendor.
 
-Likewise, the real reason I [wrote about Juniper's OpenConfig support](https://blog.ipspace.net/2016/09/juniper-is-serious-about-openconfig-and.html) when I did is because a friend who happen to be working at Juniper was kind enough to send me an email saying "hey, this is now shipping".
+Likewise, the real reason I [wrote about Juniper's OpenConfig support](/2016/09/juniper-is-serious-about-openconfig-and.html) when I did is because a friend who happen to be working at Juniper was kind enough to send me an email saying "hey, this is now shipping".
 
-Interestingly, the email came from a friend and not from their Product Marketing or Social Media Experts. The only contact I have with those people is when they complain after I write about [their use](https://blog.ipspace.net/2015/11/junos-fusion-fex-reinvented.html) of [marketing grammar](http://blog.ipspace.net/2014/05/marketing-grammar.html).
+Interestingly, the email came from a friend and not from their Product Marketing or Social Media Experts. The only contact I have with those people is when they complain after I write about [their use](/2015/11/junos-fusion-fex-reinvented.html) of [marketing grammar](/2014/05/marketing-grammar.html).
 
-Finally, I know I'm usually missing some recently-shipped goodie and always fix my blog posts if someone points out my omissions. However, I got no information from \$SomeOtherVendor saying "*hey, you missed feature X shipping in version Y, here's the documentation URL*" that would prompt me to update that particular blog post. You can see [most of what I got](https://blog.ipspace.net/2016/10/network-automation-rfp-requirements.html?showComment=1477403406970#c1792883115184277297) on the original blog post.
+Finally, I know I'm usually missing some recently-shipped goodie and always fix my blog posts if someone points out my omissions. However, I got no information from \$SomeOtherVendor saying "*hey, you missed feature X shipping in version Y, here's the documentation URL*" that would prompt me to update that particular blog post. You can see [most of what I got](/2016/10/network-automation-rfp-requirements.html?showComment=1477403406970#c1792883115184277297) on the original blog post.
 
 Make your own conclusions.
 

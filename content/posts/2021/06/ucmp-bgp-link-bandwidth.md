@@ -67,7 +67,7 @@ Routing entry for 10.42.42.0/24
       MPLS label: none
 ```
 
-Time to enter the [magical world of DMZ Link Bandwidth](https://blog.ipspace.net/2008/07/unequal-bandwidth-ebgp-load-balancing.html). We have to configure:
+Time to enter the [magical world of DMZ Link Bandwidth](/2008/07/unequal-bandwidth-ebgp-load-balancing.html). We have to configure:
 
 * **neighbor dmzlink-bw** on all EBGP neighbors to attach *DMZ Link Bandwidth* extended BGP community to all BGP prefixes received from EBGP neighbors[^1].
 * **bgp dmzlink-bw** within an address family to use the link bandwidth extended community to calculate traffic shares.
@@ -240,4 +240,4 @@ The Arista EOS implementation (described in the *[Data Center Fabrics](https://m
 
 I haven't found anything similar in Nexus OS; corrections are (as always) most welcome.
 
-[^2]: Long-time readers might remember that I was always telling people to [use IBGP+OSPF](https://blog.ipspace.net/2018/05/is-ospf-or-is-is-good-enough-for-my.html) instead of *EBGP as better IGP* hype in small data center fabrics. [Not that anyone ever listens](https://blog.ipspace.net/2017/11/bgp-as-better-igp-when-and-where.html).
+[^2]: Long-time readers might remember that I was always telling people to [use IBGP+OSPF](/2018/05/is-ospf-or-is-is-good-enough-for-my.html) instead of *EBGP as better IGP* hype in small data center fabrics. [Not that anyone ever listens](/2017/11/bgp-as-better-igp-when-and-where.html).

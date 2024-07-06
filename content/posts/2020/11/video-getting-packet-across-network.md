@@ -10,7 +10,7 @@ tags:
 title: 'Video: Getting a Packet Across a Network'
 video_tag: net101
 ---
-After (hopefully) [agreeing on what routing, bridging, and switching are](https://blog.ipspace.net/2020/09/video-bridging-routing-switching.html), let's focus on the first important topic in this area: how do we get a packet across the network? Yet again, there are three fundamentally different technologies:
+After (hopefully) [agreeing on what routing, bridging, and switching are](/2020/09/video-bridging-routing-switching.html), let's focus on the first important topic in this area: how do we get a packet across the network? Yet again, there are three fundamentally different technologies:
 
 * Source node knows the full path (source routing)
 * Source node opens a path (virtual circuit) to the destination node and uses that path to send traffic

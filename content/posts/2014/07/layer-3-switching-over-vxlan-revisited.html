@@ -9,7 +9,7 @@ title: Layer-3 Switching over VXLAN Revisited
 url: /2014/07/layer-3-switching-over-vxlan-revisited.html
 ---
 
-<p>My <a href="https://blog.ipspace.net/2014/06/trident-2-chipset-and-nexus-9500.html"><em>Trident 2 Chipset and Nexus 9500</em></a><em> </em>blog post must have hit a raw nerve or two – Bruce Davie dedicated a whole paragraph in his <a href="http://networkheresy.com/2014/07/11/physical-networks-in-the-virtualized-networking-world/"><em>Physical Networks in Virtualized Networking World</em></a> blog post to tell everyone how the whole thing is a non-issue and how everything’s good in the NSX land.</p>
+<p>My <a href="/2014/06/trident-2-chipset-and-nexus-9500.html"><em>Trident 2 Chipset and Nexus 9500</em></a><em> </em>blog post must have hit a raw nerve or two – Bruce Davie dedicated a whole paragraph in his <a href="http://networkheresy.com/2014/07/11/physical-networks-in-the-virtualized-networking-world/"><em>Physical Networks in Virtualized Networking World</em></a> blog post to tell everyone how the whole thing is a non-issue and how everything’s good in the NSX land.</p>
 <p>It’s always fun digging into more details to figure out what’s really going on behind the scenes; let’s do it.<!--more--></p>
 <h4>What I Really Claimed</h4><p>Here’s what I wrote in my blog post:</p>
 <blockquote class="cite">Trident 2 chipset doesn’t support routing of VXLAN-encapsulated packets […] by the time the chipset figures out it’s the overlay tunnel endpoint for the incoming packet, and performs the L2 lookup of the destination MAC address, it’s too late for another L3 lookup.</blockquote>
@@ -31,7 +31,7 @@ url: /2014/07/layer-3-switching-over-vxlan-revisited.html
 </ul>
 <p>The parts marked in red are the ones that some platforms cannot do.</p>
 <div class="separator"><a href="/2014/07/s1600-L3NSX+-+Problem.jpg" imageanchor="1"><img border="0" src="/2014/07/s400-L3NSX+-+Problem.jpg"/></a></div>
-<p class="info">Hardware limitations on tunnel egress router are nothing new – Catalyst 6500 couldn’t <a href="https://blog.ipspace.net/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html">perform hardware decapsulation of MPLS-over-GRE-over-IPsec</a> packets (at least with the linecards we had) even though it could do individual operations in hardware.</p>
+<p class="info">Hardware limitations on tunnel egress router are nothing new – Catalyst 6500 couldn’t <a href="/2011/03/mplsvpn-over-gre-over-ipsec-does-it.html">perform hardware decapsulation of MPLS-over-GRE-over-IPsec</a> packets (at least with the linecards we had) even though it could do individual operations in hardware.</p>
 <h4>What did VMware do?</h4><p>They used the existing distributed L3 forwarding functionality of VMware NSX to move the L3 lookup into the hypervisors. Based on the description in Bruce’s blog post, they use routing on VTEP in incoming direction and bridging on VTEP in the outgoing direction, effectively dancing around the hardware limitations.</p>
 <div class="separator" style="margin-bottom: 1em"><a href="/2014/07/s1600-L3NSX+-+Ingress.jpg" imageanchor="1"><img border="0" src="/2014/07/s550-L3NSX+-+Ingress.jpg"/></a><br/>Physical to virtual: Layer-3 lookup followed by VXLAN encapsulation</div>
 <div class="separator"><a href="/2014/07/s1600-L3NSX+-+Egress.jpg" imageanchor="1"><img border="0" src="/2014/07/s550-L3NSX+-+Egress.jpg"/></a><br/>Virtual to physical: VXLAN decapsulation followed by layer-2 lookup</div>

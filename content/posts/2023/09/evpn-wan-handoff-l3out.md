@@ -7,7 +7,7 @@ tags:
 - WAN
 title: Layer-3 WAN Handoff (L3Out) in VXLAN/EVPN Fabrics
 ---
-I got a question from a few of my students regarding the best way to implement end-to-end EVPN across multiple locations. Obviously there’s the multi-pod and multi-site architecture for people believing in the magic powers of stretching VLANs across the globe, but I was looking for something that I could recommend to people who understand that you have to have a L3 boundary if you want to have multiple [independent failure domains](https://blog.ipspace.net/2012/05/layer-2-network-is-single-failure.html) (or availability zones).
+I got a question from a few of my students regarding the best way to implement end-to-end EVPN across multiple locations. Obviously there’s the multi-pod and multi-site architecture for people believing in the magic powers of stretching VLANs across the globe, but I was looking for something that I could recommend to people who understand that you have to have a L3 boundary if you want to have multiple [independent failure domains](/2012/05/layer-2-network-is-single-failure.html) (or availability zones).
 <!--more-->
 The theory seems to be simple: WAN edge devices advertise LAN prefixes (or even host routes turned into type-5 prefixes) with themselves as the next hop and the WAN transit VNI as the encapsulation. Dataplane-wise the solution would do VXLAN-to-VXLAN routing on the WAN edge devices, which should be supported on a decent range of recent ASICs.
 

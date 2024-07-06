@@ -4,7 +4,7 @@ date: 2022-11-30 07:25:00
 lastmod: 2022-12-01 16:30:00
 tags: [ IP routing ]
 ---
-A while ago, I wrote a blog post [explaining why we should (mostly) disable ICMP redirects](https://blog.ipspace.net/2022/02/nexus-icmp-redirects.html), triggering a series of comments discussing the root cause of ICMP redirects. A few of those blamed static routes, including:
+A while ago, I wrote a blog post [explaining why we should (mostly) disable ICMP redirects](/2022/02/nexus-icmp-redirects.html), triggering a series of comments discussing the root cause of ICMP redirects. A few of those blamed static routes, including:
 
 > Put another way, the presence or absence of ICMP Redirects is a red herring, usually pointing to architectural/design issues instead. In this example, using vPC Peer Gateway or, better yet, running a minimal IGP instead of relying on static routes eliminates ICMP Redirects from both the problem and solution spaces simultaneously.
 
@@ -12,7 +12,7 @@ Unfortunately, that's not the case. You can get suboptimal routing that sometime
 <!--more-->
 ### Suboptimal Routing and ICMP Redirects
 
-{{<note update>}}I badly mismanaged the details in the original version of this section. Fortunately, I have attentive readers like Henk who are [quick to set me straight](https://blog.ipspace.net/2022/11/what-causes-icmp-redirects.html). Thank you!{{</note>}} 
+{{<note update>}}I badly mismanaged the details in the original version of this section. Fortunately, I have attentive readers like Henk who are [quick to set me straight](/2022/11/what-causes-icmp-redirects.html). Thank you!{{</note>}} 
 
 Let's define *suboptimal routing* first. In the context of this blog post, *suboptimal routing* happens when a router has to send a packet back to the ingress interface because the upstream router (or host) sent it to a suboptimal next hop.
 
@@ -42,7 +42,7 @@ Now let's get back to the simple data center network that triggered the discussi
 
 {{<figure src="/2022/02/icmp-redirect-layer-3.png" caption="Abstract layer-3 connectivity">}}
 
-You could use a [variety of mechanisms](https://blog.ipspace.net/2022/05/living-small-forwarding-tables.html) to make C1 and C2 work with suboptimal information. In most cases, you'd run an IGP between the four devices, keep the complex stuff limited to E1/E2, and advertise the default route from E1 and E2 toward C1/C2.
+You could use a [variety of mechanisms](/2022/05/living-small-forwarding-tables.html) to make C1 and C2 work with suboptimal information. In most cases, you'd run an IGP between the four devices, keep the complex stuff limited to E1/E2, and advertise the default route from E1 and E2 toward C1/C2.
 
 The traffic sent through C1/C2 toward the Internet will sometimes land on the wrong edge router -- the core switches simply don't have enough information to select the optimal forwarding path. The edge router receiving such traffic has to forward it to the other edge router. There are several ways you could meet that requirement:
 

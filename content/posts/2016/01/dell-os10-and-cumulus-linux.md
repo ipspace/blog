@@ -17,7 +17,7 @@ Let's get into prognostication mode...
 
 Dell OS10 runs on data center switches. The question should thus be *who cares about another network operating system within the data center?*
 
-Most enterprises [don't need more than two 1RU or 2RU switches in their data center](https://blog.ipspace.net/2014/10/all-you-need-are-two-top-of-rack.html). Some of them might not want to admit it, but once you do the [consolidation homework](http://blog.ipspace.net/2015/11/presentation-all-you-need-are-two.html), that's what you're left with.
+Most enterprises [don't need more than two 1RU or 2RU switches in their data center](/2014/10/all-you-need-are-two-top-of-rack.html). Some of them might not want to admit it, but once you do the [consolidation homework](/2015/11/presentation-all-you-need-are-two.html), that's what you're left with.
 
 Some larger enterprises might need a bit more, maybe a small leaf-and-spine fabric. For most of those, a single switch is way above the [acceptable unit of loss](http://kontrolissues.net/2015/03/27/sometimes-size-matters-im-sorry-but-youre-just-not-big-enough/). From that perspective it might make more sense to stick to a traditional vendor, preferably one that has full-blown readily-accessible Linux on the box. Some of these customers will try playing with open networking switches, and some of them will get badly burned, but then some people never want to listen to unwanted advice that contradicts their unfounded beliefs.
 
@@ -29,7 +29,7 @@ Who's left? The huge enterprises and cloud services providers (where every cent 
 
 If you decided to go for white- or britebox switches, weren't big enough to get Broadcom's attention, and wanted to have something that resembles a network OS (I've heard enough horror stories about crapware shipping with some of those switches), you had no other option than to put one of the vendor operating systems (Cumulus Linux, Big Switch OpenFlow agent or a few others) on the box because there was no other way to get the mapping between Linux kernel forwarding tables and switching silicon.
 
-Dell OS10 is supposed to remove that obstacle (there's a bit of a path between press release and shipping product), but so does [OpenSwitch](https://blog.ipspace.net/2016/01/openswitch-deep-dive-on-software-gone.html) from HP and a few other options. Effectively, Dell is shipping their hardware with a Linux device driver -- a no-brainer in server world and a novelty obviously worth talking about in networking.
+Dell OS10 is supposed to remove that obstacle (there's a bit of a path between press release and shipping product), but so does [OpenSwitch](/2016/01/openswitch-deep-dive-on-software-gone.html) from HP and a few other options. Effectively, Dell is shipping their hardware with a Linux device driver -- a no-brainer in server world and a novelty obviously worth talking about in networking.
 
 ### Who will take what?
 

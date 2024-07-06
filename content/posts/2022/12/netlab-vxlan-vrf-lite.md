@@ -8,11 +8,11 @@ tags:
 - VXLAN
 title: 'netlab: VRF Lite over VXLAN Transport'
 ---
-One of the comments I received after publishing the _[Use VRFs for VXLAN-Enabled VLANs](https://blog.ipspace.net/2022/10/use-vrf-for-vxlan-vlans.html)_ claimed that:
+One of the comments I received after publishing the _[Use VRFs for VXLAN-Enabled VLANs](/2022/10/use-vrf-for-vxlan-vlans.html)_ claimed that:
 
 > I'm firmly of the belief that VXLAN should be solely an access layer/edge technology and if you are running your routing protocols within the tunnel, you've already lost the plot.
 
-That's a pretty good guideline for typical data center fabric deployments, but VXLAN is just a tool that allows you to build multi-access Ethernet networks on top of IP infrastructure. You can use it to emulate E-LAN service or to build networks similar to what you can get with DMVPN ([without any built-in security](https://blog.ipspace.net/2018/11/omg-vxlan-is-still-insecure.html)). Today we'll use it to build a VRF Lite topology with two tenants (*red* and *blue*).
+That's a pretty good guideline for typical data center fabric deployments, but VXLAN is just a tool that allows you to build multi-access Ethernet networks on top of IP infrastructure. You can use it to emulate E-LAN service or to build networks similar to what you can get with DMVPN ([without any built-in security](/2018/11/omg-vxlan-is-still-insecure.html)). Today we'll use it to build a VRF Lite topology with two tenants (*red* and *blue*).
 
 <!--more-->
 {{<figure src="/2022/12/netlab-vxlan-vrf-lite.png" caption="Lab topology">}}
