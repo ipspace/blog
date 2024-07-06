@@ -3,8 +3,9 @@ title: "BGP Labs: Stop the Fat-Finger Incidents"
 series_title: "Stop the Propagation of Configuration Errors"
 date: 2024-03-21 09:04:00+01:00
 tags: [ BGP, netlab ]
-series: [ bgp_labs ]
-netlab_tag: bgplab
+netlab_tag: ignore
+BGP_tag: lab
+redirect: https://bgplabs.net/challenge/04-block-fat-fingers/
 ---
 Last time, we discussed the first line of defense against fat finger incidents: [limiting the number of BGP prefixes your router accepts from a BGP neighbor](https://bgplabs.net/basic/b-max-prefix/). However, you can do much more without deploying customer-specific filters (which might require a customer database) or ROV/RPKI.
 

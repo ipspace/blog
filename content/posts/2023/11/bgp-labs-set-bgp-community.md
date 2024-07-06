@@ -3,8 +3,9 @@ title: "BGP Labs: Set BGP Communities on Outgoing Updates"
 series_title: "Set BGP Communities on Outbound Updates"
 date: 2023-11-29 07:21:00
 tags: [ BGP, netlab ]
-series: [ bgp_labs ]
-netlab_tag: bgplab
+netlab_tag: ignore
+BGP_tag: lab
+redirect: https://bgplabs.net/policy/8-community-attach/
 ---
 It's hard to influence the behavior of someone with strong opinions (just ask any parent with a screaming toddler), and trying to persuade an upstream ISP not to send the traffic over a backup link is no exception -- sometimes even AS path prepending is not a strong enough argument.
 

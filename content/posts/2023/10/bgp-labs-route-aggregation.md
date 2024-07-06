@@ -3,8 +3,9 @@ title: "BGP Labs: Route Aggregation"
 series_title: "Route Aggregation"
 date: 2023-10-04 09:32:00
 tags: [ BGP, netlab ]
-series: [ bgp_labs ]
-netlab_tag: bgplab
+netlab_tag: ignore
+BGP_tag: lab
+redirect: https://bgplabs.net/basic/8-aggregate/
 ---
 In the [BGP Route Aggregation lab](https://bgplabs.net/basic/8-aggregate/) you can practice:
 
